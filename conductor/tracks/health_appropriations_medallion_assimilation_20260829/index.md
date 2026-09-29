@@ -36,6 +36,8 @@ every planned record set, measure or operational workflow.
 - [Health analytical-context register](./analytical-context-register.md)
 - [Source-context census](./context-census.md)
 - [Source-context census data](./context-census.json)
+- [Whole-census source-health and vintage-state report](./source-health-report.md)
+- [Machine-readable source-health report](./source-health-report.json)
 - [Population census integration validation](./population-census-integration.json)
 
 - [Exclusive local classification occurrence export](./classification-export.md)

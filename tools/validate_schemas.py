@@ -143,6 +143,14 @@ VALIDATION_PAIRS = (
         / "donor-historical-dispositions-20260927.json",
     ),
     (
+        REPOSITORY_ROOT / "schemas" / "health-source-health-report-v1.schema.json",
+        REPOSITORY_ROOT
+        / "conductor"
+        / "tracks"
+        / "health_appropriations_medallion_assimilation_20260829"
+        / "source-health-report.json",
+    ),
+    (
         REPOSITORY_ROOT / "schemas" / "cli-envelope-v1.schema.json",
         REPOSITORY_ROOT / "tests" / "fixtures" / "cli-version-v1.json",
     ),

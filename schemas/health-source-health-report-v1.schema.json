@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-source-health-report-v1.schema.json",
+  "title": "Health source-health and vintage-state report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "scope",
+    "inputs",
+    "summary",
+    "capture_reconciliation",
+    "resources",
+    "context_series_vintages",
+    "limitations"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-source-health-report/v1"
+    },
+    "scope": {
+      "const": "recorded_census_states_not_a_completeness_or_rights_approval"
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_census_sha256",
+        "source_census_cutoff",
+        "source_census_observed_at",
+        "context_census_sha256",
+        "context_census_base_commit",
+        "capture_manifest_sha256"
+      ],
+      "properties": {
+        "source_census_sha256": { "$ref": "#/$defs/sha256" },
+        "source_census_cutoff": { "type": "string" },
+        "source_census_observed_at": { "type": "string", "format": "date-time" },
+        "context_census_sha256": { "$ref": "#/$defs/sha256" },
+        "context_census_base_commit": { "type": "string", "minLength": 40, "maxLength": 40 },
+        "capture_manifest_sha256": { "oneOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }] }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resource_count",
+        "resource_dispositions",
+        "context_series_vintage_count",
+        "context_qualification_states",
+        "context_rights_states"
+      ],
+      "properties": {
+        "resource_count": { "type": "integer", "minimum": 0 },
+        "resource_dispositions": { "$ref": "#/$defs/counts" },
+        "context_series_vintage_count": { "type": "integer", "minimum": 1 },
+        "context_qualification_states": { "$ref": "#/$defs/counts" },
+        "context_rights_states": { "$ref": "#/$defs/counts" }
+      }
+    },
+    "capture_reconciliation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "manifest_name_recorded"],
+      "properties": {
+        "state": {
+          "enum": [
+            "recorded_not_replayed_manifest_unavailable",
+            "capture_manifest_and_bronze_objects_verified"
+          ]
+        },
+        "manifest_name_recorded": { "type": ["string", "null"] },
+        "matched_resource_count_recorded": { "type": ["integer", "null"], "minimum": 0 },
+        "manifest_sha256": { "$ref": "#/$defs/sha256" },
+        "matched_resource_count_verified": { "type": "integer", "minimum": 0 },
+        "bronze_object_count_verified": { "type": "integer", "minimum": 0 },
+        "bronze_bytes_verified": { "type": "integer", "minimum": 0 },
+        "capture_rights_states_recorded": { "$ref": "#/$defs/counts" }
+      }
+    },
+    "resources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/resource" }
+    },
+    "context_series_vintages": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/contextVintage" }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": { "type": "integer", "minimum": 0 }
+    },
+    "resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entity_type",
+        "entity_id",
+        "family",
+        "target_vintage_label",
+        "vintage_basis",
+        "inventory_state",
+        "inventory_reason",
+        "object_sha256",
+        "rights",
+        "temporal_coverage_state",
+        "layout_drift_state",
+        "capture_receipt_rights_state"
+      ],
+      "properties": {
+        "entity_type": { "const": "source_resource" },
+        "entity_id": { "type": "string", "minLength": 1 },
+        "family": { "type": "string", "minLength": 1 },
+        "target_vintage_label": { "type": "string", "minLength": 1 },
+        "vintage_basis": { "const": "source_title_verbatim" },
+        "inventory_state": { "type": "string", "minLength": 1 },
+        "inventory_reason": { "type": "string", "minLength": 1 },
+        "object_sha256": { "oneOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }] },
+        "rights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "license_label", "policy_uri"],
+          "properties": {
+            "state": { "type": "string", "minLength": 1 },
+            "license_label": { "type": ["string", "null"] },
+            "policy_uri": { "type": ["string", "null"], "format": "uri" }
+          }
+        },
+        "temporal_coverage_state": { "type": "string", "minLength": 1 },
+        "layout_drift_state": { "type": "string", "minLength": 1 },
+        "capture_receipt_rights_state": { "type": "string", "minLength": 1 }
+      }
+    },
+    "contextVintage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entity_type",
+        "entity_id",
+        "family",
+        "series_id",
+        "target_vintage_label",
+        "vintage_basis",
+        "period_description",
+        "qualification_state",
+        "rights",
+        "known_gaps",
+        "temporal_coverage_state",
+        "layout_drift_state"
+      ],
+      "properties": {
+        "entity_type": { "const": "context_series_vintage" },
+        "entity_id": { "type": "string", "minLength": 1 },
+        "family": { "type": "string", "minLength": 1 },
+        "series_id": { "type": "string", "minLength": 1 },
+        "target_vintage_label": { "type": "string", "minLength": 1 },
+        "vintage_basis": { "const": "context_census_verbatim" },
+        "period_description": { "type": "string", "minLength": 1 },
+        "qualification_state": { "type": "string", "minLength": 1 },
+        "rights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state"],
+          "properties": { "state": { "type": "string", "minLength": 1 } }
+        },
+        "known_gaps": { "type": "array", "items": { "type": "string" } },
+        "temporal_coverage_state": { "type": "string", "minLength": 1 },
+        "layout_drift_state": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

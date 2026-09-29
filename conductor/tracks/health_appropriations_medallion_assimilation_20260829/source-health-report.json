@@ -1,0 +1,2786 @@
+{
+  "capture_reconciliation": {
+    "bronze_bytes_verified": 38877606,
+    "bronze_object_count_verified": 73,
+    "capture_rights_states_recorded": {
+      "eligible": 73
+    },
+    "manifest_name_recorded": "official-capture-2026-08-29-complete.json",
+    "manifest_sha256": "04145e4030bfddaecade1af542e12cb8a56a187c9c924b7a4c135537ccae9dab",
+    "matched_resource_count_verified": 73,
+    "state": "capture_manifest_and_bronze_objects_verified"
+  },
+  "context_series_vintages": [
+    {
+      "entity_id": "core-crown-befu-2026",
+      "entity_type": "context_series_vintage",
+      "family": "core_crown",
+      "known_gaps": [
+        "financial_year_basis_unverified",
+        "formula_cache_not_qualified"
+      ],
+      "layout_drift_state": "not_assessed_per_vintage_baseline_not_in_census",
+      "period_description": "2021-2030: Actual 2021-2025, Forecast 2026-2030; financial-year basis unverified",
+      "qualification_state": "unqualified",
+      "rights": {
+        "state": "not_evaluated"
+      },
+      "series_id": "Core Crown Expense Tables!D26 / Core Crown expenses",
+      "target_vintage_label": "BEFU-2026",
+      "temporal_coverage_state": "source_extent_recorded_calendar_completeness_not_assessed",
+      "vintage_basis": "context_census_verbatim"
+    },
+    {
+      "entity_id": "core-crown-hyefu-2025",
+      "entity_type": "context_series_vintage",
+      "family": "core_crown",
+      "known_gaps": [
+        "canonical_total_adapter_missing",
+        "financial_year_basis_unverified",
+        "formula_cache_not_qualified"
+      ],
+      "layout_drift_state": "not_assessed_per_vintage_baseline_not_in_census",
+      "period_description": "2021-2030: Actual 2021-2025, Forecast 2026-2030; financial-year basis unverified",
+      "qualification_state": "unqualified",
+      "rights": {
+        "state": "not_evaluated"
+      },
+      "series_id": "Core Crown Expense Tables!D25 / Core Crown expenses",
+      "target_vintage_label": "HYEFU-2025",
+      "temporal_coverage_state": "source_extent_recorded_calendar_completeness_not_assessed",
+      "vintage_basis": "context_census_verbatim"
+    },
+    {
+      "entity_id": "core_crown-fiscal-2025",
+      "entity_type": "context_series_vintage",
+      "family": "core_crown",
+      "known_gaps": [
+        "canonical_projection_receipt_recorded_outside_metadata_census",
+        "consolidation_and_accounting_comparability_not_qualified",
+        "no_year_only_or_cross_basis_join"
+      ],
+      "layout_drift_state": "not_assessed_per_vintage_baseline_not_in_census",
+      "period_description": "1994-2025; 32 annual cells; June year basis carried from A23 through old-GAAP A27",
+      "qualification_state": "unqualified",
+      "rights": {
+        "state": "not_evaluated"
+      },
+      "series_id": "Spending!D4 / Core Crown Expenses",
+      "target_vintage_label": "Fiscal-Time-Series-1972-2025",
+      "temporal_coverage_state": "source_extent_recorded_calendar_completeness_not_assessed",
+      "vintage_basis": "context_census_verbatim"
+    },
+    {
+      "entity_id": "cpi-2026q2",
+      "entity_type": "context_series_vintage",
+      "family": "cpi",
+      "known_gaps": [
+        "fiscal_aggregation_not_qualified",
+        "household_prices_not_health_input_costs",
+        "index_base_not_verified"
+      ],
+      "layout_drift_state": "not_assessed_per_vintage_baseline_not_in_census",
+      "period_description": "quarter-ending YYYY.MM; 449 selected rows, 422 numeric and 27 NA; coverage endpoints not qualified here",
+      "qualification_state": "unqualified",
+      "rights": {
+        "state": "not_evaluated"
+      },
+      "series_id": "CPIQ.SE9A",
+      "target_vintage_label": "Stats-NZ-CPI-2026-Q2",
+      "temporal_coverage_state": "source_extent_recorded_calendar_completeness_not_assessed",
+      "vintage_basis": "context_census_verbatim"
+    },
+    {
+      "entity_id": "gdp-stats-2026q1",
+      "entity_type": "context_series_vintage",
+      "family": "gdp",
+      "known_gaps": [
+        "annual_aggregation_not_qualified",
+        "canonical_projection_not_qualified",
+        "currency_code_unverified",
+        "current_june_2026_workbook_and_series_not_captured"
+      ],
+      "layout_drift_state": "not_assessed_per_vintage_baseline_not_in_census",
+      "period_description": "Captured vintage: 60 quarters June 2011 through March 2026; newer June 2026 GDP release exists, but its exact current-price workbook and series selection are not captured in this census",
+      "qualification_state": "unqualified",
+      "rights": {
+        "state": "not_evaluated"
+      },
+      "series_id": "SNEQ / SG03AB01GE00S900 (separate publisher prefix/reference)",
+      "target_vintage_label": "StatsNZ-GDP-2026Q1",
+      "temporal_coverage_state": "source_extent_recorded_calendar_completeness_not_assessed",
+      "vintage_basis": "context_census_verbatim"
+    },
+    {
+      "entity_id": "gdp-treasury-2025",
+      "entity_type": "context_series_vintage",
+      "family": "gdp",
+      "known_gaps": [
+        "cross_vintage_splicing_not_qualified",
+        "full_derived_measure_qualification_pending"
+      ],
+      "layout_drift_state": "not_assessed_per_vintage_baseline_not_in_census",
+      "period_description": "1972-2025; March years through 1989, June years from 1990",
+      "qualification_state": "unqualified",
+      "rights": {
+        "state": "not_evaluated"
+      },
+      "series_id": "Nominal GDP / C3 (publisher sheet selector)",
+      "target_vintage_label": "Fiscal-Time-Series-1972-2025",
+      "temporal_coverage_state": "source_extent_recorded_calendar_completeness_not_assessed",
+      "vintage_basis": "context_census_verbatim"
+    },
+    {
+      "entity_id": "population-hlfs-rejected",
+      "entity_type": "context_series_vintage",
+      "family": "population",
+      "known_gaps": [
+        "wrong_population_universe"
+      ],
+      "layout_drift_state": "not_assessed_per_vintage_baseline_not_in_census",
+      "period_description": "June 2026 release; exact suitable all-age series absent",
+      "qualification_state": "unqualified",
+      "rights": {
+        "state": "not_evaluated"
+      },
+      "series_id": "unqualified HLFS working-age series",
+      "target_vintage_label": "HLFS June 2026",
+      "temporal_coverage_state": "source_extent_recorded_calendar_completeness_not_assessed",
+      "vintage_basis": "context_census_verbatim"
+    },
+    {
+      "entity_id": "population-national-annual-mean",
+      "entity_type": "context_series_vintage",
+      "family": "population",
+      "known_gaps": [
+        "analytical_selection_and_denominator_approval_not_selected",
+        "export_is_hash_pinned_in_population_annual_context_not_source_census",
+        "historical_export_vintages_not_retained",
+        "one_unavailable_source_observation_and_two_provisional_statuses",
+        "resource_rights_not_evaluated",
+        "transport_http_warc_receipt_unavailable"
+      ],
+      "layout_drift_state": "not_assessed_per_vintage_baseline_not_in_census",
+      "period_description": "Annual-Jun Mean year ended; 1991–2026; 36 source rows with flags, one unavailable '..' token and two provisional 'P' statuses",
+      "qualification_state": "unqualified",
+      "rights": {
+        "state": "not_evaluated"
+      },
+      "series_id": "DPE056AA — Estimated Resident Population by Age and Sex (1991+) (Annual-Jun)",
+      "target_vintage_label": "Stats NZ release 2026-08-18; current census basis 2023-06-30; provisional/revision status retained",
+      "temporal_coverage_state": "source_extent_recorded_calendar_completeness_not_assessed",
+      "vintage_basis": "context_census_verbatim"
+    },
+    {
+      "entity_id": "qes-2026q2",
+      "entity_type": "context_series_vintage",
+      "family": "qes",
+      "known_gaps": [
+        "annual_join_not_qualified",
+        "currency_sex_adjustment_not_supplied",
+        "not_selected_as_deflator"
+      ],
+      "layout_drift_state": "not_assessed_per_vintage_baseline_not_in_census",
+      "period_description": "nine quarters June 2024 through June 2026",
+      "qualification_state": "unqualified",
+      "rights": {
+        "state": "not_evaluated"
+      },
+      "series_id": "QEMQ.SASZ9A",
+      "target_vintage_label": "QES-2026-Q2",
+      "temporal_coverage_state": "source_extent_recorded_calendar_completeness_not_assessed",
+      "vintage_basis": "context_census_verbatim"
+    },
+    {
+      "entity_id": "total_crown-fiscal-2025",
+      "entity_type": "context_series_vintage",
+      "family": "total_crown",
+      "known_gaps": [
+        "canonical_projection_receipt_recorded_outside_metadata_census",
+        "consolidation_and_accounting_comparability_not_qualified",
+        "no_year_only_or_cross_basis_join"
+      ],
+      "layout_drift_state": "not_assessed_per_vintage_baseline_not_in_census",
+      "period_description": "1997-2025; 29 annual cells; June years",
+      "qualification_state": "unqualified",
+      "rights": {
+        "state": "not_evaluated"
+      },
+      "series_id": "Spending!E4 / Total Crown Expenses",
+      "target_vintage_label": "Fiscal-Time-Series-1972-2025",
+      "temporal_coverage_state": "source_extent_recorded_calendar_completeness_not_assessed",
+      "vintage_basis": "context_census_verbatim"
+    }
+  ],
+  "inputs": {
+    "capture_manifest_sha256": "04145e4030bfddaecade1af542e12cb8a56a187c9c924b7a4c135537ccae9dab",
+    "context_census_base_commit": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
+    "context_census_sha256": "1bcf135f9b569d50598e213dcaf6ac3c173fd204cca29a8fa0adc6f8e45e0bd8",
+    "source_census_cutoff": "2026-08-29",
+    "source_census_observed_at": "2026-08-29T09:00:17Z",
+    "source_census_sha256": "4bea6001b0a1af4a362075508c521befe5bd6e04d20b2dd2f7c23ef8c6256964"
+  },
+  "limitations": [
+    "Resource states and policy references are copied from the pinned censuses; rights are not approved by this report.",
+    "Temporal descriptions are source-census text; calendar completeness and cross-source period alignment are not assessed.",
+    "Per-source, per-vintage layout baselines are absent from these census inputs; layout drift is not assessed.",
+    "Capture-manifest rights classifications are retained workflow evidence, not an independent legal assessment.",
+    "This report does not certify discovery, vintage coverage, analytical comparability, or reconciliation completeness."
+  ],
+  "resources": [
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "befu_2026-002",
+      "entity_type": "source_resource",
+      "family": "befu_2026",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "521e7649b3814c8de2efa2e72502c8e35c6db7a94d6f84ebc22fd3fa9f7976d4",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "BEFU 2026 charts and data",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "befu_2026-003",
+      "entity_type": "source_resource",
+      "family": "befu_2026",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "BEFU 2026 core Crown expense tables",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "befu_2026-004",
+      "entity_type": "source_resource",
+      "family": "befu_2026",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "632afd3c24b4ca9c9f2066dd1112f4e5d6a0c9c503ae20f845d4153a7f2ac472",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "BEFU 2026 economic forecasts",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "budget_2026-000",
+      "entity_type": "source_resource",
+      "family": "budget_2026",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Budget 2026 expenditure data",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "budget_2026-001",
+      "entity_type": "source_resource",
+      "family": "budget_2026",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "8243f6a3f9575af5ee048133f2695f3c4764ff7d86e7a74849fdafcf478cbfdb",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Budget 2026 revenue data",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "fiscal_time_series-007",
+      "entity_type": "source_resource",
+      "family": "fiscal_time_series",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Historical fiscal indicators 1972-2025",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "hyefu_2025-005",
+      "entity_type": "source_resource",
+      "family": "hyefu_2025",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "588bb95b3c8632261b40f90eecf42ecb89559103d7ab277c0046ee30a995a4b0",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "HYEFU 2025 charts and data",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "hyefu_2025-006",
+      "entity_type": "source_resource",
+      "family": "hyefu_2025",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "f9f9190a69ce0a7c53b89d690d50170e2a6a457e6821afeb93edc08cef4b9c7d",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "HYEFU 2025 core Crown expense tables",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "moh_vote_health-008",
+      "entity_type": "source_resource",
+      "family": "moh_vote_health",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "c1e7758667b8255e049603de8325d732f34a76e6099e0fe4de6553a36d48e9fc",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.health.govt.nz/about-this-site/copyright",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health real and nominal expenditure",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "moh_vote_health-009",
+      "entity_type": "source_resource",
+      "family": "moh_vote_health",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "7b9a51643550e3d890f4f341f27346d3466708fe924702ade4a731d1bb6266e4",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.health.govt.nz/about-this-site/copyright",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health real and nominal per capita",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "pharmac_cpb-010",
+      "entity_type": "source_resource",
+      "family": "pharmac_cpb",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.pharmac.govt.nz/about-this-site/copyright",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Combined Pharmaceutical Budget information",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "stats_nz_cpi-012",
+      "entity_type": "source_resource",
+      "family": "stats_nz_cpi",
+      "inventory_reason": "discovery page represented by selected index-number CSV",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": null,
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Consumers price index June 2026 quarter",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "stats_nz_cpi-053a0705526fac8d",
+      "entity_type": "source_resource",
+      "family": "stats_nz_cpi",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.stats.govt.nz/about-us/copyright/",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Consumers price index: June 2026 quarter - index numbers",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "stats_nz_gdp-9fc80ed4b7f234b2",
+      "entity_type": "source_resource",
+      "family": "stats_nz_gdp",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "a7326e84e7704446a18e5c8942f99901a452b2170af4228e8a5c242a5532ed21",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.stats.govt.nz/about-us/copyright/",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "GDP: March 2026 quarter - current price income and expenditure",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "stats_nz_population-806dead2a5b8ab69",
+      "entity_type": "source_resource",
+      "family": "stats_nz_population",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "315f48f981cb237bbd1c4834676fd030f84e7eddc7f7660402956c05ca53a8c0",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.stats.govt.nz/about-us/copyright/",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "HLFS estimated working-age population: June 2026 quarter",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "stats_nz_qes-faab0efe46470af8",
+      "entity_type": "source_resource",
+      "family": "stats_nz_qes",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.stats.govt.nz/about-us/copyright/",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Quarterly employment survey: June 2026 quarter",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "stats_nz_rights-011",
+      "entity_type": "source_resource",
+      "family": "stats_nz_rights",
+      "inventory_reason": "rights evidence URI; not an analytical data source",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": null,
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Stats NZ copyright statement",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-000",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-001",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health Service Providers",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-002",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 1998/99",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-003",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 1999/00",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-004",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2000/01",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-005",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2001/02",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-006",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2002/03",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-007",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2003/04",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-008",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2004/05",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-009",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2005/06",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-010",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2006/07",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-011",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2007/08",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-012",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2008/09",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-013",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2009/10",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-014",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2010/11",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-015",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2011/12",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-016",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2012/13",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-017",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2013/14",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-018",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2014/15",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-019",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2015/16",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-020",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2016/17",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-021",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2017/18",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-022",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2018/19",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-023",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2019/20",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-024",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2020/21",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-025",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2021/22",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-026",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2022/23",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-027",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2023/24",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-028",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2024/25",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-029",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2025/26",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-030",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2026/27",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-031",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Performance Information for Appropriations - Health Sector - Information Supporting the Estimates of Appropriations 2008/09",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-032",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Performance Information for Appropriations - Health Sector - Information Supporting the Estimates of Appropriations 2009/10",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-033",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Performance Information for Appropriations - Health Sector - Information Supporting the Estimates of Appropriations 2010/11",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-034",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Performance Information for Appropriations - Health Sector - Information Supporting the Estimates of Appropriations 2011/12",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-035",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Performance Information for Appropriations - Health Sector - Information Supporting the Estimates of Appropriations 2012/13",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-036",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Performance Information for Appropriations - Health Sector - Information Supporting the Estimates of Appropriations 2013/14",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-037",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - Addition to the Supplementary Estimates of Appropriations 2019/20",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-038",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 1998/99",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-039",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 1999/00",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-040",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2000/01",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-041",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2001/02",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-042",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2002/03",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-043",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2003/04",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-044",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2004/05",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-045",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2005/06",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-046",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2006/07",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-047",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2014/15",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-048",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2015/16",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-049",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2016/17",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-050",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2017/18",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-051",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2018/19",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-052",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2019/20",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-053",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2020/21",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-054",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2021/22",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-055",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2022/23",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-056",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2023/24",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-057",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2024/25",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-058",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2025/26",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-059",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations and Supporting Information 2007/08",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-060",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations and Supporting Information 2008/09",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-061",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations and Supporting Information 2009/10",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-062",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations and Supporting Information 2010/11",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-063",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations and Supporting Information 2011/12",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-064",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery page represented by two authoritative linked PDFs",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations and Supporting Information 2012/13",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "treasury-vote-health-065",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health",
+      "inventory_reason": "discovery landing page represented by authoritative linked resources",
+      "inventory_state": "out_of_scope",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": null,
+      "rights": {
+        "license_label": null,
+        "policy_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+        "state": "not_evaluated_policy_reference_missing"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations and Supporting Information 2013/14",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-035ffd1ba849d25b",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "5a07182b093c129e4e6ea69bb47679a1ba79ec96b4cdf6196d4590b42c17531f",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2016/17",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-07fb6437f104d1f8",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "deb17095776a3441607a29d17bfe10c2d2c8f186c5ff9b2c3fdef8d0bbe1eb7d",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2004/05",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-0951064262bf028c",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "d00952c47c4e6485b0768575ba295ac4da6002ce4c525b5637287b25e32849b9",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2025/26",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-108f3025b5ec5f8c",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "c55082208ebb42923dd56e3e8ac2ae75318b8fd9ee468c52284bbda0b9b43a20",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2024/25",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-10b7f8eb82fd802f",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "694aece23fdb2eac82d96e5dc075339f39ba481b12b33a03db2de5596cf2a47d",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2015/16",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-1822d21d12bf27b6",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "5cacffe39f056f092291d8dc0a5ba2e72851b23da1696a63964b726b7a6ebf8b",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2024/25",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-204e7446a15e64f1",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "19864bad3c28561e065bcbf69df7cb245fe52123aa80d9e3a84ba650815054cb",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2000/01",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-28bd7aee2320eb4d",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "9a269a87a0cef8fc998fc1b012ae9fd734fb48b111504bb7a1ca01cdcf97c2b4",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2005/06",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-2fc2f6b518bccd82",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "4cb75bd49333e616f1693b478be3f8e98e8a986aed0485993311febe3fb534cf",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2008/09",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-3a6b190885f22e4b",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "1ec8cf9e4c33d027f3ed02593ab3e8c7cab89883d5b286e0cf4aa4b1e947f5a2",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations and Supporting Information 2013/14",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-442b6f066441fd35",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "515864508729d71553774d9afe3647b6f61dbe6538ae24516d30f904271cfd99",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2000/01",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-4cad52281f0c61e6",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "3fc0cc6a193c232e9278389f42dbd9003cff03228ac3c83cbfe58452f5711604",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2017/18",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-54029b9e6efd28b4",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "4e2a7b1b9bf2390a38ee23d51b911874cddd608fb252612ab906b219007330d5",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 1999/00",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-58d5cc9631f5a755",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "fc1cb3f5bc39d5ff7cd2805feaefd3ab1e2c0a3b2157249fb8de9084befce069",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2018/19",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-620a8273d0423176",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "5602df94c5944dad0e97dde2ddc73e79bd3126a7739184bd2fb117e6d6765914",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2023/24",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-6245cdd071463083",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "fccd1fe0001e12f8238e6c4618328eac2da8d26729f997265b05688ec89a2795",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2007/08",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-63d9e750b8f3eab0",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "18306b33c7346c984a73a006f68c93ba59ad88c011bc8e877f2bfd87e5e3b7ca",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Performance Information for Appropriations - Health Sector - Information Supporting the Estimates of Appropriations 2009/10",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-6907dd245dbd051f",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "ed7d6b30aa732b5b2b6b5ed85d4e3a530741415c90e3aa8e6753504dc96564b5",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Performance Information for Appropriations - Health Sector - Information Supporting the Estimates of Appropriations 2010/11",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-6941bba9f5f094ca",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "c997ffecb631e4dfd0ffd8a1e620585b6b963df11f94164adb2ac02cfa391b2e",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2016/17",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-69c46d1cb70da95c",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "40c5c592da96cda884236d1d3dc56e13ca55e83f3b61798343df124ab6ec7e2f",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Performance Information for Appropriations - Health Sector - Information Supporting the Estimates of Appropriations 2011/12",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-6c8a449e4c16f435",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "039706f735a3652aa911e4fa7eaf776a6d534271d96e478aad0ce45789351dfb",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2014/15",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-6d1e5456f194340a",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "ebea2a9db0dd1a19b227f0c474d0acb7414505a3874ce4b303bd7ad241262ef1",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Performance Information for Appropriations - Health Sector - Information Supporting the Estimates of Appropriations 2013/14",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-76a91f222ef3e3cc",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "71b905562f6701923961b47578a638a7fbed3731d5d1840fa55b8955300ce0d9",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2011/12",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-78e70bb1b77acf05",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "51283a95a523e1405a6a5634d0c1ed74add62759f6d067f32a8b33a6c9afe5e0",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Information Supporting the Supplementary Estimates of Appropriations 2011/12",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-7fb489b770848e08",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "13338e7ef740191c9e576c56575eca56f38c340fda55e3628165ed3668e55ad8",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2003/04",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-82f7370954cb9c4a",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "f319471bd62ca7302a9984c95fc28036cf7aa68113e9cd9733e6c6b5ac587b43",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2006/07",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-8ea10c8cddf61f5b",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "b898c6ead5a998ae4d8aafb588a6259f79505b6e711e9a523e7d659340a916f4",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2001/02",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-8f1922ba340774db",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "9907280937726b80a2f623f3879f9bc69814e02a1702a3cb0b2fb39d2d7d7074",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2005/06",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-93afa43f588f1cae",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "dbb8a9c4fab8a53b5279c26d98a5e0a6fa60d9360b88030189d43273bf0e5d1a",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2015/16",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-9afbc1fe9dfafb1f",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "9b017d40a8f48609231c5cd944af0366892039a0d663e439b63479a5805a004e",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Information Supporting the Supplementary Estimates of Appropriations 2008/09",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-9c9b8d9ae4a1b6fd",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "e3a08643337f2f8b4864b2191e44dee95444164a5eca1df613aacfd1942e2df8",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2002/03",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-a2c78259b5489074",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "179742d361f373f8a44d1ae08c36a985dea8fe6f30fc5a1f65978fe344a94775",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 1999/00",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-a5f5b96621e51a7c",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "d2b1bef458e88590c81f448870295beddf81e4f258f24702980526836ccda50a",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2003/04",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-abd3356360cac950",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "7c35d7c49827e5f4a478203007fb388f3f403698765472ab5e44167ed61c2b72",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2023/24",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-b3fb306465d0ad51",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "fd2afd86cd0f827d5896705bb9eaefe827a645143f3b7573a95d642b455f5bfe",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2020/21",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-b402b75c6004b066",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "ae76053ea1e2867ba1fb129cc417473cf807da31cbad3f2e4ea62b89407eba5a",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Information Supporting the Supplementary Estimates of Appropriations 2009/10",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-b84a095804287bc6",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "95d78b3a38f0f19132d35fce473015e2b2c374c293378d345966737de2bfcb20",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Information Supporting the Supplementary Estimates of Appropriations 2010/11",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-bac4aa5902dbe98c",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "a38e8520b07207670cb139d6814605659d457a626ee070db2bdc91075211e418",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2019/20",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-be263bbceff0e841",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "475eab78585b8f14024187198c3844d0766ead94e04e36a118f3974f974d3c83",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Performance Information for Appropriations - Health Sector - Information Supporting the Estimates of Appropriations 2008/09",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-c1badbfe19cec0fa",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "6dac0aaa3fd181fffacf30cffa829b0f189e8b68ebfdbeb0dd5ef88736af96a2",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2004/05",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-c819ad222f451478",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "a5f65c3d741ebc0e426fd8ca5ce4da088718fbfc3930ba2720958ecf3cee556d",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2010/11",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-cb06627735366d4e",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "023c99801cc11305848772a859d2491940f25389725e08f162b4156492dcae4e",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2026/27",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-d08d82adecad984f",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "575e3744f555d668f3748f46cc55781378bfc0ad35008c9512a942c57279f31f",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2025/26",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-d8d62566dfda18c5",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "f800749dc339a2f8bc99469bcbd365f1183323002cd90d3225c942e2e6d92dc9",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Health Sector - The Estimates of Appropriations 2022/23",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-d93865418ad7fa0e",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "c1ae457e002eecf9a994291d34abfe0ff41101e78f72f98c7208983ec1bb14a8",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - Performance Information for Appropriations - Health Sector - Information Supporting the Estimates of Appropriations 2012/13",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-d9a9e1e77c8e340c",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "c6ed655b1dbca81b0fc54ef62547b71d5f984c6556cfdc77b6299c1bcc870a0e",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2009/10",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-e321c9ce60f710c3",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "f567098d4f98fd9ea34df90ca330b295346a8f567b924f8b11694a494d3ce502",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2021/22",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-e6e53e9c0c008d22",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "a492b49c712c7c60fd31478c51df25225e3193fe4a2dd094fb899b11a588d292",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 1998/99",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-e97c9cbaf558baba",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "f2c49d272af66dea8cc3cf0d705d4f953d5690a3c71a647fbb43d7ba8769b059",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2017/18",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-ea06fc9587ef04f0",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "866bce96ac216344c5dcdf25fee1f31548d5c32ba3cd94ef4b4977a495f509ea",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2006/07",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-ef547ad2d9a047c4",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "98cd7a110628349648926007ba37d6ca9f5ad4525e1d9fdf34a94560e3078741",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2022/23",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-f0c9dd2e768da2d6",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "819a006df9c280acfb20c34079eaa31065014b0871f351ee92ba2ede9b970008",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 1998/99",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-f1a09322538d8791",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "e76311821f75c2b02c82c8c63d771b9948eb0547caa1af40df662213588ec9f8",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations and Supporting Information 2007/08",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-f2dee67a359229eb",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "99e90dfddd8fc7b6d2bb545148d95f8f3c4c3cbf77760b91103130304176780e",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2014/15",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-f6d63e6d47916167",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "5849babe79f21c644920cd16fcf830ab4538488a0ff8253aa76070433f7ef572",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Supplementary Estimates of Appropriations 2001/02",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury-vote-health-pdf-fd37e5ad2657936d",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "1170e0bf5d11e6ac93620a2d76d68004ed99b88ed45a0c6c3c48bbc38f72fafe",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health - The Estimates of Appropriations 2002/03",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury_vote_health_document-566aface4fa2633a",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "07aaafdc58bd448ce2ef60d3c2dce071dfc3204838b21d01cad105e7e0d946fc",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health supplementary estimates supporting information 2012/13",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "treasury_vote_health_document-90791173089c47e3",
+      "entity_type": "source_resource",
+      "family": "treasury_vote_health_document",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "eec443d19bd7fe0767301ab101de5cbe67da8e9183d3f0af8b946b7ba8f93272",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Vote Health supplementary estimates 2012/13",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-source-health-report/v1",
+  "scope": "recorded_census_states_not_a_completeness_or_rights_approval",
+  "summary": {
+    "context_qualification_states": {
+      "unqualified": 10
+    },
+    "context_rights_states": {
+      "not_evaluated": 10
+    },
+    "context_series_vintage_count": 10,
+    "resource_count": 141,
+    "resource_dispositions": {
+      "captured": 73,
+      "out_of_scope": 68
+    }
+  }
+}
