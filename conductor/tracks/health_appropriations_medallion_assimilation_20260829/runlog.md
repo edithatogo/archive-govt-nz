@@ -3075,3 +3075,21 @@ clean-room run rebuilt 449 facts and 3,143 complete lineage records twice with
 matching outputs and unchanged Bronze; the regenerated partial receipt is
 `clean-room-recovery-20260930.json`. Full validation and automatic review gates
 are being rerun against this repair before PR update.
+
+## 2026-09-30 — Bronze-bound annual population canonical context
+
+Added a canonical projection for the pinned Stats NZ DPE056AA mean-year-ended
+population profile. It rebuilds the retained Silver products from the exact
+Bronze CSV, verifies the manifest and output bytes, then emits 36 canonical
+`price_population_fact` rows and 108 complete `field_lineage` rows. Publisher
+provisional statuses, the `..` unavailable value and the context-only,
+not-selected denominator boundary are preserved. Rights, revision vintages,
+census-base comparability and denominator approval remain unqualified. The
+clean-room runner now rebuilds the projection twice from rebuilt Silver and
+matches output digests: 36 facts and 108 lineage rows. Bronze remains unchanged;
+receipt `clean-room-recovery-20260930-population.json` remains
+`partial_with_blockers`. The automatic `phase_7_gates` review passed with
+receipt SHA-256 `f1f3ce92bd24ea3613721f3859e08d5ecade325f6e652b358543140d36c9ea5c`.
+Focused tests (6), Ruff and basedpyright pass. The required full
+`./scripts/validate.sh` harness also passed after integrating the clean-room
+step, including the full test, schema, parity, mutation and supply-chain gates.
