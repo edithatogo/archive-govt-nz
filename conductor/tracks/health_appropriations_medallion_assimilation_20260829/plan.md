@@ -625,7 +625,9 @@ integrated parent head.
   and annual population Silver packages with exact source/vintage coverage and
   explicit excluded-value reasons. It does not approve CPI base, GDP currency,
   population denominator, rights, or any cross-series measure. See
-  `context-gold-coverage-20260928.md`.
+  `context-gold-coverage-20260928.md`. The exact quarterly Stats NZ GDP actuals
+  now also have a Bronze-bound canonical fiscal-context projection (60 facts,
+  420 direct lineage rows) with currency and denominator status unresolved.
 - [ ] If S-05 passed its scope/rights gate, add the aggregate Health Survey
   adapter and explicit time/geography alignment; otherwise record its deferred
   disposition without blocking the Must scope. [S-05; AC-10]
