@@ -341,7 +341,8 @@
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/next-source-ranges.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json"
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/hyefu-core-crown-expense-20260929.md"
       ],
       "retained_manifest_sha256": null
     }
@@ -372,7 +373,7 @@
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/next-source-ranges.md"
     },
     {
-      "sha256": "c4ac72a98306f40db2094299285698a0d84b2e281d0341aaa7ec6081d535f027",
+      "sha256": "cdf944600d92ad47d2bf54bff3df24f4e565052d04defafff23de3837a70923e",
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md"
     },
     {
@@ -426,6 +427,10 @@
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/crown-expense-canonical-projection-20260929.md",
       "sha256": "8f15569ca56a555cbdb5f416532e6a499ca0df6ef734a2511a54c5798d0d4035"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/hyefu-core-crown-expense-20260929.md",
+      "sha256": "0858f374f7175a0090ce48bdeb1de44c54d76aa69781694426eb5802ba1295c5"
     }
   ]
 }
