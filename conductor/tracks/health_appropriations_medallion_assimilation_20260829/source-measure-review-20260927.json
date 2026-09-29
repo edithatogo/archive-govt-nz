@@ -41,7 +41,7 @@
       "vintage_or_range": "Treasury Fiscal Time Series 1994–2025; BEFU 2026 and HYEFU 2025 tables have 2021–2030 cells, labelled Actual 2021–2025 and Forecast 2026–2030",
       "period_basis": "Fiscal Time Series June years with accounting basis transitions: old-GAAP 1994–1996, IFRS 1997–2004, PBE Standards 2005–2025. Forecast workbook formula caches and explicit financial-year metadata are not qualified; keep each release vintage and Actual/Forecast status separate.",
       "rights": "publisher_defaults_observed_exceptions_unadjudicated",
-      "analytical_status": "BEFU-2026 core Crown source-faithful canonical fiscal-context projection exists; cache freshness, currency, financial-year boundaries, rights, and historical/forecast comparability remain unqualified"
+      "analytical_status": "BEFU-2026 and HYEFU-2025 core Crown source-faithful canonical fiscal-context projections exist; cache freshness, currency, financial-year boundaries, rights, and historical/forecast comparability remain unqualified"
     },
     "total_crown": {
       "series_id": "Treasury Fiscal Time Series Spending!E4 / Total Crown Expenses",
@@ -275,7 +275,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.json",
-      "sha256": "0e38ef9bfa447c58b9c4d71ece47c299600af285ba5c9969445000081ba62f47"
+      "sha256": "69019c3b04cc5247a103bf7774b683c3580108151ab91cddf5b3bfa3c1d363d9"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-annual-context.json",
@@ -328,6 +328,14 @@
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/crown-expense-canonical-projection-20260929.md",
       "sha256": "8f15569ca56a555cbdb5f416532e6a499ca0df6ef734a2511a54c5798d0d4035"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/hyefu-core-crown-expense-20260929.md",
+      "sha256": "0858f374f7175a0090ce48bdeb1de44c54d76aa69781694426eb5802ba1295c5"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/hyefu-crown-canonical-recovery-20260929.json",
+      "sha256": "ae4fb9103ce4504232003d09a2347c01c3aa38763ec2052cfe04fad9a64a0830"
     }
   ]
 }

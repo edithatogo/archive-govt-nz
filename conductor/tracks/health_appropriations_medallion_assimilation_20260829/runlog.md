@@ -2957,3 +2957,44 @@ and hygiene gates, dependency/license/secret scans, and strict 113-component
 SBOM validation. Automatic Conductor `phase_7_gates` review passed formatting,
 lint, schema/fixture, targeted test and mutation gates; receipt SHA-256
 `738dd03e09fa24e0a1775e6dcc69192cc2a001450b0ddb90089d2a20da675224`.
+
+## 2026-09-29 — Project HYEFU-2025 Core Crown expense separately
+
+Added the hash-pinned `hyefu_crown_expense.py` profile for captured source
+`hyefu_2025-006`. It selects D25, D5, F4:O5 and the F25:O25 stored formulas
+and numeric caches, preserving the release's 2021–2025 Actual and 2026–2030
+Forecast labels. The verified Bronze object was replayed into the separate
+external Silver package `raw-hyefu-core-expense-20260929-v1`: 10 facts, 60
+lineage rows, 24 context cells, 2,312 preserved-only cells and zero rejects.
+Its manifest pin is
+`8440d81f4cab378b47cba1e3de22b57f687571ea60f2e95728d179e7527847e3`.
+
+The new `hyefu_crown_expense_canonical_projection.py` rehashes and reparses
+Bronze, compares every retained Silver product, then emits 10 fiscal-context
+facts and 80 direct lineage rows. It retains HYEFU as a separate source
+vintage, without splicing or comparison to BEFU. Currency, cache freshness,
+financial-year boundaries, accounting basis and rights remain unknown or
+unqualified. Denominator selection and publication were not performed.
+
+The integrated clean-room recovery rebuilt the broader recovery product set,
+including HYEFU Silver and its canonical context, twice. The HYEFU output
+matched at source manifest pin `8440d81f4cab378b47cba1e3de22b57f687571ea60f2e95728d179e7527847e3`,
+fact digest `b3383f9161eccf13b1687aecb077128dccab0ecade43d8eca8473eadefa7583a`,
+and lineage digest `c75eda3187ddadad771f05ac344660ce02980df508ddc44dd2118c45310b4833`.
+All pinned Bronze objects remained unchanged. The payload-free full recovery
+receipt `hyefu-crown-canonical-recovery-20260929.json` has SHA-256
+`ae4fb9103ce4504232003d09a2347c01c3aa38763ec2052cfe04fad9a64a0830`; overall
+status remains `partial_with_blockers` with donor reports, other adapters and
+full Platinum validation open. Focused HYEFU extraction, canonical, recovery
+and source-measure review tests pass (48); Ruff and basedpyright pass. Full
+required validation and hosted delivery for this slice are pending.
+
+After updating the source-context census evidence hashes and the pinned recovery
+binding, the final focused census/measure-review/recovery/HYEFU set passed 70
+tests. Required `./scripts/validate.sh` then completed successfully: all 7,149
+collected cases resolved as 7,140 passed and 9 skipped, 98.24% branch coverage,
+52 schemas, 42 representative documents, parity 9/9, all configured mutation
+and hygiene lanes, CAS benchmark, dependency/license/secret checks, and strict
+113-component SBOM validation. Automatic Conductor `phase_7_gates` passed
+formatting, lint, schema/fixture, targeted-test and mutation gates; receipt
+SHA-256 is `d7827d62442de8d6037e3098717e18de672a9f3b2b454ca334fa27909cebc71a`.

@@ -14,6 +14,8 @@ from archive_govt_nz.domains.health_appropriations import (
     crown_expense,
     crown_expense_canonical_projection,
     gdp,
+    hyefu_crown_expense,
+    hyefu_crown_expense_canonical_projection,
     pharmac,
     pharmac_canonical_projection,
     qes,
@@ -103,7 +105,7 @@ SOURCE_CENSUS_SHA256 = (
     "4bea6001b0a1af4a362075508c521befe5bd6e04d20b2dd2f7c23ef8c6256964"
 )
 CONTEXT_CENSUS_SHA256 = (
-    "0e38ef9bfa447c58b9c4d71ece47c299600af285ba5c9969445000081ba62f47"
+    "69019c3b04cc5247a103bf7774b683c3580108151ab91cddf5b3bfa3c1d363d9"
 )
 POPULATION_SOURCE_SHA256 = (
     "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9"
@@ -531,6 +533,53 @@ def _crown_recovery_report(root: Path) -> dict[str, Any]:
     return {**runs["1"], "repeat_identical": True}
 
 
+def _rebuild_hyefu_crown_canonical(root: Path, index: int) -> dict[str, Any]:
+    """Rebuild the retained HYEFU Crown package and canonical context from Bronze."""
+    source_cas = ARCHIVE / "bronze-cas" / "sha256"
+    source = source_cas / hyefu_crown_expense.SOURCE_SHA256[:2]
+    source = source / hyefu_crown_expense.SOURCE_SHA256
+    silver = root / f"hyefu-crown-silver-{index}"
+    hyefu_crown_expense.normalize_hyefu_core_expense(
+        source,
+        silver,
+        expected_sha256=hyefu_crown_expense.SOURCE_SHA256,
+        source_locator=hyefu_crown_expense.SOURCE_LOCATOR,
+        source_vintage=hyefu_crown_expense.SOURCE_VINTAGE,
+        observed_at=CROWN_SOURCE_OBSERVED_AT,
+        dry_run=False,
+    )
+    pin = digest(silver / "MANIFEST.json")
+    facts, lineage, receipt = (
+        hyefu_crown_expense_canonical_projection.project_hyefu_core_expense(
+            silver, pin, source_cas
+        )
+    )
+    encode = lambda table: json.dumps(  # noqa: E731 - stable recovery evidence codec.
+        table.to_pylist(),
+        default=str,
+        sort_keys=True,
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ).encode("utf-8")
+    return {
+        "silver_files": tree(silver),
+        "source_manifest_sha256": pin,
+        "source_object_sha256": hyefu_crown_expense.SOURCE_SHA256,
+        "canonical_fact_sha256": hashlib.sha256(encode(facts)).hexdigest(),
+        "canonical_lineage_sha256": hashlib.sha256(encode(lineage)).hexdigest(),
+        "projection": receipt,
+    }
+
+
+def _hyefu_crown_recovery_report(root: Path) -> dict[str, Any]:
+    """Require two matching Bronze-to-canonical HYEFU Crown projections."""
+    runs = {str(index): _rebuild_hyefu_crown_canonical(root, index) for index in (1, 2)}
+    if runs["1"] != runs["2"]:
+        message = "hyefu_crown_canonical_projection_repeat_mismatch"
+        raise RuntimeError(message)
+    return {**runs["1"], "repeat_identical": True}
+
+
 def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
     """Rebuild and compare canonical Gold or retain its binding blocker."""
     canonical = canonical_inputs()
@@ -631,6 +680,7 @@ def run() -> dict[str, Any]:
         outputs["canonical_context_consumer"] = _query_context_consumer(context_one)
         outputs["qes_canonical_projection"] = _qes_recovery_report(root)
         outputs["crown_canonical_projection"] = _crown_recovery_report(root)
+        outputs["hyefu_crown_canonical_projection"] = _hyefu_crown_recovery_report(root)
         outputs["pharmac_canonical_projection"] = _pharmac_recovery_report(root)
         outputs["canonical_gold"] = _canonical_gold_recovery_report(root)
     unchanged = original_snapshot == tree(ARCHIVE / "bronze-cas")

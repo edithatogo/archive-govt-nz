@@ -609,6 +609,10 @@ integrated parent head.
   See `befu-core-expense-20260925.md` and
   `crown-expense-canonical-projection-20260929.md`; this is context-only and
   does not complete historical/total Crown projections or Gold denominators.
+  The captured HYEFU-2025 core Crown source now has a separate 10-fact Silver
+  package and Bronze-bound canonical projection; it remains a distinct release
+  vintage with the same unresolved cache, unit/currency, period, basis and
+  rights qualifications.
   A verified local
   context Gold coverage product now includes the pinned CPI, QES, Stats NZ GDP
   and annual population Silver packages with exact source/vintage coverage and
