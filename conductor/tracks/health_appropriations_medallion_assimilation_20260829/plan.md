@@ -628,6 +628,10 @@ integrated parent head.
   `context-gold-coverage-20260928.md`. The exact quarterly Stats NZ GDP actuals
   now also have a Bronze-bound canonical fiscal-context projection (60 facts,
   420 direct lineage rows) with currency and denominator status unresolved.
+  The June 2026-quarter GDP release was published 18 September 2026, after the
+  captured March-quarter vintage; its exact current-price workbook and series
+  selector remain uncaptured. The census records this as open work without
+  broadening the pinned March-2026 adapter.
 - [ ] If S-05 passed its scope/rights gate, add the aggregate Health Survey
   adapter and explicit time/geography alignment; otherwise record its deferred
   disposition without blocking the Must scope. [S-05; AC-10]

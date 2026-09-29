@@ -3216,3 +3216,27 @@ branch-aware coverage, 53 schemas/43 representative documents, 9/9 parity and
 all mutation, hygiene and supply-chain gates. The rerun took 104.67 seconds for
 tests and measured CAS streaming at 418.45 MB/s. See the updated validation and
 mutation receipts. Hosted rerun on the corrective commit is pending.
+
+## 2026-09-30 — GDP source-vintage follow-up
+
+The official Stats NZ release page identifies the June 2026 quarter GDP
+release as published 18 September 2026, while the exact captured current-price
+GDP workbook remains the March-2026 vintage. Updated the GDP context census
+period and gap token to name the missing June-quarter workbook explicitly. The
+source-measure review and clean-room recovery pins were updated to the new
+census digest; source-measure, recovery, and report focused checks pass (71
+tests). The first hosted Ubuntu run exposed the stale pins and failed two
+tests. A direct attempt to replay the retained external capture manifest found
+its referenced Bronze CAS object missing. The previously verified 73/73
+source-health report is retained unchanged rather than downgraded or rebuilt
+without fixity evidence. The full local harness passed before the pin repair
+and will be rerun on the corrected head.
+
+pinned source-health report was not regenerated because its report build also
+replays the external capture manifest, which is unavailable in this clean
+managed worktree; running without that manifest would downgrade its existing
+73/73 capture reconciliation. The report's existing limitations already say
+vintage discovery is incomplete, so regeneration is deferred until that
+manifest is available. No workbook was downloaded or admitted, and no rights
+or analytical selection was inferred. Official release page:
+https://www.stats.govt.nz/information-releases/gross-domestic-product-june-2026-quarter/

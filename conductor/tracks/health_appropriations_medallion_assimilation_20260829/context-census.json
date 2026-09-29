@@ -144,14 +144,14 @@
       "vintage": "StatsNZ-GDP-2026Q1",
       "unit": "$(million); scaling million; ISO currency unverified",
       "base": "current prices; no constant-price base",
-      "period": "Captured vintage: 60 quarters June 2011 through March 2026; newer June 2026 GDP release exists, but its exact current-price workbook and series selection are not captured in this census",
+      "period": "Captured vintage: 60 quarters June 2011 through March 2026; the June 2026-quarter GDP release was published 18 September 2026, but its exact current-price workbook and series selection are not captured in this census",
       "geography": "New Zealand; national aggregate",
       "selector": "Table 1!C27:BJ27; A27 label, B27 reference, B7 prefix; Table 2 excluded",
       "join_policy": "Blocked for annual shares: explicitly select four compatible flow quarters and vintage; no automatic annualization or Treasury-series substitution",
       "qualification": "unqualified",
       "rights": "not_evaluated",
       "gaps": [
-        "current_june_2026_workbook_and_series_not_captured",
+        "current_june_2026_quarter_workbook_and_series_not_captured",
         "annual_aggregation_not_qualified",
         "currency_code_unverified",
         "canonical_projection_not_qualified"
