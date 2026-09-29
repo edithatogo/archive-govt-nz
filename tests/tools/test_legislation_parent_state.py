@@ -1299,6 +1299,7 @@ def test_archive_order_does_not_change_roots(tmp_path: Path) -> None:
     @given(
         st.permutations(["manifest.json", "checkpoint.json", "receipts/harvest.json"])
     )
+    @settings(deadline=None)
     def exercise(names: list[str]) -> None:
         files = P.unpack(raw)
         entries: list[tuple[str | zipfile.ZipInfo, bytes]] = [

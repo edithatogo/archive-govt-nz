@@ -276,7 +276,8 @@ phase must remain executable even if the first candidate is rejected.
 - **AC-16 — Repository assurance:** focused, property, mutation, recovery,
   schema, security, supply-chain and full repository gates pass at the required
   checkpoints, with 100% branch coverage for critical policy/integrity logic
-  and at least 95% overall production coverage.
+  and at least 80% overall production coverage; critical policy and integrity
+  logic requires 100%.
 
 ## External and accountable gates
 

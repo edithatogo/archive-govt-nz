@@ -2998,3 +2998,27 @@ and hygiene lanes, CAS benchmark, dependency/license/secret checks, and strict
 113-component SBOM validation. Automatic Conductor `phase_7_gates` passed
 formatting, lint, schema/fixture, targeted-test and mutation gates; receipt
 SHA-256 is `d7827d62442de8d6037e3098717e18de672a9f3b2b454ca334fa27909cebc71a`.
+
+
+## 2026-09-29 — 80% repository coverage floor and PR patch coverage
+
+Following the maintainer's direction, the repository-wide `pyproject.toml`
+coverage floor is now 80% instead of 95%. The health assimilation acceptance
+criteria and repository QA documentation now state the same floor. Critical
+policy and integrity code retains its separate 100% coverage requirement. This
+is a minimum gate, not a target: the full run measured 98.24% overall, and the
+historical Fiscal Crown canonical projection module has 100% line and branch
+coverage.
+
+The first PR #559 Codecov patch check reported 96.42% against 97.87%. A negative
+contract test now covers the canonicalizer's invalid source-inventory branch,
+raising module coverage to 100%. The same full-suite run exposed two unrelated
+Hypothesis properties whose filesystem/Arrow startup sometimes exceeded their
+200 ms timing deadline; those properties now disable timing deadlines while
+retaining generated examples and invariant assertions.
+
+Final local validation passed: 7,143 passed, 9 skipped, 98.24% total coverage;
+52 schemas and 42 representative documents; parity 9/9; all configured mutation
+lanes; hygiene, CAS benchmark, dependency/license/secret checks and the
+113-component SBOM. Automatic Phase 7 Conductor review passed; receipt SHA-256 is
+`6d18446c38e95fe48c4f277715b580f904f852ab86ae1bbdfc19f3809c2b75ea`.

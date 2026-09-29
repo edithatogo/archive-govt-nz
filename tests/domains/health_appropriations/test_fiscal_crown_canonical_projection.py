@@ -5,10 +5,9 @@ from __future__ import annotations
 from datetime import date, datetime
 from decimal import Decimal
 from pathlib import Path
-from typing import TYPE_CHECKING, Any
+from typing import Any
 
-if TYPE_CHECKING:
-    import pytest
+import pytest
 
 from archive_govt_nz.domains.health_appropriations import (
     fiscal_crown_canonical_projection as subject,
@@ -178,3 +177,8 @@ def test_projection_uses_exact_retained_literal_parser(
     assert receipt["denominator_selection"] == "not_performed"
     assert receipt["cross_measure_comparison"] == "not_performed"
     assert receipt["publication"] == "not_performed"
+
+
+def test_canonicalizer_rejects_incomplete_source_inventory() -> None:
+    with pytest.raises(ValueError, match="fiscal_crown_canonical_projection_invalid"):
+        subject.canonicalize_fiscal_crown_literals([])

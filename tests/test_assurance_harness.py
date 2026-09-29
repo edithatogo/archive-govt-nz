@@ -47,7 +47,7 @@ def test_static_and_coverage_policy_is_fail_closed() -> None:
     assert "basedpyright" in tools
     assert tools["basedpyright"]["include"] == ["src", "tools", "tests"]
     assert tools["coverage"]["run"]["branch"] is True
-    assert tools["coverage"]["report"]["fail_under"] == 95
+    assert tools["coverage"]["report"]["fail_under"] == 80
     assert tools["coverage"]["report"]["show_missing"] is True
     assert COMMAND_TIMEOUT_SECONDS == 900
 

@@ -153,7 +153,8 @@ With focused tests passing:
 Coverage is risk-tiered:
 
 - **Critical logic:** 100% line and branch coverage.
-- **Overall production code:** at least 95% line and branch coverage.
+- **Overall production code:** at least 80% line and branch coverage; critical
+  policy and integrity logic remains at 100%.
 
 Critical logic includes:
 
@@ -307,7 +308,8 @@ Before marking a task complete, verify all applicable gates:
 - [ ] Focused tests passed after an observed red phase.
 - [ ] Full affected test suite passes.
 - [ ] Critical logic has 100% line and branch coverage.
-- [ ] Overall production code has at least 95% line and branch coverage.
+- [ ] Overall production code has at least 80% line and branch coverage; critical
+  policy and integrity logic has 100%.
 - [ ] Property and state-machine tests cover invariant-heavy logic.
 - [ ] Mutation tests exercise policy- and integrity-critical logic.
 - [ ] Formatting, linting, and strict typing pass.
