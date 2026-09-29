@@ -17,6 +17,7 @@ from archive_govt_nz.domains.health_appropriations.workbook_common import (
     source_context,
     verified_snapshot,
 )
+from archive_govt_nz.schemas.health_recordset_normalization import validate_table
 from archive_govt_nz.schemas.health_recordsets import recordset_schema
 
 if TYPE_CHECKING:
@@ -55,6 +56,53 @@ def _pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
         _require(key not in result)
         result[key] = value
     return result
+
+
+def _lineage_row(
+    source: dict[str, Any],
+    target_record_id: str,
+    values: dict[str, Any],
+) -> dict[str, Any]:
+    """Construct a complete canonical lineage record with source identity."""
+    source_id = source["record_id"]
+    field = values["field"]
+    source_coordinate = values["source_coordinate"]
+    record_id = (
+        "sha256:"
+        + hashlib.sha256(
+            f"{target_record_id}\0{field}\0{source_coordinate}".encode()
+        ).hexdigest()
+    )
+    return {
+        "record_id": record_id,
+        "schema_version": "archive-govt-nz.health-recordsets/v1",
+        "recordset": "field_lineage",
+        "domain": "health_appropriations",
+        "source_object_sha256": source["source_object_sha256"],
+        "source_observation_id": source["source_observation_id"],
+        "source_locator": source["source_locator"],
+        "source_vintage": source["source_vintage"],
+        "valid_time_start": None,
+        "valid_time_end": source["period_end"],
+        "valid_time_status": "source_quarter_ended",
+        "period_token": source["period_token"],
+        "observed_at": source["observed_at"],
+        "observation_context": "CPI All Groups for New Zealand; household prices",
+        "rights_state": "not_evaluated",
+        "quality_flags": list(source["quality_flags"]),
+        "transformation_id": TRANSFORMATION,
+        "lineage_id": hashlib.sha256(
+            f"{target_record_id}\0lineage".encode()
+        ).hexdigest(),
+        "source_record_id": source_id,
+        "source_schema_version": source["schema_version"],
+        "target_record_id": target_record_id,
+        "field": field,
+        "source_coordinate": source_coordinate,
+        "raw_value": values["raw_value"],
+        "normalized_value": values["normalized_value"],
+        "rule": values["rule"],
+    }
 
 
 def _source_tables(
@@ -206,12 +254,19 @@ def project_cpi(
             value = row[field]
             lineage.append(
                 {
-                    "target_record_id": identifier,
-                    "field": field,
-                    "source_coordinate": item["source_coordinate"],
-                    "raw_value": item["raw_value"],
-                    "normalized_value": str(value) if value is not None else None,
-                    "rule": TRANSFORMATION,
+                    **_lineage_row(
+                        source,
+                        identifier,
+                        {
+                            "field": field,
+                            "source_coordinate": item["source_coordinate"],
+                            "raw_value": item["raw_value"],
+                            "normalized_value": (
+                                str(value) if value is not None else None
+                            ),
+                            "rule": TRANSFORMATION,
+                        },
+                    ),
                 }
             )
         for field, value in (
@@ -221,12 +276,17 @@ def project_cpi(
             item = links[source_id]["period_end"]
             lineage.append(
                 {
-                    "target_record_id": identifier,
-                    "field": field,
-                    "source_coordinate": item["source_coordinate"],
-                    "raw_value": item["raw_value"],
-                    "normalized_value": value.isoformat(),
-                    "rule": "calendar_quarter_bounds_from_source_period",
+                    **_lineage_row(
+                        source,
+                        identifier,
+                        {
+                            "field": field,
+                            "source_coordinate": item["source_coordinate"],
+                            "raw_value": item["raw_value"],
+                            "normalized_value": value.isoformat(),
+                            "rule": "calendar_quarter_bounds_from_source_period",
+                        },
+                    ),
                 }
             )
     fact_table = pa.Table.from_pylist(
@@ -235,6 +295,8 @@ def project_cpi(
     lineage_table = pa.Table.from_pylist(
         lineage, schema=recordset_schema("field_lineage")
     )
+    validate_table("price_population_fact", fact_table)
+    validate_table("field_lineage", lineage_table)
     receipt = {
         "schema_version": "archive-govt-nz.health-cpi-canonical-projection/v1",
         "status": "verified_source_faithful_projection",

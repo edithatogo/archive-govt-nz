@@ -243,8 +243,8 @@
       "fact_count": 449,
       "files": {
         "field_lineage.jsonl": {
-          "bytes": 887025,
-          "sha256": "0178413237b2148cfb074ea119a9d15bd906b5c61ff2cefa85d4fc64ee85eae0"
+          "bytes": 4925780,
+          "sha256": "903efe9a364e5dcb539710cba22b53ce77d32ab1dc3b8278b9f789568b9440ca"
         },
         "price_population_fact.parquet": {
           "bytes": 74670,

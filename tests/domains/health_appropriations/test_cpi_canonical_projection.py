@@ -78,7 +78,13 @@ def test_projection_preserves_cpi_values_nulls_and_unverified_base(
     )
     assert lineage.schema.equals(recordset_schema("field_lineage"), check_metadata=True)
     validate_table("price_population_fact", facts)
+    validate_table("field_lineage", lineage)
     rows = facts.to_pylist()
+    lineage_row = lineage.to_pylist()[0]
+    assert lineage_row["record_id"].startswith("sha256:")
+    assert lineage_row["recordset"] == "field_lineage"
+    assert lineage_row["source_object_sha256"] == source_pin
+    assert lineage_row["target_record_id"] == rows[0]["record_id"]
     assert rows[0]["amount"] == Decimal("123.4500")
     assert rows[0]["source_decimal_scale"] == 4
     assert rows[0]["valid_time_start"] == date(2026, 1, 1)

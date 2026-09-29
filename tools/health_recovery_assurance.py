@@ -422,7 +422,11 @@ def _cpi_canonical_recovery_report(
             facts, target / "price_population_fact.parquet", compression="zstd"
         )
         lineage_rows = [
-            {key: value for key, value in row.items() if value is not None}
+            {
+                key: value.isoformat() if hasattr(value, "isoformat") else value
+                for key, value in row.items()
+                if value is not None
+            }
             for row in lineage.to_pylist()
         ]
         (target / "field_lineage.jsonl").write_text(

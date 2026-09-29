@@ -3064,3 +3064,14 @@ secret scans, and 113-component SBOM passed. Ruff, basedpyright, and seven
 focused CPI/recovery tests passed. The automatic Conductor `phase_7_gates`
 review passed; receipt SHA-256 is
 `6681721608e8541ca83da366552ed493fd7f837b403a7250861d629323c9eaa9` (full receipt retained in ignored `build/`).
+
+Review repair on 2026-09-30: the automatic PR review found canonical lineage
+had null common metadata because only lineage-specific fields were constructed.
+The adapter now creates complete `field_lineage` records with canonical IDs,
+source and target identity, time context and rights state, and validates both
+canonical output tables against their schemas. JSONL receipt serialization
+normalizes Arrow datetime values to ISO-8601. Seven focused tests pass. A fresh
+clean-room run rebuilt 449 facts and 3,143 complete lineage records twice with
+matching outputs and unchanged Bronze; the regenerated partial receipt is
+`clean-room-recovery-20260930.json`. Full validation and automatic review gates
+are being rerun against this repair before PR update.
