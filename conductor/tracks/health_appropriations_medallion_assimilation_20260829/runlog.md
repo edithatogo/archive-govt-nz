@@ -3223,6 +3223,15 @@ The official Stats NZ release page identifies the June 2026 quarter GDP
 release as published 18 September 2026, while the exact captured current-price
 GDP workbook remains the March-2026 vintage. Updated the GDP context census
 period and gap token to name the missing June-quarter workbook explicitly. The
+source-measure review and clean-room recovery pins were updated to the new
+census digest; source-measure, recovery, and report focused checks pass (71
+tests). The first hosted Ubuntu run exposed the stale pins and failed two
+tests. A direct attempt to replay the retained external capture manifest found
+its referenced Bronze CAS object missing. The previously verified 73/73
+source-health report is retained unchanged rather than downgraded or rebuilt
+without fixity evidence. The full local harness passed before the pin repair
+and will be rerun on the corrected head.
+
 pinned source-health report was not regenerated because its report build also
 replays the external capture manifest, which is unavailable in this clean
 managed worktree; running without that manifest would downgrade its existing
