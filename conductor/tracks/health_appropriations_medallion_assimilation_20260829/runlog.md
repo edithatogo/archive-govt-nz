@@ -3022,3 +3022,20 @@ Final local validation passed: 7,143 passed, 9 skipped, 98.24% total coverage;
 lanes; hygiene, CAS benchmark, dependency/license/secret checks and the
 113-component SBOM. Automatic Phase 7 Conductor review passed; receipt SHA-256 is
 `6d18446c38e95fe48c4f277715b580f904f852ab86ae1bbdfc19f3809c2b75ea`.
+
+The PR #559 inline review identified that historical Crown fact and lineage rows
+recorded the parser transformation ID in `source_schema_version`. The projection
+now propagates the exact Fiscal Crown literal-admission schema version and
+rejects unknown admission versions; regression assertions cover facts and
+lineage. Focused projection tests pass (4). The subsequent required full harness
+initially found one unrelated timing-only Hypothesis failure in
+`test_aggregate_row_budget_conserves_all_occurrences` (299.54 ms versus its
+200 ms deadline; the same generated example passed on retry in 7.80 ms). The
+failure was recorded before changing that property to disable its timing
+deadline while retaining its generated cases and conservation assertions. A new
+full harness run then passed: 7,144 passed, 9 skipped, 98.23% coverage; 52
+schemas, 42 representative documents, parity 9/9, all configured mutation and
+hygiene lanes, CAS benchmark, dependency/license/secret checks, and 113-component
+SBOM. Automatic Phase 7 Conductor review passed; receipt SHA-256 is
+`b80197bbedc6a122d543932d34be31dc8cdd9ab498fde8acf9008103169f31e3`. The PR
+branch is ready for the review-thread resolution and refreshed hosted checks.

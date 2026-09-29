@@ -100,7 +100,11 @@ def test_canonicalization_preserves_core_total_and_historical_uncertainty(
     ]
 
     def admit(_path: Path) -> dict[str, Any]:
-        return {"facts": source, "counts": {"core_crown": 32, "total_crown": 29}}
+        return {
+            "schema_version": "archive-govt-nz.fiscal-crown-literal-admission/v1",
+            "facts": source,
+            "counts": {"core_crown": 32, "total_crown": 29},
+        }
 
     monkeypatch.setattr(fiscal_crown_literals, "admit_fiscal_crown", admit)
     facts, lineage, _ = subject.project_fiscal_crown(tmp_path / "pinned-source")
@@ -128,6 +132,11 @@ def test_canonicalization_preserves_core_total_and_historical_uncertainty(
     assert all(row["valid_time_start"] is None for row in rows)
     assert all(row["currency"] is None and row["price_basis"] is None for row in rows)
     assert all(row["rights_state"] == "not_evaluated" for row in rows)
+    assert all(
+        row["source_schema_version"]
+        == "archive-govt-nz.fiscal-crown-literal-admission/v1"
+        for row in rows
+    )
     assert "source_year_note:*" in rows[0]["quality_flags"]
     assert len(lineage) == 671
     links = lineage.to_pylist()
@@ -140,6 +149,9 @@ def test_canonicalization_preserves_core_total_and_historical_uncertainty(
     assert amount_link["source_coordinate"] == "Spending!D27"
     assert amount_link["raw_value"] == "28476"
     assert amount_link["normalized_value"] == "28476"
+    assert amount_link["source_schema_version"] == (
+        "archive-govt-nz.fiscal-crown-literal-admission/v1"
+    )
     assert any(item["field"] == "valid_time_status" for item in links)
 
 
@@ -164,6 +176,7 @@ def test_projection_uses_exact_retained_literal_parser(
     def admit(path: Path) -> dict[str, Any]:
         captured.append(path)
         return {
+            "schema_version": "archive-govt-nz.fiscal-crown-literal-admission/v1",
             "facts": source,
             "counts": {"core_crown": 32, "total_crown": 29},
         }
@@ -182,3 +195,10 @@ def test_projection_uses_exact_retained_literal_parser(
 def test_canonicalizer_rejects_incomplete_source_inventory() -> None:
     with pytest.raises(ValueError, match="fiscal_crown_canonical_projection_invalid"):
         subject.canonicalize_fiscal_crown_literals([])
+
+
+def test_canonicalizer_rejects_unrecognized_admission_schema() -> None:
+    with pytest.raises(ValueError, match="fiscal_crown_canonical_projection_invalid"):
+        subject.canonicalize_fiscal_crown_literals(
+            [], "treasury-fiscal-2025-crown-literal-context/v1"
+        )

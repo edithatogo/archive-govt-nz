@@ -18,6 +18,7 @@ TRANSFORMATION = "treasury-fiscal-crown-canonical-source-faithful/v1"
 _MAX_PRECISION = 38
 _EXPECTED_FACT_COUNT = 61
 _EXPECTED_FAMILIES = {"core_crown": 32, "total_crown": 29}
+_SOURCE_SCHEMA_VERSION = "archive-govt-nz.fiscal-crown-literal-admission/v1"
 _ERROR = "fiscal_crown_canonical_projection_invalid"
 
 
@@ -28,8 +29,10 @@ def _require(condition: object) -> None:
 
 def canonicalize_fiscal_crown_literals(
     source_facts: list[dict[str, Any]],
+    source_schema_version: str = _SOURCE_SCHEMA_VERSION,
 ) -> tuple[pa.Table, pa.Table]:
     """Map the reviewed Crown literals into canonical facts and direct lineage."""
+    _require(source_schema_version == _SOURCE_SCHEMA_VERSION)
     _require(len(source_facts) == _EXPECTED_FACT_COUNT)
     _require(len({row["record_id"] for row in source_facts}) == _EXPECTED_FACT_COUNT)
     facts: list[dict[str, Any]] = []
@@ -86,7 +89,7 @@ def canonicalize_fiscal_crown_literals(
             "transformation_id": TRANSFORMATION,
             "lineage_id": hashlib.sha256(f"{identifier}\0lineage".encode()).hexdigest(),
             "source_record_id": source_id,
-            "source_schema_version": fiscal_crown_literals.TRANSFORMATION,
+            "source_schema_version": source_schema_version,
             "measure": measure,
             "amount": source_amount,
             "value_token": amount_token,
@@ -168,7 +171,7 @@ def canonicalize_fiscal_crown_literals(
                     "transformation_id": TRANSFORMATION,
                     "lineage_id": record["lineage_id"],
                     "source_record_id": source_id,
-                    "source_schema_version": fiscal_crown_literals.TRANSFORMATION,
+                    "source_schema_version": source_schema_version,
                     "target_record_id": identifier,
                     "field": target_field,
                     "source_coordinate": coordinate,
@@ -203,7 +206,7 @@ def canonicalize_fiscal_crown_literals(
                 "transformation_id": TRANSFORMATION,
                 "lineage_id": record["lineage_id"],
                 "source_record_id": source_id,
-                "source_schema_version": fiscal_crown_literals.TRANSFORMATION,
+                "source_schema_version": source_schema_version,
                 "target_record_id": identifier,
                 "field": "valid_time_status",
                 "source_coordinate": links["period_end"],
@@ -224,9 +227,12 @@ def project_fiscal_crown(
     """Verify the exact retained Fiscal workbook and project its 61 Crown facts."""
     admitted = fiscal_crown_literals.admit_fiscal_crown(source_path)
     source_facts = admitted["facts"]
+    source_schema_version = admitted["schema_version"]
     _require(isinstance(source_facts, list))
     _require(admitted["counts"] == _EXPECTED_FAMILIES)
-    facts, lineage = canonicalize_fiscal_crown_literals(source_facts)
+    facts, lineage = canonicalize_fiscal_crown_literals(
+        source_facts, source_schema_version
+    )
     return (
         facts,
         lineage,

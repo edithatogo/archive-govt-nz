@@ -121,7 +121,7 @@ def test_reserved_directory_does_not_authorize_overwriting_racing_file(
 
 
 @given(extra=st.integers(min_value=0, max_value=12))
-@settings(max_examples=13)
+@settings(max_examples=13, deadline=None)
 def test_aggregate_row_budget_conserves_all_occurrences(extra: int) -> None:
     """The shared admission keeps duplicates and rejects total budget + 1."""
     with tempfile.TemporaryDirectory() as directory:
