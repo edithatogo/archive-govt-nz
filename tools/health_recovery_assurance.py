@@ -13,6 +13,7 @@ import pyarrow.parquet as pq
 
 from archive_govt_nz.domains.health_appropriations import (
     cpi,
+    cpi_canonical_projection,
     crown_expense,
     crown_expense_canonical_projection,
     fiscal_crown_canonical_projection,
@@ -403,6 +404,57 @@ def _query_context_consumer(root: Path) -> dict[str, Any]:
     }
 
 
+def _cpi_canonical_recovery_report(
+    silver_root: Path, output_root: Path
+) -> dict[str, Any]:
+    """Project rebuilt CPI Silver twice and compare canonical outputs."""
+    package = silver_root / CONTEXT["cpi"][0]
+    manifest_pin = digest(package / "MANIFEST.json")
+    cas_root = ARCHIVE / "bronze-cas" / "sha256"
+    products = []
+    for index in (1, 2):
+        facts, lineage, receipt = cpi_canonical_projection.project_cpi(
+            package, manifest_pin, cas_root
+        )
+        target = output_root / f"cpi-canonical-{index}"
+        target.mkdir()
+        pq.write_table(
+            facts, target / "price_population_fact.parquet", compression="zstd"
+        )
+        lineage_rows = [
+            {
+                key: value.isoformat() if hasattr(value, "isoformat") else value
+                for key, value in row.items()
+                if value is not None
+            }
+            for row in lineage.to_pylist()
+        ]
+        (target / "field_lineage.jsonl").write_text(
+            "".join(
+                json.dumps(row, sort_keys=True, ensure_ascii=False) + "\n"
+                for row in lineage_rows
+            ),
+            encoding="utf-8",
+        )
+        (target / "projection-receipt.json").write_text(
+            json.dumps(receipt, sort_keys=True, indent=2) + "\n", encoding="utf-8"
+        )
+        products.append({"files": tree(target), "receipt": receipt})
+    repeat = products[0] == products[1]
+    require_evidence(repeat, "cpi_canonical_projection_repeat_mismatch")
+    return {
+        "files": products[0]["files"],
+        "repeat_identical": repeat,
+        "source_object_sha256": products[0]["receipt"]["source_object_sha256"],
+        "source_manifest_sha256": manifest_pin,
+        "fact_count": products[0]["receipt"]["output_records"],
+        "lineage_count": products[0]["receipt"]["lineage_records"],
+        "rights_state": products[0]["receipt"]["rights_state"],
+        "index_base": products[0]["receipt"]["index_base"],
+        "inflation_adjustment": products[0]["receipt"]["inflation_adjustment"],
+    }
+
+
 def _rebuild_pharmac_canonical(root: Path, index: int) -> dict[str, Any]:
     """Rebuild pinned Pharmac Silver from Bronze and project canonical facts."""
     source_cas = ARCHIVE / "bronze-cas" / "sha256"
@@ -677,6 +729,10 @@ def run() -> dict[str, Any]:
                 message = f"{family}_silver_repeat_mismatch"
                 raise RuntimeError(message)
         outputs["context_source_native_silver"] = context_silver
+        if "cpi" in CONTEXT:
+            outputs["cpi_canonical_projection"] = _cpi_canonical_recovery_report(
+                silver_roots[0], root
+            )
         donor_products = {
             str(index): rebuild_donor_products(root, index) for index in (1, 2)
         }
