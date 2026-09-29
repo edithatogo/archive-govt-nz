@@ -20,8 +20,7 @@ The exact profile `befu-core-2026/v1` produced 10 `fiscal_context_fact` rows,
 60 lineage fields, 24 context cells and 2,341 preserved-only cells. No cells
 were rejected. The output package is retained outside Git at
 `/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/silver/raw-befu-core-expense-20260925-v1`.
-Its manifest reports status `passed` and binds the source hash, locator,
-vintage, transformation, three Parquet output hashes, and workbook inventory.
+Its manifest SHA-256 is `23ddc3fb0a3d4d6dc55a4731694f7d9e26f5ace1324d4a76456f1ad761abe651`; it reports status `passed` and binds the source hash, locator, vintage, transformation, three Parquet output hashes, and workbook inventory.
 Rights remain `not_evaluated` for the derivative.
 
 The ten source cache values, in year order, are 107764, 125641, 127574, 138998,

@@ -15,7 +15,7 @@ rights clearance or current remote publication state.
 | --- | --- | --- |
 | Annual Budget | 2026 expenditure/revenue captured; 2025 donor and 2026 expenditure extracted | Earlier annual editions unenumerated here; revenue normalization; retrospective rows do not replace edition history |
 | BEFU/HYEFU | 2026 BEFU charts/expenses/economic forecasts; 2025 HYEFU charts/expenses captured; two literal Health-summary editions each extracted | Earlier editions and other expense/chart/forecast areas |
-| Fiscal/Crown expenses | 1972–2025 workbook captured; 2024 and 2025 Health/GDP source pilots retained | Other fiscal measures, exact Crown-expense contract and complete edition history |
+| Fiscal/Crown expenses | 1972–2025 workbook captured; 2024 and 2025 Health/GDP source pilots retained; BEFU-2026 Core Crown expenses extracted and projected into canonical fiscal context with cache/formula lineage | Historical/total Crown projections, other fiscal measures and complete edition history |
 | QES | June2026 Table8 QEMQ.SASZ9A ordinary-time average hourly earnings; 9 canonical v2 `earnings_fact` rows with 90 lineage rows; repeat-identical Bronze recovery verified | ISOcurrency, sex and adjustment remain unknown; deflator selection, rights and annual alignment remain pending |
 | Stats NZ GDP | March2026 current-price income/expenditure workbook captured; exact60quarter expenditure observations retained; PR#302 merged | Fiscal aggregation and canonical projection; Treasury GDP stays separate |
 | Ministry Vote Health | Two HAIR2024 indicator CSVs captured and source-specific pilot extracted | Unit/base/method metadata; independent real/per-capita reproduction |

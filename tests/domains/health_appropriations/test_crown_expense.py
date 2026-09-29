@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+from decimal import Decimal
 from pathlib import Path
 from typing import Any
 from zipfile import ZIP_DEFLATED, ZipFile
@@ -12,7 +13,10 @@ import pyarrow.parquet as pq
 import pytest
 from openpyxl import Workbook
 
-from archive_govt_nz.domains.health_appropriations import crown_expense
+from archive_govt_nz.domains.health_appropriations import (
+    crown_expense,
+    crown_expense_canonical_projection,
+)
 
 _YEARS = tuple(range(2021, 2031))
 _COLUMNS = tuple("FGHIJKLMNO")
@@ -158,4 +162,100 @@ def test_befu_profile_binds_the_reviewed_vintage_and_locator(
             source_locator=crown_expense.SOURCE_LOCATOR,
             source_vintage="HYEFU-2025",
             observed_at="2026-08-29T09:00:17Z",
+        )
+
+
+def _canonical_package(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> tuple[Path, Path, str, bytes]:
+    source = tmp_path / "source.xlsx"
+    digest = _source(source)
+    monkeypatch.setattr(crown_expense, "SOURCE_SHA256", digest)
+    monkeypatch.setattr(crown_expense_canonical_projection, "SOURCE_SHA256", digest)
+    original = source.read_bytes()
+    cas_root = tmp_path / "cas"
+    cas_object = cas_root / digest[:2] / digest
+    cas_object.parent.mkdir(parents=True)
+    cas_object.write_bytes(original)
+    silver = tmp_path / "silver"
+    _normalize(cas_object, silver, digest)
+    manifest_sha256 = hashlib.sha256(
+        (silver / "MANIFEST.json").read_bytes()
+    ).hexdigest()
+    monkeypatch.setattr(
+        crown_expense_canonical_projection,
+        "SOURCE_MANIFEST_SHA256",
+        manifest_sha256,
+    )
+    return cas_root, silver, manifest_sha256, original
+
+
+def test_canonical_projection_preserves_be_fiscal_context_uncertainty(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    cas_root, silver, pin, original = _canonical_package(tmp_path, monkeypatch)
+    before = {
+        path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+        for path in silver.iterdir()
+    }
+    facts, lineage, receipt = (
+        crown_expense_canonical_projection.project_befu_core_expense(
+            silver, pin, cas_root
+        )
+    )
+
+    rows = facts.to_pylist()
+    assert len(rows) == 10
+    assert [row["amount_type"] for row in rows] == ["actual"] * 5 + ["forecast"] * 5
+    assert [row["period_token"] for row in rows] == [
+        f"year_label:{year}" for year in _YEARS
+    ]
+    assert [row["value_token"] for row in rows] == [str(value) for value in _VALUES]
+    assert [row["amount"] for row in rows] == [Decimal(value) for value in _VALUES]
+    assert all(row["recordset"] == "fiscal_context_fact" for row in rows)
+    assert all(row["valid_time_start"] is None for row in rows)
+    assert all(row["valid_time_end"] is None for row in rows)
+    assert all(
+        row["currency"] is None and row["accounting_basis"] is None for row in rows
+    )
+    assert {row["unit"] for row in rows} == {"($millions)"}
+    assert all(
+        "formula_cache_freshness_unverified" in row["quality_flags"] for row in rows
+    )
+    assert len(lineage) == 80
+    assert {row["target_record_id"] for row in lineage.to_pylist()} == {
+        row["record_id"] for row in rows
+    }
+    assert receipt["status"] == "verified_source_faithful_projection"
+    assert receipt["denominator_selection"] == "not_performed"
+    assert receipt["formula_cache_freshness"] == "unverified"
+    assert (
+        hashlib.sha256(original).hexdigest()
+        == crown_expense_canonical_projection.SOURCE_SHA256
+    )
+    assert before == {
+        path.name: hashlib.sha256(path.read_bytes()).hexdigest()
+        for path in silver.iterdir()
+    }
+
+
+def test_canonical_projection_rejects_changed_silver_product(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    cas_root, silver, pin, _ = _canonical_package(tmp_path, monkeypatch)
+    path = silver / "crown_expense_facts.parquet"
+    path.write_bytes(path.read_bytes() + b"tampered")
+    with pytest.raises(ValueError, match="crown_expense_canonical_projection_invalid"):
+        crown_expense_canonical_projection.project_befu_core_expense(
+            silver, pin, cas_root
+        )
+
+
+def test_canonical_projection_rejects_wrong_manifest_pin(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    cas_root, silver, _, _ = _canonical_package(tmp_path, monkeypatch)
+    with pytest.raises(ValueError, match="crown_expense_canonical_projection_invalid"):
+        crown_expense_canonical_projection.project_befu_core_expense(
+            silver, "0" * 64, cas_root
         )

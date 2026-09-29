@@ -148,7 +148,6 @@ _PROFILES: dict[str, dict[str, Any]] = {
         "amount_types": "2021-2025 Actual; 2026-2030 Forecast",
         "gaps": [
             "formula_cache_freshness_and_value_unqualified",
-            "no_native_Crown_total_adapter",
             "ISO_currency_and_period_basis_unqualified",
         ],
     },

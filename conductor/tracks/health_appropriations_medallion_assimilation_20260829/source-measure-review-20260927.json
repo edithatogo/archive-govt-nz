@@ -41,7 +41,7 @@
       "vintage_or_range": "Treasury Fiscal Time Series 1994–2025; BEFU 2026 and HYEFU 2025 tables have 2021–2030 cells, labelled Actual 2021–2025 and Forecast 2026–2030",
       "period_basis": "Fiscal Time Series June years with accounting basis transitions: old-GAAP 1994–1996, IFRS 1997–2004, PBE Standards 2005–2025. Forecast workbook formula caches and explicit financial-year metadata are not qualified; keep each release vintage and Actual/Forecast status separate.",
       "rights": "publisher_defaults_observed_exceptions_unadjudicated",
-      "analytical_status": "exact source cells identified; no canonical expense adapter, cross-basis join or forecast outcome comparison approved"
+      "analytical_status": "BEFU-2026 core Crown source-faithful canonical fiscal-context projection exists; cache freshness, currency, financial-year boundaries, rights, and historical/forecast comparability remain unqualified"
     },
     "total_crown": {
       "series_id": "Treasury Fiscal Time Series Spending!E4 / Total Crown Expenses",
@@ -275,7 +275,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.json",
-      "sha256": "2e4b1ed2aa3091f83b076e9ebd62dab4bee09bf518d78a65bcc391c984bd2a9c"
+      "sha256": "0e38ef9bfa447c58b9c4d71ece47c299600af285ba5c9969445000081ba62f47"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-annual-context.json",
@@ -299,7 +299,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/befu-core-expense-20260925.md",
-      "sha256": "67075d3a6d943a3778fd478f00ab36cc9f5a4abd516817cc2af82744bac54ec0"
+      "sha256": "2e49234e201518774cdf01a32206de5fed81f5d744b19806e14df9bd38593a02"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/pharmac-cpb.md",
@@ -324,6 +324,10 @@
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/index.md",
       "sha256": "09a0c7e553e2f9a8358428ac8cf755e1ce53013998c4706c5e639fde687371bc"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/crown-expense-canonical-projection-20260929.md",
+      "sha256": "8f15569ca56a555cbdb5f416532e6a499ca0df6ef734a2511a54c5798d0d4035"
     }
   ]
 }
