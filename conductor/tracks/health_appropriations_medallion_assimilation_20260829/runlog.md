@@ -3076,6 +3076,28 @@ matching outputs and unchanged Bronze; the regenerated partial receipt is
 `clean-room-recovery-20260930.json`. Full validation and automatic review gates
 are being rerun against this repair before PR update.
 
+## 2026-09-30 — Bronze-bound quarterly GDP canonical context
+
+Added a canonical fiscal-context projection for the exact Stats NZ quarterly
+GDP expenditure actuals (March 2026 vintage). The adapter independently
+rebuilds the 60-fact Silver package from the pinned Bronze workbook, checks all
+source products and manifest digests, and emits 60 canonical facts with 420
+complete direct-lineage rows. Actual current-price basis, quarterly dates and
+the publisher's GDP measure remain explicit; currency, denominator selection,
+inflation adjustment and rights remain unresolved. The clean-room runner now
+rebuilds the projection twice from rebuilt Silver and verifies 60 facts and 420
+complete direct-lineage rows with matching file digests; the Bronze CAS is
+unchanged. Receipt `clean-room-recovery-20260930-gdp.json` remains
+`partial_with_blockers`. Automatic Phase 7 review passed with receipt SHA-256
+`8152571c5a55f5143c4ed64e5e4b5b07f7234e40c73e4bd4e3780769a0156249`.
+Focused tests, Ruff and basedpyright pass. Full required repository validation
+`./scripts/validate.sh` passed: 7,149 tests, 9 skipped, 98.26% branch-aware
+coverage (80% required floor), 52 schemas, 9/9 parity, all mutation gates,
+dependency audit, license inventory, secret scan and SBOM validation. The
+automatic Phase 7 review passed. Hosted Windows and macOS assurance checks are
+still running; the hosted Ubuntu assurance, lint, analyze and CodeQL checks
+passed.
+
 ## 2026-09-30 — Bronze-bound annual population canonical context
 
 Added a canonical projection for the pinned Stats NZ DPE056AA mean-year-ended

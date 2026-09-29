@@ -19,6 +19,7 @@ from archive_govt_nz.domains.health_appropriations import (
     fiscal_crown_canonical_projection,
     fiscal_crown_literals,
     gdp,
+    gdp_canonical_projection,
     hyefu_crown_expense,
     hyefu_crown_expense_canonical_projection,
     pharmac,
@@ -494,6 +495,43 @@ def _population_canonical_recovery_report(
     }
 
 
+def _gdp_canonical_recovery_report(
+    silver_root: Path, output_root: Path
+) -> dict[str, Any]:
+    """Project rebuilt GDP Silver twice and compare canonical output digests."""
+    package = silver_root / CONTEXT["gdp"][0]
+    manifest_pin = digest(package / "MANIFEST.json")
+    cas_root = ARCHIVE / "bronze-cas" / "sha256"
+    products = []
+    for index in (1, 2):
+        facts, lineage, receipt = gdp_canonical_projection.project_gdp(
+            package, manifest_pin, cas_root
+        )
+        target = output_root / f"gdp-canonical-{index}"
+        target.mkdir()
+        pq.write_table(
+            facts, target / "fiscal_context_fact.parquet", compression="zstd"
+        )
+        pq.write_table(lineage, target / "field_lineage.parquet", compression="zstd")
+        (target / "projection-receipt.json").write_text(
+            json.dumps(receipt, sort_keys=True, indent=2) + "\n", encoding="utf-8"
+        )
+        products.append({"files": tree(target), "receipt": receipt})
+    repeat = products[0] == products[1]
+    require_evidence(repeat, "gdp_canonical_projection_repeat_mismatch")
+    return {
+        "files": products[0]["files"],
+        "repeat_identical": repeat,
+        "source_object_sha256": products[0]["receipt"]["source_object_sha256"],
+        "source_manifest_sha256": manifest_pin,
+        "fact_count": products[0]["receipt"]["output_records"],
+        "lineage_count": products[0]["receipt"]["lineage_records"],
+        "currency": products[0]["receipt"]["currency"],
+        "rights_state": products[0]["receipt"]["rights_state"],
+        "denominator_selection": products[0]["receipt"]["denominator_selection"],
+    }
+
+
 def _rebuild_pharmac_canonical(root: Path, index: int) -> dict[str, Any]:
     """Rebuild pinned Pharmac Silver from Bronze and project canonical facts."""
     source_cas = ARCHIVE / "bronze-cas" / "sha256"
@@ -736,7 +774,7 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
     return {"files": files, "repeat_identical": True}
 
 
-def run() -> dict[str, Any]:  # noqa: PLR0915 - recovery products share one clean-room root.
+def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a clean-room root.
     """Rebuild supported products in a disposable derivative root."""
     if not ARCHIVE.is_dir():
         message = "pinned_external_bronze_unavailable"
@@ -775,6 +813,10 @@ def run() -> dict[str, Any]:  # noqa: PLR0915 - recovery products share one clea
         if "population" in CONTEXT:
             outputs["population_canonical_projection"] = (
                 _population_canonical_recovery_report(silver_roots[0], root)
+            )
+        if "gdp" in CONTEXT:
+            outputs["gdp_canonical_projection"] = _gdp_canonical_recovery_report(
+                silver_roots[0], root
             )
         donor_products = {
             str(index): rebuild_donor_products(root, index) for index in (1, 2)
