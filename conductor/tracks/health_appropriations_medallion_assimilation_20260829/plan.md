@@ -628,10 +628,12 @@ integrated parent head.
   `context-gold-coverage-20260928.md`. The exact quarterly Stats NZ GDP actuals
   now also have a Bronze-bound canonical fiscal-context projection (60 facts,
   420 direct lineage rows) with currency and denominator status unresolved.
-  The June 2026-quarter GDP release was published 18 September 2026, after the
+  The June 2026-quarter GDP release was published 17 September 2026, after the
   captured March-quarter vintage; its exact current-price workbook and series
   selector remain uncaptured. The census records this as open work without
-  broadening the pinned March-2026 adapter.
+  broadening the pinned March-2026 adapter. The exact workbook URL and
+  publication timestamp are recorded in `gdp-release-observation-20260930.json`;
+  its payload and rights remain unqualified.
 - [ ] If S-05 passed its scope/rights gate, add the aggregate Health Survey
   adapter and explicit time/geography alignment; otherwise record its deferred
   disposition without blocking the Must scope. [S-05; AC-10]
@@ -973,6 +975,12 @@ integrated parent head.
   Gold, plots, Context Gold and historical canonical Gold. Bronze CAS is
   unchanged. SQLite may differ across SQLite runtime versions; see the existing
   `originals-product-replay.md` boundary and new recovery receipt.
+  The formerly missing BEFU-2026 charts object was reacquired from its official
+  locator and matches both manifest SHA-256 and BLAKE3. A new WARC response
+  receipt is additive; the historical capture manifest is unchanged. The
+  whole-census report again verifies 73/73 captured objects. See
+  `bronze-object-recovery-20260930.json` and the regenerated source-health
+  report.
 
 ### 9.2 Build a rights-filtered Hugging Face candidate locally
 

@@ -1,416 +1,49 @@
 {
-  "schema_version": "archive-govt-nz.health-source-context-census/v1",
   "base_commit": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
-  "scope": "metadata_only_no_analytical_admission",
-  "series": [
-    {
-      "id": "cpi-2026q2",
-      "family": "cpi",
-      "series_id": "CPIQ.SE9A",
-      "definition": "CPI All Groups for New Zealand; All groups; title 2 NA; FINAL is a supplied status, not immutability",
-      "vintage": "Stats-NZ-CPI-2026-Q2",
-      "unit": "Index",
-      "base": "unverified; index_base remains null",
-      "period": "quarter-ending YYYY.MM; 449 selected rows, 422 numeric and 27 NA; coverage endpoints not qualified here",
-      "geography": "New Zealand; national aggregate",
-      "selector": "Nine-column CSV: Series_reference=CPIQ.SE9A; Subject=CPI; Group=CPI All Groups for New Zealand",
-      "join_policy": "Blocked until base metadata is source-bound and fiscal annual-average/rebase policy approved; never silently use June index for annual spending",
-      "qualification": "unqualified",
-      "rights": "not_evaluated",
-      "gaps": [
-        "index_base_not_verified",
-        "fiscal_aggregation_not_qualified",
-        "household_prices_not_health_input_costs"
-      ],
-      "sources": [
-        {
-          "source_id": "stats_nz_cpi-053a0705526fac8d",
-          "url": "https://www.stats.govt.nz/assets/Uploads/Consumers-price-index/Consumers-price-index-June-2026-quarter/Download-data/consumers-price-index-june-2026-quarter-index-numbers.csv",
-          "object_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
-          "observed_at": "2026-08-29T09:00:17Z"
-        }
-      ],
-      "evidence": [
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/cpi-source.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json"
-      ],
-      "retained_manifest_sha256": "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e"
-    },
-    {
-      "id": "qes-2026q2",
-      "family": "qes",
-      "series_id": "QEMQ.SASZ9A",
-      "definition": "Total sector ordinary-time average hourly earnings: earnings divided by paid hours; not a constant-quality wage index",
-      "vintage": "QES-2026-Q2",
-      "unit": "($) per paid hour; ISO currency unverified",
-      "base": "not an index; any analytical rebase remains unselected",
-      "period": "nine quarters June 2024 through June 2026",
-      "geography": "New Zealand; national aggregate",
-      "selector": "Table 8!P8=SASZ9A; A8 supplies QEMQ; P6 Total, P7 Ordinary time; level block only",
-      "join_policy": "Blocked: match quarter and vintage, qualify sex/currency/adjustment and an annual weighting policy before any wage adjustment; no Table 9 substitution",
-      "qualification": "unqualified",
-      "rights": "not_evaluated",
-      "gaps": [
-        "currency_sex_adjustment_not_supplied",
-        "annual_join_not_qualified",
-        "not_selected_as_deflator"
-      ],
-      "sources": [
-        {
-          "source_id": "stats_nz_qes-faab0efe46470af8",
-          "url": "https://www.stats.govt.nz/assets/Uploads/Labour-market-statistics/Labour-market-statistics-June-2026-quarter/Download-data/quarterly-employment-survey-june-2026-quarter.xlsx",
-          "object_sha256": "1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97",
-          "observed_at": "2026-08-29T09:00:17Z"
-        }
-      ],
-      "evidence": [
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-source.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json"
-      ],
-      "retained_manifest_sha256": "35114105c86085ee49aeb97ac9f8d8b696ef72692b5eea12d348496a8b920d41"
-    },
-    {
-      "id": "population-national-annual-mean",
-      "family": "population",
-      "series_id": "DPE056AA — Estimated Resident Population by Age and Sex (1991+) (Annual-Jun)",
-      "definition": "Stats NZ estimated resident population; Mean year ended; Total population; Total All Ages",
-      "vintage": "Stats NZ release 2026-08-18; current census basis 2023-06-30; provisional/revision status retained",
-      "unit": "persons; no thousands multiplier",
-      "base": "2023-06-30 census basis",
-      "period": "Annual-Jun Mean year ended; 1991–2026; 36 source rows with flags, one unavailable '..' token and two provisional 'P' statuses",
-      "geography": "New Zealand; national aggregate",
-      "selector": "Infoshare DPE056AA; Mean year ended; Total; Total All Ages; Annual-Jun; status flags displayed",
-      "join_policy": "Mean-year-ended annual flow denominator is the period-aligned candidate for annual June-year flows; analytical selection and denominator approval remain unselected. Preserve provisional/missing flags and source vintage; never substitute an As-at stock.",
-      "qualification": "unqualified",
-      "rights": "not_evaluated",
-      "gaps": [
-        "resource_rights_not_evaluated",
-        "transport_http_warc_receipt_unavailable",
-        "export_is_hash_pinned_in_population_annual_context_not_source_census",
-        "analytical_selection_and_denominator_approval_not_selected",
-        "historical_export_vintages_not_retained",
-        "one_unavailable_source_observation_and_two_provisional_statuses"
-      ],
-      "sources": [],
-      "evidence": [
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-context.json",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-context.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/analytical-context-register.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-annual-context.json",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-annual-export.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/evidence.jsonl"
-      ],
-      "retained_manifest_sha256": "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9"
-    },
-    {
-      "id": "population-hlfs-rejected",
-      "family": "population",
-      "series_id": "unqualified HLFS working-age series",
-      "definition": "Retained HLFS working-age population is rejected as a national all-age resident denominator",
-      "vintage": "HLFS June 2026",
-      "unit": "unqualified for requested denominator",
-      "base": "unqualified for requested denominator",
-      "period": "June 2026 release; exact suitable all-age series absent",
-      "geography": "New Zealand; national aggregate",
-      "selector": "No selected all-age series; retained working-age workbook only",
-      "join_policy": "Reject for per-capita health spending: population universe mismatch",
-      "qualification": "unqualified",
-      "rights": "not_evaluated",
-      "gaps": [
-        "wrong_population_universe"
-      ],
-      "sources": [
-        {
-          "source_id": "stats_nz_population-806dead2a5b8ab69",
-          "url": "https://www.stats.govt.nz/assets/Uploads/Labour-market-statistics/Labour-market-statistics-June-2026-quarter/Download-data/household-labour-force-survey-june-2026-quarter.xlsx",
-          "object_sha256": "315f48f981cb237bbd1c4834676fd030f84e7eddc7f7660402956c05ca53a8c0",
-          "observed_at": "2026-08-29T09:00:17Z"
-        }
-      ],
-      "evidence": [
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md"
-      ],
-      "retained_manifest_sha256": null
-    },
-    {
-      "id": "gdp-stats-2026q1",
-      "family": "gdp",
-      "series_id": "SNEQ / SG03AB01GE00S900 (separate publisher prefix/reference)",
-      "definition": "Actual current-price GDP expenditure measure; income and seasonally adjusted GDP are distinct",
-      "vintage": "StatsNZ-GDP-2026Q1",
-      "unit": "$(million); scaling million; ISO currency unverified",
-      "base": "current prices; no constant-price base",
-      "period": "Captured vintage: 60 quarters June 2011 through March 2026; the June 2026-quarter GDP release was published 18 September 2026, but its exact current-price workbook and series selection are not captured in this census",
-      "geography": "New Zealand; national aggregate",
-      "selector": "Table 1!C27:BJ27; A27 label, B27 reference, B7 prefix; Table 2 excluded",
-      "join_policy": "Blocked for annual shares: explicitly select four compatible flow quarters and vintage; no automatic annualization or Treasury-series substitution",
-      "qualification": "unqualified",
-      "rights": "not_evaluated",
-      "gaps": [
-        "current_june_2026_quarter_workbook_and_series_not_captured",
-        "annual_aggregation_not_qualified",
-        "currency_code_unverified",
-        "canonical_projection_not_qualified"
-      ],
-      "sources": [
-        {
-          "source_id": "stats_nz_gdp-9fc80ed4b7f234b2",
-          "url": "https://www.stats.govt.nz/assets/Uploads/Gross-domestic-product/Gross-domestic-product-March-2026-quarter/Download-data/gross-domestic-product-march-2026-quarter-current-price-income-and-expenditure.xlsx",
-          "object_sha256": "a7326e84e7704446a18e5c8942f99901a452b2170af4228e8a5c242a5532ed21",
-          "observed_at": "2026-08-29T09:00:17Z"
-        }
-      ],
-      "evidence": [
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-profile.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json"
-      ],
-      "retained_manifest_sha256": "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35"
-    },
-    {
-      "id": "gdp-treasury-2025",
-      "family": "gdp",
-      "series_id": "Nominal GDP / C3 (publisher sheet selector)",
-      "definition": "Treasury Fiscal Time Series nominal GDP; source-selected historical annual amounts",
-      "vintage": "Fiscal-Time-Series-1972-2025",
-      "unit": "$ millions",
-      "base": "nominal/current prices",
-      "period": "1972-2025; March years through 1989, June years from 1990",
-      "geography": "New Zealand; national aggregate",
-      "selector": "Nominal GDP!C3=Nominal GDP, A3=$ millions; B year labels, C amounts",
-      "join_policy": "Match source vintage and actual period end with numerator; preserve 1990 March-to-June transition; 2017-2024 revisions cannot silently replace fiscal-2024 values",
-      "qualification": "unqualified",
-      "rights": "not_evaluated",
-      "gaps": [
-        "cross_vintage_splicing_not_qualified",
-        "full_derived_measure_qualification_pending"
-      ],
-      "sources": [
-        {
-          "source_id": "fiscal_time_series-007",
-          "url": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx",
-          "object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
-          "observed_at": "2026-08-29T09:00:17Z"
-        }
-      ],
-      "evidence": [
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-2025-pilot.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/next-source-ranges.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json"
-      ],
-      "retained_manifest_sha256": "aee4578f1ee83f8c1ede63e36e840c6cd2140df8c6f463e71ec93da9e4e7d75a"
-    },
-    {
-      "id": "core_crown-fiscal-2025",
-      "family": "core_crown",
-      "series_id": "Spending!D4 / Core Crown Expenses",
-      "definition": "Core Crown Expenses, distinct from cash Financial Net Expenditure and total Crown consolidation",
-      "vintage": "Fiscal-Time-Series-1972-2025",
-      "unit": "$ millions (Spending!A3)",
-      "base": "old-GAAP from 1994 (core only); IFRS from 1997; PBE Standards from 2005; restatement/GAAP footnotes A60/A64/A65",
-      "period": "1994-2025; 32 annual cells; June year basis carried from A23 through old-GAAP A27",
-      "geography": "New Zealand; national aggregate",
-      "selector": "Spending!D27:D58; D4 label; B27:B58 year labels; all selected cells numeric",
-      "join_policy": "Blocked: exact measure, currency scaling, consolidation, accounting basis, period end, actual/forecast and vintage must match; no year-only join",
-      "qualification": "unqualified",
-      "rights": "not_evaluated",
-      "gaps": [
-        "consolidation_and_accounting_comparability_not_qualified",
-        "no_year_only_or_cross_basis_join",
-        "canonical_projection_receipt_recorded_outside_metadata_census"
-      ],
-      "sources": [
-        {
-          "source_id": "fiscal_time_series-007",
-          "url": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx",
-          "object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
-          "observed_at": "2026-08-29T09:00:17Z"
-        }
-      ],
-      "evidence": [
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-2025-pilot.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json"
-      ],
-      "retained_manifest_sha256": null
-    },
-    {
-      "id": "total_crown-fiscal-2025",
-      "family": "total_crown",
-      "series_id": "Spending!E4 / Total Crown Expenses",
-      "definition": "Total Crown Expenses, distinct from core Crown consolidation; restatement footnotes apply",
-      "vintage": "Fiscal-Time-Series-1972-2025",
-      "unit": "$ millions (Spending!A3)",
-      "base": "old-GAAP from 1994 (core only); IFRS from 1997; PBE Standards from 2005; restatement/GAAP footnotes A60/A64/A65",
-      "period": "1997-2025; 29 annual cells; June years",
-      "geography": "New Zealand; national aggregate",
-      "selector": "Spending!E30:E58; E4 label; B30:B58 year labels; all selected cells numeric",
-      "join_policy": "Blocked: exact measure, currency scaling, consolidation, accounting basis, period end, actual/forecast and vintage must match; no year-only join",
-      "qualification": "unqualified",
-      "rights": "not_evaluated",
-      "gaps": [
-        "consolidation_and_accounting_comparability_not_qualified",
-        "no_year_only_or_cross_basis_join",
-        "canonical_projection_receipt_recorded_outside_metadata_census"
-      ],
-      "sources": [
-        {
-          "source_id": "fiscal_time_series-007",
-          "url": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx",
-          "object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
-          "observed_at": "2026-08-29T09:00:17Z"
-        }
-      ],
-      "evidence": [
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-2025-pilot.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json"
-      ],
-      "retained_manifest_sha256": null
-    },
-    {
-      "id": "core-crown-befu-2026",
-      "family": "core_crown",
-      "series_id": "Core Crown Expense Tables!D26 / Core Crown expenses",
-      "definition": "Published Core Crown expenses total; formula cells, not the Health summary",
-      "vintage": "BEFU-2026",
-      "unit": "($millions) at D6",
-      "base": "accounting/consolidation basis unqualified",
-      "period": "2021-2030: Actual 2021-2025, Forecast 2026-2030; financial-year basis unverified",
-      "geography": "New Zealand; national aggregate",
-      "selector": "Core Crown Expense Tables!F26:O26; years F5:O5; status F6:O6; source formulas and stored numeric caches retained without recalculation",
-      "join_policy": "Blocked: formula-cache freshness, financial-year boundaries, currency and accounting/consolidation basis remain unqualified; keep Actual/Forecast and release vintages distinct",
-      "qualification": "unqualified",
-      "rights": "not_evaluated",
-      "gaps": [
-        "formula_cache_not_qualified",
-        "financial_year_basis_unverified"
-      ],
-      "sources": [
-        {
-          "source_id": "befu_2026-003",
-          "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-data-expense-tables.xlsx",
-          "object_sha256": "313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1",
-          "observed_at": "2026-08-29T09:00:17Z"
-        }
-      ],
-      "evidence": [
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/next-source-ranges.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/crown-expense-canonical-projection-20260929.md"
-      ],
-      "retained_manifest_sha256": "23ddc3fb0a3d4d6dc55a4731694f7d9e26f5ace1324d4a76456f1ad761abe651"
-    },
-    {
-      "id": "core-crown-hyefu-2025",
-      "family": "core_crown",
-      "series_id": "Core Crown Expense Tables!D25 / Core Crown expenses",
-      "definition": "Published Core Crown expenses total; formula cells, not the Health summary",
-      "vintage": "HYEFU-2025",
-      "unit": "($millions) at D5",
-      "base": "accounting/consolidation basis unqualified",
-      "period": "2021-2030: Actual 2021-2025, Forecast 2026-2030; financial-year basis unverified",
-      "geography": "New Zealand; national aggregate",
-      "selector": "Core Crown Expense Tables!F25:O25; years F4:O4; status F5:O5; formula cells; no evaluation or cache qualification",
-      "join_policy": "Blocked: qualify aggregate label and period basis; keep Actual/Forecast and release vintages distinct",
-      "qualification": "unqualified",
-      "rights": "not_evaluated",
-      "gaps": [
-        "formula_cache_not_qualified",
-        "financial_year_basis_unverified",
-        "canonical_total_adapter_missing"
-      ],
-      "sources": [
-        {
-          "source_id": "hyefu_2025-006",
-          "url": "https://budget.govt.nz/budget/excel/hyefu2025/hyefu25-data-expense-tables.xlsx",
-          "object_sha256": "f9f9190a69ce0a7c53b89d690d50170e2a6a457e6821afeb93edc08cef4b9c7d",
-          "observed_at": "2026-08-29T09:00:17Z"
-        }
-      ],
-      "evidence": [
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/next-source-ranges.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/hyefu-core-crown-expense-20260929.md"
-      ],
-      "retained_manifest_sha256": null
-    }
-  ],
   "evidence": [
     {
-      "sha256": "4bea6001b0a1af4a362075508c521befe5bd6e04d20b2dd2f7c23ef8c6256964",
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json"
-    },
-    {
-      "sha256": "2beece8da8d6e5f08b7112240793e0059c69ed77e837a9200d7934c9b7687be2",
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/cpi-source.md"
-    },
-    {
-      "sha256": "51351e8445031a3534c4f32d8c69d535b5ffb1b03e98b681fb1317085127c68d",
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-source.md"
-    },
-    {
-      "sha256": "ec49028c320179f2376aa48261591dc704d1c0e2f272b0221010acc04362a932",
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-profile.md"
-    },
-    {
-      "sha256": "2ac2f1f83e2402c289bdc018dd0446ab9e9ed005361e2ceb4c8e43c3fc3d9001",
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-2025-pilot.md"
-    },
-    {
-      "sha256": "295263c7acda24fbb96951248f57866a3844e97f10832f46a371ebd5335b3b03",
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/next-source-ranges.md"
-    },
-    {
-      "sha256": "d737c162141ae08f086a2371c6f6da07fdbf87cf4471c1df875b4b1ba599ff47",
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md"
-    },
-    {
-      "sha256": "563e4d49606d8461831db82b82b05e25e7821fb5fd8ddfa8ef23fa80b2876a87",
-      "path": "src/archive_govt_nz/domains/health_appropriations/cpi.py"
-    },
-    {
-      "sha256": "b82a867ab6b17b58c22097d400adf15858a648cfedbd136dfe30bc995dda24dc",
-      "path": "src/archive_govt_nz/domains/health_appropriations/qes.py"
-    },
-    {
-      "sha256": "ee202c8a236fd700236e6dc0b277bfe26a9065ab55deebafdfa2043b57592033",
-      "path": "src/archive_govt_nz/domains/health_appropriations/gdp.py"
-    },
-    {
-      "sha256": "b751900d903407b5ece2cfbe54a4d19cf5122939ccc7059ed67deb915622f872",
-      "path": "src/archive_govt_nz/domains/health_appropriations/historical.py"
-    },
-    {
-      "sha256": "83df491b4daca836e519e61250883ebcde89d227a81bce50eae8a60f4fddc6eb",
-      "path": "src/archive_govt_nz/domains/health_appropriations/forecast.py"
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/analytical-context-register.md",
+      "sha256": "fdb0905a0524541010cb086663871f0997ae772ac9831a7f6216ccf3f6e4f1fa"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json",
       "sha256": "9a999b8681e0ee623dc0ef3fad6804a720e5a4417eca6c20a27530034e6951a8"
     },
     {
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-context.json",
-      "sha256": "b7385b0cd0ce3662f431a188a19970a30245a34b89c10b511418cf95e8fe0229"
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/cpi-source.md",
+      "sha256": "2beece8da8d6e5f08b7112240793e0059c69ed77e837a9200d7934c9b7687be2"
     },
     {
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-context.md",
-      "sha256": "7ad3c617d75b6839b8bde9f9a98665f83dbedc5e2892f004982a8bb6573459d9"
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/crown-expense-canonical-projection-20260929.md",
+      "sha256": "8f15569ca56a555cbdb5f416532e6a499ca0df6ef734a2511a54c5798d0d4035"
     },
     {
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/analytical-context-register.md",
-      "sha256": "fdb0905a0524541010cb086663871f0997ae772ac9831a7f6216ccf3f6e4f1fa"
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/evidence.jsonl",
+      "sha256": "72d807f2aa0c788784b81ae926f1924ba0f3a3541583f3b112cdb1ca473e8c6d"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-2025-pilot.md",
+      "sha256": "2ac2f1f83e2402c289bdc018dd0446ab9e9ed005361e2ceb4c8e43c3fc3d9001"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-crown-canonical-recovery-20260929.json",
+      "sha256": "1b6cda8a9ac0727cd4d8b3e09dd6d1ce4535e06fa9ef49898e8e07b1270bc561"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-profile.md",
+      "sha256": "ec49028c320179f2376aa48261591dc704d1c0e2f272b0221010acc04362a932"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-release-observation-20260930.json",
+      "sha256": "66e2a38da9a99c97703b7ed8d2d41a35cd6e2c41d4fffb3ede81f93fa014de10"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/hyefu-core-crown-expense-20260929.md",
+      "sha256": "0858f374f7175a0090ce48bdeb1de44c54d76aa69781694426eb5802ba1295c5"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/next-source-ranges.md",
+      "sha256": "295263c7acda24fbb96951248f57866a3844e97f10832f46a371ebd5335b3b03"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-annual-context.json",
@@ -421,20 +54,392 @@
       "sha256": "af2550acce99b4ba7e75737c71a105080ee895a6ba48f06e38a45c97f79fd92c"
     },
     {
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/evidence.jsonl",
-      "sha256": "72d807f2aa0c788784b81ae926f1924ba0f3a3541583f3b112cdb1ca473e8c6d"
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-context.json",
+      "sha256": "b7385b0cd0ce3662f431a188a19970a30245a34b89c10b511418cf95e8fe0229"
     },
     {
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/crown-expense-canonical-projection-20260929.md",
-      "sha256": "8f15569ca56a555cbdb5f416532e6a499ca0df6ef734a2511a54c5798d0d4035"
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-context.md",
+      "sha256": "7ad3c617d75b6839b8bde9f9a98665f83dbedc5e2892f004982a8bb6573459d9"
     },
     {
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/hyefu-core-crown-expense-20260929.md",
-      "sha256": "0858f374f7175a0090ce48bdeb1de44c54d76aa69781694426eb5802ba1295c5"
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-source.md",
+      "sha256": "51351e8445031a3534c4f32d8c69d535b5ffb1b03e98b681fb1317085127c68d"
     },
     {
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-crown-canonical-recovery-20260929.json",
-      "sha256": "1b6cda8a9ac0727cd4d8b3e09dd6d1ce4535e06fa9ef49898e8e07b1270bc561"
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
+      "sha256": "4bea6001b0a1af4a362075508c521befe5bd6e04d20b2dd2f7c23ef8c6256964"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
+      "sha256": "d737c162141ae08f086a2371c6f6da07fdbf87cf4471c1df875b4b1ba599ff47"
+    },
+    {
+      "path": "src/archive_govt_nz/domains/health_appropriations/cpi.py",
+      "sha256": "563e4d49606d8461831db82b82b05e25e7821fb5fd8ddfa8ef23fa80b2876a87"
+    },
+    {
+      "path": "src/archive_govt_nz/domains/health_appropriations/forecast.py",
+      "sha256": "83df491b4daca836e519e61250883ebcde89d227a81bce50eae8a60f4fddc6eb"
+    },
+    {
+      "path": "src/archive_govt_nz/domains/health_appropriations/gdp.py",
+      "sha256": "ee202c8a236fd700236e6dc0b277bfe26a9065ab55deebafdfa2043b57592033"
+    },
+    {
+      "path": "src/archive_govt_nz/domains/health_appropriations/historical.py",
+      "sha256": "b751900d903407b5ece2cfbe54a4d19cf5122939ccc7059ed67deb915622f872"
+    },
+    {
+      "path": "src/archive_govt_nz/domains/health_appropriations/qes.py",
+      "sha256": "b82a867ab6b17b58c22097d400adf15858a648cfedbd136dfe30bc995dda24dc"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-source-context-census/v1",
+  "scope": "metadata_only_no_analytical_admission",
+  "series": [
+    {
+      "base": "unverified; index_base remains null",
+      "definition": "CPI All Groups for New Zealand; All groups; title 2 NA; FINAL is a supplied status, not immutability",
+      "evidence": [
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/cpi-source.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json"
+      ],
+      "family": "cpi",
+      "gaps": [
+        "index_base_not_verified",
+        "fiscal_aggregation_not_qualified",
+        "household_prices_not_health_input_costs"
+      ],
+      "geography": "New Zealand; national aggregate",
+      "id": "cpi-2026q2",
+      "join_policy": "Blocked until base metadata is source-bound and fiscal annual-average/rebase policy approved; never silently use June index for annual spending",
+      "period": "quarter-ending YYYY.MM; 449 selected rows, 422 numeric and 27 NA; coverage endpoints not qualified here",
+      "qualification": "unqualified",
+      "retained_manifest_sha256": "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e",
+      "rights": "not_evaluated",
+      "selector": "Nine-column CSV: Series_reference=CPIQ.SE9A; Subject=CPI; Group=CPI All Groups for New Zealand",
+      "series_id": "CPIQ.SE9A",
+      "sources": [
+        {
+          "object_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+          "observed_at": "2026-08-29T09:00:17Z",
+          "source_id": "stats_nz_cpi-053a0705526fac8d",
+          "url": "https://www.stats.govt.nz/assets/Uploads/Consumers-price-index/Consumers-price-index-June-2026-quarter/Download-data/consumers-price-index-june-2026-quarter-index-numbers.csv"
+        }
+      ],
+      "unit": "Index",
+      "vintage": "Stats-NZ-CPI-2026-Q2"
+    },
+    {
+      "base": "not an index; any analytical rebase remains unselected",
+      "definition": "Total sector ordinary-time average hourly earnings: earnings divided by paid hours; not a constant-quality wage index",
+      "evidence": [
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-source.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json"
+      ],
+      "family": "qes",
+      "gaps": [
+        "currency_sex_adjustment_not_supplied",
+        "annual_join_not_qualified",
+        "not_selected_as_deflator"
+      ],
+      "geography": "New Zealand; national aggregate",
+      "id": "qes-2026q2",
+      "join_policy": "Blocked: match quarter and vintage, qualify sex/currency/adjustment and an annual weighting policy before any wage adjustment; no Table 9 substitution",
+      "period": "nine quarters June 2024 through June 2026",
+      "qualification": "unqualified",
+      "retained_manifest_sha256": "35114105c86085ee49aeb97ac9f8d8b696ef72692b5eea12d348496a8b920d41",
+      "rights": "not_evaluated",
+      "selector": "Table 8!P8=SASZ9A; A8 supplies QEMQ; P6 Total, P7 Ordinary time; level block only",
+      "series_id": "QEMQ.SASZ9A",
+      "sources": [
+        {
+          "object_sha256": "1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97",
+          "observed_at": "2026-08-29T09:00:17Z",
+          "source_id": "stats_nz_qes-faab0efe46470af8",
+          "url": "https://www.stats.govt.nz/assets/Uploads/Labour-market-statistics/Labour-market-statistics-June-2026-quarter/Download-data/quarterly-employment-survey-june-2026-quarter.xlsx"
+        }
+      ],
+      "unit": "($) per paid hour; ISO currency unverified",
+      "vintage": "QES-2026-Q2"
+    },
+    {
+      "base": "2023-06-30 census basis",
+      "definition": "Stats NZ estimated resident population; Mean year ended; Total population; Total All Ages",
+      "evidence": [
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-context.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-context.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/analytical-context-register.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-annual-context.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-annual-export.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/evidence.jsonl"
+      ],
+      "family": "population",
+      "gaps": [
+        "resource_rights_not_evaluated",
+        "transport_http_warc_receipt_unavailable",
+        "export_is_hash_pinned_in_population_annual_context_not_source_census",
+        "analytical_selection_and_denominator_approval_not_selected",
+        "historical_export_vintages_not_retained",
+        "one_unavailable_source_observation_and_two_provisional_statuses"
+      ],
+      "geography": "New Zealand; national aggregate",
+      "id": "population-national-annual-mean",
+      "join_policy": "Mean-year-ended annual flow denominator is the period-aligned candidate for annual June-year flows; analytical selection and denominator approval remain unselected. Preserve provisional/missing flags and source vintage; never substitute an As-at stock.",
+      "period": "Annual-Jun Mean year ended; 1991–2026; 36 source rows with flags, one unavailable '..' token and two provisional 'P' statuses",
+      "qualification": "unqualified",
+      "retained_manifest_sha256": "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9",
+      "rights": "not_evaluated",
+      "selector": "Infoshare DPE056AA; Mean year ended; Total; Total All Ages; Annual-Jun; status flags displayed",
+      "series_id": "DPE056AA — Estimated Resident Population by Age and Sex (1991+) (Annual-Jun)",
+      "sources": [],
+      "unit": "persons; no thousands multiplier",
+      "vintage": "Stats NZ release 2026-08-18; current census basis 2023-06-30; provisional/revision status retained"
+    },
+    {
+      "base": "unqualified for requested denominator",
+      "definition": "Retained HLFS working-age population is rejected as a national all-age resident denominator",
+      "evidence": [
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md"
+      ],
+      "family": "population",
+      "gaps": [
+        "wrong_population_universe"
+      ],
+      "geography": "New Zealand; national aggregate",
+      "id": "population-hlfs-rejected",
+      "join_policy": "Reject for per-capita health spending: population universe mismatch",
+      "period": "June 2026 release; exact suitable all-age series absent",
+      "qualification": "unqualified",
+      "retained_manifest_sha256": null,
+      "rights": "not_evaluated",
+      "selector": "No selected all-age series; retained working-age workbook only",
+      "series_id": "unqualified HLFS working-age series",
+      "sources": [
+        {
+          "object_sha256": "315f48f981cb237bbd1c4834676fd030f84e7eddc7f7660402956c05ca53a8c0",
+          "observed_at": "2026-08-29T09:00:17Z",
+          "source_id": "stats_nz_population-806dead2a5b8ab69",
+          "url": "https://www.stats.govt.nz/assets/Uploads/Labour-market-statistics/Labour-market-statistics-June-2026-quarter/Download-data/household-labour-force-survey-june-2026-quarter.xlsx"
+        }
+      ],
+      "unit": "unqualified for requested denominator",
+      "vintage": "HLFS June 2026"
+    },
+    {
+      "base": "current prices; no constant-price base",
+      "definition": "Actual current-price GDP expenditure measure; income and seasonally adjusted GDP are distinct",
+      "evidence": [
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-profile.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-release-observation-20260930.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json"
+      ],
+      "family": "gdp",
+      "gaps": [
+        "current_june_2026_quarter_workbook_and_series_not_captured",
+        "annual_aggregation_not_qualified",
+        "currency_code_unverified",
+        "canonical_projection_not_qualified"
+      ],
+      "geography": "New Zealand; national aggregate",
+      "id": "gdp-stats-2026q1",
+      "join_policy": "Blocked for annual shares: explicitly select four compatible flow quarters and vintage; no automatic annualization or Treasury-series substitution",
+      "period": "Captured vintage: 60 quarters June 2011 through March 2026; the June 2026-quarter GDP release was published 17 September 2026, but its exact current-price workbook and series selection are not captured in this census",
+      "qualification": "unqualified",
+      "retained_manifest_sha256": "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35",
+      "rights": "not_evaluated",
+      "selector": "Table 1!C27:BJ27; A27 label, B27 reference, B7 prefix; Table 2 excluded",
+      "series_id": "SNEQ / SG03AB01GE00S900 (separate publisher prefix/reference)",
+      "sources": [
+        {
+          "object_sha256": "a7326e84e7704446a18e5c8942f99901a452b2170af4228e8a5c242a5532ed21",
+          "observed_at": "2026-08-29T09:00:17Z",
+          "source_id": "stats_nz_gdp-9fc80ed4b7f234b2",
+          "url": "https://www.stats.govt.nz/assets/Uploads/Gross-domestic-product/Gross-domestic-product-March-2026-quarter/Download-data/gross-domestic-product-march-2026-quarter-current-price-income-and-expenditure.xlsx"
+        }
+      ],
+      "unit": "$(million); scaling million; ISO currency unverified",
+      "vintage": "StatsNZ-GDP-2026Q1"
+    },
+    {
+      "base": "nominal/current prices",
+      "definition": "Treasury Fiscal Time Series nominal GDP; source-selected historical annual amounts",
+      "evidence": [
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-2025-pilot.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/next-source-ranges.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json"
+      ],
+      "family": "gdp",
+      "gaps": [
+        "cross_vintage_splicing_not_qualified",
+        "full_derived_measure_qualification_pending"
+      ],
+      "geography": "New Zealand; national aggregate",
+      "id": "gdp-treasury-2025",
+      "join_policy": "Match source vintage and actual period end with numerator; preserve 1990 March-to-June transition; 2017-2024 revisions cannot silently replace fiscal-2024 values",
+      "period": "1972-2025; March years through 1989, June years from 1990",
+      "qualification": "unqualified",
+      "retained_manifest_sha256": "aee4578f1ee83f8c1ede63e36e840c6cd2140df8c6f463e71ec93da9e4e7d75a",
+      "rights": "not_evaluated",
+      "selector": "Nominal GDP!C3=Nominal GDP, A3=$ millions; B year labels, C amounts",
+      "series_id": "Nominal GDP / C3 (publisher sheet selector)",
+      "sources": [
+        {
+          "object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+          "observed_at": "2026-08-29T09:00:17Z",
+          "source_id": "fiscal_time_series-007",
+          "url": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx"
+        }
+      ],
+      "unit": "$ millions",
+      "vintage": "Fiscal-Time-Series-1972-2025"
+    },
+    {
+      "base": "old-GAAP from 1994 (core only); IFRS from 1997; PBE Standards from 2005; restatement/GAAP footnotes A60/A64/A65",
+      "definition": "Core Crown Expenses, distinct from cash Financial Net Expenditure and total Crown consolidation",
+      "evidence": [
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-2025-pilot.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json"
+      ],
+      "family": "core_crown",
+      "gaps": [
+        "consolidation_and_accounting_comparability_not_qualified",
+        "no_year_only_or_cross_basis_join",
+        "canonical_projection_receipt_recorded_outside_metadata_census"
+      ],
+      "geography": "New Zealand; national aggregate",
+      "id": "core_crown-fiscal-2025",
+      "join_policy": "Blocked: exact measure, currency scaling, consolidation, accounting basis, period end, actual/forecast and vintage must match; no year-only join",
+      "period": "1994-2025; 32 annual cells; June year basis carried from A23 through old-GAAP A27",
+      "qualification": "unqualified",
+      "retained_manifest_sha256": null,
+      "rights": "not_evaluated",
+      "selector": "Spending!D27:D58; D4 label; B27:B58 year labels; all selected cells numeric",
+      "series_id": "Spending!D4 / Core Crown Expenses",
+      "sources": [
+        {
+          "object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+          "observed_at": "2026-08-29T09:00:17Z",
+          "source_id": "fiscal_time_series-007",
+          "url": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx"
+        }
+      ],
+      "unit": "$ millions (Spending!A3)",
+      "vintage": "Fiscal-Time-Series-1972-2025"
+    },
+    {
+      "base": "old-GAAP from 1994 (core only); IFRS from 1997; PBE Standards from 2005; restatement/GAAP footnotes A60/A64/A65",
+      "definition": "Total Crown Expenses, distinct from core Crown consolidation; restatement footnotes apply",
+      "evidence": [
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-2025-pilot.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json"
+      ],
+      "family": "total_crown",
+      "gaps": [
+        "consolidation_and_accounting_comparability_not_qualified",
+        "no_year_only_or_cross_basis_join",
+        "canonical_projection_receipt_recorded_outside_metadata_census"
+      ],
+      "geography": "New Zealand; national aggregate",
+      "id": "total_crown-fiscal-2025",
+      "join_policy": "Blocked: exact measure, currency scaling, consolidation, accounting basis, period end, actual/forecast and vintage must match; no year-only join",
+      "period": "1997-2025; 29 annual cells; June years",
+      "qualification": "unqualified",
+      "retained_manifest_sha256": null,
+      "rights": "not_evaluated",
+      "selector": "Spending!E30:E58; E4 label; B30:B58 year labels; all selected cells numeric",
+      "series_id": "Spending!E4 / Total Crown Expenses",
+      "sources": [
+        {
+          "object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+          "observed_at": "2026-08-29T09:00:17Z",
+          "source_id": "fiscal_time_series-007",
+          "url": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx"
+        }
+      ],
+      "unit": "$ millions (Spending!A3)",
+      "vintage": "Fiscal-Time-Series-1972-2025"
+    },
+    {
+      "base": "accounting/consolidation basis unqualified",
+      "definition": "Published Core Crown expenses total; formula cells, not the Health summary",
+      "evidence": [
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/next-source-ranges.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/crown-expense-canonical-projection-20260929.md"
+      ],
+      "family": "core_crown",
+      "gaps": [
+        "formula_cache_not_qualified",
+        "financial_year_basis_unverified"
+      ],
+      "geography": "New Zealand; national aggregate",
+      "id": "core-crown-befu-2026",
+      "join_policy": "Blocked: formula-cache freshness, financial-year boundaries, currency and accounting/consolidation basis remain unqualified; keep Actual/Forecast and release vintages distinct",
+      "period": "2021-2030: Actual 2021-2025, Forecast 2026-2030; financial-year basis unverified",
+      "qualification": "unqualified",
+      "retained_manifest_sha256": "23ddc3fb0a3d4d6dc55a4731694f7d9e26f5ace1324d4a76456f1ad761abe651",
+      "rights": "not_evaluated",
+      "selector": "Core Crown Expense Tables!F26:O26; years F5:O5; status F6:O6; source formulas and stored numeric caches retained without recalculation",
+      "series_id": "Core Crown Expense Tables!D26 / Core Crown expenses",
+      "sources": [
+        {
+          "object_sha256": "313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1",
+          "observed_at": "2026-08-29T09:00:17Z",
+          "source_id": "befu_2026-003",
+          "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-data-expense-tables.xlsx"
+        }
+      ],
+      "unit": "($millions) at D6",
+      "vintage": "BEFU-2026"
+    },
+    {
+      "base": "accounting/consolidation basis unqualified",
+      "definition": "Published Core Crown expenses total; formula cells, not the Health summary",
+      "evidence": [
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/next-source-ranges.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/hyefu-core-crown-expense-20260929.md"
+      ],
+      "family": "core_crown",
+      "gaps": [
+        "formula_cache_not_qualified",
+        "financial_year_basis_unverified",
+        "canonical_total_adapter_missing"
+      ],
+      "geography": "New Zealand; national aggregate",
+      "id": "core-crown-hyefu-2025",
+      "join_policy": "Blocked: qualify aggregate label and period basis; keep Actual/Forecast and release vintages distinct",
+      "period": "2021-2030: Actual 2021-2025, Forecast 2026-2030; financial-year basis unverified",
+      "qualification": "unqualified",
+      "retained_manifest_sha256": null,
+      "rights": "not_evaluated",
+      "selector": "Core Crown Expense Tables!F25:O25; years F4:O4; status F5:O5; formula cells; no evaluation or cache qualification",
+      "series_id": "Core Crown Expense Tables!D25 / Core Crown expenses",
+      "sources": [
+        {
+          "object_sha256": "f9f9190a69ce0a7c53b89d690d50170e2a6a457e6821afeb93edc08cef4b9c7d",
+          "observed_at": "2026-08-29T09:00:17Z",
+          "source_id": "hyefu_2025-006",
+          "url": "https://budget.govt.nz/budget/excel/hyefu2025/hyefu25-data-expense-tables.xlsx"
+        }
+      ],
+      "unit": "($millions) at D5",
+      "vintage": "HYEFU-2025"
     }
   ]
 }

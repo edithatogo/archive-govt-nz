@@ -690,6 +690,30 @@
       "raw_manifest_sha256": "76e41b2445cf8412ea272bdf9e7c34ba99b63e4bea5c74ffc470a8576a9bb653",
       "repeat_identical": true
     },
+    "gdp_canonical_projection": {
+      "currency": "unresolved",
+      "denominator_selection": "not_performed",
+      "fact_count": 60,
+      "files": {
+        "field_lineage.parquet": {
+          "bytes": 37609,
+          "sha256": "d2d548e8fa37272852d5e02e8c62ae31b626bcf7a7c34b2f3e427fedb99d42ad"
+        },
+        "fiscal_context_fact.parquet": {
+          "bytes": 23372,
+          "sha256": "71001d2342e9fadf6bc534091eb3413e11fa897794d709a1b565443583565156"
+        },
+        "projection-receipt.json": {
+          "bytes": 541,
+          "sha256": "aedbe12e884d5822aa8d2af74593f10b096e25852a0d2b5e5df000805e35b582"
+        }
+      },
+      "lineage_count": 420,
+      "repeat_identical": true,
+      "rights_state": "not_evaluated",
+      "source_manifest_sha256": "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35",
+      "source_object_sha256": "a7326e84e7704446a18e5c8942f99901a452b2170af4228e8a5c242a5532ed21"
+    },
     "historical_fiscal_crown_canonical_projection": {
       "canonical_fact_sha256": "8f48d4b34830eba1ae453f8b944c6474c41c4b8fe778ce72a08ea03ab44448ce",
       "canonical_lineage_sha256": "9e98af148adea175f48aa1b7c2a52481363c65dc2bfec1fc5fd2f5b72ef202a8",
@@ -814,6 +838,29 @@
       },
       "source_manifest_sha256": "5eea323f1f9360fb7a92b7c2d9f92f1922dfb6f447a8252c8ca8b3ebf64ff248",
       "source_object_sha256": "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea"
+    },
+    "population_canonical_projection": {
+      "analytical_selection": "not_selected",
+      "fact_count": 36,
+      "files": {
+        "field_lineage.parquet": {
+          "bytes": 21292,
+          "sha256": "750d1cac249b6ce280988ffc975a540649fca5390cf78b83277e379fe2ffae7d"
+        },
+        "price_population_fact.parquet": {
+          "bytes": 20788,
+          "sha256": "c339cfb2a1b894bc9cc2d80155d65d7f2e3ce0cdc71d52761befaa71e311f787"
+        },
+        "projection-receipt.json": {
+          "bytes": 517,
+          "sha256": "7db17a9e4b4b1a91ba4f44055351caf80b310d760e4583270da58b45d4c27c66"
+        }
+      },
+      "lineage_count": 110,
+      "repeat_identical": true,
+      "rights_state": "not_evaluated",
+      "source_manifest_sha256": "067255c4ac18377312d0a8234dc94804c876ba68866cfba3a483a4dd89415798",
+      "source_object_sha256": "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9"
     },
     "qes_canonical_projection": {
       "canonical_fact_sha256": "56ce86c7dfa0a14c0da565169ef10f2ff0aa4a3d6da58dc9b4626f5bd52b3c93",
