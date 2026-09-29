@@ -1,0 +1,52 @@
+{
+  "schema_version": "archive-govt-nz.health-source-health-validation/v1",
+  "recorded_at": "2026-09-29T18:31:39Z",
+  "status": "passed_local",
+  "focused": {
+    "suite": "source measure review, source context census, and source health report",
+    "tests_passed": 67,
+    "evidence_pins_passed": {
+      "context_census": 22,
+      "source_measure_review": 20
+    }
+  },
+  "repository_harness": {
+    "command": "./scripts/validate.sh",
+    "status": "passed",
+    "tests_passed": 7158,
+    "tests_skipped": 9,
+    "branch_coverage_percent": 98.14,
+    "coverage_floor_percent": 80.0,
+    "schemas": 53,
+    "representative_documents": 43,
+    "parity_passed": 9,
+    "parity_total": 9,
+    "mutation_gates": "passed",
+    "supply_chain": "passed",
+    "duration_seconds": 87.17,
+    "cas_streaming_megabytes_per_second": 313.43
+  },
+  "conductor_review": {
+    "phase": "phase_7_gates",
+    "status": "passed",
+    "receipt": "phase_7_gates-review-receipt-20260929.json",
+    "receipt_sha256": "ae10a1e36ebcf702275d45ac324d7031205047904de77750c533377738a009e0"
+  },
+  "scope": "local only; no hosted CI claim",
+  "open_gaps": [
+    "complete source calendars",
+    "per-vintage layout baselines",
+    "discovery completeness",
+    "donor-value reconciliation"
+  ],
+  "evidence_ledger_integrity": {
+    "pinned_evidence_jsonl_restored": true,
+    "sha256": "72d807f2aa0c788784b81ae926f1924ba0f3a3541583f3b112cdb1ca473e8c6d"
+  },
+  "previous_attempt": {
+    "status": "failed_bounded",
+    "cause": "temporary append to hash-pinned evidence.jsonl invalidated two retained evidence checks",
+    "corrective_action": "restore evidence.jsonl and store current receipts in separate files",
+    "focused_recheck_tests_passed": 67
+  }
+}

@@ -3130,3 +3130,71 @@ rows with identical repeat outputs and unchanged Bronze. Automatic Phase 7
 review passed again (receipt SHA-256
 `02e0b108dc5f8df5a9a5a02c5ce66a93d3327b96ab78c04480e4c67bd2781797`). Full
 validation is being rerun for this repair.
+
+## 2026-09-30 — Whole-census source-health and vintage-state report
+
+Added a deterministic source-health report and generator for the 141-row
+official-resource census and ten-row context-series census. Every resource has
+its verbatim source title as a vintage label plus explicit inventory, rights,
+temporal and layout states. Every context series retains its census vintage,
+period description, qualification, rights and known gaps. The report explicitly
+does not infer complete calendars, unobserved vintages, analytical joins or
+rights approval.
+
+Replayed the census-referenced capture manifest from the retained external
+archive against every census capture entry: 73/73 IDs, states, source hashes,
+licence labels and rights-policy URLs matched. Independently read and checked
+all 73 Bronze CAS objects by SHA-256 and declared byte length (38,877,606 bytes
+total). Capture-manifest SHA-256 is
+`04145e4030bfddaecade1af542e12cb8a56a187c9c924b7a4c135537ccae9dab`. The
+manifest's `eligible` label is retained as capture-process evidence only; it is
+not an independent legal rights determination. The separately recorded context
+rights fields remain `not_evaluated`.
+
+Focused report tests: 9 passed; Ruff and basedpyright passed. JSON Schema
+validation passed for 53 schemas and 43 representative documents. Two bounded
+implementation failures were recorded and corrected: the first report test run
+had three expectation/coverage-shape failures, and the first external-manifest
+render exited on a stale recorded-count field after successful reconciliation.
+No CAS object or input census was written.
+
+The first full harness run found one stale evidence pin: the source-measure
+review references the track index, which this change updated with the report
+links. The review's index hash was refreshed without changing the review's
+findings or scope. The source-measure review and source-health focused suites
+then passed together (45 tests). The final `./scripts/validate.sh` passed on
+2026-09-29 UTC: 7,158 tests passed, 9 skipped, 98.14% branch-aware coverage
+against the configured 80% floor, 53 schemas and 43 representative documents,
+9/9 differential parity cases, all configured mutation gates, slop checks,
+dependency/license/secret audits and SBOM validation. Automatic
+`phase_7_gates` review also passed; its immutable receipt is retained alongside
+the machine evidence. This is local evidence, not hosted CI evidence.
+
+Phase 5.4 stays in progress because calendars, per-vintage layout baselines,
+discovery completeness and donor-value reconciliation remain unassessed.
+
+Focused mutation assurance for the source-health implementation killed all 78
+generated mutants with zero survivors, pardons or cache hits; all nine focused
+tests passed in the mutation run. This is module-scoped mutation evidence, not
+a claim that the phase's broader source inventory has been completed.
+
+A subsequent full run exposed three failures after the validation record was
+appended to the historical `evidence.jsonl` file. That file is explicitly
+hash-pinned by both `context-census.json` and the source-measure review, so the
+append invalidated their evidence checks and masked one expected manifest
+failure. The two new rows were removed, restoring the pinned ledger byte-for-
+byte, and current-run results are now kept in the dedicated validation and
+mutation receipts linked from the plan. Both pinned evidence sets and all 67
+focused census, measure-review and source-health tests pass again. The failed
+run is retained as a bounded evidence-integrity failure; it is not treated as
+the final repository checkpoint. A fresh full harness run follows.
+
+The fresh full harness after restoring the pinned evidence ledger passed on
+2026-09-29 UTC: 7,158 passed, 9 skipped, 98.14% branch-aware coverage against
+the unchanged 80% floor; 53 schemas and 43 representative documents; 9/9
+parity; all configured mutation, hygiene, dependency, license, secret and SBOM
+gates passed. The run took 87.17 seconds for tests and measured CAS streaming
+at 313.43 MB/s. The three affected suites passed together (67 tests), and the
+22 context-census and 20 source-measure evidence pins now verify. The automatic
+`phase_7_gates` receipt remains passed. Current-run machine receipts are kept
+outside the pinned historical `evidence.jsonl` ledger.

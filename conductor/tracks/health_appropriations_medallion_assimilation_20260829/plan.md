@@ -634,7 +634,7 @@ integrated parent head.
 
 ### 5.4 Phase review and checkpoint
 
-- [ ] Generate source-health, temporal coverage, layout drift, rights and
+- [~] Generate source-health, temporal coverage, layout drift, rights and
   reconciliation reports; verify every target vintage has an explicit state.
   [M-02, M-11, M-12, S-04; AC-09, AC-11]
   The source-separated Context Gold output now includes quality summaries for
@@ -649,10 +649,21 @@ integrated parent head.
   manifest with exact source identity, versioned adapter profile, counts and
   output hashes. See
   `../../../evidence/assurance/health-expanded-coverage-20260925/README.md`.
-  It covers one selection only; the complete target-vintage health/drift report
-  remains pending.
-- [ ] Run focused adapters, property/mutation checks, self-review and the full
+  It covers one selection only. A deterministic source-health report now gives
+  each of the 141 recorded source resources and ten context series/vintages
+  explicit inventory, qualification, rights, temporal and layout states. Its
+  capture reconciliation independently matched all 73 captured census entries
+  to the retained capture manifest and verified the 73 referenced Bronze CAS
+  objects (38,877,606 bytes) by SHA-256 and size. This does not assess legal
+  rights, complete calendars, per-vintage layout drift, discovery completeness
+  or donor-value reconciliation; those boundaries remain open. See
+  `source-health-report.md` and `source-health-report.json`.
+- [x] Run focused adapters, property/mutation checks, self-review and the full
   repository harness; record paired evidence. [M-18, M-19; AC-16]
+  Focused source-health and evidence-pin suites, the full validation harness,
+  and automatic `phase_7_gates` review passed on 2026-09-29 UTC; see
+  `source-health-validation-20260929.json`,
+  `source-health-mutation-20260929.json`, and the dated runlog.
 
 ## Phase 6 — Gold analytical products
 

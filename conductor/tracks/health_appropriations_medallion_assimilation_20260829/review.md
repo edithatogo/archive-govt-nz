@@ -1217,3 +1217,22 @@ Full `./scripts/validate.sh` passes 7,114 tests (9 skipped), 98.19% branch
 coverage, all 52 schemas/42 representative documents, parity 9/9, and configured
 mutation/supply-chain gates. The automatic `phase_7_gates` Conductor review
 also passes. The recovery test remains partial and does not close AC-12/M-16.
+
+## Whole-census source-health report — 2026-09-29 UTC
+
+Scoped self-review of `source_health_report.py`, its generator, schema, tests and
+rendered report found no remaining actionable defect within the report's stated
+contract. Resource and context rows are uniquely identified and sorted; captured
+rows are joined against the full census and retained manifest, and every CAS
+object is rehashed and size-checked before reconciliation is reported. Capture
+workflow rights labels remain separate from the report's unapproved rights
+state. The renderer exposes explicit temporal/layout non-assessment states and
+the report records its census and manifest digests. Malformed input, mismatch,
+missing-object and corrupted-object cases fail closed in the focused tests.
+
+The report does not claim legal rights approval, full calendar/discovery
+coverage, per-vintage layout drift, analytical comparability or donor-value
+reconciliation. Those phase gaps remain open. Validation passed locally with
+67 focused source-health/census/review tests, 78/78 focused mutation kills and
+the full repository harness; see the dated machine receipts. This is not hosted
+CI evidence or phase completion.
