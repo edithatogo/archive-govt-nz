@@ -1,10 +1,11 @@
 {
   "schema_version": "archive-govt-nz.health-source-health-validation/v1",
-  "recorded_at": "2026-09-29T18:31:39Z",
+  "recorded_at": "2026-09-29T19:05:21Z",
   "status": "passed_local",
   "focused": {
     "suite": "source measure review, source context census, and source health report",
-    "tests_passed": 67,
+    "tests_passed": 88,
+    "source_health_module_line_and_branch_coverage_percent": 100.0,
     "evidence_pins_passed": {
       "context_census": 22,
       "source_measure_review": 20
@@ -13,9 +14,9 @@
   "repository_harness": {
     "command": "./scripts/validate.sh",
     "status": "passed",
-    "tests_passed": 7158,
+    "tests_passed": 7179,
     "tests_skipped": 9,
-    "branch_coverage_percent": 98.14,
+    "branch_coverage_percent": 98.27,
     "coverage_floor_percent": 80.0,
     "schemas": 53,
     "representative_documents": 43,
@@ -23,8 +24,8 @@
     "parity_total": 9,
     "mutation_gates": "passed",
     "supply_chain": "passed",
-    "duration_seconds": 87.17,
-    "cas_streaming_megabytes_per_second": 313.43
+    "duration_seconds": 104.67,
+    "cas_streaming_megabytes_per_second": 418.45
   },
   "conductor_review": {
     "phase": "phase_7_gates",

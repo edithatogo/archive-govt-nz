@@ -1236,3 +1236,13 @@ reconciliation. Those phase gaps remain open. Validation passed locally with
 67 focused source-health/census/review tests, 78/78 focused mutation kills and
 the full repository harness; see the dated machine receipts. This is not hosted
 CI evidence or phase completion.
+
+### Patch-coverage follow-up — 2026-09-29 UTC
+
+The initial hosted patch report found that malformed-input and CAS mismatch
+branches in the new module lacked direct coverage. Added focused error-contract
+tests rather than changing the repository's coverage threshold. The complete
+source-health module now has 100% statement and branch coverage (30 focused
+tests), and 78/78 module mutants are killed. Full local harness passes at
+98.27% overall against the unchanged 80% floor. Hosted CI must be rerun on the
+coverage-correction commit before merge.

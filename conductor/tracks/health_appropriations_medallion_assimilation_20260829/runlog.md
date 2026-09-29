@@ -3198,3 +3198,21 @@ at 313.43 MB/s. The three affected suites passed together (67 tests), and the
 22 context-census and 20 source-measure evidence pins now verify. The automatic
 `phase_7_gates` receipt remains passed. Current-run machine receipts are kept
 outside the pinned historical `evidence.jsonl` ledger.
+
+## 2026-09-29 — Patch-coverage correction
+
+The first hosted Codecov patch report measured 74.19% against its 97.90% patch
+threshold, despite the repository's overall 80% floor passing. The report
+module's focused coverage showed 82% line/branch coverage and uncovered
+fail-closed branches. Added focused contracts for malformed census rows,
+manifest identity/cutoff/shape, capture result identity, rights and census
+mismatch, missing/tampered/sized CAS objects, capture-set/count mismatches, and
+missing context series. This did not lower the repository or hosted target.
+
+All 30 report tests pass; the report module now has 100% statement and branch
+coverage, and all 78 focused mutants are killed with zero survivors, pardons or
+cache hits. The full required harness passed: 7,179 tests, 9 skipped, 98.27%
+branch-aware coverage, 53 schemas/43 representative documents, 9/9 parity and
+all mutation, hygiene and supply-chain gates. The rerun took 104.67 seconds for
+tests and measured CAS streaming at 418.45 MB/s. See the updated validation and
+mutation receipts. Hosted rerun on the corrective commit is pending.
