@@ -3093,3 +3093,7 @@ receipt SHA-256 `f1f3ce92bd24ea3613721f3859e08d5ecade325f6e652b358543140d36c9ea5
 Focused tests (6), Ruff and basedpyright pass. The required full
 `./scripts/validate.sh` harness also passed after integrating the clean-room
 step, including the full test, schema, parity, mutation and supply-chain gates.
+The first hosted Codecov patch check identified uncovered Bronze/Silver
+verification paths. Added an end-to-end test for the pinned projection and
+tampered-product rejection; the new adapter now has 100% local line/branch
+coverage. Full validation is being rerun for the PR update.
