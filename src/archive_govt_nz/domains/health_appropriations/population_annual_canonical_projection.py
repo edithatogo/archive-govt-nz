@@ -88,7 +88,9 @@ def _lineage(
     }
 
 
-def _verified_silver(silver_root: Path, manifest_sha256: str, bronze: Path) -> pa.Table:
+def _verified_silver(
+    silver_root: Path, manifest_sha256: str, bronze: Path
+) -> tuple[pa.Table, pa.Table, pa.Table]:
     _require(_DIGEST.fullmatch(manifest_sha256) is not None)
     _require(not silver_root.is_symlink() and silver_root.is_dir())
     marker = silver_root / "MANIFEST.json"
@@ -130,18 +132,34 @@ def _verified_silver(silver_root: Path, manifest_sha256: str, bronze: Path) -> p
             raw = stored.read_bytes()
             _require(hashlib.sha256(raw).hexdigest() == manifest["output_sha256"][name])
             _require(raw == (rebuilt / name).read_bytes())
-        return pq.read_table(rebuilt / "population_facts.parquet")
+        return (
+            pq.read_table(rebuilt / "population_facts.parquet"),
+            pq.read_table(rebuilt / "field_lineage.parquet"),
+            pq.read_table(rebuilt / "row_dispositions.parquet"),
+        )
 
 
-def _canonicalize(facts: pa.Table) -> tuple[pa.Table, pa.Table]:
+def _canonicalize(
+    facts: pa.Table, source_lineage: pa.Table, dispositions: pa.Table
+) -> tuple[pa.Table, pa.Table]:
     canonical: list[dict[str, Any]] = []
     lineage: list[dict[str, Any]] = []
+    lineage_by_record: dict[str, dict[str, dict[str, Any]]] = {}
+    for item in source_lineage.to_pylist():
+        lineage_by_record.setdefault(item["record_id"], {})[item["field"]] = item
+    disposition_by_record = {
+        item["record_id"]: {
+            **json.loads(item["raw_values_json"]),
+            "source_row": item["source_row"],
+        }
+        for item in dispositions.to_pylist()
+    }
     for source in facts.to_pylist():
+        source_id = source["record_id"]
+        source_status = disposition_by_record[source_id]["status"]
         target_id = (
             "sha256:"
-            + hashlib.sha256(
-                f"{TRANSFORMATION}\0{source['record_id']}".encode()
-            ).hexdigest()
+            + hashlib.sha256(f"{TRANSFORMATION}\0{source_id}".encode()).hexdigest()
         )
         amount = source["amount"]
         precision = len(str(abs(int(amount)))) if amount is not None else None
@@ -151,18 +169,25 @@ def _canonicalize(facts: pa.Table) -> tuple[pa.Table, pa.Table]:
             "recordset": "price_population_fact",
             "transformation_id": TRANSFORMATION,
             "lineage_id": hashlib.sha256(f"{target_id}\0lineage".encode()).hexdigest(),
-            "source_record_id": source["record_id"],
+            "source_record_id": source_id,
             "source_decimal_precision": precision,
             "source_decimal_scale": 0 if amount is not None else None,
             "quality_flags": sorted(
-                set(source["quality_flags"]) | {"canonical_context_projection"}
+                set(source["quality_flags"])
+                | {"canonical_context_projection"}
+                | ({"source_status_provisional"} if source_status == "P" else set())
             ),
         }
         canonical.append(row)
-        year = int(source["period_token"][2:])
-        source_row = year - 1991 + 5
+        links = lineage_by_record[source_id]
+        source_row = disposition_by_record[source_id]["source_row"]
         for field, column, raw_value, normalized in (
-            ("period_token", "A", source["period_token"], source["period_token"]),
+            (
+                "period_token",
+                "A",
+                links["period_token"]["raw_value"],
+                source["period_token"],
+            ),
             (
                 "amount",
                 "B",
@@ -173,7 +198,7 @@ def _canonicalize(facts: pa.Table) -> tuple[pa.Table, pa.Table]:
         ):
             coordinate = f"csv:row={source_row};column={column}"
             if column == "header":
-                coordinate = "csv:row=4;column=C"
+                coordinate = "csv:row=4;column=B"
             lineage.append(
                 _lineage(
                     source,
@@ -184,6 +209,20 @@ def _canonicalize(facts: pa.Table) -> tuple[pa.Table, pa.Table]:
                         "raw_value": raw_value,
                         "normalized_value": normalized,
                         "rule": TRANSFORMATION,
+                    },
+                )
+            )
+        if source_status:
+            lineage.append(
+                _lineage(
+                    source,
+                    target_id,
+                    {
+                        "field": "source_status",
+                        "coordinate": f"csv:row={source_row};column=C",
+                        "raw_value": source_status,
+                        "normalized_value": source_status,
+                        "rule": "preserve_publisher_status_token",
                     },
                 )
             )
@@ -205,8 +244,10 @@ def project_population_annual(
     _require(not cas_root.is_symlink() and cas_root.is_dir())
     original = cas_root / SOURCE_SHA256[:2] / SOURCE_SHA256
     _require(not original.is_symlink() and not original.parent.is_symlink())
-    facts = _verified_silver(silver_root, manifest_sha256, original)
-    canonical_table, lineage_table = _canonicalize(facts)
+    facts, source_lineage, dispositions = _verified_silver(
+        silver_root, manifest_sha256, original
+    )
+    canonical_table, lineage_table = _canonicalize(facts, source_lineage, dispositions)
     receipt = {
         "schema_version": "archive-govt-nz.health-population-canonical-projection/v1",
         "status": "verified_source_faithful_projection",

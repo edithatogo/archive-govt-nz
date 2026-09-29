@@ -820,19 +820,19 @@
       "fact_count": 36,
       "files": {
         "field_lineage.parquet": {
-          "bytes": 21207,
-          "sha256": "b78a6208c77acc0df434a4b00113a2825472d95c48bba9228560782a4bdea1ae"
+          "bytes": 21292,
+          "sha256": "750d1cac249b6ce280988ffc975a540649fca5390cf78b83277e379fe2ffae7d"
         },
         "price_population_fact.parquet": {
-          "bytes": 20770,
-          "sha256": "789b20d716aba735eedb6395df5d039692359aac713c8c78bcd4c36b77c0b3ca"
+          "bytes": 20788,
+          "sha256": "c339cfb2a1b894bc9cc2d80155d65d7f2e3ce0cdc71d52761befaa71e311f787"
         },
         "projection-receipt.json": {
           "bytes": 517,
-          "sha256": "7aaf95620668c28d346d886ca699fd409e933740174983dace20cbf085dfcd9b"
+          "sha256": "7db17a9e4b4b1a91ba4f44055351caf80b310d760e4583270da58b45d4c27c66"
         }
       },
-      "lineage_count": 108,
+      "lineage_count": 110,
       "repeat_identical": true,
       "rights_state": "not_evaluated",
       "source_manifest_sha256": "067255c4ac18377312d0a8234dc94804c876ba68866cfba3a483a4dd89415798",

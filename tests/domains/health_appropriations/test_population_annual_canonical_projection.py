@@ -41,7 +41,9 @@ def test_canonical_projection_keeps_provisional_null_and_complete_lineage(
     )
 
     source_facts = pq.read_table(tmp_path / "silver" / "population_facts.parquet")
-    facts, lineage = _canonicalize(source_facts)
+    source_lineage = pq.read_table(tmp_path / "silver" / "field_lineage.parquet")
+    dispositions = pq.read_table(tmp_path / "silver" / "row_dispositions.parquet")
+    facts, lineage = _canonicalize(source_facts, source_lineage, dispositions)
 
     assert facts.schema.equals(
         recordset_schema("price_population_fact"), check_metadata=True
@@ -56,13 +58,23 @@ def test_canonical_projection_keeps_provisional_null_and_complete_lineage(
     assert rows[-2]["quality_flags"]
     assert "context_only_not_selected_as_denominator" in rows[-1]["quality_flags"]
     assert all(row["rights_state"] == "not_evaluated" for row in rows)
-    assert len(lineage) == 108
+    assert len(lineage) == 110
     assert all(row["record_id"].startswith("sha256:") for row in lineage.to_pylist())
     assert {row["field"] for row in lineage.to_pylist()} == {
         "period_token",
         "amount",
         "source_label",
+        "source_status",
     }
+    lineage_rows = lineage.to_pylist()
+    period_lineage = next(row for row in lineage_rows if row["field"] == "period_token")
+    label_lineage = next(row for row in lineage_rows if row["field"] == "source_label")
+    status_rows = [row for row in lineage_rows if row["field"] == "source_status"]
+    assert period_lineage["raw_value"] == "1991"
+    assert label_lineage["source_coordinate"] == "csv:row=4;column=B"
+    assert [row["raw_value"] for row in status_rows] == ["P", "P"]
+    assert "source_status_provisional" in rows[-2]["quality_flags"]
+    assert "source_status_provisional" in rows[-1]["quality_flags"]
 
 
 def test_bronze_bound_projector_rebuilds_and_rejects_tampered_silver(
@@ -95,7 +107,7 @@ def test_bronze_bound_projector_rebuilds_and_rejects_tampered_silver(
     )
 
     assert facts.num_rows == 36
-    assert lineage.num_rows == 108
+    assert lineage.num_rows == 110
     assert receipt["source_object_sha256"] == source_pin
     assert receipt["analytical_selection"] == "not_selected"
     with (tmp_path / "silver" / "population_facts.parquet").open("ab") as stream:

@@ -3081,19 +3081,30 @@ are being rerun against this repair before PR update.
 Added a canonical projection for the pinned Stats NZ DPE056AA mean-year-ended
 population profile. It rebuilds the retained Silver products from the exact
 Bronze CSV, verifies the manifest and output bytes, then emits 36 canonical
-`price_population_fact` rows and 108 complete `field_lineage` rows. Publisher
+`price_population_fact` rows and 110 complete `field_lineage` rows. Publisher
 provisional statuses, the `..` unavailable value and the context-only,
 not-selected denominator boundary are preserved. Rights, revision vintages,
 census-base comparability and denominator approval remain unqualified. The
 clean-room runner now rebuilds the projection twice from rebuilt Silver and
-matches output digests: 36 facts and 108 lineage rows. Bronze remains unchanged;
+matches output digests: 36 facts and 110 lineage rows. Provisional `P` statuses
+are retained in row quality flags and direct lineage; raw year and label values
+point to their exact populated source cells. Bronze remains unchanged;
 receipt `clean-room-recovery-20260930-population.json` remains
 `partial_with_blockers`. The automatic `phase_7_gates` review passed with
 receipt SHA-256 `f1f3ce92bd24ea3613721f3859e08d5ecade325f6e652b358543140d36c9ea5c`.
-Focused tests (6), Ruff and basedpyright pass. The required full
+Focused tests, Ruff and basedpyright pass. The required full
 `./scripts/validate.sh` harness also passed after integrating the clean-room
 step, including the full test, schema, parity, mutation and supply-chain gates.
 The first hosted Codecov patch check identified uncovered Bronze/Silver
 verification paths. Added an end-to-end test for the pinned projection and
 tampered-product rejection; the new adapter now has 100% local line/branch
 coverage. Full validation is being rerun for the PR update.
+The PR review also identified missing status lineage, a normalized value used as
+the raw year, and an incorrect source-label cell coordinate. The projection
+now retains `P` flags/status lineage from verified dispositions, takes raw year
+values from verified Silver lineage, and points the label to populated row 4,
+column B. The regenerated clean-room receipt reports 36 facts and 110 lineage
+rows with identical repeat outputs and unchanged Bronze. Automatic Phase 7
+review passed again (receipt SHA-256
+`02e0b108dc5f8df5a9a5a02c5ce66a93d3327b96ab78c04480e4c67bd2781797`). Full
+validation is being rerun for this repair.
