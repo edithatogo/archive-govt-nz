@@ -197,7 +197,7 @@ def test_schema_results_are_independent() -> None:
 
 
 @pytest.mark.parametrize(
-    ("name", "version"), [("unknown", "v1"), ("source_inventory", "v2")]
+    ("name", "version"), [("unknown", "v1"), ("source_inventory", "v3")]
 )
 def test_unknown_contract_fails(name: str, version: str) -> None:
     """Schema lookup cannot invent a supported source or version."""

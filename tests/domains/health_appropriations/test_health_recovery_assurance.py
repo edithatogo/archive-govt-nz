@@ -120,6 +120,15 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(
             "canonical_lineage_sha256": "lineage",
         },
     )
+    monkeypatch.setattr(
+        MODULE,
+        "_rebuild_qes_canonical",
+        lambda _root, _index: {
+            "source_object_sha256": "b" * 64,
+            "canonical_fact_sha256": "qes-facts",
+            "canonical_lineage_sha256": "qes-lineage",
+        },
+    )
 
     def fake_context(
         _silver_root: Path, _source_root: Path, output: Path, *, write: bool = False
@@ -160,6 +169,10 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(
     assert result["products_rebuilt"]["context_gold"]["repeat_identical"] is True
     assert (
         result["products_rebuilt"]["pharmac_canonical_projection"]["repeat_identical"]
+        is True
+    )
+    assert (
+        result["products_rebuilt"]["qes_canonical_projection"]["repeat_identical"]
         is True
     )
     assert (

@@ -119,21 +119,45 @@ _FIELDS = MappingProxyType(
         ),
     }
 )
-RECORDSETS = MappingProxyType(
-    {
-        name: pa.schema(
-            (*_COMMON, *fields),
-            metadata={
-                b"domain": b"health_appropriations",
-                b"recordset": name.encode(),
-                b"schema_version": b"archive-govt-nz.health-recordsets/v1",
-                b"contract_scope": b"structural_only",
-            },
-        )
-        for name, fields in _FIELDS.items()
-    }
+
+
+def _schemas(
+    version: str, fields_by_name: dict[str, tuple[pa.Field, ...]]
+) -> MappingProxyType:
+    return MappingProxyType(
+        {
+            name: pa.schema(
+                (*_COMMON, *fields),
+                metadata={
+                    b"domain": b"health_appropriations",
+                    b"recordset": name.encode(),
+                    b"schema_version": (
+                        f"archive-govt-nz.health-recordsets/{version}".encode()
+                    ),
+                    b"contract_scope": b"structural_only",
+                },
+            )
+            for name, fields in fields_by_name.items()
+        }
+    )
+
+
+RECORDSETS = _schemas("v1", dict(_FIELDS))
+_EARNINGS_FIELDS = (
+    *_FACT,
+    pa.field("series_id", pa.string(), nullable=False),
+    pa.field("geography", pa.string()),
+    pa.field("sector", pa.string()),
+    pa.field("sex", pa.string()),
+    pa.field("adjustment", pa.string()),
+    pa.field("earnings_basis", pa.string()),
 )
-_VERSIONS = MappingProxyType({"v1": RECORDSETS})
+_V2_FIELDS = {
+    **dict(_FIELDS),
+    "earnings_fact": _EARNINGS_FIELDS,
+}
+RECORDSETS_V2 = _schemas("v2", _V2_FIELDS)
+_VERSIONS = MappingProxyType({"v1": RECORDSETS, "v2": RECORDSETS_V2})
 
 
 def recordset_schema(name: str, *, version: str = "v1") -> pa.Schema:

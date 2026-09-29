@@ -2901,3 +2901,29 @@ configured mutation and hygiene gates; dependency/license/secret scans; and
 strict 113-component SBOM validation. The automatic Conductor `phase_7_gates`
 review passed; receipt SHA-256 begins `1868e60e3859d674` (full digest is in the
 local build receipt).
+
+## 2026-09-29 — Add canonical QES earnings contract and projection
+
+Added an additive health-recordsets v2 `earnings_fact` recordset while keeping
+all v1 recordset schemas unchanged. The source-bound projection verifies the
+exact retained QES v3 manifest, rehashes and reparses the Bronze workbook, and
+reconciles the 9 retained Silver facts, field-lineage rows and dispositions
+before producing canonical quarterly earnings. It emits 9 facts and 90 direct
+lineage rows, retains source Decimal precision, and records quarter bounds from
+the source year/quarter cells. The source dollar symbol is preserved as a unit
+label; currency code, sex and adjustment remain unknown, deflator selection is
+not performed, rights remain unevaluated and publication is not performed.
+
+Clean-room recovery rebuilds QES Silver and the v2 canonical projection twice
+from the pinned Bronze CAS. Both runs are identical at Silver manifest pin
+`0bf89bd6c10a0458ef4c578b209c3252292961976d2f50b3c27fe92907c3cb04`; canonical
+fact digest `56ce86c7dfa0a14c0da565169ef10f2ff0aa4a3d6da58dc9b4626f5bd52b3c93`;
+lineage digest `9dc4d32a64eea2f20ed20cac9446df00b40273a6c50e31850b4683af99aade24`.
+Bronze fixity remained unchanged. The payload-free complete recovery receipt
+is `qes-canonical-recovery-20260929.json` (SHA-256
+`3ccb6e4497a71bb6492b657e167154c3a33120263316d881c1f8e16cb4e68461`). The
+full recovery gate remains partial: donor/canonical reports, additional source
+profiles and complete Platinum validation are still outstanding.
+
+Focused QES, canonical projection, recovery and recordset contract tests pass
+(271); Ruff and basedpyright pass. Required `./scripts/validate.sh` passed on retry: 7,130 tests passed, 9 skipped, 98.22% coverage, 52 schemas, 42 documentation schemas, 9/9 parity checks, configured mutation and hygiene gates, dependency/license/secret scans and strict 113-component SBOM validation. The automatic Conductor `phase_7_gates` review passed format, lint, schema, targeted test and mutation gates; receipt SHA-256 begins `dc91a36dd264fdcd` (full digest is in the local build receipt). The recovery gate remains partial with the blockers listed above.

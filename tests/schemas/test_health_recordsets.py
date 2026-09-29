@@ -122,7 +122,7 @@ def test_fact_precision_preserves_known_values_and_rejects_overflow(name: str) -
 
 @pytest.mark.parametrize(
     ("name", "version"),
-    [("unknown", "v1"), ("source_inventory", "v2"), ("published_indicator_fact", "v1")],
+    [("unknown", "v1"), ("source_inventory", "v3"), ("published_indicator_fact", "v1")],
 )
 def test_unknown_profile_or_version_fails(name: str, version: str) -> None:
     """Unknown profiles cannot be silently treated as canonical facts."""

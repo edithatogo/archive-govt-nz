@@ -56,7 +56,9 @@ def recordset_json_schema(name: str, *, version: str = "v1") -> dict[str, Any]:
         )
     properties["domain"]["const"] = "health_appropriations"
     properties["recordset"]["const"] = name
-    properties["schema_version"]["const"] = "archive-govt-nz.health-recordsets/v1"
+    properties["schema_version"]["const"] = (
+        f"archive-govt-nz.health-recordsets/{version}"
+    )
     return {
         "$schema": "https://json-schema.org/draft/2020-12/schema",
         "$id": f"urn:archive-govt-nz:health-recordsets:{version}:{name}",
