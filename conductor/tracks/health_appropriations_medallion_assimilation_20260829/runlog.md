@@ -3039,3 +3039,28 @@ hygiene lanes, CAS benchmark, dependency/license/secret checks, and 113-componen
 SBOM. Automatic Phase 7 Conductor review passed; receipt SHA-256 is
 `b80197bbedc6a122d543932d34be31dc8cdd9ab498fde8acf9008103169f31e3`. The PR
 branch is ready for the review-thread resolution and refreshed hosted checks.
+
+## 2026-09-30 — Bronze-bound canonical CPI projection
+
+Added a canonical `price_population_fact` projection for the exact captured
+Stats NZ CPIQ.SE9A series. It independently verifies the retained CPI Silver
+manifest and all Parquet products against a fresh parse of the hash-pinned
+Bronze CSV, preserves quarter bounds and the source `NA` as an unknown-reason
+null, and leaves the index base and rights unresolved. It explicitly states
+that inflation adjustment was not performed. The clean-room runner now rebuilds
+and serializes the projection twice from freshly rebuilt Silver; all files match
+byte-for-byte: 449 canonical facts and 3,143 direct-lineage records. Bronze CAS
+is unchanged. The new `clean-room-recovery-20260930.json` remains
+`partial_with_blockers`; source rights/base qualification, additional context
+adapters/profiles, broader reports, and full Platinum metadata remain open.
+Focused tests: `test_cpi_canonical_projection.py` and
+`test_health_recovery_assurance.py` pass (7 tests); Ruff and basedpyright pass.
+
+Validation follow-up on 2026-09-30: `./scripts/validate.sh` passed with 7,146
+passed, 9 skipped, and 98.25% branch-aware repository coverage against the
+80% floor; all 52 schemas/42 representative documents, differential parity
+(9/9), configured mutation gates, hygiene, CAS benchmark, dependency/license/
+secret scans, and 113-component SBOM passed. Ruff, basedpyright, and seven
+focused CPI/recovery tests passed. The automatic Conductor `phase_7_gates`
+review passed; receipt SHA-256 is
+`6681721608e8541ca83da366552ed493fd7f837b403a7250861d629323c9eaa9` (full receipt retained in ignored `build/`).

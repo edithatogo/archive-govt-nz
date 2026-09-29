@@ -941,9 +941,12 @@ integrated parent head.
   donor replays rebuild 12 source-native profiles, compatibility SQLite, donor
   Gold and six plots; separate builders rebuild CPI/QES/GDP/population Silver,
   Context Gold and historical canonical Gold. See
-  `clean-room-recovery-20260929.json`. Donor/canonical reports, additional
-  source-native profiles and canonical adapters, and complete validated
-  Platinum remain open.
+  `clean-room-recovery-20260929.json` and
+  `clean-room-recovery-20260930.json`. The exact CPI series now also rebuilds
+  into 449 canonical price-population facts and 3,143 lineage records twice
+  from fresh Silver, with identical output digests; base and rights remain
+  unresolved. Donor/canonical reports, additional source-native profiles and
+  canonical adapters, and complete validated Platinum remain open.
 - [~] Compare output manifests/digests and explain permitted rendering-only
   variation; prove original objects were not mutated. [M-03, M-16; AC-02,
   AC-12] Repeat output inventories match within this runtime across raw, SQLite,

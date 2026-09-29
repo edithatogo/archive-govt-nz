@@ -697,3 +697,24 @@ JSON-RPC `resources/list`/`resources/read` pass; the real Cyclopts command
 returns structured JSON for no-state and does not create files. The focused
 CLI/MCP protocol suite passed 35 tests, with Ruff and basedpyright clean. No
 state is promoted to capture, normalization or publication readiness.
+
+## Bronze-bound canonical CPI recovery — 2026-09-30
+
+Added `cpi_canonical_projection.py` for exact captured Stats NZ CPIQ.SE9A.
+The adapter verifies the fixed Silver manifest and every Parquet product against
+an independent parse of the pinned Bronze CSV, then emits 449 canonical
+`price_population_fact` rows and 3,143 direct-lineage rows. It preserves NA as a
+null with an unknown reason; quarter bounds are explicit; index base and rights
+remain unresolved; no inflation adjustment or analytical admission is claimed.
+The clean-room runner rebuilt Silver and projected the canonical facts twice;
+all output paths, lengths and SHA-256 digests matched and the Bronze CAS snapshot
+was unchanged. Details: `clean-room-recovery-20260930.json`.
+
+Focused adapter/recovery tests: 7 passed. Full `./scripts/validate.sh`: 7,146
+passed, 9 skipped, 98.25% coverage against the 80% floor; 52 schemas/42
+representative documents, parity 9/9, configured mutations, hygiene, CAS,
+dependency/license/secrets and 113-component SBOM passed. Automatic Conductor
+`phase_7_gates` passed with receipt hash
+`6681721608e8541ca83da366552ed493fd7f837b403a7250861d629323c9eaa9`.
+The track remains in progress: other canonical adapters, source-native profiles,
+reports, rights/base qualification and complete Platinum metadata remain open.
