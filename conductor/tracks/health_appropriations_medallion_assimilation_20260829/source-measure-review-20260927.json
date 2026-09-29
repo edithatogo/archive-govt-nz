@@ -275,7 +275,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.json",
-      "sha256": "69019c3b04cc5247a103bf7774b683c3580108151ab91cddf5b3bfa3c1d363d9"
+      "sha256": "1bcf135f9b569d50598e213dcaf6ac3c173fd204cca29a8fa0adc6f8e45e0bd8"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-annual-context.json",
@@ -336,6 +336,14 @@
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/hyefu-crown-canonical-recovery-20260929.json",
       "sha256": "ae4fb9103ce4504232003d09a2347c01c3aa38763ec2052cfe04fad9a64a0830"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-crown-canonical-projection-20260929.md",
+      "sha256": "79461bdcfa05670292d0d72ebc3e3a1c79634e403be75aa109341c05f68708f6"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-crown-canonical-recovery-20260929.json",
+      "sha256": "1b6cda8a9ac0727cd4d8b3e09dd6d1ce4535e06fa9ef49898e8e07b1270bc561"
     }
   ]
 }

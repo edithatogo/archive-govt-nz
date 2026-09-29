@@ -220,9 +220,9 @@
       "qualification": "unqualified",
       "rights": "not_evaluated",
       "gaps": [
-        "canonical_expense_adapter_missing",
         "consolidation_and_accounting_comparability_not_qualified",
-        "no_year_only_or_cross_basis_join"
+        "no_year_only_or_cross_basis_join",
+        "canonical_projection_receipt_recorded_outside_metadata_census"
       ],
       "sources": [
         {
@@ -255,9 +255,9 @@
       "qualification": "unqualified",
       "rights": "not_evaluated",
       "gaps": [
-        "canonical_expense_adapter_missing",
         "consolidation_and_accounting_comparability_not_qualified",
-        "no_year_only_or_cross_basis_join"
+        "no_year_only_or_cross_basis_join",
+        "canonical_projection_receipt_recorded_outside_metadata_census"
       ],
       "sources": [
         {
@@ -373,7 +373,7 @@
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/next-source-ranges.md"
     },
     {
-      "sha256": "cdf944600d92ad47d2bf54bff3df24f4e565052d04defafff23de3837a70923e",
+      "sha256": "d737c162141ae08f086a2371c6f6da07fdbf87cf4471c1df875b4b1ba599ff47",
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md"
     },
     {
@@ -431,6 +431,10 @@
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/hyefu-core-crown-expense-20260929.md",
       "sha256": "0858f374f7175a0090ce48bdeb1de44c54d76aa69781694426eb5802ba1295c5"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-crown-canonical-recovery-20260929.json",
+      "sha256": "1b6cda8a9ac0727cd4d8b3e09dd6d1ce4535e06fa9ef49898e8e07b1270bc561"
     }
   ]
 }
