@@ -64,6 +64,7 @@ from archive_govt_nz.mcp_server import Server, call_tool, list_tools
         "qes-june2026-table8/v1",
         "pharmac-cpb-20260807/v1",
         "gdp-expenditure-actual-2026q1/v1",
+        "gdp-expenditure-actual-2026q2/v1",
         "befu-2026/v1",
         "hyefu-2025/v1",
     ]
@@ -121,9 +122,16 @@ def request_source(
     elif profile == "pharmac-cpb-20260807/v1":
         source, _ = pharmac_fixture(tmp_path)
         vintage = "Pharmac-CPB-2026-08-07"
-    elif profile == "gdp-expenditure-actual-2026q1/v1":
-        gdp_fixture(source)
-        vintage = gdp.VINTAGE
+    elif profile in {
+        "gdp-expenditure-actual-2026q1/v1",
+        "gdp-expenditure-actual-2026q2/v1",
+    }:
+        vintage = (
+            gdp.JUNE_VINTAGE
+            if profile == "gdp-expenditure-actual-2026q2/v1"
+            else gdp.VINTAGE
+        )
+        gdp_fixture(source, vintage)
     else:
         qes_fixture(source)
         vintage = "QES-2026-Q2"
@@ -207,7 +215,7 @@ def test_vote_health_revenue_profile_dispatches_to_its_allowlisted_adapter(
     assert source_operations.operate_source(request)["status"] == "preflight_passed"
 
 
-@pytest.mark.parametrize("family", ["pharmac", "gdp"])
+@pytest.mark.parametrize("family", ["pharmac", "gdp", "gdp-june"])
 def test_extended_dispatch_preserves_source_specific_package(
     tmp_path: Path, family: str
 ) -> None:
@@ -215,11 +223,16 @@ def test_extended_dispatch_preserves_source_specific_package(
         source, pin = pharmac_fixture(tmp_path)
         normalizer = pharmac.normalize_pharmac_budget
         profile, vintage = "pharmac-cpb-20260807/v1", "Pharmac-CPB-2026-08-07"
-    else:
+    elif family == "gdp":
         source = gdp_fixture(tmp_path / "source.xlsx")
         pin = hashlib.sha256(source.read_bytes()).hexdigest()
         normalizer = gdp.normalize_gdp
         profile, vintage = "gdp-expenditure-actual-2026q1/v1", gdp.VINTAGE
+    else:
+        source = gdp_fixture(tmp_path / "source.xlsx", gdp.JUNE_VINTAGE)
+        pin = hashlib.sha256(source.read_bytes()).hexdigest()
+        normalizer = gdp.normalize_gdp
+        profile, vintage = "gdp-expenditure-actual-2026q2/v1", gdp.JUNE_VINTAGE
     before = source.read_bytes()
     context = {
         "expected_sha256": pin,

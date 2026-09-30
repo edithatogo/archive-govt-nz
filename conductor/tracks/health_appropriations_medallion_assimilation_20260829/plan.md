@@ -95,9 +95,11 @@ repository validation command. External gates block only their affected task.
   Exact national resident-population table, all-age selector, stock/mean
   estimate choices, census basis and selectable period coverage are now pinned
   in `context-census.json`. The June 2026 GDP successor workbook and exact
-  Table 1 expenditure selector are now separately captured and hash-bound;
-  the March and June vintages are not spliced. Numeric population rights,
-  GDP currency, analytical admission and period-alignment gates remain open;
+  Table 1 expenditure selector are separately captured and hash-bound. June
+  now has a strict Bronze-to-Silver source profile and repeated clean-room
+  output; the March and June vintages remain separate. Numeric population
+  rights, GDP currency, canonical projection, analytical admission and
+  period-alignment gates remain open;
   CPI, QES wage, Treasury GDP and Crown expense joins remain subject to their
   own source-specific review.
 - [x] Evaluate published aggregate Health Survey indicators as a non-blocking
@@ -633,11 +635,13 @@ integrated parent head.
   now also have a Bronze-bound canonical fiscal-context projection (60 facts,
   420 direct lineage rows) with currency and denominator status unresolved.
   The June 2026-quarter GDP release was published 17 September 2026, after the
-  captured March-quarter vintage; its exact current-price workbook and series
-  selector remain uncaptured. The census records this as open work without
-  broadening the pinned March-2026 adapter. The exact workbook URL and
-  publication timestamp are recorded in `gdp-release-observation-20260930.json`;
-  its payload and rights remain unqualified.
+  captured March-quarter vintage. Its exact current-price workbook is captured
+  as a separate Bronze object and now rebuilds 61 Silver facts, 915 lineage
+  rows and 2,323 cell dispositions from `Table 1!C27:BK27`. Repeated clean-room
+  output is byte-identical; the pinned March profile and its canonical
+  projection remain unchanged. The June series is not in Context Gold and has
+  no canonical projection, currency qualification, annualization, denominator
+  selection or rights approval. See `gdp-june-profile-20260930.md`.
 - [ ] If S-05 passed its scope/rights gate, add the aggregate Health Survey
   adapter and explicit time/geography alignment; otherwise record its deferred
   disposition without blocking the Must scope. [S-05; AC-10]

@@ -35,7 +35,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-profile.md",
-      "sha256": "ec49028c320179f2376aa48261591dc704d1c0e2f272b0221010acc04362a932"
+      "sha256": "cf541ed83a72eca40e36764e9831b005ed17889169806db24d86994ee466e069"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-release-observation-20260930.json",
@@ -87,7 +87,7 @@
     },
     {
       "path": "src/archive_govt_nz/domains/health_appropriations/gdp.py",
-      "sha256": "ee202c8a236fd700236e6dc0b277bfe26a9065ab55deebafdfa2043b57592033"
+      "sha256": "4c8d704b259364f890ce6b42499656224f921ae8f766164dce9dc79f59f41738"
     },
     {
       "path": "src/archive_govt_nz/domains/health_appropriations/historical.py",

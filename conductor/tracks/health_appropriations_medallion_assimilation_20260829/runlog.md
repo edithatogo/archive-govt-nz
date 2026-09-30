@@ -3309,3 +3309,38 @@ audit, license inventory, secret scan and validated 113-component SBOM.
 Automatic `phase_1_bronze` Conductor review passed format, lint, schema and
 Bronze-targeted tests; receipt SHA-256
 `c065138752d73750...`. Hosted checks remain pending on the PR.
+
+## 2026-09-30 — June GDP successor Silver adapter and recovery
+
+Added the exact `StatsNZ-GDP-2026Q2` workbook profile and typed operation
+`gdp-expenditure-actual-2026q2/v1`, with its own transformation ID. From the
+pinned captured Bronze bytes, two clean local operation runs each emitted 61
+facts, 915 lineage rows and 2,323 nonempty-cell dispositions; their four output
+files matched byte-for-byte. The source census, capture receipt and CAS object
+were revalidated. The recovery receipt now includes this source and still
+reports `partial_with_blockers`; the additional profiles/adapters, reports and
+full validated Platinum profile remain open.
+
+Focused GDP, adapter, source-operation and recovery tests passed (506 passed,
+10 skipped). Ruff, formatting and basedpyright passed. Full `./scripts/validate.sh`
+passed: 7,220 tests, 10 skipped, 98.27% branch coverage against the 80% floor;
+53 schemas, 43 representative documents, 9/9 parity, configured mutation lanes,
+hygiene, 528.22 MB/s CAS benchmark, dependency/license/secret scans and validated
+113-component SBOM. The automatic `phase_7_gates` Conductor review passed its
+format, lint, schema, targeted-test and medallion-mutation checks; receipt
+SHA-256 `e21195caff0c82d914eeb71aad5f6d6fd88bcaeff839c29c3a37e735ff7f6e9e`.
+The full track-level completion review and hosted checks remain pending. The
+clean-room receipt SHA-256 is
+`28d74c2ab92f7bc7ffedae6a1031a1f4d94ac61888810c10e4a9c2cf05b337e2` and still
+reports `partial_with_blockers`. No Q2 canonical projection, Context Gold
+admission, currency qualification, annualization, denominator selection,
+rights approval or publication occurred.
+
+## 2026-09-30 — Align Codecov patch coverage with the 80% policy
+
+PR #567 exposed a second coverage gate: Codecov compared 94.44% patch coverage
+to an implicit 97.92% `auto` target, despite the repository's 80% total
+coverage floor and 98.27% measured total. Added an explicit 80% Codecov patch
+target and a regression assertion beside the existing total-coverage policy
+test. The official Codecov YAML validator accepted `codecov.yml`, and the
+focused policy test passed. Hosted checks for the updated commit are pending.

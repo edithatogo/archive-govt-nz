@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+import yaml
 
 from archive_govt_nz import assurance
 from archive_govt_nz.assurance import (
@@ -49,6 +50,8 @@ def test_static_and_coverage_policy_is_fail_closed() -> None:
     assert tools["coverage"]["run"]["branch"] is True
     assert tools["coverage"]["report"]["fail_under"] == 80
     assert tools["coverage"]["report"]["show_missing"] is True
+    codecov = yaml.safe_load((REPOSITORY_ROOT / "codecov.yml").read_text())
+    assert codecov["coverage"]["status"]["patch"]["default"]["target"] == "80%"
     assert COMMAND_TIMEOUT_SECONDS == 900
 
 

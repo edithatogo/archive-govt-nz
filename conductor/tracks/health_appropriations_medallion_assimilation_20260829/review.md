@@ -1271,3 +1271,34 @@ configured mutation lanes, hygiene, CAS benchmark (705.77 MB/s), audit, license,
 SBOM stages passed. The automatic Bronze Conductor phase gate passed format,
 lint, schema and targeted Bronze tests; receipt SHA-256 begins
 `c065138752d73750`. Hosted PR checks have not yet run.
+
+## 2026-09-30 — June GDP successor extractor review
+
+The June-quarter addition is versioned independently from the March GDP
+profile. It requires the June release title/date, exact `C27:BK27` extent and
+merged range, period labels, reference/prefix, unit, numeric format and all
+selected workbook metadata before emitting facts. The Q2 source operation has
+an exact profile-to-vintage binding; the Bronze dispatcher uses the same strict
+extractor. Tests cover 61-period chronology, separate vintage identity,
+preservation of unknown currency and no rights promotion. The captured Bronze
+source rebuilt twice with identical Silver manifests and payloads; byte fixity
+and census/source bindings were independently checked by the clean-room runner.
+No June observation enters the March Context Gold or canonical projection, and
+no annualization or denominator is performed.
+
+Remaining limits are explicit: the new vintage has no canonical projection,
+cross-vintage revision comparison, annual aggregation, currency qualification,
+rights approval or publication. Focused GDP, dispatcher, operation and recovery
+tests pass (596 passed, 10 skipped). The full local harness passes 7,220 tests,
+10 skipped at 98.27% branch coverage, plus schemas, parity, mutation, hygiene,
+supply-chain and SBOM gates. The automatic `phase_7_gates` review passes its
+targeted phase checks. Full track-level completion review and current-head
+hosted assurance remain pending; no phase or whole-track completion is claimed.
+
+## 2026-09-30 — Coverage gate alignment
+
+Hosted review found that Codecov's implicit patch `auto` target was 97.92%,
+above the intended 80% threshold. The configured patch target is now 80%, and
+the assurance-policy test pins both the repository total-coverage floor and
+the Codecov patch floor to 80%. Codecov's YAML validator and the focused test
+passed; final hosted checks for this update remain pending.

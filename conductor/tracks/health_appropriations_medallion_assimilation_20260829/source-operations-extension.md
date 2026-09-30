@@ -28,6 +28,13 @@ Hosted delivery of this extension remains pending; its dependency is delivered.
 Forecast's missing no-write capability remains a separate task; neither
 forecast profiles nor their default-writing behavior change here.
 
+The newly captured June 2026 GDP successor is handled in the separate
+`gdp-expenditure-actual-2026q2/v1` source-operation profile. It uses a distinct
+transformation ID and validates the 61-quarter `C27:BK27` layout. Its exact
+Bronze replay and package fixity are recorded in
+`gdp-june-profile-20260930.md`; this does not change the March profile or add
+the successor to Context Gold or the canonical GDP projection.
+
 ## Current evidence
 
 The new Pharmac preflight test first failed because the profile was absent.

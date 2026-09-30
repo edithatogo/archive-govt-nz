@@ -36,6 +36,7 @@
         "qes-june2026-table8/v1",
         "pharmac-cpb-20260807/v1",
         "gdp-expenditure-actual-2026q1/v1",
+        "gdp-expenditure-actual-2026q2/v1",
         "befu-2026/v1",
         "hyefu-2025/v1",
         "vote-health-supplementary-2003-04-summary/v1",
@@ -57,6 +58,7 @@
         "qes-june2026-table8-ordinary-hourly/v1",
         "stats-nz-cpi-all-groups/v1",
         "stats-nz-gdp-current-price-expenditure-actual-2026q1/v1",
+        "stats-nz-gdp-current-price-expenditure-actual-2026q2/v1",
         "stats-nz-population-annual-mean-context/v1",
         "treasury-health-expense-summary/v1",
         "vote-health-supplementary-revenue/v1",
@@ -634,6 +636,65 @@
             },
             "transformation_id": {
               "const": "stats-nz-gdp-current-price-expenditure-actual-2026q1/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "lineage": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "dispositions": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "facts",
+                "lineage",
+                "dispositions"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "gdp_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "cell_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "gdp_facts.parquet",
+                "field_lineage.parquet",
+                "cell_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "gdp-expenditure-actual-2026q2/v1"
+            },
+            "transformation_id": {
+              "const": "stats-nz-gdp-current-price-expenditure-actual-2026q2/v1"
             },
             "counts": {
               "type": "object",

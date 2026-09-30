@@ -8,10 +8,11 @@ from pathlib import Path
 import pytest
 from tests.domains.health_appropriations.test_gdp import workbook
 
+from archive_govt_nz.domains.health_appropriations import gdp
 from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
     dispatch_bronze,
 )
-from archive_govt_nz.domains.health_appropriations.gdp import VINTAGE
+from archive_govt_nz.domains.health_appropriations.gdp import JUNE_VINTAGE, VINTAGE
 from archive_govt_nz.domains.health_appropriations.gdp_adapter import (
     GdpAdapter,
     gdp_registration,
@@ -61,6 +62,32 @@ def test_gdp_registration_rejects_other_vintage(tmp_path: Path) -> None:
     )
     assert result.selection.status == "preserved_only"
     assert result.selection.reason == "no_matching_layout"
+
+
+def test_dispatch_keeps_june_successor_as_a_separate_source_profile(
+    tmp_path: Path,
+) -> None:
+    source = workbook(tmp_path / "gdp-june.xlsx", JUNE_VINTAGE)
+    bronze = source.read_bytes()
+    result = dispatch_bronze(
+        bronze,
+        source_sha256=hashlib.sha256(bronze).hexdigest(),
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        registrations=(
+            gdp_registration(
+                source_locator="https://www.stats.govt.nz/gdp-june.xlsx",
+                source_vintage=JUNE_VINTAGE,
+                observed_at="2026-09-29T21:28:10.739074Z",
+            ),
+        ),
+    )
+    assert result.selection.status == "selected"
+    assert len(result.output.records) == 61
+    assert {row["source_vintage"] for row in result.output.records} == {JUNE_VINTAGE}
+    assert {row["transformation_id"] for row in result.output.records} == {
+        "stats-nz-gdp-current-price-expenditure-actual-2026q2/v1"
+    }
+    assert result.output.records[-1]["period_token"] == gdp.JUNE_PERIODS[-1][0]
 
 
 def test_gdp_adapter_bad_hash_and_invalid_or_wrong_vintage(tmp_path: Path) -> None:
