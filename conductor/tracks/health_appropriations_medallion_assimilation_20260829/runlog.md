@@ -18,10 +18,15 @@ skipped, 98.26% branch-aware coverage (80% floor), 53 schemas/43 samples, 9/9
 parity, all mutation lanes, hygiene, CAS throughput, dependency and license
 audits, secret scan and 113-component SBOM validation. Automatic Conductor
 phase 7 review passed (receipt `fa3a98cd9bf7e909bf638f2ed0068a5512952495274c5ea570c6f2a2b8e7e89f`).
-The first harness attempt had one expected stale index hash in the source-measure
+The first harness attempt had one stale index hash in the source-measure
 review; after refreshing that evidence pin, its 36 focused tests and the full
-harness passed. The automatic Conductor phase 7 review passed with receipt
-`fa3a98cd9bf7e909bf638f2ed0068a5512952495274c5ea570c6f2a2b8e7e89f`.
+harness passed. Initial hosted assurance on Ubuntu, macOS and Windows then
+found that a focused test read the maintainer's external SSD package path. The
+test now creates temporary pinned Parquet fixtures; production replay still
+verifies retained packages. The required harness passed again after this fix
+with 7,229 passed, 10 skipped and 98.26% coverage. Automatic Conductor phase 7
+review passed (receipt SHA-256
+`135b056f086dd1ee5272dae3d1436fa516e4043a5b90280491afa8a6043b4ca6`).
 Clean-room recovery repeated the supported builds, verified Bronze unchanged,
 and retained the three remaining blocker groups in [recovery
 receipt](clean-room-recovery-20260930-classification-labels.json) (SHA-256
