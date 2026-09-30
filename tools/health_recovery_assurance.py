@@ -129,6 +129,34 @@ CONTEXT_CENSUS_SHA256 = (
 POPULATION_SOURCE_SHA256 = (
     "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9"
 )
+CLASSIFICATION_PACKAGES = {
+    2025: {
+        "path": "canonical-budget-classification-2025-20260831-v1",
+        "marker_sha256": (
+            "7e4d65d5bedfec72fe83d0882529d395a6401e816545286ab3fa9c8cfca8fcb3"
+        ),
+        "source_sha256": (
+            "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338"
+        ),
+        "manifest_sha256": (
+            "1b1e5dfd3fa90d98dcf5200997001db236df7b40f4404b658c36f5cb0264d2fe"
+        ),
+        "rows": 215,
+    },
+    2026: {
+        "path": "canonical-budget-classification-2026-20260831-v1",
+        "marker_sha256": (
+            "1a5aae6c79d79901c6bcaca9396fa6efa69e3572c9f382bbc011a427c5179c8d"
+        ),
+        "source_sha256": (
+            "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0"
+        ),
+        "manifest_sha256": (
+            "f34000992fd65dca445e7ad251cb06df3c68107410355ea057ea9a2bf8481738"
+        ),
+        "rows": 185,
+    },
+}
 CAPTURE_MANIFEST_SHA256 = (
     "2de49f07c877aab196afae572db32bfc2d48fd4340eb17c9a4bfb3bb2cc357e7"
 )
@@ -1110,6 +1138,141 @@ def donor_parity_recovery_report() -> dict[str, Any]:
     }
 
 
+def classification_label_occurrence_report() -> dict[str, Any]:
+    """Verify retained Budget label packages and compare exact literal counts."""
+    packages: dict[str, dict[str, Any]] = {}
+    for year, pin in CLASSIFICATION_PACKAGES.items():
+        package = ARCHIVE / "silver" / pin["path"]
+        marker_path = package / "LOCAL_CLASSIFICATION.json"
+        marker_bytes = marker_path.read_bytes()
+        require_evidence(
+            hashlib.sha256(marker_bytes).hexdigest() == pin["marker_sha256"],
+            f"classification_marker_pin_mismatch:{year}",
+        )
+        marker = json.loads(marker_bytes)
+        require_evidence(
+            marker["schema_version"] == "archive-govt-nz.health-local-classification/v1"
+            and marker["source_vintage"] == f"Budget-{year}"
+            and marker["original_sha256"] == pin["source_sha256"]
+            and marker["input_manifest_sha256"] == pin["manifest_sha256"]
+            and marker["authoritative_mapping"] == "not_performed"
+            and marker["publication_approval"] == "not_granted"
+            and marker["rights_state"] == "not_evaluated",
+            f"classification_marker_contract_failed:{year}",
+        )
+        expected_files = {item["path"]: item for item in marker["files"]}
+        require_evidence(
+            set(expected_files)
+            == {
+                "classification_dimension.parquet",
+                "field_lineage.parquet",
+                "lineage_accounting.jsonl",
+                "projection_receipt.json",
+            },
+            f"classification_file_inventory_invalid:{year}",
+        )
+        for name, file_pin in expected_files.items():
+            file_path = package / name
+            require_evidence(
+                file_path.is_file()
+                and file_path.stat().st_size == file_pin["bytes"]
+                and digest(file_path) == file_pin["sha256"],
+                f"classification_package_file_pin_failed:{year}:{name}",
+            )
+        dimension_path = package / "classification_dimension.parquet"
+        dimension_meta = pq.read_metadata(dimension_path)
+        dimension_schema_sha = hashlib.sha256(
+            dimension_meta.schema.to_arrow_schema().serialize().to_pybytes()
+        ).hexdigest()
+        require_evidence(
+            dimension_meta.num_rows == pin["rows"]
+            and expected_files[dimension_path.name]["rows"] == pin["rows"]
+            and expected_files[dimension_path.name]["bytes"]
+            == dimension_path.stat().st_size
+            and expected_files[dimension_path.name]["sha256"] == digest(dimension_path)
+            and expected_files[dimension_path.name]["schema_sha256"]
+            == dimension_schema_sha,
+            f"classification_dimension_pin_failed:{year}",
+        )
+        table = pq.read_table(
+            dimension_path,
+            columns=[
+                "source_vintage",
+                "source_object_sha256",
+                "source_label",
+                "scheme",
+                "scheme_version",
+                "normalized_identifier",
+                "mapping_state",
+                "valid_time_status",
+                "rights_state",
+            ],
+        )
+        labels: dict[str, int] = {}
+        for row in table.to_pylist():
+            require_evidence(
+                row["source_vintage"] == f"Budget-{year}"
+                and row["source_object_sha256"] == pin["source_sha256"]
+                and row["scheme"]
+                == "budget_workbook_functional_classification_source_label"
+                and row["scheme_version"] is None
+                and row["normalized_identifier"] is None
+                and row["mapping_state"] == "unmapped"
+                and row["valid_time_status"] == "not_established"
+                and row["rights_state"] == "not_evaluated",
+                f"classification_row_contract_failed:{year}",
+            )
+            label = row["source_label"]
+            require_evidence(
+                isinstance(label, str) and label != "",
+                f"classification_label_invalid:{year}",
+            )
+            labels[label] = labels.get(label, 0) + 1
+        require_evidence(
+            sum(labels.values()) == pin["rows"],
+            f"classification_row_count_failed:{year}",
+        )
+        packages[str(year)] = {
+            "source_vintage": f"Budget-{year}",
+            "package_marker_sha256": pin["marker_sha256"],
+            "source_object_sha256": pin["source_sha256"],
+            "input_manifest_sha256": pin["manifest_sha256"],
+            "dimension_rows": pin["rows"],
+            "dimension_sha256": digest(dimension_path),
+            "dimension_schema_sha256": dimension_schema_sha,
+            "literal_label_occurrences": dict(sorted(labels.items())),
+            "rights": "not_evaluated",
+            "authoritative_mapping": "not_performed",
+        }
+    first_labels = packages["2025"]["literal_label_occurrences"]
+    second_labels = packages["2026"]["literal_label_occurrences"]
+    all_labels = sorted(set(first_labels) | set(second_labels))
+    changes = [
+        {
+            "source_label": label,
+            "budget_2025_occurrences": first_labels.get(label, 0),
+            "budget_2026_occurrences": second_labels.get(label, 0),
+            "occurrence_delta": second_labels.get(label, 0)
+            - first_labels.get(label, 0),
+        }
+        for label in all_labels
+        if first_labels.get(label, 0) != second_labels.get(label, 0)
+    ]
+    return {
+        "status": "verified_exact_literal_occurrence_counts",
+        "comparison_scope": "exact_literal_label_occurrence_counts",
+        "packages": packages,
+        "changes": changes,
+        "classification_system_identity": "not_established",
+        "authoritative_crosswalk": "not_performed",
+        "valid_time": "not_assessed",
+        "rights": "not_evaluated",
+        "comparability": "not_asserted",
+        "drift_disposition": "observed_surface_change_unmapped",
+        "repeat_identical": True,
+    }
+
+
 def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a clean-room root.
     """Rebuild supported products in a disposable derivative root."""
     if not ARCHIVE.is_dir():
@@ -1215,11 +1378,17 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
         outputs["pharmac_canonical_projection"] = _pharmac_recovery_report(root)
         outputs["canonical_gold"] = _canonical_gold_recovery_report(root)
         outputs["source_health_report"] = source_health_recovery_report()
+        outputs["classification_label_occurrences"] = (
+            classification_label_occurrence_report()
+        )
         canonical_quality = outputs["canonical_gold"].get("quality_report") or {}
         outputs["donor_and_canonical_reports"] = {
             "donor_parity": donor_parity_recovery_report(),
             "canonical_quality": canonical_quality or None,
             "source_health": outputs["source_health_report"],
+            "classification_label_occurrences": outputs[
+                "classification_label_occurrences"
+            ],
             "unresolved_canonical_reports": canonical_quality.get(
                 "unresolved_reports", ["canonical_gold_not_rebuilt"]
             ),

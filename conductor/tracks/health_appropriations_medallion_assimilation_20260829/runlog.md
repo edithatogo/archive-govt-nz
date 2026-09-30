@@ -1,5 +1,39 @@
 # Run Log
 
+## 2026-09-30 — Verified Budget source-label occurrence comparison
+
+Added clean-room replay of the retained Budget-2025 and Budget-2026 local
+classification packages. The replay checks each descriptor pin and status,
+each declared package file's inventory, the dimension Parquet bytes/schema and
+row count, and row-level source vintage/object, literal source label, unmapped
+state, missing normalized identifier, unestablished valid time and unevaluated
+rights. Both years repeat deterministically at 215 and 185 occurrences. The
+literal label counts are Health 179/144, No Functional Classification 32/35,
+Core Government Services 2/3, and Social Security and Welfare 2/3. These are
+observed surface counts only: classification system identity, authoritative
+crosswalk, valid time, rights and comparability remain unestablished. This does
+not clear canonical classification drift or cross-source reconciliation. The
+required `./scripts/validate.sh` completed successfully: 7,229 passed, 10
+skipped, 98.26% branch-aware coverage (80% floor), 53 schemas/43 samples, 9/9
+parity, all mutation lanes, hygiene, CAS throughput, dependency and license
+audits, secret scan and 113-component SBOM validation. Automatic Conductor
+phase 7 review passed (receipt `fa3a98cd9bf7e909bf638f2ed0068a5512952495274c5ea570c6f2a2b8e7e89f`).
+The first harness attempt had one stale index hash in the source-measure
+review; after refreshing that evidence pin, its 36 focused tests and the full
+harness passed. Initial hosted assurance on Ubuntu, macOS and Windows then
+found that a focused test read the maintainer's external SSD package path. The
+test now creates temporary pinned Parquet fixtures; production replay still
+verifies retained packages. The required harness passed again after this fix
+with 7,229 passed, 10 skipped and 98.26% coverage. Automatic Conductor phase 7
+review passed (receipt SHA-256
+`135b056f086dd1ee5272dae3d1436fa516e4043a5b90280491afa8a6043b4ca6`).
+Clean-room recovery repeated the supported builds, verified Bronze unchanged,
+and retained the three remaining blocker groups in [recovery
+receipt](clean-room-recovery-20260930-classification-labels.json) (SHA-256
+`5a650247e1c07e100113d0d2a3189f6611b70025a02d2140502c71ea331878d0`).
+Evidence: [occurrence report](classification-label-occurrences-20260930.json).
+
+
 ## 2026-09-26 — Phase 3.1 fixture evidence reconciliation
 
 Reconciled the two stale Phase 3.1 checklist items against the merged

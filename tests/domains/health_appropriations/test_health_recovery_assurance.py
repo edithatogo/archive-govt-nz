@@ -8,6 +8,8 @@ from pathlib import Path
 from types import SimpleNamespace
 from typing import TYPE_CHECKING
 
+import pyarrow as pa
+import pyarrow.parquet as pq
 import pytest
 
 if TYPE_CHECKING:
@@ -38,6 +40,106 @@ def test_repeat_build_mismatch_fails_closed(tmp_path: Path) -> None:
     (second / "MANIFEST.json").write_bytes(b"second")
     with pytest.raises(RuntimeError, match=r"^canonical_gold_repeat_mismatch$"):
         MODULE.compare_product_outputs(first, second, "canonical_gold")
+
+
+def _classification_package_fixture(tmp_path: Path, monkeypatch: MonkeyPatch) -> None:
+    packages: dict[int, dict[str, object]] = {}
+    for year, label in ((2025, "Health"), (2026, "No Functional Classification")):
+        source_sha = str(year) * 64
+        manifest_sha = str(year - 2024) * 64
+        package_name = f"classification-{year}"
+        package = tmp_path / "silver" / package_name
+        package.mkdir(parents=True)
+        dimension_path = package / "classification_dimension.parquet"
+        table = pa.table(
+            {
+                "source_vintage": [f"Budget-{year}"],
+                "source_object_sha256": [source_sha],
+                "source_label": [label],
+                "scheme": ["budget_workbook_functional_classification_source_label"],
+                "scheme_version": pa.array([None], type=pa.string()),
+                "normalized_identifier": pa.array([None], type=pa.string()),
+                "mapping_state": ["unmapped"],
+                "valid_time_status": ["not_established"],
+                "rights_state": ["not_evaluated"],
+            }
+        )
+        pq.write_table(table, dimension_path)
+        for filename, content in (
+            ("field_lineage.parquet", b"lineage"),
+            ("lineage_accounting.jsonl", b"{}\n"),
+            ("projection_receipt.json", b"{}\n"),
+        ):
+            (package / filename).write_bytes(content)
+        metadata = pq.read_metadata(dimension_path)
+        schema_sha = MODULE.hashlib.sha256(
+            metadata.schema.to_arrow_schema().serialize().to_pybytes()
+        ).hexdigest()
+        files = []
+        for path in sorted(package.iterdir()):
+            file_pin: dict[str, object] = {
+                "path": path.name,
+                "bytes": path.stat().st_size,
+                "sha256": MODULE.digest(path),
+            }
+            if path.name.endswith(".parquet"):
+                file_pin["schema_sha256"] = schema_sha
+                file_pin["rows"] = 1
+            files.append(file_pin)
+        marker = {
+            "schema_version": "archive-govt-nz.health-local-classification/v1",
+            "source_vintage": f"Budget-{year}",
+            "original_sha256": source_sha,
+            "input_manifest_sha256": manifest_sha,
+            "authoritative_mapping": "not_performed",
+            "publication_approval": "not_granted",
+            "rights_state": "not_evaluated",
+            "files": files,
+        }
+        marker_path = package / "LOCAL_CLASSIFICATION.json"
+        marker_path.write_text(json.dumps(marker, sort_keys=True))
+        packages[year] = {
+            "path": package_name,
+            "marker_sha256": MODULE.digest(marker_path),
+            "source_sha256": source_sha,
+            "manifest_sha256": manifest_sha,
+            "rows": 1,
+        }
+    monkeypatch.setattr(MODULE, "ARCHIVE", tmp_path)
+    monkeypatch.setattr(MODULE, "CLASSIFICATION_PACKAGES", packages)
+
+
+def test_classification_label_occurrence_report_verifies_retained_packages(
+    monkeypatch: MonkeyPatch, tmp_path: Path
+) -> None:
+    _classification_package_fixture(tmp_path, monkeypatch)
+    report = MODULE.classification_label_occurrence_report()
+    assert report["status"] == "verified_exact_literal_occurrence_counts"
+    assert report["comparison_scope"] == "exact_literal_label_occurrence_counts"
+    assert report["packages"]["2025"]["dimension_rows"] == 1
+    assert report["packages"]["2026"]["dimension_rows"] == 1
+    assert report["classification_system_identity"] == "not_established"
+    assert report["authoritative_crosswalk"] == "not_performed"
+    assert report["rights"] == "not_evaluated"
+    assert report["comparability"] == "not_asserted"
+    assert report["repeat_identical"] is True
+
+
+def test_classification_label_report_rejects_changed_marker_pin(
+    monkeypatch: MonkeyPatch, tmp_path: Path
+) -> None:
+    _classification_package_fixture(tmp_path, monkeypatch)
+    marker = (
+        tmp_path
+        / "silver"
+        / MODULE.CLASSIFICATION_PACKAGES[2025]["path"]
+        / "LOCAL_CLASSIFICATION.json"
+    )
+    marker.write_text("{}")
+    with pytest.raises(
+        RuntimeError, match=r"^classification_marker_pin_mismatch:2025$"
+    ):
+        MODULE.classification_label_occurrence_report()
 
 
 def test_context_source_binding_uses_captured_source_census() -> None:
@@ -281,6 +383,11 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     )
     monkeypatch.setattr(
         MODULE,
+        "classification_label_occurrence_report",
+        lambda: {"status": "verified_exact_literal_occurrence_counts"},
+    )
+    monkeypatch.setattr(
+        MODULE,
         "donor_parity_recovery_report",
         lambda: {
             "status": "verified_with_nonmutating_deviations",
@@ -432,6 +539,10 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     )
     assert result["products_rebuilt"]["donor_sqlite_gold_plots"]["repeat_identical"]
     assert result["products_rebuilt"]["donor_source_native_silver"]["repeat_identical"]
+    assert (
+        result["products_rebuilt"]["classification_label_occurrences"]["status"]
+        == "verified_exact_literal_occurrence_counts"
+    )
     assert result["products_rebuilt"]["gdp_june_successor_silver"]["repeat_identical"]
     assert result["products_rebuilt"]["donor_and_canonical_reports"][
         "unresolved_canonical_reports"
