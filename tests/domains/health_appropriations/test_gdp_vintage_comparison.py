@@ -69,6 +69,14 @@ def test_comparison_reports_exact_changed_overlap_without_semantic_promotion() -
     assert report["unchanged_period_count"] == 59
     assert report["changed_period_count"] == 1
     assert report["changed_period_tokens"] == ["Jun-11"]
+    assert report["changes"] == [
+        {
+            "period_token": "Jun-11",
+            "march_value": "100",
+            "june_value": "101",
+            "delta": "1",
+        }
+    ]
     assert report["difference_interpretation"] == "not_assessed"
     assert report["currency"] == "unresolved"
     assert report["rights_state"] == "not_evaluated"

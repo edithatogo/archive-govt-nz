@@ -179,6 +179,7 @@ they are not current-state assertions.
 - [Historical Budget and forecast source register](historical-source-register.md)
 - [Exact source series and period/rights review](source-measure-review-20260927.json)
 - [Budget source-label occurrence comparison](classification-label-occurrences-20260930.json)
+- [GDP March/June vintage differences](gdp-vintage-reconciliation-20260930.json)
 
 - [Normalization and SQLite checkpoint integration](./normalization-checkpoint-integration-20260913.md)
 - [Preserved final normalization checkpoint](./normalization-admission-checkpoint-20260906.json)
