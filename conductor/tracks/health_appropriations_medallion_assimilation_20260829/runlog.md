@@ -3434,3 +3434,18 @@ schema, targeted tests and medallion mutation checks; immutable receipt
 `phase_7_gates-review-receipt-20260930-source-health.json` SHA-256 is
 `6d75034efac10f2f38508b4a5aa20dafebce3790d5db0fd199c2aa5354372bb0`.
 Hosted checks remain pending.
+
+### Hosted assurance follow-up for PR #570
+
+The initial hosted Linux assurance run on `8a9e0f5a` failed one test because
+`test_source_health_recovery_report_replays_capture_and_census` attempted to
+read the maintainer-only external path
+`/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/manifests/official-capture-2026-09-30-health-refresh.json`.
+The run reported 7,221 passed and 15 skipped before failing. Replaced that
+test dependency with a temporary census, capture manifest, and CAS fixture;
+the production recovery path remains bound to the pinned archive evidence.
+The follow-up head `74585147` has all hosted assurance, CodeQL, analysis, lint,
+and Codecov patch checks passing. Hosted Linux validation reported 7,222
+passed, 15 skipped, 98.26% coverage against the 80% floor, 53 schemas/43
+representative documents, 9/9 parity checks, and a validated 114-component
+SBOM. No required check was bypassed.
