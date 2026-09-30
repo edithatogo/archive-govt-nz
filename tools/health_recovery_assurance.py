@@ -20,6 +20,7 @@ from archive_govt_nz.domains.health_appropriations import (
     fiscal_crown_literals,
     gdp,
     gdp_canonical_projection,
+    gdp_vintage_comparison,
     hyefu_crown_expense,
     hyefu_crown_expense_canonical_projection,
     pharmac,
@@ -358,13 +359,32 @@ def rebuild_gdp_june_silver(root: Path, index: int) -> dict[str, Any]:
 
 
 def gdp_june_recovery_report(root: Path) -> dict[str, Any]:
-    """Prove clean Silver builds match without selecting the successor analytically."""
+    """Prove Silver and canonical June outputs match without analytical selection."""
     first = rebuild_gdp_june_silver(root, 1)
     second = rebuild_gdp_june_silver(root, 2)
     files = compare_product_outputs(
         root / "gdp-june-1", root / "gdp-june-2", "gdp_june_silver"
     )
     require_evidence(first == second, "gdp_june_silver_receipt_mismatch")
+    canonical_products = []
+    for index in (1, 2):
+        package = root / f"gdp-june-{index}"
+        manifest_pin = digest(package / "MANIFEST.json")
+        facts, lineage, receipt = gdp_canonical_projection.project_gdp_june(
+            package, manifest_pin, ARCHIVE / "bronze-cas" / "sha256"
+        )
+        target = root / f"gdp-june-canonical-{index}"
+        target.mkdir()
+        pq.write_table(
+            facts, target / "fiscal_context_fact.parquet", compression="zstd"
+        )
+        pq.write_table(lineage, target / "field_lineage.parquet", compression="zstd")
+        (target / "projection-receipt.json").write_text(
+            json.dumps(receipt, sort_keys=True, indent=2) + "\n", encoding="utf-8"
+        )
+        canonical_products.append({"files": tree(target), "receipt": receipt})
+    canonical_repeat = canonical_products[0] == canonical_products[1]
+    require_evidence(canonical_repeat, "gdp_june_canonical_projection_repeat_mismatch")
     return {
         "source_id": GDP_JUNE_SOURCE_ID,
         "source_object_sha256": GDP_JUNE_SOURCE_SHA256,
@@ -373,12 +393,38 @@ def gdp_june_recovery_report(root: Path) -> dict[str, Any]:
         "files": files,
         "counts": first["receipt"]["counts"],
         "repeat_identical": True,
-        "canonical_projection": "not_performed",
+        "canonical_projection": {
+            "files": canonical_products[0]["files"],
+            "repeat_identical": canonical_repeat,
+            "manifest_sha256": canonical_products[0]["receipt"][
+                "source_manifest_sha256"
+            ],
+            "fact_count": canonical_products[0]["receipt"]["output_records"],
+            "lineage_count": canonical_products[0]["receipt"]["lineage_records"],
+            "transformation_id": canonical_products[0]["receipt"]["transformation_id"],
+        },
         "currency": "unverified",
         "denominator_selection": "not_performed",
         "rights_state": "not_evaluated",
         "publication": "not_performed",
     }
+
+
+def gdp_vintage_comparison_report(root: Path) -> dict[str, Any]:
+    """Compare shared March/June periods from verified canonical facts."""
+    march_path = root / "gdp-canonical-1" / "fiscal_context_fact.parquet"
+    june_path = root / "gdp-june-canonical-1" / "fiscal_context_fact.parquet"
+    report = gdp_vintage_comparison.compare_gdp_vintages(
+        pq.read_table(march_path).to_pylist(),
+        pq.read_table(june_path).to_pylist(),
+    )
+    report["march_source_manifest_sha256"] = (
+        gdp_canonical_projection.SOURCE_MANIFEST_SHA256
+    )
+    report["june_source_manifest_sha256"] = (
+        gdp_canonical_projection.JUNE_SOURCE_MANIFEST_SHA256
+    )
+    return report
 
 
 def rebuild_context_silver(root: Path, family: str) -> dict[str, Any]:
@@ -970,6 +1016,7 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
             outputs["gdp_canonical_projection"] = _gdp_canonical_recovery_report(
                 silver_roots[0], root
             )
+            outputs["gdp_vintage_comparison"] = gdp_vintage_comparison_report(root)
         donor_products = {
             str(index): rebuild_donor_products(root, index) for index in (1, 2)
         }
