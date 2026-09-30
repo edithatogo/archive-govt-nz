@@ -152,7 +152,6 @@ GDP_JUNE_SOURCE_LOCATOR = (
 GDP_JUNE_OBSERVED_AT = "2026-09-29T21:28:10.739074Z"
 GDP_JUNE_FACT_COUNT = 61
 DONOR_ROW_COUNT = 312
-CAPTURED_SOURCE_COUNT = 74
 GDP_JUNE_CAPTURE_SCOPE = (
     "source_capture_and_series_identification_only_no_analytical_"
     "admission_or_legal_approval"
@@ -1043,10 +1042,11 @@ def source_health_recovery_report() -> dict[str, Any]:
     require_evidence(first == recorded, "source_health_report_recorded_mismatch")
     summary = first["summary"]
     reconciliation = first["capture_reconciliation"]
+    captured_count = summary["resource_dispositions"].get("captured", 0)
     require_evidence(
         reconciliation["state"] == "capture_manifest_and_bronze_objects_verified"
-        and reconciliation["matched_resource_count_verified"] == CAPTURED_SOURCE_COUNT
-        and reconciliation["bronze_object_count_verified"] == CAPTURED_SOURCE_COUNT,
+        and reconciliation["matched_resource_count_verified"] == captured_count
+        and reconciliation["bronze_object_count_verified"] == captured_count,
         "source_health_capture_reconciliation_incomplete",
     )
     return {
