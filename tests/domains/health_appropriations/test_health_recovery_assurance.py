@@ -117,6 +117,23 @@ def test_donor_parity_recovery_report_retains_unapproved_deviations(
     assert result["repeat_identical"] is True
 
 
+def test_source_health_recovery_report_replays_capture_and_census() -> None:
+    result = MODULE.source_health_recovery_report()
+
+    assert result["status"] == "verified_repeat_identical"
+    assert result["report_sha256"] == MODULE.digest(
+        MODULE.TRACK / "source-health-report.json"
+    )
+    assert result["summary"]["resource_count"] == 142
+    assert result["summary"]["resource_dispositions"] == {
+        "captured": 74,
+        "out_of_scope": 68,
+    }
+    assert result["summary"]["context_series_vintage_count"] == 11
+    assert result["capture_reconciliation"]["bronze_object_count_verified"] == 74
+    assert any("not assess" in limit for limit in result["limitations"])
+
+
 def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: PLR0915
     monkeypatch: MonkeyPatch, tmp_path: Path
 ) -> None:
@@ -144,6 +161,14 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
         },
     )
     monkeypatch.setattr(MODULE, "canonical_inputs", lambda: ())
+    monkeypatch.setattr(
+        MODULE,
+        "source_health_recovery_report",
+        lambda: {
+            "status": "verified_repeat_identical",
+            "summary": {"resource_count": 142},
+        },
+    )
     monkeypatch.setattr(
         MODULE,
         "donor_parity_recovery_report",
@@ -307,6 +332,10 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     )
     assert "compatibility_sqlite" not in result["required_but_not_rebuilt"]
     assert "all_source_native_silver" not in result["required_but_not_rebuilt"]
+    assert (
+        "canonical_classification_drift_revision_and_cross_source_reports"
+        in result["required_but_not_rebuilt"]
+    )
     assert (
         "remaining_source_native_silver_profiles_and_canonical_adapters"
         in result["required_but_not_rebuilt"]
