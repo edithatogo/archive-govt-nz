@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import importlib.util
 import json
 import tempfile
 from pathlib import Path
@@ -141,6 +142,7 @@ GDP_JUNE_SOURCE_LOCATOR = (
 )
 GDP_JUNE_OBSERVED_AT = "2026-09-29T21:28:10.739074Z"
 GDP_JUNE_FACT_COUNT = 61
+DONOR_ROW_COUNT = 312
 GDP_JUNE_CAPTURE_SCOPE = (
     "source_capture_and_series_identification_only_no_analytical_"
     "admission_or_legal_approval"
@@ -968,7 +970,76 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
     files = compare_product_outputs(
         root / "canonical-1", root / "canonical-2", "canonical_gold"
     )
-    return {"files": files, "repeat_identical": True}
+    manifest = json.loads((root / "canonical-1" / "MANIFEST.json").read_bytes())
+    quality = manifest.get("quality_report")
+    require_evidence(
+        isinstance(quality, dict)
+        and quality.get("schema_version")
+        == "archive-govt-nz.health-canonical-gold-quality/v1"
+        and quality.get("unaccounted_input_records") == 0,
+        "canonical_gold_quality_report_invalid",
+    )
+    return {
+        "files": files,
+        "repeat_identical": True,
+        "quality_report": {
+            "schema_version": quality["schema_version"],
+            "input_record_count": quality["input_record_count"],
+            "input_records_with_product": quality["input_records_with_product"],
+            "unaccounted_input_records": quality["unaccounted_input_records"],
+            "products": quality["products"],
+            "unresolved_reports": quality["unresolved_reports"],
+        },
+    }
+
+
+def donor_parity_recovery_report() -> dict[str, Any]:
+    """Replay the pinned donor reconciliation and retain its non-approval state."""
+    script = TRACK / "donor-parity-replay.py"
+    spec = importlib.util.spec_from_file_location("health_donor_parity_replay", script)
+    if spec is None or spec.loader is None:
+        message = "donor_replay_unavailable"
+        raise RuntimeError(message)
+    replay_module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(replay_module)
+    first = replay_module.replay(ARCHIVE)
+    second = replay_module.replay(ARCHIVE)
+    require_evidence(first == second, "donor_parity_report_repeat_mismatch")
+    require_evidence(
+        first["gold"]["status"] == "exact_parity"
+        and first["gold"]["matched_rows"] == DONOR_ROW_COUNT
+        and first["raw"]["status"] == "explained_deviations"
+        and first["historical_deviation_dispositions"]
+        == "accepted_retain_both_no_replacement",
+        "donor_parity_report_contract_failed",
+    )
+    return {
+        "status": "verified_with_nonmutating_deviations",
+        "donor_manifest_sha256": first["donor_manifest_sha256"],
+        "raw_manifest_sha256": first["raw_manifest_sha256"],
+        "donor_objects_verified": first["donor_objects_verified"],
+        "donor_bytes_verified": first["donor_bytes_verified"],
+        "gold": {
+            "status": first["gold"]["status"],
+            "matched_rows": first["gold"]["matched_rows"],
+            "table_counts": first["gold"]["table_counts"],
+        },
+        "raw": {
+            "status": first["raw"]["status"],
+            "matched_rows": first["raw"]["matched_rows"],
+            "unresolved_rows": first["raw"]["unresolved_rows"],
+            "explained_rows": first["raw"]["explained_rows"],
+            "table_counts": first["raw"]["table_counts"],
+        },
+        "historical_counts": first["historical_counts"],
+        "historical_deviation_count": len(first["exact_decimal_deviations"]),
+        "historical_deviation_dispositions": first["historical_deviation_dispositions"],
+        "binary_representation_flags": first["binary_representation_flags"],
+        "repair_approval": first["repair_approval"],
+        "rights_state": first["rights_state"],
+        "publication_state": first["publication_state"],
+        "repeat_identical": True,
+    }
 
 
 def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a clean-room root.
@@ -1075,6 +1146,14 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
         )
         outputs["pharmac_canonical_projection"] = _pharmac_recovery_report(root)
         outputs["canonical_gold"] = _canonical_gold_recovery_report(root)
+        canonical_quality = outputs["canonical_gold"].get("quality_report") or {}
+        outputs["donor_and_canonical_reports"] = {
+            "donor_parity": donor_parity_recovery_report(),
+            "canonical_quality": canonical_quality or None,
+            "unresolved_canonical_reports": canonical_quality.get(
+                "unresolved_reports", ["canonical_gold_not_rebuilt"]
+            ),
+        }
     unchanged = original_snapshot == tree(ARCHIVE / "bronze-cas")
     if not unchanged:
         message = "bronze_mutation_detected"
@@ -1087,7 +1166,7 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
         "products_rebuilt": outputs,
         "bronze_objects_unchanged": unchanged,
         "required_but_not_rebuilt": [
-            "donor_and_canonical_reports",
+            "canonical_source_health_classification_drift_revision_and_cross_source_reports",
             "remaining_source_native_silver_profiles_and_canonical_adapters",
             "platinum_dcat_croissant_ro_crate_prov_complete_profile",
         ],
