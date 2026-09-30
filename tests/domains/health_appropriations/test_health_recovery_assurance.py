@@ -42,6 +42,67 @@ def test_repeat_build_mismatch_fails_closed(tmp_path: Path) -> None:
         MODULE.compare_product_outputs(first, second, "canonical_gold")
 
 
+def test_gdp_vintage_recovery_is_bound_to_recorded_comparison(
+    monkeypatch: MonkeyPatch, tmp_path: Path
+) -> None:
+    (tmp_path / "gdp-canonical-1").mkdir()
+    (tmp_path / "gdp-june-canonical-1").mkdir()
+    track = tmp_path / "track"
+    track.mkdir()
+    receipt_path = track / "gdp-vintage-reconciliation-20260930.json"
+    report = {"status": "verified_source_vintage_comparison"}
+    march_manifest = "march-manifest-pin"
+    june_manifest = "june-manifest-pin"
+    expected = {
+        **report,
+        "march_source_manifest_sha256": march_manifest,
+        "june_source_manifest_sha256": june_manifest,
+        "repeat_identical": True,
+    }
+    receipt_path.write_text(json.dumps(expected), encoding="utf-8")
+    monkeypatch.setattr(MODULE, "TRACK", track)
+    monkeypatch.setattr(
+        MODULE.gdp_canonical_projection,
+        "SOURCE_MANIFEST_SHA256",
+        march_manifest,
+    )
+    monkeypatch.setattr(
+        MODULE.gdp_canonical_projection,
+        "JUNE_SOURCE_MANIFEST_SHA256",
+        june_manifest,
+    )
+    monkeypatch.setattr(
+        MODULE.pq,
+        "read_table",
+        lambda _path: SimpleNamespace(to_pylist=list),
+    )
+    monkeypatch.setattr(
+        MODULE.gdp_vintage_comparison,
+        "compare_gdp_vintages",
+        lambda _march, _june: report.copy(),
+    )
+
+    result = MODULE.gdp_vintage_comparison_report(tmp_path)
+
+    assert result == {
+        **report,
+        "march_source_manifest_sha256": march_manifest,
+        "june_source_manifest_sha256": june_manifest,
+        "recorded_comparison_sha256": MODULE.digest(receipt_path),
+        "recorded_repeat_identical": True,
+    }
+
+    monkeypatch.setattr(
+        MODULE.gdp_vintage_comparison,
+        "compare_gdp_vintages",
+        lambda _march, _june: {**report, "changed_period_count": 50},
+    )
+    with pytest.raises(
+        RuntimeError, match=r"^gdp_vintage_comparison_recorded_mismatch:"
+    ):
+        MODULE.gdp_vintage_comparison_report(tmp_path)
+
+
 def _classification_package_fixture(tmp_path: Path, monkeypatch: MonkeyPatch) -> None:
     packages: dict[int, dict[str, object]] = {}
     for year, label in ((2025, "Health"), (2026, "No Functional Classification")):

@@ -450,7 +450,7 @@ def gdp_june_recovery_report(root: Path) -> dict[str, Any]:
 
 
 def gdp_vintage_comparison_report(root: Path) -> dict[str, Any]:
-    """Compare shared March/June periods from verified canonical facts."""
+    """Compare shared GDP periods and verify the pinned comparison receipt."""
     march_path = root / "gdp-canonical-1" / "fiscal_context_fact.parquet"
     june_path = root / "gdp-june-canonical-1" / "fiscal_context_fact.parquet"
     report = gdp_vintage_comparison.compare_gdp_vintages(
@@ -463,6 +463,22 @@ def gdp_vintage_comparison_report(root: Path) -> dict[str, Any]:
     report["june_source_manifest_sha256"] = (
         gdp_canonical_projection.JUNE_SOURCE_MANIFEST_SHA256
     )
+    recorded_path = TRACK / "gdp-vintage-reconciliation-20260930.json"
+    recorded = json.loads(recorded_path.read_bytes())
+    recorded_comparison = {
+        key: value for key, value in recorded.items() if key != "repeat_identical"
+    }
+    mismatched_fields = sorted(
+        key
+        for key in report.keys() | recorded_comparison.keys()
+        if report.get(key) != recorded_comparison.get(key)
+    )
+    require_evidence(
+        not mismatched_fields and recorded.get("repeat_identical") is True,
+        "gdp_vintage_comparison_recorded_mismatch:" + ",".join(mismatched_fields),
+    )
+    report["recorded_comparison_sha256"] = digest(recorded_path)
+    report["recorded_repeat_identical"] = recorded["repeat_identical"]
     return report
 
 
