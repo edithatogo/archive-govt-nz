@@ -40,6 +40,37 @@ def test_repeat_build_mismatch_fails_closed(tmp_path: Path) -> None:
         MODULE.compare_product_outputs(first, second, "canonical_gold")
 
 
+def test_classification_label_occurrence_report_verifies_retained_packages() -> None:
+    report = MODULE.classification_label_occurrence_report()
+    assert report["status"] == "verified_exact_literal_occurrence_counts"
+    assert report["comparison_scope"] == "exact_literal_label_occurrence_counts"
+    assert report["packages"]["2025"]["dimension_rows"] == 215
+    assert report["packages"]["2026"]["dimension_rows"] == 185
+    assert report["classification_system_identity"] == "not_established"
+    assert report["authoritative_crosswalk"] == "not_performed"
+    assert report["rights"] == "not_evaluated"
+    assert report["comparability"] == "not_asserted"
+    assert report["repeat_identical"] is True
+
+
+def test_classification_label_report_rejects_changed_marker_pin(
+    monkeypatch: MonkeyPatch, tmp_path: Path
+) -> None:
+    marker = (
+        tmp_path
+        / "silver"
+        / MODULE.CLASSIFICATION_PACKAGES[2025]["path"]
+        / "LOCAL_CLASSIFICATION.json"
+    )
+    marker.parent.mkdir(parents=True)
+    marker.write_text("{}")
+    monkeypatch.setattr(MODULE, "ARCHIVE", tmp_path)
+    with pytest.raises(
+        RuntimeError, match=r"^classification_marker_pin_mismatch:2025$"
+    ):
+        MODULE.classification_label_occurrence_report()
+
+
 def test_context_source_binding_uses_captured_source_census() -> None:
     binding = MODULE.context_source_binding("wage")
     assert binding == {
@@ -281,6 +312,11 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     )
     monkeypatch.setattr(
         MODULE,
+        "classification_label_occurrence_report",
+        lambda: {"status": "verified_exact_literal_occurrence_counts"},
+    )
+    monkeypatch.setattr(
+        MODULE,
         "donor_parity_recovery_report",
         lambda: {
             "status": "verified_with_nonmutating_deviations",
@@ -432,6 +468,10 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     )
     assert result["products_rebuilt"]["donor_sqlite_gold_plots"]["repeat_identical"]
     assert result["products_rebuilt"]["donor_source_native_silver"]["repeat_identical"]
+    assert (
+        result["products_rebuilt"]["classification_label_occurrences"]["status"]
+        == "verified_exact_literal_occurrence_counts"
+    )
     assert result["products_rebuilt"]["gdp_june_successor_silver"]["repeat_identical"]
     assert result["products_rebuilt"]["donor_and_canonical_reports"][
         "unresolved_canonical_reports"
