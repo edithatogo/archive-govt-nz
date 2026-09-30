@@ -1,13 +1,13 @@
 {
   "capture_reconciliation": {
-    "bronze_bytes_verified": 38877606,
-    "bronze_object_count_verified": 73,
+    "bronze_bytes_verified": 38927673,
+    "bronze_object_count_verified": 74,
     "capture_rights_states_recorded": {
-      "eligible": 73
+      "eligible": 74
     },
-    "manifest_name_recorded": "official-capture-2026-08-29-complete.json",
-    "manifest_sha256": "04145e4030bfddaecade1af542e12cb8a56a187c9c924b7a4c135537ccae9dab",
-    "matched_resource_count_verified": 73,
+    "manifest_name_recorded": "official-capture-2026-09-30-health-refresh.json",
+    "manifest_sha256": "2de49f07c877aab196afae572db32bfc2d48fd4340eb17c9a4bfb3bb2cc357e7",
+    "matched_resource_count_verified": 74,
     "state": "capture_manifest_and_bronze_objects_verified"
   },
   "context_series_vintages": [
@@ -98,16 +98,37 @@
         "annual_aggregation_not_qualified",
         "canonical_projection_not_qualified",
         "currency_code_unverified",
-        "current_june_2026_quarter_workbook_and_series_not_captured"
+        "successor_june_2026_vintage_recorded_separately"
       ],
       "layout_drift_state": "not_assessed_per_vintage_baseline_not_in_census",
-      "period_description": "Captured vintage: 60 quarters June 2011 through March 2026; the June 2026-quarter GDP release was published 17 September 2026, but its exact current-price workbook and series selection are not captured in this census",
+      "period_description": "Captured March 2026 vintage: 60 quarters June 2011 through March 2026; June 2026 successor, published 17 September 2026, is a separate 61-quarter vintage, not spliced into this series",
       "qualification_state": "unqualified",
       "rights": {
         "state": "not_evaluated"
       },
       "series_id": "SNEQ / SG03AB01GE00S900 (separate publisher prefix/reference)",
       "target_vintage_label": "StatsNZ-GDP-2026Q1",
+      "temporal_coverage_state": "source_extent_recorded_calendar_completeness_not_assessed",
+      "vintage_basis": "context_census_verbatim"
+    },
+    {
+      "entity_id": "gdp-stats-2026q2",
+      "entity_type": "context_series_vintage",
+      "family": "gdp",
+      "known_gaps": [
+        "annual_aggregation_not_qualified",
+        "canonical_projection_not_qualified",
+        "currency_code_unverified",
+        "rights_terms_observed_not_independently_adjudicated"
+      ],
+      "layout_drift_state": "not_assessed_per_vintage_baseline_not_in_census",
+      "period_description": "61 quarterly observations, June 2011 through June 2026; source row describes quarterly coverage; completeness not independently assessed",
+      "qualification_state": "unqualified",
+      "rights": {
+        "state": "not_evaluated"
+      },
+      "series_id": "SNEQ / SG03AB01GE00S900 (separate publisher prefix/reference)",
+      "target_vintage_label": "StatsNZ-GDP-2026Q2",
       "temporal_coverage_state": "source_extent_recorded_calendar_completeness_not_assessed",
       "vintage_basis": "context_census_verbatim"
     },
@@ -213,12 +234,12 @@
     }
   ],
   "inputs": {
-    "capture_manifest_sha256": "04145e4030bfddaecade1af542e12cb8a56a187c9c924b7a4c135537ccae9dab",
+    "capture_manifest_sha256": "2de49f07c877aab196afae572db32bfc2d48fd4340eb17c9a4bfb3bb2cc357e7",
     "context_census_base_commit": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
-    "context_census_sha256": "97d18a98f282d20c5bfaade2ee8c6dc1a351a19a79f8718e5aff89178c65524e",
-    "source_census_cutoff": "2026-08-29",
-    "source_census_observed_at": "2026-08-29T09:00:17Z",
-    "source_census_sha256": "4bea6001b0a1af4a362075508c521befe5bd6e04d20b2dd2f7c23ef8c6256964"
+    "context_census_sha256": "d4e217e0e47ded74782ca50e83b51319fdd40f42d1b622ce86acc72bb8972175",
+    "source_census_cutoff": "2026-09-30",
+    "source_census_observed_at": "2026-09-29T21:28:10.739074Z",
+    "source_census_sha256": "edc9c7a2635112bb8b2ba763bf7f4bd8c507ac2d5c879bacce52d5a03f09a294"
   },
   "limitations": [
     "Resource states and policy references are copied from the pinned censuses; rights are not approved by this report.",
@@ -459,6 +480,24 @@
         "state": "policy_reference_recorded_not_evaluated"
       },
       "target_vintage_label": "Consumers price index: June 2026 quarter - index numbers",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    },
+    {
+      "capture_receipt_rights_state": "eligible",
+      "entity_id": "stats_nz_gdp-588a47c19c9dbc44",
+      "entity_type": "source_resource",
+      "family": "stats_nz_gdp",
+      "inventory_reason": "June 2026 successor workbook captured with SHA-256, BLAKE3, and WARC response binding",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.stats.govt.nz/about-us/copyright/",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Gross domestic product: June 2026 quarter – current price income and expenditure",
       "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
       "vintage_basis": "source_title_verbatim"
     },
@@ -2771,15 +2810,15 @@
   "scope": "recorded_census_states_not_a_completeness_or_rights_approval",
   "summary": {
     "context_qualification_states": {
-      "unqualified": 10
+      "unqualified": 11
     },
     "context_rights_states": {
-      "not_evaluated": 10
+      "not_evaluated": 11
     },
-    "context_series_vintage_count": 10,
-    "resource_count": 141,
+    "context_series_vintage_count": 11,
+    "resource_count": 142,
     "resource_dispositions": {
-      "captured": 73,
+      "captured": 74,
       "out_of_scope": 68
     }
   }

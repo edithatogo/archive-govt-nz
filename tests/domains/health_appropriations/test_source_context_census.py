@@ -159,5 +159,28 @@ def test_gdp_release_date_is_bound_to_official_page_observation() -> None:
     assert observation_path in gdp.evidence
     observation = json.loads((ROOT / observation_path).read_text(encoding="utf-8"))
     assert observation["publication_date_string"] == "17 September 2026"
-    assert observation["workbook_capture_state"] == "not_captured"
+    assert observation["workbook_capture_state"] == "captured_separately"
     assert observation["rights_decision"] == "not_evaluated"
+
+
+def test_june_gdp_capture_is_a_separate_unqualified_vintage() -> None:
+    rows = {row.id: row for row in Census.model_validate(document()).series}
+    march = rows["gdp-stats-2026q1"]
+    june = rows["gdp-stats-2026q2"]
+    assert march.qualification == june.qualification == "unqualified"
+    assert june.rights == "not_evaluated"
+    assert "C27:BK27" in june.selector
+    assert "Table 2" in june.selector
+    assert "61" in june.period
+    assert "not spliced" in march.period
+    assert june.sources[0].source_id == "stats_nz_gdp-588a47c19c9dbc44"
+    capture = json.loads(
+        (
+            ROOT
+            / "conductor/tracks/health_appropriations_medallion_assimilation_20260829/"
+            "gdp-june-capture-20260930.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert capture["selected_series"]["quarter_observations"] == 61
+    assert capture["selected_series"]["currency_code"] == "unverified"
+    assert capture["analytical_disposition"]["qualification"] == "unqualified"

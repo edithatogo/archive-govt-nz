@@ -162,11 +162,11 @@
     "reconstruction": "passed"
   },
   "official_corpus_state": {
-    "census_records": 141,
-    "captured_resources": 73,
+    "census_records": 142,
+    "captured_resources": 74,
     "discovery_only_resources": 68,
     "unresolved_resources": 0,
-    "capture_manifest_sha256": "04145e4030bfddaecade1af542e12cb8a56a187c9c924b7a4c135537ccae9dab"
+    "capture_manifest_sha256": "2de49f07c877aab196afae572db32bfc2d48fd4340eb17c9a4bfb3bb2cc357e7"
   },
   "derivative_state": {
     "silver_records": 312,
@@ -223,7 +223,10 @@
     "independent_rebuild": "byte_identical",
     "manifest_sha256": "2f39ad4dbeb7cb872118ddc634985b5e21b18f2ef2421ca3c0a1e9bf90411288",
     "reconciliation_manifest_sha256": "4847b9b50a08a1f8d2b42627fd496bb0dafe5a661b0d934db41db2d1dbca234e",
-    "retained_directories": ["silver/raw-historical-20260830-v1", "silver/historical-reconciliation-20260830-v1"],
+    "retained_directories": [
+      "silver/raw-historical-20260830-v1",
+      "silver/historical-reconciliation-20260830-v1"
+    ],
     "observation_time_context": "local_source_object_verification_not_new_http_capture",
     "rights_state": "not_evaluated",
     "publication_state": "local_validation_only"

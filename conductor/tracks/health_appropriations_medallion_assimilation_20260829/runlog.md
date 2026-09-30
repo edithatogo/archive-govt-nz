@@ -3277,3 +3277,35 @@ supply-chain checks. CAS streaming measured 591.41 MB/s. Conductor validation
 found 93 tracks and no errors. The revalidation receipt records report hashes
 and clean-room state in `source-health-revalidation-20260930.json`; hosted
 checks remain pending.
+
+## 2026-09-30 — June GDP successor census and Bronze assurance
+
+Issue #205 remains the parent for this incomplete assimilation. Captured the
+official Stats NZ June 2026 current-price GDP workbook as additive Bronze
+object `b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d`
+(50,067 bytes; WARC SHA-256
+`29b1208c7ab036deb64cbe14ba5669eb251a9bf45e90b04d181a609f423081df`). Its
+exact expenditure selector is Table 1!C27:BK27, reference
+SG03AB01GE00S900, prefix SNEQ; it contains 61 quarters through June 2026.
+Table 2 is a distinct seasonally adjusted series and remains excluded. March
+and June vintages remain separate; no values were spliced or analytically
+admitted.
+
+The updated census contains 142 resources: 74 captured and 68 discovery-only.
+The regenerated source-health report replayed the composite 74-result manifest
+against Bronze CAS and verified 74 objects / 38,927,673 bytes. The historical
+73-result manifest remains preserved. Stats NZ's official copyright page
+states CC BY 4.0 applies unless specified otherwise and contains exceptions and
+attribution conditions; the terms observation and capture eligibility do not
+constitute legal approval. Context rights and analytical qualification remain
+`not_evaluated` and `unqualified`; currency, annual aggregation, denominator
+joins and publication remain blocked.
+
+Focused census/report/measure/recovery-binding tests passed (96). Full
+`./scripts/validate.sh` passed: 7,181 tests, 9 skipped, 98.27% coverage against
+the repository's existing 80% floor; 53 schemas/43 representative documents,
+9/9 parity, mutation lanes, hygiene, CAS benchmark (705.77 MB/s), dependency
+audit, license inventory, secret scan and validated 113-component SBOM.
+Automatic `phase_1_bronze` Conductor review passed format, lint, schema and
+Bronze-targeted tests; receipt SHA-256
+`c065138752d73750...`. Hosted checks remain pending on the PR.

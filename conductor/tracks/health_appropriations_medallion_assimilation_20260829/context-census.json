@@ -2,8 +2,12 @@
   "base_commit": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
   "evidence": [
     {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-june-capture-20260930.json",
+      "sha256": "28609dbc48f7a4b68ea14f277267c7af0e2eec9b274d0c369865d7d090a2b868"
+    },
+    {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/analytical-context-register.md",
-      "sha256": "fdb0905a0524541010cb086663871f0997ae772ac9831a7f6216ccf3f6e4f1fa"
+      "sha256": "b70941bc74ec4e173c37ceb984088e20aebaee50db1512dcb8dd3541e83e4f82"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json",
@@ -35,7 +39,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-release-observation-20260930.json",
-      "sha256": "66e2a38da9a99c97703b7ed8d2d41a35cd6e2c41d4fffb3ede81f93fa014de10"
+      "sha256": "5c931e50b74b80d41b92921733ee1e139143570c98d7693fae5f92ad97fea1f7"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/hyefu-core-crown-expense-20260929.md",
@@ -67,7 +71,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
-      "sha256": "4bea6001b0a1af4a362075508c521befe5bd6e04d20b2dd2f7c23ef8c6256964"
+      "sha256": "edc9c7a2635112bb8b2ba763bf7f4bd8c507ac2d5c879bacce52d5a03f09a294"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",
@@ -237,11 +241,12 @@
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json",
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-profile.md",
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-release-observation-20260930.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-june-capture-20260930.json",
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json"
       ],
       "family": "gdp",
       "gaps": [
-        "current_june_2026_quarter_workbook_and_series_not_captured",
+        "successor_june_2026_vintage_recorded_separately",
         "annual_aggregation_not_qualified",
         "currency_code_unverified",
         "canonical_projection_not_qualified"
@@ -249,7 +254,7 @@
       "geography": "New Zealand; national aggregate",
       "id": "gdp-stats-2026q1",
       "join_policy": "Blocked for annual shares: explicitly select four compatible flow quarters and vintage; no automatic annualization or Treasury-series substitution",
-      "period": "Captured vintage: 60 quarters June 2011 through March 2026; the June 2026-quarter GDP release was published 17 September 2026, but its exact current-price workbook and series selection are not captured in this census",
+      "period": "Captured March 2026 vintage: 60 quarters June 2011 through March 2026; June 2026 successor, published 17 September 2026, is a separate 61-quarter vintage, not spliced into this series",
       "qualification": "unqualified",
       "retained_manifest_sha256": "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35",
       "rights": "not_evaluated",
@@ -265,6 +270,40 @@
       ],
       "unit": "$(million); scaling million; ISO currency unverified",
       "vintage": "StatsNZ-GDP-2026Q1"
+    },
+    {
+      "base": "current prices; no constant-price base",
+      "definition": "Actual current-price GDP expenditure measure; income and seasonally adjusted GDP are distinct",
+      "evidence": [
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-june-capture-20260930.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json"
+      ],
+      "family": "gdp",
+      "gaps": [
+        "annual_aggregation_not_qualified",
+        "currency_code_unverified",
+        "canonical_projection_not_qualified",
+        "rights_terms_observed_not_independently_adjudicated"
+      ],
+      "geography": "New Zealand; national aggregate",
+      "id": "gdp-stats-2026q2",
+      "join_policy": "Blocked for annual shares: keep this vintage separate; explicitly select four compatible flow quarters and vintage; no automatic annualization or Treasury-series substitution",
+      "period": "61 quarterly observations, June 2011 through June 2026; source row describes quarterly coverage; completeness not independently assessed",
+      "qualification": "unqualified",
+      "retained_manifest_sha256": "2de49f07c877aab196afae572db32bfc2d48fd4340eb17c9a4bfb3bb2cc357e7",
+      "rights": "not_evaluated",
+      "selector": "Table 1!C27:BK27; A27 label=Gross domestic product - expenditure measure, B27 reference=SG03AB01GE00S900, B7 prefix=SNEQ; Table 2 seasonally adjusted excluded",
+      "series_id": "SNEQ / SG03AB01GE00S900 (separate publisher prefix/reference)",
+      "sources": [
+        {
+          "object_sha256": "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
+          "observed_at": "2026-09-29T21:28:10.739074Z",
+          "source_id": "stats_nz_gdp-588a47c19c9dbc44",
+          "url": "https://www.stats.govt.nz/assets/Uploads/Gross-domestic-product/Gross-domestic-product-June-2026-quarter/Download-data/gross-domestic-product-june-2026-quarter-current-price-income-and-expenditure.xlsx"
+        }
+      ],
+      "unit": "$(million); scaling million; ISO currency unverified",
+      "vintage": "StatsNZ-GDP-2026Q2"
     },
     {
       "base": "nominal/current prices",
