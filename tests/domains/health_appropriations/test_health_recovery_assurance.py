@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import importlib.util
 from pathlib import Path
+from types import SimpleNamespace
 from typing import TYPE_CHECKING
 
 import pytest
@@ -62,6 +63,60 @@ def test_context_source_binding_rejects_changed_census_pin(
         MODULE.context_source_binding("wage")
 
 
+def test_donor_parity_recovery_report_retains_unapproved_deviations(
+    monkeypatch: MonkeyPatch,
+) -> None:
+    class FakeLoader:
+        def exec_module(self, _module: object) -> None:
+            return None
+
+    donor = {
+        "status": "exact_parity",
+        "matched_rows": 312,
+        "table_counts": {"five": "tables"},
+    }
+    raw = {
+        "status": "explained_deviations",
+        "matched_rows": 312,
+        "unresolved_rows": 0,
+        "explained_rows": 30,
+        "table_counts": {"five": "tables"},
+    }
+    receipt = {
+        "gold": donor,
+        "raw": raw,
+        "donor_manifest_sha256": "a" * 64,
+        "raw_manifest_sha256": "b" * 64,
+        "donor_objects_verified": 23,
+        "donor_bytes_verified": 6604301,
+        "historical_counts": {"source_only": 29, "value_difference": 1},
+        "exact_decimal_deviations": [{}] * 30,
+        "historical_deviation_dispositions": "accepted_retain_both_no_replacement",
+        "binary_representation_flags": 15,
+        "repair_approval": "not_asserted",
+        "rights_state": "not_evaluated",
+        "publication_state": "no_action",
+    }
+    fake_replay = SimpleNamespace(replay=lambda _root: receipt)
+    fake_spec = SimpleNamespace(loader=FakeLoader())
+    monkeypatch.setattr(
+        MODULE.importlib.util,
+        "spec_from_file_location",
+        lambda *_args: fake_spec,
+    )
+    monkeypatch.setattr(
+        MODULE.importlib.util, "module_from_spec", lambda _spec: fake_replay
+    )
+
+    result = MODULE.donor_parity_recovery_report()
+
+    assert result["status"] == "verified_with_nonmutating_deviations"
+    assert result["gold"]["matched_rows"] == 312
+    assert result["historical_deviation_count"] == 30
+    assert result["repair_approval"] == "not_asserted"
+    assert result["repeat_identical"] is True
+
+
 def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: PLR0915
     monkeypatch: MonkeyPatch, tmp_path: Path
 ) -> None:
@@ -89,6 +144,14 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
         },
     )
     monkeypatch.setattr(MODULE, "canonical_inputs", lambda: ())
+    monkeypatch.setattr(
+        MODULE,
+        "donor_parity_recovery_report",
+        lambda: {
+            "status": "verified_with_nonmutating_deviations",
+            "repeat_identical": True,
+        },
+    )
     monkeypatch.setattr(
         MODULE,
         "rebuild_donor_products",
@@ -235,6 +298,9 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     assert result["products_rebuilt"]["donor_sqlite_gold_plots"]["repeat_identical"]
     assert result["products_rebuilt"]["donor_source_native_silver"]["repeat_identical"]
     assert result["products_rebuilt"]["gdp_june_successor_silver"]["repeat_identical"]
+    assert result["products_rebuilt"]["donor_and_canonical_reports"][
+        "unresolved_canonical_reports"
+    ] == ["canonical_gold_not_rebuilt"]
     assert (
         result["products_rebuilt"]["donor_sqlite_gold_plots"]["compatibility_facts"]
         == 341

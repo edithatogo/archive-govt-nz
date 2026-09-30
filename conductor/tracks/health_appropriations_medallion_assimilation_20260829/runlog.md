@@ -3374,3 +3374,29 @@ dependency and license audits, secret scan, and 113-component SBOM. The SBOM
 validator emitted its existing “Validation skipped” warning while the
 repository command reported the SBOM validated. The full track review and
 hosted checks remain pending.
+
+## 2026-09-30 — Integrate donor and canonical report evidence
+
+Extended clean-room recovery to replay the pinned donor parity report twice and
+surface a bounded canonical Gold quality summary from the repeat-built manifest.
+The donor replay verified the pinned 23-object/6,604,301-byte donor package;
+donor-derived Gold matched all 312 rows across the five tables. The raw-derived
+product retains 312 matches and 29 source-only rows with non-mutating
+dispositions. The historical comparison still records 29 source-only rows and
+one exact-decimal difference; all 30 remain retained as source/donor evidence
+without replacement, and repair approval remains `not_asserted`. The 15 binary
+representation flags are reported separately.
+
+Canonical Gold quality accounting reconciled all 214 input identities to
+products with zero unaccounted inputs and identical repeated build outputs. It
+continues to mark analytical completeness unevaluated and lists source-health,
+classification-drift, revision-reconciliation, and cross-source reports as
+unresolved. The recovery receipt is
+`clean-room-recovery-20260930-reports.json` (SHA-256
+`c304374cfb65bfff69c7a7dd8de7fa7b72b48d4acb4af233897e2e7aaefe633d`); Bronze
+objects remained unchanged and the overall status is still
+`partial_with_blockers` for the remaining report families, source adapters,
+and complete validated Platinum products.
+
+Focused recovery tests, Ruff and basedpyright passed. Required full repository
+validation and hosted exact-head checks remain pending.
