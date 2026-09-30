@@ -34,7 +34,7 @@ class GdpAdapter:
 
     def matches_layout(self, bronze: bytes) -> bool:
         """Recognize only the reviewed release/profile and its bounded layout."""
-        if self.source_vintage != gdp.VINTAGE:
+        if self.source_vintage not in gdp.PROFILE_PERIODS:
             return False
         try:
             facts, _, _ = gdp.inspect_bronze_payload(
@@ -42,13 +42,13 @@ class GdpAdapter:
                 {
                     "source_object_sha256": hashlib.sha256(bronze).hexdigest(),
                     "source_locator": "probe",
-                    "source_vintage": gdp.VINTAGE,
+                    "source_vintage": self.source_vintage,
                     "observed_at": "2026-01-01T00:00:00+00:00",
                 },
             )
         except OSError, ValueError, KeyError, TypeError:
             return False
-        return len(facts) == len(gdp.PERIODS)
+        return len(facts) == len(gdp.PROFILE_PERIODS[self.source_vintage])
 
     def extract(self, bronze: bytes, *, source_sha256: str) -> AdapterOutput:
         """Return GDP facts with cell lineage and explicit excluded-cell reasons."""

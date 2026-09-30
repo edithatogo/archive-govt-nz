@@ -311,11 +311,11 @@
       "files": {
         "MANIFEST.json": {
           "bytes": 66047,
-          "sha256": "d905dfa6d76cbb35cf96e30b9d088be74ebcf2c846f38ed7b327e43cf46f67c5"
+          "sha256": "10ad79451f1a3b6895b98a4c6ad4a5966cebdbce386f2103c888c62f0cf823b4"
         },
         "PLAN.json": {
-          "bytes": 117726,
-          "sha256": "626aa4987f852a64705c49a444fb68a0270973acb118e4f48f74e409285988f9"
+          "bytes": 118715,
+          "sha256": "9f3ee452e46903567ca2aeaab4034cf5551b3a12435311cfff2b795b734ea1bc"
         },
         "befu-chart/MANIFEST.json": {
           "bytes": 117905,
@@ -511,7 +511,7 @@
         }
       },
       "gold_selection": "not_performed",
-      "manifest_sha256": "d905dfa6d76cbb35cf96e30b9d088be74ebcf2c846f38ed7b327e43cf46f67c5",
+      "manifest_sha256": "10ad79451f1a3b6895b98a4c6ad4a5966cebdbce386f2103c888c62f0cf823b4",
       "profile_count": 12,
       "publication": "not_performed",
       "repeat_identical": true,
@@ -714,6 +714,41 @@
       "source_manifest_sha256": "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35",
       "source_object_sha256": "a7326e84e7704446a18e5c8942f99901a452b2170af4228e8a5c242a5532ed21"
     },
+    "gdp_june_successor_silver": {
+      "canonical_projection": "not_performed",
+      "counts": {
+        "dispositions": 2323,
+        "facts": 61,
+        "lineage": 915
+      },
+      "currency": "unverified",
+      "denominator_selection": "not_performed",
+      "files": {
+        "MANIFEST.json": {
+          "bytes": 1081,
+          "sha256": "f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd"
+        },
+        "cell_dispositions.parquet": {
+          "bytes": 37848,
+          "sha256": "22143c282b9e28cbfcae41c9531f1b37b710b6a5a5d5fbcf9fa6112e196b9dd9"
+        },
+        "field_lineage.parquet": {
+          "bytes": 17815,
+          "sha256": "ad698d41f4709b633df875d256c419107ebe044fd325b5afdc74f56e3113e6dc"
+        },
+        "gdp_facts.parquet": {
+          "bytes": 29409,
+          "sha256": "ab95deb1701876f285b567da245bdabd842559c7ea9c64ebd2aca2740373d35a"
+        }
+      },
+      "publication": "not_performed",
+      "repeat_identical": true,
+      "rights_state": "not_evaluated",
+      "source_capture_receipt_sha256": "28609dbc48f7a4b68ea14f277267c7af0e2eec9b274d0c369865d7d090a2b868",
+      "source_id": "stats_nz_gdp-588a47c19c9dbc44",
+      "source_object_sha256": "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
+      "source_vintage": "StatsNZ-GDP-2026Q2"
+    },
     "historical_fiscal_crown_canonical_projection": {
       "canonical_fact_sha256": "8f48d4b34830eba1ae453f8b944c6474c41c4b8fe778ce72a08ea03ab44448ce",
       "canonical_lineage_sha256": "9e98af148adea175f48aa1b7c2a52481363c65dc2bfec1fc5fd2f5b72ef202a8",
@@ -909,7 +944,7 @@
   "publication": "not_performed",
   "required_but_not_rebuilt": [
     "donor_and_canonical_reports",
-    "additional_source_native_silver_profiles_and_canonical_adapters",
+    "remaining_source_native_silver_profiles_and_canonical_adapters",
     "platinum_dcat_croissant_ro_crate_prov_complete_profile"
   ],
   "rights": "not_evaluated",

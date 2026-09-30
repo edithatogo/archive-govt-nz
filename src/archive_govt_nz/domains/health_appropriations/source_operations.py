@@ -82,6 +82,12 @@ PROFILES = MappingProxyType(
             "gdp_facts.parquet",
             "cell_dispositions.parquet",
         ),
+        "gdp-expenditure-actual-2026q2/v1": (
+            gdp.JUNE_TRANSFORMATION,
+            ("facts", "lineage", "dispositions"),
+            "gdp_facts.parquet",
+            "cell_dispositions.parquet",
+        ),
         "befu-2026/v1": (
             forecast.TRANSFORMATION,
             (
@@ -129,6 +135,10 @@ PROFILES = MappingProxyType(
 _REVENUE_VINTAGES = {
     "budget-revenue-2025/v1": "Budget-2025",
     "budget-revenue-2026/v1": "Budget-2026",
+}
+_GDP_VINTAGES = {
+    "gdp-expenditure-actual-2026q1/v1": gdp.VINTAGE,
+    "gdp-expenditure-actual-2026q2/v1": gdp.JUNE_VINTAGE,
 }
 _COMMON = {
     "schema_version": "archive-govt-nz.health-source-operation/v1",
@@ -281,6 +291,10 @@ def _validate(request: SourceRequest, *, dry_run: bool) -> None:
         request.source_vintage != _REVENUE_VINTAGES[request.profile]
     ):
         raise ValueError(_INVALID_SOURCE_OPERATION)
+    if request.profile in _GDP_VINTAGES and (
+        request.source_vintage != _GDP_VINTAGES[request.profile]
+    ):
+        raise ValueError(_INVALID_SOURCE_OPERATION)
 
 
 def _invoke(  # noqa: C901, PLR0911 - explicit allowlisted profile dispatch
@@ -315,7 +329,7 @@ def _invoke(  # noqa: C901, PLR0911 - explicit allowlisted profile dispatch
         return pharmac.normalize_pharmac_budget(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
-    if request.profile == "gdp-expenditure-actual-2026q1/v1":
+    if request.profile in _GDP_VINTAGES:
         return gdp.normalize_gdp(
             request.source, request.output_dir, **context, dry_run=dry_run
         )

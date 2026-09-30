@@ -64,6 +64,10 @@ from archive_govt_nz.domains.health_appropriations.rebuild_eight import (
     plan_eight,
     verify_eight,
 )
+from archive_govt_nz.domains.health_appropriations.source_operations import (
+    SourceRequest,
+    operate_source,
+)
 
 TRACK = Path("conductor/tracks/health_appropriations_medallion_assimilation_20260829")
 ARCHIVE = Path("/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations")
@@ -112,7 +116,7 @@ SOURCE_CENSUS_SHA256 = (
     "edc9c7a2635112bb8b2ba763bf7f4bd8c507ac2d5c879bacce52d5a03f09a294"
 )
 CONTEXT_CENSUS_SHA256 = (
-    "d4e217e0e47ded74782ca50e83b51319fdd40f42d1b622ce86acc72bb8972175"
+    "e1190342e10808cc78603f57ae7cc032e635cbbced0a7573544d4f9a651f6aa6"
 )
 POPULATION_SOURCE_SHA256 = (
     "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9"
@@ -122,6 +126,24 @@ PHARMAC_SOURCE_SHA256 = (
 )
 PHARMAC_SOURCE_OBSERVED_AT = "2026-08-29T09:00:17Z"
 CROWN_SOURCE_OBSERVED_AT = "2026-08-29T09:00:17Z"
+GDP_JUNE_CAPTURE_SHA256 = (
+    "28609dbc48f7a4b68ea14f277267c7af0e2eec9b274d0c369865d7d090a2b868"
+)
+GDP_JUNE_SOURCE_ID = "stats_nz_gdp-588a47c19c9dbc44"
+GDP_JUNE_SOURCE_SHA256 = (
+    "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d"
+)
+GDP_JUNE_SOURCE_LOCATOR = (
+    "https://www.stats.govt.nz/assets/Uploads/Gross-domestic-product/"
+    "Gross-domestic-product-June-2026-quarter/Download-data/"
+    "gross-domestic-product-june-2026-quarter-current-price-income-and-expenditure.xlsx"
+)
+GDP_JUNE_OBSERVED_AT = "2026-09-29T21:28:10.739074Z"
+GDP_JUNE_FACT_COUNT = 61
+GDP_JUNE_CAPTURE_SCOPE = (
+    "source_capture_and_series_identification_only_no_analytical_"
+    "admission_or_legal_approval"
+)
 
 
 def require_evidence(condition: object, message: str) -> None:
@@ -227,6 +249,135 @@ def context_source_binding(family: str) -> dict[str, str]:
         "source_locator": source["url"],
         "source_vintage": selected["vintage"],
         "observed_at": source["observed_at"],
+    }
+
+
+def gdp_june_source_binding() -> dict[str, str]:
+    """Bind the June GDP successor to its capture receipt, census and Bronze bytes."""
+    capture_path = TRACK / "gdp-june-capture-20260930.json"
+    capture_bytes = capture_path.read_bytes()
+    require_evidence(
+        hashlib.sha256(capture_bytes).hexdigest() == GDP_JUNE_CAPTURE_SHA256,
+        "gdp_june_capture_receipt_pin_mismatch",
+    )
+    capture = json.loads(capture_bytes)
+    source = capture["source"]
+    expected = {
+        "source_id": GDP_JUNE_SOURCE_ID,
+        "sha256": GDP_JUNE_SOURCE_SHA256,
+        "url": GDP_JUNE_SOURCE_LOCATOR,
+        "http_status": 200,
+        "bytes": 50067,
+    }
+    require_evidence(
+        all(source.get(key) == value for key, value in expected.items())
+        and capture.get("observed_at") == GDP_JUNE_OBSERVED_AT
+        and capture.get("scope") == GDP_JUNE_CAPTURE_SCOPE
+        and capture["selected_series"].get("cell_selector") == "C27:BK27"
+        and capture["selected_series"].get("quarter_observations")
+        == GDP_JUNE_FACT_COUNT,
+        "gdp_june_capture_binding_invalid",
+    )
+    census_bytes = (TRACK / "source-census.json").read_bytes()
+    require_evidence(
+        hashlib.sha256(census_bytes).hexdigest() == SOURCE_CENSUS_SHA256,
+        "source_census_pin_mismatch",
+    )
+    census = json.loads(census_bytes)
+    matches = [
+        row for row in census["records"] if row["source_id"] == GDP_JUNE_SOURCE_ID
+    ]
+    require_evidence(
+        len(matches) == 1
+        and all(
+            matches[0].get(key) == value
+            for key, value in {
+                "disposition": "captured",
+                "object_sha256": GDP_JUNE_SOURCE_SHA256,
+                "url": GDP_JUNE_SOURCE_LOCATOR,
+                "observed_at": GDP_JUNE_OBSERVED_AT,
+            }.items()
+        ),
+        "gdp_june_census_binding_invalid",
+    )
+    bronze = (
+        ARCHIVE
+        / "bronze-cas"
+        / "sha256"
+        / GDP_JUNE_SOURCE_SHA256[:2]
+        / GDP_JUNE_SOURCE_SHA256
+    )
+    require_evidence(
+        bronze.is_file()
+        and not bronze.is_symlink()
+        and digest(bronze) == GDP_JUNE_SOURCE_SHA256,
+        "gdp_june_bronze_object_mismatch",
+    )
+    return {
+        "source_object_sha256": GDP_JUNE_SOURCE_SHA256,
+        "source_locator": GDP_JUNE_SOURCE_LOCATOR,
+        "source_vintage": gdp.JUNE_VINTAGE,
+        "observed_at": GDP_JUNE_OBSERVED_AT,
+    }
+
+
+def rebuild_gdp_june_silver(root: Path, index: int) -> dict[str, Any]:
+    """Rebuild the exact June GDP Silver profile from the pinned Bronze object."""
+    binding = gdp_june_source_binding()
+    source = (
+        ARCHIVE
+        / "bronze-cas"
+        / "sha256"
+        / binding["source_object_sha256"][:2]
+        / binding["source_object_sha256"]
+    )
+    output = root / f"gdp-june-{index}"
+    receipt = operate_source(
+        SourceRequest(
+            source=source,
+            output_dir=output,
+            profile="gdp-expenditure-actual-2026q2/v1",
+            expected_sha256=binding["source_object_sha256"],
+            source_vintage=binding["source_vintage"],
+            source_locator=binding["source_locator"],
+            observed_at=binding["observed_at"],
+        ),
+        dry_run=False,
+    )
+    require_evidence(
+        receipt.get("status") == "written_local"
+        and receipt.get("counts")
+        == {
+            "facts": GDP_JUNE_FACT_COUNT,
+            "lineage": GDP_JUNE_FACT_COUNT * 15,
+            "dispositions": 2323,
+        },
+        "gdp_june_source_operation_failed",
+    )
+    return {"receipt": receipt, "files": tree(output)}
+
+
+def gdp_june_recovery_report(root: Path) -> dict[str, Any]:
+    """Prove clean Silver builds match without selecting the successor analytically."""
+    first = rebuild_gdp_june_silver(root, 1)
+    second = rebuild_gdp_june_silver(root, 2)
+    files = compare_product_outputs(
+        root / "gdp-june-1", root / "gdp-june-2", "gdp_june_silver"
+    )
+    require_evidence(first == second, "gdp_june_silver_receipt_mismatch")
+    return {
+        "source_id": GDP_JUNE_SOURCE_ID,
+        "source_object_sha256": GDP_JUNE_SOURCE_SHA256,
+        "source_vintage": gdp.JUNE_VINTAGE,
+        "source_capture_receipt_sha256": GDP_JUNE_CAPTURE_SHA256,
+        "files": files,
+        "counts": first["receipt"]["counts"],
+        "repeat_identical": True,
+        "canonical_projection": "not_performed",
+        "currency": "unverified",
+        "denominator_selection": "not_performed",
+        "rights_state": "not_evaluated",
+        "publication": "not_performed",
     }
 
 
@@ -806,6 +957,7 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
                 message = f"{family}_silver_repeat_mismatch"
                 raise RuntimeError(message)
         outputs["context_source_native_silver"] = context_silver
+        outputs["gdp_june_successor_silver"] = gdp_june_recovery_report(root)
         if "cpi" in CONTEXT:
             outputs["cpi_canonical_projection"] = _cpi_canonical_recovery_report(
                 silver_roots[0], root
@@ -889,7 +1041,7 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
         "bronze_objects_unchanged": unchanged,
         "required_but_not_rebuilt": [
             "donor_and_canonical_reports",
-            "additional_source_native_silver_profiles_and_canonical_adapters",
+            "remaining_source_native_silver_profiles_and_canonical_adapters",
             "platinum_dcat_croissant_ro_crate_prov_complete_profile",
         ],
         "rights": "not_evaluated",

@@ -11,6 +11,7 @@ from typing import TYPE_CHECKING, Any
 
 import pyarrow as pa
 from openpyxl import load_workbook
+from openpyxl.utils.cell import get_column_letter
 
 from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
 from archive_govt_nz.domains.health_appropriations.historical import _number_tokens
@@ -31,6 +32,8 @@ if TYPE_CHECKING:
 MAX_BYTES = 1024 * 1024
 VINTAGE = "StatsNZ-GDP-2026Q1"
 TRANSFORMATION = "stats-nz-gdp-current-price-expenditure-actual-2026q1/v1"
+JUNE_VINTAGE = "StatsNZ-GDP-2026Q2"
+JUNE_TRANSFORMATION = "stats-nz-gdp-current-price-expenditure-actual-2026q2/v1"
 TITLE = (
     "Gross domestic product: March 2026 quarter "
     "\u2013 current price income and expenditure"
@@ -59,6 +62,38 @@ PERIODS = tuple(
         for quarter in range(60)
     )
 )
+JUNE_PERIODS = tuple(
+    (
+        f"{_MONTH_NAMES[month]}-{year % 100:02d}",
+        date(year, month, calendar.monthrange(year, month)[1]),
+    )
+    for year, month in (
+        (2011 + (quarter + 1) // 4, ((quarter + 1) % 4 + 1) * 3)
+        for quarter in range(61)
+    )
+)
+_PROFILE_DATA = {
+    VINTAGE: {
+        "transformation": TRANSFORMATION,
+        "title": TITLE,
+        "range": "Quarterly, June 2011\u2013March 2026",
+        "publication": "18 June 2026",
+        "publication_date": date(2026, 6, 18),
+        "periods": PERIODS,
+    },
+    JUNE_VINTAGE: {
+        "transformation": JUNE_TRANSFORMATION,
+        "title": (
+            "Gross domestic product: June 2026 quarter \u2013 current price "
+            "income and expenditure"
+        ),
+        "range": "Quarterly, June 2011\u2013June 2026",
+        "publication": "17 September 2026",
+        "publication_date": date(2026, 9, 17),
+        "periods": JUNE_PERIODS,
+    },
+}
+PROFILE_PERIODS = {name: profile["periods"] for name, profile in _PROFILE_DATA.items()}
 FACT_SCHEMA = pa.schema(
     [
         (key, pa.string())
@@ -118,27 +153,40 @@ def _require(condition: object) -> None:
         raise ValueError(message)
 
 
+def _profile_data(source_vintage: str) -> dict[str, Any]:
+    try:
+        return _PROFILE_DATA[source_vintage]
+    except KeyError:
+        message = "gdp_source_contract"
+        raise ValueError(message) from None
+
+
 def _amount(token: str) -> Decimal:
     _require(re.fullmatch(r"-?[0-9]{1,20}", token) is not None)
     return Decimal(token)
 
 
-def _profile(book: Workbook) -> None:
+def _profile(book: Workbook, source_vintage: str) -> None:
+    profile = _profile_data(source_vintage)
+    periods = profile["periods"]
+    last_column = 2 + len(periods)
+    last_letter = get_column_letter(last_column)
+    headers = {**HEADERS, "A4": profile["range"]}
     _require(book.sheetnames == ["Contents", "Table 1", "Table 2"])
     sheet = book["Table 1"]
-    _require((sheet.max_row, sheet.max_column) == (31, 62))
-    _require(all(sheet[key].value == value for key, value in HEADERS.items()))
+    _require((sheet.max_row, sheet.max_column) == (31, last_column))
+    _require(all(sheet[key].value == value for key, value in headers.items()))
     _require(sheet["A1"].value == "Table 1")
     _require(sheet["A3"].value == "Actual current prices")
     _require(
         {str(item) for item in sheet.merged_cells.ranges}
         == {
-            "C5:BJ5",
-            "C7:BJ7",
+            f"C5:{last_letter}5",
+            f"C7:{last_letter}7",
         }
     )
-    _require(book["Contents"]["A1"].value == TITLE)
-    _require(book["Contents"]["A33"].value == "18 June 2026")
+    _require(book["Contents"]["A1"].value == profile["title"])
+    _require(book["Contents"]["A33"].value == profile["publication"])
     _require(book["Table 2"]["A3"].value == "Seasonally adjusted current prices")
 
 
@@ -147,11 +195,16 @@ def _extract(
     tokens: dict[str, dict[str, str]],
     context: dict[str, Any],
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
-    _profile(book)
+    source_vintage = str(context["source_vintage"])
+    profile = _profile_data(source_vintage)
+    periods = profile["periods"]
+    headers = {**HEADERS, "A4": profile["range"]}
+    transformation = profile["transformation"]
+    _profile(book, source_vintage)
     sheet = book["Table 1"]
     facts, lineage, dispositions = [], [], []
     selected, used = {}, set()
-    for column, (period_token, period_end) in enumerate(PERIODS, 3):
+    for column, (period_token, period_end) in enumerate(periods, 3):
         cell, header = sheet.cell(27, column), sheet.cell(6, column)
         token = tokens["Table 1"].get(cell.coordinate, "")
         _require(header.value == period_token and cell.data_type == "n")
@@ -159,10 +212,10 @@ def _extract(
         _require(cell.number_format == "#,##0")
         coordinate = f"'Table 1'!{cell.coordinate}"
         record_id = identity(
-            TRANSFORMATION,
+            transformation,
             context["source_object_sha256"],
             coordinate,
-            HEADERS["B27"],
+            headers["B27"],
             period_token,
         )
         selected[coordinate] = record_id
@@ -172,16 +225,16 @@ def _extract(
             "source_number_format": (f"{coordinate}@number_format", cell.number_format),
             "period_token": (f"'Table 1'!{header.coordinate}", period_token),
             "period_end": (f"'Table 1'!{header.coordinate}", period_token),
-            "period_end:range": ("'Table 1'!A4", HEADERS["A4"]),
-            "series_prefix": ("'Table 1'!B7", HEADERS["B7"]),
-            "series_reference": ("'Table 1'!B27", HEADERS["B27"]),
-            "label": ("'Table 1'!A27", HEADERS["A27"]),
-            "unit": ("'Table 1'!C7", HEADERS["C7"]),
-            "scaling": ("'Table 1'!C7", HEADERS["C7"]),
+            "period_end:range": ("'Table 1'!A4", headers["A4"]),
+            "series_prefix": ("'Table 1'!B7", headers["B7"]),
+            "series_reference": ("'Table 1'!B27", headers["B27"]),
+            "label": ("'Table 1'!A27", headers["A27"]),
+            "unit": ("'Table 1'!C7", headers["C7"]),
+            "scaling": ("'Table 1'!C7", headers["C7"]),
             "price_basis": ("'Table 1'!A3", "Actual current prices"),
             "adjustment": ("'Table 1'!A3", "Actual current prices"),
-            "footnote": ("'Table 1'!A30", HEADERS["A30"]),
-            "publication_date": ("'Contents'!A33", "18 June 2026"),
+            "footnote": ("'Table 1'!A30", headers["A30"]),
+            "publication_date": ("'Contents'!A33", profile["publication"]),
         }
         fact = {
             **context,
@@ -189,23 +242,23 @@ def _extract(
             "schema_version": "archive-govt-nz.health-gdp-silver/v1",
             "recordset": "economic_context_fact",
             "source_coordinate": coordinate,
-            "series_prefix": HEADERS["B7"],
-            "series_reference": HEADERS["B27"],
-            "label": HEADERS["A27"],
+            "series_prefix": headers["B7"],
+            "series_reference": headers["B27"],
+            "label": headers["A27"],
             "period_token": period_token,
             "period_end": period_end,
             "amount": amount,
             "source_number_token": token,
             "source_number_format": cell.number_format,
-            "unit": HEADERS["C7"],
+            "unit": headers["C7"],
             "scaling": "million",
             "currency": None,
             "price_basis": "current_prices",
             "adjustment": "actual_as_published",
-            "footnote": HEADERS["A30"],
-            "publication_date": date(2026, 6, 18),
+            "footnote": headers["A30"],
+            "publication_date": profile["publication_date"],
             "rights_state": "not_evaluated",
-            "transformation_id": TRANSFORMATION,
+            "transformation_id": transformation,
             "lineage_id": identity(record_id, "lineage"),
             "raw_values_json": encode_json(raw),
             "quality_flags": [
@@ -229,7 +282,7 @@ def _extract(
                     "source_coordinate": source_coordinate,
                     "raw_value": value,
                     "normalized_value": str(fact[field]),
-                    "rule": TRANSFORMATION,
+                    "rule": transformation,
                 }
             )
     for source_sheet in book:
@@ -290,7 +343,7 @@ def normalize_gdp(  # noqa: PLR0913 - explicit provenance and safe dry-run contr
     context = source_context(
         expected_sha256, source_locator, source_vintage, observed_at
     )
-    _require(source_vintage == VINTAGE)
+    profile = _profile_data(source_vintage)
     _require(source.is_file() and not source.is_symlink())
     _require(not output_dir.exists() and not output_dir.is_symlink())
     payload = verified_snapshot(source, expected_sha256, max_bytes=MAX_BYTES)
@@ -303,7 +356,7 @@ def normalize_gdp(  # noqa: PLR0913 - explicit provenance and safe dry-run contr
         book.close()
     receipt = {
         "schema_version": "archive-govt-nz.health-gdp-extraction/v1",
-        "transformation_id": TRANSFORMATION,
+        "transformation_id": profile["transformation"],
         "status": "planned" if dry_run else "passed",
         **context,
         "observed_at": context["observed_at"].isoformat(),

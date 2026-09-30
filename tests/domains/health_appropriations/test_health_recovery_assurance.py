@@ -62,7 +62,7 @@ def test_context_source_binding_rejects_changed_census_pin(
         MODULE.context_source_binding("wage")
 
 
-def test_clean_room_rebuilds_supported_products_and_reports_blockers(
+def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: PLR0915
     monkeypatch: MonkeyPatch, tmp_path: Path
 ) -> None:
     archive = tmp_path / "archive"
@@ -80,6 +80,14 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(
     monkeypatch.setattr(MODULE, "ARCHIVE", archive)
     monkeypatch.setattr(MODULE, "TRACK", track)
     monkeypatch.setattr(MODULE, "CONTEXT", {})
+    monkeypatch.setattr(
+        MODULE,
+        "gdp_june_recovery_report",
+        lambda _root: {
+            "repeat_identical": True,
+            "source_vintage": "StatsNZ-GDP-2026Q2",
+        },
+    )
     monkeypatch.setattr(MODULE, "canonical_inputs", lambda: ())
     monkeypatch.setattr(
         MODULE,
@@ -226,6 +234,7 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(
     )
     assert result["products_rebuilt"]["donor_sqlite_gold_plots"]["repeat_identical"]
     assert result["products_rebuilt"]["donor_source_native_silver"]["repeat_identical"]
+    assert result["products_rebuilt"]["gdp_june_successor_silver"]["repeat_identical"]
     assert (
         result["products_rebuilt"]["donor_sqlite_gold_plots"]["compatibility_facts"]
         == 341
@@ -233,6 +242,6 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(
     assert "compatibility_sqlite" not in result["required_but_not_rebuilt"]
     assert "all_source_native_silver" not in result["required_but_not_rebuilt"]
     assert (
-        "additional_source_native_silver_profiles_and_canonical_adapters"
+        "remaining_source_native_silver_profiles_and_canonical_adapters"
         in result["required_but_not_rebuilt"]
     )
