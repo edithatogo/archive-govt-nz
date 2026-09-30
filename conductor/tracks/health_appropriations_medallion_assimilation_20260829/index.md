@@ -101,8 +101,10 @@ every planned record set, measure or operational workflow.
 - Scope and plan: explicitly approved on 2026-08-29.
 - Donor preservation: 23/23 paths imported into external Bronze CAS and
   reconstructed, according to the recorded preservation receipts.
-- Official source census: 73 captured resources and 68 discovery-only entries
-  in the recorded 141-entry census; discovery is not capture.
+- Official source census: 74 captured resources and 68 discovery-only entries
+  in the recorded 142-entry census; discovery is not capture. The June 2026
+  Stats NZ GDP workbook is a separate captured vintage with an unqualified
+  analytical and rights state.
 - Exact CPIQ.SE9A source adapter: PR #271 observed merged after seven passing
   exact-head checks (1,956 hosted tests). Independent local builds retain 449
   selected facts, including 27 literal NA values, 4,041 lineage entries and

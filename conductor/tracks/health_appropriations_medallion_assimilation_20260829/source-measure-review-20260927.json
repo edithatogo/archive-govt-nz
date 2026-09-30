@@ -6,7 +6,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.json",
-      "sha256": "97d18a98f282d20c5bfaade2ee8c6dc1a351a19a79f8718e5aff89178c65524e"
+      "sha256": "d4e217e0e47ded74782ca50e83b51319fdd40f42d1b622ce86acc72bb8972175"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/crown-expense-canonical-projection-20260929.md",
@@ -38,7 +38,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-release-observation-20260930.json",
-      "sha256": "66e2a38da9a99c97703b7ed8d2d41a35cd6e2c41d4fffb3ede81f93fa014de10"
+      "sha256": "5c931e50b74b80d41b92921733ee1e139143570c98d7693fae5f92ad97fea1f7"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/historical-source-register.json",
@@ -58,7 +58,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/index.md",
-      "sha256": "53c2f718acb1c8c53e58350f2f14f57fa7318c22fa92901f6a8edf560e36dc42"
+      "sha256": "40e8d8dc63ddc1f932bf9a44c7cfc452925021543cd551e2ff65f3a220e5875a"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/moh-indicators.md",
@@ -82,10 +82,14 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
-      "sha256": "4bea6001b0a1af4a362075508c521befe5bd6e04d20b2dd2f7c23ef8c6256964"
+      "sha256": "edc9c7a2635112bb8b2ba763bf7f4bd8c507ac2d5c879bacce52d5a03f09a294"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-june-capture-20260930.json",
+      "sha256": "28609dbc48f7a4b68ea14f277267c7af0e2eec9b274d0c369865d7d090a2b868"
     }
   ],
-  "observed_at": "2026-09-27T00:00:00Z",
+  "observed_at": "2026-09-30T00:00:00Z",
   "schema_version": "archive-govt-nz.health-source-measure-review/v1",
   "scope": "inventory_and_period_rights_assessment_only_no_analytical_admission_or_legal_approval",
   "series": {
@@ -104,11 +108,11 @@
       "vintage_or_range": "Stats NZ Consumers Price Index June 2026 quarter; 449 quarterly selected rows from 1914Q2 to 2026Q2; Index, June 2017 quarter = 1000"
     },
     "gdp": {
-      "analytical_status": "March-vintage source captured; current June-quarter data lead identified; GDP-share denominator remains blocked",
+      "analytical_status": "March and June vintages separately captured and source-profiled; GDP-share denominator remains blocked",
       "period_basis": "Current-price quarterly flow; fiscal annual share requires four explicitly matching quarterly flows or a period-aligned Treasury June-year total. Currency code, aggregation, vintage splice and projection remain unqualified.",
       "rights": "publisher_default_observed_unadjudicated",
       "series_id": "Stats NZ GDP expenditure measure — Table 1 reference SG03AB01GE00S900, workbook prefix SNEQ",
-      "vintage_or_range": "Captured workbook March 2026, 60 quarters 2011Q2–2026Q1. Official GDP release for June 2026 exists, but its exact current-price workbook locator/selection is not captured."
+      "vintage_or_range": "March 2026 vintage: 60 quarters 2011Q2–2026Q1. Official GDP release for June 2026 exists; its captured successor is Table 1 C27:BK27, 61 quarters 2011Q2–2026Q2, preserved separately with no implicit splice."
     },
     "pharmac": {
       "analytical_status": "captured table characterized; preserve caption/table discrepancy and structural break; no homogeneous longitudinal measure asserted",

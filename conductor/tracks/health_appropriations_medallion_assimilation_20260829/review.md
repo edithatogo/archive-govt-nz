@@ -1246,3 +1246,28 @@ source-health module now has 100% statement and branch coverage (30 focused
 tests), and 78/78 module mutants are killed. Full local harness passes at
 98.27% overall against the unchanged 80% floor. Hosted CI must be rerun on the
 coverage-correction commit before merge.
+
+### GDP June-vintage source census follow-up — 2026-09-30 UTC
+
+The June 2026 Stats NZ current-price GDP workbook is captured as a new Bronze
+object and kept separate from the March 2026 vintage. The exact selector is
+Table 1!C27:BK27 (reference SG03AB01GE00S900, prefix SNEQ), covering 61
+quarter observations through June 2026; the distinct seasonally adjusted Table
+2 series remains excluded. The source census now records 142 resources (74
+captured, 68 discovery-only), and the refreshed report replays all 74 captured
+objects against the whole-census manifest and Bronze CAS.
+
+The census and capture receipt retain `rights: not_evaluated` and
+`qualification: unqualified`. The official Stats NZ terms page states CC BY
+4.0 applies unless otherwise specified and includes exceptions and attribution
+conditions; capture eligibility is not legal approval. Currency, annual GDP
+aggregation, vintage splicing, denominator joins and publication remain
+unqualified. March data are not replaced or spliced.
+
+Focused census, report, measure-review and recovery-binding tests passed (95).
+The full required harness passed with 7,181 tests, 9 skips and 98.27% coverage
+against the existing 80% floor; 53 schemas/43 documents, 9/9 parity, all
+configured mutation lanes, hygiene, CAS benchmark (705.77 MB/s), audit, license, secret and
+SBOM stages passed. The automatic Bronze Conductor phase gate passed format,
+lint, schema and targeted Bronze tests; receipt SHA-256 begins
+`c065138752d73750`. Hosted PR checks have not yet run.

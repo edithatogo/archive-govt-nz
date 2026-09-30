@@ -94,8 +94,12 @@ repository validation command. External gates block only their affected task.
   that lack a stable definition or join. [M-02, M-12; AC-03, AC-10]
   Exact national resident-population table, all-age selector, stock/mean
   estimate choices, census basis and selectable period coverage are now pinned
-  in `context-census.json`; numeric export, rights and period-alignment gates
-  remain open.
+  in `context-census.json`. The June 2026 GDP successor workbook and exact
+  Table 1 expenditure selector are now separately captured and hash-bound;
+  the March and June vintages are not spliced. Numeric population rights,
+  GDP currency, analytical admission and period-alignment gates remain open;
+  CPI, QES wage, Treasury GDP and Crown expense joins remain subject to their
+  own source-specific review.
 - [x] Evaluate published aggregate Health Survey indicators as a non-blocking
   Should item; include only if a documented analytical question, stable
   time/geography contract and public rights evidence exist. [S-05; AC-10]
@@ -978,7 +982,9 @@ integrated parent head.
   The formerly missing BEFU-2026 charts object was reacquired from its official
   locator and matches both manifest SHA-256 and BLAKE3. A new WARC response
   receipt is additive; the historical capture manifest is unchanged. The
-  whole-census report again verifies 73/73 captured objects. See
+  earlier whole-census report verified 73/73 captured objects. A later census
+  refresh adds the separate June-2026 GDP object; see the source-census receipt.
+  See
   `bronze-object-recovery-20260930.json` and the regenerated source-health
   report.
 

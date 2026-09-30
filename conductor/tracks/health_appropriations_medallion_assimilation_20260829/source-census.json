@@ -1,17 +1,17 @@
 {
   "capture_reconciliation": {
-    "capture_manifest": "official-capture-2026-08-29-complete.json",
-    "matched": 73
+    "capture_manifest": "official-capture-2026-09-30-health-refresh.json",
+    "matched": 74
   },
-  "cutoff": "2026-08-29",
+  "cutoff": "2026-09-30",
   "discovery_evidence": {
     "canonical_index": "https://www.treasury.govt.nz/publications/budgets/vote-information?vote=1640&year=All",
     "transport": "read-only text proxy",
     "transport_status": 200,
     "vote_link_count": 66
   },
-  "observed_at": "2026-08-29T09:00:17Z",
-  "record_count": 141,
+  "observed_at": "2026-09-29T21:28:10.739074Z",
+  "record_count": 142,
   "records": [
     {
       "cutoff": "2026-08-29",
@@ -191,6 +191,20 @@
       "source_id": "stats_nz_cpi-053a0705526fac8d",
       "title": "Consumers price index: June 2026 quarter - index numbers",
       "url": "https://www.stats.govt.nz/assets/Uploads/Consumers-price-index/Consumers-price-index-June-2026-quarter/Download-data/consumers-price-index-june-2026-quarter-index-numbers.csv"
+    },
+    {
+      "cutoff": "2026-09-30",
+      "disposition": "captured",
+      "family": "stats_nz_gdp",
+      "license": "CC-BY-4.0",
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "object_sha256": "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
+      "observed_at": "2026-09-29T21:28:10.739074Z",
+      "reason": "June 2026 successor workbook captured with SHA-256, BLAKE3, and WARC response binding",
+      "rights_uri": "https://www.stats.govt.nz/about-us/copyright/",
+      "source_id": "stats_nz_gdp-588a47c19c9dbc44",
+      "title": "Gross domestic product: June 2026 quarter – current price income and expenditure",
+      "url": "https://www.stats.govt.nz/assets/Uploads/Gross-domestic-product/Gross-domestic-product-June-2026-quarter/Download-data/gross-domestic-product-june-2026-quarter-current-price-income-and-expenditure.xlsx"
     },
     {
       "cutoff": "2026-08-29",

@@ -12,7 +12,7 @@
   "publication_timestamp_timezone": "not_supplied",
   "exact_current_price_workbook_url": "https://www.stats.govt.nz/assets/Uploads/Gross-domestic-product/Gross-domestic-product-June-2026-quarter/Download-data/gross-domestic-product-june-2026-quarter-current-price-income-and-expenditure.xlsx",
   "workbook_title": "Gross domestic product: June 2026 quarter – current price income and expenditure",
-  "workbook_capture_state": "not_captured",
+  "workbook_capture_state": "captured_separately",
   "page_copyright_metadata": "Unless noted otherwise, all content on stats.govt.nz is licensed under the Creative Commons 4.0 International Licence.",
   "rights_decision": "not_evaluated",
   "analytical_selection": "not_performed",
