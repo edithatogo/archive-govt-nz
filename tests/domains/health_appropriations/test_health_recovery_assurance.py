@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 from pathlib import Path
 from types import SimpleNamespace
 from typing import TYPE_CHECKING
@@ -117,6 +118,132 @@ def test_donor_parity_recovery_report_retains_unapproved_deviations(
     assert result["repeat_identical"] is True
 
 
+def test_source_health_recovery_report_replays_capture_and_census(
+    monkeypatch: MonkeyPatch, tmp_path: Path
+) -> None:
+    archive = tmp_path / "archive"
+    track = tmp_path / "track"
+    manifest_name = "official-capture-2026-09-30-health-refresh.json"
+    (archive / "manifests").mkdir(parents=True)
+    (track).mkdir()
+    source_bytes = json.dumps(
+        {
+            "schema_version": "archive-govt-nz.health-source-census/v1",
+            "cutoff": "2026-09-30",
+            "record_count": 1,
+            "capture_reconciliation": {
+                "capture_manifest": manifest_name,
+                "matched": 1,
+            },
+            "records": [
+                {
+                    "source_id": "source-1",
+                    "family": "fixture",
+                    "title": "Fixture source",
+                    "disposition": "captured",
+                    "reason": "fixture capture",
+                    "object_sha256": MODULE.hashlib.sha256(b"captured").hexdigest(),
+                    "license": "CC-BY-4.0",
+                    "rights_uri": "https://example.test/rights",
+                }
+            ],
+        },
+        sort_keys=True,
+    ).encode()
+    context_bytes = json.dumps(
+        {
+            "schema_version": "archive-govt-nz.health-source-context-census/v1",
+            "base_commit": "a" * 40,
+            "series": [
+                {
+                    "id": "fixture-v1",
+                    "family": "fixture",
+                    "series_id": "fixture-series",
+                    "vintage": "fixture-v1",
+                    "period": "2026",
+                    "qualification": "unqualified",
+                    "rights": "not_evaluated",
+                    "gaps": [],
+                }
+            ],
+        },
+        sort_keys=True,
+    ).encode()
+    object_digest = MODULE.hashlib.sha256(b"captured").hexdigest()
+    manifest_bytes = json.dumps(
+        {
+            "cutoff": "2026-09-30",
+            "results": [
+                {
+                    "source_id": "source-1",
+                    "state": "captured",
+                    "sha256": object_digest,
+                    "bytes": len(b"captured"),
+                    "rights": {
+                        "license": "CC-BY-4.0",
+                        "evidence": "https://example.test/rights",
+                        "state": "eligible",
+                    },
+                }
+            ],
+        },
+        sort_keys=True,
+    ).encode()
+    source_path = track / "source-census.json"
+    context_path = track / "context-census.json"
+    manifest_path = archive / "manifests" / manifest_name
+    source_path.write_bytes(source_bytes)
+    context_path.write_bytes(context_bytes)
+    manifest_path.write_bytes(manifest_bytes)
+    cas_object = archive / "bronze-cas" / "sha256" / object_digest[:2] / object_digest
+    cas_object.parent.mkdir(parents=True)
+    cas_object.write_bytes(b"captured")
+    monkeypatch.setattr(MODULE, "TRACK", track)
+    monkeypatch.setattr(MODULE, "ARCHIVE", archive)
+    monkeypatch.setattr(
+        MODULE,
+        "SOURCE_CENSUS_SHA256",
+        MODULE.hashlib.sha256(source_bytes).hexdigest(),
+    )
+    monkeypatch.setattr(
+        MODULE,
+        "CONTEXT_CENSUS_SHA256",
+        MODULE.hashlib.sha256(context_bytes).hexdigest(),
+    )
+    monkeypatch.setattr(
+        MODULE,
+        "CAPTURE_MANIFEST_SHA256",
+        MODULE.hashlib.sha256(manifest_bytes).hexdigest(),
+    )
+    generated = MODULE.build_source_health_report(
+        json.loads(source_bytes),
+        source_bytes,
+        json.loads(context_bytes),
+        context_bytes,
+        MODULE.CaptureEvidence(
+            manifest=json.loads(manifest_bytes),
+            manifest_bytes=manifest_bytes,
+            manifest_name=manifest_name,
+            cas_root=archive / "bronze-cas" / "sha256",
+        ),
+    )
+    (track / "source-health-report.json").write_text(
+        json.dumps(generated, sort_keys=True, indent=2) + "\n"
+    )
+
+    result = MODULE.source_health_recovery_report()
+
+    assert result["status"] == "verified_repeat_identical"
+    assert result["report_sha256"] == MODULE.digest(
+        MODULE.TRACK / "source-health-report.json"
+    )
+    assert result["summary"]["resource_count"] == 1
+    assert result["summary"]["resource_dispositions"] == {"captured": 1}
+    assert result["summary"]["context_series_vintage_count"] == 1
+    assert result["capture_reconciliation"]["bronze_object_count_verified"] == 1
+    assert any("not assess" in limit for limit in result["limitations"])
+
+
 def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: PLR0915
     monkeypatch: MonkeyPatch, tmp_path: Path
 ) -> None:
@@ -144,6 +271,14 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
         },
     )
     monkeypatch.setattr(MODULE, "canonical_inputs", lambda: ())
+    monkeypatch.setattr(
+        MODULE,
+        "source_health_recovery_report",
+        lambda: {
+            "status": "verified_repeat_identical",
+            "summary": {"resource_count": 142},
+        },
+    )
     monkeypatch.setattr(
         MODULE,
         "donor_parity_recovery_report",
@@ -307,6 +442,10 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     )
     assert "compatibility_sqlite" not in result["required_but_not_rebuilt"]
     assert "all_source_native_silver" not in result["required_but_not_rebuilt"]
+    assert (
+        "canonical_classification_drift_revision_and_cross_source_reports"
+        in result["required_but_not_rebuilt"]
+    )
     assert (
         "remaining_source_native_silver_profiles_and_canonical_adapters"
         in result["required_but_not_rebuilt"]

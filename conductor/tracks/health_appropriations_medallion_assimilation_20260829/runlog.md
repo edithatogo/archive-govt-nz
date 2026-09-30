@@ -3400,3 +3400,52 @@ and complete validated Platinum products.
 
 Focused recovery tests, Ruff and basedpyright passed. Required full repository
 validation and hosted exact-head checks remain pending.
+
+## 2026-09-30 — Replay whole-census source-health report in clean-room recovery
+
+Integrated the existing source-health/vintage-state report into clean-room
+recovery. Each replay independently validates the pinned source and context
+censuses, the pinned capture manifest, and every captured Bronze CAS object;
+it builds the report twice and requires equality with the tracked report.
+Recovery verified 142 inventory resources (74 captured and 68 out of scope),
+11 context vintages (all unqualified and rights not evaluated), and all 74
+captured objects totaling 38,927,673 bytes. The report SHA-256 is
+`f61b007368da626690f53cb9117a2bf1c5353410ccb5f3c665b4e741bd25dfc4`. Bronze
+objects remained unchanged.
+
+This closes the recovery replay gap for whole-census source-health evidence;
+it does not assess layout drift, calendar completeness, analytical
+comparability, legal rights, or reconciliation completeness. Canonical
+classification drift, revision and cross-source reconciliation remain open,
+as do remaining source-native Silver adapters/profiles and the full validated
+Platinum metadata profile. The recovery receipt is
+`clean-room-recovery-20260930-source-health.json` (SHA-256
+`27c66cefeb425cf96605d03299b5f87ee234dd8fa91aa68a41d68caf282db20d`), with
+overall status `partial_with_blockers`.
+
+Focused recovery tests passed (7). The required `./scripts/validate.sh` passed:
+7,227 tests passed, 10 skipped, 98.26% branch coverage against the 80% floor;
+53 schemas and 43 representative documents; 9/9 parity checks; configured
+mutation and hygiene gates; 643.25 MB/s CAS benchmark; dependency, license and
+secret scans; and a generated 113-component SBOM. The SBOM tool emitted its
+existing CDX “Validation skipped” warning while the harness reported SBOM
+validated. Automatic Conductor `phase_7_gates` review passed formatting, lint,
+schema, targeted tests and medallion mutation checks; immutable receipt
+`phase_7_gates-review-receipt-20260930-source-health.json` SHA-256 is
+`6d75034efac10f2f38508b4a5aa20dafebce3790d5db0fd199c2aa5354372bb0`.
+Hosted checks remain pending.
+
+### Hosted assurance follow-up for PR #570
+
+The initial hosted Linux assurance run on `8a9e0f5a` failed one test because
+`test_source_health_recovery_report_replays_capture_and_census` attempted to
+read the maintainer-only external path
+`/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/manifests/official-capture-2026-09-30-health-refresh.json`.
+The run reported 7,221 passed and 15 skipped before failing. Replaced that
+test dependency with a temporary census, capture manifest, and CAS fixture;
+the production recovery path remains bound to the pinned archive evidence.
+The follow-up head `74585147` has all hosted assurance, CodeQL, analysis, lint,
+and Codecov patch checks passing. Hosted Linux validation reported 7,222
+passed, 15 skipped, 98.26% coverage against the 80% floor, 53 schemas/43
+representative documents, 9/9 parity checks, and a validated 114-component
+SBOM. No required check was bypassed.

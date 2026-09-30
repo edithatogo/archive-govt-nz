@@ -66,6 +66,12 @@ from archive_govt_nz.domains.health_appropriations.rebuild_eight import (
     plan_eight,
     verify_eight,
 )
+from archive_govt_nz.domains.health_appropriations.source_health_report import (
+    CaptureEvidence,
+)
+from archive_govt_nz.domains.health_appropriations.source_health_report import (
+    build_report as build_source_health_report,
+)
 from archive_govt_nz.domains.health_appropriations.source_operations import (
     SourceRequest,
     operate_source,
@@ -122,6 +128,9 @@ CONTEXT_CENSUS_SHA256 = (
 )
 POPULATION_SOURCE_SHA256 = (
     "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9"
+)
+CAPTURE_MANIFEST_SHA256 = (
+    "2de49f07c877aab196afae572db32bfc2d48fd4340eb17c9a4bfb3bb2cc357e7"
 )
 PHARMAC_SOURCE_SHA256 = (
     "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea"
@@ -993,6 +1002,65 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
     }
 
 
+def source_health_recovery_report() -> dict[str, Any]:
+    """Rebuild the pinned whole-census health report and verify Bronze capture."""
+    source_bytes = (TRACK / "source-census.json").read_bytes()
+    context_bytes = (TRACK / "context-census.json").read_bytes()
+    manifest_path = (
+        ARCHIVE / "manifests" / "official-capture-2026-09-30-health-refresh.json"
+    )
+    manifest_bytes = manifest_path.read_bytes()
+    require_evidence(
+        hashlib.sha256(source_bytes).hexdigest() == SOURCE_CENSUS_SHA256,
+        "source_health_census_pin_mismatch",
+    )
+    require_evidence(
+        hashlib.sha256(context_bytes).hexdigest() == CONTEXT_CENSUS_SHA256,
+        "source_health_context_census_pin_mismatch",
+    )
+    require_evidence(
+        hashlib.sha256(manifest_bytes).hexdigest() == CAPTURE_MANIFEST_SHA256,
+        "source_health_capture_manifest_pin_mismatch",
+    )
+    capture = CaptureEvidence(
+        manifest=json.loads(manifest_bytes),
+        manifest_bytes=manifest_bytes,
+        manifest_name=manifest_path.name,
+        cas_root=ARCHIVE / "bronze-cas" / "sha256",
+    )
+    source_census = json.loads(source_bytes)
+    context_census = json.loads(context_bytes)
+    first = build_source_health_report(
+        source_census, source_bytes, context_census, context_bytes, capture
+    )
+    second = build_source_health_report(
+        source_census, source_bytes, context_census, context_bytes, capture
+    )
+    require_evidence(first == second, "source_health_report_repeat_mismatch")
+    recorded_path = TRACK / "source-health-report.json"
+    recorded = json.loads(recorded_path.read_bytes())
+    require_evidence(first == recorded, "source_health_report_recorded_mismatch")
+    summary = first["summary"]
+    reconciliation = first["capture_reconciliation"]
+    captured_count = summary["resource_dispositions"].get("captured", 0)
+    require_evidence(
+        reconciliation["state"] == "capture_manifest_and_bronze_objects_verified"
+        and reconciliation["matched_resource_count_verified"] == captured_count
+        and reconciliation["bronze_object_count_verified"] == captured_count,
+        "source_health_capture_reconciliation_incomplete",
+    )
+    return {
+        "status": "verified_repeat_identical",
+        "report_sha256": digest(recorded_path),
+        "source_census_sha256": hashlib.sha256(source_bytes).hexdigest(),
+        "context_census_sha256": hashlib.sha256(context_bytes).hexdigest(),
+        "capture_manifest_sha256": hashlib.sha256(manifest_bytes).hexdigest(),
+        "summary": summary,
+        "capture_reconciliation": reconciliation,
+        "limitations": first["limitations"],
+    }
+
+
 def donor_parity_recovery_report() -> dict[str, Any]:
     """Replay the pinned donor reconciliation and retain its non-approval state."""
     script = TRACK / "donor-parity-replay.py"
@@ -1146,10 +1214,12 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
         )
         outputs["pharmac_canonical_projection"] = _pharmac_recovery_report(root)
         outputs["canonical_gold"] = _canonical_gold_recovery_report(root)
+        outputs["source_health_report"] = source_health_recovery_report()
         canonical_quality = outputs["canonical_gold"].get("quality_report") or {}
         outputs["donor_and_canonical_reports"] = {
             "donor_parity": donor_parity_recovery_report(),
             "canonical_quality": canonical_quality or None,
+            "source_health": outputs["source_health_report"],
             "unresolved_canonical_reports": canonical_quality.get(
                 "unresolved_reports", ["canonical_gold_not_rebuilt"]
             ),
@@ -1166,7 +1236,7 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
         "products_rebuilt": outputs,
         "bronze_objects_unchanged": unchanged,
         "required_but_not_rebuilt": [
-            "canonical_source_health_classification_drift_revision_and_cross_source_reports",
+            "canonical_classification_drift_revision_and_cross_source_reports",
             "remaining_source_native_silver_profiles_and_canonical_adapters",
             "platinum_dcat_croissant_ro_crate_prov_complete_profile",
         ],
