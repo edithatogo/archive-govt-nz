@@ -1,5 +1,31 @@
 # Run Log
 
+## 2026-09-30 — Exact GDP vintage-difference evidence
+
+The existing GDP vintage comparator verified canonical March-2026Q1 and
+June-2026Q2 source projections across 60 shared quarter tokens, but previously
+returned only changed period names and a digest. It now includes the exact
+March value, June value and Decimal delta for every changed shared period. A
+narrow Bronze-to-Silver-to-canonical replay was repeated twice from the pinned
+source objects; both full comparison reports matched. It found 49 changed and
+11 unchanged periods, with difference payload SHA-256
+`1d8bfee0ae51721d971cf6f169dec2006bdd30ddcdee8f0ccbe80ec145ea7497`. Values
+remain separate source vintages in literal `$(million)` units; currency,
+reasons for change, rights and analytical admission remain unresolved. See the
+[full difference receipt](gdp-vintage-reconciliation-20260930.json). This
+advances GDP revision evidence only; full-track revision and cross-source
+reconciliation remain open.
+
+The first required full-harness attempt on this increment reached 98.26%
+coverage (above the 80% floor) with 7,221 passed, 10 skipped and eight
+failures in unrelated schema/property, discovery-order, CLI-redaction,
+legislation-order, capture-length and process-recovery tests. The property
+failures reported Hypothesis timing deadlines. All eight exact failed tests
+passed in a focused rerun (8 passed, 16.40 seconds). This records a bounded
+flaky full-run failure and its successful focused reproduction check; a fresh
+full harness is still required before PR delivery.
+
+
 ## 2026-09-30 — Verified Budget source-label occurrence comparison
 
 Added clean-room replay of the retained Budget-2025 and Budget-2026 local
@@ -3483,3 +3509,15 @@ and Codecov patch checks passing. Hosted Linux validation reported 7,222
 passed, 15 skipped, 98.26% coverage against the 80% floor, 53 schemas/43
 representative documents, 9/9 parity checks, and a validated 114-component
 SBOM. No required check was bypassed.
+
+The fresh required `./scripts/validate.sh` rerun completed cleanly after the
+first bounded flaky attempt: 7,229 passed, 10 skipped, 98.26% branch coverage
+against the configured 80% floor; all 53 schemas and 43 representative
+documents passed; differential parity passed 9/9; all mutation gates passed;
+benchmark throughput was 737.36 MB/s; dependency audit found no known
+vulnerabilities; license, secret and SBOM receipts passed (113 components).
+The Phase 7 Conductor review also passed. The fresh rerun additionally exposed
+three published vulnerabilities in locked urllib3 2.7.0 (GHSA-8988-9cw3-xx77,
+GHSA-gh4c-6fx4-qh6g, GHSA-vxq7-64xx-v4gw); the lock now pins patched urllib3
+2.8.0, whose audit is clean. Coverage tests were not added to pursue a higher
+percentage; the existing suite already exceeds the project's 80% threshold.

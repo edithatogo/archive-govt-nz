@@ -126,6 +126,7 @@ def compare_gdp_vintages(
         "unchanged_period_count": len(unchanged),
         "changed_period_count": len(changes),
         "changed_period_tokens": [row["period_token"] for row in changes],
+        "changes": changes,
         "difference_payload_sha256": hashlib.sha256(comparison_bytes).hexdigest(),
         "comparison_basis": "exact canonical Decimal values in matching period tokens",
         "difference_interpretation": "not_assessed",
