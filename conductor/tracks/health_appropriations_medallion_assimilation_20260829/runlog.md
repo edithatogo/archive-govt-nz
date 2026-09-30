@@ -3335,3 +3335,12 @@ clean-room receipt SHA-256 is
 reports `partial_with_blockers`. No Q2 canonical projection, Context Gold
 admission, currency qualification, annualization, denominator selection,
 rights approval or publication occurred.
+
+## 2026-09-30 — Align Codecov patch coverage with the 80% policy
+
+PR #567 exposed a second coverage gate: Codecov compared 94.44% patch coverage
+to an implicit 97.92% `auto` target, despite the repository's 80% total
+coverage floor and 98.27% measured total. Added an explicit 80% Codecov patch
+target and a regression assertion beside the existing total-coverage policy
+test. The official Codecov YAML validator accepted `codecov.yml`, and the
+focused policy test passed. Hosted checks for the updated commit are pending.

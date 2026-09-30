@@ -1294,3 +1294,11 @@ tests pass (596 passed, 10 skipped). The full local harness passes 7,220 tests,
 supply-chain and SBOM gates. The automatic `phase_7_gates` review passes its
 targeted phase checks. Full track-level completion review and current-head
 hosted assurance remain pending; no phase or whole-track completion is claimed.
+
+## 2026-09-30 — Coverage gate alignment
+
+Hosted review found that Codecov's implicit patch `auto` target was 97.92%,
+above the intended 80% threshold. The configured patch target is now 80%, and
+the assurance-policy test pins both the repository total-coverage floor and
+the Codecov patch floor to 80%. Codecov's YAML validator and the focused test
+passed; final hosted checks for this update remain pending.
