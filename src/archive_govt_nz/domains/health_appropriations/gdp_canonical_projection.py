@@ -6,6 +6,7 @@ import hashlib
 import json
 import re
 import tempfile
+from dataclasses import dataclass
 from datetime import date
 from decimal import Decimal
 from pathlib import Path
@@ -30,11 +31,37 @@ SOURCE_MANIFEST_SHA256 = (
     "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35"
 )
 TRANSFORMATION = "stats-nz-gdp-canonical-current-price-context/v1"
+JUNE_SOURCE_SHA256 = "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d"
+JUNE_SOURCE_LOCATOR = (
+    "https://www.stats.govt.nz/assets/Uploads/Gross-domestic-product/"
+    "Gross-domestic-product-June-2026-quarter/Download-data/"
+    "gross-domestic-product-june-2026-quarter-current-price-income-and-expenditure.xlsx"
+)
+JUNE_SOURCE_VINTAGE = "StatsNZ-GDP-2026Q2"
+JUNE_OBSERVED_AT = "2026-09-29T21:28:10.739074Z"
+JUNE_SOURCE_MANIFEST_SHA256 = (
+    "f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd"
+)
+JUNE_SILVER_TRANSFORMATION = "stats-nz-gdp-current-price-expenditure-actual-2026q2/v1"
+JUNE_TRANSFORMATION = "stats-nz-gdp-june-canonical-current-price-context/v1"
 _PRODUCTS = {"gdp_facts.parquet", "field_lineage.parquet", "cell_dispositions.parquet"}
 _DIGEST = re.compile(r"^[0-9a-f]{64}$")
 _ERROR = "gdp_canonical_projection_invalid"
 _MAX_PRECISION = 38
 _MAX_SCALE = 18
+
+
+@dataclass(frozen=True)
+class GdpProjectionProfile:
+    """Bind one exact source vintage to its independent projection identity."""
+
+    source_sha256: str
+    source_locator: str
+    source_vintage: str
+    observed_at: str
+    source_manifest_sha256: str
+    silver_transformation: str
+    canonical_transformation: str
 
 
 def _require(condition: object) -> None:
@@ -51,7 +78,10 @@ def _pairs(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
 
 
 def _verify_silver(
-    silver_root: Path, manifest_sha256: str, bronze: Path
+    silver_root: Path,
+    manifest_sha256: str,
+    bronze: Path,
+    profile: GdpProjectionProfile,
 ) -> tuple[pa.Table, pa.Table]:
     _require(_DIGEST.fullmatch(manifest_sha256) is not None)
     _require(not silver_root.is_symlink() and silver_root.is_dir())
@@ -61,16 +91,16 @@ def _verify_silver(
     _require(
         hashlib.sha256(marker_bytes).hexdigest()
         == manifest_sha256
-        == SOURCE_MANIFEST_SHA256
+        == profile.source_manifest_sha256
     )
     manifest = json.loads(marker_bytes, object_pairs_hook=_pairs)
     _require(
         isinstance(manifest, dict)
         and manifest.get("schema_version") == "archive-govt-nz.health-gdp-extraction/v1"
-        and manifest.get("transformation_id") == gdp.TRANSFORMATION
-        and manifest.get("source_object_sha256") == SOURCE_SHA256
-        and manifest.get("source_locator") == SOURCE_LOCATOR
-        and manifest.get("source_vintage") == SOURCE_VINTAGE
+        and manifest.get("transformation_id") == profile.silver_transformation
+        and manifest.get("source_object_sha256") == profile.source_sha256
+        and manifest.get("source_locator") == profile.source_locator
+        and manifest.get("source_vintage") == profile.source_vintage
         and manifest.get("rights_state") == "not_evaluated"
         and manifest.get("currency") is None
         and manifest.get("status") == "passed"
@@ -82,10 +112,10 @@ def _verify_silver(
         rebuilt_manifest = gdp.normalize_gdp(
             bronze,
             rebuilt,
-            expected_sha256=SOURCE_SHA256,
-            source_locator=SOURCE_LOCATOR,
-            source_vintage=SOURCE_VINTAGE,
-            observed_at=OBSERVED_AT,
+            expected_sha256=profile.source_sha256,
+            source_locator=profile.source_locator,
+            source_vintage=profile.source_vintage,
+            observed_at=profile.observed_at,
             dry_run=False,
         )
         _require(rebuilt_manifest == manifest)
@@ -102,7 +132,10 @@ def _verify_silver(
 
 
 def _lineage_row(
-    source: dict[str, Any], target_id: str, values: dict[str, Any]
+    source: dict[str, Any],
+    target_id: str,
+    values: dict[str, Any],
+    transformation: str,
 ) -> dict[str, Any]:
     field = values["field"]
     coordinate = values["coordinate"]
@@ -126,7 +159,7 @@ def _lineage_row(
         ),
         "rights_state": "not_evaluated",
         "quality_flags": list(source["quality_flags"]),
-        "transformation_id": TRANSFORMATION,
+        "transformation_id": transformation,
         "lineage_id": hashlib.sha256(f"{target_id}\0lineage".encode()).hexdigest(),
         "source_record_id": source["record_id"],
         "source_schema_version": source["schema_version"],
@@ -140,7 +173,7 @@ def _lineage_row(
 
 
 def _canonicalize(
-    facts: pa.Table, source_lineage: pa.Table
+    facts: pa.Table, source_lineage: pa.Table, transformation: str
 ) -> tuple[pa.Table, pa.Table]:
     links: dict[str, dict[str, dict[str, Any]]] = {}
     for item in source_lineage.to_pylist():
@@ -151,7 +184,7 @@ def _canonicalize(
         source_id = source["record_id"]
         target_id = (
             "sha256:"
-            + hashlib.sha256(f"{TRANSFORMATION}\0{source_id}".encode()).hexdigest()
+            + hashlib.sha256(f"{transformation}\0{source_id}".encode()).hexdigest()
         )
         amount = Decimal(source["source_number_token"])
         precision = len(amount.as_tuple().digits)
@@ -190,7 +223,7 @@ def _canonicalize(
                     "denominator_not_selected",
                 }
             ),
-            "transformation_id": TRANSFORMATION,
+            "transformation_id": transformation,
             "lineage_id": hashlib.sha256(f"{target_id}\0lineage".encode()).hexdigest(),
             "source_record_id": source_id,
             "source_schema_version": source["schema_version"],
@@ -234,8 +267,9 @@ def _canonicalize(
                         "raw_value": item["raw_value"],
                         "normalized_value": normalized,
                         "valid_time_start": period_start,
-                        "rule": TRANSFORMATION,
+                        "rule": transformation,
                     },
+                    transformation,
                 )
             )
     fact_table = pa.Table.from_pylist(
@@ -249,23 +283,37 @@ def _canonicalize(
     return fact_table, lineage_table
 
 
-def project_gdp(
-    silver_root: Path, manifest_sha256: str, cas_root: Path
+def _project_gdp(
+    silver_root: Path,
+    manifest_sha256: str,
+    cas_root: Path,
+    profile: GdpProjectionProfile,
 ) -> tuple[pa.Table, pa.Table, dict[str, Any]]:
     """Verify GDP Bronze/Silver and retain unqualified fiscal context."""
     _require(not cas_root.is_symlink() and cas_root.is_dir())
-    original = cas_root / SOURCE_SHA256[:2] / SOURCE_SHA256
+    original = cas_root / profile.source_sha256[:2] / profile.source_sha256
     _require(not original.is_symlink() and not original.parent.is_symlink())
-    facts, source_lineage = _verify_silver(silver_root, manifest_sha256, original)
-    canonical, lineage = _canonicalize(facts, source_lineage)
+    facts, source_lineage = _verify_silver(
+        silver_root,
+        manifest_sha256,
+        original,
+        profile,
+    )
+    canonical, lineage = _canonicalize(
+        facts, source_lineage, profile.canonical_transformation
+    )
     return (
         canonical,
         lineage,
         {
             "schema_version": "archive-govt-nz.health-gdp-canonical-projection/v1",
             "status": "verified_source_faithful_projection",
-            "source_object_sha256": SOURCE_SHA256,
+            "source_object_sha256": profile.source_sha256,
+            "source_locator": profile.source_locator,
+            "source_vintage": profile.source_vintage,
             "source_manifest_sha256": manifest_sha256,
+            "silver_transformation_id": profile.silver_transformation,
+            "transformation_id": profile.canonical_transformation,
             "input_records": facts.num_rows,
             "output_records": canonical.num_rows,
             "lineage_records": lineage.num_rows,
@@ -274,4 +322,44 @@ def project_gdp(
             "denominator_selection": "not_performed",
             "inflation_adjustment": "not_performed",
         },
+    )
+
+
+def project_gdp(
+    silver_root: Path, manifest_sha256: str, cas_root: Path
+) -> tuple[pa.Table, pa.Table, dict[str, Any]]:
+    """Project the pinned March GDP vintage into unqualified fiscal context."""
+    return _project_gdp(
+        silver_root,
+        manifest_sha256,
+        cas_root,
+        GdpProjectionProfile(
+            source_sha256=SOURCE_SHA256,
+            source_locator=SOURCE_LOCATOR,
+            source_vintage=SOURCE_VINTAGE,
+            observed_at=OBSERVED_AT,
+            source_manifest_sha256=SOURCE_MANIFEST_SHA256,
+            silver_transformation=gdp.TRANSFORMATION,
+            canonical_transformation=TRANSFORMATION,
+        ),
+    )
+
+
+def project_gdp_june(
+    silver_root: Path, manifest_sha256: str, cas_root: Path
+) -> tuple[pa.Table, pa.Table, dict[str, Any]]:
+    """Project the pinned June successor as its own unqualified vintage."""
+    return _project_gdp(
+        silver_root,
+        manifest_sha256,
+        cas_root,
+        GdpProjectionProfile(
+            source_sha256=JUNE_SOURCE_SHA256,
+            source_locator=JUNE_SOURCE_LOCATOR,
+            source_vintage=JUNE_SOURCE_VINTAGE,
+            observed_at=JUNE_OBSERVED_AT,
+            source_manifest_sha256=JUNE_SOURCE_MANIFEST_SHA256,
+            silver_transformation=JUNE_SILVER_TRANSFORMATION,
+            canonical_transformation=JUNE_TRANSFORMATION,
+        ),
     )

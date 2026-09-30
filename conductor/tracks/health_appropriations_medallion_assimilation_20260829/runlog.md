@@ -3344,3 +3344,33 @@ coverage floor and 98.27% measured total. Added an explicit 80% Codecov patch
 target and a regression assertion beside the existing total-coverage policy
 test. The official Codecov YAML validator accepted `codecov.yml`, and the
 focused policy test passed. Hosted checks for the updated commit are pending.
+
+## 2026-09-30 — June GDP canonical projection and vintage overlap
+
+Added an independently pinned canonical projection for the June GDP Bronze and
+Silver vintage, retaining the March projection contract and keeping both
+vintages separate. The clean-room recovery rebuilt the March and June
+projections twice with identical output. June produced 61 facts and 427
+canonical lineage rows (source Silver: 61 facts, 915 lineage rows, and 2,323
+cell dispositions); the June canonical manifest pin is
+`f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd`.
+
+The overlap comparison verified 60 shared quarters: 49 changed and 11
+unchanged. It pins the exact changed-value payload by SHA-256 without admitting
+or explaining differences. Currency, rights, denominator selection,
+interpretation, analytical admission, and publication remain unresolved or
+unperformed. Bronze objects were unchanged. The full receipt is
+`clean-room-recovery-20260930-gdp-canonical.json` (SHA-256
+`5ec8bedbb343408a91396277a26dbf6601d328299fb047687e9019c51d54bf7f`); its
+global status remains `partial_with_blockers` for donor/canonical reports,
+remaining source-native profiles/adapters, and the complete validated Platinum
+profile.
+
+Focused projection/comparison/recovery tests passed (11), Ruff and basedpyright
+passed. The required `./scripts/validate.sh` passed: 7,225 tests, 10 skipped,
+98.26% branch coverage against the 80% floor, 53 schemas/43 representative
+documents, 9/9 parity, configured mutation gates, hygiene, CAS benchmark,
+dependency and license audits, secret scan, and 113-component SBOM. The SBOM
+validator emitted its existing “Validation skipped” warning while the
+repository command reported the SBOM validated. The full track review and
+hosted checks remain pending.
