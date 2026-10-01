@@ -1,7 +1,7 @@
 {
   "schema_version": "archive-govt-nz.health-silver-repeat-normalization/v1",
-  "scope": "all_allowlisted_source_operation_profiles",
-  "status": "verified_partial",
+  "scope": "all_registered_source_adapter_and_allowlisted_source_operation_profiles",
+  "status": "verified",
   "profiles_verified": [
     "budget-revenue-2025/v1",
     "budget-revenue-2026/v1",
@@ -25,6 +25,21 @@
     "complete_package_file_bytes_identical": true,
     "bronze_source_bytes_unchanged": true
   },
+  "registered_adapter_dispatch_verified": [
+    "nz-budget-health-expenditure",
+    "nz-budget-health-revenue",
+    "pharmac-combined-pharmaceutical-budget",
+    "stats-nz-cpiq-se9a",
+    "stats-nz-dpe056aa-annual-mean",
+    "stats-nz-gdp-table1-expenditure-actual",
+    "stats-nz-qes-qemq-sasz9a"
+  ],
+  "adapter_dispatch_contract": {
+    "dispatches_per_profile": 2,
+    "hash_bound_selection_receipts_identical": true,
+    "complete_typed_adapter_outputs_identical": true,
+    "bronze_source_bytes_unchanged": true
+  },
   "validation": {
     "commands": [
       "uv run --locked pytest tests/domains/health_appropriations/test_source_operations.py::test_repeated_source_normalization_has_identical_manifest_and_outputs -q",
@@ -32,6 +47,7 @@
     ],
     "results": ["12 passed", "3 passed"],
     "source_operation_suite": "466 passed, 10 skipped",
+    "registered_adapter_repeatability": "1 passed (covers 7 registered adapters)",
     "ruff": "passed",
     "format": "passed",
     "basedpyright": "0 errors, 0 warnings, 0 notes"
@@ -39,7 +55,7 @@
   "full_repository_validation": {
     "command": "./scripts/validate.sh",
     "result": "passed",
-    "tests_passed": 7249,
+    "tests_passed": 7250,
     "tests_skipped": 10,
     "branch_coverage_percent": 98.27,
     "configured_coverage_floor_percent": 80,
@@ -54,12 +70,12 @@
   "conductor_phase_7": {
     "result": "passed"
   },
-  "remaining_scope": [
-    "context_adapter_dispatch_outside_source_operation",
-    "other_registered_source_adapters_outside_allowlisted_source_operations"
-  ],
+  "conductor_phase_2": {
+    "result": "passed"
+  },
+  "remaining_scope": [],
   "limitations": [
-    "This receipt verifies deterministic local normalization only.",
+    "This receipt verifies deterministic local normalization and registered-adapter dispatch only.",
     "It does not assert source rights, analytical admission, correctness of source values, or publication eligibility."
   ]
 }
