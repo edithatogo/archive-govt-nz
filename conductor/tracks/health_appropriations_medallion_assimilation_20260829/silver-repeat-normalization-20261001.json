@@ -1,6 +1,6 @@
 {
   "schema_version": "archive-govt-nz.health-silver-repeat-normalization/v1",
-  "scope": "source_operation_profiles_with_representative_fixtures",
+  "scope": "all_allowlisted_source_operation_profiles",
   "status": "verified_partial",
   "profiles_verified": [
     "budget-revenue-2025/v1",
@@ -14,7 +14,10 @@
     "moh-hair2024-fig28/v1",
     "pharmac-cpb-20260807/v1",
     "population-annual-mean-context/v1",
-    "qes-june2026-table8/v1"
+    "qes-june2026-table8/v1",
+    "vote-health-supplementary-2003-04-detail/v1",
+    "vote-health-supplementary-2003-04-revenue/v1",
+    "vote-health-supplementary-2003-04-summary/v1"
   ],
   "repeat_contract": {
     "builds_per_profile": 2,
@@ -23,13 +26,37 @@
     "bronze_source_bytes_unchanged": true
   },
   "validation": {
-    "command": "uv run --locked pytest tests/domains/health_appropriations/test_source_operations.py::test_repeated_source_normalization_has_identical_manifest_and_outputs -q",
-    "result": "12 passed"
+    "commands": [
+      "uv run --locked pytest tests/domains/health_appropriations/test_source_operations.py::test_repeated_source_normalization_has_identical_manifest_and_outputs -q",
+      "uv run --locked pytest tests/domains/health_appropriations/test_source_operations.py::test_repeated_vote_pdf_normalization_has_identical_outputs -q"
+    ],
+    "results": ["12 passed", "3 passed"],
+    "source_operation_suite": "466 passed, 10 skipped",
+    "ruff": "passed",
+    "format": "passed",
+    "basedpyright": "0 errors, 0 warnings, 0 notes"
   },
-  "remaining_profiles": [
-    "vote-health-supplementary-2003-04-summary/v1",
-    "vote-health-supplementary-2003-04-detail/v1",
-    "vote-health-supplementary-2003-04-revenue/v1"
+  "full_repository_validation": {
+    "command": "./scripts/validate.sh",
+    "result": "passed",
+    "tests_passed": 7249,
+    "tests_skipped": 10,
+    "branch_coverage_percent": 98.27,
+    "configured_coverage_floor_percent": 80,
+    "schemas": 53,
+    "representative_documents": 43,
+    "differential_parity": "9/9 passed",
+    "configured_mutation_lanes": "passed",
+    "dependency_audit": "passed_no_known_vulnerabilities",
+    "license_inventory": "passed",
+    "sbom": "validated_113_components"
+  },
+  "conductor_phase_7": {
+    "result": "passed"
+  },
+  "remaining_scope": [
+    "context_adapter_dispatch_outside_source_operation",
+    "other_registered_source_adapters_outside_allowlisted_source_operations"
   ],
   "limitations": [
     "This receipt verifies deterministic local normalization only.",
