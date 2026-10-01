@@ -3716,3 +3716,14 @@ scan of the changed files identified `Secret Keyword` for the field name
 receipt digest prefix. No candidate value is required for this evidence. The
 labels/digest prefix are diagnostic-only and will be removed; the full phase
 receipt digest remains in the generated build receipt, outside tracked source.
+
+The full local harness after that correction had one randomized failure in
+`tests/test_foi_dispatch.py::test_real_offline_capture_through_shared_controls`
+(7,248 passed, 10 skipped; 98.27% coverage). The same isolated test passed on
+immediate rerun (`1 passed`), indicating a flaky test result rather than a
+reproducible failure in the Health changes. No production change was made; the
+full harness was rerun and passed: 7,249 passed, 10 skipped, 98.27% branch
+coverage against the 80% floor. Dependency, license, secret, and SBOM checks
+also passed. The automatic Phase 7 gate passed on the corrected tree; its
+receipt SHA-256 begins `53abebfe824cb480`. The changed files passed a fresh
+secret scan with zero candidates.
