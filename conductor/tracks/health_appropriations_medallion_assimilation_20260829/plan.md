@@ -353,11 +353,15 @@ integrated parent head.
   layout baselines and integrated drift receipts remain open. See
   `context-adapters.md` and its validation receipt. [M-05, M-07, M-18, S-04;
   AC-03, AC-05, AC-16]
-- [ ] Demonstrate repeat normalization yields identical manifests and Parquet
+- [~] Demonstrate repeat normalization yields identical manifests and Parquet
   content identity for the same inputs/environment. [M-10, M-16; AC-08,
-  AC-12] The annual population context normalizer now has an exact two-build
-  manifest and Parquet byte-identity contract; repeat-build integration across
-  all registered adapters remains open.
+  AC-12] The annual population context normalizer has an exact two-build
+  contract, and source-operation profiles with representative fixtures now
+  compare two complete local builds, output digests, package bytes and source
+  immutability. Twelve Budget, CPI, GDP, QES, Pharmac, MoH and population
+  profiles pass; the three Vote Health PDF profiles and other registered
+  adapters still need repeat-build evidence. See
+  `silver-repeat-normalization-20261001.json`.
 
 ### 3.4 Phase review and checkpoint
 

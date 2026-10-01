@@ -1,0 +1,38 @@
+{
+  "schema_version": "archive-govt-nz.health-silver-repeat-normalization/v1",
+  "scope": "source_operation_profiles_with_representative_fixtures",
+  "status": "verified_partial",
+  "profiles_verified": [
+    "budget-revenue-2025/v1",
+    "budget-revenue-2026/v1",
+    "befu-2026/v1",
+    "cpiq-se9a/v1",
+    "gdp-expenditure-actual-2026q1/v1",
+    "gdp-expenditure-actual-2026q2/v1",
+    "hyefu-2025/v1",
+    "moh-hair2024-fig27/v1",
+    "moh-hair2024-fig28/v1",
+    "pharmac-cpb-20260807/v1",
+    "population-annual-mean-context/v1",
+    "qes-june2026-table8/v1"
+  ],
+  "repeat_contract": {
+    "builds_per_profile": 2,
+    "manifest_and_output_sha256_maps_identical": true,
+    "complete_package_file_bytes_identical": true,
+    "bronze_source_bytes_unchanged": true
+  },
+  "validation": {
+    "command": "uv run --locked pytest tests/domains/health_appropriations/test_source_operations.py::test_repeated_source_normalization_has_identical_manifest_and_outputs -q",
+    "result": "12 passed"
+  },
+  "remaining_profiles": [
+    "vote-health-supplementary-2003-04-summary/v1",
+    "vote-health-supplementary-2003-04-detail/v1",
+    "vote-health-supplementary-2003-04-revenue/v1"
+  ],
+  "limitations": [
+    "This receipt verifies deterministic local normalization only.",
+    "It does not assert source rights, analytical admission, correctness of source values, or publication eligibility."
+  ]
+}

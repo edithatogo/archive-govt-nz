@@ -164,6 +164,31 @@ def test_preflight_and_explicit_local_write(
     assert request_source.source.read_bytes() == before
 
 
+def test_repeated_source_normalization_has_identical_manifest_and_outputs(
+    request_source: source_operations.SourceRequest,
+) -> None:
+    """Every fixture-backed operation profile is repeatable from fixed inputs."""
+    source_before = request_source.source.read_bytes()
+    first = replace(
+        request_source, output_dir=request_source.output_dir.parent / "first"
+    )
+    second = replace(
+        request_source, output_dir=request_source.output_dir.parent / "second"
+    )
+
+    first_result = source_operations.operate_source(first, dry_run=False)
+    second_result = source_operations.operate_source(second, dry_run=False)
+
+    assert first_result["status"] == second_result["status"] == "written_local"
+    assert first_result["profile"] == second_result["profile"] == request_source.profile
+    assert first_result["counts"] == second_result["counts"]
+    assert first_result["output_sha256"] == second_result["output_sha256"]
+    assert {path.name: path.read_bytes() for path in first.output_dir.iterdir()} == {
+        path.name: path.read_bytes() for path in second.output_dir.iterdir()
+    }
+    assert request_source.source.read_bytes() == source_before
+
+
 def test_vote_health_summary_profile_dispatches_to_its_allowlisted_adapter(
     request_source: source_operations.SourceRequest, monkeypatch: pytest.MonkeyPatch
 ) -> None:
