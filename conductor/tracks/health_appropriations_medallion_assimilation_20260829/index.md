@@ -186,3 +186,4 @@ they are not current-state assertions.
 - [Preserved final normalization checkpoint](./normalization-admission-checkpoint-20260906.json)
 - [Bronze checkpoint durability contracts](./bronze-checkpoint-contracts.md)
 - [POSIX directory durability validation receipt](./checkpoint-directory-durability.json)
+- [Current-head clean-room recovery receipt (2026-10-01)](clean-room-recovery-20261001.json)
