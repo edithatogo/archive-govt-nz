@@ -42,7 +42,7 @@ def _require_type(condition: object) -> None:
 
 
 def _context(kind: str, row: dict[str, Any]) -> dict[str, Any]:
-    if kind == "historical":
+    if kind in {"historical", "fiscal_crown"}:
         names = (
             "source_vintage",
             "recordset",
@@ -100,6 +100,7 @@ def _value(kind: str, row: dict[str, Any]) -> Decimal:
         "moh": "amount",
         "crown_befu": "amount",
         "crown_hyefu": "amount",
+        "fiscal_crown": "amount",
     }[kind]
     value = row[name]
     _require_type(isinstance(value, Decimal))
@@ -168,6 +169,7 @@ def build_discrete_plots(
             "moh": "published_health_indicators.parquet",
             "crown_befu": "crown_expense_befu_2026.parquet",
             "crown_hyefu": "crown_expense_hyefu_2025.parquet",
+            "fiscal_crown": "historical_fiscal_crown.parquet",
         }
         files: dict[str, bytes] = {}
         report: dict[str, Any] = {

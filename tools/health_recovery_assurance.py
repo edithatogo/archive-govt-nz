@@ -37,6 +37,7 @@ from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
 )
 from archive_govt_nz.domains.health_appropriations.canonical_gold_export import (
     CrownGoldInput,
+    FiscalCrownGoldInput,
     GoldInputs,
     MohGoldInput,
     PharmacGoldInput,
@@ -1152,12 +1153,21 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
         hyefu_manifest_sha256=hyefu_crown_expense_canonical_projection.SOURCE_MANIFEST_SHA256,
         source_cas_root=ARCHIVE / "bronze-cas" / "sha256",
     )
+    fiscal_source = ARCHIVE / "bronze-cas" / "sha256"
+    fiscal_source = fiscal_source / fiscal_crown_literals.SOURCE_SHA256[:2]
+    fiscal_source = fiscal_source / fiscal_crown_literals.SOURCE_SHA256
+    fiscal_crown_input = FiscalCrownGoldInput(source_path=fiscal_source)
     for index in (1, 2):
         export_canonical_gold(
             canonical,
             root / f"canonical-{index}",
             write=True,
-            inputs=GoldInputs(pharmac=pharmac_input, moh=moh_input, crown=crown_input),
+            inputs=GoldInputs(
+                pharmac=pharmac_input,
+                moh=moh_input,
+                crown=crown_input,
+                fiscal_crown=fiscal_crown_input,
+            ),
         )
     files = compare_product_outputs(
         root / "canonical-1", root / "canonical-2", "canonical_gold"

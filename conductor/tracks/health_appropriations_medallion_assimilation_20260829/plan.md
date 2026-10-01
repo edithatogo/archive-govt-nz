@@ -591,10 +591,12 @@ integrated parent head.
   alignment, currency/accounting basis, rights, and actual/forecast
   comparability remain unresolved. See `crown-canonical-gold-20261001.md` and
   the repeat-identical Bronze recovery receipt.
-- [ ] Promote the historical Fiscal Time Series as a separate source-bound
+- [x] Promote the historical Fiscal Time Series as a separate source-bound
   canonical Gold product; retain its distinct core/total measure definitions
-  and unresolved currency, valid-time and rights states. [M-05, M-06, M-11;
-  AC-05, AC-09, AC-11]
+  and unresolved currency, valid-time and rights states. Repeated clean-room
+  Bronze rebuild and integrated Gold digests match. See
+  `fiscal-crown-canonical-gold-20261001.md` and the recovery receipt.
+  [M-05, M-06, M-11; AC-05, AC-09, AC-11]
 - [x] Promote Pharmac CPB into the source-separated local canonical Gold
   product, retaining financial-year tokens, published budget-allocation scope,
   the pre/post-2022 funding regimes, eight source-coordinate lineage fields per

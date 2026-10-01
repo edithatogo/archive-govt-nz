@@ -14,6 +14,7 @@ import pyarrow.parquet as pq
 
 from archive_govt_nz.domains.health_appropriations import (
     crown_expense_canonical_projection,
+    fiscal_crown_canonical_projection,
     hyefu_crown_expense_canonical_projection,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
@@ -67,12 +68,20 @@ class CrownGoldInput:
 
 
 @dataclass(frozen=True)
+class FiscalCrownGoldInput:
+    """Pinned Bronze source for the historical Fiscal Crown projection."""
+
+    source_path: Path
+
+
+@dataclass(frozen=True)
 class GoldInputs:
     """Optional source-bound domain inputs included in one Gold build."""
 
     pharmac: PharmacGoldInput | None = None
     moh: MohGoldInput | None = None
     crown: CrownGoldInput | None = None
+    fiscal_crown: FiscalCrownGoldInput | None = None
 
 
 EMPTY_GOLD_INPUTS = GoldInputs()
@@ -80,6 +89,10 @@ EMPTY_GOLD_INPUTS = GoldInputs()
 
 _CROWN_FACT_ROWS = 10
 _CROWN_LINEAGE_ROWS = 80
+_FISCAL_CROWN_FACT_ROWS = 61
+_FISCAL_CROWN_LINEAGE_ROWS = 671
+_FISCAL_CORE_ROWS = 32
+_FISCAL_TOTAL_ROWS = 29
 
 _TABLES = {
     "historical_observations.parquet": "observations",
@@ -94,6 +107,8 @@ _TABLES = {
     "crown_expense_befu_2026_lineage.parquet": "crown_befu_lineage",
     "crown_expense_hyefu_2025.parquet": "crown_hyefu",
     "crown_expense_hyefu_2025_lineage.parquet": "crown_hyefu_lineage",
+    "historical_fiscal_crown.parquet": "fiscal_crown",
+    "historical_fiscal_crown_lineage.parquet": "fiscal_crown_lineage",
 }
 
 
@@ -198,6 +213,7 @@ def _dataset_card(
             "moh": "published_health_indicators.parquet",
             "crown_befu": "crown_expense_befu_2026.parquet",
             "crown_hyefu": "crown_expense_hyefu_2025.parquet",
+            "fiscal_crown": "historical_fiscal_crown.parquet",
         }
         group_count = sum(
             group["output_name"] == output_names[name] for group in groups
@@ -241,6 +257,7 @@ def _quality_report(
         ("moh", "moh"),
         ("crown_befu", "crown_befu"),
         ("crown_hyefu", "crown_hyefu"),
+        ("fiscal_crown", "fiscal_crown"),
     ):
         table = tables.get(table_name)
         if table is None:
@@ -354,6 +371,7 @@ def _source_drillthrough(
     _add_pharmac_coordinates(tables, coordinates_by_record)
     _add_moh_coordinates(tables, coordinates_by_record)
     _add_crown_coordinates(tables, coordinates_by_record)
+    _add_fiscal_crown_coordinates(tables, coordinates_by_record)
     return {
         "schema_version": "archive-govt-nz.health-source-drillthrough/v2",
         "scope": "exact_row_and_source_coordinate_lookup_only",
@@ -458,6 +476,39 @@ def _add_crown_coordinates(
                     "rights_state": source["rights_state"],
                 }
             )
+    for items in coordinates_by_record.values():
+        items.sort(
+            key=lambda item: (
+                item["source_vintage"],
+                item["source_object_sha256"],
+                item["source_coordinate"],
+                item["field"],
+            )
+        )
+
+
+def _add_fiscal_crown_coordinates(
+    tables: dict[str, pa.Table],
+    coordinates_by_record: dict[str, list[dict[str, Any]]],
+) -> None:
+    lineage = tables.get("fiscal_crown_lineage")
+    if lineage is None:
+        return
+    for row in lineage.to_pylist():
+        record_id = row["target_record_id"]
+        locator = row["source_locator"]
+        coordinates_by_record.setdefault(record_id, []).append(
+            {
+                "field": row["field"],
+                "source_coordinate": row["source_coordinate"],
+                "source_object_sha256": row["source_object_sha256"],
+                "source_locator_sha256": hashlib.sha256(
+                    locator.encode("utf-8")
+                ).hexdigest(),
+                "source_vintage": row["source_vintage"],
+                "rights_state": row["rights_state"],
+            }
+        )
     for items in coordinates_by_record.values():
         items.sort(
             key=lambda item: (
@@ -625,6 +676,84 @@ def _add_crown_products(
     }
 
 
+def _add_fiscal_crown_product(
+    fiscal_input: FiscalCrownGoldInput | None,
+    tables: dict[str, pa.Table],
+    product_report: dict[str, dict[str, Any]],
+    query_receipts: list[dict[str, Any]],
+) -> dict[str, Any] | None:
+    if fiscal_input is None:
+        return None
+    facts, lineage, receipt = fiscal_crown_canonical_projection.project_fiscal_crown(
+        fiscal_input.source_path
+    )
+    _require(
+        facts.num_rows == _FISCAL_CROWN_FACT_ROWS
+        and lineage.num_rows == _FISCAL_CROWN_LINEAGE_ROWS
+        and receipt["core_crown_records"] == _FISCAL_CORE_ROWS
+        and receipt["total_crown_records"] == _FISCAL_TOTAL_ROWS
+    )
+    fact_rows = facts.to_pylist()
+    _require(len({row["record_id"] for row in fact_rows}) == facts.num_rows)
+    _require(
+        {row["measure"] for row in fact_rows}
+        == {"core_crown_expenses", "total_crown_expenses"}
+    )
+    tables["fiscal_crown"] = facts
+    tables["fiscal_crown_lineage"] = lineage.select(
+        [
+            "target_record_id",
+            "field",
+            "source_coordinate",
+            "raw_value",
+            "normalized_value",
+            "rule",
+            "source_object_sha256",
+            "source_locator",
+            "source_vintage",
+            "rights_state",
+        ]
+    )
+    query_receipts.append(
+        {
+            "input_records": receipt["input_records"],
+            "package_marker_sha256": [receipt["source_object_sha256"]],
+        }
+    )
+    product_report["fiscal_crown"] = {
+        "input_records": receipt["input_records"],
+        "output_rows": facts.num_rows,
+        "lineage_rows": lineage.num_rows,
+        "aggregation": "none_source_record_rows_preserved",
+        "measure_families": {
+            "core_crown_expenses": _FISCAL_CORE_ROWS,
+            "total_crown_expenses": _FISCAL_TOTAL_ROWS,
+        },
+        "currency": "unknown_not_inferred",
+        "financial_year_start": "unqualified",
+        "accounting_basis": "source_label_retained",
+        "rights_state": "not_evaluated",
+        "cross_measure_comparison": "not_performed",
+    }
+    return receipt
+
+
+def _add_crown_gold_products(
+    inputs: GoldInputs,
+    tables: dict[str, pa.Table],
+    product_report: dict[str, dict[str, Any]],
+    query_receipts: list[dict[str, Any]],
+) -> dict[str, Any]:
+    return {
+        "crown": _add_crown_products(
+            inputs.crown, tables, product_report, query_receipts
+        ),
+        "fiscal_crown": _add_fiscal_crown_product(
+            inputs.fiscal_crown, tables, product_report, query_receipts
+        ),
+    }
+
+
 def _output_inventory(
     payloads: dict[str, bytes], tables: dict[str, pa.Table]
 ) -> dict[str, dict[str, Any]]:
@@ -770,6 +899,21 @@ def build_temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any
                 "source_locator",
             ),
         ),
+        "historical_fiscal_crown.parquet": (
+            "fiscal_crown",
+            (
+                "source_vintage",
+                "observation_context",
+                "measure",
+                "amount_type",
+                "unit",
+                "currency",
+                "institutional_coverage",
+                "accounting_basis",
+                "source_label",
+                "source_locator",
+            ),
+        ),
     }
     groups: list[dict[str, Any]] = []
     for output_name, (table_name, context_fields) in definitions.items():
@@ -857,6 +1001,11 @@ def _preflight(
                 not target.is_relative_to(resolved)
                 and not resolved.is_relative_to(target)
             )
+    if inputs.fiscal_crown is not None:
+        resolved = inputs.fiscal_crown.source_path.resolve()
+        _require(
+            not target.is_relative_to(resolved) and not resolved.is_relative_to(target)
+        )
 
 
 def _readback(path: Path, payload: bytes, table: pa.Table | None = None) -> None:
@@ -957,8 +1106,8 @@ def _export(
         inputs.pharmac, tables, product_report, query_receipts
     )
     moh_receipt = _add_moh_product(inputs.moh, tables, product_report, query_receipts)
-    crown_receipt = _add_crown_products(
-        inputs.crown, tables, product_report, query_receipts
+    crown_receipts = _add_crown_gold_products(
+        inputs, tables, product_report, query_receipts
     )
     payloads, plot_report, temporal_report = _build_payloads(
         tables, product_report, query_receipts
@@ -977,7 +1126,8 @@ def _export(
         "products": product_report,
         "pharmac_projection": pharmac_receipt,
         "moh_projection": moh_receipt,
-        "crown_projection": crown_receipt,
+        "crown_projection": crown_receipts["crown"],
+        "fiscal_crown_projection": crown_receipts["fiscal_crown"],
         "outputs": outputs,
         "source_drillthrough": _source_drillthrough(tables, outputs, packages),
         "temporal_coverage_report": temporal_report,
