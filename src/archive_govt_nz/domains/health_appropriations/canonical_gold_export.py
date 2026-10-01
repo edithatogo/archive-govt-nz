@@ -12,6 +12,10 @@ from typing import TYPE_CHECKING, Any
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from archive_govt_nz.domains.health_appropriations import (
+    crown_expense_canonical_projection,
+    hyefu_crown_expense_canonical_projection,
+)
 from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
     query_historical_observations,
     query_nominal_budget,
@@ -51,6 +55,32 @@ class PharmacGoldInput:
     source_sha256: str
 
 
+@dataclass(frozen=True)
+class CrownGoldInput:
+    """Pinned BEFU and HYEFU Silver inputs with a shared immutable Bronze CAS."""
+
+    befu_root: Path
+    befu_manifest_sha256: str
+    hyefu_root: Path
+    hyefu_manifest_sha256: str
+    source_cas_root: Path
+
+
+@dataclass(frozen=True)
+class GoldInputs:
+    """Optional source-bound domain inputs included in one Gold build."""
+
+    pharmac: PharmacGoldInput | None = None
+    moh: MohGoldInput | None = None
+    crown: CrownGoldInput | None = None
+
+
+EMPTY_GOLD_INPUTS = GoldInputs()
+
+
+_CROWN_FACT_ROWS = 10
+_CROWN_LINEAGE_ROWS = 80
+
 _TABLES = {
     "historical_observations.parquet": "observations",
     "historical_coverage.parquet": "coverage",
@@ -60,6 +90,10 @@ _TABLES = {
     "pharmaceutical_budget_lineage.parquet": "pharmac_lineage",
     "published_health_indicators.parquet": "moh",
     "published_health_indicator_lineage.parquet": "moh_lineage",
+    "crown_expense_befu_2026.parquet": "crown_befu",
+    "crown_expense_befu_2026_lineage.parquet": "crown_befu_lineage",
+    "crown_expense_hyefu_2025.parquet": "crown_hyefu",
+    "crown_expense_hyefu_2025_lineage.parquet": "crown_hyefu_lineage",
 }
 
 
@@ -162,6 +196,8 @@ def _dataset_card(
             "revenue": "nominal_revenue.parquet",
             "pharmac": "nominal_pharmaceutical_budget.parquet",
             "moh": "published_health_indicators.parquet",
+            "crown_befu": "crown_expense_befu_2026.parquet",
+            "crown_hyefu": "crown_expense_hyefu_2025.parquet",
         }
         group_count = sum(
             group["output_name"] == output_names[name] for group in groups
@@ -203,6 +239,8 @@ def _quality_report(
         ("revenue", "revenue"),
         ("pharmac", "pharmac"),
         ("moh", "moh"),
+        ("crown_befu", "crown_befu"),
+        ("crown_hyefu", "crown_hyefu"),
     ):
         table = tables.get(table_name)
         if table is None:
@@ -315,6 +353,7 @@ def _source_drillthrough(
                 )
     _add_pharmac_coordinates(tables, coordinates_by_record)
     _add_moh_coordinates(tables, coordinates_by_record)
+    _add_crown_coordinates(tables, coordinates_by_record)
     return {
         "schema_version": "archive-govt-nz.health-source-drillthrough/v2",
         "scope": "exact_row_and_source_coordinate_lookup_only",
@@ -391,6 +430,34 @@ def _add_moh_coordinates(
                 "rights_state": "not_evaluated",
             }
         )
+
+
+def _add_crown_coordinates(
+    tables: dict[str, pa.Table],
+    coordinates_by_record: dict[str, list[dict[str, Any]]],
+) -> None:
+    for family in ("crown_befu", "crown_hyefu"):
+        facts = tables.get(family)
+        lineage = tables.get(f"{family}_lineage")
+        if facts is None or lineage is None:
+            continue
+        sources = {row["record_id"]: row for row in facts.to_pylist()}
+        for row in lineage.to_pylist():
+            record_id = row["target_record_id"]
+            source = sources[record_id]
+            locator = source["source_locator"]
+            coordinates_by_record.setdefault(record_id, []).append(
+                {
+                    "field": row["field"],
+                    "source_coordinate": row["source_coordinate"],
+                    "source_object_sha256": source["source_object_sha256"],
+                    "source_locator_sha256": hashlib.sha256(
+                        locator.encode("utf-8")
+                    ).hexdigest(),
+                    "source_vintage": source["source_vintage"],
+                    "rights_state": source["rights_state"],
+                }
+            )
     for items in coordinates_by_record.values():
         items.sort(
             key=lambda item: (
@@ -477,6 +544,85 @@ def _add_moh_product(
         "vintage_pooling": "not_performed",
     }
     return receipt
+
+
+def _add_crown_products(
+    crown_input: CrownGoldInput | None,
+    tables: dict[str, pa.Table],
+    product_report: dict[str, dict[str, Any]],
+    query_receipts: list[dict[str, Any]],
+) -> dict[str, Any] | None:
+    if crown_input is None:
+        return None
+    families = (
+        (
+            "crown_befu",
+            crown_input.befu_root,
+            crown_input.befu_manifest_sha256,
+            crown_expense_canonical_projection.project_befu_core_expense,
+            "BEFU-2026",
+        ),
+        (
+            "crown_hyefu",
+            crown_input.hyefu_root,
+            crown_input.hyefu_manifest_sha256,
+            hyefu_crown_expense_canonical_projection.project_hyefu_core_expense,
+            "HYEFU-2025",
+        ),
+    )
+    receipts: dict[str, dict[str, Any]] = {}
+    for family, silver_root, marker, project, vintage in families:
+        facts, lineage, receipt = project(
+            silver_root, marker, crown_input.source_cas_root
+        )
+        _require(
+            facts.num_rows == _CROWN_FACT_ROWS
+            and lineage.num_rows == _CROWN_LINEAGE_ROWS
+        )
+        _require(all(row["source_vintage"] == vintage for row in facts.to_pylist()))
+        _require(len({row["record_id"] for row in facts.to_pylist()}) == facts.num_rows)
+        tables[family] = facts
+        tables[f"{family}_lineage"] = lineage.select(
+            [
+                "target_record_id",
+                "field",
+                "source_coordinate",
+                "raw_value",
+                "normalized_value",
+                "rule",
+            ]
+        )
+        query_receipts.append(
+            {
+                "input_records": receipt["input_records"],
+                "package_marker_sha256": [marker],
+            }
+        )
+        product_report[family] = {
+            "input_records": receipt["input_records"],
+            "output_rows": facts.num_rows,
+            "aggregation": "none_source_record_rows_preserved",
+            "source_vintage": vintage,
+            "measure": "core_crown_expense_formula_cache",
+            "currency_and_accounting_basis": "unknown_not_inferred",
+            "financial_year_boundaries": "unqualified_year_labels_preserved",
+            "rights_state": "not_evaluated",
+            "actual_expenditure": "not_asserted",
+            "cross_vintage_comparison": "not_performed",
+            "vintage_pooling": "not_performed",
+        }
+        receipts[family] = receipt
+    _require(
+        {row["record_id"] for row in tables["crown_befu"].to_pylist()}.isdisjoint(
+            row["record_id"] for row in tables["crown_hyefu"].to_pylist()
+        )
+    )
+    return {
+        "befu": receipts["crown_befu"],
+        "hyefu": receipts["crown_hyefu"],
+        "cross_source_join": "not_performed",
+        "cross_vintage_comparison": "not_performed",
+    }
 
 
 def _output_inventory(
@@ -594,6 +740,36 @@ def build_temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any
                 "denominator",
             ),
         ),
+        "crown_expense_befu_2026.parquet": (
+            "crown_befu",
+            (
+                "source_vintage",
+                "observation_context",
+                "measure",
+                "amount_type",
+                "unit",
+                "currency",
+                "institutional_coverage",
+                "accounting_basis",
+                "source_label",
+                "source_locator",
+            ),
+        ),
+        "crown_expense_hyefu_2025.parquet": (
+            "crown_hyefu",
+            (
+                "source_vintage",
+                "observation_context",
+                "measure",
+                "amount_type",
+                "unit",
+                "currency",
+                "institutional_coverage",
+                "accounting_basis",
+                "source_label",
+                "source_locator",
+            ),
+        ),
     }
     groups: list[dict[str, Any]] = []
     for output_name, (table_name, context_fields) in definitions.items():
@@ -635,8 +811,7 @@ def build_temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any
 def _preflight(
     packages: tuple[CanonicalPackageInput, ...],
     output: Path,
-    pharmac_input: PharmacGoldInput | None,
-    moh_input: MohGoldInput | None,
+    inputs: GoldInputs,
 ) -> None:
     _require(not output.exists() and not output.is_symlink())
     _require(output.parent.is_dir() and not output.parent.is_symlink())
@@ -652,20 +827,31 @@ def _preflight(
                 not target.is_relative_to(resolved)
                 and not resolved.is_relative_to(target)
             )
-    if pharmac_input is not None:
+    if inputs.pharmac is not None:
         for protected in (
-            pharmac_input.root,
-            pharmac_input.source_cas_root,
+            inputs.pharmac.root,
+            inputs.pharmac.source_cas_root,
         ):
             resolved = protected.resolve()
             _require(
                 not target.is_relative_to(resolved)
                 and not resolved.is_relative_to(target)
             )
-    if moh_input is not None:
-        protected_roots = [moh_input.source_cas_root]
-        protected_roots.extend(item.root for item in moh_input.packages)
+    if inputs.moh is not None:
+        protected_roots = [inputs.moh.source_cas_root]
+        protected_roots.extend(item.root for item in inputs.moh.packages)
         for protected in protected_roots:
+            resolved = protected.resolve()
+            _require(
+                not target.is_relative_to(resolved)
+                and not resolved.is_relative_to(target)
+            )
+    if inputs.crown is not None:
+        for protected in (
+            inputs.crown.befu_root,
+            inputs.crown.hyefu_root,
+            inputs.crown.source_cas_root,
+        ):
             resolved = protected.resolve()
             _require(
                 not target.is_relative_to(resolved)
@@ -715,8 +901,7 @@ def _export(
     output: Path,
     *,
     write: bool,
-    pharmac_input: PharmacGoldInput | None = None,
-    moh_input: MohGoldInput | None = None,
+    inputs: GoldInputs = EMPTY_GOLD_INPUTS,
 ) -> dict[str, Any]:
     _require(type(write) is bool)
     _require(
@@ -728,7 +913,7 @@ def _export(
             for package in packages
         )
     )
-    _preflight(packages, output, pharmac_input, moh_input)
+    _preflight(packages, output, inputs)
     selected: dict[str, tuple[CanonicalPackageInput, ...]] = {
         kind: tuple(package for package in packages if package.kind == kind)
         for kind in ("historical", "budget", "revenue")
@@ -769,9 +954,12 @@ def _export(
                 "vintage_pooling": "not_performed",
             }
     pharmac_receipt = _add_pharmac_product(
-        pharmac_input, tables, product_report, query_receipts
+        inputs.pharmac, tables, product_report, query_receipts
     )
-    moh_receipt = _add_moh_product(moh_input, tables, product_report, query_receipts)
+    moh_receipt = _add_moh_product(inputs.moh, tables, product_report, query_receipts)
+    crown_receipt = _add_crown_products(
+        inputs.crown, tables, product_report, query_receipts
+    )
     payloads, plot_report, temporal_report = _build_payloads(
         tables, product_report, query_receipts
     )
@@ -789,6 +977,7 @@ def _export(
         "products": product_report,
         "pharmac_projection": pharmac_receipt,
         "moh_projection": moh_receipt,
+        "crown_projection": crown_receipt,
         "outputs": outputs,
         "source_drillthrough": _source_drillthrough(tables, outputs, packages),
         "temporal_coverage_report": temporal_report,
@@ -869,8 +1058,7 @@ def export_canonical_gold(
     output: Path,
     *,
     write: bool = False,
-    pharmac_input: PharmacGoldInput | None = None,
-    moh_input: MohGoldInput | None = None,
+    inputs: GoldInputs = EMPTY_GOLD_INPUTS,
 ) -> dict[str, Any]:
     """Build source-separated historical, appropriation and revenue Gold tables.
 
@@ -878,14 +1066,12 @@ def export_canonical_gold(
     never joins source families, pools vintages, nets revenue, or publishes.
     """
     try:
-        _require(pharmac_input is None or isinstance(pharmac_input, PharmacGoldInput))
-        _require(moh_input is None or isinstance(moh_input, MohGoldInput))
+        _require(isinstance(inputs, GoldInputs))
         return _export(
             packages,
             output,
             write=write,
-            pharmac_input=pharmac_input,
-            moh_input=moh_input,
+            inputs=inputs,
         )
     except (
         OSError,

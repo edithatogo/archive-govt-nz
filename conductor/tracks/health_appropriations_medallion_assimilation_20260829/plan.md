@@ -585,9 +585,16 @@ integrated parent head.
   price bases, denominators and rights remain unevaluated; this does not derive
   actual expenditure or establish comparability. See
   `moh-canonical-gold-20261001.md`.
-- [ ] Promote BEFU/HYEFU and historical fiscal indicators with
-  compatible-but-distinct series definitions and vintage relationships.
-  [M-05, M-06, M-11; AC-05, AC-09, AC-11]
+- [x] Promote the pinned BEFU-2026 and HYEFU-2025 core Crown expense projections
+  into separate canonical Gold fact and source-coordinate lineage products,
+  preserving distinct release vintages and discrete plots. Financial-year
+  alignment, currency/accounting basis, rights, and actual/forecast
+  comparability remain unresolved. See `crown-canonical-gold-20261001.md` and
+  the repeat-identical Bronze recovery receipt.
+- [ ] Promote the historical Fiscal Time Series as a separate source-bound
+  canonical Gold product; retain its distinct core/total measure definitions
+  and unresolved currency, valid-time and rights states. [M-05, M-06, M-11;
+  AC-05, AC-09, AC-11]
 - [x] Promote Pharmac CPB into the source-separated local canonical Gold
   product, retaining financial-year tokens, published budget-allocation scope,
   the pre/post-2022 funding regimes, eight source-coordinate lineage fields per

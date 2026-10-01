@@ -74,6 +74,18 @@ def _context(kind: str, row: dict[str, Any]) -> dict[str, Any]:
             "price_base",
             "denominator",
         )
+    elif kind in {"crown_befu", "crown_hyefu"}:
+        names = (
+            "source_vintage",
+            "observation_context",
+            "measure",
+            "amount_type",
+            "unit",
+            "currency",
+            "institutional_coverage",
+            "accounting_basis",
+            "source_label",
+        )
     else:
         names = ("source_vintage", "amount_type", "unit")
     return {name: row[name] for name in names}
@@ -86,6 +98,8 @@ def _value(kind: str, row: dict[str, Any]) -> Decimal:
         "revenue": "amount",
         "pharmac": "amount",
         "moh": "amount",
+        "crown_befu": "amount",
+        "crown_hyefu": "amount",
     }[kind]
     value = row[name]
     _require_type(isinstance(value, Decimal))
@@ -152,6 +166,8 @@ def build_discrete_plots(
             "revenue": "nominal_revenue.parquet",
             "pharmac": "nominal_pharmaceutical_budget.parquet",
             "moh": "published_health_indicators.parquet",
+            "crown_befu": "crown_expense_befu_2026.parquet",
+            "crown_hyefu": "crown_expense_hyefu_2025.parquet",
         }
         files: dict[str, bytes] = {}
         report: dict[str, Any] = {
