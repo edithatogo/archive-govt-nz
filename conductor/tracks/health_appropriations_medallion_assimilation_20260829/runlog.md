@@ -3671,3 +3671,39 @@ and the validated 113-component SBOM. The automatic Conductor Phase 7 review
 passed with receipt SHA-256 prefix `9ae2f8bd0bc0528e`. These broad repository
 gates validate the repository state; they do not close the remaining repeat
 build or track-completion items.
+
+### Vote Health PDF source-operation repeatability (2026-10-01)
+
+Extended the source-operation repeat-build contract to its three PDF profiles:
+the Vote Health summary, Part B1 detail, and Part F revenue extraction. The
+tests use fixed source bytes and deterministic extracted page text, then build
+twice into separate directories and compare operation counts, SHA-256 output
+maps, complete output bytes, and source immutability. All three profiles pass;
+the initial Part B1 fixture omission of the required Part E boundary was
+recorded as `2 passed, 1 failed`; the only error was the fixture lacking the
+required `Part E -` page marker. Adding that boundary made the focused suite
+pass `3 passed`, without changing production parsing. Across the two
+focused repeat-build tests, all 15 allowlisted source-operation profiles now
+pass. Adapter paths outside the source-operation allowlist remain open; see
+[`silver-repeat-normalization-20261001.json`](silver-repeat-normalization-20261001.json).
+
+The first broader source-operation validation passed 466 tests (10 skipped),
+then Ruff identified an overlong test import (I001) and implicit string
+concatenation inside the detail-page fixture (ISC004). These are bounded test
+format/style findings; the retained parser assertions passed. After wrapping
+the import and making the fixture concatenation explicit, the source-operation
+suite passed again (466 passed, 10 skipped), Ruff and format passed, and
+basedpyright reported 0 errors, warnings or notes.
+
+The initial Vote Health detail fixture failed because it omitted the required
+Part E boundary; the normalizer intentionally requires both the Part B1 start
+and Part E end markers. The failure and correction are both recorded above; no
+production parser change was needed.
+
+The required `./scripts/validate.sh` then passed: 7,249 passed, 10 skipped,
+98.27% branch coverage against the unchanged 80% floor, 53 schemas/43
+representative documents, differential parity 9/9, all configured mutation
+lanes, dependency audit, license/secret checks, and validated 113-component
+SBOM. The automatic Conductor Phase 7 review passed with receipt SHA-256
+prefix `de04aa7f796db0d4`. These repository gates do not establish rights or
+complete the other Silver, Gold, or Platinum requirements.

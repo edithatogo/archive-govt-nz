@@ -358,9 +358,9 @@ integrated parent head.
   AC-12] The annual population context normalizer has an exact two-build
   contract, and source-operation profiles with representative fixtures now
   compare two complete local builds, output digests, package bytes and source
-  immutability. Twelve Budget, CPI, GDP, QES, Pharmac, MoH and population
-  profiles pass; the three Vote Health PDF profiles and other registered
-  adapters still need repeat-build evidence. See
+  immutability. All 15 source-operation profiles now pass, including the
+  three Vote Health PDF profiles; other registered adapters outside this
+  operation surface still need repeat-build evidence. See
   `silver-repeat-normalization-20261001.json`.
 
 ### 3.4 Phase review and checkpoint

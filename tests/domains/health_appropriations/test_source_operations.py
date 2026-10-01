@@ -40,6 +40,12 @@ from tests.domains.health_appropriations.test_population_annual_export import (
     payload as population_annual_payload,
 )
 from tests.domains.health_appropriations.test_qes import fixture as qes_fixture
+from tests.domains.health_appropriations.test_vote_health import (
+    TEXT as VOTE_SUMMARY_TEXT,
+)
+from tests.domains.health_appropriations.test_vote_health_revenue import (
+    _pages as vote_revenue_pages,
+)
 
 from archive_govt_nz import cli, mcp_server
 from archive_govt_nz.cli import app, health_appropriations_extract_source
@@ -187,6 +193,82 @@ def test_repeated_source_normalization_has_identical_manifest_and_outputs(
         path.name: path.read_bytes() for path in second.output_dir.iterdir()
     }
     assert request_source.source.read_bytes() == source_before
+
+
+@pytest.mark.parametrize(
+    "profile",
+    [
+        "vote-health-supplementary-2003-04-summary/v1",
+        "vote-health-supplementary-2003-04-detail/v1",
+        "vote-health-supplementary-2003-04-revenue/v1",
+    ],
+)
+def test_repeated_vote_pdf_normalization_has_identical_outputs(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, profile: str
+) -> None:
+    """Vote Health PDF operations are byte-repeatable with fixed extracted text."""
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixed PDF fixture bytes")
+    source_hash = hashlib.sha256(source.read_bytes()).hexdigest()
+    vintage = "Treasury-Vote-Health-Supplementary-2003-04"
+    context = {
+        "expected_sha256": source_hash,
+        "source_vintage": vintage,
+        "source_locator": "https://example.invalid/vote-health-supplementary.pdf",
+        "observed_at": "2026-08-31T00:00:00Z",
+    }
+
+    class Page:
+        def __init__(self, text: str) -> None:
+            self.text = text
+
+        def extract_text(self, *, extraction_mode: str) -> str:
+            expected_mode = "layout" if profile.endswith("summary/v1") else "plain"
+            assert extraction_mode == expected_mode
+            return self.text
+
+    class Reader:
+        def __init__(self, *_args: object, **_kwargs: object) -> None:
+            self.is_encrypted = False
+            if profile.endswith("summary/v1"):
+                texts = [VOTE_SUMMARY_TEXT]
+            elif profile.endswith("detail/v1"):
+                texts = [
+                    (
+                        "Part B1 - Details of Appropriations\n"
+                        "Sector Policy 12,459 - 110 - 12,569 - reason"
+                    ),
+                    "Part E - Statement of Intent",
+                ]
+            else:
+                texts = ["front matter"] * 19 + vote_revenue_pages() + ["blank"]
+            self.pages = [Page(text) for text in texts]
+
+    vote_module = (
+        source_operations.vote_health_revenue
+        if profile.endswith("revenue/v1")
+        else source_operations.vote_health
+    )
+    monkeypatch.setattr(vote_module, "PdfReader", Reader)
+    base_request = source_operations.SourceRequest(
+        source,
+        tmp_path / "unused-output",
+        profile,
+        **context,
+    )
+    first = replace(base_request, output_dir=tmp_path / "first")
+    second = replace(base_request, output_dir=tmp_path / "second")
+
+    first_result = source_operations.operate_source(first, dry_run=False)
+    second_result = source_operations.operate_source(second, dry_run=False)
+
+    assert first_result["status"] == second_result["status"] == "written_local"
+    assert first_result["counts"] == second_result["counts"]
+    assert first_result["output_sha256"] == second_result["output_sha256"]
+    assert {path.name: path.read_bytes() for path in first.output_dir.iterdir()} == {
+        path.name: path.read_bytes() for path in second.output_dir.iterdir()
+    }
+    assert source.read_bytes() == b"fixed PDF fixture bytes"
 
 
 def test_vote_health_summary_profile_dispatches_to_its_allowlisted_adapter(
