@@ -18,6 +18,7 @@ from tests.domains.health_appropriations.test_budget_revenue_projection import (
 from tests.domains.health_appropriations.test_historical_snapshot import (
     _package as historical_raw_package,
 )
+from tests.domains.health_appropriations.test_moh_indicators import source as moh_source
 from tests.domains.health_appropriations.test_pharmac_canonical_projection import (
     package as pharmac_silver_package,
 )
@@ -45,6 +46,7 @@ from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
     summarize_historical_coverage,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_gold_export import (
+    MohGoldInput,
     PharmacGoldInput,
     export_canonical_gold,
     export_historical_gold,
@@ -58,6 +60,15 @@ from archive_govt_nz.domains.health_appropriations.historical_canonical_export i
 from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
     CanonicalPackageInput,
     read_verified_canonical_tables,
+)
+from archive_govt_nz.domains.health_appropriations.moh_canonical_projection import (
+    PROFILES as MOH_PROFILES,
+)
+from archive_govt_nz.domains.health_appropriations.moh_canonical_projection import (
+    MohIndicatorInput,
+)
+from archive_govt_nz.domains.health_appropriations.moh_indicators import (
+    normalize_moh_indicators,
 )
 
 
@@ -247,6 +258,7 @@ def _assert_canonical_gold_outputs(
         "budget": "rendered",
         "revenue": "rendered",
         "pharmac": "not_present",
+        "moh": "not_present",
     }
     assert all(
         manifest["outputs"][name]["kind"] == "plot_png"
@@ -638,6 +650,7 @@ def test_canonical_gold_includes_pharmac_as_a_separate_source_product(
     assert manifest["pharmac_projection"]["status"] == (
         "verified_source_faithful_projection"
     )
+
     assert manifest["products"]["pharmac"]["funding_regimes"] == sorted(
         {row["funding_regime"] for row in pharmac_rows}
     )
@@ -670,6 +683,78 @@ def test_canonical_gold_includes_pharmac_as_a_separate_source_product(
             item["output_name"] == "nominal_pharmaceutical_budget.parquet"
             for item in record["output_rows"]
         )
+    assert {path.name: path.read_bytes() for path in output.iterdir()} == {
+        path.name: path.read_bytes() for path in repeated.iterdir()
+    }
+
+
+def test_canonical_gold_preserves_pinned_moh_indicator_profiles(tmp_path: Path) -> None:
+    historical = _historical_package(tmp_path / "historical")
+    budget = _package(tmp_path / "budget")
+    revenue = _revenue_package(tmp_path / "revenue")
+    cas_root = tmp_path / "moh-cas"
+    packages = []
+    for profile in ("fig27/v1", "fig28/v1"):
+        source_dir = tmp_path / profile.replace("/", "-")
+        source_dir.mkdir()
+        source_path, source_sha256 = moh_source(source_dir, profile)
+        cas_object = cas_root / source_sha256[:2] / source_sha256
+        cas_object.parent.mkdir(parents=True, exist_ok=True)
+        cas_object.write_bytes(source_path.read_bytes())
+        silver = tmp_path / "silver" / profile.replace("/", "-")
+        normalize_moh_indicators(
+            cas_object,
+            silver,
+            expected_sha256=source_sha256,
+            profile=profile,
+            source_vintage="MoH-HAIR-2024",
+            observed_at="2026-08-29T09:00:17Z",
+            source_locator=MOH_PROFILES[profile],
+            dry_run=False,
+        )
+        manifest_sha256 = hashlib.sha256(
+            (silver / "MANIFEST.json").read_bytes()
+        ).hexdigest()
+        packages.append(
+            MohIndicatorInput(profile, silver, manifest_sha256, source_sha256)
+        )
+    moh_input = MohGoldInput(tuple(packages), cas_root)
+    inputs = (historical, budget, revenue)
+    output = tmp_path / "gold-with-moh"
+    repeated = tmp_path / "gold-with-moh-repeat"
+
+    planned = export_canonical_gold(inputs, output, moh_input=moh_input)
+    assert planned["status"] == "dry_run"
+    assert planned["products"]["moh"]["output_rows"] == 80
+    assert not output.exists()
+
+    export_canonical_gold(inputs, output, write=True, moh_input=moh_input)
+    export_canonical_gold(inputs, repeated, write=True, moh_input=moh_input)
+    manifest = json.loads((output / "MANIFEST.json").read_text(encoding="utf-8"))
+    facts = pq.read_table(output / "published_health_indicators.parquet").to_pylist()
+    lineage = pq.read_table(
+        output / "published_health_indicator_lineage.parquet"
+    ).to_pylist()
+    assert len(facts) == 80
+    assert len(lineage) == 240
+    assert {row["profile"] for row in facts} == {"fig27/v1", "fig28/v1"}
+    assert {row["unit"] for row in facts} == {None}
+    assert {row["price_base"] for row in facts} == {None}
+    assert {row["denominator"] for row in facts} == {None}
+    assert {row["rights_state"] for row in facts} == {"not_evaluated"}
+    assert manifest["products"]["moh"]["actual_expenditure"] == "not_asserted"
+    assert manifest["moh_projection"]["cross_source_join"] == "not_performed"
+    assert (
+        len(
+            [
+                group
+                for group in manifest["temporal_coverage_report"]["groups"]
+                if group["output_name"] == "published_health_indicators.parquet"
+            ]
+        )
+        == 4
+    )
+    assert any(path.name.startswith("plot_moh_") for path in output.glob("plot_*.png"))
     assert {path.name: path.read_bytes() for path in output.iterdir()} == {
         path.name: path.read_bytes() for path in repeated.iterdir()
     }

@@ -1,5 +1,32 @@
 # Run Log
 
+## 2026-10-01 — HAIR2024 indicators in canonical Gold
+
+Added a bounded canonical-Gold projection for the two retained Ministry
+HAIR2024 profiles. It preserves 80 published indicator rows, 240 lineage
+coordinates, the four exact profile/measure contexts, and source-separated
+plots. It does not infer units, price bases, denominators or fiscal dates,
+assert actual expenditure, evaluate rights, or join source families. Two
+Bronze-to-Silver recovery builds per profile matched their retained manifest
+pins; the integrated Gold builds repeated identically and Bronze remained
+unchanged. See [the profile promotion note](moh-canonical-gold-20261001.md) and
+[clean-room recovery receipt](clean-room-recovery-20261001-moh-gold.json),
+SHA-256 `e7584dd9796fcfde81ed82699852141f7e895400fc1aaa5512a831cee2528b26`.
+
+The focused canonical/recovery selection passed 28 tests. The first full
+validation run passed 7,231 tests but failed one clean-room test because its
+mock did not include the new MoH recovery result; the mock now asserts the
+80-record summary. The required `./scripts/validate.sh` then completed all
+lanes successfully: 7,232 passed, 10 skipped, and 98.26% branch coverage
+against the 80% minimum, 53 schemas/43 representative documents, 9/9 parity,
+all configured mutation gates, supply-chain checks and a 113-component SBOM.
+The automatic Conductor Phase 7 review passed; receipt SHA-256 begins
+`330b813d29ccee3e`.
+
+This closes only the two retained HAIR2024 profiles' local Gold promotion.
+Broader Ministry source coverage, methodology, rights, cross-source
+reconciliation and the other remaining track products remain open.
+
 ## 2026-10-01 — Pharmac CPB canonical Gold promotion
 
 Promoted the verified source-faithful Pharmac CPB Silver projection into the

@@ -24,6 +24,8 @@ from archive_govt_nz.domains.health_appropriations import (
     gdp_vintage_comparison,
     hyefu_crown_expense,
     hyefu_crown_expense_canonical_projection,
+    moh_canonical_projection,
+    moh_indicators,
     pharmac,
     pharmac_canonical_projection,
     population_annual_canonical_projection,
@@ -34,6 +36,7 @@ from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
     query_context_observations,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_gold_export import (
+    MohGoldInput,
     PharmacGoldInput,
     export_canonical_gold,
 )
@@ -46,6 +49,9 @@ from archive_govt_nz.domains.health_appropriations.context_gold import (
 from archive_govt_nz.domains.health_appropriations.gold_export import export_gold
 from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
     CanonicalPackageInput,
+)
+from archive_govt_nz.domains.health_appropriations.moh_canonical_projection import (
+    MohIndicatorInput,
 )
 from archive_govt_nz.domains.health_appropriations.pharmac_canonical_projection import (
     project_pharmac_cpb,
@@ -164,6 +170,14 @@ CAPTURE_MANIFEST_SHA256 = (
 PHARMAC_SOURCE_SHA256 = (
     "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea"
 )
+MOH_SOURCE_SHA256 = {
+    "fig27/v1": "c1e7758667b8255e049603de8325d732f34a76e6099e0fe4de6553a36d48e9fc",
+    "fig28/v1": "7b9a51643550e3d890f4f341f27346d3466708fe924702ade4a731d1bb6266e4",
+}
+MOH_SILVER_MANIFEST_SHA256 = {
+    "fig27/v1": "b3a9afc2bab6562373b73d2f5c45b76a244792acbf813bfb54b4e2b66bce76a2",
+    "fig28/v1": "714a0dd3fb53fa2ff26100e760983b791e81162fa30fb48d9f1d7131d8e338ed",
+}
 PHARMAC_SOURCE_OBSERVED_AT = "2026-08-29T09:00:17Z"
 CROWN_SOURCE_OBSERVED_AT = "2026-08-29T09:00:17Z"
 GDP_JUNE_CAPTURE_SHA256 = (
@@ -914,6 +928,82 @@ def _pharmac_recovery_report(root: Path) -> dict[str, Any]:
     return {**runs["1"], "repeat_identical": True}
 
 
+def _rebuild_moh_profile(root: Path, profile: str, index: int) -> dict[str, Any]:
+    """Rebuild one pinned HAIR2024 profile from Bronze and return its pins."""
+    source_sha256 = MOH_SOURCE_SHA256[profile]
+    source_cas = ARCHIVE / "bronze-cas" / "sha256"
+    source = source_cas / source_sha256[:2] / source_sha256
+    silver = root / f"moh-{profile.replace('/', '-')}-{index}"
+    moh_indicators.normalize_moh_indicators(
+        source,
+        silver,
+        expected_sha256=source_sha256,
+        profile=profile,
+        source_vintage=moh_canonical_projection.SOURCE_VINTAGE,
+        observed_at="2026-08-29T09:00:17Z",
+        source_locator=moh_canonical_projection.PROFILES[profile],
+        dry_run=False,
+    )
+    manifest_sha256 = digest(silver / "MANIFEST.json")
+    require_evidence(
+        manifest_sha256 == MOH_SILVER_MANIFEST_SHA256[profile],
+        "moh_silver_manifest_pin_mismatch",
+    )
+    return {
+        "silver_files": tree(silver),
+        "source_manifest_sha256": manifest_sha256,
+        "source_object_sha256": source_sha256,
+        "fact_count": len(
+            pq.read_table(silver / "moh_indicator_facts.parquet").to_pylist()
+        ),
+        "lineage_count": len(
+            pq.read_table(silver / "field_lineage.parquet").to_pylist()
+        ),
+    }
+
+
+def _moh_recovery_report(root: Path) -> dict[str, Any]:
+    """Require both official HAIR2024 profiles to rebuild to their retained pins."""
+    profiles: dict[str, Any] = {}
+    first_builds: list[MohIndicatorInput] = []
+    for profile in moh_canonical_projection.PROFILES:
+        runs = {
+            str(index): _rebuild_moh_profile(root, profile, index) for index in (1, 2)
+        }
+        require_evidence(runs["1"] == runs["2"], "moh_silver_repeat_mismatch")
+        profiles[profile] = {**runs["1"], "repeat_identical": True}
+        silver = root / f"moh-{profile.replace('/', '-')}-1"
+        first_builds.append(
+            MohIndicatorInput(
+                profile,
+                silver,
+                runs["1"]["source_manifest_sha256"],
+                MOH_SOURCE_SHA256[profile],
+            )
+        )
+    source_cas = ARCHIVE / "bronze-cas" / "sha256"
+    facts, lineage, projection = moh_canonical_projection.project_moh_indicators(
+        MohGoldInput(tuple(first_builds), source_cas)
+    )
+    return {
+        "status": "complete",
+        "profiles": profiles,
+        "rights_state": "not_evaluated",
+        "methodology": "published_indicators_not_recomputed",
+        "canonical_projection": projection,
+        "canonical_fact_sha256": hashlib.sha256(
+            json.dumps(
+                facts.to_pylist(), default=str, sort_keys=True, separators=(",", ":")
+            ).encode("utf-8")
+        ).hexdigest(),
+        "canonical_lineage_sha256": hashlib.sha256(
+            json.dumps(
+                lineage.to_pylist(), default=str, sort_keys=True, separators=(",", ":")
+            ).encode("utf-8")
+        ).hexdigest(),
+    }
+
+
 def _qes_recovery_report(root: Path) -> dict[str, Any]:
     """Require two matching Bronze-to-canonical QES projections."""
     runs = {str(index): _rebuild_qes_canonical(root, index) for index in (1, 2)}
@@ -1039,12 +1129,25 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
         source_cas_root=ARCHIVE / "bronze-cas" / "sha256",
         source_sha256=PHARMAC_SOURCE_SHA256,
     )
+    moh_input = MohGoldInput(
+        tuple(
+            MohIndicatorInput(
+                profile,
+                root / f"moh-{profile.replace('/', '-')}-1",
+                MOH_SILVER_MANIFEST_SHA256[profile],
+                MOH_SOURCE_SHA256[profile],
+            )
+            for profile in moh_canonical_projection.PROFILES
+        ),
+        ARCHIVE / "bronze-cas" / "sha256",
+    )
     for index in (1, 2):
         export_canonical_gold(
             canonical,
             root / f"canonical-{index}",
             write=True,
             pharmac_input=pharmac_input,
+            moh_input=moh_input,
         )
     files = compare_product_outputs(
         root / "canonical-1", root / "canonical-2", "canonical_gold"
@@ -1425,6 +1528,7 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
         )
         # The Gold product consumes the verified Pharmac Silver build below.
         outputs["pharmac_canonical_projection"] = _pharmac_recovery_report(root)
+        outputs["moh_indicators_canonical_projection"] = _moh_recovery_report(root)
         outputs["canonical_gold"] = _canonical_gold_recovery_report(root)
         outputs["source_health_report"] = source_health_recovery_report()
         outputs["classification_label_occurrences"] = (

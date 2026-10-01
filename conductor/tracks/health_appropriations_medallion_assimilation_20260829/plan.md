@@ -579,9 +579,15 @@ integrated parent head.
   and canonical projection; see \`budget-revenue-2026.md\`. Other Budget revenue
   editions, Budget expenditure editions, and Vote Health Estimates remain
   incomplete, so this parent task remains open.
-- [ ] Promote BEFU/HYEFU, historical fiscal indicators and Ministry Vote
-  Health series with compatible-but-distinct series definitions and vintage
-  relationships. [M-05, M-06, M-11; AC-05, AC-09, AC-11]
+- [x] Promote the two retained HAIR2024 Ministry published-indicator profiles
+  into source-separated canonical Gold with source-coordinate lineage and
+  discrete plots. Published real/nominal labels are preserved, while units,
+  price bases, denominators and rights remain unevaluated; this does not derive
+  actual expenditure or establish comparability. See
+  `moh-canonical-gold-20261001.md`.
+- [ ] Promote BEFU/HYEFU and historical fiscal indicators with
+  compatible-but-distinct series definitions and vintage relationships.
+  [M-05, M-06, M-11; AC-05, AC-09, AC-11]
 - [x] Promote Pharmac CPB into the source-separated local canonical Gold
   product, retaining financial-year tokens, published budget-allocation scope,
   the pre/post-2022 funding regimes, eight source-coordinate lineage fields per

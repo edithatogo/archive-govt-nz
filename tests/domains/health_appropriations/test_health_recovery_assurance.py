@@ -507,6 +507,18 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     )
     monkeypatch.setattr(
         MODULE,
+        "_moh_recovery_report",
+        lambda _root: {
+            "status": "complete",
+            "profiles": {"fig27/v1": {}, "fig28/v1": {}},
+            "canonical_projection": {
+                "status": "verified_source_faithful_projection",
+                "input_records": 80,
+            },
+        },
+    )
+    monkeypatch.setattr(
+        MODULE,
         "_rebuild_qes_canonical",
         lambda _root, _index: {
             "source_object_sha256": "b" * 64,
@@ -584,6 +596,12 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     assert (
         result["products_rebuilt"]["pharmac_canonical_projection"]["repeat_identical"]
         is True
+    )
+    assert (
+        result["products_rebuilt"]["moh_indicators_canonical_projection"][
+            "canonical_projection"
+        ]["input_records"]
+        == 80
     )
     assert (
         result["products_rebuilt"]["qes_canonical_projection"]["repeat_identical"]
