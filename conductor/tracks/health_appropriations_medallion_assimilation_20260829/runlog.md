@@ -3727,3 +3727,37 @@ coverage against the 80% floor. Dependency, license, secret, and SBOM checks
 also passed. The automatic Phase 7 gate passed on the corrected tree; its
 receipt SHA-256 begins `53abebfe824cb480`. The changed files passed a fresh
 secret scan with zero candidates.
+
+### Registered context-adapter repeatability (2026-10-01)
+
+Added one integration contract over the five adapters returned by
+`context_adapter_registrations`: CPI, annual population, QES, GDP, and Pharmac.
+Each fixed payload is dispatched twice through the complete registration set;
+the test compares the hash-bound selection receipt and complete typed output,
+and confirms the selected adapter ID. The first focused run (`1 failed`) exposed
+an incorrect expected population adapter ID in the test
+(`stats-nz-population-annual-mean`); dispatch selected the registered
+`stats-nz-dpe056aa-annual-mean`. This is a fixture assertion correction, not a
+production behavior failure; correction and rerun evidence follow.
+
+After correcting population's expected ID, the focused test exposed a second
+fixture assertion mismatch for Pharmac: the context registry ID is
+`pharmac-combined-pharmaceutical-budget`, distinct from its source-operation
+profile ID. The test's extraction and repeat-equality assertions passed before
+this expected-ID assertion failed; update the expected registry ID and rerun.
+
+After correcting both fixture IDs, the focused contract passed (`1 passed`),
+covering all seven registered adapters with two dispatches per adapter. Ruff
+and formatting passed, and basedpyright reported 0 errors, warnings, or notes.
+The existing normalizer contracts also cover complete manifest and output-byte
+identity for Budget expenditure/revenue, CPI, QES, GDP, Pharmac, population,
+and all 15 allowlisted source-operation profiles. The prior receipt's two
+remaining-scope entries are now resolved; repeatability remains a local
+determinism claim only.
+
+Required `./scripts/validate.sh` passed with 7,250 tests passed, 10 skipped,
+98.27% branch coverage against the configured 80% floor, all 53 schemas and 43
+representative documents, 9/9 parity checks, configured mutation gates,
+dependency/license/secret scans, and validated 113-component SBOM. Automatic
+Conductor Phase 2 Silver review passed. These gates confirm local contracts
+and do not establish rights or source-value approval.
