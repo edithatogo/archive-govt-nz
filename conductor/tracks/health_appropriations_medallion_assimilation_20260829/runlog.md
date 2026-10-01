@@ -3647,3 +3647,27 @@ license and secret checks; and validated 113-component SBOM. The automatic
 Conductor Phase 7 review passed. No tests were added to raise coverage; one
 integrated test covers measure-family separation, lineage drill-through and
 repeat-build identity.
+
+### Silver source-operation repeatability (2026-10-01)
+
+Added one parameterized integration contract for the 12 source-operation
+profiles with representative fixtures. Each profile is normalized twice from
+the same unchanged source bytes into separate output directories; the test
+compares status, profile, counts, manifest/output SHA-256 maps and every
+package file byte. All 12 cases passed. The three Vote Health PDF profiles
+remain outside this verification because their current source-operation tests
+use dispatch stubs rather than reusable repeat-build fixtures; other adapter
+families also remain open. See
+[`silver-repeat-normalization-20261001.json`](silver-repeat-normalization-20261001.json).
+
+The repository's authoritative `origin/main` coverage floor is 80%; this
+increment leaves it unchanged. The broader `test_source_operations.py` suite
+passed 463 tests with 10 skipped. Ruff passed; format was corrected and
+rechecked; basedpyright reported 0 errors, warnings or notes. The required full
+`./scripts/validate.sh` passed: 7,246 passed, 10 skipped, 98.27% branch
+coverage against the 80% floor, 53 schemas/43 representative documents,
+parity 9/9, all configured mutation lanes, dependency/license/secret checks,
+and the validated 113-component SBOM. The automatic Conductor Phase 7 review
+passed with receipt SHA-256 prefix `9ae2f8bd0bc0528e`. These broad repository
+gates validate the repository state; they do not close the remaining repeat
+build or track-completion items.
