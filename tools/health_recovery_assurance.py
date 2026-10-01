@@ -34,6 +34,7 @@ from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
     query_context_observations,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_gold_export import (
+    PharmacGoldInput,
     export_canonical_gold,
 )
 from archive_govt_nz.domains.health_appropriations.compatibility_export import (
@@ -1031,8 +1032,20 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
             "status": "blocked",
             "reason": "no_retained_canonical_inputs_passed_independent_source_binding",
         }
+    pharmac_silver = root / "pharmac-silver-1"
+    pharmac_input = PharmacGoldInput(
+        root=pharmac_silver,
+        manifest_sha256=digest(pharmac_silver / "MANIFEST.json"),
+        source_cas_root=ARCHIVE / "bronze-cas" / "sha256",
+        source_sha256=PHARMAC_SOURCE_SHA256,
+    )
     for index in (1, 2):
-        export_canonical_gold(canonical, root / f"canonical-{index}", write=True)
+        export_canonical_gold(
+            canonical,
+            root / f"canonical-{index}",
+            write=True,
+            pharmac_input=pharmac_input,
+        )
     files = compare_product_outputs(
         root / "canonical-1", root / "canonical-2", "canonical_gold"
     )
@@ -1410,6 +1423,7 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
         outputs["historical_fiscal_crown_canonical_projection"] = (
             _fiscal_crown_recovery_report(root)
         )
+        # The Gold product consumes the verified Pharmac Silver build below.
         outputs["pharmac_canonical_projection"] = _pharmac_recovery_report(root)
         outputs["canonical_gold"] = _canonical_gold_recovery_report(root)
         outputs["source_health_report"] = source_health_recovery_report()

@@ -582,8 +582,13 @@ integrated parent head.
 - [ ] Promote BEFU/HYEFU, historical fiscal indicators and Ministry Vote
   Health series with compatible-but-distinct series definitions and vintage
   relationships. [M-05, M-06, M-11; AC-05, AC-09, AC-11]
-- [ ] Promote Pharmac CPB series with its policy scope and time basis. [M-05,
-  M-06, M-11; AC-05, AC-09]
+- [x] Promote Pharmac CPB into the source-separated local canonical Gold
+  product, retaining financial-year tokens, published budget-allocation scope,
+  the pre/post-2022 funding regimes, eight source-coordinate lineage fields per
+  fact, and two regime-separated display plots. This does not establish rights,
+  actual expenditure, cross-source comparability, or publication; those remain
+  explicit boundaries. [M-05, M-06, M-11; AC-05, AC-09] (see
+  `pharmac-canonical-gold-20261001.md`)
 
 ### 5.3 Normalize analytical context
 

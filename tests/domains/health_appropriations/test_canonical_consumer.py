@@ -18,6 +18,9 @@ from tests.domains.health_appropriations.test_budget_revenue_projection import (
 from tests.domains.health_appropriations.test_historical_snapshot import (
     _package as historical_raw_package,
 )
+from tests.domains.health_appropriations.test_pharmac_canonical_projection import (
+    package as pharmac_silver_package,
+)
 
 from archive_govt_nz.domains.health_appropriations import (
     budget_revenue_canonical_export,
@@ -42,6 +45,7 @@ from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
     summarize_historical_coverage,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_gold_export import (
+    PharmacGoldInput,
     export_canonical_gold,
     export_historical_gold,
 )
@@ -238,7 +242,12 @@ def _assert_canonical_gold_outputs(
             )
     assert {
         item["product"]: item["status"] for item in manifest["plot_report"]["series"]
-    } == {"historical": "rendered", "budget": "rendered", "revenue": "rendered"}
+    } == {
+        "historical": "rendered",
+        "budget": "rendered",
+        "revenue": "rendered",
+        "pharmac": "not_present",
+    }
     assert all(
         manifest["outputs"][name]["kind"] == "plot_png"
         and manifest["outputs"][name]["display_only"] is True
@@ -570,6 +579,100 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
     )
     with pytest.raises(ValueError, match=r"^canonical_gold_export_invalid$"):
         export_canonical_gold((object(),), tmp_path / "invalid")  # type: ignore[arg-type]
+
+
+def test_canonical_gold_includes_pharmac_as_a_separate_source_product(
+    tmp_path: Path,
+) -> None:
+    historical = _historical_package(tmp_path / "historical")
+    budget = _package(tmp_path / "budget")
+    revenue = _revenue_package(tmp_path / "revenue")
+    pharmac_root = tmp_path / "pharmac"
+    pharmac_root.mkdir()
+    silver, cas, pin, source_sha256 = pharmac_silver_package(pharmac_root)
+    pharmac_input = PharmacGoldInput(silver, pin, cas, source_sha256)
+    output = tmp_path / "gold-with-pharmac"
+    repeated = tmp_path / "gold-with-pharmac-repeat"
+
+    receipt = export_canonical_gold(
+        (historical, budget, revenue), output, pharmac_input=pharmac_input
+    )
+    assert receipt["status"] == "dry_run"
+    assert receipt["products"]["pharmac"]["aggregation"] == (
+        "none_source_record_rows_preserved"
+    )
+    assert receipt["products"]["pharmac"]["actual_expenditure"] == "not_asserted"
+    assert receipt["cross_source_join"] == "not_performed"
+    assert receipt["vintage_pooling"] == "not_performed"
+    assert not output.exists()
+
+    export_canonical_gold(
+        (historical, budget, revenue),
+        output,
+        write=True,
+        pharmac_input=pharmac_input,
+    )
+    export_canonical_gold(
+        (historical, budget, revenue),
+        repeated,
+        write=True,
+        pharmac_input=pharmac_input,
+    )
+    manifest = json.loads((output / "MANIFEST.json").read_text(encoding="utf-8"))
+    pharmac_rows = pq.read_table(
+        output / "nominal_pharmaceutical_budget.parquet"
+    ).to_pylist()
+    lineage_rows = pq.read_table(
+        output / "pharmaceutical_budget_lineage.parquet"
+    ).to_pylist()
+    assert len(pharmac_rows) == 14
+    assert len(lineage_rows) == 14 * 8
+    assert {row["rights_state"] for row in pharmac_rows} == {"not_evaluated"}
+    assert {row["amount_type"] for row in pharmac_rows} == {
+        "published_budget_allocation"
+    }
+    assert {row["funding_regime"] for row in pharmac_rows} == {
+        "district_health_board_budget_holder",
+        "government_appropriation_allocated_to_pharmac",
+    }
+    assert manifest["pharmac_projection"]["status"] == (
+        "verified_source_faithful_projection"
+    )
+    assert manifest["products"]["pharmac"]["funding_regimes"] == sorted(
+        {row["funding_regime"] for row in pharmac_rows}
+    )
+    pharmac_groups = [
+        row
+        for row in manifest["temporal_coverage_report"]["groups"]
+        if row["output_name"] == "nominal_pharmaceutical_budget.parquet"
+    ]
+    assert len(pharmac_groups) == 2
+    assert {row["context"]["funding_regime"] for row in pharmac_groups} == {
+        "district_health_board_budget_holder",
+        "government_appropriation_allocated_to_pharmac",
+    }
+    pharmac_plots = [
+        item
+        for item in manifest["plot_report"]["series"]
+        if item["product"] == "pharmac"
+    ]
+    assert pharmac_plots[0]["status"] == "rendered"
+    assert len(pharmac_plots[0]["plots"]) == 2
+    drillthrough = {
+        row["input_record_id"]: row
+        for row in manifest["source_drillthrough"]["records"]
+    }
+    assert {row["record_id"] for row in pharmac_rows}.issubset(drillthrough)
+    for row in pharmac_rows:
+        record = drillthrough[row["record_id"]]
+        assert len(record["source_coordinates"]) == 8
+        assert any(
+            item["output_name"] == "nominal_pharmaceutical_budget.parquet"
+            for item in record["output_rows"]
+        )
+    assert {path.name: path.read_bytes() for path in output.iterdir()} == {
+        path.name: path.read_bytes() for path in repeated.iterdir()
+    }
 
 
 def test_temporal_coverage_keeps_historical_source_series_distinct(
