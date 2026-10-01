@@ -749,6 +749,11 @@ integrated parent head.
   The local raw-derived Gold export now persists an edition-bounded Budget
   versus Estimated Actual diagnostic with exact input identities and explicit
   unverified period basis. Coverage and quality reporting remain incomplete.
+  - [x] Add a source-separated Budget/revenue label-change candidate report
+    keyed by exact period and dimensions across observed vintages. The manifest
+    does not infer mappings or semantic equivalence; other source families
+    remain outside this bounded report. See
+    `canonical-classification-drift-20261001.md`. [M-13, S-04; AC-11]
   - [x] Add a deterministic canonical-input identity completeness report to
     the source-separated Gold manifest. It maps each admitted input record ID
     to its exact product, reconciles all output identities, and explicitly

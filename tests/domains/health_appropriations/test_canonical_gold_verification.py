@@ -35,6 +35,11 @@ def _package(root: Path) -> tuple[Path, str]:
             "schema_version": "archive-govt-nz.health-temporal-coverage/v1",
             "groups": [{"observed_periods": []}],
         },
+        "classification_drift_report": {
+            "schema_version": "archive-govt-nz.health-classification-drift/v1",
+            "mapping": "not_inferred",
+            "candidates": [],
+        },
         "rights_state": "not_evaluated",
         "publication": "not_performed",
     }
@@ -142,6 +147,7 @@ def test_cli_mcp_parity_and_no_write(
         "unsafe_name",
         "invalid_manifest_schema",
         "invalid_reports",
+        "invalid_classification_report",
     ],
 )
 def test_invalid_package_fails_closed_and_redacted(
@@ -168,13 +174,19 @@ def test_invalid_package_fails_closed_and_redacted(
         )
         manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
         pin = hashlib.sha256(manifest_path.read_bytes()).hexdigest()
-    elif failure in {"invalid_manifest_schema", "invalid_reports"}:
+    elif failure in {
+        "invalid_manifest_schema",
+        "invalid_reports",
+        "invalid_classification_report",
+    }:
         manifest_path = root / "MANIFEST.json"
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         if failure == "invalid_manifest_schema":
             manifest["schema_version"] = "unsupported/v1"
-        else:
+        elif failure == "invalid_reports":
             manifest["temporal_coverage_report"] = []
+        else:
+            manifest["classification_drift_report"] = []
         manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
         pin = hashlib.sha256(manifest_path.read_bytes()).hexdigest()
 
