@@ -22,6 +22,7 @@ from archive_govt_nz.domains.health_appropriations.canonical_gold_plots import (
 )
 from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
     CanonicalPackageInput,
+    read_verified_canonical_tables,
 )
 
 if TYPE_CHECKING:
@@ -217,9 +218,47 @@ def _quality_report(
 
 
 def _source_drillthrough(
-    tables: dict[str, pa.Table], outputs: dict[str, dict[str, Any]]
+    tables: dict[str, pa.Table],
+    outputs: dict[str, dict[str, Any]],
+    packages: tuple[CanonicalPackageInput, ...],
 ) -> dict[str, Any]:
-    """Map each admitted input identity to exact, hash-pinned Gold rows."""
+    """Link Gold rows to canonical source coordinates and exact source objects."""
+    coordinates_by_record: dict[str, list[dict[str, Any]]] = {}
+    for package in packages:
+        canonical, _receipt = read_verified_canonical_tables(package)
+        for lineage in canonical["field_lineage"].to_pylist():
+            target_id = lineage["target_record_id"]
+            locator = lineage["source_locator"]
+            coordinate = lineage["source_coordinate"]
+            _require(
+                type(target_id) is str
+                and bool(target_id)
+                and type(locator) is str
+                and bool(locator)
+                and type(coordinate) is str
+                and bool(coordinate)
+            )
+            item = {
+                "field": lineage["field"],
+                "source_coordinate": coordinate,
+                "source_object_sha256": lineage["source_object_sha256"],
+                "source_locator_sha256": hashlib.sha256(
+                    locator.encode("utf-8")
+                ).hexdigest(),
+                "source_vintage": lineage["source_vintage"],
+                "rights_state": lineage["rights_state"],
+            }
+            coordinates_by_record.setdefault(target_id, []).append(item)
+    for items in coordinates_by_record.values():
+        items.sort(
+            key=lambda item: (
+                item["source_vintage"],
+                item["source_object_sha256"],
+                item["source_coordinate"],
+                item["field"],
+            )
+        )
+
     by_record: dict[str, list[dict[str, Any]]] = {}
     for output_name, table_name in sorted(_TABLES.items()):
         table = tables.get(table_name)
@@ -241,13 +280,14 @@ def _source_drillthrough(
                     }
                 )
     return {
-        "schema_version": "archive-govt-nz.health-source-drillthrough/v1",
-        "scope": "exact_row_lineage_lookup_only",
+        "schema_version": "archive-govt-nz.health-source-drillthrough/v2",
+        "scope": "exact_row_and_source_coordinate_lookup_only",
         "row_identity": "output_sha256_and_zero_based_sorted_row_index",
         "cross_source_join": "not_performed",
         "records": [
             {
                 "input_record_id": record_id,
+                "source_coordinates": coordinates_by_record.get(record_id, []),
                 "output_rows": sorted(
                     output_rows,
                     key=lambda item: (item["output_name"], item["row_index"]),
@@ -511,7 +551,7 @@ def _export(
         ),
         "products": product_report,
         "outputs": outputs,
-        "source_drillthrough": _source_drillthrough(tables, outputs),
+        "source_drillthrough": _source_drillthrough(tables, outputs, packages),
         "temporal_coverage_report": temporal_report,
         "plot_report": plot_report,
         "quality_report": quality_report,

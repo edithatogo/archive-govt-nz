@@ -53,6 +53,7 @@ from archive_govt_nz.domains.health_appropriations.historical_canonical_export i
 )
 from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
     CanonicalPackageInput,
+    read_verified_canonical_tables,
 )
 
 
@@ -179,14 +180,54 @@ def _assert_canonical_gold_outputs(
     }.issubset(set(manifest["outputs"]))
     drillthrough = manifest["source_drillthrough"]
     assert drillthrough["schema_version"] == (
-        "archive-govt-nz.health-source-drillthrough/v1"
+        "archive-govt-nz.health-source-drillthrough/v2"
     )
+    assert drillthrough["scope"] == "exact_row_and_source_coordinate_lookup_only"
     output_by_record = {
         row["input_record_id"]: row["output_rows"] for row in drillthrough["records"]
     }
     assert set(output_by_record) == set(quality["input_record_products"])
+    expected_coordinates: dict[str, list[dict[str, Any]]] = {}
+    for package in packages:
+        canonical, _receipt = read_verified_canonical_tables(package)
+        for lineage in canonical["field_lineage"].to_pylist():
+            locator = lineage["source_locator"]
+            expected_coordinates.setdefault(lineage["target_record_id"], []).append(
+                {
+                    "field": lineage["field"],
+                    "source_coordinate": lineage["source_coordinate"],
+                    "source_object_sha256": lineage["source_object_sha256"],
+                    "source_locator_sha256": hashlib.sha256(
+                        locator.encode("utf-8")
+                    ).hexdigest(),
+                    "source_vintage": lineage["source_vintage"],
+                    "rights_state": lineage["rights_state"],
+                }
+            )
     for input_record_id, output_rows in output_by_record.items():
         assert output_rows
+        record = next(
+            item
+            for item in drillthrough["records"]
+            if item["input_record_id"] == input_record_id
+        )
+        assert record["source_coordinates"] == sorted(
+            expected_coordinates[input_record_id],
+            key=lambda item: (
+                item["source_vintage"],
+                item["source_object_sha256"],
+                item["source_coordinate"],
+                item["field"],
+            ),
+        )
+        assert all(
+            item["source_coordinate"]
+            and item["field"]
+            and item["source_object_sha256"]
+            and item["source_locator_sha256"]
+            and item["rights_state"] == "not_evaluated"
+            for item in record["source_coordinates"]
+        )
         for output_row in output_rows:
             metadata = manifest["outputs"][output_row["output_name"]]
             assert metadata["sha256"] == output_row["output_sha256"]

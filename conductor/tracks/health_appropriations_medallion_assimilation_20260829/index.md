@@ -180,6 +180,7 @@ they are not current-state assertions.
 - [Exact source series and period/rights review](source-measure-review-20260927.json)
 - [Budget source-label occurrence comparison](classification-label-occurrences-20260930.json)
 - [GDP March/June vintage differences](gdp-vintage-reconciliation-20260930.json)
+- [Canonical Gold source-coordinate drill-through](canonical-gold-source-coordinate-drillthrough-20261001.md)
 
 - [Normalization and SQLite checkpoint integration](./normalization-checkpoint-integration-20260913.md)
 - [Preserved final normalization checkpoint](./normalization-admission-checkpoint-20260906.json)

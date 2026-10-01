@@ -3521,3 +3521,18 @@ three published vulnerabilities in locked urllib3 2.7.0 (GHSA-8988-9cw3-xx77,
 GHSA-gh4c-6fx4-qh6g, GHSA-vxq7-64xx-v4gw); the lock now pins patched urllib3
 2.8.0, whose audit is clean. Coverage tests were not added to pursue a higher
 percentage; the existing suite already exceeds the project's 80% threshold.
+
+### Source-coordinate drill-through validation attempt
+
+On 2026-10-01, the first required full harness after adding source-coordinate
+drill-through passed 7,229 tests and failed
+`test_review_reports_exact_series_and_preserves_blockers`. Its source-measure
+review validator found a stale SHA-256 for the track index after the new
+evidence link was added. This is an evidence-index mismatch; no source-measure
+claim or production test failed. The retained review receipt is being updated
+to the exact current index bytes before validation is repeated.
+
+### Source-coordinate drill-through validation follow-up
+
+The retained source-measure review receipt was updated to the exact current
+track index bytes (`c6758a53ea000fcf6aa8da2c67ac2c27081155d72a36dd5faa83d93f7f0abf72`). The focused source-measure suite passed (36 tests), followed by the required `./scripts/validate.sh`: 7,230 passed, 10 skipped, 98.26% branch coverage against the 80% floor; 53 schemas/43 representative documents; parity 9/9; mutation gates, dependency/license/secret checks and 113-component SBOM passed. Focused Gold and verifier suites passed (33 tests). No tests were added to raise coverage; the new contract tests verify source-coordinate fidelity and retained rights state.
