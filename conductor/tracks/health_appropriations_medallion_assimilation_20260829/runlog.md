@@ -3761,3 +3761,20 @@ representative documents, 9/9 parity checks, configured mutation gates,
 dependency/license/secret scans, and validated 113-component SBOM. Automatic
 Conductor Phase 2 Silver review passed. These gates confirm local contracts
 and do not establish rights or source-value approval.
+
+## 2026-10-01 — Canonical classification report in clean-room recovery
+
+Clean-room recovery now verifies the canonical Gold manifest's bounded
+Budget/revenue classification-drift candidate report, including its expected
+schema and explicit `mapping=not_inferred` and
+`cross_source_comparison=not_performed` boundaries. The exact pinned recovery
+completed with Bronze unchanged and canonical Gold repeat-identical; the report
+contained zero candidates for this input set. Receipt:
+[clean-room recovery](clean-room-recovery-20261001-classification.json),
+SHA-256 `c433d41a79e883afc13ed1120aecbd815296d4ce372ea7d27ff798812860f49c`.
+
+Recovery remains `partial_with_blockers`. It still requires the composed Gold
+revision/cross-source reports, remaining source-native Silver profiles and
+canonical adapters, and complete Platinum DCAT/Croissant/RO-Crate/PROV profile.
+This verifies one report in recovery; it does not close AC-11 or AC-12. Tests
+remain governed by the repository's 80% minimum coverage floor.

@@ -644,8 +644,12 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     assert "compatibility_sqlite" not in result["required_but_not_rebuilt"]
     assert "all_source_native_silver" not in result["required_but_not_rebuilt"]
     assert (
-        "canonical_classification_drift_revision_and_cross_source_reports"
+        "canonical_gold_revision_and_cross_source_reports"
         in result["required_but_not_rebuilt"]
+    )
+    assert (
+        "canonical_classification_drift_revision_and_cross_source_reports"
+        not in result["required_but_not_rebuilt"]
     )
     assert (
         "remaining_source_native_silver_profiles_and_canonical_adapters"

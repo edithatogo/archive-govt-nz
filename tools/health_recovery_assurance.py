@@ -1181,6 +1181,16 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
         and quality.get("unaccounted_input_records") == 0,
         "canonical_gold_quality_report_invalid",
     )
+    classification_report = manifest.get("classification_drift_report")
+    require_evidence(
+        isinstance(classification_report, dict)
+        and classification_report.get("schema_version")
+        == "archive-govt-nz.health-classification-drift/v1"
+        and classification_report.get("mapping") == "not_inferred"
+        and classification_report.get("cross_source_comparison") == "not_performed"
+        and isinstance(classification_report.get("candidates"), list),
+        "canonical_gold_classification_drift_report_invalid",
+    )
     return {
         "files": files,
         "repeat_identical": True,
@@ -1191,6 +1201,14 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
             "unaccounted_input_records": quality["unaccounted_input_records"],
             "products": quality["products"],
             "unresolved_reports": quality["unresolved_reports"],
+        },
+        "classification_drift_report": {
+            "schema_version": classification_report["schema_version"],
+            "scope": classification_report["scope"],
+            "source_families": classification_report["source_families"],
+            "candidate_count": len(classification_report["candidates"]),
+            "mapping": classification_report["mapping"],
+            "cross_source_comparison": classification_report["cross_source_comparison"],
         },
     }
 
@@ -1562,6 +1580,9 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
             "classification_label_occurrences": outputs[
                 "classification_label_occurrences"
             ],
+            "canonical_classification_drift": outputs["canonical_gold"].get(
+                "classification_drift_report"
+            ),
             "unresolved_canonical_reports": canonical_quality.get(
                 "unresolved_reports", ["canonical_gold_not_rebuilt"]
             ),
@@ -1578,7 +1599,7 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
         "products_rebuilt": outputs,
         "bronze_objects_unchanged": unchanged,
         "required_but_not_rebuilt": [
-            "canonical_classification_drift_revision_and_cross_source_reports",
+            "canonical_gold_revision_and_cross_source_reports",
             "remaining_source_native_silver_profiles_and_canonical_adapters",
             "platinum_dcat_croissant_ro_crate_prov_complete_profile",
         ],

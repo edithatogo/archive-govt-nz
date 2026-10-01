@@ -757,8 +757,9 @@ integrated parent head.
   - [x] Add a deterministic canonical-input identity completeness report to
     the source-separated Gold manifest. It maps each admitted input record ID
     to its exact product, reconciles all output identities, and explicitly
-    leaves analytical completeness, source health, classification drift,
-    revision reconciliation, and cross-source reconciliation unevaluated. This
+    leaves analytical completeness, source health, revision reconciliation,
+    and cross-source reconciliation unevaluated. The separate bounded
+    classification-drift report is described above. This
     is provenance accounting, not analytical promotion. See
     `canonical-gold-quality-20260928.md`.
 - [ ] Generate deterministic plots, structured summaries and consumer examples
