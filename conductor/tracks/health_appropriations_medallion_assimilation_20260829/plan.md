@@ -740,13 +740,18 @@ integrated parent head.
     report, and report bounded omissions without interpolation. Preserve exact
     values in Parquet; numeric conversion is only for plot display. See
     `canonical-source-separated-gold-20260928.md`. Other measures, donor
-    reports, source-coordinate drill-through and consumer examples remain open.
+    reports and consumer examples remain open.
   - [x] Add a manifest index from each admitted source record ID to its exact
     Parquet output row, bound by table-byte SHA-256 and deterministic sorted
-    row position. Verify every link through Parquet readback. This links only
-    Silver identities within the canonical package; source coordinates,
-    source rights and other reports remain open. See
+    row position. Verify every link through Parquet readback. This links
+    Silver identities within the canonical package; source rights and other
+    reports remain open. See
     `canonical-gold-drillthrough-20260928.md`.
+  - [x] Extend canonical Gold drill-through with source field coordinates,
+    source-object SHA-256, vintage, and a digest of the source locator for each
+    admitted record. Build links only from independently verified canonical
+    field-lineage tables; do not persist locator text or upgrade rights state.
+    See `canonical-gold-source-coordinate-drillthrough-20261001.md`.
   - [x] Add a temporal coverage report to the canonical Gold manifest, listing
     exact observed period tokens and counts by full source context for each
     available historical, Budget and revenue mart. Do not infer gaps, join
