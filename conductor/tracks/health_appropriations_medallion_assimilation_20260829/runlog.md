@@ -3593,3 +3593,30 @@ track index bytes (`c6758a53ea000fcf6aa8da2c67ac2c27081155d72a36dd5faa83d93f7f0a
 
 Ran `uv run --locked python tools/health_recovery_assurance.py --receipt conductor/tracks/health_appropriations_medallion_assimilation_20260829/clean-room-recovery-20261001.json` on merged head `1f0bce1d`. The receipt records repeat-identical donor raw/compatibility/Gold/plots and 12-profile source-native Silver, context-native Silver, context Gold, canonical Gold, and separately pinned context projections. Bronze CAS remained unchanged. The fresh canonical Gold manifest reflects merged source-coordinate drill-through (SHA-256 `7d763d9eb1d4a4a6843492be7b179463ffb5bff6cc191e594927d20ed8165f0f`), replacing the older 2026-09-30 manifest pin. Source-health, exact classification-label occurrence and GDP March/June revision reports independently verify and bind their retained evidence. Canonical Gold still reports these as unresolved within that product; cross-source reconciliation remains unperformed. Remaining gates are additional source-native families/adapters, complete canonical report integration and validated Platinum metadata/federation. The receipt therefore remains `partial_with_blockers`; no rights, analytic admission, or publication claim was added.
 The evidence update passed the required `./scripts/validate.sh` on 2026-10-01: 7,230 passed, 10 skipped; branch-aware coverage 98.26% against the configured 80% floor; 53 schemas/43 representative documents; parity 9/9; all configured mutation gates passed; dependency audit, licenses, secrets and 113-component SBOM passed. No tests were added to raise coverage. The retained focused source-measure and recovery assurance suites passed 46 tests.
+
+### BEFU-2026 and HYEFU-2025 canonical Gold promotion (2026-10-01)
+
+Added source-separated fact, lineage and discrete plot products for the pinned
+BEFU-2026 and HYEFU-2025 Core Crown expense projections. Each retains 10
+source facts and 80 source-coordinate lineage rows. Distinct vintage identities
+and formula-cache contexts are preserved; currency/accounting basis,
+financial-year alignment, rights, formula-cache freshness and actual/forecast
+comparability remain unresolved. No cross-vintage comparison or pooling is
+performed. See [the product note](crown-canonical-gold-20261001.md).
+
+The clean-room recovery rebuilt both Silver products from Bronze and the
+integrated canonical Gold package twice with matching output digests; Bronze
+was unchanged. Receipt:
+[`clean-room-recovery-20261001-crown-gold.json`](clean-room-recovery-20261001-crown-gold.json),
+SHA-256 `a3ede43865a3e6656da3b12f4521de3890739ff60bca5f902623177258908036`.
+The overall recovery remains `partial_with_blockers`; historical Fiscal Time
+Series promotion and other track products remain open.
+
+Focused canonical Gold, plot and recovery tests passed (40 tests). The required
+`./scripts/validate.sh` passed: 7,233 passed, 10 skipped, 98.26% branch
+coverage against the configured 80% floor, 53 schemas/43 representative
+documents, 9/9 parity checks, all configured mutation gates, dependency audit,
+license inventory, secret scan and 113-component SBOM. The automatic
+Conductor Phase 7 review passed. No tests were added to raise the coverage
+percentage; the new integration test checks source separation and deterministic
+output behavior.
