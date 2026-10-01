@@ -3707,3 +3707,12 @@ lanes, dependency audit, license/secret checks, and validated 113-component
 SBOM. The automatic Conductor Phase 7 review passed with receipt SHA-256
 prefix `de04aa7f796db0d4`. These repository gates do not establish rights or
 complete the other Silver, Gold, or Platinum requirements.
+
+PR #582 hosted assurance initially passed the tests and all mutation lanes on
+Ubuntu (7,244 passed, 15 skipped) and macOS (7,244 passed, 15 skipped), then
+failed the secret scan on the evidence JSON at lines 51 and 56. A metadata-only
+scan of the changed files identified `Secret Keyword` for the field name
+`license_and_secret_checks` and `Hex High Entropy String` for the short Phase 7
+receipt digest prefix. No candidate value is required for this evidence. The
+labels/digest prefix are diagnostic-only and will be removed; the full phase
+receipt digest remains in the generated build receipt, outside tracked source.

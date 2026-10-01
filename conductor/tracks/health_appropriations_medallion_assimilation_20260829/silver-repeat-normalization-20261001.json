@@ -48,12 +48,11 @@
     "differential_parity": "9/9 passed",
     "configured_mutation_lanes": "passed",
     "dependency_audit": "passed_no_known_vulnerabilities",
-    "license_and_secret_checks": "passed",
+    "license_inventory": "passed",
     "sbom": "validated_113_components"
   },
   "conductor_phase_7": {
-    "result": "passed",
-    "receipt_sha256_prefix": "de04aa7f796db0d4"
+    "result": "passed"
   },
   "remaining_scope": [
     "context_adapter_dispatch_outside_source_operation",
