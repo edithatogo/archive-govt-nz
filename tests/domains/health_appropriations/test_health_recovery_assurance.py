@@ -174,7 +174,18 @@ def test_classification_label_occurrence_report_verifies_retained_packages(
     monkeypatch: MonkeyPatch, tmp_path: Path
 ) -> None:
     _classification_package_fixture(tmp_path, monkeypatch)
+    monkeypatch.setattr(
+        MODULE,
+        "bind_recorded_comparison",
+        lambda report, _path, _error_code: {
+            **report,
+            "recorded_repeat_identical": True,
+        },
+    )
     report = MODULE.classification_label_occurrence_report()
+    assert report["schema_version"] == (
+        "archive-govt-nz.health-classification-label-occurrences/v1"
+    )
     assert report["status"] == "verified_exact_literal_occurrence_counts"
     assert report["comparison_scope"] == "exact_literal_label_occurrence_counts"
     assert report["packages"]["2025"]["dimension_rows"] == 1
@@ -183,7 +194,7 @@ def test_classification_label_occurrence_report_verifies_retained_packages(
     assert report["authoritative_crosswalk"] == "not_performed"
     assert report["rights"] == "not_evaluated"
     assert report["comparability"] == "not_asserted"
-    assert report["repeat_identical"] is True
+    assert report["recorded_repeat_identical"] is True
 
 
 def test_classification_label_report_rejects_changed_marker_pin(

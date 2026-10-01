@@ -192,6 +192,31 @@ def require_evidence(condition: object, message: str) -> None:
         raise RuntimeError(message)
 
 
+def bind_recorded_comparison(
+    report: dict[str, Any], receipt_path: Path, error_code: str
+) -> dict[str, Any]:
+    """Verify a deterministic report against its pinned repeat-build receipt."""
+    recorded = json.loads(receipt_path.read_bytes())
+    require_evidence(isinstance(recorded, dict), f"{error_code}:invalid_receipt")
+    recorded_comparison = {
+        key: value for key, value in recorded.items() if key != "repeat_identical"
+    }
+    mismatched_fields = sorted(
+        key
+        for key in report.keys() | recorded_comparison.keys()
+        if report.get(key) != recorded_comparison.get(key)
+    )
+    require_evidence(
+        not mismatched_fields and recorded.get("repeat_identical") is True,
+        f"{error_code}:" + ",".join(mismatched_fields),
+    )
+    return {
+        **report,
+        "recorded_comparison_sha256": digest(receipt_path),
+        "recorded_repeat_identical": True,
+    }
+
+
 def digest(path: Path) -> str:
     """Return a streaming SHA-256 digest for one file."""
     value = hashlib.sha256()
@@ -463,23 +488,11 @@ def gdp_vintage_comparison_report(root: Path) -> dict[str, Any]:
     report["june_source_manifest_sha256"] = (
         gdp_canonical_projection.JUNE_SOURCE_MANIFEST_SHA256
     )
-    recorded_path = TRACK / "gdp-vintage-reconciliation-20260930.json"
-    recorded = json.loads(recorded_path.read_bytes())
-    recorded_comparison = {
-        key: value for key, value in recorded.items() if key != "repeat_identical"
-    }
-    mismatched_fields = sorted(
-        key
-        for key in report.keys() | recorded_comparison.keys()
-        if report.get(key) != recorded_comparison.get(key)
+    return bind_recorded_comparison(
+        report,
+        TRACK / "gdp-vintage-reconciliation-20260930.json",
+        "gdp_vintage_comparison_recorded_mismatch",
     )
-    require_evidence(
-        not mismatched_fields and recorded.get("repeat_identical") is True,
-        "gdp_vintage_comparison_recorded_mismatch:" + ",".join(mismatched_fields),
-    )
-    report["recorded_comparison_sha256"] = digest(recorded_path)
-    report["recorded_repeat_identical"] = recorded["repeat_identical"]
-    return report
 
 
 def rebuild_context_silver(root: Path, family: str) -> dict[str, Any]:
@@ -1274,7 +1287,8 @@ def classification_label_occurrence_report() -> dict[str, Any]:
         for label in all_labels
         if first_labels.get(label, 0) != second_labels.get(label, 0)
     ]
-    return {
+    report = {
+        "schema_version": "archive-govt-nz.health-classification-label-occurrences/v1",
         "status": "verified_exact_literal_occurrence_counts",
         "comparison_scope": "exact_literal_label_occurrence_counts",
         "packages": packages,
@@ -1287,6 +1301,11 @@ def classification_label_occurrence_report() -> dict[str, Any]:
         "drift_disposition": "observed_surface_change_unmapped",
         "repeat_identical": True,
     }
+    return bind_recorded_comparison(
+        {key: value for key, value in report.items() if key != "repeat_identical"},
+        TRACK / "classification-label-occurrences-20260930.json",
+        "classification_label_comparison_recorded_mismatch",
+    )
 
 
 def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a clean-room root.
