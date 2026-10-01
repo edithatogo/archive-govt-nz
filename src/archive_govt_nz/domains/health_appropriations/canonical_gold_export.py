@@ -43,6 +43,7 @@ if TYPE_CHECKING:
 
 MAX_OUTPUT_BYTES = 128 * 1024 * 1024
 MAX_PACKAGES = 32
+MIN_DISTINCT_CLASSIFICATION_LABELS = 2
 SCHEMA = "archive-govt-nz.health-canonical-gold/v2"
 
 
@@ -232,7 +233,9 @@ def _dataset_card(
             "",
             "- Analytical completeness: not evaluated.",
             "- Source health: unresolved.",
-            "- Classification drift: unresolved.",
+            "- Budget/revenue label-change candidates: observed only;",
+            "  mapping not inferred.",
+            "- Other classification drift: unresolved.",
             "- Revision reconciliation: unresolved.",
             "- Cross-source reconciliation: not performed.",
             "- Rights: not evaluated.",
@@ -296,7 +299,6 @@ def _quality_report(
         },
         "unresolved_reports": [
             "source_health",
-            "classification_drift",
             "revision_reconciliation",
             "cross_source_reconciliation",
         ],
@@ -915,6 +917,7 @@ def build_temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any
             ),
         ),
     }
+
     groups: list[dict[str, Any]] = []
     for output_name, (table_name, context_fields) in definitions.items():
         table = tables.get(table_name)
@@ -949,6 +952,82 @@ def build_temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any
         "cross_source_join": "not_performed",
         "vintage_pooling": "not_performed",
         "groups": groups,
+    }
+
+
+def build_classification_drift_report(
+    tables: dict[str, pa.Table],
+) -> dict[str, Any]:
+    """Report label changes within explicit source dimensions, without mapping.
+
+    Only Budget and revenue labels are assessed. A candidate is emitted when
+    one exact dimensional key has multiple observed source labels across the
+    supplied vintages. This flags a review lead; it does not assert semantic
+    equivalence, mapping, completeness, or approved classification drift.
+    """
+    definitions = {
+        "nominal_budget.parquet": (
+            "budget",
+            ("period_token", "amount_type", "unit", "vote", "department", "portfolio"),
+        ),
+        "nominal_revenue.parquet": (
+            "revenue",
+            (
+                "period_token",
+                "amount_type",
+                "unit",
+                "vote",
+                "department",
+                "revenue_type",
+            ),
+        ),
+    }
+    candidates: list[dict[str, Any]] = []
+    for output_name, (table_name, key_fields) in definitions.items():
+        table = tables.get(table_name)
+        if table is None:
+            continue
+        grouped: dict[tuple[Any, ...], dict[str, set[str]]] = {}
+        for row in table.to_pylist():
+            label = row.get("source_label")
+            vintage = row.get("source_vintage")
+            _require(type(label) is str and bool(label))
+            _require(type(vintage) is str and bool(vintage))
+            key = tuple(row[field] for field in key_fields)
+            labels = grouped.setdefault(key, {})
+            labels.setdefault(vintage, set()).add(label)
+        for key, labels_by_vintage in sorted(
+            grouped.items(),
+            key=lambda item: tuple("" if v is None else v for v in item[0]),
+        ):
+            all_labels = sorted(
+                {label for labels in labels_by_vintage.values() for label in labels}
+            )
+            if len(all_labels) < MIN_DISTINCT_CLASSIFICATION_LABELS:
+                continue
+            candidates.append(
+                {
+                    "output_name": output_name,
+                    "key": dict(zip(key_fields, key, strict=True)),
+                    "labels_by_vintage": {
+                        vintage: sorted(labels)
+                        for vintage, labels in sorted(labels_by_vintage.items())
+                    },
+                    "observed_labels": all_labels,
+                    "status": "source_label_change_candidate",
+                    "mapping": "not_inferred",
+                    "semantic_equivalence": "not_assessed",
+                }
+            )
+    return {
+        "schema_version": "archive-govt-nz.health-classification-drift/v1",
+        "scope": "same_source_family_and_exact_dimensions_across_observed_vintages",
+        "source_families": ["budget", "revenue"],
+        "completeness": "observed_rows_only",
+        "threshold": "at_least_two_distinct_source_labels_for_one_exact_key",
+        "mapping": "not_inferred",
+        "cross_source_comparison": "not_performed",
+        "candidates": candidates,
     }
 
 
@@ -1022,7 +1101,7 @@ def _build_payloads(
     tables: dict[str, pa.Table],
     products: dict[str, dict[str, Any]],
     query_receipts: list[dict[str, Any]],
-) -> tuple[dict[str, bytes], dict[str, Any], dict[str, Any]]:
+) -> tuple[dict[str, bytes], dict[str, Any], dict[str, Any], dict[str, Any]]:
     table_payloads = {
         filename: _table_bytes(tables[key])
         for filename, key in _TABLES.items()
@@ -1042,7 +1121,8 @@ def _build_payloads(
         products, temporal_report, package_markers
     )
     payloads["ro-crate-metadata.json"] = _encoded(_ro_crate_metadata(payloads))
-    return payloads, plot_report, temporal_report
+    classification_drift_report = build_classification_drift_report(tables)
+    return payloads, plot_report, temporal_report, classification_drift_report
 
 
 def _export(
@@ -1109,8 +1189,8 @@ def _export(
     crown_receipts = _add_crown_gold_products(
         inputs, tables, product_report, query_receipts
     )
-    payloads, plot_report, temporal_report = _build_payloads(
-        tables, product_report, query_receipts
+    payloads, plot_report, temporal_report, classification_drift_report = (
+        _build_payloads(tables, product_report, query_receipts)
     )
     package_markers = _package_markers(query_receipts)
     quality_report = _quality_report(tables, product_report)
@@ -1131,6 +1211,7 @@ def _export(
         "outputs": outputs,
         "source_drillthrough": _source_drillthrough(tables, outputs, packages),
         "temporal_coverage_report": temporal_report,
+        "classification_drift_report": classification_drift_report,
         "plot_report": plot_report,
         "quality_report": quality_report,
         "period_ordering": "tokens_preserved_and_sorted_as_strings",

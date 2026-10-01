@@ -148,12 +148,18 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
     output_count, output_bytes = _verify_outputs(root, outputs)
     products = manifest.get("products")
     temporal_report = manifest.get("temporal_coverage_report")
+    classification_report = manifest.get("classification_drift_report")
     if (
         not isinstance(products, dict)
         or not isinstance(temporal_report, dict)
         or temporal_report.get("schema_version")
         != "archive-govt-nz.health-temporal-coverage/v1"
         or not isinstance(temporal_report.get("groups"), list)
+        or not isinstance(classification_report, dict)
+        or classification_report.get("schema_version")
+        != "archive-govt-nz.health-classification-drift/v1"
+        or classification_report.get("mapping") != "not_inferred"
+        or not isinstance(classification_report.get("candidates"), list)
         or any(type(name) is not str or not name for name in products)
     ):
         _fail("invalid_gold_reports")

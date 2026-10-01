@@ -165,7 +165,8 @@ def _assert_dataset_card(output: Path, manifest: dict[str, Any]) -> None:
     for boundary in (
         "Analytical completeness: not evaluated.",
         "Source health: unresolved.",
-        "Classification drift: unresolved.",
+        "Budget/revenue label-change candidates: observed only;",
+        "Other classification drift: unresolved.",
         "Revision reconciliation: unresolved.",
         "Cross-source reconciliation: not performed.",
         "Rights: not evaluated.",
@@ -576,10 +577,13 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
     assert quality["input_records_with_product"] == quality["input_record_count"]
     assert quality["unresolved_reports"] == [
         "source_health",
-        "classification_drift",
         "revision_reconciliation",
         "cross_source_reconciliation",
     ]
+    assert receipt["classification_drift_report"]["schema_version"] == (
+        "archive-govt-nz.health-classification-drift/v1"
+    )
+    assert receipt["classification_drift_report"]["mapping"] == "not_inferred"
     assert quality["input_record_products"]
     assert {
         "historical_observations.parquet",
@@ -1128,6 +1132,41 @@ def test_temporal_coverage_keeps_historical_source_series_distinct(
         (original["source_label"], original["source_locator"]),
         (alternate["source_label"], alternate["source_locator"]),
     }
+
+
+def test_classification_drift_report_flags_only_same_exact_budget_dimensions(
+    tmp_path: Path,
+) -> None:
+    budget, _receipt = query_nominal_budget((_package(tmp_path),))
+    rows = budget.to_pylist()
+    first = rows[0]
+    changed_label = {
+        **first,
+        "source_vintage": "Budget 2027",
+        "source_label": "Changed source wording",
+    }
+    separate_vote = {
+        **changed_label,
+        "vote": "A separate Vote",
+    }
+    table = pa.Table.from_pylist(
+        [first, changed_label, separate_vote], schema=budget.schema
+    )
+
+    report = canonical_gold_export.build_classification_drift_report({"budget": table})
+
+    assert report["scope"] == (
+        "same_source_family_and_exact_dimensions_across_observed_vintages"
+    )
+    assert report["mapping"] == "not_inferred"
+    assert report["cross_source_comparison"] == "not_performed"
+    assert len(report["candidates"]) == 1
+    candidate = report["candidates"][0]
+    assert candidate["key"]["vote"] == first["vote"]
+    assert candidate["observed_labels"] == sorted(
+        [first["source_label"], changed_label["source_label"]]
+    )
+    assert candidate["status"] == "source_label_change_candidate"
 
 
 @pytest.mark.parametrize("packages", [[], (), [object()]])
