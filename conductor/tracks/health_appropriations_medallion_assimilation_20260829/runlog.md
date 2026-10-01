@@ -3620,3 +3620,30 @@ license inventory, secret scan and 113-component SBOM. The automatic
 Conductor Phase 7 review passed. No tests were added to raise the coverage
 percentage; the new integration test checks source separation and deterministic
 output behavior.
+
+### Historical Fiscal Crown canonical Gold promotion (2026-10-01)
+
+Integrated the pinned historical Fiscal Time Series projection as its own
+canonical Gold fact, source-coordinate lineage, and discrete plot product.
+Core Crown (32 rows) and Total Crown (29 rows) remain distinct across the
+61 facts and 671 lineage coordinates. Currency remains unknown, the fiscal-year
+start remains unqualified, rights remain unevaluated, and cross-measure
+comparison is not performed. See
+[the product note](fiscal-crown-canonical-gold-20261001.md).
+
+The clean-room recovery rebuilt the historical projection from the pinned
+Bronze source, included it in two identical canonical Gold builds, and
+confirmed Bronze unchanged. Receipt:
+[`clean-room-recovery-20261001-fiscal-gold.json`](clean-room-recovery-20261001-fiscal-gold.json),
+SHA-256 `393c36b63e0ee4532ea50000d4c22512214d4f4d175cca8dbd5040d5ce5d18dc`.
+The overall recovery remains partial for other open source families, reports,
+and Platinum products.
+
+Focused canonical Gold, fiscal projection, plots and recovery suites passed 45
+tests. The required `./scripts/validate.sh` passed: 7,234 passed, 10 skipped,
+98.27% branch coverage against the configured 80% floor; 53 schemas/43
+representative documents; parity 9/9; configured mutation gates; dependency,
+license and secret checks; and validated 113-component SBOM. The automatic
+Conductor Phase 7 review passed. No tests were added to raise coverage; one
+integrated test covers measure-family separation, lineage drill-through and
+repeat-build identity.

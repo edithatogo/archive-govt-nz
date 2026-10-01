@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
@@ -264,6 +264,7 @@ def _assert_canonical_gold_outputs(
         "moh": "not_present",
         "crown_befu": "not_present",
         "crown_hyefu": "not_present",
+        "fiscal_crown": "not_present",
     }
     assert all(
         manifest["outputs"][name]["kind"] == "plot_png"
@@ -924,6 +925,177 @@ def test_canonical_gold_preserves_befu_and_hyefu_as_separate_vintages(
         "crown_expense_befu_2026.parquet",
         "crown_expense_hyefu_2025.parquet",
     } <= set(manifest["outputs"])
+    assert {path.name: path.read_bytes() for path in output.iterdir()} == {
+        path.name: path.read_bytes() for path in repeated.iterdir()
+    }
+
+
+def test_canonical_gold_preserves_historical_fiscal_crown_measure_families(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    historical = _historical_package(tmp_path / "historical")
+    budget = _package(tmp_path / "budget")
+    revenue = _revenue_package(tmp_path / "revenue")
+    fact_schema = recordset_schema("fiscal_context_fact")
+    lineage_schema = recordset_schema("field_lineage")
+    source_sha256 = "c" * 64
+    vintage = "Fiscal-Time-Series-1972-2025"
+    observed_at = datetime(2026, 8, 29, 9, 0, 17, tzinfo=UTC)
+
+    def project(_source: Path) -> tuple[pa.Table, pa.Table, dict[str, Any]]:
+        facts = []
+        lineage = []
+        for index in range(61):
+            family = "core_crown" if index < 32 else "total_crown"
+            measure = f"{family}_expenses"
+            source_id = f"fiscal-source-{index}"
+            record_id = f"fiscal-canonical-{index}"
+            period_end = date(1994 + index, 6, 30)
+            facts.append(
+                {
+                    "record_id": record_id,
+                    "schema_version": "archive-govt-nz.health-recordsets/v1",
+                    "recordset": "fiscal_context_fact",
+                    "domain": "health_appropriations",
+                    "source_object_sha256": source_sha256,
+                    "source_observation_id": source_id,
+                    "source_locator": "fiscal.xlsx#Spending!A1",
+                    "source_vintage": vintage,
+                    "valid_time_start": None,
+                    "valid_time_end": period_end,
+                    "valid_time_status": "june_year_end_start_unqualified",
+                    "period_token": f"year_label:{1994 + index}",
+                    "observed_at": observed_at,
+                    "observation_context": "treasury_fiscal_time_series_crown_as_published",
+                    "rights_state": "not_evaluated",
+                    "quality_flags": ["consolidation_equivalence_not_asserted"],
+                    "transformation_id": "fiscal-crown-canonical/v1",
+                    "lineage_id": f"fact-lineage-{index}",
+                    "source_record_id": source_id,
+                    "source_schema_version": "archive-govt-nz.fiscal-crown-literal-admission/v1",
+                    "measure": measure,
+                    "amount": Decimal(index + 100),
+                    "value_token": str(index + 100),
+                    "null_reason": None,
+                    "source_decimal_precision": 3,
+                    "source_decimal_scale": 0,
+                    "unit": "$ millions",
+                    "currency": None,
+                    "price_basis": None,
+                    "base_period": None,
+                    "denominator_definition": None,
+                    "amount_type": "historical_as_published",
+                    "source_label": measure,
+                    "institutional_coverage": family,
+                    "accounting_basis": "PBE Standards",
+                    "seasonal_adjustment": None,
+                }
+            )
+            lineage.extend(
+                {
+                    "record_id": f"fiscal-lineage-{index}-{field_index}",
+                    "schema_version": "archive-govt-nz.health-recordsets/v1",
+                    "recordset": "field_lineage",
+                    "domain": "health_appropriations",
+                    "source_object_sha256": source_sha256,
+                    "source_observation_id": source_id,
+                    "source_locator": "fiscal.xlsx#Spending!A1",
+                    "source_vintage": vintage,
+                    "valid_time_start": None,
+                    "valid_time_end": period_end,
+                    "valid_time_status": "june_year_end_start_unqualified",
+                    "period_token": f"year_label:{1994 + index}",
+                    "observed_at": observed_at,
+                    "observation_context": "treasury_fiscal_time_series_crown_as_published",
+                    "rights_state": "not_evaluated",
+                    "quality_flags": [],
+                    "transformation_id": "fiscal-crown-canonical/v1",
+                    "lineage_id": f"fact-lineage-{index}",
+                    "source_record_id": source_id,
+                    "source_schema_version": "archive-govt-nz.fiscal-crown-literal-admission/v1",
+                    "target_record_id": record_id,
+                    "field": f"field-{field_index}",
+                    "source_coordinate": f"Spending!A{index * 11 + field_index + 1}",
+                    "raw_value": str(index),
+                    "normalized_value": str(index),
+                    "rule": "fiscal-crown-canonical/v1",
+                }
+                for field_index in range(11)
+            )
+        return (
+            pa.Table.from_pylist(facts, schema=fact_schema),
+            pa.Table.from_pylist(lineage, schema=lineage_schema),
+            {
+                "source_object_sha256": source_sha256,
+                "source_vintage": vintage,
+                "input_records": 61,
+                "core_crown_records": 32,
+                "total_crown_records": 29,
+                "currency": "unknown",
+                "accounting_basis": "source_label_retained",
+                "financial_year_start": "unqualified",
+                "rights_state": "not_evaluated",
+                "cross_measure_comparison": "not_performed",
+            },
+        )
+
+    monkeypatch.setattr(
+        canonical_gold_export.fiscal_crown_canonical_projection,
+        "project_fiscal_crown",
+        project,
+    )
+    fiscal = canonical_gold_export.FiscalCrownGoldInput(
+        source_path=tmp_path / "pinned-fiscal-bronze.xlsx"
+    )
+    packages = (historical, budget, revenue)
+    output = tmp_path / "gold-with-fiscal-crown"
+    repeated = tmp_path / "gold-with-fiscal-crown-repeat"
+
+    planned = export_canonical_gold(
+        packages, output, inputs=GoldInputs(fiscal_crown=fiscal)
+    )
+    assert planned["products"]["fiscal_crown"]["output_rows"] == 61
+    assert planned["products"]["fiscal_crown"]["lineage_rows"] == 671
+    assert not output.exists()
+
+    export_canonical_gold(
+        packages, output, write=True, inputs=GoldInputs(fiscal_crown=fiscal)
+    )
+    export_canonical_gold(
+        packages, repeated, write=True, inputs=GoldInputs(fiscal_crown=fiscal)
+    )
+    manifest = json.loads((output / "MANIFEST.json").read_text(encoding="utf-8"))
+    facts = pq.read_table(output / "historical_fiscal_crown.parquet").to_pylist()
+    lineage = pq.read_table(
+        output / "historical_fiscal_crown_lineage.parquet"
+    ).to_pylist()
+    assert len(facts) == 61
+    assert len(lineage) == 671
+    assert {row["institutional_coverage"] for row in facts} == {
+        "core_crown",
+        "total_crown",
+    }
+    assert {row["measure"] for row in facts} == {
+        "core_crown_expenses",
+        "total_crown_expenses",
+    }
+    assert {row["currency"] for row in facts} == {None}
+    assert manifest["products"]["fiscal_crown"]["cross_measure_comparison"] == (
+        "not_performed"
+    )
+    assert manifest["products"]["fiscal_crown"]["rights_state"] == "not_evaluated"
+    assert any(
+        path.name.startswith("plot_fiscal_crown_") for path in output.glob("plot_*.png")
+    )
+    row_index = {
+        row["input_record_id"]: row
+        for row in manifest["source_drillthrough"]["records"]
+    }
+    assert all(
+        len(row_index[f"fiscal-canonical-{index}"]["source_coordinates"]) == 11
+        for index in range(61)
+    )
     assert {path.name: path.read_bytes() for path in output.iterdir()} == {
         path.name: path.read_bytes() for path in repeated.iterdir()
     }
