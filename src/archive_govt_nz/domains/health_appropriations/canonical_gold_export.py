@@ -25,6 +25,10 @@ from archive_govt_nz.domains.health_appropriations.local_provenance_reader impor
     CanonicalPackageInput,
     read_verified_canonical_tables,
 )
+from archive_govt_nz.domains.health_appropriations.moh_canonical_projection import (
+    MohGoldInput,
+    project_moh_indicators,
+)
 from archive_govt_nz.domains.health_appropriations.pharmac_canonical_projection import (
     project_pharmac_cpb,
 )
@@ -54,6 +58,8 @@ _TABLES = {
     "nominal_revenue.parquet": "revenue",
     "nominal_pharmaceutical_budget.parquet": "pharmac",
     "pharmaceutical_budget_lineage.parquet": "pharmac_lineage",
+    "published_health_indicators.parquet": "moh",
+    "published_health_indicator_lineage.parquet": "moh_lineage",
 }
 
 
@@ -155,6 +161,7 @@ def _dataset_card(
             "budget": "nominal_budget.parquet",
             "revenue": "nominal_revenue.parquet",
             "pharmac": "nominal_pharmaceutical_budget.parquet",
+            "moh": "published_health_indicators.parquet",
         }
         group_count = sum(
             group["output_name"] == output_names[name] for group in groups
@@ -195,6 +202,7 @@ def _quality_report(
         ("budget", "budget"),
         ("revenue", "revenue"),
         ("pharmac", "pharmac"),
+        ("moh", "moh"),
     ):
         table = tables.get(table_name)
         if table is None:
@@ -306,6 +314,7 @@ def _source_drillthrough(
                     }
                 )
     _add_pharmac_coordinates(tables, coordinates_by_record)
+    _add_moh_coordinates(tables, coordinates_by_record)
     return {
         "schema_version": "archive-govt-nz.health-source-drillthrough/v2",
         "scope": "exact_row_and_source_coordinate_lookup_only",
@@ -360,6 +369,39 @@ def _add_pharmac_coordinates(
         )
 
 
+def _add_moh_coordinates(
+    tables: dict[str, pa.Table],
+    coordinates_by_record: dict[str, list[dict[str, Any]]],
+) -> None:
+    lineage = tables.get("moh_lineage")
+    if lineage is None:
+        return
+    for row in lineage.to_pylist():
+        record_id = row["record_id"]
+        locator = row["source_locator"]
+        coordinates_by_record.setdefault(record_id, []).append(
+            {
+                "field": row["field"],
+                "source_coordinate": row["source_coordinate"],
+                "source_object_sha256": row["source_object_sha256"],
+                "source_locator_sha256": hashlib.sha256(
+                    locator.encode("utf-8")
+                ).hexdigest(),
+                "source_vintage": "MoH-HAIR-2024",
+                "rights_state": "not_evaluated",
+            }
+        )
+    for items in coordinates_by_record.values():
+        items.sort(
+            key=lambda item: (
+                item["source_vintage"],
+                item["source_object_sha256"],
+                item["source_coordinate"],
+                item["field"],
+            )
+        )
+
+
 def _add_pharmac_product(
     pharmac_input: PharmacGoldInput | None,
     tables: dict[str, pa.Table],
@@ -400,6 +442,38 @@ def _add_pharmac_product(
         "budget_scope": "published_pharmaceutical_budget_allocation",
         "funding_regimes": sorted({row["funding_regime"] for row in facts.to_pylist()}),
         "actual_expenditure": "not_asserted",
+        "vintage_pooling": "not_performed",
+    }
+    return receipt
+
+
+def _add_moh_product(
+    moh_input: MohGoldInput | None,
+    tables: dict[str, pa.Table],
+    product_report: dict[str, dict[str, Any]],
+    query_receipts: list[dict[str, Any]],
+) -> dict[str, Any] | None:
+    if moh_input is None:
+        return None
+    facts, lineage, receipt = project_moh_indicators(moh_input)
+    tables["moh"] = facts
+    tables["moh_lineage"] = lineage
+    query_receipts.append(
+        {
+            "input_records": receipt["input_records"],
+            "package_marker_sha256": [
+                item.manifest_sha256 for item in moh_input.packages
+            ],
+        }
+    )
+    product_report["moh"] = {
+        "input_records": receipt["input_records"],
+        "output_rows": facts.num_rows,
+        "aggregation": receipt["aggregation"],
+        "published_measure": "real_nominal_and_per_capita_labels_preserved",
+        "unit_price_base_denominator": "unknown_not_inferred",
+        "actual_expenditure": "not_asserted",
+        "rights_state": "not_evaluated",
         "vintage_pooling": "not_performed",
     }
     return receipt
@@ -507,6 +581,19 @@ def build_temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any
                 "funding_regime",
             ),
         ),
+        "published_health_indicators.parquet": (
+            "moh",
+            (
+                "source_vintage",
+                "profile",
+                "source_label",
+                "price_basis",
+                "per_capita",
+                "unit",
+                "price_base",
+                "denominator",
+            ),
+        ),
     }
     groups: list[dict[str, Any]] = []
     for output_name, (table_name, context_fields) in definitions.items():
@@ -549,6 +636,7 @@ def _preflight(
     packages: tuple[CanonicalPackageInput, ...],
     output: Path,
     pharmac_input: PharmacGoldInput | None,
+    moh_input: MohGoldInput | None,
 ) -> None:
     _require(not output.exists() and not output.is_symlink())
     _require(output.parent.is_dir() and not output.parent.is_symlink())
@@ -569,6 +657,15 @@ def _preflight(
             pharmac_input.root,
             pharmac_input.source_cas_root,
         ):
+            resolved = protected.resolve()
+            _require(
+                not target.is_relative_to(resolved)
+                and not resolved.is_relative_to(target)
+            )
+    if moh_input is not None:
+        protected_roots = [moh_input.source_cas_root]
+        protected_roots.extend(item.root for item in moh_input.packages)
+        for protected in protected_roots:
             resolved = protected.resolve()
             _require(
                 not target.is_relative_to(resolved)
@@ -619,6 +716,7 @@ def _export(
     *,
     write: bool,
     pharmac_input: PharmacGoldInput | None = None,
+    moh_input: MohGoldInput | None = None,
 ) -> dict[str, Any]:
     _require(type(write) is bool)
     _require(
@@ -630,7 +728,7 @@ def _export(
             for package in packages
         )
     )
-    _preflight(packages, output, pharmac_input)
+    _preflight(packages, output, pharmac_input, moh_input)
     selected: dict[str, tuple[CanonicalPackageInput, ...]] = {
         kind: tuple(package for package in packages if package.kind == kind)
         for kind in ("historical", "budget", "revenue")
@@ -673,6 +771,7 @@ def _export(
     pharmac_receipt = _add_pharmac_product(
         pharmac_input, tables, product_report, query_receipts
     )
+    moh_receipt = _add_moh_product(moh_input, tables, product_report, query_receipts)
     payloads, plot_report, temporal_report = _build_payloads(
         tables, product_report, query_receipts
     )
@@ -689,6 +788,7 @@ def _export(
         ),
         "products": product_report,
         "pharmac_projection": pharmac_receipt,
+        "moh_projection": moh_receipt,
         "outputs": outputs,
         "source_drillthrough": _source_drillthrough(tables, outputs, packages),
         "temporal_coverage_report": temporal_report,
@@ -770,6 +870,7 @@ def export_canonical_gold(
     *,
     write: bool = False,
     pharmac_input: PharmacGoldInput | None = None,
+    moh_input: MohGoldInput | None = None,
 ) -> dict[str, Any]:
     """Build source-separated historical, appropriation and revenue Gold tables.
 
@@ -778,7 +879,14 @@ def export_canonical_gold(
     """
     try:
         _require(pharmac_input is None or isinstance(pharmac_input, PharmacGoldInput))
-        return _export(packages, output, write=write, pharmac_input=pharmac_input)
+        _require(moh_input is None or isinstance(moh_input, MohGoldInput))
+        return _export(
+            packages,
+            output,
+            write=write,
+            pharmac_input=pharmac_input,
+            moh_input=moh_input,
+        )
     except (
         OSError,
         ValueError,
