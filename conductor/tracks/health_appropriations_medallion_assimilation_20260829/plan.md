@@ -993,6 +993,12 @@ integrated parent head.
   receipt is additive; the historical capture manifest is unchanged. The
   earlier whole-census report verified 73/73 captured objects. A later census
   refresh adds the separate June-2026 GDP object; see the source-census receipt.
+- [x] Refresh current-head clean-room evidence after source-coordinate Gold
+  drill-through; verify two repeat builds and unchanged Bronze, and retain exact
+  output pins. [M-10, M-16, M-18; AC-08, AC-12, AC-16]
+  (`clean-room-recovery-20261001.json`; 12-profile Silver and currently
+  supported products repeat identically. Remaining source families, integrated
+  canonical reports, and complete validated Platinum remain open.)
   See
   `bronze-object-recovery-20260930.json` and the regenerated source-health
   report.
