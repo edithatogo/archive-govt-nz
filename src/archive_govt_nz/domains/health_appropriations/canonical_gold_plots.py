@@ -55,13 +55,26 @@ def _context(kind: str, row: dict[str, Any]) -> dict[str, Any]:
             "institutional_coverage",
             "accounting_basis",
         )
+    elif kind == "pharmac":
+        names = (
+            "source_vintage",
+            "amount_type",
+            "unit",
+            "budget_scope",
+            "funding_regime",
+        )
     else:
         names = ("source_vintage", "amount_type", "unit")
     return {name: row[name] for name in names}
 
 
 def _value(kind: str, row: dict[str, Any]) -> Decimal:
-    name = {"historical": "amount", "budget": "total_amount", "revenue": "amount"}[kind]
+    name = {
+        "historical": "amount",
+        "budget": "total_amount",
+        "revenue": "amount",
+        "pharmac": "amount",
+    }[kind]
     value = row[name]
     _require_type(isinstance(value, Decimal))
     return value
@@ -73,7 +86,7 @@ def _label(row: dict[str, Any]) -> str:
         value = row.get(name)
         if value:
             category.append(str(value))
-    identity = row.get("input_record_id")
+    identity = row.get("input_record_id", row.get("record_id"))
     if identity is None:
         identity = ",".join(row["input_record_ids"])
     category.append(str(identity))
@@ -125,6 +138,7 @@ def build_discrete_plots(
             "historical": "historical_observations.parquet",
             "budget": "nominal_budget.parquet",
             "revenue": "nominal_revenue.parquet",
+            "pharmac": "nominal_pharmaceutical_budget.parquet",
         }
         files: dict[str, bytes] = {}
         report: dict[str, Any] = {
@@ -177,7 +191,10 @@ def build_discrete_plots(
                         "label": _label(row),
                         "amount": _value(kind, row),
                         "input_record_ids": sorted(
-                            row.get("input_record_ids", [row.get("input_record_id")])
+                            row.get(
+                                "input_record_ids",
+                                [row.get("input_record_id", row.get("record_id"))],
+                            )
                         ),
                     }
                     for row in entries

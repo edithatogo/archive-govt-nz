@@ -1,5 +1,30 @@
 # Run Log
 
+## 2026-10-01 — Pharmac CPB canonical Gold promotion
+
+Promoted the verified source-faithful Pharmac CPB Silver projection into the
+common local canonical Gold package as its own product. Gold retains all 14
+source rows, their published allocation meaning, financial-year tokens and the
+pre/post-2022 funding-holder regimes; two discrete display plots keep those
+regimes separate. The companion lineage table exports populated source
+coordinates, and row drillthrough resolves eight coordinates per fact. Rights
+remain unevaluated, actual expenditure is not asserted, and cross-source joins,
+vintage pooling and publication remain absent.
+
+The exact-head clean-room recovery repeated both Gold builds identically and
+confirmed Bronze unchanged. Pharmac contributes 14 facts and the clean-room
+report retains the parent blockers for classification/revision/cross-source
+reports, remaining source adapters and complete Platinum metadata. See
+[`Pharmac Gold evidence`](pharmac-canonical-gold-20261001.md) and the pinned
+[clean-room receipt](clean-room-recovery-20261001-pharmac-gold.json), SHA-256
+`d94d20dff8df328bd3b1f3b14a7e12364bd21d5da2613a7598e514190fa7c91f`.
+
+The required `./scripts/validate.sh` passed with 7,231 tests passed, 10
+skipped, 98.26% branch coverage (80% floor), 53 schemas/43 representative
+documents, 9/9 parity, configured mutation, hygiene, CAS, dependency, license,
+secret and SBOM gates. Automatic Conductor Phase 7 review passed; receipt SHA-256
+`fec6b9d8eb49689aefa79ba58e25946a2ec0be2c5ceefa2bb83999ef35df365f`.
+
 ## 2026-09-30 — Exact GDP vintage-difference evidence
 
 The existing GDP vintage comparator verified canonical March-2026Q1 and

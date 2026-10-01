@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 from contextlib import suppress
+from dataclasses import dataclass
 from io import BytesIO
 from typing import TYPE_CHECKING, Any
 
@@ -24,6 +25,9 @@ from archive_govt_nz.domains.health_appropriations.local_provenance_reader impor
     CanonicalPackageInput,
     read_verified_canonical_tables,
 )
+from archive_govt_nz.domains.health_appropriations.pharmac_canonical_projection import (
+    project_pharmac_cpb,
+)
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -31,11 +35,25 @@ if TYPE_CHECKING:
 MAX_OUTPUT_BYTES = 128 * 1024 * 1024
 MAX_PACKAGES = 32
 SCHEMA = "archive-govt-nz.health-canonical-gold/v2"
+
+
+@dataclass(frozen=True)
+class PharmacGoldInput:
+    """Explicit verified Pharmac canonical projection and Bronze CAS binding."""
+
+    root: Path
+    manifest_sha256: str
+    source_cas_root: Path
+    source_sha256: str
+
+
 _TABLES = {
     "historical_observations.parquet": "observations",
     "historical_coverage.parquet": "coverage",
     "nominal_budget.parquet": "budget",
     "nominal_revenue.parquet": "revenue",
+    "nominal_pharmaceutical_budget.parquet": "pharmac",
+    "pharmaceutical_budget_lineage.parquet": "pharmac_lineage",
 }
 
 
@@ -136,6 +154,7 @@ def _dataset_card(
             "historical": "historical_observations.parquet",
             "budget": "nominal_budget.parquet",
             "revenue": "nominal_revenue.parquet",
+            "pharmac": "nominal_pharmaceutical_budget.parquet",
         }
         group_count = sum(
             group["output_name"] == output_names[name] for group in groups
@@ -175,6 +194,7 @@ def _quality_report(
         ("historical", "coverage"),
         ("budget", "budget"),
         ("revenue", "revenue"),
+        ("pharmac", "pharmac"),
     ):
         table = tables.get(table_name)
         if table is None:
@@ -182,7 +202,10 @@ def _quality_report(
         for row in table.to_pylist():
             ids = row.get("input_record_ids")
             if ids is None:
-                ids = [row.get("input_record_id")]
+                record_id = row.get("input_record_id")
+                if record_id is None:
+                    record_id = row.get("record_id")
+                ids = [record_id]
             for record_id in ids:
                 _require(type(record_id) is str and bool(record_id))
                 lineage.setdefault(record_id, []).append(product)
@@ -268,7 +291,10 @@ def _source_drillthrough(
         for row_index, row in enumerate(table.to_pylist()):
             record_ids = row.get("input_record_ids")
             if record_ids is None:
-                record_ids = [row.get("input_record_id")]
+                record_id = row.get("input_record_id")
+                if record_id is None:
+                    record_id = row.get("record_id", row.get("target_record_id"))
+                record_ids = [record_id]
             _require(isinstance(record_ids, list) and bool(record_ids))
             for record_id in record_ids:
                 _require(type(record_id) is str and bool(record_id))
@@ -279,6 +305,7 @@ def _source_drillthrough(
                         "row_index": row_index,
                     }
                 )
+    _add_pharmac_coordinates(tables, coordinates_by_record)
     return {
         "schema_version": "archive-govt-nz.health-source-drillthrough/v2",
         "scope": "exact_row_and_source_coordinate_lookup_only",
@@ -296,6 +323,86 @@ def _source_drillthrough(
             for record_id, output_rows in sorted(by_record.items())
         ],
     }
+
+
+def _add_pharmac_coordinates(
+    tables: dict[str, pa.Table],
+    coordinates_by_record: dict[str, list[dict[str, Any]]],
+) -> None:
+    pharmac = tables.get("pharmac")
+    lineage = tables.get("pharmac_lineage")
+    if pharmac is None or lineage is None:
+        return
+    source_by_record = {row["record_id"]: row for row in pharmac.to_pylist()}
+    for item in lineage.to_pylist():
+        record_id = item["target_record_id"]
+        source = source_by_record[record_id]
+        locator = source["source_locator"]
+        coordinate = {
+            "field": item["field"],
+            "source_coordinate": item["source_coordinate"],
+            "source_object_sha256": source["source_object_sha256"],
+            "source_locator_sha256": hashlib.sha256(
+                locator.encode("utf-8")
+            ).hexdigest(),
+            "source_vintage": source["source_vintage"],
+            "rights_state": source["rights_state"],
+        }
+        coordinates_by_record.setdefault(record_id, []).append(coordinate)
+    for items in coordinates_by_record.values():
+        items.sort(
+            key=lambda item: (
+                item["source_vintage"],
+                item["source_object_sha256"],
+                item["source_coordinate"],
+                item["field"],
+            )
+        )
+
+
+def _add_pharmac_product(
+    pharmac_input: PharmacGoldInput | None,
+    tables: dict[str, pa.Table],
+    product_report: dict[str, dict[str, Any]],
+    query_receipts: list[dict[str, Any]],
+) -> dict[str, Any] | None:
+    if pharmac_input is None:
+        return None
+    facts, lineage, receipt = project_pharmac_cpb(
+        pharmac_input.root,
+        pharmac_input.manifest_sha256,
+        pharmac_input.source_cas_root,
+        pharmac_input.source_sha256,
+    )
+    tables["pharmac"] = facts
+    # Silver lineage rows contain null shared-envelope fields. Export only the
+    # populated source-coordinate columns into the standalone Gold lineage table.
+    tables["pharmac_lineage"] = lineage.select(
+        [
+            "target_record_id",
+            "field",
+            "source_coordinate",
+            "raw_value",
+            "normalized_value",
+            "rule",
+        ]
+    )
+    query_receipts.append(
+        {
+            "input_records": receipt["input_records"],
+            "package_marker_sha256": [pharmac_input.manifest_sha256],
+        }
+    )
+    product_report["pharmac"] = {
+        "input_records": receipt["input_records"],
+        "output_rows": facts.num_rows,
+        "aggregation": "none_source_record_rows_preserved",
+        "budget_scope": "published_pharmaceutical_budget_allocation",
+        "funding_regimes": sorted({row["funding_regime"] for row in facts.to_pylist()}),
+        "actual_expenditure": "not_asserted",
+        "vintage_pooling": "not_performed",
+    }
+    return receipt
 
 
 def _output_inventory(
@@ -390,6 +497,16 @@ def build_temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any
                 "source_label",
             ),
         ),
+        "nominal_pharmaceutical_budget.parquet": (
+            "pharmac",
+            (
+                "source_vintage",
+                "amount_type",
+                "unit",
+                "budget_scope",
+                "funding_regime",
+            ),
+        ),
     }
     groups: list[dict[str, Any]] = []
     for output_name, (table_name, context_fields) in definitions.items():
@@ -428,7 +545,11 @@ def build_temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any
     }
 
 
-def _preflight(packages: tuple[CanonicalPackageInput, ...], output: Path) -> None:
+def _preflight(
+    packages: tuple[CanonicalPackageInput, ...],
+    output: Path,
+    pharmac_input: PharmacGoldInput | None,
+) -> None:
     _require(not output.exists() and not output.is_symlink())
     _require(output.parent.is_dir() and not output.parent.is_symlink())
     target = output.resolve()
@@ -437,6 +558,16 @@ def _preflight(packages: tuple[CanonicalPackageInput, ...], output: Path) -> Non
             package.root,
             package.original,
             package.raw_root,
+        ):
+            resolved = protected.resolve()
+            _require(
+                not target.is_relative_to(resolved)
+                and not resolved.is_relative_to(target)
+            )
+    if pharmac_input is not None:
+        for protected in (
+            pharmac_input.root,
+            pharmac_input.source_cas_root,
         ):
             resolved = protected.resolve()
             _require(
@@ -483,7 +614,11 @@ def _build_payloads(
 
 
 def _export(
-    packages: tuple[CanonicalPackageInput, ...], output: Path, *, write: bool
+    packages: tuple[CanonicalPackageInput, ...],
+    output: Path,
+    *,
+    write: bool,
+    pharmac_input: PharmacGoldInput | None = None,
 ) -> dict[str, Any]:
     _require(type(write) is bool)
     _require(
@@ -495,7 +630,7 @@ def _export(
             for package in packages
         )
     )
-    _preflight(packages, output)
+    _preflight(packages, output, pharmac_input)
     selected: dict[str, tuple[CanonicalPackageInput, ...]] = {
         kind: tuple(package for package in packages if package.kind == kind)
         for kind in ("historical", "budget", "revenue")
@@ -535,6 +670,9 @@ def _export(
                 "netting": query_receipt.get("netting", "not_applicable"),
                 "vintage_pooling": "not_performed",
             }
+    pharmac_receipt = _add_pharmac_product(
+        pharmac_input, tables, product_report, query_receipts
+    )
     payloads, plot_report, temporal_report = _build_payloads(
         tables, product_report, query_receipts
     )
@@ -550,6 +688,7 @@ def _export(
             query_receipt["input_records"] for query_receipt in query_receipts
         ),
         "products": product_report,
+        "pharmac_projection": pharmac_receipt,
         "outputs": outputs,
         "source_drillthrough": _source_drillthrough(tables, outputs, packages),
         "temporal_coverage_report": temporal_report,
@@ -626,7 +765,11 @@ def export_historical_gold(
 
 
 def export_canonical_gold(
-    packages: tuple[CanonicalPackageInput, ...], output: Path, *, write: bool = False
+    packages: tuple[CanonicalPackageInput, ...],
+    output: Path,
+    *,
+    write: bool = False,
+    pharmac_input: PharmacGoldInput | None = None,
 ) -> dict[str, Any]:
     """Build source-separated historical, appropriation and revenue Gold tables.
 
@@ -634,7 +777,8 @@ def export_canonical_gold(
     never joins source families, pools vintages, nets revenue, or publishes.
     """
     try:
-        return _export(packages, output, write=write)
+        _require(pharmac_input is None or isinstance(pharmac_input, PharmacGoldInput))
+        return _export(packages, output, write=write, pharmac_input=pharmac_input)
     except (
         OSError,
         ValueError,
