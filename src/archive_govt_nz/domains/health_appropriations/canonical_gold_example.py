@@ -88,6 +88,30 @@ def _revision_counts(revisions: dict[str, Any]) -> dict[str, Any]:
     }
 
 
+def _product_revision_counts(revisions: dict[str, Any]) -> dict[str, dict[str, int]]:
+    products = revisions.get("product_revisions")
+    if not isinstance(products, dict) or set(products) != {"budget", "revenue"}:
+        _fail()
+    count_fields = (
+        "shared_series_period_count",
+        "unchanged_series_period_count",
+        "changed_candidate_count",
+        "ambiguous_series_period_count",
+    )
+    result: dict[str, dict[str, int]] = {}
+    for name, report in sorted(products.items()):
+        if not isinstance(report, dict):
+            _fail()
+        normalized: dict[str, int] = {}
+        for key in count_fields:
+            value = report.get(key)
+            if type(value) is not int or value < 0:
+                _fail()
+            normalized[key] = value
+        result[name] = normalized
+    return result
+
+
 def summarize_verified_canonical_gold(
     root: Path, manifest_sha256: str
 ) -> dict[str, Any]:
@@ -120,6 +144,7 @@ def summarize_verified_canonical_gold(
             "mapping": classification.get("mapping", "not_inferred"),
         },
         "historical_revisions": _revision_counts(revisions),
+        "product_revisions": _product_revision_counts(revisions),
         "cross_source_comparison": "not_performed",
         "rights_state": "not_evaluated",
         "publication": "not_performed",

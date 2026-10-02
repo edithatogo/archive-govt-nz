@@ -32,6 +32,12 @@ from archive_govt_nz.domains.health_appropriations import (
     qes,
     qes_canonical_projection,
 )
+from archive_govt_nz.domains.health_appropriations.budget_canonical_export import (
+    export_budget_appropriations,
+)
+from archive_govt_nz.domains.health_appropriations.budget_revenue_canonical_export import (  # noqa: E501
+    export_budget_revenue,
+)
 from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
     query_context_observations,
 )
@@ -620,8 +626,8 @@ def rebuild_eight_stage(root: Path, index: int) -> dict[str, Any]:
     }
 
 
-def canonical_inputs() -> tuple[CanonicalPackageInput, ...]:
-    """Assemble the two independently pinned historical canonical packages."""
+def canonical_inputs(recovery_root: Path) -> tuple[CanonicalPackageInput, ...]:
+    """Rebuild and bind retained historical and Budget canonical packages."""
     historical = (
         (
             "2024",
@@ -636,18 +642,70 @@ def canonical_inputs() -> tuple[CanonicalPackageInput, ...]:
     )
     packages: list[CanonicalPackageInput] = []
     for year, raw_name, raw_pin in historical:
-        root = ARCHIVE / "silver" / f"canonical-historical-{year}-20260831-v1"
-        marker = root / "LOCAL_CANONICAL.json"
+        historical_root = (
+            ARCHIVE / "silver" / f"canonical-historical-{year}-20260831-v1"
+        )
+        marker = historical_root / "LOCAL_CANONICAL.json"
         value = json.loads(marker.read_text())
         original_hash = value["input_fixity"]["original_sha256"]
         original = ARCHIVE / "bronze-cas" / "sha256" / original_hash[:2] / original_hash
         packages.append(
             CanonicalPackageInput(
                 "historical",
-                root,
+                historical_root,
                 digest(marker),
                 original,
                 ARCHIVE / "silver" / raw_name,
+                raw_pin,
+            )
+        )
+    budget_editions = (
+        (
+            "Budget-2025",
+            "raw-budget-d26e769",
+            "03f41d39395b02169202e88e98f04a892a3dbb55c2083a328391d909af8f7d57",
+            "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
+            export_budget_appropriations,
+            "budget",
+        ),
+        (
+            "Budget-2026",
+            "raw-budget-2026-20260831-v1",
+            "f34000992fd65dca445e7ad251cb06df3c68107410355ea057ea9a2bf8481738",
+            "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0",
+            export_budget_appropriations,
+            "budget",
+        ),
+        (
+            "Budget-2026-revenue",
+            "raw-budget-2026-revenue-20260925-v1",
+            "ff0a5494737378b4741663f1d190bf24971e3d6ee7a17da93fe7b3cdbd5ffdb2",
+            "8243f6a3f9575af5ee048133f2695f3c4764ff7d86e7a74849fdafcf478cbfdb",
+            export_budget_revenue,
+            "revenue",
+        ),
+    )
+    raw_root = ARCHIVE / "silver"
+    source_cas = ARCHIVE / "bronze-cas" / "sha256"
+    for vintage, raw_name, raw_pin, source_sha256, exporter, kind in budget_editions:
+        raw_package = raw_root / raw_name
+        original = source_cas / source_sha256[:2] / source_sha256
+        canonical_root = recovery_root / f"canonical-input-{kind}-{vintage.lower()}"
+        exporter(
+            raw_package,
+            raw_pin,
+            original,
+            canonical_root,
+            dry_run=False,
+        )
+        marker_name = "LOCAL_BUDGET.json" if kind == "budget" else "LOCAL_REVENUE.json"
+        packages.append(
+            CanonicalPackageInput(
+                kind,
+                canonical_root,
+                digest(canonical_root / marker_name),
+                original,
+                raw_package,
                 raw_pin,
             )
         )
@@ -1129,7 +1187,7 @@ def _fiscal_crown_recovery_report(root: Path) -> dict[str, Any]:
 
 def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
     """Rebuild and compare canonical Gold or retain its binding blocker."""
-    canonical = canonical_inputs()
+    canonical = canonical_inputs(root)
     if not canonical:
         return {
             "status": "blocked",
@@ -1224,10 +1282,13 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
             "accounting_basis",
             "period_token",
         ]
-        and revision_report.get("completeness") == "historical_product_rows_only"
+        and revision_report.get("completeness")
+        == "historical_budget_revenue_product_rows"
         and revision_report.get("difference_interpretation") == "not_assessed"
         and revision_report.get("other_product_revisions") == "not_assessed"
         and revision_report.get("cross_source_comparison") == "not_performed"
+        and isinstance(revision_report.get("product_revisions"), dict)
+        and set(revision_report["product_revisions"]) == {"budget", "revenue"}
         and isinstance(revision_report.get("candidates"), list)
         and revision_report.get("changed_candidate_count")
         == len(revision_report["candidates"])
@@ -1272,6 +1333,25 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
             "difference_interpretation": revision_report["difference_interpretation"],
             "other_product_revisions": revision_report["other_product_revisions"],
             "cross_source_comparison": revision_report["cross_source_comparison"],
+            "product_revisions": {
+                name: {
+                    "shared_series_period_count": product_report[
+                        "shared_series_period_count"
+                    ],
+                    "unchanged_series_period_count": product_report[
+                        "unchanged_series_period_count"
+                    ],
+                    "ambiguous_series_period_count": product_report[
+                        "ambiguous_series_period_count"
+                    ],
+                    "changed_candidate_count": product_report[
+                        "changed_candidate_count"
+                    ],
+                }
+                for name, product_report in sorted(
+                    revision_report["product_revisions"].items()
+                )
+            },
         },
     }
 

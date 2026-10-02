@@ -3951,3 +3951,30 @@ and 113-component SBOM validation. Ruff formatting/lint and basedpyright passed.
 The automatic `phase_7_gates` review passed; its retained receipt is
 `phase_7_gates-review-receipt-20261002-context-gdp-june.json`, SHA-256
 `f8d35687be775eb77595530f5937197c2293d406f2db853b85846870f23bd806`.
+
+
+### Budget and revenue exact-context revision candidates (2026-10-02)
+
+Canonical Gold now reports revision candidates for Budget appropriations and
+revenue alongside historical observations. Comparisons require identical
+literal source dimensions and period tokens; records with duplicate rows are
+reported as ambiguous, and values remain exact Decimal strings with their
+source record IDs. The report does not infer fiscal comparability, explain
+changes, or perform cross-source reconciliation. In the fresh clean-room
+receipt, 93 Budget series-period keys were shared and unchanged; no exact
+revenue keys were shared across the supplied vintages. Bronze CAS remained
+unchanged. The overall receipt is still `partial_with_blockers`, including
+remaining source-native Silver profiles/adapters and the complete Platinum
+profile, so this does not close the broader Gold review gate.
+
+Focused consumer, package-verification and recovery tests passed (54). No tests
+were added to raise coverage; one focused behavior test covers Budget/revenue
+exact-context comparison, changed values, and duplicate ambiguity. The required
+`./scripts/validate.sh` passed: 7,267 tests passed, 10 skipped, 98.15%
+branch-aware coverage against the configured 80% floor, 53 schemas/43
+representative documents, 9/9 parity, configured mutation gates, hygiene,
+benchmark, dependency, license, secret, and 113-component SBOM checks. The
+automatic Conductor `phase_7_gates` review passed; retained receipt:
+`phase_7_gates-review-receipt-20261002-budget-revenue-revisions.json`, file
+SHA-256 `b30a4f46b9e8316c7c8182d714497ba75d46ecf2e931152fa9c137653b1ee5f3`.
+Clean-room receipt: `clean-room-recovery-20261002-budget-revenue-revisions.json`.

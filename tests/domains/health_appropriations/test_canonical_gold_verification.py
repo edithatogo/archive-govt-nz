@@ -43,10 +43,50 @@ def _package(root: Path) -> tuple[Path, str]:
             "accounting_basis",
             "period_token",
         ],
-        "completeness": "historical_product_rows_only",
+        "completeness": "historical_budget_revenue_product_rows",
         "difference_interpretation": "not_assessed",
         "other_product_revisions": "not_assessed",
         "cross_source_comparison": "not_performed",
+        "product_revisions": {
+            "budget": {
+                "scope": "same_literal_source_dimensions_and_period_token_within_product",
+                "key_fields": [
+                    "period_token",
+                    "amount_type",
+                    "unit",
+                    "vote",
+                    "department",
+                    "portfolio",
+                    "source_label",
+                ],
+                "completeness": "observed_rows_only",
+                "shared_series_period_count": 0,
+                "unchanged_series_period_count": 0,
+                "ambiguous_series_period_count": 0,
+                "changed_candidate_count": 0,
+                "interpretation": "not_assessed",
+                "candidates": [],
+            },
+            "revenue": {
+                "scope": "same_literal_source_dimensions_and_period_token_within_product",
+                "key_fields": [
+                    "period_token",
+                    "amount_type",
+                    "unit",
+                    "vote",
+                    "department",
+                    "revenue_type",
+                    "source_label",
+                ],
+                "completeness": "observed_rows_only",
+                "shared_series_period_count": 0,
+                "unchanged_series_period_count": 0,
+                "ambiguous_series_period_count": 0,
+                "changed_candidate_count": 0,
+                "interpretation": "not_assessed",
+                "candidates": [],
+            },
+        },
         "shared_series_period_count": 2,
         "unchanged_series_period_count": 1,
         "changed_candidate_count": 1,
@@ -207,6 +247,20 @@ def test_consumer_example_summarizes_only_verified_manifest_reports(
     assert summary["historical_revisions"]["difference_interpretation"] == (
         "not_assessed"
     )
+    assert summary["product_revisions"] == {
+        "budget": {
+            "shared_series_period_count": 0,
+            "unchanged_series_period_count": 0,
+            "changed_candidate_count": 0,
+            "ambiguous_series_period_count": 0,
+        },
+        "revenue": {
+            "shared_series_period_count": 0,
+            "unchanged_series_period_count": 0,
+            "changed_candidate_count": 0,
+            "ambiguous_series_period_count": 0,
+        },
+    }
     assert summary["cross_source_comparison"] == "not_performed"
     assert summary["rights_state"] == "not_evaluated"
     assert summary["publication"] == "not_performed"

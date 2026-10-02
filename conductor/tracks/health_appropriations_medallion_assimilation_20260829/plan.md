@@ -785,6 +785,11 @@ integrated parent head.
     Budget/Pharmac/MoH/Crown revisions and cross-source variance remain open.
     See `canonical-revision-reconciliation-20261002.md` and the exact recovery
     receipt. [M-13, S-04; AC-11, AC-12]
+  - [x] Extend exact-context revision candidates to source-separated Budget
+    appropriation and revenue products. Compare only literal source dimensions
+    and identical period tokens across observed vintages; retain contributing
+    record IDs and Decimal values, and leave fiscal-period comparability and
+    change interpretation unassessed. [M-13, S-04; AC-11, AC-12]
 - [ ] Generate deterministic plots, structured summaries and consumer examples
   from the same queries; make source drill-through available. [M-09, M-10,
   M-13, S-06; AC-07, AC-08]
