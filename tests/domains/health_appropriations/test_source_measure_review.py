@@ -81,6 +81,15 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
     ]
     assert report["series"]["population"]["series_id"].startswith("DPE056AA")
     assert report["series"]["population"]["rights"] == "infoshare_export_not_evaluated"
+    wages = report["series"]["wages"]
+    assert "pay week ending on or before the 20th" in wages["period_basis"]
+    assert "not a full-quarter average" in wages["period_basis"]
+    assert "not a constant-quality wage index" in wages["analytical_status"]
+    assert wages["rights"] == "publisher_default_observed_unadjudicated"
+    assert any(
+        evidence["path"].endswith("qes-methodology-rights-review-20261002.md")
+        for evidence in report["evidence"]
+    )
     assert "2011Q2" in report["series"]["gdp"]["vintage_or_range"]
     assert "2026Q1" in report["series"]["gdp"]["vintage_or_range"]
     assert (

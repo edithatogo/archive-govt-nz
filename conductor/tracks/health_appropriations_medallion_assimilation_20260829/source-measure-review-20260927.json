@@ -33,6 +33,10 @@
       "sha256": "9ae0f516309e95c097ea38009d8464953218b6779a6019729100245ff0470dcb"
     },
     {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-june-capture-20260930.json",
+      "sha256": "28609dbc48f7a4b68ea14f277267c7af0e2eec9b274d0c369865d7d090a2b868"
+    },
+    {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-profile.md",
       "sha256": "cf541ed83a72eca40e36764e9831b005ed17889169806db24d86994ee466e069"
     },
@@ -81,12 +85,20 @@
       "sha256": "ea36b2d2f152539fd91ca14737fc401ef69c6d0a3125ebb209f1252469a92310"
     },
     {
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
-      "sha256": "edc9c7a2635112bb8b2ba763bf7f4bd8c507ac2d5c879bacce52d5a03f09a294"
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-data-collection-metadata-20261002.json",
+      "sha256": "699a1fbb3df5b849974604b1a67dbbe0b1e15997921a3877699565c15151a19b"
     },
     {
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-june-capture-20260930.json",
-      "sha256": "28609dbc48f7a4b68ea14f277267c7af0e2eec9b274d0c369865d7d090a2b868"
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-methodology-rights-review-20261002.md",
+      "sha256": "5f75a20fbb4b4357775f35706a712a70c3797211278c46814735458d375e4427"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-series-metadata-20261002.json",
+      "sha256": "be2715d1549f68bf2b0e60a9262b204690f8dbf8105c4c565594ea09d566df3f"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
+      "sha256": "edc9c7a2635112bb8b2ba763bf7f4bd8c507ac2d5c879bacce52d5a03f09a294"
     }
   ],
   "observed_at": "2026-09-30T00:00:00Z",
@@ -147,8 +159,8 @@
       "vintage_or_range": "MoH nominal/real and per-capita indicators cover 2005/06–2024/25. Treasury Historical Vote Information index covers Vote Health chapters for Budget years 1998–2026. Repository capture register contains 58 PDFs; 10 Estimates years (2008–2013, 2018–2021) and Supplementary years 2012/13 and 2025/26 are located but not in that captured register."
     },
     "wages": {
-      "analytical_status": "captured and exact source profile exists; not a constant-quality wage index and not selected as deflator",
-      "period_basis": "Quarterly levels; official June 2026 labour-market summary identifies QES average ordinary-time hourly earnings as not seasonally adjusted. Both-sexes is documented in supplemental Infoshare evidence; ISO currency remains unverified.",
+      "analytical_status": "captured and exact source profile exists; QES methodology confirms composition effects, so this is not a constant-quality wage index; currency, adjustment, annual weighting, rights eligibility, and deflator selection remain unqualified",
+      "period_basis": "Stats NZ defines each QES quarter by the pay week ending on or before the 20th of its middle month; quarter-label renaming in 2003 did not change that reference week. Selected 2024Q2–2026Q2 observations follow the March-2021 KAU redesign and March-2023 sample rotation. QES is a sampled business measure, weighted by employee counts and subject to imputation; industry and occupation composition affect average earnings. The quarterly value is not a full-quarter average.",
       "rights": "publisher_default_observed_unadjudicated",
       "series_id": "QEMQ.SASZ9A",
       "vintage_or_range": "Stats NZ Quarterly Employment Survey June 2026 workbook Table 8; total sector ordinary-time average hourly earnings; nine quarter levels 2024Q2–2026Q2; source unit '$' per paid hour"
