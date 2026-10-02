@@ -600,7 +600,10 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
     assert revision_report["schema_version"] == (
         "archive-govt-nz.health-revision-reconciliation/v1"
     )
-    assert revision_report["completeness"] == "historical_budget_revenue_product_rows"
+    assert (
+        revision_report["completeness"]
+        == "historical_budget_revenue_pharmac_moh_crown_product_rows"
+    )
     assert revision_report["other_product_revisions"] == "not_assessed"
     _assert_ro_crate(output, manifest)
     _assert_dataset_card(output, manifest)
@@ -1235,7 +1238,10 @@ def test_revision_report_flags_exact_historical_changes_without_explaining_them(
     assert "source_label" in report["key_fields"]
     assert "source_locator" not in report["key_fields"]
     assert report["difference_interpretation"] == "not_assessed"
-    assert report["completeness"] == "historical_budget_revenue_product_rows"
+    assert (
+        report["completeness"]
+        == "historical_budget_revenue_pharmac_moh_crown_product_rows"
+    )
     assert report["product_revisions"]["budget"]["changed_candidate_count"] == 0
     assert report["product_revisions"]["revenue"]["changed_candidate_count"] == 0
     assert report["ambiguous_series_period_count"] == 1
@@ -1327,6 +1333,84 @@ def test_revision_report_covers_budget_and_revenue_exact_source_contexts() -> No
     assert revenue_report["shared_series_period_count"] == 1
     assert revenue_report["unchanged_series_period_count"] == 1
     assert revenue_report["changed_candidate_count"] == 0
+
+
+def test_revision_report_covers_pharmac_moh_and_crown_contexts() -> None:
+    pharmac = [
+        {
+            "source_vintage": vintage,
+            "period_token": "FY2025/26",
+            "measure": "pharmaceutical_budget_allocation",
+            "unit": "NZD million",
+            "currency": "NZD",
+            "price_basis": None,
+            "base_period": None,
+            "denominator_definition": None,
+            "amount_type": "published_budget",
+            "source_label": "Total allocation",
+            "budget_scope": "CPB",
+            "funding_regime": "pre-2022",
+            "amount": Decimal(amount),
+            "record_id": f"pharmac-{vintage}",
+        }
+        for vintage, amount in (("Pharmac-2025", "8"), ("Pharmac-2026", "9"))
+    ]
+    moh = [
+        {
+            "source_vintage": vintage,
+            "period_token": "2024/25",
+            "profile": "health-expenditure-source",
+            "source_label": "Government",
+            "price_basis": "real",
+            "per_capita": False,
+            "unit": "NZD million",
+            "price_base": "2023/24",
+            "denominator": None,
+            "amount": Decimal(amount),
+            "record_id": f"moh-{vintage}",
+        }
+        for vintage, amount in (("MoH-2025", "12"), ("MoH-2026", "13"))
+    ]
+    crown = [
+        {
+            "source_vintage": vintage,
+            "period_token": "2025/26",
+            "measure": "core_crown_expense",
+            "amount_type": "estimated_actual",
+            "unit": "NZD million",
+            "currency": "NZD",
+            "price_basis": "nominal",
+            "base_period": None,
+            "denominator_definition": None,
+            "source_label": "Health",
+            "institutional_coverage": "core_crown",
+            "accounting_basis": "published_crown_basis",
+            "amount": Decimal(amount),
+            "record_id": f"crown-{vintage}",
+        }
+        for vintage, amount in (("BEFU-2025", "15"), ("BEFU-2026", "16"))
+    ]
+
+    report = canonical_gold_export.build_revision_reconciliation_report(
+        {
+            "pharmac": pa.Table.from_pylist(pharmac),
+            "moh": pa.Table.from_pylist(moh),
+            "crown_befu": pa.Table.from_pylist(crown),
+        }
+    )
+
+    products = report["product_revisions"]
+    assert set(products) == {"budget", "revenue", "pharmac", "moh", "crown"}
+    for family, prefix in (("pharmac", "pharmac"), ("moh", "moh"), ("crown", "crown")):
+        assert products[family]["changed_candidate_count"] == 1
+        ids_by_vintage = products[family]["candidates"][0][
+            "input_record_ids_by_vintage"
+        ]
+        assert all(
+            ids == [f"{prefix}-{vintage}"] for vintage, ids in ids_by_vintage.items()
+        )
+        assert products[family]["candidates"][0]["interpretation"] == "not_assessed"
+    assert report["cross_source_comparison"] == "not_performed"
 
 
 @pytest.mark.parametrize("packages", [[], (), [object()]])

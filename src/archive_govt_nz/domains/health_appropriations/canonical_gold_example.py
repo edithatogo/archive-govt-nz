@@ -90,7 +90,13 @@ def _revision_counts(revisions: dict[str, Any]) -> dict[str, Any]:
 
 def _product_revision_counts(revisions: dict[str, Any]) -> dict[str, dict[str, int]]:
     products = revisions.get("product_revisions")
-    if not isinstance(products, dict) or set(products) != {"budget", "revenue"}:
+    if not isinstance(products, dict) or set(products) != {
+        "budget",
+        "revenue",
+        "pharmac",
+        "moh",
+        "crown",
+    }:
         _fail()
     count_fields = (
         "shared_series_period_count",

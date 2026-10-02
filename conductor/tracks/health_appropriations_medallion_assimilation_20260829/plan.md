@@ -790,6 +790,12 @@ integrated parent head.
     and identical period tokens across observed vintages; retain contributing
     record IDs and Decimal values, and leave fiscal-period comparability and
     change interpretation unassessed. [M-13, S-04; AC-11, AC-12]
+  - [x] Extend exact-context revision candidates to Pharmac allocations,
+    Ministry indicators and Crown expense products. Compare only exact
+    source-context keys and literal period tokens across observed vintages;
+    retain record IDs and Decimal values, report duplicate groups as ambiguous,
+    and leave change interpretation and cross-source comparability unassessed.
+    [M-13, S-04; AC-11, AC-12]
 - [ ] Generate deterministic plots, structured summaries and consumer examples
   from the same queries; make source drill-through available. [M-09, M-10,
   M-13, S-06; AC-07, AC-08]

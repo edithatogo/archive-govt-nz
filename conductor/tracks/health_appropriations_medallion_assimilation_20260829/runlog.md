@@ -3978,3 +3978,34 @@ automatic Conductor `phase_7_gates` review passed; retained receipt:
 `phase_7_gates-review-receipt-20261002-budget-revenue-revisions.json`, file
 SHA-256 `0e44113d0f6c54680462dde02587f5bba279d8f2fecf65f72e12f0fdf8c1425d`.
 Clean-room receipt: `clean-room-recovery-20261002-budget-revenue-revisions.json`.
+
+### Pharmac, MoH and Crown exact-context revision candidates (2026-10-03)
+
+Extended canonical Gold revision reports to Pharmac allocations, Ministry of
+Health indicators, and the combined source-separated Crown expense products.
+The comparisons preserve literal period tokens, product-specific exact source
+dimensions, Decimal values, and record IDs. Duplicate rows remain ambiguous;
+no changes are explained and cross-source comparison remains unperformed. The
+30 historical donor differences remain blocked and unapproved, with no values
+replaced.
+
+The clean-room report found 106 shared historical series-periods (98 unchanged,
+8 changed candidates), 93 shared Budget keys (all unchanged), and 10 shared
+Crown keys (5 unchanged, 5 changed candidates). The supplied revenue, Pharmac,
+and MoH vintages had no exact shared keys; ambiguous counts were zero. Bronze
+objects were unchanged. Recovery remains `partial_with_blockers`; the remaining
+items are cross-source comparison and reviewed historical-difference
+dispositions, source-native Silver profiles/adapters, and the complete Platinum
+profile. Receipt:
+[`clean-room-recovery-20261003-cross-source-revisions.json`](clean-room-recovery-20261003-cross-source-revisions.json),
+SHA-256 `0a339a260e2de422940dd4795ce1472f8642806f848082a83be7986a035099e8`.
+
+Focused consumer and canonical Gold verifier tests passed (49); the recovery
+assurance tests passed (10). No tests were added to raise coverage. The required
+`./scripts/validate.sh` passed: 7,272 passed, 10 skipped, 98.18% branch-aware
+coverage against the configured 80% floor, 53 schemas/43 representative
+documents, 9/9 parity checks, all configured mutation gates, hygiene, CAS
+benchmark, dependency, license, secret, and 113-component SBOM checks. The
+automatic `phase_7_gates` review passed; retained receipt:
+`phase_7_gates-review-receipt-20261003-cross-source-revisions.json`, file
+SHA-256 `9319ddaa54abffdfad447a4466882d4b1a14b43ae0067a62f3eaf5ccb76ef90a`.

@@ -47,6 +47,42 @@ _PRODUCT_REVISION_KEY_FIELDS = {
         "revenue_type",
         "source_label",
     ),
+    "pharmac": (
+        "period_token",
+        "measure",
+        "unit",
+        "currency",
+        "price_basis",
+        "base_period",
+        "denominator_definition",
+        "amount_type",
+        "source_label",
+        "budget_scope",
+        "funding_regime",
+    ),
+    "moh": (
+        "period_token",
+        "profile",
+        "source_label",
+        "price_basis",
+        "per_capita",
+        "unit",
+        "price_base",
+        "denominator",
+    ),
+    "crown": (
+        "period_token",
+        "measure",
+        "amount_type",
+        "unit",
+        "currency",
+        "price_basis",
+        "base_period",
+        "denominator_definition",
+        "source_label",
+        "institutional_coverage",
+        "accounting_basis",
+    ),
 }
 _COMMON = {
     "schema_version": "archive-govt-nz.health-canonical-gold-verification/v1",
@@ -235,7 +271,7 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
         != "archive-govt-nz.health-revision-reconciliation/v1"
         or revision_report.get("key_fields") != list(_REVISION_KEY_FIELDS)
         or revision_report.get("completeness")
-        != "historical_budget_revenue_product_rows"
+        != "historical_budget_revenue_pharmac_moh_crown_product_rows"
         or revision_report.get("difference_interpretation") != "not_assessed"
         or revision_report.get("other_product_revisions") != "not_assessed"
         or revision_report.get("cross_source_comparison") != "not_performed"

@@ -1283,12 +1283,13 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
             "period_token",
         ]
         and revision_report.get("completeness")
-        == "historical_budget_revenue_product_rows"
+        == "historical_budget_revenue_pharmac_moh_crown_product_rows"
         and revision_report.get("difference_interpretation") == "not_assessed"
         and revision_report.get("other_product_revisions") == "not_assessed"
         and revision_report.get("cross_source_comparison") == "not_performed"
         and isinstance(revision_report.get("product_revisions"), dict)
-        and set(revision_report["product_revisions"]) == {"budget", "revenue"}
+        and set(revision_report["product_revisions"])
+        == {"budget", "revenue", "pharmac", "moh", "crown"}
         and isinstance(revision_report.get("candidates"), list)
         and revision_report.get("changed_candidate_count")
         == len(revision_report["candidates"])
@@ -1744,7 +1745,7 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
         "products_rebuilt": outputs,
         "bronze_objects_unchanged": unchanged,
         "required_but_not_rebuilt": [
-            "canonical_gold_revision_and_cross_source_reports",
+            "cross_source_comparison_and_historical_difference_dispositions",
             "remaining_source_native_silver_profiles_and_canonical_adapters",
             "platinum_dcat_croissant_ro_crate_prov_complete_profile",
         ],
