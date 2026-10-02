@@ -90,7 +90,8 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
     {
         "name": "health_appropriations_preflight_context_gold",
         "description": (
-            "Verify the pinned CPI, wage, GDP and population Silver inputs and "
+            "Verify the pinned CPI, wage, population and separate GDP-vintage "
+            "Silver inputs and "
             "report planned source-separated context Gold outputs without writes. "
             "No denominator selection, rights evaluation or publication is performed."
         ),
@@ -142,7 +143,7 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                         },
                         "numeric_conversion": {"const": "float_for_display_only"},
                         "excluded_observations_plotted": {"const": False},
-                        "series": {"type": "array", "maxItems": 4},
+                        "series": {"type": "array", "maxItems": 5},
                     },
                     "required": [
                         "schema_version",
@@ -156,8 +157,8 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                 },
                 "source_marker_sha256": {
                     "type": "array",
-                    "minItems": 4,
-                    "maxItems": 4,
+                    "minItems": 5,
+                    "maxItems": 5,
                     "items": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
                 },
                 "source_family_policy": {

@@ -64,8 +64,68 @@ _EXPECTED_MANIFESTS = {
     "wage": "0bf89bd6c10a0458ef4c578b209c3252292961976d2f50b3c27fe92907c3cb04",
     "gdp": "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35",
     "population": "067255c4ac18377312d0a8234dc94804c876ba68866cfba3a483a4dd89415798",
+    "gdp_june": "f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd",
 }
-_EXPECTED_PACKAGE_COUNT = len(_EXPECTED_SOURCES)
+_EXPECTED_PROFILE_SOURCES = {
+    "cpi": (
+        "raw-cpi-20260831-v1",
+        "cpi_facts.parquet",
+        "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+        "cpi",
+        "CPIQ.SE9A",
+    ),
+    "wage": (
+        "raw-qes-2026q2-20260831-v3",
+        "qes_facts.parquet",
+        "1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97",
+        "wage",
+        "QEMQ.SASZ9A",
+    ),
+    "gdp": (
+        "raw-stats-gdp-20260831-v1",
+        "gdp_facts.parquet",
+        "a7326e84e7704446a18e5c8942f99901a452b2170af4228e8a5c242a5532ed21",
+        "gdp",
+        "SNEQ/SG03AB01GE00S900",
+    ),
+    "gdp_june": (
+        "gdp-june-1",
+        "gdp_facts.parquet",
+        "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
+        "gdp",
+        "SNEQ/SG03AB01GE00S900",
+    ),
+    "population": (
+        "population-annual-mean-context-20260925-v1",
+        "population_facts.parquet",
+        "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9",
+        "population",
+        "DPE056AA:Mean year ended:Total:Total All Ages:Annual-Jun",
+    ),
+}
+_EXPECTED_SOURCE_IDENTITIES = {
+    ("cpi", _EXPECTED_SOURCES["cpi"][1]): (
+        _EXPECTED_SOURCES["cpi"][0],
+        _EXPECTED_VINTAGES["cpi"],
+    ),
+    ("wage", _EXPECTED_SOURCES["wage"][1]): (
+        _EXPECTED_SOURCES["wage"][0],
+        _EXPECTED_VINTAGES["wage"],
+    ),
+    ("gdp", _EXPECTED_SOURCES["gdp"][1]): (
+        _EXPECTED_SOURCES["gdp"][0],
+        _EXPECTED_VINTAGES["gdp"],
+    ),
+    ("gdp", "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d"): (
+        "SNEQ/SG03AB01GE00S900",
+        "StatsNZ-GDP-2026Q2",
+    ),
+    ("population", _EXPECTED_SOURCES["population"][1]): (
+        _EXPECTED_SOURCES["population"][0],
+        _EXPECTED_VINTAGES["population"],
+    ),
+}
+_EXPECTED_PACKAGE_COUNT = len(_EXPECTED_PROFILE_SOURCES)
 SCHEMA = "archive-govt-nz.health-context-gold/v1"
 OBSERVATION_SCHEMA = pa.schema(
     [
@@ -326,43 +386,15 @@ def _validate_fact_lineage(record_id: str, lineage: dict[str, set[str]]) -> None
 def _source_native_packages(
     silver_root: Path, source_root: Path
 ) -> tuple[list[dict[str, Any]], list[str]]:
-    cpi_pin = "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d"
-    qes_pin = "1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97"
-    gdp_pin = "a7326e84e7704446a18e5c8942f99901a452b2170af4228e8a5c242a5532ed21"
-    population_pin = "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9"
-    raw = [
-        (
-            "raw-cpi-20260831-v1",
-            "cpi_facts.parquet",
-            cpi_pin,
-            "cpi",
-            "CPIQ.SE9A",
-        ),
-        (
-            "raw-qes-2026q2-20260831-v3",
-            "qes_facts.parquet",
-            qes_pin,
-            "wage",
-            "QEMQ.SASZ9A",
-        ),
-        (
-            "raw-stats-gdp-20260831-v1",
-            "gdp_facts.parquet",
-            gdp_pin,
-            "gdp",
-            "SNEQ/SG03AB01GE00S900",
-        ),
-        (
-            "population-annual-mean-context-20260925-v1",
-            "population_facts.parquet",
-            population_pin,
-            "population",
-            "DPE056AA:Mean year ended:Total:Total All Ages:Annual-Jun",
-        ),
-    ]
     output: list[dict[str, Any]] = []
     marker_digests: list[str] = []
-    for package, filename, digest, family, series in raw:
+    for profile_id, (
+        package,
+        filename,
+        digest,
+        family,
+        series,
+    ) in _EXPECTED_PROFILE_SOURCES.items():
         facts, _marker_digest = _fact_package(
             silver_root,
             package=package,
@@ -372,7 +404,7 @@ def _source_native_packages(
             series_id=series,
             source_root=source_root,
         )
-        _require(_marker_digest == _EXPECTED_MANIFESTS[family])
+        _require(_marker_digest == _EXPECTED_MANIFESTS[profile_id])
         marker_digests.append(_marker_digest)
         if family == "cpi":
             profile = PRICE_WAGE_PROFILES["cpi"]
@@ -532,8 +564,9 @@ def _quality_markdown(rows: list[dict[str, Any]]) -> bytes:
     lines = [
         "# Health Appropriations contextual Gold quality report",
         "",
-        "This report describes four explicitly pinned, source-separated Silver",
-        "series. Period tokens are reported as observed; chronology, continuity,",
+        "This report describes five explicitly pinned, source-separated Silver",
+        "series, including separate March and June 2026 GDP vintages. Period",
+        "tokens are reported as observed; chronology, continuity,",
         "and missing-period inference are not assessed.",
         "",
         "| Family | Series | Vintage | Observations | Eligible | Excluded |",
@@ -589,11 +622,11 @@ def _validate_rows(rows: list[dict[str, Any]]) -> None:
     _require(len(ids) == len(set(ids)))
     source_ids_by_package: dict[str, set[str]] = {}
     for row in rows:
-        _require(row["family"] in _EXPECTED_SOURCES)
-        _require(
-            (row["series_id"], row["source_sha256"]) == _EXPECTED_SOURCES[row["family"]]
+        expected = _EXPECTED_SOURCE_IDENTITIES.get(
+            (row["family"], row["source_sha256"])
         )
-        _require(row["source_vintage"] == _EXPECTED_VINTAGES[row["family"]])
+        _require(expected is not None)
+        _require((row["series_id"], row["source_vintage"]) == expected)
         _require(re.fullmatch(r"[0-9a-f]{64}", row["source_sha256"]) is not None)
         _require(
             row["admission"]

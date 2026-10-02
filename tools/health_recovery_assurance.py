@@ -440,17 +440,27 @@ def rebuild_gdp_june_silver(root: Path, index: int) -> dict[str, Any]:
     return {"receipt": receipt, "files": tree(output)}
 
 
-def gdp_june_recovery_report(root: Path) -> dict[str, Any]:
+def gdp_june_recovery_report(
+    root: Path, *, silver_roots: tuple[Path, Path] | None = None
+) -> dict[str, Any]:
     """Prove Silver and canonical June outputs match without analytical selection."""
-    first = rebuild_gdp_june_silver(root, 1)
-    second = rebuild_gdp_june_silver(root, 2)
+    if silver_roots is None:
+        source_packages = (root / "gdp-june-1", root / "gdp-june-2")
+        first = rebuild_gdp_june_silver(root, 1)
+        second = rebuild_gdp_june_silver(root, 2)
+    else:
+        source_packages = (
+            silver_roots[0] / "gdp-june-1",
+            silver_roots[1] / "gdp-june-1",
+        )
+        first = rebuild_gdp_june_silver(silver_roots[0], 1)
+        second = rebuild_gdp_june_silver(silver_roots[1], 1)
     files = compare_product_outputs(
-        root / "gdp-june-1", root / "gdp-june-2", "gdp_june_silver"
+        source_packages[0], source_packages[1], "gdp_june_silver"
     )
     require_evidence(first == second, "gdp_june_silver_receipt_mismatch")
     canonical_products = []
-    for index in (1, 2):
-        package = root / f"gdp-june-{index}"
+    for index, package in enumerate(source_packages, start=1):
         manifest_pin = digest(package / "MANIFEST.json")
         facts, lineage, receipt = gdp_canonical_projection.project_gdp_june(
             package, manifest_pin, ARCHIVE / "bronze-cas" / "sha256"
@@ -1547,7 +1557,9 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
                 message = f"{family}_silver_repeat_mismatch"
                 raise RuntimeError(message)
         outputs["context_source_native_silver"] = context_silver
-        outputs["gdp_june_successor_silver"] = gdp_june_recovery_report(root)
+        outputs["gdp_june_successor_silver"] = gdp_june_recovery_report(
+            root, silver_roots=silver_roots
+        )
         if "cpi" in CONTEXT:
             outputs["cpi_canonical_projection"] = _cpi_canonical_recovery_report(
                 silver_roots[0], root

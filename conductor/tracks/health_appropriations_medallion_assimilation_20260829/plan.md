@@ -96,10 +96,11 @@ repository validation command. External gates block only their affected task.
   estimate choices, census basis and selectable period coverage are now pinned
   in `context-census.json`. The June 2026 GDP successor workbook and exact
   Table 1 expenditure selector are separately captured and hash-bound. June
-  now has a strict Bronze-to-Silver source profile and repeated clean-room
-  output; the March and June vintages remain separate. Numeric population
-  rights, GDP currency, canonical projection, analytical admission and
-  period-alignment gates remain open;
+  now has strict Bronze-to-Silver and canonical projections and is included in
+  Context Gold with March and June vintages kept separate. The 2026-10-02
+  clean-room receipt confirms repeat-identical output. Numeric population
+  rights, GDP currency, analytical admission and period-alignment gates remain
+  open; see `context-gold-gdp-vintages-20261002.md`;
   CPI, QES wage, Treasury GDP and Crown expense joins remain subject to their
   own source-specific review.
 - [x] Evaluate published aggregate Health Survey indicators as a non-blocking
