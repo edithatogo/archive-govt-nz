@@ -697,9 +697,11 @@ integrated parent head.
   projection remain unchanged. The June series is not in Context Gold and has
   no canonical projection, currency qualification, annualization, denominator
   selection or rights approval. See `gdp-june-profile-20260930.md`.
-- [ ] If S-05 passed its scope/rights gate, add the aggregate Health Survey
-  adapter and explicit time/geography alignment; otherwise record its deferred
-  disposition without blocking the Must scope. [S-05; AC-10]
+- [x] Resolve the conditional S-05 scope: its exact-export, dictionary and
+  resource-rights gate has not passed, so retain the aggregate Health Survey as
+  a non-blocking deferred item and leave the Must scope unblocked. Reopen only
+  after the source export, dictionary, revision and time/geography contracts
+  are pinned. [S-05; AC-10] See `health-survey-assessment.md`.
 
 ### 5.4 Phase review and checkpoint
 
