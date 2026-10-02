@@ -13,8 +13,11 @@ second request; the 34-test checkpoint suite, Ruff, basedpyright and full
 repository validation pass. No rights, publication, source completeness or
 power-loss claim is made. The initial hosted assurance run found stale hashes
 because the source census and source-measure review pin the append-only
-evidence ledger; their dependent pins were refreshed, and both evidence suites
-now pass (60 tests). No actionable issue remains in this bounded change.
+evidence ledger; their dependent pins were refreshed. That exposed the further
+source-census digest pin in the recovery-assurance tool, which was updated too.
+All three evidence-binding suites now pass (62 tests); full validation is being
+repeated on the corrected pins. No actionable issue remains in the recovery
+logic.
 
 ## 2026-09-07 — Phase 2.1 bounded review
 

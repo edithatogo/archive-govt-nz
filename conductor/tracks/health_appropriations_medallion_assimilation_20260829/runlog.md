@@ -4179,3 +4179,11 @@ both pin `evidence.jsonl`. No recovery or implementation assertion failed.
 Updated the dependent ledger/census hashes; the source-measure and source-context
 census suites pass together (60 passed). Full validation and exact-head hosted
 checks are being repeated after this evidence correction.
+
+The next full local run then identified a downstream exact-hash pin in
+`tools/health_recovery_assurance.py`; its targeted census-binding contract
+failed against the newly hash-bound context census. Updated the code pin to the
+current census digest. The source-measure, census and recovery-binding focused
+contracts now pass together (62 passed), with Ruff and basedpyright passing.
+The full harness and exact-head hosted checks are being repeated on this final
+evidence-linked revision.
