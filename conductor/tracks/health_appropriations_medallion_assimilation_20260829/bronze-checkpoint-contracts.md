@@ -153,13 +153,26 @@ Offline tests prove a unique orphan avoids a second request and an ambiguous
 pair is not adopted. Focused checkpoint suite: 30 passed; Ruff and basedpyright
 passed. The full repository harness is required before hosted delivery.
 
-This does not reconcile redirected orphan WARCs; their full final URL cannot
-be recovered from the current WARC fields. At this checkpoint, directory
-fsync durability across power loss was still unimplemented. The runner also
-does not adopt arbitrary WARC locations outside its attempt-directory layout.
+Redirected orphan WARCs are now recoverable when the WARC's query-free
+`WARC-Target-URI` is the complete final URL: its SHA-256 must match the
+capture-time full final-URL digest, while the original census URL remains bound
+by its request digest. This preserves redirect provenance without retaining a
+query string that could contain a signed URL or token. A final URL with a query
+or fragment cannot be reconstructed from the privacy-preserving WARC and stays
+unadopted; resume performs a fresh capture. The runner also does not adopt
+arbitrary WARC locations outside its attempt-directory layout.
 
-The original Phase 2.1 task therefore stays `[~]`. These are executable
-preservation/recovery limits, not source-census or rights-promotion gates.
+An offline regression test simulates a redirected response followed by a
+checkpoint-write failure, then proves resume adopts the exact immutable WARC,
+preserves the final URL and avoids another source request. The focused
+checkpoint suite passes (34 tests); `ruff` and `basedpyright` pass for the
+changed runner and contract file.
+
+The Phase 2.1 executable preservation/recovery contract is now covered by the
+focused tests and existing Bronze/CAS/inventory/versioning contracts. The
+query/fragment limitation is an explicit privacy boundary, not a coverage
+target or a source-census/rights-promotion gate. Scheduled discovery and any
+capture gaps listed under Phase 2.3 remain separate work.
 Self-review found no remaining actionable defect within this bounded
 cooperative-resume slice. No automatic lock deletion, source eligibility
 promotion, payload publication, historical rewrite or dependency was added.

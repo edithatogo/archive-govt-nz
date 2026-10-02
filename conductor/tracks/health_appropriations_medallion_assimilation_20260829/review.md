@@ -1,5 +1,18 @@
 # Self-Review
 
+## 2026-10-03 — Query-free redirected orphan recovery
+
+The runner adopts a redirected orphan only when the original source URL hash
+matches the selected census row and the WARC's single query-free HTTPS target
+matches the stored full final-URL digest. `verify_response_binding` then checks
+the WARC digest, one-record framing, response metadata and body fixity before
+the CAS object is promoted. Query-bearing or fragment-bearing targets cannot
+match the privacy-preserving target URI and remain untouched for fresh capture.
+The focused regression proves recovery preserves the orphan bytes and avoids a
+second request; the 34-test checkpoint suite, Ruff, basedpyright and full
+repository validation pass. No rights, publication, source completeness or
+power-loss claim is made. No actionable issue remains in this bounded change.
+
 ## 2026-09-07 — Phase 2.1 bounded review
 
 The changed length guard rejects incomplete identity-encoded bodies before

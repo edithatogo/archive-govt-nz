@@ -584,6 +584,63 @@ async def test_checkpoint_write_failure_retains_orphan_warc_for_recovery(
 
 
 @pytest.mark.anyio
+async def test_redirected_orphan_recovers_from_queryless_warc_target(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """A redirect target is recoverable when its complete URL is safely retained."""
+    execute, args, calls = setup(tmp_path, monkeypatch)
+    final_url = "https://www.treasury.govt.nz/redirected.csv"
+    source_url = "https://www.treasury.govt.nz/one.csv"
+    payload = b"year,amount\n2026,1\n"
+
+    async def redirected(
+        _client: object,
+        url: str,
+        store: ContentAddressedStore,
+        _config: object,
+        *,
+        transaction_warc_path: Path,
+    ) -> CaptureResult:
+        calls.append(url)
+        receipt = store.put_bytes(payload)
+        warc = write_response_record(
+            transaction_warc_path,
+            url=final_url,
+            request_url=url,
+            status_code=200,
+            headers={"content-type": "text/csv"},
+            body=payload,
+        )
+        return CaptureResult(final_url, 200, "text/csv", receipt, warc)
+
+    monkeypatch.setitem(execute.__globals__, "capture_url", redirected)
+    original = execute.__globals__["_write"]
+
+    def fail(_path: Path, _value: object) -> None:
+        message = "synthetic_checkpoint_failure"
+        raise OSError(message)
+
+    monkeypatch.setitem(execute.__globals__, "_write", fail)
+    with pytest.raises(OSError, match="synthetic_checkpoint_failure"):
+        await execute(args)
+    orphan = next(args.warc_dir.rglob("*.warc"))
+    orphan_digest = hashlib.sha256(orphan.read_bytes()).hexdigest()
+    monkeypatch.setitem(execute.__globals__, "_write", original)
+    args.resume = True
+
+    result = await execute(args)
+
+    assert calls == [source_url]
+    assert result["results"][0]["url"] == final_url
+    assert (
+        result["results"][0]["warc_path"]
+        == orphan.relative_to(args.warc_dir).as_posix()
+    )
+    assert hashlib.sha256(orphan.read_bytes()).hexdigest() == orphan_digest
+    assert result["observations"][0]["outcome"] == "recovered_orphan_warc"
+
+
+@pytest.mark.anyio
 async def test_ambiguous_orphan_warcs_are_not_adopted(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

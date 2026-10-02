@@ -297,6 +297,19 @@ def _warc_request_digest(path: Path) -> str | None:
         return None
 
 
+def _is_recoverable_target_uri(value: str) -> bool:
+    """Accept only complete query-free HTTPS targets retained by the WARC."""
+    parsed = urlsplit(value)
+    return bool(
+        parsed.scheme == "https"
+        and parsed.netloc
+        and parsed.username is None
+        and parsed.password is None
+        and not parsed.query
+        and not parsed.fragment
+    )
+
+
 def _recover_orphan(
     path: Path,
     source: dict[str, Any],
@@ -321,6 +334,9 @@ def _recover_orphan(
         content_types = [v for k, v in headers if k.lower() == "content-type"]
         request_hash = hashlib.sha256(source["url"].encode()).hexdigest()
         record_headers = record.rec_headers.headers
+        target_uris = [
+            value for key, value in record_headers if key.lower() == "warc-target-uri"
+        ]
         request_hashes = [
             v for k, v in record_headers if k.lower() == "warc-request-url-sha256"
         ]
@@ -336,19 +352,22 @@ def _recover_orphan(
             return None
         if (
             request_hashes != [request_hash]
-            or final_hashes != [request_hash]
+            or len(target_uris) != 1
+            or not _is_recoverable_target_uri(target_uris[0])
+            or final_hashes != [hashlib.sha256(target_uris[0].encode()).hexdigest()]
             or not statuses[0]
             or statuses[0] >= _HTTP_ERROR_STATUS
             or len(content_types) > 1
         ):
             return None
+        final_url = target_uris[0]
         relative = path.relative_to(warc_dir).as_posix()
         digest = hashlib.sha256(payload).hexdigest()
         body_digest = hashlib.sha256(body).hexdigest()
         verify_response_binding(
             path,
             request_url=source["url"],
-            final_url=source["url"],
+            final_url=final_url,
             status_code=statuses[0],
             content_type=content_types[0] if content_types else None,
             body_sha256=body_digest,
@@ -380,7 +399,7 @@ def _recover_orphan(
         result: dict[str, object] = {
             "source_id": source["source_id"],
             "request_url_sha256": request_hash,
-            "url": source["url"],
+            "url": final_url,
             "state": "captured",
             "status_code": statuses[0],
             "content_type": content_types[0] if content_types else None,

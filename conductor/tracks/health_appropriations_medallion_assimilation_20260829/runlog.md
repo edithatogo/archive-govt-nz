@@ -4155,3 +4155,20 @@ After adding those focused contracts, `./scripts/validate.sh` passed again:
 checks passed. The Phase 7 Conductor review passed again; the retained receipt
 has SHA-256
 `385d43ccaf5fdcf22963837b552fe70ca75b71d019d2c074ff48f3f8fd1b271f`.
+
+## 2026-10-03 — Query-free redirected orphan recovery
+
+Extended explicit resume to adopt a redirected response orphan when its
+query-free WARC target is bound by the capture-time full final-URL digest and
+the original request-URL digest still matches the selected census row. The
+existing WARC writer strips query strings and fragments, so those redirected
+orphans remain unadopted and trigger a fresh capture; no URL material is
+reintroduced into retained evidence. A focused crash-window regression verifies
+the retained WARC remains byte-identical, the final target is restored, and no
+second request occurs. The plan maps the Phase 2.1 acceptance task to existing
+focused health, Bronze, CAS, inventory and versioning contracts rather than
+adding coverage-only tests.
+
+`./scripts/validate.sh` passed: 7,286 passed, 10 skipped, 98.14% branch-aware
+coverage against the configured 80% floor; format, lint, typing, 53 schemas,
+9/9 parity, all mutation gates, audit, licence, secret scan and SBOM passed.
