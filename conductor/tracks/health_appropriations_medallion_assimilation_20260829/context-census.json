@@ -1,10 +1,6 @@
 {
-  "base_commit": "fcb8f7c89ffe18afd854f23f40c448fcc3a9efeb",
+  "base_commit": "663adf85e8f8839b782d48492e3e961500bd2b17",
   "evidence": [
-    {
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-june-capture-20260930.json",
-      "sha256": "28609dbc48f7a4b68ea14f277267c7af0e2eec9b274d0c369865d7d090a2b868"
-    },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/analytical-context-register.md",
       "sha256": "b70941bc74ec4e173c37ceb984088e20aebaee50db1512dcb8dd3541e83e4f82"
@@ -12,6 +8,10 @@
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json",
       "sha256": "9a999b8681e0ee623dc0ef3fad6804a720e5a4417eca6c20a27530034e6951a8"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/cpi-index-base-qualification-20261002.md",
+      "sha256": "28c91532ec9256e532dca867de744415e2e43d7b54e08570da823cbf593ca1d6"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/cpi-source.md",
@@ -32,6 +32,10 @@
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-crown-canonical-recovery-20260929.json",
       "sha256": "1b6cda8a9ac0727cd4d8b3e09dd6d1ce4535e06fa9ef49898e8e07b1270bc561"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-june-capture-20260930.json",
+      "sha256": "28609dbc48f7a4b68ea14f277267c7af0e2eec9b274d0c369865d7d090a2b868"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-profile.md",
@@ -102,23 +106,23 @@
   "scope": "metadata_only_no_analytical_admission",
   "series": [
     {
-      "base": "unverified; index_base remains null",
+      "base": "June 2017 quarter (2017Q2) = 1000; official Stats NZ reference-period definition matched to retained CPIQ.SE9A observation",
       "definition": "CPI All Groups for New Zealand; All groups; title 2 NA; FINAL is a supplied status, not immutability",
       "evidence": [
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/cpi-index-base-qualification-20261002.md",
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/cpi-source.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json"
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json"
       ],
       "family": "cpi",
       "gaps": [
-        "index_base_not_verified",
         "fiscal_aggregation_not_qualified",
         "household_prices_not_health_input_costs"
       ],
       "geography": "New Zealand; national aggregate",
       "id": "cpi-2026q2",
-      "join_policy": "Blocked until base metadata is source-bound and fiscal annual-average/rebase policy approved; never silently use June index for annual spending",
-      "period": "quarter-ending YYYY.MM; 449 selected rows, 422 numeric and 27 NA; coverage endpoints not qualified here",
+      "join_policy": "Base definition verified; still blocked until fiscal annual-average/rebase policy is approved; never silently use June index for annual spending",
+      "period": "quarter-ending YYYY.MM; source observations span 1914Q2–2026Q2, 449 selected rows, 422 numeric and 27 NA",
       "qualification": "unqualified",
       "retained_manifest_sha256": "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e",
       "rights": "not_evaluated",
