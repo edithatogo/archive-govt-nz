@@ -83,6 +83,12 @@ repository validation command. External gates block only their affected task.
   schemas. [M-02, M-11; AC-03, AC-09]
   Historical scope and unresolved editions are recorded in
   `historical-source-register.json`; link discovery does not establish capture.
+  The Budget 2026 Estimates expenditure workbook's public release periods,
+  restructuring caveat, exclusion of 2025/26 Supplementary Estimates and
+  publisher-declared licence are recorded in
+  `budget-2026-estimates-workbook-profile-20261003.md`. This resolves only the
+  release-level census for that captured workbook; workbook-native units and
+  annual/source coverage remain to be verified.
 - [x] Review fix: isolate invariant legislation fixtures from generated archive
   ordering and union-algebra examples; retain all strategies, deadlines and
   semantic assertions, then verify full assurance. [M-18; AC-16; d1f2ff31]

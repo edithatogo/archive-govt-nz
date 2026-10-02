@@ -4080,3 +4080,22 @@ mutation gates, hygiene, CAS benchmark, dependency, license, secret and
 `phase_7_gates` review passed; retained receipt
 `phase_7_gates-review-receipt-20261003-budget-expenditure-dispatch.json`, file
 SHA-256 `c139cc534414639d54202f5e18f3ecb113571f7d49a01edbb6fec821e746809b`.
+## 2026-10-03 — Budget 2026 Estimates source-period census
+
+Added `budget-2026-estimates-workbook-profile-20261003.md` from the Treasury's
+official Budget 2026 Estimates data-release page, pinned to captured source
+`budget_2026-000` and its census SHA-256. It records the release's actual,
+estimated-actual and budget years, the excluded 2025/26 Supplementary
+Estimates, the non-restatement caveat for prior years, the tabled Estimates as
+the official source, and the publisher-declared CC BY 4.0 statement.
+
+This is a metadata-only census improvement. It does not claim independent
+rights adjudication, workbook-native unit or row coverage, annual Budget
+coverage, Vote Health reconciliation, or analytical admission. No tests were
+added for coverage growth. The required `./scripts/validate.sh` passed: 7,279
+passed, 10 skipped; 98.15% branch-aware coverage against the configured 80%
+floor; 53 schemas/43 representative documents; 9/9 parity checks; all configured
+mutation, hygiene, CAS benchmark, dependency, licence, secret and SBOM checks
+passed. The automatic `phase_7_gates` review passed; retained receipt
+`phase_7_gates-review-receipt-20261003-budget-2026-source-profile.json`,
+SHA-256 `4b2fd45a8ffce2f3e4c73181801022ea66d776e115b437ecce94d903e4890351`.
