@@ -96,3 +96,18 @@ unresolved. No population payload was requested, acquired, or promoted.
 Combined local assurance on the parent-integrated change passed 6,857 tests,
 9 skips, 48 schemas, 9/9 parity and all configured mutation and supply-chain
 gates; see `population-census-integration.json`.
+
+## Parent reconciliation — CPI index reference period (2026-10-02)
+
+Stats NZ DataInfo+ defines the CPI index-reference period as the June 2017
+quarter (=1000). The exact retained `CPIQ.SE9A` series has a matching 2017.06
+observation. This resolves the CPI base-definition gap in the current
+`context-census.json`; the historical 2026-09-07 table above remains a record
+of the earlier assessment. The source-linked reconciliation is in
+`cpi-index-base-qualification-20261002.md`.
+
+Phase 1.2 remains in progress. CPI fiscal-year aggregation and use as a health
+input-cost deflator, QES currency/sex/adjustment and annual weighting,
+population rights/vintage and spending-period denominator choice, GDP currency
+and annual aggregation, and Crown measure basis/comparability remain open.
+This update selects no deflator, denominator, or new Gold measure.

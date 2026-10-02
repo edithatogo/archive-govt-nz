@@ -127,7 +127,15 @@ def test_duplicate_evidence_and_unpinned_census_are_rejected() -> None:
 
 def test_pinned_selectors_keep_denominator_boundaries() -> None:
     rows = {row.id: row for row in Census.model_validate(document()).series}
-    assert rows["cpi-2026q2"].series_id == "CPIQ.SE9A"
+    cpi = rows["cpi-2026q2"]
+    assert cpi.series_id == "CPIQ.SE9A"
+    assert "2017Q2) = 1000" in cpi.base
+    assert "index_base_not_verified" not in cpi.gaps
+    assert "fiscal_aggregation_not_qualified" in cpi.gaps
+    assert any(
+        path.endswith("cpi-index-base-qualification-20261002.md")
+        for path in cpi.evidence
+    )
     assert rows["qes-2026q2"].series_id == "QEMQ.SASZ9A"
     assert "D27:D58" in rows["core_crown-fiscal-2025"].selector
     assert "E30:E58" in rows["total_crown-fiscal-2025"].selector
