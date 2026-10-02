@@ -743,12 +743,14 @@ integrated parent head.
     status evidence are excluded with reason codes, rights remain unevaluated,
     and no denominator or cross-series calculation is performed. See
     `context-gold-coverage-20260928.md`.
-- [ ] Build coverage, completeness, reconciliation, source-health,
+- [~] Build coverage, completeness, reconciliation, source-health,
   classification-drift and revision reports with defined thresholds. [M-13,
   S-04; AC-11]
   The local raw-derived Gold export now persists an edition-bounded Budget
   versus Estimated Actual diagnostic with exact input identities and explicit
-  unverified period basis. Coverage and quality reporting remain incomplete.
+  unverified period basis. Canonical Gold now also reports exact-context
+  historical revision candidates. Coverage and quality reporting remain
+  incomplete.
   - [x] Add a source-separated Budget/revenue label-change candidate report
     keyed by exact period and dimensions across observed vintages. The manifest
     does not infer mappings or semantic equivalence; other source families
@@ -762,6 +764,16 @@ integrated parent head.
     classification-drift report is described above. This
     is provenance accounting, not analytical promotion. See
     `canonical-gold-quality-20260928.md`.
+  - [x] Add exact-context historical revision candidates to canonical Gold.
+    Compare only unique rows sharing recordset, measure, literal source label,
+    unit, price/currency context, denominator, coverage, accounting basis, and
+    period across source vintages; retain source IDs and values, report
+    duplicate groups as ambiguous, and leave change reasons and other products
+    unassessed. The
+    clean-room run found 8 candidates across 106 shared historical coordinates;
+    Budget/Pharmac/MoH/Crown revisions and cross-source variance remain open.
+    See `canonical-revision-reconciliation-20261002.md` and the exact recovery
+    receipt. [M-13, S-04; AC-11, AC-12]
 - [ ] Generate deterministic plots, structured summaries and consumer examples
   from the same queries; make source drill-through available. [M-09, M-10,
   M-13, S-06; AC-07, AC-08]

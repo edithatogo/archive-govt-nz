@@ -15,6 +15,19 @@ MAX_PACKAGE_BYTES = 128 * 1024 * 1024
 MAX_OUTPUTS = 512
 _DIGEST = re.compile(r"^[0-9a-f]{64}$")
 _SCHEMA_VERSION = "archive-govt-nz.health-canonical-gold/v2"
+_REVISION_KEY_FIELDS = (
+    "recordset",
+    "measure",
+    "source_label",
+    "unit",
+    "currency",
+    "price_basis",
+    "base_period",
+    "denominator_definition",
+    "institutional_coverage",
+    "accounting_basis",
+    "period_token",
+)
 _COMMON = {
     "schema_version": "archive-govt-nz.health-canonical-gold-verification/v1",
     "verification_scope": "manifest_declared_output_fixity",
@@ -149,6 +162,15 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
     products = manifest.get("products")
     temporal_report = manifest.get("temporal_coverage_report")
     classification_report = manifest.get("classification_drift_report")
+    revision_report = manifest.get("revision_reconciliation_report")
+    try:
+        revision_payload = json.loads(
+            (root / "historical_revision_reconciliation.json").read_text(
+                encoding="utf-8"
+            )
+        )
+    except OSError, UnicodeDecodeError, json.JSONDecodeError:
+        revision_payload = None
     if (
         not isinstance(products, dict)
         or not isinstance(temporal_report, dict)
@@ -160,6 +182,16 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
         != "archive-govt-nz.health-classification-drift/v1"
         or classification_report.get("mapping") != "not_inferred"
         or not isinstance(classification_report.get("candidates"), list)
+        or not isinstance(revision_report, dict)
+        or revision_report.get("schema_version")
+        != "archive-govt-nz.health-revision-reconciliation/v1"
+        or revision_report.get("key_fields") != list(_REVISION_KEY_FIELDS)
+        or revision_report.get("completeness") != "historical_product_rows_only"
+        or revision_report.get("difference_interpretation") != "not_assessed"
+        or revision_report.get("other_product_revisions") != "not_assessed"
+        or revision_report.get("cross_source_comparison") != "not_performed"
+        or not isinstance(revision_report.get("candidates"), list)
+        or revision_payload != revision_report
         or any(type(name) is not str or not name for name in products)
     ):
         _fail("invalid_gold_reports")

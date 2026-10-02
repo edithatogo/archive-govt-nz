@@ -3778,3 +3778,34 @@ revision/cross-source reports, remaining source-native Silver profiles and
 canonical adapters, and complete Platinum DCAT/Croissant/RO-Crate/PROV profile.
 This verifies one report in recovery; it does not close AC-11 or AC-12. Tests
 remain governed by the repository's 80% minimum coverage floor.
+
+## 2026-10-02 — Canonical historical revision candidate report
+
+Canonical Gold now exports a deterministic historical revision report. It
+compares values only under exact period and source-context identity, preserves
+source vintages and record IDs, counts duplicate groups as ambiguous, and does
+not infer causes or promote values. The package verifier checks the report's
+schema, explicit assessment boundaries, declared output digest, and equality
+between the packaged JSON and manifest report.
+
+The pinned clean-room rebuild produced two byte-identical canonical Gold
+packages with 106 shared historical series-period coordinates, 98 unchanged
+coordinates, 8 changed candidates, and no ambiguous groups. Bronze remained
+unchanged. Recovery is still `partial_with_blockers`: canonical revisions for
+other products and cross-source reconciliation, remaining Silver adapters, and
+the complete Platinum profile remain required. See
+[bounded design and limits](canonical-revision-reconciliation-20261002.md) and
+[clean-room receipt](clean-room-recovery-20261002-revision-report.json),
+SHA-256 `eb0acc3d9b1e0047d9ac55f106e1c7b0b3f9eaf962f9c3a1c54d300a0936cace`.
+
+Focused canonical Gold/recovery checks passed (51 tests across canonical
+consumer (22), package verification (19), and recovery assurance (10)), with Ruff and
+basedpyright clean. The required `./scripts/validate.sh` passed: 7,254 tests,
+10 skipped, 98.25% coverage against the configured 80% minimum, 53 schemas/43
+representative documents, 9/9 parity, and all configured mutation, hygiene,
+CAS, dependency, licence, secret, and SBOM lanes. The first audit identified
+three known vulnerabilities in locked `pypdf` 6.18.1; updating within the
+existing `<7` range to 6.19.0 cleared the audit, with no known vulnerabilities
+remaining. Automatic Conductor `phase_7_gates` passed after the lock update;
+receipt SHA-256
+`f34f708e5304b8aa53898310f4bbf5a0fd58593d6dc5dfe643726fc1764f2a0b`.

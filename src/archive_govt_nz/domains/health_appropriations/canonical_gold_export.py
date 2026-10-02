@@ -6,6 +6,7 @@ import hashlib
 import json
 from contextlib import suppress
 from dataclasses import dataclass
+from decimal import Decimal
 from io import BytesIO
 from typing import TYPE_CHECKING, Any
 
@@ -44,6 +45,7 @@ if TYPE_CHECKING:
 MAX_OUTPUT_BYTES = 128 * 1024 * 1024
 MAX_PACKAGES = 32
 MIN_DISTINCT_CLASSIFICATION_LABELS = 2
+MIN_REVISION_VINTAGES = 2
 SCHEMA = "archive-govt-nz.health-canonical-gold/v2"
 
 
@@ -149,6 +151,8 @@ def _ro_crate_metadata(payloads: dict[str, bytes]) -> dict[str, Any]:
             media_type = "application/vnd.apache.parquet"
         elif name.endswith(".png"):
             media_type = "image/png"
+        elif name.endswith(".json"):
+            media_type = "application/json"
         else:
             _require(name.endswith(".md"))
             media_type = "text/markdown"
@@ -236,7 +240,9 @@ def _dataset_card(
             "- Budget/revenue label-change candidates: observed only;",
             "  mapping not inferred.",
             "- Other classification drift: unresolved.",
-            "- Revision reconciliation: unresolved.",
+            "- Historical revision candidates are observed only; reasons for change",
+            "  are not assessed.",
+            "- Full revision reconciliation: unresolved.",
             "- Cross-source reconciliation: not performed.",
             "- Rights: not evaluated.",
             "- Publication: not performed.",
@@ -782,6 +788,7 @@ def _output_inventory(
     )
     for name, kind, profile in (
         ("dataset-card.md", "dataset_card", None),
+        ("historical_revision_reconciliation.json", "report", None),
         ("ro-crate-metadata.json", "ro_crate_metadata", "RO-Crate 1.1"),
     ):
         payload = payloads[name]
@@ -1031,6 +1038,99 @@ def build_classification_drift_report(
     }
 
 
+def build_revision_reconciliation_report(
+    tables: dict[str, pa.Table],
+) -> dict[str, Any]:
+    """List exact historical value-change candidates without explaining them."""
+    table = tables.get("observations")
+    context_fields = (
+        "recordset",
+        "measure",
+        "source_label",
+        "unit",
+        "currency",
+        "price_basis",
+        "base_period",
+        "denominator_definition",
+        "institutional_coverage",
+        "accounting_basis",
+        "period_token",
+    )
+    groups: dict[tuple[Any, ...], dict[str, list[dict[str, Any]]]] = {}
+    if table is not None:
+        for row in table.to_pylist():
+            vintage = row.get("source_vintage")
+            record_id = row.get("input_record_id")
+            amount = row.get("amount")
+            _require(
+                type(vintage) is str
+                and bool(vintage)
+                and type(record_id) is str
+                and bool(record_id)
+                and isinstance(amount, Decimal)
+                and amount.is_finite()
+            )
+            key = tuple(row.get(field) for field in context_fields)
+            groups.setdefault(key, {}).setdefault(vintage, []).append(
+                {"amount": amount, "input_record_id": record_id}
+            )
+
+    candidates: list[dict[str, Any]] = []
+    unchanged_groups = 0
+    ambiguous_groups = 0
+    shared_groups = 0
+    for key, vintage_rows in sorted(
+        groups.items(),
+        key=lambda item: tuple(
+            "" if value is None else str(value) for value in item[0]
+        ),
+    ):
+        if len(vintage_rows) < MIN_REVISION_VINTAGES:
+            continue
+        shared_groups += 1
+        if any(len(rows) != 1 for rows in vintage_rows.values()):
+            ambiguous_groups += 1
+            continue
+        values = {
+            vintage: rows[0]["amount"] for vintage, rows in sorted(vintage_rows.items())
+        }
+        if len(set(values.values())) == 1:
+            unchanged_groups += 1
+            continue
+        context = dict(zip(context_fields, key, strict=True))
+        candidates.append(
+            {
+                **context,
+                "status": "historical_value_change_candidate",
+                "values_by_vintage": {
+                    vintage: str(value) for vintage, value in values.items()
+                },
+                "input_record_ids_by_vintage": {
+                    vintage: rows[0]["input_record_id"]
+                    for vintage, rows in sorted(vintage_rows.items())
+                },
+                "interpretation": "not_assessed",
+            }
+        )
+    return {
+        "schema_version": "archive-govt-nz.health-revision-reconciliation/v1",
+        "scope": (
+            "same_recordset_measure_source_label_and_exact_context_period_"
+            "across_observed_vintages"
+        ),
+        "key_fields": list(context_fields),
+        "completeness": "historical_product_rows_only",
+        "shared_series_period_count": shared_groups,
+        "unchanged_series_period_count": unchanged_groups,
+        "ambiguous_series_period_count": ambiguous_groups,
+        "changed_candidate_count": len(candidates),
+        "difference_interpretation": "not_assessed",
+        "other_product_revisions": "not_assessed",
+        "cross_source_comparison": "not_performed",
+        "candidates": candidates,
+    }
+
+
 def _preflight(
     packages: tuple[CanonicalPackageInput, ...],
     output: Path,
@@ -1101,7 +1201,9 @@ def _build_payloads(
     tables: dict[str, pa.Table],
     products: dict[str, dict[str, Any]],
     query_receipts: list[dict[str, Any]],
-) -> tuple[dict[str, bytes], dict[str, Any], dict[str, Any], dict[str, Any]]:
+) -> tuple[
+    dict[str, bytes], dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]
+]:
     table_payloads = {
         filename: _table_bytes(tables[key])
         for filename, key in _TABLES.items()
@@ -1120,9 +1222,17 @@ def _build_payloads(
     payloads["dataset-card.md"] = _dataset_card(
         products, temporal_report, package_markers
     )
-    payloads["ro-crate-metadata.json"] = _encoded(_ro_crate_metadata(payloads))
     classification_drift_report = build_classification_drift_report(tables)
-    return payloads, plot_report, temporal_report, classification_drift_report
+    revision_report = build_revision_reconciliation_report(tables)
+    payloads["historical_revision_reconciliation.json"] = _encoded(revision_report)
+    payloads["ro-crate-metadata.json"] = _encoded(_ro_crate_metadata(payloads))
+    return (
+        payloads,
+        plot_report,
+        temporal_report,
+        classification_drift_report,
+        revision_report,
+    )
 
 
 def _export(
@@ -1189,9 +1299,13 @@ def _export(
     crown_receipts = _add_crown_gold_products(
         inputs, tables, product_report, query_receipts
     )
-    payloads, plot_report, temporal_report, classification_drift_report = (
-        _build_payloads(tables, product_report, query_receipts)
-    )
+    (
+        payloads,
+        plot_report,
+        temporal_report,
+        classification_drift_report,
+        revision_report,
+    ) = _build_payloads(tables, product_report, query_receipts)
     package_markers = _package_markers(query_receipts)
     quality_report = _quality_report(tables, product_report)
     _require(sum(map(len, payloads.values())) <= MAX_OUTPUT_BYTES)
@@ -1212,6 +1326,7 @@ def _export(
         "source_drillthrough": _source_drillthrough(tables, outputs, packages),
         "temporal_coverage_report": temporal_report,
         "classification_drift_report": classification_drift_report,
+        "revision_reconciliation_report": revision_report,
         "plot_report": plot_report,
         "quality_report": quality_report,
         "period_ordering": "tokens_preserved_and_sorted_as_strings",
