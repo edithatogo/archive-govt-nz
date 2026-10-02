@@ -4187,3 +4187,10 @@ current census digest. The source-measure, census and recovery-binding focused
 contracts now pass together (62 passed), with Ruff and basedpyright passing.
 The full harness and exact-head hosted checks are being repeated on this final
 evidence-linked revision.
+
+The repeat stopped at the repository secret scan because the new evidence
+record used a field name interpreted as a secret keyword; no credential value
+was present. Renamed that status field to `sensitive_scan`, refreshed the
+dependent context/source-review hashes and recovery-tool pin, and reran the
+evidence-binding suite successfully (62 passed). The final full run will verify
+the updated secret-scan result.

@@ -6,7 +6,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.json",
-      "sha256": "c3ac343260068c4a137c9090c201c83c459cbe3b3862fe15b1ece83017a6bcd4"
+      "sha256": "0c79ea0f73bf25d27ea1ca7ca5bc5deb421a470dcc11c1ee9ade9ebb38856b72"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/crown-expense-canonical-projection-20260929.md",
@@ -14,7 +14,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/evidence.jsonl",
-      "sha256": "54533339c155c314e0bf2abbeb0b381859615ac2ca49e433ad3507ca037dc844"
+      "sha256": "29938cdb3b0c36e12d601ad8beb5da5890c3aab6ca90b03c62790f3287e171a7"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-2025-pilot.md",

@@ -16,7 +16,10 @@ because the source census and source-measure review pin the append-only
 evidence ledger; their dependent pins were refreshed. That exposed the further
 source-census digest pin in the recovery-assurance tool, which was updated too.
 All three evidence-binding suites now pass (62 tests); full validation is being
-repeated on the corrected pins. No actionable issue remains in the recovery
+repeated on the corrected pins. The next full run caught a secret-keyword false
+positive in a new evidence field name; the status field was renamed, dependent
+hashes and the recovery pin were refreshed, and the same 62 tests pass. No
+credential value was present. No actionable issue remains in the recovery
 logic.
 
 ## 2026-09-07 — Phase 2.1 bounded review
