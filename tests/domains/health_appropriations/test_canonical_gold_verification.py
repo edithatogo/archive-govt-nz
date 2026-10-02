@@ -43,10 +43,50 @@ def _package(root: Path) -> tuple[Path, str]:
             "accounting_basis",
             "period_token",
         ],
-        "completeness": "historical_product_rows_only",
+        "completeness": "historical_budget_revenue_product_rows",
         "difference_interpretation": "not_assessed",
         "other_product_revisions": "not_assessed",
         "cross_source_comparison": "not_performed",
+        "product_revisions": {
+            "budget": {
+                "scope": "same_literal_source_dimensions_and_period_token_within_product",
+                "key_fields": [
+                    "period_token",
+                    "amount_type",
+                    "unit",
+                    "vote",
+                    "department",
+                    "portfolio",
+                    "source_label",
+                ],
+                "completeness": "observed_rows_only",
+                "shared_series_period_count": 0,
+                "unchanged_series_period_count": 0,
+                "ambiguous_series_period_count": 0,
+                "changed_candidate_count": 0,
+                "interpretation": "not_assessed",
+                "candidates": [],
+            },
+            "revenue": {
+                "scope": "same_literal_source_dimensions_and_period_token_within_product",
+                "key_fields": [
+                    "period_token",
+                    "amount_type",
+                    "unit",
+                    "vote",
+                    "department",
+                    "revenue_type",
+                    "source_label",
+                ],
+                "completeness": "observed_rows_only",
+                "shared_series_period_count": 0,
+                "unchanged_series_period_count": 0,
+                "ambiguous_series_period_count": 0,
+                "changed_candidate_count": 0,
+                "interpretation": "not_assessed",
+                "candidates": [],
+            },
+        },
         "shared_series_period_count": 2,
         "unchanged_series_period_count": 1,
         "changed_candidate_count": 1,
@@ -207,6 +247,20 @@ def test_consumer_example_summarizes_only_verified_manifest_reports(
     assert summary["historical_revisions"]["difference_interpretation"] == (
         "not_assessed"
     )
+    assert summary["product_revisions"] == {
+        "budget": {
+            "shared_series_period_count": 0,
+            "unchanged_series_period_count": 0,
+            "changed_candidate_count": 0,
+            "ambiguous_series_period_count": 0,
+        },
+        "revenue": {
+            "shared_series_period_count": 0,
+            "unchanged_series_period_count": 0,
+            "changed_candidate_count": 0,
+            "ambiguous_series_period_count": 0,
+        },
+    }
     assert summary["cross_source_comparison"] == "not_performed"
     assert summary["rights_state"] == "not_evaluated"
     assert summary["publication"] == "not_performed"
@@ -254,6 +308,30 @@ def test_consumer_example_fails_closed_on_unverified_or_malformed_summary(
         ),
         lambda: canonical_gold_example._revision_counts(  # noqa: SLF001
             {"changed_candidate_count": -1}
+        ),
+        lambda: canonical_gold_example._product_revision_counts(  # noqa: SLF001
+            {"product_revisions": {}}
+        ),
+        lambda: canonical_gold_example._product_revision_counts(  # noqa: SLF001
+            {"product_revisions": {"budget": None, "revenue": {}}}
+        ),
+        lambda: canonical_gold_example._product_revision_counts(  # noqa: SLF001
+            {
+                "product_revisions": {
+                    "budget": {
+                        "shared_series_period_count": -1,
+                        "unchanged_series_period_count": 0,
+                        "changed_candidate_count": 0,
+                        "ambiguous_series_period_count": 0,
+                    },
+                    "revenue": {
+                        "shared_series_period_count": 0,
+                        "unchanged_series_period_count": 0,
+                        "changed_candidate_count": 0,
+                        "ambiguous_series_period_count": 0,
+                    },
+                }
+            }
         ),
     )
     for operation in malformed_inputs:
@@ -336,6 +414,33 @@ def test_invalid_package_fails_closed_and_redacted(
     assert response is not None
     assert response["result"]["isError"] is True
     assert json.loads(response["result"]["content"][0]["text"]) == receipt
+
+
+@pytest.mark.parametrize(
+    "failure", ["wrong_shape", "candidate_type", "negative_count", "count_mismatch"]
+)
+def test_invalid_product_revision_reports_fail_closed(
+    tmp_path: Path, failure: str
+) -> None:
+    root, _pin = _package(tmp_path / "gold")
+    marker = root / "MANIFEST.json"
+    manifest = json.loads(marker.read_text(encoding="utf-8"))
+    report = manifest["revision_reconciliation_report"]
+    if failure == "wrong_shape":
+        report["product_revisions"] = []
+    elif failure == "candidate_type":
+        report["product_revisions"]["budget"]["candidates"] = None
+    elif failure == "negative_count":
+        report["product_revisions"]["budget"]["shared_series_period_count"] = -1
+    else:
+        report["product_revisions"]["budget"]["changed_candidate_count"] = 1
+    marker.write_text(json.dumps(manifest), encoding="utf-8")
+    pin = hashlib.sha256(marker.read_bytes()).hexdigest()
+
+    receipt = verify_canonical_gold_package(root, pin)
+
+    assert receipt["status"] == "failed"
+    assert receipt["error"] == "invalid_canonical_gold_package"
 
 
 def test_invalid_revision_report_fails_closed(tmp_path: Path) -> None:

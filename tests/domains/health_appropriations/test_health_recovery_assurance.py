@@ -444,7 +444,7 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
             "source_vintage": "StatsNZ-GDP-2026Q2",
         },
     )
-    monkeypatch.setattr(MODULE, "canonical_inputs", lambda: ())
+    monkeypatch.setattr(MODULE, "canonical_inputs", lambda _root: ())
     monkeypatch.setattr(
         MODULE,
         "source_health_recovery_report",

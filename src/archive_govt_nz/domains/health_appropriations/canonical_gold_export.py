@@ -1041,7 +1041,7 @@ def build_classification_drift_report(
 def build_revision_reconciliation_report(
     tables: dict[str, pa.Table],
 ) -> dict[str, Any]:
-    """List exact historical value-change candidates without explaining them."""
+    """List exact-context value-change candidates without explaining them."""
     table = tables.get("observations")
     context_fields = (
         "recordset",
@@ -1112,6 +1112,36 @@ def build_revision_reconciliation_report(
                 "interpretation": "not_assessed",
             }
         )
+    budget_report = _product_revision_report(
+        tables.get("budget"),
+        product="budget",
+        key_fields=(
+            "period_token",
+            "amount_type",
+            "unit",
+            "vote",
+            "department",
+            "portfolio",
+            "source_label",
+        ),
+        value_field="total_amount",
+        record_ids_field="input_record_ids",
+    )
+    revenue_report = _product_revision_report(
+        tables.get("revenue"),
+        product="revenue",
+        key_fields=(
+            "period_token",
+            "amount_type",
+            "unit",
+            "vote",
+            "department",
+            "revenue_type",
+            "source_label",
+        ),
+        value_field="amount",
+        record_ids_field="input_record_id",
+    )
     return {
         "schema_version": "archive-govt-nz.health-revision-reconciliation/v1",
         "scope": (
@@ -1119,7 +1149,7 @@ def build_revision_reconciliation_report(
             "across_observed_vintages"
         ),
         "key_fields": list(context_fields),
-        "completeness": "historical_product_rows_only",
+        "completeness": "historical_budget_revenue_product_rows",
         "shared_series_period_count": shared_groups,
         "unchanged_series_period_count": unchanged_groups,
         "ambiguous_series_period_count": ambiguous_groups,
@@ -1127,6 +1157,84 @@ def build_revision_reconciliation_report(
         "difference_interpretation": "not_assessed",
         "other_product_revisions": "not_assessed",
         "cross_source_comparison": "not_performed",
+        "product_revisions": {"budget": budget_report, "revenue": revenue_report},
+        "candidates": candidates,
+    }
+
+
+def _product_revision_report(
+    table: pa.Table | None,
+    *,
+    product: str,
+    key_fields: tuple[str, ...],
+    value_field: str,
+    record_ids_field: str,
+) -> dict[str, Any]:
+    """Compare exact source dimensions and period tokens within one mart."""
+    groups: dict[tuple[Any, ...], dict[str, list[dict[str, Any]]]] = {}
+    if table is not None:
+        for row in table.to_pylist():
+            vintage = row.get("source_vintage")
+            value = row.get(value_field)
+            record_ids = row.get(record_ids_field)
+            ids = record_ids if record_ids_field == "input_record_ids" else [record_ids]
+            _require(
+                type(vintage) is str
+                and bool(vintage)
+                and isinstance(value, Decimal)
+                and value.is_finite()
+                and isinstance(ids, list)
+                and bool(ids)
+                and all(type(record_id) is str and record_id for record_id in ids)
+            )
+            key = tuple(row.get(field) for field in key_fields)
+            groups.setdefault(key, {}).setdefault(vintage, []).append(
+                {"value": value, "record_ids": sorted(ids)}
+            )
+
+    candidates: list[dict[str, Any]] = []
+    shared = unchanged = ambiguous = 0
+    for key, vintage_rows in sorted(
+        groups.items(),
+        key=lambda item: tuple(
+            "" if value is None else str(value) for value in item[0]
+        ),
+    ):
+        if len(vintage_rows) < MIN_REVISION_VINTAGES:
+            continue
+        shared += 1
+        if any(len(rows) != 1 for rows in vintage_rows.values()):
+            ambiguous += 1
+            continue
+        values = {
+            vintage: rows[0]["value"] for vintage, rows in sorted(vintage_rows.items())
+        }
+        if len(set(values.values())) == 1:
+            unchanged += 1
+            continue
+        candidates.append(
+            {
+                **dict(zip(key_fields, key, strict=True)),
+                "status": f"{product}_value_change_candidate",
+                "values_by_vintage": {
+                    vintage: str(value) for vintage, value in values.items()
+                },
+                "input_record_ids_by_vintage": {
+                    vintage: rows[0]["record_ids"]
+                    for vintage, rows in sorted(vintage_rows.items())
+                },
+                "interpretation": "not_assessed",
+            }
+        )
+    return {
+        "scope": "same_literal_source_dimensions_and_period_token_within_product",
+        "key_fields": list(key_fields),
+        "completeness": "observed_rows_only",
+        "shared_series_period_count": shared,
+        "unchanged_series_period_count": unchanged,
+        "ambiguous_series_period_count": ambiguous,
+        "changed_candidate_count": len(candidates),
+        "interpretation": "not_assessed",
         "candidates": candidates,
     }
 

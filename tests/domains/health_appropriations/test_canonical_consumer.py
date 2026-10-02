@@ -600,7 +600,7 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
     assert revision_report["schema_version"] == (
         "archive-govt-nz.health-revision-reconciliation/v1"
     )
-    assert revision_report["completeness"] == "historical_product_rows_only"
+    assert revision_report["completeness"] == "historical_budget_revenue_product_rows"
     assert revision_report["other_product_revisions"] == "not_assessed"
     _assert_ro_crate(output, manifest)
     _assert_dataset_card(output, manifest)
@@ -1235,7 +1235,9 @@ def test_revision_report_flags_exact_historical_changes_without_explaining_them(
     assert "source_label" in report["key_fields"]
     assert "source_locator" not in report["key_fields"]
     assert report["difference_interpretation"] == "not_assessed"
-    assert report["completeness"] == "historical_product_rows_only"
+    assert report["completeness"] == "historical_budget_revenue_product_rows"
+    assert report["product_revisions"]["budget"]["changed_candidate_count"] == 0
+    assert report["product_revisions"]["revenue"]["changed_candidate_count"] == 0
     assert report["ambiguous_series_period_count"] == 1
     assert len(report["candidates"]) == 1
     candidate = report["candidates"][0]
@@ -1245,6 +1247,86 @@ def test_revision_report_flags_exact_historical_changes_without_explaining_them(
         revised["source_vintage"]: str(revised["amount"]),
     }
     assert candidate["interpretation"] == "not_assessed"
+
+
+def test_revision_report_covers_budget_and_revenue_exact_source_contexts() -> None:
+    budget = [
+        {
+            "source_vintage": vintage,
+            "period_token": "FY2025/26",
+            "amount_type": "estimated_actual",
+            "unit": "NZD million",
+            "vote": "Health",
+            "department": "Health New Zealand",
+            "portfolio": "Health",
+            "source_label": "Operating",
+            "total_amount": Decimal(amount),
+            "input_record_ids": [f"{vintage}-1", f"{vintage}-2"],
+            "input_count": 2,
+            "formula_policy": "exact_sum_same_source_labels_and_unit/v1",
+        }
+        for vintage, amount in (("Budget-2025", "100"), ("Budget-2026", "110"))
+    ]
+    ambiguous_budget = [
+        {
+            **row,
+            "period_token": "FY2024/25",
+            "input_record_ids": [f"{row['source_vintage']}-ambiguous-{index}"],
+        }
+        for row, index in ((budget[0], 1), (budget[0], 2), (budget[1], 1))
+    ]
+    different_unit = {
+        **budget[1],
+        "unit": "NZD thousand",
+        "input_record_ids": ["different-unit"],
+    }
+    budget.extend([*ambiguous_budget, different_unit])
+    revenue = [
+        {
+            "source_vintage": vintage,
+            "period_token": "FY2025/26",
+            "amount_type": "estimated_actual",
+            "unit": "NZD million",
+            "vote": "Health",
+            "department": "Health New Zealand",
+            "revenue_type": "Other revenue",
+            "source_label": "Operating revenue",
+            "amount": Decimal(amount),
+            "input_record_id": f"{vintage}-revenue",
+            "formula_policy": "identity_projection_no_expenditure_netting/v1",
+        }
+        for vintage, amount in (("Budget-2025", "4"), ("Budget-2026", "4"))
+    ]
+    report = canonical_gold_export.build_revision_reconciliation_report(
+        {
+            "budget": pa.Table.from_pylist(
+                budget, schema=canonical_consumer.NOMINAL_BUDGET_SCHEMA
+            ),
+            "revenue": pa.Table.from_pylist(
+                revenue, schema=canonical_consumer.NOMINAL_REVENUE_SCHEMA
+            ),
+        }
+    )
+
+    budget_report = report["product_revisions"]["budget"]
+    assert budget_report["shared_series_period_count"] == 2
+    assert budget_report["changed_candidate_count"] == 1
+    assert budget_report["ambiguous_series_period_count"] == 1
+    candidate = budget_report["candidates"][0]
+    assert candidate["status"] == "budget_value_change_candidate"
+    assert candidate["values_by_vintage"] == {
+        "Budget-2025": "100.000000000000000000",
+        "Budget-2026": "110.000000000000000000",
+    }
+    assert candidate["input_record_ids_by_vintage"] == {
+        "Budget-2025": ["Budget-2025-1", "Budget-2025-2"],
+        "Budget-2026": ["Budget-2026-1", "Budget-2026-2"],
+    }
+    assert candidate["interpretation"] == "not_assessed"
+    revenue_report = report["product_revisions"]["revenue"]
+    assert revenue_report["shared_series_period_count"] == 1
+    assert revenue_report["unchanged_series_period_count"] == 1
+    assert revenue_report["changed_candidate_count"] == 0
 
 
 @pytest.mark.parametrize("packages", [[], (), [object()]])

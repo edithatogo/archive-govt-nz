@@ -28,6 +28,26 @@ _REVISION_KEY_FIELDS = (
     "accounting_basis",
     "period_token",
 )
+_PRODUCT_REVISION_KEY_FIELDS = {
+    "budget": (
+        "period_token",
+        "amount_type",
+        "unit",
+        "vote",
+        "department",
+        "portfolio",
+        "source_label",
+    ),
+    "revenue": (
+        "period_token",
+        "amount_type",
+        "unit",
+        "vote",
+        "department",
+        "revenue_type",
+        "source_label",
+    ),
+}
 _COMMON = {
     "schema_version": "archive-govt-nz.health-canonical-gold-verification/v1",
     "verification_scope": "manifest_declared_output_fixity",
@@ -42,6 +62,34 @@ def _fail(message: str) -> NoReturn:
 
 def _fail_type(message: str) -> NoReturn:
     raise TypeError(message)
+
+
+def _valid_product_revision_reports(value: object) -> bool:
+    if not isinstance(value, dict) or set(value) != set(_PRODUCT_REVISION_KEY_FIELDS):
+        return False
+    for name, key_fields in _PRODUCT_REVISION_KEY_FIELDS.items():
+        report = value.get(name)
+        if (
+            not isinstance(report, dict)
+            or report.get("scope")
+            != "same_literal_source_dimensions_and_period_token_within_product"
+            or report.get("key_fields") != list(key_fields)
+            or report.get("completeness") != "observed_rows_only"
+            or report.get("interpretation") != "not_assessed"
+            or not isinstance(report.get("candidates"), list)
+        ):
+            return False
+        counts = (
+            report.get("shared_series_period_count"),
+            report.get("unchanged_series_period_count"),
+            report.get("ambiguous_series_period_count"),
+            report.get("changed_candidate_count"),
+        )
+        if any(type(count) is not int or count < 0 for count in counts):
+            return False
+        if counts[3] != len(report["candidates"]):
+            return False
+    return True
 
 
 CANONICAL_GOLD_VERIFICATION_SCHEMA: dict[str, Any] = {
@@ -186,10 +234,12 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
         or revision_report.get("schema_version")
         != "archive-govt-nz.health-revision-reconciliation/v1"
         or revision_report.get("key_fields") != list(_REVISION_KEY_FIELDS)
-        or revision_report.get("completeness") != "historical_product_rows_only"
+        or revision_report.get("completeness")
+        != "historical_budget_revenue_product_rows"
         or revision_report.get("difference_interpretation") != "not_assessed"
         or revision_report.get("other_product_revisions") != "not_assessed"
         or revision_report.get("cross_source_comparison") != "not_performed"
+        or not _valid_product_revision_reports(revision_report.get("product_revisions"))
         or not isinstance(revision_report.get("candidates"), list)
         or revision_payload != revision_report
         or any(type(name) is not str or not name for name in products)
