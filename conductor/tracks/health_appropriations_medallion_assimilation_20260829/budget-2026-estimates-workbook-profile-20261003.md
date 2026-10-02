@@ -18,13 +18,34 @@ match the Estimates exactly; the tabled Estimates remain the official source.
 
 The source page declares Crown Copyright, Attribution 4.0 International
 (CC BY 4.0). This is a recorded publisher statement, not an independent legal
-assessment or derivative-release approval. The workbook's `Explanation` sheet
-contains usage information. Currency, workbook-native scaling, detailed
-appropriation-level period availability, exact source row counts, and the
-applicability of the reported restructuring caveat to each Health row must be
-read from and reconciled against the captured workbook before normalization is
-treated as annual coverage. The current one-vintage common-registry dispatch
-does not establish that work.
+assessment or derivative-release approval. The captured workbook has since
+been extracted and independently reconciled against literal OOXML cell values.
+`Raw Data` has 6,451 source rows; the bounded Vote Health projection selects
+185 facts and accounts for all other 6,266 rows as out of scope, with no
+rejected rows. The selected facts have these source amount-type counts:
+
+| Year | Source amount type | Selected facts |
+| ---: | --- | ---: |
+| 2022 | Actuals | 61 |
+| 2023 | Actuals | 25 |
+| 2024 | Actuals | 24 |
+| 2025 | Actuals | 24 |
+| 2026 | Estimated Actual | 25 |
+| 2027 | Main Estimates | 26 |
+
+`Amount $000` is retained as `NZD_thousands`; every selected fact has its 17
+source columns linked through cell lineage. These counts describe this
+workbook's selected Vote Health rows, not complete Vote Health coverage across
+agencies, supplementary estimates, or years. In particular, the release
+excludes 2025/26 Supplementary Estimates and warns that pre-2026/27 data are
+not restated for later agency restructuring. Row-level exposure to that
+restructuring cannot be determined from the published workbook profile alone.
+Financial-year start/basis remains unverified in the canonical facts, and the
+2026/27 Estimates tables remain the official source. See
+`raw-budget-successors.md` for the extraction receipt and independent
+reconciliation. This closes the workbook-native unit and bounded row-count
+inspection for this captured expenditure workbook; it does not establish
+complete annual appropriation coverage or analytical admission.
 
 This profile closes the public release's headline period and revision-boundary
 census for this one workbook. It does not close annual Budget source discovery,
