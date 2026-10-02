@@ -5,6 +5,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
+from archive_govt_nz.domains.health_appropriations.budget_revenue_adapter import (
+    budget_revenue_registration,
+)
 from archive_govt_nz.domains.health_appropriations.cpi_adapter import cpi_registration
 from archive_govt_nz.domains.health_appropriations.gdp_adapter import gdp_registration
 from archive_govt_nz.domains.health_appropriations.pharmac_adapter import (
@@ -39,6 +42,7 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
     population: AdapterContext,
     qes: AdapterContext,
     gdp: AdapterContext,
+    budget_revenue: AdapterContext | None = None,
     pharmac: AdapterContext | None = None,
     vote_health: AdapterContext | None = None,
 ) -> tuple[AdapterRegistration, ...]:
@@ -69,6 +73,14 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
             observed_at=gdp.observed_at,
         ),
     ]
+    if budget_revenue is not None:
+        registrations.append(
+            budget_revenue_registration(
+                source_locator=budget_revenue.source_locator,
+                source_vintage=budget_revenue.source_vintage,
+                observed_at=budget_revenue.observed_at,
+            )
+        )
     if pharmac is not None:
         registrations.append(
             pharmac_budget_registration(

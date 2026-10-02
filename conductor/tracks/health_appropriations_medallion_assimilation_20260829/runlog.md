@@ -4031,3 +4031,26 @@ hygiene, CAS benchmark, dependency, license, secret, and 113-component SBOM
 checks. The automatic `phase_7_gates` review passed; retained receipt:
 `phase_7_gates-review-receipt-20261003-vote-health-pdf.json`, file SHA-256
 `a4c921171b0454abc23b4d9400d8a7b986bdf2123faa9c6c120317123341ba40`.
+
+### Budget revenue common-registry dispatch (2026-10-03)
+
+The first focused registry run exposed a test-fixture error: the new case used
+`observed_at="now"`, while the existing source-context validator requires an
+ISO timestamp. Both new vintage cases failed at that boundary before any
+extraction. The validator behaved as designed; the fixture correction and
+rerun pass (40 focused tests). Ruff then identified one import-order issue in
+the new test file; no production issue was reported, and the import-only
+autofix and final rerun are pending.
+
+The first required full-harness attempt stopped at the format gate, which
+reported only two Ruff line-wrap changes in that same test file; later harness
+lanes did not run. The formatting correction and full retry passed: 7,278 passed, 10 skipped,
+98.15% branch-aware coverage against the 80% floor, schemas and parity passed,
+all configured mutation gates and supply-chain checks passed. Focused dispatch,
+repeatability, adapter, and common dispatcher tests passed (40); Ruff and
+basedpyright passed. The automatic `phase_7_gates` review passed; retained
+receipt `phase_7_gates-review-receipt-20261003-budget-revenue-dispatch.json`,
+SHA-256 `b81dc0c7b2e386d1f01c3d7ae512ee9f87e3031e862add345390e273293d9387`.
+The registry supports one explicit revenue vintage per registration set, not
+annual Budget coverage. Rights remain `not_evaluated`; publication remains
+`not_performed`.
