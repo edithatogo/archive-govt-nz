@@ -22,6 +22,10 @@ hashes and the recovery pin were refreshed, and the same 62 tests pass. No
 credential value was present. No actionable issue remains in the recovery
 logic.
 
+The final full validation passed on the corrected evidence-linked head (7,286
+passed, 10 skipped, 98.14% coverage against the 80% floor), including the
+secret scan and SBOM gates.
+
 ## 2026-09-07 — Phase 2.1 bounded review
 
 The changed length guard rejects incomplete identity-encoded bodies before

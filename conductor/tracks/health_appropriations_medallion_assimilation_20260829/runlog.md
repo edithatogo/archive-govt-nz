@@ -4194,3 +4194,8 @@ was present. Renamed that status field to `sensitive_scan`, refreshed the
 dependent context/source-review hashes and recovery-tool pin, and reran the
 evidence-binding suite successfully (62 passed). The final full run will verify
 the updated secret-scan result.
+
+Final `./scripts/validate.sh` passed on `347a4578`: 7,286 passed, 10 skipped,
+98.14% branch-aware coverage against the configured 80% floor; format, lint,
+typing, 53 schemas/43 representative documents, 9/9 parity, all mutation gates,
+dependency audit, licence inventory, secret scan and 113-component SBOM passed.
