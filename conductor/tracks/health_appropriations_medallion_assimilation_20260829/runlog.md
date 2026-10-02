@@ -4199,3 +4199,16 @@ Final `./scripts/validate.sh` passed on `347a4578`: 7,286 passed, 10 skipped,
 98.14% branch-aware coverage against the configured 80% floor; format, lint,
 typing, 53 schemas/43 representative documents, 9/9 parity, all mutation gates,
 dependency audit, licence inventory, secret scan and 113-component SBOM passed.
+
+## 2026-10-03 — Phase 3 integrated assurance
+
+On integrated head `496cdff9`, `./scripts/validate.sh` passed on macOS with
+7,286 tests passed and 10 skipped. Branch-aware coverage is 98.14% against the
+configured 80% floor. The run also passed lock verification, Conductor-state
+validation, formatting, lint, strict typing, 53 schemas/43 representative
+documents, 9/9 differential parity, all mutation gates, benchmark, dependency
+audit, licence inventory, secret scan and the 113-component SBOM. The existing
+test suite already satisfies the coverage floor; no tests were added to increase
+coverage. Phase 3 adapter/lineage/schema/repeat-build boundaries were reviewed
+against their existing focused contracts. Exact-head hosted checks remain the
+paired PR evidence.

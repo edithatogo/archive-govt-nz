@@ -1328,3 +1328,12 @@ above the intended 80% threshold. The configured patch target is now 80%, and
 the assurance-policy test pins both the repository total-coverage floor and
 the Codecov patch floor to 80%. Codecov's YAML validator and the focused test
 passed; final hosted checks for this update remain pending.
+
+## 2026-10-03 — Phase 3 integrated assurance
+
+The integrated full harness passes on `496cdff9`: 7,286 passed, 10 skipped,
+98.14% branch-aware coverage against the agreed 80% floor. Schema, typing,
+mutation, parity, archive-safety and source-lineage checks pass. The Phase 3
+contracts were reviewed as a whole and already exercise its boundaries; the
+checkpoint adds no coverage-only tests. Exact-head hosted checks remain pending
+for the PR.
