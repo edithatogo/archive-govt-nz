@@ -3967,14 +3967,14 @@ unchanged. The overall receipt is still `partial_with_blockers`, including
 remaining source-native Silver profiles/adapters and the complete Platinum
 profile, so this does not close the broader Gold review gate.
 
-Focused consumer, package-verification and recovery tests passed (54). No tests
-were added to raise coverage; one focused behavior test covers Budget/revenue
-exact-context comparison, changed values, and duplicate ambiguity. The required
-`./scripts/validate.sh` passed: 7,267 tests passed, 10 skipped, 98.15%
-branch-aware coverage against the configured 80% floor, 53 schemas/43
+Focused consumer, package-verification and recovery tests passed (58). No tests
+were added to raise coverage; focused behavior and fail-closed tests cover
+Budget/revenue exact-context comparisons and malformed report shapes/counts.
+The required `./scripts/validate.sh` passed: 7,271 tests passed, 10 skipped,
+98.18% branch-aware coverage against the configured 80% floor, 53 schemas/43
 representative documents, 9/9 parity, configured mutation gates, hygiene,
 benchmark, dependency, license, secret, and 113-component SBOM checks. The
 automatic Conductor `phase_7_gates` review passed; retained receipt:
 `phase_7_gates-review-receipt-20261002-budget-revenue-revisions.json`, file
-SHA-256 `b30a4f46b9e8316c7c8182d714497ba75d46ecf2e931152fa9c137653b1ee5f3`.
+SHA-256 `0e44113d0f6c54680462dde02587f5bba279d8f2fecf65f72e12f0fdf8c1425d`.
 Clean-room receipt: `clean-room-recovery-20261002-budget-revenue-revisions.json`.
