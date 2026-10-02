@@ -1,4 +1,4 @@
-"""Explicit registration set for supported CPI, wage, population and GDP inputs."""
+"""Explicit registration set for reviewed health source-operation profiles."""
 
 from __future__ import annotations
 
@@ -14,6 +14,9 @@ from archive_govt_nz.domains.health_appropriations.population_annual_adapter imp
     population_annual_registration,
 )
 from archive_govt_nz.domains.health_appropriations.qes_adapter import qes_registration
+from archive_govt_nz.domains.health_appropriations.vote_health_pdf_adapter import (
+    vote_health_pdf_registration,
+)
 
 if TYPE_CHECKING:
     from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
@@ -30,18 +33,19 @@ class AdapterContext:
     observed_at: str
 
 
-def context_adapter_registrations(
+def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit context.
     *,
     cpi: AdapterContext,
     population: AdapterContext,
     qes: AdapterContext,
     gdp: AdapterContext,
     pharmac: AdapterContext | None = None,
+    vote_health: AdapterContext | None = None,
 ) -> tuple[AdapterRegistration, ...]:
-    """Return one deterministic, probe-bound registration per context family.
+    """Return deterministic, probe-bound registrations for supplied families.
 
-    The registration set enables exact reviewed CPI, population, QES and GDP
-    layouts. It performs no acquisition, rights decision or denominator choice.
+    Only exact reviewed layouts are registered. This performs no acquisition,
+    rights decision, period alignment, or denominator choice.
     """
     registrations = [
         cpi_registration(
@@ -71,6 +75,14 @@ def context_adapter_registrations(
                 source_locator=pharmac.source_locator,
                 source_vintage=pharmac.source_vintage,
                 observed_at=pharmac.observed_at,
+            )
+        )
+    if vote_health is not None:
+        registrations.append(
+            vote_health_pdf_registration(
+                source_locator=vote_health.source_locator,
+                source_vintage=vote_health.source_vintage,
+                observed_at=vote_health.observed_at,
             )
         )
     return tuple(sorted(registrations, key=lambda row: row.adapter_id))

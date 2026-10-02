@@ -327,10 +327,17 @@ integrated parent head.
   additionally emit unresolved literal dimension assertions and source-row
   links. Common dispatch coverage for other source-operation profiles,
   Pharmac CPB HTML is now supported through its exact-profile adapter;
-  Vote Health PDF tables and SQLite remain open. See
+  the reviewed 2003/04 Vote Health composite PDF profile is now registered;
+  other Vote Health PDF layouts and SQLite remain open. See
   `adapter-dispatch.validation.json`, `budget-adapter.validation.json`, and
   `budget-revenue-adapter.validation.json` and
   `context-adapters.validation.json`. [M-05, M-07; AC-03, AC-05]
+- [x] Register one non-ambiguous common Bronze adapter for the reviewed
+  2003/04 Vote Health PDF. It extracts the exact summary, complete Part B1
+  rows, and fixed Part F revenue table, preserves page dispositions and field
+  lineage, and matches the three existing normalizers on their shared fixtures.
+  Other PDF editions/layouts remain preserved-only. [M-05, M-07, M-10, M-18;
+  AC-03, AC-05, AC-08, AC-16]
 - [~] Implement stable dimension and mapping contracts for vote,
   appropriation, department, portfolio, amount type, functional/economic
   classification, measure, unit and period. The Budget expenditure adapter now

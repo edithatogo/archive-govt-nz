@@ -4009,3 +4009,25 @@ benchmark, dependency, license, secret, and 113-component SBOM checks. The
 automatic `phase_7_gates` review passed; retained receipt:
 `phase_7_gates-review-receipt-20261003-cross-source-revisions.json`, file
 SHA-256 `9319ddaa54abffdfad447a4466882d4b1a14b43ae0067a62f3eaf5ccb76ef90a`.
+
+### Exact Vote Health PDF common-dispatch adapter (2026-10-03)
+
+Registered a single hash-bound Bronze adapter for the reviewed 2003/04 Vote
+Health supplementary PDF. One composite adapter is required because the source
+document contains the Part B summary, Part B1 detailed appropriations, and Part
+F revenue sections; registering each section separately would make the same
+whole-file PDF match multiple adapters. The adapter preserves unknown editions,
+tracks page dispositions and field lineage, and its facts and lineage match the
+three existing normalizers. It adds no claims for other PDF layouts, source
+rights, or analytical mappings. See `vote-health-pdf-adapter-20261003.md`.
+
+Focused adapter, registry, repeatability, and parser tests passed (23),
+including direct fact and lineage parity against all three normalizers. The
+configured coverage floor remains 80%; the focused tests exercise the new
+dispatch behavior rather than coverage growth. The required `./scripts/validate.sh` passed: 7,276 passed, 10 skipped,
+98.15% branch-aware coverage against the configured 80% floor, 53 schemas/43
+representative documents, 9/9 parity checks, all configured mutation gates,
+hygiene, CAS benchmark, dependency, license, secret, and 113-component SBOM
+checks. The automatic `phase_7_gates` review passed; retained receipt:
+`phase_7_gates-review-receipt-20261003-vote-health-pdf.json`, file SHA-256
+`a4c921171b0454abc23b4d9400d8a7b986bdf2123faa9c6c120317123341ba40`.
