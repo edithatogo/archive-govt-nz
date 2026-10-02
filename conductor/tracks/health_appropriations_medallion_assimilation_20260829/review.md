@@ -1,5 +1,31 @@
 # Self-Review
 
+## 2026-10-03 — Query-free redirected orphan recovery
+
+The runner adopts a redirected orphan only when the original source URL hash
+matches the selected census row and the WARC's single query-free HTTPS target
+matches the stored full final-URL digest. `verify_response_binding` then checks
+the WARC digest, one-record framing, response metadata and body fixity before
+the CAS object is promoted. Query-bearing or fragment-bearing targets cannot
+match the privacy-preserving target URI and remain untouched for fresh capture.
+The focused regression proves recovery preserves the orphan bytes and avoids a
+second request; the 34-test checkpoint suite, Ruff, basedpyright and full
+repository validation pass. No rights, publication, source completeness or
+power-loss claim is made. The initial hosted assurance run found stale hashes
+because the source census and source-measure review pin the append-only
+evidence ledger; their dependent pins were refreshed. That exposed the further
+source-census digest pin in the recovery-assurance tool, which was updated too.
+All three evidence-binding suites now pass (62 tests); full validation is being
+repeated on the corrected pins. The next full run caught a secret-keyword false
+positive in a new evidence field name; the status field was renamed, dependent
+hashes and the recovery pin were refreshed, and the same 62 tests pass. No
+credential value was present. No actionable issue remains in the recovery
+logic.
+
+The final full validation passed on the corrected evidence-linked head (7,286
+passed, 10 skipped, 98.14% coverage against the 80% floor), including the
+secret scan and SBOM gates.
+
 ## 2026-09-07 — Phase 2.1 bounded review
 
 The changed length guard rejects incomplete identity-encoded bodies before

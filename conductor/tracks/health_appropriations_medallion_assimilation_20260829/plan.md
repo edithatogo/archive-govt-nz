@@ -195,11 +195,15 @@ repository validation command. External gates block only their affected task.
 
 ### 2.1 Bronze integrity contracts first
 
-- [ ] Add failing tests for streaming single-pass ingestion, expected-length
+- [x] Add failing tests for streaming single-pass ingestion, expected-length
   mismatch, SHA-256/BLAKE3/CID identity, CAS deduplication, atomicity, WARC
   linkage, resume, interruption, unchanged/changed observations, corrupt ZIPs,
   withdrawal, restriction and tombstones. [M-03, M-04, M-18, S-01, S-02;
-  AC-01, AC-02, AC-04, AC-16]
+  AC-01, AC-02, AC-04, AC-16] Contracts are covered by the focused health
+  ingestion/checkpoint tests and existing Bronze multihash, CAS, inventory and
+  versioning tests. The redirected-orphan regression additionally verifies
+  query-free final-URL recovery; query/fragment cases remain explicitly
+  unadopted to preserve URL privacy. No tests were added to increase coverage.
 - [x] Fsync the checkpoint parent directory after atomic replacement on POSIX
   and verify ordering; retain the explicit Windows limitation. [M-03, M-15,
   AC-13]

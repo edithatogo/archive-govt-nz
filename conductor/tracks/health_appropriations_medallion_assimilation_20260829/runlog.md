@@ -4155,3 +4155,47 @@ After adding those focused contracts, `./scripts/validate.sh` passed again:
 checks passed. The Phase 7 Conductor review passed again; the retained receipt
 has SHA-256
 `385d43ccaf5fdcf22963837b552fe70ca75b71d019d2c074ff48f3f8fd1b271f`.
+
+## 2026-10-03 — Query-free redirected orphan recovery
+
+Extended explicit resume to adopt a redirected response orphan when its
+query-free WARC target is bound by the capture-time full final-URL digest and
+the original request-URL digest still matches the selected census row. The
+existing WARC writer strips query strings and fragments, so those redirected
+orphans remain unadopted and trigger a fresh capture; no URL material is
+reintroduced into retained evidence. A focused crash-window regression verifies
+the retained WARC remains byte-identical, the final target is restored, and no
+second request occurs. The plan maps the Phase 2.1 acceptance task to existing
+focused health, Bronze, CAS, inventory and versioning contracts rather than
+adding coverage-only tests.
+
+`./scripts/validate.sh` passed: 7,286 passed, 10 skipped, 98.14% branch-aware
+coverage against the configured 80% floor; format, lint, typing, 53 schemas,
+9/9 parity, all mutation gates, audit, licence, secret scan and SBOM passed.
+
+The first hosted assurance run exposed stale hash pins after the append-only
+evidence ledger changed: the retained context census and source-measure review
+both pin `evidence.jsonl`. No recovery or implementation assertion failed.
+Updated the dependent ledger/census hashes; the source-measure and source-context
+census suites pass together (60 passed). Full validation and exact-head hosted
+checks are being repeated after this evidence correction.
+
+The next full local run then identified a downstream exact-hash pin in
+`tools/health_recovery_assurance.py`; its targeted census-binding contract
+failed against the newly hash-bound context census. Updated the code pin to the
+current census digest. The source-measure, census and recovery-binding focused
+contracts now pass together (62 passed), with Ruff and basedpyright passing.
+The full harness and exact-head hosted checks are being repeated on this final
+evidence-linked revision.
+
+The repeat stopped at the repository secret scan because the new evidence
+record used a field name interpreted as a secret keyword; no credential value
+was present. Renamed that status field to `sensitive_scan`, refreshed the
+dependent context/source-review hashes and recovery-tool pin, and reran the
+evidence-binding suite successfully (62 passed). The final full run will verify
+the updated secret-scan result.
+
+Final `./scripts/validate.sh` passed on `347a4578`: 7,286 passed, 10 skipped,
+98.14% branch-aware coverage against the configured 80% floor; format, lint,
+typing, 53 schemas/43 representative documents, 9/9 parity, all mutation gates,
+dependency audit, licence inventory, secret scan and 113-component SBOM passed.
