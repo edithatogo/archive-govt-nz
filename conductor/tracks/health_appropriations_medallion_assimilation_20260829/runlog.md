@@ -4200,6 +4200,21 @@ Final `./scripts/validate.sh` passed on `347a4578`: 7,286 passed, 10 skipped,
 typing, 53 schemas/43 representative documents, 9/9 parity, all mutation gates,
 dependency audit, licence inventory, secret scan and 113-component SBOM passed.
 
+## 2026-10-03 — Vote Health Bronze-to-Silver recovery
+
+Rebuilt the exact 2002/03 Estimates detail profile twice from its pinned Bronze
+object. Both builds matched each other and the retained 27-fact Silver output
+hashes; the source object remained unchanged. Then built a new local Silver
+profile set for the captured 2003/04 Supplementary Estimates PDF using its
+separate summary, Part B1 detail and Part F revenue allowlists. Each profile
+passed preflight and two full builds emitted identical manifest and Parquet
+bytes: 9 summary facts, 26 detail facts and 17 revenue facts. Outputs are
+retained under the external Health archive with a checksum-pinned profile-set
+receipt. Rights remain unevaluated and products remain local-only. This does not
+close remaining Vote Health editions/layouts, complete annual coverage, or the
+overall Phase 5.2 Budget/Vote Health task. No tests were added; existing focused
+parser and source-operation contracts cover the implemented profiles.
+
 ## 2026-10-03 — Phase 3 integrated assurance
 
 On integrated head `496cdff9`, `./scripts/validate.sh` passed on macOS with
@@ -4212,3 +4227,20 @@ test suite already satisfies the coverage floor; no tests were added to increase
 coverage. Phase 3 adapter/lineage/schema/repeat-build boundaries were reviewed
 against their existing focused contracts. Exact-head hosted checks remain the
 paired PR evidence.
+
+## 2026-10-03 — Vote Health Bronze-to-Silver recovery
+
+Rebuilt the exact 2002/03 Estimates detail profile twice from its pinned Bronze
+object. Both builds matched each other and the retained 27-fact Silver output
+hashes; the source object remained unchanged. Then built a new local Silver
+profile set for the captured 2003/04 Supplementary Estimates PDF using its
+separate summary, Part B1 detail and Part F revenue allowlists. Each profile
+passed preflight and two full builds emitted identical manifest and Parquet
+bytes: 9 summary facts, 26 detail facts and 17 revenue facts. The unique common
+Bronze adapter selected the PDF and emitted 52 records and 252 lineage entries;
+all 52 records matched the combined Silver fact tables by ID and every field.
+Outputs are retained under the external Health archive with a checksum-pinned
+profile-set receipt. Rights remain unevaluated and products remain local-only.
+This does not close remaining Vote Health editions/layouts, complete annual
+coverage, or the overall Phase 5.2 Budget/Vote Health task. No tests were added;
+existing focused parser and source-operation contracts cover these profiles.
