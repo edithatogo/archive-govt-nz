@@ -86,15 +86,23 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-data-collection-metadata-20261002.json",
-      "sha256": "699a1fbb3df5b849974604b1a67dbbe0b1e15997921a3877699565c15151a19b"
+      "sha256": "4e56a7cb5074b08fbbf8f8481fe5bd613ac28a42be36443109301b5f7235e008"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-data-collection-metadata-20261002.json.gz",
+      "sha256": "f2903a4134b17018b1ebd0e445de575067da50ff265b966924701f1ad000fedb"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-methodology-rights-review-20261002.md",
-      "sha256": "5f75a20fbb4b4357775f35706a712a70c3797211278c46814735458d375e4427"
+      "sha256": "5d836ff577e2a57f8cb902a495bc601ad5449b0fd9fe8dc0ec3076407d1cfca9"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-series-metadata-20261002.json",
-      "sha256": "be2715d1549f68bf2b0e60a9262b204690f8dbf8105c4c565594ea09d566df3f"
+      "sha256": "a4c97cf759c2c9a408722adb9332081326ba58e4762606d3c91e306177e756a4"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-series-metadata-20261002.json.gz",
+      "sha256": "a94492c389a058ac19c62e7e12604a801d37ea4cf7ea060d08927f6e0676c466"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",

@@ -53,19 +53,22 @@ adjudicated here. The review therefore records the publisher-default
 observation while keeping rights eligibility unadjudicated; this is not legal
 approval or publication authority.
 
-The metadata bodies are retained in
-`qes-series-metadata-20261002.json` (SHA-256
-`be2715d1549f68bf2b0e60a9262b204690f8dbf8105c4c565594ea09d566df3f`) and
-`qes-data-collection-metadata-20261002.json` (SHA-256
-`699a1fbb3df5b849974604b1a67dbbe0b1e15997921a3877699565c15151a19b`). The
-series metadata is version 87, last updated 2026-05-03; the collection
-metadata is version 19, last updated 2021-04-27. Both are official Stats NZ
-DataInfo+ JSON exports retrieved 2026-10-02. Their own rights/license fields
-remain exactly as supplied and are not rewritten.
+The exact HTTP response bytes are preserved in
+`qes-series-metadata-20261002.json.gz` (gzip SHA-256
+`a94492c389a058ac19c62e7e12604a801d37ea4cf7ea060d08927f6e0676c466`; decoded
+SHA-256 `be2715d1549f68bf2b0e60a9262b204690f8dbf8105c4c565594ea09d566df3f`)
+and `qes-data-collection-metadata-20261002.json.gz` (gzip SHA-256
+`f2903a4134b17018b1ebd0e445de575067da50ff265b966924701f1ad000fedb`; decoded
+SHA-256 `699a1fbb3df5b849974604b1a67dbbe0b1e15997921a3877699565c15151a19b`).
+Readable JSON copies are also retained with LF line endings; the source review
+pins both these normalized copies and their compressed raw responses. The
+series metadata is version 87, last updated 2026-05-03; the collection metadata
+is version 19, last updated 2021-04-27. Both are official Stats NZ DataInfo+
+JSON exports retrieved 2026-10-02. Their own rights/license fields remain
+exactly as supplied and are not rewritten.
 
 Sources:
 
 - [Quarterly Employment Survey, DataInfo+ series metadata](https://datainfoplus.stats.govt.nz/item/nz.govt.stats/086258b1-90e6-4728-981d-756b3ca6e147/87)
 - [QES Data Collection, DataInfo+](https://datainfoplus.stats.govt.nz/item/nz.govt.stats/0394e202-f8c6-482c-89a3-49b16a20bf95/19)
 - [Stats NZ copyright and attribution](https://www.stats.govt.nz/about-us/copyright/)
-
