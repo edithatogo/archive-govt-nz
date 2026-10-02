@@ -25,8 +25,10 @@ normalization.
 Validation for this integrated increment is in `context-adapters.validation.json`.
 The exact Pharmac CPB HTML profile also has a common-dispatch adapter; it does
 not cover arbitrary HTML or other Pharmac pages. The common registry also
-accepts one explicit Budget revenue context, selecting the reviewed 2025 or
-2026 edition-specific normalizer without claiming annual Budget coverage; see
+accepts explicit contexts for the reviewed named-column Budget expenditure
+profile and one Budget revenue vintage (2025 or 2026), using
+the existing edition/layout-specific normalizers without claiming annual
+Budget coverage; see `budget-expenditure-common-dispatch-20261003.md` and
 `budget-revenue-common-dispatch-20261003.md`. The reviewed Vote Health 2003/04
 supplementary PDF uses one composite adapter to emit the exact summary,
 complete Part B1 rows, and fixed Part F revenue table. Its records and field

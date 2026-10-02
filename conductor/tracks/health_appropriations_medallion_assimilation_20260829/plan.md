@@ -599,9 +599,13 @@ integrated parent head.
   source-specific labels and explicit coverage gaps. [M-05, M-06, M-11;
   AC-05, AC-09]
   Budget 2026 revenue now has one locally verified edition-specific extraction
-  and canonical projection; see \`budget-revenue-2026.md\`. Other Budget revenue
-  editions, Budget expenditure editions, and Vote Health Estimates remain
-  incomplete, so this parent task remains open.
+  and canonical projection; see `budget-revenue-2026.md`. Common hash-bound
+  dispatch now registers the reviewed named-column Budget expenditure profile
+  and one exact Budget 2025/2026 revenue vintage per registry set; see the
+  `budget-expenditure-common-dispatch-20261003.md` and
+  `budget-revenue-common-dispatch-20261003.md` notes. Other Budget revenue and
+  expenditure editions and Vote Health Estimates remain incomplete, so this
+  parent task remains open.
 - [x] Promote the two retained HAIR2024 Ministry published-indicator profiles
   into source-separated canonical Gold with source-coordinate lineage and
   discrete plots. Published real/nominal labels are preserved, while units,

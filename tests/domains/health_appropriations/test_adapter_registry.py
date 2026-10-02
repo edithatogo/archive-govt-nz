@@ -5,6 +5,9 @@ from __future__ import annotations
 import hashlib
 
 import pytest
+from tests.domains.health_appropriations.test_budget_adapter import (
+    _workbook as _expenditure_workbook,
+)
 from tests.domains.health_appropriations.test_budget_revenue_adapter import (
     _revenue_workbook,
 )
@@ -61,6 +64,38 @@ def test_optional_pharmac_context_adds_only_its_reviewed_profile() -> None:
     assert "pharmac-combined-pharmaceutical-budget" in {
         row.adapter_id for row in extended
     }
+
+
+def test_optional_budget_expenditure_context_dispatches_named_layout() -> None:
+    contexts = {
+        "cpi": AdapterContext("cpi", "2026-Q2", "2026-09-01T00:00:00Z"),
+        "population": AdapterContext(
+            "population", "2026-08-18", "2026-09-01T00:00:00Z"
+        ),
+        "qes": AdapterContext("qes", "QES-2026-Q2", "2026-09-01T00:00:00Z"),
+        "gdp": AdapterContext("gdp", "StatsNZ-GDP-2026Q1", "2026-09-01T00:00:00Z"),
+    }
+    registrations = context_adapter_registrations(
+        **contexts,
+        budget_expenditure=AdapterContext(
+            "budget.xlsx", "Budget-2025", "2026-09-01T00:00:00Z"
+        ),
+    )
+    payload = _expenditure_workbook()
+
+    result = dispatch_bronze(
+        payload,
+        source_sha256=hashlib.sha256(payload).hexdigest(),
+        media_type=(
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        ),
+        registrations=registrations,
+    )
+
+    assert result.selection.adapter_id == "nz-budget-health-expenditure"
+    assert result.selection.matched_adapter_ids == ("nz-budget-health-expenditure",)
+    assert result.output.records[0]["source_vintage"] == "Budget-2025"
+    assert result.output.records[0]["year"] == 2025
 
 
 @pytest.mark.parametrize(
