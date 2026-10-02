@@ -609,7 +609,7 @@ integrated parent head.
   replacing the 2024 edition or publishing. This is not whole-workbook or
   full annual-edition coverage. [M-05, M-06, M-11; AC-05, AC-09, AC-11]
 
-- [ ] Promote eligible Vote Health Estimates/Supplementary Estimates and
+- [~] Promote eligible Vote Health Estimates/Supplementary Estimates and
   annual Budget expenditure/revenue data from Bronze to Silver, preserving
   source-specific labels and explicit coverage gaps. [M-05, M-06, M-11;
   AC-05, AC-09]
@@ -623,6 +623,17 @@ integrated parent head.
   exact 2002/03 Treasury Estimates PDF now has a detail-only profile with 27
   Part B1 facts; summary, revenue, surrounding pages, rights and comparability
   remain unresolved, so this parent task remains open.
+  On 2026-10-03, the exact 2002/03 detail package rebuilt twice from its pinned
+  Bronze object and matched all retained Silver outputs. The eligible captured
+  2003/04 Supplementary Estimates PDF now has separate exact-profile summary,
+  Part B1 and Part F Silver products (9, 26 and 17 facts); each rebuilt twice
+  with byte-identical outputs and unchanged Bronze. The registered Bronze
+  adapter selects this PDF uniquely; all 52 dispatched records match the three
+  Silver products by record ID and complete fields. Rights remain unevaluated,
+  and other Vote Health editions/layouts and full-year coverage remain open.
+  See `vote-health-silver-2003-04-20261003.json`,
+  `vote-health-estimates-2002-03-recovery-20261003.json`, and
+  `vote-health-silver-20261003.md`.
 - [x] Promote the two retained HAIR2024 Ministry published-indicator profiles
   into source-separated canonical Gold with source-coordinate lineage and
   discrete plots. Published real/nominal labels are preserved, while units,

@@ -1,0 +1,81 @@
+{
+  "bronze_adapter_dispatch": {
+    "adapter_id": "nz-treasury-vote-health-2003-04-tables",
+    "adapter_version": "1.0.0",
+    "emitted_records": 52,
+    "field_lineage_entries": 252,
+    "loss_items": 19,
+    "selection_receipt_sha256": "1675b61da75ef24f4a604fb1b6c6a294abfed79aec897d842538ca7d0773a77e",
+    "silver_record_parity": "all 52 dispatched records exactly equal the three Silver Parquet products by record ID and complete field mapping",
+    "status": "selected"
+  },
+  "bronze_source_unchanged": true,
+  "profile_outputs": {
+    "detail": {
+      "counts": {
+        "facts": 26,
+        "pages": 15
+      },
+      "output_sha256": {
+        "field_lineage.parquet": "a3c2170a8d621852e06054e0cd7db61a9ab53c88cee4d659aaf1bad56e023542",
+        "page_dispositions.parquet": "2e8b2ecdaaff9044fb0f2e69b0238d8a0e8f8ed3f10e28ddea7922f4df81c98f",
+        "vote_health_detail_facts.parquet": "31a3b655e1bf2b4d6574490bc78d746a281c39f3341fbb06bf00f2d86741853e"
+      },
+      "package_files_sha256": {
+        "MANIFEST.json": "7b6cadc2802513e596a34a6d478feaa817d26ee284c1dfc485f2036fa89e7358",
+        "field_lineage.parquet": "a3c2170a8d621852e06054e0cd7db61a9ab53c88cee4d659aaf1bad56e023542",
+        "page_dispositions.parquet": "2e8b2ecdaaff9044fb0f2e69b0238d8a0e8f8ed3f10e28ddea7922f4df81c98f",
+        "vote_health_detail_facts.parquet": "31a3b655e1bf2b4d6574490bc78d746a281c39f3341fbb06bf00f2d86741853e"
+      },
+      "profile": "vote-health-supplementary-2003-04-detail/v1"
+    },
+    "revenue": {
+      "counts": {
+        "facts": 17,
+        "pages": 2
+      },
+      "output_sha256": {
+        "field_lineage.parquet": "6f6e19f9b1fd7dfba5fc8069028796617af31cf40e89b68b458019d9ea0c9361",
+        "page_dispositions.parquet": "e91736e30d1a33a3b02e4ccaa9d55f27e926a37049c42cf0146ca4685d843e80",
+        "vote_health_revenue_facts.parquet": "65f8ea8eb4f8179db202ea33720b633ebcb761d40cfe3519c7412a730cea8028"
+      },
+      "package_files_sha256": {
+        "MANIFEST.json": "f25fd43dd8e6886100e8d6c8eb84e1470a4fbb13014b63df8da34f2343f9d347",
+        "field_lineage.parquet": "6f6e19f9b1fd7dfba5fc8069028796617af31cf40e89b68b458019d9ea0c9361",
+        "page_dispositions.parquet": "e91736e30d1a33a3b02e4ccaa9d55f27e926a37049c42cf0146ca4685d843e80",
+        "vote_health_revenue_facts.parquet": "65f8ea8eb4f8179db202ea33720b633ebcb761d40cfe3519c7412a730cea8028"
+      },
+      "profile": "vote-health-supplementary-2003-04-revenue/v1"
+    },
+    "summary": {
+      "counts": {
+        "facts": 9,
+        "pages": 1
+      },
+      "output_sha256": {
+        "field_lineage.parquet": "63d737eedb77906248a91c72239324214918fe495c7a2bbe4d7ba5cef9f423a5",
+        "page_dispositions.parquet": "6eed2250b41f9bc7ce0bccba6c7654ac14519f2fa09ba06d11d0e5a30c60e198",
+        "vote_health_summary_facts.parquet": "ff774aac78784b618ca6f7fa04248ee41a8def533be179fbfa74ac6f2ef46608"
+      },
+      "package_files_sha256": {
+        "MANIFEST.json": "b16034bc7109c9a8e09eae367ed86d4a915ec71ee53d1b7d6258c3d1ff5f9b6b",
+        "field_lineage.parquet": "63d737eedb77906248a91c72239324214918fe495c7a2bbe4d7ba5cef9f423a5",
+        "page_dispositions.parquet": "6eed2250b41f9bc7ce0bccba6c7654ac14519f2fa09ba06d11d0e5a30c60e198",
+        "vote_health_summary_facts.parquet": "ff774aac78784b618ca6f7fa04248ee41a8def533be179fbfa74ac6f2ef46608"
+      },
+      "profile": "vote-health-supplementary-2003-04-summary/v1"
+    }
+  },
+  "publication_state": "local_validation_only",
+  "repeat_builds": 2,
+  "repeat_output_bytes_identical": true,
+  "rights_state": "not_evaluated",
+  "schema_version": "archive-govt-nz.vote-health-silver-profile-set/v1",
+  "source": {
+    "capture_observed_at": "2026-08-29T09:00:17Z",
+    "source_locator": "https://www.treasury.govt.nz/sites/default/files/2008-03/supp04health.pdf",
+    "source_object_sha256": "d2b1bef458e88590c81f448870295beddf81e4f258f24702980526836ccda50a",
+    "source_vintage": "Treasury-Vote-Health-Supplementary-2003-04"
+  },
+  "status": "passed"
+}

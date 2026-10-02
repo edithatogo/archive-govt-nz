@@ -4200,6 +4200,28 @@ Final `./scripts/validate.sh` passed on `347a4578`: 7,286 passed, 10 skipped,
 typing, 53 schemas/43 representative documents, 9/9 parity, all mutation gates,
 dependency audit, licence inventory, secret scan and 113-component SBOM passed.
 
+## 2026-10-03 — Vote Health Bronze-to-Silver recovery
+
+Rebuilt the exact 2002/03 Estimates detail profile twice from its pinned Bronze
+object. Both builds matched each other and the retained 27-fact Silver output
+hashes; the source object remained unchanged. Then built a local Silver profile
+set for the captured 2003/04 Supplementary Estimates PDF using separate summary,
+Part B1 detail and Part F revenue profiles. Each passed preflight and two full
+builds emitted identical manifests and Parquet bytes: 9 summary facts, 26 detail
+facts and 17 revenue facts. The unique common Bronze adapter selected the PDF
+and emitted 52 records, 252 lineage entries and 19 loss-accounting items; all
+52 records matched the combined Silver fact tables by ID and every field.
+Outputs are retained under the external Health archive with a checksum-pinned
+profile-set receipt. Rights remain unevaluated and products remain local-only.
+The remaining Vote Health editions/layouts, full annual Budget coverage, and
+overall Phase 5.2 task remain open. No tests were added; existing focused
+parser and source-operation contracts cover these profiles.
+
+`./scripts/validate.sh` passed on the updated tree: 7,286 passed, 10 skipped,
+98.14% branch-aware coverage against the configured 80% floor; formatting,
+lint, typing, 53 schemas/43 representative documents, parity (9/9), mutation,
+dependency audit, licence inventory, secret scan and SBOM passed.
+
 ## 2026-10-03 — Phase 3 integrated assurance
 
 On integrated head `496cdff9`, `./scripts/validate.sh` passed on macOS with
