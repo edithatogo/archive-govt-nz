@@ -222,6 +222,13 @@ repository validation command. External gates block only their affected task.
   redirected-orphan WARC reconciliation remain open; unique same-URL orphan
   attempts can be recovered on explicit resume. See
   `bronze-checkpoint-contracts.md`.
+- [~] Establish per-vintage source-layout baselines from retained Silver
+  workbook inventories, linked to capture identities and Bronze fixity. The
+  current snapshot fingerprints six of 74 captured sources; BEFU-2026 and
+  HYEFU-2025 show observed layout variation under their shared extraction
+  profile. The remaining 68 sources and the meaning of this variation remain
+  unassessed. See `source-layout-baseline-20261002.md`. [M-02, M-11, S-04;
+  AC-03, AC-09]
 - [x] Confirm Git contains manifests/schemas/evidence only, not source payloads
   or large generated derivatives. Verified 2,998 tracked paths against all 73
   captured object hashes: zero source-byte matches and zero tracked files above

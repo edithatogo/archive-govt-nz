@@ -3829,3 +3829,31 @@ the repository's 80% minimum, 53 schemas/43 representative documents, 9/9
 parity, and all mutation, hygiene, CAS, dependency, licence, secret and SBOM
 checks. The automatic Conductor `phase_7_gates` review passed; receipt SHA-256
 `e25bac17174b78c4491a8c4b5bc7d2a9d4afea305f6e8ed71ff887def66e5f86`.
+
+## 2026-10-02 — Captured-source Silver layout baselines
+
+Added a reproducible, read-only `health_source_layout_baseline` report over the
+pinned source census, capture manifest, Silver manifests and Bronze CAS. The
+builder rechecks all 74 captured object hashes and sizes, links Silver layouts
+by exact source-object digest, fingerprints workbook/package/sheet structure,
+and distinguishes repeat-manifest stability from cross-vintage variation.
+Sources without a matching workbook inventory remain explicitly unassessed;
+older Silver manifests outside the pinned capture are excluded and identified.
+No source values or locators are emitted, and no normalization approval is
+implied. Machine and human evidence:
+`source-layout-baseline-20261002.json` and
+`source-layout-baseline-20261002.md`; machine-report SHA-256
+`8fc529607e6a70933b5b649bd4653e7177dd780199771f14b560cdc3a5abe0e7`.
+
+The report verified 74 Bronze objects and found matching Silver workbook
+inventories for six objects across ten manifests. Six other transformation
+profiles have one vintage; the BEFU-2026/HYEFU-2025 shared transformation shows
+structural variation. The remaining 68 captured sources have no matching
+layout baseline in this capture snapshot. The focused source-layout suite passed
+four tests; the module measured 88% branch-aware coverage, above the configured
+80% floor. Ruff, strict Pyright, and the required `./scripts/validate.sh` passed;
+repository coverage measured 98% with the configured 80% minimum. Automatic
+Conductor `phase_7_gates` passed; after the final focused-test adjustment, the
+review receipt file SHA-256 is
+`4d370727cc67498c716d1d6765ad2ee3ff61e3792b60d65c34b7d24d55df72df`.
+The parent source-layout and Phase 6 quality-report work remains partial.
