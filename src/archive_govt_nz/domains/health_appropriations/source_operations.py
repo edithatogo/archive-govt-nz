@@ -124,6 +124,12 @@ PROFILES = MappingProxyType(
             "vote_health_detail_facts.parquet",
             "page_dispositions.parquet",
         ),
+        "vote-health-estimates-2002-03-detail/v1": (
+            vote_health.DETAIL_2002_03_TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_detail_facts.parquet",
+            "page_dispositions.parquet",
+        ),
         "vote-health-supplementary-2003-04-revenue/v1": (
             vote_health_revenue.TRANSFORMATION,
             ("pages", "facts"),
@@ -139,6 +145,16 @@ _REVENUE_VINTAGES = {
 _GDP_VINTAGES = {
     "gdp-expenditure-actual-2026q1/v1": gdp.VINTAGE,
     "gdp-expenditure-actual-2026q2/v1": gdp.JUNE_VINTAGE,
+}
+_VOTE_HEALTH_DETAIL_PROFILES = {
+    "vote-health-supplementary-2003-04-detail/v1": (
+        vote_health.DETAIL_VINTAGE_2003_04,
+        None,
+    ),
+    "vote-health-estimates-2002-03-detail/v1": (
+        vote_health.DETAIL_VINTAGE_2002_03,
+        vote_health.DETAIL_2002_03_SHA256,
+    ),
 }
 _COMMON = {
     "schema_version": "archive-govt-nz.health-source-operation/v1",
@@ -295,6 +311,15 @@ def _validate(request: SourceRequest, *, dry_run: bool) -> None:
         request.source_vintage != _GDP_VINTAGES[request.profile]
     ):
         raise ValueError(_INVALID_SOURCE_OPERATION)
+    if request.profile in _VOTE_HEALTH_DETAIL_PROFILES:
+        expected_vintage, expected_source_sha256 = _VOTE_HEALTH_DETAIL_PROFILES[
+            request.profile
+        ]
+        if request.source_vintage != expected_vintage or (
+            expected_source_sha256 is not None
+            and request.expected_sha256 != expected_source_sha256
+        ):
+            raise ValueError(_INVALID_SOURCE_OPERATION)
 
 
 def _invoke(  # noqa: C901, PLR0911 - explicit allowlisted profile dispatch
@@ -345,7 +370,7 @@ def _invoke(  # noqa: C901, PLR0911 - explicit allowlisted profile dispatch
         return vote_health.normalize_vote_health_summary(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
-    if request.profile == "vote-health-supplementary-2003-04-detail/v1":
+    if request.profile in _VOTE_HEALTH_DETAIL_PROFILES:
         return vote_health.normalize_vote_health_detail(
             request.source, request.output_dir, **context, dry_run=dry_run
         )

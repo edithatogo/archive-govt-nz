@@ -4099,3 +4099,59 @@ mutation, hygiene, CAS benchmark, dependency, licence, secret and SBOM checks
 passed. The automatic `phase_7_gates` review passed; retained receipt
 `phase_7_gates-review-receipt-20261003-budget-2026-source-profile.json`,
 SHA-256 `4b2fd45a8ffce2f3e4c73181801022ea66d776e115b437ecce94d903e4890351`.
+### Bounded Budget 2026 workbook inspection attempt
+
+The first metadata-only workbook inspection passed the extensionless CAS path
+directly to `openpyxl.load_workbook` and failed with `InvalidFileException`
+before reading the ZIP workbook. The CAS object is extensionless by design;
+this is an inspection invocation issue, not a source corruption finding. Retry
+the same read-only inspection through `BytesIO` before changing any adapter.
+## 2026-10-03 — Vote Health Estimates 2002/03 layout characterization
+
+The captured, hash-pinned Treasury Estimates of Appropriations 2002/03 PDF
+(`treasury-vote-health-pdf-fd37e5ad2657936d`, SHA-256
+`1170e0bf5d11e6ac93620a2d76d68004ed99b88ed45a0c6c3c48bbc38f72fafe`) has 44
+pages. The existing Part B1 parser extracts 27 complete six-value rows from
+pages 16–41; the summary parser does not recognize a summary table in this
+edition's extracted layout, and the Part F revenue parser rejects its older
+layout. The observed document also contains Part C/E content outside the
+selected Part B1 range.
+
+The bounded attempt therefore supports only a source-pinned detail-only
+adapter. Summary, revenue, the remaining PDF pages and broader editions stay
+preserved-only; this does not infer annual coverage or accounting comparability.
+
+The first focused implementation run passed 479 tests and skipped 10; one
+schema-contract test failed because the committed source-operation schema did
+not yet include the new profile and its versioned transformation identifier.
+This is a bounded generated-schema synchronization failure; no source parsing
+or extraction assertion failed.
+
+Added a fail-closed common Bronze dispatcher adapter for this exact PDF hash,
+vintage, 44-page count, Part B1 page range and 27 unique complete rows. Its
+output retains field-level source coordinates and dispositions for all 44 PDF
+pages; normalized pages are marked partially normalized, all others
+preserved-only. The context registry exposes this source family explicitly.
+The prebuilt local Silver package passed its profile preflight and has 27 fact
+rows, 162 lineage rows and 26 page dispositions. Its payload-free manifest
+binds source hash `1170e0bf5d11e6ac93620a2d76d68004ed99b88ed45a0c6c3c48bbc38f72fafe`
+and output hashes `41ba9f71b594ba9b24cf3c65ae20188fe233f839e5937a75326803dde2125cd7`,
+`2f060c56d315414c8ba4d2b149f3a4e3aa82472e0eec2704a6c836147485b045`, and
+`baea141bde6b4b8185fa7c7d7346178af09593c6f2831a0a767a844383c98aa5`.
+Focused parser, source-operation and common-dispatch tests pass: 485 passed,
+10 skipped. These tests target changed contracts and do not attempt to raise
+coverage; the repository's existing 80% floor remains the target.
+
+PR #602's Codecov patch check identified 55.91% changed-line coverage against
+its 80% patch target, concentrated in the new adapter's successful extraction
+path. Added focused synthetic-dispatch checks for emitted values, all-page
+loss accounting, field lineage, encrypted-PDF preservation and source-hash
+mismatch. The changed adapter now reaches 93.18% branch-aware coverage in its
+focused test run; no broad coverage-only cases were added.
+
+After adding those focused contracts, `./scripts/validate.sh` passed again:
+7,285 passed, 10 skipped, 98.14% branch-aware coverage against the existing
+80% floor; format, lint, typing, schemas, 9/9 parity, mutation and supply-chain
+checks passed. The Phase 7 Conductor review passed again; the retained receipt
+has SHA-256
+`385d43ccaf5fdcf22963837b552fe70ca75b71d019d2c074ff48f3f8fd1b271f`.

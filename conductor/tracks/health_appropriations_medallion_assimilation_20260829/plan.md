@@ -610,8 +610,10 @@ integrated parent head.
   and one exact Budget 2025/2026 revenue vintage per registry set; see the
   `budget-expenditure-common-dispatch-20261003.md` and
   `budget-revenue-common-dispatch-20261003.md` notes. Other Budget revenue and
-  expenditure editions and Vote Health Estimates remain incomplete, so this
-  parent task remains open.
+  expenditure editions and most Vote Health Estimates remain incomplete. One
+  exact 2002/03 Treasury Estimates PDF now has a detail-only profile with 27
+  Part B1 facts; summary, revenue, surrounding pages, rights and comparability
+  remain unresolved, so this parent task remains open.
 - [x] Promote the two retained HAIR2024 Ministry published-indicator profiles
   into source-separated canonical Gold with source-coordinate lineage and
   discrete plots. Published real/nominal labels are preserved, while units,

@@ -1,5 +1,6 @@
 """Narrow Vote Health PDF summary layout contracts."""
 
+import hashlib
 from pathlib import Path
 
 import pyarrow.parquet as pq
@@ -63,6 +64,62 @@ Ministerial Support Services 3,097 - (497) - 2,600 - More prose.
         "Ministerial Support Services",
     ]
     assert rows[1]["tokens"]["supplementary_annual"] == "(497)"
+
+
+def test_2002_03_estimates_normalizer_admits_only_complete_part_b1_rows(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    payload = b"pinned older Vote Health Estimates fixture"
+    digest = hashlib.sha256(payload).hexdigest()
+    monkeypatch.setattr(vote_health, "DETAIL_2002_03_SHA256", digest)
+    source = tmp_path / "source.pdf"
+    source.write_bytes(payload)
+
+    class Page:
+        def __init__(self, text: str) -> None:
+            self.text = text
+
+        def extract_text(self, *, extraction_mode: str) -> str:
+            assert extraction_mode == "plain"
+            return self.text
+
+    class Reader:
+        def __init__(self, *_args: object, **_kwargs: object) -> None:
+            self.is_encrypted = False
+            texts = ["unselected page"] * 44
+            texts[15] = (
+                "Part B1 - Details of Appropriations\n"
+                "Sector Policy 12,459 - 110 - 12,569 -"
+            )
+            texts[17] = (
+                "Part B1 - Details of Appropriations (continued)\n"
+                "Ministerial Support Services 3,097 - (497) - 2,600 -"
+            )
+            texts[41] = "Part E - Explanation of Appropriations"
+            self.pages = [Page(text) for text in texts]
+
+    monkeypatch.setattr(vote_health, "PdfReader", Reader)
+    result = vote_health.normalize_vote_health_detail(
+        source,
+        tmp_path / "out",
+        expected_sha256=digest,
+        source_vintage=vote_health.DETAIL_VINTAGE_2002_03,
+        source_locator="https://example.test/est02health.pdf",
+        observed_at="2026-08-29T09:00:17Z",
+        dry_run=False,
+    )
+
+    facts = pq.read_table(tmp_path / "out/vote_health_detail_facts.parquet").to_pylist()
+    dispositions = pq.read_table(tmp_path / "out/page_dispositions.parquet").to_pylist()
+    assert result["profile"] == "vote-health-estimates-2002-03-detail/v1"
+    assert result["counts"] == {"pages": 26, "facts": 2}
+    assert [row["appropriation_name"] for row in facts] == [
+        "Sector Policy",
+        "Ministerial Support Services",
+    ]
+    assert all(row["rights_state"] == "not_evaluated" for row in facts)
+    assert dispositions[0]["source_page"] == 16
+    assert dispositions[-1]["source_page"] == 41
 
 
 def test_normalizer_writes_local_summary_only(

@@ -5,6 +5,9 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
+from archive_govt_nz.domains.health_appropriations import (
+    vote_health_estimates_2002_03_adapter as estimates_2002_03_adapter,
+)
 from archive_govt_nz.domains.health_appropriations.budget_adapter import (
     budget_expenditure_registration,
 )
@@ -49,6 +52,7 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
     budget_revenue: AdapterContext | None = None,
     pharmac: AdapterContext | None = None,
     vote_health: AdapterContext | None = None,
+    vote_health_estimates_2002_03: AdapterContext | None = None,
 ) -> tuple[AdapterRegistration, ...]:
     """Return deterministic, probe-bound registrations for supplied families.
 
@@ -107,6 +111,14 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
                 source_locator=vote_health.source_locator,
                 source_vintage=vote_health.source_vintage,
                 observed_at=vote_health.observed_at,
+            )
+        )
+    if vote_health_estimates_2002_03 is not None:
+        registrations.append(
+            estimates_2002_03_adapter.vote_health_estimates_2002_03_registration(
+                source_locator=vote_health_estimates_2002_03.source_locator,
+                source_vintage=vote_health_estimates_2002_03.source_vintage,
+                observed_at=vote_health_estimates_2002_03.observed_at,
             )
         )
     return tuple(sorted(registrations, key=lambda row: row.adapter_id))
