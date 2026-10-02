@@ -1142,6 +1142,66 @@ def build_revision_reconciliation_report(
         value_field="amount",
         record_ids_field="input_record_id",
     )
+    pharmac_report = _product_revision_report(
+        tables.get("pharmac"),
+        product="pharmac",
+        key_fields=(
+            "period_token",
+            "measure",
+            "unit",
+            "currency",
+            "price_basis",
+            "base_period",
+            "denominator_definition",
+            "amount_type",
+            "source_label",
+            "budget_scope",
+            "funding_regime",
+        ),
+        value_field="amount",
+        record_ids_field="record_id",
+    )
+    moh_report = _product_revision_report(
+        tables.get("moh"),
+        product="moh",
+        key_fields=(
+            "period_token",
+            "profile",
+            "source_label",
+            "price_basis",
+            "per_capita",
+            "unit",
+            "price_base",
+            "denominator",
+        ),
+        value_field="amount",
+        record_ids_field="record_id",
+    )
+    crown_tables = [
+        tables[name]
+        for name in ("crown_befu", "crown_hyefu", "fiscal_crown")
+        if name in tables
+    ]
+    crown_table = pa.concat_tables(crown_tables) if crown_tables else None
+    crown_report = _product_revision_report(
+        crown_table,
+        product="crown",
+        key_fields=(
+            "period_token",
+            "measure",
+            "amount_type",
+            "unit",
+            "currency",
+            "price_basis",
+            "base_period",
+            "denominator_definition",
+            "source_label",
+            "institutional_coverage",
+            "accounting_basis",
+        ),
+        value_field="amount",
+        record_ids_field="record_id",
+    )
     return {
         "schema_version": "archive-govt-nz.health-revision-reconciliation/v1",
         "scope": (
@@ -1149,7 +1209,7 @@ def build_revision_reconciliation_report(
             "across_observed_vintages"
         ),
         "key_fields": list(context_fields),
-        "completeness": "historical_budget_revenue_product_rows",
+        "completeness": "historical_budget_revenue_pharmac_moh_crown_product_rows",
         "shared_series_period_count": shared_groups,
         "unchanged_series_period_count": unchanged_groups,
         "ambiguous_series_period_count": ambiguous_groups,
@@ -1157,7 +1217,13 @@ def build_revision_reconciliation_report(
         "difference_interpretation": "not_assessed",
         "other_product_revisions": "not_assessed",
         "cross_source_comparison": "not_performed",
-        "product_revisions": {"budget": budget_report, "revenue": revenue_report},
+        "product_revisions": {
+            "budget": budget_report,
+            "revenue": revenue_report,
+            "pharmac": pharmac_report,
+            "moh": moh_report,
+            "crown": crown_report,
+        },
         "candidates": candidates,
     }
 
