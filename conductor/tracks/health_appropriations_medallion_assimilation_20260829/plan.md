@@ -223,12 +223,15 @@ repository validation command. External gates block only their affected task.
   attempts can be recovered on explicit resume. See
   `bronze-checkpoint-contracts.md`.
 - [~] Establish per-vintage source-layout baselines from retained Silver
-  workbook inventories, linked to capture identities and Bronze fixity. The
-  current snapshot fingerprints six of 74 captured sources; BEFU-2026 and
-  HYEFU-2025 show observed layout variation under their shared extraction
-  profile. The remaining 68 sources and the meaning of this variation remain
-  unassessed. See `source-layout-baseline-20261002.md`. [M-02, M-11, S-04;
-  AC-03, AC-09]
+  workbook inventories and captured official PDF page structures, linked to
+  capture identities and Bronze fixity. Workbook evidence fingerprints six of
+  74 captured sources; BEFU-2026 and HYEFU-2025 show observed layout variation
+  under their shared extraction profile. PDF evidence fingerprints 55 of 58
+  captured PDFs; three are encrypted and 54 distinct page-layout signatures
+  are observed. Ten captured sources have neither workbook nor PDF baselines.
+  Structural variation is not an approved mapping. See
+  `source-layout-baseline-20261002.md` and
+  `source-pdf-layout-baseline-20261002.md`. [M-02, M-11, S-04; AC-03, AC-09]
 - [x] Confirm Git contains manifests/schemas/evidence only, not source payloads
   or large generated derivatives. Verified 2,998 tracked paths against all 73
   captured object hashes: zero source-byte matches and zero tracked files above

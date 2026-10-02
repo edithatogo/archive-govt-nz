@@ -3857,3 +3857,19 @@ Conductor `phase_7_gates` passed; after the final focused-test adjustment, the
 review receipt file SHA-256 is
 `4d370727cc67498c716d1d6765ad2ee3ff61e3792b60d65c34b7d24d55df72df`.
 The parent source-layout and Phase 6 quality-report work remains partial.
+
+## 2026-10-02 — Captured-source PDF page-layout baselines
+
+Added a read-only PDF layout baseline builder that validates census/capture
+identity and Bronze SHA-256/size before recording page geometry, structural
+resource counts and metadata keys. It does not extract page text. The pinned
+capture contained 58 PDFs: 55 received baselines and three encrypted files
+remain unavailable; 54 distinct fingerprints were observed in the shared
+Treasury Vote Health document family. Ten captured objects remain without
+either the earlier workbook baseline or this PDF baseline. Structural
+variation is not a normalization approval. See
+`source-pdf-layout-baseline-20261002.md` and its machine report, whose SHA-256
+is `1f9eb496f6291347daf9c8546c3fad7c9e7ac977a808e74a6b468c6221608032`.
+The focused PDF suite passed five tests at 81% branch-aware module coverage,
+above the configured 80% floor. Full repository validation and the automatic
+Conductor review remain pending for this change.
