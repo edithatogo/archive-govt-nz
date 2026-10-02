@@ -154,3 +154,48 @@ def test_parse_pdf_reports_encrypted_and_malformed_sources_as_unavailable(
     )
     assert _parse_pdf(b"malformed") == (None, "pdf_parse_error")
     assert FileNotDecryptedError("locked")
+
+
+def test_pdf_layout_report_fails_closed_on_invalid_inputs_and_bronze_metadata(
+    tmp_path: Path,
+) -> None:
+    census, capture, cas = _capture_fixture(
+        tmp_path, [("vote-health-2025", _blank_pdf(612, 792))]
+    )
+    invalid_inputs = [
+        (b"not-json", capture, "pdf_layout_input_invalid"),
+        (
+            json.dumps({"schema_version": "unknown"}).encode(),
+            capture,
+            "pdf_layout_census_schema_invalid",
+        ),
+        (
+            census,
+            json.dumps({"cutoff": "other", "results": []}).encode(),
+            "pdf_layout_cutoff_mismatch",
+        ),
+        (
+            json.dumps(
+                {
+                    "schema_version": "archive-govt-nz.health-source-census/v1",
+                    "cutoff": "2026-09-30",
+                    "records": None,
+                }
+            ).encode(),
+            capture,
+            "pdf_layout_input_shape_invalid",
+        ),
+    ]
+    for invalid_census, invalid_capture, error in invalid_inputs:
+        with pytest.raises(PdfLayoutBaselineError, match=error):
+            build_pdf_layout_baseline_report(invalid_census, invalid_capture, cas)
+
+    manifest = json.loads(capture)
+    manifest["results"][0]["bytes"] += 1
+    with pytest.raises(PdfLayoutBaselineError, match="pdf_bronze_object_size_mismatch"):
+        build_pdf_layout_baseline_report(census, json.dumps(manifest).encode(), cas)
+
+    digest = manifest["results"][0]["sha256"]
+    (cas / digest[:2] / digest).unlink()
+    with pytest.raises(PdfLayoutBaselineError, match="pdf_bronze_object_missing"):
+        build_pdf_layout_baseline_report(census, capture, cas)
