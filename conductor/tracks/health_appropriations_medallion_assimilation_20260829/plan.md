@@ -620,9 +620,11 @@ integrated parent head.
   `budget-expenditure-common-dispatch-20261003.md` and
   `budget-revenue-common-dispatch-20261003.md` notes. Other Budget revenue and
   expenditure editions and most Vote Health Estimates remain incomplete. One
-  exact 2002/03 Treasury Estimates PDF now has a detail-only profile with 27
-  Part B1 facts; summary, revenue, surrounding pages, rights and comparability
-  remain unresolved, so this parent task remains open.
+  exact 2002/03 Treasury Estimates PDF has a Part B1 detail profile with 27
+  facts and an edition-specific Part F profile with 16 revenue facts,
+  preserving the 2001/02 and 2002/03 column meanings. The narrative summary,
+  surrounding pages, rights and comparability remain unresolved, so this parent
+  task remains open.
   On 2026-10-03, the exact 2002/03 detail package rebuilt twice from its pinned
   Bronze object and matched all retained Silver outputs. The eligible captured
   2003/04 Supplementary Estimates PDF now has separate exact-profile summary,
@@ -634,6 +636,13 @@ integrated parent head.
   See `vote-health-silver-2003-04-20261003.json`,
   `vote-health-estimates-2002-03-recovery-20261003.json`, and
   `vote-health-silver-20261003.md`.
+  The 2002/03 Part F revenue profile was independently rebuilt twice from the
+  same pinned Bronze object; 16 facts, 48 lineage rows and 2 page
+  dispositions match byte-for-byte between runs. The unique 2002/03 Bronze
+  adapter now emits the 27 detail and 16 revenue records; every revenue fact
+  matches the Silver package by ID and complete fields. Rights remain
+  unevaluated and output remains local-only. See
+  `vote-health-revenue-2002-03-20261003.md` and its machine receipt.
 - [x] Promote the two retained HAIR2024 Ministry published-indicator profiles
   into source-separated canonical Gold with source-coordinate lineage and
   discrete plots. Published real/nominal labels are preserved, while units,

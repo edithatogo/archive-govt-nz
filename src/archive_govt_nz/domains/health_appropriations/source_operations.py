@@ -136,6 +136,12 @@ PROFILES = MappingProxyType(
             "vote_health_revenue_facts.parquet",
             "page_dispositions.parquet",
         ),
+        "vote-health-estimates-2002-03-revenue/v1": (
+            vote_health_revenue.ESTIMATES_2002_03_TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_estimates_revenue_facts.parquet",
+            "page_dispositions.parquet",
+        ),
     }
 )
 _REVENUE_VINTAGES = {
@@ -154,6 +160,12 @@ _VOTE_HEALTH_DETAIL_PROFILES = {
     "vote-health-estimates-2002-03-detail/v1": (
         vote_health.DETAIL_VINTAGE_2002_03,
         vote_health.DETAIL_2002_03_SHA256,
+    ),
+}
+_VOTE_HEALTH_REVENUE_PROFILES = {
+    vote_health_revenue.ESTIMATES_2002_03_PROFILE: (
+        vote_health_revenue.ESTIMATES_2002_03_VINTAGE,
+        vote_health_revenue.ESTIMATES_2002_03_SHA256,
     ),
 }
 _COMMON = {
@@ -320,6 +332,15 @@ def _validate(request: SourceRequest, *, dry_run: bool) -> None:
             and request.expected_sha256 != expected_source_sha256
         ):
             raise ValueError(_INVALID_SOURCE_OPERATION)
+    if request.profile in _VOTE_HEALTH_REVENUE_PROFILES:
+        expected_vintage, expected_source_sha256 = _VOTE_HEALTH_REVENUE_PROFILES[
+            request.profile
+        ]
+        if (
+            request.source_vintage != expected_vintage
+            or request.expected_sha256 != expected_source_sha256
+        ):
+            raise ValueError(_INVALID_SOURCE_OPERATION)
 
 
 def _invoke(  # noqa: C901, PLR0911 - explicit allowlisted profile dispatch
@@ -340,6 +361,10 @@ def _invoke(  # noqa: C901, PLR0911 - explicit allowlisted profile dispatch
         )
     if request.profile == "cpiq-se9a/v1":
         return cpi.normalize_cpi(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_revenue.ESTIMATES_2002_03_PROFILE:
+        return vote_health_revenue.normalize_vote_health_estimates_revenue_2002_03(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
     if request.profile == "population-annual-mean-context/v1":

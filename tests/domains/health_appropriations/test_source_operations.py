@@ -388,6 +388,24 @@ def test_vote_health_revenue_profile_dispatches_to_its_allowlisted_adapter(
     assert source_operations.operate_source(request)["status"] == "preflight_passed"
 
 
+def test_vote_health_2002_03_revenue_profile_dispatches_to_its_adapter(
+    request_source: source_operations.SourceRequest, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    request = replace(
+        request_source,
+        profile="vote-health-estimates-2002-03-revenue/v1",
+        source_vintage=source_operations.vote_health_revenue.ESTIMATES_2002_03_VINTAGE,
+        expected_sha256=source_operations.vote_health_revenue.ESTIMATES_2002_03_SHA256,
+    )
+    expected = {"status": "planned", "counts": {"pages": 2, "facts": 16}}
+    monkeypatch.setattr(
+        source_operations.vote_health_revenue,
+        "normalize_vote_health_estimates_revenue_2002_03",
+        lambda *_args, **_kwargs: expected,
+    )
+    assert source_operations.operate_source(request)["status"] == "preflight_passed"
+
+
 @pytest.mark.parametrize("family", ["pharmac", "gdp", "gdp-june"])
 def test_extended_dispatch_preserves_source_specific_package(
     tmp_path: Path, family: str

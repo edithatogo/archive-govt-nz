@@ -55,6 +55,8 @@ every planned record set, measure or operational workflow.
 - [Hash-bound Bronze adapter dispatch and validation](./adapter-dispatch.validation.json)
 - [Named-column Budget workbook dispatch adapter validation](./budget-adapter.validation.json)
 - [Budget revenue workbook dispatch adapter validation](./budget-revenue-adapter.validation.json)
+- [Vote Health 2002/03 Part F revenue recovery](./vote-health-revenue-2002-03-20261003.md)
+- [Vote Health 2002/03 Part F machine receipt](./vote-health-revenue-2002-03-20261003.json)
 - [Budget source-literal dimensions and unresolved mapping validation](./budget-source-dimensions.validation.json)
 - [Context-source Bronze adapters](./context-adapters.md)
 - [Context-source adapter validation](./context-adapters.validation.json)

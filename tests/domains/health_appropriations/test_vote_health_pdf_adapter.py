@@ -25,7 +25,7 @@ from archive_govt_nz.domains.health_appropriations.adapter_registry import (
     context_adapter_registrations,
 )
 from archive_govt_nz.domains.health_appropriations.vote_health_estimates_2002_03_adapter import (
-    VoteHealthEstimates2002DetailAdapter,
+    VoteHealthEstimates2002TablesAdapter,
 )
 from archive_govt_nz.domains.health_appropriations.vote_health_pdf_adapter import (
     vote_health_pdf_registration,
@@ -252,7 +252,7 @@ def test_context_registry_can_include_estimates_2002_03_profile() -> None:
     registration = next(
         row for row in registrations if "estimates-2002-03" in row.adapter_id
     )
-    assert registration.adapter_id == "nz-treasury-vote-health-estimates-2002-03-detail"
+    assert registration.adapter_id == "nz-treasury-vote-health-estimates-2002-03-tables"
     assert registration.media_type == "application/pdf"
 
 
@@ -264,6 +264,8 @@ def test_estimates_2002_03_common_adapter_emits_complete_rows_and_all_page_losse
     pages = ["front matter"] * 44
     pages[15] = "Part B1 - Details of Appropriations"
     pages[41] = "Part E - Statement"
+    pages[42] = "Part F - Crown Revenue and Receipts"
+    pages[43] = "Part F1 - Current and Capital Revenue and Receipts (continued)"
 
     class Reader:
         is_encrypted = False
@@ -292,7 +294,29 @@ def test_estimates_2002_03_common_adapter_emits_complete_rows_and_all_page_losse
     monkeypatch.setattr(vote_health_estimates_2002_03_adapter, "PdfReader", Reader)
     monkeypatch.setattr(vote_health_estimates_2002_03_adapter, "_SOURCE_SHA256", digest)
     monkeypatch.setattr(vote_health, "parse_detail_page", parse_detail_page)
-    adapter = VoteHealthEstimates2002DetailAdapter(
+    monkeypatch.setattr(
+        vote_health_revenue,
+        "parse_estimates_2002_03_revenue_pages",
+        lambda _texts: [
+            {
+                "source_page": 43 + number // 9,
+                "revenue_name": (
+                    "Total Capital Receipts"
+                    if number == 14
+                    else "Total Crown Revenue and Receipts"
+                    if number == 15
+                    else f"Revenue {number}"
+                ),
+                "tokens": {
+                    "prior_year_budgeted": "1",
+                    "prior_year_estimated_actual": "-",
+                    "current_year_budgeted": "3",
+                },
+            }
+            for number in range(16)
+        ],
+    )
+    adapter = VoteHealthEstimates2002TablesAdapter(
         "https://example.test/est02health.pdf",
         vote_health.DETAIL_VINTAGE_2002_03,
         OBSERVED_AT,
@@ -301,12 +325,14 @@ def test_estimates_2002_03_common_adapter_emits_complete_rows_and_all_page_losse
     output = adapter.extract(bronze, source_sha256=digest)
 
     assert adapter.matches_layout(bronze)
-    assert len(output.records) == 27
+    assert len(output.records) == 43
     assert output.records[0]["department_other"] is None
     assert output.records[0]["rights_state"] == "not_evaluated"
-    assert len(output.lineage) == 162
+    assert len(output.lineage) == 210
     assert len(output.losses) == 44
     assert output.losses[15].disposition == "partially_normalized"
+    assert output.losses[42].disposition == "normalized"
+    assert output.losses[43].disposition == "normalized"
     assert output.losses[15].reason == "complete_six_value_rows_only"
     assert output.losses[0].disposition == "preserved_only"
 
@@ -322,7 +348,7 @@ def test_estimates_2002_03_common_adapter_fails_closed_on_layout_and_hash(
         "PdfReader",
         lambda *_args, **_kwargs: type("Reader", (), {"is_encrypted": True})(),
     )
-    adapter = VoteHealthEstimates2002DetailAdapter(
+    adapter = VoteHealthEstimates2002TablesAdapter(
         "https://example.test/est02health.pdf",
         vote_health.DETAIL_VINTAGE_2002_03,
         OBSERVED_AT,
