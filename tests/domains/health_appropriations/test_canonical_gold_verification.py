@@ -10,6 +10,9 @@ import pytest
 
 from archive_govt_nz.cli import app
 from archive_govt_nz.domains.health_appropriations import canonical_gold_verification
+from archive_govt_nz.domains.health_appropriations.canonical_gold_example import (
+    summarize_verified_canonical_gold,
+)
 from archive_govt_nz.domains.health_appropriations.canonical_gold_verification import (
     verify_canonical_gold_package,
 )
@@ -41,6 +44,10 @@ def _package(root: Path) -> tuple[Path, str]:
         "difference_interpretation": "not_assessed",
         "other_product_revisions": "not_assessed",
         "cross_source_comparison": "not_performed",
+        "shared_series_period_count": 2,
+        "unchanged_series_period_count": 1,
+        "changed_candidate_count": 1,
+        "ambiguous_series_period_count": 0,
         "candidates": [],
     }
     revision_payload = (
@@ -65,7 +72,14 @@ def _package(root: Path) -> tuple[Path, str]:
         "products": {"historical": {"input_records": 1}},
         "temporal_coverage_report": {
             "schema_version": "archive-govt-nz.health-temporal-coverage/v1",
-            "groups": [{"observed_periods": []}],
+            "groups": [
+                {
+                    "observed_periods": [
+                        {"period_token": "FY2024/25", "observation_count": 2},
+                        {"period_token": "FY2025/26", "observation_count": 1},
+                    ]
+                }
+            ],
         },
         "classification_drift_report": {
             "schema_version": "archive-govt-nz.health-classification-drift/v1",
@@ -170,6 +184,29 @@ def test_cli_mcp_parity_and_no_write(
         "idempotentHint": True,
         "openWorldHint": False,
     }
+
+
+def test_consumer_example_summarizes_only_verified_manifest_reports(
+    tmp_path: Path,
+) -> None:
+    root, manifest_sha256 = _package(tmp_path / "gold")
+    summary = summarize_verified_canonical_gold(root, manifest_sha256)
+
+    assert summary["status"] == "verified_package_summary"
+    assert summary["manifest_sha256"] == manifest_sha256
+    assert summary["products"] == {"historical": {"input_records": 1}}
+    assert summary["temporal_coverage"] == {
+        "exact_context_group_count": 1,
+        "observation_count": 3,
+        "period_token_count": 2,
+    }
+    assert summary["historical_revisions"]["changed_candidate_count"] == 1
+    assert summary["historical_revisions"]["difference_interpretation"] == (
+        "not_assessed"
+    )
+    assert summary["cross_source_comparison"] == "not_performed"
+    assert summary["rights_state"] == "not_evaluated"
+    assert summary["publication"] == "not_performed"
 
 
 @pytest.mark.parametrize(
