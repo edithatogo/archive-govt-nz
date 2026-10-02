@@ -4141,3 +4141,17 @@ and output hashes `41ba9f71b594ba9b24cf3c65ae20188fe233f839e5937a75326803dde2125
 Focused parser, source-operation and common-dispatch tests pass: 485 passed,
 10 skipped. These tests target changed contracts and do not attempt to raise
 coverage; the repository's existing 80% floor remains the target.
+
+PR #602's Codecov patch check identified 55.91% changed-line coverage against
+its 80% patch target, concentrated in the new adapter's successful extraction
+path. Added focused synthetic-dispatch checks for emitted values, all-page
+loss accounting, field lineage, encrypted-PDF preservation and source-hash
+mismatch. The changed adapter now reaches 93.18% branch-aware coverage in its
+focused test run; no broad coverage-only cases were added.
+
+After adding those focused contracts, `./scripts/validate.sh` passed again:
+7,285 passed, 10 skipped, 98.14% branch-aware coverage against the existing
+80% floor; format, lint, typing, schemas, 9/9 parity, mutation and supply-chain
+checks passed. The Phase 7 Conductor review passed again; the retained receipt
+has SHA-256
+`385d43ccaf5fdcf22963837b552fe70ca75b71d019d2c074ff48f3f8fd1b271f`.

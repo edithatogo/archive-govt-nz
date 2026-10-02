@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import hashlib
 from pathlib import Path
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 import pyarrow.parquet as pq
 import pytest
@@ -13,6 +13,7 @@ from tests.domains.health_appropriations.test_vote_health_revenue import _pages
 
 from archive_govt_nz.domains.health_appropriations import (
     vote_health,
+    vote_health_estimates_2002_03_adapter,
     vote_health_pdf_adapter,
     vote_health_revenue,
 )
@@ -22,6 +23,9 @@ from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
 from archive_govt_nz.domains.health_appropriations.adapter_registry import (
     AdapterContext,
     context_adapter_registrations,
+)
+from archive_govt_nz.domains.health_appropriations.vote_health_estimates_2002_03_adapter import (
+    VoteHealthEstimates2002DetailAdapter,
 )
 from archive_govt_nz.domains.health_appropriations.vote_health_pdf_adapter import (
     vote_health_pdf_registration,
@@ -250,3 +254,84 @@ def test_context_registry_can_include_estimates_2002_03_profile() -> None:
     )
     assert registration.adapter_id == "nz-treasury-vote-health-estimates-2002-03-detail"
     assert registration.media_type == "application/pdf"
+
+
+def test_estimates_2002_03_common_adapter_emits_complete_rows_and_all_page_losses(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    bronze = b"synthetic pinned 2002/03 PDF bytes"
+    digest = hashlib.sha256(bronze).hexdigest()
+    pages = ["front matter"] * 44
+    pages[15] = "Part B1 - Details of Appropriations"
+    pages[41] = "Part E - Statement"
+
+    class Reader:
+        is_encrypted = False
+
+        def __init__(self, *_args: object, **_kwargs: object) -> None:
+            self.pages = [_Page(text) for text in pages]
+
+    def parse_detail_page(text: str, **_kwargs: object) -> list[dict[str, Any]]:
+        if text != pages[15]:
+            return []
+        return [
+            {
+                "appropriation_name": f"Appropriation {number}",
+                "tokens": {
+                    "department_annual": "1",
+                    "department_other": "-",
+                    "non_departmental_annual": "3",
+                    "non_departmental_other": "4",
+                    "total_appropriations": "8",
+                    "change": "0",
+                },
+            }
+            for number in range(27)
+        ]
+
+    monkeypatch.setattr(vote_health_estimates_2002_03_adapter, "PdfReader", Reader)
+    monkeypatch.setattr(vote_health_estimates_2002_03_adapter, "_SOURCE_SHA256", digest)
+    monkeypatch.setattr(vote_health, "parse_detail_page", parse_detail_page)
+    adapter = VoteHealthEstimates2002DetailAdapter(
+        "https://example.test/est02health.pdf",
+        vote_health.DETAIL_VINTAGE_2002_03,
+        OBSERVED_AT,
+    )
+
+    output = adapter.extract(bronze, source_sha256=digest)
+
+    assert adapter.matches_layout(bronze)
+    assert len(output.records) == 27
+    assert output.records[0]["department_other"] is None
+    assert output.records[0]["rights_state"] == "not_evaluated"
+    assert len(output.lineage) == 162
+    assert len(output.losses) == 44
+    assert output.losses[15].disposition == "partially_normalized"
+    assert output.losses[15].reason == "complete_six_value_rows_only"
+    assert output.losses[0].disposition == "preserved_only"
+
+
+def test_estimates_2002_03_common_adapter_fails_closed_on_layout_and_hash(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    bronze = b"synthetic pinned 2002/03 PDF bytes"
+    digest = hashlib.sha256(bronze).hexdigest()
+    monkeypatch.setattr(vote_health_estimates_2002_03_adapter, "_SOURCE_SHA256", digest)
+    monkeypatch.setattr(
+        vote_health_estimates_2002_03_adapter,
+        "PdfReader",
+        lambda *_args, **_kwargs: type("Reader", (), {"is_encrypted": True})(),
+    )
+    adapter = VoteHealthEstimates2002DetailAdapter(
+        "https://example.test/est02health.pdf",
+        vote_health.DETAIL_VINTAGE_2002_03,
+        OBSERVED_AT,
+    )
+
+    output = adapter.extract(bronze, source_sha256=digest)
+
+    assert not adapter.matches_layout(bronze)
+    assert output.records == ()
+    assert output.losses[0].disposition == "preserved_only"
+    with pytest.raises(ValueError, match="source_hash_mismatch"):
+        adapter.extract(bronze, source_sha256="0" * 64)

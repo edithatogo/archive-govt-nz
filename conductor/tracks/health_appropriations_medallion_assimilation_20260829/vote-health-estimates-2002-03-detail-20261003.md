@@ -16,10 +16,11 @@ does not decide redistribution rights or accounting comparability. The Part B
 summary table, Part F Crown revenue table, other page content, other editions
 and annual Vote Health coverage remain unresolved.
 
-The focused contract suite passed 485 tests with 10 skips. The required
-`./scripts/validate.sh` passed 7,283 tests with 10 skips and 97.98% branch-aware
+The focused contract suite passed 487 tests with 10 skips. The adapter itself
+reached 93.18% branch-aware coverage in the focused changed-path run. The required
+`./scripts/validate.sh` passed 7,285 tests with 10 skips and 98.14% branch-aware
 coverage against the configured 80% floor; format, lint, typing, 53 schemas/43
 representative documents, parity (9/9), mutation, dependency, licence, secret
 and SBOM checks passed. The automatic Phase 7 Conductor review passed; retained
 receipt `phase_7_gates-review-receipt-20261003-vote-health-2002-03.json`,
-SHA-256 `e744d442c30804e17bcc413c8b9d7c21d5a90b2ac438417826bc9dad7f3f8dea`.
+SHA-256 `385d43ccaf5fdcf22963837b552fe70ca75b71d019d2c074ff48f3f8fd1b271f`.
