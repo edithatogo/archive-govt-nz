@@ -9,7 +9,10 @@ from pathlib import Path
 import pytest
 
 from archive_govt_nz.cli import app
-from archive_govt_nz.domains.health_appropriations import canonical_gold_verification
+from archive_govt_nz.domains.health_appropriations import (
+    canonical_gold_example,
+    canonical_gold_verification,
+)
 from archive_govt_nz.domains.health_appropriations.canonical_gold_example import (
     summarize_verified_canonical_gold,
 )
@@ -207,6 +210,55 @@ def test_consumer_example_summarizes_only_verified_manifest_reports(
     assert summary["cross_source_comparison"] == "not_performed"
     assert summary["rights_state"] == "not_evaluated"
     assert summary["publication"] == "not_performed"
+
+
+def test_consumer_example_fails_closed_on_unverified_or_malformed_summary(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    root, _pin = _package(tmp_path / "gold")
+    with pytest.raises(ValueError, match=r"^canonical_gold_example_invalid$"):
+        summarize_verified_canonical_gold(root, "0" * 64)
+
+    monkeypatch.setattr(
+        canonical_gold_example,
+        "verify_canonical_gold_package",
+        lambda *_args: {"status": "verified"},
+    )
+    marker = root / "MANIFEST.json"
+    with pytest.raises(ValueError, match=r"^canonical_gold_example_invalid$"):
+        summarize_verified_canonical_gold(root, "0" * 64)
+
+    for payload in (b"{", b"\xff", b"[]"):
+        marker.write_bytes(payload)
+        digest = hashlib.sha256(payload).hexdigest()
+        with pytest.raises(ValueError, match=r"^canonical_gold_example_invalid$"):
+            summarize_verified_canonical_gold(root, digest)
+
+    payload = b"{}"
+    marker.write_bytes(payload)
+    digest = hashlib.sha256(payload).hexdigest()
+    with pytest.raises(ValueError, match=r"^canonical_gold_example_invalid$"):
+        summarize_verified_canonical_gold(root, digest)
+
+    malformed_inputs = (
+        lambda: canonical_gold_example._temporal_counts([None]),  # noqa: SLF001
+        lambda: canonical_gold_example._temporal_counts(  # noqa: SLF001
+            [{"observed_periods": [None]}]
+        ),
+        lambda: canonical_gold_example._temporal_counts(  # noqa: SLF001
+            [{"observed_periods": [{"period_token": 1, "observation_count": 1}]}]
+        ),
+        lambda: canonical_gold_example._product_counts({"historical": None}),  # noqa: SLF001
+        lambda: canonical_gold_example._product_counts(  # noqa: SLF001
+            {"historical": {"input_records": -1}}
+        ),
+        lambda: canonical_gold_example._revision_counts(  # noqa: SLF001
+            {"changed_candidate_count": -1}
+        ),
+    )
+    for operation in malformed_inputs:
+        with pytest.raises(ValueError, match=r"^canonical_gold_example_invalid$"):
+            operation()
 
 
 @pytest.mark.parametrize(

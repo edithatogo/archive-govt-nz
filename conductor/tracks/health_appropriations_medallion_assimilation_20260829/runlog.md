@@ -3821,10 +3821,11 @@ aggregation and retains the unassessed comparison, rights and publication
 boundaries. See
 [`canonical-gold-consumer-example-20261002.md`](canonical-gold-consumer-example-20261002.md).
 
-The focused verifier/consumer suite passed (20 tests), including one contract
-case with nonzero period and revision counts. The required
-`./scripts/validate.sh` passed: 7,255 tests, 10 skipped, 98.18% coverage against
+The focused verifier/consumer suite passed (21 tests), including contract
+cases for nonzero period/revision counts and malformed fail-closed inputs. The
+canonical example module reached 100% branch-aware coverage. The required
+`./scripts/validate.sh` passed: 7,256 tests, 10 skipped, 98.25% coverage against
 the repository's 80% minimum, 53 schemas/43 representative documents, 9/9
 parity, and all mutation, hygiene, CAS, dependency, licence, secret and SBOM
 checks. The automatic Conductor `phase_7_gates` review passed; receipt SHA-256
-`7a18bd26ec4a762d9de72c86beec3cdc00392ef8b1b9eedc784fa6eb9fd86516`.
+`e25bac17174b78c4491a8c4b5bc7d2a9d4afea305f6e8ed71ff887def66e5f86`.
