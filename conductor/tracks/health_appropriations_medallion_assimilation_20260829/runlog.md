@@ -4234,3 +4234,44 @@ test suite already satisfies the coverage floor; no tests were added to increase
 coverage. Phase 3 adapter/lineage/schema/repeat-build boundaries were reviewed
 against their existing focused contracts. Exact-head hosted checks remain the
 paired PR evidence.
+
+## 2026-10-03 — Vote Health 2002/03 Part F revenue
+
+Added the pinned `vote-health-estimates-2002-03-revenue/v1` operation for the
+separate Part F table on pages 43–44. Its 16 facts retain the 2001/02 budget,
+2001/02 estimated actual, and 2002/03 budget as distinct columns. The 48 field
+lineage rows retain source tokens and page/label/column coordinates. The
+existing 2002/03 Bronze adapter now emits both its 27 reviewed Part B1 rows and
+the 16 Part F revenue rows, with dispositions for all 44 pages.
+
+Two complete Silver builds have identical manifests and Parquet hashes. The
+unique Bronze adapter selected the exact PDF; its 16 revenue rows matched the
+Silver rows by record ID and every emitted field. The 43-record dispatch has
+210 lineage rows and 44 page disposition rows. Source SHA-256 before and after
+is unchanged. The source census records CC BY 4.0 and a Treasury policy URL;
+rights remain unevaluated, and output is local-only. The narrative summary,
+other editions, Gold projection, currency and period comparability remain open.
+See `vote-health-revenue-2002-03-20261003.md` and the paired JSON receipt.
+
+Focused parser, source-operation and Bronze adapter tests passed (493 passed,
+10 skipped). The first external parity assertion expected 213 lineage rows;
+the actual 210 correctly comprises 162 detail and 48 revenue fields. The
+corrected parity check passed; no source or output files were changed by that
+count correction. Full repository validation is pending.
+
+2026-10-03 — Vote Health 2002/03 Part F revenue
+
+Added a source-pinned Part F revenue profile for the captured 2002/03 Estimates
+PDF, preserving its 2001/02 budget/estimated-actual and 2002/03 budget columns.
+The Bronze adapter now emits the 27 Part B1 detail and 16 Part F revenue facts,
+with full 44-page disposition accounting. Two independent Silver builds matched
+all output hashes and all 16 Silver revenue facts matched Bronze by ID and fields.
+Rights remain unevaluated and outputs remain local-only. The first full harness
+run exposed a stale evidence digest after the index update; the exact source-
+measure evidence pin was refreshed and its 36-test suite passed. Required
+`./scripts/validate.sh` then passed: 7,300 passed, 10 skipped, 98.10% coverage
+against the configured 80% floor; schema, parity (9/9), mutation, hygiene, audit,
+license, secret-scan and SBOM gates passed. Automatic Conductor `phase_7_gates`
+review also passed. No additional tests were added to pursue coverage above the
+requested threshold. See `vote-health-revenue-2002-03-20261003.md` and its
+machine receipt.

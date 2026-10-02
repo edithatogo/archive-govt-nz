@@ -309,6 +309,18 @@ Financial-year endpoints are not inferred from bare year labels. Rights remain
 unresolved until joined to resource-level rights evidence. Output completion
 requires a valid manifest and matching hashes in a newly reserved directory.
 
+### Vote Health Estimates 2002/03 revenue increment
+
+The pinned 2002/03 Treasury PDF has a distinct Part F table on pages 43–44.
+Its 2001/02 budget and estimated-actual fields and 2002/03 budget field remain
+separate in a versioned source-operation profile; the 2003/04
+main/supplementary profile is not reused. The registered Bronze adapter emits
+the already-reviewed Part B1 detail rows and this Part F revenue profile, with
+full-page loss accounting and source-column lineage. The source hash, layout
+bounds and row totals are fixed; unsupported layouts remain preserved-only.
+This is source-native Silver evidence only: rights, currency, canonical Gold,
+annual completeness and cross-source comparability remain unresolved.
+
 ## Gold analytical model
 
 The existing SQLite structural inventory now uses encoded literal file URIs and

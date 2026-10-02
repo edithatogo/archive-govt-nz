@@ -718,3 +718,23 @@ dependency/license/secrets and 113-component SBOM passed. Automatic Conductor
 `6681721608e8541ca83da366552ed493fd7f837b403a7250861d629323c9eaa9`.
 The track remains in progress: other canonical adapters, source-native profiles,
 reports, rights/base qualification and complete Platinum metadata remain open.
+
+## Vote Health 2002/03 Part F revenue — 2026-10-03
+
+Machine receipt: `vote-health-revenue-2002-03-20261003.json`. The source is the
+exact 317,126-byte captured Estimates PDF pinned by the source census. A
+bounded source operation extracted 16 page-43/44 revenue rows while retaining
+the prior-year budget, prior-year estimated actual and current-year budget
+columns. Two Silver builds share manifest SHA-256
+`6f1c7f3c5b8097543f9897a0fd37908560ca0232bca5ebe20522ec8aa2314907` and output
+hashes. Bronze dispatch selected the exact 2002/03 adapter; each of the 16
+revenue records matched the Silver package by ID and emitted fields. Dispatch
+accounted for 43 total records, 210 lineage entries and all 44 PDF pages.
+
+Focused validation passed 493 tests with 10 skipped. Rights remain
+unevaluated, publication is local-only, and this does not establish summary
+coverage, other editions, source completeness, Gold qualification or
+cross-source comparability. The required full harness passed 7,300 tests with
+10 skipped and 98.10% coverage against the 80% floor. Schema, parity, mutation,
+supply-chain and automatic Conductor phase review passed; hosted PR checks
+remain pending.

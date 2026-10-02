@@ -1337,3 +1337,20 @@ mutation, parity, archive-safety and source-lineage checks pass. The Phase 3
 contracts were reviewed as a whole and already exercise its boundaries; the
 checkpoint adds no coverage-only tests. Exact-head hosted checks remain pending
 for the PR.
+
+## 2026-10-03 — Vote Health 2002/03 Part F revenue self-review
+
+The new operation is pinned to the exact source hash and 44-page document, and
+only admits the reviewed Part F marker and page span. The parser requires the
+expected row count and totals, preserves the three distinct fiscal columns,
+retains source tokens and explicit page/field lineage, and leaves dash values
+null. The common Bronze adapter is unique for the pinned 2002/03 source and
+accounts for every page; its revenue records match the independent Silver
+build by ID and every emitted field. Repeated manifests and outputs are
+identical, and source fixity is unchanged.
+
+No substantive finding remains for this bounded profile. Limits remain:
+rights are not legally evaluated; no currency or cross-source comparability is
+claimed; summary and other editions remain open; no canonical Gold or
+publication is produced. Focused tests and Ruff pass; the full repository gate
+is pending.
