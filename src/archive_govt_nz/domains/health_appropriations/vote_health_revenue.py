@@ -100,6 +100,11 @@ def _amount(token: str) -> Decimal | None:
     return -value if compact.startswith("(") else value
 
 
+def parse_amount_token(token: str) -> Decimal | None:
+    """Parse one amount token using the reviewed Part F grammar."""
+    return _amount(token)
+
+
 def _label(value: str) -> str:
     return re.sub(r"(?<=[A-Za-z])-\s+", "-", " ".join(value.split())).strip()
 

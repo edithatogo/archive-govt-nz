@@ -4,6 +4,10 @@ from __future__ import annotations
 
 import hashlib
 from pathlib import Path
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    import pytest
 
 from tests.domains.health_appropriations.test_budget_adapter import (
     _workbook as budget_expenditure_workbook,
@@ -20,7 +24,11 @@ from tests.domains.health_appropriations.test_population_annual_export import (
     payload as population_payload,
 )
 from tests.domains.health_appropriations.test_qes import fixture as qes_workbook
+from tests.domains.health_appropriations.test_vote_health_pdf_adapter import (
+    _Reader as vote_health_pdf_reader,
+)
 
+from archive_govt_nz.domains.health_appropriations import vote_health_pdf_adapter
 from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
     dispatch_bronze,
 )
@@ -39,8 +47,10 @@ from archive_govt_nz.domains.health_appropriations.gdp import VINTAGE as GDP_VIN
 
 def test_registered_adapters_repeat_selection_and_extraction(
     tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """All seven registered adapters repeat from the same immutable Bronze bytes."""
+    """All registered adapters repeat from the same immutable Bronze bytes."""
+    monkeypatch.setattr(vote_health_pdf_adapter, "PdfReader", vote_health_pdf_reader)
     qes_source = tmp_path / "qes.xlsx"
     qes_workbook(qes_source)
     gdp_source = gdp_workbook(tmp_path / "gdp.xlsx")
@@ -87,6 +97,12 @@ def test_registered_adapters_repeat_selection_and_extraction(
             "text/html",
             "pharmac-combined-pharmaceutical-budget",
         ),
+        (
+            "vote-health-pdf",
+            b"%PDF-1.7\nreviewed source fixture",
+            "application/pdf",
+            "nz-treasury-vote-health-2003-04-tables",
+        ),
     )
     registrations = context_adapter_registrations(
         cpi=AdapterContext("cpi.csv", "2026-Q2", "2026-08-31T00:00:00Z"),
@@ -97,6 +113,11 @@ def test_registered_adapters_repeat_selection_and_extraction(
         gdp=AdapterContext("gdp.xlsx", GDP_VINTAGE, "2026-08-31T00:00:00Z"),
         pharmac=AdapterContext(
             "pharmac.html", "Pharmac-CPB-2026-08-07", "2026-08-31T00:00:00Z"
+        ),
+        vote_health=AdapterContext(
+            "vote-health.pdf",
+            "Treasury-Vote-Health-Supplementary-2003-04",
+            "2026-08-31T00:00:00Z",
         ),
     )
     budget_context = {

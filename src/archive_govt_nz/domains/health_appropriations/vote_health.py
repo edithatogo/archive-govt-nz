@@ -129,6 +129,11 @@ def _amount(token: str) -> Decimal | None:
     return -value if token.startswith("(") else value
 
 
+def parse_amount_token(token: str) -> Decimal | None:
+    """Parse one amount token using the reviewed summary/detail grammar."""
+    return _amount(token)
+
+
 def parse_summary_page(text: str) -> list[dict[str, Any]]:
     """Parse one exact summary layout while retaining each source token."""
     _require(len(text) <= MAX_TEXT)
