@@ -22,8 +22,8 @@ _OUTPUTS = {
 }
 _PLOT_NAME = re.compile(r"^plot_context_(?:cpi|wage|gdp|population)_[0-9a-f]{20}\.png$")
 _PLOT_SCHEMA = "archive-govt-nz.health-context-gold-plots/v1"
-_SOURCE_MARKER_COUNT = 4
-_MAX_PLOTS = 4
+_SOURCE_MARKER_COUNT = 5
+_MAX_PLOTS = 5
 _ERROR = "invalid_context_gold_package"
 _COMMON = {
     "schema_version": "archive-govt-nz.health-context-gold-verification/v1",
@@ -41,10 +41,10 @@ CONTEXT_GOLD_VERIFICATION_SCHEMA: dict[str, Any] = {
         "status": {"enum": ["verified", "failed"]},
         "error": {"const": "invalid_context_gold_package"},
         "manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-        "output_count": {"type": "integer", "minimum": 4, "maximum": 8},
-        "plot_count": {"type": "integer", "minimum": 0, "maximum": 4},
+        "output_count": {"type": "integer", "minimum": 4, "maximum": 9},
+        "plot_count": {"type": "integer", "minimum": 0, "maximum": 5},
         "output_bytes": {"type": "integer", "minimum": 0},
-        "source_marker_count": {"type": "integer", "const": 4},
+        "source_marker_count": {"type": "integer", "const": 5},
         "quality_report": {"const": "verified_as_declared_output"},
         "plot_report": {"const": "verified_as_declared_output"},
     },

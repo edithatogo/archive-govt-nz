@@ -439,7 +439,7 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     monkeypatch.setattr(
         MODULE,
         "gdp_june_recovery_report",
-        lambda _root: {
+        lambda _root, **_kwargs: {
             "repeat_identical": True,
             "source_vintage": "StatsNZ-GDP-2026Q2",
         },

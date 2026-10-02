@@ -5,10 +5,11 @@ from __future__ import annotations
 import hashlib
 import json
 import runpy
+import shutil
 import sys
 from decimal import Decimal
 from pathlib import Path
-from typing import cast
+from typing import Any, cast
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -18,6 +19,8 @@ from archive_govt_nz.cli import app
 from archive_govt_nz.domains.health_appropriations import (
     canonical_consumer,
     context_gold,
+    gdp,
+    gdp_canonical_projection,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
     query_context_observations,
@@ -30,15 +33,38 @@ _PINNED_PACKAGES = (
     "raw-cpi-20260831-v1",
     "raw-qes-2026q2-20260831-v3",
     "raw-stats-gdp-20260831-v1",
+    "gdp-june-1",
     "population-annual-mean-context-20260925-v1",
 )
 
 
-def _roots() -> tuple[Path, Path]:
-    silver = EXTERNAL / "silver"
+def _roots(tmp_path: Path) -> tuple[Path, Path]:
+    retained_silver = EXTERNAL / "silver"
     source = EXTERNAL / "bronze-cas/sha256"
-    if not silver.is_dir() or not source.is_dir():
+    if not retained_silver.is_dir() or not source.is_dir():
         pytest.skip("retained external health source packages are unavailable")
+    silver = tmp_path / "retained-silver"
+    silver.mkdir()
+    for package in _PINNED_PACKAGES:
+        if package == "gdp-june-1":
+            continue
+        shutil.copytree(retained_silver / package, silver / package)
+    june_source = (
+        source
+        / gdp_canonical_projection.JUNE_SOURCE_SHA256[:2]
+        / gdp_canonical_projection.JUNE_SOURCE_SHA256
+    )
+    if not june_source.is_file():
+        pytest.skip("pinned June GDP Bronze object is unavailable")
+    gdp.normalize_gdp(
+        june_source,
+        silver / "gdp-june-1",
+        expected_sha256=gdp_canonical_projection.JUNE_SOURCE_SHA256,
+        source_locator=gdp_canonical_projection.JUNE_SOURCE_LOCATOR,
+        source_vintage=gdp.JUNE_VINTAGE,
+        observed_at=gdp_canonical_projection.JUNE_OBSERVED_AT,
+        dry_run=False,
+    )
     return silver, source
 
 
@@ -77,6 +103,14 @@ def synthetic_packages(
             "StatsNZ-GDP-2026Q1",
         ),
         (
+            "gdp-june-1",
+            "gdp_facts.parquet",
+            "gdp",
+            "SNEQ/SG03AB01GE00S900",
+            "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
+            "StatsNZ-GDP-2026Q2",
+        ),
+        (
             "population-annual-mean-context-20260925-v1",
             "population_facts.parquet",
             "population",
@@ -91,11 +125,12 @@ def synthetic_packages(
         context_gold, "_source_path", lambda _root, _digest: source_file
     )
     for package, facts_file, family, _series, digest, vintage in specifications:
+        profile_id = "gdp_june" if vintage == "StatsNZ-GDP-2026Q2" else family
         directory = silver / package
         directory.mkdir()
         facts = [
             {
-                "record_id": f"{family}-one",
+                "record_id": f"{package}-one",
                 "source_object_sha256": digest,
                 "source_vintage": vintage,
                 "source_locator": f"{family}!A1:A2",
@@ -113,7 +148,7 @@ def synthetic_packages(
                 "null_reason": None,
             },
             {
-                "record_id": f"{family}-two",
+                "record_id": f"{package}-two",
                 "source_object_sha256": digest,
                 "source_vintage": vintage,
                 "source_locator": f"{family}!A1:A2",
@@ -191,7 +226,7 @@ def synthetic_packages(
         (directory / "MANIFEST.json").write_bytes(manifest_bytes)
         monkeypatch.setitem(
             context_gold._EXPECTED_MANIFESTS,  # noqa: SLF001
-            family,
+            profile_id,
             hashlib.sha256(manifest_bytes).hexdigest(),
         )
     return silver, source
@@ -206,9 +241,9 @@ def test_synthetic_source_packages_cover_build_contract(
     receipt = context_gold.export_context_gold(
         silver, source, tmp_path / "out", write=True
     )
-    assert receipt["input_records"] == 10
-    assert receipt["series"] == 4
-    assert receipt["eligible_context_observations"] == 5
+    assert receipt["input_records"] == 12
+    assert receipt["series"] == 5
+    assert receipt["eligible_context_observations"] == 7
     assert receipt["excluded_observations"] == 5
     rows = pq.read_table(tmp_path / "out" / "context_observations.parquet").to_pylist()
     assert {
@@ -240,7 +275,10 @@ def test_canonical_consumer_reads_verified_context_without_promotion(
     direct = pq.read_table(package / "context_observations.parquet")
 
     assert observed.equals(direct, check_metadata=True)
-    assert observed.num_rows == 10
+    assert observed.num_rows == 12
+    assert {
+        row["source_vintage"] for row in observed.to_pylist() if row["family"] == "gdp"
+    } == {"StatsNZ-GDP-2026Q1", "StatsNZ-GDP-2026Q2"}
     rows = observed.to_pylist()
     assert len({row["input_record_id"] for row in rows}) == observed.num_rows
     assert {row["family"] for row in rows} == {"cpi", "wage", "gdp", "population"}
@@ -539,16 +577,12 @@ def test_standalone_builder_cli(
     assert json.loads(capsys.readouterr().out)["status"] == "dry_run"
 
 
-def test_retained_context_silver_build_is_repeatable_and_source_separated(
-    tmp_path: Path,
+def _assert_retained_context_product(
+    root: Path, planned: dict[str, Any], written: dict[str, Any]
 ) -> None:
-    silver, source = _roots()
-    first = tmp_path / "first"
-    second = tmp_path / "second"
-    planned = context_gold.export_context_gold(silver, source, first)
-    assert planned["input_records"] == 554
-    assert planned["series"] == 4
-    assert planned["eligible_context_observations"] == 524
+    assert planned["input_records"] == 615
+    assert planned["series"] == 5
+    assert planned["eligible_context_observations"] == 585
     assert planned["excluded_observations"] == 30
     assert (
         planned["source_family_policy"]
@@ -557,16 +591,10 @@ def test_retained_context_silver_build_is_repeatable_and_source_separated(
     assert planned["rights_state"] == "not_evaluated"
     assert planned["denominator_selection"] == "not_performed"
     assert planned["publication"] == "not_performed"
-    assert not first.exists()
-    written = context_gold.export_context_gold(silver, source, first, write=True)
-    context_gold.export_context_gold(silver, source, second, write=True)
-    assert {path.name: path.read_bytes() for path in first.iterdir()} == {
-        path.name: path.read_bytes() for path in second.iterdir()
-    }
-    observations = pq.read_table(first / "context_observations.parquet")
-    coverage = pq.read_table(first / "context_coverage.parquet")
-    assert observations.num_rows == 554
-    assert coverage.num_rows == 4
+    observations = pq.read_table(root / "context_observations.parquet")
+    coverage = pq.read_table(root / "context_coverage.parquet")
+    assert observations.num_rows == 615
+    assert coverage.num_rows == 5
     assert set(observations["family"].to_pylist()) == {
         "cpi",
         "wage",
@@ -577,6 +605,7 @@ def test_retained_context_silver_build_is_repeatable_and_source_separated(
         "Stats-NZ-CPI-2026-Q2",
         "QES-2026-Q2",
         "StatsNZ-GDP-2026Q1",
+        "StatsNZ-GDP-2026Q2",
         "2026-08-18",
     }
     assert all(
@@ -584,11 +613,19 @@ def test_retained_context_silver_build_is_repeatable_and_source_separated(
         == "source_tokens_sorted_lexically_without_cross_series_alignment"
         for row in coverage.to_pylist()
     )
-    quality = pq.read_table(first / "context_quality.parquet")
-    assert quality.num_rows == 4
-    assert {row["family"]: row["observation_count"] for row in quality.to_pylist()} == {
-        row["family"]: row["observation_count"] for row in coverage.to_pylist()
+    quality = pq.read_table(root / "context_quality.parquet")
+    assert quality.num_rows == 5
+    quality_counts = {
+        (row["family"], row["source_vintage"]): row["observation_count"]
+        for row in quality.to_pylist()
     }
+    coverage_counts = {
+        (row["family"], row["source_vintage"]): row["observation_count"]
+        for row in coverage.to_pylist()
+    }
+    assert quality_counts == coverage_counts
+    assert quality_counts[("gdp", "StatsNZ-GDP-2026Q1")] == 60
+    assert quality_counts[("gdp", "StatsNZ-GDP-2026Q2")] == 61
     assert sum(row["excluded_count"] for row in quality.to_pylist()) == 30
     assert all(
         row["period_continuity"] == "not_assessed_source_calendar_not_supplied"
@@ -605,7 +642,7 @@ def test_retained_context_silver_build_is_repeatable_and_source_separated(
     }
     assert len(json.loads(population_quality["period_tokens_json"])) == 36
     assert written["products"] == planned["products"]
-    report = (first / "context-quality-report.md").read_text(encoding="utf-8")
+    report = (root / "context-quality-report.md").read_text(encoding="utf-8")
     assert report.startswith("# Health Appropriations contextual Gold quality report")
     assert (
         "Period continuity: not assessed; source calendars were not supplied." in report
@@ -617,7 +654,7 @@ def test_retained_context_silver_build_is_repeatable_and_source_separated(
         "| population | DPE056AA:Mean year ended:Total:Total All Ages:Annual-Jun |"
         in report
     )
-    manifest = json.loads((first / "MANIFEST.json").read_text())
+    manifest = json.loads((root / "MANIFEST.json").read_text())
     assert {
         "context_observations.parquet",
         "context_coverage.parquet",
@@ -632,15 +669,31 @@ def test_retained_context_silver_build_is_repeatable_and_source_separated(
     )
     assert manifest["plot_report"]["excluded_observations_plotted"] is False
     for name, entry in manifest["products"].items():
-        payload = (first / name).read_bytes()
+        payload = (root / name).read_bytes()
         assert hashlib.sha256(payload).hexdigest() == entry["sha256"]
         assert len(payload) == entry["bytes"]
+
+
+def test_retained_context_silver_build_is_repeatable_and_source_separated(
+    tmp_path: Path,
+) -> None:
+    silver, source = _roots(tmp_path)
+    first = tmp_path / "first"
+    second = tmp_path / "second"
+    planned = context_gold.export_context_gold(silver, source, first)
+    assert not first.exists()
+    written = context_gold.export_context_gold(silver, source, first, write=True)
+    context_gold.export_context_gold(silver, source, second, write=True)
+    assert {path.name: path.read_bytes() for path in first.iterdir()} == {
+        path.name: path.read_bytes() for path in second.iterdir()
+    }
+    _assert_retained_context_product(first, planned, written)
 
 
 def test_population_provisional_and_missing_values_are_excluded(
     tmp_path: Path,
 ) -> None:
-    silver, source = _roots()
+    silver, source = _roots(tmp_path)
     out = tmp_path / "context"
     context_gold.export_context_gold(silver, source, out, write=True)
     rows = pq.read_table(out / "context_observations.parquet").to_pylist()
@@ -664,11 +717,11 @@ def test_population_provisional_and_missing_values_are_excluded(
 def test_source_quality_report_preserves_exclusions_without_inferred_gaps(
     tmp_path: Path,
 ) -> None:
-    silver, source = _roots()
+    silver, source = _roots(tmp_path)
     context_gold.export_context_gold(silver, source, tmp_path / "context", write=True)
     rows = pq.read_table(tmp_path / "context" / "context_quality.parquet").to_pylist()
-    assert len(rows) == 4
-    assert sum(row["observation_count"] for row in rows) == 554
+    assert len(rows) == 5
+    assert sum(row["observation_count"] for row in rows) == 615
     assert sum(row["excluded_count"] for row in rows) == 30
     for row in rows:
         assert json.loads(row["period_tokens_json"])
@@ -677,8 +730,8 @@ def test_source_quality_report_preserves_exclusions_without_inferred_gaps(
         assert row["denominator_selection"] == "not_performed"
 
 
-def test_any_source_package_fixity_drift_fails_closed() -> None:
-    silver, source = _roots()
+def test_any_source_package_fixity_drift_fails_closed(tmp_path: Path) -> None:
+    silver, source = _roots(tmp_path)
     rows, _ = context_gold._source_native_packages(silver, source)  # noqa: SLF001
     rows[0]["source_sha256"] = "0" * 64
     with pytest.raises(ValueError, match=r"^context_gold_invalid$"):
@@ -688,7 +741,7 @@ def test_any_source_package_fixity_drift_fails_closed() -> None:
 def test_package_context_marker_is_bound_to_the_observed_digest(
     tmp_path: Path,
 ) -> None:
-    silver, source = _roots()
+    silver, source = _roots(tmp_path)
     package = silver / _PINNED_PACKAGES[0]
     manifest_path = package / "MANIFEST.json"
     manifest = json.loads(manifest_path.read_text())

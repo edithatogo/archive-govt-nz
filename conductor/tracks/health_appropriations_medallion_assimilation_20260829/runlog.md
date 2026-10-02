@@ -3917,3 +3917,37 @@ parity, configured mutation gates and supply-chain checks, including the
 receipt is `phase_7_gates-review-receipt-20261002-population-rights.json`,
 SHA-256 `c6f786e486cef648b65474116df8e0ac263a5d6ab6b286f7e36350f01714c083`.
 No tests were added to raise coverage.
+
+### Context Gold June GDP vintage integration (2026-10-02)
+
+Context Gold now verifies and includes the separately pinned June 2026 GDP
+Silver package alongside March 2026. The source-vintage groups remain distinct
+and no values are spliced. The clean-room consumer reports 615 observations
+across CPI, GDP, population and wage; repeated Context Gold builds are byte
+identical and Bronze objects are unchanged. Receipt:
+`clean-room-recovery-20261002-context-gdp-june.json`, SHA-256
+`d37c79049cda96ef95fc6d58e849384e1b1952e839dbdd5a05c3035394f0a176`.
+Context Gold manifest SHA-256 is
+`dfe2d41c0238415d065f06352e0e441eaaead9a2f5e7c4679bcd1f043d3aebd4`; its
+quality report SHA-256 is
+`31344c9327c7b99c93af9f77e9af078b35c6c2a8dde9312b4d53f237b4976cff`.
+
+The first clean-room attempt identified stale retained source-health reports;
+the reports were regenerated against the pinned capture and CAS census and
+verified across 142 resources, including 74 capture/Bronze reconciliations.
+The subsequent full clean-room run passed source-health reproduction and the
+GDP-vintage integration. Overall recovery remains `partial_with_blockers`:
+canonical Gold cross-source/revision reports, remaining source-native Silver
+profiles/adapters, and the complete Platinum profile are still outstanding.
+Focused GDP/Context Gold and recovery tests passed (29); Ruff, basedpyright and
+schema checks passed. The configured coverage floor is 80%; these tests cover
+the changed vintage verification and recovery behavior, not coverage growth.
+
+The required `./scripts/validate.sh` completed its configured lanes: 7,266
+tests passed, 10 skipped, 98.18% branch-aware coverage against the 80% floor;
+53 schemas/43 representative documents; 9/9 differential parity; all configured
+mutation gates; hygiene; CAS throughput; dependency, license and secret scans;
+and 113-component SBOM validation. Ruff formatting/lint and basedpyright passed.
+The automatic `phase_7_gates` review passed; its retained receipt is
+`phase_7_gates-review-receipt-20261002-context-gdp-june.json`, SHA-256
+`f8d35687be775eb77595530f5937197c2293d406f2db853b85846870f23bd806`.
