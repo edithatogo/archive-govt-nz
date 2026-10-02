@@ -24,12 +24,15 @@ normalization.
 
 Validation for this integrated increment is in `context-adapters.validation.json`.
 The exact Pharmac CPB HTML profile also has a common-dispatch adapter; it does
-not cover arbitrary HTML or other Pharmac pages. Common dispatch now includes
-one composite adapter for the reviewed Vote Health 2003/04 supplementary PDF.
-It emits the exact summary, complete Part B1 rows, and fixed Part F revenue
-table, and its records and field lineage are checked against the three existing
-normalizers. Other Vote Health PDF layouts remain preserved-only. The broader
-Phase 3 checkpoint still needs other source-operation profiles, SQLite
-adapters, evidence-backed crosswalks, captured per-adapter layout baselines, and
-repeat-build checks across all profiles. Rights assessment, source acquisition,
-analytical admission, publication and operational acceptance are unchanged.
+not cover arbitrary HTML or other Pharmac pages. The common registry also
+accepts one explicit Budget revenue context, selecting the reviewed 2025 or
+2026 edition-specific normalizer without claiming annual Budget coverage; see
+`budget-revenue-common-dispatch-20261003.md`. The reviewed Vote Health 2003/04
+supplementary PDF uses one composite adapter to emit the exact summary,
+complete Part B1 rows, and fixed Part F revenue table. Its records and field
+lineage match the three existing normalizers. Other Vote Health PDF layouts
+remain preserved-only. The broader Phase 3 checkpoint still needs other
+source-operation profiles, SQLite adapters, evidence-backed crosswalks,
+captured per-adapter layout baselines, and repeat-build checks across all
+profiles. Rights assessment, source acquisition, analytical admission,
+publication and operational acceptance are unchanged.

@@ -39,9 +39,6 @@ from archive_govt_nz.domains.health_appropriations.adapter_registry import (
 from archive_govt_nz.domains.health_appropriations.budget_adapter import (
     budget_expenditure_registration,
 )
-from archive_govt_nz.domains.health_appropriations.budget_revenue_adapter import (
-    budget_revenue_registration,
-)
 from archive_govt_nz.domains.health_appropriations.gdp import VINTAGE as GDP_VINTAGE
 
 
@@ -111,6 +108,11 @@ def test_registered_adapters_repeat_selection_and_extraction(
         ),
         qes=AdapterContext("qes.xlsx", "QES-2026-Q2", "2026-08-31T00:00:00Z"),
         gdp=AdapterContext("gdp.xlsx", GDP_VINTAGE, "2026-08-31T00:00:00Z"),
+        budget_revenue=AdapterContext(
+            "data/raw/b25-health-budget.xlsx",
+            "Budget-2025",
+            "2026-08-31T00:00:00Z",
+        ),
         pharmac=AdapterContext(
             "pharmac.html", "Pharmac-CPB-2026-08-07", "2026-08-31T00:00:00Z"
         ),
@@ -130,7 +132,6 @@ def test_registered_adapters_repeat_selection_and_extraction(
             (
                 *registrations,
                 budget_expenditure_registration(**budget_context),
-                budget_revenue_registration(**budget_context),
             ),
             key=lambda row: row.adapter_id,
         )
