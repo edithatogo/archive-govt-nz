@@ -3873,3 +3873,25 @@ is `1f9eb496f6291347daf9c8546c3fad7c9e7ac977a808e74a6b468c6221608032`.
 The focused PDF suite passed five tests at 81% branch-aware module coverage,
 above the configured 80% floor. Full repository validation and the automatic
 Conductor review remain pending for this change.
+
+### Captured-source PDF page-layout assurance follow-up (2026-10-02)
+
+The exact integrated head passed the required `./scripts/validate.sh`: 7,266
+tests passed, 10 skipped, 98.18% branch-aware coverage against the configured
+80% minimum, 53 schemas/43 representative documents, 9/9 parity, all configured
+mutation gates, and dependency, license, secret and 113-component SBOM checks.
+Strict typing, formatting and lint passed. A repeated full run exposed one
+unrelated 200 ms Hypothesis deadline overrun in the decimal-context property
+(277 ms once; the same example passed in 1.14 ms). Set `deadline=None` only for
+that pure property; its generated integer range and exact Decimal equality
+assertion are unchanged. The focused normalization suite passed (115 tests),
+then the full harness passed again with the same counts and 14 warnings.
+Automatic Conductor `phase_7_gates` passed on the corrected test state; its
+retained receipt is
+`phase_7_gates-review-receipt-20261002-source-pdf-layout.json`, SHA-256
+`ddc4f832c038678b95b45466d6666d97f0c73045878f583d6ee08af719244aba`.
+
+This closes the pending assurance for the PDF baseline builder, not the broader
+source-layout census: ten captured objects still lack workbook/PDF baselines
+and three encrypted PDFs remain unavailable. No additional tests were added to
+raise coverage.
