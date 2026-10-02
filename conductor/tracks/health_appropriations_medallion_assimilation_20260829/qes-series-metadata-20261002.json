@@ -1,0 +1,528 @@
+{
+  "ItemType": "4bd6eef6-99df-40e6-9b11-5b8f64e5cb23",
+  "StudyUnits": [
+    {
+      "IsPopulated": false,
+      "Version": 3,
+      "AgencyId": "nz.govt.stats",
+      "Identifier": "f4bf24af-dce8-4962-9ed1-80674312447c"
+    }
+  ],
+  "DataSetRelationship": 0,
+  "InstrumentRelationship": 0,
+  "LanguageRelationship": 0,
+  "PanelRelationship": 0,
+  "GeographyRelationship": 0,
+  "TimeRelationship": 0,
+  "SubGroups": [],
+  "RelatedGroupTypes": [],
+  "Embargos": [],
+  "PhysicalInstances": [],
+  "Archives": [],
+  "PhysicalInstanceTypes": {},
+  "AnalysisUnits": [],
+  "AnalysisUnitsCovered": {},
+  "KindsOfData": [],
+  "GeneralDataFormat": [],
+  "DublinCoreMetadata": {
+    "HasValue": true,
+    "AccessRights": {},
+    "AlternateTitle": {
+      "en-NZ": "QES"
+    },
+    "Coverage": {},
+    "Date": null,
+    "Description": {},
+    "Format": {},
+    "Identifiers": [],
+    "Languages": [],
+    "Relation": {},
+    "Rights": {
+      "en-NZ": "Statistics New Zealand"
+    },
+    "Source": {},
+    "Subject": {},
+    "SubTitle": {},
+    "Title": {
+      "en-NZ": "Quarterly Employment Survey"
+    },
+    "Type": {},
+    "License": {},
+    "Creators": [
+      {
+        "Name": {
+          "en-NZ": "Statistics New Zealand"
+        },
+        "Affiliation": null,
+        "AgentReference": null,
+        "DisplayLabel": "Statistics New Zealand"
+      }
+    ],
+    "Contributors": [],
+    "Publishers": [
+      {
+        "Roles": [],
+        "Name": {
+          "en-NZ": "Statistics New Zealand"
+        },
+        "Affiliation": null,
+        "AgentReference": null,
+        "DisplayLabel": "Statistics New Zealand"
+      }
+    ]
+  },
+  "DisplayLabel": "Quarterly Employment Survey",
+  "StudyAbstract": {
+    "en-NZ": "The Quarterly Employment Survey (QES) measures employment, earnings and hours paid of economically significant businesses in New Zealand. QES statistics are published approximately 5 weeks after the end of quarter.\n"
+  },
+  "Purpose": {
+    "en-NZ": "The purpose of the Quarterly Employment Survey (QES) is to provide a short-term indicator of employment and earnings. In addition, the data is used for compiling the business services industry component of the quarterly national accounts (on the production side). Results from the survey provide a valuable guide to the labour market and general economic conditions within New Zealand. \n"
+  },
+  "TypeOfItem": null,
+  "SeriesStatement": {
+    "SeriesRepositoryLocation": null,
+    "SeriesName": {},
+    "Description": {},
+    "Abbreviations": [],
+    "AbbreviationsString": "",
+    "HasValue": false
+  },
+  "FundingSources": [],
+  "AuthorizationSources": [],
+  "Coverage": {
+    "TopicalCoverage": {
+      "Subjects": [
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Earnings",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Employment",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Hours",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Labour Demand",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Labour Market",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Work",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        }
+      ],
+      "Keywords": [
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Average hourly earnings",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Average weekly earnings",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Average weekly paid hours",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Earnings",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Employees",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Full-time",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "FTEs",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Hours paid",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Jobs",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Ordinary time",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Overtime",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Part-time",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        },
+        {
+          "HasAnyAttributes": true,
+          "Language": null,
+          "Value": "Working proprietor",
+          "CodeListId": null,
+          "CodeListName": null,
+          "CodeListAgency": null,
+          "CodeListVersion": "1.0",
+          "OtherValue": null,
+          "CodeListUrn": null
+        }
+      ],
+      "HasValue": true,
+      "AgencyId": "nz.govt.stats",
+      "Identifier": "afa0fc82-9dc7-4af1-94b9-5fa62176c2ba",
+      "UserIds": [],
+      "CustomFields": [],
+      "UserAttributes": []
+    },
+    "TemporalCoverage": {
+      "HasValue": true,
+      "Dates": [
+        {
+          "IsRange": true,
+          "Date": null,
+          "DateRange": {
+            "StartDate": {
+              "Precision": 2,
+              "DateTime": null,
+              "DateOnly": null,
+              "Year": 1989,
+              "Month": 3,
+              "HasValue": true,
+              "StringValue": "1989-03"
+            },
+            "EndDate": {
+              "Precision": 0,
+              "DateTime": null,
+              "DateOnly": null,
+              "Year": null,
+              "Month": null,
+              "HasValue": false,
+              "StringValue": ""
+            },
+            "IsEmpty": false
+          }
+        }
+      ],
+      "AgencyId": "nz.govt.stats",
+      "Identifier": "1d1f92cd-4736-4082-b7d9-216ec8d6b73b",
+      "UserIds": [],
+      "CustomFields": [],
+      "UserAttributes": []
+    },
+    "SpatialCoverage": {
+      "BoundingBox": {
+        "WestLongitude": 0.0,
+        "EastLongitude": 0.0,
+        "NorthLatitude": 0.0,
+        "SouthLatitude": 0.0,
+        "HasValue": false
+      },
+      "Description": {},
+      "CountryCodes": [],
+      "HighestLevel": null,
+      "LowestLevel": null,
+      "GeographicLocations": [],
+      "HasValue": false,
+      "AgencyId": null,
+      "Identifier": "51dc4bee-1539-4f46-bea8-a4bfb51feca6",
+      "UserIds": [],
+      "CustomFields": [],
+      "UserAttributes": []
+    },
+    "HasValue": true
+  },
+  "StudyUniverse": null,
+  "DefiningConcept": null,
+  "ResourcePackages": [
+    {
+      "IsPopulated": false,
+      "Version": 2,
+      "AgencyId": "nz.govt.stats",
+      "Identifier": "ad7aa7fc-32b4-4276-980e-3e2c55dbd114"
+    }
+  ],
+  "QualityStatements": [],
+  "InformationClassifications": [],
+  "ClassificationFamilies": [],
+  "ConceptualComponents": [],
+  "DataCollections": [],
+  "LogicalProducts": [],
+  "PhysicalProducts": [],
+  "InformationClassificationType": null,
+  "LevelOfInformationClassification": null,
+  "Label": {},
+  "Description": {},
+  "ItemName": {
+    "en-NZ": "Quarterly Employment Survey"
+  },
+  "IsPublished": false,
+  "IsPopulated": true,
+  "Version": 87,
+  "VersionDate": "2026-05-03T22:40:59.2338712Z",
+  "VersionResponsibility": null,
+  "VersionRationale": {},
+  "CompositeId": {
+    "Item1": "086258b1-90e6-4728-981d-756b3ca6e147",
+    "Item2": 87,
+    "Item3": "nz.govt.stats"
+  },
+  "OtherMaterials": [
+    {
+      "IsPopulated": false,
+      "Version": 1,
+      "AgencyId": "nz.govt.stats",
+      "Identifier": "3b85869b-e652-49da-ab73-83d614e873ab"
+    },
+    {
+      "IsPopulated": false,
+      "Version": 1,
+      "AgencyId": "nz.govt.stats",
+      "Identifier": "035d6237-cc54-4d37-aa12-e2bf20c3d173"
+    },
+    {
+      "IsPopulated": false,
+      "Version": 1,
+      "AgencyId": "nz.govt.stats",
+      "Identifier": "1e7f2c7c-8be7-43df-b8e2-ed38c5271b88"
+    }
+  ],
+  "BasedOn": null,
+  "SucceededBy": null,
+  "Attachments": [],
+  "ThumbnailImageUri": null,
+  "BannerImageUri": null,
+  "AgencyId": "nz.govt.stats",
+  "Identifier": "086258b1-90e6-4728-981d-756b3ca6e147",
+  "UserIds": [],
+  "CustomFields": [
+    {
+      "Title": {
+        "en-NZ": "Frequency"
+      },
+      "Description": {},
+      "ValueType": 3,
+      "DefinedTypeId": "a38c7460-cabb-4c23-a012-7348c10dea44",
+      "HasValue": true,
+      "ControlledVocabularyId": {
+        "Item1": {
+          "Item1": "2e69c9e3-5b24-4a7f-a709-07b60ea6590a",
+          "Item2": 6,
+          "Item3": "nz.govt.stats"
+        },
+        "Item2": "8b108ef8-b642-4484-9c49-f88e4bf7cf1d"
+      },
+      "RelationshipTargetType": "00000000-0000-0000-0000-000000000000",
+      "StringValue": "3 Quarterly",
+      "UriValue": null,
+      "DateValue": null,
+      "RelatedItemIdValue": null,
+      "MultipleRelatedItemIdsValue": null,
+      "MultilingualStringValue": {},
+      "NumberValue": null,
+      "BooleanValue": false,
+      "HasDefinedType": true,
+      "DisplayLabel": "Frequency"
+    },
+    {
+      "Title": {
+        "en-NZ": "Usage and limitations of the data"
+      },
+      "Description": {},
+      "ValueType": 0,
+      "DefinedTypeId": "8e02a6d2-b0ae-4db0-adce-43bdb271dc6f",
+      "HasValue": true,
+      "ControlledVocabularyId": null,
+      "RelationshipTargetType": "00000000-0000-0000-0000-000000000000",
+      "StringValue": "Statistics from the QES are currently used in a number of significant ways:\r\n\r\n - Private sector hourly earnings data are used by the Reserve Bank in their economic models to indicate wage inflation variable - quarterly frequency.\r\n - Ordinary time weekly earnings are used as the benchmark in setting the floor for National Superannuation levels, setting paid parental leave and for setting stand-down periods for unemployment benefits - annual frequency.\n - Total paid hours are used to monitor economic activity and used to calculate labour productivity - quarterly frequency.\n - Gross payout figures are used as the measure of compensation of employees in Gross Domestic Product (GDP) measurement - annual frequency.\n - Changes in average earnings, hours and jobs are all used as economic indicators, i.e. they indicate the health of the economy.\n - Gender pay differences are used to monitor the gender pay gap - quarterly frequency.\n - Average weekly earnings are currently being monitored by the media highlighting gap between New Zealand and Australian wages - quarterly frequency.\n - International Labour Organisation (ILO) customised jobs for pubic sector employment and average labour cost for manufacturing - annual frequency.\n - Organisation for Economic Co-operation and Development (OECD) customised data using average annual earnings (average weekly wages for each quarter x 13 weeks) for International Standard Industrial Classification (ISIC) industries C to K - annual frequency.",
+      "UriValue": null,
+      "DateValue": null,
+      "RelatedItemIdValue": null,
+      "MultipleRelatedItemIdsValue": null,
+      "MultilingualStringValue": {},
+      "NumberValue": null,
+      "BooleanValue": false,
+      "HasDefinedType": true,
+      "DisplayLabel": "Usage and limitations of the data"
+    },
+    {
+      "Title": {
+        "en-NZ": "Main users of the data"
+      },
+      "Description": {},
+      "ValueType": 0,
+      "DefinedTypeId": "74ee9a95-514e-4bd8-85a1-8bf38b9420b9",
+      "HasValue": true,
+      "ControlledVocabularyId": null,
+      "RelationshipTargetType": "00000000-0000-0000-0000-000000000000",
+      "StringValue": "Statistics from the QES are currently used by:\r\n\n- Reserve Bank of New Zealand and Treasury\n- Ministry of Social Development\n- Organisation for Economic Co-operation and Development (OECD)\n- International Labour Organisation (ILO)\n- Economic institutions and banks\n- Politicians and policy makers\n- Journalists and Media.",
+      "UriValue": null,
+      "DateValue": null,
+      "RelatedItemIdValue": null,
+      "MultipleRelatedItemIdsValue": null,
+      "MultilingualStringValue": {},
+      "NumberValue": null,
+      "BooleanValue": false,
+      "HasDefinedType": true,
+      "DisplayLabel": "Main users of the data"
+    },
+    {
+      "Title": {
+        "en-NZ": "Significant events impacting this study series"
+      },
+      "Description": {},
+      "ValueType": 0,
+      "DefinedTypeId": "b32806ba-1492-439a-8b79-445684b3fc34",
+      "HasValue": true,
+      "ControlledVocabularyId": null,
+      "RelationshipTargetType": "00000000-0000-0000-0000-000000000000",
+      "StringValue": "Summary of Changes to Survey\n\n\n**1957-1979 Employment Information Survey**\n\nFrom 1946 to 1979, the Department of Labour conducted a half-yearly full coverage Employment Information Survey. This was conducted twice yearly with a reference to a pay week in April and October. The survey covered all establishments with a minimum of two full-time equivalent persons.\n\nA number of changes have occurred over this period which brought the survey closer to the current QES. They included:\r\n\n- Hours and earnings data by sex became available in 1973;\n- The definition of working proprietors was changed in 1973 to include surveyable professional practitioners (e.g. accountants, dentists) and female working proprietors in the construction industry;\n- Before 1973, ordinary time hours referred to actual hours worked, while overtime hours referred to the actual number of overtime hours worked. Since 1973, ordinary time hours have been defined as the number of hours represented by the ordinary wage payments;\n- Before October 1979, average total weekly earnings were calculated using the divisor \"full-timers plus part-timers\", in contrast to the current divisor \"full-timers plus half of part-timers\".\n- The division line between part-time and full-time employees was changed in February 1980; before 1980, a part-time employee was one who worked fewer than three-quarters of the scheduled ordinary time hours for that industry. A part-time employee is now someone who is employed for less than thirty hours each week.\n- Several modifications were made to the classification of the organisations constituting the Government sector, and to the methods of capturing computer payroll information for public servants and teachers.\n\n\n**1980-1988 Introduction of the Quarterly Employment Survey**\n\nIn 1980, the Department of Labour introduced the Quarterly Employment Survey. The data was collected for a pay week in February, May, August and November. The February survey in each year was a full coverage survey, while the remaining three were sample surveys.\n\nThis survey covered businesses with two or more persons (part-timers, full-timers and/or working proprietors) engaged. The Department of Labour's sampling frame was its own Central Register of Businesses, considered to be less comprehensive than the Business Frame (the SNZ's sampling frame). In addition to those industries excluded from the current survey, waterfront work and the police force were excluded from the Department of Labour survey.\n\nThe Department of Labour conducted the survey until the results of the November 1988 survey were published.\n\n\n**1989 Statistics New Zealand Responsibility**\n\nIn February 1989, the survey became the responsibility of Statistics New Zealand. The survey has been conducted on a quarterly basis, collecting data referring to the pay-weeks ending on, or immediately before, the 20th of the month in February, May, August and November, and according to the present methodology. In order to have provided a consistent long-term historical, some of the Department of Labour data back to 1982 was revised according to the new survey coverage. Some adjusted estimates were published for 1987 and 1988.\n\n\n**1999 SNZ makes further changes to the QES**\n\nSeveral changes were made to the QES from the November 1999 release onward. These changes had become necessary because of the age of the current sample, and because of a desire to ensure the survey's statistics are more representative of the New Zealand economy. The changes included:\n\n- Re-designing and re-weighting sample.\n- Reducing the size of the quarterly (monitor) samples and the annual (analytical) census. While the sample sizes reduced slightly, accuracy at the aggregate level was not compromised due to improved sample design techniques.\n- No longer having a census in February. This was replaced by a large (analytical) sample. The names of the new samples (i.e. monitor and analytical) give a clue as to their intended use - the quarterly monitor samples is intended for quarterly monitoring of national-level aggregates, while the annual analytical database is intended for more in-depth analysis.\n- Extending the coverage to include small businesses (i.e. those with fewer than 2.5 full-time equivalents employees).\n- More accurate and timely estimates of filled jobs (employees plus working proprietors), since they are produced directly from the quarterly monitor. Previously they were produced as provisional results subject to revision annually after the February census.\n- The survey no longer produces estimates based on the New Zealand Standard Industrial Classification (NZSIC). Instead, the survey has moved to Australian New Zealand Standard Industrial Classification (ANZSIC) based estimates. (Note that ANZSIC based estimates are available from 1994 onwards).\n\nKey series, based on the re-designed QES, have been back-cast to February 1989. The back-cast series compensate for the change in coverage that occurred when the survey moved to the new design, i.e. the addition of small business to the sample, and the sample improvements that have been implemented in the new survey design.\n\n\n**2001 Introduction of modelled component**\n\nFrom the May 2001 quarter (inclusive), the QES results contain a modelled component that improves the coverage of existing businesses that start employing staff, and accounts for the impact of annual frame updates. The results from May 1999 to February 2001 were revised to incorporate this improvement.\n\nThe survey population is comprised of businesses on the BF that have a nonzero employee indicator. Businesses on the BF that have started employing staff can only be represented by the survey sample if their employee indicator changes to a nonzero value. This indicator is only updated twice a year collected in AFUS in February. However, it can be more than a year between the time a business on the BF begins employing staff, and the updating of its employee indicator. The contribution from these businesses is modelled before their AFUS updates takes effect on the BF.\n\n\n**2003 Changes to reference quarters**\n\nAt the start of September 2003, the reference quarters for the QES were renamed to bring them into line with other Statistics New Zealand surveys. The Februrary, May, August, and November quarters became March, June, September and December quarters. The survey reference periods did not change; it remains the pay week ending on or immediately before the 20th of the middle month of the quarter.\n\n\n**2003 New business size indicator**\n\nIn October 2003, employee count replaced FTE as the business size indicator in the sample design. The size indicator is used to identify businesses on the BF with paid employees. An employee count size indicator enables the survey to operate under the new BF maintenance environment.\n\nPrior to October 2003, a business was included in the QES population if it had at least one paid FTE. From October 2003, onwards, it must have an employee count of at least one. The resulting operational change necessitated an update of the sample which improved its representativeness. Consequently there was no need to retain the modelled component. It also meant revising previously published results from quarters December 1999 to June 2003 (inclusive). The revisions were released on 22 October 2003.\n\nThe September 2003 quarterly release will be the first based on employee count as the size indicator.\n\n\n**2004 Sample size reduction**\n\nThe use of EC in the sample design resulted in a significant sample size decrease. In the June 2004 quarter, the sample was reduced by about 1,700 business locations. This had a negligible effect on the accuracy of the key published estimates.\n\n\n**2009 Introduction of ANZSIC 2006**\n\nIn November 2009, the QES moved to producing estimtaes based on ANZSIC 2006. This industry classification replaced the use of ANZSIC 1996 resulting in a change in sample design. It also meant revising previously published estimates from the beginning of each time series (March 1989 for industry and sector estimates, and September 1999 for region and firm size estimates).\r\n\r\n**2020-2021 Redesign of the survey**\r\n\r\nThe QES was redesigned during 2020, with changes introduced in the March 2021 quarter. Under the new design, the enterprise continued as the sampling unit. The historic QES collected data at the geographic level, but after the redesign information is now collected at the kind-of-activity (KAU) level. This is consistent with most of Stats NZ’s quarterly and annual financial surveys. Other key changes included:\r\n\r\n- The new sample design reallocates strata each quarter to maintain a representative sample. When compared to the historic method, this regular reallocation will introduce larger variability each quarter than under the previous design, especially at the industry level.  \r\n- The stratified sample design was optimised, which led to half of the enterprises selected being new to the survey in March 2021.\r\n- The new design introduced an electronic questionnaire and also reduced response burden.\r\n- Due to the transition to a KAU-based design, the QES can no longer produce regional breakdowns as a KAU can operate in multiple regions.\r\n- The design for state sector schools now uses administrative data rather than a small sample of individual schools. \r\n\r\nPlease refer to the paper \"[Redesign of the quarterly employment survey](https://www.stats.govt.nz/methods/redesign-of-the-quarterly-employment-survey)\" for more details.\r\n\r\n**2023-2026 Sample rotation** \r\n\r\nSample rotation was introduced to the QES sample design in the March 2023 quarter. This change was designed to gradually change all long-term small to medium enterprises (SMEs) selected in the QES over a 2 to 3 years period. In each quarter, except for December quarters, units belonging to selected industries are rotated. This change can create higher sampling errors on quarterly and annual changes.\r\n\r\n",
+      "UriValue": null,
+      "DateValue": null,
+      "RelatedItemIdValue": null,
+      "MultipleRelatedItemIdsValue": null,
+      "MultilingualStringValue": {},
+      "NumberValue": null,
+      "BooleanValue": false,
+      "HasDefinedType": true,
+      "DisplayLabel": "Significant events impacting this study series"
+    }
+  ],
+  "UserAttributes": []
+}

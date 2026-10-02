@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import gzip
 import hashlib
 import json
 from pathlib import Path
@@ -81,6 +82,26 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
     ]
     assert report["series"]["population"]["series_id"].startswith("DPE056AA")
     assert report["series"]["population"]["rights"] == "infoshare_export_not_evaluated"
+    wages = report["series"]["wages"]
+    assert "pay week ending on or before the 20th" in wages["period_basis"]
+    assert "not a full-quarter average" in wages["period_basis"]
+    assert "not a constant-quality wage index" in wages["analytical_status"]
+    assert wages["rights"] == "publisher_default_observed_unadjudicated"
+    assert any(
+        evidence["path"].endswith("qes-methodology-rights-review-20261002.md")
+        for evidence in report["evidence"]
+    )
+    for path, digest in (
+        (
+            TRACK / "qes-series-metadata-20261002.json.gz",
+            "be2715d1549f68bf2b0e60a9262b204690f8dbf8105c4c565594ea09d566df3f",
+        ),
+        (
+            TRACK / "qes-data-collection-metadata-20261002.json.gz",
+            "699a1fbb3df5b849974604b1a67dbbe0b1e15997921a3877699565c15151a19b",
+        ),
+    ):
+        assert hashlib.sha256(gzip.decompress(path.read_bytes())).hexdigest() == digest
     assert "2011Q2" in report["series"]["gdp"]["vintage_or_range"]
     assert "2026Q1" in report["series"]["gdp"]["vintage_or_range"]
     assert (

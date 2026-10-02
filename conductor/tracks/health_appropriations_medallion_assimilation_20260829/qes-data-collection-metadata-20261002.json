@@ -1,0 +1,88 @@
+{
+  "ItemType": "c5084916-9936-47a9-a523-93be9fd816d8",
+  "Instruments": [],
+  "InstrumentSchemes": [],
+  "QuestionSchemes": [],
+  "ControlConstructSchemes": [],
+  "Coverage": {
+    "TopicalCoverage": {
+      "Subjects": [],
+      "Keywords": [],
+      "HasValue": false,
+      "AgencyId": null,
+      "Identifier": "dab0c9d5-a9eb-4cc3-abe4-b4cecb306546",
+      "UserIds": [],
+      "CustomFields": [],
+      "UserAttributes": []
+    },
+    "TemporalCoverage": {
+      "HasValue": false,
+      "Dates": [],
+      "AgencyId": null,
+      "Identifier": "d40e3050-eae5-4f22-b389-1fdfd10c9cba",
+      "UserIds": [],
+      "CustomFields": [],
+      "UserAttributes": []
+    },
+    "SpatialCoverage": {
+      "BoundingBox": {
+        "WestLongitude": 0.0,
+        "EastLongitude": 0.0,
+        "NorthLatitude": 0.0,
+        "SouthLatitude": 0.0,
+        "HasValue": false
+      },
+      "Description": {
+        "en-NZ": "The Quarterly Employment Survey (QES) is a sample of over 3,900 kind-of-activity units (KAUs)  selected from the population of economically significant enterprises in surveyed industries. Weights are allocated to each of the selected KAU. These represent the population weights based on employee counts sourced from the Business Register."
+      },
+      "CountryCodes": [],
+      "HighestLevel": "New Zealand",
+      "LowestLevel": null,
+      "GeographicLocations": [],
+      "HasValue": true,
+      "AgencyId": "nz.govt.stats",
+      "Identifier": "64ac8ee0-e415-48e8-b954-71f57a6ef304",
+      "UserIds": [],
+      "CustomFields": [],
+      "UserAttributes": []
+    },
+    "HasValue": true
+  },
+  "Methodology": null,
+  "CollectionEvents": [],
+  "ProcessingEvents": [],
+  "ProcessingEventSchemes": [],
+  "ProcessingInstructionSchemes": [],
+  "ItemName": {
+    "en-NZ": "Quarterly Employment Survey Data Collection"
+  },
+  "Label": {
+    "en-NZ": "QES Data Collection"
+  },
+  "Description": {
+    "en-NZ": "The Quarterly Employment Survey data provides information about employment, earnings and hours paid at industry and national levels. Data is obtained from economically significant businesses for the reference period of the pay week ending on, or before the 20th of the middle month of the quarter. When businesses do not answer questions in the Quarterly Employment Survey, Statistics NZ imputes the data using historical and ratio imputation techniques.\n\n#General Information\n\n#Data Source\n\nData source for the Quarterly Employment Survey is quarterly electronic and postal surveys. We collect quarterly data from businesses for the middle month of the respective quarter.\n\nThe QES has a sample of over  3900 kind-of-activity units (KAUs)  selected from a population of economically significant enterprises in surveyed industries. \n\n#Coverage\n\nThe QES samples economically significant enterprises in surveyed industries. An economically significant enterprise is one that meets at least one of the following criteria: \n\n- has greater than $30,000 annual GST expenses or sales \n- has at least three employees for its rolling mean employment (the average employee count over the previous 12 months) \n- recorded over $40,000 of income in the IR10 annual tax return \n- is part of a group of enterprises \n- is a new GST registration that is compulsory, special, or forced \n- is registered for GST. \n\nThe QES does not include data from the agriculture, fisheries, and several smaller industries(see the population set for all exclusions), or earnings from self-employment. \n\n#Weights\n\nWe allocate weights to each of the selected business locations. These represent the population weights based on employee counts sourced from the Business Register.\n\n#Sample errors\n\nSurvey data is subject to two types of possible error: sampling error and non-sampling error. \n\nSampling error is a measure of variability that occurs by chance because we survey a sample of eligible businesses, rather than the entire population. The magnitude of the sampling error is controlled by the size of the sample and sound sample selection practice. \n\nNon-sampling error includes errors arising from biases in the patterns of response and non-response, inaccuracies in reporting by respondents, errors introduced by modelled data, and errors in the recording and coding of data. Non-sampling error is, by definition, difficult to measure. The magnitude of non-sampling error is not measured. \n\nIf a movement is larger than its corresponding sampling error, it is statistically significant.\n\nSampling errors in the QES are calculated using the Horvitz Thompson method. \n\n#Imputation \n\nImputation is the process of estimating data for surveyed respondents or businesses that do not respond. \n\nThe QES uses the following types of imputation:\n\nRatio imputation – used for businesses entering the sample in the current quarter. We use employee count from the Business Register to impute. \n\nHistorical imputation – used for ongoing businesses. Data is imputed by multiplying the previous quarter’s data by the average movement of responding businesses of similar characteristics.\n\n#Rounding\n\nFilled jobs, FTEs, total hours, and total earnings are rounded to the nearest hundred. Average hours, average earnings, and hourly earnings are rounded to two decimal places. \n\n#Seasonally adjusted and trend series\n\nThe X-13-ARIMA-SEATS  package is used to produce the seasonally adjusted estimates and trend estimates for selected QES series. Seasonal adjustment aims to eliminate the impact of regular seasonal events on time series. This makes the data for adjacent quarters more comparable, and ensures that the underlying movements in the time series are more visible.\n\nAll seasonally adjusted figures are revised each quarter. This enables the seasonal component to be better estimated and then removed from the series.\n\nWhile seasonally adjusted series have the seasonal component removed, trend series have both the seasonal and the irregular components removed. Trend estimates reveal the underlying direction of movement in a series, and are likely to indicate turning points more accurately than seasonally adjusted estimates.\n\nTrend estimates towards the end of the series incorporate new data as it becomes available. They can therefore change as more observations are added to the series. Revisions can be particularly large if an observation is treated as an outlier in one quarter, but is found to be part of the underlying trend as further observations are added to the series. Typically, only the estimates for the most recent quarter will be subject \n\n\n#Comparison between HLFS and QES\n\n##Use\n\nHLFS – measures the number of people employed from an individual perspective. Measures the number of hours people usually and actually work. Regional estimates are more robust due to how they are weighted. \n\nQES – use when wanting to measure the number of filled jobs from a business’s perspective, or when wanting to measure the number of hours businesses pay for.\n\n##Coverage\n\nHLFS – includes agricultural workers, self-employed workers, unpaid family workers, and those on unpaid leave among the employed. Limited to the working-age population, aged 15 years and older. \n\nQES – jobs filled by overseas workers resident in New Zealand for less than 12 months are included. Filled jobs are not limited by age. \n\n##Reference period\n\nHLFS – surveys all weeks of the quarter.\n\nQES – based on a reference week in the middle of the quarter.\n\n#Comparison between LCI and QES\n\n##Use\n\nLCI – measures changes in wage inflation.\n\nQES – measures the change in hourly earnings a business has to pay on average across all jobs.\n\n##Coverage\n\nLCI – jobs filled by paid employees in all occupations and in all industries except private households employing staff.\n\nQES – does not include the earnings of those working in agriculture, fisheries, or earnings from self-employment.\n\n##Measures\n\nLCI\n\n- Adjusted LCI measures the rates employers pay to have the same job completed to the same standard. \n- Controls for changes in sector, industry, and occupation by assigning fixed weights. Weights reflect relative importance of job descriptions for different combinations of sectors of ownership, occupation, and industry. \n- Unadjusted LCI measures the rates employers pay to have the same job completed to a differing standard (allowing the quality of labour within occupations to improve). \n\nQES \n\n- Reflects changes in composition of paid workforce, and changes to earnings paid by surveyed businesses within industries, and between industries. \n- Compositional effects between industries can affect the QES when industries with higher or lower earnings than the average total hourly earnings for all industries change in relative importance (eg make up a bigger share of the total hours). \n- Compositional changes within industries can affect the QES, as the composition of the paid workforce is reflected (eg the occupations that firms hire). \n\n\n\n"
+  },
+  "DisplayLabel": "Quarterly Employment Survey Data Collection - QES Data Collection",
+  "IsPublished": false,
+  "IsPopulated": true,
+  "Version": 19,
+  "VersionDate": "2021-04-27T01:32:38.6262373Z",
+  "VersionResponsibility": null,
+  "VersionRationale": {},
+  "CompositeId": {
+    "Item1": "0394e202-f8c6-482c-89a3-49b16a20bf95",
+    "Item2": 19,
+    "Item3": "nz.govt.stats"
+  },
+  "OtherMaterials": [],
+  "BasedOn": null,
+  "SucceededBy": null,
+  "Attachments": [],
+  "ThumbnailImageUri": null,
+  "BannerImageUri": null,
+  "AgencyId": "nz.govt.stats",
+  "Identifier": "0394e202-f8c6-482c-89a3-49b16a20bf95",
+  "UserIds": [],
+  "CustomFields": [],
+  "UserAttributes": []
+}
