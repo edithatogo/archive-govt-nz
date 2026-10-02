@@ -4037,14 +4037,13 @@ checks. The automatic `phase_7_gates` review passed; retained receipt:
 The first focused registry run exposed a test-fixture error: the new case used
 `observed_at="now"`, while the existing source-context validator requires an
 ISO timestamp. Both new vintage cases failed at that boundary before any
-extraction. The validator behaved as designed; the fixture correction and
-rerun pass (40 focused tests). Ruff then identified one import-order issue in
-the new test file; no production issue was reported, and the import-only
-autofix and final rerun are pending.
+extraction. The validator behaved as designed; the fixture was corrected and
+40 focused tests passed. Ruff found one import-order issue in the new test file;
+the import-only autofix and subsequent full harness passed.
 
 The first required full-harness attempt stopped at the format gate, which
 reported only two Ruff line-wrap changes in that same test file; later harness
-lanes did not run. The formatting correction and full retry passed: 7,278 passed, 10 skipped,
+lanes did not run. Ruff corrected the wrapping, and the full retry passed: 7,278 passed, 10 skipped,
 98.15% branch-aware coverage against the 80% floor, schemas and parity passed,
 all configured mutation gates and supply-chain checks passed. Focused dispatch,
 repeatability, adapter, and common dispatcher tests passed (40); Ruff and
@@ -4054,3 +4053,30 @@ SHA-256 `b81dc0c7b2e386d1f01c3d7ae512ee9f87e3031e862add345390e273293d9387`.
 The registry supports one explicit revenue vintage per registration set, not
 annual Budget coverage. Rights remain `not_evaluated`; publication remains
 `not_performed`.
+
+### Budget expenditure common-registry dispatch (2026-10-03)
+
+The focused registry, repeatability, Budget, and dispatcher tests pass (51).
+Ruff identified one import-order issue and one long assertion line in the
+updated registry test file; no production issue was reported. Both style issues
+were recorded, then corrected. Focused formatting and tests passed. A synthetic
+Budget 2025 named-column workbook dispatches through the common registry and
+retains the supplied source vintage and fiscal year. The combined
+registered-adapter repeatability test now obtains both Budget expenditure and
+revenue through the common registry, verifying repeat-identical selections and
+extraction outputs across all registered fixtures.
+
+This does not add another annual Budget source edition, normalize additional
+workbook areas, resolve source rights, or complete longitudinal Budget and
+Vote Health coverage. Budget revenue remains one explicit vintage per registry
+set. Rights remain `not_evaluated`; publication remains `not_performed`.
+
+Focused registry, repeatability, Budget expenditure/revenue adapter and
+common-dispatch tests: 51 passed. The required `./scripts/validate.sh` passed:
+7,279 passed, 10 skipped, 98.15% branch-aware coverage against the configured
+80% floor; 53 schemas/43 representative documents, 9/9 parity, all configured
+mutation gates, hygiene, CAS benchmark, dependency, license, secret and
+113-component SBOM checks. Ruff and basedpyright passed. The automatic
+`phase_7_gates` review passed; retained receipt
+`phase_7_gates-review-receipt-20261003-budget-expenditure-dispatch.json`, file
+SHA-256 `c139cc534414639d54202f5e18f3ecb113571f7d49a01edbb6fec821e746809b`.

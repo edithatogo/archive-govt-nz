@@ -36,9 +36,6 @@ from archive_govt_nz.domains.health_appropriations.adapter_registry import (
     AdapterContext,
     context_adapter_registrations,
 )
-from archive_govt_nz.domains.health_appropriations.budget_adapter import (
-    budget_expenditure_registration,
-)
 from archive_govt_nz.domains.health_appropriations.gdp import VINTAGE as GDP_VINTAGE
 
 
@@ -108,6 +105,11 @@ def test_registered_adapters_repeat_selection_and_extraction(
         ),
         qes=AdapterContext("qes.xlsx", "QES-2026-Q2", "2026-08-31T00:00:00Z"),
         gdp=AdapterContext("gdp.xlsx", GDP_VINTAGE, "2026-08-31T00:00:00Z"),
+        budget_expenditure=AdapterContext(
+            "data/raw/b25-health-budget.xlsx",
+            "Budget-2025",
+            "2026-08-31T00:00:00Z",
+        ),
         budget_revenue=AdapterContext(
             "data/raw/b25-health-budget.xlsx",
             "Budget-2025",
@@ -122,21 +124,6 @@ def test_registered_adapters_repeat_selection_and_extraction(
             "2026-08-31T00:00:00Z",
         ),
     )
-    budget_context = {
-        "source_locator": "data/raw/b25-health-budget.xlsx",
-        "source_vintage": "Budget-2025",
-        "observed_at": "2026-08-31T00:00:00Z",
-    }
-    registrations = tuple(
-        sorted(
-            (
-                *registrations,
-                budget_expenditure_registration(**budget_context),
-            ),
-            key=lambda row: row.adapter_id,
-        )
-    )
-
     for profile, bronze, media_type, adapter_id in profiles:
         original = bytes(bronze)
         digest = hashlib.sha256(original).hexdigest()
