@@ -1191,6 +1191,42 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
         and isinstance(classification_report.get("candidates"), list),
         "canonical_gold_classification_drift_report_invalid",
     )
+    revision_report = manifest.get("revision_reconciliation_report")
+    revision_path = root / "canonical-1" / "historical_revision_reconciliation.json"
+    revision_output = manifest.get("outputs", {}).get(
+        "historical_revision_reconciliation.json"
+    )
+    require_evidence(
+        isinstance(revision_report, dict)
+        and revision_report.get("schema_version")
+        == "archive-govt-nz.health-revision-reconciliation/v1"
+        and revision_report.get("key_fields")
+        == [
+            "recordset",
+            "measure",
+            "source_label",
+            "unit",
+            "currency",
+            "price_basis",
+            "base_period",
+            "denominator_definition",
+            "institutional_coverage",
+            "accounting_basis",
+            "period_token",
+        ]
+        and revision_report.get("completeness") == "historical_product_rows_only"
+        and revision_report.get("difference_interpretation") == "not_assessed"
+        and revision_report.get("other_product_revisions") == "not_assessed"
+        and revision_report.get("cross_source_comparison") == "not_performed"
+        and isinstance(revision_report.get("candidates"), list)
+        and revision_report.get("changed_candidate_count")
+        == len(revision_report["candidates"])
+        and revision_path.is_file()
+        and isinstance(revision_output, dict)
+        and revision_output.get("sha256") == digest(revision_path)
+        and json.loads(revision_path.read_bytes()) == revision_report,
+        "canonical_gold_revision_reconciliation_report_invalid",
+    )
     return {
         "files": files,
         "repeat_identical": True,
@@ -1209,6 +1245,23 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
             "candidate_count": len(classification_report["candidates"]),
             "mapping": classification_report["mapping"],
             "cross_source_comparison": classification_report["cross_source_comparison"],
+        },
+        "revision_reconciliation_report": {
+            "schema_version": revision_report["schema_version"],
+            "scope": revision_report["scope"],
+            "key_fields": revision_report["key_fields"],
+            "completeness": revision_report["completeness"],
+            "shared_series_period_count": revision_report["shared_series_period_count"],
+            "unchanged_series_period_count": revision_report[
+                "unchanged_series_period_count"
+            ],
+            "ambiguous_series_period_count": revision_report[
+                "ambiguous_series_period_count"
+            ],
+            "changed_candidate_count": revision_report["changed_candidate_count"],
+            "difference_interpretation": revision_report["difference_interpretation"],
+            "other_product_revisions": revision_report["other_product_revisions"],
+            "cross_source_comparison": revision_report["cross_source_comparison"],
         },
     }
 

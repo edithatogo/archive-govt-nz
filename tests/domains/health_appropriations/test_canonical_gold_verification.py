@@ -21,6 +21,33 @@ def _package(root: Path) -> tuple[Path, str]:
     payload = b"verified-output-payload"
     output = root / "observations.parquet"
     output.write_bytes(payload)
+    revision_report = {
+        "schema_version": "archive-govt-nz.health-revision-reconciliation/v1",
+        "scope": "same_recordset_measure_source_label_and_exact_context_period_across_observed_vintages",
+        "key_fields": [
+            "recordset",
+            "measure",
+            "source_label",
+            "unit",
+            "currency",
+            "price_basis",
+            "base_period",
+            "denominator_definition",
+            "institutional_coverage",
+            "accounting_basis",
+            "period_token",
+        ],
+        "completeness": "historical_product_rows_only",
+        "difference_interpretation": "not_assessed",
+        "other_product_revisions": "not_assessed",
+        "cross_source_comparison": "not_performed",
+        "candidates": [],
+    }
+    revision_payload = (
+        json.dumps(revision_report, sort_keys=True, separators=(",", ":")) + "\n"
+    ).encode()
+    revision_output = root / "historical_revision_reconciliation.json"
+    revision_output.write_bytes(revision_payload)
     manifest = {
         "schema_version": "archive-govt-nz.health-canonical-gold/v2",
         "outputs": {
@@ -28,7 +55,12 @@ def _package(root: Path) -> tuple[Path, str]:
                 "sha256": hashlib.sha256(payload).hexdigest(),
                 "bytes": len(payload),
                 "rows": 1,
-            }
+            },
+            revision_output.name: {
+                "sha256": hashlib.sha256(revision_payload).hexdigest(),
+                "bytes": len(revision_payload),
+                "kind": "report",
+            },
         },
         "products": {"historical": {"input_records": 1}},
         "temporal_coverage_report": {
@@ -40,6 +72,7 @@ def _package(root: Path) -> tuple[Path, str]:
             "mapping": "not_inferred",
             "candidates": [],
         },
+        "revision_reconciliation_report": revision_report,
         "rights_state": "not_evaluated",
         "publication": "not_performed",
     }
@@ -94,8 +127,11 @@ def test_cli_mcp_parity_and_no_write(
     assert cli_receipt.pop("command") == "health-appropriations-verify-canonical-gold"
     assert cli_receipt == receipt
     assert receipt["status"] == "verified"
-    assert receipt["output_count"] == 1
-    assert receipt["output_bytes"] == len(b"verified-output-payload")
+    assert receipt["output_count"] == 2
+    assert receipt["output_bytes"] == sum(
+        (root / name).stat().st_size
+        for name in ("observations.parquet", "historical_revision_reconciliation.json")
+    )
     assert receipt["products"] == ["historical"]
     assert receipt["temporal_coverage_groups"] == 1
     assert receipt["verification_scope"] == "manifest_declared_output_fixity"
@@ -211,6 +247,20 @@ def test_invalid_package_fails_closed_and_redacted(
     assert response is not None
     assert response["result"]["isError"] is True
     assert json.loads(response["result"]["content"][0]["text"]) == receipt
+
+
+def test_invalid_revision_report_fails_closed(tmp_path: Path) -> None:
+    root, _pin = _package(tmp_path / "gold")
+    marker = root / "MANIFEST.json"
+    manifest = json.loads(marker.read_text(encoding="utf-8"))
+    manifest["revision_reconciliation_report"] = []
+    marker.write_text(json.dumps(manifest), encoding="utf-8")
+    pin = hashlib.sha256(marker.read_bytes()).hexdigest()
+
+    receipt = verify_canonical_gold_package(root, pin)
+
+    assert receipt["status"] == "failed"
+    assert receipt["error"] == "invalid_canonical_gold_package"
 
 
 def test_duplicate_manifest_keys_fail_closed(tmp_path: Path) -> None:

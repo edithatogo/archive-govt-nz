@@ -167,7 +167,9 @@ def _assert_dataset_card(output: Path, manifest: dict[str, Any]) -> None:
         "Source health: unresolved.",
         "Budget/revenue label-change candidates: observed only;",
         "Other classification drift: unresolved.",
-        "Revision reconciliation: unresolved.",
+        "Historical revision candidates are observed only; reasons for change",
+        "  are not assessed.",
+        "Full revision reconciliation: unresolved.",
         "Cross-source reconciliation: not performed.",
         "Rights: not evaluated.",
         "Publication: not performed.",
@@ -590,9 +592,16 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
         "historical_coverage.parquet",
         "nominal_budget.parquet",
         "nominal_revenue.parquet",
+        "historical_revision_reconciliation.json",
         "MANIFEST.json",
     }.issubset({path.name for path in output.iterdir()})
     manifest = json.loads((output / "MANIFEST.json").read_text(encoding="utf-8"))
+    revision_report = manifest["revision_reconciliation_report"]
+    assert revision_report["schema_version"] == (
+        "archive-govt-nz.health-revision-reconciliation/v1"
+    )
+    assert revision_report["completeness"] == "historical_product_rows_only"
+    assert revision_report["other_product_revisions"] == "not_assessed"
     _assert_ro_crate(output, manifest)
     _assert_dataset_card(output, manifest)
     _assert_temporal_report(manifest)
@@ -1167,6 +1176,75 @@ def test_classification_drift_report_flags_only_same_exact_budget_dimensions(
         [first["source_label"], changed_label["source_label"]]
     )
     assert candidate["status"] == "source_label_change_candidate"
+
+
+def test_revision_report_flags_exact_historical_changes_without_explaining_them(
+    tmp_path: Path,
+) -> None:
+    observations, _receipt = query_historical_observations(
+        (_historical_package(tmp_path),)
+    )
+    baseline = observations.to_pylist()[0]
+    revised = {
+        **baseline,
+        "source_vintage": "Observed successor vintage",
+        "amount": baseline["amount"] + Decimal(1),
+        "input_record_id": "successor-record-1",
+    }
+    separate_unit = {
+        **revised,
+        "unit": "a distinct unit",
+        "input_record_id": "successor-record-2",
+    }
+    ambiguous_original = {
+        **baseline,
+        "period_token": "ambiguous-period",
+        "input_record_id": "baseline-record-ambiguous",
+    }
+    ambiguous_successor = {
+        **revised,
+        "period_token": "ambiguous-period",
+        "input_record_id": "successor-record-ambiguous-1",
+    }
+    ambiguous_duplicate = {
+        **ambiguous_successor,
+        "amount": ambiguous_successor["amount"] + Decimal(1),
+        "input_record_id": "successor-record-ambiguous-2",
+    }
+
+    report = canonical_gold_export.build_revision_reconciliation_report(
+        {
+            "observations": pa.Table.from_pylist(
+                [
+                    baseline,
+                    revised,
+                    separate_unit,
+                    ambiguous_original,
+                    ambiguous_successor,
+                    ambiguous_duplicate,
+                ],
+                schema=observations.schema,
+            )
+        }
+    )
+
+    assert report["scope"] == (
+        "same_recordset_measure_source_label_and_exact_context_period_"
+        "across_observed_vintages"
+    )
+    assert "source_label" in report["key_fields"]
+    assert "source_locator" not in report["key_fields"]
+    assert report["difference_interpretation"] == "not_assessed"
+    assert report["completeness"] == "historical_product_rows_only"
+    assert report["ambiguous_series_period_count"] == 1
+    assert len(report["candidates"]) == 1
+    candidate = report["candidates"][0]
+    assert candidate["period_token"] == baseline["period_token"]
+    assert candidate["values_by_vintage"] == {
+        baseline["source_vintage"]: str(baseline["amount"]),
+        revised["source_vintage"]: str(revised["amount"]),
+    }
+    assert candidate["interpretation"] == "not_assessed"
 
 
 @pytest.mark.parametrize("packages", [[], (), [object()]])
