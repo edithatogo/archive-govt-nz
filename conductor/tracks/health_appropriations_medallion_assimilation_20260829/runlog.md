@@ -3809,3 +3809,23 @@ existing `<7` range to 6.19.0 cleared the audit, with no known vulnerabilities
 remaining. Automatic Conductor `phase_7_gates` passed after the lock update;
 receipt SHA-256
 `f34f708e5304b8aa53898310f4bbf5a0fd58593d6dc5dfe643726fc1764f2a0b`.
+
+## 2026-10-02 — Read-only canonical Gold consumer example
+
+Added `tools/health_canonical_gold_example.py` and the corresponding
+`canonical_gold_example` API. Given a package directory and expected manifest
+SHA-256, the example first verifies the manifest-declared output fixity, then
+prints deterministic source-separated product counts, exact-context temporal
+counts and bounded classification/revision counts. It performs no observation
+aggregation and retains the unassessed comparison, rights and publication
+boundaries. See
+[`canonical-gold-consumer-example-20261002.md`](canonical-gold-consumer-example-20261002.md).
+
+The focused verifier/consumer suite passed (21 tests), including contract
+cases for nonzero period/revision counts and malformed fail-closed inputs. The
+canonical example module reached 100% branch-aware coverage. The required
+`./scripts/validate.sh` passed: 7,256 tests, 10 skipped, 98.25% coverage against
+the repository's 80% minimum, 53 schemas/43 representative documents, 9/9
+parity, and all mutation, hygiene, CAS, dependency, licence, secret and SBOM
+checks. The automatic Conductor `phase_7_gates` review passed; receipt SHA-256
+`e25bac17174b78c4491a8c4b5bc7d2a9d4afea305f6e8ed71ff887def66e5f86`.

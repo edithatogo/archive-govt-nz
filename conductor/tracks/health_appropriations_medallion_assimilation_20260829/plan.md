@@ -782,8 +782,9 @@ integrated parent head.
     discrete source-period/label categories, retain input IDs in the plot
     report, and report bounded omissions without interpolation. Preserve exact
     values in Parquet; numeric conversion is only for plot display. See
-    `canonical-source-separated-gold-20260928.md`. Other measures, donor
-    reports and consumer examples remain open.
+    `canonical-source-separated-gold-20260928.md`. Other measures and donor
+    reports remain open; the bounded verified-package consumer example is
+    described below.
   - [x] Add a manifest index from each admitted source record ID to its exact
     Parquet output row, bound by table-byte SHA-256 and deterministic sorted
     row position. Verify every link through Parquet readback. This links
@@ -800,6 +801,12 @@ integrated parent head.
     available historical, Budget and revenue mart. Do not infer gaps, join
     sources or pool vintages. See
     `canonical-temporal-coverage-20260928.md`.
+  - [x] Add an executable, read-only canonical Gold consumer example. Require
+    the exact manifest digest, verify the package before reading its structured
+    product and coverage summaries, and retain explicit unresolved revision,
+    rights and publication states. Do not re-aggregate observation values or
+    infer cross-source findings. See
+    `canonical-gold-consumer-example-20261002.md`.
 
 ### 6.3 Phase review and checkpoint
 
