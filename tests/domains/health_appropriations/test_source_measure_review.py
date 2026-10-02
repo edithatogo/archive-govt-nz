@@ -81,7 +81,21 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
         2025,
     ]
     assert report["series"]["population"]["series_id"].startswith("DPE056AA")
-    assert report["series"]["population"]["rights"] == "infoshare_export_not_evaluated"
+    assert (
+        report["series"]["population"]["rights"]
+        == "publisher_default_observed_unadjudicated"
+    )
+    population_rights = next(
+        item
+        for item in report["evidence"]
+        if item["path"].endswith("population-rights-review-20261002.md")
+    )
+    assert (
+        population_rights["sha256"]
+        == hashlib.sha256(
+            (TRACK / "population-rights-review-20261002.md").read_bytes()
+        ).hexdigest()
+    )
     wages = report["series"]["wages"]
     assert "pay week ending on or before the 20th" in wages["period_basis"]
     assert "not a full-quarter average" in wages["period_basis"]
