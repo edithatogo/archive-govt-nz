@@ -4172,3 +4172,10 @@ adding coverage-only tests.
 `./scripts/validate.sh` passed: 7,286 passed, 10 skipped, 98.14% branch-aware
 coverage against the configured 80% floor; format, lint, typing, 53 schemas,
 9/9 parity, all mutation gates, audit, licence, secret scan and SBOM passed.
+
+The first hosted assurance run exposed stale hash pins after the append-only
+evidence ledger changed: the retained context census and source-measure review
+both pin `evidence.jsonl`. No recovery or implementation assertion failed.
+Updated the dependent ledger/census hashes; the source-measure and source-context
+census suites pass together (60 passed). Full validation and exact-head hosted
+checks are being repeated after this evidence correction.

@@ -11,7 +11,10 @@ match the privacy-preserving target URI and remain untouched for fresh capture.
 The focused regression proves recovery preserves the orphan bytes and avoids a
 second request; the 34-test checkpoint suite, Ruff, basedpyright and full
 repository validation pass. No rights, publication, source completeness or
-power-loss claim is made. No actionable issue remains in this bounded change.
+power-loss claim is made. The initial hosted assurance run found stale hashes
+because the source census and source-measure review pin the append-only
+evidence ledger; their dependent pins were refreshed, and both evidence suites
+now pass (60 tests). No actionable issue remains in this bounded change.
 
 ## 2026-09-07 — Phase 2.1 bounded review
 
