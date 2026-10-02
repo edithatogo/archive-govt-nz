@@ -394,11 +394,16 @@ integrated parent head.
 
 ### 3.4 Phase review and checkpoint
 
-- [ ] Run schema, golden, property, mutation, archive-safety, typing and focused
+- [x] Run schema, golden, property, mutation, archive-safety, typing and focused
   coverage gates; review binary preservation and lineage boundaries. [M-18;
-  AC-05, AC-16]
-- [ ] Run the full repository harness and record paired evidence. [M-18,
-  M-19; AC-16]
+  AC-05, AC-16] The integrated repository harness passed on `496cdff9`:
+  7,286 passed, 10 skipped, 98.14% branch-aware coverage against the configured
+  80% floor; schemas, parity, mutation, format, lint and strict typing passed.
+  Existing contracts cover the Phase 3 schema, adapter, lineage, drift and
+  repeat-build boundaries; no tests were added to raise coverage.
+- [x] Run the full repository harness and record paired evidence. [M-18,
+  M-19; AC-16] Local full-harness evidence is recorded in the 2026-10-03
+  runlog entry; hosted exact-head checks will be paired through the PR gate.
 
 ## Phase 4 — Donor extraction and functional parity
 
