@@ -34,6 +34,13 @@ MIN_ROWS = 4
 _ERROR = "vote_health_pdf_contract"
 PROFILE = "vote-health-supplementary-2003-04-summary/v1"
 TRANSFORMATION = "vote-health-supplementary-summary/v1"
+DETAIL_VINTAGE_2003_04 = "Treasury-Vote-Health-Supplementary-2003-04"
+DETAIL_VINTAGE_2002_03 = "Treasury-Vote-Health-Estimates-2002-03"
+DETAIL_2002_03_SHA256 = (
+    "1170e0bf5d11e6ac93620a2d76d68004ed99b88ed45a0c6c3c48bbc38f72fafe"
+)
+DETAIL_2002_03_TRANSFORMATION = "vote-health-estimates-detail-2002-03/v1"
+DETAIL_2002_03_PAGE_COUNT = 44
 _YEAR = "2003/04"
 _COLUMNS = (
     "department_annual",
@@ -201,15 +208,24 @@ def normalize_vote_health_detail(  # noqa: PLR0913 - provenance is explicit
     dry_run: bool = True,
 ) -> dict[str, object]:
     """Extract complete Part B1 rows while preserving incomplete source pages."""
-    _require(source_vintage == "Treasury-Vote-Health-Supplementary-2003-04")
+    _require(source_vintage in {DETAIL_VINTAGE_2003_04, DETAIL_VINTAGE_2002_03})
+    if source_vintage == DETAIL_VINTAGE_2002_03:
+        _require(expected_sha256 == DETAIL_2002_03_SHA256)
     _require(not source.is_symlink() and source.is_file())
     _require(not output_dir.exists() and not output_dir.is_symlink())
     context = source_context(
         expected_sha256, source_locator, source_vintage, observed_at
     )
+    detail_transformation = (
+        DETAIL_2002_03_TRANSFORMATION
+        if source_vintage == DETAIL_VINTAGE_2002_03
+        else TRANSFORMATION
+    )
     payload = verified_snapshot(source, expected_sha256, max_bytes=MAX_BYTES)
     reader = PdfReader(BytesIO(payload), strict=True)
     _require(not reader.is_encrypted and 0 < len(reader.pages) <= MAX_PAGES)
+    if source_vintage == DETAIL_VINTAGE_2002_03:
+        _require(len(reader.pages) == DETAIL_2002_03_PAGE_COUNT)
     texts = [page.extract_text(extraction_mode="plain") or "" for page in reader.pages]
     starts = [
         number
@@ -231,7 +247,9 @@ def normalize_vote_health_detail(  # noqa: PLR0913 - provenance is explicit
             name, tokens = row["appropriation_name"], row["tokens"]
             _require(name not in names)
             names.add(name)
-            record_id = identity(TRANSFORMATION, "detail", expected_sha256, page, name)
+            record_id = identity(
+                detail_transformation, "detail", expected_sha256, page, name
+            )
             facts.append(
                 {
                     **context,
@@ -248,7 +266,7 @@ def normalize_vote_health_detail(  # noqa: PLR0913 - provenance is explicit
                         "dash_not_converted_to_zero",
                         "part_b1_layout_incomplete",
                     ],
-                    "transformation_id": TRANSFORMATION,
+                    "transformation_id": detail_transformation,
                     "lineage_id": identity(record_id, "lineage"),
                     "raw_values_json": encode_json(row),
                 }
@@ -284,7 +302,11 @@ def normalize_vote_health_detail(  # noqa: PLR0913 - provenance is explicit
     receipt: dict[str, object] = {
         "schema_version": "archive-govt-nz.vote-health-detail-extraction/v1",
         "status": "planned" if dry_run else "passed",
-        "profile": "vote-health-supplementary-2003-04-detail/v1",
+        "profile": (
+            "vote-health-estimates-2002-03-detail/v1"
+            if source_vintage == DETAIL_VINTAGE_2002_03
+            else "vote-health-supplementary-2003-04-detail/v1"
+        ),
         "source_object_sha256": expected_sha256,
         "counts": {"pages": len(dispositions), "facts": len(facts)},
     }

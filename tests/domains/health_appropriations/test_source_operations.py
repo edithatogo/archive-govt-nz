@@ -305,6 +305,72 @@ def test_vote_health_detail_profile_dispatches_to_its_allowlisted_adapter(
     assert source_operations.operate_source(request)["status"] == "preflight_passed"
 
 
+def test_vote_health_2002_03_profile_binds_vintage_and_source_hash(
+    tmp_path: Path,
+) -> None:
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"not the pinned Estimates 2002/03 PDF")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile="vote-health-estimates-2002-03-detail/v1",
+        expected_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),
+        source_vintage=source_operations.vote_health.DETAIL_VINTAGE_2002_03,
+        source_locator="https://example.test/est02health.pdf",
+        observed_at="2026-08-29T09:00:17Z",
+    )
+
+    result = source_operations.operate_source(request)
+
+    assert result["status"] == "failed"
+    assert result["error"] == "invalid_source_operation"
+    assert not request.output_dir.exists()
+
+
+def test_vote_health_2002_03_profile_dispatches_with_its_exact_vintage(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"synthetic profile operation fixture")
+    digest = hashlib.sha256(source.read_bytes()).hexdigest()
+    profile = "vote-health-estimates-2002-03-detail/v1"
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=profile,
+        expected_sha256=digest,
+        source_vintage=source_operations.vote_health.DETAIL_VINTAGE_2002_03,
+        source_locator="https://example.test/est02health.pdf",
+        observed_at="2026-08-29T09:00:17Z",
+    )
+    allowed = {
+        "vote-health-estimates-detail/v1": (
+            source_operations.vote_health.DETAIL_VINTAGE_2003_04,
+            None,
+        ),
+        profile: (request.source_vintage, None),
+    }
+    monkeypatch.setattr(source_operations, "_VOTE_HEALTH_DETAIL_PROFILES", allowed)
+    monkeypatch.setattr(
+        source_operations.vote_health,
+        "normalize_vote_health_detail",
+        lambda *_args, **_kwargs: {
+            "status": "planned",
+            "counts": {"pages": 26, "facts": 2},
+        },
+    )
+
+    result = source_operations.operate_source(request)
+
+    assert result["status"] == "preflight_passed"
+    assert result["profile"] == profile
+    assert result["transformation_id"] == (
+        source_operations.vote_health.DETAIL_2002_03_TRANSFORMATION
+    )
+    assert result["counts"] == {"pages": 26, "facts": 2}
+    assert not request.output_dir.exists()
+
+
 def test_vote_health_revenue_profile_dispatches_to_its_allowlisted_adapter(
     request_source: source_operations.SourceRequest, monkeypatch: pytest.MonkeyPatch
 ) -> None:

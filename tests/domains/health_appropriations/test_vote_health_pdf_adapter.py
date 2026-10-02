@@ -233,3 +233,20 @@ def test_context_registry_can_include_exact_vote_health_pdf() -> None:
     assert "nz-treasury-vote-health-2003-04-tables" in {
         row.adapter_id for row in registrations
     }
+
+
+def test_context_registry_can_include_estimates_2002_03_profile() -> None:
+    registrations = context_adapter_registrations(
+        cpi=AdapterContext("cpi.csv", "2026-Q2", OBSERVED_AT),
+        population=AdapterContext("population.csv", "2026-08-18", OBSERVED_AT),
+        qes=AdapterContext("qes.xlsx", "QES-2026-Q2", OBSERVED_AT),
+        gdp=AdapterContext("gdp.xlsx", "GDP-March-2026", OBSERVED_AT),
+        vote_health_estimates_2002_03=AdapterContext(
+            "est02health.pdf", vote_health.DETAIL_VINTAGE_2002_03, OBSERVED_AT
+        ),
+    )
+    registration = next(
+        row for row in registrations if "estimates-2002-03" in row.adapter_id
+    )
+    assert registration.adapter_id == "nz-treasury-vote-health-estimates-2002-03-detail"
+    assert registration.media_type == "application/pdf"
