@@ -417,23 +417,23 @@ def test_invalid_package_fails_closed_and_redacted(
 
 
 @pytest.mark.parametrize(
-    "mutate",
-    [
-        lambda report: report.update(product_revisions=[]),
-        lambda report: report["product_revisions"]["budget"].update(candidates=None),
-        lambda report: report["product_revisions"]["budget"].update(
-            shared_series_period_count=-1
-        ),
-        lambda report: report["product_revisions"]["budget"].update(
-            changed_candidate_count=1
-        ),
-    ],
+    "failure", ["wrong_shape", "candidate_type", "negative_count", "count_mismatch"]
 )
-def test_invalid_product_revision_reports_fail_closed(tmp_path: Path, mutate) -> None:
+def test_invalid_product_revision_reports_fail_closed(
+    tmp_path: Path, failure: str
+) -> None:
     root, _pin = _package(tmp_path / "gold")
     marker = root / "MANIFEST.json"
     manifest = json.loads(marker.read_text(encoding="utf-8"))
-    mutate(manifest["revision_reconciliation_report"])
+    report = manifest["revision_reconciliation_report"]
+    if failure == "wrong_shape":
+        report["product_revisions"] = []
+    elif failure == "candidate_type":
+        report["product_revisions"]["budget"]["candidates"] = None
+    elif failure == "negative_count":
+        report["product_revisions"]["budget"]["shared_series_period_count"] = -1
+    else:
+        report["product_revisions"]["budget"]["changed_candidate_count"] = 1
     marker.write_text(json.dumps(manifest), encoding="utf-8")
     pin = hashlib.sha256(marker.read_bytes()).hexdigest()
 
