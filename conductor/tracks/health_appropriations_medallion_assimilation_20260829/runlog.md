@@ -3895,3 +3895,25 @@ This closes the pending assurance for the PDF baseline builder, not the broader
 source-layout census: ten captured objects still lack workbook/PDF baselines
 and three encrypted PDFs remain unavailable. No additional tests were added to
 raise coverage.
+
+### DPE056AA population publisher-rights basis (2026-10-02)
+
+The source-measure register now records the observed publisher-default rights
+basis for the pinned DPE056AA annual mean export. The retained Stats NZ
+copyright-page capture states CC BY 4.0 unless otherwise specified and
+identifies exceptions for graphics and specific copyright statements; the
+DataInfo+ National Population Estimates record names Stats NZ as rights holder.
+See `population-rights-review-20261002.md`. The export's rights state remains
+`publisher_default_observed_unadjudicated`: its earlier browser acquisition
+has no HTTP headers or WARC, and this review does not grant resource-specific
+redistribution or publication approval. The mean series remains unselected as
+a per-capita denominator.
+
+The focused population/context review passed 78 tests. Required
+`./scripts/validate.sh` passed: 7,266 passed, 10 skipped, 98.18% branch-aware
+coverage against the 80% minimum, 53 schemas/43 representative documents, 9/9
+parity, configured mutation gates and supply-chain checks, including the
+113-component SBOM. Automatic Conductor `phase_7_gates` passed; the retained
+receipt is `phase_7_gates-review-receipt-20261002-population-rights.json`,
+SHA-256 `c6f786e486cef648b65474116df8e0ac263a5d6ab6b286f7e36350f01714c083`.
+No tests were added to raise coverage.

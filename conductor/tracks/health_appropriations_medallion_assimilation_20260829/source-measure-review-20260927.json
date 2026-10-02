@@ -81,6 +81,10 @@
       "sha256": "af2550acce99b4ba7e75737c71a105080ee895a6ba48f06e38a45c97f79fd92c"
     },
     {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-rights-review-20261002.md",
+      "sha256": "8ef24c1683ed6dacb36f6efff534c30a87d0d8bb7bcb94a00bf6f6f063a6c8e3"
+    },
+    {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/price-wage-context.md",
       "sha256": "ea36b2d2f152539fd91ca14737fc401ef69c6d0a3125ebb209f1252469a92310"
     },
@@ -109,7 +113,7 @@
       "sha256": "edc9c7a2635112bb8b2ba763bf7f4bd8c507ac2d5c879bacce52d5a03f09a294"
     }
   ],
-  "observed_at": "2026-09-30T00:00:00Z",
+  "observed_at": "2026-10-02",
   "schema_version": "archive-govt-nz.health-source-measure-review/v1",
   "scope": "inventory_and_period_rights_assessment_only_no_analytical_admission_or_legal_approval",
   "series": {
@@ -144,7 +148,7 @@
     "population": {
       "analytical_status": "numeric export fixed and Silver context-only; no per-capita measure admitted",
       "period_basis": "Mean year ended annual estimate aligns in concept with annual flow denominators at the same June-year endpoint; selected denominator and approval remain open. This is not an as-at stock.",
-      "rights": "infoshare_export_not_evaluated",
+      "rights": "publisher_default_observed_unadjudicated",
       "series_id": "DPE056AA — Estimated Resident Population by Age and Sex (1991+) (Annual-Jun)",
       "source_export": "https://infoshare.stats.govt.nz/ExportDirect.aspx",
       "source_export_acquired_at": "2026-09-25T09:37:50Z",
