@@ -4,9 +4,14 @@ from __future__ import annotations
 
 from collections.abc import Callable
 from decimal import Decimal
+from pathlib import Path
 
+import pyarrow.parquet as pq
 import pytest
 
+from archive_govt_nz.domains.health_appropriations import (
+    vote_health_estimates_summary as overview,
+)
 from archive_govt_nz.domains.health_appropriations.vote_health_estimates_summary import (
     parse_overview_pages,
 )
@@ -51,6 +56,88 @@ def test_overview_extracts_only_seven_phrase_anchored_headlines() -> None:
     assert all(row["currency_code"] is None for row in rows)
     assert rows[0]["unit"] == "$ million"
     assert rows[1]["reference_period"] == "2001/02_to_2002/03"
+
+
+def test_normalizer_dry_run_and_local_write_are_source_pinned(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"exactly retained PDF bytes")
+
+    class Page:
+        def __init__(self, text: str) -> None:
+            self.text = text
+
+        def extract_text(self, *, extraction_mode: str) -> str:
+            assert extraction_mode == "plain"
+            return self.text
+
+    class Reader:
+        def __init__(self, *_args: object, **_kwargs: object) -> None:
+            self.is_encrypted = False
+            self.pages = [Page("front matter") for _ in range(44)]
+            self.pages[1:3] = [Page(text) for text in _pages()]
+
+    monkeypatch.setattr(
+        overview,
+        "SOURCE_SHA256",
+        __import__("hashlib").sha256(source.read_bytes()).hexdigest(),
+    )
+    monkeypatch.setattr(overview, "PdfReader", Reader)
+    args = {
+        "expected_sha256": overview.SOURCE_SHA256,
+        "source_vintage": overview.VINTAGE,
+        "source_locator": "https://example.test/vote-health.pdf",
+        "observed_at": "2026-10-03T00:00:00Z",
+    }
+    planned = overview.normalize_vote_health_estimates_overview_2002_03(
+        source, tmp_path / "planned", **args
+    )
+    assert planned["status"] == "planned"
+    assert not (tmp_path / "planned").exists()
+
+    written = overview.normalize_vote_health_estimates_overview_2002_03(
+        source, tmp_path / "out", **args, dry_run=False
+    )
+    assert written["status"] == "passed"
+    assert len(written["output_sha256"]) == 3
+    facts = pq.read_table(
+        tmp_path / "out/vote_health_overview_facts.parquet"
+    ).to_pylist()
+    lineage = pq.read_table(tmp_path / "out/field_lineage.parquet").to_pylist()
+    dispositions = pq.read_table(tmp_path / "out/page_dispositions.parquet").to_pylist()
+    assert len(facts) == len(lineage) == 7
+    assert facts[0]["value"] == Decimal("8645.493")
+    assert facts[0]["currency_code"] is None
+    assert facts[0]["rights_state"] == "not_evaluated"
+    assert lineage[0]["raw_value"] == "8,645.493"
+    assert {row["source_page"] for row in dispositions} == {2, 3}
+    assert source.read_bytes() == b"exactly retained PDF bytes"
+
+
+def test_normalizer_fails_closed_on_wrong_profile_or_output_target(
+    tmp_path: Path,
+) -> None:
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"source")
+    args = {
+        "expected_sha256": overview.SOURCE_SHA256,
+        "source_vintage": overview.VINTAGE,
+        "source_locator": "https://example.test/vote-health.pdf",
+        "observed_at": "2026-10-03T00:00:00Z",
+    }
+    with pytest.raises(ValueError, match="vote_health_estimates_overview_contract"):
+        overview.normalize_vote_health_estimates_overview_2002_03(
+            source,
+            tmp_path / "wrong-profile",
+            **{**args, "expected_sha256": "0" * 64},
+        )
+    existing = tmp_path / "existing"
+    existing.mkdir()
+    with pytest.raises(ValueError, match="vote_health_estimates_overview_contract"):
+        overview.normalize_vote_health_estimates_overview_2002_03(
+            source, existing, **args
+        )
 
 
 @pytest.mark.parametrize(
