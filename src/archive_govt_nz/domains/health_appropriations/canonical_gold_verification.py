@@ -157,8 +157,6 @@ def _valid_overlap_product_group(value: object) -> bool:
             return False
         if any(type(item) is not str or not item for item in items):
             return False
-        if field == "units" and any(item != "unknown_not_asserted" for item in items):
-            return False
     return True
 
 

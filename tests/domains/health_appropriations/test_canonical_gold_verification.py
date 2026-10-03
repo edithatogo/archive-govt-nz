@@ -611,7 +611,7 @@ def test_invalid_cross_source_overlap_report_fails_closed(  # noqa: C901, PLR091
     elif failure == "single_product":
         valid_group["product_groups"] = valid_group["product_groups"][:1]
     elif failure == "bad_unit":
-        valid_group["product_groups"][0]["units"] = ["NZD million", "unknown"]
+        valid_group["product_groups"][0]["units"] = [""]
     elif failure == "noncanonical_product":
         valid_group["product_groups"][0]["product"] = "unsupported"
     elif failure == "zero_rows":
@@ -650,6 +650,57 @@ def test_invalid_cross_source_overlap_report_fails_closed(  # noqa: C901, PLR091
 
     assert receipt["status"] == "failed"
     assert receipt["error"] == "invalid_canonical_gold_package"
+
+
+def test_valid_overlap_report_accepts_concrete_and_unknown_units(
+    tmp_path: Path,
+) -> None:
+    root, _pin = _package(tmp_path / "gold")
+    marker = root / "MANIFEST.json"
+    manifest = json.loads(marker.read_text(encoding="utf-8"))
+    report = manifest["cross_source_period_overlap_report"]
+    report["groups"] = [
+        {
+            "period_token": "FY2024/25",
+            "status": "literal_period_token_overlap_candidate",
+            "product_groups": [
+                {
+                    "product": "budget",
+                    "row_count": 1,
+                    "source_vintages": ["Budget 2025"],
+                    "units": ["NZD million"],
+                    "input_record_ids": ["budget-1"],
+                },
+                {
+                    "product": "moh",
+                    "row_count": 1,
+                    "source_vintages": ["MoH HAIR 2024"],
+                    "units": ["unknown_not_asserted"],
+                    "input_record_ids": ["moh-1"],
+                },
+            ],
+            "comparability": "not_assessed",
+            "numeric_variance": "not_computed",
+        }
+    ]
+    report["overlap_group_count"] = 1
+    payload = (
+        json.dumps(report, sort_keys=True, separators=(",", ":")) + "\n"
+    ).encode()
+    output = root / "cross_source_period_overlap.json"
+    output.write_bytes(payload)
+    manifest["outputs"][output.name] = {
+        "sha256": hashlib.sha256(payload).hexdigest(),
+        "bytes": len(payload),
+        "kind": "report",
+    }
+    marker.write_text(json.dumps(manifest), encoding="utf-8")
+    pin = hashlib.sha256(marker.read_bytes()).hexdigest()
+
+    receipt = verify_canonical_gold_package(root, pin)
+
+    assert receipt["status"] == "verified"
+    assert receipt["temporal_coverage_groups"] == 1
 
 
 def test_invalid_revision_report_fails_closed(tmp_path: Path) -> None:
