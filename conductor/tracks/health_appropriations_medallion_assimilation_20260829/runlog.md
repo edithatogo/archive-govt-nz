@@ -4476,3 +4476,11 @@ mutation gates, hygiene, CAS benchmark, dependency/license/secret scans, and
 113-component SBOM passed. Automatic Phase 7 review passed; immutable retained
 receipt SHA-256 is
 `a5853c57d094b40f20dd59ab7a03576c25ab54af8102bb5ed0c1e4f1c814bbf8`.
+
+
+## 2026-10-04 — Vote Health 2011/12 overview foundation
+
+- Captured the official Treasury Estimates PDF (19 May 2011 edition) through `tools/capture_health_resources.py`; capture manifest records HTTP 200, ETag/Last-Modified, WARC SHA-256, PDF SHA-256/BLAKE3, and CC BY 4.0 rights evidence.
+- Source census reconciliation and Bronze object fixity passed; 1 resource and 11 context-series vintages recorded in the generated source-health report.
+- Added a pinned 2011/12 overview profile with 17 source-anchored statements from pages 2–3. Pages 1 and 4–9 are preserved as unreviewed.
+- Two local source-operation Silver builds were byte-identical: 17 facts, 17 lineage rows, 9 page dispositions. Rights of normalized facts remain not evaluated; publication, exact precision, comparability, and total recomputation are not approved.

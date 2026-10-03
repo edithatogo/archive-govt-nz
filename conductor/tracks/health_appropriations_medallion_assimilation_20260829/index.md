@@ -220,3 +220,11 @@ they are not current-state assertions.
 - [POSIX directory durability validation receipt](./checkpoint-directory-durability.json)
 - [Current-head clean-room recovery receipt (2026-10-01)](clean-room-recovery-20261001.json)
 - [Vote Health 2009/10 overview phase 7 review receipt](./phase_7_gates-review-receipt-20261004-vote-health-overview-2009-10.json)
+
+- [Vote Health 2011/12 overview extraction](./vote-health-estimates-overview-2011-12-20261004.md)
+- [Vote Health 2011/12 machine receipt](./vote-health-estimates-overview-2011-12-20261004.json)
+- [Vote Health 2011/12 captured-source census](./vote-health-estimates-overview-2011-12-census.json)
+- [Vote Health 2011/12 capture manifest](./vote-health-estimates-overview-2011-12-capture-final.json)
+- [Vote Health 2011/12 source-health reconciliation](./source-health-report-20261004-vote-health-2011-12.md)
+- [Vote Health 2011/12 source-health machine receipt](./source-health-report-20261004-vote-health-2011-12.json)
+- [Vote Health 2011/12 source-operation output receipt](./vote-health-estimates-overview-2011-12-source-operation.json)
