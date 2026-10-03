@@ -51,7 +51,8 @@
         "vote-health-estimates-2007-08-overview/v1",
         "vote-health-estimates-2008-09-overview/v1",
         "vote-health-estimates-2009-10-overview/v1",
-        "vote-health-estimates-2010-11-overview/v1"
+        "vote-health-estimates-2010-11-overview/v1",
+        "vote-health-estimates-2011-12-overview/v1"
       ]
     },
     "source_object_sha256": {
@@ -80,6 +81,7 @@
         "vote-health-estimates-overview-2008-09/v1",
         "vote-health-estimates-overview-2009-10/v1",
         "vote-health-estimates-overview-2010-11/v1",
+        "vote-health-estimates-overview-2011-12/v1",
         "vote-health-estimates-revenue-2002-03/v1",
         "vote-health-supplementary-revenue/v1",
         "vote-health-supplementary-summary/v1"
@@ -1560,6 +1562,60 @@
             },
             "transformation_id": {
               "const": "vote-health-estimates-overview-2010-11/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2011-12-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2011-12/v1"
             },
             "counts": {
               "type": "object",
