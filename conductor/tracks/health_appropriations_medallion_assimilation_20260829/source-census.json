@@ -1,9 +1,9 @@
 {
   "capture_reconciliation": {
-    "capture_manifest": "official-capture-2026-09-30-health-refresh.json",
-    "matched": 74
+    "capture_manifest": "official-capture-2026-10-03-health-complete.json",
+    "matched": 75
   },
-  "cutoff": "2026-09-30",
+  "cutoff": "2026-10-03",
   "discovery_evidence": {
     "canonical_index": "https://www.treasury.govt.nz/publications/budgets/vote-information?vote=1640&year=All",
     "transport": "read-only text proxy",
@@ -11,7 +11,7 @@
     "vote_link_count": 66
   },
   "observed_at": "2026-09-29T21:28:10.739074Z",
-  "record_count": 142,
+  "record_count": 143,
   "records": [
     {
       "cutoff": "2026-08-29",
@@ -1862,6 +1862,20 @@
       "source_id": "treasury_vote_health_document-90791173089c47e3",
       "title": "Vote Health supplementary estimates 2012/13",
       "url": "https://www.treasury.govt.nz/sites/default/files/2013-05/suppest13health.pdf"
+    },
+    {
+      "cutoff": "2026-10-03",
+      "disposition": "captured",
+      "family": "treasury_vote_health_document",
+      "license": "CC-BY-4.0",
+      "media_type": "application/pdf",
+      "object_sha256": "2d346a460278fa278eef4fbda3f613d18bc13b486a1f2e21e503a05b5d3f9121",
+      "observed_at": "2026-10-03T12:34:00.964355Z",
+      "reason": "bounded capture with fixity and WARC evidence",
+      "rights_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+      "source_id": "treasury-vote-health-pdf-2008-09-estimates",
+      "title": "Vote Health - The Estimates of Appropriations 2008/09",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-05/est08health.pdf"
     }
   ],
   "schema_version": "archive-govt-nz.health-source-census/v1",

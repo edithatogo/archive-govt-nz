@@ -58,6 +58,13 @@ SOURCE_SHA256_2007_08 = (
     "fccd1fe0001e12f8238e6c4618328eac2da8d26729f997265b05688ec89a2795"
 )
 PAGE_COUNT_2007_08 = 53
+PROFILE_2008_09 = "vote-health-estimates-2008-09-overview/v1"
+TRANSFORMATION_2008_09 = "vote-health-estimates-overview-2008-09/v1"
+VINTAGE_2008_09 = "Treasury-Vote-Health-Estimates-2008-09"
+SOURCE_SHA256_2008_09 = (
+    "2d346a460278fa278eef4fbda3f613d18bc13b486a1f2e21e503a05b5d3f9121"
+)
+PAGE_COUNT_2008_09 = 8
 _ERROR = "vote_health_estimates_overview_contract"
 _AMOUNT_TOKEN_PATTERN = r"(?P<value>[0-9][0-9,]*\.[0-9]{3})"  # noqa: S105 - regex token, not a secret
 _PATTERNS = {
@@ -415,6 +422,69 @@ _PATTERNS_2007_08 = {
         "2007/08",
     ),
 }
+_AMOUNT_TOKEN_PATTERN_2008_09 = r"(?P<value>[0-9][0-9,]*)"  # noqa: S105 - regex token, not a secret
+_PATTERNS_2008_09 = {
+    "vote_total": (
+        2,
+        (
+            r"financial year\s+totalling just over "
+            rf"\${_AMOUNT_TOKEN_PATTERN_2008_09} million"
+        ),
+        "$ million, approximate rounded source amount",
+        "2008/09",
+    ),
+    "departmental_functions": (
+        2,
+        (
+            r"Departmental Operating Appropriations\s+A total of just over "
+            rf"\${_AMOUNT_TOKEN_PATTERN_2008_09} million "
+            r"\(1\.9% of the Vote\) relates to the functions of the Ministry of Health"
+        ),
+        "$ million, approximate rounded source amount",
+        "2008/09",
+    ),
+    "non_departmental_total": (
+        2,
+        (
+            r"Non-Departmental Operating Appropriations\s+A total of just over "
+            rf"\${_AMOUNT_TOKEN_PATTERN_2008_09} million "
+            r"\(96\.1% of the Vote\) is for operating expenses to be incurred "
+            r"on behalf of the Crown"
+        ),
+        "$ million, approximate rounded source amount",
+        "2008/09",
+    ),
+    "service_funding_total": (
+        2,
+        (
+            r"Output Expenses\s+These total just over "
+            rf"\${_AMOUNT_TOKEN_PATTERN_2008_09} million "
+            r"\(95\.9% of the Vote\) and are to fund the purchases of health services"
+        ),
+        "$ million, approximate rounded source amount",
+        "2008/09",
+    ),
+    "other_expenses_total": (
+        2,
+        (
+            r"Other Expenses Incurred by the Crown\s+A total of just over "
+            rf"\${_AMOUNT_TOKEN_PATTERN_2008_09} million "
+            r"\(0\.2% of the Vote\) is for other expenses"
+        ),
+        "$ million, approximate rounded source amount",
+        "2008/09",
+    ),
+    "capital_funding": (
+        2,
+        (
+            r"Capital Expenditure\s+A total of nearly "
+            rf"\${_AMOUNT_TOKEN_PATTERN_2008_09} million "
+            r"\(2\.0% of the Vote\) is to provide capital funding"
+        ),
+        "$ million, approximate rounded source amount",
+        "2008/09",
+    ),
+}
 
 FACT_SCHEMA = pa.schema(
     [
@@ -460,6 +530,8 @@ def parse_overview_pages(
     *,
     year: str = "2002/03",
     patterns: dict[str, tuple[int, str, str, str]] | None = None,
+    intro_pattern: str | None = None,
+    second_page_pattern: str | None = None,
 ) -> list[dict[str, Any]]:
     """Read only named, phrase-anchored monetary headlines from pages 2-3."""
     selected_patterns = _PATTERNS if patterns is None else patterns
@@ -467,14 +539,14 @@ def parse_overview_pages(
         len(texts) == OVERVIEW_PAGE_COUNT
         and all(len(text) <= MAX_TEXT for text in texts)
     )
+    default_intro_pattern = (
+        rf"Appropriations\s+sought\s+for\s+Vote\s+Health\s+in\s+{re.escape(year)}"
+    )
+    _require(re.search(intro_pattern or default_intro_pattern, texts[0]) is not None)
     _require(
-        re.search(
-            rf"Appropriations\s+sought\s+for\s+Vote\s+Health\s+in\s+{re.escape(year)}",
-            texts[0],
-        )
+        re.search(second_page_pattern or r"Crown\s+Revenue\s+and\s+Receipts", texts[1])
         is not None
     )
-    _require(re.search(r"Crown\s+Revenue\s+and\s+Receipts", texts[1]) is not None)
     facts: list[dict[str, Any]] = []
     for measure, (page, pattern, unit, period) in selected_patterns.items():
         whitespace_flexible_pattern = pattern.replace(" ", r"\s+")
@@ -521,6 +593,17 @@ def parse_overview_2007_08_pages(texts: list[str]) -> list[dict[str, Any]]:
     return parse_overview_pages(texts, year="2007/08", patterns=_PATTERNS_2007_08)
 
 
+def parse_overview_2008_09_pages(texts: list[str]) -> list[dict[str, Any]]:
+    """Parse six explicitly qualified, rounded 2008/09 overview amounts."""
+    return parse_overview_pages(
+        texts,
+        year="2008/09",
+        patterns=_PATTERNS_2008_09,
+        intro_pattern=r"2008/09 financial year\s+totalling just over",
+        second_page_pattern=r"Details of Appropriations",
+    )
+
+
 def _normalize_overview(  # noqa: PLR0913 - profile/provenance are explicit
     source: Path,
     output_dir: Path,
@@ -537,6 +620,9 @@ def _normalize_overview(  # noqa: PLR0913 - profile/provenance are explicit
     source_vintage: str,
     source_locator: str,
     observed_at: str,
+    intro_pattern: str | None = None,
+    second_page_pattern: str | None = None,
+    additional_quality_flags: tuple[str, ...] = (),
     dry_run: bool = True,
 ) -> dict[str, object]:
     """Normalize a pinned edition's exact overview headlines into local Silver."""
@@ -552,7 +638,13 @@ def _normalize_overview(  # noqa: PLR0913 - profile/provenance are explicit
         reader.pages[index].extract_text(extraction_mode="plain") or ""
         for index in (1, 2)
     ]
-    rows = parse_overview_pages(texts, year=year, patterns=patterns)
+    rows = parse_overview_pages(
+        texts,
+        year=year,
+        patterns=patterns,
+        intro_pattern=intro_pattern,
+        second_page_pattern=second_page_pattern,
+    )
     context = source_context(
         expected_sha256, source_locator, source_vintage, observed_at
     )
@@ -578,6 +670,7 @@ def _normalize_overview(  # noqa: PLR0913 - profile/provenance are explicit
                 "quality_flags": [
                     "overview_headline_only",
                     "currency_code_not_supplied",
+                    *additional_quality_flags,
                 ],
                 "transformation_id": transformation,
                 "lineage_id": identity(record_id, "lineage"),
@@ -602,7 +695,10 @@ def _normalize_overview(  # noqa: PLR0913 - profile/provenance are explicit
         "status": "planned" if dry_run else "passed",
         "profile": profile,
         "source_object_sha256": expected_sha256,
-        "counts": {"pages": 2, "facts": len(facts)},
+        "counts": {
+            "pages": len({int(row["source_page"]) for row in rows}),
+            "facts": len(facts),
+        },
     }
     if dry_run:
         return receipt
@@ -619,8 +715,12 @@ def _normalize_overview(  # noqa: PLR0913 - profile/provenance are explicit
                         "source_object_sha256": expected_sha256,
                         "source_locator": source_locator,
                         "source_page": page,
-                        "disposition": "partially_normalized",
-                        "reason": disposition_reason,
+                        "disposition": "partially_normalized"
+                        if any(int(row["source_page"]) == page for row in rows)
+                        else "preserved_unreviewed",
+                        "reason": disposition_reason
+                        if any(int(row["source_page"]) == page for row in rows)
+                        else "page_anchor_verified_no_overview_facts_selected",
                     }
                     for page in (2, 3)
                 ],
@@ -777,5 +877,42 @@ def normalize_vote_health_estimates_overview_2007_08(  # noqa: PLR0913 - explici
         source_vintage=source_vintage,
         source_locator=source_locator,
         observed_at=observed_at,
+        dry_run=dry_run,
+    )
+
+
+def normalize_vote_health_estimates_overview_2008_09(  # noqa: PLR0913 - explicit pinned profile
+    source: Path,
+    output_dir: Path,
+    *,
+    expected_sha256: str,
+    source_vintage: str,
+    source_locator: str,
+    observed_at: str,
+    dry_run: bool = True,
+) -> dict[str, object]:
+    """Normalize six rounded/qualified 2008/09 amounts without implying precision."""
+    return _normalize_overview(
+        source,
+        output_dir,
+        profile=PROFILE_2008_09,
+        transformation=TRANSFORMATION_2008_09,
+        expected_vintage=VINTAGE_2008_09,
+        expected_source_sha256=SOURCE_SHA256_2008_09,
+        expected_page_count=PAGE_COUNT_2008_09,
+        year="2008/09",
+        patterns=_PATTERNS_2008_09,
+        disposition_reason="six_approximate_overview_headlines_only",
+        expected_sha256=expected_sha256,
+        source_vintage=source_vintage,
+        source_locator=source_locator,
+        observed_at=observed_at,
+        intro_pattern=r"2008/09 financial year\s+totalling just over",
+        second_page_pattern=r"Details of Appropriations",
+        additional_quality_flags=(
+            "source_value_rounded_to_whole_million",
+            "source_qualifier_preserved_in_raw_phrase",
+            "source_amount_is_not_exact",
+        ),
         dry_run=dry_run,
     )

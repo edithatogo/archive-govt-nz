@@ -29,7 +29,7 @@ REPORT = TRACK / "source-measure-review-20260927.json"
 def test_review_reports_exact_series_and_preserves_blockers() -> None:
     report = validate_review(REPORT, ROOT)
     assert report["series_count"] == 8
-    assert report["source_families"]["vote_health"]["captured_documents"] == 58
+    assert report["source_families"]["vote_health"]["captured_documents"] == 59
     assert report["source_families"]["vote_health"]["estimates_years"] == [
         1998,
         1999,
@@ -41,6 +41,7 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
         2005,
         2006,
         2007,
+        2008,
         2014,
         2015,
         2016,
@@ -124,7 +125,7 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
     )
     assert report["source_families"]["historical_editions"]["complete"] is False
     assert (
-        len(report["source_families"]["vote_health"]["discovered_estimates_urls"]) == 10
+        len(report["source_families"]["vote_health"]["discovered_estimates_urls"]) == 9
     )
     assert (
         len(report["source_families"]["vote_health"]["discovered_supplementary_urls"])

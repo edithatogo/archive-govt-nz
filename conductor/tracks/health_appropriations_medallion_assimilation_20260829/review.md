@@ -1444,3 +1444,29 @@ Focused parser/dispatch tests passed; the full required harness passed 7,357
 tests, 10 skipped, and 98.08% branch-aware coverage against the 80% floor.
 Automatic phase review passed with receipt SHA-256
 `3486688fca2a3f1d99894abd9db8364fd198e0090dfccd91d62134c9c807f9d2`.
+
+
+## 2026-10-03 — Vote Health 2008/09 overview headlines self-review
+
+The profile is bound to the captured eight-page Treasury PDF hash and selects
+six observed page-2 phrases. The source values are approximate rounded whole
+millions; the “just over” and “nearly” qualifiers remain in raw phrases and
+quality flags explicitly reject exact-amount interpretation. Two separate
+builds matched all three Silver output files byte-for-byte. The cumulative
+capture manifest, WARC digest, census row and rights evidence are retained;
+rights are eligible under CC BY 4.0 with attribution to The Treasury New
+Zealand, while publication remains local-only. The refreshed census has 143
+resources and 11 context vintages, and the structural PDF baseline reconciles
+59 PDFs with 56 recorded and 3 unavailable. The pypdf Xref warning is recorded;
+hash verification and six selected phrases passed. Only page 2 is in scope.
+The required full harness passed 7,360 tests with 10 skips and 98.08%
+branch-aware coverage against the 80% floor; schemas, parity, configured
+mutation, hygiene, supply-chain and SBOM gates passed. Automatic phase review
+passed with receipt SHA-256
+`871382eb7ccf42d01ed3e79084ba74b703d6bd74bfb82a6d76da3623472d3655`.
+
+The PR review also identified two evidence issues, now corrected: combined
+Supplementary Estimates volumes containing appended supporting information are
+counted as editions, while supporting-information-only documents remain
+excluded; page 3 is now explicitly `preserved_unreviewed` because no facts are
+extracted from it.

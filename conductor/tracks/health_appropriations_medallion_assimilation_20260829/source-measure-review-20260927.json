@@ -6,7 +6,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.json",
-      "sha256": "0c79ea0f73bf25d27ea1ca7ca5bc5deb421a470dcc11c1ee9ade9ebb38856b72"
+      "sha256": "91474db2bf996669f41ce6de6341304a1039887ccb948fd94d9f5634b425a88e"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/crown-expense-canonical-projection-20260929.md",
@@ -62,7 +62,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/index.md",
-      "sha256": "2573c5dbabe296aa51ef631ec254d9698e44521692b68c0176a20eb5de0cd1f3"
+      "sha256": "044d54a585ee268995b007f04f45bc2ad260b405d0b9d24c84e77fb82e59823d"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/moh-indicators.md",
@@ -110,7 +110,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
-      "sha256": "edc9c7a2635112bb8b2ba763bf7f4bd8c507ac2d5c879bacce52d5a03f09a294"
+      "sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272"
     }
   ],
   "observed_at": "2026-10-02",
@@ -292,9 +292,8 @@
       ]
     },
     "vote_health": {
-      "captured_documents": 58,
+      "captured_documents": 59,
       "discovered_estimates_urls": {
-        "2008": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2008-09",
         "2009": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2009-10",
         "2010": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2010-11",
         "2011": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2011-12",
@@ -320,6 +319,7 @@
         2005,
         2006,
         2007,
+        2008,
         2014,
         2015,
         2016,
@@ -331,7 +331,6 @@
         2026
       ],
       "missing_estimates_years": [
-        2008,
         2009,
         2010,
         2011,

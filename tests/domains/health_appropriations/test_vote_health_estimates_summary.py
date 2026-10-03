@@ -488,3 +488,86 @@ def test_2007_08_normalizer_reads_captured_source_and_writes_eight_facts(
         Decimal("846.267"),
         Decimal("591.403"),
     ]
+
+
+def test_2008_09_parser_preserves_qualified_rounded_amounts() -> None:
+    pages = [
+        (
+            "The Minister of Health is responsible for appropriations in the Vote "
+            "for the 2008/09 financial year totalling just over $12,240 million. "
+            "Departmental Operating Appropriations A total of just over $227 "
+            "million (1.9% of the Vote) relates to the functions of the Ministry "
+            "of Health. Non-Departmental Operating Appropriations A total of "
+            "just over $11,768 million (96.1% of the Vote) is for operating "
+            "expenses to be incurred on behalf of the Crown. Output Expenses "
+            "These total just over $11,745 million (95.9% of the Vote) and are "
+            "to fund the purchases of health services. Other Expenses Incurred "
+            "by the Crown A total of just over $23 million (0.2% of the Vote) "
+            "is for other expenses. Capital Expenditure A total of nearly $244 "
+            "million (2.0% of the Vote) is to provide capital funding."
+        ),
+        "Details of Appropriations",
+    ]
+    rows = overview.parse_overview_2008_09_pages(pages)
+    assert [row["summary_measure"] for row in rows] == [
+        "vote_total",
+        "departmental_functions",
+        "non_departmental_total",
+        "service_funding_total",
+        "other_expenses_total",
+        "capital_funding",
+    ]
+    assert [row["value"] for row in rows] == [
+        Decimal(12240),
+        Decimal(227),
+        Decimal(11768),
+        Decimal(11745),
+        Decimal(23),
+        Decimal(244),
+    ]
+    assert "just over" in rows[0]["source_phrase"]
+    assert "nearly" in rows[-1]["source_phrase"]
+    assert rows[0]["unit"] == "$ million, approximate rounded source amount"
+
+
+def test_2008_09_normalizer_reads_captured_source_and_marks_approximation(
+    tmp_path: Path,
+) -> None:
+    source = Path(
+        "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/bronze-cas/"
+        "sha256/2d/2d346a460278fa278eef4fbda3f613d18bc13b486a1f2e21e503a05b5d3f9121"
+    )
+    if not source.is_file():
+        pytest.skip("captured 2008/09 Treasury source is unavailable")
+    output = tmp_path / "out"
+    result = overview.normalize_vote_health_estimates_overview_2008_09(
+        source,
+        output,
+        expected_sha256=overview.SOURCE_SHA256_2008_09,
+        source_vintage=overview.VINTAGE_2008_09,
+        source_locator=(
+            "https://www.treasury.govt.nz/publications/estimates/"
+            "vote-health-estimates-appropriations-2008-09"
+        ),
+        observed_at="2026-10-03T12:34:00.964355Z",
+        dry_run=False,
+    )
+    facts = pq.read_table(output / "vote_health_overview_facts.parquet").to_pylist()
+    assert result["status"] == "passed"
+    assert [fact["value"] for fact in facts] == [
+        Decimal(12240),
+        Decimal(227),
+        Decimal(11768),
+        Decimal(11745),
+        Decimal(23),
+        Decimal(244),
+    ]
+    assert all("source_amount_is_not_exact" in fact["quality_flags"] for fact in facts)
+    assert all(
+        fact["unit"] == "$ million, approximate rounded source amount" for fact in facts
+    )
+    dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
+    assert {row["source_page"]: row["disposition"] for row in dispositions} == {
+        2: "partially_normalized",
+        3: "preserved_unreviewed",
+    }
