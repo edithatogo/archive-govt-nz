@@ -4347,3 +4347,18 @@ dispositions; focused parser/dispatch tests passed (498 passed, 10 skipped).
 Output digests were replayed into the machine receipt. Required `./scripts/validate.sh` passed: 7,355 passed, 10 skipped, and 98.08% branch-aware coverage against the 80% floor; all schema, parity, configured mutation, hygiene, supply-chain and SBOM checks passed. Automatic Conductor `phase_7_gates` review passed; receipt SHA-256 is `58789359490b10dd969e9792b05ff0aa4021d7a2c5beb116d12be72e081a4a93`. Rights, other PDF content,
 other editions and comparability remain unresolved; no Gold or publication
 claim is made.
+
+2026-10-03 — Vote Health 2007/08 overview headlines
+
+Added a hash-pinned operation for eight monetary headlines on PDF pages 2–3 of
+Treasury's captured 53-page Estimates edition. Captured-source readback verified
+all eight values; output digests and exact source phrases/tokens are recorded in
+`vote-health-estimates-overview-2007-08-20261003.json`. Focused parser and
+dispatch suites passed (500 passed, 10 skipped). Required `./scripts/validate.sh`
+passed: 7,357 passed, 10 skipped, 98.08% branch-aware coverage against the 80%
+floor; 53 schemas/43 representative documents, 9/9 parity, configured mutation,
+hygiene, CAS benchmark, dependency, license, secret and 113-component SBOM gates
+passed. Automatic `phase_7_gates` review passed; receipt SHA-256 is
+`3486688fca2a3f1d99894abd9db8364fd198e0090dfccd91d62134c9c807f9d2`. Rights
+remain unevaluated; only the eight overview headlines are normalized, and no
+Gold or publication claim is made.
