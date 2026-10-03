@@ -366,6 +366,17 @@ def test_source_health_recovery_report_replays_capture_and_census(
     source_path = track / "source-census.json"
     context_path = track / "context-census.json"
     manifest_path = archive / "manifests" / manifest_name
+    layout_baseline = {
+        "pdf_layouts": [
+            {
+                "source_id": "source-1",
+                "source_object_sha256": object_digest,
+                "status": "baseline_recorded",
+            }
+        ]
+    }
+    layout_bytes = json.dumps(layout_baseline, sort_keys=True).encode()
+    (track / "source-pdf-layout-baseline-20261002.json").write_bytes(layout_bytes)
     source_path.write_bytes(source_bytes)
     context_path.write_bytes(context_bytes)
     manifest_path.write_bytes(manifest_bytes)
@@ -400,6 +411,7 @@ def test_source_health_recovery_report_replays_capture_and_census(
             manifest_name=manifest_name,
             cas_root=archive / "bronze-cas" / "sha256",
         ),
+        layout_evidence=MODULE.LayoutEvidence(layout_baseline, layout_bytes),
     )
     (track / "source-health-report.json").write_text(
         json.dumps(generated, sort_keys=True, indent=2) + "\n"

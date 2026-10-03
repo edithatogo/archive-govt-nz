@@ -1367,3 +1367,21 @@ ambiguous duplicates; source-operation dispatch remains allowlisted and its
 receipt schema validates the output package. Rights are still not legally
 evaluated, other page content remains preserved-only, and no Gold or
 publication claim follows. Full validation is pending.
+
+## 2026-10-03 — Source-health layout evidence recovery and pinning
+
+PR #610 review identified four evidence-integrity gaps. Recovery replay now
+loads and supplies the pinned PDF layout baseline, and its fixture exercises
+the same input. Offline report regeneration can retain layout states only when
+the prior report is bound to the exact current source-census bytes; otherwise
+layout, capture-manifest hash, and capture receipt are not copied forward.
+Baseline source IDs are joined to census object SHA-256 values before structural
+states are admitted. The builder accepts an explicit `--recorded-report` path
+so evidence retention does not depend on whether the output already exists.
+
+Focused source-health and recovery suites pass (53 tests); repository-wide lint,
+format, and typing pass. The required `./scripts/validate.sh` run passed 7,331
+tests, 10 skips, 80% coverage floor (98.01% observed), 53 schemas, 9/9 parity,
+all configured mutation suites, hygiene, benchmark, dependency, license, secret,
+and SBOM checks. Recovery remains structural only; PDF text/table semantics,
+rights, and complete source coverage are not claimed.

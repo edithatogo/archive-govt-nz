@@ -11,8 +11,13 @@ import pytest
 
 from archive_govt_nz.domains.health_appropriations.source_health_report import (
     CaptureEvidence,
+    LayoutEvidence,
     SourceHealthReportError,
     _capture_inputs,
+    _census_rows_by_id,
+    _layout_states,
+    _recorded_input_hash,
+    _recorded_layout_states,
     _verify_capture_result,
     build_report,
     render_markdown,
@@ -66,6 +71,280 @@ def test_whole_census_report_has_a_state_for_every_resource_and_series_vintage()
         "matched_resource_count_recorded": 74,
         "manifest_name_recorded": "official-capture-2026-09-30-health-refresh.json",
     }
+
+
+def test_recorded_capture_receipt_is_preserved_when_manifest_is_unavailable() -> None:
+    recorded = json.loads((TRACK / "source-health-report.json").read_bytes())
+    census_bytes = (TRACK / "source-census.json").read_bytes()
+    context_bytes = (TRACK / "context-census.json").read_bytes()
+    report = build_report(
+        json.loads(census_bytes),
+        census_bytes,
+        json.loads(context_bytes),
+        context_bytes,
+        recorded_report=recorded,
+    )
+
+    assert report["capture_reconciliation"] == recorded["capture_reconciliation"]
+    assert [row["capture_receipt_rights_state"] for row in report["resources"]] == [
+        row["capture_receipt_rights_state"] for row in recorded["resources"]
+    ]
+    assert (
+        report["inputs"]["capture_manifest_sha256"]
+        == recorded["inputs"]["capture_manifest_sha256"]
+    )
+
+
+def test_recorded_layout_states_are_preserved_when_baseline_is_unavailable() -> None:
+    recorded = json.loads((TRACK / "source-health-report.json").read_bytes())
+    census_bytes = (TRACK / "source-census.json").read_bytes()
+    context_bytes = (TRACK / "context-census.json").read_bytes()
+    report = build_report(
+        json.loads(census_bytes),
+        census_bytes,
+        json.loads(context_bytes),
+        context_bytes,
+        recorded_report=recorded,
+    )
+
+    assert [row["layout_drift_state"] for row in report["resources"]] == [
+        row["layout_drift_state"] for row in recorded["resources"]
+    ]
+    assert (
+        report["inputs"]["pdf_layout_baseline_sha256"]
+        == recorded["inputs"]["pdf_layout_baseline_sha256"]
+    )
+
+
+def test_stale_recorded_layout_states_are_not_carried_to_refreshed_census() -> None:
+    recorded = json.loads((TRACK / "source-health-report.json").read_bytes())
+    census_bytes = (TRACK / "source-census.json").read_bytes() + b" "
+    context_bytes = (TRACK / "context-census.json").read_bytes()
+    report = build_report(
+        json.loads(census_bytes),
+        census_bytes,
+        json.loads(context_bytes),
+        context_bytes,
+        recorded_report=recorded,
+    )
+
+    assert all(
+        row["layout_drift_state"] == "not_assessed_per_source_baseline_not_in_census"
+        for row in report["resources"]
+    )
+    assert report["inputs"]["capture_manifest_sha256"] is None
+    assert report["inputs"]["pdf_layout_baseline_sha256"] is None
+    assert report["capture_reconciliation"]["state"] == (
+        "recorded_not_replayed_manifest_unavailable"
+    )
+
+
+def test_layout_baseline_object_pin_must_match_current_census() -> None:
+    census_bytes = (TRACK / "source-census.json").read_bytes()
+    context_bytes = (TRACK / "context-census.json").read_bytes()
+    baseline_bytes = (TRACK / "source-pdf-layout-baseline-20261002.json").read_bytes()
+    baseline = json.loads(baseline_bytes)
+    baseline["pdf_layouts"][0]["source_object_sha256"] = "0" * 64
+
+    with pytest.raises(
+        SourceHealthReportError, match="pdf_layout_baseline_source_mismatch"
+    ):
+        build_report(
+            json.loads(census_bytes),
+            census_bytes,
+            json.loads(context_bytes),
+            context_bytes,
+            layout_evidence=LayoutEvidence(baseline, baseline_bytes),
+        )
+
+
+def test_layout_baseline_index_rejects_invalid_census_identity() -> None:
+    assert _layout_states(None, {}) == {}
+    with pytest.raises(SourceHealthReportError, match="source_census_row_invalid"):
+        _layout_states({"pdf_layouts": []}, {"records": "invalid"})
+    with pytest.raises(SourceHealthReportError, match="source_census_row_invalid"):
+        _census_rows_by_id({"records": [None]})
+    with pytest.raises(SourceHealthReportError, match="source_id_missing_or_duplicate"):
+        _census_rows_by_id({"records": [{"source_id": "same"}, {"source_id": "same"}]})
+
+
+@pytest.mark.parametrize(
+    "recorded",
+    [
+        None,
+        {},
+        {"inputs": {}, "resources": [None]},
+        {"inputs": {}, "resources": [{"entity_id": "id"}]},
+        {
+            "inputs": {},
+            "resources": [
+                {"entity_id": "id", "layout_drift_state": "state"},
+                {"entity_id": "id", "layout_drift_state": "state"},
+            ],
+        },
+    ],
+)
+def test_recorded_layout_state_requires_unique_complete_rows(
+    recorded: dict[str, Any] | None,
+) -> None:
+    if recorded is None:
+        assert _recorded_layout_states(recorded) == {}
+    else:
+        with pytest.raises(
+            SourceHealthReportError, match="recorded_layout_report_invalid"
+        ):
+            _recorded_layout_states(recorded)
+
+
+def test_recorded_input_hash_rejects_malformed_pins() -> None:
+    assert _recorded_input_hash(None, "capture_manifest_sha256") is None
+    with pytest.raises(SourceHealthReportError, match="recorded_report_inputs_invalid"):
+        _recorded_input_hash({"inputs": None}, "capture_manifest_sha256")
+    with pytest.raises(
+        SourceHealthReportError, match="recorded_report_input_hash_invalid"
+    ):
+        _recorded_input_hash(
+            {"inputs": {"capture_manifest_sha256": "invalid"}},
+            "capture_manifest_sha256",
+        )
+
+
+def test_structural_pdf_baseline_updates_only_matching_resource_states() -> None:
+    census_bytes = (TRACK / "source-census.json").read_bytes()
+    context_bytes = (TRACK / "context-census.json").read_bytes()
+    baseline_bytes = (TRACK / "source-pdf-layout-baseline-20261002.json").read_bytes()
+    baseline = json.loads(baseline_bytes)
+    report = build_report(
+        json.loads(census_bytes),
+        census_bytes,
+        json.loads(context_bytes),
+        context_bytes,
+        layout_evidence=LayoutEvidence(baseline, baseline_bytes),
+    )
+
+    resources = {row["entity_id"]: row for row in report["resources"]}
+    assert (
+        resources["treasury-vote-health-pdf-0951064262bf028c"]["layout_drift_state"]
+        == "structural_pdf_baseline_recorded_text_and_tables_unassessed"
+    )
+    assert (
+        resources["treasury-vote-health-pdf-8ea10c8cddf61f5b"]["layout_drift_state"]
+        == "structural_pdf_baseline_recorded_text_and_tables_unassessed"
+    )
+    assert resources["budget_2026-000"]["layout_drift_state"] == (
+        "not_assessed_per_source_baseline_not_in_census"
+    )
+    assert (
+        report["inputs"]["pdf_layout_baseline_sha256"]
+        == hashlib.sha256(baseline_bytes).hexdigest()
+    )
+    assert "text, tables and semantic layout are not assessed" in " ".join(
+        report["limitations"]
+    )
+
+
+def test_encrypted_pdf_baseline_is_reported_as_unavailable() -> None:
+    census_bytes = (TRACK / "source-census.json").read_bytes()
+    context_bytes = (TRACK / "context-census.json").read_bytes()
+    baseline_bytes = (TRACK / "source-pdf-layout-baseline-20261002.json").read_bytes()
+    baseline = json.loads(baseline_bytes)
+    report = build_report(
+        json.loads(census_bytes),
+        census_bytes,
+        json.loads(context_bytes),
+        context_bytes,
+        layout_evidence=LayoutEvidence(baseline, baseline_bytes),
+    )
+
+    resources = {row["entity_id"]: row for row in report["resources"]}
+    assert (
+        resources["treasury-vote-health-pdf-54029b9e6efd28b4"]["layout_drift_state"]
+        == "structural_pdf_baseline_unavailable"
+    )
+
+
+@pytest.mark.parametrize(
+    ("baseline", "error"),
+    [
+        ({"pdf_layouts": "invalid"}, "pdf_layout_baseline_shape_invalid"),
+        ({"pdf_layouts": [None]}, "pdf_layout_baseline_row_invalid"),
+        (
+            {"pdf_layouts": [{"source_id": "same", "status": "baseline_recorded"}] * 2},
+            "pdf_layout_baseline_identity_invalid",
+        ),
+        (
+            {"pdf_layouts": [{"source_id": "one", "status": "unknown"}]},
+            "pdf_layout_baseline_status_invalid",
+        ),
+    ],
+)
+def test_invalid_layout_baseline_fails_closed(
+    baseline: dict[str, Any], error: str
+) -> None:
+    census = {
+        "schema_version": "archive-govt-nz.health-source-census/v1",
+        "record_count": 0,
+        "records": [],
+    }
+    context = {
+        "schema_version": "archive-govt-nz.health-source-context-census/v1",
+        "series": [{"id": "one", "vintage": "v1"}],
+    }
+
+    with pytest.raises(SourceHealthReportError, match=error):
+        build_report(
+            census,
+            b"census",
+            context,
+            b"context",
+            layout_evidence=LayoutEvidence(baseline, b"baseline"),
+        )
+
+
+@pytest.mark.parametrize(
+    ("recorded", "error"),
+    [
+        (
+            {"capture_reconciliation": None, "resources": []},
+            "recorded_capture_report_invalid",
+        ),
+        (
+            {
+                "capture_reconciliation": {},
+                "resources": [],
+                "inputs": "invalid",
+            },
+            "recorded_report_inputs_invalid",
+        ),
+        (
+            {"capture_reconciliation": {}, "resources": []},
+            "recorded_report_inputs_invalid",
+        ),
+        (
+            {
+                "capture_reconciliation": {},
+                "resources": [],
+                "inputs": {"capture_manifest_sha256": "bad"},
+            },
+            "recorded_report_input_hash_invalid",
+        ),
+    ],
+)
+def test_invalid_recorded_capture_evidence_fails_closed(
+    recorded: dict[str, Any], error: str
+) -> None:
+    census = {
+        "schema_version": "archive-govt-nz.health-source-census/v1",
+        "record_count": 0,
+        "records": [],
+    }
+    context = {
+        "schema_version": "archive-govt-nz.health-source-context-census/v1",
+        "series": [{"id": "one", "vintage": "v1"}],
+    }
+
+    with pytest.raises(SourceHealthReportError, match=error):
+        build_report(census, b"census", context, b"context", recorded_report=recorded)
 
 
 def test_markdown_lists_each_inventory_identity_and_states_limits() -> None:

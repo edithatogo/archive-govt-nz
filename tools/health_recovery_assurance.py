@@ -84,6 +84,7 @@ from archive_govt_nz.domains.health_appropriations.rebuild_eight import (
 )
 from archive_govt_nz.domains.health_appropriations.source_health_report import (
     CaptureEvidence,
+    LayoutEvidence,
 )
 from archive_govt_nz.domains.health_appropriations.source_health_report import (
     build_report as build_source_health_report,
@@ -1383,17 +1384,30 @@ def source_health_recovery_report() -> dict[str, Any]:
         manifest_name=manifest_path.name,
         cas_root=ARCHIVE / "bronze-cas" / "sha256",
     )
+    layout_path = TRACK / "source-pdf-layout-baseline-20261002.json"
+    layout_bytes = layout_path.read_bytes()
+    layout = LayoutEvidence(json.loads(layout_bytes), layout_bytes)
     source_census = json.loads(source_bytes)
     context_census = json.loads(context_bytes)
-    first = build_source_health_report(
-        source_census, source_bytes, context_census, context_bytes, capture
-    )
-    second = build_source_health_report(
-        source_census, source_bytes, context_census, context_bytes, capture
-    )
-    require_evidence(first == second, "source_health_report_repeat_mismatch")
     recorded_path = TRACK / "source-health-report.json"
     recorded = json.loads(recorded_path.read_bytes())
+    first = build_source_health_report(
+        source_census,
+        source_bytes,
+        context_census,
+        context_bytes,
+        capture,
+        layout_evidence=layout,
+    )
+    second = build_source_health_report(
+        source_census,
+        source_bytes,
+        context_census,
+        context_bytes,
+        capture,
+        layout_evidence=layout,
+    )
+    require_evidence(first == second, "source_health_report_repeat_mismatch")
     require_evidence(first == recorded, "source_health_report_recorded_mismatch")
     summary = first["summary"]
     reconciliation = first["capture_reconciliation"]
@@ -1410,6 +1424,7 @@ def source_health_recovery_report() -> dict[str, Any]:
         "source_census_sha256": hashlib.sha256(source_bytes).hexdigest(),
         "context_census_sha256": hashlib.sha256(context_bytes).hexdigest(),
         "capture_manifest_sha256": hashlib.sha256(manifest_bytes).hexdigest(),
+        "pdf_layout_baseline_sha256": hashlib.sha256(layout_bytes).hexdigest(),
         "summary": summary,
         "capture_reconciliation": reconciliation,
         "limitations": first["limitations"],

@@ -30,7 +30,8 @@
         "source_census_observed_at",
         "context_census_sha256",
         "context_census_base_commit",
-        "capture_manifest_sha256"
+        "capture_manifest_sha256",
+        "pdf_layout_baseline_sha256"
       ],
       "properties": {
         "source_census_sha256": { "$ref": "#/$defs/sha256" },
@@ -38,7 +39,8 @@
         "source_census_observed_at": { "type": "string", "format": "date-time" },
         "context_census_sha256": { "$ref": "#/$defs/sha256" },
         "context_census_base_commit": { "type": "string", "minLength": 40, "maxLength": 40 },
-        "capture_manifest_sha256": { "oneOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }] }
+        "capture_manifest_sha256": { "oneOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }] },
+        "pdf_layout_baseline_sha256": { "oneOf": [{ "$ref": "#/$defs/sha256" }, { "type": "null" }] }
       }
     },
     "summary": {
