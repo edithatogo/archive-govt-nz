@@ -86,6 +86,16 @@ SOURCE_SHA256_2011_12 = (
     "5b56c8a0641a870d82558f2c61fc87df90bcabf318541af4c3d86ba8ce3063af"
 )
 PAGE_COUNT_2011_12 = 9
+_PROFILE_QUALIFIER_MEASURES_2010_11 = frozenset(
+    {"departmental_functions", "health_sector_risk_management"}
+)
+_PROFILE_QUALIFIER_MEASURES_2011_12 = frozenset(
+    {
+        "departmental_functions",
+        "national_health_services_and_risk_management",
+        "clinical_training",
+    }
+)
 _ERROR = "vote_health_estimates_overview_contract"
 _AMOUNT_TOKEN_PATTERN = r"(?P<value>[0-9][0-9,]*\.[0-9]{3})"  # noqa: S105 - regex token, not a secret
 _PATTERNS = {
@@ -1024,13 +1034,14 @@ def _require(condition: object) -> None:
         raise ValueError(_ERROR)
 
 
-def parse_overview_pages(
+def parse_overview_pages(  # noqa: PLR0913 - profile controls are explicit
     texts: list[str],
     *,
     year: str = "2002/03",
     patterns: dict[str, tuple[int, str, str, str]] | None = None,
     intro_pattern: str | None = None,
     second_page_pattern: str | None = None,
+    profile_qualifier_measures: frozenset[str] = frozenset(),
 ) -> list[dict[str, Any]]:
     """Read only named, phrase-anchored monetary headlines from pages 2-3."""
     selected_patterns = _PATTERNS if patterns is None else patterns
@@ -1070,16 +1081,12 @@ def parse_overview_pages(
                     measure
                     in {
                         "vote_total",
-                        "departmental_functions",
                         "non_departmental_total",
                         "output_expenses_total",
                         "dhb_services",
                         "national_disability_services",
                         "public_health_services",
                         "national_health_services_and_training",
-                        "national_health_services_and_risk_management",
-                        "clinical_training",
-                        "health_sector_risk_management",
                         "primary_health_services",
                         "other_health_services",
                         "other_expenses_total",
@@ -1087,6 +1094,7 @@ def parse_overview_pages(
                         "dhb_and_agency_capital",
                         "ministry_asset_purchases",
                     }
+                    or measure in profile_qualifier_measures
                 ),
             }
         )
@@ -1144,6 +1152,7 @@ def parse_overview_2010_11_pages(texts: list[str]) -> list[dict[str, Any]]:
         patterns=_PATTERNS_2010_11,
         intro_pattern=r"2010/11 financial year\s+totalling just under",
         second_page_pattern=r"Capital Expenditure",
+        profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2010_11,
     )
 
 
@@ -1155,6 +1164,7 @@ def parse_overview_2011_12_pages(texts: list[str]) -> list[dict[str, Any]]:
         patterns=_PATTERNS_2011_12,
         intro_pattern=r"2011/12 financial year\s+totalling just over",
         second_page_pattern=r"Capital Expenditure",
+        profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2011_12,
     )
 
 
@@ -1177,6 +1187,7 @@ def _normalize_overview(  # noqa: PLR0913 - profile/provenance are explicit
     intro_pattern: str | None = None,
     second_page_pattern: str | None = None,
     additional_quality_flags: tuple[str, ...] = (),
+    profile_qualifier_measures: frozenset[str] = frozenset(),
     dry_run: bool = True,
 ) -> dict[str, object]:
     """Normalize a pinned edition's exact overview headlines into local Silver."""
@@ -1198,6 +1209,7 @@ def _normalize_overview(  # noqa: PLR0913 - profile/provenance are explicit
         patterns=patterns,
         intro_pattern=intro_pattern,
         second_page_pattern=second_page_pattern,
+        profile_qualifier_measures=profile_qualifier_measures,
     )
     context = source_context(
         expected_sha256, source_locator, source_vintage, observed_at
@@ -1540,6 +1552,7 @@ def normalize_vote_health_estimates_overview_2010_11(  # noqa: PLR0913 - explici
         observed_at=observed_at,
         intro_pattern=r"2010/11 financial year\s+totalling just under",
         second_page_pattern=r"Capital Expenditure",
+        profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2010_11,
         additional_quality_flags=(
             "source_value_rounded_to_whole_million",
             "source_amount_is_not_exact",
@@ -1576,6 +1589,7 @@ def normalize_vote_health_estimates_overview_2011_12(  # noqa: PLR0913 - explici
         observed_at=observed_at,
         intro_pattern=r"2011/12 financial year\s+totalling just over",
         second_page_pattern=r"Capital Expenditure",
+        profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2011_12,
         additional_quality_flags=(
             "source_value_rounded_to_whole_million",
             "source_amount_is_not_exact",

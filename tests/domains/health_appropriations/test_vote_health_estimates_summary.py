@@ -109,6 +109,7 @@ def test_2004_05_overview_extracts_eight_observed_amounts_without_summing() -> N
     ]
     assert rows[1]["reference_period"] == "2003/04_to_2004/05"
     assert "Supplementary Estimates" in rows[1]["source_phrase"]
+    assert rows[2]["source_qualifier_preserved"] is False
     assert all(row["currency_code"] is None for row in rows)
 
 
@@ -156,6 +157,7 @@ def test_2005_06_overview_extracts_eight_gst_labelled_headlines() -> None:
     assert rows[0]["unit"] == "$ million, GST exclusive"
     assert rows[-1]["unit"] == "$ million, GST inclusive"
     assert rows[1]["reference_period"] == "2004/05_to_2005/06"
+    assert rows[2]["source_qualifier_preserved"] is False
 
 
 def test_2004_05_overview_rejects_missing_or_ambiguous_headlines() -> None:
@@ -420,6 +422,31 @@ def test_2006_07_overview_extracts_eight_reviewed_headlines() -> None:
         Decimal("529.194"),
     ]
     assert rows[1]["reference_period"] == "2005/06_to_2006/07"
+    assert rows[2]["source_qualifier_preserved"] is False
+
+
+def test_2007_08_exact_departmental_phrase_is_not_marked_as_qualified() -> None:
+    pages = [
+        (
+            "Appropriations sought for Vote Health in 2007/08 total $12.345 million, "
+            "an increase of $1.234 million or 14.56% from 2006/07. $123.456 million "
+            "(1.71% of the Vote) relates to the functions of the Ministry of Health. "
+            "$12.222 million (98.29% of the Vote) is for expenses incurred on behalf "
+            "of the Crown. $11.111 million (91.05% of the Vote) is for funding and "
+            "purchases of health services."
+        ),
+        (
+            "Crown Revenue and Receipts. $0.018 million (0.15% of the Vote) is for "
+            "other expenses. $1.234 million (7.09% of the Vote) is to provide "
+            "capital funding. The Ministry expects to collect $0.456 million of "
+            "Crown Revenue and Receipts in 2007/08."
+        ),
+    ]
+    rows = overview.parse_overview_2007_08_pages(pages)
+    departmental = next(
+        row for row in rows if row["summary_measure"] == "departmental_functions"
+    )
+    assert departmental["source_qualifier_preserved"] is False
 
 
 def test_2006_07_normalizer_reads_captured_source_and_writes_eight_facts(
@@ -736,6 +763,25 @@ def test_2011_12_parser_keeps_selected_overview_values_and_qualifier_contract() 
         Decimal(20),
     ]
     assert [row["source_page"] for row in rows] == [*([2] * 13), *([3] * 4)]
+    assert [row["source_qualifier_preserved"] for row in rows] == [
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        False,
+        True,
+        True,
+        True,
+        True,
+        True,
+        False,
+        True,
+    ]
 
 
 def test_2011_12_normalizer_rebuilds_selected_headlines_from_pinned_bronze_source(
@@ -935,6 +981,10 @@ def test_2010_11_overview_extracts_eighteen_source_anchored_statements() -> None
     assert [row["source_page"] for row in rows] == [*([2] * 14), *([3] * 4)]
     assert "just under $13,574 million" in rows[0]["source_phrase"]
     assert "$95 million" in rows[10]["source_phrase"]
+    assert rows[2]["source_qualifier_preserved"] is True
+    assert rows[9]["source_qualifier_preserved"] is True
+    assert rows[10]["source_qualifier_preserved"] is False
+    assert rows[16]["source_qualifier_preserved"] is False
 
 
 def test_2009_10_normalizer_rebuilds_all_headlines_from_pinned_bronze_source(
