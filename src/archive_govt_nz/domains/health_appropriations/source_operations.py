@@ -155,6 +155,18 @@ PROFILES = MappingProxyType(
             "vote_health_overview_facts.parquet",
             "page_dispositions.parquet",
         ),
+        vote_health_estimates_summary.PROFILE_2005_06: (
+            vote_health_estimates_summary.TRANSFORMATION_2005_06,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_estimates_summary.PROFILE_2005_06: (
+            vote_health_estimates_summary.TRANSFORMATION_2005_06,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
     }
 )
 _REVENUE_VINTAGES = {
@@ -190,6 +202,14 @@ _VOTE_HEALTH_OVERVIEW_PROFILES = {
         vote_health_estimates_summary.VINTAGE_2004_05,
         vote_health_estimates_summary.SOURCE_SHA256_2004_05,
     ),
+    vote_health_estimates_summary.PROFILE_2005_06: (
+        vote_health_estimates_summary.VINTAGE_2005_06,
+        vote_health_estimates_summary.SOURCE_SHA256_2005_06,
+    ),
+    vote_health_estimates_summary.PROFILE_2005_06: (
+        vote_health_estimates_summary.VINTAGE_2005_06,
+        vote_health_estimates_summary.SOURCE_SHA256_2005_06,
+    ),
 }
 _VOTE_HEALTH_OVERVIEW_NORMALIZERS = {
     vote_health_estimates_summary.PROFILE: (
@@ -197,6 +217,12 @@ _VOTE_HEALTH_OVERVIEW_NORMALIZERS = {
     ),
     vote_health_estimates_summary.PROFILE_2004_05: (
         vote_health_estimates_summary.normalize_vote_health_estimates_overview_2004_05
+    ),
+    vote_health_estimates_summary.PROFILE_2005_06: (
+        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2005_06
+    ),
+    vote_health_estimates_summary.PROFILE_2005_06: (
+        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2005_06
     ),
 }
 _COMMON = {

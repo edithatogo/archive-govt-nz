@@ -764,3 +764,20 @@ content remains outside this bounded normalization. Captured PDF SHA-256 is
 `6dac0aaa3fd181fffacf30cffa829b0f189e8b68ebfdbeb0dd5ef88736af96a2`.
 The receipt records the eight facts, two page dispositions and hashes for all
 three local Parquet outputs.
+
+
+## Vote Health 2005/06 overview headlines — 2026-10-03
+
+Machine receipt: `vote-health-estimates-overview-2005-06-20261003.json`. The
+source-pinned operation extracts eight monetary headlines from pages 2–3 of
+the 50-page Estimates PDF: Vote total 9,681, increase 824.6, departmental
+functions 150.198, non-departmental total 9,530.767, service funding
+9,048.762, other expenses 17.712, capital funding 464.293, and Crown revenue
+and receipts 474.340 (all `$ million`). The first seven facts are GST
+exclusive and the revenue fact GST inclusive. Exact phrases, raw tokens, period
+labels and field lineage are retained; totals are not recomputed. Rights and
+comparability remain unevaluated; other PDF content remains outside this
+bounded normalization. Captured PDF SHA-256 is
+`9a269a87a0cef8fc998fc1b012ae9fd734fb48b111504bb7a1ca01cdcf97c2b4`. The
+receipt records the facts, two page dispositions and hashes for all three
+local Parquet outputs.

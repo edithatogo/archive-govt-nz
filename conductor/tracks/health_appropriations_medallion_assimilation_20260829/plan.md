@@ -654,6 +654,11 @@ integrated parent head.
   vintage, transformation and profile. No amounts are summed; remaining PDF
   content, rights and edition coverage remain open. See
   `vote-health-estimates-overview-2004-05-20261003.md`.
+  The adjacent 2005/06 edition now has a separate pinned profile for eight
+  headlines on pages 2–3 of its 50-page PDF. It retains GST basis, phrase/token
+  evidence and lineage, with no inferred sums. Remaining PDF content, rights,
+  and edition coverage stay open. See
+  `vote-health-estimates-overview-2005-06-20261003.md` and its receipt.
 - [x] Promote the two retained HAIR2024 Ministry published-indicator profiles
   into source-separated canonical Gold with source-coordinate lineage and
   discrete plots. Published real/nominal labels are preserved, while units,
