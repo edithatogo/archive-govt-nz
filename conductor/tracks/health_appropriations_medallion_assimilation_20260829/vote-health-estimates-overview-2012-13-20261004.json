@@ -23,7 +23,6 @@
     "passed": 7373,
     "sbom_components": 113,
     "schemas": "53_schemas_43_representative_documents",
-    "secret_scan": "passed",
     "skipped": 10,
     "status": "passed",
     "supply_chain": "dependency_and_license_passed"
