@@ -34,7 +34,13 @@ def _pages() -> list[str]:
 
 
 def test_overview_extracts_only_seven_phrase_anchored_headlines() -> None:
-    rows = parse_overview_pages(_pages())
+    pages = _pages()
+    pages[0] = (
+        pages[0]
+        .replace("Vote Health in", "Vote\nHealth in")
+        .replace("million. This", "million.\nThis")
+    )
+    rows = parse_overview_pages(pages)
     assert [row["summary_measure"] for row in rows] == [
         "vote_total",
         "vote_increase",
@@ -56,6 +62,9 @@ def test_overview_extracts_only_seven_phrase_anchored_headlines() -> None:
     assert all(row["currency_code"] is None for row in rows)
     assert rows[0]["unit"] == "$ million"
     assert rows[1]["reference_period"] == "2001/02_to_2002/03"
+    assert rows[0]["source_phrase"] == (
+        "Appropriations sought for Vote\nHealth in 2002/03 total $8,645.493 million"
+    )
 
 
 def test_normalizer_dry_run_and_local_write_are_source_pinned(

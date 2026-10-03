@@ -133,12 +133,17 @@ def parse_overview_pages(texts: list[str]) -> list[dict[str, Any]]:
         len(texts) == OVERVIEW_PAGE_COUNT
         and all(len(text) <= MAX_TEXT for text in texts)
     )
-    _require("Appropriations sought for Vote Health in 2002/03" in texts[0])
-    _require("Crown Revenue and Receipts" in texts[1])
-    normalized = {2: " ".join(texts[0].split()), 3: " ".join(texts[1].split())}
+    _require(
+        re.search(
+            r"Appropriations\s+sought\s+for\s+Vote\s+Health\s+in\s+2002/03", texts[0]
+        )
+        is not None
+    )
+    _require(re.search(r"Crown\s+Revenue\s+and\s+Receipts", texts[1]) is not None)
     facts: list[dict[str, Any]] = []
     for measure, (page, pattern, unit, period) in _PATTERNS.items():
-        matches = list(re.finditer(pattern, normalized[page]))
+        whitespace_flexible_pattern = pattern.replace(" ", r"\s+")
+        matches = list(re.finditer(whitespace_flexible_pattern, texts[page - 2]))
         _require(len(matches) == 1)
         token = matches[0].group("value")
         try:
