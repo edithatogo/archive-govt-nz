@@ -914,7 +914,6 @@ def parse_overview_pages(
                         "national_disability_services",
                         "public_health_services",
                         "national_health_services_and_training",
-                        "dhb_deficit_support_provision",
                         "primary_health_services",
                         "other_health_services",
                         "other_expenses_total",
