@@ -4394,3 +4394,45 @@ The cumulative source census/report now covers 143 resources and 11 context
 vintages; the 2026-10-03 PDF baseline covers 59 captured PDFs (56 structural
 baselines, 3 unavailable). Rights eligibility does not itself grant publication
 approval; only page 2 is normalized and no Gold/publication claim is made.
+
+2026-10-04 — Vote Health 2009/10 overview headlines
+
+Captured Treasury's eight-page 2009/10 Estimates PDF (60,661 bytes) with its
+explicit Crown Copyright CC BY 4.0 record and Treasury attribution. Added a
+separate source-hash-pinned Silver profile for all 17 monetary statements in
+the Overview of the Vote on page 2. Exact source phrases, rounded amount
+qualifiers, Decimal tokens, edition period and page/field lineage are retained;
+no totals were recomputed. Verified the CAS object and WARC response binding,
+then built twice through both the adapter and typed CLI. Facts, lineage, and
+page-disposition outputs were byte-identical (17 facts; 17 value-lineage rows;
+one normalized page; seven pages preserved-unreviewed). Focused parser and
+dispatch suites passed: 506 passed, 10 skipped. The whole-edition task remains
+in progress; this increment does not establish exact totals, comparability,
+publication approval, or full source coverage. pypdf emitted its retained
+non-zero-indexed Xref correction warning. Full harness and phase review follow.
+
+Required `./scripts/validate.sh` passed for the exact implementation tree: 7,373 passed, 10 skipped, 98.08% branch-aware coverage against the 80% floor; 53 schemas/43 representative documents; differential parity 9/9; all configured mutation, hygiene, CAS benchmark, dependency/license/secret and strict 113-component SBOM gates passed. The first attempts exposed a test-format issue, 17 regex implicit-concatenation lint findings, and then a stale source-measure evidence hash for the changed track index. These were recorded, corrected, and the exact index pin and 36 source-review tests passed. Automatic Conductor `phase_7_gates` passed. Its immutable receipt is `phase_7_gates-review-receipt-20261004-vote-health-overview-2009-10.json`, file SHA-256 `7320aeb3a4350021a8e161c33a86418452b332a3e755842e448f99c4655a5b53`.
+
+The 2009/10 capture also has a one-resource source-census addendum. An initial
+source-health report invocation supplied the Bronze CAS parent instead of the
+helper's expected `bronze-cas/sha256` object root and failed closed with
+`capture_object_missing`; the corrected invocation passed, independently
+verified the 60,661-byte CAS object, recorded one rights-eligible capture, and
+retained 11 context-series-vintage states. The pinned 143-resource census and
+its existing report were left unchanged.
+
+
+2026-10-04 — Review correction: complete Vote Health PDF page dispositions
+
+The PR review identified that the initial 2009/10 output only emitted dispositions
+for pages 2 and 3. The profile now emits one row for each of the eight source
+pages, classifying page 2 as partially normalized and the other seven as
+preserved-unreviewed with reason `not_reviewed_by_overview_profile`. The
+captured-source test checks exact page coverage and counts. Two fresh typed CLI
+builds produced identical facts, lineage and dispositions; updated disposition
+SHA-256 is `32fdf4dea054a3aece7e8ec581e6c795856b4e3202712563664e56c88264aa4d`.
+Focused adapter/operation suites passed (506 passed, 10 skipped). Required
+`./scripts/validate.sh` passed: 7,363 passed, 10 skipped, 98.08% branch
+coverage; 53 schemas/43 documents, parity 9/9, mutation, supply-chain, secret,
+and 113-component SBOM gates passed. Automatic Phase 7 review passed; refreshed
+receipt SHA-256 is `7320aeb3a4350021a8e161c33a86418452b332a3e755842e448f99c4655a5b53`.

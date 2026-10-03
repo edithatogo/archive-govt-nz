@@ -234,7 +234,13 @@ def test_normalizer_dry_run_and_local_write_are_source_pinned(
     assert facts[0]["currency_code"] is None
     assert facts[0]["rights_state"] == "not_evaluated"
     assert lineage[0]["raw_value"] == "8,645.493"
-    assert {row["source_page"] for row in dispositions} == {2, 3}
+    assert {row["source_page"] for row in dispositions} == set(range(1, 45))
+    assert (
+        sum(row["disposition"] == "partially_normalized" for row in dispositions) == 2
+    )
+    assert (
+        sum(row["disposition"] == "preserved_unreviewed" for row in dispositions) == 42
+    )
     assert source.read_bytes() == b"exactly retained PDF bytes"
 
 
@@ -295,7 +301,8 @@ def test_2004_05_normalizer_reads_captured_source_and_writes_eight_facts(
     ]
     dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
     assert {row["reason"] for row in dispositions} == {
-        "eight_reviewed_overview_headlines_only"
+        "eight_reviewed_overview_headlines_only",
+        "not_reviewed_by_overview_profile",
     }
 
 
@@ -366,7 +373,8 @@ def test_2005_06_normalizer_reads_captured_source_and_writes_eight_facts(
     ]
     dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
     assert {row["reason"] for row in dispositions} == {
-        "eight_reviewed_overview_headlines_only"
+        "eight_reviewed_overview_headlines_only",
+        "not_reviewed_by_overview_profile",
     }
 
 
@@ -450,7 +458,8 @@ def test_2006_07_normalizer_reads_captured_source_and_writes_eight_facts(
     ]
     dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
     assert {row["reason"] for row in dispositions} == {
-        "eight_reviewed_overview_headlines_only"
+        "eight_reviewed_overview_headlines_only",
+        "not_reviewed_by_overview_profile",
     }
 
 
@@ -567,7 +576,131 @@ def test_2008_09_normalizer_reads_captured_source_and_marks_approximation(
         fact["unit"] == "$ million, approximate rounded source amount" for fact in facts
     )
     dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
-    assert {row["source_page"]: row["disposition"] for row in dispositions} == {
-        2: "partially_normalized",
-        3: "preserved_unreviewed",
-    }
+    assert len(dispositions) == overview.PAGE_COUNT_2008_09
+    assert {row["source_page"] for row in dispositions} == set(
+        range(1, overview.PAGE_COUNT_2008_09 + 1)
+    )
+    assert {
+        row["source_page"]
+        for row in dispositions
+        if row["disposition"] == "partially_normalized"
+    } == {2}
+    assert (
+        sum(row["disposition"] == "preserved_unreviewed" for row in dispositions) == 7
+    )
+
+
+def test_2009_10_overview_extracts_all_seventeen_pinned_money_statements() -> None:
+    pages = [
+        (
+            "The Minister of Health is responsible for appropriations in the Vote "
+            "for the 2009/10 financial year totalling just under $12,978 million, "
+            "an increase of $899 million or 7.4% from 2008/09 (Supplementary "
+            "Estimates) and covering the following: Departmental Operating "
+            "Appropriations A total of just over $217 million (1.7% of the Vote) "
+            "relates to the functions of the Ministry of Health. Non-Departmental "
+            "Operating Appropriations A total of nearly $12,406 million (95.6% of "
+            "the Vote) is for operating expenses to be incurred on behalf of the "
+            "Crown. Output Expenses These total just over $12,382 million (95.5% "
+            "of the Vote) and are to fund the purchases of health services as "
+            "follows: Nearly $9,700 million (74.8% of the Vote) to fund health "
+            "services from DHBs through the DHB appropriations. Just over $895 "
+            "million (6.9% of the Vote) to purchase national disability support "
+            "services. Nearly $515 million (4.0% of the Vote) to purchase public "
+            "health services. Almost $841 million (6.5% of the Vote) to purchase "
+            "national health services and provide clinical training for health "
+            "professionals. Nearly $242 million (1.9% of the Vote) to manage health "
+            "sector risks. Just over $154 million (1.2% of the Vote) to purchase "
+            "primary health care services. Nearly $36 million (0.3% of the Vote) "
+            "to fund other health and disability services. Other Expenses Incurred "
+            "by the Crown A total of nearly $24 million (0.2% of the Vote) is for "
+            "other expenses. Capital Expenditure A total of nearly $355 million "
+            "(2.7% of the Vote) is to provide capital funding. Just over $304 "
+            "million (2.3 % of the Vote) is to provide debt or equity for District "
+            "Health Boards or the New Zealand Blood Service. $15 million (0.1% of "
+            "the Vote) is to provide interest-free loans. Just over $35 million "
+            "(0.3% of the Vote) is to purchase or develop assets for use by the "
+            "Ministry of Health."
+        ),
+        "Details of Appropriations",
+    ]
+    rows = overview.parse_overview_2009_10_pages(pages)
+    assert [row["value"] for row in rows] == [
+        Decimal(12978),
+        Decimal(899),
+        Decimal(217),
+        Decimal(12406),
+        Decimal(12382),
+        Decimal(9700),
+        Decimal(895),
+        Decimal(515),
+        Decimal(841),
+        Decimal(242),
+        Decimal(154),
+        Decimal(36),
+        Decimal(24),
+        Decimal(355),
+        Decimal(304),
+        Decimal(15),
+        Decimal(35),
+    ]
+
+
+def test_2009_10_normalizer_rebuilds_all_headlines_from_pinned_bronze_source(
+    tmp_path: Path,
+) -> None:
+    source = Path(
+        "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/bronze-cas/"
+        "sha256/ac/acd253a1d68738a06e5310c002f8051698146fe018d3d6c10fc6b5e0f6d7ac1f"
+    )
+    if not source.is_file():
+        pytest.skip("captured 2009/10 Treasury source is unavailable")
+    output = tmp_path / "out"
+    result = overview.normalize_vote_health_estimates_overview_2009_10(
+        source,
+        output,
+        expected_sha256=overview.SOURCE_SHA256_2009_10,
+        source_vintage=overview.VINTAGE_2009_10,
+        source_locator=(
+            "https://www.treasury.govt.nz/publications/estimates/"
+            "vote-health-estimates-appropriations-2009-10"
+        ),
+        observed_at="2026-10-03T16:31:35.751358Z",
+        dry_run=False,
+    )
+    facts = pq.read_table(output / "vote_health_overview_facts.parquet").to_pylist()
+    assert result["status"] == "passed"
+    assert result["counts"] == {"pages": 1, "facts": 17}
+    assert [fact["value"] for fact in facts] == [
+        Decimal(12978),
+        Decimal(899),
+        Decimal(217),
+        Decimal(12406),
+        Decimal(12382),
+        Decimal(9700),
+        Decimal(895),
+        Decimal(515),
+        Decimal(841),
+        Decimal(242),
+        Decimal(154),
+        Decimal(36),
+        Decimal(24),
+        Decimal(355),
+        Decimal(304),
+        Decimal(15),
+        Decimal(35),
+    ]
+    assert all("source_amount_is_not_exact" in fact["quality_flags"] for fact in facts)
+    dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
+    assert len(dispositions) == overview.PAGE_COUNT_2009_10
+    assert {row["source_page"] for row in dispositions} == set(
+        range(1, overview.PAGE_COUNT_2009_10 + 1)
+    )
+    assert {
+        row["source_page"]
+        for row in dispositions
+        if row["disposition"] == "partially_normalized"
+    } == {2}
+    assert (
+        sum(row["disposition"] == "preserved_unreviewed" for row in dispositions) == 7
+    )

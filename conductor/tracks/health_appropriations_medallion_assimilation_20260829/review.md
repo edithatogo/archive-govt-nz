@@ -1470,3 +1470,31 @@ Supplementary Estimates volumes containing appended supporting information are
 counted as editions, while supporting-information-only documents remain
 excluded; page 3 is now explicitly `preserved_unreviewed` because no facts are
 extracted from it.
+
+## 2026-10-04 — Vote Health 2009/10 overview increment
+
+Self-review confirms the extractor is pinned to one captured Treasury PDF hash,
+release vintage, and exact page count. All 17 selected values are anchored to
+unique source phrases and preserve their raw amount tokens; approximate
+whole-million source wording is surfaced in unit/quality metadata. Regression
+and captured-source CLI builds match. The remaining seven pages are explicitly
+preserved-unreviewed, rights on extracted facts remain not evaluated, and no
+publication or cross-edition comparability claim is made. The retained Xref
+warning is disclosed. Required full assurance and automatic phase-7 review are
+still pending at this entry.
+
+Final assurance for this increment passed on 2026-10-04: `./scripts/validate.sh` reported 7,373 passed, 10 skipped and 98.08% branch coverage; all schema, parity, configured mutation, supply-chain, secret-scan and 113-component SBOM checks passed. Automatic `phase_7_gates` review passed; its retained receipt is `phase_7_gates-review-receipt-20261004-vote-health-overview-2009-10.json` (file SHA-256 `7320aeb3a4350021a8e161c33a86418452b332a3e755842e448f99c4655a5b53`). The first preliminary run exposed a formatting issue, a lint issue and the stale source-review evidence pin after index links changed; each was fixed and the corresponding focused/full validation passed.
+The exact captured object also has an additive one-resource census and an
+independent source-health reconciliation. An initial reconciliation invocation
+used the Bronze parent directory where this report helper expects the CAS
+`sha256` directory; it failed closed with `capture_object_missing`. The retry
+used the correct root, verified the 60,661-byte object, and passed. This did not
+change source bytes or the pinned census baseline.
+
+
+Review follow-up for PR #619: the review's page-disposition completeness finding
+was valid. The extraction now emits dispositions across all eight PDF pages;
+page 2 is partially normalized and pages 1, 3–8 are preserved-unreviewed. The
+receipt, test, and repeat-build hashes were refreshed. The full required harness
+passed (7,363 passed, 10 skipped, 98.08% coverage against 80%); schema, parity,
+mutation, supply-chain, secret-scan, SBOM and Phase 7 checks passed.
