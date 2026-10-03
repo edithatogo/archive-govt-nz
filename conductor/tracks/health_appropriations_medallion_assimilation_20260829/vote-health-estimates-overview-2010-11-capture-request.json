@@ -1,0 +1,16 @@
+{
+  "cutoff": "2026-10-04",
+  "records": [
+    {
+      "cutoff": "2026-10-04",
+      "disposition": "discovered",
+      "family": "treasury_vote_health_document",
+      "media_type": "application/pdf",
+      "observed_at": "2026-10-04T00:00:00Z",
+      "rights_uri": "https://www.treasury.govt.nz/about-treasury/copyright-and-licensing",
+      "source_id": "treasury-vote-health-pdf-2010-11-estimates",
+      "title": "Vote Health - The Estimates of Appropriations 2010/11",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2010-05/est10health.pdf"
+    }
+  ]
+}

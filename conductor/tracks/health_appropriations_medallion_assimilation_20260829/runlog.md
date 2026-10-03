@@ -4436,3 +4436,43 @@ Focused adapter/operation suites passed (506 passed, 10 skipped). Required
 coverage; 53 schemas/43 documents, parity 9/9, mutation, supply-chain, secret,
 and 113-component SBOM gates passed. Automatic Phase 7 review passed; refreshed
 receipt SHA-256 is `7320aeb3a4350021a8e161c33a86418452b332a3e755842e448f99c4655a5b53`.
+
+
+2026-10-04 — Vote Health 2010/11 Estimates overview headlines
+
+Captured Treasury's nine-page 2010/11 Estimates PDF (HTTP 200, 55,369 bytes,
+SHA-256 `5dabf866e4f60c5fdf9df88b3fcc5b0e537652d1d6817465efb46a97c0bbe497`)
+with WARC response SHA-256 `cbbc47ff66cf06a6126799dcf467f34651a0573e7396e179e75a6bbc00fbfc8f`.
+Treasury's official publication record gives the signed/issue date as 20 May
+2010 and records CC BY 4.0. Added a pinned profile for 18 statements across
+overview pages 2–3, with edition context, phrase/token and field lineage, plus
+one page disposition for each of nine PDF pages. Pages 2–3 are partially
+normalized and pages 1, 4–9 remain preserved-unreviewed. Two independent typed
+CLI builds were byte-identical: facts
+`2f09f6b51f03482e080c6020b0c91a82131932766251e44d3fa24a24eae024a4`, lineage
+`5b707731a214273b63fa1dbd289a5baa2e50b0345c203313f44e2effc15ff031`,
+dispositions
+`dba47650d5f4c10ef75ecb4dd06cd4fd1847655059eec1d7719ed4d2a8af79dc`. The
+captured-source test verifies 18 values and all nine page dispositions.
+Focused adapter/operation suites pass: 509 passed, 10 skipped. The source-health
+report matched the one-record addendum to the capture manifest and Bronze CAS.
+Initial bounded failures were an incorrectly mapped split word in one anchored
+phrase, a missing generated schema enum entry, and a rights URI mismatch in the
+addendum; each was corrected and the focused checks passed. Full harness and
+Phase 7 review remain pending. No Gold, publication, exact-dollar, or
+cross-edition comparability claim is made.
+
+The first required validation attempt stopped at Ruff: it reported 17 ISC004
+findings for implicit regex concatenation in the new edition profile and one
+RUF002 en dash in a docstring. These were bounded to the new adapter; explicit
+parentheses and plain ASCII punctuation corrected them. Focused Ruff and parser /
+dispatch tests then passed. The final full-harness result follows.
+
+
+Final validation for the 2010/11 overview passed: 7,366 tests passed, 10
+skipped, and 98.08% branch coverage against the 80% floor. The 53-schema / 43
+representative-document validation, 9/9 differential parity, configured
+mutation gates, hygiene, CAS benchmark, dependency/license/secret scans, and
+113-component SBOM passed. Automatic Phase 7 review passed; immutable retained
+receipt SHA-256 is
+`a5853c57d094b40f20dd59ab7a03576c25ab54af8102bb5ed0c1e4f1c814bbf8`.

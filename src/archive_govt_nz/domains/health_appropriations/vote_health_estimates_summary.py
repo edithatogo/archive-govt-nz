@@ -72,6 +72,13 @@ SOURCE_SHA256_2009_10 = (
     "acd253a1d68738a06e5310c002f8051698146fe018d3d6c10fc6b5e0f6d7ac1f"
 )
 PAGE_COUNT_2009_10 = 8
+PROFILE_2010_11 = "vote-health-estimates-2010-11-overview/v1"
+TRANSFORMATION_2010_11 = "vote-health-estimates-overview-2010-11/v1"
+VINTAGE_2010_11 = "Treasury-Vote-Health-Estimates-2010-11"
+SOURCE_SHA256_2010_11 = (
+    "5dabf866e4f60c5fdf9df88b3fcc5b0e537652d1d6817465efb46a97c0bbe497"
+)
+PAGE_COUNT_2010_11 = 9
 _ERROR = "vote_health_estimates_overview_contract"
 _AMOUNT_TOKEN_PATTERN = r"(?P<value>[0-9][0-9,]*\.[0-9]{3})"  # noqa: S105 - regex token, not a secret
 _PATTERNS = {
@@ -651,6 +658,170 @@ _PATTERNS_2009_10 = {
         "2009/10",
     ),
 }
+_PATTERNS_2010_11 = {
+    "vote_total": (
+        2,
+        r"financial year\s+totalling just under \$(?P<value>[0-9][0-9,]*) million",
+        "$ million, approximate rounded source amount",
+        "2010/11",
+    ),
+    "vote_increase": (
+        2,
+        (
+            r"an increase of \$(?P<value>[0-9][0-9,]*) million or 6\.7% "
+            r"from 2009/10 \(Supplementary Estimates\)"
+        ),
+        "$ million, approximate rounded source amount",
+        "2009/10_to_2010/11",
+    ),
+    "departmental_functions": (
+        2,
+        (
+            r"Departmental Operating Appropriations\s+A total of just over "
+            r"\$(?P<value>[0-9][0-9,]*) million \(1\.6% of the Vote\) relates "
+            r"to the functions of the Ministry of Health"
+        ),
+        "$ million, approximate rounded source amount",
+        "2010/11",
+    ),
+    "non_departmental_total": (
+        2,
+        (
+            r"Non-Departmental Operating Appropriations\s+A total of nearly "
+            r"\$(?P<value>[0-9][0-9,]*) million \(94\.6% of the Vote\) is for "
+            r"operating expenses to be incurred on behalf of the Crown"
+        ),
+        "$ million, approximate rounded source amount",
+        "2010/11",
+    ),
+    "output_expenses_total": (
+        2,
+        (
+            r"Output Expenses\s+These total nearly \$(?P<value>[0-9][0-9,]*) "
+            r"million \(94\.4% of the Vote\)"
+        ),
+        "$ million, approximate rounded source amount",
+        "2010/11",
+    ),
+    "dhb_services": (
+        2,
+        (
+            r"Just over \$(?P<value>[0-9][0-9,]*) million \(74\.0% of the Vote\) "
+            r"to fund health services from DHBs"
+        ),
+        "$ million, approximate rounded source amount",
+        "2010/11",
+    ),
+    "national_disability_services": (
+        2,
+        (
+            r"Just over \$(?P<value>[0-9][0-9,]*) million \(7\.1% of the Vote\) "
+            r"to purchase national disability support services"
+        ),
+        "$ million, approximate rounded source amount",
+        "2010/11",
+    ),
+    "public_health_services": (
+        2,
+        (
+            r"Just over \$(?P<value>[0-9][0-9,]*) million \(3\.8% of the Vote\) "
+            r"to purchase public health services"
+        ),
+        "$ million, approximate rounded source amount",
+        "2010/11",
+    ),
+    "national_health_services_and_training": (
+        2,
+        (
+            r"Just over \$(?P<value>[0-9][0-9,]*) million \(6\.7% of the Vote\) "
+            r"to purch\s*ase national health services and provide clinical training"
+        ),
+        "$ million, approximate rounded source amount",
+        "2010/11",
+    ),
+    "health_sector_risk_management": (
+        2,
+        (
+            r"Nearly \$(?P<value>[0-9][0-9,]*) million \(0\.1% of the Vote\) "
+            r"to manage health sector risks"
+        ),
+        "$ million, approximate rounded source amount",
+        "2010/11",
+    ),
+    "dhb_deficit_support_provision": (
+        2,
+        (
+            r"\$(?P<value>[0-9][0-9,]*) million \(0\.7% of the Vote\) for a "
+            r"provision for DHB deficit support"
+        ),
+        "$ million, approximate source amount",
+        "2010/11",
+    ),
+    "primary_health_services": (
+        2,
+        (
+            r"Just over \$(?P<value>[0-9][0-9,]*) million \(1\.4% of the Vote\) "
+            r"to purchase primary health care services"
+        ),
+        "$ million, approximate rounded source amount",
+        "2010/11",
+    ),
+    "other_health_services": (
+        2,
+        (
+            r"Just over \$(?P<value>[0-9][0-9,]*) million \(0\.6% of the Vote\) "
+            r"to fund other health and disability services"
+        ),
+        "$ million, approximate rounded source amount",
+        "2010/11",
+    ),
+    "other_expenses_total": (
+        2,
+        (
+            r"Other Expenses Incurred by the Crown\s+A total of nearly "
+            r"\$(?P<value>[0-9][0-9,]*) million \(0\.2% of the Vote\) is for "
+            r"other expenses"
+        ),
+        "$ million, approximate rounded source amount",
+        "2010/11",
+    ),
+    "capital_expenditure": (
+        3,
+        (
+            r"Capital Expenditure\s+A total of nearly \$(?P<value>[0-9][0-9,]*) "
+            r"million \(3\.8% of the Vote\) is to provide capital funding"
+        ),
+        "$ million, approximate rounded source amount",
+        "2010/11",
+    ),
+    "dhb_and_agency_capital": (
+        3,
+        (
+            r"Nearly \$(?P<value>[0-9][0-9,]*) million \(3\.5 % of the Vote\) "
+            r"is to provide d\s*ebt or equity for District Health Boards"
+        ),
+        "$ million, approximate rounded source amount",
+        "2010/11",
+    ),
+    "long_term_care_interest_free_loans": (
+        3,
+        (
+            r"\$(?P<value>[0-9][0-9,]*) million \(0\.1% of the Vote\) is to "
+            r"provide intere\s*st-free loans"
+        ),
+        "$ million, approximate source amount",
+        "2010/11",
+    ),
+    "ministry_asset_purchases": (
+        3,
+        (
+            r"Just over \$(?P<value>[0-9][0-9,]*) million \(0\.1% of the Vote\) "
+            r"is to purchase or develop assets for use by the Ministry of Health"
+        ),
+        "$ million, approximate rounded source amount",
+        "2010/11",
+    ),
+}
 
 FACT_SCHEMA = pa.schema(
     [
@@ -733,6 +904,25 @@ def parse_overview_pages(
                 "reference_period": period,
                 "raw_token": token,
                 "source_phrase": matches[0].group(0),
+                "source_qualifier_preserved": (
+                    measure
+                    in {
+                        "vote_total",
+                        "non_departmental_total",
+                        "output_expenses_total",
+                        "dhb_services",
+                        "national_disability_services",
+                        "public_health_services",
+                        "national_health_services_and_training",
+                        "dhb_deficit_support_provision",
+                        "primary_health_services",
+                        "other_health_services",
+                        "other_expenses_total",
+                        "capital_expenditure",
+                        "dhb_and_agency_capital",
+                        "ministry_asset_purchases",
+                    }
+                ),
             }
         )
     _require(len(facts) == len(selected_patterns))
@@ -778,6 +968,17 @@ def parse_overview_2009_10_pages(texts: list[str]) -> list[dict[str, Any]]:
         patterns=_PATTERNS_2009_10,
         intro_pattern=r"2009/10 financial year\s+totalling just under",
         second_page_pattern=r"Details of Appropriations",
+    )
+
+
+def parse_overview_2010_11_pages(texts: list[str]) -> list[dict[str, Any]]:
+    """Parse 18 selected, qualified 2010/11 statements on pages 2-3."""
+    return parse_overview_pages(
+        texts,
+        year="2010/11",
+        patterns=_PATTERNS_2010_11,
+        intro_pattern=r"2010/11 financial year\s+totalling just under",
+        second_page_pattern=r"Capital Expenditure",
     )
 
 
@@ -848,6 +1049,11 @@ def _normalize_overview(  # noqa: PLR0913 - profile/provenance are explicit
                     "overview_headline_only",
                     "currency_code_not_supplied",
                     *additional_quality_flags,
+                    *(
+                        ("source_qualifier_preserved_in_raw_phrase",)
+                        if row.get("source_qualifier_preserved")
+                        else ()
+                    ),
                 ],
                 "transformation_id": transformation,
                 "lineage_id": identity(record_id, "lineage"),
@@ -1088,7 +1294,6 @@ def normalize_vote_health_estimates_overview_2008_09(  # noqa: PLR0913 - explici
         second_page_pattern=r"Details of Appropriations",
         additional_quality_flags=(
             "source_value_rounded_to_whole_million",
-            "source_qualifier_preserved_in_raw_phrase",
             "source_amount_is_not_exact",
         ),
         dry_run=dry_run,
@@ -1125,7 +1330,42 @@ def normalize_vote_health_estimates_overview_2009_10(  # noqa: PLR0913 - explici
         second_page_pattern=r"Details of Appropriations",
         additional_quality_flags=(
             "source_value_rounded_to_whole_million",
-            "source_qualifier_preserved_in_raw_phrase",
+            "source_amount_is_not_exact",
+        ),
+        dry_run=dry_run,
+    )
+
+
+def normalize_vote_health_estimates_overview_2010_11(  # noqa: PLR0913 - explicit pinned profile
+    source: Path,
+    output_dir: Path,
+    *,
+    expected_sha256: str,
+    source_vintage: str,
+    source_locator: str,
+    observed_at: str,
+    dry_run: bool = True,
+) -> dict[str, object]:
+    """Normalize 18 selected rounded/qualified 2010/11 overview statements."""
+    return _normalize_overview(
+        source,
+        output_dir,
+        profile=PROFILE_2010_11,
+        transformation=TRANSFORMATION_2010_11,
+        expected_vintage=VINTAGE_2010_11,
+        expected_source_sha256=SOURCE_SHA256_2010_11,
+        expected_page_count=PAGE_COUNT_2010_11,
+        year="2010/11",
+        patterns=_PATTERNS_2010_11,
+        disposition_reason="eighteen_approximate_overview_headlines_only",
+        expected_sha256=expected_sha256,
+        source_vintage=source_vintage,
+        source_locator=source_locator,
+        observed_at=observed_at,
+        intro_pattern=r"2010/11 financial year\s+totalling just under",
+        second_page_pattern=r"Capital Expenditure",
+        additional_quality_flags=(
+            "source_value_rounded_to_whole_million",
             "source_amount_is_not_exact",
         ),
         dry_run=dry_run,
