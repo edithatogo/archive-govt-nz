@@ -84,23 +84,34 @@ def test_normalizer_dry_run_and_local_write_are_source_pinned(
         __import__("hashlib").sha256(source.read_bytes()).hexdigest(),
     )
     monkeypatch.setattr(overview, "PdfReader", Reader)
-    args = {
+    operation = {
         "expected_sha256": overview.SOURCE_SHA256,
         "source_vintage": overview.VINTAGE,
         "source_locator": "https://example.test/vote-health.pdf",
         "observed_at": "2026-10-03T00:00:00Z",
     }
     planned = overview.normalize_vote_health_estimates_overview_2002_03(
-        source, tmp_path / "planned", **args
+        source,
+        tmp_path / "planned",
+        expected_sha256=str(operation["expected_sha256"]),
+        source_vintage=str(operation["source_vintage"]),
+        source_locator=str(operation["source_locator"]),
+        observed_at=str(operation["observed_at"]),
     )
     assert planned["status"] == "planned"
     assert not (tmp_path / "planned").exists()
 
     written = overview.normalize_vote_health_estimates_overview_2002_03(
-        source, tmp_path / "out", **args, dry_run=False
+        source,
+        tmp_path / "out",
+        expected_sha256=str(operation["expected_sha256"]),
+        source_vintage=str(operation["source_vintage"]),
+        source_locator=str(operation["source_locator"]),
+        observed_at=str(operation["observed_at"]),
+        dry_run=False,
     )
     assert written["status"] == "passed"
-    assert len(written["output_sha256"]) == 3
+    assert len(written["output_sha256"]) == 3  # type: ignore[arg-type]
     facts = pq.read_table(
         tmp_path / "out/vote_health_overview_facts.parquet"
     ).to_pylist()
@@ -120,8 +131,7 @@ def test_normalizer_fails_closed_on_wrong_profile_or_output_target(
 ) -> None:
     source = tmp_path / "source.pdf"
     source.write_bytes(b"source")
-    args = {
-        "expected_sha256": overview.SOURCE_SHA256,
+    operation = {
         "source_vintage": overview.VINTAGE,
         "source_locator": "https://example.test/vote-health.pdf",
         "observed_at": "2026-10-03T00:00:00Z",
@@ -130,13 +140,21 @@ def test_normalizer_fails_closed_on_wrong_profile_or_output_target(
         overview.normalize_vote_health_estimates_overview_2002_03(
             source,
             tmp_path / "wrong-profile",
-            **{**args, "expected_sha256": "0" * 64},
+            expected_sha256="0" * 64,
+            source_vintage=str(operation["source_vintage"]),
+            source_locator=str(operation["source_locator"]),
+            observed_at=str(operation["observed_at"]),
         )
     existing = tmp_path / "existing"
     existing.mkdir()
     with pytest.raises(ValueError, match="vote_health_estimates_overview_contract"):
         overview.normalize_vote_health_estimates_overview_2002_03(
-            source, existing, **args
+            source,
+            existing,
+            expected_sha256=overview.SOURCE_SHA256,
+            source_vintage=str(operation["source_vintage"]),
+            source_locator=str(operation["source_locator"]),
+            observed_at=str(operation["observed_at"]),
         )
 
 
