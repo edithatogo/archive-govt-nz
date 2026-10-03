@@ -622,11 +622,10 @@ integrated parent head.
   expenditure editions and most Vote Health Estimates remain incomplete. One
   exact 2002/03 Treasury Estimates PDF has a Part B1 detail profile with 27
   facts and an edition-specific Part F profile with 16 revenue facts,
-  preserving the 2001/02 and 2002/03 column meanings. The seven named overview
-  headlines on pages 2–3 now have a separate source-pinned Silver profile;
-  surrounding prose, other editions, rights and comparability remain
-  unresolved, so this parent
-  task remains open.
+  preserving the 2001/02 and 2002/03 column meanings. The eight named overview headlines on pages 2–3 now have separate,
+  edition-pinned Silver profiles for 2002/03, 2004/05, 2005/06, 2006/07 and
+  2007/08; surrounding prose, other editions, rights and comparability remain
+  unresolved, so this parent task remains open.
   On 2026-10-03, the exact 2002/03 detail package rebuilt twice from its pinned
   Bronze object and matched all retained Silver outputs. The eligible captured
   2003/04 Supplementary Estimates PDF now has separate exact-profile summary,

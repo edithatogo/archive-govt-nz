@@ -1429,3 +1429,18 @@ registry and committed JSON schema include this profile and transformation.
 Rights remain unevaluated, the extraction is local-only, and the rest of the
 PDF, other editions and comparability are outside the claim. Focused tests pass;
 the required full harness passed 7,355 tests with 10 skips and 98.08% branch-aware coverage against the 80% floor. Schema, parity, configured mutation, hygiene, supply-chain and SBOM gates passed; automatic phase review passed with receipt SHA-256 `58789359490b10dd969e9792b05ff0aa4021d7a2c5beb116d12be72e081a4a93`.
+
+
+## 2026-10-03 — Vote Health 2007/08 overview headlines self-review
+
+The new profile binds extraction to the captured 53-page Treasury PDF and its
+SHA-256. It requires the eight observed monetary phrases across pages 2–3,
+retains decimal values, exact source phrases/tokens, periods and page/field
+lineage, and recomputes no totals. Captured-source readback confirmed the eight
+values and output digests. The operation registry and generated JSON schema
+include this profile and transformation. Rights remain unevaluated, extraction
+is local-only, and claims exclude the rest of the PDF and other editions.
+Focused parser/dispatch tests passed; the full required harness passed 7,357
+tests, 10 skipped, and 98.08% branch-aware coverage against the 80% floor.
+Automatic phase review passed with receipt SHA-256
+`3486688fca2a3f1d99894abd9db8364fd198e0090dfccd91d62134c9c807f9d2`.

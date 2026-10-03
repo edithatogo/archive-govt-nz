@@ -452,3 +452,39 @@ def test_2006_07_normalizer_reads_captured_source_and_writes_eight_facts(
     assert {row["reason"] for row in dispositions} == {
         "eight_reviewed_overview_headlines_only"
     }
+
+
+def test_2007_08_normalizer_reads_captured_source_and_writes_eight_facts(
+    tmp_path: Path,
+) -> None:
+    source = Path(
+        "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/bronze-cas/"
+        "sha256/fc/fccd1fe0001e12f8238e6c4618328eac2da8d26729f997265b05688ec89a2795"
+    )
+    if not source.is_file():
+        pytest.skip("captured 2007/08 Treasury source is unavailable")
+    output = tmp_path / "out"
+    result = overview.normalize_vote_health_estimates_overview_2007_08(
+        source,
+        output,
+        expected_sha256=overview.SOURCE_SHA256_2007_08,
+        source_vintage=overview.VINTAGE_2007_08,
+        source_locator=(
+            "https://www.treasury.govt.nz/publications/estimates/"
+            "vote-health-estimates-appropriations-2007-08"
+        ),
+        observed_at="2026-10-03T00:00:00Z",
+        dry_run=False,
+    )
+    facts = pq.read_table(output / "vote_health_overview_facts.parquet").to_pylist()
+    assert result["status"] == "passed"
+    assert [fact["value"] for fact in facts] == [
+        Decimal("11928.703"),
+        Decimal("1515.858"),
+        Decimal("204.033"),
+        Decimal("11724.670"),
+        Decimal("10860.491"),
+        Decimal("17.912"),
+        Decimal("846.267"),
+        Decimal("591.403"),
+    ]
