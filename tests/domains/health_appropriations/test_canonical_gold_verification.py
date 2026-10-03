@@ -164,6 +164,22 @@ def _package(root: Path) -> tuple[Path, str]:
     ).encode()
     revision_output = root / "historical_revision_reconciliation.json"
     revision_output.write_bytes(revision_payload)
+    overlap_report = {
+        "schema_version": "archive-govt-nz.health-cross-source-period-overlap/v1",
+        "scope": "observed_canonical_product_rows_only",
+        "match_basis": "literal_period_token_only",
+        "completeness": "observed_rows_only",
+        "comparability": "not_assessed",
+        "numeric_variance": "not_computed",
+        "cross_source_join": "not_performed",
+        "overlap_group_count": 0,
+        "groups": [],
+    }
+    overlap_payload = (
+        json.dumps(overlap_report, sort_keys=True, separators=(",", ":")) + "\n"
+    ).encode()
+    overlap_output = root / "cross_source_period_overlap.json"
+    overlap_output.write_bytes(overlap_payload)
     manifest = {
         "schema_version": "archive-govt-nz.health-canonical-gold/v2",
         "outputs": {
@@ -175,6 +191,11 @@ def _package(root: Path) -> tuple[Path, str]:
             revision_output.name: {
                 "sha256": hashlib.sha256(revision_payload).hexdigest(),
                 "bytes": len(revision_payload),
+                "kind": "report",
+            },
+            overlap_output.name: {
+                "sha256": hashlib.sha256(overlap_payload).hexdigest(),
+                "bytes": len(overlap_payload),
                 "kind": "report",
             },
         },
@@ -196,6 +217,7 @@ def _package(root: Path) -> tuple[Path, str]:
             "candidates": [],
         },
         "revision_reconciliation_report": revision_report,
+        "cross_source_period_overlap_report": overlap_report,
         "rights_state": "not_evaluated",
         "publication": "not_performed",
     }
@@ -250,10 +272,14 @@ def test_cli_mcp_parity_and_no_write(
     assert cli_receipt.pop("command") == "health-appropriations-verify-canonical-gold"
     assert cli_receipt == receipt
     assert receipt["status"] == "verified"
-    assert receipt["output_count"] == 2
+    assert receipt["output_count"] == 3
     assert receipt["output_bytes"] == sum(
         (root / name).stat().st_size
-        for name in ("observations.parquet", "historical_revision_reconciliation.json")
+        for name in (
+            "observations.parquet",
+            "historical_revision_reconciliation.json",
+            "cross_source_period_overlap.json",
+        )
     )
     assert receipt["products"] == ["historical"]
     assert receipt["temporal_coverage_groups"] == 1
@@ -335,6 +361,12 @@ def test_consumer_example_summarizes_only_verified_manifest_reports(
             }
             for product in ("pharmac", "moh", "crown")
         },
+    }
+    assert summary["cross_source_period_token_overlaps"] == {
+        "overlap_group_count": 0,
+        "match_basis": "literal_period_token_only",
+        "comparability": "not_assessed",
+        "numeric_variance": "not_computed",
     }
     assert summary["cross_source_comparison"] == "not_performed"
     assert summary["rights_state"] == "not_evaluated"

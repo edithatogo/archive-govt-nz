@@ -130,6 +130,7 @@ def summarize_verified_canonical_gold(
     temporal = manifest.get("temporal_coverage_report")
     classification = manifest.get("classification_drift_report")
     revisions = manifest.get("revision_reconciliation_report")
+    overlaps = manifest.get("cross_source_period_overlap_report")
     if (
         not isinstance(products, dict)
         or not isinstance(temporal, dict)
@@ -137,6 +138,8 @@ def summarize_verified_canonical_gold(
         or not isinstance(classification, dict)
         or not isinstance(classification.get("candidates"), list)
         or not isinstance(revisions, dict)
+        or not isinstance(overlaps, dict)
+        or not isinstance(overlaps.get("groups"), list)
     ):
         _fail()
     return {
@@ -151,6 +154,12 @@ def summarize_verified_canonical_gold(
         },
         "historical_revisions": _revision_counts(revisions),
         "product_revisions": _product_revision_counts(revisions),
+        "cross_source_period_token_overlaps": {
+            "overlap_group_count": overlaps.get("overlap_group_count"),
+            "match_basis": overlaps.get("match_basis"),
+            "comparability": overlaps.get("comparability"),
+            "numeric_variance": overlaps.get("numeric_variance"),
+        },
         "cross_source_comparison": "not_performed",
         "rights_state": "not_evaluated",
         "publication": "not_performed",

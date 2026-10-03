@@ -46,6 +46,7 @@ MAX_OUTPUT_BYTES = 128 * 1024 * 1024
 MAX_PACKAGES = 32
 MIN_DISTINCT_CLASSIFICATION_LABELS = 2
 MIN_REVISION_VINTAGES = 2
+MIN_OVERLAP_PRODUCTS = 2
 SCHEMA = "archive-govt-nz.health-canonical-gold/v2"
 
 
@@ -789,6 +790,7 @@ def _output_inventory(
     for name, kind, profile in (
         ("dataset-card.md", "dataset_card", None),
         ("historical_revision_reconciliation.json", "report", None),
+        ("cross_source_period_overlap.json", "report", None),
         ("ro-crate-metadata.json", "ro_crate_metadata", "RO-Crate 1.1"),
     ):
         payload = payloads[name]
@@ -924,7 +926,6 @@ def build_temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any
             ),
         ),
     }
-
     groups: list[dict[str, Any]] = []
     for output_name, (table_name, context_fields) in definitions.items():
         table = tables.get(table_name)
@@ -959,6 +960,94 @@ def build_temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any
         "cross_source_join": "not_performed",
         "vintage_pooling": "not_performed",
         "groups": groups,
+    }
+
+
+def build_cross_source_period_overlap_report(
+    tables: dict[str, pa.Table],
+) -> dict[str, Any]:
+    """List literal period-token overlaps without joining or comparing values."""
+    definitions = {
+        "historical": ("observations", "input_record_id"),
+        "budget": ("budget", "input_record_ids"),
+        "revenue": ("revenue", "input_record_id"),
+        "pharmac": ("pharmac", "record_id"),
+        "moh": ("moh", "record_id"),
+        "crown_befu": ("crown_befu", "record_id"),
+        "crown_hyefu": ("crown_hyefu", "record_id"),
+        "fiscal_crown": ("fiscal_crown", "record_id"),
+    }
+    groups: dict[str, dict[str, dict[str, Any]]] = {}
+    for product, (table_name, id_field) in definitions.items():
+        table = tables.get(table_name)
+        if table is None:
+            continue
+        for row in table.to_pylist():
+            period = row.get("period_token")
+            vintage = row.get("source_vintage")
+            unit = row.get("unit")
+            identities = row.get(id_field)
+            record_ids = identities if id_field == "input_record_ids" else [identities]
+            _require(
+                type(period) is str
+                and bool(period)
+                and type(vintage) is str
+                and bool(vintage)
+                and (unit is None or (type(unit) is str and bool(unit)))
+                and (
+                    isinstance(record_ids, list)
+                    and bool(record_ids)
+                    and all(
+                        type(record_id) is str and record_id for record_id in record_ids
+                    )
+                )
+            )
+            group = groups.setdefault(period, {}).setdefault(
+                product,
+                {
+                    "row_count": 0,
+                    "source_vintages": set(),
+                    "units": set(),
+                    "input_record_ids": set(),
+                },
+            )
+            group["row_count"] += 1
+            group["source_vintages"].add(vintage)
+            group["units"].add(unit if unit is not None else "unknown_not_asserted")
+            group["input_record_ids"].update(record_ids)
+    overlaps = []
+    for period in sorted(groups):
+        products = groups[period]
+        if len(products) < MIN_OVERLAP_PRODUCTS:
+            continue
+        overlaps.append(
+            {
+                "period_token": period,
+                "status": "literal_period_token_overlap_candidate",
+                "product_groups": [
+                    {
+                        "product": product,
+                        "row_count": details["row_count"],
+                        "source_vintages": sorted(details["source_vintages"]),
+                        "units": sorted(details["units"]),
+                        "input_record_ids": sorted(details["input_record_ids"]),
+                    }
+                    for product, details in sorted(products.items())
+                ],
+                "comparability": "not_assessed",
+                "numeric_variance": "not_computed",
+            }
+        )
+    return {
+        "schema_version": "archive-govt-nz.health-cross-source-period-overlap/v1",
+        "scope": "observed_canonical_product_rows_only",
+        "match_basis": "literal_period_token_only",
+        "completeness": "observed_rows_only",
+        "comparability": "not_assessed",
+        "numeric_variance": "not_computed",
+        "cross_source_join": "not_performed",
+        "overlap_group_count": len(overlaps),
+        "groups": overlaps,
     }
 
 
@@ -1376,7 +1465,12 @@ def _build_payloads(
     products: dict[str, dict[str, Any]],
     query_receipts: list[dict[str, Any]],
 ) -> tuple[
-    dict[str, bytes], dict[str, Any], dict[str, Any], dict[str, Any], dict[str, Any]
+    dict[str, bytes],
+    dict[str, Any],
+    dict[str, Any],
+    dict[str, Any],
+    dict[str, Any],
+    dict[str, Any],
 ]:
     table_payloads = {
         filename: _table_bytes(tables[key])
@@ -1398,7 +1492,9 @@ def _build_payloads(
     )
     classification_drift_report = build_classification_drift_report(tables)
     revision_report = build_revision_reconciliation_report(tables)
+    cross_source_report = build_cross_source_period_overlap_report(tables)
     payloads["historical_revision_reconciliation.json"] = _encoded(revision_report)
+    payloads["cross_source_period_overlap.json"] = _encoded(cross_source_report)
     payloads["ro-crate-metadata.json"] = _encoded(_ro_crate_metadata(payloads))
     return (
         payloads,
@@ -1406,6 +1502,7 @@ def _build_payloads(
         temporal_report,
         classification_drift_report,
         revision_report,
+        cross_source_report,
     )
 
 
@@ -1479,6 +1576,7 @@ def _export(
         temporal_report,
         classification_drift_report,
         revision_report,
+        cross_source_report,
     ) = _build_payloads(tables, product_report, query_receipts)
     package_markers = _package_markers(query_receipts)
     quality_report = _quality_report(tables, product_report)
@@ -1501,6 +1599,7 @@ def _export(
         "temporal_coverage_report": temporal_report,
         "classification_drift_report": classification_drift_report,
         "revision_reconciliation_report": revision_report,
+        "cross_source_period_overlap_report": cross_source_report,
         "plot_report": plot_report,
         "quality_report": quality_report,
         "period_ordering": "tokens_preserved_and_sorted_as_strings",
