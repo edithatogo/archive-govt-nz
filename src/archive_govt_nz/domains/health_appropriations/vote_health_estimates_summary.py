@@ -904,6 +904,25 @@ def parse_overview_pages(
                 "reference_period": period,
                 "raw_token": token,
                 "source_phrase": matches[0].group(0),
+                "source_qualifier_preserved": (
+                    measure
+                    in {
+                        "vote_total",
+                        "non_departmental_total",
+                        "output_expenses_total",
+                        "dhb_services",
+                        "national_disability_services",
+                        "public_health_services",
+                        "national_health_services_and_training",
+                        "dhb_deficit_support_provision",
+                        "primary_health_services",
+                        "other_health_services",
+                        "other_expenses_total",
+                        "capital_expenditure",
+                        "dhb_and_agency_capital",
+                        "ministry_asset_purchases",
+                    }
+                ),
             }
         )
     _require(len(facts) == len(selected_patterns))
@@ -1030,6 +1049,11 @@ def _normalize_overview(  # noqa: PLR0913 - profile/provenance are explicit
                     "overview_headline_only",
                     "currency_code_not_supplied",
                     *additional_quality_flags,
+                    *(
+                        ("source_qualifier_preserved_in_raw_phrase",)
+                        if row.get("source_qualifier_preserved")
+                        else ()
+                    ),
                 ],
                 "transformation_id": transformation,
                 "lineage_id": identity(record_id, "lineage"),
@@ -1270,7 +1294,6 @@ def normalize_vote_health_estimates_overview_2008_09(  # noqa: PLR0913 - explici
         second_page_pattern=r"Details of Appropriations",
         additional_quality_flags=(
             "source_value_rounded_to_whole_million",
-            "source_qualifier_preserved_in_raw_phrase",
             "source_amount_is_not_exact",
         ),
         dry_run=dry_run,
@@ -1307,7 +1330,6 @@ def normalize_vote_health_estimates_overview_2009_10(  # noqa: PLR0913 - explici
         second_page_pattern=r"Details of Appropriations",
         additional_quality_flags=(
             "source_value_rounded_to_whole_million",
-            "source_qualifier_preserved_in_raw_phrase",
             "source_amount_is_not_exact",
         ),
         dry_run=dry_run,
@@ -1344,7 +1366,6 @@ def normalize_vote_health_estimates_overview_2010_11(  # noqa: PLR0913 - explici
         second_page_pattern=r"Capital Expenditure",
         additional_quality_flags=(
             "source_value_rounded_to_whole_million",
-            "source_qualifier_preserved_in_raw_phrase",
             "source_amount_is_not_exact",
         ),
         dry_run=dry_run,

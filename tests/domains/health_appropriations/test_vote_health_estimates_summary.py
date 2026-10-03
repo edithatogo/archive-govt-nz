@@ -639,6 +639,29 @@ def test_2010_11_normalizer_rebuilds_selected_headlines_from_pinned_bronze_sourc
         *([2] * 14),
         *([3] * 4),
     ]
+    assert [
+        "source_qualifier_preserved_in_raw_phrase" in fact["quality_flags"]
+        for fact in facts
+    ] == [
+        True,
+        False,
+        False,
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        False,
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        False,
+        True,
+    ]
     assert all("source_amount_is_not_exact" in fact["quality_flags"] for fact in facts)
     dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
     assert len(dispositions) == overview.PAGE_COUNT_2010_11
