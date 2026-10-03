@@ -4275,3 +4275,12 @@ license, secret-scan and SBOM gates passed. Automatic Conductor `phase_7_gates`
 review also passed. No additional tests were added to pursue coverage above the
 requested threshold. See `vote-health-revenue-2002-03-20261003.md` and its
 machine receipt.
+
+2026-10-03 — Vote Health 2002/03 overview headlines
+
+Added a hash-pinned source operation for the seven monetary headlines on pages
+2–3 of the retained Estimates PDF. Decimal values, source phrases, raw amount
+tokens, units and page lineage are retained; surrounding prose/components,
+rights and comparability remain outside scope. Focused parser and operation
+tests passed (496 passed, 10 skipped); full harness and automated phase review
+remain pending. Coverage work stayed within the configured 80% target.
