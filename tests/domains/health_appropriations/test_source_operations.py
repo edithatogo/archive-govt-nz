@@ -1039,3 +1039,15 @@ def test_vote_health_2005_06_overview_profile_dispatches_to_its_adapter(
         summary, "_normalize_overview", lambda *_args, **_kwargs: expected
     )
     assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+
+
+def test_source_operation_profile_registries_have_unique_keys() -> None:
+    summary = source_operations.vote_health_estimates_summary
+    assert len(source_operations.PROFILES) == len(set(source_operations.PROFILES))
+    assert len(source_operations._VOTE_HEALTH_OVERVIEW_PROFILES) == len(  # noqa: SLF001
+        set(source_operations._VOTE_HEALTH_OVERVIEW_PROFILES)  # noqa: SLF001
+    )
+    assert len(source_operations._VOTE_HEALTH_OVERVIEW_NORMALIZERS) == len(  # noqa: SLF001
+        set(source_operations._VOTE_HEALTH_OVERVIEW_NORMALIZERS)  # noqa: SLF001
+    )
+    assert summary.PROFILE_2005_06 in source_operations.PROFILES

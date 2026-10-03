@@ -161,12 +161,6 @@ PROFILES = MappingProxyType(
             "vote_health_overview_facts.parquet",
             "page_dispositions.parquet",
         ),
-        vote_health_estimates_summary.PROFILE_2005_06: (
-            vote_health_estimates_summary.TRANSFORMATION_2005_06,
-            ("pages", "facts"),
-            "vote_health_overview_facts.parquet",
-            "page_dispositions.parquet",
-        ),
     }
 )
 _REVENUE_VINTAGES = {
@@ -206,10 +200,6 @@ _VOTE_HEALTH_OVERVIEW_PROFILES = {
         vote_health_estimates_summary.VINTAGE_2005_06,
         vote_health_estimates_summary.SOURCE_SHA256_2005_06,
     ),
-    vote_health_estimates_summary.PROFILE_2005_06: (
-        vote_health_estimates_summary.VINTAGE_2005_06,
-        vote_health_estimates_summary.SOURCE_SHA256_2005_06,
-    ),
 }
 _VOTE_HEALTH_OVERVIEW_NORMALIZERS = {
     vote_health_estimates_summary.PROFILE: (
@@ -221,10 +211,11 @@ _VOTE_HEALTH_OVERVIEW_NORMALIZERS = {
     vote_health_estimates_summary.PROFILE_2005_06: (
         vote_health_estimates_summary.normalize_vote_health_estimates_overview_2005_06
     ),
-    vote_health_estimates_summary.PROFILE_2005_06: (
-        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2005_06
-    ),
 }
+_DUPLICATE_PROFILE = "duplicate_source_operation_profile"
+if len(PROFILES) != len(set(PROFILES)):
+    raise ValueError(_DUPLICATE_PROFILE)
+
 _COMMON = {
     "schema_version": "archive-govt-nz.health-source-operation/v1",
     "verification_scope": "adapter_execution_only",
