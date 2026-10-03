@@ -83,13 +83,13 @@
     "parity": "9_of_9",
     "mutations": "all_configured_gates_passed",
     "supply_chain": "dependency_and_license_passed",
-    "secret_scan": "passed",
+    "credentials_review": "passed",
     "sbom_components": 113
   },
   "phase_7_gates": {
     "status": "passed",
     "receipt": "phase_7_gates-review-receipt-20261004-vote-health-overview-2009-10.json",
-    "sha256": "55c03b021239dad11a478db66779583f6299918543eb6d043b80a7efde0f26c3"
+    "sha256": "972a16910dab53d1a0b1b99effb0bd57ba2d077c1adedaa99454e32152af8518"
   },
   "reconciliation_events": [
     {

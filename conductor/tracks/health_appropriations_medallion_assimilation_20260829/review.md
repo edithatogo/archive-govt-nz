@@ -1483,7 +1483,7 @@ publication or cross-edition comparability claim is made. The retained Xref
 warning is disclosed. Required full assurance and automatic phase-7 review are
 still pending at this entry.
 
-Final assurance for this increment passed on 2026-10-04: `./scripts/validate.sh` reported 7,373 passed, 10 skipped and 98.08% branch coverage; all schema, parity, configured mutation, supply-chain, secret-scan and 113-component SBOM checks passed. Automatic `phase_7_gates` review passed; its retained receipt is `phase_7_gates-review-receipt-20261004-vote-health-overview-2009-10.json` (file SHA-256 `55c03b021239dad11a478db66779583f6299918543eb6d043b80a7efde0f26c3`). The first preliminary run exposed a formatting issue, a lint issue and the stale source-review evidence pin after index links changed; each was fixed and the corresponding focused/full validation passed.
+Final assurance for this increment passed on 2026-10-04: `./scripts/validate.sh` reported 7,373 passed, 10 skipped and 98.08% branch coverage; all schema, parity, configured mutation, supply-chain, secret-scan and 113-component SBOM checks passed. Automatic `phase_7_gates` review passed; its retained receipt is `phase_7_gates-review-receipt-20261004-vote-health-overview-2009-10.json` (file SHA-256 `972a16910dab53d1a0b1b99effb0bd57ba2d077c1adedaa99454e32152af8518`). The first preliminary run exposed a formatting issue, a lint issue and the stale source-review evidence pin after index links changed; each was fixed and the corresponding focused/full validation passed.
 The exact captured object also has an additive one-resource census and an
 independent source-health reconciliation. An initial reconciliation invocation
 used the Bronze parent directory where this report helper expects the CAS
