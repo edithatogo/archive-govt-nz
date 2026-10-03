@@ -1471,6 +1471,26 @@ counted as editions, while supporting-information-only documents remain
 excluded; page 3 is now explicitly `preserved_unreviewed` because no facts are
 extracted from it.
 
+
+## 2026-10-04 — QES adjustment evidence follow-up
+
+The selected QES measure is still the retained June 2026 Table 8
+`QEMQ.SASZ9A` series. The retained June 2026 workbook's Table 8 maps its `QEMQ` / `SASZ9A`
+selector to ordinary-time hourly earnings, and the official June 2026 labour-market
+summary says this measure is not seasonally adjusted. The supplemental
+definition and source-measure inventory now carry that bounded disposition.
+The workbook's `$` label does not establish an ISO currency code; currency and
+rights remain unknown/unadjudicated, and analytical selection, annual weighting
+and fiscal-period joins remain unselected. No source or Silver bytes changed.
+
+Focused QES and source-measure tests passed (65 tests); the required full
+repository harness passed 7,360 tests, 10 skips, and 98.08% branch-aware
+coverage against the 80% floor. Schema, parity, configured mutation, hygiene,
+supply-chain and SBOM gates passed. Automatic `phase_7_gates` review passed
+with receipt SHA-256
+`1d9873173e8c6973fbad2d7d79ae130d7d7c930bcc4f5d8741744fb598582ac0`.
+
+
 ## 2026-10-04 — Vote Health 2009/10 overview increment
 
 Self-review confirms the extractor is pinned to one captured Treasury PDF hash,

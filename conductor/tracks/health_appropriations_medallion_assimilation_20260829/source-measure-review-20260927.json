@@ -86,7 +86,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/price-wage-context.md",
-      "sha256": "ea36b2d2f152539fd91ca14737fc401ef69c6d0a3125ebb209f1252469a92310"
+      "sha256": "7f64e03436de79fcc8e86854b1d646fe006fbe8212ac58e14afba0ab6009990c"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-data-collection-metadata-20261002.json",
@@ -98,7 +98,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-methodology-rights-review-20261002.md",
-      "sha256": "5d836ff577e2a57f8cb902a495bc601ad5449b0fd9fe8dc0ec3076407d1cfca9"
+      "sha256": "9350c2a0c634fa754411f36c151d88d11743aac4fd813af62e7d2c52d3ce5802"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-series-metadata-20261002.json",
@@ -171,8 +171,8 @@
       "vintage_or_range": "MoH nominal/real and per-capita indicators cover 2005/06\u20132024/25. Treasury Historical Vote Information index covers Vote Health chapters for Budget years 1998\u20132026. Repository capture register contains 58 PDFs; 10 Estimates years (2008\u20132013, 2018\u20132021) and Supplementary years 2012/13 and 2025/26 are located but not in that captured register."
     },
     "wages": {
-      "analytical_status": "captured and exact source profile exists; QES methodology confirms composition effects, so this is not a constant-quality wage index; currency, adjustment, annual weighting, rights eligibility, and deflator selection remain unqualified",
-      "period_basis": "Stats NZ defines each QES quarter by the pay week ending on or before the 20th of its middle month; quarter-label renaming in 2003 did not change that reference week. Selected 2024Q2\u20132026Q2 observations follow the March-2021 KAU redesign and March-2023 sample rotation. QES is a sampled business measure, weighted by employee counts and subject to imputation; industry and occupation composition affect average earnings. The quarterly value is not a full-quarter average.",
+      "analytical_status": "captured and exact source profile exists; QES methodology confirms composition effects, so this is not a constant-quality wage index; official evidence identifies the selected ordinary-time hourly earnings indicator as not seasonally adjusted; ISO currency, annual weighting, rights eligibility, and deflator selection remain unqualified",
+      "period_basis": "Stats NZ defines each QES quarter by the pay week ending on or before the 20th of its middle month; quarter-label renaming in 2003 did not change that reference week. Selected 2024Q2–2026Q2 observations follow the March-2021 KAU redesign and March-2023 sample rotation. QES is a sampled business measure, weighted by employee counts and subject to imputation; industry and occupation composition affect average earnings. The quarterly value is not a full-quarter average.",
       "rights": "publisher_default_observed_unadjudicated",
       "series_id": "QEMQ.SASZ9A",
       "vintage_or_range": "Stats NZ Quarterly Employment Survey June 2026 workbook Table 8; total sector ordinary-time average hourly earnings; nine quarter levels 2024Q2\u20132026Q2; source unit '$' per paid hour"

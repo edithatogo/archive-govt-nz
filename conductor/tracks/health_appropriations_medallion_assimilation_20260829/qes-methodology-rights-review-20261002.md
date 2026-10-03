@@ -35,11 +35,22 @@ which controls job characteristics to measure the cost of the same work.
 Accordingly, QES ordinary-time hourly earnings are not a constant-quality
 wage index.
 
-The exact Table 8 source and existing profile identify ordinary-time earnings
-divided by paid hours. This review does not infer an adjustment label from other
-QES tables. The selected table's adjustment remains `not_supplied`; the wage
-series is not approved for deflation, annual weighting, or joins to fiscal-year
+The retained Table 8 workbook and existing profile identify ordinary-time
+earnings divided by paid hours; Table 8 carries the `QEMQ` family and
+`SASZ9A` selector alongside that measure label. A check of Stats NZ's June 2026
+labour-market summary found an explicit footnote that average ordinary-time
+hourly earnings are not seasonally adjusted. Together, the retained exact
+selector and current official summary support `not_seasonally_adjusted` for
+the selected indicator; they do not provide an ISO currency code. The series
+remains unapproved for deflation, annual weighting, or joins to fiscal-year
 spending.
+
+The June 2026 summary is a contemporary measure-level statement; the retained
+workbook supplies the selector-to-label mapping. Neither changes the retained
+workbook bytes or original adapter receipt, and no live Infoshare response was
+acquired for this follow-up. The correction is confined to the supplemental
+definition: native currency remains unknown, rights remain unadjudicated, and
+analytical selection remains unmade.
 
 ## Rights observation and unresolved qualification
 
@@ -72,3 +83,4 @@ Sources:
 - [Quarterly Employment Survey, DataInfo+ series metadata](https://datainfoplus.stats.govt.nz/item/nz.govt.stats/086258b1-90e6-4728-981d-756b3ca6e147/87)
 - [QES Data Collection, DataInfo+](https://datainfoplus.stats.govt.nz/item/nz.govt.stats/0394e202-f8c6-482c-89a3-49b16a20bf95/19)
 - [Stats NZ copyright and attribution](https://www.stats.govt.nz/about-us/copyright/)
+- [Labour market summary, June 2026 quarter](https://www.stats.govt.nz/assets/Uploads/Labour-market-statistics/Labour-market-statistics-June-2026-quarter/Download-data/labour-market-statistics-june-2026-quarter-summary-diagrams.pdf)

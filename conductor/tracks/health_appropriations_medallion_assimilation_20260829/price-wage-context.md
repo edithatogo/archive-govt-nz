@@ -46,11 +46,13 @@ The observed 2017Q2 = 1000 base remains supplemental; the native CPI receipt's
 
 QES is a dollar-per-paid-hour earnings level, not a constant-quality wage index;
 an index base is not applicable. The $ label does not independently establish
-an ISO currency code. Neither retained Table 8 nor the exact-series Infoshare
-response supplies an adjustment label. Seasonally adjusted/trend labels on
-other workbook tables must not be transferred to Table 8. Table 9 is a distinct
-selection and cannot replace Table 8. Both-sexes context is supplemental only:
-the existing native currency/sex/adjustment unknown flags remain unchanged.
+an ISO currency code. A later check of the official June 2026 labour-market
+summary and a June 2021 QES revision table supports the indicator-level
+adjustment `not_seasonally_adjusted` for `SASZ9A`; see
+`qes-methodology-rights-review-20261002.md`. This supplements the exact-series
+record without changing source bytes. Currency remains unknown. Table 9 is a
+distinct selection and cannot replace Table 8. Both-sexes context remains
+supplemental only, and analytical use remains unselected.
 
 ## Admission and review
 

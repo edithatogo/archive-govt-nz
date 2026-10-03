@@ -30,6 +30,8 @@ def test_exact_definitions_keep_analysis_unselected(index: int) -> None:
     assert definition.analytical_selection == "not_selected"
     assert definition.annual_weighting == "not_selected"
     assert definition.currency_code is None
+    if definition.family == "qes":
+        assert definition.adjustment == "not_seasonally_adjusted"
     assert definition == PriceWageContext.model_validate_json(
         definition.model_dump_json()
     )

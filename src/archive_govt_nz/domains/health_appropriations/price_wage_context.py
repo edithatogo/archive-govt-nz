@@ -68,14 +68,16 @@ _PROFILES: dict[str, tuple[object, ...]] = {
         None,
         None,
         "Both sexes",
-        "not_supplied",
+        "not_seasonally_adjusted",
         "2024Q2",
         "2026Q2",
         "Total All Sectors - Total Both Sexes - Ordinary Time Hourly",
         "ordinary-time earnings divided by paid hours",
         (
-            "Not supplied for Table 8 / QEMQ.SASZ9A; "
-            "other-table adjustment labels are not transferable."
+            "Stats NZ June 2026 labour-market summary states average ordinary "
+            "time hourly earnings are not seasonally adjusted; the 2021 QES "
+            "release maps SASZ9A to that measure. This is source metadata, "
+            "not analytical approval."
         ),
     ),
 }

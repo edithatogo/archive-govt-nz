@@ -95,7 +95,7 @@ repository validation command. External gates block only their affected task.
 - [x] Review fix: give historical discovery rows stable URL-derived source IDs
   and verify uniqueness without substituting locator identity for byte fixity.
   [d1f2ff31; full assurance f111dbf0]
-- [ ] Enumerate the exact official CPI, QES wage, population, GDP and Crown
+- [~] Enumerate the exact official CPI, QES wage, population, GDP and Crown
   expense series needed for approved derived measures; reject discovery leads
   that lack a stable definition or join. [M-02, M-12; AC-03, AC-10]
   Exact national resident-population table, all-age selector, stock/mean
@@ -109,6 +109,11 @@ repository validation command. External gates block only their affected task.
   open; see `context-gold-gdp-vintages-20261002.md`;
   CPI, QES wage, Treasury GDP and Crown expense joins remain subject to their
   own source-specific review.
+  Stats NZ's June 2026 labour-market summary and QES series mapping now support
+  a not-seasonally-adjusted disposition for QEMQ.SASZ9A; the ISO currency and
+  analytical join remain unresolved. See
+  `qes-methodology-rights-review-20261002.md` and
+  `price-wage-context.validation.json`.
 - [x] Evaluate published aggregate Health Survey indicators as a non-blocking
   Should item; include only if a documented analytical question, stable
   time/geography contract and public rights evidence exist. [S-05; AC-10]
