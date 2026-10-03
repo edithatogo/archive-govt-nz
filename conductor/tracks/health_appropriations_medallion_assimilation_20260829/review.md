@@ -1354,3 +1354,16 @@ rights are not legally evaluated; no currency or cross-source comparability is
 claimed; summary and other editions remain open; no canonical Gold or
 publication is produced. Focused tests and Ruff pass; the full repository gate
 is pending.
+
+## 2026-10-03 — Vote Health 2002/03 overview headlines self-review
+
+The added overview operation binds extraction to the same exact 44-page source
+hash as the 2002/03 detail and revenue profiles. It requires all seven reviewed
+phrases exactly once on pages 2–3, emits decimal `$ million` values with a null
+currency code, and preserves raw tokens, source phrases, and page/field
+lineage. It does not infer an earlier total or normalize surrounding
+components. Targeted tests cover the expected values, phrase drift and
+ambiguous duplicates; source-operation dispatch remains allowlisted and its
+receipt schema validates the output package. Rights are still not legally
+evaluated, other page content remains preserved-only, and no Gold or
+publication claim follows. Full validation is pending.

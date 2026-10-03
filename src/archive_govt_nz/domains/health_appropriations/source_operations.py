@@ -20,6 +20,7 @@ from archive_govt_nz.domains.health_appropriations import (
     population_annual_silver,
     qes,
     vote_health,
+    vote_health_estimates_summary,
     vote_health_revenue,
 )
 from archive_govt_nz.domains.health_appropriations.workbook_common import source_context
@@ -142,6 +143,12 @@ PROFILES = MappingProxyType(
             "vote_health_estimates_revenue_facts.parquet",
             "page_dispositions.parquet",
         ),
+        vote_health_estimates_summary.PROFILE: (
+            vote_health_estimates_summary.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
     }
 )
 _REVENUE_VINTAGES = {
@@ -166,6 +173,12 @@ _VOTE_HEALTH_REVENUE_PROFILES = {
     vote_health_revenue.ESTIMATES_2002_03_PROFILE: (
         vote_health_revenue.ESTIMATES_2002_03_VINTAGE,
         vote_health_revenue.ESTIMATES_2002_03_SHA256,
+    ),
+}
+_VOTE_HEALTH_OVERVIEW_PROFILES = {
+    vote_health_estimates_summary.PROFILE: (
+        vote_health_estimates_summary.VINTAGE,
+        vote_health_estimates_summary.SOURCE_SHA256,
     ),
 }
 _COMMON = {
@@ -341,6 +354,15 @@ def _validate(request: SourceRequest, *, dry_run: bool) -> None:
             or request.expected_sha256 != expected_source_sha256
         ):
             raise ValueError(_INVALID_SOURCE_OPERATION)
+    if request.profile in _VOTE_HEALTH_OVERVIEW_PROFILES:
+        expected_vintage, expected_source_sha256 = _VOTE_HEALTH_OVERVIEW_PROFILES[
+            request.profile
+        ]
+        if (
+            request.source_vintage != expected_vintage
+            or request.expected_sha256 != expected_source_sha256
+        ):
+            raise ValueError(_INVALID_SOURCE_OPERATION)
 
 
 def _invoke(  # noqa: C901, PLR0911 - explicit allowlisted profile dispatch
@@ -365,6 +387,11 @@ def _invoke(  # noqa: C901, PLR0911 - explicit allowlisted profile dispatch
         )
     if request.profile == vote_health_revenue.ESTIMATES_2002_03_PROFILE:
         return vote_health_revenue.normalize_vote_health_estimates_revenue_2002_03(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_estimates_summary.PROFILE:
+        normalizer = vote_health_estimates_summary.normalize_vote_health_estimates_overview_2002_03  # noqa: E501
+        return normalizer(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
     if request.profile == "population-annual-mean-context/v1":

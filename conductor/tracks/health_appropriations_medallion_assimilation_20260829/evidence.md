@@ -738,3 +738,14 @@ cross-source comparability. The required full harness passed 7,300 tests with
 10 skipped and 98.10% coverage against the 80% floor. Schema, parity, mutation,
 supply-chain and automatic Conductor phase review passed; hosted PR checks
 remain pending.
+
+## Vote Health 2002/03 overview headlines — 2026-10-03
+
+Machine receipt: `vote-health-estimates-overview-2002-03-20261003.json`. The
+source-pinned operation extracts seven named overview headlines from pages 2–3
+of the 44-page Estimates PDF: Vote total 8,645.493, increase 940.846,
+departmental total 166.917, non-departmental total 8,432.327, other services
+26.398, other expenses 19.851, and Crown revenue 292.005 (all `$ million`).
+The profile keeps source token and phrase lineage, leaves currency code null,
+and does not derive a prior-year total. Rights are unevaluated and all other
+page content remains outside this bounded normalization.

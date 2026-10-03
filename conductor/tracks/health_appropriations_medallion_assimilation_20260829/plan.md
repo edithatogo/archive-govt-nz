@@ -622,8 +622,10 @@ integrated parent head.
   expenditure editions and most Vote Health Estimates remain incomplete. One
   exact 2002/03 Treasury Estimates PDF has a Part B1 detail profile with 27
   facts and an edition-specific Part F profile with 16 revenue facts,
-  preserving the 2001/02 and 2002/03 column meanings. The narrative summary,
-  surrounding pages, rights and comparability remain unresolved, so this parent
+  preserving the 2001/02 and 2002/03 column meanings. The seven named overview
+  headlines on pages 2–3 now have a separate source-pinned Silver profile;
+  surrounding prose, other editions, rights and comparability remain
+  unresolved, so this parent
   task remains open.
   On 2026-10-03, the exact 2002/03 detail package rebuilt twice from its pinned
   Bronze object and matched all retained Silver outputs. The eligible captured
@@ -643,6 +645,10 @@ integrated parent head.
   matches the Silver package by ID and complete fields. Rights remain
   unevaluated and output remains local-only. See
   `vote-health-revenue-2002-03-20261003.md` and its machine receipt.
+  The 2002/03 overview operation emits seven page-2/3 headline facts with
+  source phrases, raw tokens, units and lineage; all other page content remains
+  preserved-only. See `vote-health-estimates-overview-2002-03-20261003.md` and
+  its machine receipt.
 - [x] Promote the two retained HAIR2024 Ministry published-indicator profiles
   into source-separated canonical Gold with source-coordinate lineage and
   discrete plots. Published real/nominal labels are preserved, while units,

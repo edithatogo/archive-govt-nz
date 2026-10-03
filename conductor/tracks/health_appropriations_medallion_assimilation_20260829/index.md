@@ -57,6 +57,8 @@ every planned record set, measure or operational workflow.
 - [Budget revenue workbook dispatch adapter validation](./budget-revenue-adapter.validation.json)
 - [Vote Health 2002/03 Part F revenue recovery](./vote-health-revenue-2002-03-20261003.md)
 - [Vote Health 2002/03 Part F machine receipt](./vote-health-revenue-2002-03-20261003.json)
+- [Vote Health 2002/03 overview headlines](./vote-health-estimates-overview-2002-03-20261003.md)
+- [Vote Health 2002/03 overview machine receipt](./vote-health-estimates-overview-2002-03-20261003.json)
 - [Budget source-literal dimensions and unresolved mapping validation](./budget-source-dimensions.validation.json)
 - [Context-source Bronze adapters](./context-adapters.md)
 - [Context-source adapter validation](./context-adapters.validation.json)
