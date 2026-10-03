@@ -185,6 +185,12 @@ PROFILES = MappingProxyType(
             "vote_health_overview_facts.parquet",
             "page_dispositions.parquet",
         ),
+        vote_health_estimates_summary.PROFILE_2010_11: (
+            vote_health_estimates_summary.TRANSFORMATION_2010_11,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
     }
 )
 _REVENUE_VINTAGES = {
@@ -240,6 +246,10 @@ _VOTE_HEALTH_OVERVIEW_PROFILES = {
         vote_health_estimates_summary.VINTAGE_2009_10,
         vote_health_estimates_summary.SOURCE_SHA256_2009_10,
     ),
+    vote_health_estimates_summary.PROFILE_2010_11: (
+        vote_health_estimates_summary.VINTAGE_2010_11,
+        vote_health_estimates_summary.SOURCE_SHA256_2010_11,
+    ),
 }
 _VOTE_HEALTH_OVERVIEW_NORMALIZERS = {
     vote_health_estimates_summary.PROFILE: (
@@ -262,6 +272,9 @@ _VOTE_HEALTH_OVERVIEW_NORMALIZERS = {
     ),
     vote_health_estimates_summary.PROFILE_2009_10: (
         vote_health_estimates_summary.normalize_vote_health_estimates_overview_2009_10
+    ),
+    vote_health_estimates_summary.PROFILE_2010_11: (
+        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2010_11
     ),
 }
 _DUPLICATE_PROFILE = "duplicate_source_operation_profile"

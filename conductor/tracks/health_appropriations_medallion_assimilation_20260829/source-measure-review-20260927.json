@@ -62,7 +62,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/index.md",
-      "sha256": "4bdd2b36a3f8a8e6b397769a629bcc2b84a0992701c1e7245cc4575ee3749ed4"
+      "sha256": "36c01cca02440da6b99b94c5754393366f47765292cae7cdd440c0a5a243e5f6"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/moh-indicators.md",
@@ -119,10 +119,10 @@
   "series": {
     "core_crown": {
       "analytical_status": "BEFU-2026 and HYEFU-2025 core Crown source-faithful canonical fiscal-context projections exist; cache freshness, currency, financial-year boundaries, rights, and historical/forecast comparability remain unqualified",
-      "period_basis": "Fiscal Time Series June years with accounting basis transitions: old-GAAP 1994–1996, IFRS 1997–2004, PBE Standards 2005–2025. Forecast workbook formula caches and explicit financial-year metadata are not qualified; keep each release vintage and Actual/Forecast status separate.",
+      "period_basis": "Fiscal Time Series June years with accounting basis transitions: old-GAAP 1994\u20131996, IFRS 1997\u20132004, PBE Standards 2005\u20132025. Forecast workbook formula caches and explicit financial-year metadata are not qualified; keep each release vintage and Actual/Forecast status separate.",
       "rights": "publisher_defaults_observed_exceptions_unadjudicated",
       "series_id": "Treasury Fiscal Time Series Spending!D4 / Core Crown Expenses; BEFU Core Crown Expense Tables!D26; HYEFU Core Crown Expense Tables!D25",
-      "vintage_or_range": "Treasury Fiscal Time Series 1994–2025; BEFU 2026 and HYEFU 2025 tables have 2021–2030 cells, labelled Actual 2021–2025 and Forecast 2026–2030"
+      "vintage_or_range": "Treasury Fiscal Time Series 1994\u20132025; BEFU 2026 and HYEFU 2025 tables have 2021\u20132030 cells, labelled Actual 2021\u20132025 and Forecast 2026\u20132030"
     },
     "cpi": {
       "analytical_status": "captured and exact source profile exists; no deflator or annual mean approved",
@@ -135,47 +135,47 @@
       "analytical_status": "March and June vintages separately captured and source-profiled; GDP-share denominator remains blocked",
       "period_basis": "Current-price quarterly flow; fiscal annual share requires four explicitly matching quarterly flows or a period-aligned Treasury June-year total. Currency code, aggregation, vintage splice and projection remain unqualified.",
       "rights": "publisher_default_observed_unadjudicated",
-      "series_id": "Stats NZ GDP expenditure measure — Table 1 reference SG03AB01GE00S900, workbook prefix SNEQ",
-      "vintage_or_range": "March 2026 vintage: 60 quarters 2011Q2–2026Q1. Official GDP release for June 2026 exists; its captured successor is Table 1 C27:BK27, 61 quarters 2011Q2–2026Q2, preserved separately with no implicit splice."
+      "series_id": "Stats NZ GDP expenditure measure \u2014 Table 1 reference SG03AB01GE00S900, workbook prefix SNEQ",
+      "vintage_or_range": "March 2026 vintage: 60 quarters 2011Q2\u20132026Q1. Official GDP release for June 2026 exists; its captured successor is Table 1 C27:BK27, 61 quarters 2011Q2\u20132026Q2, preserved separately with no implicit splice."
     },
     "pharmac": {
       "analytical_status": "captured table characterized; preserve caption/table discrepancy and structural break; no homogeneous longitudinal measure asserted",
-      "period_basis": "Financial years explicitly 1 July–30 June. Regime/holding boundary at 1 July 2022 from DHB-coordinated CPB to National Pharmaceutical Purchasing Appropriation; budget is not actual spending or health outcome.",
+      "period_basis": "Financial years explicitly 1 July\u201330 June. Regime/holding boundary at 1 July 2022 from DHB-coordinated CPB to National Pharmaceutical Purchasing Appropriation; budget is not actual spending or health outcome.",
       "rights": "pharmac_default_observed_unadjudicated",
-      "series_id": "Pharmac Combined Pharmaceutical Budget table — published medicine-budget amounts and changes",
-      "vintage_or_range": "Captured page last updated 2026-08-07; table covers 2013/14–2026/27; caption ends 2025/26"
+      "series_id": "Pharmac Combined Pharmaceutical Budget table \u2014 published medicine-budget amounts and changes",
+      "vintage_or_range": "Captured page last updated 2026-08-07; table covers 2013/14\u20132026/27; caption ends 2025/26"
     },
     "population": {
       "analytical_status": "numeric export fixed and Silver context-only; no per-capita measure admitted",
       "period_basis": "Mean year ended annual estimate aligns in concept with annual flow denominators at the same June-year endpoint; selected denominator and approval remain open. This is not an as-at stock.",
       "rights": "publisher_default_observed_unadjudicated",
-      "series_id": "DPE056AA — Estimated Resident Population by Age and Sex (1991+) (Annual-Jun)",
+      "series_id": "DPE056AA \u2014 Estimated Resident Population by Age and Sex (1991+) (Annual-Jun)",
       "source_export": "https://infoshare.stats.govt.nz/ExportDirect.aspx",
       "source_export_acquired_at": "2026-09-25T09:37:50Z",
       "source_export_bytes": 1676,
       "source_sha256": "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9",
-      "vintage_or_range": "Stats NZ release 2026-08-18; mean year ended, Total, Total All Ages; 1991–2026; 36 rows, one unavailable '..' and two provisional 'P' statuses"
+      "vintage_or_range": "Stats NZ release 2026-08-18; mean year ended, Total, Total All Ages; 1991\u20132026; 36 rows, one unavailable '..' and two provisional 'P' statuses"
     },
     "total_crown": {
       "analytical_status": "exact source cells identified; no canonical expense adapter or comparability approval",
       "period_basis": "June years; accounting/consolidation and restatement footnotes apply. Keep distinct from Core Crown Expenses and Financial Net Expenditure; no year-only join.",
       "rights": "publisher_defaults_observed_exceptions_unadjudicated",
       "series_id": "Treasury Fiscal Time Series Spending!E4 / Total Crown Expenses",
-      "vintage_or_range": "Treasury Fiscal Time Series 1997–2025; 29 annual cells"
+      "vintage_or_range": "Treasury Fiscal Time Series 1997\u20132025; 29 annual cells"
     },
     "vote_health": {
       "analytical_status": "published Ministry indicators remain distinct from independently calculated health spending; Treasury locator census is complete to the index but repository capture remains incomplete",
       "period_basis": "HAIR figure labels exclude capital, COVID-19 and DSS; precise dates, currency/scale, real-price base, deflator and denominator methods remain unspecified in the retained originals. Estimates/Supplementary Editions are distinct; use actual annual year endpoints and preserve vintage.",
       "rights": "publisher_defaults_observed_exceptions_unadjudicated",
-      "series_id": "Ministry HAIR2024 Figures 27–28; Treasury Vote Health Estimates, Supplementary Estimates and supporting information",
-      "vintage_or_range": "MoH nominal/real and per-capita indicators cover 2005/06–2024/25. Treasury Historical Vote Information index covers Vote Health chapters for Budget years 1998–2026. Repository capture register contains 58 PDFs; 10 Estimates years (2008–2013, 2018–2021) and Supplementary years 2012/13 and 2025/26 are located but not in that captured register."
+      "series_id": "Ministry HAIR2024 Figures 27\u201328; Treasury Vote Health Estimates, Supplementary Estimates and supporting information",
+      "vintage_or_range": "MoH nominal/real and per-capita indicators cover 2005/06\u20132024/25. Treasury Historical Vote Information index covers Vote Health chapters for Budget years 1998\u20132026. Repository capture register contains 58 PDFs; 10 Estimates years (2008\u20132013, 2018\u20132021) and Supplementary years 2012/13 and 2025/26 are located but not in that captured register."
     },
     "wages": {
       "analytical_status": "captured and exact source profile exists; QES methodology confirms composition effects, so this is not a constant-quality wage index; currency, adjustment, annual weighting, rights eligibility, and deflator selection remain unqualified",
-      "period_basis": "Stats NZ defines each QES quarter by the pay week ending on or before the 20th of its middle month; quarter-label renaming in 2003 did not change that reference week. Selected 2024Q2–2026Q2 observations follow the March-2021 KAU redesign and March-2023 sample rotation. QES is a sampled business measure, weighted by employee counts and subject to imputation; industry and occupation composition affect average earnings. The quarterly value is not a full-quarter average.",
+      "period_basis": "Stats NZ defines each QES quarter by the pay week ending on or before the 20th of its middle month; quarter-label renaming in 2003 did not change that reference week. Selected 2024Q2\u20132026Q2 observations follow the March-2021 KAU redesign and March-2023 sample rotation. QES is a sampled business measure, weighted by employee counts and subject to imputation; industry and occupation composition affect average earnings. The quarterly value is not a full-quarter average.",
       "rights": "publisher_default_observed_unadjudicated",
       "series_id": "QEMQ.SASZ9A",
-      "vintage_or_range": "Stats NZ Quarterly Employment Survey June 2026 workbook Table 8; total sector ordinary-time average hourly earnings; nine quarter levels 2024Q2–2026Q2; source unit '$' per paid hour"
+      "vintage_or_range": "Stats NZ Quarterly Employment Survey June 2026 workbook Table 8; total sector ordinary-time average hourly earnings; nine quarter levels 2024Q2\u20132026Q2; source unit '$' per paid hour"
     }
   },
   "series_count": 8,

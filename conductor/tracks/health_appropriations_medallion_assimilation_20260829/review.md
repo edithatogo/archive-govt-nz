@@ -1498,3 +1498,23 @@ page 2 is partially normalized and pages 1, 3–8 are preserved-unreviewed. The
 receipt, test, and repeat-build hashes were refreshed. The full required harness
 passed (7,363 passed, 10 skipped, 98.08% coverage against 80%); schema, parity,
 mutation, supply-chain, secret-scan, SBOM and Phase 7 checks passed.
+
+
+2010/11 Vote Health Estimates increment: Treasury identifies the signed,
+superseded Estimates as issued 20 May 2010 and its publication as CC BY 4.0.
+The exact 55,369-byte PDF was captured and independently reconciled against its
+WARC and Bronze fixity. The edition-pinned adapter extracts 18 statements on
+pages 2–3; each source page receives an explicit disposition (2–3 partially
+normalized; pages 1 and 4–9 preserved-unreviewed). The extracted amounts and
+qualifiers remain source-led; no sums are recomputed. Two repeated CLI builds
+match byte for byte. pypdf's Xref correction warning is retained. Rights on the
+derivative are unevaluated, publication is not approved, and seven pages remain
+unreviewed.
+
+
+2010/11 Vote Health Estimates assurance is complete for this bounded overview
+increment: `./scripts/validate.sh` passed with 7,366 tests passed, 10 skipped,
+and 98.08% branch coverage against the 80% floor. Schema (53/43), parity 9/9,
+configured mutation, supply-chain, secret scan, and strict 113-component SBOM
+checks passed. Automatic Phase 7 review passed; receipt SHA-256 is
+`a5853c57d094b40f20dd59ab7a03576c25ab54af8102bb5ed0c1e4f1c814bbf8`.

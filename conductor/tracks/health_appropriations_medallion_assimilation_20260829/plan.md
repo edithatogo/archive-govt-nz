@@ -1305,3 +1305,12 @@ integrated parent head.
 | Collection mutation approval | adding/removing collection items | uploaded dataset verification if independently authorized |
 | Donor archival/destructive authority | donor retirement only | all assimilation work; retirement remains out of scope |
 | Zenodo release authority | deposition/DOI only | all track work; Zenodo remains out of scope |
+
+
+- [x] Add a source-hash-pinned 2010/11 Vote Health Estimates overview adapter,
+  operation schema and tests. Capture and reconcile the official nine-page PDF;
+  normalize 18 phrase-anchored monetary statements across overview pages 2–3
+  and disposition all nine source pages. Builds are local validation evidence;
+  the remaining seven pages are unreviewed and no whole-edition, comparison,
+  Gold or publication claim is made. [M-01, M-03, M-07, M-18; AC-01, AC-04,
+  AC-05, AC-16]
