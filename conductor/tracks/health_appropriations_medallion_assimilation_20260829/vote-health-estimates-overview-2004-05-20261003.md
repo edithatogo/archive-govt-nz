@@ -19,3 +19,6 @@ Automatic Conductor `phase_7_gates` review passed formatting, lint, schema,
 is `phase_7_gates-review-receipt-20261003-vote-health-overview-2004-05.json`
 with receipt SHA-256
 `e561ebcf7bff079b7ba55c7b077c888eadd87b5655d8c0e26186c811e200eeba`.
+The extraction receipt, `vote-health-estimates-overview-2004-05-20261003.json`,
+records the eight fact values, page dispositions, source locator and hash, and
+all three output-file digests.

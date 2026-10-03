@@ -762,3 +762,5 @@ phrases, raw tokens, period labels and field lineage are retained. No totals
 are recomputed. Rights and comparability remain unevaluated; all other PDF
 content remains outside this bounded normalization. Captured PDF SHA-256 is
 `6dac0aaa3fd181fffacf30cffa829b0f189e8b68ebfdbeb0dd5ef88736af96a2`.
+The receipt records the eight facts, two page dispositions and hashes for all
+three local Parquet outputs.
