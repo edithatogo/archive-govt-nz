@@ -75,6 +75,20 @@
       "response_sha256": "446b6fa8e0e2238eccac82207cf83d6dd4091bdaa8ba29b19e308179d9e762b9"
     }
   ],
+  "official_semantics_follow_up": {
+    "observed_at": "2026-10-04",
+    "family": "qes",
+    "series": "QEMQ.SASZ9A",
+    "adjustment": "not_seasonally_adjusted",
+    "series_label_evidence": "Retained June 2026 QES workbook Table 8 carries QEMQ and SASZ9A alongside the selected ordinary-time hourly earnings measure",
+    "adjustment_evidence": "Stats NZ June 2026 labour-market summary states average ordinary time hourly earnings are not seasonally adjusted",
+    "series_label_evidence_file": "official source workbook already pinned by source_sha256 above",
+    "adjustment_url": "https://www.stats.govt.nz/assets/Uploads/Labour-market-statistics/Labour-market-statistics-June-2026-quarter/Download-data/labour-market-statistics-june-2026-quarter-summary-diagrams.pdf",
+    "iso_currency_code": null,
+    "analytical_selection": "not_selected",
+    "annual_weighting": "not_selected",
+    "rights": "not_evaluated"
+  },
   "supplemental_observation_date": "2026-09-07",
   "supplemental_evidence": "historical_author_observation_unretained",
   "independent_metadata_replay": false,
@@ -87,8 +101,7 @@
   "remaining": {
     "capture_owner": "retain_exact_metadata_response_and_HTTP_context",
     "source_semantics": [
-      "QES_ISO_currency",
-      "QES_adjustment"
+      "QES_ISO_currency"
     ],
     "analytical_qualification": [
       "deflator_selection",
@@ -98,6 +111,27 @@
   },
   "review": "passed_scoped_self_review",
   "full_harness": "not_run_parent_owned",
+  "integrated_follow_up_assurance": {
+    "observed_at": "2026-10-04",
+    "focused_tests": "65_passed",
+    "repository_harness": {
+      "command": "./scripts/validate.sh",
+      "status": "passed",
+      "passed": 7360,
+      "skipped": 10,
+      "branch_coverage_percent": 98.08,
+      "coverage_floor_percent": 80,
+      "schemas": "53_schemas_43_representative_documents",
+      "parity": "9_of_9",
+      "sbom_components": 113
+    },
+    "phase_7_gates": {
+      "status": "passed",
+      "receipt": "phase_7_gates-review-receipt-20261004-qes-adjustment.json",
+      "sha256": "1d9873173e8c6973fbad2d7d79ae130d7d7c930bcc4f5d8741744fb598582ac0"
+    },
+    "coverage_tests_added_for_threshold": false
+  },
   "remote_mutations": false,
   "shared_files_edited": false
 }

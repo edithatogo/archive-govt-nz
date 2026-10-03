@@ -4394,3 +4394,22 @@ The cumulative source census/report now covers 143 resources and 11 context
 vintages; the 2026-10-03 PDF baseline covers 59 captured PDFs (56 structural
 baselines, 3 unavailable). Rights eligibility does not itself grant publication
 approval; only page 2 is normalized and no Gold/publication claim is made.
+
+2026-10-04 — QES adjustment source disposition
+
+The exact June 2026 QES source remains `QEMQ.SASZ9A`, Total All Sectors, Both
+Sexes, Ordinary Time Hourly. The retained June 2026 workbook's Table 8 maps `QEMQ` / `SASZ9A` to the
+ordinary-time hourly earnings measure; the June 2026 labour-market summary
+states that this measure is not seasonally adjusted. The supplemental
+definition and source-measure status now record this indicator-level
+adjustment. The displayed `$` still does not prove an ISO currency code, so
+currency remains unknown; rights are not adjudicated, and deflator choice,
+annual weighting, and fiscal-period joins remain unselected. The retained
+source bytes and native adapter receipt are unchanged. Focused QES/source-review
+tests passed (65 tests). Required `./scripts/validate.sh` passed on the exact
+tree: 7,360 passed, 10 skipped, 98.08% branch-aware coverage against the 80%
+floor; 53 schemas/43 representative documents, 9/9 parity, configured mutation,
+hygiene, 327.37 MB/s CAS benchmark, dependency/license/secret scans and strict
+113-component SBOM passed. Automatic `phase_7_gates` review passed; retained
+receipt `phase_7_gates-review-receipt-20261004-qes-adjustment.json` has
+SHA-256 `1d9873173e8c6973fbad2d7d79ae130d7d7c930bcc4f5d8741744fb598582ac0`.
