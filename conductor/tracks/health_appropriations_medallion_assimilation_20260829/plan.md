@@ -659,6 +659,11 @@ integrated parent head.
   evidence and lineage, with no inferred sums. Remaining PDF content, rights,
   and edition coverage stay open. See
   `vote-health-estimates-overview-2005-06-20261003.md` and its receipt.
+  The 2006/07 edition now has a distinct source-pinned profile for eight
+  headlines on pages 2–3 of its 41-page PDF, preserving source phrases, tokens,
+  period labels and lineage without recomputing totals. Rights and remaining
+  source content stay open. See
+  `vote-health-estimates-overview-2006-07-20261003.md` and its receipt.
 - [x] Promote the two retained HAIR2024 Ministry published-indicator profiles
   into source-separated canonical Gold with source-coordinate lineage and
   discrete plots. Published real/nominal labels are preserved, while units,

@@ -1416,3 +1416,16 @@ passed 7,351 tests with 10 skips and 98.08% branch-aware coverage against the
 gates passed. Automatic `phase_7_gates` review passed; its immutable receipt is
 `phase_7_gates-review-receipt-20261003-vote-health-overview-2005-06.json`
 with SHA-256 `b3507de62fca41ec3da8c2b4935013ca160ac69edcc28453930e168fc91c537e`.
+
+
+## 2026-10-03 — Vote Health 2006/07 overview headlines self-review
+
+The new profile binds extraction to the exact 41-page captured Treasury PDF
+hash. It requires all eight observed monetary phrases exactly once across
+pages 2–3, retains decimal values, source phrases/tokens, period labels and
+page/field lineage, and makes no inferred sums. Captured-source integration
+readback confirmed all eight values and page dispositions. The operation
+registry and committed JSON schema include this profile and transformation.
+Rights remain unevaluated, the extraction is local-only, and the rest of the
+PDF, other editions and comparability are outside the claim. Focused tests pass;
+the required full harness passed 7,355 tests with 10 skips and 98.08% branch-aware coverage against the 80% floor. Schema, parity, configured mutation, hygiene, supply-chain and SBOM gates passed; automatic phase review passed with receipt SHA-256 `58789359490b10dd969e9792b05ff0aa4021d7a2c5beb116d12be72e081a4a93`.

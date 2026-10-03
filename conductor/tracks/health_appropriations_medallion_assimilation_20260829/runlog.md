@@ -4335,3 +4335,15 @@ Automatic `phase_7_gates` review passed. Its immutable receipt is
 with SHA-256 `b3507de62fca41ec3da8c2b4935013ca160ac69edcc28453930e168fc91c537e`. Rights, all other PDF content, other
 editions and comparability remain unresolved; there is no Gold or publication
 claim.
+
+
+2026-10-03 — Vote Health 2006/07 overview headlines
+
+Added a source-pinned operation for eight reviewed monetary headlines on PDF
+pages 2–3. The distinct edition profile records exact source phrases, tokens,
+period labels and page/field lineage, and does not recompute totals. A
+captured-source integration test confirmed all eight values and page
+dispositions; focused parser/dispatch tests passed (498 passed, 10 skipped).
+Output digests were replayed into the machine receipt. Required `./scripts/validate.sh` passed: 7,355 passed, 10 skipped, and 98.08% branch-aware coverage against the 80% floor; all schema, parity, configured mutation, hygiene, supply-chain and SBOM checks passed. Automatic Conductor `phase_7_gates` review passed; receipt SHA-256 is `58789359490b10dd969e9792b05ff0aa4021d7a2c5beb116d12be72e081a4a93`. Rights, other PDF content,
+other editions and comparability remain unresolved; no Gold or publication
+claim is made.
