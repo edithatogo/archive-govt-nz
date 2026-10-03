@@ -6,9 +6,9 @@ calendars, or establish that every possible source vintage was discovered.
 
 ## Resource census
 
-- Resources: 142
-- Dispositions: `captured` 74, `out_of_scope` 68
-- Capture reconciliation: `capture_manifest_and_bronze_objects_verified` (74 Bronze objects verified)
+- Resources: 143
+- Dispositions: `captured` 75, `out_of_scope` 68
+- Capture reconciliation: `capture_manifest_and_bronze_objects_verified` (75 Bronze objects verified)
 
 | Source ID | Family | Inventory state | Recorded vintage/title | Rights state | Capture rights result | Temporal state | Layout state |
 |---|---|---|---|---|---|---|---|
@@ -102,6 +102,7 @@ calendars, or establish that every possible source vintage was discovered.
 | treasury-vote-health-pdf-108f3025b5ec5f8c | treasury_vote_health_document | captured | Vote Health - Health Sector - The Estimates of Appropriations 2024/25 | policy_reference_recorded_not_evaluated | eligible | not_assessed_source_calendar_not_in_census | structural_pdf_baseline_recorded_text_and_tables_unassessed |
 | treasury-vote-health-pdf-10b7f8eb82fd802f | treasury_vote_health_document | captured | Vote Health - The Supplementary Estimates of Appropriations 2015/16 | policy_reference_recorded_not_evaluated | eligible | not_assessed_source_calendar_not_in_census | structural_pdf_baseline_recorded_text_and_tables_unassessed |
 | treasury-vote-health-pdf-1822d21d12bf27b6 | treasury_vote_health_document | captured | Vote Health - The Supplementary Estimates of Appropriations 2024/25 | policy_reference_recorded_not_evaluated | eligible | not_assessed_source_calendar_not_in_census | structural_pdf_baseline_recorded_text_and_tables_unassessed |
+| treasury-vote-health-pdf-2008-09-estimates | treasury_vote_health_document | captured | Vote Health - The Estimates of Appropriations 2008/09 | policy_reference_recorded_not_evaluated | eligible | not_assessed_source_calendar_not_in_census | structural_pdf_baseline_recorded_text_and_tables_unassessed |
 | treasury-vote-health-pdf-204e7446a15e64f1 | treasury_vote_health_document | captured | Vote Health - The Supplementary Estimates of Appropriations 2000/01 | policy_reference_recorded_not_evaluated | eligible | not_assessed_source_calendar_not_in_census | structural_pdf_baseline_recorded_text_and_tables_unassessed |
 | treasury-vote-health-pdf-28bd7aee2320eb4d | treasury_vote_health_document | captured | Vote Health - The Estimates of Appropriations 2005/06 | policy_reference_recorded_not_evaluated | eligible | not_assessed_source_calendar_not_in_census | structural_pdf_baseline_recorded_text_and_tables_unassessed |
 | treasury-vote-health-pdf-2fc2f6b518bccd82 | treasury_vote_health_document | captured | Vote Health - The Supplementary Estimates of Appropriations 2008/09 | policy_reference_recorded_not_evaluated | eligible | not_assessed_source_calendar_not_in_census | structural_pdf_baseline_recorded_text_and_tables_unassessed |

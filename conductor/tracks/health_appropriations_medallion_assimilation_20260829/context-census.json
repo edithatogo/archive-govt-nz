@@ -75,7 +75,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
-      "sha256": "edc9c7a2635112bb8b2ba763bf7f4bd8c507ac2d5c879bacce52d5a03f09a294"
+      "sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-schema-gaps.md",

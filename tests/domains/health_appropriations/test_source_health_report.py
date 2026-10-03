@@ -46,14 +46,14 @@ def test_whole_census_report_has_a_state_for_every_resource_and_series_vintage()
     report = _real_report()
 
     assert report["schema_version"] == "archive-govt-nz.health-source-health-report/v1"
-    assert report["summary"]["resource_count"] == 142
+    assert report["summary"]["resource_count"] == 143
     assert report["summary"]["resource_dispositions"] == {
-        "captured": 74,
+        "captured": 75,
         "out_of_scope": 68,
     }
     assert report["summary"]["context_series_vintage_count"] == 11
     resources = report["resources"]
-    assert len({row["entity_id"] for row in resources}) == 142
+    assert len({row["entity_id"] for row in resources}) == 143
     assert all(row["inventory_state"] for row in resources)
     assert all(
         row["temporal_coverage_state"].startswith("not_assessed") for row in resources
@@ -68,8 +68,8 @@ def test_whole_census_report_has_a_state_for_every_resource_and_series_vintage()
     assert all(row["rights"]["state"] == "not_evaluated" for row in contexts)
     assert report["capture_reconciliation"] == {
         "state": "recorded_not_replayed_manifest_unavailable",
-        "matched_resource_count_recorded": 74,
-        "manifest_name_recorded": "official-capture-2026-09-30-health-refresh.json",
+        "matched_resource_count_recorded": 75,
+        "manifest_name_recorded": "official-capture-2026-10-03-health-complete.json",
     }
 
 

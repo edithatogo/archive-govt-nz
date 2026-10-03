@@ -109,6 +109,34 @@ def _family(report: _Review, name: str) -> dict:
     return value
 
 
+def _vote_edition_years(records: list[dict]) -> tuple[set[int], set[int]]:
+    """Select appropriation editions, excluding supporting-information volumes."""
+    estimates: set[int] = set()
+    supplementary: set[int] = set()
+    for row in records:
+        title = row.get("title", "")
+        if (
+            row.get("family") != "treasury_vote_health_document"
+            or row.get("disposition") != "captured"
+            or "Estimates of Appropriations" not in title
+            or any(
+                label in title
+                for label in (
+                    "Performance Information",
+                    "Information Supporting",
+                    "Supporting Information",
+                )
+            )
+        ):
+            continue
+        year = _fiscal_year(title)
+        if "Supplementary" in title:
+            supplementary.add(year)
+        else:
+            estimates.add(year)
+    return estimates, supplementary
+
+
 def _check_vote_history(report: _Review, records: list[dict]) -> None:
     family = _family(report, "vote_health")
     docs = [
@@ -117,20 +145,7 @@ def _check_vote_history(report: _Review, records: list[dict]) -> None:
         if row.get("family") == "treasury_vote_health_document"
         and row.get("disposition") == "captured"
     ]
-    estimates: set[int] = set()
-    supplementary: set[int] = set()
-    for row in docs:
-        title = row.get("title", "")
-        if "Estimates of Appropriations" not in title:
-            continue
-        year = _fiscal_year(title)
-        if "Supplementary" in title:
-            supplementary.add(year)
-        elif (
-            "Performance Information" not in title
-            and "Information Supporting" not in title
-        ):
-            estimates.add(year)
+    estimates, supplementary = _vote_edition_years(records)
     if len(docs) != family["captured_documents"]:
         msg = "Vote Health captured count mismatch"
         raise ValueError(msg)

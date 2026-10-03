@@ -4362,3 +4362,34 @@ passed. Automatic `phase_7_gates` review passed; receipt SHA-256 is
 `3486688fca2a3f1d99894abd9db8364fd198e0090dfccd91d62134c9c807f9d2`. Rights
 remain unevaluated; only the eight overview headlines are normalized, and no
 Gold or publication claim is made.
+
+The automatic `phase_7_gates` and full harness evidence will be appended after
+the required validation runs for this change.
+
+Required `./scripts/validate.sh` passed on 2026-10-03: 7,360 passed, 10
+skipped, 98.08% branch-aware coverage against the repository's 80% floor;
+53 schemas/43 representative documents, 9/9 parity checks, configured mutation
+gates, hygiene, CAS benchmark, dependency/license/secret scans and the strict
+113-component SBOM passed. Automatic Conductor `phase_7_gates` passed and its
+immutable receipt is `phase_7_gates-review-receipt-20261003-vote-health-overview-2008-09.json`,
+SHA-256 `9b65ea7a0d975f57dbccf145c503ad430cb15c9374cdfa0f27e2b2fee048e964`.
+Only six qualified overview amounts on page 2 are normalized; rights eligibility
+does not imply product publication approval, and the pypdf Xref warning remains
+recorded.
+
+2026-10-03 — Vote Health 2008/09 overview headlines
+
+Captured Treasury's eight-page 2008/09 Estimates PDF and added an edition-pinned
+Silver profile for six page-2 monetary headlines. The source uses rounded whole
+millions qualified as “just over” or “nearly”; each output is explicitly
+approximate, preserves its phrase and token, and makes no exact-total or
+recomputed-total claim. The official capture was HTTP 200, 91,611 bytes, SHA-256
+`2d346a460278fa278eef4fbda3f613d18bc13b486a1f2e21e503a05b5d3f9121`; Treasury
+rights evidence records CC BY 4.0 and required attribution. The captured-source
+parser and dispatch tests pass, and two independent builds produced identical
+facts, lineage and page-disposition bytes. pypdf emitted its non-zero-indexed
+Xref correction warning; this is retained in the receipt as a parser limitation.
+The cumulative source census/report now covers 143 resources and 11 context
+vintages; the 2026-10-03 PDF baseline covers 59 captured PDFs (56 structural
+baselines, 3 unavailable). Rights eligibility does not itself grant publication
+approval; only page 2 is normalized and no Gold/publication claim is made.
