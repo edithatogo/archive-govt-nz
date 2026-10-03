@@ -8,6 +8,7 @@ from pathlib import Path
 
 from archive_govt_nz.domains.health_appropriations.source_health_report import (
     CaptureEvidence,
+    LayoutEvidence,
     build_report,
     render_markdown,
 )
@@ -26,6 +27,7 @@ def main() -> int:
     )
     parser.add_argument("--capture-manifest", type=Path)
     parser.add_argument("--bronze-cas-root", type=Path)
+    parser.add_argument("--pdf-layout-baseline", type=Path)
     parser.add_argument(
         "--json-output", type=Path, default=TRACK / "source-health-report.json"
     )
@@ -46,12 +48,24 @@ def main() -> int:
             manifest_name=args.capture_manifest.name,
             cas_root=args.bronze_cas_root,
         )
+    layout_bytes = (
+        args.pdf_layout_baseline.read_bytes()
+        if args.pdf_layout_baseline is not None
+        else None
+    )
+    recorded_path = args.json_output
+    if not recorded_path.exists():
+        recorded_path = TRACK / "source-health-report.json"
     report = build_report(
         json.loads(source_bytes),
         source_bytes,
         json.loads(context_bytes),
         context_bytes,
         capture_evidence,
+        layout_evidence=LayoutEvidence(json.loads(layout_bytes), layout_bytes)
+        if layout_bytes is not None
+        else None,
+        recorded_report=json.loads(recorded_path.read_bytes()),
     )
     args.json_output.parent.mkdir(parents=True, exist_ok=True)
     args.markdown_output.parent.mkdir(parents=True, exist_ok=True)

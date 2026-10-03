@@ -235,7 +235,8 @@
   "inputs": {
     "capture_manifest_sha256": "2de49f07c877aab196afae572db32bfc2d48fd4340eb17c9a4bfb3bb2cc357e7",
     "context_census_base_commit": "663adf85e8f8839b782d48492e3e961500bd2b17",
-    "context_census_sha256": "41a87c9eb2de438d066b9c02a3e0d9e8e41032d42e650f37cfa205d2da1ff86d",
+    "context_census_sha256": "0c79ea0f73bf25d27ea1ca7ca5bc5deb421a470dcc11c1ee9ade9ebb38856b72",
+    "pdf_layout_baseline_sha256": "1f9eb496f6291347daf9c8546c3fad7c9e7ac977a808e74a6b468c6221608032",
     "source_census_cutoff": "2026-09-30",
     "source_census_observed_at": "2026-09-29T21:28:10.739074Z",
     "source_census_sha256": "edc9c7a2635112bb8b2ba763bf7f4bd8c507ac2d5c879bacce52d5a03f09a294"
@@ -243,7 +244,7 @@
   "limitations": [
     "Resource states and policy references are copied from the pinned censuses; rights are not approved by this report.",
     "Temporal descriptions are source-census text; calendar completeness and cross-source period alignment are not assessed.",
-    "Per-source, per-vintage layout baselines are absent from these census inputs; layout drift is not assessed.",
+    "Structural PDF baselines record page geometry and resources only; text, tables and semantic layout are not assessed. Other source families without a supplied baseline remain unassessed.",
     "Capture-manifest rights classifications are retained workflow evidence, not an independent legal assessment.",
     "This report does not certify discovery, vintage coverage, analytical comparability, or reconciliation completeness."
   ],
@@ -1767,7 +1768,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "5a07182b093c129e4e6ea69bb47679a1ba79ec96b4cdf6196d4590b42c17531f",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -1785,7 +1786,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "deb17095776a3441607a29d17bfe10c2d2c8f186c5ff9b2c3fdef8d0bbe1eb7d",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -1803,7 +1804,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "d00952c47c4e6485b0768575ba295ac4da6002ce4c525b5637287b25e32849b9",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -1821,7 +1822,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "c55082208ebb42923dd56e3e8ac2ae75318b8fd9ee468c52284bbda0b9b43a20",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -1839,7 +1840,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "694aece23fdb2eac82d96e5dc075339f39ba481b12b33a03db2de5596cf2a47d",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -1857,7 +1858,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "5cacffe39f056f092291d8dc0a5ba2e72851b23da1696a63964b726b7a6ebf8b",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -1875,7 +1876,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "19864bad3c28561e065bcbf69df7cb245fe52123aa80d9e3a84ba650815054cb",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -1893,7 +1894,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "9a269a87a0cef8fc998fc1b012ae9fd734fb48b111504bb7a1ca01cdcf97c2b4",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -1911,7 +1912,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "4cb75bd49333e616f1693b478be3f8e98e8a986aed0485993311febe3fb534cf",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -1929,7 +1930,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "1ec8cf9e4c33d027f3ed02593ab3e8c7cab89883d5b286e0cf4aa4b1e947f5a2",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -1947,7 +1948,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "515864508729d71553774d9afe3647b6f61dbe6538ae24516d30f904271cfd99",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -1965,7 +1966,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "3fc0cc6a193c232e9278389f42dbd9003cff03228ac3c83cbfe58452f5711604",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -1983,7 +1984,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_unavailable",
       "object_sha256": "4e2a7b1b9bf2390a38ee23d51b911874cddd608fb252612ab906b219007330d5",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2001,7 +2002,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "fc1cb3f5bc39d5ff7cd2805feaefd3ab1e2c0a3b2157249fb8de9084befce069",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2019,7 +2020,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "5602df94c5944dad0e97dde2ddc73e79bd3126a7739184bd2fb117e6d6765914",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2037,7 +2038,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "fccd1fe0001e12f8238e6c4618328eac2da8d26729f997265b05688ec89a2795",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2055,7 +2056,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "18306b33c7346c984a73a006f68c93ba59ad88c011bc8e877f2bfd87e5e3b7ca",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2073,7 +2074,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "ed7d6b30aa732b5b2b6b5ed85d4e3a530741415c90e3aa8e6753504dc96564b5",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2091,7 +2092,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "c997ffecb631e4dfd0ffd8a1e620585b6b963df11f94164adb2ac02cfa391b2e",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2109,7 +2110,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "40c5c592da96cda884236d1d3dc56e13ca55e83f3b61798343df124ab6ec7e2f",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2127,7 +2128,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "039706f735a3652aa911e4fa7eaf776a6d534271d96e478aad0ce45789351dfb",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2145,7 +2146,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "ebea2a9db0dd1a19b227f0c474d0acb7414505a3874ce4b303bd7ad241262ef1",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2163,7 +2164,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "71b905562f6701923961b47578a638a7fbed3731d5d1840fa55b8955300ce0d9",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2181,7 +2182,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "51283a95a523e1405a6a5634d0c1ed74add62759f6d067f32a8b33a6c9afe5e0",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2199,7 +2200,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "13338e7ef740191c9e576c56575eca56f38c340fda55e3628165ed3668e55ad8",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2217,7 +2218,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "f319471bd62ca7302a9984c95fc28036cf7aa68113e9cd9733e6c6b5ac587b43",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2235,7 +2236,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "b898c6ead5a998ae4d8aafb588a6259f79505b6e711e9a523e7d659340a916f4",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2253,7 +2254,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "9907280937726b80a2f623f3879f9bc69814e02a1702a3cb0b2fb39d2d7d7074",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2271,7 +2272,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "dbb8a9c4fab8a53b5279c26d98a5e0a6fa60d9360b88030189d43273bf0e5d1a",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2289,7 +2290,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "9b017d40a8f48609231c5cd944af0366892039a0d663e439b63479a5805a004e",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2307,7 +2308,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "e3a08643337f2f8b4864b2191e44dee95444164a5eca1df613aacfd1942e2df8",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2325,7 +2326,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "179742d361f373f8a44d1ae08c36a985dea8fe6f30fc5a1f65978fe344a94775",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2343,7 +2344,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "d2b1bef458e88590c81f448870295beddf81e4f258f24702980526836ccda50a",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2361,7 +2362,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "7c35d7c49827e5f4a478203007fb388f3f403698765472ab5e44167ed61c2b72",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2379,7 +2380,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "fd2afd86cd0f827d5896705bb9eaefe827a645143f3b7573a95d642b455f5bfe",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2397,7 +2398,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "ae76053ea1e2867ba1fb129cc417473cf807da31cbad3f2e4ea62b89407eba5a",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2415,7 +2416,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "95d78b3a38f0f19132d35fce473015e2b2c374c293378d345966737de2bfcb20",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2433,7 +2434,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "a38e8520b07207670cb139d6814605659d457a626ee070db2bdc91075211e418",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2451,7 +2452,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "475eab78585b8f14024187198c3844d0766ead94e04e36a118f3974f974d3c83",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2469,7 +2470,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "6dac0aaa3fd181fffacf30cffa829b0f189e8b68ebfdbeb0dd5ef88736af96a2",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2487,7 +2488,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "a5f65c3d741ebc0e426fd8ca5ce4da088718fbfc3930ba2720958ecf3cee556d",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2505,7 +2506,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "023c99801cc11305848772a859d2491940f25389725e08f162b4156492dcae4e",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2523,7 +2524,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "575e3744f555d668f3748f46cc55781378bfc0ad35008c9512a942c57279f31f",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2541,7 +2542,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "f800749dc339a2f8bc99469bcbd365f1183323002cd90d3225c942e2e6d92dc9",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2559,7 +2560,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "c1ae457e002eecf9a994291d34abfe0ff41101e78f72f98c7208983ec1bb14a8",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2577,7 +2578,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "c6ed655b1dbca81b0fc54ef62547b71d5f984c6556cfdc77b6299c1bcc870a0e",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2595,7 +2596,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "f567098d4f98fd9ea34df90ca330b295346a8f567b924f8b11694a494d3ce502",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2613,7 +2614,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_unavailable",
       "object_sha256": "a492b49c712c7c60fd31478c51df25225e3193fe4a2dd094fb899b11a588d292",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2631,7 +2632,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "f2c49d272af66dea8cc3cf0d705d4f953d5690a3c71a647fbb43d7ba8769b059",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2649,7 +2650,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "866bce96ac216344c5dcdf25fee1f31548d5c32ba3cd94ef4b4977a495f509ea",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2667,7 +2668,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "98cd7a110628349648926007ba37d6ca9f5ad4525e1d9fdf34a94560e3078741",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2685,7 +2686,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_unavailable",
       "object_sha256": "819a006df9c280acfb20c34079eaa31065014b0871f351ee92ba2ede9b970008",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2703,7 +2704,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "e76311821f75c2b02c82c8c63d771b9948eb0547caa1af40df662213588ec9f8",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2721,7 +2722,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "99e90dfddd8fc7b6d2bb545148d95f8f3c4c3cbf77760b91103130304176780e",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2739,7 +2740,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "5849babe79f21c644920cd16fcf830ab4538488a0ff8253aa76070433f7ef572",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2757,7 +2758,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "1170e0bf5d11e6ac93620a2d76d68004ed99b88ed45a0c6c3c48bbc38f72fafe",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2775,7 +2776,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "07aaafdc58bd448ce2ef60d3c2dce071dfc3204838b21d01cad105e7e0d946fc",
       "rights": {
         "license_label": "CC-BY-4.0",
@@ -2793,7 +2794,7 @@
       "family": "treasury_vote_health_document",
       "inventory_reason": "bounded capture with fixity and WARC evidence",
       "inventory_state": "captured",
-      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "layout_drift_state": "structural_pdf_baseline_recorded_text_and_tables_unassessed",
       "object_sha256": "eec443d19bd7fe0767301ab101de5cbe67da8e9183d3f0af8b946b7ba8f93272",
       "rights": {
         "license_label": "CC-BY-4.0",

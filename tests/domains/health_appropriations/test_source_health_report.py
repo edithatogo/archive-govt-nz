@@ -11,6 +11,7 @@ import pytest
 
 from archive_govt_nz.domains.health_appropriations.source_health_report import (
     CaptureEvidence,
+    LayoutEvidence,
     SourceHealthReportError,
     _capture_inputs,
     _verify_capture_result,
@@ -66,6 +67,62 @@ def test_whole_census_report_has_a_state_for_every_resource_and_series_vintage()
         "matched_resource_count_recorded": 74,
         "manifest_name_recorded": "official-capture-2026-09-30-health-refresh.json",
     }
+
+
+def test_recorded_capture_receipt_is_preserved_when_manifest_is_unavailable() -> None:
+    recorded = json.loads((TRACK / "source-health-report.json").read_bytes())
+    census_bytes = (TRACK / "source-census.json").read_bytes()
+    context_bytes = (TRACK / "context-census.json").read_bytes()
+    report = build_report(
+        json.loads(census_bytes),
+        census_bytes,
+        json.loads(context_bytes),
+        context_bytes,
+        recorded_report=recorded,
+    )
+
+    assert report["capture_reconciliation"] == recorded["capture_reconciliation"]
+    assert [row["capture_receipt_rights_state"] for row in report["resources"]] == [
+        row["capture_receipt_rights_state"] for row in recorded["resources"]
+    ]
+    assert (
+        report["inputs"]["capture_manifest_sha256"]
+        == recorded["inputs"]["capture_manifest_sha256"]
+    )
+
+
+def test_structural_pdf_baseline_updates_only_matching_resource_states() -> None:
+    census_bytes = (TRACK / "source-census.json").read_bytes()
+    context_bytes = (TRACK / "context-census.json").read_bytes()
+    baseline_bytes = (TRACK / "source-pdf-layout-baseline-20261002.json").read_bytes()
+    baseline = json.loads(baseline_bytes)
+    report = build_report(
+        json.loads(census_bytes),
+        census_bytes,
+        json.loads(context_bytes),
+        context_bytes,
+        layout_evidence=LayoutEvidence(baseline, baseline_bytes),
+    )
+
+    resources = {row["entity_id"]: row for row in report["resources"]}
+    assert (
+        resources["treasury-vote-health-pdf-0951064262bf028c"]["layout_drift_state"]
+        == "structural_pdf_baseline_recorded_text_and_tables_unassessed"
+    )
+    assert (
+        resources["treasury-vote-health-pdf-8ea10c8cddf61f5b"]["layout_drift_state"]
+        == "structural_pdf_baseline_recorded_text_and_tables_unassessed"
+    )
+    assert resources["budget_2026-000"]["layout_drift_state"] == (
+        "not_assessed_per_source_baseline_not_in_census"
+    )
+    assert (
+        report["inputs"]["pdf_layout_baseline_sha256"]
+        == hashlib.sha256(baseline_bytes).hexdigest()
+    )
+    assert "text, tables and semantic layout are not assessed" in " ".join(
+        report["limitations"]
+    )
 
 
 def test_markdown_lists_each_inventory_identity_and_states_limits() -> None:

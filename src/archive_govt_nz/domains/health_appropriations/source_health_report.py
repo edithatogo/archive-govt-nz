@@ -36,6 +36,14 @@ class CaptureEvidence:
     cas_root: Path
 
 
+@dataclass(frozen=True)
+class LayoutEvidence:
+    """Pinned structural PDF report and its original serialized bytes."""
+
+    report: dict[str, Any]
+    report_bytes: bytes
+
+
 def _resource_rows(resources: list[Any]) -> list[dict[str, Any]]:
     resource_ids: set[str] = set()
     resource_rows: list[dict[str, Any]] = []
@@ -119,6 +127,33 @@ def _context_rows(series: list[Any]) -> list[dict[str, Any]]:
         )
     context_rows.sort(key=lambda item: item["entity_id"])
     return context_rows
+
+
+def _layout_states(
+    baseline: dict[str, Any] | None,
+) -> dict[str, str]:
+    """Index structural PDF baseline states without implying semantic coverage."""
+    if baseline is None:
+        return {}
+    rows = baseline.get("pdf_layouts")
+    if not isinstance(rows, list):
+        _fail("pdf_layout_baseline_shape_invalid")
+    states: dict[str, str] = {}
+    for row in rows:
+        if not isinstance(row, dict):
+            _fail("pdf_layout_baseline_row_invalid")
+        source_id = row.get("source_id")
+        status = row.get("status")
+        if not isinstance(source_id, str) or not source_id or source_id in states:
+            _fail("pdf_layout_baseline_identity_invalid")
+        if status == "baseline_recorded":
+            state = "structural_pdf_baseline_recorded_text_and_tables_unassessed"
+        elif status == "layout_unavailable":
+            state = "structural_pdf_baseline_unavailable"
+        else:
+            _fail("pdf_layout_baseline_status_invalid")
+        states[source_id] = state
+    return states
 
 
 def _capture_inputs(
@@ -251,14 +286,36 @@ def _verify_capture(
     )
 
 
-def build_report(
+def build_report(  # noqa: PLR0913 - pinned source inputs are explicit
     census: dict[str, Any],
     census_bytes: bytes,
     context: dict[str, Any],
     context_bytes: bytes,
     capture_evidence: CaptureEvidence | None = None,
+    *,
+    layout_evidence: LayoutEvidence | None = None,
+    recorded_report: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     """Build explicit source and context-vintage states without inferring gaps."""
+    return _build_report(
+        census,
+        census_bytes,
+        context,
+        context_bytes,
+        (capture_evidence, layout_evidence),
+        recorded_report,
+    )
+
+
+def _build_report(  # noqa: PLR0913, PLR0917 - preserve separately pinned report inputs
+    census: dict[str, Any],
+    census_bytes: bytes,
+    context: dict[str, Any],
+    context_bytes: bytes,
+    evidence: tuple[CaptureEvidence | None, LayoutEvidence | None],
+    recorded_report: dict[str, Any] | None,
+) -> dict[str, Any]:
+    capture_evidence, layout_evidence = evidence
     if census.get("schema_version") != SOURCE_CENSUS_VERSION:
         _fail("unsupported_source_census_schema")
     if context.get("schema_version") != CONTEXT_CENSUS_VERSION:
@@ -271,9 +328,30 @@ def build_report(
         _fail("context_census_series_missing")
     resource_rows = _resource_rows(resources)
     context_rows = _context_rows(series)
+    layout_states = _layout_states(
+        layout_evidence.report if layout_evidence is not None else None
+    )
+    for row in resource_rows:
+        if row["entity_id"] in layout_states:
+            row["layout_drift_state"] = layout_states[row["entity_id"]]
     capture_reconciliation, capture_rights_states = _verify_capture(
         census, capture_evidence
     )
+    if capture_evidence is None and recorded_report is not None:
+        recorded_capture = recorded_report.get("capture_reconciliation")
+        recorded_resources = recorded_report.get("resources")
+        if not isinstance(recorded_capture, dict) or not isinstance(
+            recorded_resources, list
+        ):
+            _fail("recorded_capture_report_invalid")
+        capture_reconciliation = recorded_capture
+        capture_rights_states = {
+            row["entity_id"]: row["capture_receipt_rights_state"]
+            for row in recorded_resources
+            if isinstance(row, dict)
+            and isinstance(row.get("entity_id"), str)
+            and isinstance(row.get("capture_receipt_rights_state"), str)
+        }
     for row in resource_rows:
         row["capture_receipt_rights_state"] = capture_rights_states.get(
             row["entity_id"], "not_independently_verified"
@@ -289,7 +367,10 @@ def build_report(
             "context_census_base_commit": context.get("base_commit"),
             "capture_manifest_sha256": _sha256(capture_evidence.manifest_bytes)
             if capture_evidence is not None
-            else None,
+            else _recorded_input_hash(recorded_report, "capture_manifest_sha256"),
+            "pdf_layout_baseline_sha256": _sha256(layout_evidence.report_bytes)
+            if layout_evidence is not None
+            else _recorded_input_hash(recorded_report, "pdf_layout_baseline_sha256"),
         },
         "summary": {
             "resource_count": len(resource_rows),
@@ -319,8 +400,9 @@ def build_report(
                 "and cross-source period alignment are not assessed."
             ),
             (
-                "Per-source, per-vintage layout baselines are absent from these census "
-                "inputs; layout drift is not assessed."
+                "Structural PDF baselines record page geometry and resources only; "
+                "text, tables and semantic layout are not assessed. Other source "
+                "families without a supplied baseline remain unassessed."
             ),
             (
                 "Capture-manifest rights classifications are retained workflow "
@@ -332,6 +414,22 @@ def build_report(
             ),
         ],
     }
+
+
+def _recorded_input_hash(report: dict[str, Any] | None, key: str) -> str | None:
+    if report is None:
+        return None
+    inputs = report.get("inputs")
+    if not isinstance(inputs, dict):
+        _fail("recorded_report_inputs_invalid")
+    value = inputs.get(key)
+    if value is not None and (
+        not isinstance(value, str)
+        or len(value) != _SHA256_HEX_LENGTH
+        or any(char not in "0123456789abcdef" for char in value)
+    ):
+        _fail("recorded_report_input_hash_invalid")
+    return value
 
 
 def render_markdown(report: dict[str, Any]) -> str:
