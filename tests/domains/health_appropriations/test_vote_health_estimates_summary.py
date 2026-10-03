@@ -653,7 +653,7 @@ def test_2010_11_normalizer_rebuilds_selected_headlines_from_pinned_bronze_sourc
         True,
         True,
         False,
-        True,
+        False,
         True,
         True,
         True,
