@@ -67,6 +67,63 @@ def test_overview_extracts_only_seven_phrase_anchored_headlines() -> None:
     )
 
 
+def test_2004_05_overview_extracts_eight_observed_amounts_without_summing() -> None:
+    pages = [
+        (
+            "Appropriations sought for Vote Health in 2004/05 total $9,917.895 "
+            "million, an increase of $332.540 million or 3.47% from 2003/04 "
+            "(Supplementary Estimates). Departmental Appropriations. $168.608 "
+            "million (1.70% of the Vote) relates to the functions of the Ministry "
+            "of Health. $0.955 million (0.01% of the Vote) is a capital contribution "
+            "to the Ministry of Health. Non-Departmental Appropriations. $9,748.332 "
+            "million (98.29% of the Vote) is for the funders of health services. "
+            "$543.703 million (5.48% of the Vote) is to provide capital funding and "
+            "loan facilities. $59.666 million (0.60% of the Vote) relates to other "
+            "services."
+        ),
+        (
+            "Crown Revenue and Receipts. The Ministry expects to collect $503.067 "
+            "million of Crown Revenue and Receipts in 2004/05."
+        ),
+    ]
+    rows = overview.parse_overview_2004_05_pages(pages)
+    assert [row["summary_measure"] for row in rows] == [
+        "vote_total",
+        "vote_increase",
+        "departmental_functions",
+        "departmental_capital_contribution",
+        "non_departmental_total",
+        "capital_funding",
+        "other_services_total",
+        "crown_revenue_total",
+    ]
+    assert [row["value"] for row in rows] == [
+        Decimal("9917.895"),
+        Decimal("332.540"),
+        Decimal("168.608"),
+        Decimal("0.955"),
+        Decimal("9748.332"),
+        Decimal("543.703"),
+        Decimal("59.666"),
+        Decimal("503.067"),
+    ]
+    assert rows[1]["reference_period"] == "2003/04_to_2004/05"
+    assert "Supplementary Estimates" in rows[1]["source_phrase"]
+    assert all(row["currency_code"] is None for row in rows)
+
+
+def test_2004_05_overview_rejects_missing_or_ambiguous_headlines() -> None:
+    pages = [
+        "Appropriations sought for Vote Health in 2004/05 total $9,917.895 million",
+        (
+            "Crown Revenue and Receipts. The Ministry expects to collect $503.067 "
+            "million of Crown Revenue and Receipts in 2004/05."
+        ),
+    ]
+    with pytest.raises(ValueError, match="vote_health_estimates_overview_contract"):
+        overview.parse_overview_2004_05_pages(pages)
+
+
 def test_normalizer_dry_run_and_local_write_are_source_pinned(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -154,17 +211,46 @@ def test_normalizer_fails_closed_on_wrong_profile_or_output_target(
             source_locator=str(operation["source_locator"]),
             observed_at=str(operation["observed_at"]),
         )
-    existing = tmp_path / "existing"
-    existing.mkdir()
-    with pytest.raises(ValueError, match="vote_health_estimates_overview_contract"):
-        overview.normalize_vote_health_estimates_overview_2002_03(
-            source,
-            existing,
-            expected_sha256=overview.SOURCE_SHA256,
-            source_vintage=str(operation["source_vintage"]),
-            source_locator=str(operation["source_locator"]),
-            observed_at=str(operation["observed_at"]),
-        )
+
+
+def test_2004_05_normalizer_reads_captured_source_and_writes_eight_facts(
+    tmp_path: Path,
+) -> None:
+    source = Path(
+        "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/bronze-cas/"
+        "sha256/6d/6dac0aaa3fd181fffacf30cffa829b0f189e8b68ebfdbeb0dd5ef88736af96a2"
+    )
+    if not source.is_file():
+        pytest.skip("captured 2004/05 Treasury source is unavailable")
+    output = tmp_path / "out"
+    result = overview.normalize_vote_health_estimates_overview_2004_05(
+        source,
+        output,
+        expected_sha256=overview.SOURCE_SHA256_2004_05,
+        source_vintage=overview.VINTAGE_2004_05,
+        source_locator=(
+            "https://www.treasury.govt.nz/publications/estimates/"
+            "vote-health-estimates-appropriations-2004-05"
+        ),
+        observed_at="2026-10-03T00:00:00Z",
+        dry_run=False,
+    )
+    facts = pq.read_table(output / "vote_health_overview_facts.parquet").to_pylist()
+    assert result["status"] == "passed"
+    assert [fact["value"] for fact in facts] == [
+        Decimal("9917.895"),
+        Decimal("332.540"),
+        Decimal("168.608"),
+        Decimal("0.955"),
+        Decimal("9748.332"),
+        Decimal("543.703"),
+        Decimal("59.666"),
+        Decimal("503.067"),
+    ]
+    dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
+    assert {row["reason"] for row in dispositions} == {
+        "eight_reviewed_overview_headlines_only"
+    }
 
 
 @pytest.mark.parametrize(

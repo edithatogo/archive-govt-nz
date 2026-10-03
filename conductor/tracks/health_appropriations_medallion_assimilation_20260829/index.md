@@ -59,6 +59,8 @@ every planned record set, measure or operational workflow.
 - [Vote Health 2002/03 Part F machine receipt](./vote-health-revenue-2002-03-20261003.json)
 - [Vote Health 2002/03 overview headlines](./vote-health-estimates-overview-2002-03-20261003.md)
 - [Vote Health 2002/03 overview machine receipt](./vote-health-estimates-overview-2002-03-20261003.json)
+- [Vote Health 2004/05 overview headlines](./vote-health-estimates-overview-2004-05-20261003.md)
+- [Vote Health 2004/05 overview phase review receipt](./phase_7_gates-review-receipt-20261003-vote-health-overview-2004-05.json)
 - [Budget source-literal dimensions and unresolved mapping validation](./budget-source-dimensions.validation.json)
 - [Context-source Bronze adapters](./context-adapters.md)
 - [Context-source adapter validation](./context-adapters.validation.json)

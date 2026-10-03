@@ -4298,3 +4298,21 @@ existing test suite and the integrated source operation. The source slice
 remains bounded to seven overview headlines, with rights, other PDF content,
 edition coverage and analytical comparability unresolved. See
 `phase_7_gates-review-receipt-20261003-vote-health-overview.json`.
+
+2026-10-03 — Vote Health 2004/05 overview headlines
+
+Added a separate hash-pinned source operation for eight reviewed overview
+amounts on pages 2–3 of the captured 48-page Estimates PDF. The 2004/05
+profile has its own source hash, vintage and transformation, emits Decimal
+facts with raw tokens, exact source phrases and page/field lineage, and makes
+no inferred sums. A captured-source integration test read back all eight facts
+and page dispositions; focused parser/dispatch suites passed (491 passed, 10
+skipped), and Ruff passed. The required `./scripts/validate.sh` passed: 7,348
+passed, 10 skipped, 98.08% branch-aware coverage against the requested 80%
+floor; 53 schemas/43 representative documents, 9/9 parity, configured
+mutation, hygiene, dependency, license, secret and 113-component SBOM checks
+passed. Automatic Conductor `phase_7_gates` passed format, lint, schema, 71
+targeted tests and Medallion mutation. Rights, all other PDF content, other
+editions and comparability remain unresolved; no Gold or publication claim is
+made. See `vote-health-estimates-overview-2004-05-20261003.md` and the retained
+phase-review receipt.

@@ -749,3 +749,16 @@ departmental total 166.917, non-departmental total 8,432.327, other services
 The profile keeps source token and phrase lineage, leaves currency code null,
 and does not derive a prior-year total. Rights are unevaluated and all other
 page content remains outside this bounded normalization.
+
+## Vote Health 2004/05 overview headlines — 2026-10-03
+
+Machine receipt: `vote-health-estimates-overview-2004-05-20261003.json`. The
+source-pinned operation extracts eight reviewed monetary headlines from pages
+2–3 of the 48-page Estimates PDF: Vote total 9,917.895, increase 332.540,
+departmental functions 168.608, departmental capital contribution 0.955,
+non-departmental total 9,748.332, capital funding 543.703, other services
+59.666, and Crown revenue and receipts 503.067 (all `$ million`). Exact source
+phrases, raw tokens, period labels and field lineage are retained. No totals
+are recomputed. Rights and comparability remain unevaluated; all other PDF
+content remains outside this bounded normalization. Captured PDF SHA-256 is
+`6dac0aaa3fd181fffacf30cffa829b0f189e8b68ebfdbeb0dd5ef88736af96a2`.
