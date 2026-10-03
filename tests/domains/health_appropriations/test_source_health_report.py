@@ -14,6 +14,10 @@ from archive_govt_nz.domains.health_appropriations.source_health_report import (
     LayoutEvidence,
     SourceHealthReportError,
     _capture_inputs,
+    _census_rows_by_id,
+    _layout_states,
+    _recorded_input_hash,
+    _recorded_layout_states,
     _verify_capture_result,
     build_report,
     render_markdown,
@@ -154,6 +158,57 @@ def test_layout_baseline_object_pin_must_match_current_census() -> None:
         )
 
 
+def test_layout_baseline_index_rejects_invalid_census_identity() -> None:
+    assert _layout_states(None, {}) == {}
+    with pytest.raises(SourceHealthReportError, match="source_census_row_invalid"):
+        _layout_states({"pdf_layouts": []}, {"records": "invalid"})
+    with pytest.raises(SourceHealthReportError, match="source_census_row_invalid"):
+        _census_rows_by_id({"records": [None]})
+    with pytest.raises(SourceHealthReportError, match="source_id_missing_or_duplicate"):
+        _census_rows_by_id({"records": [{"source_id": "same"}, {"source_id": "same"}]})
+
+
+@pytest.mark.parametrize(
+    "recorded",
+    [
+        None,
+        {},
+        {"inputs": {}, "resources": [None]},
+        {"inputs": {}, "resources": [{"entity_id": "id"}]},
+        {
+            "inputs": {},
+            "resources": [
+                {"entity_id": "id", "layout_drift_state": "state"},
+                {"entity_id": "id", "layout_drift_state": "state"},
+            ],
+        },
+    ],
+)
+def test_recorded_layout_state_requires_unique_complete_rows(
+    recorded: dict[str, Any] | None,
+) -> None:
+    if recorded is None:
+        assert _recorded_layout_states(recorded) == {}
+    else:
+        with pytest.raises(
+            SourceHealthReportError, match="recorded_layout_report_invalid"
+        ):
+            _recorded_layout_states(recorded)
+
+
+def test_recorded_input_hash_rejects_malformed_pins() -> None:
+    assert _recorded_input_hash(None, "capture_manifest_sha256") is None
+    with pytest.raises(SourceHealthReportError, match="recorded_report_inputs_invalid"):
+        _recorded_input_hash({"inputs": None}, "capture_manifest_sha256")
+    with pytest.raises(
+        SourceHealthReportError, match="recorded_report_input_hash_invalid"
+    ):
+        _recorded_input_hash(
+            {"inputs": {"capture_manifest_sha256": "invalid"}},
+            "capture_manifest_sha256",
+        )
+
+
 def test_structural_pdf_baseline_updates_only_matching_resource_states() -> None:
     census_bytes = (TRACK / "source-census.json").read_bytes()
     context_bytes = (TRACK / "context-census.json").read_bytes()
@@ -259,6 +314,10 @@ def test_invalid_layout_baseline_fails_closed(
                 "resources": [],
                 "inputs": "invalid",
             },
+            "recorded_report_inputs_invalid",
+        ),
+        (
+            {"capture_reconciliation": {}, "resources": []},
             "recorded_report_inputs_invalid",
         ),
         (

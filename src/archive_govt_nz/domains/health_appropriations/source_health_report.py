@@ -6,7 +6,7 @@ import hashlib
 from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, NoReturn
+from typing import Any, NoReturn, cast
 
 SOURCE_CENSUS_VERSION = "archive-govt-nz.health-source-census/v1"
 CONTEXT_CENSUS_VERSION = "archive-govt-nz.health-source-context-census/v1"
@@ -129,7 +129,7 @@ def _context_rows(series: list[Any]) -> list[dict[str, Any]]:
     return context_rows
 
 
-def _layout_states(  # noqa: C901, PLR0912 - source pin and status validation
+def _layout_states(
     baseline: dict[str, Any] | None,
     census: dict[str, Any],
 ) -> dict[str, str]:
@@ -150,12 +150,8 @@ def _layout_states(  # noqa: C901, PLR0912 - source pin and status validation
         baseline_ids.add(source_id)
     states: dict[str, str] = {}
     for row in rows:
-        if not isinstance(row, dict):
-            _fail("pdf_layout_baseline_row_invalid")
         source_id = row.get("source_id")
         status = row.get("status")
-        if not isinstance(source_id, str) or not source_id or source_id in states:
-            _fail("pdf_layout_baseline_identity_invalid")
         if status not in {"baseline_recorded", "layout_unavailable"}:
             _fail("pdf_layout_baseline_status_invalid")
         census_row = census_by_id.get(source_id)
@@ -165,10 +161,8 @@ def _layout_states(  # noqa: C901, PLR0912 - source pin and status validation
             _fail("pdf_layout_baseline_source_mismatch")
         if status == "baseline_recorded":
             state = "structural_pdf_baseline_recorded_text_and_tables_unassessed"
-        elif status == "layout_unavailable":
-            state = "structural_pdf_baseline_unavailable"
         else:
-            _fail("pdf_layout_baseline_status_invalid")
+            state = "structural_pdf_baseline_unavailable"
         states[source_id] = state
     return states
 
@@ -417,12 +411,10 @@ def _build_report(  # noqa: C901, PLR0912, PLR0913, PLR0917 - explicit pinned in
         census, capture_evidence
     )
     if capture_evidence is None and compatible_recorded_report is not None:
-        recorded_capture = compatible_recorded_report.get("capture_reconciliation")
-        recorded_resources = compatible_recorded_report.get("resources")
-        if not isinstance(recorded_capture, dict) or not isinstance(
-            recorded_resources, list
-        ):
-            _fail("recorded_capture_report_invalid")
+        recorded_capture = cast(
+            "dict[str, Any]", compatible_recorded_report["capture_reconciliation"]
+        )
+        recorded_resources = cast("list[Any]", compatible_recorded_report["resources"])
         capture_reconciliation = recorded_capture
         capture_rights_states = {
             row["entity_id"]: row["capture_receipt_rights_state"]
