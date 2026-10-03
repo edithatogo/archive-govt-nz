@@ -629,6 +629,12 @@ integrated parent head.
   exact totals. Surrounding prose, remaining editions, rights, comparability
   and annual coverage remain unresolved, so this parent task remains open.
   See `vote-health-estimates-overview-2008-09-20261003.md` and its receipt.
+  The next 2009/10 Estimates PDF is now captured under its Treasury CC BY 4.0
+  statement. A separate pinned profile preserves 17 page-2 monetary statements
+  with their rounded qualifiers, source phrases, and lineage; two independent
+  builds match. This adds one overview slice only and does not close the
+  remaining edition, whole-PDF, rights, comparability, or annual-coverage work.
+  See `vote-health-estimates-overview-2009-10-20261004.md` and its receipt.
   On 2026-10-03, the exact 2002/03 detail package rebuilt twice from its pinned
   Bronze object and matched all retained Silver outputs. The eligible captured
   2003/04 Supplementary Estimates PDF now has separate exact-profile summary,
