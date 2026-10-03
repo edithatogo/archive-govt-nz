@@ -550,6 +550,71 @@ def test_invalid_product_revision_reports_fail_closed(
     assert receipt["error"] == "invalid_canonical_gold_package"
 
 
+@pytest.mark.parametrize(
+    "failure", ["bad_count", "unsorted_period", "single_product", "bad_unit"]
+)
+def test_invalid_cross_source_overlap_report_fails_closed(
+    tmp_path: Path, failure: str
+) -> None:
+    root, _pin = _package(tmp_path / "gold")
+    marker = root / "MANIFEST.json"
+    manifest = json.loads(marker.read_text(encoding="utf-8"))
+    valid_group = {
+        "period_token": "FY2024/25",
+        "status": "literal_period_token_overlap_candidate",
+        "product_groups": [
+            {
+                "product": "budget",
+                "row_count": 1,
+                "source_vintages": ["Budget 2025"],
+                "units": ["NZD million"],
+                "input_record_ids": ["budget-1"],
+            },
+            {
+                "product": "historical",
+                "row_count": 1,
+                "source_vintages": ["History 2025"],
+                "units": ["NZD million"],
+                "input_record_ids": ["history-1"],
+            },
+        ],
+        "comparability": "not_assessed",
+        "numeric_variance": "not_computed",
+    }
+    report = manifest["cross_source_period_overlap_report"]
+    report["groups"] = [valid_group]
+    report["overlap_group_count"] = 1
+    if failure == "bad_count":
+        report["overlap_group_count"] = 2
+    elif failure == "unsorted_period":
+        report["groups"] = [
+            {**valid_group, "period_token": "FY2025/26"},
+            valid_group,
+        ]
+        report["overlap_group_count"] = 2
+    elif failure == "single_product":
+        valid_group["product_groups"] = valid_group["product_groups"][:1]
+    else:
+        valid_group["product_groups"][0]["units"] = ["NZD million", "unknown"]
+    payload = (
+        json.dumps(report, sort_keys=True, separators=(",", ":")) + "\n"
+    ).encode()
+    output = root / "cross_source_period_overlap.json"
+    output.write_bytes(payload)
+    manifest["outputs"][output.name] = {
+        "sha256": hashlib.sha256(payload).hexdigest(),
+        "bytes": len(payload),
+        "kind": "report",
+    }
+    marker.write_text(json.dumps(manifest), encoding="utf-8")
+    pin = hashlib.sha256(marker.read_bytes()).hexdigest()
+
+    receipt = verify_canonical_gold_package(root, pin)
+
+    assert receipt["status"] == "failed"
+    assert receipt["error"] == "invalid_canonical_gold_package"
+
+
 def test_invalid_revision_report_fails_closed(tmp_path: Path) -> None:
     root, _pin = _package(tmp_path / "gold")
     marker = root / "MANIFEST.json"
