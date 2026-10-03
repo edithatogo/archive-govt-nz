@@ -551,9 +551,25 @@ def test_invalid_product_revision_reports_fail_closed(
 
 
 @pytest.mark.parametrize(
-    "failure", ["bad_count", "unsorted_period", "single_product", "bad_unit"]
+    "failure",
+    [
+        "bad_count",
+        "unsorted_period",
+        "single_product",
+        "bad_unit",
+        "noncanonical_product",
+        "zero_rows",
+        "empty_vintage",
+        "empty_record_id",
+        "duplicate_products",
+        "bad_comparability",
+        "bad_numeric_variance",
+        "wrong_match_basis",
+        "nonobject_group",
+        "empty_period",
+    ],
 )
-def test_invalid_cross_source_overlap_report_fails_closed(
+def test_invalid_cross_source_overlap_report_fails_closed(  # noqa: C901, PLR0912 - each mutation is one independent report contract
     tmp_path: Path, failure: str
 ) -> None:
     root, _pin = _package(tmp_path / "gold")
@@ -594,8 +610,29 @@ def test_invalid_cross_source_overlap_report_fails_closed(
         report["overlap_group_count"] = 2
     elif failure == "single_product":
         valid_group["product_groups"] = valid_group["product_groups"][:1]
-    else:
+    elif failure == "bad_unit":
         valid_group["product_groups"][0]["units"] = ["NZD million", "unknown"]
+    elif failure == "noncanonical_product":
+        valid_group["product_groups"][0]["product"] = "unsupported"
+    elif failure == "zero_rows":
+        valid_group["product_groups"][0]["row_count"] = 0
+    elif failure == "empty_vintage":
+        valid_group["product_groups"][0]["source_vintages"] = [""]
+    elif failure == "empty_record_id":
+        valid_group["product_groups"][0]["input_record_ids"] = [""]
+    elif failure == "duplicate_products":
+        valid_group["product_groups"][1]["product"] = "budget"
+    elif failure == "bad_comparability":
+        valid_group["comparability"] = "comparable"
+    elif failure == "bad_numeric_variance":
+        valid_group["numeric_variance"] = "computed"
+    elif failure == "wrong_match_basis":
+        report["match_basis"] = "normalized_period"
+    elif failure == "nonobject_group":
+        report["groups"] = [None]
+        report["overlap_group_count"] = 1
+    else:
+        valid_group["period_token"] = ""
     payload = (
         json.dumps(report, sort_keys=True, separators=(",", ":")) + "\n"
     ).encode()
