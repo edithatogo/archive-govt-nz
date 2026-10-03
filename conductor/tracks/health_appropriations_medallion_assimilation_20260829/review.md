@@ -1368,6 +1368,19 @@ receipt schema validates the output package. Rights are still not legally
 evaluated, other page content remains preserved-only, and no Gold or
 publication claim follows. Full validation is pending.
 
+## 2026-10-03 — Vote Health 2004/05 overview headlines self-review
+
+The new profile binds extraction to the exact 48-page captured Treasury PDF
+hash. It requires all eight observed monetary phrases exactly once across PDF
+pages 2–3, preserves decimal amounts, source phrases, raw tokens, distinct
+period labels and page/field lineage, and does not recompute totals. The
+captured-source integration test confirmed all eight values and local output
+readback. The common operation registry and committed JSON schema include the
+new profile and transformation. Rights remain unevaluated, the extraction is
+local-only, and no conclusion is made about the rest of the PDF, other editions
+or comparability. Focused tests and Ruff pass; full repository validation is
+pending.
+
 ## 2026-10-03 — Source-health layout evidence recovery and pinning
 
 PR #610 review identified four evidence-integrity gaps. Recovery replay now

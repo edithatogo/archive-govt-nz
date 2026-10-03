@@ -149,6 +149,12 @@ PROFILES = MappingProxyType(
             "vote_health_overview_facts.parquet",
             "page_dispositions.parquet",
         ),
+        vote_health_estimates_summary.PROFILE_2004_05: (
+            vote_health_estimates_summary.TRANSFORMATION_2004_05,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
     }
 )
 _REVENUE_VINTAGES = {
@@ -179,6 +185,18 @@ _VOTE_HEALTH_OVERVIEW_PROFILES = {
     vote_health_estimates_summary.PROFILE: (
         vote_health_estimates_summary.VINTAGE,
         vote_health_estimates_summary.SOURCE_SHA256,
+    ),
+    vote_health_estimates_summary.PROFILE_2004_05: (
+        vote_health_estimates_summary.VINTAGE_2004_05,
+        vote_health_estimates_summary.SOURCE_SHA256_2004_05,
+    ),
+}
+_VOTE_HEALTH_OVERVIEW_NORMALIZERS = {
+    vote_health_estimates_summary.PROFILE: (
+        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2002_03
+    ),
+    vote_health_estimates_summary.PROFILE_2004_05: (
+        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2004_05
     ),
 }
 _COMMON = {
@@ -389,8 +407,8 @@ def _invoke(  # noqa: C901, PLR0911 - explicit allowlisted profile dispatch
         return vote_health_revenue.normalize_vote_health_estimates_revenue_2002_03(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
-    if request.profile == vote_health_estimates_summary.PROFILE:
-        normalizer = vote_health_estimates_summary.normalize_vote_health_estimates_overview_2002_03  # noqa: E501
+    if request.profile in _VOTE_HEALTH_OVERVIEW_PROFILES:
+        normalizer = _VOTE_HEALTH_OVERVIEW_NORMALIZERS[request.profile]
         return normalizer(
             request.source, request.output_dir, **context, dry_run=dry_run
         )

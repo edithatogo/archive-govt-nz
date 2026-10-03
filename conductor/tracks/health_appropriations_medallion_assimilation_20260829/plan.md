@@ -649,6 +649,11 @@ integrated parent head.
   source phrases, raw tokens, units and lineage; all other page content remains
   preserved-only. See `vote-health-estimates-overview-2002-03-20261003.md` and
   its machine receipt.
+  The same bounded overview extraction now covers eight reviewed headlines on
+  pages 2–3 of the 48-page 2004/05 Estimates PDF, with its own source hash,
+  vintage, transformation and profile. No amounts are summed; remaining PDF
+  content, rights and edition coverage remain open. See
+  `vote-health-estimates-overview-2004-05-20261003.md`.
 - [x] Promote the two retained HAIR2024 Ministry published-indicator profiles
   into source-separated canonical Gold with source-coordinate lineage and
   discrete plots. Published real/nominal labels are preserved, while units,

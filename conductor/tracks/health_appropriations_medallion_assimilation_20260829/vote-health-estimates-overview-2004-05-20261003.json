@@ -1,0 +1,99 @@
+{
+  "schema_version": "archive-govt-nz.vote-health-overview-extraction-receipt/v1",
+  "status": "passed",
+  "profile": "vote-health-estimates-2004-05-overview/v1",
+  "transformation_id": "vote-health-estimates-overview-2004-05/v1",
+  "source_object_sha256": "6dac0aaa3fd181fffacf30cffa829b0f189e8b68ebfdbeb0dd5ef88736af96a2",
+  "source_vintage": "Treasury-Vote-Health-Estimates-2004-05",
+  "source_locator": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2004-05",
+  "source_page_count": 48,
+  "normalized_pages": [
+    2,
+    3
+  ],
+  "counts": {
+    "facts": 8,
+    "pages": 2
+  },
+  "output_sha256": {
+    "field_lineage.parquet": "4f31d87213dcc35b87d01fac38f5ea78cee7de7e34c6c4069f9843fb09666264",
+    "page_dispositions.parquet": "a99550c058275bed326955092f0b8c65940d7c22cd58b6bda6194fb991606167",
+    "vote_health_overview_facts.parquet": "9709bc6442dc8e214716f237fb932e277368dbc990e02fe04a68b0c14bf7a58d"
+  },
+  "rights_state": "not_evaluated",
+  "publication_state": "local_validation_only",
+  "facts": [
+    {
+      "measure": "vote_total",
+      "value": "9917.895",
+      "unit": "$ million",
+      "reference_period": "2004/05",
+      "source_page": 2,
+      "source_phrase": "Appropriations sought for Vote Health in 2004/05 total $9,917.895 million",
+      "raw_token": "9,917.895"
+    },
+    {
+      "measure": "vote_increase",
+      "value": "332.540",
+      "unit": "$ million",
+      "reference_period": "2003/04_to_2004/05",
+      "source_page": 2,
+      "source_phrase": "an increase \nof $332.540 million or 3.47% from 2003/04 (Supplementary Estimates)",
+      "raw_token": "332.540"
+    },
+    {
+      "measure": "departmental_functions",
+      "value": "168.608",
+      "unit": "$ million",
+      "reference_period": "2004/05",
+      "source_page": 2,
+      "source_phrase": "$168.608 million (1.70% of the Vote) relates to the functions of the Ministry of Health",
+      "raw_token": "168.608"
+    },
+    {
+      "measure": "departmental_capital_contribution",
+      "value": "0.955",
+      "unit": "$ million",
+      "reference_period": "2004/05",
+      "source_page": 2,
+      "source_phrase": "$0.955 million (0.01% of the Vote) is a capital contribution to the Ministry of Health",
+      "raw_token": "0.955"
+    },
+    {
+      "measure": "non_departmental_total",
+      "value": "9748.332",
+      "unit": "$ million",
+      "reference_period": "2004/05",
+      "source_page": 2,
+      "source_phrase": "$9,748.332 million (98.29% of the Vote) is for the funders of health services",
+      "raw_token": "9,748.332"
+    },
+    {
+      "measure": "capital_funding",
+      "value": "543.703",
+      "unit": "$ million",
+      "reference_period": "2004/05",
+      "source_page": 2,
+      "source_phrase": "$543.703 million (5.48% of the Vote) is to provide capital funding and loan facilities",
+      "raw_token": "543.703"
+    },
+    {
+      "measure": "other_services_total",
+      "value": "59.666",
+      "unit": "$ million",
+      "reference_period": "2004/05",
+      "source_page": 2,
+      "source_phrase": "$59.666 million (0.60% of the Vote) relates to other services",
+      "raw_token": "59.666"
+    },
+    {
+      "measure": "crown_revenue_total",
+      "value": "503.067",
+      "unit": "$ million",
+      "reference_period": "2004/05",
+      "source_page": 3,
+      "source_phrase": "expects to collect $503.067 million of Crown Revenue and Receipts in \n2004/05",
+      "raw_token": "503.067"
+    }
+  ]
+}
