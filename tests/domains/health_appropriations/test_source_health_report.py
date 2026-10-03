@@ -91,6 +91,69 @@ def test_recorded_capture_receipt_is_preserved_when_manifest_is_unavailable() ->
     )
 
 
+def test_recorded_layout_states_are_preserved_when_baseline_is_unavailable() -> None:
+    recorded = json.loads((TRACK / "source-health-report.json").read_bytes())
+    census_bytes = (TRACK / "source-census.json").read_bytes()
+    context_bytes = (TRACK / "context-census.json").read_bytes()
+    report = build_report(
+        json.loads(census_bytes),
+        census_bytes,
+        json.loads(context_bytes),
+        context_bytes,
+        recorded_report=recorded,
+    )
+
+    assert [row["layout_drift_state"] for row in report["resources"]] == [
+        row["layout_drift_state"] for row in recorded["resources"]
+    ]
+    assert (
+        report["inputs"]["pdf_layout_baseline_sha256"]
+        == recorded["inputs"]["pdf_layout_baseline_sha256"]
+    )
+
+
+def test_stale_recorded_layout_states_are_not_carried_to_refreshed_census() -> None:
+    recorded = json.loads((TRACK / "source-health-report.json").read_bytes())
+    census_bytes = (TRACK / "source-census.json").read_bytes() + b" "
+    context_bytes = (TRACK / "context-census.json").read_bytes()
+    report = build_report(
+        json.loads(census_bytes),
+        census_bytes,
+        json.loads(context_bytes),
+        context_bytes,
+        recorded_report=recorded,
+    )
+
+    assert all(
+        row["layout_drift_state"] == "not_assessed_per_source_baseline_not_in_census"
+        for row in report["resources"]
+    )
+    assert report["inputs"]["capture_manifest_sha256"] is None
+    assert report["inputs"]["pdf_layout_baseline_sha256"] is None
+    assert report["capture_reconciliation"]["state"] == (
+        "recorded_not_replayed_manifest_unavailable"
+    )
+
+
+def test_layout_baseline_object_pin_must_match_current_census() -> None:
+    census_bytes = (TRACK / "source-census.json").read_bytes()
+    context_bytes = (TRACK / "context-census.json").read_bytes()
+    baseline_bytes = (TRACK / "source-pdf-layout-baseline-20261002.json").read_bytes()
+    baseline = json.loads(baseline_bytes)
+    baseline["pdf_layouts"][0]["source_object_sha256"] = "0" * 64
+
+    with pytest.raises(
+        SourceHealthReportError, match="pdf_layout_baseline_source_mismatch"
+    ):
+        build_report(
+            json.loads(census_bytes),
+            census_bytes,
+            json.loads(context_bytes),
+            context_bytes,
+            layout_evidence=LayoutEvidence(baseline, baseline_bytes),
+        )
+
+
 def test_structural_pdf_baseline_updates_only_matching_resource_states() -> None:
     census_bytes = (TRACK / "source-census.json").read_bytes()
     context_bytes = (TRACK / "context-census.json").read_bytes()

@@ -29,6 +29,14 @@ def main() -> int:
     parser.add_argument("--bronze-cas-root", type=Path)
     parser.add_argument("--pdf-layout-baseline", type=Path)
     parser.add_argument(
+        "--recorded-report",
+        type=Path,
+        help=(
+            "Prior report used to retain pinned evidence when its source is "
+            "unavailable."
+        ),
+    )
+    parser.add_argument(
         "--json-output", type=Path, default=TRACK / "source-health-report.json"
     )
     parser.add_argument(
@@ -53,8 +61,8 @@ def main() -> int:
         if args.pdf_layout_baseline is not None
         else None
     )
-    recorded_path = args.json_output
-    if not recorded_path.exists():
+    recorded_path = args.recorded_report or args.json_output
+    if args.recorded_report is None and not recorded_path.exists():
         recorded_path = TRACK / "source-health-report.json"
     report = build_report(
         json.loads(source_bytes),

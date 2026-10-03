@@ -129,8 +129,9 @@ def _context_rows(series: list[Any]) -> list[dict[str, Any]]:
     return context_rows
 
 
-def _layout_states(
+def _layout_states(  # noqa: C901, PLR0912 - source pin and status validation
     baseline: dict[str, Any] | None,
+    census: dict[str, Any],
 ) -> dict[str, str]:
     """Index structural PDF baseline states without implying semantic coverage."""
     if baseline is None:
@@ -138,6 +139,15 @@ def _layout_states(
     rows = baseline.get("pdf_layouts")
     if not isinstance(rows, list):
         _fail("pdf_layout_baseline_shape_invalid")
+    census_by_id = _census_rows_by_id(census)
+    baseline_ids: set[str] = set()
+    for row in rows:
+        if not isinstance(row, dict):
+            _fail("pdf_layout_baseline_row_invalid")
+        source_id = row.get("source_id")
+        if not isinstance(source_id, str) or not source_id or source_id in baseline_ids:
+            _fail("pdf_layout_baseline_identity_invalid")
+        baseline_ids.add(source_id)
     states: dict[str, str] = {}
     for row in rows:
         if not isinstance(row, dict):
@@ -146,12 +156,58 @@ def _layout_states(
         status = row.get("status")
         if not isinstance(source_id, str) or not source_id or source_id in states:
             _fail("pdf_layout_baseline_identity_invalid")
+        if status not in {"baseline_recorded", "layout_unavailable"}:
+            _fail("pdf_layout_baseline_status_invalid")
+        census_row = census_by_id.get(source_id)
+        if not isinstance(census_row, dict) or row.get(
+            "source_object_sha256"
+        ) != census_row.get("object_sha256"):
+            _fail("pdf_layout_baseline_source_mismatch")
         if status == "baseline_recorded":
             state = "structural_pdf_baseline_recorded_text_and_tables_unassessed"
         elif status == "layout_unavailable":
             state = "structural_pdf_baseline_unavailable"
         else:
             _fail("pdf_layout_baseline_status_invalid")
+        states[source_id] = state
+    return states
+
+
+def _census_rows_by_id(census: dict[str, Any]) -> dict[str, dict[str, Any]]:
+    records = census.get("records")
+    if not isinstance(records, list):
+        _fail("source_census_row_invalid")
+    result: dict[str, dict[str, Any]] = {}
+    for row in records:
+        if not isinstance(row, dict):
+            _fail("source_census_row_invalid")
+        source_id = row.get("source_id")
+        if not isinstance(source_id, str) or not source_id or source_id in result:
+            _fail("source_id_missing_or_duplicate")
+        result[source_id] = row
+    return result
+
+
+def _recorded_layout_states(
+    recorded_report: dict[str, Any] | None,
+) -> dict[str, str]:
+    """Retain layout states only when their pinned source census still matches."""
+    if recorded_report is None:
+        return {}
+    inputs = recorded_report.get("inputs")
+    resources = recorded_report.get("resources")
+    if not isinstance(inputs, dict) or not isinstance(resources, list):
+        _fail("recorded_layout_report_invalid")
+    states: dict[str, str] = {}
+    for row in resources:
+        if not isinstance(row, dict):
+            _fail("recorded_layout_report_invalid")
+        source_id = row.get("entity_id")
+        state = row.get("layout_drift_state")
+        if not isinstance(source_id, str) or not source_id or source_id in states:
+            _fail("recorded_layout_report_invalid")
+        if not isinstance(state, str) or not state:
+            _fail("recorded_layout_report_invalid")
         states[source_id] = state
     return states
 
@@ -307,7 +363,7 @@ def build_report(  # noqa: PLR0913 - pinned source inputs are explicit
     )
 
 
-def _build_report(  # noqa: PLR0913, PLR0917 - preserve separately pinned report inputs
+def _build_report(  # noqa: C901, PLR0912, PLR0913, PLR0917 - explicit pinned inputs
     census: dict[str, Any],
     census_bytes: bytes,
     context: dict[str, Any],
@@ -328,18 +384,41 @@ def _build_report(  # noqa: PLR0913, PLR0917 - preserve separately pinned report
         _fail("context_census_series_missing")
     resource_rows = _resource_rows(resources)
     context_rows = _context_rows(series)
-    layout_states = _layout_states(
-        layout_evidence.report if layout_evidence is not None else None
+    census_sha256 = _sha256(census_bytes)
+    if recorded_report is not None:
+        recorded_resources = recorded_report.get("resources")
+        recorded_capture = recorded_report.get("capture_reconciliation")
+        if not isinstance(recorded_resources, list) or not isinstance(
+            recorded_capture, dict
+        ):
+            _fail("recorded_capture_report_invalid")
+        if "inputs" in recorded_report:
+            recorded_inputs = recorded_report.get("inputs")
+            if not isinstance(recorded_inputs, dict):
+                _fail("recorded_report_inputs_invalid")
+            for key in ("capture_manifest_sha256", "pdf_layout_baseline_sha256"):
+                _recorded_input_hash(recorded_report, key)
+    compatible_recorded_report = recorded_report
+    if recorded_report is not None:
+        recorded_inputs = recorded_report.get("inputs")
+        if not isinstance(recorded_inputs, dict):
+            _fail("recorded_report_inputs_invalid")
+        if recorded_inputs.get("source_census_sha256") != census_sha256:
+            compatible_recorded_report = None
+    layout_states = (
+        _layout_states(layout_evidence.report, census) if layout_evidence else {}
     )
+    if layout_evidence is None and compatible_recorded_report is not None:
+        layout_states = _recorded_layout_states(compatible_recorded_report)
     for row in resource_rows:
         if row["entity_id"] in layout_states:
             row["layout_drift_state"] = layout_states[row["entity_id"]]
     capture_reconciliation, capture_rights_states = _verify_capture(
         census, capture_evidence
     )
-    if capture_evidence is None and recorded_report is not None:
-        recorded_capture = recorded_report.get("capture_reconciliation")
-        recorded_resources = recorded_report.get("resources")
+    if capture_evidence is None and compatible_recorded_report is not None:
+        recorded_capture = compatible_recorded_report.get("capture_reconciliation")
+        recorded_resources = compatible_recorded_report.get("resources")
         if not isinstance(recorded_capture, dict) or not isinstance(
             recorded_resources, list
         ):
@@ -360,17 +439,21 @@ def _build_report(  # noqa: PLR0913, PLR0917 - preserve separately pinned report
         "schema_version": REPORT_VERSION,
         "scope": "recorded_census_states_not_a_completeness_or_rights_approval",
         "inputs": {
-            "source_census_sha256": _sha256(census_bytes),
+            "source_census_sha256": census_sha256,
             "source_census_cutoff": census.get("cutoff"),
             "source_census_observed_at": census.get("observed_at"),
             "context_census_sha256": _sha256(context_bytes),
             "context_census_base_commit": context.get("base_commit"),
             "capture_manifest_sha256": _sha256(capture_evidence.manifest_bytes)
             if capture_evidence is not None
-            else _recorded_input_hash(recorded_report, "capture_manifest_sha256"),
+            else _recorded_input_hash(
+                compatible_recorded_report, "capture_manifest_sha256"
+            ),
             "pdf_layout_baseline_sha256": _sha256(layout_evidence.report_bytes)
             if layout_evidence is not None
-            else _recorded_input_hash(recorded_report, "pdf_layout_baseline_sha256"),
+            else _recorded_input_hash(
+                compatible_recorded_report, "pdf_layout_baseline_sha256"
+            ),
         },
         "summary": {
             "resource_count": len(resource_rows),
