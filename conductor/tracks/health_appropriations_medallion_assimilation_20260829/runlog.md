@@ -4284,3 +4284,17 @@ tokens, units and page lineage are retained; surrounding prose/components,
 rights and comparability remain outside scope. Focused parser and operation
 tests passed (496 passed, 10 skipped); full harness and automated phase review
 remain pending. Coverage work stayed within the configured 80% target.
+
+2026-10-03 — Vote Health overview integrated assurance
+
+On integrated head `7f87a44f`, the required `./scripts/validate.sh` passed:
+7,355 passed, 10 skipped, 98.09% branch-aware coverage against the configured
+80% floor; formatting, lint, typing, 53 schemas/43 representative documents,
+9/9 differential parity, all configured mutation, dependency, licence, secret
+and 113-component SBOM gates passed. The automatic Conductor `phase_7_gates`
+review passed its formatting, lint, schema, 71 targeted tests and mutation
+stages. The run adds no tests to pursue coverage beyond 80%; it validates the
+existing test suite and the integrated source operation. The source slice
+remains bounded to seven overview headlines, with rights, other PDF content,
+edition coverage and analytical comparability unresolved. See
+`phase_7_gates-review-receipt-20261003-vote-health-overview.json`.
