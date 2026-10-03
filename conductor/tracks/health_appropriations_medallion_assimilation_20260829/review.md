@@ -1398,3 +1398,21 @@ tests, 10 skips, 80% coverage floor (98.01% observed), 53 schemas, 9/9 parity,
 all configured mutation suites, hygiene, benchmark, dependency, license, secret,
 and SBOM checks. Recovery remains structural only; PDF text/table semantics,
 rights, and complete source coverage are not claimed.
+
+
+## 2026-10-03 — Vote Health 2005/06 overview headlines self-review
+
+The new profile binds extraction to the exact 50-page captured Treasury PDF
+hash. It requires each of the eight observed monetary phrases exactly once
+across PDF pages 2–3, retains distinct GST basis labels, decimal values, source
+phrases, raw tokens, period labels and page/field lineage, and does not
+recompute totals. Captured-source integration readback confirmed all eight
+values and page dispositions. The operation registry and committed JSON schema
+include the profile and transformation. Rights remain unevaluated, extraction
+is local-only, and no conclusion is made about the remainder of the PDF, other
+editions or comparability. Focused parser and dispatch suites pass. The required `./scripts/validate.sh`
+passed 7,351 tests with 10 skips and 98.08% branch-aware coverage against the
+80% floor; schema, parity, configured mutation, hygiene, supply-chain and SBOM
+gates passed. Automatic `phase_7_gates` review passed; its immutable receipt is
+`phase_7_gates-review-receipt-20261003-vote-health-overview-2005-06.json`
+with SHA-256 `b3507de62fca41ec3da8c2b4935013ca160ac69edcc28453930e168fc91c537e`.

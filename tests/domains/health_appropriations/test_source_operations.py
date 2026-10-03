@@ -1011,3 +1011,43 @@ def test_mcp_generic_errors_redact_sensitive_exception_text(
     encoded = json.dumps(result)
     assert "secret" not in encoded
     assert "user:" not in encoded
+
+
+def test_vote_health_2005_06_overview_profile_dispatches_to_its_adapter(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    summary = source_operations.vote_health_estimates_summary
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; adapter is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=summary.PROFILE_2005_06,
+        expected_sha256=summary.SOURCE_SHA256_2005_06,
+        source_vintage=summary.VINTAGE_2005_06,
+        source_locator="https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2005-06",
+        observed_at="2026-10-03T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 2, "facts": 8}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(
+        summary,
+        "normalize_vote_health_estimates_overview_2005_06",
+        lambda *_args, **_kwargs: expected,
+    )
+    monkeypatch.setattr(
+        summary, "_normalize_overview", lambda *_args, **_kwargs: expected
+    )
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+
+
+def test_source_operation_profile_registries_have_unique_keys() -> None:
+    summary = source_operations.vote_health_estimates_summary
+    assert len(source_operations.PROFILES) == len(set(source_operations.PROFILES))
+    assert len(source_operations._VOTE_HEALTH_OVERVIEW_PROFILES) == len(  # noqa: SLF001
+        set(source_operations._VOTE_HEALTH_OVERVIEW_PROFILES)  # noqa: SLF001
+    )
+    assert len(source_operations._VOTE_HEALTH_OVERVIEW_NORMALIZERS) == len(  # noqa: SLF001
+        set(source_operations._VOTE_HEALTH_OVERVIEW_NORMALIZERS)  # noqa: SLF001
+    )
+    assert summary.PROFILE_2005_06 in source_operations.PROFILES

@@ -37,6 +37,13 @@ SOURCE_SHA256_2004_05 = (
     "6dac0aaa3fd181fffacf30cffa829b0f189e8b68ebfdbeb0dd5ef88736af96a2"
 )
 PAGE_COUNT_2004_05 = 48
+PROFILE_2005_06 = "vote-health-estimates-2005-06-overview/v1"
+TRANSFORMATION_2005_06 = "vote-health-estimates-overview-2005-06/v1"
+VINTAGE_2005_06 = "Treasury-Vote-Health-Estimates-2005-06"
+SOURCE_SHA256_2005_06 = (
+    "9a269a87a0cef8fc998fc1b012ae9fd734fb48b111504bb7a1ca01cdcf97c2b4"
+)
+PAGE_COUNT_2005_06 = 50
 _ERROR = "vote_health_estimates_overview_contract"
 _AMOUNT_TOKEN_PATTERN = r"(?P<value>[0-9][0-9,]*\.[0-9]{3})"  # noqa: S105 - regex token, not a secret
 _PATTERNS = {
@@ -169,6 +176,81 @@ _PATTERNS_2004_05 = {
         "2004/05",
     ),
 }
+_AMOUNT_TOKEN_PATTERN_2005_06 = r"(?P<value>[0-9][0-9,]*(?:\.[0-9]{1,3})?)"  # noqa: S105 - regex token, not a secret
+_PATTERNS_2005_06 = {
+    "vote_total": (
+        2,
+        (
+            rf"Appropriations sought for Vote Health in 2005/06 total \$"
+            rf"{_AMOUNT_TOKEN_PATTERN_2005_06} million \(GST exclusive\)"
+        ),
+        "$ million, GST exclusive",
+        "2005/06",
+    ),
+    "vote_increase": (
+        2,
+        (
+            rf"an increase of \${_AMOUNT_TOKEN_PATTERN_2005_06} million or 9\.3% "
+            r"from 2004/05 \(Supplementary Estimates\)"
+        ),
+        "$ million, GST exclusive",
+        "2004/05_to_2005/06",
+    ),
+    "departmental_functions": (
+        2,
+        (
+            rf"\${_AMOUNT_TOKEN_PATTERN_2005_06} million \(1\.55% of the Vote\) "
+            r"relates to the functions of the Ministry of Health"
+        ),
+        "$ million, GST exclusive",
+        "2005/06",
+    ),
+    "non_departmental_total": (
+        2,
+        (
+            rf"\${_AMOUNT_TOKEN_PATTERN_2005_06} million \(98\.45% of the Vote\) "
+            r"is for non-departmental expenditure"
+        ),
+        "$ million, GST exclusive",
+        "2005/06",
+    ),
+    "service_funding_total": (
+        2,
+        (
+            rf"\${_AMOUNT_TOKEN_PATTERN_2005_06} million \(93\.47% of the Vote\) "
+            r"is for the funders of health services"
+        ),
+        "$ million, GST exclusive",
+        "2005/06",
+    ),
+    "other_expenses_total": (
+        3,
+        (
+            rf"\${_AMOUNT_TOKEN_PATTERN_2005_06} million \(0\.18% of the Vote\) "
+            r"is for other expenses\b"
+        ),
+        "$ million, GST exclusive",
+        "2005/06",
+    ),
+    "capital_funding": (
+        3,
+        (
+            rf"\${_AMOUNT_TOKEN_PATTERN_2005_06} million \(4\.77% of the Vote\) "
+            r"is to provide capital funding\b"
+        ),
+        "$ million, GST exclusive",
+        "2005/06",
+    ),
+    "crown_revenue_total": (
+        3,
+        (
+            rf"expects to collect \${_AMOUNT_TOKEN_PATTERN_2005_06} million of Crown "
+            r"Revenue and Receipts in 2005/06"
+        ),
+        "$ million, GST inclusive",
+        "2005/06",
+    ),
+}
 FACT_SCHEMA = pa.schema(
     [
         ("record_id", pa.string()),
@@ -257,6 +339,11 @@ def parse_overview_pages(
 def parse_overview_2004_05_pages(texts: list[str]) -> list[dict[str, Any]]:
     """Parse only the eight explicitly observed 2004/05 overview amounts."""
     return parse_overview_pages(texts, year="2004/05", patterns=_PATTERNS_2004_05)
+
+
+def parse_overview_2005_06_pages(texts: list[str]) -> list[dict[str, Any]]:
+    """Parse only the eight observed 2005/06 overview amounts."""
+    return parse_overview_pages(texts, year="2005/06", patterns=_PATTERNS_2005_06)
 
 
 def _normalize_overview(  # noqa: PLR0913 - profile/provenance are explicit
@@ -420,6 +507,36 @@ def normalize_vote_health_estimates_overview_2004_05(  # noqa: PLR0913 - explici
         expected_page_count=PAGE_COUNT_2004_05,
         year="2004/05",
         patterns=_PATTERNS_2004_05,
+        disposition_reason="eight_reviewed_overview_headlines_only",
+        expected_sha256=expected_sha256,
+        source_vintage=source_vintage,
+        source_locator=source_locator,
+        observed_at=observed_at,
+        dry_run=dry_run,
+    )
+
+
+def normalize_vote_health_estimates_overview_2005_06(  # noqa: PLR0913 - explicit pinned profile
+    source: Path,
+    output_dir: Path,
+    *,
+    expected_sha256: str,
+    source_vintage: str,
+    source_locator: str,
+    observed_at: str,
+    dry_run: bool = True,
+) -> dict[str, object]:
+    """Normalize eight observed 2005/06 overview amounts, without summing."""
+    return _normalize_overview(
+        source,
+        output_dir,
+        profile=PROFILE_2005_06,
+        transformation=TRANSFORMATION_2005_06,
+        expected_vintage=VINTAGE_2005_06,
+        expected_source_sha256=SOURCE_SHA256_2005_06,
+        expected_page_count=PAGE_COUNT_2005_06,
+        year="2005/06",
+        patterns=_PATTERNS_2005_06,
         disposition_reason="eight_reviewed_overview_headlines_only",
         expected_sha256=expected_sha256,
         source_vintage=source_vintage,

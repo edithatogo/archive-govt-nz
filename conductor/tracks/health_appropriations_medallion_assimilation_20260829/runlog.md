@@ -4316,3 +4316,22 @@ targeted tests and Medallion mutation. Rights, all other PDF content, other
 editions and comparability remain unresolved; no Gold or publication claim is
 made. See `vote-health-estimates-overview-2004-05-20261003.md` and the retained
 phase-review receipt.
+
+
+2026-10-03 — Vote Health 2005/06 overview headlines
+
+Added a separate hash-pinned source operation for eight reviewed monetary
+headlines on pages 2–3 of the captured 50-page Estimates PDF. The profile
+retains Decimal facts, exact phrases, raw tokens, period labels, GST basis and
+page/field lineage; component totals are not recomputed. A captured-source
+integration test confirmed all eight values, units and page dispositions; the
+parser/dispatch suites passed (494 passed, 10 skipped). Output digests were
+replayed into the machine receipt. Required `./scripts/validate.sh` passed:
+7,352 passed, 10 skipped, 98.08% branch-aware coverage against the 80% floor;
+53 schemas/43 representative documents, 9/9 parity, configured mutation,
+hygiene, dependency, license, secret and 113-component SBOM checks passed.
+Automatic `phase_7_gates` review passed. Its immutable receipt is
+`phase_7_gates-review-receipt-20261003-vote-health-overview-2005-06.json`
+with SHA-256 `b3507de62fca41ec3da8c2b4935013ca160ac69edcc28453930e168fc91c537e`. Rights, all other PDF content, other
+editions and comparability remain unresolved; there is no Gold or publication
+claim.

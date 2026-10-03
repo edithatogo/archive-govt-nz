@@ -112,6 +112,52 @@ def test_2004_05_overview_extracts_eight_observed_amounts_without_summing() -> N
     assert all(row["currency_code"] is None for row in rows)
 
 
+def test_2005_06_overview_extracts_eight_gst_labelled_headlines() -> None:
+    pages = [
+        (
+            "Appropriations sought for Vote Health in 2005/06 total $9,681 million "
+            "(GST exclusive), an increase of $824.6 million or 9.3% from 2004/05 "
+            "(Supplementary Estimates). Departmental Appropriations (GST exclusive) "
+            "$150.198 million (1.55% of the Vote) relates to the functions of the "
+            "Ministry of Health. Non-Departmental Appropriations (GST exclusive) "
+            "$9,530.767 million (98.45% of the Vote) is for non-departmental expenditure. "
+            "Service Funding $9,048.762 million (93.47% of the Vote) is for the funders "
+            "of health services."
+        ),
+        (
+            "Other Expenses incurred by the Crown (GST exclusive) "
+            "$17.712 million (0.18% of the Vote) is for other expenses. "
+            "Capital Funding $464.293 million (4.77% of the Vote) is to provide capital funding. "
+            "Crown Revenue and Receipts (GST inclusive). The Ministry expects to "
+            "collect $474.340 million of Crown Revenue and Receipts in 2005/06."
+        ),
+    ]
+    rows = overview.parse_overview_2005_06_pages(pages)
+    assert [row["summary_measure"] for row in rows] == [
+        "vote_total",
+        "vote_increase",
+        "departmental_functions",
+        "non_departmental_total",
+        "service_funding_total",
+        "other_expenses_total",
+        "capital_funding",
+        "crown_revenue_total",
+    ]
+    assert [row["value"] for row in rows] == [
+        Decimal(9681),
+        Decimal("824.6"),
+        Decimal("150.198"),
+        Decimal("9530.767"),
+        Decimal("9048.762"),
+        Decimal("17.712"),
+        Decimal("464.293"),
+        Decimal("474.340"),
+    ]
+    assert rows[0]["unit"] == "$ million, GST exclusive"
+    assert rows[-1]["unit"] == "$ million, GST inclusive"
+    assert rows[1]["reference_period"] == "2004/05_to_2005/06"
+
+
 def test_2004_05_overview_rejects_missing_or_ambiguous_headlines() -> None:
     pages = [
         "Appropriations sought for Vote Health in 2004/05 total $9,917.895 million",
@@ -272,3 +318,53 @@ def test_overview_rejects_unreviewed_or_ambiguous_phrase_changes(
     mutate(pages)
     with pytest.raises(ValueError, match="vote_health_estimates_overview_contract"):
         parse_overview_pages(pages)
+
+
+def test_2005_06_normalizer_reads_captured_source_and_writes_eight_facts(
+    tmp_path: Path,
+) -> None:
+    source = Path(
+        "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/bronze-cas/"
+        "sha256/9a/9a269a87a0cef8fc998fc1b012ae9fd734fb48b111504bb7a1ca01cdcf97c2b4"
+    )
+    if not source.is_file():
+        pytest.skip("captured 2005/06 Treasury source is unavailable")
+    output = tmp_path / "out"
+    result = overview.normalize_vote_health_estimates_overview_2005_06(
+        source,
+        output,
+        expected_sha256=overview.SOURCE_SHA256_2005_06,
+        source_vintage=overview.VINTAGE_2005_06,
+        source_locator=(
+            "https://www.treasury.govt.nz/publications/estimates/"
+            "vote-health-estimates-appropriations-2005-06"
+        ),
+        observed_at="2026-10-03T00:00:00Z",
+        dry_run=False,
+    )
+    facts = pq.read_table(output / "vote_health_overview_facts.parquet").to_pylist()
+    assert result["status"] == "passed"
+    assert [fact["value"] for fact in facts] == [
+        Decimal(9681),
+        Decimal("824.6"),
+        Decimal("150.198"),
+        Decimal("9530.767"),
+        Decimal("9048.762"),
+        Decimal("17.712"),
+        Decimal("464.293"),
+        Decimal("474.340"),
+    ]
+    assert [fact["unit"] for fact in facts] == [
+        "$ million, GST exclusive",
+        "$ million, GST exclusive",
+        "$ million, GST exclusive",
+        "$ million, GST exclusive",
+        "$ million, GST exclusive",
+        "$ million, GST exclusive",
+        "$ million, GST exclusive",
+        "$ million, GST inclusive",
+    ]
+    dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
+    assert {row["reason"] for row in dispositions} == {
+        "eight_reviewed_overview_headlines_only"
+    }
