@@ -1,0 +1,108 @@
+{
+  "capture_content_type": "application/pdf",
+  "capture_manifest_sha256": "b34ec90e787f1e8bbc92e83dbcbb825be0416d33851c2beb2e50cc731e18cc86",
+  "capture_observed_at": "2026-10-03T22:37:57.436271Z",
+  "capture_request_sha256": "a1a44622d5c510551bf72c3fb7e820a7a1b0b0cf98e4a8678e623028d3474384",
+  "capture_status_code": 200,
+  "excluded_claims": [
+    "exact dollar precision",
+    "cross-edition comparability",
+    "recomputed totals",
+    "whole-document coverage",
+    "detailed appropriation coverage"
+  ],
+  "fact_count": 18,
+  "facts_output_sha256": "7456bd5bb3d4cffbd891acf2f09f59a81faf8e4c9cdea90e2c8b7071f3b837c6",
+  "fiscal_year": "2012/13",
+  "full_harness": {
+    "branch_coverage_percent": 98.08,
+    "command": "./scripts/validate.sh",
+    "coverage_floor_percent": 80,
+    "mutations": "all_configured_gates_passed",
+    "parity": "9_of_9",
+    "passed": 7373,
+    "sbom_components": 113,
+    "schemas": "53_schemas_43_representative_documents",
+    "secret_scan": "passed",
+    "skipped": 10,
+    "status": "passed",
+    "supply_chain": "dependency_and_license_passed"
+  },
+  "integrated_operation": {
+    "command": "health-appropriations-source-operation",
+    "counts": {
+      "facts": 18,
+      "pages": 2
+    },
+    "full_harness": "passed",
+    "output_sha256": {
+      "field_lineage.parquet": "ed8eb690d4cd95d87b42c802099e3a3d88b7e8b9e7add3b589230a96228526dd",
+      "page_dispositions.parquet": "044367c7f0efab33b8ee8c534e32bd673b131ebb4cd9d7a5b6af1844da8a9662",
+      "vote_health_overview_facts.parquet": "7456bd5bb3d4cffbd891acf2f09f59a81faf8e4c9cdea90e2c8b7071f3b837c6"
+    },
+    "profile": "vote-health-estimates-2012-13-overview/v1",
+    "repeat_outputs_byte_identical": true,
+    "runs": 2,
+    "status": "written_local",
+    "verification_scope": "adapter_execution_only"
+  },
+  "issued": "2012-05-24",
+  "landing_page": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2012-13",
+  "license_evidence": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2012-13",
+  "lineage_output_sha256": "ed8eb690d4cd95d87b42c802099e3a3d88b7e8b9e7add3b589230a96228526dd",
+  "lineage_rows": 18,
+  "normalized_source_pages": [
+    2,
+    3
+  ],
+  "page_disposition_rows": 8,
+  "page_dispositions_output_sha256": "044367c7f0efab33b8ee8c534e32bd673b131ebb4cd9d7a5b6af1844da8a9662",
+  "parser_observation": "pypdf extracted the official 8-page PDF without parser warnings; 18 selected rounded overview statements parsed from pages 2\u20133.",
+  "preserved_unreviewed_pages": [
+    1,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "publication": "not_approved",
+  "publisher_etag": "\"645064b0-17d03\"",
+  "publisher_last_modified": "Tue, 02 May 2023 01:17:36 GMT",
+  "repeat_builds": 2,
+  "repeat_outputs_byte_identical": true,
+  "rights": {
+    "attribution": "The Treasury New Zealand",
+    "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+    "license": "CC-BY-4.0",
+    "state": "eligible"
+  },
+  "rights_state_of_normalized_facts": "not_evaluated",
+  "schema_version": "archive-govt-nz.vote-health-estimates-overview-receipt/v1",
+  "source_blake3": "4d30a428c649103854a11f4cc915bb5ff65a48c4738a111588d7cd691be3e765",
+  "source_bytes": 97539,
+  "source_census_addendum": {
+    "disposition": "captured",
+    "file": "vote-health-estimates-overview-2012-13-census.json",
+    "resource_count": 1,
+    "sha256": "ae3a0a5494915cb55bf0ef63f322d1834a0dc7ef44d5e11905c617e4174a88c0"
+  },
+  "source_health_reconciliation": {
+    "bronze_bytes_verified": 97539,
+    "bronze_object_count_verified": 1,
+    "context_series_vintages": 11,
+    "json_file": "source-health-report-20261004-vote-health-2012-13.json",
+    "json_sha256": "020d8e3df5cdfb44f3aebcc413a6056861ec6da0e04769358293649a97e2686e",
+    "markdown_file": "source-health-report-20261004-vote-health-2012-13.md",
+    "markdown_sha256": "37f58275d2db586994dbec4905aaa4857828dda7eabe422c4fdcf2bca5a1dfc1",
+    "matched_resource_count": 1,
+    "rights_state_recorded": "eligible",
+    "status": "passed"
+  },
+  "source_id": "treasury-vote-health-pdf-2012-13-estimates",
+  "source_object_sha256": "5994108997ead9f301f71f73952b8fb04f6b1e4a00207c16dfe8b172f72b60ff",
+  "source_page_count": 8,
+  "source_title": "Vote Health - The Estimates of Appropriations 2012/13",
+  "source_url": "https://www.treasury.govt.nz/sites/default/files/2012-05/est12health.pdf",
+  "source_warc_sha256": "e3e2b636d39edcd74a7b49dbd9deb1e25c8921d96e2fdd97c8ec408a6e6abb74"
+}

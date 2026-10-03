@@ -228,3 +228,11 @@ they are not current-state assertions.
 - [Vote Health 2011/12 source-health reconciliation](./source-health-report-20261004-vote-health-2011-12.md)
 - [Vote Health 2011/12 source-health machine receipt](./source-health-report-20261004-vote-health-2011-12.json)
 - [Vote Health 2011/12 source-operation output receipt](./vote-health-estimates-overview-2011-12-source-operation.json)
+
+- [Vote Health 2012/13 overview extraction](./vote-health-estimates-overview-2012-13-20261004.md)
+- [Vote Health 2012/13 machine receipt](./vote-health-estimates-overview-2012-13-20261004.json)
+- [Vote Health 2012/13 captured-source census](./vote-health-estimates-overview-2012-13-census.json)
+- [Vote Health 2012/13 capture request](./vote-health-estimates-overview-2012-13-capture-request.json)
+- [Vote Health 2012/13 capture manifest](./vote-health-estimates-overview-2012-13-capture-final.json)
+- [Vote Health 2012/13 source-health reconciliation](./source-health-report-20261004-vote-health-2012-13.md)
+- [Vote Health 2012/13 source-operation output receipt](./vote-health-estimates-overview-2012-13-source-operation.json)

@@ -1,0 +1,26 @@
+{
+  "capture_reconciliation": {
+    "capture_manifest": "vote-health-estimates-overview-2012-13-capture-final.json",
+    "matched": 1
+  },
+  "cutoff": "2026-10-04",
+  "observed_at": "2026-10-03T22:37:57.436271Z",
+  "record_count": 1,
+  "records": [
+    {
+      "cutoff": "2026-10-04",
+      "disposition": "captured",
+      "family": "treasury_vote_health_document",
+      "license": "CC-BY-4.0",
+      "media_type": "application/pdf",
+      "object_sha256": "5994108997ead9f301f71f73952b8fb04f6b1e4a00207c16dfe8b172f72b60ff",
+      "observed_at": "2026-10-03T22:37:57.436271Z",
+      "reason": "official Treasury 2012/13 Estimates PDF captured with response WARC, SHA-256 and BLAKE3 fixity; source profile normalizes selected overview only",
+      "rights_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+      "source_id": "treasury-vote-health-pdf-2012-13-estimates",
+      "title": "Vote Health - The Estimates of Appropriations 2012/13",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2012-05/est12health.pdf"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-source-census/v1"
+}

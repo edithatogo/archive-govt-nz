@@ -784,6 +784,95 @@ def test_2011_12_parser_keeps_selected_overview_values_and_qualifier_contract() 
     ]
 
 
+def test_2012_13_parser_keeps_rounded_overview_values_and_source_qualifiers() -> None:
+    page_two = """
+    Overview of the Vote
+    The Minister of Health is responsible for appropriations in the Vote for the
+    2012/13 financial year totalling nearly $14,125 million covering the following:
+    Departmental Operating Appropriations
+    A total of nearly $191 million (1.4% of the Vote) relates to the functions
+    of the Ministry of Health
+    Non-Departmental Operating Appropriations
+    A total of just over $13,645 million (96.6% of the Vote) is for operating
+    expenses to be incurred on behalf of the Crown
+    Output Expenses
+    These total nearly $13,618 million (96.4% of the Vote)
+    just over $10,819 million (76.6% of the Vote) to fund health services from DHBs
+    nearly $1,053 million (7.5% of the Vote) to purchase national disability support services
+    just over $800 million (5.7% of the Vote) to purchase national health services
+    and provide clinical training for health professionals
+    just over $476 million (3.4% of the Vote) to purchase public health services
+    nearly $176 million (1.2% of the Vote) to purchase primary health care services
+    just over $145 million (1.0% of the Vote) to purchase national maternity services
+    $65 million (0.5% of the Vote) for a provision for DHB deficit support
+    $52 million (0.4% of the Vote) to manage health sector risks
+    just over $31 million (0.2% of the Vote) to fund other health and disability services
+    Other Expenses Incurred by the Crown
+    A total of just over $27 million (0.2% of the Vote) is for other expenses
+    """
+    page_three = """
+    Capital Expenditure
+    A total of nearly $289 million (2.0% of the Vote) is to provide Capital funding
+    nearly $259 million (1.8% of the Vote) is to provide debt or equity for district
+    health boards or Health Sector Crown Agencies
+    $15 million (0.1% of the Vote) is to provide interest-free loans to assist
+    people in long-term care
+    $15 million (0.1% of the Vote) is to purchase or develop assets for use by
+    the Ministry of Health
+    """
+    rows = overview.parse_overview_2012_13_pages([page_two, page_three])
+    assert [row["value"] for row in rows] == [
+        Decimal(14125),
+        Decimal(191),
+        Decimal(13645),
+        Decimal(13618),
+        Decimal(10819),
+        Decimal(1053),
+        Decimal(800),
+        Decimal(476),
+        Decimal(176),
+        Decimal(145),
+        Decimal(65),
+        Decimal(52),
+        Decimal(31),
+        Decimal(27),
+        Decimal(289),
+        Decimal(259),
+        Decimal(15),
+        Decimal(15),
+    ]
+    assert [row["source_page"] for row in rows] == [*([2] * 14), *([3] * 4)]
+    assert all(row["source_qualifier_preserved"] for row in rows)
+
+
+def test_2012_13_normalizer_rebuilds_selected_headlines_from_pinned_bronze_source(
+    tmp_path: Path,
+) -> None:
+    source = Path(
+        "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/bronze-cas/"
+        "sha256/59/5994108997ead9f301f71f73952b8fb04f6b1e4a00207c16dfe8b172f72b60ff"
+    )
+    if not source.is_file():
+        pytest.skip("captured 2012/13 Treasury source is unavailable")
+    result = overview.normalize_vote_health_estimates_overview_2012_13(
+        source,
+        tmp_path / "silver",
+        expected_sha256=overview.SOURCE_SHA256_2012_13,
+        source_vintage=overview.VINTAGE_2012_13,
+        source_locator="https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2012-13",
+        observed_at="2026-10-03T22:37:57.436271Z",
+        dry_run=False,
+    )
+    assert result["status"] == "passed"
+    assert result["counts"] == {"pages": 2, "facts": 18}
+    assert [
+        row["disposition"]
+        for row in pq.read_table(
+            tmp_path / "silver/page_dispositions.parquet"
+        ).to_pylist()
+    ].count("preserved_unreviewed") == 6
+
+
 def test_2011_12_normalizer_rebuilds_selected_headlines_from_pinned_bronze_source(
     tmp_path: Path,
 ) -> None:

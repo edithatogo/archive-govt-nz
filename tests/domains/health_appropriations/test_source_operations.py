@@ -424,6 +424,9 @@ def test_vote_health_2002_03_overview_profile_dispatches_to_its_adapter(
     expected = {"status": "planned", "counts": {"pages": 2, "facts": 7}}
     monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
     monkeypatch.setattr(
+        summary, "_normalize_overview", lambda *_args, **_kwargs: expected
+    )
+    monkeypatch.setattr(
         source_operations.vote_health_estimates_summary,
         "normalize_vote_health_estimates_overview_2002_03",
         lambda *_args, **_kwargs: expected,
@@ -1217,5 +1220,33 @@ def test_vote_health_2011_12_overview_profile_dispatches_to_its_adapter(
     )
     monkeypatch.setattr(
         summary, "_normalize_overview", lambda *_args, **_kwargs: expected
+    )
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+
+
+def test_vote_health_2012_13_overview_profile_dispatches_to_its_adapter(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    summary = source_operations.vote_health_estimates_summary
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; adapter is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=summary.PROFILE_2012_13,
+        expected_sha256=summary.SOURCE_SHA256_2012_13,
+        source_vintage=summary.VINTAGE_2012_13,
+        source_locator="https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2012-13",
+        observed_at="2026-10-03T22:37:57.436271Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 2, "facts": 18}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(
+        summary, "_normalize_overview", lambda *_args, **_kwargs: expected
+    )
+    monkeypatch.setattr(
+        summary,
+        "normalize_vote_health_estimates_overview_2012_13",
+        lambda *_args, **_kwargs: expected,
     )
     assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
