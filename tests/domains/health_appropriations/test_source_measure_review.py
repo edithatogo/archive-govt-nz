@@ -62,10 +62,12 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
         2004,
         2005,
         2006,
+        2007,
         2008,
         2009,
         2010,
         2011,
+        2013,
         2014,
         2015,
         2016,
@@ -127,7 +129,7 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
     )
     assert (
         len(report["source_families"]["vote_health"]["discovered_supplementary_urls"])
-        == 4
+        == 2
     )
 
 

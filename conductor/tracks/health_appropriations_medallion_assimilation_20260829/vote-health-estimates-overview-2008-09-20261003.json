@@ -7,12 +7,17 @@
   "source_vintage": "Treasury-Vote-Health-Estimates-2008-09",
   "source_locator": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2008-09",
   "source_page_count": 8,
-  "normalized_pages": [2],
-  "counts": {"facts": 6, "pages": 2},
+  "normalized_pages": [
+    2
+  ],
+  "counts": {
+    "facts": 6,
+    "pages": 1
+  },
   "output_sha256": {
     "field_lineage.parquet": "1f80f2ac09d6e7a4899183299d1fddc11b9ad4b5025bb8c670e718b072f8ed29",
-    "page_dispositions.parquet": "6bda5ba52eadb5d000f1ce8034ec5ac9c422abe85c029d34ab25879ddf933f08",
-    "vote_health_overview_facts.parquet": "3fd37b2cc8303013cdd740a9dc4ccd6b5f1207a89e30101fdd18baefd3171bcc"
+    "page_dispositions.parquet": "5c4a87d6c5c7ab72b13a84c6efca328d12c219ba0024a3b9620d5c2876bceda1",
+    "vote_health_overview_facts.parquet": "717288f75a8a4d54d903240007e6c2bd29864a7942b94a53887b5a081ddacedc"
   },
   "repeat_build": {
     "runs": 2,
@@ -29,16 +34,67 @@
   "publication_state": "local_validation_only",
   "quality": {
     "values_are_approximate_rounded_whole_millions": true,
-    "source_qualifiers_preserved_in_raw_phrases": ["just over", "nearly"],
+    "source_qualifiers_preserved_in_raw_phrases": [
+      "just over",
+      "nearly"
+    ],
     "no_exact_amount_or_recomputed_total_claimed": true,
     "pypdf_warning": "Xref table not zero-indexed; parser corrected object IDs. Source hash and all six selected overview phrases were verified; warning remains recorded."
   },
   "facts": [
-    {"measure": "vote_total", "value": "12240", "unit": "$ million, approximate rounded source amount", "reference_period": "2008/09", "source_page": 2, "source_phrase": "financial year totalling just over $12,240 million", "raw_token": "12,240"},
-    {"measure": "departmental_functions", "value": "227", "unit": "$ million, approximate rounded source amount", "reference_period": "2008/09", "source_page": 2, "source_phrase": "A total of just over $227 million (1.9% of the Vote) relates to the functions of the Ministry of Health", "raw_token": "227"},
-    {"measure": "non_departmental_total", "value": "11768", "unit": "$ million, approximate rounded source amount", "reference_period": "2008/09", "source_page": 2, "source_phrase": "A total of just over $11,768 million (96.1% of the Vote) is for operating expenses to be incurred on behalf of the Crown", "raw_token": "11,768"},
-    {"measure": "service_funding_total", "value": "11745", "unit": "$ million, approximate rounded source amount", "reference_period": "2008/09", "source_page": 2, "source_phrase": "These total just over $11,745 million (95.9% of the Vote) and are to fund the purchases of health services", "raw_token": "11,745"},
-    {"measure": "other_expenses_total", "value": "23", "unit": "$ million, approximate rounded source amount", "reference_period": "2008/09", "source_page": 2, "source_phrase": "A total of just over $23 million (0.2% of the Vote) is for other expenses", "raw_token": "23"},
-    {"measure": "capital_funding", "value": "244", "unit": "$ million, approximate rounded source amount", "reference_period": "2008/09", "source_page": 2, "source_phrase": "A total of nearly $244 million (2.0% of the Vote) is to provide capital funding", "raw_token": "244"}
+    {
+      "measure": "vote_total",
+      "value": "12240",
+      "unit": "$ million, approximate rounded source amount",
+      "reference_period": "2008/09",
+      "source_page": 2,
+      "source_phrase": "financial year totalling just over $12,240 million",
+      "raw_token": "12,240"
+    },
+    {
+      "measure": "departmental_functions",
+      "value": "227",
+      "unit": "$ million, approximate rounded source amount",
+      "reference_period": "2008/09",
+      "source_page": 2,
+      "source_phrase": "A total of just over $227 million (1.9% of the Vote) relates to the functions of the Ministry of Health",
+      "raw_token": "227"
+    },
+    {
+      "measure": "non_departmental_total",
+      "value": "11768",
+      "unit": "$ million, approximate rounded source amount",
+      "reference_period": "2008/09",
+      "source_page": 2,
+      "source_phrase": "A total of just over $11,768 million (96.1% of the Vote) is for operating expenses to be incurred on behalf of the Crown",
+      "raw_token": "11,768"
+    },
+    {
+      "measure": "service_funding_total",
+      "value": "11745",
+      "unit": "$ million, approximate rounded source amount",
+      "reference_period": "2008/09",
+      "source_page": 2,
+      "source_phrase": "These total just over $11,745 million (95.9% of the Vote) and are to fund the purchases of health services",
+      "raw_token": "11,745"
+    },
+    {
+      "measure": "other_expenses_total",
+      "value": "23",
+      "unit": "$ million, approximate rounded source amount",
+      "reference_period": "2008/09",
+      "source_page": 2,
+      "source_phrase": "A total of just over $23 million (0.2% of the Vote) is for other expenses",
+      "raw_token": "23"
+    },
+    {
+      "measure": "capital_funding",
+      "value": "244",
+      "unit": "$ million, approximate rounded source amount",
+      "reference_period": "2008/09",
+      "source_page": 2,
+      "source_phrase": "A total of nearly $244 million (2.0% of the Vote) is to provide capital funding",
+      "raw_token": "244"
+    }
   ]
 }

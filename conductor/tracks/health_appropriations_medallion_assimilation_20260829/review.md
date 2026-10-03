@@ -1463,4 +1463,10 @@ The required full harness passed 7,360 tests with 10 skips and 98.08%
 branch-aware coverage against the 80% floor; schemas, parity, configured
 mutation, hygiene, supply-chain and SBOM gates passed. Automatic phase review
 passed with receipt SHA-256
-`9b65ea7a0d975f57dbccf145c503ad430cb15c9374cdfa0f27e2b2fee048e964`.
+`871382eb7ccf42d01ed3e79084ba74b703d6bd74bfb82a6d76da3623472d3655`.
+
+The PR review also identified two evidence issues, now corrected: combined
+Supplementary Estimates volumes containing appended supporting information are
+counted as editions, while supporting-information-only documents remain
+excluded; page 3 is now explicitly `preserved_unreviewed` because no facts are
+extracted from it.

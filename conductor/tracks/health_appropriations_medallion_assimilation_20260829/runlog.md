@@ -4372,8 +4372,9 @@ skipped, 98.08% branch-aware coverage against the repository's 80% floor;
 gates, hygiene, CAS benchmark, dependency/license/secret scans and the strict
 113-component SBOM passed. Automatic Conductor `phase_7_gates` passed and its
 immutable receipt is `phase_7_gates-review-receipt-20261003-vote-health-overview-2008-09.json`,
-SHA-256 `9b65ea7a0d975f57dbccf145c503ad430cb15c9374cdfa0f27e2b2fee048e964`.
-Only six qualified overview amounts on page 2 are normalized; rights eligibility
+SHA-256 `871382eb7ccf42d01ed3e79084ba74b703d6bd74bfb82a6d76da3623472d3655`.
+Only six qualified overview amounts on page 2 are normalized; page 3 is
+preserved as unreviewed, not normalized; rights eligibility
 does not imply product publication approval, and the pypdf Xref warning remains
 recorded.
 

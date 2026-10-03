@@ -695,7 +695,10 @@ def _normalize_overview(  # noqa: PLR0913 - profile/provenance are explicit
         "status": "planned" if dry_run else "passed",
         "profile": profile,
         "source_object_sha256": expected_sha256,
-        "counts": {"pages": 2, "facts": len(facts)},
+        "counts": {
+            "pages": len({int(row["source_page"]) for row in rows}),
+            "facts": len(facts),
+        },
     }
     if dry_run:
         return receipt
@@ -712,8 +715,12 @@ def _normalize_overview(  # noqa: PLR0913 - profile/provenance are explicit
                         "source_object_sha256": expected_sha256,
                         "source_locator": source_locator,
                         "source_page": page,
-                        "disposition": "partially_normalized",
-                        "reason": disposition_reason,
+                        "disposition": "partially_normalized"
+                        if any(int(row["source_page"]) == page for row in rows)
+                        else "preserved_unreviewed",
+                        "reason": disposition_reason
+                        if any(int(row["source_page"]) == page for row in rows)
+                        else "page_anchor_verified_no_overview_facts_selected",
                     }
                     for page in (2, 3)
                 ],

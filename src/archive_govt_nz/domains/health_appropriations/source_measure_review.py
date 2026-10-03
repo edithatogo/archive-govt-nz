@@ -124,7 +124,6 @@ def _vote_edition_years(records: list[dict]) -> tuple[set[int], set[int]]:
                 for label in (
                     "Performance Information",
                     "Information Supporting",
-                    "Supporting Information",
                 )
             )
         ):

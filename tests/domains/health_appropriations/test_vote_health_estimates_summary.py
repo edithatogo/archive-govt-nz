@@ -566,3 +566,8 @@ def test_2008_09_normalizer_reads_captured_source_and_marks_approximation(
     assert all(
         fact["unit"] == "$ million, approximate rounded source amount" for fact in facts
     )
+    dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
+    assert {row["source_page"]: row["disposition"] for row in dispositions} == {
+        2: "partially_normalized",
+        3: "preserved_unreviewed",
+    }
