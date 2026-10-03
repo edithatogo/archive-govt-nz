@@ -1415,4 +1415,4 @@ passed 7,351 tests with 10 skips and 98.08% branch-aware coverage against the
 80% floor; schema, parity, configured mutation, hygiene, supply-chain and SBOM
 gates passed. Automatic `phase_7_gates` review passed; its immutable receipt is
 `phase_7_gates-review-receipt-20261003-vote-health-overview-2005-06.json`
-with SHA-256 `2236d431dad218c289a5904fea5f60dfe014f9393b7fd97ad5187772021dc28e`.
+with SHA-256 `b3507de62fca41ec3da8c2b4935013ca160ac69edcc28453930e168fc91c537e`.

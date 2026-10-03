@@ -4327,11 +4327,11 @@ page/field lineage; component totals are not recomputed. A captured-source
 integration test confirmed all eight values, units and page dispositions; the
 parser/dispatch suites passed (494 passed, 10 skipped). Output digests were
 replayed into the machine receipt. Required `./scripts/validate.sh` passed:
-7,351 passed, 10 skipped, 98.08% branch-aware coverage against the 80% floor;
+7,352 passed, 10 skipped, 98.08% branch-aware coverage against the 80% floor;
 53 schemas/43 representative documents, 9/9 parity, configured mutation,
 hygiene, dependency, license, secret and 113-component SBOM checks passed.
 Automatic `phase_7_gates` review passed. Its immutable receipt is
 `phase_7_gates-review-receipt-20261003-vote-health-overview-2005-06.json`
-with SHA-256 `2236d431dad218c289a5904fea5f60dfe014f9393b7fd97ad5187772021dc28e`. Rights, all other PDF content, other
+with SHA-256 `b3507de62fca41ec3da8c2b4935013ca160ac69edcc28453930e168fc91c537e`. Rights, all other PDF content, other
 editions and comparability remain unresolved; there is no Gold or publication
 claim.
