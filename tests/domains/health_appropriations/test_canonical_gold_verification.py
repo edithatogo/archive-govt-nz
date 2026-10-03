@@ -164,6 +164,22 @@ def _package(root: Path) -> tuple[Path, str]:
     ).encode()
     revision_output = root / "historical_revision_reconciliation.json"
     revision_output.write_bytes(revision_payload)
+    overlap_report = {
+        "schema_version": "archive-govt-nz.health-cross-source-period-overlap/v1",
+        "scope": "observed_canonical_product_rows_only",
+        "match_basis": "literal_period_token_only",
+        "completeness": "observed_rows_only",
+        "comparability": "not_assessed",
+        "numeric_variance": "not_computed",
+        "cross_source_join": "not_performed",
+        "overlap_group_count": 0,
+        "groups": [],
+    }
+    overlap_payload = (
+        json.dumps(overlap_report, sort_keys=True, separators=(",", ":")) + "\n"
+    ).encode()
+    overlap_output = root / "cross_source_period_overlap.json"
+    overlap_output.write_bytes(overlap_payload)
     manifest = {
         "schema_version": "archive-govt-nz.health-canonical-gold/v2",
         "outputs": {
@@ -175,6 +191,11 @@ def _package(root: Path) -> tuple[Path, str]:
             revision_output.name: {
                 "sha256": hashlib.sha256(revision_payload).hexdigest(),
                 "bytes": len(revision_payload),
+                "kind": "report",
+            },
+            overlap_output.name: {
+                "sha256": hashlib.sha256(overlap_payload).hexdigest(),
+                "bytes": len(overlap_payload),
                 "kind": "report",
             },
         },
@@ -196,6 +217,7 @@ def _package(root: Path) -> tuple[Path, str]:
             "candidates": [],
         },
         "revision_reconciliation_report": revision_report,
+        "cross_source_period_overlap_report": overlap_report,
         "rights_state": "not_evaluated",
         "publication": "not_performed",
     }
@@ -250,10 +272,14 @@ def test_cli_mcp_parity_and_no_write(
     assert cli_receipt.pop("command") == "health-appropriations-verify-canonical-gold"
     assert cli_receipt == receipt
     assert receipt["status"] == "verified"
-    assert receipt["output_count"] == 2
+    assert receipt["output_count"] == 3
     assert receipt["output_bytes"] == sum(
         (root / name).stat().st_size
-        for name in ("observations.parquet", "historical_revision_reconciliation.json")
+        for name in (
+            "observations.parquet",
+            "historical_revision_reconciliation.json",
+            "cross_source_period_overlap.json",
+        )
     )
     assert receipt["products"] == ["historical"]
     assert receipt["temporal_coverage_groups"] == 1
@@ -335,6 +361,12 @@ def test_consumer_example_summarizes_only_verified_manifest_reports(
             }
             for product in ("pharmac", "moh", "crown")
         },
+    }
+    assert summary["cross_source_period_token_overlaps"] == {
+        "overlap_group_count": 0,
+        "match_basis": "literal_period_token_only",
+        "comparability": "not_assessed",
+        "numeric_variance": "not_computed",
     }
     assert summary["cross_source_comparison"] == "not_performed"
     assert summary["rights_state"] == "not_evaluated"
@@ -516,6 +548,159 @@ def test_invalid_product_revision_reports_fail_closed(
 
     assert receipt["status"] == "failed"
     assert receipt["error"] == "invalid_canonical_gold_package"
+
+
+@pytest.mark.parametrize(
+    "failure",
+    [
+        "bad_count",
+        "unsorted_period",
+        "single_product",
+        "bad_unit",
+        "noncanonical_product",
+        "zero_rows",
+        "empty_vintage",
+        "empty_record_id",
+        "duplicate_products",
+        "bad_comparability",
+        "bad_numeric_variance",
+        "wrong_match_basis",
+        "nonobject_group",
+        "empty_period",
+    ],
+)
+def test_invalid_cross_source_overlap_report_fails_closed(  # noqa: C901, PLR0912 - each mutation is one independent report contract
+    tmp_path: Path, failure: str
+) -> None:
+    root, _pin = _package(tmp_path / "gold")
+    marker = root / "MANIFEST.json"
+    manifest = json.loads(marker.read_text(encoding="utf-8"))
+    valid_group = {
+        "period_token": "FY2024/25",
+        "status": "literal_period_token_overlap_candidate",
+        "product_groups": [
+            {
+                "product": "budget",
+                "row_count": 1,
+                "source_vintages": ["Budget 2025"],
+                "units": ["NZD million"],
+                "input_record_ids": ["budget-1"],
+            },
+            {
+                "product": "historical",
+                "row_count": 1,
+                "source_vintages": ["History 2025"],
+                "units": ["NZD million"],
+                "input_record_ids": ["history-1"],
+            },
+        ],
+        "comparability": "not_assessed",
+        "numeric_variance": "not_computed",
+    }
+    report = manifest["cross_source_period_overlap_report"]
+    report["groups"] = [valid_group]
+    report["overlap_group_count"] = 1
+    if failure == "bad_count":
+        report["overlap_group_count"] = 2
+    elif failure == "unsorted_period":
+        report["groups"] = [
+            {**valid_group, "period_token": "FY2025/26"},
+            valid_group,
+        ]
+        report["overlap_group_count"] = 2
+    elif failure == "single_product":
+        valid_group["product_groups"] = valid_group["product_groups"][:1]
+    elif failure == "bad_unit":
+        valid_group["product_groups"][0]["units"] = [""]
+    elif failure == "noncanonical_product":
+        valid_group["product_groups"][0]["product"] = "unsupported"
+    elif failure == "zero_rows":
+        valid_group["product_groups"][0]["row_count"] = 0
+    elif failure == "empty_vintage":
+        valid_group["product_groups"][0]["source_vintages"] = [""]
+    elif failure == "empty_record_id":
+        valid_group["product_groups"][0]["input_record_ids"] = [""]
+    elif failure == "duplicate_products":
+        valid_group["product_groups"][1]["product"] = "budget"
+    elif failure == "bad_comparability":
+        valid_group["comparability"] = "comparable"
+    elif failure == "bad_numeric_variance":
+        valid_group["numeric_variance"] = "computed"
+    elif failure == "wrong_match_basis":
+        report["match_basis"] = "normalized_period"
+    elif failure == "nonobject_group":
+        report["groups"] = [None]
+        report["overlap_group_count"] = 1
+    else:
+        valid_group["period_token"] = ""
+    payload = (
+        json.dumps(report, sort_keys=True, separators=(",", ":")) + "\n"
+    ).encode()
+    output = root / "cross_source_period_overlap.json"
+    output.write_bytes(payload)
+    manifest["outputs"][output.name] = {
+        "sha256": hashlib.sha256(payload).hexdigest(),
+        "bytes": len(payload),
+        "kind": "report",
+    }
+    marker.write_text(json.dumps(manifest), encoding="utf-8")
+    pin = hashlib.sha256(marker.read_bytes()).hexdigest()
+
+    receipt = verify_canonical_gold_package(root, pin)
+
+    assert receipt["status"] == "failed"
+    assert receipt["error"] == "invalid_canonical_gold_package"
+
+
+def test_valid_overlap_report_accepts_concrete_and_unknown_units(
+    tmp_path: Path,
+) -> None:
+    root, _pin = _package(tmp_path / "gold")
+    marker = root / "MANIFEST.json"
+    manifest = json.loads(marker.read_text(encoding="utf-8"))
+    report = manifest["cross_source_period_overlap_report"]
+    report["groups"] = [
+        {
+            "period_token": "FY2024/25",
+            "status": "literal_period_token_overlap_candidate",
+            "product_groups": [
+                {
+                    "product": "budget",
+                    "row_count": 1,
+                    "source_vintages": ["Budget 2025"],
+                    "units": ["NZD million"],
+                    "input_record_ids": ["budget-1"],
+                },
+                {
+                    "product": "moh",
+                    "row_count": 1,
+                    "source_vintages": ["MoH HAIR 2024"],
+                    "units": ["unknown_not_asserted"],
+                    "input_record_ids": ["moh-1"],
+                },
+            ],
+            "comparability": "not_assessed",
+            "numeric_variance": "not_computed",
+        }
+    ]
+    report["overlap_group_count"] = 1
+    payload = (
+        json.dumps(report, sort_keys=True, separators=(",", ":")) + "\n"
+    ).encode()
+    output = root / "cross_source_period_overlap.json"
+    output.write_bytes(payload)
+    manifest["outputs"][output.name] = {
+        "sha256": hashlib.sha256(payload).hexdigest(),
+        "bytes": len(payload),
+        "kind": "report",
+    }
+    marker.write_text(json.dumps(manifest), encoding="utf-8")
+    pin = hashlib.sha256(marker.read_bytes()).hexdigest()
+
+    receipt = verify_canonical_gold_package(root, pin)
+
+    assert receipt["status"] == "verified"
+    assert receipt["temporal_coverage_groups"] == 1
 
 
 def test_invalid_revision_report_fails_closed(tmp_path: Path) -> None:

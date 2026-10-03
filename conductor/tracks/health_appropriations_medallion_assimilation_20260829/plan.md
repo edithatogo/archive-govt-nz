@@ -852,6 +852,12 @@ integrated parent head.
     retain record IDs and Decimal values, report duplicate groups as ambiguous,
     and leave change interpretation and cross-source comparability unassessed.
     [M-13, S-04; AC-11, AC-12]
+  - [x] Add a deterministic literal-period overlap catalog across observed
+    canonical products, retaining source vintages, units and record identities.
+    The verifier and example pin/summarize the report; comparability and
+    numeric variance remain explicitly unassessed/not computed. This is
+    overlap evidence only, not AC-11 cross-source variance completion.
+    [M-13, S-04; AC-11]
 - [ ] Generate deterministic plots, structured summaries and consumer examples
   from the same queries; make source drill-through available. [M-09, M-10,
   M-13, S-06; AC-07, AC-08]

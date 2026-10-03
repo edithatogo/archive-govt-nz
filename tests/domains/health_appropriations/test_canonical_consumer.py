@@ -596,6 +596,15 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
         "MANIFEST.json",
     }.issubset({path.name for path in output.iterdir()})
     manifest = json.loads((output / "MANIFEST.json").read_text(encoding="utf-8"))
+    overlap_report = json.loads(
+        (output / "cross_source_period_overlap.json").read_text(encoding="utf-8")
+    )
+    assert manifest["cross_source_period_overlap_report"] == overlap_report
+    assert overlap_report["match_basis"] == "literal_period_token_only"
+    assert overlap_report["comparability"] == "not_assessed"
+    assert overlap_report["numeric_variance"] == "not_computed"
+    assert overlap_report["cross_source_join"] == "not_performed"
+    assert overlap_report["overlap_group_count"] == len(overlap_report["groups"])
     revision_report = manifest["revision_reconciliation_report"]
     assert revision_report["schema_version"] == (
         "archive-govt-nz.health-revision-reconciliation/v1"
@@ -1144,6 +1153,64 @@ def test_temporal_coverage_keeps_historical_source_series_distinct(
         (original["source_label"], original["source_locator"]),
         (alternate["source_label"], alternate["source_locator"]),
     }
+
+
+def test_cross_source_overlap_report_is_literal_sorted_and_non_comparative() -> None:
+    report = canonical_gold_export.build_cross_source_period_overlap_report(
+        {
+            "observations": pa.table(
+                {
+                    "period_token": ["FY2025/26", "FY2024/25"],
+                    "source_vintage": ["History 1", "History 1"],
+                    "unit": ["NZD million", "NZD million"],
+                    "input_record_id": ["history-b", "history-a"],
+                }
+            ),
+            "budget": pa.table(
+                {
+                    "period_token": ["FY2025/26", "FY2025/26"],
+                    "source_vintage": ["Budget 1", "Budget 1"],
+                    "unit": ["NZD million", "NZD million"],
+                    "input_record_ids": [["budget-b"], ["budget-a"]],
+                }
+            ),
+            "pharmac": pa.table(
+                {
+                    "period_token": ["FY2023/24"],
+                    "source_vintage": ["Pharmac 1"],
+                    "unit": ["NZD million"],
+                    "record_id": ["pharmac-only"],
+                }
+            ),
+        }
+    )
+
+    assert report["overlap_group_count"] == 1
+    assert report["groups"] == [
+        {
+            "period_token": "FY2025/26",
+            "status": "literal_period_token_overlap_candidate",
+            "product_groups": [
+                {
+                    "product": "budget",
+                    "row_count": 2,
+                    "source_vintages": ["Budget 1"],
+                    "units": ["NZD million"],
+                    "input_record_ids": ["budget-a", "budget-b"],
+                },
+                {
+                    "product": "historical",
+                    "row_count": 1,
+                    "source_vintages": ["History 1"],
+                    "units": ["NZD million"],
+                    "input_record_ids": ["history-b"],
+                },
+            ],
+            "comparability": "not_assessed",
+            "numeric_variance": "not_computed",
+        }
+    ]
+    assert report["cross_source_join"] == "not_performed"
 
 
 def test_classification_drift_report_flags_only_same_exact_budget_dimensions(

@@ -84,6 +84,17 @@ _PRODUCT_REVISION_KEY_FIELDS = {
         "accounting_basis",
     ),
 }
+_MIN_OVERLAP_PRODUCTS = 2
+_ALLOWED_OVERLAP_PRODUCTS = {
+    "historical",
+    "budget",
+    "revenue",
+    "pharmac",
+    "moh",
+    "crown_befu",
+    "crown_hyefu",
+    "fiscal_crown",
+}
 _COMMON = {
     "schema_version": "archive-govt-nz.health-canonical-gold-verification/v1",
     "verification_scope": "manifest_declared_output_fixity",
@@ -125,6 +136,74 @@ def _valid_product_revision_reports(value: object) -> bool:
             return False
         if counts[3] != len(report["candidates"]):
             return False
+    return True
+
+
+def _valid_overlap_product_group(value: object) -> bool:
+    if not isinstance(value, dict):
+        return False
+    product = value.get("product")
+    row_count = value.get("row_count")
+    if (
+        type(product) is not str
+        or product not in _ALLOWED_OVERLAP_PRODUCTS
+        or type(row_count) is not int
+        or row_count < 1
+    ):
+        return False
+    for field in ("source_vintages", "units", "input_record_ids"):
+        items = value.get(field)
+        if not isinstance(items, list) or not items or items != sorted(set(items)):
+            return False
+        if any(type(item) is not str or not item for item in items):
+            return False
+    return True
+
+
+def _valid_overlap_group(value: object, previous_period: str | None) -> bool:
+    if not isinstance(value, dict):
+        return False
+    period = value.get("period_token")
+    product_groups = value.get("product_groups")
+    if (
+        type(period) is not str
+        or not period
+        or (previous_period is not None and period <= previous_period)
+        or value.get("status") != "literal_period_token_overlap_candidate"
+        or value.get("comparability") != "not_assessed"
+        or value.get("numeric_variance") != "not_computed"
+        or not isinstance(product_groups, list)
+        or len(product_groups) < _MIN_OVERLAP_PRODUCTS
+        or any(not _valid_overlap_product_group(item) for item in product_groups)
+    ):
+        return False
+    names = [item["product"] for item in product_groups]
+    return names == sorted(set(names))
+
+
+def _valid_cross_source_period_overlap(value: object) -> bool:
+    required = {
+        "schema_version": "archive-govt-nz.health-cross-source-period-overlap/v1",
+        "scope": "observed_canonical_product_rows_only",
+        "match_basis": "literal_period_token_only",
+        "completeness": "observed_rows_only",
+        "comparability": "not_assessed",
+        "numeric_variance": "not_computed",
+        "cross_source_join": "not_performed",
+    }
+    if not isinstance(value, dict) or any(
+        value.get(key) != expected for key, expected in required.items()
+    ):
+        return False
+    groups = value.get("groups")
+    count = value.get("overlap_group_count")
+    if not isinstance(groups, list) or type(count) is not int or count != len(groups):
+        return False
+    previous_period: str | None = None
+    for group in groups:
+        if not _valid_overlap_group(group, previous_period):
+            return False
+        previous_period = group["period_token"]
     return True
 
 
@@ -247,6 +326,7 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
     temporal_report = manifest.get("temporal_coverage_report")
     classification_report = manifest.get("classification_drift_report")
     revision_report = manifest.get("revision_reconciliation_report")
+    overlap_report = manifest.get("cross_source_period_overlap_report")
     try:
         revision_payload = json.loads(
             (root / "historical_revision_reconciliation.json").read_text(
@@ -255,6 +335,12 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
         )
     except OSError, UnicodeDecodeError, json.JSONDecodeError:
         revision_payload = None
+    try:
+        overlap_payload = json.loads(
+            (root / "cross_source_period_overlap.json").read_text(encoding="utf-8")
+        )
+    except OSError, UnicodeDecodeError, json.JSONDecodeError:
+        overlap_payload = None
     if (
         not isinstance(products, dict)
         or not isinstance(temporal_report, dict)
@@ -278,6 +364,8 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
         or not _valid_product_revision_reports(revision_report.get("product_revisions"))
         or not isinstance(revision_report.get("candidates"), list)
         or revision_payload != revision_report
+        or not _valid_cross_source_period_overlap(overlap_report)
+        or overlap_payload != overlap_report
         or any(type(name) is not str or not name for name in products)
     ):
         _fail("invalid_gold_reports")
