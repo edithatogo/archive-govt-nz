@@ -1489,3 +1489,52 @@ coverage against the 80% floor. Schema, parity, configured mutation, hygiene,
 supply-chain and SBOM gates passed. Automatic `phase_7_gates` review passed
 with receipt SHA-256
 `1d9873173e8c6973fbad2d7d79ae130d7d7c930bcc4f5d8741744fb598582ac0`.
+
+
+## 2026-10-04 — Vote Health 2009/10 overview increment
+
+Self-review confirms the extractor is pinned to one captured Treasury PDF hash,
+release vintage, and exact page count. All 17 selected values are anchored to
+unique source phrases and preserve their raw amount tokens; approximate
+whole-million source wording is surfaced in unit/quality metadata. Regression
+and captured-source CLI builds match. The remaining seven pages are explicitly
+preserved-unreviewed, rights on extracted facts remain not evaluated, and no
+publication or cross-edition comparability claim is made. The retained Xref
+warning is disclosed. Required full assurance and automatic phase-7 review are
+still pending at this entry.
+
+Final assurance for this increment passed on 2026-10-04: `./scripts/validate.sh` reported 7,373 passed, 10 skipped and 98.08% branch coverage; all schema, parity, configured mutation, supply-chain, secret-scan and 113-component SBOM checks passed. Automatic `phase_7_gates` review passed; its retained receipt is `phase_7_gates-review-receipt-20261004-vote-health-overview-2009-10.json` (file SHA-256 `7320aeb3a4350021a8e161c33a86418452b332a3e755842e448f99c4655a5b53`). The first preliminary run exposed a formatting issue, a lint issue and the stale source-review evidence pin after index links changed; each was fixed and the corresponding focused/full validation passed.
+The exact captured object also has an additive one-resource census and an
+independent source-health reconciliation. An initial reconciliation invocation
+used the Bronze parent directory where this report helper expects the CAS
+`sha256` directory; it failed closed with `capture_object_missing`. The retry
+used the correct root, verified the 60,661-byte object, and passed. This did not
+change source bytes or the pinned census baseline.
+
+
+Review follow-up for PR #619: the review's page-disposition completeness finding
+was valid. The extraction now emits dispositions across all eight PDF pages;
+page 2 is partially normalized and pages 1, 3–8 are preserved-unreviewed. The
+receipt, test, and repeat-build hashes were refreshed. The full required harness
+passed (7,363 passed, 10 skipped, 98.08% coverage against 80%); schema, parity,
+mutation, supply-chain, secret-scan, SBOM and Phase 7 checks passed.
+
+
+2010/11 Vote Health Estimates increment: Treasury identifies the signed,
+superseded Estimates as issued 20 May 2010 and its publication as CC BY 4.0.
+The exact 55,369-byte PDF was captured and independently reconciled against its
+WARC and Bronze fixity. The edition-pinned adapter extracts 18 statements on
+pages 2–3; each source page receives an explicit disposition (2–3 partially
+normalized; pages 1 and 4–9 preserved-unreviewed). The extracted amounts and
+qualifiers remain source-led; no sums are recomputed. Two repeated CLI builds
+match byte for byte. pypdf's Xref correction warning is retained. Rights on the
+derivative are unevaluated, publication is not approved, and seven pages remain
+unreviewed.
+
+
+2010/11 Vote Health Estimates assurance is complete for this bounded overview
+increment: `./scripts/validate.sh` passed with 7,366 tests passed, 10 skipped,
+and 98.08% branch coverage against the 80% floor. Schema (53/43), parity 9/9,
+configured mutation, supply-chain, secret scan, and strict 113-component SBOM
+checks passed. Automatic Phase 7 review passed; receipt SHA-256 is
+`a5853c57d094b40f20dd59ab7a03576c25ab54af8102bb5ed0c1e4f1c814bbf8`.

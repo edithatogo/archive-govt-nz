@@ -4413,3 +4413,94 @@ hygiene, 327.37 MB/s CAS benchmark, dependency/license/secret scans and strict
 113-component SBOM passed. Automatic `phase_7_gates` review passed; retained
 receipt `phase_7_gates-review-receipt-20261004-qes-adjustment.json` has
 SHA-256 `1d9873173e8c6973fbad2d7d79ae130d7d7c930bcc4f5d8741744fb598582ac0`.
+
+
+2026-10-04 — Vote Health 2009/10 overview headlines
+
+Captured Treasury's eight-page 2009/10 Estimates PDF (60,661 bytes) with its
+explicit Crown Copyright CC BY 4.0 record and Treasury attribution. Added a
+separate source-hash-pinned Silver profile for all 17 monetary statements in
+the Overview of the Vote on page 2. Exact source phrases, rounded amount
+qualifiers, Decimal tokens, edition period and page/field lineage are retained;
+no totals were recomputed. Verified the CAS object and WARC response binding,
+then built twice through both the adapter and typed CLI. Facts, lineage, and
+page-disposition outputs were byte-identical (17 facts; 17 value-lineage rows;
+one normalized page; seven pages preserved-unreviewed). Focused parser and
+dispatch suites passed: 506 passed, 10 skipped. The whole-edition task remains
+in progress; this increment does not establish exact totals, comparability,
+publication approval, or full source coverage. pypdf emitted its retained
+non-zero-indexed Xref correction warning. Full harness and phase review follow.
+
+Required `./scripts/validate.sh` passed for the exact implementation tree: 7,373 passed, 10 skipped, 98.08% branch-aware coverage against the 80% floor; 53 schemas/43 representative documents; differential parity 9/9; all configured mutation, hygiene, CAS benchmark, dependency/license/secret and strict 113-component SBOM gates passed. The first attempts exposed a test-format issue, 17 regex implicit-concatenation lint findings, and then a stale source-measure evidence hash for the changed track index. These were recorded, corrected, and the exact index pin and 36 source-review tests passed. Automatic Conductor `phase_7_gates` passed. Its immutable receipt is `phase_7_gates-review-receipt-20261004-vote-health-overview-2009-10.json`, file SHA-256 `7320aeb3a4350021a8e161c33a86418452b332a3e755842e448f99c4655a5b53`.
+
+The 2009/10 capture also has a one-resource source-census addendum. An initial
+source-health report invocation supplied the Bronze CAS parent instead of the
+helper's expected `bronze-cas/sha256` object root and failed closed with
+`capture_object_missing`; the corrected invocation passed, independently
+verified the 60,661-byte CAS object, recorded one rights-eligible capture, and
+retained 11 context-series-vintage states. The pinned 143-resource census and
+its existing report were left unchanged.
+
+
+2026-10-04 — Review correction: complete Vote Health PDF page dispositions
+
+The PR review identified that the initial 2009/10 output only emitted dispositions
+for pages 2 and 3. The profile now emits one row for each of the eight source
+pages, classifying page 2 as partially normalized and the other seven as
+preserved-unreviewed with reason `not_reviewed_by_overview_profile`. The
+captured-source test checks exact page coverage and counts. Two fresh typed CLI
+builds produced identical facts, lineage and dispositions; updated disposition
+SHA-256 is `32fdf4dea054a3aece7e8ec581e6c795856b4e3202712563664e56c88264aa4d`.
+Focused adapter/operation suites passed (506 passed, 10 skipped). Required
+`./scripts/validate.sh` passed: 7,363 passed, 10 skipped, 98.08% branch
+coverage; 53 schemas/43 documents, parity 9/9, mutation, supply-chain, secret,
+and 113-component SBOM gates passed. Automatic Phase 7 review passed; refreshed
+receipt SHA-256 is `7320aeb3a4350021a8e161c33a86418452b332a3e755842e448f99c4655a5b53`.
+
+
+2026-10-04 — Vote Health 2010/11 Estimates overview headlines
+
+Captured Treasury's nine-page 2010/11 Estimates PDF (HTTP 200, 55,369 bytes,
+SHA-256 `5dabf866e4f60c5fdf9df88b3fcc5b0e537652d1d6817465efb46a97c0bbe497`)
+with WARC response SHA-256 `cbbc47ff66cf06a6126799dcf467f34651a0573e7396e179e75a6bbc00fbfc8f`.
+Treasury's official publication record gives the signed/issue date as 20 May
+2010 and records CC BY 4.0. Added a pinned profile for 18 statements across
+overview pages 2–3, with edition context, phrase/token and field lineage, plus
+one page disposition for each of nine PDF pages. Pages 2–3 are partially
+normalized and pages 1, 4–9 remain preserved-unreviewed. Two independent typed
+CLI builds were byte-identical: facts
+`2f09f6b51f03482e080c6020b0c91a82131932766251e44d3fa24a24eae024a4`, lineage
+`5b707731a214273b63fa1dbd289a5baa2e50b0345c203313f44e2effc15ff031`,
+dispositions
+`dba47650d5f4c10ef75ecb4dd06cd4fd1847655059eec1d7719ed4d2a8af79dc`. The
+captured-source test verifies 18 values and all nine page dispositions.
+Focused adapter/operation suites pass: 509 passed, 10 skipped. The source-health
+report matched the one-record addendum to the capture manifest and Bronze CAS.
+Initial bounded failures were an incorrectly mapped split word in one anchored
+phrase, a missing generated schema enum entry, and a rights URI mismatch in the
+addendum; each was corrected and the focused checks passed. Full harness and
+Phase 7 review remain pending. No Gold, publication, exact-dollar, or
+cross-edition comparability claim is made.
+
+The first required validation attempt stopped at Ruff: it reported 17 ISC004
+findings for implicit regex concatenation in the new edition profile and one
+RUF002 en dash in a docstring. These were bounded to the new adapter; explicit
+parentheses and plain ASCII punctuation corrected them. Focused Ruff and parser /
+dispatch tests then passed. The final full-harness result follows.
+
+
+Final validation for the 2010/11 overview passed: 7,366 tests passed, 10
+skipped, and 98.08% branch coverage against the 80% floor. The 53-schema / 43
+representative-document validation, 9/9 differential parity, configured
+mutation gates, hygiene, CAS benchmark, dependency/license/secret scans, and
+113-component SBOM passed. Automatic Phase 7 review passed; immutable retained
+receipt SHA-256 is
+`a5853c57d094b40f20dd59ab7a03576c25ab54af8102bb5ed0c1e4f1c814bbf8`.
+
+
+## 2026-10-04 — Vote Health 2011/12 overview foundation
+
+- Captured the official Treasury Estimates PDF (19 May 2011 edition) through `tools/capture_health_resources.py`; capture manifest records HTTP 200, ETag/Last-Modified, WARC SHA-256, PDF SHA-256/BLAKE3, and CC BY 4.0 rights evidence.
+- Source census reconciliation and Bronze object fixity passed; 1 resource and 11 context-series vintages recorded in the generated source-health report.
+- Added a pinned 2011/12 overview profile with 17 source-anchored statements from pages 2–3. Pages 1 and 4–9 are preserved as unreviewed.
+- Two local source-operation Silver builds were byte-identical: 17 facts, 17 lineage rows, 9 page dispositions. Rights of normalized facts remain not evaluated; publication, exact precision, comparability, and total recomputation are not approved.

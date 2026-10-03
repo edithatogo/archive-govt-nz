@@ -1,0 +1,96 @@
+{
+  "capture_census_reconciliation": {
+    "capture_context_census_sha256": "d73ddc5ac531302e0432795c5dec05631842cb5432af40d804b9177441b7a61b",
+    "file": "vote-health-estimates-overview-2011-12-census.json",
+    "matched_resource_count": 1,
+    "sha256": "d73ddc5ac531302e0432795c5dec05631842cb5432af40d804b9177441b7a61b",
+    "source_health_status": "passed"
+  },
+  "capture_content_type": "application/pdf",
+  "capture_input_census_file": "vote-health-estimates-overview-2011-12-census.json",
+  "capture_input_census_sha256": "d73ddc5ac531302e0432795c5dec05631842cb5432af40d804b9177441b7a61b",
+  "capture_manifest_file": "vote-health-estimates-overview-2011-12-capture-final.json",
+  "capture_manifest_sha256": "9db1f0519893208df078a736c61eb1829422172d2063d446d2a62049be69f299",
+  "capture_observed_at": "2026-10-03T20:14:44.570576Z",
+  "capture_status_code": 200,
+  "excluded_claims": [
+    "exact dollar precision",
+    "cross-edition comparability",
+    "recomputed totals",
+    "whole-document coverage",
+    "detailed appropriation coverage"
+  ],
+  "fact_count": 17,
+  "fiscal_year": "2011/12",
+  "integrated_operation": {
+    "command": "health-appropriations-source-operation",
+    "counts": {
+      "facts": 17,
+      "pages": 2
+    },
+    "output_sha256": {
+      "field_lineage.parquet": "7d6bfd2e3761434daffdc8bedc8dedcbe2eacfa619a3cb0a89d309b7d6888fcf",
+      "page_dispositions.parquet": "d76ab0c6142edd63ca174d1d8a9d0d8dbabd83bafadb32c9653b94b902a9d2a3",
+      "vote_health_overview_facts.parquet": "a3ac711147a035275f16d27a78b845455507b629f64cd68a7b38dac0032bfb51"
+    },
+    "profile": "vote-health-estimates-2011-12-overview/v1",
+    "repeat_outputs_byte_identical": true,
+    "runs": 2,
+    "status": "written_local",
+    "verification_scope": "adapter_execution_only"
+  },
+  "issued": "2011-05-19",
+  "landing_page": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2011-12",
+  "license_evidence": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2011-12",
+  "lineage_rows": 17,
+  "normalized_source_pages": [
+    2,
+    3
+  ],
+  "output_sha256": {
+    "field_lineage.parquet": "7d6bfd2e3761434daffdc8bedc8dedcbe2eacfa619a3cb0a89d309b7d6888fcf",
+    "page_dispositions.parquet": "d76ab0c6142edd63ca174d1d8a9d0d8dbabd83bafadb32c9653b94b902a9d2a3",
+    "vote_health_overview_facts.parquet": "a3ac711147a035275f16d27a78b845455507b629f64cd68a7b38dac0032bfb51"
+  },
+  "page_disposition_rows": 9,
+  "parser_observation": "captured PDF extracted as nine pages; only source pages 2 and 3 are normalized; remaining seven page records are preserved as unreviewed.",
+  "preserved_unreviewed_pages": [
+    1,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "publication": "not_approved",
+  "publisher_etag": "\"6450642e-12a6d\"",
+  "publisher_last_modified": "Tue, 02 May 2023 01:15:26 GMT",
+  "repeat_builds": 2,
+  "repeat_outputs_byte_identical": true,
+  "rights": {
+    "attribution": "The Treasury New Zealand",
+    "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+    "license": "CC-BY-4.0",
+    "state": "eligible"
+  },
+  "rights_state_of_normalized_facts": "not_evaluated",
+  "schema_version": "archive-govt-nz.vote-health-estimates-overview-receipt/v1",
+  "source_blake3": "cbb5988d5f9fa7f3fd72fac1c3131bcc40d6d4dc1cbffa4d746b4e2cf7882528",
+  "source_bytes": 76397,
+  "source_health_reconciliation": {
+    "bronze_bytes_verified": 76397,
+    "json_file": "source-health-report-20261004-vote-health-2011-12.json",
+    "json_sha256": "0054603dca6f7f7f65d3db4a99562cef710cb95e14d373288a8c527833a79e1a",
+    "markdown_file": "source-health-report-20261004-vote-health-2011-12.md",
+    "markdown_sha256": "5c17c09f9d167b5ccea12466df7a4571f9ab5d693b33be3e6f2d2ce3bbfef1c4",
+    "matched_resource_count": 1,
+    "status": "passed"
+  },
+  "source_id": "treasury-vote-health-pdf-2011-12-estimates",
+  "source_object_sha256": "5b56c8a0641a870d82558f2c61fc87df90bcabf318541af4c3d86ba8ce3063af",
+  "source_page_count": 9,
+  "source_title": "Vote Health - The Estimates of Appropriations 2011/12",
+  "source_url": "https://www.treasury.govt.nz/sites/default/files/2011-05/est11health.pdf",
+  "source_warc_sha256": "790cce7dae8b8ee3192b08c9da8f81daafffcd629bc22a1705de20384f6449f2"
+}

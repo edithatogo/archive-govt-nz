@@ -1,0 +1,142 @@
+{
+  "schema_version": "archive-govt-nz.vote-health-estimates-overview-receipt/v1",
+  "source_id": "treasury-vote-health-pdf-2010-11-estimates",
+  "source_title": "Vote Health - The Estimates of Appropriations 2010/11",
+  "source_url": "https://www.treasury.govt.nz/sites/default/files/2010-05/est10health.pdf",
+  "landing_page": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2010-11",
+  "issued": "2010-05-20",
+  "fiscal_year": "2010/11",
+  "source_object_sha256": "5dabf866e4f60c5fdf9df88b3fcc5b0e537652d1d6817465efb46a97c0bbe497",
+  "source_bytes": 55369,
+  "source_blake3": "e2cc84b044b0c17d88bca7f04b9fd2c17e4c917f416362e9ab1cb2105b05c857",
+  "source_warc_sha256": "cbbc47ff66cf06a6126799dcf467f34651a0573e7396e179e75a6bbc00fbfc8f",
+  "capture_manifest_sha256": "94fd7caccff3d5f4366f78d940a4b36d00fc0383f340e159cbab28bbc4bedff1",
+  "capture_request_sha256": "959e1ecdaa1973c024a10222070330983ad685313082dc575f66333a8654ac4e",
+  "capture_observed_at": "2026-10-03T18:31:59.293780Z",
+  "capture_status_code": 200,
+  "capture_content_type": "application/pdf",
+  "publisher_etag": "\"6450637b-d849\"",
+  "publisher_last_modified": "Tue, 02 May 2023 01:12:27 GMT",
+  "rights": {
+    "attribution": "The Treasury New Zealand",
+    "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+    "license": "CC-BY-4.0",
+    "state": "eligible"
+  },
+  "license_evidence": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2010-11",
+  "source_page_count": 9,
+  "normalized_source_pages": [
+    2,
+    3
+  ],
+  "preserved_unreviewed_pages": [
+    1,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "fact_count": 18,
+  "lineage_rows": 18,
+  "facts_output_sha256": "2f09f6b51f03482e080c6020b0c91a82131932766251e44d3fa24a24eae024a4",
+  "lineage_output_sha256": "5b707731a214273b63fa1dbd289a5baa2e50b0345c203313f44e2effc15ff031",
+  "page_dispositions_output_sha256": "dba47650d5f4c10ef75ecb4dd06cd4fd1847655059eec1d7719ed4d2a8af79dc",
+  "page_disposition_rows": 9,
+  "repeat_builds": 2,
+  "repeat_outputs_byte_identical": true,
+  "rights_state_of_normalized_facts": "not_evaluated",
+  "publication": "not_approved",
+  "excluded_claims": [
+    "exact dollar precision",
+    "cross-edition comparability",
+    "recomputed totals",
+    "whole-document coverage",
+    "Crown Revenue headline in selected overview not identified"
+  ],
+  "integrated_operation": {
+    "command": "health-appropriations-extract-source",
+    "profile": "vote-health-estimates-2010-11-overview/v1",
+    "status": "written_local",
+    "verification_scope": "adapter_execution_only",
+    "runs": 2,
+    "counts": {
+      "pages": 2,
+      "facts": 18,
+      "page_dispositions": 9
+    },
+    "output_sha256": {
+      "field_lineage.parquet": "5b707731a214273b63fa1dbd289a5baa2e50b0345c203313f44e2effc15ff031",
+      "page_dispositions.parquet": "dba47650d5f4c10ef75ecb4dd06cd4fd1847655059eec1d7719ed4d2a8af79dc",
+      "vote_health_overview_facts.parquet": "2f09f6b51f03482e080c6020b0c91a82131932766251e44d3fa24a24eae024a4"
+    },
+    "repeat_outputs_byte_identical": true,
+    "full_harness": "passed",
+    "phase_7_gates": "passed"
+  },
+  "parser_observation": "pypdf emitted the retained warning: Xref table not zero-indexed; ID numbers will be corrected.",
+  "source_census_addendum": {
+    "file": "vote-health-estimates-overview-2010-11-census.json",
+    "sha256": "5f258e09deda03b503776aa161aceef3813abfa3e3271065a10ac5183e472445",
+    "resource_count": 1,
+    "disposition": "captured"
+  },
+  "source_health_reconciliation": {
+    "json_file": "source-health-report-20261004-vote-health-2010-11.json",
+    "json_sha256": "694769f5a063711a0106c6f28e18d24558c6afc3dbea65aaaa37080e8fc0f3b5",
+    "markdown_file": "source-health-report-20261004-vote-health-2010-11.md",
+    "markdown_sha256": "64a86263bf04052d37466a15ae6e99919d2eb8897e5b460276e5d67339f0f42b",
+    "status": "passed",
+    "matched_resource_count": 1,
+    "bronze_object_count_verified": 1,
+    "bronze_bytes_verified": 55369,
+    "rights_state_recorded": "eligible",
+    "context_series_vintages": 11
+  },
+  "full_harness": {
+    "command": "./scripts/validate.sh",
+    "status": "passed",
+    "passed": 7366,
+    "skipped": 10,
+    "branch_coverage_percent": 98.08,
+    "coverage_floor_percent": 80,
+    "schemas": "53_schemas_43_representative_documents",
+    "parity": "9_of_9",
+    "mutations": "all_configured_gates_passed",
+    "supply_chain": "dependency_and_license_passed",
+    "credentials_review": "passed",
+    "sbom_components": 113
+  },
+  "phase_7_gates": {
+    "status": "passed",
+    "receipt": "phase_7_gates-review-receipt-20261004-vote-health-overview-2010-11.json",
+    "sha256": "a5853c57d094b40f20dd59ab7a03576c25ab54af8102bb5ed0c1e4f1c814bbf8"
+  },
+  "reconciliation_events": [
+    {
+      "gate": "source_health_census_reconciliation",
+      "first_result": "failed",
+      "failure": "the initial census rights_uri did not equal the Treasury rights evidence URL in the capture manifest",
+      "resolution": "aligned the census evidence URI with the captured manifest and independently reran source-health reconciliation; it passed"
+    },
+    {
+      "gate": "parser_pattern_contract",
+      "first_result": "failed",
+      "failure": "the PDF extractor splits \u201cpurchase\u201d across its page text in one of the anchored phrases",
+      "resolution": "corrected the edition-specific regex to allow the observed source-extractor word break and added captured-source and storage-independent phrase tests"
+    },
+    {
+      "gate": "schema_profile_contract",
+      "first_result": "failed",
+      "failure": "the generated operation schema enum initially omitted the new transformation identifier",
+      "resolution": "added the identifier and profile discriminator to the JSON schema; schema parity and the committed-receipt test pass"
+    },
+    {
+      "gate": "ruff",
+      "first_result": "failed",
+      "failure": "17 ISC004 implicit regex concatenation findings and one RUF002 en dash in the docstring",
+      "resolution": "parenthesized regex fragments and replaced ambiguous punctuation; full harness passed"
+    }
+  ]
+}

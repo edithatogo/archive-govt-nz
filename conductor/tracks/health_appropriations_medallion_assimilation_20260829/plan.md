@@ -634,6 +634,12 @@ integrated parent head.
   exact totals. Surrounding prose, remaining editions, rights, comparability
   and annual coverage remain unresolved, so this parent task remains open.
   See `vote-health-estimates-overview-2008-09-20261003.md` and its receipt.
+  The next 2009/10 Estimates PDF is now captured under its Treasury CC BY 4.0
+  statement. A separate pinned profile preserves 17 page-2 monetary statements
+  with their rounded qualifiers, source phrases, and lineage; two independent
+  builds match. This adds one overview slice only and does not close the
+  remaining edition, whole-PDF, rights, comparability, or annual-coverage work.
+  See `vote-health-estimates-overview-2009-10-20261004.md` and its receipt.
   On 2026-10-03, the exact 2002/03 detail package rebuilt twice from its pinned
   Bronze object and matched all retained Silver outputs. The eligible captured
   2003/04 Supplementary Estimates PDF now has separate exact-profile summary,
@@ -1304,3 +1310,12 @@ integrated parent head.
 | Collection mutation approval | adding/removing collection items | uploaded dataset verification if independently authorized |
 | Donor archival/destructive authority | donor retirement only | all assimilation work; retirement remains out of scope |
 | Zenodo release authority | deposition/DOI only | all track work; Zenodo remains out of scope |
+
+
+- [x] Add a source-hash-pinned 2010/11 Vote Health Estimates overview adapter,
+  operation schema and tests. Capture and reconcile the official nine-page PDF;
+  normalize 18 phrase-anchored monetary statements across overview pages 2–3
+  and disposition all nine source pages. Builds are local validation evidence;
+  the remaining seven pages are unreviewed and no whole-edition, comparison,
+  Gold or publication claim is made. [M-01, M-03, M-07, M-18; AC-01, AC-04,
+  AC-05, AC-16]
