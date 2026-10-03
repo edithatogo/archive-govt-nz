@@ -41,7 +41,7 @@
   "lineage_rows": 17,
   "facts_output_sha256": "442d0b821f3a82e99825db3ff3047ff06e338ddd4893bfc093380ebd5a4ce4e6",
   "lineage_output_sha256": "a4db872a78e5c617e54ff80797282cb9f8bbc2ec0339a2c9615d6ba1297b6bff",
-  "page_dispositions_output_sha256": "e2803e9109fa415586915cc28a2fdc08ceb5651b64b54b7b4e3ef142e65715a8",
+  "page_dispositions_output_sha256": "32fdf4dea054a3aece7e8ec581e6c795856b4e3202712563664e56c88264aa4d",
   "repeat_builds": 2,
   "repeat_outputs_byte_identical": true,
   "rights_state_of_normalized_facts": "not_evaluated",
@@ -60,11 +60,12 @@
     "runs": 2,
     "counts": {
       "pages": 1,
-      "facts": 17
+      "facts": 17,
+      "page_dispositions": 8
     },
     "output_sha256": {
       "field_lineage.parquet": "a4db872a78e5c617e54ff80797282cb9f8bbc2ec0339a2c9615d6ba1297b6bff",
-      "page_dispositions.parquet": "e2803e9109fa415586915cc28a2fdc08ceb5651b64b54b7b4e3ef142e65715a8",
+      "page_dispositions.parquet": "32fdf4dea054a3aece7e8ec581e6c795856b4e3202712563664e56c88264aa4d",
       "vote_health_overview_facts.parquet": "442d0b821f3a82e99825db3ff3047ff06e338ddd4893bfc093380ebd5a4ce4e6"
     },
     "repeat_outputs_byte_identical": true,
@@ -89,7 +90,7 @@
   "phase_7_gates": {
     "status": "passed",
     "receipt": "phase_7_gates-review-receipt-20261004-vote-health-overview-2009-10.json",
-    "sha256": "972a16910dab53d1a0b1b99effb0bd57ba2d077c1adedaa99454e32152af8518"
+    "sha256": "7320aeb3a4350021a8e161c33a86418452b332a3e755842e448f99c4655a5b53"
   },
   "reconciliation_events": [
     {
@@ -109,6 +110,12 @@
       "first_result": "failed",
       "failure": "health track index.md hash changed after adding capture and extraction receipt links",
       "resolution": "refreshed the exact index evidence hash; all 36 focused source-review tests passed"
+    },
+    {
+      "gate": "review_page_disposition_completeness",
+      "first_result": "blocked_by_review",
+      "failure": "the initial adapter emitted only pages 2 and 3 despite recording an eight-page source",
+      "resolution": "emit a deterministic disposition row for every source page; only page 2 is partially normalized, all other pages are preserved-unreviewed; captured-source test asserts all eight pages"
     }
   ],
   "coverage_tests_added_for_threshold": false,

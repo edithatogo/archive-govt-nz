@@ -897,9 +897,9 @@ def _normalize_overview(  # noqa: PLR0913 - profile/provenance are explicit
                         else "preserved_unreviewed",
                         "reason": disposition_reason
                         if any(int(row["source_page"]) == page for row in rows)
-                        else "page_anchor_verified_no_overview_facts_selected",
+                        else "not_reviewed_by_overview_profile",
                     }
-                    for page in (2, 3)
+                    for page in range(1, expected_page_count + 1)
                 ],
                 DISPOSITION_SCHEMA,
             ),

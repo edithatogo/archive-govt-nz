@@ -234,7 +234,13 @@ def test_normalizer_dry_run_and_local_write_are_source_pinned(
     assert facts[0]["currency_code"] is None
     assert facts[0]["rights_state"] == "not_evaluated"
     assert lineage[0]["raw_value"] == "8,645.493"
-    assert {row["source_page"] for row in dispositions} == {2, 3}
+    assert {row["source_page"] for row in dispositions} == set(range(1, 45))
+    assert (
+        sum(row["disposition"] == "partially_normalized" for row in dispositions) == 2
+    )
+    assert (
+        sum(row["disposition"] == "preserved_unreviewed" for row in dispositions) == 42
+    )
     assert source.read_bytes() == b"exactly retained PDF bytes"
 
 
@@ -295,7 +301,8 @@ def test_2004_05_normalizer_reads_captured_source_and_writes_eight_facts(
     ]
     dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
     assert {row["reason"] for row in dispositions} == {
-        "eight_reviewed_overview_headlines_only"
+        "eight_reviewed_overview_headlines_only",
+        "not_reviewed_by_overview_profile",
     }
 
 
@@ -366,7 +373,8 @@ def test_2005_06_normalizer_reads_captured_source_and_writes_eight_facts(
     ]
     dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
     assert {row["reason"] for row in dispositions} == {
-        "eight_reviewed_overview_headlines_only"
+        "eight_reviewed_overview_headlines_only",
+        "not_reviewed_by_overview_profile",
     }
 
 
@@ -450,7 +458,8 @@ def test_2006_07_normalizer_reads_captured_source_and_writes_eight_facts(
     ]
     dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
     assert {row["reason"] for row in dispositions} == {
-        "eight_reviewed_overview_headlines_only"
+        "eight_reviewed_overview_headlines_only",
+        "not_reviewed_by_overview_profile",
     }
 
 
@@ -567,10 +576,18 @@ def test_2008_09_normalizer_reads_captured_source_and_marks_approximation(
         fact["unit"] == "$ million, approximate rounded source amount" for fact in facts
     )
     dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
-    assert {row["source_page"]: row["disposition"] for row in dispositions} == {
-        2: "partially_normalized",
-        3: "preserved_unreviewed",
-    }
+    assert len(dispositions) == overview.PAGE_COUNT_2008_09
+    assert {row["source_page"] for row in dispositions} == set(
+        range(1, overview.PAGE_COUNT_2008_09 + 1)
+    )
+    assert {
+        row["source_page"]
+        for row in dispositions
+        if row["disposition"] == "partially_normalized"
+    } == {2}
+    assert (
+        sum(row["disposition"] == "preserved_unreviewed" for row in dispositions) == 7
+    )
 
 
 def test_2009_10_overview_extracts_all_seventeen_pinned_money_statements() -> None:
@@ -675,7 +692,15 @@ def test_2009_10_normalizer_rebuilds_all_headlines_from_pinned_bronze_source(
     ]
     assert all("source_amount_is_not_exact" in fact["quality_flags"] for fact in facts)
     dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
-    assert {row["source_page"]: row["disposition"] for row in dispositions} == {
-        2: "partially_normalized",
-        3: "preserved_unreviewed",
-    }
+    assert len(dispositions) == overview.PAGE_COUNT_2009_10
+    assert {row["source_page"] for row in dispositions} == set(
+        range(1, overview.PAGE_COUNT_2009_10 + 1)
+    )
+    assert {
+        row["source_page"]
+        for row in dispositions
+        if row["disposition"] == "partially_normalized"
+    } == {2}
+    assert (
+        sum(row["disposition"] == "preserved_unreviewed" for row in dispositions) == 7
+    )
