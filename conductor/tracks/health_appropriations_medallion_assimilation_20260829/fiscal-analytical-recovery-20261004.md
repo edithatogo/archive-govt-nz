@@ -28,5 +28,10 @@ per run, all 324 interface rows equal Arrow, and exact agreement with retained
 qualified Gold/report bytes. The wider run initially failed on stale capture
 and PDF-baseline references. Both guards now bind existing 3 October snapshots;
 the source-health report remains unchanged and its 75 captured objects verify.
-Failure/interruption evidence is retained, and the wider run is being repeated.
+Failure/interruption evidence is retained. The corrected wider replay completed
+21 supported product groups with Bronze unchanged; its dated, code-bound
+receipt is separately referenced. A later launcher portability fix selects
+the Windows .exe console. Focused reconstruction after that fix retains
+identical products, and two real-interface contracts exercise transport parity
+and corrupt/absent MCP delivery. Helper coverage is 82.61%, against 80%.
 Refs #212, #214, #215.

@@ -1682,3 +1682,15 @@ PDF baseline. Source-health replay matches the unchanged recorded report and
 verifies all 75 captured objects; classification and accepted non-mutating donor
 replay preflights pass. Thirteen focused tests pass after the binding correction.
 The final wider run and final full harness are running.
+
+The wider native replay completed all 21 supported product groups with Bronze
+unchanged. Its Fiscal inventories/receipts exactly match the focused proof.
+Hosted patch coverage then failed at 51.92% against the unchanged 80% target.
+Two added real-interface tests cover console/MCP/Arrow agreement and corrupt
+or absent MCP delivery; the source-pin contract now covers definition evidence.
+Five recovery tests measure 82.61% for the helper. The actual console test also
+required selecting the installed .exe launcher on Windows. A new pair of fresh
+Bronze builds after that portability correction still matches all 34 files,
+324 query rows and retained qualified Gold/report bytes. Final harness reruns.
+
+Final follow-up validation: required harness passed with 7,462 tests and 10 skips; 80% floor unchanged. Scoped review and fresh focused native recovery passed after the Windows launcher fix.

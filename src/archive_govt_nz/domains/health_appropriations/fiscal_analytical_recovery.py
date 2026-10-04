@@ -109,7 +109,8 @@ def _inventory(root: Path) -> dict[str, dict[str, Any]]:
 
 
 def _console(*args: str) -> dict[str, Any]:
-    command = Path(sys.executable).parent / "archive-govt-nz"
+    cli_name = "archive-govt-nz.exe" if sys.platform == "win32" else "archive-govt-nz"
+    command = Path(sys.executable).parent / cli_name
     _require(command.is_file(), "fiscal_recovery_console_unavailable")
     result = subprocess.run(  # noqa: S603 - fixed installed CLI, shell-free bounded arguments.
         [str(command), *args], capture_output=True, timeout=120, check=False

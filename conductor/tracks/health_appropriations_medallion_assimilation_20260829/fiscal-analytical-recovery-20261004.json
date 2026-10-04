@@ -4,10 +4,10 @@
   "corrected_pdf_layout_baseline_name": "source-pdf-layout-baseline-20261003.json",
   "fresh_bronze_builds": 2,
   "full_track_completion": "not_asserted",
-  "helper_sha256": "b74b41c58428158347a11962847a88807a1ab60c61a8805d44483c95f9204a6a",
+  "helper_sha256": "fe4284ab8ec9dc7bb8eaf7df6468b0d4cf1f184657fe950016d7889d76079689",
   "location": {
     "external_root": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations",
-    "relative_path": "assurance/fiscal-recovery-20261004/focused-native-receipt.json"
+    "relative_path": "assurance/fiscal-recovery-20261004/focused-native-receipt-v2.json"
   },
   "originals_and_metadata_unchanged": true,
   "output_inventory": {
@@ -283,7 +283,7 @@
     }
   },
   "publication": "not_performed",
-  "recipe_sha256": "2ac1b718ead568f4619815a2fefad5c3acadd2b01bae511e12af13a23b0a3fd7",
+  "recipe_sha256": "9b26c1342066589167af7e7028e832e1ee9db2312d46e2e0a91e2713c1c6dff4",
   "repeat_identical": true,
   "retained_gold_and_report_bytes_match": true,
   "retained_silver_consumed": false,
@@ -488,5 +488,24 @@
       "status": "verified_with_nonmutating_deviations"
     }
   },
-  "whole_health_recovery": "separate_not_asserted_by_this_focused_receipt"
+  "whole_native_assurance": {
+    "bronze_objects_unchanged": true,
+    "fiscal_focused_integrated_receipts_equal": true,
+    "head_commit": "c5439353ed999281f5d073ed107e7900c72c1733",
+    "helper_sha256": "b74b41c58428158347a11962847a88807a1ab60c61a8805d44483c95f9204a6a",
+    "location": {
+      "external_root": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations",
+      "relative_path": "assurance/clean-room-recovery-20261004-fiscal-products-v3.json"
+    },
+    "product_groups": 21,
+    "remaining": [
+      "cross_source_comparison",
+      "remaining_source_native_silver_profiles_and_canonical_adapters",
+      "platinum_dcat_croissant_ro_crate_prov_complete_profile"
+    ],
+    "runner_sha256": "e1a21d1178771c3856d2ab2d8c5e77d5f887b32b20c386bf092a3f9c470642c5",
+    "status": "partial_with_blockers",
+    "whole_native_receipt_sha256": "690d43455076b6da6d7897b46f03752e78e7b38c9664b389bf4b9131145299ec"
+  },
+  "whole_native_scope_note": "whole replay preceded launcher portability fix; repeated focused final helper outputs are byte equal"
 }
