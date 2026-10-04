@@ -873,6 +873,116 @@ def test_2012_13_normalizer_rebuilds_selected_headlines_from_pinned_bronze_sourc
     ].count("preserved_unreviewed") == 6
 
 
+def test_2013_14_parser_preserves_exact_rounded_overview_phrases() -> None:
+    page_two = """
+    Overview of the Vote
+    The Minister of Health is responsible for appropriations in the Vote for the
+    2013/14 financial year totalling nearly $14,656 million covering the following:
+    Departmental Operating Appropriations
+    A total of just over $191 million (1.3% of the Vote) relates to the functions
+    of the Ministry of Health for policy advice and information services.
+    Non-Departmental Operating Appropriations
+    A total of just over $13,944 million (95.1% of the Vote) is for operating expenses
+    to be incurred on behalf of the Crown and is intended to be spent as follows.
+    Output Expenses
+    These total nearly $13,916 million (95.0% of the Vote) and are to fund health services.
+    just over $11,104 million (75.8% of the Vote) to fund health services from DHBs
+    just over $1,103 million (7.5% of the Vote) to purchase national disability support services
+    just over $808 million (5.5% of the Vote) to purchase national health services
+    and provide clinical training for health professionals
+    just over $442 million (3.0% of the Vote) to purchase public health services
+    nearly $179 million (1.2% of the Vote) to purchase primary health care services
+    just over $144 million (1.0% of the Vote) to purchase national maternity services
+    $90 million (0.6% of the Vote) to manage health sector risks, including provision
+    for DHB deficit support, and
+    just over $44 million (0.3% of the Vote) to fund other health and disability services.
+    Other Expenses Incurred by the Crown
+    A total of just over $28 million (0.2% of the Vote) is for other expenses
+    to fund provider development, legal expenses, and international obligations.
+    """
+    page_three = """
+    Capital Expenditure
+    A total of just over $520 million (3.6% of the Vote) is to provide Capital funding
+    just over $490 million (3.3% of the Vote) is to provide debt or equity for district
+    health boards or Health Sector Crown Agencies
+    $15 million (0.1% of the Vote) is to provide interest-free loans to assist people
+    in long-term care
+    just over $15 million (0.1% of the Vote) is to purchase or develop assets for use
+    by the Ministry of Health.
+    """
+    rows = overview.parse_overview_2013_14_pages([page_two, page_three])
+    assert [row["value"] for row in rows] == [
+        Decimal(14656),
+        Decimal(191),
+        Decimal(13944),
+        Decimal(13916),
+        Decimal(11104),
+        Decimal(1103),
+        Decimal(808),
+        Decimal(442),
+        Decimal(179),
+        Decimal(144),
+        Decimal(90),
+        Decimal(44),
+        Decimal(28),
+        Decimal(520),
+        Decimal(490),
+        Decimal(15),
+        Decimal(15),
+    ]
+    assert [row["source_page"] for row in rows] == [*([2] * 13), *([3] * 4)]
+    assert [row["source_qualifier_preserved"] for row in rows] == [
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        True,
+        False,
+        True,
+        True,
+        True,
+        True,
+        False,
+        True,
+    ]
+
+
+def test_2013_14_normalizer_rebuilds_from_pinned_bronze_source(
+    tmp_path: Path,
+) -> None:
+    source = Path(
+        "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/bronze-cas/"
+        "sha256/f2/f29271aad328bad5fcfdcf655c61dc6c59600a20666860c037ceb478bff681f1"
+    )
+    if not source.is_file():
+        pytest.skip("captured 2013/14 Treasury source is unavailable")
+    result = overview.normalize_vote_health_estimates_overview_2013_14(
+        source,
+        tmp_path / "silver",
+        expected_sha256=overview.SOURCE_SHA256_2013_14,
+        source_vintage=overview.VINTAGE_2013_14,
+        source_locator="https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2013-14",
+        observed_at="2026-10-04T00:04:54.340387Z",
+        dry_run=False,
+    )
+    assert result["status"] == "passed"
+    assert result["counts"] == {"pages": 2, "facts": 17}
+    dispositions = pq.read_table(
+        tmp_path / "silver/page_dispositions.parquet"
+    ).to_pylist()
+    assert [row["disposition"] for row in dispositions].count(
+        "partially_normalized"
+    ) == 2
+    assert [row["disposition"] for row in dispositions].count(
+        "preserved_unreviewed"
+    ) == 6
+
+
 def test_2011_12_normalizer_rebuilds_selected_headlines_from_pinned_bronze_source(
     tmp_path: Path,
 ) -> None:

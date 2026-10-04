@@ -1250,3 +1250,31 @@ def test_vote_health_2012_13_overview_profile_dispatches_to_its_adapter(
         lambda *_args, **_kwargs: expected,
     )
     assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+
+
+def test_vote_health_2013_14_overview_profile_dispatches_to_its_adapter(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    summary = source_operations.vote_health_estimates_summary
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; adapter is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=summary.PROFILE_2013_14,
+        expected_sha256=summary.SOURCE_SHA256_2013_14,
+        source_vintage=summary.VINTAGE_2013_14,
+        source_locator="https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2013-14",
+        observed_at="2026-10-04T00:04:54.340387Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 2, "facts": 17}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(
+        summary, "_normalize_overview", lambda *_args, **_kwargs: expected
+    )
+    monkeypatch.setattr(
+        summary,
+        "normalize_vote_health_estimates_overview_2013_14",
+        lambda *_args, **_kwargs: expected,
+    )
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
