@@ -251,3 +251,6 @@ they are not current-state assertions.
 - [Vote Health 2014/15 source-health reconciliation](./source-health-report-20261004-vote-health-2014-15.md)
 - [Vote Health 2014/15 source-health machine receipt](./source-health-report-20261004-vote-health-2014-15.json)
 - [Vote Health 2014/15 source-operation output receipt](./vote-health-estimates-overview-2014-15-source-operation.json)
+
+- [Source-qualified Fiscal Health shares](./fiscal-health-shares-20261004.md)
+- [Fiscal share repeat-build receipt](./fiscal-health-shares-20261004.json)

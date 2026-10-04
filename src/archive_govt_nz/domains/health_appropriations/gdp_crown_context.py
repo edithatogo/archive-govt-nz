@@ -107,7 +107,6 @@ _PROFILES: dict[str, dict[str, Any]] = {
         "basis": "old-GAAP 1994-1996; IFRS 1997-2004; PBE Standards 2005-2025",
         "amount_types": "historical_as_published; no explicit Actual/Forecast row",
         "gaps": [
-            "no_native_Crown_expense_adapter",
             "ISO_currency_unqualified",
             "cross_basis_and_consolidation_equivalence_unqualified",
         ],
@@ -127,7 +126,6 @@ _PROFILES: dict[str, dict[str, Any]] = {
         ),
         "amount_types": "historical_as_published; no explicit Actual/Forecast row",
         "gaps": [
-            "no_native_Crown_expense_adapter",
             "ISO_currency_unqualified",
             "cross_basis_and_consolidation_equivalence_unqualified",
         ],

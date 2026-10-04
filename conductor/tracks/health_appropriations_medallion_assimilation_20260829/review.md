@@ -1538,3 +1538,26 @@ and 98.08% branch coverage against the 80% floor. Schema (53/43), parity 9/9,
 configured mutation, supply-chain, secret scan, and strict 113-component SBOM
 checks passed. Automatic Phase 7 review passed; receipt SHA-256 is
 `a5853c57d094b40f20dd59ab7a03576c25ab54af8102bb5ed0c1e4f1c814bbf8`.
+
+## 2026-10-04 — Source-qualified Fiscal share self-review
+
+The verified query uses the same pinned original for historical and Crown
+inputs. Pure arithmetic is explicitly separate from package verification.
+Source/year/unit/basis and identity gates reject incompatible inputs, and
+missing/nonpositive denominators retain reasons and input IDs. Exact dollar
+million ratios avoid an unsupported ISO currency inference; Total Crown
+shares preserve the Core Crown Health numerator scope. Source-year caveats
+remain per row, and annual periods follow the retained Treasury definition.
+
+Fresh Bronze replay and independent rational checks pass. No other edition,
+context deflator, cross-source join or publication is admitted. The query
+product still needs canonical Gold exporter, CLI/MCP and plotting integration.
+Full repository and hosted gates remain pending at this entry.
+
+Final local assurance passed: `./scripts/validate.sh` reported 7,395 passed,
+10 skipped, 98.09% coverage against the 80% floor, 53 schemas/43 representative
+documents, parity 9/9, configured mutation gates, supply-chain/secret checks
+and strict 113-component SBOM validation. The automatic `phase_7_gates` review
+passed; its dated receipt is retained beside the share replay receipt. The
+first full invocation stopped at three test-style lint diagnostics; those
+were corrected before the successful run. Hosted validation remains separate.

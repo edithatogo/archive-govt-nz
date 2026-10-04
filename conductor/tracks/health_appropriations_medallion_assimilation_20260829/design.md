@@ -487,3 +487,30 @@ negative-path tests.
   stabilization;
 - whether aggregate Health Survey linkage has a justified analytical use case;
 - whether graph or vector projections demonstrate sufficient consumer value.
+
+## Source-qualified Fiscal share query (2026-10-04)
+
+A verified historical canonical package and its independently verified Fiscal
+1972–2025 original supply Health/GDP facts and Core/Total Crown facts. The
+query accepts only that source hash/vintage and published unit scales, checks
+unique input identities and the source's period/basis definitions, and retains
+missing/nonpositive-denominator states. Percentage arithmetic uses an isolated
+80-digit Decimal context with half-even rounding to 12 decimal places. Outputs
+retain full fiscal periods, numerator/denominator amounts, IDs, coverage and
+source flags; the Total Crown denominator never expands the Health numerator.
+
+```mermaid
+flowchart LR
+  P[Verified canonical Health and GDP] --> Q[Source and fiscal-period checks]
+  B[Pinned Fiscal Bronze original] --> C[Verified Crown projection]
+  C --> Q
+  E[Treasury period definitions] --> Q
+  Q --> A[Exact percentage arithmetic]
+  Q --> M[Explicit missing or invalid denominator]
+  A --> T[Typed source-bound share observations]
+  M --> T
+```
+
+This query performs no source writes or publication and does not change the
+canonical source projections. Broader analytical joins require their own
+qualified numerator, denominator, period and vintage contracts.

@@ -4504,3 +4504,30 @@ receipt SHA-256 is
 - Source census reconciliation and Bronze object fixity passed; 1 resource and 11 context-series vintages recorded in the generated source-health report.
 - Added a pinned 2011/12 overview profile with 17 source-anchored statements from pages 2–3. Pages 1 and 4–9 are preserved as unreviewed.
 - Two local source-operation Silver builds were byte-identical: 17 facts, 17 lineage rows, 9 page dispositions. Rights of normalized facts remain not evaluated; publication, exact precision, comparability, and total recomputation are not approved.
+
+## 2026-10-04 — Primary reconciliation and source-qualified Fiscal shares
+
+Preserved all 12 dirty primary files plus staged/unstaged/combined patches and
+verified the snapshot hashes before reconciling primary main by fast-forward.
+Current upstream already contained the consumer-query and discovery-schema
+work; differing historical records remain in the external snapshot.
+
+A new fiscal-share contract initially failed because its module did not exist.
+Independent rational arithmetic corrected two hand-entered golden percentages.
+The first fresh Bronze replay found the Arrow list-child-name readback mismatch;
+the schema was corrected to explicit `element`, then two independent full
+Bronze-to-query rebuilds matched bytes and 115 rational percentage checks.
+Source/schema bytes were not replaced. The direct notes-page GET returned 403;
+a retained web-tool observation supports only the documented metadata review.
+
+Focused query suite: 17 passed, with 100% branch-aware module coverage. The
+repository-wide floor remains 80%. Static typing and scoped Ruff passed.
+Required full assurance and hosted validation are pending at this entry.
+
+Final local assurance passed: `./scripts/validate.sh` reported 7,395 passed,
+10 skipped, 98.09% coverage against the 80% floor, 53 schemas/43 representative
+documents, parity 9/9, configured mutation gates, supply-chain/secret checks
+and strict 113-component SBOM validation. The automatic `phase_7_gates` review
+passed; its dated receipt is retained beside the share replay receipt. The
+first full invocation stopped at three test-style lint diagnostics; those
+were corrected before the successful run. Hosted validation remains separate.
