@@ -4620,3 +4620,17 @@ After the transport correction, the full harness passed again: 7,450 tests,
 configured mutation and supply-chain gates passed. The scoped automatic review
 also passed again. Native successful results remain identical; failed MCP calls
 now carry the correct protocol error flag and structured failure receipt.
+
+## 2026-10-04 Fiscal analytical reports
+
+PR #631 merged after exact-head Actions passed; remote integration, tree equality
+and clean status were verified before pruning. This isolated worktree adds report
+CLI build/verification and six qualified plots with local PROV/DCAT projections.
+Six focused tests, lint and typing pass. Two retained native builds agree; all
+257 points and 67 exclusions match direct Arrow. Input hashes are unchanged.
+Full required harness is running; final track review remains open.
+
+Required harness passed: 7,456 tests, 10 skipped, 98.00% aggregate coverage
+with the 80% floor unchanged. All schema, parity, configured mutation, dependency,
+licence, secret and SBOM gates passed. Scoped Conductor phase review passed;
+final Health completion review remains open.

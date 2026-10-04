@@ -266,3 +266,6 @@ they are not current-state assertions.
 
 - [Read-only Fiscal analytical CLI/MCP access](fiscal-analytical-access-20261004.md)
 - [Native CLI/MCP and Arrow comparison receipt](fiscal-analytical-access-20261004.json)
+
+- [Fiscal analytical reports and metadata](fiscal-analytical-reports-20261004.md)
+- [Report native repeat-build assurance](fiscal-analytical-reports-20261004.json)

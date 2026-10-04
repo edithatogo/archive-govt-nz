@@ -405,6 +405,56 @@ def health_appropriations_build_context_gold(
     return 0
 
 
+@app.command(name="health-appropriations-build-fiscal-reports")
+def health_appropriations_build_fiscal_reports(
+    package_dir: Path, manifest_sha256: str, output_dir: Path, *, write: bool = False
+) -> int:
+    """Build discrete fiscal plots and reports; verify inputs without writes by default."""
+    from archive_govt_nz.domains.health_appropriations.fiscal_analytical_reports import (
+        export_fiscal_analytical_reports,
+    )
+
+    try:
+        receipt = export_fiscal_analytical_reports(
+            package_dir, manifest_sha256, output_dir, write=write
+        )
+    except ValueError, OSError:
+        _emit_json(
+            {
+                "command": "health-appropriations-build-fiscal-reports",
+                "status": "failed",
+                "error": "fiscal_report_build_failed",
+            }
+        )
+        return 2
+    _emit_json({"command": "health-appropriations-build-fiscal-reports", **receipt})
+    return 0
+
+
+@app.command(name="health-appropriations-verify-fiscal-reports")
+def health_appropriations_verify_fiscal_reports(
+    package_dir: Path, manifest_sha256: str
+) -> int:
+    """Verify report bytes and local metadata projections without source re-verification."""
+    from archive_govt_nz.domains.health_appropriations.fiscal_analytical_reports import (
+        verify_fiscal_analytical_reports,
+    )
+
+    try:
+        receipt = verify_fiscal_analytical_reports(package_dir, manifest_sha256)
+    except ValueError, OSError, KeyError, TypeError:
+        _emit_json(
+            {
+                "command": "health-appropriations-verify-fiscal-reports",
+                "status": "failed",
+                "error": "fiscal_report_verification_failed",
+            }
+        )
+        return 2
+    _emit_json({"command": "health-appropriations-verify-fiscal-reports", **receipt})
+    return 0
+
+
 @app.command(name="health-appropriations-query-fiscal-gold")
 def health_appropriations_query_fiscal_gold(
     package_dir: Path, manifest_sha256: str, *, table: str = "nominal", limit: int = 50

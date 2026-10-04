@@ -1649,3 +1649,11 @@ After the transport correction, the full harness passed again: 7,450 tests,
 configured mutation and supply-chain gates passed. The scoped automatic review
 also passed again. Native successful results remain identical; failed MCP calls
 now carry the correct protocol error flag and structured failure receipt.
+
+## Fiscal analytical reports — bounded evidence
+
+Two native CLI builds match all twelve files; 257 points and 67 exclusions match
+independent direct Arrow values. Focused tests cover dry-run, exclusive writes,
+input overlap, malformed source results, tampering and independently parsed RDF
+checksums/edges. The 80% coverage floor remains unchanged. This scoped delivery
+does not close the full track completion gate.

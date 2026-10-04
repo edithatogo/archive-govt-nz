@@ -1347,3 +1347,8 @@ integrated parent head.
   explicit truncation and native Arrow/CLI/MCP parity. Broader analytical views,
   plots and scheduled analytical operations remain open. [M-10, M-15, M-18;
   AC-08, AC-10, AC-13, AC-16]
+
+- [x] Build and verify companion Fiscal analytical reports: six qualified plots,
+  exact structured results, schema descriptors, dataset card and local PROV/DCAT
+  projections; native repeat and Arrow comparison retained (4 October 2026).
+  Full product recovery and final completion review remain open.
