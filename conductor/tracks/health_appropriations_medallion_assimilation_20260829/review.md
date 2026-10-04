@@ -1624,3 +1624,15 @@ coverage with the 80% floor; schemas, parity, configured mutation gates and
 supply-chain checks passed. Final nominal schema-label correction was checked
 with the nine focused tests, typing and a new identical native pair. Scoped
 phase_7_gates review passed; the full track completion gate remains open.
+
+## Named Fiscal analytical queries (2026-10-04)
+
+Initial red collection demonstrated the absent adapter. Nine focused tests now
+pass. All 324 native rows match independent Arrow and real console/initialized
+MCP readbacks. Package files remain unchanged; bad pin returns console exit 2.
+No arbitrary SQL, source re-verification, rights or publication claim is added.
+
+Required harness passed: 7,449 tests, 10 skipped, 98.05% aggregate coverage
+with the 80% floor; schemas, parity, configured mutation and supply-chain gates
+passed. Scoped automatic phase_7_gates review passed. This does not close the
+remaining products or full-track review gate.

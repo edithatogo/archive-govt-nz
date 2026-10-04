@@ -543,3 +543,11 @@ qualified queries. Retain nominal amounts and source qualifications unchanged.
 Use exclusive output creation, reject input overlap, and retain partial failure
 evidence. Product readback verifies exact inventory, pinned payloads, typed schemas
 and bounded expansion; it asserts product fixity without fresh source verification.
+
+## Named Fiscal analytical queries (2026-10-04)
+
+Use the pinned Gold reader before an in-memory DuckDB query. Disable external
+access, register only verified Arrow, select fixed SQL and bind bounded limits.
+Keep exact Decimal/date encodings and report truncation. CLI and read-only MCP
+share the adapter; validate closed MCP input before I/O and redact failures to
+bounded codes. Product fixity is separate from original-source verification.

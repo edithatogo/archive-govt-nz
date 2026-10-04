@@ -1,0 +1,41 @@
+{
+  "arbitrary_sql": "not_exposed",
+  "external_sql_access": "disabled",
+  "gold_manifest_sha256": "1b79d6f582dc8e9935e16bce2d3fe78b78d77e2a68aacf201ac9118b28462fa2",
+  "invalid_pin_cli_exit": 2,
+  "location": {
+    "external_root": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations",
+    "relative_path": "assurance/fiscal-analytical-access-20261004"
+  },
+  "package_unchanged": true,
+  "queries": {
+    "cpi_benchmark": {
+      "cli_mcp_protocol_parity": true,
+      "cli_sha256": "b7fbf37bd0953b7002e662dc8f3ef486ec42465e474a84ce23e477dd2a276661",
+      "exact_arrow_comparison": true,
+      "rows": 54
+    },
+    "nominal": {
+      "cli_mcp_protocol_parity": true,
+      "cli_sha256": "0745ac0d15f265497f2acdc091a53e2e36b8cbe0da2c9d6c474917086420830e",
+      "exact_arrow_comparison": true,
+      "rows": 54
+    },
+    "per_capita": {
+      "cli_mcp_protocol_parity": true,
+      "cli_sha256": "974700867c1570bf4a5b46ac10c4ee2b55d36d91396ea55cbd5258e0826de61a",
+      "exact_arrow_comparison": true,
+      "rows": 54
+    },
+    "shares": {
+      "cli_mcp_protocol_parity": true,
+      "cli_sha256": "e56b0ba631dd7142ad403c1d1f22427c4505f5607078d619bedf33bc151f4e57",
+      "exact_arrow_comparison": true,
+      "rows": 162
+    }
+  },
+  "recipe_sha256": "2f3efbb615e905a5f6e740071b2760160d22fc2bf5efe691695fd8c4e912dfeb",
+  "schema_version": "archive-govt-nz.fiscal-analytical-access-assurance/v1",
+  "source_reverification": "not_performed",
+  "verified_rows": 324
+}

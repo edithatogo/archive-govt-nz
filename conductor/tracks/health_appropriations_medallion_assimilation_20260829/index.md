@@ -263,3 +263,6 @@ they are not current-state assertions.
 
 - [Fiscal analytical Gold package](fiscal-analytical-gold-20261004.md)
 - [Analytical Gold repeat-build receipt](fiscal-analytical-gold-20261004.json)
+
+- [Read-only Fiscal analytical CLI/MCP access](fiscal-analytical-access-20261004.md)
+- [Native CLI/MCP and Arrow comparison receipt](fiscal-analytical-access-20261004.json)

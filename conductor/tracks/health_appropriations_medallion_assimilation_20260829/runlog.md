@@ -4595,3 +4595,15 @@ coverage with the 80% floor; schemas, parity, configured mutation gates and
 supply-chain checks passed. Final nominal schema-label correction was checked
 with the nine focused tests, typing and a new identical native pair. Scoped
 phase_7_gates review passed; the full track completion gate remains open.
+
+## 2026-10-04 Fiscal analytical CLI/MCP access
+
+PR #630 merged after all hosted checks passed; remote integration, exact merged
+tree and clean status were verified before pruning. Primary main fast-forwarded
+cleanly. A new isolated worktree implements named read-only DuckDB/CLI/MCP access.
+Native all-row parity and unchanged package hashes pass; see the dated receipt.
+
+Required harness passed: 7,449 tests, 10 skipped, 98.05% aggregate coverage
+with the 80% floor; schemas, parity, configured mutation and supply-chain gates
+passed. Scoped automatic phase_7_gates review passed. This does not close the
+remaining products or full-track review gate.
