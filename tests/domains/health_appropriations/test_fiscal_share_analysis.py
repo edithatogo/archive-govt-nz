@@ -1,5 +1,6 @@
 """Fiscal shares keep source, period, reporting basis and lineage explicit."""
 
+import hashlib
 from copy import deepcopy
 from datetime import date
 from decimal import Decimal, localcontext
@@ -21,11 +22,23 @@ from archive_govt_nz.domains.health_appropriations.local_provenance_reader impor
 )
 
 
+@pytest.fixture
+def period_evidence(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
+    path = tmp_path / "period-evidence.json"
+    path.write_bytes(b"test period evidence")
+    monkeypatch.setattr(
+        subject, "PERIOD_EVIDENCE_SHA256", hashlib.sha256(path.read_bytes()).hexdigest()
+    )
+    return path
+
+
 def rows() -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
     common = {
         "source_object_sha256": SOURCE_SHA256,
         "source_vintage": VINTAGE,
         "valid_time_end": date(2025, 6, 30),
+        "valid_time_start": None,
+        "valid_time_status": "end_known_start_unknown",
         "unit": "NZD_millions",
         "accounting_basis": "PBE Standards",
         "quality_flags": [],
@@ -48,6 +61,7 @@ def rows() -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, A
             "record_id": key,
             "measure": key + "_crown_expenses",
             "unit": "$ millions",
+            "valid_time_status": "june_year_end_start_unqualified",
             "amount": Decimal(amount),
         }
         for key, amount in (("core", 141675), ("total", 183502))
@@ -55,12 +69,16 @@ def rows() -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, A
     return [health], [gdp], crowns
 
 
-def test_exact_shares_preserve_period_scope_and_input_ids() -> None:
+def test_exact_shares_preserve_period_scope_and_input_ids(
+    period_evidence: Path,
+) -> None:
     inputs = rows()
     before = deepcopy(inputs)
     with localcontext() as context:
         context.prec = 2
-        output = subject.derive_fiscal_health_shares(*inputs).to_pylist()
+        output = subject.derive_fiscal_health_shares(
+            *inputs, period_evidence=period_evidence
+        ).to_pylist()
     assert inputs == before
     results = {r["measure"]: r for r in output}
     assert results["health_share_gdp"]["percent"] == Decimal("6.950422262631")
@@ -73,17 +91,23 @@ def test_exact_shares_preserve_period_scope_and_input_ids() -> None:
     assert results["health_share_total_crown"]["numerator_id"] == "health"
     assert results["health_share_total_crown"]["denominator_id"] == "total"
     assert all(r["status"] == "calculated" for r in output)
-    assert subject.derive_fiscal_health_shares(*inputs).equals(
-        subject.derive_fiscal_health_shares(*inputs)
+    assert subject.derive_fiscal_health_shares(
+        *inputs, period_evidence=period_evidence
+    ).equals(
+        subject.derive_fiscal_health_shares(*inputs, period_evidence=period_evidence)
     )
 
 
-def test_cash_march_year_retains_missing_crown_denominators() -> None:
+def test_cash_march_year_retains_missing_crown_denominators(
+    period_evidence: Path,
+) -> None:
     health, gdp, _ = rows()
     for r in [*health, *gdp]:
         r["valid_time_end"] = date(1989, 3, 31)
         r["accounting_basis"] = "Cash" if r["measure"] == "health_spending" else None
-    output = subject.derive_fiscal_health_shares(health, gdp, []).to_pylist()
+    output = subject.derive_fiscal_health_shares(
+        health, gdp, [], period_evidence=period_evidence
+    ).to_pylist()
     assert {r["period_start"] for r in output} == {date(1988, 4, 1)}
     assert {r["numerator_coverage"] for r in output} == {"cash_health_function"}
     assert [r["status"] for r in output].count("missing_denominator") == 2
@@ -94,7 +118,9 @@ def test_cash_march_year_retains_missing_crown_denominators() -> None:
     "change",
     ["source", "vintage", "unit", "period", "basis", "amount", "duplicate", "id"],
 )
-def test_incompatible_or_ambiguous_inputs_fail(change: str) -> None:
+def test_incompatible_or_ambiguous_inputs_fail(
+    change: str, period_evidence: Path
+) -> None:
     health, gdp, crowns = rows()
     if change == "duplicate":
         crowns.append(deepcopy(crowns[0]))
@@ -110,14 +136,20 @@ def test_incompatible_or_ambiguous_inputs_fail(change: str) -> None:
         }[change]
         crowns[0][key] = value
     with pytest.raises(ValueError, match="fiscal_share_input_invalid"):
-        subject.derive_fiscal_health_shares(health, gdp, crowns)
+        subject.derive_fiscal_health_shares(
+            health, gdp, crowns, period_evidence=period_evidence
+        )
 
 
 @pytest.mark.parametrize("amount", [Decimal(0), Decimal(-1)])
-def test_nonpositive_denominator_is_reported(amount: Decimal) -> None:
+def test_nonpositive_denominator_is_reported(
+    amount: Decimal, period_evidence: Path
+) -> None:
     health, gdp, crowns = rows()
     gdp[0]["amount"] = amount
-    result = subject.derive_fiscal_health_shares(health, gdp, crowns).to_pylist()[0]
+    result = subject.derive_fiscal_health_shares(
+        health, gdp, crowns, period_evidence=period_evidence
+    ).to_pylist()[0]
     assert result["status"] == "nonpositive_denominator"
     assert result["percent"] is None
     assert result["denominator_id"] == "gdp"
@@ -126,33 +158,43 @@ def test_nonpositive_denominator_is_reported(amount: Decimal) -> None:
 @pytest.mark.parametrize(
     ("year", "basis"), [(1990, "Cash"), (1994, "old-GAAP"), (1997, "IFRS")]
 )
-def test_reporting_transitions_remain_source_separated(year: int, basis: str) -> None:
+def test_reporting_transitions_remain_source_separated(
+    year: int, basis: str, period_evidence: Path
+) -> None:
     health, gdp, _ = rows()
     for row in [*health, *gdp]:
         row["valid_time_end"] = date(year, 6, 30)
         row["accounting_basis"] = basis if row["measure"] == "health_spending" else None
     health[0]["quality_flags"] = ["source_footnote_retained"]
-    result = subject.derive_fiscal_health_shares(health, gdp, []).to_pylist()[0]
+    result = subject.derive_fiscal_health_shares(
+        health, gdp, [], period_evidence=period_evidence
+    ).to_pylist()[0]
     assert result["accounting_basis"] == basis
     assert result["period_start"] == date(year - 1, 7, 1)
     assert result["source_quality_flags"] == ["source_footnote_retained"]
 
 
-def test_negative_numerator_and_unrepresentable_percent_are_not_published() -> None:
+def test_negative_numerator_and_unrepresentable_percent_are_not_published(
+    period_evidence: Path,
+) -> None:
     health, gdp, crowns = rows()
     health[0]["amount"] = Decimal(-1)
-    result = subject.derive_fiscal_health_shares(health, gdp, crowns).to_pylist()[0]
+    result = subject.derive_fiscal_health_shares(
+        health, gdp, crowns, period_evidence=period_evidence
+    ).to_pylist()[0]
     assert result["status"] == "negative_numerator"
     assert result["percent"] is None
     health[0]["amount"] = Decimal("1e19")
     gdp[0]["amount"] = Decimal("1e-18")
-    result = subject.derive_fiscal_health_shares(health, gdp, crowns).to_pylist()[0]
+    result = subject.derive_fiscal_health_shares(
+        health, gdp, crowns, period_evidence=period_evidence
+    ).to_pylist()[0]
     assert result["status"] == "unrepresentable_percentage"
     assert result["percent"] is None
 
 
 def test_verified_query_keeps_receipt_and_uses_original_for_crown(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, period_evidence: Path
 ) -> None:
     health, gdp, crowns = rows()
     package = CanonicalPackageInput(
@@ -187,7 +229,9 @@ def test_verified_query_keeps_receipt_and_uses_original_for_crown(
     monkeypatch.setattr(
         subject.fiscal_crown_canonical_projection, "project_fiscal_crown", project
     )
-    table, receipt = subject.query_fiscal_health_shares(package)
+    table, receipt = subject.query_fiscal_health_shares(
+        package, period_evidence=period_evidence
+    )
     assert seen == [package.original]
     assert table.num_rows == 3
     assert receipt["publication"] == "not_performed"
@@ -203,5 +247,15 @@ def test_verified_query_keeps_receipt_and_uses_original_for_crown(
                 package.original,
                 package.raw_root,
                 package.raw_manifest_sha256,
-            )
+            ),
+            period_evidence=period_evidence,
         )
+
+
+def test_period_evidence_must_match_pin(period_evidence: Path) -> None:
+    period_evidence.write_bytes(b"changed observation")
+    with pytest.raises(ValueError, match="fiscal_share_input_invalid"):
+        subject.derive_fiscal_health_shares(*rows(), period_evidence=period_evidence)
+    period_evidence.unlink()
+    with pytest.raises(ValueError, match="fiscal_share_input_invalid"):
+        subject.derive_fiscal_health_shares(*rows(), period_evidence=period_evidence)

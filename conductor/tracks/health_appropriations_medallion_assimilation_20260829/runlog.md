@@ -4531,3 +4531,11 @@ and strict 113-component SBOM validation. The automatic `phase_7_gates` review
 passed; its dated receipt is retained beside the share replay receipt. The
 first full invocation stopped at three test-style lint diagnostics; those
 were corrected before the successful run. Hosted validation remains separate.
+
+### PR #627 period evidence correction
+
+Codex identified that the reviewed query did not hash-bind the external fiscal-period definitions. The correction requires the exact retained observation input, rejects missing/changed bytes, preserves source time-status labels in every derived row, and validates null source starts. Eighteen focused tests passed. Native Bronze replays regenerated the product twice with identical bytes and all 115 independent rational checks. Full assurance is being repeated for the corrected code.
+
+The first remote assurance run and corrected local full run both stopped on the secret scanner misclassifying the local product path as Base64 entropy. The receipt now separates its external root and relative path, preserving the exact product location without a gate exclusion. Tests (7,396 passed; 10 skipped), schemas, parity, typing and all mutation gates passed before that failure. A fresh required harness run checks the final receipt representation.
+
+Final corrected validation passed: `./scripts/validate.sh` exit 0, 7,396 tests passed, 10 skipped, 80% coverage floor retained; schemas, parity, configured mutation and supply-chain gates passed. Automatic scoped Conductor review also passed. The full Health track completion gate remains open.

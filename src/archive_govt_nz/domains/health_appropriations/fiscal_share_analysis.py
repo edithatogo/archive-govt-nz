@@ -2,10 +2,14 @@
 
 from __future__ import annotations
 
+import hashlib
 from collections import Counter
 from datetime import date
 from decimal import ROUND_HALF_EVEN, Context, Decimal, localcontext
-from typing import Any
+from typing import TYPE_CHECKING, Any
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 import pyarrow as pa
 
@@ -25,6 +29,9 @@ FORMULA_POLICY = "fiscal-2025-source-period-health-shares/v1"
 PERIOD_EVIDENCE_URL = (
     "https://www.treasury.govt.nz/publications/information-release/"
     "data-fiscal-time-series-historical-fiscal-indicators"
+)
+PERIOD_EVIDENCE_SHA256 = (
+    "22b10ce573136e1e6a56931df12ddcd07a51edd757f22d31bf454c19799f5dc1"
 )
 _CONTEXT = Context(prec=80, rounding=ROUND_HALF_EVEN)
 _QUANTUM = Decimal("1e-12")
@@ -48,6 +55,9 @@ SHARE_SCHEMA = pa.schema(
         ("source_object_sha256", pa.string()),
         ("source_vintage", pa.string()),
         ("period_start", pa.date32()),
+        ("period_definition_evidence_sha256", pa.string()),
+        ("numerator_source_time_status", pa.string()),
+        ("denominator_source_time_status", pa.string()),
         ("period_end", pa.date32()),
         ("numerator_id", pa.string()),
         ("denominator_id", pa.string()),
@@ -96,6 +106,9 @@ def _validate(row: dict[str, Any], measures: set[str]) -> tuple[date, str]:
         and bool(row["record_id"])
         and type(end) is date
         and _FIRST_YEAR <= end.year <= _LAST_YEAR
+        and row["valid_time_start"] is None
+        and row["valid_time_status"]
+        == ("june_year_end_start_unqualified" if crown else "end_known_start_unknown")
         and row["unit"] == ("$ millions" if crown else "NZD_millions")
         and isinstance(amount, Decimal)
         and amount.is_finite()
@@ -141,8 +154,10 @@ def derive_fiscal_health_shares(
     health: list[dict[str, Any]],
     gdp: list[dict[str, Any]],
     crowns: list[dict[str, Any]],
+    *,
+    period_evidence: Path,
 ) -> pa.Table:
-    """Pure arithmetic over qualified rows; callers must verify input packages.
+    """Arithmetic with pinned period evidence; callers verify source packages.
 
     Dates follow Treasury's March/June fiscal-year definition for this exact
     workbook. Ratios use its shared dollar-million scale, so ISO currency is
@@ -150,6 +165,11 @@ def derive_fiscal_health_shares(
     they are not total-Crown Health expenditure. Reporting bases are retained
     per observation and are never spliced or pooled across years or vintages.
     """
+    _require(not period_evidence.is_symlink() and period_evidence.is_file())
+    _require(
+        hashlib.sha256(period_evidence.read_bytes()).hexdigest()
+        == PERIOD_EVIDENCE_SHA256
+    )
     _require(len(health) + len(gdp) + len(crowns) <= _MAX_ROWS)
     indexed: dict[tuple[date, str], dict[str, Any]] = {}
     ids: set[str] = set()
@@ -181,6 +201,11 @@ def derive_fiscal_health_shares(
                     "source_object_sha256": SOURCE_SHA256,
                     "source_vintage": VINTAGE,
                     "period_start": start,
+                    "period_definition_evidence_sha256": PERIOD_EVIDENCE_SHA256,
+                    "numerator_source_time_status": row["valid_time_status"],
+                    "denominator_source_time_status": denominator["valid_time_status"]
+                    if denominator
+                    else None,
                     "period_end": end,
                     "numerator_id": row["record_id"],
                     "denominator_id": denominator["record_id"] if denominator else None,
@@ -209,6 +234,8 @@ def derive_fiscal_health_shares(
 
 def query_fiscal_health_shares(
     package: CanonicalPackageInput,
+    *,
+    period_evidence: Path,
 ) -> tuple[pa.Table, dict[str, Any]]:
     """Verify a historical canonical package and its exact original before use."""
     _require(package.kind == "historical")
@@ -220,6 +247,7 @@ def query_fiscal_health_shares(
         canonical["health_spending_fact"].to_pylist(),
         canonical["fiscal_context_fact"].to_pylist(),
         crowns.to_pylist(),
+        period_evidence=period_evidence,
     )
     return table, {
         "schema_version": "archive-govt-nz.fiscal-health-shares/v1",
@@ -228,6 +256,8 @@ def query_fiscal_health_shares(
         "source_object_sha256": SOURCE_SHA256,
         "source_vintage": VINTAGE,
         "period_definition_source_url": PERIOD_EVIDENCE_URL,
+        "period_definition_evidence_sha256": PERIOD_EVIDENCE_SHA256,
+        "period_definition_evidence_kind": "retained_web_tool_text_observation",
         "formula_policy": FORMULA_POLICY,
         "rounding": "decimal80_half_even_percent_12dp",
         "counts": dict(sorted(Counter(table["status"].to_pylist()).items())),

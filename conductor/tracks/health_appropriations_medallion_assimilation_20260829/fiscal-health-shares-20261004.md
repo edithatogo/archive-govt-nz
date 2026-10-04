@@ -35,7 +35,7 @@ rational calculation rounded half-even to 12 decimal places. The original
 Bronze digest remained unchanged. A typed Parquet readback also matched.
 
 The retained product is outside Git at
-`/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/gold/fiscal-health-shares-20261004-v1`.
+`/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/gold/fiscal-health-shares-20261004-v3`.
 It is a local analytical query product; integration into the canonical Gold
 exporter, CLI/MCP and plots remains a next task. CPI, wages and population are
 not joined. Rights and publication remain unevaluated/unperformed.
@@ -55,3 +55,7 @@ Consumer-query and discovery-schema changes were already implemented upstream;
 historical receipts and differing bookkeeping remain recoverable in that
 snapshot. This change also removes the obsolete no-native-Crown-adapter gap
 from the context register; period, currency and rights qualifications remain.
+
+## PR review correction
+
+The query now requires the retained Treasury period-definition observation as an explicit input and verifies its pinned SHA256 before deriving starts. Every row carries that evidence digest and the original numerator/denominator time-status labels. Source starts must remain null and match the expected source statuses; the source records are not rewritten. Changed or missing observation bytes fail closed. The retained observation is web-tool text, not original HTML.
