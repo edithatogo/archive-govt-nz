@@ -813,6 +813,12 @@ integrated parent head.
   provisional/revision flags and missing/unsupported period reasons.
   [M-10, M-12, M-13; AC-08, AC-10] See `fiscal-health-per-capita-20261004.md`.
 
+- [x] Add a verified household-CPI fiscal purchasing-power benchmark with
+  explicit equal-quarter weighting and FY2025 reference, quarter/source lineage,
+  original time-status and quality flags, GST basis and incompatible/missing
+  denominator controls. [M-10, M-12, M-13; AC-08, AC-10] See
+  `fiscal-health-cpi-benchmark-20261004.md`.
+
 - [ ] Add DuckDB query golden tests for nominal, real, per-capita, GDP share,
   total/core Crown share, budget-versus-actual, revisions, classifications,
   department/portfolio and CPB views. [M-10, M-13, M-18; AC-08, AC-10,

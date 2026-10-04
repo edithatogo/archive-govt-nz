@@ -523,3 +523,14 @@ July–June periods under a named two-vintage policy, retain input IDs and flags
 and report March/missing denominators rather than substituting year-end stocks.
 Require both pinned period-observation inputs; keep ISO currency, rights,
 publication and uniform census-base assertions outside the derived claim.
+
+## Household CPI fiscal benchmark (4 October 2026)
+
+After original/Silver/canonical verification, select four CPI quarters matching
+each qualified March/June fiscal year. Use equal-quarter means and the fixed
+FY2025 benchmark under a pinned two-vintage policy. Retain exact canonical
+quarter IDs, source time-status labels, source flags and GST/accounting basis.
+Bind the official CPI methodology observation and independently check its
+2017Q2=1000 reference point. Keep published-index rounding, GST effects and
+historical seasonal component changes visible; do not claim a health input
+cost deflator or modify original projection qualifiers.

@@ -257,3 +257,6 @@ they are not current-state assertions.
 
 - [Annual mean resident spending rate](fiscal-health-per-capita-20261004.md)
 - [Per-capita native replay evidence](fiscal-health-per-capita-20261004.json)
+
+- [Household CPI fiscal benchmark](fiscal-health-cpi-benchmark-20261004.md)
+- [CPI benchmark native replay evidence](fiscal-health-cpi-benchmark-20261004.json)
