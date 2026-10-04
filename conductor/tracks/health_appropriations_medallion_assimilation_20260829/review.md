@@ -1694,3 +1694,9 @@ Bronze builds after that portability correction still matches all 34 files,
 324 query rows and retained qualified Gold/report bytes. Final harness reruns.
 
 Final follow-up validation: required harness passed with 7,462 tests and 10 skips; 80% floor unchanged. Scoped review and fresh focused native recovery passed after the Windows launcher fix.
+
+## 2026-10-05 — Budget estimate-transition self-review
+
+Verified conservative all-dimension keys, no aggregation, no duplicate resolution or zero substitution, exact Decimal subtraction and input provenance bindings. Known reviewed original pins qualify period metadata; package consumption checks fixity/contracts and does not independently re-prove source cells. The external native replay separately audits those cells. Supplementary Estimates, restructuring and GST caveats prohibit performance/reconciliation claims. This closes only the bounded library query after evidence is complete; wider comparisons and operations remain open.
+
+Final evidence: required ./scripts/validate.sh passed with 7,466 tests / 10 skips and all configured gates; four focused tests passed. Two fresh Bronze builds have identical complete inventories and unchanged originals. Independent OOXML checks cover all 400 selected facts across the source vintages and all their raw cells; 37 differences checked in integer thousandths. Output has 60 groups: 37 unique pairs, 11 earlier-only, 12 later-only, zero ambiguous. All 97 transition records accounted for; 303 records outside transitions. Native receipt SHA-256 8b4b93c0f482f5e4c2a0527c052d3469f0f3516c927474432d86e35678c4fdcd. Scoped phase gate is not the final Health completion review.

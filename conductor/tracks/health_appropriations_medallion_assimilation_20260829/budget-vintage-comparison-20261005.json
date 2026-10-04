@@ -1,0 +1,102 @@
+{
+  "all_files_equal": true,
+  "comparison_receipt": {
+    "caveats": [
+      "supplementary_estimates_excluded",
+      "earlier_data_not_restated_for_restructuring",
+      "names_and_scope_are_edition_specific",
+      "gst_basis_not_established",
+      "not_official_estimates_reconciliation",
+      "arithmetic_difference_not_performance_variance"
+    ],
+    "full_track_completion": "not_asserted",
+    "group_count": 60,
+    "input_accounting": {
+      "earlier": {
+        "outside_transitions": 167,
+        "selected": 48
+      },
+      "later": {
+        "outside_transitions": 136,
+        "selected": 49
+      }
+    },
+    "publication_approval": "not_granted",
+    "rights_state": "not_evaluated",
+    "schema_version": "archive-govt-nz.budget-estimate-transitions/v1",
+    "source_bindings": {
+      "earlier": {
+        "definition_coordinates": [
+          "Explanation!B3",
+          "Explanation!B17",
+          "Explanation!B21",
+          "Explanation!B23",
+          "Explanation!B40",
+          "Explanation!B41",
+          "Explanation!B42"
+        ],
+        "manifest_sha256": "bc5c8465951c0d61bc562a0f175e405db8c64ffb476e2d97300646917a0a9691",
+        "observed_at": "2026-08-30T00:00:00+00:00",
+        "source_locator": "data/raw/b25-expenditure-data.xlsx",
+        "source_object_sha256": "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
+        "source_vintage": "Budget-2025"
+      },
+      "later": {
+        "definition_coordinates": [
+          "Explanation!B3",
+          "Explanation!B17",
+          "Explanation!B21",
+          "Explanation!B23",
+          "Explanation!B40",
+          "Explanation!B41",
+          "Explanation!B42"
+        ],
+        "manifest_sha256": "7174b09ea9405e8b7d933f77753584abe287813f409791bfdec0e2bb94b9150a",
+        "observed_at": "2026-08-31T05:50:00+00:00",
+        "source_locator": "https://budget.govt.nz/budget/excel/data/b26-expenditure-data.xlsx",
+        "source_object_sha256": "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0",
+        "source_vintage": "Budget-2026"
+      }
+    },
+    "state_counts": {
+      "ambiguous_literal_group": 0,
+      "earlier_only": 11,
+      "later_only": 12,
+      "unique_literal_pair": 37
+    },
+    "status": "verified_literal_diagnostic"
+  },
+  "independent_builds": 2,
+  "independent_integer_differences_verified": true,
+  "independent_ooxml_all_selected_cells_verified": true,
+  "native_output": {
+    "external_root": "ArchiveGovtNZ/health-appropriations",
+    "relative_path": "assurance/budget-vintage-comparison-20261005-v1"
+  },
+  "native_receipt_sha256": "8b4b93c0f482f5e4c2a0527c052d3469f0f3516c927474432d86e35678c4fdcd",
+  "originals_unchanged": true,
+  "output_inventory": {
+    "Budget-2025/MANIFEST.json": "bc5c8465951c0d61bc562a0f175e405db8c64ffb476e2d97300646917a0a9691",
+    "Budget-2025/budget_facts.parquet": "0cbad8588f7055a56f008b8b7a95d8b382f3855a111c5288d54c29d04da244ef",
+    "Budget-2025/field_lineage.parquet": "f8d80b30e5d4641707e7c39cbb435de97bb4b44a49fd8c5ae705072ed867ad9c",
+    "Budget-2025/row_dispositions.parquet": "dabc8533c1ff8b49ff46b4301374225315771a76c27e64020526ebcda6486397",
+    "Budget-2026/MANIFEST.json": "7174b09ea9405e8b7d933f77753584abe287813f409791bfdec0e2bb94b9150a",
+    "Budget-2026/budget_facts.parquet": "cb6fce9466559964e66b3542f380e900b060d99e53a888a5b7d882994710e1d2",
+    "Budget-2026/field_lineage.parquet": "917e14e0de9d5fc3f7c56d14da9cc103031aa475e59157da46824d63c06c9a4b",
+    "Budget-2026/row_dispositions.parquet": "e4bad4ad0a92b80257526fddcf4d7b7e665d1eddee90cedf6706977e65260b0f",
+    "comparison.parquet": "fa086b239c88b399c810e3c8d672cca9e7bb74ab24c7150c90e8db7c85a0d2d6",
+    "receipt.json": "952f6bb52fe0885ff7bdedb57f4b909d87e4927b461946e9ef76f8039f93a8d6"
+  },
+  "production_module_sha256": "c802feb4e2f204e25677ec59d7027769845879195dd23a93d4d175f6a8cc505f",
+  "recipe_sha256": "4d785bac854432c1c9f6dc6876ee8b32c003cd2eb45267b80d1c172f1a490c2f",
+  "status": "passed",
+  "validation": {
+    "focused_tests": 4,
+    "module_coverage_percent": 100,
+    "required_harness": "passed",
+    "required_target_percent": 80,
+    "scoped_conductor_review": "passed",
+    "skips": 10,
+    "tests": 7466
+  }
+}

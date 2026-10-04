@@ -936,6 +936,11 @@ integrated parent head.
     infer cross-source findings. See
     `canonical-gold-consumer-example-20261002.md`.
 
+- [x] Add a pinned-original Budget-2025/2026 estimate-to-later-value
+  comparison for fiscal years 2025 and 2026. Match all literal source dimensions,
+  retain unique pairs and unmatched/ambiguous groups, and report arithmetic
+  differences without claiming restated appropriation comparability. [M-13; AC-11]
+
 ### 6.3 Phase review and checkpoint
 
 - [ ] Reconcile Gold totals against source, donor and cross-source controls;

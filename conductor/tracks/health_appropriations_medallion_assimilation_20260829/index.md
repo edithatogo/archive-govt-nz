@@ -272,3 +272,5 @@ they are not current-state assertions.
 
 - [Integrated Fiscal analytical recovery](fiscal-analytical-recovery-20261004.md)
 - [Native reconstruction and interface evidence](fiscal-analytical-recovery-20261004.json)
+
+- [Budget estimate-transition comparison](./budget-vintage-comparison-20261005.md)
