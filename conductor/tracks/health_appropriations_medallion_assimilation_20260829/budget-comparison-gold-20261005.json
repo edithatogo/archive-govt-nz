@@ -1,0 +1,69 @@
+{
+  "all_package_bytes_equal": true,
+  "full_track_completion": "not_asserted",
+  "independent_package_builds": 2,
+  "input_packages_unchanged": true,
+  "native_output": {
+    "external_root": "ArchiveGovtNZ/health-appropriations",
+    "relative_path": "assurance/budget-comparison-gold-20261005-v3"
+  },
+  "native_receipt_sha256": "3cb75ce3c10fc166f6924986a9486b21f9966cab4820728fc3456a0a247bc0e7",
+  "originals_unchanged": true,
+  "prior_native_receipt_sha256": "8b4b93c0f482f5e4c2a0527c052d3469f0f3516c927474432d86e35678c4fdcd",
+  "production_module_sha256": "c3e5f37a7c22a8222ccb96bba7d51e7eb61f68181cc2b221cbb35a8c2cf0a239",
+  "publication": "not_performed",
+  "recipe_sha256": "4248f15a6a5307b4e84b4971e5f8c6f236433b3e59acae7d9f236a101655cf6f",
+  "rights": "not_evaluated",
+  "runs": [
+    {
+      "bad_pin_cli_exit_2_and_mcp_error": true,
+      "cli_mcp_arrow_equal": true,
+      "inventory": {
+        "MANIFEST.json": "e8c7efda7773368bcee1b7f596f373c0aa6ec3f4453485b9b6fb9cc447ebd5fc",
+        "README.md": "3eba4f178d3a9a7467651f3c7a28b2fe5ee23501c76e09d2a3fa2a3f1c4d76fa",
+        "comparison.parquet": "33c0239b18d8ff6078cd1f659821779b3dee71a11c6a8c747d2c40dda8d8f4bc",
+        "differences.png": "e205e5cff0feca5dc55bca9a68f8a222f39ca407a1747c7babeb111d998479f9",
+        "summary.json": "9a50719c2f0fdc6f3da054b09ab8c3a0ccd513e1e0eeb05aee0fadafc4142764"
+      },
+      "manifest_sha256": "e8c7efda7773368bcee1b7f596f373c0aa6ec3f4453485b9b6fb9cc447ebd5fc",
+      "plot_excluded_groups": 23,
+      "plot_points": 37,
+      "rows": 60
+    },
+    {
+      "bad_pin_cli_exit_2_and_mcp_error": true,
+      "cli_mcp_arrow_equal": true,
+      "inventory": {
+        "MANIFEST.json": "e8c7efda7773368bcee1b7f596f373c0aa6ec3f4453485b9b6fb9cc447ebd5fc",
+        "README.md": "3eba4f178d3a9a7467651f3c7a28b2fe5ee23501c76e09d2a3fa2a3f1c4d76fa",
+        "comparison.parquet": "33c0239b18d8ff6078cd1f659821779b3dee71a11c6a8c747d2c40dda8d8f4bc",
+        "differences.png": "e205e5cff0feca5dc55bca9a68f8a222f39ca407a1747c7babeb111d998479f9",
+        "summary.json": "9a50719c2f0fdc6f3da054b09ab8c3a0ccd513e1e0eeb05aee0fadafc4142764"
+      },
+      "manifest_sha256": "e8c7efda7773368bcee1b7f596f373c0aa6ec3f4453485b9b6fb9cc447ebd5fc",
+      "plot_excluded_groups": 23,
+      "plot_points": 37,
+      "rows": 60
+    }
+  ],
+  "schema_version": "archive-govt-nz.budget-comparison-gold-assurance/v1",
+  "semantic_comparability": "not_established",
+  "source_code_sha256": {
+    "src/archive_govt_nz/cli.py": "80563cbedd236f057c0ef40e214f5e0c00b8da88e37b05a53706c58acf1b209a",
+    "src/archive_govt_nz/domains/health_appropriations/budget_comparison_gold.py": "c3e5f37a7c22a8222ccb96bba7d51e7eb61f68181cc2b221cbb35a8c2cf0a239",
+    "src/archive_govt_nz/mcp_server.py": "d34fcbc135b969090cd2bcce726dda989670e0ad2025cc6df33eaf35bfcb1fc6"
+  },
+  "source_normalization": "not_repeated_in_this_recipe; consumes prior independently qualified paired Bronze replay",
+  "status": "passed",
+  "validation": {
+    "coverage_floor_percent": 80,
+    "coverage_percent": 97.93,
+    "exit_code": 0,
+    "focused_delivery_mcp_tests_passed": 21,
+    "full_harness_log_sha256": "f6bca5ac29dbc93c63ac208ab6810cb478dc3daefd217ad34458fc97e8004d18",
+    "required_command": "./scripts/validate.sh",
+    "scoped_phase_review": "passed_not_final_health_completion_review",
+    "tests_passed": 7469,
+    "tests_skipped": 10
+  }
+}

@@ -941,6 +941,10 @@ integrated parent head.
   retain unique pairs and unmatched/ambiguous groups, and report arithmetic
   differences without claiming restated appropriation comparability. [M-13; AC-11]
 
+- [x] Package the source-qualified Budget comparison as separately pinned Gold,
+  with exact reports, a discrete diagnostic plot and bounded read-only CLI/MCP
+  delivery. Preserve unmatched groups and source caveats. [M-13, M-15; AC-11, AC-13]
+
 ### 6.3 Phase review and checkpoint
 
 - [ ] Reconcile Gold totals against source, donor and cross-source controls;

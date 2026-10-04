@@ -274,3 +274,5 @@ they are not current-state assertions.
 - [Native reconstruction and interface evidence](fiscal-analytical-recovery-20261004.json)
 
 - [Budget estimate-transition comparison](./budget-vintage-comparison-20261005.md)
+
+- [Budget comparison Gold and operations](./budget-comparison-gold-20261005.md)

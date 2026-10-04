@@ -455,6 +455,65 @@ def health_appropriations_verify_fiscal_reports(
     return 0
 
 
+@app.command(name="health-appropriations-build-budget-comparison")
+def health_appropriations_build_budget_comparison(
+    *,
+    earlier_original: Path,
+    earlier_package: Path,
+    earlier_manifest_sha256: str,
+    later_original: Path,
+    later_package: Path,
+    later_manifest_sha256: str,
+    output_dir: Path,
+    write: bool = False,
+) -> int:
+    """Build pinned Budget comparison Gold and reports; dry run by default."""
+    from archive_govt_nz.domains.health_appropriations.budget_comparison_gold import (
+        export_budget_comparison,
+    )
+    from archive_govt_nz.domains.health_appropriations.budget_vintage_comparison import (
+        BudgetComparisonInput,
+    )
+
+    try:
+        receipt = export_budget_comparison(
+            BudgetComparisonInput(
+                earlier_original, earlier_package, earlier_manifest_sha256
+            ),
+            BudgetComparisonInput(later_original, later_package, later_manifest_sha256),
+            output_dir,
+            write=write,
+        )
+    except ValueError, OSError, KeyError, TypeError:
+        _emit_json(
+            {
+                "command": "health-appropriations-build-budget-comparison",
+                "status": "failed",
+                "error": "budget_comparison_build_failed",
+            }
+        )
+        return 2
+    _emit_json({"command": "health-appropriations-build-budget-comparison", **receipt})
+    return 0
+
+
+@app.command(name="health-appropriations-query-budget-comparison")
+def health_appropriations_query_budget_comparison(
+    package_dir: Path,
+    manifest_sha256: str,
+    *,
+    limit: int = 50,
+) -> int:
+    """Read bounded exact rows from a pinned Budget comparison package."""
+    from archive_govt_nz.domains.health_appropriations.budget_comparison_gold import (
+        query_budget_comparison,
+    )
+
+    receipt = query_budget_comparison(package_dir, manifest_sha256, limit=limit)
+    _emit_json({"command": "health-appropriations-query-budget-comparison", **receipt})
+    return 0 if receipt["status"] == "verified" else 2
+
+
 @app.command(name="health-appropriations-query-fiscal-gold")
 def health_appropriations_query_fiscal_gold(
     package_dir: Path, manifest_sha256: str, *, table: str = "nominal", limit: int = 50
