@@ -1467,6 +1467,9 @@ _PATTERNS_2014_15 = {
 _PROFILE_UNQUALIFIED_MEASURES_2014_15 = frozenset(
     {"health_sector_risk_management", "long_term_care_interest_free_loans"}
 )
+_PROFILE_QUALIFIER_MEASURES_2014_15 = frozenset(
+    {"departmental_functions", "capital_loan_refinancing"}
+)
 
 FACT_SCHEMA = pa.schema(
     [
@@ -1682,6 +1685,7 @@ def parse_overview_2014_15_pages(texts: list[str]) -> list[dict[str, Any]]:
         patterns=_PATTERNS_2014_15,
         intro_pattern=r"2014/15 financial year\s+totalling\s+just over",
         second_page_pattern=r"Capital Expenditure",
+        profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2014_15,
         profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2014_15,
     )
 
@@ -2221,6 +2225,7 @@ def normalize_vote_health_estimates_overview_2014_15(  # noqa: PLR0913 - explici
         observed_at=observed_at,
         intro_pattern=r"2014/15 financial year\s+totalling\s+just over",
         second_page_pattern=r"Capital Expenditure",
+        profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2014_15,
         profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2014_15,
         additional_quality_flags=(
             "source_value_rounded_to_whole_million",

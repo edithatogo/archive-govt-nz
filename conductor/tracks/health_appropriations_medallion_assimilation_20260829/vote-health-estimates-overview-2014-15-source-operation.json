@@ -6,7 +6,7 @@
   "output_sha256": {
     "field_lineage.parquet": "ea75d5391a0c0a07fdd5d4b2069cec67c03977ee695377889f506f865d6d11b3",
     "page_dispositions.parquet": "411ddcf20cb05583e54f22fdbecf4443fcd00bc22bc6c5acbbbaa2bff6e5a733",
-    "vote_health_overview_facts.parquet": "44c29244b3d562540cca905325b491bb37c68132307e047abfc40bed7c8ea9f5"
+    "vote_health_overview_facts.parquet": "069d7aff51e1258220c16f0d9b0c1c94247b95e278a196bddb7461231dc114f6"
   },
   "profile": "vote-health-estimates-2014-15-overview/v1",
   "publication_state": "local_validation_only",

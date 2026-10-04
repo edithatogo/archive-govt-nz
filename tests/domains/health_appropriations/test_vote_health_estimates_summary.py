@@ -1033,6 +1033,10 @@ def test_2014_15_normalizer_rebuilds_eighteen_selected_headlines_from_bronze(
     risk_quality_flags = facts[10]["quality_flags"]
     assert risk_quality_flags
     assert "source_qualifier_preserved_in_raw_phrase" not in risk_quality_flags
+    for index in (1, 15):
+        assert (
+            "source_qualifier_preserved_in_raw_phrase" in facts[index]["quality_flags"]
+        )
     dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
     assert [row["disposition"] for row in dispositions].count(
         "preserved_unreviewed"
