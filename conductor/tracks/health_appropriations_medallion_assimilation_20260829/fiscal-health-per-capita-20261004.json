@@ -9,15 +9,15 @@
     "unsupported_march_period": 18
   },
   "implementation_sha256": {
-    "src/archive_govt_nz/domains/health_appropriations/fiscal_per_capita.py": "f2e3a8a639fabc409745907a67738edd0f299da503f96a5ad32c36147e768dc3",
-    "tests/domains/health_appropriations/test_fiscal_per_capita.py": "a2c2d810f4da41a51b5d441298a79fdc25912daf1d2b43949a6377f76fe66ae2"
+    "src/archive_govt_nz/domains/health_appropriations/fiscal_per_capita.py": "389cf9242c0a9977295942908f18501a02227578f3a7790ad5a58b47e5478eb2",
+    "tests/domains/health_appropriations/test_fiscal_per_capita.py": "8d9594f56195b7a587216bb1e7cf0437b94e9b3f45803fcb20537459f13e5aa9"
   },
   "independent_rational_checks": 34,
   "output_location": {
     "external_root": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations",
-    "relative_path": "gold/fiscal-health-per-capita-20261004-v1"
+    "relative_path": "gold/fiscal-health-per-capita-20261004-v2"
   },
-  "output_parquet_sha256": "a3582a5a1f664b8dcc61a5d121fe46e34d19db8e6ad7d55112fe59c5708ee1a7",
+  "output_parquet_sha256": "857f56fe1c93a7c809dfb62354a381ec84babb84001ece1dee6598461142a09a",
   "period_metadata": {
     "direct_http_attempt": "403_forbidden",
     "observation_path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/source-evidence/fiscal-series-notes-web-observation-20261004.json",
@@ -122,7 +122,7 @@
     "rounding": "decimal80_half_even_source_dollars_12dp",
     "schema_version": "archive-govt-nz.fiscal-health-per-capita/v1"
   },
-  "rebuild_recipe_sha256": "948d29d593a4e67f04cb1a546f5fae16599772f949e43be6531d1be91e5da2a1",
+  "rebuild_recipe_sha256": "e89236659a42a0eb6637465f36d5fcaa78de18d9ba88e76ebd6d95229daf50a6",
   "rights": "not_evaluated",
   "rows": 54,
   "schema_version": "archive-govt-nz.fiscal-health-per-capita-assurance/v1",
@@ -131,9 +131,9 @@
     "configured_mutation_gates": "passed",
     "coverage_floor": 80,
     "coverage_percent": 98.09,
-    "log_sha256": "56d4bcb5802ea615b078d20e1f9e036d2d1c97e36aec4e2463ecec03fe6a072e",
+    "log_sha256": "67cb6990000c57fa7ac96f7fcde9558683242a8821b0be245cfbd62424d21e95",
     "parity": "9/9",
-    "phase_review_receipt_sha256": "b99a5c6c11815ef5525d74a8e50b2450bf66d9879aca44057c816faa2c204e6f",
+    "phase_review_receipt_sha256": "3fd7cfcdf2841cb97f17459ebe226189057ba3409258f9e1146e62ac931c3243",
     "representative_documents": 43,
     "sbom_components": 113,
     "schemas": 53,

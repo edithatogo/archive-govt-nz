@@ -51,6 +51,8 @@ SCHEMA = pa.schema(
         ("measure", pa.string()),
         ("period_start", pa.date32()),
         ("period_end", pa.date32()),
+        ("numerator_source_time_status", pa.string()),
+        ("population_source_time_status", pa.string()),
         ("numerator_id", pa.string()),
         ("population_id", pa.string()),
         ("health_source_sha256", pa.string()),
@@ -152,6 +154,7 @@ def derive_fiscal_per_capita(
         _require(
             row["source_object_sha256"] == fiscal.SOURCE_SHA256
             and row["source_vintage"] == fiscal.VINTAGE
+            and row["numerator_source_time_status"] == "end_known_start_unknown"
             and row["measure"] == "health_share_gdp"
             and row["formula_policy"] == fiscal.FORMULA_POLICY
             and row["period_definition_evidence_sha256"]
@@ -184,6 +187,10 @@ def derive_fiscal_per_capita(
                 "measure": "health_spending_per_mean_resident",
                 "period_start": row["period_start"],
                 "period_end": row["period_end"],
+                "numerator_source_time_status": row["numerator_source_time_status"],
+                "population_source_time_status": resident["valid_time_status"]
+                if resident
+                else None,
                 "numerator_id": row["numerator_id"],
                 "population_id": resident["record_id"] if resident else None,
                 "health_source_sha256": fiscal.SOURCE_SHA256,

@@ -28,6 +28,7 @@ def inputs() -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
         "formula_policy": subject.fiscal.FORMULA_POLICY,
         "period_definition_evidence_sha256": subject.fiscal.PERIOD_EVIDENCE_SHA256,
         "numerator_id": "health",
+        "numerator_source_time_status": "end_known_start_unknown",
         "numerator_amount": Decimal(30311),
         "accounting_basis": "PBE Standards",
         "numerator_coverage": "core_crown_health_function",
@@ -59,6 +60,8 @@ def test_exact_rate_preserves_two_vintages_and_provisional_state() -> None:
     assert result["population_source_sha256"] == population.SOURCE_SHA256
     assert result["population_vintage"] == population.SOURCE_VINTAGE
     assert result["population_id"] == "population"
+    assert result["numerator_source_time_status"] == "end_known_start_unknown"
+    assert result["population_source_time_status"] == "source_mean_year_ended"
     assert result["numerator_id"] == "health"
     assert result["population_source_quality_flags"] == ["source_status_provisional"]
     assert result["fiscal_source_quality_flags"] == ["source_start_unqualified"]

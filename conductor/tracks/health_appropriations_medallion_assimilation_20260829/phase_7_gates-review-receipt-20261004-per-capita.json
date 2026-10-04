@@ -1,7 +1,7 @@
 {
   "phase_id": "phase_7_gates",
-  "receipt_sha256": "cc0d9e8b6673843b704049ce8fef9af2333c98140362f0c5e865e5141154d10b",
-  "reviewed_at": "2026-10-04T07:19:08Z",
+  "receipt_sha256": "57830ab01697cb70ccba2d0c57fc8a11425267156ad69caf66df4fb443416f08",
+  "reviewed_at": "2026-10-04T07:32:40Z",
   "schema_version": "archive-govt-nz.conductor-phase-review/v1",
   "stages": [
     {
@@ -64,7 +64,7 @@
       "exit_code": 0,
       "passed": true,
       "stderr": "",
-      "stdout": ".py ..                         [ 36%]\ntests/silver/test_urn_injection.py ...                                   [ 40%]\ntests/bronze/test_heartbeat.py .....                                     [ 47%]\ntests/gold/test_search.py ..                                             [ 50%]\ntests/gold/test_analytics.py .......                                     [ 60%]\ntests/bronze/test_manifest.py ......                                     [ 69%]\ntests/bronze/test_multihash.py ......                                    [ 77%]\ntests/gold/test_nlp_export.py .                                          [ 78%]\ntests/silver/test_interlink.py ....                                      [ 84%]\ntests/gold/test_federation_views.py ..                                   [ 87%]\ntests/bronze/test_attestation.py ....                                    [ 92%]\ntests/silver/test_pipeline.py .....                                      [100%]\n\n============================= 71 passed in 13.54s ==============================\n"
+      "stdout": "                               [ 52%]\ntests/gold/test_knowledge_graph_feedback.py .                            [ 53%]\ntests/gold/test_health_gold_query_contract.py ..                         [ 56%]\ntests/silver/test_urn_injection.py ...                                   [ 60%]\ntests/gold/test_nlp_export.py .                                          [ 61%]\ntests/bronze/test_adapter.py .                                           [ 63%]\ntests/silver/test_pipeline.py .....                                      [ 70%]\ntests/bronze/test_sniffer.py .......                                     [ 80%]\ntests/cli/test_query_cli.py ...                                          [ 84%]\ntests/bronze/test_manifest.py ......                                     [ 92%]\ntests/bronze/test_fingerprint.py ....                                    [ 98%]\ntests/silver/test_streaming_performance.py .                             [100%]\n\n============================= 71 passed in 16.77s ==============================\n"
     },
     {
       "command": [

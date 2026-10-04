@@ -1583,3 +1583,14 @@ exclusions remain explicit. Source/provisional/accounting/revision flags and
 period evidence identities remain visible. No rights/publication gate closes.
 
 Required local harness passed: 7,414 tests, 10 skipped; 80% coverage floor unchanged, measured 98.09%; 53 schemas, 43 representative documents, parity 9/9, all configured mutation gates and supply-chain controls passed. Scoped automatic Conductor phase review passed; its receipt is retained. Full Health track review/completion remains open.
+
+PR #628 review: accepted Codex's omission finding and carried both source
+time-status labels into the derived table. Eighteen focused tests still pass;
+two fresh native replays again agree and all 34 rates independently match.
+Amazon Q's precision concern was rejected: the existing test deliberately
+checks isolation from caller ambient precision; an additional bounded probe
+confirmed the exact result under ambient precision 2 and caught a production
+precision-2 mutant. No arithmetic policy change was made. Repeat full assurance
+is required for the added provenance fields.
+
+Corrected full harness and scoped phase review passed: 7,414 tests, 10 skipped; 80% coverage floor retained; all configured schemas, parity, mutation and supply-chain controls passed.

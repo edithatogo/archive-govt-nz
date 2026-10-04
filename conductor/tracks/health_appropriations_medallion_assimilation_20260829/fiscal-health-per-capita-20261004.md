@@ -49,3 +49,8 @@ The product and repeat-build recipe are outside Git under the retained Health
 archive. `fiscal-health-per-capita-20261004.json` binds their digests and the
 query receipt. CLI/MCP, integrated Gold exporter and plots remain separate
 work; this evidence does not close those products or the final track gate.
+
+PR #628 review correction: every row now directly preserves the fiscal
+`numerator_source_time_status` and population `valid_time_status` alongside
+the derived period and pinned evidence digests. The fiscal source start remains
+unknown at source level; its derived date is not relabelled as source-provided.
