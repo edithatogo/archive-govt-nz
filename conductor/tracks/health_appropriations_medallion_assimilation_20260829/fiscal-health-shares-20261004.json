@@ -1,0 +1,119 @@
+{
+  "bronze_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+  "bronze_unchanged": true,
+  "byte_identical": true,
+  "clean_room_repeats": 2,
+  "counts": {
+    "calculated": 115,
+    "missing_denominator": 47
+  },
+  "implementation_sha256": {
+    "src/archive_govt_nz/domains/health_appropriations/fiscal_share_analysis.py": "205965a662b63a2c05b22788899e666992041303a295a9c3ac6d8881584e7113",
+    "tests/domains/health_appropriations/test_fiscal_share_analysis.py": "a01060eebd20f54d78356780fc5eed3c34cfc260636265b488ca990f2ec16e2f"
+  },
+  "independent_rational_checks": 115,
+  "output_location": {
+    "external_root": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations",
+    "relative_path": "gold/fiscal-health-shares-20261004-v3"
+  },
+  "output_parquet_sha256": "7fd6a924756597da97112b55b6cdb917b059dd98dd1977e83abf316dfd6619e2",
+  "period_metadata": {
+    "direct_http_attempt": "403_forbidden",
+    "observation_path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/source-evidence/fiscal-series-notes-web-observation-20261004.json",
+    "original_html_capture": "not_performed",
+    "url": "https://www.treasury.govt.nz/publications/information-release/data-fiscal-time-series-historical-fiscal-indicators",
+    "web_observation_sha256": "22b10ce573136e1e6a56931df12ddcd07a51edd757f22d31bf454c19799f5dc1"
+  },
+  "publication": "not_performed",
+  "query_receipt": {
+    "canonical_input": {
+      "canonical_bytes": 363811,
+      "kind": "historical",
+      "marker_sha256": "0bb6bd598ad3bc58c103251f4711e0092a75ec0ae80f63c89c623b93c0711507",
+      "original_bytes": 116265,
+      "original_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+      "outputs": {
+        "field_lineage.parquet": {
+          "bytes": 77323,
+          "sha256": "e2098b2d03fc909741620f9d78aa58587852894b8dacf9ba5491aa79ab7e49e8"
+        },
+        "fiscal_context_fact.parquet": {
+          "bytes": 19445,
+          "sha256": "b2491a94d6901b0f05e101eabbb18abf445b67a6d9865ae2f4ba62d1d27e8e54"
+        },
+        "health_spending_fact.parquet": {
+          "bytes": 19464,
+          "sha256": "e7d86618e1edb0166f11331bf59754bd9d85fd8c0b976cc8826096bb4c5c7ff6"
+        },
+        "lineage_accounting.json": {
+          "bytes": 245614,
+          "sha256": "59f9b8a7a5ae8e7d860def3c12b6756226f59d1ecf7085c6247d9e454037bcbc"
+        }
+      },
+      "projection_equality": "historical-health-gdp-canonical/v1",
+      "raw_manifest_sha256": "aee4578f1ee83f8c1ede63e36e840c6cd2140df8c6f463e71ec93da9e4e7d75a",
+      "vintage": "Fiscal-Time-Series-1972-2025"
+    },
+    "counts": {
+      "calculated": 115,
+      "missing_denominator": 47
+    },
+    "cross_vintage_join": "not_performed",
+    "crown_input": {
+      "accounting_basis": "source_label_retained",
+      "core_crown_records": 32,
+      "cross_measure_comparison": "not_performed",
+      "currency": "unknown",
+      "denominator_selection": "not_performed",
+      "financial_year_start": "unqualified",
+      "input_identity_closed": true,
+      "input_records": 61,
+      "output_lineage_rows": 671,
+      "output_records": 61,
+      "publication": "not_performed",
+      "rights_state": "not_evaluated",
+      "schema_version": "archive-govt-nz.health-fiscal-crown-canonical-projection/v1",
+      "source_object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+      "source_vintage": "Fiscal-Time-Series-1972-2025",
+      "status": "verified_source_faithful_projection",
+      "total_crown_records": 29
+    },
+    "formula_policy": "fiscal-2025-source-period-health-shares/v1",
+    "period_definition_evidence_kind": "retained_web_tool_text_observation",
+    "period_definition_evidence_sha256": "22b10ce573136e1e6a56931df12ddcd07a51edd757f22d31bf454c19799f5dc1",
+    "period_definition_source_url": "https://www.treasury.govt.nz/publications/information-release/data-fiscal-time-series-historical-fiscal-indicators",
+    "publication": "not_performed",
+    "rights": "not_evaluated",
+    "rounding": "decimal80_half_even_percent_12dp",
+    "schema_version": "archive-govt-nz.fiscal-health-shares/v1",
+    "source_object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+    "source_vintage": "Fiscal-Time-Series-1972-2025"
+  },
+  "rebuild_recipe_sha256": "62fe3db8022e1285d2c792d90be1146a995ac078fbeec0d7debfdc2d4533459f",
+  "rights": "not_evaluated",
+  "rows": 162,
+  "schema_version": "archive-govt-nz.fiscal-health-share-assurance/v1",
+  "validation": {
+    "command": "./scripts/validate.sh",
+    "configured_mutation_gates": "passed",
+    "coverage_floor": 80,
+    "coverage_percent": 98.09,
+    "log_sha256": "c85118d6d6f4f7a5ea5fc8ac5f0c02fcb47dc19effe9c1812be4b5cc57f1da67",
+    "parity": "9/9",
+    "phase_review_receipt_sha256": "4cdf7d16f6c6d4740313fd30153436578dd6906fa5a37ef0d2bc9b69def93335",
+    "representative_documents": 43,
+    "sbom_components": 113,
+    "schemas": 53,
+    "status": "passed",
+    "supply_chain": "passed",
+    "tests_passed": 7396,
+    "tests_skipped": 10
+  },
+  "validation_attempt": {
+    "command": "./scripts/validate.sh",
+    "log_sha256": "8e56c1c9cfc2cf3449ca7f020179929ccc09a94913627d7d6f27f514f958e184",
+    "status": "blocked_by_receipt_path_false_positive",
+    "tests_passed": 7396,
+    "tests_skipped": 10
+  }
+}

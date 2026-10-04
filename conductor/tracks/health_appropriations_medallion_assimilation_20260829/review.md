@@ -1538,3 +1538,34 @@ and 98.08% branch coverage against the 80% floor. Schema (53/43), parity 9/9,
 configured mutation, supply-chain, secret scan, and strict 113-component SBOM
 checks passed. Automatic Phase 7 review passed; receipt SHA-256 is
 `a5853c57d094b40f20dd59ab7a03576c25ab54af8102bb5ed0c1e4f1c814bbf8`.
+
+## 2026-10-04 — Source-qualified Fiscal share self-review
+
+The verified query uses the same pinned original for historical and Crown
+inputs. Pure arithmetic is explicitly separate from package verification.
+Source/year/unit/basis and identity gates reject incompatible inputs, and
+missing/nonpositive denominators retain reasons and input IDs. Exact dollar
+million ratios avoid an unsupported ISO currency inference; Total Crown
+shares preserve the Core Crown Health numerator scope. Source-year caveats
+remain per row, and annual periods follow the retained Treasury definition.
+
+Fresh Bronze replay and independent rational checks pass. No other edition,
+context deflator, cross-source join or publication is admitted. The query
+product still needs canonical Gold exporter, CLI/MCP and plotting integration.
+Full repository and hosted gates remain pending at this entry.
+
+Final local assurance passed: `./scripts/validate.sh` reported 7,395 passed,
+10 skipped, 98.09% coverage against the 80% floor, 53 schemas/43 representative
+documents, parity 9/9, configured mutation gates, supply-chain/secret checks
+and strict 113-component SBOM validation. The automatic `phase_7_gates` review
+passed; its dated receipt is retained beside the share replay receipt. The
+first full invocation stopped at three test-style lint diagnostics; those
+were corrected before the successful run. Hosted validation remains separate.
+
+### PR #627 period evidence correction
+
+Codex identified that the reviewed query did not hash-bind the external fiscal-period definitions. The correction requires the exact retained observation input, rejects missing/changed bytes, preserves source time-status labels in every derived row, and validates null source starts. Eighteen focused tests passed. Native Bronze replays regenerated the product twice with identical bytes and all 115 independent rational checks. Full assurance is being repeated for the corrected code.
+
+The first remote assurance run and corrected local full run both stopped on the secret scanner misclassifying the local product path as Base64 entropy. The receipt now separates its external root and relative path, preserving the exact product location without a gate exclusion. Tests (7,396 passed; 10 skipped), schemas, parity, typing and all mutation gates passed before that failure. A fresh required harness run checks the final receipt representation.
+
+Final corrected validation passed: `./scripts/validate.sh` exit 0, 7,396 tests passed, 10 skipped, 80% coverage floor retained; schemas, parity, configured mutation and supply-chain gates passed. Automatic scoped Conductor review also passed. The full Health track completion gate remains open.
