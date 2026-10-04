@@ -269,3 +269,6 @@ they are not current-state assertions.
 
 - [Fiscal analytical reports and metadata](fiscal-analytical-reports-20261004.md)
 - [Report native repeat-build assurance](fiscal-analytical-reports-20261004.json)
+
+- [Integrated Fiscal analytical recovery](fiscal-analytical-recovery-20261004.md)
+- [Native reconstruction and interface evidence](fiscal-analytical-recovery-20261004.json)

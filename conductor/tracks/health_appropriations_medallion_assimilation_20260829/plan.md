@@ -1352,3 +1352,9 @@ integrated parent head.
   exact structured results, schema descriptors, dataset card and local PROV/DCAT
   projections; native repeat and Arrow comparison retained (4 October 2026).
   Full product recovery and final completion review remain open.
+
+- [x] Include two independent pinned Bronze-to-Fiscal analytical Gold/report
+  builds and complete CLI/MCP/Arrow readbacks in integrated clean-room assurance.
+  Focused native evidence verifies 34 files per run and all 324 query rows;
+  source-health and donor/classification preflights pass. The wider Health
+  recovery/completion gate remains open.

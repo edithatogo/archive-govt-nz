@@ -1,0 +1,492 @@
+{
+  "clean_derivative_root": "temporary_directory_removed_after_run",
+  "corrected_capture_manifest_name": "official-capture-2026-10-03-health-complete.json",
+  "corrected_pdf_layout_baseline_name": "source-pdf-layout-baseline-20261003.json",
+  "fresh_bronze_builds": 2,
+  "full_track_completion": "not_asserted",
+  "helper_sha256": "b74b41c58428158347a11962847a88807a1ab60c61a8805d44483c95f9204a6a",
+  "location": {
+    "external_root": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations",
+    "relative_path": "assurance/fiscal-recovery-20261004/focused-native-receipt.json"
+  },
+  "originals_and_metadata_unchanged": true,
+  "output_inventory": {
+    "cpi/MANIFEST.json": {
+      "bytes": 988,
+      "sha256": "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e"
+    },
+    "cpi/cpi_facts.parquet": {
+      "bytes": 98613,
+      "sha256": "0dfed3330c379af6c08dfcac0235149b81fa76f3131b32865ae92ddc98911560"
+    },
+    "cpi/field_lineage.parquet": {
+      "bytes": 111499,
+      "sha256": "948e0533cd941f08401026bb71b577c6a1e145ac0d1882e31125aa8d06ae6df5"
+    },
+    "cpi/row_dispositions.parquet": {
+      "bytes": 766994,
+      "sha256": "bc4c5af889ff01bae782c9c6321bfdd31afa03433998c178d2af1357e71643d0"
+    },
+    "gold/cpi_benchmark.parquet": {
+      "bytes": 26129,
+      "sha256": "ad94d24ad6fa5278bc040e7e8340243b67e0df4d4306a352b7eb7afae9325309"
+    },
+    "gold/manifest.json": {
+      "bytes": 13997,
+      "sha256": "1b79d6f582dc8e9935e16bce2d3fe78b78d77e2a68aacf201ac9118b28462fa2"
+    },
+    "gold/nominal.parquet": {
+      "bytes": 8763,
+      "sha256": "f06c23604ea63af87e27ba446fe3e4ea8df342085e79fd94d516b6d5f081cebe"
+    },
+    "gold/per_capita.parquet": {
+      "bytes": 16041,
+      "sha256": "cea8c44a51775c96494690d3edafb09d2cdd876f192e97884c7571c7db95e59c"
+    },
+    "gold/shares.parquet": {
+      "bytes": 19242,
+      "sha256": "c461219b54fb3c91b0e69559a8683eeed6b4c98cabc1fe6e951770997c61c6d3"
+    },
+    "historical-canonical/LOCAL_CANONICAL.json": {
+      "bytes": 1965,
+      "sha256": "0bb6bd598ad3bc58c103251f4711e0092a75ec0ae80f63c89c623b93c0711507"
+    },
+    "historical-canonical/field_lineage.parquet": {
+      "bytes": 77323,
+      "sha256": "e2098b2d03fc909741620f9d78aa58587852894b8dacf9ba5491aa79ab7e49e8"
+    },
+    "historical-canonical/fiscal_context_fact.parquet": {
+      "bytes": 19445,
+      "sha256": "b2491a94d6901b0f05e101eabbb18abf445b67a6d9865ae2f4ba62d1d27e8e54"
+    },
+    "historical-canonical/health_spending_fact.parquet": {
+      "bytes": 19464,
+      "sha256": "e7d86618e1edb0166f11331bf59754bd9d85fd8c0b976cc8826096bb4c5c7ff6"
+    },
+    "historical-canonical/lineage_accounting.json": {
+      "bytes": 245614,
+      "sha256": "59f9b8a7a5ae8e7d860def3c12b6756226f59d1ecf7085c6247d9e454037bcbc"
+    },
+    "historical-raw/MANIFEST.json": {
+      "bytes": 127706,
+      "sha256": "aee4578f1ee83f8c1ede63e36e840c6cd2140df8c6f463e71ec93da9e4e7d75a"
+    },
+    "historical-raw/cell_dispositions.parquet": {
+      "bytes": 31617,
+      "sha256": "9f5118560318865c56bd1713ec10bfc43b39625f670e490a71d876eea351cbdc"
+    },
+    "historical-raw/field_lineage.parquet": {
+      "bytes": 27855,
+      "sha256": "c0d7b3691fe7040373717e7daaf6a3f3be4c6447f24d8773b1a741efc904bd9a"
+    },
+    "historical-raw/historical_facts.parquet": {
+      "bytes": 33634,
+      "sha256": "6fcf3ef095e3889de879d4a130fcc8b0ae25319562a46e96706180c74d40cebf"
+    },
+    "population/MANIFEST.json": {
+      "bytes": 880,
+      "sha256": "067255c4ac18377312d0a8234dc94804c876ba68866cfba3a483a4dd89415798"
+    },
+    "population/field_lineage.parquet": {
+      "bytes": 10335,
+      "sha256": "f91b093e37a13a1f6de6cc2d862eba976df1e9ec5d0ef481a2f403cc66a98717"
+    },
+    "population/population_facts.parquet": {
+      "bytes": 21296,
+      "sha256": "564a02a2c28865da1cfac461d83baaa705419fb8a14ea1aebda5b3f362c5ffa8"
+    },
+    "population/row_dispositions.parquet": {
+      "bytes": 6505,
+      "sha256": "ff8ebd57263ebc05ed9da1632d20ad30b0dabe13aff44323aab960e13469e96f"
+    },
+    "reports/DATASET_CARD.md": {
+      "bytes": 550,
+      "sha256": "26fc722cdaeb64b19985047d110006bdce469eaa9afd928875ec6b47cdc80a43"
+    },
+    "reports/catalogue.json": {
+      "bytes": 7971,
+      "sha256": "d3b7c9062cb06c2a542898a148ac8997601b62b29a2965e3fecedb1d0de9f05d"
+    },
+    "reports/cpi_benchmark.png": {
+      "bytes": 72774,
+      "sha256": "257b55f4607a5789ed1167ad7202445e75cacc10ba736b8855f7f62dc24df378"
+    },
+    "reports/health_share_core_crown.png": {
+      "bytes": 53598,
+      "sha256": "42195c4075712bbcfd95c3c1b109317c4229765087fdcb0873300c0edccb6561"
+    },
+    "reports/health_share_gdp.png": {
+      "bytes": 68597,
+      "sha256": "5453431b9424e7787684fa206c4b17ac9075db251e948b41edb275bdf91a7003"
+    },
+    "reports/health_share_total_crown.png": {
+      "bytes": 46312,
+      "sha256": "0900ef384e402c2c085a756bee437784dc921c4cd8f040417944540945f2d61a"
+    },
+    "reports/manifest.json": {
+      "bytes": 1800,
+      "sha256": "b4da352b2ca8d6106d3d0fb1ceef7018c6f4dac23227f9a3155abb93f4c0c484"
+    },
+    "reports/nominal.png": {
+      "bytes": 68579,
+      "sha256": "f5f267f0efcf25f5f5bb221c86e3ff8f43eef2386c06ca2169d681f3f5bc5d7e"
+    },
+    "reports/per_capita.png": {
+      "bytes": 55259,
+      "sha256": "054d4979bd6eeb73501249f43819ff9c1172d405144703491f81bb6eddf4c90b"
+    },
+    "reports/provenance.json": {
+      "bytes": 3045,
+      "sha256": "791100a94e24a78b03c25db3dddcea92f7578e5fbf0d0457a56ca2ad27859b83"
+    },
+    "reports/schemas.json": {
+      "bytes": 8581,
+      "sha256": "15253f0571fe5b0895bce256fc4ca74caf8ef43c0197d2d746ebb39086da5ea2"
+    },
+    "reports/summary.json": {
+      "bytes": 639735,
+      "sha256": "7c662a9688399f6b6aec4d3e43a25c36853d8d1abde8a02e74febcc364f8b5e8"
+    }
+  },
+  "products": {
+    "gold": {
+      "manifest_sha256": "1b79d6f582dc8e9935e16bce2d3fe78b78d77e2a68aacf201ac9118b28462fa2",
+      "schema_version": "archive-govt-nz.fiscal-analytical-gold/v1",
+      "status": "written",
+      "tables": {
+        "cpi_benchmark": {
+          "bytes": 26129,
+          "filename": "cpi_benchmark.parquet",
+          "rows": 54,
+          "sha256": "ad94d24ad6fa5278bc040e7e8340243b67e0df4d4306a352b7eb7afae9325309",
+          "statuses": {
+            "calculated": 54
+          }
+        },
+        "nominal": {
+          "bytes": 8763,
+          "filename": "nominal.parquet",
+          "rows": 54,
+          "sha256": "f06c23604ea63af87e27ba446fe3e4ea8df342085e79fd94d516b6d5f081cebe",
+          "statuses": {
+            "source_observation": 54
+          }
+        },
+        "per_capita": {
+          "bytes": 16041,
+          "filename": "per_capita.parquet",
+          "rows": 54,
+          "sha256": "cea8c44a51775c96494690d3edafb09d2cdd876f192e97884c7571c7db95e59c",
+          "statuses": {
+            "calculated": 34,
+            "missing_population": 2,
+            "unsupported_march_period": 18
+          }
+        },
+        "shares": {
+          "bytes": 19242,
+          "filename": "shares.parquet",
+          "rows": 162,
+          "sha256": "c461219b54fb3c91b0e69559a8683eeed6b4c98cabc1fe6e951770997c61c6d3",
+          "statuses": {
+            "calculated": 115,
+            "missing_denominator": 47
+          }
+        }
+      }
+    },
+    "query_interfaces": {
+      "cpi_benchmark": {
+        "cli_mcp_arrow_equal": true,
+        "result_sha256": "e35fe9987ec60351706cf7159133192f23a1437cc82b7dbc4298cb225b22cc3d",
+        "rows": 54
+      },
+      "nominal": {
+        "cli_mcp_arrow_equal": true,
+        "result_sha256": "9b0a40d1bde5a72327fee8c8f76874078bfdd8e97caacf88e377161e90980d08",
+        "rows": 54
+      },
+      "per_capita": {
+        "cli_mcp_arrow_equal": true,
+        "result_sha256": "c238dc55e45e218c882b3588c032a2f0c8ba03d955a8a358cbfff7e34b2c8d19",
+        "rows": 54
+      },
+      "shares": {
+        "cli_mcp_arrow_equal": true,
+        "result_sha256": "3f746c8192cbe149c6b69ff64b15b23c408e871afebc463b6f420c5850d37859",
+        "rows": 162
+      }
+    },
+    "report_cli_readback": {
+      "files_verified": 11,
+      "manifest_sha256": "b4da352b2ca8d6106d3d0fb1ceef7018c6f4dac23227f9a3155abb93f4c0c484",
+      "metadata_projections": "byte_equal",
+      "publication": "not_performed",
+      "rights": "not_evaluated",
+      "schema_version": "archive-govt-nz.fiscal-analytical-reports/v1",
+      "source_reverification": "not_performed",
+      "status": "verified"
+    },
+    "reports": {
+      "excluded_points": 67,
+      "files": {
+        "DATASET_CARD.md": {
+          "bytes": 550,
+          "sha256": "26fc722cdaeb64b19985047d110006bdce469eaa9afd928875ec6b47cdc80a43"
+        },
+        "catalogue.json": {
+          "bytes": 7971,
+          "sha256": "d3b7c9062cb06c2a542898a148ac8997601b62b29a2965e3fecedb1d0de9f05d"
+        },
+        "cpi_benchmark.png": {
+          "bytes": 72774,
+          "sha256": "257b55f4607a5789ed1167ad7202445e75cacc10ba736b8855f7f62dc24df378"
+        },
+        "health_share_core_crown.png": {
+          "bytes": 53598,
+          "sha256": "42195c4075712bbcfd95c3c1b109317c4229765087fdcb0873300c0edccb6561"
+        },
+        "health_share_gdp.png": {
+          "bytes": 68597,
+          "sha256": "5453431b9424e7787684fa206c4b17ac9075db251e948b41edb275bdf91a7003"
+        },
+        "health_share_total_crown.png": {
+          "bytes": 46312,
+          "sha256": "0900ef384e402c2c085a756bee437784dc921c4cd8f040417944540945f2d61a"
+        },
+        "nominal.png": {
+          "bytes": 68579,
+          "sha256": "f5f267f0efcf25f5f5bb221c86e3ff8f43eef2386c06ca2169d681f3f5bc5d7e"
+        },
+        "per_capita.png": {
+          "bytes": 55259,
+          "sha256": "054d4979bd6eeb73501249f43819ff9c1172d405144703491f81bb6eddf4c90b"
+        },
+        "provenance.json": {
+          "bytes": 3045,
+          "sha256": "791100a94e24a78b03c25db3dddcea92f7578e5fbf0d0457a56ca2ad27859b83"
+        },
+        "schemas.json": {
+          "bytes": 8581,
+          "sha256": "15253f0571fe5b0895bce256fc4ca74caf8ef43c0197d2d746ebb39086da5ea2"
+        },
+        "summary.json": {
+          "bytes": 639735,
+          "sha256": "7c662a9688399f6b6aec4d3e43a25c36853d8d1abde8a02e74febcc364f8b5e8"
+        }
+      },
+      "manifest_sha256": "b4da352b2ca8d6106d3d0fb1ceef7018c6f4dac23227f9a3155abb93f4c0c484",
+      "plotted_points": 257,
+      "readback": "verified",
+      "schema_version": "archive-govt-nz.fiscal-analytical-reports/v1",
+      "status": "written"
+    }
+  },
+  "publication": "not_performed",
+  "recipe_sha256": "2ac1b718ead568f4619815a2fefad5c3acadd2b01bae511e12af13a23b0a3fd7",
+  "repeat_identical": true,
+  "retained_gold_and_report_bytes_match": true,
+  "retained_silver_consumed": false,
+  "rights": "not_evaluated",
+  "schema_version": "archive-govt-nz.fiscal-analytical-recovery/v1",
+  "source_health_corrected_native": {
+    "capture_manifest_sha256": "017b3a9adbda288c60693ef038e4c0da198d8db99b2bca9cf4bb81adbc6efb5f",
+    "capture_reconciliation": {
+      "bronze_bytes_verified": 39019284,
+      "bronze_object_count_verified": 75,
+      "capture_rights_states_recorded": {
+        "eligible": 75
+      },
+      "manifest_name_recorded": "official-capture-2026-10-03-health-complete.json",
+      "manifest_sha256": "017b3a9adbda288c60693ef038e4c0da198d8db99b2bca9cf4bb81adbc6efb5f",
+      "matched_resource_count_verified": 75,
+      "state": "capture_manifest_and_bronze_objects_verified"
+    },
+    "context_census_sha256": "91474db2bf996669f41ce6de6341304a1039887ccb948fd94d9f5634b425a88e",
+    "limitations": [
+      "Resource states and policy references are copied from the pinned censuses; rights are not approved by this report.",
+      "Temporal descriptions are source-census text; calendar completeness and cross-source period alignment are not assessed.",
+      "Structural PDF baselines record page geometry and resources only; text, tables and semantic layout are not assessed. Other source families without a supplied baseline remain unassessed.",
+      "Capture-manifest rights classifications are retained workflow evidence, not an independent legal assessment.",
+      "This report does not certify discovery, vintage coverage, analytical comparability, or reconciliation completeness."
+    ],
+    "pdf_layout_baseline_sha256": "f54157679466382b665e228a5abba26388296f95b603184ff868cb188b1ec698",
+    "report_sha256": "af947c38ea3b9d1a2f631602ef367004b85120219da0bcf55e1b1d6d6d44399f",
+    "source_census_sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272",
+    "status": "verified_repeat_identical",
+    "summary": {
+      "context_qualification_states": {
+        "unqualified": 11
+      },
+      "context_rights_states": {
+        "not_evaluated": 11
+      },
+      "context_series_vintage_count": 11,
+      "resource_count": 143,
+      "resource_dispositions": {
+        "captured": 75,
+        "out_of_scope": 68
+      }
+    }
+  },
+  "source_inputs": {
+    "cpi": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+    "cpi-definition-web-observation-20261004.json": "41762ffc6eedc186942f15c83101c56aea33b64fd3f236cede1b17502c546594",
+    "fiscal": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+    "fiscal-series-notes-web-observation-20261004.json": "22b10ce573136e1e6a56931df12ddcd07a51edd757f22d31bf454c19799f5dc1",
+    "population": "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9",
+    "population-mean-period-web-observation-20261004.json": "431274ff6064c04ea74f7cd8f6e2ab0c0dfa025a0bc3e72ad1aa3adf97c5c967"
+  },
+  "status": "verified",
+  "tail_preflight": {
+    "classification_label_occurrences": {
+      "authoritative_crosswalk": "not_performed",
+      "changes": [
+        {
+          "budget_2025_occurrences": 2,
+          "budget_2026_occurrences": 3,
+          "occurrence_delta": 1,
+          "source_label": "Core Government Services"
+        },
+        {
+          "budget_2025_occurrences": 179,
+          "budget_2026_occurrences": 144,
+          "occurrence_delta": -35,
+          "source_label": "Health"
+        },
+        {
+          "budget_2025_occurrences": 32,
+          "budget_2026_occurrences": 35,
+          "occurrence_delta": 3,
+          "source_label": "No Functional Classification"
+        },
+        {
+          "budget_2025_occurrences": 2,
+          "budget_2026_occurrences": 3,
+          "occurrence_delta": 1,
+          "source_label": "Social Security and Welfare"
+        }
+      ],
+      "classification_system_identity": "not_established",
+      "comparability": "not_asserted",
+      "comparison_scope": "exact_literal_label_occurrence_counts",
+      "drift_disposition": "observed_surface_change_unmapped",
+      "packages": {
+        "2025": {
+          "authoritative_mapping": "not_performed",
+          "dimension_rows": 215,
+          "dimension_schema_sha256": "56e31b7f813d8746f40b15e2e67f1f5cb38d66a9fb5139895365df5c7d2d6f03",
+          "dimension_sha256": "869fd0fd5ae330054fe30a450f99f2fe61966204e3dd4aafcdfca34e864edcf1",
+          "input_manifest_sha256": "1b1e5dfd3fa90d98dcf5200997001db236df7b40f4404b658c36f5cb0264d2fe",
+          "literal_label_occurrences": {
+            "Core Government Services": 2,
+            "Health": 179,
+            "No Functional Classification": 32,
+            "Social Security and Welfare": 2
+          },
+          "package_marker_sha256": "7e4d65d5bedfec72fe83d0882529d395a6401e816545286ab3fa9c8cfca8fcb3",
+          "rights": "not_evaluated",
+          "source_object_sha256": "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
+          "source_vintage": "Budget-2025"
+        },
+        "2026": {
+          "authoritative_mapping": "not_performed",
+          "dimension_rows": 185,
+          "dimension_schema_sha256": "56e31b7f813d8746f40b15e2e67f1f5cb38d66a9fb5139895365df5c7d2d6f03",
+          "dimension_sha256": "8de8f47aa262985ce23fd9666327b4618bad72c95702354080f66615835a614d",
+          "input_manifest_sha256": "f34000992fd65dca445e7ad251cb06df3c68107410355ea057ea9a2bf8481738",
+          "literal_label_occurrences": {
+            "Core Government Services": 3,
+            "Health": 144,
+            "No Functional Classification": 35,
+            "Social Security and Welfare": 3
+          },
+          "package_marker_sha256": "1a5aae6c79d79901c6bcaca9396fa6efa69e3572c9f382bbc011a427c5179c8d",
+          "rights": "not_evaluated",
+          "source_object_sha256": "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0",
+          "source_vintage": "Budget-2026"
+        }
+      },
+      "recorded_comparison_sha256": "9a50dab50414120c760f39fe8d945641d5bedc9ca065396b5a33f9bcc8f81590",
+      "recorded_repeat_identical": true,
+      "rights": "not_evaluated",
+      "schema_version": "archive-govt-nz.health-classification-label-occurrences/v1",
+      "status": "verified_exact_literal_occurrence_counts",
+      "valid_time": "not_assessed"
+    },
+    "donor_parity": {
+      "binary_representation_flags": 15,
+      "donor_bytes_verified": 6604301,
+      "donor_manifest_sha256": "893f387e1f361400285ccc84802b497e87802d1ad913826ff7d9055b07a03b74",
+      "donor_objects_verified": 23,
+      "gold": {
+        "matched_rows": 312,
+        "status": "exact_parity",
+        "table_counts": {
+          "gdp_historical": {
+            "candidate": 53,
+            "donor": 53
+          },
+          "health_spending_summary_befu25_data_expense_tables": {
+            "candidate": 10,
+            "donor": 10
+          },
+          "health_spending_summary_hyefu24_data_expense_tables": {
+            "candidate": 10,
+            "donor": 10
+          },
+          "historical_health_spending": {
+            "candidate": 24,
+            "donor": 24
+          },
+          "recent_health_appropriations": {
+            "candidate": 215,
+            "donor": 215
+          }
+        }
+      },
+      "historical_counts": {
+        "exact_match": 76,
+        "source_only": 29,
+        "value_difference": 1
+      },
+      "historical_deviation_count": 30,
+      "historical_deviation_dispositions": "accepted_retain_both_no_replacement",
+      "publication_state": "no_action",
+      "raw": {
+        "explained_rows": 29,
+        "matched_rows": 312,
+        "status": "explained_deviations",
+        "table_counts": {
+          "gdp_historical": {
+            "candidate": 53,
+            "donor": 53
+          },
+          "health_spending_summary_befu25_data_expense_tables": {
+            "candidate": 10,
+            "donor": 10
+          },
+          "health_spending_summary_hyefu24_data_expense_tables": {
+            "candidate": 10,
+            "donor": 10
+          },
+          "historical_health_spending": {
+            "candidate": 53,
+            "donor": 24
+          },
+          "recent_health_appropriations": {
+            "candidate": 215,
+            "donor": 215
+          }
+        },
+        "unresolved_rows": 0
+      },
+      "raw_manifest_sha256": "fb405a2fdbb2809093cb03d62ddbe1fcb1a1f6f91d304666e8ef0964813f73fb",
+      "repair_approval": "not_asserted",
+      "repeat_identical": true,
+      "rights_state": "not_evaluated",
+      "status": "verified_with_nonmutating_deviations"
+    }
+  },
+  "whole_health_recovery": "separate_not_asserted_by_this_focused_receipt"
+}

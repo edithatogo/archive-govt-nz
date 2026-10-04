@@ -55,6 +55,9 @@ from archive_govt_nz.domains.health_appropriations.compatibility_export import (
 from archive_govt_nz.domains.health_appropriations.context_gold import (
     export_context_gold,
 )
+from archive_govt_nz.domains.health_appropriations.fiscal_analytical_recovery import (
+    recover_fiscal_analytical_products,
+)
 from archive_govt_nz.domains.health_appropriations.gold_export import export_gold
 from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
     CanonicalPackageInput,
@@ -174,8 +177,13 @@ CLASSIFICATION_PACKAGES = {
         "rows": 185,
     },
 }
+CAPTURE_MANIFEST_NAME = "official-capture-2026-10-03-health-complete.json"
+PDF_LAYOUT_BASELINE_NAME = "source-pdf-layout-baseline-20261003.json"
+PDF_LAYOUT_BASELINE_SHA256 = (
+    "f54157679466382b665e228a5abba26388296f95b603184ff868cb188b1ec698"
+)
 CAPTURE_MANIFEST_SHA256 = (
-    "2de49f07c877aab196afae572db32bfc2d48fd4340eb17c9a4bfb3bb2cc357e7"
+    "017b3a9adbda288c60693ef038e4c0da198d8db99b2bca9cf4bb81adbc6efb5f"
 )
 PHARMAC_SOURCE_SHA256 = (
     "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea"
@@ -1362,9 +1370,7 @@ def source_health_recovery_report() -> dict[str, Any]:
     """Rebuild the pinned whole-census health report and verify Bronze capture."""
     source_bytes = (TRACK / "source-census.json").read_bytes()
     context_bytes = (TRACK / "context-census.json").read_bytes()
-    manifest_path = (
-        ARCHIVE / "manifests" / "official-capture-2026-09-30-health-refresh.json"
-    )
+    manifest_path = ARCHIVE / "manifests" / CAPTURE_MANIFEST_NAME
     manifest_bytes = manifest_path.read_bytes()
     require_evidence(
         hashlib.sha256(source_bytes).hexdigest() == SOURCE_CENSUS_SHA256,
@@ -1384,8 +1390,12 @@ def source_health_recovery_report() -> dict[str, Any]:
         manifest_name=manifest_path.name,
         cas_root=ARCHIVE / "bronze-cas" / "sha256",
     )
-    layout_path = TRACK / "source-pdf-layout-baseline-20261002.json"
+    layout_path = TRACK / PDF_LAYOUT_BASELINE_NAME
     layout_bytes = layout_path.read_bytes()
+    require_evidence(
+        hashlib.sha256(layout_bytes).hexdigest() == PDF_LAYOUT_BASELINE_SHA256,
+        "source_health_layout_baseline_pin_mismatch",
+    )
     layout = LayoutEvidence(json.loads(layout_bytes), layout_bytes)
     source_census = json.loads(source_bytes)
     context_census = json.loads(context_bytes)
@@ -1729,6 +1739,9 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
         outputs["pharmac_canonical_projection"] = _pharmac_recovery_report(root)
         outputs["moh_indicators_canonical_projection"] = _moh_recovery_report(root)
         outputs["canonical_gold"] = _canonical_gold_recovery_report(root)
+        outputs["fiscal_analytical_gold_reports_interfaces"] = (
+            recover_fiscal_analytical_products(ARCHIVE, root / "fiscal-analytics")
+        )
         outputs["source_health_report"] = source_health_recovery_report()
         outputs["classification_label_occurrences"] = (
             classification_label_occurrence_report()
@@ -1760,7 +1773,7 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
         "products_rebuilt": outputs,
         "bronze_objects_unchanged": unchanged,
         "required_but_not_rebuilt": [
-            "cross_source_comparison_and_historical_difference_dispositions",
+            "cross_source_comparison",
             "remaining_source_native_silver_profiles_and_canonical_adapters",
             "platinum_dcat_croissant_ro_crate_prov_complete_profile",
         ],

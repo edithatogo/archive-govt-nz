@@ -559,3 +559,12 @@ Gold. Exact source-linked values remain in structured results. Content-derived
 PROV/DCAT projections describe nine base payloads without recursive checksum
 cycles; the manifest pins all eleven payloads. Verification is local package
 fixity and metadata projection, not source re-verification, rights or publication.
+
+## Fiscal analytical recovery path
+
+The native assurance helper accepts an external archive and an exclusive
+derivative root outside it. It pins three originals and three definition
+observations before writing, builds each source independently twice, compares
+all derivative files and receipts, then rechecks source pins. Console and MCP
+queries are independently compared with direct Arrow. It does not inherit
+retained Silver or assert rights/publication/full-track completion.

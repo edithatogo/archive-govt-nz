@@ -1663,3 +1663,22 @@ regression exercising fourteen share/per-capita context mutations. Rejected two
 Amazon Q syntax findings against the required Python 3.14 runtime; actual CLI
 execution, AST parse, typing and tests prove the supported exception syntax.
 Bounded adjudication is retained externally.
+
+## Integrated Fiscal recovery
+
+The three new failure contracts pass and the existing wider receipt contract
+requires the added product entry. Required local validation passed: 7,460 tests,
+10 skipped, 97.85% aggregate coverage with the 80% floor unchanged. Scoped
+Conductor phase review passed. The final metadata-only blocker-label correction
+is rechecked with the 13 focused assurance tests. Native reconstruction is
+still running; full Health completion is not asserted.
+
+The focused native recovery passed: 34 files per run, two fresh Bronze builds,
+all 324 console/MCP rows equal direct Arrow and all Gold/report bytes equal the
+retained qualified products. The wider native run exposed stale capture and PDF
+layout references; failure and interruption receipts are retained externally.
+The runner now selects the existing, separately pinned 3 October manifest and
+PDF baseline. Source-health replay matches the unchanged recorded report and
+verifies all 75 captured objects; classification and accepted non-mutating donor
+replay preflights pass. Thirteen focused tests pass after the binding correction.
+The final wider run and final full harness are running.

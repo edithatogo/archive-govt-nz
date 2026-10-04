@@ -1,0 +1,86 @@
+{
+  "phase_id": "phase_7_gates",
+  "receipt_sha256": "226affdc2d3ada9bbd8b77049df5c9f571704060f34292eb3eadc6ae9e3422e8",
+  "reviewed_at": "2026-10-04T12:34:47Z",
+  "schema_version": "archive-govt-nz.conductor-phase-review/v1",
+  "stages": [
+    {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "ruff",
+        "format",
+        "--check",
+        "."
+      ],
+      "description": "Ruff Code Formatting Check",
+      "exit_code": 0,
+      "passed": true,
+      "stderr": "",
+      "stdout": "2349 files already formatted\n"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "ruff",
+        "check",
+        "."
+      ],
+      "description": "Ruff Code Linter & Rule Enforcement",
+      "exit_code": 0,
+      "passed": true,
+      "stderr": "",
+      "stdout": "All checks passed!\n"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/validate_schemas.py"
+      ],
+      "description": "JSON Schema & Fixture Verification",
+      "exit_code": 0,
+      "passed": true,
+      "stderr": "",
+      "stdout": "validated 53 schemas and 43 representative documents\n"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "pytest",
+        "tests/bronze/",
+        "tests/silver/",
+        "tests/gold/",
+        "tests/cli/test_query_cli.py"
+      ],
+      "description": "Targeted Unit Tests: ['tests/bronze/', 'tests/silver/', 'tests/gold/', 'tests/cli/test_query_cli.py']",
+      "exit_code": 0,
+      "passed": true,
+      "stderr": "",
+      "stdout": "                               [ 32%]\ntests/silver/test_pipeline.py .....                                      [ 39%]\ntests/bronze/test_adapter.py .                                           [ 40%]\ntests/bronze/test_sniffer.py .......                                     [ 50%]\ntests/gold/test_health_gold_query_contract.py ..                         [ 53%]\ntests/silver/test_interlink.py ....                                      [ 59%]\ntests/gold/test_analytics.py .......                                     [ 69%]\ntests/bronze/test_attestation.py ....                                    [ 74%]\ntests/bronze/test_multihash.py ......                                    [ 83%]\ntests/gold/test_federation_views.py ..                                   [ 85%]\ntests/bronze/test_heartbeat.py .....                                     [ 92%]\ntests/bronze/test_ots.py .....                                           [100%]\n\n============================== 71 passed in 6.90s ==============================\n"
+    },
+    {
+      "command": [
+        "uv",
+        "run",
+        "--locked",
+        "python",
+        "tools/mutation_medallion.py"
+      ],
+      "description": "Medallion Mutation Gate",
+      "exit_code": 0,
+      "passed": true,
+      "stderr": "",
+      "stdout": "\": \"core_canonical_urn\"\n    },\n    {\n      \"killed\": true,\n      \"name\": \"dist_packaging_root_digest\"\n    },\n    {\n      \"killed\": true,\n      \"name\": \"dist_verifier_root_check\"\n    },\n    {\n      \"killed\": true,\n      \"name\": \"gold_view_registration\"\n    },\n    {\n      \"killed\": true,\n      \"name\": \"hansard_silver_normalizer_urn\"\n    },\n    {\n      \"killed\": true,\n      \"name\": \"hansard_statutory_extraction\"\n    },\n    {\n      \"killed\": true,\n      \"name\": \"hathi_rights_classifier\"\n    },\n    {\n      \"killed\": true,\n      \"name\": \"hathi_silver_page_urn\"\n    },\n    {\n      \"killed\": true,\n      \"name\": \"manifest_fixity\"\n    },\n    {\n      \"killed\": true,\n      \"name\": \"medilegal_normalizer_urn\"\n    },\n    {\n      \"killed\": true,\n      \"name\": \"medilegal_sanitizer_nhi\"\n    },\n    {\n      \"killed\": true,\n      \"name\": \"search_embedding_norm\"\n    },\n    {\n      \"killed\": true,\n      \"name\": \"silver_table_population\"\n    }\n  ],\n  \"schema_version\": \"archive-govt-nz.mutation-medallion/v1\"\n}\n"
+    }
+  ],
+  "status": "passed",
+  "title": "Phase 7: Quality Gates, Mutation Testing & End-to-End Evidence"
+}
