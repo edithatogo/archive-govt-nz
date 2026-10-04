@@ -62,7 +62,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/index.md",
-      "sha256": "6e5a566e2a0d35e73276e3214a5b6ec849539429c05e652695cb726ab84b0416"
+      "sha256": "3586f772bdecc1ae233ffb376bfd0e0fb019fd23e98998e371ef02bbd267d9ab"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/moh-indicators.md",
@@ -172,7 +172,7 @@
     },
     "wages": {
       "analytical_status": "captured and exact source profile exists; QES methodology confirms composition effects, so this is not a constant-quality wage index; official evidence identifies the selected ordinary-time hourly earnings indicator as not seasonally adjusted; ISO currency, annual weighting, rights eligibility, and deflator selection remain unqualified",
-      "period_basis": "Stats NZ defines each QES quarter by the pay week ending on or before the 20th of its middle month; quarter-label renaming in 2003 did not change that reference week. Selected 2024Q2–2026Q2 observations follow the March-2021 KAU redesign and March-2023 sample rotation. QES is a sampled business measure, weighted by employee counts and subject to imputation; industry and occupation composition affect average earnings. The quarterly value is not a full-quarter average.",
+      "period_basis": "Stats NZ defines each QES quarter by the pay week ending on or before the 20th of its middle month; quarter-label renaming in 2003 did not change that reference week. Selected 2024Q2\u20132026Q2 observations follow the March-2021 KAU redesign and March-2023 sample rotation. QES is a sampled business measure, weighted by employee counts and subject to imputation; industry and occupation composition affect average earnings. The quarterly value is not a full-quarter average.",
       "rights": "publisher_default_observed_unadjudicated",
       "series_id": "QEMQ.SASZ9A",
       "vintage_or_range": "Stats NZ Quarterly Employment Survey June 2026 workbook Table 8; total sector ordinary-time average hourly earnings; nine quarter levels 2024Q2\u20132026Q2; source unit '$' per paid hour"

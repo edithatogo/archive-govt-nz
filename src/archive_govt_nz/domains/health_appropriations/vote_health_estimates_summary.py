@@ -93,6 +93,13 @@ SOURCE_SHA256_2012_13 = (
     "5994108997ead9f301f71f73952b8fb04f6b1e4a00207c16dfe8b172f72b60ff"
 )
 PAGE_COUNT_2012_13 = 8
+PROFILE_2013_14 = "vote-health-estimates-2013-14-overview/v1"
+TRANSFORMATION_2013_14 = "vote-health-estimates-overview-2013-14/v1"
+VINTAGE_2013_14 = "Treasury-Vote-Health-Estimates-2013-14"
+SOURCE_SHA256_2013_14 = (
+    "f29271aad328bad5fcfdcf655c61dc6c59600a20666860c037ceb478bff681f1"
+)
+PAGE_COUNT_2013_14 = 8
 _PROFILE_QUALIFIER_MEASURES_2010_11 = frozenset(
     {"departmental_functions", "health_sector_risk_management"}
 )
@@ -1177,6 +1184,170 @@ _PROFILE_QUALIFIER_MEASURES_2012_13 = frozenset(
         "ministry_asset_purchases",
     }
 )
+_PATTERNS_2013_14 = {
+    "vote_total": (
+        2,
+        r"2013/14 financial year totalling\s+nearly \$(?P<value>[0-9][0-9,]*) million",
+        "$ million, approximate rounded source amount",
+        "2013/14",
+    ),
+    "departmental_functions": (
+        2,
+        (
+            r"Departmental Operating Appropriations\s+A total of just over "
+            r"\$(?P<value>[0-9][0-9,]*) million \(1\.3% of the Vote\) relates "
+            r"to the functions of the Ministry of Health"
+        ),
+        "$ million, approximate rounded source amount",
+        "2013/14",
+    ),
+    "non_departmental_total": (
+        2,
+        (
+            r"Non-Departmental Operating Appropriations\s+A total of just over "
+            r"\$(?P<value>[0-9][0-9,]*) million \(95\.1% of the Vote\) is for "
+            r"operating expenses"
+        ),
+        "$ million, approximate rounded source amount",
+        "2013/14",
+    ),
+    "output_expenses_total": (
+        2,
+        (
+            r"Output Expenses\s+These total nearly "
+            r"\$(?P<value>[0-9][0-9,]*) million \(95\.0% of the Vote\)"
+        ),
+        "$ million, approximate rounded source amount",
+        "2013/14",
+    ),
+    "dhb_services": (
+        2,
+        (
+            r"just over \$(?P<value>[0-9][0-9,]*) million "
+            r"\(75\.8% of the Vote\) to fund health services from DHBs"
+        ),
+        "$ million, approximate rounded source amount",
+        "2013/14",
+    ),
+    "national_disability_services": (
+        2,
+        (
+            r"just over \$(?P<value>[0-9][0-9,]*) million "
+            r"\(7\.5% of the Vote\) to purchase national disability support services"
+        ),
+        "$ million, approximate rounded source amount",
+        "2013/14",
+    ),
+    "national_health_services_and_training": (
+        2,
+        (
+            r"just over \$(?P<value>[0-9][0-9,]*) million "
+            r"\(5\.5% of the Vote\) to purchase national health services and "
+            r"provide clinical training for health professionals"
+        ),
+        "$ million, approximate rounded source amount",
+        "2013/14",
+    ),
+    "public_health_services": (
+        2,
+        (
+            r"just over \$(?P<value>[0-9][0-9,]*) million "
+            r"\(3\.0% of the Vote\) to purchase public health services"
+        ),
+        "$ million, approximate rounded source amount",
+        "2013/14",
+    ),
+    "primary_health_services": (
+        2,
+        (
+            r"nearly \$(?P<value>[0-9][0-9,]*) million "
+            r"\(1\.2% of the Vote\) to purchase primary health care services"
+        ),
+        "$ million, approximate rounded source amount",
+        "2013/14",
+    ),
+    "national_maternity_services": (
+        2,
+        (
+            r"just over \$(?P<value>[0-9][0-9,]*) million "
+            r"\(1\.0% of the Vote\) to purchase national maternity services"
+        ),
+        "$ million, approximate rounded source amount",
+        "2013/14",
+    ),
+    "health_sector_risk_management": (
+        2,
+        (
+            r"\$(?P<value>[0-9][0-9,]*) million "
+            r"\(0\.6% of the Vote\) to manage health sector risks, including "
+            r"provision for DHB deficit support"
+        ),
+        "$ million, approximate source amount",
+        "2013/14",
+    ),
+    "other_health_services": (
+        2,
+        (
+            r"just over \$(?P<value>[0-9][0-9,]*) million "
+            r"\(0\.3% of the Vote\) to fund other health and disability services"
+        ),
+        "$ million, approximate rounded source amount",
+        "2013/14",
+    ),
+    "other_expenses_total": (
+        2,
+        (
+            r"Other Expenses Incurred by the Crown\s+A total of just over "
+            r"\$(?P<value>[0-9][0-9,]*) million \(0\.2% of the Vote\) is for "
+            r"other expenses"
+        ),
+        "$ million, approximate rounded source amount",
+        "2013/14",
+    ),
+    "capital_expenditure": (
+        3,
+        (
+            r"Capital Expenditure\s+A total of just over "
+            r"\$(?P<value>[0-9][0-9,]*) million \(3\.6% of the Vote\) is to "
+            r"provide Capital funding"
+        ),
+        "$ million, approximate rounded source amount",
+        "2013/14",
+    ),
+    "dhb_and_agency_capital": (
+        3,
+        (
+            r"just over \$(?P<value>[0-9][0-9,]*) million "
+            r"\(3\.3% of the Vote\) is to provide debt or equity for district "
+            r"health boards or Health Sector Crown Agencies"
+        ),
+        "$ million, approximate rounded source amount",
+        "2013/14",
+    ),
+    "long_term_care_interest_free_loans": (
+        3,
+        (
+            r"\$(?P<value>[0-9][0-9,]*) million "
+            r"\(0\.1% of the Vote\) is to provide interest-free loans to assist "
+            r"people in long-term care"
+        ),
+        "$ million, approximate source amount",
+        "2013/14",
+    ),
+    "ministry_asset_purchases": (
+        3,
+        (
+            r"just over \$(?P<value>[0-9][0-9,]*) million "
+            r"\(0\.1% of the Vote\) is to purchase or develop assets for use by "
+            r"the Ministry of Health"
+        ),
+        "$ million, approximate rounded source amount",
+        "2013/14",
+    ),
+}
+_PROFILE_QUALIFIER_MEASURES_2013_14 = frozenset(
+    {"departmental_functions", "health_sector_risk_management"}
+)
 
 FACT_SCHEMA = pa.schema(
     [
@@ -1364,6 +1535,18 @@ def parse_overview_2012_13_pages(texts: list[str]) -> list[dict[str, Any]]:
         intro_pattern=r"2012/13 financial year\s+totalling\s+nearly",
         second_page_pattern=r"Capital Expenditure",
         profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2012_13,
+    )
+
+
+def parse_overview_2013_14_pages(texts: list[str]) -> list[dict[str, Any]]:
+    """Parse 17 selected, phrase-anchored 2013/14 overview statements."""
+    return parse_overview_pages(
+        texts,
+        year="2013/14",
+        patterns=_PATTERNS_2013_14,
+        intro_pattern=r"2013/14 financial year\s+totalling\s+nearly",
+        second_page_pattern=r"Capital Expenditure",
+        profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2013_14,
     )
 
 
@@ -1826,6 +2009,43 @@ def normalize_vote_health_estimates_overview_2012_13(  # noqa: PLR0913 - explici
         intro_pattern=r"2012/13 financial year\s+totalling\s+nearly",
         second_page_pattern=r"Capital Expenditure",
         profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2012_13,
+        additional_quality_flags=(
+            "source_value_rounded_to_whole_million",
+            "source_amount_is_not_exact",
+        ),
+        dry_run=dry_run,
+    )
+
+
+def normalize_vote_health_estimates_overview_2013_14(  # noqa: PLR0913 - explicit pinned profile
+    source: Path,
+    output_dir: Path,
+    *,
+    expected_sha256: str,
+    source_vintage: str,
+    source_locator: str,
+    observed_at: str,
+    dry_run: bool = True,
+) -> dict[str, object]:
+    """Normalize 17 selected rounded/qualified 2013/14 overview statements."""
+    return _normalize_overview(
+        source,
+        output_dir,
+        profile=PROFILE_2013_14,
+        transformation=TRANSFORMATION_2013_14,
+        expected_vintage=VINTAGE_2013_14,
+        expected_source_sha256=SOURCE_SHA256_2013_14,
+        expected_page_count=PAGE_COUNT_2013_14,
+        year="2013/14",
+        patterns=_PATTERNS_2013_14,
+        disposition_reason="seventeen_selected_2013_14_overview_headlines_only",
+        expected_sha256=expected_sha256,
+        source_vintage=source_vintage,
+        source_locator=source_locator,
+        observed_at=observed_at,
+        intro_pattern=r"2013/14 financial year\s+totalling\s+nearly",
+        second_page_pattern=r"Capital Expenditure",
+        profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2013_14,
         additional_quality_flags=(
             "source_value_rounded_to_whole_million",
             "source_amount_is_not_exact",
