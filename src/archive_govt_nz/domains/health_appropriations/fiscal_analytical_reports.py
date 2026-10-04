@@ -112,18 +112,41 @@ def _qualifications(queries: dict[str, dict[str, Any]]) -> dict[tuple[str, str],
     _require(
         len(cpi) == len(queries["cpi_benchmark"]["rows"]) and set(cpi) == set(nominal)
     )
+    parent_fields = {
+        "shares": ("numerator_amount", "source_object_sha256", "source_vintage"),
+        "per_capita": (
+            "health_amount_millions",
+            "health_source_sha256",
+            "health_vintage",
+        ),
+        "cpi_benchmark": (
+            "nominal_amount_millions",
+            "health_source_sha256",
+            "health_vintage",
+        ),
+    }
+    for table, (amount, source, vintage) in parent_fields.items():
+        for row in queries[table]["rows"]:
+            key = _key(row)
+            _require(key in nominal)
+            parent = nominal[key]
+            _require(
+                _number(row[amount]) == _number(parent["numerator_amount"])
+                and row[source] == parent["source_object_sha256"]
+                and row[vintage] == parent["source_vintage"]
+                and all(
+                    row[field] == parent[field]
+                    for field in (
+                        "period_start",
+                        "accounting_basis",
+                        "numerator_source_time_status",
+                        "numerator_coverage",
+                    )
+                )
+            )
     result = {}
     for key, row in cpi.items():
-        parent = nominal[key]
-        _require(
-            _number(row["nominal_amount_millions"])
-            == _number(parent["numerator_amount"])
-            and row["period_start"] == parent["period_start"]
-            and row["accounting_basis"] == parent["accounting_basis"]
-            and row["health_source_sha256"] == parent["source_object_sha256"]
-            and row["health_vintage"] == parent["source_vintage"]
-            and row["numerator_gst_basis"] in ("inclusive", "exclusive")
-        )
+        _require(row["numerator_gst_basis"] in ("inclusive", "exclusive"))
         result[key] = row["numerator_gst_basis"]
     return result
 

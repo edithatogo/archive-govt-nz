@@ -8,11 +8,11 @@
   "input_package_unchanged": true,
   "location": {
     "external_root": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations",
-    "relative_path": "assurance/fiscal-analytical-reports-20261004-v1"
+    "relative_path": "assurance/fiscal-analytical-reports-20261004-v2"
   },
   "offline_jsonld_parse": "passed",
   "publication": "not_performed",
-  "recipe_sha256": "b9124f3279f5a45b21eb511260baf96bd4e038b2e0896f2d62fb0f406d5b6a1f",
+  "recipe_sha256": "2cbcfd0c477e3363d991f92e692c378931e80345783f491f369fa4d31565b69d",
   "repeat_build": "all_12_files_byte_equal",
   "report_manifest_sha256": "b4da352b2ca8d6106d3d0fb1ceef7018c6f4dac23227f9a3155abb93f4c0c484",
   "rights": "not_evaluated",

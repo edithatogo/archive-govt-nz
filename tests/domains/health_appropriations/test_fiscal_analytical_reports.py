@@ -23,6 +23,8 @@ def queries() -> dict[str, dict[str, Any]]:
             "accounting_basis": "PBE Standards",
             "source_object_sha256": "a" * 64,
             "source_vintage": "fixture-vintage",
+            "numerator_source_time_status": "actual",
+            "numerator_coverage": "Core Crown Health",
         }
         for year in (2024, 2025)
     ]
@@ -40,6 +42,9 @@ def queries() -> dict[str, dict[str, Any]]:
         {
             **row,
             "source_dollars_per_mean_resident": "100.000000000000",
+            "health_amount_millions": row["numerator_amount"],
+            "health_source_sha256": row["source_object_sha256"],
+            "health_vintage": row["source_vintage"],
             "status": "calculated",
         }
         for row in nominal
@@ -190,3 +195,43 @@ def test_output_overlap_rejected_before_query(
             reports.export_fiscal_analytical_reports(
                 tmp_path / "source", "a" * 64, target, write=True
             )
+
+
+def test_all_derived_rows_require_exact_nominal_parent(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    mutations = {
+        "shares": {
+            "source_object_sha256": "b" * 64,
+            "source_vintage": "unrelated",
+            "numerator_amount": "11",
+        },
+        "per_capita": {
+            "health_source_sha256": "b" * 64,
+            "health_vintage": "unrelated",
+            "health_amount_millions": "11",
+        },
+    }
+    for table, changes in mutations.items():
+        changes.update(
+            {
+                "period_start": "2020-07-01",
+                "accounting_basis": "IFRS",
+                "numerator_source_time_status": "forecast",
+                "numerator_coverage": "unrelated",
+            }
+        )
+        for field, value in changes.items():
+            data = queries()
+            data[table]["rows"][0][field] = value
+            monkeypatch.setattr(
+                reports.ops,
+                "query_fiscal_analytical_gold",
+                lambda *_, table, snapshot=data, **__: snapshot[table],
+            )
+            output = tmp_path / "never-created"
+            with pytest.raises(ValueError, match="fiscal_report_invalid"):
+                reports.export_fiscal_analytical_reports(
+                    tmp_path / "source", "a" * 64, output, write=True
+                )
+            assert not output.exists()
