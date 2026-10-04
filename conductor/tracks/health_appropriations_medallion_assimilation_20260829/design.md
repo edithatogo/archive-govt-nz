@@ -588,3 +588,19 @@ agency mapping, aggregate appropriations or approve publication. Fiscal-year
 flow dates do not establish the legal duration of a multi-year appropriation.
 The exact original hashes qualify the source definitions; native replay audits
 source cells separately from the package reader's fixity and contract checks.
+
+### Budget comparison Gold delivery
+
+```mermaid
+flowchart LR
+  Inputs[Pinned originals and paired Budget Silver] --> Compare[Qualified read-only comparison]
+  Compare --> Gold[Exclusive Gold table / summary / report / plot]
+  Gold --> Pin[Exact inventory and manifest pin]
+  Pin --> Reader[Bounded synchronous reader]
+  Reader --> CLI[Installed read-only console query]
+  Reader --> MCP[Initialized read-only MCP tool]
+```
+
+Reader verification establishes package fixity and report projection only.
+Source qualifications and caveats remain in every query receipt; semantic
+comparability and rights/publication remain unasserted.

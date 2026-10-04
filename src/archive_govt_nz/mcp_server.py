@@ -14,6 +14,9 @@ from archive_govt_nz import __version__, mcp_health_inspection
 from archive_govt_nz.ckan.redaction import redact_sensitive
 from archive_govt_nz.core.registry import AgencyRegistry
 from archive_govt_nz.domains.health_appropriations import (
+    budget_comparison_gold as budget_comparison,
+)
+from archive_govt_nz.domains.health_appropriations import (
     fiscal_analytical_operations as fiscal_analytics,
 )
 from archive_govt_nz.domains.health_appropriations import resume_operations
@@ -91,6 +94,7 @@ _NO_ARGUMENTS = _object_schema({}, [])
 _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
     *resume_operations.MCP_TOOLS,
     fiscal_analytics.MCP_TOOL,
+    budget_comparison.MCP_TOOL,
     {
         "name": "health_appropriations_preflight_context_gold",
         "description": (
@@ -876,6 +880,7 @@ class Server:
                     name
                     in {
                         fiscal_analytics.TOOL_NAME,
+                        budget_comparison.TOOL_NAME,
                         "health_appropriations_verify_budget",
                         "health_appropriations_verify_canonical_gold",
                     }
@@ -1112,8 +1117,11 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
             "title": schema_def.title,
             "fields": fields_list,
         }
-    elif name == fiscal_analytics.TOOL_NAME:
-        result = fiscal_analytics.mcp_call(args)
+    elif name in {budget_comparison.TOOL_NAME, fiscal_analytics.TOOL_NAME}:
+        result = {
+            budget_comparison.TOOL_NAME: budget_comparison.mcp_call,
+            fiscal_analytics.TOOL_NAME: fiscal_analytics.mcp_call,
+        }[name](args)
     elif name in resume_operations.MCP_OPERATIONS:
         result = resume_operations.mcp_call(name, args)
     elif name in (
