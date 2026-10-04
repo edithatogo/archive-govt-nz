@@ -4684,3 +4684,9 @@ Bronze builds after that portability correction still matches all 34 files,
 324 query rows and retained qualified Gold/report bytes. Final harness reruns.
 
 Final follow-up validation: required harness passed with 7,462 tests and 10 skips; 80% floor unchanged. Scoped review and fresh focused native recovery passed after the Windows launcher fix.
+
+## 2026-10-05 — Budget estimate-transition comparison
+
+Continued M-13 / AC-11. Inspected pinned workbook Explanation definitions and both official release pages. Added four focused tests; red failed on missing module. Initial green exposed missing fact-row coordinates and ambient Decimal effects in the verified package reader; retained bounded logs before fixes. Used verified dispositions for row coordinates and isolated the full operation at precision 80. Four tests passed, module coverage 100%, target unchanged at 80%; Ruff and strict typing passed. Native paired fresh-Bronze replay and required harness follow. No originals, source values, classifications or rights decisions changed.
+
+Final evidence: required ./scripts/validate.sh passed with 7,466 tests / 10 skips and all configured gates; four focused tests passed. Two fresh Bronze builds have identical complete inventories and unchanged originals. Independent OOXML checks cover all 400 selected facts across the source vintages and all their raw cells; 37 differences checked in integer thousandths. Output has 60 groups: 37 unique pairs, 11 earlier-only, 12 later-only, zero ambiguous. All 97 transition records accounted for; 303 records outside transitions. Native receipt SHA-256 8b4b93c0f482f5e4c2a0527c052d3469f0f3516c927474432d86e35678c4fdcd. Scoped phase gate is not the final Health completion review.

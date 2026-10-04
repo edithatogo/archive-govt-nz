@@ -568,3 +568,23 @@ observations before writing, builds each source independently twice, compares
 all derivative files and receipts, then rechecks source pins. Console and MCP
 queries are independently compared with direct Arrow. It does not inherit
 retained Silver or assert rights/publication/full-track completion.
+
+### Budget estimate-transition query
+
+```mermaid
+flowchart LR
+  Original[Two pinned Budget originals] --> Qualification[Reviewed June-period source profile]
+  Silver[Separately pinned Budget Silver packages] --> Reader[Existing bounded package reader]
+  Qualification --> Compare[All literal dimensions and same fiscal year]
+  Reader --> Compare
+  Compare --> Unique[Unique pairs with exact differences]
+  Compare --> Other[Unmatched or ambiguous groups with no difference]
+  Unique --> Receipt[Source bindings and coverage caveats]
+  Other --> Receipt
+```
+
+This read-only library query does not rewrite Silver period flags, infer an
+agency mapping, aggregate appropriations or approve publication. Fiscal-year
+flow dates do not establish the legal duration of a multi-year appropriation.
+The exact original hashes qualify the source definitions; native replay audits
+source cells separately from the package reader's fixity and contract checks.
