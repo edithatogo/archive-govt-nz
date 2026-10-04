@@ -1013,6 +1013,11 @@ integrated parent head.
 
 ### 7.2 Produce governed projections
 
+- [x] Generate separately pinned local catalogue records, Arrow schema descriptors,
+  dataset cards and offline DCAT/PROV graphs from verified Fiscal analytical and
+  Budget comparison Gold manifests. Keep rights, release and source re-verification
+  separate; require byte-identical replay and reject altered inputs. [M-14; AC-14]
+
 - [ ] Generate and validate metadata, cards, citations, changelogs, catalogue
   and source drill-through records from actual layer manifests. [M-14, S-06;
   AC-14]

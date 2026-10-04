@@ -1,0 +1,206 @@
+"""Metadata describes verified Gold bytes without promoting release eligibility."""
+
+from __future__ import annotations
+
+import hashlib
+import json
+import subprocess
+import sys
+from collections.abc import Callable
+from pathlib import Path
+
+import pytest
+from rdflib import Graph, Literal, Namespace, URIRef
+from tests.domains.health_appropriations.test_budget_comparison_gold import fixture
+from tests.domains.health_appropriations.test_fiscal_analytical_gold import (
+    fixture_inputs,
+    fixture_tables,
+)
+
+from archive_govt_nz.domains.health_appropriations import (
+    fiscal_analytical_gold as fiscal,
+)
+from archive_govt_nz.domains.health_appropriations import gold_metadata as metadata
+
+pytest_plugins = ["tests.domains.health_appropriations.test_local_rdf"]
+
+
+def packages(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> tuple[metadata.GoldInput, ...]:
+    budget_root = tmp_path / "budget"
+    budget_root.mkdir()
+    budget, pin = fixture(budget_root, monkeypatch)
+    monkeypatch.setattr(fiscal, "build_tables", lambda _: (fixture_tables(), {}))
+    target = tmp_path / "fiscal"
+    receipt = fiscal.export_fiscal_analytical_gold(
+        fixture_inputs(tmp_path / "inputs"), target, write=True
+    )
+    return (
+        metadata.GoldInput("budget_comparison", budget, pin),
+        metadata.GoldInput("fiscal_analytical", target, receipt["manifest_sha256"]),
+    )
+
+
+def test_exact_catalogue_repeat_build_and_reconstruction(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    values = packages(tmp_path, monkeypatch)
+    first, second = tmp_path / "first", tmp_path / "second"
+    before = {p: p.read_bytes() for v in values for p in v.root.iterdir()}
+    dry = metadata.export_gold_metadata(values, first)
+    assert dry["status"] == "dry_run"
+    assert not first.exists()
+    result = metadata.export_gold_metadata(values, first, write=True)
+    repeat = metadata.export_gold_metadata(tuple(reversed(values)), second, write=True)
+    assert repeat == result
+    console = Path(sys.executable).parent / (
+        "archive-govt-nz.exe" if sys.platform == "win32" else "archive-govt-nz"
+    )
+    by_profile = {v.profile: v for v in values}
+    args = [
+        str(console),
+        "health-appropriations-build-gold-metadata",
+        "--fiscal-package",
+        str(by_profile["fiscal_analytical"].root),
+        "--fiscal-manifest-sha256",
+        by_profile["fiscal_analytical"].manifest_sha256,
+        "--budget-package",
+        str(by_profile["budget_comparison"].root),
+        "--budget-manifest-sha256",
+        by_profile["budget_comparison"].manifest_sha256,
+        "--output-dir",
+        str(tmp_path / "console"),
+    ]
+    dry_cli = subprocess.run(
+        args, capture_output=True, text=True, check=True, timeout=30
+    )
+    assert json.loads(dry_cli.stdout)["status"] == "dry_run"
+    assert not (tmp_path / "console").exists()
+    actual_cli = subprocess.run(
+        [*args, "--write"], capture_output=True, text=True, check=True, timeout=30
+    )
+    envelope = json.loads(actual_cli.stdout)
+    assert envelope["manifest_sha256"] == result["manifest_sha256"]
+    assert envelope["verification"]["status"] == "verified"
+    failed_cli = subprocess.run(
+        [*args, "--write"], capture_output=True, text=True, check=False, timeout=30
+    )
+    assert failed_cli.returncode == 2
+    assert json.loads(failed_cli.stdout)["error"] == "gold_metadata_build_failed"
+    assert {p.name: p.read_bytes() for p in first.iterdir()} == {
+        p.name: p.read_bytes() for p in second.iterdir()
+    }
+    verified = metadata.verify_gold_metadata(values, first, result["manifest_sha256"])
+    assert verified["status"] == "verified"
+    catalogue = json.loads((first / "catalogue.json").read_text())
+    assert catalogue["release_readiness"] == "blocked_unassessed_rights_and_publication"
+    assert len(catalogue["packages"]) == 2
+    assert sum(len(p["tables"]) for p in catalogue["packages"]) == 5
+    for package in catalogue["packages"]:
+        value = next(
+            v for v in values if v.manifest_sha256 == package["manifest_sha256"]
+        )
+        for item in package["inventory"]:
+            content = before[value.root / item["path"]]
+            assert item["sha256"] == hashlib.sha256(content).hexdigest()
+            assert item["bytes"] == len(content)
+        assert package["rights"] == "not_evaluated"
+    assert before == {p: p.read_bytes() for v in values for p in v.root.iterdir()}
+    text = b"\n".join(p.read_bytes() for p in first.iterdir()).decode()
+    assert str(tmp_path) not in text
+    assert '"license"' not in text
+    assert '"downloadURL"' not in text
+    with pytest.raises(FileExistsError):
+        metadata.export_gold_metadata(values, first, write=True)
+    with pytest.raises(
+        ValueError, match=r"gold_metadata_contract|source_hash_mismatch"
+    ):
+        metadata.export_gold_metadata(values, values[0].root, write=True)
+    with pytest.raises(
+        ValueError, match=r"gold_metadata_contract|source_hash_mismatch"
+    ):
+        metadata.project_gold_metadata(values + values)
+    with pytest.raises(
+        ValueError, match=r"gold_metadata_contract|source_hash_mismatch"
+    ):
+        metadata.project_gold_metadata(
+            (metadata.GoldInput("unknown", values[0].root, values[0].manifest_sha256),)
+        )
+    with pytest.raises(
+        ValueError, match=r"gold_metadata_contract|source_hash_mismatch"
+    ):
+        metadata.project_gold_metadata(())
+
+
+def test_tampered_inputs_outputs_and_pins_are_rejected(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    values = packages(tmp_path, monkeypatch)
+    target = tmp_path / "metadata"
+    receipt = metadata.export_gold_metadata(values, target, write=True)
+    with pytest.raises(
+        ValueError, match=r"gold_metadata_contract|source_hash_mismatch"
+    ):
+        metadata.verify_gold_metadata(values, target, "0" * 64)
+    (target / "catalogue.json").write_bytes(b"changed")
+    with pytest.raises(
+        ValueError, match=r"gold_metadata_contract|source_hash_mismatch"
+    ):
+        metadata.verify_gold_metadata(values, target, receipt["manifest_sha256"])
+    fiscal_input = values[1]
+    marker = fiscal_input.root / "manifest.json"
+    original_marker = marker.read_bytes()
+    manifest = json.loads(original_marker)
+    for state in ("eligible_asserted", "restricted", None):
+        altered = {**manifest, "rights": state}
+        marker.write_text(json.dumps(altered))
+        changed_pin = hashlib.sha256(marker.read_bytes()).hexdigest()
+        changed = metadata.GoldInput(
+            fiscal_input.profile, fiscal_input.root, changed_pin
+        )
+        with pytest.raises(ValueError, match="gold_metadata_contract"):
+            metadata.project_gold_metadata((changed,))
+    marker.write_bytes(original_marker)
+    (values[0].root / "summary.json").write_bytes(b"changed")
+    with pytest.raises(
+        ValueError, match=r"gold_metadata_contract|source_hash_mismatch"
+    ):
+        metadata.export_gold_metadata(values, tmp_path / "not-created", write=True)
+    assert not (tmp_path / "not-created").exists()
+
+
+def test_offline_rdf_graphs_have_exact_inventory_and_derivation(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    parse_offline: Callable[[object], Graph],
+) -> None:
+    values = packages(tmp_path, monkeypatch)
+    payloads = metadata.project_gold_metadata(values)
+    dcat = parse_offline(json.loads(payloads["dcat.jsonld"]))
+    prov = parse_offline(json.loads(payloads["prov.jsonld"]))
+    assert isinstance(dcat, Graph)
+    dcat_ns = Namespace("http://www.w3.org/ns/dcat#")
+    prov_ns = Namespace("http://www.w3.org/ns/prov#")
+    rdf = Namespace("http://www.w3.org/1999/02/22-rdf-syntax-ns#")
+    spdx = Namespace("http://spdx.org/rdf/terms#")
+    xsd = Namespace("http://www.w3.org/2001/XMLSchema#")
+    assert len(list(dcat.subjects(rdf.type, dcat_ns.Dataset))) == 5
+    assert len(list(dcat.subjects(rdf.type, dcat_ns.Distribution))) == 5
+    catalogue = json.loads(payloads["catalogue.json"])
+    for package in catalogue["packages"]:
+        collection = URIRef(package["id"])
+        assert (collection, rdf.type, prov_ns.Collection) in prov
+        assert len(list(prov.objects(collection, prov_ns.hadMember))) == 5
+        for table in package["tables"]:
+            distribution = URIRef(table["id"] + ":distribution")
+            checksum = next(dcat.objects(distribution, spdx.checksum))
+            item = next(i for i in package["inventory"] if i["path"] == table["path"])
+            assert (
+                checksum,
+                spdx.checksumValue,
+                Literal(item["sha256"], datatype=xsd.hexBinary),
+            ) in dcat
+    assert {str(o) for o in prov.objects(None, prov_ns.wasDerivedFrom)} == {
+        p["id"] for p in catalogue["packages"]
+    }

@@ -455,6 +455,46 @@ def health_appropriations_verify_fiscal_reports(
     return 0
 
 
+@app.command(name="health-appropriations-build-gold-metadata")
+def health_appropriations_build_gold_metadata(
+    *,
+    fiscal_package: Path,
+    fiscal_manifest_sha256: str,
+    budget_package: Path,
+    budget_manifest_sha256: str,
+    output_dir: Path,
+    write: bool = False,
+) -> int:
+    """Build local metadata from two pinned Gold products; dry run by default."""
+    from archive_govt_nz.domains.health_appropriations.gold_metadata import (
+        GoldInput,
+        export_gold_metadata,
+        verify_gold_metadata,
+    )
+
+    try:
+        inputs = (
+            GoldInput("fiscal_analytical", fiscal_package, fiscal_manifest_sha256),
+            GoldInput("budget_comparison", budget_package, budget_manifest_sha256),
+        )
+        receipt = export_gold_metadata(inputs, output_dir, write=write)
+        if write:
+            receipt["verification"] = verify_gold_metadata(
+                inputs, output_dir, receipt["manifest_sha256"]
+            )
+    except ValueError, OSError, KeyError, TypeError:
+        _emit_json(
+            {
+                "command": "health-appropriations-build-gold-metadata",
+                "status": "failed",
+                "error": "gold_metadata_build_failed",
+            }
+        )
+        return 2
+    _emit_json({"command": "health-appropriations-build-gold-metadata", **receipt})
+    return 0
+
+
 @app.command(name="health-appropriations-build-budget-comparison")
 def health_appropriations_build_budget_comparison(
     *,
