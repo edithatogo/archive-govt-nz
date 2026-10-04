@@ -1,0 +1,68 @@
+{
+  "bronze_sha256": [
+    "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+    "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9",
+    "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d"
+  ],
+  "byte_identical": true,
+  "fresh_bronze_normalization": "not_performed_in_this_package_replay",
+  "input_reverification": "each_build",
+  "location": {
+    "external_root": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations",
+    "relative_path": "gold/fiscal-analytical-20261004-v2"
+  },
+  "originals_unchanged": true,
+  "product": {
+    "manifest_sha256": "1b79d6f582dc8e9935e16bce2d3fe78b78d77e2a68aacf201ac9118b28462fa2",
+    "schema_version": "archive-govt-nz.fiscal-analytical-gold/v1",
+    "status": "written",
+    "tables": {
+      "cpi_benchmark": {
+        "bytes": 26129,
+        "filename": "cpi_benchmark.parquet",
+        "rows": 54,
+        "sha256": "ad94d24ad6fa5278bc040e7e8340243b67e0df4d4306a352b7eb7afae9325309",
+        "statuses": {
+          "calculated": 54
+        }
+      },
+      "nominal": {
+        "bytes": 8763,
+        "filename": "nominal.parquet",
+        "rows": 54,
+        "sha256": "f06c23604ea63af87e27ba446fe3e4ea8df342085e79fd94d516b6d5f081cebe",
+        "statuses": {
+          "source_observation": 54
+        }
+      },
+      "per_capita": {
+        "bytes": 16041,
+        "filename": "per_capita.parquet",
+        "rows": 54,
+        "sha256": "cea8c44a51775c96494690d3edafb09d2cdd876f192e97884c7571c7db95e59c",
+        "statuses": {
+          "calculated": 34,
+          "missing_population": 2,
+          "unsupported_march_period": 18
+        }
+      },
+      "shares": {
+        "bytes": 19242,
+        "filename": "shares.parquet",
+        "rows": 162,
+        "sha256": "c461219b54fb3c91b0e69559a8683eeed6b4c98cabc1fe6e951770997c61c6d3",
+        "statuses": {
+          "calculated": 115,
+          "missing_denominator": 47
+        }
+      }
+    }
+  },
+  "publication": "not_performed",
+  "readback": "all_four_typed_tables",
+  "recipe_sha256": "8beb5ae2f3ee19b80ad30c0133339cefb28b8f8953fd2a0b4f443521b0e47230",
+  "repeat_builds": 2,
+  "rights": "not_evaluated",
+  "schema_version": "archive-govt-nz.fiscal-analytical-gold-assurance/v1",
+  "source_query_cleanroom_evidence": "PR627_PR628_PR629"
+}

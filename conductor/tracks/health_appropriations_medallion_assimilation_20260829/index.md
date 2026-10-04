@@ -260,3 +260,6 @@ they are not current-state assertions.
 
 - [Household CPI fiscal benchmark](fiscal-health-cpi-benchmark-20261004.md)
 - [CPI benchmark native replay evidence](fiscal-health-cpi-benchmark-20261004.json)
+
+- [Fiscal analytical Gold package](fiscal-analytical-gold-20261004.md)
+- [Analytical Gold repeat-build receipt](fiscal-analytical-gold-20261004.json)
