@@ -942,7 +942,7 @@ def test_2013_14_parser_preserves_exact_rounded_overview_phrases() -> None:
         True,
         True,
         True,
-        True,
+        False,
         True,
         True,
         True,

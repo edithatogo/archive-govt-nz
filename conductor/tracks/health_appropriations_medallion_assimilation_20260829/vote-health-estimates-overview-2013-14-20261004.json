@@ -12,7 +12,7 @@
     "detailed appropriation coverage"
   ],
   "fact_count": 17,
-  "facts_output_sha256": "bbd0a5f7e4b339597c0ec69c531547a27aa9765a79b97667da55c5b69944dbad",
+  "facts_output_sha256": "cbca3f6321e604fa425cdd8d567c5ac379d82879f86fb5ba0f77c16494d9b149",
   "fiscal_year": "2013/14",
   "full_harness": {
     "branch_coverage_percent": 98.08,
@@ -36,7 +36,7 @@
     "output_sha256": {
       "field_lineage.parquet": "ba5d749732a6029fd80030b38de5c0d09a2c044cd0e50fd2c3438301b84f3ca5",
       "page_dispositions.parquet": "da0a311cff6325a7e26aec1ef1bd534fc019e28cea229d08cdec4fbbe3e73b20",
-      "vote_health_overview_facts.parquet": "bbd0a5f7e4b339597c0ec69c531547a27aa9765a79b97667da55c5b69944dbad"
+      "vote_health_overview_facts.parquet": "cbca3f6321e604fa425cdd8d567c5ac379d82879f86fb5ba0f77c16494d9b149"
     },
     "profile": "vote-health-estimates-2013-14-overview/v1",
     "repeat_outputs_byte_identical": true,
@@ -67,6 +67,9 @@
   "publication": "not_approved",
   "publisher_etag": "\"645064c7-13acd\"",
   "publisher_last_modified": "Tue, 02 May 2023 01:17:59 GMT",
+  "qualifier_review": {
+    "health_sector_risk_management": "source amount is stated as $90 million without an approximation qualifier; no qualifier quality flag is emitted"
+  },
   "repeat_builds": 2,
   "repeat_outputs_byte_identical": true,
   "rights": {

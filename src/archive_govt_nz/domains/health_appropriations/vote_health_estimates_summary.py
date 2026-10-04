@@ -1345,9 +1345,8 @@ _PATTERNS_2013_14 = {
         "2013/14",
     ),
 }
-_PROFILE_QUALIFIER_MEASURES_2013_14 = frozenset(
-    {"departmental_functions", "health_sector_risk_management"}
-)
+_PROFILE_QUALIFIER_MEASURES_2013_14 = frozenset({"departmental_functions"})
+_PROFILE_UNQUALIFIED_MEASURES_2013_14 = frozenset({"health_sector_risk_management"})
 
 FACT_SCHEMA = pa.schema(
     [
@@ -1396,6 +1395,7 @@ def parse_overview_pages(  # noqa: PLR0913 - profile controls are explicit
     intro_pattern: str | None = None,
     second_page_pattern: str | None = None,
     profile_qualifier_measures: frozenset[str] = frozenset(),
+    profile_unqualified_measures: frozenset[str] = frozenset(),
 ) -> list[dict[str, Any]]:
     """Read only named, phrase-anchored monetary headlines from pages 2-3."""
     selected_patterns = _PATTERNS if patterns is None else patterns
@@ -1434,25 +1434,28 @@ def parse_overview_pages(  # noqa: PLR0913 - profile controls are explicit
                 "raw_token": token,
                 "source_phrase": matches[0].group(0),
                 "source_qualifier_preserved": (
-                    measure
-                    in {
-                        "vote_total",
-                        "non_departmental_total",
-                        "output_expenses_total",
-                        "dhb_services",
-                        "national_disability_services",
-                        "national_maternity_services",
-                        "public_health_services",
-                        "national_health_services_and_training",
-                        "primary_health_services",
-                        "other_health_services",
-                        "other_expenses_total",
-                        "capital_expenditure",
-                        "dhb_and_agency_capital",
-                        "ministry_asset_purchases",
-                        "health_sector_risk_management",
-                    }
-                    or measure in profile_qualifier_measures
+                    measure not in profile_unqualified_measures
+                    and (
+                        measure
+                        in {
+                            "vote_total",
+                            "non_departmental_total",
+                            "output_expenses_total",
+                            "dhb_services",
+                            "national_disability_services",
+                            "national_maternity_services",
+                            "public_health_services",
+                            "national_health_services_and_training",
+                            "primary_health_services",
+                            "other_health_services",
+                            "other_expenses_total",
+                            "capital_expenditure",
+                            "dhb_and_agency_capital",
+                            "ministry_asset_purchases",
+                            "health_sector_risk_management",
+                        }
+                        or measure in profile_qualifier_measures
+                    )
                 ),
             }
         )
@@ -1547,6 +1550,7 @@ def parse_overview_2013_14_pages(texts: list[str]) -> list[dict[str, Any]]:
         intro_pattern=r"2013/14 financial year\s+totalling\s+nearly",
         second_page_pattern=r"Capital Expenditure",
         profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2013_14,
+        profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2013_14,
     )
 
 
@@ -1570,6 +1574,7 @@ def _normalize_overview(  # noqa: PLR0913 - profile/provenance are explicit
     second_page_pattern: str | None = None,
     additional_quality_flags: tuple[str, ...] = (),
     profile_qualifier_measures: frozenset[str] = frozenset(),
+    profile_unqualified_measures: frozenset[str] = frozenset(),
     dry_run: bool = True,
 ) -> dict[str, object]:
     """Normalize a pinned edition's exact overview headlines into local Silver."""
@@ -1592,6 +1597,7 @@ def _normalize_overview(  # noqa: PLR0913 - profile/provenance are explicit
         intro_pattern=intro_pattern,
         second_page_pattern=second_page_pattern,
         profile_qualifier_measures=profile_qualifier_measures,
+        profile_unqualified_measures=profile_unqualified_measures,
     )
     context = source_context(
         expected_sha256, source_locator, source_vintage, observed_at
@@ -2046,6 +2052,7 @@ def normalize_vote_health_estimates_overview_2013_14(  # noqa: PLR0913 - explici
         intro_pattern=r"2013/14 financial year\s+totalling\s+nearly",
         second_page_pattern=r"Capital Expenditure",
         profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2013_14,
+        profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2013_14,
         additional_quality_flags=(
             "source_value_rounded_to_whole_million",
             "source_amount_is_not_exact",
