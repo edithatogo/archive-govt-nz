@@ -1,7 +1,7 @@
 {
   "phase_id": "phase_7_gates",
-  "receipt_sha256": "055a3913bf3162994b87d426a6d6f85accac56dbf8ac283091b4fc6051d8583d",
-  "reviewed_at": "2026-10-04T10:10:47Z",
+  "receipt_sha256": "ff05bc1d3742b67db89e4428fa1c3dd33e203c609ccacf38bda58c12654ff521",
+  "reviewed_at": "2026-10-04T10:25:29Z",
   "schema_version": "archive-govt-nz.conductor-phase-review/v1",
   "stages": [
     {
@@ -18,7 +18,7 @@
       "exit_code": 0,
       "passed": true,
       "stderr": "",
-      "stdout": "2342 files already formatted\n"
+      "stdout": "2343 files already formatted\n"
     },
     {
       "command": [
@@ -64,7 +64,7 @@
       "exit_code": 0,
       "passed": true,
       "stderr": "",
-      "stdout": "                               [ 36%]\ntests/silver/test_checkpoint_recovery.py ..                              [ 39%]\ntests/silver/test_urn_injection.py ...                                   [ 43%]\ntests/silver/test_interlink.py ....                                      [ 49%]\ntests/bronze/test_ots.py .....                                           [ 56%]\ntests/gold/test_knowledge_graph_feedback.py .                            [ 57%]\ntests/bronze/test_sniffer.py .......                                     [ 67%]\ntests/bronze/test_adapter.py .                                           [ 69%]\ntests/gold/test_analytics.py .......                                     [ 78%]\ntests/bronze/test_attestation.py ....                                    [ 84%]\ntests/bronze/test_heartbeat.py .....                                     [ 91%]\ntests/bronze/test_multihash.py ......                                    [100%]\n\n============================= 71 passed in 11.34s ==============================\n"
+      "stdout": "                               [ 38%]\ntests/silver/test_urn_injection.py ...                                   [ 42%]\ntests/silver/test_checkpoint_recovery.py ..                              [ 45%]\ntests/bronze/test_manifest.py ......                                     [ 53%]\ntests/cli/test_query_cli.py ...                                          [ 57%]\ntests/gold/test_knowledge_graph_feedback.py .                            [ 59%]\ntests/gold/test_analytics.py .......                                     [ 69%]\ntests/bronze/test_heartbeat.py .....                                     [ 76%]\ntests/bronze/test_multihash.py ......                                    [ 84%]\ntests/bronze/test_ots.py .....                                           [ 91%]\ntests/gold/test_health_gold_query_contract.py ..                         [ 94%]\ntests/bronze/test_fingerprint.py ....                                    [100%]\n\n============================= 71 passed in 17.57s ==============================\n"
     },
     {
       "command": [

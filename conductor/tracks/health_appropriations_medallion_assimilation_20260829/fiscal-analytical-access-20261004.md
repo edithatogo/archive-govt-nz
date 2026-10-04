@@ -31,9 +31,13 @@ The real console command and initialized MCP protocol returned equal receipts
 for all four native tables (324 rows). Every row matched an independent direct
 Arrow read with exact JSON encoding, and all five package file digests remained
 unchanged. A bad manifest digest produced bounded failure and console exit 2.
-Nine focused tests cover all named views, ordering, exact Decimal strings,
+Ten focused tests cover all named views, ordering, exact Decimal strings,
 truncation, CLI/MCP parity, schema/hints, invalid SQL/limits and missing packages.
-The initial red collection failed on the absent adapter module. The global and
+The initial red collection failed on the absent adapter module. A protocol
+regression also demonstrated that failed queries incorrectly had `isError: false`.
+The adapter now participates in the server's failed-status handling, preserving
+its bounded structured failure receipt while reporting `isError: true`. Native
+invalid-pin protocol readback confirms this correction. The global and
 focused coverage floor remains 80%; tests were selected for meaningful boundaries.
 
 Plots/reports, broader contextual views, Platinum/federation projections,

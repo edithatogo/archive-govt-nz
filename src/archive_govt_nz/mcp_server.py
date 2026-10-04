@@ -875,6 +875,7 @@ class Server:
                 "isError": (
                     name
                     in {
+                        fiscal_analytics.TOOL_NAME,
                         "health_appropriations_verify_budget",
                         "health_appropriations_verify_canonical_gold",
                     }

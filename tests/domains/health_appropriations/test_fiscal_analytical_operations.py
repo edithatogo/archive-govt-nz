@@ -124,3 +124,44 @@ def test_invalid_package_cli_returns_bounded_failure(
     result = json.loads(capsys.readouterr().out)
     assert result["status"] == "failed"
     assert result["error"] == "fiscal_gold_inventory_invalid"
+
+
+def test_failed_query_is_a_protocol_tool_error_with_structured_receipt(
+    tmp_path: Path,
+) -> None:
+    root = tmp_path / "gold"
+    package(root)
+    server = mcp_server.Server()
+    server.handle_request(
+        {
+            "jsonrpc": "2.0",
+            "id": 1,
+            "method": "initialize",
+            "params": {
+                "protocolVersion": mcp_server.PROTOCOL_VERSION,
+                "capabilities": {},
+                "clientInfo": {"name": "fixture", "version": "1"},
+            },
+        }
+    )
+    server.handle_request({"jsonrpc": "2.0", "method": "notifications/initialized"})
+    response = server.handle_request(
+        {
+            "jsonrpc": "2.0",
+            "id": 2,
+            "method": "tools/call",
+            "params": {
+                "name": ops.TOOL_NAME,
+                "arguments": {
+                    "package_dir": str(root),
+                    "manifest_sha256": "0" * 64,
+                    "table": "shares",
+                },
+            },
+        }
+    )
+    assert response is not None
+    assert response["result"]["isError"] is True
+    receipt = response["result"]["structuredContent"]
+    assert receipt["status"] == "failed"
+    assert receipt["error"] == "fiscal_gold_manifest_pin_mismatch"

@@ -3,9 +3,10 @@
   "external_sql_access": "disabled",
   "gold_manifest_sha256": "1b79d6f582dc8e9935e16bce2d3fe78b78d77e2a68aacf201ac9118b28462fa2",
   "invalid_pin_cli_exit": 2,
+  "invalid_pin_mcp_is_error": true,
   "location": {
     "external_root": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations",
-    "relative_path": "assurance/fiscal-analytical-access-20261004"
+    "relative_path": "assurance/fiscal-analytical-access-20261004-v2"
   },
   "package_unchanged": true,
   "queries": {
@@ -34,7 +35,7 @@
       "rows": 162
     }
   },
-  "recipe_sha256": "2f3efbb615e905a5f6e740071b2760160d22fc2bf5efe691695fd8c4e912dfeb",
+  "recipe_sha256": "c619849651c2d751894de52bf57b01bfd780fa9463a0ef9892e69bbcc8fc6d86",
   "schema_version": "archive-govt-nz.fiscal-analytical-access-assurance/v1",
   "source_reverification": "not_performed",
   "verified_rows": 324
