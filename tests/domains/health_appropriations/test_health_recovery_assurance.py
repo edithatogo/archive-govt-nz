@@ -297,7 +297,7 @@ def test_source_health_recovery_report_replays_capture_and_census(
 ) -> None:
     archive = tmp_path / "archive"
     track = tmp_path / "track"
-    manifest_name = "official-capture-2026-09-30-health-refresh.json"
+    manifest_name = "official-capture-2026-10-03-health-complete.json"
     (archive / "manifests").mkdir(parents=True)
     (track).mkdir()
     source_bytes = json.dumps(
@@ -376,7 +376,7 @@ def test_source_health_recovery_report_replays_capture_and_census(
         ]
     }
     layout_bytes = json.dumps(layout_baseline, sort_keys=True).encode()
-    (track / "source-pdf-layout-baseline-20261002.json").write_bytes(layout_bytes)
+    (track / MODULE.PDF_LAYOUT_BASELINE_NAME).write_bytes(layout_bytes)
     source_path.write_bytes(source_bytes)
     context_path.write_bytes(context_bytes)
     manifest_path.write_bytes(manifest_bytes)
@@ -385,6 +385,11 @@ def test_source_health_recovery_report_replays_capture_and_census(
     cas_object.write_bytes(b"captured")
     monkeypatch.setattr(MODULE, "TRACK", track)
     monkeypatch.setattr(MODULE, "ARCHIVE", archive)
+    monkeypatch.setattr(
+        MODULE,
+        "PDF_LAYOUT_BASELINE_SHA256",
+        MODULE.hashlib.sha256(layout_bytes).hexdigest(),
+    )
     monkeypatch.setattr(
         MODULE,
         "SOURCE_CENSUS_SHA256",
@@ -457,6 +462,11 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
         },
     )
     monkeypatch.setattr(MODULE, "canonical_inputs", lambda _root: ())
+    monkeypatch.setattr(
+        MODULE,
+        "recover_fiscal_analytical_products",
+        lambda _archive, _root: {"status": "verified", "fresh_bronze_builds": 2},
+    )
     monkeypatch.setattr(
         MODULE,
         "source_health_recovery_report",
@@ -603,6 +613,10 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     result = MODULE.run()
     assert result["status"] == "partial_with_blockers"
     assert result["bronze_objects_unchanged"] is True
+    assert result["products_rebuilt"]["fiscal_analytical_gold_reports_interfaces"] == {
+        "status": "verified",
+        "fresh_bronze_builds": 2,
+    }
     assert result["products_rebuilt"]["canonical_gold"]["status"] == "blocked"
     assert result["products_rebuilt"]["context_gold"]["repeat_identical"] is True
     assert (
@@ -655,10 +669,7 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     )
     assert "compatibility_sqlite" not in result["required_but_not_rebuilt"]
     assert "all_source_native_silver" not in result["required_but_not_rebuilt"]
-    assert (
-        "cross_source_comparison_and_historical_difference_dispositions"
-        in result["required_but_not_rebuilt"]
-    )
+    assert "cross_source_comparison" in result["required_but_not_rebuilt"]
     assert (
         "canonical_classification_drift_revision_and_cross_source_reports"
         not in result["required_but_not_rebuilt"]

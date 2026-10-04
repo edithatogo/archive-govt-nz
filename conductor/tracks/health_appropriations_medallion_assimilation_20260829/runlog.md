@@ -4646,3 +4646,41 @@ retained. Scoped phase review passed again; the full harness is rerunning.
 The corrected full harness passed: 7,457 tests, 10 skipped, 98.00% aggregate
 coverage with the 80% floor. All configured schema, parity, mutation and
 supply-chain gates passed again. Native output bytes remain unchanged.
+
+## 2026-10-04 Integrated Fiscal analytical recovery
+
+PR #632 passed exact-head Actions and merged; its clean worktree was removed
+after remote integration and tree-equality proof. Primary main fast-forwarded.
+A fresh isolated worktree adds the missing analytical products to integrated
+clean-room reconstruction. Initial absent-module red contracts were retained.
+Lint/type findings were bounded and corrected; 13 focused assurance tests pass.
+The full harness and scoped phase review pass. Native evidence is running.
+
+The focused native recovery passed: 34 files per run, two fresh Bronze builds,
+all 324 console/MCP rows equal direct Arrow and all Gold/report bytes equal the
+retained qualified products. The wider native run exposed stale capture and PDF
+layout references; failure and interruption receipts are retained externally.
+The runner now selects the existing, separately pinned 3 October manifest and
+PDF baseline. Source-health replay matches the unchanged recorded report and
+verifies all 75 captured objects; classification and accepted non-mutating donor
+replay preflights pass. Thirteen focused tests pass after the binding correction.
+The final wider run and final full harness are running.
+
+Final required harness passed: 7,460 tests, 10 skipped, 97.85% aggregate
+coverage with the 80% floor. All schema, parity, configured mutation and
+supply-chain gates passed. The final capture/layout bindings also pass the
+13 focused tests and native 75-object source-health replay. Scoped automatic
+phase review passed. The wider native run remains separate and is running;
+full Health completion is not asserted by this focused receipt.
+
+The wider native replay completed all 21 supported product groups with Bronze
+unchanged. Its Fiscal inventories/receipts exactly match the focused proof.
+Hosted patch coverage then failed at 51.92% against the unchanged 80% target.
+Two added real-interface tests cover console/MCP/Arrow agreement and corrupt
+or absent MCP delivery; the source-pin contract now covers definition evidence.
+Five recovery tests measure 82.61% for the helper. The actual console test also
+required selecting the installed .exe launcher on Windows. A new pair of fresh
+Bronze builds after that portability correction still matches all 34 files,
+324 query rows and retained qualified Gold/report bytes. Final harness reruns.
+
+Final follow-up validation: required harness passed with 7,462 tests and 10 skips; 80% floor unchanged. Scoped review and fresh focused native recovery passed after the Windows launcher fix.
