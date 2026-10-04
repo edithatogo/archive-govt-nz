@@ -254,3 +254,6 @@ they are not current-state assertions.
 
 - [Source-qualified Fiscal Health shares](./fiscal-health-shares-20261004.md)
 - [Fiscal share repeat-build receipt](./fiscal-health-shares-20261004.json)
+
+- [Annual mean resident spending rate](fiscal-health-per-capita-20261004.md)
+- [Per-capita native replay evidence](fiscal-health-per-capita-20261004.json)

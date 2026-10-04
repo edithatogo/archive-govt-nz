@@ -808,6 +808,11 @@ integrated parent head.
   inputs. Retain periods, reporting bases, exact amounts and input lineage;
   report missing denominators explicitly. [M-10, M-12, M-13; AC-08, AC-10]
 
+- [x] Add a verified Fiscal 2025 / Stats NZ annual June mean population
+  per-capita query with explicit two-vintage policy, exact input lineage,
+  provisional/revision flags and missing/unsupported period reasons.
+  [M-10, M-12, M-13; AC-08, AC-10] See `fiscal-health-per-capita-20261004.md`.
+
 - [ ] Add DuckDB query golden tests for nominal, real, per-capita, GDP share,
   total/core Crown share, budget-versus-actual, revisions, classifications,
   department/portfolio and CPB views. [M-10, M-13, M-18; AC-08, AC-10,

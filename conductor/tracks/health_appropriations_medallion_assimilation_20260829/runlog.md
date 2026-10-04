@@ -4539,3 +4539,28 @@ Codex identified that the reviewed query did not hash-bind the external fiscal-p
 The first remote assurance run and corrected local full run both stopped on the secret scanner misclassifying the local product path as Base64 entropy. The receipt now separates its external root and relative path, preserving the exact product location without a gate exclusion. Tests (7,396 passed; 10 skipped), schemas, parity, typing and all mutation gates passed before that failure. A fresh required harness run checks the final receipt representation.
 
 Final corrected validation passed: `./scripts/validate.sh` exit 0, 7,396 tests passed, 10 skipped, 80% coverage floor retained; schemas, parity, configured mutation and supply-chain gates passed. Automatic scoped Conductor review also passed. The full Health track completion gate remains open.
+
+### Fiscal spending per annual mean resident (4 October 2026)
+
+After PR #627 passed all exact-head hosted checks, it was merged and its clean
+worktree removed after remote integration/tree equality proof. Primary main
+fast-forwarded cleanly. This fresh worktree adds a bounded pinned two-vintage
+per-capita policy. Initial red tests failed on the absent module; 18 focused
+tests now pass, with typing/lint and all changed-module branches exercised.
+Two fresh native Bronze rebuilds agree byte-for-byte; all 34 calculated rates
+match independent rational arithmetic. Missing population and March-year
+exclusions remain explicit. Source/provisional/accounting/revision flags and
+period evidence identities remain visible. No rights/publication gate closes.
+
+Required local harness passed: 7,414 tests, 10 skipped; 80% coverage floor unchanged, measured 98.09%; 53 schemas, 43 representative documents, parity 9/9, all configured mutation gates and supply-chain controls passed. Scoped automatic Conductor phase review passed; its receipt is retained. Full Health track review/completion remains open.
+
+PR #628 review: accepted Codex's omission finding and carried both source
+time-status labels into the derived table. Eighteen focused tests still pass;
+two fresh native replays again agree and all 34 rates independently match.
+Amazon Q's precision concern was rejected: the existing test deliberately
+checks isolation from caller ambient precision; an additional bounded probe
+confirmed the exact result under ambient precision 2 and caught a production
+precision-2 mutant. No arithmetic policy change was made. Repeat full assurance
+is required for the added provenance fields.
+
+Corrected full harness and scoped phase review passed: 7,414 tests, 10 skipped; 80% coverage floor retained; all configured schemas, parity, mutation and supply-chain controls passed.

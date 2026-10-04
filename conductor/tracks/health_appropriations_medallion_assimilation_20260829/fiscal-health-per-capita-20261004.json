@@ -1,0 +1,145 @@
+{
+  "bronze_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+  "bronze_unchanged": true,
+  "byte_identical": true,
+  "clean_room_repeats": 2,
+  "counts": {
+    "calculated": 34,
+    "missing_population": 2,
+    "unsupported_march_period": 18
+  },
+  "implementation_sha256": {
+    "src/archive_govt_nz/domains/health_appropriations/fiscal_per_capita.py": "389cf9242c0a9977295942908f18501a02227578f3a7790ad5a58b47e5478eb2",
+    "tests/domains/health_appropriations/test_fiscal_per_capita.py": "8d9594f56195b7a587216bb1e7cf0437b94e9b3f45803fcb20537459f13e5aa9"
+  },
+  "independent_rational_checks": 34,
+  "output_location": {
+    "external_root": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations",
+    "relative_path": "gold/fiscal-health-per-capita-20261004-v2"
+  },
+  "output_parquet_sha256": "857f56fe1c93a7c809dfb62354a381ec84babb84001ece1dee6598461142a09a",
+  "period_metadata": {
+    "direct_http_attempt": "403_forbidden",
+    "observation_path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/source-evidence/fiscal-series-notes-web-observation-20261004.json",
+    "original_html_capture": "not_performed",
+    "url": "https://www.treasury.govt.nz/publications/information-release/data-fiscal-time-series-historical-fiscal-indicators",
+    "web_observation_sha256": "22b10ce573136e1e6a56931df12ddcd07a51edd757f22d31bf454c19799f5dc1"
+  },
+  "population_bronze_sha256": "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9",
+  "population_bronze_unchanged": true,
+  "population_period_observation_sha256": "431274ff6064c04ea74f7cd8f6e2ab0c0dfa025a0bc3e72ad1aa3adf97c5c967",
+  "publication": "not_performed",
+  "query_receipt": {
+    "counts": {
+      "calculated": 34,
+      "missing_population": 2,
+      "unsupported_march_period": 18
+    },
+    "cross_vintage_policy": "explicit_pinned_fiscal2025_population20260818_pair",
+    "denominator_selection": "exact_annual_june_mean_total_all_ages",
+    "evidence_kind": "retained_web_tool_text_observation",
+    "fiscal_input": {
+      "canonical_input": {
+        "canonical_bytes": 363811,
+        "kind": "historical",
+        "marker_sha256": "0bb6bd598ad3bc58c103251f4711e0092a75ec0ae80f63c89c623b93c0711507",
+        "original_bytes": 116265,
+        "original_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+        "outputs": {
+          "field_lineage.parquet": {
+            "bytes": 77323,
+            "sha256": "e2098b2d03fc909741620f9d78aa58587852894b8dacf9ba5491aa79ab7e49e8"
+          },
+          "fiscal_context_fact.parquet": {
+            "bytes": 19445,
+            "sha256": "b2491a94d6901b0f05e101eabbb18abf445b67a6d9865ae2f4ba62d1d27e8e54"
+          },
+          "health_spending_fact.parquet": {
+            "bytes": 19464,
+            "sha256": "e7d86618e1edb0166f11331bf59754bd9d85fd8c0b976cc8826096bb4c5c7ff6"
+          },
+          "lineage_accounting.json": {
+            "bytes": 245614,
+            "sha256": "59f9b8a7a5ae8e7d860def3c12b6756226f59d1ecf7085c6247d9e454037bcbc"
+          }
+        },
+        "projection_equality": "historical-health-gdp-canonical/v1",
+        "raw_manifest_sha256": "aee4578f1ee83f8c1ede63e36e840c6cd2140df8c6f463e71ec93da9e4e7d75a",
+        "vintage": "Fiscal-Time-Series-1972-2025"
+      },
+      "counts": {
+        "calculated": 115,
+        "missing_denominator": 47
+      },
+      "cross_vintage_join": "not_performed",
+      "crown_input": {
+        "accounting_basis": "source_label_retained",
+        "core_crown_records": 32,
+        "cross_measure_comparison": "not_performed",
+        "currency": "unknown",
+        "denominator_selection": "not_performed",
+        "financial_year_start": "unqualified",
+        "input_identity_closed": true,
+        "input_records": 61,
+        "output_lineage_rows": 671,
+        "output_records": 61,
+        "publication": "not_performed",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-fiscal-crown-canonical-projection/v1",
+        "source_object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+        "source_vintage": "Fiscal-Time-Series-1972-2025",
+        "status": "verified_source_faithful_projection",
+        "total_crown_records": 29
+      },
+      "formula_policy": "fiscal-2025-source-period-health-shares/v1",
+      "period_definition_evidence_kind": "retained_web_tool_text_observation",
+      "period_definition_evidence_sha256": "22b10ce573136e1e6a56931df12ddcd07a51edd757f22d31bf454c19799f5dc1",
+      "period_definition_source_url": "https://www.treasury.govt.nz/publications/information-release/data-fiscal-time-series-historical-fiscal-indicators",
+      "publication": "not_performed",
+      "rights": "not_evaluated",
+      "rounding": "decimal80_half_even_percent_12dp",
+      "schema_version": "archive-govt-nz.fiscal-health-shares/v1",
+      "source_object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+      "source_vintage": "Fiscal-Time-Series-1972-2025"
+    },
+    "formula_policy": "fiscal-2025-population-20260818-june-mean/v1",
+    "population_input": {
+      "analytical_selection": "not_selected",
+      "denominator_approval": "not_selected",
+      "input_records": 36,
+      "lineage_records": 110,
+      "output_records": 36,
+      "rights_state": "not_evaluated",
+      "schema_version": "archive-govt-nz.health-population-canonical-projection/v1",
+      "source_manifest_sha256": "067255c4ac18377312d0a8234dc94804c876ba68866cfba3a483a4dd89415798",
+      "source_object_sha256": "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9",
+      "status": "verified_source_faithful_projection"
+    },
+    "population_period_evidence_sha256": "431274ff6064c04ea74f7cd8f6e2ab0c0dfa025a0bc3e72ad1aa3adf97c5c967",
+    "population_period_source_url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/4c9f3523-5386-4ce0-a8bd-993bb905f119/201",
+    "publication": "not_performed",
+    "rights": "not_evaluated",
+    "rounding": "decimal80_half_even_source_dollars_12dp",
+    "schema_version": "archive-govt-nz.fiscal-health-per-capita/v1"
+  },
+  "rebuild_recipe_sha256": "e89236659a42a0eb6637465f36d5fcaa78de18d9ba88e76ebd6d95229daf50a6",
+  "rights": "not_evaluated",
+  "rows": 54,
+  "schema_version": "archive-govt-nz.fiscal-health-per-capita-assurance/v1",
+  "validation": {
+    "command": "./scripts/validate.sh",
+    "configured_mutation_gates": "passed",
+    "coverage_floor": 80,
+    "coverage_percent": 98.09,
+    "log_sha256": "67cb6990000c57fa7ac96f7fcde9558683242a8821b0be245cfbd62424d21e95",
+    "parity": "9/9",
+    "phase_review_receipt_sha256": "3fd7cfcdf2841cb97f17459ebe226189057ba3409258f9e1146e62ac931c3243",
+    "representative_documents": 43,
+    "sbom_components": 113,
+    "schemas": 53,
+    "status": "passed",
+    "supply_chain": "passed",
+    "tests_passed": 7414,
+    "tests_skipped": 10
+  }
+}
