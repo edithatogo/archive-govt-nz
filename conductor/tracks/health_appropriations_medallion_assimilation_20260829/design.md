@@ -604,3 +604,20 @@ flowchart LR
 Reader verification establishes package fixity and report projection only.
 Source qualifications and caveats remain in every query receipt; semantic
 comparability and rights/publication remain unasserted.
+
+### Local analytical Gold metadata boundary
+
+```mermaid
+flowchart LR
+  G[Explicit Fiscal and Budget Gold pins] --> V[Typed Gold readers and bounded snapshots]
+  V --> C[Catalogue, Arrow schemas and dataset card]
+  V --> D[Inline DCAT recordsets and PROV package membership]
+  C --> M[Separate metadata manifest]
+  D --> M
+  M --> R[Reverify Gold and reconstruct every metadata byte]
+  R --> B[Rights and publication unassessed: release blocked]
+```
+
+The metadata projection verifies local Gold snapshots only. Source assertions stay
+in their pinned Gold package; no source, redistribution, publication or approved
+federation assertion is promoted by metadata fixity.

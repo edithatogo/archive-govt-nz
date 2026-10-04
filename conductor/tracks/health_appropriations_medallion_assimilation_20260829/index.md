@@ -276,3 +276,5 @@ they are not current-state assertions.
 - [Budget estimate-transition comparison](./budget-vintage-comparison-20261005.md)
 
 - [Budget comparison Gold and operations](./budget-comparison-gold-20261005.md)
+
+- [Local analytical Gold metadata](./gold-metadata-20261005.md)
