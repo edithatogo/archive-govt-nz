@@ -1335,3 +1335,9 @@ integrated parent head.
   the remaining seven pages are unreviewed and no whole-edition, comparison,
   Gold or publication claim is made. [M-01, M-03, M-07, M-18; AC-01, AC-04,
   AC-05, AC-16]
+
+- [x] Package the qualified Fiscal nominal, spending-share, annual mean resident
+  and household CPI benchmark outputs as four bounded, source-qualified Gold
+  tables with manifest pinning, typed readback, repeat-build evidence and safe
+  exclusive writes. This completes a bounded export; DuckDB, plots/reports and
+  operations remain open. [M-10, M-13, M-18; AC-08, AC-10, AC-16]

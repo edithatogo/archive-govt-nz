@@ -4581,3 +4581,17 @@ or original changed. No health-input-cost, ISO-currency or rights/publication
 claim is made. Integrated Gold and final completion gates remain open.
 
 Full required harness and scoped phase review passed: 7,431 tests, 10 skipped; 80% coverage floor retained; schemas, parity, all configured mutation and supply-chain gates passed. This bounded query evidence does not close integrated Gold, operations or final track review.
+
+## 2026-10-04 Fiscal analytical Gold package
+
+PRs #627, #628 and #629 merged after green Actions; their clean worktrees were
+removed after exact remote integration proof. A fresh worktree packages the three
+qualified analytical queries plus nominal source observations. Initial lint/type
+failures were bounded and corrected; focused tests and native repeat/readback pass.
+See fiscal-analytical-gold-20261004.md/json for the precise evidence scope.
+
+Required validation harness passed: 7,440 tests, 10 skipped, 98.05% aggregate
+coverage with the 80% floor; schemas, parity, configured mutation gates and
+supply-chain checks passed. Final nominal schema-label correction was checked
+with the nine focused tests, typing and a new identical native pair. Scoped
+phase_7_gates review passed; the full track completion gate remains open.

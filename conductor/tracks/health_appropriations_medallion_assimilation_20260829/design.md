@@ -534,3 +534,12 @@ Bind the official CPI methodology observation and independently check its
 2017Q2=1000 reference point. Keep published-index rounding, GST effects and
 historical seasonal component changes visible; do not claim a health input
 cost deflator or modify original projection qualifiers.
+
+## Fiscal analytical Gold package (2026-10-04)
+
+Keep this derived analytical package separate from the source-separated canonical
+Gold contract. Each build reverifies all selected packages through the three
+qualified queries. Retain nominal amounts and source qualifications unchanged.
+Use exclusive output creation, reject input overlap, and retain partial failure
+evidence. Product readback verifies exact inventory, pinned payloads, typed schemas
+and bounded expansion; it asserts product fixity without fresh source verification.

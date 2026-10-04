@@ -1611,3 +1611,16 @@ or original changed. No health-input-cost, ISO-currency or rights/publication
 claim is made. Integrated Gold and final completion gates remain open.
 
 Full required harness and scoped phase review passed: 7,431 tests, 10 skipped; 80% coverage floor retained; schemas, parity, all configured mutation and supply-chain gates passed. This bounded query evidence does not close integrated Gold, operations or final track review.
+
+## Fiscal analytical Gold package (2026-10-04)
+
+Nine focused tests pass at 86.81% coverage with the requested 80% floor. Two native
+source-reverified package builds produce identical manifest/Parquet bytes and all
+four typed tables read back. Three originals retain their digests. This is a
+bounded local export; it does not close DuckDB, plots, operations or final review.
+
+Required validation harness passed: 7,440 tests, 10 skipped, 98.05% aggregate
+coverage with the 80% floor; schemas, parity, configured mutation gates and
+supply-chain checks passed. Final nominal schema-label correction was checked
+with the nine focused tests, typing and a new identical native pair. Scoped
+phase_7_gates review passed; the full track completion gate remains open.
