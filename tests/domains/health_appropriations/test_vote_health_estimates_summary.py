@@ -983,6 +983,62 @@ def test_2013_14_normalizer_rebuilds_from_pinned_bronze_source(
     ) == 6
 
 
+def test_2014_15_normalizer_rebuilds_eighteen_selected_headlines_from_bronze(
+    tmp_path: Path,
+) -> None:
+    source = Path(
+        "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/bronze-cas/"
+        "sha256/03/039706f735a3652aa911e4fa7eaf776a6d534271d96e478aad0ce45789351dfb"
+    )
+    if not source.is_file():
+        pytest.skip("captured 2014/15 Treasury source is unavailable")
+    output = tmp_path / "silver"
+    result = overview.normalize_vote_health_estimates_overview_2014_15(
+        source,
+        output,
+        expected_sha256=overview.SOURCE_SHA256_2014_15,
+        source_vintage=overview.VINTAGE_2014_15,
+        source_locator="https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2014-15",
+        observed_at="2026-08-29T09:00:17Z",
+        dry_run=False,
+    )
+    facts = pq.read_table(output / "vote_health_overview_facts.parquet").to_pylist()
+    assert result["status"] == "passed"
+    assert result["counts"] == {"pages": 2, "facts": 18}
+    assert [fact["value"] for fact in facts] == [
+        *map(
+            Decimal,
+            (
+                15557,
+                193,
+                14249,
+                14221,
+                11405,
+                1118,
+                820,
+                430,
+                170,
+                147,
+                75,
+                57,
+                28,
+                1114,
+                645,
+                440,
+                15,
+                15,
+            ),
+        )
+    ]
+    risk_quality_flags = facts[10]["quality_flags"]
+    assert risk_quality_flags
+    assert "source_qualifier_preserved_in_raw_phrase" not in risk_quality_flags
+    dispositions = pq.read_table(output / "page_dispositions.parquet").to_pylist()
+    assert [row["disposition"] for row in dispositions].count(
+        "preserved_unreviewed"
+    ) == 107
+
+
 def test_2011_12_normalizer_rebuilds_selected_headlines_from_pinned_bronze_source(
     tmp_path: Path,
 ) -> None:

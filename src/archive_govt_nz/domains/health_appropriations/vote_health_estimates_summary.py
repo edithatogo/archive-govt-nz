@@ -100,6 +100,13 @@ SOURCE_SHA256_2013_14 = (
     "f29271aad328bad5fcfdcf655c61dc6c59600a20666860c037ceb478bff681f1"
 )
 PAGE_COUNT_2013_14 = 8
+PROFILE_2014_15 = "vote-health-estimates-2014-15-overview/v1"
+TRANSFORMATION_2014_15 = "vote-health-estimates-overview-2014-15/v1"
+VINTAGE_2014_15 = "Treasury-Vote-Health-Estimates-2014-15"
+SOURCE_SHA256_2014_15 = (
+    "039706f735a3652aa911e4fa7eaf776a6d534271d96e478aad0ce45789351dfb"
+)
+PAGE_COUNT_2014_15 = 109
 _PROFILE_QUALIFIER_MEASURES_2010_11 = frozenset(
     {"departmental_functions", "health_sector_risk_management"}
 )
@@ -1347,6 +1354,119 @@ _PATTERNS_2013_14 = {
 }
 _PROFILE_QUALIFIER_MEASURES_2013_14 = frozenset({"departmental_functions"})
 _PROFILE_UNQUALIFIED_MEASURES_2013_14 = frozenset({"health_sector_risk_management"})
+_PATTERNS_2014_15 = {
+    "vote_total": (
+        2,
+        r"2014/15 financial year totalling\s+just over \$(?P<value>[0-9][0-9,]*) million",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate rounded source amount",
+        "2014/15",
+    ),
+    "departmental_functions": (
+        2,
+        r"Departmental Operating Appropriations\s+A total of just over \$(?P<value>[0-9][0-9,]*) million \(1\.2% of the Vote\) relates to the functions of the Ministry of Health",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate rounded source amount",
+        "2014/15",
+    ),
+    "non_departmental_total": (
+        2,
+        r"Non-Departmental Operating Appropriations\s+A total of just over \$(?P<value>[0-9][0-9,]*) million \(91\.6% of the Vote\) is for operating expenses",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate rounded source amount",
+        "2014/15",
+    ),
+    "output_expenses_total": (
+        2,
+        r"Output Expenses\s+These total nearly \$(?P<value>[0-9][0-9,]*) million \(91\.4% of the Vote\)",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate rounded source amount",
+        "2014/15",
+    ),
+    "dhb_services": (
+        2,
+        r"nearly \$(?P<value>[0-9][0-9,]*) million \(73\.3% of the Vote\) to fund health services from district health boards",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate rounded source amount",
+        "2014/15",
+    ),
+    "national_disability_services": (
+        2,
+        r"nearly \$(?P<value>[0-9][0-9,]*) million \(7\.2% of the Vote\) to purchase national disability support services",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate rounded source amount",
+        "2014/15",
+    ),
+    "national_health_services_and_training": (
+        2,
+        r"nearly \$(?P<value>[0-9][0-9,]*) million \(5\.3% of the Vote\) to purchase national health services\s+and provide clinical training for health professionals",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate rounded source amount",
+        "2014/15",
+    ),
+    "public_health_services": (
+        2,
+        r"nearly \$(?P<value>[0-9][0-9,]*) million \(2\.8% of the Vote\) to purchase public health services",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate rounded source amount",
+        "2014/15",
+    ),
+    "primary_health_services": (
+        2,
+        r"nearly \$(?P<value>[0-9][0-9,]*) million \(1\.1% of the Vote\) to purchase primary health care services",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate rounded source amount",
+        "2014/15",
+    ),
+    "national_maternity_services": (
+        2,
+        r"just over \$(?P<value>[0-9][0-9,]*) million \(0\.9% of the Vote\) to purchase national maternity services",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate rounded source amount",
+        "2014/15",
+    ),
+    "health_sector_risk_management": (
+        2,
+        r"\$(?P<value>[0-9][0-9,]*) million \(0\.5% of the Vote\) to manage health sector risks, including provision for DHB deficit\s+support",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate source amount",
+        "2014/15",
+    ),
+    "other_health_services": (
+        2,
+        r"just over \$(?P<value>[0-9][0-9,]*) million \(0\.4% of the Vote\) to fund other health and disability services",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate rounded source amount",
+        "2014/15",
+    ),
+    "other_expenses_total": (
+        2,
+        r"Other Expenses Incurred By The Crown\s+•\s+A total of just over \$(?P<value>[0-9][0-9,]*) million \(0\.2% of the Vote\) is for other expenses",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate rounded source amount",
+        "2014/15",
+    ),
+    "capital_expenditure": (
+        3,
+        r"Capital Expenditure\s+A total of just over \$(?P<value>[0-9][0-9,]*) million \(7\.2% of the Vote\) is to provide Capital funding",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate rounded source amount",
+        "2014/15",
+    ),
+    "dhb_and_agency_capital": (
+        3,
+        r"nearly \$(?P<value>[0-9][0-9,]*) million \(4\.1% of the Vote\) is to provide debt or equity for DHBs or health sector Crown agencies\s+to cover",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate rounded source amount",
+        "2014/15",
+    ),
+    "capital_loan_refinancing": (
+        3,
+        r"nearly \$(?P<value>[0-9][0-9,]*) million \(2\.8% of the Vote\) is to provide for the refinancing of capital loans",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate rounded source amount",
+        "2014/15",
+    ),
+    "long_term_care_interest_free_loans": (
+        3,
+        r"\$(?P<value>[0-9][0-9,]*) million \(0\.1% of the Vote\) is to provide interest-free loans to assist people in long-term care",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate source amount",
+        "2014/15",
+    ),
+    "ministry_asset_purchases": (
+        3,
+        r"just over \$(?P<value>[0-9][0-9,]*) million \(0\.1% of the Vote\) is to purchase or develop assets for use by the Ministry of\s+Health",  # noqa: E501 - pinned source phrase anchor
+        "$ million, approximate rounded source amount",
+        "2014/15",
+    ),
+}
+_PROFILE_UNQUALIFIED_MEASURES_2014_15 = frozenset(
+    {"health_sector_risk_management", "long_term_care_interest_free_loans"}
+)
 
 FACT_SCHEMA = pa.schema(
     [
@@ -1551,6 +1671,18 @@ def parse_overview_2013_14_pages(texts: list[str]) -> list[dict[str, Any]]:
         second_page_pattern=r"Capital Expenditure",
         profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2013_14,
         profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2013_14,
+    )
+
+
+def parse_overview_2014_15_pages(texts: list[str]) -> list[dict[str, Any]]:
+    """Parse 18 selected, phrase-anchored 2014/15 overview statements."""
+    return parse_overview_pages(
+        texts,
+        year="2014/15",
+        patterns=_PATTERNS_2014_15,
+        intro_pattern=r"2014/15 financial year\s+totalling\s+just over",
+        second_page_pattern=r"Capital Expenditure",
+        profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2014_15,
     )
 
 
@@ -2053,6 +2185,43 @@ def normalize_vote_health_estimates_overview_2013_14(  # noqa: PLR0913 - explici
         second_page_pattern=r"Capital Expenditure",
         profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2013_14,
         profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2013_14,
+        additional_quality_flags=(
+            "source_value_rounded_to_whole_million",
+            "source_amount_is_not_exact",
+        ),
+        dry_run=dry_run,
+    )
+
+
+def normalize_vote_health_estimates_overview_2014_15(  # noqa: PLR0913 - explicit pinned profile
+    source: Path,
+    output_dir: Path,
+    *,
+    expected_sha256: str,
+    source_vintage: str,
+    source_locator: str,
+    observed_at: str,
+    dry_run: bool = True,
+) -> dict[str, object]:
+    """Normalize 18 selected rounded/qualified 2014/15 overview statements."""
+    return _normalize_overview(
+        source,
+        output_dir,
+        profile=PROFILE_2014_15,
+        transformation=TRANSFORMATION_2014_15,
+        expected_vintage=VINTAGE_2014_15,
+        expected_source_sha256=SOURCE_SHA256_2014_15,
+        expected_page_count=PAGE_COUNT_2014_15,
+        year="2014/15",
+        patterns=_PATTERNS_2014_15,
+        disposition_reason="eighteen_selected_2014_15_overview_headlines_only",
+        expected_sha256=expected_sha256,
+        source_vintage=source_vintage,
+        source_locator=source_locator,
+        observed_at=observed_at,
+        intro_pattern=r"2014/15 financial year\s+totalling\s+just over",
+        second_page_pattern=r"Capital Expenditure",
+        profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2014_15,
         additional_quality_flags=(
             "source_value_rounded_to_whole_million",
             "source_amount_is_not_exact",
