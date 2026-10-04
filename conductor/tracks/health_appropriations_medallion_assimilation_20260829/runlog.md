@@ -4595,3 +4595,28 @@ coverage with the 80% floor; schemas, parity, configured mutation gates and
 supply-chain checks passed. Final nominal schema-label correction was checked
 with the nine focused tests, typing and a new identical native pair. Scoped
 phase_7_gates review passed; the full track completion gate remains open.
+
+## 2026-10-04 Fiscal analytical CLI/MCP access
+
+PR #630 merged after all hosted checks passed; remote integration, exact merged
+tree and clean status were verified before pruning. Primary main fast-forwarded
+cleanly. A new isolated worktree implements named read-only DuckDB/CLI/MCP access.
+Native all-row parity and unchanged package hashes pass; see the dated receipt.
+
+Required harness passed: 7,449 tests, 10 skipped, 98.05% aggregate coverage
+with the 80% floor; schemas, parity, configured mutation and supply-chain gates
+passed. Scoped automatic phase_7_gates review passed. This does not close the
+remaining products or full-track review gate.
+
+PR #631 review accepted the failed-query MCP error-flag finding. The new
+protocol regression failed before the correction; failed structured receipts
+now set isError true. Native all-row parity still passes, and invalid-pin MCP
+readback confirms an error flag with the bounded receipt preserved. Ten focused
+query tests and the adjacent inspection suite pass. Original replay recipe and
+receipt were retained as version 1 before the version 2 readback.
+
+After the transport correction, the full harness passed again: 7,450 tests,
+10 skipped, 98.05% aggregate coverage with the 80% floor. All schema, parity,
+configured mutation and supply-chain gates passed. The scoped automatic review
+also passed again. Native successful results remain identical; failed MCP calls
+now carry the correct protocol error flag and structured failure receipt.

@@ -42,6 +42,9 @@ from archive_govt_nz.domains.health_appropriations.context_gold import (
 from archive_govt_nz.domains.health_appropriations.context_gold_verification import (
     verify_context_gold_package,
 )
+from archive_govt_nz.domains.health_appropriations.fiscal_analytical_operations import (
+    query_fiscal_analytical_gold,
+)
 from archive_govt_nz.domains.health_appropriations.gold_export import export_gold
 from archive_govt_nz.domains.health_appropriations.inspection import inspect_workbook
 from archive_govt_nz.domains.health_appropriations.operations import (
@@ -400,6 +403,18 @@ def health_appropriations_build_context_gold(
         return 2
     _emit_json({"command": "health-appropriations-build-context-gold", **result})
     return 0
+
+
+@app.command(name="health-appropriations-query-fiscal-gold")
+def health_appropriations_query_fiscal_gold(
+    package_dir: Path, manifest_sha256: str, *, table: str = "nominal", limit: int = 50
+) -> int:
+    """Query a named, pinned fiscal Gold table with exact values and no writes."""
+    receipt = query_fiscal_analytical_gold(
+        package_dir, manifest_sha256, table=table, limit=limit
+    )
+    _emit_json({"command": "health-appropriations-query-fiscal-gold", **receipt})
+    return 0 if receipt["status"] == "verified" else 2
 
 
 @app.command(name="health-appropriations-verify-context-gold")

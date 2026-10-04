@@ -1341,3 +1341,9 @@ integrated parent head.
   tables with manifest pinning, typed readback, repeat-build evidence and safe
   exclusive writes. This completes a bounded export; DuckDB, plots/reports and
   operations remain open. [M-10, M-13, M-18; AC-08, AC-10, AC-16]
+
+- [x] Expose bounded named Fiscal analytical Gold queries through an in-memory
+  DuckDB adapter, CLI and read-only MCP with exact JSON values, manifest pinning,
+  explicit truncation and native Arrow/CLI/MCP parity. Broader analytical views,
+  plots and scheduled analytical operations remain open. [M-10, M-15, M-18;
+  AC-08, AC-10, AC-13, AC-16]
