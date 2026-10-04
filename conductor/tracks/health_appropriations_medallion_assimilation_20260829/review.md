@@ -1649,3 +1649,17 @@ After the transport correction, the full harness passed again: 7,450 tests,
 configured mutation and supply-chain gates passed. The scoped automatic review
 also passed again. Native successful results remain identical; failed MCP calls
 now carry the correct protocol error flag and structured failure receipt.
+
+## Fiscal analytical reports — bounded evidence
+
+Two native CLI builds match all twelve files; 257 points and 67 exclusions match
+independent direct Arrow values. Focused tests cover dry-run, exclusive writes,
+input overlap, malformed source results, tampering and independently parsed RDF
+checksums/edges. The 80% coverage floor remains unchanged. This scoped delivery
+does not close the full track completion gate.
+
+PR #632 review: accepted cross-table parent-validation finding and added one
+regression exercising fourteen share/per-capita context mutations. Rejected two
+Amazon Q syntax findings against the required Python 3.14 runtime; actual CLI
+execution, AST parse, typing and tests prove the supported exception syntax.
+Bounded adjudication is retained externally.

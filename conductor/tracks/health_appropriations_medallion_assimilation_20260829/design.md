@@ -551,3 +551,11 @@ access, register only verified Arrow, select fixed SQL and bind bounded limits.
 Keep exact Decimal/date encodings and report truncation. CLI and read-only MCP
 share the adapter; validate closed MCP input before I/O and redact failures to
 bounded codes. Product fixity is separate from original-source verification.
+
+## Fiscal analytical companion reports
+
+A separate versioned package derives six discrete-point plots from pinned Fiscal
+Gold. Exact source-linked values remain in structured results. Content-derived
+PROV/DCAT projections describe nine base payloads without recursive checksum
+cycles; the manifest pins all eleven payloads. Verification is local package
+fixity and metadata projection, not source re-verification, rights or publication.

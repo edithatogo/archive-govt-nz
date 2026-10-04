@@ -1,0 +1,21 @@
+{
+  "cli_default": "dry_run_no_output",
+  "cli_verifier": "verified_11_payloads",
+  "cli_write_readback": "verified",
+  "gold_manifest_sha256": "1b79d6f582dc8e9935e16bce2d3fe78b78d77e2a68aacf201ac9118b28462fa2",
+  "independent_arrow_exclusions": 67,
+  "independent_arrow_points": 257,
+  "input_package_unchanged": true,
+  "location": {
+    "external_root": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations",
+    "relative_path": "assurance/fiscal-analytical-reports-20261004-v2"
+  },
+  "offline_jsonld_parse": "passed",
+  "publication": "not_performed",
+  "recipe_sha256": "2cbcfd0c477e3363d991f92e692c378931e80345783f491f369fa4d31565b69d",
+  "repeat_build": "all_12_files_byte_equal",
+  "report_manifest_sha256": "b4da352b2ca8d6106d3d0fb1ceef7018c6f4dac23227f9a3155abb93f4c0c484",
+  "rights": "not_evaluated",
+  "schema_version": "archive-govt-nz.fiscal-analytical-report-assurance/v1",
+  "source_reverification": "not_performed"
+}
