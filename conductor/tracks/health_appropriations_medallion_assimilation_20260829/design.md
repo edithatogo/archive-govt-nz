@@ -621,3 +621,22 @@ flowchart LR
 The metadata projection verifies local Gold snapshots only. Source assertions stay
 in their pinned Gold package; no source, redistribution, publication or approved
 federation assertion is promoted by metadata fixity.
+
+### Local discovery candidate profiles
+
+```mermaid
+flowchart LR
+  G[Pinned Gold snapshots] --> V[Existing typed readers]
+  V --> C[Croissant file and column inventory]
+  V --> R[RO-Crate external file inventory]
+  C --> M[Separate candidate manifest]
+  R --> M
+  M --> B[Reverify Gold and reconstruct all bytes]
+  C --> F[Missing required metadata report]
+  R --> F
+  F --> X[Full conformance withheld and release blocked]
+```
+
+All source payloads remain external. Content identifiers are not download URLs.
+Custom Arrow type identifiers preserve exact source representation and make no ML
+loader guarantee. Release dates, rights and actors require separate evidence.
