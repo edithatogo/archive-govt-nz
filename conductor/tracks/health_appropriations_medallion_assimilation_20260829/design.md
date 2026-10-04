@@ -514,3 +514,12 @@ flowchart LR
 This query performs no source writes or publication and does not change the
 canonical source projections. Broader analytical joins require their own
 qualified numerator, denominator, period and vintage contracts.
+
+## Pinned annual mean population rate policy (4 October 2026)
+
+Use the verified Fiscal share query's qualified Health rows and the independently
+Bronze/Silver-verified DPE056AA annual mean resident projection. Join exact
+July–June periods under a named two-vintage policy, retain input IDs and flags,
+and report March/missing denominators rather than substituting year-end stocks.
+Require both pinned period-observation inputs; keep ISO currency, rights,
+publication and uniform census-base assertions outside the derived claim.
