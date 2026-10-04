@@ -1594,3 +1594,20 @@ precision-2 mutant. No arithmetic policy change was made. Repeat full assurance
 is required for the added provenance fields.
 
 Corrected full harness and scoped phase review passed: 7,414 tests, 10 skipped; 80% coverage floor retained; all configured schemas, parity, mutation and supply-chain controls passed.
+
+### Household CPI fiscal purchasing-power benchmark (4 October 2026)
+
+PR #628 passed exact-head hosted checks, merged and its clean worktree was
+removed after remote integration and tree-equality proof. Primary main is
+current and clean. This fresh worktree implements a bounded Fiscal/CPI policy
+with equal-quarter means, FY2025 benchmark and complete source quarter/time
+lineage. Initial red tests failed on the absent module; 17 focused tests now
+pass, with lint/typing and all changed-module statements/branches exercised.
+Two fresh native Bronze rebuilds agree byte-for-byte; all 54 means/rates match
+independent source-CSV rational calculations. The independent audit parser's
+initial `NA` failure was recorded and corrected to missing-value handling; all
+27 such source observations predate this fiscal cohort. No production value
+or original changed. No health-input-cost, ISO-currency or rights/publication
+claim is made. Integrated Gold and final completion gates remain open.
+
+Full required harness and scoped phase review passed: 7,431 tests, 10 skipped; 80% coverage floor retained; schemas, parity, all configured mutation and supply-chain gates passed. This bounded query evidence does not close integrated Gold, operations or final track review.
