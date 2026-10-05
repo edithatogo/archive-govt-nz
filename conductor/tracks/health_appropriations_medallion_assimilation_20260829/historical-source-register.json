@@ -1,7 +1,7 @@
 {
   "schema_version": "archive-govt-nz.health-historical-sources/v1",
-  "observed_at": "2026-09-27T00:00:00Z",
-  "observation_method": "Read-only web retrieval of official index and edition pages; spreadsheet link targets and PDF text observed, original bytes not retained or fixity-verified; additional official Treasury landing pages and linked Budget workbook locators observed 2026-09-27; resource payloads not retained or fixity-verified; Budget 2009–2013 workbook and BEFU 2013–2016 official source pages located 2026-09-27; locators remain un-captured and un-hashed; official Treasury Budget 2007–2008 workbook titles and BEFU source pages through 2001 observed 2026-09-27; locator-only, no payload hashes",
+  "observed_at": "2026-10-05T17:04:32Z",
+  "observation_method": "Read-only web retrieval of official index and edition pages; spreadsheet link targets and PDF text observed, original bytes not retained or fixity-verified; additional official Treasury landing pages and linked Budget workbook locators observed 2026-09-27; resource payloads not retained or fixity-verified; Budget 2009–2013 workbook and BEFU 2013–2016 official source pages located 2026-09-27; locators remain un-captured and un-hashed; official Treasury Budget 2007–2008 workbook titles and BEFU source pages through 2001 observed 2026-09-27; locator-only, no payload hashes; official BEFU 2002 GAAP Series Tables landing page and PDF source/period metadata observed 2026-10-05; locator only, no payload hash or item-level rights adjudication",
   "index_url": "https://www.treasury.govt.nz/publications/budgets/current-and-past-budgets",
   "index_last_updated": "2026-05-28",
   "edition_years": [
@@ -130,7 +130,9 @@
     "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-2001",
     "https://www.treasury.govt.nz/publications/data/budget-2010-data-estimates-appropriations-2010-11",
     "https://www.treasury.govt.nz/publications/data/budget-2011-data-estimates-appropriations-2011-12",
-    "https://www.treasury.govt.nz/publications/data/budget-2012-data-estimates-appropriations-2012-13"
+    "https://www.treasury.govt.nz/publications/data/budget-2012-data-estimates-appropriations-2012-13",
+    "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-2002",
+    "https://www.treasury.govt.nz/publications/budgets/budget-2002"
   ],
   "resource_observations": [
     {
@@ -180,6 +182,19 @@
       "byte_count": null,
       "rights_state": "not_evaluated",
       "source_id": "treasury-historical-9b7ed9af81531c7c",
+      "rights_evidence": "landing_page_states_cc_by_4_0"
+    },
+    {
+      "edition_year": 2002,
+      "family": "befu",
+      "kind": "gaap_series_tables",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-2002",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2007-09/befu02-gaap.pdf",
+      "disposition": "discovered",
+      "sha256": null,
+      "byte_count": null,
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-112845c10e69ff0e",
       "rights_evidence": "landing_page_states_cc_by_4_0"
     },
     {

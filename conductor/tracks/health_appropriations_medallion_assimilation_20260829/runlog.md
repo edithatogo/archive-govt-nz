@@ -4870,3 +4870,20 @@ tests passed (10 tests). `./scripts/validate.sh` passed on this tree: 7,496
 tests passed, 10 skipped, 97.77% coverage against the 80% floor; formatting,
 lint, typing, 56 schemas/46 representative documents, parity 9/9, configured
 mutation and supply-chain gates passed (113 SBOM components).
+
+## 2026-10-06 — BEFU 2002 source and period census
+
+Added one exact official Treasury locator for the 2002 BEFU GAAP Series Tables
+PDF (`treasury-historical-112845c10e69ff0e`) and recorded the source-reported
+`Total Expenses` series: annual June years, `$ million`, 2001 Actual, 2002
+Previous Budget and Estimated Actual, and 2003–2006 Forecast. Treasury's BEFU
+landing page states CC BY 4.0; payload bytes remain uncaptured and the item
+rights state remains `not_evaluated`. The series is explicitly kept distinct
+from Core Crown Expenses and later accounting bases. The full 30-edition
+register remains incomplete; this does not locate 2002 annual expenditure or
+revenue workbooks. Review evidence is pinned in
+`source-measure-review-20261006.json`. Focused census/review tests passed (39).
+`./scripts/validate.sh` passed: 7,497 passed, 10 skipped, 97.77% coverage
+(80% floor), 56 schemas / 46 representative documents, differential parity
+9/9, configured mutation gates, dependency and licence audits, secret scan,
+and validated 113-component SBOM.

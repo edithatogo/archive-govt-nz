@@ -68,11 +68,35 @@ separate. Treasury page-level CC BY 4.0 statements are retained only as rights
 leads. No locator in this register establishes item-specific rights,
 redistribution eligibility, retained bytes, or fixity.
 
-Years 1998–2000, 2002–2004, 2006, and 2025–2026 have no historical locators in
-this discovery pass. All 30 years remain pending because no edition has had
-its complete source families enumerated; a locator never marks an edition
-complete. Captured Budget 2026, BEFU 2026 and HYEFU 2025 resources remain
-separately represented in the source census.
+Budget workbook and other source-family locators for 1998–2000, 2002–2004,
+2006, and 2025–2026 remain missing from this discovery pass; BEFU 2002 has a
+separate GAAP expense-table locator described below. All 30 years remain
+pending because no edition has had its complete source families enumerated; a
+locator never marks an edition complete. Captured Budget 2026, BEFU 2026 and
+HYEFU 2025 resources remain separately represented in the source census.
+
+## BEFU 2002 GAAP expense series — 6 October 2026
+
+The official [BEFU 2002 page](https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-2002)
+links [Generally Accepted Accounting Practice (GAAP) Series Tables](https://www.treasury.govt.nz/sites/default/files/2007-09/befu02-gaap.pdf)
+and states the Treasury copyright licence as CC BY 4.0. The observed item is
+the 52-page PDF `befu02-gaap.pdf`; bytes have not been retained or hashed and
+the item-level rights state remains `not_evaluated`.
+
+The printed page 144 (`PDF page 4`) contains a Forecast Statement of Financial
+Performance for years ending 30 June. Its exact total-expense series is
+`Total Expenses`, in `$ million`: 2001 Actual, 2002 Previous Budget, 2002
+Estimated Actual, and 2003–2006 Forecast. The PDF states that forecasts follow
+the Fiscal Responsibility Act 1994 and reflect information and decisions
+communicated by 10 May 2002. This is a GAAP Crown reporting-entity measure; it
+is not assumed interchangeable with Core Crown Expenses, later accounting
+bases, or modern financial-year tables.
+
+This adds one official BEFU resource locator and a source-backed period/unit
+description. It does not enumerate the complete 2002 source families, locate
+the Budget 2002 expenditure/revenue data workbooks, retain payload bytes, or
+approve a historical join. The 2002 edition remains pending and publication
+remains unauthorized.
 
 ## Follow-up edition observations
 

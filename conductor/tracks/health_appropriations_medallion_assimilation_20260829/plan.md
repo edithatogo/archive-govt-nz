@@ -83,6 +83,12 @@ repository validation command. External gates block only their affected task.
   schemas. [M-02, M-11; AC-03, AC-09]
   Historical scope and unresolved editions are recorded in
   `historical-source-register.json`; link discovery does not establish capture.
+  BEFU 2002 GAAP Series Tables are now identified as an official Crown expense
+  source with June-year periods, `$ million` units, forecast/actual status and
+  the page-level CC BY 4.0 statement recorded. Item-level rights remain
+  unevaluated; 2002's other source families and annual Budget workbooks remain
+  unresolved. This locator and period assessment are pinned in
+  `source-measure-review-20261006.json`; they do not mark 2002 complete.
   The Budget 2026 Estimates expenditure workbook's public release periods,
   restructuring caveat, exclusion of 2025/26 Supplementary Estimates and
   publisher-declared licence are recorded in

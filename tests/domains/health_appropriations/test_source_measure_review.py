@@ -23,12 +23,20 @@ from archive_govt_nz.domains.health_appropriations.source_measure_review import 
 
 ROOT = Path(__file__).resolve().parents[3]
 TRACK = ROOT / TRACK_RELATIVE
-REPORT = TRACK / "source-measure-review-20261005.json"
+REPORT = TRACK / "source-measure-review-20261006.json"
 
 
 def test_review_reports_exact_series_and_preserves_blockers() -> None:
     report = validate_review(REPORT, ROOT)
-    assert report["series_count"] == 8
+    assert report["series_count"] == 9
+    historical_gaap = report["series"]["historical_gaap_crown_expenses"]
+    assert "Total Expenses" in historical_gaap["series_id"]
+    assert (
+        "2002 Previous Budget and Estimated Actual"
+        in historical_gaap["vintage_or_range"]
+    )
+    assert historical_gaap["rights"] == "publisher_default_observed_unadjudicated"
+    assert "no join to Core Crown Expenses" in historical_gaap["analytical_status"]
     assert all(not item["path"].endswith("/index.md") for item in report["evidence"])
     assert report["source_families"]["vote_health"]["captured_documents"] == 59
     assert report["source_families"]["vote_health"]["estimates_years"] == [
