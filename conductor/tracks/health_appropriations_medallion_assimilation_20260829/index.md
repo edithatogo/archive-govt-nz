@@ -284,3 +284,6 @@ they are not current-state assertions.
 - [Fresh analytical products and metadata recovery](./analytical-metadata-recovery-20261005.md)
 - [Analytical metadata recovery evidence](./analytical-metadata-recovery-20261005.json)
 - [Scoped analytical metadata recovery review](./phase_7_gates-review-receipt-20261005-analytical-metadata-recovery.json)
+
+- [2015/16 Vote Health overview](vote-health-estimates-overview-2015-16-20261005.md)
+- [2015/16 overview evidence](vote-health-estimates-overview-2015-16-20261005.json)
