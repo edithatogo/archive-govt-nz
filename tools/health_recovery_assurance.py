@@ -31,6 +31,7 @@ from archive_govt_nz.domains.health_appropriations import (
     population_annual_canonical_projection,
     qes,
     qes_canonical_projection,
+    vote_health_supplementary_2018_19,
 )
 from archive_govt_nz.domains.health_appropriations.analytical_metadata_recovery import (
     recover_analytical_metadata,
@@ -633,6 +634,43 @@ def rebuild_eight_stage(root: Path, index: int) -> dict[str, Any]:
         "gold_selection": completion["gold_selection"],
         "publication": completion["publication"],
     }
+
+
+def rebuild_vote_health_2018_19_category_totals(
+    root: Path, index: int
+) -> dict[str, Any]:
+    """Rebuild the new bounded Vote Health profile directly from Bronze."""
+    profile = vote_health_supplementary_2018_19
+    source = (
+        ARCHIVE
+        / "bronze-cas"
+        / "sha256"
+        / profile.SOURCE_SHA256[:2]
+        / profile.SOURCE_SHA256
+    )
+    output = root / f"vote-health-2018-19-category-totals-{index}"
+    request = SourceRequest(
+        source=source,
+        output_dir=output,
+        profile=profile.PROFILE,
+        expected_sha256=profile.SOURCE_SHA256,
+        source_vintage=profile.VINTAGE,
+        source_locator=(
+            "https://www.treasury.govt.nz/sites/default/files/2019-05/"
+            "suppest19health.pdf"
+        ),
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    receipt = operate_source(request, dry_run=False)
+    if (
+        receipt.get("status") != "written_local"
+        or receipt.get("profile") != profile.PROFILE
+        or receipt.get("source_object_sha256") != profile.SOURCE_SHA256
+        or receipt.get("counts") != {"pages": 5, "facts": 7}
+    ):
+        message = "vote_health_2018_19_recovery_contract"
+        raise RuntimeError(message)
+    return {"files": tree(output), "operation_receipt": receipt}
 
 
 def canonical_inputs(recovery_root: Path) -> tuple[CanonicalPackageInput, ...]:
@@ -1716,6 +1754,23 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
         }
         if eight_stage["1"] != eight_stage["2"]:
             message = "eight_stage_repeat_mismatch"
+            raise RuntimeError(message)
+        vote_health_totals = {
+            str(index): rebuild_vote_health_2018_19_category_totals(root, index)
+            for index in (1, 2)
+        }
+        vote_health_totals_files = compare_product_outputs(
+            root / "vote-health-2018-19-category-totals-1",
+            root / "vote-health-2018-19-category-totals-2",
+            "vote_health_2018_19_category_totals",
+        )
+        outputs["vote_health_supplementary_2018_19_category_totals"] = {
+            "files": vote_health_totals_files,
+            "operation_receipt": vote_health_totals["1"]["operation_receipt"],
+            "repeat_identical": (vote_health_totals["1"] == vote_health_totals["2"]),
+        }
+        if vote_health_totals["1"] != vote_health_totals["2"]:
+            message = "vote_health_2018_19_repeat_mismatch"
             raise RuntimeError(message)
         context_one, context_two = root / "context-one", root / "context-two"
         cas_objects = ARCHIVE / "bronze-cas" / "sha256"

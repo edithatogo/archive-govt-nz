@@ -1331,10 +1331,11 @@ integrated parent head.
 - [x] Run automatic Conductor self-review across requirements, design, plan,
   evidence, source coverage, rights, reconstruction and publication claims;
   append and resolve every actionable finding. [M-19; AC-14, AC-16]
-  Review register: `final-review-20261006.md`; current clean-room receipt:
-  `clean-room-recovery-20261006-final.json`. No local code defect was found;
-  implementation/evidence and rights decisions remain open as classified in
-  the register.
+  Review register: `final-review-20261006.md`; latest clean-room receipt:
+  `clean-room-recovery-20261006-vote-health-2018-19.json`. The 2018/19
+  category-total profile is now included as a repeated Bronze rebuild;
+  remaining implementation, evidence and rights decisions remain open as
+  classified in the register.
 - [x] Present the checksum-pinned candidate for explicit publication approval;
   local readiness does not satisfy the gate. [M-17, M-19; AC-15]
 

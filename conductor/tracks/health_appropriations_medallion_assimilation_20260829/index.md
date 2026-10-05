@@ -297,3 +297,4 @@ they are not current-state assertions.
 - [2018/19 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2018-19-category-totals-20261006.md)
 - [2018/19 category-total evidence receipt](./vote-health-supplementary-2018-19-category-totals-20261006.json)
 - [2018/19 category-total Conductor review](./phase_7_gates-review-receipt-20261006-vote-health-2018-19-totals.json)
+- [Vote Health 2018/19 category totals in clean-room recovery](./clean-room-recovery-20261006-vote-health-2018-19.json)
