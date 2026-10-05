@@ -23,6 +23,7 @@ from archive_govt_nz.domains.health_appropriations import (
     vote_health_estimates_summary,
     vote_health_revenue,
     vote_health_supplementary_2018_19,
+    vote_health_supplementary_2019_20,
 )
 from archive_govt_nz.domains.health_appropriations.workbook_common import source_context
 
@@ -122,6 +123,12 @@ PROFILES = MappingProxyType(
         ),
         vote_health_supplementary_2018_19.PROFILE: (
             vote_health_supplementary_2018_19.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_category_total_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2019_20.PROFILE: (
+            vote_health_supplementary_2019_20.TRANSFORMATION,
             ("pages", "facts"),
             "vote_health_category_total_facts.parquet",
             "page_dispositions.parquet",
@@ -264,6 +271,10 @@ _VOTE_HEALTH_CATEGORY_TOTAL_PROFILES = {
     vote_health_supplementary_2018_19.PROFILE: (
         vote_health_supplementary_2018_19.VINTAGE,
         vote_health_supplementary_2018_19.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2019_20.PROFILE: (
+        vote_health_supplementary_2019_20.VINTAGE,
+        vote_health_supplementary_2019_20.SOURCE_SHA256,
     ),
 }
 _VOTE_HEALTH_REVENUE_PROFILES = {
@@ -614,6 +625,10 @@ def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile disp
         )
     if request.profile == vote_health_supplementary_2018_19.PROFILE:
         return vote_health_supplementary_2018_19.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2019_20.PROFILE:
+        return vote_health_supplementary_2019_20.normalize(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
     if request.profile in _VOTE_HEALTH_DETAIL_PROFILES:
