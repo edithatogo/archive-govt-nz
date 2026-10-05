@@ -935,6 +935,14 @@ integrated parent head.
     The verifier and example pin/summarize the report; comparability and
     numeric variance remain explicitly unassessed/not computed. This is
     overlap evidence only, not AC-11 cross-source variance completion.
+  - [x] Extend the existing Fiscal analytical reports with an exact-key Gold
+    reconciliation. Tie all 54 nominal source observations to 162 share rows,
+    54 per-capita rows and 54 household-CPI benchmark rows; retain source IDs,
+    fingerprints, periods, denominator/population/CPI lineage and reason-coded
+    exclusions. Independently verify all 324 parent amount/identity ties against
+    the pinned Arrow tables and prove byte-identical report rebuilds. Do not sum
+    overlapping periods or reporting bases. See
+    `fiscal-gold-source-reconciliation-20261005.md` and its machine receipt.
     [M-13, S-04; AC-11]
 - [ ] Generate deterministic plots, structured summaries and consumer examples
   from the same queries; make source drill-through available. [M-09, M-10,

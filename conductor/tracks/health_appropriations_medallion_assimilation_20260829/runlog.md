@@ -4794,3 +4794,28 @@ edition, units, capture/WARC evidence and explicit gaps. The 2017/18
 Supplementary Estimates and CPI, wage, population, GDP and Crown context remain
 separate. Focused tests pass. Required full validation and hosted checks are
 pending; see `vote-health-estimates-overview-2017-18-20261005.json`.
+
+## 2026-10-05 — Fiscal Gold row-level source reconciliation
+
+Extended the existing Fiscal analytical report product with deterministic
+`reconciliation.json`; the report now ties 54 nominal source observations to
+162 share, 54 per-capita and 54 household-CPI benchmark rows. Exact denominator,
+population and CPI lineage, formula/status fields and missing-input reasons are
+retained. The pinned Gold Arrow tables independently confirmed all 270 derived
+parent amount/identity ties and all 54 source amount/metadata rows. No aggregate
+is computed across overlapping periods or accounting bases. Two CLI builds
+produced byte-identical 13-file reports, all 12 payloads passed standalone
+verification, and the source Gold package manifest hash stayed unchanged.
+
+The first full validation run exposed one stale evidence checksum in the
+source/measure review: its `index.md` digest was `115313e4…`, while the current
+navigation index was `70963cdb…`. The index links to the review, so pinning that
+navigation file makes routine index additions invalidate the receipt. Removed
+only the navigation index from that report's evidence set; all substantive
+source and rights evidence remains pinned. The focused review contract passed
+36 tests. Required `./scripts/validate.sh` then passed: 7,485 tests, 10 skipped,
+97.77% coverage (80% floor), 53 schemas / 43 representative documents,
+differential parity 9/9, configured mutation gates, dependency audit, licence
+inventory, secret scan and SBOM (113 components). See
+`fiscal-gold-source-reconciliation-20261005.md` and its machine receipt. Phase 6
+cross-source/donor controls and the full Health track remain open.
