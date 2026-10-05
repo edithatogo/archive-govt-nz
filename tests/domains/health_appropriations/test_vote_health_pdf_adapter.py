@@ -14,6 +14,7 @@ from tests.domains.health_appropriations.test_vote_health_revenue import _pages
 from archive_govt_nz.domains.health_appropriations import (
     vote_health,
     vote_health_estimates_2002_03_adapter,
+    vote_health_estimates_2016_17_adapter,
     vote_health_pdf_adapter,
     vote_health_revenue,
 )
@@ -361,3 +362,91 @@ def test_estimates_2002_03_common_adapter_fails_closed_on_layout_and_hash(
     assert output.losses[0].disposition == "preserved_only"
     with pytest.raises(ValueError, match="source_hash_mismatch"):
         adapter.extract(bronze, source_sha256="0" * 64)
+
+
+def test_2016_17_overview_context_dispatches_pinned_facts_and_page_accounting(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    bronze = b"%PDF-1.7 synthetic pinned 2016/17 PDF bytes"
+    digest = hashlib.sha256(bronze).hexdigest()
+    monkeypatch.setattr(vote_health_estimates_2016_17_adapter, "_SOURCE_SHA256", digest)
+    monkeypatch.setattr(vote_health_estimates_2016_17_adapter, "_PAGE_COUNT", 102)
+    pages = ["page"] * 102
+
+    class Reader:
+        is_encrypted = False
+
+        def __init__(self, *_args: object, **_kwargs: object) -> None:
+            self.pages = [_Page(text) for text in pages]
+
+    rows = [
+        {
+            "source_page": 2 if index < 12 else 3,
+            "summary_measure": f"measure_{index}",
+            "value": index + 1,
+            "unit": "$ million",
+            "reference_period": "2016/17",
+            "raw_token": str(index + 1),
+        }
+        for index in range(24)
+    ]
+    monkeypatch.setattr(vote_health_estimates_2016_17_adapter, "PdfReader", Reader)
+    monkeypatch.setattr(
+        vote_health_estimates_2016_17_adapter.vote_health_estimates_summary,
+        "parse_overview_2016_17_pages",
+        lambda _texts: rows,
+    )
+    contexts = {
+        "cpi": AdapterContext("cpi.csv", "2026-Q2", OBSERVED_AT),
+        "population": AdapterContext("population.csv", "2026-08-18", OBSERVED_AT),
+        "qes": AdapterContext("qes.xlsx", "QES-2026-Q2", OBSERVED_AT),
+        "gdp": AdapterContext("gdp.xlsx", "GDP-March-2026", OBSERVED_AT),
+    }
+    registrations = context_adapter_registrations(
+        **contexts,
+        vote_health_estimates_2016_17=AdapterContext(
+            "https://example.test/est16-v6-health.pdf",
+            "Treasury-Vote-Health-Estimates-2016-17",
+            OBSERVED_AT,
+        ),
+    )
+
+    result = dispatch_bronze(
+        bronze,
+        source_sha256=digest,
+        media_type="application/pdf",
+        registrations=registrations,
+    )
+
+    assert result.selection.adapter_id == (
+        "nz-treasury-vote-health-estimates-2016-17-overview"
+    )
+    assert len(result.output.records) == 24
+    assert len(result.output.lineage) == 24
+    assert len(result.output.losses) == 102
+    assert result.output.losses[1].disposition == "partially_normalized"
+    assert result.output.losses[0].disposition == "preserved_only"
+    assert result.output.records[0]["source_object_sha256"] == digest
+    assert result.output.records[0]["rights_state"] == "not_evaluated"
+
+
+def test_2016_17_overview_wrong_vintage_stays_preserved_only(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    bronze = b"%PDF-1.7 synthetic pinned 2016/17 PDF bytes"
+    digest = hashlib.sha256(bronze).hexdigest()
+    monkeypatch.setattr(vote_health_estimates_2016_17_adapter, "_SOURCE_SHA256", digest)
+    registration = vote_health_estimates_2016_17_adapter.vote_health_estimates_2016_17_registration(
+        source_locator="source.pdf",
+        source_vintage="another-edition",
+        observed_at=OBSERVED_AT,
+    )
+    result = dispatch_bronze(
+        bronze,
+        source_sha256=digest,
+        media_type="application/pdf",
+        registrations=(registration,),
+    )
+    assert result.selection.status == "preserved_only"
+    assert result.selection.reason == "no_matching_layout"
+    assert result.output.records == ()

@@ -4764,3 +4764,16 @@ passed: 7,478 tests passed, 10 skipped; 97.80% coverage against the unchanged
 9/9; all configured mutation gates; dependency audit, licence inventory, secret
 scan, and SBOM (113 components). Scoped phase review and exact-head hosted checks
 remain to be recorded; the full Health track remains incomplete.
+
+## 2026-10-05 — 2016/17 Vote Health Estimates common Bronze dispatch
+
+Added optional, exact-profile common dispatch for the existing 2016/17 overview
+parser. Selection is pinned to the Treasury vintage, source SHA-256, 102-page
+PDF and the 24-statement parser contract. Outputs retain all 102 page
+dispositions, 24 fact records and field lineage; unmatched profiles stay
+preserved-only and rights remain unevaluated. Bronze and historical source
+values are unchanged. Focused tests passed (15); required validation passed:
+7,480 passed, 10 skipped, 97.77% coverage (80% floor), 53 schemas / 43
+documents, parity 9/9, configured mutation gates, hygiene and supply-chain
+checks. Hosted checks remain pending on the PR; broader Phase 3 and Phase 4
+work remains open.
