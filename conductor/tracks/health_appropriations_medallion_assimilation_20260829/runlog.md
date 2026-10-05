@@ -4925,3 +4925,21 @@ this exact tree: 7,519 passed, 10 skipped, 97.72% coverage (80% floor), plus
 format, lint, typing, schema, parity, mutation, supply-chain, licence, secret
 scan and SBOM gates. See `vote-health-supplementary-2021-22-summary-totals-20261006.md`,
 its JSON evidence, and `clean-room-recovery-20261006-vote-health-2021-22.json`.
+
+## 2026-10-06 — Vote Health Supplementary Estimates 2022/23 summary slice
+
+After merging PR #655 (`d3e368be`) with all required checks passing, the next
+captured Supplementary Estimates edition was reviewed. Its 2022/23 summary is
+on PDF page 5 (29-page document), not the page-seven layout of the prior two
+editions. Added a separate hash-pinned profile for the four printed summary
+rows, retaining source-labelled `$000` fields, parenthesized negatives,
+lineage, and the partial-page disposition. Two independent Bronze recovery
+entry-point builds match the persistent Silver package; the source hash is
+unchanged. Rights remain unevaluated. Focused tests pass (516 passed, 10
+skipped); integrated recovery and full validation are pending.
+
+The integrated clean-room recovery receipt now includes the 2022/23 summary
+lane and remains `partial_with_blockers`; cross-source comparison, remaining
+source-native profiles/adapters and complete Platinum profiles remain
+unreconstructed. Bronze objects were unchanged and the two builds for this
+summary are identical. Full repository validation is pending.
