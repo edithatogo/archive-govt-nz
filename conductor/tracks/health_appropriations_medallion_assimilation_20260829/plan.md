@@ -1013,6 +1013,11 @@ integrated parent head.
 
 ### 7.2 Produce governed projections
 
+- [x] Generate and reconstruct local Croissant/RO-Crate inventory candidates
+  for verified analytical Gold; parse inline graphs offline and report missing
+  required publication/rights/access properties without conformance claims.
+  Preserve exact Arrow types instead of inventing ML casts. [M-14; AC-14]
+
 - [x] Generate separately pinned local catalogue records, Arrow schema descriptors,
   dataset cards and offline DCAT/PROV graphs from verified Fiscal analytical and
   Budget comparison Gold manifests. Keep rights, release and source re-verification

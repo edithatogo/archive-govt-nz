@@ -455,6 +455,48 @@ def health_appropriations_verify_fiscal_reports(
     return 0
 
 
+@app.command(name="health-appropriations-build-gold-discovery-candidates")
+def health_appropriations_build_gold_discovery_candidates(
+    *,
+    fiscal_package: Path,
+    fiscal_manifest_sha256: str,
+    budget_package: Path,
+    budget_manifest_sha256: str,
+    output_dir: Path,
+    write: bool = False,
+) -> int:
+    """Build local discovery candidates with standards gaps; dry run by default."""
+    from archive_govt_nz.domains.health_appropriations.gold_discovery_profiles import (
+        GoldInput,
+        export_profiles,
+        verify_profiles,
+    )
+
+    try:
+        inputs = (
+            GoldInput("fiscal_analytical", fiscal_package, fiscal_manifest_sha256),
+            GoldInput("budget_comparison", budget_package, budget_manifest_sha256),
+        )
+        receipt = export_profiles(inputs, output_dir, write=write)
+        if write:
+            receipt["verification"] = verify_profiles(
+                inputs, output_dir, receipt["manifest_sha256"]
+            )
+    except ValueError, OSError, KeyError, TypeError:
+        _emit_json(
+            {
+                "command": "health-appropriations-build-gold-discovery-candidates",
+                "status": "failed",
+                "error": "gold_discovery_build_failed",
+            }
+        )
+        return 2
+    _emit_json(
+        {"command": "health-appropriations-build-gold-discovery-candidates", **receipt}
+    )
+    return 0
+
+
 @app.command(name="health-appropriations-build-gold-metadata")
 def health_appropriations_build_gold_metadata(
     *,

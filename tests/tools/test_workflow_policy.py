@@ -3,6 +3,8 @@
 import re
 from pathlib import Path
 
+import yaml
+
 
 def test_workflows_have_read_only_permissions_and_concurrency() -> None:
     """All workflows expose least privilege and bounded concurrency."""
@@ -47,6 +49,10 @@ def test_workflows_use_immutable_action_refs() -> None:
     assert "fail_ci_if_error: true" in ci
     assert "id-token: write" in ci
     assert "use_oidc: true" in ci
+    assert "sha256sum --check --strict" in ci
+    assert "binary: ${{ runner.temp }}/codecovcli_linux" in ci
+    assert "skip_validation: true" not in ci
+    assert "use_pypi: true" not in ci
 
 
 def test_ci_fetches_history_for_commit_bound_authority() -> None:
@@ -61,6 +67,24 @@ def test_ci_assurance_timeout_covers_windows_full_harness() -> None:
     root = Path(__file__).parents[2]
     text = (root / ".github/workflows/ci.yml").read_text(encoding="utf-8")
     assert "timeout-minutes: 30" in text
+    workflow = yaml.safe_load(text)
+    steps = workflow["jobs"]["quality"]["steps"]
+    optional = [step for step in steps if step.get("continue-on-error")]
+    assert [step["id"] for step in optional] == [
+        "codecov_download",
+        "codecov_upload",
+    ]
+    required = {step.get("name"): step for step in steps}
+    assert "tools/check.py" in required["Run locked assurance gate"]["run"]
+    artifact = required["Preserve required local coverage evidence"]
+    assert artifact["with"]["path"] == "coverage.xml"
+    assert artifact["with"]["if-no-files-found"] == "error"
+    assert "always()" in artifact["if"]
+    assert "steps.codecov_download.outcome == 'success'" in optional[1]["if"]
+    warning = required["Report external coverage upload failure"]
+    assert "steps.codecov_download.outcome == 'failure'" in warning["if"]
+    assert "steps.codecov_upload.outcome == 'failure'" in warning["if"]
+    assert "::warning::" in warning["run"]
 
 
 def test_health_discovery_preserves_failure_receipts() -> None:

@@ -278,3 +278,5 @@ they are not current-state assertions.
 - [Budget comparison Gold and operations](./budget-comparison-gold-20261005.md)
 
 - [Local analytical Gold metadata](./gold-metadata-20261005.md)
+
+- [Local Gold discovery profiles](./gold-discovery-profiles-20261005.md)
