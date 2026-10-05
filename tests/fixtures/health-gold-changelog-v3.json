@@ -1,5 +1,5 @@
 {
-  "schema_version": "archive-govt-nz.health-gold-metadata/v2",
+  "schema_version": "archive-govt-nz.health-gold-metadata/v3",
   "comparison": "snapshot_only_no_prior_version_comparison",
   "federation": "no_approved_links_emitted",
   "packages": [

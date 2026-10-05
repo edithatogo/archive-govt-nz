@@ -109,12 +109,19 @@ VALIDATION_PAIRS = (
         / "health-federation-ambiguous-record-v1.json",
     ),
     (
-        REPOSITORY_ROOT / "schemas" / "health-gold-citations-v2.schema.json",
-        REPOSITORY_ROOT / "tests" / "fixtures" / "health-gold-citations-v2.json",
+        REPOSITORY_ROOT / "schemas" / "health-gold-citations-v3.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "health-gold-citations-v3.json",
     ),
     (
-        REPOSITORY_ROOT / "schemas" / "health-gold-changelog-v2.schema.json",
-        REPOSITORY_ROOT / "tests" / "fixtures" / "health-gold-changelog-v2.json",
+        REPOSITORY_ROOT / "schemas" / "health-gold-changelog-v3.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "health-gold-changelog-v3.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-gold-source-drillthrough-v1.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-gold-source-drillthrough-v1.json",
     ),
     (
         REPOSITORY_ROOT / "schemas" / "health-raw-rebuild-v1.schema.json",

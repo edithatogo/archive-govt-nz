@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://archive-govt-nz.example/schemas/health-gold-changelog-v2.schema.json",
+  "$id": "https://archive-govt-nz.example/schemas/health-gold-changelog-v3.schema.json",
   "title": "Snapshot-only Health Gold changelog",
   "type": "object",
   "additionalProperties": false,
@@ -12,7 +12,7 @@
   ],
   "properties": {
     "schema_version": {
-      "const": "archive-govt-nz.health-gold-metadata/v2"
+      "const": "archive-govt-nz.health-gold-metadata/v3"
     },
     "comparison": {
       "const": "snapshot_only_no_prior_version_comparison"
