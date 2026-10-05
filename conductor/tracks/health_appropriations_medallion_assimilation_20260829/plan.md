@@ -756,6 +756,15 @@ integrated parent head.
   open. See `vote-health-supplementary-2018-19-category-totals-20261006.md`.
   [M-05, M-06, M-11; AC-05, AC-09]
 
+- [x] Add a separate hash-pinned 2019/20 Vote Health Supplementary Estimates
+  category-total profile over PDF pages 2–6. Preserve the three source-labelled
+  `$000` Budget columns, seven category totals, dash/null tokens, parenthesized
+  negatives, page lineage and explicit page dispositions; keep rights unevaluated
+  and editions source-separated. Two clean-room Bronze rebuilds match. Other
+  rows/pages and wider edition coverage remain open. See
+  `vote-health-supplementary-2019-20-category-totals-20261006.md`.
+  [M-05, M-06, M-11; AC-05, AC-09]
+
 ### 5.3 Normalize analytical context
 
 - [x] Implement the bounded June2026 QES Table8 QEMQ.SASZ9A published
