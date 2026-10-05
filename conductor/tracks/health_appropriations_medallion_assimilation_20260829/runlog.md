@@ -4836,3 +4836,22 @@ readback confirmed #647 merged and the five in-scope phase issues #209, #210,
 completion gate remains open. Final `./scripts/validate.sh` passed after these
 review entries were recorded: 7,490 tests passed, 10 skipped, 97.77% coverage
 against the 80% floor; schemas, parity, mutation and supply-chain gates passed.
+
+## 2026-10-06 — Vote Health Supplementary Estimates 2018/19 category totals
+
+Added the exact-hash-bound local source-operation profile
+`vote-health-supplementary-2018-19-category-totals/v1` for seven named
+category totals on PDF pages 2–6 (printed pages 386–390). It preserves the
+three source columns separately in `$000`, source dashes as null, parentheses
+as negative values, all 21 amount-field lineage links, and page dispositions.
+The captured Bronze SHA-256 remained unchanged. Two real builds produced
+identical Parquet digests; evidence is recorded in
+`vote-health-supplementary-2018-19-category-totals-20261006.json`.
+
+Focused tests passed (501 passed, 10 skipped). Full `./scripts/validate.sh`
+passed: 7,496 tests, 10 skipped, 97.77% branch-aware coverage (80% floor),
+56 schemas/46 representative documents, parity 9/9, configured mutation,
+hygiene and supply-chain gates, and 113 SBOM components. Automatic Conductor
+`phase_7_gates` review passed. This is one bounded Supplementary Estimates
+slice; other PDF pages, source years, rights, comparability and publication
+remain open.

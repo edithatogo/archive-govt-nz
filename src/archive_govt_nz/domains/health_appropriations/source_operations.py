@@ -22,6 +22,7 @@ from archive_govt_nz.domains.health_appropriations import (
     vote_health,
     vote_health_estimates_summary,
     vote_health_revenue,
+    vote_health_supplementary_2018_19,
 )
 from archive_govt_nz.domains.health_appropriations.workbook_common import source_context
 
@@ -117,6 +118,12 @@ PROFILES = MappingProxyType(
             vote_health.TRANSFORMATION,
             ("pages", "facts"),
             "vote_health_summary_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2018_19.PROFILE: (
+            vote_health_supplementary_2018_19.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_category_total_facts.parquet",
             "page_dispositions.parquet",
         ),
         "vote-health-supplementary-2003-04-detail/v1": (
@@ -251,6 +258,12 @@ _VOTE_HEALTH_DETAIL_PROFILES = {
     "vote-health-estimates-2002-03-detail/v1": (
         vote_health.DETAIL_VINTAGE_2002_03,
         vote_health.DETAIL_2002_03_SHA256,
+    ),
+}
+_VOTE_HEALTH_CATEGORY_TOTAL_PROFILES = {
+    vote_health_supplementary_2018_19.PROFILE: (
+        vote_health_supplementary_2018_19.VINTAGE,
+        vote_health_supplementary_2018_19.SOURCE_SHA256,
     ),
 }
 _VOTE_HEALTH_REVENUE_PROFILES = {
@@ -527,36 +540,22 @@ def _validate(request: SourceRequest, *, dry_run: bool) -> None:
         request.source_vintage != _GDP_VINTAGES[request.profile]
     ):
         raise ValueError(_INVALID_SOURCE_OPERATION)
-    if request.profile in _VOTE_HEALTH_DETAIL_PROFILES:
-        expected_vintage, expected_source_sha256 = _VOTE_HEALTH_DETAIL_PROFILES[
-            request.profile
-        ]
+    pinned_profiles = {
+        **_VOTE_HEALTH_DETAIL_PROFILES,
+        **_VOTE_HEALTH_REVENUE_PROFILES,
+        **_VOTE_HEALTH_CATEGORY_TOTAL_PROFILES,
+        **_VOTE_HEALTH_OVERVIEW_PROFILES,
+    }
+    if request.profile in pinned_profiles:
+        expected_vintage, expected_source_sha256 = pinned_profiles[request.profile]
         if request.source_vintage != expected_vintage or (
             expected_source_sha256 is not None
             and request.expected_sha256 != expected_source_sha256
         ):
             raise ValueError(_INVALID_SOURCE_OPERATION)
-    if request.profile in _VOTE_HEALTH_REVENUE_PROFILES:
-        expected_vintage, expected_source_sha256 = _VOTE_HEALTH_REVENUE_PROFILES[
-            request.profile
-        ]
-        if (
-            request.source_vintage != expected_vintage
-            or request.expected_sha256 != expected_source_sha256
-        ):
-            raise ValueError(_INVALID_SOURCE_OPERATION)
-    if request.profile in _VOTE_HEALTH_OVERVIEW_PROFILES:
-        expected_vintage, expected_source_sha256 = _VOTE_HEALTH_OVERVIEW_PROFILES[
-            request.profile
-        ]
-        if (
-            request.source_vintage != expected_vintage
-            or request.expected_sha256 != expected_source_sha256
-        ):
-            raise ValueError(_INVALID_SOURCE_OPERATION)
 
 
-def _invoke(  # noqa: C901, PLR0911 - explicit allowlisted profile dispatch
+def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile dispatch
     request: SourceRequest, *, dry_run: bool
 ) -> dict[str, Any]:
     context = {
@@ -611,6 +610,10 @@ def _invoke(  # noqa: C901, PLR0911 - explicit allowlisted profile dispatch
         )
     if request.profile == "vote-health-supplementary-2003-04-summary/v1":
         return vote_health.normalize_vote_health_summary(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2018_19.PROFILE:
+        return vote_health_supplementary_2018_19.normalize(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
     if request.profile in _VOTE_HEALTH_DETAIL_PROFILES:
