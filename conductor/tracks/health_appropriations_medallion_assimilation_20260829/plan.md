@@ -1068,6 +1068,13 @@ integrated parent head.
 - [ ] Generate and validate metadata, cards, citations, changelogs, catalogue
   and source drill-through records from actual layer manifests. [M-14, S-06;
   AC-14]
+  - [x] Generate deterministic local content-addressed citation identifiers
+    and snapshot-only changelogs from the verified Fiscal and Budget Gold
+    manifests. Bind each record to its manifest SHA256 and propagate only the
+    manifest-verified `not_evaluated` rights and `not_performed` publication
+    states. Do not claim upstream source citations or changes against a prior
+    release; approved federation links remain absent. See
+    `gold-metadata-citations-changelog-20261005.md`.
   - [x] Generate a deterministic RO-Crate 1.1 metadata file alongside each
     local canonical Gold package, enumerating every actual Parquet and plot
     payload with its byte size, media type and SHA-256. Keep the crate itself
