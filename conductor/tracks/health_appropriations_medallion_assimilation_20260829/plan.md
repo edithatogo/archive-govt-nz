@@ -89,6 +89,11 @@ repository validation command. External gates block only their affected task.
   unevaluated; 2002's other source families and annual Budget workbooks remain
   unresolved. This locator and period assessment are pinned in
   `source-measure-review-20261006.json`; they do not mark 2002 complete.
+  Treasury's historical Vote Health index and exact 2002/03 main and 2001/02
+  Supplementary Estimates PDFs are now separately registered. Fiscal periods,
+  `$000` Supplementary Estimates fields, page-level rights evidence, and the
+  Vote Health Service Providers merger into Vote Health are recorded; bytes
+  remain uncaptured and the 2002 edition remains incomplete.
   The Budget 2026 Estimates expenditure workbook's public release periods,
   restructuring caveat, exclusion of 2025/26 Supplementary Estimates and
   publisher-declared licence are recorded in

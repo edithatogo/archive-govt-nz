@@ -4887,3 +4887,20 @@ revenue workbooks. Review evidence is pinned in
 (80% floor), 56 schemas / 46 representative documents, differential parity
 9/9, configured mutation gates, dependency and licence audits, secret scan,
 and validated 113-component SBOM.
+## 2026-10-06 — Historical Vote Health 2002 Estimates locators
+
+Added exact Treasury locators for the Vote Health 2002/03 main Estimates
+chapter and 2001/02 Supplementary Estimates chapter. The main source reports
+annual Vote Health appropriations and Crown revenue; the supplementary source
+uses `$000` and keeps Main Estimates, Supplementary Estimates, cumulative
+appropriations and Crown receipts distinct. Treasury's historical Vote index
+records that Vote Health Service Providers merged into Vote Health for
+2002/03, so these vintages cannot be treated as a continuous unchanged Vote.
+Each item page states CC BY 4.0, retained only as page-level rights evidence.
+The PDF bytes remain uncaptured/unhashed, item-level rights are not evaluated,
+and the 2002 edition remains pending full enumeration. The historical source
+register now has 71 locators across 22 editions; all 30 editions remain
+pending. The 40 focused census/review tests passed, followed by the full
+`./scripts/validate.sh`: 7,498 passed, 10 skipped, 97.77% coverage against the
+80% floor; formatting, lint, typing, 56 schemas/46 representative documents,
+parity 9/9, configured mutation gates, and the 113-component SBOM passed.

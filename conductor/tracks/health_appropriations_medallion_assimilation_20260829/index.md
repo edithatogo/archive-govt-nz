@@ -294,6 +294,7 @@ they are not current-state assertions.
 - [2016/17 Vote Health overview census receipt](./vote-health-estimates-overview-2016-17-census.json)
 - [Source/measure census review refreshed for this evidence snapshot](./source-measure-review-20261005.json)
 - [Source/measure census review with BEFU 2002 period and scope](./source-measure-review-20261006.json)
+- [Historical Vote Health 2002 main and supplementary estimate locators](./historical-source-register.md#vote-health-estimates-and-supplementary-estimates-budget-2002--6-october-2026)
 - [2016/17 Vote Health overview implementation and census review](./vote-health-estimates-overview-2016-17-review-20261005.md)
 - [2016/17 Vote Health overview Conductor phase review receipt](./phase_7_gates-review-receipt-20261005-vote-health-2016-17.json)
 - [2018/19 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2018-19-category-totals-20261006.md)

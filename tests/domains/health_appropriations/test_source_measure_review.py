@@ -133,6 +133,7 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
         in report["series"]["gdp"]["vintage_or_range"]
     )
     assert report["source_families"]["historical_editions"]["complete"] is False
+    assert report["source_families"]["historical_editions"]["locator_count"] == 71
     assert (
         len(report["source_families"]["vote_health"]["discovered_estimates_urls"]) == 9
     )

@@ -46,11 +46,11 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/historical-source-register.json",
-      "sha256": "cf3c0df33fa1adf149fb85babceff06cc3776128e2147632e0d289df925aadf0"
+      "sha256": "88158722dbd889d805a3d9da6ca064186e08fd9ac67d76da256eeba414c337ab"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/historical-source-register.md",
-      "sha256": "ef0b1b3c5adf3988f4f6a0e37ee9206830d309037c195997024ac345114eb73c"
+      "sha256": "7ea0dc52d340d351ce78eaf792bd89e4418e4658ce8a109800f95282e267da20"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/hyefu-core-crown-expense-20260929.md",
@@ -261,7 +261,7 @@
         2024
       ],
       "fully_enumerated_editions": [],
-      "locator_count": 69,
+      "locator_count": 71,
       "scoped_years": [
         1997,
         1998,
