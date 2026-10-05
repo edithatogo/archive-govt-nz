@@ -1062,6 +1062,61 @@ def test_2016_17_parser_preserves_all_twenty_four_overview_statements() -> None:
     )
 
 
+def test_2017_18_parser_preserves_twenty_five_source_amounts_and_qualifiers() -> None:
+    page_two = """
+    Overview of the Vote
+    Vote Health ($16,773 million in 2017/18)
+    $12,683 million (75.6% of the Vote) is provided to 20 district health boards
+    $2,698 million (16.0% of the Vote) funds health and disability services, funded at a national level, and managed by the Ministry of Health
+    National Disability Support Services ($1,208 million or 7.0% of the Vote)
+    Public Health Service Purchasing ($406 million or 2.4% of the Vote)
+    National Elective Services ($347 million or 2.1% of the Vote)
+    Primary Health Care Strategy ($196 million or 1.2% of the Vote)
+    National Maternity Services ($147 million or 0.9% of the Vote)
+    National Emergency Services ($110 million or 0.7% of the Vote)
+    National Child Health Services ($85 million or 0.5% of the Vote)
+    National Personal Health Services ($84 million or 0.5% of the Vote)
+    National Mental Health Services ($62 million or 0.4% of the Vote)
+    Other national services ($54 million or 0.3% of the Vote)
+    $736 million (4.4% of the Vote) for the support, oversight, governance, and development of the health and disability sectors
+    Ministry of Health operating costs ($198 million or 1.2% of the Vote) and capital investment ($8 million or less than 0.1% of the Vote)
+    Supporting Equitable Pay for Care and Support Workers ($279 million or 1.7% of the Vote)
+    Health Workforce Training and Development ($187 million or 1.1% of the Vote)
+    Monitoring and Protecting Health and Disability Consumer Interests ($29 million or 0.2% of the Vote)
+    National Health Information Systems ($8 million or less than 0.1% of the Vote)
+    Other expenses ($27 million or 0.2% of the Vote)
+    $656 million (4.0% of the Vote) for capital investment
+    sector capital investment ($591 million or 3.5% of the Vote), technical expenditure ($15 million or less than 0.1% of the Vote),
+    and a provision for deficit support for DHBs ($50 million or 0.3% of the Vote).
+    Details of these appropriations are set out in Parts 2-4.
+    """
+    page_three = "Details of Appropriations and Capital Injections"
+
+    facts = overview.parse_overview_2017_18_pages([page_two, page_three])
+
+    assert len(facts) == 25
+    assert {fact["reference_period"] for fact in facts} == {"2017/18"}
+    assert {fact["source_page"] for fact in facts} == {2}
+    assert all(fact["unit"] == "$ million, source-reported amount" for fact in facts)
+    assert all(fact["raw_token"] in fact["source_phrase"] for fact in facts)
+    assert not next(f for f in facts if f["summary_measure"] == "vote_total")[
+        "source_qualifier_preserved"
+    ]
+    assert all(
+        fact["source_qualifier_preserved"]
+        for fact in facts
+        if fact["summary_measure"] != "vote_total"
+    )
+    assert (
+        next(
+            fact
+            for fact in facts
+            if fact["summary_measure"] == "ministry_capital_investment"
+        )["source_phrase"].find("less than 0.1%")
+        >= 0
+    )
+
+
 def test_2014_15_normalizer_rebuilds_eighteen_selected_headlines_from_bronze(
     tmp_path: Path,
 ) -> None:

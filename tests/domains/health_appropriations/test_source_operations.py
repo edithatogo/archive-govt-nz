@@ -1303,6 +1303,34 @@ def test_vote_health_2016_17_overview_profile_dispatches_to_its_adapter(
     assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
 
 
+def test_vote_health_2017_18_overview_profile_dispatches_to_its_adapter(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    summary = source_operations.vote_health_estimates_summary
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; adapter is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=summary.PROFILE_2017_18,
+        expected_sha256=summary.SOURCE_SHA256_2017_18,
+        source_vintage=summary.VINTAGE_2017_18,
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2017-05/est17-v6-health-v2.pdf",
+        observed_at="2026-08-29T09:00:17Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 1, "facts": 25}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(
+        summary, "_normalize_overview", lambda *_args, **_kwargs: expected
+    )
+    monkeypatch.setattr(
+        summary,
+        "normalize_vote_health_estimates_overview_2017_18",
+        lambda *_args, **_kwargs: expected,
+    )
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+
+
 def test_vote_health_2014_15_overview_profile_dispatches_to_its_adapter(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

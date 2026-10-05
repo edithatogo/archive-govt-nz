@@ -93,6 +93,10 @@ repository validation command. External gates block only their affected task.
   reconciled to its existing captured object, WARC, fiscal period and structural
   layout baseline. It does not recapture the PDF or close the wider annual
   Budget/BEFU/HYEFU/Pharmac census.
+  The captured 2017/18 Estimates PDF also has a hash-pinned page-2 overview
+  profile for 25 source-reported amount statements. It preserves category names,
+  period and share qualifiers; page 3 is only the edition-specific layout
+  check, and the remaining pages are outside this profile.
 - [x] Review fix: isolate invariant legislation fixtures from generated archive
   ordering and union-algebra examples; retain all strategies, deadlines and
   semantic assertions, then verify full assurance. [M-18; AC-16; d1f2ff31]
@@ -724,6 +728,14 @@ integrated parent head.
   evidence changes those states. No recapture was performed. Required full
   validation and scoped phase review pass for this bounded slice; broader
   annual source census remains open. [M-05, M-06, M-11; AC-05, AC-09]
+
+- [x] Add a hash-pinned 2017/18 Vote Health Estimates overview profile for the
+  25 amount statements on PDF page 2. Preserve source category names, whole-
+  million amounts, source phrases, periods and all share qualifiers; leave the
+  currency code and rights state unevaluated. The other 94 pages remain outside
+  this profile. CPI, wage, population, GDP and Crown series remain separate.
+  Repeat builds are byte-stable; wider source census remains open. [M-05, M-06,
+  M-11; AC-05, AC-09]
 
 ### 5.3 Normalize analytical context
 
