@@ -455,6 +455,37 @@ def health_appropriations_verify_fiscal_reports(
     return 0
 
 
+@app.command(name="health-appropriations-recover-analytical-metadata")
+def health_appropriations_recover_analytical_metadata(
+    archive: Path,
+    output_dir: Path,
+    *,
+    write: bool = False,
+) -> int:
+    """Rebuild supported analytical products and metadata twice; dry run by default."""
+    from subprocess import SubprocessError
+
+    from archive_govt_nz.domains.health_appropriations.analytical_metadata_recovery import (
+        recover_analytical_metadata,
+    )
+
+    try:
+        receipt = recover_analytical_metadata(archive, output_dir, write=write)
+    except ValueError, OSError, KeyError, TypeError, SubprocessError:
+        _emit_json(
+            {
+                "command": "health-appropriations-recover-analytical-metadata",
+                "status": "failed",
+                "error": "analytical_metadata_recovery_failed",
+            }
+        )
+        return 2
+    _emit_json(
+        {"command": "health-appropriations-recover-analytical-metadata", **receipt}
+    )
+    return 0
+
+
 @app.command(name="health-appropriations-build-gold-discovery-candidates")
 def health_appropriations_build_gold_discovery_candidates(
     *,

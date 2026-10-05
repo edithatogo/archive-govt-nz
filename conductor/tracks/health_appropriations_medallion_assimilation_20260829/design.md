@@ -640,3 +640,21 @@ flowchart LR
 All source payloads remain external. Content identifiers are not download URLs.
 Custom Arrow type identifiers preserve exact source representation and make no ML
 loader guarantee. Release dates, rights and actors require separate evidence.
+
+### Analytical metadata recovery
+
+```mermaid
+flowchart LR
+  Originals[Five pinned Bronze originals] --> Clean[Clean archive with no derivatives]
+  Definitions[Three pinned definition observations] --> Clean
+  Clean --> Runs[Two independent Fiscal and Budget builds]
+  Runs --> Gold[Verified Gold and Fiscal reports]
+  Gold --> Metadata[Local catalogue and discovery candidates]
+  Metadata --> Verify[Reconstruct metadata and compare full inventories]
+  Verify --> Pins[Recheck all original and definition pins]
+  Pins --> Receipt[Scoped recovery receipt]
+```
+
+The installed command defaults to source preflight and requires explicit write
+for exclusive new outputs. Keep partial failures. Conformance, rights, public
+release, additional source families and final whole-track review remain separate.

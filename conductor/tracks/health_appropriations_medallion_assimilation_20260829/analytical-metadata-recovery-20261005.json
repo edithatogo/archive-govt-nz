@@ -1,0 +1,54 @@
+{
+  "all_bytes_equal": true,
+  "changed_source_exit_2_before_output": true,
+  "code_base_commit": "6e19cd4b642bb8aa70c15e22f59d446a89547cb5",
+  "copied_source_files": 8,
+  "dry_run_no_output": true,
+  "exclusive_output_exit_2": true,
+  "files_per_run": 57,
+  "fresh_empty_derivative_builds": 2,
+  "full_health_completion": "not_asserted",
+  "full_standards_conformance": "not_asserted",
+  "installed_cli_process_exit": 0,
+  "native_output": {
+    "external_root": "ArchiveGovtNZ/health-appropriations",
+    "relative_path": "assurance/analytical-metadata-recovery-20261005-v2"
+  },
+  "native_receipt_sha256": "73fc92a43913a9d28998d4803d89274057e45812fbb2bbb529ccafdc7aa8fed6",
+  "originals_and_definitions_unchanged": true,
+  "production_overlay_sha256": {
+    "src/archive_govt_nz/cli.py": "f14051537710e26e96d335baa3539c9b8cb8432b5c0577af52ded386eadbc4cc",
+    "src/archive_govt_nz/domains/health_appropriations/analytical_metadata_recovery.py": "2e2ac3bfdcbadd9c8a44f545e738c399d476ebbf991373ee80d59870ffbc361b"
+  },
+  "production_source_sha256": {
+    "src/archive_govt_nz/cli.py": "f14051537710e26e96d335baa3539c9b8cb8432b5c0577af52ded386eadbc4cc",
+    "src/archive_govt_nz/domains/health_appropriations/analytical_metadata_recovery.py": "2e2ac3bfdcbadd9c8a44f545e738c399d476ebbf991373ee80d59870ffbc361b",
+    "src/archive_govt_nz/domains/health_appropriations/budget_comparison_gold.py": "c3e5f37a7c22a8222ccb96bba7d51e7eb61f68181cc2b221cbb35a8c2cf0a239",
+    "src/archive_govt_nz/domains/health_appropriations/fiscal_analytical_recovery.py": "fe4284ab8ec9dc7bb8eaf7df6468b0d4cf1f184657fe950016d7889d76079689",
+    "src/archive_govt_nz/domains/health_appropriations/gold_discovery_profiles.py": "91883b589b58f63a39b790af79b8e7101fe3f8af1bc1c3629ab0cd32b58706fd",
+    "src/archive_govt_nz/domains/health_appropriations/gold_metadata.py": "48d411911857cca63441a3a8109d73439008bd50d92c5ba3f1ae7ff8c7c54a48"
+  },
+  "publication": "not_performed",
+  "recipe_sha256": "e322bdb04459c38c22c7dcab8f854b67bbbcd5aaa47e1f8e4d3fd6095c246a46",
+  "repository_validation": {
+    "coverage_floor_percent": 80,
+    "coverage_percent": 97.8,
+    "scoped_phase_review": "passed",
+    "status": "passed",
+    "tests_passed": 7476,
+    "tests_skipped": 10,
+    "whole_health_review": "not_performed"
+  },
+  "retained_derivatives_consumed": false,
+  "retained_product_inventory_matches": {
+    "budget-gold": "exact_retained_inventory_match",
+    "discovery": "exact_retained_inventory_match",
+    "gold": "exact_retained_inventory_match",
+    "metadata": "exact_retained_inventory_match",
+    "reports": "exact_retained_inventory_match"
+  },
+  "rights": "not_evaluated",
+  "schema_version": "archive-govt-nz.analytical-metadata-recovery/v1",
+  "status": "passed",
+  "uv_lock_sha256": "9c3e36933d40d8547e32b41db6ecdef9fb11c5188c78afca1d81b6bbde4751aa"
+}
