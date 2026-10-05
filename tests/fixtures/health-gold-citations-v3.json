@@ -1,5 +1,5 @@
 {
-  "schema_version": "archive-govt-nz.health-gold-metadata/v2",
+  "schema_version": "archive-govt-nz.health-gold-metadata/v3",
   "scope": "local_content_addressed_gold_packages",
   "source_citation": "not_asserted",
   "records": [

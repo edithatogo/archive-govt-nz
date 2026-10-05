@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 from collections import Counter
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any
@@ -23,9 +24,11 @@ from archive_govt_nz.domains.health_appropriations.workbook_common import (
     verified_snapshot,
 )
 
-VERSION = "archive-govt-nz.health-gold-metadata/v2"
+VERSION = "archive-govt-nz.health-gold-metadata/v3"
+SOURCE_DRILLTHROUGH_VERSION = "archive-govt-nz.health-gold-source-drillthrough/v1"
 MAX_BYTES = 16 * 1024 * 1024
 MAX_PACKAGES = 8
+SHA256_HEX_LENGTH = 64
 FILES = {
     "catalogue.json",
     "schemas.json",
@@ -34,6 +37,12 @@ FILES = {
     "DATASET_CARD.md",
     "citations.json",
     "changelog.json",
+    "source_drillthrough.json",
+}
+SOURCE_HASH_FIELDS = {
+    "source_manifest_sha256",
+    "source_object_sha256",
+    "raw_manifest_sha256",
 }
 CONTEXT = {
     "dcat": "http://www.w3.org/ns/dcat#",
@@ -68,6 +77,46 @@ def _json(value: object) -> bytes:
 
 def _sha(content: bytes) -> str:
     return hashlib.sha256(content).hexdigest()
+
+
+def _source_references(value: object, path: str = "") -> list[dict[str, str]]:
+    """Copy only explicitly named source references from a verified manifest."""
+    references: list[dict[str, str]] = []
+    if isinstance(value, dict):
+        for key, child in value.items():
+            child_path = f"{path}/{key.replace('~', '~0').replace('/', '~1')}"
+            if isinstance(child, str):
+                if key in SOURCE_HASH_FIELDS:
+                    _require(
+                        re.fullmatch(r"[a-f0-9]{64}", child) is not None
+                        and len(child) == SHA256_HEX_LENGTH
+                    )
+                    references.append(
+                        {
+                            "field_path": child_path,
+                            "kind": "sha256",
+                            "value": child,
+                        }
+                    )
+                elif key.endswith(("_source_url", "_definition_url")):
+                    _require(
+                        child.startswith("https://")
+                        and not any(character.isspace() for character in child)
+                    )
+                    references.append(
+                        {
+                            "field_path": child_path,
+                            "kind": "recorded_https_locator",
+                            "value": child,
+                        }
+                    )
+            references.extend(_source_references(child, child_path))
+    elif isinstance(value, list):
+        for index, child in enumerate(value):
+            references.extend(_source_references(child, f"{path}/{index}"))
+    return sorted(
+        references, key=lambda item: (item["field_path"], item["kind"], item["value"])
+    )
 
 
 def _table(name: str, table: pa.Table, package_id: str) -> dict[str, Any]:
@@ -168,6 +217,7 @@ def _package(value: GoldInput) -> dict[str, Any]:
         "verification_scope": "pinned_gold_package_snapshots",
         "source_reverification": "not_performed",
         "source_semantics": "not_reassessed",
+        "source_references": _source_references(manifest),
         "rights": manifest["rights"],
         "publication": manifest["publication"],
     }
@@ -298,6 +348,29 @@ def project_gold_metadata(values: tuple[GoldInput, ...]) -> dict[str, bytes]:
             ],
         }
     )
+    source_drillthrough = _json(
+        {
+            "schema_version": SOURCE_DRILLTHROUGH_VERSION,
+            "scope": "source_manifest_field_references_only",
+            "rights": "not_evaluated",
+            "publication": "not_performed",
+            "locator_semantics": "recorded_reference_only_no_access_or_rights_claim",
+            "packages": [
+                {
+                    "package_id": p["id"],
+                    "profile": p["profile"],
+                    "manifest_sha256": p["manifest_sha256"],
+                    "references": p["source_references"],
+                    "no_reference_reason": (
+                        None
+                        if p["source_references"]
+                        else "source_reference_fields_absent_from_package_manifest"
+                    ),
+                }
+                for p in packages
+            ],
+        }
+    )
     schemas = _json(
         {
             "schema_version": VERSION,
@@ -341,6 +414,7 @@ def project_gold_metadata(values: tuple[GoldInput, ...]) -> dict[str, bytes]:
         "DATASET_CARD.md": ("\n".join(lines) + "\n").encode(),
         "citations.json": citations,
         "changelog.json": changelog,
+        "source_drillthrough.json": source_drillthrough,
     }
     _require(all(len(b) <= MAX_BYTES for b in result.values()))
     return result

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-gold-source-drillthrough-v1.schema.json",
+  "title": "Manifest-recorded Health Gold source references",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "scope", "rights", "publication", "locator_semantics", "packages"],
+  "properties": {
+    "schema_version": {"const": "archive-govt-nz.health-gold-source-drillthrough/v1"},
+    "scope": {"const": "source_manifest_field_references_only"},
+    "rights": {"const": "not_evaluated"},
+    "publication": {"const": "not_performed"},
+    "locator_semantics": {"const": "recorded_reference_only_no_access_or_rights_claim"},
+    "packages": {"type": "array", "minItems": 1, "maxItems": 8, "items": {"$ref": "#/$defs/package"}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["package_id", "profile", "manifest_sha256", "references", "no_reference_reason"],
+      "properties": {
+        "package_id": {"type": "string", "pattern": "^urn:archive-govt-nz:health:gold:[a-f0-9]{64}$"},
+        "profile": {"enum": ["budget_comparison", "fiscal_analytical"]},
+        "manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "references": {"type": "array", "items": {"$ref": "#/$defs/reference"}},
+        "no_reference_reason": {"enum": [null, "source_reference_fields_absent_from_package_manifest"]}
+      },
+      "allOf": [
+        {"if": {"properties": {"references": {"minItems": 1}}}, "then": {"properties": {"no_reference_reason": {"const": null}}}},
+        {"if": {"properties": {"references": {"maxItems": 0}}}, "then": {"properties": {"no_reference_reason": {"const": "source_reference_fields_absent_from_package_manifest"}}}}
+      ]
+    },
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["field_path", "kind", "value"],
+      "properties": {
+        "field_path": {"type": "string", "minLength": 1, "maxLength": 1024, "pattern": "^/[^\\s]+$"},
+        "kind": {"enum": ["sha256", "recorded_https_locator"]},
+        "value": {"type": "string", "minLength": 1, "maxLength": 2048}
+      },
+      "allOf": [
+        {"if": {"properties": {"kind": {"const": "sha256"}}}, "then": {"properties": {"value": {"$ref": "#/$defs/sha256"}}}},
+        {"if": {"properties": {"kind": {"const": "recorded_https_locator"}}}, "then": {"properties": {"value": {"type": "string", "pattern": "^https://[^\\s]+$"}}}}
+      ]
+    }
+  }
+}

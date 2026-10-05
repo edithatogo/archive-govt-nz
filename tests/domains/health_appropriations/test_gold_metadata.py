@@ -44,9 +44,14 @@ def packages(
     )
 
 
-def assert_snapshot_projections(first: Path, catalogue: dict[str, Any]) -> None:
+def assert_snapshot_projections(
+    first: Path,
+    catalogue: dict[str, Any],
+    values: tuple[metadata.GoldInput, ...],
+) -> None:
     citations = json.loads((first / "citations.json").read_text())
     changelog = json.loads((first / "changelog.json").read_text())
+    drillthrough = json.loads((first / "source_drillthrough.json").read_text())
     packages = catalogue["packages"]
     assert citations["schema_version"] == metadata.VERSION
     assert changelog["schema_version"] == metadata.VERSION
@@ -55,8 +60,12 @@ def assert_snapshot_projections(first: Path, catalogue: dict[str, Any]) -> None:
     assert changelog["federation"] == "no_approved_links_emitted"
     schemas = Path(__file__).parents[3] / "schemas"
     for filename, schema_name in (
-        ("citations.json", "health-gold-citations-v2.schema.json"),
-        ("changelog.json", "health-gold-changelog-v2.schema.json"),
+        ("citations.json", "health-gold-citations-v3.schema.json"),
+        ("changelog.json", "health-gold-changelog-v3.schema.json"),
+        (
+            "source_drillthrough.json",
+            "health-gold-source-drillthrough-v1.schema.json",
+        ),
     ):
         schema = json.loads((schemas / schema_name).read_text())
         Draft202012Validator(schema).validate(
@@ -64,6 +73,10 @@ def assert_snapshot_projections(first: Path, catalogue: dict[str, Any]) -> None:
         )
     assert len(citations["records"]) == len(packages) == 2
     assert len(changelog["packages"]) == 2
+    assert drillthrough["schema_version"] == metadata.SOURCE_DRILLTHROUGH_VERSION
+    assert drillthrough["rights"] == "not_evaluated"
+    assert drillthrough["publication"] == "not_performed"
+    assert len(drillthrough["packages"]) == 2
     for package in packages:
         citation = next(
             item for item in citations["records"] if item["package_id"] == package["id"]
@@ -83,6 +96,62 @@ def assert_snapshot_projections(first: Path, catalogue: dict[str, Any]) -> None:
             {"path": table["path"], "rows": table["rows"]}
             for table in package["tables"]
         ]
+        source_record = next(
+            item
+            for item in drillthrough["packages"]
+            if item["package_id"] == package["id"]
+        )
+        assert source_record["manifest_sha256"] == package["manifest_sha256"]
+        input_value = next(
+            item
+            for item in values
+            if item.manifest_sha256 == package["manifest_sha256"]
+        )
+        marker_name = (
+            "MANIFEST.json"
+            if input_value.profile == "budget_comparison"
+            else "manifest.json"
+        )
+        source_manifest = json.loads((input_value.root / marker_name).read_text())
+        if source_record["references"]:
+            assert source_record["no_reference_reason"] is None
+        else:
+            assert (
+                source_record["no_reference_reason"]
+                == "source_reference_fields_absent_from_package_manifest"
+            )
+        for reference in source_record["references"]:
+            selected: Any = source_manifest
+            for token in reference["field_path"].split("/")[1:]:
+                selected = selected[token.replace("~1", "/").replace("~0", "~")]
+            assert selected == reference["value"]
+
+
+@pytest.mark.parametrize(
+    "manifest_field",
+    [
+        {"source_object_sha256": "z" * 64},
+        {"cpi_definition_url": "http://example.govt.nz/series"},
+        {"cpi_definition_url": "https://example.govt.nz/bad locator"},
+    ],
+)
+def test_source_drillthrough_rejects_malformed_recorded_fields(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    manifest_field: dict[str, str],
+) -> None:
+    fiscal_input = packages(tmp_path, monkeypatch)[1]
+    marker = fiscal_input.root / "manifest.json"
+    manifest = json.loads(marker.read_text())
+    manifest["input_receipts"] = {"malformed_fixture": manifest_field}
+    marker.write_text(json.dumps(manifest))
+    altered = metadata.GoldInput(
+        fiscal_input.profile,
+        fiscal_input.root,
+        hashlib.sha256(marker.read_bytes()).hexdigest(),
+    )
+    with pytest.raises(ValueError, match="gold_metadata_contract"):
+        metadata.project_gold_metadata((altered,))
 
 
 def test_exact_catalogue_repeat_build_and_reconstruction(
@@ -140,7 +209,7 @@ def test_exact_catalogue_repeat_build_and_reconstruction(
     assert catalogue["release_readiness"] == "blocked_unassessed_rights_and_publication"
     assert len(catalogue["packages"]) == 2
     assert sum(len(p["tables"]) for p in catalogue["packages"]) == 5
-    assert_snapshot_projections(first, catalogue)
+    assert_snapshot_projections(first, catalogue, values)
     for package in catalogue["packages"]:
         value = next(
             v for v in values if v.manifest_sha256 == package["manifest_sha256"]

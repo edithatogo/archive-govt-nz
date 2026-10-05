@@ -1075,6 +1075,13 @@ integrated parent head.
     states. Do not claim upstream source citations or changes against a prior
     release; approved federation links remain absent. See
     `gold-metadata-citations-changelog-20261005.md`.
+  - [x] Add a source-drillthrough projection containing only hash-pinned
+    references copied from explicit source hash/locator fields in the verified
+    package manifests. Validate every emitted field path against its exact
+    manifest pin; disclose profiles whose manifests have no source-reference
+    fields. Keep rights `not_evaluated` and publication `not_performed`; a
+    recorded HTTPS locator is not an access or redistribution claim. See
+    `gold-metadata-source-drillthrough-20261005.md`.
   - [x] Generate a deterministic RO-Crate 1.1 metadata file alongside each
     local canonical Gold package, enumerating every actual Parquet and plot
     payload with its byte size, media type and SHA-256. Keep the crate itself
