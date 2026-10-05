@@ -10,6 +10,22 @@
   "full_health_completion": "not_asserted",
   "full_standards_conformance": "not_asserted",
   "installed_cli_process_exit": 0,
+  "integrated_assurance": {
+    "analytical_files_per_run": 57,
+    "bronze_objects_unchanged": true,
+    "existing_fiscal_receipt_key": "preserved",
+    "final_gate": "blocked_until_all_required_products_are_built_from_bronze_and_validated",
+    "full_health_completion": "not_asserted",
+    "process_exit": 0,
+    "receipt_sha256": "2f243fe90591f4795475ef505583640a1055276790b87679a69be49d9a08e100",
+    "required_but_not_rebuilt": [
+      "cross_source_comparison",
+      "remaining_source_native_silver_profiles_and_canonical_adapters",
+      "platinum_dcat_croissant_ro_crate_prov_complete_profile"
+    ],
+    "status": "partial_with_blockers",
+    "tool_sha256": "eb46ca7ee5cf57fb1260a92856f8b3a1c47ed7fd1539ee74df9f3033bc2266c8"
+  },
   "native_output": {
     "external_root": "ArchiveGovtNZ/health-appropriations",
     "relative_path": "assurance/analytical-metadata-recovery-20261005-v2"

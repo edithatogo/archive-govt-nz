@@ -49,3 +49,7 @@ exit 2 before output creation. Required harness passed: 7,476 tests / 10 skips,
 97.80% aggregate coverage with the 80% floor. The generic scoped phase review
 passed; it is not the final whole-Health review. Native evidence is retained at
 `ArchiveGovtNZ/health-appropriations/assurance/analytical-metadata-recovery-20261005-v2`.
+
+The integrated Health recovery harness now consumes the new analytical recovery lane. Its existing Fiscal receipt key is preserved; an additional analytical Gold/metadata receipt records the full supported reconstruction. Complete Platinum standards, remaining source families, broader comparisons and the final completion gate remain explicitly unresolved. The existing integration test was extended (red on the missing hook, then all ten tests green); retained the import-order lint failure before fixing it. Native integrated assurance and repeated required validation are running.
+
+Integrated native assurance exits 0, verifies the new two-run 57-file analytical lane and preserves the existing Fiscal receipt. All Bronze objects remain unchanged. Overall status remains partial_with_blockers: broader cross-source comparison, remaining source-native adapters and complete Platinum profiles are still required. Full harness passes again (7,476 tests / 10 skips, 97.80% coverage with the 80% floor); all ten integration tests and scoped phase review pass. This does not close the whole-Health gate.
