@@ -294,3 +294,6 @@ they are not current-state assertions.
 - [Source/measure census review refreshed for this evidence snapshot](./source-measure-review-20261005.json)
 - [2016/17 Vote Health overview implementation and census review](./vote-health-estimates-overview-2016-17-review-20261005.md)
 - [2016/17 Vote Health overview Conductor phase review receipt](./phase_7_gates-review-receipt-20261005-vote-health-2016-17.json)
+- [2018/19 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2018-19-category-totals-20261006.md)
+- [2018/19 category-total evidence receipt](./vote-health-supplementary-2018-19-category-totals-20261006.json)
+- [2018/19 category-total Conductor review](./phase_7_gates-review-receipt-20261006-vote-health-2018-19-totals.json)

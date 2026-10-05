@@ -737,6 +737,14 @@ integrated parent head.
   Repeat builds are byte-stable; wider source census remains open. [M-05, M-06,
   M-11; AC-05, AC-09]
 
+- [x] Add a hash-pinned 2018/19 Vote Health Supplementary Estimates source
+  operation for the seven named category totals on PDF pages 2–6. Preserve its
+  three printed Budget columns, `$000` unit, null dash tokens, page/field
+  lineage and unevaluated rights state. Two builds match byte-for-byte and the
+  Bronze hash is unchanged. Other tables/pages and edition coverage remain
+  open. See `vote-health-supplementary-2018-19-category-totals-20261006.md`.
+  [M-05, M-06, M-11; AC-05, AC-09]
+
 ### 5.3 Normalize analytical context
 
 - [x] Implement the bounded June2026 QES Table8 QEMQ.SASZ9A published
