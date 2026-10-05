@@ -983,6 +983,85 @@ def test_2013_14_normalizer_rebuilds_from_pinned_bronze_source(
     ) == 6
 
 
+def test_2016_17_parser_preserves_all_twenty_four_overview_statements() -> None:
+    page_two = """
+    Overview of the Vote
+    Vote Health ($16,142 million in 2016/17)
+    $12,220 million (75.7% of the Vote) is provided to 20 district health boards
+    $2,659 million (16.5% of the Vote) funds health and disability services,
+    funded at a national level, and managed by the Ministry of Health, comprising:
+    National Disability Support Services ($1,165 million or 7.2% of the Vote)
+    Public Health Service Purchasing ($401 million or 2.5% of the Vote)
+    National Elective Services ($356 million or 2.2% of the Vote)
+    Primary Health Care Strategy ($186 million or 1.2% of the Vote)
+    National Maternity Services ($147 million or 0.9% of the Vote)
+    National Personal Health Services ($99 million or 0.6% of the Vote)
+    National Emergency Services ($100 million or 0.6% of the Vote)
+    National Child Health Services ($85 million or 0.5% of the Vote)
+    National Mental Health Services ($59 million or 0.4% of the Vote)
+    Other national services ($61 million or 0.4% of the Vote)
+    $459 million (2.8% of the Vote) for the support, oversight, governance, and
+    development of the health and disability sectors, comprising:
+    Ministry of Health operating costs ($195 million or 1.1% of the Vote) and
+    capital investment ($15 million or 0.1% of the Vote)
+    Health Workforce Training and Development ($180 million or 1.1% of the Vote)
+    Monitoring and protecting health and disability consumer interests
+    ($28 million or 0.2% of the Vote)
+    National Health Information Systems ($13 million or 0.1% of the Vote)
+    Other expenses ($28 million or 0.2% of the Vote)
+    """
+    page_three = """
+    $803 million (5.0% of the Vote) for capital investment, comprising:
+    sector capital investment ($678 million or 4.2% of the Vote), technical
+    expenditure ($75 million or 0.5% of the Vote), and a provision for deficit
+    support for DHBs ($50 million or 0.3% of the Vote).
+    Details of these appropriations are set out in Parts 2-4.
+    """
+
+    facts = overview.parse_overview_2016_17_pages([page_two, page_three])
+
+    expected_values = {
+        "vote_total": 16142,
+        "district_health_boards": 12220,
+        "national_health_disability_services_total": 2659,
+        "national_disability_support_services": 1165,
+        "public_health_service_purchasing": 401,
+        "national_elective_services": 356,
+        "primary_health_care_strategy": 186,
+        "national_maternity_services": 147,
+        "national_personal_health_services": 99,
+        "national_emergency_services": 100,
+        "national_child_health_services": 85,
+        "national_mental_health_services": 59,
+        "other_national_services": 61,
+        "health_sector_support_total": 459,
+        "ministry_operating_costs": 195,
+        "ministry_capital_investment": 15,
+        "health_workforce_training_development": 180,
+        "consumer_interests_monitoring": 28,
+        "national_health_information_systems": 13,
+        "health_sector_other_expenses": 28,
+        "capital_investment_total": 803,
+        "sector_capital_investment": 678,
+        "technical_expenditure": 75,
+        "dhb_deficit_support_provision": 50,
+    }
+    assert {fact["summary_measure"]: int(fact["value"]) for fact in facts} == (
+        expected_values
+    )
+    assert {fact["source_page"] for fact in facts} == {2, 3}
+    assert all(fact["reference_period"] == "2016/17" for fact in facts)
+    assert all(fact["raw_token"] in fact["source_phrase"] for fact in facts)
+    assert not next(fact for fact in facts if fact["summary_measure"] == "vote_total")[
+        "source_qualifier_preserved"
+    ]
+    assert all(
+        fact["source_qualifier_preserved"]
+        for fact in facts
+        if fact["summary_measure"] != "vote_total"
+    )
+
+
 def test_2014_15_normalizer_rebuilds_eighteen_selected_headlines_from_bronze(
     tmp_path: Path,
 ) -> None:

@@ -4740,3 +4740,27 @@ Recovery branch preparation after the authorized external-reporting policy fix: 
 Added 17 exact phrase-anchored page-2 statements and source-operation registration. Native and installed CLI paired builds agree and preserve Bronze; 14 qualifiers retained, other 99 pages preserved unreviewed. WARC payload verified but capture date unavailable; actual local source-verification time retained without remote-recapture claim. Initial lint, schema mismatch and readback-field failures retained and corrected. Existing operation tests and strict typing pass. Full harness and scoped review follow.
 
 Final required ./scripts/validate.sh exited 0: 7,476 tests / 10 skips; format, lint, strict typing, schemas, parity, configured mutation and supply-chain gates passed. Scoped review passed. Coverage floor remains 80%; broader Health completion is not asserted.
+
+## 2026-10-05 — 2016/17 Vote Health overview and census reconciliation
+
+Reused the existing 2016/17 Treasury capture, Bronze SHA-256, WARC and PDF
+layout baseline; verified the retained source hash and PDF pages 2–3 directly.
+Added a source-census addendum for the 2016/17 fiscal estimate, `$ million`
+source amounts, Treasury publisher-declared CC-BY-4.0 evidence, and the exact
+unreviewed/rights/currency boundaries. No duplicate acquisition or recapture.
+The prior full harness had exposed drift in the JSON source-operation schema;
+focused equality check identified the omitted 2016/17 transformation enum and
+the committed JSON schema was corrected. The 2016/17 parser and source-operation
+implementation remain under full validation; no whole-census completion is
+claimed.
+
+The first required harness then exposed a stale SHA-256 in the 2026-09-27
+source/measure review receipt after the track index gained the census links.
+Kept the historical receipt unchanged, created a timestamped 2026-10-05 review
+snapshot with the current index digest, and redirected its 36-test contract to
+that snapshot. Focused source-measure review passes. Corrected full validation
+passed: 7,478 tests passed, 10 skipped; 97.80% coverage against the unchanged
+80% floor; 53 schemas and 43 representative documents; differential parity
+9/9; all configured mutation gates; dependency audit, licence inventory, secret
+scan, and SBOM (113 components). Scoped phase review and exact-head hosted checks
+remain to be recorded; the full Health track remains incomplete.
