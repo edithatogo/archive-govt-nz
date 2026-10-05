@@ -34,6 +34,7 @@ from archive_govt_nz.domains.health_appropriations import (
     vote_health_supplementary_2018_19,
     vote_health_supplementary_2019_20,
     vote_health_supplementary_2020_21,
+    vote_health_supplementary_2021_22,
 )
 from archive_govt_nz.domains.health_appropriations.analytical_metadata_recovery import (
     recover_analytical_metadata,
@@ -739,6 +740,40 @@ def rebuild_vote_health_2020_21_summary_totals(
         or receipt.get("counts") != {"pages": 1, "facts": 4}
     ):
         message = "vote_health_2020_21_recovery_contract"
+        raise RuntimeError(message)
+    return {"files": tree(output), "operation_receipt": receipt}
+
+
+def rebuild_vote_health_2021_22_summary_totals(
+    root: Path, index: int
+) -> dict[str, Any]:
+    """Rebuild the separately pinned 2021/22 page-seven summary from Bronze."""
+    profile = vote_health_supplementary_2021_22
+    source = (
+        ARCHIVE
+        / "bronze-cas"
+        / "sha256"
+        / profile.SOURCE_SHA256[:2]
+        / profile.SOURCE_SHA256
+    )
+    output = root / f"vote-health-2021-22-summary-totals-{index}"
+    request = SourceRequest(
+        source=source,
+        output_dir=output,
+        profile=profile.PROFILE,
+        expected_sha256=profile.SOURCE_SHA256,
+        source_vintage=profile.VINTAGE,
+        source_locator=profile.SOURCE_LOCATOR,
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    receipt = operate_source(request, dry_run=False)
+    if (
+        receipt.get("status") != "written_local"
+        or receipt.get("profile") != profile.PROFILE
+        or receipt.get("source_object_sha256") != profile.SOURCE_SHA256
+        or receipt.get("counts") != {"pages": 1, "facts": 4}
+    ):
+        message = "vote_health_2021_22_recovery_contract"
         raise RuntimeError(message)
     return {"files": tree(output), "operation_receipt": receipt}
 
@@ -1881,6 +1916,27 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0912, PLR0915 - recovery products
         }
         if vote_health_2020_21_summaries["1"] != vote_health_2020_21_summaries["2"]:
             message = "vote_health_2020_21_repeat_mismatch"
+            raise RuntimeError(message)
+        vote_health_2021_22_summaries = {
+            str(index): rebuild_vote_health_2021_22_summary_totals(root, index)
+            for index in (1, 2)
+        }
+        vote_health_2021_22_summary_files = compare_product_outputs(
+            root / "vote-health-2021-22-summary-totals-1",
+            root / "vote-health-2021-22-summary-totals-2",
+            "vote_health_2021_22_summary_totals",
+        )
+        outputs["vote_health_supplementary_2021_22_summary_totals"] = {
+            "files": vote_health_2021_22_summary_files,
+            "operation_receipt": vote_health_2021_22_summaries["1"][
+                "operation_receipt"
+            ],
+            "repeat_identical": (
+                vote_health_2021_22_summaries["1"] == vote_health_2021_22_summaries["2"]
+            ),
+        }
+        if vote_health_2021_22_summaries["1"] != vote_health_2021_22_summaries["2"]:
+            message = "vote_health_2021_22_repeat_mismatch"
             raise RuntimeError(message)
         context_one, context_two = root / "context-one", root / "context-two"
         cas_objects = ARCHIVE / "bronze-cas" / "sha256"

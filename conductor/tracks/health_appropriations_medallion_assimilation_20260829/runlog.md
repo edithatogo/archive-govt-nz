@@ -4904,3 +4904,24 @@ pending. The 40 focused census/review tests passed, followed by the full
 `./scripts/validate.sh`: 7,498 passed, 10 skipped, 97.77% coverage against the
 80% floor; formatting, lint, typing, 56 schemas/46 representative documents,
 parity 9/9, configured mutation gates, and the 113-component SBOM passed.
+
+## 2026-10-06 — Vote Health Supplementary Estimates 2021/22 summary slice
+
+Merged PR #654 (`f534b966`) after Ubuntu, macOS, Windows, lint, CodeQL,
+Amazon Q and Codecov checks passed; verified the merge commit on `origin/main`.
+The current 2021/22 follow-on adds a separate page-seven summary profile for
+four printed rows from the captured Treasury PDF. The profile retains the three
+source-labelled `$000` columns, negative parenthesized values, line-wrapped
+label, 12 field-lineage rows, and a partial-page disposition. Two recovery
+entry-point builds and the persistent Silver output are byte-identical; the
+Bronze source hash is unchanged. Rights remain unevaluated, and no currency,
+comparability, redistribution or publication claim is made.
+
+The integrated clean-room recovery receipt now includes this lane and remains
+`partial_with_blockers`; cross-source comparison, remaining source-native
+profiles/adapters and the complete Platinum profile set remain unreconstructed.
+Focused tests pass (515 passed, 10 skipped). `./scripts/validate.sh` passed on
+this exact tree: 7,519 passed, 10 skipped, 97.72% coverage (80% floor), plus
+format, lint, typing, schema, parity, mutation, supply-chain, licence, secret
+scan and SBOM gates. See `vote-health-supplementary-2021-22-summary-totals-20261006.md`,
+its JSON evidence, and `clean-room-recovery-20261006-vote-health-2021-22.json`.

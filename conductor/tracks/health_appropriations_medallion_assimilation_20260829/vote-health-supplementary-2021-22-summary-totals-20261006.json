@@ -1,0 +1,99 @@
+{
+  "schema_version": "archive-govt-nz.health-vote-health-supplementary-summary-evidence/v1",
+  "status": "passed",
+  "profile": "vote-health-supplementary-2021-22-summary-totals/v1",
+  "source": {
+    "source_object_sha256": "f567098d4f98fd9ea34df90ca330b295346a8f567b924f8b11694a494d3ce502",
+    "source_locator": "https://www.treasury.govt.nz/sites/default/files/2022-06/suppest22health.pdf",
+    "source_vintage": "Treasury-Vote-Health-Supplementary-2021-22",
+    "source_bytes_unchanged": true,
+    "capture_manifest": "official-capture-2026-10-03-health-complete.json"
+  },
+  "scope": {
+    "pdf_page_numbers": [
+      7
+    ],
+    "unit": "$000",
+    "columns": [
+      "Estimates Budget",
+      "Supplementary Estimates Budget",
+      "Total Budget"
+    ],
+    "facts": 4,
+    "field_lineage_rows": 12,
+    "page_dispositions": 1,
+    "rights_state": "not_evaluated",
+    "limitations": [
+      "Only four named page-seven rows are normalized; remaining rows and PDF pages stay preserved-only.",
+      "The source has separate summary and capital-injection table sections; no further category is inferred.",
+      "No currency interpretation, edition comparison, redistribution or publication is asserted."
+    ]
+  },
+  "persistent_silver": {
+    "path": "silver/vote-health-supplementary-2021-22-summary-totals-20261006-v1",
+    "manifest_sha256": "5f34467c812ce43f5fa20b369c5314f4ab7a5ceeec1c697a060483bed528d466",
+    "outputs": {
+      "MANIFEST.json": {
+        "bytes": 628,
+        "sha256": "5f34467c812ce43f5fa20b369c5314f4ab7a5ceeec1c697a060483bed528d466"
+      },
+      "field_lineage.parquet": {
+        "bytes": 6083,
+        "sha256": "582a648630fa74c4a18296beb58ce454942ec42221f4692f9896939c8082f88d"
+      },
+      "page_dispositions.parquet": {
+        "bytes": 2460,
+        "sha256": "cada1aff22bdf5b045fb93d60f642e863356667adb8dc7eb488652a9df4a783e"
+      },
+      "vote_health_supplementary_summary_facts.parquet": {
+        "bytes": 10844,
+        "sha256": "7e327e6b1b11b66d58e02867cd8967dc6330d93ba989ca88a79f9d02700fd606"
+      }
+    },
+    "matches_clean_room_build": true
+  },
+  "repeat_build": {
+    "identical": true,
+    "recovery_entry_point_builds": 2,
+    "outputs": {
+      "MANIFEST.json": "5f34467c812ce43f5fa20b369c5314f4ab7a5ceeec1c697a060483bed528d466",
+      "field_lineage.parquet": "582a648630fa74c4a18296beb58ce454942ec42221f4692f9896939c8082f88d",
+      "page_dispositions.parquet": "cada1aff22bdf5b045fb93d60f642e863356667adb8dc7eb488652a9df4a783e",
+      "vote_health_supplementary_summary_facts.parquet": "7e327e6b1b11b66d58e02867cd8967dc6330d93ba989ca88a79f9d02700fd606"
+    }
+  },
+  "recovery_scope": {
+    "receipt": "clean-room-recovery-20261006-vote-health-2021-22.json",
+    "status": "partial_with_blockers",
+    "bronze_objects_unchanged": true,
+    "entry_point": "tools/health_recovery_assurance.py:rebuild_vote_health_2021_22_summary_totals",
+    "entry_point_repeat_identical": true,
+    "remaining_track_gates_not_closed": true
+  },
+  "validation": {
+    "focused_tests": {
+      "command": "uv run --locked pytest tests/domains/health_appropriations/test_vote_health_supplementary_2021_22.py tests/domains/health_appropriations/test_source_operations.py tests/domains/health_appropriations/test_health_recovery_assurance.py -q",
+      "passed": 515,
+      "skipped": 10
+    },
+    "repository_harness": {
+      "command": "./scripts/validate.sh",
+      "status": "passed",
+      "tests_passed": 7519,
+      "tests_skipped": 10,
+      "coverage_percent": 97.72,
+      "coverage_floor_percent": 80,
+      "format": "passed",
+      "lint": "passed",
+      "typing": "passed",
+      "schemas": "56 schemas / 46 representative documents passed",
+      "differential_parity": "9/9 passed",
+      "configured_mutation_gates": "passed",
+      "dependency_audit": "passed",
+      "license_inventory": "passed",
+      "sensitive_material_scan": "passed",
+      "sbom_components": 113
+    },
+    "source_locator_and_hash_guard": "passed"
+  }
+}
