@@ -50,7 +50,16 @@ jobs:
       - name: Export Cobertura coverage
         if: matrix.os == 'ubuntu-latest' && always()
         run: uv run --locked coverage xml -o coverage.xml
+      - name: Preserve required local coverage evidence
+        if: matrix.os == 'ubuntu-latest' && always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: coverage-${{ github.sha }}
+          path: coverage.xml
+          if-no-files-found: error
       - name: Download pinned Codecov CLI
+        id: codecov_download
+        continue-on-error: true
         if: matrix.os == 'ubuntu-latest' && always()
         shell: bash
         run: |
@@ -63,7 +72,9 @@ jobs:
             "$codecov_binary" | sha256sum --check --strict
           chmod +x "$codecov_binary"
       - name: Upload coverage to Codecov
-        if: matrix.os == 'ubuntu-latest' && always()
+        id: codecov_upload
+        continue-on-error: true
+        if: matrix.os == 'ubuntu-latest' && always() && steps.codecov_download.outcome == 'success'
         uses: codecov/codecov-action@fb8b3582c8e4def4969c97caa2f19720cb33a72f
         with:
           binary: ${{ runner.temp }}/codecovcli_linux
@@ -71,3 +82,8 @@ jobs:
           disable_search: true
           fail_ci_if_error: true
           use_oidc: true
+      - name: Report external coverage upload failure
+        if: matrix.os == 'ubuntu-latest' && always() && (steps.codecov_download.outcome == 'failure' || steps.codecov_upload.outcome == 'failure')
+        shell: bash
+        run: |
+          echo "::warning::External Codecov reporting failed. Required local coverage gate and retained coverage artifact remain authoritative."
