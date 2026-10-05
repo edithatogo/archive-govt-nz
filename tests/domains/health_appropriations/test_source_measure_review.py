@@ -23,7 +23,7 @@ from archive_govt_nz.domains.health_appropriations.source_measure_review import 
 
 ROOT = Path(__file__).resolve().parents[3]
 TRACK = ROOT / TRACK_RELATIVE
-REPORT = TRACK / "source-measure-review-20260927.json"
+REPORT = TRACK / "source-measure-review-20261005.json"
 
 
 def test_review_reports_exact_series_and_preserves_blockers() -> None:

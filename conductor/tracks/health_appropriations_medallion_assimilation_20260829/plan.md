@@ -89,6 +89,10 @@ repository validation command. External gates block only their affected task.
   `budget-2026-estimates-workbook-profile-20261003.md`. This resolves only the
   release-level census for that captured workbook; workbook-native units and
   annual/source coverage remain to be verified.
+  The 2016/17 Vote Health Estimates PDF now has a source-census addendum
+  reconciled to its existing captured object, WARC, fiscal period and structural
+  layout baseline. It does not recapture the PDF or close the wider annual
+  Budget/BEFU/HYEFU/Pharmac census.
 - [x] Review fix: isolate invariant legislation fixtures from generated archive
   ordering and union-algebra examples; retain all strategies, deadlines and
   semantic assertions, then verify full assurance. [M-18; AC-16; d1f2ff31]
@@ -708,6 +712,16 @@ integrated parent head.
   native and installed CLI agreement; other 99 pages and broader coverage remain
   open. See `vote-health-estimates-overview-2015-16-20261005.md`.
   [M-05, M-06, M-11; AC-05, AC-09]
+
+- [x] Add a source-pinned 2016/17 Vote Health overview profile and reconcile its
+  existing source-census/capture/layout records for the 24 monetary statements
+  on PDF pages 2–3. Preserve source-specific category names,
+  tokens, page phrases and share qualifiers without summing or mapping across
+  editions; disposition the other 100 pages as preserved-unreviewed. Keep
+  fact-level rights unevaluated and the output local-only until supported
+  evidence changes those states. No recapture was performed. Required full
+  validation and scoped phase review pass for this bounded slice; broader
+  annual source census remains open. [M-05, M-06, M-11; AC-05, AC-09]
 
 ### 5.3 Normalize analytical context
 

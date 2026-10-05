@@ -114,6 +114,13 @@ SOURCE_SHA256_2015_16 = (
     "dbb8a9c4fab8a53b5279c26d98a5e0a6fa60d9360b88030189d43273bf0e5d1a"
 )
 PAGE_COUNT_2015_16 = 100
+PROFILE_2016_17 = "vote-health-estimates-2016-17-overview/v1"
+TRANSFORMATION_2016_17 = "vote-health-estimates-overview-2016-17/v1"
+VINTAGE_2016_17 = "Treasury-Vote-Health-Estimates-2016-17"
+SOURCE_SHA256_2016_17 = (
+    "c997ffecb631e4dfd0ffd8a1e620585b6b963df11f94164adb2ac02cfa391b2e"
+)
+PAGE_COUNT_2016_17 = 102
 _PROFILE_QUALIFIER_MEASURES_2010_11 = frozenset(
     {"departmental_functions", "health_sector_risk_management"}
 )
@@ -1680,6 +1687,223 @@ _PROFILE_QUALIFIER_MEASURES_2015_16 = (
     frozenset(_PATTERNS_2015_16) - _PROFILE_UNQUALIFIED_MEASURES_2015_16
 )
 
+_PATTERNS_2016_17 = {
+    "vote_total": (
+        2,
+        r"Vote Health \(\$(?P<value>[0-9][0-9,]*) million in 2016/17\)",
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "district_health_boards": (
+        2,
+        (
+            r"\$(?P<value>[0-9][0-9,]*) million \(75\.7% of the Vote\) is "
+            r"provided to 20 district health boards"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "national_health_disability_services_total": (
+        2,
+        (
+            r"\$(?P<value>[0-9][0-9,]*) million \(16\.5% of the Vote\) funds "
+            r"health and disability services, funded at a national level, and "
+            r"managed by the Ministry of Health"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "national_disability_support_services": (
+        2,
+        (
+            r"National Disability Support Services "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 7\.2% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "public_health_service_purchasing": (
+        2,
+        (
+            r"Public Health Service Purchasing "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 2\.5% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "national_elective_services": (
+        2,
+        (
+            r"National Elective Services "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 2\.2% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "primary_health_care_strategy": (
+        2,
+        (
+            r"Primary Health Care Strategy "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 1\.2% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "national_maternity_services": (
+        2,
+        (
+            r"National Maternity Services "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 0\.9% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "national_personal_health_services": (
+        2,
+        (
+            r"National Personal Health Services "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 0\.6% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "national_emergency_services": (
+        2,
+        (
+            r"National Emergency Services "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 0\.6% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "national_child_health_services": (
+        2,
+        (
+            r"National Child Health Services "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 0\.5% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "national_mental_health_services": (
+        2,
+        (
+            r"National Mental Health Services "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 0\.4% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "other_national_services": (
+        2,
+        (
+            r"Other national services "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 0\.4% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "health_sector_support_total": (
+        2,
+        (
+            r"\$(?P<value>[0-9][0-9,]*) million \(2\.8% of the Vote\) for "
+            r"the support, oversight, governance, and development of the health "
+            r"and disability sectors"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "ministry_operating_costs": (
+        2,
+        (
+            r"Ministry of Health operating costs "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 1\.1% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "ministry_capital_investment": (
+        2,
+        (
+            r"capital investment "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 0\.1% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "health_workforce_training_development": (
+        2,
+        (
+            r"Health Workforce Training and Development "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 1\.1% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "consumer_interests_monitoring": (
+        2,
+        (
+            r"Monitoring and protecting health and disability consumer interests "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 0\.2% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "national_health_information_systems": (
+        2,
+        (
+            r"National Health Information Systems "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 0\.1% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "health_sector_other_expenses": (
+        2,
+        r"Other expenses \(\$(?P<value>[0-9][0-9,]*) million or 0\.2% of the Vote\)",
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "capital_investment_total": (
+        3,
+        (
+            r"\$(?P<value>[0-9][0-9,]*) million "
+            r"\(5\.0% of the Vote\) for capital investment"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "sector_capital_investment": (
+        3,
+        (
+            r"sector capital investment "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 4\.2% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "technical_expenditure": (
+        3,
+        (
+            r"technical expenditure "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 0\.5% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+    "dhb_deficit_support_provision": (
+        3,
+        (
+            r"provision for deficit support for DHBs "
+            r"\(\$(?P<value>[0-9][0-9,]*) million or 0\.3% of the Vote\)"
+        ),
+        "$ million, source-reported amount",
+        "2016/17",
+    ),
+}
+_PROFILE_UNQUALIFIED_MEASURES_2016_17 = frozenset({"vote_total"})
+_PROFILE_QUALIFIER_MEASURES_2016_17 = frozenset(_PATTERNS_2016_17) - {"vote_total"}
+
 
 def parse_overview_pages(  # noqa: PLR0913 - profile controls are explicit
     texts: list[str],
@@ -1858,6 +2082,19 @@ def parse_overview_2014_15_pages(texts: list[str]) -> list[dict[str, Any]]:
         second_page_pattern=r"Capital Expenditure",
         profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2014_15,
         profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2014_15,
+    )
+
+
+def parse_overview_2016_17_pages(texts: list[str]) -> list[dict[str, Any]]:
+    """Parse 24 source-specific 2016/17 overview statements on pages 2-3."""
+    return parse_overview_pages(
+        texts,
+        year="2016/17",
+        patterns=_PATTERNS_2016_17,
+        intro_pattern=r"Vote Health\s+\(\$16,142 million in 2016/17\)",
+        second_page_pattern=r"Details of these appropriations are set out in Parts 2-4",
+        profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2016_17,
+        profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2016_17,
     )
 
 
@@ -2440,5 +2677,42 @@ def normalize_vote_health_estimates_overview_2015_16(  # noqa: PLR0913 - explici
             "source_value_rounded_to_whole_million",
             "source_amount_is_not_exact",
         ),
+        dry_run=dry_run,
+    )
+
+
+def normalize_vote_health_estimates_overview_2016_17(  # noqa: PLR0913 - explicit pinned profile
+    source: Path,
+    output_dir: Path,
+    *,
+    expected_sha256: str,
+    source_vintage: str,
+    source_locator: str,
+    observed_at: str,
+    dry_run: bool = True,
+) -> dict[str, object]:
+    """Normalize 24 source-specific 2016/17 overview statements on pages 2-3."""
+    return _normalize_overview(
+        source,
+        output_dir,
+        profile=PROFILE_2016_17,
+        transformation=TRANSFORMATION_2016_17,
+        expected_vintage=VINTAGE_2016_17,
+        expected_source_sha256=SOURCE_SHA256_2016_17,
+        expected_page_count=PAGE_COUNT_2016_17,
+        year="2016/17",
+        patterns=_PATTERNS_2016_17,
+        disposition_reason="twenty_four_selected_2016_17_overview_statements_only",
+        expected_sha256=expected_sha256,
+        source_vintage=source_vintage,
+        source_locator=source_locator,
+        observed_at=observed_at,
+        intro_pattern=r"Vote Health\s+\(\$16,142 million in 2016/17\)",
+        second_page_pattern=(
+            r"Details of these appropriations are set out in Parts 2-4"
+        ),
+        profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2016_17,
+        profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2016_17,
+        additional_quality_flags=("source_reported_in_whole_millions",),
         dry_run=dry_run,
     )

@@ -1,0 +1,380 @@
+{
+  "evidence": [
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/befu-core-expense-20260925.md",
+      "sha256": "2e49234e201518774cdf01a32206de5fed81f5d744b19806e14df9bd38593a02"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.json",
+      "sha256": "91474db2bf996669f41ce6de6341304a1039887ccb948fd94d9f5634b425a88e"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/crown-expense-canonical-projection-20260929.md",
+      "sha256": "8f15569ca56a555cbdb5f416532e6a499ca0df6ef734a2511a54c5798d0d4035"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/evidence.jsonl",
+      "sha256": "29938cdb3b0c36e12d601ad8beb5da5890c3aab6ca90b03c62790f3287e171a7"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-2025-pilot.md",
+      "sha256": "2ac2f1f83e2402c289bdc018dd0446ab9e9ed005361e2ceb4c8e43c3fc3d9001"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-crown-canonical-projection-20260929.md",
+      "sha256": "79461bdcfa05670292d0d72ebc3e3a1c79634e403be75aa109341c05f68708f6"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/fiscal-crown-canonical-recovery-20260929.json",
+      "sha256": "1b6cda8a9ac0727cd4d8b3e09dd6d1ce4535e06fa9ef49898e8e07b1270bc561"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-crown-context.md",
+      "sha256": "9ae0f516309e95c097ea38009d8464953218b6779a6019729100245ff0470dcb"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-june-capture-20260930.json",
+      "sha256": "28609dbc48f7a4b68ea14f277267c7af0e2eec9b274d0c369865d7d090a2b868"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-profile.md",
+      "sha256": "cf541ed83a72eca40e36764e9831b005ed17889169806db24d86994ee466e069"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/gdp-release-observation-20260930.json",
+      "sha256": "5c931e50b74b80d41b92921733ee1e139143570c98d7693fae5f92ad97fea1f7"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/historical-source-register.json",
+      "sha256": "960dc58d20bc29428c58e729743ad51a31e17dee6ca98fe3f82fe17377b50aae"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/historical-source-register.md",
+      "sha256": "1b8235e8cf40b997291f7df58484a721ca7e6493197dbbda088ee40cf3c96bc1"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/hyefu-core-crown-expense-20260929.md",
+      "sha256": "0858f374f7175a0090ce48bdeb1de44c54d76aa69781694426eb5802ba1295c5"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/hyefu-crown-canonical-recovery-20260929.json",
+      "sha256": "ae4fb9103ce4504232003d09a2347c01c3aa38763ec2052cfe04fad9a64a0830"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/index.md",
+      "sha256": "115313e40942932b8f8fca3cd1d1c8ad281b6f5df9a74e4a2564efe449318f79"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/moh-indicators.md",
+      "sha256": "dae3e64b5c2248058554bc83d2c1569b39d4c118e2e1014606105e0d80daa7c6"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/pharmac-cpb.md",
+      "sha256": "63274450f23a1c03af18e23fffb7d6c8f728dc4a3af257bfdf51b70e937e5b44"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-annual-context.json",
+      "sha256": "8bea2c0624b7964b8b94ebe51afa8aa2eadcec20327c23866596dc56ad582a8a"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-annual-export.md",
+      "sha256": "af2550acce99b4ba7e75737c71a105080ee895a6ba48f06e38a45c97f79fd92c"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/population-rights-review-20261002.md",
+      "sha256": "8ef24c1683ed6dacb36f6efff534c30a87d0d8bb7bcb94a00bf6f6f063a6c8e3"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/price-wage-context.md",
+      "sha256": "7f64e03436de79fcc8e86854b1d646fe006fbe8212ac58e14afba0ab6009990c"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-data-collection-metadata-20261002.json",
+      "sha256": "4e56a7cb5074b08fbbf8f8481fe5bd613ac28a42be36443109301b5f7235e008"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-data-collection-metadata-20261002.json.gz",
+      "sha256": "f2903a4134b17018b1ebd0e445de575067da50ff265b966924701f1ad000fedb"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-methodology-rights-review-20261002.md",
+      "sha256": "9350c2a0c634fa754411f36c151d88d11743aac4fd813af62e7d2c52d3ce5802"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-series-metadata-20261002.json",
+      "sha256": "a4c97cf759c2c9a408722adb9332081326ba58e4762606d3c91e306177e756a4"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/qes-series-metadata-20261002.json.gz",
+      "sha256": "a94492c389a058ac19c62e7e12604a801d37ea4cf7ea060d08927f6e0676c466"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
+      "sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272"
+    }
+  ],
+  "observed_at": "2026-10-05T07:22:56Z",
+  "schema_version": "archive-govt-nz.health-source-measure-review/v1",
+  "scope": "inventory_and_period_rights_assessment_only_no_analytical_admission_or_legal_approval",
+  "series": {
+    "core_crown": {
+      "analytical_status": "BEFU-2026 and HYEFU-2025 core Crown source-faithful canonical fiscal-context projections exist; cache freshness, currency, financial-year boundaries, rights, and historical/forecast comparability remain unqualified",
+      "period_basis": "Fiscal Time Series June years with accounting basis transitions: old-GAAP 1994–1996, IFRS 1997–2004, PBE Standards 2005–2025. Forecast workbook formula caches and explicit financial-year metadata are not qualified; keep each release vintage and Actual/Forecast status separate.",
+      "rights": "publisher_defaults_observed_exceptions_unadjudicated",
+      "series_id": "Treasury Fiscal Time Series Spending!D4 / Core Crown Expenses; BEFU Core Crown Expense Tables!D26; HYEFU Core Crown Expense Tables!D25",
+      "vintage_or_range": "Treasury Fiscal Time Series 1994–2025; BEFU 2026 and HYEFU 2025 tables have 2021–2030 cells, labelled Actual 2021–2025 and Forecast 2026–2030"
+    },
+    "cpi": {
+      "analytical_status": "captured and exact source profile exists; no deflator or annual mean approved",
+      "period_basis": "Quarter-ending index levels; fiscal-year annual aggregation/rebasing is not selected. CPI measures household-purchased goods and services, not health-specific input costs.",
+      "rights": "publisher_default_observed_unadjudicated",
+      "series_id": "CPIQ.SE9A",
+      "vintage_or_range": "Stats NZ Consumers Price Index June 2026 quarter; 449 quarterly selected rows from 1914Q2 to 2026Q2; Index, June 2017 quarter = 1000"
+    },
+    "gdp": {
+      "analytical_status": "March and June vintages separately captured and source-profiled; GDP-share denominator remains blocked",
+      "period_basis": "Current-price quarterly flow; fiscal annual share requires four explicitly matching quarterly flows or a period-aligned Treasury June-year total. Currency code, aggregation, vintage splice and projection remain unqualified.",
+      "rights": "publisher_default_observed_unadjudicated",
+      "series_id": "Stats NZ GDP expenditure measure — Table 1 reference SG03AB01GE00S900, workbook prefix SNEQ",
+      "vintage_or_range": "March 2026 vintage: 60 quarters 2011Q2–2026Q1. Official GDP release for June 2026 exists; its captured successor is Table 1 C27:BK27, 61 quarters 2011Q2–2026Q2, preserved separately with no implicit splice."
+    },
+    "pharmac": {
+      "analytical_status": "captured table characterized; preserve caption/table discrepancy and structural break; no homogeneous longitudinal measure asserted",
+      "period_basis": "Financial years explicitly 1 July–30 June. Regime/holding boundary at 1 July 2022 from DHB-coordinated CPB to National Pharmaceutical Purchasing Appropriation; budget is not actual spending or health outcome.",
+      "rights": "pharmac_default_observed_unadjudicated",
+      "series_id": "Pharmac Combined Pharmaceutical Budget table — published medicine-budget amounts and changes",
+      "vintage_or_range": "Captured page last updated 2026-08-07; table covers 2013/14–2026/27; caption ends 2025/26"
+    },
+    "population": {
+      "analytical_status": "numeric export fixed and Silver context-only; no per-capita measure admitted",
+      "period_basis": "Mean year ended annual estimate aligns in concept with annual flow denominators at the same June-year endpoint; selected denominator and approval remain open. This is not an as-at stock.",
+      "rights": "publisher_default_observed_unadjudicated",
+      "series_id": "DPE056AA — Estimated Resident Population by Age and Sex (1991+) (Annual-Jun)",
+      "source_export": "https://infoshare.stats.govt.nz/ExportDirect.aspx",
+      "source_export_acquired_at": "2026-09-25T09:37:50Z",
+      "source_export_bytes": 1676,
+      "source_sha256": "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9",
+      "vintage_or_range": "Stats NZ release 2026-08-18; mean year ended, Total, Total All Ages; 1991–2026; 36 rows, one unavailable '..' and two provisional 'P' statuses"
+    },
+    "total_crown": {
+      "analytical_status": "exact source cells identified; no canonical expense adapter or comparability approval",
+      "period_basis": "June years; accounting/consolidation and restatement footnotes apply. Keep distinct from Core Crown Expenses and Financial Net Expenditure; no year-only join.",
+      "rights": "publisher_defaults_observed_exceptions_unadjudicated",
+      "series_id": "Treasury Fiscal Time Series Spending!E4 / Total Crown Expenses",
+      "vintage_or_range": "Treasury Fiscal Time Series 1997–2025; 29 annual cells"
+    },
+    "vote_health": {
+      "analytical_status": "published Ministry indicators remain distinct from independently calculated health spending; Treasury locator census is complete to the index but repository capture remains incomplete",
+      "period_basis": "HAIR figure labels exclude capital, COVID-19 and DSS; precise dates, currency/scale, real-price base, deflator and denominator methods remain unspecified in the retained originals. Estimates/Supplementary Editions are distinct; use actual annual year endpoints and preserve vintage.",
+      "rights": "publisher_defaults_observed_exceptions_unadjudicated",
+      "series_id": "Ministry HAIR2024 Figures 27–28; Treasury Vote Health Estimates, Supplementary Estimates and supporting information",
+      "vintage_or_range": "MoH nominal/real and per-capita indicators cover 2005/06–2024/25. Treasury Historical Vote Information index covers Vote Health chapters for Budget years 1998–2026. Repository capture register contains 58 PDFs; 10 Estimates years (2008–2013, 2018–2021) and Supplementary years 2012/13 and 2025/26 are located but not in that captured register."
+    },
+    "wages": {
+      "analytical_status": "captured and exact source profile exists; QES methodology confirms composition effects, so this is not a constant-quality wage index; official evidence identifies the selected ordinary-time hourly earnings indicator as not seasonally adjusted; ISO currency, annual weighting, rights eligibility, and deflator selection remain unqualified",
+      "period_basis": "Stats NZ defines each QES quarter by the pay week ending on or before the 20th of its middle month; quarter-label renaming in 2003 did not change that reference week. Selected 2024Q2–2026Q2 observations follow the March-2021 KAU redesign and March-2023 sample rotation. QES is a sampled business measure, weighted by employee counts and subject to imputation; industry and occupation composition affect average earnings. The quarterly value is not a full-quarter average.",
+      "rights": "publisher_default_observed_unadjudicated",
+      "series_id": "QEMQ.SASZ9A",
+      "vintage_or_range": "Stats NZ Quarterly Employment Survey June 2026 workbook Table 8; total sector ordinary-time average hourly earnings; nine quarter levels 2024Q2–2026Q2; source unit '$' per paid hour"
+    }
+  },
+  "series_count": 8,
+  "source_families": {
+    "budget_befu_hyefu": {
+      "captured_befu_editions": [
+        2026
+      ],
+      "captured_budget_editions": [
+        2026
+      ],
+      "captured_hyefu_editions": [
+        2025
+      ],
+      "known_historical_workbook_locator_register_editions": [
+        1997,
+        2001,
+        2005,
+        2007,
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "period_and_rights_state": "Budget workbooks retain edition-specific actual/estimated actual/budget periods and warn prior detail is not restated after restructuring; BEFU/HYEFU vintages are separate. Captured current files have publisher CC-BY-4.0 metadata; locator-only historical rows have unknown item-level rights and no retained bytes."
+    },
+    "historical_editions": {
+      "captured_current_edition_workbooks": [
+        "Budget 2026",
+        "BEFU 2026",
+        "HYEFU 2025"
+      ],
+      "complete": false,
+      "editions_missing_locators": [
+        1998,
+        1999,
+        2000,
+        2002,
+        2003,
+        2004,
+        2006,
+        2025,
+        2026
+      ],
+      "editions_with_locators": [
+        1997,
+        2001,
+        2005,
+        2007,
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "fully_enumerated_editions": [],
+      "locator_count": 68,
+      "scoped_years": [
+        1997,
+        1998,
+        1999,
+        2000,
+        2001,
+        2002,
+        2003,
+        2004,
+        2005,
+        2006,
+        2007,
+        2008,
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ]
+    },
+    "vote_health": {
+      "captured_documents": 59,
+      "discovered_estimates_urls": {
+        "2009": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2009-10",
+        "2010": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2010-11",
+        "2011": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2011-12",
+        "2012": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2012-13",
+        "2013": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2013-14",
+        "2018": "https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2018-19",
+        "2019": "https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2019-20",
+        "2020": "https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2020-21",
+        "2021": "https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2021-22"
+      },
+      "discovered_supplementary_urls": {
+        "2012": "https://www.treasury.govt.nz/publications/supplementary-estimates/vote-health-supplementary-estimates-appropriations-2012-13",
+        "2026": "https://www.treasury.govt.nz/publications/supplementary-estimates/vote-health-supplementary-estimates-appropriations-2025-26"
+      },
+      "estimates_years": [
+        1998,
+        1999,
+        2000,
+        2001,
+        2002,
+        2003,
+        2004,
+        2005,
+        2006,
+        2007,
+        2008,
+        2014,
+        2015,
+        2016,
+        2017,
+        2022,
+        2023,
+        2024,
+        2025,
+        2026
+      ],
+      "missing_estimates_years": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2018,
+        2019,
+        2020,
+        2021
+      ],
+      "missing_supplementary_years": [
+        2012,
+        2026
+      ],
+      "rights_state": "publisher default CC-BY-4.0 observed; no exception adjudication or release approval",
+      "supplementary_years": [
+        1998,
+        1999,
+        2000,
+        2001,
+        2002,
+        2003,
+        2004,
+        2005,
+        2006,
+        2007,
+        2008,
+        2009,
+        2010,
+        2011,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ]
+    }
+  }
+}
