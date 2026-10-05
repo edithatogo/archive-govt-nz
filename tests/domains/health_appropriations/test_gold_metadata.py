@@ -19,10 +19,12 @@ from tests.domains.health_appropriations.test_fiscal_analytical_gold import (
     fixture_tables,
 )
 
+from archive_govt_nz.cli import app
 from archive_govt_nz.domains.health_appropriations import (
     fiscal_analytical_gold as fiscal,
 )
 from archive_govt_nz.domains.health_appropriations import gold_metadata as metadata
+from archive_govt_nz.mcp_server import call_tool
 
 pytest_plugins = ["tests.domains.health_appropriations.test_local_rdf"]
 
@@ -326,6 +328,65 @@ def test_tampered_inputs_outputs_and_pins_are_rejected(
     ):
         metadata.export_gold_metadata(values, tmp_path / "not-created", write=True)
     assert not (tmp_path / "not-created").exists()
+
+
+def test_gold_metadata_cli_and_mcp_verifiers_are_read_only_and_match(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    values = packages(tmp_path, monkeypatch)
+    output = tmp_path / "metadata"
+    built = metadata.export_gold_metadata(values, output, write=True)
+    before = {
+        root / path.name: path.read_bytes()
+        for root in (output, *(value.root for value in values))
+        for path in root.iterdir()
+    }
+    expected = metadata.verify_gold_metadata(values, output, built["manifest_sha256"])
+    fiscal = next(value for value in values if value.profile == "fiscal_analytical")
+    budget = next(value for value in values if value.profile == "budget_comparison")
+    args = {
+        "fiscal_package": str(fiscal.root),
+        "fiscal_manifest_sha256": fiscal.manifest_sha256,
+        "budget_package": str(budget.root),
+        "budget_manifest_sha256": budget.manifest_sha256,
+        "output_dir": str(output),
+        "manifest_sha256": built["manifest_sha256"],
+    }
+
+    cli_result = app(
+        [
+            "health-appropriations-verify-gold-metadata",
+            "--fiscal-package",
+            args["fiscal_package"],
+            "--fiscal-manifest-sha256",
+            args["fiscal_manifest_sha256"],
+            "--budget-package",
+            args["budget_package"],
+            "--budget-manifest-sha256",
+            args["budget_manifest_sha256"],
+            "--output-dir",
+            args["output_dir"],
+            "--manifest-sha256",
+            args["manifest_sha256"],
+        ],
+        exit_on_error=False,
+        result_action="return_value",
+    )
+    cli_receipt = json.loads(capsys.readouterr().out)
+    assert cli_result == 0
+    assert cli_receipt.pop("command") == "health-appropriations-verify-gold-metadata"
+    assert cli_receipt == expected
+    assert call_tool("health_appropriations_verify_gold_metadata", args) == expected
+    assert before == {
+        root / path.name: path.read_bytes()
+        for root in (output, *(value.root for value in values))
+        for path in root.iterdir()
+    }
+    assert expected["status"] == "verified"
+    assert expected["rights"] == "not_evaluated"
+    assert expected["publication"] == "not_performed"
 
 
 def test_offline_rdf_graphs_have_exact_inventory_and_derivation(
