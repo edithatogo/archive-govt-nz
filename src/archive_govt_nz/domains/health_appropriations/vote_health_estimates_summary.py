@@ -121,6 +121,13 @@ SOURCE_SHA256_2016_17 = (
     "c997ffecb631e4dfd0ffd8a1e620585b6b963df11f94164adb2ac02cfa391b2e"
 )
 PAGE_COUNT_2016_17 = 102
+PROFILE_2017_18 = "vote-health-estimates-2017-18-overview/v1"
+TRANSFORMATION_2017_18 = "vote-health-estimates-overview-2017-18/v1"
+VINTAGE_2017_18 = "Treasury-Vote-Health-Estimates-2017-18"
+SOURCE_SHA256_2017_18 = (
+    "3fc0cc6a193c232e9278389f42dbd9003cff03228ac3c83cbfe58452f5711604"
+)
+PAGE_COUNT_2017_18 = 95
 _PROFILE_QUALIFIER_MEASURES_2010_11 = frozenset(
     {"departmental_functions", "health_sector_risk_management"}
 )
@@ -1904,6 +1911,95 @@ _PATTERNS_2016_17 = {
 _PROFILE_UNQUALIFIED_MEASURES_2016_17 = frozenset({"vote_total"})
 _PROFILE_QUALIFIER_MEASURES_2016_17 = frozenset(_PATTERNS_2016_17) - {"vote_total"}
 
+_AMOUNT_2017_18 = r"(?P<value>[0-9][0-9,]*)"
+_UNIT_2017_18 = "$ million, source-reported amount"
+_YEAR_2017_18 = "2017/18"
+
+
+def _overview_2017_18(pattern: str) -> tuple[int, str, str, str]:
+    return (2, pattern, _UNIT_2017_18, _YEAR_2017_18)
+
+
+_PATTERNS_2017_18 = {
+    "vote_total": _overview_2017_18(
+        rf"Vote Health \(\${_AMOUNT_2017_18} million in 2017/18\)"
+    ),
+    "district_health_boards": _overview_2017_18(
+        rf"\${_AMOUNT_2017_18} million \(75\.6% of the Vote\) is provided to 20 district health boards"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "national_health_disability_services_total": _overview_2017_18(
+        rf"\${_AMOUNT_2017_18} million \(16\.0% of the Vote\) funds health and disability services, funded at a national level, and managed by the Ministry of Health"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "national_disability_support_services": _overview_2017_18(
+        rf"National Disability Support Services \(\${_AMOUNT_2017_18} million or 7\.0% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "public_health_service_purchasing": _overview_2017_18(
+        rf"Public Health Service Purchasing \(\${_AMOUNT_2017_18} million or 2\.4% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "national_elective_services": _overview_2017_18(
+        rf"National Elective Services \(\${_AMOUNT_2017_18} million or 2\.1% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "primary_health_care_strategy": _overview_2017_18(
+        rf"Primary Health Care Strategy \(\${_AMOUNT_2017_18} million or 1\.2% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "national_maternity_services": _overview_2017_18(
+        rf"National Maternity Services \(\${_AMOUNT_2017_18} million or 0\.9% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "national_emergency_services": _overview_2017_18(
+        rf"National Emergency Services \(\${_AMOUNT_2017_18} million or 0\.7% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "national_child_health_services": _overview_2017_18(
+        rf"National Child Health Services \(\${_AMOUNT_2017_18} million or 0\.5% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "national_personal_health_services": _overview_2017_18(
+        rf"National Personal Health Services \(\${_AMOUNT_2017_18} million or 0\.5% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "national_mental_health_services": _overview_2017_18(
+        rf"National Mental Health Services \(\${_AMOUNT_2017_18} million or 0\.4% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "other_national_services": _overview_2017_18(
+        rf"Other national services \(\${_AMOUNT_2017_18} million or 0\.3% of the Vote\)"
+    ),
+    "health_sector_support_total": _overview_2017_18(
+        rf"\${_AMOUNT_2017_18} million \(4\.4% of the Vote\) for the support, oversight, governance, and development of the health and disability sectors"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "ministry_operating_costs": _overview_2017_18(
+        rf"Ministry of Health operating costs \(\${_AMOUNT_2017_18} million or 1\.2% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "ministry_capital_investment": _overview_2017_18(
+        rf"capital investment \(\${_AMOUNT_2017_18} million or less than 0\.1% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "care_and_support_workers_equitable_pay": _overview_2017_18(
+        rf"Supporting Equitable Pay for Care and Support Workers \(\${_AMOUNT_2017_18} million or 1\.7% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "health_workforce_training_development": _overview_2017_18(
+        rf"Health Workforce Training and Development \(\${_AMOUNT_2017_18} million or 1\.1% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "consumer_interests_monitoring": _overview_2017_18(
+        rf"Monitoring and Protecting Health and Disability Consumer Interests \(\${_AMOUNT_2017_18} million or 0\.2% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "national_health_information_systems": _overview_2017_18(
+        rf"National Health Information Systems \(\${_AMOUNT_2017_18} million or less than 0\.1% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "health_sector_other_expenses": _overview_2017_18(
+        rf"Other expenses \(\${_AMOUNT_2017_18} million or 0\.2% of the Vote\)"
+    ),
+    "capital_investment_total": _overview_2017_18(
+        rf"\${_AMOUNT_2017_18} million \(4\.0% of the Vote\) for capital investment"
+    ),
+    "sector_capital_investment": _overview_2017_18(
+        rf"sector capital investment \(\${_AMOUNT_2017_18} million or 3\.5% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "technical_expenditure": _overview_2017_18(
+        rf"technical expenditure \(\${_AMOUNT_2017_18} million or less than 0\.1% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+    "dhb_deficit_support_provision": _overview_2017_18(
+        rf"provision for deficit support for DHBs \(\${_AMOUNT_2017_18} million or 0\.3% of the Vote\)"  # noqa: E501 - source phrase is pinned verbatim
+    ),
+}
+_PROFILE_UNQUALIFIED_MEASURES_2017_18 = frozenset({"vote_total"})
+_PROFILE_QUALIFIER_MEASURES_2017_18 = frozenset(_PATTERNS_2017_18) - {"vote_total"}
+
 
 def parse_overview_pages(  # noqa: PLR0913 - profile controls are explicit
     texts: list[str],
@@ -2095,6 +2191,19 @@ def parse_overview_2016_17_pages(texts: list[str]) -> list[dict[str, Any]]:
         second_page_pattern=r"Details of these appropriations are set out in Parts 2-4",
         profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2016_17,
         profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2016_17,
+    )
+
+
+def parse_overview_2017_18_pages(texts: list[str]) -> list[dict[str, Any]]:
+    """Parse 25 source-specific 2017/18 overview statements on page 2."""
+    return parse_overview_pages(
+        texts,
+        year="2017/18",
+        patterns=_PATTERNS_2017_18,
+        intro_pattern=r"Vote Health\s+\(\$16,773 million in 2017/18\)",
+        second_page_pattern=r"Details of Appropriations and Capital Injections",
+        profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2017_18,
+        profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2017_18,
     )
 
 
@@ -2713,6 +2822,41 @@ def normalize_vote_health_estimates_overview_2016_17(  # noqa: PLR0913 - explici
         ),
         profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2016_17,
         profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2016_17,
+        additional_quality_flags=("source_reported_in_whole_millions",),
+        dry_run=dry_run,
+    )
+
+
+def normalize_vote_health_estimates_overview_2017_18(  # noqa: PLR0913 - explicit pinned profile
+    source: Path,
+    output_dir: Path,
+    *,
+    expected_sha256: str,
+    source_vintage: str,
+    source_locator: str,
+    observed_at: str,
+    dry_run: bool = True,
+) -> dict[str, object]:
+    """Normalize 25 source-specific 2017/18 overview statements on page 2."""
+    return _normalize_overview(
+        source,
+        output_dir,
+        profile=PROFILE_2017_18,
+        transformation=TRANSFORMATION_2017_18,
+        expected_vintage=VINTAGE_2017_18,
+        expected_source_sha256=SOURCE_SHA256_2017_18,
+        expected_page_count=PAGE_COUNT_2017_18,
+        year="2017/18",
+        patterns=_PATTERNS_2017_18,
+        disposition_reason="twenty_five_selected_2017_18_overview_statements_only",
+        expected_sha256=expected_sha256,
+        source_vintage=source_vintage,
+        source_locator=source_locator,
+        observed_at=observed_at,
+        intro_pattern=r"Vote Health\s+\(\$16,773 million in 2017/18\)",
+        second_page_pattern=r"Details of Appropriations and Capital Injections",
+        profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2017_18,
+        profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2017_18,
         additional_quality_flags=("source_reported_in_whole_millions",),
         dry_run=dry_run,
     )

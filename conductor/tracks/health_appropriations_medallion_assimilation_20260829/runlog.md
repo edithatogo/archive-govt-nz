@@ -4777,3 +4777,20 @@ values are unchanged. Focused tests passed (15); required validation passed:
 documents, parity 9/9, configured mutation gates, hygiene and supply-chain
 checks. Hosted checks remain pending on the PR; broader Phase 3 and Phase 4
 work remains open.
+
+## 2026-10-05 — 2017/18 Vote Health Estimates overview Silver profile
+
+Reused the captured Budget 2017 Estimates PDF and its WARC, verified the exact
+Bronze hash, byte count and 95-page structure, then reviewed PDF pages 2–3 to
+pin the edition layout. Added a page-2 parser and allowlisted source-operation
+profile for 25 source-reported amount statements. Page 3 confirms the detail
+section boundary; the other 94 pages remain outside the profile. Source labels,
+period, whole-million values and source-stated share qualifiers are retained;
+currency is unset, rights remain unevaluated, and the result is local-only.
+
+Two builds from the same Bronze object produced identical Parquet and manifest
+hashes. The source-census addendum and machine receipt record the period,
+edition, units, capture/WARC evidence and explicit gaps. The 2017/18
+Supplementary Estimates and CPI, wage, population, GDP and Crown context remain
+separate. Focused tests pass. Required full validation and hosted checks are
+pending; see `vote-health-estimates-overview-2017-18-20261005.json`.
