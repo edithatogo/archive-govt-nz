@@ -32,6 +32,9 @@ from archive_govt_nz.domains.health_appropriations import (
     qes,
     qes_canonical_projection,
 )
+from archive_govt_nz.domains.health_appropriations.analytical_metadata_recovery import (
+    recover_analytical_metadata,
+)
 from archive_govt_nz.domains.health_appropriations.budget_canonical_export import (
     export_budget_appropriations,
 )
@@ -54,9 +57,6 @@ from archive_govt_nz.domains.health_appropriations.compatibility_export import (
 )
 from archive_govt_nz.domains.health_appropriations.context_gold import (
     export_context_gold,
-)
-from archive_govt_nz.domains.health_appropriations.fiscal_analytical_recovery import (
-    recover_fiscal_analytical_products,
 )
 from archive_govt_nz.domains.health_appropriations.gold_export import export_gold
 from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
@@ -1739,9 +1739,13 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0915 - recovery products share a 
         outputs["pharmac_canonical_projection"] = _pharmac_recovery_report(root)
         outputs["moh_indicators_canonical_projection"] = _moh_recovery_report(root)
         outputs["canonical_gold"] = _canonical_gold_recovery_report(root)
-        outputs["fiscal_analytical_gold_reports_interfaces"] = (
-            recover_fiscal_analytical_products(ARCHIVE, root / "fiscal-analytics")
+        analytical = recover_analytical_metadata(
+            ARCHIVE, root / "analytical-metadata", write=True
         )
+        outputs["fiscal_analytical_gold_reports_interfaces"] = analytical[
+            "fiscal_recovery"
+        ]
+        outputs["analytical_gold_and_metadata_recovery"] = analytical
         outputs["source_health_report"] = source_health_recovery_report()
         outputs["classification_label_occurrences"] = (
             classification_label_occurrence_report()

@@ -464,8 +464,13 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     monkeypatch.setattr(MODULE, "canonical_inputs", lambda _root: ())
     monkeypatch.setattr(
         MODULE,
-        "recover_fiscal_analytical_products",
-        lambda _archive, _root: {"status": "verified", "fresh_bronze_builds": 2},
+        "recover_analytical_metadata",
+        lambda _archive, _root, **_kwargs: {
+            "status": "verified",
+            "fresh_bronze_builds": 2,
+            "fiscal_recovery": {"status": "verified", "fresh_bronze_builds": 2},
+            "full_standards_conformance": "not_asserted",
+        },
     )
     monkeypatch.setattr(
         MODULE,
@@ -617,6 +622,18 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
         "status": "verified",
         "fresh_bronze_builds": 2,
     }
+    assert (
+        result["products_rebuilt"]["analytical_gold_and_metadata_recovery"][
+            "fresh_bronze_builds"
+        ]
+        == 2
+    )
+    assert (
+        result["products_rebuilt"]["analytical_gold_and_metadata_recovery"][
+            "full_standards_conformance"
+        ]
+        == "not_asserted"
+    )
     assert result["products_rebuilt"]["canonical_gold"]["status"] == "blocked"
     assert result["products_rebuilt"]["context_gold"]["repeat_identical"] is True
     assert (

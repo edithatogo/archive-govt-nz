@@ -1161,6 +1161,13 @@ integrated parent head.
 
 ### 9.1 Clean-room reconstruction
 
+- [x] Add an installed dry-run/exclusive-write recovery command for two fresh
+  analytical runs, consuming only five Bronze originals and three pinned
+  definitions. Rebuild Fiscal products/reports, Budget comparison and both
+  metadata packages; verify repeat inventories, unchanged originals and exact
+  retained-product equality. Broader source families, standards conformance and
+  final Health recovery remain open. [M-10, M-16, M-18; AC-08, AC-12, AC-16]
+
 - [x] Perform two fresh empty-derivative four-profile original-to-raw,
   compatibility SQLite, Gold and plot replays; compare all files and reverify
   donor originals. Record cross-runtime SQLite drift separately. This excludes
