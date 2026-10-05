@@ -54,3 +54,15 @@ recovery result supports only its enumerated product lanes; it does not prove
 all Must requirements. Phase 9's review task is complete as a review, with
 findings recorded and decision-dependent claims left open. The Phase 10.3
 completion checkbox remains open until all Must requirements are evidenced.
+
+## Addendum — 2018/19 Vote Health recovery lane
+
+The bounded 2018/19 category-total profile added after the initial review is
+now part of the integrated recovery path. The updated
+`clean-room-recovery-20261006-vote-health-2018-19.json` receipt records two
+identical Bronze-derived builds and unchanged Bronze objects, while retaining
+the overall `partial_with_blockers` status and the previously classified
+unresolved products and decisions. Focused tests and the full repository
+validation harness passed on this exact tree. Review of the added integration
+found no further local defect; the track and Phase 9 completion gate remain
+open pending the documented work.

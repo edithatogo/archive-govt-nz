@@ -4855,3 +4855,18 @@ hygiene and supply-chain gates, and 113 SBOM components. Automatic Conductor
 `phase_7_gates` review passed. This is one bounded Supplementary Estimates
 slice; other PDF pages, source years, rights, comparability and publication
 remain open.
+
+## 2026-10-06 — Integrate 2018/19 category totals into clean-room recovery
+
+Extended `tools/health_recovery_assurance.py` so this exact-hash-bound profile
+is rebuilt twice from Bronze as part of Phase 9 clean-room recovery. The fresh
+receipt `clean-room-recovery-20261006-vote-health-2018-19.json` records seven
+facts across five pages, identical output digests across both builds, and
+unchanged Bronze objects. The complete recovery remains
+`partial_with_blockers`: cross-source comparison, other source-native profiles
+and canonical adapters, and complete Platinum metadata are still not rebuilt.
+Publication was not performed and rights remain unevaluated. Focused recovery
+tests passed (10 tests). `./scripts/validate.sh` passed on this tree: 7,496
+tests passed, 10 skipped, 97.77% coverage against the 80% floor; formatting,
+lint, typing, 56 schemas/46 representative documents, parity 9/9, configured
+mutation and supply-chain gates passed (113 SBOM components).
