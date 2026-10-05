@@ -347,7 +347,9 @@ integrated parent head.
   links. Common dispatch coverage for other source-operation profiles,
   Pharmac CPB HTML is now supported through its exact-profile adapter;
   the reviewed 2003/04 Vote Health composite PDF profile is now registered;
-  other Vote Health PDF layouts and SQLite remain open. See
+  the pinned 2016/17 Estimates overview now also dispatches through its
+  source-specific parser with all-page dispositions and field lineage. Other
+  Vote Health PDF layouts and SQLite remain open. See
   `adapter-dispatch.validation.json`, `budget-adapter.validation.json`, and
   `budget-revenue-adapter.validation.json` and
   `context-adapters.validation.json`. [M-05, M-07; AC-03, AC-05]
