@@ -25,10 +25,12 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
     assert report["publication_authorized"] is False
     assert report["whole_history_complete"] is False
     records = report["resource_observations"]
-    assert len(records) == 69
+    assert len(records) == 71
     assert len({row["url"] for row in records}) == len(records)
     assert len({row["source_id"] for row in records}) == len(records)
-    assert len({(r["edition_year"], r["family"], r["kind"]) for r in records}) == 69
+    assert len({(r["edition_year"], r["family"], r["kind"]) for r in records}) == len(
+        records
+    )
     assert len(records) == len(
         {(r["edition_year"], r["family"], r["kind"]) for r in records}
     )
@@ -42,6 +44,8 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
         ("befu", "sna_series_tables"),
         ("befu", "gaap_series_tables"),
         ("befu", "expenses"),
+        ("vote_health", "main_estimates"),
+        ("vote_health", "supplementary_estimates"),
     }
     assert {
         (row["edition_year"], row["family"], row["kind"])
@@ -129,6 +133,34 @@ def test_befu_2002_locator_preserves_rights_and_fixity_gaps() -> None:
     assert source["rights_state"] == "not_evaluated"
     assert source["sha256"] is None
     assert source["byte_count"] is None
+
+
+def test_vote_health_2002_locators_preserve_period_and_restructuring_context() -> None:
+    """The two exact Vote Health PDFs keep their distinct fiscal periods."""
+    path = (
+        Path(__file__).parents[2]
+        / "conductor/tracks/health_appropriations_medallion_assimilation_20260829"
+        / "historical-source-register.json"
+    )
+    report = json.loads(path.read_text(encoding="utf-8"))
+    records = report["resource_observations"]
+    sources = {
+        row["kind"]: row
+        for row in records
+        if row["edition_year"] == 2002 and row["family"] == "vote_health"
+    }
+    assert set(sources) == {"main_estimates", "supplementary_estimates"}
+    assert sources["main_estimates"]["fiscal_year"] == "2002/03"
+    assert sources["main_estimates"]["url"].endswith("/est02health.pdf")
+    assert sources["supplementary_estimates"]["fiscal_year"] == "2001/02"
+    assert sources["supplementary_estimates"]["url"].endswith("/supp02health.pdf")
+    for source in sources.values():
+        assert source["rights_state"] == "not_evaluated"
+        assert source["rights_evidence"] == "resource_page_states_cc_by_4_0"
+        assert source["sha256"] is None
+        assert source["byte_count"] is None
+    assert report["fully_enumerated_editions"] == []
+    assert report["pending_editions"] == list(range(1997, 2027))
 
 
 def test_2017_budget_updates_and_hyefu_locators_are_bounded() -> None:

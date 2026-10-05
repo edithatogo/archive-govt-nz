@@ -1,7 +1,7 @@
 {
   "schema_version": "archive-govt-nz.health-historical-sources/v1",
-  "observed_at": "2026-10-05T17:04:32Z",
-  "observation_method": "Read-only web retrieval of official index and edition pages; spreadsheet link targets and PDF text observed, original bytes not retained or fixity-verified; additional official Treasury landing pages and linked Budget workbook locators observed 2026-09-27; resource payloads not retained or fixity-verified; Budget 2009–2013 workbook and BEFU 2013–2016 official source pages located 2026-09-27; locators remain un-captured and un-hashed; official Treasury Budget 2007–2008 workbook titles and BEFU source pages through 2001 observed 2026-09-27; locator-only, no payload hashes; official BEFU 2002 GAAP Series Tables landing page and PDF source/period metadata observed 2026-10-05; locator only, no payload hash or item-level rights adjudication",
+  "observed_at": "2026-10-05T17:48:29Z",
+  "observation_method": "Read-only web retrieval of official index and edition pages; spreadsheet link targets and PDF text observed, original bytes not retained or fixity-verified; additional official Treasury landing pages and linked Budget workbook locators observed 2026-09-27; resource payloads not retained or fixity-verified; Budget 2009–2013 workbook and BEFU 2013–2016 official source pages located 2026-09-27; locators remain un-captured and un-hashed; official Treasury Budget 2007–2008 workbook titles and BEFU source pages through 2001 observed 2026-09-27; locator-only, no payload hashes; official BEFU 2002 GAAP Series Tables landing page and PDF source/period metadata observed 2026-10-05; locator only, no payload hash or item-level rights adjudication; official Treasury Vote Health Budget 2002 main and supplementary estimate pages and PDFs observed 2026-10-06; locator-only, original bytes not retained or fixity-verified and page-level CC BY evidence not adjudicated",
   "index_url": "https://www.treasury.govt.nz/publications/budgets/current-and-past-budgets",
   "index_last_updated": "2026-05-28",
   "edition_years": [
@@ -132,7 +132,10 @@
     "https://www.treasury.govt.nz/publications/data/budget-2011-data-estimates-appropriations-2011-12",
     "https://www.treasury.govt.nz/publications/data/budget-2012-data-estimates-appropriations-2012-13",
     "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-2002",
-    "https://www.treasury.govt.nz/publications/budgets/budget-2002"
+    "https://www.treasury.govt.nz/publications/budgets/budget-2002",
+    "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2002-03",
+    "https://www.treasury.govt.nz/publications/budgets/vote-information?vote=1640&year=All",
+    "https://www.treasury.govt.nz/publications/supplementary-estimates/vote-health-supplementary-estimates-appropriations-2001-02"
   ],
   "resource_observations": [
     {
@@ -1016,6 +1019,34 @@
       "byte_count": null,
       "rights_state": "not_evaluated",
       "source_id": "treasury-historical-3b219d39cb04ec15"
+    },
+    {
+      "edition_year": 2002,
+      "family": "vote_health",
+      "kind": "main_estimates",
+      "landing_url": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2002-03",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/est02health.pdf",
+      "disposition": "discovered",
+      "sha256": null,
+      "byte_count": null,
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-fd37e5ad2657936d",
+      "rights_evidence": "resource_page_states_cc_by_4_0",
+      "fiscal_year": "2002/03"
+    },
+    {
+      "edition_year": 2002,
+      "family": "vote_health",
+      "kind": "supplementary_estimates",
+      "landing_url": "https://www.treasury.govt.nz/publications/supplementary-estimates/vote-health-supplementary-estimates-appropriations-2001-02",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/supp02health.pdf",
+      "disposition": "discovered",
+      "sha256": null,
+      "byte_count": null,
+      "rights_state": "not_evaluated",
+      "source_id": "treasury-historical-f6d63e6d47916167",
+      "rights_evidence": "resource_page_states_cc_by_4_0",
+      "fiscal_year": "2001/02"
     }
   ],
   "unresolved": [

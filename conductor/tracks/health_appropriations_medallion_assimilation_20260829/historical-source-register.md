@@ -7,6 +7,29 @@ electronic documents are not held by Treasury according to that index; other
 custodians have not been investigated. All 30 editions remain pending full
 payload enumeration and reconciliation with existing retained objects.
 
+## Vote Health Estimates and Supplementary Estimates, Budget 2002 — 6 October 2026
+
+Treasury's [historical Vote Health index](https://www.treasury.govt.nz/publications/budgets/vote-information?vote=1640&year=All)
+links the [2002/03 main Estimates chapter](https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2002-03)
+and [2001/02 Supplementary Estimates chapter](https://www.treasury.govt.nz/publications/supplementary-estimates/vote-health-supplementary-estimates-appropriations-2001-02).
+The exact PDFs are `est02health.pdf` (44 pages) and `supp02health.pdf` (19 pages).
+The main chapter reports Vote Health appropriations and Crown revenue for
+2002/03, including total sought of $8,645.493 million and expected Crown
+revenue of $292.005 million. The supplementary chapter reports annual and
+other appropriation fields in `$000`, with separate Main Estimates,
+Supplementary Estimates and cumulative totals for 2001/02; it also contains
+Crown revenue and receipts tables. These are separate fiscal periods and
+statuses, not one continuous measure.
+
+The Treasury history notes that Vote Health Service Providers merged into
+Vote Health in the 2002/03 Estimates. Keep this structural change explicit in
+any future mapping; this locator record does not claim a longitudinally
+comparable series. Each item page states CC BY 4.0, recorded as page-level
+evidence only; bytes remain uncaptured and unhashed, and item-level rights
+remain `not_evaluated`. Both locators are added to the machine register, but
+the 2002 edition and all 30 editions remain pending full source-family
+enumeration.
+
 Each resource has a stable `treasury-historical-` source ID followed by the
 first 16 hexadecimal characters of the SHA-256 of its exact observed URL.
 Uniqueness and derivation are checked by the register test. These identify
