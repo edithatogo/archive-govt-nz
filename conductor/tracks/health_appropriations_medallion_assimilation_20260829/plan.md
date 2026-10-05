@@ -1197,6 +1197,11 @@ integrated parent head.
     Silver inputs and returns the same dry-run receipt as the CLI, with no
     write option or output creation. Rights and denominator selection remain
     unevaluated. See `context-gold-mcp-preflight-20260928.md`.
+  - [x] Add matching non-interactive CLI and read-only MCP verification for the
+    pinned Gold metadata package. Require both source package pins and the
+    output manifest pin; compare reconstructed metadata bytes without writes,
+    preserving unassessed rights and publication states. See
+    `gold-metadata-mcp-verifier-20261005.md`.
 - [x] Add a read-only canonical Gold package verifier to CLI and MCP. Check the
   hash-pinned manifest, exact direct-child output inventory, byte counts and
   SHA-256 values, plus presence of the temporal report; test malformed and

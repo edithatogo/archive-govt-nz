@@ -19,7 +19,10 @@ from archive_govt_nz.domains.health_appropriations import (
 from archive_govt_nz.domains.health_appropriations import (
     fiscal_analytical_operations as fiscal_analytics,
 )
-from archive_govt_nz.domains.health_appropriations import resume_operations
+from archive_govt_nz.domains.health_appropriations import (
+    gold_metadata,
+    resume_operations,
+)
 from archive_govt_nz.domains.health_appropriations.budget_operations import (
     BUDGET_VERIFICATION_SCHEMA,
     verify_budget_package,
@@ -505,6 +508,73 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
         "outputSchema": CONTEXT_GOLD_VERIFICATION_SCHEMA,
         "annotations": {
             "title": "Verify contextual Health Gold package",
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
+    },
+    {
+        "name": "health_appropriations_verify_gold_metadata",
+        "description": (
+            "Rebuild and verify a hash-pinned local Platinum metadata package "
+            "from pinned Fiscal and Budget Gold inputs without writing state. "
+            "This does not evaluate rights or publication readiness."
+        ),
+        "inputSchema": _object_schema(
+            {
+                "fiscal_package": {"type": "string", "minLength": 1},
+                "fiscal_manifest_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$",
+                },
+                "budget_package": {"type": "string", "minLength": 1},
+                "budget_manifest_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$",
+                },
+                "output_dir": {"type": "string", "minLength": 1},
+                "manifest_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$",
+                },
+            },
+            [
+                "fiscal_package",
+                "fiscal_manifest_sha256",
+                "budget_package",
+                "budget_manifest_sha256",
+                "output_dir",
+                "manifest_sha256",
+            ],
+        ),
+        "outputSchema": _object_schema(
+            {
+                "schema_version": {"const": "archive-govt-nz.health-gold-metadata/v3"},
+                "status": {"const": "verified"},
+                "manifest_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$",
+                },
+                "packages": {"const": 2},
+                "rights": {"const": "not_evaluated"},
+                "publication": {"const": "not_performed"},
+                "verification_scope": {
+                    "const": "gold_reverified_metadata_reconstructed"
+                },
+            },
+            [
+                "schema_version",
+                "status",
+                "manifest_sha256",
+                "packages",
+                "rights",
+                "publication",
+                "verification_scope",
+            ],
+        ),
+        "annotations": {
+            "title": "Verify Health Gold metadata package",
             "readOnlyHint": True,
             "destructiveHint": False,
             "idempotentHint": True,
@@ -1046,6 +1116,22 @@ def _health_read_only_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
         result = verify_context_gold_package(
             Path(str(args["package_dir"])), str(args["manifest_sha256"])
         )
+    elif name == "health_appropriations_verify_gold_metadata":
+        inputs = (
+            gold_metadata.GoldInput(
+                "fiscal_analytical",
+                Path(str(args["fiscal_package"])),
+                str(args["fiscal_manifest_sha256"]),
+            ),
+            gold_metadata.GoldInput(
+                "budget_comparison",
+                Path(str(args["budget_package"])),
+                str(args["budget_manifest_sha256"]),
+            ),
+        )
+        result = gold_metadata.verify_gold_metadata(
+            inputs, Path(str(args["output_dir"])), str(args["manifest_sha256"])
+        )
     elif name == "health_appropriations_verify_rebuild":
         result = verify_rebuild(
             Path(str(args["output_dir"])),
@@ -1131,6 +1217,7 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
         "health_appropriations_verify_budget",
         "health_appropriations_verify_canonical_gold",
         "health_appropriations_verify_context_gold",
+        "health_appropriations_verify_gold_metadata",
         "health_appropriations_verify_rebuild",
         "health_appropriations_status",
     ):

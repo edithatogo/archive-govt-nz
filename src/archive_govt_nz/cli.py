@@ -568,6 +568,41 @@ def health_appropriations_build_gold_metadata(
     return 0
 
 
+@app.command(name="health-appropriations-verify-gold-metadata")
+def health_appropriations_verify_gold_metadata(
+    *,
+    fiscal_package: Path,
+    fiscal_manifest_sha256: str,
+    budget_package: Path,
+    budget_manifest_sha256: str,
+    output_dir: Path,
+    manifest_sha256: str,
+) -> int:
+    """Verify pinned Gold metadata against its inputs without writing state."""
+    from archive_govt_nz.domains.health_appropriations.gold_metadata import (
+        GoldInput,
+        verify_gold_metadata,
+    )
+
+    inputs = (
+        GoldInput("fiscal_analytical", fiscal_package, fiscal_manifest_sha256),
+        GoldInput("budget_comparison", budget_package, budget_manifest_sha256),
+    )
+    try:
+        receipt = verify_gold_metadata(inputs, output_dir, manifest_sha256)
+    except ValueError, OSError, KeyError, TypeError:
+        _emit_json(
+            {
+                "command": "health-appropriations-verify-gold-metadata",
+                "status": "failed",
+                "error": "gold_metadata_verification_failed",
+            }
+        )
+        return 2
+    _emit_json({"command": "health-appropriations-verify-gold-metadata", **receipt})
+    return 0
+
+
 @app.command(name="health-appropriations-build-budget-comparison")
 def health_appropriations_build_budget_comparison(
     *,
