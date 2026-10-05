@@ -6,7 +6,6 @@ import hashlib
 import json
 from collections import Counter
 from dataclasses import dataclass
-from itertools import islice
 from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
@@ -24,7 +23,7 @@ from archive_govt_nz.domains.health_appropriations.workbook_common import (
     verified_snapshot,
 )
 
-VERSION = "archive-govt-nz.health-gold-metadata/v1"
+VERSION = "archive-govt-nz.health-gold-metadata/v2"
 MAX_BYTES = 16 * 1024 * 1024
 MAX_PACKAGES = 8
 FILES = {
@@ -33,6 +32,8 @@ FILES = {
     "dcat.jsonld",
     "prov.jsonld",
     "DATASET_CARD.md",
+    "citations.json",
+    "changelog.json",
 }
 CONTEXT = {
     "dcat": "http://www.w3.org/ns/dcat#",
@@ -167,8 +168,8 @@ def _package(value: GoldInput) -> dict[str, Any]:
         "verification_scope": "pinned_gold_package_snapshots",
         "source_reverification": "not_performed",
         "source_semantics": "not_reassessed",
-        "rights": "not_evaluated",
-        "publication": "not_performed",
+        "rights": manifest["rights"],
+        "publication": manifest["publication"],
     }
 
 
@@ -257,6 +258,46 @@ def project_gold_metadata(values: tuple[GoldInput, ...]) -> dict[str, bytes]:
         }
     )
     dcat, prov = _graphs(packages, _sha(catalogue))
+    citations = _json(
+        {
+            "schema_version": VERSION,
+            "scope": "local_content_addressed_gold_packages",
+            "source_citation": "not_asserted",
+            "records": [
+                {
+                    "package_id": p["id"],
+                    "profile": p["profile"],
+                    "manifest_sha256": p["manifest_sha256"],
+                    "identifier_scope": p["verification_scope"],
+                    "rights": p["rights"],
+                    "publication": p["publication"],
+                }
+                for p in packages
+            ],
+        }
+    )
+    changelog = _json(
+        {
+            "schema_version": VERSION,
+            "comparison": "snapshot_only_no_prior_version_comparison",
+            "federation": "no_approved_links_emitted",
+            "packages": [
+                {
+                    "package_id": p["id"],
+                    "profile": p["profile"],
+                    "manifest_sha256": p["manifest_sha256"],
+                    "gold_schema_version": p["gold_schema_version"],
+                    "tables": [
+                        {"path": t["path"], "rows": t["rows"]} for t in p["tables"]
+                    ],
+                    "rights": p["rights"],
+                    "publication": p["publication"],
+                    "change_status": "current_verified_snapshot",
+                }
+                for p in packages
+            ],
+        }
+    )
     schemas = _json(
         {
             "schema_version": VERSION,
@@ -298,6 +339,8 @@ def project_gold_metadata(values: tuple[GoldInput, ...]) -> dict[str, bytes]:
         "dcat.jsonld": _json(dcat),
         "prov.jsonld": _json(prov),
         "DATASET_CARD.md": ("\n".join(lines) + "\n").encode(),
+        "citations.json": citations,
+        "changelog.json": changelog,
     }
     _require(all(len(b) <= MAX_BYTES for b in result.values()))
     return result
@@ -347,7 +390,7 @@ def verify_gold_metadata(
 ) -> dict[str, Any]:
     """Rebuild from verified Gold and compare every retained metadata byte."""
     _require(not output.is_symlink() and output.is_dir())
-    _require({p.name for p in islice(output.iterdir(), 7)} == FILES | {"MANIFEST.json"})
+    _require({p.name for p in output.iterdir()} == FILES | {"MANIFEST.json"})
     marker = verified_snapshot(
         output / "MANIFEST.json", manifest_sha256, max_bytes=MAX_BYTES
     )

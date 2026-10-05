@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-gold-changelog-v2.schema.json",
+  "title": "Snapshot-only Health Gold changelog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "comparison",
+    "federation",
+    "packages"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-gold-metadata/v2"
+    },
+    "comparison": {
+      "const": "snapshot_only_no_prior_version_comparison"
+    },
+    "federation": {
+      "const": "no_approved_links_emitted"
+    },
+    "packages": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "$ref": "#/$defs/package"
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "package_id",
+        "profile",
+        "manifest_sha256",
+        "gold_schema_version",
+        "tables",
+        "rights",
+        "publication",
+        "change_status"
+      ],
+      "properties": {
+        "package_id": {
+          "type": "string",
+          "pattern": "^urn:archive-govt-nz:health:gold:[a-f0-9]{64}$"
+        },
+        "profile": {
+          "enum": [
+            "budget_comparison",
+            "fiscal_analytical"
+          ]
+        },
+        "manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "gold_schema_version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "tables": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/table"
+          }
+        },
+        "rights": {
+          "const": "not_evaluated"
+        },
+        "publication": {
+          "const": "not_performed"
+        },
+        "change_status": {
+          "const": "current_verified_snapshot"
+        }
+      }
+    },
+    "table": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "rows"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 255
+        },
+        "rows": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

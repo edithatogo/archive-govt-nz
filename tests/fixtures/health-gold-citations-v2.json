@@ -1,0 +1,15 @@
+{
+  "schema_version": "archive-govt-nz.health-gold-metadata/v2",
+  "scope": "local_content_addressed_gold_packages",
+  "source_citation": "not_asserted",
+  "records": [
+    {
+      "package_id": "urn:archive-govt-nz:health:gold:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "profile": "fiscal_analytical",
+      "manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "identifier_scope": "pinned_gold_package_snapshots",
+      "rights": "not_evaluated",
+      "publication": "not_performed"
+    }
+  ]
+}

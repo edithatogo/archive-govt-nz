@@ -8,8 +8,10 @@ import subprocess
 import sys
 from collections.abc import Callable
 from pathlib import Path
+from typing import Any
 
 import pytest
+from jsonschema import Draft202012Validator
 from rdflib import Graph, Literal, Namespace, URIRef
 from tests.domains.health_appropriations.test_budget_comparison_gold import fixture
 from tests.domains.health_appropriations.test_fiscal_analytical_gold import (
@@ -40,6 +42,47 @@ def packages(
         metadata.GoldInput("budget_comparison", budget, pin),
         metadata.GoldInput("fiscal_analytical", target, receipt["manifest_sha256"]),
     )
+
+
+def assert_snapshot_projections(first: Path, catalogue: dict[str, Any]) -> None:
+    citations = json.loads((first / "citations.json").read_text())
+    changelog = json.loads((first / "changelog.json").read_text())
+    packages = catalogue["packages"]
+    assert citations["schema_version"] == metadata.VERSION
+    assert changelog["schema_version"] == metadata.VERSION
+    assert citations["scope"] == "local_content_addressed_gold_packages"
+    assert changelog["comparison"] == "snapshot_only_no_prior_version_comparison"
+    assert changelog["federation"] == "no_approved_links_emitted"
+    schemas = Path(__file__).parents[3] / "schemas"
+    for filename, schema_name in (
+        ("citations.json", "health-gold-citations-v2.schema.json"),
+        ("changelog.json", "health-gold-changelog-v2.schema.json"),
+    ):
+        schema = json.loads((schemas / schema_name).read_text())
+        Draft202012Validator(schema).validate(
+            json.loads((first / filename).read_text())
+        )
+    assert len(citations["records"]) == len(packages) == 2
+    assert len(changelog["packages"]) == 2
+    for package in packages:
+        citation = next(
+            item for item in citations["records"] if item["package_id"] == package["id"]
+        )
+        change = next(
+            item
+            for item in changelog["packages"]
+            if item["package_id"] == package["id"]
+        )
+        assert citation["manifest_sha256"] == package["manifest_sha256"]
+        assert citation["rights"] == package["rights"]
+        assert citation["publication"] == package["publication"]
+        assert change["manifest_sha256"] == package["manifest_sha256"]
+        assert change["rights"] == package["rights"]
+        assert change["publication"] == package["publication"]
+        assert change["tables"] == [
+            {"path": table["path"], "rows": table["rows"]}
+            for table in package["tables"]
+        ]
 
 
 def test_exact_catalogue_repeat_build_and_reconstruction(
@@ -97,6 +140,7 @@ def test_exact_catalogue_repeat_build_and_reconstruction(
     assert catalogue["release_readiness"] == "blocked_unassessed_rights_and_publication"
     assert len(catalogue["packages"]) == 2
     assert sum(len(p["tables"]) for p in catalogue["packages"]) == 5
+    assert_snapshot_projections(first, catalogue)
     for package in catalogue["packages"]:
         value = next(
             v for v in values if v.manifest_sha256 == package["manifest_sha256"]

@@ -1,0 +1,22 @@
+{
+  "schema_version": "archive-govt-nz.health-gold-metadata/v2",
+  "comparison": "snapshot_only_no_prior_version_comparison",
+  "federation": "no_approved_links_emitted",
+  "packages": [
+    {
+      "package_id": "urn:archive-govt-nz:health:gold:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "profile": "fiscal_analytical",
+      "manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "gold_schema_version": "archive-govt-nz.health-fiscal-analytical/v1",
+      "tables": [
+        {
+          "path": "example.parquet",
+          "rows": 0
+        }
+      ],
+      "rights": "not_evaluated",
+      "publication": "not_performed",
+      "change_status": "current_verified_snapshot"
+    }
+  ]
+}
