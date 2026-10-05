@@ -703,6 +703,12 @@ integrated parent head.
   explicit boundaries. [M-05, M-06, M-11; AC-05, AC-09] (see
   `pharmac-canonical-gold-20261001.md`)
 
+- [x] Add the source-pinned 2015/16 Vote Health overview profile and registered
+  extraction operation: 17 page-2 statements, phrase/qualifier lineage, repeated
+  native and installed CLI agreement; other 99 pages and broader coverage remain
+  open. See `vote-health-estimates-overview-2015-16-20261005.md`.
+  [M-05, M-06, M-11; AC-05, AC-09]
+
 ### 5.3 Normalize analytical context
 
 - [x] Implement the bounded June2026 QES Table8 QEMQ.SASZ9A published

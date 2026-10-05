@@ -1,0 +1,9 @@
+# Vote Health Estimates overview — 2015/16
+
+The existing cumulative capture contains the official 867,091-byte, 100-page Treasury PDF. Bronze and WARC payload hashes agree. This profile selects 17 monetary statements on page 2, preserving source phrases and whole-million amounts. Fourteen phrases contain explicit rounding qualifiers; the other three remain approximate source amounts, without exact-dollar claims. The purchase total and capital-loan refinancing are separate source categories; no cross-edition equivalence or sum is inferred.
+
+Two fresh native Silver builds and two installed extraction-command builds agree on all output hashes and match all 17 independently inventoried tokens. Dry runs create no output; the source remains unchanged. The other 99 pages are preserved unreviewed, including detailed appropriations. Normalized rights remain not_evaluated and publication is not performed.
+
+The retained WARC has no WARC-Date. Final products use the actual local source-verification timestamp, explicitly not a remote recapture. Initial diagnostic builds with unverified timestamp context remain external and are excluded from final evidence. The first readback used a nonexistent raw_token field; corrected readback uses stored raw_values_json. Initial long-pattern lint and committed-schema mismatch failures were retained before correction. Strict typing and 493 existing operation checks pass; no tests were added solely to raise coverage. Full harness and scoped review are pending; this does not close the whole Health track.
+
+Final required ./scripts/validate.sh exited 0: 7,476 tests / 10 skips; format, lint, strict typing, schemas, parity, configured mutation and supply-chain gates passed. Scoped review passed. Coverage floor remains 80%; broader Health completion is not asserted.

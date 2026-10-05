@@ -107,6 +107,13 @@ SOURCE_SHA256_2014_15 = (
     "039706f735a3652aa911e4fa7eaf776a6d534271d96e478aad0ce45789351dfb"
 )
 PAGE_COUNT_2014_15 = 109
+PROFILE_2015_16 = "vote-health-estimates-2015-16-overview/v1"
+TRANSFORMATION_2015_16 = "vote-health-estimates-overview-2015-16/v1"
+VINTAGE_2015_16 = "Treasury-Vote-Health-Estimates-2015-16"
+SOURCE_SHA256_2015_16 = (
+    "dbb8a9c4fab8a53b5279c26d98a5e0a6fa60d9360b88030189d43273bf0e5d1a"
+)
+PAGE_COUNT_2015_16 = 100
 _PROFILE_QUALIFIER_MEASURES_2010_11 = frozenset(
     {"departmental_functions", "health_sector_risk_management"}
 )
@@ -1510,6 +1517,170 @@ def _require(condition: object) -> None:
         raise ValueError(_ERROR)
 
 
+_PATTERNS_2015_16 = {
+    "vote_total": (
+        2,
+        r"2015/16 financial year totalling nearly \$(?P<value>[0-9][0-9,]*) million",
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+    "departmental_functions": (
+        2,
+        (
+            r"A total of just over \$(?P<value>[0-9][0-9,]*) million \(1\.2% "
+            r"of the Vote\) relates to the functions of the Ministry of Health"
+        ),
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+    "health_disability_purchase_total": (
+        2,
+        (
+            r"A total of nearly \$(?P<value>[0-9][0-9,]*) million \(91\.8% of "
+            r"the Vote\) is intended to be spent as follows"
+        ),
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+    "dhb_services": (
+        2,
+        (
+            r"nearly \$(?P<value>[0-9][0-9,]*) million \(73\.9% of the Vote\) "
+            r"to fund health services from district health boards"
+        ),
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+    "national_disability_services": (
+        2,
+        (
+            r"just over \$(?P<value>[0-9][0-9,]*) million \(7\.3% of the "
+            r"Vote\) to purchase national disability support services"
+        ),
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+    "national_health_services_and_training": (
+        2,
+        (
+            r"nearly \$(?P<value>[0-9][0-9,]*) million \(5\.4% of the Vote\) "
+            r"to purchase national health services and provide clinical training"
+        ),
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+    "public_health_services": (
+        2,
+        (
+            r"just over \$(?P<value>[0-9][0-9,]*) million \(2\.7% of the "
+            r"Vote\) to purchase public health services"
+        ),
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+    "primary_health_services": (
+        2,
+        (
+            r"just over \$(?P<value>[0-9][0-9,]*) million \(1\.1% of the "
+            r"Vote\) to purchase primary health care services"
+        ),
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+    "national_maternity_services": (
+        2,
+        (
+            r"nearly \$(?P<value>[0-9][0-9,]*) million \(0\.9% of the Vote\) "
+            r"to purchase national maternity services"
+        ),
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+    "other_health_services": (
+        2,
+        (
+            r"just over \$(?P<value>[0-9][0-9,]*) million \(0\.4% of the "
+            r"Vote\) to fund other health and disability services"
+        ),
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+    "other_expenses_total": (
+        2,
+        (
+            r"a total of just over \$(?P<value>[0-9][0-9,]*) million \(0\.2% "
+            r"of the Vote\) is for other expenses"
+        ),
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+    "capital_expenditure": (
+        2,
+        (
+            r"A total of just over \$(?P<value>[0-9][0-9,]*) million \(7\.0% "
+            r"of the Vote\) is to provide Capital funding"
+        ),
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+    "dhb_and_agency_capital": (
+        2,
+        (
+            r"\$(?P<value>[0-9][0-9,]*) million \(5\.2% of the Vote\) is to "
+            r"provide debt or equity for DHBs"
+        ),
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+    "capital_loan_refinancing": (
+        2,
+        (
+            r"just over \$(?P<value>[0-9][0-9,]*) million \(1\.3% of the "
+            r"Vote\) is to provide for the refinancing of capital loans"
+        ),
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+    "dhb_deficit_support_provision": (
+        2,
+        (
+            r"\$(?P<value>[0-9][0-9,]*) million \(0\.3% of the Vote\) is a "
+            r"provision for DHBs deficit support"
+        ),
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+    "ministry_asset_purchases": (
+        2,
+        (
+            r"just over \$(?P<value>[0-9][0-9,]*) million \(0\.1% of the "
+            r"Vote\) is to purchase or develop assets for use by the Ministry of Health"
+        ),
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+    "long_term_care_interest_free_loans": (
+        2,
+        (
+            r"\$(?P<value>[0-9][0-9,]*) million \(0\.1% of the Vote\) is to "
+            r"provide interest\-free loans to assist people in long\-term care"
+        ),
+        "$ million, approximate source amount",
+        "2015/16",
+    ),
+}
+_PROFILE_UNQUALIFIED_MEASURES_2015_16 = frozenset(
+    {
+        "dhb_and_agency_capital",
+        "dhb_deficit_support_provision",
+        "long_term_care_interest_free_loans",
+    }
+)
+_PROFILE_QUALIFIER_MEASURES_2015_16 = (
+    frozenset(_PATTERNS_2015_16) - _PROFILE_UNQUALIFIED_MEASURES_2015_16
+)
+
+
 def parse_overview_pages(  # noqa: PLR0913 - profile controls are explicit
     texts: list[str],
     *,
@@ -2227,6 +2398,44 @@ def normalize_vote_health_estimates_overview_2014_15(  # noqa: PLR0913 - explici
         second_page_pattern=r"Capital Expenditure",
         profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2014_15,
         profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2014_15,
+        additional_quality_flags=(
+            "source_value_rounded_to_whole_million",
+            "source_amount_is_not_exact",
+        ),
+        dry_run=dry_run,
+    )
+
+
+def normalize_vote_health_estimates_overview_2015_16(  # noqa: PLR0913 - explicit pinned profile
+    source: Path,
+    output_dir: Path,
+    *,
+    expected_sha256: str,
+    source_vintage: str,
+    source_locator: str,
+    observed_at: str,
+    dry_run: bool = True,
+) -> dict[str, object]:
+    """Normalize 17 selected rounded/qualified 2015/16 overview statements."""
+    return _normalize_overview(
+        source,
+        output_dir,
+        profile=PROFILE_2015_16,
+        transformation=TRANSFORMATION_2015_16,
+        expected_vintage=VINTAGE_2015_16,
+        expected_source_sha256=SOURCE_SHA256_2015_16,
+        expected_page_count=PAGE_COUNT_2015_16,
+        year="2015/16",
+        patterns=_PATTERNS_2015_16,
+        disposition_reason="seventeen_selected_2015_16_overview_headlines_only",
+        expected_sha256=expected_sha256,
+        source_vintage=source_vintage,
+        source_locator=source_locator,
+        observed_at=observed_at,
+        intro_pattern=r"2015/16 financial year\s+totalling\s+nearly",
+        second_page_pattern=r"Details of Appropriations and Capital Injections",
+        profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2015_16,
+        profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2015_16,
         additional_quality_flags=(
             "source_value_rounded_to_whole_million",
             "source_amount_is_not_exact",

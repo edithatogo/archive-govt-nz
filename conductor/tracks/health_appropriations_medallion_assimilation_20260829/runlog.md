@@ -4734,3 +4734,9 @@ The integrated Health recovery harness now consumes the new analytical recovery 
 Integrated native assurance exits 0, verifies the new two-run 57-file analytical lane and preserves the existing Fiscal receipt. All Bronze objects remain unchanged. Overall status remains partial_with_blockers: broader cross-source comparison, remaining source-native adapters and complete Platinum profiles are still required. Full harness passes again (7,476 tests / 10 skips, 97.80% coverage with the 80% floor); all ten integration tests and scoped phase review pass. This does not close the whole-Health gate.
 
 Recovery branch preparation after the authorized external-reporting policy fix: rebased onto #637 head aca9ad64, preserved both append-only run-log sections, and confirmed no production source/tool diff against the prior native-replayed recovery head. Full ./scripts/validate.sh exits 0 on this base with external temporary storage; all required gates pass. Opening the recovery PR remains queued until #637 has green required checks and is merged/pruned.
+
+## 2026-10-05 — 2015/16 Vote Health overview
+
+Added 17 exact phrase-anchored page-2 statements and source-operation registration. Native and installed CLI paired builds agree and preserve Bronze; 14 qualifiers retained, other 99 pages preserved unreviewed. WARC payload verified but capture date unavailable; actual local source-verification time retained without remote-recapture claim. Initial lint, schema mismatch and readback-field failures retained and corrected. Existing operation tests and strict typing pass. Full harness and scoped review follow.
+
+Final required ./scripts/validate.sh exited 0: 7,476 tests / 10 skips; format, lint, strict typing, schemas, parity, configured mutation and supply-chain gates passed. Scoped review passed. Coverage floor remains 80%; broader Health completion is not asserted.
