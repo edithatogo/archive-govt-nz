@@ -1107,6 +1107,11 @@ integrated parent head.
 - [ ] Review every metadata-level rights statement against resource evidence;
   reject hard-coded blanket licensing and unsupported federation claims.
   [M-04, M-14; AC-04, AC-14]
+  - [x] Verify the current Fiscal and Budget Gold catalogue, citation,
+    changelog, and source-drill-through rights/publication states against their
+    exact manifest pins. No licence is emitted; resource-level rights and
+    federation approvals remain unresolved. This bounded check does not close
+    the broader review. See `gold-metadata-rights-provenance-review-20261005.md`.
 - [ ] Run schema/metadata/federation/security gates, self-review and the full
   repository harness; record paired evidence. [M-18, M-19; AC-16]
 
