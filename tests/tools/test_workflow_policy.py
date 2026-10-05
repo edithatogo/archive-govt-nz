@@ -47,6 +47,10 @@ def test_workflows_use_immutable_action_refs() -> None:
     assert "fail_ci_if_error: true" in ci
     assert "id-token: write" in ci
     assert "use_oidc: true" in ci
+    assert "sha256sum --check --strict" in ci
+    assert "binary: ${{ runner.temp }}/codecovcli_linux" in ci
+    assert "skip_validation: true" not in ci
+    assert "use_pypi: true" not in ci
 
 
 def test_ci_fetches_history_for_commit_bound_authority() -> None:

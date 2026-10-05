@@ -3,6 +3,15 @@
   "bronze_rebuild": "not_performed",
   "full_health_completion": "not_asserted",
   "gold_inputs_unchanged": true,
+  "hosted_ci_blocker": {
+    "fail_ci_if_error": true,
+    "failure": "Codecov CLI download TLS handshake failure",
+    "hosted_final_head": "pending",
+    "observed_attempts": 2,
+    "oidc": "retained",
+    "resolution": "official GitHub v11.3.1 binary with required pinned SHA256 verification",
+    "sha256": "ca1d64196d2d34771084afe76ea657d581bf628e31d993ff8e52ea09cc88a56d"
+  },
   "independent_builds": 2,
   "native_output": {
     "external_root": "ArchiveGovtNZ/health-appropriations",
