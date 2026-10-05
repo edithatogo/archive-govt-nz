@@ -24,7 +24,7 @@ from archive_govt_nz.domains.health_appropriations import (
 if TYPE_CHECKING:
     from pathlib import Path
 
-VERSION = "archive-govt-nz.fiscal-analytical-reports/v1"
+VERSION = "archive-govt-nz.fiscal-analytical-reports/v2"
 _MAX_BYTES = 8 * 1024 * 1024
 _MAX_TOTAL = 64 * 1024 * 1024
 _MAX_NUMBER_TEXT = 80
@@ -149,6 +149,137 @@ def _qualifications(queries: dict[str, dict[str, Any]]) -> dict[tuple[str, str],
         _require(row["numerator_gst_basis"] in ("inclusive", "exclusive"))
         result[key] = row["numerator_gst_basis"]
     return result
+
+
+def _reconciliation(
+    queries: dict[str, dict[str, Any]], manifest_sha256: str
+) -> dict[str, Any]:
+    """Tie each admitted source observation to every derived output row."""
+    nominal_rows = queries["nominal"]["rows"]
+    nominal = {_key(row): row for row in nominal_rows}
+    _require(len(nominal) == len(nominal_rows))
+    expected = set(nominal)
+
+    shares: dict[tuple[str, str, str], dict[str, Any]] = {}
+    for row in queries["shares"]["rows"]:
+        key = _key(row)
+        measure = row["measure"]
+        _require(key in expected and measure in _SHARES)
+        share_key = (key[0], key[1], measure)
+        _require(share_key not in shares)
+        _require(
+            _number(row["numerator_amount"])
+            == _number(nominal[key]["numerator_amount"])
+        )
+        shares[share_key] = row
+    _require(
+        set(shares)
+        == {
+            (end, numerator, measure)
+            for end, numerator in expected
+            for measure in _SHARES
+        }
+    )
+
+    derived: dict[str, dict[tuple[str, str], dict[str, Any]]] = {}
+    for table in ("per_capita", "cpi_benchmark"):
+        indexed = {_key(row): row for row in queries[table]["rows"]}
+        _require(
+            len(indexed) == len(queries[table]["rows"]) and set(indexed) == expected
+        )
+        derived[table] = indexed
+
+    rows = []
+    for key, source in sorted(nominal.items()):
+        share_rows = {
+            measure: shares[(key[0], key[1], measure)] for measure in sorted(_SHARES)
+        }
+        rate = derived["per_capita"][key]
+        cpi = derived["cpi_benchmark"][key]
+        rows.append(
+            {
+                "source": {
+                    "period_start": source["period_start"],
+                    "period_end": key[0],
+                    "numerator_id": key[1],
+                    "amount": source["numerator_amount"],
+                    "accounting_basis": source["accounting_basis"],
+                    "source_object_sha256": source["source_object_sha256"],
+                    "source_vintage": source["source_vintage"],
+                    "source_time_status": source["numerator_source_time_status"],
+                    "coverage": source["numerator_coverage"],
+                },
+                "source_amount_control": "exact_parent_amount_equality",
+                "shares": {
+                    measure: {
+                        "denominator_id": row["denominator_id"],
+                        "denominator_amount": row["denominator_amount"],
+                        "denominator_source_time_status": row[
+                            "denominator_source_time_status"
+                        ],
+                        "denominator_coverage": row["denominator_coverage"],
+                        "denominator_accounting_basis": row[
+                            "denominator_accounting_basis"
+                        ],
+                        "period_definition_evidence_sha256": row[
+                            "period_definition_evidence_sha256"
+                        ],
+                        "percent": row["percent"],
+                        "status": row["status"],
+                        "formula_policy": row["formula_policy"],
+                    }
+                    for measure, row in share_rows.items()
+                },
+                "per_capita": {
+                    "population_id": rate["population_id"],
+                    "population_source_sha256": rate["population_source_sha256"],
+                    "population_vintage": rate["population_vintage"],
+                    "population_source_time_status": rate[
+                        "population_source_time_status"
+                    ],
+                    "mean_population": rate["mean_population"],
+                    "unit": rate["unit"],
+                    "population_period_evidence_sha256": rate[
+                        "population_period_evidence_sha256"
+                    ],
+                    "amount": rate["source_dollars_per_mean_resident"],
+                    "status": rate["status"],
+                    "formula_policy": rate["formula_policy"],
+                },
+                "cpi_benchmark": {
+                    "cpi_source_sha256": cpi["cpi_source_sha256"],
+                    "cpi_vintage": cpi["cpi_vintage"],
+                    "cpi_definition_evidence_sha256": cpi[
+                        "cpi_definition_evidence_sha256"
+                    ],
+                    "period_cpi_ids": cpi["period_cpi_ids"],
+                    "period_cpi_source_time_statuses": cpi[
+                        "period_cpi_source_time_statuses"
+                    ],
+                    "benchmark_cpi_ids": cpi["benchmark_cpi_ids"],
+                    "benchmark_cpi_source_time_statuses": cpi[
+                        "benchmark_cpi_source_time_statuses"
+                    ],
+                    "period_cpi_mean": cpi["period_cpi_mean"],
+                    "benchmark_cpi_mean": cpi["benchmark_cpi_mean"],
+                    "benchmark_period_start": cpi["benchmark_period_start"],
+                    "benchmark_period_end": cpi["benchmark_period_end"],
+                    "numerator_gst_basis": cpi["numerator_gst_basis"],
+                    "unit": cpi["unit"],
+                    "amount": cpi["cpi_benchmark_millions"],
+                    "status": cpi["status"],
+                    "formula_policy": cpi["formula_policy"],
+                },
+            }
+        )
+    return {
+        "schema_version": "archive-govt-nz.fiscal-gold-source-reconciliation/v1",
+        "gold_manifest_sha256": manifest_sha256,
+        "status": "all_derived_rows_tied_to_source",
+        "source_observations": len(rows),
+        "aggregate_source_totals": "not_computed_overlapping_periods_and_bases",
+        "rows": rows,
+    }
 
 
 def _series(
@@ -334,6 +465,7 @@ def export_fiscal_analytical_reports(
         all(q["status"] == "verified" and not q["truncated"] for q in queries.values())
     )
     series = _series(queries, _qualifications(queries))
+    reconciliation = _reconciliation(queries, manifest_sha256)
     summary = {
         "schema_version": VERSION,
         "gold_manifest_sha256": manifest_sha256,
@@ -351,6 +483,7 @@ def export_fiscal_analytical_reports(
     }
     payloads = {f"{name}.png": _plot(value) for name, value in series.items()}
     payloads["summary.json"] = _json(summary)
+    payloads["reconciliation.json"] = _json(reconciliation)
     payloads["schemas.json"] = _json(
         {
             name: [
@@ -368,7 +501,12 @@ def export_fiscal_analytical_reports(
         "Household CPI is not a health input cost deflator.",
         "Source currency has no asserted ISO code.",
         "Original-source verification is separate.",
-        "Exact values and source IDs remain in summary.json.",
+        "Exact values and source IDs remain in summary.json and reconciliation.json.",
+        (
+            "Source observations tied row by row: "
+            f"{reconciliation['source_observations']}."
+        ),
+        "Aggregate source totals are not computed across overlapping periods or bases.",
         "",
         "| Series | Plotted | Excluded |",
         "| --- | ---: | ---: |",
@@ -422,6 +560,7 @@ def verify_fiscal_analytical_reports(
     names = {
         *(f"{name}.png" for name in _VIEWS),
         "summary.json",
+        "reconciliation.json",
         "schemas.json",
         "DATASET_CARD.md",
         "provenance.json",

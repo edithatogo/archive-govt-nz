@@ -61,10 +61,6 @@
       "sha256": "ae4fb9103ce4504232003d09a2347c01c3aa38763ec2052cfe04fad9a64a0830"
     },
     {
-      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/index.md",
-      "sha256": "115313e40942932b8f8fca3cd1d1c8ad281b6f5df9a74e4a2564efe449318f79"
-    },
-    {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/moh-indicators.md",
       "sha256": "dae3e64b5c2248058554bc83d2c1569b39d4c118e2e1014606105e0d80daa7c6"
     },

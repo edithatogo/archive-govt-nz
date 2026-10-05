@@ -29,6 +29,7 @@ REPORT = TRACK / "source-measure-review-20261005.json"
 def test_review_reports_exact_series_and_preserves_blockers() -> None:
     report = validate_review(REPORT, ROOT)
     assert report["series_count"] == 8
+    assert all(not item["path"].endswith("/index.md") for item in report["evidence"])
     assert report["source_families"]["vote_health"]["captured_documents"] == 59
     assert report["source_families"]["vote_health"]["estimates_years"] == [
         1998,
