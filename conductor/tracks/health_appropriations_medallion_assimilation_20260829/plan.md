@@ -785,6 +785,16 @@ integrated parent head.
   `vote-health-supplementary-2021-22-summary-totals-20261006.md`. [M-05,
   M-06, M-11; AC-05, AC-09]
 
+- [x] Add a separate hash-pinned 2022/23 Vote Health Supplementary Estimates
+  summary profile for four named page-5 rows, preserving the three printed
+  $000 budget columns, line-wrapped source label, field/page lineage and
+  partial-page disposition. Two independent Bronze recovery builds and the
+  persistent local Silver package match byte-for-byte; the Bronze object is
+  unchanged. Rights remain unevaluated. Other PDF content, editions and
+  comparability remain open. See
+  `vote-health-supplementary-2022-23-summary-totals-20261006.md`. [M-05,
+  M-06, M-11; AC-05, AC-09]
+
 ### 5.3 Normalize analytical context
 
 - [x] Implement the bounded June2026 QES Table8 QEMQ.SASZ9A published
