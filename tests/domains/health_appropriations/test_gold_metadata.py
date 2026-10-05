@@ -154,6 +154,51 @@ def test_source_drillthrough_rejects_malformed_recorded_fields(
         metadata.project_gold_metadata((altered,))
 
 
+def test_source_drillthrough_projects_manifest_hashes_and_locators(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    fiscal_input = packages(tmp_path, monkeypatch)[1]
+    marker = fiscal_input.root / "manifest.json"
+    manifest = json.loads(marker.read_text())
+    manifest["input_receipts"] = {
+        "fixture": [
+            {
+                "source_object_sha256": "a" * 64,
+                "cpi_definition_url": "https://example.govt.nz/series",
+                "nested": [{"raw_manifest_sha256": "b" * 64}],
+            }
+        ]
+    }
+    marker.write_text(json.dumps(manifest))
+    altered = metadata.GoldInput(
+        fiscal_input.profile,
+        fiscal_input.root,
+        hashlib.sha256(marker.read_bytes()).hexdigest(),
+    )
+    projection = json.loads(
+        metadata.project_gold_metadata((altered,))["source_drillthrough.json"]
+    )
+    package = projection["packages"][0]
+    assert package["no_reference_reason"] is None
+    assert package["references"] == [
+        {
+            "field_path": "/input_receipts/fixture/0/cpi_definition_url",
+            "kind": "recorded_https_locator",
+            "value": "https://example.govt.nz/series",
+        },
+        {
+            "field_path": "/input_receipts/fixture/0/nested/0/raw_manifest_sha256",
+            "kind": "sha256",
+            "value": "b" * 64,
+        },
+        {
+            "field_path": "/input_receipts/fixture/0/source_object_sha256",
+            "kind": "sha256",
+            "value": "a" * 64,
+        },
+    ]
+
+
 def test_exact_catalogue_repeat_build_and_reconstruction(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

@@ -33,6 +33,6 @@ readback resolved all 18 Fiscal reference paths against the exact pinned source
 manifest bytes. The Budget manifest pin was reverified and contains no matching
 source-reference fields. Focused metadata tests passed (3 tests); the repository
 schema validator passed (56 schemas, 46 representative documents). The full
-`./scripts/validate.sh` passed: 7,488 tests passed, 10 skipped; typing, schema,
+`./scripts/validate.sh` passed: 7,489 tests passed, 10 skipped; typing, schema,
 parity, mutation, hygiene, benchmark, dependency, licence, secrets and SBOM
 gates passed. Coverage was 97.75%, above the configured 80% floor.
