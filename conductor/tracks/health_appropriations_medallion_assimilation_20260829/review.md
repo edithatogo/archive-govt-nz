@@ -1742,3 +1742,18 @@ Integrated native assurance exits 0, verifies the new two-run 57-file analytical
 Source/WARC payload fixity and 17 source tokens verified. Fourteen explicit qualifiers retained; source-specific purchase/refinancing categories are not joined across editions. Native and installed-command builds match; wrong pin/vintage and existing output give exit 2. Capture date is unavailable; local source-verification timestamp is explicit. Remaining 99 PDF pages, normalized rights and publication remain unqualified. Scoped phase gate passed; full harness is pending and whole-Health review remains open.
 
 Final required ./scripts/validate.sh exited 0: 7,476 tests / 10 skips; format, lint, strict typing, schemas, parity, configured mutation and supply-chain gates passed. Scoped review passed. Coverage floor remains 80%; broader Health completion is not asserted.
+## 2026-10-06 — Integrated recovery and whole-track reconciliation
+
+Ran the integrated Bronze recovery runner and current source census validator;
+the supported lanes repeat, Bronze remains unchanged, and the recovery receipt
+correctly remains `partial_with_blockers`. Automatic claim-drift and Conductor
+state validation pass. The final review cross-checked requirements, design,
+plan, source coverage, rights, recovery and historical publication claims
+against the receipts and live phase issues/PRs. No code defect was identified.
+Missing implementation/evidence remains across 31 plan tasks, rights/source
+decisions remain unresolved, and external publication/collection mutations
+were not repeated. PR #647 is merged; phase issues #209, #210, #211, #213 and
+#215 remain open. See `final-review-20261006.md`. The final documented tree
+passed `./scripts/validate.sh`: 7,490 tests passed, 10 skipped, 97.77%
+coverage against the 80% floor; all configured schema, parity, mutation,
+security and supply-chain gates passed. The whole track is not complete.

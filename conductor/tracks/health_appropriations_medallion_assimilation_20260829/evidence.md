@@ -797,3 +797,17 @@ this bounded normalization. Captured PDF SHA-256 is
 `866bce96ac216344c5dcdf25fee1f31548d5c32ba3cd94ef4b4977a495f509ea`. The
 receipt records the facts, page dispositions and hashes for all three local
 Parquet outputs.
+## 2026-10-06 — Integrated clean-room recovery and final review
+
+The current integrated recovery runner completed two-build reconstruction for
+22 wired product lanes from the pinned Bronze store. Its receipt confirms
+repeat-output checks, unchanged Bronze objects, and `partial_with_blockers`;
+cross-source comparison, remaining source-native profiles/adapters, and the
+complete Platinum profile set are explicitly not rebuilt. Source-health
+reconstruction is repeat-identical for 143 records across 13 families (75
+captured, 68 out of scope); 11 contextual series remain unqualified with
+rights unevaluated. Claim-drift reported zero divergences and Conductor state
+validation reported zero errors across 93 tracks. See
+`clean-room-recovery-20261006-final.json` and
+`final-review-20261006.md`. This evidence does not close the Health track or
+repeat the already-completed external publication/collection operations.
