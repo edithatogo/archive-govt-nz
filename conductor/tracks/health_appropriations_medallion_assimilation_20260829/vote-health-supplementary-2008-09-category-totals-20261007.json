@@ -1,0 +1,156 @@
+{
+  "schema_version": "archive-govt-nz.health-vote-health-category-totals-evidence/v1",
+  "status": "passed",
+  "profile": "vote-health-supplementary-2008-09-category-totals/v1",
+  "issue": 211,
+  "source": {
+    "source_id": "treasury-vote-health-pdf-2fc2f6b518bccd82",
+    "title": "Vote Health - The Supplementary Estimates of Appropriations 2008/09",
+    "source_object_sha256": "4cb75bd49333e616f1693b478be3f8e98e8a986aed0485993311febe3fb534cf",
+    "bytes": 57379,
+    "source_locator": "https://www.treasury.govt.nz/sites/default/files/2009-05/suppest09health.pdf",
+    "source_vintage": "Treasury-Vote-Health-Supplementary-2008-09",
+    "source_bytes_unchanged": true,
+    "census": "source-census.json",
+    "recorded_license": "CC-BY-4.0",
+    "rights_state": "not_evaluated"
+  },
+  "scope": {
+    "pdf_page_numbers": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "pdf_page_count": 7,
+    "unit": "$000",
+    "columns": [
+      "Estimates Budget",
+      "Supplementary Estimates Budget",
+      "Total Budget"
+    ],
+    "facts": 6,
+    "field_lineage_rows": 18,
+    "page_dispositions": 5,
+    "category_totals": [
+      {
+        "source_page": 2,
+        "label": "Total Departmental Output Expenses",
+        "estimates_budget": "227455",
+        "supplementary_estimates_budget": "(9461)",
+        "total_budget": "217994"
+      },
+      {
+        "source_page": 5,
+        "label": "Total Non-Departmental Output Expenses",
+        "estimates_budget": "11745094",
+        "supplementary_estimates_budget": "(267889)",
+        "total_budget": "11477205"
+      },
+      {
+        "source_page": 5,
+        "label": "Total Non-Departmental Other Expenses",
+        "estimates_budget": "23312",
+        "supplementary_estimates_budget": "1238",
+        "total_budget": "24550"
+      },
+      {
+        "source_page": 5,
+        "label": "Total Departmental Capital Expenditure",
+        "estimates_budget": "28022",
+        "supplementary_estimates_budget": "7433",
+        "total_budget": "35455"
+      },
+      {
+        "source_page": 6,
+        "label": "Total Non-Departmental Capital Expenditure",
+        "estimates_budget": "216406",
+        "supplementary_estimates_budget": "107000",
+        "total_budget": "323406"
+      },
+      {
+        "source_page": 6,
+        "label": "Total Annual and Permanent Appropriations",
+        "estimates_budget": "12240289",
+        "supplementary_estimates_budget": "(161679)",
+        "total_budget": "12078610"
+      }
+    ],
+    "rights_state": "not_evaluated",
+    "limitations": [
+      "Only six edition-specific category totals are normalized; remaining rows and PDF pages are outside this profile.",
+      "No currency interpretation, edition comparison, Gold measure, federation, or publication is asserted."
+    ]
+  },
+  "persistent_silver": {
+    "path": "silver/vote-health-supplementary-2008-09-category-totals-20261007-v1",
+    "manifest_sha256": "86e07787f7b49c26cc30aa410f9d17628bffa79e2ec28ae1d51771d8bbe5de9a",
+    "outputs": {
+      "field_lineage.parquet": "1340b3dbbced9469e784b9128ff79ef34f85403d27b440226b8e2774a36d00d5",
+      "page_dispositions.parquet": "40b03490d5e46b86cbefe1663b00492db019664c7012e969efad000777acff9b",
+      "vote_health_category_total_facts.parquet": "d767d1927d2210f88282c402f2dbc94f692c9d0243fb3fca9e53c1a86e551f40"
+    },
+    "matches_clean_room_build": true
+  },
+  "repeat_build": {
+    "identical": true,
+    "matches_persistent_silver": true,
+    "bronze_objects_unchanged": true,
+    "integrated_recovery_receipt": "clean-room-recovery-20261007-vote-health-2008-09.json"
+  },
+  "validation": {
+    "focused_tests": {
+      "command": "uv run --locked pytest tests/domains/health_appropriations/test_vote_health_supplementary_2008_09.py tests/domains/health_appropriations/test_source_operations.py tests/domains/health_appropriations/test_health_recovery_assurance.py -q",
+      "status": "passed",
+      "passed": 527,
+      "skipped": 10
+    },
+    "repository_harness": {
+      "command": "./scripts/validate.sh",
+      "status": "passed",
+      "tests_passed": 7622,
+      "tests_skipped": 10,
+      "coverage_percent": 97.56,
+      "coverage_floor_percent": 80,
+      "schemas": 56,
+      "representative_documents": 46,
+      "differential_parity": "9/9 passed",
+      "mutation_security_supply_chain": "passed",
+      "retry_history": [
+        {
+          "status": "failed_once_on_unrelated_flaky_health_check",
+          "tests_passed": 7621,
+          "tests_skipped": 10,
+          "failure": "Hypothesis FailedHealthCheck: Input generation is slow in tests/domains/test_legislation_archive_service.py::test_checkpoint_root_preserves_arbitrary_persisted_json_bytes (1.44s for two generated examples under xdist gw6).",
+          "isolated_test_rerun": "passed in 6.70s"
+        },
+        {
+          "status": "passed",
+          "command": "./scripts/validate.sh",
+          "exit_code": 0,
+          "tests_passed": 7622,
+          "tests_skipped": 10,
+          "coverage_percent": 97.56,
+          "schemas": 56,
+          "representative_documents": 46,
+          "differential_parity": "9/9 passed",
+          "mutation_security_supply_chain": "passed"
+        }
+      ]
+    }
+  },
+  "integrated_recovery": {
+    "status": "partial_with_blockers",
+    "bronze_objects_unchanged": true,
+    "this_profile_repeat_identical": true,
+    "matches_persistent_silver": true,
+    "final_gate": "blocked_until_all_required_products_are_built_from_bronze_and_validated",
+    "required_but_not_rebuilt": [
+      "cross_source_comparison",
+      "remaining_source_native_silver_profiles_and_canonical_adapters",
+      "platinum_dcat_croissant_ro_crate_prov_complete_profile"
+    ]
+  },
+  "publication": "not_performed"
+}
