@@ -1178,3 +1178,18 @@ repeat the already-completed external publication/collection operations.
   parity 9/9, and all mutation, security, and supply-chain gates passed.
   Conductor validation reported 93 tracks and no errors. The harness used an
   external-SSD `TMPDIR` after local temporary storage was exhausted.
+
+## 2026-10-07 — Fiscal Gold cross-product query matrix
+
+- The named DuckDB read-only query contract now has a two-period matrix across
+  nominal, GDP-share, per-capita, and household-CPI benchmark products. It
+  verifies shared numerator IDs/values, exact source identity, GDP denominator
+  IDs, population status, and quarter-level CPI lineage while preserving the
+  missing-population status for FY2024.
+- A requested `real` table remains rejected by the allowlisted query contract.
+  The admitted CPI product is a household purchasing-power benchmark, not an
+  approved health-spending deflator; source base, GST treatment, and period
+  comparability do not authorize a real-spending view.
+- Focused validation: `tests/domains/health_appropriations/test_fiscal_analytical_operations.py`
+  passed (11 tests). The wider golden matrix across Crown, Budget, revisions,
+  classifications, portfolio and CPB products remains open.

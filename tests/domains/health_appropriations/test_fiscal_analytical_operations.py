@@ -149,6 +149,55 @@ def test_named_duckdb_query_is_exact_ordered_and_readonly(
     assert before == {path.name: path.read_bytes() for path in root.iterdir()}
 
 
+def test_duckdb_cross_product_golden_matrix_and_unapproved_real_view(
+    tmp_path: Path,
+) -> None:
+    root = tmp_path / "gold"
+    pin = package(root)
+    before = {path.name: path.read_bytes() for path in root.iterdir()}
+    queried = {
+        name: ops.query_fiscal_analytical_gold(root, pin, table=name, limit=2)["rows"]
+        for name in gold.TABLE_SCHEMAS
+    }
+    by_period = {
+        name: {row["period_end"]: row for row in rows} for name, rows in queried.items()
+    }
+    expected_periods = {"2024-06-30", "2025-06-30"}
+    assert all(set(rows) == expected_periods for rows in by_period.values())
+
+    for year in (2024, 2025):
+        period = f"{year}-06-30"
+        nominal = by_period["nominal"][period]
+        shares = by_period["shares"][period]
+        per_capita = by_period["per_capita"][period]
+        cpi = by_period["cpi_benchmark"][period]
+        assert nominal["numerator_id"] == shares["numerator_id"]
+        assert Decimal(nominal["numerator_amount"]) == Decimal(
+            shares["numerator_amount"]
+        )
+        assert nominal["source_object_sha256"] == shares["source_object_sha256"]
+        assert shares["denominator_id"] == f"gdp-{year}"
+        assert Decimal(shares["denominator_amount"]) == Decimal("436103.5")
+        assert per_capita["health_source_sha256"] == nominal["source_object_sha256"]
+        assert per_capita["health_vintage"] == nominal["source_vintage"]
+        assert Decimal(per_capita["health_amount_millions"]) == Decimal(
+            nominal["numerator_amount"]
+        )
+        assert per_capita["population_id"] == f"population-{year}"
+        assert per_capita["status"] == (
+            "missing_population" if year == 2024 else "calculated"
+        )
+        assert cpi["nominal_amount_millions"] == nominal["numerator_amount"]
+        assert cpi["period_cpi_ids"] == [f"cpi-{year}-q{q}" for q in range(1, 5)]
+
+    unsupported_real = ops.query_fiscal_analytical_gold(
+        root, pin, table="real", limit=2
+    )
+    assert unsupported_real["status"] == "failed"
+    assert unsupported_real["error"] == "fiscal_gold_query_invalid"
+    assert before == {path.name: path.read_bytes() for path in root.iterdir()}
+
+
 def test_cli_mcp_parity_and_annotations(
     tmp_path: Path, capsys: pytest.CaptureFixture[str]
 ) -> None:
