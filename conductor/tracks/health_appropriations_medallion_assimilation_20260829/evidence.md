@@ -1083,3 +1083,24 @@ repeat the already-completed external publication/collection operations.
   `not_evaluated`. The separate Crown Revenue and Receipts table and other PDF
   pages remain outside this slice. No cross-edition comparability, publication
   or track completion is asserted.
+
+## 2026-10-07 — Vote Health Supplementary Estimates overview totals 2004/05
+
+- The pinned profile extracts the nine page-3 appropriation summary rows and
+  retains five `$000` columns, including the separately labelled Main Estimates
+  baseline. It emits 45 field-lineage rows and one partial-page disposition.
+- Persistent Silver manifest SHA-256 is
+  `5979de6bb60983d98cbc39be8a596ea5eef4f4414b021ea080e447695a3416a9`;
+  payload digests and Bronze identity are in the linked machine evidence.
+  Integrated recovery rebuilt twice from Bronze, matched the Silver payload
+  digests and confirmed Bronze immutability. The overall receipt remains
+  `partial_with_blockers` for other sources and products.
+- Focused profile, source-operation, and recovery tests passed (530 passed,
+  10 skipped). `./scripts/validate.sh` passed on the final implementation:
+  7,651 passed, 10 skipped, 97.46% coverage against the 80% floor, 56 schemas
+  and 46 representative documents, 9/9 differential parity, and all mutation,
+  security, and supply-chain gates passed.
+- The census records Treasury's CC BY 4.0 notice; normalized-fact rights remain
+  `not_evaluated`. Detailed Part B1 rows, other pages and cross-edition claims
+  are excluded. See the machine evidence and recovery receipt linked from
+  `index.md`.
