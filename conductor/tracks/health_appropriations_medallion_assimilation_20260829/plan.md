@@ -715,6 +715,12 @@ integrated parent head.
   Bronze remains unchanged. Rights remain unevaluated; broader source coverage
   and final recovery gates stay open. See
   `vote-health-supplementary-2016-17-category-totals-20261006.md`.
+  The adjacent 2017/18 Supplementary Estimates PDF now has a separate pinned
+  profile for seven named category totals across pages 2–5. It retains the
+  three `$000` columns, signed parenthesized values, direct lineage, and four
+  partial-page dispositions. Persistent Silver is recorded and Bronze remains
+  unchanged; rights remain unevaluated. See
+  `vote-health-supplementary-2017-18-category-totals-20261006.md`.
   The same bounded overview extraction now covers eight reviewed headlines on
   pages 2–3 of the 48-page 2004/05 Estimates PDF, with its own source hash,
   vintage, transformation and profile. No amounts are summed; remaining PDF
