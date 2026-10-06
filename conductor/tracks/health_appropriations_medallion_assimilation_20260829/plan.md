@@ -698,6 +698,13 @@ integrated parent head.
   `vote-health-supplementary-2010-11-category-totals-20261006.md` and its
   machine evidence. Rights remain unevaluated; other source rows and editions
   remain open.
+  The adjacent captured 2009/10 Supplementary Estimates PDF now has a pinned
+  profile for six printed category totals on pages 2–6, with three `$000`
+  columns, parenthesized adjustments, direct lineage, and partial-page
+  dispositions. Two clean-room Bronze builds and repository validation are
+  recorded in `vote-health-supplementary-2009-10-category-totals-20261006.md`
+  and its machine evidence. Rights remain unevaluated; other source rows and
+  editions remain open.
   The captured 2013/14 Supplementary Estimates PDF now has a separate pinned
   profile for six explicit appropriation totals from pages 2–6. It preserves
   the three printed `$000` columns, parenthesized adjustments, raw dash token,
