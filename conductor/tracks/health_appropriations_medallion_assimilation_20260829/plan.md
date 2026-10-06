@@ -690,6 +690,14 @@ integrated parent head.
   non-departmental other expenses are separate in this edition. Rights remain
   unevaluated. See
   `vote-health-supplementary-2011-12-category-totals-20261006.md`.
+  The adjacent captured 2010/11 Supplementary Estimates PDF now has a separate
+  pinned profile for six printed category totals from pages 2–6. It retains
+  all three `$000` budget columns, parenthesized adjustments, direct lineage,
+  and partial-page dispositions. Two clean-room Bronze rebuilds and the full
+  repository validation result are recorded in
+  `vote-health-supplementary-2010-11-category-totals-20261006.md` and its
+  machine evidence. Rights remain unevaluated; other source rows and editions
+  remain open.
   The captured 2013/14 Supplementary Estimates PDF now has a separate pinned
   profile for six explicit appropriation totals from pages 2–6. It preserves
   the three printed `$000` columns, parenthesized adjustments, raw dash token,
