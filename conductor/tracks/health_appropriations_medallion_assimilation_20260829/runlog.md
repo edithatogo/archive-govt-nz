@@ -5273,3 +5273,26 @@ harness passed: 7,651 tests passed, 10 skipped, 97.46% coverage against the
 parity, and all mutation, security, and supply-chain gates passed. Conductor
 validation passed with 93 tracks and no errors. This remains one partial Phase
 5 slice.
+
+### 2026-10-07 — Vote Health Supplementary Estimates 2001/02 overview
+
+The next eligible captured edition was the 19-page Treasury PDF at
+`https://www.treasury.govt.nz/sites/default/files/2008-03/supp02health.pdf`,
+Bronze SHA-256 `5849babe79f21c644920cd16fcf830ab4538488a0ff8253aa76070433f7ef572`.
+Page 2 contains a nine-row, five-column Summary of Appropriations, including
+the separate 2001/02 Main Estimates baseline. Added a pinned page-specific
+adapter, source-operation profile, schema projection, and repeated clean-room
+rebuild contract. Persistent Silver contains nine facts, 45 lineage rows, and
+one partial-page disposition; manifest SHA-256
+`c1150393b8fce05ecbf18cd3a608adbf8630f1573e8753abef1387833e0a769a`.
+Focused adapter, source-operation and recovery tests passed (532 passed, 10
+skipped). Integrated clean-room recovery rebuilt this profile twice from
+Bronze, matched the persistent Silver digests, and confirmed Bronze unchanged;
+the overall receipt remains `partial_with_blockers`. Treasury's CC BY 4.0
+notice is recorded; derived-fact rights remain unevaluated. Detailed Part B1
+rows and cross-edition comparison remain outside scope. The full validation
+harness passed: 7,657 tests passed, 10 skipped, 97.44% coverage against the
+80% floor, 56 schemas and 46 representative documents, 9/9 differential
+parity, and all mutation, security, and supply-chain gates passed. Conductor
+validation passed with 93 tracks and no errors. This is one partial Phase 5
+slice.
