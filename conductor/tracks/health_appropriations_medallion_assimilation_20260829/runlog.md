@@ -5193,3 +5193,39 @@ The final `./scripts/validate.sh` rerun passed with exit code 0: 7,629 passed,
 documents, 9/9 differential parity, and all mutation, security, and
 supply-chain gates passed. Ruff PT018 from the first attempt was fixed by
 splitting the test assertion; all six focused profile tests passed.
+
+### 2026-10-07 — 2006/07 profile initial lint finding
+
+The initial `./scripts/validate.sh` run stopped at repository lint before tests.
+Ruff E501 identified two long schema-version literals in the new overview
+adapter. No later harness lane ran. The literals were wrapped and the focused
+suite rerun passed (530 passed, 10 skipped). During implementation, the
+source-layout baseline confirmed that this PDF has 24 pages; the adapter is
+pinned to that count. A focused test also caught a stale static source-operation
+schema projection and an expected-error mismatch; the schema was regenerated
+from the canonical projection and the assertion now checks the observed
+fail-closed row-cell error.
+
+The final `./scripts/validate.sh` rerun passed: 7,637 passed, 10 skipped,
+97.51% coverage against the 80% floor, 56 schemas/46 representative documents,
+9/9 differential parity, and all configured mutation, security, and
+supply-chain gates passed. Formatting, lint, typing, and Conductor validation
+also passed.
+
+The 2006/07 profile emits seven page-3 appropriation overview facts with six
+distinct `$000` columns and 42 field-lineage rows. Raw dash and `N/A` cells are
+preserved. Two integrated clean-room Bronze builds match each other and the
+persistent Silver package; the Bronze CAS remains unchanged. The integrated
+receipt remains `partial_with_blockers` for other source families and product
+gates. Normalized-fact rights remain unevaluated.
+
+The first hosted PR #674 platform run failed its detect-secrets gate on all
+three operating systems. The bounded scanner receipt localized one Base64
+high-entropy candidate to the new machine evidence JSON's absolute external
+Silver path field (line 123); it was a host-local storage locator, not a
+credential. The same `tools/supply_chain.py secrets` check reproduced the
+candidate once the new evidence file was tracked. Removed that unnecessary
+absolute path; retain the external store scope and persistent manifest/output
+digests as the evidence binding. All other required hosted checks passed, while
+Assurance was blocked by this scanner finding; the replacement hosted matrix
+must pass before merge.
