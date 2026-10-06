@@ -5296,3 +5296,24 @@ harness passed: 7,657 tests passed, 10 skipped, 97.44% coverage against the
 parity, and all mutation, security, and supply-chain gates passed. Conductor
 validation passed with 93 tracks and no errors. This is one partial Phase 5
 slice.
+
+### 2026-10-07 — Vote Health Supplementary Estimates 2000/01 overview
+
+Added the pinned `vote-health-supplementary-2000-01-overview/v1` profile for
+Treasury's captured 15-page PDF at
+`https://www.treasury.govt.nz/sites/default/files/2008-03/supp01health.pdf`
+(Bronze SHA-256
+`19864bad3c28561e065bcbf69df7cb245fe52123aa80d9e3a84ba650815054cb`). Page 2
+contains nine appropriation overview rows and five printed `$000` columns. The
+adapter preserves the separate 2000/01 Main Estimates baseline and records 45
+field-lineage rows plus one partial-page disposition. The persistent Silver
+manifest is `adf18895ac9141dc93e5a0e86b9f53e771282b74c8a21f437bf07c6bbed6b15f`.
+Focused parser and source-operation tests passed. Integrated recovery rebuilt
+the profile twice from Bronze with identical outputs matching the persistent
+Silver digests and confirmed Bronze unchanged; overall status remains
+`partial_with_blockers`. Treasury's CC BY 4.0 notice is recorded, while derived-fact
+rights remain unevaluated. Detail rows and cross-edition comparisons remain
+excluded. The final `./scripts/validate.sh` passed: 7,663 tests passed, 10 skipped,
+97.42% coverage against the 80% floor, 56 schemas/46 representative documents,
+differential parity 9/9, and all mutation, security, and supply-chain gates
+passed. Conductor validation passed with 93 tracks and no errors.

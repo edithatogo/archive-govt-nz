@@ -1125,3 +1125,19 @@ repeat the already-completed external publication/collection operations.
   `not_evaluated`. Detailed Part B1 rows, other pages and cross-edition claims
   are excluded. See the machine evidence and recovery receipt linked from
   `index.md`.
+
+## 2026-10-07 — Vote Health Supplementary Estimates overview totals 2000/01
+
+- The pinned profile extracts the nine page-2 appropriation overview rows and
+  preserves five `$000` columns, including the separate Main Estimates baseline.
+  It emits 45 field-lineage rows and one partial-page disposition.
+- Persistent Silver manifest SHA-256 is
+  `adf18895ac9141dc93e5a0e86b9f53e771282b74c8a21f437bf07c6bbed6b15f`; output
+  digests and source identity are recorded in the machine receipt.
+- The source census records Treasury's CC BY 4.0 notice. Rights for normalized
+  facts remain `not_evaluated`; detailed Part B1 rows, other pages and cross-
+  edition claims are excluded. No publication is performed.
+- `./scripts/validate.sh` passed on the final tree: 7,663 tests passed, 10
+  skipped, 97.42% coverage against the 80% floor, 56 schemas/46 representative
+  documents, differential parity 9/9, and all mutation, security, and supply-
+  chain gates passed. Conductor validation passed with 93 tracks and no errors.
