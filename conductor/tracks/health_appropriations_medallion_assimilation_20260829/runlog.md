@@ -5250,3 +5250,26 @@ Rights for normalized facts remain unevaluated. The final
 against the 80% floor, 56 schemas and 46 representative documents, 9/9
 differential parity, and all mutation, security, and supply-chain gates passed.
 Local Conductor validation also passed with 93 tracks and no errors.
+
+### 2026-10-07 — Vote Health Supplementary Estimates 2004/05 overview
+
+The next eligible captured edition was the 26-page Treasury PDF at
+`https://www.treasury.govt.nz/sites/default/files/2008-03/supp05health.pdf`,
+Bronze SHA-256 `deb17095776a3441607a29d17bfe10c2d2c8f186c5ff9b2c3fdef8d0bbe1eb7d`.
+Page 3 has a distinct five-column Summary of Appropriations: seven row
+categories plus the current total and a separate 2004/05 Main Estimates
+baseline. Added a pinned nine-row adapter, operation profile, schema projection,
+and recovery rebuild contract. It retains source labels and dash tokens; it
+does not normalize detailed Part B1 tables or other pages. Persistent Silver
+contains nine facts, 45 lineage rows and one partial-page disposition, with
+manifest SHA-256 `5979de6bb60983d98cbc39be8a596ea5eef4f4414b021ea080e447695a3416a9`.
+Focused adapter, source-operation and recovery tests passed (530 passed, 10
+skipped). Integrated clean-room recovery rebuilt this profile twice from
+Bronze, matched the persistent Silver digests, and confirmed Bronze unchanged;
+the overall receipt remains `partial_with_blockers`. Treasury's CC BY 4.0
+notice is recorded; derived-fact rights remain unevaluated. The full validation
+harness passed: 7,651 tests passed, 10 skipped, 97.46% coverage against the
+80% floor, 56 schemas and 46 representative documents, 9/9 differential
+parity, and all mutation, security, and supply-chain gates passed. Conductor
+validation passed with 93 tracks and no errors. This remains one partial Phase
+5 slice.

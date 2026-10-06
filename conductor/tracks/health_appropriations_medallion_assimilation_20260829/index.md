@@ -356,3 +356,6 @@ they are not current-state assertions.
 - [Vote Health 2022/23 summary in clean-room recovery](./clean-room-recovery-20261006-vote-health-2022-23.json)
 - [Vote Health 2023/24 summary in clean-room recovery](./clean-room-recovery-20261006-vote-health-2023-24.json)
 - [Vote Health 2024/25 summary in clean-room recovery](./clean-room-recovery-20261006-vote-health-2024-25.json)
+- [Vote Health 2004/05 Supplementary Estimates overview](./vote-health-supplementary-2004-05-overview-20261007.md)
+- [Vote Health 2004/05 overview extraction evidence](./vote-health-supplementary-2004-05-overview-20261007.json)
+- [Vote Health 2004/05 overview in clean-room recovery](./clean-room-recovery-20261007-vote-health-2004-05.json)
