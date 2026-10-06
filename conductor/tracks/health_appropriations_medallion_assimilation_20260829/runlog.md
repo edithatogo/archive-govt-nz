@@ -5079,3 +5079,15 @@ verified Bronze unchanged. Rights remain unevaluated; full-track recovery
 remains partial. `./scripts/validate.sh` passed: 7,573 tests, 10 skipped,
 97.66% coverage, 56 schemas/46 representative documents, 9/9 parity, and all
 configured mutation, security and supply-chain gates.
+
+### 2026-10-06 — Vote Health Supplementary Estimates 2015/16
+
+Added an edition-specific seven-total adapter for captured PDF pages 2–6,
+binding the exact source hash, vintage and locator. Wired it through source
+operations and clean-room recovery. Persistent output has seven facts, 21
+lineage rows and five page dispositions. Focused contracts pass (521 passed,
+10 skipped), and the adapter module measures 91.67% coverage against the 80%
+floor. Integrated recovery rebuilt twice, matched persistent output digests and
+verified Bronze unchanged. `./scripts/validate.sh` passed: 7,580 tests, 10
+skipped, 97.64% coverage, 56 schemas/46 representative documents, 9/9 parity,
+and all configured mutation, security and supply-chain gates.

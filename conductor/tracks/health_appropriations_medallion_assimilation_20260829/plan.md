@@ -699,6 +699,15 @@ integrated parent head.
   `vote-health-supplementary-2014-15-category-totals-20261006.md`. The focused
   profile tests and full repository harness pass; the latter reports 7,573
   tests, 10 skipped and 97.66% coverage against the 80% floor.
+  The captured 2015/16 Supplementary Estimates PDF now has a separate
+  hash-pinned profile for seven printed category totals on pages 2–6. It
+  preserves the three `$000` budget columns, parenthesized adjustments, direct
+  field lineage, and partial-page dispositions. Persistent Silver and
+  integrated recovery builds match, with Bronze unchanged. The focused profile
+  tests and full repository harness pass; the latter reports 7,580 tests, 10
+  skipped and 97.64% coverage against the 80% floor. Normalized-fact rights
+  remain unevaluated and other PDF content and editions remain open. See
+  `vote-health-supplementary-2015-16-category-totals-20261006.md`.
   The same bounded overview extraction now covers eight reviewed headlines on
   pages 2–3 of the 48-page 2004/05 Estimates PDF, with its own source hash,
   vintage, transformation and profile. No amounts are summed; remaining PDF

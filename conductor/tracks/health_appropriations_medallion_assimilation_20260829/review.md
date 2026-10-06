@@ -1814,3 +1814,19 @@ security and supply-chain gates passed. The whole track is not complete.
 - The captured census records the Treasury licence notice; normalized-fact
   rights remain `not_evaluated`. No cross-edition, Gold, federation, publication
   or whole-track completion claim is made.
+
+## 2026-10-06 — Vote Health 2015/16 Supplementary category-total review
+
+- The source hash matches the captured census record; the adapter verifies the
+  official locator, vintage, 46-page PDF identity, exact page span, headings,
+  seven labels and source order before writing.
+- Seven facts preserve the three `$000` columns, source row labels, raw tokens,
+  21 direct field-lineage records and five partial-page dispositions.
+- Focused tests pass (521 passed, 10 skipped); profile module coverage is
+  91.67% against the 80% floor. Integrated recovery matches persistent Silver
+  and leaves Bronze unchanged. `./scripts/validate.sh` passes with 7,580 tests,
+  10 skipped, 97.64% overall coverage, 56 schemas/46 representative documents,
+  9/9 parity, and mutation, security and supply-chain gates green.
+- The captured census records the Treasury licence notice; normalized-fact
+  rights remain `not_evaluated`. No cross-edition, Gold, federation, publication
+  or whole-track completion claim is made.
