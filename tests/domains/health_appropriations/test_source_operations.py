@@ -1771,10 +1771,58 @@ def test_vote_health_2001_02_overview_profile_is_pinned_and_dispatched(
     )
 
 
+def test_vote_health_2000_01_overview_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2000_01
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-07T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 1, "facts": 9}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_appropriation_overview_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
 def test_vote_health_2001_02_overview_rejects_wrong_source_hash(
     tmp_path: Path,
 ) -> None:
     module = source_operations.vote_health_supplementary_2001_02
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256="0" * 64,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-07T00:00:00Z",
+    )
+
+    with pytest.raises(ValueError, match="invalid_source_operation"):
+        source_operations._validate(request, dry_run=True)  # noqa: SLF001
+
+
+def test_vote_health_2000_01_overview_rejects_wrong_source_hash(
+    tmp_path: Path,
+) -> None:
+    module = source_operations.vote_health_supplementary_2000_01
     source = tmp_path / "source.pdf"
     source.write_bytes(b"fixture PDF source")
     request = source_operations.SourceRequest(

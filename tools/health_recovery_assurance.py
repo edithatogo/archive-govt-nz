@@ -31,6 +31,7 @@ from archive_govt_nz.domains.health_appropriations import (
     population_annual_canonical_projection,
     qes,
     qes_canonical_projection,
+    vote_health_supplementary_2000_01,
     vote_health_supplementary_2001_02,
     vote_health_supplementary_2004_05,
     vote_health_supplementary_2005_06,
@@ -1026,6 +1027,38 @@ def rebuild_vote_health_2001_02_overview(root: Path, index: int) -> dict[str, An
         or receipt.get("counts") != {"pages": 1, "facts": 9}
     ):
         message = "vote_health_2001_02_recovery_contract"
+        raise RuntimeError(message)
+    return {"files": tree(output), "operation_receipt": receipt}
+
+
+def rebuild_vote_health_2000_01_overview(root: Path, index: int) -> dict[str, Any]:
+    """Rebuild the nine-row 2000/01 summary from its pinned Bronze PDF."""
+    profile = vote_health_supplementary_2000_01
+    source = (
+        ARCHIVE
+        / "bronze-cas"
+        / "sha256"
+        / profile.SOURCE_SHA256[:2]
+        / profile.SOURCE_SHA256
+    )
+    output = root / f"vote-health-2000-01-overview-{index}"
+    request = SourceRequest(
+        source=source,
+        output_dir=output,
+        profile=profile.PROFILE,
+        expected_sha256=profile.SOURCE_SHA256,
+        source_vintage=profile.VINTAGE,
+        source_locator=profile.SOURCE_LOCATOR,
+        observed_at="2026-10-07T00:00:00Z",
+    )
+    receipt = operate_source(request, dry_run=False)
+    if (
+        receipt.get("status") != "written_local"
+        or receipt.get("profile") != profile.PROFILE
+        or receipt.get("source_object_sha256") != profile.SOURCE_SHA256
+        or receipt.get("counts") != {"pages": 1, "facts": 9}
+    ):
+        message = "vote_health_2000_01_recovery_contract"
         raise RuntimeError(message)
     return {"files": tree(output), "operation_receipt": receipt}
 
@@ -2673,6 +2706,25 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0912, PLR0915 - recovery products
         }
         if vote_health_2001_02_totals["1"] != vote_health_2001_02_totals["2"]:
             message = "vote_health_2001_02_repeat_mismatch"
+            raise RuntimeError(message)
+        vote_health_2000_01_totals = {
+            str(index): rebuild_vote_health_2000_01_overview(root, index)
+            for index in (1, 2)
+        }
+        vote_health_2000_01_files = compare_product_outputs(
+            root / "vote-health-2000-01-overview-1",
+            root / "vote-health-2000-01-overview-2",
+            "vote_health_2000_01_overview",
+        )
+        outputs["vote_health_supplementary_2000_01_overview"] = {
+            "files": vote_health_2000_01_files,
+            "operation_receipt": vote_health_2000_01_totals["1"]["operation_receipt"],
+            "repeat_identical": (
+                vote_health_2000_01_totals["1"] == vote_health_2000_01_totals["2"]
+            ),
+        }
+        if vote_health_2000_01_totals["1"] != vote_health_2000_01_totals["2"]:
+            message = "vote_health_2000_01_repeat_mismatch"
             raise RuntimeError(message)
         vote_health_2013_14_totals = {
             str(index): rebuild_vote_health_2013_14_category_totals(root, index)
