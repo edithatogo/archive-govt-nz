@@ -162,6 +162,8 @@ def test_duckdb_cross_product_golden_matrix_and_unapproved_real_view(
     by_period = {
         name: {row["period_end"]: row for row in rows} for name, rows in queried.items()
     }
+    expected_periods = {"2024-06-30", "2025-06-30"}
+    assert all(set(rows) == expected_periods for rows in by_period.values())
 
     for year in (2024, 2025):
         period = f"{year}-06-30"
