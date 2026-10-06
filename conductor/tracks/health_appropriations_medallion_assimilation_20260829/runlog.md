@@ -5007,3 +5007,15 @@ vintage/type separation, non-additive annual ratios, exact-context revision
 separation with ambiguous groups retained, and incompatible inputs failing
 closed. The corresponding invariant item is now complete; broader donor and
 cross-source reconciliation remains open.
+
+## 2026-10-06 — Fiscal Gold plot and drill-through evidence reconciled
+
+Recorded the existing fiscal analytical report lane as a completed Phase 6
+plot/summary subtask. It renders six bounded PNG views from the pinned fiscal
+Gold queries and retains exact query rows, numerator/denominator/population/CPI
+record IDs, exclusions and row-by-row source reconciliation in structured
+reports. The renderer separates accounting and GST contexts, uses discrete
+points without interpolation, and makes no deflator, ISO-currency, rights or
+publication claim. The report tests verify dry-run, readback and identical
+repeat-build bytes. This does not close the broader plot gate for remaining
+source families or donor reports.
