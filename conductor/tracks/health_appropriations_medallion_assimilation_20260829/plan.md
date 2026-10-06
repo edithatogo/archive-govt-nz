@@ -941,16 +941,19 @@ integrated parent head.
   revision/classification reports, department/portfolio breakdowns and CPB
   projections. The cross-product golden matrix and derived real view remain
   open; this checklist stays incomplete until those contracts are reconciled.
-- [ ] Add invariant/property tests for denominator identity, CPI base changes,
+- [x] Add invariant/property tests for denominator identity, CPI base changes,
   financial-year alignment, additive/non-additive measures, revision isolation,
   rounding and incompatible series. [M-06, M-12, M-13, M-18; AC-10, AC-11,
-  AC-16]
-  Progress: `test_fiscal_share_analysis.py` now asserts that GDP share ratios
-  retain distinct annual inputs and outputs and are not additive across periods.
-  Existing fiscal share, CPI benchmark and per-capita suites cover denominator
-  identity, uniform CPI rebasing, March/June alignment, ambient Decimal
-  precision, and incompatible or ambiguous inputs. The remaining revision-
-  isolation and additive-measure contracts still need an explicit audit.
+  AC-16] Evidence: `test_fiscal_share_analysis.py` pins denominator IDs and
+  per-year GDP shares; `test_fiscal_cpi_benchmark.py` verifies uniform CPI
+  rebasing; fiscal share/CPI/per-capita tests cover March/June fiscal alignment,
+  ambient Decimal precision, and incompatible or ambiguous inputs.
+  `test_budget_vintages.py` verifies exact additive totals while keeping
+  overlapping years and inputs separated by vintage and amount type.
+  `test_canonical_consumer.py` verifies exact-context revision candidates,
+  source IDs by vintage and explicit ambiguity handling. The five focused suites
+  passed together (82 tests). This closes the listed invariant/property test
+  contracts; cross-source and donor reconciliation remain separate open gates.
 
 ### 6.2 Build marts, quality products and reports
 

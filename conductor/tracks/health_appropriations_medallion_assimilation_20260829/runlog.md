@@ -4995,3 +4995,15 @@ this tree: 7,540 passed, 10 skipped, 97.66% coverage (80% floor), with lock,
 format, lint, typing, schemas, parity, mutation, dependency, licence, secret
 scan and SBOM gates passing. Revision isolation and additive-measure contracts
 remain open for audit.
+
+## 2026-10-06 — Phase 6 fiscal invariant evidence reconciled
+
+Audited the Phase 6 invariant checklist against the fiscal share, CPI benchmark,
+per-capita, Budget vintage and canonical revision tests. The five focused
+suites passed together (82 tests). Their assertions cover denominator lineage,
+uniform CPI rebase invariance, March/June fiscal alignment, exact Decimal
+behavior under altered ambient precision, additive Budget totals with source
+vintage/type separation, non-additive annual ratios, exact-context revision
+separation with ambiguous groups retained, and incompatible inputs failing
+closed. The corresponding invariant item is now complete; broader donor and
+cross-source reconciliation remains open.
