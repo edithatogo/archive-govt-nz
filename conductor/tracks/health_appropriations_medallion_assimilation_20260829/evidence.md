@@ -1039,3 +1039,26 @@ repeat the already-completed external publication/collection operations.
   remain `not_evaluated`. Other PDF rows/pages, cross-edition comparison,
   publication and track completion are not asserted. See the machine evidence
   and clean-room recovery receipt linked from `index.md`.
+
+## 2026-10-07 — Vote Health Supplementary Estimates overview totals 2006/07
+
+- Profile `vote-health-supplementary-2006-07-overview-totals/v1` is pinned to
+  the captured 24-page Treasury PDF (SHA-256
+  `f319471bd62ca7302a9984c95fc28036cf7aa68113e9cd9733e6c6b5ac587b43`). It
+  emits seven page-3 appropriation rows with six source columns, `$000` units,
+  42 field-lineage rows, and one partial-page disposition. Raw dash and `N/A`
+  cells remain in lineage; typed numeric values are null.
+- Persistent Silver manifest SHA-256 is
+  `75398989b383000601e6acd42e0ae88dadb42cdf21533bf39d8901359364e23e`. Two
+  integrated clean-room builds match its fact, lineage, and disposition
+  digests; Bronze remained unchanged. The wider recovery remains
+  `partial_with_blockers`.
+- Focused profile, source-operation, and recovery tests passed (530 passed,
+  10 skipped). `./scripts/validate.sh` passed with 7,637 passed, 10 skipped,
+  97.51% coverage against the 80% floor, 56 schemas/46 representative
+  documents, 9/9 differential parity, and all mutation, security, and
+  supply-chain gates passed.
+- Treasury's CC BY 4.0 notice is recorded; normalized-fact rights remain
+  `not_evaluated`. The profile does not normalize the separate Crown Revenue
+  table or establish cross-edition comparability, publication, or track
+  completion.
