@@ -698,6 +698,13 @@ integrated parent head.
   `vote-health-supplementary-2010-11-category-totals-20261006.md` and its
   machine evidence. Rights remain unevaluated; other source rows and editions
   remain open.
+  The captured 2008/09 Supplementary Estimates PDF now has its own pinned
+  profile for six printed category totals from pages 2–6. It preserves the
+  three `$000` budget columns, parenthesized adjustments, direct lineage, and
+  partial-page dispositions. Persistent Silver matches two clean-room Bronze
+  rebuilds; the integrated recovery receipt and source-specific evidence are
+  linked in `index.md`. Rights remain unevaluated, and the other source rows,
+  editions, and Phase 5 products remain open.
   The adjacent captured 2009/10 Supplementary Estimates PDF now has a pinned
   profile for six printed category totals on pages 2–6, with three `$000`
   columns, parenthesized adjustments, direct lineage, and partial-page

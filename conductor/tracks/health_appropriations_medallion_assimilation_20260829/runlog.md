@@ -5133,3 +5133,37 @@ schemas/46 representative documents, 9/9 parity, and all configured mutation,
 security, and supply-chain gates. Integrated recovery rebuilt twice, matched
 persistent output digests, and verified Bronze unchanged. The wider recovery
 remains `partial_with_blockers`; rights remain unevaluated.
+
+
+### 2026-10-07 — Vote Health Supplementary Estimates 2008/09
+
+Confirmed the captured seven-page Treasury PDF by SHA-256 and directly
+extracted the six printed category totals on pages 2–6. The source layout uses
+the expected three `$000` budget columns, with the output-expense category
+totals on page 5 in this edition. Added a separate edition-pinned adapter,
+operation allowlist registration, schema projection, and repeat-recovery
+contract. The first focused dispatch test caught a duplicate profile key from
+an unconverted hyphenated vintage; the profile ID was corrected, after which
+focused contracts passed (527 passed, 10 skipped). Persistent Silver contains
+six facts, 18 lineage rows and five partial-page dispositions. The integrated
+recovery receipt reports repeat-identical outputs, parity with persistent
+Silver and unchanged Bronze; wider recovery remains partial with blockers.
+Normalized-fact rights remain unevaluated. `./scripts/validate.sh` passed:
+7,622 passed, 10 skipped, 97.56% coverage against the 80% floor, 56
+schemas/46 representative documents, 9/9 differential parity, and all
+mutation, security and supply-chain gates passed.
+
+Final-tree validation follow-up: a second `./scripts/validate.sh` run reached
+7,621 passed and 10 skipped but exited 1 when Hypothesis raised
+`FailedHealthCheck: Input generation is slow` in the unrelated
+`tests/domains/test_legislation_archive_service.py::test_checkpoint_root_preserves_arbitrary_persisted_json_bytes`
+(1.44 seconds for two generated examples under xdist worker `gw6`). The exact
+isolated test then passed in 6.70 seconds. No code changes were made in
+response; the full harness is being rerun to distinguish transient worker
+contention from a repeatable failure.
+
+The final-tree rerun of `./scripts/validate.sh` passed with exit code 0: 7,622
+passed, 10 skipped, 97.56% coverage, all 56 schemas and 46 representative
+documents valid, parity 9/9, and mutation, security, and supply-chain gates
+passed. The transient Hypothesis slow-generation failure did not reproduce in
+the isolated test or the full rerun.
