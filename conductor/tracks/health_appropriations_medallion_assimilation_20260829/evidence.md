@@ -1062,3 +1062,24 @@ repeat the already-completed external publication/collection operations.
   `not_evaluated`. The profile does not normalize the separate Crown Revenue
   table or establish cross-edition comparability, publication, or track
   completion.
+
+## 2026-10-07 — Vote Health Supplementary Estimates overview totals 2005/06
+
+- Profile `vote-health-supplementary-2005-06-overview-totals/v1` is pinned to
+  the captured 17-page Treasury PDF (SHA-256
+  `9907280937726b80a2f623f3879f9bc69814e02a1702a3cb0b2fb39d2d7d7074`). It
+  emits seven page-3 appropriation overview rows with six separate source
+  columns, `$000` units, 42 field-lineage rows and one partial-page disposition.
+  Raw dash and `N/A` tokens remain in lineage; numeric nulls do not replace
+  those source tokens.
+- Persistent Silver manifest SHA-256 is
+  `236008de1ca9747c177cc86347d3050023539b53d8fbc78557d4c4b3fae232dd`. The
+  integrated Bronze recovery confirms two repeat-identical builds, matching
+  persistent Silver digests, and unchanged Bronze. `./scripts/validate.sh`
+  passed with 7,646 tests, 10 skipped, 97.48% coverage against the 80% floor,
+  56 schemas/46 representative documents, 9/9 differential parity, and all
+  configured mutation, security, and supply-chain gates passed.
+- Treasury's CC BY 4.0 notice is recorded; normalized-fact rights remain
+  `not_evaluated`. The separate Crown Revenue and Receipts table and other PDF
+  pages remain outside this slice. No cross-edition comparability, publication
+  or track completion is asserted.

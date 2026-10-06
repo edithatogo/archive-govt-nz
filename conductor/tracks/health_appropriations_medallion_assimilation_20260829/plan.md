@@ -720,6 +720,14 @@ integrated parent head.
   Bronze object is unchanged. Rights remain unevaluated and other source rows,
   editions, and Phase 5 products remain open. See
   `vote-health-supplementary-2006-07-overview-totals-20261007.md`.
+  The adjacent captured 2005/06 Supplementary Estimates PDF now has its own
+  source-hash-pinned page-3 overview profile for seven appropriation rows. It
+  preserves six printed `$000` columns, original labels, and raw dash/`N/A`
+  tokens with 42 field-lineage rows; the separate Crown Revenue and Receipts
+  table remains outside this slice. Persistent Silver matches two integrated
+  clean-room Bronze rebuilds, and Bronze is unchanged. Rights remain
+  unevaluated; remaining source content, editions and Phase 5 products stay
+  open. See `vote-health-supplementary-2005-06-overview-totals-20261007.md`.
   The adjacent captured 2009/10 Supplementary Estimates PDF now has a pinned
   profile for six printed category totals on pages 2–6, with three `$000`
   columns, parenthesized adjustments, direct lineage, and partial-page
