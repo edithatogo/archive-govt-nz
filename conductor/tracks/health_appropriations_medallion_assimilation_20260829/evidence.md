@@ -911,6 +911,29 @@ repeat the already-completed external publication/collection operations.
   normalized-fact rights remain `not_evaluated`. Other source rows/pages,
   cross-edition comparison, publication, and track completion are not asserted.
 
+## 2026-10-06 — Vote Health Supplementary Estimates category totals 2011/12
+
+- Profile `vote-health-supplementary-2011-12-category-totals/v1` is pinned to
+  the captured six-page Treasury PDF (SHA-256
+  `71b905562f6701923961b47578a638a7fbed3731d5d1840fa55b8955300ce0d9`). It
+  emits seven edition-specific totals from pages 2–5, retaining three printed
+  `$000` columns, dash/null and parenthesized source tokens, and 21 field-lineage
+  rows. Departmental and non-departmental other expenses remain separate.
+- Persistent Silver manifest SHA-256 is
+  `4697ff8edc1a5590d1435e68b4b95fff8f5f393dbcd3870684f26c58510af7a6`. The
+  integrated recovery rebuilt this profile twice, matched persistent output
+  digests, and confirmed Bronze objects unchanged; broader recovery remains
+  `partial_with_blockers`.
+- Focused profile, source-operation, and recovery tests passed (524 passed,
+  10 skipped); adapter line and branch coverage is 93.75%, above the 80% floor.
+  The required `./scripts/validate.sh` passed with 7,601 tests, 10 skipped,
+  97.60% coverage against the 80% floor, 56 schemas/46 representative
+  documents, 9/9 differential parity, and mutation, security, and supply-chain
+  gates passed.
+- The census records Treasury's CC BY 4.0 notice; normalized-fact rights
+  remain `not_evaluated`. Other source rows/pages, cross-edition comparison,
+  publication, and track completion are not asserted.
+
 ## 2026-10-06 — Vote Health Supplementary Estimates category totals 2014/15
 
 - Profile `vote-health-supplementary-2014-15-category-totals/v1` is pinned to
