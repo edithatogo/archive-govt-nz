@@ -25,6 +25,7 @@ from archive_govt_nz.domains.health_appropriations import (
     vote_health_supplementary_2013_14,
     vote_health_supplementary_2014_15,
     vote_health_supplementary_2015_16,
+    vote_health_supplementary_2016_17,
     vote_health_supplementary_2018_19,
     vote_health_supplementary_2019_20,
     vote_health_supplementary_2020_21,
@@ -144,6 +145,12 @@ PROFILES = MappingProxyType(
         ),
         vote_health_supplementary_2015_16.PROFILE: (
             vote_health_supplementary_2015_16.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_category_total_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2016_17.PROFILE: (
+            vote_health_supplementary_2016_17.TRANSFORMATION,
             ("pages", "facts"),
             "vote_health_category_total_facts.parquet",
             "page_dispositions.parquet",
@@ -342,6 +349,10 @@ _VOTE_HEALTH_CATEGORY_TOTAL_PROFILES = {
     vote_health_supplementary_2015_16.PROFILE: (
         vote_health_supplementary_2015_16.VINTAGE,
         vote_health_supplementary_2015_16.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2016_17.PROFILE: (
+        vote_health_supplementary_2016_17.VINTAGE,
+        vote_health_supplementary_2016_17.SOURCE_SHA256,
     ),
     vote_health_supplementary_2018_19.PROFILE: (
         vote_health_supplementary_2018_19.VINTAGE,
@@ -735,6 +746,10 @@ def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile disp
         )
     if request.profile == vote_health_supplementary_2015_16.PROFILE:
         return vote_health_supplementary_2015_16.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2016_17.PROFILE:
+        return vote_health_supplementary_2016_17.normalize(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
     if request.profile == vote_health_supplementary_2018_19.PROFILE:

@@ -708,6 +708,13 @@ integrated parent head.
   skipped and 97.64% coverage against the 80% floor. Normalized-fact rights
   remain unevaluated and other PDF content and editions remain open. See
   `vote-health-supplementary-2015-16-category-totals-20261006.md`.
+  The 2016/17 Supplementary Estimates PDF now has a separate source-hash-pinned
+  profile for seven named category totals across pages 2–5, with printed `$000`
+  columns, signed parenthesized values, direct lineage, and four partial-page
+  dispositions. Persistent Silver matches two clean-room Bronze rebuilds and
+  Bronze remains unchanged. Rights remain unevaluated; broader source coverage
+  and final recovery gates stay open. See
+  `vote-health-supplementary-2016-17-category-totals-20261006.md`.
   The same bounded overview extraction now covers eight reviewed headlines on
   pages 2–3 of the 48-page 2004/05 Estimates PDF, with its own source hash,
   vintage, transformation and profile. No amounts are summed; remaining PDF
