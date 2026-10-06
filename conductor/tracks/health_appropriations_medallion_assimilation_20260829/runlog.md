@@ -5119,3 +5119,17 @@ documents, 9/9 parity, and all configured mutation, security, and supply-chain
 gates. Integrated recovery rebuilt twice, matched persistent output digests,
 and verified Bronze unchanged. The broader track remains
 `partial_with_blockers`; rights remain unevaluated.
+
+### 2026-10-06 — Vote Health Supplementary Estimates 2011/12
+
+Added a source-pinned profile for the seven category totals in this edition's
+different row set, including separate departmental and non-departmental
+other-expense totals and no multi-category total. It reads pages 2–5 from the
+captured six-page PDF and retains raw dash and negative tokens, three `$000`
+columns, 21 lineage rows, and four partial-page dispositions. Persistent Silver
+has seven facts. Focused checks passed (524 tests, 10 skipped) at 93.75%
+line/branch coverage. `./scripts/validate.sh` passed: 7,601 tests, 10 skipped, 97.60% coverage, 56
+schemas/46 representative documents, 9/9 parity, and all configured mutation,
+security, and supply-chain gates. Integrated recovery rebuilt twice, matched
+persistent output digests, and verified Bronze unchanged. The wider recovery
+remains `partial_with_blockers`; rights remain unevaluated.

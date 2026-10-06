@@ -683,6 +683,13 @@ integrated parent head.
   source phrases, raw tokens, units and lineage; all other page content remains
   preserved-only. See `vote-health-estimates-overview-2002-03-20261003.md` and
   its machine receipt.
+  The captured 2011/12 Supplementary Estimates PDF now has a distinct
+  source-pinned profile for seven edition-specific category totals across
+  pages 2–5. It preserves three `$000` columns, dash/null tokens, negative
+  adjustments, lineage, and four partial-page dispositions; departmental and
+  non-departmental other expenses are separate in this edition. Rights remain
+  unevaluated. See
+  `vote-health-supplementary-2011-12-category-totals-20261006.md`.
   The captured 2013/14 Supplementary Estimates PDF now has a separate pinned
   profile for six explicit appropriation totals from pages 2–6. It preserves
   the three printed `$000` columns, parenthesized adjustments, raw dash token,
