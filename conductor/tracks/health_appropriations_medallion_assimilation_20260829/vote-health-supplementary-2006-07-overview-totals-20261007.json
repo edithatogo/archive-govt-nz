@@ -120,13 +120,13 @@
     ]
   },
   "persistent_silver": {
-    "path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/silver/vote-health-supplementary-2006-07-overview-totals-20261007-v1",
     "manifest_sha256": "75398989b383000601e6acd42e0ae88dadb42cdf21533bf39d8901359364e23e",
     "files": {
       "field_lineage.parquet": "90d571028045fda79655ee0ae3d8dac83f3630fce87ebc5c1b4a8c7fc877beac",
       "page_dispositions.parquet": "c3464ef7152e249801b6670e8eb900562cdb7f33ccdc59757cff68ea4d6e6547",
       "vote_health_appropriation_overview_facts.parquet": "6c1b9da1dd86787e06215ef1ee1f1ffc194df5ec72a4f0aa9289a811209dd8f3"
-    }
+    },
+    "storage_scope": "external persistent Silver package; machine-specific path omitted"
   },
   "integrated_recovery": {
     "receipt": "clean-room-recovery-20261007-vote-health-2006-07.json",
@@ -173,6 +173,22 @@
       "differential_parity": "9/9 passed",
       "mutation_security_supply_chain": "passed",
       "formatting_lint_typing_conductor": "passed"
+    },
+    "hosted_checks_first_attempt": {
+      "status": "failed",
+      "failed_gate": "detect-secrets",
+      "platforms": [
+        "ubuntu-latest",
+        "macos-latest",
+        "windows-latest"
+      ],
+      "candidate": {
+        "file": "vote-health-supplementary-2006-07-overview-totals-20261007.json",
+        "line": 123,
+        "field": "path",
+        "type": "Base64 High Entropy String"
+      },
+      "disposition": "removed unnecessary absolute external-storage path; source fixity and persistent output digests remain recorded"
     }
   }
 }

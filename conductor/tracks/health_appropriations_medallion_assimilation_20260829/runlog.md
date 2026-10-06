@@ -5218,3 +5218,14 @@ preserved. Two integrated clean-room Bronze builds match each other and the
 persistent Silver package; the Bronze CAS remains unchanged. The integrated
 receipt remains `partial_with_blockers` for other source families and product
 gates. Normalized-fact rights remain unevaluated.
+
+The first hosted PR #674 platform run failed its detect-secrets gate on all
+three operating systems. The bounded scanner receipt localized one Base64
+high-entropy candidate to the new machine evidence JSON's absolute external
+Silver path field (line 123); it was a host-local storage locator, not a
+credential. The same `tools/supply_chain.py secrets` check reproduced the
+candidate once the new evidence file was tracked. Removed that unnecessary
+absolute path; retain the external store scope and persistent manifest/output
+digests as the evidence binding. All other required hosted checks passed, while
+Assurance was blocked by this scanner finding; the replacement hosted matrix
+must pass before merge.
