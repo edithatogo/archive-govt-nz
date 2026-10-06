@@ -98,6 +98,39 @@ def test_exact_shares_preserve_period_scope_and_input_ids(
     )
 
 
+def test_share_ratios_are_period_specific_and_not_additive(
+    period_evidence: Path,
+) -> None:
+    health, gdp, _ = rows()
+    prior_health = deepcopy(health[0])
+    prior_gdp = deepcopy(gdp[0])
+    prior_health.update(
+        record_id="health-prior", valid_time_end=date(2024, 6, 30), amount=Decimal(10)
+    )
+    prior_gdp.update(
+        record_id="gdp-prior", valid_time_end=date(2024, 6, 30), amount=Decimal(10)
+    )
+
+    result = subject.derive_fiscal_health_shares(
+        [prior_health, *health],
+        [prior_gdp, *gdp],
+        [],
+        period_evidence=period_evidence,
+    ).to_pylist()
+    gdp_shares = {
+        row["period_end"]: row for row in result if row["measure"] == "health_share_gdp"
+    }
+
+    assert set(gdp_shares) == {date(2024, 6, 30), date(2025, 6, 30)}
+    assert gdp_shares[date(2024, 6, 30)]["percent"] == Decimal("100.000000000000")
+    assert gdp_shares[date(2025, 6, 30)]["percent"] == Decimal("6.950422262631")
+    assert gdp_shares[date(2024, 6, 30)]["numerator_id"] == "health-prior"
+    assert gdp_shares[date(2025, 6, 30)]["numerator_id"] == "health"
+    assert sum(row["percent"] for row in gdp_shares.values()) != Decimal(
+        "100.000000000000"
+    )
+
+
 def test_cash_march_year_retains_missing_crown_denominators(
     period_evidence: Path,
 ) -> None:

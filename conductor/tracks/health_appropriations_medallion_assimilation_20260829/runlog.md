@@ -4983,3 +4983,15 @@ and cross-product golden matrix is still open. Focused analytical-operation
 tests pass (10 passed). The full harness passes: 7,539 passed, 10 skipped,
 97.66% coverage (80% floor), with format, lint, typing, schemas, parity,
 mutation and supply-chain gates green.
+
+## 2026-10-06 — Fiscal share period-specificity invariant
+
+Added a two-year regression contract proving GDP share rows keep their own
+periods, source record IDs and independently calculated percentages; the
+percentages are not additive across years. This extends the Phase 6 invariant
+coverage without changing analytical values or selecting a deflator. The
+focused fiscal-share suite passes (19 tests). `./scripts/validate.sh` passed on
+this tree: 7,540 passed, 10 skipped, 97.66% coverage (80% floor), with lock,
+format, lint, typing, schemas, parity, mutation, dependency, licence, secret
+scan and SBOM gates passing. Revision isolation and additive-measure contracts
+remain open for audit.
