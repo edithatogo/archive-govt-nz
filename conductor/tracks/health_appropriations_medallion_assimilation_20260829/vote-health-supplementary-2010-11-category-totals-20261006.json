@@ -1,0 +1,85 @@
+{
+  "schema_version": "archive-govt-nz.health-vote-health-category-totals-evidence/v1",
+  "status": "passed",
+  "profile": "vote-health-supplementary-2010-11-category-totals/v1",
+  "issue": 211,
+  "source": {
+    "source_id": "treasury-vote-health-pdf-c819ad222f451478",
+    "title": "Vote Health - The Supplementary Estimates of Appropriations 2010/11",
+    "source_object_sha256": "a5f65c3d741ebc0e426fd8ca5ce4da088718fbfc3930ba2720958ecf3cee556d",
+    "bytes": 69819,
+    "source_locator": "https://www.treasury.govt.nz/sites/default/files/2011-05/suppest11health.pdf",
+    "source_vintage": "Treasury-Vote-Health-Supplementary-2010-11",
+    "source_bytes_unchanged": true,
+    "census": "source-census.json",
+    "recorded_license": "CC-BY-4.0",
+    "rights_state": "not_evaluated"
+  },
+  "scope": {
+    "pdf_page_numbers": [2, 3, 4, 5, 6],
+    "pdf_page_count": 7,
+    "unit": "$000",
+    "columns": [
+      "Estimates Budget",
+      "Supplementary Estimates Budget",
+      "Total Budget"
+    ],
+    "facts": 6,
+    "field_lineage_rows": 18,
+    "page_dispositions": 5,
+    "rights_state": "not_evaluated",
+    "limitations": [
+      "Only six edition-specific category totals are normalized; remaining rows and PDF pages are outside this profile.",
+      "No currency interpretation, edition comparison, Gold measure, federation, or publication is asserted."
+    ]
+  },
+  "persistent_silver": {
+    "path": "silver/vote-health-supplementary-2010-11-category-totals-20261006-v1",
+    "manifest_sha256": "d47c18766dc24299aa4004ade3a765e025e109a961377aecb124b4e477eb4951",
+    "outputs": {
+      "field_lineage.parquet": "b2524079f9fabd53b4a4678d20b1dafd9b2cd48aa0a5965cc944eafb75e7ae50",
+      "page_dispositions.parquet": "b057dd4f0b584cd9c9a430030c51dd0cc264444d19a65adb70bc5400e5b91da7",
+      "vote_health_category_total_facts.parquet": "d316e68aad8fd4b28d2616d46b141fc9a28081adab24e830cfc7bf3191414edd"
+    },
+    "matches_clean_room_build": true
+  },
+  "repeat_build": {
+    "identical": true,
+    "matches_persistent_silver": true,
+    "bronze_objects_unchanged": true,
+    "integrated_recovery_receipt": "clean-room-recovery-20261006-vote-health-2010-11.json"
+  },
+  "validation": {
+    "focused_tests": {
+      "command": "uv run --locked pytest tests/domains/health_appropriations/test_vote_health_supplementary_2010_11.py tests/domains/health_appropriations/test_source_operations.py tests/domains/health_appropriations/test_health_recovery_assurance.py -q",
+      "status": "passed",
+      "passed": 525,
+      "skipped": 10
+    },
+    "repository_harness": {
+      "command": "./scripts/validate.sh",
+      "status": "passed",
+      "tests_passed": 7608,
+      "tests_skipped": 10,
+      "coverage_percent": 97.59,
+      "coverage_floor_percent": 80,
+      "schemas": 56,
+      "representative_documents": 46,
+      "differential_parity": "9/9 passed",
+      "mutation_security_supply_chain": "passed"
+    }
+  },
+  "integrated_recovery": {
+    "status": "partial_with_blockers",
+    "bronze_objects_unchanged": true,
+    "this_profile_repeat_identical": true,
+    "matches_persistent_silver": true,
+    "final_gate": "blocked_until_all_required_products_are_built_from_bronze_and_validated",
+    "required_but_not_rebuilt": [
+      "cross_source_comparison",
+      "remaining_source_native_silver_profiles_and_canonical_adapters",
+      "platinum_dcat_croissant_ro_crate_prov_complete_profile"
+    ]
+  },
+  "publication": "not_performed"
+}
