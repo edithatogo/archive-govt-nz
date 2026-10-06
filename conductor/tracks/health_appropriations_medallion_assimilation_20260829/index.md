@@ -372,3 +372,4 @@ they are not current-state assertions.
 - [Vote Health 1999/2000 Supplementary Estimates overview](./vote-health-supplementary-1999-00-overview-20261007.md)
 - [Vote Health 1999/2000 overview extraction evidence](./vote-health-supplementary-1999-00-overview-20261007.json)
 - [Vote Health 1999/2000 overview in integrated clean-room recovery](./clean-room-recovery-20261007-vote-health-1999-00.json)
+- [Fiscal Gold cross-product query matrix and real-view exclusion](./fiscal-gold-query-matrix-20261007.md)

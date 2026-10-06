@@ -5355,3 +5355,20 @@ rerunning lint and validation.
 - Integrated clean-room recovery completed with two byte-identical rebuilds for this profile; the new persistent Silver payload digests match the clean-room output and `bronze_objects_unchanged` is true. The broader recovery remains `partial_with_blockers` for other track items. Full validation is the final local gate before PR creation.
 - Follow-up diagnosis confirmed the runner blocker: an attempted rerun could not create shell temporary files because the macOS data volume had only 116 MiB free (99% full), although the external PortableSSD had 148 GiB free. The named isolated CLI test passed. Removed only pytest temporary directories `pytest-8113` through `pytest-8116` created by this turn and this turn’s orphaned coverage worker files, recovering 121 MiB. The exact validation harness will be rerun with `TMPDIR` and its captured log on the external SSD, avoiding unrelated host temporary files.
 - Final rerun with external-SSD `TMPDIR` passed the required harness: 7,673 passed, 10 skipped, 97.38% coverage; schema/document validation 56/46; parity 9/9; mutation, security, supply-chain and Conductor gates passed. The run no longer encountered the xdist worker failure. A temporary captured log was retained outside the repository during validation.
+
+## 2026-10-07 — Fiscal Gold cross-product query matrix
+
+- Added a deterministic two-period DuckDB query matrix for the four admitted
+  fiscal products. It checks nominal numerator identity and amount against GDP
+  shares, per-capita health input, and household-CPI benchmark; exact GDP and
+  population IDs; missing-population status; and each period's four CPI source
+  row IDs. The source package remains read-only.
+- Added a fail-closed assertion for the unapproved `real` table name. Household
+  CPI rebasing remains a separate benchmark; no health-spending deflator or
+  real-spending view is inferred from it.
+- The focused query suite passed: 11 tests. Broader Gold product-family
+  cross-product reconciliation remains open.
+- First full-harness attempt stopped before tests at format check: Ruff identified one overlong dict-comprehension line in the new cross-product test. No test or later assurance stages ran. Applied only Ruff formatting, then rerunning the focused suite and required harness.
+- A full harness run on the implementation and evidence tree passed: 7,674 passed, 10 skipped, 97.38% coverage; schemas/documents 56/46; parity 9/9; mutation, security, supply-chain and Conductor gates passed. A subsequent run hit the isolated parallel timeout recorded below; the named test passed alone, and the final exact-tree rerun passed with the same counts and all later gates green.
+- Exact-tree validation repeat exposed a second transient harness issue: `test_gold_discovery_profiles.py::test_pinned_candidates_replay_and_reject_unsupported_claims` timed out in its existing 30-second CLI subprocess under the 10-worker run (7,673 passed, 1 failed, 10 skipped). No other test failed; the Gold matrix tests passed. Running the named subprocess test alone to distinguish a product regression from parallel scheduling pressure before the final harness retry.
+- The named timeout test passed alone in 11.34s with the external-SSD `TMPDIR`, confirming no deterministic failure in that CLI test. The final prescribed harness rerun passed: 7,674 passed, 10 skipped; 97.38% coverage, 56/46 schemas/documents, parity 9/9, and all mutation, security, supply-chain, and Conductor checks passed.

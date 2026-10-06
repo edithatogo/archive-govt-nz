@@ -1036,10 +1036,16 @@ integrated parent head.
   AC-11, AC-16]
   Progress: `test_fiscal_analytical_operations.py` now checks exact source IDs,
   Decimal strings, statuses and contextual labels for all four pinned fiscal
-  Gold DuckDB tables. Existing exact-output tests cover budget-versus-actual,
+  Gold DuckDB tables. Its cross-product golden matrix reconciles nominal,
+  GDP-share, per-capita and household-CPI benchmark rows by fiscal period and
+  source identity, and verifies that an unsupported `real` query fails closed.
+  The household CPI benchmark is not an approved spending deflator; no derived
+  real-spending view is emitted while base, GST and period comparability remain
+  unqualified. Existing exact-output tests cover budget-versus-actual,
   revision/classification reports, department/portfolio breakdowns and CPB
-  projections. The cross-product golden matrix and derived real view remain
-  open; this checklist stays incomplete until those contracts are reconciled.
+  projections. The broader cross-product matrix across Crown, Budget, revisions,
+  classifications, department/portfolio and CPB remains open; this checklist
+  stays incomplete until those contracts are reconciled.
 - [x] Add invariant/property tests for denominator identity, CPI base changes,
   financial-year alignment, additive/non-additive measures, revision isolation,
   rounding and incompatible series. [M-06, M-12, M-13, M-18; AC-10, AC-11,
