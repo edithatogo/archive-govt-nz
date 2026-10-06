@@ -53,6 +53,21 @@ def _fake_vote_health_2024_25_summaries(root: Path, index: int) -> dict[str, obj
     }
 
 
+def _fake_vote_health_2025_26_summaries(root: Path, index: int) -> dict[str, object]:
+    output = root / f"vote-health-2025-26-summary-totals-{index}"
+    output.mkdir()
+    (output / "MANIFEST.json").write_bytes(b"fixed Vote Health 2025/26 summaries")
+    return {
+        "files": MODULE.tree(output),
+        "operation_receipt": {
+            "status": "written_local",
+            "profile": "vote-health-supplementary-2025-26-summary-totals/v1",
+            "source_object_sha256": "a" * 64,
+            "counts": {"pages": 1, "facts": 6},
+        },
+    }
+
+
 def test_digest_and_tree_are_content_based(tmp_path: Path) -> None:
     source = tmp_path / "source"
     source.mkdir()
@@ -661,6 +676,11 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     )
     monkeypatch.setattr(
         MODULE,
+        "rebuild_vote_health_2025_26_summary_totals",
+        _fake_vote_health_2025_26_summaries,
+    )
+    monkeypatch.setattr(
+        MODULE,
         "_rebuild_pharmac_canonical",
         lambda _root, _index: {
             "source_object_sha256": "a" * 64,
@@ -828,6 +848,9 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     ]["repeat_identical"]
     assert result["products_rebuilt"][
         "vote_health_supplementary_2024_25_summary_totals"
+    ]["repeat_identical"]
+    assert result["products_rebuilt"][
+        "vote_health_supplementary_2025_26_summary_totals"
     ]["repeat_identical"]
     assert (
         result["products_rebuilt"]["classification_label_occurrences"]["status"]

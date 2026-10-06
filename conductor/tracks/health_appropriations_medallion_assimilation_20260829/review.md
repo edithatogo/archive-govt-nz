@@ -1757,3 +1757,27 @@ were not repeated. PR #647 is merged; phase issues #209, #210, #211, #213 and
 passed `./scripts/validate.sh`: 7,490 tests passed, 10 skipped, 97.77%
 coverage against the 80% floor; all configured schema, parity, mutation,
 security and supply-chain gates passed. The whole track is not complete.
+
+## 2026-10-06 — Vote Health 2025/26 Supplementary summary self-review
+
+- The new profile binds source identity to the retained Bronze SHA-256 and
+  official locator; exact period, document page count, page span, headings,
+  expected labels and row order fail closed on drift.
+- Raw tokens, source labels, unit label, field coordinates and page disposition
+  remain preserved. The dash token is represented as null in numeric fields
+  while its raw token remains in lineage. No amounts are recomputed or joined
+  to other editions.
+- The operation profile is allowlisted with exact source vintage/hash and the
+  committed receipt schema was regenerated and checked against the runtime
+  contract. Two integrated clean-room builds match the retained Silver package;
+  the receipt confirms Bronze unchanged.
+- Rights remain `not_evaluated`, and publication was not performed. The whole
+  recovery receipt remains `partial_with_blockers`; this slice does not close
+  source census, cross-source reconciliation, complete Platinum, or track
+  completion.
+- Focused tests passed (526 passed, 10 skipped); the profile module has 100%
+  line and branch coverage. `./scripts/validate.sh` passed with 7,555 tests,
+  10 skips, 97.67% overall coverage against the 80% floor, and all configured
+  schema, parity, mutation, security and supply-chain gates. No actionable code
+  defect is currently observed. Whole-track recovery remains partial and its
+  final review gate remains open.

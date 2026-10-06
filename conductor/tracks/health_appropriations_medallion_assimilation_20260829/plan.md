@@ -815,6 +815,15 @@ integrated parent head.
   `vote-health-supplementary-2024-25-summary-totals-20261006.md`. [M-05,
   M-06, M-11; AC-05, AC-09]
 
+- [x] Add a separate hash-pinned 2025/26 Vote Health Supplementary Estimates
+  summary profile for the six named page-6 totals/authorisation rows. Preserve
+  the source-labelled `$000` columns, dash/null tokens, page/field lineage and
+  partial-page disposition; keep rights unevaluated and editions source-
+  separated. Verify Bronze-to-Silver dispatch and two clean-room recovery
+  builds. Other PDF content, edition comparability and wider source coverage
+  remain open. Focused contracts pass at 100% line/branch coverage; the full
+  repository harness passes on this tree. [M-05, M-06, M-11; AC-05, AC-09]
+
 ### 5.3 Normalize analytical context
 
 - [x] Implement the bounded June2026 QES Table8 QEMQ.SASZ9A published
