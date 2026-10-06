@@ -5229,3 +5229,24 @@ absolute path; retain the external store scope and persistent manifest/output
 digests as the evidence binding. All other required hosted checks passed, while
 Assurance was blocked by this scanner finding; the replacement hosted matrix
 must pass before merge.
+
+### 2026-10-07 — 2005/06 Supplementary Estimates overview implementation
+
+Started the adjacent 2005/06 page-3 overview slice after PR #674 merged and its
+branch tracking reference was pruned. The exact captured 17-page PDF is already
+in Bronze with SHA-256
+`9907280937726b80a2f623f3879f9bc69814e02a1702a3cb0b2fb39d2d7d7074`. Added a
+separate edition-pinned adapter, local source-operation registration, schema
+projection, and repeat-build assurance. It emits the seven appropriation rows
+only; Crown Revenue and Receipts and other pages are excluded. The persistent
+Silver package contains 7 facts, 42 lineage records and one page disposition.
+Focused adapter/source-operation/recovery checks passed (532 passed, 10
+skipped), and schema validation passed (56 schemas, 46 representative
+documents). Integrated clean-room recovery passed for this profile: both
+Bronze rebuilds were identical, matched persistent Silver digests, and left
+Bronze objects unchanged. The wider receipt remains `partial_with_blockers`.
+Rights for normalized facts remain unevaluated. The final
+`./scripts/validate.sh` passed: 7,646 tests passed, 10 skipped, 97.48% coverage
+against the 80% floor, 56 schemas and 46 representative documents, 9/9
+differential parity, and all mutation, security, and supply-chain gates passed.
+Local Conductor validation also passed with 93 tracks and no errors.

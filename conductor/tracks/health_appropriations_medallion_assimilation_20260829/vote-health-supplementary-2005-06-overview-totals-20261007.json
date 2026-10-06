@@ -1,0 +1,176 @@
+{
+  "schema_version": "archive-govt-nz.health-vote-health-appropriation-overview-evidence/v1",
+  "status": "passed",
+  "profile": "vote-health-supplementary-2005-06-overview-totals/v1",
+  "issue": 211,
+  "source": {
+    "source_id": "treasury-vote-health-pdf-8f1922ba340774db",
+    "title": "Vote Health - The Supplementary Estimates of Appropriations 2005/06",
+    "source_object_sha256": "9907280937726b80a2f623f3879f9bc69814e02a1702a3cb0b2fb39d2d7d7074",
+    "bytes": 279018,
+    "source_locator": "https://www.treasury.govt.nz/sites/default/files/2007-09/supp06health.pdf",
+    "source_vintage": "Treasury-Vote-Health-Supplementary-2005-06",
+    "page_count": 17,
+    "source_bytes_unchanged": true,
+    "census": "source-census.json",
+    "layout_baseline": "source-pdf-layout-baseline-20261003.json",
+    "recorded_license": "CC-BY-4.0",
+    "rights_state": "not_evaluated"
+  },
+  "scope": {
+    "pdf_page_numbers": [3],
+    "unit": "$000",
+    "columns": {
+      "main_estimates": "Main Estimates",
+      "department_annual": "By the Department Administering the Vote - Annual",
+      "department_other": "By the Department Administering the Vote - Other",
+      "non_departmental_annual": "For Non-Departmental Transactions - Annual",
+      "non_departmental_other": "For Non-Departmental Transactions - Other",
+      "total_appropriations": "Total"
+    },
+    "facts": 7,
+    "field_lineage_rows": 42,
+    "page_dispositions": 1,
+    "appropriation_rows": [
+      {
+        "source_page": 3,
+        "label": "Output Expenses",
+        "raw_tokens": {
+          "main_estimates": "9,198,960",
+          "department_annual": "169,943",
+          "department_other": "1,361",
+          "non_departmental_annual": "9,034,543",
+          "non_departmental_other": "-",
+          "total_appropriations": "9,205,847"
+        }
+      },
+      {
+        "source_page": 3,
+        "label": "Benefits and Other Unrequited Expenses",
+        "raw_tokens": {
+          "main_estimates": "-",
+          "department_annual": "N/A",
+          "department_other": "N/A",
+          "non_departmental_annual": "-",
+          "non_departmental_other": "-",
+          "total_appropriations": "-"
+        }
+      },
+      {
+        "source_page": 3,
+        "label": "Borrowing Expenses",
+        "raw_tokens": {
+          "main_estimates": "-",
+          "department_annual": "N/A",
+          "department_other": "N/A",
+          "non_departmental_annual": "-",
+          "non_departmental_other": "-",
+          "total_appropriations": "-"
+        }
+      },
+      {
+        "source_page": 3,
+        "label": "Other Expenses",
+        "raw_tokens": {
+          "main_estimates": "17,712",
+          "department_annual": "-",
+          "department_other": "-",
+          "non_departmental_annual": "21,983",
+          "non_departmental_other": "-",
+          "total_appropriations": "21,983"
+        }
+      },
+      {
+        "source_page": 3,
+        "label": "Capital Expenditure",
+        "raw_tokens": {
+          "main_estimates": "464,293",
+          "department_annual": "N/A",
+          "department_other": "N/A",
+          "non_departmental_annual": "582,338",
+          "non_departmental_other": "-",
+          "total_appropriations": "582,338"
+        }
+      },
+      {
+        "source_page": 3,
+        "label": "Intelligence and Security Department Expenses and Capital Expenditure",
+        "raw_tokens": {
+          "main_estimates": "-",
+          "department_annual": "-",
+          "department_other": "-",
+          "non_departmental_annual": "N/A",
+          "non_departmental_other": "N/A",
+          "total_appropriations": "-"
+        }
+      },
+      {
+        "source_page": 3,
+        "label": "Total Appropriations",
+        "raw_tokens": {
+          "main_estimates": "9,680,965",
+          "department_annual": "169,943",
+          "department_other": "1,361",
+          "non_departmental_annual": "9,638,864",
+          "non_departmental_other": "-",
+          "total_appropriations": "9,810,168"
+        }
+      }
+    ]
+  },
+  "persistent_silver": {
+    "manifest_sha256": "236008de1ca9747c177cc86347d3050023539b53d8fbc78557d4c4b3fae232dd",
+    "files": {
+      "field_lineage.parquet": "b53c4e377d98cd10583d4e17fcadea543c152f2717bef9918de23a84862a532e",
+      "page_dispositions.parquet": "c88186a19e7e18bd6c2f11682ffc4e369670fc80fa0f7f9027c231ad4d8d0cfd",
+      "vote_health_appropriation_overview_facts.parquet": "62117a582fd5d9f46150fd17032882892eac3d68c1719b8d49fb466b9866518c"
+    },
+    "storage_scope": "external persistent Silver package; machine-specific path omitted"
+  },
+  "integrated_recovery": {
+    "receipt": "clean-room-recovery-20261007-vote-health-2005-06.json",
+    "status": "partial_with_blockers",
+    "bronze_objects_unchanged": true,
+    "this_profile_repeat_identical": true,
+    "matches_persistent_silver": true,
+    "required_but_not_rebuilt": [
+      "cross_source_comparison",
+      "remaining_source_native_silver_profiles_and_canonical_adapters",
+      "platinum_dcat_croissant_ro_crate_prov_complete_profile"
+    ]
+  },
+  "publication": "not_performed",
+  "implementation_notes": {
+    "source_layout_check": "17-page PDF recorded in the source layout baseline; adapter extracts PDF page 3 only",
+    "raw_null_tokens": ["-", "N/A"],
+    "source_operation": "hash-pinned profile added to local allowlisted operation dispatch and JSON schema",
+    "excluded_source_content": "separate Crown Revenue and Receipts table and all other pages"
+  },
+  "validation": {
+    "focused_profile_source_operation_recovery_tests": {
+      "passed": 532,
+      "skipped": 10,
+      "status": "passed"
+    },
+    "schemas": {
+      "count": 56,
+      "representative_documents": 46,
+      "status": "passed"
+    },
+    "full_harness": {
+      "command": "./scripts/validate.sh",
+      "exit_code": 0,
+      "status": "passed",
+      "tests_passed": 7646,
+      "tests_skipped": 10,
+      "coverage_percent": 97.48,
+      "coverage_floor_percent": 80,
+      "schemas": 56,
+      "representative_documents": 46,
+      "differential_parity": "9/9 passed",
+      "mutation_security_supply_chain": "passed",
+      "formatting_lint_typing_conductor": "passed"
+    },
+    "hosted_checks": "pending"
+  }
+}

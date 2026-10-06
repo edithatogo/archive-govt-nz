@@ -50,6 +50,7 @@
         "vote-health-supplementary-2009-10-category-totals/v1",
         "vote-health-supplementary-2007-08-category-totals/v1",
         "vote-health-supplementary-2006-07-overview-totals/v1",
+        "vote-health-supplementary-2005-06-overview-totals/v1",
         "vote-health-supplementary-2008-09-category-totals/v1",
         "vote-health-supplementary-2018-19-category-totals/v1",
         "vote-health-supplementary-2019-20-category-totals/v1",
@@ -114,6 +115,7 @@
         "vote-health-estimates-overview-2016-17/v1",
         "vote-health-estimates-overview-2017-18/v1",
         "vote-health-estimates-revenue-2002-03/v1",
+        "vote-health-supplementary-2005-06-overview-totals/v1",
         "vote-health-supplementary-2006-07-overview-totals/v1",
         "vote-health-supplementary-2007-08-category-totals/v1",
         "vote-health-supplementary-2008-09-category-totals/v1",
@@ -1504,6 +1506,60 @@
             },
             "transformation_id": {
               "const": "vote-health-supplementary-2006-07-overview-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_appropriation_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_appropriation_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2005-06-overview-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2005-06-overview-totals/v1"
             },
             "counts": {
               "type": "object",
