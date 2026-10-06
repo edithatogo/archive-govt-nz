@@ -5019,3 +5019,31 @@ points without interpolation, and makes no deflator, ISO-currency, rights or
 publication claim. The report tests verify dry-run, readback and identical
 repeat-build bytes. This does not close the broader plot gate for remaining
 source families or donor reports.
+
+## 2026-10-06 — Vote Health Supplementary Estimates 2025/26 summary slice
+
+Added the next eligible edition-specific Silver profile for the captured
+2025/26 Supplementary Estimates PDF. The source object in Bronze and both
+candidate originals have SHA-256
+`575e3744f555d668f3748f46cc55781378bfc0ad35008c9512a942c57279f31f`. Page 6
+contains six annual/MYA totals and the capital-injection authorisation, with
+the three source-labelled `$000` columns. The parser retains labels, raw
+numeric tokens, dash/null values, page and field lineage, and a partial-page
+disposition; it rejects period, page and row drift. The read-only source
+operation allowlist and its committed JSON schema now include this profile.
+
+The persistent local Silver package has manifest SHA-256
+`3975a41c38f651569247ed01a047f6b74416ed7340204aad01135ac3471126aa`. The
+integrated clean-room recovery built this profile twice directly from Bronze;
+all output files matched the retained package and Bronze objects remained
+unchanged. The overall recovery receipt remains `partial_with_blockers` and
+explicitly retains cross-source comparison, remaining source-native adapters,
+and complete Platinum profiles as not rebuilt. Focused adapter, operation and
+recovery tests passed (526 passed, 10 skipped); the new profile module has 100%
+line and branch coverage. The final `./scripts/validate.sh` passed on this tree:
+7,555 tests passed, 10 skipped, 97.67% overall coverage against the 80% floor;
+56 schemas and 46 representative documents validated, differential parity
+passed 9/9, and all configured mutation, dependency, licence, secret-scan and
+SBOM gates passed. See
+`vote-health-supplementary-2025-26-summary-totals-20261006.md`, its JSON
+evidence, and `clean-room-recovery-20261006-vote-health-2025-26.json`.

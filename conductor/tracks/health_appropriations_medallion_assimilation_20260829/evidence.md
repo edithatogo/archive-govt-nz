@@ -811,3 +811,23 @@ validation reported zero errors across 93 tracks. See
 `clean-room-recovery-20261006-final.json` and
 `final-review-20261006.md`. This evidence does not close the Health track or
 repeat the already-completed external publication/collection operations.
+
+## 2026-10-06 — 2025/26 Supplementary Estimates Silver evidence
+
+- Profile: `vote-health-supplementary-2025-26-summary-totals/v1`.
+- Bronze source: `575e3744f555d668f3748f46cc55781378bfc0ad35008c9512a942c57279f31f`;
+  original bytes unchanged.
+- Persistent local Silver: `silver/vote-health-supplementary-2025-26-summary-totals-20261006-v1`,
+  manifest `3975a41c38f651569247ed01a047f6b74416ed7340204aad01135ac3471126aa`;
+  six facts, 18 field-lineage rows, one page disposition.
+- Clean-room recovery: two Bronze builds are identical and match the retained
+  Silver manifest; whole receipt remains `partial_with_blockers`.
+- Focused checks: `uv run pytest tests/domains/health_appropriations/test_vote_health_supplementary_2025_26.py tests/domains/health_appropriations/test_source_operations.py tests/domains/health_appropriations/test_health_recovery_assurance.py -q`
+  passed 526, skipped 10; the new profile module has 100% line and branch
+  coverage. Targeted Ruff lint passed.
+- `./scripts/validate.sh` passed: 7,555 tests passed, 10 skipped, 97.67%
+  overall coverage against the 80% floor; schema, parity, mutation, security
+  and supply-chain gates passed. Rights remain unevaluated; publication was not
+  performed. Wider source and full-track gates remain open.
+- Machine evidence: `vote-health-supplementary-2025-26-summary-totals-20261006.json`
+  and `clean-room-recovery-20261006-vote-health-2025-26.json`.
