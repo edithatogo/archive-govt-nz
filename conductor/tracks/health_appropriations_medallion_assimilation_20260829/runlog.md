@@ -5091,3 +5091,17 @@ floor. Integrated recovery rebuilt twice, matched persistent output digests and
 verified Bronze unchanged. `./scripts/validate.sh` passed: 7,580 tests, 10
 skipped, 97.64% coverage, 56 schemas/46 representative documents, 9/9 parity,
 and all configured mutation, security and supply-chain gates.
+
+### 2026-10-06 — Vote Health Supplementary Estimates 2016/17
+
+Added the edition-specific profile for seven named appropriation totals on
+pages 2–5 of the captured 45-page Treasury PDF. The adapter binds its hash,
+vintage and locator, retains the three `$000` columns, source tokens, 21 field
+lineage rows, and four partial-page dispositions. Persistent Silver output
+matches both integrated clean-room builds; Bronze objects are unchanged.
+Focused contracts passed (522 tests, 10 skipped), with 91.67% line and branch
+coverage for the new module. `./scripts/validate.sh` passed: 7,587 tests, 10
+skipped, 97.63% coverage against the 80% floor, 56 schemas/46 representative
+documents, 9/9 parity, and all configured mutation, security and supply-chain
+gates passed. The integrated recovery remains `partial_with_blockers` for the
+wider track. Rights remain unevaluated.
