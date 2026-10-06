@@ -945,6 +945,12 @@ integrated parent head.
   financial-year alignment, additive/non-additive measures, revision isolation,
   rounding and incompatible series. [M-06, M-12, M-13, M-18; AC-10, AC-11,
   AC-16]
+  Progress: `test_fiscal_share_analysis.py` now asserts that GDP share ratios
+  retain distinct annual inputs and outputs and are not additive across periods.
+  Existing fiscal share, CPI benchmark and per-capita suites cover denominator
+  identity, uniform CPI rebasing, March/June alignment, ambient Decimal
+  precision, and incompatible or ambiguous inputs. The remaining revision-
+  isolation and additive-measure contracts still need an explicit audit.
 
 ### 6.2 Build marts, quality products and reports
 
