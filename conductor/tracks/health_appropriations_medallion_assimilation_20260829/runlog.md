@@ -4942,4 +4942,27 @@ The integrated clean-room recovery receipt now includes the 2022/23 summary
 lane and remains `partial_with_blockers`; cross-source comparison, remaining
 source-native profiles/adapters and complete Platinum profiles remain
 unreconstructed. Bronze objects were unchanged and the two builds for this
-summary are identical. Full repository validation is pending.
+summary are identical. `./scripts/validate.sh` passed: 7,533 passed, 10 skipped,
+97.68% coverage against the 80% floor; format, lint, strict typing, schema,
+parity, mutation, dependency audit, licence, secret scan and SBOM gates passed.
+
+## 2026-10-06 — Vote Health Supplementary Estimates 2023/24 summary slice
+
+After merging PR #656 (`d3268c20`) with all required checks passing, the next
+captured Supplementary Estimates edition was reviewed. The 2023/24 summary is
+on PDF page 5 of a 28-page document and matches the 2022/23 summary row layout.
+Added a separate edition-pinned profile for four named rows, retaining the
+three source-labelled `$000` columns, parenthesized negatives, dash tokens,
+lineage and partial-page disposition. Two independent Bronze recovery-entry
+point builds match the persistent Silver package and leave Bronze unchanged.
+Rights remain unevaluated. Focused tests pass (517 passed, 10 skipped); the
+integrated recovery remains `partial_with_blockers`, and the full validation
+harness passed as recorded below.
+
+The integrated clean-room recovery receipt includes the 2023/24 summary lane
+and remains `partial_with_blockers`; cross-source comparison, remaining
+source-native profiles/adapters and complete Platinum profiles remain
+unreconstructed. Bronze objects were unchanged and the two builds for this
+summary are identical. `./scripts/validate.sh` passed: 7,533 passed, 10 skipped,
+97.68% coverage against the 80% floor; format, lint, strict typing, schema,
+parity, mutation, dependency audit, licence, secret scan and SBOM gates passed.
