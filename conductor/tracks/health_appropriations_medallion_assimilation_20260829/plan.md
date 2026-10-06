@@ -690,6 +690,15 @@ integrated parent head.
   match the persistent Silver package. Focused tests and the full repository
   harness pass; rights and remaining table/page coverage stay unresolved.
   See `vote-health-supplementary-2013-14-category-totals-20261006.md`.
+  The captured 2014/15 Supplementary Estimates PDF now has a separate
+  hash-pinned profile for seven printed category totals on pages 2–6. It
+  preserves the three `$000` budget columns, parenthesized adjustments, direct
+  field lineage, and partial-page dispositions. Persistent Silver and the
+  integrated recovery receipt are repeat-build checked; normalized-fact rights
+  remain unevaluated and other PDF content and editions remain open. See
+  `vote-health-supplementary-2014-15-category-totals-20261006.md`. The focused
+  profile tests and full repository harness pass; the latter reports 7,573
+  tests, 10 skipped and 97.66% coverage against the 80% floor.
   The same bounded overview extraction now covers eight reviewed headlines on
   pages 2–3 of the 48-page 2004/05 Estimates PDF, with its own source hash,
   vintage, transformation and profile. No amounts are summed; remaining PDF
