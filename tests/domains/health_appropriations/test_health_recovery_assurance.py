@@ -83,6 +83,21 @@ def _fake_vote_health_2013_14_totals(root: Path, index: int) -> dict[str, object
     }
 
 
+def _fake_vote_health_2014_15_totals(root: Path, index: int) -> dict[str, object]:
+    output = root / f"vote-health-2014-15-category-totals-{index}"
+    output.mkdir()
+    (output / "MANIFEST.json").write_bytes(b"fixed Vote Health 2014/15 totals")
+    return {
+        "files": MODULE.tree(output),
+        "operation_receipt": {
+            "status": "written_local",
+            "profile": "vote-health-supplementary-2014-15-category-totals/v1",
+            "source_object_sha256": "e" * 64,
+            "counts": {"pages": 5, "facts": 7},
+        },
+    }
+
+
 def test_digest_and_tree_are_content_based(tmp_path: Path) -> None:
     source = tmp_path / "source"
     source.mkdir()
@@ -666,6 +681,11 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     )
     monkeypatch.setattr(
         MODULE,
+        "rebuild_vote_health_2014_15_category_totals",
+        _fake_vote_health_2014_15_totals,
+    )
+    monkeypatch.setattr(
+        MODULE,
         "rebuild_vote_health_2019_20_category_totals",
         fake_vote_health_2019_20_totals,
     )
@@ -850,6 +870,9 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     assert result["products_rebuilt"]["donor_source_native_silver"]["repeat_identical"]
     assert result["products_rebuilt"][
         "vote_health_supplementary_2013_14_category_totals"
+    ]["repeat_identical"]
+    assert result["products_rebuilt"][
+        "vote_health_supplementary_2014_15_category_totals"
     ]["repeat_identical"]
     assert result["products_rebuilt"][
         "vote_health_supplementary_2018_19_category_totals"

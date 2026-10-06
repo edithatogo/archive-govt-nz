@@ -1797,3 +1797,20 @@ security and supply-chain gates passed. The whole track is not complete.
 - The census has a recorded Treasury CC-BY-4.0 entry, while fact-level rights
   remain `not_evaluated`. Other tables/pages, comparability, publication and
   track completion remain outside the claim. No actionable defect was found.
+
+## 2026-10-06 — Vote Health 2014/15 Supplementary category-total review
+
+- The source hash matches the captured census record; the adapter verifies the
+  official locator, vintage, 38-page PDF identity, exact page span, headings,
+  seven labels and source order before writing.
+- Seven facts preserve the three `$000` columns, source row labels, raw tokens,
+  21 direct field-lineage records and five partial-page dispositions. The
+  persistent output matches both clean-room Bronze rebuilds, and Bronze is
+  unchanged.
+- Focused tests pass (520 passed, 10 skipped); profile module coverage is
+  91.67% against the 80% floor. `./scripts/validate.sh` passes with 7,573
+  tests, 10 skipped, 97.66% overall coverage, 56 schemas/46 representative
+  documents, 9/9 parity, and mutation, security and supply-chain gates green.
+- The captured census records the Treasury licence notice; normalized-fact
+  rights remain `not_evaluated`. No cross-edition, Gold, federation, publication
+  or whole-track completion claim is made.
