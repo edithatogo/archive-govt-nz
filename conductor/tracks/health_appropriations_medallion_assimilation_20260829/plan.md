@@ -1070,6 +1070,14 @@ integrated parent head.
     rights and publication states. Do not re-aggregate observation values or
     infer cross-source findings. See
     `canonical-gold-consumer-example-20261002.md`.
+  - [x] Generate six deterministic fiscal analytical plots from the same
+    pinned nominal, share, per-capita and household-CPI queries. Preserve exact
+    query values, source record IDs, lineage, exclusions and the row-by-row
+    reconciliation in structured reports; separate accounting/GST contexts
+    and keep the PNGs display-only with no interpolation or deflator claim.
+    Verify dry-run behavior, report readback and byte-identical repeat builds.
+    See `test_fiscal_analytical_reports.py` and the fiscal analytical report
+    recovery lane. Other source families and donor reports remain open.
 
 - [x] Add a pinned-original Budget-2025/2026 estimate-to-later-value
   comparison for fiscal years 2025 and 2026. Match all literal source dimensions,
