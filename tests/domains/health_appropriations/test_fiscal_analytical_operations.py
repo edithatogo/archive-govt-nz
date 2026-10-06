@@ -26,14 +26,72 @@ def package(root: Path) -> str:
         for year in (2025, 2024):
             row = dict.fromkeys(schema.names)
             row["period_end"] = date(year, 6, 30)
+            if "period_start" in row:
+                row["period_start"] = date(year - 1, 7, 1)
             if "measure" in row:
-                row["measure"] = f"fixture_{name}"
+                row["measure"] = {
+                    "shares": "health_share_gdp",
+                    "per_capita": "health_spending_per_mean_resident",
+                    "cpi_benchmark": "household_cpi_fy2025_benchmark",
+                }[name]
             if "status" in row:
-                row["status"] = "calculated" if year == 2025 else "missing_population"
+                row["status"] = (
+                    "missing_population"
+                    if name == "per_capita" and year == 2024
+                    else "calculated"
+                )
+            values = {
+                "source_object_sha256": "a" * 64,
+                "source_vintage": "golden-budget-vintage",
+                "period_definition_evidence_sha256": "d" * 64,
+                "numerator_source_time_status": "actual",
+                "denominator_source_time_status": "actual",
+                "population_source_time_status": "actual",
+                "numerator_id": f"health-{year}",
+                "denominator_id": f"gdp-{year}",
+                "population_id": f"population-{year}",
+                "numerator_amount": Decimal("30311.125"),
+                "denominator_amount": Decimal("436103.5"),
+                "input_scale": "NZD millions",
+                "numerator_coverage": "Core Crown Health",
+                "denominator_coverage": "GDP",
+                "accounting_basis": "PBE Standards",
+                "denominator_accounting_basis": "PBE Standards",
+                "health_source_sha256": "a" * 64,
+                "health_vintage": "golden-budget-vintage",
+                "population_source_sha256": "b" * 64,
+                "population_vintage": "golden-population-vintage",
+                "health_amount_millions": Decimal("30311.125"),
+                "mean_population": Decimal(5000000),
+                "source_dollars_per_mean_resident": Decimal("6062.225"),
+                "unit": "source dollars per mean resident",
+                "fiscal_period_evidence_sha256": "d" * 64,
+                "population_period_evidence_sha256": "e" * 64,
+                "formula_policy": "golden-exact-ratio",
+                "cpi_source_sha256": "c" * 64,
+                "cpi_vintage": "golden-cpi-vintage",
+                "nominal_amount_millions": Decimal("30311.125"),
+                "period_cpi_ids": [f"cpi-{year}-q{q}" for q in range(1, 5)],
+                "period_cpi_source_time_statuses": ["actual"] * 4,
+                "period_cpi_mean": Decimal("100.125"),
+                "benchmark_period_start": date(2024, 7, 1),
+                "benchmark_period_end": date(2025, 6, 30),
+                "benchmark_cpi_ids": [f"base-q{q}" for q in range(1, 5)],
+                "benchmark_cpi_source_time_statuses": ["actual"] * 4,
+                "benchmark_cpi_mean": Decimal("100.0"),
+                "cpi_benchmark_millions": Decimal("30349.0"),
+                "numerator_gst_basis": "exclusive",
+                "cpi_definition_evidence_sha256": "f" * 64,
+                "cpi_source_quality_flags": [],
+                "fiscal_source_quality_flags": [],
+                "population_source_quality_flags": [],
+                "source_quality_flags": [],
+            }
+            for key, value in values.items():
+                if key in row:
+                    row[key] = value
             if "percent" in row:
-                row["percent"] = Decimal("9.123456789012")
-            if "numerator_id" in row:
-                row["numerator_id"] = f"source-cell-{year}"
+                row["percent"] = Decimal("6.950422262631")
             records.append(row)
         path = root / f"{name}.parquet"
         pq.write_table(pa.Table.from_pylist(records, schema=schema), path)
@@ -64,7 +122,30 @@ def test_named_duckdb_query_is_exact_ordered_and_readonly(
     assert result["source_reverification"] == "not_performed"
     assert result["decimal_encoding"] == "exact_string"
     if table == "shares":
-        assert result["rows"][0]["percent"] == "9.123456789012"
+        assert result["rows"][0]["percent"] == "6.950422262631"
+    expected = {
+        "nominal": {
+            "source_vintage": "golden-budget-vintage",
+            "numerator_id": "health-2024",
+            "numerator_amount": "30311.125000000000000000",
+        },
+        "shares": {
+            "measure": "health_share_gdp",
+            "denominator_id": "gdp-2024",
+            "percent": "6.950422262631",
+        },
+        "per_capita": {
+            "measure": "health_spending_per_mean_resident",
+            "population_id": "population-2024",
+            "status": "missing_population",
+        },
+        "cpi_benchmark": {
+            "measure": "household_cpi_fy2025_benchmark",
+            "period_cpi_ids": [f"cpi-2024-q{q}" for q in range(1, 5)],
+            "cpi_benchmark_millions": "30349.000000000000",
+        },
+    }[table]
+    assert {key: result["rows"][0][key] for key in expected} == expected
     assert before == {path.name: path.read_bytes() for path in root.iterdir()}
 
 

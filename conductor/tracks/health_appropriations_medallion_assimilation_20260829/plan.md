@@ -935,6 +935,12 @@ integrated parent head.
   total/core Crown share, budget-versus-actual, revisions, classifications,
   department/portfolio and CPB views. [M-10, M-13, M-18; AC-08, AC-10,
   AC-11, AC-16]
+  Progress: `test_fiscal_analytical_operations.py` now checks exact source IDs,
+  Decimal strings, statuses and contextual labels for all four pinned fiscal
+  Gold DuckDB tables. Existing exact-output tests cover budget-versus-actual,
+  revision/classification reports, department/portfolio breakdowns and CPB
+  projections. The cross-product golden matrix and derived real view remain
+  open; this checklist stays incomplete until those contracts are reconciled.
 - [ ] Add invariant/property tests for denominator identity, CPI base changes,
   financial-year alignment, additive/non-additive measures, revision isolation,
   rounding and incompatible series. [M-06, M-12, M-13, M-18; AC-10, AC-11,

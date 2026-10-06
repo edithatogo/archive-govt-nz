@@ -4970,4 +4970,16 @@ parity, mutation, dependency audit, licence, secret scan and SBOM gates passed.
 
 ## 2026-10-06 — Vote Health Supplementary Estimates 2024/25 summary slice
 
-After merging PR #657 (`748ecb9e`) with all required checks passing, the next captured Supplementary Estimates edition was reviewed. Its five-row summary is on PDF page 5 of a 30-page document, including a departmental-output MYA row absent from the previous edition. Added a separate hash-pinned profile retaining the source-labelled `$000` fields, three MYA/total categories, combined-total label wrapping, lineage and partial-page disposition. Two independent Bronze recovery-entry point builds match the persistent Silver package; the Bronze hash is unchanged. Rights remain unevaluated. Focused tests pass (517 passed, 10 skipped); full integrated recovery and repository validation are running.
+After merging PR #657 (`748ecb9e`) with all required checks passing, the next captured Supplementary Estimates edition was reviewed. Its five-row summary is on PDF page 5 of a 30-page document, including a departmental-output MYA row absent from the previous edition. Added a separate hash-pinned profile retaining the source-labelled `$000` fields, three MYA/total categories, combined-total label wrapping, lineage and partial-page disposition. Two independent Bronze recovery-entry point builds match the persistent Silver package; the Bronze hash is unchanged. Rights remain unevaluated. Focused tests pass (517 passed, 10 skipped); the full clean-room receipt remains `partial_with_blockers`. `./scripts/validate.sh` passed (7,539 passed, 10 skipped, 97.66% coverage; 80% floor), including format, lint, typing, schema, parity, mutation and supply-chain gates.
+
+## 2026-10-06 — Fiscal Gold DuckDB golden assertions
+
+Strengthened the named-query fixture and assertions to pin exact source-vintage
+labels, numerator/denominator/population IDs, Decimal encodings, fiscal period,
+missing-population status, and CPI quarter IDs/value for the four verified
+fiscal Gold tables (nominal, shares, per-capita, CPI benchmark). The existing
+CLI/MCP parity and read-only checks remain intact. The remaining derived-real
+and cross-product golden matrix is still open. Focused analytical-operation
+tests pass (10 passed). The full harness passes: 7,539 passed, 10 skipped,
+97.66% coverage (80% floor), with format, lint, typing, schemas, parity,
+mutation and supply-chain gates green.
