@@ -5317,3 +5317,32 @@ excluded. The final `./scripts/validate.sh` passed: 7,663 tests passed, 10 skipp
 97.42% coverage against the 80% floor, 56 schemas/46 representative documents,
 differential parity 9/9, and all mutation, security, and supply-chain gates
 passed. Conductor validation passed with 93 tracks and no errors.
+
+### 2026-10-07 — Vote Health Supplementary Estimates 2002/03 overview
+
+Added the pinned `vote-health-supplementary-2002-03-overview/v1` profile for
+Treasury's captured 18-page PDF at
+`https://www.treasury.govt.nz/sites/default/files/2008-03/supp03health.pdf`
+(Bronze SHA-256
+`e3a08643337f2f8b4864b2191e44dee95444164a5eca1df613aacfd1942e2df8`). Page 2
+contains nine appropriation overview rows and five printed `$000` columns. The
+adapter preserves the separate 2002/03 Main Estimates baseline and records 45
+field-lineage rows plus one partial-page disposition. The persistent Silver
+manifest is `1fddf962d3b65ba2d0b850c63bcf29a51b71ca217b04b8774f025bff84a390de`.
+Focused adapter, source-operation, and recovery-contract tests passed (536
+passed, 10 skipped). Integrated recovery rebuilt this profile twice from Bronze
+with identical payload digests matching persistent Silver and confirmed Bronze
+unchanged; overall status remains `partial_with_blockers`. Treasury's CC BY 4.0
+notice is recorded, while derived-fact rights remain unevaluated. Detailed rows
+and cross-edition comparisons remain excluded. Full validation results will be
+appended after the required harness.
+
+Validation attempt on the 2002/03 slice stopped at lint before tests and later
+gates: Ruff reported three import-order (`I001`) findings in the new profile,
+source dispatcher and recovery harness. No other findings were reported in this
+attempt; correcting only import ordering before rerunning the complete harness.
+
+The import-only correction pass exposed a pre-existing duplicated 2001/02 wrong-
+hash test adjacent to the new 2002/03 operation contract (`F811`). Keeping the
+original 2001/02 contract and removing only the accidental duplicate before
+rerunning lint and validation.

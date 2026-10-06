@@ -1141,3 +1141,21 @@ repeat the already-completed external publication/collection operations.
   skipped, 97.42% coverage against the 80% floor, 56 schemas/46 representative
   documents, differential parity 9/9, and all mutation, security, and supply-
   chain gates passed. Conductor validation passed with 93 tracks and no errors.
+
+## 2026-10-07 — Vote Health Supplementary Estimates overview totals 2002/03
+
+- The pinned profile extracts nine page-2 appropriation overview rows and
+  preserves five `$000` columns, including the separate Main Estimates baseline.
+  It emits 45 field-lineage rows and one partial-page disposition.
+- Persistent Silver manifest SHA-256 is
+  `1fddf962d3b65ba2d0b850c63bcf29a51b71ca217b04b8774f025bff84a390de`; the
+  integrated clean-room receipt confirms two identical Bronze rebuilds, matching
+  payload digests, and unchanged Bronze. The overall recovery remains
+  `partial_with_blockers` for other track items.
+- The source census records Treasury's CC BY 4.0 notice. Rights for normalized
+  facts remain `not_evaluated`; detailed Part B1 rows, other pages and cross-
+  edition claims are excluded. No publication is performed.
+- `./scripts/validate.sh` passed on the final tree: 7,679 tests passed, 10
+  skipped, 97.40% coverage against the 80% floor, 56 schemas/46 representative
+  documents, differential parity 9/9, and all mutation, security, and supply-
+  chain gates passed. Conductor validation passed with 93 tracks and no errors.

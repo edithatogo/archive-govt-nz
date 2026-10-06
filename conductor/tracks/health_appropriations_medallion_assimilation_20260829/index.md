@@ -365,3 +365,6 @@ they are not current-state assertions.
 - [Vote Health 2000/01 Supplementary Estimates overview](./vote-health-supplementary-2000-01-overview-20261007.md)
 - [Vote Health 2000/01 overview extraction evidence](./vote-health-supplementary-2000-01-overview-20261007.json)
 - [Vote Health 2000/01 overview in clean-room recovery](./clean-room-recovery-20261007-vote-health-2000-01.json)
+- [Vote Health 2002/03 Supplementary Estimates overview](./vote-health-supplementary-2002-03-overview-20261007.md)
+- [Vote Health 2002/03 overview extraction evidence](./vote-health-supplementary-2002-03-overview-20261007.json)
+- [Vote Health 2002/03 overview in clean-room recovery](./clean-room-recovery-20261007-vote-health-2002-03.json)
