@@ -5047,3 +5047,22 @@ passed 9/9, and all configured mutation, dependency, licence, secret-scan and
 SBOM gates passed. See
 `vote-health-supplementary-2025-26-summary-totals-20261006.md`, its JSON
 evidence, and `clean-room-recovery-20261006-vote-health-2025-26.json`.
+### 2026-10-06 — Vote Health 2013/14 Supplementary category totals
+
+Added the hash-pinned page-2–6 profile for six 2013/14 Supplementary Estimates
+appropriation totals. The captured source SHA-256 and 44-page document identity
+were verified; the adapter preserves source labels, `$000` columns, raw
+negative/dash tokens, 18 lineage rows, and five page dispositions. Persistent
+Silver output matches two independent Bronze clean-room rebuilds, and the
+integrated receipt reports `bronze_objects_unchanged: true` while remaining
+`partial_with_blockers` for the wider track.
+
+Focused profile/source-operation/recovery tests passed (523 passed, 10 skipped);
+the new profile module has 100% line and branch coverage. The required
+`./scripts/validate.sh` passed with 7,566 tests, 10 skipped, 97.68% overall
+coverage against the 80% floor. Formatting, lint, strict typing, 56 schemas/46
+representative documents, 9/9 differential parity, mutation, security and
+supply-chain gates passed. A prior full-suite attempt triggered two unrelated
+Hypothesis `too_slow` health checks under parallel load; both exact-seed tests
+passed independently, and the subsequent full harness passed. Rights remain
+unevaluated; no cross-edition or publication claim follows.

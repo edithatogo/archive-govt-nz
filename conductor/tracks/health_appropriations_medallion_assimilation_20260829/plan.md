@@ -683,6 +683,13 @@ integrated parent head.
   source phrases, raw tokens, units and lineage; all other page content remains
   preserved-only. See `vote-health-estimates-overview-2002-03-20261003.md` and
   its machine receipt.
+  The captured 2013/14 Supplementary Estimates PDF now has a separate pinned
+  profile for six explicit appropriation totals from pages 2–6. It preserves
+  the three printed `$000` columns, parenthesized adjustments, raw dash token,
+  direct lineage and partial-page dispositions. Two clean-room Bronze rebuilds
+  match the persistent Silver package. Focused tests and the full repository
+  harness pass; rights and remaining table/page coverage stay unresolved.
+  See `vote-health-supplementary-2013-14-category-totals-20261006.md`.
   The same bounded overview extraction now covers eight reviewed headlines on
   pages 2–3 of the 48-page 2004/05 Estimates PDF, with its own source hash,
   vintage, transformation and profile. No amounts are summed; remaining PDF

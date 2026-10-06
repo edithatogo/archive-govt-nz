@@ -831,3 +831,22 @@ repeat the already-completed external publication/collection operations.
   performed. Wider source and full-track gates remain open.
 - Machine evidence: `vote-health-supplementary-2025-26-summary-totals-20261006.json`
   and `clean-room-recovery-20261006-vote-health-2025-26.json`.
+
+## 2026-10-06 — Vote Health Supplementary Estimates category totals 2013/14
+
+- Profile `vote-health-supplementary-2013-14-category-totals/v1` is pinned to
+  the captured 44-page Treasury PDF (SHA-256
+  `1ec8cf9e4c33d027f3ed02593ab3e8c7cab89883d5b286e0cf4aa4b1e947f5a2`). It
+  emits six named totals from pages 2–6, retaining the three printed `$000`
+  columns, raw adjustment/dash tokens and 18 field-lineage rows.
+- The persistent Silver manifest is
+  `c4462b1e042ff7e7f9ff477fb7fe9e0b6e5d525e06cf00bce5b246c01bf2cf2d`.
+  Two independent clean-room builds match it and leave Bronze unchanged.
+- Focused checks passed 523 tests with 10 skips; profile coverage is 100% line
+  and branch. `./scripts/validate.sh` passed 7,566 tests with 10 skips and
+  97.68% overall coverage against the 80% floor. All configured formatting,
+  lint, typing, schema, parity, mutation, security and supply-chain gates passed.
+- Rights remain `not_evaluated`; only the six named rows are normalized.
+  Remaining PDF content, cross-edition comparisons, publication and whole-track
+  completion are not asserted. Machine receipt and integrated recovery output
+  are linked from `index.md`.

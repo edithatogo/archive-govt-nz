@@ -1781,3 +1781,19 @@ security and supply-chain gates passed. The whole track is not complete.
   schema, parity, mutation, security and supply-chain gates. No actionable code
   defect is currently observed. Whole-track recovery remains partial and its
   final review gate remains open.
+
+## 2026-10-06 — Vote Health 2013/14 Supplementary category-total review
+
+- The source object matches the captured census SHA-256, recorded locator and
+  44-page PDF identity. The parser is pinned to the exact page span, edition,
+  table headers, six row labels and order; it preserves the three printed
+  columns and raw adjustment tokens.
+- Fact values, 18 direct field lineage rows and five page dispositions match
+  the source extraction. The local Silver package matches two independent
+  Bronze rebuilds; Bronze is unchanged.
+- Focused tests passed (523 passed, 10 skipped); the new adapter has 100% line
+  and branch coverage. `./scripts/validate.sh` passed with 7,566 tests, 10
+  skips, 97.68% coverage, and all configured gates.
+- The census has a recorded Treasury CC-BY-4.0 entry, while fact-level rights
+  remain `not_evaluated`. Other tables/pages, comparability, publication and
+  track completion remain outside the claim. No actionable defect was found.
