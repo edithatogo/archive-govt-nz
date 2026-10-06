@@ -5167,3 +5167,29 @@ passed, 10 skipped, 97.56% coverage, all 56 schemas and 46 representative
 documents valid, parity 9/9, and mutation, security, and supply-chain gates
 passed. The transient Hypothesis slow-generation failure did not reproduce in
 the isolated test or the full rerun.
+
+
+### 2026-10-07 — Vote Health Supplementary Estimates 2007/08
+
+Confirmed the captured 36-page Treasury PDF by SHA-256. The six printed
+category totals on pages 2–6 use this edition's Crown other-expense and
+capital-expenditure labels; those labels were preserved rather than harmonized.
+The page-5 departmental capital total prints a dash in the estimates column;
+the profile retains the raw dash token and represents its numeric value as
+null. Added a separate pinned adapter, bounded-operation registration, schema
+projection, and clean-room repeat-build contract. Focused tests passed (528
+passed, 10 skipped). Persistent Silver contains six facts, 18 lineage rows and
+five partial-page dispositions. Integrated recovery confirms repeat-identical
+outputs, parity with persistent Silver and unchanged Bronze; broader recovery
+remains partial. Rights remain unevaluated.
+
+The first `./scripts/validate.sh` attempt stopped at Ruff rule PT018 on a
+compound assertion in the new dash-lineage test. The finding was isolated to
+test style; split the checks into separate assertions before rerunning the full
+harness.
+
+The final `./scripts/validate.sh` rerun passed with exit code 0: 7,629 passed,
+10 skipped, 97.55% coverage against the 80% floor, 56 schemas/46 representative
+documents, 9/9 differential parity, and all mutation, security, and
+supply-chain gates passed. Ruff PT018 from the first attempt was fixed by
+splitting the test assertion; all six focused profile tests passed.

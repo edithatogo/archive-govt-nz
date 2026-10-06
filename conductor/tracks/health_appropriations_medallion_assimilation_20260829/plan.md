@@ -698,6 +698,13 @@ integrated parent head.
   `vote-health-supplementary-2010-11-category-totals-20261006.md` and its
   machine evidence. Rights remain unevaluated; other source rows and editions
   remain open.
+  The 2007/08 Supplementary Estimates and Supporting Information PDF now has
+  an edition-specific profile for six category totals on pages 2–6. It retains
+  this edition's different Crown-expense and capital labels verbatim, all
+  three `$000` columns, source adjustment tokens including a dash/null, direct
+  lineage, and partial-page dispositions. Persistent Silver matches two
+  clean-room Bronze rebuilds; rights remain unevaluated and other rows and
+  editions remain open.
   The captured 2008/09 Supplementary Estimates PDF now has its own pinned
   profile for six printed category totals from pages 2–6. It preserves the
   three `$000` budget columns, parenthesized adjustments, direct lineage, and
