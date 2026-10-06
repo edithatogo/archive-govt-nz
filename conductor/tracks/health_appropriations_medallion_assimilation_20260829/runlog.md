@@ -4966,3 +4966,8 @@ unreconstructed. Bronze objects were unchanged and the two builds for this
 summary are identical. `./scripts/validate.sh` passed: 7,533 passed, 10 skipped,
 97.68% coverage against the 80% floor; format, lint, strict typing, schema,
 parity, mutation, dependency audit, licence, secret scan and SBOM gates passed.
+
+
+## 2026-10-06 — Vote Health Supplementary Estimates 2024/25 summary slice
+
+After merging PR #657 (`748ecb9e`) with all required checks passing, the next captured Supplementary Estimates edition was reviewed. Its five-row summary is on PDF page 5 of a 30-page document, including a departmental-output MYA row absent from the previous edition. Added a separate hash-pinned profile retaining the source-labelled `$000` fields, three MYA/total categories, combined-total label wrapping, lineage and partial-page disposition. Two independent Bronze recovery-entry point builds match the persistent Silver package; the Bronze hash is unchanged. Rights remain unevaluated. Focused tests pass (517 passed, 10 skipped); full integrated recovery and repository validation are running.

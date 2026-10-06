@@ -46,6 +46,7 @@
         "vote-health-supplementary-2021-22-summary-totals/v1",
         "vote-health-supplementary-2022-23-summary-totals/v1",
         "vote-health-supplementary-2023-24-summary-totals/v1",
+        "vote-health-supplementary-2024-25-summary-totals/v1",
         "vote-health-supplementary-2003-04-detail/v1",
         "vote-health-estimates-2002-03-detail/v1",
         "vote-health-supplementary-2003-04-revenue/v1",
@@ -107,6 +108,7 @@
         "vote-health-supplementary-2021-22-summary-totals/v1",
         "vote-health-supplementary-2022-23-summary-totals/v1",
         "vote-health-supplementary-2023-24-summary-totals/v1",
+        "vote-health-supplementary-2024-25-summary-totals/v1",
         "vote-health-supplementary-revenue/v1",
         "vote-health-supplementary-summary/v1"
       ]
@@ -1262,6 +1264,60 @@
             },
             "transformation_id": {
               "const": "vote-health-supplementary-2023-24-summary-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_supplementary_summary_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_supplementary_summary_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2024-25-summary-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2024-25-summary-totals/v1"
             },
             "counts": {
               "type": "object",
