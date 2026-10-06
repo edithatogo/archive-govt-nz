@@ -5105,3 +5105,17 @@ skipped, 97.63% coverage against the 80% floor, 56 schemas/46 representative
 documents, 9/9 parity, and all configured mutation, security and supply-chain
 gates passed. The integrated recovery remains `partial_with_blockers` for the
 wider track. Rights remain unevaluated.
+
+### 2026-10-06 — Vote Health Supplementary Estimates 2017/18
+
+Added the edition-specific profile for seven named appropriation totals on
+pages 2–5 of the captured 48-page Treasury PDF. It binds the source hash,
+vintage, and locator, retains three `$000` columns, source tokens, 21 field
+lineage rows, and four partial-page dispositions. The persistent Silver
+package contains seven facts. Focused checks passed (523 tests, 10 skipped); adapter line and branch
+coverage is 91.67%, above the 80% floor. `./scripts/validate.sh` passed:
+7,594 tests, 10 skipped, 97.61% coverage, 56 schemas/46 representative
+documents, 9/9 parity, and all configured mutation, security, and supply-chain
+gates. Integrated recovery rebuilt twice, matched persistent output digests,
+and verified Bronze unchanged. The broader track remains
+`partial_with_blockers`; rights remain unevaluated.
