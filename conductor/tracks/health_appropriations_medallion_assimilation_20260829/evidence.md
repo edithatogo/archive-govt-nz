@@ -1159,3 +1159,22 @@ repeat the already-completed external publication/collection operations.
   skipped, 97.40% coverage against the 80% floor, 56 schemas/46 representative
   documents, differential parity 9/9, and all mutation, security, and supply-
   chain gates passed. Conductor validation passed with 93 tracks and no errors.
+
+## 2026-10-07 — Vote Health Supplementary Estimates overview totals 1999/2000
+
+- The edition-pinned profile extracts nine page-3 summary rows from the captured
+  11-page PDF, preserving five printed `$000` columns, the separate Main
+  Estimates baseline, 45 lineage records, and one partial-page disposition.
+- Persistent Silver manifest SHA-256 is
+  `90b01a953007932a3f59d577e1260ce6b9b7a6fcf53f017a4e728cde4437fef9`. The
+  integrated clean-room receipt confirms repeat-identical payloads, a match to
+  persistent Silver, and unchanged Bronze. Wider recovery remains
+  `partial_with_blockers`.
+- Treasury's CC BY 4.0 notice is recorded; rights for normalized facts remain
+  `not_evaluated`. Page 4 onward, other source pages, and cross-edition
+  comparisons are excluded; publication was not performed.
+- `./scripts/validate.sh` passed: 7,673 tests passed, 10 skipped, 97.38%
+  coverage against the 80% floor, 56 schemas/46 representative documents,
+  parity 9/9, and all mutation, security, and supply-chain gates passed.
+  Conductor validation reported 93 tracks and no errors. The harness used an
+  external-SSD `TMPDIR` after local temporary storage was exhausted.

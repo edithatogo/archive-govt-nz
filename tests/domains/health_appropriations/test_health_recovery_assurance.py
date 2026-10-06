@@ -233,6 +233,21 @@ def _fake_vote_health_2000_01_overview(root: Path, index: int) -> dict[str, obje
     }
 
 
+def _fake_vote_health_1999_00_overview(root: Path, index: int) -> dict[str, object]:
+    output = root / f"vote-health-1999-00-overview-{index}"
+    output.mkdir()
+    (output / "MANIFEST.json").write_bytes(b"fixed Vote Health 1999/2000 overview")
+    return {
+        "files": MODULE.tree(output),
+        "operation_receipt": {
+            "status": "written_local",
+            "profile": "vote-health-supplementary-1999-00-overview/v1",
+            "source_object_sha256": "8" * 64,
+            "counts": {"pages": 1, "facts": 9},
+        },
+    }
+
+
 def _fake_vote_health_2002_03_overview(root: Path, index: int) -> dict[str, object]:
     output = root / f"vote-health-2002-03-overview-{index}"
     output.mkdir()
@@ -932,6 +947,11 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     monkeypatch.setattr(
         MODULE,
         "rebuild_vote_health_2000_01_overview",
+        _fake_vote_health_1999_00_overview,
+    )
+    monkeypatch.setattr(
+        MODULE,
+        "rebuild_vote_health_1999_00_overview",
         _fake_vote_health_2000_01_overview,
     )
     monkeypatch.setattr(
@@ -1173,6 +1193,9 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
         "repeat_identical"
     ]
     assert result["products_rebuilt"]["vote_health_supplementary_2001_02_overview"][
+        "repeat_identical"
+    ]
+    assert result["products_rebuilt"]["vote_health_supplementary_1999_00_overview"][
         "repeat_identical"
     ]
     assert result["products_rebuilt"]["vote_health_supplementary_2000_01_overview"][
