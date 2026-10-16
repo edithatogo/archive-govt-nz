@@ -18,6 +18,12 @@ from archive_govt_nz.domains.health_appropriations import (
     budget_comparison_gold as budget,
 )
 from archive_govt_nz.domains.health_appropriations import (
+    canonical_gold_queries as canonical,
+)
+from archive_govt_nz.domains.health_appropriations import (
+    canonical_gold_verification as canonical_verifier,
+)
+from archive_govt_nz.domains.health_appropriations import (
     fiscal_analytical_gold as fiscal,
 )
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
@@ -25,7 +31,11 @@ from archive_govt_nz.domains.health_appropriations.workbook_common import (
 )
 
 VERSION = "archive-govt-nz.health-gold-metadata/v3"
+CANONICAL_VERSION = "archive-govt-nz.health-gold-metadata/v4"
 SOURCE_DRILLTHROUGH_VERSION = "archive-govt-nz.health-gold-source-drillthrough/v1"
+CANONICAL_SOURCE_DRILLTHROUGH_VERSION = (
+    "archive-govt-nz.health-gold-source-drillthrough/v2"
+)
 MAX_BYTES = 16 * 1024 * 1024
 MAX_PACKAGES = 8
 SHA256_HEX_LENGTH = 64
@@ -60,6 +70,16 @@ class GoldInput:
     profile: str
     root: Path
     manifest_sha256: str
+
+
+def with_canonical_input(
+    values: tuple[GoldInput, ...], root: Path | None, pin: str | None
+) -> tuple[GoldInput, ...]:
+    """Append one explicit canonical input; reject half-specified pairs."""
+    if root is None or pin is None:
+        _require(root is None and pin is None)
+        return values
+    return (*values, GoldInput("canonical_source_separated", root, pin))
 
 
 def _require(condition: object) -> None:
@@ -121,7 +141,13 @@ def _source_references(value: object, path: str = "") -> list[dict[str, str]]:
 
 def _table(name: str, table: pa.Table, package_id: str) -> dict[str, Any]:
     periods = {
-        str(value) for value in table["period_end"].to_pylist() if value is not None
+        str(value)
+        for value in (
+            table["period_end"].to_pylist()
+            if "period_end" in table.column_names
+            else []
+        )
+        if value is not None
     }
     status_field = "state" if "state" in table.column_names else "status"
     statuses = (
@@ -147,11 +173,105 @@ def _table(name: str, table: pa.Table, package_id: str) -> dict[str, Any]:
     }
 
 
+def _inventory(
+    value: GoldInput,
+    marker_name: str,
+    marker: bytes,
+    bindings: dict[str, Any],
+    *,
+    max_bytes: int = MAX_BYTES,
+) -> list[dict[str, Any]]:
+    inventory = []
+    for name, binding in sorted(bindings.items()):
+        payload = verified_snapshot(
+            value.root / name, binding["sha256"], max_bytes=max_bytes
+        )
+        _require(len(payload) == binding["bytes"])
+        inventory.append(
+            {"path": name, "sha256": binding["sha256"], "bytes": len(payload)}
+        )
+    inventory.append(
+        {"path": marker_name, "sha256": value.manifest_sha256, "bytes": len(marker)}
+    )
+    verified_snapshot(
+        value.root / marker_name, value.manifest_sha256, max_bytes=MAX_BYTES
+    )
+    return inventory
+
+
+def _canonical_package(value: GoldInput) -> dict[str, Any]:
+    _require(
+        canonical_verifier.verify_canonical_gold_package(
+            value.root, value.manifest_sha256
+        )["status"]
+        == "verified"
+    )
+    marker = verified_snapshot(
+        value.root / "MANIFEST.json",
+        value.manifest_sha256,
+        max_bytes=canonical_verifier.MAX_MANIFEST_BYTES,
+    )
+    manifest = json.loads(marker)
+    _require(
+        manifest.get("rights_state") == "not_evaluated"
+        and manifest.get("publication") == "not_performed"
+        and bool(manifest["products"])
+        and set(manifest["products"]) <= set(canonical.PRODUCTS)
+    )
+    package_id = "urn:archive-govt-nz:health:gold:" + value.manifest_sha256
+    tables = []
+    for product in sorted(manifest["products"]):
+        table = canonical.read_canonical_gold_product(
+            value.root, value.manifest_sha256, product
+        )
+        name = canonical.PRODUCTS[product][0]
+        descriptor = _table(name, table, package_id)
+        descriptor.update(
+            period_basis="source_tokens_not_interpreted",
+            observed_period_tokens=sorted(
+                {v for v in table["period_token"].to_pylist() if v is not None}
+            ),
+        )
+        del table
+        tables.append(descriptor)
+    inventory = _inventory(
+        value,
+        "MANIFEST.json",
+        marker,
+        manifest["outputs"],
+        max_bytes=canonical.MAX_BYTES,
+    )
+    return {
+        "id": package_id,
+        "profile": value.profile,
+        "gold_schema_version": manifest["schema_version"],
+        "manifest_sha256": value.manifest_sha256,
+        "inventory": sorted(inventory, key=lambda item: item["path"]),
+        "tables": sorted(tables, key=lambda item: item["path"]),
+        "caveats": [
+            "source_tokens_not_interpreted_as_dates",
+            "classification_mapping_not_inferred",
+            "revision_interpretation_not_assessed",
+            "cross_source_comparison_not_performed",
+            "producer_metadata_not_replaced",
+        ],
+        "verification_scope": "pinned_gold_package_snapshots",
+        "source_reverification": "not_performed",
+        "source_semantics": "not_reassessed",
+        "source_references": _source_references(manifest),
+        "rights": manifest["rights_state"],
+        "publication": manifest["publication"],
+    }
+
+
 def _package(value: GoldInput) -> dict[str, Any]:
     _require(
         type(value) is GoldInput
-        and value.profile in {"budget_comparison", "fiscal_analytical"}
+        and value.profile
+        in {"budget_comparison", "fiscal_analytical", "canonical_source_separated"}
     )
+    if value.profile == "canonical_source_separated":
+        return _canonical_package(value)
     if value.profile == "budget_comparison":
         table, summary = budget.read_budget_comparison(
             value.root, value.manifest_sha256
@@ -188,21 +308,7 @@ def _package(value: GoldInput) -> dict[str, Any]:
         if value.profile == "budget_comparison"
         else {entry["filename"]: entry for entry in manifest["tables"].values()}
     )
-    inventory = []
-    for name, binding in sorted(bindings.items()):
-        payload = verified_snapshot(
-            value.root / name, binding["sha256"], max_bytes=MAX_BYTES
-        )
-        _require(len(payload) == binding["bytes"])
-        inventory.append(
-            {"path": name, "sha256": binding["sha256"], "bytes": len(payload)}
-        )
-    inventory.append(
-        {"path": marker_name, "sha256": value.manifest_sha256, "bytes": len(marker)}
-    )
-    verified_snapshot(
-        value.root / marker_name, value.manifest_sha256, max_bytes=MAX_BYTES
-    )
+    inventory = _inventory(value, marker_name, marker, bindings)
     package_id = "urn:archive-govt-nz:health:gold:" + value.manifest_sha256
     return {
         "id": package_id,
@@ -285,6 +391,26 @@ def _graphs(
     )
 
 
+def _period_text(table: dict[str, Any]) -> str:
+    if "observed_period_tokens" in table:
+        return (
+            f"{len(table['observed_period_tokens'])} distinct source tokens "
+            "(not date-interpreted)"
+        )
+    return (
+        f"{table['observed_period_end_min']} to {table['observed_period_end_max']} "
+        f"({table['observed_period_end_count']} distinct)"
+    )
+
+
+def _version(values: tuple[GoldInput, ...]) -> str:
+    return (
+        CANONICAL_VERSION
+        if any(v.profile == "canonical_source_separated" for v in values)
+        else VERSION
+    )
+
+
 def project_gold_metadata(values: tuple[GoldInput, ...]) -> dict[str, bytes]:
     """Verify supported packages before returning metadata-only local projections.
 
@@ -296,9 +422,10 @@ def project_gold_metadata(values: tuple[GoldInput, ...]) -> dict[str, bytes]:
     _require(type(values) is tuple and 0 < len(values) <= MAX_PACKAGES)
     packages = sorted((_package(v) for v in values), key=lambda p: p["id"])
     _require(len({p["id"] for p in packages}) == len(packages))
+    version = _version(values)
     catalogue = _json(
         {
-            "schema_version": VERSION,
+            "schema_version": version,
             "packages": packages,
             "release_readiness": "blocked_unassessed_rights_and_publication",
             "rights": "not_evaluated",
@@ -310,7 +437,7 @@ def project_gold_metadata(values: tuple[GoldInput, ...]) -> dict[str, bytes]:
     dcat, prov = _graphs(packages, _sha(catalogue))
     citations = _json(
         {
-            "schema_version": VERSION,
+            "schema_version": version,
             "scope": "local_content_addressed_gold_packages",
             "source_citation": "not_asserted",
             "records": [
@@ -328,7 +455,7 @@ def project_gold_metadata(values: tuple[GoldInput, ...]) -> dict[str, bytes]:
     )
     changelog = _json(
         {
-            "schema_version": VERSION,
+            "schema_version": version,
             "comparison": "snapshot_only_no_prior_version_comparison",
             "federation": "no_approved_links_emitted",
             "packages": [
@@ -350,7 +477,11 @@ def project_gold_metadata(values: tuple[GoldInput, ...]) -> dict[str, bytes]:
     )
     source_drillthrough = _json(
         {
-            "schema_version": SOURCE_DRILLTHROUGH_VERSION,
+            "schema_version": (
+                CANONICAL_SOURCE_DRILLTHROUGH_VERSION
+                if version == CANONICAL_VERSION
+                else SOURCE_DRILLTHROUGH_VERSION
+            ),
             "scope": "source_manifest_field_references_only",
             "rights": "not_evaluated",
             "publication": "not_performed",
@@ -373,11 +504,12 @@ def project_gold_metadata(values: tuple[GoldInput, ...]) -> dict[str, bytes]:
     )
     schemas = _json(
         {
-            "schema_version": VERSION,
+            "schema_version": version,
             "encoding": "arrow_ipc_schema_hex",
             "recordsets": [t for p in packages for t in p["tables"]],
         }
     )
+    has_tokens = any(p["profile"] == "canonical_source_separated" for p in packages)
     lines = [
         "# Local Health analytical Gold dataset card",
         "",
@@ -389,21 +521,26 @@ def project_gold_metadata(values: tuple[GoldInput, ...]) -> dict[str, bytes]:
             "Rights are not evaluated; publication is not performed; "
             "release readiness is blocked."
         ),
-        "Dates below are observed period-end extrema, not continuous coverage.",
+        (
+            "Observed dates and literal source tokens are not continuous coverage."
+            if has_tokens
+            else "Dates below are observed period-end extrema, not continuous coverage."
+        ),
         (
             "No health-input cost deflator, causal inference or performance "
             "variance is asserted."
         ),
         "",
-        "| Local citation identifier | Rows | Observed period ends |",
+        (
+            "| Local citation identifier | Rows | Observed periods |"
+            if has_tokens
+            else "| Local citation identifier | Rows | Observed period ends |"
+        ),
         "| --- | --- | --- |",
     ]
     for p in packages:
         lines.extend(
-            f"| {t['id']} | {t['rows']} | "
-            f"{t['observed_period_end_min']} to {t['observed_period_end_max']} "
-            f"({t['observed_period_end_count']} distinct) |"
-            for t in p["tables"]
+            f"| {t['id']} | {t['rows']} | {_period_text(t)} |" for t in p["tables"]
         )
         lines.extend(["", p["profile"] + " caveats: " + ", ".join(p["caveats"]), ""])
     result = {
@@ -432,9 +569,10 @@ def export_gold_metadata(
             not target.is_relative_to(source) and not source.is_relative_to(target)
         )
     payloads = project_gold_metadata(values)
+    version = _version(values)
     marker = _json(
         {
-            "schema_version": VERSION,
+            "schema_version": version,
             "payloads": {
                 n: {"sha256": _sha(b), "bytes": len(b)}
                 for n, b in sorted(payloads.items())
@@ -450,7 +588,7 @@ def export_gold_metadata(
             with (output / name).open("xb") as stream:
                 stream.write(content)
     return {
-        "schema_version": VERSION,
+        "schema_version": version,
         "status": "written" if write else "dry_run",
         "manifest_sha256": _sha(marker),
         "packages": len(values),

@@ -1234,3 +1234,18 @@ The external durable `validation.log` and `validation.exit` record exit 0.
 The follow-up commit records this evidence only; hosted checks must qualify
 the final PR head before merge.
 No source/rights/publication or whole-track completion is claimed.
+
+## Canonical Gold metadata — 2026-10-17
+
+The new bounded canonical profile projects full schemas and literal period
+inventories for all eight fact products through the existing metadata system.
+92 focused checks pass; typing/lint/format, 59 schemas/49 documents and Conductor
+93/no errors pass. Final native v4 projection covers 13 recordsets / 1,184 rows,
+including 800 canonical rows, with exact independent schema/token readback,
+offline graph parsing, byte-identical rebuilds and installed CLI/MCP parity.
+Pre-change/current Fiscal/Budget metadata payloads are byte-identical. Legacy
+schema identifiers/bytes remain unchanged; canonical metadata uses new v4/v2
+schemas. See [native evidence](./canonical-gold-metadata-20261017.md) for source
+pins, final receipt and preserved pre-review evidence. Full harness and hosted
+delivery remain separate pending gates; rights/publication/federation and final
+track completion are not promoted.

@@ -1869,3 +1869,16 @@ Full repository validation passed on implementation `ff91c196` with 7,693
 tests/10 skipped and all later gates green. Remaining gates: exact-head hosted
 PR checks and protected delivery. Broader Gold reconciliation and final track
 review remain open; no unsupported semantic equivalence is inferred.
+
+## Canonical Gold metadata — 2026-10-17
+
+Reviewed full-table versus capped-query coverage, exact schemas/tokens, package
+fixity and resource bounds, no date inference, immutable input inventories,
+closed paired CLI/MCP inputs, graph offline access, and rights/publication
+states. Resolved the retained card-indexing error and schema-evolution finding:
+canonical metadata now uses separate v4/v2 schemas; original v3/v1 schemas and
+Fiscal/Budget bytes remain unchanged. Native proof covers all 13 recordsets and
+exact installed CLI/MCP receipts. 92 focused checks, typing/lint, schema and
+Conductor validation pass. Remaining gates are the full repository harness and
+protected exact-head delivery. This does not close broader metadata standards,
+federation approvals or final Health review.

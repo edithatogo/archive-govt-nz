@@ -1276,6 +1276,18 @@ integrated parent head.
   Budget comparison Gold manifests. Keep rights, release and source re-verification
   separate; require byte-identical replay and reject altered inputs. [M-14; AC-14]
 
+- [~] Extend the existing local metadata projector with a canonical
+  source-separated Gold profile covering its eight fact products. Reuse the
+  package verifier, bounded typed reader and existing card/RO-Crate inventory;
+  emit full-table schema/observed-token descriptors, catalogue/DCAT/PROV,
+  citations, snapshot changelog and explicit source references. Preserve exact
+  period tokens without date conversion, existing Fiscal/Budget output bytes,
+  rights/publication states and empty approved federation. Verify byte-identical
+  reconstruction and offline graph/readback contracts. Extend existing CLI build/
+  verify and read-only MCP verification with a paired optional canonical input;
+  preserve the existing two-package invocation. [M-14, M-15, M-18; AC-13, AC-14,
+  AC-16]
+
 - [ ] Generate and validate metadata, cards, citations, changelogs, catalogue
   and source drill-through records from actual layer manifests. [M-14, S-06;
   AC-14]

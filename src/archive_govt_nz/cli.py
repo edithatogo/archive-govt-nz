@@ -555,19 +555,25 @@ def health_appropriations_build_gold_metadata(
     budget_package: Path,
     budget_manifest_sha256: str,
     output_dir: Path,
+    canonical_package: Path | None = None,
+    canonical_manifest_sha256: str | None = None,
     write: bool = False,
 ) -> int:
-    """Build local metadata from two pinned Gold products; dry run by default."""
+    """Build pinned Gold metadata with optional canonical input; dry run by default."""
     from archive_govt_nz.domains.health_appropriations.gold_metadata import (
         GoldInput,
         export_gold_metadata,
         verify_gold_metadata,
+        with_canonical_input,
     )
 
     try:
         inputs = (
             GoldInput("fiscal_analytical", fiscal_package, fiscal_manifest_sha256),
             GoldInput("budget_comparison", budget_package, budget_manifest_sha256),
+        )
+        inputs = with_canonical_input(
+            inputs, canonical_package, canonical_manifest_sha256
         )
         receipt = export_gold_metadata(inputs, output_dir, write=write)
         if write:
@@ -595,12 +601,15 @@ def health_appropriations_verify_gold_metadata(
     budget_package: Path,
     budget_manifest_sha256: str,
     output_dir: Path,
+    canonical_package: Path | None = None,
+    canonical_manifest_sha256: str | None = None,
     manifest_sha256: str,
 ) -> int:
     """Verify pinned Gold metadata against its inputs without writing state."""
     from archive_govt_nz.domains.health_appropriations.gold_metadata import (
         GoldInput,
         verify_gold_metadata,
+        with_canonical_input,
     )
 
     inputs = (
@@ -608,6 +617,9 @@ def health_appropriations_verify_gold_metadata(
         GoldInput("budget_comparison", budget_package, budget_manifest_sha256),
     )
     try:
+        inputs = with_canonical_input(
+            inputs, canonical_package, canonical_manifest_sha256
+        )
         receipt = verify_gold_metadata(inputs, output_dir, manifest_sha256)
     except ValueError, OSError, KeyError, TypeError:
         _emit_json(

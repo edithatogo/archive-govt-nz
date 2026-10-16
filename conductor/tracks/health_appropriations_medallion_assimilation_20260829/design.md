@@ -680,3 +680,37 @@ allocation/regime labels and revision/classification caveats remain distinct.
 A query over admitted facts neither reverifies Bronze nor establishes new
 rights, analytical equivalence, deflator policy or publication eligibility.
 This section is the implementation contract, not a completed query claim.
+
+## Canonical Gold metadata profile — 2026-10-17
+
+Extend the existing `gold_metadata` projection with one explicit
+`canonical_source_separated` GoldInput profile. Its manifest pin must pass the
+canonical package verifier; each declared fact table uses the same bounded,
+strictly typed Parquet reader as the named query surface. Metadata must inspect
+full admitted tables, not the query API's capped rows. Process table descriptors
+without retaining all decoded source tables together. Preserve exact observed
+period tokens/counts and Arrow schemas; do not turn tokens into dates or claim
+continuous temporal coverage. Existing Fiscal/Budget profile bytes retain their
+current meaning and output version. Canonical-containing metadata uses v4 and
+source references use v2, with separate schemas and representative fixtures.
+Legacy v3/v1 schema bytes and projection bytes remain unchanged; no enum is
+widened under its existing identifier. Rights and shape guards remain strict.
+
+Reuse the canonical producer's verified card and RO-Crate as input inventory
+references. The existing composite metadata card describes the catalogue; it
+does not replace either input artefact. Preserve canonical `rights_state` as an
+explicit `not_evaluated` metadata state, and keep publication unperformed.
+Reuse existing source-reference extraction only for explicit manifest fields;
+absence remains a recorded gap. Metadata is derived from pinned Gold, not new
+Bronze/source verification or approval. Graph contexts remain inline/offline;
+full standards conformance, Croissant publication requirements and approved
+federation relationships remain separate open gates.
+
+The existing Fiscal/Budget CLI metadata build/verify commands and read-only MCP
+verifier accept an optional paired canonical directory/manifest pin. Existing
+required Fiscal/Budget arguments retain their meaning. Require both optional
+fields or neither before reading packages; MCP remains closed and read-only.
+Output package counts are exactly two or three. Shared typed input assembly
+keeps CLI and MCP pairing behavior aligned; no new runtime or command family is
+introduced. Canonical-only projection remains supported by the underlying
+GoldInput API; the existing composite CLI preserves its established inputs.

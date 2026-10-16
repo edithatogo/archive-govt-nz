@@ -375,3 +375,4 @@ they are not current-state assertions.
 - [Vote Health 1999/2000 overview in integrated clean-room recovery](./clean-room-recovery-20261007-vote-health-1999-00.json)
 - [Fiscal Gold cross-product query matrix and real-view exclusion](./fiscal-gold-query-matrix-20261007.md)
 - [Canonical Gold named queries and readback evidence](./canonical-gold-queries-20261017.md)
+- [Canonical Gold metadata profile and version compatibility](./canonical-gold-metadata-20261017.md)

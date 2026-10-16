@@ -522,45 +522,61 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
         "name": "health_appropriations_verify_gold_metadata",
         "description": (
             "Rebuild and verify a hash-pinned local Platinum metadata package "
-            "from pinned Fiscal and Budget Gold inputs without writing state. "
+            "from pinned Fiscal/Budget and optional canonical Gold without writes. "
             "This does not evaluate rights or publication readiness."
         ),
-        "inputSchema": _object_schema(
-            {
-                "fiscal_package": {"type": "string", "minLength": 1},
-                "fiscal_manifest_sha256": {
-                    "type": "string",
-                    "pattern": "^[0-9a-f]{64}$",
+        "inputSchema": {
+            **_object_schema(
+                {
+                    "fiscal_package": {"type": "string", "minLength": 1},
+                    "fiscal_manifest_sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$",
+                    },
+                    "budget_package": {"type": "string", "minLength": 1},
+                    "budget_manifest_sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$",
+                    },
+                    "canonical_package": {"type": "string", "minLength": 1},
+                    "canonical_manifest_sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$",
+                    },
+                    "output_dir": {"type": "string", "minLength": 1},
+                    "manifest_sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$",
+                    },
                 },
-                "budget_package": {"type": "string", "minLength": 1},
-                "budget_manifest_sha256": {
-                    "type": "string",
-                    "pattern": "^[0-9a-f]{64}$",
-                },
-                "output_dir": {"type": "string", "minLength": 1},
-                "manifest_sha256": {
-                    "type": "string",
-                    "pattern": "^[0-9a-f]{64}$",
-                },
+                [
+                    "fiscal_package",
+                    "fiscal_manifest_sha256",
+                    "budget_package",
+                    "budget_manifest_sha256",
+                    "output_dir",
+                    "manifest_sha256",
+                ],
+            ),
+            "dependentRequired": {
+                "canonical_package": ["canonical_manifest_sha256"],
+                "canonical_manifest_sha256": ["canonical_package"],
             },
-            [
-                "fiscal_package",
-                "fiscal_manifest_sha256",
-                "budget_package",
-                "budget_manifest_sha256",
-                "output_dir",
-                "manifest_sha256",
-            ],
-        ),
+        },
         "outputSchema": _object_schema(
             {
-                "schema_version": {"const": "archive-govt-nz.health-gold-metadata/v3"},
+                "schema_version": {
+                    "enum": [
+                        "archive-govt-nz.health-gold-metadata/v3",
+                        "archive-govt-nz.health-gold-metadata/v4",
+                    ]
+                },
                 "status": {"const": "verified"},
                 "manifest_sha256": {
                     "type": "string",
                     "pattern": "^[0-9a-f]{64}$",
                 },
-                "packages": {"const": 2},
+                "packages": {"enum": [2, 3]},
                 "rights": {"const": "not_evaluated"},
                 "publication": {"const": "not_performed"},
                 "verification_scope": {
@@ -1133,6 +1149,15 @@ def _health_read_only_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
                 Path(str(args["budget_package"])),
                 str(args["budget_manifest_sha256"]),
             ),
+        )
+        inputs = gold_metadata.with_canonical_input(
+            inputs,
+            Path(str(args["canonical_package"]))
+            if "canonical_package" in args
+            else None,
+            str(args["canonical_manifest_sha256"])
+            if "canonical_manifest_sha256" in args
+            else None,
         )
         result = gold_metadata.verify_gold_metadata(
             inputs, Path(str(args["output_dir"])), str(args["manifest_sha256"])
