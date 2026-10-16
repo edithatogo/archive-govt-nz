@@ -184,3 +184,14 @@ layout caveats and the separate Budget 1998 Supplementary withdrawal notice
 are recorded in the [bounded observation](./source-census-befu-1998-20261017.md).
 The retained 1998/99 captures are unchanged, and the withdrawal notice is not
 assigned a fiscal period. All 30 editions remain pending full enumeration.
+
+## BEFU 1999 and separate December dispositions — 2026-10-17
+
+Seven official BEFU 1999 PDF links extend the register from 86 to 93 resources.
+The publisher contents label says 2019; release and reader identify 1999. Fiscal
+and GAAP period/status observations remain separate and unqualified for joins.
+December 1998 is corroborated as published with its original locator unresolved;
+Parliament reports December 1999 nonpublication. Neither BPS nor PREFU is admitted
+as a substitute. See the [bounded source observation](./source-census-befu-1999-20261017.md).
+All previous resource records remain unchanged; all 30 editions still need full
+source-family reconciliation, qualified fixity/layout and resource rights.

@@ -70,6 +70,14 @@ repository validation command. External gates block only their affected task.
 
 ### 1.2 Inventory the seed and direct official corpus
 
+- [x] Register the seven official BEFU 1999 PDFs and their publisher-label,
+  table-status and rights-evidence discrepancies. Record source-backed,
+  separate December 1998 publication/locator and December 1999 nonpublication
+  dispositions without substituting BPS/PREFU documents or changing captures.
+  Reconcile a new dated source-measure review, preserving prior observations
+  and whole-edition gaps. [M-02, M-04, M-11, M-18;
+  AC-03, AC-04, AC-09, AC-16]
+
 - [x] Register the ten files linked by the official BEFU 1998 release,
   with native source scopes and status labels, explicit reader-layout gaps
   and resource rights/fixity boundaries. Record the separate Budget 1998
@@ -554,7 +562,8 @@ integrated parent head.
   `./scripts/validate.sh` passed 6,963 tests / 9 skipped at 97.95% branch
   coverage; 48 schemas, 38 representative documents, differential parity 9/9,
   all configured mutation/hygiene and supply-chain gates, and strict 113-part
-  SBOM. Exact residual historical differences remain visibly unresolved.)
+  SBOM. Historical differences retain source and donor observations separately;
+  no value replacements or publication approvals were granted.)
 
 ## Phase 5 — Longitudinal Silver expansion and contextual data
 

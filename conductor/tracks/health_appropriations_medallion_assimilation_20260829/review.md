@@ -2003,3 +2003,48 @@ source observations and their evidence hashes are unchanged. Local slice work
 is complete; exact-head hosted validation and protected delivery remain pending.
 Whole-edition/history, native-layout/fixity, rights and cross-basis qualification
 gates remain open; this does not close the Health track.
+
+## BEFU 1999 and year-end dispositions — 2026-10-17
+
+Bounded self-review checked publisher link titles against browser readback,
+source identity, rights wording and table-specific status definitions. The
+2019 contents typo remains in the publisher-title field; the release stays
+1999. The Fiscal header's forecast/projection labels are not replaced by GAAP
+definitions. No numeric cells, native hashes/layout claims, ISO currency or
+cross-basis relationships are admitted. The page-level CC BY 4.0 statement and
+historical Crown copyright wording remain separate, unadjudicated evidence.
+
+Beehive's dated publication statement and Parliament Appendix 1 corroborate
+December 1998 publication but supply no qualified original locator. Parliament
+note 2 reports December 1999 nonpublication. Each has its own reason-coded
+record, null original URL and explicit prohibition on replacement admission;
+no inferred BPS/PREFU substitution, whole-edition closure or capture mutation.
+All 86 earlier resource objects and twelve reviewed series compare unchanged.
+The prior dated review is preserved. Full local and hosted gates remain pending.
+
+
+## BEFU 1999 local assurance — 2026-10-17
+
+The required `./scripts/validate.sh` passed on clean
+`bb803cafa53df9d00a6656c168a644728dd11c0b`: 7,715 passed, ten skipped,
+97.44% coverage against the 80% floor; 60 schemas/50 representative documents,
+9/9 differential parity and all mutation/hygiene/audit/licence/secrets/SBOM
+gates. SBOM has 113 components; external CDX validation was explicitly skipped.
+Durable log and exit 0 are retained under
+`/Volumes/PortableSSD/tmp/health-census-befu-1999-20261017/validation-2.*`.
+
+The first two-worker full run had one existing Gold discovery CLI subprocess
+exceed its 30-second timeout after emitting its success receipt (7,714 other
+tests passed). The unchanged isolated contract passed in 12.21s, with a 5.49s
+test call. A guarded one-worker full rerun then passed all 7,715 tests in
+488.21s. Timeout and quality gates were not relaxed; the underlying cause was
+not established. The initial failure and isolated logs remain beside the full
+rerun evidence. No CLI or product implementation was changed.
+
+Current review binds 37 evidence files, thirteen source descriptors and 93
+historical discovery locators. All 86 earlier resources, twelve descriptors,
+the captured-source census and prior dated review are unchanged. Corrected the
+stale Phase 4 sentence to agree with its existing source-backed retain-both
+receipt; this grants no replacements or publication approval. This bookkeeping
+commit changes only unpinned track evidence/status. Exact-head hosted checks
+and protected delivery remain pending; the whole Health track is incomplete.

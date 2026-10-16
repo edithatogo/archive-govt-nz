@@ -25,7 +25,7 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
     assert report["publication_authorized"] is False
     assert report["whole_history_complete"] is False
     records = report["resource_observations"]
-    assert len(records) == 86
+    assert len(records) == 93
     assert len({row["url"] for row in records}) == len(records)
     assert len({row["source_id"] for row in records}) == len(records)
     assert len({(r["edition_year"], r["family"], r["kind"]) for r in records}) == len(
@@ -50,6 +50,8 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
         ("befu", "revenue"),
         ("befu", "specific_fiscal_risks"),
         ("befu", "responsibility_summary"),
+        ("befu", "responsibility"),
+        ("befu", "risks_scenarios"),
         ("befu", "full_release"),
         ("defu", "gaap_series_tables"),
         ("defu", "annex_glossary_link"),
@@ -302,3 +304,65 @@ def test_2017_budget_updates_and_hyefu_locators_are_bounded() -> None:
         and row["byte_count"] is None
         for row in sources
     )
+
+
+def test_befu_1999_identity_and_year_end_publication_dispositions() -> None:
+    """A publisher typo and absent original must not fabricate source identity."""
+    track = (
+        Path(__file__).parents[2]
+        / "conductor/tracks/health_appropriations_medallion_assimilation_20260829"
+    )
+    report = json.loads((track / "historical-source-register.json").read_text())
+    rows = [r for r in report["resource_observations"] if r["edition_year"] == 1999]
+    assert {r["url"].rsplit("/", 1)[-1] for r in rows} == {
+        "befu99-cont.pdf",
+        "befu99-resp.pdf",
+        "befu99-1.pdf",
+        "befu99-2.pdf",
+        "befu99-3.pdf",
+        "befu99-4.pdf",
+        "befu99-gaap.pdf",
+    }
+    contents = next(r for r in rows if r["kind"] == "contents")
+    assert contents["publisher_title"] == "BEFU 2019 Contents"
+    assert contents["release_title"] == "Budget Economic and Fiscal Update (BEFU) 1999"
+    assert (
+        contents["layout_status"] == "publisher_label_year_disagrees_with_reader_cover"
+    )
+    assert all(r["issue_date"] == "1999-05-20" for r in rows)
+    observation = json.loads(
+        (track / "source-census-befu-1999-20261017.json").read_text()
+    )
+    assert observation["resources"] == rows
+    assert observation["numeric_cells_admitted"] is False
+    assert observation["native_payload_capture_performed"] is False
+    assert observation["fiscal_expense_table"]["status_tokens"] == [
+        "Actual",
+        "Actual",
+        "Actual",
+        "Actual",
+        "Actual",
+        "Forecast",
+        "Projection",
+        "Projection",
+        "Projection",
+    ]
+    assert observation["gaap_definitions"]["forecast"] == "1999/2000"
+    gaps = {
+        r["edition_year"]: r
+        for r in report["edition_dispositions"]
+        if r["family"] == "december_economic_and_fiscal_update"
+    }
+    assert (
+        gaps[1998]["disposition"]
+        == "publisher_reported_publication_original_locator_unresolved"
+    )
+    assert gaps[1998]["publication_date"] == "1998-12-09"
+    assert (
+        gaps[1999]["disposition"] == "publisher_reports_no_december_update_publication"
+    )
+    for gap in gaps.values():
+        assert gap["original_document_url"] is None
+        assert gap["replacement_source_admitted"] is False
+        assert gap["retained_capture_mutations"] is False
+    assert report["fully_enumerated_editions"] == []

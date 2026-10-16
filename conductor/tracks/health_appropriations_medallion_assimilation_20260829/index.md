@@ -388,4 +388,8 @@ they are not current-state assertions.
 
 - [BEFU 1998 census observation](./source-census-befu-1998-20261017.md)
 - [BEFU 1998 source identity/layout evidence](./source-census-befu-1998-20261017.json)
-- [Current source/measure census review](./source-measure-review-20261017-1998.json)
+- [Previous source/measure census review, BEFU 1998](./source-measure-review-20261017-1998.json)
+
+- [BEFU 1999 and year-end publication census](./source-census-befu-1999-20261017.md)
+- [BEFU 1999 source and disposition evidence](./source-census-befu-1999-20261017.json)
+- [Current source/measure census review](./source-measure-review-20261017-1999.json)

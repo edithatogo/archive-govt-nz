@@ -23,12 +23,12 @@ from archive_govt_nz.domains.health_appropriations.source_measure_review import 
 
 ROOT = Path(__file__).resolve().parents[3]
 TRACK = ROOT / TRACK_RELATIVE
-REPORT = TRACK / "source-measure-review-20261017-1998.json"
+REPORT = TRACK / "source-measure-review-20261017-1999.json"
 
 
 def test_review_reports_exact_series_and_preserves_blockers() -> None:
     report = validate_review(REPORT, ROOT)
-    assert report["series_count"] == 12
+    assert report["series_count"] == 13
     for family, receipt_name in (
         ("cpi", "fiscal-health-cpi-benchmark-20261004.json"),
         ("population", "fiscal-health-per-capita-20261004.json"),
@@ -55,6 +55,10 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
     assert "1999-2001 Budget columns" in sna_1998["vintage_or_range"]
     assert "not identical to GAAP Crown" in sna_1998["period_basis"]
     assert sna_1998["rights"] == "publisher_default_observed_unadjudicated"
+    health_1999 = report["series"]["historical_befu_1999_health_expenses"]
+    assert "1998/99 Forecast" in health_1999["vintage_or_range"]
+    assert "GAAP definitions" in health_1999["period_basis"]
+    assert "No status relabelling" in health_1999["analytical_status"]
     assert all(not item["path"].endswith("/index.md") for item in report["evidence"])
     assert report["source_families"]["vote_health"]["captured_documents"] == 59
     assert report["source_families"]["vote_health"]["estimates_years"] == [
@@ -151,7 +155,7 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
         in report["series"]["gdp"]["vintage_or_range"]
     )
     assert report["source_families"]["historical_editions"]["complete"] is False
-    assert report["source_families"]["historical_editions"]["locator_count"] == 86
+    assert report["source_families"]["historical_editions"]["locator_count"] == 93
     assert (
         len(report["source_families"]["vote_health"]["discovered_estimates_urls"]) == 9
     )

@@ -5590,3 +5590,60 @@ source observations and their evidence hashes are unchanged. Local slice work
 is complete; exact-head hosted validation and protected delivery remain pending.
 Whole-edition/history, native-layout/fixity, rights and cross-basis qualification
 gates remain open; this does not close the Health track.
+
+## 2026-10-17 — BEFU 1999 and year-end dispositions slice registered
+
+PR #693 final head `645cb88e7685bf67f4e7b5861d32e16a96b7f0bc` passed all
+applicable checks. Linux took 9m22s, macOS 12m56s, Windows 17m00s. No review
+threads were open. Protected merge `101441189b09eba165fd92448f719b8dc3ede04f`
+completed at 19:59:47 UTC on 16 October. Verified both head and merge as
+ancestors of fetched origin/main; fast-forwarded the clean primary checkout,
+deleted the integrated local topic and verified remote absence before removing
+its exact stale tracking ref. The primary checkout is the only worktree.
+
+Registered the next bounded source-census slice before implementation. Official
+browser readback verified seven BEFU 1999 PDF hrefs, issue date and page-level
+CC BY 4.0 statement. Preserve the contents link's 2019 typo, its historical
+Crown copyright wording, and the different Fiscal/GAAP status labels without
+inferring native layout or rights eligibility. Independently checked primary
+publisher evidence distinguishes the published December 1998 update with an
+unresolved original locator from the reported December 1999 nonpublication.
+BPS and PREFU are supporting context, never replacements for missing originals.
+Existing captures, raw values and analytical admissions remain unchanged.
+
+The new source/disposition and current-review contracts began red (two failures,
+0.50s, retained `red.log`). Added seven exact official hrefs with discovery-only
+status and one source-separated Health expense descriptor. All 86 earlier
+resource objects and twelve prior descriptors compare unchanged. Current review
+now binds 37 repository evidence files. The prior dated review and all captures
+remain unchanged. Focused inventory/review validation passes 43 cases in 4.09s;
+Ruff format/lint and whitespace checks pass. Recorded bounded self-review before
+freezing the implementation for serialized full assurance. No new source bytes,
+rights decisions, derived values or external publication mutations occur.
+
+
+## BEFU 1999 local assurance — 2026-10-17
+
+The required `./scripts/validate.sh` passed on clean
+`bb803cafa53df9d00a6656c168a644728dd11c0b`: 7,715 passed, ten skipped,
+97.44% coverage against the 80% floor; 60 schemas/50 representative documents,
+9/9 differential parity and all mutation/hygiene/audit/licence/secrets/SBOM
+gates. SBOM has 113 components; external CDX validation was explicitly skipped.
+Durable log and exit 0 are retained under
+`/Volumes/PortableSSD/tmp/health-census-befu-1999-20261017/validation-2.*`.
+
+The first two-worker full run had one existing Gold discovery CLI subprocess
+exceed its 30-second timeout after emitting its success receipt (7,714 other
+tests passed). The unchanged isolated contract passed in 12.21s, with a 5.49s
+test call. A guarded one-worker full rerun then passed all 7,715 tests in
+488.21s. Timeout and quality gates were not relaxed; the underlying cause was
+not established. The initial failure and isolated logs remain beside the full
+rerun evidence. No CLI or product implementation was changed.
+
+Current review binds 37 evidence files, thirteen source descriptors and 93
+historical discovery locators. All 86 earlier resources, twelve descriptors,
+the captured-source census and prior dated review are unchanged. Corrected the
+stale Phase 4 sentence to agree with its existing source-backed retain-both
+receipt; this grants no replacements or publication approval. This bookkeeping
+commit changes only unpinned track evidence/status. Exact-head hosted checks
+and protected delivery remain pending; the whole Health track is incomplete.

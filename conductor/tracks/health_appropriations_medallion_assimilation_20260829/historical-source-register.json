@@ -1,7 +1,7 @@
 {
   "schema_version": "archive-govt-nz.health-historical-sources/v1",
   "observed_at": "2026-10-05T17:48:29Z",
-  "observation_method": "Read-only web retrieval of official index and edition pages; spreadsheet link targets and PDF text observed, original bytes not retained or fixity-verified; additional official Treasury landing pages and linked Budget workbook locators observed 2026-09-27; resource payloads not retained or fixity-verified; Budget 2009–2013 workbook and BEFU 2013–2016 official source pages located 2026-09-27; locators remain un-captured and un-hashed; official Treasury Budget 2007–2008 workbook titles and BEFU source pages through 2001 observed 2026-09-27; locator-only, no payload hashes; official BEFU 2002 GAAP Series Tables landing page and PDF source/period metadata observed 2026-10-05; locator only, no payload hash or item-level rights adjudication; official Treasury Vote Health Budget 2002 main and supplementary estimate pages and PDFs observed 2026-10-06; locator-only, original bytes not retained or fixity-verified and page-level CC BY evidence not adjudicated",
+  "observation_method": "Read-only web retrieval of official index and edition pages; spreadsheet link targets and PDF text observed, original bytes not retained or fixity-verified; additional official Treasury landing pages and linked Budget workbook locators observed 2026-09-27; resource payloads not retained or fixity-verified; Budget 2009\u20132013 workbook and BEFU 2013\u20132016 official source pages located 2026-09-27; locators remain un-captured and un-hashed; official Treasury Budget 2007\u20132008 workbook titles and BEFU source pages through 2001 observed 2026-09-27; locator-only, no payload hashes; official BEFU 2002 GAAP Series Tables landing page and PDF source/period metadata observed 2026-10-05; locator only, no payload hash or item-level rights adjudication; official Treasury Vote Health Budget 2002 main and supplementary estimate pages and PDFs observed 2026-10-06; locator-only, original bytes not retained or fixity-verified and page-level CC BY evidence not adjudicated",
   "index_url": "https://www.treasury.govt.nz/publications/budgets/current-and-past-budgets",
   "index_last_updated": "2026-05-28",
   "edition_years": [
@@ -90,6 +90,46 @@
       "fiscal_period": "not_established_from_notice",
       "retained_capture_mutations": false,
       "other_custodian_availability": "not_investigated"
+    },
+    {
+      "disposition": "publisher_reported_publication_original_locator_unresolved",
+      "edition_year": 1998,
+      "evidence_locator": "dated opening paragraphs; corroborated by Parliament Appendix 1 Budget 1999 row",
+      "evidence_url": "https://www.beehive.govt.nz/feature/year-review-1998",
+      "family": "december_economic_and_fiscal_update",
+      "original_document_url": null,
+      "other_custodian_availability": "not_investigated",
+      "publication_date": "1998-12-09",
+      "reason": "BPS is supporting publication evidence, not the missing DEFU original or Health table source. Original cover title, bytes, rights and availability remain unverified.",
+      "replacement_source_admitted": false,
+      "retained_capture_mutations": false,
+      "supporting_evidence": [
+        {
+          "locator": "dated opening paragraphs, especially publication alongside BPS",
+          "url": "https://www.beehive.govt.nz/feature/year-review-1998"
+        },
+        {
+          "locator": "Appendix1 Budget1999 row, same-day EFU Yes",
+          "url": "https://www3.parliament.nz/mi/pb/library-research-papers/research-papers/the-budget-policy-statement/"
+        },
+        {
+          "locator": "issue date9December1998, distinct Budget Policy Statement kind",
+          "url": "https://www.treasury.govt.nz/publications/budget-policy-statement/budget-policy-statement-1999"
+        }
+      ]
+    },
+    {
+      "disposition": "publisher_reports_no_december_update_publication",
+      "edition_year": 1999,
+      "evidence_locator": "Appendix1 note2",
+      "evidence_url": "https://www3.parliament.nz/mi/pb/library-research-papers/research-papers/the-budget-policy-statement/",
+      "family": "december_economic_and_fiscal_update",
+      "original_document_url": null,
+      "other_custodian_availability": "not_investigated",
+      "publication_context": "Parliament Appendix 1 note 2 explicitly reports no December update, following September 1999 PREFU and November election; historical statement, no current-law conclusion",
+      "reason": "Historical publisher statement only, not a current-law claim, exhaustive other-publication inventory or permission to substitute PREFU.",
+      "replacement_source_admitted": false,
+      "retained_capture_mutations": false
     }
   ],
   "observed_pages": [
@@ -148,7 +188,11 @@
     "https://www.treasury.govt.nz/publications/supplementary-estimates/vote-health-supplementary-estimates-appropriations-2001-02",
     "https://www.treasury.govt.nz/publications/efu/december-economic-and-fiscal-update-defu-2002",
     "https://www.treasury.govt.nz/publications/budgets/budget-1998",
-    "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-1998"
+    "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-1998",
+    "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-1999",
+    "https://www3.parliament.nz/mi/pb/library-research-papers/research-papers/the-budget-policy-statement/",
+    "https://www.beehive.govt.nz/feature/year-review-1998",
+    "https://www.treasury.govt.nz/publications/budget-policy-statement/budget-policy-statement-1999"
   ],
   "resource_observations": [
     {
@@ -1365,6 +1409,146 @@
       "native_layout_verified": false,
       "layout_status": "official_link_only_native_layout_pending",
       "publisher_title": "Budget Economic & Fiscal Update 1998 - Budget 1998"
+    },
+    {
+      "byte_count": null,
+      "disposition": "discovered",
+      "edition_year": 1999,
+      "family": "befu",
+      "issue_date": "1999-05-20",
+      "kind": "contents",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-1999",
+      "layout_status": "publisher_label_year_disagrees_with_reader_cover",
+      "native_layout_verified": false,
+      "observation_date": "2026-10-17",
+      "observation_date_timezone": "Australia/Brisbane",
+      "publisher_title": "BEFU 2019 Contents",
+      "release_title": "Budget Economic and Fiscal Update (BEFU) 1999",
+      "rights_evidence": "landing_page_states_cc_by_4_0",
+      "rights_state": "not_evaluated",
+      "sha256": null,
+      "source_id": "treasury-historical-5a200e8bc390ceaa",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2017-11/befu99-cont.pdf"
+    },
+    {
+      "byte_count": null,
+      "disposition": "discovered",
+      "edition_year": 1999,
+      "family": "befu",
+      "issue_date": "1999-05-20",
+      "kind": "responsibility",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-1999",
+      "layout_status": "official_link_only_native_layout_pending",
+      "native_layout_verified": false,
+      "observation_date": "2026-10-17",
+      "observation_date_timezone": "Australia/Brisbane",
+      "publisher_title": "Statement of Responsibility",
+      "release_title": "Budget Economic and Fiscal Update (BEFU) 1999",
+      "rights_evidence": "landing_page_states_cc_by_4_0",
+      "rights_state": "not_evaluated",
+      "sha256": null,
+      "source_id": "treasury-historical-d8ed6f3ce01859e0",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2017-11/befu99-resp.pdf"
+    },
+    {
+      "byte_count": null,
+      "disposition": "discovered",
+      "edition_year": 1999,
+      "family": "befu",
+      "issue_date": "1999-05-20",
+      "kind": "economic_outlook",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-1999",
+      "layout_status": "official_link_only_native_layout_pending",
+      "native_layout_verified": false,
+      "observation_date": "2026-10-17",
+      "observation_date_timezone": "Australia/Brisbane",
+      "publisher_title": "Economic Outlook",
+      "release_title": "Budget Economic and Fiscal Update (BEFU) 1999",
+      "rights_evidence": "landing_page_states_cc_by_4_0",
+      "rights_state": "not_evaluated",
+      "sha256": null,
+      "source_id": "treasury-historical-57e567eeba6b4278",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2017-11/befu99-1.pdf"
+    },
+    {
+      "byte_count": null,
+      "disposition": "discovered",
+      "edition_year": 1999,
+      "family": "befu",
+      "issue_date": "1999-05-20",
+      "kind": "fiscal_outlook",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-1999",
+      "layout_status": "official_link_only_native_layout_pending",
+      "native_layout_verified": false,
+      "observation_date": "2026-10-17",
+      "observation_date_timezone": "Australia/Brisbane",
+      "publisher_title": "Fiscal Outlook",
+      "release_title": "Budget Economic and Fiscal Update (BEFU) 1999",
+      "rights_evidence": "landing_page_states_cc_by_4_0",
+      "rights_state": "not_evaluated",
+      "sha256": null,
+      "source_id": "treasury-historical-df2b1fe83dffa366",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2017-11/befu99-2.pdf"
+    },
+    {
+      "byte_count": null,
+      "disposition": "discovered",
+      "edition_year": 1999,
+      "family": "befu",
+      "issue_date": "1999-05-20",
+      "kind": "risks_scenarios",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-1999",
+      "layout_status": "official_link_only_native_layout_pending",
+      "native_layout_verified": false,
+      "observation_date": "2026-10-17",
+      "observation_date_timezone": "Australia/Brisbane",
+      "publisher_title": "Risks and Scenarios",
+      "release_title": "Budget Economic and Fiscal Update (BEFU) 1999",
+      "rights_evidence": "landing_page_states_cc_by_4_0",
+      "rights_state": "not_evaluated",
+      "sha256": null,
+      "source_id": "treasury-historical-40b5351a9b8ef479",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2017-11/befu99-3.pdf"
+    },
+    {
+      "byte_count": null,
+      "disposition": "discovered",
+      "edition_year": 1999,
+      "family": "befu",
+      "issue_date": "1999-05-20",
+      "kind": "specific_fiscal_risks",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-1999",
+      "layout_status": "official_link_only_native_layout_pending",
+      "native_layout_verified": false,
+      "observation_date": "2026-10-17",
+      "observation_date_timezone": "Australia/Brisbane",
+      "publisher_title": "Specific Fiscal Risks",
+      "release_title": "Budget Economic and Fiscal Update (BEFU) 1999",
+      "rights_evidence": "landing_page_states_cc_by_4_0",
+      "rights_state": "not_evaluated",
+      "sha256": null,
+      "source_id": "treasury-historical-c68fa9e4bb87117e",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2017-11/befu99-4.pdf"
+    },
+    {
+      "byte_count": null,
+      "disposition": "discovered",
+      "edition_year": 1999,
+      "family": "befu",
+      "issue_date": "1999-05-20",
+      "kind": "gaap_series_tables",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-1999",
+      "layout_status": "official_link_only_native_layout_pending",
+      "native_layout_verified": false,
+      "observation_date": "2026-10-17",
+      "observation_date_timezone": "Australia/Brisbane",
+      "publisher_title": "Generally Accepted Accounting Practice (GAAP) Series Tables",
+      "release_title": "Budget Economic and Fiscal Update (BEFU) 1999",
+      "rights_evidence": "landing_page_states_cc_by_4_0",
+      "rights_state": "not_evaluated",
+      "sha256": null,
+      "source_id": "treasury-historical-9098429683359397",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2017-11/befu99-gaap.pdf"
     }
   ],
   "unresolved": [
@@ -1378,7 +1562,11 @@
     "2002 BEFU/DEFU resource-level rights, byte fixity, workbook-native layouts and cross-basis analytical joins remain unqualified",
     "BEFU1998 SNA reader footer names1997 despite1998 release context; native original/layout verification is pending",
     "BEFU1998 Health Expenses multirow DEFU/Budget vintage header requires native mapping; preserve table-native status labels",
-    "Budget1998 Supplementary withdrawal notice has no verified fiscal-period/object binding and does not authorize changing retained captures"
+    "Budget1998 Supplementary withdrawal notice has no verified fiscal-period/object binding and does not authorize changing retained captures",
+    "BEFU1999 contents publisher label says2019 while reader cover and release identify1999; preserve discrepancy until native verification",
+    "BEFU1999 Fiscal Table2.11 status labels differ from GAAP definitions; native column mapping, ISO currency, byte fixity and item-level rights remain unqualified",
+    "December1998 publication is corroborated but original locator remains unresolved; BPS summary is not a substitute",
+    "December1999 nonpublication is publisher-reported historical evidence; do not substitute PREFU or infer complete1999 source-family coverage"
   ],
   "transport_observations": {
     "direct_index_request_status": 403,
@@ -1395,10 +1583,14 @@
       "web_release_fetch": "timeout",
       "official_browser_landing_and_href_readback": "succeeded",
       "native_payload_capture_performed": false
+    },
+    "befu_1999": {
+      "native_payload_capture_performed": false,
+      "official_browser_landing_and_href_readback": "succeeded"
     }
   },
   "payload_capture_performed": false,
   "publication_authorized": false,
   "whole_history_complete": false,
-  "last_extended_at": "2026-10-16T19:25:10.183511+00:00"
+  "last_extended_at": "2026-10-16T20:01:31.904313+00:00"
 }
