@@ -64,8 +64,7 @@ def repin(root: Path) -> str:
     return hashlib.sha256(marker.read_bytes()).hexdigest()
 
 
-@pytest.fixture
-def package(tmp_path: Path) -> tuple[Path, str]:
+def fact_package(tmp_path: Path) -> tuple[Path, str]:
     root, _ = _package(tmp_path / "gold")
     marker = root / "MANIFEST.json"
     manifest = json.loads(marker.read_bytes())
@@ -80,6 +79,11 @@ def package(tmp_path: Path) -> tuple[Path, str]:
         manifest["outputs"][name] = {"rows": 2}
     marker.write_text(json.dumps(manifest))
     return root, repin(root)
+
+
+@pytest.fixture
+def package(tmp_path: Path) -> tuple[Path, str]:
+    return fact_package(tmp_path)
 
 
 def test_all_existing_fact_products_have_named_queries() -> None:

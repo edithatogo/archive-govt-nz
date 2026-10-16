@@ -162,7 +162,12 @@ def _transport_schema(schema: pa.Schema) -> pa.Schema:
         return file.schema_arrow
 
 
-def _read_facts(root: Path, pin: str, product: str) -> pa.Table:
+def read_canonical_gold_product(root: Path, pin: str, product: str) -> pa.Table:
+    """Read a full bounded typed product from an independently pinned package."""
+    _require(
+        type(product) is str and product in PRODUCTS,
+        "canonical_gold_query_product_unavailable",
+    )
     receipt = verifier.verify_canonical_gold_package(root, pin)
     _require(receipt["status"] == "verified", "canonical_gold_query_package_invalid")
     manifest = json.loads(
@@ -249,7 +254,7 @@ def query_canonical_gold(
     ):
         return {**base, "status": "failed", "error": "canonical_gold_query_invalid"}
     try:
-        table = _read_facts(package_dir, manifest_sha256, product)
+        table = read_canonical_gold_product(package_dir, manifest_sha256, product)
         with duckdb.connect(
             ":memory:",
             config={

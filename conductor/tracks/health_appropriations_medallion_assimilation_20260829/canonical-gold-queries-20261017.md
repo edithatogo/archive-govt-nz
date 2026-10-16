@@ -98,3 +98,10 @@ Example invocation (substitute the actual local package directory and its pin):
 archive-govt-nz health-appropriations-query-canonical-gold \
   /absolute/path/to/gold MANIFEST_SHA256 --product budget --limit 50
 ```
+
+## Protected delivery
+
+PR #689 final head `d009509133061c327496e9c205e9c3424f7bba7d` passed Linux,
+macOS, Windows, CodeQL/analyze, lint and patch coverage. It merged normally as
+`2bfe361488ed65d05502488bfe7bd21bdd2578e3` and was verified on `origin/main`;
+the clean local/remote topic branches were pruned before the metadata slice.
