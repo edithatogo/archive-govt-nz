@@ -70,6 +70,14 @@ repository validation command. External gates block only their affected task.
 
 ### 1.2 Inventory the seed and direct official corpus
 
+- [x] Register the ten files linked by the official BEFU 1998 release,
+  with native source scopes and status labels, explicit reader-layout gaps
+  and resource rights/fixity boundaries. Record the separate Budget 1998
+  Supplementary withdrawal notice without changing captured 1998/99 originals
+  or inferring a matching fiscal period. Preserve earlier observations and
+  reconcile a new current source-measure review. [M-02, M-04, M-11, M-18;
+  AC-03, AC-04, AC-09, AC-16]
+
 - [x] Register the five newly identified BEFU/DEFU 2002 GAAP, annex and
   forecast resources with exact official locators, publication-native release
   identity, period/definition evidence and explicit rights/fixity/layout gaps.

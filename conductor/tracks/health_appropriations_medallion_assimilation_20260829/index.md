@@ -384,4 +384,8 @@ they are not current-state assertions.
 
 - [2002 BEFU/DEFU census observation](./source-census-2002-befu-defu-20261017.md)
 - [2002 source identity/period/layout evidence](./source-census-2002-befu-defu-20261017.json)
-- [Current source/measure census review](./source-measure-review-20261017.json)
+- [Source/measure review after the 2002 slice](./source-measure-review-20261017.json)
+
+- [BEFU 1998 census observation](./source-census-befu-1998-20261017.md)
+- [BEFU 1998 source identity/layout evidence](./source-census-befu-1998-20261017.json)
+- [Current source/measure census review](./source-measure-review-20261017-1998.json)

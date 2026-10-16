@@ -5550,3 +5550,43 @@ rights or analytical admission. The following commit changes only unpinned
 track evidence/status; source observations and review evidence hashes remain
 unchanged. Local slice work is complete; protected exact-head delivery remains
 pending, and whole-source/Health completion is not claimed.
+
+## 2026-10-17 — BEFU 1998 census slice registered
+
+PR #692 final head `1dac11efee2f70e459459b5af78acf5135071212` passed Linux,
+macOS, Windows, CodeQL/analyze, lint and patch coverage, with no review threads.
+Protected merge `132a1512f6a7b6121f3b08e15db9ac82314ddad7` completed at
+19:21:30 UTC on 16 October 2026. Verified head/merge ancestors on fetched
+origin/main before the clean checkout fast-forward, local topic deletion and
+remote absence check. The primary checkout is the only worktree.
+
+Registered the next slice before implementation. Official browser readback
+identifies ten BEFU 1998 PDF links and the release date/page-level copyright
+statement. Source reader evidence distinguishes GAAP Crown and SNA Central
+Government scopes, status labels and the ambiguous multi-row Health header.
+The Budget 1998 Supplementary withdrawal notice does not establish a fiscal
+period or authorize changing the retained 1998/99 captures. Source payloads,
+resource rights, native layouts and analytical joins remain unqualified.
+
+- PR #692 platform assurance durations were Linux 9m31s, macOS 12m05s and Windows 16m53s on final head `1dac11ef`; terminal check/readback evidence is retained outside Git.
+- Three focused new contracts began red as expected before source entries/current dated review existed (three failures, 0.53s; `red.log`). Added ten exact official PDF links and publisher labels, source-native status/scope observations and a separately qualified withdrawal notice. Preserve the SNA footer-year disagreement and Health multirow header mapping gap instead of resolving them by guessing.
+- Added two source-separated historical measure descriptors in a new dated review (12 series, 86 historical locators); all 76 earlier resource objects and all ten earlier reviewed series compare unchanged to their prior records. Actual captures/rights states remain untouched. The source review now removes 1998 only from the missing-locator set, without marking the edition or broader history complete.
+- Focused inventory/review checks pass (42 cases, latest 2.15s). A final publisher-title assertion needed line wrapping; formatting corrected it. Relevant static/Conductor checks and the required full harness are being completed before PR delivery. No original source payloads, raw table values, legal decisions or publication mutations are introduced.
+
+## BEFU 1998 local assurance — 2026-10-17
+
+The required `./scripts/validate.sh` passed on clean
+`81eae29c2de632e6affb9ded72d780fb27a6b812`: 7,714 passed, ten skipped,
+97.44% coverage against the 80% floor; 60 schemas/50 representative documents,
+parity and all mutation/hygiene/audit/licence/secrets/SBOM gates. SBOM has 113
+components; external CDX validation was explicitly skipped. Durable log and
+exit 0 are retained under
+`/Volumes/PortableSSD/tmp/health-census-befu-1998-20261017/validation-1.*`.
+Current source-review validation binds 35 repository evidence files, 12
+source-separated descriptors and 86 discovery locators. All 76 earlier
+resource objects and ten earlier reviewed series compare unchanged. The
+following bookkeeping commit changes only unpinned track evidence/status;
+source observations and their evidence hashes are unchanged. Local slice work
+is complete; exact-head hosted validation and protected delivery remain pending.
+Whole-edition/history, native-layout/fixity, rights and cross-basis qualification
+gates remain open; this does not close the Health track.

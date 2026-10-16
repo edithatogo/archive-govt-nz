@@ -25,7 +25,7 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
     assert report["publication_authorized"] is False
     assert report["whole_history_complete"] is False
     records = report["resource_observations"]
-    assert len(records) == 76
+    assert len(records) == 86
     assert len({row["url"] for row in records}) == len(records)
     assert len({row["source_id"] for row in records}) == len(records)
     assert len({(r["edition_year"], r["family"], r["kind"]) for r in records}) == len(
@@ -44,6 +44,13 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
         ("befu", "sna_series_tables"),
         ("befu", "gaap_series_tables"),
         ("befu", "additional_gaap_tables"),
+        ("befu", "contents"),
+        ("befu", "economic_outlook"),
+        ("befu", "fiscal_outlook"),
+        ("befu", "revenue"),
+        ("befu", "specific_fiscal_risks"),
+        ("befu", "responsibility_summary"),
+        ("befu", "full_release"),
         ("defu", "gaap_series_tables"),
         ("defu", "annex_glossary_link"),
         ("defu", "additional_gaap_tables"),
@@ -116,6 +123,59 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
         assert gap["edition_year"] in report["edition_years"]
         assert gap["evidence_url"] in report["observed_pages"]
         assert gap["other_custodian_availability"] == "not_investigated"
+
+
+def test_befu_1998_links_preserve_status_scope_and_withdrawal_boundaries() -> None:
+    """Release notices cannot change differently dated retained source records."""
+    path = (
+        Path(__file__).parents[2]
+        / "conductor/tracks/health_appropriations_medallion_assimilation_20260829"
+        / "historical-source-register.json"
+    )
+    report = json.loads(path.read_text())
+    rows = [r for r in report["resource_observations"] if r["edition_year"] == 1998]
+    assert {r["url"].rsplit("/", 1)[-1] for r in rows} == {
+        "befu98-cont.pdf",
+        "befu98-1.pdf",
+        "befu98-2.pdf",
+        "befu98-3.pdf",
+        "befu98-sna.pdf",
+        "befu98-4.pdf",
+        "befu98-5.pdf",
+        "befu98-gaap.pdf",
+        "befu98-resp-summ.pdf",
+        "befu98.pdf",
+    }
+    for row in rows:
+        assert row["family"] == "befu"
+        assert row["issue_date"] == "1998-05-14"
+        assert row["native_layout_verified"] is False
+        assert row["rights_state"] == "not_evaluated"
+    sna = next(row for row in rows if row["kind"] == "sna_series_tables")
+    assert sna["layout_status"] == "reader_footer_year_disagrees_with_release_context"
+    full = next(row for row in rows if row["kind"] == "full_release")
+    assert (
+        full["publisher_title"] == "Budget Economic & Fiscal Update 1998 - Budget 1998"
+    )
+    notice = next(
+        row for row in report["edition_dispositions"] if row["edition_year"] == 1998
+    )
+    assert notice["fiscal_period"] == "not_established_from_notice"
+    assert notice["retained_capture_mutations"] is False
+    observation = json.loads(
+        (path.parent / "source-census-befu-1998-20261017.json").read_text()
+    )
+    assert observation["resources"] == rows
+    assert observation["native_payload_capture_performed"] is False
+    captured = json.loads((path.parent / "source-census.json").read_text())["records"]
+    references = observation["existing_capture_references"]
+    assert len(references) == 2
+    by_id = {row["source_id"]: row for row in captured}
+    assert all(
+        by_id[reference["source_id"]][key] == value
+        for reference in references
+        for key, value in reference.items()
+    )
 
 
 def test_defu_2002_discovery_preserves_name_and_layout_qualification() -> None:

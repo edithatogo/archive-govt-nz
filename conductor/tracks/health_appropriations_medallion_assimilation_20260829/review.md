@@ -1973,3 +1973,33 @@ rights or analytical admission. The following commit changes only unpinned
 track evidence/status; source observations and review evidence hashes remain
 unchanged. Local slice work is complete; protected exact-head delivery remains
 pending, and whole-source/Health completion is not claimed.
+
+## BEFU 1998 source census — 2026-10-17
+
+Reviewed all ten official release hrefs and retained exact publisher labels.
+GAAP Crown and SNA Central Government measures remain separate; SNA Budget
+labels do not inherit GAAP Forecast/Projection status. Reader footer/header
+discrepancies remain native-layout gaps. The Budget 1998 Supplementary notice
+has no exact fiscal-period/object binding and does not mutate the referenced
+1998/99 captures or their rights. All 76 prior resource rows and ten prior
+reviewed series are unchanged. Forty-two focused checks pass; full/hosted
+validation remains pending. No scope, native-fixity or admission completeness
+claim is made for the 30-edition inventory.
+
+## BEFU 1998 local assurance — 2026-10-17
+
+The required `./scripts/validate.sh` passed on clean
+`81eae29c2de632e6affb9ded72d780fb27a6b812`: 7,714 passed, ten skipped,
+97.44% coverage against the 80% floor; 60 schemas/50 representative documents,
+parity and all mutation/hygiene/audit/licence/secrets/SBOM gates. SBOM has 113
+components; external CDX validation was explicitly skipped. Durable log and
+exit 0 are retained under
+`/Volumes/PortableSSD/tmp/health-census-befu-1998-20261017/validation-1.*`.
+Current source-review validation binds 35 repository evidence files, 12
+source-separated descriptors and 86 discovery locators. All 76 earlier
+resource objects and ten earlier reviewed series compare unchanged. The
+following bookkeeping commit changes only unpinned track evidence/status;
+source observations and their evidence hashes are unchanged. Local slice work
+is complete; exact-head hosted validation and protected delivery remain pending.
+Whole-edition/history, native-layout/fixity, rights and cross-basis qualification
+gates remain open; this does not close the Health track.
