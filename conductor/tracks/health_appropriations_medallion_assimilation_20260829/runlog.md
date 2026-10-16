@@ -5524,3 +5524,11 @@ Preserve publication-native DEFU naming and page-level rights evidence. Scope is
 source discovery and qualified period/definition metadata; item rights, byte
 capture, native layout and analytical joins remain unqualified. The 30-year
 inventory and existing Vote Health preflight are not repeated or declared done.
+
+- Registered the slice before implementation (`6ba70c58`). The red selection preserved `red.log`: the absent new dated review propagated through existing fixture checks alongside the new count/DEFU-link assertions (31 failures, ten passes, 1.45s); these are contract absence, not 31 independent product defects.
+- Added five discovery-only records and exact official source IDs, retaining publisher-native BEFU/DEFU release dates and the glossary-link reader-extent discrepancy. Source-family periods/units and the 2002 accounting transition remain source-qualified metadata; original bytes, native layout, ISO currency, resource rights and joins are unqualified. No HTTP capture or publication mutation occurs.
+- Wrote a new dated source-measure review with 10 separately identified series and 76 historical locators; previous dated reviews remain unchanged. Refreshed only the new review's evidence hashes to the actual current files. Existing approved Fiscal analytical policies and capture counts remain separate.
+- Focused census/review checks pass (41 tests, latest 1.00s); initial lint required a test docstring and splitting a combined assertion, then Ruff/format and focused typing pass with zero errors/warnings. Conductor validates 93 tracks, and diff checks pass. Full repository and protected delivery remain pending.
+
+- Follow-up source reading locates Annex B in the separate GAAP `defu02-6.pdf` reader result (PDF page 48, printed page 148); `defu02-7.pdf` exposes glossary pages despite its publisher label. Record this precise cross-resource reader location while retaining the native-original/layout gap. Companion records remain identical to their main-register source-ID rows, with explicit Australia/Brisbane observation dates.
+- Conductor advised that its shared guard bridges an already-running Atlas broad test process. Queue this slice's full harness through that guard, with exact clean commit checks, two workers and external TMPDIR after acquisition; do not interrupt or bypass the other job.

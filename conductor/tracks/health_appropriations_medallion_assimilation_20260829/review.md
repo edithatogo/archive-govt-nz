@@ -1943,3 +1943,15 @@ bookkeeping commit changes only track evidence/documents. Local review correctio
 is verified; corrected exact-head hosted checks, thread resolution and protected
 merge/prune remain pending. Whole-track recovery/source/rights/standards gates
 remain open. See `canonical-recovery-ordered-validation-20261017.json`.
+
+## 2002 BEFU/DEFU census extension — 2026-10-17
+
+Reviewed exact official links, URL-derived source identities, publication-native
+DEFU naming and release dates. Publisher file size and licence text are metadata
+observations; actual hashes/bytes and item rights remain unqualified. The
+annex/glossary reader discrepancy is preserved rather than silently assigning
+unobserved tables. The Core Crown period observation is bound to the separate
+GAAP PDF reader result, with accounting and native-layout caveats. A new dated
+review preserves earlier receipts, existing approved policies and capture counts;
+all 30 historical editions remain pending. Forty-one focused checks and static
+checks pass; full/hosted validation is pending. No donor or original changes.

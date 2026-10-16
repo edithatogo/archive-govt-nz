@@ -165,3 +165,13 @@ The 2018–2019 Budget workbooks use legacy `.xls` format. The browser could not
 Read-only review of Treasury's official [Budget 2017 data](https://www.treasury.govt.nz/publications/data/budget-2017-data-estimates-appropriations-2017-18), [BEFU 2017](https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2017), and [HYEFU 2017](https://www.treasury.govt.nz/publications/efu/half-year-economic-and-fiscal-update-2017) pages found five workbook locators: Budget expenditure and revenue, BEFU charts/data and expense tables, and HYEFU charts/data. The Budget page warns historical detail predates later restructuring and excludes the prior year's Supplementary Estimates. Landing pages state CC BY 4.0; this is page-level evidence only and rights remain not evaluated.
 
 The linked payloads were not retrieved; hashes and byte counts remain null. These five discoveries do not close the 2017 edition's full source-family enumeration or qualify data for analysis/publication.
+
+## BEFU/DEFU 2002 extension — 17 October 2026
+
+Five additional official locators bring the register to 76: BEFU Additional
+GAAP and the four DEFU GAAP, annex/glossary, Additional GAAP and forecast
+resources. Publication-native DEFU identity, accounting boundaries and the
+annex label/reader-extent discrepancy are recorded in the
+[bounded census observation](./source-census-2002-befu-defu-20261017.md).
+Actual hashes/bytes and native layouts are unverified; resource rights and
+joins remain unapproved. All 30 editions remain pending complete enumeration.

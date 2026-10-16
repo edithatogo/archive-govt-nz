@@ -297,7 +297,7 @@ they are not current-state assertions.
 - [2016/17 Vote Health overview census receipt](./vote-health-estimates-overview-2016-17-census.json)
 - [Source/measure census review refreshed for this evidence snapshot](./source-measure-review-20261005.json)
 - [Source/measure census review with BEFU 2002 period and scope](./source-measure-review-20261006.json)
-- [Current source/measure policy reconciliation](./source-measure-review-20261016.json)
+- [Source/measure policy reconciliation at 16 October](./source-measure-review-20261016.json)
 - [Historical Vote Health 2002 main and supplementary estimate locators](./historical-source-register.md#vote-health-estimates-and-supplementary-estimates-budget-2002--6-october-2026)
 - [2016/17 Vote Health overview implementation and census review](./vote-health-estimates-overview-2016-17-review-20261005.md)
 - [2016/17 Vote Health overview Conductor phase review receipt](./phase_7_gates-review-receipt-20261005-vote-health-2016-17.json)
@@ -381,3 +381,7 @@ they are not current-state assertions.
 - [Fresh canonical recovery native validation](./canonical-recovery-validation-20261017.json)
 
 - [Independent ordered query recovery validation](./canonical-recovery-ordered-validation-20261017.json)
+
+- [2002 BEFU/DEFU census observation](./source-census-2002-befu-defu-20261017.md)
+- [2002 source identity/period/layout evidence](./source-census-2002-befu-defu-20261017.json)
+- [Current source/measure census review](./source-measure-review-20261017.json)

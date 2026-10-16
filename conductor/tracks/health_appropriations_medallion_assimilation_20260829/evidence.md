@@ -1306,3 +1306,15 @@ bookkeeping commit changes only track evidence/documents. Local review correctio
 is verified; corrected exact-head hosted checks, thread resolution and protected
 merge/prune remain pending. Whole-track recovery/source/rights/standards gates
 remain open. See `canonical-recovery-ordered-validation-20261017.json`.
+
+## 2002 BEFU/DEFU census extension — 2026-10-17
+
+The [source observation](./source-census-2002-befu-defu-20261017.json) adds five
+official discovery locators, taking the historical register to 76. The
+[new current review](./source-measure-review-20261017.json) preserves earlier
+dated receipts and records a separate DEFU Core Crown expense definition.
+Browser href and page-rights readback resolved the forecast locator; the
+annex/glossary extent discrepancy remains fail-closed pending native evidence.
+All 41 focused census/review tests and relevant static checks pass. Capture,
+resource rights, native layouts, analytical joins, whole-edition completion and
+full/hosted validation are not claimed by this focused evidence.
