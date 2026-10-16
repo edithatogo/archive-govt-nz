@@ -30,6 +30,9 @@ from archive_govt_nz.domains.health_appropriations import resume_operations
 from archive_govt_nz.domains.health_appropriations.budget_operations import (
     verify_budget_package,
 )
+from archive_govt_nz.domains.health_appropriations.canonical_gold_queries import (
+    query_canonical_gold,
+)
 from archive_govt_nz.domains.health_appropriations.canonical_gold_verification import (
     verify_canonical_gold_package,
 )
@@ -353,6 +356,22 @@ def health_appropriations_verify_canonical_gold(
     """Verify a pinned canonical Gold manifest and its outputs without writes."""
     receipt = verify_canonical_gold_package(package_dir, manifest_sha256)
     _emit_json({"command": "health-appropriations-verify-canonical-gold", **receipt})
+    return 0 if receipt["status"] == "verified" else 2
+
+
+@app.command(name="health-appropriations-query-canonical-gold")
+def health_appropriations_query_canonical_gold(
+    package_dir: Path,
+    manifest_sha256: str,
+    *,
+    product: str = "historical",
+    limit: int = 50,
+) -> int:
+    """Read a named canonical Gold fact product with exact values and no writes."""
+    receipt = query_canonical_gold(
+        package_dir, manifest_sha256, product=product, limit=limit
+    )
+    _emit_json({"command": "health-appropriations-query-canonical-gold", **receipt})
     return 0 if receipt["status"] == "verified" else 2
 
 
