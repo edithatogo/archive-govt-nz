@@ -1276,7 +1276,7 @@ integrated parent head.
   Budget comparison Gold manifests. Keep rights, release and source re-verification
   separate; require byte-identical replay and reject altered inputs. [M-14; AC-14]
 
-- [~] Extend the existing local metadata projector with a canonical
+- [x] Extend the existing local metadata projector with a canonical
   source-separated Gold profile covering its eight fact products. Reuse the
   package verifier, bounded typed reader and existing card/RO-Crate inventory;
   emit full-table schema/observed-token descriptors, catalogue/DCAT/PROV,

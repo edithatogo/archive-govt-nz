@@ -74,6 +74,12 @@ Reproduction scripts/logs are `native_v4.py`, `native_surface_v4.py`,
 failure/review evidence, not final receipts. Metadata verification rechecks
 Gold, not Bronze or original-source meaning; this is not full track recovery.
 
-Required full repository validation and exact-head hosted PR checks remain
-pending. The broader Platinum, operations, source/rights and final track gates
+Required `./scripts/validate.sh` passed on implementation
+`b2fde77e67555913f5a32369f9253ed1260c210e`: 7,698 tests passed, 10 skipped;
+97.43% coverage against the 80% floor; 59 schemas/49 representative documents;
+parity 9/9; all mutation, hygiene, security and supply-chain gates passed,
+including the 113-component SBOM. Conductor reports 93 tracks and no errors.
+Session 9819 and the durable `validation.exit` record exit 0. The subsequent
+commit records evidence/task status only; hosted checks must qualify the final
+PR head before protected merge. The broader Platinum, operations, source/rights and final track gates
 remain open.

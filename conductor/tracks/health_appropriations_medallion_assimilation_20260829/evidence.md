@@ -1246,6 +1246,15 @@ offline graph parsing, byte-identical rebuilds and installed CLI/MCP parity.
 Pre-change/current Fiscal/Budget metadata payloads are byte-identical. Legacy
 schema identifiers/bytes remain unchanged; canonical metadata uses new v4/v2
 schemas. See [native evidence](./canonical-gold-metadata-20261017.md) for source
-pins, final receipt and preserved pre-review evidence. Full harness and hosted
-delivery remain separate pending gates; rights/publication/federation and final
+pins, final receipt and preserved pre-review evidence. Local and hosted
+delivery remain separate gates; rights/publication/federation and final
 track completion are not promoted.
+
+Required `./scripts/validate.sh` passed on implementation
+`b2fde77e67555913f5a32369f9253ed1260c210e`: 7,698 tests passed, 10 skipped;
+97.43% coverage against the 80% floor; 59 schemas/49 representative documents;
+parity 9/9; all mutation, hygiene, security and supply-chain gates passed,
+including the 113-component SBOM. Conductor reports 93 tracks and no errors.
+Session 9819 and the durable `validation.exit` record exit 0. The subsequent
+commit records evidence/task status only; hosted checks must qualify the final
+PR head before protected merge.

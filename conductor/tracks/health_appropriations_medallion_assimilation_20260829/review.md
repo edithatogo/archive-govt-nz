@@ -1879,6 +1879,7 @@ states. Resolved the retained card-indexing error and schema-evolution finding:
 canonical metadata now uses separate v4/v2 schemas; original v3/v1 schemas and
 Fiscal/Budget bytes remain unchanged. Native proof covers all 13 recordsets and
 exact installed CLI/MCP receipts. 92 focused checks, typing/lint, schema and
-Conductor validation pass. Remaining gates are the full repository harness and
-protected exact-head delivery. This does not close broader metadata standards,
+Conductor validation pass. The full repository harness passed on `b2fde77e`
+with 7,698 tests/10 skipped and all later gates green. The remaining delivery
+gate is protected exact-head hosted assurance. This does not close broader metadata standards,
 federation approvals or final Health review.
