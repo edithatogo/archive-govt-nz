@@ -175,3 +175,12 @@ annex label/reader-extent discrepancy are recorded in the
 [bounded census observation](./source-census-2002-befu-defu-20261017.md).
 Actual hashes/bytes and native layouts are unverified; resource rights and
 joins remain unapproved. All 30 editions remain pending complete enumeration.
+
+## BEFU 1998 release extension — 17 October 2026
+
+The ten links on the official BEFU 1998 release page bring the discovery
+register to 86 locators. GAAP/SNA scope and table-status distinctions, reader
+layout caveats and the separate Budget 1998 Supplementary withdrawal notice
+are recorded in the [bounded observation](./source-census-befu-1998-20261017.md).
+The retained 1998/99 captures are unchanged, and the withdrawal notice is not
+assigned a fiscal period. All 30 editions remain pending full enumeration.

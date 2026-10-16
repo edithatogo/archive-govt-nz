@@ -1336,3 +1336,14 @@ rights or analytical admission. The following commit changes only unpinned
 track evidence/status; source observations and review evidence hashes remain
 unchanged. Local slice work is complete; protected exact-head delivery remains
 pending, and whole-source/Health completion is not claimed.
+
+## BEFU 1998 census — 2026-10-17
+
+The [bounded observation](./source-census-befu-1998-20261017.json) records ten
+official PDF links, separate source scopes/status labels, reader-layout gaps
+and the qualified withdrawal notice. The
+[new current review](./source-measure-review-20261017-1998.json) binds 12
+source-separated series and 86 historical discovery locators, preserving
+all earlier resource rows and reviewed series. Forty-two focused tests pass.
+Native byte/layout verification, resource rights, ISO currency, cross-basis
+joins, whole-edition closure and full/hosted validation remain open.

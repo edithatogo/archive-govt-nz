@@ -1973,3 +1973,15 @@ rights or analytical admission. The following commit changes only unpinned
 track evidence/status; source observations and review evidence hashes remain
 unchanged. Local slice work is complete; protected exact-head delivery remains
 pending, and whole-source/Health completion is not claimed.
+
+## BEFU 1998 source census — 2026-10-17
+
+Reviewed all ten official release hrefs and retained exact publisher labels.
+GAAP Crown and SNA Central Government measures remain separate; SNA Budget
+labels do not inherit GAAP Forecast/Projection status. Reader footer/header
+discrepancies remain native-layout gaps. The Budget 1998 Supplementary notice
+has no exact fiscal-period/object binding and does not mutate the referenced
+1998/99 captures or their rights. All 76 prior resource rows and ten prior
+reviewed series are unchanged. Forty-two focused checks pass; full/hosted
+validation remains pending. No scope, native-fixity or admission completeness
+claim is made for the 30-edition inventory.

@@ -5567,3 +5567,8 @@ Government scopes, status labels and the ambiguous multi-row Health header.
 The Budget 1998 Supplementary withdrawal notice does not establish a fiscal
 period or authorize changing the retained 1998/99 captures. Source payloads,
 resource rights, native layouts and analytical joins remain unqualified.
+
+- PR #692 platform assurance durations were Linux 9m31s, macOS 12m05s and Windows 16m53s on final head `1dac11ef`; terminal check/readback evidence is retained outside Git.
+- Three focused new contracts began red as expected before source entries/current dated review existed (three failures, 0.53s; `red.log`). Added ten exact official PDF links and publisher labels, source-native status/scope observations and a separately qualified withdrawal notice. Preserve the SNA footer-year disagreement and Health multirow header mapping gap instead of resolving them by guessing.
+- Added two source-separated historical measure descriptors in a new dated review (12 series, 86 historical locators); all 76 earlier resource objects and all ten earlier reviewed series compare unchanged to their prior records. Actual captures/rights states remain untouched. The source review now removes 1998 only from the missing-locator set, without marking the edition or broader history complete.
+- Focused inventory/review checks pass (42 cases, latest 2.15s). A final publisher-title assertion needed line wrapping; formatting corrected it. Relevant static/Conductor checks and the required full harness are being completed before PR delivery. No original source payloads, raw table values, legal decisions or publication mutations are introduced.
