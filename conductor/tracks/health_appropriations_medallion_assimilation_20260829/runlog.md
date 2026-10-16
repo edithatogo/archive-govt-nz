@@ -5550,3 +5550,20 @@ rights or analytical admission. The following commit changes only unpinned
 track evidence/status; source observations and review evidence hashes remain
 unchanged. Local slice work is complete; protected exact-head delivery remains
 pending, and whole-source/Health completion is not claimed.
+
+## 2026-10-17 — BEFU 1998 census slice registered
+
+PR #692 final head `1dac11efee2f70e459459b5af78acf5135071212` passed Linux,
+macOS, Windows, CodeQL/analyze, lint and patch coverage, with no review threads.
+Protected merge `132a1512f6a7b6121f3b08e15db9ac82314ddad7` completed at
+19:21:30 UTC on 16 October 2026. Verified head/merge ancestors on fetched
+origin/main before the clean checkout fast-forward, local topic deletion and
+remote absence check. The primary checkout is the only worktree.
+
+Registered the next slice before implementation. Official browser readback
+identifies ten BEFU 1998 PDF links and the release date/page-level copyright
+statement. Source reader evidence distinguishes GAAP Crown and SNA Central
+Government scopes, status labels and the ambiguous multi-row Health header.
+The Budget 1998 Supplementary withdrawal notice does not establish a fiscal
+period or authorize changing the retained 1998/99 captures. Source payloads,
+resource rights, native layouts and analytical joins remain unqualified.
