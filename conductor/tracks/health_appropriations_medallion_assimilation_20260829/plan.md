@@ -70,6 +70,17 @@ repository validation command. External gates block only their affected task.
 
 ### 1.2 Inventory the seed and direct official corpus
 
+- [~] Register the 38 verified primary locators across the six remaining
+  year-level gaps (BEFU 2000/2003/2004/2006 and Budget 2025/2026). Preserve
+  publisher/reader label discrepancies, period and accounting/GST boundaries,
+  four related links pending content-scope review, and current-capture URL
+  distinctions. Add the independently observed LCI/PPI component table and
+  dimension identities as discovery-only candidates, retaining unresolved
+  export references, rights, native fixity, weights and policy selection.
+  Reconcile a new dated review without claiming full source-family coverage
+  or analytical admission. [M-02, M-04, M-06, M-11, M-12, M-18;
+  AC-03, AC-04, AC-09, AC-10, AC-16]
+
 - [x] Register the seven official BEFU 1999 PDFs and their publisher-label,
   table-status and rights-evidence discrepancies. Record source-backed,
   separate December 1998 publication/locator and December 1999 nonpublication

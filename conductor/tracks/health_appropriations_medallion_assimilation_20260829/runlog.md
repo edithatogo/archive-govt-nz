@@ -5647,3 +5647,29 @@ stale Phase 4 sentence to agree with its existing source-backed retain-both
 receipt; this grants no replacements or publication approval. This bookkeeping
 commit changes only unpinned track evidence/status. Exact-head hosted checks
 and protected delivery remain pending; the whole Health track is incomplete.
+
+## 2026-10-17 — Remaining locator gaps and component identities registered
+
+PR #694 final head `a8f6d7dba6d3baf045d6c84d734c6764d0e48e82` passed all
+applicable hosted checks, with no review threads. Linux took 9m45s, macOS
+13m54s and Windows 18m05s; each job reached terminal success. Protected merge
+`7aadc69d5fb64a001bdb25a0b8c7eaccfc8907f1` completed at 20:48:09 UTC on
+16 October. Verified head and merge ancestors on fetched origin/main before
+fast-forwarding the clean primary checkout, deleting the integrated local
+topic and confirming remote absence. Removed only its exact stale tracking
+ref. The primary checkout is the only worktree.
+
+Registered the next bounded source-census slice before implementation. Public
+browser/reader evidence identifies 34 primary BEFU links across 2000, 2003,
+2004 and 2006, plus four Budget expenditure/revenue links for 2025 and 2026.
+Four related 2000 policy/overview/strategy/model links remain discovered with
+content-scope review pending. These observations can close year-level locator
+gaps without proving full source-family coverage or new capture eligibility.
+
+Conductor supplied exact current LCI/PPI catalogue tables and named dimensions
+for component-index qualification. The owner independently read their code/text
+and information displays through one-cell 2026Q2 public queries, retaining table
+and dimension identities, units, base and revision dates without copying numeric
+values into the census receipt. Full export references, series coverage, cost
+weights, rights, native source fixity and analytical policy remain unqualified.
+No source files were downloaded, Bronze bytes changed or publication repeated.
