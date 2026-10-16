@@ -7,7 +7,6 @@ import hashlib
 import importlib.util
 import json
 import tempfile
-from collections import Counter
 from datetime import date
 from decimal import Decimal
 from pathlib import Path
@@ -2000,6 +1999,15 @@ def _row_key(row: dict[str, Any]) -> str:
     )
 
 
+def _ascending_nulls_last(value: object) -> tuple[bool, Any]:
+    """Keep numeric/date values typed; compare list elements lexicographically."""
+    if isinstance(value, list):
+        return False, tuple(
+            _ascending_nulls_last(item) for item in cast("list[object]", value)
+        )
+    return value is None, value
+
+
 def canonical_query_recovery_report(first: Path, second: Path) -> dict[str, Any]:
     """Verify bounded query receipts against complete typed Gold tables."""
     before = (tree(first), tree(second))
@@ -2020,10 +2028,17 @@ def canonical_query_recovery_report(first: Path, second: Path) -> dict[str, Any]
             "canonical_gold_query_recovery_failed",
         )
         table = canonical_gold_queries.read_canonical_gold_product(first, pin, product)
-        expected = Counter(_row_key(row) for row in table.to_pylist())
-        observed = Counter(_row_key(row) for row in result["rows"])
+        columns = table.column_names
+        ordered = sorted(
+            table.to_pylist(),
+            key=lambda row: tuple(_ascending_nulls_last(row[name]) for name in columns),
+        )
+        expected = [
+            _row_key(row) for row in ordered[: canonical_gold_queries.MAX_QUERY_ROWS]
+        ]
+        observed = [_row_key(row) for row in result["rows"]]
         require_evidence(
-            not observed - expected
+            observed == expected
             and result["total_rows"] == table.num_rows
             and result["row_count"]
             == min(table.num_rows, canonical_gold_queries.MAX_QUERY_ROWS)
@@ -2036,6 +2051,7 @@ def canonical_query_recovery_report(first: Path, second: Path) -> dict[str, Any]
             "returned_rows": result["row_count"],
             "truncated": result["truncated"],
             "exact_readback": True,
+            "ordering_verified": True,
             "rows_sha256": hashlib.sha256(
                 _row_key({"rows": result["rows"]}).encode()
             ).hexdigest(),
@@ -2048,6 +2064,7 @@ def canonical_query_recovery_report(first: Path, second: Path) -> dict[str, Any]
         "manifest_sha256": pin,
         "products": products,
         "repeat_identical": True,
+        "ordering_validation": "independent_typed_columns_asc_nulls_last",
         "gold_unchanged": True,
         "source_reverification": "not_performed_by_query",
         "rights": "not_evaluated",

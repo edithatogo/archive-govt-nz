@@ -1461,6 +1461,13 @@ integrated parent head.
 
 ### 9.1 Clean-room reconstruction
 
+- [~] Correct PR #691's query recovery oracle to compare the independently
+  ordered typed source slice, including nulls, list prefixes, numeric order and
+  duplicate multiplicity. Reproduce wrong-subset/reversed-order acceptance,
+  run targeted fresh canonical recovery with the stronger oracle, then full
+  validation and protected exact-head delivery. Preserve the original weaker
+  receipt separately. [M-10, M-16, M-18; AC-08, AC-12, AC-16]
+
 - [x] Rebuild the five canonical historical/Budget input packages directly
   from pinned Bronze originals and locked observation-token definitions, with
   no retained Silver fallback. Preserve original observation identities and

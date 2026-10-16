@@ -5465,3 +5465,21 @@ components; external CDX validation was explicitly skipped. The bounded fresh
 canonical-input recovery task is now complete locally; broader Phase 9 remains
 in progress. This result bookkeeping changes only track documentation/evidence;
 protected exact-head hosted validation and merge/prune remain pending.
+
+## 2026-10-17 — PR #691 ordered-query review correction
+
+The hosted review identified a real oracle defect: the Counter subset/count
+comparison accepted a wrong valid 200-row slice and reversed ordering. Two
+adversarial cases failed to raise under the old code while the correct slice
+passed (`ordered-query-red.log`: two failures, one pass, 8.31s). The correction
+sorts typed source rows by physical column order with ASC NULLS LAST and compares
+the complete expected limited sequence. Decimal/date values remain typed;
+recursive list keys retain prefix/null ordering and duplicate multiplicity.
+A further explicit fixture verifies negative/2/10 amounts, null placement,
+duplicate values, empty/prefix lists and null list elements. The 24-test recovery
+selection passes; current static checks and targeted fresh native proof are
+being completed. Initial lint caught a dynamically typed argument annotation
+and a closure over a subsequently deleted table variable; use object/list casts
+and a stable column-name binding instead. No production query or input builder
+changed. The original native receipt is retained as membership/repeat evidence,
+not retroactively described as ordered-slice proof.

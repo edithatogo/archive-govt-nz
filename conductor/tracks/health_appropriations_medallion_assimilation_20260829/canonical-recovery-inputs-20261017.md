@@ -81,3 +81,14 @@ track documentation/evidence. Protected hosted delivery remains pending.
 The overall Health receipt still reports partial recovery with broader source,
 comparison, rights and standards gaps. This slice does not mark the track or
 Phase 9 complete and does not repeat external collection/publication changes.
+
+## PR #691 review correction in progress
+
+The first native query receipt proves membership/count/repeat behavior but its
+Counter subset oracle did not prove the exact ordered first-200 slice. The
+original receipt is retained unchanged with this qualification. The corrected
+oracle sorts typed table rows independently in physical column order, ASC NULLS
+LAST, and compares the complete expected slice. Negative subset/reversed-order
+fixtures reproduce the old gap; explicit numeric/null/list/duplicate fixtures
+exercise ordering semantics. Targeted fresh native proof and updated full/hosted
+validation are pending. No source values or producer outputs are changed.

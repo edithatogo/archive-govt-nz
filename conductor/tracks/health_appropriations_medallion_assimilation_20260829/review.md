@@ -1908,3 +1908,13 @@ components; external CDX validation was explicitly skipped. The bounded fresh
 canonical-input recovery task is now complete locally; broader Phase 9 remains
 in progress. This result bookkeeping changes only track documentation/evidence;
 protected exact-head hosted validation and merge/prune remain pending.
+
+## PR #691 query oracle correction — 2026-10-17
+
+Accepted review `discussion_r4297628595`: subset membership and row counts cannot
+prove the required ordered/truncated slice. Independent typed-column sorting now
+checks the exact sequence, with adversarial wrong-subset/reversed-order cases
+and numeric/null/list/duplicate semantics. Source and Gold builders are unchanged.
+The old native receipt remains historical weaker evidence. Fresh targeted native
+canonical/query verification, repeated full harness and corrected hosted checks
+are pending; the review thread stays unresolved until the fix is verified.
