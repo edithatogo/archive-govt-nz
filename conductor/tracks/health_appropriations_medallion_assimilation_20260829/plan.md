@@ -1746,3 +1746,7 @@ integrated parent head.
   for main and Supplementary Estimates; reject discovered URLs bound to another
   fiscal edition and preserve distinct published additions. Local full assurance
   passed on `7c1dadb7`; fresh hosted assurance and merge of PR #695 remain pending.
+
+- [~] Correct captured Vote Health edition selection for the existing lowercase
+  short 2012/13 Supplementary title, excluding its separate supporting-information
+  volume. Reconcile current review without recapture; requalify PR #695.

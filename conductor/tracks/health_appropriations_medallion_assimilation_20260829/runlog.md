@@ -5778,3 +5778,11 @@ Independent exact-head Conductor review found no blocking finding. The next
 commit updates only unpinned planning/evidence notes; product code, current
 review and its 41 evidence pins remain exactly as qualified. Fresh hosted
 checks and protected merge/pruning remain pending; the track stays incomplete.
+
+## Captured title variant correction — 2026-10-17
+
+A pre-merge gap audit found 2012/13 Supplementary already captured in unchanged
+source-census.json under the short lowercase title, along with its distinct
+supporting-information volume. The literal title filter incorrectly omits the
+appropriation PDF. Add a red regression for native short titles and supporting
+exclusion, correct only the latest review, and requalify. No acquisition needed.
