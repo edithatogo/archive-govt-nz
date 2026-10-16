@@ -5620,3 +5620,30 @@ remain unchanged. Focused inventory/review validation passes 43 cases in 4.09s;
 Ruff format/lint and whitespace checks pass. Recorded bounded self-review before
 freezing the implementation for serialized full assurance. No new source bytes,
 rights decisions, derived values or external publication mutations occur.
+
+
+## BEFU 1999 local assurance — 2026-10-17
+
+The required `./scripts/validate.sh` passed on clean
+`bb803cafa53df9d00a6656c168a644728dd11c0b`: 7,715 passed, ten skipped,
+97.44% coverage against the 80% floor; 60 schemas/50 representative documents,
+9/9 differential parity and all mutation/hygiene/audit/licence/secrets/SBOM
+gates. SBOM has 113 components; external CDX validation was explicitly skipped.
+Durable log and exit 0 are retained under
+`/Volumes/PortableSSD/tmp/health-census-befu-1999-20261017/validation-2.*`.
+
+The first two-worker full run had one existing Gold discovery CLI subprocess
+exceed its 30-second timeout after emitting its success receipt (7,714 other
+tests passed). The unchanged isolated contract passed in 12.21s, with a 5.49s
+test call. A guarded one-worker full rerun then passed all 7,715 tests in
+488.21s. Timeout and quality gates were not relaxed; the underlying cause was
+not established. The initial failure and isolated logs remain beside the full
+rerun evidence. No CLI or product implementation was changed.
+
+Current review binds 37 evidence files, thirteen source descriptors and 93
+historical discovery locators. All 86 earlier resources, twelve descriptors,
+the captured-source census and prior dated review are unchanged. Corrected the
+stale Phase 4 sentence to agree with its existing source-backed retain-both
+receipt; this grants no replacements or publication approval. This bookkeeping
+commit changes only unpinned track evidence/status. Exact-head hosted checks
+and protected delivery remain pending; the whole Health track is incomplete.
