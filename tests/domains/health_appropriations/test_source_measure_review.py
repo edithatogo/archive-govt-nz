@@ -23,12 +23,20 @@ from archive_govt_nz.domains.health_appropriations.source_measure_review import 
 
 ROOT = Path(__file__).resolve().parents[3]
 TRACK = ROOT / TRACK_RELATIVE
-REPORT = TRACK / "source-measure-review-20261017-1999.json"
+REPORT = TRACK / "source-measure-review-20261017-locator-gaps.json"
+
+
+def _assert_historical_locator_coverage(report: dict) -> None:
+    history = report["source_families"]["historical_editions"]
+    assert history["editions_with_locators"] == list(range(1997, 2027))
+    assert history["editions_missing_locators"] == []
+    assert history["fully_enumerated_editions"] == []
+    assert history["complete"] is False
 
 
 def test_review_reports_exact_series_and_preserves_blockers() -> None:
     report = validate_review(REPORT, ROOT)
-    assert report["series_count"] == 13
+    assert report["series_count"] == 19
     for family, receipt_name in (
         ("cpi", "fiscal-health-cpi-benchmark-20261004.json"),
         ("population", "fiscal-health-per-capita-20261004.json"),
@@ -59,6 +67,7 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
     assert "1998/99 Forecast" in health_1999["vintage_or_range"]
     assert "GAAP definitions" in health_1999["period_basis"]
     assert "No status relabelling" in health_1999["analytical_status"]
+    _assert_historical_locator_coverage(report)
     assert all(not item["path"].endswith("/index.md") for item in report["evidence"])
     assert report["source_families"]["vote_health"]["captured_documents"] == 59
     assert report["source_families"]["vote_health"]["estimates_years"] == [
@@ -155,7 +164,7 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
         in report["series"]["gdp"]["vintage_or_range"]
     )
     assert report["source_families"]["historical_editions"]["complete"] is False
-    assert report["source_families"]["historical_editions"]["locator_count"] == 93
+    assert report["source_families"]["historical_editions"]["locator_count"] == 131
     assert (
         len(report["source_families"]["vote_health"]["discovered_estimates_urls"]) == 9
     )
@@ -238,7 +247,9 @@ def _mutate_history(report: dict, mutation: str) -> None:
     elif mutation == "historical_editions":
         history["editions_with_locators"].pop()
     elif mutation == "historical_missing":
-        history["editions_missing_locators"].pop()
+        history["editions_missing_locators"].append(
+            history["editions_with_locators"][0]
+        )
     elif mutation == "historical_complete":
         history["complete"] = True
     elif mutation == "historical_fully_enumerated":
@@ -409,3 +420,49 @@ def test_discovered_locator_rejects_nonmissing_year_and_nonofficial_host(
 ) -> None:
     with pytest.raises(ValueError, match="invalid discovered Vote Health locator"):
         _check_discovered({"locators": {str(year): url}}, "locators", {2012})
+
+
+def test_component_index_candidates_keep_codes_and_admission_separate() -> None:
+    """Publisher table/dimension identities cannot approve a whole-budget deflator."""
+    report = validate_review(REPORT, ROOT)
+    observation = json.loads(
+        (TRACK / "health-component-index-discovery-20261017.json").read_text()
+    )
+    lci = observation["central_government_catalogue_readback"]
+    ppi = observation["ppi_inputs_catalogue_readback"]
+    assert lci["table_reference"] == "LCI025AA"
+    assert lci["labour_cost"] == {"code": "3", "label": "All Salary and Wage Rates"}
+    assert lci["observations"]["code"] == "LCI025AC"
+    assert ppi["table_reference"] == "PPI021AA"
+    assert ppi["observations"]["code"] == "PPI021CC"
+    assert (
+        lci["observations"]["label"]
+        == ppi["observations"]["label"]
+        == "Health Care and Social Assistance"
+    )
+    for key in [
+        "central_government_catalogue_readback",
+        "ppi_inputs_catalogue_readback",
+    ]:
+        row = observation[key]
+        assert row["bounded_query_cells"] == 1
+        assert row["status_flags_enabled"] is True
+        assert row["numeric_value_retained_in_receipt"] is False
+        assert row["native_payload_capture_performed"] is False
+        assert row["session_query_url_is_durable"] is False
+    assert observation["numeric_cells_admitted"] is False
+    assert observation["policy_status"] == "not_selected"
+    assert observation["rights_adjudication"] is False
+    assert (
+        report["series"]["health_lci_component_candidate"]["rights"]
+        == "infoshare_export_not_evaluated"
+    )
+    assert (
+        report["series"]["health_ppi_component_candidate"]["rights"]
+        == "infoshare_export_not_evaluated"
+    )
+    for name in ["health_lci_component_candidate", "health_ppi_component_candidate"]:
+        assert (
+            "No whole-Vote-Health deflator"
+            in report["series"][name]["analytical_status"]
+        )

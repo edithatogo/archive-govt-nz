@@ -1402,3 +1402,26 @@ stale Phase 4 sentence to agree with its existing source-backed retain-both
 receipt; this grants no replacements or publication approval. This bookkeeping
 commit changes only unpinned track evidence/status. Exact-head hosted checks
 and protected delivery remain pending; the whole Health track is incomplete.
+
+## Remaining year-level locator census — 2026-10-17
+
+The [primary-source observation](./source-census-locator-gaps-20261017.json)
+adds 38 locators across six editions, giving 131 total and at least one for
+all 30 scoped years. All editions remain pending complete source-family
+coverage; four related links await content-scope review. Existing captured
+records/bytes and prior 93 resource objects are unchanged. The separate
+[component-index observation](./health-component-index-discovery-20261017.json)
+records exact publisher table/dimension identities and method boundaries,
+not a deflator policy or numeric admission.
+
+The [new dated review](./source-measure-review-20261017-locator-gaps.json)
+binds 19 source descriptors and 41 evidence files, preserving all thirteen
+prior descriptors. Four selected census contracts began red (1.45s). An older
+negative fixture assumed a nonempty missing-year list; it now injects a known
+located year as a false gap, preserving the coverage-consistency rejection.
+Ruff's statement-count finding was resolved by extracting the historical
+coverage assertions into a helper. Latest focused run: 45 passed in 1.39s,
+with lint/format/whitespace checks passing. A prior default-TMPDIR cleanup
+warning did not recur with the dedicated external temporary root. Logs are
+retained under `/Volumes/PortableSSD/tmp/health-census-locator-gaps-20261017/`.
+Full local assurance and protected delivery remain pending.

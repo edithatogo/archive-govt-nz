@@ -1,0 +1,122 @@
+{
+  "central_government_catalogue_readback": {
+    "alphanumeric_LCIQ_series_reference": null,
+    "available_period_labels": {
+      "count": 135,
+      "first": "1992Q4",
+      "last": "2026Q2"
+    },
+    "base": "June2009 quarter =1000",
+    "bounded_query_cells": 1,
+    "bounded_query_period": "2026Q2",
+    "catalogue_url": "https://infoshare.stats.govt.nz/Default.aspx",
+    "cell_presence_observed": true,
+    "labour_cost": {
+      "code": "3",
+      "label": "All Salary and Wage Rates"
+    },
+    "native_payload_capture_performed": false,
+    "numeric_value_retained_in_receipt": false,
+    "observations": {
+      "code": "LCI025AC",
+      "label": "Health Care and Social Assistance"
+    },
+    "observed_at": "2026-10-16T20:39:29.387836+00:00",
+    "scope_limit": "Central government, Health Care AND Social Assistance; this is not the public-sector all-industry selector, QES earnings or a whole-Vote-Health cost basket",
+    "session_query_url_is_durable": false,
+    "source_last_updated_literal": "05 August 2026 10:45am",
+    "status_flags_enabled": true,
+    "table_file": "LCI358301.px",
+    "table_reference": "LCI025AA",
+    "table_title": "Central Govt Sector and Industry Group (ANZSIC06)(Base: June 2009 qtr (=1000)) (Qrtly-Mar/Jun/Sep/Dec)",
+    "units": "Index, Magnitude = Units"
+  },
+  "current_period_information": {
+    "lci_reference_date": "2026-05-15",
+    "url": "https://datainfoplus.stats.govt.nz/item/example.org/19f13c9d-878c-4055-88c1-5ad70a1169c0/12"
+  },
+  "full_series_export_references_verified": false,
+  "methodology": {
+    "base_observed": "June2009=1000 in general methodology page; current workbook-specific base and vintage applicability not yet verified",
+    "ddi_urn": "urn:ddi:nz.govt.stats:9007195c-8dc3-4dfb-b5da-1b12c32e90ac:66",
+    "last_updated": "2023-10-26T22:28:07.7760817Z",
+    "observation": "Quality-controlled fixed-quantity/quality salary and wage rates; fixed sector/industry/occupation weights; sample rates at15th of quarter middle month; irregular payments, merit/performance promotions and service increments excluded",
+    "scope_limit": "Salary/wage component candidate only; not all Vote Health costs and not equivalent to QES average earnings",
+    "url": "https://datainfoplus.stats.govt.nz/Item/nz.govt.stats/9007195c-8dc3-4dfb-b5da-1b12c32e90ac",
+    "version": 66,
+    "vintage_limit": "Linked general-method metadata version66 is dated2023; do not infer workbook-specific current base or health-component applicability from it alone"
+  },
+  "native_payload_capture_performed": false,
+  "numeric_cells_admitted": false,
+  "observed_at": "2026-10-16T20:33:12.507132+00:00",
+  "policy_status": "not_selected",
+  "ppi_inputs_catalogue_readback": {
+    "alphanumeric_PPIQ_series_reference": null,
+    "available_period_labels": {
+      "count": 129,
+      "first": "1994Q2",
+      "last": "2026Q2"
+    },
+    "base_from_table_title": "December2010 quarter =1000",
+    "bounded_query_cells": 1,
+    "bounded_query_period": "2026Q2",
+    "catalogue_url": "https://infoshare.stats.govt.nz/Default.aspx",
+    "native_payload_capture_performed": false,
+    "numeric_value_retained_in_receipt": false,
+    "observations": {
+      "code": "PPI021CC",
+      "label": "Health Care and Social Assistance"
+    },
+    "observed_at": "2026-10-16T20:40:30.090429+00:00",
+    "other_industry_base_exception": "Footnote specifies December2013 base for sheep/beef/grain and poultry/deer/other-livestock farming; do not transplant to Health",
+    "scope_limit": "Health Care AND Social Assistance industry inputs; separate from wage costs and whole Vote Health expense coverage",
+    "session_query_url_is_durable": false,
+    "source_last_updated_literal": "19 August 2026 10:45am",
+    "status_flags_enabled": true,
+    "table_file": "PPI387801.px",
+    "table_reference": "PPI021AA",
+    "table_title": "Inputs (ANZSIC06) - NZSIOC level 3, Base: Dec. 2010 quarter (=1000) (Qrtly-Mar/Jun/Sep/Dec)",
+    "units": "Index, Magnitude = Units"
+  },
+  "ppi_methodology": {
+    "current_vintage_limit": "General method version dated2023; selected2026-table footnotes and break/reweighting policy still need qualification",
+    "finance_caveat": "General finance-cost exclusion appears alongside explicit FISIM inclusion in input indexes fromMarch2015; preserve this distinction rather than claiming all financial services excluded",
+    "gst_observation": "Source says GST generally excluded from PPI; not proof of matched Vote Health GST basis",
+    "last_updated": "2023-08-15T21:53:03.2461100Z",
+    "policy_status": "not_selected",
+    "scope_observation": "Inputs PPI measures prices of goods/services used by producers; excludes wages/salaries and capital expenditure/depreciation, with other named levy/tax/fee exclusions",
+    "url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/66006ba0-02ee-4c5e-9b31-9c093ba8d84f/3",
+    "version": 3
+  },
+  "query_scope_update": "Owner independently submitted bounded one-cell Table on screen queries for metadata/code readback; no files downloaded, source payloads archived, numeric values retained or analytical admission. This goes beyond the earlier catalogue-only Conductor handoff and is recorded separately.",
+  "recorded_at": "2026-10-16T20:51:15.721988+00:00",
+  "release": {
+    "page_rights_observation": "Unless noted otherwise, Stats NZ content is licensed under Creative Commons4.0 International; resource eligibility unadjudicated",
+    "public_browser_href_readback": "succeeded",
+    "publication_date": "2026-08-05",
+    "publisher_title": "Labour cost index (salary and wage rates): June 2026 quarter",
+    "url": "https://www.stats.govt.nz/information-releases/labour-market-statistics-june-2026-quarter/",
+    "web_reader": "empty_page_result",
+    "workbook_url": "https://www.stats.govt.nz/assets/Uploads/Labour-market-statistics/Labour-market-statistics-June-2026-quarter/Download-data/labour-cost-index-salary-and-wage-rates-june-2026-quarter.xlsx"
+  },
+  "revision_observation": {
+    "affected_quarters": [
+      "2025Q4",
+      "2026Q1"
+    ],
+    "health_specific_series": false,
+    "identity": "Public sector, All industries combined, All salary and wage rates",
+    "series_id": "LCIQ.SG33Z9",
+    "statement": "June2026 release reports corrected index levels; quarterly/annual percent changes unaffected"
+  },
+  "rights_adjudication": false,
+  "scope": "official_component_index_identity_and_method_discovery_no_policy_or_numeric_admission",
+  "table_dimension_identities_observed": true,
+  "unresolved": [
+    "Full alphanumeric LCIQ/PPIQ series references if needed for export route; observed table/dimension codes are not inferred concatenations",
+    "Current detailed footnotes, reweighting, reform/break and actual cell coverage across full period span",
+    "Component weights, non-wage input coverage and GST treatment",
+    "Period aggregation and analytical policy",
+    "Resource rights and eligible native capture"
+  ]
+}

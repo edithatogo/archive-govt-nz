@@ -2048,3 +2048,34 @@ stale Phase 4 sentence to agree with its existing source-backed retain-both
 receipt; this grants no replacements or publication approval. This bookkeeping
 commit changes only unpinned track evidence/status. Exact-head hosted checks
 and protected delivery remain pending; the whole Health track is incomplete.
+
+## Remaining locator gaps and component identities — 2026-10-17
+
+Bounded self-review preserves all 93 earlier resource objects and thirteen
+reviewed source descriptors exactly, plus unchanged captured-census and prior
+review bytes. All 131 primary source IDs/URLs are unique. At least one locator
+per scoped year does not establish complete per-edition families: the complete
+edition list remains empty and every prior capture/rights boundary remains.
+Four related 2000 links remain discovered with content-scope review pending.
+
+Publisher labels, reader identities and dates are separate observations. The
+2003 Financial Information/Summary Tables discrepancy, 2004 workbook year
+mismatch and 2006 signed-date anomaly remain explicit. Issue dates are declared
+as landing-release metadata, never verified native-document dates. Budget
+2026 Treasury hrefs are not assumed byte-identical aliases of existing
+Budget.govt.nz captures. No numeric values, currency, header relabelling or
+cross-basis joins are admitted by the new historical descriptors.
+
+Component-index records distinguish central-government LCI salary/wages from
+PPI inputs and preserve social-assistance scope, exact table/dimension codes,
+units/base, source update dates and historical-method vintage. No LCIQ/PPIQ
+selector is guessed; full export references, numeric coverage/flags, weights,
+GST/period alignment, native capture/fixity, rights and policy remain pending.
+The agricultural PPI base exception and finance/FISIM nuance remain scoped.
+No whole-Vote-Health deflator, QES substitution or numerical export is approved.
+
+Conductor independently confirmed preservation of all prior resources and
+source descriptors, unique identities, unknown fixity/rights for additions,
+and unchanged negative completion flags. Current review closure and local
+focused checks verify 41 pinned evidence files. Full harness and exact-head
+hosted delivery remain pending; this does not close the Health track.

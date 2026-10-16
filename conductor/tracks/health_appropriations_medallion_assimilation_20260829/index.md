@@ -392,4 +392,10 @@ they are not current-state assertions.
 
 - [BEFU 1999 and year-end publication census](./source-census-befu-1999-20261017.md)
 - [BEFU 1999 source and disposition evidence](./source-census-befu-1999-20261017.json)
-- [Current source/measure census review](./source-measure-review-20261017-1999.json)
+- [Previous source/measure census review, BEFU 1999](./source-measure-review-20261017-1999.json)
+
+- [Remaining year-level source locator census](./source-census-locator-gaps-20261017.md)
+- [Locator identity and period evidence](./source-census-locator-gaps-20261017.json)
+- [Health component index discovery](./health-component-index-discovery-20261017.md)
+- [Component table and method evidence](./health-component-index-discovery-20261017.json)
+- [Current source/measure census review](./source-measure-review-20261017-locator-gaps.json)

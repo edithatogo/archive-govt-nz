@@ -5673,3 +5673,26 @@ and dimension identities, units, base and revision dates without copying numeric
 values into the census receipt. Full export references, series coverage, cost
 weights, rights, native source fixity and analytical policy remain unqualified.
 No source files were downloaded, Bronze bytes changed or publication repeated.
+
+The four selected contracts began red before the source additions and new review
+existed (four failures,1.45s; `red.log`). Added 38 official primary locators,
+four historical source-separated Health descriptors and two component-index
+candidates. Current review binds19descriptors/41evidence files. Prior93resources,
+thirteen descriptors, captured census and previous review compare unchanged.
+All30years have at least one locator; no edition earns full-family completion.
+
+Initial focused run exposed the older missing-year mutation fixture popping an
+empty list (44passed/1failed). Changed it to inject a false gap for a located
+year, retaining the intended validator rejection. A subsequent45-case run
+passed but lint found52statements in an expanded existing test; extracted its
+historical coverage assertion helper and retained every assertion. A shared
+default-temp cleanup warning did not recur under the dedicated external
+TMPDIR. Final focused45cases pass in1.39s; Ruff lint/format and whitespace
+checks pass. No product implementation, timeout or quality gate changed.
+
+Source identity review keeps publisher typos/mismatches and differing date,
+period, GST/elimination and ownership scopes explicit. Existing2026capture
+references are metadata only; no URL-alias byte equivalence is asserted.
+Conductor independently verified prior-object/descriptor preservation and
+unique identities without rerunning captures or tests. Full repository
+assurance is next on a frozen clean commit under the shared validation guard.

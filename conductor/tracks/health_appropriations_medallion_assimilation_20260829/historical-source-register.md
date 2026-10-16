@@ -195,3 +195,15 @@ Parliament reports December 1999 nonpublication. Neither BPS nor PREFU is admitt
 as a substitute. See the [bounded source observation](./source-census-befu-1999-20261017.md).
 All previous resource records remain unchanged; all 30 editions still need full
 source-family reconciliation, qualified fixity/layout and resource rights.
+
+## Remaining year-level locators — 2026-10-17
+
+The [six-edition observation](./source-census-locator-gaps-20261017.md) adds 38
+primary BEFU/Budget locators, raising the register to 131. Every scoped year
+1997–2026 now has at least one primary locator, but all 30 editions still need
+complete source-family enumeration and qualified fixity/layout/rights review.
+Four related 2000 links remain discovered with content-scope review pending.
+Publisher/reader label discrepancies, accounting/GST boundaries, conflicting
+metadata dates and unverified Treasury/Budget.govt.nz URL equivalence remain
+explicit. All previous 93 primary resource records are preserved unchanged;
+existing captures and current-workbook evidence receive no new byte credit.

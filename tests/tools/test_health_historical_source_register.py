@@ -25,7 +25,7 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
     assert report["publication_authorized"] is False
     assert report["whole_history_complete"] is False
     records = report["resource_observations"]
-    assert len(records) == 93
+    assert len(records) == 131
     assert len({row["url"] for row in records}) == len(records)
     assert len({row["source_id"] for row in records}) == len(records)
     assert len({(r["edition_year"], r["family"], r["kind"]) for r in records}) == len(
@@ -53,6 +53,16 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
         ("befu", "responsibility"),
         ("befu", "risks_scenarios"),
         ("befu", "full_release"),
+        ("befu", "additional_fiscal_information"),
+        ("befu", "additional_information"),
+        ("befu", "cover_contents"),
+        ("befu", "economic_forecasts"),
+        ("befu", "economic_tax_outlook"),
+        ("befu", "financial_information"),
+        ("befu", "glossary"),
+        ("befu", "responsibility_economic_outlook"),
+        ("befu", "summary_tables"),
+        ("befu", "tax_tables"),
         ("defu", "gaap_series_tables"),
         ("defu", "annex_glossary_link"),
         ("defu", "additional_gaap_tables"),
@@ -79,7 +89,7 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
     budget_records = [row for row in records if row["family"] == "budget"]
     assert {(row["edition_year"], row["kind"]) for row in budget_records} == {
         (year, kind)
-        for year in range(2007, 2025)
+        for year in range(2007, 2027)
         for kind in ("expenditure", "revenue")
     }
     by_year = {row["edition_year"]: row for row in budget_records}
@@ -366,3 +376,60 @@ def test_befu_1999_identity_and_year_end_publication_dispositions() -> None:
         assert gap["replacement_source_admitted"] is False
         assert gap["retained_capture_mutations"] is False
     assert report["fully_enumerated_editions"] == []
+
+
+def test_remaining_locator_years_preserve_discovery_and_url_alias_boundaries() -> None:
+    """Every year has a locator without claiming complete families or new captures."""
+    track = (
+        Path(__file__).parents[2]
+        / "conductor/tracks/health_appropriations_medallion_assimilation_20260829"
+    )
+    history = json.loads((track / "historical-source-register.json").read_text())
+    observation = json.loads(
+        (track / "source-census-locator-gaps-20261017.json").read_text()
+    )
+    rows = [
+        r
+        for r in history["resource_observations"]
+        if r["edition_year"] in {2000, 2003, 2004, 2006, 2025, 2026}
+    ]
+    assert len(rows) == 38
+    assert observation["resources"] == rows
+    assert {r["edition_year"] for r in history["resource_observations"]} == set(
+        range(1997, 2027)
+    )
+    assert history["fully_enumerated_editions"] == []
+    assert history["whole_history_complete"] is False
+    by_file = {r["url"].rsplit("/", 1)[-1]: r for r in rows}
+    assert by_file["befu03-sumtab.pdf"]["publisher_title"].startswith(
+        "Financial Information -"
+    )
+    assert by_file["befu03-add1.pdf"]["publisher_title"].startswith("Summary Tables -")
+    assert by_file["befu04-add2.xls"]["publisher_title"].endswith("Update 2005")
+    assert all(
+        by_file[name]["native_layout_verified"] is False
+        for name in [
+            "befu03-sumtab.pdf",
+            "befu03-add1.pdf",
+            "befu04-add2.xls",
+        ]
+    )
+    related = observation["related_links_pending_scope_review"]
+    assert len(related) == 4
+    assert all(r["disposition"] == "discovered" for r in related)
+    assert all(
+        r["scope_review"] == "pending_content_review_before_inclusion_or_exclusion"
+        for r in related
+    )
+    assert observation["native_capture_performed"] is False
+    assert observation["url_alias_byte_equivalence_verified"] is False
+    census = json.loads((track / "source-census.json").read_text())["records"]
+    by_id = {r["source_id"]: r for r in census}
+    references = observation["existing_capture_references"]
+    assert len(references) == 2
+    assert all(
+        by_id[r["source_id"]][key] == value
+        for r in references
+        for key, value in r.items()
+    )
+    assert not {r["url"] for r in references} & {r["url"] for r in rows}
