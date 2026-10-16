@@ -79,7 +79,7 @@
         "household_prices_not_health_input_costs"
       ],
       "layout_drift_state": "not_assessed_per_vintage_baseline_not_in_census",
-      "period_description": "quarter-ending YYYY.MM; source observations span 1914Q2\u20132026Q2, 449 selected rows, 422 numeric and 27 NA",
+      "period_description": "quarter-ending YYYY.MM; source observations span 1914Q2–2026Q2, 449 selected rows, 422 numeric and 27 NA",
       "qualification_state": "unqualified",
       "rights": {
         "state": "not_evaluated"
@@ -181,12 +181,12 @@
         "transport_http_warc_receipt_unavailable"
       ],
       "layout_drift_state": "not_assessed_per_vintage_baseline_not_in_census",
-      "period_description": "Annual-Jun Mean year ended; 1991\u20132026; 36 source rows with flags, one unavailable '..' token and two provisional 'P' statuses",
+      "period_description": "Annual-Jun Mean year ended; 1991–2026; 36 source rows with flags, one unavailable '..' token and two provisional 'P' statuses",
       "qualification_state": "unqualified",
       "rights": {
         "state": "not_evaluated"
       },
-      "series_id": "DPE056AA \u2014 Estimated Resident Population by Age and Sex (1991+) (Annual-Jun)",
+      "series_id": "DPE056AA — Estimated Resident Population by Age and Sex (1991+) (Annual-Jun)",
       "target_vintage_label": "Stats NZ release 2026-08-18; current census basis 2023-06-30; provisional/revision status retained",
       "temporal_coverage_state": "source_extent_recorded_calendar_completeness_not_assessed",
       "vintage_basis": "context_census_verbatim"
@@ -235,7 +235,7 @@
   "inputs": {
     "capture_manifest_sha256": "017b3a9adbda288c60693ef038e4c0da198d8db99b2bca9cf4bb81adbc6efb5f",
     "context_census_base_commit": "663adf85e8f8839b782d48492e3e961500bd2b17",
-    "context_census_sha256": "91474db2bf996669f41ce6de6341304a1039887ccb948fd94d9f5634b425a88e",
+    "context_census_sha256": "579e63a757cae410a26e0f371ae8cb79bf31e10e30c46ccb652789b160199708",
     "pdf_layout_baseline_sha256": "f54157679466382b665e228a5abba26388296f95b603184ff868cb188b1ec698",
     "source_census_cutoff": "2026-10-03",
     "source_census_observed_at": "2026-09-29T21:28:10.739074Z",
@@ -497,7 +497,7 @@
         "policy_uri": "https://www.stats.govt.nz/about-us/copyright/",
         "state": "policy_reference_recorded_not_evaluated"
       },
-      "target_vintage_label": "Gross domestic product: June 2026 quarter \u2013 current price income and expenditure",
+      "target_vintage_label": "Gross domestic product: June 2026 quarter – current price income and expenditure",
       "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
       "vintage_basis": "source_title_verbatim"
     },

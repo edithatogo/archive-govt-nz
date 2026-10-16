@@ -1830,3 +1830,27 @@ security and supply-chain gates passed. The whole track is not complete.
 - The captured census records the Treasury licence notice; normalized-fact
   rights remain `not_evaluated`. No cross-edition, Gold, federation, publication
   or whole-track completion claim is made.
+
+## Analytical context reconciliation — 2026-10-16
+
+Self-review found three stale-contract failures in the first full harness: the
+register digest pinned by the current census, the consequent census error
+assertion, and an obsolete test requiring uncaptured population values.
+Resolved current evidence closure through the census, source-health projection
+and recovery pin; refined the existing register guard to distinguish quarterly
+leads from the captured annual series and receipt-bound policies. Created a
+newly dated source/measure review instead of rewriting historical receipts.
+The 122 focused checks and required full harness now pass. All actionable
+findings in this reconciliation slice are resolved. Deflator choice, broader
+cross-family comparability and rights remain scoped open; hosted PR checks
+remain the delivery gate.
+
+### PR #688 correction — 2026-10-17
+
+Resolved the two P2 findings in the current review's period fields: both now
+name their implemented CPI/population policies and scope remaining selections
+separately. Also distinguished Stats NZ GDP source projections from the
+unselected Stats NZ denominator policy. The existing test now ties both period
+fields to the pinned policy receipts. All 36 source/measure checks and the
+format/lint/Conductor gates pass. Historical receipts are unchanged; exact-head
+hosted assurance remains required before merge.
