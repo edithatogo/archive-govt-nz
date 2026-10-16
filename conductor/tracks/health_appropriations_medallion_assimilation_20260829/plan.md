@@ -70,6 +70,14 @@ repository validation command. External gates block only their affected task.
 
 ### 1.2 Inventory the seed and direct official corpus
 
+- [~] Register the seven official BEFU 1999 PDFs and their publisher-label,
+  table-status and rights-evidence discrepancies. Record source-backed,
+  separate December 1998 publication/locator and December 1999 nonpublication
+  dispositions without substituting BPS/PREFU documents or changing captures.
+  Reconcile a new dated source-measure review, preserving prior observations
+  and whole-edition gaps. [M-02, M-04, M-11, M-18;
+  AC-03, AC-04, AC-09, AC-16]
+
 - [x] Register the ten files linked by the official BEFU 1998 release,
   with native source scopes and status labels, explicit reader-layout gaps
   and resource rights/fixity boundaries. Record the separate Budget 1998

@@ -5590,3 +5590,23 @@ source observations and their evidence hashes are unchanged. Local slice work
 is complete; exact-head hosted validation and protected delivery remain pending.
 Whole-edition/history, native-layout/fixity, rights and cross-basis qualification
 gates remain open; this does not close the Health track.
+
+## 2026-10-17 — BEFU 1999 and year-end dispositions slice registered
+
+PR #693 final head `645cb88e7685bf67f4e7b5861d32e16a96b7f0bc` passed all
+applicable checks. Linux took 9m22s, macOS 12m56s, Windows 17m00s. No review
+threads were open. Protected merge `101441189b09eba165fd92448f719b8dc3ede04f`
+completed at 19:59:47 UTC on 16 October. Verified both head and merge as
+ancestors of fetched origin/main; fast-forwarded the clean primary checkout,
+deleted the integrated local topic and verified remote absence before removing
+its exact stale tracking ref. The primary checkout is the only worktree.
+
+Registered the next bounded source-census slice before implementation. Official
+browser readback verified seven BEFU 1999 PDF hrefs, issue date and page-level
+CC BY 4.0 statement. Preserve the contents link's 2019 typo, its historical
+Crown copyright wording, and the different Fiscal/GAAP status labels without
+inferring native layout or rights eligibility. Independently checked primary
+publisher evidence distinguishes the published December 1998 update with an
+unresolved original locator from the reported December 1999 nonpublication.
+BPS and PREFU are supporting context, never replacements for missing originals.
+Existing captures, raw values and analytical admissions remain unchanged.
