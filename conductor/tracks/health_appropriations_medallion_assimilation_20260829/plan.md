@@ -1742,6 +1742,7 @@ integrated parent head.
   source-health and donor/classification preflights pass. The wider Health
   recovery/completion gate remains open.
 
-- [~] Fix Vote Health fiscal coverage using pinned publisher editions separately
+- [x] Fix Vote Health fiscal coverage using pinned publisher editions separately
   for main and Supplementary Estimates; reject discovered URLs bound to another
-  fiscal edition and preserve distinct published additions. Requalify PR #695.
+  fiscal edition and preserve distinct published additions. Local full assurance
+  passed on `7c1dadb7`; fresh hosted assurance and merge of PR #695 remain pending.

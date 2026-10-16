@@ -5764,3 +5764,17 @@ missing Supplementary coverage is [2012]; the already captured 2025/26 edition
 is no longer presented as missing. No captured source or older review changed.
 Focused assurance: 48 passed in 1.13s; Ruff and whitespace checks pass. Full
 validation of the following clean implementation commit remains required.
+
+## Fiscal scope correction full assurance — 2026-10-17
+
+Required `./scripts/validate.sh` passed on clean implementation commit
+`7c1dadb7` under the shared guard, one test worker and a dedicated external
+TMPDIR. Tests: 7,720 passed, ten skipped, 23 warnings, 531.37s; coverage
+97.44% against the 80% floor. All 60 schemas/50 documents, 9/9 parity,
+configured mutation/hygiene, dependency audit, licence inventory, secret scan
+and 113-component SBOM checks passed. External CDX validation was explicitly
+skipped. Log and exit 0: external `health-census-locator-gaps-20261017/validation-3.*`.
+Independent exact-head Conductor review found no blocking finding. The next
+commit updates only unpinned planning/evidence notes; product code, current
+review and its 41 evidence pins remain exactly as qualified. Fresh hosted
+checks and protected merge/pruning remain pending; the track stays incomplete.
