@@ -1365,3 +1365,13 @@ source observations and their evidence hashes are unchanged. Local slice work
 is complete; exact-head hosted validation and protected delivery remain pending.
 Whole-edition/history, native-layout/fixity, rights and cross-basis qualification
 gates remain open; this does not close the Health track.
+
+## BEFU 1999 census — 2026-10-17
+
+The [source observation](./source-census-befu-1999-20261017.json) records seven
+exact official links and distinct year-end publication dispositions. The
+[current review](./source-measure-review-20261017-1999.json) binds 13 descriptors
+and 93 historical discovery locators; earlier 86 resources/twelve descriptors
+are unchanged. Two new contracts failed before the data/review existed (0.50s);
+43 focused inventory/review checks now pass (4.09s). Ruff and whitespace checks
+pass. Full local assurance and protected exact-head delivery remain pending.

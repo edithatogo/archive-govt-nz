@@ -5610,3 +5610,13 @@ publisher evidence distinguishes the published December 1998 update with an
 unresolved original locator from the reported December 1999 nonpublication.
 BPS and PREFU are supporting context, never replacements for missing originals.
 Existing captures, raw values and analytical admissions remain unchanged.
+
+The new source/disposition and current-review contracts began red (two failures,
+0.50s, retained `red.log`). Added seven exact official hrefs with discovery-only
+status and one source-separated Health expense descriptor. All 86 earlier
+resource objects and twelve prior descriptors compare unchanged. Current review
+now binds 37 repository evidence files. The prior dated review and all captures
+remain unchanged. Focused inventory/review validation passes 43 cases in 4.09s;
+Ruff format/lint and whitespace checks pass. Recorded bounded self-review before
+freezing the implementation for serialized full assurance. No new source bytes,
+rights decisions, derived values or external publication mutations occur.
