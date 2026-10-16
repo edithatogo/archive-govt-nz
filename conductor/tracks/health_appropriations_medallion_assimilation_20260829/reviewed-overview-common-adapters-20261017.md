@@ -26,7 +26,7 @@ original hashes remain unchanged. All 56 reference output files were checked
 against their recorded hashes before comparison. The public 2015/16 parser
 wrapper uses exactly the existing normalizer's reviewed controls.
 
-Two initial registry contracts failed before implementation. Fifty-four focused
+Two initial registry contracts failed before implementation. Fifty-five focused
 checks now pass, including supported registration identities, duplicate rejection,
 qualification/lineage/page accounting, bounded unsupported layouts, wrong source
 hashes and rejection of the 2002/03 composite and unknown vintages. Targeted
@@ -38,3 +38,11 @@ analytical join or publication. Current source operations still have their
 existing direct-normalizer routes; operational common-dispatch adoption and
 adapter-selection manifests remain open. Later capture-inventory reconciliation
 and complete Phase 3/Phase 5/track assurance remain open.
+
+The first full harness stopped at five pre-existing dictionary-splat fixture
+typing diagnostics after the heterogeneous tuple parameter was introduced.
+Shared four-key TypedDict annotations now describe the unchanged fixtures
+precisely. Targeted typing passes; no production API or assertion was weakened.
+A separate negative case verifies that changed source bytes cannot match a
+reviewed profile even when their own supplied SHA-256 is internally consistent.
+The native receipt's four production-file hashes remain exact.

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+from typing import TYPE_CHECKING
 
 import pytest
 from tests.domains.health_appropriations.test_budget_adapter import (
@@ -20,6 +21,11 @@ from archive_govt_nz.domains.health_appropriations.adapter_registry import (
     AdapterContext,
     context_adapter_registrations,
 )
+
+if TYPE_CHECKING:
+    from tests.domains.health_appropriations.adapter_context_fixtures import (
+        RequiredContexts,
+    )
 
 
 def test_context_registration_set_is_stable_and_profile_scoped() -> None:
@@ -49,7 +55,7 @@ def test_context_registration_set_is_stable_and_profile_scoped() -> None:
 
 
 def test_optional_pharmac_context_adds_only_its_reviewed_profile() -> None:
-    contexts = {
+    contexts: RequiredContexts = {
         "cpi": AdapterContext("cpi", "2026-Q2", "now"),
         "population": AdapterContext("population", "2026-08-18", "now"),
         "qes": AdapterContext("qes", "QES-2026-Q2", "now"),
@@ -67,7 +73,7 @@ def test_optional_pharmac_context_adds_only_its_reviewed_profile() -> None:
 
 
 def test_optional_budget_expenditure_context_dispatches_named_layout() -> None:
-    contexts = {
+    contexts: RequiredContexts = {
         "cpi": AdapterContext("cpi", "2026-Q2", "2026-09-01T00:00:00Z"),
         "population": AdapterContext(
             "population", "2026-08-18", "2026-09-01T00:00:00Z"
@@ -110,7 +116,7 @@ def test_optional_budget_revenue_context_dispatches_exact_edition(
     definitions: dict[str, str],
     year: int,
 ) -> None:
-    contexts = {
+    contexts: RequiredContexts = {
         "cpi": AdapterContext("cpi", "2026-Q2", "2026-09-01T00:00:00Z"),
         "population": AdapterContext(
             "population", "2026-08-18", "2026-09-01T00:00:00Z"

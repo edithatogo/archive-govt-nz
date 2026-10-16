@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 from dataclasses import replace
 from decimal import Decimal
+from typing import TYPE_CHECKING
 
 import pytest
 
@@ -19,6 +20,12 @@ from archive_govt_nz.domains.health_appropriations.adapter_registry import (
     context_adapter_registrations,
 )
 
+if TYPE_CHECKING:
+    from tests.domains.health_appropriations.adapter_context_fixtures import (
+        RequiredContexts,
+    )
+
+
 YEARS = tuple(range(2004, 2018))
 OBSERVED_AT = "2026-10-17T00:00:00Z"
 
@@ -32,7 +39,7 @@ def _context(year: int) -> AdapterContext:
     )
 
 
-def _base() -> dict[str, AdapterContext]:
+def _base() -> RequiredContexts:
     return {
         "cpi": AdapterContext("cpi", "2026-Q2", OBSERVED_AT),
         "population": AdapterContext("population", "2026-08-18", OBSERVED_AT),
@@ -141,7 +148,9 @@ def test_overview_adapter_preserves_qualification_lineage_and_all_pages(
         adapter.extract(payload, source_sha256="0" * 64)
 
 
-@pytest.mark.parametrize("mismatch", ["vintage", "page_count", "parser", "page"])
+@pytest.mark.parametrize(
+    "mismatch", ["vintage", "hash", "page_count", "parser", "page"]
+)
 def test_overview_adapter_fails_closed_on_unreviewed_input(
     monkeypatch: pytest.MonkeyPatch, mismatch: str
 ) -> None:
@@ -149,6 +158,8 @@ def test_overview_adapter_fails_closed_on_unreviewed_input(
     adapter, payload = _adapter_fixture(monkeypatch)
     if mismatch == "vintage":
         adapter = replace(adapter, source_vintage="another-edition")
+    elif mismatch == "hash":
+        payload += b"changed source bytes"
     elif mismatch == "page_count":
         adapter = replace(adapter, profile=replace(adapter.profile, page_count=1))
     elif mismatch == "parser":

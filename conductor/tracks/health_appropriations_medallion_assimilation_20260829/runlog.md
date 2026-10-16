@@ -5853,3 +5853,17 @@ The receipt now pins four implementation files and the native checker. Only two
 negative factory tests were added afterwards (unknown vintage and the separately
 registered 2002/03 composite); production code is unchanged. All 54 focused
 checks pass in 2.56s. Full repository and hosted qualification remain pending.
+
+## Full-harness fixture typing correction
+
+The first full harness on `cca2fbfa` terminated with exit 1 at typing, before
+tests. Five diagnostics identified four existing `dict[str, AdapterContext]`
+kwargs fixtures that could not prove the new tuple argument was absent. Their
+actual four keys are now expressed through a shared precise `RequiredContexts`
+TypedDict; existing fixture values/assertions and strict production API remain
+unchanged. The new helper uses the same precise type. Targeted typing reports
+zero errors/warnings, and focused checks pass including source-pin rejection
+for altered bytes. No Any, cast, ignore, gate or timeout relaxation was added.
+All four production hashes still match the native parity receipt, so that
+native evidence remains applicable. Full revalidation is pending the reserved
+Aegis slot's terminal handoff; no second broad run has been queued.

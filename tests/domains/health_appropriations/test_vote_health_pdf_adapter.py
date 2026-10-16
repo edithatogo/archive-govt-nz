@@ -33,6 +33,10 @@ from archive_govt_nz.domains.health_appropriations.vote_health_pdf_adapter impor
 )
 
 if TYPE_CHECKING:
+    from tests.domains.health_appropriations.adapter_context_fixtures import (
+        RequiredContexts,
+    )
+
     from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
         AdapterRegistration,
     )
@@ -396,7 +400,7 @@ def test_2016_17_overview_context_dispatches_pinned_facts_and_page_accounting(
         "parse_overview_2016_17_pages",
         lambda _texts: rows,
     )
-    contexts = {
+    contexts: RequiredContexts = {
         "cpi": AdapterContext("cpi.csv", "2026-Q2", OBSERVED_AT),
         "population": AdapterContext("population.csv", "2026-08-18", OBSERVED_AT),
         "qes": AdapterContext("qes.xlsx", "QES-2026-Q2", OBSERVED_AT),
