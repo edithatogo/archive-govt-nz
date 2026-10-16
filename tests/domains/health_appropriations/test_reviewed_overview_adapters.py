@@ -165,3 +165,13 @@ def test_overview_adapter_fails_closed_on_unreviewed_input(
     output = adapter.extract(payload, source_sha256=hashlib.sha256(payload).hexdigest())
     assert output.records == ()
     assert output.losses[0].disposition == "preserved_only"
+
+
+@pytest.mark.parametrize("vintage", [overview.VINTAGE, "unreviewed-edition"])
+def test_overview_factory_rejects_unreviewed_or_composite_editions(
+    vintage: str,
+) -> None:
+    with pytest.raises(ValueError, match="unsupported reviewed overview vintage"):
+        adapters.vote_health_estimates_overview_registration(
+            source_locator="source.pdf", source_vintage=vintage, observed_at=OBSERVED_AT
+        )

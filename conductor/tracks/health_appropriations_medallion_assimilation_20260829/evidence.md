@@ -1476,3 +1476,8 @@ The following bookkeeping commit changes only four unpinned track notes/status.
 Source observations, review evidence hashes, tests and product code are unchanged.
 Local slice assurance is complete; exact-head hosted checks and protected PR
 merge/pruning remain pending. This does not close the Health track.
+
+## Reviewed overview common adapters (2026-10-17)
+
+- [Native parity receipt](reviewed-overview-common-adapters-20261017.json): fourteen profiles, 209 facts, repeated dispatch and unchanged originals.
+- [Scope and qualification](reviewed-overview-common-adapters-20261017.md): thirteen new common registrations; operational adoption and whole-phase assurance remain open.

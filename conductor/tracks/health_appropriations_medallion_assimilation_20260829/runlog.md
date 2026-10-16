@@ -5840,3 +5840,16 @@ and all page dispositions are retained. Focused checks: 52 passed in 2.36s;
 Ruff/format/whitespace pass and targeted typing reports no errors or warnings.
 Native fourteen-profile parity and full assurance are pending; no new layout,
 source acquisition, analytical policy, rights or complete-phase claim is made.
+
+## Reviewed overview native parity checkpoint
+
+On clean `85a60cd4`, guarded native comparison matched all fourteen profiles /
+209 full fact rows against 56 hash-verified pre-existing normalizer output files.
+All common field-lineage fields and page dispositions match; the existing
+2016/17 unreviewed-reason wording is deliberately preserved. Two dispatches per
+profile are digest-identical and all original hashes are unchanged. Thirteen
+new common profiles contribute 185 facts; no source is acquired or reinterpreted.
+The receipt now pins four implementation files and the native checker. Only two
+negative factory tests were added afterwards (unknown vintage and the separately
+registered 2002/03 composite); production code is unchanged. All 54 focused
+checks pass in 2.56s. Full repository and hosted qualification remain pending.
