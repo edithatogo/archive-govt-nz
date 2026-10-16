@@ -5483,3 +5483,28 @@ and a closure over a subsequently deleted table variable; use object/list casts
 and a stable column-name binding instead. No production query or input builder
 changed. The original native receipt is retained as membership/repeat evidence,
 not retroactively described as ordered-slice proof.
+
+## PR #691 ordered-query verification completed locally — 2026-10-17
+
+Corrected native verification on clean `49becbc7b05982412834293dd6fcd7f912a19b48`
+passed (exit 0; targeted receipt SHA256
+`08c8cc1657489cbceb0ab4387f7c81eede29b37cfdfc7f109c1777435a67f2e5`). Both
+fresh input inventories (47 files each), Gold inventories (53 files each) and
+645 returned query-row digests match the original full native output pins. The
+new independent typed-column ASC NULLS LAST oracle proves each exact ordered
+slice, including truncation, counts and duplicate multiplicity. Fresh paired
+BEFU/HYEFU/Pharmac/MoH inputs were rebuilt alongside the five original-source
+pairs; source receipt schemas pass and Bronze is unchanged. Full actual outputs
+are retained outside Git. The original full native receipt remains unchanged;
+its metadata evidence is not relabelled as a second metadata run.
+
+Repeated full `./scripts/validate.sh` passed on that same clean code head:
+7,712 passed, ten skipped, 97.44% coverage against the 80% floor, 60 schemas/50
+representative documents, parity, all mutation/hygiene/audit/licence/secrets/SBOM
+gates. SBOM has 113 components; external CDX validation was explicitly skipped.
+Durable `ordered-native-1.*` and `validation-3.*` logs/exit statuses remain in
+`/Volumes/PortableSSD/tmp/canonical-recovery-inputs-20261017/`. The subsequent
+bookkeeping commit changes only track evidence/documents. Local review correction
+is verified; corrected exact-head hosted checks, thread resolution and protected
+merge/prune remain pending. Whole-track recovery/source/rights/standards gates
+remain open. See `canonical-recovery-ordered-validation-20261017.json`.

@@ -90,5 +90,26 @@ original receipt is retained unchanged with this qualification. The corrected
 oracle sorts typed table rows independently in physical column order, ASC NULLS
 LAST, and compares the complete expected slice. Negative subset/reversed-order
 fixtures reproduce the old gap; explicit numeric/null/list/duplicate fixtures
-exercise ordering semantics. Targeted fresh native proof and updated full/hosted
-validation are pending. No source values or producer outputs are changed.
+exercise ordering semantics. Targeted fresh native proof and the repeated full harness now pass; protected
+hosted delivery of the corrected head remains pending. No source values or
+producer outputs are changed.
+
+The fresh targeted native run on
+`49becbc7b05982412834293dd6fcd7f912a19b48` rebuilds paired BEFU, HYEFU,
+Pharmac and MoH inputs plus both five-source historical/Budget input trees and
+canonical Gold products. It independently verifies all eight ordered query
+slices: 645 returned rows from 800 stored facts, with historical and Budget
+truncation explicit. New Gold/input inventories and query-row digests exactly
+match the earlier full native run, while the new oracle now proves ordering.
+Actual outputs are retained outside Git; both source receipts validate and
+Bronze is unchanged. The targeted full receipt SHA256 is
+`08c8cc1657489cbceb0ab4387f7c81eede29b37cfdfc7f109c1777435a67f2e5`;
+see `canonical-recovery-ordered-validation-20261017.json`. The unchanged
+composite metadata remains supported by the original full native receipt;
+it is not described as rerun by this targeted check.
+
+The required `./scripts/validate.sh` passed again on clean `49becbc7`: 7,712
+passed, ten skipped, 97.44% coverage against the 80% floor, 60 schemas/50
+documents, parity and all mutation/hygiene/audit/licence/secrets/SBOM gates.
+External CDX validation was explicitly skipped, and the SBOM has 113 components.
+The following bookkeeping commit adds only track evidence/status.

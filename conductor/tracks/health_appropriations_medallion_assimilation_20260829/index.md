@@ -379,3 +379,5 @@ they are not current-state assertions.
 - [Fresh canonical inputs and query/metadata recovery](./canonical-recovery-inputs-20261017.md)
 
 - [Fresh canonical recovery native validation](./canonical-recovery-validation-20261017.json)
+
+- [Independent ordered query recovery validation](./canonical-recovery-ordered-validation-20261017.json)
