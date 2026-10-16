@@ -15,8 +15,10 @@ from archive_govt_nz.domains.health_appropriations.source_measure_review import 
 from archive_govt_nz.domains.health_appropriations.source_measure_review import (
     _captured_years,
     _check_discovered,
+    _check_vote_history,
     _family,
     _fiscal_year,
+    _published_vote_editions,
     _Review,
     validate_review,
 )
@@ -178,7 +180,7 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
     )
     assert (
         len(report["source_families"]["vote_health"]["discovered_supplementary_urls"])
-        == 2
+        == 1
     )
 
 
@@ -474,3 +476,42 @@ def test_component_index_candidates_keep_codes_and_admission_separate() -> None:
             "No whole-Vote-Health deflator"
             in report["series"][name]["analytical_status"]
         )
+
+
+def test_vote_scope_uses_published_fiscal_editions() -> None:
+    report = json.loads(REPORT.read_text())
+    vote = report["source_families"]["vote_health"]
+    vote["missing_supplementary_years"] = [2012]
+    vote["discovered_supplementary_urls"].pop("2026", None)
+    records = json.loads((TRACK / "source-census.json").read_text())["records"]
+    _check_vote_history(_Review.model_validate(report), records)
+
+
+def test_vote_rejects_same_domain_wrong_edition() -> None:
+    report = json.loads(REPORT.read_text())
+    vote = report["source_families"]["vote_health"]
+    vote["discovered_supplementary_urls"]["2012"] = (
+        "https://www.treasury.govt.nz/publications/supplementary-estimates/"
+        "vote-health-supplementary-estimates-appropriations-2025-26"
+    )
+    records = json.loads((TRACK / "source-census.json").read_text())["records"]
+    with pytest.raises(ValueError, match="invalid discovered Vote Health locator"):
+        _check_vote_history(_Review.model_validate(report), records)
+
+
+def test_publisher_editions_preserve_additions_and_internal_gaps() -> None:
+    records = json.loads((TRACK / "source-census.json").read_text())["records"]
+    published = _published_vote_editions(records)
+    assert set(published["estimates"]) == set(range(1998, 2027))
+    assert set(published["supplementary"]) == set(range(1998, 2026))
+    assert len(published["supplementary"][2019]) == 2
+    assert any("addition-" in url for url in published["supplementary"][2019])
+    without_2012 = [
+        row
+        for row in records
+        if not (
+            row.get("family") == "treasury_vote_health"
+            and "2012/13" in row.get("title", "")
+        )
+    ]
+    assert 2012 not in _published_vote_editions(without_2012)["supplementary"]

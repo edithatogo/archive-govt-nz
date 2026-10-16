@@ -5753,3 +5753,14 @@ Before merging #695, review found the shared 1998–2026 range creates a false
 2026/27 Supplementary gap pointing at captured 2025/26. Derive each family
 from pinned publisher titles, bind missing URLs to those editions, preserve
 2019/20 additions, and rerun focused/full assurance. No new acquisition.
+
+The two new regressions reproduced rejection of correct fiscal coverage and
+acceptance of a same-domain wrong-edition URL. The implementation now derives
+exact year-to-URL sets separately from pinned publisher landing records, not a
+shared range or captured documents. Both 2019/20 Supplementary forms survive.
+The stricter check also exposed a shortened 2012/13 URL in the review: it now
+uses the exact pinned appropriation-and-supporting-information locator. Current
+missing Supplementary coverage is [2012]; the already captured 2025/26 edition
+is no longer presented as missing. No captured source or older review changed.
+Focused assurance: 48 passed in 1.13s; Ruff and whitespace checks pass. Full
+validation of the following clean implementation commit remains required.
