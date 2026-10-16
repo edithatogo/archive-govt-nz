@@ -96,7 +96,7 @@
       "minProperties": 1,
       "maxProperties": 16,
       "propertyNames": {
-        "pattern": "^[A-Za-z0-9_-]+\\.(json|parquet)$"
+        "pattern": "^[A-Za-z0-9_-]+\\.(json|jsonl|parquet)$"
       },
       "additionalProperties": {
         "$ref": "#/$defs/binding"

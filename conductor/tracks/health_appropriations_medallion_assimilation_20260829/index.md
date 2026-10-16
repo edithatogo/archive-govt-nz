@@ -377,3 +377,5 @@ they are not current-state assertions.
 - [Canonical Gold named queries and readback evidence](./canonical-gold-queries-20261017.md)
 - [Canonical Gold metadata profile and version compatibility](./canonical-gold-metadata-20261017.md)
 - [Fresh canonical inputs and query/metadata recovery](./canonical-recovery-inputs-20261017.md)
+
+- [Fresh canonical recovery native validation](./canonical-recovery-validation-20261017.json)

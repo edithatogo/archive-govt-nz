@@ -1896,3 +1896,5 @@ Twenty focused checks pass. Native integrated assurance, whole-repository
 validation and protected exact-head delivery remain pending. Other retained
 comparison evidence and unsupported source/rights/standards gates are not
 relabelled as completed clean-room products.
+
+Native two-run recovery passed with unchanged Bronze, matching fresh inputs and Gold, all bounded query readbacks and 13-recordset metadata reconstruction. Independent actual-receipt validation caught a filename-schema gap hidden by the original synthetic fixture; the native-shaped JSONL fixture reproduced it red, and the narrow schema correction now validates both real receipts. No production-code or input change followed the native run. The cancelled queued harness never acquired the broad slot or executed tests. The full corrected-tree harness and hosted checks remain pending; this review does not close the whole recovery or track gate.

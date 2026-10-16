@@ -73,6 +73,10 @@ def sources(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[Path, list
             json.dumps({"raw_pin": pin}, sort_keys=True) + "\n"
         )
         (output / "facts.parquet").write_bytes((raw / "facts.parquet").read_bytes())
+        if marker == "LOCAL_BUDGET.json":
+            (output / "lineage_accounting.jsonl").write_text(
+                '{"source_record_id":"fixture-budget-record"}\n'
+            )
         return {}
 
     def historical(

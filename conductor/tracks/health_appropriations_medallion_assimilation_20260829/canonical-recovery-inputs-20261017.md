@@ -50,7 +50,27 @@ wrong timestamp-token identity, exclusive repeat outputs, interruption evidence,
 correct second-run domain bindings, damaged Gold rejection, all eight query
 readbacks and 13-recordset composite metadata reconstruction. Lint and focused
 typing pass. The new machine receipt has a schema and representative fixture.
-Native integrated recovery and the required full harness remain pending.
+The integrated native run on implementation commit
+`a8b8fcea74a8889c90fb68ddabf0012a68489f49` exited successfully. Both fresh
+five-source input trees match all 47 files (46 raw/canonical files plus their
+completion receipt); both Gold trees match 53 files. All eight named queries
+repeat identically and return 645 exact typed rows from 800 product rows, with
+explicit 200-row truncation for historical and Budget products. All 859 input
+records have products and zero are unaccounted. Composite metadata v4 repeats
+nine files across three packages, 13 recordsets and 1,184 rows. The full run
+verifies Bronze objects unchanged. See
+`canonical-recovery-validation-20261017.json` for pins and bounded inventories.
+
+Validating the actual input receipts caught a new-schema filename omission:
+Budget canonical outputs include `lineage_accounting.jsonl`, whereas the draft
+inventory pattern allowed only JSON and Parquet. A native-shaped fixture first
+reproduced the rejection, then the schema was corrected to include JSONL. Both
+saved actual receipts validate with the correction and are byte-identical
+(`db17e436e6a25ad3d48824642753cfe8342585e9e1dbe689cf0d49f0a6f4f371`).
+Production implementation, inputs and output hashes remain unchanged; this
+schema/test/fixture/documentation delta does not require repeating the native
+rebuild. The focused recovery suite still passes. Required whole-repository
+and hosted validation remain pending.
 
 The overall Health receipt still reports partial recovery with broader source,
 comparison, rights and standards gaps. This slice does not mark the track or

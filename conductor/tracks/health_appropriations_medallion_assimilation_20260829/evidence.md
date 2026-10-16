@@ -1269,3 +1269,5 @@ metadata. Preflight context/provenance differences and exact historical replay
 are recorded in [the slice evidence](./canonical-recovery-inputs-20261017.md).
 Native full integration and required whole-repository/hosted validation remain
 pending; no whole-track or rights/publication completion is claimed.
+
+Native recovery now exits 0 on implementation `a8b8fcea74a8889c90fb68ddabf0012a68489f49`. The bounded [native receipt projection](./canonical-recovery-validation-20261017.json) retains definitions, source/output pins, query counts and metadata reconstruction. Forty-seven input-tree files and 53 Gold files repeat; composite metadata covers 13 recordsets/1,184 rows and nine repeat-identical files. All eight bounded query results match typed facts, with truncation recorded, and no Bronze mutations occur. The actual completion receipts also validate against the corrected JSONL-aware schema; no production code changed after native assurance. Required full/hosted validation remains pending.

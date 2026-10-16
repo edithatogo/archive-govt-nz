@@ -12,6 +12,10 @@
         "facts.parquet": {
           "bytes": 15,
           "sha256": "ad675291069613038b456819150f72f89b0dc1100e961f8c82b786ff1893b50f"
+        },
+        "lineage_accounting.jsonl": {
+          "bytes": 45,
+          "sha256": "fc134c4dc6fc9ea2f17b3185878590bc92c9091cf9b441d11295950be27fdfe7"
         }
       },
       "canonical_marker_sha256": "dde8ad5bab64f5f2b9d5ebc46501f7783f3557f319ff4dcae1f17c78ce94a5a4",
