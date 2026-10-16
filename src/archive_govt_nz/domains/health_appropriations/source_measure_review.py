@@ -114,22 +114,23 @@ def _vote_edition_years(records: list[dict]) -> tuple[set[int], set[int]]:
     estimates: set[int] = set()
     supplementary: set[int] = set()
     for row in records:
-        title = row.get("title", "")
+        title = row.get("title", "").casefold()
         if (
             row.get("family") != "treasury_vote_health_document"
             or row.get("disposition") != "captured"
-            or "Estimates of Appropriations" not in title
+            or "estimates" not in title
             or any(
                 label in title
                 for label in (
-                    "Performance Information",
-                    "Information Supporting",
+                    "performance information",
+                    "information supporting",
+                    "estimates supporting information",
                 )
             )
         ):
             continue
         year = _fiscal_year(title)
-        if "Supplementary" in title:
+        if "supplementary" in title:
             supplementary.add(year)
         else:
             estimates.add(year)

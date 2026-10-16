@@ -5786,3 +5786,14 @@ source-census.json under the short lowercase title, along with its distinct
 supporting-information volume. The literal title filter incorrectly omits the
 appropriation PDF. Add a red regression for native short titles and supporting
 exclusion, correct only the latest review, and requalify. No acquisition needed.
+
+The native-short-title regression failed before the change. Captured selection
+now compares casefolded Estimates labels and explicitly excludes dedicated
+performance/information-supporting and short-title supporting-information forms.
+Combined appropriation-and-supporting titles remain appropriation documents:
+2007/08 and 2013/14 are retained. Fiscal identity comes from the title, not
+upload directories. All 28 published Supplementary years now have captured
+appropriation documents; this does not prove complete variant enumeration.
+The latest review alone is corrected; 59 captured PDFs and all source bytes
+are unchanged. Fifty focused checks pass in 1.02s; Ruff/whitespace pass.
+Full assurance of this correction is pending; earlier passing heads are historical.

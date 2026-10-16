@@ -297,7 +297,7 @@
       "period_basis": "HAIR figure labels exclude capital, COVID-19 and DSS; precise dates, currency/scale, real-price base, deflator and denominator methods remain unspecified in the retained originals. Estimates/Supplementary Editions are distinct; use actual annual year endpoints and preserve vintage.",
       "rights": "publisher_defaults_observed_exceptions_unadjudicated",
       "series_id": "Ministry HAIR2024 Figures 27\u201328; Treasury Vote Health Estimates, Supplementary Estimates and supporting information",
-      "vintage_or_range": "MoH nominal/real and per-capita indicators cover 2005/06\u20132024/25. Treasury Historical Vote Information index covers Vote Health chapters for Budget years 1998\u20132026. Repository capture register contains 59 PDFs; 9 Estimates years (2009\u20132013, 2018\u20132021) and Supplementary year 2012/13 are located but not in that captured register. Fiscal-year keys use the starting year: published main Estimates span 1998/99\u20132026/27 and Supplementary Estimates span 1998/99\u20132025/26; 2025/26 Supplementary is already captured."
+      "vintage_or_range": "MoH nominal/real and per-capita indicators cover 2005/06\u20132024/25. Treasury Historical Vote Information index covers Vote Health chapters for Budget years 1998\u20132026. Repository capture register contains 59 PDFs; 9 Estimates years (2009\u20132013, 2018\u20132021) are located but not in that aggregate register. Fiscal-year keys use the starting year: published main Estimates span 1998/99\u20132026/27 and Supplementary Estimates span 1998/99\u20132025/26. All 28 published Supplementary fiscal years have captured appropriation documents, including the short-title 2012/13 PDF; separate supporting-information volumes do not satisfy appropriation coverage. This is fiscal-year coverage, not complete enumeration of every publication form."
     },
     "wages": {
       "analytical_status": "captured and exact source profile exists; QES methodology confirms composition effects, so this is not a constant-quality wage index; official evidence identifies the selected ordinary-time hourly earnings indicator as not seasonally adjusted; ISO currency, annual weighting, rights eligibility, and deflator selection remain unqualified",
@@ -441,9 +441,7 @@
         "2020": "https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2020-21",
         "2021": "https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2021-22"
       },
-      "discovered_supplementary_urls": {
-        "2012": "https://www.treasury.govt.nz/publications/supplementary-estimates/vote-health-supplementary-estimates-appropriations-and-supporting-information-2012-13"
-      },
+      "discovered_supplementary_urls": {},
       "estimates_years": [
         1998,
         1999,
@@ -477,9 +475,7 @@
         2020,
         2021
       ],
-      "missing_supplementary_years": [
-        2012
-      ],
+      "missing_supplementary_years": [],
       "rights_state": "publisher default CC-BY-4.0 observed; no exception adjudication or release approval",
       "supplementary_years": [
         1998,
@@ -496,6 +492,7 @@
         2009,
         2010,
         2011,
+        2012,
         2013,
         2014,
         2015,

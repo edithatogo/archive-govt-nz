@@ -20,6 +20,7 @@ from archive_govt_nz.domains.health_appropriations.source_measure_review import 
     _fiscal_year,
     _published_vote_editions,
     _Review,
+    _vote_edition_years,
     validate_review,
 )
 
@@ -102,35 +103,9 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
         2025,
         2026,
     ]
-    assert report["source_families"]["vote_health"]["supplementary_years"] == [
-        1998,
-        1999,
-        2000,
-        2001,
-        2002,
-        2003,
-        2004,
-        2005,
-        2006,
-        2007,
-        2008,
-        2009,
-        2010,
-        2011,
-        2013,
-        2014,
-        2015,
-        2016,
-        2017,
-        2018,
-        2019,
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025,
-    ]
+    assert report["source_families"]["vote_health"]["supplementary_years"] == list(
+        range(1998, 2026)
+    )
     assert report["series"]["population"]["series_id"].startswith("DPE056AA")
     assert (
         report["series"]["population"]["rights"]
@@ -180,7 +155,7 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
     )
     assert (
         len(report["source_families"]["vote_health"]["discovered_supplementary_urls"])
-        == 1
+        == 0
     )
 
 
@@ -235,7 +210,7 @@ def _mutate_vote(report: dict, mutation: str) -> None:
     elif mutation == "vote_missing_estimates":
         vote["missing_estimates_years"].pop()
     elif mutation == "vote_missing_supplementary":
-        vote["missing_supplementary_years"].pop()
+        vote["missing_supplementary_years"].append(2012)
     elif mutation == "discovered_year":
         vote["discovered_estimates_urls"]["2014"] = (
             "https://www.treasury.govt.nz/publications/budget"
@@ -481,7 +456,7 @@ def test_component_index_candidates_keep_codes_and_admission_separate() -> None:
 def test_vote_scope_uses_published_fiscal_editions() -> None:
     report = json.loads(REPORT.read_text())
     vote = report["source_families"]["vote_health"]
-    vote["missing_supplementary_years"] = [2012]
+    vote["missing_supplementary_years"] = []
     vote["discovered_supplementary_urls"].pop("2026", None)
     records = json.loads((TRACK / "source-census.json").read_text())["records"]
     _check_vote_history(_Review.model_validate(report), records)
@@ -490,11 +465,10 @@ def test_vote_scope_uses_published_fiscal_editions() -> None:
 def test_vote_rejects_same_domain_wrong_edition() -> None:
     report = json.loads(REPORT.read_text())
     vote = report["source_families"]["vote_health"]
-    vote["discovered_supplementary_urls"]["2012"] = (
-        "https://www.treasury.govt.nz/publications/supplementary-estimates/"
-        "vote-health-supplementary-estimates-appropriations-2025-26"
-    )
     records = json.loads((TRACK / "source-census.json").read_text())["records"]
+    vote["discovered_estimates_urls"]["2012"] = next(
+        iter(_published_vote_editions(records)["estimates"][2025])
+    )
     with pytest.raises(ValueError, match="invalid discovered Vote Health locator"):
         _check_vote_history(_Review.model_validate(report), records)
 
@@ -515,3 +489,34 @@ def test_publisher_editions_preserve_additions_and_internal_gaps() -> None:
         )
     ]
     assert 2012 not in _published_vote_editions(without_2012)["supplementary"]
+
+
+def test_short_titles_count_appropriations_excluding_supporting_volumes() -> None:
+    records = json.loads((TRACK / "source-census.json").read_text())["records"]
+    short = [
+        row
+        for row in records
+        if row.get("source_id")
+        in {
+            "treasury_vote_health_document-90791173089c47e3",
+            "treasury_vote_health_document-566aface4fa2633a",
+        }
+    ]
+    assert len(short) == 2
+    assert _vote_edition_years(short) == (set(), {2012})
+    supporting = [row for row in short if "supporting information" in row["title"]]
+    assert _vote_edition_years(supporting) == (set(), set())
+
+
+def test_combined_supplementary_titles_remain_appropriation_documents() -> None:
+    records = json.loads((TRACK / "source-census.json").read_text())["records"]
+    combined = [
+        row
+        for row in records
+        if row.get("family") == "treasury_vote_health_document"
+        and "Supplementary Estimates of Appropriations and Supporting Information"
+        in row.get("title", "")
+    ]
+    assert len(combined) == 2
+    assert _vote_edition_years(combined) == (set(), {2007, 2013})
+    assert _vote_edition_years(records)[1] == set(range(1998, 2026))
