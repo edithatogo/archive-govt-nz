@@ -658,3 +658,25 @@ flowchart LR
 The installed command defaults to source preflight and requires explicit write
 for exclusive new outputs. Keep partial failures. Conformance, rights, public
 release, additional source families and final whole-track review remain separate.
+
+## Planned canonical Gold row-query boundary (16 October 2026)
+
+The existing canonical Gold verifier checks declared output fixity; a verified
+receipt does not establish Parquet semantics or provide data-query delivery.
+The next Phase 8 task extends the established named Fiscal query pattern to the
+eight existing canonical Gold fact products, preserving source separation.
+
+Require an independent manifest pin and reuse closed package fixity checks.
+Read the selected payload into bounded bytes, recheck its declared digest, and
+validate its exact existing Arrow schema plus compressed, expanded and row
+limits before registering it with an in-memory DuckDB connection. Disable
+external database access. Accept only fixed product names and a bounded row
+limit, with deterministic source-identity ordering; reject arbitrary SQL.
+
+Return exact Decimal/date encodings, total/truncated counts, product identity
+and unchanged source qualifications. CLI and read-only MCP share one adapter
+and redacted failure contract. Budget department/portfolio dimensions, CPB
+allocation/regime labels and revision/classification caveats remain distinct.
+A query over admitted facts neither reverifies Bronze nor establishes new
+rights, analytical equivalence, deflator policy or publication eligibility.
+This section is the implementation contract, not a completed query claim.

@@ -117,17 +117,18 @@ repository validation command. External gates block only their affected task.
 - [~] Enumerate the exact official CPI, QES wage, population, GDP and Crown
   expense series needed for approved derived measures; reject discovery leads
   that lack a stable definition or join. [M-02, M-12; AC-03, AC-10]
-  Exact national resident-population table, all-age selector, stock/mean
-  estimate choices, census basis and selectable period coverage are now pinned
-  in `context-census.json`. The June 2026 GDP successor workbook and exact
-  Table 1 expenditure selector are separately captured and hash-bound. June
-  now has strict Bronze-to-Silver and canonical projections and is included in
-  Context Gold with March and June vintages kept separate. The 2026-10-02
-  clean-room receipt confirms repeat-identical output. Numeric population
-  rights, GDP currency, analytical admission and period-alignment gates remain
-  open; see `context-gold-gdp-vintages-20261002.md`;
-  CPI, QES wage, Treasury GDP and Crown expense joins remain subject to their
-  own source-specific review.
+  The annual June mean resident-population export is captured and projected;
+  the pinned Fiscal 2025 / population-20260818 policy supports nominal per-capita
+  rates for matching June fiscal years, with missing/March-period exclusions.
+  The same-workbook Treasury Health/GDP and core/total Crown share policies
+  and the separate household-CPI FY2025 benchmark are also implemented.
+  `analytical-context-register.md` now distinguishes these qualified policies
+  from source projections and remaining cross-family/deflator decisions.
+  The June 2026 GDP successor workbook and Table 1 expenditure selector are
+  separately captured, source-profiled, canonically projected and included in
+  Context Gold, with March/June vintages separate. GDP currency, broader
+  comparability and resource-specific rights gates remain scoped open; see
+  `context-gold-gdp-vintages-20261002.md` and the named analytical receipts.
   Stats NZ's June 2026 labour-market summary and QES series mapping now support
   a not-seasonally-adjusted disposition for QEMQ.SASZ9A; the ISO currency and
   analytical join remain unresolved. See
@@ -1412,6 +1413,16 @@ integrated parent head.
     output manifest pin; compare reconstructed metadata bytes without writes,
     preserving unassessed rights and publication states. See
     `gold-metadata-mcp-verifier-20261005.md`.
+  - [ ] Add named read-only queries over the eight existing canonical Gold
+    fact products, with bounded Parquet/schema validation, exact Decimal and
+    identity readback, deterministic ordering and CLI/MCP parity. Reuse the
+    existing product schemas and fixity verifier; reject arbitrary SQL and
+    preserve product-specific units, coverage, vintages and caveats. Exercise
+    Budget department/portfolio and Pharmac CPB outputs alongside their
+    classification/revision reports without asserting economic equivalence.
+    The existing canonical Gold CLI/MCP verifier proves declared fixity only;
+    this task closes the distinct data-query gap. [M-10, M-13, M-15; AC-08,
+    AC-11, AC-13]
 - [x] Add a read-only canonical Gold package verifier to CLI and MCP. Check the
   hash-pinned manifest, exact direct-child output inventory, byte counts and
   SHA-256 values, plus presence of the temporal report; test malformed and

@@ -2,19 +2,17 @@
 
 from __future__ import annotations
 
-import re
+import json
 from pathlib import Path
 
 
-def test_context_register_preserves_exact_ids_and_unresolved_joins() -> None:
-    """The register must not turn metadata leads into promoted denominators."""
+def test_context_register_distinguishes_leads_from_pinned_analytical_policies() -> None:
+    """Keep discovery leads distinct from captured inputs and bounded policies."""
     root = Path(__file__).parents[2]
-    path = (
-        root
-        / "conductor/tracks/health_appropriations_medallion_assimilation_20260829"
-        / "analytical-context-register.md"
+    track = (
+        root / "conductor/tracks/health_appropriations_medallion_assimilation_20260829"
     )
-    text = path.read_text(encoding="utf-8")
+    text = (track / "analytical-context-register.md").read_text(encoding="utf-8")
     for source_id in (
         "stats_nz_cpi-053a0705526fac8d",
         "stats_nz_qes-faab0efe46470af8",
@@ -22,12 +20,29 @@ def test_context_register_preserves_exact_ids_and_unresolved_joins() -> None:
         "stats_nz_population-806dead2a5b8ab69",
     ):
         assert text.count(source_id) == 1
-    assert "DPE054AA" in text
-    assert "DPE054FF" in text
-    assert "Mean year ended" in text
-    assert "Definition enumerated from Stats NZ metadata" in text
-    assert "numeric export remain unverified" in text
-    assert "no unified join" in text
-    assert "cannot support per-capita spending" in text
-    assert "No row establishes rights" in text
-    assert not re.search(r"\| Resident population \|.*\| Captured \|", text)
+    rows = {
+        line.split("|")[1].strip(): line
+        for line in text.splitlines()
+        if line.startswith("| ")
+    }
+    quarterly = rows["Quarterly resident-population lead"]
+    assert all(
+        value in quarterly for value in ("DPE054AA", "DPE054FF", "Mean year ended")
+    )
+    assert "Retained discovery lead" in quarterly
+    assert "Do not substitute quarterly stocks" in quarterly
+    annual = rows["Annual resident population"]
+    assert "DPE056AA" in annual
+    assert "Numeric export captured, normalized and projected" in annual
+    assert "March fiscal periods are unsupported" in annual
+    assert "Not an all-age resident denominator" in rows["Working-age population"]
+    assert "No unified join" in rows["Forecast Crown expense sources"]
+    assert "no health-input-cost deflator" in rows["CPI"]
+    for name in ("shares", "per-capita", "cpi-benchmark"):
+        receipt = json.loads(
+            (track / f"fiscal-health-{name}-20261004.json").read_text()
+        )
+        assert receipt["query_receipt"]["formula_policy"] in text
+        assert receipt["bronze_sha256"] in text
+    assert "grants no new derivative redistribution rights" in text
+    assert "*** Update File:" not in text

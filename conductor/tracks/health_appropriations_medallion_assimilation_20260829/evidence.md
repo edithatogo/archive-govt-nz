@@ -1193,3 +1193,21 @@ repeat the already-completed external publication/collection operations.
 - Focused validation: `tests/domains/health_appropriations/test_fiscal_analytical_operations.py`
   passed (11 tests). The wider golden matrix across Crown, Budget, revisions,
   classifications, portfolio and CPB products remains open.
+
+## Analytical context reconciliation — 2026-10-16
+
+The current register distinguishes quarterly discovery leads, captured annual
+population data and three implemented Fiscal analytical policies. Their exact
+policy constants and receipt source pins match; the three retained outputs,
+three Bronze originals, Treasury period observation and combined Gold manifest
+passed fixity readback. No original capture or clean-room rebuild is claimed.
+
+The current census now pins the revised register, and the recovery harness
+pins that census. Two source-health builds from the retained capture manifest,
+Bronze CAS and layout baseline were byte-identical. Compared semantically with
+the previous current report, only its context-census input digest changed;
+source facts, counts, rights and qualification states are unchanged.
+`source-measure-review-20261016.json` records the current bounded policies and
+evidence closure; the dated 2026-10-06 review and all dated recovery receipts
+remain unchanged. The five focused census/register/review/recovery suites
+passed 122 tests. Required full revalidation passed: 7,675 tests passed, 10 skipped; 97.38% coverage against the 80% floor; 56 schemas/46 representative documents; parity 9/9; all mutation, hygiene, security and supply-chain gates passed, including strict 113-component SBOM validation. Conductor reports 93 tracks and no errors. Hosted validation remains a separate gate.
