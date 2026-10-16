@@ -1448,3 +1448,31 @@ the preceding implementation state; it is not claimed for the corrected Vote
 Health description. No native captures or broader source-family closure were
 added. Later per-edition capture receipts need separate reconciliation and do
 not retroactively change the aggregate snapshot's current counts.
+
+
+## Remaining locator census local assurance — 2026-10-17
+
+The required `./scripts/validate.sh` passed on clean
+`7e780458e1d5c49160e85afd5a5d520fc55681b3`: 7,717 passed, ten skipped,
+23 warnings, 97.44% coverage against the 80% floor; 60 schemas/50 representative
+documents, 9/9 parity and every configured mutation/hygiene/audit/licence/secrets/
+SBOM gate. Test execution took 530.03s with one worker. SBOM has 113 components;
+external CDX validation was explicitly skipped. Durable log and exit 0 are
+retained under
+`/Volumes/PortableSSD/tmp/health-census-locator-gaps-20261017/validation-2.*`.
+The earlier guard request was cancelled while still queued for the documented
+coverage-wording correction; no harness was started on its superseded head.
+
+Conductor's independent exact-head review confirms all 41 evidence hashes,
+all 93 prior resource objects unchanged and twelve unaffected prior descriptors
+unchanged. The sole earlier descriptor changed is Vote Health inventory
+wording/status, reconciled to the existing 59-PDF aggregate register and nine
+missing Estimates years. Earlier dated reviews and captured-census bytes remain
+unchanged. The new review records 131 locators/19 source descriptors while all
+30 editions remain pending full source-family coverage and source-specific
+rights/fixity/layout/analytical qualification.
+
+The following bookkeeping commit changes only four unpinned track notes/status.
+Source observations, review evidence hashes, tests and product code are unchanged.
+Local slice assurance is complete; exact-head hosted checks and protected PR
+merge/pruning remain pending. This does not close the Health track.

@@ -70,7 +70,7 @@ repository validation command. External gates block only their affected task.
 
 ### 1.2 Inventory the seed and direct official corpus
 
-- [~] Register the 38 verified primary locators across the six remaining
+- [x] Register the 38 verified primary locators across the six remaining
   year-level gaps (BEFU 2000/2003/2004/2006 and Budget 2025/2026). Preserve
   publisher/reader label discrepancies, period and accounting/GST boundaries,
   four related links pending content-scope review, and current-capture URL
