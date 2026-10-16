@@ -11,6 +11,9 @@ from archive_govt_nz.domains.health_appropriations import (
 from archive_govt_nz.domains.health_appropriations import (
     vote_health_estimates_2016_17_adapter as estimates_2016_17_adapter,
 )
+from archive_govt_nz.domains.health_appropriations import (
+    vote_health_estimates_overview_adapter as overview_adapters,
+)
 from archive_govt_nz.domains.health_appropriations.budget_adapter import (
     budget_expenditure_registration,
 )
@@ -57,6 +60,7 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
     vote_health: AdapterContext | None = None,
     vote_health_estimates_2002_03: AdapterContext | None = None,
     vote_health_estimates_2016_17: AdapterContext | None = None,
+    vote_health_estimates_overviews: tuple[AdapterContext, ...] = (),
 ) -> tuple[AdapterRegistration, ...]:
     """Return deterministic, probe-bound registrations for supplied families.
 
@@ -133,4 +137,15 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
                 observed_at=vote_health_estimates_2016_17.observed_at,
             )
         )
+    registrations.extend(
+        overview_adapters.vote_health_estimates_overview_registration(
+            source_locator=context.source_locator,
+            source_vintage=context.source_vintage,
+            observed_at=context.observed_at,
+        )
+        for context in vote_health_estimates_overviews
+    )
+    if len({row.adapter_id for row in registrations}) != len(registrations):
+        message = "duplicate reviewed adapter identity"
+        raise ValueError(message)
     return tuple(sorted(registrations, key=lambda row: row.adapter_id))

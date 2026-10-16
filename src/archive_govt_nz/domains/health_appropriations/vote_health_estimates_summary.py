@@ -2181,6 +2181,19 @@ def parse_overview_2014_15_pages(texts: list[str]) -> list[dict[str, Any]]:
     )
 
 
+def parse_overview_2015_16_pages(texts: list[str]) -> list[dict[str, Any]]:
+    """Parse the seventeen already reviewed 2015/16 overview statements."""
+    return parse_overview_pages(
+        texts,
+        year="2015/16",
+        patterns=_PATTERNS_2015_16,
+        intro_pattern=r"2015/16 financial year\s+totalling\s+nearly",
+        second_page_pattern=r"Details of Appropriations and Capital Injections",
+        profile_qualifier_measures=_PROFILE_QUALIFIER_MEASURES_2015_16,
+        profile_unqualified_measures=_PROFILE_UNQUALIFIED_MEASURES_2015_16,
+    )
+
+
 def parse_overview_2016_17_pages(texts: list[str]) -> list[dict[str, Any]]:
     """Parse 24 source-specific 2016/17 overview statements on pages 2-3."""
     return parse_overview_pages(

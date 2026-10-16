@@ -5826,3 +5826,17 @@ existing-normalizer output files/209 facts are retained and independently hash
 checked for subsequent parity. No source reacquisition or new layout claims
 are needed. Later capture inventory assembly remains a separate open task;
 aggregate 59-PDF counts never stand for the complete retained corpus.
+
+## Reviewed overview common adapters — implementation checkpoint
+
+Two registry contracts reproduced the missing input/registration gap. Added
+explicit immutable profiles for thirteen reviewed editions, reusing existing
+source SHA/vintage/page controls and parser functions. Added the missing public
+2015/16 parser wrapper with exactly the existing normalizer's controls. The
+new context tuple also delegates 2016/17 to its unchanged existing adapter and
+rejects duplicate adapter identities. 2002/03 remains in its separate composite.
+Edition-specific rounding/qualification flags, record IDs, raw phrases, lineage
+and all page dispositions are retained. Focused checks: 52 passed in 2.36s;
+Ruff/format/whitespace pass and targeted typing reports no errors or warnings.
+Native fourteen-profile parity and full assurance are pending; no new layout,
+source acquisition, analytical policy, rights or complete-phase claim is made.
