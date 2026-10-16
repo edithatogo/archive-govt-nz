@@ -2051,9 +2051,10 @@ and protected delivery remain pending; the whole Health track is incomplete.
 
 ## Remaining locator gaps and component identities — 2026-10-17
 
-Bounded self-review preserves all 93 earlier resource objects and thirteen
-reviewed source descriptors exactly, plus unchanged captured-census and prior
-review bytes. All 131 primary source IDs/URLs are unique. At least one locator
+Bounded self-review preserves all 93 earlier resource objects and twelve
+unaffected reviewed source descriptors exactly, plus unchanged captured-census
+and prior dated review bytes. Vote Health coverage wording in the new review
+is corrected against the existing structured inventory. All 131 primary source IDs/URLs are unique. At least one locator
 per scoped year does not establish complete per-edition families: the complete
 edition list remains empty and every prior capture/rights boundary remains.
 Four related 2000 links remain discovered with content-scope review pending.
@@ -2074,8 +2075,31 @@ GST/period alignment, native capture/fixity, rights and policy remain pending.
 The agricultural PPI base exception and finance/FISIM nuance remain scoped.
 No whole-Vote-Health deflator, QES substitution or numerical export is approved.
 
-Conductor independently confirmed preservation of all prior resources and
-source descriptors, unique identities, unknown fixity/rights for additions,
+Before that wording correction, Conductor independently confirmed preservation
+of all prior resources and source descriptors, unique identities, unknown
+fixity/rights for additions,
 and unchanged negative completion flags. Current review closure and local
 focused checks verify 41 pinned evidence files. Full harness and exact-head
 hosted delivery remain pending; this does not close the Health track.
+
+
+## Current-review coverage consistency correction — 2026-10-17
+
+A further read-only assessment found a stale Vote Health narrative inherited
+from the older review: 58 PDFs and ten missing Estimates years, while the
+structured aggregate register and validator prove 59 PDFs and nine missing
+years. The latter excludes 2008, already present in that register. Added a
+contract tying narrative counts to the structured evidence; it failed as
+expected before correction (0.63s, `red-coverage-description.log`).
+
+Cancelled only this slice's verified queued guard request PID 8669 before its
+harness started, preserving the queue/cancellation receipt and leaving the
+other live validation holder untouched. Corrected the new dated review to
+59 PDFs / nine missing years, retaining all 93 prior resource objects, all source
+values/rights/captures, twelve unaffected descriptors and every older dated
+review. This is current inventory reconciliation, not a historical value
+replacement. The original thirteen-descriptor preservation check described
+the preceding implementation state; it is not claimed for the corrected Vote
+Health description. No native captures or broader source-family closure were
+added. Later per-edition capture receipts need separate reconciliation and do
+not retroactively change the aggregate snapshot's current counts.

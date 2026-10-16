@@ -68,8 +68,11 @@ byte-identical aliases. Page issue/update dates establish no native byte revisio
 Existing captured sources and their rights states remain unchanged.
 
 Page-level CC BY 4.0 statements remain observations, not item-level eligibility
-or derivative approval. Prior 93 resource records and thirteen reviewed source
-descriptors are preserved. Four historical Health descriptors and two
+or derivative approval. All 93 prior resource records and twelve unaffected source
+descriptors are unchanged. The new review corrects Vote Health coverage wording
+to the existing 59-PDF register and nine missing main-Estimates years; older
+dated reviews remain unchanged. These counts describe the aggregate register,
+not all separate later per-edition capture receipts. Four historical Health descriptors and two
 [source-separated component-index candidates](./health-component-index-discovery-20261017.md)
 are added to the dated review. There is no new capture, value replacement,
 analytical policy, publication or collection mutation.

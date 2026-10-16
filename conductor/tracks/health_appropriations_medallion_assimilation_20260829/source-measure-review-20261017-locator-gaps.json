@@ -154,7 +154,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census-locator-gaps-20261017.md",
-      "sha256": "d7110240eb1cd1013418826f45839e54710ff0f585f71e68784ecfe23c1f5886"
+      "sha256": "9bf4e2c6d522907ecfe26407fb50a071d15d777be7aa5dd3c87edd9003ab7a72"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/health-component-index-discovery-20261017.json",
@@ -293,11 +293,11 @@
       "vintage_or_range": "Treasury Fiscal Time Series 1997\u20132025; 29 annual cells"
     },
     "vote_health": {
-      "analytical_status": "published Ministry indicators remain distinct from independently calculated health spending; Treasury locator census is complete to the index but repository capture remains incomplete",
+      "analytical_status": "published Ministry indicators remain distinct from independently calculated health spending; Treasury locator census is complete to the index but repository capture remains incomplete Register counts describe the aggregate source-census snapshot; later per-edition capture receipts remain distinct pending reconciliation.",
       "period_basis": "HAIR figure labels exclude capital, COVID-19 and DSS; precise dates, currency/scale, real-price base, deflator and denominator methods remain unspecified in the retained originals. Estimates/Supplementary Editions are distinct; use actual annual year endpoints and preserve vintage.",
       "rights": "publisher_defaults_observed_exceptions_unadjudicated",
       "series_id": "Ministry HAIR2024 Figures 27\u201328; Treasury Vote Health Estimates, Supplementary Estimates and supporting information",
-      "vintage_or_range": "MoH nominal/real and per-capita indicators cover 2005/06\u20132024/25. Treasury Historical Vote Information index covers Vote Health chapters for Budget years 1998\u20132026. Repository capture register contains 58 PDFs; 10 Estimates years (2008\u20132013, 2018\u20132021) and Supplementary years 2012/13 and 2025/26 are located but not in that captured register."
+      "vintage_or_range": "MoH nominal/real and per-capita indicators cover 2005/06\u20132024/25. Treasury Historical Vote Information index covers Vote Health chapters for Budget years 1998\u20132026. Repository capture register contains 59 PDFs; 9 Estimates years (2009\u20132013, 2018\u20132021) and Supplementary years 2012/13 and 2025/26 are located but not in that captured register."
     },
     "wages": {
       "analytical_status": "captured and exact source profile exists; QES methodology confirms composition effects, so this is not a constant-quality wage index; official evidence identifies the selected ordinary-time hourly earnings indicator as not seasonally adjusted; ISO currency, annual weighting, rights eligibility, and deflator selection remain unqualified",

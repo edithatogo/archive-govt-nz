@@ -1415,8 +1415,9 @@ records exact publisher table/dimension identities and method boundaries,
 not a deflator policy or numeric admission.
 
 The [new dated review](./source-measure-review-20261017-locator-gaps.json)
-binds 19 source descriptors and 41 evidence files, preserving all thirteen
-prior descriptors. Four selected census contracts began red (1.45s). An older
+binds 19 source descriptors and 41 evidence files, preserving twelve unaffected
+prior descriptors and correcting Vote Health coverage wording against the
+existing register. Older dated review bytes remain unchanged. Four selected census contracts began red (1.45s). An older
 negative fixture assumed a nonempty missing-year list; it now injects a known
 located year as a false gap, preserving the coverage-consistency rejection.
 Ruff's statement-count finding was resolved by extracting the historical
@@ -1425,3 +1426,25 @@ with lint/format/whitespace checks passing. A prior default-TMPDIR cleanup
 warning did not recur with the dedicated external temporary root. Logs are
 retained under `/Volumes/PortableSSD/tmp/health-census-locator-gaps-20261017/`.
 Full local assurance and protected delivery remain pending.
+
+
+## Current-review coverage consistency correction — 2026-10-17
+
+A further read-only assessment found a stale Vote Health narrative inherited
+from the older review: 58 PDFs and ten missing Estimates years, while the
+structured aggregate register and validator prove 59 PDFs and nine missing
+years. The latter excludes 2008, already present in that register. Added a
+contract tying narrative counts to the structured evidence; it failed as
+expected before correction (0.63s, `red-coverage-description.log`).
+
+Cancelled only this slice's verified queued guard request PID 8669 before its
+harness started, preserving the queue/cancellation receipt and leaving the
+other live validation holder untouched. Corrected the new dated review to
+59 PDFs / nine missing years, retaining all 93 prior resource objects, all source
+values/rights/captures, twelve unaffected descriptors and every older dated
+review. This is current inventory reconciliation, not a historical value
+replacement. The original thirteen-descriptor preservation check described
+the preceding implementation state; it is not claimed for the corrected Vote
+Health description. No native captures or broader source-family closure were
+added. Later per-edition capture receipts need separate reconciliation and do
+not retroactively change the aggregate snapshot's current counts.

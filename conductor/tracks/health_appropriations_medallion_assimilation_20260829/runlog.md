@@ -5675,24 +5675,46 @@ weights, rights, native source fixity and analytical policy remain unqualified.
 No source files were downloaded, Bronze bytes changed or publication repeated.
 
 The four selected contracts began red before the source additions and new review
-existed (four failures,1.45s; `red.log`). Added 38 official primary locators,
+existed (four failures, 1.45s; `red.log`). Added 38 official primary locators,
 four historical source-separated Health descriptors and two component-index
-candidates. Current review binds19descriptors/41evidence files. Prior93resources,
+candidates. Current review binds 19 descriptors / 41 evidence files. Prior 93 resources,
 thirteen descriptors, captured census and previous review compare unchanged.
-All30years have at least one locator; no edition earns full-family completion.
+All 30 years have at least one locator; no edition earns full-family completion.
 
 Initial focused run exposed the older missing-year mutation fixture popping an
-empty list (44passed/1failed). Changed it to inject a false gap for a located
-year, retaining the intended validator rejection. A subsequent45-case run
-passed but lint found52statements in an expanded existing test; extracted its
+empty list (44 passed / 1 failed). Changed it to inject a false gap for a located
+year, retaining the intended validator rejection. A subsequent 45-case run
+passed but lint found 52 statements in an expanded existing test; extracted its
 historical coverage assertion helper and retained every assertion. A shared
 default-temp cleanup warning did not recur under the dedicated external
-TMPDIR. Final focused45cases pass in1.39s; Ruff lint/format and whitespace
+TMPDIR. Final focused 45 cases pass in 1.39s; Ruff lint/format and whitespace
 checks pass. No product implementation, timeout or quality gate changed.
 
 Source identity review keeps publisher typos/mismatches and differing date,
-period, GST/elimination and ownership scopes explicit. Existing2026capture
+period, GST/elimination and ownership scopes explicit. Existing 2026 capture
 references are metadata only; no URL-alias byte equivalence is asserted.
 Conductor independently verified prior-object/descriptor preservation and
 unique identities without rerunning captures or tests. Full repository
 assurance is next on a frozen clean commit under the shared validation guard.
+
+
+## Current-review coverage consistency correction — 2026-10-17
+
+A further read-only assessment found a stale Vote Health narrative inherited
+from the older review: 58 PDFs and ten missing Estimates years, while the
+structured aggregate register and validator prove 59 PDFs and nine missing
+years. The latter excludes 2008, already present in that register. Added a
+contract tying narrative counts to the structured evidence; it failed as
+expected before correction (0.63s, `red-coverage-description.log`).
+
+Cancelled only this slice's verified queued guard request PID 8669 before its
+harness started, preserving the queue/cancellation receipt and leaving the
+other live validation holder untouched. Corrected the new dated review to
+59 PDFs / nine missing years, retaining all 93 prior resource objects, all source
+values/rights/captures, twelve unaffected descriptors and every older dated
+review. This is current inventory reconciliation, not a historical value
+replacement. The original thirteen-descriptor preservation check described
+the preceding implementation state; it is not claimed for the corrected Vote
+Health description. No native captures or broader source-family closure were
+added. Later per-edition capture receipts need separate reconciliation and do
+not retroactively change the aggregate snapshot's current counts.

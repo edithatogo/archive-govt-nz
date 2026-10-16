@@ -34,6 +34,13 @@ def _assert_historical_locator_coverage(report: dict) -> None:
     assert history["complete"] is False
 
 
+def _assert_vote_inventory_description(report: dict) -> None:
+    vote = report["source_families"]["vote_health"]
+    description = report["series"]["vote_health"]["vintage_or_range"]
+    assert f"contains {vote['captured_documents']} PDFs" in description
+    assert f"{len(vote['discovered_estimates_urls'])} Estimates years" in description
+
+
 def test_review_reports_exact_series_and_preserves_blockers() -> None:
     report = validate_review(REPORT, ROOT)
     assert report["series_count"] == 19
@@ -68,6 +75,7 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
     assert "GAAP definitions" in health_1999["period_basis"]
     assert "No status relabelling" in health_1999["analytical_status"]
     _assert_historical_locator_coverage(report)
+    _assert_vote_inventory_description(report)
     assert all(not item["path"].endswith("/index.md") for item in report["evidence"])
     assert report["source_families"]["vote_health"]["captured_documents"] == 59
     assert report["source_families"]["vote_health"]["estimates_years"] == [
