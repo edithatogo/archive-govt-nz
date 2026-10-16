@@ -7,12 +7,16 @@ import hashlib
 import importlib.util
 import json
 import tempfile
+from datetime import date
+from decimal import Decimal
 from pathlib import Path
-from typing import Any, cast
+from typing import TYPE_CHECKING, Any, cast
 
 import pyarrow.parquet as pq
 
 from archive_govt_nz.domains.health_appropriations import (
+    canonical_gold_queries,
+    canonical_input_recovery,
     cpi,
     cpi_canonical_projection,
     crown_expense,
@@ -22,6 +26,7 @@ from archive_govt_nz.domains.health_appropriations import (
     gdp,
     gdp_canonical_projection,
     gdp_vintage_comparison,
+    gold_metadata,
     hyefu_crown_expense,
     hyefu_crown_expense_canonical_projection,
     moh_canonical_projection,
@@ -60,12 +65,6 @@ from archive_govt_nz.domains.health_appropriations import (
 from archive_govt_nz.domains.health_appropriations.analytical_metadata_recovery import (
     recover_analytical_metadata,
 )
-from archive_govt_nz.domains.health_appropriations.budget_canonical_export import (
-    export_budget_appropriations,
-)
-from archive_govt_nz.domains.health_appropriations.budget_revenue_canonical_export import (  # noqa: E501
-    export_budget_revenue,
-)
 from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
     query_context_observations,
 )
@@ -84,9 +83,6 @@ from archive_govt_nz.domains.health_appropriations.context_gold import (
     export_context_gold,
 )
 from archive_govt_nz.domains.health_appropriations.gold_export import export_gold
-from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
-    CanonicalPackageInput,
-)
 from archive_govt_nz.domains.health_appropriations.moh_canonical_projection import (
     MohIndicatorInput,
 )
@@ -121,6 +117,11 @@ from archive_govt_nz.domains.health_appropriations.source_operations import (
     SourceRequest,
     operate_source,
 )
+
+if TYPE_CHECKING:
+    from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
+        CanonicalPackageInput,
+    )
 
 TRACK = Path("conductor/tracks/health_appropriations_medallion_assimilation_20260829")
 ARCHIVE = Path("/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations")
@@ -1504,89 +1505,10 @@ def rebuild_vote_health_2025_26_summary_totals(
 
 
 def canonical_inputs(recovery_root: Path) -> tuple[CanonicalPackageInput, ...]:
-    """Rebuild and bind retained historical and Budget canonical packages."""
-    historical = (
-        (
-            "2024",
-            "raw-historical-20260830-v1",
-            "2f39ad4dbeb7cb872118ddc634985b5e21b18f2ef2421ca3c0a1e9bf90411288",
-        ),
-        (
-            "2025",
-            "raw-historical-2025-20260831-v1",
-            "aee4578f1ee83f8c1ede63e36e840c6cd2140df8c6f463e71ec93da9e4e7d75a",
-        ),
-    )
-    packages: list[CanonicalPackageInput] = []
-    for year, raw_name, raw_pin in historical:
-        historical_root = (
-            ARCHIVE / "silver" / f"canonical-historical-{year}-20260831-v1"
-        )
-        marker = historical_root / "LOCAL_CANONICAL.json"
-        value = json.loads(marker.read_text())
-        original_hash = value["input_fixity"]["original_sha256"]
-        original = ARCHIVE / "bronze-cas" / "sha256" / original_hash[:2] / original_hash
-        packages.append(
-            CanonicalPackageInput(
-                "historical",
-                historical_root,
-                digest(marker),
-                original,
-                ARCHIVE / "silver" / raw_name,
-                raw_pin,
-            )
-        )
-    budget_editions = (
-        (
-            "Budget-2025",
-            "raw-budget-d26e769",
-            "03f41d39395b02169202e88e98f04a892a3dbb55c2083a328391d909af8f7d57",
-            "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
-            export_budget_appropriations,
-            "budget",
-        ),
-        (
-            "Budget-2026",
-            "raw-budget-2026-20260831-v1",
-            "f34000992fd65dca445e7ad251cb06df3c68107410355ea057ea9a2bf8481738",
-            "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0",
-            export_budget_appropriations,
-            "budget",
-        ),
-        (
-            "Budget-2026-revenue",
-            "raw-budget-2026-revenue-20260925-v1",
-            "ff0a5494737378b4741663f1d190bf24971e3d6ee7a17da93fe7b3cdbd5ffdb2",
-            "8243f6a3f9575af5ee048133f2695f3c4764ff7d86e7a74849fdafcf478cbfdb",
-            export_budget_revenue,
-            "revenue",
-        ),
-    )
-    raw_root = ARCHIVE / "silver"
-    source_cas = ARCHIVE / "bronze-cas" / "sha256"
-    for vintage, raw_name, raw_pin, source_sha256, exporter, kind in budget_editions:
-        raw_package = raw_root / raw_name
-        original = source_cas / source_sha256[:2] / source_sha256
-        canonical_root = recovery_root / f"canonical-input-{kind}-{vintage.lower()}"
-        exporter(
-            raw_package,
-            raw_pin,
-            original,
-            canonical_root,
-            dry_run=False,
-        )
-        marker_name = "LOCAL_BUDGET.json" if kind == "budget" else "LOCAL_REVENUE.json"
-        packages.append(
-            CanonicalPackageInput(
-                kind,
-                canonical_root,
-                digest(canonical_root / marker_name),
-                original,
-                raw_package,
-                raw_pin,
-            )
-        )
-    return tuple(packages)
+    """Rebuild five canonical bindings from originals, never retained Silver."""
+    return canonical_input_recovery.rebuild_canonical_inputs(
+        ARCHIVE / "bronze-cas" / "sha256", recovery_root / "canonical-source-inputs"
+    ).packages
 
 
 def rebuild_donor_products(root: Path, index: int) -> dict[str, Any]:
@@ -2062,15 +1984,158 @@ def _fiscal_crown_recovery_report(root: Path) -> dict[str, Any]:
     return {**runs["1"], "repeat_identical": True}
 
 
-def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
-    """Rebuild and compare canonical Gold or retain its binding blocker."""
-    canonical = canonical_inputs(root)
-    if not canonical:
-        return {
-            "status": "blocked",
-            "reason": "no_retained_canonical_inputs_passed_independent_source_binding",
+def _exact_scalar(value: object) -> str:
+    if isinstance(value, date):
+        return value.isoformat()
+    if isinstance(value, Decimal):
+        return str(value)
+    message = "canonical_gold_query_value_invalid"
+    raise TypeError(message)
+
+
+def _row_key(row: dict[str, Any]) -> str:
+    return json.dumps(
+        row, sort_keys=True, ensure_ascii=False, allow_nan=False, default=_exact_scalar
+    )
+
+
+def _ascending_nulls_last(value: object) -> tuple[bool, Any]:
+    """Keep numeric/date values typed; compare list elements lexicographically."""
+    if isinstance(value, list):
+        return False, tuple(
+            _ascending_nulls_last(item) for item in cast("list[object]", value)
+        )
+    return value is None, value
+
+
+def canonical_query_recovery_report(first: Path, second: Path) -> dict[str, Any]:
+    """Verify bounded query receipts against complete typed Gold tables."""
+    before = (tree(first), tree(second))
+    pin = digest(first / "MANIFEST.json")
+    require_evidence(
+        pin == digest(second / "MANIFEST.json"), "canonical_gold_query_recovery_failed"
+    )
+    products = {}
+    for product in canonical_gold_queries.PRODUCTS:
+        result = canonical_gold_queries.query_canonical_gold(
+            first, pin, product=product, limit=canonical_gold_queries.MAX_QUERY_ROWS
+        )
+        repeat = canonical_gold_queries.query_canonical_gold(
+            second, pin, product=product, limit=canonical_gold_queries.MAX_QUERY_ROWS
+        )
+        require_evidence(
+            result.get("status") == "verified" and result == repeat,
+            "canonical_gold_query_recovery_failed",
+        )
+        table = canonical_gold_queries.read_canonical_gold_product(first, pin, product)
+        columns = table.column_names
+        ordered = sorted(
+            table.to_pylist(),
+            key=lambda row: tuple(_ascending_nulls_last(row[name]) for name in columns),
+        )
+        expected = [
+            _row_key(row) for row in ordered[: canonical_gold_queries.MAX_QUERY_ROWS]
+        ]
+        observed = [_row_key(row) for row in result["rows"]]
+        require_evidence(
+            observed == expected
+            and result["total_rows"] == table.num_rows
+            and result["row_count"]
+            == min(table.num_rows, canonical_gold_queries.MAX_QUERY_ROWS)
+            and result["truncated"]
+            == (table.num_rows > canonical_gold_queries.MAX_QUERY_ROWS),
+            "canonical_gold_query_recovery_failed",
+        )
+        products[product] = {
+            "source_rows": table.num_rows,
+            "returned_rows": result["row_count"],
+            "truncated": result["truncated"],
+            "exact_readback": True,
+            "ordering_verified": True,
+            "rows_sha256": hashlib.sha256(
+                _row_key({"rows": result["rows"]}).encode()
+            ).hexdigest(),
         }
-    pharmac_silver = root / "pharmac-silver-1"
+        del table
+    require_evidence(
+        before == (tree(first), tree(second)), "canonical_gold_query_mutation"
+    )
+    return {
+        "manifest_sha256": pin,
+        "products": products,
+        "repeat_identical": True,
+        "ordering_validation": "independent_typed_columns_asc_nulls_last",
+        "gold_unchanged": True,
+        "source_reverification": "not_performed_by_query",
+        "rights": "not_evaluated",
+        "publication": "not_performed",
+    }
+
+
+def combined_metadata_recovery_report(root: Path) -> dict[str, Any]:
+    """Reconstruct the composite metadata from both sets of fresh Gold outputs."""
+    runs = []
+    values = []
+    before = []
+    for index, name in ((1, "first"), (2, "second")):
+        analytical = root / "analytical-metadata" / name
+        fiscal, budget = analytical / "gold", analytical / "budget-gold"
+        canonical = root / f"canonical-{index}"
+        inputs = (
+            gold_metadata.GoldInput(
+                "fiscal_analytical", fiscal, digest(fiscal / "manifest.json")
+            ),
+            gold_metadata.GoldInput(
+                "budget_comparison", budget, digest(budget / "MANIFEST.json")
+            ),
+            gold_metadata.GoldInput(
+                "canonical_source_separated",
+                canonical,
+                digest(canonical / "MANIFEST.json"),
+            ),
+        )
+        values.append(inputs)
+        before.append([tree(value.root) for value in inputs])
+        output = root / f"combined-metadata-{index}"
+        receipt = gold_metadata.export_gold_metadata(inputs, output, write=True)
+        verification = gold_metadata.verify_gold_metadata(
+            inputs, output, receipt["manifest_sha256"]
+        )
+        require_evidence(
+            verification["status"] == "verified", "combined_metadata_recovery_failed"
+        )
+        runs.append(receipt)
+    files = compare_product_outputs(
+        root / "combined-metadata-1", root / "combined-metadata-2", "combined_metadata"
+    )
+    require_evidence(runs[0] == runs[1], "combined_metadata_recovery_failed")
+    require_evidence(
+        before == [[tree(v.root) for v in inputs] for inputs in values],
+        "combined_metadata_gold_mutation",
+    )
+    catalogue = json.loads(
+        (root / "combined-metadata-1" / "catalogue.json").read_bytes()
+    )
+    return {
+        "schema_version": runs[0]["schema_version"],
+        "manifest_sha256": runs[0]["manifest_sha256"],
+        "files": files,
+        "packages": runs[0]["packages"],
+        "recordsets": sum(len(p["tables"]) for p in catalogue["packages"]),
+        "rows": sum(t["rows"] for p in catalogue["packages"] for t in p["tables"]),
+        "repeat_identical": True,
+        "metadata_reconstructed": True,
+        "gold_unchanged": True,
+        "full_standards_conformance": "not_asserted",
+        "rights": "not_evaluated",
+        "publication": "not_performed",
+    }
+
+
+def canonical_gold_inputs(root: Path, index: int) -> GoldInputs:
+    """Bind each Gold build to the corresponding independently rebuilt Silver."""
+    require_evidence(index in (1, 2), "canonical_gold_recovery_index_invalid")
+    pharmac_silver = root / f"pharmac-silver-{index}"
     pharmac_input = PharmacGoldInput(
         root=pharmac_silver,
         manifest_sha256=digest(pharmac_silver / "MANIFEST.json"),
@@ -2081,7 +2146,7 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
         tuple(
             MohIndicatorInput(
                 profile,
-                root / f"moh-{profile.replace('/', '-')}-1",
+                root / f"moh-{profile.replace('/', '-')}-{index}",
                 MOH_SILVER_MANIFEST_SHA256[profile],
                 MOH_SOURCE_SHA256[profile],
             )
@@ -2089,8 +2154,8 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
         ),
         ARCHIVE / "bronze-cas" / "sha256",
     )
-    befu_silver = root / "crown-silver-1"
-    hyefu_silver = root / "hyefu-crown-silver-1"
+    befu_silver = root / f"crown-silver-{index}"
+    hyefu_silver = root / f"hyefu-crown-silver-{index}"
     crown_input = CrownGoldInput(
         befu_root=befu_silver,
         befu_manifest_sha256=crown_expense_canonical_projection.SOURCE_MANIFEST_SHA256,
@@ -2102,17 +2167,36 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
     fiscal_source = fiscal_source / fiscal_crown_literals.SOURCE_SHA256[:2]
     fiscal_source = fiscal_source / fiscal_crown_literals.SOURCE_SHA256
     fiscal_crown_input = FiscalCrownGoldInput(source_path=fiscal_source)
-    for index in (1, 2):
+    return GoldInputs(
+        pharmac=pharmac_input,
+        moh=moh_input,
+        crown=crown_input,
+        fiscal_crown=fiscal_crown_input,
+    )
+
+
+def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
+    """Rebuild two complete canonical input/Gold trees from pinned originals."""
+    first_inputs, second_inputs = (
+        root / "canonical-inputs-1",
+        root / "canonical-inputs-2",
+    )
+    first_inputs.mkdir()
+    canonical = canonical_inputs(first_inputs)
+    if not canonical:
+        return {"status": "blocked", "reason": "no_fresh_canonical_inputs_built"}
+    second_inputs.mkdir()
+    repeated = canonical_inputs(second_inputs)
+    require_evidence(len(canonical) == len(repeated), "canonical_input_count_mismatch")
+    input_files = compare_product_outputs(
+        first_inputs, second_inputs, "canonical_inputs"
+    )
+    for index, packages in ((1, canonical), (2, repeated)):
         export_canonical_gold(
-            canonical,
+            packages,
             root / f"canonical-{index}",
             write=True,
-            inputs=GoldInputs(
-                pharmac=pharmac_input,
-                moh=moh_input,
-                crown=crown_input,
-                fiscal_crown=fiscal_crown_input,
-            ),
+            inputs=canonical_gold_inputs(root, index),
         )
     files = compare_product_outputs(
         root / "canonical-1", root / "canonical-2", "canonical_gold"
@@ -2176,7 +2260,24 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
         and json.loads(revision_path.read_bytes()) == revision_report,
         "canonical_gold_revision_reconciliation_report_invalid",
     )
+    input_receipt = json.loads(
+        (first_inputs / "canonical-source-inputs" / "RECOVERY_INPUTS.json").read_bytes()
+    )
     return {
+        "fresh_input_recovery": {
+            "definitions_sha256": input_receipt["definitions_sha256"],
+            "definitions": [
+                input_receipt["profiles"][spec.key]["definition"]
+                for spec in canonical_input_recovery.SOURCES
+            ],
+            "source_inputs": input_receipt["source_inputs"],
+            "files": input_files,
+            "fresh_bronze_builds": 2,
+            "retained_derivatives_consumed": False,
+        },
+        "query_readback": canonical_query_recovery_report(
+            root / "canonical-1", root / "canonical-2"
+        ),
         "files": files,
         "repeat_identical": True,
         "quality_report": {
@@ -3099,6 +3200,10 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0912, PLR0915 - recovery products
             "fiscal_recovery"
         ]
         outputs["analytical_gold_and_metadata_recovery"] = analytical
+        if outputs["canonical_gold"].get("repeat_identical"):
+            outputs["canonical_gold"]["combined_metadata_recovery"] = (
+                combined_metadata_recovery_report(root)
+            )
         outputs["source_health_report"] = source_health_recovery_report()
         outputs["classification_label_occurrences"] = (
             classification_label_occurrence_report()

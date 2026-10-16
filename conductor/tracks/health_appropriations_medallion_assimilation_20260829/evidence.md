@@ -1258,3 +1258,51 @@ including the 113-component SBOM. Conductor reports 93 tracks and no errors.
 Session 9819 and the durable `validation.exit` record exit 0. The subsequent
 commit records evidence/task status only; hosted checks must qualify the final
 PR head before protected merge.
+
+## Fresh canonical recovery wiring — 2026-10-17
+
+The new input builder consumes only five pinned originals and locked exact
+observation definitions, producing separate raw/canonical input trees for both
+Gold builds. Twenty focused recovery checks and relevant lint/typing pass.
+Downstream contracts exercise all eight queries and 13-recordset composite
+metadata. Preflight context/provenance differences and exact historical replay
+are recorded in [the slice evidence](./canonical-recovery-inputs-20261017.md).
+Native full integration and required whole-repository/hosted validation remain
+pending; no whole-track or rights/publication completion is claimed.
+
+Native recovery now exits 0 on implementation `a8b8fcea74a8889c90fb68ddabf0012a68489f49`. The bounded [native receipt projection](./canonical-recovery-validation-20261017.json) retains definitions, source/output pins, query counts and metadata reconstruction. Forty-seven input-tree files and 53 Gold files repeat; composite metadata covers 13 recordsets/1,184 rows and nine repeat-identical files. All eight bounded query results match typed facts, with truncation recorded, and no Bronze mutations occur. The actual completion receipts also validate against the corrected JSONL-aware schema; no production code changed after native assurance. Required full/hosted validation remains pending.
+
+Full local `./scripts/validate.sh` passed on clean
+`7946b24392d1053b76d3ef77cbc49263a08b3f23` with exit 0 (durable
+`validation-2.log`/`validation-2.exit` outside Git): 7,708 passed, ten skipped,
+97.44% coverage against the 80% floor, 60 schemas/50 representative documents,
+parity and all mutation/hygiene/audit/licence/secrets/SBOM gates. SBOM has 113
+components; external CDX validation was explicitly skipped. The bounded fresh
+canonical-input recovery task is now complete locally; broader Phase 9 remains
+in progress. This result bookkeeping changes only track documentation/evidence;
+protected exact-head hosted validation and merge/prune remain pending.
+
+## PR #691 ordered-query verification completed locally — 2026-10-17
+
+Corrected native verification on clean `49becbc7b05982412834293dd6fcd7f912a19b48`
+passed (exit 0; targeted receipt SHA256
+`08c8cc1657489cbceb0ab4387f7c81eede29b37cfdfc7f109c1777435a67f2e5`). Both
+fresh input inventories (47 files each), Gold inventories (53 files each) and
+645 returned query-row digests match the original full native output pins. The
+new independent typed-column ASC NULLS LAST oracle proves each exact ordered
+slice, including truncation, counts and duplicate multiplicity. Fresh paired
+BEFU/HYEFU/Pharmac/MoH inputs were rebuilt alongside the five original-source
+pairs; source receipt schemas pass and Bronze is unchanged. Full actual outputs
+are retained outside Git. The original full native receipt remains unchanged;
+its metadata evidence is not relabelled as a second metadata run.
+
+Repeated full `./scripts/validate.sh` passed on that same clean code head:
+7,712 passed, ten skipped, 97.44% coverage against the 80% floor, 60 schemas/50
+representative documents, parity, all mutation/hygiene/audit/licence/secrets/SBOM
+gates. SBOM has 113 components; external CDX validation was explicitly skipped.
+Durable `ordered-native-1.*` and `validation-3.*` logs/exit statuses remain in
+`/Volumes/PortableSSD/tmp/canonical-recovery-inputs-20261017/`. The subsequent
+bookkeeping commit changes only track evidence/documents. Local review correction
+is verified; corrected exact-head hosted checks, thread resolution and protected
+merge/prune remain pending. Whole-track recovery/source/rights/standards gates
+remain open. See `canonical-recovery-ordered-validation-20261017.json`.

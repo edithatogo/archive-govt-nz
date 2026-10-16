@@ -376,3 +376,8 @@ they are not current-state assertions.
 - [Fiscal Gold cross-product query matrix and real-view exclusion](./fiscal-gold-query-matrix-20261007.md)
 - [Canonical Gold named queries and readback evidence](./canonical-gold-queries-20261017.md)
 - [Canonical Gold metadata profile and version compatibility](./canonical-gold-metadata-20261017.md)
+- [Fresh canonical inputs and query/metadata recovery](./canonical-recovery-inputs-20261017.md)
+
+- [Fresh canonical recovery native validation](./canonical-recovery-validation-20261017.json)
+
+- [Independent ordered query recovery validation](./canonical-recovery-ordered-validation-20261017.json)

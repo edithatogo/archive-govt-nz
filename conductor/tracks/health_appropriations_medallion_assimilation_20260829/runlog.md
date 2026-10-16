@@ -5440,3 +5440,71 @@ rerunning lint and validation.
 - Exact canonical version contract fails as expected (v3 versus required v4, 2.73s); retained `version-red.log`. Implementing conditional new versions with immutable legacy schemas.
 - Final versioned implementation passes 92 focused integration checks (48.24s), focused typing, Ruff/format, 59 schemas/49 documents and Conductor 93/no errors. Fresh `native-v4/` receipts prove identical repeat/installed-CLI output, initialized MCP parity, both half-pair rejections, exact full schemas/tokens for 13 recordsets / 1,184 rows, unchanged Gold inputs and legacy metadata bytes. Final metadata manifest `4e0de18af3ae6800f9c9ea9596b6e35e906f9f8c71a1544d6bdfc71b999eee9f`; old `native/` receipts are preserved as pre-version-review evidence. Required full validation is pending a shared slot.
 - Required unchanged full validation passed on frozen `b2fde77e67555913f5a32369f9253ed1260c210e`: 7,698 passed, 10 skipped (329.35s), 97.43% coverage against 80%; 59 schemas/49 documents; parity 9/9; all mutation, hygiene, security and supply-chain gates passed, SBOM 113 components, Conductor 93/no errors. Session 9819 and `/Volumes/PortableSSD/tmp/canonical-gold-metadata-20261017/validation.exit` record exit 0; full log retained alongside. Released the shared broad slot. Marked only this canonical metadata profile task complete; broader phase/track and hosted delivery gates remain open.
+
+## 2026-10-17 — Fresh canonical recovery inputs
+
+- PR #690 final head `fe688927fe7dec9b0d3af6c501059159c0990c9a` passed Linux (7m13s), macOS (12m30s), Windows (17m27s), CodeQL/analyze, lint and patch coverage, with no review threads. Normal protected merge completed as `3f6f6f012a9a4bc2eb6270ec9b0f012d35ec06cd`; verified merge/head on fetched origin/main, fast-forwarded clean main, deleted the local topic and confirmed the remote absent before this branch.
+- A bounded five-original preflight rebuilt raw/canonical inputs outside Git. All selected values, qualifiers, lineage and dispositions match; historical 2024 is byte-identical. Other profiles differ in source observation IDs because normalized manifest timestamp spelling is not the original input token; current Budget normalizers also emit adapter-selection metadata. Existing pilot/command evidence and exact identity checks recover the original tokens. A fresh historical-2025 replay using its recorded `Z` token reproduces both raw and canonical packages byte-for-byte, leaving the original unchanged. Preflight is not a final independent clean-room input contract; preserved `/Volumes/PortableSSD/tmp/canonical-recovery-preflight-20261017/` outputs/logs identify this boundary.
+- Registered direct-Bronze input rebuilding and downstream query/metadata integration before implementation. Preserve the identity algorithm, original values and new adapter guard evidence; no retained-Silver fallback or historical receipt rewrite.
+- Fresh-input contract began red at collection because `canonical_input_recovery` does not yet exist (one expected ImportError, 0.36s). Retained `/Volumes/PortableSSD/tmp/canonical-recovery-inputs-20261017/red.log` before implementation.
+- Initial fresh-input implementation lint identified a type-only Path import, an unbreakable qualified import, two unnamed resource bounds, one long context label and a dynamic variadic test signature. Retained this bounded result before simplifying imports/signatures and naming the limits; runtime verification is separate.
+- Fresh-input core tests pass (five cases before adding the explicit missing-original variant), with clean Ruff and focused typing. Four downstream recovery contracts fail as expected on absent query/metadata/run-binding hooks (9.13s); retained `products-red-2.log` before wiring them.
+- First downstream integration passed 19 cases and failed one fixture: the newly added missing-source variant still took the timestamp-mutation branch. Corrected its setup to remove the synthetic original and avoid OS-specific error-text assertions. Lint additionally required a type-only package import and avoiding a private helper access; exposed the owned run-input helper consistently and retained exact run-index validation. Preserved `integrated-focused.log` before fixes.
+- Current implementation passes all 20 focused source-input/product/integrated recovery checks (9.26s), with relevant Ruff and focused typing clean. Added a versioned receipt schema/representative fixture and explicit original-byte bounds; the full native run will execute only after code is frozen, through the shared process guard, with durable log/exit capture. No external collection or publication mutation is included.
+
+- Native integrated recovery on clean `a8b8fcea74a8889c90fb68ddabf0012a68489f49` completed with exit 0 through the shared process guard. Full receipt SHA256 `cd755a4da9cb243396f4eb6dd60894df30f3d820703ce10c38e384bc55b05d3a`; two five-source raw/canonical input inventories match 47 files, Gold 53 files, and composite metadata nine files/13 recordsets/1,184 rows. Eight named queries repeat with 645 returned rows and explicit truncation; 859/859 inputs accounted and Bronze unchanged. Whole receipt remains partial with broader gates open.
+- Independently validating the first real input completion receipt exposed a schema-only omission: canonical Budget emits `lineage_accounting.jsonl`, rejected by the new inventory filename pattern. Preserved `native-schema-finding-1.txt`; cancelled only the still-waiting full harness guard (exit 143), not an executed failing test lane or native run. The queued gate had also been corrected for the bounded lock-release/exit-marker publication gap; future launchers record status within the guard.
+- Added the actual JSONL output shape to the existing synthetic producer fixture. The focused contract failed as expected on the filename schema (1 failure, 1.09s; `schema-native-red.log`), then passed after allowing JSONL alongside JSON/Parquet. Both retained actual input receipts independently validate and share SHA256 `db17e436e6a25ad3d48824642753cfe8342585e9e1dbe689cf0d49f0a6f4f371`; the 20-test recovery selection passes again. Native production code and inputs are unchanged; reuse is explicit, not a claim the earlier run tested the later schema. Full final-tree harness remains pending.
+
+Full local `./scripts/validate.sh` passed on clean
+`7946b24392d1053b76d3ef77cbc49263a08b3f23` with exit 0 (durable
+`validation-2.log`/`validation-2.exit` outside Git): 7,708 passed, ten skipped,
+97.44% coverage against the 80% floor, 60 schemas/50 representative documents,
+parity and all mutation/hygiene/audit/licence/secrets/SBOM gates. SBOM has 113
+components; external CDX validation was explicitly skipped. The bounded fresh
+canonical-input recovery task is now complete locally; broader Phase 9 remains
+in progress. This result bookkeeping changes only track documentation/evidence;
+protected exact-head hosted validation and merge/prune remain pending.
+
+## 2026-10-17 — PR #691 ordered-query review correction
+
+The hosted review identified a real oracle defect: the Counter subset/count
+comparison accepted a wrong valid 200-row slice and reversed ordering. Two
+adversarial cases failed to raise under the old code while the correct slice
+passed (`ordered-query-red.log`: two failures, one pass, 8.31s). The correction
+sorts typed source rows by physical column order with ASC NULLS LAST and compares
+the complete expected limited sequence. Decimal/date values remain typed;
+recursive list keys retain prefix/null ordering and duplicate multiplicity.
+A further explicit fixture verifies negative/2/10 amounts, null placement,
+duplicate values, empty/prefix lists and null list elements. The 24-test recovery
+selection passes; current static checks and targeted fresh native proof are
+being completed. Initial lint caught a dynamically typed argument annotation
+and a closure over a subsequently deleted table variable; use object/list casts
+and a stable column-name binding instead. No production query or input builder
+changed. The original native receipt is retained as membership/repeat evidence,
+not retroactively described as ordered-slice proof.
+
+## PR #691 ordered-query verification completed locally — 2026-10-17
+
+Corrected native verification on clean `49becbc7b05982412834293dd6fcd7f912a19b48`
+passed (exit 0; targeted receipt SHA256
+`08c8cc1657489cbceb0ab4387f7c81eede29b37cfdfc7f109c1777435a67f2e5`). Both
+fresh input inventories (47 files each), Gold inventories (53 files each) and
+645 returned query-row digests match the original full native output pins. The
+new independent typed-column ASC NULLS LAST oracle proves each exact ordered
+slice, including truncation, counts and duplicate multiplicity. Fresh paired
+BEFU/HYEFU/Pharmac/MoH inputs were rebuilt alongside the five original-source
+pairs; source receipt schemas pass and Bronze is unchanged. Full actual outputs
+are retained outside Git. The original full native receipt remains unchanged;
+its metadata evidence is not relabelled as a second metadata run.
+
+Repeated full `./scripts/validate.sh` passed on that same clean code head:
+7,712 passed, ten skipped, 97.44% coverage against the 80% floor, 60 schemas/50
+representative documents, parity, all mutation/hygiene/audit/licence/secrets/SBOM
+gates. SBOM has 113 components; external CDX validation was explicitly skipped.
+Durable `ordered-native-1.*` and `validation-3.*` logs/exit statuses remain in
+`/Volumes/PortableSSD/tmp/canonical-recovery-inputs-20261017/`. The subsequent
+bookkeeping commit changes only track evidence/documents. Local review correction
+is verified; corrected exact-head hosted checks, thread resolution and protected
+merge/prune remain pending. Whole-track recovery/source/rights/standards gates
+remain open. See `canonical-recovery-ordered-validation-20261017.json`.
