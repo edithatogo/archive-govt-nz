@@ -1883,3 +1883,16 @@ Conductor validation pass. The full repository harness passed on `b2fde77e`
 with 7,698 tests/10 skipped and all later gates green. The remaining delivery
 gate is protected exact-head hosted assurance. This does not close broader metadata standards,
 federation approvals or final Health review.
+
+## Fresh canonical recovery wiring — 2026-10-17
+
+Reviewed the actual retained-Silver input dependency and replaced it only in
+the canonical reconstruction path. Locked source/token definitions preserve old
+observation identities; source pin preflight/postflight and exclusive writes
+protect originals and prior attempts. Each Gold build uses its corresponding
+fresh domain inputs; query and metadata reconstruction are now included. New
+adapter metadata remains evidence, not a value replacement or forced old hash.
+Twenty focused checks pass. Native integrated assurance, whole-repository
+validation and protected exact-head delivery remain pending. Other retained
+comparison evidence and unsupported source/rights/standards gates are not
+relabelled as completed clean-room products.

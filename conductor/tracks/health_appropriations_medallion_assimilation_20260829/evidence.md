@@ -1258,3 +1258,14 @@ including the 113-component SBOM. Conductor reports 93 tracks and no errors.
 Session 9819 and the durable `validation.exit` record exit 0. The subsequent
 commit records evidence/task status only; hosted checks must qualify the final
 PR head before protected merge.
+
+## Fresh canonical recovery wiring — 2026-10-17
+
+The new input builder consumes only five pinned originals and locked exact
+observation definitions, producing separate raw/canonical input trees for both
+Gold builds. Twenty focused recovery checks and relevant lint/typing pass.
+Downstream contracts exercise all eight queries and 13-recordset composite
+metadata. Preflight context/provenance differences and exact historical replay
+are recorded in [the slice evidence](./canonical-recovery-inputs-20261017.md).
+Native full integration and required whole-repository/hosted validation remain
+pending; no whole-track or rights/publication completion is claimed.

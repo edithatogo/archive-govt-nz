@@ -1461,6 +1461,16 @@ integrated parent head.
 
 ### 9.1 Clean-room reconstruction
 
+- [~] Rebuild the five canonical historical/Budget input packages directly
+  from pinned Bronze originals and locked observation-token definitions, with
+  no retained Silver fallback. Preserve original observation identities and
+  added adapter-selection evidence; compare two fresh raw/canonical inventories.
+  Feed each fresh run's inputs into its canonical Gold build and verify the
+  eight named query readbacks plus canonical/composite metadata reconstruction.
+  Record new provenance separately from any value change; retain originals,
+  dated receipts and rights/publication limits. [M-03, M-10, M-14, M-16, M-18;
+  AC-02, AC-08, AC-12, AC-14, AC-16]
+
 - [x] Add an installed dry-run/exclusive-write recovery command for two fresh
   analytical runs, consuming only five Bronze originals and three pinned
   definitions. Rebuild Fiscal products/reports, Budget comparison and both

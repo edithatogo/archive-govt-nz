@@ -83,3 +83,10 @@ Session 9819 and the durable `validation.exit` record exit 0. The subsequent
 commit records evidence/task status only; hosted checks must qualify the final
 PR head before protected merge. The broader Platinum, operations, source/rights and final track gates
 remain open.
+
+## Protected delivery
+
+PR #690 final head `fe688927fe7dec9b0d3af6c501059159c0990c9a` passed all required
+platform/security/lint and patch coverage checks. It merged normally as
+`3f6f6f012a9a4bc2eb6270ec9b0f012d35ec06cd`, was verified on `origin/main`, and
+its clean local/remote topic branches were pruned before the recovery slice.

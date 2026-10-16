@@ -1,0 +1,195 @@
+{
+  "exact_historical_2025_replay": {
+    "canonical_byte_identical": true,
+    "exact_observation_token": "2026-08-31T12:26:32Z",
+    "independent_recovery_input_contract": "pending_registered_implementation",
+    "original_unchanged": true,
+    "publication": "not_performed",
+    "raw_byte_identical": true,
+    "rights": "not_evaluated",
+    "scope": "bounded_exact_context_replay_preflight",
+    "source_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f"
+  },
+  "new_adapter_evidence": "retain_and_explain_do_not_strip_to_force_old_manifest_hash",
+  "observation_token_method": "verified_preimage_among_equivalent_recorded_UTC_spellings",
+  "profiles": {
+    "budget-2025": {
+      "exact_observation_token": "2026-08-30T00:00:00Z",
+      "files": {
+        "budget_facts.parquet": {
+          "changed_columns": [
+            "source_observation_id"
+          ],
+          "row_count_equal": true,
+          "rows": 215,
+          "schema_equal": true
+        },
+        "field_lineage.parquet": {
+          "changed_columns": [],
+          "row_count_equal": true,
+          "rows": 3655,
+          "schema_equal": true
+        },
+        "row_dispositions.parquet": {
+          "changed_columns": [],
+          "row_count_equal": true,
+          "rows": 6504,
+          "schema_equal": true
+        }
+      },
+      "input_token_identity_verified": true,
+      "normalized_manifest_observed_at": "2026-08-30T00:00:00+00:00",
+      "raw_metadata_changed_keys": [
+        "adapter_selection",
+        "output_sha256"
+      ],
+      "selected_values_qualifiers_lineage_dispositions_equal": true,
+      "source_locator": "data/raw/b25-expenditure-data.xlsx",
+      "source_observation_id": "sha256:c710d5caa5490fa447a9d062a13c300a1d58c6e67fc01a062ba4dfdbe2e25ff6",
+      "source_sha256": "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
+      "source_vintage": "Budget-2025"
+    },
+    "budget-2026": {
+      "exact_observation_token": "2026-08-31T05:50:00Z",
+      "files": {
+        "budget_facts.parquet": {
+          "changed_columns": [
+            "source_observation_id"
+          ],
+          "row_count_equal": true,
+          "rows": 185,
+          "schema_equal": true
+        },
+        "field_lineage.parquet": {
+          "changed_columns": [],
+          "row_count_equal": true,
+          "rows": 3145,
+          "schema_equal": true
+        },
+        "row_dispositions.parquet": {
+          "changed_columns": [],
+          "row_count_equal": true,
+          "rows": 6451,
+          "schema_equal": true
+        }
+      },
+      "input_token_identity_verified": true,
+      "normalized_manifest_observed_at": "2026-08-31T05:50:00+00:00",
+      "raw_metadata_changed_keys": [
+        "adapter_selection",
+        "output_sha256"
+      ],
+      "selected_values_qualifiers_lineage_dispositions_equal": true,
+      "source_locator": "https://budget.govt.nz/budget/excel/data/b26-expenditure-data.xlsx",
+      "source_observation_id": "sha256:fd44a04149db3d11b7926373748a0c8810686ef087205345bb1efcbb8526a4ba",
+      "source_sha256": "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0",
+      "source_vintage": "Budget-2026"
+    },
+    "historical-2024": {
+      "exact_observation_token": "2026-08-30T08:28:37.374000+00:00",
+      "files": {
+        "cell_dispositions.parquet": {
+          "changed_columns": [],
+          "row_count_equal": true,
+          "rows": 1503,
+          "schema_equal": true
+        },
+        "field_lineage.parquet": {
+          "changed_columns": [],
+          "row_count_equal": true,
+          "rows": 1143,
+          "schema_equal": true
+        },
+        "historical_facts.parquet": {
+          "changed_columns": [],
+          "row_count_equal": true,
+          "rows": 106,
+          "schema_equal": true
+        }
+      },
+      "input_token_identity_verified": true,
+      "normalized_manifest_observed_at": "2026-08-30T08:28:37.374000+00:00",
+      "raw_metadata_changed_keys": [],
+      "selected_values_qualifiers_lineage_dispositions_equal": true,
+      "source_locator": "data/raw/fiscaltimeseries1972-2024.xlsx",
+      "source_observation_id": "sha256:d610fb9a74809a229bce682b8773ef7b34af533d22e467ba79acbc57fc4cd8b5",
+      "source_sha256": "769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d",
+      "source_vintage": "fiscal-2024"
+    },
+    "historical-2025": {
+      "exact_observation_token": "2026-08-31T12:26:32Z",
+      "files": {
+        "cell_dispositions.parquet": {
+          "changed_columns": [],
+          "row_count_equal": true,
+          "rows": 1531,
+          "schema_equal": true
+        },
+        "field_lineage.parquet": {
+          "changed_columns": [],
+          "row_count_equal": true,
+          "rows": 1164,
+          "schema_equal": true
+        },
+        "historical_facts.parquet": {
+          "changed_columns": [
+            "source_observation_id"
+          ],
+          "row_count_equal": true,
+          "rows": 108,
+          "schema_equal": true
+        }
+      },
+      "input_token_identity_verified": true,
+      "normalized_manifest_observed_at": "2026-08-31T12:26:32+00:00",
+      "raw_metadata_changed_keys": [
+        "output_sha256"
+      ],
+      "selected_values_qualifiers_lineage_dispositions_equal": true,
+      "source_locator": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx",
+      "source_observation_id": "sha256:d431933be47fb66651ed54c3556c96348783e447d9dc00c7a0f97dc2040e5bc4",
+      "source_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+      "source_vintage": "Fiscal-Time-Series-1972-2025"
+    },
+    "revenue-2026": {
+      "exact_observation_token": "2026-08-29T09:00:17Z",
+      "files": {
+        "field_lineage.parquet": {
+          "changed_columns": [],
+          "row_count_equal": true,
+          "rows": 1120,
+          "schema_equal": true
+        },
+        "revenue_facts.parquet": {
+          "changed_columns": [
+            "source_observation_id"
+          ],
+          "row_count_equal": true,
+          "rows": 70,
+          "schema_equal": true
+        },
+        "row_dispositions.parquet": {
+          "changed_columns": [],
+          "row_count_equal": true,
+          "rows": 995,
+          "schema_equal": true
+        }
+      },
+      "input_token_identity_verified": true,
+      "normalized_manifest_observed_at": "2026-08-29T09:00:17+00:00",
+      "raw_metadata_changed_keys": [
+        "adapter_selection",
+        "output_sha256"
+      ],
+      "selected_values_qualifiers_lineage_dispositions_equal": true,
+      "source_locator": "https://budget.govt.nz/budget/excel/data/b26-revenue-data.xlsx",
+      "source_observation_id": "sha256:ee970e4d024950c89270b0b27257aaae6e02d2502588acc9d97aeff9fd1a6902",
+      "source_sha256": "8243f6a3f9575af5ee048133f2695f3c4764ff7d86e7a74849fdafcf478cbfdb",
+      "source_vintage": "Budget-2026"
+    }
+  },
+  "publication": "not_performed",
+  "retained_context_origin": "retained_raw_markers_and_existing_source_observation_identity",
+  "rights": "not_evaluated",
+  "scope": "preflight_difference_classification_not_final_recovery"
+}

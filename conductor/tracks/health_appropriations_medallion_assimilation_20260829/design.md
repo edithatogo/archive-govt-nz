@@ -714,3 +714,39 @@ Output package counts are exactly two or three. Shared typed input assembly
 keeps CLI and MCP pairing behavior aligned; no new runtime or command family is
 introduced. Canonical-only projection remains supported by the underlying
 GoldInput API; the existing composite CLI preserves its established inputs.
+
+## Fresh canonical recovery inputs — 2026-10-17
+
+The integrated canonical Gold recovery currently reads retained historical
+canonical/Silver inputs and rebuilds Budget canonical tables from retained raw
+Silver. Replace that input path with an exclusive original-to-raw-to-canonical
+builder consuming only five hash-pinned Bronze objects and locked source
+observation definitions. Definitions include the exact original timestamp
+input token and expected source observation ID; normalization to an equivalent
+UTC spelling must not silently renumber old observations. Capture/local
+processing observation context is replayed, not newly attested HTTP capture.
+No runtime definition is inferred from retained derivatives.
+
+Build two independent input trees, compare raw/canonical inventories, and bind
+each Gold build to its corresponding fresh input tree and the corresponding
+already-rebuilt Pharmac/MoH/BEFU/HYEFU inputs. Fiscal Crown remains direct from
+its pinned original. Keep partial attempts without a completion receipt on
+failure and never overwrite outputs or originals. Preflight all source pins
+and token identities before creating the output tree, then recheck originals.
+
+The preflight found equal selected values/qualifiers/lineage/dispositions for
+all five sources. Historical 2025 and three Budget profiles used exact `Z`
+tokens, while manifests store equivalent `+00:00`; the original token reproduces
+the observation ID. Exact historical-2025 replay is byte-identical. Current
+Budget normalizers additionally emit adapter-selection evidence; retain that
+new evidence and report provenance deltas rather than stripping it to force an
+old manifest digest. No source-value replacement or identity-algorithm change
+is authorized by this repair.
+
+Exercise named canonical queries over both rebuilt Gold packages with exact
+independent Arrow row/count readback and deterministic receipts. Reconstruct
+metadata from the fresh canonical Gold and fresh Fiscal/Budget Gold inputs,
+including the new v4/v2 canonical-containing projection; compare inventories,
+reverify metadata bytes and preserve all unqualified rights/standards states.
+This closes supported reconstruction paths, not missing source profiles, rights
+decisions, publication authority or the final track review.
