@@ -70,7 +70,7 @@ repository validation command. External gates block only their affected task.
 
 ### 1.2 Inventory the seed and direct official corpus
 
-- [~] Register the five newly identified BEFU/DEFU 2002 GAAP, annex and
+- [x] Register the five newly identified BEFU/DEFU 2002 GAAP, annex and
   forecast resources with exact official locators, publication-native release
   identity, period/definition evidence and explicit rights/fixity/layout gaps.
   Reconcile the historical register and current source-measure review without

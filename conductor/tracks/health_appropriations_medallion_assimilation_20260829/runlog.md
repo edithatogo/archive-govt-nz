@@ -5532,3 +5532,21 @@ inventory and existing Vote Health preflight are not repeated or declared done.
 
 - Follow-up source reading locates Annex B in the separate GAAP `defu02-6.pdf` reader result (PDF page 48, printed page 148); `defu02-7.pdf` exposes glossary pages despite its publisher label. Record this precise cross-resource reader location while retaining the native-original/layout gap. Companion records remain identical to their main-register source-ID rows, with explicit Australia/Brisbane observation dates.
 - Conductor advised that its shared guard bridges an already-running Atlas broad test process. Queue this slice's full harness through that guard, with exact clean commit checks, two workers and external TMPDIR after acquisition; do not interrupt or bypass the other job.
+
+## 2002 census local assurance — 2026-10-17
+
+The required `./scripts/validate.sh` passed on clean
+`3f57c983b7689b741ae0952ed9d16a0bbb9511b9`: 7,713 passed, ten skipped,
+97.44% coverage against the agreed 80% floor; 60 schemas/50 representative
+documents, parity and all mutation/hygiene/audit/licence/secrets/SBOM gates.
+The SBOM contains 113 components; external CDX validation was explicitly
+skipped, so no independent external standards-validator pass is claimed.
+Durable logs and exit 0 are retained in
+`/Volumes/PortableSSD/tmp/health-census-defu-2002-20261017/validation-1.*`.
+Direct value comparison also verifies all 71 earlier resource rows and all
+nine earlier reviewed series unchanged. Current strict source-review validation
+binds all 33 evidence files, ten series and 76 discovery locators without
+rights or analytical admission. The following commit changes only unpinned
+track evidence/status; source observations and review evidence hashes remain
+unchanged. Local slice work is complete; protected exact-head delivery remains
+pending, and whole-source/Health completion is not claimed.

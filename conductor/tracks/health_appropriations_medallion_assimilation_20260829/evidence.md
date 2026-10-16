@@ -1318,3 +1318,21 @@ annex/glossary extent discrepancy remains fail-closed pending native evidence.
 All 41 focused census/review tests and relevant static checks pass. Capture,
 resource rights, native layouts, analytical joins, whole-edition completion and
 full/hosted validation are not claimed by this focused evidence.
+
+## 2002 census local assurance — 2026-10-17
+
+The required `./scripts/validate.sh` passed on clean
+`3f57c983b7689b741ae0952ed9d16a0bbb9511b9`: 7,713 passed, ten skipped,
+97.44% coverage against the agreed 80% floor; 60 schemas/50 representative
+documents, parity and all mutation/hygiene/audit/licence/secrets/SBOM gates.
+The SBOM contains 113 components; external CDX validation was explicitly
+skipped, so no independent external standards-validator pass is claimed.
+Durable logs and exit 0 are retained in
+`/Volumes/PortableSSD/tmp/health-census-defu-2002-20261017/validation-1.*`.
+Direct value comparison also verifies all 71 earlier resource rows and all
+nine earlier reviewed series unchanged. Current strict source-review validation
+binds all 33 evidence files, ten series and 76 discovery locators without
+rights or analytical admission. The following commit changes only unpinned
+track evidence/status; source observations and review evidence hashes remain
+unchanged. Local slice work is complete; protected exact-head delivery remains
+pending, and whole-source/Health completion is not claimed.
