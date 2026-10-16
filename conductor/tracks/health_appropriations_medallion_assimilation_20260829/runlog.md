@@ -5797,3 +5797,32 @@ appropriation documents; this does not prove complete variant enumeration.
 The latest review alone is corrected; 59 captured PDFs and all source bytes
 are unchanged. Fifty focused checks pass in 1.02s; Ruff/whitespace pass.
 Full assurance of this correction is pending; earlier passing heads are historical.
+
+## PR #695 delivery and next reviewed-adapter slice — 2026-10-17
+
+PR #695 merged through the normal protected path at 2026-10-16T22:27:30Z
+as `c490d327f58b6ff8784c73e62e042d33c20f53b6`. Exact reviewed head
+`d7449240016f76aea1ab7fa1122785ed1b2ecdd1` passed local full validation:
+7,722 passed/10 skipped/23 warnings in 470.63s, 97.44% coverage against
+the 80% floor, 60 schemas/50 documents, parity 9/9, all configured mutation,
+hygiene, audit/licence/secrets and 113-component SBOM gates. External CDX
+validation was explicitly skipped. Ubuntu/macOS/Windows, CodeQL, workflow
+lint and coverage checks passed on that exact head; no unresolved threads.
+Both head and merge are ancestors of fetched origin/main. No unique topic
+commits or dirty changes remained; local/remote/tracking branches were removed
+while preserving the primary worktree. External receipts: validation-5.* and
+merged-and-pruned.json under health-census-locator-gaps-20261017.
+
+The initial unchanged one-worker attempt hit the existing 900-second test-stage
+limit at 61% under observed heavy host load. Its exit124/log and bounded
+diagnosis are retained. After Conductor coordinated resource handoff, supported
+two-worker validation passed with every timeout and gate unchanged. No unknown
+processes were killed, paused or reprioritized.
+
+Next: close the existing common-dispatch gap for thirteen reviewed overview
+profiles, preserving 2016/17 behavior and 2002/03 composite identity. Fourteen
+native source fixity pins are independently checked (5,877,452 bytes); 56
+existing-normalizer output files/209 facts are retained and independently hash
+checked for subsequent parity. No source reacquisition or new layout claims
+are needed. Later capture inventory assembly remains a separate open task;
+aggregate 59-PDF counts never stand for the complete retained corpus.

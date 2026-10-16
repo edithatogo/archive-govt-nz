@@ -1747,6 +1747,17 @@ integrated parent head.
   fiscal edition and preserve distinct published additions. Local full assurance
   passed on `7c1dadb7`; fresh hosted assurance and merge of PR #695 remain pending.
 
-- [~] Correct captured Vote Health edition selection for the existing lowercase
+- [x] Correct captured Vote Health edition selection for the existing lowercase
   short 2012/13 Supplementary title, excluding its separate supporting-information
-  volume. Reconcile current review without recapture; requalify PR #695.
+  volume. Reconcile current review without recapture; PR #695 merged as
+  `c490d327` after exact-head local/hosted assurance; topic pruned.
+
+- [~] Extend common Bronze dispatch to the thirteen already reviewed main
+  Estimates overview profiles for 2004/05–2015/16 and 2017/18. Preserve the
+  existing 2016/17 API/identities and the separate 2002/03 composite. Reuse
+  edition-specific parsers, amount/qualifier/rounding flags, source pins,
+  field lineage and every page disposition. Compare all fourteen profiles
+  against retained native normalizer outputs (209 facts; 185 newly supported
+  through common registrations), prove deterministic repeated dispatch and
+  unchanged originals, run the required harness and deliver a focused PR.
+  Registration alone does not close operational manifest integration or Phase 3.
