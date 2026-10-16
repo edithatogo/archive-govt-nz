@@ -1043,7 +1043,11 @@ integrated parent head.
   real-spending view is emitted while base, GST and period comparability remain
   unqualified. Existing exact-output tests cover budget-versus-actual,
   revision/classification reports, department/portfolio breakdowns and CPB
-  projections. The broader cross-product matrix across Crown, Budget, revisions,
+  projections. The Crown matrix additionally checks both core/total Crown
+  denominator identities and exact query values against shared nominal inputs,
+  including a missing total-Crown denominator with null percentage. This is
+  synthetic query/readback assurance; source calculation contracts remain in
+  `test_fiscal_share_analysis.py`. The broader matrix across Budget, revisions,
   classifications, department/portfolio and CPB remains open; this checklist
   stays incomplete until those contracts are reconciled.
 - [x] Add invariant/property tests for denominator identity, CPI base changes,

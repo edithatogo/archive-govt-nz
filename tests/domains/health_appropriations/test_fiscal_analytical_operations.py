@@ -18,7 +18,29 @@ from archive_govt_nz.domains.health_appropriations import (
 )
 
 
-def package(root: Path) -> str:
+def crown_rows(row: dict[str, Any], year: int) -> list[dict[str, Any]]:
+    records = []
+    for scope, amount, percent in (
+        ("core", "100000", "30.311125"),
+        ("total", "200000", "15.1555625"),
+    ):
+        missing = scope == "total" and year == 2024
+        records.append(
+            {
+                **row,
+                "measure": f"health_share_{scope}_crown",
+                "denominator_id": None if missing else f"{scope}-{year}",
+                "denominator_coverage": f"{scope}_crown",
+                "denominator_amount": None if missing else Decimal(amount),
+                "denominator_source_time_status": None if missing else "actual",
+                "percent": None if missing else Decimal(percent),
+                "status": "missing_denominator" if missing else "calculated",
+            }
+        )
+    return records
+
+
+def package(root: Path, *, crown: bool = False) -> str:
     root.mkdir()
     inventory = {}
     for name, schema in gold.TABLE_SCHEMAS.items():
@@ -93,12 +115,14 @@ def package(root: Path) -> str:
             if "percent" in row:
                 row["percent"] = Decimal("6.950422262631")
             records.append(row)
+            if crown and name == "shares":
+                records.extend(crown_rows(row, year))
         path = root / f"{name}.parquet"
         pq.write_table(pa.Table.from_pylist(records, schema=schema), path)
         inventory[name] = {
             "filename": path.name,
             "bytes": path.stat().st_size,
-            "rows": 2,
+            "rows": len(records),
             "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
         }
     content = json.dumps({"schema_version": gold.VERSION, "tables": inventory}).encode()
@@ -195,6 +219,52 @@ def test_duckdb_cross_product_golden_matrix_and_unapproved_real_view(
     )
     assert unsupported_real["status"] == "failed"
     assert unsupported_real["error"] == "fiscal_gold_query_invalid"
+    assert before == {path.name: path.read_bytes() for path in root.iterdir()}
+
+
+def test_crown_query_matrix_preserves_denominators_and_exclusions(
+    tmp_path: Path,
+) -> None:
+    root = tmp_path / "gold"
+    pin = package(root, crown=True)
+    before = {path.name: path.read_bytes() for path in root.iterdir()}
+    nominal_result = ops.query_fiscal_analytical_gold(root, pin, table="nominal")
+    share_result = ops.query_fiscal_analytical_gold(root, pin, table="shares")
+    assert nominal_result["status"] == share_result["status"] == "verified"
+    assert share_result["total_rows"] == share_result["row_count"] == 6
+    assert share_result["truncated"] is False
+    nominal = {row["period_end"]: row for row in nominal_result["rows"]}
+    shares = {(row["period_end"], row["measure"]): row for row in share_result["rows"]}
+    assert set(nominal) == {"2024-06-30", "2025-06-30"}
+    assert set(shares) == {
+        (period, f"health_share_{scope}")
+        for period in nominal
+        for scope in ("gdp", "core_crown", "total_crown")
+    }
+    for period, parent in nominal.items():
+        for scope, amount, percent in (
+            ("core", "100000.000000000000000000", "30.311125000000"),
+            ("total", "200000.000000000000000000", "15.155562500000"),
+        ):
+            row = shares[period, f"health_share_{scope}_crown"]
+            for field in (
+                "numerator_id",
+                "numerator_amount",
+                "source_object_sha256",
+                "source_vintage",
+                "period_start",
+                "period_end",
+                "accounting_basis",
+            ):
+                assert row[field] == parent[field]
+            assert row["denominator_coverage"] == f"{scope}_crown"
+            missing = scope == "total" and period == "2024-06-30"
+            assert row["status"] == ("missing_denominator" if missing else "calculated")
+            assert row["denominator_id"] == (
+                None if missing else f"{scope}-{period[:4]}"
+            )
+            assert row["denominator_amount"] == (None if missing else amount)
+            assert row["percent"] == (None if missing else percent)
     assert before == {path.name: path.read_bytes() for path in root.iterdir()}
 
 
