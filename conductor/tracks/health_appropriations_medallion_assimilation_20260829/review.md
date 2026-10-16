@@ -1844,3 +1844,13 @@ The 122 focused checks and required full harness now pass. All actionable
 findings in this reconciliation slice are resolved. Deflator choice, broader
 cross-family comparability and rights remain scoped open; hosted PR checks
 remain the delivery gate.
+
+### PR #688 correction — 2026-10-17
+
+Resolved the two P2 findings in the current review's period fields: both now
+name their implemented CPI/population policies and scope remaining selections
+separately. Also distinguished Stats NZ GDP source projections from the
+unselected Stats NZ denominator policy. The existing test now ties both period
+fields to the pinned policy receipts. All 36 source/measure checks and the
+format/lint/Conductor gates pass. Historical receipts are unchanged; exact-head
+hosted assurance remains required before merge.

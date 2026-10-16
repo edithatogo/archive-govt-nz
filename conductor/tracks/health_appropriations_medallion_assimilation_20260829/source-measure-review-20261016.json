@@ -138,14 +138,14 @@
     },
     "cpi": {
       "analytical_status": "Captured and projected; fiscal-2025-cpi2026q2-equal-quarter-FY2025/v1 provides a separately qualified four-quarter household purchasing-power benchmark. This is not an official annual index or a health-input-cost deflator; GST and broader comparability limitations remain.",
-      "period_basis": "Quarter-ending index levels; fiscal-year annual aggregation/rebasing is not selected. CPI measures household-purchased goods and services, not health-specific input costs.",
+      "period_basis": "Quarter-ending source index levels. The implemented fiscal-2025-cpi2026q2-equal-quarter-FY2025/v1 policy selects equal weighting of four complete fiscal quarters and an FY2025 reference mean for its household purchasing-power benchmark. Other aggregation/rebasing policies remain unselected. This is not an official annual CPI series or a health-specific input-cost deflator.",
       "rights": "publisher_default_observed_unadjudicated",
       "series_id": "CPIQ.SE9A",
       "vintage_or_range": "Stats NZ Consumers Price Index June 2026 quarter; 449 quarterly selected rows from 1914Q2 to 2026Q2; Index, June 2017 quarter = 1000"
     },
     "gdp": {
       "analytical_status": "Stats NZ March and June vintages remain separately captured and source-profiled; no Stats NZ GDP-share denominator is selected. The distinct same-workbook Treasury Fiscal GDP share policy is documented separately and does not qualify a Stats NZ GDP join.",
-      "period_basis": "Current-price quarterly flow; fiscal annual share requires four explicitly matching quarterly flows or a period-aligned Treasury June-year total. Currency code, aggregation, vintage splice and projection remain unqualified.",
+      "period_basis": "Current-price quarterly source flow with source-faithful March and June projections kept separate. No Stats NZ annual GDP-share denominator policy is selected; ISO currency, annual aggregation and vintage splicing remain unqualified. The distinct Treasury Fiscal same-workbook GDP-share policy does not qualify a join to these Stats NZ vintages.",
       "rights": "publisher_default_observed_unadjudicated",
       "series_id": "Stats NZ GDP expenditure measure — Table 1 reference SG03AB01GE00S900, workbook prefix SNEQ",
       "vintage_or_range": "March 2026 vintage: 60 quarters 2011Q2–2026Q1. Official GDP release for June 2026 exists; its captured successor is Table 1 C27:BK27, 61 quarters 2011Q2–2026Q2, preserved separately with no implicit splice."
@@ -166,7 +166,7 @@
     },
     "population": {
       "analytical_status": "Numeric export captured and projected; fiscal-2025-population-20260818-june-mean/v1 provides nominal rates for matching June fiscal periods, retaining missing-population and unsupported March-year reasons. This does not admit other population selections, vintages, rights or joins.",
-      "period_basis": "Mean year ended annual estimate aligns in concept with annual flow denominators at the same June-year endpoint; selected denominator and approval remain open. This is not an as-at stock.",
+      "period_basis": "Annual June Mean year ended for DPE056AA Total All Ages. The implemented fiscal-2025-population-20260818-june-mean/v1 policy selects this exact annual mean denominator for matching July-June Fiscal spending flows, retaining missing June observations and unsupported March periods. Other denominator selections remain open. This is not an as-at stock.",
       "rights": "publisher_default_observed_unadjudicated",
       "series_id": "DPE056AA — Estimated Resident Population by Age and Sex (1991+) (Annual-Jun)",
       "source_export": "https://infoshare.stats.govt.nz/ExportDirect.aspx",

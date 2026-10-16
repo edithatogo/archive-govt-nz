@@ -29,6 +29,13 @@ REPORT = TRACK / "source-measure-review-20261016.json"
 def test_review_reports_exact_series_and_preserves_blockers() -> None:
     report = validate_review(REPORT, ROOT)
     assert report["series_count"] == 9
+    for family, receipt_name in (
+        ("cpi", "fiscal-health-cpi-benchmark-20261004.json"),
+        ("population", "fiscal-health-per-capita-20261004.json"),
+    ):
+        receipt = json.loads((TRACK / receipt_name).read_text())
+        policy = receipt["query_receipt"]["formula_policy"]
+        assert policy in report["series"][family]["period_basis"]
     historical_gaap = report["series"]["historical_gaap_crown_expenses"]
     assert "Total Expenses" in historical_gaap["series_id"]
     assert (
