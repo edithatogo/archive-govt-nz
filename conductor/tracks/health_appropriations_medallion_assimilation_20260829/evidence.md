@@ -1271,3 +1271,13 @@ Native full integration and required whole-repository/hosted validation remain
 pending; no whole-track or rights/publication completion is claimed.
 
 Native recovery now exits 0 on implementation `a8b8fcea74a8889c90fb68ddabf0012a68489f49`. The bounded [native receipt projection](./canonical-recovery-validation-20261017.json) retains definitions, source/output pins, query counts and metadata reconstruction. Forty-seven input-tree files and 53 Gold files repeat; composite metadata covers 13 recordsets/1,184 rows and nine repeat-identical files. All eight bounded query results match typed facts, with truncation recorded, and no Bronze mutations occur. The actual completion receipts also validate against the corrected JSONL-aware schema; no production code changed after native assurance. Required full/hosted validation remains pending.
+
+Full local `./scripts/validate.sh` passed on clean
+`7946b24392d1053b76d3ef77cbc49263a08b3f23` with exit 0 (durable
+`validation-2.log`/`validation-2.exit` outside Git): 7,708 passed, ten skipped,
+97.44% coverage against the 80% floor, 60 schemas/50 representative documents,
+parity and all mutation/hygiene/audit/licence/secrets/SBOM gates. SBOM has 113
+components; external CDX validation was explicitly skipped. The bounded fresh
+canonical-input recovery task is now complete locally; broader Phase 9 remains
+in progress. This result bookkeeping changes only track documentation/evidence;
+protected exact-head hosted validation and merge/prune remain pending.

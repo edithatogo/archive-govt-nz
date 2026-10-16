@@ -1461,7 +1461,7 @@ integrated parent head.
 
 ### 9.1 Clean-room reconstruction
 
-- [~] Rebuild the five canonical historical/Budget input packages directly
+- [x] Rebuild the five canonical historical/Budget input packages directly
   from pinned Bronze originals and locked observation-token definitions, with
   no retained Silver fallback. Preserve original observation identities and
   added adapter-selection evidence; compare two fresh raw/canonical inventories.

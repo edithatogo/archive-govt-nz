@@ -1898,3 +1898,13 @@ comparison evidence and unsupported source/rights/standards gates are not
 relabelled as completed clean-room products.
 
 Native two-run recovery passed with unchanged Bronze, matching fresh inputs and Gold, all bounded query readbacks and 13-recordset metadata reconstruction. Independent actual-receipt validation caught a filename-schema gap hidden by the original synthetic fixture; the native-shaped JSONL fixture reproduced it red, and the narrow schema correction now validates both real receipts. No production-code or input change followed the native run. The cancelled queued harness never acquired the broad slot or executed tests. The full corrected-tree harness and hosted checks remain pending; this review does not close the whole recovery or track gate.
+
+Full local `./scripts/validate.sh` passed on clean
+`7946b24392d1053b76d3ef77cbc49263a08b3f23` with exit 0 (durable
+`validation-2.log`/`validation-2.exit` outside Git): 7,708 passed, ten skipped,
+97.44% coverage against the 80% floor, 60 schemas/50 representative documents,
+parity and all mutation/hygiene/audit/licence/secrets/SBOM gates. SBOM has 113
+components; external CDX validation was explicitly skipped. The bounded fresh
+canonical-input recovery task is now complete locally; broader Phase 9 remains
+in progress. This result bookkeeping changes only track documentation/evidence;
+protected exact-head hosted validation and merge/prune remain pending.

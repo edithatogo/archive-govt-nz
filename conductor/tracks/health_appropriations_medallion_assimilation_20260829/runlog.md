@@ -5455,3 +5455,13 @@ rerunning lint and validation.
 - Native integrated recovery on clean `a8b8fcea74a8889c90fb68ddabf0012a68489f49` completed with exit 0 through the shared process guard. Full receipt SHA256 `cd755a4da9cb243396f4eb6dd60894df30f3d820703ce10c38e384bc55b05d3a`; two five-source raw/canonical input inventories match 47 files, Gold 53 files, and composite metadata nine files/13 recordsets/1,184 rows. Eight named queries repeat with 645 returned rows and explicit truncation; 859/859 inputs accounted and Bronze unchanged. Whole receipt remains partial with broader gates open.
 - Independently validating the first real input completion receipt exposed a schema-only omission: canonical Budget emits `lineage_accounting.jsonl`, rejected by the new inventory filename pattern. Preserved `native-schema-finding-1.txt`; cancelled only the still-waiting full harness guard (exit 143), not an executed failing test lane or native run. The queued gate had also been corrected for the bounded lock-release/exit-marker publication gap; future launchers record status within the guard.
 - Added the actual JSONL output shape to the existing synthetic producer fixture. The focused contract failed as expected on the filename schema (1 failure, 1.09s; `schema-native-red.log`), then passed after allowing JSONL alongside JSON/Parquet. Both retained actual input receipts independently validate and share SHA256 `db17e436e6a25ad3d48824642753cfe8342585e9e1dbe689cf0d49f0a6f4f371`; the 20-test recovery selection passes again. Native production code and inputs are unchanged; reuse is explicit, not a claim the earlier run tested the later schema. Full final-tree harness remains pending.
+
+Full local `./scripts/validate.sh` passed on clean
+`7946b24392d1053b76d3ef77cbc49263a08b3f23` with exit 0 (durable
+`validation-2.log`/`validation-2.exit` outside Git): 7,708 passed, ten skipped,
+97.44% coverage against the 80% floor, 60 schemas/50 representative documents,
+parity and all mutation/hygiene/audit/licence/secrets/SBOM gates. SBOM has 113
+components; external CDX validation was explicitly skipped. The bounded fresh
+canonical-input recovery task is now complete locally; broader Phase 9 remains
+in progress. This result bookkeeping changes only track documentation/evidence;
+protected exact-head hosted validation and merge/prune remain pending.

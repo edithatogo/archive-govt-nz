@@ -69,8 +69,14 @@ saved actual receipts validate with the correction and are byte-identical
 (`db17e436e6a25ad3d48824642753cfe8342585e9e1dbe689cf0d49f0a6f4f371`).
 Production implementation, inputs and output hashes remain unchanged; this
 schema/test/fixture/documentation delta does not require repeating the native
-rebuild. The focused recovery suite still passes. Required whole-repository
-and hosted validation remain pending.
+rebuild. The focused recovery suite still passes. The full `./scripts/validate.sh`
+harness passed on clean `7946b24392d1053b76d3ef77cbc49263a08b3f23`:
+7,708 tests passed, ten skipped, 97.44% coverage against the agreed 80% floor;
+60 schemas/50 representative documents, parity, all mutation lanes, hygiene,
+audit, licences, secrets and SBOM gates passed. The SBOM contains 113 components;
+external CDX validator execution was explicitly skipped, so no separate external
+standards-validator success is claimed. This subsequent bookkeeping changes only
+track documentation/evidence. Protected hosted delivery remains pending.
 
 The overall Health receipt still reports partial recovery with broader source,
 comparison, rights and standards gaps. This slice does not mark the track or
