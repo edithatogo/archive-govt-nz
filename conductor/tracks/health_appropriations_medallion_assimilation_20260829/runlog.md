@@ -5746,3 +5746,10 @@ The following bookkeeping commit changes only four unpinned track notes/status.
 Source observations, review evidence hashes, tests and product code are unchanged.
 Local slice assurance is complete; exact-head hosted checks and protected PR
 merge/pruning remain pending. This does not close the Health track.
+
+## Fiscal scope and locator binding correction — 2026-10-17
+
+Before merging #695, review found the shared 1998–2026 range creates a false
+2026/27 Supplementary gap pointing at captured 2025/26. Derive each family
+from pinned publisher titles, bind missing URLs to those editions, preserve
+2019/20 additions, and rerun focused/full assurance. No new acquisition.

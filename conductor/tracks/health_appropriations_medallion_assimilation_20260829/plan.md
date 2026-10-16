@@ -1741,3 +1741,7 @@ integrated parent head.
   Focused native evidence verifies 34 files per run and all 324 query rows;
   source-health and donor/classification preflights pass. The wider Health
   recovery/completion gate remains open.
+
+- [~] Fix Vote Health fiscal coverage using pinned publisher editions separately
+  for main and Supplementary Estimates; reject discovered URLs bound to another
+  fiscal edition and preserve distinct published additions. Requalify PR #695.
