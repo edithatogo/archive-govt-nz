@@ -5647,3 +5647,153 @@ stale Phase 4 sentence to agree with its existing source-backed retain-both
 receipt; this grants no replacements or publication approval. This bookkeeping
 commit changes only unpinned track evidence/status. Exact-head hosted checks
 and protected delivery remain pending; the whole Health track is incomplete.
+
+## 2026-10-17 — Remaining locator gaps and component identities registered
+
+PR #694 final head `a8f6d7dba6d3baf045d6c84d734c6764d0e48e82` passed all
+applicable hosted checks, with no review threads. Linux took 9m45s, macOS
+13m54s and Windows 18m05s; each job reached terminal success. Protected merge
+`7aadc69d5fb64a001bdb25a0b8c7eaccfc8907f1` completed at 20:48:09 UTC on
+16 October. Verified head and merge ancestors on fetched origin/main before
+fast-forwarding the clean primary checkout, deleting the integrated local
+topic and confirming remote absence. Removed only its exact stale tracking
+ref. The primary checkout is the only worktree.
+
+Registered the next bounded source-census slice before implementation. Public
+browser/reader evidence identifies 34 primary BEFU links across 2000, 2003,
+2004 and 2006, plus four Budget expenditure/revenue links for 2025 and 2026.
+Four related 2000 policy/overview/strategy/model links remain discovered with
+content-scope review pending. These observations can close year-level locator
+gaps without proving full source-family coverage or new capture eligibility.
+
+Conductor supplied exact current LCI/PPI catalogue tables and named dimensions
+for component-index qualification. The owner independently read their code/text
+and information displays through one-cell 2026Q2 public queries, retaining table
+and dimension identities, units, base and revision dates without copying numeric
+values into the census receipt. Full export references, series coverage, cost
+weights, rights, native source fixity and analytical policy remain unqualified.
+No source files were downloaded, Bronze bytes changed or publication repeated.
+
+The four selected contracts began red before the source additions and new review
+existed (four failures, 1.45s; `red.log`). Added 38 official primary locators,
+four historical source-separated Health descriptors and two component-index
+candidates. Current review binds 19 descriptors / 41 evidence files. Prior 93 resources,
+thirteen descriptors, captured census and previous review compare unchanged.
+All 30 years have at least one locator; no edition earns full-family completion.
+
+Initial focused run exposed the older missing-year mutation fixture popping an
+empty list (44 passed / 1 failed). Changed it to inject a false gap for a located
+year, retaining the intended validator rejection. A subsequent 45-case run
+passed but lint found 52 statements in an expanded existing test; extracted its
+historical coverage assertion helper and retained every assertion. A shared
+default-temp cleanup warning did not recur under the dedicated external
+TMPDIR. Final focused 45 cases pass in 1.39s; Ruff lint/format and whitespace
+checks pass. No product implementation, timeout or quality gate changed.
+
+Source identity review keeps publisher typos/mismatches and differing date,
+period, GST/elimination and ownership scopes explicit. Existing 2026 capture
+references are metadata only; no URL-alias byte equivalence is asserted.
+Conductor independently verified prior-object/descriptor preservation and
+unique identities without rerunning captures or tests. Full repository
+assurance is next on a frozen clean commit under the shared validation guard.
+
+
+## Current-review coverage consistency correction — 2026-10-17
+
+A further read-only assessment found a stale Vote Health narrative inherited
+from the older review: 58 PDFs and ten missing Estimates years, while the
+structured aggregate register and validator prove 59 PDFs and nine missing
+years. The latter excludes 2008, already present in that register. Added a
+contract tying narrative counts to the structured evidence; it failed as
+expected before correction (0.63s, `red-coverage-description.log`).
+
+Cancelled only this slice's verified queued guard request PID 8669 before its
+harness started, preserving the queue/cancellation receipt and leaving the
+other live validation holder untouched. Corrected the new dated review to
+59 PDFs / nine missing years, retaining all 93 prior resource objects, all source
+values/rights/captures, twelve unaffected descriptors and every older dated
+review. This is current inventory reconciliation, not a historical value
+replacement. The original thirteen-descriptor preservation check described
+the preceding implementation state; it is not claimed for the corrected Vote
+Health description. No native captures or broader source-family closure were
+added. Later per-edition capture receipts need separate reconciliation and do
+not retroactively change the aggregate snapshot's current counts.
+
+
+## Remaining locator census local assurance — 2026-10-17
+
+The required `./scripts/validate.sh` passed on clean
+`7e780458e1d5c49160e85afd5a5d520fc55681b3`: 7,717 passed, ten skipped,
+23 warnings, 97.44% coverage against the 80% floor; 60 schemas/50 representative
+documents, 9/9 parity and every configured mutation/hygiene/audit/licence/secrets/
+SBOM gate. Test execution took 530.03s with one worker. SBOM has 113 components;
+external CDX validation was explicitly skipped. Durable log and exit 0 are
+retained under
+`/Volumes/PortableSSD/tmp/health-census-locator-gaps-20261017/validation-2.*`.
+The earlier guard request was cancelled while still queued for the documented
+coverage-wording correction; no harness was started on its superseded head.
+
+Conductor's independent exact-head review confirms all 41 evidence hashes,
+all 93 prior resource objects unchanged and twelve unaffected prior descriptors
+unchanged. The sole earlier descriptor changed is Vote Health inventory
+wording/status, reconciled to the existing 59-PDF aggregate register and nine
+missing Estimates years. Earlier dated reviews and captured-census bytes remain
+unchanged. The new review records 131 locators/19 source descriptors while all
+30 editions remain pending full source-family coverage and source-specific
+rights/fixity/layout/analytical qualification.
+
+The following bookkeeping commit changes only four unpinned track notes/status.
+Source observations, review evidence hashes, tests and product code are unchanged.
+Local slice assurance is complete; exact-head hosted checks and protected PR
+merge/pruning remain pending. This does not close the Health track.
+
+## Fiscal scope and locator binding correction — 2026-10-17
+
+Before merging #695, review found the shared 1998–2026 range creates a false
+2026/27 Supplementary gap pointing at captured 2025/26. Derive each family
+from pinned publisher titles, bind missing URLs to those editions, preserve
+2019/20 additions, and rerun focused/full assurance. No new acquisition.
+
+The two new regressions reproduced rejection of correct fiscal coverage and
+acceptance of a same-domain wrong-edition URL. The implementation now derives
+exact year-to-URL sets separately from pinned publisher landing records, not a
+shared range or captured documents. Both 2019/20 Supplementary forms survive.
+The stricter check also exposed a shortened 2012/13 URL in the review: it now
+uses the exact pinned appropriation-and-supporting-information locator. Current
+missing Supplementary coverage is [2012]; the already captured 2025/26 edition
+is no longer presented as missing. No captured source or older review changed.
+Focused assurance: 48 passed in 1.13s; Ruff and whitespace checks pass. Full
+validation of the following clean implementation commit remains required.
+
+## Fiscal scope correction full assurance — 2026-10-17
+
+Required `./scripts/validate.sh` passed on clean implementation commit
+`7c1dadb7` under the shared guard, one test worker and a dedicated external
+TMPDIR. Tests: 7,720 passed, ten skipped, 23 warnings, 531.37s; coverage
+97.44% against the 80% floor. All 60 schemas/50 documents, 9/9 parity,
+configured mutation/hygiene, dependency audit, licence inventory, secret scan
+and 113-component SBOM checks passed. External CDX validation was explicitly
+skipped. Log and exit 0: external `health-census-locator-gaps-20261017/validation-3.*`.
+Independent exact-head Conductor review found no blocking finding. The next
+commit updates only unpinned planning/evidence notes; product code, current
+review and its 41 evidence pins remain exactly as qualified. Fresh hosted
+checks and protected merge/pruning remain pending; the track stays incomplete.
+
+## Captured title variant correction — 2026-10-17
+
+A pre-merge gap audit found 2012/13 Supplementary already captured in unchanged
+source-census.json under the short lowercase title, along with its distinct
+supporting-information volume. The literal title filter incorrectly omits the
+appropriation PDF. Add a red regression for native short titles and supporting
+exclusion, correct only the latest review, and requalify. No acquisition needed.
+
+The native-short-title regression failed before the change. Captured selection
+now compares casefolded Estimates labels and explicitly excludes dedicated
+performance/information-supporting and short-title supporting-information forms.
+Combined appropriation-and-supporting titles remain appropriation documents:
+2007/08 and 2013/14 are retained. Fiscal identity comes from the title, not
+upload directories. All 28 published Supplementary years now have captured
+appropriation documents; this does not prove complete variant enumeration.
+The latest review alone is corrected; 59 captured PDFs and all source bytes
+are unchanged. Fifty focused checks pass in 1.02s; Ruff/whitespace pass.
+Full assurance of this correction is pending; earlier passing heads are historical.

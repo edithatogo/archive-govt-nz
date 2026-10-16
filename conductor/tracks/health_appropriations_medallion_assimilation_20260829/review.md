@@ -2048,3 +2048,86 @@ stale Phase 4 sentence to agree with its existing source-backed retain-both
 receipt; this grants no replacements or publication approval. This bookkeeping
 commit changes only unpinned track evidence/status. Exact-head hosted checks
 and protected delivery remain pending; the whole Health track is incomplete.
+
+## Remaining locator gaps and component identities — 2026-10-17
+
+Bounded self-review preserves all 93 earlier resource objects and twelve
+unaffected reviewed source descriptors exactly, plus unchanged captured-census
+and prior dated review bytes. Vote Health coverage wording in the new review
+is corrected against the existing structured inventory. All 131 primary source IDs/URLs are unique. At least one locator
+per scoped year does not establish complete per-edition families: the complete
+edition list remains empty and every prior capture/rights boundary remains.
+Four related 2000 links remain discovered with content-scope review pending.
+
+Publisher labels, reader identities and dates are separate observations. The
+2003 Financial Information/Summary Tables discrepancy, 2004 workbook year
+mismatch and 2006 signed-date anomaly remain explicit. Issue dates are declared
+as landing-release metadata, never verified native-document dates. Budget
+2026 Treasury hrefs are not assumed byte-identical aliases of existing
+Budget.govt.nz captures. No numeric values, currency, header relabelling or
+cross-basis joins are admitted by the new historical descriptors.
+
+Component-index records distinguish central-government LCI salary/wages from
+PPI inputs and preserve social-assistance scope, exact table/dimension codes,
+units/base, source update dates and historical-method vintage. No LCIQ/PPIQ
+selector is guessed; full export references, numeric coverage/flags, weights,
+GST/period alignment, native capture/fixity, rights and policy remain pending.
+The agricultural PPI base exception and finance/FISIM nuance remain scoped.
+No whole-Vote-Health deflator, QES substitution or numerical export is approved.
+
+Before that wording correction, Conductor independently confirmed preservation
+of all prior resources and source descriptors, unique identities, unknown
+fixity/rights for additions,
+and unchanged negative completion flags. Current review closure and local
+focused checks verify 41 pinned evidence files. Full harness and exact-head
+hosted delivery remain pending; this does not close the Health track.
+
+
+## Current-review coverage consistency correction — 2026-10-17
+
+A further read-only assessment found a stale Vote Health narrative inherited
+from the older review: 58 PDFs and ten missing Estimates years, while the
+structured aggregate register and validator prove 59 PDFs and nine missing
+years. The latter excludes 2008, already present in that register. Added a
+contract tying narrative counts to the structured evidence; it failed as
+expected before correction (0.63s, `red-coverage-description.log`).
+
+Cancelled only this slice's verified queued guard request PID 8669 before its
+harness started, preserving the queue/cancellation receipt and leaving the
+other live validation holder untouched. Corrected the new dated review to
+59 PDFs / nine missing years, retaining all 93 prior resource objects, all source
+values/rights/captures, twelve unaffected descriptors and every older dated
+review. This is current inventory reconciliation, not a historical value
+replacement. The original thirteen-descriptor preservation check described
+the preceding implementation state; it is not claimed for the corrected Vote
+Health description. No native captures or broader source-family closure were
+added. Later per-edition capture receipts need separate reconciliation and do
+not retroactively change the aggregate snapshot's current counts.
+
+
+## Remaining locator census local assurance — 2026-10-17
+
+The required `./scripts/validate.sh` passed on clean
+`7e780458e1d5c49160e85afd5a5d520fc55681b3`: 7,717 passed, ten skipped,
+23 warnings, 97.44% coverage against the 80% floor; 60 schemas/50 representative
+documents, 9/9 parity and every configured mutation/hygiene/audit/licence/secrets/
+SBOM gate. Test execution took 530.03s with one worker. SBOM has 113 components;
+external CDX validation was explicitly skipped. Durable log and exit 0 are
+retained under
+`/Volumes/PortableSSD/tmp/health-census-locator-gaps-20261017/validation-2.*`.
+The earlier guard request was cancelled while still queued for the documented
+coverage-wording correction; no harness was started on its superseded head.
+
+Conductor's independent exact-head review confirms all 41 evidence hashes,
+all 93 prior resource objects unchanged and twelve unaffected prior descriptors
+unchanged. The sole earlier descriptor changed is Vote Health inventory
+wording/status, reconciled to the existing 59-PDF aggregate register and nine
+missing Estimates years. Earlier dated reviews and captured-census bytes remain
+unchanged. The new review records 131 locators/19 source descriptors while all
+30 editions remain pending full source-family coverage and source-specific
+rights/fixity/layout/analytical qualification.
+
+The following bookkeeping commit changes only four unpinned track notes/status.
+Source observations, review evidence hashes, tests and product code are unchanged.
+Local slice assurance is complete; exact-head hosted checks and protected PR
+merge/pruning remain pending. This does not close the Health track.
