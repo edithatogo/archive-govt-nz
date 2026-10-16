@@ -1761,3 +1761,7 @@ integrated parent head.
   through common registrations), prove deterministic repeated dispatch and
   unchanged originals, run the required harness and deliver a focused PR.
   Registration alone does not close operational manifest integration or Phase 3.
+
+- [~] Preserve bounded child-bootstrap evidence when the existing real-process
+  capture-recovery checkpoint deadline fails. Retain every 10-second deadline
+  and hard-kill/ownership/resume/WARC assertion; diagnose before any causal fix.

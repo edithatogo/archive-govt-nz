@@ -5867,3 +5867,20 @@ for altered bytes. No Any, cast, ignore, gate or timeout relaxation was added.
 All four production hashes still match the native parity receipt, so that
 native evidence remains applicable. Full revalidation is pending the reserved
 Aegis slot's terminal handoff; no second broad run has been queued.
+
+## Full adapter assurance: checkpoint-readiness timeout diagnosis
+
+Full validation on clean `81701adf` terminated with exit 1 after 651.51s:
+7,731 passed, ten skipped, one failed, 97.44% coverage. The existing real-process
+recovery test failed at its initial ten-second `stdout.readline()` deadline,
+before `checkpoint_ready`. The retained fixture has only census.json (285 bytes),
+with no writer lock, CAS, WARC or manifest. The original test discards child
+stderr in cleanup, so its blocked startup stack is unavailable. This evidence
+does not establish a kill/lock-release/resume defect or prove host contention.
+The test, capture tool and core capture code are unchanged from main.
+
+Before another full attempt, add a failure-only bounded stderr/exit note and a
+one-shot child startup traceback, cancelled at checkpoint. Keep every existing
+deadline/assertion and all production code unchanged. Original failure log and
+structured diagnosis are retained in external validation-2.*. No new broad
+run is queued while Aegis owns the reserved next slot.
