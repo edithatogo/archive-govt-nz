@@ -113,3 +113,15 @@ passed, ten skipped, 97.44% coverage against the 80% floor, 60 schemas/50
 documents, parity and all mutation/hygiene/audit/licence/secrets/SBOM gates.
 External CDX validation was explicitly skipped, and the SBOM has 113 components.
 The following bookkeeping commit adds only track evidence/status.
+
+## Protected delivery
+
+PR #691 final head `b5321eda79e265dde8554aa1ef19bdd7106b0c30` passed
+Linux (9m25s), macOS (13m53s), Windows (17m58s), CodeQL/analyze, lint and patch
+coverage; supplemental assurance was intentionally skipped by its existing
+selection. The sole review thread was resolved against the verified correction.
+Normal protected merge completed as
+`f26ac373e10dfcbc2e0fc27e1fb15dae14289851` on 16 October 2026 at 18:42:49 UTC.
+Both head and merge were verified ancestors of fetched origin/main before the
+clean primary checkout was fast-forwarded and the local topic deleted; the
+remote topic was confirmed absent. Broader Health completion remains open.

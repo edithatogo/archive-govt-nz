@@ -5508,3 +5508,45 @@ bookkeeping commit changes only track evidence/documents. Local review correctio
 is verified; corrected exact-head hosted checks, thread resolution and protected
 merge/prune remain pending. Whole-track recovery/source/rights/standards gates
 remain open. See `canonical-recovery-ordered-validation-20261017.json`.
+
+## 2026-10-17 — 2002 BEFU/DEFU census slice registered
+
+PR #691 merged through the protected path as `f26ac373e10dfcbc2e0fc27e1fb15dae14289851`
+after all required and applicable checks passed on final head `b5321eda`.
+Verified head/merge ancestors on fetched origin/main, clean main fast-forward,
+local topic deletion and remote absence before opening this branch. Exact
+platform durations and delivery are in the canonical recovery slice evidence.
+
+The next Phase 1.2 task registers five official 2002 resource locators. Public
+browser readback resolves the exact DEFU forecast workbook and tax/expense annex
+links where direct urllib returned 403 and the web reader could not parse XLS.
+Preserve publication-native DEFU naming and page-level rights evidence. Scope is
+source discovery and qualified period/definition metadata; item rights, byte
+capture, native layout and analytical joins remain unqualified. The 30-year
+inventory and existing Vote Health preflight are not repeated or declared done.
+
+- Registered the slice before implementation (`6ba70c58`). The red selection preserved `red.log`: the absent new dated review propagated through existing fixture checks alongside the new count/DEFU-link assertions (31 failures, ten passes, 1.45s); these are contract absence, not 31 independent product defects.
+- Added five discovery-only records and exact official source IDs, retaining publisher-native BEFU/DEFU release dates and the glossary-link reader-extent discrepancy. Source-family periods/units and the 2002 accounting transition remain source-qualified metadata; original bytes, native layout, ISO currency, resource rights and joins are unqualified. No HTTP capture or publication mutation occurs.
+- Wrote a new dated source-measure review with 10 separately identified series and 76 historical locators; previous dated reviews remain unchanged. Refreshed only the new review's evidence hashes to the actual current files. Existing approved Fiscal analytical policies and capture counts remain separate.
+- Focused census/review checks pass (41 tests, latest 1.00s); initial lint required a test docstring and splitting a combined assertion, then Ruff/format and focused typing pass with zero errors/warnings. Conductor validates 93 tracks, and diff checks pass. Full repository and protected delivery remain pending.
+
+- Follow-up source reading locates Annex B in the separate GAAP `defu02-6.pdf` reader result (PDF page 48, printed page 148); `defu02-7.pdf` exposes glossary pages despite its publisher label. Record this precise cross-resource reader location while retaining the native-original/layout gap. Companion records remain identical to their main-register source-ID rows, with explicit Australia/Brisbane observation dates.
+- Conductor advised that its shared guard bridges an already-running Atlas broad test process. Queue this slice's full harness through that guard, with exact clean commit checks, two workers and external TMPDIR after acquisition; do not interrupt or bypass the other job.
+
+## 2002 census local assurance — 2026-10-17
+
+The required `./scripts/validate.sh` passed on clean
+`3f57c983b7689b741ae0952ed9d16a0bbb9511b9`: 7,713 passed, ten skipped,
+97.44% coverage against the agreed 80% floor; 60 schemas/50 representative
+documents, parity and all mutation/hygiene/audit/licence/secrets/SBOM gates.
+The SBOM contains 113 components; external CDX validation was explicitly
+skipped, so no independent external standards-validator pass is claimed.
+Durable logs and exit 0 are retained in
+`/Volumes/PortableSSD/tmp/health-census-defu-2002-20261017/validation-1.*`.
+Direct value comparison also verifies all 71 earlier resource rows and all
+nine earlier reviewed series unchanged. Current strict source-review validation
+binds all 33 evidence files, ten series and 76 discovery locators without
+rights or analytical admission. The following commit changes only unpinned
+track evidence/status; source observations and review evidence hashes remain
+unchanged. Local slice work is complete; protected exact-head delivery remains
+pending, and whole-source/Health completion is not claimed.

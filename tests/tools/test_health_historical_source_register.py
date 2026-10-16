@@ -25,7 +25,7 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
     assert report["publication_authorized"] is False
     assert report["whole_history_complete"] is False
     records = report["resource_observations"]
-    assert len(records) == 71
+    assert len(records) == 76
     assert len({row["url"] for row in records}) == len(records)
     assert len({row["source_id"] for row in records}) == len(records)
     assert len({(r["edition_year"], r["family"], r["kind"]) for r in records}) == len(
@@ -43,6 +43,11 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
         ("hyefu", "expense_tables"),
         ("befu", "sna_series_tables"),
         ("befu", "gaap_series_tables"),
+        ("befu", "additional_gaap_tables"),
+        ("defu", "gaap_series_tables"),
+        ("defu", "annex_glossary_link"),
+        ("defu", "additional_gaap_tables"),
+        ("defu", "economic_forecasts"),
         ("befu", "expenses"),
         ("vote_health", "main_estimates"),
         ("vote_health", "supplementary_estimates"),
@@ -111,6 +116,55 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
         assert gap["edition_year"] in report["edition_years"]
         assert gap["evidence_url"] in report["observed_pages"]
         assert gap["other_custodian_availability"] == "not_investigated"
+
+
+def test_defu_2002_discovery_preserves_name_and_layout_qualification() -> None:
+    """Exact discovery links cannot imply native layout or redistribution credit."""
+    path = (
+        Path(__file__).parents[2]
+        / "conductor/tracks/health_appropriations_medallion_assimilation_20260829"
+        / "historical-source-register.json"
+    )
+    report = json.loads(path.read_text(encoding="utf-8"))
+    sources = {
+        row["kind"]: row
+        for row in report["resource_observations"]
+        if row["edition_year"] == 2002 and row["family"] == "defu"
+    }
+    assert {key: row["url"].rsplit("/", 1)[-1] for key, row in sources.items()} == {
+        "gaap_series_tables": "defu02-6.pdf",
+        "annex_glossary_link": "defu02-7.pdf",
+        "additional_gaap_tables": "add-gaap-defu02.pdf",
+        "economic_forecasts": "extra-econ-forecasts-defu02.xls",
+    }
+    for row in sources.values():
+        assert row["release_title"] == "December Economic and Fiscal Update (DEFU) 2002"
+        assert row["issue_date"] == "2002-12-19"
+        assert row["rights_state"] == "not_evaluated"
+        assert row["sha256"] is None
+        assert row["byte_count"] is None
+    annex = sources["annex_glossary_link"]
+    assert annex["layout_status"] == "publisher_label_web_reader_extent_discrepancy"
+    assert annex["native_layout_verified"] is False
+    befu = next(
+        row
+        for row in report["resource_observations"]
+        if (row["edition_year"], row["family"], row["kind"])
+        == (2002, "befu", "additional_gaap_tables")
+    )
+    assert befu["url"].endswith("/add-gaap02.pdf")
+    observation = json.loads(
+        (path.parent / "source-census-2002-befu-defu-20261017.json").read_text()
+    )
+    observed = {row["source_id"]: row for row in observation["resources"]}
+    assert len(observed) == 5
+    assert observed == {
+        row["source_id"]: row
+        for row in report["resource_observations"]
+        if row["source_id"] in observed
+    }
+    assert observation["native_payload_capture_performed"] is False
+    assert report["fully_enumerated_editions"] == []
 
 
 def test_befu_2002_locator_preserves_rights_and_fixity_gaps() -> None:

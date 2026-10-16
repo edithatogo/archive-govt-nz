@@ -70,6 +70,13 @@ repository validation command. External gates block only their affected task.
 
 ### 1.2 Inventory the seed and direct official corpus
 
+- [x] Register the five newly identified BEFU/DEFU 2002 GAAP, annex and
+  forecast resources with exact official locators, publication-native release
+  identity, period/definition evidence and explicit rights/fixity/layout gaps.
+  Reconcile the historical register and current source-measure review without
+  recapturing the Vote Health preflight or granting whole-edition completion.
+  [M-02, M-04, M-11, M-18; AC-03, AC-04, AC-09, AC-16]
+
 - [x] Freeze the donor tree as the seed inventory, including code, documents,
   SQLite, plots and all eight source originals. [M-01, M-02; AC-01, AC-03]
 - [x] Enumerate the Treasury historical Vote Health index and all retrievable
@@ -1461,7 +1468,7 @@ integrated parent head.
 
 ### 9.1 Clean-room reconstruction
 
-- [~] Correct PR #691's query recovery oracle to compare the independently
+- [x] Correct PR #691's query recovery oracle to compare the independently
   ordered typed source slice, including nulls, list prefixes, numeric order and
   duplicate multiplicity. Reproduce wrong-subset/reversed-order acceptance,
   run targeted fresh canonical recovery with the stronger oracle, then full
