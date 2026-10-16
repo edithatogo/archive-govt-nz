@@ -70,7 +70,7 @@ repository validation command. External gates block only their affected task.
 
 ### 1.2 Inventory the seed and direct official corpus
 
-- [~] Register the ten files linked by the official BEFU 1998 release,
+- [x] Register the ten files linked by the official BEFU 1998 release,
   with native source scopes and status labels, explicit reader-layout gaps
   and resource rights/fixity boundaries. Record the separate Budget 1998
   Supplementary withdrawal notice without changing captured 1998/99 originals

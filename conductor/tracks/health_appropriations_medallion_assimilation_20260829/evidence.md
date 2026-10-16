@@ -1347,3 +1347,21 @@ source-separated series and 86 historical discovery locators, preserving
 all earlier resource rows and reviewed series. Forty-two focused tests pass.
 Native byte/layout verification, resource rights, ISO currency, cross-basis
 joins, whole-edition closure and full/hosted validation remain open.
+
+## BEFU 1998 local assurance — 2026-10-17
+
+The required `./scripts/validate.sh` passed on clean
+`81eae29c2de632e6affb9ded72d780fb27a6b812`: 7,714 passed, ten skipped,
+97.44% coverage against the 80% floor; 60 schemas/50 representative documents,
+parity and all mutation/hygiene/audit/licence/secrets/SBOM gates. SBOM has 113
+components; external CDX validation was explicitly skipped. Durable log and
+exit 0 are retained under
+`/Volumes/PortableSSD/tmp/health-census-befu-1998-20261017/validation-1.*`.
+Current source-review validation binds 35 repository evidence files, 12
+source-separated descriptors and 86 discovery locators. All 76 earlier
+resource objects and ten earlier reviewed series compare unchanged. The
+following bookkeeping commit changes only unpinned track evidence/status;
+source observations and their evidence hashes are unchanged. Local slice work
+is complete; exact-head hosted validation and protected delivery remain pending.
+Whole-edition/history, native-layout/fixity, rights and cross-basis qualification
+gates remain open; this does not close the Health track.
