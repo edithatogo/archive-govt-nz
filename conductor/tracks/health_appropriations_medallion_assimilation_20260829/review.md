@@ -1865,6 +1865,7 @@ resolved by restoring the validated Arrow schema after SQL. The existing test
 now asserts UTC timestamps and 131 integration checks pass. ICU loading was not
 enabled. Two native builds and every product's direct/CLI/MCP readback agree;
 Budget/Pharmac classification and revision qualifications remain explicit.
-Remaining gates: full repository harness, exact-head hosted PR checks and
-protected delivery. Broader Gold reconciliation and final track review remain
-open; no unsupported semantic equivalence is inferred.
+Full repository validation passed on implementation `ff91c196` with 7,693
+tests/10 skipped and all later gates green. Remaining gates: exact-head hosted
+PR checks and protected delivery. Broader Gold reconciliation and final track
+review remain open; no unsupported semantic equivalence is inferred.

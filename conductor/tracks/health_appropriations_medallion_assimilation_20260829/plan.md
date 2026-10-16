@@ -1413,7 +1413,7 @@ integrated parent head.
     output manifest pin; compare reconstructed metadata bytes without writes,
     preserving unassessed rights and publication states. See
     `gold-metadata-mcp-verifier-20261005.md`.
-  - [~] Add named read-only queries over the eight existing canonical Gold
+  - [x] Add named read-only queries over the eight existing canonical Gold
     fact products, with bounded Parquet/schema validation, exact Decimal and
     identity readback, deterministic ordering and CLI/MCP parity. Reuse the
     existing product schemas and fixity verifier; reject arbitrary SQL and
@@ -1422,7 +1422,8 @@ integrated parent head.
     classification/revision reports without asserting economic equivalence.
     The existing canonical Gold CLI/MCP verifier proves declared fixity only;
     this task closes the distinct data-query gap. [M-10, M-13, M-15; AC-08,
-    AC-11, AC-13]
+    AC-11, AC-13] See `canonical-gold-queries-20261017.md` for exact native
+    readback, repeat-build, resource-limit and validation evidence.
 - [x] Add a read-only canonical Gold package verifier to CLI and MCP. Check the
   hash-pinned manifest, exact direct-child output inventory, byte counts and
   SHA-256 values, plus presence of the temporal report; test malformed and

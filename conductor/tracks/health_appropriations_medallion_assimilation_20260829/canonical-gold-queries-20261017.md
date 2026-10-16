@@ -79,7 +79,14 @@ setup reuses `tools.health_recovery_assurance.canonical_inputs` and the existing
 source-bound `GoldInputs`; the completed output packages were preserved when
 verification-script setup/status assertions failed.
 
-The required full harness and hosted PR checks remain pending. Native builds use
+The required `./scripts/validate.sh` passed on implementation commit
+`ff91c196c3fd9c81d3cbec186a7ca64d259100cf`: 7,693 tests passed, 10 skipped;
+97.39% coverage against the 80% floor; 56 schemas/46 representative documents;
+parity 9/9; all mutation, hygiene, security and supply-chain gates passed,
+including the 113-component SBOM. Conductor reports 93 tracks and no errors.
+The external durable `validation.log` and `validation.exit` record exit 0.
+The follow-up commit records this evidence only; hosted checks must qualify
+the final PR head before merge. Native builds use
 retained canonical/Silver packages with existing source-byte revalidation; this
 is not fresh source retrieval or a full Bronze normalization/recovery claim.
 No rights approval, publication, source completeness, cross-family economic
