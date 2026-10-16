@@ -1211,3 +1211,26 @@ source facts, counts, rights and qualification states are unchanged.
 evidence closure; the dated 2026-10-06 review and all dated recovery receipts
 remain unchanged. The five focused census/register/review/recovery suites
 passed 122 tests. Required full revalidation passed: 7,675 tests passed, 10 skipped; 97.38% coverage against the 80% floor; 56 schemas/46 representative documents; parity 9/9; all mutation, hygiene, security and supply-chain gates passed, including strict 113-component SBOM validation. Conductor reports 93 tracks and no errors. Hosted validation remains a separate gate.
+
+## Canonical Gold named queries — 2026-10-17
+
+The eight-product reader, CLI and read-only MCP endpoint pass 131 focused and
+neighboring integration checks, relevant lint/format, focused typing and
+Conductor validation (93 tracks, no errors). Two native source-bound Gold builds
+have identical digests; exact direct-Arrow readback, actual CLI/MCP parity,
+repeat-query identity and no-write checks pass for every product. Historical
+and Budget are explicitly truncated at 200 rows. Native assurance exposed and
+resolved host-dependent timestamp formatting by restoring the validated input
+Arrow schema, retaining the external-access prohibition. See
+[query evidence](./canonical-gold-queries-20261017.md) for pins, counts, retained
+logs and limits.
+
+The required `./scripts/validate.sh` passed on implementation commit
+`ff91c196c3fd9c81d3cbec186a7ca64d259100cf`: 7,693 tests passed, 10 skipped;
+97.39% coverage against the 80% floor; 56 schemas/46 representative documents;
+parity 9/9; all mutation, hygiene, security and supply-chain gates passed,
+including the 113-component SBOM. Conductor reports 93 tracks and no errors.
+The external durable `validation.log` and `validation.exit` record exit 0.
+The follow-up commit records this evidence only; hosted checks must qualify
+the final PR head before merge.
+No source/rights/publication or whole-track completion is claimed.

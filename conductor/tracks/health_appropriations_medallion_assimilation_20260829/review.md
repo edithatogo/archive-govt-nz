@@ -1854,3 +1854,18 @@ unselected Stats NZ denominator policy. The existing test now ties both period
 fields to the pinned policy receipts. All 36 source/measure checks and the
 format/lint/Conductor gates pass. Historical receipts are unchanged; exact-head
 hosted assurance remains required before merge.
+
+## Canonical Gold named queries — 2026-10-17
+
+Reviewed M-10/M-13/M-15 and AC-08/AC-11/AC-13 against the fixed product registry,
+closed CLI/MCP boundary, payload fixity/schema/count/nullability checks,
+predecode bounds, disabled external access/spilling, deterministic order and
+exact typed values. Native acceptance found host-dependent timezone rendering;
+resolved by restoring the validated Arrow schema after SQL. The existing test
+now asserts UTC timestamps and 131 integration checks pass. ICU loading was not
+enabled. Two native builds and every product's direct/CLI/MCP readback agree;
+Budget/Pharmac classification and revision qualifications remain explicit.
+Full repository validation passed on implementation `ff91c196` with 7,693
+tests/10 skipped and all later gates green. Remaining gates: exact-head hosted
+PR checks and protected delivery. Broader Gold reconciliation and final track
+review remain open; no unsupported semantic equivalence is inferred.
