@@ -5508,3 +5508,19 @@ bookkeeping commit changes only track evidence/documents. Local review correctio
 is verified; corrected exact-head hosted checks, thread resolution and protected
 merge/prune remain pending. Whole-track recovery/source/rights/standards gates
 remain open. See `canonical-recovery-ordered-validation-20261017.json`.
+
+## 2026-10-17 — 2002 BEFU/DEFU census slice registered
+
+PR #691 merged through the protected path as `f26ac373e10dfcbc2e0fc27e1fb15dae14289851`
+after all required and applicable checks passed on final head `b5321eda`.
+Verified head/merge ancestors on fetched origin/main, clean main fast-forward,
+local topic deletion and remote absence before opening this branch. Exact
+platform durations and delivery are in the canonical recovery slice evidence.
+
+The next Phase 1.2 task registers five official 2002 resource locators. Public
+browser readback resolves the exact DEFU forecast workbook and tax/expense annex
+links where direct urllib returned 403 and the web reader could not parse XLS.
+Preserve publication-native DEFU naming and page-level rights evidence. Scope is
+source discovery and qualified period/definition metadata; item rights, byte
+capture, native layout and analytical joins remain unqualified. The 30-year
+inventory and existing Vote Health preflight are not repeated or declared done.
