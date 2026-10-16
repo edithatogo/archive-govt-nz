@@ -5884,3 +5884,15 @@ one-shot child startup traceback, cancelled at checkpoint. Keep every existing
 deadline/assertion and all production code unchanged. Original failure log and
 structured diagnosis are retained in external validation-2.*. No new broad
 run is queued while Aegis owns the reserved next slot.
+
+The failure-only diagnostic is prepared: child arms a best-effort one-shot
+five-second traceback before application imports, emits a bootstrap marker,
+and cancels the traceback before checkpoint_ready. On a failed contract,
+cleanup retains at most 4,096 stderr bytes and the owned-child return code as
+an exception note. Secondary cleanup errors are noted without replacing an
+already active original exception; a cleanup failure after success still fails.
+No live-child stderr wait is introduced. Static AST comparison confirms every
+original assertion and all three existing ten-second wait_for calls are
+unchanged. The embedded driver compiles; Ruff/format/targeted typing pass.
+All four production adapter pins remain unchanged. The focused real-process
+check and next full run await the reserved Aegis terminal handoff.
