@@ -3258,3 +3258,23 @@ contracts1.41s. Final14component contracts plus7CPI regressions pass21checks2.61
 Ruff/format and focused typing pass; initial lint findings retained and corrected
 without changing detector rules or assertions. Actual-source offline replay,
 full harness and hosted delivery remain pending under the existing coordinator.
+
+
+### 2026-10-18 — native metadata representation correction
+
+Actual-source replay1 on ced56bf0 exited1 at the owner-link check, before full
+harness. The retained Infoshare page stores Content HTML inside data-value JSON,
+with escaped URL slashes. Initial parser compared undecoded JSON text; this was
+an implementation defect, not absent source evidence. Native-proof-1 and original
+bytes remain retained; owner released patch freeze after bounded diagnosis.
+Initial replay did not set native TMPDIR, but used explicit proof paths and no
+temporary-directory calls. Do not claim a full or successful replay.
+
+Decode only structured PageBlocks Content, parse its anchors and text, ignore
+script/style text, then require the exact observed Infoshare link and ownership
+statement. No raw-script/hidden-URL acceptance or weakened host check. Replace
+the unrealistic fixture with actual-style escaped-slash JSON and add a wrong-host
+refusal.22focused checks pass2.40s (15component/7CPI); Ruff/format/type pass. The
+six fixed capture identities and original source/query bytes are unchanged.
+A fresh uniquely named native-proof-2 and subsequent full harness remain pending
+with the same launch owner. No unchanged recapture or source substitution.

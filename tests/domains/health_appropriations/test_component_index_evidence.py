@@ -107,7 +107,11 @@ def test_component_export_refuses_semantic_drift(fault: str) -> None:
         evidence.inspect_export(body, query, evidence.EXPORTS["ppi"])
 
 
-def _cohort(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
+def _cohort(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    owner_href: str = "http://infoshare.stats.govt.nz/",
+) -> Path:
     root = tmp_path / "cas"
     root.mkdir()
 
@@ -119,14 +123,16 @@ def _cohort(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> Path:
         return pin
 
     def embedded(content: str) -> bytes:
-        value = json.dumps({"PageBlocks": [{"Content": content}]})
+        value = json.dumps({"PageBlocks": [{"Content": content}]}).replace("/", "\\/")
         return (
             '<div data-value="' + html.escape(value, quote=True) + '"></div>'
         ).encode()
 
     payloads = {
         "infoshare-owner-1": embedded(
-            'Stats NZ data in Infoshare <a href="http://infoshare.stats.govt.nz/">Use Infoshare</a>'
+            '<p>Stats NZ data in Infoshare</p><a href="'
+            + owner_href
+            + '">Use Infoshare</a>'
         ),
         "lci-method-v66-1": (
             b"<p>fixed quantity and quality of labour input; "
@@ -199,11 +205,19 @@ def test_closed_cohort_is_repeatable_and_read_only(
     }
 
 
-@pytest.mark.parametrize("fault", ["source", "response_binding", "missing_query"])
+@pytest.mark.parametrize(
+    "fault", ["source", "response_binding", "missing_query", "owner_host"]
+)
 def test_closed_cohort_refuses_unbound_or_missing_evidence(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, fault: str
 ) -> None:
-    root = _cohort(tmp_path, monkeypatch)
+    root = _cohort(
+        tmp_path,
+        monkeypatch,
+        owner_href="http://unqualified.invalid/"
+        if fault == "owner_host"
+        else "http://infoshare.stats.govt.nz/",
+    )
     source = evidence.CAPTURES[0]
     if fault == "source":
         pin = source["body_sha256"]
@@ -211,7 +225,7 @@ def test_closed_cohort_refuses_unbound_or_missing_evidence(
     elif fault == "missing_query":
         pin = evidence.EXPORTS["lci"].query_sha256
         (root / pin[:2] / pin).unlink()
-    else:
+    elif fault == "response_binding":
         temporary = tmp_path / "wrong.warc"
         receipt = write_response_record(
             temporary,

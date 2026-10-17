@@ -9,6 +9,7 @@ import json
 import re
 from dataclasses import dataclass
 from decimal import Decimal
+from html import unescape
 from html.parser import HTMLParser
 from typing import TYPE_CHECKING, Any
 from xml.etree import ElementTree as ET
@@ -146,26 +147,58 @@ def _snapshot(root: Path, pin: str, size: int) -> bytes:
 
 
 class _MetadataHTML(HTMLParser):
-    """Read retained publisher text and embedded content, never execute it."""
+    """Decode publisher content fields and anchors without executing scripts."""
 
-    def __init__(self) -> None:
+    def __init__(self, *, embedded: bool = True) -> None:
         super().__init__(convert_charrefs=True)
         self.parts: list[str] = []
+        self.links: list[str] = []
+        self.embedded = embedded
+        self.suppressed = 0
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag in {"script", "style"}:
+            self.suppressed += 1
+        if self.suppressed:
+            return
         for key, value in attrs:
-            if tag == "div" and key == "data-value" and value is not None:
-                self.parts.append(value)
+            if value is None:
+                continue
+            if tag == "a" and key == "href":
+                self.links.append(value)
+            elif tag == "div" and key == "data-value" and self.embedded:
+                self._content(value)
+
+    def _content(self, value: str) -> None:
+        try:
+            page = json.loads(value)
+        except json.JSONDecodeError:
+            return
+        if not isinstance(page, dict) or not isinstance(page.get("PageBlocks"), list):
+            return
+        for block in page["PageBlocks"]:
+            if not isinstance(block, dict) or not isinstance(block.get("Content"), str):
+                continue
+            content = _MetadataHTML(embedded=False)
+            content.feed(unescape(block["Content"]))
+            content.close()
+            self.parts.extend(content.parts)
+            self.links.extend(content.links)
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag in {"script", "style"} and self.suppressed:
+            self.suppressed -= 1
 
     def handle_data(self, data: str) -> None:
-        self.parts.append(data)
+        if not self.suppressed:
+            self.parts.append(data)
 
 
-def _metadata_text(payload: bytes) -> str:
+def _metadata(payload: bytes) -> _MetadataHTML:
     parser = _MetadataHTML()
     parser.feed(payload.decode("utf-8"))
     parser.close()
-    return " ".join(parser.parts)
+    return parser
 
 
 def inspect_component_source_evidence(cas_root: Path) -> dict[str, Any]:
@@ -192,18 +225,19 @@ def inspect_component_source_evidence(cas_root: Path) -> dict[str, Any]:
             tables[family] = inspect_export(
                 bodies[family + "-public-get-1"], query, profile
             )
-        owner_text = _metadata_text(bodies["infoshare-owner-1"])
-        _require("Stats NZ data in Infoshare" in owner_text)
-        _require("http://infoshare.stats.govt.nz/" in owner_text)
+        owner = _metadata(bodies["infoshare-owner-1"])
+        _require("Stats NZ data in Infoshare" in " ".join(owner.parts))
+        _require("http://infoshare.stats.govt.nz/" in owner.links)
         method_text = {
-            family: _metadata_text(bodies[role])
+            family: " ".join(_metadata(bodies[role]).parts)
             for family, role in [
                 ("lci", "lci-method-v66-1"),
                 ("ppi", "ppi-method-v3-1"),
             ]
         }
-        copyright_text = _metadata_text(bodies["copyright"])
-        _require(_LICENSE_URI in copyright_text)
+        rights_page = _metadata(bodies["copyright"])
+        copyright_text = " ".join(rights_page.parts)
+        _require(_LICENSE_URI in rights_page.links)
         _require("specific copyright" in copyright_text.lower())
         _require("fixed quantity and quality of labour input" in method_text["lci"])
         _require(

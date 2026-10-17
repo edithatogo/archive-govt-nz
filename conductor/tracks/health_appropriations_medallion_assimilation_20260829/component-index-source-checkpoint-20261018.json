@@ -1,15 +1,23 @@
 {
-  "actual_source_native": "pending_owner_launch",
+  "actual_source_native": "pending corrected frozen owner replay; no duplicate capture",
   "analytical_selection": "not_selected",
   "base_commit": "31ba7ee64b0ee6bef4287191c8dd403be12e00bd",
   "focused": {
-    "log_sha256": "8b844e0a3b6ed39cfb20a545a9e60ac531a2df6181ed4179027f2261cdc86c6c",
-    "passed": 21,
-    "scope": "component source contracts plus existing CPI source-evidence regression",
-    "seconds": 2.61
+    "log_sha256": "7635f5a29695d48b2e88981df49e2a2d9534af2c94628113e5f073cabcf03680",
+    "passed": 22,
+    "scope": "15component contracts plus7existing CPI contracts; actual-style escaped link and wrong-host refusal",
+    "seconds": 2.4
   },
   "full_alphanumeric_series_identifiers": "not_inferred; table and dimension identities explicit",
   "full_harness": "pending",
+  "native_attempt_1": {
+    "cause": "embedded PageBlocks JSON slash escapes were not decoded before Infoshare link comparison",
+    "exit_code": 1,
+    "head": "ced56bf03d2ecf6b59ff8a2f2a5735813147643d",
+    "inputs": "unchanged; failed native-proof-1 retained",
+    "native_tmpdir": "not set; recipe uses only explicit paths",
+    "scope": "first retained-source inspection failed before full harness"
+  },
   "preservation": "immutable originals/query configs and WARC responses retained outside Git; no cleanup",
   "preservation_objects": 14,
   "publication": "not_performed",
@@ -161,6 +169,6 @@
       "warc_sha256": "dc71e228a1c565482f575cf85918b4d66fb5d9259ce0e84052dde2237481b3a3"
     }
   ],
-  "status": "offline_contract_focused_qualified_actual_source_replay_pending",
+  "status": "metadata_parser_corrected_actual_source_replay_pending",
   "status_flags": "ShowNonFinalFlags requested; absent flags remain unflagged_unknown, not FINAL"
 }
