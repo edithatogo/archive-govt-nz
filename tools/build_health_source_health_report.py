@@ -77,7 +77,11 @@ def main() -> int:
         if args.pdf_layout_baseline is not None
         else None
     )
-    recorded_path = args.recorded_report or args.json_output
+    recorded_path = args.recorded_report or (
+        TRACK / "source-health-report.json"
+        if cpi_evidence is not None
+        else args.json_output
+    )
     if args.recorded_report is None and not recorded_path.exists():
         recorded_path = TRACK / "source-health-report.json"
     report = build_report(

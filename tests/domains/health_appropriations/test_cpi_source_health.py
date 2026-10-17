@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import copy
 import json
+import runpy
 import subprocess
 import sys
 from pathlib import Path
@@ -161,3 +162,35 @@ def test_cpi_tool_requires_paired_roots_and_preserves_historical_outputs(
     )
     assert result.returncode == 2
     assert message in result.stderr
+
+
+def test_v2_existing_output_is_not_implicitly_used_as_prior_evidence(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    _evidence(monkeypatch)
+    destination = tmp_path / "existing.json"
+    destination.write_bytes(b"preserve-existing-output\n")
+    markdown = tmp_path / "must-stay-absent.md"
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "build_health_source_health_report.py",
+            "--cpi-cas-root",
+            "unused",
+            "--cpi-warc-root",
+            "unused",
+            "--json-output",
+            str(destination),
+            "--markdown-output",
+            str(markdown),
+        ],
+    )
+    with pytest.raises(SystemExit) as exc:
+        runpy.run_path(
+            "tools/build_health_source_health_report.py", run_name="__main__"
+        )
+    assert exc.value.code == 2
+    assert destination.read_bytes() == b"preserve-existing-output\n"
+    assert not markdown.exists()

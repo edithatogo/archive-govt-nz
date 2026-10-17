@@ -2403,3 +2403,16 @@ census-byte failures. Ruff/format/type/Conductor checks pass;66schemas and
 retained in the external health-cpi-source-health-20261017 evidence folder.
 Native two-run proof and full harness are prepared for the coordinator, not yet
 claimed. No acquisition, rights decision, join or external mutation occurred.
+
+
+### 2026-10-17 — source-health native1 input-selection correction
+
+Coordinator session10894 terminated1; full was not launched. Native first-run
+v2 generation and exact replay passed, but a protected non-JSON destination was
+implicitly selected as prior input and raised JSONDecodeError before the intended
+refusal. No output was overwritten. Preserve native1 log and partial artifacts;
+see `cpi-source-health-native-failure-20261017.json`. V2 now independently selects
+the retained baseline when no explicit prior report is supplied; v1 defaults
+are unchanged.70 focused checks pass in7.66s, including a sentinel refusal
+regression. The preliminary unit-regression command observed the fixed code and
+passed; native1 is the failing evidence. Fresh native2/full remain pending.

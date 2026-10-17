@@ -30,3 +30,9 @@ a counterfeit-test failure caused by a cached imported verifier alias are
 retained externally; dynamic module lookup restores correct scoped verification.
 Actual-source offline repeat and full/hosted assurance remain pending under the
 coordinator's launch ownership. The wider track remains open.
+
+Native1 found that an existing destination was selected as prior-report input.
+V2 now defaults independently to the retained historical baseline unless
+`--recorded-report` is explicit. V1 input-selection semantics remain unchanged.
+The sentinel was preserved;70focused checks pass after correction. The failed
+first proof and partial artifacts remain separate from the fresh native2 replay.
