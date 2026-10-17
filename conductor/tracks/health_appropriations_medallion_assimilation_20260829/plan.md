@@ -1873,6 +1873,9 @@ integrated parent head.
 
   Canonical consumer progress: all five operation profiles now project 615 facts
   and 4,190 fully validated lineage rows, with explicit source-backed completion
-  of QES legacy metadata and retained historical representations. Native and full
-  local checks passed; hosted delivery and subsequent source-separated Gold
-  consumption remain pending. The combined integration item stays in progress.
+  of QES legacy metadata and retained historical representations. PR #703 merged
+  after all required checks passed. Source-separated Gold consumption now also
+  retains all canonical products/common evidence, observes actual source status,
+  and supports typed CLI/read-only MCP. Two Bronze-driven20file rebuilds match;
+  all7867 tests and full local gates passed at7143a86a. Hosted Gold delivery and
+  protected merge/pruning remain pending, so the combined item stays in progress.

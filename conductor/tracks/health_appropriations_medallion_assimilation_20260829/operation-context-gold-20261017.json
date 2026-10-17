@@ -5,7 +5,7 @@
   "denominator_selection": "not_performed",
   "external_mutations": "not_performed",
   "final_focused": "98 passed58.57s at e9f4297f; corrective MCP/Budget checks33passed6.60s",
-  "full_harness": "initial failed2contracts; fixes applied; clean-head rerun pending",
+  "full_harness": "passed at7143a86a;7867passed10skipped; allrequiredlocalgates",
   "gold_schema": "archive-govt-nz.health-operation-context-gold/v1",
   "hosted_delivery": "pending",
   "input_contract": "five caller-retained independent operation pins, exact reviewed source cohorts and bounded closed typed input specification",
@@ -43,5 +43,6 @@
     "explicit unverified CPI base"
   ],
   "source_profiles": 5,
-  "status": "native_passed_full_contract_corrections_rerun_pending"
+  "status": "local_native_full_passed_hosted_delivery_pending",
+  "validation_receipt_sha256": "0196d8a015db60d41f39c7271d948b0517feec061691fc05ba06387aff9c9b91"
 }

@@ -6582,3 +6582,24 @@ Corrective MCP/Budget focused checks passed33 tests in6.60s; Ruff check/format
 passed. Full clean-head rerun and hosted delivery remain required before merge.
 Native output logic was unchanged by these corrections; the native proof remains
 bound to its original exact commit. No broader track completion is claimed.
+
+
+## Operation Context Gold qualified locally — 2026-10-17
+
+The corrected clean frozen7143a86a full harness completed with exit0. Tests:
+7867 passed,10 skipped,23 warnings in390.34s; coverage97.40% against unchanged
+80% floor. Formatting/lint/typing0,62 schemas/52 representative documents,9/9
+parity with zero divergences, all mutation/hygiene gates, CAS347.99MB/s,
+dependency vulnerability/licence/secret checks and SBOM113 components passed.
+The existing CDX validation skip remains explicit. The failed initial receipt is
+retained independently. The project runtime is Python3.14.6/uvCLI0.13.1, with
+unchanged lock/backend/CI pins, rather than the system interpreter used for an
+earlier observer. See [full validation](./operation-context-gold-validation-20261017.json).
+
+Conductor independently audited the native proof and the two exact corrections;
+no blocking finding remained. Only documentation/evidence follows the tested
+code tree. Final affected documentation checks and hosted checks are separate
+required gates before normal protected merge and clean topic pruning. The five
+context common-operation canonical/Gold integration has local implementation,
+615fact/4190lineage native parity and20file repeated recovery evidence; broader
+source, donor-area, rights, metadata, scheduling and final track gates stay open.

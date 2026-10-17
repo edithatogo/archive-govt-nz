@@ -453,3 +453,5 @@ they are not current-state assertions.
 
 - [Operation Context Gold actual-source repeat proof](./operation-context-gold-native-20261017.json).
 - [Operation Context Gold initial full-gate failure evidence](./operation-context-gold-initial-validation-20261017.json).
+
+- [Operation Context Gold full local validation](./operation-context-gold-validation-20261017.json).
