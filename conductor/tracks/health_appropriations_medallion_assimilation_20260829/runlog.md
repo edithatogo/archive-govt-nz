@@ -7221,3 +7221,21 @@ fccc3850. This closeout changes only result documentation. Affected documentatio
 checks and required exact-head hosted checks precede protected merge; no further
 unchanged full/native replay is indicated. Broader track and rights/analytical
 admission gates remain open.
+
+
+### 2026-10-18 — hosted CodeQL exact-anchor comparison
+
+PR709 opened after native3/full2/final-doc checks passed. Separate CodeQL
+findings check failed with alert3 py/incomplete-url-substring-sanitization at
+owner anchor membership; analysis job itself passed, and platform assurance was
+still running. Existing runtime comparison was exact membership in list[str],
+not substring matching. Preserve alert/check evidence outside Git. Add the
+specific attacker-path case: an unqualified host whose path contains the exact
+trusted URL is already rejected before the change (1PASS1.43s).
+
+Make the same full-string equality explicit through any(link == expectedURL),
+without relaxing the parsed-anchor/ownership requirement or suppressing the rule.
+23focused checks pass1.17s after the change, plus Ruff/format/type. No source,
+query or report contents change. Earlier native/full receipts retain their exact
+heads; new exact-head CodeQL/platform assurance remains pending. Do not merge or
+prune while any required check is non-terminal or this finding remains active.

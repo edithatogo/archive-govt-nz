@@ -206,7 +206,8 @@ def test_closed_cohort_is_repeatable_and_read_only(
 
 
 @pytest.mark.parametrize(
-    "fault", ["source", "response_binding", "missing_query", "owner_host"]
+    "fault",
+    ["source", "response_binding", "missing_query", "owner_host", "owner_nested"],
 )
 def test_closed_cohort_refuses_unbound_or_missing_evidence(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, fault: str
@@ -214,9 +215,10 @@ def test_closed_cohort_refuses_unbound_or_missing_evidence(
     root = _cohort(
         tmp_path,
         monkeypatch,
-        owner_href="http://unqualified.invalid/"
-        if fault == "owner_host"
-        else "http://infoshare.stats.govt.nz/",
+        owner_href={
+            "owner_host": "http://unqualified.invalid/",
+            "owner_nested": "http://unqualified.invalid/http://infoshare.stats.govt.nz/",
+        }.get(fault, "http://infoshare.stats.govt.nz/"),
     )
     source = evidence.CAPTURES[0]
     if fault == "source":

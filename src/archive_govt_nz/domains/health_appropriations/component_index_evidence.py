@@ -227,7 +227,7 @@ def inspect_component_source_evidence(cas_root: Path) -> dict[str, Any]:
             )
         owner = _metadata(bodies["infoshare-owner-1"])
         _require("Stats NZ data in Infoshare" in " ".join(owner.parts))
-        _require("http://infoshare.stats.govt.nz/" in owner.links)
+        _require(any(link == "http://infoshare.stats.govt.nz/" for link in owner.links))
         method_text = {
             family: " ".join(_metadata(bodies[role]).parts)
             for family, role in [
