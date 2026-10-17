@@ -59,7 +59,7 @@
     "status": "passed",
     "tree": "10d584b7ed23ff7bf8476f28146c80af671a1f6d"
   },
-  "hosted": "first head failed secret scan on public absolute evidence path; portable locator correction pending exact-head assurance",
+  "hosted": "ce7913a4 all seven checks passed; final merge guard stopped at unresolved metadata identity review",
   "hosted_failure": {
     "classification": "public local evidence directory path; not a credential",
     "detector": "Base64 High Entropy String",
@@ -71,6 +71,21 @@
     "stage": "secrets"
   },
   "legacy_api": "unchanged; focused protocol/dispatch/registry checks passed",
+  "metadata_identity_review": {
+    "classification": "code defect",
+    "fix": "trusted native metadata schema and source/profile identity; parsed context matches every fact row without changing retained values",
+    "focused_log_sha256": "46dacae8f0ed865abee912c3709f1982ee7e6d971f3da3ca0c8421ddfddbc902",
+    "focused_passed": 96,
+    "focused_seconds": 4.8,
+    "native_requalification": "pending",
+    "original_full_requalification": "pending",
+    "red_cases": 2,
+    "red_log_sha256": "64620bee7c51fcb7fdfb4145d08bca41e01fcc570997a0a3110a4708dc493c88",
+    "registration_context": "exact reviewed source locator/vintage and caller observation bound before byte extraction",
+    "review_thread_resolution": "pending qualification",
+    "thread": "PRRT_kwDOTo2MOM6tlREY",
+    "typing_errors": 0
+  },
   "mixed_registry": "duplicate IDs rejected and competing physical matches preserved-only",
   "namespace": "source SHA256/profile/fact-schema ID/version/original record ID",
   "native": {
@@ -114,5 +129,5 @@
   },
   "shared_source_adapters": "implemented_two_sources_four_profiles",
   "single_result_boundary": "original exact registration/output checks retained; compounds refused",
-  "status": "native_and_original_full_qualified_hosted_delivery_pending"
+  "status": "metadata_identity_review_fixed_focused_native_full_requalification_pending"
 }

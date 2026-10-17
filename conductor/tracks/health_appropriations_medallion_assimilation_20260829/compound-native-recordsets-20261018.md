@@ -2,7 +2,8 @@
 
 Status: compound API and source composition implemented after delivered PR #714;
 focused contracts, retained-native replay and original full assurance pass;
-hosted PR delivery remains pending. This increment closes
+all initial hosted checks passed; metadata admission review fix requires fresh
+native/full and hosted qualification before delivery. This increment closes
 common extraction of the two retained forecast-summary profiles alongside the
 reviewed detail profiles sharing their exact source bytes. It does not qualify
 canonical measures, mappings, analytical joins, currency, periods or rights.
@@ -184,3 +185,32 @@ job log remain retained; the portable locator correction leaves source code,
 tests, native/full proof and scanner policy unchanged. The complete original
 secret gate now passes with zero unresolved findings; fresh exact-head hosted
 checks remain required.
+
+
+## Review fix: bind native metadata identity
+
+The final merge guard on ce7913a4 found an unresolved review thread after all
+seven checks passed. No merge occurred. A behavioural regression reproduced
+admission of both an empty manifest and foreign manifest identity. Preserve
+this red evidence and all preceding native/local/hosted results as historical
+proof for their exact implementation; they do not qualify the corrected code.
+
+NativeProfileContract now requires an independently supplied
+`metadata_schema_version`. Both actual source constructors supply the original
+producer envelope ID; it is never copied from candidate metadata. Admission
+requires manifest profile/source hash to equal the trusted profile and selected
+physical hash, and schema_version to match the trusted producer contract.
+Locator/vintage must be nonblank and observed_at timezone-aware. The existing
+source_context validator parses these values for comparison with every native
+fact row. Original metadata values, timestamp spelling, record IDs, Arrow
+schemas and standalone products remain unchanged. The existing source factory
+binds locator/vintage to the closed source specification and observation to the
+caller context before extraction; this fix does not invent another source
+identity authority.
+
+Focused missing/foreign/schema/blank/naive-time and nonfirst-row disagreement
+checks, equivalent timestamp preservation, prior compound/envelope/source
+checks and unchanged v1 dispatch contracts pass 96 tests in 4.80 seconds.
+Ruff and strict typing pass. Fresh actual-source native replay, original full
+harness and exact-head hosted checks remain required before resolving the
+review thread and merging.

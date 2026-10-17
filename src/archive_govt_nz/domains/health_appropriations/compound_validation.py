@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 from collections.abc import Iterator, Mapping
+from datetime import datetime
 from typing import Any, cast
 
 import pyarrow as pa
@@ -18,6 +19,7 @@ from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
 from archive_govt_nz.domains.health_appropriations.compound_envelope import (
     validate_native_envelope,
 )
+from archive_govt_nz.domains.health_appropriations.workbook_common import source_context
 
 MAX_PROFILES = 8
 MAX_RECORDSETS = 8
@@ -150,10 +152,37 @@ def _check_profile_contract(contract: NativeProfileContract) -> None:
     _require(
         bool(contract.disposition_record_field), "native_disposition_reference_field"
     )
+    _require(_text(contract.metadata_schema_version), "native_metadata_schema_contract")
 
 
-def _check_metadata(profile: NativeProfileOutput) -> None:
+def _check_metadata(
+    profile: NativeProfileOutput, contract: NativeProfileContract, source_sha256: str
+) -> dict[str, Any]:
     _require(isinstance(profile.metadata, Mapping), "native_profile_metadata")
+    metadata = profile.metadata
+    _require(
+        metadata.get("profile") == profile.profile_id
+        and metadata.get("source_object_sha256") == source_sha256,
+        "native_metadata_identity",
+    )
+    _require(
+        metadata.get("schema_version") == contract.metadata_schema_version,
+        "native_metadata_schema_identity",
+    )
+    locator, vintage = metadata.get("source_locator"), metadata.get("source_vintage")
+    observed = metadata.get("observed_at")
+    _require(
+        _text(locator) and _text(vintage) and isinstance(observed, (str, datetime)),
+        "native_metadata_source_context",
+    )
+    try:
+        # Parse for comparison only; retain native metadata and observation IDs.
+        context = source_context(
+            source_sha256, cast("str", locator), cast("str", vintage), str(observed)
+        )
+    except (ValueError, TypeError, OverflowError) as error:
+        message = "native_metadata_source_context"
+        raise ValueError(message) from error
     _require(type(profile.excluded_sheets) is tuple, "native_excluded_sheets")
     for row in profile.excluded_sheets:
         _require(
@@ -168,6 +197,7 @@ def _check_metadata(profile: NativeProfileOutput) -> None:
             bool(row["sheet"].strip()) and bool(row["reason"].strip()),
             "native_excluded_sheet_reason",
         )
+    return context
 
 
 def _check_profile_shape(profile: NativeProfileOutput) -> None:
@@ -203,11 +233,18 @@ def _check_profile(
         == tuple(r.name for r in contract.recordsets),
         "native_recordset_set",
     )
-    _check_metadata(profile)
+    context = _check_metadata(profile, contract, source_sha256)
     for actual, expected in zip(profile.recordsets, contract.recordsets, strict=True):
         _check_table(actual, expected, source_sha256)
     tables = {r.name: r for r in profile.recordsets}
     facts = tables[contract.facts]
+    for field in ("source_locator", "source_vintage", "observed_at"):
+        _require(
+            all(
+                value == context[field] for value in _column_values(facts.table, field)
+            ),
+            "native_metadata_row_context",
+        )
     ids = list(_column_values(facts.table, "record_id"))
     _require(
         bool(ids)

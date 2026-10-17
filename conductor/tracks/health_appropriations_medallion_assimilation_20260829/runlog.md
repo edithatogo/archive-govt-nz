@@ -7623,3 +7623,16 @@ The unchanged complete secret gate passes after the locator correction, with
 zero unresolved findings. Conductor state, schemas and hygiene also pass.
 The final documentation delta is separately scanned before commit; all native
 and original full-run implementation evidence remains applicable.
+
+
+### 2026-10-18 — Final merge guard catches metadata admission review
+
+All seven ce7913a4 hosted checks passed, but the final guard stopped before
+merge on the unresolved metadata provenance finding. Two red regressions
+proved empty/foreign manifest identity was admitted. Require trusted native
+metadata schema, profile/source-hash binding and valid locator/vintage/time;
+compare context against every facts row while preserving native values and
+IDs. The closed registration already binds exact source context before parsing.
+Focused corrected/native/v1 checks pass 96 tests in 4.80 seconds; typing and
+lint pass. Earlier green evidence stays scoped to its original implementation.
+Fresh native/full and hosted qualification is pending; the review stays open.

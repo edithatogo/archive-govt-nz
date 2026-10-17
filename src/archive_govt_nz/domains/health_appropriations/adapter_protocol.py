@@ -120,6 +120,7 @@ class NativeProfileContract:
     lineage: str
     dispositions: str
     disposition_record_field: str
+    metadata_schema_version: str
     disposition_record_list: bool = False
 
 

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import replace
+from datetime import UTC, datetime
 from decimal import Decimal
 from typing import cast
 
@@ -23,6 +24,9 @@ from archive_govt_nz.domains.health_appropriations.compound_validation import (
 )
 
 PIN = "a" * 64
+LOCATOR = "data/raw/fixture.xlsx"
+VINTAGE = "fixture-v1"
+OBSERVED = datetime(2026, 8, 30, 8, 58, tzinfo=UTC)
 
 
 def profile(name: str, scale: int) -> tuple[NativeProfileOutput, NativeProfileContract]:
@@ -30,6 +34,9 @@ def profile(name: str, scale: int) -> tuple[NativeProfileOutput, NativeProfileCo
         [
             pa.field("record_id", pa.string(), nullable=False),
             ("source_object_sha256", pa.string()),
+            ("source_locator", pa.string()),
+            ("source_vintage", pa.string()),
+            ("observed_at", pa.timestamp("us", tz="UTC")),
             ("amount", pa.decimal128(38, scale)),
             ("only_" + name, pa.string()),
             pa.field(
@@ -89,6 +96,9 @@ def profile(name: str, scale: int) -> tuple[NativeProfileOutput, NativeProfileCo
             {
                 "record_id": "shared-id",
                 "source_object_sha256": PIN,
+                "source_locator": LOCATOR,
+                "source_vintage": VINTAGE,
+                "observed_at": OBSERVED,
                 "amount": amount,
                 "only_" + name: None,
                 "nested": None if name == "detail" else {"child": "kept"},
@@ -132,7 +142,16 @@ def profile(name: str, scale: int) -> tuple[NativeProfileOutput, NativeProfileCo
         NativeProfileOutput(
             name,
             tables,
-            {"rights_state": "not_evaluated", "optional": None},
+            {
+                "schema_version": "native-" + name + "/v1",
+                "profile": name,
+                "source_object_sha256": PIN,
+                "source_locator": LOCATOR,
+                "source_vintage": VINTAGE,
+                "observed_at": OBSERVED,
+                "rights_state": "not_evaluated",
+                "optional": None,
+            },
             ({"sheet": "Other", "reason": "excluded", "qualifier": "retained"},),
         ),
         NativeProfileContract(
@@ -142,7 +161,8 @@ def profile(name: str, scale: int) -> tuple[NativeProfileOutput, NativeProfileCo
             "lineage",
             "dispositions",
             reference,
-            list_reference,
+            metadata_schema_version="native-" + name + "/v1",
+            disposition_record_list=list_reference,
         ),
     )
 

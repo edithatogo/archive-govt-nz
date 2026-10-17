@@ -88,6 +88,7 @@ def profile_contracts(spec: ForecastDetailSource) -> tuple[NativeProfileContract
             "field_lineage.parquet",
             "cell_dispositions.parquet",
             "record_id",
+            metadata_schema_version=FORECAST_SCHEMA,
         ),
         NativeProfileContract(
             spec.detail_profile,
@@ -105,6 +106,7 @@ def profile_contracts(spec: ForecastDetailSource) -> tuple[NativeProfileContract
             "field_lineage.parquet",
             "area_dispositions.parquet",
             "record_ids",
+            metadata_schema_version=packages.SCHEMA,
             disposition_record_list=True,
         ),
     )

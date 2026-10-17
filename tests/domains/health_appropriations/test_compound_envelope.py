@@ -34,7 +34,8 @@ def test_valid_nested_native_metadata_is_retained_without_coercion() -> None:
     shared = {"amount": Decimal("1.250"), "optional": None, "unicode": "Māori 🧬"}
     metadata = MappingProxyType(
         {
-            "observed_at": datetime(2026, 10, 18, tzinfo=UTC),
+            **output.profiles[0].metadata,
+            "optional_datetime": datetime(2026, 10, 18, tzinfo=UTC),
             "nested": [shared, (shared, True, 4.5)],
         }
     )
