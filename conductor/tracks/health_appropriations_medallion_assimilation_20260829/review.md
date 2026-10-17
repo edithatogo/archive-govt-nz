@@ -2655,3 +2655,31 @@ source-regenerated expected content. Add typed local CLI and read-only query
 contracts for this new route, with no default writes, no repairs of partial output
 and no external publication/capture mutation. Rebuild/repeat and tamper evidence
 remain required before full assurance and focused delivery.
+
+
+## Operation Context Gold implementation and input-reader fixes — 2026-10-17
+
+The new Gold path consumes all five independently pinned operation packages
+through admitted canonical bundles, preserving common evidence alongside typed
+facts/direct lineage. It saves canonical products plus existing context tables,
+quality report and deterministic plots, with a distinct operation-Gold manifest.
+Readback regenerates expected metadata/products from trusted source inputs and
+requires independent Gold and input pins. Source statuses come from original
+common records; GDP series identity composes the same row's literal prefix and
+reference. Native Gold outputs/readers remain unchanged. Typed CLI build/verify/
+query and three read-only MCP tools use a closed bounded five-input specification;
+MCP exposes no write flag and queries cap returned rows.
+
+Real draft regressions were retained before correction: both directory readers
+scanned beyond an unexpected entry; bounded membership now stops after one extra.
+Conductor found that a FIFO input specification could block before byte caps; a
+bounded subprocess reproduced the timeout at 10 seconds. Shared regular snapshot
+transport now uses nonblocking open where supported, fstat regular-file admission,
+capped reads and finally-close. Existing verified snapshots still hash exactly
+the bytes returned. The public FIFO test now passes, independently confirmed by
+Conductor; affected config/regular snapshot checks pass 27 tests. Prior integrated
+checks passed 49 tests before final FIFO/dispatch/output-schema changes; the final
+coherent focused run remains pending. Typing and Ruff are clean. Native actual-
+source repeat/CLI/MCP/recovery proof, full harness and hosted delivery remain
+pending; no broad track gate or rights/currency/denominator/join is closed.
+See [implementation checkpoint](./operation-context-gold-20261017.json).

@@ -11,6 +11,7 @@ import json
 import re
 from dataclasses import asdict, dataclass
 from io import BytesIO
+from itertools import islice
 from typing import TYPE_CHECKING, Any
 
 import pyarrow as pa
@@ -326,7 +327,7 @@ def _readback(
         == encode_json(expected)
     )
     _require(
-        {item.name for item in output_dir.iterdir()}
+        {item.name for item in islice(output_dir.iterdir(), len(package.hashes) + 2)}
         == {"MANIFEST.json", *package.hashes}
     )
     _require(manifest.get("output_sha256") == package.hashes)

@@ -4,7 +4,9 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
+import stat
 from datetime import UTC, datetime
 from decimal import Decimal, InvalidOperation
 from typing import TYPE_CHECKING, Any
@@ -69,14 +71,34 @@ def source_context(
     }
 
 
-def verified_snapshot(source: Path, expected_sha256: str, *, max_bytes: int) -> bytes:
-    """Read one capped snapshot and verify the exact bytes used for parsing."""
+def read_regular_snapshot(source: Path, *, max_bytes: int) -> bytes:
+    """Read capped regular bytes with nonblocking open where supported.
+
+    Path/symlink policy remains with callers. Descriptor checks bind the actual
+    opened object, so replacing a regular path with a FIFO cannot bypass them.
+    """
     if max_bytes <= 0:
         raise ValueError("invalid_source_limit")
-    with source.open("rb") as handle:
-        payload = handle.read(max_bytes + 1)
-    if len(payload) > max_bytes:
-        raise ValueError("source_byte_limit")
+    flags = os.O_RDONLY | getattr(os, "O_NONBLOCK", 0) | getattr(os, "O_BINARY", 0)
+    descriptor = os.open(source, flags)
+    try:
+        if not stat.S_ISREG(os.fstat(descriptor).st_mode):
+            raise ValueError("nonregular_source_file")
+        payload = bytearray()
+        while chunk := os.read(
+            descriptor, min(1024 * 1024, max_bytes + 1 - len(payload))
+        ):
+            payload.extend(chunk)
+            if len(payload) > max_bytes:
+                raise ValueError("source_byte_limit")
+        return bytes(payload)
+    finally:
+        os.close(descriptor)
+
+
+def verified_snapshot(source: Path, expected_sha256: str, *, max_bytes: int) -> bytes:
+    """Read one capped regular snapshot and verify exact bytes used for parsing."""
+    payload = read_regular_snapshot(source, max_bytes=max_bytes)
     if hashlib.sha256(payload).hexdigest() != expected_sha256:
         raise ValueError("source_hash_mismatch")
     return payload

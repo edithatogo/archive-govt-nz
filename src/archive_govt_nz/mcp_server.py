@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+from functools import partial
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
@@ -24,6 +25,7 @@ from archive_govt_nz.domains.health_appropriations import (
 )
 from archive_govt_nz.domains.health_appropriations import (
     gold_metadata,
+    operation_context_gold,
     resume_operations,
 )
 from archive_govt_nz.domains.health_appropriations.budget_operations import (
@@ -99,6 +101,7 @@ def _object_schema(properties: dict[str, Any], required: list[str]) -> dict[str,
 _NO_ARGUMENTS = _object_schema({}, [])
 _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
     *resume_operations.MCP_TOOLS,
+    *operation_context_gold.MCP_TOOLS,
     fiscal_analytics.MCP_TOOL,
     canonical_queries.MCP_TOOL,
     budget_comparison.MCP_TOOL,
@@ -716,6 +719,16 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
     },
 )
 _TOOLS_BY_NAME = {tool["name"]: tool for tool in _TOOL_DEFINITIONS}
+# Explicit read-only domain handlers keep dispatch closed as tools grow.
+_DOMAIN_TOOL_HANDLERS = {
+    budget_comparison.TOOL_NAME: budget_comparison.mcp_call,
+    fiscal_analytics.TOOL_NAME: fiscal_analytics.mcp_call,
+    canonical_queries.TOOL_NAME: canonical_queries.mcp_call,
+    **{
+        name: partial(operation_context_gold.mcp_call, name)
+        for name in operation_context_gold.MCP_OPERATIONS
+    },
+}
 
 
 class StdioServerTransport:
@@ -1233,16 +1246,8 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
             "title": schema_def.title,
             "fields": fields_list,
         }
-    elif name in {
-        budget_comparison.TOOL_NAME,
-        fiscal_analytics.TOOL_NAME,
-        canonical_queries.TOOL_NAME,
-    }:
-        result = {
-            budget_comparison.TOOL_NAME: budget_comparison.mcp_call,
-            fiscal_analytics.TOOL_NAME: fiscal_analytics.mcp_call,
-            canonical_queries.TOOL_NAME: canonical_queries.mcp_call,
-        }[name](args)
+    elif name in _DOMAIN_TOOL_HANDLERS:
+        result = _DOMAIN_TOOL_HANDLERS[name](args)
     elif name in resume_operations.MCP_OPERATIONS:
         result = resume_operations.mcp_call(name, args)
     elif name in (

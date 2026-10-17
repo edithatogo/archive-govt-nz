@@ -1,0 +1,46 @@
+{
+  "actual_source_native": "pending",
+  "approved_joins": "none",
+  "currency_admission": "not_performed",
+  "denominator_selection": "not_performed",
+  "external_mutations": "not_performed",
+  "final_focused": "pending",
+  "full_harness": "pending",
+  "gold_schema": "archive-govt-nz.health-operation-context-gold/v1",
+  "hosted_delivery": "pending",
+  "input_contract": "five caller-retained independent operation pins, exact reviewed source cohorts and bounded closed typed input specification",
+  "native_gold_apis": "unchanged",
+  "observed_results": {
+    "affected_regular_config": "27 passed/1 deselected in8.92s",
+    "fifo_regression": "old public input reader timed out at10s; fixed reader passed",
+    "lint": "passed",
+    "prior_core": "8 passed in37.22s",
+    "prior_integrated": "49 passed in127.07s before final FIFO/dispatch/output-schema changes",
+    "typing_errors": 0
+  },
+  "operational_surface": {
+    "cli": [
+      "build (no-write default)",
+      "verify",
+      "bounded query"
+    ],
+    "mcp": "preflight/verify/bounded query only; no write argument"
+  },
+  "readback": "independent Gold pin plus trusted input pins/source; regenerate exact expected products; canonical type-sensitive metadata, bounded exact membership, source-derived byte bounds, final reread",
+  "resource_fixes": {
+    "directory_membership": "stop after expected members plus one extra",
+    "fifo": "regular descriptor snapshot; nonblocking open where supported; fstat check, capped byte reads and finally close; verified_snapshot still hashes exact bytes"
+  },
+  "rights_state": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-operation-context-gold-checkpoint/v1",
+  "scope": "source-separated canonical facts/direct lineage/common evidence; context observations/coverage/quality/report/plots",
+  "source_backed_metadata_dispositions": [
+    "canonical input IDs with persisted fact/direct lineage products",
+    "publisher population status from actual common records",
+    "canonical QES composed unit/earnings basis",
+    "GDP literal prefix/reference from same common record",
+    "explicit unverified CPI base"
+  ],
+  "source_profiles": 5,
+  "status": "implemented_final_focused_native_full_hosted_pending"
+}
