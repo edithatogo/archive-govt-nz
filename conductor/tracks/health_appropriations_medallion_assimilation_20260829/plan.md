@@ -2124,3 +2124,10 @@ integrated parent head.
   e596ccd2 passed all 32 stages and 7,993 tests (12 skipped). Native producers,
   source bytes and reference files are unchanged. Hosted delivery remains
   pending; the broader common-adapter and semantic tasks stay in progress.
+
+
+  The final review found an unbound native metadata envelope after the earlier
+  hosted checks passed. The guard stopped before merge. The corrected identity/
+  schema/context checks now pass native2 and all 32 full stages on 1bbd8577:
+  8,012 tests passed (12 skipped), with every native output byte unchanged.
+  Fresh exact-head hosted assurance and protected delivery remain pending.

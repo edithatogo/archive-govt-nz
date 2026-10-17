@@ -1,9 +1,7 @@
 # Compound native workbook results
 
-Status: compound API and source composition implemented after delivered PR #714;
-focused contracts, retained-native replay and original full assurance pass;
-all initial hosted checks passed; metadata admission review fix requires fresh
-native/full and hosted qualification before delivery. This increment closes
+Status: metadata admission review fix passes fresh native/full qualification;
+new exact-head hosted checks and protected delivery remain pending. This increment closes
 common extraction of the two retained forecast-summary profiles alongside the
 reviewed detail profiles sharing their exact source bytes. It does not qualify
 canonical measures, mappings, analytical joins, currency, periods or rights.
@@ -214,3 +212,29 @@ checks and unchanged v1 dispatch contracts pass 96 tests in 4.80 seconds.
 Ruff and strict typing pass. Fresh actual-source native replay, original full
 harness and exact-head hosted checks remain required before resolving the
 review thread and merging.
+
+
+### Review-fix requalification
+
+Conductor ran native2 and the unchanged full harness on frozen commit
+`1bbd8577a01a78dc3d6cc0a54086f27632a70d77`, tree
+`59e67de187d511b9aa91d30e5e28ff98774acb71`. The strengthened metadata checks
+admit both actual sources with no value, metadata, ID, schema or output-byte
+changes: all 32 newly built native files match the 16 original pins, and both
+reports are byte-identical with SHA-256
+`8dbfc72a39d5d4ee50c6aa60e4fc3b49bf1e375979e4d8ec4a3568bab56f67fb`.
+The new execution receipt has the same native proof digest because its retained
+native observations are unchanged; the frozen handoff and terminal full2 receipt
+bind this fresh run to the corrected implementation.
+
+All 32 original validation stages passed: 8,012 tests passed, 12 skipped,
+18 warnings, 303.49 seconds, coverage 97.18% against the unchanged 80% floor.
+Schemas (66/56), parity (9/9), mutations, hygiene, audit, licences, the original
+secret gate and SBOM validation passed. All four runtime/checker pins remained
+unchanged. Full2 log SHA-256:
+`629b0d2080a14c16f81fbc85f233dbc28025e01793b270aa0fedd848fb38a8fe`.
+Terminal receipt SHA-256:
+`348286403f6112d6eef9824364532ccbd8cdbd53baae572d6e98a03fc1ba34f8`.
+The owner observed actual process exit 0 and released the kernel lock and freeze
+before this evidence update. Prior failed and successful heads remain retained;
+only new exact-head hosted checks can establish final PR readiness.

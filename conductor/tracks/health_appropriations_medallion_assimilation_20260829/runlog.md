@@ -7636,3 +7636,16 @@ IDs. The closed registration already binds exact source context before parsing.
 Focused corrected/native/v1 checks pass 96 tests in 4.80 seconds; typing and
 lint pass. Earlier green evidence stays scoped to its original implementation.
 Fresh native/full and hosted qualification is pending; the review stays open.
+
+
+### 2026-10-18 — Metadata review fix passes native2 and original full2
+
+Conductor observed session 5538 terminal exit 0 on clean 1bbd8577/tree59e67de,
+verified the original four pins and released the actual kernel lock/freeze.
+Native2 repeats both actual sources twice, matching all 32 products to the 16
+original pins and both report bytes exactly. No native metadata, IDs or values
+changed. Full2 passes all 32 original stages: 8,012 tests passed, 12 skipped,
+18 warnings, 303.49 seconds, 97.18% coverage; schema/parity/mutation/supply-chain
+and original secret gates pass. Preserve the original review failure, earlier
+scanner failure and historical green runs. This evidence-only update follows
+release; new exact-head hosted checks and review resolution are still required.
