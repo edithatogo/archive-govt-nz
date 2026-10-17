@@ -6395,3 +6395,29 @@ symlink ancestors, source/vintage/observation bindings and repeat stability.
 Actual retained-source/native recovery proof, full harness and hosted delivery
 are pending. No broad track gate, rights, denominator, currency or join is closed.
 See [implementation checkpoint](./context-operational-dispatch-20261017.json).
+
+
+## Context dispatch native and full qualification — 2026-10-17
+
+The frozen clean tree a798e1282774e88a505cc7114b507324e03f7e1f passed actual
+retained-source qualification for all five profiles: 615 common records, 6,171
+common lineage rows, 25 real dispatch calls and two complete repeat builds. All
+15 native Parquet files per repeat are byte-identical to independently pinned
+references; source and reference bytes remain unchanged. Full common losses,
+unresolved dimensions and links are retained. Direct filesystem normalization
+is forbidden during common-operation qualification. The missing June GDP native
+reference matches all four historical file pins, and the entire outer recovery
+report (including canonical products) equals the independently pinned October 2
+receipt. Conductor independently rehashed all 40 generated files.
+
+`./scripts/validate.sh` passed with exit 0 at that same exact head: 7,834 tests
+passed, 10 skipped, 23 warnings in 429.93 seconds; 97.40% coverage against the
+unchanged 80% floor. Typing 0, schemas 62/documents 52, parity 9/9 and every
+mutation, hygiene, audit, licence, secret and SBOM gate passed (113 components).
+Existing external CDX validation remains skipped. Only result documentation and
+evidence follow the tested tree; affected checks and final-head hosted checks
+remain required before normal protected merge and clean topic pruning. This
+does not close downstream common-package canonical/Gold adoption or broader
+source, rights, denominator, currency, mapping and track gates.
+See [native proof](./context-operational-dispatch-native-20261017.json) and
+[full validation](./context-operational-dispatch-validation-20261017.json).
