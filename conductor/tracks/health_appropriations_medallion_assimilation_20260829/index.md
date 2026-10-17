@@ -476,3 +476,10 @@ they are not current-state assertions.
 
 - [Operation-context metadata CLI/MCP](./operation-metadata-operations-20261017.md) and [focused checkpoint](./operation-metadata-operations-20261017.json) — source-regenerated v5 operations; native/full/hosted pending.
 - [CPI source-health delivery](./cpi-source-health-delivery-20261017.json) — PR707 merged and verified; topic refs pruned.
+
+- [Metadata operations delivery](./operation-metadata-operations-delivery-20261018.json) — PR708 merged, seven checks passed, fetched tree verified and topic refs pruned; historical pending receipt superseded.
+- [Component-index source checkpoint](./component-index-source-checkpoint-20261018.json) — actual LCI/PPI exports and source metadata captured/preserved; offline qualification and rights observations pending.
+
+- [Component-index source contract and guide](./component-index-source-evidence-20261018.md), [report](./component-index-source-evidence-report-20261018.json), [native proof](./component-index-source-native-20261018.json), [initial failure](./component-index-source-native-failure-20261018.json), and [full assurance](./component-index-source-assurance-20261018.json) — source-census qualification passes; rights/admission and hosted delivery remain separate.
+
+- [Component-index corrected full assurance](./component-index-source-assurance-final-20261018.json) and [scan recovery](./component-index-source-scan-recovery-20261018.json) — native3/current report and corrected full2 pass; prior proof/scan evidence retained, no scanner policy changes.

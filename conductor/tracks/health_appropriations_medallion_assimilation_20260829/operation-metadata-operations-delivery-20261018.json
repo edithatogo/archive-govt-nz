@@ -1,0 +1,18 @@
+{
+  "checked_and_merge_on_fetched_main": true,
+  "checked_head": "f02915477d936c9d4062214a85ce64ce6c1ca701",
+  "external_evidence": "preserved",
+  "local_assurance": "reconciled full2 tests and through-licences, docs-only scan recovery plus SBOM; see local-assurance-reconciled-3.json",
+  "merge_commit": "31ba7ee64b0ee6bef4287191c8dd403be12e00bd",
+  "merged_at": "2026-10-17T15:43:22Z",
+  "normal_protected_merge": true,
+  "pr": 708,
+  "primary_worktree": "retained clean on main",
+  "required_and_supplementary_checks": "all seven named checks completed SUCCESS",
+  "review_threads": 0,
+  "topic_refs": "local/remote/tracking absent; remote auto-deleted before explicit deletion attempt",
+  "track_complete": false,
+  "tree": "cbaeb167152fb3df1c6280873a2fc925bf0ecec0",
+  "unique_commits_remaining": 0,
+  "url": "https://github.com/edithatogo/archive-govt-nz/pull/708"
+}

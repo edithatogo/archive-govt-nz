@@ -1146,3 +1146,22 @@ not_performed. Refuse source/Gold/output overlap and prove byte/membership
 immutability during verification. No new renderer, source acquisition, consent,
 schedule activation, publication or analytical join is introduced. Conductor
 reviewed this bounded design; broad/native launches remain coordinator-owned.
+
+
+### Component-index source census qualification
+
+Extend the existing offline source-evidence pattern for the exact retained LCI
+and PPI export cohort, not a generic Infoshare scraper or analytical policy.
+Immutable source/query and actual HTTP-response digests select the cohort;
+verify bounded snapshots and existing WARC response binding before interpreting
+CSV periods, lexical decimal values, explicit missing tokens and metadata.
+Publisher TQX is selection configuration only, separately pinned and compared to
+table/dimension/period identity; it never supplies numeric observations. Preserve
+LCI Central Government versus PPI industry-input scope, social-assistance scope,
+distinct bases and publisher vintages. Retain method/ownership/copyright evidence
+separately from legal decisions and analytical eligibility. No full alphanumeric
+series identifier, FINAL flag, annual join, currency or health-cost basket is
+inferred. Output is deterministic source-census evidence; existing Silver/Gold
+and generic host rights policy remain unchanged. Focused refusal contracts must
+cover source/response mismatch, selection/header/period drift and numeric/gap
+semantics; actual-source offline repeats and the repository harness precede PR.

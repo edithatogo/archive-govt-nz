@@ -1,0 +1,17 @@
+{
+  "status": "failed",
+  "session": 91411,
+  "exit_code": 1,
+  "source_head": "ced56bf03d2ecf6b59ff8a2f2a5735813147643d",
+  "source_tree": "a21114943299d9b808b8d2fe3708af596c0068e0",
+  "source_worktree_clean_after": true,
+  "recipe_sha256": "a780b5a97a96c7c27d513f9c88a2040dcc5e66658a1b0b6f22216aabdbb4145b",
+  "failed_iteration": 1,
+  "failure": "ValueError component_index_evidence_contract",
+  "diagnostic_requirement_line": 197,
+  "cause": "owner_text retains JSON-escaped slashes in data-value embedded content; expected unescaped Infoshare URL substring absent",
+  "correction_to_initial_diagnostic": "Link is inside JSON-encoded Content HTML, not a direct top-level anchor",
+  "partial_proof_directory_retained": "native-proof-1",
+  "full_harness_started": false,
+  "source_edits_by_coordinator": false
+}

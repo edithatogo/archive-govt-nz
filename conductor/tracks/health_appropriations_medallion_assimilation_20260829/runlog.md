@@ -7055,3 +7055,187 @@ original receipt in Git/external evidence, and every detector rule/baseline.
 No production/test/tool/runtime input changes are involved. The coordinator will
 run only the affected scan and previously unrun SBOM after focused structure/
 reference checks. No PR is opened before that required recovery succeeds.
+
+
+### 2026-10-18 — metadata operations delivered; component-index qualification
+
+PR708 merged normally as31ba7ee6 after all seven named hosted checks passed on
+f0291547, with no review threads and active strict branch protection unchanged.
+Fetched main contains checked/merge commits, identical cbaeb167 tree and zero
+unique changes. Primary checkout retained clean; topic refs pruned. The external
+local-assurance-reconciled-3 receipt preserves full1 timeout/unidentified F,
+full2 test success/scan stop, and terminal0 affected scan/SBOM continuation.
+No unchanged native/full replay was needed. See the dated delivery receipt;
+prior pending checkpoint statements remain historical rather than silently
+rewritten.
+
+Next source-census task preserves publisher exports rather than constructing
+series identifiers. BrowserOS generated the exact LCI025AA TQX for code3 All
+Salary and Wage Rates / LCI025AC Health Care and Social Assistance, central
+Government sector. TQX has selections only, not numeric observations. Native
+CSV export was found in the actual response's download-frame URL after UI
+selection yielded no downloaded file. Original2719bytes SHA4a525c42 contains
+135quarter labels1992Q4–2026Q2,66literal missing '..' through2009Q1 and69numeric
+2009Q2–2026Q2. Status flags were requested; no final status is inferred from
+unflagged observations. The CSV retains baseJune2009=1000, Index/Units and
+updated05Aug2026 metadata. Coordinator-owned fresh unauthenticated GET capture
+matched the body exactly; existing response binding verified actual3297byte
+WARC1c6d9962. External query/capture receipts remain in
+/Volumes/PortableSSD/tmp/health-component-index-export-20261018. Rights and
+analytical admission are not performed; no browser credentials transferred.
+
+PPI021AA full-period UI currently has empty publisher row/column layout lists;
+ValidateInput returnsfalse. Preserve that diagnosis; do not fabricate hidden
+layout fields or infer PPIQ identifiers. Conductor has been asked for a bounded
+publisher-supported recovery. Continue independent source/rights qualification.
+
+PPI layout recovery used the existing publisher direct-Go route from variable
+selection, then Show status flags; no hidden field or client-authored query was
+needed. Exact original3470byte CSV159708fc has129periods,9missing '..' through
+1996Q2 and120numeric from1996Q3. Initial integer-only diagnostic miscounted the
+native decimal tokens; finite Decimal inspection corrected only that count to
+120, retaining all source bytes and lexical precision. DisplayDecimals0 does
+not authorize rounding the export. PPI021AA/PPI021CC identifies Inputs ANZSIC06
+NZSIOClevel3 health-and-social-assistance, not central-government-only or output
+PPI. Exact query2a40ab6d and fresh sessionless response WARCfd3c66ae retained;
+existing response binding passed. Five actual source captures plus two original
+query files (12objects) independently rehashed/read back and preserved outside
+Git in the permanent component-index-export-20261018 CAS. Three metadata captures
+provide Infoshare ownership, LCIv66 and PPIv3 methodology; their semantic
+qualification remains pending. No rights decision or analytical admission.
+See component-index-source-checkpoint-20261018.json.
+
+
+### 2026-10-18 — component source offline contract
+
+The first focused invocation failed collection because the new module did not
+exist (red-1.log retained). The bounded offline implementation now checks the
+closed six-capture cohort using existing regular-snapshot/fixity/WARC response
+binding plus two separately pinned native TQX configs. Defused XML rejects DTDs;
+CSV checks exact table headers/footer, complete quarterly label grid, missing
+positions, finite positive decimal literals and observed selectors/status option.
+Readback retains title/base text, units, update literal, source footnote and
+lexical period/value digest; no rounding or inferred FINAL/series code. General
+LCIv66 and PPIv3 method observations remain limited by their version/vintage.
+Publisher ownership/licence statements are observed, not automatically applied.
+All14source/query/response objects including the reused CPI copyright capture
+are preserved. Existing Silver/Gold and generic rights policy are unchanged.
+
+Initial9contracts passed4.94s; capture/read-only refusals expanded to13passing
+contracts1.41s. Final14component contracts plus7CPI regressions pass21checks2.61s.
+Ruff/format and focused typing pass; initial lint findings retained and corrected
+without changing detector rules or assertions. Actual-source offline replay,
+full harness and hosted delivery remain pending under the existing coordinator.
+
+
+### 2026-10-18 — native metadata representation correction
+
+Actual-source replay1 on ced56bf0 exited1 at the owner-link check, before full
+harness. The retained Infoshare page stores Content HTML inside data-value JSON,
+with escaped URL slashes. Initial parser compared undecoded JSON text; this was
+an implementation defect, not absent source evidence. Native-proof-1 and original
+bytes remain retained; owner released patch freeze after bounded diagnosis.
+Initial replay did not set native TMPDIR, but used explicit proof paths and no
+temporary-directory calls. Do not claim a full or successful replay.
+
+Decode only structured PageBlocks Content, parse its anchors and text, ignore
+script/style text, then require the exact observed Infoshare link and ownership
+statement. No raw-script/hidden-URL acceptance or weakened host check. Replace
+the unrealistic fixture with actual-style escaped-slash JSON and add a wrong-host
+refusal.22focused checks pass2.40s (15component/7CPI); Ruff/format/type pass. The
+six fixed capture identities and original source/query bytes are unchanged.
+A fresh uniquely named native-proof-2 and subsequent full harness remain pending
+with the same launch owner. No unchanged recapture or source substitution.
+
+
+### 2026-10-18 — component source qualification assurance
+
+Corrected native2 and exact-head full harness pass on c3e87580/tree4d68e634.
+Two network-denied14-object replays produce identical report bbd251a4; independent
+CSV counts match LCI135/66/69 and PPI129/9/120 (represented/missing/numeric), and
+all original bytes remain unchanged. Actual native1 failure and diagnosis remain
+separate; no unchanged recapture or duplicate proof was used. Full harness exits0:
+7916tests/12skips/23warnings322.55s,80percent floor retained,66schemas/56documents,
+9/9parity/zero divergences, all mutation/hygiene/CAS/audit/licence/secret-scan/SBOM
+stages pass. CAS335.30MB/s; SBOM113components. Exact log and native receipt pins
+are in component-index-source-assurance-20261018.json. No source code, tests,
+lock/backend, harness or workflow changes follow this qualified tree.
+
+The deterministic report, actual native receipt, initial failed native receipt
+and maintainer guide are now reviewable in the track. This is a qualified census
+successor to the historical component-index discovery; historical observations
+are retained rather than rewritten. Existing primary source/context census
+profiles, Silver/Gold products and generic rights policy remain unchanged.
+Rights eligibility, analytical weighting/join policy, broader source coverage and
+track completion remain open. Result-only documentation checks and hosted PR
+checks precede normal protected merge; the task stays in progress until delivery.
+
+
+### 2026-10-18 — public method summary rendering correction
+
+Docs-only affected scan on12d65559 exits1 after Conductor/schema success. Its
+sole new candidate is the emitted PPI methodology summary at report line5,
+classified Base64 High Entropy String. Root and coordinator independently match
+the finding fingerprint to the descriptive label, not a credential. Full scan,
+adjudication and failed docs-stage evidence remain external/permanent; original
+canonical reportbbd251a4 remains unchanged in native2/Git/external history.
+
+Conductor selected readable-prose producer output rather than a detector
+exception. Change only the three methodology summary values; keep field/schema
+names, underlying facts and every numeric/query/capture byte unchanged. This is
+a changed-output validation: fresh focused checks and uniquely named actual-source
+native3 precede a new original full harness on the corrected executable tree.
+No scanner rule, exclusion, baseline, source substitution or legal/admission claim
+changes. Earlier c3 fullPASS and native2PASS remain true only for their recorded
+scopes; they do not qualify the changed producer's final output. Regeneration of
+the tracked canonical report follows native3, before the new full harness, so the
+failed old rendering is not silently edited or carried as a current result.
+
+
+### 2026-10-18 — readable summaries actual-source regeneration
+
+Native3 passes on4126170a: two network-denied14-object replays, same numeric/gap
+counts and unchanged source bytes. Actual regenerated reportfccc3850 replaces
+only the three methodology summary values; every other report field/value equals
+the preserved previousbbd251a4 report. Current report/native/guide pointers now
+refer to these generated bytes. Original native2/full1 successes, native1 failure
+and docs-scan failure retain their exact historical scopes. No detector exception
+or baseline/rule change was made. Full2 on this corrected producer and tracked
+report remains pending; no PR is opened before it succeeds. See the dated scan
+recovery record for the precise false-positive diagnosis and remedy.
+
+
+### 2026-10-18 — corrected producer full assurance
+
+Full2 on69afe04b/tree12528659 exits0 with7916tests/12skips/23warnings261.09s,
+unchanged80percent coverage floor,66schemas/56documents,9/9parity/zero divergences,
+all mutation/hygiene/audit/licence/secret-scan/SBOM gates passing. CAS404.66MB/s;
+SBOM113components. The readable report clears the original false positive with
+no scanner policy, exclusion, baseline or approval exception. Preserve full1,
+failed docs scan, native1 and both prior/new canonical reports separately.
+
+The final assurance receipt records the exact corrected executable tree and log
+9aabb76c. Native3's source/report checks remain valid because no production,
+test, runtime, capture or query bytes changed after native3; current report is
+fccc3850. This closeout changes only result documentation. Affected documentation
+checks and required exact-head hosted checks precede protected merge; no further
+unchanged full/native replay is indicated. Broader track and rights/analytical
+admission gates remain open.
+
+
+### 2026-10-18 — hosted CodeQL exact-anchor comparison
+
+PR709 opened after native3/full2/final-doc checks passed. Separate CodeQL
+findings check failed with alert3 py/incomplete-url-substring-sanitization at
+owner anchor membership; analysis job itself passed, and platform assurance was
+still running. Existing runtime comparison was exact membership in list[str],
+not substring matching. Preserve alert/check evidence outside Git. Add the
+specific attacker-path case: an unqualified host whose path contains the exact
+trusted URL is already rejected before the change (1PASS1.43s).
+
+Make the same full-string equality explicit through any(link == expectedURL),
+without relaxing the parsed-anchor/ownership requirement or suppressing the rule.
+23focused checks pass1.17s after the change, plus Ruff/format/type. No source,
+query or report contents change. Earlier native/full receipts retain their exact
+heads; new exact-head CodeQL/platform assurance remains pending. Do not merge or
+prune while any required check is non-terminal or this finding remains active.
