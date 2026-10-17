@@ -1,0 +1,35 @@
+{
+  "analytical_policy": "unchanged",
+  "base_commit": "6b8c2ee0cbcf8efc817ffafd2c86ce13b8b89c0e",
+  "expected_facts": [
+    5,
+    6
+  ],
+  "focused": {
+    "log_sha256": "a573bebec269df63d1e1a2932af839d00c9c79f01d4b9079cc10f52c2f750010",
+    "passed": 41,
+    "seconds": 1.6
+  },
+  "full": "pending",
+  "native": "pending coordinator frozen launch",
+  "profiles": [
+    "vote-health-supplementary-2024-25-summary-totals/v1",
+    "vote-health-supplementary-2025-26-summary-totals/v1"
+  ],
+  "publication": "not_performed",
+  "reference_code_sha256": {
+    "2024_25": "9e423f1e4b6e1565d1ca80096a1f6c88981bfe3257b7e0ac093e293829b13e7a",
+    "2025_26": "4e9b2eb0340e7e773abf58a74c68460bd1878122238b4b5810ce3a057984730e"
+  },
+  "rights": "not_evaluated",
+  "selected_pages": [
+    5,
+    6
+  ],
+  "source_pages": [
+    30,
+    30
+  ],
+  "status": "focused_qualified_native_full_pending",
+  "track_complete": false
+}

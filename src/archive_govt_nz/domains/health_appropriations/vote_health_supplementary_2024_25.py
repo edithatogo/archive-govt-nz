@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import re
 from decimal import Decimal
 from io import BytesIO
@@ -150,34 +151,28 @@ def parse_summary_page(pages: list[tuple[int, str]]) -> list[dict[str, Any]]:
     return rows
 
 
-def normalize(  # noqa: PLR0913 - provenance context remains explicit
-    source: Path,
-    output_dir: Path,
+def extract_snapshot(
+    payload: bytes,
     *,
     expected_sha256: str,
     source_vintage: str,
     source_locator: str,
     observed_at: str,
-    dry_run: bool = True,
-) -> dict[str, object]:
-    """Emit a local, hash-pinned summary fact, lineage and page disposition."""
+) -> tuple[list[dict[str, Any]], list[dict[str, str]]]:
+    """Extract the reviewed source facts and lineage without filesystem writes."""
     if (
         source_vintage != VINTAGE
         or expected_sha256 != SOURCE_SHA256
         or source_locator != SOURCE_LOCATOR
     ):
         _fail("vote_health_2024_25_identity")
-    if (
-        source.is_symlink()
-        or not source.is_file()
-        or output_dir.exists()
-        or output_dir.is_symlink()
-    ):
-        _fail("vote_health_2024_25_path")
+    if not 0 < len(payload) <= MAX_BYTES:
+        _fail("source_byte_limit")
+    if hashlib.sha256(payload).hexdigest() != expected_sha256:
+        _fail("source_hash_mismatch")
     context = source_context(
         expected_sha256, source_locator, source_vintage, observed_at
     )
-    payload = verified_snapshot(source, expected_sha256, max_bytes=MAX_BYTES)
     reader = PdfReader(BytesIO(payload), strict=True)
     if reader.is_encrypted or len(reader.pages) != PAGE_COUNT:
         _fail("vote_health_2024_25_pdf_identity")
@@ -233,6 +228,43 @@ def normalize(  # noqa: PLR0913 - provenance context remains explicit
                     "rule": TRANSFORMATION,
                 }
             )
+    return facts, lineage
+
+
+def normalize(  # noqa: PLR0913 - provenance context remains explicit
+    source: Path,
+    output_dir: Path,
+    *,
+    expected_sha256: str,
+    source_vintage: str,
+    source_locator: str,
+    observed_at: str,
+    dry_run: bool = True,
+) -> dict[str, object]:
+    """Emit a local, hash-pinned summary fact, lineage and page disposition."""
+    if (
+        source_vintage != VINTAGE
+        or expected_sha256 != SOURCE_SHA256
+        or source_locator != SOURCE_LOCATOR
+    ):
+        _fail("vote_health_2024_25_identity")
+    if (
+        source.is_symlink()
+        or not source.is_file()
+        or output_dir.exists()
+        or output_dir.is_symlink()
+    ):
+        _fail("vote_health_2024_25_path")
+    # Retain provenance validation before the existing filesystem read.
+    source_context(expected_sha256, source_locator, source_vintage, observed_at)
+    payload = verified_snapshot(source, expected_sha256, max_bytes=MAX_BYTES)
+    facts, lineage = extract_snapshot(
+        payload,
+        expected_sha256=expected_sha256,
+        source_locator=source_locator,
+        source_vintage=source_vintage,
+        observed_at=observed_at,
+    )
     receipt: dict[str, object] = {
         "schema_version": (
             "archive-govt-nz.vote-health-supplementary-summary-extraction/v1"

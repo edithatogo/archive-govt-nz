@@ -2682,3 +2682,25 @@ without altering existing standalone product bytes. Source profiles and existing
 schemas stay closed; no new source capture, legal approval or analytical join.
 Conductor remains the native/full launch owner; original source code references
 are retained outside Git for actual old/new comparison.
+
+
+### 2026-10-18 — Supplementary dispatch focused qualification
+
+The initial import check failed because supplementary_summary_adapter did not
+exist (red-1.log retained,0.54s). Each existing normalizer now exposes a pure
+hash/edition/page-guarded extract_snapshot used by both its standalone writer and
+common adapter; no separate parser/fact construction is introduced. Existing
+schemas/IDs/token conversion/quality flags and standalone page-disposition output
+are preserved. The common adapter additionally accounts for all30pages, keeping
+the selected page partially normalized and the other29preserved-only. Registry
+contexts are explicit, source locator/vintage-bound, sorted and duplicate-rejecting.
+
+Initial focused25checks pass1.39s. Expanded normalizer/registry/overview selection
+passes41checks1.60s; record and field-lineage equality against standalone Parquet,
+repeat dispatch, source bytes, dash nulls/capital-injection flags, changed-source
+fallback and invalid contexts are covered. Initial lint/type findings are
+preserved; typed closed profile bindings and test context types fix them without
+assertion suppression. Ruff/format/strict typing pass. Actual retained-source
+old/new byte comparisons, repeat proof and the repository harness remain pending
+with the existing Conductor launch owner. No source capture or rights/policy
+change occurs.

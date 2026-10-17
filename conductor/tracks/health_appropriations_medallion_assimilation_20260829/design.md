@@ -1169,8 +1169,8 @@ semantics; actual-source offline repeats and the repository harness precede PR.
 
 ### Common Supplementary summary dispatch
 
-The two existing2024/25 and2025/26 normalizers and common Bronze adapters share
-one pure snapshot extraction boundary. Edition-specific parsers and exact byte,
+Each existing2024/25 and2025/26 normalizer exposes a pure snapshot extraction
+function shared with its common Bronze adapter. Edition-specific parsers and exact byte,
 locator, vintage and page controls remain authoritative; no generic PDF layout
 heuristic is added. Native fact/lineage construction feeds unchanged standalone
 Parquet outputs and the common AdapterOutput. Registry entries remain explicit,
