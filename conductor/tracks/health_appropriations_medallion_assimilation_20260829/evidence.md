@@ -1973,3 +1973,34 @@ coherent focused run remains pending. Typing and Ruff are clean. Native actual-
 source repeat/CLI/MCP/recovery proof, full harness and hosted delivery remain
 pending; no broad track gate or rights/currency/denominator/join is closed.
 See [implementation checkpoint](./operation-context-gold-20261017.json).
+
+
+## Operation Context Gold native proof and full-gate corrections — 2026-10-17
+
+At frozen e9f4297f, coherent focused checks passed 98 tests in58.57s. Two
+empty-derivative Bronze → operation → canonical → Gold replays each generated
+20 files with identical hashes. All five input operation inventories match the
+independent earlier receipt; canonical facts/lineage match the retained canonical
+proof. The615 observations map to615 unique canonical facts, with4190 validated
+lineage rows,585 eligible context-only observations and30 exclusions (including
+two publisher-provisional population rows). Four actual CLI invocations passed
+in10.8–11.4s under the unchanged30s bound; read-only MCP preflight/verify/query
+passed both runs. Source and operation inputs remained unchanged. Conductor
+independently audited saved files, schemas, links and logs without replay and
+found no actionable native-proof issue. See
+[native proof](./operation-context-gold-native-20261017.json).
+
+The full harness at the same head failed:7865 passed,2 failed,10 skipped,
+23 warnings,432.40s; coverage97.38% against80%. Formatting/lint/typing passed;
+later harness gates did not run after test failure. Preserve
+[initial failure evidence](./operation-context-gold-initial-validation-20261017.json).
+The new MCP input/output schemas omitted the repository-required2020-12 dialect
+marker; both now declare it. The existing Budget directory-pin failure test
+injected a global fstat error and now hit the new source descriptor check first.
+Its injection now targets an actual directory descriptor using saved real_fstat;
+it still proves exactly that failed descriptor closes once, while input errors
+retain input-stage semantics. No production error relabeling or safety removal.
+Corrective MCP/Budget focused checks passed33 tests in6.60s; Ruff check/format
+passed. Full clean-head rerun and hosted delivery remain required before merge.
+Native output logic was unchanged by these corrections; the native proof remains
+bound to its original exact commit. No broader track completion is claimed.

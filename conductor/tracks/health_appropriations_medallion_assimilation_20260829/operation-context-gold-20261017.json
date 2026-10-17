@@ -1,15 +1,16 @@
 {
-  "actual_source_native": "pending",
+  "actual_source_native": "passed at e9f4297f; two identical20file runs",
   "approved_joins": "none",
   "currency_admission": "not_performed",
   "denominator_selection": "not_performed",
   "external_mutations": "not_performed",
-  "final_focused": "pending",
-  "full_harness": "pending",
+  "final_focused": "98 passed58.57s at e9f4297f; corrective MCP/Budget checks33passed6.60s",
+  "full_harness": "initial failed2contracts; fixes applied; clean-head rerun pending",
   "gold_schema": "archive-govt-nz.health-operation-context-gold/v1",
   "hosted_delivery": "pending",
   "input_contract": "five caller-retained independent operation pins, exact reviewed source cohorts and bounded closed typed input specification",
   "native_gold_apis": "unchanged",
+  "native_proof_sha256": "de0eba3cfd4f2e96a9b37db380c2d76d3104f836fab36be22dba11c0d336c23d",
   "observed_results": {
     "affected_regular_config": "27 passed/1 deselected in8.92s",
     "fifo_regression": "old public input reader timed out at10s; fixed reader passed",
@@ -42,5 +43,5 @@
     "explicit unverified CPI base"
   ],
   "source_profiles": 5,
-  "status": "implemented_final_focused_native_full_hosted_pending"
+  "status": "native_passed_full_contract_corrections_rerun_pending"
 }

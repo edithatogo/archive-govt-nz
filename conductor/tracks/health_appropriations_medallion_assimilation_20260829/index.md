@@ -450,3 +450,6 @@ they are not current-state assertions.
 - [Canonical operation consumer delivered and topic pruned](./context-operation-canonical-delivery-20261017.json).
 
 - [Operation Context Gold implementation and resource-contract checkpoint](./operation-context-gold-20261017.json).
+
+- [Operation Context Gold actual-source repeat proof](./operation-context-gold-native-20261017.json).
+- [Operation Context Gold initial full-gate failure evidence](./operation-context-gold-initial-validation-20261017.json).

@@ -1,0 +1,12 @@
+{
+  "head": "e9f4297f919d6c67779f23611e585b6e69a463ac",
+  "exit_code": 1,
+  "log_sha256": "b2f57982ecaead1a5ebdb203a0b92521e9302fcd5e32dd2f45dc350092374210",
+  "passed": 7865,
+  "failed": 2,
+  "failures": [
+    "test_tool_schemas_and_structured_content_agree: missing $schema on new MCP schemas",
+    "test_pin_failure_closes_descriptor: global fstat injection now hits source snapshot before directory pin"
+  ],
+  "full_gate": "failed; later gates not run"
+}

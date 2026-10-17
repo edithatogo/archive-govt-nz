@@ -560,12 +560,14 @@ def _tool(name: str, action: str) -> dict[str, Any]:
             + "; no acquisition, rights or analytical admission."
         ),
         "inputSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
             "type": "object",
             "properties": properties,
             "required": required,
             "additionalProperties": False,
         },
         "outputSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
             "type": "object",
             "properties": output_properties,
             "required": ["schema_version", "action", "status", *_MCP_BOUNDARIES],

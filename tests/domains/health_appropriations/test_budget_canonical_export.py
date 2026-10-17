@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import stat
 from pathlib import Path
 from typing import Protocol
 
@@ -154,14 +155,21 @@ def test_pin_failure_closes_descriptor(
 ) -> None:
     source = inputs(tmp_path)
     real_close = os.close
+    real_fstat = os.fstat
     closed: list[int] = []
+    failed: list[int] = []
 
-    def fail_fstat(_descriptor: int) -> os.stat_result:
-        message = "injected"
-        raise OSError(message)
+    def fail_fstat(descriptor: int) -> os.stat_result:
+        status = real_fstat(descriptor)
+        if stat.S_ISDIR(status.st_mode):
+            failed.append(descriptor)
+            message = "injected"
+            raise OSError(message)
+        return status
 
     def observe_close(descriptor: int) -> None:
-        closed.append(descriptor)
+        if failed and descriptor == failed[0]:
+            closed.append(descriptor)
         real_close(descriptor)
 
     monkeypatch.setattr(os, "fstat", fail_fstat)
@@ -174,7 +182,8 @@ def test_pin_failure_closes_descriptor(
             tmp_path / "output",
             dry_run=False,
         )
-    assert len(closed) == 1
+    assert len(failed) == 1
+    assert closed == failed
 
 
 def test_keyboard_interrupt_propagates(
