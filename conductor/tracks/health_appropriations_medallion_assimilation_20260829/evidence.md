@@ -1717,3 +1717,24 @@ Conductor reviewed the fix without finding a blocking defect. Large-source green
 new native/full/hosted qualification and actual review-thread resolution remain
 pending; prior full/CI green results do not qualify this material fix.
 See [review-fix evidence](./forecast-operation-size-review-fix-20261017.json).
+
+
+## PR #701 output-size fix native qualification — 2026-10-17
+
+Combined guarded verification completed0 at frozen clean
+2446e13475adb9b436330994d50a443e76c0c30d. The exact retained208357-byte synthetic
+source now passes no-write default preflight, explicit write and independently
+pinned verification. All80025 common losses are preserved; the10929247-byte
+manifest retains its originalb54fb7556e74d12bb55f53f834fb18a991c72b5719811198abc78c6a14ae4357
+hash. All4corrected package bytes match the earlier failed package, all3Parquets
+match the native reference, and source/red/native evidence remains unchanged.
+This is a synthetic contract regression, not official data admission.
+Both retained official successor profiles also pass two complete repeat builds
+and independently pinned readback with direct filesystem normalization forbidden:
+20facts/120lineage rows/8files per repeat. Every generated file hash, including
+both new manifests, matches the pre-fix native proof exactly. No original or
+source/reference bytes changed. Conductor independently verified the large-case
+file hashes and no-write preflight; code review found no blocking defect.
+See [review-fix native proof](./forecast-operation-size-fix-native-20261017.json).
+A new full exact-tree harness and final-head hosted checks remain required;
+actual PR review thread is intentionally unresolved until these qualify the fix.

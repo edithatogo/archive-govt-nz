@@ -1,0 +1,103 @@
+{
+  "scope": "PR701 output-size correction native and synthetic regression only",
+  "head": "2446e13475adb9b436330994d50a443e76c0c30d",
+  "review_thread": "PRRT_kwDOTo2MOM6tdDD8",
+  "large_source_green": {
+    "observed_at": "2026-10-17T04:40:48.280919+00:00",
+    "head": "2446e13475adb9b436330994d50a443e76c0c30d",
+    "scope": "synthetic accepted large-loss source regression, not official data admission",
+    "source_sha256": "4643edf2de2a8cf3d6575c12c5a6a765517f98590c8fee696a87c111da8b6d88",
+    "source_bytes": 208357,
+    "manifest_bytes": 10929247,
+    "manifest_sha256": "b54fb7556e74d12bb55f53f834fb18a991c72b5719811198abc78c6a14ae4357",
+    "all_four_generated_files_match_prior_failed_package": true,
+    "native_parquet_pins_match": true,
+    "all_common_losses_retained": 80025,
+    "status": "written_local",
+    "default_preflight_writes_nothing": true,
+    "independently_pinned_readback": true,
+    "original_source_and_red_native_evidence_unchanged": true,
+    "filesystem_normalizer_forbidden": true
+  },
+  "official_native": {
+    "review_fix_all_generated_bytes_unchanged": true,
+    "scope": "two reviewed forecast source operations only; native originals unchanged",
+    "observed_at": "2026-10-17T04:42:56.722603+00:00",
+    "head": "2446e13475adb9b436330994d50a443e76c0c30d",
+    "rows": [
+      {
+        "profile": "befu-2026/v1",
+        "source_sha256": "313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1",
+        "source_bytes": 193830,
+        "reference_manifest_sha256": "83bd8c0d661383712ade0e7ec1c14bb7cbdba9c93a83df74abbfc64a4586afea",
+        "source_census_sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272",
+        "source_id": "befu_2026-003",
+        "original_observation_token": "2026-08-29T09:00:17Z",
+        "counts": {
+          "context": 22,
+          "inventoried_cells": 2375,
+          "normalized": 10,
+          "preserved_only": 2343,
+          "rejected": 0
+        },
+        "field_lineage_rows": 60,
+        "common_loss_rows": 2366,
+        "repeat_file_sha256": {
+          "MANIFEST.json": "ebafa87da00953ed59357bfc8f06ceec546a87c63fd6f7699a3e401bd0b32659",
+          "cell_dispositions.parquet": "947366215373c1a42c3073ebc059a62f758c8a5d95537cbafc756a7bb963484c",
+          "field_lineage.parquet": "c82edf32e930fc991dfce9cefb7dbfdae484ace3be5956ed1800fe3a1e690671",
+          "forecast_facts.parquet": "d48f94bbd67cd8fd3418fbab9c5ea815c145a228c6e1e35124dba6449c2b8b17"
+        },
+        "source_and_native_reference_unchanged": true,
+        "filesystem_normalizer_forbidden": true,
+        "independently_pinned_readback": true,
+        "actual_dispatches_observed": 5
+      },
+      {
+        "profile": "hyefu-2025/v1",
+        "source_sha256": "f9f9190a69ce0a7c53b89d690d50170e2a6a457e6821afeb93edc08cef4b9c7d",
+        "source_bytes": 191581,
+        "reference_manifest_sha256": "5ef89741ad695efd078ba7b7dca2a059948c5bc12069fb434c695ad9293083b5",
+        "source_census_sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272",
+        "source_id": "hyefu_2025-006",
+        "original_observation_token": "2026-08-29T09:00:17Z",
+        "counts": {
+          "context": 22,
+          "inventoried_cells": 2346,
+          "normalized": 10,
+          "preserved_only": 2314,
+          "rejected": 0
+        },
+        "field_lineage_rows": 60,
+        "common_loss_rows": 2337,
+        "repeat_file_sha256": {
+          "MANIFEST.json": "0290e9bb3c69ab9159a2d0372194e45033dc3155f889f7a407eed3fe25c1c5ab",
+          "cell_dispositions.parquet": "d8f10aa5c2a522603918cfe3270ec2965afd9ae54afa1a4bb06b9fcd7ddd01b1",
+          "field_lineage.parquet": "13537eb7ae1d046677737803cd5541d271567828374d25e565fccc8e0ab18751",
+          "forecast_facts.parquet": "747332611ebe24fb8fe11d25602a309d91b7cb886f9c01933744608676d22e1e"
+        },
+        "source_and_native_reference_unchanged": true,
+        "filesystem_normalizer_forbidden": true,
+        "independently_pinned_readback": true,
+        "actual_dispatches_observed": 5
+      }
+    ],
+    "repeat_stable": true,
+    "profiles": 2,
+    "facts": 20,
+    "lineage_rows": 120,
+    "files_per_repeat": 8,
+    "new_capture": false,
+    "rights_or_analytical_admission_changed": false,
+    "phase_complete": false,
+    "implementation_sha256": {
+      "src/archive_govt_nz/domains/health_appropriations/forecast_operations.py": "b43e9cac7b5f539020608f3b002825feff0f306a462a4d81f27bacbf09eeadfd",
+      "src/archive_govt_nz/domains/health_appropriations/source_operations.py": "0da6388dd0da4fe0d70851d12f9a84ed6c7ce5f46f0b73766c6dbd26bea18f13",
+      "src/archive_govt_nz/domains/health_appropriations/forecast.py": "bdb60ff1bf09c2993b453e6310c8ea15f3abcd1567b3584369c394017cef0bce",
+      "src/archive_govt_nz/domains/health_appropriations/forecast_adapter.py": "a46471c4964bf67ce91a444b5d0c3154dcbbe08b0bb3460f341864d5d8647518"
+    }
+  },
+  "independent_review": "Conductor inspected green verifier and streamed all four old/new synthetic output hashes; native proof independently reviewable without source replay",
+  "new_full_and_hosted_checks": "pending; review unresolved until final checks qualify fix",
+  "phase_complete": false
+}
