@@ -11,6 +11,13 @@ import pytest
 from tests.domains.health_appropriations.test_capture_checkpoint import setup
 
 _DRIVER = """
+import faulthandler, sys
+try:
+    faulthandler.dump_traceback_later(5)
+except (OSError, RuntimeError, ValueError) as diagnostic_error:
+    sys.stderr.write("writer_traceback_unavailable=" + type(diagnostic_error).__name__ + chr(10))
+sys.stderr.write("writer_bootstrap_entered" + chr(10))
+sys.stderr.flush()
 import argparse, asyncio, runpy, sys
 from pathlib import Path
 from archive_govt_nz.capture import CaptureResult
@@ -22,6 +29,7 @@ args = argparse.Namespace(census=root/"census.json", store_root=root/"cas",
     max_resource_bytes=1024, resume=False)
 async def local(client, url, store, config, *, transaction_warc_path):
     if url.endswith("two.csv"):
+        faulthandler.cancel_dump_traceback_later()
         sys.stdout.buffer.write(b"checkpoint_ready\\n")
         sys.stdout.buffer.flush()
         await asyncio.Event().wait()
@@ -59,6 +67,7 @@ async def test_hard_kill_releases_writer_and_resumes_verified_checkpoint(
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.PIPE,
     )
+    failure: BaseException | None = None
     try:
         assert process.stdout is not None
         assert (
@@ -88,7 +97,22 @@ async def test_hard_kill_releases_writer_and_resumes_verified_checkpoint(
         assert len(calls) == 1
         assert lock.is_file()
         assert lock.stat().st_ino == lock_identity
+    except BaseException as error:
+        failure = error
+        raise
     finally:
-        if process.returncode is None:
-            process.kill()
-        await asyncio.wait_for(process.communicate(), 10)
+        try:
+            if process.returncode is None:
+                process.kill()
+            _stdout, stderr = await asyncio.wait_for(process.communicate(), 10)
+        except (OSError, TimeoutError) as cleanup_error:
+            if failure is None:
+                raise
+            failure.add_note(f"writer_cleanup_failed={type(cleanup_error).__name__}")
+        else:
+            if failure is not None:
+                failure.add_note(
+                    f"writer_returncode={process.returncode}; "
+                    "stderr_first_4096_bytes="
+                    + (stderr or b"")[:4096].decode("utf-8", "replace")
+                )
