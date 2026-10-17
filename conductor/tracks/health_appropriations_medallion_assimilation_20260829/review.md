@@ -3654,3 +3654,15 @@ No validator, regex assertion, source observation, denominator, rights,
 qualification or join policy changes. Existing28affected tests pass; producer
 and tests still match the native-qualified679a03a4 tree. Full2 is required on
 the reconciled metadata head; native1 remains valid without repetition.
+
+
+### 2026-10-18 — Historical full2 review
+
+Conductor independently verified actual full2 exit0, clean780f3040, all original
+check pins and unchanged native-qualified producer/tests/runtime. All32stages
+completed; the census failures are resolved with evidence versioning, preserving
+all series and rights/qualification fields. Native106/1143/1503/six-sheet parity
+and full7954 qualification support this closed Fiscal2024 adapter only. Other
+vintages, whole-worksheet semantics, mappings and rights stay separate. Final
+recording changes documentation only; hosted checks and protected delivery must
+still pass on the resulting PR head.

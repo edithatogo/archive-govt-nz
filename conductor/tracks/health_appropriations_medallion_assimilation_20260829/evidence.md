@@ -2946,3 +2946,15 @@ in context-census-pre-historical-dispatch-20261018.json and refresh only that
 reviewed code hash after native parity. Every series/source/qualification/rights/
 join field and every other evidence pin is unchanged. Existing affected census
 and adapter checks now pass28tests6.84s. Full2 remains pending; no native repeat.
+
+
+### 2026-10-18 — Historical full2 qualification
+
+Original full2 passed all32stages on780f3040/tree46064578 after the one-pin
+census repair:7954tests/12skips/18warnings283.60s,97.19%coverage against the
+unchanged80%floor. All66schemas/56documents,9/9parity, mutation, hygiene,
+audit/licences/secrets and113component SBOM gates passed; CAS157.57MB/s.
+The full log and terminal receipt hashes are pinned in the existing checkpoint.
+Native1 remains valid because producer/tests/runtime are unchanged; no native
+repeat. Original failed full1 and census binding remain retained. Hosted checks,
+normal merge and pruning are pending; no rights or analytical admission change.

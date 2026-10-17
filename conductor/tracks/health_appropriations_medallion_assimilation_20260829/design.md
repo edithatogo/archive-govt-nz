@@ -1235,3 +1235,11 @@ lineage without scalar reinterpretation; retain full per-cell raw JSON and
 record associations plus every excluded-sheet reason. Standalone output and
 source/context identities remain stable. Other vintages stay outside this
 registration until separately evidenced or composed with shared-source profiles.
+
+
+Reader source files can themselves be hash-bound census evidence. Refactoring
+a cited reader therefore requires explicit versioning of that code binding even
+when native output parity proves identical behavior. Preserve the prior census
+bytes, reconcile only the reviewed dependency and keep every series/qualification/
+rights/join field unchanged. Include the existing focused census admission checks
+when changing a file listed in its evidence, before the broad harness.

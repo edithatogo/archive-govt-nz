@@ -2092,3 +2092,9 @@ integrated parent head.
   or infer currency, fiscal joins, cross-basis comparability or rights. Verify
   fixtures and two actual historical-pin replays before full/hosted delivery.
   [M-05, M-07, M-10, M-18; AC-03, AC-05, AC-08, AC-16]
+
+
+  Native two-run parity passes106facts/1143lineage/1503cells/six excluded
+  sheets and all four historical files exactly. Original full2 passes7954tests
+  and all32gates on780f3040 after preserving/reconciling the one current census
+  code pin. Failed full1 remains retained; hosted delivery remains pending.

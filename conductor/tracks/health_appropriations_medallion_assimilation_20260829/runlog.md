@@ -7519,3 +7519,14 @@ single reviewed code-evidence hash. Exact before/after comparison proves all
 series fields and other pins unchanged. Existing28census/adapter checks pass;
 no source, test or runtime edits since679a03a4. Prepare a new clean full2 handoff
 with original harness settings; no repeat of the unchanged native proof.
+
+
+### 2026-10-18 — Historical full2 passed
+
+Conductor session32896/PID24643 ran original full2 once under the shared guard;
+actualexit0 released the freeze. All7954tests passed and all32harness stages
+completed, including supply-chain/SBOM. Preserve full1 failure/native1 proof and
+full2 logs/receipts in permanent historical-common-dispatch-20261018 evidence.
+Record the outcome without another native/full run for this documentation delta;
+next create the focused PR, verify seven named exact-head checks, merge normally,
+verify ancestry/tree/zero-unique/clean state and prune only the topic refs.
