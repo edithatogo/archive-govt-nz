@@ -6333,3 +6333,91 @@ qualify this closeout. Required final-head hosted checks, actual review-thread
 resolution and normal protected merge/prune remain pending. Native/large-case
 proof and all original sources/output identities remain unchanged. No broader
 track gate or source/rights/denominator claim is closed.
+
+
+## Forecast delivery and context operation preparation — 2026-10-17
+
+PR #701 merged normally at05:16:46Z as3fe73c7636a335f5587f767cd8ae249deb534adf.
+Final headf2883fcf passed all applicable checks; Windows18m50. The actual size
+finding was resolved after checks, no other review threads remained, and fetched
+main contains both head/merge with identical treef55038e71d29f1dd41fc2ab81ca32caba4d45737.
+Zero unique changes and clean status preceded local/remote/tracking topic pruning;
+primary checkout retained. See [delivery receipt](./forecast-operational-dispatch-delivery-20261017.json).
+The next five-profile context slice is registered. Read-only preparation verified
+five Bronze source hashes plus four surviving native manifests/12table hashes.
+June GDP temporary derivative is gone; independently attested historical four-file
+pins and current Bronze exist. No source parsing/rebuild/acquisition occurred in
+that preparation. CPI vintage aliases and population lineage representation need
+explicit source-faithful projection; Conductor guidance requested before coding
+those boundaries. Other families and contract preparation continue independently.
+
+
+## Context operation CPI vintage contract — 2026-10-17
+
+The retained CPI native manifest edb62f4b... binds source f474a6a3... and literal
+`Stats-NZ-CPI-2026-Q2`; existing common registration supported only `2026-Q2`.
+A fixture regression reproduced preserved-only fallback for the retained label.
+The factory now exposes an explicit1.1.0 recorded-label adapter while preserving
+legacy1.0.0 behavior. Source context and unresolved mapping vintage retain the
+caller's exact supported literal; no parse-short-then-rewrite conversion occurs.
+Unrelated vintages remain refused and the legacy class does not implicitly
+accept the new label. Native CPI APIs and schemas remain unchanged.
+Focused CPI/adapter/dispatch contracts:80 passed in3.24s; targeted typing0 and
+Ruff clean. This is fixture boundary qualification only; actual native-source
+repeat proof, five-profile operation routing, full harness and hosted delivery
+remain pending. See [CPI boundary receipt](./context-operation-cpi-vintage-20261017.json).
+Conductor guidance also retains full population common records, all three lineage
+fields/status/rules and dimensions/links in the operation manifest, with an
+explicit native compatibility projection rather than silent parity replacement.
+For GDP June, retain the legacy common parser token and actual June fact/native
+transformation separately; vintage/61-quarter controls establish source scope,
+not the parser label. No source capture or semantic/rights approval is inferred.
+
+
+## Five-profile context operational dispatch — 2026-10-17
+
+The five reviewed context profiles now consume actual common records and field
+lineage, retaining every original record, lineage, loss, unresolved dimension
+and link in a versioned operation manifest. Population's legacy two-field/raw-year
+projection is explicit; full three-field common status/rules remain in evidence.
+GDP June retains both actual June transformation and legacy common parser token.
+QES preflight and public compact receipts remain compatible. Native APIs and
+canonical-reader pins are unchanged. Historical June recovery uses the unchanged
+native API and independently recorded four-file pins, never a replacement common
+manifest. Exact observation timestamp literals are retained when registering
+adapters: equivalent timestamp spelling must not silently change observation IDs.
+
+Focused operations/recovery/context-adapter checks:577 passed/10 skipped in49.82s.
+Initial timestamp mismatch and two old manifest-equality contracts were diagnosed
+without changing source values; native three-table fixture parity passes. Tests
+cover full evidence retention, independent readback, tampering, interruption,
+symlink ancestors, source/vintage/observation bindings and repeat stability.
+Actual retained-source/native recovery proof, full harness and hosted delivery
+are pending. No broad track gate, rights, denominator, currency or join is closed.
+See [implementation checkpoint](./context-operational-dispatch-20261017.json).
+
+
+## Context dispatch native and full qualification — 2026-10-17
+
+The frozen clean tree a798e1282774e88a505cc7114b507324e03f7e1f passed actual
+retained-source qualification for all five profiles: 615 common records, 6,171
+common lineage rows, 25 real dispatch calls and two complete repeat builds. All
+15 native Parquet files per repeat are byte-identical to independently pinned
+references; source and reference bytes remain unchanged. Full common losses,
+unresolved dimensions and links are retained. Direct filesystem normalization
+is forbidden during common-operation qualification. The missing June GDP native
+reference matches all four historical file pins, and the entire outer recovery
+report (including canonical products) equals the independently pinned October 2
+receipt. Conductor independently rehashed all 40 generated files.
+
+`./scripts/validate.sh` passed with exit 0 at that same exact head: 7,834 tests
+passed, 10 skipped, 23 warnings in 429.93 seconds; 97.40% coverage against the
+unchanged 80% floor. Typing 0, schemas 62/documents 52, parity 9/9 and every
+mutation, hygiene, audit, licence, secret and SBOM gate passed (113 components).
+Existing external CDX validation remains skipped. Only result documentation and
+evidence follow the tested tree; affected checks and final-head hosted checks
+remain required before normal protected merge and clean topic pruning. This
+does not close downstream common-package canonical/Gold adoption or broader
+source, rights, denominator, currency, mapping and track gates.
+See [native proof](./context-operational-dispatch-native-20261017.json) and
+[full validation](./context-operational-dispatch-validation-20261017.json).

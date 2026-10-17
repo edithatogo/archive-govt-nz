@@ -851,3 +851,50 @@ flowchart LR
   T --> V[Independent pin and trusted source readback]
   M --> V
 ```
+
+
+## Five context operation profiles — 2026-10-17
+
+CPI CSV, annual population CSV, QES Table8 and both GDP workbook vintages retain
+separate explicit registrations and source contexts. Operations consume their
+actual common records/lineage/losses plus all unresolved dimension assertions and
+links. Persist original common evidence in a versioned operation manifest; a
+source-specific compatibility projection emits the three existing native Parquet
+tables without changing the direct native APIs. Source row status, rules, labels,
+qualifiers, null targets and evidence must not disappear in projection.
+The recorded CPI vintage label differs from the existing common caller label;
+any supported alias must be explicit and evidence-bound, preserving the observed
+literal rather than silently rewriting facts. Population common raw records and
+three-field lineage differ from legacy canonical facts/two-field lineage; retain
+both representations and describe any legacy-rule projection. GDP June facts
+retain their June transformation/vintage even where the existing family parser
+layout token retains its earlier label. QES's existing passed preflight token and
+compact public behavior remain explicit. None of these metadata projections is
+an approved comparison, denominator, fiscal alignment, currency or rights claim.
+Regenerate expected metadata/table bytes from bounded immutable source snapshots
+before writing. Independent readback requires a retained external pin, exact
+source-derived bounds, canonical metadata, exact files/table hashes and final
+manifest stability. Refuse malformed inputs, symlink ancestors, stale/partial
+or changed evidence without repairing or overwriting it. All current source and
+reference hashes remain immutable. Four native references survive; June GDP has
+independently recorded four-file pins and verified Bronze, requiring a bounded
+reference materialization before actual common-operation parity.
+
+```mermaid
+flowchart LR
+  B[Verified source snapshot] --> D[Explicit context dispatcher]
+  D --> C[Original records lineage losses dimensions and links]
+  B --> A[Native auxiliary inspection]
+  C --> P[Explicit per-source legacy projection]
+  A --> P
+  C --> M[Versioned common evidence manifest]
+  P --> T[Three native-compatible Parquet tables]
+  M --> V[Independent pin and source-derived readback]
+  T --> V
+```
+
+Historical June GDP recovery retains its native schema and independent four-file
+pins through the unchanged native API; a new operation manifest cannot replace
+that canonical-reader cohort. Qualify the whole outer recovery report against
+retained evidence. Adoption of common-operation packages by downstream canonical
+consumers remains a distinct integration task; historical pins are never relaxed.

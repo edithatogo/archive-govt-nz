@@ -1004,9 +1004,13 @@ integrated parent head.
   as a separate Bronze object and now rebuilds 61 Silver facts, 915 lineage
   rows and 2,323 cell dispositions from `Table 1!C27:BK27`. Repeated clean-room
   output is byte-identical; the pinned March profile and its canonical
-  projection remain unchanged. The June series is not in Context Gold and has
-  no canonical projection, currency qualification, annualization, denominator
-  selection or rights approval. See `gdp-june-profile-20260930.md`.
+  projection remain unchanged. The June series subsequently gained its separate
+  canonical projection and source-vintage Context Gold group; the October 2
+  receipt records 615 context observations, and the October 17 context-operation
+  proof reproduces the entire June recovery report exactly. Currency,
+  annualization, denominator selection and rights remain unqualified. See
+  `gdp-june-profile-20260930.md`, `context-gold-gdp-vintages-20261002.md` and
+  `context-operational-dispatch-native-20261017.json`.
 - [x] Resolve the conditional S-05 scope: its exact-export, dictionary and
   resource-rights gate has not passed, so retain the aggregate Health Survey as
   a non-blocking deferred item and leave the Must scope unblocked. Reopen only
@@ -1823,7 +1827,7 @@ integrated parent head.
   [M-04, M-05, M-06, M-07; AC-03, AC-05, AC-09, AC-16]
 
 
-- [~] Adopt common dispatch in the two reviewed forecast source operations.
+- [x] Adopt common dispatch in the two reviewed forecast source operations.
   Build facts/lineage from actual common output; explicitly reconcile raw cell
   metadata from the same verified shared snapshot. Persist selection, all losses
   and versioned projection metadata with independent manifest-pin readback.
@@ -1834,9 +1838,33 @@ integrated parent head.
   [M-04, M-05, M-07, M-10; AC-03, AC-05, AC-12, AC-16]
 
 
-- [~] Resolve PR #701 generated-output bound mismatch: reproduce a real
+- [x] Resolve PR #701 generated-output bound mismatch: reproduce a real
   native-accepted large-loss source, derive read limits and producer consistency
   pins from source-regenerated serialized outputs before writes, retain independent
   external-pin verification and tamper controls, then qualify large-source/native,
   focused/full/hosted results before resolving the review and merging.
   [M-04, M-05, M-07, M-10; AC-03, AC-05, AC-12, AC-16]
+
+
+- [~] Adopt existing context common outputs in the five CPI, annual population,
+  QES and GDP Q1/Q2 source-operation profiles. Preserve every common record,
+  lineage, loss, unresolved dimension and link in versioned extraction evidence,
+  with explicit source-specific projections to unchanged native Parquet tables.
+  Bind literal vintage/version/layout controls, including recorded CPI context,
+  population raw versus legacy canonical lineage and the existing GDP parser
+  token. Preserve QES preflight/public compact behavior and every direct native
+  API. Reuse source-regenerated bounds, independent manifest pins, repeat-build,
+  tamper and interruption/no-overwrite contracts. Materialize only the missing
+  June GDP native reference from verified Bronze and require independently
+  recorded historical file pins before comparison. Qualify focused/native/full
+  and hosted checks, then protected merge and clean topic pruning. No analytical
+  selection, currency, denominator, rights or join approval is implied.
+  [M-04, M-05, M-06, M-07, M-10; AC-03, AC-05, AC-11, AC-12, AC-16]
+
+- [ ] Integrate independently verified common context-operation packages into
+  source-separated canonical and Gold consumption. Reuse existing canonical
+  transformations, preserve original fixed-cohort native readers and pins, bind
+  new operation manifests and full provenance explicitly, and demonstrate
+  canonical value/lineage parity plus downstream repeat-build recovery. No
+  denominator, currency, rights or analytical join admission is implied.
+  [M-05, M-07, M-10, M-12; AC-05, AC-08, AC-10, AC-12]

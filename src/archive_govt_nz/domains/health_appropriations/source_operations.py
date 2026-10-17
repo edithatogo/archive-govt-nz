@@ -12,6 +12,7 @@ from jsonschema import Draft202012Validator
 
 from archive_govt_nz.domains.health_appropriations import (
     budget_revenue,
+    context_operations,
     cpi,
     forecast,
     forecast_operations,
@@ -793,9 +794,13 @@ def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile disp
             **context,
             dry_run=dry_run,
         )
-    if request.profile == "cpiq-se9a/v1":
-        return cpi.normalize_cpi(
-            request.source, request.output_dir, **context, dry_run=dry_run
+    if request.profile in context_operations.PROFILES:
+        return context_operations.normalize_context(
+            request.source,
+            request.output_dir,
+            profile=request.profile,
+            **context,
+            dry_run=dry_run,
         )
     if request.profile == vote_health_revenue.ESTIMATES_2002_03_PROFILE:
         return vote_health_revenue.normalize_vote_health_estimates_revenue_2002_03(
@@ -814,20 +819,8 @@ def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile disp
             **context,
             dry_run=dry_run,
         )
-    if request.profile == "population-annual-mean-context/v1":
-        return population_annual_silver.normalize_population_annual(
-            request.source, request.output_dir, **context, dry_run=dry_run
-        )
-    if request.profile == "qes-june2026-table8/v1":
-        return qes.normalize_qes(
-            request.source, request.output_dir, **context, dry_run=dry_run
-        )
     if request.profile == "pharmac-cpb-20260807/v1":
         return pharmac.normalize_pharmac_budget(
-            request.source, request.output_dir, **context, dry_run=dry_run
-        )
-    if request.profile in _GDP_VINTAGES:
-        return gdp.normalize_gdp(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
     if request.profile in {"befu-2026/v1", "hyefu-2025/v1"}:

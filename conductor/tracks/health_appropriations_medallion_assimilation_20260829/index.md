@@ -432,3 +432,11 @@ they are not current-state assertions.
 - [Forecast operation size-fix native and real regression proof](./forecast-operation-size-fix-native-20261017.json).
 
 - [Forecast operation size-fix full validation](./forecast-operation-size-fix-validation-20261017.json).
+
+- [Forecast operational dispatch delivered and pruned](./forecast-operational-dispatch-delivery-20261017.json).
+
+- [Context operation CPI literal/version boundary](./context-operation-cpi-vintage-20261017.json).
+
+- [Five-profile context operational dispatch checkpoint](./context-operational-dispatch-20261017.json).
+
+- [Context dispatch native repeat/recovery proof](./context-operational-dispatch-native-20261017.json) and [full local validation](./context-operational-dispatch-validation-20261017.json).
