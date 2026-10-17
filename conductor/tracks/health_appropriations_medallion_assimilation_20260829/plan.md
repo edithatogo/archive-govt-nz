@@ -1744,8 +1744,8 @@ integrated parent head.
 
 - [x] Fix Vote Health fiscal coverage using pinned publisher editions separately
   for main and Supplementary Estimates; reject discovered URLs bound to another
-  fiscal edition and preserve distinct published additions. Local full assurance
-  passed on `7c1dadb7`; fresh hosted assurance and merge of PR #695 remain pending.
+  fiscal edition and preserve distinct published additions. PR #695 merged as
+  `c490d327` after exact-head local/hosted assurance; clean topic pruned.
 
 - [x] Correct captured Vote Health edition selection for the existing lowercase
   short 2012/13 Supplementary title, excluding its separate supporting-information
@@ -1767,7 +1767,7 @@ integrated parent head.
   and hard-kill/ownership/resume/WARC assertion; diagnose before any causal fix.
 
 
-- [~] Reconcile the bounded source census plus retained Vote Health capture
+- [x] Reconcile the bounded source census plus retained Vote Health capture
   addenda into a deterministic observation-preserving inventory. Pin every
   census/request/manifest input; retain capture-time request hashes and explicit
   legacy-context gaps, source IDs, URLs, versions and rights observations.
@@ -1777,9 +1777,19 @@ integrated parent head.
   AC-04, AC-09, AC-16]
 
 
-- [~] Resolve PR #697 review findings: reject supplied unverified legacy
+- [x] Resolve PR #697 review findings: reject supplied unverified legacy
   requests, and reject unconsumed or ambiguous CLI request inputs rather than
   silently dropping evidence or choosing a logical filename by argument order.
   Preserve old successful assurance evidence; prove the actual cohort output
   unchanged, run exact-head assurance and resolve the actual review threads
   before protected merge. [M-02, M-04; AC-04, AC-16]
+
+
+- [~] Integrate the separately captured 2019/20 Supplementary Addition as a
+  distinct publication form in the bounded observation-preserving inventory.
+  Reuse its exact request/capture/CAS/WARC verification, preserve original
+  snapshots and the ordinary Supplementary edition, and reconcile publication
+  identity, source periods/rights evidence and distinct table-layout roles.
+  Do not normalize amounts, infer currency or claim whole-corpus completeness.
+  Prove repeat-build stability and run required assurance before focused PR
+  delivery. [M-02, M-03, M-04, M-06, M-11; AC-02, AC-04, AC-09, AC-16]
