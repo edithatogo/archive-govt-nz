@@ -2838,3 +2838,54 @@ trusted Bronze before projecting expected products; keep paths private and
 rights/publication/unsupported federation claims unchanged. Qualified CPI-base
 candidate captures collected outside the frozen tree remain for a separate
 source-census slice; the admitted Gold base metadata is unchanged.
+
+
+## Operation-context metadata projection started — 2026-10-17
+
+Following the PR704 delivery/design checkpoint, two new public contracts failed
+because the operation-context metadata input did not exist (2failed/7.68s).
+A typed input now carries Gold/operation pins and Bronze scope. The Gold reader
+returns source-regenerated manifest/product bytes only after saved-package
+readback; verify/query wrappers preserve their public results. The existing
+metadata projector reuses its renderers for a newv5 profile, describes13 tables,
+retains null publisher status separately, labels lineage/facts/summary kinds,
+keeps paths private and reports source re-verification per profile honestly.
+Initial contracts passed2/10.37s; subsequent typed dispatch refactor and Ruff/
+typing are clean (0errors). A final coherent test run remains pending after the
+rest of this slice; do not treat initial green as complete assurance.
+
+Export/readback, versioned schemas, source-locator drill-through, historical
+v3/v4 byte parity and two full Bronze-driven metadata recovery repeats remain
+before focused/full/hosted delivery. The authorized Conductor coordinator retains
+broad/native local launch ownership in this coordination batch. The durable
+workflow records frozen head/tree/runtime/command/log/terminal-marker handoff
+and independent focused/static/hosted ownership; no new approval or framework.
+See [in-progress checkpoint](./operation-context-metadata-20261017.json).
+
+
+## Operation-context metadata focused qualification — 2026-10-17
+
+The v5 bridge now implements all eight existing metadata projections plus the
+manifest, exclusive output reservation, source-regenerated expected-byte readback,
+exact source-locator/hash pointers and three versioned schemas. The schema-first
+contract failed for the absent v5 schema before implementation; the final coherent
+focused suite passed27 tests (4 existing RDF deprecation warnings,94.19s), Ruff
+check/format passed, basedpyright reported0 errors, and schema validation passed
+65 schemas/55 representative documents. Tests cover all13 table descriptors,
+nullable statuses, independent operation pins, repeated9-file builds, dry-run,
+overlap/no-overwrite and forged rights with a rehashed candidate marker.
+
+Self-review retains old v3/v4 projection branches, versions and marker construction;
+actual native byte parity remains unproven until replay. New v5 cards keep all
+recordset rows contiguous; per-profile Bronze verification claims remain distinct.
+The offline native proof compares retained legacy packages against the Git3545f270
+renderer, then twice rebuilds Bronze→operation→canonical→Gold→metadata, validating
+schemas, literal manifest references and RDF graphs with file/network loading
+denied. Independent prior operation/canonical/Gold pins are not refreshed from
+new outputs. Runtime remains uv0.13.1/Python3.14.6 with unchanged lock/backend.
+
+Native/full runs are prepared, not launched or passed. The Conductor coordinator
+retains launch ownership; this topic is frozen for a combined native-then-full
+handoff. No PR, broader phase closure, source admission, rights reassessment,
+federation link, publication or new metadata CLI/MCP claim is made. The broader
+track remains in progress. See the updated checkpoint for exact log/script hashes.

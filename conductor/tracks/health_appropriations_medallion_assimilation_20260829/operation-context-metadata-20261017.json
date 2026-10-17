@@ -1,0 +1,50 @@
+{
+  "all13table_descriptors": "implemented; null status counts/source record kinds retained",
+  "approved_federation_links": "none",
+  "base_commit": "a37476ec",
+  "broad_native_launch_owner": "authorized Conductor coordinator for this coordination batch; frozen handoff required; focused/static/hosted remain implementer-owned",
+  "export_readback": "implemented: exclusive output reservation, independent expected metadata pin, exact bounded membership/bytes; forged rights and overlapping inputs rejected",
+  "focused": {
+    "log_sha256": "7f1e1c0d326082d81f8b3916eabeaac1f9063f5c68363e90d8b792ea7bed3b2e",
+    "passed": 27,
+    "seconds": 94.19,
+    "warnings": 4
+  },
+  "full_status": "not_launched",
+  "initial_contracts": {
+    "green_before_final_dispatch_type_refactor": {
+      "log_sha256": "e3e3dc640e83f269824c1b13245a04d6dfe9c1c91ab4126b5bb01bb8d455627d",
+      "passed": 2,
+      "seconds": 10.37
+    },
+    "red": {
+      "failed": 2,
+      "log_sha256": "6b38a1a56b25dd5cbc21351a2fda55037891b0bf40790e1347960c2bd44ec49b",
+      "seconds": 7.68
+    }
+  },
+  "metadata_version": "archive-govt-nz.health-gold-metadata/v5",
+  "native_proof_script_sha256": "9101dc608a4fdfe36168b7a9bdcb0ad0cdf5391572b1b99dfcc14e29743cd1cd",
+  "native_status": "prepared_not_launched",
+  "publication": "not_performed",
+  "remaining": [
+    "historical v3/v4 byte parity on retained native inputs",
+    "two Bronze-to-metadata recovery builds and offline RDF validation",
+    "required full validation on frozen head",
+    "PR, required hosted assurance, protected merge and verified pruning"
+  ],
+  "rights": "not_evaluated",
+  "ruff": "passed",
+  "schema_version": "archive-govt-nz.health-operation-context-metadata-checkpoint/v1",
+  "schemas": {
+    "log_sha256": "af0accf16b44e0d6d76b8307eea97b00493f83aefd1b22783cfb0188b208355c",
+    "representative_documents": 55,
+    "validated": 65
+  },
+  "source_boundary": "verified expected Gold products after independent Gold+five operation pins and Bronze readback; no candidate Parquet reopen",
+  "source_locator_references": "implemented: exact verified manifest pointers retained",
+  "status": "implemented_focused_qualified_native_and_full_pending",
+  "track_complete": false,
+  "typing_errors": 0,
+  "typing_log_sha256": "56882e01cb80173ef053c4096e4ee43e3123a15f5c0a06715f96988d48fbd91c"
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": "archive-govt-nz.health-gold-metadata/v5",
+  "scope": "local_content_addressed_gold_packages",
+  "source_citation": "not_asserted",
+  "records": [
+    {
+      "package_id": "urn:archive-govt-nz:health:gold:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "profile": "operation_context",
+      "manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "identifier_scope": "source_regenerated_canonical_products",
+      "rights": "not_evaluated",
+      "publication": "not_performed"
+    }
+  ]
+}

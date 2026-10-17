@@ -7,12 +7,14 @@ import json
 import re
 from collections import Counter
 from dataclasses import dataclass
+from itertools import islice
 from typing import TYPE_CHECKING, Any
+
+import pyarrow as pa
+import pyarrow.parquet as pq
 
 if TYPE_CHECKING:
     from pathlib import Path
-
-    import pyarrow as pa
 
 from archive_govt_nz.domains.health_appropriations import (
     budget_comparison_gold as budget,
@@ -26,15 +28,25 @@ from archive_govt_nz.domains.health_appropriations import (
 from archive_govt_nz.domains.health_appropriations import (
     fiscal_analytical_gold as fiscal,
 )
+from archive_govt_nz.domains.health_appropriations import (
+    operation_context_gold as operation_gold,
+)
+from archive_govt_nz.domains.health_appropriations.operation_gold_output import (
+    reserve_gold_directory,
+)
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
     verified_snapshot,
 )
 
 VERSION = "archive-govt-nz.health-gold-metadata/v3"
 CANONICAL_VERSION = "archive-govt-nz.health-gold-metadata/v4"
+OPERATION_VERSION = "archive-govt-nz.health-gold-metadata/v5"
 SOURCE_DRILLTHROUGH_VERSION = "archive-govt-nz.health-gold-source-drillthrough/v1"
 CANONICAL_SOURCE_DRILLTHROUGH_VERSION = (
     "archive-govt-nz.health-gold-source-drillthrough/v2"
+)
+OPERATION_SOURCE_DRILLTHROUGH_VERSION = (
+    "archive-govt-nz.health-gold-source-drillthrough/v3"
 )
 MAX_BYTES = 16 * 1024 * 1024
 MAX_PACKAGES = 8
@@ -72,6 +84,24 @@ class GoldInput:
     manifest_sha256: str
 
 
+@dataclass(frozen=True)
+class OperationContextGoldInput:
+    """Gold/input pins and trusted Bronze scope for source re-verification."""
+
+    root: Path
+    manifest_sha256: str
+    operations: tuple[operation_gold.OperationContextInput, ...]
+    source_root: Path
+
+    @property
+    def profile(self) -> str:
+        """Expose the fixed source-regenerated metadata profile identity."""
+        return "operation_context"
+
+
+type MetadataInput = GoldInput | OperationContextGoldInput
+
+
 def with_canonical_input(
     values: tuple[GoldInput, ...], root: Path | None, pin: str | None
 ) -> tuple[GoldInput, ...]:
@@ -99,14 +129,19 @@ def _sha(content: bytes) -> str:
     return hashlib.sha256(content).hexdigest()
 
 
-def _source_references(value: object, path: str = "") -> list[dict[str, str]]:
+def _source_references(
+    value: object, path: str = "", *, operation_context: bool = False
+) -> list[dict[str, str]]:
     """Copy only explicitly named source references from a verified manifest."""
     references: list[dict[str, str]] = []
+    hash_fields = SOURCE_HASH_FIELDS | (
+        {"operation_manifest_sha256"} if operation_context else set()
+    )
     if isinstance(value, dict):
         for key, child in value.items():
             child_path = f"{path}/{key.replace('~', '~0').replace('/', '~1')}"
             if isinstance(child, str):
-                if key in SOURCE_HASH_FIELDS:
+                if key in hash_fields:
                     _require(
                         re.fullmatch(r"[a-f0-9]{64}", child) is not None
                         and len(child) == SHA256_HEX_LENGTH
@@ -118,7 +153,9 @@ def _source_references(value: object, path: str = "") -> list[dict[str, str]]:
                             "value": child,
                         }
                     )
-                elif key.endswith(("_source_url", "_definition_url")):
+                elif key.endswith(("_source_url", "_definition_url")) or (
+                    operation_context and key == "source_locator"
+                ):
                     _require(
                         child.startswith("https://")
                         and not any(character.isspace() for character in child)
@@ -130,16 +167,26 @@ def _source_references(value: object, path: str = "") -> list[dict[str, str]]:
                             "value": child,
                         }
                     )
-            references.extend(_source_references(child, child_path))
+            references.extend(
+                _source_references(
+                    child, child_path, operation_context=operation_context
+                )
+            )
     elif isinstance(value, list):
         for index, child in enumerate(value):
-            references.extend(_source_references(child, f"{path}/{index}"))
+            references.extend(
+                _source_references(
+                    child, f"{path}/{index}", operation_context=operation_context
+                )
+            )
     return sorted(
         references, key=lambda item: (item["field_path"], item["kind"], item["value"])
     )
 
 
-def _table(name: str, table: pa.Table, package_id: str) -> dict[str, Any]:
+def _table(
+    name: str, table: pa.Table, package_id: str, *, nullable_status: bool = False
+) -> dict[str, Any]:
     periods = {
         str(value)
         for value in (
@@ -150,13 +197,22 @@ def _table(name: str, table: pa.Table, package_id: str) -> dict[str, Any]:
         if value is not None
     }
     status_field = "state" if "state" in table.column_names else "status"
+    observed = (
+        table[status_field].to_pylist() if status_field in table.column_names else None
+    )
     statuses = (
-        dict(sorted(Counter(table[status_field].to_pylist()).items()))
-        if status_field in table.column_names
+        dict(
+            sorted(
+                Counter(
+                    v for v in observed if not nullable_status or v is not None
+                ).items()
+            )
+        )
+        if observed is not None
         else {"source_observation": table.num_rows}
     )
     schema = table.schema.serialize().to_pybytes()
-    return {
+    descriptor = {
         "id": package_id + ":" + name,
         "path": name,
         "rows": table.num_rows,
@@ -171,6 +227,12 @@ def _table(name: str, table: pa.Table, package_id: str) -> dict[str, Any]:
             for f in table.schema
         ],
     }
+    if nullable_status:
+        descriptor["null_status_rows"] = observed.count(None) if observed else 0
+        descriptor["status_field"] = status_field if observed is not None else None
+        if observed is None:
+            descriptor["states"] = {}
+    return descriptor
 
 
 def _inventory(
@@ -264,7 +326,92 @@ def _canonical_package(value: GoldInput) -> dict[str, Any]:
     }
 
 
-def _package(value: GoldInput) -> dict[str, Any]:
+def _operation_package(value: OperationContextGoldInput) -> dict[str, Any]:
+    try:
+        verified = operation_gold.read_verified_operation_context_gold(
+            value.operations,
+            value.source_root,
+            value.root,
+            manifest_sha256=value.manifest_sha256,
+        )
+    except ValueError:
+        message = "gold_metadata_contract"
+        raise ValueError(message) from None
+    manifest = verified.manifest
+    _require(
+        manifest["rights_state"] == "not_evaluated"
+        and manifest["publication"] == "not_performed"
+        and _sha(verified.manifest_bytes) == value.manifest_sha256
+    )
+    package_id = "urn:archive-govt-nz:health:gold:" + value.manifest_sha256
+    tables = []
+    inventory = []
+    for name, payload in sorted(verified.products.items()):
+        inventory.append({"path": name, "sha256": _sha(payload), "bytes": len(payload)})
+        if not name.endswith(".parquet"):
+            continue
+        table = pq.read_table(pa.BufferReader(payload))
+        descriptor = _table(name, table, package_id, nullable_status=True)
+        descriptor.update(
+            record_kind=(
+                "field_lineage"
+                if name.startswith("canonical_") and name.endswith("_lineage.parquet")
+                else "canonical_fact"
+                if name.startswith("canonical_")
+                else "context_observation"
+                if name == "context_observations.parquet"
+                else "coverage_summary"
+                if name == "context_coverage.parquet"
+                else "quality_summary"
+            ),
+            period_basis="source_tokens_not_interpreted",
+            period_token_field_present="period_token" in table.column_names,
+            observed_period_tokens=sorted(
+                {v for v in table["period_token"].to_pylist() if v is not None}
+            )
+            if "period_token" in table.column_names
+            else [],
+        )
+        tables.append(descriptor)
+    inventory.append(
+        {
+            "path": "MANIFEST.json",
+            "sha256": value.manifest_sha256,
+            "bytes": len(verified.manifest_bytes),
+        }
+    )
+    return {
+        "id": package_id,
+        "profile": value.profile,
+        "gold_schema_version": manifest["schema_version"],
+        "manifest_sha256": value.manifest_sha256,
+        "inventory": sorted(inventory, key=lambda item: item["path"]),
+        "tables": tables,
+        "caveats": [
+            "source_period_tokens_not_continuous_coverage",
+            "null_publisher_status_count_retained_without_invented_status",
+            "source_semantics_and_rights_not_reassessed",
+            "currency_denominator_and_cross_source_joins_not_admitted",
+        ],
+        "verification_scope": "source_regenerated_canonical_products",
+        "source_reverification": "performed_from_pinned_Bronze",
+        "source_semantics": "not_reassessed",
+        "source_references": _source_references(manifest, operation_context=True),
+        "rights": manifest["rights_state"],
+        "publication": manifest["publication"],
+    }
+
+
+def _package(value: MetadataInput) -> dict[str, Any]:
+    if type(value) is OperationContextGoldInput:
+        return _operation_package(value)
+    if type(value) is GoldInput:
+        return _snapshot_package(value)
+    message = "gold_metadata_contract"
+    raise ValueError(message)
+
+
+def _snapshot_package(value: GoldInput) -> dict[str, Any]:
     _require(
         type(value) is GoldInput
         and value.profile
@@ -392,6 +539,8 @@ def _graphs(
 
 
 def _period_text(table: dict[str, Any]) -> str:
+    if table.get("period_token_field_present") is False:
+        return "not applicable: no period-token field"
     if "observed_period_tokens" in table:
         return (
             f"{len(table['observed_period_tokens'])} distinct source tokens "
@@ -403,7 +552,9 @@ def _period_text(table: dict[str, Any]) -> str:
     )
 
 
-def _version(values: tuple[GoldInput, ...]) -> str:
+def _version(values: tuple[MetadataInput, ...]) -> str:
+    if any(type(v) is OperationContextGoldInput for v in values):
+        return OPERATION_VERSION
     return (
         CANONICAL_VERSION
         if any(v.profile == "canonical_source_separated" for v in values)
@@ -411,10 +562,11 @@ def _version(values: tuple[GoldInput, ...]) -> str:
     )
 
 
-def project_gold_metadata(values: tuple[GoldInput, ...]) -> dict[str, bytes]:
+def project_gold_metadata(values: tuple[MetadataInput, ...]) -> dict[str, bytes]:
     """Verify supported packages before returning metadata-only local projections.
 
-    Supplied manifests bind source assertions, not independently reverified Bronze.
+    Operation-context inputs are regenerated from pinned Bronze; other profiles
+    bind recorded source assertions through verified Gold snapshots.
     IPC schema bytes preserve nested fields and metadata. Period extrema describe
     observations only, never continuous coverage. No private paths or data rows
     are emitted. Graph contexts are inline; full standards conformance is unasserted.
@@ -478,7 +630,9 @@ def project_gold_metadata(values: tuple[GoldInput, ...]) -> dict[str, bytes]:
     source_drillthrough = _json(
         {
             "schema_version": (
-                CANONICAL_SOURCE_DRILLTHROUGH_VERSION
+                OPERATION_SOURCE_DRILLTHROUGH_VERSION
+                if version == OPERATION_VERSION
+                else CANONICAL_SOURCE_DRILLTHROUGH_VERSION
                 if version == CANONICAL_VERSION
                 else SOURCE_DRILLTHROUGH_VERSION
             ),
@@ -509,12 +663,19 @@ def project_gold_metadata(values: tuple[GoldInput, ...]) -> dict[str, bytes]:
             "recordsets": [t for p in packages for t in p["tables"]],
         }
     )
-    has_tokens = any(p["profile"] == "canonical_source_separated" for p in packages)
+    has_tokens = any(
+        p["profile"] in {"canonical_source_separated", "operation_context"}
+        for p in packages
+    )
+    has_operation = any(p["profile"] == "operation_context" for p in packages)
     lines = [
         "# Local Health analytical Gold dataset card",
         "",
         (
-            "Pinned Gold snapshots only; Bronze sources and semantics "
+            "Operation-context Bronze inputs are reverified; other profiles retain "
+            "snapshot verification only. Source semantics are not reassessed."
+            if has_operation
+            else "Pinned Gold snapshots only; Bronze sources and semantics "
             "are not reverified."
         ),
         (
@@ -542,7 +703,15 @@ def project_gold_metadata(values: tuple[GoldInput, ...]) -> dict[str, bytes]:
         lines.extend(
             f"| {t['id']} | {t['rows']} | {_period_text(t)} |" for t in p["tables"]
         )
-        lines.extend(["", p["profile"] + " caveats: " + ", ".join(p["caveats"]), ""])
+        if not has_operation:
+            lines.extend(
+                ["", p["profile"] + " caveats: " + ", ".join(p["caveats"]), ""]
+            )
+    if has_operation:
+        for p in packages:
+            lines.extend(
+                ["", p["profile"] + " caveats: " + ", ".join(p["caveats"]), ""]
+            )
     result = {
         "catalogue.json": catalogue,
         "schemas.json": schemas,
@@ -557,22 +726,12 @@ def project_gold_metadata(values: tuple[GoldInput, ...]) -> dict[str, bytes]:
     return result
 
 
-def export_gold_metadata(
-    values: tuple[GoldInput, ...], output: Path, *, write: bool = False
-) -> dict[str, Any]:
-    """Dry run by default; preserve partial evidence and never overwrite inputs."""
-    _require(type(values) is tuple and 0 < len(values) <= MAX_PACKAGES)
-    for v in values:
-        _require(type(v) is GoldInput)
-        target, source = output.resolve(), v.root.resolve()
-        _require(
-            not target.is_relative_to(source) and not source.is_relative_to(target)
-        )
-    payloads = project_gold_metadata(values)
-    version = _version(values)
-    marker = _json(
+def _metadata_marker(
+    values: tuple[MetadataInput, ...], payloads: dict[str, bytes]
+) -> bytes:
+    return _json(
         {
-            "schema_version": version,
+            "schema_version": _version(values),
             "payloads": {
                 n: {"sha256": _sha(b), "bytes": len(b)}
                 for n, b in sorted(payloads.items())
@@ -582,6 +741,93 @@ def export_gold_metadata(
             "publication": "not_performed",
         }
     )
+
+
+def _safe_metadata_path(path: Path) -> None:
+    _require(not any(p.is_symlink() or p.is_junction() for p in (path, *path.parents)))
+
+
+def _operation_output_scope(values: tuple[MetadataInput, ...], output: Path) -> None:
+    _require(all(type(v) in {GoldInput, OperationContextGoldInput} for v in values))
+    _safe_metadata_path(output)
+    target = output.resolve()
+    for value in values:
+        protected = [value.root]
+        if type(value) is OperationContextGoldInput:
+            protected.extend(
+                [value.source_root, *(item.package_dir for item in value.operations)]
+            )
+        for root in protected:
+            source = root.resolve()
+            _require(
+                not target.is_relative_to(source) and not source.is_relative_to(target)
+            )
+
+
+def _operation_metadata_readback(
+    output: Path, pin: str, marker: bytes, payloads: dict[str, bytes]
+) -> None:
+    _safe_metadata_path(output)
+    _require(isinstance(pin, str) and re.fullmatch(r"[a-f0-9]{64}", pin))
+    _require(_sha(marker) == pin)
+    _require(
+        {p.name for p in islice(output.iterdir(), len(payloads) + 2)}
+        == {"MANIFEST.json", *payloads}
+    )
+    path = output / "MANIFEST.json"
+    _safe_metadata_path(path)
+    _require(verified_snapshot(path, pin, max_bytes=len(marker)) == marker)
+    for name, content in payloads.items():
+        member = output / name
+        _safe_metadata_path(member)
+        _require(
+            verified_snapshot(member, _sha(content), max_bytes=len(content)) == content
+        )
+    _require(verified_snapshot(path, pin, max_bytes=len(marker)) == marker)
+
+
+def _export_operation_metadata(
+    values: tuple[MetadataInput, ...], output: Path, *, write: bool
+) -> dict[str, Any]:
+    _require(type(write) is bool)
+    _operation_output_scope(values, output)
+    if write:
+        _require(output.parent.is_dir() and not output.exists())
+    payloads = project_gold_metadata(values)
+    marker = _metadata_marker(values, payloads)
+    pin = _sha(marker)
+    if write:
+        with reserve_gold_directory(output) as directory:
+            for name, content in payloads.items():
+                directory.write(name, content)
+            directory.write("MANIFEST.json", marker)
+            _operation_metadata_readback(output, pin, marker, payloads)
+    return {
+        "schema_version": _version(values),
+        "status": "written" if write else "dry_run",
+        "manifest_sha256": pin,
+        "packages": len(values),
+        "rights": "not_evaluated",
+        "publication": "not_performed",
+    }
+
+
+def export_gold_metadata(
+    values: tuple[MetadataInput, ...], output: Path, *, write: bool = False
+) -> dict[str, Any]:
+    """Dry run by default; preserve partial evidence and never overwrite inputs."""
+    _require(type(values) is tuple and 0 < len(values) <= MAX_PACKAGES)
+    if any(type(v) is OperationContextGoldInput for v in values):
+        return _export_operation_metadata(values, output, write=write)
+    for v in values:
+        _require(type(v) is GoldInput)
+        target, source = output.resolve(), v.root.resolve()
+        _require(
+            not target.is_relative_to(source) and not source.is_relative_to(target)
+        )
+    payloads = project_gold_metadata(values)
+    version = _version(values)
+    marker = _metadata_marker(values, payloads)
     if write:
         output.mkdir(parents=True, exist_ok=False)
         for name, content in {**payloads, "MANIFEST.json": marker}.items():
@@ -598,9 +844,24 @@ def export_gold_metadata(
 
 
 def verify_gold_metadata(
-    values: tuple[GoldInput, ...], output: Path, manifest_sha256: str
+    values: tuple[MetadataInput, ...], output: Path, manifest_sha256: str
 ) -> dict[str, Any]:
     """Rebuild from verified Gold and compare every retained metadata byte."""
+    _require(type(values) is tuple and 0 < len(values) <= MAX_PACKAGES)
+    if any(type(v) is OperationContextGoldInput for v in values):
+        _operation_output_scope(values, output)
+        payloads = project_gold_metadata(values)
+        marker = _metadata_marker(values, payloads)
+        _operation_metadata_readback(output, manifest_sha256, marker, payloads)
+        return {
+            "schema_version": _version(values),
+            "status": "verified",
+            "manifest_sha256": manifest_sha256,
+            "packages": len(values),
+            "rights": "not_evaluated",
+            "publication": "not_performed",
+            "verification_scope": "source_regenerated_gold_metadata_reconstructed",
+        }
     _require(not output.is_symlink() and output.is_dir())
     _require({p.name for p in output.iterdir()} == FILES | {"MANIFEST.json"})
     marker = verified_snapshot(

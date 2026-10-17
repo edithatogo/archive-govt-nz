@@ -461,3 +461,5 @@ they are not current-state assertions.
 - [PR704 pinned-output actual-source repeat proof](./operation-context-gold-output-native-20261017.json).
 
 - [Operation Context Gold protected delivery and pruning](./operation-context-gold-delivery-20261017.json).
+
+- [Operation-context metadata in-progress checkpoint](./operation-context-metadata-20261017.json).
