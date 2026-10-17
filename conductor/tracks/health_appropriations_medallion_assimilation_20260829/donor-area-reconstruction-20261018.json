@@ -14,7 +14,7 @@
   "native_report_sha256": "63a7fdd6eb5e99e9fcb1489f591860ccb85abd10b3e72f1958b22de69afd1f8f",
   "native_result_sha256": "56ee861cdc9afc021f6c76a16c992c20c79830561c05b3c3ddcf6e02b6cfeee1",
   "network": "denied",
-  "next_gate": "qualify remaining stage-to-area bindings before full/hosted delivery",
+  "next_gate": "Nine-stage bindings and full local assurance qualified; final documentation and hosted delivery pending",
   "old_original_run_directory": "not_retained",
   "publication": "not_performed",
   "reconstruction_is_not_original_directory": true,

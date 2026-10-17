@@ -7425,3 +7425,25 @@ orchestration checks pass236tests5.16s after a test-import correction; initial
 2failed/234passed evidence remains retained. Ruff/format/strict typing pass.
 Revised bindings2 readback and required full harness remain pending on a new
 frozen head; no workbook reconstruction is repeated or prior failure erased.
+
+
+### 2026-10-18 — Nine-stage binding readback and full assurance
+
+Revised bindings2 passes on clean44ce414b/tree dcf1c955. Both existing retained
+reconstructions produce the same report312cd02dc17da9dd122eb43e7f763de1981a2e56d78dd23c5800a044d8a35eaf:
+9stages covering613facts,12bindings (11partialdonor +1source-separatedCrown),
+all61Crownformat context coordinates preserved outside amount coordinates,
+all158global units still unresolved and previous3partial assertions unchanged.
+All100reconstruction files remain byte-identical. This is bounded existing-
+product readback through the existing verifier, not workbook re-extraction.
+The bindings1 failure/diagnostic and partial directory remain preserved.
+
+Original ./scripts/validate.sh passes on that exact frozen head:7939tests,
+12skips,18warnings296.06s;66schemas/56documents;parity9/9 zero divergences;
+all mutation/hygiene/security/supply-chain gates;113SBOMcomponents;
+CAS399.66MB/s. The configured overall coverage floor remains80%. Terminal
+session60707 returned0 and released the shared slot before this evidence-only
+integration. See donor-stage-area-bindings-20261018.json for exact log/recipe/
+report pins and separately scoped reconstruction evidence. Final documentation
+and exact-head hosted checks remain pending; no whole-worksheet/rights/Gold or
+track completion claim is made.

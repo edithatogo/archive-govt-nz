@@ -1202,3 +1202,8 @@ source hash, locator and sheet, preserving partial selections and all global
 remainders. The separate2025 Crown source gets no donor unit when its identity
 is absent. Field coordinates and record sets remain source-separated, with
 context-sheet overlap explicit; no semantic/rights approval is manufactured.
+
+The binding reader also binds supplied donor metadata to the verified canonical
+PLAN digest and exact donor snapshot pin. Only Crown source_context may retain
+the evidenced cell@number_format annotation; its base cell remains inventory-
+bounded, and it is never interpreted as an amount coordinate.
