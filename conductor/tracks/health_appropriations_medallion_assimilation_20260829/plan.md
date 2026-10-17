@@ -1832,3 +1832,11 @@ integrated parent head.
   tamper, interruption, repeat-build and symlink-ancestor contracts before native
   and full assurance, focused PR, protected merge and clean topic pruning.
   [M-04, M-05, M-07, M-10; AC-03, AC-05, AC-12, AC-16]
+
+
+- [~] Resolve PR #701 generated-output bound mismatch: reproduce a real
+  native-accepted large-loss source, derive read limits and producer consistency
+  pins from source-regenerated serialized outputs before writes, retain independent
+  external-pin verification and tamper controls, then qualify large-source/native,
+  focused/full/hosted results before resolving the review and merging.
+  [M-04, M-05, M-07, M-10; AC-03, AC-05, AC-12, AC-16]

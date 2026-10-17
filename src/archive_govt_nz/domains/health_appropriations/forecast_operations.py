@@ -8,7 +8,8 @@ from __future__ import annotations
 
 import hashlib
 import json
-from dataclasses import asdict
+import re
+from dataclasses import asdict, dataclass
 from typing import TYPE_CHECKING, Any
 
 import pyarrow as pa
@@ -39,8 +40,6 @@ _OUTPUT_NAMES = (
     "field_lineage.parquet",
     "cell_dispositions.parquet",
 )
-_MAX_METADATA = 8 * 1024 * 1024
-_MAX_TABLE = 16 * 1024 * 1024
 _LINEAGE_FIELDS = (
     "record_id",
     "field",
@@ -223,14 +222,39 @@ def _object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
     return result
 
 
+@dataclass(frozen=True, slots=True)
+class _ExpectedPackage:
+    hashes: dict[str, str]
+    sizes: dict[str, int]
+    manifest: bytes
+
+
+def _expected_package(
+    expected: dict[str, Any],
+    tables: dict[str, pa.Table],
+) -> _ExpectedPackage:
+    """Derive all read limits from trusted regenerated outputs, never file stats."""
+    hashes = {}
+    sizes = {}
+    for name, table in tables.items():
+        with pa.BufferOutputStream() as stream:
+            pq.write_table(table, stream)
+            payload = stream.getvalue().to_pybytes()
+        hashes[name] = hashlib.sha256(payload).hexdigest()
+        sizes[name] = len(payload)
+    # This is the existing native writer's exact UTF-8 serialization.
+    manifest = (encode_json({**expected, "output_sha256": hashes}) + "\n").encode()
+    return _ExpectedPackage(hashes, sizes, manifest)
+
+
 def _readback(
     output_dir: Path,
     pin: str,
     expected: dict[str, Any],
-    tables: dict[str, pa.Table],
+    package: _ExpectedPackage,
 ) -> dict[str, Any]:
     manifest_path = output_dir / "MANIFEST.json"
-    snapshot = _snapshot(manifest_path, pin, _MAX_METADATA)
+    snapshot = _snapshot(manifest_path, pin, len(package.manifest))
     manifest = json.loads(snapshot, object_pairs_hook=_object)
     # Exact regenerated metadata closes every nested shape, value and key;
     # canonical JSON also distinguishes booleans from integers. There is no
@@ -246,15 +270,10 @@ def _readback(
         {path.name for path in output_dir.iterdir()}
         == {*_OUTPUT_NAMES, "MANIFEST.json"}
     )
-    hashes = {}
-    for name, table in tables.items():
-        with pa.BufferOutputStream() as stream:
-            pq.write_table(table, stream)
-            hashes[name] = hashlib.sha256(stream.getvalue().to_pybytes()).hexdigest()
-    _require(manifest.get("output_sha256") == hashes)
+    _require(manifest.get("output_sha256") == package.hashes)
     for name in _OUTPUT_NAMES:
-        _snapshot(output_dir / name, hashes[name], _MAX_TABLE)
-    _require(_snapshot(manifest_path, pin, _MAX_METADATA) == snapshot)
+        _snapshot(output_dir / name, package.hashes[name], package.sizes[name])
+    _require(_snapshot(manifest_path, pin, len(package.manifest)) == snapshot)
     return manifest
 
 
@@ -284,9 +303,12 @@ def normalize_forecast(  # noqa: PLR0913 - explicit trusted source context
     if dry_run:
         return {**receipt, "preflight_scope": "source_validation_only"}
     tables = _project(result, parsed)
+    package = _expected_package(receipt, tables)
     written = write_workbook_outputs(output_dir, tables, receipt)
-    pin = hashlib.sha256((output_dir / "MANIFEST.json").read_bytes()).hexdigest()
-    _require(_readback(output_dir, pin, receipt, tables) == written)
+    # Producer consistency uses its source-derived pin. Later verification must
+    # still supply a separately retained caller pin through verify_forecast.
+    pin = hashlib.sha256(package.manifest).hexdigest()
+    _require(_readback(output_dir, pin, receipt, package) == written)
     return written
 
 
@@ -302,7 +324,13 @@ def verify_forecast(  # noqa: PLR0913 - independent pin and trusted source conte
     observed_at: str,
 ) -> dict[str, Any]:
     """Verify completed or partial evidence; never infer a pin or repair a run."""
-    _snapshot(output_dir / "MANIFEST.json", manifest_sha256, _MAX_METADATA)
+    _require(
+        isinstance(manifest_sha256, str)
+        and re.fullmatch(r"[0-9a-f]{64}", manifest_sha256) is not None
+    )
+    manifest_path = output_dir / "MANIFEST.json"
+    _safe_path(manifest_path)
+    _require(manifest_path.is_file())
     result, parsed = _dispatch(
         source,
         profile=profile,
@@ -311,9 +339,6 @@ def verify_forecast(  # noqa: PLR0913 - independent pin and trusted source conte
         source_locator=source_locator,
         observed_at=observed_at,
     )
-    return _readback(
-        output_dir,
-        manifest_sha256,
-        _receipt(result, parsed, dry_run=False),
-        _project(result, parsed),
-    )
+    expected = _receipt(result, parsed, dry_run=False)
+    package = _expected_package(expected, _project(result, parsed))
+    return _readback(output_dir, manifest_sha256, expected, package)

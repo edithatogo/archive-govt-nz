@@ -201,7 +201,8 @@ def test_pinned_readback_refuses_tampering(tmp_path: Path, mutation: str) -> Non
     else:
         request = replace(request, source_locator="https://example.test/wrong")
     if mutation in {"selection", "loss", "forged_table", "count_type"}:
-        path.write_text(json.dumps(manifest))
+        # Compact JSON reaches semantic checks even under exact source-derived bounds.
+        path.write_text(json.dumps(manifest, separators=(",", ":")))
         pin = _pin(request)
     with pytest.raises((ValueError, OSError)):
         operations.verify_forecast(
@@ -307,5 +308,91 @@ def test_interrupted_operation_is_neither_repaired_nor_overwritten(
             request.source,
             request.output_dir,
             manifest_sha256="0" * 64,
+            **_context(request),
+        )
+
+
+def test_readback_limits_are_exact_source_regenerated_sizes(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    request = _request(tmp_path, *PROFILES[0])
+    assert (
+        source_operations.operate_source(request, dry_run=False)["status"]
+        == "written_local"
+    )
+    sizes = {path.name: path.stat().st_size for path in request.output_dir.iterdir()}
+    snapshot = operations._snapshot  # noqa: SLF001 - inspect the transport bound
+    observed: list[tuple[str, int]] = []
+
+    def bounded(path: Path, pin: str, limit: int) -> bytes:
+        observed.append((path.name, limit))
+        return snapshot(path, pin, limit)
+
+    monkeypatch.setattr(operations, "_snapshot", bounded)
+    operations.verify_forecast(
+        request.source,
+        request.output_dir,
+        manifest_sha256=_pin(request),
+        **_context(request),
+    )
+    assert observed
+    assert all(limit == sizes[name] for name, limit in observed)
+    # An untrusted file's larger stat size cannot enlarge the regenerated bound.
+    table = request.output_dir / "field_lineage.parquet"
+    table.write_bytes(table.read_bytes() + b"untrusted extra bytes")
+    observed.clear()
+    with pytest.raises(ValueError, match="source_byte_limit"):
+        operations.verify_forecast(
+            request.source,
+            request.output_dir,
+            manifest_sha256=_pin(request),
+            **_context(request),
+        )
+    assert observed
+    assert all(limit == sizes[name] for name, limit in observed)
+
+
+@pytest.mark.parametrize("target", ["MANIFEST.json", "forecast_facts.parquet"])
+@pytest.mark.parametrize("change", ["append", "truncate"])
+def test_readback_refuses_appended_and_short_output_bytes(
+    tmp_path: Path,
+    target: str,
+    change: str,
+) -> None:
+    request = _request(tmp_path, *PROFILES[0])
+    source_operations.operate_source(request, dry_run=False)
+    pin = _pin(request)
+    path = request.output_dir / target
+    original = path.read_bytes()
+    path.write_bytes(
+        original + b"untrusted"
+        if change == "append"
+        else original[: len(original) // 2]
+    )
+    if target == "MANIFEST.json":
+        pin = _pin(request)
+    with pytest.raises((ValueError, OSError)):
+        operations.verify_forecast(
+            request.source, request.output_dir, manifest_sha256=pin, **_context(request)
+        )
+
+
+def test_malformed_external_pin_is_refused_before_source_extraction(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    request = _request(tmp_path, *PROFILES[0])
+    source_operations.operate_source(request, dry_run=False)
+
+    def forbidden(*_args: object, **_kwargs: object) -> None:
+        pytest.fail("malformed pin reached source extraction")
+
+    monkeypatch.setattr(operations, "_dispatch", forbidden)
+    with pytest.raises(ValueError, match="invalid_forecast_operation"):
+        operations.verify_forecast(
+            request.source,
+            request.output_dir,
+            manifest_sha256="not-a-sha256",
             **_context(request),
         )

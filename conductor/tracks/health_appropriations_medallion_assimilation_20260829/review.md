@@ -2401,3 +2401,29 @@ only result documentation/index pointers, not source, tests, schemas or pinned
 inputs. Affected documentation checks follow; required hosted checks must
 qualify the final PR head before normal merge and clean topic pruning. No broader
 phase, donor-area, currency/rights or source-census completion is claimed.
+
+
+## PR #701 generated-output size finding — correction in progress
+
+Actual thread PRRT_kwDOTo2MOM6tdDD8 identifies fixed8MiB/16MiB readback caps
+rejecting native-accepted sources after completed writes. A real208357-byte
+synthetic workbook,80034 inventoried cells/80002 preserved-only/10 normalized,
+zero rejected, produces a10929247-byte manifest and all4files but compact failure.
+The red package/source/native references are retained; an initial import-only
+setup failure is separately recorded and is not defect evidence. A fast
+source-derived-size assertion also fails on the original code.
+Expected hashes and exact lengths are now regenerated from source-derived
+Parquet bytes and the native writer's canonical UTF-8 manifest before creating
+the output directory. Readback uses those bounds, never candidate stats or
+manifest declarations. The independent verifier still requires a retained
+external pin and checks its syntax before source parsing; duplicate-key, exact
+metadata/type/file-set/hash and final reread controls remain. Producer consistency
+uses its source-derived expected pin, distinct from external verification.
+Partial package/default-preflight/native API semantics remain unchanged.
+Focused610passed/10skipped; typing0 and Ruff clean. Appended/truncated output,
+malformed pin, forged metadata and exact bound regressions pass; compact tamper
+JSON ensures type/selection tests reach semantics rather than size rejection.
+Conductor reviewed the fix without finding a blocking defect. Large-source green,
+new native/full/hosted qualification and actual review-thread resolution remain
+pending; prior full/CI green results do not qualify this material fix.
+See [review-fix evidence](./forecast-operation-size-review-fix-20261017.json).
