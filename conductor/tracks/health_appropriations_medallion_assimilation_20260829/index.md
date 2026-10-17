@@ -471,3 +471,5 @@ they are not current-state assertions.
 - [CPI offline source contract and replay](./cpi-source-evidence-20261017.md), [verified report](./cpi-source-evidence-report-20261017.json), [native proof](./cpi-source-evidence-native-20261017.json), and [preservation](./cpi-source-preservation-20261017.json) — current census reconciled; full/hosted delivery pending.
 
 - [CPI source-review historical binding](./cpi-source-review-rebinding-20261017.json) — original review and assessment unchanged; successor retains the exact historical census digest rather than following mutable current metadata.
+
+- [CPI source-health v2 profile](./cpi-source-health-20261017.md) — fixed source-evidence adoption; focused/static qualified, actual-source/full/hosted pending.

@@ -3099,3 +3099,17 @@ unique changes; clean topic refs pruned, primary/originals retained. See
 CPI label-grid evidence adoption using the existing producer, renderer and tool.
 Conductor reviewed independent pin/census binding and non-admission invariants.
 No external mutations or new rights decisions are involved.
+
+
+### 2026-10-17 — CPI source-health focused checkpoint
+
+Optional typed evidence reuses the closed CPI inspector and existing report/
+renderer/tool. Independent digest and exact census/source/vintage binding
+precede v2 adoption; v1 remains the default. Paired CLI roots and distinct output
+paths protect historical reports; existing different content is refused.
+69 focused checks pass in2.53s, including counterfeit/source URL/observation and
+census-byte failures. Ruff/format/type/Conductor checks pass;66schemas and
+56documents validate. Initial collection and cached-alias test failures are
+retained in the external health-cpi-source-health-20261017 evidence folder.
+Native two-run proof and full harness are prepared for the coordinator, not yet
+claimed. No acquisition, rights decision, join or external mutation occurred.
