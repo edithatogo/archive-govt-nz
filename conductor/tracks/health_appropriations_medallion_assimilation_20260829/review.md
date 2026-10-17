@@ -2942,3 +2942,149 @@ retained externally. Affected Conductor-state and hygiene checks also pass.
 Only track evidence documents differ from e1e01c0b; production/test/schema/tool
 bytes remain unchanged. Final frozen continuation will reconcile document gates
 and SBOM; full2/native2 claims retain their original head and terminal scope.
+
+
+## PR705 metadata delivery and next census slice — 2026-10-17
+
+PR #705 merged normally at0a534f13aa6481888c467088b6117318e3d77178 after final
+3f86e6fe passed all required hosted gates, CodeQL and patch coverage; review
+threads were clear. Ubuntu/macOS each7860passed/28skipped; Windows7852passed/
+36skipped plus native preflight3passed/3skipped. All65 schemas/55 documents,
+parity9/9, security/mutation/supply-chain gates passed. Fetched origin/main
+contains the checked head and merge with identical tree7bada49c and0 unique
+changes. Clean local/remote/tracking topic refs pruned; primary/originals retained.
+See [delivery receipt](./operation-context-metadata-delivery-20261017.json).
+This completes the bounded metadata bridge, not Phase7 or the overall track.
+
+Continue with CPI source-evidence census reconciliation on the next topic. The
+existing census already qualifies the June2017 base and the fiscal CPI benchmark
+has an approved exact-pair averaging policy; reuse both. Newly retained external
+captures verify current/versioned metadata edition159 and the same base clause,
+plus the exact release→CSV link and official copyright policy. A separate raw-CSV
+period census finds all449 quarter labels,422 numeric values and27 publisher NA
+slots; no numeric continuity, rights or analytical admission follows. Preserve
+one differing spatial metadata identifier in both raw snapshots. Offline evidence
+contracts and census reconciliation are next; no new broad/native run launched.
+The authorized Conductor coordinator retains broad/native launch ownership.
+
+
+## CPI transport boundary resolved without historical rewrite — 2026-10-17
+
+The retained original CPI WARC matches inventory pin46c14f15 but lacks request/
+final URL digests. The unchanged modern verifier correctly rejects it as
+resume_warc_binding_invalid, caused by resume_warc_binding_mismatch. Preserve
+that legacy observation; do not manufacture capture-time headers or repair its
+bytes. A separately observed bounded capture of the exact official CSV succeeded:
+bodySHAf474a6a3 is byte-identical to the retained2917074-byte original, while new
+WARC0fa0c571 passes modern response binding. The old August observation and new
+October observation remain separate. The original and old WARC are unchanged.
+
+This supplies the missing modern transport evidence for the next offline CPI
+source-evidence contract. Metadata/current/versioned, release and copyright
+captures remain outside Git; checkpoint records exact URLs, observed times and
+body/WARC pins. Reuse the existing census base qualification and household fiscal
+benchmark; no new benchmark, source projection rewrite, rights promotion or
+publication follows. Implementation/tests, current census reconciliation and
+repeat/full/hosted assurance remain pending. See
+[census evidence checkpoint](./cpi-source-evidence-20261017.json).
+
+
+## Offline CPI source-evidence contract implemented — 2026-10-17
+
+The initial contract failed collection because the module was absent. The new
+read-only API verifies a closed seven-capture profile with independent body/WARC
+pins and exact byte limits before parsing. It reuses the existing WARC contract
+through an additive immutable-byte entry; the Path entry retains its behavior.
+Request/final URL digests, status, media type, framing, lengths and body digests
+remain mandatory. No HTTP client or acquisition is used by the inspector.
+
+Contracts retain selector/units/layout, metadata edition and the explicit SDK
+flag, both differing identifier snapshots, exact release-to-CSV and metadata
+references, and the qualified reference clause with its later-index exception.
+Quarter labels are checked separately from27 publisher NA slots; the existing
+CPI parser supplies every source row and value classification without rewriting
+native products. Copyright output is an observed URI/field digest, not rights
+admission. The existing fiscal CPI policy is referenced without another benchmark.
+
+Real-page inspection found unrelated non-JSON/scalar/list widget values; a new
+fixture reproduced rejection before unique PageBlocks selection was corrected.
+A missing-field/null regression also failed before presence-aware, type-sensitive
+metadata comparison was fixed. Final focused suite81passed/9.30s includes the
+existing strict WARC and census contracts and immutable-byte entry behavior;
+Ruff/format pass and basedpyright reports0 errors. Keep these bounded failures
+and exact log hashes in the checkpoint; no coverage chasing or policy weakening.
+
+Actual-source native proof is prepared, not run: two fresh seven-body/seven-WARC
+input trees, socket/DNS disabled, independent capture/period pins, unchanged
+original and legacy capture, identical report bytes. The authorized Conductor
+coordinator owns launch. Census reconciliation will use its verified output,
+then a final coherent tree will go through full/hosted delivery. No PR or wider
+phase/track completion is claimed.
+
+
+## CPI actual-source proof and census reconciliation — 2026-10-17
+
+The Conductor-owned native run on38bc5158 terminated0. Two fresh14-file input
+trees produced identical source-evidence report0716432e with socket/DNS access
+disabled. Independent implementer and coordinator reads verified all28 source
+files and both report copies. Raw22701-row CSV inventory retains449 selected
+quarter labels,422 numeric values and27 publisher NA; exact2017.06 anchor at
+physical row22666 is1000. Source identities, units, qualifiers, layout and
+metadata differences are retained with exact body/transport/field digests.
+
+Reconcile the current context census to that actual report and code pins. Keep
+all other context rows byte-equivalent; CPI source observations, base qualification,
+rights, unqualified analytical state and native manifest pin remain unchanged.
+The prior complete census bytes3f0f1522 are retained separately. Clarify the
+existing exact fiscal benchmark versus unqualified general annual aggregation,
+without a new benchmark. Source-health v1's coarse state is not silently upgraded
+from a free-text assertion; its future adoption remains Phase6 work.
+
+All14 verified source bodies/WARCs and the full native proof/recipe/reference
+are retained in a permanent bounded Health archive CAS/evidence directory using
+the existing store. Source staging/original files are unchanged; this is local
+preservation, not another acquisition or external collection/publication action.
+The compact native receipt binds the full external proof and inventories; the
+standalone report and preservation receipt carry all expected source pins.
+Focused source/WARC/census checks82passed/12.77s. Final static and full/hosted
+assurance remain pending; no PR or broader phase/track closure is claimed.
+The coordinator retains full launch ownership and will serialize after any
+actual live external broad profile is terminal.
+
+
+Final pre-harness static checks pass: Ruff format/lint, typing0, schemas65/
+documents55, Conductor0 errors and hygiene. The code qualified by native38bc5158
+is unchanged; subsequent work adds census data, historical preservation and a
+reconciliation regression. Freeze this coherent tree for the coordinator-owned
+required full harness. No independent broad/native run, new acquisition or
+external publication/collection action is launched.
+
+
+## Full-harness historical review recovery — 2026-10-17
+
+Conductor-owned full1 on65622850 terminated1 at tests:7883passed,2failed,
+12skipped,23warnings/550.20s; coverage97.29% against unchanged80%. Both failures
+in test_source_measure_review raised invalid source-measure evidence because
+its prior forecast-binding review still pinned old census3f0f1522 at the mutable
+current context-census.json path. Preserve the full log52ba023a and original
+report. The validator correctly rejected drift; no production check is weakened.
+
+A successor review changes that evidence locator to the retained historical
+snapshot with the SAME digest and cites the immutable original review. All19
+series, source-family counts, assessment time, scope and rights stay unchanged.
+Current CPI census af8cf8eb remains intact; no old value or evidence hash is
+silently substituted. The active index/test reference selects this explicit
+historical binding, preventing later current-census edits from breaking the
+frozen assessment again. See
+[rebinding receipt](./cpi-source-review-rebinding-20261017.json).
+
+Recovery tests initially found an assertion mismatch in the new regression:
+validate_review returns normalized optional fields, so raw JSON is not its
+comparison contract. Compare validated output to its own pre-mutation baseline;
+retain a separate raw old/new assessment equality assertion. Then changing the
+bound historical snapshot must still fail. All68 source-measure/census checks
+pass/1.97s, including the original two failures and the new drift contract.
+Source/native production code and runtime are unchanged. Resume affected static
+and all unrun post-test stages on a frozen head under the coordinator, rather
+than replaying unchanged7883 tests/native proof. Full1 remains explicitly a
+failed partial run; no whole-pass or hosted/PR claim is made yet.

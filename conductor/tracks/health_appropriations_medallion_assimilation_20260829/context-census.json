@@ -1,9 +1,13 @@
 {
-  "base_commit": "663adf85e8f8839b782d48492e3e961500bd2b17",
+  "base_commit": "38bc5158295bcc6f23696e084ac1a3faa4b79cf4",
   "evidence": [
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/analytical-context-register.md",
       "sha256": "52102cc00303bca292e3d417dc0f185734bc8bf9e06864393e945ac3619fe24a"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census-pre-cpi-source-evidence-20261017.json",
+      "sha256": "3f0f15221c41abcc2f0c5ecf21effc69805f2e565a8d27a88fcde84680bf20ca"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json",
@@ -12,6 +16,10 @@
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/cpi-index-base-qualification-20261002.md",
       "sha256": "28c91532ec9256e532dca867de744415e2e43d7b54e08570da823cbf593ca1d6"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/cpi-source-evidence-report-20261017.json",
+      "sha256": "0716432ebf5bd6460819c2634206d666ff675f43e64340328b1b67969f8f6665"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/cpi-source.md",
@@ -86,6 +94,10 @@
       "sha256": "563e4d49606d8461831db82b82b05e25e7821fb5fd8ddfa8ef23fa80b2876a87"
     },
     {
+      "path": "src/archive_govt_nz/domains/health_appropriations/cpi_source_evidence.py",
+      "sha256": "518917ae4301a69e5f7ad6be230c0a77d9967383c69c678e29db4e124b64d037"
+    },
+    {
       "path": "src/archive_govt_nz/domains/health_appropriations/forecast.py",
       "sha256": "bdb60ff1bf09c2993b453e6310c8ea15f3abcd1567b3584369c394017cef0bce"
     },
@@ -100,6 +112,10 @@
     {
       "path": "src/archive_govt_nz/domains/health_appropriations/qes.py",
       "sha256": "b82a867ab6b17b58c22097d400adf15858a648cfedbd136dfe30bc995dda24dc"
+    },
+    {
+      "path": "src/archive_govt_nz/warc_binding.py",
+      "sha256": "a2a1be2a0e9de28930ff51fdc71dffaa4dc570b131dc417cb12d5ecced42a672"
     }
   ],
   "schema_version": "archive-govt-nz.health-source-context-census/v1",
@@ -109,10 +125,14 @@
       "base": "June 2017 quarter (2017Q2) = 1000; official Stats NZ reference-period definition matched to retained CPIQ.SE9A observation",
       "definition": "CPI All Groups for New Zealand; All groups; title 2 NA; FINAL is a supplied status, not immutability",
       "evidence": [
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census-pre-cpi-source-evidence-20261017.json",
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/context-census.observation.json",
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/cpi-index-base-qualification-20261002.md",
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/cpi-source-evidence-report-20261017.json",
         "conductor/tracks/health_appropriations_medallion_assimilation_20260829/cpi-source.md",
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json"
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census.json",
+        "src/archive_govt_nz/domains/health_appropriations/cpi_source_evidence.py",
+        "src/archive_govt_nz/warc_binding.py"
       ],
       "family": "cpi",
       "gaps": [
@@ -121,8 +141,8 @@
       ],
       "geography": "New Zealand; national aggregate",
       "id": "cpi-2026q2",
-      "join_policy": "Base definition verified; still blocked until fiscal annual-average/rebase policy is approved; never silently use June index for annual spending",
-      "period": "quarter-ending YYYY.MM; source observations span 1914Q2–2026Q2, 449 selected rows, 422 numeric and 27 NA",
+      "join_policy": "Existing June2017 reference qualification and fiscal-2025-cpi2026q2-equal-quarter-FY2025/v1 household benchmark retained separately. General annual aggregation/rebase remains unqualified; never silently use June index for annual spending or treat household CPI as health-input costs.",
+      "period": "quarter-ending YYYY.MM; 449 labels from 1914Q2 to 2026Q2, 422 numeric and 27 publisher NA; exact quarter-label grid verified in the separate source-evidence report; continuous numeric coverage not asserted",
       "qualification": "unqualified",
       "retained_manifest_sha256": "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e",
       "rights": "not_evaluated",

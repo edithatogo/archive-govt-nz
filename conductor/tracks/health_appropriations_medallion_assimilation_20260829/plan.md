@@ -1898,7 +1898,7 @@ integrated parent head.
   platform gates passed; review resolved before protected merge and pruning.
 
 
-- [~] Extend the existing Gold metadata projector to independently verified
+- [x] Extend the existing Gold metadata projector to independently verified
   operation-context Gold inputs. Retain canonical/direct/common provenance and
   exact inventories for all13 Parquet tables plus report/plots; preserve nullable
   publisher status counts and record kinds without invented statuses or period
@@ -1908,3 +1908,29 @@ integrated parent head.
   repeats; qualify focused/native/full/hosted delivery before closure. No rights,
   citation authority, federation or analytical join is inferred. [M-10, M-14,
   M-16, M-18; AC-08, AC-12, AC-14, AC-16]
+
+
+  Delivered PR #705 at0a534f13 after all required platform/analyze/lint gates,
+  CodeQL and patch coverage passed on3f86e6fe. Source-regenerated native repeats
+  and historical metadata parity passed; full2's receipt-only entropy failure
+  and successful unchanged-scan/SBOM continuation retain exact scope. Fetched
+  main contains checked head/merge with identical tree and zero unique changes;
+  clean topic refs pruned, primary and originals retained.
+
+- [~] Reconcile exact CPI source-metadata and period/rights census evidence with
+  the existing June2017 reference qualification and fiscal CPI benchmark.
+  Verify immutable current/versioned metadata, release-to-source links and
+  response bindings; record source period-label coverage separately from the
+  publisher's missing values. Reuse the approved fiscal policy and retain
+  generic projection flags; do not create another benchmark or infer rights,
+  a health-input deflator, fiscal alignment or analytical admission. Complete
+  a bounded offline source-evidence contract, census reconciliation and repeat
+  evidence before focused/full/hosted delivery. [M-02, M-04, M-06, M-12, M-16;
+  AC-03, AC-04, AC-09, AC-10, AC-12, AC-16]
+
+
+  The read-only contract and two actual-source offline repeats are qualified on
+  38bc5158; current census now cites report0716432e and retains its prior snapshot.
+  All14 originals/WARCs are retained in a permanent bounded CAS.82 focused checks,
+  typing, Ruff, schemas and Conductor/hygiene pass. Full harness and hosted PR
+  delivery remain pending under the existing serialized launch owner.

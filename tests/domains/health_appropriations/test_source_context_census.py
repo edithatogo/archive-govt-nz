@@ -1,5 +1,6 @@
 """Source-context census admission and evidence regression tests."""
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -35,6 +36,45 @@ def test_retained_census_is_deterministic_and_evidence_bound() -> None:
         "total_crown",
     }
     assert all(row.qualification == "unqualified" for row in census.series)
+
+
+def test_cpi_census_retains_prior_context_and_verified_source_evidence() -> None:
+    current = Census.model_validate(document())
+    previous = Census.model_validate_json(
+        (TRACK / "context-census-pre-cpi-source-evidence-20261017.json").read_bytes()
+    )
+    old_rows = {row.id: row for row in previous.series}
+    rows = {row.id: row for row in current.series}
+    for identity in rows.keys() - {"cpi-2026q2"}:
+        assert rows[identity] == old_rows[identity]
+    cpi = rows["cpi-2026q2"]
+    old = old_rows[cpi.id]
+    assert cpi.sources == old.sources
+    assert cpi.base == old.base
+    assert cpi.retained_manifest_sha256 == old.retained_manifest_sha256
+    assert cpi.rights == "not_evaluated"
+    assert cpi.qualification == "unqualified"
+    assert "fiscal-2025-cpi2026q2-equal-quarter-FY2025/v1" in cpi.join_policy
+    name = "cpi-source-evidence-report-20261017.json"
+    reference = (
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/" + name
+    )
+    assert reference in cpi.evidence
+    payload = (TRACK / name).read_bytes()
+    assert (
+        hashlib.sha256(payload).hexdigest()
+        == "0716432ebf5bd6460819c2634206d666ff675f43e64340328b1b67969f8f6665"
+    )
+    report = json.loads(payload)
+    assert report["periods"]["observed_labels"] == 449
+    assert report["periods"]["numeric"] == 422
+    assert report["periods"]["publisher_NA"] == 27
+    assert report["periods"]["missing_labels"] == []
+    assert report["rights"]["decision"] == "not_evaluated"
+    assert report["analytical_admission"] == report["publication"] == "not_performed"
+    capture = next(row for row in report["captures"] if row["role"] == "csv")
+    assert capture["body_sha256"] == old.sources[0].object_sha256
+    assert capture["observed_at"] != old.sources[0].observed_at
 
 
 @pytest.mark.parametrize(

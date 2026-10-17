@@ -1,0 +1,45 @@
+{
+  "external_full_receipt_sha256": "1883d4582b867054c307c9b09ee28b4c3263f0701a535b15ff65cc016509cffc",
+  "external_mutations": "not_performed",
+  "full_receipt_and_recipe": "retained in permanent Health archive evidence/cpi-source-evidence-20261017; raw captures are in its standard CAS",
+  "generic_CPI_and_fiscal_benchmark_code": "unchanged",
+  "head": "38bc5158295bcc6f23696e084ac1a3faa4b79cf4",
+  "independent_readback": {
+    "actual_reports": 2,
+    "actual_source_files": 28,
+    "report_sha256": "0716432ebf5bd6460819c2634206d666ff675f43e64340328b1b67969f8f6665"
+  },
+  "legacy_WARC": "retained_unchanged_and_rejected_as_modern_binding",
+  "legacy_WARC_sha256": "46c14f159010c594f8ff75db09ca3400976ff957c88ce3a73f6d4f12fec0e7ac",
+  "native_script_sha256": "ed23e79bf38fe37259e69663db0778b43341bd5fbc222a533d00b2f7b8fda37b",
+  "new_benchmark": "not_created",
+  "original_CSV_unchanged": true,
+  "profile_reference_sha256": "db3fd11a1115c4ec55d1c945e6fcf2879f6baa9cebb70f500cf7ec5724461e73",
+  "publication": "not_performed",
+  "repeat_identical": true,
+  "rights_decision": "not_evaluated",
+  "runs": [
+    {
+      "iteration": 1,
+      "network_disabled": true,
+      "report_bytes": 7678,
+      "report_sha256": "0716432ebf5bd6460819c2634206d666ff675f43e64340328b1b67969f8f6665",
+      "seconds": 0.289,
+      "source_file_count": 14,
+      "source_files_unchanged": true,
+      "source_inventory_sha256": "75021dbe8e6b03cb615648a63f483889eaa3c35f80d9e68dd781d3ee6c3dd7c5"
+    },
+    {
+      "iteration": 2,
+      "network_disabled": true,
+      "report_bytes": 7678,
+      "report_sha256": "0716432ebf5bd6460819c2634206d666ff675f43e64340328b1b67969f8f6665",
+      "seconds": 0.222,
+      "source_file_count": 14,
+      "source_files_unchanged": true,
+      "source_inventory_sha256": "75021dbe8e6b03cb615648a63f483889eaa3c35f80d9e68dd781d3ee6c3dd7c5"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-cpi-source-evidence-native/v1",
+  "source_body_and_transport_bindings": "verified_offline"
+}
