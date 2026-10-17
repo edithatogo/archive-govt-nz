@@ -3,6 +3,7 @@
   "approved_federation_links": "none",
   "base_commit": "a37476ec",
   "broad_native_launch_owner": "authorized Conductor coordinator for this coordination batch; frozen handoff required; focused/static/hosted remain implementer-owned",
+  "delivery_receipt": "operation-context-metadata-delivery-20261017.json",
   "export_readback": "implemented: exclusive output reservation, independent expected metadata pin, exact bounded membership/bytes; forged rights and overlapping inputs rejected",
   "focused": {
     "log_sha256": "7f1e1c0d326082d81f8b3916eabeaac1f9063f5c68363e90d8b792ea7bed3b2e",
@@ -29,7 +30,8 @@
       "warnings": 23
     }
   },
-  "full_status": "attempt2_stopped_at_secrets; resume secrets_and_sbom_after_document_only_correction",
+  "full_status": "scoped_local_recovery_plus_all_final_head_hosted_full_gates_passed",
+  "hosted_run": 39027688262,
   "initial_contracts": {
     "green_before_final_dispatch_type_refactor": {
       "log_sha256": "e3e3dc640e83f269824c1b13245a04d6dfe9c1c91ab4126b5bb01bb8d455627d",
@@ -74,10 +76,7 @@
     "original_sha256": "867f4a7fa48031519cbae817e8b736cd1946cb50a7d663868cbbb76f4de44dee",
     "scanner_or_adjudication_changes": "none"
   },
-  "remaining": [
-    "affected documentation gate reconciliation and remaining SBOM stage",
-    "PR, required hosted assurance, protected merge and verified pruning"
-  ],
+  "remaining": [],
   "rights": "not_evaluated",
   "ruff": "passed",
   "schema_version": "archive-govt-nz.health-operation-context-metadata-checkpoint/v1",
@@ -96,7 +95,7 @@
   },
   "source_boundary": "verified expected Gold products after independent Gold+five operation pins and Bronze readback; no candidate Parquet reopen",
   "source_locator_references": "implemented: exact verified manifest pointers retained",
-  "status": "native_and_full_test_stages_qualified_secrets_recovered_SBOM_pending",
+  "status": "delivered_PR705_merged_and_verified_topic_pruned",
   "track_complete": false,
   "typing_errors": 0,
   "typing_log_sha256": "56882e01cb80173ef053c4096e4ee43e3123a15f5c0a06715f96988d48fbd91c"

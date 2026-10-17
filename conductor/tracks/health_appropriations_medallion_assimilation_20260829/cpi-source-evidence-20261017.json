@@ -1,0 +1,167 @@
+{
+  "base_commit": "0a534f13aa6481888c467088b6117318e3d77178",
+  "broad_native_launch_owner": "authorized Conductor coordinator; no broad/native replay launched",
+  "captures": [
+    {
+      "body_sha256": "b61325cd3911458e7257e5eca3508d059190e33597d4195509fda88e5498fcdd",
+      "bytes": 192443,
+      "final_url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/159",
+      "observed_at": "2026-10-17T08:33:30.333284+00:00",
+      "requested_url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/159",
+      "response_binding": "verified",
+      "source": "metadata-v159-html",
+      "status_code": 200,
+      "warc_sha256": "149341f6518b5d0debecbabd49ef70bc2f3212779c3eee77530135b1a16696e1"
+    },
+    {
+      "body_sha256": "e9607f65bf65c4daaab39e1a16d02f96a58048ff63c97afb0ba62f7643148ab9",
+      "bytes": 86497,
+      "final_url": "https://www.stats.govt.nz/information-releases/consumers-price-index-june-2026-quarter/",
+      "observed_at": "2026-10-17T08:33:30.678997+00:00",
+      "requested_url": "https://www.stats.govt.nz/information-releases/consumers-price-index-june-2026-quarter/",
+      "response_binding": "verified",
+      "source": "cpi-june2026-release",
+      "status_code": 200,
+      "warc_sha256": "f5ae69b99d95e146e6b09db5b51426bc691e3927abacb30adef8299f83083fe1"
+    },
+    {
+      "body_sha256": "3022463f1546f2afb2f25330d24598c3e0a6a51de98b61af750a490594727584",
+      "bytes": 48412,
+      "final_url": "https://www.stats.govt.nz/about-us/copyright/",
+      "observed_at": "2026-10-17T11:12:40.518466+00:00",
+      "requested_url": "https://www.stats.govt.nz/about-us/copyright/",
+      "response_binding": "verified",
+      "source": "statsnz-copyright-20261017",
+      "status_code": 200,
+      "warc_sha256": "5fdd90ec959c8cfccb0dded0677e53f00c9a0cea16d9c26008c0cec6eb6beffd"
+    },
+    {
+      "body_sha256": "f37de92102e108bb83f6d3d40693947dce8904c64ebd568223d55487cb7ce0c3",
+      "bytes": 192443,
+      "final_url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/",
+      "observed_at": "2026-10-17T11:13:49.977652+00:00",
+      "requested_url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/",
+      "response_binding": "verified",
+      "source": "metadata-current-html",
+      "status_code": 200,
+      "warc_sha256": "6914b9d2c9f21cc9608eb8bf53dd92e1a86cb8fc12779f43ddd0dbf3cfb3c623"
+    },
+    {
+      "body_sha256": "dcfc421025bc5a4e6416b8ea35760195e466b541e9644ea6a69f9bc569fb028a",
+      "bytes": 53671,
+      "final_url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/json",
+      "observed_at": "2026-10-17T11:13:50.540644+00:00",
+      "requested_url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/json",
+      "response_binding": "verified",
+      "source": "metadata-current-json",
+      "status_code": 200,
+      "warc_sha256": "e71d58eab6924ae118f184b109cdbd531dfebc18cd267bdc8420be2cba9a4169"
+    },
+    {
+      "body_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+      "bytes": 2917074,
+      "final_url": "https://www.stats.govt.nz/assets/Uploads/Consumers-price-index/Consumers-price-index-June-2026-quarter/Download-data/consumers-price-index-june-2026-quarter-index-numbers.csv",
+      "observed_at": "2026-10-17T11:36:01.622523+00:00",
+      "requested_url": "https://www.stats.govt.nz/assets/Uploads/Consumers-price-index/Consumers-price-index-June-2026-quarter/Download-data/consumers-price-index-june-2026-quarter-index-numbers.csv",
+      "response_binding": "verified",
+      "source": "cpi-CSV-response-binding-20261017",
+      "status_code": 200,
+      "warc_sha256": "0fa0c5715dc208c23b268624bbdb0a258de818466e238d5264d361fcbde61202"
+    }
+  ],
+  "legacy_transport": {
+    "cause": "resume_warc_binding_mismatch",
+    "error": "resume_warc_binding_invalid",
+    "next_action": "new separately observed capture as required by verify_response_binding contract; never rewrite old WARC or observation",
+    "records": [
+      {
+        "final_URL_digest_present": false,
+        "payload_digest_present": true,
+        "request_URL_digest_present": false,
+        "type": "response"
+      }
+    ],
+    "scope": "retained original WARC diagnosis; historical bytes preserved",
+    "status": "legacy_transport_not_modern_bound",
+    "warc_sha256": "46c14f159010c594f8ff75db09ca3400976ff957c88ce3a73f6d4f12fec0e7ac"
+  },
+  "metadata_edition": {
+    "current_JSON_sha256": "dcfc421025bc5a4e6416b8ea35760195e466b541e9644ea6a69f9bc569fb028a",
+    "current_metadata_identity": {
+      "AgencyId": "nz.govt.stats",
+      "Identifier": "8b0860b8-cf63-4f12-a578-8eed8ba69ac3",
+      "IsPublished": false,
+      "Version": 159,
+      "VersionDate": "2025-05-11T22:43:46.4642059Z"
+    },
+    "definition_clause_evidence": [
+      {
+        "body_sha256": "b61325cd3911458e7257e5eca3508d059190e33597d4195509fda88e5498fcdd",
+        "clause_sha256": "c5605337d71ba3428b9a603ef9dbbbdda4c00c9b4966b65ad597665297f260e2",
+        "exact_clause_occurrences": 3,
+        "source": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/159"
+      },
+      {
+        "body_sha256": "f37de92102e108bb83f6d3d40693947dce8904c64ebd568223d55487cb7ce0c3",
+        "clause_sha256": "c5605337d71ba3428b9a603ef9dbbbdda4c00c9b4966b65ad597665297f260e2",
+        "exact_clause_occurrences": 3,
+        "source": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/"
+      }
+    ],
+    "prior_and_current_JSON_differing_fields": [
+      "/Coverage/SpatialCoverage/Identifier"
+    ],
+    "publication": "not_performed",
+    "reference_base_admission": "not_performed",
+    "release_link_scheme": "http retained; HTTPS counterpart captured independently without asserting HTTP redirect",
+    "rights": "not_evaluated",
+    "status": "metadata_edition_identity_verified"
+  },
+  "old_source_observation": "retained_2026-08-29T09:00:17Z; new transport receipt has a separate current observation",
+  "period_label_census": {
+    "absent_quarter_labels": [],
+    "continuous_numeric_coverage": "not_asserted; publisher NA slots retained",
+    "expected_quarter_labels": 449,
+    "first_period": "1914.06",
+    "fiscal_alignment": "not_selected_by_this_census",
+    "last_period": "2026.06",
+    "numeric_observations": 422,
+    "observed_unique_quarter_labels": 449,
+    "period_tokens_ordered_sha256": "7e2062e3b17040365bba82970b96539fefb3835d2b352ee4db238b4600b2a009",
+    "publication": "not_performed",
+    "publisher_NA_observations": 27,
+    "publisher_NA_period_tokens_sha256": "b743a776fb3ea4dc4eb3bfca2cf6e9338a69a1958ca5772a76b1daee771f65c7",
+    "publisher_status_tokens": [
+      "FINAL"
+    ],
+    "rights": "not_evaluated",
+    "scope": "CPIQ.SE9A source period-label census; not numeric completeness or analytical admission",
+    "source_rows": 449,
+    "source_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+    "source_unchanged": true,
+    "units": [
+      "Index"
+    ]
+  },
+  "publication": "not_performed",
+  "remaining": [
+    "offline hash/response/source-field evidence contract and meaningful negative checks",
+    "census evidence reconciliation with existing qualified policy boundaries",
+    "repeat proof, required assurance, focused PR and protected merge/pruning"
+  ],
+  "reuse": [
+    "context-census.json June2017 base qualification",
+    "fiscal-2025-cpi2026q2-equal-quarter-FY2025/v1 approved household benchmark"
+  ],
+  "rights": "not_evaluated_by_this_slice",
+  "schema_version": "archive-govt-nz.health-cpi-source-evidence-checkpoint/v1",
+  "source_payloads": "outside_Git",
+  "status": "source_evidence_collected_offline_contract_pending",
+  "track_complete": false,
+  "versioned_JSON_capture": {
+    "body_sha256": "35d97118d6901af9b88ffe660770d439ba720563dcf55f2e069e313f2a051915",
+    "response_binding": "previously_verified; reverify_with_offline_contract",
+    "source": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/159/json",
+    "warc_sha256": "d09d5778845c7fec717f904f00ded2ec050cbd9896e2a9aa05fceaaf9a91aa5c"
+  }
+}

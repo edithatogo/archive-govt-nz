@@ -463,3 +463,7 @@ they are not current-state assertions.
 - [Operation Context Gold protected delivery and pruning](./operation-context-gold-delivery-20261017.json).
 
 - [Operation-context metadata in-progress checkpoint](./operation-context-metadata-20261017.json).
+
+- [Operation-context metadata delivery](./operation-context-metadata-delivery-20261017.json) — PR705 merged, required checks passed, fetched/pruned proof; broader track remains open.
+
+- [CPI source-evidence checkpoint](./cpi-source-evidence-20261017.json) — response-bound current metadata and same-byte CSV recapture; offline contract and census reconciliation in progress.

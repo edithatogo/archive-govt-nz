@@ -1041,3 +1041,36 @@ metadata repeat builds, with unchanged originals. Rights stay not_evaluated,
 publication not_performed; emit no federation links or full standards-conformance
 claim. The machine-readable offline contract reuses the existing renderer and
 previously evaluated structured-document route limitation.
+
+
+### CPI source-evidence census reconciliation
+
+Reuse the existing context-census June2017 reference qualification and
+fiscal_cpi_benchmark policy. Current generic CPI v1 products deliberately retain
+source-only base annotations; historical bytes and pins remain unchanged.
+The remaining work is a reproducible metadata/source provenance join, not another
+fiscal benchmark. Use independently retained exact body/WARC pins for the official
+June2026 release, version159/current DataInfo+ HTML/JSON and Stats NZ copyright
+page, plus the existing original CPI CSV. Compare edition identifiers and literal
+source fields without treating SDK IsPublished as a rights or access decision.
+Retain both raw snapshots when a metadata identifier differs.
+
+```mermaid
+flowchart LR
+  B[Immutable CSV and response-bound metadata] --> V[Offline evidence verification]
+  P[Existing census and fiscal CPI policy] --> V
+  V --> C[Period and definition census evidence]
+  V --> R[Observed rights policy with explicit scope limits]
+  C --> S[Current census reconciliation]
+  R --> S
+```
+
+Derive the expected quarter-label grid independently of observed values; report
+missing labels separately from publisher NA slots and never fill values or infer
+continuous numeric coverage. Preserve exact URLs, edition, units, definitions,
+qualifiers, field coordinates and provenance. Store source payloads/WARCs outside
+Git; repository evidence contains only metadata and digests. Rights-policy
+observations do not automatically approve redistribution of every related host
+or resource. No new source admission, joined measure, publication or schedule is
+implied. Add only meaningful success, changed-pin/link/binding and period-gap
+contracts; replay from retained Bronze and preserve the80% coverage floor.
