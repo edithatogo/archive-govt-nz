@@ -2889,3 +2889,17 @@ retains launch ownership; this topic is frozen for a combined native-then-full
 handoff. No PR, broader phase closure, source admission, rights reassessment,
 federation link, publication or new metadata CLI/MCP claim is made. The broader
 track remains in progress. See the updated checkpoint for exact log/script hashes.
+
+
+## Native proof assertion correction — 2026-10-17
+
+Conductor-owned assurance1 terminated with native exit1; the full harness did
+not start. On frozen02174648, retained v3/v4 Git-reference byte parity passed.
+The source-reference pointer checks passed, then the external proof incorrectly
+expected five total HTTPS locators. The actual verified Gold manifest contains
+five input projection and five plot-report locators, and the metadata correctly
+retains all ten field references. Preserve the first run/log and correct only
+the external proof: require ten total, two exact five-member groups, and both
+locator sets equal the independently pinned operation binding locators. No
+production values, source references, tests or gates are changed. Attempt2 uses
+a fresh clean-room output and new logs/markers; native/full remain pending.

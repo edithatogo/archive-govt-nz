@@ -24,8 +24,18 @@
     }
   },
   "metadata_version": "archive-govt-nz.health-gold-metadata/v5",
-  "native_proof_script_sha256": "9101dc608a4fdfe36168b7a9bdcb0ad0cdf5391572b1b99dfcc14e29743cd1cd",
-  "native_status": "prepared_not_launched",
+  "native_attempt_1": {
+    "all_source_reference_pointers": "matched_literal_manifest_fields_before_failure",
+    "classification": "proof_assertion_scope",
+    "exit_code": 1,
+    "failed_contract": "expected five total locator references; actual Gold manifest has five input and five plot references",
+    "full_harness": "not_started",
+    "head": "021746487a49f59f263f4e2f430841208f03243d",
+    "legacy_v3_v4_byte_parity": "passed_before_failure",
+    "log_sha256": "5d79e009b6427d44ec487b408179d47fe5ad5f3c2958876bc602548de258b32b"
+  },
+  "native_proof_script_sha256": "b0e0e8a39b0812af4761e0df57f505a3bfa88bd3635ef53c8bdaaa6906fabd4f",
+  "native_status": "attempt_1_failed_proof_assertion; corrected attempt_2 prepared_not_launched",
   "publication": "not_performed",
   "remaining": [
     "historical v3/v4 byte parity on retained native inputs",
