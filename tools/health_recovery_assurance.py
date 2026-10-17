@@ -239,6 +239,26 @@ GDP_JUNE_SOURCE_LOCATOR = (
     "gross-domestic-product-june-2026-quarter-current-price-income-and-expenditure.xlsx"
 )
 GDP_JUNE_OBSERVED_AT = "2026-09-29T21:28:10.739074Z"
+# Independent four-file pins from clean-room-recovery-20261002-context-gdp-june.json
+# (receipt SHA d37c7904...). Do not replace these with new operation manifests.
+GDP_JUNE_NATIVE_FILES = {
+    "MANIFEST.json": {
+        "bytes": 1081,
+        "sha256": "f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd",
+    },
+    "cell_dispositions.parquet": {
+        "bytes": 37848,
+        "sha256": "22143c282b9e28cbfcae41c9531f1b37b710b6a5a5d5fbcf9fa6112e196b9dd9",
+    },
+    "field_lineage.parquet": {
+        "bytes": 17815,
+        "sha256": "ad698d41f4709b633df875d256c419107ebe044fd325b5afdc74f56e3113e6dc",
+    },
+    "gdp_facts.parquet": {
+        "bytes": 29409,
+        "sha256": "ab95deb1701876f285b567da245bdabd842559c7ea9c64ebd2aca2740373d35a",
+    },
+}
 GDP_JUNE_FACT_COUNT = 61
 DONOR_ROW_COUNT = 312
 GDP_JUNE_CAPTURE_SCOPE = (
@@ -458,29 +478,32 @@ def rebuild_gdp_june_silver(root: Path, index: int) -> dict[str, Any]:
         / binding["source_object_sha256"]
     )
     output = root / f"gdp-june-{index}"
-    receipt = operate_source(
-        SourceRequest(
-            source=source,
-            output_dir=output,
-            profile="gdp-expenditure-actual-2026q2/v1",
-            expected_sha256=binding["source_object_sha256"],
-            source_vintage=binding["source_vintage"],
-            source_locator=binding["source_locator"],
-            observed_at=binding["observed_at"],
-        ),
+    # This historical canonical cohort requires the unchanged native manifest;
+    # common operation evidence is separately qualified and never substituted.
+    receipt = gdp.normalize_gdp(
+        source,
+        output,
+        expected_sha256=binding["source_object_sha256"],
+        source_vintage=binding["source_vintage"],
+        source_locator=binding["source_locator"],
+        observed_at=binding["observed_at"],
         dry_run=False,
     )
     require_evidence(
-        receipt.get("status") == "written_local"
+        receipt.get("status") == "passed"
         and receipt.get("counts")
         == {
             "facts": GDP_JUNE_FACT_COUNT,
             "lineage": GDP_JUNE_FACT_COUNT * 15,
             "dispositions": 2323,
         },
-        "gdp_june_source_operation_failed",
+        "gdp_june_native_extraction_failed",
     )
-    return {"receipt": receipt, "files": tree(output)}
+    files = tree(output)
+    require_evidence(
+        files == GDP_JUNE_NATIVE_FILES, "gdp_june_native_file_pins_mismatch"
+    )
+    return {"receipt": receipt, "files": files}
 
 
 def gdp_june_recovery_report(

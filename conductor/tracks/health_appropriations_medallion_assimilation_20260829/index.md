@@ -436,3 +436,5 @@ they are not current-state assertions.
 - [Forecast operational dispatch delivered and pruned](./forecast-operational-dispatch-delivery-20261017.json).
 
 - [Context operation CPI literal/version boundary](./context-operation-cpi-vintage-20261017.json).
+
+- [Five-profile context operational dispatch checkpoint](./context-operational-dispatch-20261017.json).

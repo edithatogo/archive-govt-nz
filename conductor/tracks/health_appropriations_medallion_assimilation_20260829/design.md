@@ -892,3 +892,9 @@ flowchart LR
   M --> V[Independent pin and source-derived readback]
   T --> V
 ```
+
+Historical June GDP recovery retains its native schema and independent four-file
+pins through the unchanged native API; a new operation manifest cannot replace
+that canonical-reader cohort. Qualify the whole outer recovery report against
+retained evidence. Adoption of common-operation packages by downstream canonical
+consumers remains a distinct integration task; historical pins are never relaxed.

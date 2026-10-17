@@ -466,9 +466,27 @@ def test_extended_dispatch_preserves_source_specific_package(
     result = source_operations.operate_source(request, dry_run=False)
     assert result["status"] == "written_local"
     assert result["counts"] == raw["counts"]
-    assert {p.name: p.read_bytes() for p in destination.iterdir()} == {
-        p.name: p.read_bytes() for p in direct.iterdir()
-    }
+    if family == "pharmac":
+        assert {p.name: p.read_bytes() for p in destination.iterdir()} == {
+            p.name: p.read_bytes() for p in direct.iterdir()
+        }
+    else:
+        assert {p.name: p.read_bytes() for p in destination.glob("*.parquet")} == {
+            p.name: p.read_bytes() for p in direct.glob("*.parquet")
+        }
+        manifest = json.loads((destination / "MANIFEST.json").read_text())
+        assert (
+            manifest["schema_version"] == "archive-govt-nz.health-context-operation/v1"
+        )
+        assert manifest["native_extraction_schema_version"] == raw["schema_version"]
+        for key, value in raw.items():
+            if key != "schema_version":
+                assert manifest[key] == value
+        assert manifest["adapter_selection"]["status"] == "selected"
+        assert (
+            len(manifest["common_output"]["records"])
+            == cast("dict[str, int]", raw["counts"])["facts"]
+        )
     assert source.read_bytes() == before
 
 

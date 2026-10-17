@@ -1794,3 +1794,26 @@ explicit native compatibility projection rather than silent parity replacement.
 For GDP June, retain the legacy common parser token and actual June fact/native
 transformation separately; vintage/61-quarter controls establish source scope,
 not the parser label. No source capture or semantic/rights approval is inferred.
+
+
+## Five-profile context operational dispatch — 2026-10-17
+
+The five reviewed context profiles now consume actual common records and field
+lineage, retaining every original record, lineage, loss, unresolved dimension
+and link in a versioned operation manifest. Population's legacy two-field/raw-year
+projection is explicit; full three-field common status/rules remain in evidence.
+GDP June retains both actual June transformation and legacy common parser token.
+QES preflight and public compact receipts remain compatible. Native APIs and
+canonical-reader pins are unchanged. Historical June recovery uses the unchanged
+native API and independently recorded four-file pins, never a replacement common
+manifest. Exact observation timestamp literals are retained when registering
+adapters: equivalent timestamp spelling must not silently change observation IDs.
+
+Focused operations/recovery/context-adapter checks:577 passed/10 skipped in49.82s.
+Initial timestamp mismatch and two old manifest-equality contracts were diagnosed
+without changing source values; native three-table fixture parity passes. Tests
+cover full evidence retention, independent readback, tampering, interruption,
+symlink ancestors, source/vintage/observation bindings and repeat stability.
+Actual retained-source/native recovery proof, full harness and hosted delivery
+are pending. No broad track gate, rights, denominator, currency or join is closed.
+See [implementation checkpoint](./context-operational-dispatch-20261017.json).

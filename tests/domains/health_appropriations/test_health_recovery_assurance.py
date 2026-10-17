@@ -1266,3 +1266,53 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
         "remaining_source_native_silver_profiles_and_canonical_adapters"
         in result["required_but_not_rebuilt"]
     )
+
+
+def test_historical_gdp_rebuild_requires_native_receipt_and_independent_files(
+    tmp_path: Path,
+    monkeypatch: MonkeyPatch,
+) -> None:
+    """A new common manifest must never replace the pinned historical package."""
+    binding = {
+        "source_object_sha256": "a" * 64,
+        "source_locator": "https://example.test/gdp",
+        "source_vintage": MODULE.gdp.JUNE_VINTAGE,
+        "observed_at": "2026-10-17T00:00:00Z",
+    }
+    monkeypatch.setattr(MODULE, "gdp_june_source_binding", lambda: binding)
+    monkeypatch.setattr(MODULE, "ARCHIVE", tmp_path)
+    expected_files = {
+        "MANIFEST.json": {
+            "bytes": 6,
+            "sha256": MODULE.hashlib.sha256(b"native").hexdigest(),
+        }
+    }
+    monkeypatch.setattr(MODULE, "GDP_JUNE_NATIVE_FILES", expected_files)
+
+    def native(source: Path, output: Path, **kwargs: object) -> dict[str, object]:
+        assert source == tmp_path / "bronze-cas" / "sha256" / "aa" / ("a" * 64)
+        assert kwargs == {
+            "expected_sha256": binding["source_object_sha256"],
+            "source_locator": binding["source_locator"],
+            "source_vintage": binding["source_vintage"],
+            "observed_at": binding["observed_at"],
+            "dry_run": False,
+        }
+        output.mkdir()
+        (output / "MANIFEST.json").write_bytes(b"native")
+        return {
+            "status": "passed",
+            "counts": {"facts": 61, "lineage": 915, "dispositions": 2323},
+        }
+
+    def forbidden(*_args: object, **_kwargs: object) -> None:
+        pytest.fail("historical native rebuild routed through new common operation")
+
+    monkeypatch.setattr(MODULE.gdp, "normalize_gdp", native)
+    monkeypatch.setattr(MODULE, "operate_source", forbidden)
+    result = MODULE.rebuild_gdp_june_silver(tmp_path, 1)
+    assert result["files"] == expected_files
+    assert result["receipt"]["status"] == "passed"
+    monkeypatch.setattr(MODULE, "GDP_JUNE_NATIVE_FILES", {})
+    with pytest.raises(RuntimeError, match="gdp_june_native_file_pins_mismatch"):
+        MODULE.rebuild_gdp_june_silver(tmp_path, 2)
