@@ -1,0 +1,20 @@
+{
+  "expected_rows": 312,
+  "expected_tables": 5,
+  "focused": {
+    "log_sha256": "20e8ced6296e55aa7ae7cd5d3c022d136c08daa6bec75c118c4d7ef534290244",
+    "passed": 44,
+    "seconds": 2.13
+  },
+  "full": "pending",
+  "historical_values": "unchanged",
+  "native": "pending",
+  "publication": "not_performed",
+  "reference_code_sha256": {
+    "reference-reader-02926da7.py": "eebff8b1f9a6bba2fa6637bfefa9f908668a03524a4f6adad0304b163eb0889f",
+    "reference-silver-02926da7.py": "cd4d41849052c80956b23c33449c410206077e3522b7cedf994b8107e2f73266"
+  },
+  "source_sha256": "a2f9973846e1213823b499e4a019d314485110e80e4ee5a8984ebf3f35c85c8e",
+  "status": "focused_qualified_native_full_pending",
+  "track_complete": false
+}

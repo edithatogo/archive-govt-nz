@@ -7307,3 +7307,23 @@ gates;113SBOM components. See supplementary-summary-dispatch-20261018.json for
 full log and native recipe/report pins. This documentation integration follows
 terminal release; affected document gates and hosted delivery remain pending.
 Broader phase/rights/analytical and track completion claims remain open.
+
+
+### 2026-10-18 — Donor SQLite common dispatch implementation
+
+After PR710 merged and its clean topic refs were pruned, the next Phase3 slice
+exposes the pinned donor SQLite source through explicit common dispatch. The
+existing path reader delegates to the same capped-byte, fixity/schema/VM/row-
+bounded query-only in-memory reader. Both standalone and dispatch projection
+reuse the existing Silver record/lineage construction. No donor value, period,
+currency label, historical disposition or rights rule is replaced. The registry
+opts in with explicit observation context and preserves its default four profiles.
+
+Initial missing-module red is retained. Focused25contracts passed; expanded run
+had42passes and one test comparing fresh adapter object identity, corrected to
+compare the registry identity/version/media contract. Final44checks pass2.13s,
+including native fixture equality, repeats, changed-byte fallback, direct fixity,
+size/row guards, registry opt-in and existing Silver/Gold/boundary contracts.
+Lint/strict typing pass after import/type fixes. Actual312-row comparisons against
+pinned pre-change reader and Silver code, native repeats and full harness remain
+pending. See donor-sqlite-dispatch-20261018.json; no PR yet for this slice.

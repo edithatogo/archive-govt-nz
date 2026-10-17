@@ -132,16 +132,15 @@ def _record(
     }
 
 
-def normalize_donor_sqlite(
-    database: Path,
-    output_dir: Path,
+def extract_donor_rows(
+    snapshot: dict[str, tuple[tuple[Any, ...], ...]],
     *,
     source_sha256: str,
     observation_id: str,
     observed_at: str,
     rights_state: str = "repository_code_only",
-) -> dict[str, object]:
-    """Normalize all five donor tables and emit cell-addressable lineage."""
+) -> tuple[list[dict[str, object]], list[dict[str, object]], dict[str, int]]:
+    """Project a reader-validated donor snapshot using the existing parity rules."""
     context = {
         "source_sha256": source_sha256,
         "observation_id": observation_id,
@@ -150,9 +149,6 @@ def normalize_donor_sqlite(
         "observed_at": observed_at,
         "rights_state": rights_state,
     }
-    snapshot = read_rows(
-        database, source_sha256, max_bytes=MAX_BYTES, max_rows=MAX_ROWS
-    )
     records: list[dict[str, object]] = []
     lineage: list[dict[str, object]] = []
     counts: dict[str, int] = {}
@@ -178,6 +174,29 @@ def normalize_donor_sqlite(
                         "rule": "donor_sqlite_identity_or_typed_decimal/v1",
                     }
                 )
+    return records, lineage, counts
+
+
+def normalize_donor_sqlite(
+    database: Path,
+    output_dir: Path,
+    *,
+    source_sha256: str,
+    observation_id: str,
+    observed_at: str,
+    rights_state: str = "repository_code_only",
+) -> dict[str, object]:
+    """Normalize all five donor tables and emit cell-addressable lineage."""
+    snapshot = read_rows(
+        database, source_sha256, max_bytes=MAX_BYTES, max_rows=MAX_ROWS
+    )
+    records, lineage, counts = extract_donor_rows(
+        snapshot,
+        source_sha256=source_sha256,
+        observation_id=observation_id,
+        observed_at=observed_at,
+        rights_state=rights_state,
+    )
     record_table = pa.Table.from_pylist(records, schema=SILVER_SCHEMA)
     lineage_table = pa.Table.from_pylist(lineage, schema=LINEAGE_SCHEMA)
     output_dir.mkdir(parents=True, exist_ok=False)
