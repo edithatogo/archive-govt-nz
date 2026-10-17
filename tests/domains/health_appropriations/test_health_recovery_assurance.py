@@ -664,7 +664,7 @@ def test_source_health_recovery_report_replays_capture_and_census(
         sort_keys=True,
     ).encode()
     source_path = track / "source-census.json"
-    context_path = track / "context-census.json"
+    context_path = track / MODULE.CONTEXT_CENSUS_NAME
     manifest_path = archive / "manifests" / manifest_name
     layout_baseline = {
         "pdf_layouts": [

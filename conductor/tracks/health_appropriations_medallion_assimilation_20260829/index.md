@@ -415,3 +415,5 @@ they are not current-state assertions.
 
 - [Reviewed forecast common adapters](./forecast-common-adapters-20261017.md)
   and [four-API/two-common native proof](./forecast-common-adapters-20261017.json).
+
+- [Forecast evidence rebinding](./forecast-evidence-rebinding-20261017.json), [historical context snapshot](./context-census-pre-forecast-common-20261017.json), and [successor source-measure binding](./source-measure-review-20261017-forecast-binding.json).

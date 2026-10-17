@@ -76,7 +76,9 @@ def test_whole_census_report_has_a_state_for_every_resource_and_series_vintage()
 def test_recorded_capture_receipt_is_preserved_when_manifest_is_unavailable() -> None:
     recorded = json.loads((TRACK / "source-health-report.json").read_bytes())
     census_bytes = (TRACK / "source-census.json").read_bytes()
-    context_bytes = (TRACK / "context-census.json").read_bytes()
+    context_bytes = (
+        TRACK / "context-census-pre-forecast-common-20261017.json"
+    ).read_bytes()
     report = build_report(
         json.loads(census_bytes),
         census_bytes,
@@ -98,7 +100,9 @@ def test_recorded_capture_receipt_is_preserved_when_manifest_is_unavailable() ->
 def test_recorded_layout_states_are_preserved_when_baseline_is_unavailable() -> None:
     recorded = json.loads((TRACK / "source-health-report.json").read_bytes())
     census_bytes = (TRACK / "source-census.json").read_bytes()
-    context_bytes = (TRACK / "context-census.json").read_bytes()
+    context_bytes = (
+        TRACK / "context-census-pre-forecast-common-20261017.json"
+    ).read_bytes()
     report = build_report(
         json.loads(census_bytes),
         census_bytes,
@@ -137,6 +141,31 @@ def test_stale_recorded_layout_states_are_not_carried_to_refreshed_census() -> N
     assert report["capture_reconciliation"]["state"] == (
         "recorded_not_replayed_manifest_unavailable"
     )
+
+
+def test_context_refresh_records_current_pin_without_rewriting_resource_evidence() -> (
+    None
+):
+    recorded = json.loads((TRACK / "source-health-report.json").read_bytes())
+    census_bytes = (TRACK / "source-census.json").read_bytes()
+    context_bytes = (TRACK / "context-census.json").read_bytes()
+    report = build_report(
+        json.loads(census_bytes),
+        census_bytes,
+        json.loads(context_bytes),
+        context_bytes,
+        recorded_report=recorded,
+    )
+    assert (
+        report["inputs"]["context_census_sha256"]
+        == hashlib.sha256(context_bytes).hexdigest()
+    )
+    assert (
+        report["inputs"]["context_census_sha256"]
+        != recorded["inputs"]["context_census_sha256"]
+    )
+    # Capture and PDF layout evidence bind source resources, not context code.
+    assert report["resources"] == recorded["resources"]
 
 
 def test_layout_baseline_object_pin_must_match_current_census() -> None:

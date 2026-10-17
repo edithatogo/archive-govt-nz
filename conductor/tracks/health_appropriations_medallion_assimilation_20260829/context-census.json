@@ -87,7 +87,7 @@
     },
     {
       "path": "src/archive_govt_nz/domains/health_appropriations/forecast.py",
-      "sha256": "83df491b4daca836e519e61250883ebcde89d227a81bce50eae8a60f4fddc6eb"
+      "sha256": "bdb60ff1bf09c2993b453e6310c8ea15f3abcd1567b3584369c394017cef0bce"
     },
     {
       "path": "src/archive_govt_nz/domains/health_appropriations/gdp.py",

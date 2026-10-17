@@ -169,6 +169,8 @@ DONOR_MANIFEST_SHA256 = (
 SOURCE_CENSUS_SHA256 = (
     "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272"
 )
+# Historical release replay consumes its original census, not the current code binding.
+CONTEXT_CENSUS_NAME = "context-census-pre-forecast-common-20261017.json"
 CONTEXT_CENSUS_SHA256 = (
     "579e63a757cae410a26e0f371ae8cb79bf31e10e30c46ccb652789b160199708"
 )
@@ -308,7 +310,7 @@ def compare_product_outputs(first: Path, second: Path, product: str) -> dict[str
 
 def context_source_binding(family: str) -> dict[str, str]:
     """Join a context Silver input to its exact captured census and Bronze pin."""
-    context_bytes = (TRACK / "context-census.json").read_bytes()
+    context_bytes = (TRACK / CONTEXT_CENSUS_NAME).read_bytes()
     require_evidence(
         hashlib.sha256(context_bytes).hexdigest() == CONTEXT_CENSUS_SHA256,
         "context_census_pin_mismatch",
@@ -2338,7 +2340,7 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
 def source_health_recovery_report() -> dict[str, Any]:
     """Rebuild the pinned whole-census health report and verify Bronze capture."""
     source_bytes = (TRACK / "source-census.json").read_bytes()
-    context_bytes = (TRACK / "context-census.json").read_bytes()
+    context_bytes = (TRACK / CONTEXT_CENSUS_NAME).read_bytes()
     manifest_path = ARCHIVE / "manifests" / CAPTURE_MANIFEST_NAME
     manifest_bytes = manifest_path.read_bytes()
     require_evidence(

@@ -2286,3 +2286,26 @@ Conductor read-only review verified source-code hashes and all eight regenerated
 manifest pins without replaying sources. See
 [proof](./forecast-common-adapters-20261017.json). Full final-tree harness and
 PR/hosted assurance remain pending; no phase or operational-adoption closure.
+
+
+## Forecast implementation evidence rebinding — 2026-10-17
+
+The first exact-head full harness at fc332cfa stopped with 7780 passed,
+2 failed, 10 skipped (97.33% coverage): the current context census still pinned
+the previous forecast implementation. Failure evidence was retained before edits.
+Only that implementation evidence hash is refreshed; every series, selector,
+qualification and rights claim is unchanged. The exact previous census is retained
+as `context-census-pre-forecast-common-20261017.json` (579e63a757cae410a26e0f371ae8cb79bf31e10e30c46ccb652789b160199708).
+Historical recovery explicitly reads this snapshot with unchanged product/input
+pins; this is historical replay evidence, not current implementation validation.
+The original dated source-measure review remains unchanged; its successor
+`source-measure-review-20261017-forecast-binding.json` refreshes only the census
+pin. Current source-health builder defaults remain current. Tests which preserve
+recorded report receipts explicitly use the historical input; a context refresh regression verifies the current context pin is emitted while
+independently source-bound capture/layout evidence stays valid. A proposed
+context-invalidation assertion failed (127 passed, 1 failed); inspection showed
+that resource evidence correctly binds only the source census, so that assertion
+was corrected without changing the builder. No verifier is
+weakened and no source/product is recaptured or silently replaced. See
+[rebinding receipt](./forecast-evidence-rebinding-20261017.json).
+Focused checks and the full exact-tree rerun are required before PR creation.
