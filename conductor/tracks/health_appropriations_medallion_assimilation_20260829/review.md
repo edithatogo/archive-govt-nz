@@ -2201,3 +2201,13 @@ provenance. Producer readback uses its own in-memory expected result; later
 recovery cannot derive the authority pin from untrusted input. Existing accepted
 outputs/direct APIs and2002 ownership remain untouched. Native proof and full
 exact-head assurance are still pending; no phase completion claimed.
+
+
+Operational native proof completed0 on clean276a8225 under the actual shared
+guard:14 profiles,209 facts,42 reference Parquet files per repeat, two identical
+new manifest sets and70 observed common dispatches with direct normalization
+forbidden. All original/reference files were independently SHA-checked and
+remained unchanged. See [scoped proof](./overview-operational-dispatch-20261017.md)
+and [run inventory with retained manifest pins](./overview-operational-dispatch-20261017.json).
+Focused545 passed/10 skipped, Ruff and typing passed. Full final-tree harness
+is pending. No general recovery-profile or phase-completion claim.

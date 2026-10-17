@@ -404,3 +404,6 @@ they are not current-state assertions.
 - [Retained capture inventory reconciliation](./capture-inventory-20261017.md)
 - [Distinct 2019/20 Supplementary Addition census](./supplementary-addition-2019-20-census-20261017.md)
 - [Latest bounded capture inventory including the Addition](./capture-inventory-20261017-addition.json)
+
+- [Operational reviewed overview dispatch](./overview-operational-dispatch-20261017.md)
+  and [native run inventory/pinned readback proof](./overview-operational-dispatch-20261017.json).
