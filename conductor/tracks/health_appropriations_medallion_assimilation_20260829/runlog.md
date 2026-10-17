@@ -6502,3 +6502,24 @@ receipt, not proof of complete v2 lineage admission; the new path qualifies that
 missing contract without rewriting the historical output.
 See [native proof](./context-operation-canonical-native-20261017.json) and
 [full validation](./context-operation-canonical-validation-20261017.json).
+
+
+## Canonical consumer delivered; operation Gold adoption active — 2026-10-17
+
+PR #703 merged normally as 8410aaa7374f12df732e8683f371dc80375c32e8. Final
+head 37ebb7d7 passed all applicable checks: Ubuntu 9m50s, macOS 8m40s,
+Windows 17m38s, analyze/lint/CodeQL and patch coverage. No review threads remained.
+Fetched main contains head and merge, with identical checked/merged tree
+f37ebf16d04856557c3be0952522321b24d4f3d0. Zero unique changes and clean status
+preceded local/remote/tracking topic pruning; primary retained.
+See [delivery receipt](./context-operation-canonical-delivery-20261017.json).
+
+The combined integration item remains active for source-separated Gold. Reuse
+canonical mappings plus existing coverage/quality/report/plot projections and
+original native Gold APIs. The new route must verify all five independent input
+operation pins, consume admitted canonical facts and actual source statuses,
+retain canonical/direct/common lineage closure, and verify saved products against
+source-regenerated expected content. Add typed local CLI and read-only query
+contracts for this new route, with no default writes, no repairs of partial output
+and no external publication/capture mutation. Rebuild/repeat and tamper evidence
+remain required before full assurance and focused delivery.
