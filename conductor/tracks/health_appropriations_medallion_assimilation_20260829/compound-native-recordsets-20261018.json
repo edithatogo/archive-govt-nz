@@ -19,7 +19,8 @@
     "source": "Conductor review",
     "status": "fixed"
   },
-  "evidence_root": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/evidence/compound-native-workbooks-20261018",
+  "evidence_directory": "compound-native-workbooks-20261018",
+  "evidence_scope": "Health Appropriations archive, evidence directory",
   "expected_facts": 180,
   "expected_forecast_excluded_sheets": 4,
   "expected_lineage": 1784,
@@ -58,7 +59,17 @@
     "status": "passed",
     "tree": "10d584b7ed23ff7bf8476f28146c80af671a1f6d"
   },
-  "hosted": "not_started",
+  "hosted": "first head failed secret scan on public absolute evidence path; portable locator correction pending exact-head assurance",
+  "hosted_failure": {
+    "classification": "public local evidence directory path; not a credential",
+    "detector": "Base64 High Entropy String",
+    "hashed_identity": "bc436395f03ec2376aeb5f12b246e1aec8fc1966",
+    "head": "4e7ef464f2361aae759501e98de24c8c7dfcf5c7",
+    "job": 117525142523,
+    "log_sha256": "646bfce252af574ad06d2a7c0dc08c0c310a1991137d4cc36d00304f82c8198d",
+    "remedy": "portable evidence directory identifier; scanner/exclusion policy unchanged",
+    "stage": "secrets"
+  },
   "legacy_api": "unchanged; focused protocol/dispatch/registry checks passed",
   "mixed_registry": "duplicate IDs rejected and competing physical matches preserved-only",
   "namespace": "source SHA256/profile/fact-schema ID/version/original record ID",
@@ -95,6 +106,12 @@
   "publication": "not_performed",
   "rights": "not_evaluated",
   "row_nullability": "recursive non-nullable checks; allowed nulls retained",
+  "secret_scan_correction": {
+    "log_sha256": "a0b916c2f9045c22f50b4a52f63047728ed6b371dce7559805638b4412ffb1dc",
+    "scanner_and_policy": "unchanged",
+    "status": "passed",
+    "unresolved_count": 0
+  },
   "shared_source_adapters": "implemented_two_sources_four_profiles",
   "single_result_boundary": "original exact registration/output checks retained; compounds refused",
   "status": "native_and_original_full_qualified_hosted_delivery_pending"

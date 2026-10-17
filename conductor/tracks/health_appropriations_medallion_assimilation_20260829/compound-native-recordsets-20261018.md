@@ -172,3 +172,15 @@ Full log SHA-256:
 The owner observed terminal exit 0 and released the kernel guard before these
 evidence-only updates. Hosted exact-head checks and protected merge are separate
 remaining delivery gates. All wider track semantic/rights gaps remain open.
+
+
+The portable evidence locator is
+`evidence/compound-native-workbooks-20261018`, relative to the existing Health
+Appropriations archive root. Machine-specific locations remain in the external
+handoff. The original hosted Ubuntu run flagged the absolute locator added in
+the final documentation update as a Base64-entropy candidate. Exact comparison
+confirmed a local evidence-directory path. The original artifact and failed
+job log remain retained; the portable locator correction leaves source code,
+tests, native/full proof and scanner policy unchanged. The complete original
+secret gate now passes with zero unresolved findings; fresh exact-head hosted
+checks remain required.

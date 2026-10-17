@@ -7605,3 +7605,21 @@ remains above the agreed 80% floor. Native/full receipts and logs are retained
 in the external compound evidence directory; exact hashes are recorded in the
 compound validation artifact. Guard released before these evidence-only edits.
 Hosted PR checks, merge and topic-ref cleanup remain pending.
+
+
+### 2026-10-18 — Hosted scanner finding on evidence locator
+
+PR #715 head 4e7ef464 reached the original Ubuntu secret gate after tests,
+schemas, parity, mutation, hygiene, benchmark, audit and licences passed. One
+Base64-entropy finding matched the exact local evidence directory path added
+in the final evidence-only update. Narrow reproduction retained its filename,
+detector and hashed identity; the candidate is a public local path, not a
+credential. Preserve the failed job log and original evidence artifact, then
+replace the nonportable absolute locator with a portable directory identifier.
+Scanner, exclusions, runtime, production code and tests remain unchanged.
+Fresh scanner and hosted exact-head assurance remain required.
+
+The unchanged complete secret gate passes after the locator correction, with
+zero unresolved findings. Conductor state, schemas and hygiene also pass.
+The final documentation delta is separately scanned before commit; all native
+and original full-run implementation evidence remains applicable.
