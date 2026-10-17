@@ -1,0 +1,72 @@
+{
+  "checked_commit": "e36b6bea90609b3b7ab76f8feb30525a1f6b21c5",
+  "checked_tree": "428ea8fdc46cec028e41eb4c1c5db614ba6be65c",
+  "expected_rows": 312,
+  "expected_tables": 5,
+  "fixture_followup": {
+    "affected_tests_passed": 10,
+    "change": "Close shared test database after transaction commit or rollback",
+    "direct_fixture_importers": [
+      "test_donor_sqlite_adapter.py"
+    ],
+    "lint_format_types": "passed",
+    "log_sha256": "a8bd71ff49f22a6e59f99c50a99b90b3b5f738fe2ffd186bde8bb512122a3ace",
+    "production_changed": false,
+    "seconds": 6.99,
+    "warnings_reported": 0
+  },
+  "focused": {
+    "log_sha256": "20e8ced6296e55aa7ae7cd5d3c022d136c08daa6bec75c118c4d7ef534290244",
+    "passed": 44,
+    "seconds": 2.13
+  },
+  "full": {
+    "all_original_harness_stages_passed": true,
+    "cas_MB_per_second": 415.29,
+    "command": "./scripts/validate.sh",
+    "head": "e36b6bea90609b3b7ab76f8feb30525a1f6b21c5",
+    "log_sha256": "71cd62ff7d9c90ff4fb02b99ed649ee89daa46b993c61c6ca287ba43ab66ad14",
+    "native_report_sha256": "9a105be2565efb4efb5d061a2fd16835415e41c8f7691ab626d30ac8acd28404",
+    "original_stage_timeout_seconds": 900,
+    "parity": "9/9 zero divergences",
+    "pytest_addopts": "-vv",
+    "representative_documents": 56,
+    "rounded_coverage_percent": 97,
+    "runtime": "Python3.14.6/uv0.13.1",
+    "sbom_components": 113,
+    "schemas": 66,
+    "status": "passed",
+    "tests": {
+      "passed": 7926,
+      "seconds": 257.26,
+      "skipped": 12,
+      "warnings": 25
+    },
+    "tree": "428ea8fdc46cec028e41eb4c1c5db614ba6be65c",
+    "warning_note": "25 warnings preserved; test-fixture sqlite closure follow-up planned after terminal; production read_snapshot already closes in finally",
+    "workers": 4
+  },
+  "historical_values": "unchanged",
+  "native": {
+    "facts": 312,
+    "lineage": 1699,
+    "network": "denied",
+    "pre_change_products": "byte_identical",
+    "publication": "not_performed",
+    "recipe_sha256": "ffeca92dba21f962c0ee8157db559cb7e980dea476ac5174d7fdb0855b121957",
+    "repeat_report_sha256": "9a105be2565efb4efb5d061a2fd16835415e41c8f7691ab626d30ac8acd28404",
+    "runs": 2,
+    "source_bytes": "unchanged",
+    "source_objects": 1,
+    "status": "passed",
+    "tables": 5
+  },
+  "publication": "not_performed",
+  "reference_code_sha256": {
+    "reference-reader-02926da7.py": "eebff8b1f9a6bba2fa6637bfefa9f908668a03524a4f6adad0304b163eb0889f",
+    "reference-silver-02926da7.py": "cd4d41849052c80956b23c33449c410206077e3522b7cedf994b8107e2f73266"
+  },
+  "source_sha256": "a2f9973846e1213823b499e4a019d314485110e80e4ee5a8984ebf3f35c85c8e",
+  "status": "native_and_full_qualified_hosted_pending",
+  "track_complete": false
+}

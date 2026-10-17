@@ -60,6 +60,22 @@ def read_rows(
         raise ValueError(message)
     with path.open("rb") as stream:
         payload = stream.read(max_bytes + 1)
+    return read_snapshot(
+        payload, expected_sha256, max_bytes=max_bytes, max_rows=max_rows
+    )
+
+
+def read_snapshot(
+    payload: bytes,
+    expected_sha256: str,
+    *,
+    max_bytes: int = MAX_BYTES,
+    max_rows: int = MAX_ROWS,
+) -> dict[str, tuple[tuple[Any, ...], ...]]:
+    """Inspect the same bounded query-only snapshot directly from Bronze bytes."""
+    if max_bytes < 1 or max_rows < 1:
+        message = "invalid_database_bound"
+        raise ValueError(message)
     if len(payload) > max_bytes:
         message = "database_size_limit"
         raise ValueError(message)

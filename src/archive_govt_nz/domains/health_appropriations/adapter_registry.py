@@ -24,6 +24,9 @@ from archive_govt_nz.domains.health_appropriations.budget_revenue_adapter import
     budget_revenue_registration,
 )
 from archive_govt_nz.domains.health_appropriations.cpi_adapter import cpi_registration
+from archive_govt_nz.domains.health_appropriations.donor_sqlite_adapter import (
+    donor_sqlite_registration,
+)
 from archive_govt_nz.domains.health_appropriations.forecast_adapter import (
     forecast_health_registration,
 )
@@ -42,6 +45,9 @@ from archive_govt_nz.domains.health_appropriations.vote_health_pdf_adapter impor
 if TYPE_CHECKING:
     from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
         AdapterRegistration,
+    )
+    from archive_govt_nz.domains.health_appropriations.donor_sqlite_adapter import (
+        DonorSQLiteContext,
     )
 
 
@@ -70,6 +76,7 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
     vote_health_estimates_2016_17: AdapterContext | None = None,
     vote_health_estimates_overviews: tuple[AdapterContext, ...] = (),
     vote_health_supplementary_summaries: tuple[AdapterContext, ...] = (),
+    donor_sqlite: DonorSQLiteContext | None = None,
 ) -> tuple[AdapterRegistration, ...]:
     """Return deterministic, probe-bound registrations for supplied families.
 
@@ -98,6 +105,9 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
             observed_at=gdp.observed_at,
         ),
     ]
+    registrations.extend(
+        () if donor_sqlite is None else (donor_sqlite_registration(donor_sqlite),)
+    )
     if budget_expenditure is not None:
         registrations.append(
             budget_expenditure_registration(

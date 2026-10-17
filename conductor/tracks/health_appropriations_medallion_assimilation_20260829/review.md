@@ -3439,3 +3439,46 @@ gates;113SBOM components. See supplementary-summary-dispatch-20261018.json for
 full log and native recipe/report pins. This documentation integration follows
 terminal release; affected document gates and hosted delivery remain pending.
 Broader phase/rights/analytical and track completion claims remain open.
+
+
+### 2026-10-18 — Donor SQLite common dispatch implementation
+
+After PR710 merged and its clean topic refs were pruned, the next Phase3 slice
+exposes the pinned donor SQLite source through explicit common dispatch. The
+existing path reader delegates to the same capped-byte, fixity/schema/VM/row-
+bounded query-only in-memory reader. Both standalone and dispatch projection
+reuse the existing Silver record/lineage construction. No donor value, period,
+currency label, historical disposition or rights rule is replaced. The registry
+opts in with explicit observation context and preserves its default four profiles.
+
+Initial missing-module red is retained. Focused25contracts passed; expanded run
+had42passes and one test comparing fresh adapter object identity, corrected to
+compare the registry identity/version/media contract. Final44checks pass2.13s,
+including native fixture equality, repeats, changed-byte fallback, direct fixity,
+size/row guards, registry opt-in and existing Silver/Gold/boundary contracts.
+Lint/strict typing pass after import/type fixes. Actual312-row comparisons against
+pinned pre-change reader and Silver code, native repeats and full harness remain
+pending. See donor-sqlite-dispatch-20261018.json; no PR yet for this slice.
+
+
+### 2026-10-18 — Donor SQLite native/full assurance and fixture follow-up
+
+Native1 passes two network-denied runs on clean e36b6bea/tree428ea8fd: the
+pinned49,152-byte donor source remains unchanged; both native files match the
+independently pinned pre-change reader/normalizer bytes;312facts,1699lineage,
+five tables and retained donor values agree. Repeat report9a105be2565efb4efb5d061a2fd16835415e41c8f7691ab626d30ac8acd28404.
+
+Full original ./scripts/validate.sh passes on that exact frozen commit:
+7926tests/12skips/25warnings257.26s,97.23% against80% floor,66schemas/56docs,
+parity9/9 zero divergences, all mutation/hygiene/performance/supply-chain gates,
+113SBOM components. Original25warnings remain preserved; extra database warnings
+were traced to the reused test fixture transaction context, which did not close
+its connection. Production read_snapshot already closes in finally.
+
+After terminal release, the shared fixture gained closing outside its unchanged
+transaction context, preserving commit/rollback before close. Its only direct
+importer is the new adapter test. Both affected suites pass10tests6.99s without
+warnings; lint/format/strict typing pass. No production/runtime/native input
+changed after full assurance. Evidence closeout and hosted exact-head checks
+remain separate gates; no additional native/full rerun is required for this
+fixture-only correction. See donor-sqlite-dispatch-20261018.json.
