@@ -3627,3 +3627,42 @@ The original full harness passed on0c378f4e/treebfd0ae9e:7951tests,12skips,
 56representative documents,9/9parity and mutation/hygiene/security/supply-chain
 gates passed; CAS232.13MB/s. Hosted checks, normal merge and pruning remain
 pending. Rights, currency, periods and global mappings are unchanged.
+
+
+### 2026-10-18 — Historical adapter review boundary
+
+The native extraction body, schemas and manifest values are unchanged; the path
+wrapper retains context validation and bounded regular-file admission. The new
+closed registration uses exact Fiscal2024 bytes and explicit context. Complete
+cell descriptors include raw JSON and record associations; native lineage
+context fields remain linked through corresponding fact IDs. Other vintages
+and shared Fiscal2025 profiles are outside this registration. Focused contracts
+compare complete native rows and warmed dispatch under Python file-API denial.
+Registry checks compare stable configuration rather than newly bound callable
+identity, respecting existing sorted output. Native/full qualification remains
+pending; the replay discloses dependency initialization before dispatch denial.
+
+
+### 2026-10-18 — Historical code-evidence dependency reconciled
+
+Conductor independently confirmed the full1 failure and the sole drifting
+census dependency, then released the terminated run's freeze for a bounded
+repair. The historical parser refactor changes source code identity while its
+four native output files remain byte-identical. Retain the old census binding;
+the current census changes only historical.py's SHA256 to1af61ede62d2cf29eff896381c186688efadc30811361bd3f9ec21db5eb5638c.
+No validator, regex assertion, source observation, denominator, rights,
+qualification or join policy changes. Existing28affected tests pass; producer
+and tests still match the native-qualified679a03a4 tree. Full2 is required on
+the reconciled metadata head; native1 remains valid without repetition.
+
+
+### 2026-10-18 — Historical full2 review
+
+Conductor independently verified actual full2 exit0, clean780f3040, all original
+check pins and unchanged native-qualified producer/tests/runtime. All32stages
+completed; the census failures are resolved with evidence versioning, preserving
+all series and rights/qualification fields. Native106/1143/1503/six-sheet parity
+and full7954 qualification support this closed Fiscal2024 adapter only. Other
+vintages, whole-worksheet semantics, mappings and rights stay separate. Final
+recording changes documentation only; hosted checks and protected delivery must
+still pass on the resulting PR head.

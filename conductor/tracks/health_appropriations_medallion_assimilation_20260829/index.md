@@ -493,3 +493,5 @@ they are not current-state assertions.
 - [Recovered nine-stage source-area bindings](./donor-stage-area-bindings-20261018.json); native613-fact/12binding report and full local assurance, with all global unit remainders open.
 
 - [Five physical literal source adapters](./literal-common-adapters-20261018.json); seven shared native profiles, complete area qualifiers, two native replays and full harness qualified; hosted delivery pending.
+
+- [Fiscal2024 historical common dispatch](./historical-common-dispatch-20261018.json); focused308, native two-run parity and full7954 passed; historical census binding reconciled; hosted delivery pending.

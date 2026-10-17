@@ -107,7 +107,7 @@
     },
     {
       "path": "src/archive_govt_nz/domains/health_appropriations/historical.py",
-      "sha256": "b751900d903407b5ece2cfbe54a4d19cf5122939ccc7059ed67deb915622f872"
+      "sha256": "1af61ede62d2cf29eff896381c186688efadc30811361bd3f9ec21db5eb5638c"
     },
     {
       "path": "src/archive_govt_nz/domains/health_appropriations/qes.py",

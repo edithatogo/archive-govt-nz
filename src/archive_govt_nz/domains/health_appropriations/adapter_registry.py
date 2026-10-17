@@ -31,6 +31,9 @@ from archive_govt_nz.domains.health_appropriations.forecast_adapter import (
     forecast_health_registration,
 )
 from archive_govt_nz.domains.health_appropriations.gdp_adapter import gdp_registration
+from archive_govt_nz.domains.health_appropriations.historical_source_adapter import (
+    historical_source_registration,
+)
 from archive_govt_nz.domains.health_appropriations.literal_source_adapter import (
     literal_source_registration,
 )
@@ -81,6 +84,7 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
     vote_health_supplementary_summaries: tuple[AdapterContext, ...] = (),
     donor_sqlite: DonorSQLiteContext | None = None,
     literal_workbooks: tuple[AdapterContext, ...] = (),
+    historical_workbook: AdapterContext | None = None,
 ) -> tuple[AdapterRegistration, ...]:
     """Return deterministic, probe-bound registrations for supplied families.
 
@@ -197,6 +201,17 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
                     observed_at=context.observed_at,
                 )
             )
+    registrations.extend(
+        ()
+        if historical_workbook is None
+        else (
+            historical_source_registration(
+                source_locator=historical_workbook.source_locator,
+                source_vintage=historical_workbook.source_vintage,
+                observed_at=historical_workbook.observed_at,
+            ),
+        )
+    )
     if len({row.adapter_id for row in registrations}) != len(registrations):
         message = "duplicate reviewed adapter identity"
         raise ValueError(message)

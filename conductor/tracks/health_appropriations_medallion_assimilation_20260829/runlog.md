@@ -7495,3 +7495,38 @@ The original full harness passed on0c378f4e/treebfd0ae9e:7951tests,12skips,
 56representative documents,9/9parity and mutation/hygiene/security/supply-chain
 gates passed; CAS232.13MB/s. Hosted checks, normal merge and pruning remain
 pending. Rights, currency, periods and global mappings are unchanged.
+
+
+### 2026-10-18 — Historical extraction and common adapter
+
+PR713 delivered and pruned; planning commit5d684c47 records the next source gap.
+The missing-adapter contract failed at import as expected. Initial focused runs
+passed24/307 other checks but exposed two test assumptions about sorted registry
+order and bound-method identity. Those are corrected without producer changes;
+308checks now pass15.53s. Earlier logs remain in the external case directory.
+The native recipe compiles and its isolated JSON encoder round-trips; it has
+not executed. Native two-run proof and original full validation will be handed
+to the serialized owner on the frozen clean implementation head.
+
+
+### 2026-10-18 — Historical native1 passed; full1 census failure repaired
+
+Conductor session81142/PID15530 ran the sole guarded native1/full1 job. Native1
+passed twice and full1 terminated1 at two census evidence tests, with7952other
+tests passed. Original failed output/exit and native proof remain retained.
+After explicit freeze release, preserve the prior census bytes and update its
+single reviewed code-evidence hash. Exact before/after comparison proves all
+series fields and other pins unchanged. Existing28census/adapter checks pass;
+no source, test or runtime edits since679a03a4. Prepare a new clean full2 handoff
+with original harness settings; no repeat of the unchanged native proof.
+
+
+### 2026-10-18 — Historical full2 passed
+
+Conductor session32896/PID24643 ran original full2 once under the shared guard;
+actualexit0 released the freeze. All7954tests passed and all32harness stages
+completed, including supply-chain/SBOM. Preserve full1 failure/native1 proof and
+full2 logs/receipts in permanent historical-common-dispatch-20261018 evidence.
+Record the outcome without another native/full run for this documentation delta;
+next create the focused PR, verify seven named exact-head checks, merge normally,
+verify ancestry/tree/zero-unique/clean state and prune only the topic refs.

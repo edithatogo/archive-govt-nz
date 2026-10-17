@@ -2058,7 +2058,7 @@ integrated parent head.
   reconstruction matches50oldfiles/12stagepins; qualified9stage partialbindings
   cover613facts while all158global units and rights/semantic gates stay open.
 
-- [~] Expose the seven existing literal admissions through five exact-source
+- [x] Expose the seven existing literal admissions through five exact-source
   common adapters. Compose chart/residual profiles sharing physical bytes into
   one closed source bundle, avoiding ambiguous registrations or partial profile
   omission. Share pure bounded admission/projection with existing standalone
@@ -2075,3 +2075,26 @@ integrated parent head.
   all original gates pass on0c378f4e; hosted delivery remains pending. Preserve
   the initial dependency-initialization instrumentation failure and explicit
   verified UTC warmup boundary; no producer, rights or semantic change.
+
+
+  Delivered PR #713 at9b5941e2 after all seven named checks passed on83adddd5,
+  threads resolved and fetched checked/merge ancestry with identical893ca0f3
+  tree. Zero unique commits; clean topic refs pruned; primary retained. Native
+  parity and full7951 evidence remain scoped; no whole-unit/rights approval.
+
+- [~] Expose the retained Fiscal2024 historical Health/GDP workbook through
+  one exact-source common adapter using the existing bounded native parser.
+  Preserve106facts,1143lineage rows,1503complete cell dispositions and six
+  excluded sheets, exact lexical decimals/annotations/periods and standalone
+  output bytes. Add pure snapshot extraction shared by the path writer; keep
+  unknown bytes preserved-only and context explicit. This source is physically
+  distinct from the Fiscal2025 Crown bundle; do not create competing handlers
+  or infer currency, fiscal joins, cross-basis comparability or rights. Verify
+  fixtures and two actual historical-pin replays before full/hosted delivery.
+  [M-05, M-07, M-10, M-18; AC-03, AC-05, AC-08, AC-16]
+
+
+  Native two-run parity passes106facts/1143lineage/1503cells/six excluded
+  sheets and all four historical files exactly. Original full2 passes7954tests
+  and all32gates on780f3040 after preserving/reconciling the one current census
+  code pin. Failed full1 remains retained; hosted delivery remains pending.
