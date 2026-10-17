@@ -7541,3 +7541,15 @@ schemas and strict v1 consumers. Retain that recommendation and independent
 code/native pins in the external compound case. All16existing files for four
 profiles verify against the committed oracle. Record API/design boundaries
 before implementation; no native/full run has started for this increment.
+
+
+### 2026-10-18 — Compound carrier and closure contracts
+
+The missing-carrier import failed as expected. Native contracts/validator now
+preserve separate Arrow schemas, nested metadata, differing decimal scales and
+allowed nulls; recursively reject nulls in non-nullable fields. Profile/table/
+schema identities, local fact/lineage/disposition closure, atomic held admission
+and bounded carrier shape are explicit. Sixteen focused carrier cases and
+existing v1 protocol/dispatch/registry/census checks pass79tests1.64s. Ruff,
+format and strict typing pass. Source dispatch integration and both workbook
+compositions remain pending; no native/full run has started.

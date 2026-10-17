@@ -1,0 +1,25 @@
+{
+  "dispatch_extension": "pending",
+  "expected_facts": 180,
+  "expected_forecast_excluded_sheets": 4,
+  "expected_lineage": 1784,
+  "expected_profile_dispositions": 4833,
+  "focused_carrier": {
+    "log_sha256": "6431f1ca6c1d5a59a71563a6e2e74cd168614eae562be7dd799ab2e435c586ed",
+    "passed": 79,
+    "seconds": 1.64
+  },
+  "full": "not_started",
+  "legacy_api": "unchanged; focused protocol/dispatch/registry checks passed",
+  "namespace": "source SHA256/profile/fact-schema ID/version/original record ID",
+  "native": "not_started",
+  "native_files_per_run": 16,
+  "native_profiles": 4,
+  "native_schema_metadata": "exact equality with independently declared expected schemas",
+  "physical_sources": 2,
+  "publication": "not_performed",
+  "rights": "not_evaluated",
+  "row_nullability": "recursive non-nullable checks; allowed nulls retained",
+  "shared_source_adapters": "pending",
+  "status": "carrier_qualified_dispatch_sources_pending"
+}
