@@ -6139,3 +6139,16 @@ object-container accesses; explicit typed casts preserve the runtime assertions.
 Full strict basedpyright then passed with zero errors/warnings, and Ruff passed.
 No coverage-only tests, dependency change or budget adjustment. Native4-profile
 legacy/versioned receipt parity and two-successor common parity are pending.
+
+
+Forecast native verification completed0 under the shared guard at clean
+cb48363b:four unchanged legacy/versioned API profiles,40 native facts,16 files
+per repeat, including byte-identical original manifests; two common successors,
+20 facts and120 lineage entries with exact non-normalized cell/sheet losses.
+Direct filesystem normalization was forbidden during common extraction.
+Original observation tokens are pinned by legacyPLAN/source census, preserving
+identity spellings. All originals/references remain unchanged. Independent
+Conductor read-only review verified source-code hashes and all eight regenerated
+manifest pins without replaying sources. See
+[proof](./forecast-common-adapters-20261017.json). Full final-tree harness and
+PR/hosted assurance remain pending; no phase or operational-adoption closure.

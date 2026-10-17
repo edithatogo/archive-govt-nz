@@ -412,3 +412,6 @@ they are not current-state assertions.
 
 - [Bounded donor-area partial metadata mappings](./donor-area-partial-mappings-20261017.json);
   not whole-sheet completeness or output verification. Phase4issue #210 remains open.
+
+- [Reviewed forecast common adapters](./forecast-common-adapters-20261017.md)
+  and [four-API/two-common native proof](./forecast-common-adapters-20261017.json).
