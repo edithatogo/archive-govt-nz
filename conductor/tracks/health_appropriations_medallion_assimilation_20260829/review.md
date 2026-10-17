@@ -2188,3 +2188,16 @@ Current-head full assurance, hosted checks and actual thread resolution pending.
 - Reuse the production builder/schema; 24 actual inputs, two byte-identical
   builds and the new schema fixture supply metadata verification without
   adding coverage-only tests. Full frozen-tree validation and PR delivery pending.
+
+
+## 17 October2026 — operational overview bridge (in progress)
+
+Self-review requires actual DispatchResult use, three native Parquet byte parity,
+original losses retained and explicit compatibility projection. New verifier
+requires an externally supplied manifestSHA, checks a closed manifest and exact
+regenerated expected selection/context/losses, and checks all three files against
+both manifest hashes and regenerated canonical table hashes before returning
+provenance. Producer readback uses its own in-memory expected result; later
+recovery cannot derive the authority pin from untrusted input. Existing accepted
+outputs/direct APIs and2002 ownership remain untouched. Native proof and full
+exact-head assurance are still pending; no phase completion claimed.

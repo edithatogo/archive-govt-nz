@@ -370,6 +370,28 @@ _PROFILES = MappingProxyType(
 )
 
 
+def reviewed_overview_profile(source_vintage: str) -> ReviewedOverviewProfile:
+    """Return exact operational controls without changing legacy registration."""
+    if source_vintage == vote_health_estimates_summary.VINTAGE_2016_17:
+        return ReviewedOverviewProfile(
+            adapter_id="nz-treasury-vote-health-estimates-2016-17-overview",
+            profile=vote_health_estimates_summary.PROFILE_2016_17,
+            transformation=vote_health_estimates_summary.TRANSFORMATION_2016_17,
+            vintage=vote_health_estimates_summary.VINTAGE_2016_17,
+            source_sha256=vote_health_estimates_summary.SOURCE_SHA256_2016_17,
+            page_count=vote_health_estimates_summary.PAGE_COUNT_2016_17,
+            fact_count=24,
+            parse_pages=vote_health_estimates_summary.parse_overview_2016_17_pages,
+            quality_flags=("source_reported_in_whole_millions",),
+            disposition_reason="twenty_four_selected_2016_17_overview_statements_only",
+        )
+    profile = _PROFILES.get(source_vintage)
+    if profile is None:
+        message = "unsupported reviewed overview vintage"
+        raise ValueError(message)
+    return profile
+
+
 def vote_health_estimates_overview_registration(
     *, source_locator: str, source_vintage: str, observed_at: str
 ) -> AdapterRegistration:

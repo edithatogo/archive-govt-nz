@@ -1785,7 +1785,7 @@ integrated parent head.
   before protected merge. [M-02, M-04; AC-04, AC-16]
 
 
-- [~] Integrate the separately captured 2019/20 Supplementary Addition as a
+- [x] Integrate the separately captured 2019/20 Supplementary Addition as a
   distinct publication form in the bounded observation-preserving inventory.
   Reuse its exact request/capture/CAS/WARC verification, preserve original
   snapshots and the ordinary Supplementary edition, and reconcile publication
@@ -1793,3 +1793,13 @@ integrated parent head.
   Do not normalize amounts, infer currency or claim whole-corpus completeness.
   Prove repeat-build stability and run required assurance before focused PR
   delivery. [M-02, M-03, M-04, M-06, M-11; AC-02, AC-04, AC-09, AC-16]
+
+
+- [~] Route the fourteen reviewed 2004/05-2017/18 main overview source
+  operations through actual common dispatch output. Preserve the three native
+  Parquet tables, original common losses and explicit compatibility projection;
+  persist selection in a versioned closed extraction manifest and qualify
+  externally pinned readback/recovery. Keep compact source-operation/v1 and
+  existing direct APIs/2002 composite ownership unchanged. Prove native parity,
+  repeat-build and interruption/tamper boundaries before full assurance and PR.
+  [M-04, M-05, M-07, M-10; AC-03, AC-05, AC-12, AC-16]

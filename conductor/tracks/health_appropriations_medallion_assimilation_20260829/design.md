@@ -761,3 +761,33 @@ original request hash and URL identity, never a fabricated post-capture census.
 Legacy request-context gaps remain explicit. Projection, native CAS verification,
 WARC replay, rights qualification and analytical admission are separate claims.
 See [the bounded inventory evidence](./capture-inventory-20261017.md).
+
+
+## Reviewed overview operations and pinned readback
+
+Fourteen existing main overview profiles use their common Bronze registrations
+and actual DispatchResult records/lineage/losses. A source-specific bridge
+projects those records into the existing three Parquet schemas, preserving
+stable IDs, values and table bytes. Original losses and AdapterSelection remain
+in a closed versioned extraction manifest; compatibility projection explicitly
+records preserved_only to preserved_unreviewed and the legacy2016 reason.
+
+```mermaid
+flowchart LR
+  B[Hash-pinned Bronze snapshot] --> D[Common explicit dispatch]
+  D --> P[Canonical compatibility projection]
+  P --> W[Exclusive three-table writer]
+  D --> M[Versioned manifest with selection and original losses]
+  W --> M
+  M --> R[Scoped run receipt retains manifest SHA]
+  R --> V[Readback requires external pin and trusted source context]
+  V --> C[Verify source selection and exact file hashes before consumption]
+```
+
+The compact source-operation/v1 receipt stays closed and still reports only
+three Parquet hashes. It does not authenticate embedded selection. Later
+readback requires the manifestSHA retained by the scoped run/recovery receipt;
+it cannot derive its own authority from the manifest under inspection. Partial,
+extra, symlink, tampered, wrong-context and unknown-version outputs fail closed.
+Existing direct APIs and2002 composite ownership remain unchanged; no new
+rights, numerical admission or external publication behavior is introduced.
