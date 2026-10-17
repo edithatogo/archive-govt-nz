@@ -1,0 +1,26 @@
+{
+  "tested_head": "521681914f2504eaa2f131fbb223aefe5975c511",
+  "exit": 0,
+  "log_sha256": "9f25ebc8ddb8ffbcffc62b9bd8d6c881fdd73e08b45c57d7867f539d3898ea05",
+  "tests": {
+    "passed": 7783,
+    "skipped": 10,
+    "warnings": 23,
+    "seconds": 345.64,
+    "coverage_percent": 97.38,
+    "coverage_floor_percent": 80
+  },
+  "schemas": 62,
+  "representative_documents": 52,
+  "differential_parity": "9/9 passed, 0 divergences",
+  "typing": "0 errors, 0 warnings",
+  "mutation_gates": "all passed",
+  "hygiene": "passed",
+  "dependency_audit": "no known vulnerabilities",
+  "licenses": "passed",
+  "secrets": "passed",
+  "sbom_components": 113,
+  "external_cdx_validation": "skipped by existing configuration",
+  "native_proof": "forecast-common-adapters-20261017.json",
+  "documentation_closeout_policy": "Subsequent changes limited to documentation pointers and truthful result bookkeeping; affected checks run; hosted checks qualify final PR head."
+}

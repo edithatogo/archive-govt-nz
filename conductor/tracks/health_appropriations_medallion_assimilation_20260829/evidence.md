@@ -1599,3 +1599,23 @@ was corrected without changing the builder. No verifier is
 weakened and no source/product is recaptured or silently replaced. See
 [rebinding receipt](./forecast-evidence-rebinding-20261017.json).
 Focused checks and the full exact-tree rerun are required before PR creation.
+
+
+## Forecast common adapter local assurance complete — 2026-10-17
+
+Full `./scripts/validate.sh` completed0 at clean frozen
+521681914f2504eaa2f131fbb223aefe5975c511: 7783 passed, 10 skipped,
+23 warnings in345.64s, 97.38% coverage (unchanged80% floor); typing0,
+62 schemas/52 representative documents, differential parity9/9, all mutation,
+hygiene, audit, licence, secret and SBOM gates passed (113 components).
+External CDX validation remains skipped by existing configuration. The exact
+[tested-head/log receipt](./forecast-common-adapters-validation-20261017.json)
+distinguishes the local tested tree from this documentation-only closeout.
+The current review link now selects the successor implementation binding;
+historical review and census remain preserved. No production code, tests,
+runtime, schemas or pinned validation inputs change after the full run.
+Affected Conductor/hygiene/whitespace checks qualify this closeout; required
+hosted checks must qualify the final PR head before protected merge/prune.
+The four-API native proof is unchanged; Conductor independently reviewed the
+rebinding and source-specific report compatibility. Operational adoption and
+all broader source/donor/rights/phase gates remain open.
