@@ -1803,3 +1803,11 @@ integrated parent head.
   existing direct APIs/2002 composite ownership unchanged. Prove native parity,
   repeat-build and interruption/tamper boundaries before full assurance and PR.
   [M-04, M-05, M-07, M-10; AC-03, AC-05, AC-12, AC-16]
+
+
+- [~] Fix PR #699 symlink-parent preflight/readback policy mismatch. Reject
+  symlinked output ancestors before parsing or writing; preserve readback
+  checks. Establish a failing real-directory-symlink regression proving no
+  target files are left behind, then repeat focused/native/exact-head assurance
+  and resolve the actual review thread before protected merge.
+  [M-04, M-10; AC-12, AC-16]

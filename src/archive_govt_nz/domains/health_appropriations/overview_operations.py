@@ -287,8 +287,12 @@ def _receipt(
     }
 
 
-def _snapshot(path: Path, pin: str, limit: int) -> bytes:
+def _safe_path(path: Path) -> None:
     _require(not any(part.is_symlink() for part in (path, *path.parents)))
+
+
+def _snapshot(path: Path, pin: str, limit: int) -> bytes:
+    _safe_path(path)
     return verified_snapshot(path, pin, max_bytes=limit)
 
 
@@ -350,6 +354,7 @@ def normalize_overview(  # noqa: PLR0913 - source identity is explicit
     dry_run: bool = True,
 ) -> dict[str, Any]:
     """Write actual common output; originals/existing output are never changed."""
+    _safe_path(output_dir)
     _require(
         type(dry_run) is bool
         and not output_dir.exists()

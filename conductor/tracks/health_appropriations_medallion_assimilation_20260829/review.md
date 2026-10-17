@@ -2211,3 +2211,14 @@ remained unchanged. See [scoped proof](./overview-operational-dispatch-20261017.
 and [run inventory with retained manifest pins](./overview-operational-dispatch-20261017.json).
 Focused545 passed/10 skipped, Ruff and typing passed. Full final-tree harness
 is pending. No general recovery-profile or phase-completion claim.
+
+
+PR #699 review finding `PRRT_kwDOTo2MOM6tb4vU` is valid: output under a
+symlinked ancestor passed the leaf-only writer preflight, then readback rejected
+the ancestor after four files were created. The real directory-symlink test
+failed as expected (target/output left behind;1 failed in8.96s), preserving
+external `red-review-1.log`. Writer and readback now share the same explicit
+ancestor-symlink refusal before parsing/writing. No path resolution, generic
+writer-policy weakening or adversarial filesystem-race guarantee introduced.
+Earlier full/native passes remain historical evidence; coherent-head repeat
+validation and thread resolution are pending.

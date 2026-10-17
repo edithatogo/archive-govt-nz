@@ -244,3 +244,19 @@ def test_interrupted_write_is_not_reusable_or_overwritten(
     with pytest.raises(ValueError, match="invalid_overview_operation"):
         _run(request)
     assert (request.output_dir / "field_lineage.parquet").read_bytes() == b"partial"
+
+
+def test_symlinked_output_parent_is_rejected_before_any_write(
+    fixture_request: source_operations.SourceRequest, tmp_path: Path
+) -> None:
+    target = tmp_path / "target"
+    target.mkdir()
+    alias = tmp_path / "alias"
+    try:
+        alias.symlink_to(target, target_is_directory=True)
+    except OSError as error:
+        pytest.skip(f"directory symlinks unavailable: {error}")
+    request = replace(fixture_request, output_dir=alias / "output")
+    with pytest.raises(ValueError, match="invalid_overview_operation"):
+        _run(request)
+    assert list(target.iterdir()) == []
