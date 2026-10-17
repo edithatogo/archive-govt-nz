@@ -2379,3 +2379,25 @@ native reference files remain unchanged. No capture, currency/rights change,
 historical repair or phase-completion claim. See
 [native proof](./forecast-operational-dispatch-native-20261017.json).
 Required full repository assurance and hosted delivery remain pending.
+
+
+## Forecast operation full local assurance — 2026-10-17
+
+Full `./scripts/validate.sh` completed0 at frozen clean
+fafe203816793fc1ea7567081556f608c04b1f1b:7800passed/10skipped/23warnings
+in454.49s,97.39% coverage against unchanged80% floor; typing0,
+62schemas/52documents,9/9parity, all mutation/hygiene/audit/licence/secret/SBOM
+gates passed (113components). External CDX validation remains intentionally
+skipped by existing configuration. See the exact
+[tested-head receipt](./forecast-operational-dispatch-validation-20261017.json).
+The prior full run is retained as failed:7795passed/5 subprocess30s timeouts.
+All16 affected module/Gold diagnostic cases passed serially in62.40s; the
+fresh full2 passed without code/test/runtime/deadline changes. This proves
+non-reproduction, not a host-cause conclusion. Unrelated CPU contention was
+independently observed. No FOI implementation changes or relaxed assertions.
+Conductor independently checked native verifier/code hashes and all four new
+manifest pins without source replay; no blocking finding. This closeout changes
+only result documentation/index pointers, not source, tests, schemas or pinned
+inputs. Affected documentation checks follow; required hosted checks must
+qualify the final PR head before normal merge and clean topic pruning. No broader
+phase, donor-area, currency/rights or source-census completion is claimed.

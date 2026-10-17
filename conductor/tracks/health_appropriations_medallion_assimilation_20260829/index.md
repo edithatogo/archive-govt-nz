@@ -424,3 +424,5 @@ they are not current-state assertions.
 - [Forecast operational dispatch checkpoint](./forecast-operational-dispatch-20261017.json).
 
 - [Forecast operation native repeat/readback proof](./forecast-operational-dispatch-native-20261017.json).
+
+- [Forecast operation full validation and timeout recovery evidence](./forecast-operational-dispatch-validation-20261017.json).
