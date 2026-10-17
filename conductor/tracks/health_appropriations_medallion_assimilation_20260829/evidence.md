@@ -2917,3 +2917,15 @@ The original full harness passed on0c378f4e/treebfd0ae9e:7951tests,12skips,
 56representative documents,9/9parity and mutation/hygiene/security/supply-chain
 gates passed; CAS232.13MB/s. Hosted checks, normal merge and pruning remain
 pending. Rights, currency, periods and global mappings are unchanged.
+
+
+### 2026-10-18 — Fiscal2024 historical common dispatch
+
+The closed source769f2e7d now shares byte extraction with the original historical
+path writer. Preserve native XML numeric lexemes, typed facts, field lineage,
+all cell disposition fields and six excluded-sheet reasons; no new semantic or
+rights claims. Three new contract checks plus existing affected suites pass308
+checks15.53s. The exact106fact/1143lineage/1503cell/six-sheet native replay and
+required full harness are pending. The prepared proof compares all four old
+native hashes and two report builds, and tests unambiguous coexistence with the
+five literal bundles. See historical-common-dispatch-20261018.json.

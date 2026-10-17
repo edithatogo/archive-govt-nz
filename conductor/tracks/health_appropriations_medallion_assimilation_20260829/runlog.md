@@ -7495,3 +7495,15 @@ The original full harness passed on0c378f4e/treebfd0ae9e:7951tests,12skips,
 56representative documents,9/9parity and mutation/hygiene/security/supply-chain
 gates passed; CAS232.13MB/s. Hosted checks, normal merge and pruning remain
 pending. Rights, currency, periods and global mappings are unchanged.
+
+
+### 2026-10-18 — Historical extraction and common adapter
+
+PR713 delivered and pruned; planning commit5d684c47 records the next source gap.
+The missing-adapter contract failed at import as expected. Initial focused runs
+passed24/307 other checks but exposed two test assumptions about sorted registry
+order and bound-method identity. Those are corrected without producer changes;
+308checks now pass15.53s. Earlier logs remain in the external case directory.
+The native recipe compiles and its isolated JSON encoder round-trips; it has
+not executed. Native two-run proof and original full validation will be handed
+to the serialized owner on the frozen clean implementation head.

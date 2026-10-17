@@ -3627,3 +3627,17 @@ The original full harness passed on0c378f4e/treebfd0ae9e:7951tests,12skips,
 56representative documents,9/9parity and mutation/hygiene/security/supply-chain
 gates passed; CAS232.13MB/s. Hosted checks, normal merge and pruning remain
 pending. Rights, currency, periods and global mappings are unchanged.
+
+
+### 2026-10-18 — Historical adapter review boundary
+
+The native extraction body, schemas and manifest values are unchanged; the path
+wrapper retains context validation and bounded regular-file admission. The new
+closed registration uses exact Fiscal2024 bytes and explicit context. Complete
+cell descriptors include raw JSON and record associations; native lineage
+context fields remain linked through corresponding fact IDs. Other vintages
+and shared Fiscal2025 profiles are outside this registration. Focused contracts
+compare complete native rows and warmed dispatch under Python file-API denial.
+Registry checks compare stable configuration rather than newly bound callable
+identity, respecting existing sorted output. Native/full qualification remains
+pending; the replay discloses dependency initialization before dispatch denial.

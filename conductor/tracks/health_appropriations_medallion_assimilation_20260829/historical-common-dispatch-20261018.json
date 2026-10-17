@@ -1,0 +1,29 @@
+{
+  "cell_transport": "historical-cell-json/v1 complete native disposition row",
+  "expected_cell_dispositions": 1503,
+  "expected_excluded_sheets": 6,
+  "expected_facts": 106,
+  "expected_lineage": 1143,
+  "expected_losses": 1509,
+  "focused": {
+    "log_sha256": "092beb018fdfab573ecada456e50e910418c1fd4b7253acf4a61eca9eb99d0ad",
+    "passed": 308,
+    "seconds": 15.53
+  },
+  "full": "pending",
+  "global_worksheet_semantics": "unchanged_unresolved",
+  "lineage_context": "native source hash, locator and lineage ID retained on corresponding facts",
+  "native": "pending",
+  "native_files_per_run": 4,
+  "observed_at": "2026-08-30T08:58:00+00:00",
+  "publication": "not_performed",
+  "recipe_sha256": "0301428bcdad18dc6955a9bbc3209b109b2cd1e5a01537225d09d5661a5eed72",
+  "reference_code_sha256": "b751900d903407b5ece2cfbe54a4d19cf5122939ccc7059ed67deb915622f872",
+  "reference_map_sha256": "07cbec1a7ab12b358f4f04ecbff9610fcc7a66bd2e9c763685d45e06163c63b8",
+  "rights_state": "not_evaluated",
+  "sheet_transport": "historical-sheet-json/v1 source hash plus native excluded-sheet row",
+  "source_locator": "data/raw/fiscaltimeseries1972-2024.xlsx",
+  "source_sha256": "769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d",
+  "source_vintage": "fiscal-2024",
+  "status": "focused_qualified_native_full_pending"
+}
