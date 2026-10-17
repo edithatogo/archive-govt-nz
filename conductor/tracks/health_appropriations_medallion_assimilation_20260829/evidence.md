@@ -1653,3 +1653,19 @@ basedpyright0 errors/warnings. All three previously qualified native parser,
 adapter and registry source files remain unchanged. Native proof, full harness,
 review resolution and hosted delivery remain pending; see
 [checkpoint](./forecast-operational-dispatch-20261017.json).
+
+
+## Forecast operational native verification — 2026-10-17
+
+At frozen clean6a15374d2c2bbcdf1a3d42044459d2d983a5f45b, the shared kernel
+validation guard ran two actual retained successor sources through source
+operations and independent pinned readback, with the direct filesystem normalizer
+forbidden. Both preflights wrote nothing; two writes/readbacks per profile
+produced20facts/120lineage rows and8files per repeat. Every generated Parquet
+hash matches the independent retained native manifest; all new operation
+manifests and tables are byte-identical across repeats. Original observation
+spellings are bound to the retained source census. Source bytes/stat and all
+native reference files remain unchanged. No capture, currency/rights change,
+historical repair or phase-completion claim. See
+[native proof](./forecast-operational-dispatch-native-20261017.json).
+Required full repository assurance and hosted delivery remain pending.

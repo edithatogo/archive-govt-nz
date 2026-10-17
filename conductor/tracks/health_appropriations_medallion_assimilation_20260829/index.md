@@ -422,3 +422,5 @@ they are not current-state assertions.
 - [Forecast common adapter full local validation](./forecast-common-adapters-validation-20261017.json).
 
 - [Forecast operational dispatch checkpoint](./forecast-operational-dispatch-20261017.json).
+
+- [Forecast operation native repeat/readback proof](./forecast-operational-dispatch-native-20261017.json).

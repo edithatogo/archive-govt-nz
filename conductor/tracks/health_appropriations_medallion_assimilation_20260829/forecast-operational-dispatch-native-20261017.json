@@ -1,0 +1,77 @@
+{
+  "scope": "two reviewed forecast source operations only; native originals unchanged",
+  "observed_at": "2026-10-17T03:57:35.605953+00:00",
+  "head": "6a15374d2c2bbcdf1a3d42044459d2d983a5f45b",
+  "rows": [
+    {
+      "profile": "befu-2026/v1",
+      "source_sha256": "313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1",
+      "source_bytes": 193830,
+      "reference_manifest_sha256": "83bd8c0d661383712ade0e7ec1c14bb7cbdba9c93a83df74abbfc64a4586afea",
+      "source_census_sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272",
+      "source_id": "befu_2026-003",
+      "original_observation_token": "2026-08-29T09:00:17Z",
+      "counts": {
+        "context": 22,
+        "inventoried_cells": 2375,
+        "normalized": 10,
+        "preserved_only": 2343,
+        "rejected": 0
+      },
+      "field_lineage_rows": 60,
+      "common_loss_rows": 2366,
+      "repeat_file_sha256": {
+        "MANIFEST.json": "ebafa87da00953ed59357bfc8f06ceec546a87c63fd6f7699a3e401bd0b32659",
+        "cell_dispositions.parquet": "947366215373c1a42c3073ebc059a62f758c8a5d95537cbafc756a7bb963484c",
+        "field_lineage.parquet": "c82edf32e930fc991dfce9cefb7dbfdae484ace3be5956ed1800fe3a1e690671",
+        "forecast_facts.parquet": "d48f94bbd67cd8fd3418fbab9c5ea815c145a228c6e1e35124dba6449c2b8b17"
+      },
+      "source_and_native_reference_unchanged": true,
+      "filesystem_normalizer_forbidden": true,
+      "independently_pinned_readback": true,
+      "actual_dispatches_observed": 5
+    },
+    {
+      "profile": "hyefu-2025/v1",
+      "source_sha256": "f9f9190a69ce0a7c53b89d690d50170e2a6a457e6821afeb93edc08cef4b9c7d",
+      "source_bytes": 191581,
+      "reference_manifest_sha256": "5ef89741ad695efd078ba7b7dca2a059948c5bc12069fb434c695ad9293083b5",
+      "source_census_sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272",
+      "source_id": "hyefu_2025-006",
+      "original_observation_token": "2026-08-29T09:00:17Z",
+      "counts": {
+        "context": 22,
+        "inventoried_cells": 2346,
+        "normalized": 10,
+        "preserved_only": 2314,
+        "rejected": 0
+      },
+      "field_lineage_rows": 60,
+      "common_loss_rows": 2337,
+      "repeat_file_sha256": {
+        "MANIFEST.json": "0290e9bb3c69ab9159a2d0372194e45033dc3155f889f7a407eed3fe25c1c5ab",
+        "cell_dispositions.parquet": "d8f10aa5c2a522603918cfe3270ec2965afd9ae54afa1a4bb06b9fcd7ddd01b1",
+        "field_lineage.parquet": "13537eb7ae1d046677737803cd5541d271567828374d25e565fccc8e0ab18751",
+        "forecast_facts.parquet": "747332611ebe24fb8fe11d25602a309d91b7cb886f9c01933744608676d22e1e"
+      },
+      "source_and_native_reference_unchanged": true,
+      "filesystem_normalizer_forbidden": true,
+      "independently_pinned_readback": true,
+      "actual_dispatches_observed": 5
+    }
+  ],
+  "repeat_stable": true,
+  "profiles": 2,
+  "facts": 20,
+  "lineage_rows": 120,
+  "files_per_repeat": 8,
+  "new_capture": false,
+  "rights_or_analytical_admission_changed": false,
+  "phase_complete": false,
+  "implementation_sha256": {
+    "src/archive_govt_nz/domains/health_appropriations/forecast_operations.py": "628a2e6e9b5932b263a23c7c67cc7ebe2a4a7c837ce9a840d6e7a92e113ce15c",
+    "src/archive_govt_nz/domains/health_appropriations/source_operations.py": "0da6388dd0da4fe0d70851d12f9a84ed6c7ce5f46f0b73766c6dbd26bea18f13",
+    "src/archive_govt_nz/domains/health_appropriations/forecast.py": "bdb60ff1bf09c2993b453e6310c8ea15f3abcd1567b3584369c394017cef0bce",
+    "src/archive_govt_nz/domains/health_appropriations/forecast_adapter.py": "a46471c4964bf67ce91a444b5d0c3154dcbbe08b0bb3460f341864d5d8647518"
+  }
+}
