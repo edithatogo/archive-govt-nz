@@ -1207,3 +1207,12 @@ The binding reader also binds supplied donor metadata to the verified canonical
 PLAN digest and exact donor snapshot pin. Only Crown source_context may retain
 the evidenced cell@number_format annotation; its base cell remains inventory-
 bounded, and it is never interpreted as an amount coordinate.
+
+
+Literal common dispatch must select physical source bundles, not competing
+area-specific registrations for identical bytes. Five closed source identities
+cover the seven reviewed profiles; both BEFU chart/residual and HYEFU allowance/
+residual are composed without changing their native record identities. Share
+pure snapshot admission and literal projection with standalone persistence.
+Keep profile-qualified area dispositions and formula exclusions recoverable;
+never promote a source-scoped remainder into whole-workbook semantic approval.

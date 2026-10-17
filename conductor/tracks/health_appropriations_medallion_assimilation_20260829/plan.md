@@ -2041,7 +2041,7 @@ integrated parent head.
   tree. Zero unique commits; clean topic refs pruned; primary retained. Native
   312/1699 equivalence, full7926 and fixture-close affected10tests remain scoped.
 
-- [~] Reconstruct the retained donor12stage evidence through the existing pinned
+- [x] Reconstruct the retained donor12stage evidence through the existing pinned
   replay recipe into two new exclusive permanent runs. Pin donor/candidate/Crown
   metadata and preserve all original Bronze bytes; verify739facts/50files,
   compare historical hashes honestly and recover exact per-stage receipts where
@@ -2049,3 +2049,21 @@ integrated parent head.
   qualify only supported area bindings, with no global152worksheet semantic
   closure, historical value replacement or rights/publication change. [M-07,
   M-10, M-16, M-18, M-19; AC-05, AC-08, AC-12, AC-16]
+
+
+  Delivered PR #712 at93c154cf after seven named hosted checks passed on3c77f691,
+  all review threads resolved and fetched checked/merge commits share1a2564f6
+  tree. Zero unique changes; clean topic refs pruned; primary retained. Exact
+  reconstruction matches50oldfiles/12stagepins; qualified9stage partialbindings
+  cover613facts while all158global units and rights/semantic gates stay open.
+
+- [~] Expose the seven existing literal admissions through five exact-source
+  common adapters. Compose chart/residual profiles sharing physical bytes into
+  one closed source bundle, avoiding ambiguous registrations or partial profile
+  omission. Share pure bounded admission/projection with existing standalone
+  packages; preserve all329facts,5543lineage rows,606area dispositions, native
+  output bytes and Crown observation context. Retain profile-scoped excluded
+  formulas and whole-sheet remainders, unknown-source fallback, deterministic
+  selection and provenance. No source acquisition, currency/period/rights or
+  analytical mapping change. [M-05, M-07, M-10, M-18; AC-03, AC-05, AC-08,
+  AC-16]
