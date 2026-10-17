@@ -8,6 +8,7 @@ from pathlib import Path
 
 from archive_govt_nz.domains.health_appropriations.source_health_report import (
     CaptureEvidence,
+    CPIEvidence,
     LayoutEvidence,
     build_report,
     render_markdown,
@@ -28,6 +29,8 @@ def main() -> int:
     parser.add_argument("--capture-manifest", type=Path)
     parser.add_argument("--bronze-cas-root", type=Path)
     parser.add_argument("--pdf-layout-baseline", type=Path)
+    parser.add_argument("--cpi-cas-root", type=Path)
+    parser.add_argument("--cpi-warc-root", type=Path)
     parser.add_argument(
         "--recorded-report",
         type=Path,
@@ -43,6 +46,19 @@ def main() -> int:
         "--markdown-output", type=Path, default=TRACK / "source-health-report.md"
     )
     args = parser.parse_args()
+    cpi_evidence = None
+    if args.cpi_cas_root is not None or args.cpi_warc_root is not None:
+        if args.cpi_cas_root is None or args.cpi_warc_root is None:
+            parser.error("--cpi-cas-root and --cpi-warc-root are required together")
+        if (
+            args.json_output.resolve()
+            == (TRACK / "source-health-report.json").resolve()
+            or args.markdown_output.resolve()
+            == (TRACK / "source-health-report.md").resolve()
+            or args.json_output.resolve() == args.markdown_output.resolve()
+        ):
+            parser.error("CPI v2 requires distinct new JSON and Markdown output paths")
+        cpi_evidence = CPIEvidence(args.cpi_cas_root, args.cpi_warc_root)
     source_bytes = args.source_census.read_bytes()
     context_bytes = args.context_census.read_bytes()
     capture_evidence = None
@@ -61,7 +77,11 @@ def main() -> int:
         if args.pdf_layout_baseline is not None
         else None
     )
-    recorded_path = args.recorded_report or args.json_output
+    recorded_path = args.recorded_report or (
+        TRACK / "source-health-report.json"
+        if cpi_evidence is not None
+        else args.json_output
+    )
     if args.recorded_report is None and not recorded_path.exists():
         recorded_path = TRACK / "source-health-report.json"
     report = build_report(
@@ -70,18 +90,32 @@ def main() -> int:
         json.loads(context_bytes),
         context_bytes,
         capture_evidence,
+        cpi_evidence=cpi_evidence,
         layout_evidence=LayoutEvidence(json.loads(layout_bytes), layout_bytes)
         if layout_bytes is not None
         else None,
         recorded_report=json.loads(recorded_path.read_bytes()),
     )
+    json_output = (
+        json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
+    )
+    markdown_output = render_markdown(report)
+    if cpi_evidence is not None:
+        for path, content in (
+            (args.json_output, json_output),
+            (args.markdown_output, markdown_output),
+        ):
+            if path.is_symlink() or (
+                path.exists() and path.read_bytes() != content.encode("utf-8")
+            ):
+                parser.error("CPI v2 refuses to replace an existing different output")
     args.json_output.parent.mkdir(parents=True, exist_ok=True)
     args.markdown_output.parent.mkdir(parents=True, exist_ok=True)
     args.json_output.write_text(
-        json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
+        json_output,
         encoding="utf-8",
     )
-    args.markdown_output.write_text(render_markdown(report), encoding="utf-8")
+    args.markdown_output.write_text(markdown_output, encoding="utf-8")
     print(
         json.dumps(
             {

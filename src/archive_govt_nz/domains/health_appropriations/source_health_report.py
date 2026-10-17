@@ -37,6 +37,14 @@ class CaptureEvidence:
 
 
 @dataclass(frozen=True)
+class CPIEvidence:
+    """Local roots for the independently pinned CPI source-evidence profile."""
+
+    cas_root: Path
+    warc_root: Path
+
+
+@dataclass(frozen=True)
 class LayoutEvidence:
     """Pinned structural PDF report and its original serialized bytes."""
 
@@ -345,9 +353,10 @@ def build_report(  # noqa: PLR0913 - pinned source inputs are explicit
     *,
     layout_evidence: LayoutEvidence | None = None,
     recorded_report: dict[str, Any] | None = None,
+    cpi_evidence: CPIEvidence | None = None,
 ) -> dict[str, Any]:
     """Build explicit source and context-vintage states without inferring gaps."""
-    return _build_report(
+    report = _build_report(
         census,
         census_bytes,
         context,
@@ -355,6 +364,15 @@ def build_report(  # noqa: PLR0913 - pinned source inputs are explicit
         (capture_evidence, layout_evidence),
         recorded_report,
     )
+    if cpi_evidence is not None:
+        from archive_govt_nz.domains.health_appropriations.cpi_source_health import (  # noqa: PLC0415 - keep v1 imports lightweight
+            enrich_report,
+        )
+
+        return enrich_report(
+            report, census, census_bytes, context, context_bytes, cpi_evidence
+        )
+    return report
 
 
 def _build_report(  # noqa: C901, PLR0912, PLR0913, PLR0917 - explicit pinned inputs
@@ -607,6 +625,31 @@ def render_markdown(report: dict[str, Any]) -> str:
         + " |"
         for row in report["context_series_vintages"]
     )
+    if report.get("schema_version") == "archive-govt-nz.health-source-health-report/v2":
+        proof = report["cpi_period_evidence"]
+        periods = proof["periods"]
+        lines.extend(
+            [
+                "",
+                "## Verified CPI quarter-label grid",
+                "",
+                f"- Source/vintage: `{proof['source_id']}` / `{proof['vintage']}`",
+                f"- Evidence SHA256: `{proof['source_evidence_sha256']}`",
+                (
+                    f"- Quarter labels: {periods['observed_labels']} "
+                    f"({periods['first']} to {periods['last']}); "
+                    f"absent labels: {len(periods['missing_labels'])}"
+                ),
+                (
+                    f"- Numeric values: {periods['numeric']}; "
+                    f"publisher NA: {periods['publisher_NA']}"
+                ),
+                (
+                    "- Numeric continuity, freshness, rights and analytical admission "
+                    "are not established by label completeness."
+                ),
+            ]
+        )
     lines.extend(["", "## Limits", ""])
     lines.extend(f"- {item}" for item in report["limitations"])
     lines.append("")

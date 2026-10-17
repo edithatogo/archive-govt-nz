@@ -1,0 +1,507 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-source-health-report-v2.schema.json",
+  "title": "Health source-health with fixed CPI quarter-label evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "scope",
+    "inputs",
+    "summary",
+    "capture_reconciliation",
+    "resources",
+    "context_series_vintages",
+    "limitations",
+    "cpi_period_evidence"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-source-health-report/v2"
+    },
+    "scope": {
+      "const": "recorded_census_states_not_a_completeness_or_rights_approval"
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_census_sha256",
+        "source_census_cutoff",
+        "source_census_observed_at",
+        "context_census_sha256",
+        "context_census_base_commit",
+        "capture_manifest_sha256",
+        "pdf_layout_baseline_sha256",
+        "cpi_source_evidence_sha256"
+      ],
+      "properties": {
+        "source_census_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "source_census_cutoff": {
+          "type": "string"
+        },
+        "source_census_observed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "context_census_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "context_census_base_commit": {
+          "type": "string",
+          "minLength": 40,
+          "maxLength": 40
+        },
+        "capture_manifest_sha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "pdf_layout_baseline_sha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "cpi_source_evidence_sha256": {
+          "const": "0716432ebf5bd6460819c2634206d666ff675f43e64340328b1b67969f8f6665"
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resource_count",
+        "resource_dispositions",
+        "context_series_vintage_count",
+        "context_qualification_states",
+        "context_rights_states"
+      ],
+      "properties": {
+        "resource_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "resource_dispositions": {
+          "$ref": "#/$defs/counts"
+        },
+        "context_series_vintage_count": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "context_qualification_states": {
+          "$ref": "#/$defs/counts"
+        },
+        "context_rights_states": {
+          "$ref": "#/$defs/counts"
+        }
+      }
+    },
+    "capture_reconciliation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "manifest_name_recorded"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "recorded_not_replayed_manifest_unavailable",
+            "capture_manifest_and_bronze_objects_verified"
+          ]
+        },
+        "manifest_name_recorded": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "matched_resource_count_recorded": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "matched_resource_count_verified": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bronze_object_count_verified": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bronze_bytes_verified": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "capture_rights_states_recorded": {
+          "$ref": "#/$defs/counts"
+        }
+      }
+    },
+    "resources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/resource"
+      }
+    },
+    "context_series_vintages": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/contextVintage"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "cpi_period_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entity_id",
+        "source_id",
+        "series_id",
+        "vintage",
+        "source_observed_at",
+        "source_evidence_sha256",
+        "captures",
+        "periods",
+        "rights_decision",
+        "analytical_admission",
+        "freshness"
+      ],
+      "properties": {
+        "entity_id": {
+          "const": "cpi-2026q2"
+        },
+        "source_id": {
+          "const": "stats_nz_cpi-053a0705526fac8d"
+        },
+        "series_id": {
+          "const": "CPIQ.SE9A"
+        },
+        "vintage": {
+          "const": "Stats-NZ-CPI-2026-Q2"
+        },
+        "source_observed_at": {
+          "const": "2026-08-29T09:00:17Z"
+        },
+        "source_evidence_sha256": {
+          "const": "0716432ebf5bd6460819c2634206d666ff675f43e64340328b1b67969f8f6665"
+        },
+        "captures": {
+          "const": [
+            {
+              "body_bytes": 53671,
+              "body_sha256": "35d97118d6901af9b88ffe660770d439ba720563dcf55f2e069e313f2a051915",
+              "content_type": "application/json",
+              "observed_at": "2026-10-17T08:32:13.753036+00:00",
+              "role": "metadata_v159_json",
+              "url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/159/json",
+              "warc_bytes": 54286,
+              "warc_sha256": "d09d5778845c7fec717f904f00ded2ec050cbd9896e2a9aa05fceaaf9a91aa5c"
+            },
+            {
+              "body_bytes": 192443,
+              "body_sha256": "b61325cd3911458e7257e5eca3508d059190e33597d4195509fda88e5498fcdd",
+              "content_type": "text/html; charset=utf-8",
+              "observed_at": "2026-10-17T08:33:30.333284+00:00",
+              "role": "metadata_v159_html",
+              "url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/159",
+              "warc_bytes": 193062,
+              "warc_sha256": "149341f6518b5d0debecbabd49ef70bc2f3212779c3eee77530135b1a16696e1"
+            },
+            {
+              "body_bytes": 86497,
+              "body_sha256": "e9607f65bf65c4daaab39e1a16d02f96a58048ff63c97afb0ba62f7643148ab9",
+              "content_type": "text/html; charset=utf-8",
+              "observed_at": "2026-10-17T08:33:30.678997+00:00",
+              "role": "release",
+              "url": "https://www.stats.govt.nz/information-releases/consumers-price-index-june-2026-quarter/",
+              "warc_bytes": 87155,
+              "warc_sha256": "f5ae69b99d95e146e6b09db5b51426bc691e3927abacb30adef8299f83083fe1"
+            },
+            {
+              "body_bytes": 48412,
+              "body_sha256": "3022463f1546f2afb2f25330d24598c3e0a6a51de98b61af750a490594727584",
+              "content_type": "text/html; charset=utf-8",
+              "observed_at": "2026-10-17T11:12:40.518466+00:00",
+              "role": "copyright",
+              "url": "https://www.stats.govt.nz/about-us/copyright/",
+              "warc_bytes": 49028,
+              "warc_sha256": "5fdd90ec959c8cfccb0dded0677e53f00c9a0cea16d9c26008c0cec6eb6beffd"
+            },
+            {
+              "body_bytes": 192443,
+              "body_sha256": "f37de92102e108bb83f6d3d40693947dce8904c64ebd568223d55487cb7ce0c3",
+              "content_type": "text/html; charset=utf-8",
+              "observed_at": "2026-10-17T11:13:49.977652+00:00",
+              "role": "metadata_current_html",
+              "url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/",
+              "warc_bytes": 193059,
+              "warc_sha256": "6914b9d2c9f21cc9608eb8bf53dd92e1a86cb8fc12779f43ddd0dbf3cfb3c623"
+            },
+            {
+              "body_bytes": 53671,
+              "body_sha256": "dcfc421025bc5a4e6416b8ea35760195e466b541e9644ea6a69f9bc569fb028a",
+              "content_type": "application/json",
+              "observed_at": "2026-10-17T11:13:50.540644+00:00",
+              "role": "metadata_current_json",
+              "url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/json",
+              "warc_bytes": 54282,
+              "warc_sha256": "e71d58eab6924ae118f184b109cdbd531dfebc18cd267bdc8420be2cba9a4169"
+            },
+            {
+              "body_bytes": 2917074,
+              "body_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+              "content_type": "application/octet-stream",
+              "observed_at": "2026-10-17T11:36:01.622523+00:00",
+              "role": "csv",
+              "url": "https://www.stats.govt.nz/assets/Uploads/Consumers-price-index/Consumers-price-index-June-2026-quarter/Download-data/consumers-price-index-june-2026-quarter-index-numbers.csv",
+              "warc_bytes": 2917863,
+              "warc_sha256": "0fa0c5715dc208c23b268624bbdb0a258de818466e238d5264d361fcbde61202"
+            }
+          ]
+        },
+        "periods": {
+          "const": {
+            "anchor": {
+              "period": "2017.06",
+              "source_row": 22666,
+              "value_token": "1000"
+            },
+            "first": "1914.06",
+            "fiscal_alignment": "not_selected_by_this_census",
+            "last": "2026.06",
+            "missing_labels": [],
+            "numeric": 422,
+            "numeric_continuity": "not_asserted; publisher_NA_retained",
+            "observed_labels": 449,
+            "period_tokens_sha256": "7e2062e3b17040365bba82970b96539fefb3835d2b352ee4db238b4600b2a009",
+            "publisher_NA": 27,
+            "source_rows_inventoried": 22701
+          }
+        },
+        "rights_decision": {
+          "const": "not_evaluated"
+        },
+        "analytical_admission": {
+          "const": "not_performed"
+        },
+        "freshness": {
+          "const": "not_assessed"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entity_type",
+        "entity_id",
+        "family",
+        "target_vintage_label",
+        "vintage_basis",
+        "inventory_state",
+        "inventory_reason",
+        "object_sha256",
+        "rights",
+        "temporal_coverage_state",
+        "layout_drift_state",
+        "capture_receipt_rights_state"
+      ],
+      "properties": {
+        "entity_type": {
+          "const": "source_resource"
+        },
+        "entity_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_vintage_label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "vintage_basis": {
+          "const": "source_title_verbatim"
+        },
+        "inventory_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inventory_reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "object_sha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "state",
+            "license_label",
+            "policy_uri"
+          ],
+          "properties": {
+            "state": {
+              "type": "string",
+              "minLength": 1
+            },
+            "license_label": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "policy_uri": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "format": "uri"
+            }
+          }
+        },
+        "temporal_coverage_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "layout_drift_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "capture_receipt_rights_state": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "contextVintage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entity_type",
+        "entity_id",
+        "family",
+        "series_id",
+        "target_vintage_label",
+        "vintage_basis",
+        "period_description",
+        "qualification_state",
+        "rights",
+        "known_gaps",
+        "temporal_coverage_state",
+        "layout_drift_state"
+      ],
+      "properties": {
+        "entity_type": {
+          "const": "context_series_vintage"
+        },
+        "entity_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "series_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target_vintage_label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "vintage_basis": {
+          "const": "context_census_verbatim"
+        },
+        "period_description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "qualification_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rights": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "state"
+          ],
+          "properties": {
+            "state": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        "known_gaps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "temporal_coverage_state": {
+          "type": "string",
+          "minLength": 1
+        },
+        "layout_drift_state": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}
