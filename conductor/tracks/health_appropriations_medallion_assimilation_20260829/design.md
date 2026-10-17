@@ -927,3 +927,13 @@ flowchart LR
   C --> R
   C --> G[Source-separated Gold integration]
 ```
+
+QES legacy canonical lineage is a retained historical representation: its six
+mapping fields exist but required common metadata is null, so schema validation
+and Parquet serialization fail. The new operation route retains the legacy table
+digest using canonical JSON plus its serialized Arrow schema, preserves all 90
+mapping tuples, and completes mandatory metadata from uniquely resolved verified
+canonical targets. Stable per-field IDs and an explicit completion transformation
+make this a source-backed disposition. Fully validate both v2 tables. Never change
+the historical reader/output or relax admission to claim byte parity with invalid
+lineage; all other source lineages and all fact values retain full parity.

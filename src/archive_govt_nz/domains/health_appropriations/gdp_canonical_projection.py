@@ -283,6 +283,17 @@ def _canonicalize(
     return fact_table, lineage_table
 
 
+def canonicalize_gdp_tables(
+    facts: pa.Table,
+    source_lineage: pa.Table,
+    *,
+    transformation: str,
+) -> tuple[pa.Table, pa.Table]:
+    """Pure existing GDP mapping; callers verify source and release identity."""
+    _require(transformation in {TRANSFORMATION, JUNE_TRANSFORMATION})
+    return _canonicalize(facts, source_lineage, transformation)
+
+
 def _project_gdp(
     silver_root: Path,
     manifest_sha256: str,

@@ -1864,3 +1864,32 @@ in progress until both are qualified and delivered. Full common evidence stays
 closed by the input operation manifest pin, including status/rules/dimensions
 and links not expressible in the existing canonical row schemas. No rights,
 currency, denominator or join decision is inferred.
+
+
+## Operation-bound canonical context and QES lineage finding — 2026-10-17
+
+A read-only consumer now verifies the actual independent operation pin and exact
+fixed official source identity before using regenerated typed tables and existing
+source-specific canonical transformations. Historical filesystem readers and
+fixed native manifest pins remain unchanged. Complete common evidence is bound
+by its original manifest pin and schema/rows digest; it is not discarded because
+canonical schemas express only a subset of source fields.
+
+Full v2 lineage admission exposed a real historical QES defect: the old reader
+supplies only six mapping fields to a complete schema, leaving required metadata
+null. Its tests validated earnings but only checked lineage schema shape. The
+legacy table also cannot serialize to Parquet. Preserve that representation and
+its exact schema/rows digest, then explicitly complete the NEW path's lineage
+metadata from uniquely resolved verified target facts, with a distinct completion
+transformation. All 90 original mapping tuples remain unchanged; no wage values,
+unknown qualifications, historical outputs, schemas or gates are replaced.
+Conductor confirmed this source-backed approach. Other four profiles retain full
+canonical fact/lineage parity; QES retains fact parity plus exact mapping tuples
+and now passes complete v2 validation.
+
+Focused contracts: 57 passed in 10.40 seconds; targeted typing 0 and Ruff clean.
+Missing-module, full-lineage-validation and invalid-legacy-Parquet failures were
+retained as bounded evidence. Native five-profile proof against pre-refactor
+committed code, repeat/readback qualification, full harness and hosted delivery
+remain pending. Gold operation-package consumption remains open in the combined
+plan item. See [checkpoint](./context-operation-canonical-20261017.json).

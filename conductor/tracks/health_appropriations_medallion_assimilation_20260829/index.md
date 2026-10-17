@@ -442,3 +442,5 @@ they are not current-state assertions.
 - [Context dispatch native repeat/recovery proof](./context-operational-dispatch-native-20261017.json) and [full local validation](./context-operational-dispatch-validation-20261017.json).
 
 - [Context operations delivered and clean topic pruned](./context-operational-dispatch-delivery-20261017.json).
+
+- [Operation-bound canonical context and QES lineage disposition](./context-operation-canonical-20261017.json).
