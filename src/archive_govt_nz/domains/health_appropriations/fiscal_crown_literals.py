@@ -16,6 +16,7 @@ from archive_govt_nz.domains.health_appropriations.historical import (
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
     identity,
     source_context,
+    verified_payload,
     verified_snapshot,
 )
 
@@ -204,6 +205,12 @@ def admit_fiscal_crown(source: Path) -> dict[str, Any]:
     """
     _require(source.is_file() and not source.is_symlink())
     payload = verified_snapshot(source, SOURCE_SHA256, max_bytes=MAX_BYTES)
+    return admit_fiscal_crown_snapshot(payload)
+
+
+def admit_fiscal_crown_snapshot(payload: bytes) -> dict[str, Any]:
+    """Admit the same exact bounded original directly from Bronze bytes."""
+    payload = verified_payload(payload, SOURCE_SHA256, max_bytes=MAX_BYTES)
     inventory = inventory_workbook(BytesIO(payload))
     tokens = _number_tokens(payload)
     context = source_context(SOURCE_SHA256, SOURCE_URL, VINTAGE, "2026-08-29T09:00:17Z")

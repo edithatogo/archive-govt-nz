@@ -1,0 +1,29 @@
+{
+  "area_transport": "literal-area-json/v1 complete native area descriptor plus profile",
+  "expected_area_dispositions": 606,
+  "expected_facts": 329,
+  "expected_lineage": 5543,
+  "focused": {
+    "log_sha256": "6bda836c1141ad8e79a869d10a62e8d6d69c9c5db5af9dd659b0aba6510b1bbe",
+    "passed": 257,
+    "seconds": 8.18
+  },
+  "full": "pending",
+  "global_worksheet_semantics": "unchanged_unresolved",
+  "json_lineage_rule": "literal_source_json_preserved/v1",
+  "logical_profiles": 7,
+  "native": "pending",
+  "physical_bundles": 5,
+  "publication": "not_performed",
+  "reference_code_sha256": {
+    "befu_chart_literals": "a2b4e2df700e72619775f1c6c8ed0de80221986bc3921f1bf65da65f075cf60a",
+    "donor_health_detail": "e20a1fe41d0b973af426b1f65b563fffd0dd43aeeeaf07f6d673c31ebaca7f9f",
+    "fiscal_crown_literals": "85c38273738b776cc269f670c5702b9cdd62700361b5a52fd78cc82bbada7bfc",
+    "health_chart_residual_literals": "7547d714069179c6da13c9a538cab492dd055b701b8097d1bfea91a7f0846230",
+    "hyefu_allowance_literals": "3f6fdc0b38e52384c6fb78d8e8165d793b6d8d09cd9f0a9734f9e16248619c2f",
+    "literal_packages": "2a38388c72c1fcc9346b4d8f2eb7aaa5be4586624ab95b7a8b182a92a8f19712"
+  },
+  "rights_state": "not_evaluated",
+  "status": "focused_qualified_native_full_pending",
+  "track_complete": false
+}

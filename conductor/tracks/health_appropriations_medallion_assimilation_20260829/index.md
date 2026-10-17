@@ -491,3 +491,5 @@ they are not current-state assertions.
 - [Exact donor-stage reconstruction](./donor-area-reconstruction-20261018.json); two new retained runs match all50 historical file pins and12stage receipts. Remaining area bindings stay open.
 
 - [Recovered nine-stage source-area bindings](./donor-stage-area-bindings-20261018.json); native613-fact/12binding report and full local assurance, with all global unit remainders open.
+
+- [Five physical literal source adapters](./literal-common-adapters-20261018.json); seven shared native profiles, complete area qualifiers and focused qualification; native/full delivery pending.

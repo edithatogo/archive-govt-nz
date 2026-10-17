@@ -2869,3 +2869,37 @@ integration. See donor-stage-area-bindings-20261018.json for exact log/recipe/
 report pins and separately scoped reconstruction evidence. Final documentation
 and exact-head hosted checks remain pending; no whole-worksheet/rights/Gold or
 track completion claim is made.
+
+
+### 2026-10-18 — Seven literal profiles through five physical source bundles
+
+After delivered/pruned PR712, the next Phase3 increment closes common-dispatch
+coverage for the existing seven literal admissions. Five exact physical source
+identities compose shared-file BEFUchart/residual and HYEFUallowance/residual
+profiles, rather than registering ambiguous competing handlers. Every reviewed
+sibling is included. The existing source path guards remain; pure capped/hash-
+verified byte admission shares their unchanged parsers. Native persistence and
+common extraction share the same literal projection and Crown capture-context
+binding; no second fact/lineage parser or new source acquisition is introduced.
+
+Known byte identity pins reviewed layout for the fast selector; extraction
+still executes the native guarded admission. Unknown bytes preserve-only and a
+sibling admission failure returns no partial packet. Typed native facts retain
+all original JSON/source tokens. Common field lineage preserves raw_value_json
+on both sides with literal_source_json_preserved/v1, not a new conversion.
+
+Review identified the need to retain area exception lists and record IDs, not
+only the generic loss triple. This adapter's source_coordinate uses the narrow
+literal-area-json/v1 prefix plus canonical JSON of the complete native area row
+and its logical profile. State and reason remain native; every original field
+can be decoded directly, with no global protocol/schema or old output change.
+The focused test compares complete reconstructed rows, including exceptions,
+record associations, source identity and profile, not a reduced projection.
+
+Initial missing-module red is retained; five physical bundle fixtures plus
+inventory checks pass6tests1.45s. Expanded shared admission/packaging/registry/
+workbook/verifier/orchestration checks pass257tests8.18s. Native admission89 and
+package16checks pass independently. Ruff/format/strict typing pass after bounded
+style/type corrections; earlier logs remain. Real329fact/5543lineage/606area
+qualification and exact old/new output comparisons plus full harness remain
+pending before PR. No rights, currency, period or global mapping state changes.
