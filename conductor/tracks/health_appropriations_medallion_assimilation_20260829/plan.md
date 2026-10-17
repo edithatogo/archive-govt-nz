@@ -1961,3 +1961,9 @@ integrated parent head.
   Preserve v3/v4 envelopes, immutable-output refusal, source/Gold/output
   separation, rights and no-publication boundaries. Qualify focused/native/full/
   hosted delivery. [M-14, M-15, M-16, M-18; AC-12, AC-13, AC-14, AC-16]
+
+  Native proof and63-file readback pass on e876eaf3. Full1's900-second timeout
+  and unidentified F remain preserved; full2's7901tests and prior stages passed
+  but a redundant receipt status label blocked the credential scan before SBOM.
+  Label-only correction retains the result/log pins and all scanner rules;
+  affected-stage recovery and hosted delivery remain pending.

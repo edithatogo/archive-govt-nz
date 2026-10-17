@@ -6,13 +6,54 @@
     "AC-16"
   ],
   "base_commit": "28e48f5220a6d73dde28e7127f7d91ff95a1e9f2",
+  "cache_replay": {
+    "deselected": 14,
+    "log_sha256": "6d573a04adb8bf5d15015a1c06bd35e34a46ea71815273352d9dadab815e7b64",
+    "passed": 56,
+    "scope": "not the full suite and not a reproduction of the unidentified F",
+    "seconds": 11.7
+  },
   "focused": {
     "log_sha256": "6469d40c6608de697c9571b4dc0b2b130a0143d91811ea06ab8d3ec756b0b05a",
     "passed": 76,
     "seconds": 387.07,
     "warnings": 2
   },
-  "full": "pending; coordinator launch owner",
+  "full": "pending affected scan recovery and previously unrun SBOM; production/tests/tools/runtime inputs unchanged",
+  "full_attempt_1": {
+    "command_timeout_seconds": 900,
+    "exit_code": 124,
+    "head": "e876eaf3584c6492ce7a5b2c2a226b1ced541dd8",
+    "log_sha256": "e4e5e97674a5f2807176e42b8502435aabb764e110d383d8eb06ceed75369152",
+    "observation": "98percent progress, one F marker, no final traceback or coverage summary; failure identity not recovered",
+    "post_test_stages": "not_run",
+    "stage": "tests",
+    "workers": 2
+  },
+  "full_attempt_2": {
+    "audit_licences": "passed",
+    "cas_megabytes_per_second": 314.14,
+    "command_timeout_seconds": 900,
+    "exit_code": 1,
+    "finding": "SecretKeyword classified literal completion status; no credential identified",
+    "head": "e876eaf3584c6492ce7a5b2c2a226b1ced541dd8",
+    "log_sha256": "bfc7d39f711ed3a285acb05958702f8a67ef72c5b5d4a1768b4287ca0ad937d0",
+    "mutation_hygiene": "passed",
+    "parity": "9/9;zero divergences",
+    "representative_documents": 56,
+    "sbom": "not_run",
+    "schemas": 66,
+    "stopped_at": "secrets",
+    "tests": {
+      "coverage_percent": 97.28,
+      "passed": 7901,
+      "required_coverage_percent": 80,
+      "seconds": 657.25,
+      "skipped": 12,
+      "warnings": 23
+    },
+    "workers": 4
+  },
   "initial_missing_command_failure": {
     "failed": 3,
     "log_sha256": "31561a3a03c2a13cb0a5f373d3accca2513af56f7bdf9a7e08182a63b21178d4",
@@ -28,8 +69,30 @@
     215
   ],
   "legacy_v3_v4": "preserved; existing v3 CLI/MCP runtime and v3/v4 schemas exercised",
-  "native": "pending; coordinator owns prepared actual-source CLI/MCP proof",
+  "native": {
+    "baseline_bytes": "identical",
+    "head": "e876eaf3584c6492ce7a5b2c2a226b1ced541dd8",
+    "independent_files_read": 63,
+    "inputs": "unchanged",
+    "log_sha256": "7bfcd07ce32c144b8cdac892e67fea60cb371bf257bc4207b735525818b071d2",
+    "metadata_manifest_sha256": "9ea87d2cfbb5cd3a03611ca6b09b3aabe5f62e9f143349d1e3b84574fc3e7afb",
+    "network": "denied",
+    "output_files": 9,
+    "recipe_sha256": "146312f4543de4cabb0dd4c2724e49846584297b73c93c0a6c3177aa41166b2a",
+    "status": "passed"
+  },
+  "prior_checkpoint_git_head": "e876eaf3584c6492ce7a5b2c2a226b1ced541dd8",
+  "prior_checkpoint_sha256": "0439bda08f1484ad88276c0e35b79691ac06a63dc19566cf32a1b356d555d87a",
   "publication": "not_performed",
+  "receipt_label_correction": {
+    "corrected_receipt_sha256": "0eecf39784d8f5df621308cf75163a109d3147890854e7bac31c86d19d858797",
+    "new_aggregate_label": "post_test_gates",
+    "original_log_reference_and_result": "preserved",
+    "path": "cpi-source-health-delivery-20261017.json",
+    "prior_receipt_sha256": "1981b47970fe7d88386fcc795da4c795a4dc6c1bca24b3ef33f844125bd75e2a",
+    "scanner_rules_and_baseline": "unchanged",
+    "semantic_change": false
+  },
   "requirements": [
     "M-14",
     "M-15",
@@ -38,7 +101,7 @@
   ],
   "rights": "not_evaluated",
   "ruff_format_lint": "passed",
-  "status": "focused_static_qualified_native_full_hosted_pending",
+  "status": "local_validation_recovery_pending",
   "track_complete": false,
   "typing": "0 errors/0 warnings/0 notes"
 }

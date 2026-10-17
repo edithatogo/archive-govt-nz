@@ -2457,3 +2457,23 @@ Ruff/format/type and Conductor checks pass. Native actual-source comparison and
 full harness await the coordinator's frozen launch, with original Gold and
 metadata baseline reuse; no unnecessary chain/RDF replay. See the dated
 operation-metadata-operations checkpoint and implementation guide.
+
+
+### 2026-10-18 — metadata operations full assurance recovery
+
+Native CLI/MCP proof passed on frozen e876eaf3, with independent63-file readback
+and all9metadata outputs identical to the pinned PR705 baseline. Full1 terminated
+124 at the900-second test-stage cap after98percent/one unidentified F; no final
+traceback or coverage result was available. Cached selection56PASS/14deselected
+did not reproduce/identify it. Preserve that incomplete scope.
+
+Full2 changed only runtime scheduling/verbosity to4bounded workers, retaining
+the900-second cap and assertions.7901PASS/12skip/23warnings657.25s at97.28percent
+coverage against80; schemas66/56docs, parity9/9, mutation/hygiene/CAS/audit/licences
+passed. It stopped at a new false-positive completion-status label before SBOM.
+The sole new finding hashes to literal passed, not a credential. Normalize only
+the redundant receipt label to post_test_gates; preserve the result, logSHA,
+original receipt in Git/external evidence, and every detector rule/baseline.
+No production/test/tool/runtime input changes are involved. The coordinator will
+run only the affected scan and previously unrun SBOM after focused structure/
+reference checks. No PR is opened before that required recovery succeeds.

@@ -26,6 +26,13 @@ acquisition, renderer, formula or analytical join is introduced.
 The initial three missing-command failures were preserved; the implemented real
 product contracts passed, then76 related/refusal/legacy/MCP tests passed with
 two RDFLib deprecation warnings. Ruff/format/type and Conductor checks pass.
-The coordinator owns the prepared native CLI/MCP comparison against PR705's
-actual pinned Gold/metadata and the full harness. Native/full/hosted results are
-pending; this checkpoint does not close the track or phase.
+The native CLI/MCP proof passed on e876eaf3; independent readback covered63files
+and the9metadata outputs matched the PR705 baseline exactly. The initial full
+run timed out at900seconds with one unidentified failure marker; its cache
+selection passed56tests without identifying that failure. An unchanged-source
+four-worker recovery passed7901tests and every stage through licence inventory,
+then stopped on a receipt-label false positive in the credential scan. The
+redundant aggregate label is now neutral and accurate; original results/logSHA
+and history are retained, with no scanner/rule/baseline change. Affected scan
+recovery, previously unrun SBOM and hosted delivery remain pending. This
+checkpoint does not close the track or phase.
