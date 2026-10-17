@@ -1,0 +1,92 @@
+{
+  "analytical_policy": "unchanged",
+  "base_commit": "6b8c2ee0cbcf8efc817ffafd2c86ce13b8b89c0e",
+  "checked_commit": "ad36a7a77b902e9cd9d56e6dfce66bc2092acd87",
+  "checked_tree": "69a6478e7ae985c2700e8b7848b0f2695c6d90ba",
+  "expected_facts": [
+    5,
+    6
+  ],
+  "focused": {
+    "log_sha256": "a573bebec269df63d1e1a2932af839d00c9c79f01d4b9079cc10f52c2f750010",
+    "passed": 41,
+    "seconds": 1.6
+  },
+  "full": {
+    "all_original_harness_stages_passed": true,
+    "cas_mb_per_second": 309.78,
+    "coverage_floor_percent": 80,
+    "coverage_percent": 97.23,
+    "exit_code": 0,
+    "parity_divergences": 0,
+    "parity_passed": 9,
+    "representative_documents": 56,
+    "sbom_components": 113,
+    "schema_count": 66,
+    "session_id": 2080,
+    "status": "passed",
+    "tests_passed": 7922,
+    "tests_seconds": 251.85,
+    "tests_skipped": 12,
+    "validation_log_sha256": "f235f163f70aee0c87488675d5adc349d973ce218ca3430acf25f4399cccbe31",
+    "warnings": 23
+  },
+  "hosted_delivery": "pending",
+  "initial_proof_failure": {
+    "diagnostic": {
+      "dispatched_table_parquet_roundtrip_equals_expected_with_metadata": true,
+      "equals_without_metadata": true,
+      "network": "denied",
+      "only_schema_difference": "quality_flags child name list<item:string> in declared Arrow schema versus list<element:string> read from Parquet",
+      "row_values_equal": true,
+      "source_writes": 0
+    },
+    "exit": 1,
+    "failure": "native proof line83 actual.equals(expected,check_metadata=True)",
+    "head": "ad36a7a77b902e9cd9d56e6dfce66bc2092acd87",
+    "log_sha256": "57d45d33bca383cf3593abc91ba4d2ee79782036d6e7a284630ecaac1418c625",
+    "preceding_evidence": "all four old/new standalone product files byte-identical for 2024_25",
+    "recipe_sha256": "e5624fec053c1065b3eb7a325ed877240fb712dda57f336c334e2c6f31a5e92d",
+    "scope": "first edition only; no complete native proof claim; full harness not started",
+    "status": "failed"
+  },
+  "native": {
+    "facts": 11,
+    "lineage": 33,
+    "log_sha256": "20aa8f18e1ba928ae3977d4ca6595beff1eec26bbb67970070f1a8a64eaeaf43",
+    "network": "denied",
+    "old_new_native_bytes": "identical",
+    "page_dispositions": 60,
+    "publication": "not_performed",
+    "receipt_sha256": "4276073a91e71cc9bfa84d44833b5646f6e99c5118d6c3e4fb3b951be56afd1f",
+    "recipe_sha256": "0311fd752e95567dd8680885677cf7cffcabb8108ace1ed772e3be81c0684d1a",
+    "reference_product_files_per_run": 8,
+    "repeat_report_sha256": "ca84c64c040812f75a422235bda5a137a44f32b4c30fc16262af5be69b081709",
+    "rights": "not_evaluated",
+    "runs": 2,
+    "source_bytes": "unchanged",
+    "source_objects": 2,
+    "status": "passed"
+  },
+  "production_changes_after_full": false,
+  "profiles": [
+    "vote-health-supplementary-2024-25-summary-totals/v1",
+    "vote-health-supplementary-2025-26-summary-totals/v1"
+  ],
+  "publication": "not_performed",
+  "reference_code_sha256": {
+    "2024_25": "9e423f1e4b6e1565d1ca80096a1f6c88981bfe3257b7e0ac093e293829b13e7a",
+    "2025_26": "4e9b2eb0340e7e773abf58a74c68460bd1878122238b4b5810ce3a057984730e"
+  },
+  "rights": "not_evaluated",
+  "selected_pages": [
+    5,
+    6
+  ],
+  "source_pages": [
+    30,
+    30
+  ],
+  "status": "native_and_full_qualified_hosted_pending",
+  "track_complete": false
+}

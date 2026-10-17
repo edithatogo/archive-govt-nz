@@ -14,8 +14,13 @@
     "seconds": 1.17
   },
   "head": "0b50bcb011dac54a2c06f22483d8f7b9084f22c6",
-  "hosted_validation": "pending new exact head",
-  "local_native_scope": "bounded fresh report identity and source/query fixity proof queued with coordinator; native3 remains scoped to its recorded head",
+  "hosted_validation": {
+    "all_seven_checks": "success",
+    "current_open_alerts": 0,
+    "delivery": "component-index-source-delivery-20261018.json",
+    "head": "7ada6fec474ac4a572143adb66a594515e30627b"
+  },
+  "local_native_scope": "native4 confirms exact current report identity; full3 passes on final executable head",
   "local_requirement": "AGENTS and VCS require full harness before opening PR; original PR opened after full2 and doc gates. This same-PR equality clarification uses fresh focused/native/affected gates and exact-head hosted full assurance.",
   "policy": "no suppression or branch-rule change",
   "pr": 709,

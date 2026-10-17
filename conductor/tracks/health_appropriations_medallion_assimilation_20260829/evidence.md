@@ -2661,3 +2661,71 @@ without relaxing the parsed-anchor/ownership requirement or suppressing the rule
 query or report contents change. Earlier native/full receipts retain their exact
 heads; new exact-head CodeQL/platform assurance remains pending. Do not merge or
 prune while any required check is non-terminal or this finding remains active.
+
+
+### 2026-10-18 — component cohort delivered; Supplementary dispatch selected
+
+PR709 merged normally as6b8c2ee0 after seven named gates succeeded on7ada6fec,
+all review threads resolved and current CodeQL alerts empty. Fetched checked and
+merge commits have identical8d5fcaf1 tree and zero unique changes. Topic refs
+pruned; primary checkout and all original/failure evidence retained. Exact-head
+full3/native4 receipts and reportfccc3850 are retained. The tracked current full
+receipt represents its completion flag as a boolean; the original external
+receipt and its SHA remain preserved, without changing a scanner rule/baseline.
+
+Next Phase3 work adds common dispatch for already normalized2024/25 and2025/26
+Supplementary summary profiles (5+6facts,30pages each). Existing overview and
+forecast registrations already cover those independent sources; do not rebuild
+them. Preserve source $000, capital-injection authorisation distinctions and
+literal dashes/nulls. Extract native logic into a shared pure snapshot boundary
+without altering existing standalone product bytes. Source profiles and existing
+schemas stay closed; no new source capture, legal approval or analytical join.
+Conductor remains the native/full launch owner; original source code references
+are retained outside Git for actual old/new comparison.
+
+
+### 2026-10-18 — Supplementary dispatch focused qualification
+
+The initial import check failed because supplementary_summary_adapter did not
+exist (red-1.log retained,0.54s). Each existing normalizer now exposes a pure
+hash/edition/page-guarded extract_snapshot used by both its standalone writer and
+common adapter; no separate parser/fact construction is introduced. Existing
+schemas/IDs/token conversion/quality flags and standalone page-disposition output
+are preserved. The common adapter additionally accounts for all30pages, keeping
+the selected page partially normalized and the other29preserved-only. Registry
+contexts are explicit, source locator/vintage-bound, sorted and duplicate-rejecting.
+
+Initial focused25checks pass1.39s. Expanded normalizer/registry/overview selection
+passes41checks1.60s; record and field-lineage equality against standalone Parquet,
+repeat dispatch, source bytes, dash nulls/capital-injection flags, changed-source
+fallback and invalid contexts are covered. Initial lint/type findings are
+preserved; typed closed profile bindings and test context types fix them without
+assertion suppression. Ruff/format/strict typing pass. Actual retained-source
+old/new byte comparisons, repeat proof and the repository harness remain pending
+with the existing Conductor launch owner. No source capture or rights/policy
+change occurs.
+
+
+### 2026-10-18 — Supplementary dispatch actual-source and full assurance
+
+On clean ad36a7a7/tree69a6478e, native2 passes two network-denied replays
+against both original CAS PDFs and pinned pre-change normalizers. All four
+standalone product files per edition are byte-identical to the baseline; common
+dispatch matches11facts and33field-lineage records, accounts for60pages and
+preserves58unselected pages. Altered source bytes remain preserved-only; source
+originals are unchanged. Repeat report ca84c64c040812f75a422235bda5a137a44f32b4c30fc16262af5be69b081709.
+
+Native1 stopped at metadata-sensitive Arrow-versus-Parquet equality after the
+2024/25 baseline files already matched. Bounded diagnosis established identical
+values and only the Parquet list-child name item-to-element representation
+change. Native2 explicitly compares values and then compares identical Parquet
+representations with metadata sensitivity retained. Original failure, recipe,
+log and partial products are preserved externally; production code is unchanged.
+
+Original ./scripts/validate.sh passes on that exact frozen commit:7922tests,
+12skips,23warnings,251.85s;97.23% coverage against80% floor;66schemas/56documents;
+parity9/9 with zero divergences; all mutation, hygiene, performance and supply-chain
+gates;113SBOM components. See supplementary-summary-dispatch-20261018.json for
+full log and native recipe/report pins. This documentation integration follows
+terminal release; affected document gates and hosted delivery remain pending.
+Broader phase/rights/analytical and track completion claims remain open.

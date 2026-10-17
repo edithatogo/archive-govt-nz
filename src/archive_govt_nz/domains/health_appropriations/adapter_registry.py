@@ -6,6 +6,9 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
 from archive_govt_nz.domains.health_appropriations import (
+    supplementary_summary_adapter as supplementary_adapters,
+)
+from archive_govt_nz.domains.health_appropriations import (
     vote_health_estimates_2002_03_adapter as estimates_2002_03_adapter,
 )
 from archive_govt_nz.domains.health_appropriations import (
@@ -66,6 +69,7 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
     vote_health_estimates_2002_03: AdapterContext | None = None,
     vote_health_estimates_2016_17: AdapterContext | None = None,
     vote_health_estimates_overviews: tuple[AdapterContext, ...] = (),
+    vote_health_supplementary_summaries: tuple[AdapterContext, ...] = (),
 ) -> tuple[AdapterRegistration, ...]:
     """Return deterministic, probe-bound registrations for supplied families.
 
@@ -149,6 +153,14 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
             observed_at=context.observed_at,
         )
         for context in vote_health_estimates_overviews
+    )
+    registrations.extend(
+        supplementary_adapters.supplementary_summary_registration(
+            source_locator=context.source_locator,
+            source_vintage=context.source_vintage,
+            observed_at=context.observed_at,
+        )
+        for context in vote_health_supplementary_summaries
     )
     for profile, context in (
         ("befu-2026/v1", befu_2026),

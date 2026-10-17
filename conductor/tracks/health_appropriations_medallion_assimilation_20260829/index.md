@@ -483,3 +483,7 @@ they are not current-state assertions.
 - [Component-index source contract and guide](./component-index-source-evidence-20261018.md), [report](./component-index-source-evidence-report-20261018.json), [native proof](./component-index-source-native-20261018.json), [initial failure](./component-index-source-native-failure-20261018.json), and [full assurance](./component-index-source-assurance-20261018.json) — source-census qualification passes; rights/admission and hosted delivery remain separate.
 
 - [Component-index corrected full assurance](./component-index-source-assurance-final-20261018.json) and [scan recovery](./component-index-source-scan-recovery-20261018.json) — native3/current report and corrected full2 pass; prior proof/scan evidence retained, no scanner policy changes.
+
+- [Component-index delivery](./component-index-source-delivery-20261018.json), [current full assurance](./component-index-source-current-assurance-20261018.json), and [native comparison](./component-index-source-current-native-20261018.json) — PR709 merged after exact-head checks; original proofs/failures preserved and clean topic refs pruned.
+
+- [Supplementary summary common dispatch checkpoint](./supplementary-summary-dispatch-20261018.json) — two existing source-specific normalizers now expose shared snapshot extraction; focused qualification complete, native/full/hosted pending.

@@ -1,0 +1,23 @@
+{
+  "checked_head": "7ada6fec474ac4a572143adb66a594515e30627b",
+  "checked_head_and_merge_on_fetched_main": true,
+  "checks": "all seven named checks completed SUCCESS",
+  "coverage_floor": 80,
+  "full3_tests_passed": 7917,
+  "full3_tests_skipped": 12,
+  "initial_failures": "preserved; no scanner or branch-rule exceptions",
+  "local_full3_exit": 0,
+  "merge_commit": "6b8c2ee0cbcf8efc817ffafd2c86ce13b8b89c0e",
+  "merged_at": "2026-10-17T17:00:13Z",
+  "normal_protected_merge": true,
+  "original_source_objects": 14,
+  "pr": 709,
+  "primary_worktree": "retained clean on main",
+  "report_sha256": "fccc38505c0983ff60c12371e714f4233e54c84efa7c52b0b04e7d31c62fe8e4",
+  "review_threads": "all resolved",
+  "topic_refs": "local/remote/tracking absent",
+  "track_complete": false,
+  "tree": "8d5fcaf1fd21d77e2a455c90072d87e799363dae",
+  "unique_commits_remaining": 0,
+  "url": "https://github.com/edithatogo/archive-govt-nz/pull/709"
+}

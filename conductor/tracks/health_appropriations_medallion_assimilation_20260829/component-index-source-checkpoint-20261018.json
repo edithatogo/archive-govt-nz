@@ -17,6 +17,9 @@
   },
   "analytical_selection": "not_selected",
   "base_commit": "31ba7ee64b0ee6bef4287191c8dd403be12e00bd",
+  "current_full_assurance": "component-index-source-current-assurance-20261018.json",
+  "current_native_comparison": "component-index-source-current-native-20261018.json",
+  "delivery": "component-index-source-delivery-20261018.json",
   "documentation_scan": {
     "cause": "descriptive summary label matched entropy detector; not a credential",
     "exit_code": 1,
@@ -226,6 +229,6 @@
       "warc_sha256": "dc71e228a1c565482f575cf85918b4d66fb5d9259ce0e84052dde2237481b3a3"
     }
   ],
-  "status": "qualified_source_census_hosted_delivery_pending",
+  "status": "source_cohort_delivered",
   "status_flags": "ShowNonFinalFlags requested; absent flags remain unflagged_unknown, not FINAL"
 }

@@ -1165,3 +1165,17 @@ inferred. Output is deterministic source-census evidence; existing Silver/Gold
 and generic host rights policy remain unchanged. Focused refusal contracts must
 cover source/response mismatch, selection/header/period drift and numeric/gap
 semantics; actual-source offline repeats and the repository harness precede PR.
+
+
+### Common Supplementary summary dispatch
+
+Each existing2024/25 and2025/26 normalizer exposes a pure snapshot extraction
+function shared with its common Bronze adapter. Edition-specific parsers and exact byte,
+locator, vintage and page controls remain authoritative; no generic PDF layout
+heuristic is added. Native fact/lineage construction feeds unchanged standalone
+Parquet outputs and the common AdapterOutput. Registry entries remain explicit,
+sorted and ambiguity-rejecting. Source pages/content outside the reviewed summary
+are loss-accounted without claiming whole-page normalization. Exact source units,
+capital-injection flags and dash nulls remain literal; currency, classification,
+rights and analytical joins are unasserted. Compare old/new standalone products
+and common records/lineage before native/full/hosted delivery.
