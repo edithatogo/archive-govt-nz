@@ -2661,3 +2661,24 @@ without relaxing the parsed-anchor/ownership requirement or suppressing the rule
 query or report contents change. Earlier native/full receipts retain their exact
 heads; new exact-head CodeQL/platform assurance remains pending. Do not merge or
 prune while any required check is non-terminal or this finding remains active.
+
+
+### 2026-10-18 — component cohort delivered; Supplementary dispatch selected
+
+PR709 merged normally as6b8c2ee0 after seven named gates succeeded on7ada6fec,
+all review threads resolved and current CodeQL alerts empty. Fetched checked and
+merge commits have identical8d5fcaf1 tree and zero unique changes. Topic refs
+pruned; primary checkout and all original/failure evidence retained. Exact-head
+full3/native4 receipts and reportfccc3850 are retained. The tracked current full
+receipt represents its completion flag as a boolean; the original external
+receipt and its SHA remain preserved, without changing a scanner rule/baseline.
+
+Next Phase3 work adds common dispatch for already normalized2024/25 and2025/26
+Supplementary summary profiles (5+6facts,30pages each). Existing overview and
+forecast registrations already cover those independent sources; do not rebuild
+them. Preserve source $000, capital-injection authorisation distinctions and
+literal dashes/nulls. Extract native logic into a shared pure snapshot boundary
+without altering existing standalone product bytes. Source profiles and existing
+schemas stay closed; no new source capture, legal approval or analytical join.
+Conductor remains the native/full launch owner; original source code references
+are retained outside Git for actual old/new comparison.

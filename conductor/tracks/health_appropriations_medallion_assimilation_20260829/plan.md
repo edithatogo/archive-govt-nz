@@ -1977,7 +1977,7 @@ integrated parent head.
   reconciled receipt; the historical pending checkpoint is superseded by
   operation-metadata-operations-delivery-20261018.json.
 
-- [~] Qualify exact publisher-generated health component-index exports for the
+- [x] Qualify exact publisher-generated health component-index exports for the
   source census. Retain native TQX separately from numeric CSV, verify actual
   capture response bindings and exact table/dimension/vintage/period identities,
   preserve missing observations and unflagged status, and bind rights observations
@@ -2002,3 +2002,21 @@ integrated parent head.
   unchanged, no scanner-policy exceptions. Initial proof/scan/full scopes remain
   separately recorded; see component-index-source-assurance-final-20261018.json.
   Final documentation checks and hosted delivery remain pending.
+
+
+  Delivered PR #709 at6b8c2ee0 after seven named gates passed on7ada6fec,
+  all review threads resolved and no current CodeQL alerts. Fetched merge and
+  checked head share tree8d5fcaf1; zero unique changes; clean topic refs pruned.
+  Native4 report equality and exact-head full3 (7917tests) retained; no scanner
+  or branch-rule exceptions. See component-index-source-delivery-20261018.json.
+
+- [~] Register the existing 2024/25 and2025/26 Supplementary Estimates summary
+  profiles through common Bronze dispatch. Reuse exact source/vintage/locator,
+  page and parser controls; share pure native extraction with the standalone
+  normalizers, preserving their schemas, IDs, literal tokens, capital-injection
+  flags, dash nulls and byte-identical existing outputs. Account for unselected
+  pages/content explicitly; retain unknown/mismatched inputs as preserved-only.
+  Qualify record/lineage equivalence, exact selection/refusal, repeat outputs and
+  native old/new comparisons before full/hosted delivery. No currency inference,
+  crosswalk, added totals, rights or analytical-policy change. [M-05, M-06,
+  M-07, M-10, M-18; AC-03, AC-05, AC-08, AC-11, AC-16]
