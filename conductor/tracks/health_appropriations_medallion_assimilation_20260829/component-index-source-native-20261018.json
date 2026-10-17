@@ -1,5 +1,11 @@
 {
+  "all_other_report_values": "unchanged",
   "analytical_admission": "not_performed",
+  "changed_fields": [
+    "/methodology/lci",
+    "/methodology/ppi",
+    "/methodology/vintage_limit"
+  ],
   "independent_counts": {
     "lci": {
       "first": "1992Q4",
@@ -19,8 +25,9 @@
     }
   },
   "network": "denied",
+  "previous_report_sha256": "bbd251a4c4d60135bbced079a94dcfc6ebb69e993fb486c6e1290b232a00c746",
   "publication": "not_performed",
-  "repeat_report_sha256": "bbd251a4c4d60135bbced079a94dcfc6ebb69e993fb486c6e1290b232a00c746",
+  "repeat_report_sha256": "fccc38505c0983ff60c12371e714f4233e54c84efa7c52b0b04e7d31c62fe8e4",
   "rights": "not_evaluated",
   "runs": 2,
   "source_bytes": "unchanged",

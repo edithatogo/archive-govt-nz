@@ -1,11 +1,18 @@
 {
   "actual_source_native": {
-    "head": "c3e87580d9df984df5b344d11cf0444c41e67090",
+    "all_other_values": "unchanged",
+    "changed_fields": [
+      "/methodology/lci",
+      "/methodology/ppi",
+      "/methodology/vintage_limit"
+    ],
+    "head": "4126170a0c8b40876a949149d2afd46296546a89",
     "inputs": "unchanged",
     "network": "denied",
     "objects": 14,
+    "previous_report_sha256": "bbd251a4c4d60135bbced079a94dcfc6ebb69e993fb486c6e1290b232a00c746",
     "receipt": "component-index-source-native-20261018.json",
-    "report_sha256": "bbd251a4c4d60135bbced079a94dcfc6ebb69e993fb486c6e1290b232a00c746",
+    "report_sha256": "fccc38505c0983ff60c12371e714f4233e54c84efa7c52b0b04e7d31c62fe8e4",
     "runs": 2
   },
   "analytical_selection": "not_selected",
@@ -28,15 +35,9 @@
   },
   "full_alphanumeric_series_identifiers": "not_inferred; table and dimension identities explicit",
   "full_harness": {
-    "coverage_floor": 80,
-    "exit_code": 0,
-    "head": "c3e87580d9df984df5b344d11cf0444c41e67090",
-    "log_sha256": "2485307c081474852c270559a1af1ae522577b19edf99e8271785657f27b98c4",
-    "post_test_gates": "passed",
-    "receipt": "component-index-source-assurance-20261018.json",
-    "seconds": 322.55,
-    "tests_passed": 7916,
-    "tests_skipped": 12
+    "previous_receipt": "component-index-source-assurance-20261018.json",
+    "previous_scope": "c3e87580 before summary rendering correction",
+    "status": "pending_full2_on_corrected_producer"
   },
   "native_attempt_1": {
     "cause": "embedded PageBlocks JSON slash escapes were not decoded before Infoshare link comparison",
@@ -48,6 +49,17 @@
   },
   "preservation": "immutable originals/query configs and WARC responses retained outside Git; no cleanup",
   "preservation_objects": 14,
+  "prior_full_harness": {
+    "coverage_floor": 80,
+    "exit_code": 0,
+    "head": "c3e87580d9df984df5b344d11cf0444c41e67090",
+    "log_sha256": "2485307c081474852c270559a1af1ae522577b19edf99e8271785657f27b98c4",
+    "post_test_gates": "passed",
+    "receipt": "component-index-source-assurance-20261018.json",
+    "seconds": 322.55,
+    "tests_passed": 7916,
+    "tests_skipped": 12
+  },
   "producer_summary_remedy": "only three methodology summaries become readable prose; regenerate canonical report and repeat native/full on corrected producer",
   "publication": "not_performed",
   "queries": [
@@ -207,6 +219,6 @@
       "warc_sha256": "dc71e228a1c565482f575cf85918b4d66fb5d9259ce0e84052dde2237481b3a3"
     }
   ],
-  "status": "readable_summary_correction_new_native_and_full_pending",
+  "status": "corrected_report_native_qualified_full2_pending",
   "status_flags": "ShowNonFinalFlags requested; absent flags remain unflagged_unknown, not FINAL"
 }

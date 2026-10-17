@@ -43,6 +43,15 @@ identifiers, currency, annual alignment, component weights or a cost basket.
 The actual-source proof runs in two isolated CAS copies with network access
 denied and compares the report bytes while checking the inputs remain unchanged.
 Its report SHA256 is
-`bbd251a4c4d60135bbced079a94dcfc6ebb69e993fb486c6e1290b232a00c746`.
+`fccc38505c0983ff60c12371e714f4233e54c84efa7c52b0b04e7d31c62fe8e4`.
 The first proof's embedded-JSON link parsing failure is retained separately;
 the corrected proof decodes publisher Content and checks the parsed anchor.
+
+
+The original machine-style PPI method summary triggered an entropy-scanner false
+positive when its report entered Git. Three summaries now use readable prose;
+no scanner policy or baseline changed. Native3 regenerated this report and
+verified every other report value and all 14 input objects are unchanged. The
+previous canonical report and failed scan remain retained as historical evidence.
+The earlier full harness qualifies its recorded executable head; a new full run
+must qualify the corrected producer before PR creation.
