@@ -21,6 +21,9 @@ from archive_govt_nz.domains.health_appropriations.budget_revenue_adapter import
     budget_revenue_registration,
 )
 from archive_govt_nz.domains.health_appropriations.cpi_adapter import cpi_registration
+from archive_govt_nz.domains.health_appropriations.forecast_adapter import (
+    forecast_health_registration,
+)
 from archive_govt_nz.domains.health_appropriations.gdp_adapter import gdp_registration
 from archive_govt_nz.domains.health_appropriations.pharmac_adapter import (
     pharmac_budget_registration,
@@ -57,6 +60,8 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
     budget_expenditure: AdapterContext | None = None,
     budget_revenue: AdapterContext | None = None,
     pharmac: AdapterContext | None = None,
+    befu_2026: AdapterContext | None = None,
+    hyefu_2025: AdapterContext | None = None,
     vote_health: AdapterContext | None = None,
     vote_health_estimates_2002_03: AdapterContext | None = None,
     vote_health_estimates_2016_17: AdapterContext | None = None,
@@ -145,6 +150,19 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
         )
         for context in vote_health_estimates_overviews
     )
+    for profile, context in (
+        ("befu-2026/v1", befu_2026),
+        ("hyefu-2025/v1", hyefu_2025),
+    ):
+        if context is not None:
+            registrations.append(
+                forecast_health_registration(
+                    profile=profile,
+                    source_locator=context.source_locator,
+                    source_vintage=context.source_vintage,
+                    observed_at=context.observed_at,
+                )
+            )
     if len({row.adapter_id for row in registrations}) != len(registrations):
         message = "duplicate reviewed adapter identity"
         raise ValueError(message)

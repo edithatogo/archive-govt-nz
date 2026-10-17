@@ -409,3 +409,6 @@ they are not current-state assertions.
   and [native run inventory/pinned readback proof](./overview-operational-dispatch-20261017.json).
 
 - [Operational overview review-fix native proof](./overview-operational-dispatch-review-fix-20261017.json).
+
+- [Bounded donor-area partial metadata mappings](./donor-area-partial-mappings-20261017.json);
+  not whole-sheet completeness or output verification. Phase4issue #210 remains open.

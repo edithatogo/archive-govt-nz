@@ -1536,3 +1536,30 @@ passed546 focused/10 skips and repeated native14-profile209-fact42-Parquet
 parity/pinned-readback with all14 manifest pins unchanged.
 See [review-fix proof](./overview-operational-dispatch-review-fix-20261017.json).
 Full final-tree assurance, hosted checks, thread resolution and merge pending.
+
+
+## 17 October 2026 — PR #699 delivery
+
+The operational overview bridge and symlink-parent review correction were
+merged normally in PR #699 as071cfef55d96c810edf0c56ee4b1eef9bb3cad65 at
+02:47:31Z. Exact headbadc3a6f541a16f5b145acd1dc9c3652bc9338be passed full
+local assurance (7,768 tests/10 skips/23 warnings,281.24s,97.38%,62 schema
+validations/52documents,9/9 parity,configured mutation/hygiene/supply-chain
+gates and113-component SBOM; externalCDX explicitly skipped) and every
+applicable hosted check. Windows17m34s,macOS8m16s,Ubuntu7m17s; CodeQL,lint
+and patch coverage passed. The actual review thread was resolved after
+red/green/native/full/current-hosted proof. Fetched main contains head and
+merge, with no unique commits or dirty changes. Topic/local/tracking refs
+pruned after proof; primary worktree retained. External receipt:
+`/Volumes/PortableSSD/tmp/health-overview-operational-dispatch-20261017/merged-and-pruned.json`.
+
+Phase4issue #210 stays open: completed donor-functional parity is not
+M07/AC03 coverage of all detected workbook areas. Metadata-only reconciliation
+found three exact retained stage receipts and nine missing historical receipt
+locators; old temporary12-stage roots are absent. Two forecast partial mappings
+and a bounded30-coordinate historical ledger mapping add traceability only,
+without output verification, whole-sheet assertions, repairs or publication.
+Conductor independently reviewed their bounded meaning. The158 globally
+unresolved structural units are not a count of unimplemented extractions.
+The next implementation is the two reviewed forecast common adapters; census
+residuals and wider source/operational/phase gates remain explicit.

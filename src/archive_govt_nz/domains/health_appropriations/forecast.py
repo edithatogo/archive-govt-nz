@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 from dataclasses import dataclass
 from decimal import Decimal
@@ -45,6 +46,7 @@ _VINTAGE_YEARS = tuple(str(year) for year in range(2021, 2031))
 _VINTAGE_TYPES = ("Actual",) * 5 + ("Forecast",) * 5
 _VINTAGE_COLUMNS = tuple(range(6, 16))
 _MAX_SOURCE_BYTES = 64 * 1024 * 1024
+MAX_SOURCE_BYTES = _MAX_SOURCE_BYTES
 _MIN_YEAR_COLUMNS = 2
 _TRANSFORMATION = "treasury-health-expense-summary/v1"
 TRANSFORMATION = _TRANSFORMATION
@@ -256,6 +258,69 @@ def _extract(
     return facts, lineage, dispositions
 
 
+@dataclass(frozen=True, slots=True)
+class ForecastExtraction:
+    """Literal extraction plus complete native metadata, with no output writes."""
+
+    context: dict[str, Any]
+    facts: list[dict[str, Any]]
+    lineage: list[dict[str, Any]]
+    dispositions: list[dict[str, Any]]
+    excluded_sheets: list[dict[str, str]]
+    selection: dict[str, Any]
+    inventory: dict[str, object]
+
+
+def parse_forecast_snapshot(
+    payload: bytes,
+    *,
+    expected_sha256: str,
+    profile: str,
+    observed_at: str,
+    source_vintage: str,
+    source_locator: str,
+) -> ForecastExtraction:
+    """Parse exact bounded bytes with the existing layout and rejection rules."""
+    if profile not in _SHEETS:
+        raise ValueError("unsupported_forecast_profile")
+    if type(payload) is not bytes:
+        raise TypeError("bronze_bytes_required")
+    if len(payload) > _MAX_SOURCE_BYTES:
+        raise ValueError("source_byte_limit")
+    if hashlib.sha256(payload).hexdigest() != expected_sha256:
+        raise ValueError("source_hash_mismatch")
+    context = source_context(
+        expected_sha256, source_locator, source_vintage, observed_at
+    )
+    inventory = inventory_workbook(BytesIO(payload))
+    workbook = load_workbook(BytesIO(payload), data_only=False, keep_links=True)
+    try:
+        if _SHEETS[profile] not in workbook.sheetnames:
+            raise ValueError("missing_forecast_sheet")
+        sheet = workbook[_SHEETS[profile]]
+        layout = _layout(sheet)
+        _validate_vintage(sheet, layout, profile, source_vintage)
+        facts, lineage, dispositions = _extract(sheet, layout, context)
+        excluded = [
+            {"sheet": name, "reason": "not_forecast_summary_sheet"}
+            for name in workbook.sheetnames
+            if name != sheet.title
+        ]
+        selection = {
+            "sheet": sheet.title,
+            "label_cell": layout.label.coordinate,
+            "unit_cell": layout.unit.coordinate,
+            "year_row": layout.year_row,
+            "amount_type_row": layout.type_row,
+            "columns": list(layout.columns),
+        }
+    finally:
+        workbook.close()
+    return ForecastExtraction(
+        context, facts, lineage, dispositions, excluded, selection, inventory
+    )
+
+
 def normalize_forecast_workbook(
     source: Path,
     output_dir: Path,
@@ -282,30 +347,20 @@ def normalize_forecast_workbook(
         expected_sha256, source_locator, source_vintage, observed_at
     )
     payload = verified_snapshot(source, expected_sha256, max_bytes=_MAX_SOURCE_BYTES)
-    inventory = inventory_workbook(BytesIO(payload))
-    workbook = load_workbook(BytesIO(payload), data_only=False, keep_links=True)
-    try:
-        if _SHEETS[profile] not in workbook.sheetnames:
-            raise ValueError("missing_forecast_sheet")
-        sheet = workbook[_SHEETS[profile]]
-        layout = _layout(sheet)
-        _validate_vintage(sheet, layout, profile, source_vintage)
-        facts, lineage, dispositions = _extract(sheet, layout, context)
-        excluded = [
-            {"sheet": name, "reason": "not_forecast_summary_sheet"}
-            for name in workbook.sheetnames
-            if name != sheet.title
-        ]
-        selection = {
-            "sheet": sheet.title,
-            "label_cell": layout.label.coordinate,
-            "unit_cell": layout.unit.coordinate,
-            "year_row": layout.year_row,
-            "amount_type_row": layout.type_row,
-            "columns": list(layout.columns),
-        }
-    finally:
-        workbook.close()
+    parsed = parse_forecast_snapshot(
+        payload,
+        expected_sha256=expected_sha256,
+        profile=profile,
+        observed_at=observed_at,
+        source_vintage=source_vintage,
+        source_locator=source_locator,
+    )
+    facts, lineage, dispositions = parsed.facts, parsed.lineage, parsed.dispositions
+    excluded, selection, inventory = (
+        parsed.excluded_sheets,
+        parsed.selection,
+        parsed.inventory,
+    )
     counts = {
         name: sum(row["disposition"] == name for row in dispositions)
         for name in ("normalized", "rejected", "context", "preserved_only")

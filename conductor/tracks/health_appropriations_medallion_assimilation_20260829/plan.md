@@ -1795,7 +1795,7 @@ integrated parent head.
   delivery. [M-02, M-03, M-04, M-06, M-11; AC-02, AC-04, AC-09, AC-16]
 
 
-- [~] Route the fourteen reviewed 2004/05-2017/18 main overview source
+- [x] Route the fourteen reviewed 2004/05-2017/18 main overview source
   operations through actual common dispatch output. Preserve the three native
   Parquet tables, original common losses and explicit compatibility projection;
   persist selection in a versioned closed extraction manifest and qualify
@@ -1805,9 +1805,19 @@ integrated parent head.
   [M-04, M-05, M-07, M-10; AC-03, AC-05, AC-12, AC-16]
 
 
-- [~] Fix PR #699 symlink-parent preflight/readback policy mismatch. Reject
+- [x] Fix PR #699 symlink-parent preflight/readback policy mismatch. Reject
   symlinked output ancestors before parsing or writing; preserve readback
   checks. Establish a failing real-directory-symlink regression proving no
   target files are left behind, then repeat focused/native/exact-head assurance
   and resolve the actual review thread before protected merge.
   [M-04, M-10; AC-12, AC-16]
+
+
+- [~] Add explicit common adapters for the existing BEFU-2026/v1 and
+  HYEFU-2025/v1 literal Health-summary profiles. Reuse their reviewed extraction
+  boundary, preserve legacy APIs/receipts and source-specific Actual/Forecast,
+  units, lineage, partial failures and all cell/sheet loss accounting. Retain
+  existing direct operation behavior, qualify native parity against retained
+  successor outputs, and run required assurance before focused PR delivery.
+  This does not close general operational adoption or the donor-area census.
+  [M-04, M-05, M-06, M-07; AC-03, AC-05, AC-09, AC-16]

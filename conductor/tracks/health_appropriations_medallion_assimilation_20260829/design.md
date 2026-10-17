@@ -791,3 +791,29 @@ it cannot derive its own authority from the manifest under inspection. Partial,
 extra, symlink, tampered, wrong-context and unknown-version outputs fail closed.
 Existing direct APIs and2002 composite ownership remain unchanged; no new
 rights, numerical admission or external publication behavior is introduced.
+
+## Reviewed forecast common adapters
+
+The two versioned BEFU2026/HYEFU2025 summary registrations reuse one pure,
+bounded in-memory extraction boundary factored from the existing forecast
+normalizer. All four legacy/versioned filesystem APIs retain their original
+receipts, tables and default write behavior. Only the two explicitly named
+successors enter the common registry; neither legacy generic alias is added.
+
+```mermaid
+flowchart LR
+  B[Immutable XLSX snapshot] --> P[Existing bounded inventory and exact layout/vintage guards]
+  P --> E[Shared in-memory literal extraction]
+  E --> N[Existing native receipt and exclusive writer]
+  E --> A[Common records and field lineage]
+  E --> L[Non-normalized cell dispositions and excluded-sheet losses]
+  P -->|Unsupported layout or vintage| U[Preserved-only decision]
+  E -->|Formula/error/invalid amount| R[Explicit rejected losses; never operation success]
+```
+
+Actual/Forecast headers, source vintage, unit labels, financial-year-basis gaps,
+lineage and all non-normalized inputs remain explicit. Common selection is not
+an operation success status. Current source operations remain on the existing
+native route for these profiles; their partial-result refusal is unchanged.
+No formula evaluation, cached-total admission, pooled series, inferred currency
+qualification or external mutation follows from registration.
