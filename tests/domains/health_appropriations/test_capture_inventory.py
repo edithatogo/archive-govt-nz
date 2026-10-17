@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import hashlib
 import json
+import runpy
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -324,3 +326,48 @@ def test_redirect_requires_unambiguous_source_and_original_hash() -> None:
     unrelated = _snapshot("unrelated.json", [_row(source_id="other")])
     with pytest.raises(ValueError, match="capture_source_not_in_census"):
         build_capture_inventory((unrelated,), (_capture(request),))
+
+
+def test_legacy_manifest_cannot_accept_unverified_request_rows() -> None:
+    original = _snapshot("request.json", [_row()])
+    capture = _capture(original, url="https://cdn.example.govt.nz/a.pdf")
+    doc = json.loads(capture.manifest.data)
+    del doc["capture_context"]
+    legacy = CaptureSnapshot(
+        InventorySnapshot("legacy.json", json.dumps(doc).encode()), original
+    )
+    with pytest.raises(ValueError, match="capture_request_unverified"):
+        build_capture_inventory((original,), (legacy,))
+
+
+@pytest.mark.parametrize("case", ["unused", "ambiguous", "ambiguous_reversed"])
+def test_cli_rejects_unconsumed_or_ambiguous_request_evidence(
+    case: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    census = _snapshot("census.json", [_row()])
+    request = InventorySnapshot(
+        "request-a.json", json.dumps({"records": [_row()]}).encode()
+    )
+    alias = InventorySnapshot("request-b.json", request.data)
+    capture = _capture(request)
+    for snapshot in (census, request, alias, capture.manifest):
+        (tmp_path / snapshot.name).write_bytes(snapshot.data)
+    output = tmp_path / "output.json"
+    args = ["builder", "--census", str(tmp_path / census.name), "--output", str(output)]
+    requests = [request] if case == "unused" else [request, alias]
+    if case == "ambiguous_reversed":
+        requests.reverse()
+    for item in requests:
+        args.extend(["--request", str(tmp_path / item.name)])
+    if case != "unused":
+        args.extend(["--capture-manifest", str(tmp_path / capture.manifest.name)])
+    monkeypatch.setattr(sys, "argv", args)
+    tool = Path(__file__).parents[3] / "tools/build_health_capture_inventory.py"
+    code = (
+        "capture_request_unconsumed"
+        if case == "unused"
+        else "capture_request_hash_ambiguous"
+    )
+    with pytest.raises(ValueError, match=code):
+        runpy.run_path(str(tool))["main"]()
+    assert not output.exists()

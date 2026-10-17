@@ -1775,3 +1775,11 @@ integrated parent head.
   whole corpus and publication-form completeness. Reuse existing preflight;
   do not recapture or infer analytical admission. [M-02, M-03, M-04; AC-02,
   AC-04, AC-09, AC-16]
+
+
+- [~] Resolve PR #697 review findings: reject supplied unverified legacy
+  requests, and reject unconsumed or ambiguous CLI request inputs rather than
+  silently dropping evidence or choosing a logical filename by argument order.
+  Preserve old successful assurance evidence; prove the actual cohort output
+  unchanged, run exact-head assurance and resolve the actual review threads
+  before protected merge. [M-02, M-04; AC-04, AC-16]

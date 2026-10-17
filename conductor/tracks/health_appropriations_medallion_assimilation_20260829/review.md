@@ -2159,3 +2159,16 @@ assurance and hosted delivery remain pending.
 
 Conductor independently reviewed the corrected source against both producer
 branches and found no blocking finding. Reviewed module SHA-256: `e1980ec253178f10f8ec3164deafa97c4b81657194c8b71c03755d343b9971da`; tests: `738f89a411c373975ef077dad262560b24a2a090f206ad6d65086457545d53ca`. Focused final checks: 69 passed; strict typing and Ruff pass.
+
+
+## PR #697 automated review corrections
+
+Two P2 findings were valid: a supplied request could still affect legacy
+identity without a verified resume binding, and explicit CLI request arguments
+could be silently omitted or their names selected by input order. Four red
+regressions reproduce these contracts. The correction rejects supplied legacy
+requests unless the resume contract/hash bind, indexes all candidate logical
+names without overwrite, and rejects ambiguous/unused explicit requests before
+output. Reversed alias argument order produces the same fail-closed result.
+No source/census/manifest or inventory bytes changed; native CAS proof is reused.
+Current-head full assurance, hosted checks and actual thread resolution pending.

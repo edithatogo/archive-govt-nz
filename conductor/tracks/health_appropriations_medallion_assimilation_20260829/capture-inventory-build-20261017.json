@@ -54,8 +54,8 @@
   "cas_fixity_receipt_sha256": "cd873299b20c1b8b4040ceef1258409b02ce8fceca7173bdd35658332ef704cf",
   "implementation_sha256": {
     "schemas/health-capture-inventory-v1.schema.json": "e4d28eb5c98c5d3df9a4dc07b7ddee91b1079f0e64a514b6cb9cbaba02f420ad",
-    "src/archive_govt_nz/domains/health_appropriations/capture_inventory.py": "e1980ec253178f10f8ec3164deafa97c4b81657194c8b71c03755d343b9971da",
-    "tools/build_health_capture_inventory.py": "3ced40964dd8f3e098c087839bf91c99a376177247078700404625849642b9fe"
+    "src/archive_govt_nz/domains/health_appropriations/capture_inventory.py": "ca78883d9358cf0712e56e3c4255e954690ce98a41c9810aea6c6bf734a0288a",
+    "tools/build_health_capture_inventory.py": "838e02e5c754f6c809331608f32299d3e0d5c4f5a1a7b2797e8391b43d210210"
   },
   "input_paths_sha256": {
     "/Volumes/PortableSSD/GitHub/archive-govt-nz/conductor/tracks/health_appropriations_medallion_assimilation_20260829/capture-cohorts-20261005/missing-estimates-capture-request.json": "42555bfc903e4120f3b2f6c938d886a372068b66a02202e2883ecd15a51b7486",
@@ -92,5 +92,6 @@
   "original_inputs_unchanged": true,
   "redirect_hardening_actual_cohort_unchanged": true,
   "repeat_bytes_equal": true,
+  "review_corrections_actual_cohort_unchanged": true,
   "verification_script_sha256": "20eb8bb10f5c127ca5df3150a6818f12de371f3c40746d0bacfcd014ea81b21d"
 }

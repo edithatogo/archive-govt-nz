@@ -5947,3 +5947,22 @@ contracts retain wrong-source, wrong/missing hash and duplicate request-ID
 rejection. Corrected actual-cohort CLI builds 7/8 remain byte-identical to the
 committed product; the completed 84-object native fixity receipt remains valid
 and no CAS reads were repeated. Second exact-tree full assurance is pending.
+
+
+PR #697 opened on `4f64a51e36404a7dd21a375770a4be9fa3f1caa2` after the
+second exact-head full harness passed: 7750 passed, 10 skipped, 23 warnings
+in 307.04s, 97.41% coverage; schema/parity/mutation/hygiene/supply-chain gates
+passed. All applicable hosted checks subsequently passed on that same head
+(CI run 38987923545). The normal merge remained blocked by two unresolved
+review findings; no merge/prune or branch-rule change was attempted.
+
+Review links: https://github.com/edithatogo/archive-govt-nz/pull/697#discussion_r4300568982
+and https://github.com/edithatogo/archive-govt-nz/pull/697#discussion_r4300568986.
+Four focused regressions failed before correction (`review-red.log`): legacy
+with a supplied but unverified request, unused explicit CLI request, and two
+argument orders for same-hash/different-name requests. Reject unverified legacy
+request rows before they can choose a resource URL. Reject ambiguous request
+hashes and unconsumed explicit request arguments before creating output.
+Actual-cohort CLI builds 9/10 remain byte-identical to the committed inventory;
+all 84 captured identities and the existing CAS receipt remain unchanged.
+New exact-head full local/hosted assurance and review resolution remain required.

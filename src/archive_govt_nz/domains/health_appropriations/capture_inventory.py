@@ -85,6 +85,8 @@ def _request_binding(capture: CaptureSnapshot, manifest: dict[str, Any]) -> str:
     if not isinstance(context, dict):
         _fail("capture_context_invalid")
     if context.get("contract") != "health-capture-resume/v1":
+        if capture.request is not None:
+            _fail("capture_request_unverified")
         return "not_verified_legacy_request_context_unavailable"
     if capture.request is None:
         _fail("capture_request_missing")

@@ -69,3 +69,11 @@ The first frozen candidate passed the complete required harness (7747 tests,
 10 skips, 97.41% coverage). Redirect/failure hardening is a subsequent candidate
 and requires its own full assurance before PR delivery. Actual-cohort final
 CLI builds remain byte-identical; no additional native CAS reads were needed.
+
+
+PR review additionally requires every supplied CLI request to be consumed and
+its logical name unambiguous. Unused explicit requests and same-hash aliases
+fail before output; unverified requests cannot influence legacy capture identity.
+The corrected actual-cohort projection remains byte-identical. The old local
+and hosted green runs remain historical evidence; new exact-head assurance is
+required before these review threads can be closed and the PR merged.

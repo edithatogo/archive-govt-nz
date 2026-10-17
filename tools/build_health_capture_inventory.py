@@ -27,10 +27,13 @@ def main() -> int:
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     censuses = tuple(_snapshot(path) for path in args.census)
-    requests = {
-        hashlib.sha256(item.data).hexdigest(): item
-        for item in (*censuses, *(_snapshot(path) for path in args.request))
-    }
+    supplied_requests = tuple(_snapshot(path) for path in args.request)
+    requests: dict[str, list[InventorySnapshot]] = {}
+    for item in (*censuses, *supplied_requests):
+        candidates = requests.setdefault(hashlib.sha256(item.data).hexdigest(), [])
+        if item not in candidates:
+            candidates.append(item)
+    consumed: set[InventorySnapshot] = set()
     captures = []
     for path in args.capture_manifest:
         manifest = _snapshot(path)
@@ -38,8 +41,19 @@ def main() -> int:
         request_hash = (
             context.get("census_sha256") if isinstance(context, dict) else None
         )
-        request = requests.get(request_hash) if isinstance(request_hash, str) else None
+        matches = (
+            requests.get(request_hash, []) if isinstance(request_hash, str) else []
+        )
+        if len(matches) > 1:
+            error = "capture_request_hash_ambiguous"
+            raise ValueError(error)
+        request = matches[0] if matches else None
+        if request is not None:
+            consumed.add(request)
         captures.append(CaptureSnapshot(manifest, request))
+    if any(item not in consumed for item in supplied_requests):
+        error = "capture_request_unconsumed"
+        raise ValueError(error)
     inventory = build_capture_inventory(censuses, tuple(captures))
     with args.output.open("x", encoding="utf-8") as output:
         output.write(
