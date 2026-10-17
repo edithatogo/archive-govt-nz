@@ -2131,3 +2131,19 @@ The following bookkeeping commit changes only four unpinned track notes/status.
 Source observations, review evidence hashes, tests and product code are unchanged.
 Local slice assurance is complete; exact-head hosted checks and protected PR
 merge/pruning remain pending. This does not close the Health track.
+
+
+## 17 October 2026 — capture cohort inventory self-review
+
+- Preserve original 143-row aggregate and individual request/capture/census
+  snapshots; derived output pins every input without rewriting any observation.
+- Group by exact URL, not source ID or payload hash; retain aliases and revisions.
+- Keep 76 legacy request-binding gaps explicit. Two original bare request shapes
+  are accepted only as requests, not weakened census documents. The 2011/12
+  census already matches its original capture hash and requires no fabricated
+  request file. Fail closed on mismatched resume request, source URL or digest.
+- Separate metadata projection from 84-object native fixity proof and from WARC,
+  rights, analytical admission and whole-corpus completeness.
+- Builder uses exclusive output and never modifies inputs or native payloads.
+  Schema gate covers the committed product; focused contracts rebuild it from
+  retained metadata alone. Full harness and hosted assurance remain pending.

@@ -20,6 +20,14 @@ type JsonValue = (
 REPOSITORY_ROOT = Path(__file__).parents[1]
 VALIDATION_PAIRS = (
     (
+        REPOSITORY_ROOT / "schemas" / "health-capture-inventory-v1.schema.json",
+        REPOSITORY_ROOT
+        / "conductor"
+        / "tracks"
+        / "health_appropriations_medallion_assimilation_20260829"
+        / "capture-inventory-20261017.json",
+    ),
+    (
         REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v1.schema.json",
         REPOSITORY_ROOT
         / "tests"

@@ -750,3 +750,14 @@ including the new v4/v2 canonical-containing projection; compare inventories,
 reverify metadata bytes and preserve all unqualified rights/standards states.
 This closes supported reconstruction paths, not missing source profiles, rights
 decisions, publication authority or the final track review.
+
+
+## Observation-preserving capture inventory
+
+Independent capture cohorts project into a URL-indexed inventory while retaining
+all original census and capture rows, source-ID aliases and distinct content
+versions. Input pins bind exact serialized metadata; resume receipts bind the
+original request hash and URL identity, never a fabricated post-capture census.
+Legacy request-context gaps remain explicit. Projection, native CAS verification,
+WARC replay, rights qualification and analytical admission are separate claims.
+See [the bounded inventory evidence](./capture-inventory-20261017.md).
