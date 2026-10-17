@@ -2799,3 +2799,25 @@ with Crown kept source-separated if outside the donor inventory. Existing
 three partial assertions and whole-worksheet remainders remain unchanged;
 all152worksheet semantics, rights and broader track completion stay open.
 No full/hosted delivery claim is made for this in-progress slice.
+
+
+### 2026-10-18 — Remaining stage-to-area binding producer
+
+The new stage_area_bindings producer reuses verify_eight and its per-profile
+source/output/lineage contracts, then the existing bounded Parquet snapshot
+reader. It binds selected fields to exact donor source hash/path/sheet IDs,
+checks quoted/unquoted cell coordinates against the retained inventory bounds,
+and emits partial bindings plus a nine-stage receipt catalog. Source records
+may overlap between context sheets; record sets are explicitly non-additive.
+Crown2025 is source-separated when absent from the donor inventory, never
+matched to Fiscal2024 by a similar filename. No original workbook reparsing,
+new source capture, value replacement, mapping/rights promotion or file write.
+
+The pure projector is explicitly not a standalone source-admission boundary;
+operational calls must use build_stage_area_bindings and its existing verifier.
+The prior three partial assertions are retained separately and no global unit
+state is resolved. New focused coordinate/identity/remainder/Crown contracts
+initially fail missing-module collection, then113checks pass0.40s. The expanded
+area/stage/orchestration selection passes229checks6.47s; Ruff/format/strict typing
+pass after bounded lint corrections. Retained-output producer readback, full
+harness and hosted delivery remain pending; no unchanged reconstruction rerun.

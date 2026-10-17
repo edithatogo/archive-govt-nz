@@ -1,0 +1,27 @@
+{
+  "existing_three_partial_assertions": "unchanged",
+  "focused": {
+    "log_sha256": "f7e27c8a43fd15095ff005f215e66d3c8f822df54310ec43593c8dbd8a38e719",
+    "passed": 229,
+    "seconds": 6.47
+  },
+  "full": "pending",
+  "global_worksheet_semantics": "unresolved",
+  "native_report": "pending",
+  "publication": "not_performed",
+  "rights_state": "not_evaluated",
+  "source_evidence": "donor-area-reconstruction-20261018.json",
+  "stages": [
+    "budget",
+    "revenue",
+    "befu-detail",
+    "hyefu-detail",
+    "befu-chart",
+    "hyefu-allowance",
+    "befu-residual",
+    "hyefu-residual",
+    "crown"
+  ],
+  "status": "focused_qualified_native_report_full_pending",
+  "track_complete": false
+}
