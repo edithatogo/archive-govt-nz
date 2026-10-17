@@ -479,3 +479,5 @@ they are not current-state assertions.
 
 - [Metadata operations delivery](./operation-metadata-operations-delivery-20261018.json) — PR708 merged, seven checks passed, fetched tree verified and topic refs pruned; historical pending receipt superseded.
 - [Component-index source checkpoint](./component-index-source-checkpoint-20261018.json) — actual LCI/PPI exports and source metadata captured/preserved; offline qualification and rights observations pending.
+
+- [Component-index source contract and guide](./component-index-source-evidence-20261018.md), [report](./component-index-source-evidence-report-20261018.json), [native proof](./component-index-source-native-20261018.json), [initial failure](./component-index-source-native-failure-20261018.json), and [full assurance](./component-index-source-assurance-20261018.json) — source-census qualification passes; rights/admission and hosted delivery remain separate.

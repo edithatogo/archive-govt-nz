@@ -1,0 +1,29 @@
+{
+  "analytical_admission": "not_performed",
+  "independent_counts": {
+    "lci": {
+      "first": "1992Q4",
+      "first_numeric": "2009Q2",
+      "last": "2026Q2",
+      "missing": 66,
+      "numeric": 69,
+      "periods": 135
+    },
+    "ppi": {
+      "first": "1994Q2",
+      "first_numeric": "1996Q3",
+      "last": "2026Q2",
+      "missing": 9,
+      "numeric": 120,
+      "periods": 129
+    }
+  },
+  "network": "denied",
+  "publication": "not_performed",
+  "repeat_report_sha256": "bbd251a4c4d60135bbced079a94dcfc6ebb69e993fb486c6e1290b232a00c746",
+  "rights": "not_evaluated",
+  "runs": 2,
+  "source_bytes": "unchanged",
+  "source_objects": 14,
+  "status": "passed"
+}

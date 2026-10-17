@@ -1986,3 +1986,12 @@ integrated parent head.
   deflator, infer full series identifiers, analytically admit values or change
   generic host rights policy. [M-02, M-04, M-06, M-12, M-16; AC-03, AC-04,
   AC-09, AC-10, AC-12, AC-16]
+
+
+  Source-cohort qualification passes on c3e87580: two network-denied14-object
+  repeats, reportbbd251a4, unchanged originals and independently reconciled counts.
+  Exact full harness7916PASS/12skip and all downstream gates pass; native1 parser
+  failure remains preserved. See component-index-source-assurance-20261018.json
+  and component-index-source-evidence-20261018.md. Result-only documentation and
+  hosted delivery remain pending; broader series admission/policy/rights gates
+  are not closed by this census evidence.

@@ -1,0 +1,163 @@
+{
+  "analytical_admission": "not_performed",
+  "methodology": {
+    "lci": "v66_fixed_quality_wage_rates_excludes_performance_and_service_increments",
+    "ppi": "v3_inputs_excludes_wages_and_capital_GST_generally_excluded_FISIM_from_2015Q1",
+    "vintage_limit": "general_method_versions_do_not_prove_every_historical_break_or_reweighting"
+  },
+  "ownership": "Stats_NZ_data_in_Infoshare_observed_not_automatic_licence_adjudication",
+  "publication": "not_performed",
+  "queries": {
+    "lci": {
+      "bytes": 6311,
+      "numeric_data": false,
+      "sha256": "d207c87521eda54f0ab545c86334283b875a456a1508fb81e7fa5b8559df9896",
+      "transport": "browser_download_no_WARC_claim"
+    },
+    "ppi": {
+      "bytes": 5926,
+      "numeric_data": false,
+      "sha256": "2a40ab6d43ed74e048d118d5c9636e329ae9300a527450ada2d9fbfa7000dd3a",
+      "transport": "browser_download_no_WARC_claim"
+    }
+  },
+  "rights": {
+    "automatic_application_to_related_hosts_or_resources": "not_performed",
+    "decision": "not_evaluated",
+    "observed_license_uri": "https://creativecommons.org/licenses/by/4.0/",
+    "specific_statement_exception_retained": true
+  },
+  "schema_version": "archive-govt-nz.health-component-source-evidence/v1",
+  "scope": "source_census_only",
+  "sources": [
+    {
+      "body_bytes": 2719,
+      "body_sha256": "4a525c427a6cd403d03e21b0ed3db1325e3d92d2c44e05bd18a76ff77a832d01",
+      "content_type": "text/csv",
+      "final_url": "https://infoshare.stats.govt.nz/FileDownload.aspx?fileName=LCI358301_20261018_043719_82.csv&contentType=text%2fcsv&AspxAutoDetectCookieSupport=1",
+      "observed_at": "2026-10-17T15:42:27.336809+00:00",
+      "requested_url": "https://infoshare.stats.govt.nz/FileDownload.aspx?fileName=LCI358301_20261018_043719_82.csv&contentType=text%2fcsv",
+      "role": "lci-public-get-1",
+      "warc_bytes": 3297,
+      "warc_sha256": "1c6d99623630a830706c51787abe51ecf42b012b7d1edb833b4580aa1c936eb0"
+    },
+    {
+      "body_bytes": 3470,
+      "body_sha256": "159708fcf183ec24d160483c5f16bf2dd9ecc9f4f98cfe5e28de56870d36573b",
+      "content_type": "text/csv",
+      "final_url": "https://infoshare.stats.govt.nz/FileDownload.aspx?fileName=PPI387801_20261018_044701_27.csv&contentType=text%2fcsv&AspxAutoDetectCookieSupport=1",
+      "observed_at": "2026-10-17T15:49:30.259065+00:00",
+      "requested_url": "https://infoshare.stats.govt.nz/FileDownload.aspx?fileName=PPI387801_20261018_044701_27.csv&contentType=text%2fcsv",
+      "role": "ppi-public-get-1",
+      "warc_bytes": 4048,
+      "warc_sha256": "fd3c66ae46cfb9c2aa3d13af5de7806a7e44789b596e1335c7530cc3b36b1da3"
+    },
+    {
+      "body_bytes": 76512,
+      "body_sha256": "c6232ad690d16b361704288997ab7265c12498c8d0401c95e82f204a7e913dc1",
+      "content_type": "text/html; charset=utf-8",
+      "final_url": "https://www.stats.govt.nz/tools/stats-infoshare/",
+      "observed_at": "2026-10-17T15:49:48.226324+00:00",
+      "requested_url": "https://www.stats.govt.nz/tools/stats-infoshare/",
+      "role": "infoshare-owner-1",
+      "warc_bytes": 77131,
+      "warc_sha256": "ced51ee553de84735f2c9c815b3a7af3561ef9b120f6cb99d3ae0aa4023334a6"
+    },
+    {
+      "body_bytes": 66343,
+      "body_sha256": "dc62202c3ce939f11a9283cf0e8814535317031e8b67981819341ba25ad4efe7",
+      "content_type": "text/html; charset=utf-8",
+      "final_url": "https://datainfoplus.stats.govt.nz/Item/nz.govt.stats/9007195c-8dc3-4dfb-b5da-1b12c32e90ac/66",
+      "observed_at": "2026-10-17T15:49:48.711021+00:00",
+      "requested_url": "https://datainfoplus.stats.govt.nz/Item/nz.govt.stats/9007195c-8dc3-4dfb-b5da-1b12c32e90ac/66",
+      "role": "lci-method-v66-1",
+      "warc_bytes": 66960,
+      "warc_sha256": "257f32e1271b4d8bf749ca36cad3d1dcb93fb3f7cf315b9517386aa662362ad3"
+    },
+    {
+      "body_bytes": 53747,
+      "body_sha256": "28e15f19e4fcaf9e411e5c0f9b2adcc2cd1d47da781f71cb387c680253d6451e",
+      "content_type": "text/html; charset=utf-8",
+      "final_url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/66006ba0-02ee-4c5e-9b31-9c093ba8d84f/3",
+      "observed_at": "2026-10-17T15:49:49.060616+00:00",
+      "requested_url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/66006ba0-02ee-4c5e-9b31-9c093ba8d84f/3",
+      "role": "ppi-method-v3-1",
+      "warc_bytes": 54363,
+      "warc_sha256": "dc71e228a1c565482f575cf85918b4d66fb5d9259ce0e84052dde2237481b3a3"
+    },
+    {
+      "body_bytes": 48412,
+      "body_sha256": "3022463f1546f2afb2f25330d24598c3e0a6a51de98b61af750a490594727584",
+      "content_type": "text/html; charset=utf-8",
+      "final_url": "https://www.stats.govt.nz/about-us/copyright/",
+      "observed_at": "2026-10-17T11:12:40.518466+00:00",
+      "requested_url": "https://www.stats.govt.nz/about-us/copyright/",
+      "role": "copyright",
+      "warc_bytes": 49028,
+      "warc_sha256": "5fdd90ec959c8cfccb0dded0677e53f00c9a0cea16d9c26008c0cec6eb6beffd"
+    }
+  ],
+  "tables": {
+    "lci": {
+      "analytical_selection": "not_selected",
+      "first": "1992Q4",
+      "first_numeric": "2009Q2",
+      "footnote": "Base: June 2009 Quarter (=1000)",
+      "full_series_identifier": null,
+      "last": "2026Q2",
+      "missing": 66,
+      "missing_token": "..",
+      "numeric": 69,
+      "numeric_representation": "source_decimal_literals_no_rounding",
+      "publisher_updated_literal": "Health Care and Social Assistance: 05 August 2026 10:45am",
+      "query_status_option": "ShowNonFinalFlags",
+      "raw_period_value_sha256": "15324f373e206c7f26266504eb8e966b343f1bb89d729a9bf982bdfb7086fb82",
+      "represented_periods": 135,
+      "scope": "Central Government; Health Care and Social Assistance; All Salary and Wage Rates",
+      "selectors": [
+        [
+          "Labour Cost",
+          "3",
+          "All Salary and Wage Rates"
+        ],
+        [
+          "Observations",
+          "LCI025AC",
+          "Health Care and Social Assistance"
+        ]
+      ],
+      "status": "unflagged_unknown",
+      "table": "LCI025AA",
+      "title": "Central Govt Sector and Industry Group (ANZSIC06)(Base: June 2009 qtr (=1000)) (Qrtly-Mar/Jun/Sep/Dec)",
+      "unit": "Index, Magnitude = Units"
+    },
+    "ppi": {
+      "analytical_selection": "not_selected",
+      "first": "1994Q2",
+      "first_numeric": "1996Q3",
+      "footnote": "The sheep, beef, and grain farming, and poultry, deer, and other livestock farming series have a base of the December 2013 quarter (= 1000)",
+      "full_series_identifier": null,
+      "last": "2026Q2",
+      "missing": 9,
+      "missing_token": "..",
+      "numeric": 120,
+      "numeric_representation": "source_decimal_literals_no_rounding",
+      "publisher_updated_literal": "Health Care and Social Assistance: 19 August 2026 10:45am",
+      "query_status_option": "ShowNonFinalFlags",
+      "raw_period_value_sha256": "ed85c65dd1da4d9ae459eff6c07393f9a2edaad0d0d886647004968eff5dcd4d",
+      "represented_periods": 129,
+      "scope": "Health Care and Social Assistance industry inputs; ANZSIC06 NZSIOC level3; not central-government-only",
+      "selectors": [
+        [
+          "Observations",
+          "PPI021CC",
+          "Health Care and Social Assistance"
+        ]
+      ],
+      "status": "unflagged_unknown",
+      "table": "PPI021AA",
+      "title": "Inputs (ANZSIC06) - NZSIOC level 3, Base: Dec. 2010 quarter (=1000) (Qrtly-Mar/Jun/Sep/Dec)",
+      "unit": "Index, Magnitude = Units"
+    }
+  }
+}

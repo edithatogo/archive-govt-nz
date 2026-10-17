@@ -7146,3 +7146,26 @@ refusal.22focused checks pass2.40s (15component/7CPI); Ruff/format/type pass. Th
 six fixed capture identities and original source/query bytes are unchanged.
 A fresh uniquely named native-proof-2 and subsequent full harness remain pending
 with the same launch owner. No unchanged recapture or source substitution.
+
+
+### 2026-10-18 — component source qualification assurance
+
+Corrected native2 and exact-head full harness pass on c3e87580/tree4d68e634.
+Two network-denied14-object replays produce identical report bbd251a4; independent
+CSV counts match LCI135/66/69 and PPI129/9/120 (represented/missing/numeric), and
+all original bytes remain unchanged. Actual native1 failure and diagnosis remain
+separate; no unchanged recapture or duplicate proof was used. Full harness exits0:
+7916tests/12skips/23warnings322.55s,80percent floor retained,66schemas/56documents,
+9/9parity/zero divergences, all mutation/hygiene/CAS/audit/licence/secret-scan/SBOM
+stages pass. CAS335.30MB/s; SBOM113components. Exact log and native receipt pins
+are in component-index-source-assurance-20261018.json. No source code, tests,
+lock/backend, harness or workflow changes follow this qualified tree.
+
+The deterministic report, actual native receipt, initial failed native receipt
+and maintainer guide are now reviewable in the track. This is a qualified census
+successor to the historical component-index discovery; historical observations
+are retained rather than rewritten. Existing primary source/context census
+profiles, Silver/Gold products and generic rights policy remain unchanged.
+Rights eligibility, analytical weighting/join policy, broader source coverage and
+track completion remain open. Result-only documentation checks and hosted PR
+checks precede normal protected merge; the task stays in progress until delivery.

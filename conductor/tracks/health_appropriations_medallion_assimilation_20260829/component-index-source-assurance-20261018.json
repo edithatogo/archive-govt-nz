@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "session_id": 62277,
+  "exit_code": 0,
+  "head": "c3e87580d9df984df5b344d11cf0444c41e67090",
+  "tree": "4d68e6342d38f5c47617a16acc8d7c8ef76e33ce",
+  "worktree_clean": true,
+  "tests_passed": 7916,
+  "tests_skipped": 12,
+  "test_seconds": 322.55,
+  "native_replay_runs": 2,
+  "native_source_objects": 14,
+  "native_report_sha256": "bbd251a4c4d60135bbced079a94dcfc6ebb69e993fb486c6e1290b232a00c746",
+  "all_original_harness_stages_passed": true,
+  "validation_log_sha256": "2485307c081474852c270559a1af1ae522577b19edf99e8271785657f27b98c4",
+  "native_log_sha256": "584aeb8782f97f3df7708a3b3ea2483db1a85afc80dc67f671eb23265eb9664f",
+  "source_replay_failure_preserved": "native-proof-1-failure.json",
+  "rights": "not_evaluated",
+  "analytical_admission": "not_performed",
+  "publication": "not_performed"
+}
