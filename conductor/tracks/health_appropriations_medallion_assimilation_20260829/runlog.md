@@ -6627,3 +6627,27 @@ material correction requires fresh native/full/hosted assurance before review
 resolution or merge. Preserve the original native/full receipts and current
 non-terminal hosted runs; no merge, pruning, protection change or source repair.
 See [correction checkpoint](./operation-context-gold-output-correction-20261017.json).
+
+
+## PR #704 pinned-output native parity and platform narrowing — 2026-10-17
+
+Frozen6ef90a1a completed two fresh Bronze→operation→canonical→Gold rebuilds.
+All20 output files repeat byte-for-byte and match independently retained pre-
+correction pins. All615 observations/4190 lineage links retain their controls;
+585 eligible context-only/30 excluded, originals and input packages unchanged.
+Four actual CLI calls passed in12.1–14.9s under unchanged30s; read-only MCP
+preflight/verify/query passed both. See
+[output-correction native proof](./operation-context-gold-output-native-20261017.json).
+
+An additional explicit Windows platform type check exposed POSIX O_NOFOLLOW
+availability in a branch conditioned only on descriptor state. No runtime
+fallback or flag weakening: branch now tests os.name, requires the corresponding
+None/native descriptor state, and keeps existing writes unchanged for both valid
+public reservation cases. Windows platform typing is now0errors; affected
+race/closure checks6passed/2Windows-only skips/9deselected in14.27s, Ruffpassed.
+The native run finished before this type-only equivalent branch clarification;
+its exact head remains recorded. Conductor stopped the following full3 stage
+before tests for that known defect; exit143 and cancellation receipt retained,
+never represented as passed. The final frozen tree still needs its own full
+local harness and actual Windows native/hosted qualification before review
+resolution/merge/pruning. No broad track gate is closed.

@@ -457,3 +457,5 @@ they are not current-state assertions.
 - [Operation Context Gold full local validation](./operation-context-gold-validation-20261017.json).
 
 - [PR704 reserved-output race correction checkpoint](./operation-context-gold-output-correction-20261017.json).
+
+- [PR704 pinned-output actual-source repeat proof](./operation-context-gold-output-native-20261017.json).

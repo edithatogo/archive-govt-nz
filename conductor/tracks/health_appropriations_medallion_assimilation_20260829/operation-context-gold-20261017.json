@@ -1,5 +1,5 @@
 {
-  "actual_source_native": "e9passed; require exact output pin parity after output writer change",
+  "actual_source_native": "new pinned writer at6ef90a1a: two20file inventories match retained earlier pins; source bytes unchanged",
   "approved_joins": "none",
   "currency_admission": "not_performed",
   "denominator_selection": "not_performed",
@@ -43,6 +43,6 @@
     "explicit unverified CPI base"
   ],
   "source_profiles": 5,
-  "status": "PR704_review_output_race_corrected_requalification_pending",
+  "status": "PR704_output_race_corrected_native_passed_final_full_hosted_pending",
   "validation_receipt_sha256": "0196d8a015db60d41f39c7271d948b0517feec061691fc05ba06387aff9c9b91"
 }

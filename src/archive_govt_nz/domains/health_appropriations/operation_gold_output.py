@@ -98,11 +98,13 @@ class ReservedGoldDirectory:
         """Create one trusted portable member exclusively, then check identity."""
         _require(name not in {"", ".", ".."} and not any(c in name for c in "/\\:"))
         self.guard()
-        if self.descriptor is None:
+        if os.name == "nt":
+            _require(self.descriptor is None)
             # Every Windows ancestor and the leaf are held against write/delete
             # opens; this is never an unlocked descriptorless fallback.
             stream = (self.path / name).open("xb")
         else:
+            _require(self.descriptor is not None)
             flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | os.O_NOFOLLOW
             descriptor = os.open(name, flags, 0o600, dir_fd=self.descriptor)
             try:

@@ -13,10 +13,18 @@
     "seconds": 144.86,
     "skipped": 2
   },
-  "full_harness": "pending_after_correction",
+  "full_harness": "final corrected frozen-head rerun pending",
   "lint": "passed",
   "merge": "pending",
-  "native_actual_source_repeat": "pending",
+  "native_actual_source_repeat": "passed at6ef90a1a; two20file inventories identical to independent pre-correction pins",
+  "native_proof_sha256": "38f713345b783efb5ec13e2052ddfcf0d10d0b02bbb089a2c37ffb1a28000abe",
+  "platform_focused": {
+    "deselected": 9,
+    "log_sha256": "18247ead3deae23abb82c8e1e99df82bc8054bce7b7628b2f8e1730302a0f1ee",
+    "passed": 6,
+    "seconds": 14.27,
+    "skipped": 2
+  },
   "posix": "pinned directory descriptor with O_EXCL/O_NOFOLLOW relative creates and identity guards",
   "prior_pr_head": "34b11e52c0ae504cff7c8aa0e3a4f7845da34baf",
   "pruning": "pending",
@@ -29,7 +37,14 @@
   "review_resolution": "pending_after_qualification",
   "review_thread": "PRRT_kwDOTo2MOM6teibQ",
   "schema_version": "archive-govt-nz.health-operation-context-gold-output-correction/v1",
+  "superseded_full_3": {
+    "cancellation_receipt_sha256": "b5795402deb17125a57ff9f49e902e7a14e45559e8780bca56a45193061df6e9",
+    "exit_code": 143,
+    "status": "cancelled_before_tests_for_known_Windows_static_defect"
+  },
   "typing_errors": 0,
   "windows": "native ancestor-chain plus leaf handles; read sharing only; reparse rejection and128bit file-ID admission; no unlocked path fallback",
-  "windows_native_qualification": "pending_hosted"
+  "windows_native_qualification": "pending_hosted",
+  "windows_static_correction": "explicit os.name branch plus descriptor-state gates;0errors on Windows platform",
+  "windows_static_initial": "failed: descriptor-state condition did not narrow POSIX-only flag availability"
 }
