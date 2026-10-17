@@ -1,0 +1,52 @@
+{
+  "checked_and_merged_tree": "6af6f4ace1f21c6b3411e688750a4812096023e7",
+  "checked_head": "ab156c16625d87305ec4207bce613ee60d260ec8",
+  "checked_head_and_merge_on_fetched_main": true,
+  "ci_record_sha256": "0ad13c00fe36cfbc7b21dedea9c00feaf34faac92a6e57047e671bb480e343b4",
+  "clean_before_prune": true,
+  "fetched_main": "3545f270e9d9829893baa859cb2a2892706aadd1",
+  "final_ci_run": 39022265078,
+  "final_job_log_sha256": {
+    "macos": "b11bfc736b456f2dc94746cf9b5b56d64579b657afa307bf614c256a7fcdcc33",
+    "ubuntu": "1bd8f51886c2bcf4e608973e7013a9d7418c572e677a12e0f91fcf29bfbca8a1",
+    "windows": "91d343d94756df5bd3b82d07c3e926a01446ba3026d93446b330e10f680515d5"
+  },
+  "local_full_final_head": "not_claimed; full_before_PRpassed7143; finalheadfullhosted3platformsgreen; supersededlocalcancellationspreserved",
+  "local_topic_pruned": true,
+  "merge_commit": "3545f270e9d9829893baa859cb2a2892706aadd1",
+  "native_windows_preflight": "3passed3skipped; success/interruption/ancestor replacement proved",
+  "observed_at": "2026-10-17T10:02:20.983059+00:00",
+  "platform_tests": {
+    "macos": {
+      "coverage": 97.26,
+      "passed": 7857,
+      "sbom_components": 113,
+      "seconds": 522.01,
+      "skipped": 28
+    },
+    "ubuntu": {
+      "coverage": 97.26,
+      "passed": 7857,
+      "sbom_components": 114,
+      "seconds": 408.33,
+      "skipped": 28
+    },
+    "windows": {
+      "coverage": 97.2,
+      "passed": 7849,
+      "sbom_components": 114,
+      "seconds": 559.57,
+      "skipped": 36
+    }
+  },
+  "primary_worktree_retained": true,
+  "pull_request": 704,
+  "remote_topic_absent": true,
+  "remote_tracking_topic_pruned": true,
+  "required_and_supplementary_checks": "all_applicable_passed; supplemental_legislation_explicitly_skipped",
+  "review_threads": "all_resolved",
+  "schema_version": "archive-govt-nz.health-operation-context-gold-delivery/v1",
+  "track_complete": false,
+  "unique_changes_before_prune": 0,
+  "url": "https://github.com/edithatogo/archive-govt-nz/pull/704"
+}

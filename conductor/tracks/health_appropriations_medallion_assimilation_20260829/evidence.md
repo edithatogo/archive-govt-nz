@@ -2097,3 +2097,34 @@ claimed or scheduled. Local4 exit143/partial logs are retained, never marked
 passed. Local full-before-PR7143 and exact4a3 hosted Mac/Ubuntu remain historical
 scoped evidence. Final corrected head requires actual native Windows proof and
 all required hosted checks before resolving review/merging/pruning.
+
+
+## Operation Context Gold delivered; metadata bridge active — 2026-10-17
+
+PR #704 merged normally as3545f270e9d9829893baa859cb2a2892706aadd1 after all
+applicable checks passed onab156c16625d87305ec4207bce613ee60d260ec8. Final full
+Ubuntu/macOS:7857passed/28skipped each; Windows:7849passed/36skipped. Native
+Windows preflight3passed/3platform skips; schemas62/documents52, parity9/9,
+mutation/security/supply-chain gates, analyze/lint/CodeQL/patch coverage passed.
+The reproduced output-race review was resolved after qualification. Coverage
+97.20–97.26% against unchanged80%; SBOM platform counts114/113/114. Historical
+local passes, Windows failure and superseded cancellations retain exact scope.
+
+Fetched main contains checked head and merge; checked/merged tree is identical
+6af6f4ace1f21c6b3411e688750a4812096023e7. Zero unique topic changes and clean
+status preceded local/remote/tracking topic pruning. Primary worktree retained.
+See [delivery receipt](./operation-context-gold-delivery-20261017.json).
+The five-profile canonical/Gold integration and its output-race fix are complete;
+no broader phase/track gate is closed.
+
+Next is the existing Platinum/recovery bridge. The current projector supports
+only Budget/Fiscal/canonical-Gold inputs, not operation-context Gold. A read-only
+probe of13 independently pinned new tables found a real descriptor contract gap:
+nullable publisher statuses cannot be sorted with strings. Add an explicit new
+profile, retain null counts distinctly, label facts/lineage/coverage/quality
+honestly, and reuse existing metadata projections rather than duplicate them.
+The new route must verify Gold and five independent operation pins against
+trusted Bronze before projecting expected products; keep paths private and
+rights/publication/unsupported federation claims unchanged. Qualified CPI-base
+candidate captures collected outside the frozen tree remain for a separate
+source-census slice; the admitted Gold base metadata is unchanged.
