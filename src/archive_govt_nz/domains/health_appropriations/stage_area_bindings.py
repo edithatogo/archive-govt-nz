@@ -4,6 +4,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from dataclasses import dataclass, field
@@ -16,6 +17,8 @@ from archive_govt_nz.domains.health_appropriations.area_accounting import (
 from archive_govt_nz.domains.health_appropriations.raw_reader import _read_rows
 from archive_govt_nz.domains.health_appropriations.rebuild_eight import verify_eight
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
+    encode_json,
+    read_regular_snapshot,
     verified_snapshot,
 )
 
@@ -52,7 +55,9 @@ class SheetLinks:
     rows: int = 0
 
 
-def _coordinate(value: str, sheets: list[dict[str, Any]]) -> tuple[str, str]:
+def _coordinate(
+    value: str, sheets: list[dict[str, Any]], *, allow_number_format: bool
+) -> tuple[str, str]:
     _require(isinstance(value, str) and 0 < len(value) <= MAX_COORDINATE_TEXT)
     matches = []
     for sheet in sheets:
@@ -64,7 +69,11 @@ def _coordinate(value: str, sheets: list[dict[str, Any]]) -> tuple[str, str]:
             if value.startswith(prefix)
         )
     _require(len(matches) == 1)
-    sheet, cell = matches[0]
+    sheet, reference = matches[0]
+    cell = reference
+    if reference.endswith("@number_format"):
+        _require(allow_number_format)
+        cell = reference.removesuffix("@number_format")
     match = re.fullmatch(r"([A-Z]{1,3})([1-9][0-9]{0,6})", cell)
     if match is None:
         message = "stage_area_binding_contract"
@@ -74,7 +83,7 @@ def _coordinate(value: str, sheets: list[dict[str, Any]]) -> tuple[str, str]:
     for letter in letters:
         column = column * 26 + ord(letter) - ord("A") + 1
     _require(1 <= int(row) <= sheet["max_row"] and 1 <= column <= sheet["max_column"])
-    return sheet["title"], cell
+    return sheet["title"], reference
 
 
 def project_stage_bindings(
@@ -107,7 +116,9 @@ def project_stage_bindings(
     for link in links:
         _require(link["source_object_sha256"] == receipt["source_object_sha256"])
         sheet, cell = _coordinate(
-            link["source_coordinate"], receipt["workbook_inventory"]["sheets"]
+            link["source_coordinate"],
+            receipt["workbook_inventory"]["sheets"],
+            allow_number_format=name == "crown" and link["field"] == "source_context",
         )
         group = groups.setdefault(sheet, SheetLinks())
         group.records.add(link["record_id"])
@@ -164,6 +175,14 @@ def build_stage_area_bindings(
     """
     inventory = reconcile_areas(donor, census)
     verified = verify_eight(run, store, manifest_sha256)
+    plan = json.loads(
+        read_regular_snapshot(run / "PLAN.json", max_bytes=MAX_MANIFEST_BYTES)
+    )
+    _require(
+        hashlib.sha256(encode_json(plan).encode()).hexdigest()
+        == verified["plan_sha256"]
+    )
+    _require(plan["legacy_plan"]["donor_manifest_sha256"] == donor.sha256)
     coverage = {row["stage"]: row for row in verified["coverage"]}
     bindings, catalog = [], []
     for name in STAGES:
@@ -202,6 +221,7 @@ def build_stage_area_bindings(
         "schema_version": "archive-govt-nz.health-stage-area-bindings/v1",
         "scope": "nine recovered stages; selected fields and source context only",
         "run_manifest_sha256": manifest_sha256,
+        "canonical_plan_sha256": verified["plan_sha256"],
         "donor_manifest_sha256": donor.sha256,
         "census_sha256": census.sha256,
         "verification": "existing_twelve_stage_source_output_and_lineage_contracts",

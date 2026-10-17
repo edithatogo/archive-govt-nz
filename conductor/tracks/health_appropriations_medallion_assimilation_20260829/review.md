@@ -3531,3 +3531,29 @@ initially fail missing-module collection, then113checks pass0.40s. The expanded
 area/stage/orchestration selection passes229checks6.47s; Ruff/format/strict typing
 pass after bounded lint corrections. Retained-output producer readback, full
 harness and hosted delivery remain pending; no unchanged reconstruction rerun.
+
+
+### 2026-10-18 — Native binding failure and narrow source-contract recovery
+
+Bindings1 stopped before full validation at the coordinate contract. A bounded
+pinned-output diagnostic identified exactly61unsupported references, all Crown
+source_context cell@number_format properties; no ranges, composites or other
+grammar were observed. Failure log/recipe/partial output and diagnostic remain
+preserved. The projector now permits only the evidenced Crown/source_context
+suffix, checks its underlying cell bounds and retains the full annotated
+reference in context coordinates, never in amount coordinates. Unknown property,
+wrong profile/field and bad bounds still fail closed.
+
+Review also identified the missing explicit binding between supplied donor
+inventory and the verified run PLAN. A bounded regular snapshot is JSON-decoded,
+canonical encode_json hash checked against the existing verifier plan_sha256,
+then legacy_plan.donor_manifest_sha256 must equal the supplied donor pin. The
+legacy plan hash is canonical content, not raw newline-terminated file bytes.
+Native retained inputs were already the same donor; this closes public-reader
+cross-snapshot acceptance without changing any reconstructed product.
+
+Focused source/property/plan-mismatch regression and existing area/verifier/
+orchestration checks pass236tests5.16s after a test-import correction; initial
+2failed/234passed evidence remains retained. Ruff/format/strict typing pass.
+Revised bindings2 readback and required full harness remain pending on a new
+frozen head; no workbook reconstruction is repeated or prior failure erased.

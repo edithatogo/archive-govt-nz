@@ -1,14 +1,24 @@
 {
   "existing_three_partial_assertions": "unchanged",
   "focused": {
-    "log_sha256": "f7e27c8a43fd15095ff005f215e66d3c8f822df54310ec43593c8dbd8a38e719",
-    "passed": 229,
-    "seconds": 6.47
+    "log_sha256": "b1439b6b0f44c1dc51fdcdba6a074a8ee17073a6c86065c9d46f80692ef01f5a",
+    "passed": 236,
+    "seconds": 5.16
   },
   "full": "pending",
   "global_worksheet_semantics": "unresolved",
-  "native_report": "pending",
+  "initial_native_report_failure": {
+    "diagnostic_sha256": "7970a56fac49f73ac6b026c5389dbc9e38c52a3fdd3ebe6038dc49c9ae97ec8f",
+    "exit": 1,
+    "failure_log_sha256": "cd82076af829ff7b644605f2eb4e62f9224e653460de3868cedb68e0f9757d55",
+    "head": "290c1664887291ad6bd3a436aff07590d301e1ed",
+    "partial_outputs": "preserved externally",
+    "scope": "Crown source_context @number_format only",
+    "unsupported_coordinates": 61
+  },
+  "native_report": "bindings2 pending",
   "publication": "not_performed",
+  "recovery": "Crown source_context formatting annotation retained and bounded; unknown properties remain refused; supplied donor bound to verified canonical plan",
   "rights_state": "not_evaluated",
   "source_evidence": "donor-area-reconstruction-20261018.json",
   "stages": [
