@@ -3236,3 +3236,25 @@ Git in the permanent component-index-export-20261018 CAS. Three metadata capture
 provide Infoshare ownership, LCIv66 and PPIv3 methodology; their semantic
 qualification remains pending. No rights decision or analytical admission.
 See component-index-source-checkpoint-20261018.json.
+
+
+### 2026-10-18 — component source offline contract
+
+The first focused invocation failed collection because the new module did not
+exist (red-1.log retained). The bounded offline implementation now checks the
+closed six-capture cohort using existing regular-snapshot/fixity/WARC response
+binding plus two separately pinned native TQX configs. Defused XML rejects DTDs;
+CSV checks exact table headers/footer, complete quarterly label grid, missing
+positions, finite positive decimal literals and observed selectors/status option.
+Readback retains title/base text, units, update literal, source footnote and
+lexical period/value digest; no rounding or inferred FINAL/series code. General
+LCIv66 and PPIv3 method observations remain limited by their version/vintage.
+Publisher ownership/licence statements are observed, not automatically applied.
+All14source/query/response objects including the reused CPI copyright capture
+are preserved. Existing Silver/Gold and generic rights policy are unchanged.
+
+Initial9contracts passed4.94s; capture/read-only refusals expanded to13passing
+contracts1.41s. Final14component contracts plus7CPI regressions pass21checks2.61s.
+Ruff/format and focused typing pass; initial lint findings retained and corrected
+without changing detector rules or assertions. Actual-source offline replay,
+full harness and hosted delivery remain pending under the existing coordinator.

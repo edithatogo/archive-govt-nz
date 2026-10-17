@@ -1,8 +1,17 @@
 {
+  "actual_source_native": "pending_owner_launch",
   "analytical_selection": "not_selected",
   "base_commit": "31ba7ee64b0ee6bef4287191c8dd403be12e00bd",
+  "focused": {
+    "log_sha256": "8b844e0a3b6ed39cfb20a545a9e60ac531a2df6181ed4179027f2261cdc86c6c",
+    "passed": 21,
+    "scope": "component source contracts plus existing CPI source-evidence regression",
+    "seconds": 2.61
+  },
   "full_alphanumeric_series_identifiers": "not_inferred; table and dimension identities explicit",
+  "full_harness": "pending",
   "preservation": "immutable originals/query configs and WARC responses retained outside Git; no cleanup",
+  "preservation_objects": 14,
   "publication": "not_performed",
   "queries": [
     {
@@ -20,7 +29,7 @@
       "transport": "browser_download_no_WARC_claim"
     }
   ],
-  "rights": "not_evaluated; reuse pinned copyright and qualify Infoshare ownership evidence",
+  "rights": "not_evaluated; pinned copyright observation and resource ownership do not adjudicate eligibility",
   "schema_version": "archive-govt-nz.health-component-index-source-checkpoint/v1",
   "scope": "source_census_only_no_analytical_admission",
   "series": {
@@ -152,6 +161,6 @@
       "warc_sha256": "dc71e228a1c565482f575cf85918b4d66fb5d9259ce0e84052dde2237481b3a3"
     }
   ],
-  "status": "actual_exports_captured_offline_contract_pending",
+  "status": "offline_contract_focused_qualified_actual_source_replay_pending",
   "status_flags": "ShowNonFinalFlags requested; absent flags remain unflagged_unknown, not FINAL"
 }
