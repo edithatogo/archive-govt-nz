@@ -6081,3 +6081,13 @@ Symlink-parent fix green:546 focused contracts passed/10 skipped in10.39s;
 Ruff clean. The original failing real-symlink case now leaves the target
 directory empty. Native and full coherent-head assurance will repeat before
 review resolution/merge. Existing successful receipts remain preserved.
+
+
+PR #699 historical full assurance on cleanfcd1c6dd completed0:7,767 passed,
+10 skipped,23 warnings,308.42s,97.39% coverage;62 schema validations/52documents,
+parity9/9, all configured mutation/hygiene/audit/licence/secrets/SBOM gates,
+113components; external CDX explicitly skipped. Review correction2e9cd674 then
+passed546 focused/10 skips and repeated native14-profile209-fact42-Parquet
+parity/pinned-readback with all14 manifest pins unchanged.
+See [review-fix proof](./overview-operational-dispatch-review-fix-20261017.json).
+Full final-tree assurance, hosted checks, thread resolution and merge pending.

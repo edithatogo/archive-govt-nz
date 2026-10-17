@@ -48,6 +48,28 @@ compact receipt stability, tampered selection/digest/loss/context and re-pinned
 forged-output rejection, missing/extra output, wrong manifest pin and interrupted
 partial-output retention. Existing repetitive direct-route mocks were replaced
 with14 explicit common-route cases. Ruff and strict typing pass. The80% floor
-and all deadlines remain unchanged. Full exact-head validation and PR delivery
-are still pending. General recovery-profile admission and remaining adapters
+and all deadlines remain unchanged. Initial exact-head validation passed and PR #699 is open;
+review-fix exact-head validation and delivery remain pending. General recovery-profile admission and remaining adapters
 are separate open tasks; no whole-track recovery claim is made.
+
+
+## PR #699 review correction
+
+The first full harness passed on clean
+`fcd1c6ddc51b630423758bffa33dae4c880512d5`:7,767 passed/10 skipped/23 warnings
+in308.42s,97.39% coverage,62 reported schema validations/52 documents,9/9 parity,
+all configured mutation/hygiene/audit/licence/secrets/SBOM gates (113components).
+External CDX was explicitly skipped. This is historical evidence for that head.
+
+Review found a real writer/readback policy mismatch for nonexistent output
+beneath a symlinked ancestor. An actual directory-symlink regression first
+reproduced a complete output left after failure. The shared ancestor check now
+runs before parsing/writing and also remains on readback. The target stays
+empty;546 focused tests/10 skips pass, with Ruff clean.
+
+[Repeated native proof after the fix](./overview-operational-dispatch-review-fix-20261017.json)
+completed0 on clean2e9cd674: all14 profiles,209 facts,42 Parquet files eachrepeat
+and70 actual common dispatches pass again. All14 new manifest pins are also
+exactly unchanged from the pre-fix proof. No original/old native output was
+changed. Full coherent-head validation and hosted checks must pass before the
+review thread is resolved and this PR is merged.

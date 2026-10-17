@@ -407,3 +407,5 @@ they are not current-state assertions.
 
 - [Operational reviewed overview dispatch](./overview-operational-dispatch-20261017.md)
   and [native run inventory/pinned readback proof](./overview-operational-dispatch-20261017.json).
+
+- [Operational overview review-fix native proof](./overview-operational-dispatch-review-fix-20261017.json).

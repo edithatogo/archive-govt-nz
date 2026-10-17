@@ -2222,3 +2222,13 @@ ancestor-symlink refusal before parsing/writing. No path resolution, generic
 writer-policy weakening or adversarial filesystem-race guarantee introduced.
 Earlier full/native passes remain historical evidence; coherent-head repeat
 validation and thread resolution are pending.
+
+
+PR #699 historical full assurance on cleanfcd1c6dd completed0:7,767 passed,
+10 skipped,23 warnings,308.42s,97.39% coverage;62 schema validations/52documents,
+parity9/9, all configured mutation/hygiene/audit/licence/secrets/SBOM gates,
+113components; external CDX explicitly skipped. Review correction2e9cd674 then
+passed546 focused/10 skips and repeated native14-profile209-fact42-Parquet
+parity/pinned-readback with all14 manifest pins unchanged.
+See [review-fix proof](./overview-operational-dispatch-review-fix-20261017.json).
+Full final-tree assurance, hosted checks, thread resolution and merge pending.
