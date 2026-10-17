@@ -492,4 +492,4 @@ they are not current-state assertions.
 
 - [Recovered nine-stage source-area bindings](./donor-stage-area-bindings-20261018.json); native613-fact/12binding report and full local assurance, with all global unit remainders open.
 
-- [Five physical literal source adapters](./literal-common-adapters-20261018.json); seven shared native profiles, complete area qualifiers and focused qualification; native/full delivery pending.
+- [Five physical literal source adapters](./literal-common-adapters-20261018.json); seven shared native profiles, complete area qualifiers, two native replays and full harness qualified; hosted delivery pending.

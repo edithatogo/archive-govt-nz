@@ -3610,6 +3610,20 @@ Initial missing-module red is retained; five physical bundle fixtures plus
 inventory checks pass6tests1.45s. Expanded shared admission/packaging/registry/
 workbook/verifier/orchestration checks pass257tests8.18s. Native admission89 and
 package16checks pass independently. Ruff/format/strict typing pass after bounded
-style/type corrections; earlier logs remain. Real329fact/5543lineage/606area
-qualification and exact old/new output comparisons plus full harness remain
-pending before PR. No rights, currency, period or global mapping state changes.
+style/type corrections; earlier logs remain. Native qualification now passes two independent runs:329facts/5543lineage/
+606complete area dispositions, five physical sources/seven profiles and all28
+standalone files per run identical to historical pins. All50reference files and
+source bytes remain unchanged. Report SHA256 is recorded in the checkpoint.
+
+The first replay reproduced all28files, then file-denial instrumentation blocked
+PyArrow's first UTC/platform dependency initialization. Preserve that failure.
+The second recipe warms verified Arrow UTC conversion before denying Python
+file APIs during common dispatch; network denial remains throughout. This is
+warmed-dispatch assurance, not an operating-system sandbox claim. No producer
+change or dependency installation was needed.
+
+The original full harness passed on0c378f4e/treebfd0ae9e:7951tests,12skips,
+18warnings,505.09s and97.20%coverage against the unchanged80%floor. All66schemas,
+56representative documents,9/9parity and mutation/hygiene/security/supply-chain
+gates passed; CAS232.13MB/s. Hosted checks, normal merge and pruning remain
+pending. Rights, currency, periods and global mappings are unchanged.
