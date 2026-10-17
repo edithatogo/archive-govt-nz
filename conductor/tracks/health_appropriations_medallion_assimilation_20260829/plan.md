@@ -1954,7 +1954,7 @@ integrated parent head.
   native1 failure/partial evidence retained. Main ancestry and identical tree
   13f421b4 verified, zero unique changes, clean topic refs pruned.
 
-- [~] Expose the existing source-regenerated operation-context metadata v5 profile
+- [x] Expose the existing source-regenerated operation-context metadata v5 profile
   through typed build/verify CLI commands and read-only MCP verification. Reuse
   the closed operation input spec, independent Gold/metadata pins, projector,
   verifier and output guard; dry-run must execute full source verification.
@@ -1967,3 +1967,22 @@ integrated parent head.
   but a redundant receipt status label blocked the credential scan before SBOM.
   Label-only correction retains the result/log pins and all scanner rules;
   affected-stage recovery and hosted delivery remain pending.
+
+
+  Delivered PR #708 at31ba7ee6 after seven named hosted checks succeeded on
+  f0291547 and no review threads remained. Fetched main contains checked head
+  and merge with identical cbaeb167 tree and zero unique changes. Primary checkout
+  retained clean; local/remote/tracking topic refs absent. Local full1/full2 and
+  docs-only affected-stage recovery remain separately scoped in the external
+  reconciled receipt; the historical pending checkpoint is superseded by
+  operation-metadata-operations-delivery-20261018.json.
+
+- [~] Qualify exact publisher-generated health component-index exports for the
+  source census. Retain native TQX separately from numeric CSV, verify actual
+  capture response bindings and exact table/dimension/vintage/period identities,
+  preserve missing observations and unflagged status, and bind rights observations
+  to retained source evidence. Add the smallest offline evidence contract for
+  qualified source cohorts and reconcile census gaps; do not select a health-cost
+  deflator, infer full series identifiers, analytically admit values or change
+  generic host rights policy. [M-02, M-04, M-06, M-12, M-16; AC-03, AC-04,
+  AC-09, AC-10, AC-12, AC-16]

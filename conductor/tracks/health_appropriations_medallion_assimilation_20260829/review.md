@@ -3187,3 +3187,52 @@ original receipt in Git/external evidence, and every detector rule/baseline.
 No production/test/tool/runtime input changes are involved. The coordinator will
 run only the affected scan and previously unrun SBOM after focused structure/
 reference checks. No PR is opened before that required recovery succeeds.
+
+
+### 2026-10-18 — metadata operations delivered; component-index qualification
+
+PR708 merged normally as31ba7ee6 after all seven named hosted checks passed on
+f0291547, with no review threads and active strict branch protection unchanged.
+Fetched main contains checked/merge commits, identical cbaeb167 tree and zero
+unique changes. Primary checkout retained clean; topic refs pruned. The external
+local-assurance-reconciled-3 receipt preserves full1 timeout/unidentified F,
+full2 test success/scan stop, and terminal0 affected scan/SBOM continuation.
+No unchanged native/full replay was needed. See the dated delivery receipt;
+prior pending checkpoint statements remain historical rather than silently
+rewritten.
+
+Next source-census task preserves publisher exports rather than constructing
+series identifiers. BrowserOS generated the exact LCI025AA TQX for code3 All
+Salary and Wage Rates / LCI025AC Health Care and Social Assistance, central
+Government sector. TQX has selections only, not numeric observations. Native
+CSV export was found in the actual response's download-frame URL after UI
+selection yielded no downloaded file. Original2719bytes SHA4a525c42 contains
+135quarter labels1992Q4–2026Q2,66literal missing '..' through2009Q1 and69numeric
+2009Q2–2026Q2. Status flags were requested; no final status is inferred from
+unflagged observations. The CSV retains baseJune2009=1000, Index/Units and
+updated05Aug2026 metadata. Coordinator-owned fresh unauthenticated GET capture
+matched the body exactly; existing response binding verified actual3297byte
+WARC1c6d9962. External query/capture receipts remain in
+/Volumes/PortableSSD/tmp/health-component-index-export-20261018. Rights and
+analytical admission are not performed; no browser credentials transferred.
+
+PPI021AA full-period UI currently has empty publisher row/column layout lists;
+ValidateInput returnsfalse. Preserve that diagnosis; do not fabricate hidden
+layout fields or infer PPIQ identifiers. Conductor has been asked for a bounded
+publisher-supported recovery. Continue independent source/rights qualification.
+
+PPI layout recovery used the existing publisher direct-Go route from variable
+selection, then Show status flags; no hidden field or client-authored query was
+needed. Exact original3470byte CSV159708fc has129periods,9missing '..' through
+1996Q2 and120numeric from1996Q3. Initial integer-only diagnostic miscounted the
+native decimal tokens; finite Decimal inspection corrected only that count to
+120, retaining all source bytes and lexical precision. DisplayDecimals0 does
+not authorize rounding the export. PPI021AA/PPI021CC identifies Inputs ANZSIC06
+NZSIOClevel3 health-and-social-assistance, not central-government-only or output
+PPI. Exact query2a40ab6d and fresh sessionless response WARCfd3c66ae retained;
+existing response binding passed. Five actual source captures plus two original
+query files (12objects) independently rehashed/read back and preserved outside
+Git in the permanent component-index-export-20261018 CAS. Three metadata captures
+provide Infoshare ownership, LCIv66 and PPIv3 methodology; their semantic
+qualification remains pending. No rights decision or analytical admission.
+See component-index-source-checkpoint-20261018.json.
