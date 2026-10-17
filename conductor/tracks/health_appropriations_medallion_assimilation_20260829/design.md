@@ -1186,3 +1186,11 @@ with the existing path reader, then the existing source-faithful Silver fact
 and lineage construction. Explicit observation context remains caller-provided;
 the pinned donor identity/schema is closed. No SQLite source URI or temporary
 source file is opened, and no semantic/historical replacement is authorized.
+
+
+The donor-area receipt recovery reuses the existing twelve-stage replay recipe
+with independently pinned surviving donor/candidate/Crown metadata. Two new
+exclusive permanent run directories retain outputs; they are labeled current
+reconstructions using historical normalization context, not fresh captures or
+silently recreated historical evidence. Compare all old stage/file pins and
+report differences without changing the old receipts or whole-unit scope.
