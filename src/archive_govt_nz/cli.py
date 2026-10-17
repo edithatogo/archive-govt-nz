@@ -13,6 +13,7 @@ from typing import TYPE_CHECKING, Any, Literal, cast
 
 import httpx
 from cyclopts import App
+from jsonschema import ValidationError
 
 from archive_govt_nz import __version__
 from archive_govt_nz.capture import CaptureConfig, CaptureError, capture_url
@@ -26,7 +27,10 @@ from archive_govt_nz.cli_integrity import (
     verify_cas,
 )
 from archive_govt_nz.core.registry import AgencyRegistry
-from archive_govt_nz.domains.health_appropriations import resume_operations
+from archive_govt_nz.domains.health_appropriations import (
+    operation_context_gold,
+    resume_operations,
+)
 from archive_govt_nz.domains.health_appropriations.budget_operations import (
     verify_budget_package,
 )
@@ -422,6 +426,90 @@ def health_appropriations_build_context_gold(
         return 2
     _emit_json({"command": "health-appropriations-build-context-gold", **result})
     return 0
+
+
+@app.command(name="health-appropriations-build-operation-context-gold")
+def health_appropriations_build_operation_context_gold(
+    *,
+    input_spec: Path,
+    source_root: Path,
+    output_dir: Path,
+    write: bool = False,
+) -> int:
+    """Build source-reconciled operation Context Gold; default to no-write preflight."""
+    command = "health-appropriations-build-operation-context-gold"
+    try:
+        result = operation_context_gold.export_operation_context_gold(
+            operation_context_gold.read_input_spec(input_spec),
+            source_root,
+            output_dir,
+            write=write,
+        )
+    except ValueError as error:
+        _emit_json({"command": command, "status": "failed", "error": str(error)})
+        return 2
+    _emit_json({"command": command, **result})
+    return 0
+
+
+@app.command(name="health-appropriations-verify-operation-context-gold")
+def health_appropriations_verify_operation_context_gold(
+    *,
+    input_spec: Path,
+    source_root: Path,
+    package_dir: Path,
+    manifest_sha256: str,
+) -> int:
+    """Verify independent Gold/input pins and regenerate canonical product controls."""
+    command = "health-appropriations-verify-operation-context-gold"
+    try:
+        result = operation_context_gold.verify_operation_context_gold(
+            operation_context_gold.read_input_spec(input_spec),
+            source_root,
+            package_dir,
+            manifest_sha256=manifest_sha256,
+        )
+    except ValueError as error:
+        _emit_json({"command": command, "status": "failed", "error": str(error)})
+        return 2
+    _emit_json({"command": command, **result})
+    return 0
+
+
+@app.command(name="health-appropriations-query-operation-context-gold")
+def health_appropriations_query_operation_context_gold(
+    *,
+    input_spec: Path,
+    source_root: Path,
+    package_dir: Path,
+    manifest_sha256: str,
+    limit: int = 20,
+) -> int:
+    """Read bounded source-reconciled observations; no arbitrary SQL or writes."""
+    try:
+        result = operation_context_gold.mcp_call(
+            "health_appropriations_query_operation_context_gold",
+            {
+                "input_spec": str(input_spec),
+                "source_root": str(source_root),
+                "package_dir": str(package_dir),
+                "manifest_sha256": manifest_sha256,
+                "limit": limit,
+            },
+        )
+    except ValidationError:
+        _emit_json(
+            {
+                "command": "health-appropriations-query-operation-context-gold",
+                "status": "failed",
+                "error": "operation_context_gold_invalid",
+            }
+        )
+        return 2
+    _emit_json(
+        {"command": "health-appropriations-query-operation-context-gold", **result}
+    )
+    return 2 if result["status"] == "failed" else 0
 
 
 @app.command(name="health-appropriations-build-fiscal-reports")

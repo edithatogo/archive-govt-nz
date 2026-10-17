@@ -6502,3 +6502,176 @@ receipt, not proof of complete v2 lineage admission; the new path qualifies that
 missing contract without rewriting the historical output.
 See [native proof](./context-operation-canonical-native-20261017.json) and
 [full validation](./context-operation-canonical-validation-20261017.json).
+
+
+## Canonical consumer delivered; operation Gold adoption active — 2026-10-17
+
+PR #703 merged normally as 8410aaa7374f12df732e8683f371dc80375c32e8. Final
+head 37ebb7d7 passed all applicable checks: Ubuntu 9m50s, macOS 8m40s,
+Windows 17m38s, analyze/lint/CodeQL and patch coverage. No review threads remained.
+Fetched main contains head and merge, with identical checked/merged tree
+f37ebf16d04856557c3be0952522321b24d4f3d0. Zero unique changes and clean status
+preceded local/remote/tracking topic pruning; primary retained.
+See [delivery receipt](./context-operation-canonical-delivery-20261017.json).
+
+The combined integration item remains active for source-separated Gold. Reuse
+canonical mappings plus existing coverage/quality/report/plot projections and
+original native Gold APIs. The new route must verify all five independent input
+operation pins, consume admitted canonical facts and actual source statuses,
+retain canonical/direct/common lineage closure, and verify saved products against
+source-regenerated expected content. Add typed local CLI and read-only query
+contracts for this new route, with no default writes, no repairs of partial output
+and no external publication/capture mutation. Rebuild/repeat and tamper evidence
+remain required before full assurance and focused delivery.
+
+
+## Operation Context Gold implementation and input-reader fixes — 2026-10-17
+
+The new Gold path consumes all five independently pinned operation packages
+through admitted canonical bundles, preserving common evidence alongside typed
+facts/direct lineage. It saves canonical products plus existing context tables,
+quality report and deterministic plots, with a distinct operation-Gold manifest.
+Readback regenerates expected metadata/products from trusted source inputs and
+requires independent Gold and input pins. Source statuses come from original
+common records; GDP series identity composes the same row's literal prefix and
+reference. Native Gold outputs/readers remain unchanged. Typed CLI build/verify/
+query and three read-only MCP tools use a closed bounded five-input specification;
+MCP exposes no write flag and queries cap returned rows.
+
+Real draft regressions were retained before correction: both directory readers
+scanned beyond an unexpected entry; bounded membership now stops after one extra.
+Conductor found that a FIFO input specification could block before byte caps; a
+bounded subprocess reproduced the timeout at 10 seconds. Shared regular snapshot
+transport now uses nonblocking open where supported, fstat regular-file admission,
+capped reads and finally-close. Existing verified snapshots still hash exactly
+the bytes returned. The public FIFO test now passes, independently confirmed by
+Conductor; affected config/regular snapshot checks pass 27 tests. Prior integrated
+checks passed 49 tests before final FIFO/dispatch/output-schema changes; the final
+coherent focused run remains pending. Typing and Ruff are clean. Native actual-
+source repeat/CLI/MCP/recovery proof, full harness and hosted delivery remain
+pending; no broad track gate or rights/currency/denominator/join is closed.
+See [implementation checkpoint](./operation-context-gold-20261017.json).
+
+
+## Operation Context Gold native proof and full-gate corrections — 2026-10-17
+
+At frozen e9f4297f, coherent focused checks passed 98 tests in58.57s. Two
+empty-derivative Bronze → operation → canonical → Gold replays each generated
+20 files with identical hashes. All five input operation inventories match the
+independent earlier receipt; canonical facts/lineage match the retained canonical
+proof. The615 observations map to615 unique canonical facts, with4190 validated
+lineage rows,585 eligible context-only observations and30 exclusions (including
+two publisher-provisional population rows). Four actual CLI invocations passed
+in10.8–11.4s under the unchanged30s bound; read-only MCP preflight/verify/query
+passed both runs. Source and operation inputs remained unchanged. Conductor
+independently audited saved files, schemas, links and logs without replay and
+found no actionable native-proof issue. See
+[native proof](./operation-context-gold-native-20261017.json).
+
+The full harness at the same head failed:7865 passed,2 failed,10 skipped,
+23 warnings,432.40s; coverage97.38% against80%. Formatting/lint/typing passed;
+later harness gates did not run after test failure. Preserve
+[initial failure evidence](./operation-context-gold-initial-validation-20261017.json).
+The new MCP input/output schemas omitted the repository-required2020-12 dialect
+marker; both now declare it. The existing Budget directory-pin failure test
+injected a global fstat error and now hit the new source descriptor check first.
+Its injection now targets an actual directory descriptor using saved real_fstat;
+it still proves exactly that failed descriptor closes once, while input errors
+retain input-stage semantics. No production error relabeling or safety removal.
+Corrective MCP/Budget focused checks passed33 tests in6.60s; Ruff check/format
+passed. Full clean-head rerun and hosted delivery remain required before merge.
+Native output logic was unchanged by these corrections; the native proof remains
+bound to its original exact commit. No broader track completion is claimed.
+
+
+## Operation Context Gold qualified locally — 2026-10-17
+
+The corrected clean frozen7143a86a full harness completed with exit0. Tests:
+7867 passed,10 skipped,23 warnings in390.34s; coverage97.40% against unchanged
+80% floor. Formatting/lint/typing0,62 schemas/52 representative documents,9/9
+parity with zero divergences, all mutation/hygiene gates, CAS347.99MB/s,
+dependency vulnerability/licence/secret checks and SBOM113 components passed.
+The existing CDX validation skip remains explicit. The failed initial receipt is
+retained independently. The project runtime is Python3.14.6/uvCLI0.13.1, with
+unchanged lock/backend/CI pins, rather than the system interpreter used for an
+earlier observer. See [full validation](./operation-context-gold-validation-20261017.json).
+
+Conductor independently audited the native proof and the two exact corrections;
+no blocking finding remained. Only documentation/evidence follows the tested
+code tree. Final affected documentation checks and hosted checks are separate
+required gates before normal protected merge and clean topic pruning. The five
+context common-operation canonical/Gold integration has local implementation,
+615fact/4190lineage native parity and20file repeated recovery evidence; broader
+source, donor-area, rights, metadata, scheduling and final track gates stay open.
+
+
+## PR #704 reserved-output race correction — 2026-10-17
+
+Review thread PRRT_kwDOTo2MOM6teibQ identified a real write redirection defect.
+Two executable races replaced the reserved output path with an input symlink
+before the first create or between creates; the old writer added19/18 files to
+that input. Both red failures and their exact logs are retained externally.
+The corrected writer reserves and pins the output directory, uses POSIX relative
+O_EXCL/O_NOFOLLOW creates, and holds all native Windows ancestor/leaf handles
+with read sharing only, reparse rejection and128bit file-ID checks through final
+readback. No unlocked Windows fallback. ExitStack closes in reverse order on
+success/interruption; failed pin and fdopen cleanup are covered. Original value,
+manifest and readback semantics are unchanged in design; actual-byte parity must
+be requalified before delivery. Native Windows replacement/cleanup contracts are
+present but cannot be claimed from macOS.
+
+Affected Gold/output checks passed15 with2 Windows-only skips in144.86s; final
+helper checks after test cleanup passed4 with2 skips in0.29s. Ruff and typing
+passed. The prior full gate remains valid only for its original7143 tree; the
+material correction requires fresh native/full/hosted assurance before review
+resolution or merge. Preserve the original native/full receipts and current
+non-terminal hosted runs; no merge, pruning, protection change or source repair.
+See [correction checkpoint](./operation-context-gold-output-correction-20261017.json).
+
+
+## PR #704 pinned-output native parity and platform narrowing — 2026-10-17
+
+Frozen6ef90a1a completed two fresh Bronze→operation→canonical→Gold rebuilds.
+All20 output files repeat byte-for-byte and match independently retained pre-
+correction pins. All615 observations/4190 lineage links retain their controls;
+585 eligible context-only/30 excluded, originals and input packages unchanged.
+Four actual CLI calls passed in12.1–14.9s under unchanged30s; read-only MCP
+preflight/verify/query passed both. See
+[output-correction native proof](./operation-context-gold-output-native-20261017.json).
+
+An additional explicit Windows platform type check exposed POSIX O_NOFOLLOW
+availability in a branch conditioned only on descriptor state. No runtime
+fallback or flag weakening: branch now tests os.name, requires the corresponding
+None/native descriptor state, and keeps existing writes unchanged for both valid
+public reservation cases. Windows platform typing is now0errors; affected
+race/closure checks6passed/2Windows-only skips/9deselected in14.27s, Ruffpassed.
+The native run finished before this type-only equivalent branch clarification;
+its exact head remains recorded. Conductor stopped the following full3 stage
+before tests for that known defect; exit143 and cancellation receipt retained,
+never represented as passed. The final frozen tree still needs its own full
+local harness and actual Windows native/hosted qualification before review
+resolution/merge/pruning. No broad track gate is closed.
+
+
+## PR #704 native Windows access-mask qualification correction — 2026-10-17
+
+Exact4a3cad55 hosted Ubuntu and macOS full assurance passed. Windows failed two
+native sharing tests: leaf/ancestor renames were not denied by attribute-only
+handles (7847passed/36skipped/2failed,648.09s). Preserve job117352281624/run
+39017372061 bounded evidence and log fixity in the correction checkpoint. This
+is a demonstrated Windows defect, not a hosted runner stall. Microsoft MS-FSA
+corroborates why attribute-only access does not participate in sharing checks.
+
+After Conductor stopped only the superseded local4 descendants and released
+freeze, add FILE_LIST_DIRECTORY to Windows handle desired access (0x80→0x81).
+Keep restrictive sharing, complete ancestor locks, reparse rejection,128bit IDs,
+finally-close and all native replacement/cleanup assertions. Add an early
+Windows-only CI invocation of the existing small output-pinning test module;
+full required platform assurance still follows on success. No new framework,
+permission grant, threshold reduction, Windows feature drop or timeout change.
+The sole production delta is inside the Windows-only function; native2/POSIX
+output code and bytes are unchanged, so no redundant Mac native/full replay is
+claimed or scheduled. Local4 exit143/partial logs are retained, never marked
+passed. Local full-before-PR7143 and exact4a3 hosted Mac/Ubuntu remain historical
+scoped evidence. Final corrected head requires actual native Windows proof and
+all required hosted checks before resolving review/merging/pruning.

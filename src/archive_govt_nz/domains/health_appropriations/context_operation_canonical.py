@@ -39,7 +39,9 @@ _ERROR = "context_operation_canonical_invalid"
 
 
 @dataclass(frozen=True, slots=True)
-class _Profile:
+class ContextSourceProfile:
+    """Fixed official source identity and its existing canonical record contract."""
+
     source_sha256: str
     source_locator: str
     source_vintage: str
@@ -54,11 +56,11 @@ def _require(condition: object) -> None:
         raise ValueError(_ERROR)
 
 
-def _profile(profile: str) -> _Profile:
+def _profile(profile: str) -> ContextSourceProfile:
     # Resolve the existing exact official cohorts, not candidate metadata. Each
     # observation literal stays distinct even for equivalent timestamp instants.
     if profile == "cpiq-se9a/v1":
-        return _Profile(
+        return ContextSourceProfile(
             cpi.SOURCE_SHA256,
             cpi.SOURCE_LOCATOR,
             cpi.SOURCE_VINTAGE,
@@ -67,7 +69,7 @@ def _profile(profile: str) -> _Profile:
             "price_population_fact",
         )
     if profile == "population-annual-mean-context/v1":
-        return _Profile(
+        return ContextSourceProfile(
             population.SOURCE_SHA256,
             population.SOURCE_LOCATOR,
             population.SOURCE_VINTAGE,
@@ -76,7 +78,7 @@ def _profile(profile: str) -> _Profile:
             "price_population_fact",
         )
     if profile == "qes-june2026-table8/v1":
-        return _Profile(
+        return ContextSourceProfile(
             qes.SOURCE_SHA256,
             qes.SOURCE_LOCATOR,
             qes.SOURCE_VINTAGE,
@@ -86,7 +88,7 @@ def _profile(profile: str) -> _Profile:
             "v2",
         )
     if profile == "gdp-expenditure-actual-2026q1/v1":
-        return _Profile(
+        return ContextSourceProfile(
             gdp.SOURCE_SHA256,
             gdp.SOURCE_LOCATOR,
             gdp.SOURCE_VINTAGE,
@@ -95,7 +97,7 @@ def _profile(profile: str) -> _Profile:
             "fiscal_context_fact",
         )
     _require(profile == "gdp-expenditure-actual-2026q2/v1")
-    return _Profile(
+    return ContextSourceProfile(
         gdp.JUNE_SOURCE_SHA256,
         gdp.JUNE_SOURCE_LOCATOR,
         gdp.JUNE_SOURCE_VINTAGE,
@@ -108,7 +110,7 @@ def _profile(profile: str) -> _Profile:
 def _canonicalize(
     verified: context_operations.VerifiedContextOperation,
     profile: str,
-    definition: _Profile,
+    definition: ContextSourceProfile,
 ) -> tuple[pa.Table, pa.Table]:
     tables = verified.tables
     lineage = tables["field_lineage.parquet"]
@@ -190,7 +192,22 @@ def _complete_qes_lineage(facts: pa.Table, legacy: pa.Table) -> pa.Table:
     return pa.Table.from_pylist(rows, recordset_schema("field_lineage", version="v2"))
 
 
-def project_context_operation(  # noqa: PLR0913 - independent pin and exact reviewed context
+def context_source_profile(profile: str) -> ContextSourceProfile:
+    """Return the fixed reviewed cohort; candidate metadata cannot define it."""
+    return _profile(profile)
+
+
+@dataclass(frozen=True, slots=True)
+class CanonicalContextProjection:
+    """Verified canonical tables with their original common evidence closure."""
+
+    facts: pa.Table
+    lineage: pa.Table
+    receipt: dict[str, Any]
+    operation: context_operations.VerifiedContextOperation
+
+
+def read_canonical_context(  # noqa: PLR0913 - independent pin and exact reviewed context
     source: Path,
     output_dir: Path,
     *,
@@ -200,7 +217,7 @@ def project_context_operation(  # noqa: PLR0913 - independent pin and exact revi
     source_vintage: str,
     source_locator: str,
     observed_at: str,
-) -> tuple[pa.Table, pa.Table, dict[str, Any]]:
+) -> CanonicalContextProjection:
     """Verify the operation first, then reuse its source's pure canonical mapping.
 
     This is read-only and grants no source, rights, currency or analytical
@@ -285,4 +302,29 @@ def project_context_operation(  # noqa: PLR0913 - independent pin and exact revi
         "approved_joins": "none",
         "publication": "not_performed",
     }
-    return facts, lineage, receipt
+    return CanonicalContextProjection(facts, lineage, receipt, verified)
+
+
+def project_context_operation(  # noqa: PLR0913 - preserve the existing tuple API
+    source: Path,
+    output_dir: Path,
+    *,
+    manifest_sha256: str,
+    profile: str,
+    expected_sha256: str,
+    source_vintage: str,
+    source_locator: str,
+    observed_at: str,
+) -> tuple[pa.Table, pa.Table, dict[str, Any]]:
+    """Project independently verified operations without discarding common evidence."""
+    result = read_canonical_context(
+        source,
+        output_dir,
+        manifest_sha256=manifest_sha256,
+        profile=profile,
+        expected_sha256=expected_sha256,
+        source_vintage=source_vintage,
+        source_locator=source_locator,
+        observed_at=observed_at,
+    )
+    return result.facts, result.lineage, result.receipt

@@ -1,0 +1,48 @@
+{
+  "actual_source_native": "new pinned writer at6ef90a1a: two20file inventories match retained earlier pins; source bytes unchanged",
+  "approved_joins": "none",
+  "currency_admission": "not_performed",
+  "denominator_selection": "not_performed",
+  "external_mutations": "not_performed",
+  "final_focused": "98 passed58.57s at e9f4297f; corrective MCP/Budget checks33passed6.60s",
+  "full_harness": "7143localpassed;4a3hostedMacUbuntu passed;4a3local superseded143; corrected finalheadfullhostedgates required",
+  "gold_schema": "archive-govt-nz.health-operation-context-gold/v1",
+  "hosted_delivery": "Windows4a3failedsharing;0x81correction awaitingactualnative/fullhostedproof",
+  "input_contract": "five caller-retained independent operation pins, exact reviewed source cohorts and bounded closed typed input specification",
+  "native_gold_apis": "unchanged",
+  "native_proof_sha256": "de0eba3cfd4f2e96a9b37db380c2d76d3104f836fab36be22dba11c0d336c23d",
+  "observed_results": {
+    "affected_regular_config": "27 passed/1 deselected in8.92s",
+    "fifo_regression": "old public input reader timed out at10s; fixed reader passed",
+    "lint": "passed",
+    "prior_core": "8 passed in37.22s",
+    "prior_integrated": "49 passed in127.07s before final FIFO/dispatch/output-schema changes",
+    "typing_errors": 0
+  },
+  "operational_surface": {
+    "cli": [
+      "build (no-write default)",
+      "verify",
+      "bounded query"
+    ],
+    "mcp": "preflight/verify/bounded query only; no write argument"
+  },
+  "readback": "independent Gold pin plus trusted input pins/source; regenerate exact expected products; canonical type-sensitive metadata, bounded exact membership, source-derived byte bounds, final reread",
+  "resource_fixes": {
+    "directory_membership": "stop after expected members plus one extra",
+    "fifo": "regular descriptor snapshot; nonblocking open where supported; fstat check, capped byte reads and finally close; verified_snapshot still hashes exact bytes"
+  },
+  "rights_state": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-operation-context-gold-checkpoint/v1",
+  "scope": "source-separated canonical facts/direct lineage/common evidence; context observations/coverage/quality/report/plots",
+  "source_backed_metadata_dispositions": [
+    "canonical input IDs with persisted fact/direct lineage products",
+    "publisher population status from actual common records",
+    "canonical QES composed unit/earnings basis",
+    "GDP literal prefix/reference from same common record",
+    "explicit unverified CPI base"
+  ],
+  "source_profiles": 5,
+  "status": "PR704_Windows_access_corrected_actual_native_and_final_hosted_pending",
+  "validation_receipt_sha256": "0196d8a015db60d41f39c7271d948b0517feec061691fc05ba06387aff9c9b91"
+}

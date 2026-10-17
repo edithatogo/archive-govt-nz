@@ -1,0 +1,114 @@
+{
+  "checked_and_merged_tree": "f37ebf16d04856557c3be0952522321b24d4f3d0",
+  "checked_head": "37ebb7d788642ca2fee60690f1f71f128085cdf7",
+  "checks": [
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-17T06:42:53Z",
+      "conclusion": "SKIPPED",
+      "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/39010929570/job/117333110067",
+      "name": "Supplemental (${{ matrix.suite }})",
+      "startedAt": "2026-10-17T06:42:53Z",
+      "status": "COMPLETED",
+      "workflowName": "Supplemental legislation integrity assurance"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-17T06:52:45Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/39010929516/job/117333109359",
+      "name": "Assurance (ubuntu-latest)",
+      "startedAt": "2026-10-17T06:42:55Z",
+      "status": "COMPLETED",
+      "workflowName": "CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-17T06:43:59Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/39010929525/job/117333109257",
+      "name": "analyze",
+      "startedAt": "2026-10-17T06:42:55Z",
+      "status": "COMPLETED",
+      "workflowName": "CodeQL"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-17T06:43:09Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/39010929547/job/117333109354",
+      "name": "lint",
+      "startedAt": "2026-10-17T06:42:55Z",
+      "status": "COMPLETED",
+      "workflowName": "Workflow policy lint"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-17T06:51:38Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/39010929516/job/117333109581",
+      "name": "Assurance (macos-latest)",
+      "startedAt": "2026-10-17T06:42:58Z",
+      "status": "COMPLETED",
+      "workflowName": "CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-17T07:00:33Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/actions/runs/39010929516/job/117333109535",
+      "name": "Assurance (windows-latest)",
+      "startedAt": "2026-10-17T06:42:55Z",
+      "status": "COMPLETED",
+      "workflowName": "CI"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-17T06:43:53Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/edithatogo/archive-govt-nz/runs/117333284398",
+      "name": "CodeQL",
+      "startedAt": "2026-10-17T06:43:50Z",
+      "status": "COMPLETED",
+      "workflowName": ""
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-17T06:52:55Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://app.codecov.io/gh/edithatogo/archive-govt-nz/pull/703",
+      "name": "codecov/patch",
+      "startedAt": "2026-10-17T06:52:55Z",
+      "status": "COMPLETED",
+      "workflowName": ""
+    }
+  ],
+  "head_and_merge_on_origin_main": true,
+  "hosted_log_sha256": {
+    "macos": "fff4ef86e0f1ab5e251de53a166963e00fd979990ed870f6cce11a7fa7c7f8b3",
+    "ubuntu": "27d0e1f65b7184dc5a3f48ea7937d279eeff5c30e10cb6aab8e029082c91c76f",
+    "windows": "35ec1eed9f6dab1ac58744dda60fe58916cefd309884226b1ec03dc245f5d4c7"
+  },
+  "local_topic_deleted": true,
+  "merge_commit": "8410aaa7374f12df732e8683f371dc80375c32e8",
+  "pr": {
+    "headRefOid": "37ebb7d788642ca2fee60690f1f71f128085cdf7",
+    "mergeCommit": {
+      "oid": "8410aaa7374f12df732e8683f371dc80375c32e8"
+    },
+    "mergedAt": "2026-10-17T07:01:05Z",
+    "number": 703,
+    "state": "MERGED",
+    "url": "https://github.com/edithatogo/archive-govt-nz/pull/703"
+  },
+  "primary_worktree_retained": true,
+  "remote_topic_absent": true,
+  "review_threads": [],
+  "schema_version": "archive-govt-nz.health-context-operation-canonical-delivery/v1",
+  "tracking_ref_absent": true,
+  "unique_changes_before_pruning": 0,
+  "verified_at": "2026-10-17T07:01:27.553486+00:00",
+  "verified_origin_main": "8410aaa7374f12df732e8683f371dc80375c32e8",
+  "working_tree_clean_before_and_after": true,
+  "worktrees": "worktree /Volumes/PortableSSD/GitHub/archive-govt-nz\nHEAD 8410aaa7374f12df732e8683f371dc80375c32e8\nbranch refs/heads/main"
+}

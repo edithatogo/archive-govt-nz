@@ -937,3 +937,79 @@ canonical targets. Stable per-field IDs and an explicit completion transformatio
 make this a source-backed disposition. Fully validate both v2 tables. Never change
 the historical reader/output or relax admission to claim byte parity with invalid
 lineage; all other source lineages and all fact values retain full parity.
+
+
+## Source-regenerated operation Context Gold — 2026-10-17
+
+Admit all five exact reviewed operation profiles through the independent-pin
+canonical reader. Keep source/vintage groups separate; no pooling, deflation,
+annualization, currency inference, denominator or analytical join is performed.
+Reuse existing context observation/coverage/quality schemas and deterministic
+report/plot projections; preserve original native Gold producer/readers. Bind a
+distinct operation-Gold manifest to canonical projection receipts and complete
+common-evidence input pins. Population publisher status comes from actual common
+source records, never a period guess. Existing native output remains historical;
+record any source-backed metadata/status difference explicitly.
+
+Compute all expected product bytes and metadata from verified inputs before any
+write. Default to no-write preflight; explicit local writes reserve a new directory
+and preserve incomplete output. Refuse symlink ancestors and output/source/input
+path overlaps. Independent readback requires a retained Gold pin AND trusted
+input-operation pins/source context, regenerates the expected product closure,
+and verifies exact metadata, files, bytes, source controls and final manifest
+stability. Candidate declarations never authorize a source or set read limits.
+Typed CLI build/verify and read-only query flows use that same boundary.
+
+The preferred SharePoint structured-document route was evaluated first for the
+quality report. Microsoft's current documentation describes a Word (.docx)
+template stored in a SharePoint library, with Copilot licensing/edit prerequisites
+and generated documents written to that library. This Gold report is an existing
+Markdown machine artifact inside an offline, byte-stable Bronze-rebuild hash
+closure; that cloud document route does not satisfy its format/offline/external-
+mutation contract. Reuse the existing quality renderer, without a new document
+runtime or a tenant/licensing change. This is not a finding about tenant-wide
+availability. No qualified SharePoint template/flow route was found in the repo.
+Source checked 2026-10-17: [Microsoft structured document generation](https://learn.microsoft.com/en-us/sharepoint/copilot-in-sharepoint-structured-document-generation).
+
+```mermaid
+flowchart LR
+  I[Five independently pinned operation packages] --> C[Verified canonical facts lineage and common evidence]
+  C --> O[Source-separated context observations and status]
+  O --> P[Existing coverage quality reports and plots]
+  C --> M[Distinct operation Gold input evidence closure]
+  P --> W[No-write preflight or exclusive local product]
+  M --> W
+  I --> V[Regenerate expected outputs for pinned readback]
+  W --> V
+  V --> Q[Typed local and read-only consumers]
+```
+
+
+### PR #704 reserved-output substitution correction
+
+An actual first-write/between-write regression reproduces18+unexpected files
+added to an input package through a substituted output symlink. Retain source-
+regenerated products before reservation, but bind all creates to the reserved
+directory object, with exclusive creation and finally-close.
+POSIX uses dir_fd; Windows holds native list/read-attribute directory handles on the
+complete lexical ancestor chain and reserved leaf, with FILE_SHARE_READ only
+(no write/delete sharing), reparse/junction rejection and128bit file-ID checks.
+The native qualification must prove path protection through child creation/readback,
+rather than reuse
+Budget's unlocked path-only fallback as proof of race protection. Path identity
+and symlink guards remain before/after writes and final readback; interrupted
+output stays separate and is never repaired. Exact bytes/manifest identities
+must remain stable. Native references checked2026-10-17: [Microsoft CreateFileW](https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilew)
+directory/reparse flags and sharing semantics, GetFileInformationByHandleEx
+FileIdInfo/AttributeTagInfo, and Python3.14 Windows128bit st_ino. Platform
+support still requires actual hosted Windows contracts before delivery.
+
+
+Windows qualification at4a3cad55 disproved attribute-only sharing protection:
+two native replacement tests allowed rename. Microsoft [MS-FSA sharing checks](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fsa/8c0e3f4f-0729-49f4-a14d-7f7add593819)
+apply to read-data/list-directory, write-data, execute or delete access, not an
+attribute-only handle. Require FILE_LIST_DIRECTORY|FILE_READ_ATTRIBUTES (0x81)
+with the existing share/read-only mask; qualify actual Windows behavior before
+claiming protection. Run the existing tiny native output-pinning contracts before
+long Windows CI assurance so this failure is caught early. Required full platform
+gates, assertions, coverage80%, dependency pins and timeouts remain unchanged.

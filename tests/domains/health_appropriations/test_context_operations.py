@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections.abc import Iterator
 from dataclasses import asdict, replace
 from pathlib import Path
 from types import ModuleType
@@ -344,4 +345,33 @@ def test_readback_binds_exact_source_context(tmp_path: Path, changed: str) -> No
             request.output_dir,
             manifest_sha256=_pin(request.output_dir),
             **options,
+        )
+
+
+def test_readback_bounds_directory_membership(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    request = _request(tmp_path, *PROFILES[0][:2])
+    assert (
+        source_operations.operate_source(request, dry_run=False)["status"]
+        == "written_local"
+    )
+    pin = _pin(request.output_dir)
+    original = Path.iterdir
+
+    def entries(path: Path) -> Iterator[Path]:
+        yield from original(path)
+        if path == request.output_dir:
+            yield path / "unexpected"
+            pytest.fail("operation readback scanned past the first extra entry")
+
+    monkeypatch.setattr(Path, "iterdir", entries)
+    with pytest.raises(ValueError, match="invalid_context_operation"):
+        operations.verify_context(
+            request.source,
+            request.output_dir,
+            manifest_sha256=pin,
+            profile=request.profile,
+            **_context(request),
         )

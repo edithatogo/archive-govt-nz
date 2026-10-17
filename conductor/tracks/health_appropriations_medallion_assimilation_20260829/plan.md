@@ -1873,6 +1873,23 @@ integrated parent head.
 
   Canonical consumer progress: all five operation profiles now project 615 facts
   and 4,190 fully validated lineage rows, with explicit source-backed completion
-  of QES legacy metadata and retained historical representations. Native and full
-  local checks passed; hosted delivery and subsequent source-separated Gold
-  consumption remain pending. The combined integration item stays in progress.
+  of QES legacy metadata and retained historical representations. PR #703 merged
+  after all required checks passed. Source-separated Gold consumption now also
+  retains all canonical products/common evidence, observes actual source status,
+  and supports typed CLI/read-only MCP. Two Bronze-driven20file rebuilds match;
+  all7867 tests and full local gates passed at7143a86a. Hosted Gold delivery and
+  protected merge/pruning remain pending, so the combined item stays in progress.
+
+
+- [~] Resolve PR #704 output-directory substitution race. Reproduce swaps before
+  first write and between writes, then bind all output writes to the reserved
+  directory object. Qualify native protected Windows writes as well as
+  POSIX dir_fd writes; preserve no-overwrite behavior, exact bytes and closure
+  on failure. Reconcile focused/native/full/hosted evidence before resolving the
+  review, protected merge and topic pruning. [M-03, M-07, M-10, M-18; AC-02,
+  AC-05, AC-12, AC-16]
+
+  Windows qualification correction: the4a3 attribute-only handle admitted rename.
+  Add list-directory access with unchanged restrictive sharing and qualify the
+  existing native replacement/cleanup tests early in Windows CI. Keep full
+  platform gates and review resolution pending until the corrected head passes.

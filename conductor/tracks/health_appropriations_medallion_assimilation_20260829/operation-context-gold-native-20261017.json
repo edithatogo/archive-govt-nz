@@ -1,0 +1,343 @@
+{
+  "approved_joins": "none",
+  "clean_room_chain": "Bronze_to_operation_to_canonical_to_Gold",
+  "cli": [
+    {
+      "command": "health-appropriations-build-operation-context-gold",
+      "exit_code": 0,
+      "log_sha256": "9f49c4e002ccf8ea0422971bec4191edc1dfae4be6edaeca0694f9dfeabca9c1",
+      "seconds": 10.842,
+      "status": "planned"
+    },
+    {
+      "command": "health-appropriations-verify-operation-context-gold",
+      "exit_code": 0,
+      "log_sha256": "52a0f7171277b6e2f49b51f065f43c03191b5bb54997d455c6551ee85516c1cf",
+      "seconds": 11.151,
+      "status": "verified"
+    },
+    {
+      "command": "health-appropriations-build-operation-context-gold",
+      "exit_code": 0,
+      "log_sha256": "eea58c69ec51b3b10f0496d18cec2b91a1e3956f09742f53f4ae4f205db5e422",
+      "seconds": 10.997,
+      "status": "complete"
+    },
+    {
+      "command": "health-appropriations-verify-operation-context-gold",
+      "exit_code": 0,
+      "log_sha256": "52a0f7171277b6e2f49b51f065f43c03191b5bb54997d455c6551ee85516c1cf",
+      "seconds": 11.399,
+      "status": "verified"
+    }
+  ],
+  "cli_timeout_seconds": 30,
+  "currency_admission": "not_performed",
+  "denominator_selection": "not_performed",
+  "external_mutations": "not_performed",
+  "head": "e9f4297f919d6c67779f23611e585b6e69a463ac",
+  "independent_canonical_evidence_sha256": "717c9e1c3c84ba5d615c804b3b933c29383a88ae670b93c4b61558cd77fcb52a",
+  "independent_operation_evidence_sha256": "cdc129ed196424538b4b089ca23a42b96f1c63ede5b3298c40b7ad07264d74cf",
+  "input_operation_files_match_independent_pins": true,
+  "mcp": [
+    {
+      "preflight": {
+        "action": "preflight",
+        "currency_admission": "not_performed",
+        "denominator_selection": "not_performed",
+        "input_operations": 5,
+        "input_records": 615,
+        "output_count": 19,
+        "publication": "not_performed",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-operation-context-gold-operation/v1",
+        "status": "planned"
+      },
+      "query_rows": 2,
+      "query_status": "verified",
+      "run": 1,
+      "verify": {
+        "action": "verify",
+        "currency_admission": "not_performed",
+        "denominator_selection": "not_performed",
+        "input_operations": 5,
+        "input_records": 615,
+        "output_count": 19,
+        "publication": "not_performed",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-operation-context-gold-operation/v1",
+        "status": "verified"
+      }
+    },
+    {
+      "preflight": {
+        "action": "preflight",
+        "currency_admission": "not_performed",
+        "denominator_selection": "not_performed",
+        "input_operations": 5,
+        "input_records": 615,
+        "output_count": 19,
+        "publication": "not_performed",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-operation-context-gold-operation/v1",
+        "status": "planned"
+      },
+      "query_rows": 2,
+      "query_status": "verified",
+      "run": 2,
+      "verify": {
+        "action": "verify",
+        "currency_admission": "not_performed",
+        "denominator_selection": "not_performed",
+        "input_operations": 5,
+        "input_records": 615,
+        "output_count": 19,
+        "publication": "not_performed",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-operation-context-gold-operation/v1",
+        "status": "verified"
+      }
+    }
+  ],
+  "native_gold_producer_and_reader_code_unchanged": true,
+  "repeat_identical": true,
+  "rights_state": "not_evaluated",
+  "runs": [
+    {
+      "canonical_products": [
+        {
+          "facts": 449,
+          "family": "cpi",
+          "lineage": 3143
+        },
+        {
+          "facts": 60,
+          "family": "gdp",
+          "lineage": 420
+        },
+        {
+          "facts": 61,
+          "family": "gdp-june",
+          "lineage": 427
+        },
+        {
+          "facts": 36,
+          "family": "population",
+          "lineage": 110
+        },
+        {
+          "facts": 9,
+          "family": "wage",
+          "lineage": 90
+        }
+      ],
+      "eligible_context_only": 585,
+      "excluded": 30,
+      "files": {
+        "MANIFEST.json": {
+          "bytes": 61566,
+          "sha256": "a0e7a0af2458af6c7d4a0599f0b15c6ab3d84b5271f06d1be2bd57e291e21343"
+        },
+        "canonical_cpi_facts.parquet": {
+          "bytes": 69233,
+          "sha256": "e127f55a6c0912dc43efefc239f06dffdcd0a7c4b7faa50f519a1ad91f62a845"
+        },
+        "canonical_cpi_lineage.parquet": {
+          "bytes": 182468,
+          "sha256": "68659c97c35885de4739627dc543abb3ec0c333b2aa651fd69b19aaf55311814"
+        },
+        "canonical_gdp_q1_facts.parquet": {
+          "bytes": 21869,
+          "sha256": "562548a090de6367546a1fbcdfbfab3bac3c247ff5baf338ee66d50527307fc2"
+        },
+        "canonical_gdp_q1_lineage.parquet": {
+          "bytes": 34053,
+          "sha256": "262cd952bde6d73b931a6e9222d2b4440863b46e8bc8508138c25b92df6e1b04"
+        },
+        "canonical_gdp_q2_facts.parquet": {
+          "bytes": 22014,
+          "sha256": "32245a3c428eadbc6b9bf7cc4f21ad678f223e4a90c2def0427c74b7aae22f56"
+        },
+        "canonical_gdp_q2_lineage.parquet": {
+          "bytes": 34494,
+          "sha256": "3f6b25c667ce29d3dd0a008be904959233712607af67f85e72ee708c1f5192a3"
+        },
+        "canonical_population_facts.parquet": {
+          "bytes": 19386,
+          "sha256": "654ad50858481f86f5f36b20f013f7a360b8ef3dffe106567c43bcaa92868c44"
+        },
+        "canonical_population_lineage.parquet": {
+          "bytes": 19683,
+          "sha256": "340cd69a7486c37ab7136fc1cc0f1025ed8350ed23b7e2c2010def0261514f9b"
+        },
+        "canonical_wage_facts.parquet": {
+          "bytes": 15219,
+          "sha256": "a06745e32a07b711fb0d7a7589923e9360ef808446b167687289b8157e2d5f43"
+        },
+        "canonical_wage_lineage.parquet": {
+          "bytes": 16704,
+          "sha256": "906560514bc1e838c24c26b85d0a2a8bb60f2c4c54bee8fec6471d1fdc4b91fb"
+        },
+        "context-quality-report.md": {
+          "bytes": 1514,
+          "sha256": "480ad275dec092074ce06768d59a8b9b0e55597eb3aa8d1a153367fe62e15804"
+        },
+        "context_coverage.parquet": {
+          "bytes": 27645,
+          "sha256": "e08a663497ac7d43bc79b13685eba8b14f28c58ef766b95192b0cb3901eb82ed"
+        },
+        "context_observations.parquet": {
+          "bytes": 36830,
+          "sha256": "0c188c84aafa7e551d234df982922fccfac080a75ceb818cd85a20186b5cc3b2"
+        },
+        "context_quality.parquet": {
+          "bytes": 6939,
+          "sha256": "6b98abfcb3e5cfa57c21ffefe4b1dfca36001026065da1ab094b8bee94ec7cd0"
+        },
+        "plot_context_cpi_f46905320bd8b1135677.png": {
+          "bytes": 83569,
+          "sha256": "42dd20367a44966807b0143750a0f5f74f26461b02af67763d9e4910f1183456"
+        },
+        "plot_context_gdp_83a8d6254451a5d7c643.png": {
+          "bytes": 57885,
+          "sha256": "ed90ce1e7b18f335a7e5c5245427eea927ae475d86141ae142486a6e8827ac65"
+        },
+        "plot_context_gdp_a8d0c46e361f1bb82ef4.png": {
+          "bytes": 58166,
+          "sha256": "b642aeb3749f3d86cfc88bea1fa49ea9c9c480e35a2a43859f983f98bb78ac48"
+        },
+        "plot_context_population_52069ad9fc611e3aeddb.png": {
+          "bytes": 51214,
+          "sha256": "6ffaa530f9513cb8840bb2d6b978ab9dc92af6b4f4c3e27396a87e382e8215b9"
+        },
+        "plot_context_wage_9eb432502be8e505c7d6.png": {
+          "bytes": 35953,
+          "sha256": "acf954f478d3c19cc8269d8263832b3a3aac84c7f4e8a308182f20aa82d17038"
+        }
+      },
+      "iteration": 1,
+      "manifest_sha256": "a0e7a0af2458af6c7d4a0599f0b15c6ab3d84b5271f06d1be2bd57e291e21343",
+      "observations": 615,
+      "source_and_operation_inputs_unchanged": true
+    },
+    {
+      "canonical_products": [
+        {
+          "facts": 449,
+          "family": "cpi",
+          "lineage": 3143
+        },
+        {
+          "facts": 60,
+          "family": "gdp",
+          "lineage": 420
+        },
+        {
+          "facts": 61,
+          "family": "gdp-june",
+          "lineage": 427
+        },
+        {
+          "facts": 36,
+          "family": "population",
+          "lineage": 110
+        },
+        {
+          "facts": 9,
+          "family": "wage",
+          "lineage": 90
+        }
+      ],
+      "eligible_context_only": 585,
+      "excluded": 30,
+      "files": {
+        "MANIFEST.json": {
+          "bytes": 61566,
+          "sha256": "a0e7a0af2458af6c7d4a0599f0b15c6ab3d84b5271f06d1be2bd57e291e21343"
+        },
+        "canonical_cpi_facts.parquet": {
+          "bytes": 69233,
+          "sha256": "e127f55a6c0912dc43efefc239f06dffdcd0a7c4b7faa50f519a1ad91f62a845"
+        },
+        "canonical_cpi_lineage.parquet": {
+          "bytes": 182468,
+          "sha256": "68659c97c35885de4739627dc543abb3ec0c333b2aa651fd69b19aaf55311814"
+        },
+        "canonical_gdp_q1_facts.parquet": {
+          "bytes": 21869,
+          "sha256": "562548a090de6367546a1fbcdfbfab3bac3c247ff5baf338ee66d50527307fc2"
+        },
+        "canonical_gdp_q1_lineage.parquet": {
+          "bytes": 34053,
+          "sha256": "262cd952bde6d73b931a6e9222d2b4440863b46e8bc8508138c25b92df6e1b04"
+        },
+        "canonical_gdp_q2_facts.parquet": {
+          "bytes": 22014,
+          "sha256": "32245a3c428eadbc6b9bf7cc4f21ad678f223e4a90c2def0427c74b7aae22f56"
+        },
+        "canonical_gdp_q2_lineage.parquet": {
+          "bytes": 34494,
+          "sha256": "3f6b25c667ce29d3dd0a008be904959233712607af67f85e72ee708c1f5192a3"
+        },
+        "canonical_population_facts.parquet": {
+          "bytes": 19386,
+          "sha256": "654ad50858481f86f5f36b20f013f7a360b8ef3dffe106567c43bcaa92868c44"
+        },
+        "canonical_population_lineage.parquet": {
+          "bytes": 19683,
+          "sha256": "340cd69a7486c37ab7136fc1cc0f1025ed8350ed23b7e2c2010def0261514f9b"
+        },
+        "canonical_wage_facts.parquet": {
+          "bytes": 15219,
+          "sha256": "a06745e32a07b711fb0d7a7589923e9360ef808446b167687289b8157e2d5f43"
+        },
+        "canonical_wage_lineage.parquet": {
+          "bytes": 16704,
+          "sha256": "906560514bc1e838c24c26b85d0a2a8bb60f2c4c54bee8fec6471d1fdc4b91fb"
+        },
+        "context-quality-report.md": {
+          "bytes": 1514,
+          "sha256": "480ad275dec092074ce06768d59a8b9b0e55597eb3aa8d1a153367fe62e15804"
+        },
+        "context_coverage.parquet": {
+          "bytes": 27645,
+          "sha256": "e08a663497ac7d43bc79b13685eba8b14f28c58ef766b95192b0cb3901eb82ed"
+        },
+        "context_observations.parquet": {
+          "bytes": 36830,
+          "sha256": "0c188c84aafa7e551d234df982922fccfac080a75ceb818cd85a20186b5cc3b2"
+        },
+        "context_quality.parquet": {
+          "bytes": 6939,
+          "sha256": "6b98abfcb3e5cfa57c21ffefe4b1dfca36001026065da1ab094b8bee94ec7cd0"
+        },
+        "plot_context_cpi_f46905320bd8b1135677.png": {
+          "bytes": 83569,
+          "sha256": "42dd20367a44966807b0143750a0f5f74f26461b02af67763d9e4910f1183456"
+        },
+        "plot_context_gdp_83a8d6254451a5d7c643.png": {
+          "bytes": 57885,
+          "sha256": "ed90ce1e7b18f335a7e5c5245427eea927ae475d86141ae142486a6e8827ac65"
+        },
+        "plot_context_gdp_a8d0c46e361f1bb82ef4.png": {
+          "bytes": 58166,
+          "sha256": "b642aeb3749f3d86cfc88bea1fa49ea9c9c480e35a2a43859f983f98bb78ac48"
+        },
+        "plot_context_population_52069ad9fc611e3aeddb.png": {
+          "bytes": 51214,
+          "sha256": "6ffaa530f9513cb8840bb2d6b978ab9dc92af6b4f4c3e27396a87e382e8215b9"
+        },
+        "plot_context_wage_9eb432502be8e505c7d6.png": {
+          "bytes": 35953,
+          "sha256": "acf954f478d3c19cc8269d8263832b3a3aac84c7f4e8a308182f20aa82d17038"
+        }
+      },
+      "iteration": 2,
+      "manifest_sha256": "a0e7a0af2458af6c7d4a0599f0b15c6ab3d84b5271f06d1be2bd57e291e21343",
+      "observations": 615,
+      "source_and_operation_inputs_unchanged": true
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-operation-context-gold-native/v1",
+  "source_bytes_unchanged": true
+}

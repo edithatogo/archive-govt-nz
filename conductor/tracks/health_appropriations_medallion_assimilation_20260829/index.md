@@ -446,3 +446,16 @@ they are not current-state assertions.
 - [Operation-bound canonical context and QES lineage disposition](./context-operation-canonical-20261017.json).
 
 - [Canonical operation native proof](./context-operation-canonical-native-20261017.json) and [full local validation](./context-operation-canonical-validation-20261017.json).
+
+- [Canonical operation consumer delivered and topic pruned](./context-operation-canonical-delivery-20261017.json).
+
+- [Operation Context Gold implementation and resource-contract checkpoint](./operation-context-gold-20261017.json).
+
+- [Operation Context Gold actual-source repeat proof](./operation-context-gold-native-20261017.json).
+- [Operation Context Gold initial full-gate failure evidence](./operation-context-gold-initial-validation-20261017.json).
+
+- [Operation Context Gold full local validation](./operation-context-gold-validation-20261017.json).
+
+- [PR704 reserved-output race correction checkpoint](./operation-context-gold-output-correction-20261017.json).
+
+- [PR704 pinned-output actual-source repeat proof](./operation-context-gold-output-native-20261017.json).
