@@ -398,7 +398,8 @@ they are not current-state assertions.
 - [Locator identity and period evidence](./source-census-locator-gaps-20261017.json)
 - [Health component index discovery](./health-component-index-discovery-20261017.md)
 - [Component table and method evidence](./health-component-index-discovery-20261017.json)
-- [Current source/measure census review](./source-measure-review-20261017-locator-gaps.json)
+- [Previous source/measure census review, locator gaps](./source-measure-review-20261017-locator-gaps.json)
+- [Current source/measure census review](./source-measure-review-20261017-forecast-binding.json)
 
 
 - [Retained capture inventory reconciliation](./capture-inventory-20261017.md)
@@ -409,3 +410,13 @@ they are not current-state assertions.
   and [native run inventory/pinned readback proof](./overview-operational-dispatch-20261017.json).
 
 - [Operational overview review-fix native proof](./overview-operational-dispatch-review-fix-20261017.json).
+
+- [Bounded donor-area partial metadata mappings](./donor-area-partial-mappings-20261017.json);
+  not whole-sheet completeness or output verification. Phase4issue #210 remains open.
+
+- [Reviewed forecast common adapters](./forecast-common-adapters-20261017.md)
+  and [four-API/two-common native proof](./forecast-common-adapters-20261017.json).
+
+- [Forecast evidence rebinding](./forecast-evidence-rebinding-20261017.json), [historical context snapshot](./context-census-pre-forecast-common-20261017.json), and [successor source-measure binding](./source-measure-review-20261017-forecast-binding.json).
+
+- [Forecast common adapter full local validation](./forecast-common-adapters-validation-20261017.json).

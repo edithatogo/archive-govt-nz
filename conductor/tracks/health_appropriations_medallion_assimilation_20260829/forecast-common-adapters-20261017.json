@@ -1,0 +1,163 @@
+{
+  "scope": "four unchanged legacy/versioned native forecast APIs and two reviewed successor common adapters only",
+  "observed_at": "2026-10-17T03:00:06.567817+00:00",
+  "head": "cb48363b8092423cecd080a3ced16726a02052e7",
+  "implementation_sha256": {
+    "src/archive_govt_nz/domains/health_appropriations/forecast.py": "bdb60ff1bf09c2993b453e6310c8ea15f3abcd1567b3584369c394017cef0bce",
+    "src/archive_govt_nz/domains/health_appropriations/forecast_adapter.py": "a46471c4964bf67ce91a444b5d0c3154dcbbe08b0bb3460f341864d5d8647518",
+    "src/archive_govt_nz/domains/health_appropriations/adapter_registry.py": "397c2949278e0f8393726150afd90cc97520e8a4e9d187f2a8c4fe350b2d1f9b"
+  },
+  "native_profiles": 4,
+  "native_facts": 40,
+  "native_files_compared_per_repeat": 16,
+  "common_profiles": 2,
+  "common_facts": 20,
+  "common_field_lineage": 120,
+  "rows": [
+    {
+      "profile": "befu",
+      "source_sha256": "dbde3256b1cbfb847f9f6caec66e7adffabca0489b218997a431220da584a3d6",
+      "source_bytes": 207919,
+      "reference_manifest_sha256": "9217b02ffb2a03e56a0a45cb7b865cb05227d6ed3a59e3f429d8faf154d3644e",
+      "original_observation_token": "2026-08-30T08:58:00+00:00",
+      "observation_token_binding": {
+        "source": "retained legacy PLAN.json authenticated by parent manifest",
+        "plan_sha256": "f9414b07383568332a069f58b10d8e0f2e1ab57d2aa0db5d43ad2d3cd26ee07d"
+      },
+      "facts": 10,
+      "lineage_rows": 60,
+      "cell_dispositions": 2332,
+      "all_four_native_files_unchanged": true,
+      "repeat_file_sha256": {
+        "MANIFEST.json": "9217b02ffb2a03e56a0a45cb7b865cb05227d6ed3a59e3f429d8faf154d3644e",
+        "cell_dispositions.parquet": "628bcd8ff81387a8a9ad459c8d738e60652b5566b5de12b6a99399d273de609f",
+        "field_lineage.parquet": "2b1bcb2eddd10cd52d964b2f3f07690dd8126a714aac24ac6efcadce44be7df4",
+        "forecast_facts.parquet": "349e7e8372b6bef0e5f364c2e2923625f0fabab627004f54742b42814f1bceb5"
+      }
+    },
+    {
+      "profile": "hyefu",
+      "source_sha256": "725399c09323594c921dbcc493206abe59bf7b91dd968b8c7f6f3a67d4707969",
+      "source_bytes": 206997,
+      "reference_manifest_sha256": "c1d04065992825f1e122e0c9b384cf23e94104a8e0fc2310155161c60a6fa9d6",
+      "original_observation_token": "2026-08-30T08:58:00+00:00",
+      "observation_token_binding": {
+        "source": "retained legacy PLAN.json authenticated by parent manifest",
+        "plan_sha256": "f9414b07383568332a069f58b10d8e0f2e1ab57d2aa0db5d43ad2d3cd26ee07d"
+      },
+      "facts": 10,
+      "lineage_rows": 60,
+      "cell_dispositions": 2333,
+      "all_four_native_files_unchanged": true,
+      "repeat_file_sha256": {
+        "MANIFEST.json": "c1d04065992825f1e122e0c9b384cf23e94104a8e0fc2310155161c60a6fa9d6",
+        "cell_dispositions.parquet": "975762236cc39fa1bf5b9e5261008c0caf5ff2ccd621c934639688765f36e143",
+        "field_lineage.parquet": "9d15ad1cd35a8f195e3e061b719c58e88224f6296e5dbd99ca58a7779776f99e",
+        "forecast_facts.parquet": "21d0edebace4a92a15cd2393e603224501f0ffd2364d1e050b3bb482293cd53e"
+      }
+    },
+    {
+      "profile": "befu-2026/v1",
+      "source_sha256": "313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1",
+      "source_bytes": 193830,
+      "reference_manifest_sha256": "83bd8c0d661383712ade0e7ec1c14bb7cbdba9c93a83df74abbfc64a4586afea",
+      "original_observation_token": "2026-08-29T09:00:17Z",
+      "observation_token_binding": {
+        "source": "retained source census",
+        "sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272",
+        "source_id": "befu_2026-003"
+      },
+      "facts": 10,
+      "lineage_rows": 60,
+      "cell_dispositions": 2375,
+      "all_four_native_files_unchanged": true,
+      "repeat_file_sha256": {
+        "MANIFEST.json": "83bd8c0d661383712ade0e7ec1c14bb7cbdba9c93a83df74abbfc64a4586afea",
+        "cell_dispositions.parquet": "947366215373c1a42c3073ebc059a62f758c8a5d95537cbafc756a7bb963484c",
+        "field_lineage.parquet": "c82edf32e930fc991dfce9cefb7dbfdae484ace3be5956ed1800fe3a1e690671",
+        "forecast_facts.parquet": "d48f94bbd67cd8fd3418fbab9c5ea815c145a228c6e1e35124dba6449c2b8b17"
+      },
+      "common_dispatch_native_rows_match": true,
+      "common_lineage_rows": 60,
+      "common_loss_rows": 2366,
+      "selection": {
+        "schema_version": "archive-govt-nz.health-adapter-selection/v1",
+        "source_sha256": "313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1",
+        "declared_media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "detected_media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "adapter": {
+          "id": "nz-treasury-befu-2026-health-summary",
+          "version": "1"
+        },
+        "status": "selected",
+        "reason": null,
+        "considered_adapter_ids": [
+          "nz-treasury-befu-2026-health-summary",
+          "nz-treasury-hyefu-2025-health-summary",
+          "stats-nz-gdp-table1-expenditure-actual",
+          "stats-nz-qes-qemq-sasz9a"
+        ],
+        "matched_adapter_ids": [
+          "nz-treasury-befu-2026-health-summary"
+        ],
+        "receipt_sha256": "871eb127afc3f8f0c632c3e132e1e74266d7d47251214bcf56e1f1c229c63091"
+      },
+      "common_repeat_stable": true,
+      "filesystem_normalizer_forbidden_during_common_dispatch": true
+    },
+    {
+      "profile": "hyefu-2025/v1",
+      "source_sha256": "f9f9190a69ce0a7c53b89d690d50170e2a6a457e6821afeb93edc08cef4b9c7d",
+      "source_bytes": 191581,
+      "reference_manifest_sha256": "5ef89741ad695efd078ba7b7dca2a059948c5bc12069fb434c695ad9293083b5",
+      "original_observation_token": "2026-08-29T09:00:17Z",
+      "observation_token_binding": {
+        "source": "retained source census",
+        "sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272",
+        "source_id": "hyefu_2025-006"
+      },
+      "facts": 10,
+      "lineage_rows": 60,
+      "cell_dispositions": 2346,
+      "all_four_native_files_unchanged": true,
+      "repeat_file_sha256": {
+        "MANIFEST.json": "5ef89741ad695efd078ba7b7dca2a059948c5bc12069fb434c695ad9293083b5",
+        "cell_dispositions.parquet": "d8f10aa5c2a522603918cfe3270ec2965afd9ae54afa1a4bb06b9fcd7ddd01b1",
+        "field_lineage.parquet": "13537eb7ae1d046677737803cd5541d271567828374d25e565fccc8e0ab18751",
+        "forecast_facts.parquet": "747332611ebe24fb8fe11d25602a309d91b7cb886f9c01933744608676d22e1e"
+      },
+      "common_dispatch_native_rows_match": true,
+      "common_lineage_rows": 60,
+      "common_loss_rows": 2337,
+      "selection": {
+        "schema_version": "archive-govt-nz.health-adapter-selection/v1",
+        "source_sha256": "f9f9190a69ce0a7c53b89d690d50170e2a6a457e6821afeb93edc08cef4b9c7d",
+        "declared_media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "detected_media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "adapter": {
+          "id": "nz-treasury-hyefu-2025-health-summary",
+          "version": "1"
+        },
+        "status": "selected",
+        "reason": null,
+        "considered_adapter_ids": [
+          "nz-treasury-befu-2026-health-summary",
+          "nz-treasury-hyefu-2025-health-summary",
+          "stats-nz-gdp-table1-expenditure-actual",
+          "stats-nz-qes-qemq-sasz9a"
+        ],
+        "matched_adapter_ids": [
+          "nz-treasury-hyefu-2025-health-summary"
+        ],
+        "receipt_sha256": "f2f007fad234cf6cf3651409507e25069bbac173232023213d10a9bccbbb082d"
+      },
+      "common_repeat_stable": true,
+      "filesystem_normalizer_forbidden_during_common_dispatch": true
+    }
+  ],
+  "new_source_acquisition": false,
+  "formula_evaluation": false,
+  "rights_or_analytical_admission_changed": false,
+  "operational_common_adoption_complete": false,
+  "phase_complete": false
+}

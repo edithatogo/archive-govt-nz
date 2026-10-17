@@ -2232,3 +2232,100 @@ passed546 focused/10 skips and repeated native14-profile209-fact42-Parquet
 parity/pinned-readback with all14 manifest pins unchanged.
 See [review-fix proof](./overview-operational-dispatch-review-fix-20261017.json).
 Full final-tree assurance, hosted checks, thread resolution and merge pending.
+
+
+## 17 October 2026 — PR #699 delivery
+
+The operational overview bridge and symlink-parent review correction were
+merged normally in PR #699 as071cfef55d96c810edf0c56ee4b1eef9bb3cad65 at
+02:47:31Z. Exact headbadc3a6f541a16f5b145acd1dc9c3652bc9338be passed full
+local assurance (7,768 tests/10 skips/23 warnings,281.24s,97.38%,62 schema
+validations/52documents,9/9 parity,configured mutation/hygiene/supply-chain
+gates and113-component SBOM; externalCDX explicitly skipped) and every
+applicable hosted check. Windows17m34s,macOS8m16s,Ubuntu7m17s; CodeQL,lint
+and patch coverage passed. The actual review thread was resolved after
+red/green/native/full/current-hosted proof. Fetched main contains head and
+merge, with no unique commits or dirty changes. Topic/local/tracking refs
+pruned after proof; primary worktree retained. External receipt:
+`/Volumes/PortableSSD/tmp/health-overview-operational-dispatch-20261017/merged-and-pruned.json`.
+
+Phase4issue #210 stays open: completed donor-functional parity is not
+M07/AC03 coverage of all detected workbook areas. Metadata-only reconciliation
+found three exact retained stage receipts and nine missing historical receipt
+locators; old temporary12-stage roots are absent. Two forecast partial mappings
+and a bounded30-coordinate historical ledger mapping add traceability only,
+without output verification, whole-sheet assertions, repairs or publication.
+Conductor independently reviewed their bounded meaning. The158 globally
+unresolved structural units are not a count of unimplemented extractions.
+The next implementation is the two reviewed forecast common adapters; census
+residuals and wider source/operational/phase gates remain explicit.
+
+
+## Two reviewed forecast common adapters — implementation review
+
+Independent Conductor static review found no blocking issue in the inspected
+parser/factory/registry refactor. Only two versioned successors register; legacy
+generic profiles remain excluded from registration and all four native APIs
+retain their source validation, default writes, partial status and receipts.
+Common records project unchanged nullable canonical fields, preserve60 lineage
+entries per full successor and account for every non-normalized cell plus
+excluded sheets. Context cells stay accounted even when their amount is
+rejected. Adapter selection is not operation success. Native proof, full
+exact-head harness and hosted delivery remain pending. No claim closes M07/AC03
+residuals, current operation manifest adoption, rights or analytical gates.
+
+
+Forecast native verification completed0 under the shared guard at clean
+cb48363b:four unchanged legacy/versioned API profiles,40 native facts,16 files
+per repeat, including byte-identical original manifests; two common successors,
+20 facts and120 lineage entries with exact non-normalized cell/sheet losses.
+Direct filesystem normalization was forbidden during common extraction.
+Original observation tokens are pinned by legacyPLAN/source census, preserving
+identity spellings. All originals/references remain unchanged. Independent
+Conductor read-only review verified source-code hashes and all eight regenerated
+manifest pins without replaying sources. See
+[proof](./forecast-common-adapters-20261017.json). Full final-tree harness and
+PR/hosted assurance remain pending; no phase or operational-adoption closure.
+
+
+## Forecast implementation evidence rebinding — 2026-10-17
+
+The first exact-head full harness at fc332cfa stopped with 7780 passed,
+2 failed, 10 skipped (97.33% coverage): the current context census still pinned
+the previous forecast implementation. Failure evidence was retained before edits.
+Only that implementation evidence hash is refreshed; every series, selector,
+qualification and rights claim is unchanged. The exact previous census is retained
+as `context-census-pre-forecast-common-20261017.json` (579e63a757cae410a26e0f371ae8cb79bf31e10e30c46ccb652789b160199708).
+Historical recovery explicitly reads this snapshot with unchanged product/input
+pins; this is historical replay evidence, not current implementation validation.
+The original dated source-measure review remains unchanged; its successor
+`source-measure-review-20261017-forecast-binding.json` refreshes only the census
+pin. Current source-health builder defaults remain current. Tests which preserve
+recorded report receipts explicitly use the historical input; a context refresh regression verifies the current context pin is emitted while
+independently source-bound capture/layout evidence stays valid. A proposed
+context-invalidation assertion failed (127 passed, 1 failed); inspection showed
+that resource evidence correctly binds only the source census, so that assertion
+was corrected without changing the builder. No verifier is
+weakened and no source/product is recaptured or silently replaced. See
+[rebinding receipt](./forecast-evidence-rebinding-20261017.json).
+Focused checks and the full exact-tree rerun are required before PR creation.
+
+
+## Forecast common adapter local assurance complete — 2026-10-17
+
+Full `./scripts/validate.sh` completed0 at clean frozen
+521681914f2504eaa2f131fbb223aefe5975c511: 7783 passed, 10 skipped,
+23 warnings in345.64s, 97.38% coverage (unchanged80% floor); typing0,
+62 schemas/52 representative documents, differential parity9/9, all mutation,
+hygiene, audit, licence, secret and SBOM gates passed (113 components).
+External CDX validation remains skipped by existing configuration. The exact
+[tested-head/log receipt](./forecast-common-adapters-validation-20261017.json)
+distinguishes the local tested tree from this documentation-only closeout.
+The current review link now selects the successor implementation binding;
+historical review and census remain preserved. No production code, tests,
+runtime, schemas or pinned validation inputs change after the full run.
+Affected Conductor/hygiene/whitespace checks qualify this closeout; required
+hosted checks must qualify the final PR head before protected merge/prune.
+The four-API native proof is unchanged; Conductor independently reviewed the
+rebinding and source-specific report compatibility. Operational adoption and
+all broader source/donor/rights/phase gates remain open.

@@ -26,7 +26,7 @@ from archive_govt_nz.domains.health_appropriations.source_measure_review import 
 
 ROOT = Path(__file__).resolve().parents[3]
 TRACK = ROOT / TRACK_RELATIVE
-REPORT = TRACK / "source-measure-review-20261017-locator-gaps.json"
+REPORT = TRACK / "source-measure-review-20261017-forecast-binding.json"
 
 
 def _assert_historical_locator_coverage(report: dict) -> None:
