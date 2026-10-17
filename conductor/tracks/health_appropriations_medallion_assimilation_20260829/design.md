@@ -1186,3 +1186,24 @@ with the existing path reader, then the existing source-faithful Silver fact
 and lineage construction. Explicit observation context remains caller-provided;
 the pinned donor identity/schema is closed. No SQLite source URI or temporary
 source file is opened, and no semantic/historical replacement is authorized.
+
+
+The donor-area receipt recovery reuses the existing twelve-stage replay recipe
+with independently pinned surviving donor/candidate/Crown metadata. Two new
+exclusive permanent run directories retain outputs; they are labeled current
+reconstructions using historical normalization context, not fresh captures or
+silently recreated historical evidence. Compare all old stage/file pins and
+report differences without changing the old receipts or whole-unit scope.
+
+
+Recovered stage-to-area bindings use the existing closed twelve-stage verifier
+and bounded output reader. The projector joins donor structural units by exact
+source hash, locator and sheet, preserving partial selections and all global
+remainders. The separate2025 Crown source gets no donor unit when its identity
+is absent. Field coordinates and record sets remain source-separated, with
+context-sheet overlap explicit; no semantic/rights approval is manufactured.
+
+The binding reader also binds supplied donor metadata to the verified canonical
+PLAN digest and exact donor snapshot pin. Only Crown source_context may retain
+the evidenced cell@number_format annotation; its base cell remains inventory-
+bounded, and it is never interpreted as an amount coordinate.

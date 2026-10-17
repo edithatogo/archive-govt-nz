@@ -1,0 +1,82 @@
+{
+  "checked_commit": "44ce414b4cbde68dd8d96dcdbeab5996c09a04a0",
+  "checked_tree": "dcf1c955a1b3210ee220ea60e602d19a9a6aeeec",
+  "existing_three_partial_assertions": "unchanged",
+  "focused": {
+    "log_sha256": "b1439b6b0f44c1dc51fdcdba6a074a8ee17073a6c86065c9d46f80692ef01f5a",
+    "passed": 236,
+    "seconds": 5.16
+  },
+  "full": {
+    "all_original_harness_stages_passed": true,
+    "cas_MB_per_second": 399.66,
+    "command": "./scripts/validate.sh",
+    "earlier_native_failure": "bindings1 retained; corrected bindings2 passed",
+    "exit_code": 0,
+    "head": "44ce414b4cbde68dd8d96dcdbeab5996c09a04a0",
+    "log_sha256": "172afd53759014391b532241c603725c772b812bb7625fe37fc64aaad60326bd",
+    "native_report_sha256": "312cd02dc17da9dd122eb43e7f763de1981a2e56d78dd23c5800a044d8a35eaf",
+    "original_stage_timeout_seconds": 900,
+    "parity": "9/9 zero divergences",
+    "pytest_addopts": "-vv",
+    "representative_documents": 56,
+    "runtime": "Python3.14.6/uv0.13.1",
+    "sbom_components": 113,
+    "schemas": 66,
+    "session_id": 60707,
+    "status": "passed",
+    "tests": {
+      "passed": 7939,
+      "seconds": 296.06,
+      "skipped": 12,
+      "warnings": 18
+    },
+    "tree": "dcf1c955a1b3210ee220ea60e602d19a9a6aeeec",
+    "workers": 4
+  },
+  "global_worksheet_semantics": "unresolved",
+  "initial_native_report_failure": {
+    "diagnostic_sha256": "7970a56fac49f73ac6b026c5389dbc9e38c52a3fdd3ebe6038dc49c9ae97ec8f",
+    "exit": 1,
+    "failure_log_sha256": "cd82076af829ff7b644605f2eb4e62f9224e653460de3868cedb68e0f9757d55",
+    "head": "290c1664887291ad6bd3a436aff07590d301e1ed",
+    "partial_outputs": "preserved externally",
+    "scope": "Crown source_context @number_format only",
+    "unsupported_coordinates": 61
+  },
+  "native_report": {
+    "bindings": 12,
+    "donor_partial_bindings": 11,
+    "existing_three_partial_assertions": "unchanged",
+    "facts_covered_by_stages": 613,
+    "global_unresolved_units": 158,
+    "network": "denied",
+    "publication": "not_performed",
+    "receipt_sha256": "63effe12b821cc1d76c663d93359a543b0df81bf877938e5cd63d206ac553ca4",
+    "recipe_sha256": "39702163b9bfa5c9f97577a0179e59f32939db61a53c493988434c9cea6af1f6",
+    "reconstruction_outputs": "unchanged",
+    "report_sha256": "312cd02dc17da9dd122eb43e7f763de1981a2e56d78dd23c5800a044d8a35eaf",
+    "runs": 2,
+    "source_separated_crown_bindings": 1,
+    "source_verification": "existing_twelve_stage_verifier",
+    "stages": 9,
+    "status": "passed"
+  },
+  "publication": "not_performed",
+  "recovery": "Crown source_context formatting annotation retained and bounded; unknown properties remain refused; supplied donor bound to verified canonical plan",
+  "rights_state": "not_evaluated",
+  "source_evidence": "donor-area-reconstruction-20261018.json",
+  "stages": [
+    "budget",
+    "revenue",
+    "befu-detail",
+    "hyefu-detail",
+    "befu-chart",
+    "hyefu-allowance",
+    "befu-residual",
+    "hyefu-residual",
+    "crown"
+  ],
+  "status": "native_and_full_qualified_hosted_pending",
+  "track_complete": false
+}
