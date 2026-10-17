@@ -16,6 +16,7 @@ from archive_govt_nz.domains.health_appropriations import (
     forecast,
     gdp,
     moh_indicators,
+    overview_operations,
     pharmac,
     population_annual_silver,
     qes,
@@ -600,53 +601,6 @@ _VOTE_HEALTH_OVERVIEW_PROFILES = {
         vote_health_estimates_summary.SOURCE_SHA256_2017_18,
     ),
 }
-_VOTE_HEALTH_OVERVIEW_NORMALIZERS = {
-    vote_health_estimates_summary.PROFILE: (
-        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2002_03
-    ),
-    vote_health_estimates_summary.PROFILE_2004_05: (
-        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2004_05
-    ),
-    vote_health_estimates_summary.PROFILE_2005_06: (
-        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2005_06
-    ),
-    vote_health_estimates_summary.PROFILE_2006_07: (
-        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2006_07
-    ),
-    vote_health_estimates_summary.PROFILE_2007_08: (
-        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2007_08
-    ),
-    vote_health_estimates_summary.PROFILE_2008_09: (
-        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2008_09
-    ),
-    vote_health_estimates_summary.PROFILE_2009_10: (
-        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2009_10
-    ),
-    vote_health_estimates_summary.PROFILE_2010_11: (
-        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2010_11
-    ),
-    vote_health_estimates_summary.PROFILE_2011_12: (
-        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2011_12
-    ),
-    vote_health_estimates_summary.PROFILE_2012_13: (
-        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2012_13
-    ),
-    vote_health_estimates_summary.PROFILE_2013_14: (
-        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2013_14
-    ),
-    vote_health_estimates_summary.PROFILE_2014_15: (
-        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2014_15
-    ),
-    vote_health_estimates_summary.PROFILE_2015_16: (
-        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2015_16
-    ),
-    vote_health_estimates_summary.PROFILE_2016_17: (
-        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2016_17
-    ),
-    vote_health_estimates_summary.PROFILE_2017_18: (
-        vote_health_estimates_summary.normalize_vote_health_estimates_overview_2017_18
-    ),
-}
 _DUPLICATE_PROFILE = "duplicate_source_operation_profile"
 if len(PROFILES) != len(set(PROFILES)):
     raise ValueError(_DUPLICATE_PROFILE)
@@ -847,9 +801,17 @@ def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile disp
             request.source, request.output_dir, **context, dry_run=dry_run
         )
     if request.profile in _VOTE_HEALTH_OVERVIEW_PROFILES:
-        normalizer = _VOTE_HEALTH_OVERVIEW_NORMALIZERS[request.profile]
-        return normalizer(
-            request.source, request.output_dir, **context, dry_run=dry_run
+        if request.profile == vote_health_estimates_summary.PROFILE:
+            summary = vote_health_estimates_summary
+            return summary.normalize_vote_health_estimates_overview_2002_03(
+                request.source, request.output_dir, **context, dry_run=dry_run
+            )
+        return overview_operations.normalize_overview(
+            request.source,
+            request.output_dir,
+            profile=request.profile,
+            **context,
+            dry_run=dry_run,
         )
     if request.profile == "population-annual-mean-context/v1":
         return population_annual_silver.normalize_population_annual(

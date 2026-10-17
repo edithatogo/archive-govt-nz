@@ -2188,3 +2188,47 @@ Current-head full assurance, hosted checks and actual thread resolution pending.
 - Reuse the production builder/schema; 24 actual inputs, two byte-identical
   builds and the new schema fixture supply metadata verification without
   adding coverage-only tests. Full frozen-tree validation and PR delivery pending.
+
+
+## 17 October2026 — operational overview bridge (in progress)
+
+Self-review requires actual DispatchResult use, three native Parquet byte parity,
+original losses retained and explicit compatibility projection. New verifier
+requires an externally supplied manifestSHA, checks a closed manifest and exact
+regenerated expected selection/context/losses, and checks all three files against
+both manifest hashes and regenerated canonical table hashes before returning
+provenance. Producer readback uses its own in-memory expected result; later
+recovery cannot derive the authority pin from untrusted input. Existing accepted
+outputs/direct APIs and2002 ownership remain untouched. Native proof and full
+exact-head assurance are still pending; no phase completion claimed.
+
+
+Operational native proof completed0 on clean276a8225 under the actual shared
+guard:14 profiles,209 facts,42 reference Parquet files per repeat, two identical
+new manifest sets and70 observed common dispatches with direct normalization
+forbidden. All original/reference files were independently SHA-checked and
+remained unchanged. See [scoped proof](./overview-operational-dispatch-20261017.md)
+and [run inventory with retained manifest pins](./overview-operational-dispatch-20261017.json).
+Focused545 passed/10 skipped, Ruff and typing passed. Full final-tree harness
+is pending. No general recovery-profile or phase-completion claim.
+
+
+PR #699 review finding `PRRT_kwDOTo2MOM6tb4vU` is valid: output under a
+symlinked ancestor passed the leaf-only writer preflight, then readback rejected
+the ancestor after four files were created. The real directory-symlink test
+failed as expected (target/output left behind;1 failed in8.96s), preserving
+external `red-review-1.log`. Writer and readback now share the same explicit
+ancestor-symlink refusal before parsing/writing. No path resolution, generic
+writer-policy weakening or adversarial filesystem-race guarantee introduced.
+Earlier full/native passes remain historical evidence; coherent-head repeat
+validation and thread resolution are pending.
+
+
+PR #699 historical full assurance on cleanfcd1c6dd completed0:7,767 passed,
+10 skipped,23 warnings,308.42s,97.39% coverage;62 schema validations/52documents,
+parity9/9, all configured mutation/hygiene/audit/licence/secrets/SBOM gates,
+113components; external CDX explicitly skipped. Review correction2e9cd674 then
+passed546 focused/10 skips and repeated native14-profile209-fact42-Parquet
+parity/pinned-readback with all14 manifest pins unchanged.
+See [review-fix proof](./overview-operational-dispatch-review-fix-20261017.json).
+Full final-tree assurance, hosted checks, thread resolution and merge pending.

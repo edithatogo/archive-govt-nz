@@ -1504,3 +1504,35 @@ whole-corpus completion claim. Frozen-tree full assurance and PR delivery pendin
 153 URLs /85 recorded captures; all 152 prior resource rows remain exactly
 unchanged. No amount normalization, new rights approval or whole-corpus closure.
 Full exact-tree validation and PR delivery pending.
+
+
+## 17 October 2026 — PR #698 delivery and operational overview integration
+
+PR #698 merged through the normal protected path at
+`901f7ae60bb3b6d81182cc09a4534782073a6f4a` after all applicable checks
+passed on `f41fb82139fb29f91e170803fc627c5e20f9d103` (Windows17m57s).
+Fetched remote main contains both head and merge; no unique commits or dirty
+changes remained. Local/remote topic and stale tracking ref pruned; primary
+worktree retained. External receipt:
+`/Volumes/PortableSSD/tmp/health-supplementary-addition-census-20261017/merged-and-pruned.json`.
+Operational bridge task is now in progress; Phase3 remains incomplete.
+
+
+Operational native proof completed0 on clean276a8225 under the actual shared
+guard:14 profiles,209 facts,42 reference Parquet files per repeat, two identical
+new manifest sets and70 observed common dispatches with direct normalization
+forbidden. All original/reference files were independently SHA-checked and
+remained unchanged. See [scoped proof](./overview-operational-dispatch-20261017.md)
+and [run inventory with retained manifest pins](./overview-operational-dispatch-20261017.json).
+Focused545 passed/10 skipped, Ruff and typing passed. Full final-tree harness
+is pending. No general recovery-profile or phase-completion claim.
+
+
+PR #699 historical full assurance on cleanfcd1c6dd completed0:7,767 passed,
+10 skipped,23 warnings,308.42s,97.39% coverage;62 schema validations/52documents,
+parity9/9, all configured mutation/hygiene/audit/licence/secrets/SBOM gates,
+113components; external CDX explicitly skipped. Review correction2e9cd674 then
+passed546 focused/10 skips and repeated native14-profile209-fact42-Parquet
+parity/pinned-readback with all14 manifest pins unchanged.
+See [review-fix proof](./overview-operational-dispatch-review-fix-20261017.json).
+Full final-tree assurance, hosted checks, thread resolution and merge pending.
