@@ -10,11 +10,13 @@ import pyarrow as pa
 
 from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     CompoundAdapterOutput,
-    LossAccounting,
     NativeProfileContract,
     NativeProfileOutput,
     NativeRecordset,
     NativeRecordsetContract,
+)
+from archive_govt_nz.domains.health_appropriations.compound_envelope import (
+    validate_native_envelope,
 )
 
 MAX_PROFILES = 8
@@ -178,6 +180,7 @@ def _check_profile_shape(profile: NativeProfileOutput) -> None:
         and 0 < len(profile.recordsets) <= MAX_RECORDSETS,
         "native_recordset_count",
     )
+    _require(type(profile.excluded_sheets) is tuple, "native_excluded_sheets")
     for recordset in profile.recordsets:
         _require(
             type(recordset) is NativeRecordset
@@ -268,7 +271,6 @@ def validate_compound_output(
         and output.source_sha256 == source_sha256,
         "native_source_hash",
     )
-    _require(_text(output.layout), "native_layout_identity")
     _require(
         type(contracts) is tuple and 0 < len(contracts) <= MAX_PROFILES,
         "native_profile_contract_count",
@@ -278,16 +280,15 @@ def validate_compound_output(
     names = tuple(c.profile_id for c in contracts)
     _require(len(set(names)) == len(names), "native_duplicate_profile_contract")
     _require(type(output.profiles) is tuple, "native_profiles_tuple")
-    _require(
-        type(output.source_losses) is tuple
-        and all(type(r) is LossAccounting for r in output.source_losses),
-        "native_source_losses",
-    )
+    _require(type(output.source_losses) is tuple, "native_source_losses")
     if output.status == "preserved_only":
         _require(
             not output.profiles and bool(output.source_losses),
             "native_held_sibling_subset",
         )
+        envelope_size = validate_native_envelope(output, ())
+        _require(envelope_size <= MAX_BYTES, "native_output_limit")
+        _require(_text(output.layout), "native_layout_identity")
         _require(
             all(
                 r.disposition == "preserved_only"
@@ -308,10 +309,12 @@ def validate_compound_output(
     _require(
         tuple(p.profile_id for p in output.profiles) == names, "native_profile_set"
     )
+    envelope_size = validate_native_envelope(output, contracts)
+    _require(_text(output.layout), "native_layout_identity")
     recordsets = [r for p in output.profiles for r in p.recordsets]
     _require(
         sum(r.table.num_rows for r in recordsets) <= MAX_ROWS
-        and sum(r.table.nbytes for r in recordsets) <= MAX_BYTES,
+        and sum(r.table.nbytes for r in recordsets) + envelope_size <= MAX_BYTES,
         "native_output_limit",
     )
     for profile, contract in zip(output.profiles, contracts, strict=True):

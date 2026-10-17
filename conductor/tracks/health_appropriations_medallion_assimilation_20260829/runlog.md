@@ -7566,3 +7566,16 @@ return. Nested metadata drift, allowed nulls, required-field nulls and decimal
 scales have explicit contracts. Eighty-five focused/native/v1/census checks pass
 1.85s; Ruff/format/strict typing pass. The two actual workbook compositions and
 required native/full assurance remain pending; no broad launch has occurred.
+
+
+### 2026-10-18 — Compound envelope review finding resolved
+
+Conductor found non-table metadata/excluded/source-loss envelopes bypassed the
+original table-only limits. A behavioural red proved unsupported metadata was
+admitted. Add bounded traversal/count/depth/UTF-8 size accounting, including
+held results and native schema descriptors; cycles/unsupported values fail
+closed and original values remain unchanged. New meaningful envelope cases and
+existing native/v1/census checks pass96tests3.17s, with Ruff/typing clean. Four
+retained manifest metadata objects fit defaults at about36KB/3800nodes each;
+that is metadata-only readback, not compound native assurance. Actual workbook
+compositions and native/full qualification are still pending; no broad launch.

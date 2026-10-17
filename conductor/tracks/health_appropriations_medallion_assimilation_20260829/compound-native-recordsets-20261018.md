@@ -95,6 +95,15 @@ duplicate or missing profile/schema declarations before exposing an admitted
 result. It does not repair tables, infer field unions, cast values or promote
 source/canonical semantics.
 
+The non-table envelope has independent limits of 4 MiB, 100000 traversal nodes,
+16 levels, 256 excluded-sheet entries across profiles and 64 physical source
+losses. Held results obey the same byte/count limits. Supported native metadata
+containers/scalars are traversed without copying or coercing their values;
+unsupported or cyclic structures fail closed. UTF-8/escaped descriptor costs and
+trusted native Arrow schema descriptors also count toward the total output-byte
+limit, alongside table buffers. Repeated metadata aliases count per occurrence;
+this is not a deduplication rule.
+
 Use source hash + profile + fact-schema ID/version + original record ID as the
 lookup namespace. Original IDs in native tables remain unchanged. Fact IDs are
 unique within each namespace; repeated IDs in different profiles are retained.

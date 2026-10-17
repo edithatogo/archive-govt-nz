@@ -1,5 +1,23 @@
 {
   "dispatch_extension": "implemented_focused_qualified",
+  "envelope_limits": {
+    "bytes": 4194304,
+    "cycles": "rejected",
+    "depth": 16,
+    "excluded_sheets_total": 256,
+    "held_source_losses": 64,
+    "nodes": 100000,
+    "total_output_bytes_includes_envelope_and_native_schema_descriptors": true,
+    "unsupported_types": "rejected",
+    "values": "retained_without_coercion"
+  },
+  "envelope_review_finding": {
+    "initial_behavior": "unsupported metadata object admitted",
+    "metadata_preflight": "four retained native manifests admitted under default envelope limits; metadata-only evidence",
+    "red_log_sha256": "ae55959f8841f1e0d90533900efd2b33214cc298161e8a5526754fd4af8fbdfa",
+    "source": "Conductor review",
+    "status": "fixed"
+  },
   "expected_facts": 180,
   "expected_forecast_excluded_sheets": 4,
   "expected_lineage": 1784,
@@ -10,9 +28,9 @@
     "seconds": 1.64
   },
   "focused_native_api": {
-    "log_sha256": "64c94362e198573235dbec3a266f1686e7d58f7d4c11bcb5c948fc710deec403",
-    "passed": 85,
-    "seconds": 1.85
+    "log_sha256": "550f5d7a27b67a840fbe42d91779f040496502d080688b765a0d36c3a8eace37",
+    "passed": 96,
+    "seconds": 3.17
   },
   "full": "not_started",
   "legacy_api": "unchanged; focused protocol/dispatch/registry checks passed",

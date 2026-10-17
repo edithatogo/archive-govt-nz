@@ -498,4 +498,4 @@ they are not current-state assertions.
 
 - [Compound native workbook contract](./compound-native-recordsets-20261018.md); planned typed forecast/detail composition with unchanged v1 consumers and native schemas.
 
-- [Compound carrier checkpoint](./compound-native-recordsets-20261018.json); carrier, native dispatch and v1 regression checks pass85; source composition/native/full assurance pending.
+- [Compound carrier checkpoint](./compound-native-recordsets-20261018.json); carrier, native dispatch, bounded envelopes and v1 regression checks pass96; source composition/native/full assurance pending.
