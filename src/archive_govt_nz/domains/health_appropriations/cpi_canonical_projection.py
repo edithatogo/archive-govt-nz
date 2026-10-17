@@ -172,13 +172,10 @@ def _source_tables(
     return expected["cpi_facts.parquet"], expected["field_lineage.parquet"]
 
 
-def project_cpi(
-    silver_root: Path, manifest_sha256: str, cas_root: Path
-) -> tuple[pa.Table, pa.Table, dict[str, Any]]:
-    """Verify CPI Silver against Bronze and retain its unresolved index semantics."""
-    source_facts, source_lineage = _source_tables(
-        silver_root, manifest_sha256, cas_root
-    )
+def canonicalize_cpi_tables(
+    source_facts: pa.Table, source_lineage: pa.Table
+) -> tuple[pa.Table, pa.Table]:
+    """Pure source-faithful mapping; the calling reader must verify its inputs."""
     links: dict[str, dict[str, dict[str, Any]]] = {}
     for item in source_lineage.to_pylist():
         links.setdefault(item["record_id"], {})[item["field"]] = item
@@ -297,6 +294,17 @@ def project_cpi(
     )
     validate_table("price_population_fact", fact_table)
     validate_table("field_lineage", lineage_table)
+    return fact_table, lineage_table
+
+
+def project_cpi(
+    silver_root: Path, manifest_sha256: str, cas_root: Path
+) -> tuple[pa.Table, pa.Table, dict[str, Any]]:
+    """Verify CPI Silver against Bronze and retain its unresolved index semantics."""
+    source_facts, source_lineage = _source_tables(
+        silver_root, manifest_sha256, cas_root
+    )
+    fact_table, lineage_table = canonicalize_cpi_tables(source_facts, source_lineage)
     receipt = {
         "schema_version": "archive-govt-nz.health-cpi-canonical-projection/v1",
         "status": "verified_source_faithful_projection",

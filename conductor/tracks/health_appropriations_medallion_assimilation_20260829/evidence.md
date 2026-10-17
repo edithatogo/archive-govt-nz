@@ -1843,3 +1843,84 @@ does not close downstream common-package canonical/Gold adoption or broader
 source, rights, denominator, currency, mapping and track gates.
 See [native proof](./context-operational-dispatch-native-20261017.json) and
 [full validation](./context-operational-dispatch-validation-20261017.json).
+
+
+## Context operations delivered; canonical integration active — 2026-10-17
+
+PR #702 merged normally as 6a13aab0f81fa990dfecf5da8fbc33fc8cea25c6. Final
+head cf7ee53f passed all applicable checks: Ubuntu 6m49s, macOS 11m46s,
+Windows 19m28s, analyze/lint/CodeQL and patch coverage. No review threads
+remained. Fetched main contains both head and merge; checked and merged tree
+0113827cdb800aceaec3019853f5df034fb917b5 is identical. Zero unique changes and
+clean status preceded local/remote/tracking topic pruning; primary retained.
+See [delivery receipt](./context-operational-dispatch-delivery-20261017.json).
+
+The next integration consumes independently pinned operation packages through
+their source-regenerated verifier and reuses existing source-specific canonical
+transformations. Historical fixed-cohort native APIs, manifest pins and outputs
+remain unchanged. Qualify all five canonical fact/lineage projections first,
+then their source-separated Gold consumption; the combined plan item remains
+in progress until both are qualified and delivered. Full common evidence stays
+closed by the input operation manifest pin, including status/rules/dimensions
+and links not expressible in the existing canonical row schemas. No rights,
+currency, denominator or join decision is inferred.
+
+
+## Operation-bound canonical context and QES lineage finding — 2026-10-17
+
+A read-only consumer now verifies the actual independent operation pin and exact
+fixed official source identity before using regenerated typed tables and existing
+source-specific canonical transformations. Historical filesystem readers and
+fixed native manifest pins remain unchanged. Complete common evidence is bound
+by its original manifest pin and schema/rows digest; it is not discarded because
+canonical schemas express only a subset of source fields.
+
+Full v2 lineage admission exposed a real historical QES defect: the old reader
+supplies only six mapping fields to a complete schema, leaving required metadata
+null. Its tests validated earnings but only checked lineage schema shape. The
+legacy table also cannot serialize to Parquet. Preserve that representation and
+its exact schema/rows digest, then explicitly complete the NEW path's lineage
+metadata from uniquely resolved verified target facts, with a distinct completion
+transformation. All 90 original mapping tuples remain unchanged; no wage values,
+unknown qualifications, historical outputs, schemas or gates are replaced.
+Conductor confirmed this source-backed approach. Other four profiles retain full
+canonical fact/lineage parity; QES retains fact parity plus exact mapping tuples
+and now passes complete v2 validation.
+
+Focused contracts: 57 passed in 10.40 seconds; targeted typing 0 and Ruff clean.
+Missing-module, full-lineage-validation and invalid-legacy-Parquet failures were
+retained as bounded evidence. Native five-profile proof against pre-refactor
+committed code, repeat/readback qualification, full harness and hosted delivery
+remain pending. Gold operation-package consumption remains open in the combined
+plan item. See [checkpoint](./context-operation-canonical-20261017.json).
+
+
+## Canonical consumer native and full qualification — 2026-10-17
+
+The frozen clean tree 3c9cadf7a3fa2111b9c44885ba3dd21753355439 passed native
+qualification against pre-refactor Git 6a13aab0 code: all five official operation
+profiles, 615 canonical facts, 4,190 valid canonical lineage rows, ten actual
+verified reads and two identical repeats. Every fact Parquet matches the old
+projectors; all four other full lineage Parquets match too. QES retains all 90
+mapping tuples and the invalid legacy schema/rows digest, while its completed
+v2 lineage validates with unique IDs and fully resolved targets. All source and
+input operation-package bytes remain unchanged. Filesystem normalizers and
+historical readers are forbidden inside the new route. Conductor independently
+checked all 30 generated files, four code pins and generated QES v2 admission.
+
+`./scripts/validate.sh` passed with exit 0 at the same exact head: 7,847 tests
+passed, 10 skipped, 23 warnings in 314.23 seconds; 97.41% coverage against the
+unchanged 80% floor. Typing 0, schemas 62/documents 52, parity 9/9 and all
+mutation, hygiene, audit, licence, secret and SBOM gates passed (113 components).
+Existing external CDX validation remains skipped. Only result documentation and
+evidence follow the tested tree; final-head affected/hosted checks remain before
+normal protected merge and topic pruning. Gold operation-package adoption and
+broader track gates remain open.
+
+The population canonical count is 110: 108 period/amount/label links plus two
+publisher-status links. This corrects an old plan count; the pre-refactor and new
+outputs match exactly. The historical QES JSON replay remains a legacy mapping
+receipt, not proof of complete v2 lineage admission; the new path qualifies that
+missing contract without rewriting the historical output.
+See [native proof](./context-operation-canonical-native-20261017.json) and
+[full validation](./context-operation-canonical-validation-20261017.json).

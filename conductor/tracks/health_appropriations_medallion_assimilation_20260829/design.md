@@ -898,3 +898,42 @@ pins through the unchanged native API; a new operation manifest cannot replace
 that canonical-reader cohort. Qualify the whole outer recovery report against
 retained evidence. Adoption of common-operation packages by downstream canonical
 consumers remains a distinct integration task; historical pins are never relaxed.
+
+
+## Operation-bound canonical context — 2026-10-17
+
+Canonical consumption requires an independently retained operation manifest pin,
+exact reviewed source/profile/vintage/locator/observation identity, and the full
+source-regenerated operation verification. Return verified source-derived typed
+tables and original common evidence together; canonical transforms must not
+reopen unauthenticated candidate files. Reuse pure canonical transformation logic
+from the existing native readers without relaxing their fixed historical pins.
+Preserve canonical facts and direct lineage, including QES v2 schema and GDP
+release-specific transformation. A distinct projection receipt binds the actual
+operation schema/pin and common-evidence digest; it does not impersonate a native
+extraction receipt. No-write projection returns typed tables and evidence.
+Source-separated Gold consumption follows this canonical qualification and must
+retain explicit source statuses rather than infer them from periods. Existing
+native Gold products and their evidence remain reproducible.
+
+```mermaid
+flowchart LR
+  B[Exact reviewed Bronze context] --> V[Independent operation pin and readback]
+  M[Common evidence manifest] --> V
+  V --> T[Verified typed tables and full common output]
+  T --> P[Existing pure source-specific canonical transform]
+  P --> C[Canonical facts and direct lineage]
+  V --> R[New projection receipt with input evidence pin]
+  C --> R
+  C --> G[Source-separated Gold integration]
+```
+
+QES legacy canonical lineage is a retained historical representation: its six
+mapping fields exist but required common metadata is null, so schema validation
+and Parquet serialization fail. The new operation route retains the legacy table
+digest using canonical JSON plus its serialized Arrow schema, preserves all 90
+mapping tuples, and completes mandatory metadata from uniquely resolved verified
+canonical targets. Stable per-field IDs and an explicit completion transformation
+make this a source-backed disposition. Fully validate both v2 tables. Never change
+the historical reader/output or relax admission to claim byte parity with invalid
+lineage; all other source lineages and all fact values retain full parity.

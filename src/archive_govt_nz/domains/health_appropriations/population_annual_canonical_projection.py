@@ -237,6 +237,15 @@ def _canonicalize(
     return canonical_table, lineage_table
 
 
+def canonicalize_population_tables(
+    facts: pa.Table,
+    source_lineage: pa.Table,
+    dispositions: pa.Table,
+) -> tuple[pa.Table, pa.Table]:
+    """Pure existing population mapping; callers must verify all three tables."""
+    return _canonicalize(facts, source_lineage, dispositions)
+
+
 def project_population_annual(
     silver_root: Path, manifest_sha256: str, cas_root: Path
 ) -> tuple[pa.Table, pa.Table, dict[str, Any]]:

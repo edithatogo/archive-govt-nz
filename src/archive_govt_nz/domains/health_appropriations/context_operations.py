@@ -48,6 +48,10 @@ from archive_govt_nz.domains.health_appropriations.workbook_common import (
 if TYPE_CHECKING:
     from pathlib import Path
 
+    from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
+        AdapterOutput,
+    )
+
 _SCHEMA = "archive-govt-nz.health-context-operation/v1"
 _ERROR = "invalid_context_operation"
 PROFILES = frozenset(
@@ -365,7 +369,16 @@ def normalize_context(  # noqa: PLR0913 - explicit trusted source context
     return written
 
 
-def verify_context(  # noqa: PLR0913 - independent pin and trusted context
+@dataclass(frozen=True, slots=True)
+class VerifiedContextOperation:
+    """Source-regenerated typed tables and complete authenticated common evidence."""
+
+    manifest: dict[str, Any]
+    tables: dict[str, pa.Table]
+    common_output: AdapterOutput
+
+
+def read_context(  # noqa: PLR0913 - independent pin and trusted context
     source: Path,
     output_dir: Path,
     *,
@@ -375,8 +388,8 @@ def verify_context(  # noqa: PLR0913 - independent pin and trusted context
     source_vintage: str,
     source_locator: str,
     observed_at: str,
-) -> dict[str, Any]:
-    """Read back against independent pin and source; never repair or infer a pin."""
+) -> VerifiedContextOperation:
+    """Verify pin/source and return regenerated tables without reopening candidates."""
     _require(
         isinstance(manifest_sha256, str)
         and re.fullmatch(r"[0-9a-f]{64}", manifest_sha256) is not None
@@ -389,6 +402,31 @@ def verify_context(  # noqa: PLR0913 - independent pin and trusted context
     result, payload = _dispatch(source, profile, context, observed_at)
     tables, metadata = _project(result, payload, profile, context)
     expected = _receipt(result, metadata, profile, context, dry_run=False)
-    return _readback(
+    manifest = _readback(
         output_dir, manifest_sha256, expected, _expected_package(expected, tables)
     )
+    return VerifiedContextOperation(manifest, tables, result.output)
+
+
+def verify_context(  # noqa: PLR0913 - unchanged public independent verification API
+    source: Path,
+    output_dir: Path,
+    *,
+    manifest_sha256: str,
+    profile: str,
+    expected_sha256: str,
+    source_vintage: str,
+    source_locator: str,
+    observed_at: str,
+) -> dict[str, Any]:
+    """Read back against independent pin and source; never repair or infer a pin."""
+    return read_context(
+        source,
+        output_dir,
+        manifest_sha256=manifest_sha256,
+        profile=profile,
+        expected_sha256=expected_sha256,
+        source_vintage=source_vintage,
+        source_locator=source_locator,
+        observed_at=observed_at,
+    ).manifest
