@@ -5896,3 +5896,73 @@ original assertion and all three existing ten-second wait_for calls are
 unchanged. The embedded driver compiles; Ruff/format/targeted typing pass.
 All four production adapter pins remain unchanged. The focused real-process
 check and next full run await the reserved Aegis terminal handoff.
+
+
+## 2026-10-17 — Capture inventory reconciliation started
+
+PR #696 merged through the protected path as `72ec0ecdf09785cf356c6658b4a82ca9a6ba1e26`.
+Exact-head local harness: 7732 passed, 10 skipped, 97.44% coverage; applicable
+Ubuntu/macOS/Windows assurance, CodeQL, workflow lint and patch coverage passed.
+Fetched remote-main ancestry and absence of unique topic changes verified;
+clean topic removed locally/remotely, primary retained. External receipt:
+`/Volumes/PortableSSD/tmp/health-reviewed-overview-adapters-20261017/merged-and-pruned.json`.
+
+Next slice registers an observation-preserving capture inventory. The original
+143-record census remains immutable. Eight edition addenda and the already
+retained 2018–2021 request/capture receipt contribute nine unique captures and
+three corroborating observations. Legacy receipts without a capture-time
+request binding must remain explicitly unverified for that binding. No new
+capture, preflight, normalization, rights adjudication or publication is implied.
+
+
+Capture-inventory red phase: focused test collection failed with the expected
+missing module. Initial local static findings were corrected without suppressions.
+Metadata assembly first exposed an assumed separate 2011/12 request filename;
+inspection proved the retained census itself matches the original request hash.
+The next assembly exposed original 2009/10–2010/11 unversioned request shapes;
+these are retained under the existing capture tool contract, only after exact
+hash binding. No original evidence was changed. Final CLI builds match exactly
+(inventory SHA-256 `ac659770818c5e73814b4dc340feb019c0381839d4fc139318d66be6c314a983`).
+Focused inventory/source-health suite: 66 passed. Native shared-guard session
+8385 exited 0; 84 captured URL/versions and 46,245,283 bytes independently
+verified, with marker/log/receipt retained under
+`/Volumes/PortableSSD/tmp/health-vote-capture-inventory-20261017/`.
+Full frozen-tree validation remains the next gate.
+
+
+First frozen candidate `3e51556efadd27711b147430f26b9a09a15492c3` passed the
+complete required harness (terminal marker `validation-1.exit`: 0): 7747 passed,
+10 skipped, 23 warnings in 384.79s, 97.41% coverage; 61 schemas/51 documents,
+9/9 parity, all configured mutation/hygiene/audit/licence/secret/SBOM gates.
+External CDX validation was explicitly skipped. Actual local uv CLI 0.13.1,
+Python 3.14.6; backend constraint remains distinct from CI CLI version.
+
+Self-review then traced actual capture-tool result URLs to final redirect
+locations and confirmed failed captures omit the success-only request URL hash.
+Two focused regression tests failed on these real contracts before correction
+(`redirect-red.log`). Resolve successful captures through source ID and the
+original request URL hash, retain final URL in the raw observation, and keep
+failed captures source-ID/URL-bound without fabricating a result hash. Negative
+contracts retain wrong-source, wrong/missing hash and duplicate request-ID
+rejection. Corrected actual-cohort CLI builds 7/8 remain byte-identical to the
+committed product; the completed 84-object native fixity receipt remains valid
+and no CAS reads were repeated. Second exact-tree full assurance is pending.
+
+
+PR #697 opened on `4f64a51e36404a7dd21a375770a4be9fa3f1caa2` after the
+second exact-head full harness passed: 7750 passed, 10 skipped, 23 warnings
+in 307.04s, 97.41% coverage; schema/parity/mutation/hygiene/supply-chain gates
+passed. All applicable hosted checks subsequently passed on that same head
+(CI run 38987923545). The normal merge remained blocked by two unresolved
+review findings; no merge/prune or branch-rule change was attempted.
+
+Review links: https://github.com/edithatogo/archive-govt-nz/pull/697#discussion_r4300568982
+and https://github.com/edithatogo/archive-govt-nz/pull/697#discussion_r4300568986.
+Four focused regressions failed before correction (`review-red.log`): legacy
+with a supplied but unverified request, unused explicit CLI request, and two
+argument orders for same-hash/different-name requests. Reject unverified legacy
+request rows before they can choose a resource URL. Reject ambiguous request
+hashes and unconsumed explicit request arguments before creating output.
+Actual-cohort CLI builds 9/10 remain byte-identical to the committed inventory;
+all 84 captured identities and the existing CAS receipt remain unchanged.
+New exact-head full local/hosted assurance and review resolution remain required.

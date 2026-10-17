@@ -1752,7 +1752,7 @@ integrated parent head.
   volume. Reconcile current review without recapture; PR #695 merged as
   `c490d327` after exact-head local/hosted assurance; topic pruned.
 
-- [~] Extend common Bronze dispatch to the thirteen already reviewed main
+- [x] Extend common Bronze dispatch to the thirteen already reviewed main
   Estimates overview profiles for 2004/05–2015/16 and 2017/18. Preserve the
   existing 2016/17 API/identities and the separate 2002/03 composite. Reuse
   edition-specific parsers, amount/qualifier/rounding flags, source pins,
@@ -1762,6 +1762,24 @@ integrated parent head.
   unchanged originals, run the required harness and deliver a focused PR.
   Registration alone does not close operational manifest integration or Phase 3.
 
-- [~] Preserve bounded child-bootstrap evidence when the existing real-process
+- [x] Preserve bounded child-bootstrap evidence when the existing real-process
   capture-recovery checkpoint deadline fails. Retain every 10-second deadline
   and hard-kill/ownership/resume/WARC assertion; diagnose before any causal fix.
+
+
+- [~] Reconcile the bounded source census plus retained Vote Health capture
+  addenda into a deterministic observation-preserving inventory. Pin every
+  census/request/manifest input; retain capture-time request hashes and explicit
+  legacy-context gaps, source IDs, URLs, versions and rights observations.
+  Verify retained CAS objects independently; distinguish this cohort from the
+  whole corpus and publication-form completeness. Reuse existing preflight;
+  do not recapture or infer analytical admission. [M-02, M-03, M-04; AC-02,
+  AC-04, AC-09, AC-16]
+
+
+- [~] Resolve PR #697 review findings: reject supplied unverified legacy
+  requests, and reject unconsumed or ambiguous CLI request inputs rather than
+  silently dropping evidence or choosing a logical filename by argument order.
+  Preserve old successful assurance evidence; prove the actual cohort output
+  unchanged, run exact-head assurance and resolve the actual review threads
+  before protected merge. [M-02, M-04; AC-04, AC-16]

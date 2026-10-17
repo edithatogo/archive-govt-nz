@@ -1481,3 +1481,14 @@ merge/pruning remain pending. This does not close the Health track.
 
 - [Native parity receipt](reviewed-overview-common-adapters-20261017.json): fourteen profiles, 209 facts, repeated dispatch and unchanged originals.
 - [Scope and qualification](reviewed-overview-common-adapters-20261017.md): thirteen new common registrations; operational adoption and whole-phase assurance remain open.
+
+
+## 17 October 2026 — retained capture cohort reconciliation
+
+[Inventory and scope](./capture-inventory-20261017.md),
+[deterministic metadata projection](./capture-inventory-20261017.json),
+[build pins](./capture-inventory-build-20261017.json), and
+[independent native CAS receipt](./capture-inventory-fixity-20261017.json).
+152 URL identities, 84 recorded captures; all 84 captured URL/version CAS
+identities freshly verified (46,245,283 bytes). No WARC replay, rights or
+whole-corpus completion claim. Frozen-tree full assurance and PR delivery pending.
