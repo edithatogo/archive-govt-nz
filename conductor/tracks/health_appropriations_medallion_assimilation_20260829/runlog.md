@@ -7579,3 +7579,15 @@ existing native/v1/census checks pass96tests3.17s, with Ruff/typing clean. Four
 retained manifest metadata objects fit defaults at about36KB/3800nodes each;
 that is metadata-only readback, not compound native assurance. Actual workbook
 compositions and native/full qualification are still pending; no broad launch.
+
+
+### 2026-10-18 — Closed forecast/detail native source composition
+
+Add explicit two-source registrations and independent native profile contracts.
+Both original admissions/projections remain unchanged. Verify all requested
+siblings and hash-bound row controls before exposing tables; any failed sibling
+holds the physical source. Retain complete typed receipts and compute native
+Parquet hashes only in memory, validating before and after. Conductor reviewed
+the composition with no actionable finding. Six source cases and existing
+compound/literal/registry checks pass57tests1.91s; Ruff and strict typing pass.
+Retained-source two-run proof and original full/hosted gates remain pending.

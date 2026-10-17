@@ -1,6 +1,7 @@
 # Compound native workbook results
 
-Status: planned implementation after delivered PR #714. This increment closes
+Status: compound API and source composition implemented after delivered PR #714;
+focused contracts pass, retained-native and full assurance pending. This increment closes
 common extraction of the two retained forecast-summary profiles alongside the
 reviewed detail profiles sharing their exact source bytes. It does not qualify
 canonical measures, mappings, analytical joins, currency, periods or rights.
@@ -15,7 +16,8 @@ canonical measures, mappings, analytical joins, currency, periods or rights.
 The four profiles retain 180 facts, 1784 lineage rows and 4833 profile-specific
 cell/area dispositions. Each forecast profile separately excludes two sheets.
 These are interpretations of two physical inputs, not 4833 unique source cells.
-All 16 existing standalone files remain byte-identical to the retained oracle.
+Qualification requires all 16 existing standalone files to remain byte-identical
+to the retained oracle. This requirement is not yet proven for compound dispatch.
 
 Forecast facts use their existing `SILVER_SCHEMA`; detail facts keep the literal
 `FACT_SCHEMA`. Their lineage and disposition schemas also remain distinct.
@@ -137,3 +139,11 @@ concrete contract/API implementation delta to Conductor before any native/full
 launch; Conductor owns serialized execution. Then run the original full harness,
 open a focused PR, require seven exact-head hosted successes/resolved threads,
 merge normally and verify ancestry/tree/zero-unique/clean state before pruning.
+
+Complete typed native metadata is validated before adding output hashes. Hashes
+use the unchanged standalone Parquet encoding in memory; no source or output
+file is opened by extraction. A second validation includes the hash descriptors.
+Six source-composition checks cover both families, full metadata/table/file-hash
+comparison with unchanged writers, atomic admission failure, count drift and
+closed registration. Combined focused source/native/literal/registry checks pass
+57 tests in 1.91s. These mocked admission fixtures do not qualify actual sources.

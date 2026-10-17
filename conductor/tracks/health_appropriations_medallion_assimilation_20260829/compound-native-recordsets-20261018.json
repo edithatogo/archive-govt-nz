@@ -1,4 +1,5 @@
 {
+  "composition_review": "Conductor reviewed working composition; no actionable finding; retained native proof pending",
   "dispatch_extension": "implemented_focused_qualified",
   "envelope_limits": {
     "bytes": 4194304,
@@ -32,19 +33,25 @@
     "passed": 96,
     "seconds": 3.17
   },
+  "focused_source": {
+    "log_sha256": "6f87bc8549e469d6931b8eb988c85955bebec1ffa42e04d030da77694fc26f16",
+    "passed": 57,
+    "seconds": 1.91
+  },
   "full": "not_started",
   "legacy_api": "unchanged; focused protocol/dispatch/registry checks passed",
   "mixed_registry": "duplicate IDs rejected and competing physical matches preserved-only",
   "namespace": "source SHA256/profile/fact-schema ID/version/original record ID",
   "native": "not_started",
   "native_files_per_run": 16,
+  "native_metadata": "complete typed receipts plus in-memory standalone Parquet hashes; no filesystem access in extraction",
   "native_profiles": 4,
   "native_schema_metadata": "exact equality with independently declared expected schemas",
   "physical_sources": 2,
   "publication": "not_performed",
   "rights": "not_evaluated",
   "row_nullability": "recursive non-nullable checks; allowed nulls retained",
-  "shared_source_adapters": "pending",
+  "shared_source_adapters": "implemented_two_sources_four_profiles",
   "single_result_boundary": "original exact registration/output checks retained; compounds refused",
-  "status": "native_dispatch_qualified_source_composition_pending"
+  "status": "source_composition_focused_qualified_native_pending"
 }
