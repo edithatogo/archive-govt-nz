@@ -190,6 +190,10 @@ def build_stage_area_bindings(
                 "observed_at": receipt["observed_at"],
                 "facts": item["facts"],
                 "lineage": item["lineage"],
+                "dispositions": item["dispositions"],
+                "disposition_sha256": item["disposition_sha256"],
+                "disposition_reason_counts": item["reason_counts"],
+                "selection_scope": item["scope"],
                 "bindings": len(current),
                 "source_separated": any(row["unit_id"] is None for row in current),
             }
