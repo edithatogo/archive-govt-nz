@@ -5966,3 +5966,65 @@ hashes and unconsumed explicit request arguments before creating output.
 Actual-cohort CLI builds 9/10 remain byte-identical to the committed inventory;
 all 84 captured identities and the existing CAS receipt remain unchanged.
 New exact-head full local/hosted assurance and review resolution remain required.
+
+
+## 2026-10-17 — PR #697 delivered; distinct Addition census started
+
+PR #697 merged normally as `170cd9c016048a1b2319b1db9dc90043d66a5e86`
+after corrected exact-head local/hosted assurance on
+`e11fa29ca5f7f875ae7bf7fbad23149f82bf6058`. Local full: 7754 passed,
+10 skipped, 23 warnings, 363.60s, 97.41% coverage against unchanged 80% floor;
+61 schemas/51 documents, parity 9/9, all configured mutation/hygiene/supply
+chain gates passed; external CDX explicitly skipped. Fresh CI 38989496763
+passed Ubuntu/macOS/Windows, analyze/CodeQL, lint and patch coverage. Windows
+finished naturally after 20m26s; no cancellation, rerun or timeout change.
+Two review findings were resolved after the four red regressions and completed
+fix/evidence. Normal protected merge was clean and matched the exact head.
+
+Fetched remote-main ancestry verifies both head and merge; no unique topic
+changes remained. Clean local topic and exact stale tracking ref removed,
+remote topic absent, primary worktree retained. External delivery receipt:
+`/Volumes/PortableSSD/tmp/health-vote-capture-inventory-20261017/merged-and-pruned.json`.
+
+During the hosted wait, existing commissioned Bronze work preserved the
+separate 2019/20 Supplementary Addition externally with the qualified capture
+tool. Exactly one download succeeded (369769 bytes; SHA-256
+`669590bb6beaf3baea30f7a0243060b0270193d404043648b7fd3e58f633125a`).
+The external verifier wrapper initially used the wrong store method name;
+that failed wrapper/log/exit and diagnosis are retained. Verification-only
+retry with existing `_verify_retained` passed CAS SHA-256/BLAKE3/size plus WARC
+request/final URL/status/content-type/body/fixity bindings and PDF signature.
+No recapture, numerical normalization, rights admission or publication occurred.
+#697's tracked tree, original inputs and 152/84 inventory stayed unchanged.
+Source request, capture and terminal verification receipts are retained under
+`/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/assurance/vote-health-supplementary-addition-2019-20-20261017/`.
+The finalized-census validator correctly rejected a discovered request; its
+separate domain request contract passed without weakening either validator.
+
+This next slice integrates those exact retained metadata inputs and the source
+publication/layout observations; original snapshots remain unchanged. Conductor
+independently checked request/manifest/verification consistency, without a second
+CAS/WARC replay, and supplied two-page layout reconnaissance for later reuse.
+
+
+Addition metadata integration uses the existing builder unchanged. Two real CLI
+builds passed and matched byte-for-byte (SHA-256
+`46e04f3dfed3553ed7f5c8828749ab48ef98189e5409d906b8c63d1509acbb06`).
+The product has 153 URLs, 85 recorded captures, 156 census and 86 capture-result
+observations. All 24 supplied logical input names/hashes are present; all 152
+old resource rows remain exactly unchanged. Metadata receipt-set accounting
+covers exactly the new inventory's 85 captured URL/version identities using
+the prior 84-object proof plus the new qualified single-source proof. This
+accounting does not replay old CAS/WARC evidence. Original 143-row source
+census and old inventory remain unchanged.
+
+Conductor's existing two-page layout derivatives were copied byte-for-byte to
+the external native assurance directory and hash-pinned; both images were
+visually inspected. Existing text has 19 physical-page form feeds; samples
+printed 170 and 176 match physical pages 2 and 8. Five columns have distinct
+roles by table; no amount, marker/zero or currency inference is admitted.
+No new production behavior is introduced, so this is existing-contract/source
+characterization rather than an artificial red test. No unit tests were added
+for reversible metadata changes. Ruff passes; the existing schema harness
+reports 62 validated schemas and 52 representative documents. Full exact-tree assurance
+and focused PR delivery remain pending.
