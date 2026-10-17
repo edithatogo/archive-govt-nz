@@ -494,4 +494,4 @@ they are not current-state assertions.
 
 - [Five physical literal source adapters](./literal-common-adapters-20261018.json); seven shared native profiles, complete area qualifiers, two native replays and full harness qualified; hosted delivery pending.
 
-- [Fiscal2024 historical common dispatch](./historical-common-dispatch-20261018.json); focused308 passed; exact historical native/full qualification pending.
+- [Fiscal2024 historical common dispatch](./historical-common-dispatch-20261018.json); focused308 and native two-run parity passed; single census code binding reconciled; full rerun pending.

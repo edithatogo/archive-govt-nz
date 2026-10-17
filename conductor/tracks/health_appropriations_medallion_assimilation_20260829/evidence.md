@@ -2929,3 +2929,20 @@ checks15.53s. The exact106fact/1143lineage/1503cell/six-sheet native replay and
 required full harness are pending. The prepared proof compares all four old
 native hashes and two report builds, and tests unambiguous coexistence with the
 five literal bundles. See historical-common-dispatch-20261018.json.
+
+
+### 2026-10-18 — Native historical proof and census code binding
+
+Both native replays passed:106facts,1143lineage rows,1503complete cell
+dispositions, six excluded sheets and1509losses; all four products match old
+pins and original source/reference bytes are unchanged. The reports have equal
+SHA256 b14b274911e2623cfbb2eb4228c279a775cf6b0f46581841a7dd7101da6be520.
+Warmed dispatch denied Python file APIs; network was denied throughout.
+
+Full1 stopped at tests with7952passed/2failed/12skipped/18warnings271.03s,
+97.14%coverage. Later full-harness gates did not run. Both failures were the
+census's old historical.py code-evidence hash. Preserve original census bytes
+in context-census-pre-historical-dispatch-20261018.json and refresh only that
+reviewed code hash after native parity. Every series/source/qualification/rights/
+join field and every other evidence pin is unchanged. Existing affected census
+and adapter checks now pass28tests6.84s. Full2 remains pending; no native repeat.

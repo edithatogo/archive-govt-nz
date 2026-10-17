@@ -7507,3 +7507,15 @@ order and bound-method identity. Those are corrected without producer changes;
 The native recipe compiles and its isolated JSON encoder round-trips; it has
 not executed. Native two-run proof and original full validation will be handed
 to the serialized owner on the frozen clean implementation head.
+
+
+### 2026-10-18 — Historical native1 passed; full1 census failure repaired
+
+Conductor session81142/PID15530 ran the sole guarded native1/full1 job. Native1
+passed twice and full1 terminated1 at two census evidence tests, with7952other
+tests passed. Original failed output/exit and native proof remain retained.
+After explicit freeze release, preserve the prior census bytes and update its
+single reviewed code-evidence hash. Exact before/after comparison proves all
+series fields and other pins unchanged. Existing28census/adapter checks pass;
+no source, test or runtime edits since679a03a4. Prepare a new clean full2 handoff
+with original harness settings; no repeat of the unchanged native proof.

@@ -3641,3 +3641,16 @@ compare complete native rows and warmed dispatch under Python file-API denial.
 Registry checks compare stable configuration rather than newly bound callable
 identity, respecting existing sorted output. Native/full qualification remains
 pending; the replay discloses dependency initialization before dispatch denial.
+
+
+### 2026-10-18 — Historical code-evidence dependency reconciled
+
+Conductor independently confirmed the full1 failure and the sole drifting
+census dependency, then released the terminated run's freeze for a bounded
+repair. The historical parser refactor changes source code identity while its
+four native output files remain byte-identical. Retain the old census binding;
+the current census changes only historical.py's SHA256 to1af61ede62d2cf29eff896381c186688efadc30811361bd3f9ec21db5eb5638c.
+No validator, regex assertion, source observation, denominator, rights,
+qualification or join policy changes. Existing28affected tests pass; producer
+and tests still match the native-qualified679a03a4 tree. Full2 is required on
+the reconciled metadata head; native1 remains valid without repetition.

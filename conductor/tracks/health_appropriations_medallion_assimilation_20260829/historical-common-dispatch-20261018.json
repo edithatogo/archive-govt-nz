@@ -1,5 +1,18 @@
 {
   "cell_transport": "historical-cell-json/v1 complete native disposition row",
+  "code_evidence_reconciliation": {
+    "changed_path": "src/archive_govt_nz/domains/health_appropriations/historical.py",
+    "current_census_sha256": "cd4d6311ee237b7ab07b41812d1030a49f401805a37136dbe004850f0fcbe1e8",
+    "current_code_sha256": "1af61ede62d2cf29eff896381c186688efadc30811361bd3f9ec21db5eb5638c",
+    "kind": "current_code_evidence_only",
+    "native_report_sha256": "b14b274911e2623cfbb2eb4228c279a775cf6b0f46581841a7dd7101da6be520",
+    "other_evidence_pins": "all unchanged",
+    "previous_census_sha256": "af8cf8eb2d3f659838e487ab3d53bade3b6ef10be63f72e4f0c651494f7aa4d2",
+    "previous_census_snapshot": "context-census-pre-historical-dispatch-20261018.json",
+    "previous_code_sha256": "b751900d903407b5ece2cfbe54a4d19cf5122939ccc7059ed67deb915622f872",
+    "rationale": "same native parser body and historical four-file byte parity proved before refreshing current code binding",
+    "series_qualification_rights_joins": "all unchanged"
+  },
   "expected_cell_dispositions": 1503,
   "expected_excluded_sheets": 6,
   "expected_facts": 106,
@@ -10,11 +23,53 @@
     "passed": 308,
     "seconds": 15.53
   },
+  "focused_census_reconciliation": {
+    "log_sha256": "ff1ada16bf97aa5189308d5fb5787c10e8614669793b2f4a7c3cc66dbd449de7",
+    "passed": 28,
+    "producer_tests_runtime_delta_since_native": false,
+    "seconds": 6.84
+  },
   "full": "pending",
+  "full_initial_failure": {
+    "cause": "reviewed historical.py refactor changed its pinned code-evidence hash",
+    "coverage_percent": 97.14,
+    "exit_code": 1,
+    "failed": 2,
+    "failed_contract": "source_context_census.validate_evidence",
+    "head": "679a03a494c417fc56a60919d3c463c037fa2aff",
+    "later_harness_stages": "not_run",
+    "log_sha256": "bbff1a8268bd471dea5ab98cbd541d01d9b4e479cb6a75c6f22bec616accb713",
+    "native": "passed_retained_no_rerun",
+    "passed": 7952,
+    "seconds": 271.03,
+    "skipped": 12,
+    "tree": "b9573bef722263241db97560838cea138f278865",
+    "warnings": 18
+  },
   "global_worksheet_semantics": "unchanged_unresolved",
   "lineage_context": "native source hash, locator and lineage ID retained on corresponding facts",
-  "native": "pending",
+  "native": {
+    "cell_dispositions": 1503,
+    "dependency_warmup": "verified historical Arrow UTC conversion and native parser before denial",
+    "excluded_sheets": 6,
+    "facts": 106,
+    "global_worksheet_semantics": "unchanged_unresolved",
+    "lineage": 1143,
+    "losses": 1509,
+    "native_bytes": "identical to historical pins",
+    "native_product_files_per_run": 4,
+    "network": "denied",
+    "publication": "not_performed",
+    "python_file_apis_during_dispatch": "denied",
+    "reference_files": "all4 unchanged",
+    "report_sha256": "b14b274911e2623cfbb2eb4228c279a775cf6b0f46581841a7dd7101da6be520",
+    "runs": 2,
+    "source_bytes": "unchanged",
+    "status": "passed"
+  },
   "native_files_per_run": 4,
+  "native_validated_head": "679a03a494c417fc56a60919d3c463c037fa2aff",
+  "native_validated_tree": "b9573bef722263241db97560838cea138f278865",
   "observed_at": "2026-08-30T08:58:00+00:00",
   "publication": "not_performed",
   "recipe_sha256": "0301428bcdad18dc6955a9bbc3209b109b2cd1e5a01537225d09d5661a5eed72",
@@ -25,5 +80,5 @@
   "source_locator": "data/raw/fiscaltimeseries1972-2024.xlsx",
   "source_sha256": "769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d",
   "source_vintage": "fiscal-2024",
-  "status": "focused_qualified_native_full_pending"
+  "status": "native_qualified_evidence_reconciled_full_pending"
 }
