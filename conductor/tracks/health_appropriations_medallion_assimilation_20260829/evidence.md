@@ -2704,3 +2704,28 @@ assertion suppression. Ruff/format/strict typing pass. Actual retained-source
 old/new byte comparisons, repeat proof and the repository harness remain pending
 with the existing Conductor launch owner. No source capture or rights/policy
 change occurs.
+
+
+### 2026-10-18 — Supplementary dispatch actual-source and full assurance
+
+On clean ad36a7a7/tree69a6478e, native2 passes two network-denied replays
+against both original CAS PDFs and pinned pre-change normalizers. All four
+standalone product files per edition are byte-identical to the baseline; common
+dispatch matches11facts and33field-lineage records, accounts for60pages and
+preserves58unselected pages. Altered source bytes remain preserved-only; source
+originals are unchanged. Repeat report ca84c64c040812f75a422235bda5a137a44f32b4c30fc16262af5be69b081709.
+
+Native1 stopped at metadata-sensitive Arrow-versus-Parquet equality after the
+2024/25 baseline files already matched. Bounded diagnosis established identical
+values and only the Parquet list-child name item-to-element representation
+change. Native2 explicitly compares values and then compares identical Parquet
+representations with metadata sensitivity retained. Original failure, recipe,
+log and partial products are preserved externally; production code is unchanged.
+
+Original ./scripts/validate.sh passes on that exact frozen commit:7922tests,
+12skips,23warnings,251.85s;97.23% coverage against80% floor;66schemas/56documents;
+parity9/9 with zero divergences; all mutation, hygiene, performance and supply-chain
+gates;113SBOM components. See supplementary-summary-dispatch-20261018.json for
+full log and native recipe/report pins. This documentation integration follows
+terminal release; affected document gates and hosted delivery remain pending.
+Broader phase/rights/analytical and track completion claims remain open.
