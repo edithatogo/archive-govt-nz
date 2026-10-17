@@ -6316,3 +6316,20 @@ file hashes and no-write preflight; code review found no blocking defect.
 See [review-fix native proof](./forecast-operation-size-fix-native-20261017.json).
 A new full exact-tree harness and final-head hosted checks remain required;
 actual PR review thread is intentionally unresolved until these qualify the fix.
+
+
+## PR #701 size-fix full local assurance — 2026-10-17
+
+Fresh `./scripts/validate.sh` completed with exit0 at frozen clean
+5f6bf873907ce977f3c6d71aa1fa1b79f5adb4d8: 7,806 tests passed, 10 skipped,
+23 warnings in374.46s;97.39% coverage against unchanged80% floor. Typing0,
+62 schemas/52 representative documents, parity9/9 and all mutation, hygiene,
+audit, licence, secret and SBOM gates passed (113 components). Existing external
+CDX validation remains skipped. The material size fix is qualified by this run,
+not the earlier pre-fix green tree. Exact head/log/runtime pins are retained in
+[final local receipt](./forecast-operation-size-fix-validation-20261017.json).
+Only result notes and index pointers follow the tested head; affected checks
+qualify this closeout. Required final-head hosted checks, actual review-thread
+resolution and normal protected merge/prune remain pending. Native/large-case
+proof and all original sources/output identities remain unchanged. No broader
+track gate or source/rights/denominator claim is closed.

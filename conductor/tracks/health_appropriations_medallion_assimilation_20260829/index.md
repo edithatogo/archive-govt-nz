@@ -430,3 +430,5 @@ they are not current-state assertions.
 - [Forecast operation size review fix](./forecast-operation-size-review-fix-20261017.json).
 
 - [Forecast operation size-fix native and real regression proof](./forecast-operation-size-fix-native-20261017.json).
+
+- [Forecast operation size-fix full validation](./forecast-operation-size-fix-validation-20261017.json).
