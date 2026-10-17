@@ -36,6 +36,9 @@ jobs:
         with:
           enable-cache: true
           version: "0.12.17"
+      - name: Verify native Windows output pinning
+        if: matrix.os == 'windows-latest'
+        run: uv run --locked pytest tests/domains/health_appropriations/test_operation_gold_output.py -q --no-cov
       - name: Run locked assurance gate
         shell: bash
         run: |

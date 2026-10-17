@@ -991,10 +991,11 @@ An actual first-write/between-write regression reproduces18+unexpected files
 added to an input package through a substituted output symlink. Retain source-
 regenerated products before reservation, but bind all creates to the reserved
 directory object, with exclusive creation and finally-close.
-POSIX uses dir_fd; Windows holds native read-attribute directory handles on the
+POSIX uses dir_fd; Windows holds native list/read-attribute directory handles on the
 complete lexical ancestor chain and reserved leaf, with FILE_SHARE_READ only
 (no write/delete sharing), reparse/junction rejection and128bit file-ID checks.
-This protects the path throughout child creation/readback, rather than reuse
+The native qualification must prove path protection through child creation/readback,
+rather than reuse
 Budget's unlocked path-only fallback as proof of race protection. Path identity
 and symlink guards remain before/after writes and final readback; interrupted
 output stays separate and is never repaired. Exact bytes/manifest identities
@@ -1002,3 +1003,13 @@ must remain stable. Native references checked2026-10-17: [Microsoft CreateFileW]
 directory/reparse flags and sharing semantics, GetFileInformationByHandleEx
 FileIdInfo/AttributeTagInfo, and Python3.14 Windows128bit st_ino. Platform
 support still requires actual hosted Windows contracts before delivery.
+
+
+Windows qualification at4a3cad55 disproved attribute-only sharing protection:
+two native replacement tests allowed rename. Microsoft [MS-FSA sharing checks](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-fsa/8c0e3f4f-0729-49f4-a14d-7f7add593819)
+apply to read-data/list-directory, write-data, execute or delete access, not an
+attribute-only handle. Require FILE_LIST_DIRECTORY|FILE_READ_ATTRIBUTES (0x81)
+with the existing share/read-only mask; qualify actual Windows behavior before
+claiming protection. Run the existing tiny native output-pinning contracts before
+long Windows CI assurance so this failure is caught early. Required full platform
+gates, assertions, coverage80%, dependency pins and timeouts remain unchanged.

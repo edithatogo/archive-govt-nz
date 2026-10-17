@@ -6651,3 +6651,27 @@ before tests for that known defect; exit143 and cancellation receipt retained,
 never represented as passed. The final frozen tree still needs its own full
 local harness and actual Windows native/hosted qualification before review
 resolution/merge/pruning. No broad track gate is closed.
+
+
+## PR #704 native Windows access-mask qualification correction — 2026-10-17
+
+Exact4a3cad55 hosted Ubuntu and macOS full assurance passed. Windows failed two
+native sharing tests: leaf/ancestor renames were not denied by attribute-only
+handles (7847passed/36skipped/2failed,648.09s). Preserve job117352281624/run
+39017372061 bounded evidence and log fixity in the correction checkpoint. This
+is a demonstrated Windows defect, not a hosted runner stall. Microsoft MS-FSA
+corroborates why attribute-only access does not participate in sharing checks.
+
+After Conductor stopped only the superseded local4 descendants and released
+freeze, add FILE_LIST_DIRECTORY to Windows handle desired access (0x80→0x81).
+Keep restrictive sharing, complete ancestor locks, reparse rejection,128bit IDs,
+finally-close and all native replacement/cleanup assertions. Add an early
+Windows-only CI invocation of the existing small output-pinning test module;
+full required platform assurance still follows on success. No new framework,
+permission grant, threshold reduction, Windows feature drop or timeout change.
+The sole production delta is inside the Windows-only function; native2/POSIX
+output code and bytes are unchanged, so no redundant Mac native/full replay is
+claimed or scheduled. Local4 exit143/partial logs are retained, never marked
+passed. Local full-before-PR7143 and exact4a3 hosted Mac/Ubuntu remain historical
+scoped evidence. Final corrected head requires actual native Windows proof and
+all required hosted checks before resolving review/merging/pruning.

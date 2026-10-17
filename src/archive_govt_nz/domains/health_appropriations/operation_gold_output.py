@@ -64,9 +64,10 @@ def _lock_windows_directory(path: Path, stack: ExitStack) -> None:
     close.restype = wintypes.BOOL
     before = path.lstat()
     _identity(before)
-    # FILE_READ_ATTRIBUTES; FILE_SHARE_READ only; OPEN_EXISTING;
+    # FILE_LIST_DIRECTORY | FILE_READ_ATTRIBUTES: attribute-only opens do not
+    # participate in data-access sharing checks. FILE_SHARE_READ; OPEN_EXISTING;
     # BACKUP_SEMANTICS (directory) | OPEN_REPARSE_POINT (never follow a junction).
-    handle = create(str(path), 0x80, 1, None, 3, 0x02000000 | 0x00200000, None)
+    handle = create(str(path), 0x81, 1, None, 3, 0x02000000 | 0x00200000, None)
     if handle in (None, ctypes.c_void_p(-1).value):
         raise ctypes.WinError(ctypes.get_last_error())
     stack.callback(close, handle)

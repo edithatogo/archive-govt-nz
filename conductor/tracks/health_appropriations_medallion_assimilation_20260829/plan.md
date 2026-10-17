@@ -1888,3 +1888,8 @@ integrated parent head.
   on failure. Reconcile focused/native/full/hosted evidence before resolving the
   review, protected merge and topic pruning. [M-03, M-07, M-10, M-18; AC-02,
   AC-05, AC-12, AC-16]
+
+  Windows qualification correction: the4a3 attribute-only handle admitted rename.
+  Add list-directory access with unchanged restrictive sharing and qualify the
+  existing native replacement/cleanup tests early in Windows CI. Keep full
+  platform gates and review resolution pending until the corrected head passes.

@@ -1,6 +1,22 @@
 {
+  "access_fix_checks": {
+    "focused": {
+      "log_sha256": "60ee5cac2697d704ee915022198c9d1e3c4003480e430a8fe4de1e5d879b81f0",
+      "passed": 4,
+      "seconds": 0.79,
+      "skipped": 2
+    },
+    "ruff": "passed",
+    "windows_platform_typing_errors": 0,
+    "workflow_policy": {
+      "log_sha256": "753cb73f198f6c69c6a75f77d70f0cfc5eb49f443f73ccc024e54a2445ac1989",
+      "passed": 6,
+      "seconds": 0.66
+    }
+  },
   "cleanup": "ExitStack reverse-order handles through final readback; descriptor close after fstat/fdopen/body failures tested",
   "failure": "reserved output path swapped to input-package symlink before/between path-based file opens;19/18unexpected input members added",
+  "fast_native_gate": "existing output-pinning tests run before long Windows assurance; full required platform gates unchanged",
   "final_helper_focused": {
     "log_sha256": "deecf5cb739ca790e8dc77f3af2997ec0ca47729c60e0e198c596a1c4bb9b52a",
     "passed": 4,
@@ -13,8 +29,22 @@
     "seconds": 144.86,
     "skipped": 2
   },
+  "full_4_local": {
+    "cancellation_sha256": "ae0816f3e6d063ebb42880b31edfb55ad047292c37a419c050ae46f5a2b6b32f",
+    "exit_code": 143,
+    "head": "4a3cad5573a63f578c21c43c4a7be6d9f2a0b941",
+    "partial_log_sha256": "67531e20146a3d0a685a4ebf3853cdf76de952a5531d15a91a98f85cb2e19e88",
+    "status": "superseded_cancelled; partial tests neither pass nor failure claim"
+  },
   "full_harness": "final corrected frozen-head rerun pending",
+  "hosted_4a3": {
+    "macos": "success",
+    "record_sha256": "c3a144505b8dfeeb0cfbd65ddd718918aca6ffc8072812134670a34f0dd99cbf",
+    "ubuntu": "success",
+    "windows": "failed_native_sharing_contract"
+  },
   "lint": "passed",
+  "local_coverage_policy": "full-before-PR7143passed; no redundantPOSIXnative/full replay for isolatedWindowsaccessmask andWindows-onlyfaststep; exactfinalheadfullhostedplatformgates remain mandatory",
   "merge": "pending",
   "native_actual_source_repeat": "passed at6ef90a1a; two20file inventories identical to independent pre-correction pins",
   "native_proof_sha256": "38f713345b783efb5ec13e2052ddfcf0d10d0b02bbb089a2c37ffb1a28000abe",
@@ -44,7 +74,24 @@
   },
   "typing_errors": 0,
   "windows": "native ancestor-chain plus leaf handles; read sharing only; reparse rejection and128bit file-ID admission; no unlocked path fallback",
-  "windows_native_qualification": "pending_hosted",
+  "windows_access_correction": "FILE_LIST_DIRECTORY|FILE_READ_ATTRIBUTES (0x81), retaining share-read-only, ancestor locks, reparse/file-ID/finally guards",
+  "windows_native_initial_qualification": {
+    "failure": "native Windows directory sharing tests: rename was not denied by read-attributes-only handles",
+    "head": "4a3cad5573a63f578c21c43c4a7be6d9f2a0b941",
+    "hypothesis": "attribute-only opens do not participate data-access sharing; require FILE_LIST_DIRECTORY readaccess with existing restrictive sharemask",
+    "job": 117352281624,
+    "log_sha256": "1c3fd736a777790954243c5297cc82c65a7bc202b9e03650b625bf2999582cb5",
+    "native_windows_qualification": "failed; no merge or review resolution",
+    "run": 39017372061,
+    "tests": {
+      "failed": 2,
+      "passed": 7847,
+      "seconds": 648.09,
+      "skipped": 36,
+      "warnings": 23
+    }
+  },
+  "windows_native_qualification": "pending_actual_hosted_after_access_correction",
   "windows_static_correction": "explicit os.name branch plus descriptor-state gates;0errors on Windows platform",
   "windows_static_initial": "failed: descriptor-state condition did not narrow POSIX-only flag availability"
 }
