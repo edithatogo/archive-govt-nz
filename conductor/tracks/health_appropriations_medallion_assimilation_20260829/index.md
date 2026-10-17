@@ -434,3 +434,5 @@ they are not current-state assertions.
 - [Forecast operation size-fix full validation](./forecast-operation-size-fix-validation-20261017.json).
 
 - [Forecast operational dispatch delivered and pruned](./forecast-operational-dispatch-delivery-20261017.json).
+
+- [Context operation CPI literal/version boundary](./context-operation-cpi-vintage-20261017.json).

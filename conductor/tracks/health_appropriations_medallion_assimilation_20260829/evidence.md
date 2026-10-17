@@ -1772,3 +1772,25 @@ pins and current Bronze exist. No source parsing/rebuild/acquisition occurred in
 that preparation. CPI vintage aliases and population lineage representation need
 explicit source-faithful projection; Conductor guidance requested before coding
 those boundaries. Other families and contract preparation continue independently.
+
+
+## Context operation CPI vintage contract — 2026-10-17
+
+The retained CPI native manifest edb62f4b... binds source f474a6a3... and literal
+`Stats-NZ-CPI-2026-Q2`; existing common registration supported only `2026-Q2`.
+A fixture regression reproduced preserved-only fallback for the retained label.
+The factory now exposes an explicit1.1.0 recorded-label adapter while preserving
+legacy1.0.0 behavior. Source context and unresolved mapping vintage retain the
+caller's exact supported literal; no parse-short-then-rewrite conversion occurs.
+Unrelated vintages remain refused and the legacy class does not implicitly
+accept the new label. Native CPI APIs and schemas remain unchanged.
+Focused CPI/adapter/dispatch contracts:80 passed in3.24s; targeted typing0 and
+Ruff clean. This is fixture boundary qualification only; actual native-source
+repeat proof, five-profile operation routing, full harness and hosted delivery
+remain pending. See [CPI boundary receipt](./context-operation-cpi-vintage-20261017.json).
+Conductor guidance also retains full population common records, all three lineage
+fields/status/rules and dimensions/links in the operation manifest, with an
+explicit native compatibility projection rather than silent parity replacement.
+For GDP June, retain the legacy common parser token and actual June fact/native
+transformation separately; vintage/61-quarter controls establish source scope,
+not the parser label. No source capture or semantic/rights approval is inferred.
