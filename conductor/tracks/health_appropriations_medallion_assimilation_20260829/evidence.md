@@ -1619,3 +1619,16 @@ hosted checks must qualify the final PR head before protected merge/prune.
 The four-API native proof is unchanged; Conductor independently reviewed the
 rebinding and source-specific report compatibility. Operational adoption and
 all broader source/donor/rights/phase gates remain open.
+
+
+## Forecast operation adoption started — 2026-10-17
+
+PR #700 merged normally at03:47:56Z, merge58362d4d6bb9eb5a6ad54a83cd4a6c95d9150aba,
+headbf0b8d5f697d01fd1f1cc2bc645f15005ffee381. All required/applicable checks
+passed, including Windows20m46; no unresolved review threads. Fetched main
+contains both commits, no unique changes remained, and clean local/remote/tracking
+topic refs were pruned; primary checkout retained. Windows ran7763tests/30skips,
+Ubuntu/macOS7767/26; native local parity and full7783/10 remain separately scoped.
+The next approved bounded Phase3/8 task adopts the two actual common forecast
+outputs in operations. Existing formula rejection/partial-package behavior is an
+explicit compatibility contract. No broader phase, rights or donor closure.

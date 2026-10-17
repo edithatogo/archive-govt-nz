@@ -1813,7 +1813,7 @@ integrated parent head.
   [M-04, M-10; AC-12, AC-16]
 
 
-- [~] Add explicit common adapters for the existing BEFU-2026/v1 and
+- [x] Add explicit common adapters for the existing BEFU-2026/v1 and
   HYEFU-2025/v1 literal Health-summary profiles. Reuse their reviewed extraction
   boundary, preserve legacy APIs/receipts and source-specific Actual/Forecast,
   units, lineage, partial failures and all cell/sheet loss accounting. Retain
@@ -1821,3 +1821,14 @@ integrated parent head.
   successor outputs, and run required assurance before focused PR delivery.
   This does not close general operational adoption or the donor-area census.
   [M-04, M-05, M-06, M-07; AC-03, AC-05, AC-09, AC-16]
+
+
+- [~] Adopt common dispatch in the two reviewed forecast source operations.
+  Build facts/lineage from actual common output; explicitly reconcile raw cell
+  metadata from the same verified shared snapshot. Persist selection, all losses
+  and versioned projection metadata with independent manifest-pin readback.
+  Preserve compact public receipts, four native APIs, no-write failed preflight
+  and retained four-file partial packages on explicit-write rejection. Exercise
+  tamper, interruption, repeat-build and symlink-ancestor contracts before native
+  and full assurance, focused PR, protected merge and clean topic pruning.
+  [M-04, M-05, M-07, M-10; AC-03, AC-05, AC-12, AC-16]
