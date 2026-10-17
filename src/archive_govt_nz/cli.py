@@ -722,6 +722,83 @@ def health_appropriations_verify_gold_metadata(
     return 0
 
 
+@app.command(name="health-appropriations-build-operation-context-metadata")
+def health_appropriations_build_operation_context_metadata(
+    *,
+    input_spec: Path,
+    source_root: Path,
+    gold_package: Path,
+    gold_manifest_sha256: str,
+    output_dir: Path,
+    write: bool = False,
+) -> int:
+    """Regenerate v5 metadata from Bronze-verified Gold; dry run by default."""
+    from archive_govt_nz.domains.health_appropriations import (
+        gold_metadata,
+        operation_metadata,
+    )
+
+    command = "health-appropriations-build-operation-context-metadata"
+    try:
+        inputs = operation_metadata.read_metadata_inputs(
+            input_spec, source_root, gold_package, gold_manifest_sha256
+        )
+        receipt = gold_metadata.export_gold_metadata(inputs, output_dir, write=write)
+        if write:
+            receipt["verification"] = gold_metadata.verify_gold_metadata(
+                inputs, output_dir, receipt["manifest_sha256"]
+            )
+    except ValueError, OSError, KeyError, TypeError:
+        _emit_json(
+            {
+                "command": command,
+                "status": "failed",
+                "error": "operation_metadata_build_failed",
+            }
+        )
+        return 2
+    _emit_json({"command": command, **receipt})
+    return 0
+
+
+@app.command(name="health-appropriations-verify-operation-context-metadata")
+def health_appropriations_verify_operation_context_metadata(
+    *,
+    input_spec: Path,
+    source_root: Path,
+    gold_package: Path,
+    gold_manifest_sha256: str,
+    output_dir: Path,
+    manifest_sha256: str,
+) -> int:
+    """Read-only source-regenerated verification of operation-context metadata."""
+    from archive_govt_nz.domains.health_appropriations import operation_metadata
+
+    command = "health-appropriations-verify-operation-context-metadata"
+    try:
+        receipt = operation_metadata.mcp_call(
+            {
+                "input_spec": str(input_spec),
+                "source_root": str(source_root),
+                "gold_package": str(gold_package),
+                "gold_manifest_sha256": gold_manifest_sha256,
+                "output_dir": str(output_dir),
+                "manifest_sha256": manifest_sha256,
+            }
+        )
+    except ValueError, OSError, KeyError, TypeError:
+        _emit_json(
+            {
+                "command": command,
+                "status": "failed",
+                "error": "operation_metadata_verification_failed",
+            }
+        )
+        return 2
+    _emit_json({"command": command, **receipt})
+    return 0
+
+
 @app.command(name="health-appropriations-build-budget-comparison")
 def health_appropriations_build_budget_comparison(
     *,

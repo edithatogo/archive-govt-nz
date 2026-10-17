@@ -473,3 +473,6 @@ they are not current-state assertions.
 - [CPI source-review historical binding](./cpi-source-review-rebinding-20261017.json) — original review and assessment unchanged; successor retains the exact historical census digest rather than following mutable current metadata.
 
 - [CPI source-health v2 profile](./cpi-source-health-20261017.md) — fixed source-evidence adoption; focused/static qualified, actual-source/full/hosted pending.
+
+- [Operation-context metadata CLI/MCP](./operation-metadata-operations-20261017.md) and [focused checkpoint](./operation-metadata-operations-20261017.json) — source-regenerated v5 operations; native/full/hosted pending.
+- [CPI source-health delivery](./cpi-source-health-delivery-20261017.json) — PR707 merged and verified; topic refs pruned.

@@ -3126,3 +3126,64 @@ the retained baseline when no explicit prior report is supplied; v1 defaults
 are unchanged.70 focused checks pass in7.66s, including a sentinel refusal
 regression. The preliminary unit-regression command observed the fixed code and
 passed; native1 is the failing evidence. Fresh native2/full remain pending.
+
+
+### 2026-10-17 — CPI source-health delivery and metadata operations
+
+PR707 passed all seven named gates on27e79f3c and merged normally at28e48f52.
+Fetched main contains checked head/merge with identical13f421b4 tree and zero
+unique changes; clean topic refs pruned. Native1 failure, native2PASS and exact
+full2PASS remain separately scoped; see cpi-source-health-delivery-20261017.json.
+Next bounded reviewed task exposes existing v5 metadata through CLI/read-only
+MCP, refs213/214/215. Live issue214 is open for Phase8.
+
+A bounded GDP currency discovery inspected the official June2026 release and
+linked quarterlies411, concepts4 and June-update metadata; it did not find an
+explicit currency binding for SNEQ/SG03AB01GE00S900. This does not establish
+absence of all publisher evidence. Conductor independently could not supply a
+verified new locator. Keep literal dollar/million/price context and ISOcurrency
+separate, with currency-dependent joins unqualified. Admissible next evidence
+is exact publisher series/export currency+multiplier+release metadata, or
+publisher clarification bound to that exact series/vintage. No contact/send,
+ADE403 retry or broad search loop is implied. Preserve the existing historical
+source-measure assessment and continue independent operations work. Discovery
+bodies/hashes remain in the external health-gdp-currency-discovery-20261017
+folder; these were read-only observations, not WARC-qualified admission.
+
+
+### 2026-10-17 — metadata operations focused qualification
+
+The thin operation_metadata adapter reads the existing typed five-profile spec
+and retains independent Gold/metadata pins. Two CLI routes use qualified v5
+export/readback; MCP adds one closed read-only verifier. No projector/normalizer
+or v3/v4 contract changed. Dry-run verifies actual source products; write uses
+existing overlap/exclusive-output guards and post-write source regeneration.
+
+Initial3missing-command failures40.63s preserved; initial3real contracts passed
+72.18s. Expanded spec/pin/overlap/repeated-write/forged-manifest/read-only tests
+and related legacy/MCP suite pass76tests/2RDFLibwarnings387.07s. The longer
+focused run remained live, was inspected, and completed without restart.
+Ruff/format/type and Conductor checks pass. Native actual-source comparison and
+full harness await the coordinator's frozen launch, with original Gold and
+metadata baseline reuse; no unnecessary chain/RDF replay. See the dated
+operation-metadata-operations checkpoint and implementation guide.
+
+
+### 2026-10-18 — metadata operations full assurance recovery
+
+Native CLI/MCP proof passed on frozen e876eaf3, with independent63-file readback
+and all9metadata outputs identical to the pinned PR705 baseline. Full1 terminated
+124 at the900-second test-stage cap after98percent/one unidentified F; no final
+traceback or coverage result was available. Cached selection56PASS/14deselected
+did not reproduce/identify it. Preserve that incomplete scope.
+
+Full2 changed only runtime scheduling/verbosity to4bounded workers, retaining
+the900-second cap and assertions.7901PASS/12skip/23warnings657.25s at97.28percent
+coverage against80; schemas66/56docs, parity9/9, mutation/hygiene/CAS/audit/licences
+passed. It stopped at a new false-positive completion-status label before SBOM.
+The sole new finding hashes to literal passed, not a credential. Normalize only
+the redundant receipt label to post_test_gates; preserve the result, logSHA,
+original receipt in Git/external evidence, and every detector rule/baseline.
+No production/test/tool/runtime input changes are involved. The coordinator will
+run only the affected scan and previously unrun SBOM after focused structure/
+reference checks. No PR is opened before that required recovery succeeds.

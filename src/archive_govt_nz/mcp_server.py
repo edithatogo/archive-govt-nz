@@ -26,6 +26,7 @@ from archive_govt_nz.domains.health_appropriations import (
 from archive_govt_nz.domains.health_appropriations import (
     gold_metadata,
     operation_context_gold,
+    operation_metadata,
     resume_operations,
 )
 from archive_govt_nz.domains.health_appropriations.budget_operations import (
@@ -102,6 +103,7 @@ _NO_ARGUMENTS = _object_schema({}, [])
 _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
     *resume_operations.MCP_TOOLS,
     *operation_context_gold.MCP_TOOLS,
+    operation_metadata.MCP_TOOL,
     fiscal_analytics.MCP_TOOL,
     canonical_queries.MCP_TOOL,
     budget_comparison.MCP_TOOL,
@@ -722,6 +724,7 @@ _TOOLS_BY_NAME = {tool["name"]: tool for tool in _TOOL_DEFINITIONS}
 # Explicit read-only domain handlers keep dispatch closed as tools grow.
 _DOMAIN_TOOL_HANDLERS = {
     budget_comparison.TOOL_NAME: budget_comparison.mcp_call,
+    operation_metadata.TOOL_NAME: operation_metadata.mcp_call,
     fiscal_analytics.TOOL_NAME: fiscal_analytics.mcp_call,
     canonical_queries.TOOL_NAME: canonical_queries.mcp_call,
     **{

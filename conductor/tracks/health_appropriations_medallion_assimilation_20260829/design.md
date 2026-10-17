@@ -1113,3 +1113,36 @@ alignment or analytical admission. Other context/resource rows retain their
 states. Historical reports remain separate; new tool outputs must use distinct
 paths. Conductor reviewed this design without a blocking gap; broad/native
 launch ownership remains with the coordinator.
+
+
+### Operation-context metadata operations — 2026-10-17
+
+The existing metadata CLI/MCP verifier requires Fiscal/Budget inputs and exposes
+v3/v4, while the qualified source-regenerated operation-context API emits v5.
+Add explicit typed v5 build/verify CLI routes and one read-only MCP verifier,
+using the existing five-profile input-spec reader, trusted Bronze root and
+independently supplied Gold/metadata manifest pins. Build remains dry-run by
+default; even dry-run regenerates Bronze-derived Gold/metadata before success.
+Write invokes the existing immutable output guard and post-write verifier.
+Repeat builds use fresh directories; existing different/partial outputs are
+never overwritten. Verification performs no writes and regenerates expected
+products instead of trusting a self-consistent candidate manifest.
+
+```mermaid
+flowchart LR
+  Spec[Typed closed operation input spec] --> Reader[Existing spec reader]
+  Bronze[Trusted Bronze root] --> Verify[Source-regenerated Gold verification]
+  Pins[Independent Gold and metadata pins] --> Verify
+  Reader --> Verify
+  Verify --> Project[Existing v5 metadata projector]
+  Project --> Dry[CLI dry run]
+  Project --> Write[Explicit CLI write and readback]
+  Project --> Read[CLI and read-only MCP verification]
+```
+
+Preserve existing v3/v4 contracts. New MCP output is v5/packages1 only, with
+source-regenerated verification scope, rights not_evaluated and publication
+not_performed. Refuse source/Gold/output overlap and prove byte/membership
+immutability during verification. No new renderer, source acquisition, consent,
+schedule activation, publication or analytical join is introduced. Conductor
+reviewed this bounded design; broad/native launches remain coordinator-owned.
