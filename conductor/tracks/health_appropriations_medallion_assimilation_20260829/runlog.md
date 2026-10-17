@@ -6926,3 +6926,33 @@ is unchanged; subsequent work adds census data, historical preservation and a
 reconciliation regression. Freeze this coherent tree for the coordinator-owned
 required full harness. No independent broad/native run, new acquisition or
 external publication/collection action is launched.
+
+
+## Full-harness historical review recovery — 2026-10-17
+
+Conductor-owned full1 on65622850 terminated1 at tests:7883passed,2failed,
+12skipped,23warnings/550.20s; coverage97.29% against unchanged80%. Both failures
+in test_source_measure_review raised invalid source-measure evidence because
+its prior forecast-binding review still pinned old census3f0f1522 at the mutable
+current context-census.json path. Preserve the full log52ba023a and original
+report. The validator correctly rejected drift; no production check is weakened.
+
+A successor review changes that evidence locator to the retained historical
+snapshot with the SAME digest and cites the immutable original review. All19
+series, source-family counts, assessment time, scope and rights stay unchanged.
+Current CPI census af8cf8eb remains intact; no old value or evidence hash is
+silently substituted. The active index/test reference selects this explicit
+historical binding, preventing later current-census edits from breaking the
+frozen assessment again. See
+[rebinding receipt](./cpi-source-review-rebinding-20261017.json).
+
+Recovery tests initially found an assertion mismatch in the new regression:
+validate_review returns normalized optional fields, so raw JSON is not its
+comparison contract. Compare validated output to its own pre-mutation baseline;
+retain a separate raw old/new assessment equality assertion. Then changing the
+bound historical snapshot must still fail. All68 source-measure/census checks
+pass/1.97s, including the original two failures and the new drift contract.
+Source/native production code and runtime are unchanged. Resume affected static
+and all unrun post-test stages on a frozen head under the coordinator, rather
+than replaying unchanged7883 tests/native proof. Full1 remains explicitly a
+failed partial run; no whole-pass or hosted/PR claim is made yet.

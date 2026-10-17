@@ -26,7 +26,7 @@ from archive_govt_nz.domains.health_appropriations.source_measure_review import 
 
 ROOT = Path(__file__).resolve().parents[3]
 TRACK = ROOT / TRACK_RELATIVE
-REPORT = TRACK / "source-measure-review-20261017-forecast-binding.json"
+REPORT = TRACK / "source-measure-review-20261017-cpi-snapshot-binding.json"
 
 
 def _assert_historical_locator_coverage(report: dict) -> None:
@@ -197,6 +197,30 @@ def _pin(report: dict, root: Path, relative: str) -> None:
     next(item for item in report["evidence"] if item["path"] == relative)["sha256"] = (
         digest
     )
+
+
+def test_review_binds_historical_bytes_without_following_current_census(
+    tmp_path: Path,
+) -> None:
+    path, root, report = _fixture(tmp_path)
+    prior = json.loads(
+        (TRACK / "source-measure-review-20261017-forecast-binding.json").read_bytes()
+    )
+    for key in ("series", "series_count", "source_families", "observed_at", "scope"):
+        assert report[key] == prior[key]
+    current = root / TRACK_RELATIVE / "context-census.json"
+    assert str(current.relative_to(root)) not in {
+        item["path"] for item in report["evidence"]
+    }
+    baseline = validate_review(path, root)
+    current.write_text("{}")
+    assert validate_review(path, root) == baseline
+    historical = (
+        root / TRACK_RELATIVE / "context-census-pre-cpi-source-evidence-20261017.json"
+    )
+    historical.write_bytes(b"changed historical snapshot")
+    with pytest.raises(ValueError, match="invalid source-measure evidence"):
+        validate_review(path, root)
 
 
 def _mutate_vote(report: dict, mutation: str) -> None:

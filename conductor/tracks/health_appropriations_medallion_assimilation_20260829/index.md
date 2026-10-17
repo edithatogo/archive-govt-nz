@@ -399,7 +399,7 @@ they are not current-state assertions.
 - [Health component index discovery](./health-component-index-discovery-20261017.md)
 - [Component table and method evidence](./health-component-index-discovery-20261017.json)
 - [Previous source/measure census review, locator gaps](./source-measure-review-20261017-locator-gaps.json)
-- [Current source/measure census review](./source-measure-review-20261017-forecast-binding.json)
+- [Source/measure review bound to retained census](./source-measure-review-20261017-cpi-snapshot-binding.json)
 
 
 - [Retained capture inventory reconciliation](./capture-inventory-20261017.md)
@@ -469,3 +469,5 @@ they are not current-state assertions.
 - [CPI source-evidence checkpoint](./cpi-source-evidence-20261017.json) — response-bound current metadata and same-byte CSV recapture; offline contract and census reconciliation in progress.
 
 - [CPI offline source contract and replay](./cpi-source-evidence-20261017.md), [verified report](./cpi-source-evidence-report-20261017.json), [native proof](./cpi-source-evidence-native-20261017.json), and [preservation](./cpi-source-preservation-20261017.json) — current census reconciled; full/hosted delivery pending.
+
+- [CPI source-review historical binding](./cpi-source-review-rebinding-20261017.json) — original review and assessment unchanged; successor retains the exact historical census digest rather than following mutable current metadata.

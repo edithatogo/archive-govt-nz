@@ -131,6 +131,20 @@
     "scope": "CPI/strict WARC/census contracts including actual report link and prior-context preservation",
     "seconds": 12.77
   },
+  "full_attempt1": {
+    "coverage_floor_percent": 80,
+    "coverage_percent": 97.29,
+    "exit_code": 1,
+    "failed": 2,
+    "failure_stage": "tests; historical source-measure review bound old census digest at mutable current path",
+    "head": "6562285048528a471d49f4b1f06d1d12fdd9df19",
+    "log_sha256": "52ba023a2c85a8509ea4460e5e23932995468b2197e6360705022714122c52aa",
+    "passed": 7883,
+    "remaining_stages": "not_run",
+    "seconds": 550.2,
+    "skipped": 12,
+    "warnings": 23
+  },
   "implementation": {
     "API": "cpi_source_evidence.inspect_cpi_source_evidence",
     "WARC_reuse": "additive verify_response_snapshot entry retains existing Path API and all binding checks",
@@ -226,18 +240,32 @@
   },
   "publication": "not_performed",
   "remaining": [
-    "final static checks and required full harness on coherent frozen tree",
+    "affected document/test static checks and all unrun post-test assurance stages",
     "focused PR, required hosted checks, protected merge and verified pruning"
   ],
   "reuse": [
     "context-census.json June2017 base qualification",
     "fiscal-2025-cpi2026q2-equal-quarter-FY2025/v1 approved household benchmark"
   ],
+  "review_binding_recovery": {
+    "census_digest_preserved": true,
+    "current_census_not_rebound_to_old_values": true,
+    "first_recovery_test_failure": {
+      "log_sha256": "c79f3d3c93cf1a4be578e1d7b1dc2f14a5d2772d9c14d6fdceb8287c5e8a4fc8",
+      "reason": "new regression compared normalized validator series to raw JSON; corrected to normalized baseline, with raw old/new assessment equality retained"
+    },
+    "focused_log_sha256": "4fa1fd5a76d81764ecd9f7432de09e4853efd9670b67f263126e1810f5e8ffb6",
+    "focused_passed": 68,
+    "original_report_digest_preserved": true,
+    "production_validator_and_native_code": "unchanged",
+    "seconds": 1.97,
+    "source_review_receipt": "cpi-source-review-rebinding-20261017.json"
+  },
   "rights": "not_evaluated_by_this_slice",
   "schema_version": "archive-govt-nz.health-cpi-source-evidence-checkpoint/v1",
   "source_health_v1_adoption": "existing coarse projection does not consume new per-source grid proof; historical products unchanged",
   "source_payloads": "outside_Git",
-  "status": "coherent_census_reconciled_ready_for_serialized_full_harness",
+  "status": "native_and_census_qualified_historical_review_binding_recovered_remaining_gates_pending",
   "track_complete": false,
   "versioned_JSON_capture": {
     "body_sha256": "35d97118d6901af9b88ffe660770d439ba720563dcf55f2e069e313f2a051915",

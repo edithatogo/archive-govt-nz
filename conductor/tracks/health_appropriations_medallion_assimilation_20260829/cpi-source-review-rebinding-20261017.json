@@ -1,0 +1,26 @@
+{
+  "full_validation_failure": {
+    "coverage_percent": 97.29,
+    "exit_code": 1,
+    "failed": 2,
+    "head": "6562285048528a471d49f4b1f06d1d12fdd9df19",
+    "log_sha256": "52ba023a2c85a8509ea4460e5e23932995468b2197e6360705022714122c52aa",
+    "passed": 7883,
+    "seconds": 550.2,
+    "skipped": 12,
+    "warnings": 23
+  },
+  "historical_census": "context-census-pre-cpi-source-evidence-20261017.json",
+  "historical_census_digest_unchanged": true,
+  "historical_census_sha256": "3f0f15221c41abcc2f0c5ecf21effc69805f2e565a8d27a88fcde84680bf20ca",
+  "original_review_unchanged": true,
+  "previous_review": "source-measure-review-20261017-forecast-binding.json",
+  "previous_review_sha256": "67dbbb982fc10a5c8795fe0b5ea1cb76b815d609b0da75c94d0d4cd9f9ced17a",
+  "rights_or_analytical_admission": "not_performed",
+  "schema_version": "archive-govt-nz.health-cpi-measure-review-rebinding/v1",
+  "scope": "historical evidence path correction; no refreshed assessment or admission",
+  "series_and_assessment_time_unchanged": true,
+  "successor_review": "source-measure-review-20261017-cpi-snapshot-binding.json",
+  "successor_review_sha256": "5d3b56a4793e715f60370f58b24b29ba3badefb63015e460f940566a255ccef3",
+  "validator_unchanged": true
+}
