@@ -14,6 +14,7 @@ from archive_govt_nz.domains.health_appropriations import (
     budget_revenue,
     cpi,
     forecast,
+    forecast_operations,
     gdp,
     moh_indicators,
     overview_operations,
@@ -830,7 +831,7 @@ def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile disp
             request.source, request.output_dir, **context, dry_run=dry_run
         )
     if request.profile in {"befu-2026/v1", "hyefu-2025/v1"}:
-        return forecast.normalize_forecast_workbook(
+        return forecast_operations.normalize_forecast(
             request.source,
             request.output_dir,
             profile=request.profile,

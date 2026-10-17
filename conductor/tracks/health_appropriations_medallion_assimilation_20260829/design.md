@@ -817,3 +817,37 @@ an operation success status. Current source operations remain on the existing
 native route for these profiles; their partial-result refusal is unchanged.
 No formula evaluation, cached-total admission, pooled series, inferred currency
 qualification or external mutation follows from registration.
+
+
+## Reviewed forecast operation adoption — 2026-10-17
+
+Only BEFU-2026/v1 and HYEFU-2025/v1 source operations change routes. A verified
+bounded Bronze snapshot feeds the existing explicit registration/dispatcher.
+Facts and six-field lineage come from its actual output. The same immutable
+snapshot is parsed through the shared native parser to recover raw cell types,
+JSON values, record links, workbook inventory and selected coordinates absent
+from the common loss protocol; facts, lineage and every loss must reconcile
+exactly before projection. No direct filesystem normalizer delegation occurs.
+The three Parquet tables remain byte-compatible; a new versioned operation
+manifest retains canonical selection, common losses and this explicit projection.
+The compact public source-operation/v1 does not authenticate that manifest.
+Readback requires a separately retained manifest SHA and trusted exact
+source/context/profile; it regenerates expected outputs and verifies exact files,
+metadata, table pins and final manifest stability. Symlink ancestors are refused
+before work; existing or interrupted destinations cannot be overwritten.
+Rejected cells yield partial metadata. Default preflight writes nothing and
+reports compact failure; explicit writes retain the four-file partial package
+and still report compact failure. Selection never implies successful operation.
+The four native APIs and their original manifests stay unchanged.
+
+```mermaid
+flowchart LR
+  B[Verified Bronze snapshot] --> D[Reviewed common dispatcher]
+  B --> P[Shared parser auxiliary metadata]
+  D --> R[Exact facts lineage and loss reconciliation]
+  P --> R
+  R --> T[Three unchanged Parquet tables]
+  R --> M[Versioned selection and projection manifest]
+  T --> V[Independent pin and trusted source readback]
+  M --> V
+```

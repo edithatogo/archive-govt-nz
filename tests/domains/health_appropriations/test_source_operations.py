@@ -497,9 +497,17 @@ def test_forecast_dispatch_preserves_package_and_partial_failure(
     assert result["status"] == "written_local"
     assert result["counts"] == raw["counts"]
     assert result["transformation_id"] == "treasury-health-expense-summary/v1"
-    assert {p.name: p.read_bytes() for p in destination.iterdir()} == {
-        p.name: p.read_bytes() for p in direct.iterdir()
+    assert {p.name: p.read_bytes() for p in destination.glob("*.parquet")} == {
+        p.name: p.read_bytes() for p in direct.glob("*.parquet")
     }
+    operational = json.loads((destination / "MANIFEST.json").read_bytes())
+    assert (
+        operational["schema_version"] == "archive-govt-nz.health-forecast-operation/v1"
+    )
+    assert operational["native_extraction_schema_version"] == raw["schema_version"]
+    assert operational["adapter_selection"]["status"] == "selected"
+    for name in ("counts", "selection", "excluded_sheets", "workbook_inventory"):
+        assert operational[name] == raw[name]
     facts = pq.read_table(destination / "forecast_facts.parquet").to_pylist()
     assert [fact["amount_type"] for fact in facts] == ["Actual"] * 5 + ["Forecast"] * 5
     assert source.read_bytes() == before

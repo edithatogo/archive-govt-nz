@@ -1,0 +1,36 @@
+{
+  "scope": "two reviewed forecast source operations only; no native API changes",
+  "focused_tests": {
+    "passed": 604,
+    "skipped": 10,
+    "seconds": 11.29,
+    "log_sha256": "35acc5d5da8057964c0f4e9d1f21189788b164603722f08f798a3d5385c64399"
+  },
+  "typing": "0 errors, 0 warnings",
+  "ruff": "passed",
+  "red_evidence": [
+    {
+      "stage": "missing bridge import",
+      "log_sha256": "6411c795be00c723af90adff959283721ed673633dbb1a7bcd1c878e2dae14d0"
+    },
+    {
+      "stage": "old operational manifest equality; 533 tests pass, two assertions require explicit new manifest scope",
+      "log_sha256": "c3a00f3cb87a174757ac7c98b85a9b74fa4edb0365db6264eee19dc4218e0d2a"
+    },
+    {
+      "stage": "boolean versus integer metadata equality tamper must be rejected; real failing check fixed by canonical JSON comparison",
+      "log_sha256": "2aff4751788ab0037553a387c4cdc915c8a068ca533525cf271bc4ee06e47976"
+    }
+  ],
+  "native_code_unchanged": [
+    "forecast.py",
+    "forecast_adapter.py",
+    "adapter_registry.py"
+  ],
+  "native_parity": "pending frozen proof",
+  "full_harness": "pending",
+  "hosted_delivery": "pending",
+  "partial_package_contract": "failed preflight creates nothing; failed explicit write retains 4-file partial package",
+  "manifest_pin_contract": "compact source-operation/v1 does not authenticate the new versioned extraction manifest",
+  "phase_complete": false
+}

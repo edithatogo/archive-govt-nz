@@ -6197,3 +6197,139 @@ hosted checks must qualify the final PR head before protected merge/prune.
 The four-API native proof is unchanged; Conductor independently reviewed the
 rebinding and source-specific report compatibility. Operational adoption and
 all broader source/donor/rights/phase gates remain open.
+
+
+## Forecast operation adoption started — 2026-10-17
+
+PR #700 merged normally at03:47:56Z, merge58362d4d6bb9eb5a6ad54a83cd4a6c95d9150aba,
+headbf0b8d5f697d01fd1f1cc2bc645f15005ffee381. All required/applicable checks
+passed, including Windows20m46; no unresolved review threads. Fetched main
+contains both commits, no unique changes remained, and clean local/remote/tracking
+topic refs were pruned; primary checkout retained. Windows ran7763tests/30skips,
+Ubuntu/macOS7767/26; native local parity and full7783/10 remain separately scoped.
+The next approved bounded Phase3/8 task adopts the two actual common forecast
+outputs in operations. Existing formula rejection/partial-package behavior is an
+explicit compatibility contract. No broader phase, rights or donor closure.
+
+
+## Forecast operation bridge implementation checkpoint — 2026-10-17
+
+New bridge consumes common dispatch facts/lineage, verifies all shared fields
+and loss rows against auxiliary metadata parsed from the same immutable Bronze
+snapshot, then emits unchanged three Parquet tables plus a versioned operation
+manifest. Public compact receipts and rejected-cell partial-package behavior
+remain unchanged. Readback requires an independent manifest hash and trusted
+source/profile/context; verifies exact metadata types/values via canonical JSON,
+rejects duplicate keys and unexpected files, regenerates table pins, checks every
+bounded output snapshot and final manifest stability. Symlink ancestors are
+refused before output, and interrupted directories cannot be overwritten.
+Initial red collection check and old-manifest comparison failures are retained.
+A real False-versus-zero tamper case exposed dictionary equality accepting
+changed types; canonical JSON comparison fixes it without weakening validation.
+Focused forecast/operation suites:604 passed/10 skipped in11.29s; Ruff clean,
+basedpyright0 errors/warnings. All three previously qualified native parser,
+adapter and registry source files remain unchanged. Native proof, full harness,
+review resolution and hosted delivery remain pending; see
+[checkpoint](./forecast-operational-dispatch-20261017.json).
+
+
+## Forecast operational native verification — 2026-10-17
+
+At frozen clean6a15374d2c2bbcdf1a3d42044459d2d983a5f45b, the shared kernel
+validation guard ran two actual retained successor sources through source
+operations and independent pinned readback, with the direct filesystem normalizer
+forbidden. Both preflights wrote nothing; two writes/readbacks per profile
+produced20facts/120lineage rows and8files per repeat. Every generated Parquet
+hash matches the independent retained native manifest; all new operation
+manifests and tables are byte-identical across repeats. Original observation
+spellings are bound to the retained source census. Source bytes/stat and all
+native reference files remain unchanged. No capture, currency/rights change,
+historical repair or phase-completion claim. See
+[native proof](./forecast-operational-dispatch-native-20261017.json).
+Required full repository assurance and hosted delivery remain pending.
+
+
+## Forecast operation full local assurance — 2026-10-17
+
+Full `./scripts/validate.sh` completed0 at frozen clean
+fafe203816793fc1ea7567081556f608c04b1f1b:7800passed/10skipped/23warnings
+in454.49s,97.39% coverage against unchanged80% floor; typing0,
+62schemas/52documents,9/9parity, all mutation/hygiene/audit/licence/secret/SBOM
+gates passed (113components). External CDX validation remains intentionally
+skipped by existing configuration. See the exact
+[tested-head receipt](./forecast-operational-dispatch-validation-20261017.json).
+The prior full run is retained as failed:7795passed/5 subprocess30s timeouts.
+All16 affected module/Gold diagnostic cases passed serially in62.40s; the
+fresh full2 passed without code/test/runtime/deadline changes. This proves
+non-reproduction, not a host-cause conclusion. Unrelated CPU contention was
+independently observed. No FOI implementation changes or relaxed assertions.
+Conductor independently checked native verifier/code hashes and all four new
+manifest pins without source replay; no blocking finding. This closeout changes
+only result documentation/index pointers, not source, tests, schemas or pinned
+inputs. Affected documentation checks follow; required hosted checks must
+qualify the final PR head before normal merge and clean topic pruning. No broader
+phase, donor-area, currency/rights or source-census completion is claimed.
+
+
+## PR #701 generated-output size finding — correction in progress
+
+Actual thread PRRT_kwDOTo2MOM6tdDD8 identifies fixed8MiB/16MiB readback caps
+rejecting native-accepted sources after completed writes. A real208357-byte
+synthetic workbook,80034 inventoried cells/80002 preserved-only/10 normalized,
+zero rejected, produces a10929247-byte manifest and all4files but compact failure.
+The red package/source/native references are retained; an initial import-only
+setup failure is separately recorded and is not defect evidence. A fast
+source-derived-size assertion also fails on the original code.
+Expected hashes and exact lengths are now regenerated from source-derived
+Parquet bytes and the native writer's canonical UTF-8 manifest before creating
+the output directory. Readback uses those bounds, never candidate stats or
+manifest declarations. The independent verifier still requires a retained
+external pin and checks its syntax before source parsing; duplicate-key, exact
+metadata/type/file-set/hash and final reread controls remain. Producer consistency
+uses its source-derived expected pin, distinct from external verification.
+Partial package/default-preflight/native API semantics remain unchanged.
+Focused610passed/10skipped; typing0 and Ruff clean. Appended/truncated output,
+malformed pin, forged metadata and exact bound regressions pass; compact tamper
+JSON ensures type/selection tests reach semantics rather than size rejection.
+Conductor reviewed the fix without finding a blocking defect. Large-source green,
+new native/full/hosted qualification and actual review-thread resolution remain
+pending; prior full/CI green results do not qualify this material fix.
+See [review-fix evidence](./forecast-operation-size-review-fix-20261017.json).
+
+
+## PR #701 output-size fix native qualification — 2026-10-17
+
+Combined guarded verification completed0 at frozen clean
+2446e13475adb9b436330994d50a443e76c0c30d. The exact retained208357-byte synthetic
+source now passes no-write default preflight, explicit write and independently
+pinned verification. All80025 common losses are preserved; the10929247-byte
+manifest retains its originalb54fb7556e74d12bb55f53f834fb18a991c72b5719811198abc78c6a14ae4357
+hash. All4corrected package bytes match the earlier failed package, all3Parquets
+match the native reference, and source/red/native evidence remains unchanged.
+This is a synthetic contract regression, not official data admission.
+Both retained official successor profiles also pass two complete repeat builds
+and independently pinned readback with direct filesystem normalization forbidden:
+20facts/120lineage rows/8files per repeat. Every generated file hash, including
+both new manifests, matches the pre-fix native proof exactly. No original or
+source/reference bytes changed. Conductor independently verified the large-case
+file hashes and no-write preflight; code review found no blocking defect.
+See [review-fix native proof](./forecast-operation-size-fix-native-20261017.json).
+A new full exact-tree harness and final-head hosted checks remain required;
+actual PR review thread is intentionally unresolved until these qualify the fix.
+
+
+## PR #701 size-fix full local assurance — 2026-10-17
+
+Fresh `./scripts/validate.sh` completed with exit0 at frozen clean
+5f6bf873907ce977f3c6d71aa1fa1b79f5adb4d8: 7,806 tests passed, 10 skipped,
+23 warnings in374.46s;97.39% coverage against unchanged80% floor. Typing0,
+62 schemas/52 representative documents, parity9/9 and all mutation, hygiene,
+audit, licence, secret and SBOM gates passed (113 components). Existing external
+CDX validation remains skipped. The material size fix is qualified by this run,
+not the earlier pre-fix green tree. Exact head/log/runtime pins are retained in
+[final local receipt](./forecast-operation-size-fix-validation-20261017.json).
+Only result notes and index pointers follow the tested head; affected checks
+qualify this closeout. Required final-head hosted checks, actual review-thread
+resolution and normal protected merge/prune remain pending. Native/large-case
+proof and all original sources/output identities remain unchanged. No broader
+track gate or source/rights/denominator claim is closed.

@@ -1,0 +1,59 @@
+{
+  "tested_head": "fafe203816793fc1ea7567081556f608c04b1f1b",
+  "exit": 0,
+  "log_sha256": "cf0b5bba9c4cc5393a4eb26154681331bf7d2ba796b65e9c51efafa8a741772c",
+  "tests": {
+    "passed": 7800,
+    "skipped": 10,
+    "warnings": 23,
+    "seconds": 454.49,
+    "coverage_percent": 97.39,
+    "coverage_floor_percent": 80
+  },
+  "schemas": 62,
+  "representative_documents": 52,
+  "differential_parity": "9/9 passed, 0 divergences",
+  "typing": "0 errors, 0 warnings",
+  "mutation_gates": "all passed",
+  "hygiene": "passed",
+  "dependency_audit": "no known vulnerabilities",
+  "licenses": "passed",
+  "secrets": "passed",
+  "sbom_components": 113,
+  "external_cdx_validation": "skipped by existing configuration",
+  "previous_failed_full_run": {
+    "head": "fafe203816793fc1ea7567081556f608c04b1f1b",
+    "exit": 1,
+    "log_sha256": "2efdfa83145610c76d626ab82d66fea1389940023b18688b7245453a7bb1e55c",
+    "passed": 7795,
+    "failed": 5,
+    "skipped": 10,
+    "seconds": 581.22,
+    "failures": [
+      "FAILED tests/domains/health_appropriations/test_gold_metadata.py::test_exact_catalogue_repeat_build_and_reconstruction",
+      "FAILED tests/test_foi_child_manifest_mutants.py::test_child_guard_mutant_killed[not REVISION.fullmatch(manifest[\"source_revision\"])-False]",
+      "FAILED tests/test_foi_child_manifest_mutants.py::test_child_guard_mutant_killed[not REVISION.fullmatch(pointer[\"snapshot_revision\"])-False]",
+      "FAILED tests/test_foi_child_manifest_mutants.py::test_child_guard_mutant_killed[not HASH.fullmatch(pointer[\"manifest_sha256\"])-False]",
+      "FAILED tests/test_foi_canonical_mutants.py::test_canonical_guard_mutant_killed[set(assessed) == set(materialized) - set(seeds)-True-negative_joins]"
+    ],
+    "observed_exception": "all five subprocess.TimeoutExpired at unchanged30seconds",
+    "cause_status": "host contention or child startup/teardown latency is a hypothesis, not proven",
+    "next": "isolated serial diagnostics under actual guard with unchanged30second contracts; no production/test/budget edits"
+  },
+  "serial_non_reproduction": {
+    "head": "fafe203816793fc1ea7567081556f608c04b1f1b",
+    "exit": 0,
+    "tests_passed": 16,
+    "seconds": 62.4,
+    "log_sha256": "3226c820b1f35655262e4149e2c4216e6fa6d5d25010fbe656859b32217988e1",
+    "concurrency": "serial diagnostic only",
+    "subprocess_timeout_seconds": 30,
+    "result": "five previous timeout cases did not reproduce; full1 remains failed",
+    "code_or_test_changes": false,
+    "cause": "unproven; host contention observed independently",
+    "next": "fresh unchanged two-worker full harness under same shared kernel guard"
+  },
+  "native_proof": "forecast-operational-dispatch-native-20261017.json",
+  "independent_review": "Conductor inspected implementation, native verifier and exact code/manifest pins; no blocking defect",
+  "documentation_closeout_policy": "Subsequent changes limited to truthful result bookkeeping and index pointers; affected checks run; hosted checks must qualify final PR head."
+}
