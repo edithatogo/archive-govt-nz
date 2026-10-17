@@ -2772,3 +2772,100 @@ warnings; lint/format/strict typing pass. No production/runtime/native input
 changed after full assurance. Evidence closeout and hosted exact-head checks
 remain separate gates; no additional native/full rerun is required for this
 fixture-only correction. See donor-sqlite-dispatch-20261018.json.
+
+
+### 2026-10-18 — Exact donor stage-receipt reconstruction
+
+The older twelve-stage run directory was not retained. Bounded lookup found
+no exact stage directory; Conductor identified the existing replay_eight.py
+recipe and surviving donor893f387e/candidate9a33babd/Crown4bea6001 inputs. All
+three live input hashes matched their historical pins before native execution.
+
+On clean33ae9e4e/tree8fa7c33f, the guarded network-denied native1 reconstructs
+two new permanent runs using the existing historical normalization context
+2026-08-30T08:58:00+00:00. Both contain739facts/12stages/50files and pass the
+existing verifier. ALL50 output-file hashes and ALL12 stage-manifest hashes
+match the historical evidence exactly, including the previously unavailable
+Budgetf051c4 receipt. All23donor objects plus the separate Crown source and
+all pinned metadata are unchanged before/after. Proof SHA63a7fdd6eb5e99e9fcb1489f591860ccb85abd10b3e72f1958b22de69afd1f8f.
+
+Current reconstructed files are retained permanently under evidence/
+donor-area-recovery-20261018/native-1 in the external archive; they are not
+mislabelled as the missing original directory or fresh source captures. See
+donor-area-reconstruction-20261018.json for all exact recovered stage pins.
+This removes the exact-receipt availability blocker. The remaining nine
+stage-to-area bindings still require source/selection/lineage qualification,
+with Crown kept source-separated if outside the donor inventory. Existing
+three partial assertions and whole-worksheet remainders remain unchanged;
+all152worksheet semantics, rights and broader track completion stay open.
+No full/hosted delivery claim is made for this in-progress slice.
+
+
+### 2026-10-18 — Remaining stage-to-area binding producer
+
+The new stage_area_bindings producer reuses verify_eight and its per-profile
+source/output/lineage contracts, then the existing bounded Parquet snapshot
+reader. It binds selected fields to exact donor source hash/path/sheet IDs,
+checks quoted/unquoted cell coordinates against the retained inventory bounds,
+and emits partial bindings plus a nine-stage receipt catalog. Source records
+may overlap between context sheets; record sets are explicitly non-additive.
+Crown2025 is source-separated when absent from the donor inventory, never
+matched to Fiscal2024 by a similar filename. No original workbook reparsing,
+new source capture, value replacement, mapping/rights promotion or file write.
+
+The pure projector is explicitly not a standalone source-admission boundary;
+operational calls must use build_stage_area_bindings and its existing verifier.
+The prior three partial assertions are retained separately and no global unit
+state is resolved. New focused coordinate/identity/remainder/Crown contracts
+initially fail missing-module collection, then113checks pass0.40s. The expanded
+area/stage/orchestration selection passes229checks6.47s; Ruff/format/strict typing
+pass after bounded lint corrections. Retained-output producer readback, full
+harness and hosted delivery remain pending; no unchanged reconstruction rerun.
+
+
+### 2026-10-18 — Native binding failure and narrow source-contract recovery
+
+Bindings1 stopped before full validation at the coordinate contract. A bounded
+pinned-output diagnostic identified exactly61unsupported references, all Crown
+source_context cell@number_format properties; no ranges, composites or other
+grammar were observed. Failure log/recipe/partial output and diagnostic remain
+preserved. The projector now permits only the evidenced Crown/source_context
+suffix, checks its underlying cell bounds and retains the full annotated
+reference in context coordinates, never in amount coordinates. Unknown property,
+wrong profile/field and bad bounds still fail closed.
+
+Review also identified the missing explicit binding between supplied donor
+inventory and the verified run PLAN. A bounded regular snapshot is JSON-decoded,
+canonical encode_json hash checked against the existing verifier plan_sha256,
+then legacy_plan.donor_manifest_sha256 must equal the supplied donor pin. The
+legacy plan hash is canonical content, not raw newline-terminated file bytes.
+Native retained inputs were already the same donor; this closes public-reader
+cross-snapshot acceptance without changing any reconstructed product.
+
+Focused source/property/plan-mismatch regression and existing area/verifier/
+orchestration checks pass236tests5.16s after a test-import correction; initial
+2failed/234passed evidence remains retained. Ruff/format/strict typing pass.
+Revised bindings2 readback and required full harness remain pending on a new
+frozen head; no workbook reconstruction is repeated or prior failure erased.
+
+
+### 2026-10-18 — Nine-stage binding readback and full assurance
+
+Revised bindings2 passes on clean44ce414b/tree dcf1c955. Both existing retained
+reconstructions produce the same report312cd02dc17da9dd122eb43e7f763de1981a2e56d78dd23c5800a044d8a35eaf:
+9stages covering613facts,12bindings (11partialdonor +1source-separatedCrown),
+all61Crownformat context coordinates preserved outside amount coordinates,
+all158global units still unresolved and previous3partial assertions unchanged.
+All100reconstruction files remain byte-identical. This is bounded existing-
+product readback through the existing verifier, not workbook re-extraction.
+The bindings1 failure/diagnostic and partial directory remain preserved.
+
+Original ./scripts/validate.sh passes on that exact frozen head:7939tests,
+12skips,18warnings296.06s;66schemas/56documents;parity9/9 zero divergences;
+all mutation/hygiene/security/supply-chain gates;113SBOMcomponents;
+CAS399.66MB/s. The configured overall coverage floor remains80%. Terminal
+session60707 returned0 and released the shared slot before this evidence-only
+integration. See donor-stage-area-bindings-20261018.json for exact log/recipe/
+report pins and separately scoped reconstruction evidence. Final documentation
+and exact-head hosted checks remain pending; no whole-worksheet/rights/Gold or
+track completion claim is made.

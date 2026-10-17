@@ -2027,10 +2027,25 @@ integrated parent head.
   changes; clean topic refs pruned; primary retained. Native2 baseline equality
   and full7922-test assurance retained, including native1 representation failure.
 
-- [~] Register the pinned donor SQLite snapshot through common Bronze dispatch.
+- [x] Register the pinned donor SQLite snapshot through common Bronze dispatch.
   Reuse the bounded in-memory SQLite admission and existing Silver construction;
   preserve all five table values, IDs, native lineage and standalone bytes.
   Reject altered bytes/schema drift and retain unsupported sources; do not
   reinterpret donor currency, periods, rights or historical differences. Verify
   fixtures, actual312-row pre-change equivalence and repeated products before
   full/hosted delivery. [M-05, M-07, M-10, M-18; AC-03, AC-05, AC-08, AC-16]
+
+
+  Delivered PR #711 ate79c9089 after seven named checks passed on af9ec80e,
+  all review threads resolved, fetched checked/merge ancestry and identical64b6
+  tree. Zero unique commits; clean topic refs pruned; primary retained. Native
+  312/1699 equivalence, full7926 and fixture-close affected10tests remain scoped.
+
+- [~] Reconstruct the retained donor12stage evidence through the existing pinned
+  replay recipe into two new exclusive permanent runs. Pin donor/candidate/Crown
+  metadata and preserve all original Bronze bytes; verify739facts/50files,
+  compare historical hashes honestly and recover exact per-stage receipts where
+  reproducible. Retain missing historical outputs or differences explicitly;
+  qualify only supported area bindings, with no global152worksheet semantic
+  closure, historical value replacement or rights/publication change. [M-07,
+  M-10, M-16, M-18, M-19; AC-05, AC-08, AC-12, AC-16]
