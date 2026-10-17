@@ -1,0 +1,44 @@
+{
+  "acceptance": [
+    "AC-12",
+    "AC-13",
+    "AC-14",
+    "AC-16"
+  ],
+  "base_commit": "28e48f5220a6d73dde28e7127f7d91ff95a1e9f2",
+  "focused": {
+    "log_sha256": "6469d40c6608de697c9571b4dc0b2b130a0143d91811ea06ab8d3ec756b0b05a",
+    "passed": 76,
+    "seconds": 387.07,
+    "warnings": 2
+  },
+  "full": "pending; coordinator launch owner",
+  "initial_missing_command_failure": {
+    "failed": 3,
+    "log_sha256": "31561a3a03c2a13cb0a5f373d3accca2513af56f7bdf9a7e08182a63b21178d4",
+    "seconds": 40.63
+  },
+  "initial_real_contracts": {
+    "passed": 3,
+    "seconds": 72.18
+  },
+  "issues": [
+    213,
+    214,
+    215
+  ],
+  "legacy_v3_v4": "preserved; existing v3 CLI/MCP runtime and v3/v4 schemas exercised",
+  "native": "pending; coordinator owns prepared actual-source CLI/MCP proof",
+  "publication": "not_performed",
+  "requirements": [
+    "M-14",
+    "M-15",
+    "M-16",
+    "M-18"
+  ],
+  "rights": "not_evaluated",
+  "ruff_format_lint": "passed",
+  "status": "focused_static_qualified_native_full_hosted_pending",
+  "track_complete": false,
+  "typing": "0 errors/0 warnings/0 notes"
+}

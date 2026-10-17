@@ -1960,4 +1960,4 @@ integrated parent head.
   verifier and output guard; dry-run must execute full source verification.
   Preserve v3/v4 envelopes, immutable-output refusal, source/Gold/output
   separation, rights and no-publication boundaries. Qualify focused/native/full/
-  hosted delivery. [M-14, M-16, M-17, M-18; AC-12, AC-14, AC-15, AC-16]
+  hosted delivery. [M-14, M-15, M-16, M-18; AC-12, AC-13, AC-14, AC-16]

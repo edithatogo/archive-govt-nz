@@ -2439,3 +2439,21 @@ ADE403 retry or broad search loop is implied. Preserve the existing historical
 source-measure assessment and continue independent operations work. Discovery
 bodies/hashes remain in the external health-gdp-currency-discovery-20261017
 folder; these were read-only observations, not WARC-qualified admission.
+
+
+### 2026-10-17 — metadata operations focused qualification
+
+The thin operation_metadata adapter reads the existing typed five-profile spec
+and retains independent Gold/metadata pins. Two CLI routes use qualified v5
+export/readback; MCP adds one closed read-only verifier. No projector/normalizer
+or v3/v4 contract changed. Dry-run verifies actual source products; write uses
+existing overlap/exclusive-output guards and post-write source regeneration.
+
+Initial3missing-command failures40.63s preserved; initial3real contracts passed
+72.18s. Expanded spec/pin/overlap/repeated-write/forged-manifest/read-only tests
+and related legacy/MCP suite pass76tests/2RDFLibwarnings387.07s. The longer
+focused run remained live, was inspected, and completed without restart.
+Ruff/format/type and Conductor checks pass. Native actual-source comparison and
+full harness await the coordinator's frozen launch, with original Gold and
+metadata baseline reuse; no unnecessary chain/RDF replay. See the dated
+operation-metadata-operations checkpoint and implementation guide.
