@@ -71,7 +71,7 @@ jobs:
         if: steps.capture-status.outputs.status == 'captured'
         run: |
           uv run --locked archive-govt-nz replay --verify-all --cas-dir "build/cas/${{ matrix.source_set }}" --format json > "build/receipts/${{ matrix.source_set }}/replay.json"
-      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
           name: harvest-receipts-${{ matrix.source_set }}
