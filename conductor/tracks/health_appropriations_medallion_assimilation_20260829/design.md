@@ -1225,3 +1225,13 @@ native row plus logical profile (source hash, sheet, selector, record IDs and
 exception selectors). Original state/reason remain explicit. JSON lineage is
 preserved losslessly with an explicit identity-transport rule. Other adapters,
 wire schemas and standalone outputs remain unchanged.
+
+
+Historical common dispatch reuses pure byte extraction from the existing
+Health/GDP normalizer, including exact numeric XML lexemes and its bounded
+workbook admission. The closed Fiscal2024 source identity has no overlap with
+the Fiscal2025 Crown physical bundle. Project native typed rows and field
+lineage without scalar reinterpretation; retain full per-cell raw JSON and
+record associations plus every excluded-sheet reason. Standalone output and
+source/context identities remain stable. Other vintages stay outside this
+registration until separately evidenced or composed with shared-source profiles.
