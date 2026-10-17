@@ -88,7 +88,8 @@ remove an interpretation.
 ## Validation and identity
 
 A scoped validator enforces exact known profiles/table roles/schema IDs and
-versions, full Arrow schema equality with metadata, unique profile/table names,
+versions, full Arrow schema equality with nested metadata, explicit recursive validation
+of non-nullable row fields while retaining allowed nulls, unique profile/table names,
 bounded output sizes and complete requested siblings. It rejects unknown,
 duplicate or missing profile/schema declarations before exposing an admitted
 result. It does not repair tables, infer field unions, cast values or promote

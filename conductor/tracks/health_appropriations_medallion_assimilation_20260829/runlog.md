@@ -7553,3 +7553,16 @@ and bounded carrier shape are explicit. Sixteen focused carrier cases and
 existing v1 protocol/dispatch/registry/census checks pass79tests1.64s. Ruff,
 format and strict typing pass. Source dispatch integration and both workbook
 compositions remain pending; no native/full run has started.
+
+
+### 2026-10-18 — Explicit native dispatch boundary
+
+The missing-native-dispatch import failed as expected. Add separate compound
+registration and NativeDispatchResult types plus explicit native select/dispatch
+entry points. Shared private selection enforces duplicate IDs/ambiguity across
+both registration classes; old public APIs keep strict v1 checks and result
+shape. Native dispatch validates all profile/schema/closure invariants before
+return. Nested metadata drift, allowed nulls, required-field nulls and decimal
+scales have explicit contracts. Eighty-five focused/native/v1/census checks pass
+1.85s; Ruff/format/strict typing pass. The two actual workbook compositions and
+required native/full assurance remain pending; no broad launch has occurred.

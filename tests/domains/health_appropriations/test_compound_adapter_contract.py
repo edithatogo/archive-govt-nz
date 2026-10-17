@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import replace
 from decimal import Decimal
+from typing import cast
 
 import pyarrow as pa
 import pytest
@@ -187,6 +188,22 @@ def test_heterogeneous_native_fields_nulls_decimals_and_metadata_survive() -> No
     )
 
 
+def nested_metadata_drift(table: pa.Table) -> pa.Table:
+    nested = table.schema.field("nested")
+    children = list(cast("pa.StructType", nested.type))
+    children[0] = children[0].with_metadata({b"nested": b"changed"})
+    changed_field = pa.field(
+        nested.name,
+        pa.struct(children),
+        nullable=nested.nullable,
+        metadata=nested.metadata,
+    )
+    changed_schema = table.schema.set(
+        table.schema.get_field_index("nested"), changed_field
+    )
+    return pa.Table.from_pylist(table.to_pylist(), schema=changed_schema)
+
+
 @pytest.mark.parametrize(
     "defect",
     [
@@ -198,6 +215,7 @@ def test_heterogeneous_native_fields_nulls_decimals_and_metadata_survive() -> No
         "unknown-schema",
         "schema-version",
         "metadata-drift",
+        "nested-metadata-drift",
         "foreign-lineage",
         "foreign-cell",
         "physical-hash",
@@ -230,13 +248,14 @@ def test_invalid_native_declarations_or_references_fail_closed(defect: str) -> N
             p = replace(
                 p, recordsets=(replace(t, schema_version="v2"), *p.recordsets[1:])
             )
-        elif defect == "metadata-drift":
+        elif defect in {"metadata-drift", "nested-metadata-drift"}:
+            changed_table = (
+                t.table.replace_schema_metadata(None)
+                if defect == "metadata-drift"
+                else nested_metadata_drift(t.table)
+            )
             p = replace(
-                p,
-                recordsets=(
-                    replace(t, table=t.table.replace_schema_metadata(None)),
-                    *p.recordsets[1:],
-                ),
+                p, recordsets=(replace(t, table=changed_table), *p.recordsets[1:])
             )
         else:
             index = 1 if defect == "foreign-lineage" else 2

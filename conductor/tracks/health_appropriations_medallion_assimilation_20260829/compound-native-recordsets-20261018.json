@@ -1,5 +1,5 @@
 {
-  "dispatch_extension": "pending",
+  "dispatch_extension": "implemented_focused_qualified",
   "expected_facts": 180,
   "expected_forecast_excluded_sheets": 4,
   "expected_lineage": 1784,
@@ -9,8 +9,14 @@
     "passed": 79,
     "seconds": 1.64
   },
+  "focused_native_api": {
+    "log_sha256": "64c94362e198573235dbec3a266f1686e7d58f7d4c11bcb5c948fc710deec403",
+    "passed": 85,
+    "seconds": 1.85
+  },
   "full": "not_started",
   "legacy_api": "unchanged; focused protocol/dispatch/registry checks passed",
+  "mixed_registry": "duplicate IDs rejected and competing physical matches preserved-only",
   "namespace": "source SHA256/profile/fact-schema ID/version/original record ID",
   "native": "not_started",
   "native_files_per_run": 16,
@@ -21,5 +27,6 @@
   "rights": "not_evaluated",
   "row_nullability": "recursive non-nullable checks; allowed nulls retained",
   "shared_source_adapters": "pending",
-  "status": "carrier_qualified_dispatch_sources_pending"
+  "single_result_boundary": "original exact registration/output checks retained; compounds refused",
+  "status": "native_dispatch_qualified_source_composition_pending"
 }
