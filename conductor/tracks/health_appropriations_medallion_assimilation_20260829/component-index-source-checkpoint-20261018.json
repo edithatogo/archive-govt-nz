@@ -10,6 +10,16 @@
   },
   "analytical_selection": "not_selected",
   "base_commit": "31ba7ee64b0ee6bef4287191c8dd403be12e00bd",
+  "documentation_scan": {
+    "cause": "descriptive summary label matched entropy detector; not a credential",
+    "exit_code": 1,
+    "field": "/methodology/ppi",
+    "head": "12d65559b7126f0b9e6b1d6da37de9cff52009f3",
+    "new_candidate_count": 1,
+    "scanner_policy": "unchanged; no exception or baseline change",
+    "type": "Base64 High Entropy String",
+    "value_sha1": "408c19f1e761038e8781b33b2128cb11e87fd7b0"
+  },
   "focused": {
     "log_sha256": "7635f5a29695d48b2e88981df49e2a2d9534af2c94628113e5f073cabcf03680",
     "passed": 22,
@@ -38,6 +48,7 @@
   },
   "preservation": "immutable originals/query configs and WARC responses retained outside Git; no cleanup",
   "preservation_objects": 14,
+  "producer_summary_remedy": "only three methodology summaries become readable prose; regenerate canonical report and repeat native/full on corrected producer",
   "publication": "not_performed",
   "queries": [
     {
@@ -196,6 +207,6 @@
       "warc_sha256": "dc71e228a1c565482f575cf85918b4d66fb5d9259ce0e84052dde2237481b3a3"
     }
   ],
-  "status": "qualified_source_census_hosted_delivery_pending",
+  "status": "readable_summary_correction_new_native_and_full_pending",
   "status_flags": "ShowNonFinalFlags requested; absent flags remain unflagged_unknown, not FINAL"
 }

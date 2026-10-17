@@ -274,16 +274,17 @@ def inspect_component_source_evidence(cas_root: Path) -> dict[str, Any]:
             ),
             "methodology": {
                 "lci": (
-                    "v66_fixed_quality_wage_rates_excludes_performance_"
-                    "and_service_increments"
+                    "Version 66: fixed quantity and quality wage rates; "
+                    "excludes performance increases and service increments."
                 ),
                 "ppi": (
-                    "v3_inputs_excludes_wages_and_capital_GST_generally_"
-                    "excluded_FISIM_from_2015Q1"
+                    "Version 3: industry inputs; excludes wages and capital "
+                    "expenditure/depreciation; GST generally excluded; "
+                    "FISIM included from the March 2015 quarter."
                 ),
                 "vintage_limit": (
-                    "general_method_versions_do_not_prove_"
-                    "every_historical_break_or_reweighting"
+                    "General method versions do not establish every historical "
+                    "break or reweighting."
                 ),
             },
             "analytical_admission": "not_performed",

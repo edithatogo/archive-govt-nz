@@ -2591,3 +2591,24 @@ profiles, Silver/Gold products and generic rights policy remain unchanged.
 Rights eligibility, analytical weighting/join policy, broader source coverage and
 track completion remain open. Result-only documentation checks and hosted PR
 checks precede normal protected merge; the task stays in progress until delivery.
+
+
+### 2026-10-18 — public method summary rendering correction
+
+Docs-only affected scan on12d65559 exits1 after Conductor/schema success. Its
+sole new candidate is the emitted PPI methodology summary at report line5,
+classified Base64 High Entropy String. Root and coordinator independently match
+the finding fingerprint to the descriptive label, not a credential. Full scan,
+adjudication and failed docs-stage evidence remain external/permanent; original
+canonical reportbbd251a4 remains unchanged in native2/Git/external history.
+
+Conductor selected readable-prose producer output rather than a detector
+exception. Change only the three methodology summary values; keep field/schema
+names, underlying facts and every numeric/query/capture byte unchanged. This is
+a changed-output validation: fresh focused checks and uniquely named actual-source
+native3 precede a new original full harness on the corrected executable tree.
+No scanner rule, exclusion, baseline, source substitution or legal/admission claim
+changes. Earlier c3 fullPASS and native2PASS remain true only for their recorded
+scopes; they do not qualify the changed producer's final output. Regeneration of
+the tracked canonical report follows native3, before the new full harness, so the
+failed old rendering is not silently edited or carried as a current result.
