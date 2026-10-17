@@ -7530,3 +7530,14 @@ full2 logs/receipts in permanent historical-common-dispatch-20261018 evidence.
 Record the outcome without another native/full run for this documentation delta;
 next create the focused PR, verify seven named exact-head checks, merge normally,
 verify ancestry/tree/zero-unique/clean state and prune only the topic refs.
+
+
+### 2026-10-18 — Compound native result plan after PR714
+
+PR714 delivered and pruned at6ad51f9e after seven named exact-head checks.
+Conductor inspected the remaining shared-source design blocker and recommended
+an explicit compound variant in the existing protocol, preserving native
+schemas and strict v1 consumers. Retain that recommendation and independent
+code/native pins in the external compound case. All16existing files for four
+profiles verify against the committed oracle. Record API/design boundaries
+before implementation; no native/full run has started for this increment.

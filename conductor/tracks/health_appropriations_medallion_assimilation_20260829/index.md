@@ -495,3 +495,5 @@ they are not current-state assertions.
 - [Five physical literal source adapters](./literal-common-adapters-20261018.json); seven shared native profiles, complete area qualifiers, two native replays and full harness qualified; hosted delivery pending.
 
 - [Fiscal2024 historical common dispatch](./historical-common-dispatch-20261018.json); focused308, native two-run parity and full7954 passed; historical census binding reconciled; hosted delivery pending.
+
+- [Compound native workbook contract](./compound-native-recordsets-20261018.md); planned typed forecast/detail composition with unchanged v1 consumers and native schemas.
