@@ -1917,7 +1917,7 @@ integrated parent head.
   main contains checked head/merge with identical tree and zero unique changes;
   clean topic refs pruned, primary and originals retained.
 
-- [~] Reconcile exact CPI source-metadata and period/rights census evidence with
+- [x] Reconcile exact CPI source-metadata and period/rights census evidence with
   the existing June2017 reference qualification and fiscal CPI benchmark.
   Verify immutable current/versioned metadata, release-to-source links and
   response bindings; record source period-label coverage separately from the
@@ -1934,3 +1934,17 @@ integrated parent head.
   All14 originals/WARCs are retained in a permanent bounded CAS.82 focused checks,
   typing, Ruff, schemas and Conductor/hygiene pass. Full harness and hosted PR
   delivery remain pending under the existing serialized launch owner.
+
+  Delivered PR #706 at4cf8d808 after all required platform/analyze/lint gates,
+  CodeQL and patch coverage passed on730e12e8. Fetched merge and checked head
+  share tree734e2f60; zero unique changes and clean topic refs pruned. The initial
+  historical-review binding failure, focused recovery and remaining assurance
+  remain scoped evidence; final hosted gates passed on the exact final tree.
+
+- [~] Adopt independently regenerated CPI source-period evidence in the existing
+  source-health producer and build tool through an explicit v2 profile. Preserve
+  v1 bytes and other source/vintage states. Report449 represented quarter labels,
+  422 numeric and27 publisherNA separately; retain exact source/body/vintage
+  lineage and all rights, numeric-continuity and analytical boundaries. Qualify
+  focused contracts, actual-source repeats and full/hosted delivery. [M-02,
+  M-12, M-13, M-18; AC-09, AC-11, AC-12, AC-16]

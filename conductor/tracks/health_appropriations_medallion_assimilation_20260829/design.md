@@ -1087,3 +1087,29 @@ metadata fields; only the observed spatial-identifier difference is supported.
 Actual-source proof must precede the current census evidence update; retain a
 historical census snapshot if its current metadata changes. Final full assurance
 runs only after that coherent reconciliation, under the existing launch owner.
+
+
+### CPI source-health evidence adoption — 2026-10-17
+
+Reuse the existing source-health producer/renderer/build tool. A typed optional
+CAS/WARC input regenerates the fixed source-evidence profile and must match
+independently pinned report0716432e. Census bytes must decode to the supplied
+censuses; exact CPI census identity, series, source/body and vintage bind the
+enrichment. Source observation timestamps remain observations. Only explicit
+evidence emits v2; v1 outputs remain byte-identical for the same inputs.
+
+```mermaid
+flowchart LR
+  CAS[Fixed body and WARC snapshots] --> Inspector[Existing CPI inspector]
+  Inspector --> Pin[Independent report digest]
+  Census[Exact census bytes and identities] --> Bind[Bind CPI source and vintage]
+  Pin --> Bind
+  Bind --> V2[Source-health v2 label grid and retained NA]
+  Legacy[No CPI evidence] --> V1[Unchanged source-health v1]
+```
+
+Zero absent quarter labels is not numeric continuity, freshness, rights, fiscal
+alignment or analytical admission. Other context/resource rows retain their
+states. Historical reports remain separate; new tool outputs must use distinct
+paths. Conductor reviewed this design without a blocking gap; broad/native
+launch ownership remains with the coordinator.
