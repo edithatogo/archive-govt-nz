@@ -1632,3 +1632,24 @@ Ubuntu/macOS7767/26; native local parity and full7783/10 remain separately scope
 The next approved bounded Phase3/8 task adopts the two actual common forecast
 outputs in operations. Existing formula rejection/partial-package behavior is an
 explicit compatibility contract. No broader phase, rights or donor closure.
+
+
+## Forecast operation bridge implementation checkpoint — 2026-10-17
+
+New bridge consumes common dispatch facts/lineage, verifies all shared fields
+and loss rows against auxiliary metadata parsed from the same immutable Bronze
+snapshot, then emits unchanged three Parquet tables plus a versioned operation
+manifest. Public compact receipts and rejected-cell partial-package behavior
+remain unchanged. Readback requires an independent manifest hash and trusted
+source/profile/context; verifies exact metadata types/values via canonical JSON,
+rejects duplicate keys and unexpected files, regenerates table pins, checks every
+bounded output snapshot and final manifest stability. Symlink ancestors are
+refused before output, and interrupted directories cannot be overwritten.
+Initial red collection check and old-manifest comparison failures are retained.
+A real False-versus-zero tamper case exposed dictionary equality accepting
+changed types; canonical JSON comparison fixes it without weakening validation.
+Focused forecast/operation suites:604 passed/10 skipped in11.29s; Ruff clean,
+basedpyright0 errors/warnings. All three previously qualified native parser,
+adapter and registry source files remain unchanged. Native proof, full harness,
+review resolution and hosted delivery remain pending; see
+[checkpoint](./forecast-operational-dispatch-20261017.json).

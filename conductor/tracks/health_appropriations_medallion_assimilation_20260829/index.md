@@ -420,3 +420,5 @@ they are not current-state assertions.
 - [Forecast evidence rebinding](./forecast-evidence-rebinding-20261017.json), [historical context snapshot](./context-census-pre-forecast-common-20261017.json), and [successor source-measure binding](./source-measure-review-20261017-forecast-binding.json).
 
 - [Forecast common adapter full local validation](./forecast-common-adapters-validation-20261017.json).
+
+- [Forecast operational dispatch checkpoint](./forecast-operational-dispatch-20261017.json).
