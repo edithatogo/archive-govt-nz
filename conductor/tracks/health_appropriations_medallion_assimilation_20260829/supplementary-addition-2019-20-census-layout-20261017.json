@@ -1,0 +1,117 @@
+{
+  "currency": null,
+  "currency_qualification": "not_inferred_from_dollar_symbol",
+  "derivative_assets": [
+    {
+      "bytes": 48798,
+      "path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/assurance/vote-health-supplementary-addition-2019-20-20261017/layout-reconnaissance/archive-health-addition-layout-20261017.txt",
+      "sha256": "26a35bf9de13283959e26944b587ed882bde4c70480225dd51dfeb3adaba391f"
+    },
+    {
+      "bytes": 256818,
+      "path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/assurance/vote-health-supplementary-addition-2019-20-20261017/layout-reconnaissance/archive-health-addition-page-2-20261017.png",
+      "sha256": "2633a08dc5d08b7eee7b51f97cbba5891e58aa5f24de5ad9823b6d9010271005"
+    },
+    {
+      "bytes": 153773,
+      "path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/assurance/vote-health-supplementary-addition-2019-20-20261017/layout-reconnaissance/archive-health-addition-page-8-20261017.png",
+      "sha256": "451747b6b7449053896925c790812b9ee7a1674f9df25ff4111fc887a89c5140"
+    }
+  ],
+  "facts_normalized": 0,
+  "fiscal_year_label": "2019/20",
+  "issue_date_metadata": "2020-06-16",
+  "landing_url": "https://www.treasury.govt.nz/publications/supplementary-estimates/vote-health-addition-supplementary-estimates-appropriations-2019-20",
+  "layout_selection_requirement": "use source pin, edition and table headers/roles; five columns alone cannot select a layout",
+  "license_metadata": "CC-BY-4.0",
+  "originals_modified": false,
+  "page_count": 19,
+  "page_count_basis": "existing_Conductor_Poppler_reconnaissance_with_19_form_feeds",
+  "preparation_failure_evidence": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/assurance/vote-health-supplementary-addition-2019-20-20261017/verification-1-diagnosis.json",
+  "publication_form": "addition_to_supplementary_estimates",
+  "publisher_status_metadata": "Superseded",
+  "reviewed_physical_pages": [
+    2,
+    8
+  ],
+  "rights_adjudicated": false,
+  "rights_policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+  "sampled_layouts": [
+    {
+      "amount_column_roles": [
+        "Estimates Budget",
+        "Supplementary Estimates Budget",
+        "Addition to the Supplementary Estimates Budget",
+        "Cumulative Supplementary Estimates Budget",
+        "Total Budget"
+      ],
+      "period_label": "2019/20",
+      "physical_page": 2,
+      "printed_page": 170,
+      "section": "Annual Appropriations and Forecast Permanent Appropriations",
+      "unit_literal": "$000"
+    },
+    {
+      "amount_column_roles": [
+        {
+          "label": "Estimates",
+          "parent": null
+        },
+        {
+          "label": "Departmental Transactions",
+          "parent": "Cumulative Supplementary Estimates"
+        },
+        {
+          "label": "Non-Departmental Transactions",
+          "parent": "Cumulative Supplementary Estimates"
+        },
+        {
+          "label": "Total Transactions",
+          "parent": "Cumulative Supplementary Estimates"
+        },
+        {
+          "label": "Total",
+          "parent": null
+        }
+      ],
+      "period_label": "2019/20",
+      "physical_page": 8,
+      "printed_page": 176,
+      "section": "Summary of Financial Activity",
+      "unit_literal": "$000"
+    }
+  ],
+  "scope": "two_sampled_pages_structural_source_observations_not_parser_or_amount_admission",
+  "signed_date_metadata": "2020-06-16",
+  "source_id": "treasury-vote-health-pdf-4315859d7da244f4",
+  "source_sha256": "669590bb6beaf3baea30f7a0243060b0270193d404043648b7fd3e58f633125a",
+  "source_url": "https://www.treasury.govt.nz/sites/default/files/2020-06/suppest20health-vol2.pdf",
+  "terminal_verification_receipt_sha256": "d288d595f27a82c02ca6d40e1a66f86bd9aabed0ed672a6b9df2d31d615a6d52",
+  "unqualified_semantics": [
+    "dash versus N/A numerical meaning",
+    "parentheses parsing and source qualifiers",
+    "nested MCA aggregation",
+    "cross-edition comparability",
+    "ISO currency",
+    "whole-document extraction"
+  ],
+  "unreviewed_physical_pages": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19
+  ]
+}

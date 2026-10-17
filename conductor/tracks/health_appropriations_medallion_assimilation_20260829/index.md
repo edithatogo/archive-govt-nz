@@ -399,3 +399,8 @@ they are not current-state assertions.
 - [Health component index discovery](./health-component-index-discovery-20261017.md)
 - [Component table and method evidence](./health-component-index-discovery-20261017.json)
 - [Current source/measure census review](./source-measure-review-20261017-locator-gaps.json)
+
+
+- [Retained capture inventory reconciliation](./capture-inventory-20261017.md)
+- [Distinct 2019/20 Supplementary Addition census](./supplementary-addition-2019-20-census-20261017.md)
+- [Latest bounded capture inventory including the Addition](./capture-inventory-20261017-addition.json)

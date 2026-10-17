@@ -2172,3 +2172,19 @@ names without overwrite, and rejects ambiguous/unused explicit requests before
 output. Reversed alias argument order produces the same fail-closed result.
 No source/census/manifest or inventory bytes changed; native CAS proof is reused.
 Current-head full assurance, hosted checks and actual thread resolution pending.
+
+
+## 17 October 2026 — distinct Addition census review
+
+- Preserve native request/manifest bytes and original ordinary Supplementary;
+  new inventory retains all 152 prior resource rows exactly. Distinct source
+  URI/form is not another fiscal year or a replacement edition.
+- Bind new identity to the qualified CAS/WARC verification; explicitly retain
+  the external wrapper failure and subsequent verification-only success.
+- Existing 84-source proof is reused with exact identity-set accounting; no
+  repeated native reads or expanded WARC/rights assurance claim.
+- Separate the two sampled five-column layouts by source/table headers and
+  roles. All seventeen other pages and numeric semantics remain unqualified.
+- Reuse the production builder/schema; 24 actual inputs, two byte-identical
+  builds and the new schema fixture supply metadata verification without
+  adding coverage-only tests. Full frozen-tree validation and PR delivery pending.

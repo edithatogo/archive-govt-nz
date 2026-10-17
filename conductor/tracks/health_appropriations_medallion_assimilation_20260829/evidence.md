@@ -1492,3 +1492,15 @@ merge/pruning remain pending. This does not close the Health track.
 152 URL identities, 84 recorded captures; all 84 captured URL/version CAS
 identities freshly verified (46,245,283 bytes). No WARC replay, rights or
 whole-corpus completion claim. Frozen-tree full assurance and PR delivery pending.
+
+
+## 17 October 2026 — distinct 2019/20 Supplementary Addition
+
+[Source census/layout and scope](./supplementary-addition-2019-20-census-20261017.md),
+[layout observations](./supplementary-addition-2019-20-census-layout-20261017.json),
+[native request/CAS/WARC proof](./supplementary-addition-2019-20-capture-verification-20261017.json),
+[new bounded inventory](./capture-inventory-20261017-addition.json), and
+[repeat-build/input/proof-set accounting](./capture-inventory-build-20261017-addition.json).
+153 URLs /85 recorded captures; all 152 prior resource rows remain exactly
+unchanged. No amount normalization, new rights approval or whole-corpus closure.
+Full exact-tree validation and PR delivery pending.
