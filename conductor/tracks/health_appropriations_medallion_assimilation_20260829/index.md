@@ -444,3 +444,5 @@ they are not current-state assertions.
 - [Context operations delivered and clean topic pruned](./context-operational-dispatch-delivery-20261017.json).
 
 - [Operation-bound canonical context and QES lineage disposition](./context-operation-canonical-20261017.json).
+
+- [Canonical operation native proof](./context-operation-canonical-native-20261017.json) and [full local validation](./context-operation-canonical-validation-20261017.json).

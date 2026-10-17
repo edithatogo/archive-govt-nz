@@ -973,8 +973,10 @@ integrated parent head.
   vintages, analytical selection and denominator approval remain open. See
   `population-annual-export.md` and `population-annual-silver.md`. A
   Bronze-bound canonical projection now verifies the exact Silver package and
-  rebuilds 36 canonical context facts with 108 direct lineage rows; denominator
-  approval and source rights remain explicitly unqualified.
+  rebuilds 36 canonical context facts with 108 direct links plus two publisher-
+  status links (110 lineage rows); the pre-refactor and October 17 operation
+  consumer outputs match exactly. Denominator approval and source rights remain
+  explicitly unqualified. See `context-operation-canonical-native-20261017.json`.
   The BEFU 2026 core Crown expense formula-cache series has a bounded Silver
   extraction with side-by-side formula/cache lineage and a Bronze-bound
   canonical fiscal-context projection (10 facts, 80 direct lineage rows). A
@@ -1868,3 +1870,9 @@ integrated parent head.
   canonical value/lineage parity plus downstream repeat-build recovery. No
   denominator, currency, rights or analytical join admission is implied.
   [M-05, M-07, M-10, M-12; AC-05, AC-08, AC-10, AC-12]
+
+  Canonical consumer progress: all five operation profiles now project 615 facts
+  and 4,190 fully validated lineage rows, with explicit source-backed completion
+  of QES legacy metadata and retained historical representations. Native and full
+  local checks passed; hosted delivery and subsequent source-separated Gold
+  consumption remain pending. The combined integration item stays in progress.

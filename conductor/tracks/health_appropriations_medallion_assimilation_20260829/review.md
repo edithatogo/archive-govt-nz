@@ -2603,3 +2603,34 @@ retained as bounded evidence. Native five-profile proof against pre-refactor
 committed code, repeat/readback qualification, full harness and hosted delivery
 remain pending. Gold operation-package consumption remains open in the combined
 plan item. See [checkpoint](./context-operation-canonical-20261017.json).
+
+
+## Canonical consumer native and full qualification — 2026-10-17
+
+The frozen clean tree 3c9cadf7a3fa2111b9c44885ba3dd21753355439 passed native
+qualification against pre-refactor Git 6a13aab0 code: all five official operation
+profiles, 615 canonical facts, 4,190 valid canonical lineage rows, ten actual
+verified reads and two identical repeats. Every fact Parquet matches the old
+projectors; all four other full lineage Parquets match too. QES retains all 90
+mapping tuples and the invalid legacy schema/rows digest, while its completed
+v2 lineage validates with unique IDs and fully resolved targets. All source and
+input operation-package bytes remain unchanged. Filesystem normalizers and
+historical readers are forbidden inside the new route. Conductor independently
+checked all 30 generated files, four code pins and generated QES v2 admission.
+
+`./scripts/validate.sh` passed with exit 0 at the same exact head: 7,847 tests
+passed, 10 skipped, 23 warnings in 314.23 seconds; 97.41% coverage against the
+unchanged 80% floor. Typing 0, schemas 62/documents 52, parity 9/9 and all
+mutation, hygiene, audit, licence, secret and SBOM gates passed (113 components).
+Existing external CDX validation remains skipped. Only result documentation and
+evidence follow the tested tree; final-head affected/hosted checks remain before
+normal protected merge and topic pruning. Gold operation-package adoption and
+broader track gates remain open.
+
+The population canonical count is 110: 108 period/amount/label links plus two
+publisher-status links. This corrects an old plan count; the pre-refactor and new
+outputs match exactly. The historical QES JSON replay remains a legacy mapping
+receipt, not proof of complete v2 lineage admission; the new path qualifies that
+missing contract without rewriting the historical output.
+See [native proof](./context-operation-canonical-native-20261017.json) and
+[full validation](./context-operation-canonical-validation-20261017.json).

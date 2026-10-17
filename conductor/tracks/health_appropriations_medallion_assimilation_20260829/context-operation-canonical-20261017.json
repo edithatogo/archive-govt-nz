@@ -1,5 +1,5 @@
 {
-  "actual_retained_source_proof": "pending",
+  "actual_retained_source_proof": "context-operation-canonical-native-20261017.json",
   "approved_joins": "none",
   "currency_admission": "not_performed",
   "denominator_selection": "not_performed",
@@ -10,7 +10,7 @@
     "passed": 57,
     "seconds": 10.4
   },
-  "full_harness": "pending",
+  "full_harness": "context-operation-canonical-validation-20261017.json",
   "gold_common_operation_adoption": "pending_after_canonical_qualification",
   "historical_readers_and_pins": "unchanged",
   "hosted_delivery": "pending",
@@ -39,6 +39,6 @@
   "receipt_schema": "archive-govt-nz.health-context-operation-canonical-projection/v1",
   "rights_state": "not_evaluated",
   "schema_version": "archive-govt-nz.health-operation-canonical-checkpoint/v1",
-  "status": "implemented_focused_qualified_native_full_hosted_pending",
+  "status": "implemented_native_and_full_local_qualified_hosted_pending",
   "typing_errors": 0
 }
