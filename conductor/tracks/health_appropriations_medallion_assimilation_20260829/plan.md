@@ -1863,7 +1863,7 @@ integrated parent head.
   selection, currency, denominator, rights or join approval is implied.
   [M-04, M-05, M-06, M-07, M-10; AC-03, AC-05, AC-11, AC-12, AC-16]
 
-- [~] Integrate independently verified common context-operation packages into
+- [x] Integrate independently verified common context-operation packages into
   source-separated canonical and Gold consumption. Reuse existing canonical
   transformations, preserve original fixed-cohort native readers and pins, bind
   new operation manifests and full provenance explicitly, and demonstrate
@@ -1877,11 +1877,14 @@ integrated parent head.
   after all required checks passed. Source-separated Gold consumption now also
   retains all canonical products/common evidence, observes actual source status,
   and supports typed CLI/read-only MCP. Two Bronze-driven20file rebuilds match;
-  all7867 tests and full local gates passed at7143a86a. Hosted Gold delivery and
-  protected merge/pruning remain pending, so the combined item stays in progress.
+  all7867 tests and full local gates passed at7143a86a. PR #704 merged3545f270
+  after finalheadab156c16 passed all required checks.
+  Fetched ancestry/identical tree/zero unique changes preceded topic pruning.
+  The five-profile canonical/Gold integration item is complete; broader phases
+  stay open.
 
 
-- [~] Resolve PR #704 output-directory substitution race. Reproduce swaps before
+- [x] Resolve PR #704 output-directory substitution race. Reproduce swaps before
   first write and between writes, then bind all output writes to the reserved
   directory object. Qualify native protected Windows writes as well as
   POSIX dir_fd writes; preserve no-overwrite behavior, exact bytes and closure
@@ -1889,7 +1892,19 @@ integrated parent head.
   review, protected merge and topic pruning. [M-03, M-07, M-10, M-18; AC-02,
   AC-05, AC-12, AC-16]
 
-  Windows qualification correction: the4a3 attribute-only handle admitted rename.
-  Add list-directory access with unchanged restrictive sharing and qualify the
-  existing native replacement/cleanup tests early in Windows CI. Keep full
-  platform gates and review resolution pending until the corrected head passes.
+  Windows qualification correction completed: the4a3 attribute-only handle
+  admitted rename; ab156c16 adds list-directory access and passes the unchanged
+  native replacement/cleanup assertions plus full Windows assurance. All final
+  platform gates passed; review resolved before protected merge and pruning.
+
+
+- [~] Extend the existing Gold metadata projector to independently verified
+  operation-context Gold inputs. Retain canonical/direct/common provenance and
+  exact inventories for all13 Parquet tables plus report/plots; preserve nullable
+  publisher status counts and record kinds without invented statuses or period
+  continuity. Reuse existing catalogue/schema/DCAT/PROV/card/citation/changelog/
+  drill-through projections, version the new profile, and keep historical
+  metadata bytes unchanged. Compose metadata into two Bronze-driven recovery
+  repeats; qualify focused/native/full/hosted delivery before closure. No rights,
+  citation authority, federation or analytical join is inferred. [M-10, M-14,
+  M-16, M-18; AC-08, AC-12, AC-14, AC-16]

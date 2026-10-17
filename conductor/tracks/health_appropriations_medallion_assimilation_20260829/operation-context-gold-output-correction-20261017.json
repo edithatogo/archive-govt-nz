@@ -36,7 +36,7 @@
     "partial_log_sha256": "67531e20146a3d0a685a4ebf3853cdf76de952a5531d15a91a98f85cb2e19e88",
     "status": "superseded_cancelled; partial tests neither pass nor failure claim"
   },
-  "full_harness": "final corrected frozen-head rerun pending",
+  "full_harness": "finalheadfullhosted3platforms_passed; historicallocal/cancelledgatesretainexactscope",
   "hosted_4a3": {
     "macos": "success",
     "record_sha256": "c3a144505b8dfeeb0cfbd65ddd718918aca6ffc8072812134670a34f0dd99cbf",
@@ -45,7 +45,7 @@
   },
   "lint": "passed",
   "local_coverage_policy": "full-before-PR7143passed; no redundantPOSIXnative/full replay for isolatedWindowsaccessmask andWindows-onlyfaststep; exactfinalheadfullhostedplatformgates remain mandatory",
-  "merge": "pending",
+  "merge": "3545f270e9d9829893baa859cb2a2892706aadd1",
   "native_actual_source_repeat": "passed at6ef90a1a; two20file inventories identical to independent pre-correction pins",
   "native_proof_sha256": "38f713345b783efb5ec13e2052ddfcf0d10d0b02bbb089a2c37ffb1a28000abe",
   "platform_focused": {
@@ -57,14 +57,14 @@
   },
   "posix": "pinned directory descriptor with O_EXCL/O_NOFOLLOW relative creates and identity guards",
   "prior_pr_head": "34b11e52c0ae504cff7c8aa0e3a4f7845da34baf",
-  "pruning": "pending",
+  "pruning": "verified_clean_topic_pruned; primary_retained",
   "pull_request": 704,
   "red_tests": {
     "failed": 2,
     "log_sha256": "dbc2d7127d69bb668dd59bda770940c9ea56a2c5584db8ebc2364b882993c730",
     "seconds": 7.06
   },
-  "review_resolution": "pending_after_qualification",
+  "review_resolution": "resolved_after_final_qualification",
   "review_thread": "PRRT_kwDOTo2MOM6teibQ",
   "schema_version": "archive-govt-nz.health-operation-context-gold-output-correction/v1",
   "superseded_full_3": {
@@ -91,7 +91,7 @@
       "warnings": 23
     }
   },
-  "windows_native_qualification": "pending_actual_hosted_after_access_correction",
+  "windows_native_qualification": "passed_ab156c16_native3passed3platformskips_and_fullWindows7849passed36skipped",
   "windows_static_correction": "explicit os.name branch plus descriptor-state gates;0errors on Windows platform",
   "windows_static_initial": "failed: descriptor-state condition did not narrow POSIX-only flag availability"
 }

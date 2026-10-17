@@ -86,6 +86,17 @@ class _Expected:
     observations: pa.Table
 
 
+@dataclass(frozen=True, slots=True)
+class VerifiedOperationContextGold:
+    """Source-regenerated products returned only after saved-package readback."""
+
+    manifest: dict[str, Any]
+    manifest_bytes: bytes
+    products: dict[str, bytes]
+    observations: pa.Table
+    verification: dict[str, Any]
+
+
 def _require(condition: object) -> None:
     if not condition:
         raise ValueError(_ERROR)
@@ -375,13 +386,9 @@ def _verify(
     manifest_sha256: str,
 ) -> dict[str, Any]:
     """Verify independent Gold/input pins and source-regenerated product bytes."""
-    _require(
-        isinstance(manifest_sha256, str)
-        and _DIGEST.fullmatch(manifest_sha256) is not None
-    )
-    _safe_path(output_dir / "MANIFEST.json")
-    _require((output_dir / "MANIFEST.json").is_file())
-    return _readback(output_dir, manifest_sha256, _expected(inputs, source_root))
+    return _verified_products(
+        inputs, source_root, output_dir, manifest_sha256=manifest_sha256
+    ).verification
 
 
 def _query(
@@ -392,6 +399,18 @@ def _query(
     manifest_sha256: str,
 ) -> pa.Table:
     """Read source-reconciled canonical observations without reopening candidates."""
+    return _verified_products(
+        inputs, source_root, output_dir, manifest_sha256=manifest_sha256
+    ).observations
+
+
+def _verified_products(
+    inputs: Sequence[OperationContextInput],
+    source_root: Path,
+    output_dir: Path,
+    *,
+    manifest_sha256: str,
+) -> VerifiedOperationContextGold:
     _require(
         isinstance(manifest_sha256, str)
         and _DIGEST.fullmatch(manifest_sha256) is not None
@@ -399,11 +418,33 @@ def _query(
     _safe_path(output_dir / "MANIFEST.json")
     _require((output_dir / "MANIFEST.json").is_file())
     expected = _expected(inputs, source_root)
-    _readback(output_dir, manifest_sha256, expected)
-    return expected.observations
+    verification = _readback(output_dir, manifest_sha256, expected)
+    return VerifiedOperationContextGold(
+        expected.manifest,
+        expected.marker,
+        expected.payloads,
+        expected.observations,
+        verification,
+    )
 
 
 _ERRORS = (OSError, ValueError, TypeError, KeyError, AttributeError, pa.ArrowException)
+
+
+def read_verified_operation_context_gold(
+    inputs: Sequence[OperationContextInput],
+    source_root: Path,
+    output_dir: Path,
+    *,
+    manifest_sha256: str,
+) -> VerifiedOperationContextGold:
+    """Return verified expected bytes without reopening candidate Parquets."""
+    try:
+        return _verified_products(
+            inputs, source_root, output_dir, manifest_sha256=manifest_sha256
+        )
+    except _ERRORS:
+        raise ValueError(_ERROR) from None
 
 
 def export_operation_context_gold(

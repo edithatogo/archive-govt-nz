@@ -2097,3 +2097,138 @@ claimed or scheduled. Local4 exit143/partial logs are retained, never marked
 passed. Local full-before-PR7143 and exact4a3 hosted Mac/Ubuntu remain historical
 scoped evidence. Final corrected head requires actual native Windows proof and
 all required hosted checks before resolving review/merging/pruning.
+
+
+## Operation Context Gold delivered; metadata bridge active — 2026-10-17
+
+PR #704 merged normally as3545f270e9d9829893baa859cb2a2892706aadd1 after all
+applicable checks passed onab156c16625d87305ec4207bce613ee60d260ec8. Final full
+Ubuntu/macOS:7857passed/28skipped each; Windows:7849passed/36skipped. Native
+Windows preflight3passed/3platform skips; schemas62/documents52, parity9/9,
+mutation/security/supply-chain gates, analyze/lint/CodeQL/patch coverage passed.
+The reproduced output-race review was resolved after qualification. Coverage
+97.20–97.26% against unchanged80%; SBOM platform counts114/113/114. Historical
+local passes, Windows failure and superseded cancellations retain exact scope.
+
+Fetched main contains checked head and merge; checked/merged tree is identical
+6af6f4ace1f21c6b3411e688750a4812096023e7. Zero unique topic changes and clean
+status preceded local/remote/tracking topic pruning. Primary worktree retained.
+See [delivery receipt](./operation-context-gold-delivery-20261017.json).
+The five-profile canonical/Gold integration and its output-race fix are complete;
+no broader phase/track gate is closed.
+
+Next is the existing Platinum/recovery bridge. The current projector supports
+only Budget/Fiscal/canonical-Gold inputs, not operation-context Gold. A read-only
+probe of13 independently pinned new tables found a real descriptor contract gap:
+nullable publisher statuses cannot be sorted with strings. Add an explicit new
+profile, retain null counts distinctly, label facts/lineage/coverage/quality
+honestly, and reuse existing metadata projections rather than duplicate them.
+The new route must verify Gold and five independent operation pins against
+trusted Bronze before projecting expected products; keep paths private and
+rights/publication/unsupported federation claims unchanged. Qualified CPI-base
+candidate captures collected outside the frozen tree remain for a separate
+source-census slice; the admitted Gold base metadata is unchanged.
+
+
+## Operation-context metadata projection started — 2026-10-17
+
+Following the PR704 delivery/design checkpoint, two new public contracts failed
+because the operation-context metadata input did not exist (2failed/7.68s).
+A typed input now carries Gold/operation pins and Bronze scope. The Gold reader
+returns source-regenerated manifest/product bytes only after saved-package
+readback; verify/query wrappers preserve their public results. The existing
+metadata projector reuses its renderers for a newv5 profile, describes13 tables,
+retains null publisher status separately, labels lineage/facts/summary kinds,
+keeps paths private and reports source re-verification per profile honestly.
+Initial contracts passed2/10.37s; subsequent typed dispatch refactor and Ruff/
+typing are clean (0errors). A final coherent test run remains pending after the
+rest of this slice; do not treat initial green as complete assurance.
+
+Export/readback, versioned schemas, source-locator drill-through, historical
+v3/v4 byte parity and two full Bronze-driven metadata recovery repeats remain
+before focused/full/hosted delivery. The authorized Conductor coordinator retains
+broad/native local launch ownership in this coordination batch. The durable
+workflow records frozen head/tree/runtime/command/log/terminal-marker handoff
+and independent focused/static/hosted ownership; no new approval or framework.
+See [in-progress checkpoint](./operation-context-metadata-20261017.json).
+
+
+## Operation-context metadata focused qualification — 2026-10-17
+
+The v5 bridge now implements all eight existing metadata projections plus the
+manifest, exclusive output reservation, source-regenerated expected-byte readback,
+exact source-locator/hash pointers and three versioned schemas. The schema-first
+contract failed for the absent v5 schema before implementation; the final coherent
+focused suite passed27 tests (4 existing RDF deprecation warnings,94.19s), Ruff
+check/format passed, basedpyright reported0 errors, and schema validation passed
+65 schemas/55 representative documents. Tests cover all13 table descriptors,
+nullable statuses, independent operation pins, repeated9-file builds, dry-run,
+overlap/no-overwrite and forged rights with a rehashed candidate marker.
+
+Self-review retains old v3/v4 projection branches, versions and marker construction;
+actual native byte parity remains unproven until replay. New v5 cards keep all
+recordset rows contiguous; per-profile Bronze verification claims remain distinct.
+The offline native proof compares retained legacy packages against the Git3545f270
+renderer, then twice rebuilds Bronze→operation→canonical→Gold→metadata, validating
+schemas, literal manifest references and RDF graphs with file/network loading
+denied. Independent prior operation/canonical/Gold pins are not refreshed from
+new outputs. Runtime remains uv0.13.1/Python3.14.6 with unchanged lock/backend.
+
+Native/full runs are prepared, not launched or passed. The Conductor coordinator
+retains launch ownership; this topic is frozen for a combined native-then-full
+handoff. No PR, broader phase closure, source admission, rights reassessment,
+federation link, publication or new metadata CLI/MCP claim is made. The broader
+track remains in progress. See the updated checkpoint for exact log/script hashes.
+
+
+## Native proof assertion correction — 2026-10-17
+
+Conductor-owned assurance1 terminated with native exit1; the full harness did
+not start. On frozen02174648, retained v3/v4 Git-reference byte parity passed.
+The source-reference pointer checks passed, then the external proof incorrectly
+expected five total HTTPS locators. The actual verified Gold manifest contains
+five input projection and five plot-report locators, and the metadata correctly
+retains all ten field references. Preserve the first run/log and correct only
+the external proof: require ten total, two exact five-member groups, and both
+locator sets equal the independently pinned operation binding locators. No
+production values, source references, tests or gates are changed. Attempt2 uses
+a fresh clean-room output and new logs/markers; native/full remain pending.
+
+
+## Native qualified; bounded full-harness recovery — 2026-10-17
+
+Both clean-room Bronze→operation→canonical→Gold→metadata repeats passed on
+e1e01c0b. All36 metadata files,40 Gold files and40 operation files were independently
+read back; two metadata forms are byte-identical across reversed input order.
+Operation-only metadata describes13 tables; mixed metadata describes26 across
+four profiles. Offline RDF checks verify exact dataset/collection/member sets
+with file/network loading denied. Historical v3/v4canonical/v4composite payloads
+and marker pins match the Git3545f270 renderer. Native receipt is retained in
+[operation-context-metadata-native-20261017.json](./operation-context-metadata-native-20261017.json)
+(SHA1f70250e5d34caf438f8aecedad516d5083448d6e797d27882c6989b7eed5b71).
+
+The required ./scripts/validate.sh ran on this exact code tree:7876passed,
+12skipped,23warnings/555.04s;97.29% coverage against unchanged80%; schemas65/
+documents55; parity9/9; mutation, hygiene, CAS throughput271.36MB/s, dependency
+audit and licences passed. It stopped at the secret scan (exit1), before SBOM.
+The sole unadjudicated entropy candidate was a redundant concatenation of the
+public PR704 review-thread identifier and resolution status in the delivery
+receipt, not an authentication secret. Normalize review_resolution to status
+only; retain the exact identifier in its separate existing review_thread field.
+Original receipt bytes remain at Gita37476ec and external retained evidence;
+original SHA867f4a7fa48031519cbae817e8b736cd1946cb50a7d663868cbbb76f4de44dee.
+No scanner, exclusion, adjudication or production-code change is made.
+
+Conductor recommends resuming unchanged secrets/SBOM plus affected document
+validation, preserving explicit partial-run scope rather than replaying the
+unchanged7876 tests/native proof. Remaining gates and hosted checks are pending;
+there is no successful whole-run claim yet. Broad/native launch ownership remains
+with the authorized coordinator. No PR or phase/track completion is claimed.
+
+
+Secret-scan recovery passed with the unchanged scanner and exclusions; no
+candidate remains. The actual full2 report and secret-adjudication evidence are
+retained externally. Affected Conductor-state and hygiene checks also pass.
+Only track evidence documents differ from e1e01c0b; production/test/schema/tool
+bytes remain unchanged. Final frozen continuation will reconcile document gates
+and SBOM; full2/native2 claims retain their original head and terminal scope.

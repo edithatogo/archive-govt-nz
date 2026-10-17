@@ -20,6 +20,21 @@ type JsonValue = (
 REPOSITORY_ROOT = Path(__file__).parents[1]
 VALIDATION_PAIRS = (
     (
+        REPOSITORY_ROOT / "schemas" / "health-gold-citations-v5.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "health-gold-citations-v5.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-gold-changelog-v5.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "health-gold-changelog-v5.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-gold-source-drillthrough-v3.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-gold-source-drillthrough-v3.json",
+    ),
+    (
         REPOSITORY_ROOT / "schemas" / "health-capture-inventory-v1.schema.json",
         REPOSITORY_ROOT
         / "conductor"
