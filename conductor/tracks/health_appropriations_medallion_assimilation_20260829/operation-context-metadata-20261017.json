@@ -10,7 +10,26 @@
     "seconds": 94.19,
     "warnings": 4
   },
-  "full_status": "not_launched",
+  "full_attempt2": {
+    "SBOM": "not_run",
+    "documents": 55,
+    "exit_code": 1,
+    "failure": "one entropy candidate in redundant public review identifier/status concatenation",
+    "head": "e1e01c0b6f10b685a944639c62e5c689b91d3ff5",
+    "log_sha256": "9ac6ce567c54cc9a2f2ee129faee8429376ed9156436613024c3fd957ee78525",
+    "mutation_hygiene_benchmark_audit_licenses": "passed",
+    "parity_passed": 9,
+    "schemas": 65,
+    "tests": {
+      "coverage_floor_percent": 80,
+      "coverage_percent": 97.29,
+      "passed": 7876,
+      "seconds": 555.04,
+      "skipped": 12,
+      "warnings": 23
+    }
+  },
+  "full_status": "attempt2_stopped_at_secrets; resume secrets_and_sbom_after_document_only_correction",
   "initial_contracts": {
     "green_before_final_dispatch_type_refactor": {
       "log_sha256": "e3e3dc640e83f269824c1b13245a04d6dfe9c1c91ab4126b5bb01bb8d455627d",
@@ -34,13 +53,29 @@
     "legacy_v3_v4_byte_parity": "passed_before_failure",
     "log_sha256": "5d79e009b6427d44ec487b408179d47fe5ad5f3c2958876bc602548de258b32b"
   },
+  "native_audit": {
+    "Gold_files": 40,
+    "legacy_parity_cases": [
+      "v3",
+      "v4-canonical",
+      "v4-composite"
+    ],
+    "metadata_files": 36,
+    "operation_files": 40,
+    "repeat_identical": true
+  },
   "native_proof_script_sha256": "b0e0e8a39b0812af4761e0df57f505a3bfa88bd3635ef53c8bdaaa6906fabd4f",
-  "native_status": "attempt_1_failed_proof_assertion; corrected attempt_2 prepared_not_launched",
+  "native_receipt_sha256": "1f70250e5d34caf438f8aecedad516d5083448d6e797d27882c6989b7eed5b71",
+  "native_status": "attempt2_passed",
   "publication": "not_performed",
+  "receipt_correction": {
+    "change": "review_resolution retains status only; exact public review_thread field preserved",
+    "original_git_commit": "a37476ecc1e8e556fd1a290c06acd37c18b5b5cb",
+    "original_sha256": "867f4a7fa48031519cbae817e8b736cd1946cb50a7d663868cbbb76f4de44dee",
+    "scanner_or_adjudication_changes": "none"
+  },
   "remaining": [
-    "historical v3/v4 byte parity on retained native inputs",
-    "two Bronze-to-metadata recovery builds and offline RDF validation",
-    "required full validation on frozen head",
+    "affected documentation gate reconciliation and remaining SBOM stage",
     "PR, required hosted assurance, protected merge and verified pruning"
   ],
   "rights": "not_evaluated",
@@ -51,9 +86,17 @@
     "representative_documents": 55,
     "validated": 65
   },
+  "secret_recovery": {
+    "candidate_count": 0,
+    "code_and_tests_since_full2": "unchanged",
+    "conductor_and_hygiene": "passed",
+    "log_sha256": "a0b916c2f9045c22f50b4a52f63047728ed6b371dce7559805638b4412ffb1dc",
+    "scanner_and_exclusions": "unchanged",
+    "status": "passed"
+  },
   "source_boundary": "verified expected Gold products after independent Gold+five operation pins and Bronze readback; no candidate Parquet reopen",
   "source_locator_references": "implemented: exact verified manifest pointers retained",
-  "status": "implemented_focused_qualified_native_and_full_pending",
+  "status": "native_and_full_test_stages_qualified_secrets_recovered_SBOM_pending",
   "track_complete": false,
   "typing_errors": 0,
   "typing_log_sha256": "56882e01cb80173ef053c4096e4ee43e3123a15f5c0a06715f96988d48fbd91c"

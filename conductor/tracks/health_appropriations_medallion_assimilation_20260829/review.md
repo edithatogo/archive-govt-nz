@@ -2903,3 +2903,42 @@ the external proof: require ten total, two exact five-member groups, and both
 locator sets equal the independently pinned operation binding locators. No
 production values, source references, tests or gates are changed. Attempt2 uses
 a fresh clean-room output and new logs/markers; native/full remain pending.
+
+
+## Native qualified; bounded full-harness recovery — 2026-10-17
+
+Both clean-room Bronze→operation→canonical→Gold→metadata repeats passed on
+e1e01c0b. All36 metadata files,40 Gold files and40 operation files were independently
+read back; two metadata forms are byte-identical across reversed input order.
+Operation-only metadata describes13 tables; mixed metadata describes26 across
+four profiles. Offline RDF checks verify exact dataset/collection/member sets
+with file/network loading denied. Historical v3/v4canonical/v4composite payloads
+and marker pins match the Git3545f270 renderer. Native receipt is retained in
+[operation-context-metadata-native-20261017.json](./operation-context-metadata-native-20261017.json)
+(SHA1f70250e5d34caf438f8aecedad516d5083448d6e797d27882c6989b7eed5b71).
+
+The required ./scripts/validate.sh ran on this exact code tree:7876passed,
+12skipped,23warnings/555.04s;97.29% coverage against unchanged80%; schemas65/
+documents55; parity9/9; mutation, hygiene, CAS throughput271.36MB/s, dependency
+audit and licences passed. It stopped at the secret scan (exit1), before SBOM.
+The sole unadjudicated entropy candidate was a redundant concatenation of the
+public PR704 review-thread identifier and resolution status in the delivery
+receipt, not an authentication secret. Normalize review_resolution to status
+only; retain the exact identifier in its separate existing review_thread field.
+Original receipt bytes remain at Gita37476ec and external retained evidence;
+original SHA867f4a7fa48031519cbae817e8b736cd1946cb50a7d663868cbbb76f4de44dee.
+No scanner, exclusion, adjudication or production-code change is made.
+
+Conductor recommends resuming unchanged secrets/SBOM plus affected document
+validation, preserving explicit partial-run scope rather than replaying the
+unchanged7876 tests/native proof. Remaining gates and hosted checks are pending;
+there is no successful whole-run claim yet. Broad/native launch ownership remains
+with the authorized coordinator. No PR or phase/track completion is claimed.
+
+
+Secret-scan recovery passed with the unchanged scanner and exclusions; no
+candidate remains. The actual full2 report and secret-adjudication evidence are
+retained externally. Affected Conductor-state and hygiene checks also pass.
+Only track evidence documents differ from e1e01c0b; production/test/schema/tool
+bytes remain unchanged. Final frozen continuation will reconcile document gates
+and SBOM; full2/native2 claims retain their original head and terminal scope.

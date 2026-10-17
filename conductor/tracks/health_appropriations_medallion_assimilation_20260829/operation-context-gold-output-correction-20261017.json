@@ -64,7 +64,7 @@
     "log_sha256": "dbc2d7127d69bb668dd59bda770940c9ea56a2c5584db8ebc2364b882993c730",
     "seconds": 7.06
   },
-  "review_resolution": "PRRT_kwDOTo2MOM6teibQ_resolved_after_final_qualification",
+  "review_resolution": "resolved_after_final_qualification",
   "review_thread": "PRRT_kwDOTo2MOM6teibQ",
   "schema_version": "archive-govt-nz.health-operation-context-gold-output-correction/v1",
   "superseded_full_3": {
