@@ -7203,3 +7203,21 @@ and docs-scan failure retain their exact historical scopes. No detector exceptio
 or baseline/rule change was made. Full2 on this corrected producer and tracked
 report remains pending; no PR is opened before it succeeds. See the dated scan
 recovery record for the precise false-positive diagnosis and remedy.
+
+
+### 2026-10-18 — corrected producer full assurance
+
+Full2 on69afe04b/tree12528659 exits0 with7916tests/12skips/23warnings261.09s,
+unchanged80percent coverage floor,66schemas/56documents,9/9parity/zero divergences,
+all mutation/hygiene/audit/licence/secret-scan/SBOM gates passing. CAS404.66MB/s;
+SBOM113components. The readable report clears the original false positive with
+no scanner policy, exclusion, baseline or approval exception. Preserve full1,
+failed docs scan, native1 and both prior/new canonical reports separately.
+
+The final assurance receipt records the exact corrected executable tree and log
+9aabb76c. Native3's source/report checks remain valid because no production,
+test, runtime, capture or query bytes changed after native3; current report is
+fccc3850. This closeout changes only result documentation. Affected documentation
+checks and required exact-head hosted checks precede protected merge; no further
+unchanged full/native replay is indicated. Broader track and rights/analytical
+admission gates remain open.

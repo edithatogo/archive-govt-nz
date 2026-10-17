@@ -1995,3 +1995,10 @@ integrated parent head.
   and component-index-source-evidence-20261018.md. Result-only documentation and
   hosted delivery remain pending; broader series admission/policy/rights gates
   are not closed by this census evidence.
+
+
+  Corrected readable-summary producer and regenerated report fccc3850 pass native3
+  and full2 on69afe04b (7916tests/12skips/all downstream gates). Source/query bytes
+  unchanged, no scanner-policy exceptions. Initial proof/scan/full scopes remain
+  separately recorded; see component-index-source-assurance-final-20261018.json.
+  Final documentation checks and hosted delivery remain pending.

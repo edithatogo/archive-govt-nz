@@ -35,9 +35,16 @@
   },
   "full_alphanumeric_series_identifiers": "not_inferred; table and dimension identities explicit",
   "full_harness": {
-    "previous_receipt": "component-index-source-assurance-20261018.json",
-    "previous_scope": "c3e87580 before summary rendering correction",
-    "status": "pending_full2_on_corrected_producer"
+    "coverage_floor": 80,
+    "exit_code": 0,
+    "head": "69afe04bd15bd3f0c2ecc5e012658d5819e6f703",
+    "log_sha256": "9aabb76c560d263146d373992673643b366c44c61a20c6b77f1279c278c922f2",
+    "post_test_gates": "passed",
+    "receipt": "component-index-source-assurance-final-20261018.json",
+    "seconds": 261.09,
+    "tests_passed": 7916,
+    "tests_skipped": 12,
+    "tree": "12528659a7c1ea846b53471689b69062f311b43d"
   },
   "native_attempt_1": {
     "cause": "embedded PageBlocks JSON slash escapes were not decoded before Infoshare link comparison",
@@ -60,7 +67,7 @@
     "tests_passed": 7916,
     "tests_skipped": 12
   },
-  "producer_summary_remedy": "only three methodology summaries become readable prose; regenerate canonical report and repeat native/full on corrected producer",
+  "producer_summary_remedy": "three summaries now readable prose; native3 confirms unchanged facts and original bytes; corrected full2 passed without scanner policy changes",
   "publication": "not_performed",
   "queries": [
     {
@@ -219,6 +226,6 @@
       "warc_sha256": "dc71e228a1c565482f575cf85918b4d66fb5d9259ce0e84052dde2237481b3a3"
     }
   ],
-  "status": "corrected_report_native_qualified_full2_pending",
+  "status": "qualified_source_census_hosted_delivery_pending",
   "status_flags": "ShowNonFinalFlags requested; absent flags remain unflagged_unknown, not FINAL"
 }

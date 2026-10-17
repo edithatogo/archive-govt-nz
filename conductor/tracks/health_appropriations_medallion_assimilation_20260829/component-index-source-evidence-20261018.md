@@ -53,5 +53,6 @@ positive when its report entered Git. Three summaries now use readable prose;
 no scanner policy or baseline changed. Native3 regenerated this report and
 verified every other report value and all 14 input objects are unchanged. The
 previous canonical report and failed scan remain retained as historical evidence.
-The earlier full harness qualifies its recorded executable head; a new full run
-must qualify the corrected producer before PR creation.
+The corrected producer passes its new full run on `69afe04b` (7,916 tests
+and all downstream gates). The separate final assurance receipt preserves
+that scope. Hosted delivery remains pending.
