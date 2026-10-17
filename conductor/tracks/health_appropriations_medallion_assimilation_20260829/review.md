@@ -2987,3 +2987,36 @@ benchmark; no new benchmark, source projection rewrite, rights promotion or
 publication follows. Implementation/tests, current census reconciliation and
 repeat/full/hosted assurance remain pending. See
 [census evidence checkpoint](./cpi-source-evidence-20261017.json).
+
+
+## Offline CPI source-evidence contract implemented — 2026-10-17
+
+The initial contract failed collection because the module was absent. The new
+read-only API verifies a closed seven-capture profile with independent body/WARC
+pins and exact byte limits before parsing. It reuses the existing WARC contract
+through an additive immutable-byte entry; the Path entry retains its behavior.
+Request/final URL digests, status, media type, framing, lengths and body digests
+remain mandatory. No HTTP client or acquisition is used by the inspector.
+
+Contracts retain selector/units/layout, metadata edition and the explicit SDK
+flag, both differing identifier snapshots, exact release-to-CSV and metadata
+references, and the qualified reference clause with its later-index exception.
+Quarter labels are checked separately from27 publisher NA slots; the existing
+CPI parser supplies every source row and value classification without rewriting
+native products. Copyright output is an observed URI/field digest, not rights
+admission. The existing fiscal CPI policy is referenced without another benchmark.
+
+Real-page inspection found unrelated non-JSON/scalar/list widget values; a new
+fixture reproduced rejection before unique PageBlocks selection was corrected.
+A missing-field/null regression also failed before presence-aware, type-sensitive
+metadata comparison was fixed. Final focused suite81passed/9.30s includes the
+existing strict WARC and census contracts and immutable-byte entry behavior;
+Ruff/format pass and basedpyright reports0 errors. Keep these bounded failures
+and exact log hashes in the checkpoint; no coverage chasing or policy weakening.
+
+Actual-source native proof is prepared, not run: two fresh seven-body/seven-WARC
+input trees, socket/DNS disabled, independent capture/period pins, unchanged
+original and legacy capture, identical report bytes. The authorized Conductor
+coordinator owns launch. Census reconciliation will use its verified output,
+then a final coherent tree will go through full/hosted delivery. No PR or wider
+phase/track completion is claimed.

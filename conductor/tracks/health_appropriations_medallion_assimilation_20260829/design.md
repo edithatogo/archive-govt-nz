@@ -1074,3 +1074,16 @@ observations do not automatically approve redistribution of every related host
 or resource. No new source admission, joined measure, publication or schedule is
 implied. Add only meaningful success, changed-pin/link/binding and period-gap
 contracts; replay from retained Bronze and preserve the80% coverage floor.
+
+
+The inspector accepts only body/WARC storage roots; the reviewed seven capture
+pins, byte limits, URLs, media and observation contexts are fixed in code.
+Read both artifacts as bounded regular immutable snapshots. Factor the existing
+WARC verifier into a byte-snapshot entry and keep its Path wrapper, avoiding a
+candidate reopen while preserving every existing binding/framing check. Ignore
+unrelated frontend widgets and require one page-state object with the expected
+release fields. Keep JSON duplicate/type checks and distinguish absent/null
+metadata fields; only the observed spatial-identifier difference is supported.
+Actual-source proof must precede the current census evidence update; retain a
+historical census snapshot if its current metadata changes. Final full assurance
+runs only after that coherent reconciliation, under the existing launch owner.

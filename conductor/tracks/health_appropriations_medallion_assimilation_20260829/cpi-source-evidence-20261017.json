@@ -69,6 +69,36 @@
       "warc_sha256": "0fa0c5715dc208c23b268624bbdb0a258de818466e238d5264d361fcbde61202"
     }
   ],
+  "failure_evidence": {
+    "contracts-red-1.log": {
+      "log_sha256": "1651eded9c498bed34591c082a41a8ad40275271d39d498ec5c26f59324aefaf",
+      "reason": "module absent; collection error"
+    },
+    "frontend-shapes-red-1.log": {
+      "log_sha256": "6a3f09a9e5df6fcc846addb95be189d08ecfca5e5fc501aa2b10779f4532ac2c",
+      "reason": "unrelated scalar/list/non-JSON widget states incorrectly rejected the page"
+    },
+    "metadata-absence-red-1.log": {
+      "log_sha256": "03bbadef44fa9d514253e2dd5874049504a48474eddbfb4a5a50b3b18fc40a43",
+      "reason": "missing metadata field incorrectly compared equal to explicit null"
+    }
+  },
+  "focused": {
+    "log_sha256": "889f370a31a0cf8b0dc10ac48027ac91e0bceb0911f5000b7e61a46ca752ff7a",
+    "passed": 81,
+    "ruff": "passed",
+    "seconds": 9.3,
+    "typing_errors": 0,
+    "typing_log_sha256": "56882e01cb80173ef053c4096e4ee43e3123a15f5c0a06715f96988d48fbd91c"
+  },
+  "implementation": {
+    "API": "cpi_source_evidence.inspect_cpi_source_evidence",
+    "WARC_reuse": "additive verify_response_snapshot entry retains existing Path API and all binding checks",
+    "body_and_WARC_limits": "independent_fixed_profile_lengths; immutable verified snapshots",
+    "mode": "offline_read_only_closed_seven_capture_profile",
+    "rights": "observed policy URI and exact field digest only; no resource admission",
+    "source_semantics": "explicit labels/NA, units/selector/layout; distinct metadata fields/null absence and raw capture contexts"
+  },
   "legacy_transport": {
     "cause": "resume_warc_binding_mismatch",
     "error": "resume_warc_binding_invalid",
@@ -117,6 +147,12 @@
     "rights": "not_evaluated",
     "status": "metadata_edition_identity_verified"
   },
+  "native_preparation": {
+    "independent_capture_profile_sha256": "db3fd11a1115c4ec55d1c945e6fcf2879f6baa9cebb70f500cf7ec5724461e73",
+    "purpose": "two fresh source trees; socket/DNS denied; 28 file readbacks and identical report; original CSV/legacy WARC retained",
+    "script_sha256": "ed23e79bf38fe37259e69663db0778b43341bd5fbc222a533d00b2f7b8fda37b",
+    "status": "not_launched; Conductor owner"
+  },
   "old_source_observation": "retained_2026-08-29T09:00:17Z; new transport receipt has a separate current observation",
   "period_label_census": {
     "absent_quarter_labels": [],
@@ -156,7 +192,7 @@
   "rights": "not_evaluated_by_this_slice",
   "schema_version": "archive-govt-nz.health-cpi-source-evidence-checkpoint/v1",
   "source_payloads": "outside_Git",
-  "status": "source_evidence_collected_offline_contract_pending",
+  "status": "offline_contract_implemented_focused_qualified_actual_source_proof_and_census_pending",
   "track_complete": false,
   "versioned_JSON_capture": {
     "body_sha256": "35d97118d6901af9b88ffe660770d439ba720563dcf55f2e069e313f2a051915",
