@@ -1,0 +1,35 @@
+{
+  "cleanup": "ExitStack reverse-order handles through final readback; descriptor close after fstat/fdopen/body failures tested",
+  "failure": "reserved output path swapped to input-package symlink before/between path-based file opens;19/18unexpected input members added",
+  "final_helper_focused": {
+    "log_sha256": "deecf5cb739ca790e8dc77f3af2997ec0ca47729c60e0e198c596a1c4bb9b52a",
+    "passed": 4,
+    "seconds": 0.29,
+    "skipped": 2
+  },
+  "focused": {
+    "log_sha256": "067fdb5128f27a60db7880c815233fbb1325ebbf68c0f91da6a5fa7175adff06",
+    "passed": 15,
+    "seconds": 144.86,
+    "skipped": 2
+  },
+  "full_harness": "pending_after_correction",
+  "lint": "passed",
+  "merge": "pending",
+  "native_actual_source_repeat": "pending",
+  "posix": "pinned directory descriptor with O_EXCL/O_NOFOLLOW relative creates and identity guards",
+  "prior_pr_head": "34b11e52c0ae504cff7c8aa0e3a4f7845da34baf",
+  "pruning": "pending",
+  "pull_request": 704,
+  "red_tests": {
+    "failed": 2,
+    "log_sha256": "dbc2d7127d69bb668dd59bda770940c9ea56a2c5584db8ebc2364b882993c730",
+    "seconds": 7.06
+  },
+  "review_resolution": "pending_after_qualification",
+  "review_thread": "PRRT_kwDOTo2MOM6teibQ",
+  "schema_version": "archive-govt-nz.health-operation-context-gold-output-correction/v1",
+  "typing_errors": 0,
+  "windows": "native ancestor-chain plus leaf handles; read sharing only; reparse rejection and128bit file-ID admission; no unlocked path fallback",
+  "windows_native_qualification": "pending_hosted"
+}

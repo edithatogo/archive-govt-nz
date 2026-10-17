@@ -45,6 +45,9 @@ from archive_govt_nz.domains.health_appropriations.context_gold import (
 from archive_govt_nz.domains.health_appropriations.context_gold import (
     _validate_rows as validate_context_rows,
 )
+from archive_govt_nz.domains.health_appropriations.operation_gold_output import (
+    reserve_gold_directory,
+)
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
     encode_json,
     read_regular_snapshot,
@@ -355,14 +358,12 @@ def _export(
     expected = _expected(items, source_root)
     if not write:
         return {**expected.manifest, "status": "planned"}
-    output_dir.mkdir()
-    for name, payload in expected.payloads.items():
-        with (output_dir / name).open("xb") as stream:
-            _require(stream.write(payload) == len(payload))
-    with (output_dir / "MANIFEST.json").open("xb") as stream:
-        _require(stream.write(expected.marker) == len(expected.marker))
     pin = hashlib.sha256(expected.marker).hexdigest()
-    _readback(output_dir, pin, expected)
+    with reserve_gold_directory(output_dir) as directory:
+        for name, payload in expected.payloads.items():
+            directory.write(name, payload)
+        directory.write("MANIFEST.json", expected.marker)
+        _readback(output_dir, pin, expected)
     return {**expected.manifest, "manifest_sha256": pin}
 
 

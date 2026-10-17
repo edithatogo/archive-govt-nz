@@ -6603,3 +6603,27 @@ required gates before normal protected merge and clean topic pruning. The five
 context common-operation canonical/Gold integration has local implementation,
 615fact/4190lineage native parity and20file repeated recovery evidence; broader
 source, donor-area, rights, metadata, scheduling and final track gates stay open.
+
+
+## PR #704 reserved-output race correction — 2026-10-17
+
+Review thread PRRT_kwDOTo2MOM6teibQ identified a real write redirection defect.
+Two executable races replaced the reserved output path with an input symlink
+before the first create or between creates; the old writer added19/18 files to
+that input. Both red failures and their exact logs are retained externally.
+The corrected writer reserves and pins the output directory, uses POSIX relative
+O_EXCL/O_NOFOLLOW creates, and holds all native Windows ancestor/leaf handles
+with read sharing only, reparse rejection and128bit file-ID checks through final
+readback. No unlocked Windows fallback. ExitStack closes in reverse order on
+success/interruption; failed pin and fdopen cleanup are covered. Original value,
+manifest and readback semantics are unchanged in design; actual-byte parity must
+be requalified before delivery. Native Windows replacement/cleanup contracts are
+present but cannot be claimed from macOS.
+
+Affected Gold/output checks passed15 with2 Windows-only skips in144.86s; final
+helper checks after test cleanup passed4 with2 skips in0.29s. Ruff and typing
+passed. The prior full gate remains valid only for its original7143 tree; the
+material correction requires fresh native/full/hosted assurance before review
+resolution or merge. Preserve the original native/full receipts and current
+non-terminal hosted runs; no merge, pruning, protection change or source repair.
+See [correction checkpoint](./operation-context-gold-output-correction-20261017.json).

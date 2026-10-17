@@ -1,13 +1,13 @@
 {
-  "actual_source_native": "passed at e9f4297f; two identical20file runs",
+  "actual_source_native": "e9passed; require exact output pin parity after output writer change",
   "approved_joins": "none",
   "currency_admission": "not_performed",
   "denominator_selection": "not_performed",
   "external_mutations": "not_performed",
   "final_focused": "98 passed58.57s at e9f4297f; corrective MCP/Budget checks33passed6.60s",
-  "full_harness": "passed at7143a86a;7867passed10skipped; allrequiredlocalgates",
+  "full_harness": "7143passed; material output correction requires new exact-head full harness",
   "gold_schema": "archive-govt-nz.health-operation-context-gold/v1",
-  "hosted_delivery": "pending",
+  "hosted_delivery": "old34bhead superseded by material output-race correction; no merge",
   "input_contract": "five caller-retained independent operation pins, exact reviewed source cohorts and bounded closed typed input specification",
   "native_gold_apis": "unchanged",
   "native_proof_sha256": "de0eba3cfd4f2e96a9b37db380c2d76d3104f836fab36be22dba11c0d336c23d",
@@ -43,6 +43,6 @@
     "explicit unverified CPI base"
   ],
   "source_profiles": 5,
-  "status": "local_native_full_passed_hosted_delivery_pending",
+  "status": "PR704_review_output_race_corrected_requalification_pending",
   "validation_receipt_sha256": "0196d8a015db60d41f39c7271d948b0517feec061691fc05ba06387aff9c9b91"
 }

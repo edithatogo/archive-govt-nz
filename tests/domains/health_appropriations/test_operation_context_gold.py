@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 import hashlib
+import io
 import json
+import os
 from collections.abc import Iterator
 from dataclasses import replace
 from pathlib import Path
@@ -215,3 +217,49 @@ def test_readback_bounds_directory_membership_before_scanning_extra_entries(
         gold.verify_operation_context_gold(
             inputs, sources, output, manifest_sha256=result["manifest_sha256"]
         )
+
+
+@pytest.mark.skipif(os.name == "nt", reason="POSIX directory descriptor race")
+@pytest.mark.parametrize("after_writes", [0, 1])
+def test_reserved_directory_swap_cannot_write_into_input(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    after_writes: int,
+) -> None:
+    """Swap after the last path guard, before an actual output-file open."""
+    inputs, sources = _inputs(tmp_path, monkeypatch)
+    output = tmp_path / "gold"
+    moved = tmp_path / "reserved-gold"
+    protected = inputs[0].package_dir
+    before = _tree(protected)
+    original_io_open = io.open
+    original_os_open = os.open
+    opens = 0
+    attacked = False
+
+    def attack(path: object) -> None:
+        nonlocal opens, attacked
+        candidate = Path(os.fsdecode(path))  # type: ignore[arg-type]
+        if not candidate.name.startswith("canonical_") or attacked:
+            return
+        if opens == after_writes:
+            output.rename(moved)
+            output.symlink_to(protected, target_is_directory=True)
+            attacked = True
+        opens += 1
+
+    def io_open(path: object, *args: object, **kwargs: object) -> object:
+        if isinstance(path, (str, bytes, os.PathLike)):
+            attack(path)
+        return original_io_open(path, *args, **kwargs)  # type: ignore[call-overload]
+
+    def os_open(path: object, *args: object, **kwargs: object) -> int:
+        attack(path)
+        return original_os_open(path, *args, **kwargs)  # type: ignore[call-overload]
+
+    monkeypatch.setattr(io, "open", io_open)
+    monkeypatch.setattr(os, "open", os_open)
+    with pytest.raises(ValueError, match="operation_context_gold_invalid"):
+        gold.export_operation_context_gold(inputs, sources, output, write=True)
+    assert attacked
+    assert _tree(protected) == before

@@ -1879,3 +1879,12 @@ integrated parent head.
   and supports typed CLI/read-only MCP. Two Bronze-driven20file rebuilds match;
   all7867 tests and full local gates passed at7143a86a. Hosted Gold delivery and
   protected merge/pruning remain pending, so the combined item stays in progress.
+
+
+- [~] Resolve PR #704 output-directory substitution race. Reproduce swaps before
+  first write and between writes, then bind all output writes to the reserved
+  directory object. Qualify native protected Windows writes as well as
+  POSIX dir_fd writes; preserve no-overwrite behavior, exact bytes and closure
+  on failure. Reconcile focused/native/full/hosted evidence before resolving the
+  review, protected merge and topic pruning. [M-03, M-07, M-10, M-18; AC-02,
+  AC-05, AC-12, AC-16]

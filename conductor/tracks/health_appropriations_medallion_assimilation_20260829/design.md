@@ -983,3 +983,22 @@ flowchart LR
   W --> V
   V --> Q[Typed local and read-only consumers]
 ```
+
+
+### PR #704 reserved-output substitution correction
+
+An actual first-write/between-write regression reproduces18+unexpected files
+added to an input package through a substituted output symlink. Retain source-
+regenerated products before reservation, but bind all creates to the reserved
+directory object, with exclusive creation and finally-close.
+POSIX uses dir_fd; Windows holds native read-attribute directory handles on the
+complete lexical ancestor chain and reserved leaf, with FILE_SHARE_READ only
+(no write/delete sharing), reparse/junction rejection and128bit file-ID checks.
+This protects the path throughout child creation/readback, rather than reuse
+Budget's unlocked path-only fallback as proof of race protection. Path identity
+and symlink guards remain before/after writes and final readback; interrupted
+output stays separate and is never repaired. Exact bytes/manifest identities
+must remain stable. Native references checked2026-10-17: [Microsoft CreateFileW](https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilew)
+directory/reparse flags and sharing semantics, GetFileInformationByHandleEx
+FileIdInfo/AttributeTagInfo, and Python3.14 Windows128bit st_ino. Platform
+support still requires actual hosted Windows contracts before delivery.
