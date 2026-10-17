@@ -2010,7 +2010,7 @@ integrated parent head.
   Native4 report equality and exact-head full3 (7917tests) retained; no scanner
   or branch-rule exceptions. See component-index-source-delivery-20261018.json.
 
-- [~] Register the existing 2024/25 and2025/26 Supplementary Estimates summary
+- [x] Register the existing 2024/25 and2025/26 Supplementary Estimates summary
   profiles through common Bronze dispatch. Reuse exact source/vintage/locator,
   page and parser controls; share pure native extraction with the standalone
   normalizers, preserving their schemas, IDs, literal tokens, capital-injection
@@ -2020,3 +2020,17 @@ integrated parent head.
   native old/new comparisons before full/hosted delivery. No currency inference,
   crosswalk, added totals, rights or analytical-policy change. [M-05, M-06,
   M-07, M-10, M-18; AC-03, AC-05, AC-08, AC-11, AC-16]
+
+
+  Delivered PR #710 at02926da7 after all seven named checks passed onb1e00485,
+  resolved review threads, fetched ancestry and identicald940tree. Zero unique
+  changes; clean topic refs pruned; primary retained. Native2 baseline equality
+  and full7922-test assurance retained, including native1 representation failure.
+
+- [~] Register the pinned donor SQLite snapshot through common Bronze dispatch.
+  Reuse the bounded in-memory SQLite admission and existing Silver construction;
+  preserve all five table values, IDs, native lineage and standalone bytes.
+  Reject altered bytes/schema drift and retain unsupported sources; do not
+  reinterpret donor currency, periods, rights or historical differences. Verify
+  fixtures, actual312-row pre-change equivalence and repeated products before
+  full/hosted delivery. [M-05, M-07, M-10, M-18; AC-03, AC-05, AC-08, AC-16]

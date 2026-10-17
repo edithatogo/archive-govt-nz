@@ -1179,3 +1179,10 @@ are loss-accounted without claiming whole-page normalization. Exact source units
 capital-injection flags and dash nulls remain literal; currency, classification,
 rights and analytical joins are unasserted. Compare old/new standalone products
 and common records/lineage before native/full/hosted delivery.
+
+
+Donor SQLite common dispatch uses a pure capped-byte snapshot reader shared
+with the existing path reader, then the existing source-faithful Silver fact
+and lineage construction. Explicit observation context remains caller-provided;
+the pinned donor identity/schema is closed. No SQLite source URI or temporary
+source file is opened, and no semantic/historical replacement is authorized.
