@@ -1,4 +1,13 @@
 {
+  "actual_source_native": {
+    "exit_code": 0,
+    "full_receipt_sha256": "1883d4582b867054c307c9b09ee28b4c3263f0701a535b15ff65cc016509cffc",
+    "head": "38bc5158295bcc6f23696e084ac1a3faa4b79cf4",
+    "network_disabled": true,
+    "repeat_report_sha256": "0716432ebf5bd6460819c2634206d666ff675f43e64340328b1b67969f8f6665",
+    "runs": 2,
+    "source_files_independently_readback": 28
+  },
   "base_commit": "0a534f13aa6481888c467088b6117318e3d77178",
   "broad_native_launch_owner": "authorized Conductor coordinator; no broad/native replay launched",
   "captures": [
@@ -69,6 +78,19 @@
       "warc_sha256": "0fa0c5715dc208c23b268624bbdb0a258de818466e238d5264d361fcbde61202"
     }
   ],
+  "census_reconciliation": {
+    "CPI_source_identity_base_qualification_and_native_values": "unchanged",
+    "current_census_sha256": "af8cf8eb2d3f659838e487ab3d53bade3b6ef10be63f72e4f0c651494f7aa4d2",
+    "historical_census_retained": true,
+    "native_qualified_head": "38bc5158295bcc6f23696e084ac1a3faa4b79cf4",
+    "native_receipt_sha256": "1883d4582b867054c307c9b09ee28b4c3263f0701a535b15ff65cc016509cffc",
+    "other_context_rows_unchanged": true,
+    "prior_census_sha256": "3f0f15221c41abcc2f0c5ecf21effc69805f2e565a8d27a88fcde84680bf20ca",
+    "publication": "not_performed",
+    "report_sha256": "0716432ebf5bd6460819c2634206d666ff675f43e64340328b1b67969f8f6665",
+    "rights_and_analytical_qualification": "unchanged_unqualified",
+    "source_health_v1": "existing coarse projection does not consume new per-source grid evidence; historical products not rewritten"
+  },
   "failure_evidence": {
     "contracts-red-1.log": {
       "log_sha256": "1651eded9c498bed34591c082a41a8ad40275271d39d498ec5c26f59324aefaf",
@@ -83,6 +105,18 @@
       "reason": "missing metadata field incorrectly compared equal to explicit null"
     }
   },
+  "final_static": {
+    "conductor_errors": 0,
+    "conductor_log_sha256": "be7b0e678f0581caa2a6234abf52ffc1e00519aaef0afb53883c8873fb963b38",
+    "hygiene": "passed",
+    "hygiene_log_sha256": "400383d1c952ff3ec46bf656a32531fb649f6d1e96311bc830d45f67f93b5404",
+    "representative_documents": 55,
+    "ruff_format_lint": "passed",
+    "schema_log_sha256": "af0accf16b44e0d6d76b8307eea97b00493f83aefd1b22783cfb0188b208355c",
+    "schemas": 65,
+    "typing_errors": 0,
+    "typing_log_sha256": "56882e01cb80173ef053c4096e4ee43e3123a15f5c0a06715f96988d48fbd91c"
+  },
   "focused": {
     "log_sha256": "889f370a31a0cf8b0dc10ac48027ac91e0bceb0911f5000b7e61a46ca752ff7a",
     "passed": 81,
@@ -90,6 +124,12 @@
     "seconds": 9.3,
     "typing_errors": 0,
     "typing_log_sha256": "56882e01cb80173ef053c4096e4ee43e3123a15f5c0a06715f96988d48fbd91c"
+  },
+  "focused_reconciled": {
+    "log_sha256": "dc1d653cfc991d5f5dd17f9c0f17a1ca30b6a6c5ddff61592c6f5aba5c93c68b",
+    "passed": 82,
+    "scope": "CPI/strict WARC/census contracts including actual report link and prior-context preservation",
+    "seconds": 12.77
   },
   "implementation": {
     "API": "cpi_source_evidence.inspect_cpi_source_evidence",
@@ -179,11 +219,15 @@
       "Index"
     ]
   },
+  "permanent_preservation": {
+    "receipt_sha256": "631b26931bb83d309f0dca5da50013319e902f2a45795f53b7515a7a37e8f48c",
+    "scope": "bounded local standard CAS, no external collection mutation",
+    "verified_objects": 14
+  },
   "publication": "not_performed",
   "remaining": [
-    "offline hash/response/source-field evidence contract and meaningful negative checks",
-    "census evidence reconciliation with existing qualified policy boundaries",
-    "repeat proof, required assurance, focused PR and protected merge/pruning"
+    "final static checks and required full harness on coherent frozen tree",
+    "focused PR, required hosted checks, protected merge and verified pruning"
   ],
   "reuse": [
     "context-census.json June2017 base qualification",
@@ -191,8 +235,9 @@
   ],
   "rights": "not_evaluated_by_this_slice",
   "schema_version": "archive-govt-nz.health-cpi-source-evidence-checkpoint/v1",
+  "source_health_v1_adoption": "existing coarse projection does not consume new per-source grid proof; historical products unchanged",
   "source_payloads": "outside_Git",
-  "status": "offline_contract_implemented_focused_qualified_actual_source_proof_and_census_pending",
+  "status": "coherent_census_reconciled_ready_for_serialized_full_harness",
   "track_complete": false,
   "versioned_JSON_capture": {
     "body_sha256": "35d97118d6901af9b88ffe660770d439ba720563dcf55f2e069e313f2a051915",

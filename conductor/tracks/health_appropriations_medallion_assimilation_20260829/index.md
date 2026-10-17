@@ -467,3 +467,5 @@ they are not current-state assertions.
 - [Operation-context metadata delivery](./operation-context-metadata-delivery-20261017.json) — PR705 merged, required checks passed, fetched/pruned proof; broader track remains open.
 
 - [CPI source-evidence checkpoint](./cpi-source-evidence-20261017.json) — response-bound current metadata and same-byte CSV recapture; offline contract and census reconciliation in progress.
+
+- [CPI offline source contract and replay](./cpi-source-evidence-20261017.md), [verified report](./cpi-source-evidence-report-20261017.json), [native proof](./cpi-source-evidence-native-20261017.json), and [preservation](./cpi-source-preservation-20261017.json) — current census reconciled; full/hosted delivery pending.

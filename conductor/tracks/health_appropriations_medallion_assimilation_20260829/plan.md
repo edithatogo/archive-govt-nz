@@ -1927,3 +1927,10 @@ integrated parent head.
   a bounded offline source-evidence contract, census reconciliation and repeat
   evidence before focused/full/hosted delivery. [M-02, M-04, M-06, M-12, M-16;
   AC-03, AC-04, AC-09, AC-10, AC-12, AC-16]
+
+
+  The read-only contract and two actual-source offline repeats are qualified on
+  38bc5158; current census now cites report0716432e and retains its prior snapshot.
+  All14 originals/WARCs are retained in a permanent bounded CAS.82 focused checks,
+  typing, Ruff, schemas and Conductor/hygiene pass. Full harness and hosted PR
+  delivery remain pending under the existing serialized launch owner.

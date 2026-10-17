@@ -2310,3 +2310,41 @@ original and legacy capture, identical report bytes. The authorized Conductor
 coordinator owns launch. Census reconciliation will use its verified output,
 then a final coherent tree will go through full/hosted delivery. No PR or wider
 phase/track completion is claimed.
+
+
+## CPI actual-source proof and census reconciliation — 2026-10-17
+
+The Conductor-owned native run on38bc5158 terminated0. Two fresh14-file input
+trees produced identical source-evidence report0716432e with socket/DNS access
+disabled. Independent implementer and coordinator reads verified all28 source
+files and both report copies. Raw22701-row CSV inventory retains449 selected
+quarter labels,422 numeric values and27 publisher NA; exact2017.06 anchor at
+physical row22666 is1000. Source identities, units, qualifiers, layout and
+metadata differences are retained with exact body/transport/field digests.
+
+Reconcile the current context census to that actual report and code pins. Keep
+all other context rows byte-equivalent; CPI source observations, base qualification,
+rights, unqualified analytical state and native manifest pin remain unchanged.
+The prior complete census bytes3f0f1522 are retained separately. Clarify the
+existing exact fiscal benchmark versus unqualified general annual aggregation,
+without a new benchmark. Source-health v1's coarse state is not silently upgraded
+from a free-text assertion; its future adoption remains Phase6 work.
+
+All14 verified source bodies/WARCs and the full native proof/recipe/reference
+are retained in a permanent bounded Health archive CAS/evidence directory using
+the existing store. Source staging/original files are unchanged; this is local
+preservation, not another acquisition or external collection/publication action.
+The compact native receipt binds the full external proof and inventories; the
+standalone report and preservation receipt carry all expected source pins.
+Focused source/WARC/census checks82passed/12.77s. Final static and full/hosted
+assurance remain pending; no PR or broader phase/track closure is claimed.
+The coordinator retains full launch ownership and will serialize after any
+actual live external broad profile is terminal.
+
+
+Final pre-harness static checks pass: Ruff format/lint, typing0, schemas65/
+documents55, Conductor0 errors and hygiene. The code qualified by native38bc5158
+is unchanged; subsequent work adds census data, historical preservation and a
+reconciliation regression. Freeze this coherent tree for the coordinator-owned
+required full harness. No independent broad/native run, new acquisition or
+external publication/collection action is launched.

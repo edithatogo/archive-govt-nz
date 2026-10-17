@@ -1,0 +1,124 @@
+{
+  "analytical_admission": "not_performed",
+  "objects": [
+    {
+      "blake3": "dc5e7ac1d8bb8e4e92fd88c4385e7fb3ece79e4e8925597e875d283efda2ebaa",
+      "bytes": 53671,
+      "kind": "body",
+      "object_id": "sha256:35d97118d6901af9b88ffe660770d439ba720563dcf55f2e069e313f2a051915",
+      "role": "metadata_v159_json",
+      "sha256": "35d97118d6901af9b88ffe660770d439ba720563dcf55f2e069e313f2a051915"
+    },
+    {
+      "blake3": "fb88d44c1d639e5d18fd9c2aaa18ef1161f1362ca76b90fe6a77530b97fc9320",
+      "bytes": 54286,
+      "kind": "WARC",
+      "object_id": "sha256:d09d5778845c7fec717f904f00ded2ec050cbd9896e2a9aa05fceaaf9a91aa5c",
+      "role": "metadata_v159_json",
+      "sha256": "d09d5778845c7fec717f904f00ded2ec050cbd9896e2a9aa05fceaaf9a91aa5c"
+    },
+    {
+      "blake3": "dfc188c3891cab8a7003c3ea9ab34dd545f6b4358ef40f8b0c6e23b8152db473",
+      "bytes": 192443,
+      "kind": "body",
+      "object_id": "sha256:b61325cd3911458e7257e5eca3508d059190e33597d4195509fda88e5498fcdd",
+      "role": "metadata_v159_html",
+      "sha256": "b61325cd3911458e7257e5eca3508d059190e33597d4195509fda88e5498fcdd"
+    },
+    {
+      "blake3": "945e5039137f3e3e638a5a5d688c813de5437dd5944aa53b18f09d84b9502a88",
+      "bytes": 193062,
+      "kind": "WARC",
+      "object_id": "sha256:149341f6518b5d0debecbabd49ef70bc2f3212779c3eee77530135b1a16696e1",
+      "role": "metadata_v159_html",
+      "sha256": "149341f6518b5d0debecbabd49ef70bc2f3212779c3eee77530135b1a16696e1"
+    },
+    {
+      "blake3": "2dd8bb531767ccdde2e3eab3de8f778682c7a3f4dd343bd7592a281d811bcd90",
+      "bytes": 86497,
+      "kind": "body",
+      "object_id": "sha256:e9607f65bf65c4daaab39e1a16d02f96a58048ff63c97afb0ba62f7643148ab9",
+      "role": "release",
+      "sha256": "e9607f65bf65c4daaab39e1a16d02f96a58048ff63c97afb0ba62f7643148ab9"
+    },
+    {
+      "blake3": "037c6ef5c57916004f8c6d0ba6e4271a59173e1a7ef7bbe7344f369dd87250f7",
+      "bytes": 87155,
+      "kind": "WARC",
+      "object_id": "sha256:f5ae69b99d95e146e6b09db5b51426bc691e3927abacb30adef8299f83083fe1",
+      "role": "release",
+      "sha256": "f5ae69b99d95e146e6b09db5b51426bc691e3927abacb30adef8299f83083fe1"
+    },
+    {
+      "blake3": "3482c8910beae3597bbcf717d0d7362019b8be68add5f634e5b5b770155c1aec",
+      "bytes": 48412,
+      "kind": "body",
+      "object_id": "sha256:3022463f1546f2afb2f25330d24598c3e0a6a51de98b61af750a490594727584",
+      "role": "copyright",
+      "sha256": "3022463f1546f2afb2f25330d24598c3e0a6a51de98b61af750a490594727584"
+    },
+    {
+      "blake3": "7a99d9b956208c47adf77eb4c62143f82dd704ae64fe12594203f65f8b4e6f58",
+      "bytes": 49028,
+      "kind": "WARC",
+      "object_id": "sha256:5fdd90ec959c8cfccb0dded0677e53f00c9a0cea16d9c26008c0cec6eb6beffd",
+      "role": "copyright",
+      "sha256": "5fdd90ec959c8cfccb0dded0677e53f00c9a0cea16d9c26008c0cec6eb6beffd"
+    },
+    {
+      "blake3": "a058765ea19bb9cb9ca1283086c66c5de7d90c27a131d9ac1ee1e5578b0a26a9",
+      "bytes": 192443,
+      "kind": "body",
+      "object_id": "sha256:f37de92102e108bb83f6d3d40693947dce8904c64ebd568223d55487cb7ce0c3",
+      "role": "metadata_current_html",
+      "sha256": "f37de92102e108bb83f6d3d40693947dce8904c64ebd568223d55487cb7ce0c3"
+    },
+    {
+      "blake3": "3840143d4230d11512126700bba9b1679d769ffa9c88371d025c2a74c7c664ba",
+      "bytes": 193059,
+      "kind": "WARC",
+      "object_id": "sha256:6914b9d2c9f21cc9608eb8bf53dd92e1a86cb8fc12779f43ddd0dbf3cfb3c623",
+      "role": "metadata_current_html",
+      "sha256": "6914b9d2c9f21cc9608eb8bf53dd92e1a86cb8fc12779f43ddd0dbf3cfb3c623"
+    },
+    {
+      "blake3": "6a2bb4f94a0db46ed0817e8824889afaccd0e372c76a3616915d3fdaf759e456",
+      "bytes": 53671,
+      "kind": "body",
+      "object_id": "sha256:dcfc421025bc5a4e6416b8ea35760195e466b541e9644ea6a69f9bc569fb028a",
+      "role": "metadata_current_json",
+      "sha256": "dcfc421025bc5a4e6416b8ea35760195e466b541e9644ea6a69f9bc569fb028a"
+    },
+    {
+      "blake3": "241209ff56600b74ed6c977f08f0276c6829cdee88133a0a2b1be9f14848a146",
+      "bytes": 54282,
+      "kind": "WARC",
+      "object_id": "sha256:e71d58eab6924ae118f184b109cdbd531dfebc18cd267bdc8420be2cba9a4169",
+      "role": "metadata_current_json",
+      "sha256": "e71d58eab6924ae118f184b109cdbd531dfebc18cd267bdc8420be2cba9a4169"
+    },
+    {
+      "blake3": "9fb638d7d4e83999f3789471875644c219a84291d21696393912d04c48b6384a",
+      "bytes": 2917074,
+      "kind": "body",
+      "object_id": "sha256:f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+      "role": "csv",
+      "sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d"
+    },
+    {
+      "blake3": "8be2b3f61afa695272cad1fb1bafaf30eeaba49ece3fd991e217e51fa39c356c",
+      "bytes": 2917863,
+      "kind": "WARC",
+      "object_id": "sha256:0fa0c5715dc208c23b268624bbdb0a258de818466e238d5264d361fcbde61202",
+      "role": "csv",
+      "sha256": "0fa0c5715dc208c23b268624bbdb0a258de818466e238d5264d361fcbde61202"
+    }
+  ],
+  "publication": "not_performed",
+  "rights": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-cpi-source-preservation/v1",
+  "scope": "local bounded evidence CAS; no external collection or publication mutation",
+  "source_files_unchanged": true,
+  "store": "Health archive evidence/cpi-source-evidence-20261017/cas; standard SHA256-prefix layout",
+  "verified_objects": 14
+}
