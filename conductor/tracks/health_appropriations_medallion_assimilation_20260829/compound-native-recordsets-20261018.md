@@ -1,7 +1,8 @@
 # Compound native workbook results
 
 Status: compound API and source composition implemented after delivered PR #714;
-focused contracts pass, retained-native and full assurance pending. This increment closes
+focused contracts, retained-native replay and original full assurance pass;
+hosted PR delivery remains pending. This increment closes
 common extraction of the two retained forecast-summary profiles alongside the
 reviewed detail profiles sharing their exact source bytes. It does not qualify
 canonical measures, mappings, analytical joins, currency, periods or rights.
@@ -17,7 +18,8 @@ The four profiles retain 180 facts, 1784 lineage rows and 4833 profile-specific
 cell/area dispositions. Each forecast profile separately excludes two sheets.
 These are interpretations of two physical inputs, not 4833 unique source cells.
 Qualification requires all 16 existing standalone files to remain byte-identical
-to the retained oracle. This requirement is not yet proven for compound dispatch.
+to the retained oracle. Both actual-source compound dispatch runs now prove
+this native parity.
 
 Forecast facts use their existing `SILVER_SCHEMA`; detail facts keep the literal
 `FACT_SCHEMA`. Their lineage and disposition schemas also remain distinct.
@@ -147,3 +149,26 @@ Six source-composition checks cover both families, full metadata/table/file-hash
 comparison with unchanged writers, atomic admission failure, count drift and
 closed registration. Combined focused source/native/literal/registry checks pass
 57 tests in 1.91s. These mocked admission fixtures do not qualify actual sources.
+
+## Actual-source and original harness assurance
+
+Conductor owned the serialized native/full run on clean implementation head
+`e596ccd2f0f62bf5c42650da16214a43cc62c739`, tree
+`10d584b7ed23ff7bf8476f28146c80af671a1f6d`. Two independent runs each
+matched all 16 retained native files, separate trusted Arrow schemas and full
+native manifest/excluded-sheet metadata. Both reports are byte-identical with
+SHA-256 `8dbfc72a39d5d4ee50c6aa60e4fc3b49bf1e375979e4d8ec4a3568bab56f67fb`.
+The proof receipt SHA-256 is
+`67330d668478f8f23ee99cd4a5021912955b9d3394456797e3597aaf135a129e`.
+Native producers, source bytes and reference files remained unchanged.
+
+The original `./scripts/validate.sh` completed all 32 stages: 7,993 tests passed,
+12 skipped, 18 warnings, 241.01 seconds; coverage 97.18% against the existing
+80% floor. Schemas (66 schemas/56 documents), nine parity cases, mutation,
+hygiene and supply-chain gates passed. The original four checker/runtime pins,
+four workers, verbose test output and original stage caps were unchanged.
+Full log SHA-256:
+`0ac469ba7b1f6916ac5e93af03a790255c533533eda5cffe3c0600ea544b7232`.
+The owner observed terminal exit 0 and released the kernel guard before these
+evidence-only updates. Hosted exact-head checks and protected merge are separate
+remaining delivery gates. All wider track semantic/rights gaps remain open.

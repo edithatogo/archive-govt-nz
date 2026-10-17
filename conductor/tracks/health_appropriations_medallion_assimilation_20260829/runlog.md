@@ -7591,3 +7591,17 @@ Parquet hashes only in memory, validating before and after. Conductor reviewed
 the composition with no actionable finding. Six source cases and existing
 compound/literal/registry checks pass57tests1.91s; Ruff and strict typing pass.
 Retained-source two-run proof and original full/hosted gates remain pending.
+
+
+### 2026-10-18 — Native compound parity and original full harness pass
+
+The Conductor-owned serialized run on e596ccd2 completed with exit 0. Both
+actual-source replays retained four native profiles, 180 facts, 1,784 lineage
+rows, 4,833 profile dispositions, four excluded-sheet entries and all 16 pinned
+native files per run. Reports repeat identically; original sources and producer
+code are unchanged. The original full harness passed all 32 stages, including
+7,993 tests (12 skipped), schema/parity/mutation and supply-chain gates. Coverage
+remains above the agreed 80% floor. Native/full receipts and logs are retained
+in the external compound evidence directory; exact hashes are recorded in the
+compound validation artifact. Guard released before these evidence-only edits.
+Hosted PR checks, merge and topic-ref cleanup remain pending.

@@ -2117,3 +2117,10 @@ integrated parent head.
   interpretations, not unique physical cell coverage. No canonical, currency,
   period, mapping or rights promotion. See compound-native-recordsets-20261018.md.
   [M-05, M-07, M-10, M-18; AC-03, AC-05, AC-08, AC-16]
+
+
+  Native composition now passes two actual-source replays with all 16 native
+  files per run identical to the retained oracle. Original full validation on
+  e596ccd2 passed all 32 stages and 7,993 tests (12 skipped). Native producers,
+  source bytes and reference files are unchanged. Hosted delivery remains
+  pending; the broader common-adapter and semantic tasks stay in progress.
