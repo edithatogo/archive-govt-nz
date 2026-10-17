@@ -5928,3 +5928,22 @@ Focused inventory/source-health suite: 66 passed. Native shared-guard session
 verified, with marker/log/receipt retained under
 `/Volumes/PortableSSD/tmp/health-vote-capture-inventory-20261017/`.
 Full frozen-tree validation remains the next gate.
+
+
+First frozen candidate `3e51556efadd27711b147430f26b9a09a15492c3` passed the
+complete required harness (terminal marker `validation-1.exit`: 0): 7747 passed,
+10 skipped, 23 warnings in 384.79s, 97.41% coverage; 61 schemas/51 documents,
+9/9 parity, all configured mutation/hygiene/audit/licence/secret/SBOM gates.
+External CDX validation was explicitly skipped. Actual local uv CLI 0.13.1,
+Python 3.14.6; backend constraint remains distinct from CI CLI version.
+
+Self-review then traced actual capture-tool result URLs to final redirect
+locations and confirmed failed captures omit the success-only request URL hash.
+Two focused regression tests failed on these real contracts before correction
+(`redirect-red.log`). Resolve successful captures through source ID and the
+original request URL hash, retain final URL in the raw observation, and keep
+failed captures source-ID/URL-bound without fabricating a result hash. Negative
+contracts retain wrong-source, wrong/missing hash and duplicate request-ID
+rejection. Corrected actual-cohort CLI builds 7/8 remain byte-identical to the
+committed product; the completed 84-object native fixity receipt remains valid
+and no CAS reads were repeated. Second exact-tree full assurance is pending.

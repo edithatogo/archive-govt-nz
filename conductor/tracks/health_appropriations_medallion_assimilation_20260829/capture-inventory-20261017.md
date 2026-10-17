@@ -23,7 +23,7 @@ legacy/corroborating observations lack the original resume request binding and
 remain explicitly unverified for that binding. This is not proof that those
 captures lack other provenance or that their originals are missing.
 
-The later four request/capture metadata files are copied byte-for-byte under
+The two request/capture metadata files for four later editions are copied byte-for-byte under
 `capture-cohorts-20261005/`; their existing native preflight is reused. No new
 PDF preflight or recapture occurred. The builder accepts repeated `--census`,
 `--capture-manifest` and original `--request` paths; `--output` is exclusive.
@@ -55,3 +55,17 @@ normalization, confirms redistribution rights, or establishes measure
 comparability. GDP currency/denominator and other analytical gaps remain open.
 
 Refs: #205, #207, #208, #211.
+
+
+Redirect hardening preserves the requested URL as the resource identity and the
+observed final URL in the untouched result row. Successful captures require the
+original request-URL hash; failed captures retain their existing source-ID/URL
+contract without a success-only hash. Distinct requests sharing a destination
+remain distinct; missing, mismatched and ambiguous original bindings fail
+closed. The actual retained cohort has no redirects, so its inventory bytes
+and independent CAS fixity receipt remain unchanged.
+
+The first frozen candidate passed the complete required harness (7747 tests,
+10 skips, 97.41% coverage). Redirect/failure hardening is a subsequent candidate
+and requires its own full assurance before PR delivery. Actual-cohort final
+CLI builds remain byte-identical; no additional native CAS reads were needed.

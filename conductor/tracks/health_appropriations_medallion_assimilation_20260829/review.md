@@ -2147,3 +2147,15 @@ merge/pruning remain pending. This does not close the Health track.
 - Builder uses exclusive output and never modifies inputs or native payloads.
   Schema gate covers the committed product; focused contracts rebuild it from
   retained metadata alone. Full harness and hosted assurance remain pending.
+
+
+Redirect review finding resolved locally: source identity follows the verified
+original request, while the raw result retains its observed final URL. Two
+requests sharing a destination or payload remain separate. Missing/mismatched
+success hashes and ambiguous request IDs fail closed. Failed captures preserve
+the capture tool's actual no-result-hash contract. Two red regressions preceded
+the fix; no retained inventory bytes or native proof changed. Full corrected-tree
+assurance and hosted delivery remain pending.
+
+Conductor independently reviewed the corrected source against both producer
+branches and found no blocking finding. Reviewed module SHA-256: `e1980ec253178f10f8ec3164deafa97c4b81657194c8b71c03755d343b9971da`; tests: `738f89a411c373975ef077dad262560b24a2a090f206ad6d65086457545d53ca`. Focused final checks: 69 passed; strict typing and Ruff pass.

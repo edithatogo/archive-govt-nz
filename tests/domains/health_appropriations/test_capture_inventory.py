@@ -121,7 +121,7 @@ def test_legacy_context_is_explicit_and_never_fabricated() -> None:
 @pytest.mark.parametrize(
     ("change", "code"),
     [
-        ({"url": "https://example.govt.nz/other.pdf"}, "capture_source_not_in_census"),
+        ({"source_id": "unknown"}, "capture_source_not_in_request"),
         ({"request_url_sha256": "b" * 64}, "capture_request_url_mismatch"),
         ({"sha256": "../unsafe"}, "capture_digest_invalid"),
         ({"bytes": -1}, "capture_size_invalid"),
@@ -242,3 +242,85 @@ def test_retained_cohort_rebuild_matches_inventory_without_native_payloads() -> 
     assert (
         json.loads((track / "source-census.json").read_bytes())["record_count"] == 143
     )
+
+
+def test_redirects_bind_original_requests_without_merging_shared_destinations() -> None:
+    first = _snapshot("first.json", [_row()])
+    second = _snapshot(
+        "second.json", [_row("https://example.govt.nz/b.pdf", source_id="b")]
+    )
+    destination = "https://cdn.example.govt.nz/shared.pdf"
+    a = _capture(first, url=destination)
+    b = _capture(second, url=destination)
+    b = CaptureSnapshot(
+        InventorySnapshot("second-capture.json", b.manifest.data), second
+    )
+    result = build_capture_inventory((first, second), (a, b))
+    assert result["summary"]["resource_count"] == 2
+    assert {r["url"] for r in result["resources"]} == {
+        "https://example.govt.nz/a.pdf",
+        "https://example.govt.nz/b.pdf",
+    }
+    assert all(
+        r["capture_observations"][0]["record"]["url"] == destination
+        for r in result["resources"]
+    )
+    legacy_doc = json.loads(a.manifest.data)
+    del legacy_doc["capture_context"]
+    legacy = CaptureSnapshot(
+        InventorySnapshot("legacy.json", json.dumps(legacy_doc).encode())
+    )
+    with pytest.raises(ValueError, match="capture_source_not_in_census"):
+        build_capture_inventory((first,), (legacy,))
+
+
+def test_unsuccessful_capture_does_not_require_a_success_only_url_hash() -> None:
+    request = _snapshot("request.json", [_row()])
+    captured = _capture(request)
+    doc = json.loads(captured.manifest.data)
+    doc["results"] = [
+        {
+            "source_id": "a",
+            "url": "https://example.govt.nz/a.pdf",
+            "state": "unavailable",
+            "error_class": "http_error",
+            "rights": {"state": "eligible"},
+        }
+    ]
+    result = build_capture_inventory(
+        (request,),
+        (
+            CaptureSnapshot(
+                InventorySnapshot("failed.json", json.dumps(doc).encode()), request
+            ),
+        ),
+    )
+    resource = result["resources"][0]
+    assert resource["versions"] == []
+    assert resource["capture_observations"][0]["record"]["state"] == "unavailable"
+    assert result["summary"]["recorded_captured_resource_count"] == 0
+
+
+def test_redirect_requires_unambiguous_source_and_original_hash() -> None:
+    request = _snapshot("request.json", [_row()])
+    with pytest.raises(ValueError, match="capture_request_url_mismatch"):
+        build_capture_inventory(
+            (request,),
+            (
+                _capture(
+                    request,
+                    url="https://cdn.example.govt.nz/a.pdf",
+                    request_url_sha256=None,
+                ),
+            ),
+        )
+    duplicated = _snapshot(
+        "ambiguous.json", [_row(), _row("https://example.govt.nz/b.pdf")]
+    )
+    with pytest.raises(ValueError, match="inventory_source_id_missing_or_duplicate"):
+        build_capture_inventory(
+            (request,), (_capture(duplicated, url="https://cdn.example.govt.nz/a.pdf"),)
+        )
+    unrelated = _snapshot("unrelated.json", [_row(source_id="other")])
+    with pytest.raises(ValueError, match="capture_source_not_in_census"):
+        build_capture_inventory((unrelated,), (_capture(request),))

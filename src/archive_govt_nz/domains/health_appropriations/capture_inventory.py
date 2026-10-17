@@ -114,6 +114,25 @@ def _capture_request_rows(
     return request_rows
 
 
+def _capture_source_url(
+    result: dict[str, Any], request_rows: list[dict[str, Any]] | None
+) -> str:
+    """Bind original identity separately from the observed redirect destination."""
+    if request_rows is None:
+        return result["url"]
+    matches = [row for row in request_rows if row["source_id"] == result["source_id"]]
+    if len(matches) != 1:
+        _fail("capture_source_not_in_request")
+    source_url: str = matches[0]["url"]
+    if result.get("state") == "captured":
+        if result.get("request_url_sha256") != _sha(source_url.encode()):
+            _fail("capture_request_url_mismatch")
+    elif result["url"] != source_url:
+        # Failed captures have no final response URL or request-hash receipt.
+        _fail("capture_request_url_mismatch")
+    return source_url
+
+
 def _add_capture(
     capture: CaptureSnapshot,
     resources: dict[str, dict[str, Any]],
@@ -125,15 +144,10 @@ def _add_capture(
     binding = _request_binding(capture, manifest)
     request_rows = _capture_request_rows(capture, manifest, inputs)
     for row in _rows(manifest, "results"):
-        identity = (row["source_id"], row["url"])
-        if identity not in identities:
+        source_url = _capture_source_url(row, request_rows)
+        if (row["source_id"], source_url) not in identities:
             _fail("capture_source_not_in_census")
-        if request_rows is not None:
-            if identity not in {(r["source_id"], r["url"]) for r in request_rows}:
-                _fail("capture_source_not_in_request")
-            if row.get("request_url_sha256") != _sha(row["url"].encode()):
-                _fail("capture_request_url_mismatch")
-        resource = resources[row["url"]]
+        resource = resources[source_url]
         if row.get("state") == "captured":
             digest = _digest(row.get("sha256"))
             size = row.get("bytes")

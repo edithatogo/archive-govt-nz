@@ -54,7 +54,7 @@
   "cas_fixity_receipt_sha256": "cd873299b20c1b8b4040ceef1258409b02ce8fceca7173bdd35658332ef704cf",
   "implementation_sha256": {
     "schemas/health-capture-inventory-v1.schema.json": "e4d28eb5c98c5d3df9a4dc07b7ddee91b1079f0e64a514b6cb9cbaba02f420ad",
-    "src/archive_govt_nz/domains/health_appropriations/capture_inventory.py": "60836ff4b062e491a03a0ee1ffa683ffaebb007d8be20199a4f51b7402251af7",
+    "src/archive_govt_nz/domains/health_appropriations/capture_inventory.py": "e1980ec253178f10f8ec3164deafa97c4b81657194c8b71c03755d343b9971da",
     "tools/build_health_capture_inventory.py": "3ced40964dd8f3e098c087839bf91c99a376177247078700404625849642b9fe"
   },
   "input_paths_sha256": {
@@ -82,6 +82,7 @@
     "/Volumes/PortableSSD/GitHub/archive-govt-nz/conductor/tracks/health_appropriations_medallion_assimilation_20260829/vote-health-estimates-overview-2017-18-census.json": "d9e180e84efd0f47f684d1d7c6bc01dde5941779c098db2cb1e86d34abd7ec54"
   },
   "inventory_sha256": "ac659770818c5e73814b4dc340feb019c0381839d4fc139318d66be6c314a983",
+  "native_CAS_receipt_reused_without_repeated_reads": true,
   "notes": [
     "Build performs metadata projection only; separate native receipt verifies CAS.",
     "WARC bodies and transport bindings were not replayed by this slice.",
@@ -89,6 +90,7 @@
     "No acquisition, normalization, analytical admission, rights approval or publication."
   ],
   "original_inputs_unchanged": true,
+  "redirect_hardening_actual_cohort_unchanged": true,
   "repeat_bytes_equal": true,
   "verification_script_sha256": "20eb8bb10f5c127ca5df3150a6818f12de371f3c40746d0bacfcd014ea81b21d"
 }
