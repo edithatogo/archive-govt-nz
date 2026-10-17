@@ -1941,10 +1941,23 @@ integrated parent head.
   historical-review binding failure, focused recovery and remaining assurance
   remain scoped evidence; final hosted gates passed on the exact final tree.
 
-- [~] Adopt independently regenerated CPI source-period evidence in the existing
+- [x] Adopt independently regenerated CPI source-period evidence in the existing
   source-health producer and build tool through an explicit v2 profile. Preserve
   v1 bytes and other source/vintage states. Report449 represented quarter labels,
   422 numeric and27 publisherNA separately; retain exact source/body/vintage
   lineage and all rights, numeric-continuity and analytical boundaries. Qualify
   focused contracts, actual-source repeats and full/hosted delivery. [M-02,
   M-12, M-13, M-18; AC-09, AC-11, AC-12, AC-16]
+
+  Delivered PR #707 at28e48f52 after all required platform/analyze/lint gates,
+  CodeQL and patch coverage passed on27e79f3c. Native2 and exact-head full2 passed;
+  native1 failure/partial evidence retained. Main ancestry and identical tree
+  13f421b4 verified, zero unique changes, clean topic refs pruned.
+
+- [~] Expose the existing source-regenerated operation-context metadata v5 profile
+  through typed build/verify CLI commands and read-only MCP verification. Reuse
+  the closed operation input spec, independent Gold/metadata pins, projector,
+  verifier and output guard; dry-run must execute full source verification.
+  Preserve v3/v4 envelopes, immutable-output refusal, source/Gold/output
+  separation, rights and no-publication boundaries. Qualify focused/native/full/
+  hosted delivery. [M-14, M-16, M-17, M-18; AC-12, AC-14, AC-15, AC-16]

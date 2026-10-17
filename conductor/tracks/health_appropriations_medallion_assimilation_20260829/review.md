@@ -3126,3 +3126,26 @@ the retained baseline when no explicit prior report is supplied; v1 defaults
 are unchanged.70 focused checks pass in7.66s, including a sentinel refusal
 regression. The preliminary unit-regression command observed the fixed code and
 passed; native1 is the failing evidence. Fresh native2/full remain pending.
+
+
+### 2026-10-17 — CPI source-health delivery and metadata operations
+
+PR707 passed all seven named gates on27e79f3c and merged normally at28e48f52.
+Fetched main contains checked head/merge with identical13f421b4 tree and zero
+unique changes; clean topic refs pruned. Native1 failure, native2PASS and exact
+full2PASS remain separately scoped; see cpi-source-health-delivery-20261017.json.
+Next bounded reviewed task exposes existing v5 metadata through CLI/read-only
+MCP, refs213/214/215. Live issue214 is open for Phase8.
+
+A bounded GDP currency discovery inspected the official June2026 release and
+linked quarterlies411, concepts4 and June-update metadata; it did not find an
+explicit currency binding for SNEQ/SG03AB01GE00S900. This does not establish
+absence of all publisher evidence. Conductor independently could not supply a
+verified new locator. Keep literal dollar/million/price context and ISOcurrency
+separate, with currency-dependent joins unqualified. Admissible next evidence
+is exact publisher series/export currency+multiplier+release metadata, or
+publisher clarification bound to that exact series/vintage. No contact/send,
+ADE403 retry or broad search loop is implied. Preserve the existing historical
+source-measure assessment and continue independent operations work. Discovery
+bodies/hashes remain in the external health-gdp-currency-discovery-20261017
+folder; these were read-only observations, not WARC-qualified admission.
