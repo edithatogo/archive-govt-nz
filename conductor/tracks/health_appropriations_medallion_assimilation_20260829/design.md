@@ -1207,3 +1207,21 @@ The binding reader also binds supplied donor metadata to the verified canonical
 PLAN digest and exact donor snapshot pin. Only Crown source_context may retain
 the evidenced cell@number_format annotation; its base cell remains inventory-
 bounded, and it is never interpreted as an amount coordinate.
+
+
+Literal common dispatch must select physical source bundles, not competing
+area-specific registrations for identical bytes. Five closed source identities
+cover the seven reviewed profiles; both BEFU chart/residual and HYEFU allowance/
+residual are composed without changing their native record identities. Share
+pure snapshot admission and literal projection with standalone persistence.
+Keep profile-qualified area dispositions and formula exclusions recoverable;
+never promote a source-scoped remainder into whole-workbook semantic approval.
+
+
+The reviewed byte identity is the literal bundle's layout pin; extraction
+always reruns the original guarded admission. Area loss coordinates use this
+new adapter's versioned literal-area-json/v1 descriptor, retaining the complete
+native row plus logical profile (source hash, sheet, selector, record IDs and
+exception selectors). Original state/reason remain explicit. JSON lineage is
+preserved losslessly with an explicit identity-transport rule. Other adapters,
+wire schemas and standalone outputs remain unchanged.

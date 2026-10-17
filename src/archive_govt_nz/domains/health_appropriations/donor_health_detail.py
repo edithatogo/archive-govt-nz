@@ -15,6 +15,7 @@ from archive_govt_nz.domains.health_appropriations.historical import (
     _number_tokens,
 )
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
+    verified_payload,
     verified_snapshot,
 )
 
@@ -75,9 +76,17 @@ def resolve_header(sheet: Worksheet, coordinate: str) -> tuple[str, dict[str, st
 def admit_donor_health_detail(source: Path, vintage: str) -> dict[str, Any]:
     """Return raw/context records only from either exact verified original."""
     _require(vintage in PROFILES)
-    digest, title, first = PROFILES[vintage]
+    digest = PROFILES[vintage][0]
     _require(source.is_file() and not source.is_symlink())
     payload = verified_snapshot(source, digest, max_bytes=1024 * 1024)
+    return admit_donor_health_detail_snapshot(payload, vintage)
+
+
+def admit_donor_health_detail_snapshot(payload: bytes, vintage: str) -> dict[str, Any]:
+    """Admit the same exact bounded original directly from Bronze bytes."""
+    _require(vintage in PROFILES)
+    digest, title, first = PROFILES[vintage]
+    payload = verified_payload(payload, digest, max_bytes=1024 * 1024)
     inventory = inventory_workbook(BytesIO(payload))
     tokens = _number_tokens(payload)[title]
     book = load_workbook(BytesIO(payload), data_only=False, keep_links=True)

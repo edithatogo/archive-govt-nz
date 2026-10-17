@@ -2869,3 +2869,51 @@ integration. See donor-stage-area-bindings-20261018.json for exact log/recipe/
 report pins and separately scoped reconstruction evidence. Final documentation
 and exact-head hosted checks remain pending; no whole-worksheet/rights/Gold or
 track completion claim is made.
+
+
+### 2026-10-18 — Seven literal profiles through five physical source bundles
+
+After delivered/pruned PR712, the next Phase3 increment closes common-dispatch
+coverage for the existing seven literal admissions. Five exact physical source
+identities compose shared-file BEFUchart/residual and HYEFUallowance/residual
+profiles, rather than registering ambiguous competing handlers. Every reviewed
+sibling is included. The existing source path guards remain; pure capped/hash-
+verified byte admission shares their unchanged parsers. Native persistence and
+common extraction share the same literal projection and Crown capture-context
+binding; no second fact/lineage parser or new source acquisition is introduced.
+
+Known byte identity pins reviewed layout for the fast selector; extraction
+still executes the native guarded admission. Unknown bytes preserve-only and a
+sibling admission failure returns no partial packet. Typed native facts retain
+all original JSON/source tokens. Common field lineage preserves raw_value_json
+on both sides with literal_source_json_preserved/v1, not a new conversion.
+
+Review identified the need to retain area exception lists and record IDs, not
+only the generic loss triple. This adapter's source_coordinate uses the narrow
+literal-area-json/v1 prefix plus canonical JSON of the complete native area row
+and its logical profile. State and reason remain native; every original field
+can be decoded directly, with no global protocol/schema or old output change.
+The focused test compares complete reconstructed rows, including exceptions,
+record associations, source identity and profile, not a reduced projection.
+
+Initial missing-module red is retained; five physical bundle fixtures plus
+inventory checks pass6tests1.45s. Expanded shared admission/packaging/registry/
+workbook/verifier/orchestration checks pass257tests8.18s. Native admission89 and
+package16checks pass independently. Ruff/format/strict typing pass after bounded
+style/type corrections; earlier logs remain. Native qualification now passes two independent runs:329facts/5543lineage/
+606complete area dispositions, five physical sources/seven profiles and all28
+standalone files per run identical to historical pins. All50reference files and
+source bytes remain unchanged. Report SHA256 is recorded in the checkpoint.
+
+The first replay reproduced all28files, then file-denial instrumentation blocked
+PyArrow's first UTC/platform dependency initialization. Preserve that failure.
+The second recipe warms verified Arrow UTC conversion before denying Python
+file APIs during common dispatch; network denial remains throughout. This is
+warmed-dispatch assurance, not an operating-system sandbox claim. No producer
+change or dependency installation was needed.
+
+The original full harness passed on0c378f4e/treebfd0ae9e:7951tests,12skips,
+18warnings,505.09s and97.20%coverage against the unchanged80%floor. All66schemas,
+56representative documents,9/9parity and mutation/hygiene/security/supply-chain
+gates passed; CAS232.13MB/s. Hosted checks, normal merge and pruning remain
+pending. Rights, currency, periods and global mappings are unchanged.

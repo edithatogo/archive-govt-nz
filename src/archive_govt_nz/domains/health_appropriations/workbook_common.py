@@ -99,6 +99,17 @@ def read_regular_snapshot(source: Path, *, max_bytes: int) -> bytes:
 def verified_snapshot(source: Path, expected_sha256: str, *, max_bytes: int) -> bytes:
     """Read one capped regular snapshot and verify exact bytes used for parsing."""
     payload = read_regular_snapshot(source, max_bytes=max_bytes)
+    return verified_payload(payload, expected_sha256, max_bytes=max_bytes)
+
+
+def verified_payload(payload: bytes, expected_sha256: str, *, max_bytes: int) -> bytes:
+    """Verify a capped in-memory snapshot before any workbook decoding."""
+    if max_bytes <= 0:
+        raise ValueError("invalid_source_limit")
+    if not isinstance(payload, bytes):
+        raise TypeError("invalid_source_payload")
+    if len(payload) > max_bytes:
+        raise ValueError("source_byte_limit")
     if hashlib.sha256(payload).hexdigest() != expected_sha256:
         raise ValueError("source_hash_mismatch")
     return payload
