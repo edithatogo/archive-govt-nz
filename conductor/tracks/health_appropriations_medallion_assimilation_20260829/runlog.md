@@ -6421,3 +6421,24 @@ does not close downstream common-package canonical/Gold adoption or broader
 source, rights, denominator, currency, mapping and track gates.
 See [native proof](./context-operational-dispatch-native-20261017.json) and
 [full validation](./context-operational-dispatch-validation-20261017.json).
+
+
+## Context operations delivered; canonical integration active — 2026-10-17
+
+PR #702 merged normally as 6a13aab0f81fa990dfecf5da8fbc33fc8cea25c6. Final
+head cf7ee53f passed all applicable checks: Ubuntu 6m49s, macOS 11m46s,
+Windows 19m28s, analyze/lint/CodeQL and patch coverage. No review threads
+remained. Fetched main contains both head and merge; checked and merged tree
+0113827cdb800aceaec3019853f5df034fb917b5 is identical. Zero unique changes and
+clean status preceded local/remote/tracking topic pruning; primary retained.
+See [delivery receipt](./context-operational-dispatch-delivery-20261017.json).
+
+The next integration consumes independently pinned operation packages through
+their source-regenerated verifier and reuses existing source-specific canonical
+transformations. Historical fixed-cohort native APIs, manifest pins and outputs
+remain unchanged. Qualify all five canonical fact/lineage projections first,
+then their source-separated Gold consumption; the combined plan item remains
+in progress until both are qualified and delivered. Full common evidence stays
+closed by the input operation manifest pin, including status/rules/dimensions
+and links not expressible in the existing canonical row schemas. No rights,
+currency, denominator or join decision is inferred.

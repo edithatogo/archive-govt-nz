@@ -1846,7 +1846,7 @@ integrated parent head.
   [M-04, M-05, M-07, M-10; AC-03, AC-05, AC-12, AC-16]
 
 
-- [~] Adopt existing context common outputs in the five CPI, annual population,
+- [x] Adopt existing context common outputs in the five CPI, annual population,
   QES and GDP Q1/Q2 source-operation profiles. Preserve every common record,
   lineage, loss, unresolved dimension and link in versioned extraction evidence,
   with explicit source-specific projections to unchanged native Parquet tables.
@@ -1861,7 +1861,7 @@ integrated parent head.
   selection, currency, denominator, rights or join approval is implied.
   [M-04, M-05, M-06, M-07, M-10; AC-03, AC-05, AC-11, AC-12, AC-16]
 
-- [ ] Integrate independently verified common context-operation packages into
+- [~] Integrate independently verified common context-operation packages into
   source-separated canonical and Gold consumption. Reuse existing canonical
   transformations, preserve original fixed-cohort native readers and pins, bind
   new operation manifests and full provenance explicitly, and demonstrate
