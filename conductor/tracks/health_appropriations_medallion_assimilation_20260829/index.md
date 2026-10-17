@@ -487,3 +487,5 @@ they are not current-state assertions.
 - [Component-index delivery](./component-index-source-delivery-20261018.json), [current full assurance](./component-index-source-current-assurance-20261018.json), and [native comparison](./component-index-source-current-native-20261018.json) — PR709 merged after exact-head checks; original proofs/failures preserved and clean topic refs pruned.
 
 - [Supplementary summary common dispatch checkpoint](./supplementary-summary-dispatch-20261018.json) — two existing source-specific normalizers now expose shared snapshot extraction; focused qualification complete, native/full/hosted pending.
+
+- [Exact donor-stage reconstruction](./donor-area-reconstruction-20261018.json); two new retained runs match all50 historical file pins and12stage receipts. Remaining area bindings stay open.

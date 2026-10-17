@@ -3482,3 +3482,30 @@ warnings; lint/format/strict typing pass. No production/runtime/native input
 changed after full assurance. Evidence closeout and hosted exact-head checks
 remain separate gates; no additional native/full rerun is required for this
 fixture-only correction. See donor-sqlite-dispatch-20261018.json.
+
+
+### 2026-10-18 — Exact donor stage-receipt reconstruction
+
+The older twelve-stage run directory was not retained. Bounded lookup found
+no exact stage directory; Conductor identified the existing replay_eight.py
+recipe and surviving donor893f387e/candidate9a33babd/Crown4bea6001 inputs. All
+three live input hashes matched their historical pins before native execution.
+
+On clean33ae9e4e/tree8fa7c33f, the guarded network-denied native1 reconstructs
+two new permanent runs using the existing historical normalization context
+2026-08-30T08:58:00+00:00. Both contain739facts/12stages/50files and pass the
+existing verifier. ALL50 output-file hashes and ALL12 stage-manifest hashes
+match the historical evidence exactly, including the previously unavailable
+Budgetf051c4 receipt. All23donor objects plus the separate Crown source and
+all pinned metadata are unchanged before/after. Proof SHA63a7fdd6eb5e99e9fcb1489f591860ccb85abd10b3e72f1958b22de69afd1f8f.
+
+Current reconstructed files are retained permanently under evidence/
+donor-area-recovery-20261018/native-1 in the external archive; they are not
+mislabelled as the missing original directory or fresh source captures. See
+donor-area-reconstruction-20261018.json for all exact recovered stage pins.
+This removes the exact-receipt availability blocker. The remaining nine
+stage-to-area bindings still require source/selection/lineage qualification,
+with Crown kept source-separated if outside the donor inventory. Existing
+three partial assertions and whole-worksheet remainders remain unchanged;
+all152worksheet semantics, rights and broader track completion stay open.
+No full/hosted delivery claim is made for this in-progress slice.
