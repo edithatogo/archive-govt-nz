@@ -5,13 +5,14 @@
   "capture_context_census_sha256": "c2899e89027d0c267e8495628594870ca1f19abb2ac1ae5ca278d5a6c4fdbe07",
   "capture_context_head": "3ca17fe4e58da395d7fa313a456308147a42f324",
   "capture_evidence": "budget-2023-capture-20261018.json",
+  "expenditure_qualification_evidence": "budget-2023-expenditure-native-20261018.json",
   "fiscal_year": "2023/24",
   "issue_date": "2023-05-18",
   "local_assurance_evidence": "budget-2023-revenue-assurance-20261018.json",
   "native_inspection_evidence": "budget-2023-native-inspection-20261018.json",
   "native_units": "literal $000; source definitions say thousands; ISO currency not verified",
-  "numerical_admission": "source_native_revenue_65facts_only_expenditure_pending",
-  "observation_scope": "Release-page context plus independently verified capture and bounded native reports; source-native revenue qualification only",
+  "numerical_admission": "source_native_revenue_65facts_and_expenditure_277facts_separate",
+  "observation_scope": "Release-page context, independently verified captures and bounded native reports; separately qualified source-native revenue and expenditure. No canonical Gold, analytical-join or rights eligibility admission.",
   "page_caveats": [
     "2022/23 Supplementary Estimates excluded",
     "Prior-year agency data not restated for restructuring; detail may differ from restated Estimates",
@@ -41,7 +42,7 @@
       "family": "expenditure",
       "native_layout_status": "bounded_inspection_passed",
       "native_rows_below_header": 6696,
-      "normalization": "pending",
+      "normalization": "source_native_277facts_7479lineage_repeat_and_entry_parity_passed",
       "object_sha256": "bee0e4cd776f0511d271ec842ade355661772c804d12239035e32ad61db06da9",
       "rights_state": "native_item_assessment_pending",
       "source_id": "treasury-historical-dec1ca1018d3dac5",
@@ -73,6 +74,7 @@
     "scope": "Primary retained Health warc directory; first WARC header only,65536 decompressed bytes/file,1000file cap; no body identity, alias equivalence or global absence asserted",
     "warc_report_sha256": "17ec3606d87fb7e94ca40f30098f485edceaf00285b2113c5c7a0ee5b2c9141d"
   },
+  "revenue_delivery_evidence": "budget-2023-revenue-delivery-20261018.json",
   "revenue_qualification_evidence": "budget-2023-revenue-native-20261018.json",
   "rights_observation": {
     "item_native_notices": "Intro A10/A13/A14 inspected and fingerprinted in retained reports; eligibility not assessed",
@@ -82,7 +84,7 @@
   "schema_version": "archive-govt-nz.health-source-census-observation/v1",
   "signed_date": "2023-05-18",
   "source_url": "https://www.treasury.govt.nz/publications/data/budget-2023-data-estimates-appropriations-2023-24",
-  "status": "native_layouts_inspected_revenue_qualified_delivery_pending",
+  "status": "native_revenue_delivered_expenditure_qualified_delivery_pending",
   "title": "Budget 2023 Data from the Estimates of Appropriations 2023/24",
   "updated_date": "2023-09-21"
 }

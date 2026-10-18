@@ -11,6 +11,7 @@ from urllib.parse import urlsplit
 from jsonschema import Draft202012Validator
 
 from archive_govt_nz.domains.health_appropriations import (
+    budget_expenditure_2023,
     budget_expenditure_2024,
     budget_revenue,
     context_operations,
@@ -58,6 +59,12 @@ MAX_CONTEXT = 2048
 _INVALID_SOURCE_OPERATION = "invalid_source_operation"
 PROFILES = MappingProxyType(
     {
+        budget_expenditure_2023.PROFILE: (
+            budget_expenditure_2023.TRANSFORMATION,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "budget_facts.parquet",
+            "row_dispositions.parquet",
+        ),
         budget_expenditure_2024.PROFILE: (
             budget_expenditure_2024.TRANSFORMATION,
             ("input", "normalized", "out_of_scope", "blank", "rejected"),
@@ -775,6 +782,12 @@ def _validate(request: SourceRequest, *, dry_run: bool) -> None:
         request.source_vintage,
         request.observed_at,
     )
+    if request.profile == budget_expenditure_2023.PROFILE and not (
+        budget_expenditure_2023.source_binding(
+            request.source_vintage, request.source_locator, request.expected_sha256
+        )
+    ):
+        raise ValueError(_INVALID_SOURCE_OPERATION)
     if request.profile == budget_expenditure_2024.PROFILE and not (
         budget_expenditure_2024.source_binding(
             request.source_vintage, request.source_locator, request.expected_sha256
@@ -817,6 +830,10 @@ def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile disp
         "source_vintage": request.source_vintage,
         "source_locator": request.source_locator,
     }
+    if request.profile == budget_expenditure_2023.PROFILE:
+        return budget_expenditure_2023.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
     if request.profile == budget_expenditure_2024.PROFILE:
         return budget_expenditure_2024.normalize(
             request.source, request.output_dir, **context, dry_run=dry_run

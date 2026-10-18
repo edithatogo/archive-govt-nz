@@ -2286,3 +2286,11 @@ qualifies65Health facts/1,040lineage with full1,013-row accounting, repeat and
 CLI/MCP parity; see budget-2023-revenue-native-20261018.json. Full assurance
 and protected delivery remain pending. Expenditure normalization, source rights
 eligibility, and broader semantic/analytical gates remain open.
+
+
+- [x] Deliver the pinned2023revenue profile through protectedPR719 and prune
+  its proven-integrated topic refs; retain the primary and original evidence.
+- [~] Admit pinned Budget2023expenditure through the shared literal source
+  contract, retaining2024byte parity. Qualify native repeats and common/CLI/MCP
+  parity, run the full harness and deliver a focused protectedPR.
+  [M-02, M-04, M-06, M-07, M-11; AC-03, AC-04, AC-05, AC-09]

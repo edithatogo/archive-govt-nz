@@ -81,7 +81,7 @@
   "full_assurance": "passed_original32_stages_on_3d55f173",
   "producer_head": "f865f69862ef32930685a8657ecc155be7f65dda",
   "producer_tree": "f6fef0b3cfa68e914c79f2a477569a7755beeb5a",
-  "protected_delivery": "pending",
+  "protected_delivery": "PR719_merged_d8b75ab3_topic_pruned",
   "qualification_summary_sha256": {
     "revenue-native-1": "32c890c084a3f5ac5554f8a1dfb0a69b5bf0ed589932bacb8a3e3bf8d4140c3f",
     "revenue-source-entry-2": "5bfec37d10dc9df904c1f938ae4abd81db507001572a94fe1e455a065766b546"
@@ -136,5 +136,5 @@
     "source_sha256": "e2b00177bffd233fd404f5db989a576408f249fc81ef2342f31d95ca452c019b",
     "status": "passed"
   },
-  "status": "native_revenue_and_local_full_assurance_passed_protected_delivery_pending"
+  "status": "native_revenue_local_and_hosted_assurance_passed_delivered"
 }

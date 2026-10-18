@@ -3752,3 +3752,15 @@ Budget2023 revenue: original full harness passed all32stages. No suppression, ti
 
 
 PR719 automated P2 receipt status inconsistency: corrected the top-level status to distinguish passed local assurance from pending protected delivery. Detailed producer evidence and facts unchanged.
+
+
+2023 expenditure implementation review: shared parser replaces edition constants without copying its row logic. Public2024defaults and source binding remain separate; old legacy profile refuses2023. Reviewed B3/period map is explicit lineage only for2023, leaving2024output lineage unchanged. All native/2024byte/full/hosted gates remain open.
+
+
+2023 expenditure native review: both2023builds and actual entry points agree, and the2024default package is byte-identical to its prior qualified oracle. Context/rights/Gold exclusions remain explicit. Source-native qualification is complete; full and hosted assurance and protected delivery still required.
+
+
+Local full review: completed five fast stages, then test timeout at the unchanged900s cap. Preserve failure evidence and make no local full-pass claim. All new/existing expenditure cases passed before timeout and actual-source/2024byte qualification remains valid. A reviewablePR may proceed under the original run-before-PR contract; protected merge still requires unchanged all32stage hosted success on all three platforms, seven exact-head checks and resolved findings.
+
+
+PR720 P2 census scope finding: the current observation_scope now includes both separately qualified native profiles. Counts, explicit rights/Gold/join exclusions and qualification references agree; no broader admission or full local pass is claimed.

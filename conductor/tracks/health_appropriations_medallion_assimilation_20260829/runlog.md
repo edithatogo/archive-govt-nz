@@ -8003,3 +8003,93 @@ Corrected the summary to native revenue and local full assurance passed, with
 protected delivery pending. This is evidence reconciliation only; producer code,
 tests, schema and all native/full log pins remain unchanged. Metadata validation
 and exact-head hosted checks must be refreshed after this correction.
+
+
+### 2026-10-18 — PR719 delivered; Budget2023 expenditure begins
+
+Seven required checks passed on55801605. All32stages verified separately from
+completed Ubuntu/macOS/Windows logs (8,035/8,035/8,029tests passed). One
+automated receipt-status finding was fixed and resolved. The watcher network
+timeout was an observation error; fresh job API confirmed the live Windows
+run and no CI job was manually cancelled or duplicated. Protected merge at
+d8b75ab3 is on fetchedorigin/main, equal to the checked tree. Zero unique
+commits/patches and clean status verified before removing the topic refs.
+Primary checkout/runtime/CAS/proofs retained. Permanent hosted-assurance-719
+contains checked logs, guard and delivery/cleanup receipts.
+
+Next source-bound expenditure slice reuses the already captured2023original
+(no source recapture). The seventeen headers and eight existing parser
+definitions match2024; factor the edition identity/period/row cap into an
+explicit profile while preserving2024public defaults and all four output bytes.
+Add2023source binding,6,696-row cap and2019–2024periods, preserving labels,
+periodicity/parent/category fields and unknown currency/start/rights. This owner
+retains sole local broad/native launch responsibility through the unchanged
+Conductor serializer. No native/broad job is currently live.
+
+
+### 2026-10-18 — Budget2023 expenditure profile implementation
+
+Red1: missing2023module at test collection, expected. Shared edition parameters
+now carry source SHA/URL/vintage/rowcap/period map/definitions/adapter identity;
+2024public normalize/registration defaults remain fixed. The2023wrapper pins
+its retained original,6,696rows and literal2019–2024periods; current CLI/MCP
+registry/schema include it. The legacy expenditure adapter refuses2023 so
+source-specific and assumed-currency legacy profiles cannot both match.
+
+All nine2023definition cells match the retained report, including B3NBSP.
+Green1:606passed/10skipped in92.15s. Added two overview lineage links per
+2023fact (vintage and amount type); red2 failed with zero links as expected,
+green2 passed all15new2023/existing2024contracts in51.31s. Existing2024has
+no B3profile addition and must reproduce every prior file byte. Ruff and
+production types pass;93Conductortracks/66schemas56documents validate.
+Native verification,2024byte comparison, full assurance and PR delivery are
+still required; no numeric admission or complete-track claim follows from
+these synthetic fixtures. Only named source/code/evidence paths are staged.
+
+
+### 2026-10-18 — Budget2023 expenditure native and2024compatibility pass
+
+Guarded native1 on2a430043/tree7b5f9f40 exited0(session50803). All6,696rows
+accounted:277Health facts,6,419out-of-scope,0blank/0rejected;7,479lineage
+rows. CLI/default-preflight and initialized read-only MCP agree; explicit CLI
+write is identical to the direct four-file package. Common dispatcher facts,
+lineage and losses agree. Rebuilt2024default package matches every byte of
+its prior four-file oracle. Both original sources and all frozen inputs remain
+unchanged. Actual process is terminal and kernel lease independently free.
+A one-second read-only process sample during the long run showed active XML
+parsing; its bounded evidence is retained with the native log/config/recipe.
+No source recapture, currency/start/rights approval, Gold admission or external
+publication occurred. Native-assurance-1 copies verify by hash. Original full
+harness and protected delivery remain pending.
+
+
+### 2026-10-18 — Budget2023 expenditure local full timeout preserved
+
+Original ./scripts/validate.sh ran on frozen0c6bc590/tree3f076824 using
+the existing two-worker setting. Lock, Conductor, format, lint and types passed.
+The tests command hit the unchanged900s cap at97% (session10867/exit124).
+The retained log contains7,826passed entries,14skips and0failed entries;
+all6new2023and9existing2024expenditure cases passed. There is no final suite
+summary and no all32stage local-pass claim. Producer code, both source
+objects and native/2024byte proof remain unchanged. Owned checker/test-group
+processes are absent, and the global kernel lease is free. Initial/verified
+failure receipts and original logs/config are retained in assurance-failed-1.
+
+AGENTS and the PR checklist require running the local harness before opening
+a PR, and green required automation before merge; they do not require inventing
+a local full pass. As with the already-qualified PR718 path, retain/disclose
+the timeout and qualify the unchanged original all32stages on clean hosted
+Ubuntu/macOS/Windows plus all seven exact-head checks. No local test, health
+check, deadline,900s cap,80%floor or branch protection is weakened. Do not
+blindly replay the same local host configuration or merge while checks run.
+
+
+### 2026-10-18 — PR720 census scope review fix
+
+Automated threadPRRT_kwDOTo2MOM6tpEKU identified a stale revenue-only
+observation_scope beside the updated separate revenue/expenditure admission.
+Corrected the current census scope to include both qualified source-native
+profiles, retaining explicit Gold/join/rights exclusions. This changes only
+evidence wording; code, schemas, native counts, source bytes and local timeout
+receipts are unchanged. Related census fields were checked against the two
+qualification receipts. Exact-head hosted checks must rerun before merge.
