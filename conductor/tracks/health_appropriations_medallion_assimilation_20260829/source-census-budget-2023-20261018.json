@@ -73,6 +73,7 @@
     "scope": "Primary retained Health warc directory; first WARC header only,65536 decompressed bytes/file,1000file cap; no body identity, alias equivalence or global absence asserted",
     "warc_report_sha256": "17ec3606d87fb7e94ca40f30098f485edceaf00285b2113c5c7a0ee5b2c9141d"
   },
+  "revenue_delivery_evidence": "budget-2023-revenue-delivery-20261018.json",
   "revenue_qualification_evidence": "budget-2023-revenue-native-20261018.json",
   "rights_observation": {
     "item_native_notices": "Intro A10/A13/A14 inspected and fingerprinted in retained reports; eligibility not assessed",
@@ -82,7 +83,7 @@
   "schema_version": "archive-govt-nz.health-source-census-observation/v1",
   "signed_date": "2023-05-18",
   "source_url": "https://www.treasury.govt.nz/publications/data/budget-2023-data-estimates-appropriations-2023-24",
-  "status": "native_layouts_inspected_revenue_qualified_delivery_pending",
+  "status": "native_layouts_inspected_revenue_delivered_expenditure_pending",
   "title": "Budget 2023 Data from the Estimates of Appropriations 2023/24",
   "updated_date": "2023-09-21"
 }

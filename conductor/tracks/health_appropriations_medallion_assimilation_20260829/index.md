@@ -525,3 +525,7 @@ they are not current-state assertions.
 - [Budget 2023 revenue native qualification](./budget-2023-revenue-native-20261018.json)
 
 - [Budget 2023 revenue full assurance](./budget-2023-revenue-assurance-20261018.json)
+
+- [Budget 2023 revenue protected delivery](./budget-2023-revenue-delivery-20261018.json)
+
+- [Budget 2023 expenditure source profile](./budget-2023-expenditure-profile-20261018.json)

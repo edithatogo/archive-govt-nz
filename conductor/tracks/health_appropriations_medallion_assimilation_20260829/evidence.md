@@ -3040,3 +3040,6 @@ See `budget-2023-revenue-native-20261018.json`: native repeat/dispatcher and act
 
 
 `budget-2023-revenue-assurance-20261018.json` records the original32-stage local pass on3d55f173. The full log and independent terminal/fixity proof are retained privately. Hosted exact-head checks and protected merge are not yet claimed.
+
+
+`budget-2023-expenditure-profile-20261018.json` bounds the next profile and records red/green focused checks. Native qualification, unchanged2024package bytes and the original full harness are pending. PR719 delivery is recorded separately in `budget-2023-revenue-delivery-20261018.json`.

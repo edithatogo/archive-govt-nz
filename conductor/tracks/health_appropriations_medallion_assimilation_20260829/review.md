@@ -3752,3 +3752,6 @@ Budget2023 revenue: original full harness passed all32stages. No suppression, ti
 
 
 PR719 automated P2 receipt status inconsistency: corrected the top-level status to distinguish passed local assurance from pending protected delivery. Detailed producer evidence and facts unchanged.
+
+
+2023 expenditure implementation review: shared parser replaces edition constants without copying its row logic. Public2024defaults and source binding remain separate; old legacy profile refuses2023. Reviewed B3/period map is explicit lineage only for2023, leaving2024output lineage unchanged. All native/2024byte/full/hosted gates remain open.

@@ -8003,3 +8003,45 @@ Corrected the summary to native revenue and local full assurance passed, with
 protected delivery pending. This is evidence reconciliation only; producer code,
 tests, schema and all native/full log pins remain unchanged. Metadata validation
 and exact-head hosted checks must be refreshed after this correction.
+
+
+### 2026-10-18 — PR719 delivered; Budget2023 expenditure begins
+
+Seven required checks passed on55801605. All32stages verified separately from
+completed Ubuntu/macOS/Windows logs (8,035/8,035/8,029tests passed). One
+automated receipt-status finding was fixed and resolved. The watcher network
+timeout was an observation error; fresh job API confirmed the live Windows
+run and no CI job was manually cancelled or duplicated. Protected merge at
+d8b75ab3 is on fetchedorigin/main, equal to the checked tree. Zero unique
+commits/patches and clean status verified before removing the topic refs.
+Primary checkout/runtime/CAS/proofs retained. Permanent hosted-assurance-719
+contains checked logs, guard and delivery/cleanup receipts.
+
+Next source-bound expenditure slice reuses the already captured2023original
+(no source recapture). The seventeen headers and eight existing parser
+definitions match2024; factor the edition identity/period/row cap into an
+explicit profile while preserving2024public defaults and all four output bytes.
+Add2023source binding,6,696-row cap and2019–2024periods, preserving labels,
+periodicity/parent/category fields and unknown currency/start/rights. This owner
+retains sole local broad/native launch responsibility through the unchanged
+Conductor serializer. No native/broad job is currently live.
+
+
+### 2026-10-18 — Budget2023 expenditure profile implementation
+
+Red1: missing2023module at test collection, expected. Shared edition parameters
+now carry source SHA/URL/vintage/rowcap/period map/definitions/adapter identity;
+2024public normalize/registration defaults remain fixed. The2023wrapper pins
+its retained original,6,696rows and literal2019–2024periods; current CLI/MCP
+registry/schema include it. The legacy expenditure adapter refuses2023 so
+source-specific and assumed-currency legacy profiles cannot both match.
+
+All nine2023definition cells match the retained report, including B3NBSP.
+Green1:606passed/10skipped in92.15s. Added two overview lineage links per
+2023fact (vintage and amount type); red2 failed with zero links as expected,
+green2 passed all15new2023/existing2024contracts in51.31s. Existing2024has
+no B3profile addition and must reproduce every prior file byte. Ruff and
+production types pass;93Conductortracks/66schemas56documents validate.
+Native verification,2024byte comparison, full assurance and PR delivery are
+still required; no numeric admission or complete-track claim follows from
+these synthetic fixtures. Only named source/code/evidence paths are staged.

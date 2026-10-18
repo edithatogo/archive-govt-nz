@@ -155,6 +155,44 @@ FACT_SCHEMA = pa.schema(
 DISPOSITION_SCHEMA = budget_revenue.DISPOSITION_SCHEMA
 
 
+@dataclass(frozen=True, slots=True)
+class ExpenditureProfile:
+    """Reviewed edition constants, supplied only by source-specific wrappers."""
+
+    profile: str
+    transformation: str
+    vintage: str
+    source_sha256: str
+    source_locator: str
+    max_rows: int
+    period_types: dict[int, str]
+    definitions: dict[str, str]
+    adapter_id: str
+
+    def matches(self, vintage: str, locator: str, digest: str) -> bool:
+        """Require the complete edition and original observation identity."""
+        return (vintage, locator, digest) == (
+            self.vintage,
+            self.source_locator,
+            self.source_sha256,
+        )
+
+
+def _configuration() -> ExpenditureProfile:
+    # Construct on use to retain the existing 2024 module's public defaults.
+    return ExpenditureProfile(
+        PROFILE,
+        TRANSFORMATION,
+        VINTAGE,
+        SOURCE_SHA256,
+        SOURCE_LOCATOR,
+        MAX_ROWS,
+        PERIOD_TYPES,
+        DEFINITIONS,
+        "nz-budget-2024-health-expenditure",
+    )
+
+
 def _require(condition: object) -> None:
     if not condition:
         message = "budget_2024_expenditure_contract"
@@ -163,10 +201,12 @@ def _require(condition: object) -> None:
 
 def source_binding(vintage: str, locator: str, digest: str) -> bool:
     """Recognize only the retained source observation, never a host-wide licence."""
-    return (vintage, locator, digest) == (VINTAGE, SOURCE_LOCATOR, SOURCE_SHA256)
+    return _configuration().matches(vintage, locator, digest)
 
 
-def _reason(cells: tuple, token: str | None) -> tuple[str, str]:
+def _reason(
+    cells: tuple, token: str | None, period_types: dict[int, str]
+) -> tuple[str, str]:
     values = [c.value for c in cells]
     if all(v is None for v in values):
         return "blank", "empty_row"
@@ -182,13 +222,15 @@ def _reason(cells: tuple, token: str | None) -> tuple[str, str]:
         return "rejected", "formula_not_evaluated"
     if any(c.data_type == "e" for c in cells):
         return "rejected", "spreadsheet_error"
-    reason = _selected_reason(values, token)
+    reason = _selected_reason(values, token, period_types)
     return (
         ("rejected", reason) if reason else ("normalized", "named_expenditure_columns")
     )
 
 
-def _selected_reason(values: list[Any], token: str | None) -> str | None:  # noqa: PLR0911 - one reason per source-field contract
+def _selected_reason(  # noqa: PLR0911 - one reason per source-field contract
+    values: list[Any], token: str | None, period_types: dict[int, str]
+) -> str | None:
     if any(
         not isinstance(values[i], str) or not values[i].strip()
         for i in (0, 4, 5, 7, 9, 16)
@@ -204,8 +246,8 @@ def _selected_reason(values: list[Any], token: str | None) -> str | None:  # noq
         return "invalid_periodicity"
     if (
         type(values[11]) is not int
-        or values[11] not in PERIOD_TYPES
-        or values[12] != PERIOD_TYPES[values[11]]
+        or values[11] not in period_types
+        or values[12] != period_types[values[11]]
     ):
         return "invalid_period_type"
     if exact_number(token) is None:
@@ -213,17 +255,19 @@ def _selected_reason(values: list[Any], token: str | None) -> str | None:  # noq
     return None
 
 
-def _parse(payload: bytes, context: dict[str, Any]) -> tuple:
+def _parse(
+    payload: bytes, context: dict[str, Any], edition: ExpenditureProfile
+) -> tuple:
     inventory = inventory_workbook(BytesIO(payload))
     tokens = _number_tokens(payload)
     book = load_workbook(BytesIO(payload), data_only=False, keep_links=False)
     try:
         # Reuse the embedded-notice fingerprint contract, without rights promotion.
         notice = budget_revenue._metadata(  # noqa: SLF001 - shared notice fingerprint contract
-            book, context["source_object_sha256"], DEFINITIONS
+            book, context["source_object_sha256"], edition.definitions
         )
         raw = book["Raw Data"]
-        _require(raw.max_row <= MAX_ROWS + 1 and raw.max_column == len(FIELDS))
+        _require(raw.max_row <= edition.max_rows + 1 and raw.max_column == len(FIELDS))
         _require(
             tuple(c.value for c in next(raw.iter_rows(max_row=1))) == tuple(FIELDS)
         )
@@ -232,9 +276,12 @@ def _parse(payload: bytes, context: dict[str, Any]) -> tuple:
             _require(all(len(str(c.value)) <= MAX_TEXT for c in cells))
             values = dict(zip(FIELDS, (c.value for c in cells), strict=True))
             token = tokens["Raw Data"].get(cells[10].coordinate)
-            disposition, reason = _reason(cells, token)
+            disposition, reason = _reason(cells, token, edition.period_types)
             record_id = identity(
-                TRANSFORMATION, context["source_object_sha256"], "Raw Data", number
+                edition.transformation,
+                context["source_object_sha256"],
+                "Raw Data",
+                number,
             )
             dispositions.append(
                 {
@@ -271,7 +318,7 @@ def _parse(payload: bytes, context: dict[str, Any]) -> tuple:
                     "no_parent_category_aggregation",
                     "source_classification_unmapped",
                 ],
-                "transformation_id": TRANSFORMATION,
+                "transformation_id": edition.transformation,
                 "lineage_id": identity(record_id, "lineage"),
                 "raw_values_json": encode_json(values),
             }
@@ -289,7 +336,7 @@ def _parse(payload: bytes, context: dict[str, Any]) -> tuple:
                 for field, cell in zip(FIELDS.values(), cells, strict=True)
             ]
             links += [
-                (field, f"'Explanation'!{coordinate}", DEFINITIONS[coordinate])
+                (field, f"'Explanation'!{coordinate}", edition.definitions[coordinate])
                 for field, coordinate in (
                     ("periodicity", "B39"),
                     ("unit", "B40"),
@@ -301,6 +348,11 @@ def _parse(payload: bytes, context: dict[str, Any]) -> tuple:
                     ("functional_classification", "B52"),
                 )
             ]
+            if "B3" in edition.definitions:
+                links.extend(
+                    (field, "'Explanation'!B3", edition.definitions["B3"])
+                    for field in ("source_vintage", "amount_type")
+                )
             for field, coordinate, value in links:
                 lineage.append(
                     {
@@ -314,7 +366,7 @@ def _parse(payload: bytes, context: dict[str, Any]) -> tuple:
                         "normalized_value": None
                         if fact[field] is None
                         else str(fact[field]),
-                        "rule": TRANSFORMATION,
+                        "rule": edition.transformation,
                     }
                 )
         excluded = [
@@ -330,10 +382,11 @@ def _parse(payload: bytes, context: dict[str, Any]) -> tuple:
     return facts, lineage, dispositions, inventory, notice, excluded
 
 
-def normalize(  # noqa: PLR0913 - explicit source observation context
+def normalize_profile(  # noqa: PLR0913 - explicit source observation context
     source: Path,
     output_dir: Path,
     *,
+    profile: ExpenditureProfile,
     expected_sha256: str,
     source_locator: str,
     source_vintage: str,
@@ -341,9 +394,10 @@ def normalize(  # noqa: PLR0913 - explicit source observation context
     dry_run: bool = False,
 ) -> dict[str, Any]:
     """Build a new source-specific package; preflight never creates output."""
+    edition = profile
     _require(
         type(dry_run) is bool
-        and source_binding(source_vintage, source_locator, expected_sha256)
+        and edition.matches(source_vintage, source_locator, expected_sha256)
     )
     _require(
         not source.is_symlink()
@@ -356,14 +410,15 @@ def normalize(  # noqa: PLR0913 - explicit source observation context
     payload = verified_snapshot(source, expected_sha256, max_bytes=MAX_BYTES)
     with localcontext(Context(prec=50)):
         facts, lineage, dispositions, inventory, notice, excluded = _parse(
-            payload, context
+            payload, context, edition
         )
     selection = select_bronze_adapter(
         payload,
         source_sha256=expected_sha256,
         media_type=MEDIA_TYPE,
         registrations=(
-            registration(
+            profile_registration(
+                profile=edition,
                 source_locator=source_locator,
                 source_vintage=source_vintage,
                 observed_at=observed_at,
@@ -378,7 +433,7 @@ def normalize(  # noqa: PLR0913 - explicit source observation context
     counts["input"] = len(dispositions)
     receipt: dict[str, Any] = {
         "schema_version": "archive-govt-nz.health-budget-expenditure-extraction/v1",
-        "transformation_id": TRANSFORMATION,
+        "transformation_id": edition.transformation,
         "source_object_sha256": expected_sha256,
         "source_locator": source_locator,
         "source_vintage": source_vintage,
@@ -405,6 +460,29 @@ def normalize(  # noqa: PLR0913 - explicit source observation context
     return write_workbook_outputs(output_dir, outputs, receipt)
 
 
+def normalize(  # noqa: PLR0913 - stable public observation contract
+    source: Path,
+    output_dir: Path,
+    *,
+    expected_sha256: str,
+    source_locator: str,
+    source_vintage: str,
+    observed_at: str,
+    dry_run: bool = False,
+) -> dict[str, Any]:
+    """Build only the reviewed 2024 package; retain its public defaults."""
+    return normalize_profile(
+        source,
+        output_dir,
+        profile=_configuration(),
+        expected_sha256=expected_sha256,
+        source_locator=source_locator,
+        source_vintage=source_vintage,
+        observed_at=observed_at,
+        dry_run=dry_run,
+    )
+
+
 @dataclass(frozen=True, slots=True)
 class Budget2024ExpenditureAdapter:
     """A digest-bound profile, separate from the legacy expenditure schema."""
@@ -412,13 +490,14 @@ class Budget2024ExpenditureAdapter:
     source_locator: str
     source_vintage: str
     observed_at: str
+    _profile: ExpenditureProfile | None = None
 
     def matches_layout(self, bronze: bytes) -> bool:
         """Recognize the reviewed observation only; changed bytes stay preserved."""
         return (
             type(bronze) is bytes
             and len(bronze) <= MAX_BYTES
-            and source_binding(
+            and (self._profile or _configuration()).matches(
                 self.source_vintage,
                 self.source_locator,
                 hashlib.sha256(bronze).hexdigest(),
@@ -427,6 +506,7 @@ class Budget2024ExpenditureAdapter:
 
     def extract(self, bronze: bytes, *, source_sha256: str) -> AdapterOutput:
         """Retain literal source facts, lineage and every non-normalized loss."""
+        edition = self._profile or _configuration()
         _require(
             type(bronze) is bytes
             and hashlib.sha256(bronze).hexdigest() == source_sha256
@@ -434,13 +514,15 @@ class Budget2024ExpenditureAdapter:
         if not self.matches_layout(bronze):
             return preserved_only(
                 source_coordinate="bronze:sha256:" + source_sha256,
-                reason="unsupported_budget_2024_expenditure_source",
+                reason=f"unsupported_budget_{edition.vintage.removeprefix('Budget-')}_expenditure_source",
             )
         context = source_context(
             source_sha256, self.source_locator, self.source_vintage, self.observed_at
         )
         with localcontext(Context(prec=50)):
-            facts, lineage, dispositions, _, _, excluded = _parse(bronze, context)
+            facts, lineage, dispositions, _, _, excluded = _parse(
+                bronze, context, edition
+            )
         return AdapterOutput(
             records=tuple(facts),
             lineage=tuple(
@@ -473,19 +555,37 @@ class Budget2024ExpenditureAdapter:
                     for r in excluded
                 ]
             ),
-            layout=PROFILE,
+            layout=edition.profile,
         )
+
+
+def profile_registration(
+    *,
+    profile: ExpenditureProfile,
+    source_locator: str,
+    source_vintage: str,
+    observed_at: str,
+) -> AdapterRegistration:
+    """Register one reviewed edition using the shared literal parser."""
+    adapter = Budget2024ExpenditureAdapter(
+        source_locator, source_vintage, observed_at, _profile=profile
+    )
+    return AdapterRegistration(
+        adapter_id=profile.adapter_id,
+        version="1.0.0",
+        media_type=MEDIA_TYPE,
+        adapter=adapter,
+        layout_probe=adapter.matches_layout,
+    )
 
 
 def registration(
     *, source_locator: str, source_vintage: str, observed_at: str
 ) -> AdapterRegistration:
     """Register the hash-bound 2024 expenditure observation."""
-    adapter = Budget2024ExpenditureAdapter(source_locator, source_vintage, observed_at)
-    return AdapterRegistration(
-        adapter_id="nz-budget-2024-health-expenditure",
-        version="1.0.0",
-        media_type=MEDIA_TYPE,
-        adapter=adapter,
-        layout_probe=adapter.matches_layout,
+    return profile_registration(
+        profile=_configuration(),
+        source_locator=source_locator,
+        source_vintage=source_vintage,
+        observed_at=observed_at,
     )
