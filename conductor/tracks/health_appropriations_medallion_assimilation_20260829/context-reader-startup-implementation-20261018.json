@@ -16,7 +16,8 @@
       "test_context_gold.py"
     ]
   },
-  "full_harness": "pending_original_run_before_PR",
+  "full_assurance_receipt": "context-reader-startup-assurance-20261018.json",
+  "full_harness": "original_local900s_test_cap_at86_percent_no_full_pass_claim",
   "intermediate_failure": "Initial deferred operation imports still initialized plots through eager MCP schema projection of native context_gold; preserved1failed/21passed receipt.",
   "native_product_qualification": "context-reader-startup-native-20261018.json",
   "protected_delivery": "pending",
@@ -25,7 +26,7 @@
   "ruff": "passed",
   "schema_version": "archive-govt-nz.health-context-reader-startup/v1",
   "scope": "Defer product/canonical/plot imports until their existing build or schema use; retain all typed inputs, native formats, rendering rules, guards and no-write defaults.",
-  "status": "focused_and_API_products_qualified_actual_CLI_timing_open_full_pending",
+  "status": "focused_API_products_qualified_local_timeout_retained_hosted_pending_CLI_timing_open",
   "typing": "0_errors_0_warnings_focused_source_and_tests",
   "unchanged_limits": {
     "FIFO_subprocess_seconds": 10,

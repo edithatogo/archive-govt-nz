@@ -561,3 +561,5 @@ they are not current-state assertions.
 - [Context reader startup implementation](./context-reader-startup-implementation-20261018.json)
 
 - [Reader/API native product proof and explicit CLI timing gap](./context-reader-startup-native-20261018.json)
+
+- [Reader original local assurance attempt](./context-reader-startup-assurance-20261018.json)

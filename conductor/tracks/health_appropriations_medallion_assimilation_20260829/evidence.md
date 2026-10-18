@@ -3085,3 +3085,15 @@ with no output; registered MCP probe was not reached. Do not claim complete
 CLI/MCP or a startup SLA. See context-reader-startup-native-20261018.json.
 Original full harness and protected delivery of the reader-only slice remain
 pending; broader Phase8 stays incomplete. Conductor design advice requested.
+
+
+Reader original full attempt: eac7a9ab/tree65ea021d ran the unchanged
+./scripts/validate.sh with supported2workers and original900s per-stage cap.
+Five fast stages pass; test stage exits124at86%,6991observed PASSED and
+0observed FAILED entries. No final suite, coverage or all32local pass claim.
+All292frozen code/runtime/input/output pins remain unchanged and the kernel
+lease is free after terminal execution. See context-reader-startup-assurance-
+20261018.json. Proceed with focusedPR under the existing run-before-PR contract;
+require exact-head original all32stages on3clean hosted platforms, all7checks
+and resolved review before normal protected merge/prune. Actual full-source
+CLI30s timing and unrun MCP remain separate open Phase8 evidence, not complete.
