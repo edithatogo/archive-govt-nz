@@ -2269,7 +2269,7 @@ are preserved. Fresh fetched ancestry, equal `7d6b0fea` tree, zero unique
 commits and clean-main checks pass; topic refs pruned, primary retained.
 See `budget-2024-expenditure-delivery-20261018.json`.
 
-- [~] Reconcile the registered Budget 2023 expenditure/revenue release and
+- [x] Reconcile the registered Budget 2023 expenditure/revenue release and
   retained captures. Record exact identity, periods, units, definitions, rights
   notices and layout; preserve eligible originals through the existing capture
   core only where reuse evidence does not identify them. Admit native source
@@ -2290,7 +2290,18 @@ eligibility, and broader semantic/analytical gates remain open.
 
 - [x] Deliver the pinned2023revenue profile through protectedPR719 and prune
   its proven-integrated topic refs; retain the primary and original evidence.
-- [~] Admit pinned Budget2023expenditure through the shared literal source
+- [x] Admit pinned Budget2023expenditure through the shared literal source
   contract, retaining2024byte parity. Qualify native repeats and common/CLI/MCP
   parity, run the full harness and deliver a focused protectedPR.
   [M-02, M-04, M-06, M-07, M-11; AC-03, AC-04, AC-05, AC-09]
+
+
+Budget2023native source profiles delivered throughPR719/720. This closes the
+bounded Budget-family census/normalization slice; other2023source families,
+rights eligibility, joins and wider phase gates remain unqualified.
+
+- [~] Diagnose the three retained encrypted-PDF layout exclusions using the
+  default reader without credentials. Repair false exclusions only where normal
+  page access is evidenced; preserve genuine password-required exclusions and
+  original bytes. Reuse existing baselines and verify unchanged previously
+  parsed descriptors. [M-02, M-04, M-11, M-18; AC-03, AC-04, AC-09, AC-16]

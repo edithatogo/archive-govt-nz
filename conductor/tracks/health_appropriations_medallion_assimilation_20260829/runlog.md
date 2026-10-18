@@ -8093,3 +8093,23 @@ profiles, retaining explicit Gold/join/rights exclusions. This changes only
 evidence wording; code, schemas, native counts, source bytes and local timeout
 receipts are unchanged. Related census fields were checked against the two
 qualification receipts. Exact-head hosted checks must rerun before merge.
+
+
+### 2026-10-18 — PR720 delivered; retained PDF layout exclusions next
+
+All seven checks passed on96185cf5. Complete logs independently verify the
+original32stages on Ubuntu/macOS/Windows (8,041/8,041/8,035tests). The
+source-census scope finding was corrected and resolved. Local900s timeout
+remains preserved; no local full pass or gate weakening is claimed. Protected
+mergef641c55b is fetched onorigin/main with checked/merge ancestry, equal
+78900a6btree, zero unique commits/patches and clean status before topic refs
+were pruned. Primary/runtime/CAS/proofs retained; permanent hosted-assurance-720
+copies verify by hash.
+
+The next existing Phase2/3 baseline blocker is three1998/99–1999/00VoteHealth
+PDFs reported encrypted. The parser currently rejects the encryption flag before
+trying normal page access. No Must instruction found requires that shortcut.
+Diagnose the standard default reader, without credentials or explicit decrypt
+calls, against the retained SHA-bound originals before changing production.
+Do not recapture or rerun2016–2026VoteHealthpreflight. This owner retains sole
+local broad/native launch responsibility via the unchanged Conductor serializer.

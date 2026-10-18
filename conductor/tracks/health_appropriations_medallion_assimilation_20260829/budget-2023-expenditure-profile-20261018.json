@@ -1,5 +1,6 @@
 {
   "CLI_MCP_dispatcher_native_parity": "passed",
+  "delivery_evidence": "budget-2023-expenditure-delivery-20261018.json",
   "focused": {
     "contracts_passed": 606,
     "final_2023_2024_contracts_passed": 15,
@@ -10,6 +11,7 @@
     "skipped": 10
   },
   "full_original_harness": "local_tests_timed_out_900s_no_full_pass_claim",
+  "hosted_assurance": "all32_stages_passed_three_platforms_on_96185cf5",
   "inspection_reference": "budget-2023-native-inspection-20261018.json",
   "local_assurance_evidence": "budget-2023-expenditure-assurance-20261018.json",
   "max_data_rows": 6696,
@@ -25,7 +27,7 @@
   "period_start": "not_asserted",
   "prior_2024_all_four_file_byte_parity": "passed",
   "profile": "budget-expenditure-2023/v1",
-  "protected_delivery": "pending",
+  "protected_delivery": "PR720_merged_f641c55b_topic_pruned",
   "publication": "not_performed",
   "rights": "not_evaluated",
   "shared_contract": "budget_expenditure_2024.ExpenditureProfile and literal parser; public 2024 defaults unchanged",
@@ -33,6 +35,6 @@
   "source_recapture": "not_performed_reuse_verified_retained_original",
   "source_sha256": "bee0e4cd776f0511d271ec842ade355661772c804d12239035e32ad61db06da9",
   "source_vintage": "Budget-2023",
-  "status": "native_and_2024_compatibility_passed_local_test_timeout_hosted_assurance_pending",
+  "status": "native_and_2024_compatibility_and_hosted_assurance_passed_delivered",
   "units": "literal $000; ISO currency unverified"
 }
