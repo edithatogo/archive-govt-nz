@@ -187,6 +187,19 @@ def normalize_budget_workbook(
     verified in-memory snapshot. Other worksheets remain inventoried, not
     normalized. A passed receipt establishes extraction, not publication rights.
     """
+    from archive_govt_nz.domains.health_appropriations import (  # noqa: PLC0415 - Pinned parser shares this module's schema.
+        budget_expenditure_2022,
+    )
+
+    if source_vintage == budget_expenditure_2022.VINTAGE:
+        return budget_expenditure_2022.normalize(
+            source,
+            output_dir,
+            expected_sha256=expected_sha256,
+            source_locator=source_locator,
+            source_vintage=source_vintage,
+            observed_at=observed_at,
+        )
     context = source_context(
         expected_sha256, source_locator, source_vintage, observed_at
     )

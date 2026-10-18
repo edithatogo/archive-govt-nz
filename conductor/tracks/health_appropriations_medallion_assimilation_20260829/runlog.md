@@ -8322,3 +8322,16 @@ the established PR718/720 path, disclose the timeout in a focused reviewablePR
 and qualify the unchanged original32stages on clean hosted Ubuntu/macOS/Windows,
 all7exact-head checks and review resolution before protected merge. Both actual
 source qualifications and prior-byte proofs remain valid and separate.
+
+
+- PR722 review correction (routing): all seven original-head checks passed,
+  but unresolved thread PRRT_kwDOTo2MOM6tqRuj correctly identified missing
+  Budget2022 routing in the shared registry and legacy workbook normalizer.
+  Regression reproduced with empty common records (1failed/1passed/4deselected);
+  route the exact edition through its pinned registration/normalizer. Keep the
+  legacy generic adapter fail-closed and all currency/start/rights holds.
+  New affected tests, actual-source route parity and full/exact-head hosted
+  assurance are required before resolving the finding and protected delivery.
+  Earlier native and local timeout receipts remain historical evidence.
+
+Routing correction focused result: 63passed in143.11s across2022, shared registry and legacy Budget suites; Ruff/format pass and pinned-interpreter Pyright0errors/0warnings. Initial Pyright without explicit interpreter misresolved installed dependencies; corrected --pythonpath .venv/bin/python, no dependency/code suppression. Actual workbook and refreshed full gates pending.

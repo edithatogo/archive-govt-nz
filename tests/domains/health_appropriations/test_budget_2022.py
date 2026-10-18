@@ -18,6 +18,13 @@ from archive_govt_nz.domains.health_appropriations import budget_revenue as reve
 from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
     dispatch_bronze,
 )
+from archive_govt_nz.domains.health_appropriations.adapter_registry import (
+    AdapterContext,
+    context_adapter_registrations,
+)
+from archive_govt_nz.domains.health_appropriations.budget import (
+    normalize_budget_workbook,
+)
 from archive_govt_nz.domains.health_appropriations.budget_adapter import (
     budget_expenditure_registration,
 )
@@ -193,6 +200,36 @@ def test_2022_periods_holds_and_competing_dispatch(
         registrations=tuple(registrations),
     )
     assert list(common.output.records) == facts
+    if kind == "expenditure":
+        context = AdapterContext(**args)
+        registered = context_adapter_registrations(
+            cpi=context,
+            population=context,
+            qes=context,
+            gdp=context,
+            budget_expenditure=context,
+        )
+        routed = dispatch_bronze(
+            path.read_bytes(),
+            source_sha256=digest,
+            media_type=shared.MEDIA_TYPE,
+            registrations=registered,
+        )
+        assert list(routed.output.records) == facts
+        routed_output = tmp_path / "routed-output"
+        normalize_budget_workbook(
+            path,
+            routed_output,
+            expected_sha256=digest,
+            **args,
+        )
+        for name in (
+            "budget_facts.parquet",
+            "field_lineage.parquet",
+            "row_dispositions.parquet",
+            "MANIFEST.json",
+        ):
+            assert (routed_output / name).read_bytes() == (output / name).read_bytes()
 
 
 @pytest.mark.parametrize(("kind", "bound"), [("expenditure", 6568), ("revenue", 1015)])

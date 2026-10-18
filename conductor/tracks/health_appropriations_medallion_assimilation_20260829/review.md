@@ -3783,3 +3783,14 @@ PDF layout review: encryption metadata alone did not establish inaccessible page
 - Actual-source review: both 2022 native profiles pass with zero rejected rows, complete row accounting, all original columns, semantic holds and exact entry-point parity. Earlier 2024 expenditure and 2023 revenue products reproduce byte-for-byte. Terminal processes and all frozen inputs verified; no original recapture or rights promotion. Full assurance and protected delivery remain open.
 
 - Full-attempt review: preserve original900s local test cap at99% with no invented pass or coverage result. Native/current/old-product byte proofs and source/code/runtime pins remain unchanged. Use the established run-before-PR path with explicit disclosure, all32stages on3clean platforms,7exact-head checks and resolved review before merge. No branch/gate weakening.
+
+
+- PR722 review correction (routing): all seven original-head checks passed,
+  but unresolved thread PRRT_kwDOTo2MOM6tqRuj correctly identified missing
+  Budget2022 routing in the shared registry and legacy workbook normalizer.
+  Regression reproduced with empty common records (1failed/1passed/4deselected);
+  route the exact edition through its pinned registration/normalizer. Keep the
+  legacy generic adapter fail-closed and all currency/start/rights holds.
+  New affected tests, actual-source route parity and full/exact-head hosted
+  assurance are required before resolving the finding and protected delivery.
+  Earlier native and local timeout receipts remain historical evidence.
