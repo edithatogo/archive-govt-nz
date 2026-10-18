@@ -8335,3 +8335,6 @@ source qualifications and prior-byte proofs remain valid and separate.
   Earlier native and local timeout receipts remain historical evidence.
 
 Routing correction focused result: 63passed in143.11s across2022, shared registry and legacy Budget suites; Ruff/format pass and pinned-interpreter Pyright0errors/0warnings. Initial Pyright without explicit interpreter misresolved installed dependencies; corrected --pythonpath .venv/bin/python, no dependency/code suppression. Actual workbook and refreshed full gates pending.
+
+
+PR722 delivered: all7exact-head checks/all32hosted stages per platform; merge95f9f638 verified fetched main/head ancestry/equal merge tree/zero unique commits and patches/clean. Topic local/remote/tracking absent; one primary/CAS/runtime/proofs retained. See budget-2022-delivery-20261018.json. Local full2 remains124 with2observed failures, not a pass. Serial/instrumented probes and140unchanged affected-module tests distinguish startup sensitivity from proven FIFO rejection; earlier timeout location unproven. Conductor advice requested, no approval claimed. Next bounded Phase8 task isolates input-spec inspection from plot/product startup without widening limits or changing product bytes.

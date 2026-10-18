@@ -3,8 +3,9 @@
   "Gold_admission": "not_performed",
   "ISO_currency": "not_asserted",
   "both_four_file_repeats_equal": true,
+  "delivery_receipt": "budget-2022-delivery-20261018.json",
   "full_assurance_receipt": "budget-2022-assurance-20261018.json",
-  "full_harness": "original_local900s_test_cap_at99_percent_no_full_pass_claim",
+  "full_harness": "original_local_attempts_preserved_with_failures_no_local_full_pass; all32pass_on3hosted_platforms",
   "period_start": "not_asserted",
   "preflight_output_absent": true,
   "prior_expenditure_2024_all_four_files_equal": true,
@@ -242,12 +243,12 @@
       }
     }
   },
-  "protected_delivery": "pending",
+  "protected_delivery": "merged_PR722_verified_clean_topic_pruned",
   "publication": "not_performed",
   "release_page_transport": "HTTP403_retained_not_retried_Conductor_solution_requested",
   "rights": "not_evaluated",
   "schema_version": "archive-govt-nz.health-budget-2022-native-qualification/v1",
   "scope": "Two source-separated local Silver profiles; no expenditure/revenue netting or analytical joins.",
   "source_bytes_unchanged": true,
-  "status": "source_native_qualified_local_timeout_retained_hosted_and_protected_delivery_pending"
+  "status": "source_native_qualified_protected_delivery_complete_rights_and_page_transport_hold"
 }

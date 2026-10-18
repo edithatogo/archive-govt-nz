@@ -2351,3 +2351,22 @@ passed with0observedfailures. Native/repeat/prior/source/code pins remain
 unchanged. See budget-2022-assurance-20261018.json. Deliver a focusedPR with
 explicit disclosure; require original all32stages on3clean hosted platforms,
 7exact-head checks and resolved review before protected merge/prune.
+
+
+- [x] Deliver both pinned Budget2022 source-native profiles and repaired public
+  routing with all32original hosted stages on3platforms,7exact-head checks,
+  resolved review and normal protected merge/clean topic pruning. PR722 merge
+  95f9f638; see budget-2022-delivery-20261018.json. Keep broader census [~]:
+  native page403, rights, canonical/Gold and analytical holds remain explicit.
+  Both original local timeouts are retained; second attempt had2FAILED entries.
+  Both affected modules pass140tests with original seed/two workers; this is
+  no local full-pass claim and earlier timeout location remains unproven.
+  [M-05, M-07, M-15, M-18; AC-03, AC-05, AC-13, AC-16]
+
+- [~] Keep Context Gold input-spec inspection independent of plotting/product
+  reconstruction startup. Reuse existing reader, source-path guards and native
+  products; retain the original FIFO10s and full900s/80% gates. Establish a
+  reader-only dependency boundary, verify actual regular/FIFO paths and prove
+  supported Gold outputs unchanged before focused protected delivery. This
+  scoped Phase8 repair does not complete the broader operations checklist.
+  [M-15, M-18; AC-13, AC-16]

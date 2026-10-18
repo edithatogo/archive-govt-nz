@@ -3794,3 +3794,6 @@ PDF layout review: encryption metadata alone did not establish inaccessible page
   New affected tests, actual-source route parity and full/exact-head hosted
   assurance are required before resolving the finding and protected delivery.
   Earlier native and local timeout receipts remain historical evidence.
+
+
+PR722 delivered: all7exact-head checks/all32hosted stages per platform; merge95f9f638 verified fetched main/head ancestry/equal merge tree/zero unique commits and patches/clean. Topic local/remote/tracking absent; one primary/CAS/runtime/proofs retained. See budget-2022-delivery-20261018.json. Local full2 remains124 with2observed failures, not a pass. Serial/instrumented probes and140unchanged affected-module tests distinguish startup sensitivity from proven FIFO rejection; earlier timeout location unproven. Conductor advice requested, no approval claimed. Next bounded Phase8 task isolates input-spec inspection from plot/product startup without widening limits or changing product bytes.
