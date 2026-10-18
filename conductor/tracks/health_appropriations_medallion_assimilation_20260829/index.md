@@ -531,3 +531,5 @@ they are not current-state assertions.
 - [Budget 2023 expenditure source profile](./budget-2023-expenditure-profile-20261018.json)
 
 - [Budget 2023 expenditure native qualification](./budget-2023-expenditure-native-20261018.json)
+
+- [Budget 2023 expenditure local assurance result](./budget-2023-expenditure-assurance-20261018.json)

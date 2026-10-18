@@ -3046,3 +3046,6 @@ See `budget-2023-revenue-native-20261018.json`: native repeat/dispatcher and act
 
 
 `budget-2023-expenditure-native-20261018.json` records actual-source277facts/7,479lineage with6,696-row accounting, complete repeat/CLI/MCP/dispatcher parity, and unchanged2024four-file bytes. Frozen inputs and actual terminal exit independently verified. Full assurance and protected delivery remain open.
+
+
+`budget-2023-expenditure-assurance-20261018.json` records the original local harness timeout at900s/97%, with7,826observed pass entries and no observed assertion failure. The suite was incomplete; this is not a full local pass. Native and2024byte proofs are unchanged. Full hosted assurance and seven exact-head required checks are mandatory before protected delivery.

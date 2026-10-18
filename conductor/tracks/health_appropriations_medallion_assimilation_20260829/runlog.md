@@ -8061,3 +8061,24 @@ parsing; its bounded evidence is retained with the native log/config/recipe.
 No source recapture, currency/start/rights approval, Gold admission or external
 publication occurred. Native-assurance-1 copies verify by hash. Original full
 harness and protected delivery remain pending.
+
+
+### 2026-10-18 — Budget2023 expenditure local full timeout preserved
+
+Original ./scripts/validate.sh ran on frozen0c6bc590/tree3f076824 using
+the existing two-worker setting. Lock, Conductor, format, lint and types passed.
+The tests command hit the unchanged900s cap at97% (session10867/exit124).
+The retained log contains7,826passed entries,14skips and0failed entries;
+all6new2023and9existing2024expenditure cases passed. There is no final suite
+summary and no all32stage local-pass claim. Producer code, both source
+objects and native/2024byte proof remain unchanged. Owned checker/test-group
+processes are absent, and the global kernel lease is free. Initial/verified
+failure receipts and original logs/config are retained in assurance-failed-1.
+
+AGENTS and the PR checklist require running the local harness before opening
+a PR, and green required automation before merge; they do not require inventing
+a local full pass. As with the already-qualified PR718 path, retain/disclose
+the timeout and qualify the unchanged original all32stages on clean hosted
+Ubuntu/macOS/Windows plus all seven exact-head checks. No local test, health
+check, deadline,900s cap,80%floor or branch protection is weakened. Do not
+blindly replay the same local host configuration or merge while checks run.
