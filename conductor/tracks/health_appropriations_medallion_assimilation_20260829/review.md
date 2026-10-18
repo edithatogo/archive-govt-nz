@@ -3767,3 +3767,5 @@ PR720 P2 census scope finding: the current observation_scope now includes both s
 
 
 PDF layout review: encryption metadata alone did not establish inaccessible page content. Normal reader access is used with no credentials; genuinely locked inputs keep encrypted_pdf. Dictionary subscription resolves real indirect metadata references. Synthetic contracts and downstream report checks pass; actual59-PDF cohort and prior56-recorded-layout parity must be verified before full assurance/delivery.
+
+- PDF cohort self-review: all 56 prior recorded rows match exactly; three default-readable sources add geometry-only descriptors. Required-password fixture remains excluded. No source recapture, rights claim or financial extraction. Native qualification passed; full/hosted delivery pending.

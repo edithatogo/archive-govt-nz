@@ -8136,3 +8136,18 @@ False-positive style suggestions for dict.get were resolved through a small
 typed subscription helper, without weakening lint/security checks.
 Full retained-cohort repeat, existing descriptor parity, full harness and
 protected delivery remain required.
+
+### 2026-10-18 — Full retained PDF cohort qualified
+
+Frozen implementation2fe286c7/treef5477fba, root-owned serialized cohort1
+(session68097) exited0. Existing production CLI rebuilt all59PDF layouts twice
+from pinned census/capture and immutable CAS. Reports are byte-identical
+(SHA481f1e486e2f96943710cad49a2a8bdf8eb20f815399090577521399d514df9b);
+all56previously recorded rows are exactly unchanged. All3previously excluded
+PDFs now record47/12/49pages; unavailable0. All source/code/runtime/evidence
+pins unchanged, actual session terminal and kernel lease free. Permanent
+cohort-assurance-1 copies verified by hash. Prior20261003report retained.
+This is geometry-only evidence for the59PDF capture cohort, not financial
+normalization, rights admission or broader census completion. No source
+recapture, credentials, explicit decrypt call or2016–2026preflight replay.
+Full original harness and protected delivery remain pending.

@@ -296,12 +296,15 @@ repository validation command. External gates block only their affected task.
   workbook inventories and captured official PDF page structures, linked to
   capture identities and Bronze fixity. Workbook evidence fingerprints six of
   74 captured sources; BEFU-2026 and HYEFU-2025 show observed layout variation
-  under their shared extraction profile. PDF evidence fingerprints 55 of 58
-  captured PDFs; three are encrypted and 54 distinct page-layout signatures
-  are observed. Ten captured sources have neither workbook nor PDF baselines.
+  under their shared extraction profile. PDF evidence now fingerprints all 59 retained captured PDFs, including three
+  default-readable encrypted originals previously excluded. All 56 previously
+  recorded rows are unchanged; two complete builds are byte-identical. This is
+  the pinned 2026-10-03 capture cohort, not the entire current census. Other
+  source-layout coverage and mapping approval remain open.
   Structural variation is not an approved mapping. See
   `source-layout-baseline-20261002.md` and
-  `source-pdf-layout-baseline-20261002.md`. [M-02, M-11, S-04; AC-03, AC-09]
+  `source-pdf-layout-baseline-20261018.json` and
+  `readable-pdf-layout-qualification-20261018.json`. [M-02, M-11, S-04; AC-03, AC-09]
 - [x] Confirm Git contains manifests/schemas/evidence only, not source payloads
   or large generated derivatives. Verified 2,998 tracked paths against all 73
   captured object hashes: zero source-byte matches and zero tracked files above
@@ -2305,3 +2308,8 @@ rights eligibility, joins and wider phase gates remain unqualified.
   page access is evidenced; preserve genuine password-required exclusions and
   original bytes. Reuse existing baselines and verify unchanged previously
   parsed descriptors. [M-02, M-04, M-11, M-18; AC-03, AC-04, AC-09, AC-16]
+
+The PDF parser fix qualifies all59retained layouts with two byte-identical
+builds, all56prior rows unchanged and zero unavailable. See
+readable-pdf-layout-qualification-20261018.json. Full harness and protected
+delivery remain pending; the bounded task stays in progress until delivery.

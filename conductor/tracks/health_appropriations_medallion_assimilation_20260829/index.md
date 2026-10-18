@@ -537,3 +537,5 @@ they are not current-state assertions.
 - [Budget 2023 expenditure protected delivery](./budget-2023-expenditure-delivery-20261018.json)
 
 - [Readable PDF layout diagnosis and focused parser fixes](./readable-pdf-layout-diagnostic-20261018.json)
+
+- [Retained PDF layout qualification](./readable-pdf-layout-qualification-20261018.json) and [59-source layout baseline](./source-pdf-layout-baseline-20261018.json).
