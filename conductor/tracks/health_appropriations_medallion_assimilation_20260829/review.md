@@ -3749,3 +3749,6 @@ Budget2023 review: exact decoded definition equality verified; JSON display esca
 
 
 Budget2023 revenue: original full harness passed all32stages. No suppression, timeout/coverage change, source mutation, netting, inferred currency/start/rights or publication. Native producer-to-full delta is documentation only. Required hosted checks and protected delivery remain open; broader track is incomplete.
+
+
+PR719 automated P2 receipt status inconsistency: corrected the top-level status to distinguish passed local assurance from pending protected delivery. Detailed producer evidence and facts unchanged.

@@ -7993,3 +7993,13 @@ copied to permanent assurance-1 with readback. Exact-head hosted PR delivery
 remains pending. Next expenditure comparison confirms identical17headers and
 eight parser definitions; edition SHA/URL/year map/rowcap still require a
 source-specific profile and native qualification after this serial delivery.
+
+
+### 2026-10-18 — PR719 receipt summary review fix
+
+Automated threadPRRT_kwDOTo2MOM6tokji found the native receipt top-level
+status still labelled full assurance pending despite its detailed passed field.
+Corrected the summary to native revenue and local full assurance passed, with
+protected delivery pending. This is evidence reconciliation only; producer code,
+tests, schema and all native/full log pins remain unchanged. Metadata validation
+and exact-head hosted checks must be refreshed after this correction.
