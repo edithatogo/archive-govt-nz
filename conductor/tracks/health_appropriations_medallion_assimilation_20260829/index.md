@@ -541,3 +541,17 @@ they are not current-state assertions.
 - [Retained PDF layout qualification](./readable-pdf-layout-qualification-20261018.json) and [59-source layout baseline](./source-pdf-layout-baseline-20261018.json).
 
 - [PDF local assurance](./readable-pdf-layout-assurance-20261018.json), [source-health qualification](./readable-pdf-source-health-qualification-20261018.json), [refreshed readable source-health report](./source-health-report-20261018-pdf-layouts.md) and [v2 JSON](./source-health-report-20261018-pdf-layouts.json). Prior default report remains a retained historical receipt.
+
+- [PDF layout protected delivery and cleanup](./readable-pdf-layout-delivery-20261018.json) — PR721 merged and verified; topic refs pruned.
+
+- [Budget2022 working source census](./source-census-budget-2022-20261018.json) — official release observed; bounded capture/native verification pending.
+
+- [Budget2022 partial capture qualification](./budget-2022-capture-20261018.json) — workbook pair preserved; release-page403 and native/rights gates explicit.
+
+- [Budget2022 native structure and definitions](./budget-2022-native-inspection-20261018.json) — observed row bounds and profile prerequisites; no numerical admission.
+
+- [Budget2022 source-profile implementation and focused evidence](./budget-2022-profile-implementation-20261018.json) — native/full/protected qualification pending.
+
+- [Budget2022 actual-source repeat/CLI/MCP/compatibility qualification](./budget-2022-native-qualification-20261018.json) — local source-native profiles pass; full/protected delivery pending.
+
+- [Budget2022 original local assurance attempt](./budget-2022-assurance-20261018.json) — terminal test cap; all32clean-hosted and protected delivery required.

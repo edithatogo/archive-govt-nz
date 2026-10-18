@@ -3056,3 +3056,17 @@ See `budget-2023-revenue-native-20261018.json`: native repeat/dispatcher and act
 - Full retained PDF qualification: `readable-pdf-layout-qualification-20261018.json`; 59/59 recorded, 56 prior rows unchanged, two byte-identical builds and unchanged Bronze. New report `source-pdf-layout-baseline-20261018.json`; old report retained. Full/hosted delivery pending.
 
 - PDF full local assurance passed all32stages: `readable-pdf-layout-assurance-20261018.json`. Source-health adoption passed after a retained stale-context comparison: `readable-pdf-source-health-qualification-20261018.json`; new paired v2 report `source-health-report-20261018-pdf-layouts.json`/`.md`. Protected delivery pending.
+
+- Protected delivery and cleanup: `readable-pdf-layout-delivery-20261018.json`; PR721 merged2fa3183b, all7checks/all32stages on3platforms, equal checked/merge tree, zero unique changes, topic refs absent and primary retained. Broader track incomplete.
+
+- Budget2022 preliminary census: `source-census-budget-2022-20261018.json`; registered pair, six-inventory zero-hit and360-header zero-candidate reconciliation. Native bytes/units/rights remain pending.
+
+- Budget2022 capture: `budget-2022-capture-20261018.json`; two HTTP200 originals independently verified, one release-page HTTP403 retained. Partial attempt exited2; this is not a whole capture pass. Native source inspection remains eligible; rights/page transport held.
+
+- Budget2022 native observation: `budget-2022-native-inspection-20261018.json`;17/8headers,6568/1015occupied rows, source-preserving definitions and exact inspected-report hashes. No facts/rights admission;2022profile implementation and qualification pending.
+
+- Budget2022 implementation prerequisites: `budget-2022-profile-implementation-20261018.json`; exact native definition equality, six new contracts and corrected540-case affected assurance. Actual-source/full/hosted qualification pending; zero facts admitted at this checkpoint.
+
+- Actual Budget 2022 qualifications: `budget-2022-native-qualification-20261018.json`; expenditure307/8289 and revenue64/1024 facts/lineage, complete6568/1015row accounting, repeats and CLI/MCP/common parity, plus unchanged prior2024expenditure/2023revenue packages. Full/hosted/protected gates pending.
+
+- Original local full attempt: `budget-2022-assurance-20261018.json`;900s test-stage cap at99%, all6newcases observed passed, no observed failures, no final coverage/suite/all32pass claim. Native proofs/source/code unchanged; all32clean-hosted qualification and protected delivery required.

@@ -294,7 +294,7 @@ repository validation command. External gates block only their affected task.
   `bronze-checkpoint-contracts.md`.
 - [~] Establish per-vintage source-layout baselines from retained Silver
   workbook inventories and captured official PDF page structures, linked to
-  capture identities and Bronze fixity. Workbook evidence fingerprints six of
+  capture identities and Bronze fixity. The retained 2026-10-02 workbook baseline fingerprints six of its
   74 captured sources; BEFU-2026 and HYEFU-2025 show observed layout variation
   under their shared extraction profile. PDF evidence now fingerprints all 59 retained captured PDFs, including three
   default-readable encrypted originals previously excluded. All 56 previously
@@ -2303,7 +2303,7 @@ Budget2023native source profiles delivered throughPR719/720. This closes the
 bounded Budget-family census/normalization slice; other2023source families,
 rights eligibility, joins and wider phase gates remain unqualified.
 
-- [~] Diagnose the three retained encrypted-PDF layout exclusions using the
+- [x] Diagnose the three retained encrypted-PDF layout exclusions using the
   default reader without credentials. Repair false exclusions only where normal
   page access is evidenced; preserve genuine password-required exclusions and
   original bytes. Reuse existing baselines and verify unchanged previously
@@ -2311,12 +2311,43 @@ rights eligibility, joins and wider phase gates remain unqualified.
 
 The PDF parser fix qualifies all59retained layouts with two byte-identical
 builds, all56prior rows unchanged and zero unavailable. See
-readable-pdf-layout-qualification-20261018.json. Full harness and protected
-delivery remain pending; the bounded task stays in progress until delivery.
+readable-pdf-layout-qualification-20261018.json. Original local/hosted32stage
+assurance and protectedPR721 delivery passed; the bounded PDF task is complete,
+while broader workbook and source-health coverage remain open.
 
 Local original32stage assurance and v1/v2 source-health integration pass;
 see readable-pdf-layout-assurance-20261018.json and
 readable-pdf-source-health-qualification-20261018.json. Both report modes
 repeat with only3PDFstate changes against the current-context control;
-CPI449label evidence is retained. Exact-head hosted/protected delivery remains
-required before closing the bounded PDF task.
+CPI449label evidence is retained. Exact-head hosted/protected delivery passed
+throughPR721; see readable-pdf-layout-delivery-20261018.json.
+
+
+- [~] Reconcile the registered Budget2022 expenditure/revenue source pair
+  against its exact official release, preserved source bytes, periods, native
+  definitions/layout and item-level rights evidence. Reuse existing retained
+  captures where verified; preserve new eligible bytes only through the bounded
+  capture core with CAS/WARC/readback. Keep source observation, literal Silver
+  eligibility and analytical/rights admission separate.
+  [M-02, M-04, M-06, M-11, M-18; AC-03, AC-04, AC-09, AC-16]
+
+Budget2022 pair preservation and native structure/definitions are verified;
+17/8headers and6568/1015occupied rows. The page transport403 is retained and
+Conductor consulted. Next add dedicated hash-bound2022profiles through the
+existing parsers, keeping previous profiles/output bytes unchanged; qualify
+actual repeats/common/CLI/MCP, run the harness and deliver a focusedPR before
+closing this bounded slice. No rights, currency or period-start inference.
+
+Budget2022 actual profiles qualify307expenditure/64revenue observations with
+all6568/1015source rows accounted, no rejected rows, two byte-identical builds
+and CLI/MCP/common parity. Prior2024expenditure/2023revenue packages reproduce
+all four files. See budget-2022-native-qualification-20261018.json. Native page
+HTTP403 remains a precise route-specific gap; full and protected delivery
+remain pending before closing this bounded slice.
+
+The required original local harness ran onf479a3bd and reached99% before
+the unchanged900s test cap. No local full pass/coverage claim; all6newcases
+passed with0observedfailures. Native/repeat/prior/source/code pins remain
+unchanged. See budget-2022-assurance-20261018.json. Deliver a focusedPR with
+explicit disclosure; require original all32stages on3clean hosted platforms,
+7exact-head checks and resolved review before protected merge/prune.

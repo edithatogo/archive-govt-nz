@@ -3771,3 +3771,26 @@ PDF layout review: encryption metadata alone did not establish inaccessible page
 - PDF cohort self-review: all 56 prior recorded rows match exactly; three default-readable sources add geometry-only descriptors. Required-password fixture remains excluded. No source recapture, rights claim or financial extraction. Native qualification passed; full/hosted delivery pending.
 
 - PDF final local review: original all32stage harness passes. Source-health control explicitly separates pre-existing CPI context changes from the3PDFstate delta; both schema versions repeat and CPI449label evidence is preserved. Old reports/originals unchanged. First stale-input comparison failure preserved. No actionable code finding remains; exact-head hosted checks and protected delivery are still pending.
+
+- PR721 final delivery review: exact-head7checks and all32stages on all3platforms verified;0unresolved threads/CodeQL alerts. Normal protected merge ancestry/equal-tree/zero-unique guards pass. Stale remote-tracking cleanup assertion corrected after fresh remote-absence proof. Primary and all original/native evidence retained.
+
+- Budget2022 capture review: distinguish complete workbook CAS/WARC proof from terminal page403; do not repeat successful files or weaken access controls. Source page web metadata is observational only, without a native page-transport receipt. Conductor consulted; independent source-native work continues.
+
+- Budget2022 native review: actual layouts fit the existing literal named-column contracts, but require independent edition/hash/B3/period/row profiles. Decode JSON display strings before comparison; all existing shared non-edition definitions match. Preserve earlier-edition output bytes, unknown currency/start and rights holds. Page403 is separate from eligible local source inspection/normalization.
+
+- Budget2022 implementation review: source identity/row/period metadata is edition-specific, while parser logic is reused. Native literals independently matched; two added schema profiles leave the entire prior schema unchanged when removed. Retain first failure logs, including wrong copied locator and schema/unknown-year fixture drift. Do not claim actual-source or full qualification from focused tests.
+
+- Actual-source review: both 2022 native profiles pass with zero rejected rows, complete row accounting, all original columns, semantic holds and exact entry-point parity. Earlier 2024 expenditure and 2023 revenue products reproduce byte-for-byte. Terminal processes and all frozen inputs verified; no original recapture or rights promotion. Full assurance and protected delivery remain open.
+
+- Full-attempt review: preserve original900s local test cap at99% with no invented pass or coverage result. Native/current/old-product byte proofs and source/code/runtime pins remain unchanged. Use the established run-before-PR path with explicit disclosure, all32stages on3clean platforms,7exact-head checks and resolved review before merge. No branch/gate weakening.
+
+
+- PR722 review correction (routing): all seven original-head checks passed,
+  but unresolved thread PRRT_kwDOTo2MOM6tqRuj correctly identified missing
+  Budget2022 routing in the shared registry and legacy workbook normalizer.
+  Regression reproduced with empty common records (1failed/1passed/4deselected);
+  route the exact edition through its pinned registration/normalizer. Keep the
+  legacy generic adapter fail-closed and all currency/start/rights holds.
+  New affected tests, actual-source route parity and full/exact-head hosted
+  assurance are required before resolving the finding and protected delivery.
+  Earlier native and local timeout receipts remain historical evidence.

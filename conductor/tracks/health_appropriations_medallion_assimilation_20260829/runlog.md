@@ -8176,3 +8176,162 @@ This cohort excludes later separate Budget registry additions and does not
 claim whole-census completeness, legal rights, financial extraction or phase
 completion. Post-full changes are evidence/reports only; exact-head hosted
 assurance and protected delivery remain required.
+
+### 2026-10-18 — PR721 delivered and integrated topic pruned
+
+All seven checks passed on5a6f1be1. Downloaded exact-head CI39118879174
+logs independently verify all32original stages on Ubuntu/macOS/Windows
+(8044/8044/8038tests). No unresolved review threads or open CodeQL alerts.
+Normal protected merge2fa3183b at10:40:20Z is fetched onorigin/main; checked
+head and merge are ancestors with equal a5bbb5bc trees and zero unique topic
+commits/patches. Clean primary fast-forwarded; local/GitHubtopic absent. The
+initial cleanup assertion identified one stale tracking ref: explicit-main
+fetch --prune did not remove it. Fresh remote-absence/ancestry checks preceded
+removal of only that tracking ref. Final all-ref absence and one clean primary
+verify; failure/follow-up receipts and hosted logs are retained by hash.
+
+Next branch starts at the verified main commit; no source work started before
+cleanup completed. Next bounded slice is the registered Budget2022 pair, whose
+official release identity was read during CI waiting. Original-source capture,
+native units/layout, rights and Silver/Gold admission are not inferred from the
+release page. Root retains sole broad/native launch ownership under the
+unchanged Conductor serializer. No unrelated FOI/dependency work is selected.
+
+### 2026-10-18 — Budget2022 release and retained-capture reconciliation
+
+Observed the exact Treasury release (19May2022, updated2June2022, FY2022/23,
+superseded) and the two registered workbook URLs. Page June-year labels cover
+2018–2021actuals,2022estimatedactual,2023budget; native units/definitions/rights
+remain unverified. Six committed inventory/modern capture receipts have zero
+exact URL/filename hits; all360bounded first primary WARC headers were readable
+with zero candidate targets. This is not global alias/absence proof. Preserve
+the working observation and bounded reconciliation pins. Next capture the exact
+release page and pair via existing core into exclusive private CAS/WARC receipts,
+then verify native content; no source-admission or rights promotion yet.
+
+### 2026-10-18 — Budget2022 workbook pair preserved; release-page403 held
+
+Root serialized capture1 on d0b186cd exited2(session68262), now terminal and
+kernel lease free. Both registered originals are HTTP200 with independent
+CAS/fixity/WARC-response bindings: expenditure406f7434(920766bytes),
+revenue6f395e69(105054bytes). The exact release page returned one terminal
+HTTP403; preserve its failure/attempt receipts and do not retry unchanged.
+All frozen code/runtime/evidence pins verified after failure. Initial private
+recipe lint line-length errors were corrected before the launch; lint/types/help
+then pass. Permanent capture-assurance-1 copies verify by hash.
+
+Conductor solution requested for a permitted alternate evidence route or exact
+fail-closed disposition, without bypass or rights inference. Root retains sole
+launch ownership; independent native workbook inspection continues from the two
+verified CAS objects. No original recapture, monetary extraction, rights
+admission or external publication occurred.
+
+### 2026-10-18 — Budget2022 native layout/definition evidence verified
+
+Frozen8e75070d/tree931caf8a native-inspection1 exited0(session35993). Both
+reports are inspected; actual terminal, unchanged code/runtime/evidence/source
+pins and kernel release verify. Expenditure RawData6569x17 (6568occupied
+rows); revenue1016x8 (1015occupied),0blank. Native definitions establish
+literal $000 and June-year ends2018–2023, preserving Actuals/EstimatedActual/
+MainEstimates. All8shared expenditure definitions match; all4non-B3revenue
+definitions match. B3edition text is separate and must be pinned exactly,
+including native spacing; JSON rendering escapes are not source characters.
+
+This supports dedicated2022profiles through existing parsers, with edition
+row bounds6568/1015. Existing2023/2024/2025/2026profiles must remain
+unchanged. No monetary facts, ISO currency, annual start, rights eligibility,
+Gold or publication admitted. Inert media hashes are not a legal review.
+Conductor page403 solution remains pending; this affects only native page
+transport evidence. Permanent native-inspection-assurance-1 copies verify by
+hash. See budget-2022-native-inspection-20261018.json.
+
+### 2026-10-18 — Budget2022 profiles and focused contracts
+
+Added a thin hash-bound2022expenditure profile through the existing shared
+parser, plus2022revenue metadata/dispatch/row cap through its existing parser.
+Closed source operations and saved schema expose both profiles. All source
+definition literals equal the inspected cells (including NBSP/double spaces);
+row caps6568/1015 and source/edition/locator bindings are specific. Legacy
+assumed-currency expenditure refuses2022, as it already did2023/2024.
+
+Red2fail/4deselected in4.11s. Six new contract cases cover periods, semantic
+holds, full reviewed row envelopes/overflow and3binding failures per source.
+Initial green caught a copied b23filename in the new expenditure locator;
+corrected to the registered b22source, then6passed17.95s. Initial broader
+focused run:643pass/10skip/2fail175.40s. Failures are retained: generated
+transformation enum lacked2IDs and the unsupported-year fixture still used
+now-reviewed2022. Regenerated the committed schema from the existing runtime
+projection and moved only the unknown-vintage example to2021; corrected
+affected suites540pass/10skip32.90s. Source bindings/gates were not weakened.
+Ruff/format/types pass;66schemas/56docs validate. Removing only the2new schema
+profiles/transformation IDs yields exact origin/main schema equality.
+Actual-source repeat/common/CLI/MCP and prior-edition bytes, full original
+harness and protected delivery remain required before admission/completion.
+Only6new manual contract cases;80%floor/caps/health checks unchanged.
+
+### 2026-10-18 — Budget 2022 actual-source qualifications passed
+
+Frozen aa111e69/tree da22dd9d expenditure native1 exited 0 (session 23538):
+307 facts / 8,289 lineage links; all 6,568 rows accounted (6,261 out of scope,
+zero blank/rejected). Two four-file builds are identical, actual CLI/MCP
+preflights agree and leave the target absent, explicit CLI writing matches, and
+common facts/lineage/losses agree. A retained 2024 expenditure reconstruction
+matches its previously qualified four files exactly. Summary SHA
+fca8b3def6dcfe80cb24b31d7d09131c152aaed8d4328f104a29071cadd1def1.
+
+Revenue native1 on the same head/tree exited 0 (session 40857): 64 facts /
+1,024 lineage links; all 1,015 rows accounted (951 out of scope, zero blank/
+rejected). Both four-file builds, CLI/MCP/read-only preflight, explicit CLI
+write and common facts/lineage/losses agree. Actual 2023 revenue reconstruction
+matches all four qualified oracle files. Both processes are terminal; frozen
+code/runtime/evidence/source pins and independently released kernel leases
+verify. Permanent native-assurance copies are hash-checked.
+
+No source recapture, inferred ISO currency/annual start, netting, analytical
+join, rights eligibility or publication. Page HTTP 403 is a separate retained
+route-specific unavailable disposition; Conductor advice remains requested.
+Follow-on public qualification/status updates are documentation only; their
+frozen producer snapshots remain available at aa111e69. Original full harness
+and exact-head hosted/protected delivery remain required.
+
+### 2026-10-18 — Pre-full test-helper typing correction
+
+Targeted typing of the new fixture exposed one str/bool argument ambiguity:
+its generic string context could bind the normalizer's optional dry_run bool.
+Pass the four existing observation fields explicitly; production code and all
+qualified source inputs/products are unchanged. The type failure is retained
+in profile-test-types-1.log. Corrected typing/format/lint pass; all six new
+contracts pass again in 13.75s. Original full assurance follows this test-only
+and documentation checkpoint; native producer aa111e69 remains authoritative.
+
+### 2026-10-18 — Budget 2022 original local harness timeout retained
+
+Original ./scripts/validate.sh on f479a3bd/tree098be895 exited124 (session2468)
+at the unchanged900s test cap,99% observed progress. Lock/Conductor/format/lint/
+types passed; no final test/coverage summary or all32stage local pass exists.
+All6new2022contracts were observed passed and no FAILED entries occurred.
+Exact observed counts and log hash are retained in budget-2022-assurance-
+20261018.json. Parent/checker are absent; kernel release and all frozen code/
+runtime/source/native/repeat/prior-package pins verify after terminal failure.
+Permanent assurance-failed-1 copies are hash-checked. No same-host replay,
+cap/health-check/coverage/test or branch-rule weakening.
+
+The repository requires running the local harness beforePR and green required
+automation before merge; it does not require claiming a local pass. Following
+the established PR718/720 path, disclose the timeout in a focused reviewablePR
+and qualify the unchanged original32stages on clean hosted Ubuntu/macOS/Windows,
+all7exact-head checks and review resolution before protected merge. Both actual
+source qualifications and prior-byte proofs remain valid and separate.
+
+
+- PR722 review correction (routing): all seven original-head checks passed,
+  but unresolved thread PRRT_kwDOTo2MOM6tqRuj correctly identified missing
+  Budget2022 routing in the shared registry and legacy workbook normalizer.
+  Regression reproduced with empty common records (1failed/1passed/4deselected);
+  route the exact edition through its pinned registration/normalizer. Keep the
+  legacy generic adapter fail-closed and all currency/start/rights holds.
+  New affected tests, actual-source route parity and full/exact-head hosted
+  assurance are required before resolving the finding and protected delivery.
+  Earlier native and local timeout receipts remain historical evidence.
+
+Routing correction focused result: 63passed in143.11s across2022, shared registry and legacy Budget suites; Ruff/format pass and pinned-interpreter Pyright0errors/0warnings. Initial Pyright without explicit interpreter misresolved installed dependencies; corrected --pythonpath .venv/bin/python, no dependency/code suppression. Actual workbook and refreshed full gates pending.
