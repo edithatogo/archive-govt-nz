@@ -54,6 +54,9 @@ from archive_govt_nz.domains.health_appropriations.fiscal_analytical_operations 
 )
 from archive_govt_nz.domains.health_appropriations.gold_export import export_gold
 from archive_govt_nz.domains.health_appropriations.inspection import inspect_workbook
+from archive_govt_nz.domains.health_appropriations.native_workbook_inspection import (
+    inspect_native_workbook,
+)
 from archive_govt_nz.domains.health_appropriations.operations import (
     HealthAppropriationsStateError,
     inspect_archive_status,
@@ -406,6 +409,24 @@ def health_appropriations_extract_source(
     )
     _emit_json({"command": "health-appropriations-extract-source", **result})
     return 2 if result["status"] == "failed" else 0
+
+
+@app.command(name="health-appropriations-inspect-native-workbook")
+def health_appropriations_inspect_native_workbook(
+    *, cas_root: Path, source_id: str, observed_at: str
+) -> int:
+    """Inspect a known retained workbook's native profiles without creating state.
+
+    CAS_ROOT contains the SHA256-prefix directories. SOURCE_ID is
+    nz-treasury-befu-2025-expense-workbook or
+    nz-treasury-hyefu-2024-expense-workbook. OBSERVED_AT is the explicit
+    normalization observation time, including its timezone.
+    """
+    result = inspect_native_workbook(
+        cas_root, source_id=source_id, observed_at=observed_at
+    )
+    _emit_json({"command": "health-appropriations-inspect-native-workbook", **result})
+    return 0 if result["status"] == "inspected" else 2
 
 
 @app.command(name="health-appropriations-build-context-gold")

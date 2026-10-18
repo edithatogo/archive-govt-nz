@@ -2105,7 +2105,7 @@ integrated parent head.
   tree. Zero unique commits; clean topic refs pruned; primary retained. Native
   parity, preserved census history and successful full2 remain scoped evidence.
 
-- [~] Compose the retained legacy BEFU2025/HYEFU2024 forecast summaries and
+- [x] Compose the retained legacy BEFU2025/HYEFU2024 forecast summaries and
   detail profiles behind one selector per physical workbook using an explicit
   typed compound-result variant. Preserve separate native schemas, profile
   identities and complete lineage/disposition/excluded-sheet evidence; retain
@@ -2131,3 +2131,19 @@ integrated parent head.
   schema/context checks now pass native2 and all 32 full stages on 1bbd8577:
   8,012 tests passed (12 skipped), with every native output byte unchanged.
   Fresh exact-head hosted assurance and protected delivery remain pending.
+
+
+  Delivered PR #715 at 02ca851b after seven exact-head successes on 6de7028d,
+  resolved metadata provenance review, strict protected merge and fetched
+  ancestry/equal-tree/zero-unique/clean verification. Topic refs pruned; primary
+  worktree retained. See compound-native-delivery-20261018.json.
+
+- [~] Expose closed, read-only native workbook inspection through the existing
+  CLI/MCP operation architecture. Resolve the two reviewed expense workbook
+  identities from CAS; preserve compound/profile/schema/selection/count/hash/
+  excluded-sheet/hold evidence in a bounded typed response without raw rows or
+  caller paths. Preserve the existing single-profile HTTPS operation contract.
+  Reuse strengthened compound admission; validate actual CLI/JSON-RPC parity,
+  read-only behavior, bad inputs/fixity and sibling hold. Native/full and hosted
+  qualification remain separate delivery gates. [M-05, M-07, M-15, M-18;
+  AC-03, AC-05, AC-08, AC-13, AC-16]

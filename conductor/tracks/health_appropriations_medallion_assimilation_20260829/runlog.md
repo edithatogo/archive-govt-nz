@@ -7649,3 +7649,25 @@ changed. Full2 passes all 32 original stages: 8,012 tests passed, 12 skipped,
 and original secret gates pass. Preserve the original review failure, earlier
 scanner failure and historical green runs. This evidence-only update follows
 release; new exact-head hosted checks and review resolution are still required.
+
+
+### 2026-10-18 — Compound delivery complete; native inspection implementation
+
+PR #715 merged at 02ca851b with checked head 6de7028d and equal efc3867c tree.
+All seven checks passed, review threads resolved, CodeQL alerts zero; normal
+strict branch policy preserved. Fresh ancestry/zero-unique/clean guards passed,
+topic refs pruned and primary checkout retained. Begin the already reviewed
+read-only native-workbook CLI/MCP consumer using the existing operation patterns.
+No new native/full qualification run has started for this increment.
+
+
+### 2026-10-18 — Native workbook operation, CLI and MCP contracts
+
+The missing-operation import failed before implementation. Add a closed known-
+source CAS inspector and integrate it through the existing CLI/domain-MCP routes.
+Return schema/count/hash/exclusion/hold evidence; omit rows and caller paths.
+Preserve the legacy HTTPS SourceRequest and all qualified native producers.
+Fifteen operation checks pass, including independent native-writer hash controls,
+fixity/path refusal and actual CLI/JSON-RPC parity under filesystem/network denial
+for inspected/held/failed states. Prior broader integration passed 55 tests;
+latest operation refinements and strict typing pass. No native/full run started.

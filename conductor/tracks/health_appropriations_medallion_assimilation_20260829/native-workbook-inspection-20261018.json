@@ -1,0 +1,35 @@
+{
+  "base": "02ca851b931b92cfb815ba4861b923423c2147f7",
+  "canonical_promotion": "not_performed",
+  "effect_denial": "filesystem write APIs, nonmemory Parquet destinations and network calls denied during actual CLI/MCP cases after dependency warmup",
+  "fixity": "known hash CAS resolution; changed/missing objects, traversal and symlink components rejected",
+  "focused_integration": {
+    "log_sha256": "fa62cf6186ee2f313e6c8923a04144527df78127c60058858d91fdf6a35a5a62",
+    "passed": 55,
+    "scope": "prior to final extra write/unknown-argument split and network-denial assertions; production behavior unchanged except CLI help prose",
+    "seconds": 83.54
+  },
+  "focused_operation": {
+    "log_sha256": "5efd3b8d5009da561ab17bbc6983ffceac86df131660e0543fe890923cd3c8d5",
+    "passed": 15,
+    "seconds": 46.47
+  },
+  "full": "not_started",
+  "interfaces": [
+    "shared_read_only_operation",
+    "actual_cli_parser",
+    "initialized_mcp_jsonrpc"
+  ],
+  "legacy_https_source_request": "unchanged",
+  "native": "not_started",
+  "native_profiles": 4,
+  "physical_sources": 2,
+  "publication": "not_performed",
+  "response": "closed bounded JSON; physical selection/native kind/profile/schema/count/hash/exclusion/hold evidence; no rows or caller paths",
+  "rights_state": "not_evaluated",
+  "source_ids": [
+    "nz-treasury-befu-2025-expense-workbook",
+    "nz-treasury-hyefu-2024-expense-workbook"
+  ],
+  "status": "implemented_focused_qualified_native_full_pending"
+}
