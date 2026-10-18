@@ -26,10 +26,15 @@
     "seconds": 0.27,
     "typing": "0_errors"
   },
-  "full_harness": "pending",
-  "native_cohort_repeat": "pending",
+  "follow_on_evidence": [
+    "readable-pdf-layout-qualification-20261018.json",
+    "readable-pdf-source-health-qualification-20261018.json",
+    "readable-pdf-layout-assurance-20261018.json"
+  ],
+  "full_harness": "passed_all32_on_a74b5954",
+  "native_cohort_repeat": "passed_59_of_59",
   "numeric_facts_emitted": 0,
-  "prior_recorded_layout_parity": "pending",
+  "prior_recorded_layout_parity": "passed_56_rows_unchanged",
   "protected_delivery": "pending",
   "publication": "not_performed",
   "pypdf_version": "6.19.0",
@@ -82,7 +87,7 @@
   ],
   "rights": "not_evaluated",
   "source_census_sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272",
-  "status": "parser_fixes_focused_verified_native_cohort_pending",
+  "status": "diagnosis_and_native_local_assurance_passed_protected_delivery_pending",
   "summary_pins": {
     "default_reader_diagnostic": "2395ac29899baf53221982273154e5a0e10d60683130ea2408e7036af1e7e161",
     "descriptor_diagnostic": "31e5975f31b17521fa65bd1d7fd8fc73db0a7fab675fdb250c9c769572c379ee"

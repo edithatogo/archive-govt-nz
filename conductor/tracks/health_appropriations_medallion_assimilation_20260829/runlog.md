@@ -8151,3 +8151,28 @@ This is geometry-only evidence for the59PDF capture cohort, not financial
 normalization, rights admission or broader census completion. No source
 recapture, credentials, explicit decrypt call or2016–2026preflight replay.
 Full original harness and protected delivery remain pending.
+
+### 2026-10-18 — PDF local full and source-health integration verified
+
+Original ./scripts/validate.sh on a74b5954/tree2b24996c passed all32stages
+(session60033, exit0):8060passed/14skipped/18warnings/426.69s,97.14%coverage
+against unchanged80%floor,66schemas/56docs,parity9/9,allmutation/hygiene/
+benchmark/audit/licence/secret/SBOM113 gates. LogSHA
+260f787294f45a6434b444cac3d668855a28bad3cc31c6f66a668ca4a9b02818.
+Actual terminal, all frozen code/runtime/native/source pins and released kernel
+lease independently verified; permanent assurance-1 copies hash-checked.
+
+Source-health native1 exited1(session14775): comparison to the retained v1
+report also saw already-merged CPI period wording and context SHA/base changes.
+No production defect; preserve all four repeated candidate files and failure
+receipt. Fresh native2 used the current context with the retained old baseline
+as its control, explicitly checked those pre-existing context differences, then
+proved only3layout states and the baseline pin change. Both v1/v2 repeat JSON/
+Markdown identically and validate schemas.143resources/11context vintages; CPI
+449labels/422numeric/27publisherNA unchanged. Session94646exit0, all pins
+including14CPIbody/WARC originals unchanged, kernel lease free. Dated v2
+JSON/Markdown retained separately; original report/census remain unchanged.
+This cohort excludes later separate Budget registry additions and does not
+claim whole-census completeness, legal rights, financial extraction or phase
+completion. Post-full changes are evidence/reports only; exact-head hosted
+assurance and protected delivery remain required.

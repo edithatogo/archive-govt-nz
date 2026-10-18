@@ -2313,3 +2313,10 @@ The PDF parser fix qualifies all59retained layouts with two byte-identical
 builds, all56prior rows unchanged and zero unavailable. See
 readable-pdf-layout-qualification-20261018.json. Full harness and protected
 delivery remain pending; the bounded task stays in progress until delivery.
+
+Local original32stage assurance and v1/v2 source-health integration pass;
+see readable-pdf-layout-assurance-20261018.json and
+readable-pdf-source-health-qualification-20261018.json. Both report modes
+repeat with only3PDFstate changes against the current-context control;
+CPI449label evidence is retained. Exact-head hosted/protected delivery remains
+required before closing the bounded PDF task.
