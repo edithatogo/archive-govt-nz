@@ -8293,3 +8293,13 @@ route-specific unavailable disposition; Conductor advice remains requested.
 Follow-on public qualification/status updates are documentation only; their
 frozen producer snapshots remain available at aa111e69. Original full harness
 and exact-head hosted/protected delivery remain required.
+
+### 2026-10-18 — Pre-full test-helper typing correction
+
+Targeted typing of the new fixture exposed one str/bool argument ambiguity:
+its generic string context could bind the normalizer's optional dry_run bool.
+Pass the four existing observation fields explicitly; production code and all
+qualified source inputs/products are unchanged. The type failure is retained
+in profile-test-types-1.log. Corrected typing/format/lint pass; all six new
+contracts pass again in 13.75s. Original full assurance follows this test-only
+and documentation checkpoint; native producer aa111e69 remains authoritative.

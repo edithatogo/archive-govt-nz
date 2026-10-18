@@ -20,7 +20,14 @@
     "initial_red_failed": 2,
     "initial_red_seconds": 4.11,
     "new_contract_cases_passed": 6,
-    "new_contract_seconds": 17.95
+    "new_contract_seconds": 17.95,
+    "post_native_test_helper_typing_correction": {
+      "correction": "Pass four typed source-observation fields explicitly; do not suppress typing.",
+      "failure_evidence_retained": "profile-test-types-1.log",
+      "passed": 6,
+      "production_code_changed": false,
+      "seconds": 13.75
+    }
   },
   "full_harness": "pending",
   "native_qualification": "budget-2022-native-qualification-20261018.json",
@@ -106,5 +113,5 @@
     }
   },
   "status": "native_qualified_full_and_protected_delivery_pending",
-  "typing": "0_errors"
+  "typing": "0_errors_production_and_new_tests"
 }

@@ -118,7 +118,14 @@ def normalize(kind: str, path: Path, output: Path, digest: str, **changes: str) 
         **changes,
     }
     if kind == "revenue":
-        return revenue.normalize_budget_revenue(path, output, **context)
+        return revenue.normalize_budget_revenue(
+            path,
+            output,
+            expected_sha256=context["expected_sha256"],
+            source_locator=context["source_locator"],
+            source_vintage=context["source_vintage"],
+            observed_at=context["observed_at"],
+        )
     module = import_module(
         "archive_govt_nz.domains.health_appropriations.budget_expenditure_2022"
     )
