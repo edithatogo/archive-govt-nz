@@ -3670,19 +3670,19 @@ still pass on the resulting PR head.
 
 ## Budget 2024 source and revenue profile review — 2026-10-18
 
-- Actual source metadata establishes the native thousands/June-year contract;
-  it does not establish ISO currency or a period-start date. The new revenue
-  profile retains those unknowns and source-separated revenue semantics.
-- Actual1004 occupied rows exceed the legacy1000-data-row envelope. The fix
-  binds this one2024 source hash/locator and transformation to a1004 bound;
-  legacy2025/2026 limits and outputs remain unchanged. No truncation or row
-  filtering makes the source fit a smaller limit. New synthetic boundaries,
-  binding refusals and common-dispatch checks pass. Actual-source replay pending.
-- Both exact embedded images were visually identified as identical CC BY
-  badges; original Intro notices retain their emblem restriction. Rights
-  declarations are evidenced, not promoted to blanket legal/publication approval.
-- Capture, native definition and extraction stages remain distinct. Dated
-  historical registers and original bytes are retained. Census/index are
-  reconciled to current receipts; source-native facts/Gold/publication are not
-  claimed from inspection alone. Full original harness and exact-head hosted
-  checks are still required before delivery. No policy/coverage gate changed.
+- Actual definitions establish literal thousands and June year ends. The profile
+  retains unknown ISO currency and period starts, with source-separated revenue.
+- The 1,004 occupied rows exceed the legacy bound. The fix gives the exact
+  captured hash/official locator and 2024 transformation their own 1,004-row
+  bound, preserving 2025/2026 limits. Binding, boundary and common-dispatch
+  tests pass; actual source accounting includes row 1,005 without truncation.
+- Both embedded images are identical CC BY badges. Native Intro notices retain
+  emblem restrictions; the source declaration is evidence, not blanket legal
+  or publication approval. Originals and historical observations are unchanged.
+- Two actual-source builds match in all four files, and common dispatch matches
+  facts, lineage and losses. All 32 original harness stages pass on 64d40613.
+  Subsequent edits contain only track receipts/documentation, checked separately.
+  See [qualification](./budget-2024-revenue-qualification-20261018.json).
+- No actionable local finding remains. Exact-head hosted checks and protected
+  delivery remain pending. The 2024 expenditure profile, wider census and
+  final track review remain incomplete. No quality or branch gate is weakened.

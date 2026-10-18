@@ -502,8 +502,10 @@ they are not current-state assertions.
 
 - [Read-only native workbook inspection](./native-workbook-inspection-20261018.md) — delivered PR #716; actual Windows qualification, seven exact-head successes and verified cleanup.
 
-- [Budget 2024 expenditure/revenue census](./source-census-budget-2024-20261018.md) — originals preserved; native headers/definitions and item notices observed; source-bound 2024 revenue qualification pending.
+- [Budget 2024 expenditure/revenue census](./source-census-budget-2024-20261018.md) — originals preserved; native headers/definitions and item notices observed; source-bound 2024 revenue locally qualified; hosted delivery pending.
 
 - [Budget 2024 structural inventory](./budget-2024-layout-20261018.json) and [native definitions/item notices](./budget-2024-definitions-20261018.json).
 
 - [Source/measure review with Budget 2024 retained-source overlay](./source-measure-review-20261018-budget-2024.json) — 19 existing series retained; wider edition and analytical gaps remain explicit.
+
+- [Budget 2024 revenue native/full qualification](./budget-2024-revenue-qualification-20261018.json) —66facts, all1004rows accounted, byte-identical repeats; hosted delivery pending.

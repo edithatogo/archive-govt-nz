@@ -2208,3 +2208,9 @@ profile without truncation, vintage substitution or silently changing limits.
   unknown ISO currency, source-row losses and original OOXML numeric tokens.
   Item notices/media evidence and canonical/publication claims stay separate.
   [M-03, M-04, M-06, M-11, M-18; AC-03, AC-04, AC-05, AC-16]
+
+
+Local qualification passes on 64d40613: actual-source repeat/common parity
+(66 facts, all 1,004 rows) and all 32 original harness stages. See
+`budget-2024-revenue-qualification-20261018.json`. Exact-head hosted checks
+and protected delivery remain pending; wider phase/rights/Gold gates stay open.

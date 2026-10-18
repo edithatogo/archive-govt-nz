@@ -2958,3 +2958,17 @@ The full log and terminal receipt hashes are pinned in the existing checkpoint.
 Native1 remains valid because producer/tests/runtime are unchanged; no native
 repeat. Original failed full1 and census binding remain retained. Hosted checks,
 normal merge and pruning are pending; no rights or analytical admission change.
+
+
+## Budget 2024 revenue qualification — 2026-10-18
+
+The [qualification receipt](./budget-2024-revenue-qualification-20261018.json)
+binds the actual retained source, two identical four-file builds, common-dispatch
+parity and all 32 original full-harness stages to head 64d40613/tree 754e4eb6.
+It records 66 facts, 1,056 lineage entries, all 1,004 source rows and zero rejects;
+8,034 tests passed with 14 skipped. The source remains unchanged and the root
+owner verified actual exit 0 and lease release. Full log SHA-256:
+`10b3a06c1d7ef958922e8d865c730cf90779d4655d09e43add61010ef37bf5a8`.
+Only track receipts/documentation follow that qualification. Exact-head hosted
+checks and protected delivery remain pending. ISO currency, period starts,
+rights adjudication, Gold joins and publication are separately bounded.

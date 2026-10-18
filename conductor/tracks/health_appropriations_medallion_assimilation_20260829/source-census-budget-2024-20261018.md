@@ -38,8 +38,11 @@ or publication approval. Coordinates and decoded-text/media hashes are retained 
 The new 2024 revenue profile binds the captured hash and exact locator, preserves
 the native 2020–2025 amount-type map and all 1,004 source-row dispositions, and
 retains literal OOXML amount tokens. Its edition-specific bound does not change
-the 2025/2026 1,000-row limits. Focused synthetic contracts pass; actual-source,
-full-harness and PR qualification remain pending. Expenditure still needs its
+the 2025/2026 1,000-row limits. Actual-source qualification emits 66 Health facts and 1,056 lineage entries,
+with 938 explicit non-Health dispositions and zero rejected rows. Two complete
+four-file builds are byte-identical and common dispatch agrees on facts,
+lineage and losses. All 32 original local harness stages pass; hosted PR
+qualification remains pending. Expenditure still needs its
 own source-specific qualification. No Gold currency, denominator, deflator,
 classification mapping, netting or analytical join is approved by this census.
 The wider 2024 source families and the overall historical census remain incomplete.

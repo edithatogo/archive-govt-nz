@@ -7766,3 +7766,18 @@ Ruff findings (extra early return and broad pytest raises) were corrected
 without exclusions; strict basedpyright0. Native item media is a CC BY badge,
 not an assumed Treasury logo. Original source snapshots and historical locator
 register remain unchanged. Actual-source qualification and full harness follow.
+
+
+Budget 2024 revenue qualification on64d40613/tree754e4eb6 is complete locally.
+Root76502 exited0 and independently verified actual terminal/release, clean
+head/tree and all implementation/evidence pins. Native source:66facts,
+1056lineage,1004 source rows2–1005,938 outsideHealth,0blank/rejected; all4
+files match across two builds and common fact/lineage/loss parity passes.
+Original ./scripts/validate.sh passes all32 stages:8034tests/14skipped/18warnings,
+316.41s,97.18%coverage (unchanged80%floor),66schemas/56docs,parity9/9,allmutations,
+hygiene/audit/licences/secrets/SBOM113 pass. Full log SHA
+10b3a06c1d7ef958922e8d865c730cf90779d4655d09e43add61010ef37bf5a8.
+See budget-2024-revenue-qualification-20261018.json. Receipts are added after
+lease release; no production/runtime/input-contract change follows qualification.
+Exact-head hosted checks and protected delivery remain pending. ISOcurrency,
+period starts, Gold/rights/publication and broader census boundaries stay explicit.
