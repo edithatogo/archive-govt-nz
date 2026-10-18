@@ -7920,3 +7920,23 @@ hashes. No alias equivalence, body identity or global absence is inferred.
 Both official release links resolve to the registered XLSX URLs; the web text
 reader cannot decode XLSX, which is not evidence of source unavailability.
 No workbook body has been captured or numerically admitted by this slice.
+
+
+### 2026-10-18 — Budget 2023 originals preserved
+
+The private import probe failed on the tools namespace. An attempted launcher
+failed at module import before capture-core entry; its output directory was
+absent and no source network/CAS write began. Logs/configuration were retained
+in launcher-failed-1. Explicit repository PYTHONPATH fixed the import probe; a
+fresh guarded attempt then captured exactly the two registered URLs.
+
+Capture2 on head 3ca17fe4/tree23028309 exited 0 (session76446), with unchanged
+frozen inputs and verified kernel release. Expenditure is933,618bytes/SHA
+bee0e4cd776f0511d271ec842ade355661772c804d12239035e32ad61db06da9;
+revenue is104,743bytes/SHA
+e2b00177bffd233fd404f5db989a576408f249fc81ef2342f31d95ca452c019b.
+Both returnedHTTP200. Independent CAS fixity, WARC response/body binding,
+receipt hashes and copied working evidence all pass. The exact capture-input
+census remains retained; later source observations do not rewrite it.
+No native units, item rights, Silver facts or analytical joins are admitted.
+Next inspect the retained bytes using the existing bounded workbook tools.

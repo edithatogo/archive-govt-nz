@@ -516,4 +516,6 @@ they are not current-state assertions.
 - [PR717 delivery](./budget-2024-revenue-delivery-20261018.json) — protected merge and verified topic cleanup.
 
 - [PR 718 delivery](./budget-2024-expenditure-delivery-20261018.json) — protected merge, full hosted assurance and verified cleanup.
-- [Budget 2023 census](./source-census-budget-2023-20261018.json) — release observed; reuse, native definitions and capture checks pending.
+- [Budget 2023 census](./source-census-budget-2023-20261018.json) — originals privately preserved; native definitions, layout and item rights pending.
+
+- [Budget 2023 capture](./budget-2023-capture-20261018.json) — source fixity, WARC binding and receipts independently verified.

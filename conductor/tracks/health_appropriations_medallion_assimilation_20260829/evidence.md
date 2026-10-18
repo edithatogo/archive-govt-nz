@@ -3023,3 +3023,11 @@ release observation identifies the two existing locators, period labels and
 declared page licence. Four inventory surfaces and 360 first WARC headers
 have no exact matches; that bounded check establishes neither global absence
 nor alias equivalence. Source bodies, native units and item notices are pending.
+
+
+[Budget 2023 capture](./budget-2023-capture-20261018.json) records two privately
+preserved originals, independently verified CAS/WARC bindings and receipt
+hashes. The failed module-import attempt is retained and had no source-side
+operation. Capture2 is terminal 0 with a released kernel lease. Native layout,
+units and item-level rights remain pending; no numerical or publication claim
+is made from transport success.

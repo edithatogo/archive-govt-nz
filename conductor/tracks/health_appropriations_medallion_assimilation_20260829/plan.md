@@ -2276,3 +2276,9 @@ See `budget-2024-expenditure-delivery-20261018.json`.
   profiles only after edition-specific contracts and repeat-build evidence.
   Keep currency, period starts, joins and publication unqualified where source
   evidence is absent. [M-02, M-04, M-06, M-07, M-11; AC-03, AC-04, AC-05, AC-09]
+
+
+Budget 2023 expenditure/revenue are privately preserved with HTTP200 and
+independent CAS/WARC/receipt verification. See budget-2023-capture-20261018.json.
+The exact working census is retained at3ca17fe4; no source-layout or numeric
+admission follows from transport. Native definitions/layout/rights are next.
