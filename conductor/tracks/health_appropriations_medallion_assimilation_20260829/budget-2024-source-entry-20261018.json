@@ -1,5 +1,85 @@
 {
-  "actual_source_entry_native": "pending; compare with immutable prior qualified package rather than rerun independent direct API proof",
+  "actual_source_entry_native": {
+    "directory": "budget-2024-census-20261018/source-entry-1",
+    "exit": 0,
+    "qualified_head": "89fdb3c952c24b71529047a5deda887d2c3d36c3",
+    "qualified_tree": "8eb3dbbfebf45d1f8a0f626abf8146db299dde7e",
+    "result": {
+      "CLI_MCP_preflight_equal": true,
+      "actual_CLI_preflight": {
+        "counts": {
+          "blank": 0,
+          "input": 1004,
+          "normalized": 66,
+          "out_of_scope": 938,
+          "rejected": 0
+        },
+        "profile": "budget-revenue-2024/v1",
+        "publication_state": "local_validation_only",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-source-operation/v1",
+        "source_object_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
+        "status": "preflight_passed",
+        "transformation_id": "budget-2024-health-revenue/v1",
+        "verification_scope": "adapter_execution_only"
+      },
+      "actual_CLI_write": {
+        "counts": {
+          "blank": 0,
+          "input": 1004,
+          "normalized": 66,
+          "out_of_scope": 938,
+          "rejected": 0
+        },
+        "output_sha256": {
+          "field_lineage.parquet": "1e2899de12df259df83af0d11a4058474a68ad252e7f22a2b5ccc06a1e96b566",
+          "revenue_facts.parquet": "0bc2c893daab424b75018ad13772c962b8c5a0d44a5658ab70502beee52486be",
+          "row_dispositions.parquet": "92dfdbb8ef48047567556301d276306154d33f862da0143e884e7ebdab4686fa"
+        },
+        "profile": "budget-revenue-2024/v1",
+        "publication_state": "local_validation_only",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-source-operation/v1",
+        "source_object_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
+        "status": "written_local",
+        "transformation_id": "budget-2024-health-revenue/v1",
+        "verification_scope": "adapter_execution_only"
+      },
+      "actual_MCP_preflight": {
+        "counts": {
+          "blank": 0,
+          "input": 1004,
+          "normalized": 66,
+          "out_of_scope": 938,
+          "rejected": 0
+        },
+        "profile": "budget-revenue-2024/v1",
+        "publication_state": "local_validation_only",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-source-operation/v1",
+        "source_object_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
+        "status": "preflight_passed",
+        "transformation_id": "budget-2024-health-revenue/v1",
+        "verification_scope": "adapter_execution_only"
+      },
+      "canonical_Gold_admission": "not_performed",
+      "four_files_equal_prior_qualified_package": {
+        "MANIFEST.json": "d30a173f4a55ce6724571650c2f10b99aac7cc0b9b211063ddef86f75437a9ca",
+        "field_lineage.parquet": "1e2899de12df259df83af0d11a4058474a68ad252e7f22a2b5ccc06a1e96b566",
+        "revenue_facts.parquet": "0bc2c893daab424b75018ad13772c962b8c5a0d44a5658ab70502beee52486be",
+        "row_dispositions.parquet": "92dfdbb8ef48047567556301d276306154d33f862da0143e884e7ebdab4686fa"
+      },
+      "preflight_output_absent": true,
+      "publication": "not_performed",
+      "reference": "revenue-1/first",
+      "rights": "not_evaluated",
+      "source_bytes_unchanged": true,
+      "source_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
+      "status": "passed"
+    },
+    "root_launch_session": 68595,
+    "summary_sha256": "09dfcfd899f191553b4ddf21fa2c380b6da4387e47f907ade364f4dcc7a4676d"
+  },
   "broader": {
     "log_sha256": "4c0201b43ab809af4bdbbc5a35db01acd846134aa303eea9fecbf3e0d0537a98",
     "passed": 595,
@@ -8,7 +88,34 @@
     "skipped": 10
   },
   "canonical_Gold_admission": "not_performed",
-  "corrected_original_full": "pending",
+  "corrected_original_full": {
+    "CAS_MB_per_second": 385.02,
+    "SBOM_components": 113,
+    "all_stages_passed": 32,
+    "coverage_floor_percent": 80,
+    "coverage_percent": 97.18,
+    "differential_parity": "9/9 zero divergence",
+    "directory": "budget-2024-census-20261018/assurance-2",
+    "exit": 0,
+    "head": "89fdb3c952c24b71529047a5deda887d2c3d36c3",
+    "log_sha256": "d587161040e4414e2dc2d6e73167d161328b757dd13942ffac3c5e62aff3951b",
+    "passed_gates": [
+      "mutations",
+      "hygiene",
+      "audit",
+      "licences",
+      "secrets",
+      "SBOM"
+    ],
+    "representative_documents": 56,
+    "schemas": 66,
+    "skipped": 14,
+    "snapshots": 2,
+    "test_seconds": 429.01,
+    "tests_passed": 8038,
+    "tree": "8eb3dbbfebf45d1f8a0f626abf8146db299dde7e",
+    "warnings": 18
+  },
   "finding": "2024 normalizer was absent from source-operation registry/vintage map/static schema, so supported CLI/MCP could not reach it",
   "fix": "add existing2024 profile/vintage/result-schema branch and source-binding validation before parser; retain read-only MCP and explicit local-write contract",
   "focused": {
@@ -35,5 +142,16 @@
     "ruff": "passed after style corrections without exclusions",
     "typing": "0 errors/warnings"
   },
-  "status": "source_entry_fix_implemented_qualification_pending"
+  "status": "source_entry_native_and_original_full_qualified_hosted_pending",
+  "terminal_verification": {
+    "actual_source_owned_processes_absent": [
+      66450,
+      66586,
+      66587
+    ],
+    "clean_head_tree_and_all_pins_verified": true,
+    "kernel_lock_acquired_nonblocking_then_released": true,
+    "owner_postflight_sha256": "65e1428ad48cd924e489fd9b1bb49804006c83514983e657f6342ed77939a1f7",
+    "scope": "actual process/exit/kernel/pin readback; not a conversation-status inference"
+  }
 }

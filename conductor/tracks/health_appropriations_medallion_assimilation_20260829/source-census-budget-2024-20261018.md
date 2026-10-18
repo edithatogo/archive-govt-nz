@@ -46,3 +46,11 @@ qualification remains pending. Expenditure still needs its
 own source-specific qualification. No Gold currency, denominator, deflator,
 classification mapping, netting or analytical join is approved by this census.
 The wider 2024 source families and the overall historical census remain incomplete.
+
+
+The supported `budget-revenue-2024/v1` source-operation entry is now qualified
+through the actual CLI parser and initialized MCP JSON-RPC preflight. Default
+preflight creates no output package; explicit CLI writing reproduces all four
+previously qualified files exactly. The corrected tree 89fdb3c9 passes all 32
+original harness stages (8,038 tests, 14 skipped). Earlier direct-only evidence
+is retained; fresh hosted qualification and protected PR delivery remain open.

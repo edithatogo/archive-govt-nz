@@ -182,11 +182,11 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census-budget-2024-20261018.json",
-      "sha256": "d0bb14d3a45edb1ccdaf42873f4a1e343eaa04e732b9e894455fc1068f8d91a1"
+      "sha256": "2c02b0a739841ee5f51a74f8eee1aa103e8df3d30f7bd8de9a2c48d5a5d8ef96"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census-budget-2024-20261018.md",
-      "sha256": "aa27aa53e819fa99288afc3da5854a2767e3249c87037c80c91850f9da3ba29b"
+      "sha256": "6f9098f182a7afc2bf0cd318c8e64850acbec4d2bfaee1caa0c6380079440361"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/budget-2024-revenue-qualification-20261018.json",
@@ -194,7 +194,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/budget-2024-source-entry-20261018.json",
-      "sha256": "185d50af5af4a27a4760c886cc79fb1871c12018449a71ee925f57bcf2870d71"
+      "sha256": "33c9e127581f51e691ac94a0996ac62a4fd9165476ece448b74814b279db280f"
     }
   ],
   "observed_at": "2026-10-18T04:01:39.119701+00:00",
@@ -357,7 +357,7 @@
       "native_unit": "$000",
       "prior_series_external_reverification": "not_reperformed_by_this_slice",
       "private_Silver_revenue_facts": 66,
-      "revenue_profile": "prior direct-native/full proof retained; supported CLI/MCP entry fix implemented and pending actual-source/full qualification",
+      "revenue_profile": "direct and supported CLI/MCP actual-source entry qualified with unchanged4files; corrected original full32stage pass on89fdb3c9; fresh hosted delivery pending",
       "revenue_source_rows": 1004,
       "scope": "Dated private transport/native evidence overlay; historical locator register and official source-census records unchanged",
       "source_ids": [

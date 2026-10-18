@@ -13,14 +13,13 @@
   "gaps": [
     "ISO_currency_not_verified_no_analytical_join_approved",
     "2024_expenditure_source_specific_profile_pending",
-    "broader_2024_source_families_not_complete",
-    "corrected_CLI_MCP_entry_actual_source_and_full_qualification_pending"
+    "broader_2024_source_families_not_complete"
   ],
   "issue_date": "2024-05-30",
   "layout_evidence": "budget-2024-layout-20261018.json",
   "method": "web text reader; workbook requests unsupported by reader, not source-unavailable evidence",
   "native_layout_units_currency": "native_headers_and_thousands_June_year_definitions_verified_ISO_currency_unknown",
-  "next": "Qualify corrected CLI/MCP source-operation entry against retained2024 source and original full harness before PR717 delivery",
+  "next": "Deliver corrected PR717 with fresh exact-head hosted gates; then advance2024 expenditure source-specific qualification and remaining source families",
   "observed_at": "2026-10-18T01:05:03.940753+00:00",
   "page_caveats": [
     "2023/24 Supplementary Estimates excluded",
@@ -65,7 +64,7 @@
       "family": "revenue_and_capital_receipts",
       "field_lineage_rows": 1056,
       "literal_unit": "$000",
-      "native_qualification": "source_native_repeat_common_parity_and_original_full_qualified",
+      "native_qualification": "direct_and_CLI_MCP_entry_qualified_four_file_parity_corrected_original_full_passed",
       "object_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
       "private_Silver_facts": 66,
       "publisher_display_size": "102.15 KB",
@@ -99,7 +98,7 @@
   "signed_date": "2024-05-30",
   "source_entry_evidence": "budget-2024-source-entry-20261018.json",
   "source_url": "https://www.treasury.govt.nz/publications/data/budget-2024-data-estimates-appropriations-2024-25",
-  "status": "direct_native_qualified_source_operation_fix_pending_qualification",
+  "status": "source_entry_native_and_local_full_qualified_hosted_pending",
   "title": "Budget 2024 Data from the Estimates of Appropriations 2024/25",
   "updated_date": "2024-06-21"
 }

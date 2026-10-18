@@ -7807,3 +7807,25 @@ after correcting test kwargs typing and splitting a combined assertion, with
 no lint exclusions or runtime gate changes. Root independently confirmed
 runtime/static schema equality and preserved2025/2026 behavior. Corrected
 actual-source entry and original full harness remain pending.
+
+
+Corrected source-entry qualification passes on89fdb3c9/tree8eb3dbbf: actual
+CLI/MCP read-only preflight parity and explicit CLI writing reproduce the
+prior four native files exactly. Corrected original ./scripts/validate.sh
+passes all32 stages:8038tests/14skipped/18warnings in429.01s,97.18%coverage
+(unchanged80%floor),66schemas/56docs,parity9/9,allmutations/hygiene/audit/
+licences/secrets/SBOM113 pass. Full log SHA
+d587161040e4414e2dc2d6e73167d161328b757dd13942ffac3c5e62aff3951b.
+Entry summary SHA09dfcfd899f191553b4ddf21fa2c380b6da4387e47f907ade364f4dcc7a4676d.
+Both actual source/full exit markers are0; source-owned processes ended and
+nonblocking kernel acquisition/release plus clean head/tree/all pins verify
+release. Earlier proofs remain retained. Post-qualification changes are track
+receipts/docs only. Fresh exact-head hosted checks and protected delivery follow.
+
+
+Final receipt scan flagged the literal status `passed` under a composite
+metadata key containing a gate name. The failed scanner report is retained
+privately before modification. Represent the same passing gates as an explicit
+list, preserving the secret-stage evidence and every scanner policy. No secret
+value, baseline entry, allowlist or scanning rule is added or changed. Re-run
+the original scanner and evidence-binding checks on this representation.

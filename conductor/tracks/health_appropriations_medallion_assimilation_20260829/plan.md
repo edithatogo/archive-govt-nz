@@ -2221,3 +2221,17 @@ and protected delivery remain pending; wider phase/rights/Gold gates stay open.
   Preserve source hash/locator binding, read-only MCP and explicit local writes.
   Verify actual-source entry paths and corrected original full harness before
   PR717 delivery. [M-04, M-07, M-15, M-18; AC-03, AC-04, AC-13, AC-16]
+
+
+Corrected source-entry qualification passes on89fdb3c9/tree8eb3dbbf: actual
+CLI/MCP read-only preflight parity and explicit CLI writing reproduce the
+prior four native files exactly. Corrected original ./scripts/validate.sh
+passes all32 stages:8038tests/14skipped/18warnings in429.01s,97.18%coverage
+(unchanged80%floor),66schemas/56docs,parity9/9,allmutations/hygiene/audit/
+licences/secrets/SBOM113 pass. Full log SHA
+d587161040e4414e2dc2d6e73167d161328b757dd13942ffac3c5e62aff3951b.
+Entry summary SHA09dfcfd899f191553b4ddf21fa2c380b6da4387e47f907ade364f4dcc7a4676d.
+Both actual source/full exit markers are0; source-owned processes ended and
+nonblocking kernel acquisition/release plus clean head/tree/all pins verify
+release. Earlier proofs remain retained. Post-qualification changes are track
+receipts/docs only. Fresh exact-head hosted checks and protected delivery follow.

@@ -3688,11 +3688,21 @@ still pass on the resulting PR head.
   final track review remain incomplete. No quality or branch gate is weakened.
 
 
-### Subsequent product-entry finding (open)
+### Product-entry finding — resolved locally; hosted delivery pending
 
-Conductor verified that the direct normalizer was not reachable through the
-registered source operation. The missing2024 registry/vintage/schema wiring
-is an actionable product defect. The previous no-finding statement describes
-the earlier direct/native evidence review; it does not close this finding.
-Correct the existing entry path, verify CLI/MCP context and side-effect contracts,
-and qualify the corrected frozen code before merge. Preserve earlier evidence.
+Conductor found the missing 2024 source-operation registry/vintage/schema entry.
+The correction preserves the source hash/locator guard before parsing and the
+closed result schema. Four focused routing/refusal cases and schema equality
+pass; the broader source-operation/revenue suites pass 595 cases (10 skipped).
+
+Actual retained-source qualification exercises CLI preflight, MCP JSON-RPC
+preflight and explicit CLI writing. Preflight leaves the target absent; all
+four written files match the previously qualified package. The corrected head
+89fdb3c9 passes all 32 original harness stages with 8,038 tests passed, 14 skipped.
+The source and earlier proof remain unchanged. Actual process termination,
+clean head/tree/pins and the released kernel lock are independently verified.
+See [entry qualification](./budget-2024-source-entry-20261018.json).
+
+The local product-entry finding is resolved. Fresh hosted checks and protected
+delivery remain pending; earlier 9f250a41 successes describe that earlier head.
+No rights, currency, period-start, Gold or publication gate is promoted.
