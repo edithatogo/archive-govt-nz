@@ -509,3 +509,5 @@ they are not current-state assertions.
 - [Source/measure review with Budget 2024 retained-source overlay](./source-measure-review-20261018-budget-2024.json) — 19 existing series retained; wider edition and analytical gaps remain explicit.
 
 - [Budget 2024 revenue native/full qualification](./budget-2024-revenue-qualification-20261018.json) —66facts, all1004rows accounted, byte-identical repeats; hosted delivery pending.
+
+- [Budget 2024 source-operation entry correction](./budget-2024-source-entry-20261018.json) — supported CLI/MCP registration/schema gap fixed locally; actual-source and corrected full qualification pending.

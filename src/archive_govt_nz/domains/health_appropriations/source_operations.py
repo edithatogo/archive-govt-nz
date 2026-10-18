@@ -69,6 +69,12 @@ PROFILES = MappingProxyType(
             "population_facts.parquet",
             "row_dispositions.parquet",
         ),
+        "budget-revenue-2024/v1": (
+            budget_revenue.TRANSFORMATION_2024,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "revenue_facts.parquet",
+            "row_dispositions.parquet",
+        ),
         "budget-revenue-2025/v1": (
             budget_revenue.TRANSFORMATION,
             ("input", "normalized", "out_of_scope", "blank", "rejected"),
@@ -414,6 +420,7 @@ PROFILES = MappingProxyType(
     }
 )
 _REVENUE_VINTAGES = {
+    "budget-revenue-2024/v1": "Budget-2024",
     "budget-revenue-2025/v1": "Budget-2025",
     "budget-revenue-2026/v1": "Budget-2026",
 }
@@ -756,6 +763,9 @@ def _validate(request: SourceRequest, *, dry_run: bool) -> None:
     )
     if request.profile in _REVENUE_VINTAGES and (
         request.source_vintage != _REVENUE_VINTAGES[request.profile]
+        or not budget_revenue._source_binding(  # noqa: SLF001 - same edition contract
+            request.source_vintage, request.source_locator, request.expected_sha256
+        )
     ):
         raise ValueError(_INVALID_SOURCE_OPERATION)
     if request.profile in _GDP_VINTAGES and (

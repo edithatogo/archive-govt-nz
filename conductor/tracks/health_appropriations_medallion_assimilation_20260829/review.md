@@ -3686,3 +3686,13 @@ still pass on the resulting PR head.
 - No actionable local finding remains. Exact-head hosted checks and protected
   delivery remain pending. The 2024 expenditure profile, wider census and
   final track review remain incomplete. No quality or branch gate is weakened.
+
+
+### Subsequent product-entry finding (open)
+
+Conductor verified that the direct normalizer was not reachable through the
+registered source operation. The missing2024 registry/vintage/schema wiring
+is an actionable product defect. The previous no-finding statement describes
+the earlier direct/native evidence review; it does not close this finding.
+Correct the existing entry path, verify CLI/MCP context and side-effect contracts,
+and qualify the corrected frozen code before merge. Preserve earlier evidence.

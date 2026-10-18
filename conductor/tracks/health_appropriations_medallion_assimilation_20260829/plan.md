@@ -2214,3 +2214,10 @@ Local qualification passes on 64d40613: actual-source repeat/common parity
 (66 facts, all 1,004 rows) and all 32 original harness stages. See
 `budget-2024-revenue-qualification-20261018.json`. Exact-head hosted checks
 and protected delivery remain pending; wider phase/rights/Gold gates stay open.
+
+
+- [~] Review fix: expose budget-revenue-2024/v1 through the existing closed
+  source-operation registry/vintage validation/result schema and CLI/MCP routes.
+  Preserve source hash/locator binding, read-only MCP and explicit local writes.
+  Verify actual-source entry paths and corrected original full harness before
+  PR717 delivery. [M-04, M-07, M-15, M-18; AC-03, AC-04, AC-13, AC-16]

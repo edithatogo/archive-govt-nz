@@ -7781,3 +7781,29 @@ See budget-2024-revenue-qualification-20261018.json. Receipts are added after
 lease release; no production/runtime/input-contract change follows qualification.
 Exact-head hosted checks and protected delivery remain pending. ISOcurrency,
 period starts, Gold/rights/publication and broader census boundaries stay explicit.
+
+
+## PR 717 product-entry review correction — 2026-10-18
+
+Conductor found a real product-entry gap after the direct API qualification:
+`source_operations.PROFILES`, `_REVENUE_VINTAGES` and the committed operation
+schema still omitted budget-revenue-2024/v1, leaving CLI/MCP unreachable.
+The original 64d40613 full/native evidence is retained for that earlier scope.
+A focused CLI/MCP route regression with the actual reviewed locator/digest
+fails as expected: CLI returns2/invalid_source_operation (1 failed,536 deselected,
+9.32s). Routing uses a declared synthetic backend probe; actual-source CLI/MCP
+qualification follows separately. Add the existing profile/schema/validation
+wiring and pin refusal before parser invocation. New behavior requires corrected
+native entry-point and full-harness qualification; prior green checks are not
+sufficient to merge the unfinished entry path. No hosted job is cancelled merely
+because of elapsed time, and no source is recaptured or relabelled.
+
+
+Entry-point correction focused green:5passed/532deselected in3.03s, including
+actual pinned-locator/digest routing probes and schema equality. The backend
+mock is explicitly route-only. Broader source-operation/revenue/dispatch/
+projection suites:595passed/10skipped in47.41s. Ruff and strict typing pass
+after correcting test kwargs typing and splitting a combined assertion, with
+no lint exclusions or runtime gate changes. Root independently confirmed
+runtime/static schema equality and preserved2025/2026 behavior. Corrected
+actual-source entry and original full harness remain pending.

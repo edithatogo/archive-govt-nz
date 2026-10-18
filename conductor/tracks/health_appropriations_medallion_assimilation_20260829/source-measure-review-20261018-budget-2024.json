@@ -182,7 +182,7 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census-budget-2024-20261018.json",
-      "sha256": "b5892cb3bd1fda73662b80459be79ee161b0f189c62128b698f7edf35a66afc5"
+      "sha256": "d0bb14d3a45edb1ccdaf42873f4a1e343eaa04e732b9e894455fc1068f8d91a1"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census-budget-2024-20261018.md",
@@ -191,6 +191,10 @@
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/budget-2024-revenue-qualification-20261018.json",
       "sha256": "ec004ebbd1f4b855ea49e0f563655b0f4afc2e4fba2cf46383eb9eba23fc7861"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/budget-2024-source-entry-20261018.json",
+      "sha256": "185d50af5af4a27a4760c886cc79fb1871c12018449a71ee925f57bcf2870d71"
     }
   ],
   "observed_at": "2026-10-18T04:01:39.119701+00:00",
@@ -353,7 +357,7 @@
       "native_unit": "$000",
       "prior_series_external_reverification": "not_reperformed_by_this_slice",
       "private_Silver_revenue_facts": 66,
-      "revenue_profile": "actual-source native repeat/common parity and original full32stage qualified; hosted pending",
+      "revenue_profile": "prior direct-native/full proof retained; supported CLI/MCP entry fix implemented and pending actual-source/full qualification",
       "revenue_source_rows": 1004,
       "scope": "Dated private transport/native evidence overlay; historical locator register and official source-census records unchanged",
       "source_ids": [

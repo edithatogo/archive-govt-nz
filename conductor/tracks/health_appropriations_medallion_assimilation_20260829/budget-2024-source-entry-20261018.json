@@ -1,0 +1,39 @@
+{
+  "actual_source_entry_native": "pending; compare with immutable prior qualified package rather than rerun independent direct API proof",
+  "broader": {
+    "log_sha256": "4c0201b43ab809af4bdbbc5a35db01acd846134aa303eea9fecbf3e0d0537a98",
+    "passed": 595,
+    "scope": "existing source-operation and revenue/dispatch/projection suites",
+    "seconds": 47.41,
+    "skipped": 10
+  },
+  "canonical_Gold_admission": "not_performed",
+  "corrected_original_full": "pending",
+  "finding": "2024 normalizer was absent from source-operation registry/vintage map/static schema, so supported CLI/MCP could not reach it",
+  "fix": "add existing2024 profile/vintage/result-schema branch and source-binding validation before parser; retain read-only MCP and explicit local-write contract",
+  "focused": {
+    "deselected": 532,
+    "passed": 5,
+    "scope": "four new routing/binding probes plus existing schema equality contract; mocked backend is routing proof only",
+    "seconds": 3.03
+  },
+  "prior_full_evidence_retained": "budget-2024-revenue-qualification-20261018.json",
+  "prior_qualified_head": "64d4061371fe4aa3470afb9b86742bc6f5f10daf",
+  "profile": "budget-revenue-2024/v1",
+  "publication": "not_performed",
+  "red": {
+    "deselected": 536,
+    "failed": 1,
+    "log_sha256": "923c61aab927fb80c3484ee9fb09d3b64b518d58a144bf9f411a3fc8f4f24ef6",
+    "result": "expected CLI exit2 invalid_source_operation; product profile unsupported",
+    "seconds": 9.32
+  },
+  "rights": "not_evaluated",
+  "source_locator": "https://www.treasury.govt.nz/sites/default/files/2024-06/b24-revenue-data.xlsx",
+  "source_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
+  "static": {
+    "ruff": "passed after style corrections without exclusions",
+    "typing": "0 errors/warnings"
+  },
+  "status": "source_entry_fix_implemented_qualification_pending"
+}
