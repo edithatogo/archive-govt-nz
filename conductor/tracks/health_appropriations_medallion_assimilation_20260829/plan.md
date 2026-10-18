@@ -2163,3 +2163,10 @@ integrated parent head.
   Two regression controls fail on the prior guard; the focused suite now passes
   17 cases with two real NTFS cases pending Windows. Updated native/full and
   exact-head hosted qualification, review resolution and delivery remain open.
+
+
+  Corrected source e1379ed3 now passes fresh native2 and all 32 original full3
+  stages: 8,029 tests, 14 skipped, with unchanged native bytes and runtime limits.
+  Preserve the exact overlapping-process chronology and owner terminal release.
+  Local skips do not qualify the two real Windows junction cases; final hosted
+  Windows, seven exact-head checks, review resolution and delivery remain pending.

@@ -7696,3 +7696,15 @@ before snapshot reads. The operation suite passes 17 tests; two actual NTFS
 cases are Windows-only and pending hosted assurance. Preserve prior native/full2
 receipts as historical evidence, with new native/full and exact-head checks
 required. No source bytes, native producers, deadlines or protections changed.
+
+
+### 2026-10-18 — Junction correction native2/full3 qualification
+
+Root-owned original session 14676 terminated 0 on clean e1379ed3/f7005846.
+Fresh replay preserves two report bytes and all 16 native oracle hashes. Full3
+passes every original stage and 8,029 tests (14 skipped); two actual NTFS cases
+remain for hosted Windows. Runtime/caps and all native producers are unchanged.
+Retain the competing-process overlap from before replay through early full3,
+its later detection and graceful verified stop; do not imply the host was idle
+or infer an Archive failure. Owner verified original processes absent and kernel
+slot free. Evidence-only finalization follows release; hosted/review gates remain.

@@ -1,6 +1,6 @@
 # Read-only native workbook inspection
 
-Status: Windows junction review correction passes focused checks; updated native/full/hosted qualification pending.
+Status: Windows junction correction passes fresh native replay and original full assurance; actual Windows and hosted delivery pending.
 
 Use the existing operation/CLI/MCP architecture and the qualified compound
 source dispatch. The only source IDs are the two reviewed expense workbooks.
@@ -102,3 +102,24 @@ two real NTFS junction cases are Windows-only and remain pending its hosted lane
 Ruff, formatting and strict typing pass. Earlier native/full2 evidence remains
 retained for the prior implementation. Updated native/full qualification and
 fresh exact-head hosted checks are required before resolving the thread or merge.
+
+
+The corrected source at `e1379ed30e81c22b072919115a2657cd2b5f18ef`
+(tree `f700584609c7700130707d7b7c99b8f508386544`) now passes fresh native
+attempt 2: two actual-source replays across all three routes, both reports byte-
+identical to the accepted digest and all 16 original native files unchanged.
+Original full attempt 3 passes all 32 stages: 8,029 tests, 14 skips, 18 warnings,
+336.61 seconds for the test stage, 66 schemas/56 documents, nine parity cases,
+all mutation/hygiene
+and supply-chain gates. Runtime, four workers and original limits are unchanged.
+Conductor verified terminal 0, clean exact head/tree, terminated original
+processes and kernel-slot release. The two real NTFS cases are not qualified by
+this macOS run; hosted Windows and final exact-head checks remain required.
+
+Retain the exact environment chronology: an unguarded competing process began
+before replay/early full validation and was detected later. Its owner stopped it;
+Conductor verified those processes absent. Native byte/fixity/effect checks and
+all full stages passed; no failure or repeat is inferred from overlap alone.
+The corrected timeline and owner readback are retained in `assurance-3` alongside
+all new logs, the red regression and source-qualified receipts. Prior evidence
+remains preserved. Rights, source values and publication status are unchanged.

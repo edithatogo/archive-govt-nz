@@ -500,4 +500,4 @@ they are not current-state assertions.
 
 - [Compound carrier checkpoint](./compound-native-recordsets-20261018.json); carrier, native dispatch, bounded envelopes and v1 regression checks pass96; source composition/native/full assurance pending.
 
-- [Read-only native workbook inspection](./native-workbook-inspection-20261018.md) — Windows junction review fix passes focused checks; updated native/full/hosted qualification pending.
+- [Read-only native workbook inspection](./native-workbook-inspection-20261018.md) — junction correction passes fresh actual-source replay and original full assurance; Windows/hosted delivery pending.
