@@ -1,6 +1,5 @@
 {
   "committed_schema_equal_runtime": true,
-  "delivery_receipt": "budget-2022-delivery-20261018.json",
   "focused": {
     "corrected_affected_run": {
       "passed": 540,
@@ -31,7 +30,7 @@
     }
   },
   "full_assurance_receipt": "budget-2022-assurance-20261018.json",
-  "full_harness": "original_local_attempts_preserved_with_failures_no_local_full_pass; all32pass_on3hosted_platforms",
+  "full_harness": "original_local900s_test_cap_at99_percent_no_full_pass_claim",
   "native_qualification": "budget-2022-native-qualification-20261018.json",
   "numeric_facts_admitted_at_implementation_checkpoint": 0,
   "profiles": [
@@ -90,7 +89,7 @@
       "source_sha256": "6f395e69b5ee2405f4d9e09455402b07df7c99cce0803152db1dba654333bb92"
     }
   ],
-  "protected_delivery": "merged_PR722_verified_clean_topic_pruned",
+  "protected_delivery": "pending",
   "publication": "not_performed",
   "release_page": "HTTP403_native_page_evidence_pending_Conductor_consulted",
   "representative_documents": 56,
@@ -114,6 +113,6 @@
       "rejected": 0
     }
   },
-  "status": "source_native_qualified_protected_delivery_complete_rights_and_page_transport_hold",
+  "status": "source_native_qualified_local_timeout_retained_hosted_and_protected_delivery_pending",
   "typing": "0_errors_production_and_new_tests"
 }

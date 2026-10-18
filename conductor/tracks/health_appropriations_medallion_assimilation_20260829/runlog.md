@@ -8365,3 +8365,14 @@ lease is free after terminal execution. See context-reader-startup-assurance-
 require exact-head original all32stages on3clean hosted platforms, all7checks
 and resolved review before normal protected merge/prune. Actual full-source
 CLI30s timing and unrun MCP remain separate open Phase8 evidence, not complete.
+
+
+PR723 P2 provenance correction: restore the Budget2022 qualification,
+implementation and dated census snapshots byte-for-byte to merged95f9f638,
+and retain the reader implementation checkpoint at producer5f0a94df.
+Transitions/current status live in separate versioned projections and the
+new delivery/native/assurance receipts. This supersedes earlier in-place
+status-reconciliation wording; no historical checkpoint is rewritten to
+claim later merge. See budget-2022-state-20261019-v1.json and
+context-reader-startup-state-20261019-v1.json. Code/source/product bytes and
+previous qualification results unchanged; original local timeout preserved.

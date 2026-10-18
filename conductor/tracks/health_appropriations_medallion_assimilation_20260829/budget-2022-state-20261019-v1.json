@@ -1,0 +1,24 @@
+{
+  "ISO_currency_period_start_analytical_Gold_publication": "not_admitted",
+  "as_of_utc_date": "2026-10-18",
+  "broader_census_and_track": "incomplete",
+  "delivery_receipt": "budget-2022-delivery-20261018.json",
+  "historical_pre_delivery_checkpoints": {
+    "budget-2022-native-qualification-20261018.json": "81e6e5bb1f4475cfde67ca2667f7d0c84ff62de2bb963ffbe6ceddf3d656cb6d",
+    "budget-2022-profile-implementation-20261018.json": "585c8895c07725416d0ba5be85039aa9462fa670efa834378a2136c77f93edbf",
+    "source-census-budget-2022-20261018.json": "a0bfa379fc308d9d43ca8a3811b17ba46a88bdc6c5397499c00920f2968aaca8"
+  },
+  "merge_commit": "95f9f638c0aa28196675b1988958137dddc4d8a6",
+  "record_policy": "Keep referenced producer/census snapshots immutable; append a new versioned projection for later state changes.",
+  "release_page": "single_native_HTTP403_retained_no_retry",
+  "rights_eligibility": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-current-state/v1",
+  "source_native_facts": {
+    "expenditure": 307,
+    "revenue": 64
+  },
+  "state_type": "versioned_derived_status_projection_not_producer_receipt",
+  "status": "delivered_PR722_rights_and_native_page_transport_hold",
+  "subject": "Budget2022 source-native profiles",
+  "version": 1
+}

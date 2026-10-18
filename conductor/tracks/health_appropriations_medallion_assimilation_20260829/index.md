@@ -563,3 +563,8 @@ they are not current-state assertions.
 - [Reader/API native product proof and explicit CLI timing gap](./context-reader-startup-native-20261018.json)
 
 - [Reader original local assurance attempt](./context-reader-startup-assurance-20261018.json)
+
+- [Budget2022 versioned delivery/status projection](./budget-2022-state-20261019-v1.json)
+- [Reader versioned current-status projection](./context-reader-startup-state-20261019-v1.json)
+
+Producer qualification/implementation and dated census checkpoints retain their pre-delivery state. Later merge and assurance transitions are recorded in separate receipts/projections.

@@ -1,9 +1,8 @@
 {
   "assurance": {
-    "clean_hosted_all32_on3platforms": "passed_exact_head65bf09ac",
-    "delivery_receipt": "budget-2022-delivery-20261018.json",
-    "initial_receipt": "budget-2022-assurance-20261018.json",
-    "local": "both_original_local_attempts_preserved; no_local_full_pass; second_attempt_failures_diagnosed_separately"
+    "clean_hosted_all32_on3platforms": "required_before_merge",
+    "local": "original900s_test_cap_at99_percent_no_full_pass_claim",
+    "receipt": "budget-2022-assurance-20261018.json"
   },
   "capture": {
     "receipt": "budget-2022-capture-20261018.json",
@@ -23,7 +22,7 @@
     "state": "observed_not_yet_normalized",
     "units": "literal $000; ISO currency not asserted"
   },
-  "observation_scope": "Official release observations, retained workbook capture/native layout and source-separated local Silver qualification; no canonical/Gold, ISO currency, period-start, rights or analytical admission",
+  "observation_scope": "Official release identity and registered source pair only; no native bytes/units/rights or numerical admission",
   "publication": "not_performed",
   "registry_sha256": "d285edf070628059ecc43bd6a17353f77e580192f7f3862f95352342001224e4",
   "release": {
@@ -154,5 +153,5 @@
     "receipt": "budget-2022-native-qualification-20261018.json",
     "state": "qualified_source_native_local_Silver_only"
   },
-  "status": "source_native_qualified_and_delivered_PR722_release_page403_and_rights_hold"
+  "status": "source_native_qualified_local_timeout_retained_hosted_delivery_pending_release_page_403"
 }
