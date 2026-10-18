@@ -2082,7 +2082,7 @@ integrated parent head.
   tree. Zero unique commits; clean topic refs pruned; primary retained. Native
   parity and full7951 evidence remain scoped; no whole-unit/rights approval.
 
-- [~] Expose the retained Fiscal2024 historical Health/GDP workbook through
+- [x] Expose the retained Fiscal2024 historical Health/GDP workbook through
   one exact-source common adapter using the existing bounded native parser.
   Preserve106facts,1143lineage rows,1503complete cell dispositions and six
   excluded sheets, exact lexical decimals/annotations/periods and standalone
@@ -2098,3 +2098,36 @@ integrated parent head.
   sheets and all four historical files exactly. Original full2 passes7954tests
   and all32gates on780f3040 after preserving/reconciling the one current census
   code pin. Failed full1 remains retained; hosted delivery remains pending.
+
+
+  Delivered PR #714 at6ad51f9e after all seven named checks passed on a1ff0c71,
+  review threads resolved and fetched checked/merge ancestry with equal2cb2da9b
+  tree. Zero unique commits; clean topic refs pruned; primary retained. Native
+  parity, preserved census history and successful full2 remain scoped evidence.
+
+- [~] Compose the retained legacy BEFU2025/HYEFU2024 forecast summaries and
+  detail profiles behind one selector per physical workbook using an explicit
+  typed compound-result variant. Preserve separate native schemas, profile
+  identities and complete lineage/disposition/excluded-sheet evidence; retain
+  all existing v1 single results and standalone bytes. Reject unsupported
+  consumers, ambiguous selectors, incomplete siblings and schema/profile drift.
+  Verify four native profiles (180facts,1784lineage,4833profile dispositions,
+  four forecast excluded-sheet entries), all16standalone files, two independent
+  dispatch builds and original full/hosted gates. Counts are profile-specific
+  interpretations, not unique physical cell coverage. No canonical, currency,
+  period, mapping or rights promotion. See compound-native-recordsets-20261018.md.
+  [M-05, M-07, M-10, M-18; AC-03, AC-05, AC-08, AC-16]
+
+
+  Native composition now passes two actual-source replays with all 16 native
+  files per run identical to the retained oracle. Original full validation on
+  e596ccd2 passed all 32 stages and 7,993 tests (12 skipped). Native producers,
+  source bytes and reference files are unchanged. Hosted delivery remains
+  pending; the broader common-adapter and semantic tasks stay in progress.
+
+
+  The final review found an unbound native metadata envelope after the earlier
+  hosted checks passed. The guard stopped before merge. The corrected identity/
+  schema/context checks now pass native2 and all 32 full stages on 1bbd8577:
+  8,012 tests passed (12 skipped), with every native output byte unchanged.
+  Fresh exact-head hosted assurance and protected delivery remain pending.

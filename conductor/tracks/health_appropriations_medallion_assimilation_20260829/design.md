@@ -1243,3 +1243,13 @@ when native output parity proves identical behavior. Preserve the prior census
 bytes, reconcile only the reviewed dependency and keep every series/qualification/
 rights/join field unchanged. Include the existing focused census admission checks
 when changing a file listed in its evidence, before the broad harness.
+
+
+Shared forecast/detail physical sources require an explicit compound native
+result with separately named/schema-bound typed recordsets. The canonical
+health-recordset shapes are not a native envelope. Keep old single-result
+protocol/dispatch behavior unchanged; native consumers opt into a discriminated
+result and complete sibling validation. Use original profile-local record IDs
+within source/profile/fact-schema namespaces; retain all native lineage/loss
+fields and reject partial sibling success. See compound-native-recordsets-20261018.md
+for the exact API boundary and native proof requirements.

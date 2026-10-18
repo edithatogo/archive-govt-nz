@@ -51,6 +51,7 @@ from archive_govt_nz.domains.health_appropriations.vote_health_pdf_adapter impor
 if TYPE_CHECKING:
     from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
         AdapterRegistration,
+        CompoundAdapterRegistration,
     )
     from archive_govt_nz.domains.health_appropriations.donor_sqlite_adapter import (
         DonorSQLiteContext,
@@ -211,6 +212,28 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
                 observed_at=historical_workbook.observed_at,
             ),
         )
+    )
+    if len({row.adapter_id for row in registrations}) != len(registrations):
+        message = "duplicate reviewed adapter identity"
+        raise ValueError(message)
+    return tuple(sorted(registrations, key=lambda row: row.adapter_id))
+
+
+def compound_workbook_registrations(
+    contexts: tuple[AdapterContext, ...],
+) -> tuple[CompoundAdapterRegistration, ...]:
+    """Explicit native-only registry; legacy result consumers remain unchanged."""
+    from archive_govt_nz.domains.health_appropriations import (  # noqa: PLC0415 - Native-only import.
+        forecast_detail_source_adapter as native_adapters,
+    )
+
+    registrations = tuple(
+        native_adapters.forecast_detail_source_registration(
+            source_locator=context.source_locator,
+            source_vintage=context.source_vintage,
+            observed_at=context.observed_at,
+        )
+        for context in contexts
     )
     if len({row.adapter_id for row in registrations}) != len(registrations):
         message = "duplicate reviewed adapter identity"

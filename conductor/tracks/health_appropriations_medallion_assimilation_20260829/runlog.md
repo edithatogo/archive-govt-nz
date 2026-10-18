@@ -7530,3 +7530,122 @@ full2 logs/receipts in permanent historical-common-dispatch-20261018 evidence.
 Record the outcome without another native/full run for this documentation delta;
 next create the focused PR, verify seven named exact-head checks, merge normally,
 verify ancestry/tree/zero-unique/clean state and prune only the topic refs.
+
+
+### 2026-10-18 — Compound native result plan after PR714
+
+PR714 delivered and pruned at6ad51f9e after seven named exact-head checks.
+Conductor inspected the remaining shared-source design blocker and recommended
+an explicit compound variant in the existing protocol, preserving native
+schemas and strict v1 consumers. Retain that recommendation and independent
+code/native pins in the external compound case. All16existing files for four
+profiles verify against the committed oracle. Record API/design boundaries
+before implementation; no native/full run has started for this increment.
+
+
+### 2026-10-18 — Compound carrier and closure contracts
+
+The missing-carrier import failed as expected. Native contracts/validator now
+preserve separate Arrow schemas, nested metadata, differing decimal scales and
+allowed nulls; recursively reject nulls in non-nullable fields. Profile/table/
+schema identities, local fact/lineage/disposition closure, atomic held admission
+and bounded carrier shape are explicit. Sixteen focused carrier cases and
+existing v1 protocol/dispatch/registry/census checks pass79tests1.64s. Ruff,
+format and strict typing pass. Source dispatch integration and both workbook
+compositions remain pending; no native/full run has started.
+
+
+### 2026-10-18 — Explicit native dispatch boundary
+
+The missing-native-dispatch import failed as expected. Add separate compound
+registration and NativeDispatchResult types plus explicit native select/dispatch
+entry points. Shared private selection enforces duplicate IDs/ambiguity across
+both registration classes; old public APIs keep strict v1 checks and result
+shape. Native dispatch validates all profile/schema/closure invariants before
+return. Nested metadata drift, allowed nulls, required-field nulls and decimal
+scales have explicit contracts. Eighty-five focused/native/v1/census checks pass
+1.85s; Ruff/format/strict typing pass. The two actual workbook compositions and
+required native/full assurance remain pending; no broad launch has occurred.
+
+
+### 2026-10-18 — Compound envelope review finding resolved
+
+Conductor found non-table metadata/excluded/source-loss envelopes bypassed the
+original table-only limits. A behavioural red proved unsupported metadata was
+admitted. Add bounded traversal/count/depth/UTF-8 size accounting, including
+held results and native schema descriptors; cycles/unsupported values fail
+closed and original values remain unchanged. New meaningful envelope cases and
+existing native/v1/census checks pass96tests3.17s, with Ruff/typing clean. Four
+retained manifest metadata objects fit defaults at about36KB/3800nodes each;
+that is metadata-only readback, not compound native assurance. Actual workbook
+compositions and native/full qualification are still pending; no broad launch.
+
+
+### 2026-10-18 — Closed forecast/detail native source composition
+
+Add explicit two-source registrations and independent native profile contracts.
+Both original admissions/projections remain unchanged. Verify all requested
+siblings and hash-bound row controls before exposing tables; any failed sibling
+holds the physical source. Retain complete typed receipts and compute native
+Parquet hashes only in memory, validating before and after. Conductor reviewed
+the composition with no actionable finding. Six source cases and existing
+compound/literal/registry checks pass57tests1.91s; Ruff and strict typing pass.
+Retained-source two-run proof and original full/hosted gates remain pending.
+
+
+### 2026-10-18 — Native compound parity and original full harness pass
+
+The Conductor-owned serialized run on e596ccd2 completed with exit 0. Both
+actual-source replays retained four native profiles, 180 facts, 1,784 lineage
+rows, 4,833 profile dispositions, four excluded-sheet entries and all 16 pinned
+native files per run. Reports repeat identically; original sources and producer
+code are unchanged. The original full harness passed all 32 stages, including
+7,993 tests (12 skipped), schema/parity/mutation and supply-chain gates. Coverage
+remains above the agreed 80% floor. Native/full receipts and logs are retained
+in the external compound evidence directory; exact hashes are recorded in the
+compound validation artifact. Guard released before these evidence-only edits.
+Hosted PR checks, merge and topic-ref cleanup remain pending.
+
+
+### 2026-10-18 — Hosted scanner finding on evidence locator
+
+PR #715 head 4e7ef464 reached the original Ubuntu secret gate after tests,
+schemas, parity, mutation, hygiene, benchmark, audit and licences passed. One
+Base64-entropy finding matched the exact local evidence directory path added
+in the final evidence-only update. Narrow reproduction retained its filename,
+detector and hashed identity; the candidate is a public local path, not a
+credential. Preserve the failed job log and original evidence artifact, then
+replace the nonportable absolute locator with a portable directory identifier.
+Scanner, exclusions, runtime, production code and tests remain unchanged.
+Fresh scanner and hosted exact-head assurance remain required.
+
+The unchanged complete secret gate passes after the locator correction, with
+zero unresolved findings. Conductor state, schemas and hygiene also pass.
+The final documentation delta is separately scanned before commit; all native
+and original full-run implementation evidence remains applicable.
+
+
+### 2026-10-18 — Final merge guard catches metadata admission review
+
+All seven ce7913a4 hosted checks passed, but the final guard stopped before
+merge on the unresolved metadata provenance finding. Two red regressions
+proved empty/foreign manifest identity was admitted. Require trusted native
+metadata schema, profile/source-hash binding and valid locator/vintage/time;
+compare context against every facts row while preserving native values and
+IDs. The closed registration already binds exact source context before parsing.
+Focused corrected/native/v1 checks pass 96 tests in 4.80 seconds; typing and
+lint pass. Earlier green evidence stays scoped to its original implementation.
+Fresh native/full and hosted qualification is pending; the review stays open.
+
+
+### 2026-10-18 — Metadata review fix passes native2 and original full2
+
+Conductor observed session 5538 terminal exit 0 on clean 1bbd8577/tree59e67de,
+verified the original four pins and released the actual kernel lock/freeze.
+Native2 repeats both actual sources twice, matching all 32 products to the 16
+original pins and both report bytes exactly. No native metadata, IDs or values
+changed. Full2 passes all 32 original stages: 8,012 tests passed, 12 skipped,
+18 warnings, 303.49 seconds, 97.18% coverage; schema/parity/mutation/supply-chain
+and original secret gates pass. Preserve the original review failure, earlier
+scanner failure and historical green runs. This evidence-only update follows
+release; new exact-head hosted checks and review resolution are still required.
