@@ -8045,3 +8045,19 @@ production types pass;93Conductortracks/66schemas56documents validate.
 Native verification,2024byte comparison, full assurance and PR delivery are
 still required; no numeric admission or complete-track claim follows from
 these synthetic fixtures. Only named source/code/evidence paths are staged.
+
+
+### 2026-10-18 — Budget2023 expenditure native and2024compatibility pass
+
+Guarded native1 on2a430043/tree7b5f9f40 exited0(session50803). All6,696rows
+accounted:277Health facts,6,419out-of-scope,0blank/0rejected;7,479lineage
+rows. CLI/default-preflight and initialized read-only MCP agree; explicit CLI
+write is identical to the direct four-file package. Common dispatcher facts,
+lineage and losses agree. Rebuilt2024default package matches every byte of
+its prior four-file oracle. Both original sources and all frozen inputs remain
+unchanged. Actual process is terminal and kernel lease independently free.
+A one-second read-only process sample during the long run showed active XML
+parsing; its bounded evidence is retained with the native log/config/recipe.
+No source recapture, currency/start/rights approval, Gold admission or external
+publication occurred. Native-assurance-1 copies verify by hash. Original full
+harness and protected delivery remain pending.

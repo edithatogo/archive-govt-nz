@@ -3043,3 +3043,6 @@ See `budget-2023-revenue-native-20261018.json`: native repeat/dispatcher and act
 
 
 `budget-2023-expenditure-profile-20261018.json` bounds the next profile and records red/green focused checks. Native qualification, unchanged2024package bytes and the original full harness are pending. PR719 delivery is recorded separately in `budget-2023-revenue-delivery-20261018.json`.
+
+
+`budget-2023-expenditure-native-20261018.json` records actual-source277facts/7,479lineage with6,696-row accounting, complete repeat/CLI/MCP/dispatcher parity, and unchanged2024four-file bytes. Frozen inputs and actual terminal exit independently verified. Full assurance and protected delivery remain open.
