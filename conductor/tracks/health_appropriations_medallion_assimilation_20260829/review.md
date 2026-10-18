@@ -3764,3 +3764,6 @@ Local full review: completed five fast stages, then test timeout at the unchange
 
 
 PR720 P2 census scope finding: the current observation_scope now includes both separately qualified native profiles. Counts, explicit rights/Gold/join exclusions and qualification references agree; no broader admission or full local pass is claimed.
+
+
+PDF layout review: encryption metadata alone did not establish inaccessible page content. Normal reader access is used with no credentials; genuinely locked inputs keep encrypted_pdf. Dictionary subscription resolves real indirect metadata references. Synthetic contracts and downstream report checks pass; actual59-PDF cohort and prior56-recorded-layout parity must be verified before full assurance/delivery.

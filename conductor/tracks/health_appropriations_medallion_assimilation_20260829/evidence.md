@@ -3049,3 +3049,6 @@ See `budget-2023-revenue-native-20261018.json`: native repeat/dispatcher and act
 
 
 `budget-2023-expenditure-assurance-20261018.json` records the original local harness timeout at900s/97%, with7,826observed pass entries and no observed assertion failure. The suite was incomplete; this is not a full local pass. Native and2024byte proofs are unchanged. Full hosted assurance and seven exact-head required checks are mandatory before protected delivery.
+
+
+`readable-pdf-layout-diagnostic-20261018.json` records three default-readable exclusions and an indirect-Font metadata defect, exact retained-source identities, diagnostic summary pins and focused red/green evidence. Native cohort and prior-descriptor parity remain pending; no new fiscal facts or rights/publication claims.

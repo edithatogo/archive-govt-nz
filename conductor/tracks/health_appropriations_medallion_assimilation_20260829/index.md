@@ -535,3 +535,5 @@ they are not current-state assertions.
 - [Budget 2023 expenditure local assurance result](./budget-2023-expenditure-assurance-20261018.json)
 
 - [Budget 2023 expenditure protected delivery](./budget-2023-expenditure-delivery-20261018.json)
+
+- [Readable PDF layout diagnosis and focused parser fixes](./readable-pdf-layout-diagnostic-20261018.json)

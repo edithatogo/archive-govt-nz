@@ -8113,3 +8113,26 @@ Diagnose the standard default reader, without credentials or explicit decrypt
 calls, against the retained SHA-bound originals before changing production.
 Do not recapture or rerun2016–2026VoteHealthpreflight. This owner retains sole
 local broad/native launch responsibility via the unchanged Conductor serializer.
+
+
+### 2026-10-18 — Readable encrypted PDFs and indirect metadata defects
+
+Diagnostic1 on4522756f exited0(session60202): all three excluded retained
+PDFs are readable through the default pypdf6.19reader without credentials.
+Two yield full descriptors; the47-page1999/00file hitsTypeError. Focused
+descriptor diagnosis exited0(session88007): pages3/6/17 have indirect Font
+dictionaries, and len() was called on the reference. Both diagnostic summary
+pins and frozen source/code/evidence/lease checks pass; original bytes unchanged.
+No password or explicit decrypt call, financial text extraction, recapture or
+2016–2026financial preflight replay occurred.
+
+Red: actual generated encrypted/default-access and indirect-metadata fixtures
+produce2expected failures/1pass. Production now relies on normal page access,
+keeps FileNotDecryptedError as encrypted_pdf, and resolves metadata references
+through typed dictionary subscription. Malformed metadata errors stay unavailable.
+Replaced the encryption-flag-only mock with real password-required/readable
+fixtures. Green:61tests passed in0.27s; Ruff and production typing pass.
+False-positive style suggestions for dict.get were resolved through a small
+typed subscription helper, without weakening lint/security checks.
+Full retained-cohort repeat, existing descriptor parity, full harness and
+protected delivery remain required.

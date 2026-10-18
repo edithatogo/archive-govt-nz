@@ -9,7 +9,8 @@ from pathlib import Path
 
 import pytest
 from pypdf import PdfWriter
-from pypdf.errors import FileNotDecryptedError, PdfReadError
+from pypdf.errors import PdfReadError
+from pypdf.generic import ArrayObject, DictionaryObject, NameObject, NumberObject
 
 from archive_govt_nz.domains.health_appropriations.pdf_layout_baseline import (
     PdfLayoutBaselineError,
@@ -134,26 +135,55 @@ def test_pdf_layout_report_ignores_non_pdf_capture_records(tmp_path: Path) -> No
     assert report["pdf_layouts"] == []
 
 
-def test_parse_pdf_reports_encrypted_and_malformed_sources_as_unavailable(
+@pytest.mark.parametrize("user_password", ["", "requires-user-password"])
+def test_parse_pdf_uses_default_access_without_supplied_credentials(
+    user_password: str,
+) -> None:
+    writer = PdfWriter()
+    writer.add_blank_page(width=612, height=792)
+    writer.encrypt(user_password, owner_password=user_password + "-synthetic-owner")
+    output = BytesIO()
+    writer.write(output)
+    descriptor, error = _parse_pdf(output.getvalue())
+    if user_password:
+        assert descriptor is None
+        assert error == "encrypted_pdf"
+    else:
+        assert error is None
+        assert descriptor is not None
+        assert descriptor["page_count"] == 1
+
+
+def test_parse_pdf_resolves_indirect_geometry_metadata_containers() -> None:
+    writer = PdfWriter()
+    page = writer.add_blank_page(width=612, height=792)
+    fonts = writer._add_object(  # noqa: SLF001 - generate an actual indirect PDF fixture
+        DictionaryObject({NameObject("/F1"): DictionaryObject()})
+    )
+    page[NameObject("/Resources")] = writer._add_object(  # noqa: SLF001
+        DictionaryObject({NameObject("/Font"): fonts})
+    )
+    page[NameObject("/Annots")] = writer._add_object(ArrayObject())  # noqa: SLF001
+    page[NameObject("/Rotate")] = writer._add_object(NumberObject(90))  # noqa: SLF001
+    output = BytesIO()
+    writer.write(output)
+    descriptor, error = _parse_pdf(output.getvalue())
+    assert error is None
+    assert descriptor is not None
+    profile = descriptor["page_layouts"][0]["profile"]
+    assert profile["resource_counts"] == {"/Font": 1}
+    assert profile["annotation_count"] == 0
+    assert profile["rotation"] == 90
+
+
+def test_parse_pdf_reports_malformed_source_as_unavailable(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    class EncryptedReader:
-        is_encrypted = True
-
-        def __init__(self, *_: object, **__: object) -> None:
-            pass
-
-    monkeypatch.setattr(
-        "archive_govt_nz.domains.health_appropriations.pdf_layout_baseline.PdfReader",
-        EncryptedReader,
-    )
-    assert _parse_pdf(b"valid-reader-stub") == (None, "encrypted_pdf")
     monkeypatch.setattr(
         "archive_govt_nz.domains.health_appropriations.pdf_layout_baseline.PdfReader",
         lambda *_args, **_kwargs: (_ for _ in ()).throw(PdfReadError("bad PDF")),
     )
     assert _parse_pdf(b"malformed") == (None, "pdf_parse_error")
-    assert FileNotDecryptedError("locked")
 
 
 def test_pdf_layout_report_fails_closed_on_invalid_inputs_and_bronze_metadata(
