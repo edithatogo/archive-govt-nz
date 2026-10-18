@@ -1,0 +1,45 @@
+{
+  "aggregation": "not_performed",
+  "amounts": "literal OOXML numeric tokens",
+  "broader": {
+    "passed": 647,
+    "seconds": 51.95,
+    "skipped": 10
+  },
+  "currency": null,
+  "final_focused": {
+    "passed": 9,
+    "seconds": 20.98
+  },
+  "legacy_2025_2026_contracts": "unchanged",
+  "logs": {
+    "based-types-1.log": "56882e01cb80173ef053c4096e4ee43e3123a15f5c0a06715f96988d48fbd91c",
+    "conductor-1.log": "be7b0e678f0581caa2a6234abf52ffc1e00519aaef0afb53883c8873fb963b38",
+    "focused-2.log": "cff185a778b7cb3c8bff2e188091621cbe5d74ae0540b8ffb8644d23848c47c5",
+    "focused-3.log": "2e3545e478febafc52c891ecb50fe1884b891ef9f51bbcfe18dddd07dd522e7a",
+    "lint-4.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "red-1.log": "cfa6c31dc90e14090f8fd40ecdca43f75aa78c066686c36563e60c22593c86a8",
+    "schemas-1.log": "fab0eeb1ae367003a00c3b25ede08c3d3420d536fc71d6e775cacf83c8e166b5"
+  },
+  "native": "pending root-owned retained source qualification",
+  "original_full": "pending root-owned ./scripts/validate.sh",
+  "profile": "budget-expenditure-2024/v1",
+  "publication": "not_performed",
+  "red": "new profile module absent; expected import failure",
+  "rights": "not_evaluated",
+  "source_columns": 17,
+  "source_locator": "https://www.treasury.govt.nz/sites/default/files/2024-06/b24-expenditure-data.xlsx",
+  "source_rows": 6645,
+  "source_sha256": "891539afe9f5df4a7c7f73ac29695e19b6fb523a4947d305e1f4bd69ebcb3256",
+  "source_vintage": "Budget-2024",
+  "static": {
+    "conductor_tracks": 93,
+    "representative_documents": 56,
+    "ruff": "passed",
+    "schemas": 66,
+    "strict_types": "0 errors/warnings/notes"
+  },
+  "status": "implementation_focused_qualified_native_full_pending",
+  "unit": "$000",
+  "valid_time_start": null
+}

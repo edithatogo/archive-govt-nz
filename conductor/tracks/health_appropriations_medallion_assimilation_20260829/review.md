@@ -3706,3 +3706,17 @@ See [entry qualification](./budget-2024-source-entry-20261018.json).
 The local product-entry finding is resolved. Fresh hosted checks and protected
 delivery remain pending; earlier 9f250a41 successes describe that earlier head.
 No rights, currency, period-start, Gold or publication gate is promoted.
+
+
+### 2026-10-18 — Budget2024 expenditure implementation review
+
+A separate source profile avoids silently changing the qualified legacy v1
+package contract. Source digest/locator/vintage are required before parsing or
+output; the closed operation schema exposes the same reviewed profile. All17
+columns and source-row dispositions are retained; parent/category fields are
+not aggregated. Native A means annual OR permanent legislative authority; M
+means multi-year. Neither establishes a period start. Currency and rights
+remain unknown/not evaluated. Original OOXML amount tokens establish exact
+values independently of the caller Decimal precision. Other worksheets remain
+inventoried with explicit exclusions. Focused/static review found no further
+actionable defect; actual-source and full qualification are still required.

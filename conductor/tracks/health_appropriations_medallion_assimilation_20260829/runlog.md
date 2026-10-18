@@ -7829,3 +7829,30 @@ privately before modification. Represent the same passing gates as an explicit
 list, preserving the secret-stage evidence and every scanner policy. No secret
 value, baseline entry, allowlist or scanning rule is added or changed. Re-run
 the original scanner and evidence-binding checks on this representation.
+
+
+### 2026-10-18 — PR717 delivered; next expenditure profile
+
+All seven current-head hosted checks succeeded; Windows completed in17m7s.
+Resolved the corrected product-entry review, ran read-only merge guard and
+merged normally as bde4f721. Fresh fetch proves checked/merge ancestry and
+equal tree, zero unique commits and clean checkout. Topic refs pruned only
+after those guards; primary, CAS and qualification evidence retained.
+Next bounded Phase3/5/8 task: Budget2024 expenditure profile. Existing generic
+writer asserts NZD_thousands; new source evidence establishes literal $000
+only. Keep a distinct source-specific schema and fail closed on mismatched
+bytes/context rather than rewriting legacy package semantics. Root retains
+broad/native launch ownership; focused/static work remains with archive owner.
+
+
+Expenditure red: module absent, expected collection failure retained privately.
+Implemented pinned source profile/common adapter and existing sourceops registry/
+vintage/hash/locator validation, closed schema and CLI/MCP reachability. Added
+legacy2024 dispatch refusal;2025/26 contracts unchanged. Initial6tests pass.
+Lint/type findings retained and corrected (annotations, formatting, source
+punctuation represented faithfully). Broader suite647pass10skip51.95s.
+Final9tests pass20.98s including6,645-row boundary and overflow, changed bytes/
+definitions, caller Decimal isolation, repeat package bytes and row losses.
+Strict types0errors/warnings/notes; schema66/56 andConductor93pass.
+Preparing one root-owned actual source/CLI/MCP/common dispatch repeat proof
+followed by originalfull; no native proof or full run is yet claimed.

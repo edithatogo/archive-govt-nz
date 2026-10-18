@@ -2201,7 +2201,7 @@ resolve the actual revenue1005-row envelope against the existing1000-data-row
 profile without truncation, vintage substitution or silently changing limits.
 
 
-- [~] Add the hash-bound Budget 2024 revenue edition using the observed native
+- [x] Add the hash-bound Budget 2024 revenue edition using the observed native
   definitions and June-year amount types, preserving all 1,004 occupied source
   rows. Keep the existing 2025/2026 1,000-row bounds unchanged; the reviewed
   2024 bound is edition-specific and no row is truncated. Retain literal $000,
@@ -2216,7 +2216,7 @@ Local qualification passes on 64d40613: actual-source repeat/common parity
 and protected delivery remain pending; wider phase/rights/Gold gates stay open.
 
 
-- [~] Review fix: expose budget-revenue-2024/v1 through the existing closed
+- [x] Review fix: expose budget-revenue-2024/v1 through the existing closed
   source-operation registry/vintage validation/result schema and CLI/MCP routes.
   Preserve source hash/locator binding, read-only MCP and explicit local writes.
   Verify actual-source entry paths and corrected original full harness before
@@ -2235,3 +2235,20 @@ Both actual source/full exit markers are0; source-owned processes ended and
 nonblocking kernel acquisition/release plus clean head/tree/all pins verify
 release. Earlier proofs remain retained. Post-qualification changes are track
 receipts/docs only. Fresh exact-head hosted checks and protected delivery follow.
+
+
+PR #717 delivered at bde4f721 after seven exact-head successes on f4c2b833,
+resolved source-entry review and normal protected merge. Fetched head/merge
+ancestry, equal fde19483 tree, zero unique commits and clean-main checks pass;
+topic refs pruned and primary retained. See budget-2024-revenue-delivery-20261018.json.
+The broader Budget2024 census remains in progress.
+
+- [~] Add a pinned Budget2024 expenditure source profile through the existing
+  adapter and CLI/MCP source-operation architecture. Preserve all 17 source
+  columns, original OOXML amount tokens, parent/category/group/periodicity
+  qualifiers, literal $000 and unknown ISO currency. Account for all 6,645
+  occupied source rows and inventory-only sheets; do not aggregate parent and
+  category rows or change legacy2025/2026 package contracts. Demonstrate actual
+  source repeat stability and CLI/MCP preflight parity, then original full
+  validation and protected delivery. [M-04, M-06, M-07, M-11, M-15, M-18;
+  AC-03, AC-04, AC-05, AC-09, AC-13, AC-16]
