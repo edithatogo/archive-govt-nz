@@ -557,3 +557,5 @@ they are not current-state assertions.
 - [Budget2022 original local assurance attempt](./budget-2022-assurance-20261018.json) — terminal test cap; all32clean-hosted and protected delivery required.
 
 - [Budget2022 protected delivery and local failure dispositions](./budget-2022-delivery-20261018.json)
+
+- [Context reader startup implementation](./context-reader-startup-implementation-20261018.json)
