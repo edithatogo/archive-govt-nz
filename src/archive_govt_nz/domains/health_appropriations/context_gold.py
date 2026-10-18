@@ -17,9 +17,6 @@ from typing import TYPE_CHECKING, Any
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-from archive_govt_nz.domains.health_appropriations.canonical_gold_plots import (
-    build_context_plots,
-)
 from archive_govt_nz.domains.health_appropriations.price_wage_context import (
     _PROFILES as PRICE_WAGE_PROFILES,
 )
@@ -676,6 +673,10 @@ def _export(
     quality_rows = _quality(rows)
     coverage = pa.Table.from_pylist(coverage_rows, schema=COVERAGE_SCHEMA)
     quality = pa.Table.from_pylist(quality_rows, schema=QUALITY_SCHEMA)
+    from archive_govt_nz.domains.health_appropriations.canonical_gold_plots import (  # noqa: PLC0415 - Reader/schema imports do not initialize plotting.
+        build_context_plots,
+    )
+
     plot_payloads, plot_report = build_context_plots(rows)
     payloads = {
         "context_observations.parquet": _table(observations),

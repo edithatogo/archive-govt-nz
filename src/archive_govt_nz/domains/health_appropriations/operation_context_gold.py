@@ -1,6 +1,6 @@
 """Source-regenerated Context Gold from five independently pinned operations.
 
-Existing native Gold producers/readers are unchanged. This package retains
+Existing native Gold formats and transformation rules are retained. This package keeps
 canonical fact/lineage tables and common-evidence input pins; it grants no rights,
 currency, denominator or analytical join admission.
 """
@@ -18,33 +18,6 @@ from typing import TYPE_CHECKING, Any
 import pyarrow as pa
 from jsonschema import Draft202012Validator
 
-from archive_govt_nz.domains.health_appropriations import (
-    context_gold as native,
-)
-from archive_govt_nz.domains.health_appropriations import (
-    context_operation_canonical as canonical,
-)
-from archive_govt_nz.domains.health_appropriations.canonical_gold_plots import (
-    build_context_plots,
-)
-from archive_govt_nz.domains.health_appropriations.context_gold import (
-    _coverage as context_coverage_rows,
-)
-from archive_govt_nz.domains.health_appropriations.context_gold import (
-    _quality as context_quality_rows,
-)
-from archive_govt_nz.domains.health_appropriations.context_gold import (
-    _quality_markdown as context_quality_markdown,
-)
-
-# Reuse the existing pure table/coverage/quality/report projections. Source
-# admission remains in the operation canonical reader, not these renderers.
-from archive_govt_nz.domains.health_appropriations.context_gold import (
-    _table as context_table_bytes,
-)
-from archive_govt_nz.domains.health_appropriations.context_gold import (
-    _validate_rows as validate_context_rows,
-)
 from archive_govt_nz.domains.health_appropriations.operation_gold_output import (
     reserve_gold_directory,
 )
@@ -190,6 +163,34 @@ def _observation(
 
 
 def _expected(inputs: Sequence[OperationContextInput], source_root: Path) -> _Expected:
+    from archive_govt_nz.domains.health_appropriations import (  # noqa: PLC0415 - Product dependencies stay outside input inspection.
+        context_gold as native,
+    )
+    from archive_govt_nz.domains.health_appropriations import (  # noqa: PLC0415 - Product dependencies stay outside input inspection.
+        context_operation_canonical as canonical,
+    )
+    from archive_govt_nz.domains.health_appropriations.canonical_gold_plots import (  # noqa: PLC0415 - Product dependencies stay outside input inspection.
+        build_context_plots,
+    )
+    from archive_govt_nz.domains.health_appropriations.context_gold import (  # noqa: PLC0415 - Product dependencies stay outside input inspection.
+        _coverage as context_coverage_rows,
+    )
+    from archive_govt_nz.domains.health_appropriations.context_gold import (  # noqa: PLC0415 - Product dependencies stay outside input inspection.
+        _quality as context_quality_rows,
+    )
+    from archive_govt_nz.domains.health_appropriations.context_gold import (  # noqa: PLC0415 - Product dependencies stay outside input inspection.
+        _quality_markdown as context_quality_markdown,
+    )
+
+    # Reuse the existing pure table/coverage/quality/report projections. Source
+    # admission remains in the operation canonical reader, not these renderers.
+    from archive_govt_nz.domains.health_appropriations.context_gold import (  # noqa: PLC0415 - Product dependencies stay outside input inspection.
+        _table as context_table_bytes,
+    )
+    from archive_govt_nz.domains.health_appropriations.context_gold import (  # noqa: PLC0415 - Product dependencies stay outside input inspection.
+        _validate_rows as validate_context_rows,
+    )
+
     items = _inputs(inputs, source_root)
     rows: list[dict[str, Any]] = []
     evidence = []
@@ -549,6 +550,10 @@ _MCP_BOUNDARIES = {
 
 
 def _tool(name: str, action: str) -> dict[str, Any]:
+    from archive_govt_nz.domains.health_appropriations import (  # noqa: PLC0415 - Schema projection needs the native contract.
+        context_gold as native,
+    )
+
     properties: dict[str, Any] = {
         "input_spec": {"type": "string", "minLength": 1, "maxLength": 4096},
         "source_root": {"type": "string", "minLength": 1, "maxLength": 4096},

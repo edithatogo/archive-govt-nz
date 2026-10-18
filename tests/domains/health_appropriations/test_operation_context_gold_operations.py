@@ -131,6 +131,47 @@ def test_cli_build_verify_and_mcp_are_read_only_by_default(
         assert "write" not in definition["inputSchema"]["properties"]
 
 
+def test_spec_inspection_does_not_require_plotting_runtime(tmp_path: Path) -> None:
+    path = tmp_path / "inputs.json"
+    value = {
+        "schema_version": "archive-govt-nz.health-operation-context-inputs/v1",
+        "inputs": [
+            {
+                "profile": case.profile,
+                "package_dir": f"package-{index}",
+                "manifest_sha256": "a" * 64,
+            }
+            for index, case in enumerate(CASES)
+        ],
+    }
+    path.write_text(json.dumps(value))
+    before = path.read_bytes()
+    code = """import importlib.abc
+import json
+import sys
+from pathlib import Path
+class NoPlotting(importlib.abc.MetaPathFinder):
+    def find_spec(self, fullname, path=None, target=None):
+        if fullname == 'matplotlib' or fullname.startswith('matplotlib.'):
+            raise ModuleNotFoundError('plotting_not_part_of_input_inspection')
+sys.meta_path.insert(0, NoPlotting())
+from archive_govt_nz.domains.health_appropriations.operation_context_gold import read_input_spec
+items = read_input_spec(Path(sys.argv[1]))
+print(json.dumps({item.profile: item.manifest_sha256 for item in items}, sort_keys=True))
+"""
+    result = subprocess.run(
+        [sys.executable, "-c", code, str(path)],
+        capture_output=True,
+        text=True,
+        timeout=10,
+        check=False,
+    )
+    assert result.returncode == 0, result.stderr
+    assert json.loads(result.stdout) == {case.profile: "a" * 64 for case in CASES}
+    assert path.read_bytes() == before
+    assert list(tmp_path.iterdir()) == [path]
+
+
 def test_input_spec_refuses_fifo_without_blocking(tmp_path: Path) -> None:
     if not hasattr(os, "mkfifo"):
         pytest.skip("POSIX FIFO is unavailable")

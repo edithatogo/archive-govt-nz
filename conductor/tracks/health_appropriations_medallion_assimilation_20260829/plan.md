@@ -2351,3 +2351,66 @@ passed with0observedfailures. Native/repeat/prior/source/code pins remain
 unchanged. See budget-2022-assurance-20261018.json. Deliver a focusedPR with
 explicit disclosure; require original all32stages on3clean hosted platforms,
 7exact-head checks and resolved review before protected merge/prune.
+
+
+- [x] Deliver both pinned Budget2022 source-native profiles and repaired public
+  routing with all32original hosted stages on3platforms,7exact-head checks,
+  resolved review and normal protected merge/clean topic pruning. PR722 merge
+  95f9f638; see budget-2022-delivery-20261018.json. Keep broader census [~]:
+  native page403, rights, canonical/Gold and analytical holds remain explicit.
+  Both original local timeouts are retained; second attempt had2FAILED entries.
+  Both affected modules pass140tests with original seed/two workers; this is
+  no local full-pass claim and earlier timeout location remains unproven.
+  [M-05, M-07, M-15, M-18; AC-03, AC-05, AC-13, AC-16]
+
+- [~] Keep Context Gold input-spec inspection independent of plotting/product
+  reconstruction startup. Reuse existing reader, source-path guards and native
+  products; retain the original FIFO10s and full900s/80% gates. Establish a
+  reader-only dependency boundary, verify actual regular/FIFO paths and prove
+  supported Gold outputs unchanged before focused protected delivery. This
+  scoped Phase8 repair does not complete the broader operations checklist.
+  [M-15, M-18; AC-13, AC-16]
+
+
+Reader native qualification: first10s child-startup timeout is retained.
+Instrumented attempt2 reads the retained5-input spec in2.14s without plotting,
+then both native Gold builds match all20independent prior files and source-
+regenerated readback returns615observations/585eligible/30excluded. All248
+frozen code/runtime/input pins remain unchanged after terminal execution.
+Actual full-source CLI preflight then times out at its original30s probe cap
+with no output; registered MCP probe was not reached. Do not claim complete
+CLI/MCP or a startup SLA. See context-reader-startup-native-20261018.json.
+Original full harness and protected delivery of the reader-only slice remain
+pending; broader Phase8 stays incomplete. Conductor design advice requested.
+
+- [ ] Diagnose full-source Context Gold CLI/MCP preflight timing against the
+  retained5-input/615-observation package. Distinguish import, source
+  regeneration and rendering cost; preserve no-write semantics, complete
+  controls, source facts and the existing probe/test/full limits. Reader-only
+  dependency isolation does not close this broader operational item.
+  [M-15, M-18; AC-13, AC-16]
+
+
+Reader original full attempt: eac7a9ab/tree65ea021d ran the unchanged
+./scripts/validate.sh with supported2workers and original900s per-stage cap.
+Five fast stages pass; test stage exits124at86%,6991observed PASSED and
+0observed FAILED entries. No final suite, coverage or all32local pass claim.
+All292frozen code/runtime/input/output pins remain unchanged and the kernel
+lease is free after terminal execution. See context-reader-startup-assurance-
+20261018.json. Proceed with focusedPR under the existing run-before-PR contract;
+require exact-head original all32stages on3clean hosted platforms, all7checks
+and resolved review before normal protected merge/prune. Actual full-source
+CLI30s timing and unrun MCP remain separate open Phase8 evidence, not complete.
+
+
+PR723 P2 provenance correction: restore the Budget2022 qualification,
+implementation and dated census snapshots byte-for-byte to merged95f9f638,
+and retain the reader implementation checkpoint at producer5f0a94df.
+Transitions/current status live in separate versioned projections and the
+new delivery/native/assurance receipts. This supersedes earlier in-place
+status-reconciliation wording; no historical checkpoint is rewritten to
+claim later merge. See budget-2022-state-20261019-v1.json and
+context-reader-startup-state-20261019-v1.json. Code/source/product bytes and
+previous qualification results unchanged; original local timeout preserved.
+
+- [x] Qualify retained five-input Context Gold original console and initialized read-only stdio MCP replay with unchanged30s response bounds; preserve earlier timeout receipts (context-reader-startup-replay-20261019-v1.json). Broader Phase8 remains open.

@@ -3070,3 +3070,57 @@ See `budget-2023-revenue-native-20261018.json`: native repeat/dispatcher and act
 - Actual Budget 2022 qualifications: `budget-2022-native-qualification-20261018.json`; expenditure307/8289 and revenue64/1024 facts/lineage, complete6568/1015row accounting, repeats and CLI/MCP/common parity, plus unchanged prior2024expenditure/2023revenue packages. Full/hosted/protected gates pending.
 
 - Original local full attempt: `budget-2022-assurance-20261018.json`;900s test-stage cap at99%, all6newcases observed passed, no observed failures, no final coverage/suite/all32pass claim. Native proofs/source/code unchanged; all32clean-hosted qualification and protected delivery required.
+
+
+PR722 delivered: all7exact-head checks/all32hosted stages per platform; merge95f9f638 verified fetched main/head ancestry/equal merge tree/zero unique commits and patches/clean. Topic local/remote/tracking absent; one primary/CAS/runtime/proofs retained. See budget-2022-delivery-20261018.json. Local full2 remains124 with2observed failures, not a pass. Serial/instrumented probes and140unchanged affected-module tests distinguish startup sensitivity from proven FIFO rejection; earlier timeout location unproven. Conductor advice requested, no approval claimed. Next bounded Phase8 task isolates input-spec inspection from plot/product startup without widening limits or changing product bytes.
+
+
+Reader native qualification: first10s child-startup timeout is retained.
+Instrumented attempt2 reads the retained5-input spec in2.14s without plotting,
+then both native Gold builds match all20independent prior files and source-
+regenerated readback returns615observations/585eligible/30excluded. All248
+frozen code/runtime/input pins remain unchanged after terminal execution.
+Actual full-source CLI preflight then times out at its original30s probe cap
+with no output; registered MCP probe was not reached. Do not claim complete
+CLI/MCP or a startup SLA. See context-reader-startup-native-20261018.json.
+Original full harness and protected delivery of the reader-only slice remain
+pending; broader Phase8 stays incomplete. Conductor design advice requested.
+
+
+Reader original full attempt: eac7a9ab/tree65ea021d ran the unchanged
+./scripts/validate.sh with supported2workers and original900s per-stage cap.
+Five fast stages pass; test stage exits124at86%,6991observed PASSED and
+0observed FAILED entries. No final suite, coverage or all32local pass claim.
+All292frozen code/runtime/input/output pins remain unchanged and the kernel
+lease is free after terminal execution. See context-reader-startup-assurance-
+20261018.json. Proceed with focusedPR under the existing run-before-PR contract;
+require exact-head original all32stages on3clean hosted platforms, all7checks
+and resolved review before normal protected merge/prune. Actual full-source
+CLI30s timing and unrun MCP remain separate open Phase8 evidence, not complete.
+
+
+PR723 P2 provenance correction: restore the Budget2022 qualification,
+implementation and dated census snapshots byte-for-byte to merged95f9f638,
+and retain the reader implementation checkpoint at producer5f0a94df.
+Transitions/current status live in separate versioned projections and the
+new delivery/native/assurance receipts. This supersedes earlier in-place
+status-reconciliation wording; no historical checkpoint is rewritten to
+claim later merge. See budget-2022-state-20261019-v1.json and
+context-reader-startup-state-20261019-v1.json. Code/source/product bytes and
+previous qualification results unchanged; original local timeout preserved.
+
+
+Recovered standalone operational replay3 at b2212f7c/treeb0881b67:
+original console preflight completes12.13s within its unchanged30s bound;
+all19 predicted products match the independent retained package. Initialized
+stdio MCP initialize/list/read-only call completes, call10.11s within30s,
+615records across5inputs and19outputs; neither output directory is created.
+After PortableSSD reconnection all frozen code/input/source pins match, runtime
+versions match and kernel lease is free. Recipes, logs, raw responses and both
+diagnostics are copied with hash readback. Prior native1/2timeouts and original
+local full124 remain immutable; no unconditional startup SLA. See
+context-reader-startup-replay-20261019-v1.json and current-state v2. Hosted
+b221 Ubuntu passed; macOS test stage hit original900s cap at96% with no final
+summary; Windows was non-terminal at observation. Protected delivery remains
+blocked until exact-head required assurance succeeds. Broader Phase8 and track
+completion remain open; no rights/currency/joins/publication admission.
