@@ -553,3 +553,5 @@ they are not current-state assertions.
 - [Budget2022 source-profile implementation and focused evidence](./budget-2022-profile-implementation-20261018.json) — native/full/protected qualification pending.
 
 - [Budget2022 actual-source repeat/CLI/MCP/compatibility qualification](./budget-2022-native-qualification-20261018.json) — local source-native profiles pass; full/protected delivery pending.
+
+- [Budget2022 original local assurance attempt](./budget-2022-assurance-20261018.json) — terminal test cap; all32clean-hosted and protected delivery required.

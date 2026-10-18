@@ -3068,3 +3068,5 @@ See `budget-2023-revenue-native-20261018.json`: native repeat/dispatcher and act
 - Budget2022 implementation prerequisites: `budget-2022-profile-implementation-20261018.json`; exact native definition equality, six new contracts and corrected540-case affected assurance. Actual-source/full/hosted qualification pending; zero facts admitted at this checkpoint.
 
 - Actual Budget 2022 qualifications: `budget-2022-native-qualification-20261018.json`; expenditure307/8289 and revenue64/1024 facts/lineage, complete6568/1015row accounting, repeats and CLI/MCP/common parity, plus unchanged prior2024expenditure/2023revenue packages. Full/hosted/protected gates pending.
+
+- Original local full attempt: `budget-2022-assurance-20261018.json`;900s test-stage cap at99%, all6newcases observed passed, no observed failures, no final coverage/suite/all32pass claim. Native proofs/source/code unchanged; all32clean-hosted qualification and protected delivery required.

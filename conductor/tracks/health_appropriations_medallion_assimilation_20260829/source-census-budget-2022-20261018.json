@@ -1,4 +1,9 @@
 {
+  "assurance": {
+    "clean_hosted_all32_on3platforms": "required_before_merge",
+    "local": "original900s_test_cap_at99_percent_no_full_pass_claim",
+    "receipt": "budget-2022-assurance-20261018.json"
+  },
   "capture": {
     "receipt": "budget-2022-capture-20261018.json",
     "release_page": "HTTP403_native_page_transport_denied",
@@ -148,5 +153,5 @@
     "receipt": "budget-2022-native-qualification-20261018.json",
     "state": "qualified_source_native_local_Silver_only"
   },
-  "status": "source_native_profiles_qualified_full_and_delivery_pending_release_page_403"
+  "status": "source_native_qualified_local_timeout_retained_hosted_delivery_pending_release_page_403"
 }

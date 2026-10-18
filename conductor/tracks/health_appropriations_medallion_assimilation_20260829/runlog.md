@@ -8303,3 +8303,22 @@ qualified source inputs/products are unchanged. The type failure is retained
 in profile-test-types-1.log. Corrected typing/format/lint pass; all six new
 contracts pass again in 13.75s. Original full assurance follows this test-only
 and documentation checkpoint; native producer aa111e69 remains authoritative.
+
+### 2026-10-18 — Budget 2022 original local harness timeout retained
+
+Original ./scripts/validate.sh on f479a3bd/tree098be895 exited124 (session2468)
+at the unchanged900s test cap,99% observed progress. Lock/Conductor/format/lint/
+types passed; no final test/coverage summary or all32stage local pass exists.
+All6new2022contracts were observed passed and no FAILED entries occurred.
+Exact observed counts and log hash are retained in budget-2022-assurance-
+20261018.json. Parent/checker are absent; kernel release and all frozen code/
+runtime/source/native/repeat/prior-package pins verify after terminal failure.
+Permanent assurance-failed-1 copies are hash-checked. No same-host replay,
+cap/health-check/coverage/test or branch-rule weakening.
+
+The repository requires running the local harness beforePR and green required
+automation before merge; it does not require claiming a local pass. Following
+the established PR718/720 path, disclose the timeout in a focused reviewablePR
+and qualify the unchanged original32stages on clean hosted Ubuntu/macOS/Windows,
+all7exact-head checks and review resolution before protected merge. Both actual
+source qualifications and prior-byte proofs remain valid and separate.

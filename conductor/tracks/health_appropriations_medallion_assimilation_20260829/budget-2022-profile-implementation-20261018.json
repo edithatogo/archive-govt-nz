@@ -29,7 +29,8 @@
       "seconds": 13.75
     }
   },
-  "full_harness": "pending",
+  "full_assurance_receipt": "budget-2022-assurance-20261018.json",
+  "full_harness": "original_local900s_test_cap_at99_percent_no_full_pass_claim",
   "native_qualification": "budget-2022-native-qualification-20261018.json",
   "numeric_facts_admitted_at_implementation_checkpoint": 0,
   "profiles": [
@@ -112,6 +113,6 @@
       "rejected": 0
     }
   },
-  "status": "native_qualified_full_and_protected_delivery_pending",
+  "status": "source_native_qualified_local_timeout_retained_hosted_and_protected_delivery_pending",
   "typing": "0_errors_production_and_new_tests"
 }

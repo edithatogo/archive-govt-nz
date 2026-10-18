@@ -2344,3 +2344,10 @@ and CLI/MCP/common parity. Prior2024expenditure/2023revenue packages reproduce
 all four files. See budget-2022-native-qualification-20261018.json. Native page
 HTTP403 remains a precise route-specific gap; full and protected delivery
 remain pending before closing this bounded slice.
+
+The required original local harness ran onf479a3bd and reached99% before
+the unchanged900s test cap. No local full pass/coverage claim; all6newcases
+passed with0observedfailures. Native/repeat/prior/source/code pins remain
+unchanged. See budget-2022-assurance-20261018.json. Deliver a focusedPR with
+explicit disclosure; require original all32stages on3clean hosted platforms,
+7exact-head checks and resolved review before protected merge/prune.
