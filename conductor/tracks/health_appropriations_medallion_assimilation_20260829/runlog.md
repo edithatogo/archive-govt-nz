@@ -7744,3 +7744,25 @@ counts and private report hashes in budget-2024-layout-20261018.json. Next
 read exact Raw Data headers, Intro notices and lower Explanation definitions;
 resolve the actual revenue1005-row envelope against the existing1000-data-row
 profile without truncation, vintage substitution or silently changing limits.
+
+
+Budget 2024 revenue red check: the synthetic 1,004-row contract fixture fails
+at the existing unsupported-vintage guard (1 failed, 42 deselected, 1.65s);
+see private revenue-2024-red-1.log. No actual source normalized by that test.
+The proposed 2024 profile pins the captured hash and exact source locator,
+uses native Explanation definitions and 2020-2025 amount-type map, and gives
+only that transformation a 1,004-row bound. Legacy 2025/2026 remain at 1,000.
+Tests for unreviewed bytes/locator and excess rows retain fail-closed output.
+Both actual embedded PNGs were visually identified as identical CC BY badges
+(7,414 bytes, image SHA89c81a9813ed4e398998a97be866a20c3c1e72602956bbfa8409c3e907c4aa06).
+Intro A10/A13/A14 carry native Crown/CC BY 4.0 and emblem restrictions; no
+blanket legal adjudication, ISO-currency claim or publication is performed.
+
+
+Budget 2024 revenue focused verification: 68 passed in8.61s across revenue,
+dispatch and projection suites. Source/locator binding, all1004 rows including
+source row1005, literal amount/period lineage and over-bound refusal verified.
+Ruff findings (extra early return and broad pytest raises) were corrected
+without exclusions; strict basedpyright0. Native item media is a CC BY badge,
+not an assumed Treasury logo. Original source snapshots and historical locator
+register remain unchanged. Actual-source qualification and full harness follow.

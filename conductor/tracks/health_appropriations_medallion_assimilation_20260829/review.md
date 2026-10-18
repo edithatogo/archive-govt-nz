@@ -3666,3 +3666,23 @@ and full7954 qualification support this closed Fiscal2024 adapter only. Other
 vintages, whole-worksheet semantics, mappings and rights stay separate. Final
 recording changes documentation only; hosted checks and protected delivery must
 still pass on the resulting PR head.
+
+
+## Budget 2024 source and revenue profile review — 2026-10-18
+
+- Actual source metadata establishes the native thousands/June-year contract;
+  it does not establish ISO currency or a period-start date. The new revenue
+  profile retains those unknowns and source-separated revenue semantics.
+- Actual1004 occupied rows exceed the legacy1000-data-row envelope. The fix
+  binds this one2024 source hash/locator and transformation to a1004 bound;
+  legacy2025/2026 limits and outputs remain unchanged. No truncation or row
+  filtering makes the source fit a smaller limit. New synthetic boundaries,
+  binding refusals and common-dispatch checks pass. Actual-source replay pending.
+- Both exact embedded images were visually identified as identical CC BY
+  badges; original Intro notices retain their emblem restriction. Rights
+  declarations are evidenced, not promoted to blanket legal/publication approval.
+- Capture, native definition and extraction stages remain distinct. Dated
+  historical registers and original bytes are retained. Census/index are
+  reconciled to current receipts; source-native facts/Gold/publication are not
+  claimed from inspection alone. Full original harness and exact-head hosted
+  checks are still required before delivery. No policy/coverage gate changed.

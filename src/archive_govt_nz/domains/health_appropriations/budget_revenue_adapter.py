@@ -32,6 +32,11 @@ _SOURCE_LIMIT_ERROR = "budget_revenue_source_limit_or_type"
 _SOURCE_HASH_ERROR = "source_hash_mismatch"
 _VINTAGE_ERROR = "unsupported_budget_revenue_vintage"
 _PROFILE = {
+    "Budget-2024": (
+        budget_revenue.TRANSFORMATION_2024,
+        budget_revenue.PERIOD_TYPES_2024,
+        budget_revenue.DEFINITIONS_2024,
+    ),
     "Budget-2025": (
         budget_revenue.TRANSFORMATION,
         budget_revenue.PERIOD_TYPES,
@@ -55,7 +60,15 @@ class BudgetRevenueAdapter:
 
     def matches_layout(self, bronze: bytes) -> bool:
         """Return true only for the exact revenue sheet and embedded edition."""
-        if len(bronze) > _MAX_SOURCE_BYTES or self.source_vintage not in _PROFILE:
+        if (
+            len(bronze) > _MAX_SOURCE_BYTES
+            or self.source_vintage not in _PROFILE
+            or not budget_revenue._source_binding(  # noqa: SLF001 - same profile contract
+                self.source_vintage,
+                self.source_locator,
+                hashlib.sha256(bronze).hexdigest(),
+            )
+        ):
             return False
         _, _, definitions = _PROFILE[self.source_vintage]
         try:

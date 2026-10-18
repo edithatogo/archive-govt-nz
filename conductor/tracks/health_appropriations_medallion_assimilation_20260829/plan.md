@@ -2199,3 +2199,12 @@ counts and private report hashes in budget-2024-layout-20261018.json. Next
 read exact Raw Data headers, Intro notices and lower Explanation definitions;
 resolve the actual revenue1005-row envelope against the existing1000-data-row
 profile without truncation, vintage substitution or silently changing limits.
+
+
+- [~] Add the hash-bound Budget 2024 revenue edition using the observed native
+  definitions and June-year amount types, preserving all 1,004 occupied source
+  rows. Keep the existing 2025/2026 1,000-row bounds unchanged; the reviewed
+  2024 bound is edition-specific and no row is truncated. Retain literal $000,
+  unknown ISO currency, source-row losses and original OOXML numeric tokens.
+  Item notices/media evidence and canonical/publication claims stay separate.
+  [M-03, M-04, M-06, M-11, M-18; AC-03, AC-04, AC-05, AC-16]

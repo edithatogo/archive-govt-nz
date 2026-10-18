@@ -140,7 +140,7 @@ def test_ambiguous_budget_layouts_are_preserved_only() -> None:
 def test_revenue_adapter_rejects_unknown_layouts_and_editions() -> None:
     payload = _revenue_workbook()
     assert not _adapter().matches_layout(b"not an xlsx")
-    assert not _adapter("Budget-2024").matches_layout(payload)
+    assert not _adapter("Budget-2023").matches_layout(payload)
 
     invalid = _adapter().extract(
         b"not an xlsx", source_sha256=hashlib.sha256(b"not an xlsx").hexdigest()
@@ -148,7 +148,7 @@ def test_revenue_adapter_rejects_unknown_layouts_and_editions() -> None:
     assert invalid.layout == "unknown"
     assert invalid.records == ()
     with pytest.raises(ValueError, match="unsupported_budget_revenue_vintage"):
-        _adapter("Budget-2024").extract(
+        _adapter("Budget-2023").extract(
             payload, source_sha256=hashlib.sha256(payload).hexdigest()
         )
     with pytest.raises(ValueError, match="source_hash_mismatch"):
@@ -187,3 +187,38 @@ def test_revenue_adapter_selects_the_embedded_2026_edition() -> None:
     assert (
         result.output.records[0]["transformation_id"] == "budget-2026-health-revenue/v1"
     )
+
+
+def test_budget_2024_dispatch_preserves_edition_and_rejects_changed_bytes(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    payload = _revenue_workbook(definitions=budget_revenue.DEFINITIONS_2024, year=2020)
+    digest = hashlib.sha256(payload).hexdigest()
+    # A synthetic fixture exercises dispatch; actual source qualification is separate.
+    monkeypatch.setattr(budget_revenue, "SOURCE_SHA256_2024", digest)
+    registration = budget_revenue_registration(
+        source_locator=budget_revenue.SOURCE_LOCATOR_2024,
+        source_vintage="Budget-2024",
+        observed_at="2026-10-18T03:01:13.664113+00:00",
+    )
+    result = dispatch_bronze(
+        payload,
+        source_sha256=digest,
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        registrations=(registration,),
+    )
+    assert result.selection.adapter_id == "nz-budget-health-revenue"
+    assert (
+        result.output.records[0]["transformation_id"] == "budget-2024-health-revenue/v1"
+    )
+    assert result.output.records[0]["year"] == 2020
+    assert result.output.records[0]["currency"] is None
+    changed = _revenue_workbook(definitions=budget_revenue.DEFINITIONS_2024, year=2021)
+    held = dispatch_bronze(
+        changed,
+        source_sha256=hashlib.sha256(changed).hexdigest(),
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        registrations=(registration,),
+    )
+    assert held.selection.status == "preserved_only"
+    assert held.output.records == ()
