@@ -1,6 +1,6 @@
 # Read-only native workbook inspection
 
-Status: Windows junction correction passes fresh native replay and original full assurance; actual Windows and hosted delivery pending.
+Status: delivered through PR #716 after native/full/Windows assurance and protected merge.
 
 Use the existing operation/CLI/MCP architecture and the qualified compound
 source dispatch. The only source IDs are the two reviewed expense workbooks.
@@ -123,3 +123,14 @@ all full stages passed; no failure or repeat is inferred from overlap alone.
 The corrected timeline and owner readback are retained in `assurance-3` alongside
 all new logs, the red regression and source-qualified receipts. Prior evidence
 remains preserved. Rights, source values and publication status are unchanged.
+
+
+Delivered PR #716 at `76bbc660620f89f7344984dec6f150ebb288b965` after all
+seven checks succeeded on `0d4464710a7b0264d7cf6e183434d3f6d6de6240`.
+The Windows suite runs natively on win32/Python 3.14.8 and passes 8,007 tests
+with 36 skips, including the two Windows-only NTFS root/prefix junction cases.
+Ubuntu and macOS each pass 8,013 tests with 30 skips. The review is resolved;
+CodeQL has zero open alerts. Fresh fetched ancestry, equal checked/merge tree,
+zero unique commits and clean-main guards pass. Topic refs are pruned; the
+primary checkout, runtime and all evidence remain. The delivery ledger binds
+exact hosted-log/guard digests. This closes this bounded operation only.

@@ -7708,3 +7708,19 @@ Retain the competing-process overlap from before replay through early full3,
 its later detection and graceful verified stop; do not imply the host was idle
 or infer an Archive failure. Owner verified original processes absent and kernel
 slot free. Evidence-only finalization follows release; hosted/review gates remain.
+
+
+### 2026-10-18 — PR #716 delivered; Budget 2024 census continuation
+
+All seven final-head checks pass; native Windows8007/36skip includes real NTFS
+root/prefix controls. Resolve the junction review with actual fix evidence and
+merge through active strict protections at76bbc660, checked0d446471/equal1f1c4e29
+tree. Fetch/ancestry/zero-unique/clean-main proof passes before pruning only the
+verified topic refs. Retain the primary checkout and every source/runtime/proof.
+
+Continue Phase1/#207 under parent#205 with Budget2024's two existing locators.
+Release periods/caveats/rights observations are distinct from native validation.
+Four inventories and360firstWARCheaders identify no exact/candidate capture in
+their bounded scope; do not infer global absence. Prepare existing-core private
+preservation with explicit item-rights pending, no host-eligibility substitution.
+No new capture or publication has run for this slice.

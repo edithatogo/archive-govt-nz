@@ -2138,7 +2138,7 @@ integrated parent head.
   ancestry/equal-tree/zero-unique/clean verification. Topic refs pruned; primary
   worktree retained. See compound-native-delivery-20261018.json.
 
-- [~] Expose closed, read-only native workbook inspection through the existing
+- [x] Expose closed, read-only native workbook inspection through the existing
   CLI/MCP operation architecture. Resolve the two reviewed expense workbook
   identities from CAS; preserve compound/profile/schema/selection/count/hash/
   excluded-sheet/hold evidence in a bounded typed response without raw rows or
@@ -2170,3 +2170,17 @@ integrated parent head.
   Preserve the exact overlapping-process chronology and owner terminal release.
   Local skips do not qualify the two real Windows junction cases; final hosted
   Windows, seven exact-head checks, review resolution and delivery remain pending.
+
+
+  Delivered PR #716 at76bbc660 after seven successes on0d446471, resolved
+  junction review and actual native Windows suite. Fetched checked/merge ancestry,
+  equal1f1c4e29tree, zero unique commits and clean-main guards pass; topic refs
+  pruned, primary retained. See native-workbook-inspection-delivery-20261018.json.
+
+- [~] Reconcile Budget2024 expenditure/revenue release identity, periods,
+  original-byte preservation and item-level rights evidence. Reuse the existing
+  two locators and retained inventories; preserve edition/caveat distinctions.
+  Capture only through the existing bounded preservation core without inheriting
+  host-level licence eligibility as item adjudication. Native units/layout and
+  canonical/analytical admission remain separately gated. [M-02, M-04, M-11,
+  M-18; AC-03, AC-04, AC-09, AC-16]

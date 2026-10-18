@@ -500,4 +500,6 @@ they are not current-state assertions.
 
 - [Compound carrier checkpoint](./compound-native-recordsets-20261018.json); carrier, native dispatch, bounded envelopes and v1 regression checks pass96; source composition/native/full assurance pending.
 
-- [Read-only native workbook inspection](./native-workbook-inspection-20261018.md) — junction correction passes fresh actual-source replay and original full assurance; Windows/hosted delivery pending.
+- [Read-only native workbook inspection](./native-workbook-inspection-20261018.md) — delivered PR #716; actual Windows qualification, seven exact-head successes and verified cleanup.
+
+- [Budget 2024 expenditure/revenue census](./source-census-budget-2024-20261018.md) — release and bounded retained-evidence reconciliation; capture/item/native review pending.

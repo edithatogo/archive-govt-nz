@@ -1,0 +1,54 @@
+{
+  "branch_policy": "normal protected merge; active strict rules unchanged",
+  "checked_and_merge_ancestry_verified": true,
+  "checked_head": "0d4464710a7b0264d7cf6e183434d3f6d6de6240",
+  "clean": true,
+  "cleanup_guard_sha256": "be927674b64628bce505748786e6545ac5ffe653bd5f08bca438217452c673a3",
+  "delivery_receipt_sha256": "e571efae2ef5e36ec9dfe828fff87c1d34b074bfb0747c243b484a3ce7bff2d1",
+  "equal_tree_verified": true,
+  "evidence_directory": "native-workbook-inspection-20261018/delivery-716",
+  "full3": "all32 original stages pass on e1379ed3;8029pass14skip;finaldeltafiveConductor files only;originalsecrets passes",
+  "hosted_ci": 39089606627,
+  "hosted_log_sha256": "3c4981bbc1f68b40c3888e14ca1c677e52e797626697abd62b942ed4f0b4c7f0",
+  "hosted_tests": {
+    "macos": {
+      "passed": 8013,
+      "seconds": 496.89,
+      "skipped": 30,
+      "warnings": 18
+    },
+    "ubuntu": {
+      "passed": 8013,
+      "seconds": 426.07,
+      "skipped": 30,
+      "warnings": 18
+    },
+    "windows": {
+      "passed": 8007,
+      "platform": "win32",
+      "python": "3.14.8",
+      "scope": "full unfiltered suite including Windows-only root/prefix NTFS junction cases",
+      "seconds": 765.35,
+      "skipped": 36,
+      "warnings": 18
+    }
+  },
+  "local_topic_pruned": true,
+  "merge_commit": "76bbc660620f89f7344984dec6f150ebb288b965",
+  "merge_guard_sha256": "d769b79e22401296b9bad3bc56740f9099bac5eb82d0c238f5acd008e224b423",
+  "merged_at": "2026-10-18T02:42:12Z",
+  "native2": "two actual-source runs/three routes; equal reports and all16originalfilehashes unchanged",
+  "open_codeql_alerts": 0,
+  "pr": "https://github.com/edithatogo/archive-govt-nz/pull/716",
+  "primary_worktree_retained": true,
+  "publication": "not_performed",
+  "remote_topic_auto_deleted": true,
+  "remote_tracking_topic_pruned": true,
+  "required_checks": "all seven terminalSUCCESS on exact checked head",
+  "review_reply": "https://github.com/edithatogo/archive-govt-nz/pull/716#discussion_r4305453059",
+  "review_threads": "all resolved; junction fix qualified on native Windows",
+  "rights": "not_evaluated",
+  "scope": "bounded native workbook CLI/MCP inspection; remaining Health Appropriations track stays open",
+  "tree": "1f1c4e29ac66c270b9c858e5336d2edbca525cb3",
+  "unique_commits": 0
+}

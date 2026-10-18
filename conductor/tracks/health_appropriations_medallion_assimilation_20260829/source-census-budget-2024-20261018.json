@@ -1,0 +1,76 @@
+{
+  "analytical_join": "not_approved",
+  "byte_fixity": "not_established",
+  "existing_resource_ids": [
+    "treasury-historical-ff5ef101ec75d1b8",
+    "treasury-historical-c445260e928c9454"
+  ],
+  "fiscal_year": "2024/25",
+  "gaps": [
+    "original_source_object_not_bound_to_retained_capture",
+    "native_units_currency_layout_unverified",
+    "item_rights_exception_review_pending",
+    "broader_2024_source_families_not_complete"
+  ],
+  "issue_date": "2024-05-30",
+  "method": "web text reader; workbook requests unsupported by reader, not source-unavailable evidence",
+  "native_layout_units_currency": "not_verified",
+  "next": "Reconcile capture manifests and inspect original Explanation/rights content before resource admission; preserve release-level dates and period/restructuring caveats",
+  "observed_at": "2026-10-18T01:05:03.940753+00:00",
+  "page_caveats": [
+    "2023/24 Supplementary Estimates excluded",
+    "Prior-year agency data not restated for restructuring; detailed sums may differ from Estimates totals",
+    "Workbooks support official tabled documents; workbooks are not those official documents",
+    "Explanation sheet contains workbook instructions"
+  ],
+  "page_periods": {
+    "actual_june_year_ends": [
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "budget_june_year_end": 2025,
+    "estimated_actual_june_year_end": 2024
+  },
+  "payload_capture": "not_performed",
+  "publication": "not_performed",
+  "publisher": "The Treasury",
+  "publisher_status": "Superseded",
+  "register_reconciliation": "Both exact URLs already present as discovered-only; no duplicate locator needed",
+  "resources": [
+    {
+      "family": "expenditure",
+      "publisher_display_size": "921.34 KB",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2024-06/b24-expenditure-data.xlsx"
+    },
+    {
+      "family": "revenue_and_capital_receipts",
+      "publisher_display_size": "102.15 KB",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2024-06/b24-revenue-data.xlsx"
+    }
+  ],
+  "retained_reconciliation": {
+    "candidate_workbook_headers": 0,
+    "complete_first_headers": 360,
+    "exact_locator_records": 0,
+    "inventory_files": 4,
+    "inventory_report_sha256": "04df8c2835aeecad53816a8cc454dfdf82831910196d3f43e79c9920d4a19582",
+    "primary_warc_files": 360,
+    "scope": "four committed inventories and first headers in primary warc directory only; no global absence, body identity or alias equivalence inferred",
+    "unreadable": 0,
+    "warc_header_report_sha256": "1437c22df72ea263b891945ac6711e57e6a232b48bba35bf75271a0941b60df2"
+  },
+  "rights_observation": {
+    "item_level_rights": "not_evaluated",
+    "policy_scope": "Crown material generally licensed unless specific item or collection says otherwise; logos/trademarks/design and third-party rights excluded",
+    "policy_url": "https://www.treasury.govt.nz/copyright-and-licensing",
+    "release_page_statement": "Crown Copyright / CC BY 4.0"
+  },
+  "schema_version": "archive-govt-nz.health-source-census-observation/v1",
+  "signed_date": "2024-05-30",
+  "source_url": "https://www.treasury.govt.nz/publications/data/budget-2024-data-estimates-appropriations-2024-25",
+  "status": "release_observed_capture_and_item_review_pending",
+  "title": "Budget 2024 Data from the Estimates of Appropriations 2024/25",
+  "updated_date": "2024-06-21"
+}
