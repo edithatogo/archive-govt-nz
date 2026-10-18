@@ -140,7 +140,7 @@ def test_ambiguous_budget_layouts_are_preserved_only() -> None:
 def test_revenue_adapter_rejects_unknown_layouts_and_editions() -> None:
     payload = _revenue_workbook()
     assert not _adapter().matches_layout(b"not an xlsx")
-    assert not _adapter("Budget-2023").matches_layout(payload)
+    assert not _adapter("Budget-2022").matches_layout(payload)
 
     invalid = _adapter().extract(
         b"not an xlsx", source_sha256=hashlib.sha256(b"not an xlsx").hexdigest()
@@ -148,7 +148,7 @@ def test_revenue_adapter_rejects_unknown_layouts_and_editions() -> None:
     assert invalid.layout == "unknown"
     assert invalid.records == ()
     with pytest.raises(ValueError, match="unsupported_budget_revenue_vintage"):
-        _adapter("Budget-2023").extract(
+        _adapter("Budget-2022").extract(
             payload, source_sha256=hashlib.sha256(payload).hexdigest()
         )
     with pytest.raises(ValueError, match="source_hash_mismatch"):

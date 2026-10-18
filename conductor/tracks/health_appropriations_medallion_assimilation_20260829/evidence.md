@@ -3031,3 +3031,6 @@ hashes. The failed module-import attempt is retained and had no source-side
 operation. Capture2 is terminal 0 with a released kernel lease. Native layout,
 units and item-level rights remain pending; no numerical or publication claim
 is made from transport success.
+
+
+Budget2023 native inspection is recorded in `budget-2023-native-inspection-20261018.json`. Revenue source profile implementation has focused581-pass/10-skip evidence; actual-source repeat qualification and full assurance are not yet claimed. Expenditure normalization and wider phase gates remain open.

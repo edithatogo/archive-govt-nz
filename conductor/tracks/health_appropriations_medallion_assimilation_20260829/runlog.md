@@ -7940,3 +7940,25 @@ receipt hashes and copied working evidence all pass. The exact capture-input
 census remains retained; later source observations do not rewrite it.
 No native units, item rights, Silver facts or analytical joins are admitted.
 Next inspect the retained bytes using the existing bounded workbook tools.
+
+
+### 2026-10-18 — Budget 2023 native inspection and revenue profile
+
+Guarded native inspection1 exited0 on frozen152060e9. Both report digests
+and unchanged source bytes verify; no inspection process remains and the
+serializer lease is free. Raw sheets contain6,696 expenditure and1,013 revenue
+rows, with no blank tail. Source notices and definition coordinates are retained
+in the private reports. No currency, period-start or rights eligibility is inferred.
+
+The revenue profile reuses the existing parser, exact numeric tokens, row
+accounting and common dispatcher, with the reviewed SHA/URL,1,013-row cap
+and2019–2024 period map. Existing CLI/MCP profile registry and closed receipt
+schema include2023. No new dependency or publication operation is introduced.
+Red: one expected unsupported-profile failure,3negative contracts passed.
+First green attempt:578passed/10skipped with3failures (schema projection,
+obsolete unknown-vintage example and definition mismatch). A decoded-cell
+comparison corrected an erroneous reading of JSON escape characters; all five
+definitions now match the actual report exactly. Generated receipt schema was
+refreshed; the unknown-vintage example now uses2022. Green2:581passed,
+10skipped in66.25s. Ruff passes and production typing reports0errors.
+Native repeated extraction and full harness/hosted delivery remain pending.

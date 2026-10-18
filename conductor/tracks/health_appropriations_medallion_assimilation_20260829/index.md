@@ -519,3 +519,5 @@ they are not current-state assertions.
 - [Budget 2023 census](./source-census-budget-2023-20261018.json) — originals privately preserved; native definitions, layout and item rights pending.
 
 - [Budget 2023 capture](./budget-2023-capture-20261018.json) — source fixity, WARC binding and receipts independently verified.
+
+- [Budget 2023 bounded native inspection](./budget-2023-native-inspection-20261018.json)

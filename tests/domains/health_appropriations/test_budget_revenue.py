@@ -604,3 +604,107 @@ def test_budget_2024_does_not_waive_its_reviewed_row_bound(
             source_vintage="Budget-2024",
         )
     assert not output.exists()
+
+
+DEFINITIONS_2023_TEST = {
+    **DEFINITIONS,
+    "B3": (
+        "The Revenue workbook contains details of  actual government Crown revenue "
+        "and capital receipts for the years ended 30 June 2019, 2020, 2021 and 2022; "
+        "estimated actual government Crown revenue and capital receipts for the year "
+        "ending 30 June 2023 and budgeted government Crown revenue and capital "
+        "receipts for the year ending 30 June 2024 as published in Budget 2023."
+    ),
+}
+BUDGET_2023_LOCATOR = (
+    "https://www.treasury.govt.nz/sites/default/files/2023-09/b23-revenue-data.xlsx"
+)
+
+
+def test_budget_2023_accounts_for_all_1013_rows_and_native_periods(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    rows = [["Other department", "Education", *ROW[2:]]] * 1008
+    rows += [
+        [*ROW[:5], 1234, 2019, "Actuals"],
+        [*ROW[:5], 2345, 2020, "Actuals"],
+        [*ROW[:5], 3456, 2022, "Actuals"],
+        [*ROW[:5], 4567, 2023, "Estimated Actual"],
+        [*ROW[:5], 5678, 2024, "Main Estimates"],
+    ]
+    original = source(tmp_path, rows, definitions=DEFINITIONS_2023_TEST)
+    original_bytes = original.read_bytes()
+    digest = hashlib.sha256(original_bytes).hexdigest()
+    # This synthetic fixture verifies the contract, not the official byte pin.
+    monkeypatch.setattr(revenue, "SOURCE_SHA256_2023", digest, raising=False)
+    out = tmp_path / "budget-2023"
+    receipt = revenue.normalize_budget_revenue(
+        original,
+        out,
+        expected_sha256=digest,
+        source_locator=BUDGET_2023_LOCATOR,
+        observed_at="2026-10-18T03:01:13.664113+00:00",
+        source_vintage="Budget-2023",
+    )
+    assert receipt["counts"] == {
+        "input": 1013,
+        "normalized": 5,
+        "out_of_scope": 1008,
+        "blank": 0,
+        "rejected": 0,
+    }
+    facts = pq.read_table(out / "revenue_facts.parquet").to_pylist()
+    assert [f["year"] for f in facts] == [2019, 2020, 2022, 2023, 2024]
+    assert facts[-1]["source_row"] == 1014
+    assert facts[-1]["amount_type"] == "Main Estimates"
+    assert facts[-1]["amount"] == Decimal("5678.000")
+    assert facts[-1]["valid_time_end"] == date(2024, 6, 30)
+    assert all(f["transformation_id"] == "budget-2023-health-revenue/v1" for f in facts)
+    assert all(f["unit"] == "$000" and f["currency"] is None for f in facts)
+    assert all(f["rights_state"] == "not_evaluated" for f in facts)
+    assert pq.read_table(out / "row_dispositions.parquet").num_rows == 1013
+    assert original.read_bytes() == original_bytes
+
+
+@pytest.mark.parametrize("wrong_context", ["source_hash", "source_locator"])
+def test_budget_2023_requires_reviewed_source_binding_before_writing(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, wrong_context: str
+) -> None:
+    original = source(tmp_path, definitions=DEFINITIONS_2023_TEST)
+    digest = hashlib.sha256(original.read_bytes()).hexdigest()
+    if wrong_context == "source_locator":
+        monkeypatch.setattr(revenue, "SOURCE_SHA256_2023", digest, raising=False)
+    output = tmp_path / "not-written"
+    with pytest.raises(ValueError, match="budget_revenue_contract"):
+        revenue.normalize_budget_revenue(
+            original,
+            output,
+            expected_sha256=digest,
+            source_locator=(
+                BUDGET_2023_LOCATOR
+                if wrong_context == "source_hash"
+                else "data/raw/b25-revenue-data.xlsx"
+            ),
+            observed_at="2026-10-18T03:01:13.664113+00:00",
+            source_vintage="Budget-2023",
+        )
+    assert not output.exists()
+
+
+def test_budget_2023_does_not_waive_its_reviewed_row_bound(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    original = source(tmp_path, [ROW] * 1014, definitions=DEFINITIONS_2023_TEST)
+    digest = hashlib.sha256(original.read_bytes()).hexdigest()
+    monkeypatch.setattr(revenue, "SOURCE_SHA256_2023", digest, raising=False)
+    output = tmp_path / "over-bound"
+    with pytest.raises(ValueError, match="budget_revenue_contract"):
+        revenue.normalize_budget_revenue(
+            original,
+            output,
+            expected_sha256=digest,
+            source_locator=BUDGET_2023_LOCATOR,
+            observed_at="2026-10-18T03:01:13.664113+00:00",
+            source_vintage="Budget-2023",
+        )
+    assert not output.exists()

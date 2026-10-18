@@ -76,6 +76,12 @@ PROFILES = MappingProxyType(
             "population_facts.parquet",
             "row_dispositions.parquet",
         ),
+        "budget-revenue-2023/v1": (
+            budget_revenue.TRANSFORMATION_2023,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "revenue_facts.parquet",
+            "row_dispositions.parquet",
+        ),
         "budget-revenue-2024/v1": (
             budget_revenue.TRANSFORMATION_2024,
             ("input", "normalized", "out_of_scope", "blank", "rejected"),
@@ -427,6 +433,7 @@ PROFILES = MappingProxyType(
     }
 )
 _REVENUE_VINTAGES = {
+    "budget-revenue-2023/v1": "Budget-2023",
     "budget-revenue-2024/v1": "Budget-2024",
     "budget-revenue-2025/v1": "Budget-2025",
     "budget-revenue-2026/v1": "Budget-2026",

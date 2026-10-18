@@ -3743,3 +3743,6 @@ or redistribution assessment. No 2024 row bound, unit, source hash or numeric
 profile is applied to uninspected 2023 bytes. Retained-evidence matching is
 explicitly limited to four inventories and first headers in the primary WARC
 directory. The next action is bounded preservation through the existing core.
+
+
+Budget2023 review: exact decoded definition equality verified; JSON display escaping must not become source text. Closed schema and unknown-vintage fixture drift repaired. Source binding remains fail-closed. Native repeat/full delivery gates remain open.
