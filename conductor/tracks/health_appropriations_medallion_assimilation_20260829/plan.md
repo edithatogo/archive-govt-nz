@@ -2190,3 +2190,12 @@ integrated parent head.
   with HTTP200 and independently verified CAS/WARC/receipt bindings. Source
   workbooks admitted remain zero; native Explanation/layout/units and item-level
   rights review are the next bounded step. See budget-2024-capture-20261018.json.
+
+
+Budget 2024 native inspection1 completed on f83c09e9: root35584 exit0,
+lease released; both inventories repeat identically and both source hashes
+remain unchanged. No canonical facts or rights admitted. Record structural
+counts and private report hashes in budget-2024-layout-20261018.json. Next
+read exact Raw Data headers, Intro notices and lower Explanation definitions;
+resolve the actual revenue1005-row envelope against the existing1000-data-row
+profile without truncation, vintage substitution or silently changing limits.

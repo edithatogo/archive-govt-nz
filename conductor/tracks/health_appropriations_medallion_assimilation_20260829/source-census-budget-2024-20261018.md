@@ -14,8 +14,8 @@ pins their hashes. Other directories, later records, body fixity and aliases are
 outside this proof. Do not infer global absence or source unavailability: the
 web reader's unsupported XLSX response is a tool limitation.
 
-No capture, source-value admission, rights promotion or publication is performed
-by this census. The prepared preservation route reuses the existing capture core
+The initial census observation performed no capture, source-value admission,
+rights promotion or publication. The preservation route reuses the existing capture core
 and separate CAS/WARC fixity checks, keeping item-level rights pending. Complete
 native Explanation/units/layout review after originals are identified/preserved.
 The wider 2024 edition remains incomplete. See the machine observation for
@@ -33,3 +33,19 @@ retained at 8d76b993/b7011bcf; this updated observation does not rewrite it.
 No workbook facts, item rights, native units/layout, canonical mapping or
 publication are admitted by transport success. The capture machine observation
 retains exact ETag/Last-Modified and UTC times separately from release dates.
+
+
+The retained originals now pass the bounded native structural inspection twice
+with stable inventories and unchanged source hashes. Expenditure has 8 sheets;
+its Raw Data is 6,646 rows by 17 columns, Explanation 57 by 4, and Intro 14 by 1.
+Revenue has 7 sheets; Raw Data is 1,005 by 8, Explanation 46 by 2, Intro 14 by 1.
+Both native Explanation B3 observations agree with the release-level period
+summary. Pivot/graph sheets remain inventoried, with formulas not evaluated.
+
+The existing revenue profile supports only Budget 2025/2026 and rejects 2024.
+The 1,005-row revenue envelope also exceeds that profile's 1,000-data-row bound
+if all rows below the header contain data. No rows are truncated and no bound
+is waived. Exact headers, Intro notices, lower Explanation definitions, occupied
+row count, currency and item rights remain pending. The head preview ends at
+row 20 and cannot establish definitions below it. See the layout observation
+for report hashes and precise inspection scope; decoded previews stay private.
