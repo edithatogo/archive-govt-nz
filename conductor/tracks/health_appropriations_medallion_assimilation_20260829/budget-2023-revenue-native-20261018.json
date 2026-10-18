@@ -78,7 +78,7 @@
     "reason": "stale 2024 transformation expectation; actual 2023 output was correct",
     "retained": true
   },
-  "full_assurance": "pending",
+  "full_assurance": "passed_original32_stages_on_3d55f173",
   "producer_head": "f865f69862ef32930685a8657ecc155be7f65dda",
   "producer_tree": "f6fef0b3cfa68e914c79f2a477569a7755beeb5a",
   "protected_delivery": "pending",

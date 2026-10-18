@@ -7978,3 +7978,18 @@ correct2023 output. Only that verifier was corrected; repository code unchanged.
 Native and entry receipts retain no ISO currency, start-date or rights approval.
 The full original harness must run before opening a focusedPR; protected delivery
 and2023 expenditure normalization remain pending.
+
+
+### 2026-10-18 — Budget 2023 revenue full assurance passed
+
+Original ./scripts/validate.sh passed all32stages on frozen3d55f173/tree4bbb0696,
+using the existing supported two-worker setting and unchanged deadlines, health
+checks,900s caps and80%floor. Tests:8,051passed/14skipped/18warnings/847.71s.
+Schema, differential parity, all mutation gates, security, dependency audit,
+licences, credential scan and SBOM passed. Session73203 exited0; no checker
+process remains, frozen pins/source/native proof agree and kernel lease is free.
+Private full log, marker, configuration, summary and supply-chain receipts were
+copied to permanent assurance-1 with readback. Exact-head hosted PR delivery
+remains pending. Next expenditure comparison confirms identical17headers and
+eight parser definitions; edition SHA/URL/year map/rowcap still require a
+source-specific profile and native qualification after this serial delivery.

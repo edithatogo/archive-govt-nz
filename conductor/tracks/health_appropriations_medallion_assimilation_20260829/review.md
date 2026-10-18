@@ -3746,3 +3746,6 @@ directory. The next action is bounded preservation through the existing core.
 
 
 Budget2023 review: exact decoded definition equality verified; JSON display escaping must not become source text. Closed schema and unknown-vintage fixture drift repaired. Source binding remains fail-closed. Native repeat/full delivery gates remain open.
+
+
+Budget2023 revenue: original full harness passed all32stages. No suppression, timeout/coverage change, source mutation, netting, inferred currency/start/rights or publication. Native producer-to-full delta is documentation only. Required hosted checks and protected delivery remain open; broader track is incomplete.

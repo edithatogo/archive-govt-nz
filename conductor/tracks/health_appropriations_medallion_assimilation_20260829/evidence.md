@@ -3037,3 +3037,6 @@ Budget2023 native inspection is recorded in `budget-2023-native-inspection-20261
 
 
 See `budget-2023-revenue-native-20261018.json`: native repeat/dispatcher and actual CLI/MCP qualification passed on f865f698. All four file hashes match across both direct builds and CLI output. Full assurance and protected delivery remain pending.
+
+
+`budget-2023-revenue-assurance-20261018.json` records the original32-stage local pass on3d55f173. The full log and independent terminal/fixity proof are retained privately. Hosted exact-head checks and protected merge are not yet claimed.

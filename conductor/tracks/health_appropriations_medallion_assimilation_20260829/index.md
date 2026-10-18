@@ -523,3 +523,5 @@ they are not current-state assertions.
 - [Budget 2023 bounded native inspection](./budget-2023-native-inspection-20261018.json)
 
 - [Budget 2023 revenue native qualification](./budget-2023-revenue-native-20261018.json)
+
+- [Budget 2023 revenue full assurance](./budget-2023-revenue-assurance-20261018.json)
