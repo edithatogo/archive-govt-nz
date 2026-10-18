@@ -3012,3 +3012,31 @@ full attempts remain explicitly failed(timing/hostcapacity), with logs and
 terminal/kernel-release receipts retained privately. Focused/static gates and
 source contracts pass. Existing exact-head hosted fullchecker remains pending;
 no local fullpass, broader semantic admission or publication is asserted.
+
+
+### 2026-10-18 — Budget 2024 delivered; Budget 2023 release reconciled
+
+PR 718 is merged after all seven checks and all 32 stages on each hosted
+platform. The delivery receipt retains exact heads, trees, log hashes and
+post-merge cleanup checks; local failed runs remain failures. The next 2023
+release observation identifies the two existing locators, period labels and
+declared page licence. Four inventory surfaces and 360 first WARC headers
+have no exact matches; that bounded check establishes neither global absence
+nor alias equivalence. Source bodies, native units and item notices are pending.
+
+
+[Budget 2023 capture](./budget-2023-capture-20261018.json) records two privately
+preserved originals, independently verified CAS/WARC bindings and receipt
+hashes. The failed module-import attempt is retained and had no source-side
+operation. Capture2 is terminal 0 with a released kernel lease. Native layout,
+units and item-level rights remain pending; no numerical or publication claim
+is made from transport success.
+
+
+Budget2023 native inspection is recorded in `budget-2023-native-inspection-20261018.json`. Revenue source profile implementation has focused581-pass/10-skip evidence; actual-source repeat qualification and full assurance are not yet claimed. Expenditure normalization and wider phase gates remain open.
+
+
+See `budget-2023-revenue-native-20261018.json`: native repeat/dispatcher and actual CLI/MCP qualification passed on f865f698. All four file hashes match across both direct builds and CLI output. Full assurance and protected delivery remain pending.
+
+
+`budget-2023-revenue-assurance-20261018.json` records the original32-stage local pass on3d55f173. The full log and independent terminal/fixity proof are retained privately. Hosted exact-head checks and protected merge are not yet claimed.

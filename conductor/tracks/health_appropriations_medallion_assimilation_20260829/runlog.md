@@ -7892,3 +7892,114 @@ and took sole launch/poll ownership through the unchanged serialized guard.
 Actual session24130 performed native1/full1;69464 performedfull2;56962
 performedfull3. No overlapping source qualification was started. Each terminal
 run and kernel release was verified independently before subsequent action.
+
+
+### 2026-10-18 — PR 718 delivered; Budget 2023 census started
+
+The unchanged full checker passed all 32 stages on Ubuntu (8,031 passed, 30
+skipped), macOS (8,031/30) and Windows (8,025/36). Seven exact-head checks
+succeeded; no review threads or CodeQL alerts remained. Normal protected merge
+at d95a76a8 was fetched and checked against the exact head 9d882d46: equal
+7d6b0fea tree, both ancestors, zero unique commits/patches and clean checkout.
+Local and remote-tracking topic refs were pruned after the remote was absent;
+the primary, runtime, CAS and private evidence remain retained. Local failed
+full runs are preserved and are not relabelled as passes.
+
+Next bounded source-census slice uses the existing 2023 expenditure/revenue
+locators and source IDs. The official release read confirms its issue/update
+dates, June-year periods, source caveats and declared page licence. Native
+units, item notices, layout and prior-capture reuse remain to be checked.
+No original capture or numerical admission has occurred in this slice yet.
+
+
+Budget 2023 reuse preflight read the same four committed inventory surfaces
+and all 360 first WARC headers in the primary Health WARC directory (64 KiB
+per file, 1,000-file cap). It found zero exact URL/filename matches and zero
+unreadable headers. Reports are retained in the private 2023 case with input
+hashes. No alias equivalence, body identity or global absence is inferred.
+Both official release links resolve to the registered XLSX URLs; the web text
+reader cannot decode XLSX, which is not evidence of source unavailability.
+No workbook body has been captured or numerically admitted by this slice.
+
+
+### 2026-10-18 — Budget 2023 originals preserved
+
+The private import probe failed on the tools namespace. An attempted launcher
+failed at module import before capture-core entry; its output directory was
+absent and no source network/CAS write began. Logs/configuration were retained
+in launcher-failed-1. Explicit repository PYTHONPATH fixed the import probe; a
+fresh guarded attempt then captured exactly the two registered URLs.
+
+Capture2 on head 3ca17fe4/tree23028309 exited 0 (session76446), with unchanged
+frozen inputs and verified kernel release. Expenditure is933,618bytes/SHA
+bee0e4cd776f0511d271ec842ade355661772c804d12239035e32ad61db06da9;
+revenue is104,743bytes/SHA
+e2b00177bffd233fd404f5db989a576408f249fc81ef2342f31d95ca452c019b.
+Both returnedHTTP200. Independent CAS fixity, WARC response/body binding,
+receipt hashes and copied working evidence all pass. The exact capture-input
+census remains retained; later source observations do not rewrite it.
+No native units, item rights, Silver facts or analytical joins are admitted.
+Next inspect the retained bytes using the existing bounded workbook tools.
+
+
+### 2026-10-18 — Budget 2023 native inspection and revenue profile
+
+Guarded native inspection1 exited0 on frozen152060e9. Both report digests
+and unchanged source bytes verify; no inspection process remains and the
+serializer lease is free. Raw sheets contain6,696 expenditure and1,013 revenue
+rows, with no blank tail. Source notices and definition coordinates are retained
+in the private reports. No currency, period-start or rights eligibility is inferred.
+
+The revenue profile reuses the existing parser, exact numeric tokens, row
+accounting and common dispatcher, with the reviewed SHA/URL,1,013-row cap
+and2019–2024 period map. Existing CLI/MCP profile registry and closed receipt
+schema include2023. No new dependency or publication operation is introduced.
+Red: one expected unsupported-profile failure,3negative contracts passed.
+First green attempt:578passed/10skipped with3failures (schema projection,
+obsolete unknown-vintage example and definition mismatch). A decoded-cell
+comparison corrected an erroneous reading of JSON escape characters; all five
+definitions now match the actual report exactly. Generated receipt schema was
+refreshed; the unknown-vintage example now uses2022. Green2:581passed,
+10skipped in66.25s. Ruff passes and production typing reports0errors.
+Native repeated extraction and full harness/hosted delivery remain pending.
+
+
+### 2026-10-18 — Budget 2023 revenue native qualification
+
+On frozenf865f698/f6fef0b3, guarded revenue-native1 exited0 (session93445).
+All1,013rows accounted:65Health facts,948out-of-scope,0blank/0rejected;
+1,040lineage rows. Two complete four-file packages are byte-identical.
+Common dispatcher facts/lineage/losses agree and original bytes are unchanged.
+Actual CLI/default-preflight and initialized read-only MCP agree; explicit CLI
+write reproduces the same four files. Guarded source-entry2 exited0(session8710),
+with fresh independent package readback and free kernel lease. Attempt1 is
+retained: a private verifier had a stale2024 transformation expectation after
+correct2023 output. Only that verifier was corrected; repository code unchanged.
+Native and entry receipts retain no ISO currency, start-date or rights approval.
+The full original harness must run before opening a focusedPR; protected delivery
+and2023 expenditure normalization remain pending.
+
+
+### 2026-10-18 — Budget 2023 revenue full assurance passed
+
+Original ./scripts/validate.sh passed all32stages on frozen3d55f173/tree4bbb0696,
+using the existing supported two-worker setting and unchanged deadlines, health
+checks,900s caps and80%floor. Tests:8,051passed/14skipped/18warnings/847.71s.
+Schema, differential parity, all mutation gates, security, dependency audit,
+licences, credential scan and SBOM passed. Session73203 exited0; no checker
+process remains, frozen pins/source/native proof agree and kernel lease is free.
+Private full log, marker, configuration, summary and supply-chain receipts were
+copied to permanent assurance-1 with readback. Exact-head hosted PR delivery
+remains pending. Next expenditure comparison confirms identical17headers and
+eight parser definitions; edition SHA/URL/year map/rowcap still require a
+source-specific profile and native qualification after this serial delivery.
+
+
+### 2026-10-18 — PR719 receipt summary review fix
+
+Automated threadPRRT_kwDOTo2MOM6tokji found the native receipt top-level
+status still labelled full assurance pending despite its detailed passed field.
+Corrected the summary to native revenue and local full assurance passed, with
+protected delivery pending. This is evidence reconciliation only; producer code,
+tests, schema and all native/full log pins remain unchanged. Metadata validation
+and exact-head hosted checks must be refreshed after this correction.

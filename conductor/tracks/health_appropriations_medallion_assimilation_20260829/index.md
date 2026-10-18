@@ -512,5 +512,16 @@ they are not current-state assertions.
 
 - [Budget 2024 source-operation entry correction](./budget-2024-source-entry-20261018.json) — supported CLI/MCP actual-source entry and corrected 32-stage full harness pass; fresh hosted delivery pending.
 
-- [Budget2024 expenditure profile](./budget-2024-expenditure-profile-20261018.json) — actual-source qualified; local full timing blocked, hosted assurance pending.
+- [Budget2024 expenditure profile](./budget-2024-expenditure-profile-20261018.json) — native and hosted qualified; delivered PR 718, local timing failures retained.
 - [PR717 delivery](./budget-2024-revenue-delivery-20261018.json) — protected merge and verified topic cleanup.
+
+- [PR 718 delivery](./budget-2024-expenditure-delivery-20261018.json) — protected merge, full hosted assurance and verified cleanup.
+- [Budget 2023 census](./source-census-budget-2023-20261018.json) — originals privately preserved; native definitions, layout and item rights pending.
+
+- [Budget 2023 capture](./budget-2023-capture-20261018.json) — source fixity, WARC binding and receipts independently verified.
+
+- [Budget 2023 bounded native inspection](./budget-2023-native-inspection-20261018.json)
+
+- [Budget 2023 revenue native qualification](./budget-2023-revenue-native-20261018.json)
+
+- [Budget 2023 revenue full assurance](./budget-2023-revenue-assurance-20261018.json)

@@ -32,6 +32,11 @@ _SOURCE_LIMIT_ERROR = "budget_revenue_source_limit_or_type"
 _SOURCE_HASH_ERROR = "source_hash_mismatch"
 _VINTAGE_ERROR = "unsupported_budget_revenue_vintage"
 _PROFILE = {
+    "Budget-2023": (
+        budget_revenue.TRANSFORMATION_2023,
+        budget_revenue.PERIOD_TYPES_2023,
+        budget_revenue.DEFINITIONS_2023,
+    ),
     "Budget-2024": (
         budget_revenue.TRANSFORMATION_2024,
         budget_revenue.PERIOD_TYPES_2024,

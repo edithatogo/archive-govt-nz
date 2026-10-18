@@ -3733,3 +3733,22 @@ allowlist opportunity was identified but remains outside this focused change.
 Run the identical required checker on clean hosted runners; keep allseven
 exact-head checks and review resolution before protected merge. Do not claim
 local full success or mark the wider track complete.
+
+
+### 2026-10-18 — Next release boundary
+
+Budget 2023 uses its own registered URLs, issue/update dates and June-year
+labels. The page's licence declaration does not substitute for native notices
+or redistribution assessment. No 2024 row bound, unit, source hash or numeric
+profile is applied to uninspected 2023 bytes. Retained-evidence matching is
+explicitly limited to four inventories and first headers in the primary WARC
+directory. The next action is bounded preservation through the existing core.
+
+
+Budget2023 review: exact decoded definition equality verified; JSON display escaping must not become source text. Closed schema and unknown-vintage fixture drift repaired. Source binding remains fail-closed. Native repeat/full delivery gates remain open.
+
+
+Budget2023 revenue: original full harness passed all32stages. No suppression, timeout/coverage change, source mutation, netting, inferred currency/start/rights or publication. Native producer-to-full delta is documentation only. Required hosted checks and protected delivery remain open; broader track is incomplete.
+
+
+PR719 automated P2 receipt status inconsistency: corrected the top-level status to distinguish passed local assurance from pending protected delivery. Detailed producer evidence and facts unchanged.

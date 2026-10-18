@@ -2243,7 +2243,7 @@ ancestry, equal fde19483 tree, zero unique commits and clean-main checks pass;
 topic refs pruned and primary retained. See budget-2024-revenue-delivery-20261018.json.
 The broader Budget2024 census remains in progress.
 
-- [~] Add a pinned Budget2024 expenditure source profile through the existing
+- [x] Add a pinned Budget2024 expenditure source profile through the existing
   adapter and CLI/MCP source-operation architecture. Preserve all 17 source
   columns, original OOXML amount tokens, parent/category/group/periodicity
   qualifiers, literal $000 and unknown ISO currency. Account for all 6,645
@@ -2261,3 +2261,28 @@ Three local originalfull runs are not qualified: timing checks(4/2workers) or
 the original900s cap(1worker). Preserve failed evidence; no quality setting is
 weakened. Qualify the same fullchecker through existing exact-head hosted lanes,
 then seven successes/resolved reviews/protected delivery. Task remains[~].
+
+
+PR #718 delivered at `d95a76a8` after seven exact-head successes on
+`9d882d46`. All 32 hosted stages pass on three platforms. Local timing failures
+are preserved. Fresh fetched ancestry, equal `7d6b0fea` tree, zero unique
+commits and clean-main checks pass; topic refs pruned, primary retained.
+See `budget-2024-expenditure-delivery-20261018.json`.
+
+- [~] Reconcile the registered Budget 2023 expenditure/revenue release and
+  retained captures. Record exact identity, periods, units, definitions, rights
+  notices and layout; preserve eligible originals through the existing capture
+  core only where reuse evidence does not identify them. Admit native source
+  profiles only after edition-specific contracts and repeat-build evidence.
+  Keep currency, period starts, joins and publication unqualified where source
+  evidence is absent. [M-02, M-04, M-06, M-07, M-11; AC-03, AC-04, AC-05, AC-09]
+
+
+Budget 2023 expenditure/revenue are privately preserved with HTTP200 and
+independent CAS/WARC/receipt verification. See budget-2023-capture-20261018.json.
+The exact working census is retained at3ca17fe4; no source-layout or numeric
+admission follows from transport. Native definitions/layout have been inspected for both originals. Revenue now
+qualifies65Health facts/1,040lineage with full1,013-row accounting, repeat and
+CLI/MCP parity; see budget-2023-revenue-native-20261018.json. Full assurance
+and protected delivery remain pending. Expenditure normalization, source rights
+eligibility, and broader semantic/analytical gates remain open.

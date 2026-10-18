@@ -71,3 +71,11 @@ The failures and terminal/kernel-release evidence are preserved. No check or
 limit is suppressed. The focused PR will qualify the identical full checker on
 clean hosted runners; seven exact-head successes remain required before merge.
 This is not a local full-pass claim or final track completion.
+
+
+PR #718 delivered the expenditure profile at `d95a76a8` after all seven checks
+passed on `9d882d46`. Logs verify all 32 stages on Ubuntu, macOS and Windows.
+The local timing failures remain recorded; no local full-pass claim replaces
+them. Fresh ancestry, identical checked/merge trees, zero unique commits and a
+clean checkout were verified before pruning the topic refs. Wider coverage and
+semantic gaps remain open; see the expenditure delivery receipt.
