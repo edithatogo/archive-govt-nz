@@ -41,9 +41,9 @@ retains literal OOXML amount tokens. Its edition-specific bound does not change
 the 2025/2026 1,000-row limits. Actual-source qualification emits 66 Health facts and 1,056 lineage entries,
 with 938 explicit non-Health dispositions and zero rejected rows. Two complete
 four-file builds are byte-identical and common dispatch agrees on facts,
-lineage and losses. All 32 original local harness stages pass; hosted PR
-qualification remains pending. Expenditure still needs its
-own source-specific qualification. No Gold currency, denominator, deflator,
+lineage and losses. The revenue profile was delivered through PR #717 after corrected original
+local assurance and all seven hosted checks. Expenditure now has its own
+source-specific native qualification, described below. No Gold currency, denominator, deflator,
 classification mapping, netting or analytical join is approved by this census.
 The wider 2024 source families and the overall historical census remain incomplete.
 
@@ -53,4 +53,21 @@ through the actual CLI parser and initialized MCP JSON-RPC preflight. Default
 preflight creates no output package; explicit CLI writing reproduces all four
 previously qualified files exactly. The corrected tree 89fdb3c9 passes all 32
 original harness stages (8,038 tests, 14 skipped). Earlier direct-only evidence
-is retained; fresh hosted qualification and protected PR delivery remain open.
+is retained; PR #717 is merged at bde4f721 after all seven hosted checks, and
+its clean topic refs are pruned.
+
+
+The pinned2024 expenditure profile accounts for all6,645 rows:244Healthfacts,
+6,401explicit non-Health dispositions, zero blanks/rejects and6,100lineage
+entries. Actual CLI/MCP read-only preflight agrees; explicit CLI writing matches
+all four direct package files exactly. Common dispatch facts, lineage and losses
+agree. All17 native columns and parent/category/group/periodicity qualifiers
+remain source-separated; no currency, period start or aggregation is inferred.
+See [expenditure qualification](./budget-2024-expenditure-profile-20261018.json).
+
+Three unchanged local full-harness runs did not qualify: four and two workers
+hit unrelated Hypothesis timing checks; one worker hit the original900s cap.
+The failures and terminal/kernel-release evidence are preserved. No check or
+limit is suppressed. The focused PR will qualify the identical full checker on
+clean hosted runners; seven exact-head successes remain required before merge.
+This is not a local full-pass claim or final track completion.

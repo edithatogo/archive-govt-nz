@@ -3001,3 +3001,14 @@ cannot emit the legacy NZD schema. Other vintages remain unchanged.
 isolation. Ruff, strict types,66schemas/56docs and93Conductor tracks pass.
 Actual source and original full qualification remain pending root-owned launch.
 See budget-2024-expenditure-profile-20261018.json.
+
+
+### Budget2024 expenditure native qualification and local timing evidence
+
+[Qualification](./budget-2024-expenditure-profile-20261018.json) retains
+actual-source CLI/MCP/repeat/common-dispatch proof:244facts,6100lineage,
+all6645rows and zero rejects; source bytes unchanged. Three original local
+full attempts remain explicitly failed(timing/hostcapacity), with logs and
+terminal/kernel-release receipts retained privately. Focused/static gates and
+source contracts pass. Existing exact-head hosted fullchecker remains pending;
+no local fullpass, broader semantic admission or publication is asserted.

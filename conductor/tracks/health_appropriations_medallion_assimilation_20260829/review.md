@@ -3720,3 +3720,16 @@ remain unknown/not evaluated. Original OOXML amount tokens establish exact
 values independently of the caller Decimal precision. Other worksheets remain
 inventoried with explicit exclusions. Focused/static review found no further
 actionable defect; actual-source and full qualification are still required.
+
+
+### Expenditure qualification review — native passed, full hosted pending
+
+Actual source confirms all17 columns,244facts/6100lineage, complete6645row
+accounting, byte-identical fourfile packages and CLI/MCP/common-dispatch parity.
+Currency/period-start/classification/rights holds remain intact. Three local
+full-harness attempts failed on unchanged timing checks or the original cap;
+failures are preserved and no check is suppressed. A fail-fast legislation
+allowlist opportunity was identified but remains outside this focused change.
+Run the identical required checker on clean hosted runners; keep allseven
+exact-head checks and review resolution before protected merge. Do not claim
+local full success or mark the wider track complete.

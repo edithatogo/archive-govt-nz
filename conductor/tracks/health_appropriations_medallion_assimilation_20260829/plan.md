@@ -2252,3 +2252,12 @@ The broader Budget2024 census remains in progress.
   source repeat stability and CLI/MCP preflight parity, then original full
   validation and protected delivery. [M-04, M-06, M-07, M-11, M-15, M-18;
   AC-03, AC-04, AC-05, AC-09, AC-13, AC-16]
+
+
+Expenditure actual-source qualification passes on101af09/tree88a18dc:244facts,
+6100lineage,6645rowdispositions, zero rejects. Actual CLI/MCP preflight and
+explicit CLI write match the direct package; common facts/lineage/losses agree.
+Three local originalfull runs are not qualified: timing checks(4/2workers) or
+the original900s cap(1worker). Preserve failed evidence; no quality setting is
+weakened. Qualify the same fullchecker through existing exact-head hosted lanes,
+then seven successes/resolved reviews/protected delivery. Task remains[~].

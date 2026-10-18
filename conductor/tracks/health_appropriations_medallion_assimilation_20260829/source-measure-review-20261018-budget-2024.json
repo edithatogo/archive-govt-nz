@@ -182,11 +182,11 @@
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census-budget-2024-20261018.json",
-      "sha256": "2c02b0a739841ee5f51a74f8eee1aa103e8df3d30f7bd8de9a2c48d5a5d8ef96"
+      "sha256": "b1e41de6e6142fa051d89b58a2ef34808508e4365c45f1377a17900d64c7e3e4"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/source-census-budget-2024-20261018.md",
-      "sha256": "6f9098f182a7afc2bf0cd318c8e64850acbec4d2bfaee1caa0c6380079440361"
+      "sha256": "1b258e7ac6c92dba862851a844c529471bc024f61128fcd7c9def375ad0a0a92"
     },
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/budget-2024-revenue-qualification-20261018.json",
@@ -195,6 +195,14 @@
     {
       "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/budget-2024-source-entry-20261018.json",
       "sha256": "33c9e127581f51e691ac94a0996ac62a4fd9165476ece448b74814b279db280f"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/budget-2024-expenditure-profile-20261018.json",
+      "sha256": "932b824506ae476ed086bf0f320aa09b74e6acc014cc96c3b935ab79818ca00d"
+    },
+    {
+      "path": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/budget-2024-revenue-delivery-20261018.json",
+      "sha256": "fe28d94a033470de846f24b3944629365f528048ec27363d589c2db4a26308a8"
     }
   ],
   "observed_at": "2026-10-18T04:01:39.119701+00:00",
@@ -352,12 +360,14 @@
         2025
       ],
       "captured_originals": 2,
-      "expenditure_profile": "source-specific qualification pending",
+      "expenditure_profile": "actual source/CLI/MCP/repeat/common dispatch qualified:244facts6100lineage6645dispositions; localfull timing blocked, hostedpending",
+      "expenditure_source_rows": 6645,
       "item_notices": "native Crown/CC BY4.0 observed; emblem restriction retained; identical CC BY badges visually identified; no legal adjudication",
       "native_unit": "$000",
       "prior_series_external_reverification": "not_reperformed_by_this_slice",
+      "private_Silver_expenditure_facts": 244,
       "private_Silver_revenue_facts": 66,
-      "revenue_profile": "direct and supported CLI/MCP actual-source entry qualified with unchanged4files; corrected original full32stage pass on89fdb3c9; fresh hosted delivery pending",
+      "revenue_profile": "deliveredPR717 atbde4f721 after corrected originalfull and seven hostedchecks",
       "revenue_source_rows": 1004,
       "scope": "Dated private transport/native evidence overlay; historical locator register and official source-census records unchanged",
       "source_ids": [
