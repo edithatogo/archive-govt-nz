@@ -547,3 +547,5 @@ they are not current-state assertions.
 - [Budget2022 working source census](./source-census-budget-2022-20261018.json) — official release observed; bounded capture/native verification pending.
 
 - [Budget2022 partial capture qualification](./budget-2022-capture-20261018.json) — workbook pair preserved; release-page403 and native/rights gates explicit.
+
+- [Budget2022 native structure and definitions](./budget-2022-native-inspection-20261018.json) — observed row bounds and profile prerequisites; no numerical admission.

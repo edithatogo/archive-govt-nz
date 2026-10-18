@@ -3775,3 +3775,5 @@ PDF layout review: encryption metadata alone did not establish inaccessible page
 - PR721 final delivery review: exact-head7checks and all32stages on all3platforms verified;0unresolved threads/CodeQL alerts. Normal protected merge ancestry/equal-tree/zero-unique guards pass. Stale remote-tracking cleanup assertion corrected after fresh remote-absence proof. Primary and all original/native evidence retained.
 
 - Budget2022 capture review: distinguish complete workbook CAS/WARC proof from terminal page403; do not repeat successful files or weaken access controls. Source page web metadata is observational only, without a native page-transport receipt. Conductor consulted; independent source-native work continues.
+
+- Budget2022 native review: actual layouts fit the existing literal named-column contracts, but require independent edition/hash/B3/period/row profiles. Decode JSON display strings before comparison; all existing shared non-edition definitions match. Preserve earlier-edition output bytes, unknown currency/start and rights holds. Page403 is separate from eligible local source inspection/normalization.

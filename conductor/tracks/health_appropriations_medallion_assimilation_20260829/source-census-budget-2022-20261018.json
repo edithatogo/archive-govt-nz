@@ -4,7 +4,18 @@
     "release_page": "HTTP403_native_page_transport_denied",
     "successful_workbooks": 2
   },
-  "native_layout_units": "pending",
+  "native_layout_units": {
+    "period_definition": "Native Explanation gives June-year ends2018\u20132023 with Actuals/EstimatedActual/MainEstimates retained",
+    "raw_rows": {
+      "expenditure": 6568,
+      "revenue": 1015
+    },
+    "receipt": "budget-2022-native-inspection-20261018.json",
+    "rights": "not_adjudicated",
+    "source_profiles": "pending",
+    "state": "observed_not_yet_normalized",
+    "units": "literal $000; ISO currency not asserted"
+  },
   "observation_scope": "Official release identity and registered source pair only; no native bytes/units/rights or numerical admission",
   "publication": "not_performed",
   "registry_sha256": "d285edf070628059ecc43bd6a17353f77e580192f7f3862f95352342001224e4",
@@ -107,5 +118,6 @@
   "rights_eligibility": "not_evaluated",
   "schema_version": "archive-govt-nz.health-source-census-budget-2022/v1",
   "silver_admission": "not_performed",
-  "status": "workbooks_captured_release_page_transport_denied_native_checks_pending"
+  "source_profile_qualification": "pending",
+  "status": "workbooks_preserved_native_layout_observed_profiles_pending_release_page_403"
 }

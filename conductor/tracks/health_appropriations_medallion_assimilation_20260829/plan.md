@@ -2330,3 +2330,10 @@ throughPR721; see readable-pdf-layout-delivery-20261018.json.
   capture core with CAS/WARC/readback. Keep source observation, literal Silver
   eligibility and analytical/rights admission separate.
   [M-02, M-04, M-06, M-11, M-18; AC-03, AC-04, AC-09, AC-16]
+
+Budget2022 pair preservation and native structure/definitions are verified;
+17/8headers and6568/1015occupied rows. The page transport403 is retained and
+Conductor consulted. Next add dedicated hash-bound2022profiles through the
+existing parsers, keeping previous profiles/output bytes unchanged; qualify
+actual repeats/common/CLI/MCP, run the harness and deliver a focusedPR before
+closing this bounded slice. No rights, currency or period-start inference.

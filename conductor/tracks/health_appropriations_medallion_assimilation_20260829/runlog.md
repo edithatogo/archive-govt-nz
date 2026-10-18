@@ -8225,3 +8225,22 @@ fail-closed disposition, without bypass or rights inference. Root retains sole
 launch ownership; independent native workbook inspection continues from the two
 verified CAS objects. No original recapture, monetary extraction, rights
 admission or external publication occurred.
+
+### 2026-10-18 — Budget2022 native layout/definition evidence verified
+
+Frozen8e75070d/tree931caf8a native-inspection1 exited0(session35993). Both
+reports are inspected; actual terminal, unchanged code/runtime/evidence/source
+pins and kernel release verify. Expenditure RawData6569x17 (6568occupied
+rows); revenue1016x8 (1015occupied),0blank. Native definitions establish
+literal $000 and June-year ends2018–2023, preserving Actuals/EstimatedActual/
+MainEstimates. All8shared expenditure definitions match; all4non-B3revenue
+definitions match. B3edition text is separate and must be pinned exactly,
+including native spacing; JSON rendering escapes are not source characters.
+
+This supports dedicated2022profiles through existing parsers, with edition
+row bounds6568/1015. Existing2023/2024/2025/2026profiles must remain
+unchanged. No monetary facts, ISO currency, annual start, rights eligibility,
+Gold or publication admitted. Inert media hashes are not a legal review.
+Conductor page403 solution remains pending; this affects only native page
+transport evidence. Permanent native-inspection-assurance-1 copies verify by
+hash. See budget-2022-native-inspection-20261018.json.
