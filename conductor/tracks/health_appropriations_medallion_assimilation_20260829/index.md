@@ -559,3 +559,5 @@ they are not current-state assertions.
 - [Budget2022 protected delivery and local failure dispositions](./budget-2022-delivery-20261018.json)
 
 - [Context reader startup implementation](./context-reader-startup-implementation-20261018.json)
+
+- [Reader/API native product proof and explicit CLI timing gap](./context-reader-startup-native-20261018.json)

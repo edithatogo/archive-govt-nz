@@ -2370,3 +2370,22 @@ explicit disclosure; require original all32stages on3clean hosted platforms,
   supported Gold outputs unchanged before focused protected delivery. This
   scoped Phase8 repair does not complete the broader operations checklist.
   [M-15, M-18; AC-13, AC-16]
+
+
+Reader native qualification: first10s child-startup timeout is retained.
+Instrumented attempt2 reads the retained5-input spec in2.14s without plotting,
+then both native Gold builds match all20independent prior files and source-
+regenerated readback returns615observations/585eligible/30excluded. All248
+frozen code/runtime/input pins remain unchanged after terminal execution.
+Actual full-source CLI preflight then times out at its original30s probe cap
+with no output; registered MCP probe was not reached. Do not claim complete
+CLI/MCP or a startup SLA. See context-reader-startup-native-20261018.json.
+Original full harness and protected delivery of the reader-only slice remain
+pending; broader Phase8 stays incomplete. Conductor design advice requested.
+
+- [ ] Diagnose full-source Context Gold CLI/MCP preflight timing against the
+  retained5-input/615-observation package. Distinguish import, source
+  regeneration and rendering cost; preserve no-write semantics, complete
+  controls, source facts and the existing probe/test/full limits. Reader-only
+  dependency isolation does not close this broader operational item.
+  [M-15, M-18; AC-13, AC-16]

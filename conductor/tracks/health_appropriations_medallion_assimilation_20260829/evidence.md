@@ -3073,3 +3073,15 @@ See `budget-2023-revenue-native-20261018.json`: native repeat/dispatcher and act
 
 
 PR722 delivered: all7exact-head checks/all32hosted stages per platform; merge95f9f638 verified fetched main/head ancestry/equal merge tree/zero unique commits and patches/clean. Topic local/remote/tracking absent; one primary/CAS/runtime/proofs retained. See budget-2022-delivery-20261018.json. Local full2 remains124 with2observed failures, not a pass. Serial/instrumented probes and140unchanged affected-module tests distinguish startup sensitivity from proven FIFO rejection; earlier timeout location unproven. Conductor advice requested, no approval claimed. Next bounded Phase8 task isolates input-spec inspection from plot/product startup without widening limits or changing product bytes.
+
+
+Reader native qualification: first10s child-startup timeout is retained.
+Instrumented attempt2 reads the retained5-input spec in2.14s without plotting,
+then both native Gold builds match all20independent prior files and source-
+regenerated readback returns615observations/585eligible/30excluded. All248
+frozen code/runtime/input pins remain unchanged after terminal execution.
+Actual full-source CLI preflight then times out at its original30s probe cap
+with no output; registered MCP probe was not reached. Do not claim complete
+CLI/MCP or a startup SLA. See context-reader-startup-native-20261018.json.
+Original full harness and protected delivery of the reader-only slice remain
+pending; broader Phase8 stays incomplete. Conductor design advice requested.

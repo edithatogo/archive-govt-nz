@@ -3800,3 +3800,15 @@ PR722 delivered: all7exact-head checks/all32hosted stages per platform; merge95f
 
 
 Reader startup implementation: dependency-boundary red reproduced plotting import during plain input inspection. Initial local import deferral still reached plots through eager MCP schema projection; preserve intermediate failure. Native Context Gold now imports rendering only at the existing export call; operation canonical/render imports stay in product construction. All41focused tests pass316.31s, Ruff/format pass. FIFO10s/full900s/80%floor unchanged; no product format, numeric rules, rights, joins or publication changed. Actual retained-product/native and full/protected qualification remain pending; see context-reader-startup-implementation-20261018.json.
+
+
+Reader native qualification: first10s child-startup timeout is retained.
+Instrumented attempt2 reads the retained5-input spec in2.14s without plotting,
+then both native Gold builds match all20independent prior files and source-
+regenerated readback returns615observations/585eligible/30excluded. All248
+frozen code/runtime/input pins remain unchanged after terminal execution.
+Actual full-source CLI preflight then times out at its original30s probe cap
+with no output; registered MCP probe was not reached. Do not claim complete
+CLI/MCP or a startup SLA. See context-reader-startup-native-20261018.json.
+Original full harness and protected delivery of the reader-only slice remain
+pending; broader Phase8 stays incomplete. Conductor design advice requested.
