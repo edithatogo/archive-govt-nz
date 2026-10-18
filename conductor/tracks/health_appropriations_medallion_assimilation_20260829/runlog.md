@@ -8244,3 +8244,27 @@ Gold or publication admitted. Inert media hashes are not a legal review.
 Conductor page403 solution remains pending; this affects only native page
 transport evidence. Permanent native-inspection-assurance-1 copies verify by
 hash. See budget-2022-native-inspection-20261018.json.
+
+### 2026-10-18 — Budget2022 profiles and focused contracts
+
+Added a thin hash-bound2022expenditure profile through the existing shared
+parser, plus2022revenue metadata/dispatch/row cap through its existing parser.
+Closed source operations and saved schema expose both profiles. All source
+definition literals equal the inspected cells (including NBSP/double spaces);
+row caps6568/1015 and source/edition/locator bindings are specific. Legacy
+assumed-currency expenditure refuses2022, as it already did2023/2024.
+
+Red2fail/4deselected in4.11s. Six new contract cases cover periods, semantic
+holds, full reviewed row envelopes/overflow and3binding failures per source.
+Initial green caught a copied b23filename in the new expenditure locator;
+corrected to the registered b22source, then6passed17.95s. Initial broader
+focused run:643pass/10skip/2fail175.40s. Failures are retained: generated
+transformation enum lacked2IDs and the unsupported-year fixture still used
+now-reviewed2022. Regenerated the committed schema from the existing runtime
+projection and moved only the unknown-vintage example to2021; corrected
+affected suites540pass/10skip32.90s. Source bindings/gates were not weakened.
+Ruff/format/types pass;66schemas/56docs validate. Removing only the2new schema
+profiles/transformation IDs yields exact origin/main schema equality.
+Actual-source repeat/common/CLI/MCP and prior-edition bytes, full original
+harness and protected delivery remain required before admission/completion.
+Only6new manual contract cases;80%floor/caps/health checks unchanged.

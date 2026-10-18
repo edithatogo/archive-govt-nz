@@ -36,6 +36,12 @@ MAX_ROWS = 1000
 MAX_TEXT = 4096
 MAX_ID = 2**63 - 1
 _DISPATCH_SELECTION_ERROR = "unsupported_budget_revenue_dispatch_selection"
+TRANSFORMATION_2022 = "budget-2022-health-revenue/v1"
+MAX_ROWS_2022 = 1015
+SOURCE_SHA256_2022 = "6f395e69b5ee2405f4d9e09455402b07df7c99cce0803152db1dba654333bb92"
+SOURCE_LOCATOR_2022 = (
+    "https://www.treasury.govt.nz/sites/default/files/2022-05/b22-revenue-data.xlsx"
+)
 TRANSFORMATION_2023 = "budget-2023-health-revenue/v1"
 MAX_ROWS_2023 = 1013
 SOURCE_SHA256_2023 = "e2b00177bffd233fd404f5db989a576408f249fc81ef2342f31d95ca452c019b"
@@ -86,6 +92,25 @@ DEFINITIONS = {
         "App ID: Number used to uniquely identify each Crown revenue "
         "or capital receipt line."
     ),
+}
+DEFINITIONS_2022 = {
+    **DEFINITIONS,
+    "B3": (
+        "The Revenue workbook contains details of  actual government Crown "
+        "revenue and capital receipts for the years ended 30 June 2018, 2019, "
+        "2020 and 2021; estimated actual government Crown revenue and capital "
+        "receipts for the year ending 30 June 2022 and budgeted government "
+        "Crown revenue and capital receipts for the year ending 30 June 2023 as"
+        " published in Budget 2022."
+    ),
+}
+PERIOD_TYPES_2022 = {
+    2018: "Actuals",
+    2019: "Actuals",
+    2020: "Actuals",
+    2021: "Actuals",
+    2022: "Estimated Actual",
+    2023: "Main Estimates",
 }
 DEFINITIONS_2023 = {
     **DEFINITIONS,
@@ -219,6 +244,8 @@ def _require(condition: object) -> None:
 
 def _source_binding(vintage: str, locator: str, digest: str) -> bool:
     """Bind historical profiles to their reviewed original observations."""
+    if vintage == "Budget-2022":
+        return digest == SOURCE_SHA256_2022 and locator == SOURCE_LOCATOR_2022
     if vintage == "Budget-2023":
         return digest == SOURCE_SHA256_2023 and locator == SOURCE_LOCATOR_2023
     return vintage != "Budget-2024" or (
@@ -315,6 +342,7 @@ def _extract(  # noqa: PLR0913 - edition-specific source contracts are explicit.
     definitions: dict[str, str],
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
     max_rows = {
+        TRANSFORMATION_2022: MAX_ROWS_2022,
         TRANSFORMATION_2023: MAX_ROWS_2023,
         TRANSFORMATION_2024: MAX_ROWS_2024,
     }.get(transformation, MAX_ROWS)
@@ -409,7 +437,7 @@ def normalize_budget_revenue(  # noqa: PLR0913 - source observation fields are e
     source_vintage: str = "Budget-2025",
     dry_run: bool = False,
 ) -> dict[str, Any]:
-    """Extract a reviewed Budget-2023 through Budget-2026 profile.
+    """Extract a reviewed Budget-2022 through Budget-2026 profile.
 
     Amounts come from literal OOXML numeric tokens, never formula caches or
     binary-float rendering. Notice text is only fingerprinted, not interpreted.
@@ -422,6 +450,7 @@ def normalize_budget_revenue(  # noqa: PLR0913 - source observation fields are e
         and (not dry_run or not output_dir.exists())
     )
     profiles = {
+        "Budget-2022": (TRANSFORMATION_2022, PERIOD_TYPES_2022, DEFINITIONS_2022),
         "Budget-2023": (TRANSFORMATION_2023, PERIOD_TYPES_2023, DEFINITIONS_2023),
         "Budget-2024": (TRANSFORMATION_2024, PERIOD_TYPES_2024, DEFINITIONS_2024),
         "Budget-2025": (TRANSFORMATION, PERIOD_TYPES, DEFINITIONS),

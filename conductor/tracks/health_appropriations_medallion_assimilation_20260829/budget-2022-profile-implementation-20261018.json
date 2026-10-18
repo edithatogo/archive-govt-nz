@@ -1,0 +1,94 @@
+{
+  "committed_schema_equal_runtime": true,
+  "focused": {
+    "corrected_affected_run": {
+      "passed": 540,
+      "seconds": 32.9,
+      "skipped": 10
+    },
+    "first_broader_run": {
+      "causes": [
+        "saved transformation enum drift",
+        "old unsupported-edition fixture used now-reviewed2022"
+      ],
+      "failed": 2,
+      "passed": 643,
+      "seconds": 175.4,
+      "skipped": 10
+    },
+    "initial_red_deselected": 4,
+    "initial_red_failed": 2,
+    "initial_red_seconds": 4.11,
+    "new_contract_cases_passed": 6,
+    "new_contract_seconds": 17.95
+  },
+  "full_harness": "pending",
+  "native_qualification": "pending",
+  "numeric_facts_admitted": 0,
+  "profiles": [
+    {
+      "ISO_currency": "not_asserted",
+      "definition_sha256": {
+        "B3": "6d3961c0dd8a202885996252a9d510e8969507d63e6daabab69eb34ce14d6af9",
+        "B39": "eac396d3412152e0cd89b9a7d031f7bde3b349d7c24f0a65e95b480aa28eea54",
+        "B40": "77f9bd43460b2a407a8bbb242d2817949e4ad1bd193b99d8b7ac9c0a781a8e2b",
+        "B41": "b41ceaafec7ea8601fade88a91f20236f9dd573e986676c477638057a0a4c521",
+        "B42": "e9cf54849ea7343775a03833341d73a23e78a50ee53dcc45e863e00e6762d115",
+        "B49": "a93299e932bcef851af367721242c7302879b1df42827ce4e84fc0aa44b238c7",
+        "B50": "206bf61a8ca6df960d530a217367aae3508f78c515463abdc78159a1393b532e",
+        "B51": "a9821ad2d50ba3e28476445bcb2f8fc2c02d368e77ff91f22f01b526898d6ee5",
+        "B52": "6d53ea886eaff4c9e21a5fe5af72e38e473c01b8557e929997b978a7e986d450"
+      },
+      "kind": "expenditure",
+      "period_start": "not_asserted",
+      "period_types": {
+        "2018": "Actuals",
+        "2019": "Actuals",
+        "2020": "Actuals",
+        "2021": "Actuals",
+        "2022": "Estimated Actual",
+        "2023": "Main Estimates"
+      },
+      "profile": "budget-expenditure-2022/v1",
+      "reviewed_row_bound": 6568,
+      "rights": "not_evaluated",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2022-05/b22-expenditure-data.xlsx",
+      "source_sha256": "406f74344833b3f9b91c4c5c22bbbd5dd9484af0d25ab3be054367fd07026338"
+    },
+    {
+      "ISO_currency": "not_asserted",
+      "definition_sha256": {
+        "B3": "5d2d610a6fe4164753983ee4eb043e93e18d979a00a33ba9ccbad1e3d1fa7638",
+        "B37": "77f9bd43460b2a407a8bbb242d2817949e4ad1bd193b99d8b7ac9c0a781a8e2b",
+        "B38": "b41ceaafec7ea8601fade88a91f20236f9dd573e986676c477638057a0a4c521",
+        "B39": "e9cf54849ea7343775a03833341d73a23e78a50ee53dcc45e863e00e6762d115",
+        "B43": "e7385b1a70dc953bcd728b5b8d2a40604463fa075642fbf0b3c2a97983994908"
+      },
+      "kind": "revenue",
+      "period_start": "not_asserted",
+      "period_types": {
+        "2018": "Actuals",
+        "2019": "Actuals",
+        "2020": "Actuals",
+        "2021": "Actuals",
+        "2022": "Estimated Actual",
+        "2023": "Main Estimates"
+      },
+      "profile": "budget-revenue-2022/v1",
+      "reviewed_row_bound": 1015,
+      "rights": "not_evaluated",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2022-05/b22-revenue-data.xlsx",
+      "source_sha256": "6f395e69b5ee2405f4d9e09455402b07df7c99cce0803152db1dba654333bb92"
+    }
+  ],
+  "protected_delivery": "pending",
+  "publication": "not_performed",
+  "release_page": "HTTP403_native_page_evidence_pending_Conductor_consulted",
+  "representative_documents": 56,
+  "ruff": "passed",
+  "schema_without_two_new_profiles_equal_origin_main": true,
+  "schemas": 66,
+  "source_definition_literals_equal_native_inspection": true,
+  "status": "implemented_focused_verified_native_full_and_protected_delivery_pending",
+  "typing": "0_errors"
+}

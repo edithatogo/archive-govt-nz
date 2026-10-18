@@ -549,3 +549,5 @@ they are not current-state assertions.
 - [Budget2022 partial capture qualification](./budget-2022-capture-20261018.json) — workbook pair preserved; release-page403 and native/rights gates explicit.
 
 - [Budget2022 native structure and definitions](./budget-2022-native-inspection-20261018.json) — observed row bounds and profile prerequisites; no numerical admission.
+
+- [Budget2022 source-profile implementation and focused evidence](./budget-2022-profile-implementation-20261018.json) — native/full/protected qualification pending.

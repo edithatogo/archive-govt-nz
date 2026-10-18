@@ -118,6 +118,13 @@
   "rights_eligibility": "not_evaluated",
   "schema_version": "archive-govt-nz.health-source-census-budget-2022/v1",
   "silver_admission": "not_performed",
-  "source_profile_qualification": "pending",
-  "status": "workbooks_preserved_native_layout_observed_profiles_pending_release_page_403"
+  "source_profile_qualification": {
+    "implementation": "budget-2022-profile-implementation-20261018.json",
+    "profiles": [
+      "budget-expenditure-2022/v1",
+      "budget-revenue-2022/v1"
+    ],
+    "state": "pending_actual_source_and_full_assurance"
+  },
+  "status": "profiles_implemented_focused_verified_native_qualification_pending_release_page_403"
 }
