@@ -1,6 +1,6 @@
 # Read-only native workbook inspection
 
-Status: native replay and original full harness qualified; hosted delivery pending.
+Status: Windows junction review correction passes focused checks; updated native/full/hosted qualification pending.
 
 Use the existing operation/CLI/MCP architecture and the qualified compound
 source dispatch. The only source IDs are the two reviewed expense workbooks.
@@ -85,3 +85,20 @@ native proof and retained owner readback. Earlier failed evidence remains in
 same evidence directory. Hosted exact-head assurance, review, merge and pruning
 remain pending. No rights, canonical, global worksheet or publication gate is
 closed by this operation.
+
+
+## PR review correction: Windows junction containment
+
+Review thread `PRRT_kwDOTo2MOM6tmYxf` identified that the symlink-only CAS
+path check admitted Windows NTFS junctions. Two portable metadata regressions
+failed on the prior implementation because root and digest-prefix junctions
+returned inspected results. The path guard now rejects either symlinks or
+junctions across the unresolved absolute source path and all ancestors before
+calling the snapshot reader, matching existing hardened readers. No native
+producer, value, schema, runtime pin or source object changes.
+
+The operation suite passes 17 cases, including refusal before any snapshot read;
+two real NTFS junction cases are Windows-only and remain pending its hosted lane.
+Ruff, formatting and strict typing pass. Earlier native/full2 evidence remains
+retained for the prior implementation. Updated native/full qualification and
+fresh exact-head hosted checks are required before resolving the thread or merge.

@@ -93,10 +93,34 @@
   "qualified_head": "2aef585c35c89ec5c9aac1f7ace40558f80ef87c",
   "qualified_tree": "6649bf4b9bc49cd88744e1d8810d27103e2ff84b",
   "response": "closed bounded JSON; physical selection/native kind/profile/schema/count/hash/exclusion/hold evidence; no rows or caller paths",
+  "review_correction": {
+    "change": "reject symlink or junction across unresolved absolute source path and all ancestors before snapshot read",
+    "finding": "Windows NTFS junction components bypassed symlink-only CAS guard",
+    "focused": {
+      "log_sha256": "82744836b8caab2a74f3e4780aaa649fcb578cc498e9d05b02db36ddfa29281a",
+      "passed": 17,
+      "seconds": 5.57,
+      "skip_scope": "real NTFS root/prefix junction cases run only on Windows; pending hosted Windows evidence",
+      "skipped": 2
+    },
+    "native_producers": "unchanged",
+    "prior_pr_head": "915b7013ebde815bbd15f57772696545b2c508b8",
+    "publication": "not_performed",
+    "qualification": "prior native/full2 receipts retained for earlier implementation only; updated source requires new qualification",
+    "red": {
+      "failed": 2,
+      "log_sha256": "a1ad04062214bee2c02740462e8f8cc48acd4b39465a4da6a098151a87a5a601",
+      "reason": "junction root and prefix admitted as inspected",
+      "seconds": 7.23
+    },
+    "rights": "not_evaluated",
+    "static": "ruff/format/diff pass; strict typing zero errors",
+    "thread": "PRRT_kwDOTo2MOM6tmYxf"
+  },
   "rights_state": "not_evaluated",
   "source_ids": [
     "nz-treasury-befu-2025-expense-workbook",
     "nz-treasury-hyefu-2024-expense-workbook"
   ],
-  "status": "native_and_original_full_qualified_hosted_pending"
+  "status": "junction_review_fix_focused_pass_native_full_hosted_pending"
 }

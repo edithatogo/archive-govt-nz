@@ -6,6 +6,7 @@ import hashlib
 import json
 import os
 import socket
+import subprocess
 from pathlib import Path
 from typing import Never
 
@@ -177,6 +178,74 @@ def test_symlink_components_are_refused(
         root, source_id=spec.adapter_id, observed_at=OBSERVED
     )
     assert result["status"] == "failed"
+
+
+@pytest.mark.parametrize("component", ["root", "prefix"])
+def test_junction_metadata_is_refused_before_source_read(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, component: str
+) -> None:
+    bronze, spec = setup_source(monkeypatch, 0)
+    root = tmp_path / "cas"
+    source = root / spec.source_sha256[:2] / spec.source_sha256
+    source.parent.mkdir(parents=True)
+    source.write_bytes(bronze)
+    junction = root if component == "root" else source.parent
+    # Model Windows metadata on other hosts; real NTFS coverage is below.
+    monkeypatch.setattr(Path, "is_junction", lambda path: path == junction)
+    reads: list[Path] = []
+    original = inspection.verified_snapshot
+
+    def read_snapshot(path: Path, pin: str, *, max_bytes: int) -> bytes:
+        reads.append(path)
+        return original(path, pin, max_bytes=max_bytes)
+
+    monkeypatch.setattr(inspection, "verified_snapshot", read_snapshot)
+    result = inspection.inspect_native_workbook(
+        root, source_id=spec.adapter_id, observed_at=OBSERVED
+    )
+    assert result["status"] == "failed"
+    assert "profiles" not in result
+    assert reads == []
+    assert source.read_bytes() == bronze
+
+
+@pytest.mark.skipif(os.name != "nt", reason="Real NTFS junctions require Windows")
+@pytest.mark.parametrize("component", ["root", "prefix"])
+def test_windows_junction_cannot_redirect_inspection_outside_cas(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, component: str
+) -> None:
+    bronze, spec = setup_source(monkeypatch, 0)
+    root = tmp_path / "cas"
+    source = root / spec.source_sha256[:2] / spec.source_sha256
+    source.parent.mkdir(parents=True)
+    source.write_bytes(bronze)
+    target = root if component == "root" else source.parent
+    retained = target.with_name(target.name + "-outside")
+    target.rename(retained)
+    subprocess.run(
+        ["cmd", "/d", "/c", "mklink", "/J", str(target), str(retained)],
+        capture_output=True,
+        text=True,
+        check=True,
+        timeout=10,
+    )
+    try:
+        assert target.is_junction()
+        assert not target.is_symlink()
+
+        def refuse_read(*_args: object, **_kwargs: object) -> Never:
+            message = "junction inspection attempted a source read"
+            raise AssertionError(message)
+
+        monkeypatch.setattr(inspection, "verified_snapshot", refuse_read)
+        result = inspection.inspect_native_workbook(
+            root, source_id=spec.adapter_id, observed_at=OBSERVED
+        )
+        assert result["status"] == "failed"
+        assert "profiles" not in result
+        assert source.read_bytes() == bronze
+    finally:
+        target.rmdir()
 
 
 @pytest.mark.parametrize("outcome", ["inspected", "preserved_only", "failed"])

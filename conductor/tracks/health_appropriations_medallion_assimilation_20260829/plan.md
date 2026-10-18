@@ -2155,3 +2155,11 @@ integrated parent head.
   remain retained, with no code or deadline changes. Owner terminal/kernel release
   verified. Exact-head hosted checks, review and protected delivery remain pending.
   See native-workbook-inspection-20261018.json for pinned evidence.
+
+
+  PR #716 review found a Windows junction path bypass before merge. Preserve the
+  earlier green evidence, keep this task in progress, and require a new qualified
+  head after rejecting junctions as well as symlinks before the source read.
+  Two regression controls fail on the prior guard; the focused suite now passes
+  17 cases with two real NTFS cases pending Windows. Updated native/full and
+  exact-head hosted qualification, review resolution and delivery remain open.

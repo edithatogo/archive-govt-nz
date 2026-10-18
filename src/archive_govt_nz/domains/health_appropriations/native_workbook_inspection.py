@@ -267,7 +267,11 @@ def inspect_native_workbook(
         _require(".." not in cas_root.parts)
         root = cas_root.absolute()
         source = root / spec.source_sha256[:2] / spec.source_sha256
-        _require(not any(p.is_symlink() for p in (source, *source.parents)))
+        _require(
+            not any(
+                p.is_symlink() or p.is_junction() for p in (source, *source.parents)
+            )
+        )
         _require(root.is_dir())
         payload = verified_snapshot(
             source, spec.source_sha256, max_bytes=spec.max_bytes

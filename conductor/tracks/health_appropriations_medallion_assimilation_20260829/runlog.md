@@ -7684,3 +7684,15 @@ clean frozen 2aef585c passes original full2: all 32 stages, 8,027 tests, 12 skip
 66 schemas/56 documents, nine parity cases, mutation/hygiene/supply-chain gates.
 Conductor verified terminal 0 and kernel release. Retain failed and successful
 logs separately; finalize only evidence/plan files before exact-head hosted gates.
+
+
+### 2026-10-18 — PR #716 junction review correction
+
+The guard stops delivery for review thread PRRT_kwDOTo2MOM6tmYxf. Windows
+junction roots/prefixes bypassed the symlink-only path check. Two focused
+regressions demonstrate inspected instead of failed on the previous guard.
+Reject both metadata types across the unresolved absolute source and parents
+before snapshot reads. The operation suite passes 17 tests; two actual NTFS
+cases are Windows-only and pending hosted assurance. Preserve prior native/full2
+receipts as historical evidence, with new native/full and exact-head checks
+required. No source bytes, native producers, deadlines or protections changed.
