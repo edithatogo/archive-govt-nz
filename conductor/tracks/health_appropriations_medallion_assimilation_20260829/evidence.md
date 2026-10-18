@@ -3060,3 +3060,5 @@ See `budget-2023-revenue-native-20261018.json`: native repeat/dispatcher and act
 - Protected delivery and cleanup: `readable-pdf-layout-delivery-20261018.json`; PR721 merged2fa3183b, all7checks/all32stages on3platforms, equal checked/merge tree, zero unique changes, topic refs absent and primary retained. Broader track incomplete.
 
 - Budget2022 preliminary census: `source-census-budget-2022-20261018.json`; registered pair, six-inventory zero-hit and360-header zero-candidate reconciliation. Native bytes/units/rights remain pending.
+
+- Budget2022 capture: `budget-2022-capture-20261018.json`; two HTTP200 originals independently verified, one release-page HTTP403 retained. Partial attempt exited2; this is not a whole capture pass. Native source inspection remains eligible; rights/page transport held.

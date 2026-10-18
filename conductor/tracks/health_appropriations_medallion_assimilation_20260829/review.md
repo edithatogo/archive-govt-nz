@@ -3773,3 +3773,5 @@ PDF layout review: encryption metadata alone did not establish inaccessible page
 - PDF final local review: original all32stage harness passes. Source-health control explicitly separates pre-existing CPI context changes from the3PDFstate delta; both schema versions repeat and CPI449label evidence is preserved. Old reports/originals unchanged. First stale-input comparison failure preserved. No actionable code finding remains; exact-head hosted checks and protected delivery are still pending.
 
 - PR721 final delivery review: exact-head7checks and all32stages on all3platforms verified;0unresolved threads/CodeQL alerts. Normal protected merge ancestry/equal-tree/zero-unique guards pass. Stale remote-tracking cleanup assertion corrected after fresh remote-absence proof. Primary and all original/native evidence retained.
+
+- Budget2022 capture review: distinguish complete workbook CAS/WARC proof from terminal page403; do not repeat successful files or weaken access controls. Source page web metadata is observational only, without a native page-transport receipt. Conductor consulted; independent source-native work continues.

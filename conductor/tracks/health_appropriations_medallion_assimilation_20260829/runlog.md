@@ -8208,3 +8208,20 @@ with zero candidate targets. This is not global alias/absence proof. Preserve
 the working observation and bounded reconciliation pins. Next capture the exact
 release page and pair via existing core into exclusive private CAS/WARC receipts,
 then verify native content; no source-admission or rights promotion yet.
+
+### 2026-10-18 — Budget2022 workbook pair preserved; release-page403 held
+
+Root serialized capture1 on d0b186cd exited2(session68262), now terminal and
+kernel lease free. Both registered originals are HTTP200 with independent
+CAS/fixity/WARC-response bindings: expenditure406f7434(920766bytes),
+revenue6f395e69(105054bytes). The exact release page returned one terminal
+HTTP403; preserve its failure/attempt receipts and do not retry unchanged.
+All frozen code/runtime/evidence pins verified after failure. Initial private
+recipe lint line-length errors were corrected before the launch; lint/types/help
+then pass. Permanent capture-assurance-1 copies verify by hash.
+
+Conductor solution requested for a permitted alternate evidence route or exact
+fail-closed disposition, without bypass or rights inference. Root retains sole
+launch ownership; independent native workbook inspection continues from the two
+verified CAS objects. No original recapture, monetary extraction, rights
+admission or external publication occurred.

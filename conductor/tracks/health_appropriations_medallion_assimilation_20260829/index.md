@@ -545,3 +545,5 @@ they are not current-state assertions.
 - [PDF layout protected delivery and cleanup](./readable-pdf-layout-delivery-20261018.json) — PR721 merged and verified; topic refs pruned.
 
 - [Budget2022 working source census](./source-census-budget-2022-20261018.json) — official release observed; bounded capture/native verification pending.
+
+- [Budget2022 partial capture qualification](./budget-2022-capture-20261018.json) — workbook pair preserved; release-page403 and native/rights gates explicit.

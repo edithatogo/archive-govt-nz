@@ -1,5 +1,9 @@
 {
-  "capture": "pending",
+  "capture": {
+    "receipt": "budget-2022-capture-20261018.json",
+    "release_page": "HTTP403_native_page_transport_denied",
+    "successful_workbooks": 2
+  },
   "native_layout_units": "pending",
   "observation_scope": "Official release identity and registered source pair only; no native bytes/units/rights or numerical admission",
   "publication": "not_performed",
@@ -27,14 +31,14 @@
       "budget_june_year_end": 2023,
       "estimated_actual_june_year_end": 2022
     },
-    "payload_capture": "not_performed_by_this_slice",
+    "payload_capture": "Workbook pair captured; release page HTTP403; no numerical admission",
     "period_starts": "not_asserted",
     "publication": "not_performed",
     "publisher": "The Treasury",
     "publisher_status": "Superseded",
     "reader_decode_status": "Workbook payload not inspected by this observation; native capture and checks pending",
     "recorded_at": "2026-10-18T10:44:47.067443+00:00",
-    "release_page_capture": "pending_native_HTML_body_and_WARC_preservation",
+    "release_page_capture": "HTTP403_native_page_transport_denied",
     "resources": [
       {
         "family": "expenditure",
@@ -66,34 +70,36 @@
     "schema_version": "archive-govt-nz.health-source-census-observation/v1",
     "signed_date": "2022-05-19",
     "source_url": "https://www.treasury.govt.nz/publications/data/budget-2022-data-estimates-appropriations-2022-23",
-    "status": "release_observed_capture_reuse_and_native_checks_pending",
+    "status": "metadata_observed_release_page_transport_denied",
     "title": "Budget 2022 Data from the Estimates of Appropriations 2022/23",
     "updated_date": "2022-06-02"
   },
   "resources": [
     {
-      "byte_count": null,
-      "disposition": "discovered",
+      "byte_count": 920766,
+      "capture_state": "captured_fixity_verified_rights_pending",
+      "disposition": "captured",
       "edition_year": 2022,
       "family": "budget",
       "kind": "expenditure",
       "landing_url": "https://www.treasury.govt.nz/publications/data/budget-2022-data-estimates-appropriations-2022-23",
       "rights_evidence": "landing_page_states_cc_by_4_0",
       "rights_state": "not_evaluated",
-      "sha256": null,
+      "sha256": "406f74344833b3f9b91c4c5c22bbbd5dd9484af0d25ab3be054367fd07026338",
       "source_id": "treasury-historical-f7c67ac7f16216bb",
       "url": "https://www.treasury.govt.nz/sites/default/files/2022-05/b22-expenditure-data.xlsx"
     },
     {
-      "byte_count": null,
-      "disposition": "discovered",
+      "byte_count": 105054,
+      "capture_state": "captured_fixity_verified_rights_pending",
+      "disposition": "captured",
       "edition_year": 2022,
       "family": "budget",
       "kind": "revenue",
       "landing_url": "https://www.treasury.govt.nz/publications/data/budget-2022-data-estimates-appropriations-2022-23",
       "rights_evidence": "landing_page_states_cc_by_4_0",
       "rights_state": "not_evaluated",
-      "sha256": null,
+      "sha256": "6f395e69b5ee2405f4d9e09455402b07df7c99cce0803152db1dba654333bb92",
       "source_id": "treasury-historical-57678df8ac69094d",
       "url": "https://www.treasury.govt.nz/sites/default/files/2022-05/b22-revenue-data.xlsx"
     }
@@ -101,5 +107,5 @@
   "rights_eligibility": "not_evaluated",
   "schema_version": "archive-govt-nz.health-source-census-budget-2022/v1",
   "silver_admission": "not_performed",
-  "status": "release_observed_capture_reuse_and_native_checks_pending"
+  "status": "workbooks_captured_release_page_transport_denied_native_checks_pending"
 }
