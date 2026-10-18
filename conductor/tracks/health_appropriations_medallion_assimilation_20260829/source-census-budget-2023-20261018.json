@@ -5,6 +5,7 @@
   "capture_context_census_sha256": "c2899e89027d0c267e8495628594870ca1f19abb2ac1ae5ca278d5a6c4fdbe07",
   "capture_context_head": "3ca17fe4e58da395d7fa313a456308147a42f324",
   "capture_evidence": "budget-2023-capture-20261018.json",
+  "expenditure_delivery_evidence": "budget-2023-expenditure-delivery-20261018.json",
   "expenditure_qualification_evidence": "budget-2023-expenditure-native-20261018.json",
   "fiscal_year": "2023/24",
   "issue_date": "2023-05-18",
@@ -84,7 +85,7 @@
   "schema_version": "archive-govt-nz.health-source-census-observation/v1",
   "signed_date": "2023-05-18",
   "source_url": "https://www.treasury.govt.nz/publications/data/budget-2023-data-estimates-appropriations-2023-24",
-  "status": "native_revenue_delivered_expenditure_qualified_delivery_pending",
+  "status": "budget_family_native_revenue_and_expenditure_delivered_broader_admission_unqualified",
   "title": "Budget 2023 Data from the Estimates of Appropriations 2023/24",
   "updated_date": "2023-09-21"
 }

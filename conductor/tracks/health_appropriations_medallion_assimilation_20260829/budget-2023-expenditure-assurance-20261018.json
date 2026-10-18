@@ -12,12 +12,14 @@
     "types"
   ],
   "coverage_floor": 80,
+  "delivery_evidence": "budget-2023-expenditure-delivery-20261018.json",
   "exec_session": 10867,
   "existing_2024_cases_observed_passed": 9,
   "failing_stage": "tests",
   "frozen_pins_and_native_proof_unchanged": true,
   "full_log_sha256": "0d2ed1445618cd5f3369ac4ded0b941a10d1f28544433b09a105a5b2b510f019",
   "gates_deadlines_healthchecks_caps_unchanged": true,
+  "hosted_assurance": "all32_stages_passed_three_platforms_on_96185cf5",
   "initial_failure_receipt_sha256": "60d02986d6a15fe23ed9e0203a26d271a4c10386b6fb182db8d9295b4964d4a0",
   "kernel_lease_free": true,
   "last_observed_progress_percent": 97,
@@ -42,6 +44,6 @@
     "types",
     "tests"
   ],
-  "status": "local_harness_tests_timed_out_hosted_assurance_pending",
+  "status": "local_test_timeout_preserved_hosted_qualification_delivered",
   "tests_complete": false
 }

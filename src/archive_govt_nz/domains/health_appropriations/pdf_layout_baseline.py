@@ -17,6 +17,7 @@ from archive_govt_nz.domains.health_appropriations.schema_drift import (
 )
 
 if TYPE_CHECKING:
+    from collections.abc import Mapping
     from pathlib import Path
 
     from pypdf._page import PageObject
@@ -40,42 +41,49 @@ class PdfLayoutBaselineError(ValueError):
     """Raised when census, capture or Bronze PDF evidence is inconsistent."""
 
 
+def _pdf_item[T](container: Mapping[str, T], key: str, default: T) -> T:
+    """Use subscription so pypdf resolves indirect objects before use."""
+    try:
+        return container[key]
+    except KeyError:
+        return default
+
+
 def _pdf_page_descriptor(page: PageObject) -> dict[str, Any]:
-    resources = page.get("/Resources") or {}
+    resources = _pdf_item(page, "/Resources", {}) or {}
     return {
         "media_box": [str(value) for value in page.mediabox],
         "crop_box": [str(value) for value in page.cropbox],
-        "rotation": int(page.get("/Rotate", 0) or 0) % 360,
+        "rotation": int(_pdf_item(page, "/Rotate", 0) or 0) % 360,
         "resource_counts": {
-            key: len(resources.get(key, {}))
-            for key in _RESOURCE_KEYS
-            if key in resources
+            key: len(resources[key]) for key in _RESOURCE_KEYS if key in resources
         },
-        "annotation_count": len(page.get("/Annots", [])),
+        "annotation_count": len(_pdf_item(page, "/Annots", [])),
     }
 
 
 def _parse_pdf(payload: bytes) -> tuple[dict[str, Any] | None, str | None]:
     try:
         reader = PdfReader(BytesIO(payload), strict=True)
-        if reader.is_encrypted:
-            return None, "encrypted_pdf"
+        # Let normal default access decide readability; no credentials are supplied.
         profiles = Counter(
             json.dumps(
                 _pdf_page_descriptor(page), sort_keys=True, separators=(",", ":")
             )
             for page in reader.pages
         )
-    except PdfReadError, FileNotDecryptedError:
+        descriptor = {
+            "page_count": len(reader.pages),
+            "page_layouts": [
+                {"profile": json.loads(profile), "page_count": count}
+                for profile, count in sorted(profiles.items())
+            ],
+            "metadata_keys": sorted(str(key) for key in (reader.metadata or {})),
+        }
+    except FileNotDecryptedError:
+        return None, "encrypted_pdf"
+    except PdfReadError, TypeError, ValueError:
         return None, "pdf_parse_error"
-    descriptor = {
-        "page_count": len(reader.pages),
-        "page_layouts": [
-            {"profile": json.loads(profile), "page_count": count}
-            for profile, count in sorted(profiles.items())
-        ],
-        "metadata_keys": sorted(str(key) for key in (reader.metadata or {})),
-    }
     return descriptor, None
 
 

@@ -1,0 +1,95 @@
+{
+  "baseline_sha256": "f54157679466382b665e228a5abba26388296f95b603184ff868cb188b1ec698",
+  "capture_manifest_sha256": "017b3a9adbda288c60693ef038e4c0da198d8db99b2bca9cf4bb81adbc6efb5f",
+  "change": "Use standard default page access and dictionary subscription that resolves PDF indirect references. Credential-required PDFs retain encrypted_pdf exclusions.",
+  "default_page_access_available": 3,
+  "descriptor_error": {
+    "cause": "Indirect Font dictionaries were not resolved before counting",
+    "error_type": "TypeError",
+    "page_indices": [
+      3,
+      6,
+      17
+    ],
+    "source_sha256": "4e2a7b1b9bf2390a38ee23d51b911874cddd608fb252612ab906b219007330d5"
+  },
+  "diagnostic_counts": {
+    "default_reader_layout_available": 2,
+    "reader_or_descriptor_error": 1
+  },
+  "diagnostic_producer_head": "4522756f0d09266832020688a8973910f3cc5950",
+  "focused": {
+    "green_passed": 61,
+    "red_failed": 2,
+    "red_passed": 1,
+    "ruff": "passed",
+    "seconds": 0.27,
+    "typing": "0_errors"
+  },
+  "follow_on_evidence": [
+    "readable-pdf-layout-qualification-20261018.json",
+    "readable-pdf-source-health-qualification-20261018.json",
+    "readable-pdf-layout-assurance-20261018.json"
+  ],
+  "full_harness": "passed_all32_on_a74b5954",
+  "native_cohort_repeat": "passed_59_of_59",
+  "numeric_facts_emitted": 0,
+  "prior_recorded_layout_parity": "passed_56_rows_unchanged",
+  "protected_delivery": "pending",
+  "publication": "not_performed",
+  "pypdf_version": "6.19.0",
+  "records": [
+    {
+      "credentials_supplied": false,
+      "default_page_access": "available",
+      "error_type": "TypeError",
+      "explicit_decrypt_called": false,
+      "legacy_descriptor_available": false,
+      "legacy_unavailable_reason": "encrypted_pdf",
+      "page_count": 47,
+      "reader_is_encrypted": true,
+      "source_bytes": 1357199,
+      "source_bytes_unchanged": true,
+      "source_id": "treasury-vote-health-pdf-54029b9e6efd28b4",
+      "source_sha256": "4e2a7b1b9bf2390a38ee23d51b911874cddd608fb252612ab906b219007330d5",
+      "status": "reader_or_descriptor_error"
+    },
+    {
+      "credentials_supplied": false,
+      "default_page_access": "available",
+      "explicit_decrypt_called": false,
+      "layout_sha256": "04567e93973b28d42096503fbb5e53cd9553727a7b96362b89b6f9af2af34774",
+      "legacy_descriptor_available": false,
+      "legacy_unavailable_reason": "encrypted_pdf",
+      "page_count": 12,
+      "reader_is_encrypted": true,
+      "source_bytes": 613670,
+      "source_bytes_unchanged": true,
+      "source_id": "treasury-vote-health-pdf-e6e53e9c0c008d22",
+      "source_sha256": "a492b49c712c7c60fd31478c51df25225e3193fe4a2dd094fb899b11a588d292",
+      "status": "default_reader_layout_available"
+    },
+    {
+      "credentials_supplied": false,
+      "default_page_access": "available",
+      "explicit_decrypt_called": false,
+      "layout_sha256": "574334331a8f79b4d2326fe9fcbf282d5058d8de19f6a4b49be81416a1e2814d",
+      "legacy_descriptor_available": false,
+      "legacy_unavailable_reason": "encrypted_pdf",
+      "page_count": 49,
+      "reader_is_encrypted": true,
+      "source_bytes": 1169732,
+      "source_bytes_unchanged": true,
+      "source_id": "treasury-vote-health-pdf-f0c9dd2e768da2d6",
+      "source_sha256": "819a006df9c280acfb20c34079eaa31065014b0871f351ee92ba2ede9b970008",
+      "status": "default_reader_layout_available"
+    }
+  ],
+  "rights": "not_evaluated",
+  "source_census_sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272",
+  "status": "diagnosis_and_native_local_assurance_passed_protected_delivery_pending",
+  "summary_pins": {
+    "default_reader_diagnostic": "2395ac29899baf53221982273154e5a0e10d60683130ea2408e7036af1e7e161",
+    "descriptor_diagnostic": "31e5975f31b17521fa65bd1d7fd8fc73db0a7fab675fdb250c9c769572c379ee"
+  }
+}

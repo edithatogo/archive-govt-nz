@@ -3049,3 +3049,10 @@ See `budget-2023-revenue-native-20261018.json`: native repeat/dispatcher and act
 
 
 `budget-2023-expenditure-assurance-20261018.json` records the original local harness timeout at900s/97%, with7,826observed pass entries and no observed assertion failure. The suite was incomplete; this is not a full local pass. Native and2024byte proofs are unchanged. Full hosted assurance and seven exact-head required checks are mandatory before protected delivery.
+
+
+`readable-pdf-layout-diagnostic-20261018.json` records three default-readable exclusions and an indirect-Font metadata defect, exact retained-source identities, diagnostic summary pins and focused red/green evidence. Native cohort and prior-descriptor parity remain pending; no new fiscal facts or rights/publication claims.
+
+- Full retained PDF qualification: `readable-pdf-layout-qualification-20261018.json`; 59/59 recorded, 56 prior rows unchanged, two byte-identical builds and unchanged Bronze. New report `source-pdf-layout-baseline-20261018.json`; old report retained. Full/hosted delivery pending.
+
+- PDF full local assurance passed all32stages: `readable-pdf-layout-assurance-20261018.json`. Source-health adoption passed after a retained stale-context comparison: `readable-pdf-source-health-qualification-20261018.json`; new paired v2 report `source-health-report-20261018-pdf-layouts.json`/`.md`. Protected delivery pending.

@@ -8093,3 +8093,86 @@ profiles, retaining explicit Gold/join/rights exclusions. This changes only
 evidence wording; code, schemas, native counts, source bytes and local timeout
 receipts are unchanged. Related census fields were checked against the two
 qualification receipts. Exact-head hosted checks must rerun before merge.
+
+
+### 2026-10-18 — PR720 delivered; retained PDF layout exclusions next
+
+All seven checks passed on96185cf5. Complete logs independently verify the
+original32stages on Ubuntu/macOS/Windows (8,041/8,041/8,035tests). The
+source-census scope finding was corrected and resolved. Local900s timeout
+remains preserved; no local full pass or gate weakening is claimed. Protected
+mergef641c55b is fetched onorigin/main with checked/merge ancestry, equal
+78900a6btree, zero unique commits/patches and clean status before topic refs
+were pruned. Primary/runtime/CAS/proofs retained; permanent hosted-assurance-720
+copies verify by hash.
+
+The next existing Phase2/3 baseline blocker is three1998/99–1999/00VoteHealth
+PDFs reported encrypted. The parser currently rejects the encryption flag before
+trying normal page access. No Must instruction found requires that shortcut.
+Diagnose the standard default reader, without credentials or explicit decrypt
+calls, against the retained SHA-bound originals before changing production.
+Do not recapture or rerun2016–2026VoteHealthpreflight. This owner retains sole
+local broad/native launch responsibility via the unchanged Conductor serializer.
+
+
+### 2026-10-18 — Readable encrypted PDFs and indirect metadata defects
+
+Diagnostic1 on4522756f exited0(session60202): all three excluded retained
+PDFs are readable through the default pypdf6.19reader without credentials.
+Two yield full descriptors; the47-page1999/00file hitsTypeError. Focused
+descriptor diagnosis exited0(session88007): pages3/6/17 have indirect Font
+dictionaries, and len() was called on the reference. Both diagnostic summary
+pins and frozen source/code/evidence/lease checks pass; original bytes unchanged.
+No password or explicit decrypt call, financial text extraction, recapture or
+2016–2026financial preflight replay occurred.
+
+Red: actual generated encrypted/default-access and indirect-metadata fixtures
+produce2expected failures/1pass. Production now relies on normal page access,
+keeps FileNotDecryptedError as encrypted_pdf, and resolves metadata references
+through typed dictionary subscription. Malformed metadata errors stay unavailable.
+Replaced the encryption-flag-only mock with real password-required/readable
+fixtures. Green:61tests passed in0.27s; Ruff and production typing pass.
+False-positive style suggestions for dict.get were resolved through a small
+typed subscription helper, without weakening lint/security checks.
+Full retained-cohort repeat, existing descriptor parity, full harness and
+protected delivery remain required.
+
+### 2026-10-18 — Full retained PDF cohort qualified
+
+Frozen implementation2fe286c7/treef5477fba, root-owned serialized cohort1
+(session68097) exited0. Existing production CLI rebuilt all59PDF layouts twice
+from pinned census/capture and immutable CAS. Reports are byte-identical
+(SHA481f1e486e2f96943710cad49a2a8bdf8eb20f815399090577521399d514df9b);
+all56previously recorded rows are exactly unchanged. All3previously excluded
+PDFs now record47/12/49pages; unavailable0. All source/code/runtime/evidence
+pins unchanged, actual session terminal and kernel lease free. Permanent
+cohort-assurance-1 copies verified by hash. Prior20261003report retained.
+This is geometry-only evidence for the59PDF capture cohort, not financial
+normalization, rights admission or broader census completion. No source
+recapture, credentials, explicit decrypt call or2016–2026preflight replay.
+Full original harness and protected delivery remain pending.
+
+### 2026-10-18 — PDF local full and source-health integration verified
+
+Original ./scripts/validate.sh on a74b5954/tree2b24996c passed all32stages
+(session60033, exit0):8060passed/14skipped/18warnings/426.69s,97.14%coverage
+against unchanged80%floor,66schemas/56docs,parity9/9,allmutation/hygiene/
+benchmark/audit/licence/secret/SBOM113 gates. LogSHA
+260f787294f45a6434b444cac3d668855a28bad3cc31c6f66a668ca4a9b02818.
+Actual terminal, all frozen code/runtime/native/source pins and released kernel
+lease independently verified; permanent assurance-1 copies hash-checked.
+
+Source-health native1 exited1(session14775): comparison to the retained v1
+report also saw already-merged CPI period wording and context SHA/base changes.
+No production defect; preserve all four repeated candidate files and failure
+receipt. Fresh native2 used the current context with the retained old baseline
+as its control, explicitly checked those pre-existing context differences, then
+proved only3layout states and the baseline pin change. Both v1/v2 repeat JSON/
+Markdown identically and validate schemas.143resources/11context vintages; CPI
+449labels/422numeric/27publisherNA unchanged. Session94646exit0, all pins
+including14CPIbody/WARC originals unchanged, kernel lease free. Dated v2
+JSON/Markdown retained separately; original report/census remain unchanged.
+This cohort excludes later separate Budget registry additions and does not
+claim whole-census completeness, legal rights, financial extraction or phase
+completion. Post-full changes are evidence/reports only; exact-head hosted
+assurance and protected delivery remain required.
