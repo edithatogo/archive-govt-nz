@@ -2147,3 +2147,11 @@ integrated parent head.
   read-only behavior, bad inputs/fixity and sibling hold. Native/full and hosted
   qualification remain separate delivery gates. [M-05, M-07, M-15, M-18;
   AC-03, AC-05, AC-08, AC-13, AC-16]
+
+
+  Native inspection now passes two actual-source, three-route replays with all
+  16 original native files unchanged. Original full2 on 2aef585c passed all 32
+  stages and 8,027 tests (12 skipped); full1 timing failures and bounded diagnosis
+  remain retained, with no code or deadline changes. Owner terminal/kernel release
+  verified. Exact-head hosted checks, review and protected delivery remain pending.
+  See native-workbook-inspection-20261018.json for pinned evidence.

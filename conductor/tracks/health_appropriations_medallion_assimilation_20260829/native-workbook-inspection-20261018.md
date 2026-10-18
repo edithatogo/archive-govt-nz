@@ -1,6 +1,6 @@
 # Read-only native workbook inspection
 
-Status: implementation in progress after delivered PR #715.
+Status: native replay and original full harness qualified; hosted delivery pending.
 
 Use the existing operation/CLI/MCP architecture and the qualified compound
 source dispatch. The only source IDs are the two reviewed expense workbooks.
@@ -47,4 +47,41 @@ Parquet destinations after dependency warmup. The broader protocol/CLI bootstrap
 integration run passed 55 tests before the final extra argument split/network
 assertions; the latest 15 operation cases cover those final test refinements.
 Ruff/format and strict typing pass. These fixture-backed checks do not replace
-actual-source native replay, full assurance or hosted checks, which remain pending.
+actual-source native replay, full assurance or hosted checks; their evidence is recorded separately below.
+
+
+## Actual-source replay and full assurance
+
+The frozen implementation at `2aef585c35c89ec5c9aac1f7ace40558f80ef87c`
+(tree `6649bf4b9bc49cd88744e1d8810d27103e2ff84b`) passed two actual-source
+runs through the shared helper, actual CLI parser and initialized MCP JSON-RPC.
+Both reports are byte-identical, with digest
+`e482b6e0b573bf3b84f61cbcac69d5216c4a696b1123b5ea65fc6f3b577126a8`.
+All 16 original native manifest/Parquet hashes match. The four overlapping profile
+interpretations retain 180 facts, 1,784 lineage records, 4,833 dispositions and
+four excluded-sheet descriptors. These counts are not unique worksheet coverage.
+Each run reads only the two retained source objects, six times across the three
+routes; source and reference bytes remain unchanged. After disclosed dependency
+warmup, Python write APIs and network calls were denied and Parquet destinations
+were restricted to memory. This is bounded Python instrumentation, not an OS
+sandbox or a claim that every possible native-code side effect was denied.
+
+The first full harness stopped at its test stage with 8,025 passes, 12 skips and
+two timing failures: the existing Hypothesis 200 ms deadline and FIFO subprocess
+10 s timeout. Both passed in bounded focused reproduction under the same limits.
+An instrumented physical-path FIFO diagnostic proves readonly nonblocking open
+and refusal before body reads; it does not conclusively explain the earlier
+subprocess timing spike. Preserve that failure and its diagnosis separately.
+
+On the same unchanged implementation, original full attempt 2 passed all 32
+stages: 8,027 tests, 12 skips, 18 warnings, 295.98 seconds, both snapshots,
+66 schemas/56 representative documents and all nine differential parity checks.
+All original mutation, hygiene, CAS benchmark, dependency, licence, secrets and
+SBOM gates passed. Runtime remained uv 0.13.1/Python 3.14.6, four workers and
+original limits. Conductor verified exit 0, the clean exact head/tree, terminated
+processes and kernel-slot release. The machine receipt binds the full log,
+native proof and retained owner readback. Earlier failed evidence remains in
+`assurance-1`; successful full evidence is retained in `assurance-2` under the
+same evidence directory. Hosted exact-head assurance, review, merge and pruning
+remain pending. No rights, canonical, global worksheet or publication gate is
+closed by this operation.

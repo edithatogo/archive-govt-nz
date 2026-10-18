@@ -500,4 +500,4 @@ they are not current-state assertions.
 
 - [Compound carrier checkpoint](./compound-native-recordsets-20261018.json); carrier, native dispatch, bounded envelopes and v1 regression checks pass96; source composition/native/full assurance pending.
 
-- [Read-only native workbook inspection](./native-workbook-inspection-20261018.md) — implementation and focused contracts; actual-source/full/hosted qualification pending.
+- [Read-only native workbook inspection](./native-workbook-inspection-20261018.md) — implementation, two actual-source replays and original full assurance pass; hosted delivery pending.

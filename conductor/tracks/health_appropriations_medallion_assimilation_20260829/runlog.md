@@ -7671,3 +7671,16 @@ Fifteen operation checks pass, including independent native-writer hash controls
 fixity/path refusal and actual CLI/JSON-RPC parity under filesystem/network denial
 for inspected/held/failed states. Prior broader integration passed 55 tests;
 latest operation refinements and strict typing pass. No native/full run started.
+
+
+### 2026-10-18 — Native inspection actual-source and full qualification
+
+Two actual-source runs match across helper/CLI/initialized JSON-RPC and all 16
+original native files. Keep profile totals and worksheet semantics separate.
+Full1 stopped on two timing failures; both pass focused reproduction with original
+limits, and the physical FIFO reader independently refuses nonblocking before
+body read. Do not claim the original timing spike is fully explained. The same
+clean frozen 2aef585c passes original full2: all 32 stages, 8,027 tests, 12 skips,
+66 schemas/56 documents, nine parity cases, mutation/hygiene/supply-chain gates.
+Conductor verified terminal 0 and kernel release. Retain failed and successful
+logs separately; finalize only evidence/plan files before exact-head hosted gates.
