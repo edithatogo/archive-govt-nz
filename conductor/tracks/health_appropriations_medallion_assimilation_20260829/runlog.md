@@ -7892,3 +7892,31 @@ and took sole launch/poll ownership through the unchanged serialized guard.
 Actual session24130 performed native1/full1;69464 performedfull2;56962
 performedfull3. No overlapping source qualification was started. Each terminal
 run and kernel release was verified independently before subsequent action.
+
+
+### 2026-10-18 — PR 718 delivered; Budget 2023 census started
+
+The unchanged full checker passed all 32 stages on Ubuntu (8,031 passed, 30
+skipped), macOS (8,031/30) and Windows (8,025/36). Seven exact-head checks
+succeeded; no review threads or CodeQL alerts remained. Normal protected merge
+at d95a76a8 was fetched and checked against the exact head 9d882d46: equal
+7d6b0fea tree, both ancestors, zero unique commits/patches and clean checkout.
+Local and remote-tracking topic refs were pruned after the remote was absent;
+the primary, runtime, CAS and private evidence remain retained. Local failed
+full runs are preserved and are not relabelled as passes.
+
+Next bounded source-census slice uses the existing 2023 expenditure/revenue
+locators and source IDs. The official release read confirms its issue/update
+dates, June-year periods, source caveats and declared page licence. Native
+units, item notices, layout and prior-capture reuse remain to be checked.
+No original capture or numerical admission has occurred in this slice yet.
+
+
+Budget 2023 reuse preflight read the same four committed inventory surfaces
+and all 360 first WARC headers in the primary Health WARC directory (64 KiB
+per file, 1,000-file cap). It found zero exact URL/filename matches and zero
+unreadable headers. Reports are retained in the private 2023 case with input
+hashes. No alias equivalence, body identity or global absence is inferred.
+Both official release links resolve to the registered XLSX URLs; the web text
+reader cannot decode XLSX, which is not evidence of source unavailability.
+No workbook body has been captured or numerically admitted by this slice.

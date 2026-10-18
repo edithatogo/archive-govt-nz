@@ -9,18 +9,18 @@
     "treasury-historical-ff5ef101ec75d1b8",
     "treasury-historical-c445260e928c9454"
   ],
+  "expenditure_delivery_evidence": "budget-2024-expenditure-delivery-20261018.json",
   "expenditure_qualification_evidence": "budget-2024-expenditure-profile-20261018.json",
   "fiscal_year": "2024/25",
   "gaps": [
     "ISO_currency_not_verified_no_analytical_join_approved",
-    "broader_2024_source_families_not_complete",
-    "expenditure_hosted_assurance_and_protected_delivery_pending"
+    "broader_2024_source_families_not_complete"
   ],
   "issue_date": "2024-05-30",
   "layout_evidence": "budget-2024-layout-20261018.json",
   "method": "web text reader; workbook requests unsupported by reader, not source-unavailable evidence",
   "native_layout_units_currency": "native_headers_and_thousands_June_year_definitions_verified_ISO_currency_unknown",
-  "next": "Deliver2024 expenditure through exact-head hostedfull/seven protected checks; then remaining source families",
+  "next": "Reconcile the registered Budget 2023 workbooks and remaining eligible source families",
   "observed_at": "2026-10-18T01:05:03.940753+00:00",
   "page_caveats": [
     "2023/24 Supplementary Estimates excluded",
@@ -48,7 +48,7 @@
       "ISO_currency": "not_verified",
       "byte_count": 943456,
       "capture_status": "transport_preserved",
-      "expenditure_profile": "native_qualified_local_full_timing_blocked_hosted_pending",
+      "expenditure_profile": "delivered_PR718_protected_merge_d95a76a8",
       "family": "expenditure",
       "field_lineage_rows": 6100,
       "literal_unit": "$000",
@@ -104,7 +104,7 @@
   "signed_date": "2024-05-30",
   "source_entry_evidence": "budget-2024-source-entry-20261018.json",
   "source_url": "https://www.treasury.govt.nz/publications/data/budget-2024-data-estimates-appropriations-2024-25",
-  "status": "both_native_source_profiles_qualified_expenditure_hosted_pending",
+  "status": "both_native_source_profiles_delivered_broader_census_incomplete",
   "title": "Budget 2024 Data from the Estimates of Appropriations 2024/25",
   "updated_date": "2024-06-21"
 }

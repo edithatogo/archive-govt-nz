@@ -1,0 +1,65 @@
+{
+  "ISO_currency": "not_verified",
+  "analytical_join": "not_approved",
+  "fiscal_year": "2023/24",
+  "issue_date": "2023-05-18",
+  "native_units": "not_yet_verified",
+  "numerical_admission": "not_performed",
+  "observation_scope": "Read-only release-page observation; no page transport receipt or workbook-native admission",
+  "page_caveats": [
+    "2022/23 Supplementary Estimates excluded",
+    "Prior-year agency data not restated for restructuring; detail may differ from restated Estimates",
+    "Workbooks support official tabled documents and do not replace them"
+  ],
+  "page_periods": {
+    "actual_june_year_ends": [
+      2019,
+      2020,
+      2021,
+      2022
+    ],
+    "budget_june_year_end": 2024,
+    "estimated_actual_june_year_end": 2023
+  },
+  "payload_capture": "not_performed_by_this_slice",
+  "period_starts": "not_asserted",
+  "publication": "not_performed",
+  "publisher": "The Treasury",
+  "publisher_status": "Superseded",
+  "reader_decode_status": "XLSX unsupported by web text reader; not source-unavailable evidence",
+  "recorded_at": "2026-10-18T07:02:07Z",
+  "resources": [
+    {
+      "family": "expenditure",
+      "source_id": "treasury-historical-dec1ca1018d3dac5",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2023-09/b23-expenditure-data.xlsx"
+    },
+    {
+      "family": "revenue_and_capital_receipts",
+      "source_id": "treasury-historical-501fbe11fbc07010",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2023-09/b23-revenue-data.xlsx"
+    }
+  ],
+  "retained_capture_reconciliation": {
+    "candidate_headers": 0,
+    "exact_locator_or_filename_hits": 0,
+    "excluded_or_unreadable": 0,
+    "first_headers_read": 360,
+    "inventory_files": 4,
+    "inventory_report_sha256": "74325d38033704f6b9f3a563907cf27f0981d1457fd58a4d6293f4d5242495b7",
+    "primary_warc_files": 360,
+    "scope": "Primary retained Health warc directory; first WARC header only,65536 decompressed bytes/file,1000file cap; no body identity, alias equivalence or global absence asserted",
+    "warc_report_sha256": "17ec3606d87fb7e94ca40f30098f485edceaf00285b2113c5c7a0ee5b2c9141d"
+  },
+  "rights_observation": {
+    "item_native_notices": "not_yet_verified",
+    "legal_adjudication": "not_performed",
+    "release_page_statement": "Crown copyright; CC BY 4.0"
+  },
+  "schema_version": "archive-govt-nz.health-source-census-observation/v1",
+  "signed_date": "2023-05-18",
+  "source_url": "https://www.treasury.govt.nz/publications/data/budget-2023-data-estimates-appropriations-2023-24",
+  "status": "release_and_bounded_reuse_checked_capture_native_pending",
+  "title": "Budget 2023 Data from the Estimates of Appropriations 2023/24",
+  "updated_date": "2023-09-21"
+}

@@ -3733,3 +3733,13 @@ allowlist opportunity was identified but remains outside this focused change.
 Run the identical required checker on clean hosted runners; keep allseven
 exact-head checks and review resolution before protected merge. Do not claim
 local full success or mark the wider track complete.
+
+
+### 2026-10-18 — Next release boundary
+
+Budget 2023 uses its own registered URLs, issue/update dates and June-year
+labels. The page's licence declaration does not substitute for native notices
+or redistribution assessment. No 2024 row bound, unit, source hash or numeric
+profile is applied to uninspected 2023 bytes. Retained-evidence matching is
+explicitly limited to four inventories and first headers in the primary WARC
+directory. The next action is bounded preservation through the existing core.

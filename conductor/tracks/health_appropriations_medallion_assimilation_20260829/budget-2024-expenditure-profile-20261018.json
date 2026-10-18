@@ -7,9 +7,45 @@
     "skipped": 10
   },
   "currency": null,
+  "delivery_evidence": "budget-2024-expenditure-delivery-20261018.json",
   "final_focused": {
     "passed": 9,
     "seconds": 20.98
+  },
+  "hosted_full": {
+    "macos": {
+      "all32stage_headers_verified": true,
+      "job": 117607490594,
+      "log_sha256": "5602e08041d8aceaecb299b3ae116b765ba43f0348093b0ae91fb70b2f60c6e0",
+      "pytest_summary": [
+        "8031",
+        "30",
+        "18",
+        "736.78"
+      ]
+    },
+    "ubuntu": {
+      "all32stage_headers_verified": true,
+      "job": 117607490515,
+      "log_sha256": "cbb1fab5a4d631b5e588da3d4b5f0430a3b5d0ce3dee4c071b7d985c066f2cb2",
+      "pytest_summary": [
+        "8031",
+        "30",
+        "18",
+        "508.99"
+      ]
+    },
+    "windows": {
+      "all32stage_headers_verified": true,
+      "job": 117607490545,
+      "log_sha256": "4b64507523300308dceb55c331170f85c5963f798e877fb5d8131ed6e5d81faa",
+      "pytest_summary": [
+        "8025",
+        "36",
+        "18",
+        "778.58"
+      ]
+    }
   },
   "legacy_2025_2026_contracts": "unchanged",
   "logs": {
@@ -185,7 +221,7 @@
       "passed": 2,
       "seconds": 1.98
     },
-    "hosted_full": "pending exact-head full checker on clean runners",
+    "hosted_full": "all 32 stages passed on Ubuntu, macOS and Windows; exact head 9d882d46; see delivery receipt",
     "local_full_pass_claim": false,
     "status": "local_runs_failed_timing_or_host_capacity",
     "tests_deadlines_healthchecks_caps": "unchanged"
@@ -208,7 +244,7 @@
     "schemas": 66,
     "strict_types": "0 errors/warnings/notes"
   },
-  "status": "actual_source_qualified_local_full_timing_blocked_hosted_pending",
+  "status": "native_and_hosted_qualified_delivered_PR718",
   "unit": "$000",
   "valid_time_start": null
 }

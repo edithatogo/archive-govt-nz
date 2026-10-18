@@ -3012,3 +3012,14 @@ full attempts remain explicitly failed(timing/hostcapacity), with logs and
 terminal/kernel-release receipts retained privately. Focused/static gates and
 source contracts pass. Existing exact-head hosted fullchecker remains pending;
 no local fullpass, broader semantic admission or publication is asserted.
+
+
+### 2026-10-18 — Budget 2024 delivered; Budget 2023 release reconciled
+
+PR 718 is merged after all seven checks and all 32 stages on each hosted
+platform. The delivery receipt retains exact heads, trees, log hashes and
+post-merge cleanup checks; local failed runs remain failures. The next 2023
+release observation identifies the two existing locators, period labels and
+declared page licence. Four inventory surfaces and 360 first WARC headers
+have no exact matches; that bounded check establishes neither global absence
+nor alias equivalence. Source bodies, native units and item notices are pending.
