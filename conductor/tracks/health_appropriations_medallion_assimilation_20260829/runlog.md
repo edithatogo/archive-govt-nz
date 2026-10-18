@@ -7829,3 +7829,66 @@ privately before modification. Represent the same passing gates as an explicit
 list, preserving the secret-stage evidence and every scanner policy. No secret
 value, baseline entry, allowlist or scanning rule is added or changed. Re-run
 the original scanner and evidence-binding checks on this representation.
+
+
+### 2026-10-18 — PR717 delivered; next expenditure profile
+
+All seven current-head hosted checks succeeded; Windows completed in17m7s.
+Resolved the corrected product-entry review, ran read-only merge guard and
+merged normally as bde4f721. Fresh fetch proves checked/merge ancestry and
+equal tree, zero unique commits and clean checkout. Topic refs pruned only
+after those guards; primary, CAS and qualification evidence retained.
+Next bounded Phase3/5/8 task: Budget2024 expenditure profile. Existing generic
+writer asserts NZD_thousands; new source evidence establishes literal $000
+only. Keep a distinct source-specific schema and fail closed on mismatched
+bytes/context rather than rewriting legacy package semantics. Root retains
+broad/native launch ownership; focused/static work remains with archive owner.
+
+
+Expenditure red: module absent, expected collection failure retained privately.
+Implemented pinned source profile/common adapter and existing sourceops registry/
+vintage/hash/locator validation, closed schema and CLI/MCP reachability. Added
+legacy2024 dispatch refusal;2025/26 contracts unchanged. Initial6tests pass.
+Lint/type findings retained and corrected (annotations, formatting, source
+punctuation represented faithfully). Broader suite647pass10skip51.95s.
+Final9tests pass20.98s including6,645-row boundary and overflow, changed bytes/
+definitions, caller Decimal isolation, repeat package bytes and row losses.
+Strict types0errors/warnings/notes; schema66/56 andConductor93pass.
+Preparing one root-owned actual source/CLI/MCP/common dispatch repeat proof
+followed by originalfull; no native proof or full run is yet claimed.
+
+
+### 2026-10-18 — Actual expenditure qualified; hosted assurance handoff
+
+Native1 on101af09/tree88a18dc passed:244facts/6100lineage/6645dispositions,
+6401non-Health,0blank/0reject. Actual CLI/MCP preflight agrees and creates
+no package; explicit CLI writing reproduces the direct four files exactly.
+Common dispatch facts/lineage/losses agree. Summarydc4cc144; owner independently
+verified both package hashes, source and unchanged producer/runtime pins.
+
+Original full1(fourworkers) failed on two unchanged legislation timing checks:
+8045pass/2fail/14skip/18warn622.78s. Both contracts passed unchanged in focused
+reproduction(2pass1.98s). Full2(existingmacOSsingleworker) passed those cases
+but hit the unchanged900s cap at84% with no failed entries. Full3(twoworkers)
+again finished8045pass/2timingfail/14skip/18warn641.25s. Parent-state example
+was303.47ms then19.01ms on replay; a separate input generator hit1.04s.
+All9expenditure cases passed. Each actual run terminated; all owned processes
+ended and kernel acquisition/release proved slot release. Full failure logs,
+exitmarkers/configurations are preserved in privateassurance-failed-1/2/3.
+
+No deadlines, healthchecks, testcases,stagecaps or protections changed. Avoid
+unrelated legislation changes solely for host timing. AGENTS/PRtemplate require
+running the local harness before opening(done); disclose failures and use the
+existing exact-head three-platform hosted fullchecker to qualify assurance.
+No local fullpass is claimed; merge remains held for allseven successes and
+resolved review threads. Do not rerun native proof while producer pins remain
+unchanged. Broader rights/Gold/census/final-review gates stay open.
+
+
+Launch ownership clarification: Conductor received the frozen handoff but no
+actual qualification session/process started. After verifying kernel slotfree,
+no native process and absent fresh outputs, archive owner notified Conductor
+and took sole launch/poll ownership through the unchanged serialized guard.
+Actual session24130 performed native1/full1;69464 performedfull2;56962
+performedfull3. No overlapping source qualification was started. Each terminal
+run and kernel release was verified independently before subsequent action.

@@ -511,3 +511,6 @@ they are not current-state assertions.
 - [Budget 2024 revenue native/full qualification](./budget-2024-revenue-qualification-20261018.json) —66facts, all1004rows accounted, byte-identical repeats; hosted delivery pending.
 
 - [Budget 2024 source-operation entry correction](./budget-2024-source-entry-20261018.json) — supported CLI/MCP actual-source entry and corrected 32-stage full harness pass; fresh hosted delivery pending.
+
+- [Budget2024 expenditure profile](./budget-2024-expenditure-profile-20261018.json) — actual-source qualified; local full timing blocked, hosted assurance pending.
+- [PR717 delivery](./budget-2024-revenue-delivery-20261018.json) — protected merge and verified topic cleanup.

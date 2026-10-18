@@ -2986,3 +2986,29 @@ Both actual source/full exit markers are0; source-owned processes ended and
 nonblocking kernel acquisition/release plus clean head/tree/all pins verify
 release. Earlier proofs remain retained. Post-qualification changes are track
 receipts/docs only. Fresh exact-head hosted checks and protected delivery follow.
+
+
+### 2026-10-18 — Budget2024 expenditure profile, local focused gate
+
+The source-bound profile preserves all17 source columns, explicit parent/category/
+group/periodicity qualifiers and original numeric tokens. Literal $000 retains
+unknown ISO currency and no period start. It does not aggregate or map source
+classifications. Existing CLI/MCP source-operation registration and closed schema
+include the profile; legacy expenditure dispatch refuses this2024 edition so it
+cannot emit the legacy NZD schema. Other vintages remain unchanged.
+
+647broader tests pass/10skip; final9profile cases pass after caller-Decimal
+isolation. Ruff, strict types,66schemas/56docs and93Conductor tracks pass.
+Actual source and original full qualification remain pending root-owned launch.
+See budget-2024-expenditure-profile-20261018.json.
+
+
+### Budget2024 expenditure native qualification and local timing evidence
+
+[Qualification](./budget-2024-expenditure-profile-20261018.json) retains
+actual-source CLI/MCP/repeat/common-dispatch proof:244facts,6100lineage,
+all6645rows and zero rejects; source bytes unchanged. Three original local
+full attempts remain explicitly failed(timing/hostcapacity), with logs and
+terminal/kernel-release receipts retained privately. Focused/static gates and
+source contracts pass. Existing exact-head hosted fullchecker remains pending;
+no local fullpass, broader semantic admission or publication is asserted.

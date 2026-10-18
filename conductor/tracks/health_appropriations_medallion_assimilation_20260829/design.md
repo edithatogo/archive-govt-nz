@@ -1253,3 +1253,18 @@ result and complete sibling validation. Use original profile-local record IDs
 within source/profile/fact-schema namespaces; retain all native lineage/loss
 fields and reject partial sibling success. See compound-native-recordsets-20261018.md
 for the exact API boundary and native proof requirements.
+
+
+## Pinned Budget2024 expenditure
+
+The retained2024 expenditure hash has a distinct source-specific fact schema
+with all17 native columns, complete row dispositions and OOXML amount tokens.
+The existing adapter/source-operation registry exposes CLI normalization and
+read-only MCP preflight. The legacy expenditure schema cannot select2024;
+its2025/2026 bytes and contracts remain unchanged. Parent/category/group and
+periodicity remain source labels, with no rollup, crosswalk or implicit netting.
+Literal $000 does not establish ISO currency; June-ending years do not establish
+period starts, especially for multi-year/PLA entries. Rights stay not_evaluated
+and non-Raw Data sheets stay inventoried with explicit exclusions. The new
+package is a source-specific Silver derivative; canonical/Gold promotion and
+external publication remain separate.

@@ -9,17 +9,18 @@
     "treasury-historical-ff5ef101ec75d1b8",
     "treasury-historical-c445260e928c9454"
   ],
+  "expenditure_qualification_evidence": "budget-2024-expenditure-profile-20261018.json",
   "fiscal_year": "2024/25",
   "gaps": [
     "ISO_currency_not_verified_no_analytical_join_approved",
-    "2024_expenditure_source_specific_profile_pending",
-    "broader_2024_source_families_not_complete"
+    "broader_2024_source_families_not_complete",
+    "expenditure_hosted_assurance_and_protected_delivery_pending"
   ],
   "issue_date": "2024-05-30",
   "layout_evidence": "budget-2024-layout-20261018.json",
   "method": "web text reader; workbook requests unsupported by reader, not source-unavailable evidence",
   "native_layout_units_currency": "native_headers_and_thousands_June_year_definitions_verified_ISO_currency_unknown",
-  "next": "Deliver corrected PR717 with fresh exact-head hosted gates; then advance2024 expenditure source-specific qualification and remaining source families",
+  "next": "Deliver2024 expenditure through exact-head hostedfull/seven protected checks; then remaining source families",
   "observed_at": "2026-10-18T01:05:03.940753+00:00",
   "page_caveats": [
     "2023/24 Supplementary Estimates excluded",
@@ -47,13 +48,17 @@
       "ISO_currency": "not_verified",
       "byte_count": 943456,
       "capture_status": "transport_preserved",
+      "expenditure_profile": "native_qualified_local_full_timing_blocked_hosted_pending",
       "family": "expenditure",
+      "field_lineage_rows": 6100,
       "literal_unit": "$000",
-      "native_qualification": "headers_definitions_and_row_occupancy_verified",
+      "native_qualification": "actual_CLI_MCP_repeat_build_and_common_dispatch_qualified",
       "object_sha256": "891539afe9f5df4a7c7f73ac29695e19b6fb523a4947d305e1f4bd69ebcb3256",
+      "private_Silver_facts": 244,
       "publisher_display_size": "921.34 KB",
       "rights_state": "publisher_native_licence_declaration_verified_not_legal_adjudication",
       "source_id": "treasury-historical-ff5ef101ec75d1b8",
+      "source_rows_accounted": 6645,
       "url": "https://www.treasury.govt.nz/sites/default/files/2024-06/b24-expenditure-data.xlsx",
       "warc_sha256": "8100bbe99ee110de65fa59df64f96e57e88f20c6a4482703de713ce59efd4291"
     },
@@ -68,7 +73,7 @@
       "object_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
       "private_Silver_facts": 66,
       "publisher_display_size": "102.15 KB",
-      "revenue_profile": "qualified_locally_hosted_delivery_pending",
+      "revenue_profile": "delivered_PR717_protected_merge_bde4f721",
       "rights_state": "publisher_native_licence_declaration_verified_not_legal_adjudication",
       "source_id": "treasury-historical-c445260e928c9454",
       "source_rows_accounted": 1004,
@@ -87,6 +92,7 @@
     "unreadable": 0,
     "warc_header_report_sha256": "1437c22df72ea263b891945ac6711e57e6a232b48bba35bf75271a0941b60df2"
   },
+  "revenue_delivery_evidence": "budget-2024-revenue-delivery-20261018.json",
   "revenue_qualification_evidence": "budget-2024-revenue-qualification-20261018.json",
   "rights_observation": {
     "item_level_rights": "native_Crown_CC_BY_4_0_notices_verified_emblem_restriction_retained_no_legal_adjudication",
@@ -98,7 +104,7 @@
   "signed_date": "2024-05-30",
   "source_entry_evidence": "budget-2024-source-entry-20261018.json",
   "source_url": "https://www.treasury.govt.nz/publications/data/budget-2024-data-estimates-appropriations-2024-25",
-  "status": "source_entry_native_and_local_full_qualified_hosted_pending",
+  "status": "both_native_source_profiles_qualified_expenditure_hosted_pending",
   "title": "Budget 2024 Data from the Estimates of Appropriations 2024/25",
   "updated_date": "2024-06-21"
 }
