@@ -12,7 +12,7 @@
   "native_inspection_evidence": "budget-2023-native-inspection-20261018.json",
   "native_units": "literal $000; source definitions say thousands; ISO currency not verified",
   "numerical_admission": "source_native_revenue_65facts_and_expenditure_277facts_separate",
-  "observation_scope": "Release-page context plus independently verified capture and bounded native reports; source-native revenue qualification only",
+  "observation_scope": "Release-page context, independently verified captures and bounded native reports; separately qualified source-native revenue and expenditure. No canonical Gold, analytical-join or rights eligibility admission.",
   "page_caveats": [
     "2022/23 Supplementary Estimates excluded",
     "Prior-year agency data not restated for restructuring; detail may differ from restated Estimates",

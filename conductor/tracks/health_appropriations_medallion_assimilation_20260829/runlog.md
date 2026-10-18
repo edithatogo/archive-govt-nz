@@ -8082,3 +8082,14 @@ the timeout and qualify the unchanged original all32stages on clean hosted
 Ubuntu/macOS/Windows plus all seven exact-head checks. No local test, health
 check, deadline,900s cap,80%floor or branch protection is weakened. Do not
 blindly replay the same local host configuration or merge while checks run.
+
+
+### 2026-10-18 — PR720 census scope review fix
+
+Automated threadPRRT_kwDOTo2MOM6tpEKU identified a stale revenue-only
+observation_scope beside the updated separate revenue/expenditure admission.
+Corrected the current census scope to include both qualified source-native
+profiles, retaining explicit Gold/join/rights exclusions. This changes only
+evidence wording; code, schemas, native counts, source bytes and local timeout
+receipts are unchanged. Related census fields were checked against the two
+qualification receipts. Exact-head hosted checks must rerun before merge.
