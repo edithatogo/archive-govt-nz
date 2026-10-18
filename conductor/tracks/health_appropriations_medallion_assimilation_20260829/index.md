@@ -568,3 +568,6 @@ they are not current-state assertions.
 - [Reader versioned current-status projection](./context-reader-startup-state-20261019-v1.json)
 
 Producer qualification/implementation and dated census checkpoints retain their pre-delivery state. Later merge and assurance transitions are recorded in separate receipts/projections.
+
+- [Standalone CLI and initialized MCP replay](./context-reader-startup-replay-20261019-v1.json) — earlier timeout receipts retained.
+- [Reader current-state projection v2](./context-reader-startup-state-20261019-v2.json) — supersedes v1 status only; protected assurance pending.

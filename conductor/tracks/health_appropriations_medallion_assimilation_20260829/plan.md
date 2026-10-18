@@ -2412,3 +2412,5 @@ status-reconciliation wording; no historical checkpoint is rewritten to
 claim later merge. See budget-2022-state-20261019-v1.json and
 context-reader-startup-state-20261019-v1.json. Code/source/product bytes and
 previous qualification results unchanged; original local timeout preserved.
+
+- [x] Qualify retained five-input Context Gold original console and initialized read-only stdio MCP replay with unchanged30s response bounds; preserve earlier timeout receipts (context-reader-startup-replay-20261019-v1.json). Broader Phase8 remains open.

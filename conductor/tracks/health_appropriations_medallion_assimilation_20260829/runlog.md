@@ -8376,3 +8376,19 @@ status-reconciliation wording; no historical checkpoint is rewritten to
 claim later merge. See budget-2022-state-20261019-v1.json and
 context-reader-startup-state-20261019-v1.json. Code/source/product bytes and
 previous qualification results unchanged; original local timeout preserved.
+
+
+Recovered standalone operational replay3 at b2212f7c/treeb0881b67:
+original console preflight completes12.13s within its unchanged30s bound;
+all19 predicted products match the independent retained package. Initialized
+stdio MCP initialize/list/read-only call completes, call10.11s within30s,
+615records across5inputs and19outputs; neither output directory is created.
+After PortableSSD reconnection all frozen code/input/source pins match, runtime
+versions match and kernel lease is free. Recipes, logs, raw responses and both
+diagnostics are copied with hash readback. Prior native1/2timeouts and original
+local full124 remain immutable; no unconditional startup SLA. See
+context-reader-startup-replay-20261019-v1.json and current-state v2. Hosted
+b221 Ubuntu passed; macOS test stage hit original900s cap at96% with no final
+summary; Windows was non-terminal at observation. Protected delivery remains
+blocked until exact-head required assurance succeeds. Broader Phase8 and track
+completion remain open; no rights/currency/joins/publication admission.
