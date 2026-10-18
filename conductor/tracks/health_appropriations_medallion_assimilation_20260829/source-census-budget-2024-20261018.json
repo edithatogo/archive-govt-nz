@@ -1,13 +1,15 @@
 {
   "analytical_join": "not_approved",
-  "byte_fixity": "not_established",
+  "byte_fixity": "CAS_WARC_binding_and_receipt_readback_verified",
+  "capture_context_census_head": "8d76b993452a7f2b7f8eed4f7fc3e5568acac9de",
+  "capture_context_census_sha256": "b7011bcfd6a9fc6d9bbf818e8d8871d575afe51e23839ca85ad8207084dbe722",
+  "capture_evidence": "budget-2024-capture-20261018.json",
   "existing_resource_ids": [
     "treasury-historical-ff5ef101ec75d1b8",
     "treasury-historical-c445260e928c9454"
   ],
   "fiscal_year": "2024/25",
   "gaps": [
-    "original_source_object_not_bound_to_retained_capture",
     "native_units_currency_layout_unverified",
     "item_rights_exception_review_pending",
     "broader_2024_source_families_not_complete"
@@ -33,21 +35,35 @@
     "budget_june_year_end": 2025,
     "estimated_actual_june_year_end": 2024
   },
-  "payload_capture": "not_performed",
+  "payload_capture": "performed_transport_only",
   "publication": "not_performed",
   "publisher": "The Treasury",
   "publisher_status": "Superseded",
   "register_reconciliation": "Both exact URLs already present as discovered-only; no duplicate locator needed",
   "resources": [
     {
+      "byte_count": 943456,
+      "capture_status": "transport_preserved",
       "family": "expenditure",
+      "native_qualification": "not_performed",
+      "object_sha256": "891539afe9f5df4a7c7f73ac29695e19b6fb523a4947d305e1f4bd69ebcb3256",
       "publisher_display_size": "921.34 KB",
-      "url": "https://www.treasury.govt.nz/sites/default/files/2024-06/b24-expenditure-data.xlsx"
+      "rights_state": "resource_specific_assessment_pending",
+      "source_id": "treasury-historical-ff5ef101ec75d1b8",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2024-06/b24-expenditure-data.xlsx",
+      "warc_sha256": "8100bbe99ee110de65fa59df64f96e57e88f20c6a4482703de713ce59efd4291"
     },
     {
+      "byte_count": 104606,
+      "capture_status": "transport_preserved",
       "family": "revenue_and_capital_receipts",
+      "native_qualification": "not_performed",
+      "object_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
       "publisher_display_size": "102.15 KB",
-      "url": "https://www.treasury.govt.nz/sites/default/files/2024-06/b24-revenue-data.xlsx"
+      "rights_state": "resource_specific_assessment_pending",
+      "source_id": "treasury-historical-c445260e928c9454",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2024-06/b24-revenue-data.xlsx",
+      "warc_sha256": "ffaa869568f48ccd3dc3518897407c6634cff85cb6cc60ba7c5123440ff48dfa"
     }
   ],
   "retained_reconciliation": {
@@ -70,7 +86,7 @@
   "schema_version": "archive-govt-nz.health-source-census-observation/v1",
   "signed_date": "2024-05-30",
   "source_url": "https://www.treasury.govt.nz/publications/data/budget-2024-data-estimates-appropriations-2024-25",
-  "status": "release_observed_capture_and_item_review_pending",
+  "status": "transport_preserved_native_layout_and_item_rights_pending",
   "title": "Budget 2024 Data from the Estimates of Appropriations 2024/25",
   "updated_date": "2024-06-21"
 }

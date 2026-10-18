@@ -7724,3 +7724,14 @@ Four inventories and360firstWARCheaders identify no exact/candidate capture in
 their bounded scope; do not infer global absence. Prepare existing-core private
 preservation with explicit item-rights pending, no host-eligibility substitution.
 No new capture or publication has run for this slice.
+
+
+### 2026-10-18 — Budget 2024 private transport preservation
+
+Root session48625 executed the reviewed exact two-target capture once and
+terminated0, preserving943456/104606byte responses in immutable CAS plus WARC.
+Independent CAS/WARC/receipt/evidence-input and request/final/status/content-type
+bindings pass. No host-level rights eligibility is emitted; native units/layout,
+item assessment and all source-workbook/canonical/publication admission remain
+pending. Retain all actual receipts and do not repeat the capture. Prepare the
+existing bounded workbook inspector for these two exact source hashes.

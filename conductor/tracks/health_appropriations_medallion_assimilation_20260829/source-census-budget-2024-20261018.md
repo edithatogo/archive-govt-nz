@@ -20,3 +20,16 @@ and separate CAS/WARC fixity checks, keeping item-level rights pending. Complete
 native Explanation/units/layout review after originals are identified/preserved.
 The wider 2024 edition remains incomplete. See the machine observation for
 exact source URLs, IDs, release-policy evidence and reconciliation digests.
+
+
+Both exact official URLs now return HTTP 200 and are privately preserved through
+the existing capture core. Expenditure is 943,456 bytes, SHA-256
+`891539afe9f5df4a7c7f73ac29695e19b6fb523a4947d305e1f4bd69ebcb3256`;
+revenue is 104,606 bytes, SHA-256
+`bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea`.
+Actual CAS/WARC hashes, lengths, request/response binding and receipt readback
+pass, including independent owner verification. The capture's input census is
+retained at 8d76b993/b7011bcf; this updated observation does not rewrite it.
+No workbook facts, item rights, native units/layout, canonical mapping or
+publication are admitted by transport success. The capture machine observation
+retains exact ETag/Last-Modified and UTC times separately from release dates.

@@ -2184,3 +2184,9 @@ integrated parent head.
   host-level licence eligibility as item adjudication. Native units/layout and
   canonical/analytical admission remain separately gated. [M-02, M-04, M-11,
   M-18; AC-03, AC-04, AC-09, AC-16]
+
+
+  Exact Budget2024 expenditure/revenue originals are now privately preserved
+  with HTTP200 and independently verified CAS/WARC/receipt bindings. Source
+  workbooks admitted remain zero; native Explanation/layout/units and item-level
+  rights review are the next bounded step. See budget-2024-capture-20261018.json.
