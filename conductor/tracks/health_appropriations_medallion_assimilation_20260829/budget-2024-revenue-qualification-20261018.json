@@ -1,0 +1,92 @@
+{
+  "actual_terminal_exit": 0,
+  "full": {
+    "CAS_MB_per_second": 405.75,
+    "SBOM_components": 113,
+    "all_mutation_stages": "passed",
+    "audit": "no known vulnerabilities",
+    "coverage_floor_percent": 80,
+    "coverage_percent": 97.18,
+    "differential_parity": "9/9 zero divergence",
+    "hygiene": "passed",
+    "licences": "passed",
+    "representative_documents": 56,
+    "schemas": 66,
+    "secrets": "passed",
+    "skipped": 14,
+    "snapshots": 2,
+    "stages_passed": 32,
+    "test_seconds": 316.41,
+    "tests_passed": 8034,
+    "warnings": 18
+  },
+  "full_command": "env PYTEST_XDIST_AUTO_NUM_WORKERS=4 PYTEST_ADDOPTS=-vv ./scripts/validate.sh",
+  "full_evidence_directory": "budget-2024-census-20261018/assurance-1",
+  "full_log_sha256": "10b3a06c1d7ef958922e8d865c730cf90779d4655d09e43add61010ef37bf5a8",
+  "lease_released": true,
+  "native": {
+    "adapter_selection": {
+      "adapter": {
+        "id": "nz-budget-health-revenue",
+        "version": "1.0.0"
+      },
+      "considered_adapter_ids": [
+        "nz-budget-health-expenditure",
+        "nz-budget-health-revenue"
+      ],
+      "declared_media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "detected_media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "matched_adapter_ids": [
+        "nz-budget-health-revenue"
+      ],
+      "reason": null,
+      "receipt_sha256": "1726438626658c3ce0f033537308513efc58a56fa4ecb4e3e4eac898533ce60a",
+      "schema_version": "archive-govt-nz.health-adapter-selection/v1",
+      "source_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
+      "status": "selected"
+    },
+    "canonical_Gold_admission": "not_performed",
+    "common_fact_lineage_loss_parity": true,
+    "counts": {
+      "blank": 0,
+      "input": 1004,
+      "normalized": 66,
+      "out_of_scope": 938,
+      "rejected": 0
+    },
+    "extraction_status": "passed",
+    "files_per_repeat": {
+      "MANIFEST.json": "d30a173f4a55ce6724571650c2f10b99aac7cc0b9b211063ddef86f75437a9ca",
+      "field_lineage.parquet": "1e2899de12df259df83af0d11a4058474a68ad252e7f22a2b5ccc06a1e96b566",
+      "revenue_facts.parquet": "0bc2c893daab424b75018ad13772c962b8c5a0d44a5658ab70502beee52486be",
+      "row_dispositions.parquet": "92dfdbb8ef48047567556301d276306154d33f862da0143e884e7ebdab4686fa"
+    },
+    "lineage_count": 1056,
+    "publication": "not_performed",
+    "repeat_files_equal": true,
+    "rights": "not_evaluated",
+    "row_reason_counts": {
+      "named_revenue_columns": 66,
+      "non_health_vote": 938
+    },
+    "source_bytes": 104606,
+    "source_bytes_unchanged": true,
+    "source_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
+    "status": "passed"
+  },
+  "native_evidence_directory": "budget-2024-census-20261018/revenue-1",
+  "native_summary_sha256": "c984c36ba9df41e0834aad7e824f19cde29dc2a439f379c933b71dc9837ac8a7",
+  "postflight_clean_head_tree_and_pins_verified": true,
+  "qualified_head": "64d4061371fe4aa3470afb9b86742bc6f5f10daf",
+  "qualified_tree": "754e4eb6aa6fd3faf115f72c4b36a0889a252fe3",
+  "root_session": 76502,
+  "runtime": "uv0.13.1/Python3.14.6/locked original environment",
+  "scope_limits": [
+    "private source-native Silver revenue only",
+    "literal $000; ISO currency and period start remain unverified",
+    "rights remain not_evaluated in extracted facts; native source declarations are separate evidence",
+    "no canonical Gold admission or external publication",
+    "2024 expenditure profile and wider source census remain incomplete"
+  ],
+  "status": "native_and_original_full_qualified_hosted_pending"
+}

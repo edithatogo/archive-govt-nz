@@ -2958,3 +2958,31 @@ The full log and terminal receipt hashes are pinned in the existing checkpoint.
 Native1 remains valid because producer/tests/runtime are unchanged; no native
 repeat. Original failed full1 and census binding remain retained. Hosted checks,
 normal merge and pruning are pending; no rights or analytical admission change.
+
+
+## Budget 2024 revenue qualification — 2026-10-18
+
+The [qualification receipt](./budget-2024-revenue-qualification-20261018.json)
+binds the actual retained source, two identical four-file builds, common-dispatch
+parity and all 32 original full-harness stages to head 64d40613/tree 754e4eb6.
+It records 66 facts, 1,056 lineage entries, all 1,004 source rows and zero rejects;
+8,034 tests passed with 14 skipped. The source remains unchanged and the root
+owner verified actual exit 0 and lease release. Full log SHA-256:
+`10b3a06c1d7ef958922e8d865c730cf90779d4655d09e43add61010ef37bf5a8`.
+Only track receipts/documentation follow that qualification. Exact-head hosted
+checks and protected delivery remain pending. ISO currency, period starts,
+rights adjudication, Gold joins and publication are separately bounded.
+
+
+Corrected source-entry qualification passes on89fdb3c9/tree8eb3dbbf: actual
+CLI/MCP read-only preflight parity and explicit CLI writing reproduce the
+prior four native files exactly. Corrected original ./scripts/validate.sh
+passes all32 stages:8038tests/14skipped/18warnings in429.01s,97.18%coverage
+(unchanged80%floor),66schemas/56docs,parity9/9,allmutations/hygiene/audit/
+licences/secrets/SBOM113 pass. Full log SHA
+d587161040e4414e2dc2d6e73167d161328b757dd13942ffac3c5e62aff3951b.
+Entry summary SHA09dfcfd899f191553b4ddf21fa2c380b6da4387e47f907ade364f4dcc7a4676d.
+Both actual source/full exit markers are0; source-owned processes ended and
+nonblocking kernel acquisition/release plus clean head/tree/all pins verify
+release. Earlier proofs remain retained. Post-qualification changes are track
+receipts/docs only. Fresh exact-head hosted checks and protected delivery follow.

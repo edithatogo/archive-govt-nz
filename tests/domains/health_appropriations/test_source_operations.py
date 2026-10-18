@@ -1770,3 +1770,95 @@ def test_reviewed_overview_operation_routes_to_common_bridge(
         source_operations.overview_operations, "normalize_overview", bridge
     )
     assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+
+
+def test_budget_2024_cli_mcp_routes_exact_reviewed_source_context(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    source = tmp_path / "route-only-source"
+    source.write_bytes(b"synthetic route probe; actual workbook verified separately")
+    arguments: dict[str, Any] = {
+        "source": source,
+        "output_dir": tmp_path / "unwritten",
+        "profile": "budget-revenue-2024/v1",
+        "expected_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
+        "source_vintage": "Budget-2024",
+        "source_locator": "https://www.treasury.govt.nz/sites/default/files/2024-06/b24-revenue-data.xlsx",
+        "observed_at": "2026-10-18T03:01:13.664113+00:00",
+    }
+    calls = []
+
+    def normalize(path: Path, output: Path, **context: object) -> dict[str, Any]:
+        calls.append((path, output, context))
+        return {
+            "status": "planned",
+            "counts": {
+                "input": 1004,
+                "normalized": 66,
+                "out_of_scope": 938,
+                "blank": 0,
+                "rejected": 0,
+            },
+        }
+
+    monkeypatch.setattr(
+        source_operations.budget_revenue, "normalize_budget_revenue", normalize
+    )
+    assert health_appropriations_extract_source(**arguments) == 0
+    result = json.loads(capsys.readouterr().out)
+    assert result.pop("command") == "health-appropriations-extract-source"
+    mcp_arguments = {key: str(value) for key, value in arguments.items()}
+    assert call_tool("health_appropriations_preflight_source", mcp_arguments) == result
+    assert len(calls) == 2
+    for path, output, context in calls:
+        assert path == source
+        assert output == arguments["output_dir"]
+        assert context == {
+            key: arguments[key]
+            for key in (
+                "expected_sha256",
+                "source_vintage",
+                "source_locator",
+                "observed_at",
+            )
+        } | {"dry_run": True}
+    assert result["transformation_id"] == "budget-2024-health-revenue/v1"
+    assert result["rights_state"] == "not_evaluated"
+    assert result["publication_state"] == "local_validation_only"
+    assert str(source) not in json.dumps(result)
+    assert not (tmp_path / "unwritten").exists()
+
+
+@pytest.mark.parametrize(
+    "bad_field", ["expected_sha256", "source_vintage", "source_locator"]
+)
+def test_budget_2024_source_operation_refuses_unreviewed_context_before_parser(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, bad_field: str
+) -> None:
+    source = tmp_path / "source"
+    source.write_bytes(b"route guard probe")
+    arguments = {
+        "source": str(source),
+        "output_dir": str(tmp_path / "unwritten"),
+        "profile": "budget-revenue-2024/v1",
+        "expected_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
+        "source_vintage": "Budget-2024",
+        "source_locator": "https://www.treasury.govt.nz/sites/default/files/2024-06/b24-revenue-data.xlsx",
+        "observed_at": "2026-10-18T03:01:13.664113+00:00",
+    }
+    arguments[bad_field] = {
+        "expected_sha256": "0" * 64,
+        "source_vintage": "Budget-2025",
+        "source_locator": "https://example.invalid/unreviewed",
+    }[bad_field]
+
+    def forbidden(*_args: object, **_kwargs: object) -> None:
+        pytest.fail("unreviewed source context reached the parser")
+
+    monkeypatch.setattr(
+        source_operations.budget_revenue, "normalize_budget_revenue", forbidden
+    )
+    result = call_tool("health_appropriations_preflight_source", arguments)
+    assert result["status"] == "failed"
+    assert result["error"] == "invalid_source_operation"
+    assert not (tmp_path / "unwritten").exists()

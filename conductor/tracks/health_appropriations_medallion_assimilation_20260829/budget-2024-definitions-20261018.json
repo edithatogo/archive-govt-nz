@@ -1,0 +1,233 @@
+{
+  "canonical_facts_admitted": 0,
+  "definitions_directory": "budget-2024-census-20261018/definitions-1",
+  "definitions_exit": 0,
+  "definitions_root_session": 77656,
+  "definitions_terminal_and_lease_released": true,
+  "expenditure_implementation": "not admitted using generic parser; source-specific currency/period qualification remains separate",
+  "frozen_head": "5a301a960d1066b7739a57ec26847e1662404a23",
+  "frozen_tree": "8664d2594547857197a8e4fa4caf81b8dc75de68",
+  "media_directory": "budget-2024-census-20261018/media-1",
+  "media_exit": 0,
+  "media_receipt_sha256": "347d14041fb541925fea2a5740a955314c0f6d5b8127c1120fb3ea4c10a3717e",
+  "media_terminal_and_lease_released": true,
+  "publication": "not_performed",
+  "records": [
+    {
+      "amount_type": {
+        "actual_june_year_ends": [
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "coordinate": "B42",
+        "decoded_definition_sha256": "e9cf54849ea7343775a03833341d73a23e78a50ee53dcc45e863e00e6762d115",
+        "estimated_actual_june_year_end": 2024,
+        "main_estimates_june_year_end": 2025
+      },
+      "embedded_image": {
+        "bytes": 7414,
+        "member": "xl/media/image1.png",
+        "method": "view_image on exact privately extracted bytes; both images viewed and identical hashes",
+        "sha256": "89c81a9813ed4e398998a97be866a20c3c1e72602956bbfa8409c3e907c4aa06",
+        "visual_observation": "CC BY badge"
+      },
+      "native_notices": [
+        {
+          "coordinate": "Intro!A10",
+          "decoded_text_sha256": "d6e0e19f2992935b590d526ced7239336b7e00f4b6a062fa59944bd4fb7aa7ae"
+        },
+        {
+          "coordinate": "Intro!A13",
+          "decoded_text_sha256": "5effb8d4bc4bf645f921571aa6e9b270fbade8b09599187745d62291b4c40d01"
+        },
+        {
+          "coordinate": "Intro!A14",
+          "decoded_text_sha256": "a171e099f8402f3d5900652cd963209364d25d4f0491f8bae38a2640db149d7f"
+        }
+      ],
+      "object_sha256": "891539afe9f5df4a7c7f73ac29695e19b6fb523a4947d305e1f4bd69ebcb3256",
+      "original_source_bytes_unchanged": true,
+      "private_report_sha256": "889e03c4174b46cb47374f99015d82daaf969ced8d2edc69ac7a0fa78b305b54",
+      "publisher_licence_observation": "native Crown copyright and CC BY4.0; emblem/logo/Coat of Arms restrictions retained; attribution in written form",
+      "raw_headers": [
+        "Department",
+        "Vote",
+        "App ID",
+        "Parent ID",
+        "Appropriation Name",
+        "Category Name",
+        "Group Type",
+        "Appropriation or Category Type",
+        "Restriction Type",
+        "Functional Classification",
+        "Amount $000",
+        "Year",
+        "Amount Type",
+        "Periodicity",
+        "Current Scope",
+        "M Number",
+        "Portfolio Name"
+      ],
+      "rights_adjudication": "not_performed",
+      "row_occupancy": {
+        "blank": 0,
+        "last_eight_rows": [
+          {
+            "nonempty": true,
+            "row": 6639
+          },
+          {
+            "nonempty": true,
+            "row": 6640
+          },
+          {
+            "nonempty": true,
+            "row": 6641
+          },
+          {
+            "nonempty": true,
+            "row": 6642
+          },
+          {
+            "nonempty": true,
+            "row": 6643
+          },
+          {
+            "nonempty": true,
+            "row": 6644
+          },
+          {
+            "nonempty": true,
+            "row": 6645
+          },
+          {
+            "nonempty": true,
+            "row": 6646
+          }
+        ],
+        "occupied": 6645,
+        "rows_below_header": 6645
+      },
+      "source_id": "treasury-historical-ff5ef101ec75d1b8",
+      "unit": {
+        "currency": "not_verified",
+        "decoded_definition_sha256": "77f9bd43460b2a407a8bbb242d2817949e4ad1bd193b99d8b7ac9c0a781a8e2b",
+        "definition_coordinate": "B40",
+        "literal": "$000"
+      },
+      "year_basis": {
+        "coordinate": "B41",
+        "decoded_definition_sha256": "b41ceaafec7ea8601fade88a91f20236f9dd573e986676c477638057a0a4c521",
+        "meaning": "year ending at30June as reported in Main Estimates",
+        "period_start": "not_asserted"
+      }
+    },
+    {
+      "amount_type": {
+        "actual_june_year_ends": [
+          2020,
+          2021,
+          2022,
+          2023
+        ],
+        "coordinate": "B39",
+        "decoded_definition_sha256": "e9cf54849ea7343775a03833341d73a23e78a50ee53dcc45e863e00e6762d115",
+        "estimated_actual_june_year_end": 2024,
+        "main_estimates_june_year_end": 2025
+      },
+      "embedded_image": {
+        "bytes": 7414,
+        "member": "xl/media/image1.png",
+        "method": "view_image on exact privately extracted bytes; both images viewed and identical hashes",
+        "sha256": "89c81a9813ed4e398998a97be866a20c3c1e72602956bbfa8409c3e907c4aa06",
+        "visual_observation": "CC BY badge"
+      },
+      "native_notices": [
+        {
+          "coordinate": "Intro!A10",
+          "decoded_text_sha256": "d6e0e19f2992935b590d526ced7239336b7e00f4b6a062fa59944bd4fb7aa7ae"
+        },
+        {
+          "coordinate": "Intro!A13",
+          "decoded_text_sha256": "5effb8d4bc4bf645f921571aa6e9b270fbade8b09599187745d62291b4c40d01"
+        },
+        {
+          "coordinate": "Intro!A14",
+          "decoded_text_sha256": "a171e099f8402f3d5900652cd963209364d25d4f0491f8bae38a2640db149d7f"
+        }
+      ],
+      "object_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
+      "original_source_bytes_unchanged": true,
+      "private_report_sha256": "47ff9bf33837e49eb8c77efc28151bbd05a045e82ecf328a52cc101b25a76328",
+      "publisher_licence_observation": "native Crown copyright and CC BY4.0; emblem/logo/Coat of Arms restrictions retained; attribution in written form",
+      "raw_headers": [
+        "Department",
+        "Vote",
+        "App ID",
+        "Description",
+        "Revenue Type",
+        "Amount $000",
+        "Year",
+        "Amount Type"
+      ],
+      "rights_adjudication": "not_performed",
+      "row_occupancy": {
+        "blank": 0,
+        "last_eight_rows": [
+          {
+            "nonempty": true,
+            "row": 998
+          },
+          {
+            "nonempty": true,
+            "row": 999
+          },
+          {
+            "nonempty": true,
+            "row": 1000
+          },
+          {
+            "nonempty": true,
+            "row": 1001
+          },
+          {
+            "nonempty": true,
+            "row": 1002
+          },
+          {
+            "nonempty": true,
+            "row": 1003
+          },
+          {
+            "nonempty": true,
+            "row": 1004
+          },
+          {
+            "nonempty": true,
+            "row": 1005
+          }
+        ],
+        "occupied": 1004,
+        "rows_below_header": 1004
+      },
+      "source_id": "treasury-historical-c445260e928c9454",
+      "unit": {
+        "currency": "not_verified",
+        "decoded_definition_sha256": "77f9bd43460b2a407a8bbb242d2817949e4ad1bd193b99d8b7ac9c0a781a8e2b",
+        "definition_coordinate": "B37",
+        "literal": "$000"
+      },
+      "year_basis": {
+        "coordinate": "B38",
+        "decoded_definition_sha256": "b41ceaafec7ea8601fade88a91f20236f9dd573e986676c477638057a0a4c521",
+        "meaning": "year ending at30June as reported in Main Estimates",
+        "period_start": "not_asserted"
+      }
+    }
+  ],
+  "revenue_implementation": "Hash-and-locator-bound2024 profile qualified against actual retained source:66facts/1056lineage/1004rows/zero rejects; two identical4-file builds and common parity. Original full32stage pass; hosted delivery pending.",
+  "rights_scope": "Observed source declarations and identified badge; no legal adjudication or blanket redistribution/publication approval",
+  "scope": "hash-bound native definitions, headers, occupied-row counts and embedded-notice/media observation; no canonical admission"
+}

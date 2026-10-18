@@ -2138,7 +2138,7 @@ integrated parent head.
   ancestry/equal-tree/zero-unique/clean verification. Topic refs pruned; primary
   worktree retained. See compound-native-delivery-20261018.json.
 
-- [~] Expose closed, read-only native workbook inspection through the existing
+- [x] Expose closed, read-only native workbook inspection through the existing
   CLI/MCP operation architecture. Resolve the two reviewed expense workbook
   identities from CAS; preserve compound/profile/schema/selection/count/hash/
   excluded-sheet/hold evidence in a bounded typed response without raw rows or
@@ -2170,3 +2170,68 @@ integrated parent head.
   Preserve the exact overlapping-process chronology and owner terminal release.
   Local skips do not qualify the two real Windows junction cases; final hosted
   Windows, seven exact-head checks, review resolution and delivery remain pending.
+
+
+  Delivered PR #716 at76bbc660 after seven successes on0d446471, resolved
+  junction review and actual native Windows suite. Fetched checked/merge ancestry,
+  equal1f1c4e29tree, zero unique commits and clean-main guards pass; topic refs
+  pruned, primary retained. See native-workbook-inspection-delivery-20261018.json.
+
+- [~] Reconcile Budget2024 expenditure/revenue release identity, periods,
+  original-byte preservation and item-level rights evidence. Reuse the existing
+  two locators and retained inventories; preserve edition/caveat distinctions.
+  Capture only through the existing bounded preservation core without inheriting
+  host-level licence eligibility as item adjudication. Native units/layout and
+  canonical/analytical admission remain separately gated. [M-02, M-04, M-11,
+  M-18; AC-03, AC-04, AC-09, AC-16]
+
+
+  Exact Budget2024 expenditure/revenue originals are now privately preserved
+  with HTTP200 and independently verified CAS/WARC/receipt bindings. Source
+  workbooks admitted remain zero; native Explanation/layout/units and item-level
+  rights review are the next bounded step. See budget-2024-capture-20261018.json.
+
+
+Budget 2024 native inspection1 completed on f83c09e9: root35584 exit0,
+lease released; both inventories repeat identically and both source hashes
+remain unchanged. No canonical facts or rights admitted. Record structural
+counts and private report hashes in budget-2024-layout-20261018.json. Next
+read exact Raw Data headers, Intro notices and lower Explanation definitions;
+resolve the actual revenue1005-row envelope against the existing1000-data-row
+profile without truncation, vintage substitution or silently changing limits.
+
+
+- [~] Add the hash-bound Budget 2024 revenue edition using the observed native
+  definitions and June-year amount types, preserving all 1,004 occupied source
+  rows. Keep the existing 2025/2026 1,000-row bounds unchanged; the reviewed
+  2024 bound is edition-specific and no row is truncated. Retain literal $000,
+  unknown ISO currency, source-row losses and original OOXML numeric tokens.
+  Item notices/media evidence and canonical/publication claims stay separate.
+  [M-03, M-04, M-06, M-11, M-18; AC-03, AC-04, AC-05, AC-16]
+
+
+Local qualification passes on 64d40613: actual-source repeat/common parity
+(66 facts, all 1,004 rows) and all 32 original harness stages. See
+`budget-2024-revenue-qualification-20261018.json`. Exact-head hosted checks
+and protected delivery remain pending; wider phase/rights/Gold gates stay open.
+
+
+- [~] Review fix: expose budget-revenue-2024/v1 through the existing closed
+  source-operation registry/vintage validation/result schema and CLI/MCP routes.
+  Preserve source hash/locator binding, read-only MCP and explicit local writes.
+  Verify actual-source entry paths and corrected original full harness before
+  PR717 delivery. [M-04, M-07, M-15, M-18; AC-03, AC-04, AC-13, AC-16]
+
+
+Corrected source-entry qualification passes on89fdb3c9/tree8eb3dbbf: actual
+CLI/MCP read-only preflight parity and explicit CLI writing reproduce the
+prior four native files exactly. Corrected original ./scripts/validate.sh
+passes all32 stages:8038tests/14skipped/18warnings in429.01s,97.18%coverage
+(unchanged80%floor),66schemas/56docs,parity9/9,allmutations/hygiene/audit/
+licences/secrets/SBOM113 pass. Full log SHA
+d587161040e4414e2dc2d6e73167d161328b757dd13942ffac3c5e62aff3951b.
+Entry summary SHA09dfcfd899f191553b4ddf21fa2c380b6da4387e47f907ade364f4dcc7a4676d.
+Both actual source/full exit markers are0; source-owned processes ended and
+nonblocking kernel acquisition/release plus clean head/tree/all pins verify
+release. Earlier proofs remain retained. Post-qualification changes are track
+receipts/docs only. Fresh exact-head hosted checks and protected delivery follow.

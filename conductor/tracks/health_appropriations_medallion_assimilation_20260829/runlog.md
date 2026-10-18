@@ -7708,3 +7708,124 @@ Retain the competing-process overlap from before replay through early full3,
 its later detection and graceful verified stop; do not imply the host was idle
 or infer an Archive failure. Owner verified original processes absent and kernel
 slot free. Evidence-only finalization follows release; hosted/review gates remain.
+
+
+### 2026-10-18 — PR #716 delivered; Budget 2024 census continuation
+
+All seven final-head checks pass; native Windows8007/36skip includes real NTFS
+root/prefix controls. Resolve the junction review with actual fix evidence and
+merge through active strict protections at76bbc660, checked0d446471/equal1f1c4e29
+tree. Fetch/ancestry/zero-unique/clean-main proof passes before pruning only the
+verified topic refs. Retain the primary checkout and every source/runtime/proof.
+
+Continue Phase1/#207 under parent#205 with Budget2024's two existing locators.
+Release periods/caveats/rights observations are distinct from native validation.
+Four inventories and360firstWARCheaders identify no exact/candidate capture in
+their bounded scope; do not infer global absence. Prepare existing-core private
+preservation with explicit item-rights pending, no host-eligibility substitution.
+No new capture or publication has run for this slice.
+
+
+### 2026-10-18 — Budget 2024 private transport preservation
+
+Root session48625 executed the reviewed exact two-target capture once and
+terminated0, preserving943456/104606byte responses in immutable CAS plus WARC.
+Independent CAS/WARC/receipt/evidence-input and request/final/status/content-type
+bindings pass. No host-level rights eligibility is emitted; native units/layout,
+item assessment and all source-workbook/canonical/publication admission remain
+pending. Retain all actual receipts and do not repeat the capture. Prepare the
+existing bounded workbook inspector for these two exact source hashes.
+
+
+Budget 2024 native inspection1 completed on f83c09e9: root35584 exit0,
+lease released; both inventories repeat identically and both source hashes
+remain unchanged. No canonical facts or rights admitted. Record structural
+counts and private report hashes in budget-2024-layout-20261018.json. Next
+read exact Raw Data headers, Intro notices and lower Explanation definitions;
+resolve the actual revenue1005-row envelope against the existing1000-data-row
+profile without truncation, vintage substitution or silently changing limits.
+
+
+Budget 2024 revenue red check: the synthetic 1,004-row contract fixture fails
+at the existing unsupported-vintage guard (1 failed, 42 deselected, 1.65s);
+see private revenue-2024-red-1.log. No actual source normalized by that test.
+The proposed 2024 profile pins the captured hash and exact source locator,
+uses native Explanation definitions and 2020-2025 amount-type map, and gives
+only that transformation a 1,004-row bound. Legacy 2025/2026 remain at 1,000.
+Tests for unreviewed bytes/locator and excess rows retain fail-closed output.
+Both actual embedded PNGs were visually identified as identical CC BY badges
+(7,414 bytes, image SHA89c81a9813ed4e398998a97be866a20c3c1e72602956bbfa8409c3e907c4aa06).
+Intro A10/A13/A14 carry native Crown/CC BY 4.0 and emblem restrictions; no
+blanket legal adjudication, ISO-currency claim or publication is performed.
+
+
+Budget 2024 revenue focused verification: 68 passed in8.61s across revenue,
+dispatch and projection suites. Source/locator binding, all1004 rows including
+source row1005, literal amount/period lineage and over-bound refusal verified.
+Ruff findings (extra early return and broad pytest raises) were corrected
+without exclusions; strict basedpyright0. Native item media is a CC BY badge,
+not an assumed Treasury logo. Original source snapshots and historical locator
+register remain unchanged. Actual-source qualification and full harness follow.
+
+
+Budget 2024 revenue qualification on64d40613/tree754e4eb6 is complete locally.
+Root76502 exited0 and independently verified actual terminal/release, clean
+head/tree and all implementation/evidence pins. Native source:66facts,
+1056lineage,1004 source rows2–1005,938 outsideHealth,0blank/rejected; all4
+files match across two builds and common fact/lineage/loss parity passes.
+Original ./scripts/validate.sh passes all32 stages:8034tests/14skipped/18warnings,
+316.41s,97.18%coverage (unchanged80%floor),66schemas/56docs,parity9/9,allmutations,
+hygiene/audit/licences/secrets/SBOM113 pass. Full log SHA
+10b3a06c1d7ef958922e8d865c730cf90779d4655d09e43add61010ef37bf5a8.
+See budget-2024-revenue-qualification-20261018.json. Receipts are added after
+lease release; no production/runtime/input-contract change follows qualification.
+Exact-head hosted checks and protected delivery remain pending. ISOcurrency,
+period starts, Gold/rights/publication and broader census boundaries stay explicit.
+
+
+## PR 717 product-entry review correction — 2026-10-18
+
+Conductor found a real product-entry gap after the direct API qualification:
+`source_operations.PROFILES`, `_REVENUE_VINTAGES` and the committed operation
+schema still omitted budget-revenue-2024/v1, leaving CLI/MCP unreachable.
+The original 64d40613 full/native evidence is retained for that earlier scope.
+A focused CLI/MCP route regression with the actual reviewed locator/digest
+fails as expected: CLI returns2/invalid_source_operation (1 failed,536 deselected,
+9.32s). Routing uses a declared synthetic backend probe; actual-source CLI/MCP
+qualification follows separately. Add the existing profile/schema/validation
+wiring and pin refusal before parser invocation. New behavior requires corrected
+native entry-point and full-harness qualification; prior green checks are not
+sufficient to merge the unfinished entry path. No hosted job is cancelled merely
+because of elapsed time, and no source is recaptured or relabelled.
+
+
+Entry-point correction focused green:5passed/532deselected in3.03s, including
+actual pinned-locator/digest routing probes and schema equality. The backend
+mock is explicitly route-only. Broader source-operation/revenue/dispatch/
+projection suites:595passed/10skipped in47.41s. Ruff and strict typing pass
+after correcting test kwargs typing and splitting a combined assertion, with
+no lint exclusions or runtime gate changes. Root independently confirmed
+runtime/static schema equality and preserved2025/2026 behavior. Corrected
+actual-source entry and original full harness remain pending.
+
+
+Corrected source-entry qualification passes on89fdb3c9/tree8eb3dbbf: actual
+CLI/MCP read-only preflight parity and explicit CLI writing reproduce the
+prior four native files exactly. Corrected original ./scripts/validate.sh
+passes all32 stages:8038tests/14skipped/18warnings in429.01s,97.18%coverage
+(unchanged80%floor),66schemas/56docs,parity9/9,allmutations/hygiene/audit/
+licences/secrets/SBOM113 pass. Full log SHA
+d587161040e4414e2dc2d6e73167d161328b757dd13942ffac3c5e62aff3951b.
+Entry summary SHA09dfcfd899f191553b4ddf21fa2c380b6da4387e47f907ade364f4dcc7a4676d.
+Both actual source/full exit markers are0; source-owned processes ended and
+nonblocking kernel acquisition/release plus clean head/tree/all pins verify
+release. Earlier proofs remain retained. Post-qualification changes are track
+receipts/docs only. Fresh exact-head hosted checks and protected delivery follow.
+
+
+Final receipt scan flagged the literal status `passed` under a composite
+metadata key containing a gate name. The failed scanner report is retained
+privately before modification. Represent the same passing gates as an explicit
+list, preserving the secret-stage evidence and every scanner policy. No secret
+value, baseline entry, allowlist or scanning rule is added or changed. Re-run
+the original scanner and evidence-binding checks on this representation.

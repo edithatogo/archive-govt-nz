@@ -58,7 +58,18 @@
     "warnings": 18,
     "windows_cases": "two real NTFS cases skipped locally; current-head hosted Windows qualification pending"
   },
-  "hosted_delivery": "pending_final_exact_head_checks_and_review_resolution",
+  "hosted_delivery": {
+    "actual_windows_junction_cases": "qualified in native win32 full suite;8007pass36skip",
+    "all_seven_success": true,
+    "checked_head": "0d4464710a7b0264d7cf6e183434d3f6d6de6240",
+    "ledger": "native-workbook-inspection-delivery-20261018.json",
+    "merge": "76bbc660620f89f7344984dec6f150ebb288b965",
+    "pr": 716,
+    "primary_retained": true,
+    "review_resolved": true,
+    "topic_refs_pruned": true,
+    "tree": "1f1c4e29ac66c270b9c858e5336d2edbca525cb3"
+  },
   "interfaces": [
     "shared_read_only_operation",
     "actual_cli_parser",
@@ -188,5 +199,5 @@
     "nz-treasury-befu-2025-expense-workbook",
     "nz-treasury-hyefu-2024-expense-workbook"
   ],
-  "status": "junction_fix_native_and_full_qualified_hosted_windows_pending"
+  "status": "delivered"
 }

@@ -3666,3 +3666,43 @@ and full7954 qualification support this closed Fiscal2024 adapter only. Other
 vintages, whole-worksheet semantics, mappings and rights stay separate. Final
 recording changes documentation only; hosted checks and protected delivery must
 still pass on the resulting PR head.
+
+
+## Budget 2024 source and revenue profile review — 2026-10-18
+
+- Actual definitions establish literal thousands and June year ends. The profile
+  retains unknown ISO currency and period starts, with source-separated revenue.
+- The 1,004 occupied rows exceed the legacy bound. The fix gives the exact
+  captured hash/official locator and 2024 transformation their own 1,004-row
+  bound, preserving 2025/2026 limits. Binding, boundary and common-dispatch
+  tests pass; actual source accounting includes row 1,005 without truncation.
+- Both embedded images are identical CC BY badges. Native Intro notices retain
+  emblem restrictions; the source declaration is evidence, not blanket legal
+  or publication approval. Originals and historical observations are unchanged.
+- Two actual-source builds match in all four files, and common dispatch matches
+  facts, lineage and losses. All 32 original harness stages pass on 64d40613.
+  Subsequent edits contain only track receipts/documentation, checked separately.
+  See [qualification](./budget-2024-revenue-qualification-20261018.json).
+- No actionable local finding remains. Exact-head hosted checks and protected
+  delivery remain pending. The 2024 expenditure profile, wider census and
+  final track review remain incomplete. No quality or branch gate is weakened.
+
+
+### Product-entry finding — resolved locally; hosted delivery pending
+
+Conductor found the missing 2024 source-operation registry/vintage/schema entry.
+The correction preserves the source hash/locator guard before parsing and the
+closed result schema. Four focused routing/refusal cases and schema equality
+pass; the broader source-operation/revenue suites pass 595 cases (10 skipped).
+
+Actual retained-source qualification exercises CLI preflight, MCP JSON-RPC
+preflight and explicit CLI writing. Preflight leaves the target absent; all
+four written files match the previously qualified package. The corrected head
+89fdb3c9 passes all 32 original harness stages with 8,038 tests passed, 14 skipped.
+The source and earlier proof remain unchanged. Actual process termination,
+clean head/tree/pins and the released kernel lock are independently verified.
+See [entry qualification](./budget-2024-source-entry-20261018.json).
+
+The local product-entry finding is resolved. Fresh hosted checks and protected
+delivery remain pending; earlier 9f250a41 successes describe that earlier head.
+No rights, currency, period-start, Gold or publication gate is promoted.
