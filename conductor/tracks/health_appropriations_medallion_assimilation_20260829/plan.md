@@ -2337,3 +2337,10 @@ Conductor consulted. Next add dedicated hash-bound2022profiles through the
 existing parsers, keeping previous profiles/output bytes unchanged; qualify
 actual repeats/common/CLI/MCP, run the harness and deliver a focusedPR before
 closing this bounded slice. No rights, currency or period-start inference.
+
+Budget2022 actual profiles qualify307expenditure/64revenue observations with
+all6568/1015source rows accounted, no rejected rows, two byte-identical builds
+and CLI/MCP/common parity. Prior2024expenditure/2023revenue packages reproduce
+all four files. See budget-2022-native-qualification-20261018.json. Native page
+HTTP403 remains a precise route-specific gap; full and protected delivery
+remain pending before closing this bounded slice.

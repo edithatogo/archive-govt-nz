@@ -23,8 +23,8 @@
     "new_contract_seconds": 17.95
   },
   "full_harness": "pending",
-  "native_qualification": "pending",
-  "numeric_facts_admitted": 0,
+  "native_qualification": "budget-2022-native-qualification-20261018.json",
+  "numeric_facts_admitted_at_implementation_checkpoint": 0,
   "profiles": [
     {
       "ISO_currency": "not_asserted",
@@ -89,6 +89,22 @@
   "schema_without_two_new_profiles_equal_origin_main": true,
   "schemas": 66,
   "source_definition_literals_equal_native_inspection": true,
-  "status": "implemented_focused_verified_native_full_and_protected_delivery_pending",
+  "source_native_counts": {
+    "expenditure": {
+      "blank": 0,
+      "input": 6568,
+      "normalized": 307,
+      "out_of_scope": 6261,
+      "rejected": 0
+    },
+    "revenue": {
+      "blank": 0,
+      "input": 1015,
+      "normalized": 64,
+      "out_of_scope": 951,
+      "rejected": 0
+    }
+  },
+  "status": "native_qualified_full_and_protected_delivery_pending",
   "typing": "0_errors"
 }

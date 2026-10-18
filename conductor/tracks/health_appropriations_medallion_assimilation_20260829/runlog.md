@@ -8268,3 +8268,28 @@ profiles/transformation IDs yields exact origin/main schema equality.
 Actual-source repeat/common/CLI/MCP and prior-edition bytes, full original
 harness and protected delivery remain required before admission/completion.
 Only6new manual contract cases;80%floor/caps/health checks unchanged.
+
+### 2026-10-18 — Budget 2022 actual-source qualifications passed
+
+Frozen aa111e69/tree da22dd9d expenditure native1 exited 0 (session 23538):
+307 facts / 8,289 lineage links; all 6,568 rows accounted (6,261 out of scope,
+zero blank/rejected). Two four-file builds are identical, actual CLI/MCP
+preflights agree and leave the target absent, explicit CLI writing matches, and
+common facts/lineage/losses agree. A retained 2024 expenditure reconstruction
+matches its previously qualified four files exactly. Summary SHA
+fca8b3def6dcfe80cb24b31d7d09131c152aaed8d4328f104a29071cadd1def1.
+
+Revenue native1 on the same head/tree exited 0 (session 40857): 64 facts /
+1,024 lineage links; all 1,015 rows accounted (951 out of scope, zero blank/
+rejected). Both four-file builds, CLI/MCP/read-only preflight, explicit CLI
+write and common facts/lineage/losses agree. Actual 2023 revenue reconstruction
+matches all four qualified oracle files. Both processes are terminal; frozen
+code/runtime/evidence/source pins and independently released kernel leases
+verify. Permanent native-assurance copies are hash-checked.
+
+No source recapture, inferred ISO currency/annual start, netting, analytical
+join, rights eligibility or publication. Page HTTP 403 is a separate retained
+route-specific unavailable disposition; Conductor advice remains requested.
+Follow-on public qualification/status updates are documentation only; their
+frozen producer snapshots remain available at aa111e69. Original full harness
+and exact-head hosted/protected delivery remain required.

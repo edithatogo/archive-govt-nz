@@ -1,0 +1,252 @@
+{
+  "CLI_MCP_and_common_parity": true,
+  "Gold_admission": "not_performed",
+  "ISO_currency": "not_asserted",
+  "both_four_file_repeats_equal": true,
+  "full_harness": "pending",
+  "period_start": "not_asserted",
+  "preflight_output_absent": true,
+  "prior_expenditure_2024_all_four_files_equal": true,
+  "prior_revenue_2023_all_four_files_equal": true,
+  "producer_head": "aa111e693464d6fa27b383d846da0273775df628",
+  "producer_tree": "da22dd9dcba770b8983bcc33edd1ca28c05286ae",
+  "profiles": {
+    "expenditure": {
+      "native": {
+        "CLI_MCP_preflight_equal": true,
+        "actual_CLI_preflight": {
+          "counts": {
+            "blank": 0,
+            "input": 6568,
+            "normalized": 307,
+            "out_of_scope": 6261,
+            "rejected": 0
+          },
+          "profile": "budget-expenditure-2022/v1",
+          "publication_state": "local_validation_only",
+          "rights_state": "not_evaluated",
+          "schema_version": "archive-govt-nz.health-source-operation/v1",
+          "source_object_sha256": "406f74344833b3f9b91c4c5c22bbbd5dd9484af0d25ab3be054367fd07026338",
+          "status": "preflight_passed",
+          "transformation_id": "budget-2022-health-expenditure/v1",
+          "verification_scope": "adapter_execution_only"
+        },
+        "actual_CLI_write": {
+          "counts": {
+            "blank": 0,
+            "input": 6568,
+            "normalized": 307,
+            "out_of_scope": 6261,
+            "rejected": 0
+          },
+          "output_sha256": {
+            "budget_facts.parquet": "88866708653c1ec511e76c2958798f644c6e4475858ceeae7864745df1d502ca",
+            "field_lineage.parquet": "0978f6ff9eb100fda628b938f50d86c2a1c04a5026b114a5895115e22a1570cc",
+            "row_dispositions.parquet": "2887433a6476737e49bcdd831eb89a95e418c20be3aafe6a26cb9818170498ec"
+          },
+          "profile": "budget-expenditure-2022/v1",
+          "publication_state": "local_validation_only",
+          "rights_state": "not_evaluated",
+          "schema_version": "archive-govt-nz.health-source-operation/v1",
+          "source_object_sha256": "406f74344833b3f9b91c4c5c22bbbd5dd9484af0d25ab3be054367fd07026338",
+          "status": "written_local",
+          "transformation_id": "budget-2022-health-expenditure/v1",
+          "verification_scope": "adapter_execution_only"
+        },
+        "actual_MCP_preflight": {
+          "counts": {
+            "blank": 0,
+            "input": 6568,
+            "normalized": 307,
+            "out_of_scope": 6261,
+            "rejected": 0
+          },
+          "profile": "budget-expenditure-2022/v1",
+          "publication_state": "local_validation_only",
+          "rights_state": "not_evaluated",
+          "schema_version": "archive-govt-nz.health-source-operation/v1",
+          "source_object_sha256": "406f74344833b3f9b91c4c5c22bbbd5dd9484af0d25ab3be054367fd07026338",
+          "status": "preflight_passed",
+          "transformation_id": "budget-2022-health-expenditure/v1",
+          "verification_scope": "adapter_execution_only"
+        },
+        "canonical_Gold_admission": "not_performed",
+        "common_dispatch_facts_equal": true,
+        "common_dispatch_lineage_equal": true,
+        "common_dispatch_losses_equal": true,
+        "counts": {
+          "blank": 0,
+          "input": 6568,
+          "normalized": 307,
+          "out_of_scope": 6261,
+          "rejected": 0
+        },
+        "dispositions": 6568,
+        "facts": 307,
+        "lineage": 8289,
+        "preflight_output_absent": true,
+        "prior_2024_all_four_files_equal": true,
+        "prior_2024_output_sha256": {
+          "MANIFEST.json": "b43d3b4a4421f77883e278a55d66a7da93728382b86f8f87db36f16a0ec05a00",
+          "budget_facts.parquet": "afb3814a366013acda4dbc0148f6b09826838a1404745b6ed4dbc78c368fc745",
+          "field_lineage.parquet": "0e4efa7822569761bfd212fc19d7ed17abba5f2b7d065666233523c8719fdbe1",
+          "row_dispositions.parquet": "f25ee897f2f3df0b24751dbac162b48d7bfed1456179206476729e6a5290e027"
+        },
+        "publication": "not_performed",
+        "repeat_build_files": {
+          "MANIFEST.json": "11000774d1210242f29150ffd4d7a05f634da2a32253d7cb671ec1f78f10895d",
+          "budget_facts.parquet": "88866708653c1ec511e76c2958798f644c6e4475858ceeae7864745df1d502ca",
+          "field_lineage.parquet": "0978f6ff9eb100fda628b938f50d86c2a1c04a5026b114a5895115e22a1570cc",
+          "row_dispositions.parquet": "2887433a6476737e49bcdd831eb89a95e418c20be3aafe6a26cb9818170498ec"
+        },
+        "rights": "not_evaluated",
+        "source_bytes_unchanged": true,
+        "source_sha256": "406f74344833b3f9b91c4c5c22bbbd5dd9484af0d25ab3be054367fd07026338",
+        "status": "passed"
+      },
+      "postflight": {
+        "actual_exit": 0,
+        "all_frozen_pins_unchanged": true,
+        "exec_session": 23538,
+        "head": "aa111e693464d6fa27b383d846da0273775df628",
+        "kernel_lease_free": true,
+        "native_counts": {
+          "blank": 0,
+          "input": 6568,
+          "normalized": 307,
+          "out_of_scope": 6261,
+          "rejected": 0
+        },
+        "native_lineage": 8289,
+        "prior_2024_all_four_files_equal": true,
+        "source_bytes_unchanged": true,
+        "status": "passed",
+        "summary_sha256": "fca8b3def6dcfe80cb24b31d7d09131c152aaed8d4328f104a29071cadd1def1",
+        "tree": "da22dd9dcba770b8983bcc33edd1ca28c05286ae"
+      }
+    },
+    "revenue": {
+      "native": {
+        "CLI_MCP_preflight_equal": true,
+        "actual_CLI_preflight": {
+          "counts": {
+            "blank": 0,
+            "input": 1015,
+            "normalized": 64,
+            "out_of_scope": 951,
+            "rejected": 0
+          },
+          "profile": "budget-revenue-2022/v1",
+          "publication_state": "local_validation_only",
+          "rights_state": "not_evaluated",
+          "schema_version": "archive-govt-nz.health-source-operation/v1",
+          "source_object_sha256": "6f395e69b5ee2405f4d9e09455402b07df7c99cce0803152db1dba654333bb92",
+          "status": "preflight_passed",
+          "transformation_id": "budget-2022-health-revenue/v1",
+          "verification_scope": "adapter_execution_only"
+        },
+        "actual_CLI_write": {
+          "counts": {
+            "blank": 0,
+            "input": 1015,
+            "normalized": 64,
+            "out_of_scope": 951,
+            "rejected": 0
+          },
+          "output_sha256": {
+            "field_lineage.parquet": "202299f3ee562fc6261bce7b325cc0f0da6791d859a12658a4db4baff5aea2ef",
+            "revenue_facts.parquet": "a52f6c96ab9d20dc0fe907f31394d937100b75f43e07796cc0913aa38d0079a2",
+            "row_dispositions.parquet": "66b2ef982e8a16a1a955106173ba2b26f3a31780ba62bab2c5e7f4e4305d2663"
+          },
+          "profile": "budget-revenue-2022/v1",
+          "publication_state": "local_validation_only",
+          "rights_state": "not_evaluated",
+          "schema_version": "archive-govt-nz.health-source-operation/v1",
+          "source_object_sha256": "6f395e69b5ee2405f4d9e09455402b07df7c99cce0803152db1dba654333bb92",
+          "status": "written_local",
+          "transformation_id": "budget-2022-health-revenue/v1",
+          "verification_scope": "adapter_execution_only"
+        },
+        "actual_MCP_preflight": {
+          "counts": {
+            "blank": 0,
+            "input": 1015,
+            "normalized": 64,
+            "out_of_scope": 951,
+            "rejected": 0
+          },
+          "profile": "budget-revenue-2022/v1",
+          "publication_state": "local_validation_only",
+          "rights_state": "not_evaluated",
+          "schema_version": "archive-govt-nz.health-source-operation/v1",
+          "source_object_sha256": "6f395e69b5ee2405f4d9e09455402b07df7c99cce0803152db1dba654333bb92",
+          "status": "preflight_passed",
+          "transformation_id": "budget-2022-health-revenue/v1",
+          "verification_scope": "adapter_execution_only"
+        },
+        "canonical_Gold_admission": "not_performed",
+        "common_dispatch_facts_equal": true,
+        "common_dispatch_lineage_equal": true,
+        "common_dispatch_losses_equal": true,
+        "counts": {
+          "blank": 0,
+          "input": 1015,
+          "normalized": 64,
+          "out_of_scope": 951,
+          "rejected": 0
+        },
+        "dispositions": 1015,
+        "facts": 64,
+        "lineage": 1024,
+        "preflight_output_absent": true,
+        "prior_2023_all_four_files_equal": true,
+        "prior_2023_output_sha256": {
+          "MANIFEST.json": "0ca5990b4535439341dde1aea9602d17ebc2dc55e33f7874e39e8bad2bd63972",
+          "field_lineage.parquet": "c90edf229ddd662cdb6d23aa00a224fdff22f5fc484fdd0fe9ffd29fccb716cd",
+          "revenue_facts.parquet": "7597f367449e8410d9d280938ea3f0b32a7d1318c1e0a10346071455c2451153",
+          "row_dispositions.parquet": "ab24983065f65c468c7f1b0e46a7a50bc4c2a67d9af88f7e561f25db9c0dfcba"
+        },
+        "publication": "not_performed",
+        "repeat_build_files": {
+          "MANIFEST.json": "0aaf0ea6ae51ae9eefe7bcd9c0d3317dc9ece422e77c4d4ce138e99e1d3dde08",
+          "field_lineage.parquet": "202299f3ee562fc6261bce7b325cc0f0da6791d859a12658a4db4baff5aea2ef",
+          "revenue_facts.parquet": "a52f6c96ab9d20dc0fe907f31394d937100b75f43e07796cc0913aa38d0079a2",
+          "row_dispositions.parquet": "66b2ef982e8a16a1a955106173ba2b26f3a31780ba62bab2c5e7f4e4305d2663"
+        },
+        "rights": "not_evaluated",
+        "source_bytes": 105054,
+        "source_bytes_unchanged": true,
+        "source_sha256": "6f395e69b5ee2405f4d9e09455402b07df7c99cce0803152db1dba654333bb92",
+        "status": "passed"
+      },
+      "postflight": {
+        "actual_exit": 0,
+        "all_frozen_pins_unchanged": true,
+        "exec_session": 40857,
+        "head": "aa111e693464d6fa27b383d846da0273775df628",
+        "kernel_lease_free": true,
+        "native_counts": {
+          "blank": 0,
+          "input": 1015,
+          "normalized": 64,
+          "out_of_scope": 951,
+          "rejected": 0
+        },
+        "native_lineage": 1024,
+        "prior_2023_all_four_files_equal": true,
+        "source_bytes_unchanged": true,
+        "status": "passed",
+        "summary_sha256": "d0739d78dd971770c19555af25bc7561b538b3c6c94b958acd28a727e72ed6ef",
+        "tree": "da22dd9dcba770b8983bcc33edd1ca28c05286ae"
+      }
+    }
+  },
+  "protected_delivery": "pending",
+  "publication": "not_performed",
+  "release_page_transport": "HTTP403_retained_not_retried_Conductor_solution_requested",
+  "rights": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-budget-2022-native-qualification/v1",
+  "scope": "Two source-separated local Silver profiles; no expenditure/revenue netting or analytical joins.",
+  "source_bytes_unchanged": true,
+  "status": "source_native_profiles_qualified_full_and_protected_delivery_pending"
+}

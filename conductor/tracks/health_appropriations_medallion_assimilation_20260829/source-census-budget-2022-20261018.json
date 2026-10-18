@@ -4,6 +4,7 @@
     "release_page": "HTTP403_native_page_transport_denied",
     "successful_workbooks": 2
   },
+  "cutoff": "2026-10-18",
   "native_layout_units": {
     "period_definition": "Native Explanation gives June-year ends2018\u20132023 with Actuals/EstimatedActual/MainEstimates retained",
     "raw_rows": {
@@ -85,6 +86,15 @@
     "title": "Budget 2022 Data from the Estimates of Appropriations 2022/23",
     "updated_date": "2022-06-02"
   },
+  "release_page_evidence": {
+    "conductor_solution_requested": true,
+    "disposition": "unavailable",
+    "reason_code": "terminal_http_403_native_capture",
+    "repeat_requests": 0,
+    "scope": "Native capture route only; public metadata was observed through web read. No global absence or rights restriction is asserted.",
+    "source_id": "treasury-budget-2022-release-1d298eab7c78bb7f",
+    "source_locator": "https://www.treasury.govt.nz/publications/data/budget-2022-data-estimates-appropriations-2022-23"
+  },
   "resources": [
     {
       "byte_count": 920766,
@@ -117,14 +127,26 @@
   ],
   "rights_eligibility": "not_evaluated",
   "schema_version": "archive-govt-nz.health-source-census-budget-2022/v1",
-  "silver_admission": "not_performed",
+  "silver_admission": "source_native_local_profiles_qualified_rights_and_Gold_not_admitted",
   "source_profile_qualification": {
-    "implementation": "budget-2022-profile-implementation-20261018.json",
-    "profiles": [
-      "budget-expenditure-2022/v1",
-      "budget-revenue-2022/v1"
-    ],
-    "state": "pending_actual_source_and_full_assurance"
+    "counts": {
+      "expenditure": {
+        "blank": 0,
+        "input": 6568,
+        "normalized": 307,
+        "out_of_scope": 6261,
+        "rejected": 0
+      },
+      "revenue": {
+        "blank": 0,
+        "input": 1015,
+        "normalized": 64,
+        "out_of_scope": 951,
+        "rejected": 0
+      }
+    },
+    "receipt": "budget-2022-native-qualification-20261018.json",
+    "state": "qualified_source_native_local_Silver_only"
   },
-  "status": "profiles_implemented_focused_verified_native_qualification_pending_release_page_403"
+  "status": "source_native_profiles_qualified_full_and_delivery_pending_release_page_403"
 }
