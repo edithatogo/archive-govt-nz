@@ -3034,3 +3034,6 @@ is made from transport success.
 
 
 Budget2023 native inspection is recorded in `budget-2023-native-inspection-20261018.json`. Revenue source profile implementation has focused581-pass/10-skip evidence; actual-source repeat qualification and full assurance are not yet claimed. Expenditure normalization and wider phase gates remain open.
+
+
+See `budget-2023-revenue-native-20261018.json`: native repeat/dispatcher and actual CLI/MCP qualification passed on f865f698. All four file hashes match across both direct builds and CLI output. Full assurance and protected delivery remain pending.

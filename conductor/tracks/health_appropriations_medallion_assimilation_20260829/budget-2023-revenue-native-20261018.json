@@ -1,0 +1,140 @@
+{
+  "entry_points": {
+    "CLI_MCP_preflight_equal": true,
+    "actual_CLI_preflight": {
+      "counts": {
+        "blank": 0,
+        "input": 1013,
+        "normalized": 65,
+        "out_of_scope": 948,
+        "rejected": 0
+      },
+      "profile": "budget-revenue-2023/v1",
+      "publication_state": "local_validation_only",
+      "rights_state": "not_evaluated",
+      "schema_version": "archive-govt-nz.health-source-operation/v1",
+      "source_object_sha256": "e2b00177bffd233fd404f5db989a576408f249fc81ef2342f31d95ca452c019b",
+      "status": "preflight_passed",
+      "transformation_id": "budget-2023-health-revenue/v1",
+      "verification_scope": "adapter_execution_only"
+    },
+    "actual_CLI_write": {
+      "counts": {
+        "blank": 0,
+        "input": 1013,
+        "normalized": 65,
+        "out_of_scope": 948,
+        "rejected": 0
+      },
+      "output_sha256": {
+        "field_lineage.parquet": "c90edf229ddd662cdb6d23aa00a224fdff22f5fc484fdd0fe9ffd29fccb716cd",
+        "revenue_facts.parquet": "7597f367449e8410d9d280938ea3f0b32a7d1318c1e0a10346071455c2451153",
+        "row_dispositions.parquet": "ab24983065f65c468c7f1b0e46a7a50bc4c2a67d9af88f7e561f25db9c0dfcba"
+      },
+      "profile": "budget-revenue-2023/v1",
+      "publication_state": "local_validation_only",
+      "rights_state": "not_evaluated",
+      "schema_version": "archive-govt-nz.health-source-operation/v1",
+      "source_object_sha256": "e2b00177bffd233fd404f5db989a576408f249fc81ef2342f31d95ca452c019b",
+      "status": "written_local",
+      "transformation_id": "budget-2023-health-revenue/v1",
+      "verification_scope": "adapter_execution_only"
+    },
+    "actual_MCP_preflight": {
+      "counts": {
+        "blank": 0,
+        "input": 1013,
+        "normalized": 65,
+        "out_of_scope": 948,
+        "rejected": 0
+      },
+      "profile": "budget-revenue-2023/v1",
+      "publication_state": "local_validation_only",
+      "rights_state": "not_evaluated",
+      "schema_version": "archive-govt-nz.health-source-operation/v1",
+      "source_object_sha256": "e2b00177bffd233fd404f5db989a576408f249fc81ef2342f31d95ca452c019b",
+      "status": "preflight_passed",
+      "transformation_id": "budget-2023-health-revenue/v1",
+      "verification_scope": "adapter_execution_only"
+    },
+    "canonical_Gold_admission": "not_performed",
+    "four_files_equal_prior_qualified_package": {
+      "MANIFEST.json": "0ca5990b4535439341dde1aea9602d17ebc2dc55e33f7874e39e8bad2bd63972",
+      "field_lineage.parquet": "c90edf229ddd662cdb6d23aa00a224fdff22f5fc484fdd0fe9ffd29fccb716cd",
+      "revenue_facts.parquet": "7597f367449e8410d9d280938ea3f0b32a7d1318c1e0a10346071455c2451153",
+      "row_dispositions.parquet": "ab24983065f65c468c7f1b0e46a7a50bc4c2a67d9af88f7e561f25db9c0dfcba"
+    },
+    "preflight_output_absent": true,
+    "publication": "not_performed",
+    "reference": "revenue-native-1/first",
+    "rights": "not_evaluated",
+    "source_bytes_unchanged": true,
+    "source_sha256": "e2b00177bffd233fd404f5db989a576408f249fc81ef2342f31d95ca452c019b",
+    "status": "passed"
+  },
+  "expenditure_normalization": "pending",
+  "failed_private_verifier_attempt": {
+    "exit": 1,
+    "reason": "stale 2024 transformation expectation; actual 2023 output was correct",
+    "retained": true
+  },
+  "full_assurance": "pending",
+  "producer_head": "f865f69862ef32930685a8657ecc155be7f65dda",
+  "producer_tree": "f6fef0b3cfa68e914c79f2a477569a7755beeb5a",
+  "protected_delivery": "pending",
+  "qualification_summary_sha256": {
+    "revenue-native-1": "32c890c084a3f5ac5554f8a1dfb0a69b5bf0ed589932bacb8a3e3bf8d4140c3f",
+    "revenue-source-entry-2": "5bfec37d10dc9df904c1f938ae4abd81db507001572a94fe1e455a065766b546"
+  },
+  "source_native": {
+    "adapter_selection": {
+      "adapter": {
+        "id": "nz-budget-health-revenue",
+        "version": "1.0.0"
+      },
+      "considered_adapter_ids": [
+        "nz-budget-health-expenditure",
+        "nz-budget-health-revenue"
+      ],
+      "declared_media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "detected_media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "matched_adapter_ids": [
+        "nz-budget-health-revenue"
+      ],
+      "reason": null,
+      "receipt_sha256": "5e01ee97d71d96a84bc6d3804ee227d6acc6b627305854cd66af6473686935af",
+      "schema_version": "archive-govt-nz.health-adapter-selection/v1",
+      "source_sha256": "e2b00177bffd233fd404f5db989a576408f249fc81ef2342f31d95ca452c019b",
+      "status": "selected"
+    },
+    "canonical_Gold_admission": "not_performed",
+    "common_fact_lineage_loss_parity": true,
+    "counts": {
+      "blank": 0,
+      "input": 1013,
+      "normalized": 65,
+      "out_of_scope": 948,
+      "rejected": 0
+    },
+    "extraction_status": "passed",
+    "files_per_repeat": {
+      "MANIFEST.json": "0ca5990b4535439341dde1aea9602d17ebc2dc55e33f7874e39e8bad2bd63972",
+      "field_lineage.parquet": "c90edf229ddd662cdb6d23aa00a224fdff22f5fc484fdd0fe9ffd29fccb716cd",
+      "revenue_facts.parquet": "7597f367449e8410d9d280938ea3f0b32a7d1318c1e0a10346071455c2451153",
+      "row_dispositions.parquet": "ab24983065f65c468c7f1b0e46a7a50bc4c2a67d9af88f7e561f25db9c0dfcba"
+    },
+    "lineage_count": 1040,
+    "publication": "not_performed",
+    "repeat_files_equal": true,
+    "rights": "not_evaluated",
+    "row_reason_counts": {
+      "named_revenue_columns": 65,
+      "non_health_vote": 948
+    },
+    "source_bytes": 104743,
+    "source_bytes_unchanged": true,
+    "source_sha256": "e2b00177bffd233fd404f5db989a576408f249fc81ef2342f31d95ca452c019b",
+    "status": "passed"
+  },
+  "status": "native_revenue_qualified_full_assurance_pending"
+}

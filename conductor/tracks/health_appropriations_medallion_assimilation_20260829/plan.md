@@ -2281,4 +2281,8 @@ See `budget-2024-expenditure-delivery-20261018.json`.
 Budget 2023 expenditure/revenue are privately preserved with HTTP200 and
 independent CAS/WARC/receipt verification. See budget-2023-capture-20261018.json.
 The exact working census is retained at3ca17fe4; no source-layout or numeric
-admission follows from transport. Native definitions/layout/rights are next.
+admission follows from transport. Native definitions/layout have been inspected for both originals. Revenue now
+qualifies65Health facts/1,040lineage with full1,013-row accounting, repeat and
+CLI/MCP parity; see budget-2023-revenue-native-20261018.json. Full assurance
+and protected delivery remain pending. Expenditure normalization, source rights
+eligibility, and broader semantic/analytical gates remain open.

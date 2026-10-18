@@ -7962,3 +7962,19 @@ definitions now match the actual report exactly. Generated receipt schema was
 refreshed; the unknown-vintage example now uses2022. Green2:581passed,
 10skipped in66.25s. Ruff passes and production typing reports0errors.
 Native repeated extraction and full harness/hosted delivery remain pending.
+
+
+### 2026-10-18 — Budget 2023 revenue native qualification
+
+On frozenf865f698/f6fef0b3, guarded revenue-native1 exited0 (session93445).
+All1,013rows accounted:65Health facts,948out-of-scope,0blank/0rejected;
+1,040lineage rows. Two complete four-file packages are byte-identical.
+Common dispatcher facts/lineage/losses agree and original bytes are unchanged.
+Actual CLI/default-preflight and initialized read-only MCP agree; explicit CLI
+write reproduces the same four files. Guarded source-entry2 exited0(session8710),
+with fresh independent package readback and free kernel lease. Attempt1 is
+retained: a private verifier had a stale2024 transformation expectation after
+correct2023 output. Only that verifier was corrected; repository code unchanged.
+Native and entry receipts retain no ISO currency, start-date or rights approval.
+The full original harness must run before opening a focusedPR; protected delivery
+and2023 expenditure normalization remain pending.
