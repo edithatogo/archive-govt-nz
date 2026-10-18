@@ -8196,3 +8196,15 @@ official release identity was read during CI waiting. Original-source capture,
 native units/layout, rights and Silver/Gold admission are not inferred from the
 release page. Root retains sole broad/native launch ownership under the
 unchanged Conductor serializer. No unrelated FOI/dependency work is selected.
+
+### 2026-10-18 — Budget2022 release and retained-capture reconciliation
+
+Observed the exact Treasury release (19May2022, updated2June2022, FY2022/23,
+superseded) and the two registered workbook URLs. Page June-year labels cover
+2018–2021actuals,2022estimatedactual,2023budget; native units/definitions/rights
+remain unverified. Six committed inventory/modern capture receipts have zero
+exact URL/filename hits; all360bounded first primary WARC headers were readable
+with zero candidate targets. This is not global alias/absence proof. Preserve
+the working observation and bounded reconciliation pins. Next capture the exact
+release page and pair via existing core into exclusive private CAS/WARC receipts,
+then verify native content; no source-admission or rights promotion yet.
