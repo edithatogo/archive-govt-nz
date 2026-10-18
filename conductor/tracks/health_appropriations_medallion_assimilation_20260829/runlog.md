@@ -8176,3 +8176,23 @@ This cohort excludes later separate Budget registry additions and does not
 claim whole-census completeness, legal rights, financial extraction or phase
 completion. Post-full changes are evidence/reports only; exact-head hosted
 assurance and protected delivery remain required.
+
+### 2026-10-18 — PR721 delivered and integrated topic pruned
+
+All seven checks passed on5a6f1be1. Downloaded exact-head CI39118879174
+logs independently verify all32original stages on Ubuntu/macOS/Windows
+(8044/8044/8038tests). No unresolved review threads or open CodeQL alerts.
+Normal protected merge2fa3183b at10:40:20Z is fetched onorigin/main; checked
+head and merge are ancestors with equal a5bbb5bc trees and zero unique topic
+commits/patches. Clean primary fast-forwarded; local/GitHubtopic absent. The
+initial cleanup assertion identified one stale tracking ref: explicit-main
+fetch --prune did not remove it. Fresh remote-absence/ancestry checks preceded
+removal of only that tracking ref. Final all-ref absence and one clean primary
+verify; failure/follow-up receipts and hosted logs are retained by hash.
+
+Next branch starts at the verified main commit; no source work started before
+cleanup completed. Next bounded slice is the registered Budget2022 pair, whose
+official release identity was read during CI waiting. Original-source capture,
+native units/layout, rights and Silver/Gold admission are not inferred from the
+release page. Root retains sole broad/native launch ownership under the
+unchanged Conductor serializer. No unrelated FOI/dependency work is selected.

@@ -15,6 +15,7 @@
     "publisher_NA": 27
   },
   "cpi_originals_unchanged": 14,
+  "delivery_receipt": "readable-pdf-layout-delivery-20261018.json",
   "exec_session": 94646,
   "failed_first_comparison": {
     "actual_exit": 1,
@@ -42,7 +43,7 @@
     "v2/SOURCE_HEALTH.json": "95980d627956b5f745e79e036db545d394ae78e28785d0d8740a8bc330fa1e31",
     "v2/SOURCE_HEALTH.md": "6fd15e4500125d9b48fdd5f6901eb5cd8bac86a1f40f8c5e825f910ad6e46d57"
   },
-  "protected_delivery": "pending",
+  "protected_delivery": "merged_pr721_verified_on_origin_main",
   "publication": "not_performed",
   "rights": "not_evaluated",
   "scope": "PDF structural-baseline adoption on the existing143-source/11-context census; does not include separate later Budget registry editions or imply census completeness.",

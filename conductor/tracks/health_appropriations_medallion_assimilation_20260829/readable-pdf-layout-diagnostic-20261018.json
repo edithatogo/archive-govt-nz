@@ -3,6 +3,7 @@
   "capture_manifest_sha256": "017b3a9adbda288c60693ef038e4c0da198d8db99b2bca9cf4bb81adbc6efb5f",
   "change": "Use standard default page access and dictionary subscription that resolves PDF indirect references. Credential-required PDFs retain encrypted_pdf exclusions.",
   "default_page_access_available": 3,
+  "delivery_receipt": "readable-pdf-layout-delivery-20261018.json",
   "descriptor_error": {
     "cause": "Indirect Font dictionaries were not resolved before counting",
     "error_type": "TypeError",
@@ -35,7 +36,7 @@
   "native_cohort_repeat": "passed_59_of_59",
   "numeric_facts_emitted": 0,
   "prior_recorded_layout_parity": "passed_56_rows_unchanged",
-  "protected_delivery": "pending",
+  "protected_delivery": "merged_pr721_verified_on_origin_main",
   "publication": "not_performed",
   "pypdf_version": "6.19.0",
   "records": [
@@ -87,7 +88,7 @@
   ],
   "rights": "not_evaluated",
   "source_census_sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272",
-  "status": "diagnosis_and_native_local_assurance_passed_protected_delivery_pending",
+  "status": "diagnosis_native_local_and_hosted_assurance_delivered",
   "summary_pins": {
     "default_reader_diagnostic": "2395ac29899baf53221982273154e5a0e10d60683130ea2408e7036af1e7e161",
     "descriptor_diagnostic": "31e5975f31b17521fa65bd1d7fd8fc73db0a7fab675fdb250c9c769572c379ee"

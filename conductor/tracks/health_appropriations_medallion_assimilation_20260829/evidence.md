@@ -3056,3 +3056,5 @@ See `budget-2023-revenue-native-20261018.json`: native repeat/dispatcher and act
 - Full retained PDF qualification: `readable-pdf-layout-qualification-20261018.json`; 59/59 recorded, 56 prior rows unchanged, two byte-identical builds and unchanged Bronze. New report `source-pdf-layout-baseline-20261018.json`; old report retained. Full/hosted delivery pending.
 
 - PDF full local assurance passed all32stages: `readable-pdf-layout-assurance-20261018.json`. Source-health adoption passed after a retained stale-context comparison: `readable-pdf-source-health-qualification-20261018.json`; new paired v2 report `source-health-report-20261018-pdf-layouts.json`/`.md`. Protected delivery pending.
+
+- Protected delivery and cleanup: `readable-pdf-layout-delivery-20261018.json`; PR721 merged2fa3183b, all7checks/all32stages on3platforms, equal checked/merge tree, zero unique changes, topic refs absent and primary retained. Broader track incomplete.

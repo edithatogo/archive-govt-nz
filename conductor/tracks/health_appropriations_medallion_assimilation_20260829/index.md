@@ -541,3 +541,5 @@ they are not current-state assertions.
 - [Retained PDF layout qualification](./readable-pdf-layout-qualification-20261018.json) and [59-source layout baseline](./source-pdf-layout-baseline-20261018.json).
 
 - [PDF local assurance](./readable-pdf-layout-assurance-20261018.json), [source-health qualification](./readable-pdf-source-health-qualification-20261018.json), [refreshed readable source-health report](./source-health-report-20261018-pdf-layouts.md) and [v2 JSON](./source-health-report-20261018-pdf-layouts.json). Prior default report remains a retained historical receipt.
+
+- [PDF layout protected delivery and cleanup](./readable-pdf-layout-delivery-20261018.json) — PR721 merged and verified; topic refs pruned.
