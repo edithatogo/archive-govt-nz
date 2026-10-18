@@ -29,6 +29,9 @@ from archive_govt_nz.domains.health_appropriations import (
     operation_metadata,
     resume_operations,
 )
+from archive_govt_nz.domains.health_appropriations import (
+    native_workbook_inspection as native_inspection,
+)
 from archive_govt_nz.domains.health_appropriations.budget_operations import (
     BUDGET_VERIFICATION_SCHEMA,
     verify_budget_package,
@@ -107,6 +110,7 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
     fiscal_analytics.MCP_TOOL,
     canonical_queries.MCP_TOOL,
     budget_comparison.MCP_TOOL,
+    native_inspection.MCP_TOOL,
     {
         "name": "health_appropriations_preflight_context_gold",
         "description": (
@@ -723,6 +727,7 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
 _TOOLS_BY_NAME = {tool["name"]: tool for tool in _TOOL_DEFINITIONS}
 # Explicit read-only domain handlers keep dispatch closed as tools grow.
 _DOMAIN_TOOL_HANDLERS = {
+    native_inspection.TOOL_NAME: native_inspection.mcp_call,
     budget_comparison.TOOL_NAME: budget_comparison.mcp_call,
     operation_metadata.TOOL_NAME: operation_metadata.mcp_call,
     fiscal_analytics.TOOL_NAME: fiscal_analytics.mcp_call,
@@ -952,6 +957,8 @@ class Server:
                 if name == "health_appropriations_inspect_workbook"
                 else "Invalid source operation arguments"
                 if name == "health_appropriations_preflight_source"
+                else "Invalid native workbook inspection arguments"
+                if name == native_inspection.TOOL_NAME
                 else errors[0].message
             )
             return _error(req_id, JSONRPC_INVALID_PARAMS, message)
@@ -983,15 +990,22 @@ class Server:
                 ],
                 "structuredContent": structured,
                 "isError": (
-                    name
-                    in {
-                        fiscal_analytics.TOOL_NAME,
-                        canonical_queries.TOOL_NAME,
-                        budget_comparison.TOOL_NAME,
-                        "health_appropriations_verify_budget",
-                        "health_appropriations_verify_canonical_gold",
-                    }
-                    and structured["status"] == "failed"
+                    (
+                        name
+                        in {
+                            fiscal_analytics.TOOL_NAME,
+                            canonical_queries.TOOL_NAME,
+                            budget_comparison.TOOL_NAME,
+                            native_inspection.TOOL_NAME,
+                            "health_appropriations_verify_budget",
+                            "health_appropriations_verify_canonical_gold",
+                        }
+                        and structured["status"] == "failed"
+                    )
+                    or (
+                        name == native_inspection.TOOL_NAME
+                        and structured["status"] == "preserved_only"
+                    )
                 ),
             },
         )

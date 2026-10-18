@@ -2105,7 +2105,7 @@ integrated parent head.
   tree. Zero unique commits; clean topic refs pruned; primary retained. Native
   parity, preserved census history and successful full2 remain scoped evidence.
 
-- [~] Compose the retained legacy BEFU2025/HYEFU2024 forecast summaries and
+- [x] Compose the retained legacy BEFU2025/HYEFU2024 forecast summaries and
   detail profiles behind one selector per physical workbook using an explicit
   typed compound-result variant. Preserve separate native schemas, profile
   identities and complete lineage/disposition/excluded-sheet evidence; retain
@@ -2131,3 +2131,42 @@ integrated parent head.
   schema/context checks now pass native2 and all 32 full stages on 1bbd8577:
   8,012 tests passed (12 skipped), with every native output byte unchanged.
   Fresh exact-head hosted assurance and protected delivery remain pending.
+
+
+  Delivered PR #715 at 02ca851b after seven exact-head successes on 6de7028d,
+  resolved metadata provenance review, strict protected merge and fetched
+  ancestry/equal-tree/zero-unique/clean verification. Topic refs pruned; primary
+  worktree retained. See compound-native-delivery-20261018.json.
+
+- [~] Expose closed, read-only native workbook inspection through the existing
+  CLI/MCP operation architecture. Resolve the two reviewed expense workbook
+  identities from CAS; preserve compound/profile/schema/selection/count/hash/
+  excluded-sheet/hold evidence in a bounded typed response without raw rows or
+  caller paths. Preserve the existing single-profile HTTPS operation contract.
+  Reuse strengthened compound admission; validate actual CLI/JSON-RPC parity,
+  read-only behavior, bad inputs/fixity and sibling hold. Native/full and hosted
+  qualification remain separate delivery gates. [M-05, M-07, M-15, M-18;
+  AC-03, AC-05, AC-08, AC-13, AC-16]
+
+
+  Native inspection now passes two actual-source, three-route replays with all
+  16 original native files unchanged. Original full2 on 2aef585c passed all 32
+  stages and 8,027 tests (12 skipped); full1 timing failures and bounded diagnosis
+  remain retained, with no code or deadline changes. Owner terminal/kernel release
+  verified. Exact-head hosted checks, review and protected delivery remain pending.
+  See native-workbook-inspection-20261018.json for pinned evidence.
+
+
+  PR #716 review found a Windows junction path bypass before merge. Preserve the
+  earlier green evidence, keep this task in progress, and require a new qualified
+  head after rejecting junctions as well as symlinks before the source read.
+  Two regression controls fail on the prior guard; the focused suite now passes
+  17 cases with two real NTFS cases pending Windows. Updated native/full and
+  exact-head hosted qualification, review resolution and delivery remain open.
+
+
+  Corrected source e1379ed3 now passes fresh native2 and all 32 original full3
+  stages: 8,029 tests, 14 skipped, with unchanged native bytes and runtime limits.
+  Preserve the exact overlapping-process chronology and owner terminal release.
+  Local skips do not qualify the two real Windows junction cases; final hosted
+  Windows, seven exact-head checks, review resolution and delivery remain pending.

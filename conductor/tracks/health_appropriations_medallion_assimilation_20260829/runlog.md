@@ -7649,3 +7649,62 @@ changed. Full2 passes all 32 original stages: 8,012 tests passed, 12 skipped,
 and original secret gates pass. Preserve the original review failure, earlier
 scanner failure and historical green runs. This evidence-only update follows
 release; new exact-head hosted checks and review resolution are still required.
+
+
+### 2026-10-18 — Compound delivery complete; native inspection implementation
+
+PR #715 merged at 02ca851b with checked head 6de7028d and equal efc3867c tree.
+All seven checks passed, review threads resolved, CodeQL alerts zero; normal
+strict branch policy preserved. Fresh ancestry/zero-unique/clean guards passed,
+topic refs pruned and primary checkout retained. Begin the already reviewed
+read-only native-workbook CLI/MCP consumer using the existing operation patterns.
+No new native/full qualification run has started for this increment.
+
+
+### 2026-10-18 — Native workbook operation, CLI and MCP contracts
+
+The missing-operation import failed before implementation. Add a closed known-
+source CAS inspector and integrate it through the existing CLI/domain-MCP routes.
+Return schema/count/hash/exclusion/hold evidence; omit rows and caller paths.
+Preserve the legacy HTTPS SourceRequest and all qualified native producers.
+Fifteen operation checks pass, including independent native-writer hash controls,
+fixity/path refusal and actual CLI/JSON-RPC parity under filesystem/network denial
+for inspected/held/failed states. Prior broader integration passed 55 tests;
+latest operation refinements and strict typing pass. No native/full run started.
+
+
+### 2026-10-18 — Native inspection actual-source and full qualification
+
+Two actual-source runs match across helper/CLI/initialized JSON-RPC and all 16
+original native files. Keep profile totals and worksheet semantics separate.
+Full1 stopped on two timing failures; both pass focused reproduction with original
+limits, and the physical FIFO reader independently refuses nonblocking before
+body read. Do not claim the original timing spike is fully explained. The same
+clean frozen 2aef585c passes original full2: all 32 stages, 8,027 tests, 12 skips,
+66 schemas/56 documents, nine parity cases, mutation/hygiene/supply-chain gates.
+Conductor verified terminal 0 and kernel release. Retain failed and successful
+logs separately; finalize only evidence/plan files before exact-head hosted gates.
+
+
+### 2026-10-18 — PR #716 junction review correction
+
+The guard stops delivery for review thread PRRT_kwDOTo2MOM6tmYxf. Windows
+junction roots/prefixes bypassed the symlink-only path check. Two focused
+regressions demonstrate inspected instead of failed on the previous guard.
+Reject both metadata types across the unresolved absolute source and parents
+before snapshot reads. The operation suite passes 17 tests; two actual NTFS
+cases are Windows-only and pending hosted assurance. Preserve prior native/full2
+receipts as historical evidence, with new native/full and exact-head checks
+required. No source bytes, native producers, deadlines or protections changed.
+
+
+### 2026-10-18 — Junction correction native2/full3 qualification
+
+Root-owned original session 14676 terminated 0 on clean e1379ed3/f7005846.
+Fresh replay preserves two report bytes and all 16 native oracle hashes. Full3
+passes every original stage and 8,029 tests (14 skipped); two actual NTFS cases
+remain for hosted Windows. Runtime/caps and all native producers are unchanged.
+Retain the competing-process overlap from before replay through early full3,
+its later detection and graceful verified stop; do not imply the host was idle
+or infer an Archive failure. Owner verified original processes absent and kernel
+slot free. Evidence-only finalization follows release; hosted/review gates remain.
