@@ -3428,3 +3428,5 @@ Budget2021 source-native qualification: budget-2021-native-qualification-2026102
 Original Budget2021 local assurance: budget-2021-original-assurance-20261020-v2.json pins the executed head/tree, all32 stages, test summary, immutable log digest, full input fixity and terminal process/lease checks. Native source contracts are unchanged. Hosted protected delivery and broader final track review remain pending.
 
 Budget2020 native qualification: budget-2020-native-qualification-20261020.json records authentic-source counts, exact field lineage, every source row, four-file repeats/operations/common parity, actual30s CLI/MCP preflights and32 prior output hashes. Rights/currency/start-date/joins/canonical admission remain held; original full validation and protected delivery are pending.
+
+Budget 2020 original local assurance: budget-2020-original-assurance-20261020.json pins the original 32-stage run, exact producer/tree, test summary, log digest, all frozen inputs and independent terminal/lease readback. No numeric/source/rights/coverage/deadline admission changes; hosted delivery and broader track gates remain pending.
