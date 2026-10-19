@@ -192,3 +192,35 @@ Windows.
 Offline tests prove replace precedes parent fsync and exercise the platform
 directory-sync helper. Focused and full repository validation are recorded in
 the paired run log and evidence receipt.
+
+
+## Preservation-only transport lane — 19 October 2026
+
+Use `--preservation-only` on the existing capture runner to preserve selected
+public originals at its established hosts while their item rights remain
+unevaluated. This lane also accepts legacy Excel as an opaque media hint.
+The actual HTTP media and bytes remain recorded; no workbook parsing, numerical
+admission, approved federation link, reuse rights or publication is granted.
+
+```sh
+uv run --locked python tools/capture_health_resources.py \
+  --census <pinned-request.json> --store-root <existing-private-cas> \
+  --warc-dir <private-attempt-warcs> --manifest <private-checkpoint.json> \
+  --preservation-only
+```
+
+Resume with the same request bytes, limits, paths and mode plus `--resume`.
+The preservation-rights policy is bound into the existing checkpoint context.
+A request may require `preservation-only/not-evaluated/v1` through
+`required_rights_policy`; an incompatible invocation fails before capture.
+Changing modes or tampering rights does not reinterpret a saved checkpoint.
+Unique orphan recovery retains unknown rights and the original WARC/CAS bytes.
+Existing full URL digests, response framing/body checks and concurrency locks
+remain mandatory. Recovery enforces its existing65MiB WARC bound before reading
+and rejects nonregular input. Legacy default contexts remain unchanged.
+
+A partial capture retains its checkpoint and evidence, reports `partial`, and
+keeps the existing nonzero exit. Do not blindly retry terminal source failures.
+The offline preservation-mode/inventory bridge and bounded-read contracts plus
+existing ingestion/process recovery tests pass. Native cohort and full protected
+assurance are recorded separately; this is not a source-census completion claim.

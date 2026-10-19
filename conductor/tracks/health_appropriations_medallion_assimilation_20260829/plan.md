@@ -2418,3 +2418,5 @@ previous qualification results unchanged; original local timeout preserved.
 - [x] Route hash-bound Budget2023/2024 expenditure through existing shared registry and legacy normalizer; require fact/four-file parity with already-qualified profiles and retained native packages. [M-05, M-06, M-07, M-15; AC-05, AC-11, AC-13]
 
 - [~] Reconcile the40 registered annual Budget2007–2026 workbook resources as a source-separated census cohort; verify retained capture/CAS/WARC/native evidence before bounded missing-source capture, record exact periods/units/rights and reason-coded gaps without rewriting producer checkpoints or whole-edition completion. [M-02, M-03, M-04, M-06, M-11; AC-03, AC-04, AC-09, AC-16]
+
+- [~] Unblock the annual Budget cohort with explicit rights-unassessed preservation-only capture, mode-bound resume/orphan recovery and opaque legacy Excel transport; enforce the existing WARC read bound before allocation. Preserve legacy defaults and all provenance/admission gates. [M-03, M-04, M-11, M-15; AC-03, AC-04, AC-13, AC-16]

@@ -1,0 +1,40 @@
+{
+  "additional_integration": "Preservation-only records project through existing capture inventory without rights promotion; request-declared rights policy rejects incorrect invocation before HTTP or manifest creation.",
+  "coverage_floor_percent": 80,
+  "existing_WARC_recovery_ceiling_bytes": 68157440,
+  "focused": {
+    "modules": [
+      "test_capture_checkpoint.py",
+      "test_bronze_ingestion_contracts.py",
+      "test_capture_process_recovery.py"
+    ],
+    "passed": 61,
+    "seconds": 12.55
+  },
+  "full_harness": "pending_original_run_before_PR",
+  "legacy_media": "application/vnd.ms-excel is a transport hint only in preservation-only mode; native format not inferred",
+  "native_capture": "pending_frozen_34_source_request; six existing exact_URL_captures_reused",
+  "new_tests": 2,
+  "original_stage_cap_seconds": 900,
+  "policy": "not_evaluated rights with null licence/evidence/attribution; no numerical, normalization, federation or publication approval",
+  "proof_sha256": {
+    "preservation-focused-1.log": "4e237e8a9d76a73cce84d11926f06ab2d765f94cf1b478e267c18b82457de58e",
+    "preservation-green-1.log": "3e6628cff4199d0b553d1e6fd32bdd9e20cbc69f62c136b807959adfff45cae8",
+    "preservation-inventory-contract-1.log": "0517cf6c560cba62fb38bb2d8b01f0d1d05365bd89554f57f900644f7e7d28ca",
+    "preservation-inventory-contract-2.log": "10a11f3f440f564623a0e8a3e9733e890e18c9084c3cc1ddf8a1019ba43eace9",
+    "preservation-red-1.log": "59555a44ede2fd819b693e75aba1025579b6bedc000d41d58992ea12ef3bb276",
+    "preservation-types-2.log": "f552d237ad0bd249c05f97eb62dbc65d2d0e4a5fe2346608e10fb7838dba9ed1"
+  },
+  "protected_delivery": "pending",
+  "red": {
+    "causes": [
+      "Legacy Excel unselected; preservation-only rights context absent",
+      "Oversized WARC read before its existing limit"
+    ],
+    "failed": 2,
+    "seconds": 2.08
+  },
+  "runtime_dependency_changes": false,
+  "schema_version": "archive-govt-nz.health-preservation-only-implementation/v1",
+  "scope": "Explicit rights-unassessed transport lane, mode-bound resume/orphan recovery, opaque legacy Excel selection and existing WARC read bound before allocation. Legacy defaults/contexts remain compatible."
+}

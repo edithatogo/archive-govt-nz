@@ -1,4 +1,4 @@
-"""Capture rights-eligible health fiscal resources with WARC evidence."""
+"""Capture health sources under legacy policy or explicit preservation-only rights."""
 
 from __future__ import annotations
 
@@ -8,6 +8,7 @@ import hashlib
 import json
 import os
 import sqlite3
+import stat
 import tempfile
 from collections.abc import Iterator
 from contextlib import closing, contextmanager
@@ -22,7 +23,7 @@ from warcio.archiveiterator import ArchiveIterator
 
 from archive_govt_nz.capture import CaptureConfig, CaptureError, capture_url
 from archive_govt_nz.object_store import ContentAddressedStore
-from archive_govt_nz.warc_binding import verify_response_binding
+from archive_govt_nz.warc_binding import MAX_WARC_BYTES, verify_response_binding
 
 if TYPE_CHECKING:
     from collections.abc import Iterator
@@ -60,6 +61,56 @@ _RIGHTS = {
     },
 }
 _HTTP_ERROR_STATUS = 400
+_MAX_WARC_BYTES = MAX_WARC_BYTES
+_PRESERVATION_RIGHTS_POLICY = "preservation-only/not-evaluated/v1"
+
+
+def _capture_rights(
+    source: dict[str, Any], *, preservation_only: bool
+) -> dict[str, Any]:
+    """Keep unknown item rights distinct from the existing host-policy lane."""
+    host = urlsplit(source["url"]).hostname
+    if host not in _RIGHTS:
+        message = "unsupported_capture_host"
+        raise ValueError(message)
+    if preservation_only:
+        return {
+            "state": "not_evaluated",
+            "license": None,
+            "evidence": None,
+            "attribution": None,
+        }
+    return dict(_RIGHTS[host])
+
+
+def _read_warc_snapshot(path: Path) -> bytes | None:
+    """Bound regular recovery bytes before allocating or parsing their body."""
+    flags = (
+        os.O_RDONLY
+        | getattr(os, "O_NONBLOCK", 0)
+        | getattr(os, "O_BINARY", 0)
+        | getattr(os, "O_NOFOLLOW", 0)
+    )
+    try:
+        if path.is_symlink():
+            return None
+        descriptor = os.open(path, flags)
+        try:
+            metadata = os.fstat(descriptor)
+            if not stat.S_ISREG(metadata.st_mode) or metadata.st_size > _MAX_WARC_BYTES:
+                return None
+            data = bytearray()
+            while chunk := os.read(
+                descriptor, min(1024 * 1024, _MAX_WARC_BYTES + 1 - len(data))
+            ):
+                data.extend(chunk)
+                if len(data) > _MAX_WARC_BYTES:
+                    return None
+        finally:
+            os.close(descriptor)
+    except OSError, ValueError:
+        return None
+    return bytes(data)
 
 
 def _digest(path: Path) -> str:
@@ -118,16 +169,18 @@ def _fsync_directory(directory: Path) -> None:
         os.close(descriptor)
 
 
-async def _capture_one(
+async def _capture_one(  # noqa: PLR0913 -- explicit source, storage, bounds and rights mode
     client: httpx.AsyncClient,
     row: dict[str, Any],
     store: ContentAddressedStore,
     warc_dir: Path,
     max_resource_bytes: int,
+    *,
+    preservation_only: bool = False,
 ) -> tuple[dict[str, object], dict[str, object]]:
     """Capture one selected source and return its result and history event."""
     source_id = cast("str", row["source_id"])
-    host = cast("str", urlsplit(cast("str", row["url"])).hostname)
+    rights = _capture_rights(row, preservation_only=preservation_only)
     observed_at = datetime.now(UTC).isoformat().replace("+00:00", "Z")
     attempt = Path(tempfile.mkdtemp(prefix="attempt-", dir=warc_dir))
     warc = attempt / "response.warc"
@@ -183,7 +236,7 @@ async def _capture_one(
             "etag": etag,
             "last_modified": last_modified,
             "validator_state": validator_state,
-            "rights": _RIGHTS[host],
+            "rights": rights,
         }
     except CaptureError as error:
         event = _observation(
@@ -200,7 +253,7 @@ async def _capture_one(
             "url": row["url"],
             "state": "retryable" if "retry" in error.error_class else "unavailable",
             "error_class": error.error_class,
-            "rights": _RIGHTS[host],
+            "rights": rights,
         }
         return result, event
     else:
@@ -273,15 +326,21 @@ def _resume_results(
         seen.add(identifier)
         if row["state"] != "captured":
             continue
-        _verify_retained(row, sources[identifier], store, args.warc_dir)
+        _verify_retained(
+            row,
+            sources[identifier],
+            store,
+            args.warc_dir,
+            preservation_only=getattr(args, "preservation_only", False),
+        )
         retained[identifier] = row
     return retained
 
 
 def _warc_request_digest(path: Path) -> str | None:
     """Read the single WARC request binding without trusting sidecar state."""
-    payload = path.read_bytes()
-    if len(payload) > 65 * 1024 * 1024:
+    payload = _read_warc_snapshot(path)
+    if payload is None:
         return None
     try:
         records = list(ArchiveIterator(BytesIO(payload)))
@@ -315,10 +374,12 @@ def _recover_orphan(
     source: dict[str, Any],
     store: ContentAddressedStore,
     warc_dir: Path,
+    *,
+    preservation_only: bool = False,
 ) -> tuple[dict[str, object], dict[str, object]] | None:
     """Recover only a unique, hash-bound same-URL WARC with verifiable framing."""
-    payload = path.read_bytes()
-    if len(payload) > 65 * 1024 * 1024:
+    payload = _read_warc_snapshot(path)
+    if payload is None:
         return None
     try:
         records = ArchiveIterator(BytesIO(payload))
@@ -375,7 +436,6 @@ def _recover_orphan(
             warc_sha256=digest,
         )
         receipt = store.put_bytes(body)
-        host = cast("str", urlsplit(cast("str", source["url"])).hostname)
         etag, last_modified = _response_validators(path)
         recovered_at = datetime.now(UTC).isoformat().replace("+00:00", "Z")
         event: dict[str, object] = {
@@ -414,7 +474,7 @@ def _recover_orphan(
             "etag": etag,
             "last_modified": last_modified,
             "validator_state": event["validator_state"],
-            "rights": _RIGHTS[host],
+            "rights": _capture_rights(source, preservation_only=preservation_only),
         }
     except OSError, ValueError, KeyError, IndexError:
         return None
@@ -427,6 +487,8 @@ def _recover_orphans(
     retained: dict[str, dict[str, Any]],
     store: ContentAddressedStore,
     warc_dir: Path,
+    *,
+    preservation_only: bool = False,
 ) -> tuple[dict[str, dict[str, object]], list[dict[str, object]]]:
     """Adopt uniquely bound orphan attempts; leave ambiguity untouched."""
     referenced = {row.get("warc_path") for row in retained.values()}
@@ -434,6 +496,7 @@ def _recover_orphans(
         path
         for path in sorted(warc_dir.glob("attempt-*/response.warc"))
         if path.relative_to(warc_dir).as_posix() not in referenced
+        and path.resolve().is_relative_to(warc_dir.resolve())
     ]
     grouped: dict[str, list[Path]] = {}
     for path in candidates:
@@ -450,7 +513,9 @@ def _recover_orphans(
         matches = grouped.get(digest, [])
         if len(matches) != 1:
             continue
-        recovered = _recover_orphan(matches[0], source, store, warc_dir)
+        recovered = _recover_orphan(
+            matches[0], source, store, warc_dir, preservation_only=preservation_only
+        )
         if recovered is None:
             continue
         by_id[source_id], event = recovered
@@ -463,12 +528,13 @@ def _verify_retained(
     source: dict[str, Any],
     store: ContentAddressedStore,
     warc_dir: Path,
+    *,
+    preservation_only: bool = False,
 ) -> None:
     if row["request_url_sha256"] != hashlib.sha256(source["url"].encode()).hexdigest():
         msg = "resume_source_mismatch"
         raise ValueError(msg)
-    host = cast("str", urlsplit(source["url"]).hostname)
-    if row["rights"] != _RIGHTS[host]:
+    if row["rights"] != _capture_rights(source, preservation_only=preservation_only):
         msg = "resume_rights_mismatch"
         raise ValueError(msg)
     receipt = store.verify(row["object_id"])
@@ -501,31 +567,50 @@ def _verify_retained(
     )
 
 
-async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:
-    census_bytes = args.census.read_bytes()
-    census = json.loads(census_bytes)
+def _select_sources(
+    census: dict[str, Any], *, preservation_only: bool
+) -> list[dict[str, Any]]:
+    """Validate the requested rights lane before selecting transport candidates."""
     records = cast("list[dict[str, Any]]", census["records"])
+    required_rights = census.get("required_rights_policy")
+    if required_rights is not None and (
+        required_rights != _PRESERVATION_RIGHTS_POLICY or not preservation_only
+    ):
+        message = "capture_rights_policy_mismatch"
+        raise ValueError(message)
+    media_types = {
+        "application/pdf",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "text/csv",
+        "text/html",
+    }
+    if preservation_only:
+        media_types.add("application/vnd.ms-excel")
     selected = [
         row
         for row in records
         if row.get("disposition") in {"discovered", "captured"}
-        and row.get("media_type")
-        in {
-            "application/pdf",
-            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-            "text/csv",
-            "text/html",
-        }
+        and row.get("media_type") in media_types
         and urlsplit(cast("str", row["url"])).hostname in _RIGHTS
     ]
     if len({row["source_id"] for row in selected}) != len(selected):
         msg = "duplicate_source_id"
         raise ValueError(msg)
+    return selected
+
+
+async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:
+    census_bytes = args.census.read_bytes()
+    census = json.loads(census_bytes)
+    preservation_only = getattr(args, "preservation_only", False)
+    selected = _select_sources(census, preservation_only=preservation_only)
     context: dict[str, object] = {
         "census_sha256": hashlib.sha256(census_bytes).hexdigest(),
         "max_resource_bytes": args.max_resource_bytes,
         "contract": "health-capture-resume/v1",
     }
+    if preservation_only:
+        context["rights_policy"] = _PRESERVATION_RIGHTS_POLICY
     store = ContentAddressedStore(args.store_root)
     args.warc_dir.mkdir(parents=True, exist_ok=True)
     retained = _resume_results(args, context, selected, store)
@@ -536,7 +621,13 @@ async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:
         prior_events = cast("list[dict[str, object]]", previous.get("observations", []))
     observations: list[dict[str, object]] = list(prior_events)
     recovered, recovered_events = (
-        _recover_orphans(selected, retained, store, args.warc_dir)
+        _recover_orphans(
+            selected,
+            retained,
+            store,
+            args.warc_dir,
+            preservation_only=preservation_only,
+        )
         if args.resume
         else ({}, [])
     )
@@ -565,7 +656,12 @@ async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:
                 results.append(retained[source_id])
                 continue
             result, observation = await _capture_one(
-                client, row, store, args.warc_dir, args.max_resource_bytes
+                client,
+                row,
+                store,
+                args.warc_dir,
+                args.max_resource_bytes,
+                preservation_only=preservation_only,
             )
             results.append(result)
             observations.append(observation)
@@ -589,20 +685,30 @@ async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:
 
 
 def main() -> int:
-    """Capture selected rights-eligible resources and write one manifest."""
+    """Capture selected sources with explicit preservation-only rights on request."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--census", required=True, type=Path)
     parser.add_argument("--store-root", required=True, type=Path)
     parser.add_argument("--warc-dir", required=True, type=Path)
     parser.add_argument("--manifest", required=True, type=Path)
     parser.add_argument("--resume", action="store_true")
+    parser.add_argument(
+        "--preservation-only",
+        action="store_true",
+        help=(
+            "Preserve public source bytes, including legacy Excel, without "
+            "assigning reuse rights or numerical/publication eligibility."
+        ),
+    )
     parser.add_argument("--max-resource-bytes", type=int, default=64 * 1024 * 1024)
     args = parser.parse_args()
     result = asyncio.run(_capture(args))
     print(
         json.dumps(
             {
-                "status": "passed",
+                "status": (
+                    "passed" if result["selected"] == result["captured"] else "partial"
+                ),
                 "selected": result["selected"],
                 "captured": result["captured"],
             },

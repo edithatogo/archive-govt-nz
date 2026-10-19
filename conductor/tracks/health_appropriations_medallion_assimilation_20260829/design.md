@@ -1268,3 +1268,38 @@ period starts, especially for multi-year/PLA entries. Rights stay not_evaluated
 and non-Raw Data sheets stay inventoried with explicit exclusions. The new
 package is a source-specific Silver derivative; canonical/Gold promotion and
 external publication remain separate.
+
+
+### Rights-unassessed preservation capture for the annual Budget cohort
+
+An explicit `--preservation-only` transport lane may preserve selected public
+source bytes at the existing approved hosts without assigning reuse rights.
+It adds legacy Excel as an opaque transport media hint; native parsing, units,
+period alignment, numerical admission and publication remain separate gates.
+Every new or recovered record retains `not_evaluated` rights and null licence,
+evidence and attribution assertions. The immutable capture request hash and a
+versioned preservation-rights policy identify its resume context, so changing
+modes cannot reinterpret a prior checkpoint or escalate rights. Existing
+default capture contexts and behavior remain compatible. Both retained and
+orphaned responses still require the existing full request/final URL digests,
+CAS fixity and WARC response framing/body bindings. Recovery reads enforce the
+existing65MiB ceiling on a regular bounded snapshot before parsing. No capture
+mode grants normalization, metadata/federation eligibility or publication.
+
+
+```mermaid
+flowchart LR
+    R[Hash-pinned source request] --> P{Required rights policy matches mode?}
+    P -->|No| X[Fail before capture]
+    P -->|Yes| C[Existing bounded capture and CAS/WARC]
+    C --> U[Preservation receipt: rights not evaluated]
+    U --> S{Same request, limits and mode on resume?}
+    S -->|No| X
+    S -->|Yes| V[Verify retained or unique orphan bindings]
+    V --> I[Observation-preserving inventory]
+```
+
+A request may declare `required_rights_policy`; a different policy or omission
+of its required preservation-only flag fails before HTTP and manifest creation.
+Inventory projection retains unknown rights; it does not confer analytical or
+publication admission.

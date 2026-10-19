@@ -3198,3 +3198,46 @@ historical/producer checkpoints, no duplicate VoteHealth preflight, no rights,
 currency, denominator, fiscal alignment, analytical or publication inference.
 Root retains sole archive broad/native launch ownership and original900s/80%
 assurance contract. Broader phase/track gates remain open.
+
+
+AnnualBudget retained reconciliation at29724225/treec78befbf: all479JSON
+metadata files and366single-frame WARC headers in four permanent health roots
+scanned without exclusions. Exactly6registered URLs have retained candidates:
+2022/2023/2024 expenditure/revenue. Actual receipt/fixity, CAS SHA256/BLAKE3/
+size and full source-request/response WARC bindings all verify, terminal0 and
+kernel lease free. No original recaptured or rights/numeric claim promoted.
+34registered URLs remain without exact matches in this scoped inventory;
+this is not global absence or source unavailability. Older/newer locators stay
+separate pending evidence. See budget-census-retained-20261019-v1.json.
+
+Concrete next capture blocker: current resumed health-capture CLI assigns
+host-wide rights eligibility and excludes legacy Excel transport MIME. The
+registered cohort has26.xls URL hints, not yet native-byte format findings.
+Add an explicit preservation-only mode retaining unknown item rights across
+capture/resume/orphan recovery, bind the mode to the capture context, and allow
+legacy Excel transport only in that lane. Preserve legacy default behavior,
+host allowlist, WARC full-request/source/body binding, resource limits and no
+publication/numerical admission. Enforce the existing65MiB WARC recovery read
+bound before allocation. Verify only these real contracts and reuse existing
+capture/recovery suites; no new coverage target or deadline changes.
+
+
+Preservation-only red contracts reproduce unselected legacy transport and an
+unbounded recovery read. New --preservation-only keeps rights not_evaluated
+with null licence/evidence/attribution through capture, failure, resume and
+unique orphan recovery. Its versioned policy binds checkpoint identity;
+required_rights_policy in a new request prevents omission of the intended mode.
+Legacy defaults and contexts remain compatible. Only this lane adds opaque
+legacy-Excel transport MIME; actual response media stays recorded, no native
+format/rights/numerical/publication admission. Recovery enforces the existing
+65MiB limit on regular bytes before allocation and keeps source/response binding.
+CLI partial capture now reports partial while retaining its existing nonzero exit.
+Two new real contracts;61focused capture/recovery checks pass12.55s and the
+added inventory bridge/policy assertion passes separately. Ruff/typing pass;
+no dependency, stage-cap, deadline or coverage-floor changes. Actual34-source
+preservation, integrated original assurance and protected delivery still pending.
+
+Final refactored preservation-only implementation:61focused capture/recovery
+contracts pass11.37s, Ruff format/lint pass and strict typing0errors/0warnings.
+See preservation-only-validation-20261019-v1.json. Native capture/full harness
+and protected delivery remain pending; original producer checkpoints preserved.
