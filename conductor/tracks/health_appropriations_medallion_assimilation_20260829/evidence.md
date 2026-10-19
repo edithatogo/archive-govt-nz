@@ -3335,3 +3335,24 @@ before new capture. Cached2008/2010period wording conflicts remain attributed
 and unqualified, and no publication date, numerical scope, alias or rights is
 inferred. No new production code, dependencies or tests are needed for this
 data-only cohort; original full harness and protected delivery remain required.
+
+
+Second19candidate cohort at3c4f889b/tree41411771:13workbooks captured,
+sixpublicationpagesHTTP403, captureexit2. Verificationexit0; all46aggregate
+workbook-candidate CAS SHA256/BLAKE3/size and complete WARC request/response
+bindings independently rechecked across the six reused originals,18previous
+captures and22new locator captures. Each of40intended Budget2007–2026
+edition/role slots has an archived candidate;16use exact publisher-linked
+locator-correction candidates. Original40URLs/16HTTP404s are not overwritten,
+and no numeric/version alias is approved. Six additional departmental-statements
+candidates are preserved outside the original40. Aggregate72distinctURLs/
+46recordedcaptured inventory repeats equally;32OLE/14ZIP signatures, legacy
+layout/period/units/definitions/rights still pending. All10publicationpages
+returned403; cache observations remain separate and no blind retry occurred.
+OwnerPID/PGID absent, independentkernelleasefree, all1240frozenpins stable;
+recipes/frozeninputs/markers/logs/manifests/WARCs/CAS and repeat outputs archived
+with hashreadback. See new v2qualification and separate40slot/16correction/
+46asset projections; v1and earlier producer checkpoints remain unchanged.
+No production code/dependency/test change in this data-only topic. Original
+./scripts/validate.sh and protected hosted delivery remain pending. Broad source
+census, native legacy/rights, other phase and final track gates stay open.

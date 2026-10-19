@@ -604,3 +604,8 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [First official-locator native qualification](./budget-locator-qualification-20261019-v1.json)
 
 - [Additional official Budget locator candidates](./budget-locator-additional-discovery-20261019-v1.json)
+
+- [Complete locator archive qualification](./budget-locator-qualification-20261019-v2.json)
+- [Forty intended edition and role archive candidates](./budget-edition-role-candidates-20261019-v1.json)
+- [Sixteen source-backed locator correction candidates](./budget-locator-correction-candidates-20261019-v1.json)
+- [Forty-six verified archive assets](./budget-verified-archive-assets-20261019-v1.json)
