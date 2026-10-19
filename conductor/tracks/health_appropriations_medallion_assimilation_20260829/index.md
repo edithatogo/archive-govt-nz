@@ -590,3 +590,5 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [Pinned preservation-only request v1](./annual-budget-preservation-request-20261019-v1.json) — no rights or format admission.
 
 - [Final preservation-only focused validation](./preservation-only-validation-20261019-v1.json)
+
+- [Budget preservation native qualification](./budget-preservation-qualification-20261019-v1.json)

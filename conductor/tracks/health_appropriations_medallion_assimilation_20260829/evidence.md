@@ -3241,3 +3241,19 @@ Final refactored preservation-only implementation:61focused capture/recovery
 contracts pass11.37s, Ruff format/lint pass and strict typing0errors/0warnings.
 See preservation-only-validation-20261019-v1.json. Native capture/full harness
 and protected delivery remain pending; original producer checkpoints preserved.
+
+
+Frozen5f0e27ce/treea4c26478 preservation-only CLI selects34missing exact
+registered URLs:18captured,16HTTP404 (terminal_status), actualexit2/partial.
+No blind retry. Six retained captures reused, so40-resource cohort has24
+recorded captured URLs. All18new CAS SHA256/BLAKE3/size and complete WARC
+request/response/body bindings verify. Ten bodies have OLE container signatures
+only, pending a qualified legacy reader; eight XLSX native workbook inventories
+match repeated builds. Formula-cache freshness, periods/units/definitions and
+rights/admission remain unqualified. Existing capture inventory projection
+repeats equally,40resources/24recordedcaptured/allrightsnotassessed. Native
+verification terminal0; capture/verification owner PIDs/PGIDs absent, independent
+kernel lease free and all frozen pins unchanged. Recipes, frozen requests,
+markers, logs, layouts, inventory and fixity archived outsideGit with hash
+readback. See budget-preservation-qualification-20261019-v1.json. Full original
+harness and protected delivery remain pending; cohort/phase/track incomplete.
