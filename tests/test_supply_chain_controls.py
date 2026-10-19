@@ -335,14 +335,35 @@ def test_malformed_secret_results_fail_closed(
         supply_chain.secrets()
 
 
+@pytest.mark.parametrize(
+    ("filename", "line_number", "candidate_hash"),
+    [
+        (
+            (
+                "conductor/tracks/health_appropriations_medallion_assimilation_20260829/"
+                "budget-preservation-qualification-20261019-v1.json"
+            ),
+            30,
+            "4133d7f673607ea1c8a1c368fd60a11dd69e36e1",
+        ),
+        (
+            (
+                "conductor/tracks/health_appropriations_medallion_assimilation_20260829/"
+                "budget-locator-qualification-20261019-v2.json"
+            ),
+            3,
+            "bb65ce3b571ef96ab310a19784dea7cf4ff923ae",
+        ),
+    ],
+)
 def test_health_provenance_candidate_requires_exact_document_and_fingerprint(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    filename: str,
+    line_number: int,
+    candidate_hash: str,
 ) -> None:
     """A reviewed proof directory cannot hide other candidates or edited receipts."""
-    filename = (
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/"
-        "budget-preservation-qualification-20261019-v1.json"
-    )
     original = supply_chain.REPOSITORY_ROOT / filename
     path = tmp_path / filename
     path.parent.mkdir(parents=True)
@@ -350,8 +371,8 @@ def test_health_provenance_candidate_requires_exact_document_and_fingerprint(
     monkeypatch.setattr(supply_chain, "REPOSITORY_ROOT", tmp_path)
     finding = {
         "type": "Base64 High Entropy String",
-        "line_number": 30,
-        "hashed_secret": "4133d7f673607ea1c8a1c368fd60a11dd69e36e1",
+        "line_number": line_number,
+        "hashed_secret": candidate_hash,
     }
     assert supply_chain.is_reviewed_public_path(filename, finding)
     assert not supply_chain.is_reviewed_public_path(

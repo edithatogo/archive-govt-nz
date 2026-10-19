@@ -609,3 +609,5 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [Forty intended edition and role archive candidates](./budget-edition-role-candidates-20261019-v1.json)
 - [Sixteen source-backed locator correction candidates](./budget-locator-correction-candidates-20261019-v1.json)
 - [Forty-six verified archive assets](./budget-verified-archive-assets-20261019-v1.json)
+
+- [Exact immutable metadata-flag adjudication](./budget-locator-metadata-adjudication-20261020-v1.json)

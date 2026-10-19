@@ -3356,3 +3356,18 @@ with hashreadback. See new v2qualification and separate40slot/16correction/
 No production code/dependency/test change in this data-only topic. Original
 ./scripts/validate.sh and protected hosted delivery remain pending. Broad source
 census, native legacy/rights, other phase and final track gates stay open.
+
+
+Fast-first secret gate at26b48985 finds one Base64 entropy candidate: the
+immutable v2qualification boolean metadata key (line3), not a credential.
+Its known candidate hash is verified against the literal field name and true
+value; full document reviewed/pinned. Preserve both original producer snapshots.
+Extend the existing exact Health document/candidate table, retaining detector
+type, complete document SHA256 and matching line-content checks. No generic
+JSON-key/path exclusion or scanner/threshold change. Extend the existing negative
+contract by one parameter case: red1fail/1pass5.26s; final31focused checks
+pass4.31s, Ruff/format/typing pass. Initial2ISC004 test tuple concatenation
+findings were fixed with parentheses before final replay. No new test function,
+runtime dependency or capture/CAS/WARC behaviour. Full secret scan and original
+harness remain pending. See separate20261020adjudication receipt; earlier
+native/source producer bytes and unresolved rights/definition claims stay intact.

@@ -113,6 +113,19 @@ PUBLIC_HEALTH_PRESERVATION_SHA256 = (
 # This exact proof_root is an archive directory, not an authentication value.
 # Preserve the original producer receipt and bind its bytes and candidate hash.
 PUBLIC_HEALTH_PRESERVATION_PATH_DIGEST = "4133d7f673607ea1c8a1c368fd60a11dd69e36e1"
+# Only these exact unchanged documents and reviewed metadata candidates qualify.
+# This is not a general exemption for JSON keys, paths, or Health evidence.
+PUBLIC_HEALTH_METADATA_CANDIDATES = {
+    PUBLIC_HEALTH_PRESERVATION_DOCUMENT: (
+        PUBLIC_HEALTH_PRESERVATION_SHA256,
+        PUBLIC_HEALTH_PRESERVATION_PATH_DIGEST,
+    ),
+    "conductor/tracks/health_appropriations_medallion_assimilation_20260829/"
+    "budget-locator-qualification-20261019-v2.json": (
+        "8b94bcb86f43f249e108659294aa7db19407a716a2ef269c3495306132260e6f",
+        "bb65ce3b571ef96ab310a19784dea7cf4ff923ae",
+    ),
+}
 
 
 def _is_reviewed_document(
@@ -170,14 +183,13 @@ def is_reviewed_public_path(  # noqa: PLR0911
     relative = filename.replace("\\", "/")
     if _is_indexed_public_checksum_path(relative, finding):
         return True
+    reviewed = PUBLIC_HEALTH_METADATA_CANDIDATES.get(relative)
     if (
-        relative == PUBLIC_HEALTH_PRESERVATION_DOCUMENT
+        reviewed is not None
         and finding.get("type") == "Base64 High Entropy String"
-        and finding.get("hashed_secret") == PUBLIC_HEALTH_PRESERVATION_PATH_DIGEST
+        and finding.get("hashed_secret") == reviewed[1]
     ):
-        return _is_reviewed_document(
-            relative, finding, {relative: PUBLIC_HEALTH_PRESERVATION_SHA256}
-        )
+        return _is_reviewed_document(relative, finding, {relative: reviewed[0]})
     if (
         relative == PUBLIC_FOI_RECOVERY_DOCUMENT
         and finding.get("type") == "Base64 High Entropy String"
