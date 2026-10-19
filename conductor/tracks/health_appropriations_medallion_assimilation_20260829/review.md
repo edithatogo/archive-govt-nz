@@ -3851,3 +3851,21 @@ b221 Ubuntu passed; macOS test stage hit original900s cap at96% with no final
 summary; Windows was non-terminal at observation. Protected delivery remains
 blocked until exact-head required assurance succeeds. Broader Phase8 and track
 completion remain open; no rights/currency/joins/publication admission.
+
+
+PR723 delivered normally at ae4f870c after seven exact-head successes on
+625a8b8e and all32 original stages on Ubuntu/macOS/Windows. Source-focused
+41-test/API product and standalone CLI/MCP evidence remains separate from the
+retained local full124 and earlier hosted macOS timeout. Review resolved; no
+open CodeQL alert. Fresh fetch proves checked-head ancestry, equal9e17847b
+merge tree, zero unique commits/patches and clean main. Topic local/remote/
+tracking refs pruned; sole primary, runtime, CAS and private proofs retained.
+See context-reader-startup-delivery-20261019.json and current-state v3.
+
+Next bounded Phase3 slice: shared expenditure registry and legacy normalizer
+currently route only2022 to its pinned edition profile; generic adapter refuses
+2023/2024 despite both qualified source profiles. Extend the existing2023/2024
+contracts for shared-registry fact parity and legacy four-file equality; route
+existing profiles without changing source bindings or semantics. Reuse retained
+native sources/packages; root remains sole broad/native launch owner, unchanged
+900s original harness and80%floor. No external collection/publication mutation.
