@@ -625,3 +625,13 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [Legacy reader original full local assurance](./legacy-inspection-assurance-20261020-v1.json):all32stages pass; exact final-head hosted/protected delivery pending.
 
 - [Legacy output-schema correction and fresh assurance](./legacy-inspection-schema-correction-20261020-v1.json): malformed empty titles reject; all32valid outputs preserved; protected delivery pending.
+
+- [Legacy workbook inspector protected delivery](./legacy-inspection-delivery-20261020.json)
+
+- [Budget2021 source-native Silver qualification](./budget-2021-native-qualification-20261020.json)
+
+- [Budget2021 original local assurance](./budget-2021-original-assurance-20261020.json)
+
+- [Budget2021 source-native Silver qualification](./budget-2021-native-qualification-20261020-v2.json)
+
+- [Budget2021 original local assurance](./budget-2021-original-assurance-20261020-v2.json)

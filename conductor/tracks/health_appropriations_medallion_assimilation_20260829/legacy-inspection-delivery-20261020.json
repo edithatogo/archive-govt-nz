@@ -1,0 +1,20 @@
+{
+  "schema_version": "health-delivery-receipt/v1",
+  "pull_request": 728,
+  "url": "https://github.com/edithatogo/archive-govt-nz/pull/728",
+  "checked_head": "518ed4c4e08dd17b0ba637f7e528682aefc3be77",
+  "merge_commit": "9ae92af16b8f7c62af2f08e78d4535936fbd191b",
+  "checked_and_merge_tree": "372bd525e3ba2abdb333648eb053ae92eea566d7",
+  "merged_at": "2026-10-19T17:04:26Z",
+  "required_check_state": "eight_successes",
+  "original_assurance_stages_per_platform": 32,
+  "platforms": [
+    "ubuntu",
+    "macos",
+    "windows"
+  ],
+  "topic_cleanup": "local_and_remote_refs_pruned_after_clean_zero_unique_commit_and_patch_checks",
+  "retained": "primary checkout, runtime, CAS and evidence",
+  "evidence_directory": "legacy-workbook-reader-20261020/hosted-delivery-728",
+  "track_completion": "not_established"
+}

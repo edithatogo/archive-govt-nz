@@ -1344,3 +1344,13 @@ flowchart LR
 ```
 
 Legacy inventory also caps the cumulative merged-range projection at20,000 entries per workbook, independently of cells, before building its output strings. This is an output/traversal bound, not a pre-parser memory guarantee.
+
+### Budget extraction: operation-local verified workbook reuse (2026-10-20)
+
+Budget2021 native timing shows inventory18.29s, literal numeric-token reading0.393s and a repeated formula-workbook load14.01s. The previous parser plus adapter selection decoded the same original five times; two native repeat outputs were produced before a composite120s timeout. Preserve that failed evidence.
+
+Use an operation-local inspection context bound to exact immutable bytes and their SHA-256. Compute existing structural/package/cache/scan checks once, retain the decoded formula workbook for fact extraction, and let the existing dispatcher reuse a defensive copy of the verified inventory for identical BytesIO content only. Different bytes and path-based inspection follow the original checks; no persistent/path cache or caller-supplied unverified inventory. Nested same-source inspection stays within the owning scope; exception exit closes loaded workbooks and resets context. Public inventory shape, selection receipts, facts, lineage and hashes must remain identical. Native repeats become separately bounded invocations; the120s and30s caps stay unchanged. Conductor chat advisory cursor16 supports this operation-local approach; root retains launch ownership.
+
+The remaining timed diagnostic measures the cached workbook reload at10.44s of20.07s extraction. Keep the first full structural/formula inventory unchanged. Read the second, data-only workbook in streaming mode, only for formula-bearing sheets and within the first pass's already checked max_row/max_column extents. Emit the same formula-coordinate order, cache-presence/type values and freshness limitation. Cached drawings/pivots need no second decode: those structures remain covered by the unchanged first full inventory. No deadline or scan/member/expansion limit changes. Original CLI30s timeouts remain failures; trace diagnostic25.09s is not whole-cohort qualification.
+
+A final pre-merge synthetic probe reproduced ContextVar inheritance retaining an ended inspection in a copied context. Resetting the owning context alone is insufficient. Add an explicit shared lifetime flag: identical-byte reuse requires the owner to remain active; owner exit invalidates the shared lifetime before restoring the context. Copied contexts then perform fresh validation even though they retain a reference. Keep immutable source identity/metadata and existing workbook cleanup, with no persistent cache or changed source bounds.

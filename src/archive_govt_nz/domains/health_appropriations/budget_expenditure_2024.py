@@ -6,11 +6,9 @@ import hashlib
 from dataclasses import dataclass
 from datetime import date
 from decimal import Context, localcontext
-from io import BytesIO
 from typing import TYPE_CHECKING, Any, cast
 
 import pyarrow as pa
-from openpyxl import load_workbook
 
 from archive_govt_nz.domains.health_appropriations import budget_revenue
 from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
@@ -23,7 +21,10 @@ from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     LossAccounting,
     preserved_only,
 )
-from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
+from archive_govt_nz.domains.health_appropriations.formats import (
+    WorkbookInspection,
+    inspected_workbook,
+)
 from archive_govt_nz.domains.health_appropriations.historical import _number_tokens
 from archive_govt_nz.domains.health_appropriations.silver import LINEAGE_SCHEMA
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
@@ -152,6 +153,16 @@ FACT_SCHEMA = pa.schema(
         ("raw_values_json", pa.string()),
     ]
 )
+DEFINITION_COORDINATES = (
+    ("periodicity", "B39"),
+    ("unit", "B40"),
+    ("valid_time_end", "B41"),
+    ("amount_type", "B42"),
+    ("app_id", "B49"),
+    ("parent_id", "B50"),
+    ("group_type", "B51"),
+    ("functional_classification", "B52"),
+)
 DISPOSITION_SCHEMA = budget_revenue.DISPOSITION_SCHEMA
 
 
@@ -168,6 +179,7 @@ class ExpenditureProfile:
     period_types: dict[int, str]
     definitions: dict[str, str]
     adapter_id: str
+    definition_coordinates: tuple[tuple[str, str], ...] = DEFINITION_COORDINATES
 
     def matches(self, vintage: str, locator: str, digest: str) -> bool:
         """Require the complete edition and original observation identity."""
@@ -258,127 +270,124 @@ def _selected_reason(  # noqa: PLR0911 - one reason per source-field contract
 def _parse(
     payload: bytes, context: dict[str, Any], edition: ExpenditureProfile
 ) -> tuple:
-    inventory = inventory_workbook(BytesIO(payload))
+    with inspected_workbook(payload) as inspection:
+        return _parse_inspected(payload, context, edition, inspection)
+
+
+def _parse_inspected(
+    payload: bytes,
+    context: dict[str, Any],
+    edition: ExpenditureProfile,
+    inspection: WorkbookInspection,
+) -> tuple:
+    inventory = inspection.inventory
     tokens = _number_tokens(payload)
-    book = load_workbook(BytesIO(payload), data_only=False, keep_links=False)
-    try:
-        # Reuse the embedded-notice fingerprint contract, without rights promotion.
-        notice = budget_revenue._metadata(  # noqa: SLF001 - shared notice fingerprint contract
-            book, context["source_object_sha256"], edition.definitions
+    book = inspection.workbook
+    # Reuse the embedded-notice fingerprint contract, without rights promotion.
+    notice = budget_revenue._metadata(  # noqa: SLF001 - shared notice fingerprint contract
+        book, context["source_object_sha256"], edition.definitions
+    )
+    raw = book["Raw Data"]
+    _require(raw.max_row <= edition.max_rows + 1 and raw.max_column == len(FIELDS))
+    _require(tuple(c.value for c in next(raw.iter_rows(max_row=1))) == tuple(FIELDS))
+    facts, lineage, dispositions = [], [], []
+    for number, cells in enumerate(raw.iter_rows(min_row=2), 2):
+        _require(all(len(str(c.value)) <= MAX_TEXT for c in cells))
+        values = dict(zip(FIELDS, (c.value for c in cells), strict=True))
+        token = tokens["Raw Data"].get(cells[10].coordinate)
+        disposition, reason = _reason(cells, token, edition.period_types)
+        record_id = identity(
+            edition.transformation,
+            context["source_object_sha256"],
+            "Raw Data",
+            number,
         )
-        raw = book["Raw Data"]
-        _require(raw.max_row <= edition.max_rows + 1 and raw.max_column == len(FIELDS))
-        _require(
-            tuple(c.value for c in next(raw.iter_rows(max_row=1))) == tuple(FIELDS)
+        dispositions.append(
+            {
+                "source_object_sha256": context["source_object_sha256"],
+                "source_locator": context["source_locator"],
+                "sheet": "Raw Data",
+                "source_row": number,
+                "disposition": disposition,
+                "reason": reason,
+                "record_id": record_id if disposition == "normalized" else None,
+                "raw_values_json": encode_json(values),
+                "source_number_token": token,
+            }
         )
-        facts, lineage, dispositions = [], [], []
-        for number, cells in enumerate(raw.iter_rows(min_row=2), 2):
-            _require(all(len(str(c.value)) <= MAX_TEXT for c in cells))
-            values = dict(zip(FIELDS, (c.value for c in cells), strict=True))
-            token = tokens["Raw Data"].get(cells[10].coordinate)
-            disposition, reason = _reason(cells, token, edition.period_types)
-            record_id = identity(
-                edition.transformation,
-                context["source_object_sha256"],
-                "Raw Data",
-                number,
+        if disposition != "normalized":
+            continue
+        fact = {
+            **context,
+            **dict(zip(FIELDS.values(), values.values(), strict=True)),
+            "record_id": record_id,
+            "schema_version": "archive-govt-nz.health-budget-expenditure-fact/v1",
+            "recordset": "budget_expenditure_fact",
+            "source_row": number,
+            "amount": exact_number(token),
+            "source_number_token": token,
+            "unit": "$000",
+            "currency": None,
+            "valid_time_start": None,
+            "valid_time_end": date(cast("int", values["Year"]), 6, 30),
+            "rights_state": "not_evaluated",
+            "quality_flags": [
+                "iso_currency_not_verified",
+                "period_start_not_asserted",
+                "no_parent_category_aggregation",
+                "source_classification_unmapped",
+            ],
+            "transformation_id": edition.transformation,
+            "lineage_id": identity(record_id, "lineage"),
+            "raw_values_json": encode_json(values),
+        }
+        facts.append(fact)
+        links = [
+            (
+                field,
+                f"'Raw Data'!{cell.coordinate}",
+                token
+                if field == "amount"
+                else None
+                if cell.value is None
+                else str(cell.value),
             )
-            dispositions.append(
+            for field, cell in zip(FIELDS.values(), cells, strict=True)
+        ]
+        links += [
+            (field, f"'Explanation'!{coordinate}", edition.definitions[coordinate])
+            for field, coordinate in edition.definition_coordinates
+        ]
+        if "B3" in edition.definitions:
+            links.extend(
+                (field, "'Explanation'!B3", edition.definitions["B3"])
+                for field in ("source_vintage", "amount_type")
+            )
+        for field, coordinate, value in links:
+            lineage.append(
                 {
+                    "record_id": record_id,
+                    "lineage_id": fact["lineage_id"],
+                    "field": field,
                     "source_object_sha256": context["source_object_sha256"],
                     "source_locator": context["source_locator"],
-                    "sheet": "Raw Data",
-                    "source_row": number,
-                    "disposition": disposition,
-                    "reason": reason,
-                    "record_id": record_id if disposition == "normalized" else None,
-                    "raw_values_json": encode_json(values),
-                    "source_number_token": token,
+                    "source_coordinate": coordinate,
+                    "raw_value": value,
+                    "normalized_value": None
+                    if fact[field] is None
+                    else str(fact[field]),
+                    "rule": edition.transformation,
                 }
             )
-            if disposition != "normalized":
-                continue
-            fact = {
-                **context,
-                **dict(zip(FIELDS.values(), values.values(), strict=True)),
-                "record_id": record_id,
-                "schema_version": "archive-govt-nz.health-budget-expenditure-fact/v1",
-                "recordset": "budget_expenditure_fact",
-                "source_row": number,
-                "amount": exact_number(token),
-                "source_number_token": token,
-                "unit": "$000",
-                "currency": None,
-                "valid_time_start": None,
-                "valid_time_end": date(cast("int", values["Year"]), 6, 30),
-                "rights_state": "not_evaluated",
-                "quality_flags": [
-                    "iso_currency_not_verified",
-                    "period_start_not_asserted",
-                    "no_parent_category_aggregation",
-                    "source_classification_unmapped",
-                ],
-                "transformation_id": edition.transformation,
-                "lineage_id": identity(record_id, "lineage"),
-                "raw_values_json": encode_json(values),
-            }
-            facts.append(fact)
-            links = [
-                (
-                    field,
-                    f"'Raw Data'!{cell.coordinate}",
-                    token
-                    if field == "amount"
-                    else None
-                    if cell.value is None
-                    else str(cell.value),
-                )
-                for field, cell in zip(FIELDS.values(), cells, strict=True)
-            ]
-            links += [
-                (field, f"'Explanation'!{coordinate}", edition.definitions[coordinate])
-                for field, coordinate in (
-                    ("periodicity", "B39"),
-                    ("unit", "B40"),
-                    ("valid_time_end", "B41"),
-                    ("amount_type", "B42"),
-                    ("app_id", "B49"),
-                    ("parent_id", "B50"),
-                    ("group_type", "B51"),
-                    ("functional_classification", "B52"),
-                )
-            ]
-            if "B3" in edition.definitions:
-                links.extend(
-                    (field, "'Explanation'!B3", edition.definitions["B3"])
-                    for field in ("source_vintage", "amount_type")
-                )
-            for field, coordinate, value in links:
-                lineage.append(
-                    {
-                        "record_id": record_id,
-                        "lineage_id": fact["lineage_id"],
-                        "field": field,
-                        "source_object_sha256": context["source_object_sha256"],
-                        "source_locator": context["source_locator"],
-                        "source_coordinate": coordinate,
-                        "raw_value": value,
-                        "normalized_value": None
-                        if fact[field] is None
-                        else str(fact[field]),
-                        "rule": edition.transformation,
-                    }
-                )
-        excluded = [
-            {
-                "sheet": name,
-                "reason": "preserved_context_or_other_sheet_inventoried_only",
-            }
-            for name in book.sheetnames
-            if name != "Raw Data"
-        ]
-    finally:
-        book.close()
+    excluded = [
+        {
+            "sheet": name,
+            "reason": "preserved_context_or_other_sheet_inventoried_only",
+        }
+        for name in book.sheetnames
+        if name != "Raw Data"
+    ]
+
     return facts, lineage, dispositions, inventory, notice, excluded
 
 
@@ -408,23 +417,24 @@ def normalize_profile(  # noqa: PLR0913 - explicit source observation context
         expected_sha256, source_locator, source_vintage, observed_at
     )
     payload = verified_snapshot(source, expected_sha256, max_bytes=MAX_BYTES)
-    with localcontext(Context(prec=50)):
-        facts, lineage, dispositions, inventory, notice, excluded = _parse(
-            payload, context, edition
-        )
-    selection = select_bronze_adapter(
-        payload,
-        source_sha256=expected_sha256,
-        media_type=MEDIA_TYPE,
-        registrations=(
-            profile_registration(
-                profile=edition,
-                source_locator=source_locator,
-                source_vintage=source_vintage,
-                observed_at=observed_at,
+    with inspected_workbook(payload):
+        with localcontext(Context(prec=50)):
+            facts, lineage, dispositions, inventory, notice, excluded = _parse(
+                payload, context, edition
+            )
+        selection = select_bronze_adapter(
+            payload,
+            source_sha256=expected_sha256,
+            media_type=MEDIA_TYPE,
+            registrations=(
+                profile_registration(
+                    profile=edition,
+                    source_locator=source_locator,
+                    source_vintage=source_vintage,
+                    observed_at=observed_at,
+                ),
             ),
-        ),
-    )
+        )
     _require(selection.status == "selected")
     counts = {
         state: sum(r["disposition"] == state for r in dispositions)
