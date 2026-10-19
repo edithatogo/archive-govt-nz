@@ -57,6 +57,9 @@ class _DiscardDiagnostics:
 
 
 def _inventory(sheet: Sheet) -> dict[str, Any]:
+    if not sheet.name:
+        message = "invalid_legacy_worksheet_title"
+        raise ValueError(message)
     return {
         "title": sheet.name,
         "state": ("visible", "hidden", "veryHidden")[sheet.visibility],

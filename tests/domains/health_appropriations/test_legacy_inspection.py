@@ -21,7 +21,7 @@ def _bof(kind: int) -> bytes:
     return _record(0x0809, struct.pack("<HHHHII", 0x0600, kind, 0x0DBB, 1997, 0x41, 6))
 
 
-def _source(root: Path) -> tuple[Path, str]:
+def _source(root: Path, *, data_title: bytes = b"Data") -> tuple[Path, str]:
     # Minimal synthetic BIFF8, with a cached formula 1+1; no government bytes.
     def bound(offset: int, name: bytes, visibility: int = 0) -> bytes:
         return _record(
@@ -36,7 +36,7 @@ def _source(root: Path) -> tuple[Path, str]:
     )
     end = _record(0x000A)
     offset = (
-        len(start) + len(bound(0, b"Data")) + len(bound(0, b"Hidden", 2)) + len(end)
+        len(start) + len(bound(0, data_title)) + len(bound(0, b"Hidden", 2)) + len(end)
     )
     text = "Synthetic Māori"
     label = _record(
@@ -66,7 +66,7 @@ def _source(root: Path) -> tuple[Path, str]:
     )
     payload = (
         start
-        + bound(offset, b"Data")
+        + bound(offset, data_title)
         + bound(offset + len(sheet), b"Hidden", 2)
         + end
         + sheet
@@ -113,6 +113,7 @@ def test_real_legacy_reader_retains_bytes_and_discloses_losses(tmp_path: Path) -
         "values",
         "biff",
         "merges",
+        "empty_title",
     ],
 )
 def test_legacy_rejections_are_bounded_and_redacted(
@@ -120,7 +121,9 @@ def test_legacy_rejections_are_bounded_and_redacted(
 ) -> None:
     source, digest = _source(tmp_path)
     options: dict[str, Any] = {"rows": 2, "columns": 3}
-    if failure == "hash":
+    if failure == "empty_title":
+        source, digest = _source(tmp_path, data_title=b"")
+    elif failure == "hash":
         digest = "0" * 64
 
         def forbidden(**_kwargs: object) -> None:
