@@ -579,3 +579,20 @@ Producer qualification/implementation and dated census checkpoints retain their 
 
 - [Edition-routing actual-source qualification](./budget-edition-routing-native-20261019.json)
 - [Edition-routing original assurance and failure disposition](./budget-edition-routing-assurance-20261019.json)
+
+- [Edition-routing protected delivery](./budget-edition-routing-delivery-20261019.json)
+- [Edition-routing current-state projection v1](./budget-edition-routing-state-20261019-v1.json)
+
+- [Annual Budget retained capture verification v1](./budget-census-retained-20261019-v1.json) — partial scoped reconciliation; six originals reused, no new capture/admission.
+
+- [Preservation-only implementation checkpoint](./preservation-only-implementation-20261019.json)
+- [Annual Budget cohort census v1](./annual-budget-census-20261019-v1.json) — six existing captures,34pending exact requests.
+- [Pinned preservation-only request v1](./annual-budget-preservation-request-20261019-v1.json) — no rights or format admission.
+
+- [Final preservation-only focused validation](./preservation-only-validation-20261019-v1.json)
+
+- [Budget preservation native qualification](./budget-preservation-qualification-20261019-v1.json)
+
+- [Budget preservation original local assurance](./budget-preservation-assurance-20261019-v1.json)
+
+- [Exact archive-provenance secret adjudication](./budget-provenance-secret-adjudication-20261019-v1.json)

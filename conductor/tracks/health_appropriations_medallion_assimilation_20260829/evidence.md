@@ -3175,3 +3175,117 @@ rerun. Require all7exact-head checks and original all32stages on3clean hosted
 platforms plus resolved reviews before normal merge/prune. See
 budget-edition-routing-assurance-20261019.json. Broader phase/track and all
 rights/currency/analytical joins/publication claims remain open/unchanged.
+
+
+PR725 delivered normally at edeaab6d after seven exact-head successes on
+a4c14ec0 and original all32stages on Ubuntu/macOS/Windows. Native shared/
+legacy paths reproduce existing2023/2024 facts and16prior file hashes.
+Prior interrupted/local124 failures and no-cov replay limitations remain
+immutable; no local full pass or proven timing cause asserted. Fresh fetched
+ancestry/equal94e746f9tree/zero unique commits/patches/clean-main proofs pass;
+topic local/remote/tracking refs pruned, sole primary/CAS/runtime/proofs kept.
+See budget-edition-routing-delivery-20261019.json and derived state v1.
+
+Next bounded Phase1 cohort: reconcile all40 registered annualBudget2007–2026
+expenditure/revenue resources against existing preservation and qualification
+receipts before any further capture. Private crosswalk found10resources with
+later JSON references and6with directly referenced matching CAS objects; these
+are candidate evidence, not inferred capture/admission or exhaustive aliases.
+Resolve retained receipts/WARC bindings and native periods/units/rights gaps;
+capture only eligible missing originals through existing preservation core.
+Keep each edition and all failure/unknown dispositions separate. Preserve dated
+historical/producer checkpoints, no duplicate VoteHealth preflight, no rights,
+currency, denominator, fiscal alignment, analytical or publication inference.
+Root retains sole archive broad/native launch ownership and original900s/80%
+assurance contract. Broader phase/track gates remain open.
+
+
+AnnualBudget retained reconciliation at29724225/treec78befbf: all479JSON
+metadata files and366single-frame WARC headers in four permanent health roots
+scanned without exclusions. Exactly6registered URLs have retained candidates:
+2022/2023/2024 expenditure/revenue. Actual receipt/fixity, CAS SHA256/BLAKE3/
+size and full source-request/response WARC bindings all verify, terminal0 and
+kernel lease free. No original recaptured or rights/numeric claim promoted.
+34registered URLs remain without exact matches in this scoped inventory;
+this is not global absence or source unavailability. Older/newer locators stay
+separate pending evidence. See budget-census-retained-20261019-v1.json.
+
+Concrete next capture blocker: current resumed health-capture CLI assigns
+host-wide rights eligibility and excludes legacy Excel transport MIME. The
+registered cohort has26.xls URL hints, not yet native-byte format findings.
+Add an explicit preservation-only mode retaining unknown item rights across
+capture/resume/orphan recovery, bind the mode to the capture context, and allow
+legacy Excel transport only in that lane. Preserve legacy default behavior,
+host allowlist, WARC full-request/source/body binding, resource limits and no
+publication/numerical admission. Enforce the existing65MiB WARC recovery read
+bound before allocation. Verify only these real contracts and reuse existing
+capture/recovery suites; no new coverage target or deadline changes.
+
+
+Preservation-only red contracts reproduce unselected legacy transport and an
+unbounded recovery read. New --preservation-only keeps rights not_evaluated
+with null licence/evidence/attribution through capture, failure, resume and
+unique orphan recovery. Its versioned policy binds checkpoint identity;
+required_rights_policy in a new request prevents omission of the intended mode.
+Legacy defaults and contexts remain compatible. Only this lane adds opaque
+legacy-Excel transport MIME; actual response media stays recorded, no native
+format/rights/numerical/publication admission. Recovery enforces the existing
+65MiB limit on regular bytes before allocation and keeps source/response binding.
+CLI partial capture now reports partial while retaining its existing nonzero exit.
+Two new real contracts;61focused capture/recovery checks pass12.55s and the
+added inventory bridge/policy assertion passes separately. Ruff/typing pass;
+no dependency, stage-cap, deadline or coverage-floor changes. Actual34-source
+preservation, integrated original assurance and protected delivery still pending.
+
+Final refactored preservation-only implementation:61focused capture/recovery
+contracts pass11.37s, Ruff format/lint pass and strict typing0errors/0warnings.
+See preservation-only-validation-20261019-v1.json. Native capture/full harness
+and protected delivery remain pending; original producer checkpoints preserved.
+
+
+Frozen5f0e27ce/treea4c26478 preservation-only CLI selects34missing exact
+registered URLs:18captured,16HTTP404 (terminal_status), actualexit2/partial.
+No blind retry. Six retained captures reused, so40-resource cohort has24
+recorded captured URLs. All18new CAS SHA256/BLAKE3/size and complete WARC
+request/response/body bindings verify. Ten bodies have OLE container signatures
+only, pending a qualified legacy reader; eight XLSX native workbook inventories
+match repeated builds. Formula-cache freshness, periods/units/definitions and
+rights/admission remain unqualified. Existing capture inventory projection
+repeats equally,40resources/24recordedcaptured/allrightsnotassessed. Native
+verification terminal0; capture/verification owner PIDs/PGIDs absent, independent
+kernel lease free and all frozen pins unchanged. Recipes, frozen requests,
+markers, logs, layouts, inventory and fixity archived outsideGit with hash
+readback. See budget-preservation-qualification-20261019-v1.json. Full original
+harness and protected delivery remain pending; cohort/phase/track incomplete.
+
+
+Original ./scripts/validate.sh at41f2c92d/tree35c69da6: lock,Conductor,
+format,lint,types pass. Test stage reaches98% with7979observed
+passes/0failures before original900s limit, actualexit124; no final
+pytest/coverage summary and no all32localpass claim. Both new preservation
+contracts and both previous unrelated failure nodes pass in this broad run.
+Underlying timing/capacity cause unproven; no blind repeat or gate changes.
+OwnerPID/PGID absent, independent kernel lease free, all1787frozenpins
+unchanged at completion. Full log/config/runtime/marker/postflight archived
+and hash-readback verified. Exact-head all32 hosted3platform assurance and
+all required checks still required before protected merge. See
+budget-preservation-assurance-20261019-v1.json. Native capture/verification
+producer checkpoints remain immutable and broad phase/track gates remain open.
+
+
+PR726 head99acb185 hosted Ubuntu tests8053passed/30skipped/18warnings335.08s;
+31stage headers reached, then secrets gate rejects one Base64 entropy candidate.
+Local reproduction confirms the qualification receipt proof_root directory,
+not a credential. Preserve the exact producer receipt (SHA256173090c1575b6ec5
+...f4db1654), scanner output and failed hosted log. One new red contract fails
+as expected4.23s. Add only an exact document SHA256 plus known candidate
+fingerprint/type adjudication through the existing reviewed-document helper.
+Thirty supply-chain contracts pass13.64s; changed document bytes, another
+candidate/type or wrong line still reject. Full local secret scan then passes
+with0unresolved candidates; Ruff and strict typing pass. No file/path-pattern
+exemption, plugin removal, security threshold change or producer rewrite.
+Capture/CAS/WARC/native implementation and originals remain unchanged. Original
+local full900s timeout at41f2c92d predates this scanner-only correction; no claim
+that the new correction passed a local full run. Requalify all32 hosted stages
+on all3platforms at the new final head before normal protected merge/prune.
+See budget-provenance-secret-adjudication-20261019-v1.json.

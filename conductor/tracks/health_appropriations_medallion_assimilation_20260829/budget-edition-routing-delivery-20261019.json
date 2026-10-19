@@ -1,0 +1,77 @@
+{
+  "all32_on_each_platform": true,
+  "all7_exact_head_success": true,
+  "broader_track": "incomplete",
+  "checked_head": "a4c14ec0f89c99ea5c66d86044e60bc56bac5a4c",
+  "checked_tree": "94e746f9fdedc71576060f2e221fbcf70e298900",
+  "cleanup": {
+    "clean": true,
+    "head": "edeaab6d95532d1aba81efe26691a742d20f6f1f",
+    "local_topic_absent": true,
+    "primary_retained": true,
+    "proofs_CAS_runtime_preserved": true,
+    "remote_topic_absent": true,
+    "source_head": "a4c14ec0f89c99ea5c66d86044e60bc56bac5a4c",
+    "stale_tracking_ref_absent": true,
+    "unique_changes": 0,
+    "worktrees": "worktree /Volumes/PortableSSD/GitHub/archive-govt-nz\nHEAD edeaab6d95532d1aba81efe26691a742d20f6f1f\nbranch refs/heads/main"
+  },
+  "hosted_full": {
+    "macos": {
+      "all32stage_headers_verified": true,
+      "job": 118027848843,
+      "log_sha256": "fce2d3bce2dbf3cc19dbbefd4ff42385aa582920e13e5ccabd2d2b1e50d7e063",
+      "pytest_summary": [
+        "8051",
+        "30",
+        "18",
+        "732.56"
+      ]
+    },
+    "ubuntu": {
+      "all32stage_headers_verified": true,
+      "job": 118027848771,
+      "log_sha256": "77476c081eee2a7447f55f243aa26a54c0540f3ed8f4814dce84dca8db9e5f41",
+      "pytest_summary": [
+        "8051",
+        "30",
+        "18",
+        "314.08"
+      ]
+    },
+    "windows": {
+      "all32stage_headers_verified": true,
+      "job": 118027848385,
+      "log_sha256": "3ba61ac783d75183cd9e0073ac4d6a28615233ed474bb8d53a00f8a1cc1d6f78",
+      "pytest_summary": [
+        "8045",
+        "36",
+        "18",
+        "843.37"
+      ]
+    }
+  },
+  "local_failure_cause": "unproven; original interrupted/timeout and focused-replay limitations retained",
+  "local_full_pass": false,
+  "merge_commit": "edeaab6d95532d1aba81efe26691a742d20f6f1f",
+  "merge_guard_sha256": "e29bdd906d7b015b2ce8018969711c1fb41b1fa240d9fd6be8d3b8759fe24f90",
+  "merged_at": "2026-10-19T11:35:00Z",
+  "native_receipt": "budget-edition-routing-native-20261019.json",
+  "open_CodeQL_alerts": 0,
+  "original_local_assurance": "budget-edition-routing-assurance-20261019.json",
+  "pr": 725,
+  "required_checks": [
+    "Assurance (macos-latest)",
+    "Assurance (ubuntu-latest)",
+    "Assurance (windows-latest)",
+    "CodeQL",
+    "analyze",
+    "codecov/patch",
+    "lint"
+  ],
+  "rights_currency_period_alignment_joins_publication": "no_new_admission; existing source-specific period ends/qualifiers retained",
+  "schema_version": "archive-govt-nz.health-budget-edition-routing-delivery/v1",
+  "status": "normally_merged_and_clean_topic_pruned",
+  "unresolved_review_threads": 0,
+  "url": "https://github.com/edithatogo/archive-govt-nz/pull/725"
+}

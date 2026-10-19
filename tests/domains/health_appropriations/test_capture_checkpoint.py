@@ -16,6 +16,11 @@ from typing import IO, Any
 import pytest
 
 from archive_govt_nz.capture import CaptureAttempt, CaptureError, CaptureResult
+from archive_govt_nz.domains.health_appropriations.capture_inventory import (
+    CaptureSnapshot,
+    InventorySnapshot,
+    build_capture_inventory,
+)
 from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
 from archive_govt_nz.warc import write_response_record
 
@@ -186,6 +191,124 @@ def setup(
 
     monkeypatch.setitem(execute.__globals__, "capture_url", local)
     return execute, args, calls
+
+
+def assert_unassessed_inventory(
+    census_bytes: bytes, original_manifest: bytes, unknown: dict[str, Any]
+) -> None:
+    """Preserve the unknown-rights record across the existing inventory projection."""
+    request_snapshot = InventorySnapshot("preservation-request.json", census_bytes)
+    inventory = build_capture_inventory(
+        (request_snapshot,),
+        (
+            CaptureSnapshot(
+                InventorySnapshot("preservation-capture.json", original_manifest),
+                request_snapshot,
+            ),
+        ),
+    )
+    projected = inventory["resources"][0]
+    assert projected["recorded_captured"]
+    assert projected["rights_state"] == "not_evaluated_by_inventory"
+    assert projected["capture_observations"][0]["record"]["rights"] == unknown
+
+
+@pytest.mark.anyio
+async def test_preservation_only_keeps_rights_unknown_across_resume_and_recovery(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Opaque legacy transport cannot inherit host rights or change modes."""
+    execute, args, calls = setup(tmp_path, monkeypatch)
+    census = json.loads(args.census.read_text())
+    census.update(
+        schema_version="archive-govt-nz.health-source-census/v1", record_count=1
+    )
+    source = census["records"][0]
+    source.update(
+        url="https://www.treasury.govt.nz/one.xls",
+        media_type="application/vnd.ms-excel",
+    )
+    args.census.write_text(json.dumps(census))
+    args.preservation_only = True
+    first = await execute(args)
+    assert first["selected"] == first["captured"] == 1
+    unknown = {
+        "state": "not_evaluated",
+        "license": None,
+        "evidence": None,
+        "attribution": None,
+    }
+    row = first["results"][0]
+    assert row["rights"] == unknown
+    assert first["capture_context"]["rights_policy"] == (
+        "preservation-only/not-evaluated/v1"
+    )
+    warc = args.warc_dir / row["warc_path"]
+    original_warc = warc.read_bytes()
+    original_manifest = args.manifest.read_bytes()
+    assert_unassessed_inventory(args.census.read_bytes(), original_manifest, unknown)
+    args.resume = True
+    assert await execute(args) == first
+    assert calls == [source["url"]]
+
+    changed = json.loads(original_manifest)
+    changed["results"][0]["rights"]["state"] = "eligible"
+    args.manifest.write_text(json.dumps(changed))
+    with pytest.raises(ValueError, match="resume_rights_mismatch"):
+        await execute(args)
+    args.manifest.write_bytes(original_manifest)
+    args.preservation_only = False
+    with pytest.raises(ValueError, match="resume_context_mismatch"):
+        await execute(args)
+    assert args.manifest.read_bytes() == original_manifest
+    args.preservation_only = True
+    args.manifest.unlink()
+    recovered = await execute(args)
+    assert recovered["captured"] == 1
+    assert recovered["results"][0]["rights"] == unknown
+    assert recovered["results"][0]["object_id"] == row["object_id"]
+    assert calls == [source["url"]]
+    assert warc.read_bytes() == original_warc
+    census["required_rights_policy"] = "preservation-only/not-evaluated/v1"
+    args.census.write_text(json.dumps(census))
+    args.preservation_only = False
+    args.manifest = tmp_path / "wrong-rights-mode.json"
+    args.resume = False
+    with pytest.raises(ValueError, match="capture_rights_policy_mismatch"):
+        await execute(args)
+    assert not args.manifest.exists()
+    assert calls == [source["url"]]
+
+
+@pytest.mark.anyio
+async def test_recovery_enforces_warc_bound_before_reading(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Reject oversized/nonregular recovery files before allocating their body."""
+    execute, args, _ = setup(tmp_path, monkeypatch)
+    result = await execute(args)
+    row = result["results"][0]
+    warc = args.warc_dir / row["warc_path"]
+    source = json.loads(args.census.read_text())["records"][0]
+    digest = execute.__globals__["_warc_request_digest"]
+    recover = execute.__globals__["_recover_orphan"]
+    monkeypatch.setitem(digest.__globals__, "_MAX_WARC_BYTES", warc.stat().st_size)
+    assert digest(warc) == hashlib.sha256(source["url"].encode()).hexdigest()
+    monkeypatch.setitem(digest.__globals__, "_MAX_WARC_BYTES", warc.stat().st_size - 1)
+    original_read = Path.read_bytes
+
+    def reject_unbounded_read(path: Path) -> bytes:
+        if path == warc:
+            pytest.fail("oversized WARC was read before applying its bound")
+        return original_read(path)
+
+    monkeypatch.setattr(Path, "read_bytes", reject_unbounded_read)
+    assert digest(warc) is None
+    assert (
+        recover(warc, source, ContentAddressedStore(args.store_root), args.warc_dir)
+        is None
+    )
+    assert digest(tmp_path) is None
 
 
 @pytest.mark.anyio

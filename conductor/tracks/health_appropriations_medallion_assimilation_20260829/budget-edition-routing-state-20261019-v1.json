@@ -1,0 +1,22 @@
+{
+  "assurance_receipt": "budget-edition-routing-assurance-20261019.json",
+  "broader_track": "incomplete",
+  "delivery_receipt": "budget-edition-routing-delivery-20261019.json",
+  "existing_source_periods": "retained unchanged; no new fiscal alignment or start-date inference",
+  "hosted_all32_each_platform": true,
+  "implementation_checkpoint": "budget-edition-routing-implementation-20261019.json",
+  "implementation_producer_head": "82a7ea339f6dd1fbb2b62d45da7983dab1b60d72",
+  "local_full_pass": false,
+  "native_fact_counts": {
+    "2023": 277,
+    "2024": 244
+  },
+  "native_receipt": "budget-edition-routing-native-20261019.json",
+  "record_policy": "Preserve producer receipts; use new delivery/status records for later transitions.",
+  "rights_currency_joins_publication": "no_new_admission",
+  "schema_version": "archive-govt-nz.health-current-state/v1",
+  "state_type": "versioned_derived_status_projection_not_producer_receipt",
+  "status": "merged_clean_topic_pruned_native_parity_and_hosted_all32_qualified_local_failures_retained",
+  "subject": "Budget2023/2024 shared and legacy expenditure routing",
+  "version": 1
+}

@@ -1,0 +1,32 @@
+{
+  "actual_full_harness_exit": 124,
+  "all32_local_pass_claim": false,
+  "all_frozen_pins_unchanged": true,
+  "cause": "local_test_stage_limit_observed; underlying_capacity_or_timing_cause_not_proven",
+  "coverage_floor_percent": 80,
+  "failed_nodes": [],
+  "head": "41f2c92d626ec4274beee667b02b1f3c211837e7",
+  "independent_kernel_lease_free": true,
+  "last_observed_percent": 98,
+  "log_sha256": "802ee0857d1d099c6e327c17eee1490b2bb1b255271f0c23406cb1c22ca2bf61",
+  "native_contracts": "both_new_contracts_passed_in_broad_suite",
+  "observed_failed_entries": 0,
+  "observed_passed_entries": 7979,
+  "original_harness": true,
+  "owner_PID_and_group_absent": true,
+  "per_stage_cap_seconds": 900,
+  "previous_unrelated_failures": "both_previously_failed_legislation_nodes_passed_this_run",
+  "protected_delivery": "pending",
+  "retry": "no_blind_repeat; exact_head_hosted_all32_three_platforms_required",
+  "schema_version": "archive-govt-nz.health-budget-preservation-assurance/v1",
+  "stages_started": [
+    "lock",
+    "conductor",
+    "format",
+    "lint",
+    "types",
+    "tests"
+  ],
+  "test_summary": "not_produced_before_original900s_test_stage_limit",
+  "tree": "35c69da6c8dfc529b5cb2b8bc32e1d1c34c1637a"
+}
