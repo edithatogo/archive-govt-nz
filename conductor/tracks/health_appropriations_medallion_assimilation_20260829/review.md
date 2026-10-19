@@ -4126,3 +4126,13 @@ snapshots preserved. See budget-locator-assurance-20261020-v1.json. Exact
 final-head hosted assurance and protected delivery remain pending. Native
 archive candidates do not establish BIFF/layout/period/units/rights, numeric
 alias approval or source/phase/track completion.
+
+
+### PR727 final delivery reconciliation
+
+Exact immutable metadata-candidate adjudication is delivered through protected
+merge cdbc3652 after full original local assurance and exact-head three-platform
+hosted checks. No scanner scope, protection, timeout or coverage change.
+Archive-candidate coverage does not qualify rights, periods, units or legacy
+workbook structure. Next reader must disclose unsupported structure and cached
+value semantics rather than fabricate XLSX-equivalent inventory.

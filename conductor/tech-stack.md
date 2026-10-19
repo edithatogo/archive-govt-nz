@@ -337,3 +337,28 @@ bound at 88% despite a prior green run. Two workers preserve all tests, coverage
 thresholds and stage limits while reducing serial execution time. The manifest
 property generates 32-byte digests and converts them to hex, preserving the full
 64-character SHA-256 input space with less per-character generation overhead.
+
+
+## Legacy Health workbook inspection — 2026-10-20 adoption decision
+
+Adopt xlrd2.0.2 (compatible2.x, locked) for a separate read-only legacy XLS
+inspection adapter. openpyxl deliberately handles XLSX and cannot read the32
+preserved OLE candidates; a bespoke BIFF parser or new office/runtime service
+would add unnecessary maintenance. The original source is authoritative and
+the adapter is replaceable. Existing XLSX behavior remains unchanged.
+
+Primary evidence: [PyPI](https://pypi.org/project/xlrd/2.0.2/) supplies the BSD
+license, exact wheel hashes and no mandatory runtime dependencies. The verified
+wheel imports and reads a synthetic BIFF8 cached-result fixture on the retained
+Python3.14.6 runtime. [Reader documentation](https://xlrd.readthedocs.io/en/latest/)
+explicitly excludes formula text, comments, charts/macros and other embedded
+structure. These losses must be reported; stored values are not verified fresh
+formula results. On-demand/ragged reads, corruption rejection, existing source/
+traversal/preview bounds and native external deadlines apply. Parser allocation
+is not fully bounded by a post-load traversal check. Source rights/period/unit
+admission remains a separate gate.
+
+Dependency audit, license inventory, focused real-reader fixtures, strict types,
+secret scan, SBOM and original full harness gate delivery. This is a bounded
+implementation choice under the approved source-adapter track, with no new
+service, runtime, publication action or dependency exception.

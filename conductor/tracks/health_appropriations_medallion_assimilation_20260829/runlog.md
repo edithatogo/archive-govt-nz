@@ -8666,3 +8666,40 @@ snapshots preserved. See budget-locator-assurance-20261020-v1.json. Exact
 final-head hosted assurance and protected delivery remain pending. Native
 archive candidates do not establish BIFF/layout/period/units/rights, numeric
 alias approval or source/phase/track completion.
+
+
+### 2026-10-20 — PR727 delivery and next legacy-reader slice
+
+PortableSSD is mounted and evidence accessible. PR727 protected merge cdbc3652
+follows all seven exact-head successes and verified all32 stages on Ubuntu,
+macOS and Windows. Checked3a6a24f5/tree9f17d2f3 matches the merge tree. Fetched
+origin/main contains the merge; zero unique commits/patches and clean state
+preceded local/remote topic-ref pruning. Primary checkout/runtime/CAS/proofs
+retained. Delivery receipt budget-locator-delivery-20261020-v1.json; original
+producer pending/403/404 snapshots remain immutable. Definition/rights and32
+legacy layouts remain unqualified; phase and track remain in progress.
+
+Next bounded task: separate legacy XLS inspection. Upstream xlrd2.0.2 BSD
+metadata and wheel hashes verified outside Git; no mandatory runtime dependencies.
+Isolated import on Python3.14.6 and a synthetic BIFF8 cached-result probe pass.
+These are preliminary compatibility evidence, not native source qualification.
+Record stack/design decision, establish a focused red contract, then implement
+and validate without changing existing XLSX, rights or admission behavior.
+
+Legacy inspector red: missing module import/collection exit2, expected absent
+API. Initial real-reader/limit checks15pass. Hidden-sheet/types/CLI red reports
+1expected missing-CLI failure with16pass; CLI implementation then17pass.
+Preserved lint/type diagnostics corrected locally (including explicit retained
+Python path for pyright); affected strict typing has0errors/0warnings, Ruff
+check/format pass. Combined legacy/XLSX/MCP regressions61pass5.79s. These
+are focused gates only; native32-file qualification and original full harness
+remain pending. xlrd date mode may default when its source flag is absent,
+so source-record presence stays explicitly unverified. No date conversion.
+
+Post-date-mode schema change:61focused regressions pass9.07s. Ruff/format
+and retained-interpreter strict typing pass. Frozen-environment dependency audit,
+license inventory and full secret scan pass; zero unresolved candidates. Initial
+direct script invocation lacked detect-secrets on PATH and produced no scan;
+corrected via existing uv run --frozen context, without scanner policy changes.
+Checkpoint implementation for frozen native qualification; task remains[~],
+no PR/full-assurance/native qualification claim yet.

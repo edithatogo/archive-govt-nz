@@ -2427,4 +2427,7 @@ previous qualification results unchanged; original local timeout preserved.
 
 - [~] Reconcile the next19official locator candidates for Budget2008–2011/2013–2014, preserving eight intended expenditure/revenue gaps and five additional departmental-statements variants; reuse retained bytes/bindings, record page/definition/rights gaps and capture only missing eligible originals. [M-02, M-03, M-04, M-06, M-11; AC-03, AC-04, AC-09, AC-16]
 
-- [~] Adjudicate the exact immutable archive-verification boolean-field entropy candidate using document/candidate pins and the existing negative guard; preserve producer bytes and all scanner scope/thresholds before full assurance. [M-11, M-15; AC-13, AC-16]
+- [x] Adjudicate the exact immutable archive-verification boolean-field entropy candidate using document/candidate pins and the existing negative guard; preserve producer bytes and all scanner scope/thresholds before full assurance. [M-11, M-15; AC-13, AC-16]
+
+
+- [~] Qualify a separate hash-bound read-only legacy XLS inspector for the32 preserved OLE workbook candidates. Record the reader decision before adoption; preserve source bytes and existing XLSX contracts, bound traversal/previews, expose stored-value and structural-loss limitations, and repeat the native inspection without numerical/rights admission. [M-02, M-06, M-11, M-15; AC-03, AC-09, AC-13, AC-16]

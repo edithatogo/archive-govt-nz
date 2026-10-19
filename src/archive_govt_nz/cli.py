@@ -54,6 +54,9 @@ from archive_govt_nz.domains.health_appropriations.fiscal_analytical_operations 
 )
 from archive_govt_nz.domains.health_appropriations.gold_export import export_gold
 from archive_govt_nz.domains.health_appropriations.inspection import inspect_workbook
+from archive_govt_nz.domains.health_appropriations.legacy_inspection import (
+    inspect_legacy_workbook,
+)
 from archive_govt_nz.domains.health_appropriations.native_workbook_inspection import (
     inspect_native_workbook,
 )
@@ -214,6 +217,28 @@ def health_appropriations_inspect_workbook(
                 "error": str(error),
             }
         )
+        return 2
+    _emit_json({"command": command, **result})
+    return 0
+
+
+@app.command(name="health-appropriations-inspect-legacy-workbook")
+def health_appropriations_inspect_legacy_workbook(
+    source: Path,
+    expected_sha256: str,
+    *,
+    sheet: str | None = None,
+    rows: int = 0,
+    columns: int = 12,
+) -> int:
+    """Inventory verified BIFF8; request bounded stored-value previews explicitly."""
+    command = "health-appropriations-inspect-legacy-workbook"
+    try:
+        result = inspect_legacy_workbook(
+            source, expected_sha256, sheet=sheet, rows=rows, columns=columns
+        )
+    except ValueError as error:
+        _emit_json({"command": command, "status": "failed", "error": str(error)})
         return 2
     _emit_json({"command": command, **result})
     return 0

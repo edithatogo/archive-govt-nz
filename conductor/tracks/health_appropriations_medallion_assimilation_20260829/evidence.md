@@ -3398,3 +3398,15 @@ snapshots preserved. See budget-locator-assurance-20261020-v1.json. Exact
 final-head hosted assurance and protected delivery remain pending. Native
 archive candidates do not establish BIFF/layout/period/units/rights, numeric
 alias approval or source/phase/track completion.
+
+
+### PR727 protected delivery
+
+See budget-locator-delivery-20261020-v1.json. Exact-head CI39271172686 passed
+all32 stages: Ubuntu8056/30skip558.22s, macOS8056/30skip869.85s,
+Windows8050/36skip504.08s;18warnings each. Seven checks green, active strict
+protections, resolved reviews, no open CodeQL alerts. All46CAS/WARC hashes
+rechecked. Merge cdbc3652 has the checked tree; ancestry/zero-unique/clean
+proof preceded pruning only the topic refs. Local original full remains its
+separate4ebcd917 producer with8072passes. Native page403 and original404
+records remain distinct from successful verification. Track is incomplete.
