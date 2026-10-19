@@ -3412,3 +3412,5 @@ separate4ebcd917 producer with8072passes. Native page403 and original404
 records remain distinct from successful verification. Track is incomplete.
 
 Legacy reader native qualification: see legacy-inspection-qualification-20261020-v1.json.32preserved candidates/210worksheet observations,64schema-validated CLI outputs with repeat equality, native exit0 and unchanged source/runtime/evidence pins.5x12 heads are bounded observations, not full-sheet normalization or period/unit/rights admission. Date-mode source-record presence, formula origin/cache freshness and documented unsupported structure remain unqualified.
+
+Original local full assurance: legacy-inspection-assurance-20261020-v1.json records9d687f04/tree2a2c1bf6, all32stages,8090pass/14skip/18warnings597.09s, actualexit0, strictSBOM114components. All3840source/runtime/native/CAS pins stable; actual owner/group absent and independent kernel lease free. This local result does not establish hosted delivery or period/unit/rights admission.
