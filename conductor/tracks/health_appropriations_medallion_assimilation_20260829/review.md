@@ -4112,3 +4112,17 @@ bytes still reject. No new test function, runtime dependency, capture behaviour,
 coverage target or time limit changes. Further receipts use structured gate
 states while historical producer fields stay immutable. New full scan/harness
 pending; no full-pass or source-rights/definition/track completion claim.
+
+
+Original ./scripts/validate.sh at4ebcd917/tree53b0aaba passes all32stages,
+actualexit0:8072tests passed/14skipped/18warnings542.19s; schemas/parity/
+mutations/audit/licences/scanner/strictSBOM113components all pass. Same original
+900s/80%/2worker contract, Python3.14.6/uv0.13.1; no Hypothesis deadline or
+healthcheck changes. OwnerPID/PGID absent, independentkernelleasefree, all1806
+frozenpins unchanged at completion. Full log, runtime/config, marker, native
+output pins and supply-chain receipts archived with hashreadback. Earlier
+metadata-candidate failures remain separate evidence; immutable producer
+snapshots preserved. See budget-locator-assurance-20261020-v1.json. Exact
+final-head hosted assurance and protected delivery remain pending. Native
+archive candidates do not establish BIFF/layout/period/units/rights, numeric
+alias approval or source/phase/track completion.

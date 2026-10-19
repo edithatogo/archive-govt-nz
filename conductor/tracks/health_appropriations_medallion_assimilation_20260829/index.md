@@ -613,3 +613,5 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [Exact immutable metadata-flag adjudication](./budget-locator-metadata-adjudication-20261020-v1.json)
 
 - [Exact historical status-field adjudication](./budget-locator-status-adjudication-20261020-v1.json)
+
+- [Complete original local locator assurance](./budget-locator-assurance-20261020-v1.json)
