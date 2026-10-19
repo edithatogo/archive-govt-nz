@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import sqlite3
+from contextvars import copy_context
 from io import BytesIO
 from pathlib import Path
 from zipfile import ZipFile
@@ -214,9 +215,11 @@ def test_scoped_workbook_reuse_is_byte_bound_and_reset_after_error(
 
     monkeypatch.setattr(formats, "load_workbook", load)
     before: dict[str, object] = {}
+    captured_context = copy_context()
     with pytest.raises(RuntimeError, match="probe"):  # noqa: PT012, SIM117 - verify cleanup during exceptional scope exit
         with formats.inspected_workbook(first) as inspected:
             before = inspected.inventory
+            captured_context = copy_context()
             assert len(loads) == 1
             copy = formats.inventory_workbook(BytesIO(first))
             copy["kind"] = "poisoned"
@@ -236,5 +239,7 @@ def test_scoped_workbook_reuse_is_byte_bound_and_reset_after_error(
             message = "probe"
             raise RuntimeError(message)
     assert len(closed) == 2
-    assert formats.inventory_workbook(BytesIO(first)) == before
+    assert captured_context.run(formats.inventory_workbook, BytesIO(first)) == before
     assert len(loads) == len(closed) == 3
+    assert formats.inventory_workbook(BytesIO(first)) == before
+    assert len(loads) == len(closed) == 4

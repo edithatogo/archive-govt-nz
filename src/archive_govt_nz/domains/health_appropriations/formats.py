@@ -8,7 +8,7 @@ import sqlite3
 from contextlib import contextmanager
 from contextvars import ContextVar
 from copy import deepcopy
-from dataclasses import asdict, dataclass, replace
+from dataclasses import asdict, dataclass, field, replace
 from io import BytesIO
 from typing import TYPE_CHECKING, Literal
 from zipfile import BadZipFile, ZipFile
@@ -219,6 +219,13 @@ def _open_inspection(
         workbook.close()
 
 
+@dataclass(slots=True)
+class _InspectionScope:
+    """Shared ownership state also visible to inherited/copied contexts."""
+
+    active: bool = True
+
+
 @dataclass(frozen=True, slots=True)
 class WorkbookInspection:
     """One operation's exact bytes, decoded workbook and checked metadata."""
@@ -227,10 +234,15 @@ class WorkbookInspection:
     workbook: Workbook
     _payload: bytes
     _inventory: dict[str, object]
+    _scope: _InspectionScope = field(default_factory=_InspectionScope, repr=False)
+
+    def end_scope(self) -> None:
+        """Invalidate reuse everywhere before the owning operation exits."""
+        self._scope.active = False
 
     def matches_bytes(self, payload: bytes) -> bool:
         """Require identical bytes, never a path or a caller-provided digest."""
-        return self._payload == payload
+        return self._scope.active and self._payload == payload
 
     @property
     def inventory(self) -> dict[str, object]:
@@ -264,6 +276,7 @@ def inspected_workbook(payload: bytes) -> Iterator[WorkbookInspection]:
         try:
             yield inspection
         finally:
+            inspection.end_scope()
             _ACTIVE_INSPECTION.reset(token)
 
 
