@@ -1,0 +1,89 @@
+{
+  "all_expected_checks": [
+    "Assurance (macos-latest)",
+    "Assurance (ubuntu-latest)",
+    "Assurance (windows-latest)",
+    "CodeQL",
+    "analyze",
+    "codecov/patch",
+    "lint"
+  ],
+  "broader_track_complete": false,
+  "capture": {
+    "OLE_signature_only_pending_legacy_reader": 10,
+    "capture_exit": 2,
+    "captured_registered_urls": 24,
+    "existing_six_reused": true,
+    "native_XLSX_layout_repeat_matches": 8,
+    "new_verified": 18,
+    "registered_url_count": 40,
+    "rights_and_numerical_admission": "not_performed",
+    "terminal_HTTP404_registered_urls": 16,
+    "verification_exit": 0
+  },
+  "checked_head": "2b0ff5ea01bab3e05d0cee0c3df5f452c4e6630a",
+  "checked_tree": "d8b4e373fcdc8e5976948cf580836a356f9f51a7",
+  "cleanup": {
+    "clean_before_prune": true,
+    "equal_merge_and_checked_trees": true,
+    "merge_on_origin_main": true,
+    "sole_primary_checkout_runtime_CAS_and_proofs_retained": true,
+    "topic_local_remote_tracking_refs_absent": true,
+    "unique_commits": 0,
+    "unique_patches": 0
+  },
+  "cleanup_sha256": "1a9da6b010855c314ed5a2eb875f4c1af903944e7d776daad51dab3784cd49d7",
+  "evidence_bundle": "budget-census-reconciliation-20261019/hosted-delivery-726",
+  "external_publication_performed": false,
+  "first_hosted_attempt": "all_three_pytest_suites_passed; same_single_archive_directory_entropy_candidate_failed_secrets; original_logs_preserved; exact_document_and_candidate_adjudication_qualified",
+  "guard_sha256": "8735d3020b164789987144c8496865d2fffc872f1b28e5a41bf8b1136e4ae662",
+  "hosted_all32_three_platforms": {
+    "macos": {
+      "all32stage_headers_verified": true,
+      "job": 118082000234,
+      "log_sha256": "1ef20bf0f10be3f35034796ac796231b722fcf65a74a682a97ef6dc95d402a11",
+      "pytest_summary": [
+        "8054",
+        "30",
+        "18",
+        "795.74"
+      ]
+    },
+    "ubuntu": {
+      "all32stage_headers_verified": true,
+      "job": 118082000251,
+      "log_sha256": "e1a7029a9af40aa88700669ca48b416bfd9a2877bc3666c121882f62f08b2b09",
+      "pytest_summary": [
+        "8054",
+        "30",
+        "18",
+        "542.84"
+      ]
+    },
+    "windows": {
+      "all32stage_headers_verified": true,
+      "job": 118081999855,
+      "log_sha256": "23a14b85a00b0b20b0a0c728931a67ec8756bbee0651f49d9814c4a9f9722a44",
+      "pytest_summary": [
+        "8048",
+        "36",
+        "18",
+        "509.09"
+      ]
+    }
+  },
+  "local_original_full": {
+    "all32_local_pass": false,
+    "exit": 124,
+    "last_percent": 98,
+    "later_scanner_only_correction": "exact_tree_full_secret_scan_passed;30focused_supply_chain_contracts_passed",
+    "observed_failed": 0,
+    "observed_passed": 7979,
+    "source_head": "41f2c92d626ec4274beee667b02b1f3c211837e7"
+  },
+  "merge_commit": "b3fe8f49b78cb20a99f3471a8103d9cdb1c3b6b7",
+  "merged_at": "2026-10-19T13:39:19Z",
+  "pr_url": "https://github.com/edithatogo/archive-govt-nz/pull/726",
+  "producer_receipts": "original_native_and_local_and_implementation_checkpoints_preserved;this_is_separate_delivery_state",
+  "schema_version": "archive-govt-nz.health-budget-preservation-delivery/v1"
+}

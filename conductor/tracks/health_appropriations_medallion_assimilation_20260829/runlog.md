@@ -8557,3 +8557,21 @@ local full900s timeout at41f2c92d predates this scanner-only correction; no clai
 that the new correction passed a local full run. Requalify all32 hosted stages
 on all3platforms at the new final head before normal protected merge/prune.
 See budget-provenance-secret-adjudication-20261019-v1.json.
+
+
+PR726 merged normally2026-10-19T13:39:19Z atb3fe8f49, checked2b0ff5ea/
+treed8b4e373. All7expected checks succeed; all32stage headers and full tests
+verified in each exact-head hosted log: Ubuntu8054/30skip542.84s, macOS8054/
+30skip795.74s, Windows8048/36skip509.09s. Original local124/98% and first
+hosted secret false-positive failures remain immutable. Exact provenance
+adjudication qualified without producer rewrites, plugin/path exclusions or
+threshold changes. Fetch/ancestry/equal merge-tree/0uniquecommits/0patches/
+clean proof precedes pruning; topiclocal/remote/tracking absent and soleprimary
+checkout/runtime/CAS/privateproofs retained. See separate delivery/state receipts.
+Broader40-URL cohort remains24captured/16terminal404; native periods/units/
+rights and ten OLE layouts remain unqualified. No whole phase/track completion.
+Next bounded slice: four cached official page identities and nine linked
+candidates, including the2012 departmental-statements workbook absent from
+registered40. Reconcile retained exact-request evidence first, preserve old
+404 observations, no inferred aliases or numerical/rights approval. Root keeps
+sole native/broad launcher ownership, existing900s/80% contract unchanged.
