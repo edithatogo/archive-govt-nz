@@ -619,3 +619,5 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [PR727 delivery and topic cleanup](./budget-locator-delivery-20261020-v1.json): all checks/all32 stages across three hosted platforms pass; native legacy/period/unit/rights qualification remains pending.
 
 - Legacy BIFF8 inspector: `health-appropriations-inspect-legacy-workbook SOURCE EXPECTED_SHA256` defaults to inventory only; `--sheet NAME --rows 5 --columns 12` requests bounded decoded stored/cached previews. [Output schema](../../../schemas/health-legacy-workbook-inspection-v1.schema.json).
+
+- [Legacy reader native qualification](./legacy-inspection-qualification-20261020-v1.json):32candidate inspections repeat identically across210worksheet observations; full harness/protected delivery pending.

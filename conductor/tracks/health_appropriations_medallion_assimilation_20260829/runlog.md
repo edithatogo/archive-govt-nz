@@ -8705,3 +8705,5 @@ Checkpoint implementation for frozen native qualification; task remains[~],
 no PR/full-assurance/native qualification claim yet.
 
 Merged-range projection red:1failed/8passed3.82s for the added bound parameter. After cumulative20,000-entry gate:62legacy/XLSX/MCP regressions pass; Ruff/format and retained-interpreter typing pass. Native qualification remains pending; freeze the corrected checkpoint before launch.
+
+Native frozen12198f14/tree07027da1:32of32 legacy candidates pass two CLI reads each;210worksheet observations; all repeat outputs equal and all3641frozen pins unchanged. Actual exit0; ownerPID/PGID1850 absent, independent kernel lease free. Raw previews and original inputs remain outside Git. Hash-readback archive retains configuration/recipe/owner/markers/logs/postflight and prior fast gate failures. Full original harness and protected delivery remain pending.

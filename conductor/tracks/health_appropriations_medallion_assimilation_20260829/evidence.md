@@ -3410,3 +3410,5 @@ rechecked. Merge cdbc3652 has the checked tree; ancestry/zero-unique/clean
 proof preceded pruning only the topic refs. Local original full remains its
 separate4ebcd917 producer with8072passes. Native page403 and original404
 records remain distinct from successful verification. Track is incomplete.
+
+Legacy reader native qualification: see legacy-inspection-qualification-20261020-v1.json.32preserved candidates/210worksheet observations,64schema-validated CLI outputs with repeat equality, native exit0 and unchanged source/runtime/evidence pins.5x12 heads are bounded observations, not full-sheet normalization or period/unit/rights admission. Date-mode source-record presence, formula origin/cache freshness and documented unsupported structure remain unqualified.

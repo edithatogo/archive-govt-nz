@@ -4138,3 +4138,5 @@ workbook structure. Next reader must disclose unsupported structure and cached
 value semantics rather than fabricate XLSX-equivalent inventory.
 
 Legacy reader review: merged-range output is independent of rectangular cells. Add a cumulative20,000 merged-range limit before projection; a fixture-backed existing rejection parameter is red before implementation. Keep the post-load allocation limitation explicit.
+
+Native BIFF8 inspection succeeded for all32source hashes without changing Bronze or granting semantic/rights admission.210worksheet observations and bounded5x12 previews do not establish complete period/unit/definition coverage. Preserve the original qualification checkpoint; append later assurance/delivery receipts separately. No external publication action repeated.
