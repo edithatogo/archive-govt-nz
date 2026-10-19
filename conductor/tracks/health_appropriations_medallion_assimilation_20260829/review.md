@@ -4035,3 +4035,31 @@ candidates, including the2012 departmental-statements workbook absent from
 registered40. Reconcile retained exact-request evidence first, preserve old
 404 observations, no inferred aliases or numerical/rights approval. Root keeps
 sole native/broad launcher ownership, existing900s/80% contract unchanged.
+
+
+Locator slice1 at29728a07/treed3f83510: all13requested candidates attempted;
+nine linked workbooks captured/verified, four publication pagesHTTP403,
+actualcaptureexit2. All9CAS SHA256/BLAKE3/size and complete WARC request/
+response/body bindings pass. Bodies have OLE signatures only, not BIFF/layout/
+period/units validation. Rights remain unknown and no numerical admission.
+Original40URLcensus/16HTTP404 observations remain unchanged. Existing inventory
+projection repeats equally:53distinctURLs/33recordedcaptured; this is URL
+observation coverage, not approval of aliases, versions or source completeness.
+Nativeverificationexit0; ownerPID/PGID absent, independentkernel lease free,
+all1236frozenpins stable. Recipes, request/manifest, WARC/CAS, logs/markers,
+inventory and fixity retained outsideGit with hashreadback. See separate
+budget-locator-qualification-20261019-v1.json. Full harness/protected delivery
+remain pending; broader source/rights/legacy and track gates stay open.
+
+
+First13locator cohort is qualified for archive fixity and repeat inventory,
+with four page403s and native legacy/rights/definition gaps explicit. Continue
+the same source-census topic through a separate19candidate cohort: six pages,
+eight remaining intended expenditure/revenue locators and five additional
+FFS files (2008–2011/2013; 2014page lists onlytwo workbooks). Exact links were
+read from cached official pages, not invented by year/filename patterns.
+Keep the first13request/checkpoints unchanged; reconcile all retained evidence
+before new capture. Cached2008/2010period wording conflicts remain attributed
+and unqualified, and no publication date, numerical scope, alias or rights is
+inferred. No new production code, dependencies or tests are needed for this
+data-only cohort; original full harness and protected delivery remain required.

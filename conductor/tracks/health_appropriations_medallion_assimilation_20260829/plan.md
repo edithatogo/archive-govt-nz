@@ -2424,3 +2424,5 @@ previous qualification results unchanged; original local timeout preserved.
   Assurance refinement: exact proof-root candidate/document adjudication, retaining original qualification bytes and fail-closed unknown-candidate checks; three-platform hosted requalification remains required.
 
 - [~] Reconcile retained bindings for four official Budget2007/2012/2016/2017 publication pages and nine linked workbook candidates; capture only missing preservation evidence, retain original404 observations and record the additional departmental-statements variant and definition/rights gaps. [M-02, M-03, M-04, M-06, M-11; AC-03, AC-04, AC-09, AC-16]
+
+- [~] Reconcile the next19official locator candidates for Budget2008–2011/2013–2014, preserving eight intended expenditure/revenue gaps and five additional departmental-statements variants; reuse retained bytes/bindings, record page/definition/rights gaps and capture only missing eligible originals. [M-02, M-03, M-04, M-06, M-11; AC-03, AC-04, AC-09, AC-16]

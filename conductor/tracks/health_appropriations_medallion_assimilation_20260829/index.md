@@ -600,3 +600,7 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [Budget preservation protected delivery](./budget-preservation-delivery-20261019.json)
 - [Budget preservation separate delivered state](./budget-preservation-state-20261019-v1.json)
 - [Official Budget locator candidates](./budget-locator-discovery-20261019-v1.json)
+
+- [First official-locator native qualification](./budget-locator-qualification-20261019-v1.json)
+
+- [Additional official Budget locator candidates](./budget-locator-additional-discovery-20261019-v1.json)
