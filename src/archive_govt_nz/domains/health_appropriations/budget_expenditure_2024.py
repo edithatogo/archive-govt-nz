@@ -152,6 +152,16 @@ FACT_SCHEMA = pa.schema(
         ("raw_values_json", pa.string()),
     ]
 )
+DEFINITION_COORDINATES = (
+    ("periodicity", "B39"),
+    ("unit", "B40"),
+    ("valid_time_end", "B41"),
+    ("amount_type", "B42"),
+    ("app_id", "B49"),
+    ("parent_id", "B50"),
+    ("group_type", "B51"),
+    ("functional_classification", "B52"),
+)
 DISPOSITION_SCHEMA = budget_revenue.DISPOSITION_SCHEMA
 
 
@@ -168,6 +178,7 @@ class ExpenditureProfile:
     period_types: dict[int, str]
     definitions: dict[str, str]
     adapter_id: str
+    definition_coordinates: tuple[tuple[str, str], ...] = DEFINITION_COORDINATES
 
     def matches(self, vintage: str, locator: str, digest: str) -> bool:
         """Require the complete edition and original observation identity."""
@@ -337,16 +348,7 @@ def _parse(
             ]
             links += [
                 (field, f"'Explanation'!{coordinate}", edition.definitions[coordinate])
-                for field, coordinate in (
-                    ("periodicity", "B39"),
-                    ("unit", "B40"),
-                    ("valid_time_end", "B41"),
-                    ("amount_type", "B42"),
-                    ("app_id", "B49"),
-                    ("parent_id", "B50"),
-                    ("group_type", "B51"),
-                    ("functional_classification", "B52"),
-                )
+                for field, coordinate in edition.definition_coordinates
             ]
             if "B3" in edition.definitions:
                 links.extend(
