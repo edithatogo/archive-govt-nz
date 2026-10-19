@@ -3880,3 +3880,25 @@ focused Pyright pass after import wrapping only. No profile/parser/source/hash/
 locator/vintage/rights/currency/period/coverage/cap/protection changes. Retained
 native four-file equality and original full harness/protected delivery remain
 pending. See budget-edition-routing-implementation-20261019.json.
+
+
+Edition routing native qualification at82a7ea33/tree8a87f078 passes:2023
+277facts/7479lineage/all6696rows and2024 244facts/6100lineage/all6645rows,
+zero rejected. Shared dispatch facts/lineage/losses match exact profiles;
+two legacy packages per edition match all4independent prior files (16matches).
+Originals and frozen pins remain unchanged, terminal0 and kernel lease free.
+See budget-edition-routing-native-20261019.json.
+
+Original full1 at same head passed8067tests/14skip/18warnings/97.13% before
+interruption after tests; missing terminal marker/remaining26stages means no
+full pass. Durable full2 finishes124 at original900s test cap,91%,7409observed
+passes and2unchanged legislation-property failures; no final tracebacks or
+coverage summary. Both extended Budget cases passed in broad run. Exact two
+failed contracts pass focused replay10.25s with original seed2032132534 and
+2workers/no-cov; no deadline/assertion changes. Broad cause remains unproven,
+coverage instrumentation differs, original failure retained. Conductor advisory
+requested; root retains source/native launch ownership. No blind third full
+rerun. Require all7exact-head checks and original all32stages on3clean hosted
+platforms plus resolved reviews before normal merge/prune. See
+budget-edition-routing-assurance-20261019.json. Broader phase/track and all
+rights/currency/analytical joins/publication claims remain open/unchanged.

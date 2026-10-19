@@ -1,0 +1,105 @@
+{
+  "all32_local_pass_claim": false,
+  "attempt1": {
+    "actual_exit": null,
+    "all32_local_pass_claim": false,
+    "all_frozen_pins_unchanged": true,
+    "command": "./scripts/validate.sh",
+    "head": "82a7ea339f6dd1fbb2b62d45da7983dab1b60d72",
+    "kernel_lease_free": true,
+    "log_sha256": "03345349338f7c1c2bed556dae44e697d54d977f388e11f073591291b08c3562",
+    "prior_owner_processes": "absent",
+    "recovery": "Rerun unchanged original harness with detached durable owner; no cap, floor, checks or protections change",
+    "schema_version": "archive-govt-nz.health-budget-edition-routing-interrupted-assurance/v1",
+    "stage_headers": [
+      "lock",
+      "conductor",
+      "format",
+      "lint",
+      "types",
+      "tests"
+    ],
+    "status": "interrupted_after_tests_before_remaining_stages; exact interruption cause not established",
+    "terminal_marker": "absent",
+    "tests": {
+      "coverage_percent": 97.13,
+      "passed": 8067,
+      "seconds": 380.63,
+      "skipped": 14,
+      "warnings": 18
+    },
+    "tree": "8a87f078482fa7469c74c169ea58042bf456ca4b"
+  },
+  "attempt2": {
+    "actual_exit": 124,
+    "all32_local_pass_claim": false,
+    "all_frozen_pins_unchanged": true,
+    "command": "./scripts/validate.sh",
+    "coverage_complete": false,
+    "coverage_floor_percent": 80,
+    "failed_test_nodes": [
+      "tests/tools/test_legislation_parent_state.py::test_state_rejects_arbitrary_unrecognized_receipts",
+      "tests/domains/test_legislation_archive_service.py::test_checkpoint_root_preserves_arbitrary_persisted_json_bytes"
+    ],
+    "final_pytest_summary_present": false,
+    "full_log_sha256": "49dd9b9b5c3f1cb87f77e1a072f72acc03421f5a254e55e965cb651e5f74b036",
+    "head": "82a7ea339f6dd1fbb2b62d45da7983dab1b60d72",
+    "kernel_lease_free": true,
+    "last_observed_percent": 91,
+    "observed_failed_entries": 2,
+    "observed_passed_entries": 7409,
+    "schema_version": "archive-govt-nz.health-budget-edition-routing-assurance/v1",
+    "stage": "tests",
+    "stage_cap_seconds": 900,
+    "stage_headers": [
+      "lock",
+      "conductor",
+      "format",
+      "lint",
+      "types",
+      "tests"
+    ],
+    "status": "original_local_failure_preserved_no_full_pass",
+    "tree": "8a87f078482fa7469c74c169ea58042bf456ca4b"
+  },
+  "local_failure_disposition": {
+    "cause": "unproven; original cap prevented final failure reports",
+    "conductor_advice": "requested; no launch/edit authority delegated",
+    "earlier_run_all32_complete": false,
+    "earlier_same_head_tests_passed": 8067,
+    "focused_replay": {
+      "assertions_and_deadlines": "unchanged",
+      "coverage_instrumentation": false,
+      "passed": 2,
+      "seconds": 10.25
+    },
+    "head": "82a7ea339f6dd1fbb2b62d45da7983dab1b60d72",
+    "kernel_lease_free": true,
+    "local_full_pass": false,
+    "original_randomly_seed": 2032132534,
+    "proof_sha256": {
+      "full-interruption-postflight-1.json": "9ba3df1bc6ff13cec4fe6e95ee000323215bb836613ad49d3948cf4748c06ed4",
+      "full-postflight-2.json": "19ed9abab10d4818f423c0b7ac204fd3b8460f58565aea99d2a78c98f344dd1d",
+      "local-failure-replay-1.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "local-failure-replay-1.log": "909fbb13ee946afbc267223a6d5b1fb8e237dde5f9e327616e86dffdb808bb0c",
+      "proposed-owner-failure-replay1.zsh": "1b17266938204fad492cfc56921b0df85cfaaa20bc07c025094ff3164b38ea7e",
+      "replay-owner-1.json": "ecdb457eb77ff8296e1a865c536c094eb0129f51169dd03c3e778b9ff102edb6"
+    },
+    "required_for_merge": "all7 exact-head checks; original all32 stages each on Ubuntu/macOS/Windows; resolved review; no protections weakened",
+    "schema_version": "archive-govt-nz.health-budget-routing-local-disposition/v1",
+    "status": "local_broad_failure_retained_focused_contracts_pass_hosted_required",
+    "tree": "8a87f078482fa7469c74c169ea58042bf456ca4b",
+    "unchanged_test_pins": {
+      "base_main": "ae4f870c5dbe5ecfb82d86bf290142af48885279",
+      "failure_traceback": "pending_terminal_original_run",
+      "seed": 2032132534,
+      "tests_unchanged": {
+        "tests/domains/test_legislation_archive_service.py": "c7fcd8ac8cf7eac4d93d75e42fd9c5dadc4ba060ea06cc9f23cf3e42c452930e",
+        "tests/tools/test_legislation_parent_state.py": "ddbe780239be2943896a4cf264f2bf4dbb5269aef36b3b0090648ec284c1740e"
+      }
+    },
+    "workers": 2
+  },
+  "protected_delivery": "pending",
+  "schema_version": "archive-govt-nz.health-budget-edition-routing-assurance-history/v1"
+}

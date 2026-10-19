@@ -576,3 +576,6 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [Reader current-state projection v3](./context-reader-startup-state-20261019-v3.json)
 
 - [Budget edition routing focused implementation](./budget-edition-routing-implementation-20261019.json)
+
+- [Edition-routing actual-source qualification](./budget-edition-routing-native-20261019.json)
+- [Edition-routing original assurance and failure disposition](./budget-edition-routing-assurance-20261019.json)
