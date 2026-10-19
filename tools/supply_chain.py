@@ -103,6 +103,16 @@ PUBLIC_FOI_RECOVERY_SHA256 = (
 # The retained local archive path is provenance, not a credential. Bind both
 # its scanner fingerprint and the complete original receipt before adjudicating.
 PUBLIC_FOI_RECOVERY_PATH_DIGEST = "e8278915da61a0aa7a8731c50a5ab27b7457f923"
+PUBLIC_HEALTH_PRESERVATION_DOCUMENT = (
+    "conductor/tracks/health_appropriations_medallion_assimilation_20260829/"
+    "budget-preservation-qualification-20261019-v1.json"
+)
+PUBLIC_HEALTH_PRESERVATION_SHA256 = (
+    "173090c1575b6ec5d36d7b38a91a96734a03686ace908d9cce22ca42f4db1654"
+)
+# This exact proof_root is an archive directory, not an authentication value.
+# Preserve the original producer receipt and bind its bytes and candidate hash.
+PUBLIC_HEALTH_PRESERVATION_PATH_DIGEST = "4133d7f673607ea1c8a1c368fd60a11dd69e36e1"
 
 
 def _is_reviewed_document(
@@ -160,6 +170,14 @@ def is_reviewed_public_path(  # noqa: PLR0911
     relative = filename.replace("\\", "/")
     if _is_indexed_public_checksum_path(relative, finding):
         return True
+    if (
+        relative == PUBLIC_HEALTH_PRESERVATION_DOCUMENT
+        and finding.get("type") == "Base64 High Entropy String"
+        and finding.get("hashed_secret") == PUBLIC_HEALTH_PRESERVATION_PATH_DIGEST
+    ):
+        return _is_reviewed_document(
+            relative, finding, {relative: PUBLIC_HEALTH_PRESERVATION_SHA256}
+        )
     if (
         relative == PUBLIC_FOI_RECOVERY_DOCUMENT
         and finding.get("type") == "Base64 High Entropy String"

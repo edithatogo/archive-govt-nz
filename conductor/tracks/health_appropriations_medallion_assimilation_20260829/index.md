@@ -594,3 +594,5 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [Budget preservation native qualification](./budget-preservation-qualification-20261019-v1.json)
 
 - [Budget preservation original local assurance](./budget-preservation-assurance-20261019-v1.json)
+
+- [Exact archive-provenance secret adjudication](./budget-provenance-secret-adjudication-20261019-v1.json)

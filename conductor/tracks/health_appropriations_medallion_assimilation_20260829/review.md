@@ -3999,3 +3999,21 @@ and hash-readback verified. Exact-head all32 hosted3platform assurance and
 all required checks still required before protected merge. See
 budget-preservation-assurance-20261019-v1.json. Native capture/verification
 producer checkpoints remain immutable and broad phase/track gates remain open.
+
+
+PR726 head99acb185 hosted Ubuntu tests8053passed/30skipped/18warnings335.08s;
+31stage headers reached, then secrets gate rejects one Base64 entropy candidate.
+Local reproduction confirms the qualification receipt proof_root directory,
+not a credential. Preserve the exact producer receipt (SHA256173090c1575b6ec5
+...f4db1654), scanner output and failed hosted log. One new red contract fails
+as expected4.23s. Add only an exact document SHA256 plus known candidate
+fingerprint/type adjudication through the existing reviewed-document helper.
+Thirty supply-chain contracts pass13.64s; changed document bytes, another
+candidate/type or wrong line still reject. Full local secret scan then passes
+with0unresolved candidates; Ruff and strict typing pass. No file/path-pattern
+exemption, plugin removal, security threshold change or producer rewrite.
+Capture/CAS/WARC/native implementation and originals remain unchanged. Original
+local full900s timeout at41f2c92d predates this scanner-only correction; no claim
+that the new correction passed a local full run. Requalify all32 hosted stages
+on all3platforms at the new final head before normal protected merge/prune.
+See budget-provenance-secret-adjudication-20261019-v1.json.

@@ -1303,3 +1303,10 @@ A request may declare `required_rights_policy`; a different policy or omission
 of its required preservation-only flag fails before HTTP and manifest creation.
 Inventory projection retains unknown rights; it does not confer analytical or
 publication admission.
+
+
+The preservation qualification receipt's archive directory remains immutable.
+Its entropy-scanner false positive is adjudicated only for the exact reviewed
+receipt SHA256, known Base64 candidate fingerprint and matching line content.
+Other candidates, types, lines and edited documents retain the existing failure
+path. No broad filename/path exclusion or item-rights approval is introduced.

@@ -2420,3 +2420,5 @@ previous qualification results unchanged; original local timeout preserved.
 - [~] Reconcile the40 registered annual Budget2007–2026 workbook resources as a source-separated census cohort; verify retained capture/CAS/WARC/native evidence before bounded missing-source capture, record exact periods/units/rights and reason-coded gaps without rewriting producer checkpoints or whole-edition completion. [M-02, M-03, M-04, M-06, M-11; AC-03, AC-04, AC-09, AC-16]
 
 - [~] Unblock the annual Budget cohort with explicit rights-unassessed preservation-only capture, mode-bound resume/orphan recovery and opaque legacy Excel transport; enforce the existing WARC read bound before allocation. Preserve legacy defaults and all provenance/admission gates. [M-03, M-04, M-11, M-15; AC-03, AC-04, AC-13, AC-16]
+
+  Assurance refinement: exact proof-root candidate/document adjudication, retaining original qualification bytes and fail-closed unknown-candidate checks; three-platform hosted requalification remains required.
