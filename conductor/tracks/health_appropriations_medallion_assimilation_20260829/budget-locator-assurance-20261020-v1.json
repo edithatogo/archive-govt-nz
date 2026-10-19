@@ -1,0 +1,70 @@
+{
+  "actual_full_harness_exit": 0,
+  "all32_local_pass": true,
+  "all_frozen_pins_unchanged": true,
+  "coverage_floor_percent": 80,
+  "head": "4ebcd9172f3890e73469a2d93cf6f1fec857f1d0",
+  "independent_kernel_lease_free": true,
+  "log_sha256": "1b675647f5ceeb5959563cb33cab99f8d8c0c3359584e174077df0b490672bef",
+  "no_source_rights_layout_or_numeric_admission": true,
+  "original_harness": true,
+  "owner_PID_and_group_absent": true,
+  "per_stage_cap_seconds": 900,
+  "protected_delivery": {
+    "state": "pending"
+  },
+  "pytest_summary": {
+    "passed": 8072,
+    "seconds": 542.19,
+    "skipped": 14,
+    "warnings": 18
+  },
+  "sbom": {
+    "components": 113,
+    "strict_validation_passed": true
+  },
+  "scanner": {
+    "actual_exit": 0,
+    "unresolved_candidates": 0
+  },
+  "schema_version": "archive-govt-nz.health-budget-locator-assurance/v1",
+  "source_runtime": {
+    "python": "Python 3.14.6",
+    "uv": "uv 0.13.1 (Homebrew 2026-10-14 aarch64-apple-darwin)"
+  },
+  "stage_headers": [
+    "lock",
+    "conductor",
+    "format",
+    "lint",
+    "types",
+    "tests",
+    "schemas",
+    "parity",
+    "mutation",
+    "mutation-versioning",
+    "mutation-redundancy",
+    "mutation-archivebox-pilot",
+    "mutation-batch-eligibility",
+    "mutation-global-policy",
+    "mutation-adapters",
+    "mutation-legislation-accounting",
+    "mutation-legislation-reconciliation",
+    "mutation-legislation-checkpoint-root",
+    "mutation-legislation-continuation-integrity",
+    "mutation-legislation-historical-coverage",
+    "mutation-gazette",
+    "mutation-medallion",
+    "mutation-platinum",
+    "mutation-nlp-bridge",
+    "mutation-foi-controls",
+    "mutation-foi-shared",
+    "slops",
+    "benchmark-cas",
+    "audit",
+    "licenses",
+    "secrets",
+    "sbom"
+  ],
+  "tree": "53b0aabaffeded73c083ee759f64507ca900872f"
+}

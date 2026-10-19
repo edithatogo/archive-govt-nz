@@ -3289,3 +3289,112 @@ local full900s timeout at41f2c92d predates this scanner-only correction; no clai
 that the new correction passed a local full run. Requalify all32 hosted stages
 on all3platforms at the new final head before normal protected merge/prune.
 See budget-provenance-secret-adjudication-20261019-v1.json.
+
+
+PR726 merged normally2026-10-19T13:39:19Z atb3fe8f49, checked2b0ff5ea/
+treed8b4e373. All7expected checks succeed; all32stage headers and full tests
+verified in each exact-head hosted log: Ubuntu8054/30skip542.84s, macOS8054/
+30skip795.74s, Windows8048/36skip509.09s. Original local124/98% and first
+hosted secret false-positive failures remain immutable. Exact provenance
+adjudication qualified without producer rewrites, plugin/path exclusions or
+threshold changes. Fetch/ancestry/equal merge-tree/0uniquecommits/0patches/
+clean proof precedes pruning; topiclocal/remote/tracking absent and soleprimary
+checkout/runtime/CAS/privateproofs retained. See separate delivery/state receipts.
+Broader40-URL cohort remains24captured/16terminal404; native periods/units/
+rights and ten OLE layouts remain unqualified. No whole phase/track completion.
+Next bounded slice: four cached official page identities and nine linked
+candidates, including the2012 departmental-statements workbook absent from
+registered40. Reconcile retained exact-request evidence first, preserve old
+404 observations, no inferred aliases or numerical/rights approval. Root keeps
+sole native/broad launcher ownership, existing900s/80% contract unchanged.
+
+
+Locator slice1 at29728a07/treed3f83510: all13requested candidates attempted;
+nine linked workbooks captured/verified, four publication pagesHTTP403,
+actualcaptureexit2. All9CAS SHA256/BLAKE3/size and complete WARC request/
+response/body bindings pass. Bodies have OLE signatures only, not BIFF/layout/
+period/units validation. Rights remain unknown and no numerical admission.
+Original40URLcensus/16HTTP404 observations remain unchanged. Existing inventory
+projection repeats equally:53distinctURLs/33recordedcaptured; this is URL
+observation coverage, not approval of aliases, versions or source completeness.
+Nativeverificationexit0; ownerPID/PGID absent, independentkernel lease free,
+all1236frozenpins stable. Recipes, request/manifest, WARC/CAS, logs/markers,
+inventory and fixity retained outsideGit with hashreadback. See separate
+budget-locator-qualification-20261019-v1.json. Full harness/protected delivery
+remain pending; broader source/rights/legacy and track gates stay open.
+
+
+First13locator cohort is qualified for archive fixity and repeat inventory,
+with four page403s and native legacy/rights/definition gaps explicit. Continue
+the same source-census topic through a separate19candidate cohort: six pages,
+eight remaining intended expenditure/revenue locators and five additional
+FFS files (2008–2011/2013; 2014page lists onlytwo workbooks). Exact links were
+read from cached official pages, not invented by year/filename patterns.
+Keep the first13request/checkpoints unchanged; reconcile all retained evidence
+before new capture. Cached2008/2010period wording conflicts remain attributed
+and unqualified, and no publication date, numerical scope, alias or rights is
+inferred. No new production code, dependencies or tests are needed for this
+data-only cohort; original full harness and protected delivery remain required.
+
+
+Second19candidate cohort at3c4f889b/tree41411771:13workbooks captured,
+sixpublicationpagesHTTP403, captureexit2. Verificationexit0; all46aggregate
+workbook-candidate CAS SHA256/BLAKE3/size and complete WARC request/response
+bindings independently rechecked across the six reused originals,18previous
+captures and22new locator captures. Each of40intended Budget2007–2026
+edition/role slots has an archived candidate;16use exact publisher-linked
+locator-correction candidates. Original40URLs/16HTTP404s are not overwritten,
+and no numeric/version alias is approved. Six additional departmental-statements
+candidates are preserved outside the original40. Aggregate72distinctURLs/
+46recordedcaptured inventory repeats equally;32OLE/14ZIP signatures, legacy
+layout/period/units/definitions/rights still pending. All10publicationpages
+returned403; cache observations remain separate and no blind retry occurred.
+OwnerPID/PGID absent, independentkernelleasefree, all1240frozenpins stable;
+recipes/frozeninputs/markers/logs/manifests/WARCs/CAS and repeat outputs archived
+with hashreadback. See new v2qualification and separate40slot/16correction/
+46asset projections; v1and earlier producer checkpoints remain unchanged.
+No production code/dependency/test change in this data-only topic. Original
+./scripts/validate.sh and protected hosted delivery remain pending. Broad source
+census, native legacy/rights, other phase and final track gates stay open.
+
+
+Fast-first secret gate at26b48985 finds one Base64 entropy candidate: the
+immutable v2qualification boolean metadata key (line3), not a credential.
+Its known candidate hash is verified against the literal field name and true
+value; full document reviewed/pinned. Preserve both original producer snapshots.
+Extend the existing exact Health document/candidate table, retaining detector
+type, complete document SHA256 and matching line-content checks. No generic
+JSON-key/path exclusion or scanner/threshold change. Extend the existing negative
+contract by one parameter case: red1fail/1pass5.26s; final31focused checks
+pass4.31s, Ruff/format/typing pass. Initial2ISC004 test tuple concatenation
+findings were fixed with parentheses before final replay. No new test function,
+runtime dependency or capture/CAS/WARC behaviour. Full secret scan and original
+harness remain pending. See separate20261020adjudication receipt; earlier
+native/source producer bytes and unresolved rights/definition claims stay intact.
+
+
+The second fast scan classifies a new historical receipt pending-status value
+as a keyword candidate. Its candidate hash equals the documented pending token,
+not a credential; preserve that exact receipt. Extend the existing exact
+metadata table with this one document SHA256/candidate/detector tuple. Each
+entry now pins its own detector type; no generic status/key/path exclusion.
+Existing guard expanded by one profile: red1fail/2pass0.97s;32focused checks
+pass3.63s and Ruff/format/typing pass. Wrong type/candidate/line or edited
+bytes still reject. No new test function, runtime dependency, capture behaviour,
+coverage target or time limit changes. Further receipts use structured gate
+states while historical producer fields stay immutable. New full scan/harness
+pending; no full-pass or source-rights/definition/track completion claim.
+
+
+Original ./scripts/validate.sh at4ebcd917/tree53b0aaba passes all32stages,
+actualexit0:8072tests passed/14skipped/18warnings542.19s; schemas/parity/
+mutations/audit/licences/scanner/strictSBOM113components all pass. Same original
+900s/80%/2worker contract, Python3.14.6/uv0.13.1; no Hypothesis deadline or
+healthcheck changes. OwnerPID/PGID absent, independentkernelleasefree, all1806
+frozenpins unchanged at completion. Full log, runtime/config, marker, native
+output pins and supply-chain receipts archived with hashreadback. Earlier
+metadata-candidate failures remain separate evidence; immutable producer
+snapshots preserved. See budget-locator-assurance-20261020-v1.json. Exact
+final-head hosted assurance and protected delivery remain pending. Native
+archive candidates do not establish BIFF/layout/period/units/rights, numeric
+alias approval or source/phase/track completion.

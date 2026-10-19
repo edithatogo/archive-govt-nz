@@ -335,30 +335,66 @@ def test_malformed_secret_results_fail_closed(
         supply_chain.secrets()
 
 
+@pytest.mark.parametrize(
+    "profile",
+    [
+        (
+            (
+                "conductor/tracks/health_appropriations_medallion_assimilation_20260829/"
+                "budget-preservation-qualification-20261019-v1.json"
+            ),
+            30,
+            "4133d7f673607ea1c8a1c368fd60a11dd69e36e1",
+            "Base64 High Entropy String",
+        ),
+        (
+            (
+                "conductor/tracks/health_appropriations_medallion_assimilation_20260829/"
+                "budget-locator-qualification-20261019-v2.json"
+            ),
+            3,
+            "bb65ce3b571ef96ab310a19784dea7cf4ff923ae",
+            "Base64 High Entropy String",
+        ),
+        (
+            (
+                "conductor/tracks/health_appropriations_medallion_assimilation_20260829/"
+                "budget-locator-metadata-adjudication-20261020-v1.json"
+            ),
+            15,
+            "1f8050d610fd7437d1ed2da737866d1d83e5cf20",
+            "Secret Keyword",
+        ),
+    ],
+)
 def test_health_provenance_candidate_requires_exact_document_and_fingerprint(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    profile: tuple[str, int, str, str],
 ) -> None:
     """A reviewed proof directory cannot hide other candidates or edited receipts."""
-    filename = (
-        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/"
-        "budget-preservation-qualification-20261019-v1.json"
-    )
+    filename, line_number, candidate_hash, detector_type = profile
     original = supply_chain.REPOSITORY_ROOT / filename
     path = tmp_path / filename
     path.parent.mkdir(parents=True)
     path.write_bytes(original.read_bytes())
     monkeypatch.setattr(supply_chain, "REPOSITORY_ROOT", tmp_path)
     finding = {
-        "type": "Base64 High Entropy String",
-        "line_number": 30,
-        "hashed_secret": "4133d7f673607ea1c8a1c368fd60a11dd69e36e1",
+        "type": detector_type,
+        "line_number": line_number,
+        "hashed_secret": candidate_hash,
     }
     assert supply_chain.is_reviewed_public_path(filename, finding)
     assert not supply_chain.is_reviewed_public_path(
         filename, {**finding, "hashed_secret": "0" * 40}
     )
+    wrong_type = (
+        "Base64 High Entropy String"
+        if detector_type == "Secret Keyword"
+        else "Secret Keyword"
+    )
     assert not supply_chain.is_reviewed_public_path(
-        filename, {**finding, "type": "Secret Keyword"}
+        filename, {**finding, "type": wrong_type}
     )
     assert not supply_chain.is_reviewed_public_path(
         filename, {**finding, "line_number": 1}

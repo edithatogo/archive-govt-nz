@@ -596,3 +596,22 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [Budget preservation original local assurance](./budget-preservation-assurance-20261019-v1.json)
 
 - [Exact archive-provenance secret adjudication](./budget-provenance-secret-adjudication-20261019-v1.json)
+
+- [Budget preservation protected delivery](./budget-preservation-delivery-20261019.json)
+- [Budget preservation separate delivered state](./budget-preservation-state-20261019-v1.json)
+- [Official Budget locator candidates](./budget-locator-discovery-20261019-v1.json)
+
+- [First official-locator native qualification](./budget-locator-qualification-20261019-v1.json)
+
+- [Additional official Budget locator candidates](./budget-locator-additional-discovery-20261019-v1.json)
+
+- [Complete locator archive qualification](./budget-locator-qualification-20261019-v2.json)
+- [Forty intended edition and role archive candidates](./budget-edition-role-candidates-20261019-v1.json)
+- [Sixteen source-backed locator correction candidates](./budget-locator-correction-candidates-20261019-v1.json)
+- [Forty-six verified archive assets](./budget-verified-archive-assets-20261019-v1.json)
+
+- [Exact immutable metadata-flag adjudication](./budget-locator-metadata-adjudication-20261020-v1.json)
+
+- [Exact historical status-field adjudication](./budget-locator-status-adjudication-20261020-v1.json)
+
+- [Complete original local locator assurance](./budget-locator-assurance-20261020-v1.json)
