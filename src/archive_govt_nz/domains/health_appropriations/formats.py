@@ -14,12 +14,14 @@ from typing import TYPE_CHECKING, Literal
 from zipfile import BadZipFile, ZipFile
 
 from openpyxl import load_workbook
+from openpyxl.utils import get_column_letter
 
 if TYPE_CHECKING:
     from collections.abc import Iterator
     from pathlib import Path
 
     from openpyxl.workbook.workbook import Workbook
+    from openpyxl.worksheet._read_only import ReadOnlyWorksheet
     from openpyxl.worksheet.worksheet import Worksheet
 
 _PDF_PAGE = re.compile(rb"/Type\s*/Page\b")
@@ -60,16 +62,39 @@ class SheetInventory:
     formula_cache: tuple[FormulaCacheInventory, ...] = ()
 
 
-def _formula_cache(sheet: Worksheet, coordinate: str) -> FormulaCacheInventory:
-    cell = sheet[coordinate]
+def _formula_cache(
+    coordinate: str, value: object, data_type: str
+) -> FormulaCacheInventory:
     state: Literal["stored_value", "stored_error", "missing_or_empty"]
-    if cell.value is None:
+    if value is None:
         state = "missing_or_empty"
-    elif cell.data_type == "e":
+    elif data_type == "e":
         state = "stored_error"
     else:
         state = "stored_value"
-    return FormulaCacheInventory(coordinate, state, cell.data_type)
+    return FormulaCacheInventory(coordinate, state, data_type)
+
+
+def _cached_formulas(
+    sheet: Worksheet | ReadOnlyWorksheet, inventory: SheetInventory
+) -> tuple[FormulaCacheInventory, ...]:
+    """Stream cache cells within the first pass's checked physical extents."""
+    wanted = set(inventory.formula_coordinates)
+    if not wanted:
+        return ()
+    observations = {}
+    for number, row in enumerate(
+        sheet.iter_rows(max_row=inventory.max_row, max_col=inventory.max_column), 1
+    ):
+        for column, cell in enumerate(row, 1):
+            coordinate = f"{get_column_letter(column)}{number}"
+            if coordinate in wanted:
+                observations[coordinate] = _formula_cache(
+                    coordinate, cell.value, cell.data_type
+                )
+    return tuple(
+        observations[coordinate] for coordinate in inventory.formula_coordinates
+    )
 
 
 def _inventory_sheet(sheet: Worksheet) -> SheetInventory:
@@ -157,16 +182,15 @@ def _open_inspection(
         defined_names = tuple(sorted(workbook.defined_names))
         if any(sheet.formula_coordinates for sheet in sheets):
             cached = load_workbook(
-                path, read_only=False, data_only=True, keep_links=True
+                path, read_only=True, data_only=True, keep_links=True
             )
             try:
                 cached_sheets = {sheet.title: sheet for sheet in cached.worksheets}
                 sheets = [
                     replace(
                         sheet,
-                        formula_cache=tuple(
-                            _formula_cache(cached_sheets[sheet.title], coordinate)
-                            for coordinate in sheet.formula_coordinates
+                        formula_cache=_cached_formulas(
+                            cached_sheets[sheet.title], sheet
                         ),
                     )
                     for sheet in sheets
