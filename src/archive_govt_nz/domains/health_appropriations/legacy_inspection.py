@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 from typing import TYPE_CHECKING, Any
 
@@ -107,9 +108,7 @@ def _preview(
     }, remaining
 
 
-def _inspect(
-    source: Path, digest: str, sheet: str | None, rows: int, columns: int
-) -> dict[str, Any]:
+def _preview_limits(rows: int, columns: int) -> None:
     if (
         type(rows) is not int
         or not 0 <= rows <= _MAX_ROWS
@@ -118,7 +117,19 @@ def _inspect(
     ):
         message = "invalid_preview_limits"
         raise ValueError(message)
+
+
+def _inspect(
+    source: Path, digest: str, sheet: str | None, rows: int, columns: int
+) -> dict[str, Any]:
+    _preview_limits(rows, columns)
     payload = verified_snapshot(source, digest, max_bytes=_MAX_SOURCE_BYTES)
+    return _inspect_payload(payload, digest, sheet, rows, columns)
+
+
+def _inspect_payload(
+    payload: bytes, digest: str, sheet: str | None, rows: int, columns: int
+) -> dict[str, Any]:
     book: Book = xlrd.open_workbook(
         file_contents=payload,
         formatting_info=True,
@@ -196,5 +207,34 @@ def inspect_legacy_workbook(
     try:
         return _inspect(source, expected_sha256, sheet, rows, columns)
     except Exception as error:  # noqa: BLE001 - fixed redacted inspection boundary
+        message = "legacy_workbook_inspection_failed:" + type(error).__name__
+        raise ValueError(message) from None
+
+
+def _verify_payload(payload: bytes, digest: str) -> None:
+    if (
+        type(payload) is not bytes
+        or type(digest) is not str
+        or len(payload) > _MAX_SOURCE_BYTES
+        or hashlib.sha256(payload).hexdigest() != digest
+    ):
+        message = "invalid_legacy_workbook_payload"
+        raise ValueError(message)
+
+
+def inspect_legacy_bytes(
+    payload: bytes,
+    expected_sha256: str,
+    *,
+    sheet: str | None = None,
+    rows: int = 0,
+    columns: int = 12,
+) -> dict[str, Any]:
+    """Apply the same bounded inventory to an immutable, hash-verified snapshot."""
+    try:
+        _preview_limits(rows, columns)
+        _verify_payload(payload, expected_sha256)
+        return _inspect_payload(payload, expected_sha256, sheet, rows, columns)
+    except Exception as error:  # noqa: BLE001 - same redacted inspection boundary
         message = "legacy_workbook_inspection_failed:" + type(error).__name__
         raise ValueError(message) from None
