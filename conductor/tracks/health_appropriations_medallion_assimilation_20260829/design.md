@@ -1344,3 +1344,9 @@ flowchart LR
 ```
 
 Legacy inventory also caps the cumulative merged-range projection at20,000 entries per workbook, independently of cells, before building its output strings. This is an output/traversal bound, not a pre-parser memory guarantee.
+
+### Budget extraction: operation-local verified workbook reuse (2026-10-20)
+
+Budget2021 native timing shows inventory18.29s, literal numeric-token reading0.393s and a repeated formula-workbook load14.01s. The previous parser plus adapter selection decoded the same original five times; two native repeat outputs were produced before a composite120s timeout. Preserve that failed evidence.
+
+Use an operation-local inspection context bound to exact immutable bytes and their SHA-256. Compute existing structural/package/cache/scan checks once, retain the decoded formula workbook for fact extraction, and let the existing dispatcher reuse a defensive copy of the verified inventory for identical BytesIO content only. Different bytes and path-based inspection follow the original checks; no persistent/path cache or caller-supplied unverified inventory. Nested same-source inspection stays within the owning scope; exception exit closes loaded workbooks and resets context. Public inventory shape, selection receipts, facts, lineage and hashes must remain identical. Native repeats become separately bounded invocations; the120s and30s caps stay unchanged. Conductor chat advisory cursor16 supports this operation-local approach; root retains launch ownership.
