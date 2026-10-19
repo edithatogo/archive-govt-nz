@@ -242,3 +242,8 @@ either enters production or the lockfile, the implementation must record a
 capability comparison, security/licence evidence, reproducibility risks,
 maintenance cost, focused fixtures, a `tech-stack.md` amendment and the
 accountable dependency-adoption decision.
+
+
+## BIFF8 implementation boundary for M-05/M-06/M-07/M-10/M-11
+
+The retained legacy Budget originals require a separately versioned stored-value evidence class. The [BIFF8 contract](./biff8-stored-value-contract.md) binds numeric constants to original encoded bytes, source/stream/record/cell identity and exact integer decoding; it does not manufacture OOXML lexical tokens. Formula caches, unsupported/fractional/nonfinite/overflow values and ambiguous or tampered witnesses remain rejected. Complete typed facts/evidence/lineage/dispositions and an explicit witness-aware downstream mapping contract are required. Existing literal-only products and all independent rights/unit/currency/period/edition/join boundaries remain unchanged. This is a bounded source-adapter implementation of existing Must requirements; it does not close the broader track or replace final product/recovery/review gates.
