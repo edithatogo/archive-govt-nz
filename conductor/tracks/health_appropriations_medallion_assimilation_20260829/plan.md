@@ -2431,3 +2431,5 @@ previous qualification results unchanged; original local timeout preserved.
 
 
 - [~] Qualify a separate hash-bound read-only legacy XLS inspector for the32 preserved OLE workbook candidates. Record the reader decision before adoption; preserve source bytes and existing XLSX contracts, bound traversal/previews, expose stored-value and structural-loss limitations, and repeat the native inspection without numerical/rights admission. [M-02, M-06, M-11, M-15; AC-03, AC-09, AC-13, AC-16]
+
+- [~] Reject a decoded legacy worksheet with an empty title before emitting inventory, matching the declared nonempty-title schema; preserve source bytes and valid-source outputs, qualify the correction, then require fresh exact-head assurance before protected delivery. [M-06, M-11, M-15; AC-09, AC-13, AC-16]
