@@ -11,6 +11,7 @@ from urllib.parse import urlsplit
 from jsonschema import Draft202012Validator
 
 from archive_govt_nz.domains.health_appropriations import (
+    budget_biff8_adapter,
     budget_expenditure_2020,
     budget_expenditure_2021,
     budget_expenditure_2022,
@@ -62,6 +63,15 @@ MAX_CONTEXT = 2048
 _INVALID_SOURCE_OPERATION = "invalid_source_operation"
 PROFILES = MappingProxyType(
     {
+        **{
+            name: (
+                budget_biff8_adapter.get_profile(name).transformation,
+                ("input", "normalized", "out_of_scope", "blank", "rejected"),
+                "budget_facts.parquet",
+                "row_dispositions.parquet",
+            )
+            for name in sorted(budget_biff8_adapter.PROFILE_IDS)
+        },
         budget_expenditure_2020.PROFILE: (
             budget_expenditure_2020.TRANSFORMATION,
             ("input", "normalized", "out_of_scope", "blank", "rejected"),
@@ -708,6 +718,15 @@ SOURCE_PREFLIGHT_INPUT_SCHEMA = {
         "observed_at",
     ],
 }
+
+
+def _output_names(name: str, values: tuple) -> list[str]:
+    files = [values[2], "field_lineage.parquet", values[3]]
+    if name in budget_biff8_adapter.PROFILE_IDS:
+        files.append("numeric_evidence.parquet")
+    return files
+
+
 SOURCE_OPERATION_SCHEMA: dict[str, Any] = {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
@@ -755,9 +774,9 @@ SOURCE_OPERATION_SCHEMA: dict[str, Any] = {
                             "type": "object",
                             "additionalProperties": False,
                             "properties": dict.fromkeys(
-                                (values[2], "field_lineage.parquet", values[3]), _DIGEST
+                                _output_names(name, values), _DIGEST
                             ),
-                            "required": [values[2], "field_lineage.parquet", values[3]],
+                            "required": _output_names(name, values),
                         },
                     }
                 }
@@ -824,6 +843,16 @@ def _validate(request: SourceRequest, *, dry_run: bool) -> None:
         request.source_vintage,
         request.observed_at,
     )
+    if (
+        request.profile in budget_biff8_adapter.PROFILE_IDS
+        and not budget_biff8_adapter.source_binding(
+            request.profile,
+            request.source_vintage,
+            request.source_locator,
+            request.expected_sha256,
+        )
+    ):
+        raise ValueError(_INVALID_SOURCE_OPERATION)
     expenditure_bindings = {
         budget_expenditure_2020.PROFILE: budget_expenditure_2020.source_binding,
         budget_expenditure_2021.PROFILE: budget_expenditure_2021.source_binding,
@@ -871,6 +900,14 @@ def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile disp
         "source_vintage": request.source_vintage,
         "source_locator": request.source_locator,
     }
+    if request.profile in budget_biff8_adapter.PROFILE_IDS:
+        return budget_biff8_adapter.normalize(
+            request.source,
+            request.output_dir,
+            profile=request.profile,
+            **context,
+            dry_run=dry_run,
+        )
     if request.profile == budget_expenditure_2020.PROFILE:
         return budget_expenditure_2020.normalize(
             request.source, request.output_dir, **context, dry_run=dry_run

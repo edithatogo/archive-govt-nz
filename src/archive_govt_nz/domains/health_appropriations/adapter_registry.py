@@ -256,3 +256,25 @@ def compound_workbook_registrations(
         message = "duplicate reviewed adapter identity"
         raise ValueError(message)
     return tuple(sorted(registrations, key=lambda row: row.adapter_id))
+
+
+def biff_budget_registrations(
+    contexts: tuple[AdapterContext, ...],
+) -> tuple[CompoundAdapterRegistration, ...]:
+    """Explicitly opt into the closed 2019 BIFF8 companion-table contracts."""
+    from archive_govt_nz.domains.health_appropriations import (  # noqa: PLC0415 - Native-only import.
+        budget_biff8_adapter,
+    )
+
+    registrations = tuple(
+        budget_biff8_adapter.registration(
+            source_locator=context.source_locator,
+            source_vintage=context.source_vintage,
+            observed_at=context.observed_at,
+        )
+        for context in contexts
+    )
+    if len({row.adapter_id for row in registrations}) != len(registrations):
+        message = "duplicate reviewed adapter identity"
+        raise ValueError(message)
+    return tuple(sorted(registrations, key=lambda row: row.adapter_id))

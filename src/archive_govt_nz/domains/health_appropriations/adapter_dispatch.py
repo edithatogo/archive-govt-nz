@@ -28,6 +28,7 @@ MediaType = str
 _MEDIA_TYPES = frozenset(
     {
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "application/vnd.ms-excel",
         "text/csv",
         "text/html",
         "application/pdf",
@@ -121,6 +122,9 @@ def _detect(payload: bytes, declared: str) -> str | None:
     detected: str | None = None
     if payload.startswith(b"PK\x03\x04"):
         detected = _detect_workbook(payload)
+    elif payload.startswith(bytes.fromhex("d0cf11e0a1b11ae1")):
+        # Container identification only; exact registered profiles check BIFF8.
+        detected = "application/vnd.ms-excel"
     elif payload.startswith(b"%PDF-"):
         detected = "application/pdf"
     elif payload.startswith(_SQLITE):
