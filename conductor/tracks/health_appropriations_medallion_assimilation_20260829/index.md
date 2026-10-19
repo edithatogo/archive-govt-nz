@@ -641,3 +641,8 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [Budget2020 native source qualification](./budget-2020-native-qualification-20261020.json)
 
 - [Budget 2020 original local assurance](./budget-2020-original-assurance-20261020.json)
+
+- [Budget 2020 protected delivery](./budget-2020-delivery-20261020.json)
+- [Legacy Budget source census](./source-census-budget-legacy-20261020.md) and [machine receipt](./source-census-budget-legacy-20261020.json)
+
+- [Legacy census source/reference validation](./source-census-budget-legacy-validation-20261020.json)
