@@ -623,3 +623,5 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [Legacy reader native qualification](./legacy-inspection-qualification-20261020-v1.json):32candidate inspections repeat identically across210worksheet observations; full harness/protected delivery pending.
 
 - [Legacy reader original full local assurance](./legacy-inspection-assurance-20261020-v1.json):all32stages pass; exact final-head hosted/protected delivery pending.
+
+- [Legacy output-schema correction and fresh assurance](./legacy-inspection-schema-correction-20261020-v1.json): malformed empty titles reject; all32valid outputs preserved; protected delivery pending.
