@@ -5,7 +5,11 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
-from archive_govt_nz.domains.health_appropriations import budget_expenditure_2022
+from archive_govt_nz.domains.health_appropriations import (
+    budget_expenditure_2022,
+    budget_expenditure_2023,
+    budget_expenditure_2024,
+)
 from archive_govt_nz.domains.health_appropriations import (
     supplementary_summary_adapter as supplementary_adapters,
 )
@@ -127,10 +131,13 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
         for context in literal_workbooks
     )
     if budget_expenditure is not None:
-        expenditure_registration = (
-            budget_expenditure_2022.registration
-            if budget_expenditure.source_vintage == budget_expenditure_2022.VINTAGE
-            else budget_expenditure_registration
+        expenditure_registration = {
+            budget_expenditure_2022.VINTAGE: budget_expenditure_2022.registration,
+            budget_expenditure_2023.VINTAGE: budget_expenditure_2023.registration,
+            budget_expenditure_2024.VINTAGE: budget_expenditure_2024.registration,
+        }.get(
+            budget_expenditure.source_vintage,
+            budget_expenditure_registration,
         )
         registrations.append(
             expenditure_registration(

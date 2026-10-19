@@ -1,0 +1,60 @@
+{
+  "actual_exit": 0,
+  "all_frozen_pins_unchanged": true,
+  "editions": {
+    "2023": {
+      "counts": {
+        "blank": 0,
+        "input": 6696,
+        "normalized": 277,
+        "out_of_scope": 6419,
+        "rejected": 0
+      },
+      "facts": 277,
+      "lineage": 7479,
+      "prior_file_sha256": {
+        "MANIFEST.json": "6a0e88eccbca41184283761dcea0511c93c343d91bd152b432e686dfe2a3b52c",
+        "budget_facts.parquet": "cb56fd3ae7eea53fa432b1fa5220b8b0121f6110e6a2215a4e7c089be2ccff91",
+        "field_lineage.parquet": "3a50df31e0ce6b611faaccb5c03f542dd473dc9c6048d768fc99941f3070b6ff",
+        "row_dispositions.parquet": "dc7ff03cb75d0456b4b06fc98043c7e03b99692aab6a707292c98def89805a20"
+      },
+      "shared_dispatch_facts_equal_independent_prior": true,
+      "shared_dispatch_facts_lineage_losses_equal_profile": true,
+      "source_sha256": "bee0e4cd776f0511d271ec842ade355661772c804d12239035e32ad61db06da9",
+      "two_legacy_packages_match_prior_four_files": true
+    },
+    "2024": {
+      "counts": {
+        "blank": 0,
+        "input": 6645,
+        "normalized": 244,
+        "out_of_scope": 6401,
+        "rejected": 0
+      },
+      "facts": 244,
+      "lineage": 6100,
+      "prior_file_sha256": {
+        "MANIFEST.json": "b43d3b4a4421f77883e278a55d66a7da93728382b86f8f87db36f16a0ec05a00",
+        "budget_facts.parquet": "afb3814a366013acda4dbc0148f6b09826838a1404745b6ed4dbc78c368fc745",
+        "field_lineage.parquet": "0e4efa7822569761bfd212fc19d7ed17abba5f2b7d065666233523c8719fdbe1",
+        "row_dispositions.parquet": "f25ee897f2f3df0b24751dbac162b48d7bfed1456179206476729e6a5290e027"
+      },
+      "shared_dispatch_facts_equal_independent_prior": true,
+      "shared_dispatch_facts_lineage_losses_equal_profile": true,
+      "source_sha256": "891539afe9f5df4a7c7f73ac29695e19b6fb523a4947d305e1f4bd69ebcb3256",
+      "two_legacy_packages_match_prior_four_files": true
+    }
+  },
+  "full_original_harness": "separate_receipt_local_failure_retained",
+  "head": "82a7ea339f6dd1fbb2b62d45da7983dab1b60d72",
+  "kernel_lease_free": true,
+  "log_sha256": "b3a3c23bd5cb13b54f0affacbd7cf6f67623aebb1a83e6fd903fb859d7605a47",
+  "pins_verified": 212,
+  "protected_delivery": "pending",
+  "recipe_sha256": "b280d72c6513b9b9a1c6b35f5a89d8f0b52fa5b4b5a84b55049ebfa0e6bd6b89",
+  "rights_currency_periods_joins_publication": "unchanged_not_admitted",
+  "schema_version": "archive-govt-nz.health-budget-edition-routing-native/v1",
+  "status": "passed_existing_profiles_shared_and_legacy_paths",
+  "summary_sha256": "eb23e35bae7635984ff4271b6be15619a9d599b398dc9d95b1868834cebf4b6c",
+  "tree": "8a87f078482fa7469c74c169ea58042bf456ca4b"
+}

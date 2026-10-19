@@ -8392,3 +8392,54 @@ b221 Ubuntu passed; macOS test stage hit original900s cap at96% with no final
 summary; Windows was non-terminal at observation. Protected delivery remains
 blocked until exact-head required assurance succeeds. Broader Phase8 and track
 completion remain open; no rights/currency/joins/publication admission.
+
+
+PR723 delivered normally at ae4f870c after seven exact-head successes on
+625a8b8e and all32 original stages on Ubuntu/macOS/Windows. Source-focused
+41-test/API product and standalone CLI/MCP evidence remains separate from the
+retained local full124 and earlier hosted macOS timeout. Review resolved; no
+open CodeQL alert. Fresh fetch proves checked-head ancestry, equal9e17847b
+merge tree, zero unique commits/patches and clean main. Topic local/remote/
+tracking refs pruned; sole primary, runtime, CAS and private proofs retained.
+See context-reader-startup-delivery-20261019.json and current-state v3.
+
+Next bounded Phase3 slice: shared expenditure registry and legacy normalizer
+currently route only2022 to its pinned edition profile; generic adapter refuses
+2023/2024 despite both qualified source profiles. Extend the existing2023/2024
+contracts for shared-registry fact parity and legacy four-file equality; route
+existing profiles without changing source bindings or semantics. Reuse retained
+native sources/packages; root remains sole broad/native launch owner, unchanged
+900s original harness and80%floor. No external collection/publication mutation.
+
+
+Edition-routing red reproduces two empty fact outputs for reviewed2023/2024.
+Shared registry and legacy normalizer now select their existing edition-specific
+registrations/normalizers; other editions retain generic fallback. Existing
+2023/2024 cases require shared-dispatch fact equality and legacy entire-package
+byte equality. All72focused contracts pass33.24s; no test count added. Ruff and
+focused Pyright pass after import wrapping only. No profile/parser/source/hash/
+locator/vintage/rights/currency/period/coverage/cap/protection changes. Retained
+native four-file equality and original full harness/protected delivery remain
+pending. See budget-edition-routing-implementation-20261019.json.
+
+
+Edition routing native qualification at82a7ea33/tree8a87f078 passes:2023
+277facts/7479lineage/all6696rows and2024 244facts/6100lineage/all6645rows,
+zero rejected. Shared dispatch facts/lineage/losses match exact profiles;
+two legacy packages per edition match all4independent prior files (16matches).
+Originals and frozen pins remain unchanged, terminal0 and kernel lease free.
+See budget-edition-routing-native-20261019.json.
+
+Original full1 at same head passed8067tests/14skip/18warnings/97.13% before
+interruption after tests; missing terminal marker/remaining26stages means no
+full pass. Durable full2 finishes124 at original900s test cap,91%,7409observed
+passes and2unchanged legislation-property failures; no final tracebacks or
+coverage summary. Both extended Budget cases passed in broad run. Exact two
+failed contracts pass focused replay10.25s with original seed2032132534 and
+2workers/no-cov; no deadline/assertion changes. Broad cause remains unproven,
+coverage instrumentation differs, original failure retained. Conductor advisory
+requested; root retains source/native launch ownership. No blind third full
+rerun. Require all7exact-head checks and original all32stages on3clean hosted
+platforms plus resolved reviews before normal merge/prune. See
+budget-edition-routing-assurance-20261019.json. Broader phase/track and all
+rights/currency/analytical joins/publication claims remain open/unchanged.

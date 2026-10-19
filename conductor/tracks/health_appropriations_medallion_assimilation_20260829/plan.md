@@ -2414,3 +2414,5 @@ context-reader-startup-state-20261019-v1.json. Code/source/product bytes and
 previous qualification results unchanged; original local timeout preserved.
 
 - [x] Qualify retained five-input Context Gold original console and initialized read-only stdio MCP replay with unchanged30s response bounds; preserve earlier timeout receipts (context-reader-startup-replay-20261019-v1.json). Broader Phase8 remains open.
+
+- [~] Route hash-bound Budget2023/2024 expenditure through existing shared registry and legacy normalizer; require fact/four-file parity with already-qualified profiles and retained native packages. [M-05, M-06, M-07, M-15; AC-05, AC-11, AC-13]
