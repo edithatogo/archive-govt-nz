@@ -3398,3 +3398,23 @@ snapshots preserved. See budget-locator-assurance-20261020-v1.json. Exact
 final-head hosted assurance and protected delivery remain pending. Native
 archive candidates do not establish BIFF/layout/period/units/rights, numeric
 alias approval or source/phase/track completion.
+
+
+### PR727 protected delivery
+
+See budget-locator-delivery-20261020-v1.json. Exact-head CI39271172686 passed
+all32 stages: Ubuntu8056/30skip558.22s, macOS8056/30skip869.85s,
+Windows8050/36skip504.08s;18warnings each. Seven checks green, active strict
+protections, resolved reviews, no open CodeQL alerts. All46CAS/WARC hashes
+rechecked. Merge cdbc3652 has the checked tree; ancestry/zero-unique/clean
+proof preceded pruning only the topic refs. Local original full remains its
+separate4ebcd917 producer with8072passes. Native page403 and original404
+records remain distinct from successful verification. Track is incomplete.
+
+Legacy reader native qualification: see legacy-inspection-qualification-20261020-v1.json.32preserved candidates/210worksheet observations,64schema-validated CLI outputs with repeat equality, native exit0 and unchanged source/runtime/evidence pins.5x12 heads are bounded observations, not full-sheet normalization or period/unit/rights admission. Date-mode source-record presence, formula origin/cache freshness and documented unsupported structure remain unqualified.
+
+Original local full assurance: legacy-inspection-assurance-20261020-v1.json records9d687f04/tree2a2c1bf6, all32stages,8090pass/14skip/18warnings597.09s, actualexit0, strictSBOM114components. All3840source/runtime/native/CAS pins stable; actual owner/group absent and independent kernel lease free. This local result does not establish hosted delivery or period/unit/rights admission.
+
+Original79dc7ec0 hosted all32stages/8checks pass after completion-reporting delay; logs/run/check/Date observations retained separately. Synthetic empty-title counterexample demonstrates a declared-schema violation, so that head is not delivered. Focused correction63pass5.03s plus Ruff/format/typing; corrected native parity and full assurance pending. No cancellation or rerun was performed for the prior completion delay.
+
+See legacy-inspection-schema-correction-20261020-v1.json: empty-title rejection is verified by63focused checks, unchanged32positive outputs against both baseline repeats and fresh original full32stage assurance at83b53390 (8091pass/14skip/18warnings581.1s). Actual native/full exits0; all frozen pins stable, owners absent and validation lease independently free. No coverage, timeout, protection, rights or numerical-admission changes.

@@ -4126,3 +4126,23 @@ snapshots preserved. See budget-locator-assurance-20261020-v1.json. Exact
 final-head hosted assurance and protected delivery remain pending. Native
 archive candidates do not establish BIFF/layout/period/units/rights, numeric
 alias approval or source/phase/track completion.
+
+
+### PR727 final delivery reconciliation
+
+Exact immutable metadata-candidate adjudication is delivered through protected
+merge cdbc3652 after full original local assurance and exact-head three-platform
+hosted checks. No scanner scope, protection, timeout or coverage change.
+Archive-candidate coverage does not qualify rights, periods, units or legacy
+workbook structure. Next reader must disclose unsupported structure and cached
+value semantics rather than fabricate XLSX-equivalent inventory.
+
+Legacy reader review: merged-range output is independent of rectangular cells. Add a cumulative20,000 merged-range limit before projection; a fixture-backed existing rejection parameter is red before implementation. Keep the post-load allocation limitation explicit.
+
+Native BIFF8 inspection succeeded for all32source hashes without changing Bronze or granting semantic/rights admission.210worksheet observations and bounded5x12 previews do not establish complete period/unit/definition coverage. Preserve the original qualification checkpoint; append later assurance/delivery receipts separately. No external publication action repeated.
+
+Legacy-reader local gate complete: real synthetic reader contracts plus native32candidate repeats and original full32stage harness pass. Review found and fixed independent merged-range output growth before native/full qualification. No existing XLSX behavior,30historical donor dispositions, rights policy, coverage floor, stage caps or protections changed. Producer checkpoints remain immutable and wider track gates stay open.
+
+Reproduced contract defect: synthetic BIFF8 empty sheet title is accepted by xlrd and emitted as inspected despite the nonempty-title schema. Minimal fail-closed rejection is verified with one existing real-reader rejection parameter. This repairs the declared output contract, without broader format validation or a coverage-target change. Original79dc7ec0 all32 hosted successes remain preserved; corrected code must receive fresh assurance before merging.
+
+The reproduced nonempty-title contract defect is fixed with a3-line rejection and one existing real-reader test parameter. Valid-source stdout hashes match both preserved repeats for all32candidates, and fresh original full assurance passes. No additional general Excel validator, scanner exemption, test function, dependency or policy change was introduced by the correction. Keep original producer receipts immutable and require fresh final-head hosted checks.

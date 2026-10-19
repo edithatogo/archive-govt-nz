@@ -25,6 +25,7 @@ dependencies = [
   "openpyxl>=3.1.5,<4",
   "matplotlib>=3.10.8,<4",
   "warcio>=1.8.1,<2",
+  "xlrd>=2.0.2,<3",
 ]
 
 [project.scripts]

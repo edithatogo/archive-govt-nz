@@ -1,0 +1,71 @@
+{
+  "all46_body_and_WARC_hashes_current": true,
+  "archive_assets": 46,
+  "checked_head": "3a6a24f50773d31af7f66e36e704d74946e62a76",
+  "checked_tree": "9f17d2f3cce89b75db6e208d1e03b92cd0c12e6f",
+  "equal_merge_and_checked_trees": true,
+  "hosted": {
+    "macos": {
+      "all32stage_headers_verified": true,
+      "job": 118123545060,
+      "log_sha256": "cbff585fb8e6abc72b31af6f88a52f976daae40da926739facdd1aad245a1939",
+      "pytest_summary": [
+        "8056",
+        "30",
+        "18",
+        "869.85"
+      ]
+    },
+    "ubuntu": {
+      "all32stage_headers_verified": true,
+      "job": 118123544583,
+      "log_sha256": "a33e1ab5783708d91f4cf1e857d80dc4b079330631ac7cefd49ae4f1887a1e11",
+      "pytest_summary": [
+        "8056",
+        "30",
+        "18",
+        "558.22"
+      ]
+    },
+    "windows": {
+      "all32stage_headers_verified": true,
+      "job": 118123544825,
+      "log_sha256": "efc6ac7622bd78808c976adad783b0ab7686ab80db3422e3149889a23fef4f2f",
+      "pytest_summary": [
+        "8050",
+        "36",
+        "18",
+        "504.08"
+      ]
+    }
+  },
+  "local_all32_pass": true,
+  "merge": "cdbc3652d5d802946481346c6fe4db1c48a851b5",
+  "merge_on_origin_main": true,
+  "period_unit_rights_and_legacy_layout_qualification": "pending",
+  "pr": {
+    "headRefOid": "3a6a24f50773d31af7f66e36e704d74946e62a76",
+    "mergeCommit": {
+      "oid": "cdbc3652d5d802946481346c6fe4db1c48a851b5"
+    },
+    "mergedAt": "2026-10-19T15:00:46Z",
+    "number": 727,
+    "state": "MERGED",
+    "url": "https://github.com/edithatogo/archive-govt-nz/pull/727"
+  },
+  "primary_checkout_runtime_CAS_and_proofs_retained": true,
+  "required_checks": [
+    "Assurance (macos-latest)",
+    "Assurance (ubuntu-latest)",
+    "Assurance (windows-latest)",
+    "CodeQL",
+    "analyze",
+    "codecov/patch",
+    "lint"
+  ],
+  "schema_version": "archive-govt-nz.health-budget-locator-delivery/v1",
+  "topic_refs_pruned": true,
+  "track_complete": false,
+  "unique_commits": 0,
+  "unique_patches": 0
+}

@@ -8666,3 +8666,54 @@ snapshots preserved. See budget-locator-assurance-20261020-v1.json. Exact
 final-head hosted assurance and protected delivery remain pending. Native
 archive candidates do not establish BIFF/layout/period/units/rights, numeric
 alias approval or source/phase/track completion.
+
+
+### 2026-10-20 — PR727 delivery and next legacy-reader slice
+
+PortableSSD is mounted and evidence accessible. PR727 protected merge cdbc3652
+follows all seven exact-head successes and verified all32 stages on Ubuntu,
+macOS and Windows. Checked3a6a24f5/tree9f17d2f3 matches the merge tree. Fetched
+origin/main contains the merge; zero unique commits/patches and clean state
+preceded local/remote topic-ref pruning. Primary checkout/runtime/CAS/proofs
+retained. Delivery receipt budget-locator-delivery-20261020-v1.json; original
+producer pending/403/404 snapshots remain immutable. Definition/rights and32
+legacy layouts remain unqualified; phase and track remain in progress.
+
+Next bounded task: separate legacy XLS inspection. Upstream xlrd2.0.2 BSD
+metadata and wheel hashes verified outside Git; no mandatory runtime dependencies.
+Isolated import on Python3.14.6 and a synthetic BIFF8 cached-result probe pass.
+These are preliminary compatibility evidence, not native source qualification.
+Record stack/design decision, establish a focused red contract, then implement
+and validate without changing existing XLSX, rights or admission behavior.
+
+Legacy inspector red: missing module import/collection exit2, expected absent
+API. Initial real-reader/limit checks15pass. Hidden-sheet/types/CLI red reports
+1expected missing-CLI failure with16pass; CLI implementation then17pass.
+Preserved lint/type diagnostics corrected locally (including explicit retained
+Python path for pyright); affected strict typing has0errors/0warnings, Ruff
+check/format pass. Combined legacy/XLSX/MCP regressions61pass5.79s. These
+are focused gates only; native32-file qualification and original full harness
+remain pending. xlrd date mode may default when its source flag is absent,
+so source-record presence stays explicitly unverified. No date conversion.
+
+Post-date-mode schema change:61focused regressions pass9.07s. Ruff/format
+and retained-interpreter strict typing pass. Frozen-environment dependency audit,
+license inventory and full secret scan pass; zero unresolved candidates. Initial
+direct script invocation lacked detect-secrets on PATH and produced no scan;
+corrected via existing uv run --frozen context, without scanner policy changes.
+Checkpoint implementation for frozen native qualification; task remains[~],
+no PR/full-assurance/native qualification claim yet.
+
+Merged-range projection red:1failed/8passed3.82s for the added bound parameter. After cumulative20,000-entry gate:62legacy/XLSX/MCP regressions pass; Ruff/format and retained-interpreter typing pass. Native qualification remains pending; freeze the corrected checkpoint before launch.
+
+Native frozen12198f14/tree07027da1:32of32 legacy candidates pass two CLI reads each;210worksheet observations; all repeat outputs equal and all3641frozen pins unchanged. Actual exit0; ownerPID/PGID1850 absent, independent kernel lease free. Raw previews and original inputs remain outside Git. Hash-readback archive retains configuration/recipe/owner/markers/logs/postflight and prior fast gate failures. Full original harness and protected delivery remain pending.
+
+Original ./scripts/validate.sh at9d687f04/tree2a2c1bf6 passes all32stages, exit0.8090tests pass/14skip/18warnings597.09s; schemas, parity, mutation lanes, audit/licenses/secrets and strictSBOM114components pass. Python3.14.6/uv0.13.1,80%floor/900s caps unchanged. All3840frozen source/runtime/native/CAS pins unchanged; ownerPID/PGID3573 absent and independent kernel lease free. Full logs/config/markers/supply-chain receipts archived with hashreadback. Append separate assurance receipt; do not rewrite native producer pending fields. Exact final-head hosted checks/protected delivery still required.
+
+### 2026-10-20 — Legacy output-schema correction before delivery
+
+Original head79dc7ec0 hosted CI39278795865 finalized successfully without cancellation. All32stages pass on Ubuntu8074/30skip/18warnings539.58s, macOS8074/30/18/804.93s and Windows8068/36/18/601.20s. All8checks green; completion reporting lag was preserved with step timestamps and fresh REST Date. No protection/status changes. A separate real synthetic BIFF8 empty-title probe returns inspected with an empty worksheet title, violating its declared schema; therefore do not deliver that old head.
+
+First scripted test edit asserted against pre-format text and changed no file; test selection found no case(exit5). Corrected fixture parameter reproduces the API defect:1failed/18deselected3.05s, expected missing ValueError. Add3-line rejection before inventory output and one existing rejection parameter; no new test function.63focused legacy/XLSX/MCP checks pass5.03s; Ruff/format/strict typing pass. Original sources and producer receipts remain unchanged. Evidence archiving initially used the system interpreter and stopped at package import before writing; following named commit90e9c188 contains only the green code/test correction. Corrected evidence command uses retained interpreter. Native valid-source parity and fresh original full/hosted assurance remain pending.
+
+Correction83b53390/tree807a8c22: all32valid-source CLI outputs equal both original repeats,210worksheet observations, actual native exit0 and3846pins stable. Fresh original ./scripts/validate.sh passes all32stages,8091pass/14skip/18warnings581.1s, actualexit0, strictSBOM114components. All3927frozen source/runtime/native/CAS pins stable; actual owner/group absent and independent kernel lease free. Source bytes, original successful79dc7ec0 hosted evidence and malformed-input counterexample remain preserved. The first postflight reader expected an index2 inner receipt; the frozen executed recipe wrote index1 in this separate correction directory. Preserve that producer filename and bind its actual head/tree/exit0 to full2; no harness rerun or receipt rewrite. Fresh final-head hosted assurance is required before protected delivery.

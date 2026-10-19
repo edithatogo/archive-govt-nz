@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.org/schemas/health-legacy-workbook-inspection-v1.schema.json",
+  "title": "Successful read-only legacy BIFF8 workbook inspection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "source_sha256",
+    "source_byte_count",
+    "inventory",
+    "value_semantics",
+    "previews",
+    "rights_state",
+    "canonical_promotion"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-legacy-workbook-inspection/v1"
+    },
+    "status": {
+      "const": "inspected"
+    },
+    "source_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_byte_count": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 67108864
+    },
+    "value_semantics": {
+      "const": "decoded_stored_or_cached_not_canonical_facts"
+    },
+    "inventory": {
+      "type": "object",
+      "required": [
+        "schema_version",
+        "kind",
+        "reader",
+        "biff_version",
+        "date_mode",
+        "sheets",
+        "formula_cache_freshness",
+        "unsupported_features",
+        "date_mode_source_record_presence"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "archive-govt-nz.legacy-workbook-inventory/v1"
+        },
+        "kind": {
+          "const": "xls"
+        },
+        "reader": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "version"
+          ],
+          "properties": {
+            "name": {
+              "const": "xlrd"
+            },
+            "version": {
+              "type": "string",
+              "pattern": "^2\\.[0-9]+\\.[0-9]+$"
+            }
+          }
+        },
+        "biff_version": {
+          "const": 80
+        },
+        "date_mode": {
+          "enum": [
+            0,
+            1
+          ]
+        },
+        "sheets": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "title",
+              "state",
+              "max_row",
+              "max_column",
+              "merged_range_refs"
+            ],
+            "properties": {
+              "title": {
+                "type": "string",
+                "minLength": 1
+              },
+              "state": {
+                "enum": [
+                  "visible",
+                  "hidden",
+                  "veryHidden"
+                ]
+              },
+              "max_row": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 65536
+              },
+              "max_column": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 256
+              },
+              "merged_range_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "pattern": "^[A-Z]+[1-9][0-9]*:[A-Z]+[1-9][0-9]*$"
+                },
+                "maxItems": 20000
+              }
+            }
+          }
+        },
+        "formula_cache_freshness": {
+          "const": "not_verified"
+        },
+        "unsupported_features": {
+          "const": [
+            "formula_text_and_origin",
+            "formula_cache_freshness",
+            "comments",
+            "charts_macros_and_embedded_objects",
+            "hyperlinks_filters_pivots_and_conditional_formatting",
+            "nonworksheet_sheet_inventory",
+            "exact_numeric_source_tokens"
+          ]
+        },
+        "date_mode_source_record_presence": {
+          "const": "not_verified"
+        }
+      },
+      "additionalProperties": false
+    },
+    "previews": {
+      "type": "array",
+      "maxItems": 2000,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "row_truncated",
+          "column_truncated",
+          "cells"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "row_truncated": {
+            "type": "boolean"
+          },
+          "column_truncated": {
+            "type": "boolean"
+          },
+          "cells": {
+            "type": "array",
+            "maxItems": 2000,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "coordinate",
+                "data_type",
+                "decoded_value_json"
+              ],
+              "properties": {
+                "coordinate": {
+                  "type": "string",
+                  "pattern": "^[A-Z]+[1-9][0-9]*$"
+                },
+                "data_type": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "decoded_value_json": {
+                  "type": "string",
+                  "maxLength": 131072
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "rights_state": {
+      "const": "not_evaluated"
+    },
+    "canonical_promotion": {
+      "const": "not_performed"
+    }
+  }
+}

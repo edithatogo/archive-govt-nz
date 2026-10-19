@@ -1310,3 +1310,37 @@ Its entropy-scanner false positive is adjudicated only for the exact reviewed
 receipt SHA256, known Base64 candidate fingerprint and matching line content.
 Other candidates, types, lines and edited documents retain the existing failure
 path. No broad filename/path exclusion or item-rights approval is introduced.
+
+
+### Separate legacy XLS inspection (2026-10-20 decision)
+
+Use the maintained xlrd2.0.2 reader as a replaceable read-only adapter for
+legacy BIFF workbooks. Existing openpyxl XLSX inspection and its v1 schema
+remain unchanged. A separate legacy inspection schema retains exact source
+hash/byte count, BIFF version, reader-reported date mode, sheets/dimensions/visibility,
+merged ranges and bounded decoded stored-value previews. Formula text/origin,
+cache freshness, comments, charts/macros/embedded objects and unsupported
+structural information are explicitly unqualified, never asserted absent.
+Date cells retain serials and the reader-reported date mode; source record
+presence is unverified because the reader can default an absent date flag. No fiscal/currency,
+unit, rights or numerical admission is inferred. No active content is executed.
+
+Reuse the64MiB verified regular snapshot; use on-demand/ragged sheets, reject
+corruption and unsupported old BIFF, and discard reader diagnostics. Retain
+existing2,000,000 rectangular scan-cell,2,000 preview-cell,128KiB cumulative
+preview-value and20x50 preview limits. Release sheets/workbook resources.
+Traversal bounds run after sheet parsing and do not bound every parser
+allocation; native qualification retains the existing external resource deadline.
+Unknown/corrupt/over-budget inputs fail with a fixed redacted error.
+
+```mermaid
+flowchart LR
+    B[Original Bronze bytes] --> H[Capped regular snapshot and exact hash]
+    H --> X[Separate legacy reader]
+    X --> L{Supported BIFF and bounded traversal?}
+    L -->|No| F[Redacted failure; original retained]
+    L -->|Yes| I[Literal inventory and bounded stored-value previews]
+    I --> D[Explicit structural losses; no analytical or rights admission]
+```
+
+Legacy inventory also caps the cumulative merged-range projection at20,000 entries per workbook, independently of cells, before building its output strings. This is an output/traversal bound, not a pre-parser memory guarantee.
