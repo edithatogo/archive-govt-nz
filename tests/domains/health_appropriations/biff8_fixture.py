@@ -115,3 +115,45 @@ def numeric_fixture(*, failure: str | None = None) -> bytes:
     )
     size = 2**32 + _MIN_STREAM if failure == "high_stream_size" else None
     return compound(stream, declared_size=size)
+
+
+def grid_fixture(
+    sheets: tuple[tuple[str, tuple[tuple[object, ...], ...]], ...],
+) -> bytes:
+    """Encode fictional label/NUMBER cells in real BIFF8 worksheets."""
+    eof = record(0x000A)
+    start = bof(5) + record(0x0042, struct.pack("<H", 1200)) + record(0x00E0, bytes(20))
+
+    def bound(offset: int, name: str) -> bytes:
+        return record(
+            0x0085,
+            struct.pack("<IBBBB", offset, 0, 0, len(name), 1) + name.encode("utf-16le"),
+        )
+
+    bodies = []
+    for _, rows in sheets:
+        body = bof(0x10) + record(0x0081, struct.pack("<H", 0x04C1))
+        body += record(
+            0x0200,
+            struct.pack("<IIHHH", 0, len(rows), 0, max(map(len, rows), default=0), 0),
+        )
+        for row, cells in enumerate(rows):
+            for col, value in enumerate(cells):
+                if value is None:
+                    continue
+                if isinstance(value, str):
+                    body += record(
+                        0x0204,
+                        struct.pack("<HHHHB", row, col, 0, len(value), 1)
+                        + value.encode("utf-16le"),
+                    )
+                else:
+                    assert type(value) in {int, float}
+                    body += record(0x0203, struct.pack("<HHHd", row, col, 0, value))
+        bodies.append(body + eof)
+    offset = len(start) + sum(len(bound(0, name)) for name, _ in sheets) + len(eof)
+    pointers = []
+    for (name, _), body in zip(sheets, bodies, strict=True):
+        pointers.append(bound(offset, name))
+        offset += len(body)
+    return compound(start + b"".join(pointers) + eof + b"".join(bodies))
