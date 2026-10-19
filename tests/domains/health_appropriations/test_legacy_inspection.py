@@ -103,7 +103,17 @@ def test_real_legacy_reader_retains_bytes_and_discloses_losses(tmp_path: Path) -
 
 @pytest.mark.parametrize(
     "failure",
-    ["hash", "malformed", "sheet", "source", "scan", "cells", "values", "biff"],
+    [
+        "hash",
+        "malformed",
+        "sheet",
+        "source",
+        "scan",
+        "cells",
+        "values",
+        "biff",
+        "merges",
+    ],
 )
 def test_legacy_rejections_are_bounded_and_redacted(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, failure: str
@@ -120,6 +130,8 @@ def test_legacy_rejections_are_bounded_and_redacted(
     elif failure == "malformed":
         source.write_bytes(b"private malformed source")
         digest = hashlib.sha256(source.read_bytes()).hexdigest()
+    elif failure == "merges":
+        monkeypatch.setattr(legacy_inspection, "_MAX_MERGED_RANGES", 0, raising=False)
     elif failure == "biff":
         original = legacy_inspection.xlrd.open_workbook
 

@@ -24,6 +24,7 @@ _MAX_SCAN_CELLS = 2_000_000
 _MAX_PREVIEW_CELLS = 2000
 _MAX_PREVIEW_VALUE_BYTES = 128 * 1024
 _MAX_SHEETS = 256
+_MAX_MERGED_RANGES = 20_000
 _BIFF_VERSION = 80
 _MAX_ROWS = 20
 _MAX_COLUMNS = 50
@@ -124,7 +125,7 @@ def _inspect(
         logfile=_DiscardDiagnostics(),
     )
     inventories, previews = [], []
-    scan_cells = preview_cells = 0
+    scan_cells = preview_cells = merged_ranges = 0
     remaining = _MAX_PREVIEW_VALUE_BYTES
     try:
         if book.biff_version != _BIFF_VERSION or not 1 <= book.nsheets <= _MAX_SHEETS:
@@ -139,6 +140,10 @@ def _inspect(
                 scan_cells += item.nrows * item.ncols
                 if scan_cells > _MAX_SCAN_CELLS:
                     message = "workbook_cell_scan_limit"
+                    raise ValueError(message)
+                merged_ranges += len(item.merged_cells)
+                if merged_ranges > _MAX_MERGED_RANGES:
+                    message = "workbook_merged_range_limit"
                     raise ValueError(message)
                 inventories.append(_inventory(item))
                 if rows and (sheet is None or sheet == item.name):

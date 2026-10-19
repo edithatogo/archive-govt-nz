@@ -8703,3 +8703,5 @@ direct script invocation lacked detect-secrets on PATH and produced no scan;
 corrected via existing uv run --frozen context, without scanner policy changes.
 Checkpoint implementation for frozen native qualification; task remains[~],
 no PR/full-assurance/native qualification claim yet.
+
+Merged-range projection red:1failed/8passed3.82s for the added bound parameter. After cumulative20,000-entry gate:62legacy/XLSX/MCP regressions pass; Ruff/format and retained-interpreter typing pass. Native qualification remains pending; freeze the corrected checkpoint before launch.

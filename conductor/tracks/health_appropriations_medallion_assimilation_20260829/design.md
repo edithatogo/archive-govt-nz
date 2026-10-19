@@ -1342,3 +1342,5 @@ flowchart LR
     L -->|Yes| I[Literal inventory and bounded stored-value previews]
     I --> D[Explicit structural losses; no analytical or rights admission]
 ```
+
+Legacy inventory also caps the cumulative merged-range projection at20,000 entries per workbook, independently of cells, before building its output strings. This is an output/traversal bound, not a pre-parser memory guarantee.

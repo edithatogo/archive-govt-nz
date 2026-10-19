@@ -4136,3 +4136,5 @@ hosted checks. No scanner scope, protection, timeout or coverage change.
 Archive-candidate coverage does not qualify rights, periods, units or legacy
 workbook structure. Next reader must disclose unsupported structure and cached
 value semantics rather than fabricate XLSX-equivalent inventory.
+
+Legacy reader review: merged-range output is independent of rectangular cells. Add a cumulative20,000 merged-range limit before projection; a fixture-backed existing rejection parameter is red before implementation. Keep the post-load allocation limitation explicit.
