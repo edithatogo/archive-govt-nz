@@ -579,3 +579,6 @@ Producer qualification/implementation and dated census checkpoints retain their 
 
 - [Edition-routing actual-source qualification](./budget-edition-routing-native-20261019.json)
 - [Edition-routing original assurance and failure disposition](./budget-edition-routing-assurance-20261019.json)
+
+- [Edition-routing protected delivery](./budget-edition-routing-delivery-20261019.json)
+- [Edition-routing current-state projection v1](./budget-edition-routing-state-20261019-v1.json)

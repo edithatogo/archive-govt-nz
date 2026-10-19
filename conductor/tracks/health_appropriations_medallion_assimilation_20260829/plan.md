@@ -2415,4 +2415,6 @@ previous qualification results unchanged; original local timeout preserved.
 
 - [x] Qualify retained five-input Context Gold original console and initialized read-only stdio MCP replay with unchanged30s response bounds; preserve earlier timeout receipts (context-reader-startup-replay-20261019-v1.json). Broader Phase8 remains open.
 
-- [~] Route hash-bound Budget2023/2024 expenditure through existing shared registry and legacy normalizer; require fact/four-file parity with already-qualified profiles and retained native packages. [M-05, M-06, M-07, M-15; AC-05, AC-11, AC-13]
+- [x] Route hash-bound Budget2023/2024 expenditure through existing shared registry and legacy normalizer; require fact/four-file parity with already-qualified profiles and retained native packages. [M-05, M-06, M-07, M-15; AC-05, AC-11, AC-13]
+
+- [~] Reconcile the40 registered annual Budget2007–2026 workbook resources as a source-separated census cohort; verify retained capture/CAS/WARC/native evidence before bounded missing-source capture, record exact periods/units/rights and reason-coded gaps without rewriting producer checkpoints or whole-edition completion. [M-02, M-03, M-04, M-06, M-11; AC-03, AC-04, AC-09, AC-16]

@@ -3175,3 +3175,26 @@ rerun. Require all7exact-head checks and original all32stages on3clean hosted
 platforms plus resolved reviews before normal merge/prune. See
 budget-edition-routing-assurance-20261019.json. Broader phase/track and all
 rights/currency/analytical joins/publication claims remain open/unchanged.
+
+
+PR725 delivered normally at edeaab6d after seven exact-head successes on
+a4c14ec0 and original all32stages on Ubuntu/macOS/Windows. Native shared/
+legacy paths reproduce existing2023/2024 facts and16prior file hashes.
+Prior interrupted/local124 failures and no-cov replay limitations remain
+immutable; no local full pass or proven timing cause asserted. Fresh fetched
+ancestry/equal94e746f9tree/zero unique commits/patches/clean-main proofs pass;
+topic local/remote/tracking refs pruned, sole primary/CAS/runtime/proofs kept.
+See budget-edition-routing-delivery-20261019.json and derived state v1.
+
+Next bounded Phase1 cohort: reconcile all40 registered annualBudget2007–2026
+expenditure/revenue resources against existing preservation and qualification
+receipts before any further capture. Private crosswalk found10resources with
+later JSON references and6with directly referenced matching CAS objects; these
+are candidate evidence, not inferred capture/admission or exhaustive aliases.
+Resolve retained receipts/WARC bindings and native periods/units/rights gaps;
+capture only eligible missing originals through existing preservation core.
+Keep each edition and all failure/unknown dispositions separate. Preserve dated
+historical/producer checkpoints, no duplicate VoteHealth preflight, no rights,
+currency, denominator, fiscal alignment, analytical or publication inference.
+Root retains sole archive broad/native launch ownership and original900s/80%
+assurance contract. Broader phase/track gates remain open.
