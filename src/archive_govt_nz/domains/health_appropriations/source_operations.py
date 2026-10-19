@@ -11,6 +11,7 @@ from urllib.parse import urlsplit
 from jsonschema import Draft202012Validator
 
 from archive_govt_nz.domains.health_appropriations import (
+    budget_expenditure_2020,
     budget_expenditure_2021,
     budget_expenditure_2022,
     budget_expenditure_2023,
@@ -61,6 +62,12 @@ MAX_CONTEXT = 2048
 _INVALID_SOURCE_OPERATION = "invalid_source_operation"
 PROFILES = MappingProxyType(
     {
+        budget_expenditure_2020.PROFILE: (
+            budget_expenditure_2020.TRANSFORMATION,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "budget_facts.parquet",
+            "row_dispositions.parquet",
+        ),
         budget_expenditure_2021.PROFILE: (
             budget_expenditure_2021.TRANSFORMATION,
             ("input", "normalized", "out_of_scope", "blank", "rejected"),
@@ -95,6 +102,12 @@ PROFILES = MappingProxyType(
             population_annual_silver.TRANSFORMATION,
             ("input", "facts", "numeric", "missing", "provisional", "lineage"),
             "population_facts.parquet",
+            "row_dispositions.parquet",
+        ),
+        "budget-revenue-2020/v1": (
+            budget_revenue.TRANSFORMATION_2020,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "revenue_facts.parquet",
             "row_dispositions.parquet",
         ),
         "budget-revenue-2021/v1": (
@@ -466,6 +479,7 @@ PROFILES = MappingProxyType(
     }
 )
 _REVENUE_VINTAGES = {
+    "budget-revenue-2020/v1": "Budget-2020",
     "budget-revenue-2021/v1": "Budget-2021",
     "budget-revenue-2022/v1": "Budget-2022",
     "budget-revenue-2023/v1": "Budget-2023",
@@ -810,29 +824,16 @@ def _validate(request: SourceRequest, *, dry_run: bool) -> None:
         request.source_vintage,
         request.observed_at,
     )
-    if request.profile == budget_expenditure_2021.PROFILE and not (
-        budget_expenditure_2021.source_binding(
-            request.source_vintage, request.source_locator, request.expected_sha256
-        )
-    ):
-        raise ValueError(_INVALID_SOURCE_OPERATION)
-    if request.profile == budget_expenditure_2022.PROFILE and not (
-        budget_expenditure_2022.source_binding(
-            request.source_vintage, request.source_locator, request.expected_sha256
-        )
-    ):
-        raise ValueError(_INVALID_SOURCE_OPERATION)
-    if request.profile == budget_expenditure_2023.PROFILE and not (
-        budget_expenditure_2023.source_binding(
-            request.source_vintage, request.source_locator, request.expected_sha256
-        )
-    ):
-        raise ValueError(_INVALID_SOURCE_OPERATION)
-    if request.profile == budget_expenditure_2024.PROFILE and not (
-        budget_expenditure_2024.source_binding(
-            request.source_vintage, request.source_locator, request.expected_sha256
-        )
-    ):
+    expenditure_bindings = {
+        budget_expenditure_2020.PROFILE: budget_expenditure_2020.source_binding,
+        budget_expenditure_2021.PROFILE: budget_expenditure_2021.source_binding,
+        budget_expenditure_2022.PROFILE: budget_expenditure_2022.source_binding,
+        budget_expenditure_2023.PROFILE: budget_expenditure_2023.source_binding,
+        budget_expenditure_2024.PROFILE: budget_expenditure_2024.source_binding,
+    }
+    if request.profile in expenditure_bindings and not expenditure_bindings[
+        request.profile
+    ](request.source_vintage, request.source_locator, request.expected_sha256):
         raise ValueError(_INVALID_SOURCE_OPERATION)
     if request.profile in _REVENUE_VINTAGES and (
         request.source_vintage != _REVENUE_VINTAGES[request.profile]
@@ -870,6 +871,10 @@ def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile disp
         "source_vintage": request.source_vintage,
         "source_locator": request.source_locator,
     }
+    if request.profile == budget_expenditure_2020.PROFILE:
+        return budget_expenditure_2020.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
     if request.profile == budget_expenditure_2021.PROFILE:
         return budget_expenditure_2021.normalize(
             request.source, request.output_dir, **context, dry_run=dry_run

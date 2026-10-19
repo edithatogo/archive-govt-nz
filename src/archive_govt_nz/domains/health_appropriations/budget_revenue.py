@@ -36,6 +36,12 @@ MAX_ROWS = 1000
 MAX_TEXT = 4096
 MAX_ID = 2**63 - 1
 _DISPATCH_SELECTION_ERROR = "unsupported_budget_revenue_dispatch_selection"
+TRANSFORMATION_2020 = "budget-2020-health-revenue/v1"
+MAX_ROWS_2020 = 1026
+SOURCE_SHA256_2020 = "5b3fc350215110052f67475617540869ce9cb17d9bbc8824120c8911c35c73f3"
+SOURCE_LOCATOR_2020 = (
+    "https://www.treasury.govt.nz/sites/default/files/2020-05/b20-revenue-data.xlsx"
+)
 TRANSFORMATION_2021 = "budget-2021-health-revenue/v1"
 MAX_ROWS_2021 = 1014
 SOURCE_SHA256_2021 = "b573a4e5e08bd725052acb28f9409db36d48b538ef55d4414f90ba7747102d3a"
@@ -98,6 +104,28 @@ DEFINITIONS = {
         "App ID: Number used to uniquely identify each Crown revenue "
         "or capital receipt line."
     ),
+}
+DEFINITIONS_2020 = {
+    "B4": (
+        "The Revenue workbook contains details of  actual government Crown "
+        "revenue and capital receipts for the years ended 30 June 2016, 2017, "
+        "2018 and 2019; estimated actual government Crown revenue and capital "
+        "receipts for the year ending 30 June 2020 and budgeted government "
+        "Crown revenue and capital receipts for the year ending 30 June 2021 as "
+        "published in Budget 2020."
+    ),
+    "B36": DEFINITIONS["B37"],
+    "B37": DEFINITIONS["B38"],
+    "B38": DEFINITIONS["B39"],
+    "B42": DEFINITIONS["B43"],
+}
+PERIOD_TYPES_2020 = {
+    2016: "Actuals",
+    2017: "Actuals",
+    2018: "Actuals",
+    2019: "Actuals",
+    2020: "Estimated Actual",
+    2021: "Main Estimates",
 }
 DEFINITIONS_2021 = {
     "B4": (
@@ -272,6 +300,8 @@ def _require(condition: object) -> None:
 
 def _source_binding(vintage: str, locator: str, digest: str) -> bool:
     """Bind historical profiles to their reviewed original observations."""
+    if vintage == "Budget-2020":
+        return digest == SOURCE_SHA256_2020 and locator == SOURCE_LOCATOR_2020
     if vintage == "Budget-2021":
         return digest == SOURCE_SHA256_2021 and locator == SOURCE_LOCATOR_2021
     if vintage == "Budget-2022":
@@ -372,6 +402,7 @@ def _extract(  # noqa: PLR0913 - edition-specific source contracts are explicit.
     definitions: dict[str, str],
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
     max_rows = {
+        TRANSFORMATION_2020: MAX_ROWS_2020,
         TRANSFORMATION_2021: MAX_ROWS_2021,
         TRANSFORMATION_2022: MAX_ROWS_2022,
         TRANSFORMATION_2023: MAX_ROWS_2023,
@@ -431,11 +462,10 @@ def _extract(  # noqa: PLR0913 - edition-specific source contracts are explicit.
             )
             for field, cell in zip(FIELDS.values(), cells, strict=True)
         ]
-        intro, unit, year, amount_type, app_id = (
-            ("B4", "B35", "B36", "B37", "B41")
-            if transformation == TRANSFORMATION_2021
-            else ("B3", "B37", "B38", "B39", "B43")
-        )
+        intro, unit, year, amount_type, app_id = {
+            TRANSFORMATION_2020: ("B4", "B36", "B37", "B38", "B42"),
+            TRANSFORMATION_2021: ("B4", "B35", "B36", "B37", "B41"),
+        }.get(transformation, ("B3", "B37", "B38", "B39", "B43"))
         links += [
             ("source_vintage", f"'Explanation'!{intro}", definitions[intro]),
             ("amount_type", f"'Explanation'!{intro}", definitions[intro]),
@@ -473,7 +503,7 @@ def normalize_budget_revenue(  # noqa: PLR0913 - source observation fields are e
     source_vintage: str = "Budget-2025",
     dry_run: bool = False,
 ) -> dict[str, Any]:
-    """Extract a reviewed Budget-2021 through Budget-2026 profile.
+    """Extract a reviewed Budget-2020 through Budget-2026 profile.
 
     Amounts come from literal OOXML numeric tokens, never formula caches or
     binary-float rendering. Notice text is only fingerprinted, not interpreted.
@@ -486,6 +516,7 @@ def normalize_budget_revenue(  # noqa: PLR0913 - source observation fields are e
         and (not dry_run or not output_dir.exists())
     )
     profiles = {
+        "Budget-2020": (TRANSFORMATION_2020, PERIOD_TYPES_2020, DEFINITIONS_2020),
         "Budget-2021": (TRANSFORMATION_2021, PERIOD_TYPES_2021, DEFINITIONS_2021),
         "Budget-2022": (TRANSFORMATION_2022, PERIOD_TYPES_2022, DEFINITIONS_2022),
         "Budget-2023": (TRANSFORMATION_2023, PERIOD_TYPES_2023, DEFINITIONS_2023),

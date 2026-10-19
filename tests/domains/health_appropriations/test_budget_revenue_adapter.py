@@ -148,7 +148,7 @@ def test_revenue_adapter_rejects_unknown_layouts_and_editions() -> None:
     assert invalid.layout == "unknown"
     assert invalid.records == ()
     with pytest.raises(ValueError, match="unsupported_budget_revenue_vintage"):
-        _adapter("Budget-2020").extract(
+        _adapter("Budget-2019").extract(
             payload, source_sha256=hashlib.sha256(payload).hexdigest()
         )
     with pytest.raises(ValueError, match="source_hash_mismatch"):

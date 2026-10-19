@@ -6,6 +6,7 @@ from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
 from archive_govt_nz.domains.health_appropriations import (
+    budget_expenditure_2020,
     budget_expenditure_2021,
     budget_expenditure_2022,
     budget_expenditure_2023,
@@ -133,6 +134,7 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
     )
     if budget_expenditure is not None:
         expenditure_registration = {
+            budget_expenditure_2020.VINTAGE: budget_expenditure_2020.registration,
             budget_expenditure_2021.VINTAGE: budget_expenditure_2021.registration,
             budget_expenditure_2022.VINTAGE: budget_expenditure_2022.registration,
             budget_expenditure_2023.VINTAGE: budget_expenditure_2023.registration,

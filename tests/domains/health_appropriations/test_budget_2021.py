@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import re
 from datetime import date
 from importlib import import_module
 from pathlib import Path
@@ -52,28 +53,34 @@ OVERVIEWS = {
 
 
 def fixture_source(
-    root: Path, monkeypatch: pytest.MonkeyPatch, kind: str
+    root: Path, monkeypatch: pytest.MonkeyPatch, kind: str, *, edition: int = 2021
 ) -> tuple[Path, str]:
+    assert edition in (2020, 2021)
+    overview = re.sub(
+        r"20[0-9]{2}",
+        lambda match: str(int(match[0]) + edition - 2021),
+        OVERVIEWS[kind],
+    )
     book = Workbook()
     raw = book.active
     assert raw is not None
     raw.title = "Raw Data"
     raw.append(list(EXPENSE_FIELDS if kind == "expenditure" else revenue.FIELDS))
     for year, label in (
-        (2017, "Actuals"),
-        (2021, "Estimated Actual"),
-        (2022, "Main Estimates"),
+        (edition - 4, "Actuals"),
+        (edition, "Estimated Actual"),
+        (edition + 1, "Main Estimates"),
     ):
         raw.append(row(kind, year, label))
     notes = book.create_sheet("Explanation")
     if kind == "expenditure":
         for old, value in EXPENSE_DEFINITIONS.items():
-            notes[f"B{int(old[1:]) - 3}"] = value
-        notes["B3"] = OVERVIEWS[kind]
+            notes[f"B{int(old[1:]) + 2018 - edition}"] = value
+        notes["B3"] = overview
     else:
         for old, value in revenue.DEFINITIONS.items():
-            notes["B4" if old == "B3" else f"B{int(old[1:]) - 2}"] = (
-                OVERVIEWS[kind] if old == "B3" else value
+            notes["B4" if old == "B3" else f"B{int(old[1:]) + 2019 - edition}"] = (
+                overview if old == "B3" else value
             )
     intro = book.create_sheet("Intro")
     for cell in ("A10", "A13", "A14"):
@@ -84,14 +91,14 @@ def fixture_source(
     digest = hashlib.sha256(path.read_bytes()).hexdigest()
     module = (
         import_module(
-            "archive_govt_nz.domains.health_appropriations.budget_expenditure_2021"
+            f"archive_govt_nz.domains.health_appropriations.budget_expenditure_{edition}"
         )
         if kind == "expenditure"
         else revenue
     )
     monkeypatch.setattr(
         module,
-        "SOURCE_SHA256" if kind == "expenditure" else "SOURCE_SHA256_2021",
+        "SOURCE_SHA256" if kind == "expenditure" else f"SOURCE_SHA256_{edition}",
         digest,
     )
     return path, digest
