@@ -19,6 +19,13 @@ from archive_govt_nz.domains.health_appropriations import (
 from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
     dispatch_bronze,
 )
+from archive_govt_nz.domains.health_appropriations.adapter_registry import (
+    AdapterContext,
+    context_adapter_registrations,
+)
+from archive_govt_nz.domains.health_appropriations.budget import (
+    normalize_budget_workbook,
+)
 from archive_govt_nz.domains.health_appropriations.budget_adapter import (
     budget_expenditure_registration,
 )
@@ -124,6 +131,29 @@ def test_qualifiers_tokens_lineage_and_repeat_build(
         r["field"] == "periodicity" and r["source_coordinate"] == "'Explanation'!B39"
         for r in links
     )
+    adapter_context = AdapterContext(
+        source_locator=exp.SOURCE_LOCATOR,
+        source_vintage=exp.VINTAGE,
+        observed_at=OBSERVED,
+    )
+    routed = dispatch_bronze(
+        path.read_bytes(),
+        source_sha256=digest,
+        media_type=exp.MEDIA_TYPE,
+        registrations=context_adapter_registrations(
+            cpi=adapter_context,
+            population=adapter_context,
+            qes=adapter_context,
+            gdp=adapter_context,
+            budget_expenditure=adapter_context,
+        ),
+    )
+    assert list(routed.output.records) == [fact]
+    legacy = tmp_path / "legacy"
+    normalize_budget_workbook(path, legacy, **context(digest))
+    assert {p.name: p.read_bytes() for p in legacy.iterdir()} == {
+        p.name: p.read_bytes() for p in first.iterdir()
+    }
 
 
 def test_all_rows_accounted_and_unqualified_rows_not_changed(

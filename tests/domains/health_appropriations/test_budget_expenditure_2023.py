@@ -17,6 +17,13 @@ from archive_govt_nz.domains.health_appropriations import (
 from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
     dispatch_bronze,
 )
+from archive_govt_nz.domains.health_appropriations.adapter_registry import (
+    AdapterContext,
+    context_adapter_registrations,
+)
+from archive_govt_nz.domains.health_appropriations.budget import (
+    normalize_budget_workbook,
+)
 from archive_govt_nz.domains.health_appropriations.budget_adapter import (
     budget_expenditure_registration,
 )
@@ -129,6 +136,25 @@ def test_2023_source_periods_and_competing_dispatch(
     assert len(overview_links) == 6
     assert {r.field for r in overview_links} == {"source_vintage", "amount_type"}
     assert not prior.source_binding("Budget-2023", exp.SOURCE_LOCATOR, digest)
+    adapter_context = AdapterContext(**args)
+    routed = dispatch_bronze(
+        path.read_bytes(),
+        source_sha256=digest,
+        media_type=prior.MEDIA_TYPE,
+        registrations=context_adapter_registrations(
+            cpi=adapter_context,
+            population=adapter_context,
+            qes=adapter_context,
+            gdp=adapter_context,
+            budget_expenditure=adapter_context,
+        ),
+    )
+    assert list(routed.output.records) == facts
+    legacy = tmp_path / "legacy"
+    normalize_budget_workbook(path, legacy, **context(digest))
+    assert {p.name: p.read_bytes() for p in legacy.iterdir()} == {
+        p.name: p.read_bytes() for p in output.iterdir()
+    }
 
 
 @pytest.mark.parametrize("extra", [0, 1])

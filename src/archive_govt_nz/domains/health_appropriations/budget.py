@@ -189,10 +189,17 @@ def normalize_budget_workbook(
     """
     from archive_govt_nz.domains.health_appropriations import (  # noqa: PLC0415 - Pinned parser shares this module's schema.
         budget_expenditure_2022,
+        budget_expenditure_2023,
+        budget_expenditure_2024,
     )
 
-    if source_vintage == budget_expenditure_2022.VINTAGE:
-        return budget_expenditure_2022.normalize(
+    edition_normalizer = {
+        budget_expenditure_2022.VINTAGE: budget_expenditure_2022.normalize,
+        budget_expenditure_2023.VINTAGE: budget_expenditure_2023.normalize,
+        budget_expenditure_2024.VINTAGE: budget_expenditure_2024.normalize,
+    }.get(source_vintage)
+    if edition_normalizer is not None:
+        return edition_normalizer(
             source,
             output_dir,
             expected_sha256=expected_sha256,
