@@ -188,6 +188,7 @@ def normalize_budget_workbook(
     normalized. A passed receipt establishes extraction, not publication rights.
     """
     from archive_govt_nz.domains.health_appropriations import (  # noqa: PLC0415 - Pinned parser shares this module's schema.
+        budget_expenditure_2020,
         budget_expenditure_2021,
         budget_expenditure_2022,
         budget_expenditure_2023,
@@ -195,6 +196,7 @@ def normalize_budget_workbook(
     )
 
     edition_normalizer = {
+        budget_expenditure_2020.VINTAGE: budget_expenditure_2020.normalize,
         budget_expenditure_2021.VINTAGE: budget_expenditure_2021.normalize,
         budget_expenditure_2022.VINTAGE: budget_expenditure_2022.normalize,
         budget_expenditure_2023.VINTAGE: budget_expenditure_2023.normalize,

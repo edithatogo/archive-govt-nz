@@ -635,3 +635,5 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [Budget2021 source-native Silver qualification](./budget-2021-native-qualification-20261020-v2.json)
 
 - [Budget2021 original local assurance](./budget-2021-original-assurance-20261020-v2.json)
+
+- [Budget2021 protected delivery and cleanup](./budget-2021-delivery-20261020.json)

@@ -50,6 +50,7 @@ class BudgetExpenditureAdapter:
     def matches_layout(self, bronze: bytes) -> bool:
         """Recognize only the named-column expenditure profile."""
         if len(bronze) > _MAX_SOURCE_BYTES or self.source_vintage in {
+            "Budget-2020",
             "Budget-2021",
             "Budget-2022",
             "Budget-2023",
@@ -82,6 +83,7 @@ class BudgetExpenditureAdapter:
         if actual != source_sha256:
             raise ValueError(_SOURCE_HASH_ERROR)
         if self.source_vintage in {
+            "Budget-2020",
             "Budget-2021",
             "Budget-2022",
             "Budget-2023",
