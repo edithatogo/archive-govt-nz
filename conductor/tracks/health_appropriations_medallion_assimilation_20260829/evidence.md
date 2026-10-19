@@ -3371,3 +3371,16 @@ findings were fixed with parentheses before final replay. No new test function,
 runtime dependency or capture/CAS/WARC behaviour. Full secret scan and original
 harness remain pending. See separate20261020adjudication receipt; earlier
 native/source producer bytes and unresolved rights/definition claims stay intact.
+
+
+The second fast scan classifies a new historical receipt pending-status value
+as a keyword candidate. Its candidate hash equals the documented pending token,
+not a credential; preserve that exact receipt. Extend the existing exact
+metadata table with this one document SHA256/candidate/detector tuple. Each
+entry now pins its own detector type; no generic status/key/path exclusion.
+Existing guard expanded by one profile: red1fail/2pass0.97s;32focused checks
+pass3.63s and Ruff/format/typing pass. Wrong type/candidate/line or edited
+bytes still reject. No new test function, runtime dependency, capture behaviour,
+coverage target or time limit changes. Further receipts use structured gate
+states while historical producer fields stay immutable. New full scan/harness
+pending; no full-pass or source-rights/definition/track completion claim.
