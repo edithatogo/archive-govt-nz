@@ -3985,3 +3985,17 @@ kernel lease free and all frozen pins unchanged. Recipes, frozen requests,
 markers, logs, layouts, inventory and fixity archived outsideGit with hash
 readback. See budget-preservation-qualification-20261019-v1.json. Full original
 harness and protected delivery remain pending; cohort/phase/track incomplete.
+
+
+Original ./scripts/validate.sh at41f2c92d/tree35c69da6: lock,Conductor,
+format,lint,types pass. Test stage reaches98% with7979observed
+passes/0failures before original900s limit, actualexit124; no final
+pytest/coverage summary and no all32localpass claim. Both new preservation
+contracts and both previous unrelated failure nodes pass in this broad run.
+Underlying timing/capacity cause unproven; no blind repeat or gate changes.
+OwnerPID/PGID absent, independent kernel lease free, all1787frozenpins
+unchanged at completion. Full log/config/runtime/marker/postflight archived
+and hash-readback verified. Exact-head all32 hosted3platform assurance and
+all required checks still required before protected merge. See
+budget-preservation-assurance-20261019-v1.json. Native capture/verification
+producer checkpoints remain immutable and broad phase/track gates remain open.

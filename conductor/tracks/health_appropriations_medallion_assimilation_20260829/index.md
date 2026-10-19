@@ -592,3 +592,5 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [Final preservation-only focused validation](./preservation-only-validation-20261019-v1.json)
 
 - [Budget preservation native qualification](./budget-preservation-qualification-20261019-v1.json)
+
+- [Budget preservation original local assurance](./budget-preservation-assurance-20261019-v1.json)
