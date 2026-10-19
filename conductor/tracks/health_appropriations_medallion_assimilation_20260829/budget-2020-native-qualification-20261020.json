@@ -1,0 +1,221 @@
+{
+  "evidence_directory": "budget-2020-silver-20261020",
+  "native_summary_sha256": "8d2d91d573ebc3062430a02b173d4abcf57e7061406f068cde542de5158056cc",
+  "original_full_assurance": "pending",
+  "prior_packages": [
+    {
+      "comparison": "four_hashes_equal",
+      "kind": "expenditure",
+      "output_sha256": {
+        "MANIFEST.json": "6e3bae12ffca9d26fc5665f1de32edda70f4f072d1113b7ded06728b738331db",
+        "budget_facts.parquet": "ba1e036f9f8adc47067d6d353c4a14f6e9dabecf064fd26252ec8b5ff458118a",
+        "field_lineage.parquet": "4822d77553ba5c8b0b05ad77075b4a9a85131c40d2da3a6f5d735c8b59c60db3",
+        "row_dispositions.parquet": "de6de97179553e0fee281ab318e0173d7e6fb187889db99979b92caf220ae576"
+      },
+      "vintage": "Budget-2021"
+    },
+    {
+      "comparison": "four_hashes_equal",
+      "kind": "revenue",
+      "output_sha256": {
+        "MANIFEST.json": "89d5138920ad5895d3497b3ee42b13f08d9f08f29e02e2fc4587fe710b7e57c5",
+        "field_lineage.parquet": "60073a462211534b96c5fe4d6c895351cca5037bf52defe27415f66b411431c1",
+        "revenue_facts.parquet": "1384974b404030ffb605c240a765910fac1a361d274bb41f4bac089337a3f089",
+        "row_dispositions.parquet": "82f51ed8589527ac65922bd305f5e9c958fa1c89d9b94ddd238e871c8e2766e1"
+      },
+      "vintage": "Budget-2021"
+    },
+    {
+      "comparison": "four_hashes_equal",
+      "kind": "expenditure",
+      "output_sha256": {
+        "MANIFEST.json": "b43d3b4a4421f77883e278a55d66a7da93728382b86f8f87db36f16a0ec05a00",
+        "budget_facts.parquet": "afb3814a366013acda4dbc0148f6b09826838a1404745b6ed4dbc78c368fc745",
+        "field_lineage.parquet": "0e4efa7822569761bfd212fc19d7ed17abba5f2b7d065666233523c8719fdbe1",
+        "row_dispositions.parquet": "f25ee897f2f3df0b24751dbac162b48d7bfed1456179206476729e6a5290e027"
+      },
+      "vintage": "Budget-2024"
+    },
+    {
+      "comparison": "four_hashes_equal",
+      "kind": "expenditure",
+      "output_sha256": {
+        "MANIFEST.json": "11000774d1210242f29150ffd4d7a05f634da2a32253d7cb671ec1f78f10895d",
+        "budget_facts.parquet": "88866708653c1ec511e76c2958798f644c6e4475858ceeae7864745df1d502ca",
+        "field_lineage.parquet": "0978f6ff9eb100fda628b938f50d86c2a1c04a5026b114a5895115e22a1570cc",
+        "row_dispositions.parquet": "2887433a6476737e49bcdd831eb89a95e418c20be3aafe6a26cb9818170498ec"
+      },
+      "vintage": "Budget-2022"
+    },
+    {
+      "comparison": "four_hashes_equal",
+      "kind": "revenue",
+      "output_sha256": {
+        "MANIFEST.json": "0ca5990b4535439341dde1aea9602d17ebc2dc55e33f7874e39e8bad2bd63972",
+        "field_lineage.parquet": "c90edf229ddd662cdb6d23aa00a224fdff22f5fc484fdd0fe9ffd29fccb716cd",
+        "revenue_facts.parquet": "7597f367449e8410d9d280938ea3f0b32a7d1318c1e0a10346071455c2451153",
+        "row_dispositions.parquet": "ab24983065f65c468c7f1b0e46a7a50bc4c2a67d9af88f7e561f25db9c0dfcba"
+      },
+      "vintage": "Budget-2023"
+    },
+    {
+      "comparison": "four_hashes_equal",
+      "kind": "revenue",
+      "output_sha256": {
+        "MANIFEST.json": "0aaf0ea6ae51ae9eefe7bcd9c0d3317dc9ece422e77c4d4ce138e99e1d3dde08",
+        "field_lineage.parquet": "202299f3ee562fc6261bce7b325cc0f0da6791d859a12658a4db4baff5aea2ef",
+        "revenue_facts.parquet": "a52f6c96ab9d20dc0fe907f31394d937100b75f43e07796cc0913aa38d0079a2",
+        "row_dispositions.parquet": "66b2ef982e8a16a1a955106173ba2b26f3a31780ba62bab2c5e7f4e4305d2663"
+      },
+      "vintage": "Budget-2022"
+    },
+    {
+      "comparison": "four_hashes_equal",
+      "kind": "expenditure",
+      "output_sha256": {
+        "MANIFEST.json": "6a0e88eccbca41184283761dcea0511c93c343d91bd152b432e686dfe2a3b52c",
+        "budget_facts.parquet": "cb56fd3ae7eea53fa432b1fa5220b8b0121f6110e6a2215a4e7c089be2ccff91",
+        "field_lineage.parquet": "3a50df31e0ce6b611faaccb5c03f542dd473dc9c6048d768fc99941f3070b6ff",
+        "row_dispositions.parquet": "dc7ff03cb75d0456b4b06fc98043c7e03b99692aab6a707292c98def89805a20"
+      },
+      "vintage": "Budget-2023"
+    },
+    {
+      "comparison": "four_hashes_equal",
+      "kind": "revenue",
+      "output_sha256": {
+        "MANIFEST.json": "d30a173f4a55ce6724571650c2f10b99aac7cc0b9b211063ddef86f75437a9ca",
+        "field_lineage.parquet": "1e2899de12df259df83af0d11a4058474a68ad252e7f22a2b5ccc06a1e96b566",
+        "revenue_facts.parquet": "0bc2c893daab424b75018ad13772c962b8c5a0d44a5658ab70502beee52486be",
+        "row_dispositions.parquet": "92dfdbb8ef48047567556301d276306154d33f862da0143e884e7ebdab4686fa"
+      },
+      "vintage": "Budget-2024"
+    }
+  ],
+  "producer_head": "7972795bd5bfb9e2592a751edd0d47b6aa1e4309",
+  "producer_tree": "7ed98d97bc674325873cd22f6b5aaff9903a3e6a",
+  "protected_delivery": "pending",
+  "resources": [
+    {
+      "common_dispatch": "facts_equal",
+      "counts": {
+        "blank": 0,
+        "input": 6303,
+        "normalized": 318,
+        "out_of_scope": 5985,
+        "rejected": 0
+      },
+      "fact_count": 318,
+      "kind": "expenditure",
+      "lineage_rows": 8586,
+      "operations": "four_hashes_equal",
+      "output_sha256": {
+        "MANIFEST.json": "f4a19f9eb43c8b31682d79fe1e6dab3d38ba2f8f307e219864a81c7a98409bfd",
+        "budget_facts.parquet": "cc5a9a8cf2410459f74a4f33f759e598bd1291efb04ce70c883786b8ec4614a5",
+        "field_lineage.parquet": "66bca8688f0f2fd8d83d249f05f2389ece5a44d1bd32983626f38eb2e5fb8226",
+        "row_dispositions.parquet": "f973f1cde45a4fb7736e2742eacc4801b1815bc5438d68bb5c099cf225116195"
+      },
+      "preflight_attempts": [
+        {
+          "attempt": 1,
+          "mode": "cli",
+          "seconds": 14.75531854107976,
+          "status": "preflight_passed"
+        },
+        {
+          "attempt": 2,
+          "mode": "cli",
+          "seconds": 18.135143124964088,
+          "status": "preflight_passed"
+        },
+        {
+          "attempt": 1,
+          "mode": "mcp",
+          "seconds": 19.076625959016383,
+          "status": "preflight_passed"
+        },
+        {
+          "attempt": 2,
+          "mode": "mcp",
+          "seconds": 12.818743959069252,
+          "status": "preflight_passed"
+        }
+      ],
+      "preflight_seconds": {
+        "cli": 18.135143124964088,
+        "mcp": 12.818743959069252
+      },
+      "repeat_build": "four_hashes_equal",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2020-05/b20-expenditure-data.xlsx",
+      "source_observed_at": "2026-10-19T19:24:13.217745+00:00",
+      "source_rows_accounted": 6303,
+      "source_sha256": "d6a4f00122a05a86bf905f2c43f53cc065b8f033ee080647cf8033961c43aced",
+      "vintage": "Budget-2020"
+    },
+    {
+      "common_dispatch": "facts_equal",
+      "counts": {
+        "blank": 0,
+        "input": 1026,
+        "normalized": 62,
+        "out_of_scope": 964,
+        "rejected": 0
+      },
+      "fact_count": 62,
+      "kind": "revenue",
+      "lineage_rows": 992,
+      "operations": "four_hashes_equal",
+      "output_sha256": {
+        "MANIFEST.json": "8bdbe558bd4b73de32275e8a1b99700f04f420c8ce56a4deb9373adce1f39dbd",
+        "field_lineage.parquet": "67b2c881a4ccafa949fb7b884365d672ad73a7167cc0cbb90a7972d3fc213e6d",
+        "revenue_facts.parquet": "60e4977e977e16cc5bdcc7ae226376161132acd77f7303eadb191d09aee2902c",
+        "row_dispositions.parquet": "754be590bec18c4e47f9778336514f4f31aa2b61e6d27e49028ee73092087502"
+      },
+      "preflight_attempts": [
+        {
+          "attempt": 1,
+          "mode": "cli",
+          "seconds": 5.4110210000071675,
+          "status": "preflight_passed"
+        },
+        {
+          "attempt": 2,
+          "mode": "cli",
+          "seconds": 4.8830469159875065,
+          "status": "preflight_passed"
+        },
+        {
+          "attempt": 1,
+          "mode": "mcp",
+          "seconds": 5.142529250006191,
+          "status": "preflight_passed"
+        },
+        {
+          "attempt": 2,
+          "mode": "mcp",
+          "seconds": 4.691326834028587,
+          "status": "preflight_passed"
+        }
+      ],
+      "preflight_seconds": {
+        "cli": 4.8830469159875065,
+        "mcp": 4.691326834028587
+      },
+      "repeat_build": "four_hashes_equal",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2020-05/b20-revenue-data.xlsx",
+      "source_observed_at": "2026-10-19T19:24:13.218009+00:00",
+      "source_rows_accounted": 1026,
+      "source_sha256": "5b3fc350215110052f67475617540869ce9cb17d9bbc8824120c8911c35c73f3",
+      "vintage": "Budget-2020"
+    }
+  ],
+  "schema_version": "health-budget-source-native-qualification/v1",
+  "scope_limits": {
+    "broader_track": "in_progress",
+    "canonical_gold_admission": "not_performed",
+    "cross_edition_joins": "not_approved",
+    "currency": "not_verified",
+    "rights": "not_evaluated",
+    "valid_time_start": "not_asserted"
+  }
+}
