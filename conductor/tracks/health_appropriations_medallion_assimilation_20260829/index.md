@@ -646,3 +646,5 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [Legacy Budget source census](./source-census-budget-legacy-20261020.md) and [machine receipt](./source-census-budget-legacy-20261020.json)
 
 - [Legacy census source/reference validation](./source-census-budget-legacy-validation-20261020.json)
+
+- [Legacy census original local assurance](./source-census-budget-legacy-assurance-20261020.json)
