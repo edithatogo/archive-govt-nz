@@ -12,6 +12,7 @@ from pathlib import Path
 import pyarrow.parquet as pq
 import pytest
 from openpyxl import Workbook
+from openpyxl.reader.excel import ExcelReader
 
 from archive_govt_nz.domains.health_appropriations import budget, workbook_common
 from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
@@ -401,3 +402,27 @@ def test_command_reports_status(
     )
     assert result.returncode == returncode, result.stderr
     assert json.loads(result.stdout)["status"] == status
+
+
+def test_legacy_budget_selection_and_extraction_share_one_checked_decode(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    source = tmp_path / "original.xlsx"
+    digest = _source(source, [ROW])
+    reads = []
+    original = ExcelReader.read
+
+    def counted(reader: ExcelReader) -> None:
+        reads.append(reader)
+        return original(reader)
+
+    monkeypatch.setattr(ExcelReader, "read", counted)
+    receipt = _run(source, tmp_path / "output", digest)
+    assert receipt["counts"] == {
+        "input": 1,
+        "normalized": 1,
+        "out_of_scope": 0,
+        "blank": 0,
+        "rejected": 0,
+    }
+    assert len(reads) == 1

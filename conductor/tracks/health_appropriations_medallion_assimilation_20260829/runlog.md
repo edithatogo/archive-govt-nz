@@ -8890,3 +8890,26 @@ baseline rather than reuse its partial state. Apply120s to each original's build
 and900s to a complete batch. Native timing observation uses qualified Python3.14
 local monitoring events with no function/argument/result replacement. Underlying
 source operations, flags and repository stage/CLI deadlines remain unchanged.
+
+Native input attempt1 on04ebc827: actual unchanged five-source API with local
+start/return timing (no function/argument/result replacement). Historical2024
+and2025 complete2.195s/1.009s; Budget2025 exceeds the unchanged120s source build
+cap inside repeated openpyxl decoding. No complete batch receipt or success
+claim. All frozen pins unchanged; owner/group absent and independent lease free.
+Add a decoder-count refusal before reusing the existing checked workbook owner
+across legacy selection and extraction. Earlier local-event probe rejected the
+unsupported unwind bit; corrected to runtime-confirmed start/return events.
+
+Legacy decoder-count red test observes7 actual ExcelReader.read calls for one
+plain Budget2025 extraction. Existing exact-byte inspected_workbook ownership
+now spans selection, inventory and extraction; both legacy layout probes borrow
+the owner. No additional cache or parser tolerance is introduced. All116 Budget
+expenditure/revenue/adapter checks pass15.14s, including one real decoder call
+for the new source fixture. Qualify actual retained-source bytes and timing next.
+
+Inspection/recovery regression47pass/2skip18.06s; legacy focused typing is clean.
+The private native controller's exception marker was reviewed and corrected for
+attempt2 so a late parity assertion cannot be overwritten by an earlier zero
+status. Attempt1's genuine Budget2025 timeout marker remains1 and unchanged.
+All new attempt2 control/output names are distinct; per-source120s and stage900s
+bounds remain explicit. No underlying function, argument or result is replaced.

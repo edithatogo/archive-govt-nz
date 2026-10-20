@@ -35,3 +35,9 @@ bound. The native verifier observes local entry/return/unwind events of the
 unchanged build function and arms a source timer; it does not replace functions,
 arguments, profiles or results. This applies the bounds at their actual scopes
 while exercising the complete public batch API and every declared original.
+
+The legacy Budget2025/2026 unblocker reuses the already established exact-byte
+inspection owner for selection/inventory/extraction, including header probes.
+It retains structural/formula/cache checks and excludes persistent/path caches.
+All existing source selection identities, field values, row accounting and
+receipt bytes require parity evidence; limits are not raised to mask decoding.
