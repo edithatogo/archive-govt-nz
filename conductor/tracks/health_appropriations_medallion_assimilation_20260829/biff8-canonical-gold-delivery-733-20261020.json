@@ -1,0 +1,71 @@
+{
+  "checked_head": "49894be86519bd944f8ac70d6b3f178dcfc95a09",
+  "checked_tree": "43bcff6626356c5d47d6137a3ebf55585a999577",
+  "cleanup": {
+    "checked_head": "49894be86519bd944f8ac70d6b3f178dcfc95a09",
+    "checked_tree": "43bcff6626356c5d47d6137a3ebf55585a999577",
+    "clean": true,
+    "hosted_original_all32": "passed_three_platforms",
+    "local_original_full": "incomplete_retained",
+    "main_synced": true,
+    "merge": "ae26a469139f31bc1416590a42d81405d216a712",
+    "pr": 733,
+    "primary_runtime_CAS_and_proofs_retained": true,
+    "topic_local_absent": true,
+    "topic_remote_absent": true,
+    "topic_tracking_absent": true,
+    "whole_track_complete": false,
+    "worktrees": "worktree /Volumes/PortableSSD/GitHub/archive-govt-nz\nHEAD ae26a469139f31bc1416590a42d81405d216a712\nbranch refs/heads/main"
+  },
+  "hosted": {
+    "macos": {
+      "job": 118604299687,
+      "log_sha256": "b834ecbe529cb285e87df0dc67085882efc7041a9412e8e8742e370a1b644ff5",
+      "pytest_summary": [
+        "8155",
+        "30",
+        "18",
+        "743.15"
+      ],
+      "stage_count": 32
+    },
+    "ubuntu": {
+      "job": 118604299646,
+      "log_sha256": "0ffd0328e5f4c3883284c16e4b8a4340f927ea82e7f267b26f5505220123d13d",
+      "pytest_summary": [
+        "8155",
+        "30",
+        "18",
+        "532.79"
+      ],
+      "stage_count": 32
+    },
+    "windows": {
+      "job": 118604299894,
+      "log_sha256": "2c5db8a8e2d51d16137fb89fd8c1353f36f62b66a06ab9dd0ae7a3c454b8c1d5",
+      "pytest_summary": [
+        "8149",
+        "36",
+        "18",
+        "485.38"
+      ],
+      "stage_count": 32
+    }
+  },
+  "local_observations": "biff8-canonical-gold-original-assurance-20261020.json",
+  "local_original_full_pass": false,
+  "merge": "ae26a469139f31bc1416590a42d81405d216a712",
+  "pr": "https://github.com/edithatogo/archive-govt-nz/pull/733",
+  "required_checks": [
+    "Assurance (macos-latest)",
+    "Assurance (ubuntu-latest)",
+    "Assurance (windows-latest)",
+    "CodeQL",
+    "analyze",
+    "codecov/patch",
+    "lint"
+  ],
+  "review": "Codex_completed_no_findings_and_maintainer_review",
+  "schema_version": "archive-govt-nz.health-track-delivery/v1",
+  "whole_track_complete": false
+}

@@ -8863,3 +8863,12 @@ Original full3 on2a36724d terminated124 at the unchanged900s test-stage cap: 582
 Full3 log correction: one observed checkpoint property-test failure preceded the cap; the earlier live no-failure statement was incomplete. Its final trace was not emitted before termination. Exact unchanged contract rerun passes1test in8.34s. Original failure remains recorded; no definitive cause or full local pass is inferred. All tests and timing/health-check settings remain unchanged. Hosted exact-head original three-platform assurance must clear the complete suite.
 
 Supplemental original-command selection (not a full harness substitute) passes conductor,66schemas/56documents,audit,licences,secrets and114component SBOM on ec82b990. Marker0, owner/group absent and independent lease free. Archived original receipts/fixity before subsequent bookkeeping. Original local full remains incomplete; exact-head three-host original32stages are required before merge/prune.
+
+
+2026-10-20 recovery continuation: verified clean synced main ae26a469 and
+created codex/health-biff8-recovery-20261020. Reconciled protected PR733 delivery
+with immutable prior receipts. New M16 task/design precedes implementation.
+Two focused real fictional BIFF8 cases fail with the intended missing
+include_biff8 API (2.95s). A preparation script initially used system Python
+without PyArrow; no repository files were written before that import failure.
+Reran with the existing qualified project runtime. No new runtime adopted.
