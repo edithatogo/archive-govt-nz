@@ -76,7 +76,7 @@ def test_canonical_metadata_uses_full_tables_and_rebuilds_offline(
     assert package["profile"] == "canonical_source_separated"
     assert package["rights"] == "not_evaluated"
     assert package["publication"] == "not_performed"
-    assert len(package["tables"]) == 8
+    assert len(package["tables"]) == 10
     historical = next(t for t in package["tables"] if t["path"] == filename)
     assert historical["rows"] == 300
     assert historical["observed_period_tokens"] == sorted(
@@ -87,6 +87,11 @@ def test_canonical_metadata_uses_full_tables_and_rebuilds_offline(
     assert historical["observed_period_end_min"] is None
     assert historical["observed_period_end_max"] is None
     for table in package["tables"]:
+        if table["path"].startswith("biff8_"):
+            assert (
+                table["period_basis"]
+                == "replayed_biff8_year_integer_rendered_as_string"
+            )
         restored = pa.ipc.read_schema(
             pa.BufferReader(bytes.fromhex(table["schema_ipc_hex"]))
         )
@@ -95,7 +100,7 @@ def test_canonical_metadata_uses_full_tables_and_rebuilds_offline(
         )
     dcat = parse_offline(json.loads((output / "dcat.jsonld").read_bytes()))
     prov = parse_offline(json.loads((output / "prov.jsonld").read_bytes()))
-    assert len(set(dcat.subjects(RDF.type, DCAT.Dataset))) == 8
+    assert len(set(dcat.subjects(RDF.type, DCAT.Dataset))) == 10
     assert len(set(prov.subjects(RDF.type, PROV.Collection))) == 1
     for name, schema_name in (
         ("citations.json", "health-gold-citations-v4.schema.json"),

@@ -8805,3 +8805,24 @@ Budget2019 native1 passed atcc93f485b09cd59431986310c1e28f56bf5fb5cf/tree38005ab
 Recovery: PortableSSD disconnected during original full1 after passing8163/14/18 tests660.67s and progressing mutation stages. No final marker or inside postflight existed; outcome remains interrupted/unverified. Owner76190/group absent and independent lease free. Reconnection verified clean HEAD0e731310/tree2fe73d07, Git connectivity, all9980 original frozen inputs unchanged, and a normal exact-head remote recovery checkpoint. Qualified native controls were hash-verified into internal backup. No repair/reset/pruning. Internal free storage was insufficient for a duplicate checkout/runtime, so root reran the unchanged original harness from the existing checkout with durable internal controls/live logs and a fresh external TMPDIR.
 
 Original full2 ./scripts/validate.sh passed all32 stages at0e7313106d6be88b0d19411e0042c65a3ae4a0a3/tree2fe73d07228502a7f2a725784981e9276c0f902e: ========== 8163 passed, 14 skipped, 18 warnings in 519.28s (0:08:39) ===========. All5172 deduplicated absolute input pins unchanged; actual exit0,owner/group absent and independent kernel lease free. Log34a34b352b22658db388cd0f8a334935f42314d53701b50686825daccfc42be6. Qualified source/tests/schemas/dependencies unchanged;80% floor/900s stage cap unchanged. Full controls/log and original supply-chain receipts archived outside Git before supplementary scans. See budget-2019-biff8-original-assurance-20261020.json. Only assurance bookkeeping follows; exact-head hosted checks and protected merge/prune remain pending.
+
+
+2026-10-20 BIFF8 canonical/Gold integration: resumed clean main169fd175 after
+PR732 protected delivery. New bounded task and design recorded before changes.
+Red check failed because the canonical module did not exist. First green-phase
+readback exposed Parquet list-child transport names; preserve structural
+verification and restore the declared schema only after that check. Reproduction
+then isolated the caller timestamp spelling in source_observation_id; retain
+that original caller token in the independently pinned canonical marker and
+replay it, without capture attestation or modifying old Silver.
+Both fictional profiles now pass canonical/Gold/query/repeat tests and four
+rehashed Silver table-deletion refusals (six focused cases). Initial affected
+suite selector named a nonexistent export test; no tests ran, selector corrected.
+Five initial typing findings corrected using Mapping contracts/copies. No
+coverage/deadline/protection changes; 80 percent floor remains.
+
+Affected suite: 200 pass, three stale inventory assertions fail (v3 now
+supported, named products increase8to10, metadata fixture includes all10).
+Updated those explicit expectations without changing production admission.
+Internal temporary-file creation briefly failed with ENOSPC; route shell and
+validation temporary files to PortableSSD. Preserve evidence and user files.

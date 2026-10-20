@@ -89,6 +89,8 @@ def package(tmp_path: Path) -> tuple[Path, str]:
 def test_all_existing_fact_products_have_named_queries() -> None:
     assert set(query.PRODUCTS) == {
         "historical",
+        "biff8_budget",
+        "biff8_revenue",
         "budget",
         "revenue",
         "pharmac",

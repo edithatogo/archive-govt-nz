@@ -94,6 +94,8 @@ _ALLOWED_OVERLAP_PRODUCTS = {
     "crown_befu",
     "crown_hyefu",
     "fiscal_crown",
+    "biff8_budget",
+    "biff8_revenue",
 }
 _COMMON = {
     "schema_version": "archive-govt-nz.health-canonical-gold-verification/v1",

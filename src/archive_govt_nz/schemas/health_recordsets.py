@@ -157,7 +157,24 @@ _V2_FIELDS = {
     "earnings_fact": _EARNINGS_FIELDS,
 }
 RECORDSETS_V2 = _schemas("v2", _V2_FIELDS)
-_VERSIONS = MappingProxyType({"v1": RECORDSETS, "v2": RECORDSETS_V2})
+_EVIDENCE_FIELDS = (
+    pa.field("value_basis", pa.string(), nullable=False),
+    pa.field("canonical_stored_integer", pa.string()),
+    pa.field("numeric_evidence_id", pa.string()),
+)
+RECORDSETS_V3 = _schemas(
+    "v3",
+    {
+        **_V2_FIELDS,
+        **{
+            name: (*_V2_FIELDS[name], *_EVIDENCE_FIELDS)
+            for name in ("appropriation_fact", "revenue_fact", "field_lineage")
+        },
+    },
+)
+_VERSIONS = MappingProxyType(
+    {"v1": RECORDSETS, "v2": RECORDSETS_V2, "v3": RECORDSETS_V3}
+)
 
 
 def recordset_schema(name: str, *, version: str = "v1") -> pa.Schema:

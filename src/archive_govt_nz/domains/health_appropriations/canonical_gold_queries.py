@@ -39,6 +39,14 @@ PRODUCTS: dict[str, tuple[str, pa.Schema]] = {
         "historical_observations.parquet",
         consumer.HISTORICAL_OBSERVATION_SCHEMA,
     ),
+    "biff8_budget": (
+        "biff8_budget.parquet",
+        recordset_schema("appropriation_fact", version="v3"),
+    ),
+    "biff8_revenue": (
+        "biff8_revenue.parquet",
+        recordset_schema("revenue_fact", version="v3"),
+    ),
     "budget": ("nominal_budget.parquet", consumer.NOMINAL_BUDGET_SCHEMA),
     "revenue": ("nominal_revenue.parquet", consumer.NOMINAL_REVENUE_SCHEMA),
     "pharmac": (

@@ -289,7 +289,11 @@ def _canonical_package(value: GoldInput) -> dict[str, Any]:
         name = canonical.PRODUCTS[product][0]
         descriptor = _table(name, table, package_id)
         descriptor.update(
-            period_basis="source_tokens_not_interpreted",
+            period_basis=(
+                "replayed_biff8_year_integer_rendered_as_string"
+                if product in {"biff8_budget", "biff8_revenue"}
+                else "source_tokens_not_interpreted"
+            ),
             observed_period_tokens=sorted(
                 {v for v in table["period_token"].to_pylist() if v is not None}
             ),
