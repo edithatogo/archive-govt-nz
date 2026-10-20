@@ -672,3 +672,7 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [BIFF8-inclusive recovery contract](biff8-recovery-contract.md)
 - [BIFF8-inclusive native recovery receipt](biff8-recovery-native-20261020.json)
 - [BIFF8-inclusive recovery review](biff8-recovery-review-20261020.md)
+
+- [Budget2018 BIFF8 contract](biff8-2018-contract.md)
+- [Budget2018 source-native qualification](budget-2018-biff8-native-qualification-20261021.json)
+- [BIFF8 recovery delivery PR734](biff8-recovery-delivery-734-20261021.json)

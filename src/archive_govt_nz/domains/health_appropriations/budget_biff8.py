@@ -1,8 +1,8 @@
-"""Source-native Budget 2019 Silver with exact BIFF8 stored-integer evidence."""
+"""Source-native Budget Silver with exact BIFF8 stored-integer evidence."""
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from datetime import date
 from typing import TYPE_CHECKING, Any
 
@@ -53,16 +53,24 @@ class BiffBudgetProfile:
     numeric_columns: tuple[tuple[str, int], ...]
     definitions: tuple[tuple[int, str], ...]
     definition_links: tuple[tuple[str, int], ...]
+    edition: int = 2019
+    group_types: tuple[str, ...] = ("Single", "MCA")
+    period_types: tuple[tuple[int, str], ...] = tuple(PERIOD_TYPES.items())
 
     @property
     def profile_id(self) -> str:
         """Identify the separately versioned stored-integer interpretation."""
-        return f"budget-{self.kind}-2019-biff8/v1"
+        return f"budget-{self.kind}-{self.edition}-biff8/v1"
 
     @property
     def transformation(self) -> str:
         """Keep source-native output identity separate from literal XLSX facts."""
-        return f"budget-2019-health-{self.kind}-biff8/v1"
+        return f"budget-{self.edition}-health-{self.kind}-biff8/v1"
+
+    @property
+    def source_vintage(self) -> str:
+        """Retain the edition explicitly declared by the closed source profile."""
+        return f"Budget-{self.edition}"
 
     @property
     def fact_schema(self) -> pa.Schema:
@@ -154,6 +162,90 @@ PROFILES = {
         ),
     ),
 }
+
+# Exact changed definition cells from the pinned Budget2018 Explanation sheets.
+_EXPENDITURE_DEFINITIONS_2018 = {
+    47: (
+        "App ID: Number used to uniquely identify each appropriation; "
+        "category of an MCA; or output class of an MCOA. This is "
+        "particularly useful where an MYA is superceded by another MYA with"
+        " the same name."
+    ),
+    48: (
+        "Parent ID: Number used to group categories or output classes "
+        "belonging to an MCA or an MCOA."
+    ),
+    49: (
+        'Group Type: "Single" if Appropriation contains a single category, '
+        '"MCA" or "MCOA" if the line is part of a multi-line Appropriation.'
+    ),
+    3: (
+        "This Expense workbook contains details of actual government "
+        "expenditure for the years ended 30 June 2014, 2015, 2016 and 2017;"
+        " estimated actual government expenditure for the year ending "
+        "30\xa0June 2018 and budgeted government expenditure for the year "
+        "ending 30 June 2019 as published in Budget 2018."
+    ),
+}
+_REVENUE_DEFINITIONS_2018 = {
+    4: (
+        "The Revenue workbook contains details of  actual government Crown "
+        "revenue and capital receipts for the years ended 30 June 2014, "
+        "2015, 2016 and 2017; estimated actual government Crown revenue and"
+        " capital receipts for the year ending 30 June 2018 and budgeted "
+        "government Crown revenue and capital receipts for the year ending "
+        "30 June 2019 as published in Budget 2018."
+    ),
+}
+
+PROFILES_2018 = {
+    "expenditure": replace(
+        PROFILES["expenditure"],
+        source_sha256="fecd70019054313f3a11cbb370be684d8bea0eea8cb3623b69a9e193ac085c24",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2018-05/b18-expenditure-data.xls",
+        max_rows=6167,
+        edition=2018,
+        group_types=("Single", "MCA", "MCOA"),
+        period_types=(
+            (2014, "Actuals"),
+            (2015, "Actuals"),
+            (2016, "Actuals"),
+            (2017, "Actuals"),
+            (2018, "Estimated Actual"),
+            (2019, "Main Estimates"),
+        ),
+        definitions=tuple(
+            (row, _EXPENDITURE_DEFINITIONS_2018.get(row, text))
+            for row, text in PROFILES["expenditure"].definitions
+        ),
+    ),
+    "revenue": replace(
+        PROFILES["revenue"],
+        source_sha256="4db87e7eddd7a76b5b7523db5a01952d15e7f47b88d03ef9878d37cd077f937f",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2018-05/b18-revenue-data.xls",
+        max_rows=1011,
+        edition=2018,
+        period_types=(
+            (2014, "Actuals"),
+            (2015, "Actuals"),
+            (2016, "Actuals"),
+            (2017, "Actuals"),
+            (2018, "Estimated Actual"),
+            (2019, "Main Estimates"),
+        ),
+        definitions=tuple(
+            (row, _REVENUE_DEFINITIONS_2018.get(row, text))
+            for row, text in PROFILES["revenue"].definitions
+        ),
+    ),
+}
+
+
+def declared_profiles() -> tuple[BiffBudgetProfile, ...]:
+    """Expose only the four independently pinned source-edition profiles."""
+    return (*PROFILES.values(), *PROFILES_2018.values())
+
+
 NUMERIC_SCHEMA = pa.schema(
     [pa.field("source_object_sha256", pa.string()), *biff8_projection.NUMERIC_SCHEMA]
 )
@@ -231,6 +323,7 @@ def _selected_reason(values: dict[str, Any], profile: BiffBudgetProfile) -> str 
         if profile.kind == "expenditure"
         else ("department", "description", "revenue_type")
     )
+    period_types = dict(profile.period_types)
     checks = [
         (
             any(
@@ -248,8 +341,8 @@ def _selected_reason(values: dict[str, Any], profile: BiffBudgetProfile) -> str 
             "invalid_source_id",
         ),
         (
-            values["year"] not in PERIOD_TYPES
-            or values["amount_type"] != PERIOD_TYPES.get(values["year"]),
+            values["year"] not in period_types
+            or values["amount_type"] != period_types.get(values["year"]),
             "invalid_period_type",
         ),
         (exact_number(values["amount"]) is None, "invalid_amount_range"),
@@ -271,7 +364,7 @@ def _selected_reason(values: dict[str, Any], profile: BiffBudgetProfile) -> str 
                     ),
                     "invalid_optional_label",
                 ),
-                (values["group_type"] not in {"Single", "MCA"}, "invalid_group_type"),
+                (values["group_type"] not in profile.group_types, "invalid_group_type"),
                 (values["periodicity"] not in {"A", "M"}, "invalid_periodicity"),
             ]
         )
@@ -414,9 +507,16 @@ def parse_snapshot(
     payload: bytes, *, profile: BiffBudgetProfile, observed_at: str
 ) -> BiffBudgetSnapshot:
     """Interpret one hash-pinned source without writing or granting source rights."""
-    _require(profile.kind in {"expenditure", "revenue"})
+    _require(
+        profile.kind in {"expenditure", "revenue"}
+        and type(profile.edition) is int
+        and profile.edition in {2018, 2019}
+    )
     context = source_context(
-        profile.source_sha256, profile.source_locator, "Budget-2019", observed_at
+        profile.source_sha256,
+        profile.source_locator,
+        profile.source_vintage,
+        observed_at,
     )
     raw = biff8_records.read_sheet(payload, profile.source_sha256, sheet="Raw Data")
     _definitions(payload, profile)
@@ -496,7 +596,7 @@ def parse_snapshot(
         "transformation_id": profile.transformation,
         "source_object_sha256": profile.source_sha256,
         "source_locator": profile.source_locator,
-        "source_vintage": "Budget-2019",
+        "source_vintage": profile.source_vintage,
         "observed_at": context["observed_at"].isoformat(),
         "rights_state": "not_evaluated",
         "value_basis": BASIS,

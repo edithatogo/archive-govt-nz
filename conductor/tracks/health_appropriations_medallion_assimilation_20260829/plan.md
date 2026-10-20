@@ -2454,10 +2454,13 @@ previous qualification results unchanged; original local timeout preserved.
 - [x] Integrate the admitted Budget2019 BIFF8 pair into canonical v3 and existing Gold export/query contracts, replaying the complete pinned Silver package against Bronze and retaining all numeric witnesses and source field lineage. Keep lexical tokens null, preserve source-separated identity rows without aggregation/netting, qualify repeat builds and tamper refusal, run original validation and protected PR/merge/prune. [M-05, M-06, M-07, M-10, M-11, M-13, M-16; AC-05, AC-09, AC-11, AC-16]
 
 
-- [~] Rebuild the admitted Budget2019 BIFF8 pair from Bronze into fresh source-native Silver, witness-aware canonical and existing Gold/metadata recovery. Add an explicit versioned seven-source canonical recovery cohort while preserving the five-source v1 route and its byte contracts; wire the complete recovery harness to the expanded cohort, retain exact observation tokens/witnesses/lineage and require two empty-derivative repeat builds without retained Silver consumption. Reconcile bounded native evidence, required original validation and protected PR delivery. [M-05, M-07, M-10, M-13, M-16, M-18; AC-08, AC-11, AC-12, AC-16]
+- [x] Rebuild the admitted Budget2019 BIFF8 pair from Bronze into fresh source-native Silver, witness-aware canonical and existing Gold/metadata recovery. Add an explicit versioned seven-source canonical recovery cohort while preserving the five-source v1 route and its byte contracts; wire the complete recovery harness to the expanded cohort, retain exact observation tokens/witnesses/lineage and require two empty-derivative repeat builds without retained Silver consumption. Reconcile bounded native evidence, required original validation and protected PR delivery. [M-05, M-07, M-10, M-13, M-16, M-18; AC-08, AC-11, AC-12, AC-16]
 
   Native unblocker: the original Budget2025 legacy source build exceeds120s
   during repeated workbook decoding in selection/inventory/extraction. Reuse
   the existing exact-byte operation-local inspection across legacy expenditure
   and revenue paths; retain all guards, output bytes and scope invalidation.
   Qualify parser decode counts and actual source/output parity before advancing.
+
+
+- [~] Qualify the next eligible Budget2018 expenditure/revenue BIFF8 pair from the existing complete definition/header census. Verify retained originals, exact source/edition/period/unit bindings and every selected Health numeric field with the existing stored-integer evidence contract before promotion. Add edition-specific source-native profiles and native/operation contracts only for admissible rows; preserve all2019 package bytes and existing rights/currency/start-date/aggregation/join holds. Run focused and original assurance and protected PR delivery. [M-02, M-05, M-06, M-07, M-11, M-15; AC-03, AC-04, AC-05, AC-09, AC-11, AC-13, AC-16]

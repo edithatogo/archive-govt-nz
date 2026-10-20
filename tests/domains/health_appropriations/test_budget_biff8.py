@@ -1,4 +1,4 @@
-"""The closed 2019 profiles retain numeric evidence and every source row."""
+"""Closed edition profiles retain numeric evidence and every source row."""
 
 from __future__ import annotations
 
@@ -18,9 +18,11 @@ from archive_govt_nz.domains.health_appropriations import (
 
 
 def _fixture(
-    kind: str, *, amount: object = 123
+    kind: str, *, amount: object = 123, edition: int = 2019
 ) -> tuple[bytes, budget_biff8.BiffBudgetProfile]:
-    profile = budget_biff8.PROFILES[kind]
+    profile = (
+        budget_biff8.PROFILES if edition == 2019 else budget_biff8.PROFILES_2018
+    )[kind]
     selected: dict[str, Any] = {
         "department": "Fictional ministry",
         "vote": "Health",
@@ -28,12 +30,12 @@ def _fixture(
         "parent_id": 387,
         "appropriation_name": "Fictional care",
         "category_name": "Fictional care",
-        "group_type": "Single",
+        "group_type": "MCOA" if edition == 2018 else "Single",
         "appropriation_or_category_type": "Non-Departmental Output Expenses",
         "restriction_type": None,
         "functional_classification": "Health",
         "amount": amount,
-        "year": 2019,
+        "year": edition,
         "amount_type": "Estimated Actual",
         "periodicity": "A",
         "current_scope": None,
@@ -72,17 +74,21 @@ def _fixture(
     )
 
 
+@pytest.mark.parametrize("edition", [2018, 2019])
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
     kind: str,
+    edition: int,
 ) -> None:
-    payload, profile = _fixture(kind)
+    payload, profile = _fixture(kind, edition=edition)
     parsed = budget_biff8.parse_snapshot(
         payload, profile=profile, observed_at="2026-10-20T00:00:00Z"
     )
     repeated = budget_biff8.parse_snapshot(
         payload, profile=profile, observed_at="2026-10-20T00:00:00Z"
     )
+    assert parsed.metadata["source_vintage"] == f"Budget-{edition}"
+    assert profile.profile_id == f"budget-{kind}-{edition}-biff8/v1"
     assert parsed.metadata == repeated.metadata
     assert all(
         table.equals(repeated.tables[name]) for name, table in parsed.tables.items()
