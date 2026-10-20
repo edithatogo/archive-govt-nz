@@ -658,3 +658,5 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [Stored-integer core qualification](./biff8-core-native-qualification-20261020.json)
 - [2019 source-native Silver and remaining boundaries](./budget-2019-biff8-silver.md)
 - [2019 full native qualification](./budget-2019-biff8-native-qualification-20261020.json)
+
+- [2019 BIFF8 original full assurance and interrupted-run recovery](./budget-2019-biff8-original-assurance-20261020.json)
