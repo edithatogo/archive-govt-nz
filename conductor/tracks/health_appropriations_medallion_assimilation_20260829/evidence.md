@@ -3461,3 +3461,14 @@ qualification. Final postflight verifies4848pins, owner/group absence and free
 lease. [Review](biff8-recovery-review-20261020.md) records bounds and remaining
 whole-track gates. Original validation and protected PR delivery follow; native
 qualification is not a rights, publication, standards or full-track claim.
+
+### Budget2018 source-native BIFF8 qualification — 2026-10-21
+
+[Native receipt](budget-2018-biff8-native-qualification-20261021.json) records
+two unchanged-source builds of the2018 pair:382facts,9482field links,7178row
+dispositions and1782numeric witnesses. All standalone/source-operation output
+hashes repeat; complete native carriers match. Actual CLI/MCP preflights pass
+within30s twice each per source/run. Existing2019 source packages retain all10
+file hashes. Original/full/hosted delivery remains pending;2018 canonical,Gold
+and recovery integration is not claimed. Rights/currency/start-date/aggregation
+and cross-source holds, older unit/edition gaps and donor decisions remain.

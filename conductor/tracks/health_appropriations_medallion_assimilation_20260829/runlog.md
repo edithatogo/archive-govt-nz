@@ -8999,3 +8999,14 @@ failure. Source-operation suite exposes the stale committed profile enum;
 regenerated only its explicit registry projection. Final focused543pass/10skip
 42.00s, strict types0errors and Ruff clean. Native full profile/operation and
 2019 parity verification follow on the next frozen producer.
+
+Native full2018 profiles on b2056603 pass:318expense/64revenue facts,8586/896
+field links,6167/1011row dispositions and1590/192numeric witnesses. Standalone
+and operation outputs match, all20 source/operation file hashes repeat on
+independent builds; complete native four-table/metadata carriers match. Actual
+CLI and MCP stdio initialization/tool calls pass twice per source per run under
+30s, without writing preflight outputs. Both original2019 five-file packages
+remain byte-identical. Source120s and stage900s limits unchanged. Actual0,
+owner33049/group absent, independent lease free and every frozen pin unchanged.
+Native receipt records local inspection context, no capture attestation.
+Canonical/Gold/recovery2018 and whole-track gates remain future work.
