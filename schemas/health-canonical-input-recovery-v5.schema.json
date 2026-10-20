@@ -32,25 +32,45 @@
     },
     "source_inputs": {
       "type": "object",
-      "minProperties": 1,
+      "minProperties": 13,
       "maxProperties": 13,
       "propertyNames": {
         "pattern": "^[a-z]+-[0-9]{4}$"
       },
       "additionalProperties": {
         "$ref": "#/$defs/source_binding"
-      }
+      },
+      "required": [
+        "biffbudget-2016",
+        "biffrevenue-2016",
+        "biffbudget-2017",
+        "biffrevenue-2017",
+        "biffbudget-2018",
+        "biffrevenue-2018",
+        "biffbudget-2019",
+        "biffrevenue-2019"
+      ]
     },
     "profiles": {
       "type": "object",
-      "minProperties": 1,
+      "minProperties": 13,
       "maxProperties": 13,
       "propertyNames": {
         "pattern": "^[a-z]+-[0-9]{4}$"
       },
       "additionalProperties": {
         "$ref": "#/$defs/profile"
-      }
+      },
+      "required": [
+        "biffbudget-2016",
+        "biffrevenue-2016",
+        "biffbudget-2017",
+        "biffrevenue-2017",
+        "biffbudget-2018",
+        "biffrevenue-2018",
+        "biffbudget-2019",
+        "biffrevenue-2019"
+      ]
     },
     "retained_derivatives_consumed": {
       "const": false

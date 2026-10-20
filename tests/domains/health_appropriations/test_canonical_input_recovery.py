@@ -335,6 +335,18 @@ def test_explicit_expanded_recovery_keeps_prior_cohorts(
     earliest: int,
 ) -> None:
     cas, _ = sources
+    if earliest == 2016:
+        monkeypatch.setattr(
+            recovery,
+            "SOURCES",
+            (
+                *recovery.SOURCES,
+                *(
+                    replace(spec, key=spec.kind + "-2002")
+                    for spec in recovery.SOURCES[:2]
+                ),
+            ),
+        )
     editions = tuple(range(earliest, 2020))
     for edition in editions:
         _biff_sources(cas, monkeypatch, edition=edition)
@@ -354,7 +366,7 @@ def test_explicit_expanded_recovery_keeps_prior_cohorts(
     )
     assert first.receipt == second.receipt
     assert inventory(tmp_path / "first") == inventory(tmp_path / "second")
-    assert len(first.packages) == 3 + 2 * len(editions)
+    assert len(first.packages) == len(recovery.SOURCES) + 2 * len(editions)
     Draft202012Validator(
         json.loads(
             (
@@ -365,7 +377,7 @@ def test_explicit_expanded_recovery_keeps_prior_cohorts(
     ).validate(first.receipt)
     old = recovery.rebuild_canonical_inputs(cas, tmp_path / "old", include_biff8=True)
     assert old.receipt["schema_version"] == recovery.BIFF8_VERSION
-    assert len(old.packages) == 5
+    assert len(old.packages) == len(recovery.SOURCES) + 2
     for package in first.packages:
         if package.kind.startswith("biff8_"):
             tables, receipt = read_verified_canonical_tables(package)
@@ -411,3 +423,43 @@ def test_expanded_recovery_versions_resolve_independently() -> None:
             if other != version:
                 with pytest.raises(ValidationError):
                     validator.validate(fixtures[other])
+
+
+def test_partial_2016_cohort_fails_before_source_reads_or_output(
+    tmp_path: Path, sources: tuple[Path, list[str]]
+) -> None:
+    from itertools import combinations
+
+    cas, calls = sources
+    for count in range(4):
+        for later in combinations((2017, 2018, 2019), count):
+            output = tmp_path / ("partial-" + "-".join(map(str, later)))
+            with pytest.raises(ValueError, match="canonical_input_recovery_contract"):
+                recovery.rebuild_canonical_inputs(
+                    cas, output, include_biff8=True, biff8_editions=(2016, *later)
+                )
+            assert not output.exists()
+    assert calls == []
+
+
+def test_v5_schema_refuses_incomplete_source_and_profile_bindings() -> None:
+    root = Path(__file__).parents[3]
+    schema = json.loads(
+        (root / "schemas/health-canonical-input-recovery-v5.schema.json").read_bytes()
+    )
+    fixture = json.loads(
+        (root / "tests/fixtures/health-canonical-input-recovery-v5.json").read_bytes()
+    )
+    validator = Draft202012Validator(schema)
+    validator.validate(fixture)
+    for name in ("profiles", "source_inputs"):
+        for key in fixture[name]:
+            missing = json.loads(json.dumps(fixture))
+            del missing[name][key]
+            with pytest.raises(ValidationError):
+                validator.validate(missing)
+            if key.startswith("biff"):
+                substituted = json.loads(json.dumps(fixture))
+                substituted[name]["biffbudget-2015"] = substituted[name].pop(key)
+                with pytest.raises(ValidationError):
+                    validator.validate(substituted)

@@ -2506,3 +2506,5 @@ previous qualification results unchanged; original local timeout preserved.
   schemas independently resolve with cross-version refusal. Source/size/time
   bounds and holds remain. Original final-tree harness and protected delivery
   pending; see biff8-2016-products-native-20261021.json.
+
+- [~] PR738: enforce the complete2016–2019 v5 cohort before reads and in schema; verify fresh original recovery and exact-head protected delivery.

@@ -42,3 +42,11 @@ edition is B4, but unit/year/amount-type/App ID definitions are B33/B34/B35/B39
 rather than B36/B37/B38/B42. Bind both definitions and field links explicitly.
 Retain the source's restructuring and supporting-workbook authority caveats;
 do not claim historical restatement, official totals or comparability.
+
+## Review738 cohort completeness
+
+A2016 selector must include2016,2017,2018 and2019 exactly once, in any
+order, and all five baseline sources before reading originals or creating
+outputs. Recoveryv5 must require all eight BIFF8 profile/source keys and
+exactly thirteen bindings in each map. Reject partial cohorts and missing
+source/profile bindings. Preserve the earlier v1–v4 API and byte contracts.

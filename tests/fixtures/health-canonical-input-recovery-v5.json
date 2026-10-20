@@ -1,5 +1,5 @@
 {
-  "definitions_sha256": "e46dc6abc42f1a16a9027227afa43bfc12ba9f249e095320d5f7b97f604ad24c",
+  "definitions_sha256": "8f01c96ce2e07fc13b2ae3e08a8094ded746bc7d5904786a3e3f2355946a027d",
   "observation_context": "exact_prior_local_tokens_replayed_no_new_capture_attestation",
   "originals_unchanged": true,
   "profiles": {
@@ -464,6 +464,43 @@
       },
       "raw_manifest_sha256": "ed47279d13c47390cd90a652c8894f3a747331d3650f1658a0ed34664bf87031"
     },
+    "budget-2002": {
+      "canonical_inventory": {
+        "LOCAL_BUDGET.json": {
+          "bytes": 80,
+          "sha256": "dde8ad5bab64f5f2b9d5ebc46501f7783f3557f319ff4dcae1f17c78ce94a5a4"
+        },
+        "facts.parquet": {
+          "bytes": 15,
+          "sha256": "ad675291069613038b456819150f72f89b0dc1100e961f8c82b786ff1893b50f"
+        },
+        "lineage_accounting.jsonl": {
+          "bytes": 45,
+          "sha256": "fc134c4dc6fc9ea2f17b3185878590bc92c9091cf9b441d11295950be27fdfe7"
+        }
+      },
+      "canonical_marker_sha256": "dde8ad5bab64f5f2b9d5ebc46501f7783f3557f319ff4dcae1f17c78ce94a5a4",
+      "definition": {
+        "key": "budget-2002",
+        "kind": "budget",
+        "observation_id": "sha256:cc87769881dd78ac5728d7e098c5a5428b8faf090844eba9bd5ffd56dfef1898",
+        "observation_token": "2001-01-01T00:00:00Z",
+        "sha256": "ad675291069613038b456819150f72f89b0dc1100e961f8c82b786ff1893b50f",
+        "source_locator": "budget.xlsx",
+        "source_vintage": "fixture-budget"
+      },
+      "raw_inventory": {
+        "MANIFEST.json": {
+          "bytes": 196,
+          "sha256": "ed47279d13c47390cd90a652c8894f3a747331d3650f1658a0ed34664bf87031"
+        },
+        "facts.parquet": {
+          "bytes": 15,
+          "sha256": "ad675291069613038b456819150f72f89b0dc1100e961f8c82b786ff1893b50f"
+        }
+      },
+      "raw_manifest_sha256": "ed47279d13c47390cd90a652c8894f3a747331d3650f1658a0ed34664bf87031"
+    },
     "historical-2001": {
       "canonical_inventory": {
         "LOCAL_CANONICAL.json": {
@@ -478,6 +515,39 @@
       "canonical_marker_sha256": "e74c0fed936934196014d97f9bff405317687a9aefd8f6bfc3ac5c5070b10934",
       "definition": {
         "key": "historical-2001",
+        "kind": "historical",
+        "observation_id": "sha256:8fe59cfcbde8cc2b3ca68ebd3ecb7af3d8396e0ef5124de005c35031a5dddcc0",
+        "observation_token": "2001-01-01T00:00:00Z",
+        "sha256": "0003797f95f0fd44e46dad7e77a48ba449c4bef0332ee62459751c2eb30b2ec8",
+        "source_locator": "historical.xlsx",
+        "source_vintage": "fixture-historical"
+      },
+      "raw_inventory": {
+        "MANIFEST.json": {
+          "bytes": 204,
+          "sha256": "6acb82665776b182db43f23efc617e00bd125e2d379784cfd4da23ea65f69866"
+        },
+        "facts.parquet": {
+          "bytes": 19,
+          "sha256": "0003797f95f0fd44e46dad7e77a48ba449c4bef0332ee62459751c2eb30b2ec8"
+        }
+      },
+      "raw_manifest_sha256": "6acb82665776b182db43f23efc617e00bd125e2d379784cfd4da23ea65f69866"
+    },
+    "historical-2002": {
+      "canonical_inventory": {
+        "LOCAL_CANONICAL.json": {
+          "bytes": 80,
+          "sha256": "e74c0fed936934196014d97f9bff405317687a9aefd8f6bfc3ac5c5070b10934"
+        },
+        "facts.parquet": {
+          "bytes": 19,
+          "sha256": "0003797f95f0fd44e46dad7e77a48ba449c4bef0332ee62459751c2eb30b2ec8"
+        }
+      },
+      "canonical_marker_sha256": "e74c0fed936934196014d97f9bff405317687a9aefd8f6bfc3ac5c5070b10934",
+      "definition": {
+        "key": "historical-2002",
         "kind": "historical",
         "observation_id": "sha256:8fe59cfcbde8cc2b3ca68ebd3ecb7af3d8396e0ef5124de005c35031a5dddcc0",
         "observation_token": "2001-01-01T00:00:00Z",
@@ -573,7 +643,15 @@
       "bytes": 15,
       "sha256": "ad675291069613038b456819150f72f89b0dc1100e961f8c82b786ff1893b50f"
     },
+    "budget-2002": {
+      "bytes": 15,
+      "sha256": "ad675291069613038b456819150f72f89b0dc1100e961f8c82b786ff1893b50f"
+    },
     "historical-2001": {
+      "bytes": 19,
+      "sha256": "0003797f95f0fd44e46dad7e77a48ba449c4bef0332ee62459751c2eb30b2ec8"
+    },
+    "historical-2002": {
       "bytes": 19,
       "sha256": "0003797f95f0fd44e46dad7e77a48ba449c4bef0332ee62459751c2eb30b2ec8"
     },

@@ -9188,3 +9188,15 @@ version in the registry. Source/interface/stage/package bounds unchanged.
 Terminal0, all5,359 frozen pins unchanged, owner/group absent and independent
 lease free. No retained derivatives consumed as build inputs. Original
 final-tree validation and protected delivery are next; whole track stays open.
+
+### PR738 review: incompletev5 selector
+
+Automatic review4329123029 correctly identified that a partial2016 selector
+could emit av5 receipt. Preserved red evidence: two contract failures. Restrict
+only the new2016 version to all four editions and five baseline sources, before
+source reads/output creation; earlier v1–v4 selection contracts remain unchanged.
+Require thirteen bindings and every BIFF8 key in bothv5 receipt maps. Extend
+the explicitly fictionalv5 fixture to five baseline bindings. Fourteen recovery
+tests and seventy schemas/sixty representative documents pass. New native
+recovery repetitions and exact final-tree original harness follow; no merge
+while the finding or required checks remain unresolved.

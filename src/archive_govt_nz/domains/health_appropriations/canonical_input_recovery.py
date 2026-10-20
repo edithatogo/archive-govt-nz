@@ -382,6 +382,10 @@ def _biff_definitions(editions: tuple[int, ...]) -> tuple[SourceDefinition, ...]
         )
         and len(set(editions)) == len(editions)
     )
+    if 2016 in editions:
+        _require(
+            set(editions) == {2016, 2017, 2018, 2019} and len(SOURCES) == MAX_SOURCES
+        )
     selected: tuple[SourceDefinition, ...] = ()
     for year, definitions in (
         (2019, BIFF8_SOURCES),
