@@ -1,4 +1,4 @@
-"""Canonical Budget2019 facts replayed from closed Silver and original BIFF8.
+"""Canonical Budget facts replayed from closed Silver and original BIFF8.
 
 Stored integers retain encoded witnesses. Text tokens, decimal source precision,
 ISO currency, period starts and parent/category aggregation are not inferred.
@@ -128,7 +128,9 @@ def _check_package(
         _read_table(payload, table)
 
 
-def _common(fact: dict[str, Any], recordset: str, record_id: str) -> dict[str, Any]:
+def _common(
+    fact: dict[str, Any], recordset: str, record_id: str, rule: str
+) -> dict[str, Any]:
     schema = recordset_schema(recordset, version="v3")
     result = dict.fromkeys(schema.names)
     for name in (
@@ -151,8 +153,8 @@ def _common(fact: dict[str, Any], recordset: str, record_id: str) -> dict[str, A
         valid_time_status="source_year_end_only",
         period_token=str(fact["year"]),
         observation_context="caller_supplied_not_capture_attestation",
-        transformation_id=RULE,
-        lineage_id=identity(RULE, fact["lineage_id"]),
+        transformation_id=rule,
+        lineage_id=identity(rule, fact["lineage_id"]),
         source_record_id=fact["record_id"],
         source_schema_version=fact["schema_version"],
         value_basis=fact["value_basis"],
@@ -161,15 +163,15 @@ def _common(fact: dict[str, Any], recordset: str, record_id: str) -> dict[str, A
 
 
 def _project(
-    snapshot: budget_biff8.BiffBudgetSnapshot, kind: str
+    snapshot: budget_biff8.BiffBudgetSnapshot, kind: str, rule: str
 ) -> dict[str, pa.Table]:
     name = FACTS[kind]
     facts, links = [], []
     source_facts = snapshot.tables["budget_facts.parquet"].to_pylist()
     by_id = {fact["record_id"]: fact for fact in source_facts}
     for source in source_facts:
-        record_id = identity(RULE, source["record_id"])
-        fact = _common(source, name, record_id)
+        record_id = identity(rule, source["record_id"])
+        fact = _common(source, name, record_id, rule)
         for field in (
             "amount",
             "unit",
@@ -206,15 +208,18 @@ def _project(
     ):
         parent = by_id[source["record_id"]]
         link = _common(
-            parent, "field_lineage", identity(RULE, "field", index, parent["record_id"])
+            parent,
+            "field_lineage",
+            identity(rule, "field", index, parent["record_id"]),
+            rule,
         )
         link.update(
-            target_record_id=identity(RULE, parent["record_id"]),
+            target_record_id=identity(rule, parent["record_id"]),
             field=source["field"],
             source_coordinate=source["source_coordinate"],
             raw_value=source["raw_value"],
             normalized_value=source["normalized_value"],
-            rule=RULE,
+            rule=rule,
             value_basis=source["value_basis"],
             numeric_evidence_id=source["numeric_evidence_id"],
             canonical_stored_integer=None,
@@ -231,13 +236,38 @@ def _project(
     }
 
 
+def _source_profile(
+    kind: str, manifest: dict[str, Any]
+) -> budget_biff8.BiffBudgetProfile:
+    candidates = [
+        profile
+        for profile in budget_biff8.declared_profiles()
+        if profile.kind == kind
+        and (
+            profile.profile_id,
+            profile.source_sha256,
+            profile.source_locator,
+            profile.source_vintage,
+        )
+        == (
+            manifest.get("profile"),
+            manifest.get("source_object_sha256"),
+            manifest.get("source_locator"),
+            manifest.get("source_vintage"),
+        )
+    ]
+    _require(len(candidates) == 1)
+    return candidates[0]
+
+
 def project_package(
     silver: Path, pin: str, original: Path, kind: str, *, observed_at: str
 ) -> tuple[dict[str, pa.Table], dict[str, Any]]:
     """Replay every Silver row, definition and witness against trusted Bronze."""
     _require(kind in FACTS and not original.is_symlink())
-    spec = budget_biff8.PROFILES[kind]
     manifest = _manifest(silver, pin)
+    spec = _source_profile(kind, manifest)
+    rule = f"budget-{spec.edition}-biff8-canonical/v1"
     payload = verified_snapshot(
         original, spec.source_sha256, max_bytes=budget_biff8.MAX_BYTES
     )
@@ -248,7 +278,7 @@ def project_package(
         )
     _require(snapshot.metadata["status"] == "passed")
     _check_package(silver, manifest, snapshot.tables, snapshot.metadata)
-    tables = _project(snapshot, kind)
+    tables = _project(snapshot, kind, rule)
     _require(
         all(
             field.nullable or table[field.name].null_count == 0
@@ -258,10 +288,10 @@ def project_package(
     )
     receipt = {
         "schema_version": VERSION,
-        "transformation_id": RULE,
+        "transformation_id": rule,
         "kind": kind,
         "source_object_sha256": spec.source_sha256,
-        "source_vintage": "Budget-2019",
+        "source_vintage": spec.source_vintage,
         "silver_manifest_sha256": pin,
         "observation_time_token": observed_at,
         "rows": {name: table.num_rows for name, table in tables.items()},
@@ -326,11 +356,11 @@ def read_canonical(
     )
     return tables, {
         "kind": value.kind,
-        "vintage": "Budget-2019",
+        "vintage": receipt["source_vintage"],
         "marker_sha256": value.marker_sha256,
         "raw_manifest_sha256": value.raw_manifest_sha256,
         "original_sha256": receipt["source_object_sha256"],
-        "projection_equality": RULE,
+        "projection_equality": receipt["transformation_id"],
     }
 
 
@@ -341,19 +371,34 @@ def add_gold_products(
     receipts: list[dict[str, Any]],
 ) -> None:
     """Carry verified canonical rows and witnesses into existing Gold exports."""
-    seen: set[str] = set()
+    seen: set[tuple[str, str]] = set()
+    selected: dict[str, list[tuple[dict[str, pa.Table], dict[str, Any]]]] = {
+        kind: [] for kind in KINDS
+    }
     for package in packages:
         if package.kind not in KINDS:
             continue
-        _require(package.kind not in seen)
-        seen.add(package.kind)
         canonical, receipt = read_canonical(package)
-        name = FACTS[KINDS[package.kind]]
-        tables[package.kind] = canonical[name]
-        tables[package.kind + "_lineage"] = canonical["field_lineage"]
-        tables[package.kind + "_numeric"] = canonical["numeric_evidence"]
-        count = canonical[name].num_rows
-        products[package.kind] = {
+        key = (package.kind, receipt["vintage"])
+        _require(key not in seen)
+        seen.add(key)
+        selected[package.kind].append((canonical, receipt))
+    for kind, values in selected.items():
+        if not values:
+            continue
+        for suffix, source_name, order in (
+            ("", FACTS[KINDS[kind]], "record_id"),
+            ("_lineage", "field_lineage", "record_id"),
+            ("_numeric", "numeric_evidence", "numeric_evidence_id"),
+        ):
+            parts = [canonical[source_name] for canonical, _ in values]
+            tables[kind + suffix] = (
+                parts[0]
+                if len(parts) == 1
+                else pa.concat_tables(parts).sort_by([(order, "ascending")])
+            )
+        count = tables[kind].num_rows
+        products[kind] = {
             "input_records": count,
             "output_rows": count,
             "aggregation": "none",
@@ -361,7 +406,7 @@ def add_gold_products(
             "vintage_pooling": "not_performed",
             "value_basis": budget_biff8.BASIS,
             "canonical_schema": "archive-govt-nz.health-recordsets/v3",
-            "numeric_witness_rows": canonical["numeric_evidence"].num_rows,
+            "numeric_witness_rows": tables[kind + "_numeric"].num_rows,
             "revision_reconciliation": (
                 "excluded_unqualified_cross_profile_comparability"
             ),
@@ -371,7 +416,9 @@ def add_gold_products(
         receipts.append(
             {
                 "input_records": count,
-                "package_marker_sha256": [receipt["marker_sha256"]],
+                "package_marker_sha256": sorted(
+                    receipt["marker_sha256"] for _, receipt in values
+                ),
             }
         )
 

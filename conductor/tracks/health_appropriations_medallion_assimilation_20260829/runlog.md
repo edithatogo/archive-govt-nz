@@ -9019,3 +9019,18 @@ Fetched exact merge-tree/ancestry, zero unique commits/patches and clean checkou
 precede topic pruning. Issue209 delivery readback matches. Originals/runtime/
 proofs retained. Source-native2018 task is complete; downstream products now
 advance under the separately recorded contract without declaring track completion.
+
+2018 downstream red checks first expose hard-coded2019 canonical selection
+(source-hash mismatch), then the single-package-per-kind Gold restriction.
+Resolve exact trusted profile ID/hash/locator/vintage/kind, use edition-specific
+canonical rules and concatenate source-separated rows/companions deterministically.
+Reject duplicate kind/vintage packages without aggregation or comparability.
+Focused canonical/query/metadata35pass/2warnings12.76s; expanded recovery/canonical
+19pass8.38s. Public Gold duplicate refusal remains canonical_gold_export_invalid.
+
+Recovery API red check rejects the not-yet-supported explicit edition selector.
+Add a v3 admitted2018/2019 cohort with fixed original/local observation bindings,
+keeping default v1 and2019-only v2 routes. Reject unknown/duplicate/non-integer
+edition inputs before outputs. Schema68/representatives58 pass, focused strict
+typing0errors and Ruff clean. Native complete source/Gold/metadata qualification,
+existing byte parity, original assurance and protected delivery remain pending.

@@ -31,10 +31,15 @@ def _pin(path: Path) -> str:
 
 
 def _source(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str, *, edition: int = 2019
 ) -> tuple[Path, Path, str, dict[str, Any]]:
-    payload, profile = _fixture(kind)
-    monkeypatch.setitem(biff8_canonical.budget_biff8.PROFILES, kind, profile)
+    payload, profile = _fixture(kind, edition=edition)
+    profiles = (
+        biff8_canonical.budget_biff8.PROFILES
+        if edition == 2019
+        else biff8_canonical.budget_biff8.PROFILES_2018
+    )
+    monkeypatch.setitem(profiles, kind, profile)
     original = tmp_path / "original.xls"
     original.write_bytes(payload)
     snapshot = biff8_canonical.budget_biff8.parse_snapshot(
@@ -57,11 +62,14 @@ def _source(
     return original, silver, _pin(silver / "MANIFEST.json"), dict(snapshot.tables)
 
 
+@pytest.mark.parametrize("edition", [2018, 2019])
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_biff8_canonical_and_gold_preserve_binary_evidence_and_repeat_bytes(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str, edition: int
 ) -> None:
-    original, silver, pin, source = _source(tmp_path, monkeypatch, kind)
+    original, silver, pin, source = _source(
+        tmp_path, monkeypatch, kind, edition=edition
+    )
     name = biff8_canonical.FACTS[kind]
     canonical = tmp_path / "canonical"
     planned = biff8_canonical.export_canonical(
@@ -97,6 +105,8 @@ def test_biff8_canonical_and_gold_preserve_binary_evidence_and_repeat_bytes(
     )
     tables, _ = read_verified_canonical_tables(package)
     fact = tables[name].to_pylist()[0]
+    assert fact["source_vintage"] == f"Budget-{edition}"
+    assert fact["transformation_id"] == f"budget-{edition}-biff8-canonical/v1"
     assert fact["value_token"] is None
     assert fact["source_decimal_precision"] is None
     assert fact["value_basis"] == "biff8_stored_integer/v1"
@@ -119,7 +129,7 @@ def test_biff8_canonical_and_gold_preserve_binary_evidence_and_repeat_bytes(
     assert receipt["products"][product]["aggregation"] == "none"
     assert receipt["quality_report"]["input_record_count"] == 1
     assert receipt["temporal_coverage_report"]["groups"][0]["observed_periods"] == [
-        {"period_token": "2019", "observation_count": 1}
+        {"period_token": str(edition), "observation_count": 1}
     ]
     numeric_path = gold / (product + "_numeric.parquet")
     assert pq.read_table(numeric_path).equals(source["numeric_evidence.parquet"])
@@ -243,3 +253,63 @@ def test_mixed_gold_retains_full_legacy_lineage_in_fixed_companion(
     assert {p.name: _pin(p) for p in output.iterdir()} == {
         p.name: _pin(p) for p in repeated.iterdir()
     }
+
+
+def test_biff8_gold_preserves_distinct_vintages_and_refuses_duplicates(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    packages = []
+    for kind in ("expenditure", "revenue"):
+        for edition in (2018, 2019):
+            root = tmp_path / f"{kind}-{edition}"
+            root.mkdir()
+            original, silver, pin, _ = _source(root, monkeypatch, kind, edition=edition)
+            canonical = root / "canonical"
+            biff8_canonical.export_canonical(
+                silver,
+                pin,
+                original,
+                kind,
+                canonical,
+                write=True,
+                observed_at="2026-10-20T00:00:00Z",
+            )
+            product = "biff8_budget" if kind == "expenditure" else "biff8_revenue"
+            packages.append(
+                CanonicalPackageInput(
+                    product,
+                    canonical,
+                    _pin(canonical / "MANIFEST.json"),
+                    original,
+                    silver,
+                    pin,
+                )
+            )
+    gold = tmp_path / "gold"
+    receipt = canonical_gold_export.export_canonical_gold(
+        tuple(packages), gold, write=True
+    )
+    assert receipt["quality_report"]["input_record_count"] == 4
+    for product in ("biff8_budget", "biff8_revenue"):
+        result = canonical_gold_queries.query_canonical_gold(
+            gold, _pin(gold / "MANIFEST.json"), product=product
+        )
+        assert result["status"] == "verified"
+        assert result["total_rows"] == 2
+        assert {r["source_vintage"] for r in result["rows"]} == {
+            "Budget-2018",
+            "Budget-2019",
+        }
+        assert receipt["products"][product]["aggregation"] == "none"
+        assert receipt["products"][product]["vintage_pooling"] == "not_performed"
+    repeat = tmp_path / "repeat"
+    canonical_gold_export.export_canonical_gold(
+        tuple(reversed(packages)), repeat, write=True
+    )
+    assert {p.name: _pin(p) for p in gold.iterdir()} == {
+        p.name: _pin(p) for p in repeat.iterdir()
+    }
+    with pytest.raises(ValueError, match="canonical_gold_export_invalid"):
+        canonical_gold_export.export_canonical_gold(
+            (*packages, packages[0]), tmp_path / "duplicate"
+        )
