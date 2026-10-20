@@ -8856,3 +8856,8 @@ health check occurred under independently observed concurrent host CPU load;
 retain unchanged deadlines and rerun those exact contracts before fresh full2.
 
 All157 focused repair checks pass94.88s, including unchanged30s actual CLI and unsuppressed Hypothesis health checks. Native3 requalifies the closed registry and original source pair. Start a fresh original full2 with unchanged gates, two workers and frozen inputs.
+
+
+Original full3 on2a36724d terminated124 at the unchanged900s test-stage cap: 5822observed PASSED,1observed FAILED (checkpoint property contract; no final trace before cap),71percent, no final suite/coverage summary and no all32local pass. Five fast stages passed. All4884pins stable, all captured owner/nested groups absent and kernel lease independently free. Preserve original full1 failures and aborted full2launch; no old log was overwritten. Under AGENTS.md run-before-PR contract, proceed to focused PR with incomplete local assurance explicit; require original all32stages on exact final head across Ubuntu/macOS/Windows, all required checks and resolved findings before normal protected merge/prune. This does not complete whole-track final assurance or change any threshold/deadline.
+
+Full3 log correction: one observed checkpoint property-test failure preceded the cap; the earlier live no-failure statement was incomplete. Its final trace was not emitted before termination. Exact unchanged contract rerun passes1test in8.34s. Original failure remains recorded; no definitive cause or full local pass is inferred. All tests and timing/health-check settings remain unchanged. Hosted exact-head original three-platform assurance must clear the complete suite.
