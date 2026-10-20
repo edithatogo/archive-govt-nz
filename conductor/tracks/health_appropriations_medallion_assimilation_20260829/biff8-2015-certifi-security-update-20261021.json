@@ -14,7 +14,34 @@
     "receipt_sha256": "b43e9e5fef4cfc1d19a25f0c13d4d65f726984fcb253813c4f98210eadc655d3",
     "status": "passed"
   },
-  "native_security_runtime_replay": "pending",
+  "native_security_runtime_replay": {
+    "focused_tests_passed": 83,
+    "original_native_files_unchanged": 1255,
+    "postflight": {
+      "exit": 0,
+      "head": "ff6c8ec216cc0467db1ed80e4963662ee0cc2c5f",
+      "independent_lease_free": true,
+      "owner_and_group_absent": true,
+      "pins_unchanged": 7088,
+      "status": "verified",
+      "tree": "4a9332b462a6c1d3874f5f42fb8aaf6c1f01b038"
+    },
+    "review_replay_files_unchanged": 277,
+    "source_or_product_bytes_changed": false,
+    "summary": {
+      "all15_bindings_verified": true,
+      "ca_bundle_sha256": "50f79f98dac192b20dbf73f35c56f0b0c557ab267ff5199d1117cc1180b70785",
+      "certifi_version": "2026.10.19",
+      "each_missing_binding_refused": true,
+      "each_substituted_binding_refused": true,
+      "fresh_input_builds": 2,
+      "head": "ff6c8ec216cc0467db1ed80e4963662ee0cc2c5f",
+      "input_files": 137,
+      "prior_qualified_input_bytes_identical": true,
+      "retained_derivatives_consumed": false,
+      "tree": "4a9332b462a6c1d3874f5f42fb8aaf6c1f01b038"
+    }
+  },
   "old_version": "2026.7.22",
   "original_final_harness_and_delivery": "pending",
   "package_count": 116,

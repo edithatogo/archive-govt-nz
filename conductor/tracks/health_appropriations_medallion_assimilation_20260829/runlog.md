@@ -9300,3 +9300,11 @@ primary advisory evidence. TLS verification remains enabled with no bypass or
 audit exception. Root freezes fresh original recovery on the updated runtime,
 pinning certifi module/core/bundle bytes plus all1,255 full native and277
 review-replay files; full final-tree original validation must follow.
+
+Patched-runtime native replay3 passed onff6c8ec2:83 focused tests and both
+fresh15-source recoveries repeat137 files exactly against the qualified
+inputs. All1,255 original native and277 prior-replay files unchanged. All
+7088 frozen pins, including certifi module/core/CA bundle, unchanged;
+actual owner/group absent and independent free lease verified. Public security
+receipt records the fixed runtime/hash and no output-byte change. Root now
+freezes original harness2 on the final lock/code/documentation tree.

@@ -4331,3 +4331,12 @@ All six actual recovery versions resolve independently and cross-refuse under
 final schema hashes. Both review findings are fixed and native-verified.
 See `biff8-2015-review-closure-20261021.json`; exact final-tree original
 validation and protected delivery remain pending.
+
+The original harness correctly stopped on the newly published certifi advisory.
+A targeted lock update changes onlycertifi among116 packages, to2026.10.19;
+the unchanged audit passes. The patched runtime's83 focused tests and two fresh
+recoveries repeat all137 qualified input files. All1,255 original native plus
+277 review-replay files are unchanged. All frozen code/source/runtime pins,
+including the patched CA bundle, are unchanged; native owner/group absent and
+independent lease free. No audit exception, TLS bypass or source/data change.
+The failed original run is retained; a new exact-tree full harness is required.
