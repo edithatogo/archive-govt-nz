@@ -2498,7 +2498,7 @@ previous qualification results unchanged; original local timeout preserved.
   No new cloud pass claimed. Clean topic pruned, zero unique commits/patches;
   primary checkout, runtime and49-file mirrored delivery proof retained.
 
-- [~] Qualify preserved Budget2016 expenditure/revenue against complete retained source/header/definition evidence and the closed stored-integer contract. For eligible originals, add exact source profiles and full native/operation/CLI/MCP parity; extend canonical/Gold and explicit thirteen-source recovery/metadata while preserving all prior cohort/source/product bytes. Require distinct schema identity, independent multi-version registry resolution, complete witness/row accounting, repeated fresh builds, original final-tree validation and protected delivery. Keep all120s/30s/900s/4MiB/128MiB bounds,80percent floor and source/rights/period/currency/donor/comparability holds. [M-02, M-05, M-06, M-07, M-10, M-11, M-13, M-15, M-16, M-18; AC-03, AC-04, AC-05, AC-08, AC-09, AC-11, AC-12, AC-13, AC-16]
+- [x] Qualify preserved Budget2016 expenditure/revenue against complete retained source/header/definition evidence and the closed stored-integer contract. For eligible originals, add exact source profiles and full native/operation/CLI/MCP parity; extend canonical/Gold and explicit thirteen-source recovery/metadata while preserving all prior cohort/source/product bytes. Require distinct schema identity, independent multi-version registry resolution, complete witness/row accounting, repeated fresh builds, original final-tree validation and protected delivery. Keep all120s/30s/900s/4MiB/128MiB bounds,80percent floor and source/rights/period/currency/donor/comparability holds. [M-02, M-05, M-06, M-07, M-10, M-11, M-13, M-15, M-16, M-18; AC-03, AC-04, AC-05, AC-08, AC-09, AC-11, AC-12, AC-13, AC-16]
 
   Complete native13-source qualification passed on cd912dfc:119 input/61
   Gold files repeat, ten exact queries, full metadata15 recordsets/2,705 rows.
@@ -2507,4 +2507,12 @@ previous qualification results unchanged; original local timeout preserved.
   bounds and holds remain. Original final-tree harness and protected delivery
   pending; see biff8-2016-products-native-20261021.json.
 
-- [~] PR738: enforce the complete2016–2019 v5 cohort before reads and in schema; verify fresh original recovery and exact-head protected delivery.
+- [x] PR738: enforce the complete2016–2019 v5 cohort before reads and in schema; verify fresh original recovery and exact-head protected delivery.
+
+  Delivery738 is verified on origin/main as5ad4f654: all32 local stages
+  (8,198 tests) and all32 stages on all three hosted platforms, seven green
+  checks, strict rules unchanged, review finding resolved after actual repeated
+  Bronze recovery.119 input/61 Gold files repeat; all1,037 earlier native proof
+  files unchanged. Clean topic pruned and46-file mirrored proof retained.
+
+- [~] Qualify preserved Budget2015 expenditure/revenue from the completed census. Verify every Health numeric field, complete row/definition/header accounting and exact edition/period/unit evidence. Admit only source-backed profiles, explicitly retaining absent expenditure minister/portfolio dimensions as null without invented lineage. Carry eligible facts and complete witnesses through native/operations/CLI/MCP, canonical/Gold and explicit complete fifteen-source v6 recovery/metadata. Preserve prior v1–v5 selection and byte contracts, enforce complete new cohorts, repeat fresh builds, run original final-tree validation and protected delivery before pruning. Keep all source/interface/stage/size/coverage/rights/currency/period/donor/comparability holds. [M-02, M-05, M-06, M-07, M-10, M-11, M-13, M-15, M-16, M-18; AC-03, AC-04, AC-05, AC-08, AC-09, AC-11, AC-12, AC-13, AC-16]
