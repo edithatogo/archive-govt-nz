@@ -3448,3 +3448,16 @@ Native3: requalified the closed v3 producer after the original full1 registry fi
 
 
 Original full3 on2a36724d terminated124 at the unchanged900s test-stage cap: 5822observed PASSED,1observed FAILED (checkpoint property contract; no final trace before cap),71percent, no final suite/coverage summary and no all32local pass. Five fast stages passed. All4884pins stable, all captured owner/nested groups absent and kernel lease independently free. Preserve original full1 failures and aborted full2launch; no old log was overwritten. Under AGENTS.md run-before-PR contract, proceed to focused PR with incomplete local assurance explicit; require original all32stages on exact final head across Ubuntu/macOS/Windows, all required checks and resolved findings before normal protected merge/prune. This does not complete whole-track final assurance or change any threshold/deadline.
+
+### BIFF8-inclusive recovery qualification — 2026-10-20
+
+[Native receipt](biff8-recovery-native-20261020.json) records producer32a2da51,
+two fresh seven-source builds (65files), complete Gold repeats (60files), all10
+exact query readbacks (908bounded rows from1182facts), and composite metadata
+(3packages/15recordsets/1566rows). All1241input records are accounted for.
+The sorted legacy companion retains7063links; full BIFF8 lineage/witnesses remain.
+All47 default-v1 source output hashes and48 prior Gold Parquet/plots match prior
+qualification. Final postflight verifies4848pins, owner/group absence and free
+lease. [Review](biff8-recovery-review-20261020.md) records bounds and remaining
+whole-track gates. Original validation and protected PR delivery follow; native
+qualification is not a rights, publication, standards or full-track claim.

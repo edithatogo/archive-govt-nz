@@ -8935,3 +8935,26 @@ canonical regression32pass82.51s; final helper refactoring will be retested on
 the frozen producer. Lint and focused basedpyright clean. An attempted mypy
 invocation was unavailable; it is not the repository typing tool and not evidence
 of a typing pass. No gates, coverage or size/time limits were relaxed.
+
+Durable native product attempt2 on32a2da51 passes all stages: frozen65focused
+checks, two independent seven-source/API-v2 input builds, fresh Pharmac/BEFU/
+HYEFU/MoH dependencies, both complete Gold exports, all10query checks, two fresh
+Fiscal/Budget analytical chains, and combined metadata export/verification.
+65input files/60Gold files repeat byte-identically; manifest3368303bytes remains
+under4194304, no cap change. Composite15recordsets/1566rows repeats; all1241
+input identities have products. Legacy7063field links retained in companion;
+all48 old Gold Parquet/plots and47 default-v1 source files match prior evidence.
+Actual terminal0, owner66849/group absent, independent lease free, all4848frozen
+pins unchanged. Recovery retained no pre-existing derivative build inputs.
+
+Before this run, the external temporary control directory disappeared during
+launch preparation, before any new owner spawned. Preserve archived receipts
+and distinguish lost temporary logs from durable final logs. Relocated controls
+internally and proof outputs outside temporary directories. Asked Conductor to
+preserve these paths during any cleanup; no Health-specific reply observed.
+Source/CAS, pushed checkpoint and completed archived native receipts survived.
+
+Automatic Conductor self-review records the two source-backed blockers and their
+resolutions with no additional actionable code finding. Original harness and
+protected delivery remain to be recorded on the final pre-PR tree. All source/
+rights/period/comparability/donor holds and full-track gates remain unchanged.

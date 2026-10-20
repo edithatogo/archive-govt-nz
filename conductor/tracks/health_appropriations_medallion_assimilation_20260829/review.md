@@ -4184,3 +4184,10 @@ Original full1 review corrections: close v3 admission to its three actually impl
 
 
 Original full3 on2a36724d terminated124 at the unchanged900s test-stage cap: 5822observed PASSED,1observed FAILED (checkpoint property contract; no final trace before cap),71percent, no final suite/coverage summary and no all32local pass. Five fast stages passed. All4884pins stable, all captured owner/nested groups absent and kernel lease independently free. Preserve original full1 failures and aborted full2launch; no old log was overwritten. Under AGENTS.md run-before-PR contract, proceed to focused PR with incomplete local assurance explicit; require original all32stages on exact final head across Ubuntu/macOS/Windows, all required checks and resolved findings before normal protected merge/prune. This does not complete whole-track final assurance or change any threshold/deadline.
+
+### BIFF8-inclusive bounded recovery review — 2026-10-20
+
+[Review report](biff8-recovery-review-20261020.md) and
+[native receipt](biff8-recovery-native-20261020.json) close the missing BIFF8
+reconstruction and combined Gold reader-bound defects for this slice. Original
+full validation/protected delivery remain pending; this is not final track signoff.
