@@ -43,6 +43,16 @@ def _source(
     biff8_canonical.write_workbook_outputs(
         silver, dict(snapshot.tables), dict(snapshot.metadata)
     )
+    if kind == "revenue":
+        # A different Parquet encoding must preserve the same source contracts.
+        marker = silver / "MANIFEST.json"
+        manifest = json.loads(marker.read_bytes())
+        for name, table in snapshot.tables.items():
+            pq.write_table(
+                table, silver / name, compression="zstd", use_dictionary=False
+            )
+            manifest["output_sha256"][name] = _pin(silver / name)
+        marker.write_text(json.dumps(manifest))
     return original, silver, _pin(silver / "MANIFEST.json"), dict(snapshot.tables)
 
 

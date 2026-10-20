@@ -37,3 +37,9 @@ Gold manifests inline numeric cell/witness lookups and refer to the hashed
 full-lineage companion by canonical lineage ID. All text/definition/numeric
 links remain in that companion without truncation. This avoids duplicating
 all source text lineage into the capped manifest. The cap remains4MiB.
+
+The v3 registry is closed to appropriation_fact, revenue_fact and field_lineage;
+other recordsets retain v1/v2 only. Independent codec/transport representation
+changes may be accepted only after bounded typed readback and full replay equality.
+The existing revenue fixture exercises dictionary-free Zstandard Silver snapshots
+without adding a parallel test framework or pursuing coverage above the80percent floor.

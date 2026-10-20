@@ -38,7 +38,7 @@ def test_recovery_queries_all_products_without_changing_gold(tmp_path: Path) -> 
     result = MODULE.canonical_query_recovery_report(first, second)
     assert result["repeat_identical"] is True
     assert result["gold_unchanged"] is True
-    assert len(result["products"]) == 8
+    assert len(result["products"]) == 10
     for product in result["products"].values():
         assert product["source_rows"] == 2
         assert product["returned_rows"] == 2
@@ -174,7 +174,7 @@ def test_composite_metadata_rebuilds_from_both_fresh_gold_runs(
     assert result["repeat_identical"] is True
     assert result["metadata_reconstructed"] is True
     assert result["packages"] == 3
-    assert result["recordsets"] == 13
+    assert result["recordsets"] == 15
     assert result["schema_version"] == "archive-govt-nz.health-gold-metadata/v4"
     assert result["rights"] == "not_evaluated"
     assert result["publication"] == "not_performed"

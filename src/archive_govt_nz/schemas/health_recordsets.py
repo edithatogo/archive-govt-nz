@@ -165,11 +165,8 @@ _EVIDENCE_FIELDS = (
 RECORDSETS_V3 = _schemas(
     "v3",
     {
-        **_V2_FIELDS,
-        **{
-            name: (*_V2_FIELDS[name], *_EVIDENCE_FIELDS)
-            for name in ("appropriation_fact", "revenue_fact", "field_lineage")
-        },
+        name: (*_V2_FIELDS[name], *_EVIDENCE_FIELDS)
+        for name in ("appropriation_fact", "revenue_fact", "field_lineage")
     },
 )
 _VERSIONS = MappingProxyType(

@@ -124,7 +124,7 @@ def test_fact_precision_preserves_known_values_and_rejects_overflow(name: str) -
     ("name", "version"),
     [
         ("unknown", "v1"),
-        ("source_inventory", "unknown"),
+        ("source_inventory", "v3"),
         ("published_indicator_fact", "v1"),
     ],
 )

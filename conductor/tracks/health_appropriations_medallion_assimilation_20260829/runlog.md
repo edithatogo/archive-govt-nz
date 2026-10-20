@@ -8837,3 +8837,20 @@ rewriting native1. Also corrected the metadata fixture DCAT dataset count8to10
 and explicitly describe BIFF8 period labels as replayed year integers.
 
 Native2 producer00faaa1d passes both original-source canonical repeats and combined Gold repeats/queries. All4834pins stable; owner/group absent and lease independently free. Latest focused11tests pass with two existing RDFLib deprecation warnings. Full original harness next; single root-owned serialized launch, internal durable logs and SSD temporary files.
+
+Original full1 exposed an overbroad v3 registry: copying all v2 shapes admitted
+source_inventory/v3 although only BIFF8 facts/lineage are implemented. Retain
+that failure evidence, close v3 to the three implemented shapes and restore the
+existing source_inventory/v3 rejection assertion. This supersedes the earlier
+stale-negative-test interpretation. Extend the existing revenue fixture to a
+different Parquet codec so the bounded typed-readback fallback has positive
+transport evidence; no extra synthetic percentage target. Native3 and fresh
+original full2 must qualify the corrected producer before PR creation.
+
+Original full1 terminated1 with5failures,8166pass/14skip/18warnings749.31s;
+only six stages reached, no all32pass claim. Preserved full log/fixity/frozen
+inputs and terminal/gone-owner/free-lease evidence. Two further failures were
+recovery fixture counts8to10 products/13to15metadata recordsets; update those
+explicit inventories. Actual CLI30s timeout and Hypothesis1s slow-generation
+health check occurred under independently observed concurrent host CPU load;
+retain unchanged deadlines and rerun those exact contracts before fresh full2.
