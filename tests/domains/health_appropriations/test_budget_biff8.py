@@ -101,6 +101,21 @@ def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
         "blank": 1,
         "rejected": 0,
     }
+    if edition == 2019 and kind == "expenditure":
+        legacy = budget_biff8.BiffBudgetProfile(
+            profile.kind,
+            profile.source_sha256,
+            profile.source_locator,
+            profile.max_rows,
+            profile.fields,
+            profile.numeric_columns,
+            profile.definitions,
+            profile.definition_links,
+            profile.edition,
+            profile.group_types,
+            profile.period_types,
+        )
+        assert legacy == profile
     fact = parsed.tables["budget_facts.parquet"].to_pylist()[0]
     assert fact["amount"] == Decimal("123.000")
     assert fact["canonical_stored_integer"] == "123"

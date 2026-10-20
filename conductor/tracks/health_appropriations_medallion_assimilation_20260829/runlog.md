@@ -9250,3 +9250,26 @@ Seventeen recovery tests,54 integrated source/canonical/recovery checks, Ruff,
 strict typing and71 schemas/61 representative documents pass. Root now freezes
 full twenty-stage native recovery: two fresh fifteen-source builds, original
 v1–v5 and Gold byte comparisons, all ten typed queries and complete metadata.
+
+Automatic bounded review found two compatibility/completeness defects: the new optional source-absence field shifts two existing positional constructor arguments, and a v6 baseline key can be substituted while preserving total count. Retain successful full native output proof; establish both red contracts, append the new field after prior arguments, require all fifteen named keys, and qualify fresh original recovery against unchanged Gold/query/metadata artifacts. Earlier schemas stay unchanged.
+
+Full native qualification on33409aea passed all twenty stages:137 repeated
+input files,61 Gold files, all prior47/65/83/101/119 input and60/61/61/61 Gold
+byte contracts, all ten typed queries (1,045 bounded results/2,702 facts), all
+2,761 inputs accounted for and8,551 witnesses. Full metadata repeats at three
+packages/15 recordsets/3,086 rows. Manifest1,177,141 bytes and complete verified
+drillthrough7,523,968 bytes remain under unchanged bounds. Six actual native
+schemas resolve independently and refuse every cross-version receipt.
+All5,549 frozen pins unchanged; terminal success, actual owner/group absence
+and free independent lease verified. Retained1,255 native proof files.
+A summary exporter used a nonuniform Gold product field; corrected its count
+projection to the common quality report, preserving the bounded failure and
+all product bytes. This was not a native stage failure.
+
+Two review regressions reproduced constructor positional drift and a substituted
+v6 baseline name (two failures/ten passes). Moved the new optional argument to
+the end and required all fifteen named bindings; all54 integrated checks, Ruff,
+strict typing and71 schemas/61 fixtures pass. Root now freezes a bounded
+post-review replay:83 focused checks and two fresh fifteen-source recoveries
+against every previously qualified input byte; validate each actual missing
+and substituted source/profile binding and retain all earlier native artifacts.

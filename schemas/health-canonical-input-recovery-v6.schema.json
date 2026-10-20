@@ -41,6 +41,11 @@
         "$ref": "#/$defs/source_binding"
       },
       "required": [
+        "historical-2024",
+        "historical-2025",
+        "budget-2025",
+        "budget-2026",
+        "revenue-2026",
         "biffbudget-2015",
         "biffrevenue-2015",
         "biffbudget-2016",
@@ -64,6 +69,11 @@
         "$ref": "#/$defs/profile"
       },
       "required": [
+        "historical-2024",
+        "historical-2025",
+        "budget-2025",
+        "budget-2026",
+        "revenue-2026",
         "biffbudget-2015",
         "biffrevenue-2015",
         "biffbudget-2016",

@@ -37,3 +37,11 @@ Expenditure definitions areB3/B38/B39/B40/B41/B46/B47/B48/B49; revenue
 definitionsB4/B34/B35/B36/B40. Bind these exact source cells. Expenditure
 minister/portfolio nulls must have explicit absent-field quality flags and no
 source coordinate or invented witness. Native admission remains to be verified.
+
+## Bounded review closures
+
+Keep all existing profile constructor argument positions. The new source-absence
+option is appended after them. Recoveryv6 requires all fifteen named keys in
+both source/profile maps, including the five established baseline sources.
+Native complete receipts and missing/substituted bindings must validate/refuse
+under the final schema; original v1–v5 schemas remain unchanged.

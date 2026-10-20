@@ -4288,3 +4288,37 @@ products remain hash-identical. Seventy-eight focused tests pass. Native owner
 and process group absent, free independent lease and all frozen pins verified.
 See `biff8-v5-cohort-review-20261021.json`. Exact final-tree original harness
 and protected hosted delivery remain pending.
+
+## Review Report: Budget2015 bounded source-to-products increment
+
+### Summary
+
+All twenty frozen native stages pass; two bounded compatibility/completeness
+findings are fixed, with final native replay and protected delivery pending.
+
+### Verification Checks
+
+- [x] Plan compliance: exact2015 pair,15-column source absence, all witnesses
+  and lineage, complete v6 and source-separated products; no source/value edits.
+- [x] Style: maintained Ruff formatting/lint and strict typing pass.
+- [x] New contracts: missing profiles/recovery and two review failures were
+  established before fixes.54 integrated tests pass;71 schemas/61 fixtures pass.
+- [x] Native products:137 input/61 Gold files repeat; all prior v1–v5 and Gold
+  cohorts match qualified receipts. Ten queries verify1,045 bounded results
+  from2,702 facts; all2,761 inputs accounted for with8,551 numeric witnesses.
+  Full metadata repeats across three packages/15 recordsets/3,086 rows.
+- [ ] Final review gates: exact final-tree original harness at unchanged80percent
+  floor, native review replay, protected checks/merge and safe owned-topic pruning.
+
+### Findings
+
+Medium: the new optional profile argument shifted existing positional arguments.
+Append it after all prior arguments; the legacy constructor regression now
+passes. Medium: v6 counts and ten BIFF8 keys permitted unrelated baseline names.
+Require all fifteen source/profile keys; the strengthened existing fixture now
+refuses baseline substitution. Prior schemas and all physical source/product
+bytes remain unchanged. Fresh native replay must independently confirm this
+under the final implementation before delivery.
+
+The broader track remains incomplete. Source/rights/currency/period starts,
+comparability and historical donor decisions remain explicitly unqualified.

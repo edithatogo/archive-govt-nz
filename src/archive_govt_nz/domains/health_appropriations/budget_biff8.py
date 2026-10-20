@@ -54,9 +54,9 @@ class BiffBudgetProfile:
     definitions: tuple[tuple[int, str], ...]
     definition_links: tuple[tuple[str, int], ...]
     edition: int = 2019
-    absent_fields: tuple[str, ...] = ()
     group_types: tuple[str, ...] = ("Single", "MCA")
     period_types: tuple[tuple[int, str], ...] = tuple(PERIOD_TYPES.items())
+    absent_fields: tuple[str, ...] = ()
 
     @property
     def profile_id(self) -> str:

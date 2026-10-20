@@ -262,6 +262,22 @@ def _biff_sources(
     )
 
 
+def _name_v6_fixture_baselines(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Use the v6 baseline roles with explicitly fictional source bytes."""
+    keys = {
+        "historical-2001": "historical-2024",
+        "historical-2002": "historical-2025",
+        "budget-2001": "budget-2025",
+        "budget-2002": "budget-2026",
+        "revenue-2001": "revenue-2026",
+    }
+    monkeypatch.setattr(
+        recovery,
+        "SOURCES",
+        tuple(replace(spec, key=keys[spec.key]) for spec in recovery.SOURCES),
+    )
+
+
 def test_explicit_biff_recovery_repeats_from_bronze_with_complete_witnesses(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, sources: tuple[Path, list[str]]
 ) -> None:
@@ -348,6 +364,8 @@ def test_explicit_expanded_recovery_keeps_prior_cohorts(
                 ),
             ),
         )
+    if earliest == 2015:
+        _name_v6_fixture_baselines(monkeypatch)
     editions = tuple(range(earliest, 2020))
     for edition in editions:
         _biff_sources(cas, monkeypatch, edition=edition)
@@ -440,6 +458,8 @@ def test_partial_new_cohort_fails_before_source_reads_or_output(
         "SOURCES",
         (*baseline, *(replace(spec, key=spec.kind + "-2002") for spec in baseline[:2])),
     )
+    if earliest == 2015:
+        _name_v6_fixture_baselines(monkeypatch)
     later_editions = tuple(range(earliest + 1, 2020))
     for count in range(len(later_editions)):
         for later in combinations(later_editions, count):
@@ -484,7 +504,7 @@ def test_new_schema_refuses_incomplete_source_and_profile_bindings(
             del missing[name][key]
             with pytest.raises(ValidationError):
                 validator.validate(missing)
-            if key.startswith("biff"):
+            if key.startswith("biff") or version == 6:
                 substituted = json.loads(json.dumps(fixture))
                 substituted[name]["biffbudget-2014"] = substituted[name].pop(key)
                 with pytest.raises(ValidationError):
