@@ -8835,3 +8835,5 @@ Inline only numeric source lookups and point to the complete hashed lineage
 companion; no source evidence is removed. Qualify a new producer rather than
 rewriting native1. Also corrected the metadata fixture DCAT dataset count8to10
 and explicitly describe BIFF8 period labels as replayed year integers.
+
+Native2 producer00faaa1d passes both original-source canonical repeats and combined Gold repeats/queries. All4834pins stable; owner/group absent and lease independently free. Latest focused11tests pass with two existing RDFLib deprecation warnings. Full original harness next; single root-owned serialized launch, internal durable logs and SSD temporary files.

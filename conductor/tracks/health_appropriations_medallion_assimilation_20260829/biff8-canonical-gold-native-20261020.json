@@ -1,0 +1,76 @@
+{
+  "canonical_repeat": "same_four_file_hashes_as_native1_and_two_repeats",
+  "full_assurance": "pending",
+  "gold_repeat": "all_eleven_file_hashes_equal",
+  "native_summary_sha256": "1609e1cf66e9bb9268af4c7481e58d7bca6c5c0da7a326cfddc109b7586aed57",
+  "original_silver_and_bronze": "retained_unchanged",
+  "postflight": {
+    "exit": 0,
+    "head": "00faaa1d53464bb159a859055908dcc379a52d8d",
+    "lease": "independently_free",
+    "pid_pgid": "absent",
+    "pin_state": "unchanged",
+    "pins": 4834,
+    "tree": "95f82ebeb3a6685f022217781c3a1ef81d113f1d"
+  },
+  "producer_head": "00faaa1d53464bb159a859055908dcc379a52d8d",
+  "producer_tree": "95f82ebeb3a6685f022217781c3a1ef81d113f1d",
+  "protected_delivery": "pending",
+  "resources": [
+    {
+      "canonical_sha256": {
+        "MANIFEST.json": "21c32551e51e018251673ae2b7bd81e155ade2c6ce0aefb23c6438704b38b9db",
+        "appropriation_fact.parquet": "1f4443034950c5b3c898de105a497f49fee028b68fbd7b2d782ec4d5b8e80725",
+        "field_lineage.parquet": "5493268939013d98716af06c30679bce62945488f0e919b24ddafe811b665b23",
+        "numeric_evidence.parquet": "085f676532b3ebcd5a74951b3e9093c5d17bc8d1466974e2fb5c92bfd8f8224e"
+      },
+      "kind": "biff8_budget",
+      "original_sha256": "30602fd66ec1f4fb7d0b47f2766f6560c4d22e90c11e994fba3e404e29ceab48",
+      "repeat": "all_four_file_hashes_equal",
+      "rows": {
+        "appropriation_fact": 319,
+        "field_lineage": 8613,
+        "numeric_evidence": 1595
+      },
+      "silver_manifest_sha256": "5192d42399c9985e444029a7fe684be83b3205dd2e0f451745f01a9f2f8f6e7b"
+    },
+    {
+      "canonical_sha256": {
+        "MANIFEST.json": "df02aa63ca91dd19589e40f7783f0039e537496e12c0f580cec8767c9216a97f",
+        "field_lineage.parquet": "a7aa1e4dd1b9c9afaa27b83e65cee613df3a137467f14e5033a313cf54c7fb19",
+        "numeric_evidence.parquet": "488369d4943f5311e7b544b167f3ec4b19b386c00d021d2658b7e05a81b8f84f",
+        "revenue_fact.parquet": "08bb995b877553c9d030d63e2d66846509964b491884b15650462ce87d76d4e7"
+      },
+      "kind": "biff8_revenue",
+      "original_sha256": "d927995dd91eda6fdfb4020eb2a3e91871a24d5144e837e7801b6725e5f33df8",
+      "repeat": "all_four_file_hashes_equal",
+      "rows": {
+        "field_lineage": 882,
+        "numeric_evidence": 189,
+        "revenue_fact": 63
+      },
+      "silver_manifest_sha256": "ab99f3ff63b4afe62c98ecba07f5620425b76d17446f7d332e452dbfe6881029"
+    },
+    {
+      "gold_sha256": {
+        "MANIFEST.json": "b6b3b21ccf9b25ffcc01bf59836f1c0ac660be09b619d432220e1d757d5d6298",
+        "biff8_budget.parquet": "c9c5403e4ad625fbf2f3de5122581f6a2e07fa62330d2e22058b96725c3d275c",
+        "biff8_budget_lineage.parquet": "d5e1e5910b04588e524c352cf93f03ad8f7a228e36cfe8eda4e4b342c7dc7e46",
+        "biff8_budget_numeric.parquet": "5a6aa039a2d3424a75195cd0eadea67ab455cf6200094bc9eeb699d5e53030e9",
+        "biff8_revenue.parquet": "0265fe60da25a863ad0cd66775d4d23b0096d298b6996ce4a3c4d0d42454e4fd",
+        "biff8_revenue_lineage.parquet": "1e0060863dcc57b625f6e309707a5faf656d2c1c9407c53df3dcb56ade70cd4f",
+        "biff8_revenue_numeric.parquet": "c7e37312e6adc08b44f1e3114c4d9b4bb633781f446359918f401607a7df02f8",
+        "cross_source_period_overlap.json": "011b22bb025ad58d449a4f7641c6595a81c4767fb25f69b0cb31cdaba2f58dc5",
+        "dataset-card.md": "39435f883bbd4ab33b51351ff788156bd088d25f753c73395020e3a44396f5a7",
+        "historical_revision_reconciliation.json": "5aa57987fa03a4dd9d44f517d4de6bc088754593a584c76818ab39003ac2b15c",
+        "ro-crate-metadata.json": "34d536e93d1171f12b4baaf6a37cd6df7c79c04b538e7385686a084af31875e5"
+      },
+      "manifest_bytes": 1401950,
+      "queries": "both_named_products_verified",
+      "repeat": "all_gold_file_hashes_equal",
+      "rows": 382
+    }
+  ],
+  "rights_currency_period_start_aggregation_and_comparability": "not_admitted",
+  "schema_version": "archive-govt-nz.health-biff8-canonical-qualification/v1"
+}

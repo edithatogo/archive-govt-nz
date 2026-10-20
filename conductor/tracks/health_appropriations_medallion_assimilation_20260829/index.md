@@ -660,3 +660,6 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [2019 full native qualification](./budget-2019-biff8-native-qualification-20261020.json)
 
 - [2019 BIFF8 original full assurance and interrupted-run recovery](./budget-2019-biff8-original-assurance-20261020.json)
+
+- [BIFF8 canonical and Gold contract](./biff8-canonical-gold-contract.md)
+- [BIFF8 native canonical and Gold qualification](./biff8-canonical-gold-native-20261020.json)
