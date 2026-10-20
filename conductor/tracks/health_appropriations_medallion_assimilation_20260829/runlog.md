@@ -9200,3 +9200,10 @@ the explicitly fictionalv5 fixture to five baseline bindings. Fourteen recovery
 tests and seventy schemas/sixty representative documents pass. New native
 recovery repetitions and exact final-tree original harness follow; no merge
 while the finding or required checks remain unresolved.
+
+The fixed cohort producer's two fresh recoveries repeat119 files exactly and
+match the prior qualified inputs. All1037 earlier native proof files are
+unchanged, including all Gold, queries and metadata. Actual complete receipts
+passv5; all single missing source/profile bindings are refused.78 focused
+tests pass;5360 frozen pins unchanged and
+owner/group absence/free lease verified. No output or original was replaced.

@@ -4277,3 +4277,14 @@ source/products/ten-query/three-package metadata assurance passes on cd912dfc.
 No actionable implementation finding remains. Original final-tree and hosted
 checks remain required before merge;80percent floor and all policy bounds
 stay intact. This is bounded progress, not whole-track or publication closure.
+
+### PR738 cohort review fix
+
+Thev5 partial-selector finding is fixed. Two fresh thirteen-source Bronze
+recoveries on the fixed producer repeat all119 files and equal the earlier
+qualified full cohort. Each receipt passes the stricterv5 schema; deletion of
+any one of26 source/profile bindings fails validation. All earlier native
+products remain hash-identical. Seventy-eight focused tests pass. Native owner
+and process group absent, free independent lease and all frozen pins verified.
+See `biff8-v5-cohort-review-20261021.json`. Exact final-tree original harness
+and protected hosted delivery remain pending.
