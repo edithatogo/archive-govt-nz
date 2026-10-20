@@ -9114,3 +9114,23 @@ across60/61 files. Baseline hashes were bound to qualified receipts before launc
 All5,187 frozen pins unchanged; terminal0, owner/group absent and independent
 lease free. No retained derivatives used as build inputs, new retrieval, rights
 admission or external publication. Original final-tree harness/PR delivery next.
+
+Original f101afdb harness1 failed only the existing legislation checkpoint
+property's Hypothesis input-generation too_slow health check before its
+assertion:8,187 tests passed/one failed/14 skipped/18 warnings,414.40s. The
+reported seed251251198688775765808699112454882388636 passed unchanged in2.38s.
+All4,848 frozen pins unchanged, owner/group absent, lease free. Faithful original
+harness2 on the unchanged tree passed all32 stages:8,188 tests/14 skips/18
+warnings,410.83s,80percent floor intact, all mutation/supply-chain gates pass.
+Failure/replay/success controls and logs retained. No tests or policies suppressed.
+
+Opened737; hosted review identified a real v4 schema canonical-URI collision
+with v3 (comment4328335069). One added resolver contract failed red because
+v3 resolved to v4, then passes with v4's distinct$id and accurate title.
+All11 focused recovery checks and69 schemas/59 representatives pass. Actual
+native v3 nine-source and v4 eleven-source receipts resolve independently and
+reject the opposite version. All837 native output files and every producer,
+original, runtime/control pin remain unchanged; only schema identity/title,
+regression and review docs differ. Repeat native builds are unnecessary for
+this metadata-only correction; original final-tree and hosted checks are repeated.
+See biff8-recovery-schema-registry-review-20261021.json.

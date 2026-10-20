@@ -4236,3 +4236,21 @@ exact queries and full three-package metadata verification pass on6b6c2cba.
 No actionable implementation finding remains. Original final-tree harness
 and protected PR checks are pending before merge; the coverage floor stays80%.
 This is bounded source/product progress, not whole-track or publication closure.
+
+### PR737 registry finding and validation recovery
+
+The initial self-review missed v4's duplicated v3 canonical URI. Hosted P2
+comment4328335069 correctly showed resolver aliasing. A red registry-level
+contract reproduces the collision; v4 now has its distinct URI and correct
+2017–2019 title. Real qualified v3/v4 receipts independently resolve and reject
+cross-version data; all837 output files and producer/original/runtime pins are
+unchanged. Eleven recovery tests and69 schemas/59 representatives pass.
+The earlier standalone-validator checks were insufficient for URI uniqueness;
+the new check exercises actual registry resolution. No actionable finding remains
+in this correction; exact final-tree full/hosted validation is still required.
+
+The first local full run hit an unrelated Hypothesis generation health check,
+not a checkpoint assertion. The reported seed and complete original rerun pass
+on the unchanged tree with all health checks, coverage and time bounds intact.
+All failure and success evidence is retained; no legislation code/test changes
+or broader phase/rights/publication completion claims are made.

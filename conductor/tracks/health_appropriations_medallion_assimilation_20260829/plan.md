@@ -2488,3 +2488,5 @@ previous qualification results unchanged; original local timeout preserved.
   See budget-2017-biff8-native-qualification-20261021.json and
   biff8-2017-products-native-20261021.json. Original final-tree assurance and
   protected delivery remain pending; the wider Health track remains in progress.
+
+- [~] PR737 review fix: give recovery v4 its distinct canonical schema URI and verify v3/v4 registry resolution and cross-version refusal. Preserve every native/source/product byte and all policy bounds; repeat original exact-tree validation and hosted checks before protected delivery. [M-06, M-13, M-16; AC-09, AC-12, AC-16]

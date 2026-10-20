@@ -9,6 +9,7 @@ from pathlib import Path
 
 import pytest
 from jsonschema import Draft202012Validator, ValidationError
+from referencing import Registry, Resource
 from tests.domains.health_appropriations.test_budget_biff8 import _fixture
 
 from archive_govt_nz.domains.health_appropriations import budget_biff8
@@ -375,3 +376,35 @@ def test_explicit_expanded_recovery_keeps_prior_cohorts(
             cas, tmp_path / "unsupported", include_biff8=True, biff8_editions=(2016,)
         )
     assert not (tmp_path / "unsupported").exists()
+
+
+def test_expanded_recovery_versions_resolve_independently() -> None:
+    root = Path(__file__).parents[3]
+    schemas = {
+        version: json.loads(
+            (
+                root / f"schemas/health-canonical-input-recovery-v{version}.schema.json"
+            ).read_bytes()
+        )
+        for version in (3, 4)
+    }
+    fixtures = {
+        version: json.loads(
+            (
+                root / f"tests/fixtures/health-canonical-input-recovery-v{version}.json"
+            ).read_bytes()
+        )
+        for version in (3, 4)
+    }
+    registry = Registry().with_resources(
+        (schema["$id"], Resource.from_contents(schema)) for schema in schemas.values()
+    )
+    for version, other in ((3, 4), (4, 3)):
+        uri = (
+            "https://archive-govt-nz.example/schemas/"
+            f"health-canonical-input-recovery-v{version}.schema.json"
+        )
+        validator = Draft202012Validator({"$ref": uri}, registry=registry)
+        validator.validate(fixtures[version])
+        with pytest.raises(ValidationError):
+            validator.validate(fixtures[other])
