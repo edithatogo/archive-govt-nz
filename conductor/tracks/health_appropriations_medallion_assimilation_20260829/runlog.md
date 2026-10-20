@@ -9010,3 +9010,53 @@ remain byte-identical. Source120s and stage900s limits unchanged. Actual0,
 owner33049/group absent, independent lease free and every frozen pin unchanged.
 Native receipt records local inspection context, no capture attestation.
 Canonical/Gold/recovery2018 and whole-track gates remain future work.
+
+2026-10-21 continuation: previous goal turn is progress. PR735 merged normally
+at6af8e4bd, checked3a6c02b7, with all7green checks, no findings/threads/CodeQL
+alerts and unchanged strict rules. All32 stages on local8177/14skip381.80s,
+Ubuntu8161/30skip478.18s, macOS8161/30skip744.61s, Windows8155/36skip831.23s.
+Fetched exact merge-tree/ancestry, zero unique commits/patches and clean checkout
+precede topic pruning. Issue209 delivery readback matches. Originals/runtime/
+proofs retained. Source-native2018 task is complete; downstream products now
+advance under the separately recorded contract without declaring track completion.
+
+2018 downstream red checks first expose hard-coded2019 canonical selection
+(source-hash mismatch), then the single-package-per-kind Gold restriction.
+Resolve exact trusted profile ID/hash/locator/vintage/kind, use edition-specific
+canonical rules and concatenate source-separated rows/companions deterministically.
+Reject duplicate kind/vintage packages without aggregation or comparability.
+Focused canonical/query/metadata35pass/2warnings12.76s; expanded recovery/canonical
+19pass8.38s. Public Gold duplicate refusal remains canonical_gold_export_invalid.
+
+Recovery API red check rejects the not-yet-supported explicit edition selector.
+Add a v3 admitted2018/2019 cohort with fixed original/local observation bindings,
+keeping default v1 and2019-only v2 routes. Reject unknown/duplicate/non-integer
+edition inputs before outputs. Schema68/representatives58 pass, focused strict
+typing0errors and Ruff clean. Native complete source/Gold/metadata qualification,
+existing byte parity, original assurance and protected delivery remain pending.
+
+### 2026-10-21 Expanded BIFF8 provenance reader contract
+
+Frozen producer efdc45f1 rebuilt all nine sources and supporting inputs, then
+Gold successfully. The real query refused its 4,759,245-byte manifest against
+the unchanged 4,194,304-byte cap. Preserved native-probe-1 failure and verified
+all 4,860 frozen pins, terminal exit1, owner/group absence and free lease.
+A focused red contract established the missing v3 companion reference. Complete
+v2 drillthrough records now move into a hashed, inventoried RO-Crate companion
+for mixed BIFF vintages; the verifier checks binding/count and metadata resolves
+the same records before projecting source references. Single-vintage bytes stay
+on the existing inline path. The exporter rejects oversized final manifests.
+Focused testing caught a test-only metadata receipt expectation (written, not
+complete); corrected without changing the production status contract.
+
+Frozen 46ef125d native-products-2 passed all thirteen subprocess stages. The
+83-file fresh nine-source inputs and61-file complete Gold inventories repeat
+exactly; all ten queries independently match typed readback (972 bounded rows
+from1,564 facts). All1,623 input identities accounted for, retaining3,566 binary
+witnesses. Combined metadata: three packages,15 recordsets,1,948 rows, repeated
+and verified. Default v1 all47 files, v2 all65 files and prior Gold all60 files
+are byte-identical to qualified baselines. New manifest712,741 bytes; complete
+4,046,926-byte drillthrough companion fixes the actual reader failure without
+raising bounds. All4,860 pins unchanged, owner/group absent, independent lease
+free. See biff8-expanded-native-qualification-20261021.json. Original harness
+and hosted delivery remain pending on the final documentation tree.

@@ -42,6 +42,8 @@ if TYPE_CHECKING:
 
 VERSION = "archive-govt-nz.health-canonical-input-recovery/v1"
 BIFF8_VERSION = "archive-govt-nz.health-canonical-input-recovery/v2"
+BIFF8_2018_VERSION = "archive-govt-nz.health-canonical-input-recovery/v3"
+MAX_EXPANDED_SOURCES = 9
 MAX_SOURCES = 5
 MAX_BIFF8_SOURCES = 7
 MAX_OUTPUT_FILES = 16
@@ -143,6 +145,28 @@ BIFF8_SOURCES = (
     ),
 )
 
+# Exact prior local-inspection tokens; these do not attest a new capture.
+BIFF8_2018_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2018",
+        "biff8_budget",
+        "fecd70019054313f3a11cbb370be684d8bea0eea8cb3623b69a9e193ac085c24",
+        "https://www.treasury.govt.nz/sites/default/files/2018-05/b18-expenditure-data.xls",
+        "Budget-2018",
+        "2026-10-20T14:44:44.843862+00:00",
+        "sha256:af8434e4d018b62907a7d5152edba93eb1d90766520a26ae16e97478b35bf17b",
+    ),
+    SourceDefinition(
+        "biffrevenue-2018",
+        "biff8_revenue",
+        "4db87e7eddd7a76b5b7523db5a01952d15e7f47b88d03ef9878d37cd077f937f",
+        "https://www.treasury.govt.nz/sites/default/files/2018-05/b18-revenue-data.xls",
+        "Budget-2018",
+        "2026-10-20T14:44:44.843862+00:00",
+        "sha256:dc9ae0d69080736adeadc17cc89d78837744297cd088f1ebc5eae26f5a3c4170",
+    ),
+)
+
 
 def _require(condition: object) -> None:
     if not condition:
@@ -157,20 +181,23 @@ def _json(value: object) -> bytes:
 
 
 def _biff_profile(spec: SourceDefinition) -> budget_biff8.BiffBudgetProfile:
-    profile = budget_biff8.PROFILES[biff8_canonical.KINDS[spec.kind]]
-    _require(
-        budget_biff8_adapter.source_binding(
+    profiles = [
+        profile
+        for profile in budget_biff8.declared_profiles()
+        if profile.kind == biff8_canonical.KINDS[spec.kind]
+        and budget_biff8_adapter.source_binding(
             profile.profile_id, spec.source_vintage, spec.source_locator, spec.sha256
         )
-    )
-    return profile
+    ]
+    _require(len(profiles) == 1)
+    return profiles[0]
 
 
 def _sources(
     cas: Path, definitions: tuple[SourceDefinition, ...]
 ) -> dict[str, dict[str, Any]]:
     _require(
-        0 < len(definitions) <= MAX_BIFF8_SOURCES
+        0 < len(definitions) <= MAX_EXPANDED_SOURCES
         and len({s.key for s in definitions}) == len(definitions)
     )
     originals = {}
@@ -298,8 +325,31 @@ def _build(
     }
 
 
+def _biff_definitions(editions: tuple[int, ...]) -> tuple[SourceDefinition, ...]:
+    _require(
+        type(editions) is tuple
+        and bool(editions)
+        and all(type(year) is int and year in {2018, 2019} for year in editions)
+        and len(set(editions)) == len(editions)
+    )
+    selected: tuple[SourceDefinition, ...] = ()
+    for year, definitions in ((2019, BIFF8_SOURCES), (2018, BIFF8_2018_SOURCES)):
+        if year not in editions:
+            continue
+        _require(
+            len(definitions) == len(biff8_canonical.KINDS)
+            and {s.kind for s in definitions} == set(biff8_canonical.KINDS)
+        )
+        selected += definitions
+    return selected
+
+
 def rebuild_canonical_inputs(
-    source_cas: Path, output: Path, *, include_biff8: bool = False
+    source_cas: Path,
+    output: Path,
+    *,
+    include_biff8: bool = False,
+    biff8_editions: tuple[int, ...] = (2019,),
 ) -> RebuiltCanonicalInputs:
     """Build only exclusive fresh inputs; retain partial attempts on failure.
 
@@ -309,15 +359,17 @@ def rebuild_canonical_inputs(
     """
     _require(
         type(include_biff8) is bool
+        and type(biff8_editions) is tuple
+        and all(type(year) is int for year in biff8_editions)
         and 0 < len(SOURCES) <= MAX_SOURCES
         and all(spec.kind in {"historical", "budget", "revenue"} for spec in SOURCES)
     )
+    _require(include_biff8 or biff8_editions == (2019,))
+    definitions_biff = _biff_definitions(biff8_editions) if include_biff8 else ()
+    selected = (*SOURCES, *definitions_biff)
+    version = VERSION
     if include_biff8:
-        _require(
-            len(BIFF8_SOURCES) == len(biff8_canonical.KINDS)
-            and {s.kind for s in BIFF8_SOURCES} == set(biff8_canonical.KINDS)
-        )
-    selected = (*SOURCES, *BIFF8_SOURCES) if include_biff8 else SOURCES
+        version = BIFF8_VERSION if biff8_editions == (2019,) else BIFF8_2018_VERSION
     _require(not output.exists() and not output.is_symlink())
     _require(source_cas.is_dir() and not source_cas.is_symlink())
     target, original_root = output.resolve(), source_cas.resolve()
@@ -331,7 +383,7 @@ def rebuild_canonical_inputs(
     products = [_build(spec, source_cas, output) for spec in selected]
     _require(before == _sources(source_cas, selected))
     receipt = {
-        "schema_version": BIFF8_VERSION if include_biff8 else VERSION,
+        "schema_version": version,
         "status": "written_local",
         "scope": "pinned_originals_to_fresh_raw_and_canonical",
         "definitions_sha256": hashlib.sha256(definitions).hexdigest(),

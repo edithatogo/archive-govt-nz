@@ -216,15 +216,21 @@ def test_interruption_preserves_partial_attempt_without_completion_receipt(
     assert before == inventory(cas)
 
 
-def _biff_sources(cas: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+def _biff_sources(
+    cas: Path, monkeypatch: pytest.MonkeyPatch, *, edition: int = 2019
+) -> None:
     definitions = []
     observed_at = "2026-10-19T21:46:39.456033+00:00"
     for native, kind, key in (
-        ("expenditure", "biff8_budget", "biffbudget-2019"),
-        ("revenue", "biff8_revenue", "biffrevenue-2019"),
+        ("expenditure", "biff8_budget", f"biffbudget-{edition}"),
+        ("revenue", "biff8_revenue", f"biffrevenue-{edition}"),
     ):
-        payload, profile = _fixture(native)
-        monkeypatch.setitem(budget_biff8.PROFILES, native, profile)
+        payload, profile = _fixture(native, edition=edition)
+        monkeypatch.setitem(
+            budget_biff8.PROFILES if edition == 2019 else budget_biff8.PROFILES_2018,
+            native,
+            profile,
+        )
         path = cas / profile.source_sha256[:2] / profile.source_sha256
         path.parent.mkdir(exist_ok=True)
         path.write_bytes(payload)
@@ -234,17 +240,22 @@ def _biff_sources(cas: Path, monkeypatch: pytest.MonkeyPatch) -> None:
                 kind,
                 profile.source_sha256,
                 profile.source_locator,
-                "Budget-2019",
+                f"Budget-{edition}",
                 observed_at,
                 source_context(
                     profile.source_sha256,
                     profile.source_locator,
-                    "Budget-2019",
+                    f"Budget-{edition}",
                     observed_at,
                 )["source_observation_id"],
             )
         )
-    monkeypatch.setattr(recovery, "BIFF8_SOURCES", tuple(definitions), raising=False)
+    monkeypatch.setattr(
+        recovery,
+        "BIFF8_SOURCES" if edition == 2019 else "BIFF8_2018_SOURCES",
+        tuple(definitions),
+        raising=False,
+    )
 
 
 def test_explicit_biff_recovery_repeats_from_bronze_with_complete_witnesses(
@@ -311,3 +322,45 @@ def test_missing_last_biff_original_fails_before_any_derivative(
         recovery.rebuild_canonical_inputs(cas, tmp_path / "missing", include_biff8=True)
     assert not (tmp_path / "missing").exists()
     assert calls == []
+
+
+def test_explicit_2018_recovery_keeps_default_and_2019_cohorts(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, sources: tuple[Path, list[str]]
+) -> None:
+    cas, _ = sources
+    _biff_sources(cas, monkeypatch, edition=2018)
+    _biff_sources(cas, monkeypatch)
+    first = recovery.rebuild_canonical_inputs(
+        cas, tmp_path / "first", include_biff8=True, biff8_editions=(2018, 2019)
+    )
+    second = recovery.rebuild_canonical_inputs(
+        cas, tmp_path / "second", include_biff8=True, biff8_editions=(2019, 2018)
+    )
+    assert (
+        first.receipt["schema_version"]
+        == "archive-govt-nz.health-canonical-input-recovery/v3"
+    )
+    assert first.receipt == second.receipt
+    assert inventory(tmp_path / "first") == inventory(tmp_path / "second")
+    assert len(first.packages) == 7
+    Draft202012Validator(
+        json.loads(
+            (
+                Path(__file__).parents[3]
+                / "schemas/health-canonical-input-recovery-v3.schema.json"
+            ).read_bytes()
+        )
+    ).validate(first.receipt)
+    old = recovery.rebuild_canonical_inputs(cas, tmp_path / "old", include_biff8=True)
+    assert old.receipt["schema_version"] == recovery.BIFF8_VERSION
+    assert len(old.packages) == 5
+    for package in first.packages:
+        if package.kind.startswith("biff8_"):
+            tables, receipt = read_verified_canonical_tables(package)
+            assert receipt["vintage"] in {"Budget-2018", "Budget-2019"}
+            assert tables["numeric_evidence"].num_rows > 0
+    with pytest.raises(ValueError, match="canonical_input_recovery_contract"):
+        recovery.rebuild_canonical_inputs(
+            cas, tmp_path / "unsupported", include_biff8=True, biff8_editions=(2017,)
+        )
+    assert not (tmp_path / "unsupported").exists()
