@@ -32,3 +32,8 @@ stored integers do not evidence a decimal lexical precision. Period labels are
 explicit renderings of replayed year integers; year witnesses remain in lineage.
 Gold emits no BIFF8 plot or cross-profile revision claim while parent/category
 series comparability remains unqualified; the product report records both holds.
+
+Gold manifests inline numeric cell/witness lookups and refer to the hashed
+full-lineage companion by canonical lineage ID. All text/definition/numeric
+links remain in that companion without truncation. This avoids duplicating
+all source text lineage into the capped manifest. The cap remains4MiB.

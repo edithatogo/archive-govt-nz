@@ -392,6 +392,8 @@ def drillthrough_evidence(kind: str, lineage: dict[str, Any]) -> dict[str, Any]:
     if kind not in KINDS:
         return {}
     return {
+        "full_lineage_output": kind + "_lineage.parquet",
+        "canonical_lineage_id": lineage["lineage_id"],
         "value_basis": lineage["value_basis"],
         "numeric_evidence_id": lineage["numeric_evidence_id"],
         "witness_output": (
@@ -405,3 +407,11 @@ def is_companion(name: str) -> bool:
     return name in {
         kind + suffix for kind in KINDS for suffix in ("_numeric", "_lineage")
     }
+
+
+def gold_inline_lineage(kind: str, table: pa.Table) -> list[dict[str, Any]]:
+    """Inline numeric lookups; the hashed companion retains every source link."""
+    rows = table.to_pylist()
+    if kind in KINDS:
+        return [row for row in rows if row["numeric_evidence_id"] is not None]
+    return rows

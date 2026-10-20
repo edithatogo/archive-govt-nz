@@ -332,7 +332,9 @@ def _source_drillthrough(
     coordinates_by_record: dict[str, list[dict[str, Any]]] = {}
     for package in packages:
         canonical, _receipt = read_verified_canonical_tables(package)
-        for lineage in canonical["field_lineage"].to_pylist():
+        for lineage in biff8_canonical.gold_inline_lineage(
+            package.kind, canonical["field_lineage"]
+        ):
             target_id = lineage["target_record_id"]
             locator = lineage["source_locator"]
             coordinate = lineage["source_coordinate"]

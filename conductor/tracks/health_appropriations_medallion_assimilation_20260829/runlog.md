@@ -8826,3 +8826,12 @@ supported, named products increase8to10, metadata fixture includes all10).
 Updated those explicit expectations without changing production admission.
 Internal temporary-file creation briefly failed with ENOSPC; route shell and
 validation temporary files to PortableSSD. Preserve evidence and user files.
+
+Native1 producer10b23aff passes:319/63facts,8613/882lineage,1595/189witnesses;
+all canonical and Gold repeated file hashes equal, both actual named queries
+verified, all4834pins unchanged, owner/group absent, independent lease free.
+Self-review found4,127,589byte Gold manifest near the unchanged4MiB reader cap.
+Inline only numeric source lookups and point to the complete hashed lineage
+companion; no source evidence is removed. Qualify a new producer rather than
+rewriting native1. Also corrected the metadata fixture DCAT dataset count8to10
+and explicitly describe BIFF8 period labels as replayed year integers.
