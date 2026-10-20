@@ -2499,3 +2499,10 @@ previous qualification results unchanged; original local timeout preserved.
   primary checkout, runtime and49-file mirrored delivery proof retained.
 
 - [~] Qualify preserved Budget2016 expenditure/revenue against complete retained source/header/definition evidence and the closed stored-integer contract. For eligible originals, add exact source profiles and full native/operation/CLI/MCP parity; extend canonical/Gold and explicit thirteen-source recovery/metadata while preserving all prior cohort/source/product bytes. Require distinct schema identity, independent multi-version registry resolution, complete witness/row accounting, repeated fresh builds, original final-tree validation and protected delivery. Keep all120s/30s/900s/4MiB/128MiB bounds,80percent floor and source/rights/period/currency/donor/comparability holds. [M-02, M-05, M-06, M-07, M-10, M-11, M-13, M-15, M-16, M-18; AC-03, AC-04, AC-05, AC-08, AC-09, AC-11, AC-12, AC-13, AC-16]
+
+  Complete native13-source qualification passed on cd912dfc:119 input/61
+  Gold files repeat, ten exact queries, full metadata15 recordsets/2,705 rows.
+  Prior47/65/83/101 input and60/61/61 Gold file bytes unchanged; all five actual
+  schemas independently resolve with cross-version refusal. Source/size/time
+  bounds and holds remain. Original final-tree harness and protected delivery
+  pending; see biff8-2016-products-native-20261021.json.

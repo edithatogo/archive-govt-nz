@@ -9174,3 +9174,17 @@ New representative has11 explicitly fictional packages, not native evidence.
 Next: frozen18-stage complete13-source original-to-products repeat, independent
 queries/full metadata and qualified5/7/9/11 input/Gold byte comparisons.
 All time/size/80percent/rights/financial-interpretation bounds remain unchanged.
+
+Frozen cd912dfc products1 passed all18 native stages. Both fresh13-source
+Bronze builds repeat all119 input and61 Gold files. Ten independent exact
+query readbacks return1,045 bounded results from2,321 facts; all2,380 input
+identities accounted for with7,093 witnesses. Full combined metadata repeats
+and verifies: three packages,15 recordsets,2,705 rows. Manifest1,020,603 bytes
+under unchanged4MiB; complete drillthrough remains in verified companion.
+Qualified prior v1/v2/v3/v4 inputs remain identical across47/65/83/101 files;
+prior seven-/nine-/eleven-source Gold remains identical across60/61/61 files.
+All five actual recovery versions independently resolve and reject every other
+version in the registry. Source/interface/stage/package bounds unchanged.
+Terminal0, all5,359 frozen pins unchanged, owner/group absent and independent
+lease free. No retained derivatives consumed as build inputs. Original
+final-tree validation and protected delivery are next; whole track stays open.

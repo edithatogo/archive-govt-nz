@@ -4254,3 +4254,26 @@ not a checkpoint assertion. The reported seed and complete original rerun pass
 on the unchanged tree with all health checks, coverage and time bounds intact.
 All failure and success evidence is retained; no legislation code/test changes
 or broader phase/rights/publication completion claims are made.
+
+## 2026-10-21 — Budget2016 source-to-products review
+
+Reviewed registered requirements/plan against exact source/hash/edition
+identity, full retained header/definition evidence, explicit2012–2017 period
+pairs, source text/group labels and the unchanged stored-integer policy.
+Revenue definitions and lineage explicitly follow2016 B33/B34/B35/B39 rather
+than inheriting2017 coordinates; complete actual native/source/operation
+parity and sixteen timed console/stdio preflights pass. Earlier30 source
+file hashes remain unchanged. No decoder, dependency, financial value,
+lexical precision, currency, fiscal start, rights or donor decision changed.
+
+Existing canonical/multi-vintage Gold carries all facts/witnesses/links without
+financial aggregation/netting. Explicit v5 has a distinct URI and thirteen
+fixed sources; every prior selector/protocol and qualified input/Gold byte
+contract remains unchanged. All five schema versions resolve independently
+and refuse every cross-version fictional and actual native receipt.
+Affected570 tests/ten skips and frozen76 tests/two existing RDF warnings pass;
+Ruff, strict typing and70 schemas/60 representatives pass. Full native two-run
+source/products/ten-query/three-package metadata assurance passes on cd912dfc.
+No actionable implementation finding remains. Original final-tree and hosted
+checks remain required before merge;80percent floor and all policy bounds
+stay intact. This is bounded progress, not whole-track or publication closure.
