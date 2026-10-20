@@ -30,3 +30,15 @@ protection changes. Retain every failure, frozen control and original. Run
 original validation, automatic review, protected exact-head green checks and
 normal merge; verify fetched main and no unique changes before pruning owned
 refs. No external publication or collection mutations.
+
+## Observed2016 layout differences
+
+Both numeric-only preflight repeats agree:312 expenditure facts/1,560
+witnesses and65 revenue facts/195 witnesses, with all5,972/1,011 source rows
+accounted for and no selected-field rejection or period mismatch. Source headers
+and all retained Explanation observations match. This alone is not native admission.
+Expenditure's selected definition cells differ from2017 only at B3. Revenue's
+edition is B4, but unit/year/amount-type/App ID definitions are B33/B34/B35/B39
+rather than B36/B37/B38/B42. Bind both definitions and field links explicitly.
+Retain the source's restructuring and supporting-workbook authority caveats;
+do not claim historical restatement, official totals or comparability.

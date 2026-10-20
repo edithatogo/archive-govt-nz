@@ -9142,3 +9142,16 @@ implementation and qualification, corrected schema registry identity, original
 local/hosted assurance, normal merge and safe topic pruning. Rechecked main
 cabd5b70 and actual merged737; clean checkout. Next registered slice2016 begins
 with the existing full census and repeated original numeric preflight.
+
+2016 preflight1 repeated original numeric/row/header/definition verification.
+312 expenditure facts/1,560 witnesses and65 revenue facts/195 witnesses;
+all5,972/1,011 source rows accounted for with no numeric or period mismatch.
+Terminal0, all4,856 pins unchanged, owner/group absent and independent lease
+free. Reused complete census; no retrieval or new rights claim.
+TDD red: seven missing2016-profile cases with24 existing passes. Added only
+closed2016 edition/source profiles, explicit period pairs and changed source
+definitions. Revenue definitions/field links move to B33/B34/B35/B39; earlier
+profiles remain unchanged. Affected558 checks pass/ten skips; Ruff and strict
+typing pass. Existing source regression now explicitly checks the moved links.
+Real source/operation/native/repeated/interface and older-source byte parity
+qualification is next. No numerical decoder or policy bound changed.

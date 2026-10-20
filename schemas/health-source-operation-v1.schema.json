@@ -27,9 +27,11 @@
     },
     "profile": {
       "enum": [
+        "budget-expenditure-2016-biff8/v1",
         "budget-expenditure-2017-biff8/v1",
         "budget-expenditure-2018-biff8/v1",
         "budget-expenditure-2019-biff8/v1",
+        "budget-revenue-2016-biff8/v1",
         "budget-revenue-2017-biff8/v1",
         "budget-revenue-2018-biff8/v1",
         "budget-revenue-2019-biff8/v1",
@@ -109,6 +111,8 @@
     },
     "transformation_id": {
       "enum": [
+        "budget-2016-health-expenditure-biff8/v1",
+        "budget-2016-health-revenue-biff8/v1",
         "budget-2017-health-expenditure-biff8/v1",
         "budget-2017-health-revenue-biff8/v1",
         "budget-2018-health-expenditure-biff8/v1",
@@ -228,6 +232,81 @@
         ]
       },
       "oneOf": [
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2016-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2016-health-expenditure-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
         {
           "properties": {
             "profile": {
@@ -385,6 +464,81 @@
             },
             "transformation_id": {
               "const": "budget-2019-health-expenditure-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2016-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2016-health-revenue-biff8/v1"
             },
             "counts": {
               "type": "object",
