@@ -4214,3 +4214,25 @@ metadata. Prior47/65/60-file inventories stay byte-identical. No actionable
 implementation finding remains. Original harness/hosted checks are still required
 before merge. Coverage stays at the agreed80% floor; no rights, donor-difference,
 comparability, publication or whole-track completion claim is made.
+
+## 2026-10-21 — Budget2017 source-to-products review
+
+Reviewed the registered plan and M-02/M-05/M-06/M-07/M-10/M-11/M-13/M-15/M-16/M-18
+against exact source hashes, full source statements/headers, explicit periods,
+MCOA labels, the unchanged integer-witness policy and qualified local observation
+context. No new decoder, dependency, source value replacement, currency, fiscal
+start, rights, donor disposition or comparability decision is introduced.
+Source profiles replay all rows and all four native tables; sixteen actual
+console/initialized stdio preflights pass under30s with no output creation.
+Prior2018/2019 source files remain byte-identical.
+
+Existing canonical/Gold contracts consume2017 with explicit edition identity,
+complete numeric/field companions and no financial aggregation or netting.
+Recovery v4 explicitly admits11 fixed sources; v1/v2/v3 selectors and all
+qualified output bytes remain unchanged. Scoped tests:562 pass/ten skips;
+frozen integration72 pass/two existing RDF warnings; Ruff, strict typing and
+69 schemas/59 representatives pass. Native original-to-products repeat, ten
+exact queries and full three-package metadata verification pass on6b6c2cba.
+No actionable implementation finding remains. Original final-tree harness
+and protected PR checks are pending before merge; the coverage floor stays80%.
+This is bounded source/product progress, not whole-track or publication closure.

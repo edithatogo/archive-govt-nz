@@ -2480,3 +2480,11 @@ previous qualification results unchanged; original local timeout preserved.
   clean topic pruned with zero unique commits/patches. See the736 receipt.
 
 - [~] Qualify the preserved Budget2017 expenditure/revenue pair against the existing full definition/header census and stored-integer evidence contract. If admissible, add exact edition-specific profiles and full source/operation/native/CLI/MCP parity; carry admitted facts, witnesses and lineage through canonical, multi-vintage Gold and explicit eleven-source recovery/metadata. Preserve default five-/seven-/nine-source output bytes, source-separated semantics, original observation tokens and all time/size/rights/period/currency/donor holds. Require repeated fresh builds, original validation and protected delivery. [M-02, M-05, M-06, M-07, M-10, M-11, M-13, M-15, M-16, M-18; AC-03, AC-04, AC-05, AC-08, AC-09, AC-11, AC-12, AC-13, AC-16]
+
+  Source/native qualification and complete11-source product recovery passed
+  on6b6c2cba:101 input/61 Gold files repeat, ten exact query readbacks, three
+  metadata packages/15 recordsets/2,328 rows; all prior47/65/83 input and60/61
+  Gold byte contracts unchanged. Source/reader/interface/stage bounds intact.
+  See budget-2017-biff8-native-qualification-20261021.json and
+  biff8-2017-products-native-20261021.json. Original final-tree assurance and
+  protected delivery remain pending; the wider Health track remains in progress.
