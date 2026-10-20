@@ -9273,3 +9273,11 @@ strict typing and71 schemas/61 fixtures pass. Root now freezes a bounded
 post-review replay:83 focused checks and two fresh fifteen-source recoveries
 against every previously qualified input byte; validate each actual missing
 and substituted source/profile binding and retain all earlier native artifacts.
+
+Post-review native replay passed oncf544476:83 focused tests and two fresh
+fifteen-source recoveries repeat137 files and equal the qualified inputs.
+All1,255 original native proof files unchanged; actual final schemas1–6
+resolve independently and cross-refuse. Every missing/substituted binding
+fails strictv6 on both real receipts. All6805 frozen pins unchanged,
+owner/group absent and independent lease free. Both bounded findings closed;
+root next freezes original validation on the final documentation/code tree.

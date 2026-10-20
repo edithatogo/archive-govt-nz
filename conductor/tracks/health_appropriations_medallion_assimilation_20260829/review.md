@@ -4322,3 +4322,12 @@ under the final implementation before delivery.
 
 The broader track remains incomplete. Source/rights/currency/period starts,
 comparability and historical donor decisions remain explicitly unqualified.
+
+Post-review closure: both fresh fifteen-source recoveries oncf544476 repeat
+all137 files and equal the qualified inputs. All1,255 earlier native proof
+files are unchanged;83 focused tests pass. Both actual receipts pass the final
+v6 schema and reject every missing or substituted source/profile binding.
+All six actual recovery versions resolve independently and cross-refuse under
+final schema hashes. Both review findings are fixed and native-verified.
+See `biff8-2015-review-closure-20261021.json`; exact final-tree original
+validation and protected delivery remain pending.
