@@ -36,10 +36,9 @@ def _source(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str, *, edition: int = 2019
 ) -> tuple[Path, Path, str, dict[str, Any]]:
     payload, profile = _fixture(kind, edition=edition)
-    profiles = (
-        biff8_canonical.budget_biff8.PROFILES
-        if edition == 2019
-        else biff8_canonical.budget_biff8.PROFILES_2018
+    profiles = getattr(
+        biff8_canonical.budget_biff8,
+        "PROFILES" if edition == 2019 else f"PROFILES_{edition}",
     )
     monkeypatch.setitem(profiles, kind, profile)
     original = tmp_path / "original.xls"
@@ -64,7 +63,7 @@ def _source(
     return original, silver, _pin(silver / "MANIFEST.json"), dict(snapshot.tables)
 
 
-@pytest.mark.parametrize("edition", [2018, 2019])
+@pytest.mark.parametrize("edition", [2017, 2018, 2019])
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_biff8_canonical_and_gold_preserve_binary_evidence_and_repeat_bytes(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kind: str, edition: int
@@ -262,7 +261,7 @@ def test_biff8_gold_preserves_distinct_vintages_and_refuses_duplicates(
 ) -> None:
     packages = []
     for kind in ("expenditure", "revenue"):
-        for edition in (2018, 2019):
+        for edition in (2017, 2018, 2019):
             root = tmp_path / f"{kind}-{edition}"
             root.mkdir()
             original, silver, pin, _ = _source(root, monkeypatch, kind, edition=edition)
@@ -291,14 +290,14 @@ def test_biff8_gold_preserves_distinct_vintages_and_refuses_duplicates(
     receipt = canonical_gold_export.export_canonical_gold(
         tuple(packages), gold, write=True
     )
-    assert receipt["quality_report"]["input_record_count"] == 4
+    assert receipt["quality_report"]["input_record_count"] == 6
     reference = receipt["source_drillthrough"]
     assert (
         reference["schema_version"] == "archive-govt-nz.health-source-drillthrough/v3"
     )
     companion = gold / "source_drillthrough.json"
     drillthrough = json.loads(companion.read_bytes())
-    assert reference["record_count"] == len(drillthrough["records"]) == 4
+    assert reference["record_count"] == len(drillthrough["records"]) == 6
     assert reference["sha256"] == _pin(companion)
     assert reference["bytes"] == companion.stat().st_size
     assert all(row["source_coordinates"] for row in drillthrough["records"])
@@ -336,8 +335,9 @@ def test_biff8_gold_preserves_distinct_vintages_and_refuses_duplicates(
             gold, _pin(gold / "MANIFEST.json"), product=product
         )
         assert result["status"] == "verified"
-        assert result["total_rows"] == 2
+        assert result["total_rows"] == 3
         assert {r["source_vintage"] for r in result["rows"]} == {
+            "Budget-2017",
             "Budget-2018",
             "Budget-2019",
         }

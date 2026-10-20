@@ -261,7 +261,7 @@ def compound_workbook_registrations(
 def biff_budget_registrations(
     contexts: tuple[AdapterContext, ...],
 ) -> tuple[CompoundAdapterRegistration, ...]:
-    """Explicitly opt into the closed 2018/2019 BIFF8 companion contracts."""
+    """Explicitly opt into the closed 2017-2019 BIFF8 companion contracts."""
     from archive_govt_nz.domains.health_appropriations import (  # noqa: PLC0415 - Native-only import.
         budget_biff8_adapter,
     )

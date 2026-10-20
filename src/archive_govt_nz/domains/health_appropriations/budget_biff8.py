@@ -241,9 +241,67 @@ PROFILES_2018 = {
 }
 
 
+# Exact changed edition statements from both pinned Budget2017 originals.
+_EXPENDITURE_DEFINITIONS_2017 = {
+    3: (
+        "This Expense workbook contains details of actual government expen"
+        "diture for the years ended 30 June 2013, 2014, 2015 and 2016; est"
+        "imated actual government expenditure for the year ending 30\xa0June "
+        "2017 and budgeted government expenditure for the year ending 30 J"
+        "une 2018 as published in Budget 2017."
+    )
+}
+_REVENUE_DEFINITIONS_2017 = {
+    4: (
+        "The Revenue workbook contains details of  actual government Crown"
+        " revenue and capital receipts for the years ended 30 June 2013, 2"
+        "014, 2015 and 2016; estimated actual government Crown revenue and"
+        " capital receipts for the year ending 30 June 2017 and budgeted g"
+        "overnment Crown revenue and capital receipts for the year ending "
+        "30 June 2018 as published in Budget 2017."
+    )
+}
+
+_PERIOD_TYPES_2017 = (
+    (2013, "Actuals"),
+    (2014, "Actuals"),
+    (2015, "Actuals"),
+    (2016, "Actuals"),
+    (2017, "Estimated Actual"),
+    (2018, "Main Estimates"),
+)
+
+PROFILES_2017 = {
+    "expenditure": replace(
+        PROFILES_2018["expenditure"],
+        source_sha256="7e0cc535eb9feb7e82b1a998dd40b7b318e5593e13589aa48ef4a3b5508708fc",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2018-04/b17-expenditure-data.xls",
+        max_rows=6079,
+        edition=2017,
+        period_types=_PERIOD_TYPES_2017,
+        definitions=tuple(
+            (row, _EXPENDITURE_DEFINITIONS_2017.get(row, text))
+            for row, text in PROFILES_2018["expenditure"].definitions
+        ),
+    ),
+    "revenue": replace(
+        PROFILES_2018["revenue"],
+        source_sha256="e49a706c4a5ac889e8b9e68165dbfd704a9f05b0300bef7f69abf5f5620b7adf",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2018-04/b17-revenue-data.xls",
+        max_rows=1026,
+        edition=2017,
+        period_types=_PERIOD_TYPES_2017,
+        definitions=tuple(
+            (row, _REVENUE_DEFINITIONS_2017.get(row, text))
+            for row, text in PROFILES_2018["revenue"].definitions
+        ),
+    ),
+}
+
+
 def declared_profiles() -> tuple[BiffBudgetProfile, ...]:
-    """Expose only the four independently pinned source-edition profiles."""
-    return (*PROFILES.values(), *PROFILES_2018.values())
+    """Expose only the six independently pinned source-edition profiles."""
+    return (*PROFILES.values(), *PROFILES_2018.values(), *PROFILES_2017.values())
 
 
 NUMERIC_SCHEMA = pa.schema(
@@ -510,7 +568,7 @@ def parse_snapshot(
     _require(
         profile.kind in {"expenditure", "revenue"}
         and type(profile.edition) is int
-        and profile.edition in {2018, 2019}
+        and profile.edition in {2017, 2018, 2019}
     )
     context = source_context(
         profile.source_sha256,

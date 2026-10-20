@@ -9068,3 +9068,15 @@ goal turn is progress: source/canonical/Gold/recovery implementation, native
 qualification, original/hosted assurance, merge and safe topic pruning. Next
 planned source-to-products slice is2017, starting with retained original numeric
 preflight; no numeric admission follows solely from census metadata.
+
+2017 preflight1 repeated every selected Health numeric field against both
+originals:316 expenditure facts/1,580 witnesses and64 revenue facts/192
+witnesses; all6,079/1,026 source rows accounted for, no numeric rejections or
+period mismatches. Complete retained headers/Explanation cells and inventory
+match. Terminal0, all4,848 pins unchanged, owner/group absent and free lease.
+TDD red: seven missing2017-profile cases,18 existing cases passed. First green
+attempt exposed the remaining explicit edition gate (seven failures,545 pass,
+ten skips across affected/integrated tests). Extended only the closed edition
+set and added exact hash/locator/edition definitions; source/canonical25 pass.
+Ruff passes; strict typing checked. Real source/profile/interface admission and
+full eleven-source recovery still require native qualification.

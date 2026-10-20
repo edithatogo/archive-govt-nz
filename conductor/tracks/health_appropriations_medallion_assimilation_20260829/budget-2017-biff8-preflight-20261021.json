@@ -1,0 +1,52 @@
+{
+  "postflight": {
+    "exit": 0,
+    "group_absent": true,
+    "head": "33cfaaea609bab3ef4e0158425d3c239e8b90536",
+    "independent_lease_free": true,
+    "owner_absent": true,
+    "pins_unchanged": 4848,
+    "status": "verified",
+    "tree": "9a8d4d791c8fcefc5d57e25dcfc15332b5ebcc5c"
+  },
+  "producer": {
+    "all_source_artifact_hashes_equal": true,
+    "head": "33cfaaea609bab3ef4e0158425d3c239e8b90536",
+    "publication": "not_performed",
+    "retained_derivatives_consumed": false,
+    "rights": "not_evaluated",
+    "tree": "9a8d4d791c8fcefc5d57e25dcfc15332b5ebcc5c"
+  },
+  "publication": "not_performed",
+  "rights": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-biff8-2017-numeric-preflight/v1",
+  "scope": "numeric_preflight_only_not_full_source_admission",
+  "sources": [
+    {
+      "counts": {
+        "out_of_scope": 962,
+        "selected_numeric_verified": 64
+      },
+      "eligible_for_profile": true,
+      "numeric_witnesses": 192,
+      "period_mismatches": [],
+      "seconds": 0.09709625004325062,
+      "source_id": "treasury-locator-827202ea343c3852",
+      "source_row_count": 1026,
+      "source_sha256": "e49a706c4a5ac889e8b9e68165dbfd704a9f05b0300bef7f69abf5f5620b7adf"
+    },
+    {
+      "counts": {
+        "out_of_scope": 5763,
+        "selected_numeric_verified": 316
+      },
+      "eligible_for_profile": true,
+      "numeric_witnesses": 1580,
+      "period_mismatches": [],
+      "seconds": 1.2566855000331998,
+      "source_id": "treasury-locator-9e603138cf551b21",
+      "source_row_count": 6079,
+      "source_sha256": "7e0cc535eb9feb7e82b1a998dd40b7b318e5593e13589aa48ef4a3b5508708fc"
+    }
+  ]
+}
