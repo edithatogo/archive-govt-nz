@@ -9281,3 +9281,22 @@ resolve independently and cross-refuse. Every missing/substituted binding
 fails strictv6 on both real receipts. All6805 frozen pins unchanged,
 owner/group absent and independent lease free. Both bounded findings closed;
 root next freezes original validation on the final documentation/code tree.
+
+Original harness1 on2cb5bca2 passed8,207 tests/14 skips/18 warnings, schemas,
+parity, all mutations and performance gates, then failed the unchanged audit
+oncertifi2026.7.22. Primary advisoryGHSA-6q48-6c7w-9gw2 was published
+2026-10-20T19:35:05Z; GitHub and PyPI confirm fixed2026.10.19. Preserved the
+full audit receipt, bounded failure and log; all4,865 pins unchanged, actual
+owner/group absent and independent lease free. Licences/secrets/SBOM were not
+run by that failed harness and are not claimed. Plan a single-package compatible
+lock update, no audit ignore/waiver or TLS weakening, then fresh original
+recovery and full final-tree assurance. No source or product fix is needed.
+
+Targeted `uv lock --upgrade-package certifi==2026.10.19` changed onlycertifi
+among116 packages; no other dependency or requirement changed. Locked sync
+installed2026.10.19. The unchanged OSV audit now reports no known
+vulnerabilities. Preserve old/fixed audit receipts, lock snapshots and
+primary advisory evidence. TLS verification remains enabled with no bypass or
+audit exception. Root freezes fresh original recovery on the updated runtime,
+pinning certifi module/core/bundle bytes plus all1,255 full native and277
+review-replay files; full final-tree original validation must follow.

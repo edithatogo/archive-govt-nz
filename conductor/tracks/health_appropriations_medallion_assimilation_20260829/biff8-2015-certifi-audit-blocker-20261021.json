@@ -1,0 +1,74 @@
+{
+  "advisory_published_at": "2026-10-20T19:35:05Z",
+  "advisory_severity": "critical",
+  "advisory_url": "https://github.com/advisories/GHSA-6q48-6c7w-9gw2",
+  "audit_finding": [
+    {
+      "name": "certifi",
+      "version": "2026.7.22",
+      "vulns": [
+        {
+          "aliases": [],
+          "description": "certifi bundles emSign root CAs with compromised intermediate CA keys",
+          "fix_versions": [
+            "2026.10.19"
+          ],
+          "id": "GHSA-6q48-6c7w-9gw2"
+        }
+      ]
+    }
+  ],
+  "audit_gate_disposition": "keep_enabled_fix_locked_dependency",
+  "audit_sha256": "af92a5614ee88c11bc1f5b8fedd5d31a3317d821a20a9a81998f6f3d27e8b587",
+  "exit": 1,
+  "gates_not_run": [
+    "licenses",
+    "secrets",
+    "sbom"
+  ],
+  "head": "2cb5bca230cd55c53f949067a9b982ee2986ae36",
+  "independent_lease_free": true,
+  "log_sha256": "e11ef247567ae34d47ff42f289502c16a21ee4f12b22fdc1f077193354bb3741",
+  "owner_and_group_absent": true,
+  "pins_unchanged": 4865,
+  "planned_fixed_version": "2026.10.19",
+  "schema_version": "archive-govt-nz.health-audit-blocker/v1",
+  "skipped": 14,
+  "source_or_product_changes_required": false,
+  "stages_reached": [
+    "lock",
+    "conductor",
+    "format",
+    "lint",
+    "types",
+    "tests",
+    "schemas",
+    "parity",
+    "mutation",
+    "mutation-versioning",
+    "mutation-redundancy",
+    "mutation-archivebox-pilot",
+    "mutation-batch-eligibility",
+    "mutation-global-policy",
+    "mutation-adapters",
+    "mutation-legislation-accounting",
+    "mutation-legislation-reconciliation",
+    "mutation-legislation-checkpoint-root",
+    "mutation-legislation-continuation-integrity",
+    "mutation-legislation-historical-coverage",
+    "mutation-gazette",
+    "mutation-medallion",
+    "mutation-platinum",
+    "mutation-nlp-bridge",
+    "mutation-foi-controls",
+    "mutation-foi-shared",
+    "slops",
+    "benchmark-cas",
+    "audit"
+  ],
+  "status": "failed_at_dependency_audit",
+  "test_seconds": 291.7,
+  "tests_passed": 8207,
+  "tree": "1852786a170a4f06c46b401e08ac219027550935",
+  "warnings": 18
+}
