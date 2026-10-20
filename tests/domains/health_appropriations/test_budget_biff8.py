@@ -20,8 +20,8 @@ from archive_govt_nz.domains.health_appropriations import (
 def _fixture(
     kind: str, *, amount: object = 123, edition: int = 2019
 ) -> tuple[bytes, budget_biff8.BiffBudgetProfile]:
-    profile = (
-        budget_biff8.PROFILES if edition == 2019 else budget_biff8.PROFILES_2018
+    profile = getattr(
+        budget_biff8, "PROFILES" if edition == 2019 else f"PROFILES_{edition}"
     )[kind]
     selected: dict[str, Any] = {
         "department": "Fictional ministry",
@@ -30,7 +30,7 @@ def _fixture(
         "parent_id": 387,
         "appropriation_name": "Fictional care",
         "category_name": "Fictional care",
-        "group_type": "MCOA" if edition == 2018 else "Single",
+        "group_type": "MCOA" if edition < 2019 else "Single",
         "appropriation_or_category_type": "Non-Departmental Output Expenses",
         "restriction_type": None,
         "functional_classification": "Health",
@@ -74,7 +74,7 @@ def _fixture(
     )
 
 
-@pytest.mark.parametrize("edition", [2018, 2019])
+@pytest.mark.parametrize("edition", [2017, 2018, 2019])
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
     kind: str,
@@ -155,9 +155,10 @@ def test_source_and_definition_changes_fail_before_admission() -> None:
         )
 
 
+@pytest.mark.parametrize("edition", [2017, 2019])
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_biff_budget_operations_and_native_dispatch_retain_all_four_tables(
-    kind: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    kind: str, edition: int, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
     from archive_govt_nz.domains.health_appropriations import (  # noqa: PLC0415 - Exercise the new integration boundary after core collection.
         source_operations,
@@ -171,8 +172,11 @@ def test_biff_budget_operations_and_native_dispatch_retain_all_four_tables(
         biff_budget_registrations,
     )
 
-    payload, profile = _fixture(kind)
-    monkeypatch.setitem(budget_biff8.PROFILES, kind, profile)
+    payload, profile = _fixture(kind, edition=edition)
+    profiles = getattr(
+        budget_biff8, "PROFILES" if edition == 2019 else f"PROFILES_{edition}"
+    )
+    monkeypatch.setitem(profiles, kind, profile)
     source = tmp_path / "fictional.xls"
     source.write_bytes(payload)
     request = source_operations.SourceRequest(
@@ -180,7 +184,7 @@ def test_biff_budget_operations_and_native_dispatch_retain_all_four_tables(
         tmp_path / "dry-run",
         profile.profile_id,
         profile.source_sha256,
-        "Budget-2019",
+        f"Budget-{edition}",
         profile.source_locator,
         "2026-10-20T00:00:00Z",
     )
@@ -203,7 +207,11 @@ def test_biff_budget_operations_and_native_dispatch_retain_all_four_tables(
         == "failed"
     )
     registrations = biff_budget_registrations(
-        (AdapterContext(profile.source_locator, "Budget-2019", request.observed_at),)
+        (
+            AdapterContext(
+                profile.source_locator, f"Budget-{edition}", request.observed_at
+            ),
+        )
     )
     native = dispatch_native_bronze(
         payload,

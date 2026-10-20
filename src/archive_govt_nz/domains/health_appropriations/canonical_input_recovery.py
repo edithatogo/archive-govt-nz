@@ -43,7 +43,8 @@ if TYPE_CHECKING:
 VERSION = "archive-govt-nz.health-canonical-input-recovery/v1"
 BIFF8_VERSION = "archive-govt-nz.health-canonical-input-recovery/v2"
 BIFF8_2018_VERSION = "archive-govt-nz.health-canonical-input-recovery/v3"
-MAX_EXPANDED_SOURCES = 9
+BIFF8_2017_VERSION = "archive-govt-nz.health-canonical-input-recovery/v4"
+MAX_EXPANDED_SOURCES = 11
 MAX_SOURCES = 5
 MAX_BIFF8_SOURCES = 7
 MAX_OUTPUT_FILES = 16
@@ -164,6 +165,29 @@ BIFF8_2018_SOURCES = (
         "Budget-2018",
         "2026-10-20T14:44:44.843862+00:00",
         "sha256:dc9ae0d69080736adeadc17cc89d78837744297cd088f1ebc5eae26f5a3c4170",
+    ),
+)
+
+
+# Exact qualified2017 local observation context, not a new capture.
+BIFF8_2017_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2017",
+        "biff8_budget",
+        "7e0cc535eb9feb7e82b1a998dd40b7b318e5593e13589aa48ef4a3b5508708fc",
+        "https://www.treasury.govt.nz/sites/default/files/2018-04/b17-expenditure-data.xls",
+        "Budget-2017",
+        "2026-10-20T16:57:19.820018+00:00",
+        "sha256:5c4e70842744902ce0cded13b122fa1a2260daa2be4698a18d39a81da876419f",
+    ),
+    SourceDefinition(
+        "biffrevenue-2017",
+        "biff8_revenue",
+        "e49a706c4a5ac889e8b9e68165dbfd704a9f05b0300bef7f69abf5f5620b7adf",
+        "https://www.treasury.govt.nz/sites/default/files/2018-04/b17-revenue-data.xls",
+        "Budget-2017",
+        "2026-10-20T16:57:19.820018+00:00",
+        "sha256:40ac55251ee38cec454d67d4946584c5102d8bc6db4b231363be929e53bcd716",
     ),
 )
 
@@ -329,11 +353,15 @@ def _biff_definitions(editions: tuple[int, ...]) -> tuple[SourceDefinition, ...]
     _require(
         type(editions) is tuple
         and bool(editions)
-        and all(type(year) is int and year in {2018, 2019} for year in editions)
+        and all(type(year) is int and year in {2017, 2018, 2019} for year in editions)
         and len(set(editions)) == len(editions)
     )
     selected: tuple[SourceDefinition, ...] = ()
-    for year, definitions in ((2019, BIFF8_SOURCES), (2018, BIFF8_2018_SOURCES)):
+    for year, definitions in (
+        (2019, BIFF8_SOURCES),
+        (2018, BIFF8_2018_SOURCES),
+        (2017, BIFF8_2017_SOURCES),
+    ):
         if year not in editions:
             continue
         _require(
@@ -369,7 +397,11 @@ def rebuild_canonical_inputs(
     selected = (*SOURCES, *definitions_biff)
     version = VERSION
     if include_biff8:
-        version = BIFF8_VERSION if biff8_editions == (2019,) else BIFF8_2018_VERSION
+        version = {
+            2017: BIFF8_2017_VERSION,
+            2018: BIFF8_2018_VERSION,
+            2019: BIFF8_VERSION,
+        }[min(biff8_editions)]
     _require(not output.exists() and not output.is_symlink())
     _require(source_cas.is_dir() and not source_cas.is_symlink())
     target, original_root = output.resolve(), source_cas.resolve()

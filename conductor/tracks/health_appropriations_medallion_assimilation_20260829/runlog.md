@@ -9060,3 +9060,77 @@ are byte-identical to qualified baselines. New manifest712,741 bytes; complete
 raising bounds. All4,860 pins unchanged, owner/group absent, independent lease
 free. See biff8-expanded-native-qualification-20261021.json. Original harness
 and hosted delivery remain pending on the final documentation tree.
+
+### 2026-10-21 Continue after protected736 delivery
+
+Verified mainf16a9bab and clean checkout against actual delivery736. Previous
+goal turn is progress: source/canonical/Gold/recovery implementation, native
+qualification, original/hosted assurance, merge and safe topic pruning. Next
+planned source-to-products slice is2017, starting with retained original numeric
+preflight; no numeric admission follows solely from census metadata.
+
+2017 preflight1 repeated every selected Health numeric field against both
+originals:316 expenditure facts/1,580 witnesses and64 revenue facts/192
+witnesses; all6,079/1,026 source rows accounted for, no numeric rejections or
+period mismatches. Complete retained headers/Explanation cells and inventory
+match. Terminal0, all4,848 pins unchanged, owner/group absent and free lease.
+TDD red: seven missing2017-profile cases,18 existing cases passed. First green
+attempt exposed the remaining explicit edition gate (seven failures,545 pass,
+ten skips across affected/integrated tests). Extended only the closed edition
+set and added exact hash/locator/edition definitions; source/canonical25 pass.
+Ruff passes; strict typing checked. Real source/profile/interface admission and
+full eleven-source recovery still require native qualification.
+
+2017 native profiles1 passed: full standalone/operation/native parity for both
+profiles, all20 new source/operation file hashes repeat, all20 earlier2018/2019
+source file hashes identical, all16 actual CLI/initialized MCP preflights passed
+under30s without creating outputs. All4,871 frozen pins unchanged, terminal0,
+owner/group absent and independent lease free. Exact local observation token
+2026-10-20T16:57:19.820018+00:00 is retained in new recovery definitions; this
+is caller-supplied inspection context, not a retrieval claim. Source qualification
+is recorded in budget-2017-biff8-native-qualification-20261021.json.
+
+Expanded recovery TDD:2017 selection failed the closed edition gate while2018
+passed. Added explicit v4 selection for the now-qualified2017 pair, retaining
+v1/v2/v3 routes and prior definitions. New v4 max11 applies only to the exact
+admitted cohort; reader/package/source/interface/stage bounds stay unchanged.
+The revised source/canonical/recovery suites pass35 cases; integrated affected
+suites562 pass/ten skips. Ruff and strict typing pass;69 schemas/59
+representatives validate. A private schema-fixture generation script initially
+lacked the repository import path; corrected that tooling context and generated
+an explicitly fictional nine-package representative, not native evidence.
+Full repeated eleven-source products/query/metadata and prior5/7/9 byte
+compatibility are next, with baseline hashes bound to qualified receipts.
+
+Frozen6b6c2cba products1 passed all16 native stages: two empty-derivative
+11-source Bronze builds, all101 source input files and61 complete Gold files
+repeat exactly; ten independent typed query readbacks return1,036 bounded rows
+from1,944 facts. All2,003 input identities accounted for with5,338 BIFF8
+witnesses. Full combined metadata repeats and verifies: three packages,15
+recordsets,2,328 rows. Manifest866,688 bytes; full5,276,202-byte drillthrough
+companion remains inventoried and verified. Qualified v1/v2/v3 inputs remain
+identical across47/65/83 files; prior seven-/nine-source Gold remains identical
+across60/61 files. Baseline hashes were bound to qualified receipts before launch.
+All5,187 frozen pins unchanged; terminal0, owner/group absent and independent
+lease free. No retained derivatives used as build inputs, new retrieval, rights
+admission or external publication. Original final-tree harness/PR delivery next.
+
+Original f101afdb harness1 failed only the existing legislation checkpoint
+property's Hypothesis input-generation too_slow health check before its
+assertion:8,187 tests passed/one failed/14 skipped/18 warnings,414.40s. The
+reported seed251251198688775765808699112454882388636 passed unchanged in2.38s.
+All4,848 frozen pins unchanged, owner/group absent, lease free. Faithful original
+harness2 on the unchanged tree passed all32 stages:8,188 tests/14 skips/18
+warnings,410.83s,80percent floor intact, all mutation/supply-chain gates pass.
+Failure/replay/success controls and logs retained. No tests or policies suppressed.
+
+Opened737; hosted review identified a real v4 schema canonical-URI collision
+with v3 (comment4328335069). One added resolver contract failed red because
+v3 resolved to v4, then passes with v4's distinct$id and accurate title.
+All11 focused recovery checks and69 schemas/59 representatives pass. Actual
+native v3 nine-source and v4 eleven-source receipts resolve independently and
+reject the opposite version. All837 native output files and every producer,
+original, runtime/control pin remain unchanged; only schema identity/title,
+regression and review docs differ. Repeat native builds are unnecessary for
+this metadata-only correction; original final-tree and hosted checks are repeated.
+See biff8-recovery-schema-registry-review-20261021.json.
