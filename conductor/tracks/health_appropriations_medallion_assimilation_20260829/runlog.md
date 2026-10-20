@@ -9048,3 +9048,15 @@ the same records before projecting source references. Single-vintage bytes stay
 on the existing inline path. The exporter rejects oversized final manifests.
 Focused testing caught a test-only metadata receipt expectation (written, not
 complete); corrected without changing the production status contract.
+
+Frozen 46ef125d native-products-2 passed all thirteen subprocess stages. The
+83-file fresh nine-source inputs and61-file complete Gold inventories repeat
+exactly; all ten queries independently match typed readback (972 bounded rows
+from1,564 facts). All1,623 input identities accounted for, retaining3,566 binary
+witnesses. Combined metadata: three packages,15 recordsets,1,948 rows, repeated
+and verified. Default v1 all47 files, v2 all65 files and prior Gold all60 files
+are byte-identical to qualified baselines. New manifest712,741 bytes; complete
+4,046,926-byte drillthrough companion fixes the actual reader failure without
+raising bounds. All4,860 pins unchanged, owner/group absent, independent lease
+free. See biff8-expanded-native-qualification-20261021.json. Original harness
+and hosted delivery remain pending on the final documentation tree.

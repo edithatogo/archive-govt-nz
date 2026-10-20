@@ -4199,3 +4199,18 @@ full validation/protected delivery remain pending; this is not final track signo
 record complete source/operation/native parity and30s interface checks, with
 unchanged2019 bytes. Original/full/hosted delivery is pending.2018 downstream
 canonical/Gold/recovery and whole-track final gates remain open.
+
+## 2026-10-21 — Multi-vintage canonical/Gold/recovery review
+
+Reviewed exact trusted profile selection, edition-specific identity, complete
+original/Silver replay, deterministic concatenation without financial aggregation,
+companion fixity and metadata references, v1/v2 compatibility and v3 source
+selection against M-05/M-07/M-10/M-13/M-16 and the bounded product contract.
+Focused regression:55 passed with two existing RDF warnings; the frozen integrated
+focused lane:69 passed with two warnings. Ruff passes; strict typing has zero
+errors/warnings/notes. Native originals-to-products assurance passes, including
+83/61-file repeat inventories, all ten exact queries and full three-package
+metadata. Prior47/65/60-file inventories stay byte-identical. No actionable
+implementation finding remains. Original harness/hosted checks are still required
+before merge. Coverage stays at the agreed80% floor; no rights, donor-difference,
+comparability, publication or whole-track completion claim is made.

@@ -2467,3 +2467,9 @@ previous qualification results unchanged; original local timeout preserved.
 
 
 - [~] Integrate the admitted Budget2018 pair into witness-aware canonical, source-separated multi-vintage Gold and complete Bronze recovery/metadata builds. Resolve only exact trusted source profiles, retain per-edition transformation identity and every numeric/field link; reject duplicate kind/vintage packages. Keep all2019 canonical/Gold and default five-/seven-source recovery bytes unchanged. Add an explicit versioned nine-source cohort, demonstrate repeated full products/query/metadata recovery, preserve reader/source/interface/stage limits and run original validation plus protected delivery. [M-05, M-06, M-07, M-10, M-11, M-13, M-16, M-18; AC-05, AC-08, AC-09, AC-11, AC-12, AC-16]
+
+  Native downstream qualification passed on46ef125d:83 input/61 Gold files repeat,
+  ten exact queries, three metadata packages/15 recordsets/1,948 rows, all prior
+  47/65/60-file byte contracts unchanged. Reader failure resolved with complete
+  hashed drillthrough companion. Original final-tree harness and protected PR
+  delivery remain pending; whole Health track remains in progress.
