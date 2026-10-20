@@ -8,7 +8,7 @@ from dataclasses import replace
 from pathlib import Path
 
 import pytest
-from jsonschema import Draft202012Validator
+from jsonschema import Draft202012Validator, ValidationError
 from tests.domains.health_appropriations.test_budget_biff8 import _fixture
 
 from archive_govt_nz.domains.health_appropriations import budget_biff8
@@ -118,7 +118,8 @@ def sources(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[Path, list
 
 def test_locked_definitions_preserve_recorded_observation_identity() -> None:
     assert len(recovery.SOURCES) == 5
-    for spec in recovery.SOURCES:
+    assert len(recovery.BIFF8_SOURCES) == 2
+    for spec in (*recovery.SOURCES, *recovery.BIFF8_SOURCES):
         assert (
             source_context(
                 spec.sha256,
@@ -217,7 +218,7 @@ def test_interruption_preserves_partial_attempt_without_completion_receipt(
 
 def _biff_sources(cas: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     definitions = []
-    token = "2026-10-19T21:46:39.456033+00:00"
+    observed_at = "2026-10-19T21:46:39.456033+00:00"
     for native, kind, key in (
         ("expenditure", "biff8_budget", "biffbudget-2019"),
         ("revenue", "biff8_revenue", "biffrevenue-2019"),
@@ -234,9 +235,12 @@ def _biff_sources(cas: Path, monkeypatch: pytest.MonkeyPatch) -> None:
                 profile.source_sha256,
                 profile.source_locator,
                 "Budget-2019",
-                token,
+                observed_at,
                 source_context(
-                    profile.source_sha256, profile.source_locator, "Budget-2019", token
+                    profile.source_sha256,
+                    profile.source_locator,
+                    "Budget-2019",
+                    observed_at,
                 )["source_observation_id"],
             )
         )
@@ -268,6 +272,12 @@ def test_explicit_biff_recovery_repeats_from_bronze_with_complete_witnesses(
         ).read_bytes()
     )
     Draft202012Validator(schema).validate(first.receipt)
+    missing_witnesses = json.loads(json.dumps(first.receipt))
+    del missing_witnesses["profiles"]["biffbudget-2019"]["raw_inventory"][
+        "numeric_evidence.parquet"
+    ]
+    with pytest.raises(ValidationError):
+        Draft202012Validator(schema).validate(missing_witnesses)
     assert len(first.packages) == 5
     for package in first.packages:
         if package.kind.startswith("biff8_"):

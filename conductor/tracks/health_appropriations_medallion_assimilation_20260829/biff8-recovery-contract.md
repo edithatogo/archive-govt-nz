@@ -25,3 +25,13 @@ verify preflight refusal, partial-state preservation and repeat behavior. Qualif
 original sources in empty derivative roots with frozen source/runtime/parameter
 pins. Run original validation and require exact-head hosted32-stage gates before
 protected merge/prune. Keep80percent floor and all existing time limits.
+
+## Native timing scope
+
+The exploratory120s whole-batch baseline is retained as incomplete. A source
+build combines one pinned original's normalization and canonical projection;
+each remains capped120s. The multi-source batch uses the existing900s stage
+bound. The native verifier observes local entry/return/unwind events of the
+unchanged build function and arms a source timer; it does not replace functions,
+arguments, profiles or results. This applies the bounds at their actual scopes
+while exercising the complete public batch API and every declared original.

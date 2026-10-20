@@ -8872,3 +8872,21 @@ Two focused real fictional BIFF8 cases fail with the intended missing
 include_biff8 API (2.95s). A preparation script initially used system Python
 without PyArrow; no repository files were written before that import failure.
 Reran with the existing qualified project runtime. No new runtime adopted.
+
+Initial green run exposed a fixture timestamp variable left behind during
+S105 naming correction; fixed without a scanner suppression. Eight recovery
+contracts pass24.28s, including original v1 repeat/schema, both fictional BIFF
+profiles and missing-last-source preflight refusal. The representative v2 receipt
+comes from a successful fictional rebuild. Its first locator matched pytest's
+current symlink too; selected the actual nonsymlink fixture directory.
+The old five-source baseline helper hit120s after two historical inputs; retain
+that partial attempt and frozen inputs. Postflight confirmed unchanged pins,
+owner/group absent and lease independently free. A per-source bounded executor
+recipe is under advisory review; no actual operation or repository limit changed.
+
+Expanded focused suite22pass39.69s; v2 schema and representative bring validation
+to67schemas/57documents. For actual native proof, retain the failed aggregate
+baseline rather than reuse its partial state. Apply120s to each original's build
+and900s to a complete batch. Native timing observation uses qualified Python3.14
+local monitoring events with no function/argument/result replacement. Underlying
+source operations, flags and repository stage/CLI deadlines remain unchanged.
