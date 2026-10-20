@@ -2479,7 +2479,7 @@ previous qualification results unchanged; original local timeout preserved.
   all seven checks green, review has no findings, strict rules unchanged;
   clean topic pruned with zero unique commits/patches. See the736 receipt.
 
-- [~] Qualify the preserved Budget2017 expenditure/revenue pair against the existing full definition/header census and stored-integer evidence contract. If admissible, add exact edition-specific profiles and full source/operation/native/CLI/MCP parity; carry admitted facts, witnesses and lineage through canonical, multi-vintage Gold and explicit eleven-source recovery/metadata. Preserve default five-/seven-/nine-source output bytes, source-separated semantics, original observation tokens and all time/size/rights/period/currency/donor holds. Require repeated fresh builds, original validation and protected delivery. [M-02, M-05, M-06, M-07, M-10, M-11, M-13, M-15, M-16, M-18; AC-03, AC-04, AC-05, AC-08, AC-09, AC-11, AC-12, AC-13, AC-16]
+- [x] Qualify the preserved Budget2017 expenditure/revenue pair against the existing full definition/header census and stored-integer evidence contract. If admissible, add exact edition-specific profiles and full source/operation/native/CLI/MCP parity; carry admitted facts, witnesses and lineage through canonical, multi-vintage Gold and explicit eleven-source recovery/metadata. Preserve default five-/seven-/nine-source output bytes, source-separated semantics, original observation tokens and all time/size/rights/period/currency/donor holds. Require repeated fresh builds, original validation and protected delivery. [M-02, M-05, M-06, M-07, M-10, M-11, M-13, M-15, M-16, M-18; AC-03, AC-04, AC-05, AC-08, AC-09, AC-11, AC-12, AC-13, AC-16]
 
   Source/native qualification and complete11-source product recovery passed
   on6b6c2cba:101 input/61 Gold files repeat, ten exact query readbacks, three
@@ -2489,4 +2489,13 @@ previous qualification results unchanged; original local timeout preserved.
   biff8-2017-products-native-20261021.json. Original final-tree assurance and
   protected delivery remain pending; the wider Health track remains in progress.
 
-- [~] PR737 review fix: give recovery v4 its distinct canonical schema URI and verify v3/v4 registry resolution and cross-version refusal. Preserve every native/source/product byte and all policy bounds; repeat original exact-tree validation and hosted checks before protected delivery. [M-06, M-13, M-16; AC-09, AC-12, AC-16]
+- [x] PR737 review fix: give recovery v4 its distinct canonical schema URI and verify v3/v4 registry resolution and cross-version refusal. Preserve every native/source/product byte and all policy bounds; repeat original exact-tree validation and hosted checks before protected delivery. [M-06, M-13, M-16; AC-09, AC-12, AC-16]
+
+  Delivery737 is verified on origin/main ascabd5b70: exact corrected head
+  dc1afb5f passed local original32 stages (8,189 tests) and all32 on all three
+  hosted platforms; seven checks green, strict rules unchanged, historical P2
+  registry finding resolved and self-reviewed with actual native readback.
+  No new cloud pass claimed. Clean topic pruned, zero unique commits/patches;
+  primary checkout, runtime and49-file mirrored delivery proof retained.
+
+- [~] Qualify preserved Budget2016 expenditure/revenue against complete retained source/header/definition evidence and the closed stored-integer contract. For eligible originals, add exact source profiles and full native/operation/CLI/MCP parity; extend canonical/Gold and explicit thirteen-source recovery/metadata while preserving all prior cohort/source/product bytes. Require distinct schema identity, independent multi-version registry resolution, complete witness/row accounting, repeated fresh builds, original final-tree validation and protected delivery. Keep all120s/30s/900s/4MiB/128MiB bounds,80percent floor and source/rights/period/currency/donor/comparability holds. [M-02, M-05, M-06, M-07, M-10, M-11, M-13, M-15, M-16, M-18; AC-03, AC-04, AC-05, AC-08, AC-09, AC-11, AC-12, AC-13, AC-16]
