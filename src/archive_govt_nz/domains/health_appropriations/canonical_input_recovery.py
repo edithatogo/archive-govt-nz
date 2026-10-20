@@ -45,6 +45,7 @@ BIFF8_VERSION = "archive-govt-nz.health-canonical-input-recovery/v2"
 BIFF8_2018_VERSION = "archive-govt-nz.health-canonical-input-recovery/v3"
 BIFF8_2017_VERSION = "archive-govt-nz.health-canonical-input-recovery/v4"
 BIFF8_2016_VERSION = "archive-govt-nz.health-canonical-input-recovery/v5"
+ALL_BIFF8_EDITIONS = (2016, 2017, 2018, 2019)
 MAX_EXPANDED_SOURCES = 13
 MAX_SOURCES = 5
 MAX_BIFF8_SOURCES = 7
@@ -377,14 +378,12 @@ def _biff_definitions(editions: tuple[int, ...]) -> tuple[SourceDefinition, ...]
     _require(
         type(editions) is tuple
         and bool(editions)
-        and all(
-            type(year) is int and year in {2016, 2017, 2018, 2019} for year in editions
-        )
+        and all(type(year) is int and year in ALL_BIFF8_EDITIONS for year in editions)
         and len(set(editions)) == len(editions)
     )
-    if 2016 in editions:
+    if ALL_BIFF8_EDITIONS[0] in editions:
         _require(
-            set(editions) == {2016, 2017, 2018, 2019} and len(SOURCES) == MAX_SOURCES
+            set(editions) == set(ALL_BIFF8_EDITIONS) and len(SOURCES) == MAX_SOURCES
         )
     selected: tuple[SourceDefinition, ...] = ()
     for year, definitions in (

@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 from dataclasses import replace
+from itertools import combinations
 from pathlib import Path
 
 import pytest
@@ -428,8 +429,6 @@ def test_expanded_recovery_versions_resolve_independently() -> None:
 def test_partial_2016_cohort_fails_before_source_reads_or_output(
     tmp_path: Path, sources: tuple[Path, list[str]]
 ) -> None:
-    from itertools import combinations
-
     cas, calls = sources
     for count in range(4):
         for later in combinations((2017, 2018, 2019), count):
