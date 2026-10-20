@@ -1530,12 +1530,12 @@ def rebuild_vote_health_2025_26_summary_totals(
 
 
 def canonical_inputs(recovery_root: Path) -> tuple[CanonicalPackageInput, ...]:
-    """Rebuild eleven canonical bindings from originals, never retained Silver."""
+    """Rebuild thirteen canonical bindings from originals, never retained Silver."""
     return canonical_input_recovery.rebuild_canonical_inputs(
         ARCHIVE / "bronze-cas" / "sha256",
         recovery_root / "canonical-source-inputs",
         include_biff8=True,
-        biff8_editions=(2017, 2018, 2019),
+        biff8_editions=(2016, 2017, 2018, 2019),
     ).packages
 
 

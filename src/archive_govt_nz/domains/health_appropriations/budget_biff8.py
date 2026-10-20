@@ -299,9 +299,94 @@ PROFILES_2017 = {
 }
 
 
+# Exact2016 definition cells; revenue definitions moved three rows earlier.
+_EXPENDITURE_DEFINITIONS_2016 = {
+    3: (
+        "This Expense workbook contains details of actual government "
+        "expenditure for the years ended 30 June 2012, 2013, 2014 and "
+        "2015; estimated actual government expenditure for the year "
+        "ending 30\xa0June 2016 and budgeted government expenditure for the "
+        "year ending 30 June 2017 as published in Budget 2016."
+    ),
+}
+_REVENUE_DEFINITIONS_2016 = {
+    4: (
+        "The Revenue workbook contains details of  actual government "
+        "Crown revenue and capital receipts for the years ended 30 June "
+        "2012, 2013, 2014 and 2015; estimated actual government Crown "
+        "revenue and capital receipts for the year ending 30 June 2016 "
+        "and budgeted government Crown revenue and capital receipts for "
+        "the year ending 30 June 2017 as published in Budget 2016."
+    ),
+    33: (
+        "Amount $000: Amount (in thousands) for the Year as reported in "
+        "the Main Estimates."
+    ),
+    34: (
+        "Year: Year ending that the Amount relates to (at 30 June) as "
+        "reported in the Main Estimates."
+    ),
+    35: (
+        'Amount Type: "Actuals" - as audited for prior Years, "Estimated '
+        'Actual" - for the Year immediately prior to the current Main '
+        'Estimates, "Main Estimates" - for the Main Estimates Year.'
+    ),
+    39: (
+        "App ID: Number used to uniquely identify each Crown revenue or "
+        "capital receipt line."
+    ),
+}
+
+_PERIOD_TYPES_2016 = (
+    (2012, "Actuals"),
+    (2013, "Actuals"),
+    (2014, "Actuals"),
+    (2015, "Actuals"),
+    (2016, "Estimated Actual"),
+    (2017, "Main Estimates"),
+)
+
+PROFILES_2016 = {
+    "expenditure": replace(
+        PROFILES_2017["expenditure"],
+        source_sha256="bce6d2e55c15c1249881bac9d2a1afdf111cd9d1c258c20913bd4b39300f0f5a",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2018-04/b16-expenditure-data.xls",
+        max_rows=5972,
+        edition=2016,
+        period_types=_PERIOD_TYPES_2016,
+        definitions=tuple(
+            (row, _EXPENDITURE_DEFINITIONS_2016.get(row, text))
+            for row, text in PROFILES_2017["expenditure"].definitions
+        ),
+    ),
+    "revenue": replace(
+        PROFILES_2017["revenue"],
+        source_sha256="df34849f2ef7ce1903469edb315047afc8ae716574d163f59691a654c51b957f",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2018-04/b16-revenue-data.xls",
+        max_rows=1011,
+        edition=2016,
+        period_types=_PERIOD_TYPES_2016,
+        definitions=tuple(_REVENUE_DEFINITIONS_2016.items()),
+        definition_links=(
+            ("unit", 33),
+            ("valid_time_end", 34),
+            ("amount_type", 35),
+            ("app_id", 39),
+            ("source_vintage", 4),
+            ("amount_type", 4),
+        ),
+    ),
+}
+
+
 def declared_profiles() -> tuple[BiffBudgetProfile, ...]:
-    """Expose only the six independently pinned source-edition profiles."""
-    return (*PROFILES.values(), *PROFILES_2018.values(), *PROFILES_2017.values())
+    """Expose only the eight independently pinned source-edition profiles."""
+    return (
+        *PROFILES.values(),
+        *PROFILES_2018.values(),
+        *PROFILES_2017.values(),
+        *PROFILES_2016.values(),
+    )
 
 
 NUMERIC_SCHEMA = pa.schema(
@@ -568,7 +653,7 @@ def parse_snapshot(
     _require(
         profile.kind in {"expenditure", "revenue"}
         and type(profile.edition) is int
-        and profile.edition in {2017, 2018, 2019}
+        and profile.edition in {2016, 2017, 2018, 2019}
     )
     context = source_context(
         profile.source_sha256,

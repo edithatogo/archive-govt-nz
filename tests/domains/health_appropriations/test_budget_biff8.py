@@ -74,7 +74,7 @@ def _fixture(
     )
 
 
-@pytest.mark.parametrize("edition", [2017, 2018, 2019])
+@pytest.mark.parametrize("edition", [2016, 2017, 2018, 2019])
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
     kind: str,
@@ -117,6 +117,15 @@ def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
     ]
     assert len(numeric_links) == len(profile.numeric_columns)
     assert all(row["raw_value"] is None for row in numeric_links)
+    if edition == 2016 and kind == "revenue":
+        links = parsed.tables["field_lineage.parquet"].to_pylist()
+        expected = {
+            ("unit", "'Explanation'!B33"),
+            ("valid_time_end", "'Explanation'!B34"),
+            ("amount_type", "'Explanation'!B35"),
+            ("app_id", "'Explanation'!B39"),
+        }
+        assert expected <= {(row["field"], row["source_coordinate"]) for row in links}
     assert parsed.metadata["rights_state"] == "not_evaluated"
 
 
@@ -155,7 +164,7 @@ def test_source_and_definition_changes_fail_before_admission() -> None:
         )
 
 
-@pytest.mark.parametrize("edition", [2017, 2019])
+@pytest.mark.parametrize("edition", [2016, 2017, 2019])
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_biff_budget_operations_and_native_dispatch_retain_all_four_tables(
     kind: str, edition: int, tmp_path: Path, monkeypatch: pytest.MonkeyPatch

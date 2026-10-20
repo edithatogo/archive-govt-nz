@@ -9134,3 +9134,76 @@ original, runtime/control pin remain unchanged; only schema identity/title,
 regression and review docs differ. Repeat native builds are unnecessary for
 this metadata-only correction; original final-tree and hosted checks are repeated.
 See biff8-recovery-schema-registry-review-20261021.json.
+
+### 2026-10-21 Continue from protected737 delivery
+
+Previous goal turn is verified progress: complete2017 source-to-products
+implementation and qualification, corrected schema registry identity, original
+local/hosted assurance, normal merge and safe topic pruning. Rechecked main
+cabd5b70 and actual merged737; clean checkout. Next registered slice2016 begins
+with the existing full census and repeated original numeric preflight.
+
+2016 preflight1 repeated original numeric/row/header/definition verification.
+312 expenditure facts/1,560 witnesses and65 revenue facts/195 witnesses;
+all5,972/1,011 source rows accounted for with no numeric or period mismatch.
+Terminal0, all4,856 pins unchanged, owner/group absent and independent lease
+free. Reused complete census; no retrieval or new rights claim.
+TDD red: seven missing2016-profile cases with24 existing passes. Added only
+closed2016 edition/source profiles, explicit period pairs and changed source
+definitions. Revenue definitions/field links move to B33/B34/B35/B39; earlier
+profiles remain unchanged. Affected558 checks pass/ten skips; Ruff and strict
+typing pass. Existing source regression now explicitly checks the moved links.
+Real source/operation/native/repeated/interface and older-source byte parity
+qualification is next. No numerical decoder or policy bound changed.
+
+2016 source profiles1 passed: complete standalone/operation/native table and
+metadata parity, all20 new source/operation file hashes repeat, all30 prior
+2017/2018/2019 file hashes equal; all16 actual console/initialized MCP
+preflights pass under30s without outputs. Terminal0; all4,891 pins unchanged,
+owner/group absent, independent lease free. New local observation token
+2026-10-20T18:30:09.435785+00:00 is fixed for recovery; no retrieval claim.
+See budget-2016-biff8-native-qualification-20261021.json.
+
+Recovery red: new2016 selector rejected and v5 registry resource absent (two
+failures/two prior passes). Added only fixed qualified2016 definitions and v5
+cohort, with distinct URI/title and max13; previous protocol/selection/default
+bytes are unchanged. Existing registry regression now independently resolves
+all five versions and refuses cross-version fixtures. Affected570 tests pass,
+ten skips; strict typing/Ruff pass;70 schemas/60 representatives validate.
+New representative has11 explicitly fictional packages, not native evidence.
+Next: frozen18-stage complete13-source original-to-products repeat, independent
+queries/full metadata and qualified5/7/9/11 input/Gold byte comparisons.
+All time/size/80percent/rights/financial-interpretation bounds remain unchanged.
+
+Frozen cd912dfc products1 passed all18 native stages. Both fresh13-source
+Bronze builds repeat all119 input and61 Gold files. Ten independent exact
+query readbacks return1,045 bounded results from2,321 facts; all2,380 input
+identities accounted for with7,093 witnesses. Full combined metadata repeats
+and verifies: three packages,15 recordsets,2,705 rows. Manifest1,020,603 bytes
+under unchanged4MiB; complete drillthrough remains in verified companion.
+Qualified prior v1/v2/v3/v4 inputs remain identical across47/65/83/101 files;
+prior seven-/nine-/eleven-source Gold remains identical across60/61/61 files.
+All five actual recovery versions independently resolve and reject every other
+version in the registry. Source/interface/stage/package bounds unchanged.
+Terminal0, all5,359 frozen pins unchanged, owner/group absent and independent
+lease free. No retained derivatives consumed as build inputs. Original
+final-tree validation and protected delivery are next; whole track stays open.
+
+### PR738 review: incompletev5 selector
+
+Automatic review4329123029 correctly identified that a partial2016 selector
+could emit av5 receipt. Preserved red evidence: two contract failures. Restrict
+only the new2016 version to all four editions and five baseline sources, before
+source reads/output creation; earlier v1–v4 selection contracts remain unchanged.
+Require thirteen bindings and every BIFF8 key in bothv5 receipt maps. Extend
+the explicitly fictionalv5 fixture to five baseline bindings. Fourteen recovery
+tests and seventy schemas/sixty representative documents pass. New native
+recovery repetitions and exact final-tree original harness follow; no merge
+while the finding or required checks remain unresolved.
+
+The fixed cohort producer's two fresh recoveries repeat119 files exactly and
+match the prior qualified inputs. All1037 earlier native proof files are
+unchanged, including all Gold, queries and metadata. Actual complete receipts
+passv5; all single missing source/profile bindings are refused.78 focused
+tests pass;5360 frozen pins unchanged and
+owner/group absence/free lease verified. No output or original was replaced.
