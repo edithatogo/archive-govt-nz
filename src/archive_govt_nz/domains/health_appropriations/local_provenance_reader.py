@@ -15,6 +15,7 @@ from typing import Any, cast
 import pyarrow as pa
 import pyarrow.parquet as pq
 
+from archive_govt_nz.domains.health_appropriations import biff8_canonical
 from archive_govt_nz.domains.health_appropriations.budget_classification import (
     RULE as CLASSIFICATION_RULE,
 )
@@ -477,6 +478,8 @@ def read_verified_canonical_tables(
 ) -> tuple[dict[str, pa.Table], dict[str, Any]]:
     """Return fresh verified canonical tables and their scoped package receipt."""
     try:
+        if value.kind in {"biff8_budget", "biff8_revenue"}:
+            return biff8_canonical.read_canonical(value)
         _preflight(value)
         _products, receipt, tables = _package(value)
     except (

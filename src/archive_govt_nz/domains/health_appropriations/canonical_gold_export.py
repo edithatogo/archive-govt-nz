@@ -14,6 +14,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from archive_govt_nz.domains.health_appropriations import (
+    biff8_canonical,
     crown_expense_canonical_projection,
     fiscal_crown_canonical_projection,
     hyefu_crown_expense_canonical_projection,
@@ -103,6 +104,12 @@ _TABLES = {
     "historical_coverage.parquet": "coverage",
     "nominal_budget.parquet": "budget",
     "nominal_revenue.parquet": "revenue",
+    "biff8_budget.parquet": "biff8_budget",
+    "biff8_budget_lineage.parquet": "biff8_budget_lineage",
+    "biff8_budget_numeric.parquet": "biff8_budget_numeric",
+    "biff8_revenue.parquet": "biff8_revenue",
+    "biff8_revenue_lineage.parquet": "biff8_revenue_lineage",
+    "biff8_revenue_numeric.parquet": "biff8_revenue_numeric",
     "nominal_pharmaceutical_budget.parquet": "pharmac",
     "pharmaceutical_budget_lineage.parquet": "pharmac_lineage",
     "published_health_indicators.parquet": "moh",
@@ -215,6 +222,8 @@ def _dataset_card(
             "historical": "historical_observations.parquet",
             "budget": "nominal_budget.parquet",
             "revenue": "nominal_revenue.parquet",
+            "biff8_budget": "biff8_budget.parquet",
+            "biff8_revenue": "biff8_revenue.parquet",
             "pharmac": "nominal_pharmaceutical_budget.parquet",
             "moh": "published_health_indicators.parquet",
             "crown_befu": "crown_expense_befu_2026.parquet",
@@ -263,6 +272,8 @@ def _quality_report(
         ("historical", "coverage"),
         ("budget", "budget"),
         ("revenue", "revenue"),
+        ("biff8_budget", "biff8_budget"),
+        ("biff8_revenue", "biff8_revenue"),
         ("pharmac", "pharmac"),
         ("moh", "moh"),
         ("crown_befu", "crown_befu"),
@@ -321,7 +332,9 @@ def _source_drillthrough(
     coordinates_by_record: dict[str, list[dict[str, Any]]] = {}
     for package in packages:
         canonical, _receipt = read_verified_canonical_tables(package)
-        for lineage in canonical["field_lineage"].to_pylist():
+        for lineage in biff8_canonical.gold_inline_lineage(
+            package.kind, canonical["field_lineage"]
+        ):
             target_id = lineage["target_record_id"]
             locator = lineage["source_locator"]
             coordinate = lineage["source_coordinate"]
@@ -343,6 +356,7 @@ def _source_drillthrough(
                 "source_vintage": lineage["source_vintage"],
                 "rights_state": lineage["rights_state"],
             }
+            item.update(biff8_canonical.drillthrough_evidence(package.kind, lineage))
             coordinates_by_record.setdefault(target_id, []).append(item)
     for items in coordinates_by_record.values():
         items.sort(
@@ -358,7 +372,7 @@ def _source_drillthrough(
     for output_name, table_name in sorted(_TABLES.items()):
         table = tables.get(table_name)
         output = outputs.get(output_name)
-        if table is None or output is None:
+        if table is None or output is None or biff8_canonical.is_companion(table_name):
             continue
         for row_index, row in enumerate(table.to_pylist()):
             record_ids = row.get("input_record_ids")
@@ -926,6 +940,20 @@ def build_temporal_coverage_report(tables: dict[str, pa.Table]) -> dict[str, Any
             ),
         ),
     }
+    for kind in biff8_canonical.KINDS:
+        definitions[kind + ".parquet"] = (
+            kind,
+            (
+                "source_vintage",
+                "recordset",
+                "source_object_sha256",
+                "source_label",
+                "amount_type",
+                "unit",
+                "currency",
+                "value_basis",
+            ),
+        )
     groups: list[dict[str, Any]] = []
     for output_name, (table_name, context_fields) in definitions.items():
         table = tables.get(table_name)
@@ -976,6 +1004,8 @@ def build_cross_source_period_overlap_report(
         "crown_befu": ("crown_befu", "record_id"),
         "crown_hyefu": ("crown_hyefu", "record_id"),
         "fiscal_crown": ("fiscal_crown", "record_id"),
+        "biff8_budget": ("biff8_budget", "record_id"),
+        "biff8_revenue": ("biff8_revenue", "record_id"),
     }
     groups: dict[str, dict[str, dict[str, Any]]] = {}
     for product, (table_name, id_field) in definitions.items():
@@ -1519,7 +1549,8 @@ def _export(
         and 0 < len(packages) <= MAX_PACKAGES
         and all(
             isinstance(package, CanonicalPackageInput)
-            and package.kind in {"historical", "budget", "revenue"}
+            and package.kind
+            in {"historical", "budget", "revenue", *biff8_canonical.KINDS}
             for package in packages
         )
     )
@@ -1530,7 +1561,7 @@ def _export(
     }
     tables: dict[str, pa.Table] = {}
     query_receipts: list[dict[str, Any]] = []
-    product_report: dict[str, dict[str, Any]] = {}
+    product_report = biff8_canonical.initialize_gold(packages, tables, query_receipts)
     for kind, query in (
         ("historical", query_historical_observations),
         ("budget", query_nominal_budget),
@@ -1602,7 +1633,11 @@ def _export(
         "cross_source_period_overlap_report": cross_source_report,
         "plot_report": plot_report,
         "quality_report": quality_report,
-        "period_ordering": "tokens_preserved_and_sorted_as_strings",
+        "period_ordering": (
+            "canonical_period_labels_sorted_as_strings"
+            if any(package.kind in biff8_canonical.KINDS for package in packages)
+            else "tokens_preserved_and_sorted_as_strings"
+        ),
         "cross_source_join": "not_performed",
         "vintage_pooling": "not_performed",
         "report_scope": "exact_canonical_inputs_and_source_separated_outputs",

@@ -8805,3 +8805,61 @@ Budget2019 native1 passed atcc93f485b09cd59431986310c1e28f56bf5fb5cf/tree38005ab
 Recovery: PortableSSD disconnected during original full1 after passing8163/14/18 tests660.67s and progressing mutation stages. No final marker or inside postflight existed; outcome remains interrupted/unverified. Owner76190/group absent and independent lease free. Reconnection verified clean HEAD0e731310/tree2fe73d07, Git connectivity, all9980 original frozen inputs unchanged, and a normal exact-head remote recovery checkpoint. Qualified native controls were hash-verified into internal backup. No repair/reset/pruning. Internal free storage was insufficient for a duplicate checkout/runtime, so root reran the unchanged original harness from the existing checkout with durable internal controls/live logs and a fresh external TMPDIR.
 
 Original full2 ./scripts/validate.sh passed all32 stages at0e7313106d6be88b0d19411e0042c65a3ae4a0a3/tree2fe73d07228502a7f2a725784981e9276c0f902e: ========== 8163 passed, 14 skipped, 18 warnings in 519.28s (0:08:39) ===========. All5172 deduplicated absolute input pins unchanged; actual exit0,owner/group absent and independent kernel lease free. Log34a34b352b22658db388cd0f8a334935f42314d53701b50686825daccfc42be6. Qualified source/tests/schemas/dependencies unchanged;80% floor/900s stage cap unchanged. Full controls/log and original supply-chain receipts archived outside Git before supplementary scans. See budget-2019-biff8-original-assurance-20261020.json. Only assurance bookkeeping follows; exact-head hosted checks and protected merge/prune remain pending.
+
+
+2026-10-20 BIFF8 canonical/Gold integration: resumed clean main169fd175 after
+PR732 protected delivery. New bounded task and design recorded before changes.
+Red check failed because the canonical module did not exist. First green-phase
+readback exposed Parquet list-child transport names; preserve structural
+verification and restore the declared schema only after that check. Reproduction
+then isolated the caller timestamp spelling in source_observation_id; retain
+that original caller token in the independently pinned canonical marker and
+replay it, without capture attestation or modifying old Silver.
+Both fictional profiles now pass canonical/Gold/query/repeat tests and four
+rehashed Silver table-deletion refusals (six focused cases). Initial affected
+suite selector named a nonexistent export test; no tests ran, selector corrected.
+Five initial typing findings corrected using Mapping contracts/copies. No
+coverage/deadline/protection changes; 80 percent floor remains.
+
+Affected suite: 200 pass, three stale inventory assertions fail (v3 now
+supported, named products increase8to10, metadata fixture includes all10).
+Updated those explicit expectations without changing production admission.
+Internal temporary-file creation briefly failed with ENOSPC; route shell and
+validation temporary files to PortableSSD. Preserve evidence and user files.
+
+Native1 producer10b23aff passes:319/63facts,8613/882lineage,1595/189witnesses;
+all canonical and Gold repeated file hashes equal, both actual named queries
+verified, all4834pins unchanged, owner/group absent, independent lease free.
+Self-review found4,127,589byte Gold manifest near the unchanged4MiB reader cap.
+Inline only numeric source lookups and point to the complete hashed lineage
+companion; no source evidence is removed. Qualify a new producer rather than
+rewriting native1. Also corrected the metadata fixture DCAT dataset count8to10
+and explicitly describe BIFF8 period labels as replayed year integers.
+
+Native2 producer00faaa1d passes both original-source canonical repeats and combined Gold repeats/queries. All4834pins stable; owner/group absent and lease independently free. Latest focused11tests pass with two existing RDFLib deprecation warnings. Full original harness next; single root-owned serialized launch, internal durable logs and SSD temporary files.
+
+Original full1 exposed an overbroad v3 registry: copying all v2 shapes admitted
+source_inventory/v3 although only BIFF8 facts/lineage are implemented. Retain
+that failure evidence, close v3 to the three implemented shapes and restore the
+existing source_inventory/v3 rejection assertion. This supersedes the earlier
+stale-negative-test interpretation. Extend the existing revenue fixture to a
+different Parquet codec so the bounded typed-readback fallback has positive
+transport evidence; no extra synthetic percentage target. Native3 and fresh
+original full2 must qualify the corrected producer before PR creation.
+
+Original full1 terminated1 with5failures,8166pass/14skip/18warnings749.31s;
+only six stages reached, no all32pass claim. Preserved full log/fixity/frozen
+inputs and terminal/gone-owner/free-lease evidence. Two further failures were
+recovery fixture counts8to10 products/13to15metadata recordsets; update those
+explicit inventories. Actual CLI30s timeout and Hypothesis1s slow-generation
+health check occurred under independently observed concurrent host CPU load;
+retain unchanged deadlines and rerun those exact contracts before fresh full2.
+
+All157 focused repair checks pass94.88s, including unchanged30s actual CLI and unsuppressed Hypothesis health checks. Native3 requalifies the closed registry and original source pair. Start a fresh original full2 with unchanged gates, two workers and frozen inputs.
+
+
+Original full3 on2a36724d terminated124 at the unchanged900s test-stage cap: 5822observed PASSED,1observed FAILED (checkpoint property contract; no final trace before cap),71percent, no final suite/coverage summary and no all32local pass. Five fast stages passed. All4884pins stable, all captured owner/nested groups absent and kernel lease independently free. Preserve original full1 failures and aborted full2launch; no old log was overwritten. Under AGENTS.md run-before-PR contract, proceed to focused PR with incomplete local assurance explicit; require original all32stages on exact final head across Ubuntu/macOS/Windows, all required checks and resolved findings before normal protected merge/prune. This does not complete whole-track final assurance or change any threshold/deadline.
+
+Full3 log correction: one observed checkpoint property-test failure preceded the cap; the earlier live no-failure statement was incomplete. Its final trace was not emitted before termination. Exact unchanged contract rerun passes1test in8.34s. Original failure remains recorded; no definitive cause or full local pass is inferred. All tests and timing/health-check settings remain unchanged. Hosted exact-head original three-platform assurance must clear the complete suite.
+
+Supplemental original-command selection (not a full harness substitute) passes conductor,66schemas/56documents,audit,licences,secrets and114component SBOM on ec82b990. Marker0, owner/group absent and independent lease free. Archived original receipts/fixity before subsequent bookkeeping. Original local full remains incomplete; exact-head three-host original32stages are required before merge/prune.
