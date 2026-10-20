@@ -9230,3 +9230,23 @@ counts of ten inputs. Final focused639 pass/ten skips; strict typing and70
 schemas/60 representatives pass. Existing limits and policy holds unchanged.
 Root now freezes source/native qualification with all40 previous source files
 pinned to qualified receipts and actual16 console/initialized MCP preflights.
+
+Source/native qualification passed onbc1f7eb6: expenditure315 facts/7,875
+links/5,977 dispositions/1,260 witnesses; revenue66/924/1,006/198. Standalone
+and operation outputs repeat all20 files; native all-four-table/metadata parity
+and all16 actual console/initialized MCP preflights pass. All40 prior source
+files equal qualified receipts. All4,911 frozen pins unchanged; native terminal
+success, owner/group absence and independent free lease verified. Exact local
+inspection token2026-10-20T19:42:27.758345+00:00 is replayed in recovery, without
+a new capture claim.
+
+Recovery red established unsupported2015/missingv6 before implementation
+(three failures/fourteen existing passes). Added distinctv6 schema, fifteen
+required bindings and all ten BIFF8 keys; retainedv5 completeness checks and
+strengthened partial-cohort regressions to use all five fictional baseline
+sources, so incomplete editions cannot fail merely for missing baseline count.
+Fictionalv6 fixture generated from synthetic sources; no native evidence claim.
+Seventeen recovery tests,54 integrated source/canonical/recovery checks, Ruff,
+strict typing and71 schemas/61 representative documents pass. Root now freezes
+full twenty-stage native recovery: two fresh fifteen-source builds, original
+v1–v5 and Gold byte comparisons, all ten typed queries and complete metadata.
