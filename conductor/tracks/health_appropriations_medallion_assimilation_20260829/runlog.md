@@ -9155,3 +9155,22 @@ profiles remain unchanged. Affected558 checks pass/ten skips; Ruff and strict
 typing pass. Existing source regression now explicitly checks the moved links.
 Real source/operation/native/repeated/interface and older-source byte parity
 qualification is next. No numerical decoder or policy bound changed.
+
+2016 source profiles1 passed: complete standalone/operation/native table and
+metadata parity, all20 new source/operation file hashes repeat, all30 prior
+2017/2018/2019 file hashes equal; all16 actual console/initialized MCP
+preflights pass under30s without outputs. Terminal0; all4,891 pins unchanged,
+owner/group absent, independent lease free. New local observation token
+2026-10-20T18:30:09.435785+00:00 is fixed for recovery; no retrieval claim.
+See budget-2016-biff8-native-qualification-20261021.json.
+
+Recovery red: new2016 selector rejected and v5 registry resource absent (two
+failures/two prior passes). Added only fixed qualified2016 definitions and v5
+cohort, with distinct URI/title and max13; previous protocol/selection/default
+bytes are unchanged. Existing registry regression now independently resolves
+all five versions and refuses cross-version fixtures. Affected570 tests pass,
+ten skips; strict typing/Ruff pass;70 schemas/60 representatives validate.
+New representative has11 explicitly fictional packages, not native evidence.
+Next: frozen18-stage complete13-source original-to-products repeat, independent
+queries/full metadata and qualified5/7/9/11 input/Gold byte comparisons.
+All time/size/80percent/rights/financial-interpretation bounds remain unchanged.

@@ -327,7 +327,7 @@ def test_missing_last_biff_original_fails_before_any_derivative(
     assert calls == []
 
 
-@pytest.mark.parametrize("earliest", [2017, 2018])
+@pytest.mark.parametrize("earliest", [2016, 2017, 2018])
 def test_explicit_expanded_recovery_keeps_prior_cohorts(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
@@ -338,7 +338,7 @@ def test_explicit_expanded_recovery_keeps_prior_cohorts(
     editions = tuple(range(earliest, 2020))
     for edition in editions:
         _biff_sources(cas, monkeypatch, edition=edition)
-    version = 4 if earliest == 2017 else 3
+    version = {2016: 5, 2017: 4, 2018: 3}[earliest]
     first = recovery.rebuild_canonical_inputs(
         cas, tmp_path / "first", include_biff8=True, biff8_editions=editions
     )
@@ -373,20 +373,21 @@ def test_explicit_expanded_recovery_keeps_prior_cohorts(
             assert tables["numeric_evidence"].num_rows > 0
     with pytest.raises(ValueError, match="canonical_input_recovery_contract"):
         recovery.rebuild_canonical_inputs(
-            cas, tmp_path / "unsupported", include_biff8=True, biff8_editions=(2016,)
+            cas, tmp_path / "unsupported", include_biff8=True, biff8_editions=(2015,)
         )
     assert not (tmp_path / "unsupported").exists()
 
 
 def test_expanded_recovery_versions_resolve_independently() -> None:
     root = Path(__file__).parents[3]
+    versions = tuple(range(1, 6))
     schemas = {
         version: json.loads(
             (
                 root / f"schemas/health-canonical-input-recovery-v{version}.schema.json"
             ).read_bytes()
         )
-        for version in (3, 4)
+        for version in versions
     }
     fixtures = {
         version: json.loads(
@@ -394,17 +395,19 @@ def test_expanded_recovery_versions_resolve_independently() -> None:
                 root / f"tests/fixtures/health-canonical-input-recovery-v{version}.json"
             ).read_bytes()
         )
-        for version in (3, 4)
+        for version in versions
     }
     registry = Registry().with_resources(
         (schema["$id"], Resource.from_contents(schema)) for schema in schemas.values()
     )
-    for version, other in ((3, 4), (4, 3)):
+    for version in versions:
         uri = (
             "https://archive-govt-nz.example/schemas/"
             f"health-canonical-input-recovery-v{version}.schema.json"
         )
         validator = Draft202012Validator({"$ref": uri}, registry=registry)
         validator.validate(fixtures[version])
-        with pytest.raises(ValidationError):
-            validator.validate(fixtures[other])
+        for other in versions:
+            if other != version:
+                with pytest.raises(ValidationError):
+                    validator.validate(fixtures[other])
