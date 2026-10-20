@@ -9034,3 +9034,17 @@ keeping default v1 and2019-only v2 routes. Reject unknown/duplicate/non-integer
 edition inputs before outputs. Schema68/representatives58 pass, focused strict
 typing0errors and Ruff clean. Native complete source/Gold/metadata qualification,
 existing byte parity, original assurance and protected delivery remain pending.
+
+### 2026-10-21 Expanded BIFF8 provenance reader contract
+
+Frozen producer efdc45f1 rebuilt all nine sources and supporting inputs, then
+Gold successfully. The real query refused its 4,759,245-byte manifest against
+the unchanged 4,194,304-byte cap. Preserved native-probe-1 failure and verified
+all 4,860 frozen pins, terminal exit1, owner/group absence and free lease.
+A focused red contract established the missing v3 companion reference. Complete
+v2 drillthrough records now move into a hashed, inventoried RO-Crate companion
+for mixed BIFF vintages; the verifier checks binding/count and metadata resolves
+the same records before projecting source references. Single-vintage bytes stay
+on the existing inline path. The exporter rejects oversized final manifests.
+Focused testing caught a test-only metadata receipt expectation (written, not
+complete); corrected without changing the production status contract.

@@ -10,6 +10,10 @@ from typing import TYPE_CHECKING, Any, NoReturn
 if TYPE_CHECKING:
     from pathlib import Path
 
+from archive_govt_nz.domains.health_appropriations.workbook_common import (
+    verified_snapshot,
+)
+
 MAX_MANIFEST_BYTES = 4 * 1024 * 1024
 MAX_PACKAGE_BYTES = 128 * 1024 * 1024
 MAX_OUTPUTS = 512
@@ -309,6 +313,54 @@ def _verify_outputs(root: Path, outputs: object) -> tuple[int, int]:
     return len(outputs), total_bytes
 
 
+def read_source_drillthrough(root: Path, manifest: dict[str, Any]) -> dict[str, Any]:
+    """Resolve complete drillthrough records from a pinned package inventory.
+
+    Legacy inline v2 remains unchanged. A v3 reference admits only the fixed
+    direct-child companion, independently checks its snapshot and count, and
+    preserves all v2 row, coordinate and numeric-evidence records.
+    """
+    reference = manifest.get("source_drillthrough", {})
+    if not isinstance(reference, dict):
+        _fail("invalid_source_drillthrough")
+    if (
+        reference.get("schema_version")
+        != "archive-govt-nz.health-source-drillthrough/v3"
+    ):
+        return reference
+    name = "source_drillthrough.json"
+    binding = manifest["outputs"].get(name)
+    if (
+        not isinstance(binding, dict)
+        or reference.get("output_name") != name
+        or reference.get("scope") != "complete_v2_records_in_verified_companion"
+        or reference.get("sha256") != binding.get("sha256")
+        or reference.get("bytes") != binding.get("bytes")
+        or type(binding.get("bytes")) is not int
+        or not 0 < binding["bytes"] <= MAX_PACKAGE_BYTES
+        or type(reference.get("record_count")) is not int
+    ):
+        _fail("invalid_source_drillthrough_reference")
+    payload = verified_snapshot(
+        root / name, binding["sha256"], max_bytes=binding["bytes"]
+    )
+    if len(payload) != binding["bytes"]:
+        _fail("invalid_source_drillthrough_size")
+    result = json.loads(payload)
+    if (
+        not isinstance(result, dict)
+        or result.get("schema_version")
+        != "archive-govt-nz.health-source-drillthrough/v2"
+        or not isinstance(result.get("records"), list)
+        or len(result["records"]) != reference["record_count"]
+        or result.get("scope") != "exact_row_and_source_coordinate_lookup_only"
+        or result.get("row_identity") != "output_sha256_and_zero_based_sorted_row_index"
+        or result.get("cross_source_join") != "not_performed"
+    ):
+        _fail("invalid_source_drillthrough_companion")
+    return result
+
+
 def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
     if (
         type(manifest_sha256) is not str
@@ -324,6 +376,7 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
         _fail("invalid_manifest_schema")
     outputs = manifest.get("outputs")
     output_count, output_bytes = _verify_outputs(root, outputs)
+    read_source_drillthrough(root, manifest)
     products = manifest.get("products")
     temporal_report = manifest.get("temporal_coverage_report")
     classification_report = manifest.get("classification_drift_report")

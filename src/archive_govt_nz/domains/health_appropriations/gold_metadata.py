@@ -324,7 +324,14 @@ def _canonical_package(value: GoldInput) -> dict[str, Any]:
         "verification_scope": "pinned_gold_package_snapshots",
         "source_reverification": "not_performed",
         "source_semantics": "not_reassessed",
-        "source_references": _source_references(manifest),
+        "source_references": _source_references(
+            {
+                **manifest,
+                "source_drillthrough": canonical_verifier.read_source_drillthrough(
+                    value.root, manifest
+                ),
+            }
+        ),
         "rights": manifest["rights_state"],
         "publication": manifest["publication"],
     }

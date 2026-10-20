@@ -28,6 +28,9 @@ from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
 from archive_govt_nz.domains.health_appropriations.canonical_gold_plots import (
     build_discrete_plots,
 )
+from archive_govt_nz.domains.health_appropriations.canonical_gold_verification import (
+    MAX_MANIFEST_BYTES,
+)
 from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
     CanonicalPackageInput,
     read_verified_canonical_tables,
@@ -1584,6 +1587,42 @@ def _build_payloads(
     )
 
 
+def _drillthrough_payloads(
+    payloads: dict[str, bytes],
+    tables: dict[str, pa.Table],
+    packages: tuple[CanonicalPackageInput, ...],
+) -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
+    """Keep complete multi-vintage provenance outside the bounded manifest."""
+    outputs = _output_inventory(payloads, tables)
+    drillthrough = _source_drillthrough(tables, outputs, packages)
+    if any(
+        len(set(tables[kind]["source_vintage"].to_pylist())) > 1
+        for kind in biff8_canonical.KINDS
+        if kind in tables
+    ):
+        name = "source_drillthrough.json"
+        payloads[name] = _encoded(drillthrough)
+        # Rebuild the crate inventory without its own previous metadata file.
+        del payloads["ro-crate-metadata.json"]
+        payloads["ro-crate-metadata.json"] = _encoded(_ro_crate_metadata(payloads))
+        outputs = _output_inventory(payloads, tables)
+        binding = {
+            "sha256": hashlib.sha256(payloads[name]).hexdigest(),
+            "bytes": len(payloads[name]),
+            "kind": "source_drillthrough",
+        }
+        outputs[name] = binding
+        drillthrough = {
+            "schema_version": "archive-govt-nz.health-source-drillthrough/v3",
+            "output_name": name,
+            "sha256": binding["sha256"],
+            "bytes": binding["bytes"],
+            "record_count": len(drillthrough["records"]),
+            "scope": "complete_v2_records_in_verified_companion",
+        }
+    return outputs, drillthrough
+
+
 def _export(
     packages: tuple[CanonicalPackageInput, ...],
     output: Path,
@@ -1660,7 +1699,7 @@ def _export(
     package_markers = _package_markers(query_receipts)
     quality_report = _quality_report(tables, product_report)
     _require(sum(map(len, payloads.values())) <= MAX_OUTPUT_BYTES)
-    outputs = _output_inventory(payloads, tables)
+    outputs, drillthrough = _drillthrough_payloads(payloads, tables, packages)
     receipt = {
         "schema_version": SCHEMA,
         "status": "dry_run" if not write else "complete",
@@ -1674,7 +1713,7 @@ def _export(
         "crown_projection": crown_receipts["crown"],
         "fiscal_crown_projection": crown_receipts["fiscal_crown"],
         "outputs": outputs,
-        "source_drillthrough": _source_drillthrough(tables, outputs, packages),
+        "source_drillthrough": drillthrough,
         "temporal_coverage_report": temporal_report,
         "classification_drift_report": classification_drift_report,
         "revision_reconciliation_report": revision_report,
@@ -1693,7 +1732,10 @@ def _export(
         "publication": "not_performed",
     }
     marker = _encoded(receipt)
-    _require(sum(map(len, payloads.values())) + len(marker) <= MAX_OUTPUT_BYTES)
+    _require(
+        len(marker) <= MAX_MANIFEST_BYTES
+        and sum(map(len, payloads.values())) + len(marker) <= MAX_OUTPUT_BYTES
+    )
     if not write:
         receipt["planned_outputs"] = receipt.pop("outputs")
         return receipt

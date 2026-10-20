@@ -16,6 +16,8 @@ from archive_govt_nz.domains.health_appropriations import (
     biff8_canonical,
     canonical_gold_export,
     canonical_gold_queries,
+    canonical_gold_verification,
+    gold_metadata,
 )
 from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
     CanonicalPackageInput,
@@ -290,6 +292,45 @@ def test_biff8_gold_preserves_distinct_vintages_and_refuses_duplicates(
         tuple(packages), gold, write=True
     )
     assert receipt["quality_report"]["input_record_count"] == 4
+    reference = receipt["source_drillthrough"]
+    assert (
+        reference["schema_version"] == "archive-govt-nz.health-source-drillthrough/v3"
+    )
+    companion = gold / "source_drillthrough.json"
+    drillthrough = json.loads(companion.read_bytes())
+    assert reference["record_count"] == len(drillthrough["records"]) == 4
+    assert reference["sha256"] == _pin(companion)
+    assert reference["bytes"] == companion.stat().st_size
+    assert all(row["source_coordinates"] for row in drillthrough["records"])
+    assert (
+        canonical_gold_verification.read_source_drillthrough(gold, receipt)
+        == drillthrough
+    )
+    metadata_root = tmp_path / "metadata"
+    metadata_receipt = gold_metadata.export_gold_metadata(
+        (
+            gold_metadata.GoldInput(
+                "canonical_source_separated", gold, _pin(gold / "MANIFEST.json")
+            ),
+        ),
+        metadata_root,
+        write=True,
+    )
+    assert metadata_receipt["status"] == "written"
+    projected = json.loads((metadata_root / "catalogue.json").read_bytes())["packages"][
+        0
+    ]
+    expected_hashes = {
+        coordinate["source_object_sha256"]
+        for record in drillthrough["records"]
+        for coordinate in record["source_coordinates"]
+    }
+    assert expected_hashes <= {
+        ref["value"]
+        for ref in projected["source_references"]
+        if ref["field_path"].startswith("/source_drillthrough/records/")
+        and ref["kind"] == "sha256"
+    }
     for product in ("biff8_budget", "biff8_revenue"):
         result = canonical_gold_queries.query_canonical_gold(
             gold, _pin(gold / "MANIFEST.json"), product=product
@@ -313,3 +354,21 @@ def test_biff8_gold_preserves_distinct_vintages_and_refuses_duplicates(
         canonical_gold_export.export_canonical_gold(
             (*packages, packages[0]), tmp_path / "duplicate"
         )
+    original = companion.read_bytes()
+    companion.write_bytes(original + b" ")
+    assert (
+        canonical_gold_queries.query_canonical_gold(
+            gold, _pin(gold / "MANIFEST.json"), product="biff8_budget"
+        )["status"]
+        == "failed"
+    )
+    companion.write_bytes(original)
+    invalid = json.loads((gold / "MANIFEST.json").read_bytes())
+    invalid["source_drillthrough"]["record_count"] += 1
+    (gold / "MANIFEST.json").write_text(json.dumps(invalid))
+    assert (
+        canonical_gold_verification.verify_canonical_gold_package(
+            gold, _pin(gold / "MANIFEST.json")
+        )["status"]
+        == "failed"
+    )
