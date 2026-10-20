@@ -8979,3 +8979,23 @@ bytes and all frozen pins remain unchanged; actual exit1, owner/group absent
 and independent lease free. Correct only this documented representation
 comparison in a new immutable attempt; retain old scripts/controls/failure log.
 No numerical, field, definition, period or source acceptance guard is relaxed.
+
+Native2018 preflight2 on e67c1f1d: actual first launch preparation safely refused
+reuse of the old owner-log filename before spawning; preserved that frozen
+preparation receipt and corrected new names. Actual owner25376 runs both pairs
+twice, source artifacts byte-identical. Expenditure318selected/5849excluded,
+1590numeric witnesses; revenue64selected/947excluded,192witnesses. Every source
+row accounted for, zero rejects/period mismatches, source times below2s.
+Actual terminal0; owner/group absent, free lease and all4839pins unchanged.
+
+Expanded existing fixtures first fail for missing2018 profiles, then pass for
+explicit edition/period/source binding. Source definition differences at expense
+B47/48/49 require MCOA, retained as2018-only label domain; existing2019 remains
+closed. The2018 MCOA fixture first fails (rejected rather than normalized), then
+is fixed through edition-specific group labels. A local literal-wrapping helper
+initially produced a collection SyntaxError; corrected using exact original
+segments and verified parse/lint. This is not a source or numeric acceptance
+failure. Source-operation suite exposes the stale committed profile enum;
+regenerated only its explicit registry projection. Final focused543pass/10skip
+42.00s, strict types0errors and Ruff clean. Native full profile/operation and
+2019 parity verification follow on the next frozen producer.

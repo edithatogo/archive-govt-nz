@@ -1,4 +1,4 @@
-"""Complete native-carrier and exclusive local operations for 2019 BIFF8 facts."""
+"""Complete native-carrier and exclusive local operations for pinned BIFF8 facts."""
 
 from __future__ import annotations
 
@@ -34,13 +34,13 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 MEDIA_TYPE = "application/vnd.ms-excel"
-PROFILE_IDS = frozenset(p.profile_id for p in budget_biff8.PROFILES.values())
+PROFILE_IDS = frozenset(p.profile_id for p in budget_biff8.declared_profiles())
 _INVALID = "budget_biff8_operation_contract"
 
 
 def get_profile(profile: str) -> budget_biff8.BiffBudgetProfile:
-    """Resolve only the two explicitly declared stored-integer profiles."""
-    selected = [p for p in budget_biff8.PROFILES.values() if p.profile_id == profile]
+    """Resolve only the explicitly declared stored-integer profiles."""
+    selected = [p for p in budget_biff8.declared_profiles() if p.profile_id == profile]
     if len(selected) != 1:
         raise ValueError(_INVALID)
     return selected[0]
@@ -50,7 +50,7 @@ def source_binding(profile: str, vintage: str, locator: str, digest: str) -> boo
     """Require the exact edition, locator and retained object identity."""
     spec = get_profile(profile)
     return (vintage, locator, digest) == (
-        "Budget-2019",
+        spec.source_vintage,
         spec.source_locator,
         spec.source_sha256,
     )
@@ -167,8 +167,8 @@ def registration(
     """Register one source-bound native-only profile from caller context."""
     candidates = [
         p
-        for p in budget_biff8.PROFILES.values()
-        if p.source_locator == source_locator and source_vintage == "Budget-2019"
+        for p in budget_biff8.declared_profiles()
+        if p.source_locator == source_locator and source_vintage == p.source_vintage
     ]
     if len(candidates) != 1:
         raise ValueError(_INVALID)
