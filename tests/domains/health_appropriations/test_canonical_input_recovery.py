@@ -227,7 +227,9 @@ def _biff_sources(
     ):
         payload, profile = _fixture(native, edition=edition)
         monkeypatch.setitem(
-            budget_biff8.PROFILES if edition == 2019 else budget_biff8.PROFILES_2018,
+            getattr(
+                budget_biff8, "PROFILES" if edition == 2019 else f"PROFILES_{edition}"
+            ),
             native,
             profile,
         )
@@ -252,7 +254,7 @@ def _biff_sources(
         )
     monkeypatch.setattr(
         recovery,
-        "BIFF8_SOURCES" if edition == 2019 else "BIFF8_2018_SOURCES",
+        "BIFF8_SOURCES" if edition == 2019 else f"BIFF8_{edition}_SOURCES",
         tuple(definitions),
         raising=False,
     )
@@ -324,30 +326,39 @@ def test_missing_last_biff_original_fails_before_any_derivative(
     assert calls == []
 
 
-def test_explicit_2018_recovery_keeps_default_and_2019_cohorts(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, sources: tuple[Path, list[str]]
+@pytest.mark.parametrize("earliest", [2017, 2018])
+def test_explicit_expanded_recovery_keeps_prior_cohorts(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    sources: tuple[Path, list[str]],
+    earliest: int,
 ) -> None:
     cas, _ = sources
-    _biff_sources(cas, monkeypatch, edition=2018)
-    _biff_sources(cas, monkeypatch)
+    editions = tuple(range(earliest, 2020))
+    for edition in editions:
+        _biff_sources(cas, monkeypatch, edition=edition)
+    version = 4 if earliest == 2017 else 3
     first = recovery.rebuild_canonical_inputs(
-        cas, tmp_path / "first", include_biff8=True, biff8_editions=(2018, 2019)
+        cas, tmp_path / "first", include_biff8=True, biff8_editions=editions
     )
     second = recovery.rebuild_canonical_inputs(
-        cas, tmp_path / "second", include_biff8=True, biff8_editions=(2019, 2018)
+        cas,
+        tmp_path / "second",
+        include_biff8=True,
+        biff8_editions=tuple(reversed(editions)),
     )
     assert (
         first.receipt["schema_version"]
-        == "archive-govt-nz.health-canonical-input-recovery/v3"
+        == f"archive-govt-nz.health-canonical-input-recovery/v{version}"
     )
     assert first.receipt == second.receipt
     assert inventory(tmp_path / "first") == inventory(tmp_path / "second")
-    assert len(first.packages) == 7
+    assert len(first.packages) == 3 + 2 * len(editions)
     Draft202012Validator(
         json.loads(
             (
                 Path(__file__).parents[3]
-                / "schemas/health-canonical-input-recovery-v3.schema.json"
+                / f"schemas/health-canonical-input-recovery-v{version}.schema.json"
             ).read_bytes()
         )
     ).validate(first.receipt)
@@ -357,10 +368,10 @@ def test_explicit_2018_recovery_keeps_default_and_2019_cohorts(
     for package in first.packages:
         if package.kind.startswith("biff8_"):
             tables, receipt = read_verified_canonical_tables(package)
-            assert receipt["vintage"] in {"Budget-2018", "Budget-2019"}
+            assert receipt["vintage"] in {f"Budget-{year}" for year in editions}
             assert tables["numeric_evidence"].num_rows > 0
     with pytest.raises(ValueError, match="canonical_input_recovery_contract"):
         recovery.rebuild_canonical_inputs(
-            cas, tmp_path / "unsupported", include_biff8=True, biff8_editions=(2017,)
+            cas, tmp_path / "unsupported", include_biff8=True, biff8_editions=(2016,)
         )
     assert not (tmp_path / "unsupported").exists()

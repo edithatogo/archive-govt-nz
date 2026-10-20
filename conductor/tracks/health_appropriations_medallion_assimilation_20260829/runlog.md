@@ -9080,3 +9080,24 @@ ten skips across affected/integrated tests). Extended only the closed edition
 set and added exact hash/locator/edition definitions; source/canonical25 pass.
 Ruff passes; strict typing checked. Real source/profile/interface admission and
 full eleven-source recovery still require native qualification.
+
+2017 native profiles1 passed: full standalone/operation/native parity for both
+profiles, all20 new source/operation file hashes repeat, all20 earlier2018/2019
+source file hashes identical, all16 actual CLI/initialized MCP preflights passed
+under30s without creating outputs. All4,871 frozen pins unchanged, terminal0,
+owner/group absent and independent lease free. Exact local observation token
+2026-10-20T16:57:19.820018+00:00 is retained in new recovery definitions; this
+is caller-supplied inspection context, not a retrieval claim. Source qualification
+is recorded in budget-2017-biff8-native-qualification-20261021.json.
+
+Expanded recovery TDD:2017 selection failed the closed edition gate while2018
+passed. Added explicit v4 selection for the now-qualified2017 pair, retaining
+v1/v2/v3 routes and prior definitions. New v4 max11 applies only to the exact
+admitted cohort; reader/package/source/interface/stage bounds stay unchanged.
+The revised source/canonical/recovery suites pass35 cases; integrated affected
+suites562 pass/ten skips. Ruff and strict typing pass;69 schemas/59
+representatives validate. A private schema-fixture generation script initially
+lacked the repository import path; corrected that tooling context and generated
+an explicitly fictional nine-package representative, not native evidence.
+Full repeated eleven-source products/query/metadata and prior5/7/9 byte
+compatibility are next, with baseline hashes bound to qualified receipts.
