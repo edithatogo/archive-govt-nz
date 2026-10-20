@@ -27,3 +27,13 @@ floor unchanged. No inferred currency, start dates, rights, comparability,
 netting, aggregation or donor replacement. No repeated external publication.
 Original exact-final-tree validation, automatic review, protected green checks,
 verified main and zero unique changes precede owned-topic pruning.
+
+## Native preflight observations
+
+Both numeric-only repeats agree:315 expenditure facts/1,260 witnesses and66
+revenue facts/198 witnesses. All5,977/1,006 rows accounted for, no selected-field
+rejection or period mismatch; complete prior headers/Explanation match.
+Expenditure definitions areB3/B38/B39/B40/B41/B46/B47/B48/B49; revenue
+definitionsB4/B34/B35/B36/B40. Bind these exact source cells. Expenditure
+minister/portfolio nulls must have explicit absent-field quality flags and no
+source coordinate or invented witness. Native admission remains to be verified.

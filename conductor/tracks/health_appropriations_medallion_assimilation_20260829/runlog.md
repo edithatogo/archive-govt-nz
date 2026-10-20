@@ -9217,3 +9217,16 @@ verified; whole track remains incomplete. Root retains serialized native/broad
 launch ownership. Next2015 pair reuses the census; expenditure has15 columns
 and no minister/portfolio source dimensions. Source-only numeric and complete
 definition preflight precedes implementation; all policy holds remain.
+
+Both source-only preflight repeats agree:315 expenditure facts/1,260 witnesses
+and66 revenue facts/198 witnesses; all5,977/1,006 source rows accounted for, no
+rejection/period mismatch. All4,864 frozen pins unchanged and native owner/group
+absent/free lease verified. Exact2015 profiles bind independent definition
+coordinates. Fifteen-column expenditure uses null minister/portfolio values,
+explicit absent-field flags and no invented lineage/source JSON fields; later
+profiles retain their mandatory labels. Seven missing-profile red failures
+preceded implementation; expanding Gold to five editions also required fixture
+counts of ten inputs. Final focused639 pass/ten skips; strict typing and70
+schemas/60 representatives pass. Existing limits and policy holds unchanged.
+Root now freezes source/native qualification with all40 previous source files
+pinned to qualified receipts and actual16 console/initialized MCP preflights.

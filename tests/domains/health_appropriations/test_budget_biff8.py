@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 from dataclasses import replace
 from decimal import Decimal
 from pathlib import Path
@@ -74,7 +75,7 @@ def _fixture(
     )
 
 
-@pytest.mark.parametrize("edition", [2016, 2017, 2018, 2019])
+@pytest.mark.parametrize("edition", [2015, 2016, 2017, 2018, 2019])
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
     kind: str,
@@ -126,6 +127,41 @@ def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
             ("app_id", "'Explanation'!B39"),
         }
         assert expected <= {(row["field"], row["source_coordinate"]) for row in links}
+    if edition == 2015 and kind == "expenditure":
+        assert fact["m_number"] is None
+        assert fact["portfolio_name"] is None
+        assert {
+            "source_field_absent_m_number",
+            "source_field_absent_portfolio_name",
+        } <= set(fact["quality_flags"])
+        decoded = json.loads(fact["decoded_values_json"])
+        assert "M Number" not in decoded
+        assert "Portfolio Name" not in decoded
+        assert not {"m_number", "portfolio_name"} & set(
+            parsed.tables["field_lineage.parquet"]["field"].to_pylist()
+        )
+        assert witnesses.num_rows == 4
+        with pytest.raises(ValueError, match="budget_biff8_contract"):
+            budget_biff8.parse_snapshot(
+                payload,
+                profile=replace(profile, absent_fields=()),
+                observed_at="2026-10-20T00:00:00Z",
+            )
+    if edition == 2015:
+        positions = (
+            (("unit", 39), ("valid_time_end", 40), ("amount_type", 41), ("app_id", 46))
+            if kind == "expenditure"
+            else (
+                ("unit", 34),
+                ("valid_time_end", 35),
+                ("amount_type", 36),
+                ("app_id", 40),
+            )
+        )
+        assert {(field, f"'Explanation'!B{row}") for field, row in positions} <= {
+            (row["field"], row["source_coordinate"])
+            for row in parsed.tables["field_lineage.parquet"].to_pylist()
+        }
     assert parsed.metadata["rights_state"] == "not_evaluated"
 
 
@@ -164,7 +200,7 @@ def test_source_and_definition_changes_fail_before_admission() -> None:
         )
 
 
-@pytest.mark.parametrize("edition", [2016, 2017, 2019])
+@pytest.mark.parametrize("edition", [2015, 2016, 2017, 2019])
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_biff_budget_operations_and_native_dispatch_retain_all_four_tables(
     kind: str, edition: int, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
