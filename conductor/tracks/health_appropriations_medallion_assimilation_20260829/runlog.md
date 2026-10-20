@@ -8971,3 +8971,11 @@ recorded separately without changing historical pending-state receipts.
 Next2018 pair is eligible for numeric preflight based on existing source edition
 and explicit scale observations. Begin with read-only original/witness checks;
 no promotion until every selected numeric contract and source binding qualifies.
+
+2018 native preflight1 stops at Explanation B4 because the comparator treated
+only xlrd EMPTY as absent, while the existing witness reader explicitly maps
+EMPTY and BLANK to None. Prior preview encodes BLANK as empty string. Source
+bytes and all frozen pins remain unchanged; actual exit1, owner/group absent
+and independent lease free. Correct only this documented representation
+comparison in a new immutable attempt; retain old scripts/controls/failure log.
+No numerical, field, definition, period or source acceptance guard is relaxed.
