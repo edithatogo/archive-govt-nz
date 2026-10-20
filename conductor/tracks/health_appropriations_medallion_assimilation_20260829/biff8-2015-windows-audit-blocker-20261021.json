@@ -1,0 +1,20 @@
+{
+  "branch_protections": "unchanged",
+  "checked_tree": "3ba2b65c0e78afe59af6e85b667bd4eb85a0d0a2",
+  "ci_run": 39494332709,
+  "diagnostic_plan": "temporarily run the unchanged Windows audit before heavy tests and retain its receipt; keep original audit mandatory; remove temporary duplicate after diagnosis",
+  "earlier_gates": "passed",
+  "failed_stage": "audit",
+  "head": "5ec23a70219b29be6c08a8e770aaea15917e8f95",
+  "local_macos_ubuntu_audits": "passed",
+  "package_identity": "not_observable_receipt_not_uploaded",
+  "reported_packages": 1,
+  "reported_vulnerabilities": 9,
+  "schema_version": "archive-govt-nz.health-windows-audit-blocker/v1",
+  "skipped": 36,
+  "terminal": "failure",
+  "test_seconds": 797.72,
+  "tests_passed": 8185,
+  "warnings": 18,
+  "windows_job": 118875311512
+}

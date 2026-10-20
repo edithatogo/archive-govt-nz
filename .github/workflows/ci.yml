@@ -39,6 +39,18 @@ jobs:
       - name: Verify native Windows output pinning
         if: matrix.os == 'windows-latest'
         run: uv run --locked pytest tests/domains/health_appropriations/test_operation_gold_output.py -q --no-cov
+      - name: Diagnose Windows audit before heavy assurance
+        if: matrix.os == 'windows-latest'
+        continue-on-error: true
+        shell: bash
+        run: uv run --locked python tools/supply_chain.py audit
+      - name: Preserve early Windows audit diagnostic
+        if: matrix.os == 'windows-latest' && always() && hashFiles('build/pip-audit.json') != ''
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: early-dependency-audit-${{ matrix.os }}-${{ github.sha }}
+          path: build/pip-audit.json
+          if-no-files-found: error
       - name: Run locked assurance gate
         shell: bash
         run: |
@@ -50,6 +62,13 @@ jobs:
           uv run --locked python tools/check.py \
             --pytest-workers "$pytest_workers" \
             --pytest-distribution loadscope
+      - name: Preserve dependency audit receipt
+        if: always() && hashFiles('build/pip-audit.json') != ''
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: dependency-audit-${{ matrix.os }}-${{ github.sha }}
+          path: build/pip-audit.json
+          if-no-files-found: error
       - name: Export Cobertura coverage
         if: matrix.os == 'ubuntu-latest' && always()
         run: uv run --locked coverage xml -o coverage.xml

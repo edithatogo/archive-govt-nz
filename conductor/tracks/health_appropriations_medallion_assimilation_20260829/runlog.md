@@ -9308,3 +9308,14 @@ inputs. All1,255 original native and277 prior-replay files unchanged. All
 actual owner/group absent and independent free lease verified. Public security
 receipt records the fixed runtime/hash and no output-byte change. Root now
 freezes original harness2 on the final lock/code/documentation tree.
+
+PR739 opened only after original harness2 passed all32 stages on5ec23a70
+(8,207 tests). Current-head cloud review reports no findings; dependency
+review/CodeQL/lint pass. Ubuntu/macOS pass all32 stages. Windows job118875311512
+passed8185 tests/36 skips/18 warnings and all mutations/performance, then
+failed at audit: nine known vulnerabilities in one package. Existing logs
+print only counts; the workflow does not retain that platform's audit JSON.
+Preserved complete failed log/run; the synthetic merge tree equals the checked
+tree, ruling out base divergence. Add bounded early Windows diagnostics and
+per-platform receipt retention to identify the actual package before fixing
+or rerunning blindly. The mandatory original audit and all policy gates stay.

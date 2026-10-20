@@ -2520,3 +2520,5 @@ previous qualification results unchanged; original local timeout preserved.
 - [~] Budget2015 bounded review: preserve the existing profile positional constructor and require all fifteen named v6 source/profile bindings; qualify fresh Bronze replay, all six schemas and exact-tree protected delivery.
 
 - [~] Resolve the newly published certifi advisory GHSA-6q48-6c7w-9gw2 that blocks the original harness: pin the patched2026.10.19 release, preserve TLS verification/audit/branch protections and all prior evidence, verify a one-package lock diff, run fresh native recovery against all qualified output hashes and repeat original final-tree/hosted assurance.
+
+- [~] Diagnose the Windows-only nine-finding audit failure from actual retained package/advisory data. Preserve the failed job and all earlier passing gates, add bounded diagnostic receipt retention, resolve the real dependency/runtime cause and remove temporary duplicate audit work. Keep original validation, audit, TLS and branch protections unchanged; require final exact-head green checks before merge/prune.
