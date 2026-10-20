@@ -8913,3 +8913,25 @@ attempt2 so a late parity assertion cannot be overwritten by an earlier zero
 status. Attempt1's genuine Budget2025 timeout marker remains1 and unchanged.
 All new attempt2 control/output names are distinct; per-source120s and stage900s
 bounds remain explicit. No underlying function, argument or result is replaced.
+
+Native input attempt2 on d586f12b: seven pinned originals rebuilt twice,
+65 file hashes identical. Original default five-source47-file inventory matches
+canonical-recovery-validation-20261017.json exactly; all46 common derivative
+outputs match the expanded builds. Every source stays within120s. Frozen4838
+pins unchanged, owner/group absent, independent lease free, actual exit0.
+
+Combined Gold exploratory probe rebuilds Pharmac1.36s, BEFU20.47s,
+HYEFU47.00s and both MoH profiles0.02s from Bronze. All ten queries return
+failed because manifest4691517 exceeds unchanged4194304byte reader cap.
+The process exit0 records those failures and is not functional success.
+All4840 frozen pins verified after owner/group absence and free lease.
+
+Mixed-cohort regression first fails for absent complete legacy lineage companion.
+Add a sorted v1 companion only in BIFF8-inclusive mixed Gold exports and compact
+inline coordinate references to its lineage IDs. Preserve every legacy link,
+all BIFF8 numeric witnesses and full v3 companions, source row counts and all ten
+product contracts. Existing no-BIFF export path is unchanged. Initial broader
+canonical regression32pass82.51s; final helper refactoring will be retested on
+the frozen producer. Lint and focused basedpyright clean. An attempted mypy
+invocation was unavailable; it is not the repository typing tool and not evidence
+of a typing pass. No gates, coverage or size/time limits were relaxed.

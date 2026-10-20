@@ -41,3 +41,20 @@ inspection owner for selection/inventory/extraction, including header probes.
 It retains structural/formula/cache checks and excludes persistent/path caches.
 All existing source selection identities, field values, row accounting and
 receipt bytes require parity evidence; limits are not raised to mask decoding.
+
+## Combined Gold reader bound
+
+Native seven-source Silver recovery repeats all65 hashes; all47 default-v1
+hashes match the earlier qualified receipt. Full-cohort Gold probe rebuilds its
+Pharmac, BEFU/HYEFU and both MoH inputs from Bronze, but the combined manifest
+is4691517bytes and every product query correctly refuses the unchanged4MiB cap.
+The probe process exits0 because it records returned refusal receipts; this is
+functional failure, never a passing Gold qualification.
+
+For BIFF8-inclusive mixed exports only, retain all legacy canonical v1 field
+links in one fixed-schema, hash-inventoried canonical_input_lineage.parquet,
+sorted by lineage_id. Inline value/amount, unit and period coordinate lookups
+reference that companion and canonical lineage ID. BIFF8 witnesses and full
+v3 companions remain unchanged. Omit companion rows from fact-row drillthrough;
+retain their full output fixity and metadata inventory. Default no-BIFF Gold
+packages must remain byte-identical. Do not raise reader limits or drop products.

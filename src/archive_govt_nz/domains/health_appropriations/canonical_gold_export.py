@@ -104,6 +104,7 @@ _TABLES = {
     "historical_coverage.parquet": "coverage",
     "nominal_budget.parquet": "budget",
     "nominal_revenue.parquet": "revenue",
+    "canonical_input_lineage.parquet": "canonical_input_lineage",
     "biff8_budget.parquet": "biff8_budget",
     "biff8_budget_lineage.parquet": "biff8_budget_lineage",
     "biff8_budget_numeric.parquet": "biff8_budget_numeric",
@@ -323,6 +324,47 @@ def _quality_report(
     }
 
 
+def _add_legacy_lineage_companion(
+    packages: tuple[CanonicalPackageInput, ...], tables: dict[str, pa.Table]
+) -> None:
+    """Keep complete legacy links when the expanded cohort needs compact lookups."""
+    if not any(package.kind in biff8_canonical.KINDS for package in packages):
+        return
+    lineages = [
+        read_verified_canonical_tables(package)[0]["field_lineage"]
+        for package in packages
+        if package.kind not in biff8_canonical.KINDS
+    ]
+    if lineages:
+        tables["canonical_input_lineage"] = pa.concat_tables(lineages).sort_by(
+            [("lineage_id", "ascending")]
+        )
+
+
+def _inline_source_links(
+    package: CanonicalPackageInput, canonical: dict[str, pa.Table], *, compact: bool
+) -> list[dict[str, Any]]:
+    rows = biff8_canonical.gold_inline_lineage(package.kind, canonical["field_lineage"])
+    if compact and package.kind not in biff8_canonical.KINDS:
+        return [
+            row
+            for row in rows
+            if row["field"] in {"amount", "value", "unit", "period_token"}
+        ]
+    return rows
+
+
+def _coordinate_evidence(
+    kind: str, lineage: dict[str, Any], *, compact: bool
+) -> dict[str, Any]:
+    if compact and kind not in biff8_canonical.KINDS:
+        return {
+            "full_lineage_output": "canonical_input_lineage.parquet",
+            "canonical_lineage_id": lineage["lineage_id"],
+        }
+    return biff8_canonical.drillthrough_evidence(kind, lineage)
+
+
 def _source_drillthrough(
     tables: dict[str, pa.Table],
     outputs: dict[str, dict[str, Any]],
@@ -332,9 +374,8 @@ def _source_drillthrough(
     coordinates_by_record: dict[str, list[dict[str, Any]]] = {}
     for package in packages:
         canonical, _receipt = read_verified_canonical_tables(package)
-        for lineage in biff8_canonical.gold_inline_lineage(
-            package.kind, canonical["field_lineage"]
-        ):
+        compact = "canonical_input_lineage" in tables
+        for lineage in _inline_source_links(package, canonical, compact=compact):
             target_id = lineage["target_record_id"]
             locator = lineage["source_locator"]
             coordinate = lineage["source_coordinate"]
@@ -356,7 +397,7 @@ def _source_drillthrough(
                 "source_vintage": lineage["source_vintage"],
                 "rights_state": lineage["rights_state"],
             }
-            item.update(biff8_canonical.drillthrough_evidence(package.kind, lineage))
+            item.update(_coordinate_evidence(package.kind, lineage, compact=compact))
             coordinates_by_record.setdefault(target_id, []).append(item)
     for items in coordinates_by_record.values():
         items.sort(
@@ -372,7 +413,12 @@ def _source_drillthrough(
     for output_name, table_name in sorted(_TABLES.items()):
         table = tables.get(table_name)
         output = outputs.get(output_name)
-        if table is None or output is None or biff8_canonical.is_companion(table_name):
+        if (
+            table is None
+            or output is None
+            or table_name == "canonical_input_lineage"
+            or biff8_canonical.is_companion(table_name)
+        ):
             continue
         for row_index, row in enumerate(table.to_pylist()):
             record_ids = row.get("input_record_ids")
@@ -1494,6 +1540,7 @@ def _build_payloads(
     tables: dict[str, pa.Table],
     products: dict[str, dict[str, Any]],
     query_receipts: list[dict[str, Any]],
+    packages: tuple[CanonicalPackageInput, ...],
 ) -> tuple[
     dict[str, bytes],
     dict[str, Any],
@@ -1502,6 +1549,7 @@ def _build_payloads(
     dict[str, Any],
     dict[str, Any],
 ]:
+    _add_legacy_lineage_companion(packages, tables)
     table_payloads = {
         filename: _table_bytes(tables[key])
         for filename, key in _TABLES.items()
@@ -1608,7 +1656,7 @@ def _export(
         classification_drift_report,
         revision_report,
         cross_source_report,
-    ) = _build_payloads(tables, product_report, query_receipts)
+    ) = _build_payloads(tables, product_report, query_receipts, packages)
     package_markers = _package_markers(query_receipts)
     quality_report = _quality_report(tables, product_report)
     _require(sum(map(len, payloads.values())) <= MAX_OUTPUT_BYTES)
