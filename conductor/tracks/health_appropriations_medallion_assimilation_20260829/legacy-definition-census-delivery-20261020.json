@@ -1,0 +1,62 @@
+{
+  "branch_rules": "active_strict_unchanged",
+  "broader_track_completion": "not_established",
+  "checked_and_merge_tree": "b48bcdc2ed1fe42d060c3288f1511d23d85ec215",
+  "checked_head": "b7c94c24894123e7d3bade23de28b794b66ffb0e",
+  "cleanup": "clean; zero unique commits and patches; local/remote/tracking topic refs absent; main synced",
+  "cloud_review": "unavailable_usage_limit; no cloud pass claimed",
+  "evidence_directory": "legacy-definition-census-20261020/hosted-delivery-731",
+  "hosted": {
+    "macos": {
+      "job": 118289025053,
+      "log_sha256": "b668042782752291940041013645fca988dd1b484aeec837f7506152b49b01ae",
+      "pytest_summary": [
+        "8086",
+        "30",
+        "18",
+        "866.43"
+      ],
+      "stage_count": 32
+    },
+    "ubuntu": {
+      "job": 118289024430,
+      "log_sha256": "9b781f26b708df43ac1e693dfe7b16d81f538a31c4fd589bc153db5f012989cc",
+      "pytest_summary": [
+        "8086",
+        "30",
+        "18",
+        "528.97"
+      ],
+      "stage_count": 32
+    },
+    "windows": {
+      "job": 118289024875,
+      "log_sha256": "d5522a345690bf88c29f676057ef25fd79f5f5a90b6ef04b5749f62e57b3bcca",
+      "pytest_summary": [
+        "8080",
+        "36",
+        "18",
+        "866.63"
+      ],
+      "stage_count": 32
+    }
+  },
+  "merge_commit": "a1846e6357c55be9db67f391cd444fbb9dd31598",
+  "merged_at": "2026-10-19T20:51:26Z",
+  "normal_protected_merge": "verified",
+  "original_assurance_stages_per_platform": 32,
+  "pr": 731,
+  "required_checks": [
+    "Assurance (macos-latest)",
+    "Assurance (ubuntu-latest)",
+    "Assurance (windows-latest)",
+    "CodeQL",
+    "analyze",
+    "codecov/patch",
+    "lint"
+  ],
+  "retained": "primary checkout/runtime/CAS/proofs",
+  "schema_version": "health-delivery-receipt/v1",
+  "self_review_authority": "AGENTS.md solo-maintainer policy; exact-head bounded self-review recorded",
+  "url": "https://github.com/edithatogo/archive-govt-nz/pull/731"
+}

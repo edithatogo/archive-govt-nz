@@ -648,3 +648,15 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [Legacy census source/reference validation](./source-census-budget-legacy-validation-20261020.json)
 
 - [Legacy census original local assurance](./source-census-budget-legacy-assurance-20261020.json)
+
+- [Legacy census protected delivery](./legacy-definition-census-delivery-20261020.json)
+- [BIFF8 stored-value contract](./biff8-stored-value-contract.md)
+
+## Budget2019 BIFF8 source-native foundation
+
+- [Separate stored-value contract](./biff8-stored-value-contract.md)
+- [Stored-integer core qualification](./biff8-core-native-qualification-20261020.json)
+- [2019 source-native Silver and remaining boundaries](./budget-2019-biff8-silver.md)
+- [2019 full native qualification](./budget-2019-biff8-native-qualification-20261020.json)
+
+- [2019 BIFF8 original full assurance and interrupted-run recovery](./budget-2019-biff8-original-assurance-20261020.json)

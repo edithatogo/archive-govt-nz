@@ -85,6 +85,11 @@ def test_real_legacy_reader_retains_bytes_and_discloses_losses(tmp_path: Path) -
     assert result == legacy_inspection.inspect_legacy_workbook(
         source, digest, rows=2, columns=3
     )
+    assert result == legacy_inspection.inspect_legacy_bytes(
+        source.read_bytes(), digest, rows=2, columns=3
+    )
+    with pytest.raises(ValueError, match="legacy_workbook_inspection_failed"):
+        legacy_inspection.inspect_legacy_bytes(source.read_bytes(), "0" * 64)
     assert (
         result["source_sha256"]
         == hashlib.sha256(source.read_bytes()).hexdigest()
