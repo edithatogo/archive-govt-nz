@@ -8863,3 +8863,98 @@ Original full3 on2a36724d terminated124 at the unchanged900s test-stage cap: 582
 Full3 log correction: one observed checkpoint property-test failure preceded the cap; the earlier live no-failure statement was incomplete. Its final trace was not emitted before termination. Exact unchanged contract rerun passes1test in8.34s. Original failure remains recorded; no definitive cause or full local pass is inferred. All tests and timing/health-check settings remain unchanged. Hosted exact-head original three-platform assurance must clear the complete suite.
 
 Supplemental original-command selection (not a full harness substitute) passes conductor,66schemas/56documents,audit,licences,secrets and114component SBOM on ec82b990. Marker0, owner/group absent and independent lease free. Archived original receipts/fixity before subsequent bookkeeping. Original local full remains incomplete; exact-head three-host original32stages are required before merge/prune.
+
+
+2026-10-20 recovery continuation: verified clean synced main ae26a469 and
+created codex/health-biff8-recovery-20261020. Reconciled protected PR733 delivery
+with immutable prior receipts. New M16 task/design precedes implementation.
+Two focused real fictional BIFF8 cases fail with the intended missing
+include_biff8 API (2.95s). A preparation script initially used system Python
+without PyArrow; no repository files were written before that import failure.
+Reran with the existing qualified project runtime. No new runtime adopted.
+
+Initial green run exposed a fixture timestamp variable left behind during
+S105 naming correction; fixed without a scanner suppression. Eight recovery
+contracts pass24.28s, including original v1 repeat/schema, both fictional BIFF
+profiles and missing-last-source preflight refusal. The representative v2 receipt
+comes from a successful fictional rebuild. Its first locator matched pytest's
+current symlink too; selected the actual nonsymlink fixture directory.
+The old five-source baseline helper hit120s after two historical inputs; retain
+that partial attempt and frozen inputs. Postflight confirmed unchanged pins,
+owner/group absent and lease independently free. A per-source bounded executor
+recipe is under advisory review; no actual operation or repository limit changed.
+
+Expanded focused suite22pass39.69s; v2 schema and representative bring validation
+to67schemas/57documents. For actual native proof, retain the failed aggregate
+baseline rather than reuse its partial state. Apply120s to each original's build
+and900s to a complete batch. Native timing observation uses qualified Python3.14
+local monitoring events with no function/argument/result replacement. Underlying
+source operations, flags and repository stage/CLI deadlines remain unchanged.
+
+Native input attempt1 on04ebc827: actual unchanged five-source API with local
+start/return timing (no function/argument/result replacement). Historical2024
+and2025 complete2.195s/1.009s; Budget2025 exceeds the unchanged120s source build
+cap inside repeated openpyxl decoding. No complete batch receipt or success
+claim. All frozen pins unchanged; owner/group absent and independent lease free.
+Add a decoder-count refusal before reusing the existing checked workbook owner
+across legacy selection and extraction. Earlier local-event probe rejected the
+unsupported unwind bit; corrected to runtime-confirmed start/return events.
+
+Legacy decoder-count red test observes7 actual ExcelReader.read calls for one
+plain Budget2025 extraction. Existing exact-byte inspected_workbook ownership
+now spans selection, inventory and extraction; both legacy layout probes borrow
+the owner. No additional cache or parser tolerance is introduced. All116 Budget
+expenditure/revenue/adapter checks pass15.14s, including one real decoder call
+for the new source fixture. Qualify actual retained-source bytes and timing next.
+
+Inspection/recovery regression47pass/2skip18.06s; legacy focused typing is clean.
+The private native controller's exception marker was reviewed and corrected for
+attempt2 so a late parity assertion cannot be overwritten by an earlier zero
+status. Attempt1's genuine Budget2025 timeout marker remains1 and unchanged.
+All new attempt2 control/output names are distinct; per-source120s and stage900s
+bounds remain explicit. No underlying function, argument or result is replaced.
+
+Native input attempt2 on d586f12b: seven pinned originals rebuilt twice,
+65 file hashes identical. Original default five-source47-file inventory matches
+canonical-recovery-validation-20261017.json exactly; all46 common derivative
+outputs match the expanded builds. Every source stays within120s. Frozen4838
+pins unchanged, owner/group absent, independent lease free, actual exit0.
+
+Combined Gold exploratory probe rebuilds Pharmac1.36s, BEFU20.47s,
+HYEFU47.00s and both MoH profiles0.02s from Bronze. All ten queries return
+failed because manifest4691517 exceeds unchanged4194304byte reader cap.
+The process exit0 records those failures and is not functional success.
+All4840 frozen pins verified after owner/group absence and free lease.
+
+Mixed-cohort regression first fails for absent complete legacy lineage companion.
+Add a sorted v1 companion only in BIFF8-inclusive mixed Gold exports and compact
+inline coordinate references to its lineage IDs. Preserve every legacy link,
+all BIFF8 numeric witnesses and full v3 companions, source row counts and all ten
+product contracts. Existing no-BIFF export path is unchanged. Initial broader
+canonical regression32pass82.51s; final helper refactoring will be retested on
+the frozen producer. Lint and focused basedpyright clean. An attempted mypy
+invocation was unavailable; it is not the repository typing tool and not evidence
+of a typing pass. No gates, coverage or size/time limits were relaxed.
+
+Durable native product attempt2 on32a2da51 passes all stages: frozen65focused
+checks, two independent seven-source/API-v2 input builds, fresh Pharmac/BEFU/
+HYEFU/MoH dependencies, both complete Gold exports, all10query checks, two fresh
+Fiscal/Budget analytical chains, and combined metadata export/verification.
+65input files/60Gold files repeat byte-identically; manifest3368303bytes remains
+under4194304, no cap change. Composite15recordsets/1566rows repeats; all1241
+input identities have products. Legacy7063field links retained in companion;
+all48 old Gold Parquet/plots and47 default-v1 source files match prior evidence.
+Actual terminal0, owner66849/group absent, independent lease free, all4848frozen
+pins unchanged. Recovery retained no pre-existing derivative build inputs.
+
+Before this run, the external temporary control directory disappeared during
+launch preparation, before any new owner spawned. Preserve archived receipts
+and distinguish lost temporary logs from durable final logs. Relocated controls
+internally and proof outputs outside temporary directories. Asked Conductor to
+preserve these paths during any cleanup; no Health-specific reply observed.
+Source/CAS, pushed checkpoint and completed archived native receipts survived.
+
+Automatic Conductor self-review records the two source-backed blockers and their
+resolutions with no additional actionable code finding. Original harness and
+protected delivery remain to be recorded on the final pre-PR tree. All source/
+rights/period/comparability/donor holds and full-track gates remain unchanged.

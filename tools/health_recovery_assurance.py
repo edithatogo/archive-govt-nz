@@ -1530,9 +1530,11 @@ def rebuild_vote_health_2025_26_summary_totals(
 
 
 def canonical_inputs(recovery_root: Path) -> tuple[CanonicalPackageInput, ...]:
-    """Rebuild five canonical bindings from originals, never retained Silver."""
+    """Rebuild seven canonical bindings from originals, never retained Silver."""
     return canonical_input_recovery.rebuild_canonical_inputs(
-        ARCHIVE / "bronze-cas" / "sha256", recovery_root / "canonical-source-inputs"
+        ARCHIVE / "bronze-cas" / "sha256",
+        recovery_root / "canonical-source-inputs",
+        include_biff8=True,
     ).packages
 
 
@@ -2292,8 +2294,8 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
         "fresh_input_recovery": {
             "definitions_sha256": input_receipt["definitions_sha256"],
             "definitions": [
-                input_receipt["profiles"][spec.key]["definition"]
-                for spec in canonical_input_recovery.SOURCES
+                input_receipt["profiles"][key]["definition"]
+                for key in sorted(input_receipt["profiles"])
             ],
             "source_inputs": input_receipt["source_inputs"],
             "files": input_files,

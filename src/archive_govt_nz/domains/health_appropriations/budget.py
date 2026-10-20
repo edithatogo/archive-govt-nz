@@ -8,13 +8,11 @@ An interrupted write leaves an incomplete directory which must not be consumed.
 from __future__ import annotations
 
 from decimal import Decimal
-from io import BytesIO
 from typing import TYPE_CHECKING, Any
 
 import pyarrow as pa
-from openpyxl import load_workbook
 
-from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
+from archive_govt_nz.domains.health_appropriations.formats import inspected_workbook
 from archive_govt_nz.domains.health_appropriations.silver import (
     LINEAGE_SCHEMA,
     SILVER_SCHEMA,
@@ -239,15 +237,15 @@ def normalize_budget_workbook(
             observed_at=observed_at,
         ),
     )
-    selection = select_bronze_adapter(
-        payload,
-        source_sha256=expected_sha256,
-        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        registrations=registrations,
-    )
-    inventory = inventory_workbook(BytesIO(payload))
-    workbook = load_workbook(BytesIO(payload), data_only=False, keep_links=True)
-    try:
+    with inspected_workbook(payload) as inspection:
+        selection = select_bronze_adapter(
+            payload,
+            source_sha256=expected_sha256,
+            media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            registrations=registrations,
+        )
+        inventory = inspection.inventory
+        workbook = inspection.workbook
         if _SHEET not in workbook.sheetnames:
             raise ValueError("missing_raw_data_sheet")
         facts, lineage, dispositions = _extract(workbook[_SHEET], context)
@@ -261,8 +259,6 @@ def normalize_budget_workbook(
             for name in workbook.sheetnames
             if name != _SHEET
         ]
-    finally:
-        workbook.close()
     counts = {
         name: sum(row["disposition"] == name for row in dispositions)
         for name in ("normalized", "out_of_scope", "blank", "rejected")

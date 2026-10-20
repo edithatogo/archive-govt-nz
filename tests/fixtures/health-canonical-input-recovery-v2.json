@@ -1,0 +1,244 @@
+{
+  "definitions_sha256": "e4837d9f121e6035affe830dfc881efd43be3722822d570149ca70fdf560456c",
+  "observation_context": "exact_prior_local_tokens_replayed_no_new_capture_attestation",
+  "originals_unchanged": true,
+  "profiles": {
+    "biffbudget-2019": {
+      "canonical_inventory": {
+        "MANIFEST.json": {
+          "bytes": 924,
+          "sha256": "1872cc133f046cb7a38a8ce07ffd6703c1eddbd8f5e4647f8bb32de8f3213972"
+        },
+        "appropriation_fact.parquet": {
+          "bytes": 15332,
+          "sha256": "661d19b94fecb6b264e4f18f0d817fbdac96095c27f975274f88652b6578c5f1"
+        },
+        "field_lineage.parquet": {
+          "bytes": 16554,
+          "sha256": "7dd2c4c9cad635b3498ab44fd00470eb814d06d58775d5b26010a9ae2a961961"
+        },
+        "numeric_evidence.parquet": {
+          "bytes": 7604,
+          "sha256": "9009088a1e869731fca5f74bb4b69d77691d98db69f4a31ec4635c299f3f410f"
+        }
+      },
+      "canonical_marker_sha256": "1872cc133f046cb7a38a8ce07ffd6703c1eddbd8f5e4647f8bb32de8f3213972",
+      "definition": {
+        "key": "biffbudget-2019",
+        "kind": "biff8_budget",
+        "observation_id": "sha256:123143d7afdd2b25aefa7c3d5e2f071ac5e08b2b684d4cd0320688d41c632efd",
+        "observation_token": "2026-10-19T21:46:39.456033+00:00",
+        "sha256": "0a01f85727d195780228492abcd1e848d871c749e037685d372026e46ab63655",
+        "source_locator": "https://www.treasury.govt.nz/sites/default/files/2019-05/b19-expenditure-data.xls",
+        "source_vintage": "Budget-2019"
+      },
+      "raw_inventory": {
+        "MANIFEST.json": {
+          "bytes": 3357,
+          "sha256": "fb562bcc49eb668af814a976d5337c05e0d1ea1ee7463d718749d193f467aa3d"
+        },
+        "budget_facts.parquet": {
+          "bytes": 16031,
+          "sha256": "4a7bec20878f84d696c79ad4a18f6cde7a58937f0cc3c5c22a0c5941458370f3"
+        },
+        "field_lineage.parquet": {
+          "bytes": 8006,
+          "sha256": "12243151251cbcb2ba09c50d10ba875bf192039c34129bbc284b1283cb0d5c6b"
+        },
+        "numeric_evidence.parquet": {
+          "bytes": 7604,
+          "sha256": "9009088a1e869731fca5f74bb4b69d77691d98db69f4a31ec4635c299f3f410f"
+        },
+        "row_dispositions.parquet": {
+          "bytes": 5671,
+          "sha256": "eae77af0d4bed485d08b2a65555283c0cbb202b35c8a95ab6845bf512b2b26c4"
+        }
+      },
+      "raw_manifest_sha256": "fb562bcc49eb668af814a976d5337c05e0d1ea1ee7463d718749d193f467aa3d"
+    },
+    "biffrevenue-2019": {
+      "canonical_inventory": {
+        "MANIFEST.json": {
+          "bytes": 908,
+          "sha256": "865ac7f1aa7ffacb94821ad39fae379655a8cda847084d313433c03eb582f7cb"
+        },
+        "field_lineage.parquet": {
+          "bytes": 14846,
+          "sha256": "19e1789dd85bfb27ef25eea9e5b1c36f3938abbfd798c08838827d421a05c124"
+        },
+        "numeric_evidence.parquet": {
+          "bytes": 7300,
+          "sha256": "f1bafcd6b208321f8ed97e7258a6278871473a564230e1f8abbe6fb4013cb9f1"
+        },
+        "revenue_fact.parquet": {
+          "bytes": 14988,
+          "sha256": "5ae2495c32920028ae33675ab371a4abeebd9a647f0c48d957fab310304ddfb1"
+        }
+      },
+      "canonical_marker_sha256": "865ac7f1aa7ffacb94821ad39fae379655a8cda847084d313433c03eb582f7cb",
+      "definition": {
+        "key": "biffrevenue-2019",
+        "kind": "biff8_revenue",
+        "observation_id": "sha256:0670d648be4e0bc18b6187ec7bd18cc0160032656ee02c37a1e192679244aa5f",
+        "observation_token": "2026-10-19T21:46:39.456033+00:00",
+        "sha256": "ffdd01aef616a84e32da2a62695e0c05e52aa66cf2ccb4728e0d19541b52b2e2",
+        "source_locator": "https://www.treasury.govt.nz/sites/default/files/2019-05/b19-revenue-data.xls",
+        "source_vintage": "Budget-2019"
+      },
+      "raw_inventory": {
+        "MANIFEST.json": {
+          "bytes": 2808,
+          "sha256": "21714f5f269d350292877a968cdca865da1c1e9367d2764c68e9f5c9c89e4422"
+        },
+        "budget_facts.parquet": {
+          "bytes": 12153,
+          "sha256": "d4b34eb322e482f28faa4c0afd9994a7eabf1ba4ef18b0c105e2e1877e6b9eab"
+        },
+        "field_lineage.parquet": {
+          "bytes": 7137,
+          "sha256": "0b9c5191f26182cb7277bb74065a3ea8ef9e2a79cd0a342d7bb9973d818e5493"
+        },
+        "numeric_evidence.parquet": {
+          "bytes": 7300,
+          "sha256": "f1bafcd6b208321f8ed97e7258a6278871473a564230e1f8abbe6fb4013cb9f1"
+        },
+        "row_dispositions.parquet": {
+          "bytes": 4431,
+          "sha256": "11086fe72a584840f6a67cf381a889d3504bdd0dd7d19d2ff63f5d58d78a4267"
+        }
+      },
+      "raw_manifest_sha256": "21714f5f269d350292877a968cdca865da1c1e9367d2764c68e9f5c9c89e4422"
+    },
+    "budget-2001": {
+      "canonical_inventory": {
+        "LOCAL_BUDGET.json": {
+          "bytes": 80,
+          "sha256": "dde8ad5bab64f5f2b9d5ebc46501f7783f3557f319ff4dcae1f17c78ce94a5a4"
+        },
+        "facts.parquet": {
+          "bytes": 15,
+          "sha256": "ad675291069613038b456819150f72f89b0dc1100e961f8c82b786ff1893b50f"
+        },
+        "lineage_accounting.jsonl": {
+          "bytes": 45,
+          "sha256": "fc134c4dc6fc9ea2f17b3185878590bc92c9091cf9b441d11295950be27fdfe7"
+        }
+      },
+      "canonical_marker_sha256": "dde8ad5bab64f5f2b9d5ebc46501f7783f3557f319ff4dcae1f17c78ce94a5a4",
+      "definition": {
+        "key": "budget-2001",
+        "kind": "budget",
+        "observation_id": "sha256:cc87769881dd78ac5728d7e098c5a5428b8faf090844eba9bd5ffd56dfef1898",
+        "observation_token": "2001-01-01T00:00:00Z",
+        "sha256": "ad675291069613038b456819150f72f89b0dc1100e961f8c82b786ff1893b50f",
+        "source_locator": "budget.xlsx",
+        "source_vintage": "fixture-budget"
+      },
+      "raw_inventory": {
+        "MANIFEST.json": {
+          "bytes": 196,
+          "sha256": "ed47279d13c47390cd90a652c8894f3a747331d3650f1658a0ed34664bf87031"
+        },
+        "facts.parquet": {
+          "bytes": 15,
+          "sha256": "ad675291069613038b456819150f72f89b0dc1100e961f8c82b786ff1893b50f"
+        }
+      },
+      "raw_manifest_sha256": "ed47279d13c47390cd90a652c8894f3a747331d3650f1658a0ed34664bf87031"
+    },
+    "historical-2001": {
+      "canonical_inventory": {
+        "LOCAL_CANONICAL.json": {
+          "bytes": 80,
+          "sha256": "e74c0fed936934196014d97f9bff405317687a9aefd8f6bfc3ac5c5070b10934"
+        },
+        "facts.parquet": {
+          "bytes": 19,
+          "sha256": "0003797f95f0fd44e46dad7e77a48ba449c4bef0332ee62459751c2eb30b2ec8"
+        }
+      },
+      "canonical_marker_sha256": "e74c0fed936934196014d97f9bff405317687a9aefd8f6bfc3ac5c5070b10934",
+      "definition": {
+        "key": "historical-2001",
+        "kind": "historical",
+        "observation_id": "sha256:8fe59cfcbde8cc2b3ca68ebd3ecb7af3d8396e0ef5124de005c35031a5dddcc0",
+        "observation_token": "2001-01-01T00:00:00Z",
+        "sha256": "0003797f95f0fd44e46dad7e77a48ba449c4bef0332ee62459751c2eb30b2ec8",
+        "source_locator": "historical.xlsx",
+        "source_vintage": "fixture-historical"
+      },
+      "raw_inventory": {
+        "MANIFEST.json": {
+          "bytes": 204,
+          "sha256": "6acb82665776b182db43f23efc617e00bd125e2d379784cfd4da23ea65f69866"
+        },
+        "facts.parquet": {
+          "bytes": 19,
+          "sha256": "0003797f95f0fd44e46dad7e77a48ba449c4bef0332ee62459751c2eb30b2ec8"
+        }
+      },
+      "raw_manifest_sha256": "6acb82665776b182db43f23efc617e00bd125e2d379784cfd4da23ea65f69866"
+    },
+    "revenue-2001": {
+      "canonical_inventory": {
+        "LOCAL_REVENUE.json": {
+          "bytes": 80,
+          "sha256": "3826da8c1b99d9b2689e61f4417d21f3f27b7f49ffe167eec78cb57e87dd78fd"
+        },
+        "facts.parquet": {
+          "bytes": 16,
+          "sha256": "604176eb9da2c8a1e2db8d3a4291aa883613caa580db854fb49b379dc3a7f674"
+        }
+      },
+      "canonical_marker_sha256": "3826da8c1b99d9b2689e61f4417d21f3f27b7f49ffe167eec78cb57e87dd78fd",
+      "definition": {
+        "key": "revenue-2001",
+        "kind": "revenue",
+        "observation_id": "sha256:62111f029ee0cb93273f6bee42f86f7bed2fbd8147c329bc1edf96ca255632be",
+        "observation_token": "2001-01-01T00:00:00Z",
+        "sha256": "604176eb9da2c8a1e2db8d3a4291aa883613caa580db854fb49b379dc3a7f674",
+        "source_locator": "revenue.xlsx",
+        "source_vintage": "fixture-revenue"
+      },
+      "raw_inventory": {
+        "MANIFEST.json": {
+          "bytes": 198,
+          "sha256": "15b290c9c6f999725d530aa40fb6fbdea8ee33c3800995bcfbbc7e68692c16aa"
+        },
+        "facts.parquet": {
+          "bytes": 16,
+          "sha256": "604176eb9da2c8a1e2db8d3a4291aa883613caa580db854fb49b379dc3a7f674"
+        }
+      },
+      "raw_manifest_sha256": "15b290c9c6f999725d530aa40fb6fbdea8ee33c3800995bcfbbc7e68692c16aa"
+    }
+  },
+  "publication": "not_performed",
+  "retained_derivatives_consumed": false,
+  "rights": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-canonical-input-recovery/v2",
+  "scope": "pinned_originals_to_fresh_raw_and_canonical",
+  "source_inputs": {
+    "biffbudget-2019": {
+      "bytes": 6656,
+      "sha256": "0a01f85727d195780228492abcd1e848d871c749e037685d372026e46ab63655"
+    },
+    "biffrevenue-2019": {
+      "bytes": 5632,
+      "sha256": "ffdd01aef616a84e32da2a62695e0c05e52aa66cf2ccb4728e0d19541b52b2e2"
+    },
+    "budget-2001": {
+      "bytes": 15,
+      "sha256": "ad675291069613038b456819150f72f89b0dc1100e961f8c82b786ff1893b50f"
+    },
+    "historical-2001": {
+      "bytes": 19,
+      "sha256": "0003797f95f0fd44e46dad7e77a48ba449c4bef0332ee62459751c2eb30b2ec8"
+    },
+    "revenue-2001": {
+      "bytes": 16,
+      "sha256": "604176eb9da2c8a1e2db8d3a4291aa883613caa580db854fb49b379dc3a7f674"
+    }
+  },
+  "status": "written_local"
+}

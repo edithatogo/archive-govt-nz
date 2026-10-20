@@ -19,7 +19,7 @@ from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     LossAccounting,
     preserved_only,
 )
-from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
+from archive_govt_nz.domains.health_appropriations.formats import inspected_workbook
 from archive_govt_nz.domains.health_appropriations.historical import _number_tokens
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
     source_context,
@@ -92,28 +92,28 @@ class BudgetRevenueAdapter:
             return False
         _, _, definitions = _PROFILE[self.source_vintage]
         try:
-            inventory_workbook(BytesIO(bronze))
-            workbook = load_workbook(
-                BytesIO(bronze), data_only=False, read_only=False, keep_links=False
-            )
-        except BadZipFile, OSError, ValueError, KeyError, TypeError, EOFError:
+            with inspected_workbook(bronze) as inspection:
+                workbook = inspection.workbook
+                if not {"Raw Data", "Explanation", "Intro"} <= set(workbook.sheetnames):
+                    return False
+                raw = workbook["Raw Data"]
+                headers = tuple(cell.value for cell in next(raw.iter_rows(max_row=1)))
+                if headers != tuple(budget_revenue.FIELDS):
+                    return False
+                budget_revenue._metadata(  # noqa: SLF001 - same reviewed profile.
+                    workbook, hashlib.sha256(bronze).hexdigest(), definitions
+                )
+                return True
+        except (
+            BadZipFile,
+            OSError,
+            ValueError,
+            KeyError,
+            TypeError,
+            EOFError,
+            StopIteration,
+        ):
             return False
-        try:
-            if not {"Raw Data", "Explanation", "Intro"} <= set(workbook.sheetnames):
-                return False
-            raw = workbook["Raw Data"]
-            headers = tuple(cell.value for cell in next(raw.iter_rows(max_row=1)))
-            if headers != tuple(budget_revenue.FIELDS):
-                return False
-            budget_revenue._metadata(  # noqa: SLF001 - same reviewed profile contract
-                workbook, hashlib.sha256(bronze).hexdigest(), definitions
-            )
-        except ValueError, StopIteration:
-            return False
-        else:
-            return True
-        finally:
-            workbook.close()
 
     def extract(self, bronze: bytes, *, source_sha256: str) -> AdapterOutput:
         """Return revenue facts, source-row dispositions, and field lineage."""

@@ -668,3 +668,7 @@ Producer qualification/implementation and dated census checkpoints retain their 
 
 - [BIFF8 original local assurance observations](./biff8-canonical-gold-original-assurance-20261020.json)
 - [BIFF8 pre-PR assurance receipt](./biff8-canonical-gold-prepr-20261020.json)
+
+- [BIFF8-inclusive recovery contract](biff8-recovery-contract.md)
+- [BIFF8-inclusive native recovery receipt](biff8-recovery-native-20261020.json)
+- [BIFF8-inclusive recovery review](biff8-recovery-review-20261020.md)

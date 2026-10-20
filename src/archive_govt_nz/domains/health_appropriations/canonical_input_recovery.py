@@ -9,6 +9,9 @@ from dataclasses import asdict, dataclass
 from typing import TYPE_CHECKING, Any
 
 from archive_govt_nz.domains.health_appropriations import (
+    biff8_canonical,
+    budget_biff8,
+    budget_biff8_adapter,
     budget_revenue_canonical_export,
 )
 from archive_govt_nz.domains.health_appropriations.budget import (
@@ -38,7 +41,9 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 VERSION = "archive-govt-nz.health-canonical-input-recovery/v1"
+BIFF8_VERSION = "archive-govt-nz.health-canonical-input-recovery/v2"
 MAX_SOURCES = 5
+MAX_BIFF8_SOURCES = 7
 MAX_OUTPUT_FILES = 16
 MAX_SOURCE_BYTES = 64 * 1024 * 1024
 MAX_OUTPUT_BYTES = 128 * 1024 * 1024
@@ -116,6 +121,29 @@ SOURCES = (
 )
 
 
+# Exact observation identities from the admitted Budget2019 source pair.
+BIFF8_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2019",
+        "biff8_budget",
+        "30602fd66ec1f4fb7d0b47f2766f6560c4d22e90c11e994fba3e404e29ceab48",
+        "https://www.treasury.govt.nz/sites/default/files/2019-05/b19-expenditure-data.xls",
+        "Budget-2019",
+        "2026-10-19T21:46:39.456033+00:00",
+        "sha256:4f774ce3135942997d4daa8e2db5c8ac4b5776cb145b554f230580b813ae3215",
+    ),
+    SourceDefinition(
+        "biffrevenue-2019",
+        "biff8_revenue",
+        "d927995dd91eda6fdfb4020eb2a3e91871a24d5144e837e7801b6725e5f33df8",
+        "https://www.treasury.govt.nz/sites/default/files/2019-05/b19-revenue-data.xls",
+        "Budget-2019",
+        "2026-10-19T21:46:39.456033+00:00",
+        "sha256:77275d0dc352a785d9778e0e0498be8a19573de52391008e4d8461bd56d85f6a",
+    ),
+)
+
+
 def _require(condition: object) -> None:
     if not condition:
         message = "canonical_input_recovery_contract"
@@ -128,16 +156,28 @@ def _json(value: object) -> bytes:
     ).encode()
 
 
-def _sources(cas: Path) -> dict[str, dict[str, Any]]:
+def _biff_profile(spec: SourceDefinition) -> budget_biff8.BiffBudgetProfile:
+    profile = budget_biff8.PROFILES[biff8_canonical.KINDS[spec.kind]]
     _require(
-        0 < len(SOURCES) <= MAX_SOURCES
-        and len({s.key for s in SOURCES}) == len(SOURCES)
+        budget_biff8_adapter.source_binding(
+            profile.profile_id, spec.source_vintage, spec.source_locator, spec.sha256
+        )
+    )
+    return profile
+
+
+def _sources(
+    cas: Path, definitions: tuple[SourceDefinition, ...]
+) -> dict[str, dict[str, Any]]:
+    _require(
+        0 < len(definitions) <= MAX_BIFF8_SOURCES
+        and len({s.key for s in definitions}) == len(definitions)
     )
     originals = {}
-    for spec in SOURCES:
+    for spec in definitions:
         _require(
             re.fullmatch(r"[a-z]+-[0-9]{4}", spec.key) is not None
-            and spec.kind in {"historical", "budget", "revenue"}
+            and spec.kind in {"historical", "budget", "revenue", *biff8_canonical.KINDS}
             and source_context(
                 spec.sha256,
                 spec.source_locator,
@@ -146,6 +186,8 @@ def _sources(cas: Path) -> dict[str, dict[str, Any]]:
             )["source_observation_id"]
             == spec.observation_id
         )
+        if spec.kind in biff8_canonical.KINDS:
+            _biff_profile(spec)
         source = cas / spec.sha256[:2] / spec.sha256
         _require(not source.is_symlink())
         payload = verified_snapshot(source, spec.sha256, max_bytes=MAX_SOURCE_BYTES)
@@ -169,9 +211,51 @@ def _inventory(root: Path) -> dict[str, dict[str, Any]]:
     return result
 
 
+def _build_biff(
+    spec: SourceDefinition, cas: Path, output: Path
+) -> tuple[CanonicalPackageInput, dict[str, Any]]:
+    profile = _biff_profile(spec)
+    source = cas / spec.sha256[:2] / spec.sha256
+    raw = output / ("raw-" + spec.key)
+    canonical = output / ("canonical-" + spec.key)
+    budget_biff8_adapter.normalize(
+        source,
+        raw,
+        profile=profile.profile_id,
+        expected_sha256=spec.sha256,
+        source_locator=spec.source_locator,
+        source_vintage=spec.source_vintage,
+        observed_at=spec.observation_token,
+    )
+    raw_inventory = _inventory(raw)
+    raw_pin = raw_inventory["MANIFEST.json"]["sha256"]
+    biff8_canonical.export_canonical(
+        raw,
+        raw_pin,
+        source,
+        profile.kind,
+        canonical,
+        write=True,
+        observed_at=spec.observation_token,
+    )
+    canonical_inventory = _inventory(canonical)
+    canonical_pin = canonical_inventory["MANIFEST.json"]["sha256"]
+    return CanonicalPackageInput(
+        spec.kind, canonical, canonical_pin, source, raw, raw_pin
+    ), {
+        "definition": asdict(spec),
+        "raw_manifest_sha256": raw_pin,
+        "canonical_marker_sha256": canonical_pin,
+        "raw_inventory": raw_inventory,
+        "canonical_inventory": canonical_inventory,
+    }
+
+
 def _build(
     spec: SourceDefinition, cas: Path, output: Path
 ) -> tuple[CanonicalPackageInput, dict[str, Any]]:
+    if spec.kind in biff8_canonical.KINDS:
+        return _build_biff(spec, cas, output)
     source = cas / spec.sha256[:2] / spec.sha256
     raw, canonical = output / ("raw-" + spec.key), output / ("canonical-" + spec.key)
     normalizer = {
@@ -214,13 +298,26 @@ def _build(
     }
 
 
-def rebuild_canonical_inputs(source_cas: Path, output: Path) -> RebuiltCanonicalInputs:
+def rebuild_canonical_inputs(
+    source_cas: Path, output: Path, *, include_biff8: bool = False
+) -> RebuiltCanonicalInputs:
     """Build only exclusive fresh inputs; retain partial attempts on failure.
 
     Trusted local paths and fixed source definitions are required. Existing
     Silver/canonical packages are not read. No capture, rights or publication
     authority is inferred, and the function never overwrites or resumes outputs.
     """
+    _require(
+        type(include_biff8) is bool
+        and 0 < len(SOURCES) <= MAX_SOURCES
+        and all(spec.kind in {"historical", "budget", "revenue"} for spec in SOURCES)
+    )
+    if include_biff8:
+        _require(
+            len(BIFF8_SOURCES) == len(biff8_canonical.KINDS)
+            and {s.kind for s in BIFF8_SOURCES} == set(biff8_canonical.KINDS)
+        )
+    selected = (*SOURCES, *BIFF8_SOURCES) if include_biff8 else SOURCES
     _require(not output.exists() and not output.is_symlink())
     _require(source_cas.is_dir() and not source_cas.is_symlink())
     target, original_root = output.resolve(), source_cas.resolve()
@@ -228,19 +325,19 @@ def rebuild_canonical_inputs(source_cas: Path, output: Path) -> RebuiltCanonical
         not target.is_relative_to(original_root)
         and not original_root.is_relative_to(target)
     )
-    before = _sources(source_cas)
-    definitions = _json([asdict(spec) for spec in SOURCES])
+    before = _sources(source_cas, selected)
+    definitions = _json([asdict(spec) for spec in selected])
     output.mkdir(parents=True, exist_ok=False)
-    products = [_build(spec, source_cas, output) for spec in SOURCES]
-    _require(before == _sources(source_cas))
+    products = [_build(spec, source_cas, output) for spec in selected]
+    _require(before == _sources(source_cas, selected))
     receipt = {
-        "schema_version": VERSION,
+        "schema_version": BIFF8_VERSION if include_biff8 else VERSION,
         "status": "written_local",
         "scope": "pinned_originals_to_fresh_raw_and_canonical",
         "definitions_sha256": hashlib.sha256(definitions).hexdigest(),
         "source_inputs": before,
         "profiles": {
-            spec.key: result[1] for spec, result in zip(SOURCES, products, strict=True)
+            spec.key: result[1] for spec, result in zip(selected, products, strict=True)
         },
         "retained_derivatives_consumed": False,
         "observation_context": (

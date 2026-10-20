@@ -5,13 +5,11 @@ from __future__ import annotations
 import hashlib
 from datetime import date
 from decimal import Context, localcontext
-from io import BytesIO
 from typing import TYPE_CHECKING, Any, cast
 
 import pyarrow as pa
-from openpyxl import load_workbook
 
-from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
+from archive_govt_nz.domains.health_appropriations.formats import inspected_workbook
 from archive_govt_nz.domains.health_appropriations.historical import _number_tokens
 from archive_govt_nz.domains.health_appropriations.silver import LINEAGE_SCHEMA
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
@@ -548,19 +546,19 @@ def normalize_budget_revenue(  # noqa: PLR0913 - source observation fields are e
         "source_vintage": source_vintage,
         "observed_at": observed_at,
     }
-    selection = select_bronze_adapter(
-        payload,
-        source_sha256=expected_sha256,
-        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        registrations=(
-            budget_expenditure_registration(**adapter_context),
-            budget_revenue_registration(**adapter_context),
-        ),
-    )
-    inventory = inventory_workbook(BytesIO(payload))
-    tokens = _number_tokens(payload)
-    book = load_workbook(BytesIO(payload), data_only=False, keep_links=False)
-    try:
+    with inspected_workbook(payload) as inspection:
+        selection = select_bronze_adapter(
+            payload,
+            source_sha256=expected_sha256,
+            media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            registrations=(
+                budget_expenditure_registration(**adapter_context),
+                budget_revenue_registration(**adapter_context),
+            ),
+        )
+        inventory = inspection.inventory
+        tokens = _number_tokens(payload)
+        book = inspection.workbook
         notice = _metadata(book, expected_sha256, definitions)
         with localcontext(Context(prec=50)):
             facts, lineage, dispositions = _extract(
@@ -584,8 +582,6 @@ def normalize_budget_revenue(  # noqa: PLR0913 - source observation fields are e
             for name in book.sheetnames
             if name != "Raw Data"
         ]
-    finally:
-        book.close()
     counts = {
         state: sum(r["disposition"] == state for r in dispositions)
         for state in ("normalized", "out_of_scope", "blank", "rejected")

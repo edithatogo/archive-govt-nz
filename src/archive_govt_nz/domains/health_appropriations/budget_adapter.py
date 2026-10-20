@@ -19,7 +19,10 @@ from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     preserved_only,
 )
 from archive_govt_nz.domains.health_appropriations.budget import _extract, _headers
-from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
+from archive_govt_nz.domains.health_appropriations.formats import (
+    inspected_workbook,
+    inventory_workbook,
+)
 from archive_govt_nz.domains.health_appropriations.source_dimensions import (
     budget_source_dimensions,
 )
@@ -58,22 +61,13 @@ class BudgetExpenditureAdapter:
         }:
             return False
         try:
-            inventory_workbook(BytesIO(bronze))
-            workbook = load_workbook(
-                BytesIO(bronze), read_only=False, data_only=False, keep_links=True
-            )
+            with inspected_workbook(bronze) as inspection:
+                if _SHEET not in inspection.workbook.sheetnames:
+                    return False
+                _headers(inspection.workbook[_SHEET])
+                return True
         except BadZipFile, OSError, ValueError, KeyError, TypeError, EOFError:
             return False
-        try:
-            if _SHEET not in workbook.sheetnames:
-                return False
-            _headers(workbook[_SHEET])
-        except ValueError:
-            return False
-        else:
-            return True
-        finally:
-            workbook.close()
 
     def extract(self, bronze: bytes, *, source_sha256: str) -> AdapterOutput:
         """Return typed records, field lineage, and losses from the profile."""

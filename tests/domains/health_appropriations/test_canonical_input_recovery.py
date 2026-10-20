@@ -8,10 +8,15 @@ from dataclasses import replace
 from pathlib import Path
 
 import pytest
-from jsonschema import Draft202012Validator
+from jsonschema import Draft202012Validator, ValidationError
+from tests.domains.health_appropriations.test_budget_biff8 import _fixture
 
+from archive_govt_nz.domains.health_appropriations import budget_biff8
 from archive_govt_nz.domains.health_appropriations import (
     canonical_input_recovery as recovery,
+)
+from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
+    read_verified_canonical_tables,
 )
 from archive_govt_nz.domains.health_appropriations.workbook_common import source_context
 
@@ -113,7 +118,8 @@ def sources(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> tuple[Path, list
 
 def test_locked_definitions_preserve_recorded_observation_identity() -> None:
     assert len(recovery.SOURCES) == 5
-    for spec in recovery.SOURCES:
+    assert len(recovery.BIFF8_SOURCES) == 2
+    for spec in (*recovery.SOURCES, *recovery.BIFF8_SOURCES):
         assert (
             source_context(
                 spec.sha256,
@@ -208,3 +214,100 @@ def test_interruption_preserves_partial_attempt_without_completion_receipt(
     assert list(output.rglob("LOCAL_CANONICAL.json"))
     assert not (output / "RECOVERY_INPUTS.json").exists()
     assert before == inventory(cas)
+
+
+def _biff_sources(cas: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    definitions = []
+    observed_at = "2026-10-19T21:46:39.456033+00:00"
+    for native, kind, key in (
+        ("expenditure", "biff8_budget", "biffbudget-2019"),
+        ("revenue", "biff8_revenue", "biffrevenue-2019"),
+    ):
+        payload, profile = _fixture(native)
+        monkeypatch.setitem(budget_biff8.PROFILES, native, profile)
+        path = cas / profile.source_sha256[:2] / profile.source_sha256
+        path.parent.mkdir(exist_ok=True)
+        path.write_bytes(payload)
+        definitions.append(
+            recovery.SourceDefinition(
+                key,
+                kind,
+                profile.source_sha256,
+                profile.source_locator,
+                "Budget-2019",
+                observed_at,
+                source_context(
+                    profile.source_sha256,
+                    profile.source_locator,
+                    "Budget-2019",
+                    observed_at,
+                )["source_observation_id"],
+            )
+        )
+    monkeypatch.setattr(recovery, "BIFF8_SOURCES", tuple(definitions), raising=False)
+
+
+def test_explicit_biff_recovery_repeats_from_bronze_with_complete_witnesses(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, sources: tuple[Path, list[str]]
+) -> None:
+    cas, _calls = sources
+    _biff_sources(cas, monkeypatch)
+    before = inventory(cas)
+    first = recovery.rebuild_canonical_inputs(
+        cas, tmp_path / "first", include_biff8=True
+    )
+    second = recovery.rebuild_canonical_inputs(
+        cas, tmp_path / "second", include_biff8=True
+    )
+    assert first.receipt == second.receipt
+    assert inventory(tmp_path / "first") == inventory(tmp_path / "second")
+    assert (
+        first.receipt["schema_version"]
+        == "archive-govt-nz.health-canonical-input-recovery/v2"
+    )
+    schema = json.loads(
+        (
+            Path(__file__).parents[3]
+            / "schemas/health-canonical-input-recovery-v2.schema.json"
+        ).read_bytes()
+    )
+    Draft202012Validator(schema).validate(first.receipt)
+    missing_witnesses = json.loads(json.dumps(first.receipt))
+    del missing_witnesses["profiles"]["biffbudget-2019"]["raw_inventory"][
+        "numeric_evidence.parquet"
+    ]
+    with pytest.raises(ValidationError):
+        Draft202012Validator(schema).validate(missing_witnesses)
+    assert len(first.packages) == 5
+    for package in first.packages:
+        if package.kind.startswith("biff8_"):
+            tables, _receipt = read_verified_canonical_tables(package)
+            fact_name = (
+                "appropriation_fact"
+                if package.kind == "biff8_budget"
+                else "revenue_fact"
+            )
+            fact = tables[fact_name].to_pylist()[0]
+            assert fact["value_token"] is None
+            assert fact["value_basis"] == "biff8_stored_integer/v1"
+            assert (
+                fact["numeric_evidence_id"]
+                in tables["numeric_evidence"]["numeric_evidence_id"].to_pylist()
+            )
+            assert package.root.is_relative_to(tmp_path / "first")
+            assert package.raw_root.is_relative_to(tmp_path / "first")
+    assert first.receipt["retained_derivatives_consumed"] is False
+    assert before == inventory(cas)
+
+
+def test_missing_last_biff_original_fails_before_any_derivative(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, sources: tuple[Path, list[str]]
+) -> None:
+    cas, calls = sources
+    _biff_sources(cas, monkeypatch)
+    spec = recovery.BIFF8_SOURCES[-1]
+    (cas / spec.sha256[:2] / spec.sha256).unlink()
+    with pytest.raises(FileNotFoundError):
+        recovery.rebuild_canonical_inputs(cas, tmp_path / "missing", include_biff8=True)
+    assert not (tmp_path / "missing").exists()
+    assert calls == []

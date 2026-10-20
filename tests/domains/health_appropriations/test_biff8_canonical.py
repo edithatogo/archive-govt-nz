@@ -10,6 +10,7 @@ from typing import TYPE_CHECKING
 import pyarrow.parquet as pq
 import pytest
 from tests.domains.health_appropriations.test_budget_biff8 import _fixture
+from tests.domains.health_appropriations.test_canonical_consumer import _package
 
 from archive_govt_nz.domains.health_appropriations import (
     biff8_canonical,
@@ -179,3 +180,66 @@ def test_rehashed_silver_tampering_fails_original_replay(
             "revenue",
             observed_at="2026-10-20T00:00:00Z",
         )
+
+
+def test_mixed_gold_retains_full_legacy_lineage_in_fixed_companion(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    original, silver, pin, _ = _source(tmp_path, monkeypatch, "expenditure")
+    canonical = tmp_path / "canonical"
+    biff8_canonical.export_canonical(
+        silver,
+        pin,
+        original,
+        "expenditure",
+        canonical,
+        write=True,
+        observed_at="2026-10-20T00:00:00Z",
+    )
+    biff = CanonicalPackageInput(
+        "biff8_budget",
+        canonical,
+        _pin(canonical / "MANIFEST.json"),
+        original,
+        silver,
+        pin,
+    )
+    legacy = _package(tmp_path / "legacy")
+    expected, _ = read_verified_canonical_tables(legacy)
+    output = tmp_path / "mixed"
+    receipt = canonical_gold_export.export_canonical_gold(
+        (legacy, biff), output, write=True
+    )
+    companion = output / "canonical_input_lineage.parquet"
+    assert pq.read_table(companion).equals(
+        expected["field_lineage"].sort_by([("lineage_id", "ascending")]),
+        check_metadata=True,
+    )
+    assert receipt["outputs"][companion.name]["sha256"] == _pin(companion)
+    legacy_ids = set(expected["field_lineage"]["target_record_id"].to_pylist())
+    coordinates = [
+        c
+        for r in receipt["source_drillthrough"]["records"]
+        if r["input_record_id"] in legacy_ids
+        for c in r["source_coordinates"]
+    ]
+    assert coordinates
+    assert all(
+        c["field"] in {"amount", "value", "unit", "period_token"} for c in coordinates
+    )
+    assert all(c["full_lineage_output"] == companion.name for c in coordinates)
+    assert {c["canonical_lineage_id"] for c in coordinates} <= set(
+        expected["field_lineage"]["lineage_id"].to_pylist()
+    )
+    for product in ("budget", "biff8_budget"):
+        assert (
+            canonical_gold_queries.query_canonical_gold(
+                output, _pin(output / "MANIFEST.json"), product=product
+            )["status"]
+            == "verified"
+        )
+    repeated = tmp_path / "mixed_again"
+    canonical_gold_export.export_canonical_gold((legacy, biff), repeated, write=True)
+    assert {p.name: _pin(p) for p in output.iterdir()} == {
+        p.name: _pin(p) for p in repeated.iterdir()
+    }
