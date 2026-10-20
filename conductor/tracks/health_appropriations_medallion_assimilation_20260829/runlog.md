@@ -8854,3 +8854,5 @@ recovery fixture counts8to10 products/13to15metadata recordsets; update those
 explicit inventories. Actual CLI30s timeout and Hypothesis1s slow-generation
 health check occurred under independently observed concurrent host CPU load;
 retain unchanged deadlines and rerun those exact contracts before fresh full2.
+
+All157 focused repair checks pass94.88s, including unchanged30s actual CLI and unsuppressed Hypothesis health checks. Native3 requalifies the closed registry and original source pair. Start a fresh original full2 with unchanged gates, two workers and frozen inputs.

@@ -663,3 +663,5 @@ Producer qualification/implementation and dated census checkpoints retain their 
 
 - [BIFF8 canonical and Gold contract](./biff8-canonical-gold-contract.md)
 - [BIFF8 native canonical and Gold qualification](./biff8-canonical-gold-native-20261020.json)
+
+- [BIFF8 closed-registry native requalification](./biff8-canonical-gold-native-20261020-v2.json)

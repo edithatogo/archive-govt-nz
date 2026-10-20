@@ -3443,3 +3443,5 @@ Budget2019 BIFF8 native qualification: [machine receipt](./budget-2019-biff8-nat
 
 
 2026-10-20 BIFF8 canonical/Gold native2: producer00faaa1d,319/63facts,9495field links and1784numeric witnesses. Both canonical packages retain native1 hashes; all11Gold files repeat exactly, both named queries verified. Manifest1,401,950bytes under unchanged4MiB cap. All4834frozen pins unchanged and launch lease independently free. See biff8-canonical-gold-native-20261020.json; full assurance and hosted delivery pending.
+
+Native3: requalified the closed v3 producer after the original full1 registry finding. Both original-source canonical packages and combined Gold retain all previous output hashes; complete row and witness evidence remains unchanged. See biff8-canonical-gold-native-20261020-v2.json. Fresh original full2 pending.
