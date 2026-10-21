@@ -107,6 +107,13 @@ VALIDATION_PAIRS = (
         / "health-canonical-input-recovery-v8.json",
     ),
     (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v9.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v9.json",
+    ),
+    (
         REPOSITORY_ROOT
         / "schemas"
         / "legislation-donor-bundle-verification-v1.schema.json",
