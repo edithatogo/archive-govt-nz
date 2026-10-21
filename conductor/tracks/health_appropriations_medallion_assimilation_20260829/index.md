@@ -728,3 +728,9 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [Budget2009 native source/interface qualification](budget-2009-biff8-native-qualification-20261021.json)
 - [Budget2009 complete recovery and Gold evidence](biff8-2009-products-native-20261021.json)
 - [Budget2009 bounded review](biff8-2009-review-20261021.json)
+
+- [Budget2007–2008 source-to-products contract](biff8-2007-2008-contract.md)
+- [Budget2007–2008 census/numeric preflight](budget-2007-2008-biff8-preflight-20261022.json)
+- [Budget2007–2008 native source/interface qualification](budget-2007-2008-biff8-native-qualification-20261022.json)
+- [Budget2007–2008 complete recovery/Gold evidence](biff8-2007-2008-products-native-20261022.json)
+- [Budget2007–2008 bounded review](biff8-2007-2008-review-20261022.json)
