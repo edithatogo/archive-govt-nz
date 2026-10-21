@@ -714,3 +714,11 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [Budget2011 native source/interface qualification](budget-2011-biff8-native-qualification-20261021.json)
 - [Budget2011 full recovery and Gold evidence](biff8-2011-products-native-20261021.json)
 - [Budget2011 bounded review](biff8-2011-review-20261021.json)
+
+- [Current donor retain-both status clarification](donor-status-clarification-20261021.json): all30 reconciliation dispositions are accepted; replacement/publication remain unapproved. The Phase4 ledger is authoritative over stale blocker wording in later bounded snapshots.
+
+- [Budget2010 source-to-products contract](biff8-2010-contract.md)
+- [Budget2010 complete census/numeric preflight](budget-2010-biff8-preflight-20261021.json)
+- [Budget2010 native source/interface qualification](budget-2010-biff8-native-qualification-20261021.json)
+- [Budget2010 complete recovery and Gold evidence](biff8-2010-products-native-20261021.json)
+- [Budget2010 bounded review](biff8-2010-review-20261021.json)
