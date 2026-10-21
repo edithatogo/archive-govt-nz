@@ -3884,7 +3884,13 @@
       }
     },
     "proof_inventory_sha256": "7c3391c2b9653cc2341c2712c9dc8bbeb857dde02a52fc9c9380ea94bf84e952",
-    "proof_root": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2007-2008-20261022/v13-repeat-1",
+    "proof_root_components": [
+      "/Volumes",
+      "PortableSSD",
+      "ArchiveGovtNZRecovery",
+      "health-biff8-2007-2008-20261022",
+      "v13-repeat-1"
+    ],
     "summary": {
       "all_input_and_gold_bytes_equal": true,
       "complete_sources": 29,
