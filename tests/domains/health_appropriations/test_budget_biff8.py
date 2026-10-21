@@ -117,6 +117,24 @@ def _assert_early_dimensions(
     fact: dict[str, Any],
     edition: int,
 ) -> None:
+    if edition == 2009:
+        fields = set(parsed.tables["field_lineage.parquet"]["field"].to_pylist())
+        assert fact["unit"] is None
+        assert "amount_scale_not_verified" in fact["quality_flags"]
+        assert fact["periodicity"] is None
+        assert "periodicity" not in fields
+        assert "unit" not in fields
+        assert "source_field_absent_periodicity" in fact["quality_flags"]
+        if kind == "expenditure":
+            assert fact["mcoa_id"] == 387
+            assert fact["output_expense_type"] is None
+            assert fact["current_scope"] is None
+            assert "output_expense_type" not in fields
+            assert "current_scope" not in fields
+        else:
+            assert "mcoa_id" not in fact
+            assert "parent_appropriation_id" not in fact
+            assert fact["functional_classification"] == "Health"
     if edition in (2010, 2011) and kind == "expenditure":
         assert fact["current_scope"] is None
         if edition == 2011:
@@ -179,7 +197,7 @@ def _assert_2014_qualifiers(
 
 
 @pytest.mark.parametrize(
-    "edition", [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]
+    "edition", [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]
 )
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
@@ -326,7 +344,7 @@ def test_source_and_definition_changes_fail_before_admission() -> None:
 
 
 @pytest.mark.parametrize(
-    "edition", [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2019]
+    "edition", [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2019]
 )
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_biff_budget_operations_and_native_dispatch_retain_all_four_tables(
