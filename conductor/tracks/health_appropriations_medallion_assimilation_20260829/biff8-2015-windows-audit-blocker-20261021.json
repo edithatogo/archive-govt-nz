@@ -5,13 +5,113 @@
   "diagnostic_plan": "temporarily run the unchanged Windows audit before heavy tests and retain its receipt; keep original audit mandatory; remove temporary duplicate after diagnosis",
   "earlier_gates": "passed",
   "failed_stage": "audit",
+  "fixed_release": "13.0.0",
   "head": "5ec23a70219b29be6c08a8e770aaea15917e8f95",
   "local_macos_ubuntu_audits": "passed",
-  "package_identity": "not_observable_receipt_not_uploaded",
+  "package_identity": {
+    "name": "pillow",
+    "version": "12.3.0",
+    "vulns": [
+      {
+        "aliases": [
+          "GHSA-462x-pgg6-55fp"
+        ],
+        "description": "Pillow tiled-TIFF decoder reads past tile buffer in copy4 (Unpack.c:1290)",
+        "fix_versions": [
+          "13.0.0"
+        ],
+        "id": "CVE-2026-112395"
+      },
+      {
+        "aliases": [
+          "GHSA-58r4-6rv3-gfh8"
+        ],
+        "description": "Pillow: Out-of-bounds access in _imagingmorph on a zero-width image",
+        "fix_versions": [
+          "13.0.0"
+        ],
+        "id": "CVE-2026-112397"
+      },
+      {
+        "aliases": [
+          "GHSA-65qm-jvmh-6pqg"
+        ],
+        "description": "Pillow: GIF seek keeps rejected size after DecompressionBombError, allowing DoS",
+        "fix_versions": [
+          "13.0.0"
+        ],
+        "id": "CVE-2026-112400"
+      },
+      {
+        "aliases": [
+          "GHSA-8g5g-8vmr-9782"
+        ],
+        "description": "Pillow: Heap buffer overflow in ImagingJpegDecode",
+        "fix_versions": [
+          "13.0.0"
+        ],
+        "id": "CVE-2026-112403"
+      },
+      {
+        "aliases": [
+          "GHSA-c6hw-5grf-ff96"
+        ],
+        "description": "Pillow: OOB read in TiffDecode.c tile and RGBA paths leaks heap memory into pixels",
+        "fix_versions": [
+          "13.0.0"
+        ],
+        "id": "CVE-2026-112404"
+      },
+      {
+        "aliases": [
+          "GHSA-p4wg-p73j-c528"
+        ],
+        "description": "Pillow: Unbounded recursion parsing a PDF page tree or trailer chain (incomplete fix for CVE-2026-42310)",
+        "fix_versions": [
+          "13.0.0"
+        ],
+        "id": "CVE-2026-112895"
+      },
+      {
+        "aliases": [
+          "GHSA-pchr-8j38-3x4p"
+        ],
+        "description": "Pillow: TIFF encoder ColorMap plane-size mismatch causes a heap out-of-bounds read",
+        "fix_versions": [
+          "13.0.0"
+        ],
+        "id": "CVE-2026-112896"
+      },
+      {
+        "aliases": [
+          "GHSA-q45j-58j2-45rg"
+        ],
+        "description": "Pillow: TiffDecode returns uninitialized memory as pixels for short JPEG strips",
+        "fix_versions": [
+          "13.0.0"
+        ],
+        "id": "CVE-2026-112897"
+      },
+      {
+        "aliases": [
+          "GHSA-vx6w-vv9f-6gvg"
+        ],
+        "description": "Pillow: EPS load(scale) lets Ghostscript render past the decompression bomb limit",
+        "fix_versions": [
+          "13.0.0"
+        ],
+        "id": "CVE-2026-112899"
+      }
+    ]
+  },
   "reported_packages": 1,
   "reported_vulnerabilities": 9,
+  "retained_early_archive_sha256": "36340c3d15a6378d64e6402f64bab70d9d9925ea40a01540cfc5a354d9293c66",
+  "retained_early_receipt_sha256": "3b41320ebb51886aa55f95068bcdc1c78179c4ab26bfa35ecba8695b46a5ad85",
+  "runtime_disposition": "upgrade existing Pillow and qualify all native PNG byte contracts; no waiver or platform exclusion",
   "schema_version": "archive-govt-nz.health-windows-audit-blocker/v1",
   "skipped": 36,
+  "source": "early-dependency-audit-windows-latest artifact 12297284578 from run39498045086",
   "terminal": "failure",
   "test_seconds": 797.72,
   "tests_passed": 8185,

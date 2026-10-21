@@ -9319,3 +9319,13 @@ Preserved complete failed log/run; the synthetic merge tree equals the checked
 tree, ruling out base divergence. Add bounded early Windows diagnostics and
 per-platform receipt retention to identify the actual package before fixing
 or rerunning blindly. The mandatory original audit and all policy gates stay.
+
+Early diagnostic artifact12297284578 fromrun39498045086 identifies the actual
+package: Pillow12.3.0, nine advisories, fixed13.0.0. Preserved raw receipt/zip
+and hashes. Direct OSV queries ruled out the two Windows-only candidate packages;
+this is a genuine image-library dependency finding. Primary Pillow13 release
+notes and GitHub advisory confirm the fixed release. No interpreter/path or
+source-parser change is inferred. Plan targeted transitive Pillow upgrade,
+remove temporary duplicate audit and keep permanent all-platform receipt
+retention. Full native20-stage recovery must requalify all34 PNGs and every
+prior input/Gold byte contract; no visual or source value replacement allowed.
