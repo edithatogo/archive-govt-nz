@@ -19,7 +19,12 @@ from archive_govt_nz.domains.health_appropriations import (
 
 
 def _fixture(
-    kind: str, *, amount: object = 123, edition: int = 2019
+    kind: str,
+    *,
+    amount: object = 123,
+    edition: int = 2019,
+    output_expense_type: str | None = None,
+    source_unlabelled_m: str | None = None,
 ) -> tuple[bytes, budget_biff8.BiffBudgetProfile]:
     profile = getattr(
         budget_biff8, "PROFILES" if edition == 2019 else f"PROFILES_{edition}"
@@ -30,7 +35,7 @@ def _fixture(
         "app_id": 387,
         "parent_id": 387,
         "mcoa_id": 387,
-        "output_expense_type": None,
+        "output_expense_type": output_expense_type,
         "appropriation_name": "Fictional care",
         "category_name": "Fictional care",
         "is_mca": "No",
@@ -43,6 +48,7 @@ def _fixture(
         "amount_type": "Estimated Actual",
         "periodicity": "A",
         "current_scope": None,
+        "source_unlabelled_m": source_unlabelled_m,
         "m_number": 36,
         "portfolio_name": "Health",
         "description": "Fictional receipt",
@@ -100,6 +106,22 @@ def _assert_2013_dimensions(
         assert fact["output_expense_type"] is None
 
 
+def _assert_2011_blank_column(
+    parsed: budget_biff8.BiffBudgetSnapshot,
+    kind: str,
+    fact: dict[str, Any],
+    edition: int,
+) -> None:
+    if edition == 2011 and kind == "expenditure":
+        assert fact["current_scope"] is None
+        assert fact["source_unlabelled_m"] is None
+        assert "source_field_absent_current_scope" in fact["quality_flags"]
+        assert (
+            "current_scope"
+            not in parsed.tables["field_lineage.parquet"]["field"].to_pylist()
+        )
+
+
 def _assert_2014_qualifiers(
     profile: budget_biff8.BiffBudgetProfile,
     parsed: budget_biff8.BiffBudgetSnapshot,
@@ -131,7 +153,9 @@ def _assert_2014_qualifiers(
         )
 
 
-@pytest.mark.parametrize("edition", [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019])
+@pytest.mark.parametrize(
+    "edition", [2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]
+)
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
     kind: str,
@@ -218,8 +242,9 @@ def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
                 profile=replace(profile, absent_fields=()),
                 observed_at="2026-10-20T00:00:00Z",
             )
-    if edition in (2012, 2013):
+    if edition in (2011, 2012, 2013):
         _assert_2013_dimensions(parsed, kind, fact)
+    _assert_2011_blank_column(parsed, kind, fact, edition)
     if edition == 2014:
         _assert_2014_qualifiers(profile, parsed, kind, fact)
     if edition == 2015:
@@ -275,7 +300,7 @@ def test_source_and_definition_changes_fail_before_admission() -> None:
         )
 
 
-@pytest.mark.parametrize("edition", [2012, 2013, 2014, 2015, 2016, 2017, 2019])
+@pytest.mark.parametrize("edition", [2011, 2012, 2013, 2014, 2015, 2016, 2017, 2019])
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_biff_budget_operations_and_native_dispatch_retain_all_four_tables(
     kind: str, edition: int, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
@@ -356,4 +381,28 @@ def test_biff_budget_operations_and_native_dispatch_retain_all_four_tables(
             source_sha256=profile.source_sha256,
             media_type=budget_biff8_adapter.MEDIA_TYPE,
             registrations=classic_registrations,
+        )
+
+
+@pytest.mark.parametrize("edition", [2011, 2012])
+def test_revenue_dependent_qualifier_is_limited_to_its_source_edition(
+    edition: int,
+) -> None:
+    payload, profile = _fixture(
+        "expenditure", edition=edition, output_expense_type="Revenue Dependent"
+    )
+    parsed = budget_biff8.parse_snapshot(
+        payload, profile=profile, observed_at="2026-10-21T00:00:00Z"
+    )
+    assert parsed.metadata["counts"]["normalized"] == (1 if edition == 2011 else 0)
+    assert parsed.metadata["counts"]["rejected"] == (0 if edition == 2011 else 1)
+
+
+def test_nonblank_unlabelled_column_refuses_2011_admission() -> None:
+    payload, profile = _fixture(
+        "expenditure", edition=2011, source_unlabelled_m="unreviewed"
+    )
+    with pytest.raises(ValueError, match="budget_biff8_contract"):
+        budget_biff8.parse_snapshot(
+            payload, profile=profile, observed_at="2026-10-21T00:00:00Z"
         )
