@@ -211,7 +211,14 @@
   },
   "producer_head": "dee70456ea21dcf5a8b8ff6619484bbaf5ab162a",
   "producer_tree": "1440021d06acdb47f0c8dc5727f5c2b6470bdee8",
-  "proof_root": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-canonical-revenue-2025-20261022/products-1",
+  "proof_root_components": [
+    "/",
+    "Volumes",
+    "PortableSSD",
+    "ArchiveGovtNZRecovery",
+    "health-canonical-revenue-2025-20261022",
+    "products-1"
+  ],
   "protected_delivery": "pending",
   "publication": "not_performed",
   "queries": {
