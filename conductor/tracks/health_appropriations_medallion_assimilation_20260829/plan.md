@@ -2560,3 +2560,5 @@ previous qualification results unchanged; original local timeout preserved.
 ## Budget2009 source-to-products continuation — 2026-10-21
 
 - [~] Verify the retained expenditure/revenue sources, full census windows, edition/period/unit definitions and exact stored-integer witnesses. Retain MCOA only where present; do not infer Periodicity, output qualifiers, parent identifiers, currency, period starts or relationships. Add pinned source-native/operations/canonical/Gold integration and complete27-source recoveryv12; preserve all prior v1-v11 bindings and bytes. Repeat Bronze recovery, run the original validation harness, deliver a green protected PR, verify main and prune only the clean owned topic. [M-02, M-05, M-06, M-07, M-10, M-11, M-13, M-15, M-16, M-18; AC-03, AC-04, AC-05, AC-08, AC-09, AC-11, AC-12, AC-13, AC-16]
+
+- [x] Budget2009 full32-stage native recovery, prior cohorts and twelve native schemas qualified;108 binding refusals pass. Original final-tree validation and protected delivery remain pending for the parent item.

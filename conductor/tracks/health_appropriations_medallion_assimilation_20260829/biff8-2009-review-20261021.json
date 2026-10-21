@@ -1,0 +1,120 @@
+{
+  "actual_gold_unknown_scale_readback": [
+    {
+      "currency_and_start_null": true,
+      "negative_values": 0,
+      "product": "biff8_budget",
+      "rows": 267,
+      "scale_flag_retained": true,
+      "sha256": "614ba7079c62546003745f1eaf1069e98ece20ba1a36ac355872bcc3096e3f8b",
+      "unit_null": true
+    },
+    {
+      "currency_and_start_null": true,
+      "negative_values": 2,
+      "product": "biff8_revenue",
+      "rows": 64,
+      "scale_flag_retained": true,
+      "sha256": "66937cd1e9fc3b2edc3bbd65016acd8cfa4932b4d9cf5b4f29ca8d0d7a54a3e1",
+      "unit_null": true
+    }
+  ],
+  "checks": {
+    "bounds": "source120/interface30/stage900/manifest4MiB/package128MiB/coverage80 unchanged",
+    "dimensions": "Unit department-label mapping supported by publisher department pivots; expense MCOA retained; no revenue parent/MCOA or inferred qualifier",
+    "donor": "all30 retain-both dispositions accepted; replacement/publication unapproved",
+    "edition": "Budget2009 explicitly at expense B4/revenue B5;2009/10 Estimates notes agree and2008/09 Supplementary excluded",
+    "preservation": "267 expense/64 revenue facts; all4573/823 raw rows;1260 integer witnesses including two negative revenue values",
+    "source_identity": "exact originals; every Explanation census cell, full headers and inventories verified twice",
+    "tests": "49 source/112 integrated tests;77 schemas/67 representative documents; native focused suite passed",
+    "typing": "0 errors,0 warnings,0 notes",
+    "units": "no scale statement in complete Explanation/header; unit null and amount_scale_not_verified; no inferred scale lineage",
+    "versioning": "distinct complete27-source v12; prior v1-v11 bytes and independent schemas unchanged; incomplete cohorts rejected before I/O"
+  },
+  "donor_authority": {
+    "disposition": "accepted_retain_both_no_replacement",
+    "path": "donor-historical-dispositions-20260927.json",
+    "sha256": "547d901ec8c4b2a467351d1a69ba6391d728b699ff05013688c3fa4de6a73ea0"
+  },
+  "external_capture_publication_collection_mutations": false,
+  "fictional_qualifier_cases": 6,
+  "findings": [],
+  "head": "5ebf0172695ca60de9b4ffed2d0c4d3519bce44a",
+  "holds": [
+    "amount scale",
+    "rights",
+    "currency",
+    "period starts",
+    "historical comparability",
+    "aggregation and joins"
+  ],
+  "native_binding_refusals": 108,
+  "native_postflight": {
+    "exit": 0,
+    "head": "5ebf0172695ca60de9b4ffed2d0c4d3519bce44a",
+    "independent_lease_free": true,
+    "owner_and_group_absent": true,
+    "pins_unchanged": 7227,
+    "status": "verified",
+    "tree": "2ef4028a13dbc072aeafe2d205dfc950d53621a2"
+  },
+  "native_summary": {
+    "all10_queries_verified": true,
+    "canonical_packages": 27,
+    "composite_metadata_verified": true,
+    "current_2009_raw_profiles_match_native_qualification": true,
+    "fresh_input_builds": 2,
+    "gold_files": 61,
+    "head": "5ebf0172695ca60de9b4ffed2d0c4d3519bce44a",
+    "input_files": 245,
+    "legacy_gold11_61_files_identical": true,
+    "legacy_gold13_61_files_identical": true,
+    "legacy_gold15_61_files_identical": true,
+    "legacy_gold17_61_files_identical": true,
+    "legacy_gold19_61_files_identical": true,
+    "legacy_gold21_61_files_identical": true,
+    "legacy_gold23_61_files_identical": true,
+    "legacy_gold25_61_files_identical": true,
+    "legacy_gold9_61_files_identical": true,
+    "legacy_gold_60_files_identical": true,
+    "legacy_v10_209_files_identical": true,
+    "legacy_v11_227_files_identical": true,
+    "legacy_v1_47_files_identical": true,
+    "legacy_v2_65_files_identical": true,
+    "legacy_v3_83_files_identical": true,
+    "legacy_v4_101_files_identical": true,
+    "legacy_v5_119_files_identical": true,
+    "legacy_v6_137_files_identical": true,
+    "legacy_v7_155_files_identical": true,
+    "legacy_v8_173_files_identical": true,
+    "legacy_v9_191_files_identical": true,
+    "publication": "not_performed",
+    "repeat_identical": true,
+    "retained_derivatives_consumed": false,
+    "rights": "not_evaluated",
+    "runtime_warmup": "Arrow dependency initialized before each source stage; no source reads before timers; inherited qualified runtime contract",
+    "tree": "2ef4028a13dbc072aeafe2d205dfc950d53621a2"
+  },
+  "pending": [
+    "original exact-final-tree validation",
+    "green hosted checks and normal protected merge",
+    "zero-unique clean owned-topic pruning"
+  ],
+  "publisher_label_basis": {
+    "expense": {
+      "row_label": "A4",
+      "sheet": "Total Exp by Dept Data",
+      "title": "Total Expenses by Department for 2010",
+      "title_coordinate": "F1",
+      "value": "Unit"
+    },
+    "revenue": {
+      "row_label": "A4",
+      "sheet": "Dept Total Data",
+      "title": "Total Crown Revenue and Capital Receipts by Department for 2010",
+      "title_coordinate": "B1",
+      "value": "Unit"
+    }
+  },
+  "scope": "Budget2009 retained expenditure/revenue to canonical/Gold and complete recoveryv12; bounded slice"
+}
