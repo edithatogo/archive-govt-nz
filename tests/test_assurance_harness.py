@@ -138,6 +138,30 @@ def test_parallel_pytest_lane_rejects_unsafe_worker_values() -> None:
         build_stages(pytest_workers="auto --maxfail=0")
 
 
+def test_pytest_diagnostics_preserve_test_selection_and_other_gates() -> None:
+    """Reporting cannot filter tests or alter mutation/security commands."""
+    ordinary = build_stages(pytest_workers="auto", pytest_distribution="worksteal")
+    diagnostic = build_stages(
+        pytest_workers="auto",
+        pytest_distribution="worksteal",
+        pytest_diagnostics=True,
+    )
+    assert len(ordinary) == len(diagnostic) == 32
+    for before, after in zip(ordinary, diagnostic, strict=True):
+        assert before.name == after.name
+        if before.name == "tests":
+            assert after.command[: len(before.command)] == before.command
+            assert after.command[len(before.command) :] == (
+                "--verbose",
+                "--durations=30",
+                "--junitxml=build/pytest-results.xml",
+                "-o",
+                "console_output_style=count",
+            )
+        else:
+            assert before == after
+
+
 def test_heavy_assurance_lanes_are_explicit_and_bounded() -> None:
     """Gremlins and Scalene are available without slowing the default gate."""
     default_names = tuple(stage.name for stage in STAGES)

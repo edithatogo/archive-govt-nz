@@ -738,3 +738,11 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [Phase 4 current acceptance reconciliation](phase4-acceptance-20261022.md) and [pinned native audit](phase4-acceptance-20261022.json). Protected delivery remains pending; wider census and track gates stay open.
 
 - [PDF dependency security unblock](pypdf-security-unblock-20261022.md) and [paired qualification](pypdf-security-unblock-20261022.json): required audit failure preserved; fixed lock,60 existing PDF tests and three retained-source byte comparisons pass. Final assurance pending.
+
+- [Phase 4 protected delivery PR747](phase4-delivery-747-20261022.json): actual eight green checks, three-platform original harness, issue210 closure and verified clean topic pruning. Wider phases and track acceptance remain open.
+
+- [Budget2025 complete32-source native qualification](revenue-2025-complete-cohort-native-20261022.json) and [bounded review](revenue-2025-complete-cohort-review-20261022.md): numeric/recovery/interface proof passes; chart readability finding remains open.
+
+- [Windows deadline red evidence](windows-assurance-timeout-20261022.json) and [bounded scheduling review](windows-scheduling-review-20261022.md): existing Windows-only worksteal trial preserves all tests/stages/limits; actual hosted qualification remains required.
+
+- [Windows failed trial and test-stage-only diagnostic evidence](windows-test-diagnostics-20261022.json): preserves deadline failures and reporting boundaries; actual Windows root-cause repair/qualification remains open.

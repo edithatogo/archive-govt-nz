@@ -2574,7 +2574,7 @@ previous qualification results unchanged; original local timeout preserved.
 
 ## Phase 4 current acceptance reconciliation — 2026-10-22
 
-- [~] Audit every Phase 4 task against current retained-source, analysis and
+- [x] Audit every Phase 4 task against current retained-source, analysis and
   six-plot evidence before reconciling issue #210. Reverify the 23-object,
   312-row donor oracle and accepted historical dispositions; independently
   rebuild the twelve selected source areas and original functional products,
@@ -2586,10 +2586,35 @@ previous qualification results unchanged; original local timeout preserved.
 
 Native Phase4 acceptance reconciliation passed: pinned donor tree/archive,23objects/312rows,30 accepted retain-both historical dispositions; two exact twelve-stage50-file replays and two functional pipelines, six inspected PNGs. The unsupported historical35 summary count is preserved and separately reconciled; first audit assumption failure retained. Final-tree validation and protected delivery remain pending before issue210 closure. See phase4-acceptance-20261022.md/.json.
 
-- [~] Resolve the new Phase4 assurance dependency blocker: original final-tree
+- [x] Resolve the new Phase4 assurance dependency blocker: original final-tree
   harness passes8283tests/schemas/parity/mutations, then the OSV audit reports
   four vulnerabilities in locked pypdf6.19.0. Preserve failed run/receipt and
   unchanged-pin postflight, promote the verified current supported6.x security
   release within the existing approved stack, requalify affected PDF contracts
   and retained sources, rerun the original full harness, then require dependency
   review and exact-head Actions before protected delivery. [M-18, M-19; AC-16]
+
+
+## Budget 2025 revenue complete-cohort integration — 2026-10-22
+
+- [~] Add the already verified Budget2025 revenue original to a new explicit
+  complete32-source recovery cohort and canonical Gold integration, using the
+  existing revenue reader/projector/exporter. Preserve the baseline and every
+  v1–v14 selector/schema/output; refuse partial or mismatched new selectors
+  before source I/O. Reuse retained observation identity and exact native
+  values/lineage/accounting; do not infer currency, starts, joins or rights.
+  Add meaningful red contracts to the existing matrix, qualify the new schema
+  and actual repeat/source/Gold/query/metadata products with original limits,
+  validate and deliver through protected checks before managed-worktree pruning.
+  This does not complete the remaining2020–2024 specialized OOXML bridges or
+  whole-track acceptance. Phase4 delivered separately through PR747.
+  [M-05, M-06, M-10, M-11, M-16, M-18, M-19;
+  AC-05, AC-08, AC-09, AC-11, AC-12, AC-16]
+
+Phase4 reconciliation/security blocker delivered by PR747, protected merge3317bb4e; all8checks and original32stages locally/on3platforms pass. Issue210 closed, primary clean and exact topic refs pruned, native/evidence/runtime retained. See phase4-delivery-747-20261022.json. Earlier producer pending-state receipts remain unchanged; wider phases/track stay open.
+
+- [ ] Address observed clipped/overlapping canonical revenue chart labels with an additive versioned readable rendering contract, retaining v1 bytes, exact point/source mappings, deterministic repeat builds and bounded page/size limits. Validate actual complete-cohort plots visually; do not claim visual acceptance from numeric parity. [M-10, M-13; AC-08, AC-12]
+
+- [~] Resolve the two terminal Windows900second pytest-stage timeouts on PR748 (both99percent, no assertion failures reported). Preserve both logs; qualify the existing worksteal option for Windows-only scheduling while keeping all tests, auto workers, coverage, all32 stages and original deadlines. Keep other platforms/local wrappers unchanged; validate exact final tree and require fresh green hosted checks before merge/prune. No third identical retry. [M-18, M-19; AC-16]
+
+- [~] Windows worksteal trial47b56c5d also reaches99percent and terminates124 at900s; keep the hypothesis unqualified. Add opt-in reporting only to the test-stage command (verbose named/worker/count progress, durations and JUnit), preserve a partial-run stdout trail and available report artifact, then locate/fix the actual slow contract. Keep all tests, workers, gates and deadlines unchanged; no unchanged rerun. [M-18, M-19; AC-16]

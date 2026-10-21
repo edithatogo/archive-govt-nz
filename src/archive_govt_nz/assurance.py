@@ -33,6 +33,7 @@ def build_stages(
     *,
     pytest_workers: str | None = None,
     pytest_distribution: str = "loadscope",
+    pytest_diagnostics: bool = False,
     include_heavy: bool = False,
 ) -> tuple[GateStage, ...]:
     """Build the gate sequence with an optional isolated xdist test lane."""
@@ -51,6 +52,14 @@ def build_stages(
     pytest_command = _PYTEST_COMMAND
     if pytest_workers is not None:
         pytest_command += ("-n", pytest_workers, "--dist", pytest_distribution)
+    if pytest_diagnostics:
+        pytest_command += (
+            "--verbose",
+            "--durations=30",
+            "--junitxml=build/pytest-results.xml",
+            "-o",
+            "console_output_style=count",
+        )
 
     stages = (
         GateStage("lock", ("uv", "lock", "--check")),
