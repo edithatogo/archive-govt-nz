@@ -734,3 +734,5 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [Budget2007–2008 native source/interface qualification](budget-2007-2008-biff8-native-qualification-20261022.json)
 - [Budget2007–2008 complete recovery/Gold evidence](biff8-2007-2008-products-native-20261022.json)
 - [Budget2007–2008 bounded review](biff8-2007-2008-review-20261022.json)
+
+- [Phase 4 current acceptance reconciliation](phase4-acceptance-20261022.md) and [pinned native audit](phase4-acceptance-20261022.json). Protected delivery remains pending; wider census and track gates stay open.

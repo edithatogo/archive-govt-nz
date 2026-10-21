@@ -2583,3 +2583,5 @@ previous qualification results unchanged; original local timeout preserved.
   count discrepancy through a separate evidence-backed projection rather than
   rewriting its producer snapshot. [M-01, M-07, M-08, M-09, M-10, M-16, M-19;
   AC-01, AC-03, AC-06, AC-07, AC-08, AC-12, AC-16]
+
+Native Phase4 acceptance reconciliation passed: pinned donor tree/archive,23objects/312rows,30 accepted retain-both historical dispositions; two exact twelve-stage50-file replays and two functional pipelines, six inspected PNGs. The unsupported historical35 summary count is preserved and separately reconciled; first audit assumption failure retained. Final-tree validation and protected delivery remain pending before issue210 closure. See phase4-acceptance-20261022.md/.json.
