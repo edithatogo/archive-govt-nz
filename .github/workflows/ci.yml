@@ -42,14 +42,16 @@ jobs:
       - name: Run locked assurance gate
         shell: bash
         run: |
+          pytest_workers=auto
+          pytest_distribution=loadscope
           if [ "${{ matrix.os }}" = "macos-latest" ]; then
             pytest_workers=1
-          else
-            pytest_workers=auto
+          elif [ "${{ matrix.os }}" = "windows-latest" ]; then
+            pytest_distribution=worksteal
           fi
           uv run --locked python tools/check.py \
             --pytest-workers "$pytest_workers" \
-            --pytest-distribution loadscope
+            --pytest-distribution "$pytest_distribution"
       - name: Preserve dependency audit receipt
         if: always() && hashFiles('build/pip-audit.json') != ''
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a

@@ -742,3 +742,5 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [Phase 4 protected delivery PR747](phase4-delivery-747-20261022.json): actual eight green checks, three-platform original harness, issue210 closure and verified clean topic pruning. Wider phases and track acceptance remain open.
 
 - [Budget2025 complete32-source native qualification](revenue-2025-complete-cohort-native-20261022.json) and [bounded review](revenue-2025-complete-cohort-review-20261022.md): numeric/recovery/interface proof passes; chart readability finding remains open.
+
+- [Windows deadline red evidence](windows-assurance-timeout-20261022.json) and [bounded scheduling review](windows-scheduling-review-20261022.md): existing Windows-only worksteal trial preserves all tests/stages/limits; actual hosted qualification remains required.
