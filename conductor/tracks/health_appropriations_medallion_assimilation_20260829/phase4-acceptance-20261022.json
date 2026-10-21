@@ -1,0 +1,843 @@
+{
+  "audit_failure": {
+    "actual": "Five missing_budget diagnostics preserve exact Estimated Actual input IDs/amounts; budget and difference remain null.",
+    "attempt": 1,
+    "failed_control_sha256": "da85f82fcbf38ce4dfcaf51336e6365e76457996bcc26d460b74b763cab15419",
+    "failed_log_sha256": "93382ac60985698e5640d3708635961e37735d1d2adf6739783885ffc1195eba",
+    "production_changes": false,
+    "reason": "Private audit incorrectly expected zero rows in the later budget-versus-estimate table.",
+    "replayed_transformations": false,
+    "resolution": "Independent corrected comparison verifies source grouping, exact sums and complete input-ID closure.",
+    "stage": "compare"
+  },
+  "boundaries": [
+    "The 152-sheet/158-unit broader census remains a separate unresolved inventory; no blanket irrelevance decision is made.",
+    "Source rights remain not_evaluated; accepted reconciliation does not approve replacement values or publication.",
+    "Phases 1\u20133 and 5\u201310 require separate acceptance; existing publication and collection gates are not repeated."
+  ],
+  "count_reconciliation": {
+    "basis": "The pinned replay has 312 matched rows and 29 explained additions; the source-backed historical ledger contains 29 source-only years and one numeric-representation disposition. No row-level ledger supports a count of 35.",
+    "current_authorities": {
+      "historical_row_dispositions": 30,
+      "raw_source_additions": 29
+    },
+    "field": "parity.accepted_retain_both_deviations",
+    "historical_receipt": "donor-area-normalization-20260928.json",
+    "historical_receipt_sha256": "5ceab4799ac85f638c626d8e9c94e18728b0d3bed7880d5552e802624d797cbb",
+    "historical_value": 35,
+    "original_receipt_unchanged": true,
+    "status": "unsupported_summary_count_superseded_for_current_status"
+  },
+  "donor": {
+    "archive_verification": {
+      "archive_bytes": 6635520,
+      "archive_sha256": "9c8ab0feaa752ead08163463a634623d55a62a69608772b73127b3d7b709157e",
+      "commit": "4668e6c3b1b492086941d4c1ef96e299250a8301",
+      "proof_root_components": [
+        "/",
+        "Volumes",
+        "PortableSSD",
+        "ArchiveGovtNZRecovery",
+        "health-phase4-reconciliation-20261022",
+        "donor-archive-1"
+      ],
+      "seconds": 4.32,
+      "status": "passed",
+      "tree": "c6d44ff79eda73cfc6ba7db5764e27ce01b890e1",
+      "upstream_changes": false
+    },
+    "bytes": 6604301,
+    "compile_defect": {
+      "exception": "IndentationError",
+      "line": 199,
+      "source_executed": false,
+      "source_sha256": "0beb01bbf6956f6ed9f5925c73199dc0a67f6022673dba78fded819597d63ed3",
+      "status": "known_donor_compile_defect_reproduced"
+    },
+    "disposition": "accepted_retain_both_observations",
+    "historical_counts": {
+      "exact_match": 76,
+      "source_only": 29,
+      "value_difference": 1
+    },
+    "historical_dispositions": 30,
+    "ledger_sha256": "547d901ec8c4b2a467351d1a69ba6391d728b699ff05013688c3fa4de6a73ea0",
+    "manifest_sha256": "893f387e1f361400285ccc84802b497e87802d1ad913826ff7d9055b07a03b74",
+    "matched_rows": 312,
+    "objects": 23,
+    "publication_approved": false,
+    "raw_matched_rows": 312,
+    "raw_source_additions": 29,
+    "replacement_values": null,
+    "replay_sha256": "b20b472b361d16d9eca40ca6841ea5609fab23a1924d42491dc8af18e6237012",
+    "tables": 5,
+    "tree_verification": {
+      "archive_digest_freshly_reverified": false,
+      "archive_digest_in_manifest": "9c8ab0feaa752ead08163463a634623d55a62a69608772b73127b3d7b709157e",
+      "archive_object_present": false,
+      "expected_tree": "c6d44ff79eda73cfc6ba7db5764e27ce01b890e1",
+      "objects": 23,
+      "original_modes_paths_blobs_verified": true,
+      "reconstructed_tree": "c6d44ff79eda73cfc6ba7db5764e27ce01b890e1",
+      "status": "passed"
+    },
+    "unresolved_rows": 0
+  },
+  "existing_assurance": {
+    "head": "ab8db1f9272d460c60ede43137c4bf4ed8d3a0c6",
+    "hosted_jobs": [
+      {
+        "log_sha256": "6d064f7e8afc431ed4477c70340d41a54318aed2b968b1b5806e167a06ff716c",
+        "name": "Assurance (windows-latest)",
+        "passed": 8261,
+        "skipped": 36,
+        "test_seconds": 672.15
+      },
+      {
+        "log_sha256": "876dc873b8eabe1934410998c6df659c3dd6ab5b5f79554f62410cbbfb53da93",
+        "name": "Assurance (macos-latest)",
+        "passed": 8267,
+        "skipped": 30,
+        "test_seconds": 896.21
+      },
+      {
+        "log_sha256": "11c714c9447b87fcd8517e2a497797c0cf6f26abc18a3d252792a76153447fd4",
+        "name": "Assurance (ubuntu-latest)",
+        "passed": 8267,
+        "skipped": 30,
+        "test_seconds": 507.87
+      }
+    ],
+    "local_tests": 8283,
+    "merge": "26990f594333aa5e1ef561f8d40208389e2e9a1b",
+    "original_stages": 32,
+    "pr": 746,
+    "receipt_sha256": "25ba1804c54fdd170b78c3fe2e5ddd695a0606ab0945aefe0ce031c421ad2025",
+    "role": "Inherited implementation assurance, not final-tree validation of this documentation increment",
+    "source_test_schema_dependency_changes_since_checked_head": []
+  },
+  "functional": {
+    "area_dispositions": 14278,
+    "area_facts": 739,
+    "area_lineage": 11565,
+    "area_repeat_files": 50,
+    "compatibility_rows_equal": 341,
+    "historical_dispositions": 30,
+    "independent_products": {
+      "compat": {
+        "bytes": 3261913,
+        "files": 4,
+        "identical": true
+      },
+      "gold": {
+        "bytes": 3122000,
+        "files": 9,
+        "identical": true
+      },
+      "plots": {
+        "bytes": 468997,
+        "files": 8,
+        "identical": true
+      },
+      "raw": {
+        "bytes": 1232976,
+        "files": 18,
+        "identical": true
+      }
+    },
+    "new_budget_comparison_rows": 5,
+    "new_budget_comparison_status": "missing_budget; no difference computed",
+    "old_area_summary_count": 35,
+    "old_area_summary_count_status": "not_supported_by_authoritative_row_ledger; retained unchanged",
+    "old_gold_sidecars_equal": true,
+    "old_gold_tables_equal": {
+      "health_spending_gdp_share.parquet": 53,
+      "historical_nominal.parquet": 53,
+      "historical_yoy.parquet": 53,
+      "recent_classification_trends.parquet": 16,
+      "recent_functional_breakdown.parquet": 4
+    },
+    "omission_counts": {
+      "health_spending_vs_gdp.png": 0,
+      "historical_health_spending_nominal.png": 0,
+      "historical_health_spending_yoy_growth.png": 5,
+      "recent_appropriations_functional_breakdown_2025_Estimated_Actual.png": 0,
+      "recent_trends_health_classification.png": 0,
+      "recent_trends_no_classification.png": 0
+    },
+    "plot_contract_bytes_equal": true,
+    "png_files": [
+      "health_spending_vs_gdp.png",
+      "historical_health_spending_nominal.png",
+      "historical_health_spending_yoy_growth.png",
+      "recent_appropriations_functional_breakdown_2025_Estimated_Actual.png",
+      "recent_trends_health_classification.png",
+      "recent_trends_no_classification.png"
+    ],
+    "point_counts": {
+      "health_spending_vs_gdp.png": 53,
+      "historical_health_spending_nominal.png": 53,
+      "historical_health_spending_yoy_growth.png": 48,
+      "recent_appropriations_functional_breakdown_2025_Estimated_Actual.png": 4,
+      "recent_trends_health_classification.png": 6,
+      "recent_trends_no_classification.png": 6
+    },
+    "publication": "not_performed",
+    "raw_source_additions": 29,
+    "renderer": {
+      "backend": "Agg",
+      "freetype": "2.14.3",
+      "matplotlib": "3.11.1",
+      "pillow": "13.0.0"
+    },
+    "rights": "not_evaluated"
+  },
+  "native_output_files": 188,
+  "native_output_inventory_sha256": "765e98146a56503d1b7b06ca7741561c33aab286def9a1e0ebc4ba6037304394",
+  "normalization": {
+    "additional_official_workbooks": 1,
+    "all_historical_stage_manifest_hashes_identical": true,
+    "coverage": [
+      {
+        "disposition_sha256": "dabc8533c1ff8b49ff46b4301374225315771a76c27e64020526ebcda6486397",
+        "dispositions": 6504,
+        "excluded_sheets": [
+          {
+            "reason": "not_budget_raw_data",
+            "sheet": "Intro"
+          },
+          {
+            "reason": "not_budget_raw_data",
+            "sheet": "Explanation"
+          },
+          {
+            "reason": "not_budget_raw_data",
+            "sheet": "PivotAppnTypeSpendbyYear"
+          },
+          {
+            "reason": "not_budget_raw_data",
+            "sheet": "GraphAppnTypeSpendbyYear"
+          },
+          {
+            "reason": "not_budget_raw_data",
+            "sheet": "PivotAppnTypeByVote"
+          },
+          {
+            "reason": "not_budget_raw_data",
+            "sheet": "GraphAppnTypeByVote"
+          },
+          {
+            "reason": "not_budget_raw_data",
+            "sheet": "PivotAppnTypeByPortfolio"
+          }
+        ],
+        "facts": 215,
+        "lineage": 3655,
+        "manifest_sha256": "f051c4f815da3085363f0a00b592b8a5e4521398a544529353781debfaf3cd3b",
+        "reason_counts": {
+          "named_columns": 215,
+          "non_health_vote": 6289
+        },
+        "rights_state": "not_evaluated",
+        "scope": "adapter_selection_not_whole_source_closure",
+        "source_locator": "data/raw/b25-expenditure-data.xlsx",
+        "source_object_sha256": "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
+        "stage": "budget"
+      },
+      {
+        "disposition_sha256": "628bcd8ff81387a8a9ad459c8d738e60652b5566b5de12b6a99399d273de609f",
+        "dispositions": 2332,
+        "excluded_sheets": [
+          {
+            "reason": "not_forecast_summary_sheet",
+            "sheet": "MoE - places"
+          },
+          {
+            "reason": "not_forecast_summary_sheet",
+            "sheet": "Index"
+          }
+        ],
+        "facts": 10,
+        "lineage": 60,
+        "manifest_sha256": "9217b02ffb2a03e56a0a45cb7b865cb05227d6ed3a59e3f429d8faf154d3644e",
+        "reason_counts": {
+          "literal_summary": 10,
+          "outside_literal_health_summary": 2300,
+          "summary_context": 22
+        },
+        "rights_state": "not_evaluated",
+        "scope": "adapter_selection_not_whole_source_closure",
+        "source_locator": "data/raw/befu25-data-expense-tables.xlsx",
+        "source_object_sha256": "dbde3256b1cbfb847f9f6caec66e7adffabca0489b218997a431220da584a3d6",
+        "stage": "befu"
+      },
+      {
+        "disposition_sha256": "975762236cc39fa1bf5b9e5261008c0caf5ff2ccd621c934639688765f36e143",
+        "dispositions": 2333,
+        "excluded_sheets": [
+          {
+            "reason": "not_forecast_summary_sheet",
+            "sheet": "MoE - places"
+          },
+          {
+            "reason": "not_forecast_summary_sheet",
+            "sheet": "Index"
+          }
+        ],
+        "facts": 10,
+        "lineage": 60,
+        "manifest_sha256": "c1d04065992825f1e122e0c9b384cf23e94104a8e0fc2310155161c60a6fa9d6",
+        "reason_counts": {
+          "literal_summary": 10,
+          "outside_literal_health_summary": 2301,
+          "summary_context": 22
+        },
+        "rights_state": "not_evaluated",
+        "scope": "adapter_selection_not_whole_source_closure",
+        "source_locator": "data/raw/hyefu24-data-expense-tables.xlsx",
+        "source_object_sha256": "725399c09323594c921dbcc493206abe59bf7b91dd968b8c7f6f3a67d4707969",
+        "stage": "hyefu"
+      },
+      {
+        "disposition_sha256": "79bb5cad2f1f8f612d930acb5405070af8f7a20fe357c4560d96d220deedf960",
+        "dispositions": 1503,
+        "excluded_sheets": [
+          {
+            "reason": "not_historical_health_gdp",
+            "sheet": "Summary"
+          },
+          {
+            "reason": "not_historical_health_gdp",
+            "sheet": "Series Descriptions"
+          },
+          {
+            "reason": "not_historical_health_gdp",
+            "sheet": "Sources"
+          },
+          {
+            "reason": "not_historical_health_gdp",
+            "sheet": "Revenue, Surplus measures"
+          },
+          {
+            "reason": "not_historical_health_gdp",
+            "sheet": "Debt, Net Worth"
+          },
+          {
+            "reason": "not_historical_health_gdp",
+            "sheet": "NZS Fund series"
+          }
+        ],
+        "facts": 106,
+        "lineage": 1143,
+        "manifest_sha256": "dbdba7dbae941e29f25fc5bc1227479107d8d1eaa8d761d6fe2d03ec63347f1f",
+        "reason_counts": {
+          "historical_context": 121,
+          "literal_historical_observation": 106,
+          "outside_historical_currency_selection": 1276
+        },
+        "rights_state": "not_evaluated",
+        "scope": "adapter_selection_not_whole_source_closure",
+        "source_locator": "data/raw/fiscaltimeseries1972-2024.xlsx",
+        "source_object_sha256": "769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d",
+        "stage": "historical"
+      },
+      {
+        "disposition_sha256": "588434c96f9a83e2d2b0b60589a8df8d866d880d24d3ba511bab97ca06e4173b",
+        "dispositions": 1000,
+        "excluded_sheets": [
+          {
+            "reason": "preserved_context_or_other_sheet_not_revenue_rows",
+            "sheet": "Intro"
+          },
+          {
+            "reason": "preserved_context_or_other_sheet_not_revenue_rows",
+            "sheet": "Explanation"
+          },
+          {
+            "reason": "preserved_context_or_other_sheet_not_revenue_rows",
+            "sheet": "Pivot Trend by Type"
+          },
+          {
+            "reason": "preserved_context_or_other_sheet_not_revenue_rows",
+            "sheet": "Graph Trend by Type"
+          },
+          {
+            "reason": "preserved_context_or_other_sheet_not_revenue_rows",
+            "sheet": "Pivot Trend by Vote"
+          },
+          {
+            "reason": "preserved_context_or_other_sheet_not_revenue_rows",
+            "sheet": "Graph Trend by Vote"
+          }
+        ],
+        "facts": 69,
+        "lineage": 1104,
+        "manifest_sha256": "71b64a9ea7ebb953688f6c3b5d9c38366bb527a429ce7f9a4ad710652f4af81e",
+        "reason_counts": {
+          "named_revenue_columns": 69,
+          "non_health_vote": 931
+        },
+        "rights_state": "not_evaluated",
+        "scope": "adapter_selection_not_whole_source_closure",
+        "source_locator": "data/raw/b25-revenue-data.xlsx",
+        "source_object_sha256": "2aef43eb419420a549fe56a946539f6e9afcbd91f95e9242457f26c97bafafaa",
+        "stage": "revenue"
+      },
+      {
+        "disposition_sha256": "607f7b81ad0a23e8e4f05872b14c58c1c96697c982d07dd39a791f19224c7acf",
+        "dispositions": 84,
+        "excluded_sheets": [],
+        "facts": 80,
+        "lineage": 832,
+        "manifest_sha256": "42cf811aef35d5adf24421c917525ae8f0d6f9d83bd6b10cdf430e64a60c287d",
+        "reason_counts": {
+          "excluded_formula_cache_not_admitted": 1,
+          "literal_context_only": 80,
+          "outside_admitted_literal_selection": 3
+        },
+        "rights_state": "not_evaluated",
+        "scope": "adapter_selection_not_whole_source_closure",
+        "source_locator": "data/raw/befu25-data-expense-tables.xlsx",
+        "source_object_sha256": "dbde3256b1cbfb847f9f6caec66e7adffabca0489b218997a431220da584a3d6",
+        "stage": "befu-detail"
+      },
+      {
+        "disposition_sha256": "bb4e8b693c28ff2146b4feffda2109a94bb97e904cae90dce366d743f181f419",
+        "dispositions": 84,
+        "excluded_sheets": [],
+        "facts": 80,
+        "lineage": 832,
+        "manifest_sha256": "6615ca6b601283aae75b80dd15627bae32d2769b95f4b7b71f18c9fa9ce5a321",
+        "reason_counts": {
+          "excluded_formula_cache_not_admitted": 1,
+          "literal_context_only": 80,
+          "outside_admitted_literal_selection": 3
+        },
+        "rights_state": "not_evaluated",
+        "scope": "adapter_selection_not_whole_source_closure",
+        "source_locator": "data/raw/hyefu24-data-expense-tables.xlsx",
+        "source_object_sha256": "725399c09323594c921dbcc493206abe59bf7b91dd968b8c7f6f3a67d4707969",
+        "stage": "hyefu-detail"
+      },
+      {
+        "disposition_sha256": "c50ae4cb20626b5e087ec7cb2622eeadf46077aa6058c74e5e53eeaa7dd7f410",
+        "dispositions": 167,
+        "excluded_sheets": [],
+        "facts": 86,
+        "lineage": 3054,
+        "manifest_sha256": "14088607bd4211104f69d1cf4553bea515705971cb47604feef8af709a2a26ea",
+        "reason_counts": {
+          "formula_cache_not_admitted": 15,
+          "literal_context_only": 86,
+          "outside_admitted_literal_selection": 66
+        },
+        "rights_state": "not_evaluated",
+        "scope": "adapter_selection_not_whole_source_closure",
+        "source_locator": "data/raw/befu25-charts-data.xlsx",
+        "source_object_sha256": "cf98f5e21f60c76c7d05f788df7955fb45cfdd780c12cb18e26ff8e83615e168",
+        "stage": "befu-chart"
+      },
+      {
+        "disposition_sha256": "d6246416c5a02702850126a89eebb76df1d3a60fd7afd237bb1f4b73a0d3ce08",
+        "dispositions": 73,
+        "excluded_sheets": [],
+        "facts": 16,
+        "lineage": 288,
+        "manifest_sha256": "bd033aff9bb90cd60ca99b65fb1405aa8b02f488ff9e9754b3a0837af71ea0c9",
+        "reason_counts": {
+          "literal_context_only": 16,
+          "outside_admitted_literal_selection": 57
+        },
+        "rights_state": "not_evaluated",
+        "scope": "adapter_selection_not_whole_source_closure",
+        "source_locator": "data/raw/hyefu24-charts-data.xlsx",
+        "source_object_sha256": "f77bdab5ef808b0e451a52b9b448a52b07899bc4523da3c02aa5725325d6203c",
+        "stage": "hyefu-allowance"
+      },
+      {
+        "disposition_sha256": "e663afad8745e4c106605aa3bde8e36dca4245f9baa8554ac81cb7091b3fc279",
+        "dispositions": 67,
+        "excluded_sheets": [],
+        "facts": 1,
+        "lineage": 13,
+        "manifest_sha256": "888e1d70d48866a579c7c57b99f674601002ebf1dff14914efca8a00e9d3f930",
+        "reason_counts": {
+          "literal_context_only": 1,
+          "outside_admitted_literal_selection": 66
+        },
+        "rights_state": "not_evaluated",
+        "scope": "adapter_selection_not_whole_source_closure",
+        "source_locator": "data/raw/befu25-charts-data.xlsx",
+        "source_object_sha256": "cf98f5e21f60c76c7d05f788df7955fb45cfdd780c12cb18e26ff8e83615e168",
+        "stage": "befu-residual"
+      },
+      {
+        "disposition_sha256": "41aa998414cbf4687d0c0c1acbb9994f559a296f550c5c866ff9738c82e74ec4",
+        "dispositions": 62,
+        "excluded_sheets": [],
+        "facts": 5,
+        "lineage": 155,
+        "manifest_sha256": "bbedd633a5283fb29409b334196e161bd068839cb5ccb029d2eaf6af6216cc40",
+        "reason_counts": {
+          "literal_context_only": 5,
+          "outside_admitted_literal_selection": 57
+        },
+        "rights_state": "not_evaluated",
+        "scope": "adapter_selection_not_whole_source_closure",
+        "source_locator": "data/raw/hyefu24-charts-data.xlsx",
+        "source_object_sha256": "f77bdab5ef808b0e451a52b9b448a52b07899bc4523da3c02aa5725325d6203c",
+        "stage": "hyefu-residual"
+      },
+      {
+        "disposition_sha256": "89392451d57bceceb00438a05c2c1b75d3f182260be048a2e03347f4ca5fe1c4",
+        "dispositions": 69,
+        "excluded_sheets": [],
+        "facts": 61,
+        "lineage": 369,
+        "manifest_sha256": "0df04c977f870a6abba4105706a7e51af179eba35234221fcbf5a13482139503",
+        "reason_counts": {
+          "literal_context_only": 61,
+          "outside_admitted_literal_selection": 8
+        },
+        "rights_state": "not_evaluated",
+        "scope": "adapter_selection_not_whole_source_closure",
+        "source_locator": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx",
+        "source_object_sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+        "stage": "crown"
+      }
+    ],
+    "dispositions": 14278,
+    "donor_workbooks": 7,
+    "facts": 739,
+    "historical_manifest_identical": true,
+    "lineage": 11565,
+    "manifest_sha256": "d905dfa6d76cbb35cf96e30b9d088be74ebcf2c846f38ed7b327e43cf46f67c5",
+    "repeat_files": 50,
+    "stages": 12,
+    "workbooks": 8
+  },
+  "plan_task_count": 16,
+  "plan_tasks": [
+    {
+      "native_evidence": [
+        "normalization",
+        "functional.independent_products.raw",
+        "donor.compile_defect"
+      ],
+      "status": "native_and_implementation_evidenced",
+      "task": "Create red/golden tests for the donor's fiscal spending, GDP, appropriation and HYEFU/BEFU summary extraction using Bronze-derived test fixtures; cover headers, footers, blanks, formulas, duplicates, units and source-layout failures. [M-07, M-08, M-18; AC-03, AC-06, AC-16] (2026-09-28: expanded footer/formula and detailed formula-total fixtures; see `donor-area-normalization-20260928.md`.)",
+      "test_files": [
+        "tests/domains/health_appropriations/test_budget.py",
+        "tests/domains/health_appropriations/test_historical.py",
+        "tests/domains/health_appropriations/test_forecast.py",
+        "tests/domains/health_appropriations/test_donor_health_detail.py"
+      ]
+    },
+    {
+      "native_evidence": [
+        "donor.replay_sha256",
+        "donor.ledger_sha256"
+      ],
+      "status": "native_and_implementation_evidenced",
+      "task": "Execute the type-tagged row-level parity oracle for all five donor SQLite tables/312 rows against their pinned original workbook sources. All 312 donor rows matched; 29 additional annotated historical Health years were retained as candidate-only deviations and joined to source-cell evidence. `donor-source-parity.validation.json` records the exact source, database and normalization-manifest pins. [M-08, M-18; AC-06, AC-11, AC-16]",
+      "test_files": [
+        "tests/domains/health_appropriations/test_donor_parity.py",
+        "tests/domains/health_appropriations/test_parity_replay_contracts.py"
+      ]
+    },
+    {
+      "native_evidence": [
+        "donor.replay_sha256",
+        "donor.ledger_sha256"
+      ],
+      "status": "native_and_implementation_evidenced",
+      "task": "Require explicit reconciliation rationale and source coordinates for source-present deviations in the repair ledger; donor-only records retain a null source coordinate and require a reason. This records evidence only and does not approve a repair or publication. [M-08, M-18; AC-06, AC-11]",
+      "test_files": [
+        "tests/domains/health_appropriations/test_historical_reconciliation.py",
+        "tests/domains/health_appropriations/test_parity_replay_contracts.py"
+      ]
+    },
+    {
+      "native_evidence": [
+        "normalization",
+        "functional.independent_products.raw",
+        "donor.compile_defect"
+      ],
+      "status": "native_and_implementation_evidenced",
+      "task": "Extract historical Health spending and nominal GDP from the pinned workbook, retaining exact stored numeric tokens, annotated years, footnotes, March/June period context and accounting-basis transitions. Reconcile every source/oracle row through explicit difference records without rounding away source precision or dropping annotations. [M-05, M-06, M-07, M-08; AC-03, AC-05, AC-06, AC-11] (`3376695`)",
+      "test_files": [
+        "tests/domains/health_appropriations/test_historical.py",
+        "tests/domains/health_appropriations/test_historical_reconciliation.py"
+      ]
+    },
+    {
+      "native_evidence": [
+        "normalization",
+        "functional.independent_products.raw",
+        "donor.compile_defect"
+      ],
+      "status": "native_and_implementation_evidenced",
+      "task": "Extract BEFU/HYEFU literal Health summaries from verified originals, preserving Actual/Forecast, units, vintage, cell lineage and explicit unselected-area dispositions. Reconcile both ten-row donor oracles without selecting the separate cached-formula totals. [M-05, M-06, M-07, M-08; AC-03, AC-05, AC-06] (`801783d`)",
+      "test_files": [
+        "tests/domains/health_appropriations/test_forecast.py"
+      ]
+    },
+    {
+      "native_evidence": [
+        "normalization",
+        "functional.independent_products.raw",
+        "donor.compile_defect"
+      ],
+      "status": "native_and_implementation_evidenced",
+      "task": "Implement the named-column Budget expenditure adapter from verified original bytes, with full row dispositions, source-cell lineage, fixed decimal amounts and a non-overwriting Parquet/manifest command. Reconcile the pinned workbook's 215 Health rows against its donor-table oracle without altering the existing donor-SQLite products. [M-05, M-07, M-08, M-09; AC-03, AC-05, AC-06] (`d26e769`)",
+      "test_files": [
+        "tests/domains/health_appropriations/test_budget.py"
+      ]
+    },
+    {
+      "native_evidence": [
+        "normalization",
+        "functional.independent_products.raw",
+        "donor.compile_defect"
+      ],
+      "status": "native_and_implementation_evidenced",
+      "task": "Normalize all in-scope donor workbook data areas into the dedicated record sets; attach field/cell lineage and reason-coded exclusions. [M-05, M-07; AC-03, AC-05] (2026-09-28: seven donor workbooks, 12 expected-count guarded stages, 739 facts, 11,565 lineage links and 14,278 row/cell dispositions; two 50-file replays were identical. The explicit functional scope and the still-open 152-sheet census boundary are in `donor-area-normalization-20260928.md` and its JSON receipt.)",
+      "test_files": [
+        "tests/domains/health_appropriations/test_rebuild_eight.py",
+        "tests/domains/health_appropriations/test_stage_area_bindings.py",
+        "tests/domains/health_appropriations/test_verified_coverage.py"
+      ]
+    },
+    {
+      "native_evidence": [
+        "donor.replay_sha256",
+        "donor.ledger_sha256"
+      ],
+      "status": "native_and_implementation_evidenced",
+      "task": "Reconcile against the donor SQLite derivative, preserve the observed donor tables, and resolve every difference through a test-backed repair ledger. The 29 source-only rows have pinned footnote markers that the donor transform coerces away; the 1976 decimal token and SQLite REAL have equal binary-float values. All differences are accepted as retain-both dispositions, with null replacements and publication approval false. [M-08; AC-06, AC-11] (2026-09-27; see `donor-historical-dispositions-20260927.json`; fixture guards in `test_parity_replay_contracts.py`)",
+      "test_files": [
+        "tests/domains/health_appropriations/test_donor_parity.py",
+        "tests/domains/health_appropriations/test_historical_reconciliation.py",
+        "tests/domains/health_appropriations/test_parity_replay_contracts.py"
+      ]
+    },
+    {
+      "native_evidence": [
+        "normalization",
+        "functional.independent_products.raw",
+        "donor.compile_defect"
+      ],
+      "status": "native_and_implementation_evidenced",
+      "task": "Orchestrate the four original-workbook adapters from a pinned donor manifest and verified CAS, with a read-only preflight, exclusive new-run outputs, complete-run hash verification and preserved failure evidence. Keep raw extraction state separate from published donor-derived products. [M-09, M-15, M-16, M-18; AC-07, AC-12, AC-13, AC-16] (`578235c`)",
+      "test_files": [
+        "tests/domains/health_appropriations/test_rebuild.py",
+        "tests/domains/health_appropriations/test_rebuild_completion.py"
+      ]
+    },
+    {
+      "native_evidence": [
+        "normalization.coverage",
+        "existing_assurance"
+      ],
+      "status": "native_and_implementation_evidenced",
+      "task": "Implement a typed workbook/source inventory CLI equivalent to `inspect_excel.py`, with structured output and bounded failures. [M-09, M-15; AC-07, AC-13] (`446a82d`)",
+      "test_files": [
+        "tests/domains/health_appropriations/test_inspection.py"
+      ]
+    },
+    {
+      "native_evidence": [
+        "normalization",
+        "functional.independent_products.raw",
+        "donor.compile_defect"
+      ],
+      "status": "native_and_implementation_evidenced",
+      "task": "Implement the raw-to-Silver pipeline equivalent to `process_data.py`; regression-test the compile defect, positional heuristics and swallowed exceptions rather than retaining them. [M-09, M-18; AC-07, AC-16] (`578235c`, conformance `4454d75`; four donor-intended workbook profiles, 341 facts and verified raw-run readback; full workbook-area normalization, further vintages and partial-stage resume remain separate pending tasks)",
+      "test_files": [
+        "tests/domains/health_appropriations/test_rebuild.py",
+        "tests/domains/health_appropriations/test_raw_compatibility.py"
+      ]
+    },
+    {
+      "native_evidence": [
+        "functional.compatibility_rows_equal",
+        "functional.independent_products.compat"
+      ],
+      "status": "native_and_implementation_evidenced",
+      "task": "Generate the five-table SQLite compatibility database from canonical Parquet and validate schema/row/value parity or approved repairs. [M-08, M-09, M-10; AC-06, AC-08] (`e91d24b`)",
+      "test_files": [
+        "tests/domains/health_appropriations/test_compatibility_export.py",
+        "tests/domains/health_appropriations/test_raw_compatibility.py"
+      ]
+    },
+    {
+      "native_evidence": [
+        "functional.old_gold_tables_equal",
+        "functional.old_gold_sidecars_equal"
+      ],
+      "status": "native_and_implementation_evidenced",
+      "task": "Implement structured equivalents of `run_analysis.py` for long-term nominal trends, year-on-year growth, GDP share, recent appropriation breakdown and classification trends. [M-09, M-13; AC-07, AC-08] (`b38069c`, PR #261 merged `15b47b9`; four matching local builds, seven exact-head hosted checks; earlier local timing failures retained)",
+      "test_files": [
+        "tests/domains/health_appropriations/test_historical_analysis.py",
+        "tests/domains/health_appropriations/test_appropriation_analysis.py",
+        "tests/domains/health_appropriations/test_gold_export.py"
+      ]
+    },
+    {
+      "native_evidence": [
+        "functional.plot_contract_bytes_equal",
+        "functional.point_counts",
+        "visual_review"
+      ],
+      "status": "native_and_implementation_evidenced",
+      "task": "Reproduce all six donor plots with semantic parity contracts covering query inputs, filters, series, units, labels and rendering parameters; retain donor PNGs unchanged in Bronze. [M-03, M-09, M-13; AC-02, AC-07, AC-08] (`eeb6200`; PR #269 merged `b149d37`, seven exact-head checks; three byte-identical builds, visual QA and disclosed semantic differences)",
+      "test_files": [
+        "tests/domains/health_appropriations/test_plot_contracts.py",
+        "tests/domains/health_appropriations/test_plot_export.py",
+        "tests/domains/health_appropriations/test_gold_reader.py"
+      ]
+    },
+    {
+      "native_evidence": [
+        "donor",
+        "normalization",
+        "functional",
+        "existing_assurance"
+      ],
+      "status": "native_and_implementation_evidenced",
+      "task": "Run the 23-file, 312-row, four-analysis-family and six-plot parity suites, plus deterministic rebuild and unsupported-layout tests. [M-01, M-08, M-09, M-16; AC-01, AC-06, AC-07, AC-12] (2026-09-27: 23 donor objects / 6,604,301 bytes and 29 comparison inputs reverified; five-table/312-row oracle, historical ledger and the complete health-appropriations domain suite passed. Twelve-stage Bronze replay rebuilt 739 observations into 50 files in two byte-identical clean runs. The 30 historical deviations now have source-backed retain-both dispositions; no replacements or publication approvals were made. See `donor-historical-dispositions-20260927.json`.)",
+      "test_files": [
+        "tests/domains/health_appropriations/test_parity_replay_contracts.py",
+        "tests/domains/health_appropriations/test_rebuild_eight.py",
+        "tests/domains/health_appropriations/test_plot_export.py"
+      ]
+    },
+    {
+      "native_evidence": [
+        "review"
+      ],
+      "status": "self_review_and_paired_evidence_ready; final_tree_harness_and_hosted_pending",
+      "task": "Self-review, full harness, and paired evidence; no parity claim may hide an unexplained difference. [M-18, M-19; AC-16] (2026-09-27: required `./scripts/validate.sh` passed 6,963 tests / 9 skipped at 97.95% branch coverage; 48 schemas, 38 representative documents, differential parity 9/9, all configured mutation/hygiene and supply-chain gates, and strict 113-part SBOM. Historical differences retain source and donor observations separately; no value replacements or publication approvals were granted.)",
+      "test_files": []
+    }
+  ],
+  "postflight": {
+    "exit": 0,
+    "independent_lease_free": true,
+    "native_output_files": 188,
+    "original_failed_audit_retained": true,
+    "owner_and_group_absent": true,
+    "pins_unchanged": 4987,
+    "render_runtime_pins_unchanged": 9,
+    "status": "verified"
+  },
+  "producer_head": "5c2ba3ef8e28cd9f387fcd0e4c603a68845fffa6",
+  "producer_tree": "6e080c816587c5003fd43ba405a4ae965f07ad4d",
+  "production_test_schema_changes": false,
+  "proof_root_components": [
+    "/",
+    "Volumes",
+    "PortableSSD",
+    "ArchiveGovtNZRecovery",
+    "health-phase4-reconciliation-20261022",
+    "native-1"
+  ],
+  "retained_control_receipts": {
+    "donor-archive-1.json": {
+      "bytes": 472,
+      "sha256": "13068ba355abd895cf25a8d9bc4acf474a3456080bd1a52e3e31ac4c47a88b2e"
+    },
+    "donor-compile-defect-1.json": {
+      "bytes": 221,
+      "sha256": "f499db3bcfcf2a77db7a27a6f44f7be56795bfafa669e254438c5c7bd686d612"
+    },
+    "donor-replay-1.json": {
+      "bytes": 270814,
+      "sha256": "b20b472b361d16d9eca40ca6841ea5609fab23a1924d42491dc8af18e6237012"
+    },
+    "donor-tree-1.json": {
+      "bytes": 401,
+      "sha256": "58a0a3de1128015c974739cd1f31d7fb0d5ea3c72f09a387e6db8ad32da656db"
+    },
+    "frozen-native-1.json": {
+      "bytes": 1006044,
+      "sha256": "3e2131a7e63901f9ff8c44b9a38e2bb5b6d42bae5c7f82b7e023e691880fa392"
+    },
+    "frozen-native-2.json": {
+      "bytes": 1008006,
+      "sha256": "203dd936c8c63a9e44051f3dc9a2f10532ee340a85a7549f8fc139519f8207af"
+    },
+    "native-1.exit": {
+      "bytes": 2,
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865"
+    },
+    "native-1.log": {
+      "bytes": 876,
+      "sha256": "93382ac60985698e5640d3708635961e37735d1d2adf6739783885ffc1195eba"
+    },
+    "native-2.exit": {
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    "native-2.log": {
+      "bytes": 95,
+      "sha256": "a114ed04df2916e44d8f21d7103ee06ed56dc528185b1da4c499ac3ec95c7f85"
+    },
+    "native-driver-1.py": {
+      "bytes": 857,
+      "sha256": "d1192cf0a088037d469506ca94d6044de8f3b437a1ba61d3ea100a9f1748eb9d"
+    },
+    "native-driver-2.py": {
+      "bytes": 773,
+      "sha256": "f65a0fa7877645b61c243cf16ed58d77cabe72fa3511b154bd768381caf8449b"
+    },
+    "native-postflight-1.json": {
+      "bytes": 272,
+      "sha256": "1b7577e4000ea94efd28257ad2f63622fbf1d88f1b2e9efa572f4998e116c7a0"
+    },
+    "native-postflight-2.json": {
+      "bytes": 244,
+      "sha256": "1b5861ca20d86a3ad454fdaed138fc8144e9c3f76ab87f894576bcd816c649d4"
+    },
+    "native-proof-inventory-1.json": {
+      "bytes": 28422,
+      "sha256": "765e98146a56503d1b7b06ca7741561c33aab286def9a1e0ebc4ba6037304394"
+    },
+    "native-step-1.py": {
+      "bytes": 5709,
+      "sha256": "da85f82fcbf38ce4dfcaf51336e6365e76457996bcc26d460b74b763cab15419"
+    },
+    "native-step-2.py": {
+      "bytes": 6939,
+      "sha256": "0ac69d899ec318ea5999fe3fe00df6a121e1ebfa80a0a4911f2db07d792165cf"
+    },
+    "render-runtime-before-1.json": {
+      "bytes": 1739,
+      "sha256": "dbc768229c9b7de2990902cd2572b92cce2949f5cac884d6375022cef3dff687"
+    }
+  },
+  "review": {
+    "actionable_findings": [],
+    "full_final_tree_harness": "pending",
+    "hosted_assurance": "pending",
+    "issue_210": "open_until_protected_delivery",
+    "whole_track_completion": "not_established"
+  },
+  "schema_version": "archive-govt-nz.health-phase4-acceptance/v1",
+  "scope": "Phase 4 selected donor-functional areas and existing functional parity; not whole-track acceptance",
+  "source_changes": false,
+  "visual_review": {
+    "dimensions": [
+      1400,
+      800
+    ],
+    "observations": [
+      "All labels, source-context headers and legends fit within image bounds.",
+      "Historical line segments preserve accounting/period partitions; growth retains negative bars and five explicit omissions.",
+      "Appropriation bars retain zero baselines, source classification labels and distinct amount types.",
+      "No cross-version pixel identity with retained donor PNGs is asserted."
+    ],
+    "pngs_inspected": 6,
+    "status": "passed"
+  }
+}

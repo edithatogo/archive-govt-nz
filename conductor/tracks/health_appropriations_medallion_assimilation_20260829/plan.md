@@ -2570,3 +2570,26 @@ previous qualification results unchanged; original local timeout preserved.
 - [~] Qualify the four retained expenditure/revenue originals against full census, edition-specific definitions/periods and exact stored integers. Resolve Unit label and amount-scale evidence independently; preserve all missing fields, source classifications and negative values. Extend existing native/operations/canonical/Gold contracts with distinct complete29-source recoveryv13 for2008 and31-source recoveryv14 for2007; preserve prior v1-v12 identities and bytes. Run repeated Bronze recovery, original final-tree validation, focused protected PR delivery and zero-unique owned-topic pruning. Keep120s/source,30s/interface,900s/stage,4MiB manifest,128MiB package and80percent floor; rights/currency/starts/joins/comparability remain unqualified absent evidence. Donor retain-both remains accepted without replacement/publication. [M-02, M-05, M-06, M-07, M-10, M-11, M-13, M-15, M-16, M-18; AC-03, AC-04, AC-05, AC-08, AC-09, AC-11, AC-12, AC-13, AC-16]
 
 - [x] Budget2007/2008 native36-stage full recovery, independent complete v13 repeat, prior byte contracts and fourteen native schemas qualified;240 binding refusals pass. Original final-tree validation and protected delivery remain pending for the parent item.
+
+
+## Phase 4 current acceptance reconciliation — 2026-10-22
+
+- [~] Audit every Phase 4 task against current retained-source, analysis and
+  six-plot evidence before reconciling issue #210. Reverify the 23-object,
+  312-row donor oracle and accepted historical dispositions; independently
+  rebuild the twelve selected source areas and original functional products,
+  preserve runtime-specific differences and original receipts, and retain the
+  wider workbook census/rights boundaries. Resolve the older area-summary
+  count discrepancy through a separate evidence-backed projection rather than
+  rewriting its producer snapshot. [M-01, M-07, M-08, M-09, M-10, M-16, M-19;
+  AC-01, AC-03, AC-06, AC-07, AC-08, AC-12, AC-16]
+
+Native Phase4 acceptance reconciliation passed: pinned donor tree/archive,23objects/312rows,30 accepted retain-both historical dispositions; two exact twelve-stage50-file replays and two functional pipelines, six inspected PNGs. The unsupported historical35 summary count is preserved and separately reconciled; first audit assumption failure retained. Final-tree validation and protected delivery remain pending before issue210 closure. See phase4-acceptance-20261022.md/.json.
+
+- [~] Resolve the new Phase4 assurance dependency blocker: original final-tree
+  harness passes8283tests/schemas/parity/mutations, then the OSV audit reports
+  four vulnerabilities in locked pypdf6.19.0. Preserve failed run/receipt and
+  unchanged-pin postflight, promote the verified current supported6.x security
+  release within the existing approved stack, requalify affected PDF contracts
+  and retained sources, rerun the original full harness, then require dependency
+  review and exact-head Actions before protected delivery. [M-18, M-19; AC-16]
