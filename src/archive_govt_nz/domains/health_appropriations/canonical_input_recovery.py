@@ -49,9 +49,10 @@ BIFF8_2015_VERSION = "archive-govt-nz.health-canonical-input-recovery/v6"
 BIFF8_2014_VERSION = "archive-govt-nz.health-canonical-input-recovery/v7"
 BIFF8_2013_VERSION = "archive-govt-nz.health-canonical-input-recovery/v8"
 BIFF8_2012_VERSION = "archive-govt-nz.health-canonical-input-recovery/v9"
-ALL_BIFF8_EDITIONS = (2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019)
-COMPLETE_COHORT_STARTS = (2012, 2013, 2014, 2015, 2016)
-MAX_EXPANDED_SOURCES = 21
+BIFF8_2011_VERSION = "archive-govt-nz.health-canonical-input-recovery/v10"
+ALL_BIFF8_EDITIONS = (2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019)
+COMPLETE_COHORT_STARTS = (2011, 2012, 2013, 2014, 2015, 2016)
+MAX_EXPANDED_SOURCES = 23
 MAX_SOURCES = 5
 MAX_BIFF8_SOURCES = 7
 MAX_OUTPUT_FILES = 16
@@ -314,6 +315,29 @@ BIFF8_2012_SOURCES = (
 )
 
 
+# Exact qualified2011 local inspection token; not a new capture attestation.
+BIFF8_2011_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2011",
+        "biff8_budget",
+        "8712d27f2da918d1cc8376a8f15e24cafb6b608a3be0cc19da226768a8f69ba0",
+        "https://www.treasury.govt.nz/sites/default/files/2011-05/b11-expense-data.xls",
+        "Budget-2011",
+        "2026-10-21T09:12:10.277245+00:00",
+        "sha256:40affaba1b81c3a9b9c7b795afb49b9758b49432e6bd1e2d76c0ab16fd2911ef",
+    ),
+    SourceDefinition(
+        "biffrevenue-2011",
+        "biff8_revenue",
+        "bd902503455cebe5cc455031bbd2b07f325cce57027c8391c9bec476ad77f073",
+        "https://www.treasury.govt.nz/sites/default/files/2011-05/b11-revenue-data.xls",
+        "Budget-2011",
+        "2026-10-21T09:12:10.277245+00:00",
+        "sha256:bc09a4f03b7b4b6c6bbbcdd3bebee97e8503998785d67b438c78e1a399b44a00",
+    ),
+)
+
+
 def _require(condition: object) -> None:
     if not condition:
         message = "canonical_input_recovery_contract"
@@ -494,6 +518,7 @@ def _biff_definitions(editions: tuple[int, ...]) -> tuple[SourceDefinition, ...]
         (2014, BIFF8_2014_SOURCES),
         (2013, BIFF8_2013_SOURCES),
         (2012, BIFF8_2012_SOURCES),
+        (2011, BIFF8_2011_SOURCES),
     ):
         if year not in editions:
             continue
@@ -531,6 +556,7 @@ def rebuild_canonical_inputs(
     version = VERSION
     if include_biff8:
         version = {
+            2011: BIFF8_2011_VERSION,
             2012: BIFF8_2012_VERSION,
             2013: BIFF8_2013_VERSION,
             2014: BIFF8_2014_VERSION,

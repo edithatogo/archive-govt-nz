@@ -31,7 +31,9 @@ MAX_BYTES = 8 * 1024 * 1024
 MAX_TEXT = 16384
 _DEFINITION_COLUMN = 2
 _SOURCE_QUALIFIER_EDITION = 2014
-_LEGACY_MCOA_EDITIONS = (2012, 2013)
+_UNLABELLED_COLUMN_EDITION = 2011
+_UNLABELLED_COLUMN_COUNT = 13
+_LEGACY_MCOA_EDITIONS = (2011, 2012, 2013)
 PERIOD_TYPES = {
     2015: "Actuals",
     2016: "Actuals",
@@ -118,6 +120,12 @@ class BiffBudgetProfile:
                 if self.edition in _LEGACY_MCOA_EDITIONS
                 else []
             )
+            + (
+                [pa.field("source_unlabelled_m", pa.string())]
+                if self.edition == _UNLABELLED_COLUMN_EDITION
+                and self.kind == "expenditure"
+                else []
+            )
         )
 
 
@@ -125,7 +133,8 @@ PROFILES = {
     "expenditure": BiffBudgetProfile(
         "expenditure",
         "30602fd66ec1f4fb7d0b47f2766f6560c4d22e90c11e994fba3e404e29ceab48",
-        "https://www.treasury.govt.nz/sites/default/files/2019-05/b19-expenditure-data.xls",
+        "https://www.treasury.govt.nz/sites/default/files/2019-"
+        "05/b19-expenditure-data.xls",
         6288,
         tuple(budget_expenditure_2024.FIELDS.items()),
         (
@@ -1117,8 +1126,243 @@ PROFILES_2012 = {
 }
 
 
+# Budget2011 blank column M is structural only, never Current Scope.
+PROFILES_2011 = {
+    "expenditure": replace(
+        PROFILES_2012["expenditure"],
+        source_sha256="8712d27f2da918d1cc8376a8f15e24cafb6b608a3be0cc19da226768a8f69ba0",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2011-05/b11-expense-data.xls",
+        max_rows=5658,
+        edition=2011,
+        absent_fields=(*_ABSENT_FIELDS_2013["expenditure"], "current_scope"),
+        fields=(
+            ("Department", "department"),
+            ("Vote", "vote"),
+            ("App id", "app_id"),
+            ("MCOA id", "mcoa_id"),
+            ("Description", "appropriation_name"),
+            ("Appropriation Type", "appropriation_or_category_type"),
+            ("Output Expense Type", "output_expense_type"),
+            ("Functional Classification", "functional_classification"),
+            ("Amount ($000)", "amount"),
+            ("Year", "year"),
+            ("Amount_Type_Desc", "amount_type"),
+            ("Periodicity", "periodicity"),
+            ("", "source_unlabelled_m"),
+        ),
+        definitions=(
+            (1, "Definitions and Explanations"),
+            (3, "Overview"),
+            (
+                4,
+                (
+                    "This Expense workbook contains details of actual "
+                    "government expenditure for the years' ended 30 June "
+                    "2007, 2008, 2009 and 2010; estimated actual government "
+                    "expenditure for the year ending 30\xa0June 2011 and "
+                    "budgeted government expenditure for the year ending 30 "
+                    "June 2012 as published in Budget 2011."
+                ),
+            ),
+            (
+                6,
+                (
+                    "Raw data has been included in this workbook to allow "
+                    "anyone to filter, sort and manipulate the data for "
+                    "their own purposes.  Some examples in the form of pivot"
+                    " tables and charts are also provided."
+                ),
+            ),
+            (
+                8,
+                (
+                    "More assistance on the use of pivot tables and charts "
+                    "can be obtained from the Microsoft Excel help system."
+                ),
+            ),
+            (10, "Definitions"),
+            (11, "Amounts are in thousands of dollars."),
+            (
+                12,
+                (
+                    "Definitions of appropriation types can be found in the "
+                    "Introduction chapter of The Estimates of Appropriations"
+                    " for the New Zealand Government."
+                ),
+            ),
+            (14, "Disclaimer"),
+            (
+                15,
+                (
+                    "These spreadsheets are based on the data contained in "
+                    "the Crown Financial Information System, which is used "
+                    "to collect and compile the raw data for the 2011/12 "
+                    "Estimates.  They do not include data from the 2010/11 "
+                    "Supplementary Estimates. "
+                ),
+            ),
+            (
+                17,
+                (
+                    "Data relating to the 2011/12 fiscal year should match "
+                    "the 2011/12 Estimates exactly."
+                ),
+            ),
+            (
+                19,
+                (
+                    "This workbook supports, but does not form part of, the "
+                    "official Budget documents.  The printed copies of the "
+                    "Estimates and Supplementary Estimates, as tabled by the"
+                    " Minister of Finance on each Budget day, are the "
+                    "official sources for data contained in these workbooks."
+                ),
+            ),
+            (
+                21,
+                (
+                    "The Treasury has generated this workbook as a resource "
+                    "for interested persons and has taken all care to ensure"
+                    " the data are correct, but does not take responsibility"
+                    " for any errors or conclusions drawn from this data."
+                ),
+            ),
+            (
+                23,
+                (
+                    "The Treasury does not provide technical support on the "
+                    "use of Microsoft Excel workbooks."
+                ),
+            ),
+        ),
+        period_types=(
+            (2007, "Actuals"),
+            (2008, "Actuals"),
+            (2009, "Actuals"),
+            (2010, "Actuals"),
+            (2011, "Estimated Actual"),
+            (2012, "Main Estimates"),
+        ),
+    ),
+    "revenue": replace(
+        PROFILES_2012["revenue"],
+        source_sha256="bd902503455cebe5cc455031bbd2b07f325cce57027c8391c9bec476ad77f073",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2011-05/b11-revenue-data.xls",
+        max_rows=990,
+        edition=2011,
+        fields=(
+            ("Department", "department"),
+            ("Vote", "vote"),
+            ("App id", "app_id"),
+            ("MCOA id", "mcoa_id"),
+            ("Description", "description"),
+            ("Revenue Type", "revenue_type"),
+            ("Functional Classification", "functional_classification"),
+            ("Amount ($000)", "amount"),
+            ("Year", "year"),
+            ("Amount_Type_Desc", "amount_type"),
+            ("Periodicity", "periodicity"),
+        ),
+        definitions=(
+            (1, "Definitions and Explanations"),
+            (3, "Overview"),
+            (
+                5,
+                (
+                    "The Revenue workbook contains details of  actual "
+                    "government Crown revenue and capital receipts for the "
+                    "years' ended 30 June 2007, 2008, 2009 and 2010; "
+                    "estimated actual government Crown revenue and capital "
+                    "receipts for the year ending 30 June 2011 and budgeted "
+                    "government Crown revenue and capital receipts for the "
+                    "year ending 30 June 2012 as published in Budget 2011."
+                ),
+            ),
+            (
+                7,
+                (
+                    "Raw data has been made available to allow anyone to "
+                    "filter, sort and manipulate the data for their own "
+                    "purposes.  Some examples in the form of pivot tables "
+                    "and charts are also provided."
+                ),
+            ),
+            (
+                9,
+                (
+                    "More assistance on the use of pivot tables and charts "
+                    "can be obtained from the Microsoft Excel help system."
+                ),
+            ),
+            (11, "Definitions"),
+            (13, "Amounts are in thousands of dollars."),
+            (
+                14,
+                (
+                    "Definitions of Crown revenue and capital receipts can "
+                    "be found in the Introduction chapter of The Estimates "
+                    "of Appropriations for the Government of New Zealand."
+                ),
+            ),
+            (16, "Disclaimer"),
+            (
+                18,
+                (
+                    "These spreadsheets are based on the data contained in "
+                    "the Crown Financial Information System, which was used "
+                    "to collect and compile the raw data for the 2011/12 "
+                    "Estimates.  They do not include data from the 2010/11 "
+                    "Supplementary Estimates. "
+                ),
+            ),
+            (
+                20,
+                (
+                    "Data relating to the 2011/12 fiscal year should match "
+                    "the 2011/12 Estimates exactly."
+                ),
+            ),
+            (
+                22,
+                (
+                    "This workbook supports, but does not form part of, the "
+                    "official Budget documents.  The printed copies of the "
+                    "Estimates and Supplementary Estimates, as tabled by the"
+                    " Minister of Finance on each Budget day, are the "
+                    "official sources for data contained in these workbooks."
+                ),
+            ),
+            (
+                24,
+                (
+                    "The Treasury has generated this workbook as a resource "
+                    "for interested persons and has taken all care to ensure"
+                    " the data are correct, but does not take responsibility"
+                    " for any errors or conclusions drawn from this data."
+                ),
+            ),
+            (
+                26,
+                (
+                    "The Treasury does not provide technical support on the "
+                    "use of Microsoft Excel workbooks."
+                ),
+            ),
+        ),
+        period_types=(
+            (2007, "Actuals"),
+            (2008, "Actuals"),
+            (2009, "Actuals"),
+            (2010, "Actuals"),
+            (2011, "Estimated Actual"),
+            (2012, "Main Estimates"),
+        ),
+    ),
+}
+
+
 def declared_profiles() -> tuple[BiffBudgetProfile, ...]:
-    """Expose only the sixteen independently pinned source-edition profiles."""
+    """Expose only the eighteen independently pinned source-edition profiles."""
     return (
         *PROFILES.values(),
         *PROFILES_2018.values(),
@@ -1128,6 +1372,7 @@ def declared_profiles() -> tuple[BiffBudgetProfile, ...]:
         *PROFILES_2014.values(),
         *PROFILES_2013.values(),
         *PROFILES_2012.values(),
+        *PROFILES_2011.values(),
     )
 
 
@@ -1265,7 +1510,11 @@ def _selected_reason(values: dict[str, Any], profile: BiffBudgetProfile) -> str 
             checks.append(
                 (
                     values["output_expense_type"]
-                    not in {None, "Permanent Legislative Authority"},
+                    not in (
+                        {None, "Permanent Legislative Authority", "Revenue Dependent"}
+                        if profile.edition == _UNLABELLED_COLUMN_EDITION
+                        else {None, "Permanent Legislative Authority"}
+                    ),
                     "invalid_source_qualifier",
                 )
             )
@@ -1428,12 +1677,15 @@ def parse_snapshot(
     _require(
         profile.kind in {"expenditure", "revenue"}
         and type(profile.edition) is int
-        and profile.edition in {2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019}
+        and profile.edition in {2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019}
     )
     _require(
         profile.absent_fields
         == (
-            _ABSENT_FIELDS_2013[profile.kind]
+            (*_ABSENT_FIELDS_2013["expenditure"], "current_scope")
+            if profile.edition == _UNLABELLED_COLUMN_EDITION
+            and profile.kind == "expenditure"
+            else _ABSENT_FIELDS_2013[profile.kind]
             if profile.edition in _LEGACY_MCOA_EDITIONS
             else _ABSENT_EXPENDITURE_FIELDS_2015
             if profile.kind == "expenditure" and profile.edition in {2014, 2015}
@@ -1451,10 +1703,25 @@ def parse_snapshot(
     _definitions(payload, profile)
     _require(
         1 < len(raw.values) <= profile.max_rows + 1
-        and raw.values[0] == tuple(header for header, _ in profile.fields)
+        and (
+            (*raw.values[0][:12], "")
+            if profile.edition == _UNLABELLED_COLUMN_EDITION
+            and profile.kind == "expenditure"
+            and len(raw.values[0]) == _UNLABELLED_COLUMN_COUNT
+            and raw.values[0][12] is None
+            else raw.values[0]
+        )
+        == tuple(header for header, _ in profile.fields)
         and 1 not in raw.formula_rows
         and 1 not in raw.error_rows
     )
+    if profile.edition == _UNLABELLED_COLUMN_EDITION and profile.kind == "expenditure":
+        _require(
+            all(
+                len(row) == _UNLABELLED_COLUMN_COUNT and row[12] is None
+                for row in raw.values[1:]
+            )
+        )
     facts, lineage, dispositions, numeric = [], [], [], []
     for row in range(2, len(raw.values) + 1):
         _require(len(raw.values[row - 1]) == len(profile.fields))
