@@ -2574,7 +2574,7 @@ previous qualification results unchanged; original local timeout preserved.
 
 ## Phase 4 current acceptance reconciliation — 2026-10-22
 
-- [~] Audit every Phase 4 task against current retained-source, analysis and
+- [x] Audit every Phase 4 task against current retained-source, analysis and
   six-plot evidence before reconciling issue #210. Reverify the 23-object,
   312-row donor oracle and accepted historical dispositions; independently
   rebuild the twelve selected source areas and original functional products,
@@ -2586,7 +2586,7 @@ previous qualification results unchanged; original local timeout preserved.
 
 Native Phase4 acceptance reconciliation passed: pinned donor tree/archive,23objects/312rows,30 accepted retain-both historical dispositions; two exact twelve-stage50-file replays and two functional pipelines, six inspected PNGs. The unsupported historical35 summary count is preserved and separately reconciled; first audit assumption failure retained. Final-tree validation and protected delivery remain pending before issue210 closure. See phase4-acceptance-20261022.md/.json.
 
-- [~] Resolve the new Phase4 assurance dependency blocker: original final-tree
+- [x] Resolve the new Phase4 assurance dependency blocker: original final-tree
   harness passes8283tests/schemas/parity/mutations, then the OSV audit reports
   four vulnerabilities in locked pypdf6.19.0. Preserve failed run/receipt and
   unchanged-pin postflight, promote the verified current supported6.x security
@@ -2607,6 +2607,8 @@ Native Phase4 acceptance reconciliation passed: pinned donor tree/archive,23obje
   and actual repeat/source/Gold/query/metadata products with original limits,
   validate and deliver through protected checks before managed-worktree pruning.
   This does not complete the remaining2020–2024 specialized OOXML bridges or
-  whole-track acceptance. Phase4 delivery remains separately pending in PR747.
+  whole-track acceptance. Phase4 delivered separately through PR747.
   [M-05, M-06, M-10, M-11, M-16, M-18, M-19;
   AC-05, AC-08, AC-09, AC-11, AC-12, AC-16]
+
+Phase4 reconciliation/security blocker delivered by PR747, protected merge3317bb4e; all8checks and original32stages locally/on3platforms pass. Issue210 closed, primary clean and exact topic refs pruned, native/evidence/runtime retained. See phase4-delivery-747-20261022.json. Earlier producer pending-state receipts remain unchanged; wider phases/track stay open.

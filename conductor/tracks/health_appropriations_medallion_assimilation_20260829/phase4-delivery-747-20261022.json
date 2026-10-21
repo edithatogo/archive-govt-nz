@@ -1,0 +1,83 @@
+{
+  "all_checks_green": true,
+  "closing_comment": "https://github.com/edithatogo/archive-govt-nz/issues/210#issuecomment-6323350930",
+  "delivery_inventory_sha256": "e63642c14434a3a3180cac4a32cd3adebe876e5af2a70092c15504946c1092ef",
+  "delivery_packet_files": 94,
+  "dependency_security_unblock": "pypdf6.19.0 to6.21.1; failed audit preserved, focused and full requalification passed",
+  "head": "d73ac9ecf0c0aedc2206e54db5de37af580c8ac3",
+  "hosted_jobs": [
+    {
+      "log_sha256": "461888d568fcbc5af220fe1b9615afc82ad93045fbf14b5e0829296b25004183",
+      "name": "Assurance (macos-latest)",
+      "passed": 8267,
+      "skipped": 30,
+      "test_seconds": 804.48
+    },
+    {
+      "log_sha256": "aa9bf98c06c041b8436cc2e4ca7d121e95c75ad04674e8a94cd0233f6bedd5cc",
+      "name": "Assurance (ubuntu-latest)",
+      "passed": 8267,
+      "skipped": 30,
+      "test_seconds": 553.39
+    },
+    {
+      "log_sha256": "737480bc1b5b31f29063d38e19273669ba5f10d21c9a9054fb373aa907eebe20",
+      "name": "Assurance (windows-latest)",
+      "passed": 8261,
+      "skipped": 36,
+      "test_seconds": 870.78
+    }
+  ],
+  "hosted_review": "provider quota unavailable; local self-review permitted by AGENTS.md; no completed cloud review claimed",
+  "integration": {
+    "clean": true,
+    "head": "d73ac9ecf0c0aedc2206e54db5de37af580c8ac3",
+    "main_contains_head_and_merge": true,
+    "merge_commit": "3317bb4ec5385545063ba9ebd6d210d7fa69b415",
+    "native_files_verified": 188,
+    "unique_commits": 0,
+    "unique_patches": 0
+  },
+  "legacy_unit_boundary": "Frozen adapter unit assertions are not independently qualified currency/period/analytical admission",
+  "local_original_stages": 32,
+  "local_tests": 8283,
+  "merge": "3317bb4ec5385545063ba9ebd6d210d7fa69b415",
+  "merged_at": "2026-10-21T18:20:27Z",
+  "native_output_files_verified": 188,
+  "phase_issue": {
+    "closedAt": "2026-10-21T18:20:28Z",
+    "state": "CLOSED",
+    "url": "https://github.com/edithatogo/archive-govt-nz/issues/210"
+  },
+  "pr": 747,
+  "primary_checkout_clean": true,
+  "primary_checkout_retained": true,
+  "private_mirror_verified": true,
+  "proof_root_components": [
+    "/",
+    "Volumes",
+    "PortableSSD",
+    "ArchiveGovtNZ",
+    "health-appropriations",
+    "evidence",
+    "phase4-acceptance-20261022",
+    "hosted-delivery-747"
+  ],
+  "required_checks": [
+    "Assurance (macos-latest)",
+    "Assurance (ubuntu-latest)",
+    "Assurance (windows-latest)",
+    "CodeQL",
+    "analyze",
+    "codecov/patch",
+    "dependency-review",
+    "lint"
+  ],
+  "schema_version": "archive-govt-nz.health-phase4-protected-delivery/v1",
+  "source_values_originals_and_prior_observations": "unchanged",
+  "strict_branch_rules_unchanged": true,
+  "topic_pruned": true,
+  "tree": "d2e708d11eb39622d8fcc423028b6a1acb887538",
+  "url": "https://github.com/edithatogo/archive-govt-nz/pull/747",
+  "whole_track_completion": "not_established"
+}

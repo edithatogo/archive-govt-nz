@@ -738,3 +738,5 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [Phase 4 current acceptance reconciliation](phase4-acceptance-20261022.md) and [pinned native audit](phase4-acceptance-20261022.json). Protected delivery remains pending; wider census and track gates stay open.
 
 - [PDF dependency security unblock](pypdf-security-unblock-20261022.md) and [paired qualification](pypdf-security-unblock-20261022.json): required audit failure preserved; fixed lock,60 existing PDF tests and three retained-source byte comparisons pass. Final assurance pending.
+
+- [Phase 4 protected delivery PR747](phase4-delivery-747-20261022.json): actual eight green checks, three-platform original harness, issue210 closure and verified clean topic pruning. Wider phases and track acceptance remain open.
