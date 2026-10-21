@@ -34,13 +34,18 @@ def _fixture(
         "vote": "Health",
         "app_id": 387,
         "parent_id": 387,
+        "parent_appropriation_id": 387,
         "mcoa_id": 387,
         "output_expense_type": output_expense_type,
         "appropriation_name": "Fictional care",
         "category_name": "Fictional care",
         "is_mca": "No",
         "group_type": "MCOA" if edition < 2019 else "Single",
-        "appropriation_or_category_type": "Non-Departmental Output Expenses",
+        "appropriation_or_category_type": (
+            "Output Expenses - Non-Departmental"
+            if edition == 2010
+            else "Non-Departmental Output Expenses"
+        ),
         "restriction_type": None,
         "functional_classification": "Health",
         "amount": amount,
@@ -106,20 +111,40 @@ def _assert_2013_dimensions(
         assert fact["output_expense_type"] is None
 
 
-def _assert_2011_blank_column(
+def _assert_early_dimensions(
     parsed: budget_biff8.BiffBudgetSnapshot,
     kind: str,
     fact: dict[str, Any],
     edition: int,
 ) -> None:
-    if edition == 2011 and kind == "expenditure":
+    if edition in (2010, 2011) and kind == "expenditure":
         assert fact["current_scope"] is None
-        assert fact["source_unlabelled_m"] is None
+        if edition == 2011:
+            assert fact["source_unlabelled_m"] is None
+        else:
+            assert "source_unlabelled_m" not in fact
+            assert (
+                fact["appropriation_or_category_type"]
+                == "Output Expenses - Non-Departmental"
+            )
         assert "source_field_absent_current_scope" in fact["quality_flags"]
         assert (
             "current_scope"
             not in parsed.tables["field_lineage.parquet"]["field"].to_pylist()
         )
+
+    if edition == 2010 and kind == "revenue":
+        assert fact["parent_appropriation_id"] == 387
+        assert "mcoa_id" not in fact
+        assert "source_parent_relationship_not_asserted" in fact["quality_flags"]
+        links = parsed.tables["field_lineage.parquet"].to_pylist()
+        assert any(
+            row["field"] == "parent_appropriation_id"
+            and row["source_coordinate"] == "'Raw Data'!D2"
+            and row["numeric_evidence_id"] is not None
+            for row in links
+        )
+        assert "mcoa_id" not in {row["field"] for row in links}
 
 
 def _assert_2014_qualifiers(
@@ -154,7 +179,7 @@ def _assert_2014_qualifiers(
 
 
 @pytest.mark.parametrize(
-    "edition", [2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]
+    "edition", [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]
 )
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
@@ -242,9 +267,9 @@ def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
                 profile=replace(profile, absent_fields=()),
                 observed_at="2026-10-20T00:00:00Z",
             )
-    if edition in (2011, 2012, 2013):
+    if edition in (2011, 2012, 2013) or (edition == 2010 and kind == "expenditure"):
         _assert_2013_dimensions(parsed, kind, fact)
-    _assert_2011_blank_column(parsed, kind, fact, edition)
+    _assert_early_dimensions(parsed, kind, fact, edition)
     if edition == 2014:
         _assert_2014_qualifiers(profile, parsed, kind, fact)
     if edition == 2015:
@@ -300,7 +325,9 @@ def test_source_and_definition_changes_fail_before_admission() -> None:
         )
 
 
-@pytest.mark.parametrize("edition", [2011, 2012, 2013, 2014, 2015, 2016, 2017, 2019])
+@pytest.mark.parametrize(
+    "edition", [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2019]
+)
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_biff_budget_operations_and_native_dispatch_retain_all_four_tables(
     kind: str, edition: int, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
@@ -384,8 +411,8 @@ def test_biff_budget_operations_and_native_dispatch_retain_all_four_tables(
         )
 
 
-@pytest.mark.parametrize("edition", [2011, 2012])
-def test_revenue_dependent_qualifier_is_limited_to_its_source_edition(
+@pytest.mark.parametrize("edition", [2010, 2011, 2012])
+def test_revenue_dependent_qualifier_is_limited_to_qualified_legacy_editions(
     edition: int,
 ) -> None:
     payload, profile = _fixture(
@@ -394,8 +421,12 @@ def test_revenue_dependent_qualifier_is_limited_to_its_source_edition(
     parsed = budget_biff8.parse_snapshot(
         payload, profile=profile, observed_at="2026-10-21T00:00:00Z"
     )
-    assert parsed.metadata["counts"]["normalized"] == (1 if edition == 2011 else 0)
-    assert parsed.metadata["counts"]["rejected"] == (0 if edition == 2011 else 1)
+    assert parsed.metadata["counts"]["normalized"] == (
+        1 if edition in (2010, 2011) else 0
+    )
+    assert parsed.metadata["counts"]["rejected"] == (
+        0 if edition in (2010, 2011) else 1
+    )
 
 
 def test_nonblank_unlabelled_column_refuses_2011_admission() -> None:

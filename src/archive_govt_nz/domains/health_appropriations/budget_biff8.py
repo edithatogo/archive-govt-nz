@@ -33,7 +33,10 @@ _DEFINITION_COLUMN = 2
 _SOURCE_QUALIFIER_EDITION = 2014
 _UNLABELLED_COLUMN_EDITION = 2011
 _UNLABELLED_COLUMN_COUNT = 13
-_LEGACY_MCOA_EDITIONS = (2011, 2012, 2013)
+_SOURCE_PARENT_IDENTIFIER_EDITION = 2010
+_NO_SCOPE_EXPENDITURE_EDITIONS = (2010, 2011)
+_REVENUE_DEPENDENT_EDITIONS = (2010, 2011)
+_LEGACY_DIMENSION_EDITIONS = (2010, 2011, 2012, 2013)
 PERIOD_TYPES = {
     2015: "Actuals",
     2016: "Actuals",
@@ -108,7 +111,15 @@ class BiffBudgetProfile:
                 else []
             )
             + (
-                [pa.field("mcoa_id", pa.int64())]
+                [
+                    pa.field(
+                        "parent_appropriation_id"
+                        if self.edition == _SOURCE_PARENT_IDENTIFIER_EDITION
+                        and self.kind == "revenue"
+                        else "mcoa_id",
+                        pa.int64(),
+                    )
+                ]
                 + (
                     [pa.field("output_expense_type", pa.string())]
                     if self.kind == "expenditure"
@@ -117,7 +128,7 @@ class BiffBudgetProfile:
                         pa.field("periodicity", pa.string()),
                     ]
                 )
-                if self.edition in _LEGACY_MCOA_EDITIONS
+                if self.edition in _LEGACY_DIMENSION_EDITIONS
                 else []
             )
             + (
@@ -1361,8 +1372,162 @@ PROFILES_2011 = {
 }
 
 
+# Budget2010 source-stated ParentAppropriationID is distinct from expenditure MCOA.
+PROFILES_2010 = {
+    "expenditure": replace(
+        PROFILES_2011["expenditure"],
+        source_sha256="7e26853cbed914ef19bc6dc426d24708dbf19487ce0a9dbc15db4d32d3d00a4f",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2010-05/b10-expense-data.xls",
+        max_rows=5513,
+        edition=2010,
+        fields=(
+            ("Department", "department"),
+            ("Vote", "vote"),
+            ("App id", "app_id"),
+            ("MCOA id", "mcoa_id"),
+            ("Description", "appropriation_name"),
+            ("Appropriation Type", "appropriation_or_category_type"),
+            ("Output Expense Type", "output_expense_type"),
+            ("FunctionalClassification", "functional_classification"),
+            ("Amount ($000)", "amount"),
+            ("Year", "year"),
+            ("Amount_Type_Desc", "amount_type"),
+            ("Periodicity", "periodicity"),
+        ),
+        numeric_columns=(("app_id", 3), ("mcoa_id", 4), ("amount", 9), ("year", 10)),
+        definitions=(
+            (1, dict(PROFILES_2011["expenditure"].definitions)[1]),
+            (3, dict(PROFILES_2011["expenditure"].definitions)[3]),
+            (
+                4,
+                (
+                    "This Expense workbook contains details of actual "
+                    "government expenditure for the years' ended 30 June "
+                    "2006, 2007, 2008 and 2009; estimated actual "
+                    "government expenditure for the year ending 30\xa0June "
+                    "2010 and budgeted government expenditure for the "
+                    "year ending 30 June 2011 as published in Budget "
+                    "2010."
+                ),
+            ),
+            (6, dict(PROFILES_2011["expenditure"].definitions)[6]),
+            (8, dict(PROFILES_2011["expenditure"].definitions)[8]),
+            (10, dict(PROFILES_2011["expenditure"].definitions)[10]),
+            (11, dict(PROFILES_2011["expenditure"].definitions)[11]),
+            (12, dict(PROFILES_2011["expenditure"].definitions)[12]),
+            (14, dict(PROFILES_2011["expenditure"].definitions)[14]),
+            (
+                15,
+                (
+                    "These spreadsheets are based on the data contained "
+                    "in the Crown Financial Information System, which is "
+                    "used to collect and compile the raw data for the "
+                    "2010/11 Estimates.  They do not include data from "
+                    "the 2009/10 Supplementary Estimates. "
+                ),
+            ),
+            (
+                17,
+                (
+                    "Data relating to the 2010/11 fiscal year should "
+                    "match the 2010/11 Estimates exactly."
+                ),
+            ),
+            (19, dict(PROFILES_2011["expenditure"].definitions)[19]),
+            (21, dict(PROFILES_2011["expenditure"].definitions)[21]),
+            (23, dict(PROFILES_2011["expenditure"].definitions)[23]),
+        ),
+        period_types=(
+            (2006, "Actuals"),
+            (2007, "Actuals"),
+            (2008, "Actuals"),
+            (2009, "Actuals"),
+            (2010, "Estimated Actual"),
+            (2011, "Main Estimates"),
+        ),
+    ),
+    "revenue": replace(
+        PROFILES_2011["revenue"],
+        source_sha256="d6f63516ef967abec18f09cbe347c02a648a53ef04ce382aa8511c7280f08e15",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2010-05/b10-revenue-data.xls",
+        max_rows=983,
+        edition=2010,
+        fields=(
+            ("UnitName", "department"),
+            ("VoteName", "vote"),
+            ("AppropriationID", "app_id"),
+            ("ParentAppropriationID", "parent_appropriation_id"),
+            ("Description", "description"),
+            ("Revenue Type", "revenue_type"),
+            ("FunctionalClassification", "functional_classification"),
+            ("Amount $(000)", "amount"),
+            ("Year", "year"),
+            ("AmountType", "amount_type"),
+            ("Periodicity", "periodicity"),
+        ),
+        numeric_columns=(
+            ("app_id", 3),
+            ("parent_appropriation_id", 4),
+            ("amount", 8),
+            ("year", 9),
+        ),
+        definitions=(
+            (1, dict(PROFILES_2011["revenue"].definitions)[1]),
+            (3, dict(PROFILES_2011["revenue"].definitions)[3]),
+            (
+                5,
+                (
+                    "The Revenue workbook contains details of  actual "
+                    "government Crown revenue and capital receipts for "
+                    "the years' ended 30 June 2006, 2007 2008 and 2009; "
+                    "estimated actual government Crown revenue and "
+                    "capital receipts for the year ending 30 June 2010 "
+                    "and budgeted government Crown revenue and capital "
+                    "receipts for the year ending 30 June 2011 as "
+                    "published in Budget 2010."
+                ),
+            ),
+            (7, dict(PROFILES_2011["revenue"].definitions)[7]),
+            (9, dict(PROFILES_2011["revenue"].definitions)[9]),
+            (11, dict(PROFILES_2011["revenue"].definitions)[11]),
+            (13, dict(PROFILES_2011["revenue"].definitions)[13]),
+            (14, dict(PROFILES_2011["revenue"].definitions)[14]),
+            (16, dict(PROFILES_2011["revenue"].definitions)[16]),
+            (
+                18,
+                (
+                    "These spreadsheets are based on the data contained "
+                    "in the Crown Financial Information System, which was"
+                    " used to collect and compile the raw data for the "
+                    "2010/11 Estimates.  They do not include data from "
+                    "the 2009/10 Supplementary Estimates. "
+                ),
+            ),
+            (
+                20,
+                (
+                    "Data relating to the 2010/11 fiscal year should "
+                    "match the 2010/11 Estimates exactly."
+                ),
+            ),
+            (22, dict(PROFILES_2011["revenue"].definitions)[22]),
+            (24, dict(PROFILES_2011["revenue"].definitions)[24]),
+            (26, dict(PROFILES_2011["revenue"].definitions)[26]),
+        ),
+        period_types=(
+            (2006, "Actuals"),
+            (2007, "Actuals"),
+            (2008, "Actuals"),
+            (2009, "Actuals"),
+            (2010, "Estimated Actual"),
+            (2011, "Main Estimates"),
+        ),
+    ),
+}
+
+
 def declared_profiles() -> tuple[BiffBudgetProfile, ...]:
-    """Expose only the eighteen independently pinned source-edition profiles."""
+    """Expose only the twenty independently pinned source-edition profiles."""
     return (
         *PROFILES.values(),
         *PROFILES_2018.values(),
@@ -1373,6 +1538,7 @@ def declared_profiles() -> tuple[BiffBudgetProfile, ...]:
         *PROFILES_2013.values(),
         *PROFILES_2012.values(),
         *PROFILES_2011.values(),
+        *PROFILES_2010.values(),
     )
 
 
@@ -1504,7 +1670,7 @@ def _selected_reason(values: dict[str, Any], profile: BiffBudgetProfile) -> str 
                 (values["periodicity"] not in {"A", "M"}, "invalid_periodicity"),
             ]
         )
-    if profile.edition in _LEGACY_MCOA_EDITIONS:
+    if profile.edition in _LEGACY_DIMENSION_EDITIONS:
         checks.append((values["periodicity"] != "A", "invalid_source_qualifier"))
         if profile.kind == "expenditure":
             checks.append(
@@ -1512,7 +1678,7 @@ def _selected_reason(values: dict[str, Any], profile: BiffBudgetProfile) -> str 
                     values["output_expense_type"]
                     not in (
                         {None, "Permanent Legislative Authority", "Revenue Dependent"}
-                        if profile.edition == _UNLABELLED_COLUMN_EDITION
+                        if profile.edition in _REVENUE_DEPENDENT_EDITIONS
                         else {None, "Permanent Legislative Authority"}
                     ),
                     "invalid_source_qualifier",
@@ -1606,6 +1772,12 @@ def _fact(
             "source_classification_unmapped",
             *("source_field_absent_" + field for field in profile.absent_fields),
             *(
+                ["source_parent_relationship_not_asserted"]
+                if profile.edition == _SOURCE_PARENT_IDENTIFIER_EDITION
+                and profile.kind == "revenue"
+                else []
+            ),
+            *(
                 ["source_edition_conflict_resolved_by_title_and_estimates_context"]
                 if profile.edition == _SOURCE_QUALIFIER_EDITION
                 and profile.kind == "revenue"
@@ -1677,16 +1849,17 @@ def parse_snapshot(
     _require(
         profile.kind in {"expenditure", "revenue"}
         and type(profile.edition) is int
-        and profile.edition in {2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019}
+        and profile.edition
+        in {2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019}
     )
     _require(
         profile.absent_fields
         == (
             (*_ABSENT_FIELDS_2013["expenditure"], "current_scope")
-            if profile.edition == _UNLABELLED_COLUMN_EDITION
+            if profile.edition in _NO_SCOPE_EXPENDITURE_EDITIONS
             and profile.kind == "expenditure"
             else _ABSENT_FIELDS_2013[profile.kind]
-            if profile.edition in _LEGACY_MCOA_EDITIONS
+            if profile.edition in _LEGACY_DIMENSION_EDITIONS
             else _ABSENT_EXPENDITURE_FIELDS_2015
             if profile.kind == "expenditure" and profile.edition in {2014, 2015}
             else ()
