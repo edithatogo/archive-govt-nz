@@ -54,6 +54,7 @@ BIFF8_2010_VERSION = "archive-govt-nz.health-canonical-input-recovery/v11"
 BIFF8_2009_VERSION = "archive-govt-nz.health-canonical-input-recovery/v12"
 BIFF8_2008_VERSION = "archive-govt-nz.health-canonical-input-recovery/v13"
 BIFF8_2007_VERSION = "archive-govt-nz.health-canonical-input-recovery/v14"
+REVENUE_2025_VERSION = "archive-govt-nz.health-canonical-input-recovery/v15"
 ALL_BIFF8_EDITIONS = (
     2007,
     2008,
@@ -70,7 +71,7 @@ ALL_BIFF8_EDITIONS = (
     2019,
 )
 COMPLETE_COHORT_STARTS = (2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016)
-MAX_EXPANDED_SOURCES = 31
+MAX_EXPANDED_SOURCES = 32
 MAX_SOURCES = 5
 MAX_BIFF8_SOURCES = 7
 MAX_OUTPUT_FILES = 16
@@ -147,6 +148,18 @@ SOURCES = (
         "2026-08-29T09:00:17Z",
         "sha256:ee970e4d024950c89270b0b27257aaae6e02d2502588acc9d97aeff9fd1a6902",
     ),
+)
+
+
+# Reuse the retained donor-area revenue observation; this is no new capture.
+REVENUE_2025_SOURCE = SourceDefinition(
+    "revenue-2025",
+    "revenue",
+    "2aef43eb419420a549fe56a946539f6e9afcbd91f95e9242457f26c97bafafaa",
+    "data/raw/b25-revenue-data.xlsx",
+    "Budget-2025",
+    "2026-08-30T08:58:00+00:00",
+    "sha256:0bce28d4985ef6a9c9003d1776c808589652f718baabdb020d9bd0a50cb29927",
 )
 
 
@@ -648,6 +661,7 @@ def rebuild_canonical_inputs(
     *,
     include_biff8: bool = False,
     biff8_editions: tuple[int, ...] = (2019,),
+    include_revenue_2025: bool = False,
 ) -> RebuiltCanonicalInputs:
     """Build only exclusive fresh inputs; retain partial attempts on failure.
 
@@ -657,14 +671,26 @@ def rebuild_canonical_inputs(
     """
     _require(
         type(include_biff8) is bool
+        and type(include_revenue_2025) is bool
         and type(biff8_editions) is tuple
         and all(type(year) is int for year in biff8_editions)
         and 0 < len(SOURCES) <= MAX_SOURCES
         and all(spec.kind in {"historical", "budget", "revenue"} for spec in SOURCES)
     )
     _require(include_biff8 or biff8_editions == (2019,))
+    _require(
+        not include_revenue_2025
+        or (
+            include_biff8
+            and set(biff8_editions) == set(ALL_BIFF8_EDITIONS)
+            and len(SOURCES) == MAX_SOURCES
+            and REVENUE_2025_SOURCE.key == "revenue-2025"
+            and REVENUE_2025_SOURCE.kind == "revenue"
+        )
+    )
     definitions_biff = _biff_definitions(biff8_editions) if include_biff8 else ()
-    selected = (*SOURCES, *definitions_biff)
+    extra_revenue = (REVENUE_2025_SOURCE,) if include_revenue_2025 else ()
+    selected = (*SOURCES, *definitions_biff, *extra_revenue)
     version = VERSION
     if include_biff8:
         version = {
@@ -682,6 +708,8 @@ def rebuild_canonical_inputs(
             2018: BIFF8_2018_VERSION,
             2019: BIFF8_VERSION,
         }[min(biff8_editions)]
+    if include_revenue_2025:
+        version = REVENUE_2025_VERSION
     _require(not output.exists() and not output.is_symlink())
     _require(source_cas.is_dir() and not source_cas.is_symlink())
     target, original_root = output.resolve(), source_cas.resolve()
