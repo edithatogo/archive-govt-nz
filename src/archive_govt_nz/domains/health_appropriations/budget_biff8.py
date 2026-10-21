@@ -30,6 +30,7 @@ SCHEMA_VERSION = "archive-govt-nz.health-budget-biff8-extraction/v1"
 MAX_BYTES = 8 * 1024 * 1024
 MAX_TEXT = 16384
 _DEFINITION_COLUMN = 2
+_SOURCE_QUALIFIER_EDITION = 2014
 PERIOD_TYPES = {
     2015: "Actuals",
     2016: "Actuals",
@@ -100,7 +101,7 @@ class BiffBudgetProfile:
                         pa.string(),
                     )
                 ]
-                if self.edition == 2014
+                if self.edition == _SOURCE_QUALIFIER_EDITION
                 else []
             )
         )
@@ -561,7 +562,7 @@ _EXPENDITURE_DEFINITIONS_2014 = {
     52: 'IsMCA: "Yes" when the line is part of a MCA, "No" when the line is not part '
     "of a MCA.",
     53: "Functional Classification: Groups expenses into broad objectives of the "
-    "government (based on OECD classification) – e.g. Health, Education, Defence, "
+    "government (based on OECD classification) \u2013 e.g. Health, Education, Defence, "
     "etc. This classification is not included in the Main Estimates.",
 }
 
@@ -593,7 +594,8 @@ _REVENUE_DEFINITIONS_2014 = {
     "receipt line.",
 }
 
-_PERIOD_TYPES_2014 = tuple((year, "Actuals") for year in range(2010, 2014)) + (
+_PERIOD_TYPES_2014 = (
+    *((year, "Actuals") for year in range(2010, 2014)),
     (2014, "Estimated Actual"),
     (2015, "Main Estimates"),
 )
@@ -645,11 +647,13 @@ PROFILES_2014 = {
         max_rows=1009,
         edition=2014,
         period_types=_PERIOD_TYPES_2014,
-        fields=tuple(
-            (h.replace("Amount $000", "Amount ($000)"), f)
-            for h, f in PROFILES_2015["revenue"].fields
-        )
-        + (("Periodicity", "periodicity"),),
+        fields=(
+            *(
+                (h.replace("Amount $000", "Amount ($000)"), f)
+                for h, f in PROFILES_2015["revenue"].fields
+            ),
+            ("Periodicity", "periodicity"),
+        ),
         definitions=tuple(_REVENUE_DEFINITIONS_2014.items()),
         definition_links=(
             ("source_vintage", 1),
@@ -804,7 +808,7 @@ def _selected_reason(values: dict[str, Any], profile: BiffBudgetProfile) -> str 
                 (values["periodicity"] not in {"A", "M"}, "invalid_periodicity"),
             ]
         )
-    if profile.edition == 2014:
+    if profile.edition == _SOURCE_QUALIFIER_EDITION:
         checks.append(
             (
                 (values["is_mca"] != ("Yes" if values["group_type"] == "MCA" else "No"))
@@ -893,7 +897,8 @@ def _fact(
             *("source_field_absent_" + field for field in profile.absent_fields),
             *(
                 ["source_edition_conflict_resolved_by_title_and_estimates_context"]
-                if profile.edition == 2014 and profile.kind == "revenue"
+                if profile.edition == _SOURCE_QUALIFIER_EDITION
+                and profile.kind == "revenue"
                 else []
             ),
         ],
@@ -1081,7 +1086,7 @@ def parse_snapshot(
             for row, text in profile.definitions
         ],
     }
-    if profile.edition == 2014 and profile.kind == "revenue":
+    if profile.edition == _SOURCE_QUALIFIER_EDITION and profile.kind == "revenue":
         metadata["edition_resolution"] = {
             "status": "resolved_from_independent_source_context",
             "conflicting_coordinate": "'Explanation'!B10",

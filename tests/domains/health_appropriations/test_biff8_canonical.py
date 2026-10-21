@@ -63,6 +63,14 @@ def _source(
     return original, silver, _pin(silver / "MANIFEST.json"), dict(snapshot.tables)
 
 
+def _assert_2014_lineage(kind: str, fields: list[str], flags: list[str]) -> None:
+    assert ("is_mca" if kind == "expenditure" else "periodicity") in fields
+    if kind == "revenue":
+        assert (
+            "source_edition_conflict_resolved_by_title_and_estimates_context" in flags
+        )
+
+
 @pytest.mark.parametrize("edition", [2014, 2015, 2016, 2017, 2018, 2019])
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_biff8_canonical_and_gold_preserve_binary_evidence_and_repeat_bytes(
@@ -117,6 +125,10 @@ def test_biff8_canonical_and_gold_preserve_binary_evidence_and_repeat_bytes(
         in tables["numeric_evidence"]["numeric_evidence_id"].to_pylist()
     )
     assert fact["currency"] is None
+    if edition == 2014:
+        _assert_2014_lineage(
+            kind, tables["field_lineage"]["field"].to_pylist(), fact["quality_flags"]
+        )
     assert fact["valid_time_start"] is None
     assert tables["numeric_evidence"].equals(source["numeric_evidence.parquet"])
     assert tables["field_lineage"].num_rows == source["field_lineage.parquet"].num_rows

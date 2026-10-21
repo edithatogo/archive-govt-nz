@@ -2,8 +2,13 @@
   "edition_resolution": {
     "conflict": "revenue Explanation B10 ends Budget2015",
     "preserved": true,
+    "publication_day_discrepancy_retained": true,
+    "publication_day_not_resolved_or_normalized": true,
     "publisher_correction_claimed": false,
+    "publisher_issue_date": "2014-05-14",
     "publisher_locator": "https://www.treasury.govt.nz/publications/data/budget-2014-data-estimates-appropriations-2014-15",
+    "publisher_observation_scope": "read_only_web_tool_not_bronze_capture_or_rights_approval",
+    "publisher_readback_sha256": "073869ad9db979e06a41fe5f021b5832d6b31737c25dc3e7e2a76f367cc5ee61",
     "rights": "not_evaluated",
     "source_coordinates": [
       "B1",
@@ -12,7 +17,8 @@
       "B26",
       "B34"
     ],
-    "status": "Budget-2014_from_independent_source_context"
+    "status": "Budget-2014_from_independent_source_context",
+    "workbook_publication_literal": "Published 15 May 2014"
   },
   "files": {
     "first-expenditure.json": {
