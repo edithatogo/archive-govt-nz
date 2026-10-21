@@ -131,7 +131,7 @@ def _assert_2014_qualifiers(
         )
 
 
-@pytest.mark.parametrize("edition", [2013, 2014, 2015, 2016, 2017, 2018, 2019])
+@pytest.mark.parametrize("edition", [2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019])
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
     kind: str,
@@ -218,7 +218,7 @@ def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
                 profile=replace(profile, absent_fields=()),
                 observed_at="2026-10-20T00:00:00Z",
             )
-    if edition == 2013:
+    if edition in (2012, 2013):
         _assert_2013_dimensions(parsed, kind, fact)
     if edition == 2014:
         _assert_2014_qualifiers(profile, parsed, kind, fact)
@@ -275,7 +275,7 @@ def test_source_and_definition_changes_fail_before_admission() -> None:
         )
 
 
-@pytest.mark.parametrize("edition", [2013, 2014, 2015, 2016, 2017, 2019])
+@pytest.mark.parametrize("edition", [2012, 2013, 2014, 2015, 2016, 2017, 2019])
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_biff_budget_operations_and_native_dispatch_retain_all_four_tables(
     kind: str, edition: int, tmp_path: Path, monkeypatch: pytest.MonkeyPatch

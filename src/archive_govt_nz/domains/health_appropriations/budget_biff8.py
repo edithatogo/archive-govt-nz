@@ -31,7 +31,7 @@ MAX_BYTES = 8 * 1024 * 1024
 MAX_TEXT = 16384
 _DEFINITION_COLUMN = 2
 _SOURCE_QUALIFIER_EDITION = 2014
-_LEGACY_MCOA_EDITION = 2013
+_LEGACY_MCOA_EDITIONS = (2012, 2013)
 PERIOD_TYPES = {
     2015: "Actuals",
     2016: "Actuals",
@@ -115,7 +115,7 @@ class BiffBudgetProfile:
                         pa.field("periodicity", pa.string()),
                     ]
                 )
-                if self.edition == _LEGACY_MCOA_EDITION
+                if self.edition in _LEGACY_MCOA_EDITIONS
                 else []
             )
         )
@@ -975,8 +975,150 @@ PROFILES_2013 = {
 }
 
 
+# Independently pinned Budget2012 columns and definition cells.
+PROFILES_2012 = {
+    "expenditure": replace(
+        PROFILES_2013["expenditure"],
+        source_sha256="81429ccc5da52cdba73bb6276bba7d1c55a301dc996a447909fc8fc82ca1af12",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2018-04/b12-expenditure-data.xls",
+        max_rows=5789,
+        edition=2012,
+        definitions=(
+            (1, dict(PROFILES_2013["expenditure"].definitions)[5]),
+            (3, dict(PROFILES_2013["expenditure"].definitions)[7]),
+            (
+                4,
+                (
+                    "This Expense workbook contains details of actual "
+                    "government expenditure for the years' ended 30 June 2008, "
+                    "2009, 2010 and 2011; estimated actual government "
+                    "expenditure for the year ending 30\u00a0June 2012 and budgeted "
+                    "government expenditure for the year ending 30 June 2013 as"
+                    " published in Budget 2012."
+                ),
+            ),
+            (6, dict(PROFILES_2013["expenditure"].definitions)[10]),
+            (8, dict(PROFILES_2013["expenditure"].definitions)[12]),
+            (10, dict(PROFILES_2013["expenditure"].definitions)[14]),
+            (11, dict(PROFILES_2013["expenditure"].definitions)[15]),
+            (13, dict(PROFILES_2013["expenditure"].definitions)[17]),
+            (
+                15,
+                (
+                    "The appropriation name and scope is as published in the "
+                    "2012/13 Estimates - the same name and scope is applied to "
+                    "all years where the appropriation ID is the same."
+                ),
+            ),
+            (17, dict(PROFILES_2013["expenditure"].definitions)[21]),
+            (
+                18,
+                (
+                    "This workbook is based on the data contained in the "
+                    "Crown's Financial and Information System, which is used to"
+                    " collect and compile the raw data for the 2012/13 "
+                    "Estimates.  They do not include data from the 2011/12 "
+                    "Supplementary Estimates. "
+                ),
+            ),
+            (
+                20,
+                (
+                    "Data relating to the 2012/13 fiscal year should match the "
+                    "2012/13 Estimates exactly."
+                ),
+            ),
+            (22, dict(PROFILES_2013["expenditure"].definitions)[26]),
+            (24, dict(PROFILES_2013["expenditure"].definitions)[28]),
+            (26, dict(PROFILES_2013["expenditure"].definitions)[30]),
+        ),
+        definition_links=(
+            ("source_vintage", 4),
+            ("amount_type", 4),
+            ("valid_time_end", 4),
+            ("unit", 11),
+        ),
+        period_types=(
+            (2008, "Actuals"),
+            (2009, "Actuals"),
+            (2010, "Actuals"),
+            (2011, "Actuals"),
+            (2012, "Estimated Actual"),
+            (2013, "Main Estimates"),
+        ),
+    ),
+    "revenue": replace(
+        PROFILES_2013["revenue"],
+        source_sha256="643fad503424ee6b3aa060a2ff2107fc69d9326bb51446d6fa41755a32d038cb",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2018-04/b12-revenue-data.xls",
+        max_rows=993,
+        edition=2012,
+        fields=tuple(
+            ("vote" if h == "Vote" else h, f)
+            for h, f in PROFILES_2013["revenue"].fields
+        ),
+        definitions=(
+            (1, dict(PROFILES_2013["revenue"].definitions)[4]),
+            (3, dict(PROFILES_2013["revenue"].definitions)[6]),
+            (
+                5,
+                (
+                    "The Revenue workbook contains details of  actual "
+                    "government Crown revenue and capital receipts for the "
+                    "years' ended 30 June 2008, 2009, 2010 and 2011; estimated "
+                    "actual government Crown revenue and capital receipts for "
+                    "the year ending 30 June 2012 and budgeted government Crown"
+                    " revenue and capital receipts for the year ending 30 June "
+                    "2013 as published in Budget 2012."
+                ),
+            ),
+            (7, dict(PROFILES_2013["revenue"].definitions)[10]),
+            (9, dict(PROFILES_2013["revenue"].definitions)[12]),
+            (11, dict(PROFILES_2013["revenue"].definitions)[14]),
+            (13, dict(PROFILES_2013["revenue"].definitions)[16]),
+            (15, dict(PROFILES_2013["revenue"].definitions)[18]),
+            (17, dict(PROFILES_2013["revenue"].definitions)[20]),
+            (
+                19,
+                (
+                    "This workbook is based on the data contained in the "
+                    "Crown's Financial and Information System, which was used "
+                    "to collect and compile the raw data for the 2012/13 "
+                    "Estimates.  They do not include data from the 2011/12 "
+                    "Supplementary Estimates. "
+                ),
+            ),
+            (
+                21,
+                (
+                    "Data relating to the 2012/13 fiscal year should match the "
+                    "2012/13 Estimates exactly."
+                ),
+            ),
+            (23, dict(PROFILES_2013["revenue"].definitions)[26]),
+            (25, dict(PROFILES_2013["revenue"].definitions)[28]),
+            (27, dict(PROFILES_2013["revenue"].definitions)[30]),
+        ),
+        definition_links=(
+            ("source_vintage", 5),
+            ("amount_type", 5),
+            ("valid_time_end", 5),
+            ("unit", 13),
+        ),
+        period_types=(
+            (2008, "Actuals"),
+            (2009, "Actuals"),
+            (2010, "Actuals"),
+            (2011, "Actuals"),
+            (2012, "Estimated Actual"),
+            (2013, "Main Estimates"),
+        ),
+    ),
+}
+
+
 def declared_profiles() -> tuple[BiffBudgetProfile, ...]:
-    """Expose only the fourteen independently pinned source-edition profiles."""
+    """Expose only the sixteen independently pinned source-edition profiles."""
     return (
         *PROFILES.values(),
         *PROFILES_2018.values(),
@@ -985,6 +1127,7 @@ def declared_profiles() -> tuple[BiffBudgetProfile, ...]:
         *PROFILES_2015.values(),
         *PROFILES_2014.values(),
         *PROFILES_2013.values(),
+        *PROFILES_2012.values(),
     )
 
 
@@ -1116,7 +1259,7 @@ def _selected_reason(values: dict[str, Any], profile: BiffBudgetProfile) -> str 
                 (values["periodicity"] not in {"A", "M"}, "invalid_periodicity"),
             ]
         )
-    if profile.edition == _LEGACY_MCOA_EDITION:
+    if profile.edition in _LEGACY_MCOA_EDITIONS:
         checks.append((values["periodicity"] != "A", "invalid_source_qualifier"))
         if profile.kind == "expenditure":
             checks.append(
@@ -1285,13 +1428,13 @@ def parse_snapshot(
     _require(
         profile.kind in {"expenditure", "revenue"}
         and type(profile.edition) is int
-        and profile.edition in {2013, 2014, 2015, 2016, 2017, 2018, 2019}
+        and profile.edition in {2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019}
     )
     _require(
         profile.absent_fields
         == (
             _ABSENT_FIELDS_2013[profile.kind]
-            if profile.edition == _LEGACY_MCOA_EDITION
+            if profile.edition in _LEGACY_MCOA_EDITIONS
             else _ABSENT_EXPENDITURE_FIELDS_2015
             if profile.kind == "expenditure" and profile.edition in {2014, 2015}
             else ()

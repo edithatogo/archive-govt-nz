@@ -1,0 +1,61 @@
+{
+  "checks": {
+    "bounds": "source120/interface30/stage900/manifest4MiB/package128MiB/coverage80 unchanged",
+    "dimensions": "lowercase revenue vote header retained; independent numeric MCOA ID; absent expense parent/category/group/restriction/minister/portfolio fields null and flagged without fabricated lineage",
+    "edition": "Budget2012 explicitly named in expenditure B4 and revenue B5;2012/13 Estimates notes agree; no publication date inferred",
+    "numeric": "310 expense/71 revenue rows and1524 original integer witnesses; all5789/993 source rows accounted; no value replacement",
+    "rights": "not_evaluated; no currency/start/comparability or donor approval; no capture/publication/collection mutations",
+    "source_identity": "exact source hashes and complete retained Explanation/header census verified twice",
+    "tests": "33 source and81 integrated tests passed;74 schemas/64 fixtures; native focused suite passed",
+    "typing": "0 errors,0 warnings,0 notes",
+    "versioning": "v1-v8 schemas and selectors unchanged; distinct v9 URI; all21 named bindings required in both maps; proper subsets rejected before I/O"
+  },
+  "findings": [],
+  "head": "2e659bf3f81f02e95ce522a7a5ba79f3264cca26",
+  "native_binding_refusals": 84,
+  "native_postflight": {
+    "exit": 0,
+    "head": "2e659bf3f81f02e95ce522a7a5ba79f3264cca26",
+    "independent_lease_free": true,
+    "owner_and_group_absent": true,
+    "pins_unchanged": 6353,
+    "status": "verified",
+    "tree": "c9b765d5d211233a179f5b1ce21ed84cb6d99ad5"
+  },
+  "native_summary": {
+    "all10_queries_verified": true,
+    "canonical_packages": 21,
+    "composite_metadata_verified": true,
+    "current_2012_raw_profiles_match_native_qualification": true,
+    "fresh_input_builds": 2,
+    "gold_files": 61,
+    "head": "2e659bf3f81f02e95ce522a7a5ba79f3264cca26",
+    "input_files": 191,
+    "legacy_gold11_61_files_identical": true,
+    "legacy_gold13_61_files_identical": true,
+    "legacy_gold15_61_files_identical": true,
+    "legacy_gold17_61_files_identical": true,
+    "legacy_gold19_61_files_identical": true,
+    "legacy_gold9_61_files_identical": true,
+    "legacy_gold_60_files_identical": true,
+    "legacy_v1_47_files_identical": true,
+    "legacy_v2_65_files_identical": true,
+    "legacy_v3_83_files_identical": true,
+    "legacy_v4_101_files_identical": true,
+    "legacy_v5_119_files_identical": true,
+    "legacy_v6_137_files_identical": true,
+    "legacy_v7_155_files_identical": true,
+    "legacy_v8_173_files_identical": true,
+    "publication": "not_performed",
+    "repeat_identical": true,
+    "retained_derivatives_consumed": false,
+    "rights": "not_evaluated",
+    "tree": "c9b765d5d211233a179f5b1ce21ed84cb6d99ad5"
+  },
+  "pending": [
+    "original exact-final-tree validation",
+    "green hosted checks, protected merge and zero-unique clean topic pruning"
+  ],
+  "scope": "Budget2012 retained expenditure/revenue to canonical, Gold and complete recoveryv9; bounded slice only",
+  "source_qualifier_cases": 9
+}

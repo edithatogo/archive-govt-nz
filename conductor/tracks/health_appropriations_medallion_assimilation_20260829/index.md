@@ -702,3 +702,9 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [Budget2013 native source and interface qualification](budget-2013-biff8-native-qualification-20261021.json)
 - [Budget2013 complete recovery and Gold evidence](biff8-2013-products-native-20261021.json)
 - [Budget2013 bounded review](biff8-2013-review-20261021.json)
+
+- [Budget2012 source-to-products contract](biff8-2012-contract.md)
+- [Budget2012 source/numeric preflight](budget-2012-biff8-preflight-20261021.json)
+- [Budget2012 native source and interface qualification](budget-2012-biff8-native-qualification-20261021.json)
+- [Budget2012 complete recovery and Gold evidence](biff8-2012-products-native-20261021.json)
+- [Budget2012 bounded review](biff8-2012-review-20261021.json)
