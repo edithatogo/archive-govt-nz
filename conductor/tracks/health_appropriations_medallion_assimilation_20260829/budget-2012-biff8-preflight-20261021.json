@@ -1,0 +1,96 @@
+{
+  "currency": "not_qualified",
+  "definitions": "every retained Explanation/header census cell verified twice",
+  "edition_resolution": "Budget2012 explicitly named in expenditure B4 and revenue B5;2012/13 Estimates notes and exact b12 locator agree",
+  "layout": "preserve lowercase revenue vote header and MCOA numeric field; no parent/group inference",
+  "producer_head": "9826cbc0ea073e2f80f84c4d587e979cea539a2b",
+  "rights": "not_evaluated",
+  "runs": {
+    "expenditure": {
+      "counts": {
+        "out_of_scope": 5479,
+        "selected_numeric_verified": 310
+      },
+      "evidence": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2012-20261021/preflight-1/first-expenditure.json",
+      "period_pairs": [
+        {
+          "amount_type": "Actuals",
+          "rows": 54,
+          "year": 2008
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 52,
+          "year": 2009
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 52,
+          "year": 2010
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 54,
+          "year": 2011
+        },
+        {
+          "amount_type": "Estimated Actual",
+          "rows": 48,
+          "year": 2012
+        },
+        {
+          "amount_type": "Main Estimates",
+          "rows": 50,
+          "year": 2013
+        }
+      ],
+      "prior_definition_cells_verified": 52,
+      "source_row_count": 5789,
+      "source_sha256": "81429ccc5da52cdba73bb6276bba7d1c55a301dc996a447909fc8fc82ca1af12"
+    },
+    "revenue": {
+      "counts": {
+        "out_of_scope": 922,
+        "selected_numeric_verified": 71
+      },
+      "evidence": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2012-20261021/preflight-1/first-revenue.json",
+      "period_pairs": [
+        {
+          "amount_type": "Actuals",
+          "rows": 13,
+          "year": 2008
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 13,
+          "year": 2009
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 10,
+          "year": 2010
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 12,
+          "year": 2011
+        },
+        {
+          "amount_type": "Estimated Actual",
+          "rows": 12,
+          "year": 2012
+        },
+        {
+          "amount_type": "Main Estimates",
+          "rows": 11,
+          "year": 2013
+        }
+      ],
+      "prior_definition_cells_verified": 60,
+      "source_row_count": 993,
+      "source_sha256": "643fad503424ee6b3aa060a2ff2107fc69d9326bb51446d6fa41755a32d038cb"
+    }
+  },
+  "schema_version": "archive-govt-nz.health-budget-biff8-preflight/v1",
+  "source_capture_mutations": false
+}
