@@ -4340,3 +4340,43 @@ recoveries repeat all137 qualified input files. All1,255 original native plus
 including the patched CA bundle, are unchanged; native owner/group absent and
 independent lease free. No audit exception, TLS bypass or source/data change.
 The failed original run is retained; a new exact-tree full harness is required.
+
+## Budget2014 bounded review — 21 October 2026
+
+PR739 closed the historical2015 native/security/final-assurance findings through
+protected merge8450a2e6; final32 stages passed locally and on all3 hosted systems.
+The clean topic was pruned and its four native proof roots retained.
+
+### Summary
+
+Budget2014 source profiles and complete17-source recoveryv7 are native-verified;
+exact-final-tree original validation and protected delivery remain pending.
+
+### Verification checks
+
+- Plan compliance: source/edition/numeric/provenance and native products passed;
+  final delivery remains open. B10 is retained with a conflict flag, independent
+  B1/B4/B24/B26/B34 context, publisher links and explicit day-discrepancy hold.
+- Style: final Ruff check passed; strict typing reported zero errors. Source
+  punctuation is preserved by equivalent string escapes; no value change.
+- Tests: existing matrices extended;570 source checks,88 integrated checks and20
+  recovery checks passed. Scopes overlap and are not summed. All72 schemas and62
+  representative documents validate. The80percent floor is unchanged; final
+  measured coverage awaits the original harness.
+- Native: all22 stages passed on176971bf. Two fresh17-source builds repeat155
+  input and61 Gold files, including34 PNGs. All six older input cohorts and
+  their Gold/PNG bytes match retained evidence;2014 raw outputs match native
+  source qualification. All5863 frozen pins unchanged; terminal0, owner/group
+  absent and independent lease free. All7 real schema versions independently
+  resolve and cross-refuse. Actual v7 refuses68 missing/substituted bindings.
+- Source accounting:3082 facts,3141 inputs fully accounted,10004 numeric witnesses;
+  ten typed query readbacks verify1045 bounded results. Full metadata repeats
+  across3 packages/15 recordsets/3466 rows. Qualifier review verifies7 valid and
+  invalid source-backed IsMCA/Periodicity cases without repository mutation.
+- Findings: no actionable code finding remains in this bounded review. Currency,
+  starts, rights, comparability and30 donor historical differences remain held;
+  no financial pooling, source repair or external publication is introduced.
+
+Run the original final-tree harness and required hosted checks before protected
+merge, remote-main verification and clean owned-topic pruning. This review does
+not close the wider track's final completion gate.
