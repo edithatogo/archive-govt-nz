@@ -696,3 +696,9 @@ The completed legacy census remains an immutable historical observation. Its
 Budget2014 edition-pending flag is superseded by the explicitly source-backed
 2014 disposition above. Revenue B10 and the publication-day discrepancy remain
 unchanged; this is no publisher correction or rights/comparability approval.
+
+- [Budget2013 source-to-products contract](biff8-2013-contract.md)
+- [Budget2013 source edition, fields and numeric preflight](budget-2013-biff8-preflight-20261021.json)
+- [Budget2013 native source and interface qualification](budget-2013-biff8-native-qualification-20261021.json)
+- [Budget2013 complete recovery and Gold evidence](biff8-2013-products-native-20261021.json)
+- [Budget2013 bounded review](biff8-2013-review-20261021.json)

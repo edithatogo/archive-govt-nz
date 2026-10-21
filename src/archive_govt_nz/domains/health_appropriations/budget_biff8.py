@@ -31,6 +31,7 @@ MAX_BYTES = 8 * 1024 * 1024
 MAX_TEXT = 16384
 _DEFINITION_COLUMN = 2
 _SOURCE_QUALIFIER_EDITION = 2014
+_LEGACY_MCOA_EDITION = 2013
 PERIOD_TYPES = {
     2015: "Actuals",
     2016: "Actuals",
@@ -102,6 +103,19 @@ class BiffBudgetProfile:
                     )
                 ]
                 if self.edition == _SOURCE_QUALIFIER_EDITION
+                else []
+            )
+            + (
+                [pa.field("mcoa_id", pa.int64())]
+                + (
+                    [pa.field("output_expense_type", pa.string())]
+                    if self.kind == "expenditure"
+                    else [
+                        pa.field("functional_classification", pa.string()),
+                        pa.field("periodicity", pa.string()),
+                    ]
+                )
+                if self.edition == _LEGACY_MCOA_EDITION
                 else []
             )
         )
@@ -673,8 +687,296 @@ PROFILES_2014 = {
 }
 
 
+# Budget2013 has MCOA identifiers, not the later ParentID/group/category fields.
+_ABSENT_FIELDS_2013 = {
+    "expenditure": (
+        "parent_id",
+        "category_name",
+        "group_type",
+        "restriction_type",
+        "m_number",
+        "portfolio_name",
+    ),
+    "revenue": (),
+}
+PROFILES_2013 = {
+    "expenditure": replace(
+        PROFILES_2014["expenditure"],
+        source_sha256="c5b7f6916b89a9ea0fd14caf73a979c730116d517d78ffe777d36c5966626140",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2018-04/b13-expenditure-data.xls",
+        max_rows=5848,
+        edition=2013,
+        fields=(
+            ("Department", "department"),
+            ("Vote", "vote"),
+            ("App ID", "app_id"),
+            ("MCOA ID", "mcoa_id"),
+            ("Description", "appropriation_name"),
+            ("Appropriation Type", "appropriation_or_category_type"),
+            ("Output Expense Type", "output_expense_type"),
+            ("Functional Classification", "functional_classification"),
+            ("Amount ($000)", "amount"),
+            ("Year", "year"),
+            ("Amount_Type_Desc", "amount_type"),
+            ("Periodicity", "periodicity"),
+            ("Current Scope", "current_scope"),
+        ),
+        numeric_columns=(("app_id", 3), ("mcoa_id", 4), ("amount", 9), ("year", 10)),
+        definitions=(
+            (1, "Expenditure Data - Estimates of Appropriations 2013/14"),
+            (
+                2,
+                (
+                    "Published 16 May 2013 at www.treasury.govt.nz/budget/2013/da"
+                    "ta and www.budget.govt.nz/budget/2013/data\nand on the Budget"
+                    " USBs."
+                ),
+            ),
+            (5, "Definitions and Explanations"),
+            (7, "Overview"),
+            (
+                8,
+                (
+                    "This Expense workbook contains details of actual government "
+                    "expenditure for the years' ended 30 June 2009, 2010, 2011 an"
+                    "d 2012; estimated actual government expenditure for the year"
+                    " ending 30\u00a0June 2013 and budgeted government expenditure for"
+                    " the year ending 30 June 2014 as published in Budget 2013."
+                ),
+            ),
+            (
+                10,
+                (
+                    "Raw data has been included in this workbook to allow anyone "
+                    "to filter, sort and manipulate the data for their own purpos"
+                    "es.  Some examples in the form of pivot tables and charts ar"
+                    "e also provided."
+                ),
+            ),
+            (
+                12,
+                (
+                    "More assistance on the use of pivot tables and charts can be"
+                    " obtained from the Microsoft Excel help system."
+                ),
+            ),
+            (14, "Definitions"),
+            (15, "All amounts are in thousands of dollars ($000)."),
+            (
+                17,
+                (
+                    "Definitions of appropriation types can be found in the Intro"
+                    "duction chapter of The Estimates of Appropriations for the N"
+                    "ew Zealand Government."
+                ),
+            ),
+            (
+                19,
+                (
+                    "The appropriation name and scope is as published in the 2013"
+                    "/14 Estimates - the same name and scope is applied to all ye"
+                    "ars where the appropriation ID is the same."
+                ),
+            ),
+            (21, "Disclaimer"),
+            (
+                22,
+                (
+                    "This workbook is based on the data contained in the Crown's "
+                    "Financial and Information System, which is used to collect a"
+                    "nd compile the raw data for the 2013/14 Estimates.  They do "
+                    "not include data from the 2012/13 Supplementary Estimates. "
+                ),
+            ),
+            (
+                24,
+                (
+                    "Data relating to the 2013/14 fiscal year should match the 20"
+                    "13/14 Estimates exactly."
+                ),
+            ),
+            (
+                26,
+                (
+                    "This workbook supports, but does not form part of, the offic"
+                    "ial Budget documents.  The printed copies of the Estimates a"
+                    "nd Supplementary Estimates, as tabled by the Minister of Fin"
+                    "ance on each Budget day, are the official sources for data c"
+                    "ontained in these workbooks."
+                ),
+            ),
+            (
+                28,
+                (
+                    "The Treasury has generated this workbook as a resource for i"
+                    "nterested persons and has taken all care to ensure the data "
+                    "are correct, but does not take responsibility for any errors"
+                    " or conclusions drawn from this data."
+                ),
+            ),
+            (
+                30,
+                (
+                    "The Treasury does not provide technical support on the use o"
+                    "f Microsoft Excel workbooks."
+                ),
+            ),
+        ),
+        definition_links=(
+            ("source_vintage", 1),
+            ("source_vintage", 2),
+            ("source_vintage", 8),
+            ("amount_type", 8),
+            ("valid_time_end", 8),
+            ("unit", 15),
+        ),
+        absent_fields=_ABSENT_FIELDS_2013["expenditure"],
+        period_types=(
+            (2009, "Actuals"),
+            (2010, "Actuals"),
+            (2011, "Actuals"),
+            (2012, "Actuals"),
+            (2013, "Estimated Actual"),
+            (2014, "Main Estimates"),
+        ),
+    ),
+    "revenue": replace(
+        PROFILES_2014["revenue"],
+        source_sha256="69e9d3d10c72bd01c661ca02633d48404f7add6f5e4fda02017ab5649fa27869",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2018-04/b13-revenue-data.xls",
+        max_rows=995,
+        edition=2013,
+        fields=(
+            ("Department", "department"),
+            ("Vote", "vote"),
+            ("App id", "app_id"),
+            ("MCOA id", "mcoa_id"),
+            ("Description", "description"),
+            ("Revenue Type", "revenue_type"),
+            ("Functional Classification", "functional_classification"),
+            ("Amount ($000)", "amount"),
+            ("Year", "year"),
+            ("Amount_Type_Desc", "amount_type"),
+            ("Periodicity", "periodicity"),
+        ),
+        numeric_columns=(("app_id", 3), ("mcoa_id", 4), ("amount", 8), ("year", 9)),
+        definitions=(
+            (1, "Revenue Data - Estimates of Appropriations 2013/14"),
+            (
+                2,
+                (
+                    "Published 16 May 2013 at www.treasury.govt.nz/budget/2013/da"
+                    "ta and www.budget.govt.nz/budget/2013/data\nand on the Budget"
+                    " USBs."
+                ),
+            ),
+            (4, "Definitions and Explanations"),
+            (6, "Overview"),
+            (
+                8,
+                (
+                    "The Revenue workbook contains details of  actual government "
+                    "Crown revenue and capital receipts for the years' ended 30 J"
+                    "une 2009, 2010, 2011 and 2012; estimated actual government C"
+                    "rown revenue and capital receipts for the year ending 30 Jun"
+                    "e 2013 and budgeted government Crown revenue and capital rec"
+                    "eipts for the year ending 30 June 2014 as published in Budge"
+                    "t 2013."
+                ),
+            ),
+            (
+                10,
+                (
+                    "Raw data has been made available to allow anyone to filter, "
+                    "sort and manipulate the data for their own purposes.  Some e"
+                    "xamples in the form of pivot tables and charts are also prov"
+                    "ided."
+                ),
+            ),
+            (
+                12,
+                (
+                    "More assistance on the use of pivot tables and charts can be"
+                    " obtained from the Microsoft Excel help system."
+                ),
+            ),
+            (14, "Definitions"),
+            (16, "Amounts are in thousands of dollars."),
+            (
+                18,
+                (
+                    "Definitions of Crown revenue and capital receipts can be fou"
+                    "nd in the Introduction chapter of The Estimates of Appropria"
+                    "tions for the Government of New Zealand."
+                ),
+            ),
+            (20, "Disclaimer"),
+            (
+                22,
+                (
+                    "This workbook is based on the data contained in the Crown's "
+                    "Financial and Information System, which was used to collect "
+                    "and compile the raw data for the 2013/14 Estimates.  They do"
+                    " not include data from the 2012/13 Supplementary Estimates. "
+                ),
+            ),
+            (
+                24,
+                (
+                    "Data relating to the 2013/14 fiscal year should match the 20"
+                    "13/14 Estimates exactly."
+                ),
+            ),
+            (
+                26,
+                (
+                    "This workbook supports, but does not form part of, the offic"
+                    "ial Budget documents.  The printed copies of the Estimates a"
+                    "nd Supplementary Estimates, as tabled by the Minister of Fin"
+                    "ance on each Budget day, are the official sources for data c"
+                    "ontained in these workbooks."
+                ),
+            ),
+            (
+                28,
+                (
+                    "The Treasury has generated this workbook as a resource for i"
+                    "nterested persons and has taken all care to ensure the data "
+                    "are correct, but does not take responsibility for any errors"
+                    " or conclusions drawn from this data."
+                ),
+            ),
+            (
+                30,
+                (
+                    "The Treasury does not provide technical support on the use o"
+                    "f Microsoft Excel workbooks."
+                ),
+            ),
+        ),
+        definition_links=(
+            ("source_vintage", 1),
+            ("source_vintage", 2),
+            ("source_vintage", 8),
+            ("amount_type", 8),
+            ("valid_time_end", 8),
+            ("unit", 16),
+        ),
+        absent_fields=_ABSENT_FIELDS_2013["revenue"],
+        period_types=(
+            (2009, "Actuals"),
+            (2010, "Actuals"),
+            (2011, "Actuals"),
+            (2012, "Actuals"),
+            (2013, "Estimated Actual"),
+            (2014, "Main Estimates"),
+        ),
+    ),
+}
+
+
 def declared_profiles() -> tuple[BiffBudgetProfile, ...]:
-    """Expose only the twelve independently pinned source-edition profiles."""
+    """Expose only the fourteen independently pinned source-edition profiles."""
     return (
         *PROFILES.values(),
         *PROFILES_2018.values(),
@@ -682,6 +984,7 @@ def declared_profiles() -> tuple[BiffBudgetProfile, ...]:
         *PROFILES_2016.values(),
         *PROFILES_2015.values(),
         *PROFILES_2014.values(),
+        *PROFILES_2013.values(),
     )
 
 
@@ -801,13 +1104,28 @@ def _selected_reason(values: dict[str, Any], profile: BiffBudgetProfile) -> str 
                     any(
                         values[field] is not None and type(values[field]) is not str
                         for field in ("restriction_type", "current_scope")
+                        if field not in profile.absent_fields
                     ),
                     "invalid_optional_label",
                 ),
-                (values["group_type"] not in profile.group_types, "invalid_group_type"),
+                (
+                    "group_type" not in profile.absent_fields
+                    and values["group_type"] not in profile.group_types,
+                    "invalid_group_type",
+                ),
                 (values["periodicity"] not in {"A", "M"}, "invalid_periodicity"),
             ]
         )
+    if profile.edition == _LEGACY_MCOA_EDITION:
+        checks.append((values["periodicity"] != "A", "invalid_source_qualifier"))
+        if profile.kind == "expenditure":
+            checks.append(
+                (
+                    values["output_expense_type"]
+                    not in {None, "Permanent Legislative Authority"},
+                    "invalid_source_qualifier",
+                )
+            )
     if profile.edition == _SOURCE_QUALIFIER_EDITION:
         checks.append(
             (
@@ -967,12 +1285,14 @@ def parse_snapshot(
     _require(
         profile.kind in {"expenditure", "revenue"}
         and type(profile.edition) is int
-        and profile.edition in {2014, 2015, 2016, 2017, 2018, 2019}
+        and profile.edition in {2013, 2014, 2015, 2016, 2017, 2018, 2019}
     )
     _require(
         profile.absent_fields
         == (
-            _ABSENT_EXPENDITURE_FIELDS_2015
+            _ABSENT_FIELDS_2013[profile.kind]
+            if profile.edition == _LEGACY_MCOA_EDITION
+            else _ABSENT_EXPENDITURE_FIELDS_2015
             if profile.kind == "expenditure" and profile.edition in {2014, 2015}
             else ()
         )
