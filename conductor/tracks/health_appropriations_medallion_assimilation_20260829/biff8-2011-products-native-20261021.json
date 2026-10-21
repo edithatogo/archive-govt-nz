@@ -1,0 +1,2072 @@
+{
+  "fresh_input_files": {
+    "canonical-source-inputs/RECOVERY_INPUTS.json": {
+      "bytes": 54961,
+      "sha256": "5257bf8c034ca0ad38d1935cad8731bc5ed509ceea8836543411233eba569b60"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2011/MANIFEST.json": {
+      "bytes": 931,
+      "sha256": "daa13176b547db2e3c85525c8ff871dc6848a2d4ab905b388800a9b6ee4521e5"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2011/appropriation_fact.parquet": {
+      "bytes": 109700,
+      "sha256": "949282fccb090e118993b542500bc91ae56be489496441a75c7ed2b88bdc1e89"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2011/field_lineage.parquet": {
+      "bytes": 555829,
+      "sha256": "ca1f19a99fb73eb00f720f8243aa58ba2d3a90b9afcc252aa638c2d5f42ca40d"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2011/numeric_evidence.parquet": {
+      "bytes": 147238,
+      "sha256": "c820560166c34e0be5d4149f2c953ee8991d88972f0c5ff57f52245896198341"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2012/MANIFEST.json": {
+      "bytes": 931,
+      "sha256": "8e5744e7fb73795aaa2ff734e0495de1eab349e7b4c5646492bbfbc6d30692b6"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2012/appropriation_fact.parquet": {
+      "bytes": 107872,
+      "sha256": "d6f9b29f72499bbe854bb00781918bd36fee12c2325965e3d234d20b5acac128"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2012/field_lineage.parquet": {
+      "bytes": 554969,
+      "sha256": "3888d096846d7001ee3f35bd66af4b4eaf8e56d604e721e64ab8810846bb222f"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2012/numeric_evidence.parquet": {
+      "bytes": 146651,
+      "sha256": "88836a181196b7dee4286967d00d939d5af21857d9b8432e981c778b8b4ab917"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2013/MANIFEST.json": {
+      "bytes": 931,
+      "sha256": "e2867873d68ac78f6c87550b8916d690aaafa3cc06ed2e5c36876145abea389c"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2013/appropriation_fact.parquet": {
+      "bytes": 107801,
+      "sha256": "62a10b2a9a06271a3e10a27d44b228a7526f069bcedd1a5d447c7324260352e6"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2013/field_lineage.parquet": {
+      "bytes": 595955,
+      "sha256": "ce77dd90ca7cad91ef4fc95ed5ce822c718b775311b4d8ae734b237a733b89de"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2013/numeric_evidence.parquet": {
+      "bytes": 145616,
+      "sha256": "e8331dd6b5e236e1a5144f2b4396c24a4a77f41197e6049a22ce0ddad4122774"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2014/MANIFEST.json": {
+      "bytes": 931,
+      "sha256": "cad4ef78fc81bf207c5d4aee888a42d191eb8b8ccab30d1e366d7837b0ffdda0"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2014/appropriation_fact.parquet": {
+      "bytes": 108268,
+      "sha256": "853fdc4158c637117bc4de603e17b76dd660f7c4255df8a8b30e9bbed1829b4c"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2014/field_lineage.parquet": {
+      "bytes": 856762,
+      "sha256": "21a86b21062710b42e1834fbf871e11f39d63e4a9e0fa6b79abff565189f5e60"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2014/numeric_evidence.parquet": {
+      "bytes": 147944,
+      "sha256": "261c61be2f6ca4de46327b660090a93afc27ee27921ee726d3ad699f17e1d760"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2015/MANIFEST.json": {
+      "bytes": 931,
+      "sha256": "982ce14c9907ebdc77cffc5b64e9284f68de9398e402140f0828497d5ea27747"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2015/appropriation_fact.parquet": {
+      "bytes": 108322,
+      "sha256": "ee2116e93bf9d66686bcdffe84dbbf255e83c6195bb1e1f39f2a1989ca39fc5e"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2015/field_lineage.parquet": {
+      "bytes": 732832,
+      "sha256": "9154b20a410ed14ffc002388ebc0c6a1292af4eac439685ce51e685edd69387a"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2015/numeric_evidence.parquet": {
+      "bytes": 146935,
+      "sha256": "c6b0285503377ad4db8ea97062fdfc4f6ca2dc62eee362c4b8c7885551b87476"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2016/MANIFEST.json": {
+      "bytes": 931,
+      "sha256": "7e6db201df0765ea47315681f4f593a1fe4e5149148fff7abcf0a46cfe16a380"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2016/appropriation_fact.parquet": {
+      "bytes": 107078,
+      "sha256": "bb93715c19319a5b50fcd2fcffb0da3b7d8cfc3c7a9ce4d0f28e72feccfb898c"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2016/field_lineage.parquet": {
+      "bytes": 790088,
+      "sha256": "db817d0695aa3b46e184183d54820c54df5159b690811b87c8809fa86c30cd77"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2016/numeric_evidence.parquet": {
+      "bytes": 191484,
+      "sha256": "6df04200e7753279b5220c9cedb41738135f550fc72328af8254f26732e6faeb"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2017/MANIFEST.json": {
+      "bytes": 931,
+      "sha256": "caa9684863167c92c225a6a065d080a83d9f2c5938dc41fd271717c561fd2e8d"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2017/appropriation_fact.parquet": {
+      "bytes": 108551,
+      "sha256": "2d6c99dd078b72147df67eca951865fa0ea0f90048254ea3a2607f147b745245"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2017/field_lineage.parquet": {
+      "bytes": 799802,
+      "sha256": "81fa1af1e1a77511fd3fbd50c573fe86a069251fe9693e3276bd885753817e4c"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2017/numeric_evidence.parquet": {
+      "bytes": 189322,
+      "sha256": "e1d739abd1264236733bade0db7ffa4073e549fd5ae5d4ef2ae57f680d66b838"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2018/MANIFEST.json": {
+      "bytes": 931,
+      "sha256": "a0558ec35c25a63e0189d9edfe0291ea886b4da5fdc7f4e7327746bc057928d1"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2018/appropriation_fact.parquet": {
+      "bytes": 109030,
+      "sha256": "a51a73fd8d16016c5e6a85a285417f6f1387c17f43315672df806abf27905571"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2018/field_lineage.parquet": {
+      "bytes": 804675,
+      "sha256": "11d677a29fbd3079ca3a9aea205157e1c4fca12b60863e995b18d8aa26fa963f"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2018/numeric_evidence.parquet": {
+      "bytes": 193301,
+      "sha256": "724acd2b85ed6903ef3469da6fe173ea213d94b847f2edfe7b88d9d6cd9bf38c"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2019/MANIFEST.json": {
+      "bytes": 931,
+      "sha256": "21c32551e51e018251673ae2b7bd81e155ade2c6ce0aefb23c6438704b38b9db"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2019/appropriation_fact.parquet": {
+      "bytes": 109346,
+      "sha256": "1f4443034950c5b3c898de105a497f49fee028b68fbd7b2d782ec4d5b8e80725"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2019/field_lineage.parquet": {
+      "bytes": 807303,
+      "sha256": "5493268939013d98716af06c30679bce62945488f0e919b24ddafe811b665b23"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2019/numeric_evidence.parquet": {
+      "bytes": 191364,
+      "sha256": "085f676532b3ebcd5a74951b3e9093c5d17bc8d1466974e2fb5c92bfd8f8224e"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2011/MANIFEST.json": {
+      "bytes": 913,
+      "sha256": "5aba032f8c99b8f7da753d68ba168af57b7da9169ba3554108b450eae3e81912"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2011/field_lineage.parquet": {
+      "bytes": 125794,
+      "sha256": "76b408f110ef09c4bef5a4d2577703a78696d976d30ca3a754becf8fef145050"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2011/numeric_evidence.parquet": {
+      "bytes": 38955,
+      "sha256": "b0b145730fe5905cf32c56779d8215f1e595403c7a25270ba4903ba1a2c449c5"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2011/revenue_fact.parquet": {
+      "bytes": 36241,
+      "sha256": "44c2f3ad2ed9222e378b6c980107bc74f35603c0e30cc90ced6574d9a83fec11"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2012/MANIFEST.json": {
+      "bytes": 913,
+      "sha256": "bf37764bab56c1fd68a17810bb0d984f548344ba6ec9bdb07f12200339f01c9e"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2012/field_lineage.parquet": {
+      "bytes": 125698,
+      "sha256": "aa1b6765ad04d22aeeff0aa024ce8c797e1145e5760621e5845f20e3c84b6e8a"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2012/numeric_evidence.parquet": {
+      "bytes": 38944,
+      "sha256": "c1501005699ae5f319f8183f44dd290d86c68279ca307f13aa270632b6c369e2"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2012/revenue_fact.parquet": {
+      "bytes": 36194,
+      "sha256": "1dbe75e9fcd8dbcf5337c623c2e518fce71209923e9992eadd1ab5d5b00a5882"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2013/MANIFEST.json": {
+      "bytes": 913,
+      "sha256": "ff05580a8c8b06cc14c4bc6aaf341899cfa523d4e56254f97b651189a18334ad"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2013/field_lineage.parquet": {
+      "bytes": 130078,
+      "sha256": "7385ac2f470cd3e8832028258d2e1bea16f2ec6aa6660842b9f630fe2c7454c8"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2013/numeric_evidence.parquet": {
+      "bytes": 37540,
+      "sha256": "160f7481ea28501037d3bd65cbfc7848c4f1def6dcbf56fa137cc8612c71ef53"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2013/revenue_fact.parquet": {
+      "bytes": 35292,
+      "sha256": "483f3a9ba4a3e2029d1c323859e3ba5c8a825e95f8d1a964376390495b265b07"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2014/MANIFEST.json": {
+      "bytes": 913,
+      "sha256": "1519759517dce174914835992b4ad17c2755e3a4793793b72c46bc588a502807"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2014/field_lineage.parquet": {
+      "bytes": 140622,
+      "sha256": "04fe2dbd5a4ae28faadc6c7e04d9a70fb09911fa077a8d1acfd22c0ff5fd376e"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2014/numeric_evidence.parquet": {
+      "bytes": 32524,
+      "sha256": "e1fa769e29d98651c2f7710881bc247e031a2b05739b99b8f0e2c4a98474405c"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2014/revenue_fact.parquet": {
+      "bytes": 35162,
+      "sha256": "96f647ded69b5967695736e6db2bcbfe0c8392c63324c778c7c03e60f0d32abb"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2015/MANIFEST.json": {
+      "bytes": 912,
+      "sha256": "57f71e4c8448719dfaa16cd93f0ec086c3a1d32114e9a5ede5bf14e15ca24a60"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2015/field_lineage.parquet": {
+      "bytes": 107197,
+      "sha256": "b4a1ed53163f00b4b5aeeb0711d1621bcfc1a48f2153b15f9434f3ccd3368e27"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2015/numeric_evidence.parquet": {
+      "bytes": 32131,
+      "sha256": "94e8f8a1ada2636443bf8e53479257e4359f6a2d02fe2ff4652d8a30ad39b305"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2015/revenue_fact.parquet": {
+      "bytes": 34751,
+      "sha256": "a85ca09ed59236ca1abb786aa713029ae349573c3e586d7b4da734289dd5b0fb"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2016/MANIFEST.json": {
+      "bytes": 912,
+      "sha256": "9ecd8edcf2c223d61fae6264eae64c2e9e871ebf1fbb3301099c2b4ebd9503ee"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2016/field_lineage.parquet": {
+      "bytes": 105897,
+      "sha256": "55f4d4cae3c6eb94d0f807929a3d70371f90e4f3b9af7ce13bbc110c42297b3b"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2016/numeric_evidence.parquet": {
+      "bytes": 31740,
+      "sha256": "9287596d00972f9d45f34db54038cce2eb61221df49c7dfcc84ab71bf08dd369"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2016/revenue_fact.parquet": {
+      "bytes": 34483,
+      "sha256": "5c62e0bb2b8af6ed715eb78e5b838183c91f4360ff4e88020ee2a2a346f7f9fd"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2017/MANIFEST.json": {
+      "bytes": 912,
+      "sha256": "e00cea8aeb1c354da3f3ed41f7a8722923a137616f4c70e369795c01de7fdfbd"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2017/field_lineage.parquet": {
+      "bytes": 104174,
+      "sha256": "6201433ece28d2914645f068636ad509ad36ec6ce853787df9eda2a59e660ba6"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2017/numeric_evidence.parquet": {
+      "bytes": 31216,
+      "sha256": "c922999a1162c8718643626225e03c54bf9300bff11a7ba0b18d3d21043db598"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2017/revenue_fact.parquet": {
+      "bytes": 33974,
+      "sha256": "ac33d9ee21914da64a8c61a5091474f5dda4bac423374ac1211540be937da514"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2018/MANIFEST.json": {
+      "bytes": 912,
+      "sha256": "6ec88405707df5f932518983b2aa3f2e0fcab8295869db16b8899bbca283e8ef"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2018/field_lineage.parquet": {
+      "bytes": 104188,
+      "sha256": "818481f8d95318830eb8a3f5903fbe27e577dacc2fc47d9b5d3380587973a209"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2018/numeric_evidence.parquet": {
+      "bytes": 31193,
+      "sha256": "6fadd9968aa7a63e36b24962919337bfd109a542ae2d19a64b7bba25b03f1d3b"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2018/revenue_fact.parquet": {
+      "bytes": 33946,
+      "sha256": "2f8bc920b0ac9f1e343384be4575342bf41f4c0f89867595bd8c8d398722667b"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2019/MANIFEST.json": {
+      "bytes": 912,
+      "sha256": "df02aa63ca91dd19589e40f7783f0039e537496e12c0f580cec8767c9216a97f"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2019/field_lineage.parquet": {
+      "bytes": 102815,
+      "sha256": "a7aa1e4dd1b9c9afaa27b83e65cee613df3a137467f14e5033a313cf54c7fb19"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2019/numeric_evidence.parquet": {
+      "bytes": 30894,
+      "sha256": "488369d4943f5311e7b544b167f3ec4b19b386c00d021d2658b7e05a81b8f84f"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2019/revenue_fact.parquet": {
+      "bytes": 33533,
+      "sha256": "08bb995b877553c9d030d63e2d66846509964b491884b15650462ce87d76d4e7"
+    },
+    "canonical-source-inputs/canonical-budget-2025/LOCAL_BUDGET.json": {
+      "bytes": 1959,
+      "sha256": "2c6dd2ea3dffb496cdf6bc752b0a3a5870bafb1dedffa5412c6b8acf3ed34d77"
+    },
+    "canonical-source-inputs/canonical-budget-2025/appropriation_fact.parquet": {
+      "bytes": 51490,
+      "sha256": "327bcf48a3710a53512c09c033d3588849afb08847b97a3b165b744db0fa0585"
+    },
+    "canonical-source-inputs/canonical-budget-2025/classification_dimension.parquet": {
+      "bytes": 43658,
+      "sha256": "8f0a84ee95c06576bc8803a3a4dd3b09e8687593edfd6555747e06c54731b8c8"
+    },
+    "canonical-source-inputs/canonical-budget-2025/field_lineage.parquet": {
+      "bytes": 169389,
+      "sha256": "4e44e81d4c6caa10d39d085c3d1da645464ee0ae8d709ff261d5e6523c5410c4"
+    },
+    "canonical-source-inputs/canonical-budget-2025/lineage_accounting.jsonl": {
+      "bytes": 732075,
+      "sha256": "2f9eb7d7adc5e7dbbb0497869ff6794462223fa645b0ff2bc0b13af4339d3339"
+    },
+    "canonical-source-inputs/canonical-budget-2025/projection_receipt.json": {
+      "bytes": 738779,
+      "sha256": "3d18fd37f26e3ba4641bb6715fef40543621eedf28633951b5c213bc69973050"
+    },
+    "canonical-source-inputs/canonical-budget-2026/LOCAL_BUDGET.json": {
+      "bytes": 1959,
+      "sha256": "078dab2ecb0854f51f08b658bcf5ce021b93079de31aa66c2c4ecbe2400bf179"
+    },
+    "canonical-source-inputs/canonical-budget-2026/appropriation_fact.parquet": {
+      "bytes": 47192,
+      "sha256": "75b488345be2fff81728b3ab3788e9f0acd1a6e7891ae7ae5d4eb9e75809f501"
+    },
+    "canonical-source-inputs/canonical-budget-2026/classification_dimension.parquet": {
+      "bytes": 39525,
+      "sha256": "c1a9fb374d26691293df26cd21344334dc05d397f4b2f48dd45410cbcc98321d"
+    },
+    "canonical-source-inputs/canonical-budget-2026/field_lineage.parquet": {
+      "bytes": 148215,
+      "sha256": "4b3f589e76529e3e471382a4438835751c2d7364c0473337e09912c95a00861c"
+    },
+    "canonical-source-inputs/canonical-budget-2026/lineage_accounting.jsonl": {
+      "bytes": 629925,
+      "sha256": "79391debaecb3cfd013aae5444b5c1735f6196dec44e33dda05f539c694f9b51"
+    },
+    "canonical-source-inputs/canonical-budget-2026/projection_receipt.json": {
+      "bytes": 636119,
+      "sha256": "02d1ff169260fa69326f870446b8daf2a18c247054807e2c8f30ad98f9a71439"
+    },
+    "canonical-source-inputs/canonical-historical-2024/LOCAL_CANONICAL.json": {
+      "bytes": 1965,
+      "sha256": "f97874a46cc3b9aa6b0623c208a48861d0491695ceae731726e249587d6aea54"
+    },
+    "canonical-source-inputs/canonical-historical-2024/field_lineage.parquet": {
+      "bytes": 75742,
+      "sha256": "9cc09b787383bf6a0a4d38811e00bcdda0fa8380763a93f9bf6076e4f4bd6a9e"
+    },
+    "canonical-source-inputs/canonical-historical-2024/fiscal_context_fact.parquet": {
+      "bytes": 18975,
+      "sha256": "ef044a4e20f1461a7fcb137563e07b1890dd3752b3419ea58e1a261b17e5b4b0"
+    },
+    "canonical-source-inputs/canonical-historical-2024/health_spending_fact.parquet": {
+      "bytes": 18991,
+      "sha256": "6086c7db7923b98adaf4b81235e1fa245055cc03dd6fc864ec8db39c655e0ac5"
+    },
+    "canonical-source-inputs/canonical-historical-2024/lineage_accounting.json": {
+      "bytes": 241157,
+      "sha256": "5b4a5672602501583a26ebacf0b058b35f89f428181b997528513d9366b47298"
+    },
+    "canonical-source-inputs/canonical-historical-2025/LOCAL_CANONICAL.json": {
+      "bytes": 1965,
+      "sha256": "0bb6bd598ad3bc58c103251f4711e0092a75ec0ae80f63c89c623b93c0711507"
+    },
+    "canonical-source-inputs/canonical-historical-2025/field_lineage.parquet": {
+      "bytes": 77323,
+      "sha256": "e2098b2d03fc909741620f9d78aa58587852894b8dacf9ba5491aa79ab7e49e8"
+    },
+    "canonical-source-inputs/canonical-historical-2025/fiscal_context_fact.parquet": {
+      "bytes": 19445,
+      "sha256": "b2491a94d6901b0f05e101eabbb18abf445b67a6d9865ae2f4ba62d1d27e8e54"
+    },
+    "canonical-source-inputs/canonical-historical-2025/health_spending_fact.parquet": {
+      "bytes": 19464,
+      "sha256": "e7d86618e1edb0166f11331bf59754bd9d85fd8c0b976cc8826096bb4c5c7ff6"
+    },
+    "canonical-source-inputs/canonical-historical-2025/lineage_accounting.json": {
+      "bytes": 245614,
+      "sha256": "59f9b8a7a5ae8e7d860def3c12b6756226f59d1ecf7085c6247d9e454037bcbc"
+    },
+    "canonical-source-inputs/canonical-revenue-2026/LOCAL_REVENUE.json": {
+      "bytes": 1462,
+      "sha256": "f448378bd4b61a9353bfdfdbb1c9118ccf73fb3efcbcbefd967fdf3efe37f498"
+    },
+    "canonical-source-inputs/canonical-revenue-2026/field_lineage.parquet": {
+      "bytes": 46992,
+      "sha256": "e6f31b098ea1e077255165bad411819037eb18fcd2b0d4d3d88b1835eeb0981d"
+    },
+    "canonical-source-inputs/canonical-revenue-2026/projection_receipt.json": {
+      "bytes": 382,
+      "sha256": "f543667e15d27dad1a04265bcf4df2466c502659c06ce09586304d8aaf5af522"
+    },
+    "canonical-source-inputs/canonical-revenue-2026/revenue_fact.parquet": {
+      "bytes": 23481,
+      "sha256": "5410174e1cd5859385e935551f1cb3ad2e63ed79fa34c0190a6be17df2769d4e"
+    },
+    "canonical-source-inputs/raw-biffbudget-2011/MANIFEST.json": {
+      "bytes": 4876,
+      "sha256": "eacfdc20ea7072d5f8918a0a3de30b6b3df369b5d86c5cb8389cbf1a7dcfd2ff"
+    },
+    "canonical-source-inputs/raw-biffbudget-2011/budget_facts.parquet": {
+      "bytes": 101705,
+      "sha256": "64e7448b0289f405370a63d110f5d6555c927cf512b750c0442a7f658bfcc43e"
+    },
+    "canonical-source-inputs/raw-biffbudget-2011/field_lineage.parquet": {
+      "bytes": 176945,
+      "sha256": "fbe30204c95d357b4129641c6f318d6d95348015cc680e20701b902014337de3"
+    },
+    "canonical-source-inputs/raw-biffbudget-2011/numeric_evidence.parquet": {
+      "bytes": 147238,
+      "sha256": "c820560166c34e0be5d4149f2c953ee8991d88972f0c5ff57f52245896198341"
+    },
+    "canonical-source-inputs/raw-biffbudget-2011/row_dispositions.parquet": {
+      "bytes": 306315,
+      "sha256": "48c019500fe0c9df9792e70fc492224392ea6892415d6a834917337eef9e5235"
+    },
+    "canonical-source-inputs/raw-biffbudget-2012/MANIFEST.json": {
+      "bytes": 5014,
+      "sha256": "8fce971a764a4a7bfaff14dc811494b5a1c970be6b974021c0459ecf542771c0"
+    },
+    "canonical-source-inputs/raw-biffbudget-2012/budget_facts.parquet": {
+      "bytes": 113825,
+      "sha256": "d7ef46cd2b06baa9ff35b32d9b177235da02ddb74fd65c8e8cf65e6def6c91f8"
+    },
+    "canonical-source-inputs/raw-biffbudget-2012/field_lineage.parquet": {
+      "bytes": 182194,
+      "sha256": "a1e42e50efc30594da9763bbc73fe8fcd89515d3942595f11caf9acbf2d494dd"
+    },
+    "canonical-source-inputs/raw-biffbudget-2012/numeric_evidence.parquet": {
+      "bytes": 146651,
+      "sha256": "88836a181196b7dee4286967d00d939d5af21857d9b8432e981c778b8b4ab917"
+    },
+    "canonical-source-inputs/raw-biffbudget-2012/row_dispositions.parquet": {
+      "bytes": 532540,
+      "sha256": "155d5f17954c887220257478e8d32265bf3f5fba7df646b9873556d5f92b0456"
+    },
+    "canonical-source-inputs/raw-biffbudget-2013/MANIFEST.json": {
+      "bytes": 5282,
+      "sha256": "1190d5b22a3dda61429c441f323ed148c16ef2ce60b83133c5efc6ee9efa7961"
+    },
+    "canonical-source-inputs/raw-biffbudget-2013/budget_facts.parquet": {
+      "bytes": 113757,
+      "sha256": "a51bb1339dada584835d6ccc97a29bc996f1f8f99338fc0dc80b9e947feccfaf"
+    },
+    "canonical-source-inputs/raw-biffbudget-2013/field_lineage.parquet": {
+      "bytes": 182007,
+      "sha256": "023d15659d9c1e586ddb8eb41efec71b98f522246b552136fea06509f7d18bc6"
+    },
+    "canonical-source-inputs/raw-biffbudget-2013/numeric_evidence.parquet": {
+      "bytes": 145616,
+      "sha256": "e8331dd6b5e236e1a5144f2b4396c24a4a77f41197e6049a22ce0ddad4122774"
+    },
+    "canonical-source-inputs/raw-biffbudget-2013/row_dispositions.parquet": {
+      "bytes": 532945,
+      "sha256": "8aac3881411963e032522fce4a24396adb5d8aa1c345eb18bee871a7e192ddef"
+    },
+    "canonical-source-inputs/raw-biffbudget-2014/MANIFEST.json": {
+      "bytes": 5565,
+      "sha256": "c1888966a70072162a3b8414743bf33c943d8f9a360550d6e26aa8802298176e"
+    },
+    "canonical-source-inputs/raw-biffbudget-2014/budget_facts.parquet": {
+      "bytes": 120046,
+      "sha256": "f432e25625b470179db6b7d5f97813090bf7014fa3aad8fab97456118c7349ce"
+    },
+    "canonical-source-inputs/raw-biffbudget-2014/field_lineage.parquet": {
+      "bytes": 193615,
+      "sha256": "4903309b5faefe2439ae381129edb35e4eca1cd584635a7e13325f0f00ca7a26"
+    },
+    "canonical-source-inputs/raw-biffbudget-2014/numeric_evidence.parquet": {
+      "bytes": 147944,
+      "sha256": "261c61be2f6ca4de46327b660090a93afc27ee27921ee726d3ad699f17e1d760"
+    },
+    "canonical-source-inputs/raw-biffbudget-2014/row_dispositions.parquet": {
+      "bytes": 602914,
+      "sha256": "e1a8a9e5da69a0d819f61ac3e389ee5138de4fd6c1cca3fdcfaf0a451f8e715b"
+    },
+    "canonical-source-inputs/raw-biffbudget-2015/MANIFEST.json": {
+      "bytes": 4198,
+      "sha256": "f5345623acfd42b2457ea41457173ac7600aae95d9ce6d68411b346a08e3596c"
+    },
+    "canonical-source-inputs/raw-biffbudget-2015/budget_facts.parquet": {
+      "bytes": 117902,
+      "sha256": "0441039695c46e962b3c6e342ba983f52ea0e2b149c410a152166f607badfacd"
+    },
+    "canonical-source-inputs/raw-biffbudget-2015/field_lineage.parquet": {
+      "bytes": 191715,
+      "sha256": "e4e6be02d7168aaf88de701ced5573d6829f86c7310c7fbaa7c85e54fef3788b"
+    },
+    "canonical-source-inputs/raw-biffbudget-2015/numeric_evidence.parquet": {
+      "bytes": 146935,
+      "sha256": "c6b0285503377ad4db8ea97062fdfc4f6ca2dc62eee362c4b8c7885551b87476"
+    },
+    "canonical-source-inputs/raw-biffbudget-2015/row_dispositions.parquet": {
+      "bytes": 613194,
+      "sha256": "66f61bb41a26715def1d1e9c7840277772cba8488f43f4c676d4e976e32d6ee7"
+    },
+    "canonical-source-inputs/raw-biffbudget-2016/MANIFEST.json": {
+      "bytes": 4198,
+      "sha256": "b33a1f402ff755d456be044242945970071d78d631bcd295f28763ad8ebe99bc"
+    },
+    "canonical-source-inputs/raw-biffbudget-2016/budget_facts.parquet": {
+      "bytes": 114735,
+      "sha256": "630b839c18ee5cded3bb3b34846209cf8d1b7b39d50b995ec3a69645ddbb512c"
+    },
+    "canonical-source-inputs/raw-biffbudget-2016/field_lineage.parquet": {
+      "bytes": 212566,
+      "sha256": "cdcf07dbeb349b3e52d8f72972f0d85fa2c52d570854c2e7234f43ad0e84c95f"
+    },
+    "canonical-source-inputs/raw-biffbudget-2016/numeric_evidence.parquet": {
+      "bytes": 191484,
+      "sha256": "6df04200e7753279b5220c9cedb41738135f550fc72328af8254f26732e6faeb"
+    },
+    "canonical-source-inputs/raw-biffbudget-2016/row_dispositions.parquet": {
+      "bytes": 638561,
+      "sha256": "43ecbb2e1c1d14b0ddb28493754249a7f1984ef0b6e286fca270d97f8bea431a"
+    },
+    "canonical-source-inputs/raw-biffbudget-2017/MANIFEST.json": {
+      "bytes": 4408,
+      "sha256": "52fbcd592ebb3a66a18aa125534e4ea3a96ae50d40acbef212e6ee083ee2d687"
+    },
+    "canonical-source-inputs/raw-biffbudget-2017/budget_facts.parquet": {
+      "bytes": 116082,
+      "sha256": "551d506f5e419b919fb5d18e6c5b804ab62b4722717ecc766e09d4d03366281a"
+    },
+    "canonical-source-inputs/raw-biffbudget-2017/field_lineage.parquet": {
+      "bytes": 214929,
+      "sha256": "9adf4580ed3f9f6a8c4827c931f1d896aa7ef67ff2bf7567f9f147625542cf58"
+    },
+    "canonical-source-inputs/raw-biffbudget-2017/numeric_evidence.parquet": {
+      "bytes": 189322,
+      "sha256": "e1d739abd1264236733bade0db7ffa4073e549fd5ae5d4ef2ae57f680d66b838"
+    },
+    "canonical-source-inputs/raw-biffbudget-2017/row_dispositions.parquet": {
+      "bytes": 627197,
+      "sha256": "d02fde77ce5f0c962259ee693da0db74ccd041d6648f73c75a59fd3ef0077401"
+    },
+    "canonical-source-inputs/raw-biffbudget-2018/MANIFEST.json": {
+      "bytes": 4408,
+      "sha256": "a99ae2d54df0409a8999d97fcaeb2890ca2b38f71d7b758e55901d1f79b39fda"
+    },
+    "canonical-source-inputs/raw-biffbudget-2018/budget_facts.parquet": {
+      "bytes": 116513,
+      "sha256": "225f8db0278f9882e507e8ec1d1217b52c460be606154a6e449ffc3cebd6ac4c"
+    },
+    "canonical-source-inputs/raw-biffbudget-2018/field_lineage.parquet": {
+      "bytes": 216037,
+      "sha256": "4c82e174831153219841fd37fdb3bc67af5fe7d49b0156800bdd359861115974"
+    },
+    "canonical-source-inputs/raw-biffbudget-2018/numeric_evidence.parquet": {
+      "bytes": 193301,
+      "sha256": "724acd2b85ed6903ef3469da6fe173ea213d94b847f2edfe7b88d9d6cd9bf38c"
+    },
+    "canonical-source-inputs/raw-biffbudget-2018/row_dispositions.parquet": {
+      "bytes": 634452,
+      "sha256": "0d8bd2230b8625e4e6cbe97ade3d86b3398d76b605dbeeb1a87442974da85f04"
+    },
+    "canonical-source-inputs/raw-biffbudget-2019/MANIFEST.json": {
+      "bytes": 4408,
+      "sha256": "5192d42399c9985e444029a7fe684be83b3205dd2e0f451745f01a9f2f8f6e7b"
+    },
+    "canonical-source-inputs/raw-biffbudget-2019/budget_facts.parquet": {
+      "bytes": 116861,
+      "sha256": "64c1a508a0e9a0395c1e8a606a7cf7f9873041f72690856d181cf97cb8844a0a"
+    },
+    "canonical-source-inputs/raw-biffbudget-2019/field_lineage.parquet": {
+      "bytes": 217066,
+      "sha256": "eba2d1f7e5ea3c1e7bacad2cf61e6a0c72a5a8fea55c9035eec86809f79b8bcf"
+    },
+    "canonical-source-inputs/raw-biffbudget-2019/numeric_evidence.parquet": {
+      "bytes": 191364,
+      "sha256": "085f676532b3ebcd5a74951b3e9093c5d17bc8d1466974e2fb5c92bfd8f8224e"
+    },
+    "canonical-source-inputs/raw-biffbudget-2019/row_dispositions.parquet": {
+      "bytes": 623581,
+      "sha256": "9a569ac9d4251346760d9bf01785b0b954cca47cb9e39b294e61264e266aa93b"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2011/MANIFEST.json": {
+      "bytes": 4879,
+      "sha256": "46b19c33fa79a5cf1c291deca3922b89de103203b2af882c1391e2e6dbc1c03e"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2011/budget_facts.parquet": {
+      "bytes": 32849,
+      "sha256": "0c912a3512f30b7f395def6294d204875d701a28e403df942c0ed7eeb6e7e8ad"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2011/field_lineage.parquet": {
+      "bytes": 44606,
+      "sha256": "7bb578238d8802706ff023f46dada50eb5e2d807d6242d2e783e2663ced81883"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2011/numeric_evidence.parquet": {
+      "bytes": 38955,
+      "sha256": "b0b145730fe5905cf32c56779d8215f1e595403c7a25270ba4903ba1a2c449c5"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2011/row_dispositions.parquet": {
+      "bytes": 52846,
+      "sha256": "069ccc554d647678f1ada4830b8262d19e3ca7b8cc0c44a3b7bda6b04f1278ff"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2012/MANIFEST.json": {
+      "bytes": 4878,
+      "sha256": "c9099f7c947fc23e87e71e2f5f5e354f7c2b4a47fbcf7a29d7daa2452093a10d"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2012/budget_facts.parquet": {
+      "bytes": 32725,
+      "sha256": "ea96cb5c607532cde7f1f87459b7242a511de195622ea5b3fdadd4dca429cc4c"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2012/field_lineage.parquet": {
+      "bytes": 44612,
+      "sha256": "5b8034d2a4534061376825f187e3224da3f3f08bb52907409a7454257024fa57"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2012/numeric_evidence.parquet": {
+      "bytes": 38944,
+      "sha256": "c1501005699ae5f319f8183f44dd290d86c68279ca307f13aa270632b6c369e2"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2012/row_dispositions.parquet": {
+      "bytes": 53053,
+      "sha256": "01e9a0351c168e598a2fd3a8a66ad0ac0f30cb6c352c709c4118904ebde25a95"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2013/MANIFEST.json": {
+      "bytes": 5146,
+      "sha256": "18677a520d6adf9524a89ceb354083a115405d1def148e53b1f03a8ef05a30ae"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2013/budget_facts.parquet": {
+      "bytes": 31876,
+      "sha256": "0c9d3307b06d2c3483fd391b2475bc70fa139bf87f054618486f48dad1a20397"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2013/field_lineage.parquet": {
+      "bytes": 43015,
+      "sha256": "03d9fd29355c6747c68721cdb468bcd5c40e7cc2f20a4672d69d77bea882d783"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2013/numeric_evidence.parquet": {
+      "bytes": 37540,
+      "sha256": "160f7481ea28501037d3bd65cbfc7848c4f1def6dcbf56fa137cc8612c71ef53"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2013/row_dispositions.parquet": {
+      "bytes": 53420,
+      "sha256": "812943d4d49069ce99f972bfabf8dbc44495167b85dd18e305f04dcb453b89d6"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2014/MANIFEST.json": {
+      "bytes": 5004,
+      "sha256": "229355987ab665bd462ba7af53b6b6afdb369f679e4ea832be2635e861ca2bf6"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2014/budget_facts.parquet": {
+      "bytes": 30248,
+      "sha256": "f5307e46b4a811ecd94b76204f8b55af26c6d497cfb664ecea57631335dedf8f"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2014/field_lineage.parquet": {
+      "bytes": 37426,
+      "sha256": "4aeb3a26aeb2b9fc9e5edabafb3c3e3eed14d856ab63e2683ede4dd92702bcb2"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2014/numeric_evidence.parquet": {
+      "bytes": 32524,
+      "sha256": "e1fa769e29d98651c2f7710881bc247e031a2b05739b99b8f0e2c4a98474405c"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2014/row_dispositions.parquet": {
+      "bytes": 47956,
+      "sha256": "97c2accc654f03dc813bca6c25e6abb2e3de7b337d3bc7f38421179a31f1a792"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2015/MANIFEST.json": {
+      "bytes": 3612,
+      "sha256": "e31ae252e0a56bdd5fe60ea7e7f8ffbca78a4da67934da264bdbc303d21fb766"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2015/budget_facts.parquet": {
+      "bytes": 29479,
+      "sha256": "ea53035c51ba6b80daaa33f8c338d2247be636e4c47a4c0a023173664c3f5833"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2015/field_lineage.parquet": {
+      "bytes": 35836,
+      "sha256": "5e2dc6423cd61d78e01daef038c3eef41559f821bdb880102bef7f6fb311a6a2"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2015/numeric_evidence.parquet": {
+      "bytes": 32131,
+      "sha256": "94e8f8a1ada2636443bf8e53479257e4359f6a2d02fe2ff4652d8a30ad39b305"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2015/row_dispositions.parquet": {
+      "bytes": 47333,
+      "sha256": "a3abd3148f85d72aecc55e2e4245753644777be64f64b848031c93bc2f1163b6"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2016/MANIFEST.json": {
+      "bytes": 3612,
+      "sha256": "a3ca31dd8d5d9ff6433326c6d5fc1835a40a53e64bbe45473e33e86c6e394ba5"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2016/budget_facts.parquet": {
+      "bytes": 29209,
+      "sha256": "1470250e3028b2aeeca2ef4fa2fbcfdbe8b1613c6fc760423d672c56e9ed99e5"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2016/field_lineage.parquet": {
+      "bytes": 35434,
+      "sha256": "8ad06e028efd239691d5042bb8486fe9665f7b8631f8c3f67ec8bc191cea773d"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2016/numeric_evidence.parquet": {
+      "bytes": 31740,
+      "sha256": "9287596d00972f9d45f34db54038cce2eb61221df49c7dfcc84ab71bf08dd369"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2016/row_dispositions.parquet": {
+      "bytes": 47459,
+      "sha256": "b44b233a8749dd3fb961494b6504645f9968e9c473832db5bf9cbf3f458d2964"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2017/MANIFEST.json": {
+      "bytes": 3612,
+      "sha256": "98c00d9c8140b3a0cd3491cf825c7b5940becd73a403abc6f0728336c17e1206"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2017/budget_facts.parquet": {
+      "bytes": 28681,
+      "sha256": "f149b668710f6f83b744e29b816889ca5ab304f400c7497a3745f2c806c4e70a"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2017/field_lineage.parquet": {
+      "bytes": 34908,
+      "sha256": "bba8fa74e207ed9354cbc1d07baa526df65d3bb7a445f488ea132a3c8897823b"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2017/numeric_evidence.parquet": {
+      "bytes": 31216,
+      "sha256": "c922999a1162c8718643626225e03c54bf9300bff11a7ba0b18d3d21043db598"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2017/row_dispositions.parquet": {
+      "bytes": 46316,
+      "sha256": "5d5d2a06c4874aa0292dff7fd710071057f427e4ca0682b91a74a0f784af5754"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2018/MANIFEST.json": {
+      "bytes": 3612,
+      "sha256": "6db669f9dcb79588731b2cd05673e3e8c322469355010b4a7648f8ed8d6afdbf"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2018/budget_facts.parquet": {
+      "bytes": 28660,
+      "sha256": "468755a70a9b566d8167513a9fc77f04d5d8ba994951c4ffd800c3a9e610481b"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2018/field_lineage.parquet": {
+      "bytes": 34875,
+      "sha256": "8501c9ec846c53b4d15887b621923ed2ed2476189595a6b2f5e3bef0ff3463f2"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2018/numeric_evidence.parquet": {
+      "bytes": 31193,
+      "sha256": "6fadd9968aa7a63e36b24962919337bfd109a542ae2d19a64b7bba25b03f1d3b"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2018/row_dispositions.parquet": {
+      "bytes": 45793,
+      "sha256": "4e1f62c170e4b5f8cd0dc7a57365036edbc7dff50fe5b5db4bac7dc6ad0ebb88"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2019/MANIFEST.json": {
+      "bytes": 3612,
+      "sha256": "ab99f3ff63b4afe62c98ecba07f5620425b76d17446f7d332e452dbfe6881029"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2019/budget_facts.parquet": {
+      "bytes": 28338,
+      "sha256": "fdf94a6aab4217a1f67c9833c645ae1578cdac58a171dba8a6b66de19644c144"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2019/field_lineage.parquet": {
+      "bytes": 34510,
+      "sha256": "4381aac69ac70719684ed0a31aad77b70533681babb4a0c7540ebd5375a2ea22"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2019/numeric_evidence.parquet": {
+      "bytes": 30894,
+      "sha256": "488369d4943f5311e7b544b167f3ec4b19b386c00d021d2658b7e05a81b8f84f"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2019/row_dispositions.parquet": {
+      "bytes": 45941,
+      "sha256": "ee5af6729400f2c746e054a82048e172ab259dd82b2b22c7b9d5fa77027fc072"
+    },
+    "canonical-source-inputs/raw-budget-2025/MANIFEST.json": {
+      "bytes": 7120,
+      "sha256": "bc74d0140e606091efdf9104dc8c9ef556726dc15372f6f9cacab346ba8b6bc4"
+    },
+    "canonical-source-inputs/raw-budget-2025/budget_facts.parquet": {
+      "bytes": 64493,
+      "sha256": "50a2a4d4ffe5b5e9adb44575e4a865f706170c306088b3e7d29ea822cfeae0a4"
+    },
+    "canonical-source-inputs/raw-budget-2025/field_lineage.parquet": {
+      "bytes": 81832,
+      "sha256": "f8d80b30e5d4641707e7c39cbb435de97bb4b44a49fd8c5ae705072ed867ad9c"
+    },
+    "canonical-source-inputs/raw-budget-2025/row_dispositions.parquet": {
+      "bytes": 682366,
+      "sha256": "dabc8533c1ff8b49ff46b4301374225315771a76c27e64020526ebcda6486397"
+    },
+    "canonical-source-inputs/raw-budget-2026/MANIFEST.json": {
+      "bytes": 7112,
+      "sha256": "bb13d59f783bf21ac507884a40e21b20990bfe5fc14c6da14c330ef709ca1950"
+    },
+    "canonical-source-inputs/raw-budget-2026/budget_facts.parquet": {
+      "bytes": 57345,
+      "sha256": "42781cb2723f9b1b32a536a46389b0c5a54431d9c600380c6058e740a96b6f9f"
+    },
+    "canonical-source-inputs/raw-budget-2026/field_lineage.parquet": {
+      "bytes": 72437,
+      "sha256": "917e14e0de9d5fc3f7c56d14da9cc103031aa475e59157da46824d63c06c9a4b"
+    },
+    "canonical-source-inputs/raw-budget-2026/row_dispositions.parquet": {
+      "bytes": 677927,
+      "sha256": "e4bad4ad0a92b80257526fddcf4d7b7e665d1eddee90cedf6706977e65260b0f"
+    },
+    "canonical-source-inputs/raw-historical-2024/MANIFEST.json": {
+      "bytes": 125989,
+      "sha256": "2f39ad4dbeb7cb872118ddc634985b5e21b18f2ef2421ca3c0a1e9bf90411288"
+    },
+    "canonical-source-inputs/raw-historical-2024/cell_dispositions.parquet": {
+      "bytes": 31132,
+      "sha256": "79bb5cad2f1f8f612d930acb5405070af8f7a20fe357c4560d96d220deedf960"
+    },
+    "canonical-source-inputs/raw-historical-2024/field_lineage.parquet": {
+      "bytes": 27102,
+      "sha256": "506debdaf2b5b54e5f0d6677fb4969aa589946296be748cdc5b793e8d6beb4cf"
+    },
+    "canonical-source-inputs/raw-historical-2024/historical_facts.parquet": {
+      "bytes": 32847,
+      "sha256": "585c54a54e00ebea7e70288b5ac0736d6e8589922ecd9f0e4e35c5808deee7c7"
+    },
+    "canonical-source-inputs/raw-historical-2025/MANIFEST.json": {
+      "bytes": 127706,
+      "sha256": "aee4578f1ee83f8c1ede63e36e840c6cd2140df8c6f463e71ec93da9e4e7d75a"
+    },
+    "canonical-source-inputs/raw-historical-2025/cell_dispositions.parquet": {
+      "bytes": 31617,
+      "sha256": "9f5118560318865c56bd1713ec10bfc43b39625f670e490a71d876eea351cbdc"
+    },
+    "canonical-source-inputs/raw-historical-2025/field_lineage.parquet": {
+      "bytes": 27855,
+      "sha256": "c0d7b3691fe7040373717e7daaf6a3f3be4c6447f24d8773b1a741efc904bd9a"
+    },
+    "canonical-source-inputs/raw-historical-2025/historical_facts.parquet": {
+      "bytes": 33634,
+      "sha256": "6fcf3ef095e3889de879d4a130fcc8b0ae25319562a46e96706180c74d40cebf"
+    },
+    "canonical-source-inputs/raw-revenue-2026/MANIFEST.json": {
+      "bytes": 7024,
+      "sha256": "9a53c6533d413b46d4b5b632d7dc8bfc60140ebf168c9ce5e3e3d4ed9efe883f"
+    },
+    "canonical-source-inputs/raw-revenue-2026/field_lineage.parquet": {
+      "bytes": 21792,
+      "sha256": "7224693584835db34e07e4423bd4a5f38de4aca80b7764a1d84dc86d5fa0e51b"
+    },
+    "canonical-source-inputs/raw-revenue-2026/revenue_facts.parquet": {
+      "bytes": 24662,
+      "sha256": "a9c96ae287f0ea13f146e8fceda6c21cd09968bd13d26c0bb8cb81e23cb14b46"
+    },
+    "canonical-source-inputs/raw-revenue-2026/row_dispositions.parquet": {
+      "bytes": 52830,
+      "sha256": "5135d1fe763f2e2df34fffc6dfb3d0ac42147184b76c93667e06d29ec39d6f2a"
+    }
+  },
+  "frozen_parameters_sha256": "7cf2a776ca2e4daa249ae1bfedbe66d9122749181e7dda655d878c43c45f0bff",
+  "gold": {
+    "drillthrough": {
+      "bytes": 11769798,
+      "output_name": "source_drillthrough.json",
+      "record_count": 4286,
+      "schema_version": "archive-govt-nz.health-source-drillthrough/v3",
+      "scope": "complete_v2_records_in_verified_companion",
+      "sha256": "ecae6854b9d0f34734e9748bb41cddd324de6b5a41be56ceee01cda9fb4cbbe1"
+    },
+    "fact_rows": 4227,
+    "input_records": 4286,
+    "manifest_bytes": 1816259,
+    "manifest_sha256": "d67a1db128ccf178c3003d97a2c79e710f858c53a57ed526b6ed59d1f3f37e61",
+    "numeric_witness_rows": 14584,
+    "outputs": {
+      "biff8_budget.parquet": {
+        "bytes": 479253,
+        "rows": 2828,
+        "sha256": "a8a5bfa90ab4b245f78b29dfbb41c676b41bd3285e5c6d1c2121044a6d6509b8"
+      },
+      "biff8_budget_lineage.parquet": {
+        "bytes": 8580385,
+        "rows": 68248,
+        "sha256": "4a393ed3a990f115aac110de161c47caec40b933d49f7c0bbdf475e1c5c7fc0f"
+      },
+      "biff8_budget_numeric.parquet": {
+        "bytes": 1005639,
+        "rows": 12577,
+        "sha256": "505732fc102e1625a452e899d836e59da3e7e67608d6d6943246c440a1f8446c"
+      },
+      "biff8_revenue.parquet": {
+        "bytes": 109441,
+        "rows": 599,
+        "sha256": "6d98661eeece3b78a2be50877dd9404fc77b3fb306fbb9be5823df747364e065"
+      },
+      "biff8_revenue_lineage.parquet": {
+        "bytes": 716458,
+        "rows": 9201,
+        "sha256": "3eab43b27391cd5f48a9c41e050b5b9753cc93b13caddfe2d7a0f1396c0d9c87"
+      },
+      "biff8_revenue_numeric.parquet": {
+        "bytes": 147112,
+        "rows": 2007,
+        "sha256": "06081e76047eb79baa8f7f2607e42978cb59f6854a25ed5f2f0042b02a440116"
+      },
+      "canonical_input_lineage.parquet": {
+        "bytes": 460180,
+        "rows": 7063,
+        "sha256": "43366f43e6d9c6d2a3cafbfb72371d28873d539d1eb0c7d9a89898ecc1bac516"
+      },
+      "cross_source_period_overlap.json": {
+        "bytes": 320593,
+        "kind": "report",
+        "publication": "not_performed",
+        "rights_state": "not_evaluated",
+        "sha256": "9814c624b0c111c622865a0c3c9c1aedc7012a3e2f98d65f6f984a3919971f6a"
+      },
+      "crown_expense_befu_2026.parquet": {
+        "bytes": 14196,
+        "rows": 10,
+        "sha256": "24e75fb2e21c000a4fc8066ff1bac77127db9f7c4e6d0a2ab493fe1ccbe3d561"
+      },
+      "crown_expense_befu_2026_lineage.parquet": {
+        "bytes": 3924,
+        "rows": 80,
+        "sha256": "4023f8a0ad0f9fb735043b1a212c40ccbd266e5031d698ccb1cf99795ba9cf94"
+      },
+      "crown_expense_hyefu_2025.parquet": {
+        "bytes": 14253,
+        "rows": 10,
+        "sha256": "016da08fafd2daf4060602fad498232ce5b307bca4f026652d96f2980c2cf6f1"
+      },
+      "crown_expense_hyefu_2025_lineage.parquet": {
+        "bytes": 3940,
+        "rows": 80,
+        "sha256": "0d4165de846735d6f5c37b907bc286f508804a704eb6f225bdc71628a39a0489"
+      },
+      "dataset-card.md": {
+        "bytes": 3112,
+        "kind": "dataset_card",
+        "publication": "not_performed",
+        "rights_state": "not_evaluated",
+        "sha256": "9a6491981366d91436c6d880981a938a1b8c09a378e8f6a66806783b9a7a5f23"
+      },
+      "historical_coverage.parquet": {
+        "bytes": 11890,
+        "rows": 4,
+        "sha256": "35f4b977cfccc1e669b785dee31d2f31faa2b5551d1af29d881a1fb2c8a27917"
+      },
+      "historical_fiscal_crown.parquet": {
+        "bytes": 23173,
+        "rows": 61,
+        "sha256": "c39eb048eeab9d4c0a3164bbc54930bed7cfe7cb4d1eb71338a1842fa5dd7ae9"
+      },
+      "historical_fiscal_crown_lineage.parquet": {
+        "bytes": 9682,
+        "rows": 671,
+        "sha256": "278a92ebec99d7f937b08d2d084c73713e589d77609c7760e7f276d93f774e43"
+      },
+      "historical_observations.parquet": {
+        "bytes": 14205,
+        "rows": 214,
+        "sha256": "b7070aa4f7651794e3da59521579d495402291d9d09369708b3bc6d0b84ea1c6"
+      },
+      "historical_revision_reconciliation.json": {
+        "bytes": 11838,
+        "kind": "report",
+        "publication": "not_performed",
+        "rights_state": "not_evaluated",
+        "sha256": "8d1eec0a0b4a9e7e34336162f0c5870dc618bd4d2fcfe73e32a7d56ddac4ba5f"
+      },
+      "nominal_budget.parquet": {
+        "bytes": 21872,
+        "rows": 341,
+        "sha256": "61aa8f6fc5bbf1052a3e38f88d4b5417911358ccfdfcb654ffbf006fc21917f3"
+      },
+      "nominal_pharmaceutical_budget.parquet": {
+        "bytes": 15758,
+        "rows": 14,
+        "sha256": "04dadcbf364c46665657322b45fb9d679c278f13e64d65fc3be2250fa8dbb019"
+      },
+      "nominal_revenue.parquet": {
+        "bytes": 7469,
+        "rows": 70,
+        "sha256": "29df524215a678cabc6008ec5bd99ed7e38fb24a783601ecbc1c39f4c8cacd75"
+      },
+      "pharmaceutical_budget_lineage.parquet": {
+        "bytes": 4766,
+        "rows": 112,
+        "sha256": "fab415c4e47f65cd4b18f0dee53c90fef4ca510f27fad1e4362e0a9ec873511f"
+      },
+      "plot_budget_19f00f88854fe78ebde9.png": {
+        "bytes": 139549,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "7940d95b8d34aa13275ae987d9109d57a503a7c47e54d4ac5295155bc0aac10c"
+      },
+      "plot_budget_1b04219e6a259c577ccf.png": {
+        "bytes": 137936,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "44eca12a389a02ea6511c48f896bda3e24c36fbbdb5d7b8e354b2761435841bf"
+      },
+      "plot_budget_502284c66d1b8e52adc6.png": {
+        "bytes": 134136,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "9a6af08fabecb6799a3bfe5a490df08be2d4e2d1b0885e70b3dd772c89bb2c7e"
+      },
+      "plot_budget_5299a9d311817a6a404c.png": {
+        "bytes": 421119,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "8242e45adbc20be69ea55b4fee600c0d18148b3216e483a25b4906da8f9392ea"
+      },
+      "plot_budget_74cd52b37798e3cf9750.png": {
+        "bytes": 365513,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "e4e785991314c76a35fe1983fb76193b0436c7a8404f5c017e91e25c5221b455"
+      },
+      "plot_budget_7dfc30e1bb6ea30168c6.png": {
+        "bytes": 135908,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "2b0885c4c3e2e972176fba2c0f31f81582d6258db88212886baf5685ef416222"
+      },
+      "plot_crown_befu_2550c78c3610f53f9ad5.png": {
+        "bytes": 68137,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "29202e0802062568f638064a41e467f3a67e63446e4f1a7534816add118a8c5c"
+      },
+      "plot_crown_befu_6d873ddee469a22c2f5c.png": {
+        "bytes": 67086,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "96861cbcef00bf6ff665e2eea61c478596758edeb628a7152a2e181302fbc3a9"
+      },
+      "plot_crown_hyefu_1699d96ca50f1665314d.png": {
+        "bytes": 67724,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "59f4a783f8546aa8e3e568d70e77262c65166e60db9d7f5afb97c6aea2eac247"
+      },
+      "plot_crown_hyefu_eadd76c35d4812f761b6.png": {
+        "bytes": 67772,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "24ff45220393c337d9c5c51a706cd13a350616ba476431f5d3fe00c50680c60c"
+      },
+      "plot_fiscal_crown_0d68d767a847fef2e27c.png": {
+        "bytes": 141638,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "b85032b0ecfa14b67944edf2f75d14fa597e8bdd8620af2228b2e65b642ad93e"
+      },
+      "plot_fiscal_crown_3549a149b3be5cc1a22b.png": {
+        "bytes": 54094,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "39bf9aa9414a40c686fbd83e3d73ebb7f75dea4f3606fec6e6d70a79297fa754"
+      },
+      "plot_fiscal_crown_9d921d8b6a2304c51ec0.png": {
+        "bytes": 86842,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "c1bc8f113b9da3893586afe4f7a3d7a06fe96b6c27418ac472cc9f6e3e33c6e1"
+      },
+      "plot_fiscal_crown_b198e3d702f33d23ec39.png": {
+        "bytes": 85042,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "7291a92f202f9c6cc540344cd11b925ff8c6aae5154d7251b74877edeae808a2"
+      },
+      "plot_fiscal_crown_cd809e25a59e219eb4bd.png": {
+        "bytes": 141080,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "7ab972bc5fd56bdb6c3e88f18ecef338138d5846b955cccb890a4318423bd6b0"
+      },
+      "plot_historical_0110612a35c0bf230b18.png": {
+        "bytes": 140874,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "8c4030a3ceaf1939fcf3abb23656bf559b97ddbc16458f15eee08fa4f986d96e"
+      },
+      "plot_historical_22c05a464921e6a49c13.png": {
+        "bytes": 135049,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "d3a7f37196457b9fe845698a3b1c18ca09b9ea13614268edba384fd00f931ef6"
+      },
+      "plot_historical_423981e75d32ebd10d12.png": {
+        "bytes": 84506,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "df761f1399b2ac8021d0714dab9bc420a6e2f0688921d8febfc1437608cd8d69"
+      },
+      "plot_historical_959f44ae6a4e923aa28b.png": {
+        "bytes": 141747,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "606f1e0de4e8d0e34d7fb0a8d299ff1dd8847ead9cd4a6ddfc5bfefaa0b0e994"
+      },
+      "plot_historical_a2a298f5a61c5c88bcc9.png": {
+        "bytes": 258989,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "a12f59f90cbb85dd3064297b08e4cfb1b16454aa482fa3c90610fb080aa6877c"
+      },
+      "plot_historical_ba67687f1fc0668a24e6.png": {
+        "bytes": 260615,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "b6a15f74a37782940bfe1e906f579306b7728512045e64d4aa885f4baebf8228"
+      },
+      "plot_historical_c8b40593627d1af24daa.png": {
+        "bytes": 49041,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "ea18e6e69e9d21c829c9c7ad43d5d6dd8493da0db5babca929338a0076bfc346"
+      },
+      "plot_historical_cf6ce572cdbea34320c6.png": {
+        "bytes": 143169,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "9bb05d79f6d4e66c4edc7e3e510b7782603e9158c7a967b00c368ce1a51589d0"
+      },
+      "plot_historical_f7a9ddaef13d1f087d40.png": {
+        "bytes": 86519,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "6872d9c9042fd0b635709093bd58586169a24242243da6512272c5a834419ec3"
+      },
+      "plot_historical_fd563e67f0fdf7300a56.png": {
+        "bytes": 51060,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "8b5b658d79d6139237c633297295441b62767046e3d0455cb163baa81407c1cb"
+      },
+      "plot_moh_0dc87b48d6563b896097.png": {
+        "bytes": 138530,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "f89212042e2dce715dddbfca0ef87e59d5ee58710cc1bc6c691e3fa01eed17e4"
+      },
+      "plot_moh_5f64d53645ae1e9cc1b3.png": {
+        "bytes": 135777,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "5dfee0d2d45cabe5525050566b70d06c0523d4ffe2e2d09ae27a982d5f051c55"
+      },
+      "plot_moh_67496a2172237d54d579.png": {
+        "bytes": 135510,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "a48f558e2e172441be679355d3179f69a65161fbd7d4230b6017e4f10f907fce"
+      },
+      "plot_moh_a84da9b0d440697802ca.png": {
+        "bytes": 136413,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "ca25b726f900d9462ac62418114009d29ba410e8b835d6350e92ef6bbaa9af0d"
+      },
+      "plot_pharmac_2f31fc76c132e9372cfb.png": {
+        "bytes": 88977,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "c80282a95953db69d52e9f851407e12a8ffb2f7f935890d1af6bff72a35e86dc"
+      },
+      "plot_pharmac_643d59e3ada11de2d983.png": {
+        "bytes": 68944,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "b1f8116c85978967cf6d1c0274e9e5d1b9da0553b6217c1b4de13f97a117f3dc"
+      },
+      "plot_revenue_024c65483954ffb1cbe4.png": {
+        "bytes": 92754,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "8b0361a012e141963093fb88ea924d8cc5c2f1de90047783465f0160e151d02c"
+      },
+      "plot_revenue_a15cf39df0dc6380df60.png": {
+        "bytes": 211370,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "b2ce8e5921f57c713cb345787e9044d246e619ed422e1527a06829fd79d6fc21"
+      },
+      "plot_revenue_cc07415ac1b803b875db.png": {
+        "bytes": 105786,
+        "display_only": true,
+        "kind": "plot_png",
+        "sha256": "b9a4481a93efa195b3c3982d21b56a0dc094212270c12b04364d93d7a871ed1c"
+      },
+      "published_health_indicator_lineage.parquet": {
+        "bytes": 11027,
+        "rows": 240,
+        "sha256": "07424b23c6a3e41de3b437b1c07e1e084d44522d8458cd7512fe488edab63db6"
+      },
+      "published_health_indicators.parquet": {
+        "bytes": 17225,
+        "rows": 80,
+        "sha256": "6818b53313cbc5221b460d388cde6af2d256e4715b55c15a5eff27b0a86db3e6"
+      },
+      "ro-crate-metadata.json": {
+        "bytes": 14676,
+        "kind": "ro_crate_metadata",
+        "publication": "not_performed",
+        "rights_state": "not_evaluated",
+        "sha256": "75b015c3fd208e02d1b1b84b63a8ca4a6ed7acc5ec982e9874a215387357f45c",
+        "standards_profile": "RO-Crate 1.1"
+      },
+      "source_drillthrough.json": {
+        "bytes": 11769798,
+        "kind": "source_drillthrough",
+        "sha256": "ecae6854b9d0f34734e9748bb41cddd324de6b5a41be56ceee01cda9fb4cbbe1"
+      }
+    },
+    "quality": {
+      "input_record_count": 4286,
+      "input_records_with_product": 4286,
+      "products": {
+        "biff8_budget": {
+          "analytical_completeness": "not_evaluated",
+          "cross_source_join": "not_performed",
+          "input_record_count": 2828,
+          "output_rows": 2828,
+          "vintage_pooling": "not_performed"
+        },
+        "biff8_revenue": {
+          "analytical_completeness": "not_evaluated",
+          "cross_source_join": "not_performed",
+          "input_record_count": 599,
+          "output_rows": 599,
+          "vintage_pooling": "not_performed"
+        },
+        "budget": {
+          "analytical_completeness": "not_evaluated",
+          "cross_source_join": "not_performed",
+          "input_record_count": 400,
+          "output_rows": 341,
+          "vintage_pooling": "not_performed"
+        },
+        "crown_befu": {
+          "analytical_completeness": "not_evaluated",
+          "cross_source_join": "not_performed",
+          "input_record_count": 10,
+          "output_rows": 10,
+          "vintage_pooling": "not_performed"
+        },
+        "crown_hyefu": {
+          "analytical_completeness": "not_evaluated",
+          "cross_source_join": "not_performed",
+          "input_record_count": 10,
+          "output_rows": 10,
+          "vintage_pooling": "not_performed"
+        },
+        "fiscal_crown": {
+          "analytical_completeness": "not_evaluated",
+          "cross_source_join": "not_performed",
+          "input_record_count": 61,
+          "output_rows": 61,
+          "vintage_pooling": "not_performed"
+        },
+        "historical": {
+          "analytical_completeness": "not_evaluated",
+          "cross_source_join": "not_performed",
+          "input_record_count": 214,
+          "output_rows": 214,
+          "vintage_pooling": "not_performed"
+        },
+        "moh": {
+          "analytical_completeness": "not_evaluated",
+          "cross_source_join": "not_performed",
+          "input_record_count": 80,
+          "output_rows": 80,
+          "vintage_pooling": "not_performed"
+        },
+        "pharmac": {
+          "analytical_completeness": "not_evaluated",
+          "cross_source_join": "not_performed",
+          "input_record_count": 14,
+          "output_rows": 14,
+          "vintage_pooling": "not_performed"
+        },
+        "revenue": {
+          "analytical_completeness": "not_evaluated",
+          "cross_source_join": "not_performed",
+          "input_record_count": 70,
+          "output_rows": 70,
+          "vintage_pooling": "not_performed"
+        }
+      },
+      "unaccounted_input_records": 0
+    }
+  },
+  "metadata": {
+    "files": {
+      "DATASET_CARD.md": {
+        "bytes": 3805,
+        "sha256": "4ed294205e7fe5bfae5790391622127d7db9cad2a53cf6eb526680ed57e9d8c1"
+      },
+      "MANIFEST.json": {
+        "bytes": 1491,
+        "sha256": "ead4cac22bde8292916bc4fd94feedeed4ac9d5aa8d0d074408b996ebb4cd57b"
+      },
+      "catalogue.json": {
+        "bytes": 4674415,
+        "sha256": "20fca2f71bdab5ebcb03e9bac44e29e755b3af8f5562a7c3c693eb763c7183a2"
+      },
+      "changelog.json": {
+        "bytes": 2993,
+        "sha256": "989597055e15650bc6a24fdc1861fbdadb55bdca0bd199fb5c8a08f5cfc7fe1d"
+      },
+      "citations.json": {
+        "bytes": 1362,
+        "sha256": "9e21615fabe3ed24f27380a0c0cc3915143f50d74fb14612d3fd221be9292b04"
+      },
+      "dcat.jsonld": {
+        "bytes": 20445,
+        "sha256": "98144a832fc763199c94bd27386bb52559e25d6575f5f42c803d366aad84d3ba"
+      },
+      "prov.jsonld": {
+        "bytes": 26817,
+        "sha256": "c36ffa1e44e99b5929824850e59bad50949b8c03120cfceba3700827552b00c9"
+      },
+      "schemas.json": {
+        "bytes": 111587,
+        "sha256": "a9e7a611242ec489be8092ca6e3c5f6935f42dc4e946d9d3f5fe15449af5e7cb"
+      },
+      "source_drillthrough.json": {
+        "bytes": 4538171,
+        "sha256": "738b7d470828efd0ca7d9403bfa1525eac8a731db9267fb483485b3fff91cabd"
+      }
+    },
+    "full_standards_conformance": "not_asserted",
+    "gold_unchanged": true,
+    "manifest_sha256": "ead4cac22bde8292916bc4fd94feedeed4ac9d5aa8d0d074408b996ebb4cd57b",
+    "metadata_reconstructed": true,
+    "packages": 3,
+    "publication": "not_performed",
+    "recordsets": 15,
+    "repeat_identical": true,
+    "rights": "not_evaluated",
+    "rows": 4611,
+    "schema_version": "archive-govt-nz.health-gold-metadata/v4"
+  },
+  "native_stages": [
+    {
+      "exit": 0,
+      "index": 0,
+      "stage": "focused"
+    },
+    {
+      "exit": 0,
+      "index": 3,
+      "stage": "legacy"
+    },
+    {
+      "exit": 0,
+      "index": 4,
+      "stage": "legacy"
+    },
+    {
+      "exit": 0,
+      "index": 5,
+      "stage": "legacy"
+    },
+    {
+      "exit": 0,
+      "index": 6,
+      "stage": "legacy"
+    },
+    {
+      "exit": 0,
+      "index": 7,
+      "stage": "legacy"
+    },
+    {
+      "exit": 0,
+      "index": 8,
+      "stage": "legacy"
+    },
+    {
+      "exit": 0,
+      "index": 9,
+      "stage": "legacy"
+    },
+    {
+      "exit": 0,
+      "index": 10,
+      "stage": "legacy"
+    },
+    {
+      "exit": 0,
+      "index": 11,
+      "stage": "legacy"
+    },
+    {
+      "exit": 0,
+      "index": 1,
+      "stage": "inputs"
+    },
+    {
+      "exit": 0,
+      "index": 1,
+      "stage": "support"
+    },
+    {
+      "exit": 0,
+      "index": 1,
+      "stage": "gold"
+    },
+    {
+      "exit": 0,
+      "index": 0,
+      "stage": "probe"
+    },
+    {
+      "exit": 0,
+      "index": 4,
+      "stage": "gold"
+    },
+    {
+      "exit": 0,
+      "index": 5,
+      "stage": "gold"
+    },
+    {
+      "exit": 0,
+      "index": 6,
+      "stage": "gold"
+    },
+    {
+      "exit": 0,
+      "index": 7,
+      "stage": "gold"
+    },
+    {
+      "exit": 0,
+      "index": 8,
+      "stage": "gold"
+    },
+    {
+      "exit": 0,
+      "index": 9,
+      "stage": "gold"
+    },
+    {
+      "exit": 0,
+      "index": 10,
+      "stage": "gold"
+    },
+    {
+      "exit": 0,
+      "index": 11,
+      "stage": "gold"
+    },
+    {
+      "exit": 0,
+      "index": 2,
+      "stage": "inputs"
+    },
+    {
+      "exit": 0,
+      "index": 2,
+      "stage": "support"
+    },
+    {
+      "exit": 0,
+      "index": 2,
+      "stage": "gold"
+    },
+    {
+      "exit": 0,
+      "index": 0,
+      "stage": "query"
+    },
+    {
+      "exit": 0,
+      "index": 0,
+      "stage": "analytical"
+    },
+    {
+      "exit": 0,
+      "index": 0,
+      "stage": "metadata"
+    }
+  ],
+  "original_harness_and_protected_delivery": "pending",
+  "postflight": {
+    "exit": 0,
+    "head": "d1000634c2b2a91d77940f0273b56c2ede63d68f",
+    "independent_lease_free": true,
+    "owner_and_group_absent": true,
+    "pins_unchanged": 6626,
+    "status": "verified",
+    "tree": "2896697b715ada8c73474581b359eb3f470d775d"
+  },
+  "producer": {
+    "all10_queries_verified": true,
+    "canonical_packages": 23,
+    "composite_metadata_verified": true,
+    "current_2011_raw_profiles_match_native_qualification": true,
+    "fresh_input_builds": 2,
+    "gold_files": 61,
+    "head": "d1000634c2b2a91d77940f0273b56c2ede63d68f",
+    "input_files": 209,
+    "legacy_gold11_61_files_identical": true,
+    "legacy_gold13_61_files_identical": true,
+    "legacy_gold15_61_files_identical": true,
+    "legacy_gold17_61_files_identical": true,
+    "legacy_gold19_61_files_identical": true,
+    "legacy_gold21_61_files_identical": true,
+    "legacy_gold9_61_files_identical": true,
+    "legacy_gold_60_files_identical": true,
+    "legacy_v1_47_files_identical": true,
+    "legacy_v2_65_files_identical": true,
+    "legacy_v3_83_files_identical": true,
+    "legacy_v4_101_files_identical": true,
+    "legacy_v5_119_files_identical": true,
+    "legacy_v6_137_files_identical": true,
+    "legacy_v7_155_files_identical": true,
+    "legacy_v8_173_files_identical": true,
+    "legacy_v9_191_files_identical": true,
+    "publication": "not_performed",
+    "repeat_identical": true,
+    "retained_derivatives_consumed": false,
+    "rights": "not_evaluated",
+    "runtime_warmup": "Arrow dependency initialized before each source stage; no source reads before timers; failed attempt1 retained",
+    "tree": "2896697b715ada8c73474581b359eb3f470d775d"
+  },
+  "publication": "not_performed",
+  "queries": {
+    "gold_unchanged": true,
+    "manifest_sha256": "d67a1db128ccf178c3003d97a2c79e710f858c53a57ed526b6ed59d1f3f37e61",
+    "ordering_validation": "independent_typed_columns_asc_nulls_last",
+    "products": {
+      "biff8_budget": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 200,
+        "rows_sha256": "de99ed5ec95dc95eeb49c42188080ead4ed8c24e70be285e0250a1815354b08d",
+        "source_rows": 2828,
+        "truncated": true
+      },
+      "biff8_revenue": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 200,
+        "rows_sha256": "c65c43a7493ef9f60d1b1f6f3065beddca8237db5a7bcad9ed5f880c7af2ae3e",
+        "source_rows": 599,
+        "truncated": true
+      },
+      "budget": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 200,
+        "rows_sha256": "91c9eb3ac578760793f4d06f8dbd69cd6bf0d585e07d7796f6cdfae03765d608",
+        "source_rows": 341,
+        "truncated": true
+      },
+      "crown_befu": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 10,
+        "rows_sha256": "5d445d244235063f4e586121d1f1d5db327adbb481eb1f8e5a6efb3c5fc4dc9f",
+        "source_rows": 10,
+        "truncated": false
+      },
+      "crown_hyefu": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 10,
+        "rows_sha256": "db6561b5181a9cf7cb564e21d6d60ef0ce8c407fb5f0eb48ee25179df7b6f252",
+        "source_rows": 10,
+        "truncated": false
+      },
+      "fiscal_crown": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 61,
+        "rows_sha256": "d549984a77521288c8c95fbb301c75fa0c9a9732108c16faf4827580f8763ee6",
+        "source_rows": 61,
+        "truncated": false
+      },
+      "historical": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 200,
+        "rows_sha256": "db3b16065fce5afb6f2a077096f1864aa6de57649d512e0a10c6a914f81f092a",
+        "source_rows": 214,
+        "truncated": true
+      },
+      "moh": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 80,
+        "rows_sha256": "70eb3a768e277dc0d6f6de8ef521d63b4e9179138da53fed0ee384f1a0f0851d",
+        "source_rows": 80,
+        "truncated": false
+      },
+      "pharmac": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 14,
+        "rows_sha256": "54af8ef0fbc0ce1d9059e9745f9723029eb4e99351a798e49853ed3288b9be43",
+        "source_rows": 14,
+        "truncated": false
+      },
+      "revenue": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 70,
+        "rows_sha256": "1f038a1c7bbf720a7992253115c1fa091e8211af4fd458fa0ec040cfbd1d7976",
+        "source_rows": 70,
+        "truncated": false
+      }
+    },
+    "publication": "not_performed",
+    "repeat_identical": true,
+    "rights": "not_evaluated",
+    "source_reverification": "not_performed_by_query"
+  },
+  "rights": "not_evaluated",
+  "schema_registry_actual_receipts": [
+    {
+      "all_cross_versions_refused": true,
+      "independent_resolution": true,
+      "profiles": 5,
+      "version": 1
+    },
+    {
+      "all_cross_versions_refused": true,
+      "independent_resolution": true,
+      "profiles": 7,
+      "version": 2
+    },
+    {
+      "all_cross_versions_refused": true,
+      "independent_resolution": true,
+      "profiles": 9,
+      "version": 3
+    },
+    {
+      "all_cross_versions_refused": true,
+      "independent_resolution": true,
+      "profiles": 11,
+      "version": 4
+    },
+    {
+      "all_cross_versions_refused": true,
+      "independent_resolution": true,
+      "profiles": 13,
+      "version": 5
+    },
+    {
+      "all_cross_versions_refused": true,
+      "independent_resolution": true,
+      "profiles": 15,
+      "version": 6
+    },
+    {
+      "all_cross_versions_refused": true,
+      "independent_resolution": true,
+      "profiles": 17,
+      "version": 7
+    },
+    {
+      "all_cross_versions_refused": true,
+      "independent_resolution": true,
+      "profiles": 19,
+      "version": 8
+    },
+    {
+      "all_cross_versions_refused": true,
+      "independent_resolution": true,
+      "profiles": 21,
+      "version": 9
+    },
+    {
+      "all_cross_versions_refused": true,
+      "independent_resolution": true,
+      "profiles": 23,
+      "version": 10
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-biff8-2011-products-evidence/v1",
+  "scope": "qualified_2011_to_2019_originals_to_canonical_gold_and_metadata",
+  "source_definitions": {
+    "biffbudget-2011": {
+      "key": "biffbudget-2011",
+      "kind": "biff8_budget",
+      "observation_id": "sha256:40affaba1b81c3a9b9c7b795afb49b9758b49432e6bd1e2d76c0ab16fd2911ef",
+      "observation_token": "2026-10-21T09:12:10.277245+00:00",
+      "sha256": "8712d27f2da918d1cc8376a8f15e24cafb6b608a3be0cc19da226768a8f69ba0",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2011-05/b11-expense-data.xls",
+      "source_vintage": "Budget-2011"
+    },
+    "biffbudget-2012": {
+      "key": "biffbudget-2012",
+      "kind": "biff8_budget",
+      "observation_id": "sha256:7a541a7aba9aaa5e14ed9b76d6a4ad3d45a937b019884f8a9c8c5d043338e957",
+      "observation_token": "2026-10-21T07:44:25.297538+00:00",
+      "sha256": "81429ccc5da52cdba73bb6276bba7d1c55a301dc996a447909fc8fc82ca1af12",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b12-expenditure-data.xls",
+      "source_vintage": "Budget-2012"
+    },
+    "biffbudget-2013": {
+      "key": "biffbudget-2013",
+      "kind": "biff8_budget",
+      "observation_id": "sha256:d50c99b0de33a6f0bf3586a861efb368b51306e0378edff3b054986594e8274f",
+      "observation_token": "2026-10-21T04:46:08.493336+00:00",
+      "sha256": "c5b7f6916b89a9ea0fd14caf73a979c730116d517d78ffe777d36c5966626140",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b13-expenditure-data.xls",
+      "source_vintage": "Budget-2013"
+    },
+    "biffbudget-2014": {
+      "key": "biffbudget-2014",
+      "kind": "biff8_budget",
+      "observation_id": "sha256:0aa2374ec3b02963d64ff2256f189db9528a47832b02243b9e2344215b8a6771",
+      "observation_token": "2026-10-21T02:11:52.212618+00:00",
+      "sha256": "7194eebe691ff57378168439d7ba5a785dfa408bc3c836f2a7cfe50519af5169",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b14-expenditure-data.xls",
+      "source_vintage": "Budget-2014"
+    },
+    "biffbudget-2015": {
+      "key": "biffbudget-2015",
+      "kind": "biff8_budget",
+      "observation_id": "sha256:cf8de2cd77bff170581a4b94a1afc1b3fe217853c4624563b280f4001fe112e4",
+      "observation_token": "2026-10-20T19:42:27.758345+00:00",
+      "sha256": "4dbabc88f1e0756e0f651ef261b3408b262a10f0b1cdb51977844c97841b9325",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2015-05/b15-expenditure-data.xls",
+      "source_vintage": "Budget-2015"
+    },
+    "biffbudget-2016": {
+      "key": "biffbudget-2016",
+      "kind": "biff8_budget",
+      "observation_id": "sha256:d457d5a5545e3035a8c66008a22a1cf03946b4b40fe8d5b8bbcaaf3fffd5a0fa",
+      "observation_token": "2026-10-20T18:30:09.435785+00:00",
+      "sha256": "bce6d2e55c15c1249881bac9d2a1afdf111cd9d1c258c20913bd4b39300f0f5a",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b16-expenditure-data.xls",
+      "source_vintage": "Budget-2016"
+    },
+    "biffbudget-2017": {
+      "key": "biffbudget-2017",
+      "kind": "biff8_budget",
+      "observation_id": "sha256:5c4e70842744902ce0cded13b122fa1a2260daa2be4698a18d39a81da876419f",
+      "observation_token": "2026-10-20T16:57:19.820018+00:00",
+      "sha256": "7e0cc535eb9feb7e82b1a998dd40b7b318e5593e13589aa48ef4a3b5508708fc",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b17-expenditure-data.xls",
+      "source_vintage": "Budget-2017"
+    },
+    "biffbudget-2018": {
+      "key": "biffbudget-2018",
+      "kind": "biff8_budget",
+      "observation_id": "sha256:af8434e4d018b62907a7d5152edba93eb1d90766520a26ae16e97478b35bf17b",
+      "observation_token": "2026-10-20T14:44:44.843862+00:00",
+      "sha256": "fecd70019054313f3a11cbb370be684d8bea0eea8cb3623b69a9e193ac085c24",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-05/b18-expenditure-data.xls",
+      "source_vintage": "Budget-2018"
+    },
+    "biffbudget-2019": {
+      "key": "biffbudget-2019",
+      "kind": "biff8_budget",
+      "observation_id": "sha256:4f774ce3135942997d4daa8e2db5c8ac4b5776cb145b554f230580b813ae3215",
+      "observation_token": "2026-10-19T21:46:39.456033+00:00",
+      "sha256": "30602fd66ec1f4fb7d0b47f2766f6560c4d22e90c11e994fba3e404e29ceab48",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2019-05/b19-expenditure-data.xls",
+      "source_vintage": "Budget-2019"
+    },
+    "biffrevenue-2011": {
+      "key": "biffrevenue-2011",
+      "kind": "biff8_revenue",
+      "observation_id": "sha256:bc09a4f03b7b4b6c6bbbcdd3bebee97e8503998785d67b438c78e1a399b44a00",
+      "observation_token": "2026-10-21T09:12:10.277245+00:00",
+      "sha256": "bd902503455cebe5cc455031bbd2b07f325cce57027c8391c9bec476ad77f073",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2011-05/b11-revenue-data.xls",
+      "source_vintage": "Budget-2011"
+    },
+    "biffrevenue-2012": {
+      "key": "biffrevenue-2012",
+      "kind": "biff8_revenue",
+      "observation_id": "sha256:dc4adb5a25a2adab214b09be99dc5dacb97dcb288f9a008e2f2570f703206268",
+      "observation_token": "2026-10-21T07:44:25.297538+00:00",
+      "sha256": "643fad503424ee6b3aa060a2ff2107fc69d9326bb51446d6fa41755a32d038cb",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b12-revenue-data.xls",
+      "source_vintage": "Budget-2012"
+    },
+    "biffrevenue-2013": {
+      "key": "biffrevenue-2013",
+      "kind": "biff8_revenue",
+      "observation_id": "sha256:13828e406a324a3d283296428876fb3b3f551da55929511deb9589e76de2872e",
+      "observation_token": "2026-10-21T04:46:08.493336+00:00",
+      "sha256": "69e9d3d10c72bd01c661ca02633d48404f7add6f5e4fda02017ab5649fa27869",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b13-revenue-data.xls",
+      "source_vintage": "Budget-2013"
+    },
+    "biffrevenue-2014": {
+      "key": "biffrevenue-2014",
+      "kind": "biff8_revenue",
+      "observation_id": "sha256:54579fa6d2249f060f2bbd6ad920aad8ed0407e13d9c03bcd4c234b47acdf6c6",
+      "observation_token": "2026-10-21T02:11:52.212618+00:00",
+      "sha256": "ba1798c82e556afe98188ea58651759cb6fa1f52a461e4529bc664af424db91b",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b14-revenue-data.xls",
+      "source_vintage": "Budget-2014"
+    },
+    "biffrevenue-2015": {
+      "key": "biffrevenue-2015",
+      "kind": "biff8_revenue",
+      "observation_id": "sha256:083eb8e571b7b58919d655d7a78a883e9768ac589254a28cff9b91b3282dfaa7",
+      "observation_token": "2026-10-20T19:42:27.758345+00:00",
+      "sha256": "481b971d4569cbadbf48440fa1d66f82d8d42942fd855e95e5bfd1ea95e70171",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2015-05/b15-revenue-data.xls",
+      "source_vintage": "Budget-2015"
+    },
+    "biffrevenue-2016": {
+      "key": "biffrevenue-2016",
+      "kind": "biff8_revenue",
+      "observation_id": "sha256:fbbecabcc9eaa6ab9824fb3caa5ac37cfafe0bdb8c7b20da88a8b40fb6c105cb",
+      "observation_token": "2026-10-20T18:30:09.435785+00:00",
+      "sha256": "df34849f2ef7ce1903469edb315047afc8ae716574d163f59691a654c51b957f",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b16-revenue-data.xls",
+      "source_vintage": "Budget-2016"
+    },
+    "biffrevenue-2017": {
+      "key": "biffrevenue-2017",
+      "kind": "biff8_revenue",
+      "observation_id": "sha256:40ac55251ee38cec454d67d4946584c5102d8bc6db4b231363be929e53bcd716",
+      "observation_token": "2026-10-20T16:57:19.820018+00:00",
+      "sha256": "e49a706c4a5ac889e8b9e68165dbfd704a9f05b0300bef7f69abf5f5620b7adf",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b17-revenue-data.xls",
+      "source_vintage": "Budget-2017"
+    },
+    "biffrevenue-2018": {
+      "key": "biffrevenue-2018",
+      "kind": "biff8_revenue",
+      "observation_id": "sha256:dc9ae0d69080736adeadc17cc89d78837744297cd088f1ebc5eae26f5a3c4170",
+      "observation_token": "2026-10-20T14:44:44.843862+00:00",
+      "sha256": "4db87e7eddd7a76b5b7523db5a01952d15e7f47b88d03ef9878d37cd077f937f",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-05/b18-revenue-data.xls",
+      "source_vintage": "Budget-2018"
+    },
+    "biffrevenue-2019": {
+      "key": "biffrevenue-2019",
+      "kind": "biff8_revenue",
+      "observation_id": "sha256:77275d0dc352a785d9778e0e0498be8a19573de52391008e4d8461bd56d85f6a",
+      "observation_token": "2026-10-19T21:46:39.456033+00:00",
+      "sha256": "d927995dd91eda6fdfb4020eb2a3e91871a24d5144e837e7801b6725e5f33df8",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2019-05/b19-revenue-data.xls",
+      "source_vintage": "Budget-2019"
+    },
+    "budget-2025": {
+      "key": "budget-2025",
+      "kind": "budget",
+      "observation_id": "sha256:c710d5caa5490fa447a9d062a13c300a1d58c6e67fc01a062ba4dfdbe2e25ff6",
+      "observation_token": "2026-08-30T00:00:00Z",
+      "sha256": "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
+      "source_locator": "data/raw/b25-expenditure-data.xlsx",
+      "source_vintage": "Budget-2025"
+    },
+    "budget-2026": {
+      "key": "budget-2026",
+      "kind": "budget",
+      "observation_id": "sha256:fd44a04149db3d11b7926373748a0c8810686ef087205345bb1efcbb8526a4ba",
+      "observation_token": "2026-08-31T05:50:00Z",
+      "sha256": "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0",
+      "source_locator": "https://budget.govt.nz/budget/excel/data/b26-expenditure-data.xlsx",
+      "source_vintage": "Budget-2026"
+    },
+    "historical-2024": {
+      "key": "historical-2024",
+      "kind": "historical",
+      "observation_id": "sha256:d610fb9a74809a229bce682b8773ef7b34af533d22e467ba79acbc57fc4cd8b5",
+      "observation_token": "2026-08-30T08:28:37.374000+00:00",
+      "sha256": "769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d",
+      "source_locator": "data/raw/fiscaltimeseries1972-2024.xlsx",
+      "source_vintage": "fiscal-2024"
+    },
+    "historical-2025": {
+      "key": "historical-2025",
+      "kind": "historical",
+      "observation_id": "sha256:d431933be47fb66651ed54c3556c96348783e447d9dc00c7a0f97dc2040e5bc4",
+      "observation_token": "2026-08-31T12:26:32Z",
+      "sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+      "source_locator": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx",
+      "source_vintage": "Fiscal-Time-Series-1972-2025"
+    },
+    "revenue-2026": {
+      "key": "revenue-2026",
+      "kind": "revenue",
+      "observation_id": "sha256:ee970e4d024950c89270b0b27257aaae6e02d2502588acc9d97aeff9fd1a6902",
+      "observation_token": "2026-08-29T09:00:17Z",
+      "sha256": "8243f6a3f9575af5ee048133f2695f3c4764ff7d86e7a74849fdafcf478cbfdb",
+      "source_locator": "https://budget.govt.nz/budget/excel/data/b26-revenue-data.xlsx",
+      "source_vintage": "Budget-2026"
+    }
+  },
+  "source_profile_evidence": "budget-2011-biff8-native-qualification-20261021.json",
+  "source_timings": {
+    "1": [
+      {
+        "key": "historical-2024",
+        "seconds": 1.2686175421113148
+      },
+      {
+        "key": "historical-2025",
+        "seconds": 0.6296783749712631
+      },
+      {
+        "key": "budget-2025",
+        "seconds": 20.170856458949856
+      },
+      {
+        "key": "budget-2026",
+        "seconds": 20.57214145793114
+      },
+      {
+        "key": "revenue-2026",
+        "seconds": 2.7935867499327287
+      },
+      {
+        "key": "biffbudget-2019",
+        "seconds": 5.1819296249886975
+      },
+      {
+        "key": "biffrevenue-2019",
+        "seconds": 0.7016730000032112
+      },
+      {
+        "key": "biffbudget-2018",
+        "seconds": 6.050332124927081
+      },
+      {
+        "key": "biffrevenue-2018",
+        "seconds": 1.130923749995418
+      },
+      {
+        "key": "biffbudget-2017",
+        "seconds": 6.55864850000944
+      },
+      {
+        "key": "biffrevenue-2017",
+        "seconds": 1.204638166935183
+      },
+      {
+        "key": "biffbudget-2016",
+        "seconds": 5.652683583903126
+      },
+      {
+        "key": "biffrevenue-2016",
+        "seconds": 0.8823572089895606
+      },
+      {
+        "key": "biffbudget-2015",
+        "seconds": 5.408718749997206
+      },
+      {
+        "key": "biffrevenue-2015",
+        "seconds": 0.4315989169990644
+      },
+      {
+        "key": "biffbudget-2014",
+        "seconds": 5.870609542005695
+      },
+      {
+        "key": "biffrevenue-2014",
+        "seconds": 0.8035206669010222
+      },
+      {
+        "key": "biffbudget-2013",
+        "seconds": 4.496065207989886
+      },
+      {
+        "key": "biffrevenue-2013",
+        "seconds": 0.739728208980523
+      },
+      {
+        "key": "biffbudget-2012",
+        "seconds": 4.012896333006211
+      },
+      {
+        "key": "biffrevenue-2012",
+        "seconds": 0.5821454169927165
+      },
+      {
+        "key": "biffbudget-2011",
+        "seconds": 3.309402334038168
+      },
+      {
+        "key": "biffrevenue-2011",
+        "seconds": 0.6324867500225082
+      }
+    ],
+    "2": [
+      {
+        "key": "historical-2024",
+        "seconds": 1.2979417080059648
+      },
+      {
+        "key": "historical-2025",
+        "seconds": 0.6812422090442851
+      },
+      {
+        "key": "budget-2025",
+        "seconds": 17.90897920797579
+      },
+      {
+        "key": "budget-2026",
+        "seconds": 54.438927290961146
+      },
+      {
+        "key": "revenue-2026",
+        "seconds": 4.081850334070623
+      },
+      {
+        "key": "biffbudget-2019",
+        "seconds": 6.998385207960382
+      },
+      {
+        "key": "biffrevenue-2019",
+        "seconds": 0.5789508339948952
+      },
+      {
+        "key": "biffbudget-2018",
+        "seconds": 7.209250999963842
+      },
+      {
+        "key": "biffrevenue-2018",
+        "seconds": 1.2476882500341162
+      },
+      {
+        "key": "biffbudget-2017",
+        "seconds": 6.492905040970072
+      },
+      {
+        "key": "biffrevenue-2017",
+        "seconds": 0.7213160420069471
+      },
+      {
+        "key": "biffbudget-2016",
+        "seconds": 7.6965190829942
+      },
+      {
+        "key": "biffrevenue-2016",
+        "seconds": 0.8975183750735596
+      },
+      {
+        "key": "biffbudget-2015",
+        "seconds": 7.138348833890632
+      },
+      {
+        "key": "biffrevenue-2015",
+        "seconds": 1.1316617080010474
+      },
+      {
+        "key": "biffbudget-2014",
+        "seconds": 6.541058500064537
+      },
+      {
+        "key": "biffrevenue-2014",
+        "seconds": 0.6608136669965461
+      },
+      {
+        "key": "biffbudget-2013",
+        "seconds": 3.2318793749436736
+      },
+      {
+        "key": "biffrevenue-2013",
+        "seconds": 1.173148125060834
+      },
+      {
+        "key": "biffbudget-2012",
+        "seconds": 3.916700750007294
+      },
+      {
+        "key": "biffrevenue-2012",
+        "seconds": 0.39021708304062486
+      },
+      {
+        "key": "biffbudget-2011",
+        "seconds": 3.054837250034325
+      },
+      {
+        "key": "biffrevenue-2011",
+        "seconds": 0.6549765829695389
+      }
+    ]
+  },
+  "whole_track_completion": "not_established"
+}
