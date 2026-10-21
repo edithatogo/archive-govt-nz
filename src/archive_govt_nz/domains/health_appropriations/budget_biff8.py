@@ -30,6 +30,7 @@ SCHEMA_VERSION = "archive-govt-nz.health-budget-biff8-extraction/v1"
 MAX_BYTES = 8 * 1024 * 1024
 MAX_TEXT = 16384
 _DEFINITION_COLUMN = 2
+_SOURCE_QUALIFIER_EDITION = 2014
 PERIOD_TYPES = {
     2015: "Actuals",
     2016: "Actuals",
@@ -93,6 +94,16 @@ class BiffBudgetProfile:
                 pa.field("numeric_evidence_id", pa.string()),
                 pa.field("decoded_values_json", pa.string()),
             ]
+            + (
+                [
+                    pa.field(
+                        "is_mca" if self.kind == "expenditure" else "periodicity",
+                        pa.string(),
+                    )
+                ]
+                if self.edition == _SOURCE_QUALIFIER_EDITION
+                else []
+            )
         )
 
 
@@ -512,14 +523,165 @@ PROFILES_2015 = {
 }
 
 
+# Pinned2014 source context resolves the retained revenue B10 edition conflict.
+_EXPENDITURE_DEFINITIONS_2014 = {
+    1: "Budget 2014 Data from the Estimates of Appropriations 2014/15",
+    4: "Published 15 May 2014",
+    9: "This Expense workbook contains details of actual government expenditure for "
+    "the years' ended 30 June 2010, 2011, 2012 and 2013; estimated actual "
+    "government expenditure for the year ending 30\xa0June 2014 and budgeted "
+    "government expenditure for the year ending 30 June 2015 as published in Budget "
+    "2014.",
+    24: "This workbook is based on the data contained in the Crown's Financial and "
+    "Information System, which is used to collect and compile the raw data for the "
+    "2014/15 Estimates.  They do not include data from the 2013/14 Supplementary "
+    "Estimates. ",
+    26: "Data relating to the 2014/15 fiscal year should match the 2014/15 Estimates "
+    "exactly.",
+    39: "Appropriation Type: Indicates the nature of the expenditure that can be "
+    "incurred under the appropriation as appearing in the current Main Estimates "
+    "(e.g. whether capital expenditure or the nature of expenses incurred). Refer "
+    "to the Main Estimates: Introduction to the Estimates: Types of Appropriation.",
+    41: "Periodicity: As per the arrangement of appropriations at the beginning of "
+    'each vote chapter in the Main Estimates: "A" refers to an Annual '
+    'appropriation or to a Permanent Legislative Authority appropriation. "M" '
+    "refers to a multi-year appropriation.",
+    42: "Amount ($000): Amount (in thousands) for the Year as reported in the Main "
+    "Estimates.",
+    43: "Year: Year ending that the Amount relates to (at 30 June) as reported in the "
+    "Main Estimates.",
+    44: 'Amount Type: "Actuals" - as audited for prior Years, "Estimated Actual" - for '
+    'the Year immediately prior to the current Main Estimates, "Main Estimates" - '
+    "for the Main Estimates Year.",
+    49: "App ID: Number used to uniquely identify each appropriation; category of an "
+    "MCA; or output class of an MCOA.",
+    50: "Parent ID: Number used to group categories or output classes belonging to an "
+    "MCA or an MCOA.",
+    51: 'Group Type: "Single" if Appropriation contains a single category, "MCA" or '
+    '"MCOA" if the line is part of a multi-line Appropriation.',
+    52: 'IsMCA: "Yes" when the line is part of a MCA, "No" when the line is not part '
+    "of a MCA.",
+    53: "Functional Classification: Groups expenses into broad objectives of the "
+    "government (based on OECD classification) \u2013 e.g. Health, Education, Defence, "
+    "etc. This classification is not included in the Main Estimates.",
+}
+
+_REVENUE_DEFINITIONS_2014 = {
+    1: "Budget 2014 Data from the Estimates of Appropriations 2014/15",
+    4: "Published 15 May 2014",
+    10: "The Revenue workbook contains details of  actual government Crown revenue and "
+    "capital receipts for the years' ended 30 June 2010, 2011, 2012 and 2013; "
+    "estimated actual government Crown revenue and capital receipts for the year "
+    "ending 30 June 2014 and budgeted government Crown revenue and capital "
+    "receipts for the year ending 30 June 2015 as published in Budget 2015.",
+    24: "This workbook is based on the data contained in the Crown's Financial and "
+    "Information System, which is used to collect and compile the raw data for the "
+    "2014/15 Estimates.  They do not include data from the 2013/14 Supplementary "
+    "Estimates. ",
+    26: "Data relating to the 2014/15 fiscal year should match the 2014/15 Estimates "
+    "exactly.",
+    29: "Amounts are in thousands of dollars.",
+    34: "Data sourced from the 2014/15 Main Estimates:",
+    40: 'Periodicity: "A" refers to Annual.',
+    41: "Amount ($000): Amount (in thousands) for the Year as reported in the Main "
+    "Estimates.",
+    42: "Year: Year ending that the Amount relates to (at 30 June) as reported in the "
+    "Main Estimates.",
+    43: 'Amount Type: "Actuals" - as audited for prior Years, "Estimated Actual" - for '
+    'the Year immediately prior to the current Main Estimates, "Main Estimates" - '
+    "for the Main Estimates Year.",
+    46: "App ID: Number used to uniquely identify each Crown revenue or capital "
+    "receipt line.",
+}
+
+_PERIOD_TYPES_2014 = (
+    *((year, "Actuals") for year in range(2010, 2014)),
+    (2014, "Estimated Actual"),
+    (2015, "Main Estimates"),
+)
+PROFILES_2014 = {
+    "expenditure": replace(
+        PROFILES_2015["expenditure"],
+        source_sha256="7194eebe691ff57378168439d7ba5a785dfa408bc3c836f2a7cfe50519af5169",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2018-04/b14-expenditure-data.xls",
+        max_rows=5912,
+        edition=2014,
+        period_types=_PERIOD_TYPES_2014,
+        fields=tuple(
+            (
+                header.replace("Amount $000", "Amount ($000)").replace(
+                    "Appropriation or Category Type", "Appropriation Type"
+                ),
+                field,
+            )
+            for header, field in (
+                *PROFILES_2015["expenditure"].fields[:7],
+                ("IsMCA", "is_mca"),
+                *PROFILES_2015["expenditure"].fields[7:],
+            )
+        ),
+        numeric_columns=(("app_id", 3), ("parent_id", 4), ("amount", 12), ("year", 13)),
+        definitions=tuple(_EXPENDITURE_DEFINITIONS_2014.items()),
+        definition_links=(
+            ("source_vintage", 1),
+            ("source_vintage", 4),
+            ("source_vintage", 9),
+            ("source_vintage", 24),
+            ("source_vintage", 26),
+            ("appropriation_or_category_type", 39),
+            ("periodicity", 41),
+            ("unit", 42),
+            ("valid_time_end", 43),
+            ("amount_type", 44),
+            ("app_id", 49),
+            ("parent_id", 50),
+            ("group_type", 51),
+            ("is_mca", 52),
+            ("functional_classification", 53),
+        ),
+    ),
+    "revenue": replace(
+        PROFILES_2015["revenue"],
+        source_sha256="ba1798c82e556afe98188ea58651759cb6fa1f52a461e4529bc664af424db91b",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2018-04/b14-revenue-data.xls",
+        max_rows=1009,
+        edition=2014,
+        period_types=_PERIOD_TYPES_2014,
+        fields=(
+            *(
+                (h.replace("Amount $000", "Amount ($000)"), f)
+                for h, f in PROFILES_2015["revenue"].fields
+            ),
+            ("Periodicity", "periodicity"),
+        ),
+        definitions=tuple(_REVENUE_DEFINITIONS_2014.items()),
+        definition_links=(
+            ("source_vintage", 1),
+            ("source_vintage", 4),
+            ("amount_type", 10),
+            ("source_vintage", 24),
+            ("source_vintage", 26),
+            ("unit", 29),
+            ("source_vintage", 34),
+            ("periodicity", 40),
+            ("unit", 41),
+            ("valid_time_end", 42),
+            ("amount_type", 43),
+            ("app_id", 46),
+        ),
+    ),
+}
+
+
 def declared_profiles() -> tuple[BiffBudgetProfile, ...]:
-    """Expose only the ten independently pinned source-edition profiles."""
+    """Expose only the twelve independently pinned source-edition profiles."""
     return (
         *PROFILES.values(),
         *PROFILES_2018.values(),
         *PROFILES_2017.values(),
         *PROFILES_2016.values(),
         *PROFILES_2015.values(),
+        *PROFILES_2014.values(),
     )
 
 
@@ -646,6 +808,15 @@ def _selected_reason(values: dict[str, Any], profile: BiffBudgetProfile) -> str 
                 (values["periodicity"] not in {"A", "M"}, "invalid_periodicity"),
             ]
         )
+    if profile.edition == _SOURCE_QUALIFIER_EDITION:
+        checks.append(
+            (
+                (values["is_mca"] != ("Yes" if values["group_type"] == "MCA" else "No"))
+                if profile.kind == "expenditure"
+                else values["periodicity"] != "A",
+                "invalid_source_qualifier",
+            )
+        )
     return next((reason for invalid, reason in checks if invalid), None)
 
 
@@ -724,6 +895,12 @@ def _fact(
             "no_parent_category_aggregation",
             "source_classification_unmapped",
             *("source_field_absent_" + field for field in profile.absent_fields),
+            *(
+                ["source_edition_conflict_resolved_by_title_and_estimates_context"]
+                if profile.edition == _SOURCE_QUALIFIER_EDITION
+                and profile.kind == "revenue"
+                else []
+            ),
         ],
         "transformation_id": profile.transformation,
         "lineage_id": identity(record_id, "lineage"),
@@ -790,14 +967,13 @@ def parse_snapshot(
     _require(
         profile.kind in {"expenditure", "revenue"}
         and type(profile.edition) is int
-        and profile.edition in {2015, 2016, 2017, 2018, 2019}
+        and profile.edition in {2014, 2015, 2016, 2017, 2018, 2019}
     )
     _require(
         profile.absent_fields
         == (
             _ABSENT_EXPENDITURE_FIELDS_2015
-            if profile.kind == "expenditure"
-            and profile.edition == PROFILES_2015["expenditure"].edition
+            if profile.kind == "expenditure" and profile.edition in {2014, 2015}
             else ()
         )
         and not set(profile.absent_fields) & {field for _, field in profile.fields}
@@ -910,4 +1086,15 @@ def parse_snapshot(
             for row, text in profile.definitions
         ],
     }
+    if profile.edition == _SOURCE_QUALIFIER_EDITION and profile.kind == "revenue":
+        metadata["edition_resolution"] = {
+            "status": "resolved_from_independent_source_context",
+            "conflicting_coordinate": "'Explanation'!B10",
+            "conflicting_text_retained": True,
+            "authoritative_coordinates": [
+                "'Explanation'!B" + str(n) for n in (1, 4, 24, 26, 34)
+            ],
+            "publisher_locator": "https://www.treasury.govt.nz/publications/data/budget-2014-data-estimates-appropriations-2014-15",
+            "publisher_correction_claimed": False,
+        }
     return BiffBudgetSnapshot(tables, metadata)

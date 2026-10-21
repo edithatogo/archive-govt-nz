@@ -1535,7 +1535,7 @@ def canonical_inputs(recovery_root: Path) -> tuple[CanonicalPackageInput, ...]:
         ARCHIVE / "bronze-cas" / "sha256",
         recovery_root / "canonical-source-inputs",
         include_biff8=True,
-        biff8_editions=(2015, 2016, 2017, 2018, 2019),
+        biff8_editions=(2014, 2015, 2016, 2017, 2018, 2019),
     ).packages
 
 

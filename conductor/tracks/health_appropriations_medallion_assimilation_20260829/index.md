@@ -684,3 +684,15 @@ Producer qualification/implementation and dated census checkpoints retain their 
 - [Budget2018 BIFF8 contract](biff8-2018-contract.md)
 - [Budget2018 source-native qualification](budget-2018-biff8-native-qualification-20261021.json)
 - [BIFF8 recovery delivery PR734](biff8-recovery-delivery-734-20261021.json)
+
+- [Budget2015 protected delivery PR739](biff8-2015-delivery-739-20261021.json)
+- [Budget2014 source-to-products contract](biff8-2014-contract.md)
+- [Budget2014 edition disposition and numeric preflight](budget-2014-biff8-preflight-20261021.json)
+- [Budget2014 source/native/interface qualification](budget-2014-biff8-native-qualification-20261021.json)
+- [Budget2014 full recovery and Gold evidence](biff8-2014-products-native-20261021.json)
+- [Budget2014 bounded review](biff8-2014-review-20261021.json)
+
+The completed legacy census remains an immutable historical observation. Its
+Budget2014 edition-pending flag is superseded by the explicitly source-backed
+2014 disposition above. Revenue B10 and the publication-day discrepancy remain
+unchanged; this is no publisher correction or rights/comparability approval.

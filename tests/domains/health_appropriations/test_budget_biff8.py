@@ -31,6 +31,7 @@ def _fixture(
         "parent_id": 387,
         "appropriation_name": "Fictional care",
         "category_name": "Fictional care",
+        "is_mca": "No",
         "group_type": "MCOA" if edition < 2019 else "Single",
         "appropriation_or_category_type": "Non-Departmental Output Expenses",
         "restriction_type": None,
@@ -75,7 +76,38 @@ def _fixture(
     )
 
 
-@pytest.mark.parametrize("edition", [2015, 2016, 2017, 2018, 2019])
+def _assert_2014_qualifiers(
+    profile: budget_biff8.BiffBudgetProfile,
+    parsed: budget_biff8.BiffBudgetSnapshot,
+    kind: str,
+    fact: dict[str, Any],
+) -> None:
+    links = parsed.tables["field_lineage.parquet"].to_pylist()
+    if kind == "expenditure":
+        assert fact["is_mca"] == "No"
+        assert any(
+            v["field"] == "is_mca" and v["source_coordinate"] == "'Raw Data'!H2"
+            for v in links
+        )
+    else:
+        assert fact["periodicity"] == "A"
+        assert (
+            "source_edition_conflict_resolved_by_title_and_estimates_context"
+            in fact["quality_flags"]
+        )
+        assert dict(profile.definitions)[10].endswith("Budget 2015.")
+        assert any(
+            v["field"] == "source_vintage"
+            and v["source_coordinate"] == "'Explanation'!B1"
+            for v in links
+        )
+        assert (
+            parsed.metadata["edition_resolution"]["conflicting_coordinate"]
+            == "'Explanation'!B10"
+        )
+
+
+@pytest.mark.parametrize("edition", [2014, 2015, 2016, 2017, 2018, 2019])
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
     kind: str,
@@ -142,7 +174,7 @@ def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
             ("app_id", "'Explanation'!B39"),
         }
         assert expected <= {(row["field"], row["source_coordinate"]) for row in links}
-    if edition == 2015 and kind == "expenditure":
+    if edition in (2014, 2015) and kind == "expenditure":
         assert fact["m_number"] is None
         assert fact["portfolio_name"] is None
         assert {
@@ -162,6 +194,8 @@ def test_closed_biff_budget_profiles_have_complete_repeatable_typed_packages(
                 profile=replace(profile, absent_fields=()),
                 observed_at="2026-10-20T00:00:00Z",
             )
+    if edition == 2014:
+        _assert_2014_qualifiers(profile, parsed, kind, fact)
     if edition == 2015:
         positions = (
             (("unit", 39), ("valid_time_end", 40), ("amount_type", 41), ("app_id", 46))
@@ -215,7 +249,7 @@ def test_source_and_definition_changes_fail_before_admission() -> None:
         )
 
 
-@pytest.mark.parametrize("edition", [2015, 2016, 2017, 2019])
+@pytest.mark.parametrize("edition", [2014, 2015, 2016, 2017, 2019])
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_biff_budget_operations_and_native_dispatch_retain_all_four_tables(
     kind: str, edition: int, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
