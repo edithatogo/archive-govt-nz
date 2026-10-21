@@ -736,3 +736,5 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [Budget2007–2008 bounded review](biff8-2007-2008-review-20261022.json)
 
 - [Phase 4 current acceptance reconciliation](phase4-acceptance-20261022.md) and [pinned native audit](phase4-acceptance-20261022.json). Protected delivery remains pending; wider census and track gates stay open.
+
+- [PDF dependency security unblock](pypdf-security-unblock-20261022.md) and [paired qualification](pypdf-security-unblock-20261022.json): required audit failure preserved; fixed lock,60 existing PDF tests and three retained-source byte comparisons pass. Final assurance pending.

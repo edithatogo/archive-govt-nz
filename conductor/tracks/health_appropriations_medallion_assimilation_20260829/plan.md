@@ -2585,3 +2585,11 @@ previous qualification results unchanged; original local timeout preserved.
   AC-01, AC-03, AC-06, AC-07, AC-08, AC-12, AC-16]
 
 Native Phase4 acceptance reconciliation passed: pinned donor tree/archive,23objects/312rows,30 accepted retain-both historical dispositions; two exact twelve-stage50-file replays and two functional pipelines, six inspected PNGs. The unsupported historical35 summary count is preserved and separately reconciled; first audit assumption failure retained. Final-tree validation and protected delivery remain pending before issue210 closure. See phase4-acceptance-20261022.md/.json.
+
+- [~] Resolve the new Phase4 assurance dependency blocker: original final-tree
+  harness passes8283tests/schemas/parity/mutations, then the OSV audit reports
+  four vulnerabilities in locked pypdf6.19.0. Preserve failed run/receipt and
+  unchanged-pin postflight, promote the verified current supported6.x security
+  release within the existing approved stack, requalify affected PDF contracts
+  and retained sources, rerun the original full harness, then require dependency
+  review and exact-head Actions before protected delivery. [M-18, M-19; AC-16]
