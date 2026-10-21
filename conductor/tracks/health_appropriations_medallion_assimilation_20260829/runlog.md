@@ -9329,3 +9329,5 @@ source-parser change is inferred. Plan targeted transitive Pillow upgrade,
 remove temporary duplicate audit and keep permanent all-platform receipt
 retention. Full native20-stage recovery must requalify all34 PNGs and every
 prior input/Gold byte contract; no visual or source value replacement allowed.
+
+Pillow13 full native requalification completed on de27e15d: all20 stages, two fresh15-source builds,137 input files and61 Gold files byte-identical to prior qualified2015 products, including34 PNGs. All legacy cohorts, ten queries, analytical and composite metadata passed. Postflight:7370 pins unchanged, terminal0, owner/group absent and independent lease free. All three hosted assurance platforms passed on this implementation head. Retained original/failed/replay evidence unchanged. Final documentation tree now requires original harness validation before protected merge.

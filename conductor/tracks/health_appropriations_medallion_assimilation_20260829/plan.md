@@ -2524,3 +2524,5 @@ previous qualification results unchanged; original local timeout preserved.
 - [~] Diagnose the Windows-only nine-finding audit failure from actual retained package/advisory data. Preserve the failed job and all earlier passing gates, add bounded diagnostic receipt retention, resolve the real dependency/runtime cause and remove temporary duplicate audit work. Keep original validation, audit, TLS and branch protections unchanged; require final exact-head green checks before merge/prune.
 
 - [~] Resolve the nine actual Pillow12.3.0 findings identified by the retained Windows receipt using fixed13.0.0. Keep all gates/TLS unchanged, remove the temporary duplicate audit, retain per-platform receipts, verify a targeted lock delta and full fresh native data/PNG/metadata/prior-cohort byte parity under the updated image runtime before original final-tree and hosted assurance.
+
+- [x] Pillow13 native full20-stage requalification: all137 input/61 Gold files including34 PNGs identical; prior original evidence and runtime pins verified. Final original harness and hosted delivery remain pending.
