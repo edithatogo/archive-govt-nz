@@ -1536,6 +1536,8 @@ def canonical_inputs(recovery_root: Path) -> tuple[CanonicalPackageInput, ...]:
         recovery_root / "canonical-source-inputs",
         include_biff8=True,
         biff8_editions=(
+            2007,
+            2008,
             2009,
             2010,
             2011,
