@@ -2593,3 +2593,20 @@ Native Phase4 acceptance reconciliation passed: pinned donor tree/archive,23obje
   release within the existing approved stack, requalify affected PDF contracts
   and retained sources, rerun the original full harness, then require dependency
   review and exact-head Actions before protected delivery. [M-18, M-19; AC-16]
+
+
+## Budget 2025 revenue complete-cohort integration — 2026-10-22
+
+- [~] Add the already verified Budget2025 revenue original to a new explicit
+  complete32-source recovery cohort and canonical Gold integration, using the
+  existing revenue reader/projector/exporter. Preserve the baseline and every
+  v1–v14 selector/schema/output; refuse partial or mismatched new selectors
+  before source I/O. Reuse retained observation identity and exact native
+  values/lineage/accounting; do not infer currency, starts, joins or rights.
+  Add meaningful red contracts to the existing matrix, qualify the new schema
+  and actual repeat/source/Gold/query/metadata products with original limits,
+  validate and deliver through protected checks before managed-worktree pruning.
+  This does not complete the remaining2020–2024 specialized OOXML bridges or
+  whole-track acceptance. Phase4 delivery remains separately pending in PR747.
+  [M-05, M-06, M-10, M-11, M-16, M-18, M-19;
+  AC-05, AC-08, AC-09, AC-11, AC-12, AC-16]
