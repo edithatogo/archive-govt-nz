@@ -33,7 +33,7 @@ _DEFINITION_COLUMN = 2
 _SOURCE_QUALIFIER_EDITION = 2014
 _UNLABELLED_COLUMN_EDITION = 2011
 _UNLABELLED_COLUMN_COUNT = 13
-_UNSCALED_EDITION = 2009
+_UNSCALED_EDITIONS = (2007, 2008, 2009)
 _SOURCE_PARENT_IDENTIFIER_EDITION = 2010
 _NO_SCOPE_EXPENDITURE_EDITIONS = (2010, 2011)
 _REVENUE_DEPENDENT_EDITIONS = (2010, 2011)
@@ -142,7 +142,7 @@ class BiffBudgetProfile:
                         pa.field("periodicity", pa.string()),
                     ]
                 )
-                if self.edition == _UNSCALED_EDITION
+                if self.edition in _UNSCALED_EDITIONS
                 else []
             )
             + (
@@ -1821,8 +1821,620 @@ PROFILES_2009 = {
 }
 
 
+# Independently pinned2007/2008 profiles preserve the older unscaled layout.
+PROFILES_2008 = {
+    "expenditure": replace(
+        PROFILES_2009["expenditure"],
+        source_sha256="62283a0454233bfeec9ce75bdbc822dcf59326cc2aecf5ea33581a4e1355c51b",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2008-05/b08-expense-data.xls",
+        max_rows=3557,
+        edition=2008,
+        fields=(
+            ("Unit", "department"),
+            ("Vote", "vote"),
+            ("App id", "app_id"),
+            ("MCOA id", "mcoa_id"),
+            ("Description", "appropriation_name"),
+            ("Expense Type", "appropriation_or_category_type"),
+            ("Functional Classification", "functional_classification"),
+            ("Amount", "amount"),
+            ("Year", "year"),
+            ("Type", "amount_type"),
+        ),
+        definitions=(
+            (
+                1,
+                ("Definitions and Explanations"),
+            ),
+            (
+                3,
+                ("Overview"),
+            ),
+            (
+                4,
+                (
+                    "This Expense workbook contains details of actual "
+                    "government expenditure for the year ended 30 June "
+                    "2006 and 30 June 2007, estimated actual government "
+                    "expenditure for the year ending 30\xa0June 2008 and "
+                    "budgeted government expenditure for the year ending "
+                    "30 June 2009 as published in Budget 2008."
+                ),
+            ),
+            (
+                6,
+                (
+                    "Raw data has been included in this workbook to allow"
+                    " anyone to filter, sort and manipulate the data for "
+                    "their own purposes.  Some examples in the form of "
+                    "pivot tables and charts are also provided."
+                ),
+            ),
+            (
+                8,
+                ("Definitions"),
+            ),
+            (
+                9,
+                (
+                    "Definitions relating to classifications used in the "
+                    "filters can be found by clicking on The Estimates of"
+                    " Appropriations then Introduction."
+                ),
+            ),
+            (
+                11,
+                ("Using the workbook"),
+            ),
+            (
+                12,
+                ("Filtering raw data"),
+            ),
+            (
+                13,
+                (
+                    "Filters have been applied by using the "
+                    "Data/Filter/AutoFilter option on the Excel menu bar."
+                    "  Filters can be selected by clicking on the arrows "
+                    "to the right of each header cell and selecting the "
+                    "filter value.  Custom filters can be selected by "
+                    'using the "(Custom)" option in the filter drop-down '
+                    "list.  Filter criteria can be removed by clicking on"
+                    " the arrow to the right of the header cell and "
+                    'selecting the "(All)" option.'
+                ),
+            ),
+            (
+                14,
+                ("Pivot table tips"),
+            ),
+            (
+                15,
+                (
+                    "Pivot tables settings can be changed by right-"
+                    'clicking on the pivot table and selecting "Wizard".'
+                ),
+            ),
+            (
+                16,
+                (
+                    "Column and row filters can be selected by clicking "
+                    "on the arrows to the right of header cells."
+                ),
+            ),
+            (
+                17,
+                (
+                    "Note: any changes to the pivot tables will change "
+                    "the associated pivot charts."
+                ),
+            ),
+            (
+                18,
+                ("Pivot chart line/bar graph tips"),
+            ),
+            (
+                19,
+                (
+                    "Data series can be hidden and displayed by clicking "
+                    "on the arrow to the right of the legend header."
+                ),
+            ),
+            (
+                20,
+                (
+                    "Hover the mouse over a data series to see the name "
+                    "and range of the data."
+                ),
+            ),
+            (
+                21,
+                ("Pivot chart pie graph tips"),
+            ),
+            (
+                22,
+                (
+                    "Use arrows at the right of grey boxes to change "
+                    "parameters for the graph (ie year or output type)."
+                ),
+            ),
+            (
+                23,
+                (
+                    "Hover the mouse over a data series to see the name "
+                    "and range of the data."
+                ),
+            ),
+            (
+                25,
+                (
+                    "More assistance on the use of pivot tables and "
+                    "charts can be obtained from the Microsoft Excel help"
+                    " system."
+                ),
+            ),
+            (
+                27,
+                ("Disclaimer"),
+            ),
+            (
+                28,
+                (
+                    "These spreadsheets are based on the data contained "
+                    "in the Crown Financial Information System, which is "
+                    "used to collect and compile the raw data for the "
+                    "2008/09 Estimates.  They do not include data from "
+                    "the 2007/08 Supplementary Estimates. "
+                ),
+            ),
+            (
+                30,
+                (
+                    "Data relating to the 2008/09 fiscal year will match "
+                    "the 2008/09 Estimates exactly."
+                ),
+            ),
+            (
+                32,
+                (
+                    "This workbook supports, but does not form part of, "
+                    "the official Budget documents.  The printed copies "
+                    "of the Estimates and Supplementary Estimates, as "
+                    "tabled by the Minister of Finance on each Budget "
+                    "day, are the official sources for data contained in "
+                    "these workbooks."
+                ),
+            ),
+            (
+                34,
+                (
+                    "The Treasury has generated this workbook as a "
+                    "resource for interested persons and has taken all "
+                    "care to ensure the data are correct, but does not "
+                    "take responsibility for any errors or conclusions "
+                    "drawn from this data."
+                ),
+            ),
+            (
+                36,
+                (
+                    "The Treasury does not provide technical support on "
+                    "the use of Microsoft Excel workbooks."
+                ),
+            ),
+        ),
+        definition_links=(
+            ("source_vintage", 4),
+            ("valid_time_end", 4),
+            ("amount_type", 4),
+        ),
+        period_types=(
+            (2006, "Actuals"),
+            (2007, "Actuals"),
+            (2008, "Estimated Actual"),
+            (2009, "Main Estimates"),
+        ),
+    ),
+    "revenue": replace(
+        PROFILES_2009["revenue"],
+        source_sha256="c261fb95965f8dc1c0d649000e5bf46012c6e5c37385c050c370de07a580e94a",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2008-05/b08-revenue-data.xls",
+        max_rows=651,
+        edition=2008,
+        fields=(
+            ("Unit", "department"),
+            ("Vote", "vote"),
+            ("App id", "app_id"),
+            ("Description", "description"),
+            ("Revenue Type", "revenue_type"),
+            ("Functional Classification", "functional_classification"),
+            ("Amount", "amount"),
+            ("Year", "year"),
+            ("Type", "amount_type"),
+        ),
+        definitions=(
+            (
+                1,
+                ("Definitions and Explanations"),
+            ),
+            (
+                3,
+                ("Overview"),
+            ),
+            (
+                4,
+                (
+                    "The Revenue workbook contains details of  actual "
+                    "government revenue and receipts for the year ended "
+                    "30 June 2006 and 30 June 2007, estimated actual "
+                    "government revenue and receipts for the year ending "
+                    "30 June 2008 and budgeted government revenue and "
+                    "receipts for the year ending 30 June 2009 as "
+                    "published in Budget 2008."
+                ),
+            ),
+            (
+                6,
+                (
+                    "Raw data has been made available to allow anyone to "
+                    "filter, sort and manipulate the data for their own "
+                    "purposes.  Some examples in the form of pivot tables"
+                    " and charts are also provided."
+                ),
+            ),
+            (
+                8,
+                ("Definitions"),
+            ),
+            (
+                9,
+                (
+                    "Definitions relating to classifications used in the "
+                    "filters can be found by clicking on The Estimates of"
+                    " Appropriations then Introduction."
+                ),
+            ),
+            (
+                11,
+                ("Using the workbook"),
+            ),
+            (
+                12,
+                ("Filtering raw data"),
+            ),
+            (
+                13,
+                (
+                    "Filters have been applied by using the "
+                    "Data/Filter/AutoFilter option on the Excel menu bar."
+                    "  Filters can be selected by clicking on the arrows "
+                    "to the right of each header cell and selecting the "
+                    "filter value.  Custom filters can be selected by "
+                    'using the "(Custom)" option in the filter drop-down '
+                    "list.  Filter criteria can be removed by clicking on"
+                    " the arrow to the right of the header cell and "
+                    'selecting the "(All)" option.'
+                ),
+            ),
+            (
+                14,
+                ("Pivot table tips"),
+            ),
+            (
+                15,
+                (
+                    "Pivot table settings can be changed by right-"
+                    'clicking on the pivot table and selecting "Wizard".'
+                ),
+            ),
+            (
+                16,
+                (
+                    "Column and row filters can be selected by clicking "
+                    "on the arrows to the right of header cells."
+                ),
+            ),
+            (
+                17,
+                (
+                    "Note: any changes to the pivot tables will change "
+                    "the associated pivot charts."
+                ),
+            ),
+            (
+                18,
+                ("Pivot chart line/bar graph tips"),
+            ),
+            (
+                19,
+                (
+                    "Data series can be hidden and displayed by clicking "
+                    "on the arrow to the right of the legend header."
+                ),
+            ),
+            (
+                20,
+                (
+                    "Hover the mouse over a data series to see the name "
+                    "and range of the data."
+                ),
+            ),
+            (
+                21,
+                ("Pivot chart pie graph tips"),
+            ),
+            (
+                22,
+                (
+                    "Use arrows at the right of grey boxes to change "
+                    "parameters for the graph (ie year or output type)."
+                ),
+            ),
+            (
+                23,
+                (
+                    "Hover the mouse over a data series to see the name "
+                    "and range of the data."
+                ),
+            ),
+            (
+                25,
+                (
+                    "More assistance on the use of pivot tables and "
+                    "charts can be obtained from the Microsoft Excel help"
+                    " system."
+                ),
+            ),
+            (
+                27,
+                ("Disclaimer"),
+            ),
+            (
+                28,
+                (
+                    "These spreadsheets are based on the data contained "
+                    "in the Crown Financial Information System, which was"
+                    " used to collect and compile the raw data for the "
+                    "2008/09 Estimates.  They do not include data from "
+                    "the 2007/08 Supplementary Estimates. "
+                ),
+            ),
+            (
+                30,
+                (
+                    "Data relating to the 2008/09 fiscal year will match "
+                    "the 2008/09 Estimates exactly."
+                ),
+            ),
+            (
+                32,
+                (
+                    "This workbook supports, but does not form part of, "
+                    "the official Budget documents.  The printed copies "
+                    "of the Estimates and Supplementary Estimates, as "
+                    "tabled by the Minister of Finance on each Budget "
+                    "day, are the official sources for data contained in "
+                    "these workbooks."
+                ),
+            ),
+            (
+                34,
+                (
+                    "The Treasury has generated this workbook as a "
+                    "resource for interested persons and has taken all "
+                    "care to ensure the data are correct, but does not "
+                    "take responsibility for any errors or conclusions "
+                    "drawn from this data."
+                ),
+            ),
+            (
+                36,
+                (
+                    "The Treasury does not provide technical support on "
+                    "the use of Microsoft Excel workbooks."
+                ),
+            ),
+        ),
+        definition_links=(
+            ("source_vintage", 4),
+            ("valid_time_end", 4),
+            ("amount_type", 4),
+        ),
+        period_types=(
+            (2006, "Actuals"),
+            (2007, "Actuals"),
+            (2008, "Estimated Actual"),
+            (2009, "Main Estimates"),
+        ),
+    ),
+}
+
+PROFILES_2007 = {
+    "expenditure": replace(
+        PROFILES_2009["expenditure"],
+        source_sha256="803822e4b27c1bda6c7c3bbe95c8bc025e1ef67ded6beca55473011d8b62ba21",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2007-11/b07-data-expenses.xls",
+        max_rows=2566,
+        edition=2007,
+        fields=(
+            ("Unit", "department"),
+            ("Vote", "vote"),
+            ("App id", "app_id"),
+            ("MCOA id", "mcoa_id"),
+            ("Description", "appropriation_name"),
+            ("Expense Type", "appropriation_or_category_type"),
+            ("Functional Classification", "functional_classification"),
+            ("Amount", "amount"),
+            ("Year", "year"),
+            ("Type", "amount_type"),
+        ),
+        definitions=(
+            (1, dict(PROFILES_2008["expenditure"].definitions)[1]),
+            (3, dict(PROFILES_2008["expenditure"].definitions)[3]),
+            (
+                4,
+                (
+                    "This Expense workbook contains details of actual "
+                    "government expenditure for the year ended 30 June "
+                    "2006, estimated actual government expenditure for "
+                    "the year ending 30\xa0June 2007 and budgeted government"
+                    " expenditure for the year ending 30 June 2008 as "
+                    "published in the 2007 Budget."
+                ),
+            ),
+            (6, dict(PROFILES_2008["expenditure"].definitions)[6]),
+            (8, dict(PROFILES_2008["expenditure"].definitions)[8]),
+            (
+                9,
+                (
+                    "Definitions relating to classifications used in the "
+                    "filters can be found in the Introduction chapter of "
+                    "the Estimates of Appropriations document on the "
+                    "Budget 2007 CD-Rom or the Treasury website."
+                ),
+            ),
+            (11, dict(PROFILES_2008["expenditure"].definitions)[11]),
+            (12, dict(PROFILES_2008["expenditure"].definitions)[12]),
+            (13, dict(PROFILES_2008["expenditure"].definitions)[13]),
+            (14, dict(PROFILES_2008["expenditure"].definitions)[14]),
+            (15, dict(PROFILES_2008["expenditure"].definitions)[15]),
+            (16, dict(PROFILES_2008["expenditure"].definitions)[16]),
+            (17, dict(PROFILES_2008["expenditure"].definitions)[17]),
+            (18, dict(PROFILES_2008["expenditure"].definitions)[18]),
+            (19, dict(PROFILES_2008["expenditure"].definitions)[19]),
+            (20, dict(PROFILES_2008["expenditure"].definitions)[20]),
+            (21, dict(PROFILES_2008["expenditure"].definitions)[21]),
+            (22, dict(PROFILES_2008["expenditure"].definitions)[22]),
+            (23, dict(PROFILES_2008["expenditure"].definitions)[23]),
+            (25, dict(PROFILES_2008["expenditure"].definitions)[25]),
+            (27, dict(PROFILES_2008["expenditure"].definitions)[27]),
+            (
+                28,
+                (
+                    "These spreadsheets are based on the data contained "
+                    "in the Crown Financial Information System, which is "
+                    "used to collect and compile the raw data for the "
+                    "Estimates 2007/08.  They do not include data from "
+                    "the Supplementary Estimates 2006/07. "
+                ),
+            ),
+            (
+                30,
+                (
+                    "Data relating to the 2007/08 fiscal year will match "
+                    "the Estimates 2007/08 exactly."
+                ),
+            ),
+            (32, dict(PROFILES_2008["expenditure"].definitions)[32]),
+            (34, dict(PROFILES_2008["expenditure"].definitions)[34]),
+            (36, dict(PROFILES_2008["expenditure"].definitions)[36]),
+        ),
+        definition_links=(
+            ("source_vintage", 4),
+            ("valid_time_end", 4),
+            ("amount_type", 4),
+        ),
+        period_types=(
+            (2006, "Actuals"),
+            (2007, "Estimated Actual"),
+            (2008, "Main Estimates"),
+        ),
+    ),
+    "revenue": replace(
+        PROFILES_2009["revenue"],
+        source_sha256="bbb62b2d4fb16a35315854adc81899bb416a0cebc3f84f4a971158626b8be3e4",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2007-11/b07-data-revenue.xls",
+        max_rows=480,
+        edition=2007,
+        fields=(
+            ("Unit", "department"),
+            ("Vote", "vote"),
+            ("App id", "app_id"),
+            ("Description", "description"),
+            ("Revenue Type", "revenue_type"),
+            ("Functional Classification", "functional_classification"),
+            ("Amount", "amount"),
+            ("Year", "year"),
+            ("Type", "amount_type"),
+        ),
+        definitions=(
+            (1, dict(PROFILES_2008["revenue"].definitions)[1]),
+            (3, dict(PROFILES_2008["revenue"].definitions)[3]),
+            (
+                4,
+                (
+                    "The Revenue workbook contains details of  actual "
+                    "government revenue and receipts for the year ended "
+                    "30 June 2006, estimated actual government revenue "
+                    "and receipts for the year ending 30 June 2007 and "
+                    "budgeted government revenue and receipts for the "
+                    "year ending 30 June 2008 as published in the 2007 "
+                    "Budget."
+                ),
+            ),
+            (6, dict(PROFILES_2008["revenue"].definitions)[6]),
+            (8, dict(PROFILES_2008["revenue"].definitions)[8]),
+            (
+                9,
+                (
+                    "Definitions relating to classifications used in the "
+                    "filters can be found in the Introduction chapter of "
+                    "the Estimates of Appropriations document on the "
+                    "Budget 2007 CD-Rom or the Treasury website."
+                ),
+            ),
+            (11, dict(PROFILES_2008["revenue"].definitions)[11]),
+            (12, dict(PROFILES_2008["revenue"].definitions)[12]),
+            (13, dict(PROFILES_2008["revenue"].definitions)[13]),
+            (14, dict(PROFILES_2008["revenue"].definitions)[14]),
+            (15, dict(PROFILES_2008["revenue"].definitions)[15]),
+            (16, dict(PROFILES_2008["revenue"].definitions)[16]),
+            (17, dict(PROFILES_2008["revenue"].definitions)[17]),
+            (18, dict(PROFILES_2008["revenue"].definitions)[18]),
+            (19, dict(PROFILES_2008["revenue"].definitions)[19]),
+            (20, dict(PROFILES_2008["revenue"].definitions)[20]),
+            (21, dict(PROFILES_2008["revenue"].definitions)[21]),
+            (22, dict(PROFILES_2008["revenue"].definitions)[22]),
+            (23, dict(PROFILES_2008["revenue"].definitions)[23]),
+            (25, dict(PROFILES_2008["revenue"].definitions)[25]),
+            (27, dict(PROFILES_2008["revenue"].definitions)[27]),
+            (
+                28,
+                (
+                    "These spreadsheets are based on the data contained "
+                    "in the Crown Financial Information System, which was"
+                    " used to collect and compile the raw data for the "
+                    "Estimates 2007/08.  They do not include data from "
+                    "the Supplementary Estimates 2006/07. "
+                ),
+            ),
+            (
+                30,
+                (
+                    "Data relating to the 2007/08 fiscal year will match "
+                    "the Estimates 2007/08 exactly."
+                ),
+            ),
+            (32, dict(PROFILES_2008["revenue"].definitions)[32]),
+            (34, dict(PROFILES_2008["revenue"].definitions)[34]),
+            (36, dict(PROFILES_2008["revenue"].definitions)[36]),
+        ),
+        definition_links=(
+            ("source_vintage", 4),
+            ("valid_time_end", 4),
+            ("amount_type", 4),
+        ),
+        period_types=(
+            (2006, "Actuals"),
+            (2007, "Estimated Actual"),
+            (2008, "Main Estimates"),
+        ),
+    ),
+}
+
+
 def declared_profiles() -> tuple[BiffBudgetProfile, ...]:
-    """Expose only the twenty-two independently pinned source-edition profiles."""
+    """Expose only the twenty-six independently pinned source-edition profiles."""
     return (
         *PROFILES.values(),
         *PROFILES_2018.values(),
@@ -1835,6 +2447,8 @@ def declared_profiles() -> tuple[BiffBudgetProfile, ...]:
         *PROFILES_2011.values(),
         *PROFILES_2010.values(),
         *PROFILES_2009.values(),
+        *PROFILES_2008.values(),
+        *PROFILES_2007.values(),
     )
 
 
@@ -2151,14 +2765,28 @@ def parse_snapshot(
         profile.kind in {"expenditure", "revenue"}
         and type(profile.edition) is int
         and profile.edition
-        in {2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019}
+        in {
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+        }
     )
     _require(
-        profile.unit == (None if profile.edition == _UNSCALED_EDITION else "$000")
+        profile.unit == (None if profile.edition in _UNSCALED_EDITIONS else "$000")
         and profile.absent_fields
         == (
             _ABSENT_FIELDS_2009[profile.kind]
-            if profile.edition == _UNSCALED_EDITION
+            if profile.edition in _UNSCALED_EDITIONS
             else (*_ABSENT_FIELDS_2013["expenditure"], "current_scope")
             if profile.edition in _NO_SCOPE_EXPENDITURE_EDITIONS
             and profile.kind == "expenditure"

@@ -66,7 +66,7 @@ def _source(
 def _assert_edition_lineage(
     edition: int, kind: str, fields: list[str], flags: list[str], unit: object
 ) -> None:
-    if edition == 2009:
+    if edition in (2007, 2008, 2009):
         assert unit is None
         assert "amount_scale_not_verified" in flags
     if edition != 2014:
@@ -79,7 +79,8 @@ def _assert_edition_lineage(
 
 
 @pytest.mark.parametrize(
-    "edition", [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]
+    "edition",
+    [2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019],
 )
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_biff8_canonical_and_gold_preserve_binary_evidence_and_repeat_bytes(
@@ -286,6 +287,8 @@ def test_biff8_gold_preserves_distinct_vintages_and_refuses_duplicates(
     packages = []
     for kind in ("expenditure", "revenue"):
         for edition in (
+            2007,
+            2008,
             2009,
             2010,
             2011,
@@ -326,14 +329,14 @@ def test_biff8_gold_preserves_distinct_vintages_and_refuses_duplicates(
     receipt = canonical_gold_export.export_canonical_gold(
         tuple(packages), gold, write=True
     )
-    assert receipt["quality_report"]["input_record_count"] == 22
+    assert receipt["quality_report"]["input_record_count"] == 26
     reference = receipt["source_drillthrough"]
     assert (
         reference["schema_version"] == "archive-govt-nz.health-source-drillthrough/v3"
     )
     companion = gold / "source_drillthrough.json"
     drillthrough = json.loads(companion.read_bytes())
-    assert reference["record_count"] == len(drillthrough["records"]) == 22
+    assert reference["record_count"] == len(drillthrough["records"]) == 26
     assert reference["sha256"] == _pin(companion)
     assert reference["bytes"] == companion.stat().st_size
     assert all(row["source_coordinates"] for row in drillthrough["records"])
@@ -371,8 +374,10 @@ def test_biff8_gold_preserves_distinct_vintages_and_refuses_duplicates(
             gold, _pin(gold / "MANIFEST.json"), product=product
         )
         assert result["status"] == "verified"
-        assert result["total_rows"] == 11
+        assert result["total_rows"] == 13
         assert {r["source_vintage"] for r in result["rows"]} == {
+            "Budget-2007",
+            "Budget-2008",
             "Budget-2009",
             "Budget-2010",
             "Budget-2011",

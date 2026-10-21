@@ -52,9 +52,25 @@ BIFF8_2012_VERSION = "archive-govt-nz.health-canonical-input-recovery/v9"
 BIFF8_2011_VERSION = "archive-govt-nz.health-canonical-input-recovery/v10"
 BIFF8_2010_VERSION = "archive-govt-nz.health-canonical-input-recovery/v11"
 BIFF8_2009_VERSION = "archive-govt-nz.health-canonical-input-recovery/v12"
-ALL_BIFF8_EDITIONS = (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019)
-COMPLETE_COHORT_STARTS = (2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016)
-MAX_EXPANDED_SOURCES = 27
+BIFF8_2008_VERSION = "archive-govt-nz.health-canonical-input-recovery/v13"
+BIFF8_2007_VERSION = "archive-govt-nz.health-canonical-input-recovery/v14"
+ALL_BIFF8_EDITIONS = (
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+)
+COMPLETE_COHORT_STARTS = (2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016)
+MAX_EXPANDED_SOURCES = 31
 MAX_SOURCES = 5
 MAX_BIFF8_SOURCES = 7
 MAX_OUTPUT_FILES = 16
@@ -386,6 +402,50 @@ BIFF8_2009_SOURCES = (
 )
 
 
+# Exact qualified2008 local inspection token; not a capture attestation.
+BIFF8_2008_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2008",
+        "biff8_budget",
+        "62283a0454233bfeec9ce75bdbc822dcf59326cc2aecf5ea33581a4e1355c51b",
+        "https://www.treasury.govt.nz/sites/default/files/2008-05/b08-expense-data.xls",
+        "Budget-2008",
+        "2026-10-21T14:55:18.062744+00:00",
+        "sha256:86d89a2cb13c684e064d7feb24b0416002f85e53bda5d37974ce58e27ce7b4e9",
+    ),
+    SourceDefinition(
+        "biffrevenue-2008",
+        "biff8_revenue",
+        "c261fb95965f8dc1c0d649000e5bf46012c6e5c37385c050c370de07a580e94a",
+        "https://www.treasury.govt.nz/sites/default/files/2008-05/b08-revenue-data.xls",
+        "Budget-2008",
+        "2026-10-21T14:55:18.062744+00:00",
+        "sha256:97cbcfa7f30106897007e432027e8f8e653ff1831448be0d65968684d3d72b65",
+    ),
+)
+# Exact qualified2007 local inspection token; not a capture attestation.
+BIFF8_2007_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2007",
+        "biff8_budget",
+        "803822e4b27c1bda6c7c3bbe95c8bc025e1ef67ded6beca55473011d8b62ba21",
+        "https://www.treasury.govt.nz/sites/default/files/2007-11/b07-data-expenses.xls",
+        "Budget-2007",
+        "2026-10-21T14:55:18.062744+00:00",
+        "sha256:22157ad202c2b3975b1aebab8e868125273bc5da941e4159a6ef05cdbf6f0002",
+    ),
+    SourceDefinition(
+        "biffrevenue-2007",
+        "biff8_revenue",
+        "bbb62b2d4fb16a35315854adc81899bb416a0cebc3f84f4a971158626b8be3e4",
+        "https://www.treasury.govt.nz/sites/default/files/2007-11/b07-data-revenue.xls",
+        "Budget-2007",
+        "2026-10-21T14:55:18.062744+00:00",
+        "sha256:9ad6b571edecc9b4a331705e86ca98f2aeb02e83d1d506a13ec0834fc17984dd",
+    ),
+)
+
+
 def _require(condition: object) -> None:
     if not condition:
         message = "canonical_input_recovery_contract"
@@ -569,6 +629,8 @@ def _biff_definitions(editions: tuple[int, ...]) -> tuple[SourceDefinition, ...]
         (2011, BIFF8_2011_SOURCES),
         (2010, BIFF8_2010_SOURCES),
         (2009, BIFF8_2009_SOURCES),
+        (2008, BIFF8_2008_SOURCES),
+        (2007, BIFF8_2007_SOURCES),
     ):
         if year not in editions:
             continue
@@ -606,6 +668,8 @@ def rebuild_canonical_inputs(
     version = VERSION
     if include_biff8:
         version = {
+            2007: BIFF8_2007_VERSION,
+            2008: BIFF8_2008_VERSION,
             2009: BIFF8_2009_VERSION,
             2010: BIFF8_2010_VERSION,
             2011: BIFF8_2011_VERSION,
