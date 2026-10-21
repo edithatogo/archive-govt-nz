@@ -63,7 +63,14 @@ def _source(
     return original, silver, _pin(silver / "MANIFEST.json"), dict(snapshot.tables)
 
 
-def _assert_2014_lineage(kind: str, fields: list[str], flags: list[str]) -> None:
+def _assert_edition_lineage(
+    edition: int, kind: str, fields: list[str], flags: list[str], unit: object
+) -> None:
+    if edition == 2009:
+        assert unit is None
+        assert "amount_scale_not_verified" in flags
+    if edition != 2014:
+        return
     assert ("is_mca" if kind == "expenditure" else "periodicity") in fields
     if kind == "revenue":
         assert (
@@ -72,7 +79,7 @@ def _assert_2014_lineage(kind: str, fields: list[str], flags: list[str]) -> None
 
 
 @pytest.mark.parametrize(
-    "edition", [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]
+    "edition", [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019]
 )
 @pytest.mark.parametrize("kind", ["expenditure", "revenue"])
 def test_biff8_canonical_and_gold_preserve_binary_evidence_and_repeat_bytes(
@@ -127,10 +134,13 @@ def test_biff8_canonical_and_gold_preserve_binary_evidence_and_repeat_bytes(
         in tables["numeric_evidence"]["numeric_evidence_id"].to_pylist()
     )
     assert fact["currency"] is None
-    if edition == 2014:
-        _assert_2014_lineage(
-            kind, tables["field_lineage"]["field"].to_pylist(), fact["quality_flags"]
-        )
+    _assert_edition_lineage(
+        edition,
+        kind,
+        tables["field_lineage"]["field"].to_pylist(),
+        fact["quality_flags"],
+        fact["unit"],
+    )
     assert fact["valid_time_start"] is None
     assert tables["numeric_evidence"].equals(source["numeric_evidence.parquet"])
     assert tables["field_lineage"].num_rows == source["field_lineage.parquet"].num_rows
@@ -275,7 +285,19 @@ def test_biff8_gold_preserves_distinct_vintages_and_refuses_duplicates(
 ) -> None:
     packages = []
     for kind in ("expenditure", "revenue"):
-        for edition in (2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019):
+        for edition in (
+            2009,
+            2010,
+            2011,
+            2012,
+            2013,
+            2014,
+            2015,
+            2016,
+            2017,
+            2018,
+            2019,
+        ):
             root = tmp_path / f"{kind}-{edition}"
             root.mkdir()
             original, silver, pin, _ = _source(root, monkeypatch, kind, edition=edition)
@@ -304,14 +326,14 @@ def test_biff8_gold_preserves_distinct_vintages_and_refuses_duplicates(
     receipt = canonical_gold_export.export_canonical_gold(
         tuple(packages), gold, write=True
     )
-    assert receipt["quality_report"]["input_record_count"] == 20
+    assert receipt["quality_report"]["input_record_count"] == 22
     reference = receipt["source_drillthrough"]
     assert (
         reference["schema_version"] == "archive-govt-nz.health-source-drillthrough/v3"
     )
     companion = gold / "source_drillthrough.json"
     drillthrough = json.loads(companion.read_bytes())
-    assert reference["record_count"] == len(drillthrough["records"]) == 20
+    assert reference["record_count"] == len(drillthrough["records"]) == 22
     assert reference["sha256"] == _pin(companion)
     assert reference["bytes"] == companion.stat().st_size
     assert all(row["source_coordinates"] for row in drillthrough["records"])
@@ -349,8 +371,9 @@ def test_biff8_gold_preserves_distinct_vintages_and_refuses_duplicates(
             gold, _pin(gold / "MANIFEST.json"), product=product
         )
         assert result["status"] == "verified"
-        assert result["total_rows"] == 10
+        assert result["total_rows"] == 11
         assert {r["source_vintage"] for r in result["rows"]} == {
+            "Budget-2009",
             "Budget-2010",
             "Budget-2011",
             "Budget-2012",
