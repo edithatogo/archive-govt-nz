@@ -9331,3 +9331,5 @@ retention. Full native20-stage recovery must requalify all34 PNGs and every
 prior input/Gold byte contract; no visual or source value replacement allowed.
 
 Pillow13 full native requalification completed on de27e15d: all20 stages, two fresh15-source builds,137 input files and61 Gold files byte-identical to prior qualified2015 products, including34 PNGs. All legacy cohorts, ten queries, analytical and composite metadata passed. Postflight:7370 pins unchanged, terminal0, owner/group absent and independent lease free. All three hosted assurance platforms passed on this implementation head. Retained original/failed/replay evidence unchanged. Final documentation tree now requires original harness validation before protected merge.
+
+PR739 merged8450a2e6; final head2cedab02 passed all8 checks and original32 stages locally/onall3 platforms. All source and Gold bytes preserved after Pillow13 qualification; clean topic pruned, all4 native roots retained. Budget2014 next: publisher page and original B1/date/Estimates notes independently identify2014, conflicting revenueB10 retained for explicit disposition. No rights inference.
