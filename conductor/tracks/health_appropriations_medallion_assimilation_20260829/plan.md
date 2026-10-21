@@ -2612,3 +2612,5 @@ Native Phase4 acceptance reconciliation passed: pinned donor tree/archive,23obje
   AC-05, AC-08, AC-09, AC-11, AC-12, AC-16]
 
 Phase4 reconciliation/security blocker delivered by PR747, protected merge3317bb4e; all8checks and original32stages locally/on3platforms pass. Issue210 closed, primary clean and exact topic refs pruned, native/evidence/runtime retained. See phase4-delivery-747-20261022.json. Earlier producer pending-state receipts remain unchanged; wider phases/track stay open.
+
+- [ ] Address observed clipped/overlapping canonical revenue chart labels with an additive versioned readable rendering contract, retaining v1 bytes, exact point/source mappings, deterministic repeat builds and bounded page/size limits. Validate actual complete-cohort plots visually; do not claim visual acceptance from numeric parity. [M-10, M-13; AC-08, AC-12]

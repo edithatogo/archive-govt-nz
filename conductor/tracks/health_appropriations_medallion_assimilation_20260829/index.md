@@ -740,3 +740,5 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [PDF dependency security unblock](pypdf-security-unblock-20261022.md) and [paired qualification](pypdf-security-unblock-20261022.json): required audit failure preserved; fixed lock,60 existing PDF tests and three retained-source byte comparisons pass. Final assurance pending.
 
 - [Phase 4 protected delivery PR747](phase4-delivery-747-20261022.json): actual eight green checks, three-platform original harness, issue210 closure and verified clean topic pruning. Wider phases and track acceptance remain open.
+
+- [Budget2025 complete32-source native qualification](revenue-2025-complete-cohort-native-20261022.json) and [bounded review](revenue-2025-complete-cohort-review-20261022.md): numeric/recovery/interface proof passes; chart readability finding remains open.
