@@ -44,14 +44,24 @@ jobs:
         run: |
           pytest_workers=auto
           pytest_distribution=loadscope
+          pytest_reporting=()
           if [ "${{ matrix.os }}" = "macos-latest" ]; then
             pytest_workers=1
           elif [ "${{ matrix.os }}" = "windows-latest" ]; then
             pytest_distribution=worksteal
+            pytest_reporting+=(--pytest-diagnostics)
           fi
           uv run --locked python tools/check.py \
             --pytest-workers "$pytest_workers" \
-            --pytest-distribution "$pytest_distribution"
+            --pytest-distribution "$pytest_distribution" \
+            "${pytest_reporting[@]}"
+      - name: Preserve completed Windows pytest report
+        if: always() && matrix.os == 'windows-latest' && hashFiles('build/pytest-results.xml') != ''
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: windows-pytest-${{ github.sha }}-${{ github.run_attempt }}
+          path: build/pytest-results.xml
+          if-no-files-found: error
       - name: Preserve dependency audit receipt
         if: always() && hashFiles('build/pip-audit.json') != ''
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a

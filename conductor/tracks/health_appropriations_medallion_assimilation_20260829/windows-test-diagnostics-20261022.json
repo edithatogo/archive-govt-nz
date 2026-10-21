@@ -1,0 +1,56 @@
+{
+  "actual_next_windows_qualification": "not_yet_run",
+  "assertion_failure_reported": false,
+  "collected_tests": 8301,
+  "deadlines_test_selection_coverage_stage_changes": false,
+  "exit": 124,
+  "failed_head": "47b56c5d5ba80a8d80333ed44346e78b24a907bb",
+  "failed_job": 119457618235,
+  "failed_run": 39667877487,
+  "failure_log_sha256": "08f296e1b511c84b3c135e8bc061e70f1e368cb1d02cec284604a48a31392669",
+  "last_99percent_utc": "2026-10-21T20:24:27.8492314Z",
+  "local_original_full47b": {
+    "frozen_pins_unchanged": true,
+    "owner_absent_and_lease_free": true,
+    "passed": 8287,
+    "skipped": 14,
+    "stages": 32,
+    "terminal": 0,
+    "test_seconds": 794.36,
+    "warnings": 18
+  },
+  "reporting_candidate": {
+    "artifact": "retain completed XML only when actually present; failed test status remains failure",
+    "default_other_callers": "unchanged",
+    "enabled_by": "tools/check.py --pytest-diagnostics only in Windows CI",
+    "flags": [
+      "--verbose",
+      "--durations=30",
+      "--junitxml=build/pytest-results.xml",
+      "-o",
+      "console_output_style=count"
+    ],
+    "focused_tests_passed": 21,
+    "junit_limit": "builtin JUnit is finalized on normal pytest exit; no XML is promised after a hard timeout",
+    "local_xdist_reporting_probe": {
+      "cases": 3,
+      "exact_count_stdout": true,
+      "junit_cases": 3,
+      "named_and_worker_stdout": true,
+      "windows_or_full_suite_qualification": false,
+      "workers": 2
+    },
+    "new_scope_contracts": 1,
+    "scope": "main pytest stage only; never global PYTEST_ADDOPTS",
+    "timeout_evidence": "streamed named starts, worker completions and exact counts remain in hosted job log",
+    "typing": "0errors0warnings0notes"
+  },
+  "scheduler": "worksteal",
+  "scheduling_trial_qualified": false,
+  "scope": "third terminal Windows deadline failure and opt-in reporting candidate",
+  "source_numeric_and_provenance_changes": false,
+  "stage_limit_seconds": 900,
+  "terminal_utc": "2026-10-21T20:26:00.5208047Z",
+  "whole_track_complete": false,
+  "workers": 2
+}
