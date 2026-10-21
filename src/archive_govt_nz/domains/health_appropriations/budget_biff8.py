@@ -726,52 +726,100 @@ PROFILES_2013 = {
             (1, "Expenditure Data - Estimates of Appropriations 2013/14"),
             (
                 2,
-                "Published 16 May 2013 at www.treasury.govt.nz/budget/2013/data and www.budget.govt.nz/budget/2013/data\nand on the Budget USBs.",
+                (
+                    "Published 16 May 2013 at www.treasury.govt.nz/budget/2013/da"
+                    "ta and www.budget.govt.nz/budget/2013/data\nand on the Budget"
+                    " USBs."
+                ),
             ),
             (5, "Definitions and Explanations"),
             (7, "Overview"),
             (
                 8,
-                "This Expense workbook contains details of actual government expenditure for the years' ended 30 June 2009, 2010, 2011 and 2012; estimated actual government expenditure for the year ending 30\xa0June 2013 and budgeted government expenditure for the year ending 30 June 2014 as published in Budget 2013.",
+                (
+                    "This Expense workbook contains details of actual government "
+                    "expenditure for the years' ended 30 June 2009, 2010, 2011 an"
+                    "d 2012; estimated actual government expenditure for the year"
+                    " ending 30\u00a0June 2013 and budgeted government expenditure for"
+                    " the year ending 30 June 2014 as published in Budget 2013."
+                ),
             ),
             (
                 10,
-                "Raw data has been included in this workbook to allow anyone to filter, sort and manipulate the data for their own purposes.  Some examples in the form of pivot tables and charts are also provided.",
+                (
+                    "Raw data has been included in this workbook to allow anyone "
+                    "to filter, sort and manipulate the data for their own purpos"
+                    "es.  Some examples in the form of pivot tables and charts ar"
+                    "e also provided."
+                ),
             ),
             (
                 12,
-                "More assistance on the use of pivot tables and charts can be obtained from the Microsoft Excel help system.",
+                (
+                    "More assistance on the use of pivot tables and charts can be"
+                    " obtained from the Microsoft Excel help system."
+                ),
             ),
             (14, "Definitions"),
             (15, "All amounts are in thousands of dollars ($000)."),
             (
                 17,
-                "Definitions of appropriation types can be found in the Introduction chapter of The Estimates of Appropriations for the New Zealand Government.",
+                (
+                    "Definitions of appropriation types can be found in the Intro"
+                    "duction chapter of The Estimates of Appropriations for the N"
+                    "ew Zealand Government."
+                ),
             ),
             (
                 19,
-                "The appropriation name and scope is as published in the 2013/14 Estimates - the same name and scope is applied to all years where the appropriation ID is the same.",
+                (
+                    "The appropriation name and scope is as published in the 2013"
+                    "/14 Estimates - the same name and scope is applied to all ye"
+                    "ars where the appropriation ID is the same."
+                ),
             ),
             (21, "Disclaimer"),
             (
                 22,
-                "This workbook is based on the data contained in the Crown's Financial and Information System, which is used to collect and compile the raw data for the 2013/14 Estimates.  They do not include data from the 2012/13 Supplementary Estimates. ",
+                (
+                    "This workbook is based on the data contained in the Crown's "
+                    "Financial and Information System, which is used to collect a"
+                    "nd compile the raw data for the 2013/14 Estimates.  They do "
+                    "not include data from the 2012/13 Supplementary Estimates. "
+                ),
             ),
             (
                 24,
-                "Data relating to the 2013/14 fiscal year should match the 2013/14 Estimates exactly.",
+                (
+                    "Data relating to the 2013/14 fiscal year should match the 20"
+                    "13/14 Estimates exactly."
+                ),
             ),
             (
                 26,
-                "This workbook supports, but does not form part of, the official Budget documents.  The printed copies of the Estimates and Supplementary Estimates, as tabled by the Minister of Finance on each Budget day, are the official sources for data contained in these workbooks.",
+                (
+                    "This workbook supports, but does not form part of, the offic"
+                    "ial Budget documents.  The printed copies of the Estimates a"
+                    "nd Supplementary Estimates, as tabled by the Minister of Fin"
+                    "ance on each Budget day, are the official sources for data c"
+                    "ontained in these workbooks."
+                ),
             ),
             (
                 28,
-                "The Treasury has generated this workbook as a resource for interested persons and has taken all care to ensure the data are correct, but does not take responsibility for any errors or conclusions drawn from this data.",
+                (
+                    "The Treasury has generated this workbook as a resource for i"
+                    "nterested persons and has taken all care to ensure the data "
+                    "are correct, but does not take responsibility for any errors"
+                    " or conclusions drawn from this data."
+                ),
             ),
             (
                 30,
-                "The Treasury does not provide technical support on the use of Microsoft Excel workbooks.",
+                (
+                    "The Treasury does not provide technical support on the use o"
+                    "f Microsoft Excel workbooks."
+                ),
             ),
         ),
         definition_links=(
@@ -816,48 +864,94 @@ PROFILES_2013 = {
             (1, "Revenue Data - Estimates of Appropriations 2013/14"),
             (
                 2,
-                "Published 16 May 2013 at www.treasury.govt.nz/budget/2013/data and www.budget.govt.nz/budget/2013/data\nand on the Budget USBs.",
+                (
+                    "Published 16 May 2013 at www.treasury.govt.nz/budget/2013/da"
+                    "ta and www.budget.govt.nz/budget/2013/data\nand on the Budget"
+                    " USBs."
+                ),
             ),
             (4, "Definitions and Explanations"),
             (6, "Overview"),
             (
                 8,
-                "The Revenue workbook contains details of  actual government Crown revenue and capital receipts for the years' ended 30 June 2009, 2010, 2011 and 2012; estimated actual government Crown revenue and capital receipts for the year ending 30 June 2013 and budgeted government Crown revenue and capital receipts for the year ending 30 June 2014 as published in Budget 2013.",
+                (
+                    "The Revenue workbook contains details of  actual government "
+                    "Crown revenue and capital receipts for the years' ended 30 J"
+                    "une 2009, 2010, 2011 and 2012; estimated actual government C"
+                    "rown revenue and capital receipts for the year ending 30 Jun"
+                    "e 2013 and budgeted government Crown revenue and capital rec"
+                    "eipts for the year ending 30 June 2014 as published in Budge"
+                    "t 2013."
+                ),
             ),
             (
                 10,
-                "Raw data has been made available to allow anyone to filter, sort and manipulate the data for their own purposes.  Some examples in the form of pivot tables and charts are also provided.",
+                (
+                    "Raw data has been made available to allow anyone to filter, "
+                    "sort and manipulate the data for their own purposes.  Some e"
+                    "xamples in the form of pivot tables and charts are also prov"
+                    "ided."
+                ),
             ),
             (
                 12,
-                "More assistance on the use of pivot tables and charts can be obtained from the Microsoft Excel help system.",
+                (
+                    "More assistance on the use of pivot tables and charts can be"
+                    " obtained from the Microsoft Excel help system."
+                ),
             ),
             (14, "Definitions"),
             (16, "Amounts are in thousands of dollars."),
             (
                 18,
-                "Definitions of Crown revenue and capital receipts can be found in the Introduction chapter of The Estimates of Appropriations for the Government of New Zealand.",
+                (
+                    "Definitions of Crown revenue and capital receipts can be fou"
+                    "nd in the Introduction chapter of The Estimates of Appropria"
+                    "tions for the Government of New Zealand."
+                ),
             ),
             (20, "Disclaimer"),
             (
                 22,
-                "This workbook is based on the data contained in the Crown's Financial and Information System, which was used to collect and compile the raw data for the 2013/14 Estimates.  They do not include data from the 2012/13 Supplementary Estimates. ",
+                (
+                    "This workbook is based on the data contained in the Crown's "
+                    "Financial and Information System, which was used to collect "
+                    "and compile the raw data for the 2013/14 Estimates.  They do"
+                    " not include data from the 2012/13 Supplementary Estimates. "
+                ),
             ),
             (
                 24,
-                "Data relating to the 2013/14 fiscal year should match the 2013/14 Estimates exactly.",
+                (
+                    "Data relating to the 2013/14 fiscal year should match the 20"
+                    "13/14 Estimates exactly."
+                ),
             ),
             (
                 26,
-                "This workbook supports, but does not form part of, the official Budget documents.  The printed copies of the Estimates and Supplementary Estimates, as tabled by the Minister of Finance on each Budget day, are the official sources for data contained in these workbooks.",
+                (
+                    "This workbook supports, but does not form part of, the offic"
+                    "ial Budget documents.  The printed copies of the Estimates a"
+                    "nd Supplementary Estimates, as tabled by the Minister of Fin"
+                    "ance on each Budget day, are the official sources for data c"
+                    "ontained in these workbooks."
+                ),
             ),
             (
                 28,
-                "The Treasury has generated this workbook as a resource for interested persons and has taken all care to ensure the data are correct, but does not take responsibility for any errors or conclusions drawn from this data.",
+                (
+                    "The Treasury has generated this workbook as a resource for i"
+                    "nterested persons and has taken all care to ensure the data "
+                    "are correct, but does not take responsibility for any errors"
+                    " or conclusions drawn from this data."
+                ),
             ),
             (
                 30,
-                "The Treasury does not provide technical support on the use of Microsoft Excel workbooks.",
+                (
+                    "The Treasury does not provide technical support on the use o"
+                    "f Microsoft Excel workbooks."
+                ),
             ),
         ),
         definition_links=(
