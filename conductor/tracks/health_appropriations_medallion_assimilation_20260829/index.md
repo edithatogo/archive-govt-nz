@@ -15,6 +15,14 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Budget2015 source-to-products contract](./biff8-2015-contract.md)
+- [Budget2015 numeric preflight](./budget-2015-biff8-preflight-20261021.json)
+- [Budget2015 source/native qualification](./budget-2015-biff8-native-qualification-20261021.json)
+- [Budget2015 complete native products](./biff8-2015-products-native-20261021.json)
+- [Budget2015 bounded review closure](./biff8-2015-review-closure-20261021.json)
+- [Budget2015 audit blocker evidence](./biff8-2015-certifi-audit-blocker-20261021.json)
+- [Budget2015 certifi security update](./biff8-2015-certifi-security-update-20261021.json)
+
 - [SQLite inventory path and identifier repair](./sqlite-inventory-boundary.md)
 
 - [Negative-fixture matrix](./negative-fixture-matrix.md)

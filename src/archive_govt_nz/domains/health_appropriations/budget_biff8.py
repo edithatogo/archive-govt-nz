@@ -56,6 +56,7 @@ class BiffBudgetProfile:
     edition: int = 2019
     group_types: tuple[str, ...] = ("Single", "MCA")
     period_types: tuple[tuple[int, str], ...] = tuple(PERIOD_TYPES.items())
+    absent_fields: tuple[str, ...] = ()
 
     @property
     def profile_id(self) -> str:
@@ -379,13 +380,146 @@ PROFILES_2016 = {
 }
 
 
+# The pinned2015 expenditure source has no minister/portfolio columns.
+_ABSENT_EXPENDITURE_FIELDS_2015 = ("m_number", "portfolio_name")
+_EXPENDITURE_DEFINITIONS_2015 = {
+    3: (
+        "This Expense workbook contains details of actual government expend"
+        "iture for the years ended 30 June 2011, 2012, 2013 and 2014; estim"
+        "ated actual government expenditure for the year ending 30\xa0June 201"
+        "5 and budgeted government expenditure for the year ending 30 June "
+        "2016 as published in Budget 2015."
+    ),
+    38: (
+        "Periodicity: As per the arrangement of appropriations at the begin"
+        'ning of each vote chapter in the Main Estimates: "A" refers to an '
+        "Annual appropriation or to a Permanent Legislative Authority appro"
+        'priation. "M" refers to a multi-year appropriation.'
+    ),
+    39: (
+        "Amount $000: Amount (in thousands) for the Year as reported in the"
+        " Main Estimates."
+    ),
+    40: (
+        "Year: Year ending that the Amount relates to (at 30 June) as repor"
+        "ted in the Main Estimates."
+    ),
+    41: (
+        'Amount Type: "Actuals" - as audited for prior Years, "Estimated Ac'
+        'tual" - for the Year immediately prior to the current Main Estimat'
+        'es, "Main Estimates" - for the Main Estimates Year.'
+    ),
+    46: (
+        "App ID: Number used to uniquely identify each appropriation; categ"
+        "ory of an MCA; or output class of an MCOA. This is particularly us"
+        "eful where an MYA is superceded by another MYA with the same name."
+    ),
+    47: (
+        "Parent ID: Number used to group categories or output classes belon"
+        "ging to an MCA or an MCOA."
+    ),
+    48: (
+        'Group Type: "Single" if Appropriation contains a single category, '
+        '"MCA" or "MCOA" if the line is part of a multi-line Appropriation.'
+    ),
+    49: (
+        "Functional Classification: Groups expenses into broad objectives o"
+        "f the government (based on OECD classification) \u2013 e.g. Health, Edu"
+        "cation, Defence, etc. This classification is not included in the M"
+        "ain Estimates."
+    ),
+}
+
+_REVENUE_DEFINITIONS_2015 = {
+    4: (
+        "The Revenue workbook contains details of  actual government Crown "
+        "revenue and capital receipts for the years ended 30 June 2011, 201"
+        "2, 2013 and 2014; estimated actual government Crown revenue and ca"
+        "pital receipts for the year ending 30 June 2015 and budgeted gover"
+        "nment Crown revenue and capital receipts for the year ending 30 Ju"
+        "ne 2016 as published in Budget 2015."
+    ),
+    34: (
+        "Amount $000: Amount (in thousands) for the Year as reported in the"
+        " Main Estimates."
+    ),
+    35: (
+        "Year: Year ending that the Amount relates to (at 30 June) as repor"
+        "ted in the Main Estimates."
+    ),
+    36: (
+        'Amount Type: "Actuals" - as audited for prior Years, "Estimated Ac'
+        'tual" - for the Year immediately prior to the current Main Estimat'
+        'es, "Main Estimates" - for the Main Estimates Year.'
+    ),
+    40: (
+        "App ID: Number used to uniquely identify each Crown revenue or cap"
+        "ital receipt line."
+    ),
+}
+
+_PERIOD_TYPES_2015 = (
+    (2011, "Actuals"),
+    (2012, "Actuals"),
+    (2013, "Actuals"),
+    (2014, "Actuals"),
+    (2015, "Estimated Actual"),
+    (2016, "Main Estimates"),
+)
+
+PROFILES_2015 = {
+    "expenditure": replace(
+        PROFILES_2016["expenditure"],
+        source_sha256="4dbabc88f1e0756e0f651ef261b3408b262a10f0b1cdb51977844c97841b9325",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2015-05/b15-expenditure-data.xls",
+        max_rows=5977,
+        edition=2015,
+        fields=PROFILES_2016["expenditure"].fields[:15],
+        numeric_columns=PROFILES_2016["expenditure"].numeric_columns[:4],
+        absent_fields=_ABSENT_EXPENDITURE_FIELDS_2015,
+        period_types=_PERIOD_TYPES_2015,
+        definitions=tuple(_EXPENDITURE_DEFINITIONS_2015.items()),
+        definition_links=(
+            ("periodicity", 38),
+            ("unit", 39),
+            ("valid_time_end", 40),
+            ("amount_type", 41),
+            ("app_id", 46),
+            ("parent_id", 47),
+            ("group_type", 48),
+            ("functional_classification", 49),
+            ("source_vintage", 3),
+            ("amount_type", 3),
+        ),
+    ),
+    "revenue": replace(
+        PROFILES_2016["revenue"],
+        source_sha256="481b971d4569cbadbf48440fa1d66f82d8d42942fd855e95e5bfd1ea95e70171",
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2015-05/b15-revenue-data.xls",
+        max_rows=1006,
+        edition=2015,
+        period_types=_PERIOD_TYPES_2015,
+        definitions=tuple(_REVENUE_DEFINITIONS_2015.items()),
+        definition_links=(
+            ("unit", 34),
+            ("valid_time_end", 35),
+            ("amount_type", 36),
+            ("app_id", 40),
+            ("source_vintage", 4),
+            ("amount_type", 4),
+        ),
+    ),
+}
+
+
 def declared_profiles() -> tuple[BiffBudgetProfile, ...]:
-    """Expose only the eight independently pinned source-edition profiles."""
+    """Expose only the ten independently pinned source-edition profiles."""
     return (
         *PROFILES.values(),
         *PROFILES_2018.values(),
         *PROFILES_2017.values(),
         *PROFILES_2016.values(),
+        *PROFILES_2015.values(),
     )
 
 
@@ -472,6 +606,7 @@ def _selected_reason(values: dict[str, Any], profile: BiffBudgetProfile) -> str 
             any(
                 type(values[field]) is not str or not values[field].strip()
                 for field in required
+                if field not in profile.absent_fields
             ),
             "missing_label",
         ),
@@ -568,6 +703,7 @@ def _fact(
     )
     return {
         **context,
+        **dict.fromkeys(profile.absent_fields),
         **values,
         "record_id": record_id,
         "schema_version": f"archive-govt-nz.health-budget-biff8-{profile.kind}-fact/v1",
@@ -587,6 +723,7 @@ def _fact(
             "period_start_not_asserted",
             "no_parent_category_aggregation",
             "source_classification_unmapped",
+            *("source_field_absent_" + field for field in profile.absent_fields),
         ],
         "transformation_id": profile.transformation,
         "lineage_id": identity(record_id, "lineage"),
@@ -653,7 +790,17 @@ def parse_snapshot(
     _require(
         profile.kind in {"expenditure", "revenue"}
         and type(profile.edition) is int
-        and profile.edition in {2016, 2017, 2018, 2019}
+        and profile.edition in {2015, 2016, 2017, 2018, 2019}
+    )
+    _require(
+        profile.absent_fields
+        == (
+            _ABSENT_EXPENDITURE_FIELDS_2015
+            if profile.kind == "expenditure"
+            and profile.edition == PROFILES_2015["expenditure"].edition
+            else ()
+        )
+        and not set(profile.absent_fields) & {field for _, field in profile.fields}
     )
     context = source_context(
         profile.source_sha256,

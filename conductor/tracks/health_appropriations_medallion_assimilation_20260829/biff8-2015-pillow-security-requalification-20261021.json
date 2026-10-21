@@ -1,0 +1,48 @@
+{
+  "certifi": "2026.10.19",
+  "inventory_sha256": "19d0728fc0e2335b07895dd1084da06d51507ef02f92b6608b167f7200c9d021",
+  "native_files": 1255,
+  "pillow": "13.0.0",
+  "png_files_compared": 34,
+  "postflight": {
+    "exit": 0,
+    "head": "de27e15de06113780ee2edf31ee74e9c60cdfa8d",
+    "independent_lease_free": true,
+    "owner_and_group_absent": true,
+    "pins_unchanged": 7370,
+    "status": "verified",
+    "tree": "5a8eb0b9463b834ec22f2a09a6e64565d184f533"
+  },
+  "prior_2015_inputs_and_gold_byte_identical": true,
+  "prior_native_runs_retained_and_pinned": [
+    1,
+    2,
+    3
+  ],
+  "publication_performed": false,
+  "source_values_replaced": false,
+  "status": "verified",
+  "summary": {
+    "all10_queries_verified": true,
+    "canonical_packages": 15,
+    "composite_metadata_verified": true,
+    "fresh_input_builds": 2,
+    "gold_files": 61,
+    "head": "de27e15de06113780ee2edf31ee74e9c60cdfa8d",
+    "input_files": 137,
+    "legacy_gold11_61_files_identical": true,
+    "legacy_gold13_61_files_identical": true,
+    "legacy_gold9_61_files_identical": true,
+    "legacy_gold_60_files_identical": true,
+    "legacy_v1_47_files_identical": true,
+    "legacy_v2_65_files_identical": true,
+    "legacy_v3_83_files_identical": true,
+    "legacy_v4_101_files_identical": true,
+    "legacy_v5_119_files_identical": true,
+    "publication": "not_performed",
+    "repeat_identical": true,
+    "retained_derivatives_consumed": false,
+    "rights": "not_evaluated",
+    "tree": "5a8eb0b9463b834ec22f2a09a6e64565d184f533"
+  }
+}

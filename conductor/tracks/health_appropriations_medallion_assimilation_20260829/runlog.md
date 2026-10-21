@@ -9207,3 +9207,127 @@ unchanged, including all Gold, queries and metadata. Actual complete receipts
 passv5; all single missing source/profile bindings are refused.78 focused
 tests pass;5360 frozen pins unchanged and
 owner/group absence/free lease verified. No output or original was replaced.
+
+### Resume after protected delivery738: Budget2015
+
+Fresh GitHub/readback and fetched main verify738 merged as5ad4f654, identical
+checked/merge tree, all seven checks and32 stages on each platform, zero unique
+topic changes and clean pruning.46-file delivery proof and private mirror
+verified; whole track remains incomplete. Root retains serialized native/broad
+launch ownership. Next2015 pair reuses the census; expenditure has15 columns
+and no minister/portfolio source dimensions. Source-only numeric and complete
+definition preflight precedes implementation; all policy holds remain.
+
+Both source-only preflight repeats agree:315 expenditure facts/1,260 witnesses
+and66 revenue facts/198 witnesses; all5,977/1,006 source rows accounted for, no
+rejection/period mismatch. All4,864 frozen pins unchanged and native owner/group
+absent/free lease verified. Exact2015 profiles bind independent definition
+coordinates. Fifteen-column expenditure uses null minister/portfolio values,
+explicit absent-field flags and no invented lineage/source JSON fields; later
+profiles retain their mandatory labels. Seven missing-profile red failures
+preceded implementation; expanding Gold to five editions also required fixture
+counts of ten inputs. Final focused639 pass/ten skips; strict typing and70
+schemas/60 representatives pass. Existing limits and policy holds unchanged.
+Root now freezes source/native qualification with all40 previous source files
+pinned to qualified receipts and actual16 console/initialized MCP preflights.
+
+Source/native qualification passed onbc1f7eb6: expenditure315 facts/7,875
+links/5,977 dispositions/1,260 witnesses; revenue66/924/1,006/198. Standalone
+and operation outputs repeat all20 files; native all-four-table/metadata parity
+and all16 actual console/initialized MCP preflights pass. All40 prior source
+files equal qualified receipts. All4,911 frozen pins unchanged; native terminal
+success, owner/group absence and independent free lease verified. Exact local
+inspection token2026-10-20T19:42:27.758345+00:00 is replayed in recovery, without
+a new capture claim.
+
+Recovery red established unsupported2015/missingv6 before implementation
+(three failures/fourteen existing passes). Added distinctv6 schema, fifteen
+required bindings and all ten BIFF8 keys; retainedv5 completeness checks and
+strengthened partial-cohort regressions to use all five fictional baseline
+sources, so incomplete editions cannot fail merely for missing baseline count.
+Fictionalv6 fixture generated from synthetic sources; no native evidence claim.
+Seventeen recovery tests,54 integrated source/canonical/recovery checks, Ruff,
+strict typing and71 schemas/61 representative documents pass. Root now freezes
+full twenty-stage native recovery: two fresh fifteen-source builds, original
+v1–v5 and Gold byte comparisons, all ten typed queries and complete metadata.
+
+Automatic bounded review found two compatibility/completeness defects: the new optional source-absence field shifts two existing positional constructor arguments, and a v6 baseline key can be substituted while preserving total count. Retain successful full native output proof; establish both red contracts, append the new field after prior arguments, require all fifteen named keys, and qualify fresh original recovery against unchanged Gold/query/metadata artifacts. Earlier schemas stay unchanged.
+
+Full native qualification on33409aea passed all twenty stages:137 repeated
+input files,61 Gold files, all prior47/65/83/101/119 input and60/61/61/61 Gold
+byte contracts, all ten typed queries (1,045 bounded results/2,702 facts), all
+2,761 inputs accounted for and8,551 witnesses. Full metadata repeats at three
+packages/15 recordsets/3,086 rows. Manifest1,177,141 bytes and complete verified
+drillthrough7,523,968 bytes remain under unchanged bounds. Six actual native
+schemas resolve independently and refuse every cross-version receipt.
+All5,549 frozen pins unchanged; terminal success, actual owner/group absence
+and free independent lease verified. Retained1,255 native proof files.
+A summary exporter used a nonuniform Gold product field; corrected its count
+projection to the common quality report, preserving the bounded failure and
+all product bytes. This was not a native stage failure.
+
+Two review regressions reproduced constructor positional drift and a substituted
+v6 baseline name (two failures/ten passes). Moved the new optional argument to
+the end and required all fifteen named bindings; all54 integrated checks, Ruff,
+strict typing and71 schemas/61 fixtures pass. Root now freezes a bounded
+post-review replay:83 focused checks and two fresh fifteen-source recoveries
+against every previously qualified input byte; validate each actual missing
+and substituted source/profile binding and retain all earlier native artifacts.
+
+Post-review native replay passed oncf544476:83 focused tests and two fresh
+fifteen-source recoveries repeat137 files and equal the qualified inputs.
+All1,255 original native proof files unchanged; actual final schemas1–6
+resolve independently and cross-refuse. Every missing/substituted binding
+fails strictv6 on both real receipts. All6805 frozen pins unchanged,
+owner/group absent and independent lease free. Both bounded findings closed;
+root next freezes original validation on the final documentation/code tree.
+
+Original harness1 on2cb5bca2 passed8,207 tests/14 skips/18 warnings, schemas,
+parity, all mutations and performance gates, then failed the unchanged audit
+oncertifi2026.7.22. Primary advisoryGHSA-6q48-6c7w-9gw2 was published
+2026-10-20T19:35:05Z; GitHub and PyPI confirm fixed2026.10.19. Preserved the
+full audit receipt, bounded failure and log; all4,865 pins unchanged, actual
+owner/group absent and independent lease free. Licences/secrets/SBOM were not
+run by that failed harness and are not claimed. Plan a single-package compatible
+lock update, no audit ignore/waiver or TLS weakening, then fresh original
+recovery and full final-tree assurance. No source or product fix is needed.
+
+Targeted `uv lock --upgrade-package certifi==2026.10.19` changed onlycertifi
+among116 packages; no other dependency or requirement changed. Locked sync
+installed2026.10.19. The unchanged OSV audit now reports no known
+vulnerabilities. Preserve old/fixed audit receipts, lock snapshots and
+primary advisory evidence. TLS verification remains enabled with no bypass or
+audit exception. Root freezes fresh original recovery on the updated runtime,
+pinning certifi module/core/bundle bytes plus all1,255 full native and277
+review-replay files; full final-tree original validation must follow.
+
+Patched-runtime native replay3 passed onff6c8ec2:83 focused tests and both
+fresh15-source recoveries repeat137 files exactly against the qualified
+inputs. All1,255 original native and277 prior-replay files unchanged. All
+7088 frozen pins, including certifi module/core/CA bundle, unchanged;
+actual owner/group absent and independent free lease verified. Public security
+receipt records the fixed runtime/hash and no output-byte change. Root now
+freezes original harness2 on the final lock/code/documentation tree.
+
+PR739 opened only after original harness2 passed all32 stages on5ec23a70
+(8,207 tests). Current-head cloud review reports no findings; dependency
+review/CodeQL/lint pass. Ubuntu/macOS pass all32 stages. Windows job118875311512
+passed8185 tests/36 skips/18 warnings and all mutations/performance, then
+failed at audit: nine known vulnerabilities in one package. Existing logs
+print only counts; the workflow does not retain that platform's audit JSON.
+Preserved complete failed log/run; the synthetic merge tree equals the checked
+tree, ruling out base divergence. Add bounded early Windows diagnostics and
+per-platform receipt retention to identify the actual package before fixing
+or rerunning blindly. The mandatory original audit and all policy gates stay.
+
+Early diagnostic artifact12297284578 fromrun39498045086 identifies the actual
+package: Pillow12.3.0, nine advisories, fixed13.0.0. Preserved raw receipt/zip
+and hashes. Direct OSV queries ruled out the two Windows-only candidate packages;
+this is a genuine image-library dependency finding. Primary Pillow13 release
+notes and GitHub advisory confirm the fixed release. No interpreter/path or
+source-parser change is inferred. Plan targeted transitive Pillow upgrade,
+remove temporary duplicate audit and keep permanent all-platform receipt
+retention. Full native20-stage recovery must requalify all34 PNGs and every
+prior input/Gold byte contract; no visual or source value replacement allowed.
+
+Pillow13 full native requalification completed on de27e15d: all20 stages, two fresh15-source builds,137 input files and61 Gold files byte-identical to prior qualified2015 products, including34 PNGs. All legacy cohorts, ten queries, analytical and composite metadata passed. Postflight:7370 pins unchanged, terminal0, owner/group absent and independent lease free. All three hosted assurance platforms passed on this implementation head. Retained original/failed/replay evidence unchanged. Final documentation tree now requires original harness validation before protected merge.

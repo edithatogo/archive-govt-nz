@@ -50,6 +50,13 @@ jobs:
           uv run --locked python tools/check.py \
             --pytest-workers "$pytest_workers" \
             --pytest-distribution loadscope
+      - name: Preserve dependency audit receipt
+        if: always() && hashFiles('build/pip-audit.json') != ''
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: dependency-audit-${{ matrix.os }}-${{ github.sha }}
+          path: build/pip-audit.json
+          if-no-files-found: error
       - name: Export Cobertura coverage
         if: matrix.os == 'ubuntu-latest' && always()
         run: uv run --locked coverage xml -o coverage.xml

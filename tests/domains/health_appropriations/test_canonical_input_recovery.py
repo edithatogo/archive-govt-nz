@@ -262,6 +262,22 @@ def _biff_sources(
     )
 
 
+def _name_v6_fixture_baselines(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Use the v6 baseline roles with explicitly fictional source bytes."""
+    keys = {
+        "historical-2001": "historical-2024",
+        "historical-2002": "historical-2025",
+        "budget-2001": "budget-2025",
+        "budget-2002": "budget-2026",
+        "revenue-2001": "revenue-2026",
+    }
+    monkeypatch.setattr(
+        recovery,
+        "SOURCES",
+        tuple(replace(spec, key=keys[spec.key]) for spec in recovery.SOURCES),
+    )
+
+
 def test_explicit_biff_recovery_repeats_from_bronze_with_complete_witnesses(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, sources: tuple[Path, list[str]]
 ) -> None:
@@ -328,7 +344,7 @@ def test_missing_last_biff_original_fails_before_any_derivative(
     assert calls == []
 
 
-@pytest.mark.parametrize("earliest", [2016, 2017, 2018])
+@pytest.mark.parametrize("earliest", [2015, 2016, 2017, 2018])
 def test_explicit_expanded_recovery_keeps_prior_cohorts(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
@@ -336,7 +352,7 @@ def test_explicit_expanded_recovery_keeps_prior_cohorts(
     earliest: int,
 ) -> None:
     cas, _ = sources
-    if earliest == 2016:
+    if earliest in (2015, 2016):
         monkeypatch.setattr(
             recovery,
             "SOURCES",
@@ -348,10 +364,12 @@ def test_explicit_expanded_recovery_keeps_prior_cohorts(
                 ),
             ),
         )
+    if earliest == 2015:
+        _name_v6_fixture_baselines(monkeypatch)
     editions = tuple(range(earliest, 2020))
     for edition in editions:
         _biff_sources(cas, monkeypatch, edition=edition)
-    version = {2016: 5, 2017: 4, 2018: 3}[earliest]
+    version = {2015: 6, 2016: 5, 2017: 4, 2018: 3}[earliest]
     first = recovery.rebuild_canonical_inputs(
         cas, tmp_path / "first", include_biff8=True, biff8_editions=editions
     )
@@ -386,14 +404,14 @@ def test_explicit_expanded_recovery_keeps_prior_cohorts(
             assert tables["numeric_evidence"].num_rows > 0
     with pytest.raises(ValueError, match="canonical_input_recovery_contract"):
         recovery.rebuild_canonical_inputs(
-            cas, tmp_path / "unsupported", include_biff8=True, biff8_editions=(2015,)
+            cas, tmp_path / "unsupported", include_biff8=True, biff8_editions=(2014,)
         )
     assert not (tmp_path / "unsupported").exists()
 
 
 def test_expanded_recovery_versions_resolve_independently() -> None:
     root = Path(__file__).parents[3]
-    versions = tuple(range(1, 6))
+    versions = tuple(range(1, 7))
     schemas = {
         version: json.loads(
             (
@@ -426,28 +444,57 @@ def test_expanded_recovery_versions_resolve_independently() -> None:
                     validator.validate(fixtures[other])
 
 
-def test_partial_2016_cohort_fails_before_source_reads_or_output(
-    tmp_path: Path, sources: tuple[Path, list[str]]
+@pytest.mark.parametrize("earliest", [2015, 2016])
+def test_partial_new_cohort_fails_before_source_reads_or_output(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    sources: tuple[Path, list[str]],
+    earliest: int,
 ) -> None:
     cas, calls = sources
-    for count in range(4):
-        for later in combinations((2017, 2018, 2019), count):
+    baseline = recovery.SOURCES
+    monkeypatch.setattr(
+        recovery,
+        "SOURCES",
+        (*baseline, *(replace(spec, key=spec.kind + "-2002") for spec in baseline[:2])),
+    )
+    if earliest == 2015:
+        _name_v6_fixture_baselines(monkeypatch)
+    later_editions = tuple(range(earliest + 1, 2020))
+    for count in range(len(later_editions)):
+        for later in combinations(later_editions, count):
             output = tmp_path / ("partial-" + "-".join(map(str, later)))
             with pytest.raises(ValueError, match="canonical_input_recovery_contract"):
                 recovery.rebuild_canonical_inputs(
-                    cas, output, include_biff8=True, biff8_editions=(2016, *later)
+                    cas, output, include_biff8=True, biff8_editions=(earliest, *later)
                 )
             assert not output.exists()
+    monkeypatch.setattr(recovery, "SOURCES", baseline)
+    with pytest.raises(ValueError, match="canonical_input_recovery_contract"):
+        recovery.rebuild_canonical_inputs(
+            cas,
+            tmp_path / "incomplete-baseline",
+            include_biff8=True,
+            biff8_editions=(earliest, *later_editions),
+        )
+    assert not (tmp_path / "incomplete-baseline").exists()
     assert calls == []
 
 
-def test_v5_schema_refuses_incomplete_source_and_profile_bindings() -> None:
+@pytest.mark.parametrize("version", [5, 6])
+def test_new_schema_refuses_incomplete_source_and_profile_bindings(
+    version: int,
+) -> None:
     root = Path(__file__).parents[3]
     schema = json.loads(
-        (root / "schemas/health-canonical-input-recovery-v5.schema.json").read_bytes()
+        (
+            root / f"schemas/health-canonical-input-recovery-v{version}.schema.json"
+        ).read_bytes()
     )
     fixture = json.loads(
-        (root / "tests/fixtures/health-canonical-input-recovery-v5.json").read_bytes()
+        (
+            root / f"tests/fixtures/health-canonical-input-recovery-v{version}.json"
+        ).read_bytes()
     )
     validator = Draft202012Validator(schema)
     validator.validate(fixture)
@@ -457,8 +504,8 @@ def test_v5_schema_refuses_incomplete_source_and_profile_bindings() -> None:
             del missing[name][key]
             with pytest.raises(ValidationError):
                 validator.validate(missing)
-            if key.startswith("biff"):
+            if key.startswith("biff") or version == 6:
                 substituted = json.loads(json.dumps(fixture))
-                substituted[name]["biffbudget-2015"] = substituted[name].pop(key)
+                substituted[name]["biffbudget-2014"] = substituted[name].pop(key)
                 with pytest.raises(ValidationError):
                     validator.validate(substituted)

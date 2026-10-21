@@ -45,8 +45,10 @@ BIFF8_VERSION = "archive-govt-nz.health-canonical-input-recovery/v2"
 BIFF8_2018_VERSION = "archive-govt-nz.health-canonical-input-recovery/v3"
 BIFF8_2017_VERSION = "archive-govt-nz.health-canonical-input-recovery/v4"
 BIFF8_2016_VERSION = "archive-govt-nz.health-canonical-input-recovery/v5"
-ALL_BIFF8_EDITIONS = (2016, 2017, 2018, 2019)
-MAX_EXPANDED_SOURCES = 13
+BIFF8_2015_VERSION = "archive-govt-nz.health-canonical-input-recovery/v6"
+ALL_BIFF8_EDITIONS = (2015, 2016, 2017, 2018, 2019)
+COMPLETE_COHORT_STARTS = (2015, 2016)
+MAX_EXPANDED_SOURCES = 15
 MAX_SOURCES = 5
 MAX_BIFF8_SOURCES = 7
 MAX_OUTPUT_FILES = 16
@@ -217,6 +219,29 @@ BIFF8_2016_SOURCES = (
 )
 
 
+# Exact qualified2015 local inspection tokens, not new capture attestations.
+BIFF8_2015_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2015",
+        "biff8_budget",
+        "4dbabc88f1e0756e0f651ef261b3408b262a10f0b1cdb51977844c97841b9325",
+        "https://www.treasury.govt.nz/sites/default/files/2015-05/b15-expenditure-data.xls",
+        "Budget-2015",
+        "2026-10-20T19:42:27.758345+00:00",
+        "sha256:cf8de2cd77bff170581a4b94a1afc1b3fe217853c4624563b280f4001fe112e4",
+    ),
+    SourceDefinition(
+        "biffrevenue-2015",
+        "biff8_revenue",
+        "481b971d4569cbadbf48440fa1d66f82d8d42942fd855e95e5bfd1ea95e70171",
+        "https://www.treasury.govt.nz/sites/default/files/2015-05/b15-revenue-data.xls",
+        "Budget-2015",
+        "2026-10-20T19:42:27.758345+00:00",
+        "sha256:083eb8e571b7b58919d655d7a78a883e9768ac589254a28cff9b91b3282dfaa7",
+    ),
+)
+
+
 def _require(condition: object) -> None:
     if not condition:
         message = "canonical_input_recovery_contract"
@@ -381,9 +406,11 @@ def _biff_definitions(editions: tuple[int, ...]) -> tuple[SourceDefinition, ...]
         and all(type(year) is int and year in ALL_BIFF8_EDITIONS for year in editions)
         and len(set(editions)) == len(editions)
     )
-    if ALL_BIFF8_EDITIONS[0] in editions:
+    earliest = min(editions)
+    if earliest in COMPLETE_COHORT_STARTS:
         _require(
-            set(editions) == set(ALL_BIFF8_EDITIONS) and len(SOURCES) == MAX_SOURCES
+            set(editions) == {year for year in ALL_BIFF8_EDITIONS if year >= earliest}
+            and len(SOURCES) == MAX_SOURCES
         )
     selected: tuple[SourceDefinition, ...] = ()
     for year, definitions in (
@@ -391,6 +418,7 @@ def _biff_definitions(editions: tuple[int, ...]) -> tuple[SourceDefinition, ...]
         (2018, BIFF8_2018_SOURCES),
         (2017, BIFF8_2017_SOURCES),
         (2016, BIFF8_2016_SOURCES),
+        (2015, BIFF8_2015_SOURCES),
     ):
         if year not in editions:
             continue
@@ -428,6 +456,7 @@ def rebuild_canonical_inputs(
     version = VERSION
     if include_biff8:
         version = {
+            2015: BIFF8_2015_VERSION,
             2016: BIFF8_2016_VERSION,
             2017: BIFF8_2017_VERSION,
             2018: BIFF8_2018_VERSION,
