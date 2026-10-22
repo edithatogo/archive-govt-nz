@@ -1,0 +1,90 @@
+{
+  "failure_evidence": [
+    {
+      "run": "full-harness-1",
+      "passed": 8288,
+      "failed": 3,
+      "skipped": 14
+    },
+    {
+      "run": "full-harness-2",
+      "passed": 8290,
+      "failed": 1,
+      "skipped": 14
+    }
+  ],
+  "findings": [
+    {
+      "cause": "explicit base UV_PYTHON bypassed installed project for nested uv outside repository",
+      "resolution": "restore prior qualified local runtime; no repository change for this correction",
+      "proof": "same local fixture failed with override and passed without it"
+    },
+    {
+      "cause": "read_input_spec loaded Arrow and context metadata through eager tool schema construction before FIFO rejection",
+      "resolution": "defer Arrow/validator/MCP metadata imports; preserve public tool tuple and definitions",
+      "proof": {
+        "mcp_tool_definitions_byte_equivalent": true,
+        "tool_count": 3,
+        "tools_sha256": "a8b0c126fbfe8de8eb3030c27669423a621a57f21d8c675d3b9f0778e961e31b",
+        "cold_import_seconds": 0.10229991690721363,
+        "scientific_modules_absent": true,
+        "timeout_unchanged_seconds": 10
+      }
+    }
+  ],
+  "focused_tests": {
+    "passed": 40,
+    "seconds": 76.73,
+    "new_cases": 0,
+    "existing_cold_import_contract_strengthened": true,
+    "timeout_seconds_unchanged": 10
+  },
+  "functional_body_preservation": {
+    "unchanged_nonimport_function_bodies": [
+      "_expected",
+      "_observation",
+      "_inputs",
+      "_export",
+      "_verify",
+      "_query",
+      "_verified_products",
+      "read_input_spec",
+      "_tool",
+      "_mcp_result",
+      "write_workbook_outputs"
+    ],
+    "source_hashes": {
+      "src/archive_govt_nz/domains/health_appropriations/operation_context_gold.py": "1277a50c1cf18b30f764af8bcb230ba6cba90bfd49a33c1519209d12536b353e",
+      "src/archive_govt_nz/domains/health_appropriations/workbook_common.py": "26f65bc5138f0b392ef984b55364c1f6ff3a9b7fa7fb62dbc7dbd1e5102ed2f9"
+    },
+    "error_types": "same standard errors and ArrowException when operational work is requested"
+  },
+  "native_chart_control": {
+    "identical_control_files": 127,
+    "parent_files_unchanged": 64,
+    "point_count": 869,
+    "page_count": 124,
+    "manifest_sha256": "68a13ac485e0d411de1a11c41de4209c1b50371792eb86aa60aa42c2bbe63614",
+    "publication": "not_performed"
+  },
+  "bounds_coverage_tests": "unchanged",
+  "original_final_tree_validation": "pending new committed tree",
+  "publication": "not_performed",
+  "compatibility_followup": {
+    "third_full_run": "typing refused removed workbook_common.pq alias before tests; frozen inputs unchanged",
+    "resolution": "preserve original Parquet module through lazy attribute access and type-only alias",
+    "global_typing": "0 errors, 0 warnings, 0 notes",
+    "affected_existing_contracts": {
+      "passed": 13,
+      "deselected": 285,
+      "seconds": 12.87
+    },
+    "alias_and_cold_import": {
+      "writer_alias_is_original_module": true,
+      "scientific_modules_absent_from_cold_spec_import": true,
+      "cold_import_seconds": 0.0702815419062972,
+      "timeout_seconds_unchanged": 10
+    },
+    "timeouts_tests_bounds": "unchanged"
+  }
+}

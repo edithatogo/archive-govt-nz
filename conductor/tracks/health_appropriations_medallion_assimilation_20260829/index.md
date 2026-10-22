@@ -746,3 +746,6 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [Windows deadline red evidence](windows-assurance-timeout-20261022.json) and [bounded scheduling review](windows-scheduling-review-20261022.md): existing Windows-only worksteal trial preserves all tests/stages/limits; actual hosted qualification remains required.
 
 - [Windows failed trial and test-stage-only diagnostic evidence](windows-test-diagnostics-20261022.json): preserves deadline failures and reporting boundaries; actual Windows root-cause repair/qualification remains open.
+
+- [Readable canonical Gold plot derivative](./readable-canonical-plots.md)
+- [Readable canonical plot native evidence](./readable-canonical-plots-native-20261022.json)

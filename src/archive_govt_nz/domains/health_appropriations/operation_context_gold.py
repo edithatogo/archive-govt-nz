@@ -11,12 +11,10 @@ import hashlib
 import json
 import re
 from dataclasses import dataclass
+from functools import cache
 from itertools import islice
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
-
-import pyarrow as pa
-from jsonschema import Draft202012Validator
 
 from archive_govt_nz.domains.health_appropriations.operation_gold_output import (
     reserve_gold_directory,
@@ -29,6 +27,8 @@ from archive_govt_nz.domains.health_appropriations.workbook_common import (
 
 if TYPE_CHECKING:
     from collections.abc import Sequence
+
+    import pyarrow as pa
 
 _SCHEMA = "archive-govt-nz.health-operation-context-gold/v1"
 _ERROR = "operation_context_gold_invalid"
@@ -163,6 +163,8 @@ def _observation(
 
 
 def _expected(inputs: Sequence[OperationContextInput], source_root: Path) -> _Expected:
+    import pyarrow as pa  # noqa: PLC0415 - Only product generation constructs tables.
+
     from archive_govt_nz.domains.health_appropriations import (  # noqa: PLC0415 - Product dependencies stay outside input inspection.
         context_gold as native,
     )
@@ -429,7 +431,13 @@ def _verified_products(
     )
 
 
-_ERRORS = (OSError, ValueError, TypeError, KeyError, AttributeError, pa.ArrowException)
+_ERRORS = (OSError, ValueError, TypeError, KeyError, AttributeError)
+
+
+def _runtime_errors() -> tuple[type[Exception], ...]:
+    import pyarrow as pa  # noqa: PLC0415 - Spec inspection needs no scientific runtime.
+
+    return (*_ERRORS, pa.ArrowException)
 
 
 def read_verified_operation_context_gold(
@@ -444,7 +452,7 @@ def read_verified_operation_context_gold(
         return _verified_products(
             inputs, source_root, output_dir, manifest_sha256=manifest_sha256
         )
-    except _ERRORS:
+    except _runtime_errors():
         raise ValueError(_ERROR) from None
 
 
@@ -458,7 +466,7 @@ def export_operation_context_gold(
     """Preflight by default; explicit writes preserve interrupted output."""
     try:
         return _export(inputs, source_root, output_dir, write=write)
-    except _ERRORS:
+    except _runtime_errors():
         raise ValueError(_ERROR) from None
 
 
@@ -472,7 +480,7 @@ def verify_operation_context_gold(
     """Verify independent Gold/input pins against source-regenerated products."""
     try:
         return _verify(inputs, source_root, output_dir, manifest_sha256=manifest_sha256)
-    except _ERRORS:
+    except _runtime_errors():
         raise ValueError(_ERROR) from None
 
 
@@ -486,7 +494,7 @@ def query_operation_context_observations(
     """Read verified observations without reopening candidate Parquets."""
     try:
         return _query(inputs, source_root, output_dir, manifest_sha256=manifest_sha256)
-    except _ERRORS:
+    except _runtime_errors():
         raise ValueError(_ERROR) from None
 
 
@@ -637,14 +645,26 @@ def _tool(name: str, action: str) -> dict[str, Any]:
     }
 
 
-MCP_TOOLS = tuple(
-    _tool(name, action)
-    for name, action in (
-        (_PREFLIGHT, "preflight"),
-        (_VERIFY, "verify"),
-        (_QUERY, "query"),
+MCP_TOOLS: tuple[dict[str, Any], ...]
+
+
+@cache
+def _tools() -> tuple[dict[str, Any], ...]:
+    return tuple(
+        _tool(name, action)
+        for name, action in (
+            (_PREFLIGHT, "preflight"),
+            (_VERIFY, "verify"),
+            (_QUERY, "query"),
+        )
     )
-)
+
+
+def __getattr__(name: str) -> tuple[dict[str, Any], ...]:
+    """Retain the public tool tuple while deferring its table-schema imports."""
+    if name == "MCP_TOOLS":
+        return _tools()
+    raise AttributeError(name)
 
 
 def _mcp_result(
@@ -693,7 +713,11 @@ def _mcp_result(
 
 def mcp_call(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
     """Typed read-only preflight, source reconciliation or bounded observation query."""
-    definition = next(item for item in MCP_TOOLS if item["name"] == name)
+    from jsonschema import (  # noqa: PLC0415 - Spec inspection needs no validator.
+        Draft202012Validator,
+    )
+
+    definition = next(item for item in _tools() if item["name"] == name)
     Draft202012Validator(definition["inputSchema"]).validate(arguments)
     action = {_PREFLIGHT: "preflight", _VERIFY: "verify", _QUERY: "query"}[name]
     common = {"schema_version": _MCP_VERSION, "action": action, **_MCP_BOUNDARIES}

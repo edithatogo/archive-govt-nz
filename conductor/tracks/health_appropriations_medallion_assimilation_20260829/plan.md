@@ -2613,8 +2613,20 @@ Native Phase4 acceptance reconciliation passed: pinned donor tree/archive,23obje
 
 Phase4 reconciliation/security blocker delivered by PR747, protected merge3317bb4e; all8checks and original32stages locally/on3platforms pass. Issue210 closed, primary clean and exact topic refs pruned, native/evidence/runtime retained. See phase4-delivery-747-20261022.json. Earlier producer pending-state receipts remain unchanged; wider phases/track stay open.
 
-- [ ] Address observed clipped/overlapping canonical revenue chart labels with an additive versioned readable rendering contract, retaining v1 bytes, exact point/source mappings, deterministic repeat builds and bounded page/size limits. Validate actual complete-cohort plots visually; do not claim visual acceptance from numeric parity. [M-10, M-13; AC-08, AC-12]
+- [~] Address observed clipped/overlapping canonical revenue chart labels with an additive versioned readable rendering contract, retaining v1 bytes, exact point/source mappings, deterministic repeat builds and bounded page/size limits. Validate actual complete-cohort plots visually; do not claim visual acceptance from numeric parity. [M-10, M-13; AC-08, AC-12]
 
 - [~] Resolve the two terminal Windows900second pytest-stage timeouts on PR748 (both99percent, no assertion failures reported). Preserve both logs; qualify the existing worksteal option for Windows-only scheduling while keeping all tests, auto workers, coverage, all32 stages and original deadlines. Keep other platforms/local wrappers unchanged; validate exact final tree and require fresh green hosted checks before merge/prune. No third identical retry. [M-18, M-19; AC-16]
 
 - [~] Windows worksteal trial47b56c5d also reaches99percent and terminates124 at900s; keep the hypothesis unqualified. Add opt-in reporting only to the test-stage command (verbose named/worker/count progress, durations and JUnit), preserve a partial-run stdout trail and available report artifact, then locate/fix the actual slow contract. Keep all tests, workers, gates and deadlines unchanged; no unchanged rerun. [M-18, M-19; AC-16]
+
+Readable canonical chart implementation is in progress; see
+`readable-canonical-plots.md`. PR748 is merged on origin/main at933a120;
+its native worktree archive remains queued and its local branch is retained.
+Conductor advised preserving that checkout while continuing in a separate owned
+worktree. This does not mark chart visual acceptance or track completion.
+
+- [x] Fix the full-harness cold-start input-spec boundary without widening the
+  ten-second FIFO guard: scientific/table-schema imports are deferred, forty
+  existing contracts pass, MCP definitions and native chart bytes match their
+  controls. Final full validation and protected delivery remain pending. See
+  `readable-plot-input-inspection-review-fix-20261022.json`.
