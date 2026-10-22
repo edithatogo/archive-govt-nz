@@ -69,5 +69,22 @@
   },
   "bounds_coverage_tests": "unchanged",
   "original_final_tree_validation": "pending new committed tree",
-  "publication": "not_performed"
+  "publication": "not_performed",
+  "compatibility_followup": {
+    "third_full_run": "typing refused removed workbook_common.pq alias before tests; frozen inputs unchanged",
+    "resolution": "preserve original Parquet module through lazy attribute access and type-only alias",
+    "global_typing": "0 errors, 0 warnings, 0 notes",
+    "affected_existing_contracts": {
+      "passed": 13,
+      "deselected": 285,
+      "seconds": 12.87
+    },
+    "alias_and_cold_import": {
+      "writer_alias_is_original_module": true,
+      "scientific_modules_absent_from_cold_spec_import": true,
+      "cold_import_seconds": 0.0702815419062972,
+      "timeout_seconds_unchanged": 10
+    },
+    "timeouts_tests_bounds": "unchanged"
+  }
 }

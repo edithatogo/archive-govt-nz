@@ -37,3 +37,11 @@ contracts pass, all three MCP definitions remain identical, eleven functional
 bodies preserve their non-import ASTs, and the rebuilt native chart package is
 byte-identical to the visually reviewed control. Timeouts, source bounds and the
 80 percent floor remain unchanged. The final exact-tree harness is pending.
+
+
+The subsequent typing gate identified the existing `workbook_common.pq`
+failure-injection alias. It is now retained lazily. Repository-wide typing has
+zero errors/warnings/notes; thirteen affected existing partial-write, disk-error
+and cold-input cases pass. A fresh spec import loads no scientific modules and
+completes in about 0.07 seconds. The ten-second guard is unchanged. Final full
+validation remains pending on the new checked tree.

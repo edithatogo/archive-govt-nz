@@ -13,10 +13,20 @@ from typing import TYPE_CHECKING, Any
 
 if TYPE_CHECKING:
     from pathlib import Path
+    from types import ModuleType
 
     import pyarrow as pa
 
 _MAX_YEAR = 9999
+
+
+def __getattr__(name: str) -> ModuleType:
+    """Keep the Parquet alias available without loading it for JSON inspection."""
+    if name == "pq":
+        import pyarrow.parquet as pq  # noqa: PLC0415 - Preserve lazy compatibility.
+
+        return pq
+    raise AttributeError(name)
 
 
 def identity(*parts: object) -> str:
