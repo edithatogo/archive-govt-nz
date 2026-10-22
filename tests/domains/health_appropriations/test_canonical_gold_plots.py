@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+from jsonschema import Draft202012Validator
 from tests.domains.health_appropriations.test_canonical_gold_queries import fact_package
 
 from archive_govt_nz.domains.health_appropriations import (
@@ -244,6 +245,18 @@ def test_readable_export_verifies_parent_and_exclusive_outputs(tmp_path: Path) -
         parent, pin, second_output, dry_run=False
     )
     assert first == second
+    validator = Draft202012Validator(readable_gold_plots.SCHEMA_DOCUMENT)
+    validator.validate(planned)
+    validator.validate(first)
+    assert not validator.is_valid({**first, "unexpected_field": True})
+    assert first["schema_sha256"] == first["outputs"]["plot-schema.json"]["sha256"]
+    validator.validate(json.loads((output / "plot-points.json").read_bytes()))
+    schema_path = (
+        Path(__file__).parents[3]
+        / "schemas"
+        / "health-readable-canonical-plots-v1.schema.json"
+    )
+    assert json.loads(schema_path.read_bytes()) == readable_gold_plots.SCHEMA_DOCUMENT
     assert {p.name: p.read_bytes() for p in output.iterdir()} == {
         p.name: p.read_bytes() for p in second_output.iterdir()
     }

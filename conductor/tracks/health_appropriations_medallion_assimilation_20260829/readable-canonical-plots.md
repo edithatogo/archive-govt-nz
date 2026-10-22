@@ -29,15 +29,19 @@ A partial failure is retained with a failure marker when possible. Windows uses
 the existing repeated-identity fallback under a trusted parent; it is not a
 hostile-filesystem transaction. The parent remains read-only.
 
-Current implementation evidence: three new contract tests cover exact negative
-and zero amounts, duplicate long captions, pagination, exclusions, limits,
-repeat builds, dry runs, exclusive persistence and tampered-parent refusal.
-All fourteen focused plot tests pass; lint and strict module typing pass.
-Native complete-cohort paired export passed in 114.81 seconds: 869 eligible
-observations, 124 pages and all 126 output files identical across both runs.
-All 64 parent files stayed unchanged. BIFF8 display exclusions are explicit.
-Production visual QA, manifest-schema review, original final-tree harness and
-protected delivery remain pending.
-The prior feasibility probe retained all 69 Budget 2025 revenue points over ten
-pages, repeated eleven files byte-for-byte and left all 64 parent files unchanged;
-it is layout evidence, not production acceptance.
+Current evidence: fourteen focused plot tests pass; lint and strict typing pass.
+The repository schema gate validates 81 schemas and 71 representative documents.
+The updated complete-cohort paired export passed in 86.84 seconds: 869 eligible
+observations, 124 pages and 127 identical output files, including the manifest,
+point sidecar and bound schema. All 64 parent files stayed unchanged.
+Independent comparison matches every typed source row and exact amount across
+all eight financial products. The 3,789 BIFF8 appropriation and 825 BIFF8 revenue
+rows remain explicitly excluded with complete IDs. All 124 production pages were
+visually reviewed in 31 contact sheets, with all ten Budget 2025 revenue pages
+and seven other family samples also inspected individually. No overlap or
+clipping was observed; every page passed the visible-text canvas checks.
+
+See `readable-canonical-plots-native-20261022.json` for content pins, product
+counts and limits. The earlier feasibility and native producer receipts remain
+historical evidence. Original final-tree validation, required hosted checks,
+protected merge and pruning remain pending; the wider track remains incomplete.

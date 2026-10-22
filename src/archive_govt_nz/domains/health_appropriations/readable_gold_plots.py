@@ -14,7 +14,11 @@ from io import BytesIO
 from typing import TYPE_CHECKING, Any, cast
 
 import matplotlib as mpl
+import PIL
 import pyarrow as pa
+from jsonschema import Draft202012Validator
+from jsonschema.exceptions import ValidationError
+from matplotlib.ft2font import __freetype_version__
 
 mpl.use("Agg")
 from matplotlib import pyplot as plt
@@ -74,6 +78,191 @@ _PRODUCTS = (
 )
 _ERROR = "readable_gold_plot_invalid"
 
+SCHEMA_DOCUMENT: dict[str, Any] = {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://archive-govt-nz.example/schemas/health-readable-canonical-plots-v1",
+    "title": "Additive readable canonical Gold plot package and point sidecar",
+    "oneOf": [{"$ref": "#/$defs/manifest"}, {"$ref": "#/$defs/sidecar"}],
+    "$defs": {
+        "point": {
+            "type": "object",
+            "additionalProperties": False,
+            "required": [
+                "ordinal",
+                "caption",
+                "amount",
+                "input_record_ids",
+                "source_row",
+            ],
+            "properties": {
+                "ordinal": {"type": "integer", "minimum": 1, "maximum": 500},
+                "caption": {"type": "string", "minLength": 1},
+                "amount": {
+                    "type": "string",
+                    "pattern": "^-?\\d+(\\.\\d+)?([eE][+-]?\\d+)?$",
+                },
+                "input_record_ids": {
+                    "type": "array",
+                    "items": {"type": "string", "minLength": 1},
+                    "minItems": 1,
+                },
+                "source_row": {"type": "object"},
+            },
+        },
+        "page": {
+            "type": "object",
+            "additionalProperties": False,
+            "required": ["path", "product", "context", "context_sha256", "points"],
+            "properties": {
+                "path": {
+                    "type": "string",
+                    "pattern": "^plot_[a-z_]+_[a-f0-9]{20}_\\d{3}\\.png$",
+                },
+                "product": {
+                    "enum": [
+                        "historical",
+                        "budget",
+                        "revenue",
+                        "pharmac",
+                        "moh",
+                        "crown_befu",
+                        "crown_hyefu",
+                        "fiscal_crown",
+                        "biff8_budget",
+                        "biff8_revenue",
+                    ]
+                },
+                "context": {"type": "object"},
+                "context_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+                "points": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 8,
+                    "items": {"$ref": "#/$defs/point"},
+                },
+            },
+        },
+        "omission": {
+            "type": "object",
+            "additionalProperties": False,
+            "required": ["product", "reason", "input_record_ids"],
+            "properties": {
+                "product": {
+                    "enum": [
+                        "historical",
+                        "budget",
+                        "revenue",
+                        "pharmac",
+                        "moh",
+                        "crown_befu",
+                        "crown_hyefu",
+                        "fiscal_crown",
+                        "biff8_budget",
+                        "biff8_revenue",
+                    ]
+                },
+                "reason": {
+                    "enum": ["group_limit", "point_limit", "biff8_display_excluded"]
+                },
+                "input_record_ids": {
+                    "type": "array",
+                    "items": {"type": "string", "minLength": 1},
+                },
+                "context": {"type": "object"},
+            },
+        },
+        "sidecar": {
+            "type": "object",
+            "additionalProperties": False,
+            "required": ["schema_version", "pages", "omissions"],
+            "properties": {
+                "schema_version": {
+                    "const": "archive-govt-nz.health-readable-canonical-plots/v1"
+                },
+                "pages": {
+                    "type": "array",
+                    "maxItems": 4000,
+                    "items": {"$ref": "#/$defs/page"},
+                },
+                "omissions": {"type": "array", "items": {"$ref": "#/$defs/omission"}},
+            },
+        },
+        "manifest": {
+            "type": "object",
+            "additionalProperties": False,
+            "required": [
+                "schema_version",
+                "status",
+                "point_count",
+                "page_count",
+                "omissions",
+                "geometry",
+                "numeric_conversion",
+                "rights",
+                "publication",
+                "parent_manifest_sha256",
+                "renderer",
+                "outputs",
+                "schema_sha256",
+            ],
+            "properties": {
+                "schema_version": {
+                    "const": "archive-govt-nz.health-readable-canonical-plots/v1"
+                },
+                "status": {"enum": ["planned", "complete", "complete_with_omissions"]},
+                "point_count": {"type": "integer", "minimum": 0, "maximum": 4000},
+                "page_count": {"type": "integer", "minimum": 0, "maximum": 4000},
+                "omissions": {"type": "array", "items": {"$ref": "#/$defs/omission"}},
+                "geometry": {"const": "all_visible_text_inside_canvas"},
+                "numeric_conversion": {"const": "float_for_display_only"},
+                "rights": {"const": "not_evaluated"},
+                "publication": {"const": "not_performed"},
+                "parent_manifest_sha256": {
+                    "type": "string",
+                    "pattern": "^[a-f0-9]{64}$",
+                },
+                "renderer": {
+                    "type": "object",
+                    "additionalProperties": False,
+                    "required": ["matplotlib", "pillow", "freetype", "backend"],
+                    "properties": {
+                        "matplotlib": {"type": "string", "minLength": 1},
+                        "pillow": {"type": "string", "minLength": 1},
+                        "freetype": {"type": "string", "minLength": 1},
+                        "backend": {"const": "Agg"},
+                    },
+                },
+                "outputs": {
+                    "type": "object",
+                    "minProperties": 1,
+                    "maxProperties": 4002,
+                    "required": ["plot-points.json", "plot-schema.json"],
+                    "propertyNames": {
+                        "pattern": (
+                            "^(plot-(points|schema)\\.json|plot_[a-z_]+_"
+                            "[a-f0-9]{20}_\\d{3}\\.png)$"
+                        )
+                    },
+                    "additionalProperties": {
+                        "type": "object",
+                        "additionalProperties": False,
+                        "required": ["sha256", "bytes"],
+                        "properties": {
+                            "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+                            "bytes": {
+                                "type": "integer",
+                                "minimum": 1,
+                                "maximum": 33554432,
+                            },
+                        },
+                    },
+                },
+                "schema_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+            },
+        },
+    },
+}
+
 
 def _require(condition: object) -> None:
     if not condition:
@@ -106,7 +295,9 @@ def _ids(row: dict[str, Any]) -> list[str]:
     return sorted(cast("list[str]", values))
 
 
-def _render(context: dict[str, Any], points: list[dict[str, Any]]) -> bytes:
+def _render(
+    context: dict[str, Any], points: list[dict[str, Any]], *, title: str
+) -> bytes:
     with mpl.rc_context(
         {"text.usetex": False, "text.parse_math": False, "font.family": "DejaVu Sans"}
     ):
@@ -129,7 +320,7 @@ def _render(context: dict[str, Any], points: list[dict[str, Any]]) -> bytes:
             axis.set_title(
                 textwrap.fill(
                     textwrap.shorten(
-                        str(context.get("source_vintage", "Source observations")),
+                        title,
                         width=110,
                     ),
                     width=65,
@@ -138,7 +329,7 @@ def _render(context: dict[str, Any], points: list[dict[str, Any]]) -> bytes:
             axis.set_xlabel(
                 textwrap.fill(
                     "Amount in literal source unit "
-                    + str(context.get("unit"))
+                    + str(context.get("unit") or "not stated; see sidecar")
                     + "; display only",
                     width=100,
                 )
@@ -239,7 +430,16 @@ def build_readable_plots(
                         }
                     )
                 name = f"plot_{kind}_{identity[:20]}_{start // PAGE_POINTS + 1:03d}.png"
-                payload = _render(context, points)
+                payload = _render(
+                    context,
+                    points,
+                    title=(
+                        f"{kind} | group {identity[:12]} | "
+                        f"page {start // PAGE_POINTS + 1}/"
+                        f"{(len(entries) + PAGE_POINTS - 1) // PAGE_POINTS} | "
+                        f"{context.get('source_vintage')}"
+                    ),
+                )
                 _require(
                     sum(map(len, files.values())) + len(payload) <= MAX_OUTPUT_BYTES
                 )
@@ -266,9 +466,12 @@ def build_readable_plots(
                     ),
                 }
             )
-    files["plot-points.json"] = _encoded(
+    sidecar = _json_value(
         {"schema_version": SCHEMA, "pages": pages, "omissions": omissions}
     )
+    Draft202012Validator(SCHEMA_DOCUMENT).validate(sidecar)
+    files["plot-points.json"] = _encoded(sidecar)
+    files["plot-schema.json"] = _encoded(SCHEMA_DOCUMENT)
     _require(sum(map(len, files.values())) <= MAX_OUTPUT_BYTES)
     return files, {
         "schema_version": SCHEMA,
@@ -278,6 +481,7 @@ def build_readable_plots(
         "omissions": omissions,
         "geometry": "all_visible_text_inside_canvas",
         "numeric_conversion": "float_for_display_only",
+        "schema_sha256": hashlib.sha256(files["plot-schema.json"]).hexdigest(),
         "rights": "not_evaluated",
         "publication": "not_performed",
     }
@@ -314,7 +518,12 @@ def export_readable_plots(
         receipt = {
             **report,
             "parent_manifest_sha256": pin,
-            "renderer": {"matplotlib": mpl.__version__, "backend": "Agg"},
+            "renderer": {
+                "matplotlib": mpl.__version__,
+                "pillow": PIL.__version__,
+                "freetype": __freetype_version__,
+                "backend": "Agg",
+            },
             "outputs": {
                 name: {
                     "sha256": hashlib.sha256(payload).hexdigest(),
@@ -323,6 +532,7 @@ def export_readable_plots(
                 for name, payload in sorted(files.items())
             },
         }
+        Draft202012Validator(SCHEMA_DOCUMENT).validate(_json_value(receipt))
         final = _encoded(receipt)
         _require(
             len(final) <= verifier.MAX_MANIFEST_BYTES
@@ -374,8 +584,15 @@ def export_readable_plots(
         finally:
             if directory.descriptor is not None:
                 os.close(directory.descriptor)
-        return receipt
-    except OSError, ValueError, TypeError, KeyError, OverflowError, pa.ArrowException:
+    except (
+        OSError,
+        ValueError,
+        TypeError,
+        KeyError,
+        OverflowError,
+        pa.ArrowException,
+        ValidationError,
+    ):
         raise ValueError(_ERROR) from None
     else:
         return receipt
