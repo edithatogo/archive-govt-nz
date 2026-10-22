@@ -45,3 +45,24 @@ See `readable-canonical-plots-native-20261022.json` for content pins, product
 counts and limits. The earlier feasibility and native producer receipts remain
 historical evidence. Original final-tree validation, required hosted checks,
 protected merge and pruning remain pending; the wider track remains incomplete.
+
+
+## Full-harness review fix
+
+The first full run exposed a nested `uv` interpreter override in the local
+launcher; restoring the qualified environment fixed that check. A second run
+retained one cold-start FIFO-refusal timeout. Input-spec inspection eagerly
+loaded Arrow, the JSON validator and Context Gold metadata solely to construct
+MCP schemas. These dependencies now load when product or MCP work is requested.
+The public three-tool tuple and its schemas remain byte-equivalent. Input
+inspection imports no plotting, Arrow or JSON Schema runtime, and a fresh
+process completes in about 0.10 seconds under the unchanged ten-second bound.
+
+All forty existing product, operation and workbook checks pass. The existing
+cold-import check now rejects scientific imports too; no extra test case was
+added. Eleven functional bodies retain their non-import ASTs, including numeric
+projection, JSON pin parsing and workbook persistence. A native export after
+the import fix matches all 127 previously qualified files exactly and leaves
+all 64 parent files unchanged. The two failed full runs remain preserved.
+See `readable-plot-input-inspection-review-fix-20261022.json`. Original full
+validation must pass on the final committed tree before opening the PR.

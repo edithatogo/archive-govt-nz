@@ -27,3 +27,13 @@ unchanged. No capture, rights, publication or collection state was mutated.
 No actionable implementation finding remains within this bounded slice.
 This is a solo local Conductor self-review, not a completed hosted/cloud review
 or proof of whole-track completion. Required protected delivery is still open.
+
+
+## Follow-up from original full validation
+
+The original harness found a cold-start input-inspection failure outside the
+renderer. The bounded import fix is recorded separately: forty focused existing
+contracts pass, all three MCP definitions remain identical, eleven functional
+bodies preserve their non-import ASTs, and the rebuilt native chart package is
+byte-identical to the visually reviewed control. Timeouts, source bounds and the
+80 percent floor remain unchanged. The final exact-tree harness is pending.

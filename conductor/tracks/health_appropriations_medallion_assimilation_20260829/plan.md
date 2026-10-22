@@ -2624,3 +2624,9 @@ Readable canonical chart implementation is in progress; see
 its native worktree archive remains queued and its local branch is retained.
 Conductor advised preserving that checkout while continuing in a separate owned
 worktree. This does not mark chart visual acceptance or track completion.
+
+- [x] Fix the full-harness cold-start input-spec boundary without widening the
+  ten-second FIFO guard: scientific/table-schema imports are deferred, forty
+  existing contracts pass, MCP definitions and native chart bytes match their
+  controls. Final full validation and protected delivery remain pending. See
+  `readable-plot-input-inspection-review-fix-20261022.json`.

@@ -11,8 +11,6 @@ from datetime import UTC, datetime
 from decimal import Decimal, InvalidOperation
 from typing import TYPE_CHECKING, Any
 
-import pyarrow.parquet as pq
-
 if TYPE_CHECKING:
     from pathlib import Path
 
@@ -123,6 +121,8 @@ def write_workbook_outputs(
     Partial directories are not resumable or valid without a complete manifest
     and matching hashes. No original, existing output or publication is changed.
     """
+    import pyarrow.parquet as pq  # noqa: PLC0415 - JSON inspection needs no Arrow runtime.
+
     if not outputs:
         raise ValueError("empty_outputs")
     if any(

@@ -152,8 +152,8 @@ import sys
 from pathlib import Path
 class NoPlotting(importlib.abc.MetaPathFinder):
     def find_spec(self, fullname, path=None, target=None):
-        if fullname == 'matplotlib' or fullname.startswith('matplotlib.'):
-            raise ModuleNotFoundError('plotting_not_part_of_input_inspection')
+        if fullname.split('.')[0] in {'matplotlib', 'pyarrow', 'jsonschema'}:
+            raise ModuleNotFoundError('scientific_runtime_not_part_of_input_inspection')
 sys.meta_path.insert(0, NoPlotting())
 from archive_govt_nz.domains.health_appropriations.operation_context_gold import read_input_spec
 items = read_input_spec(Path(sys.argv[1]))
