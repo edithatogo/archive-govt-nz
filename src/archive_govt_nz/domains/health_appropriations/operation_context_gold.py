@@ -716,6 +716,7 @@ def mcp_call(name: str, arguments: dict[str, Any]) -> dict[str, Any]:
     from jsonschema import (  # noqa: PLC0415 - Spec inspection needs no validator.
         Draft202012Validator,
     )
+
     definition = next(item for item in _tools() if item["name"] == name)
     Draft202012Validator(definition["inputSchema"]).validate(arguments)
     action = {_PREFLIGHT: "preflight", _VERIFY: "verify", _QUERY: "query"}[name]
