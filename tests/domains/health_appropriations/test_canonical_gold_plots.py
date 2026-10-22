@@ -2,12 +2,19 @@
 
 from __future__ import annotations
 
+import hashlib
+import json
 from decimal import Decimal
+from pathlib import Path
 from typing import Any
 
 import pytest
+from tests.domains.health_appropriations.test_canonical_gold_queries import fact_package
 
-from archive_govt_nz.domains.health_appropriations import canonical_gold_plots
+from archive_govt_nz.domains.health_appropriations import (
+    canonical_gold_plots,
+    readable_gold_plots,
+)
 
 
 def _context_row(
@@ -173,3 +180,82 @@ def test_context_plot_invalid_and_output_limit_contracts(
         monkeypatch.setattr(canonical_gold_plots, "MAX_OUTPUT_BYTES", limit)
     with pytest.raises(ValueError, match=r"^canonical_gold_plot_invalid$"):
         canonical_gold_plots.build_context_plots(rows)
+
+
+def test_readable_pages_keep_exact_rows_and_repeat() -> None:
+
+    rows = [
+        {
+            **_historical_row(),
+            "source_label": "Long repeated caption " * 20,
+            "input_record_id": f"record-{index}",
+            "amount": Decimal("-12.500") if index == 0 else Decimal("0.000"),
+        }
+        for index in range(9)
+    ]
+    tables = {"historical_observations.parquet": rows}
+    files, report = readable_gold_plots.build_readable_plots(tables)
+    assert (files, report) == readable_gold_plots.build_readable_plots(tables)
+    assert len([name for name in files if name.endswith(".png")]) == 2
+    points = [
+        point
+        for page in json.loads(files["plot-points.json"])["pages"]
+        for point in page["points"]
+    ]
+    assert {p["input_record_ids"][0]: p["source_row"]["amount"] for p in points} == {
+        r["input_record_id"]: str(r["amount"]) for r in rows
+    }
+    assert all(
+        p["source_row"]["source_label"] == rows[0]["source_label"] for p in points
+    )
+    assert report["geometry"] == "all_visible_text_inside_canvas"
+
+
+def test_readable_limits_and_biff8_exclusions(monkeypatch: pytest.MonkeyPatch) -> None:
+
+    monkeypatch.setattr(readable_gold_plots, "MAX_POINTS", 0)
+    files, report = readable_gold_plots.build_readable_plots(
+        {
+            "historical_observations.parquet": [_historical_row()],
+            "biff8_revenue.parquet": [{"record_id": "excluded", "amount": Decimal(-3)}],
+        }
+    )
+    assert not any(name.endswith(".png") for name in files)
+    assert {o["reason"] for o in report["omissions"]} == {
+        "point_limit",
+        "biff8_display_excluded",
+    }
+    assert report["status"] == "complete_with_omissions"
+
+
+def test_readable_export_verifies_parent_and_exclusive_outputs(tmp_path: Path) -> None:
+
+    parent, pin = fact_package(tmp_path)
+    before = {p.name: p.read_bytes() for p in parent.iterdir()}
+    output = tmp_path / "readable"
+    planned = readable_gold_plots.export_readable_plots(parent, pin, output)
+    assert planned["status"] == "planned"
+    assert not output.exists()
+    first = readable_gold_plots.export_readable_plots(
+        parent, pin, output, dry_run=False
+    )
+    second_output = tmp_path / "repeat"
+    second = readable_gold_plots.export_readable_plots(
+        parent, pin, second_output, dry_run=False
+    )
+    assert first == second
+    assert {p.name: p.read_bytes() for p in output.iterdir()} == {
+        p.name: p.read_bytes() for p in second_output.iterdir()
+    }
+    for name, entry in first["outputs"].items():
+        assert (
+            hashlib.sha256((output / name).read_bytes()).hexdigest() == entry["sha256"]
+        )
+    assert before == {p.name: p.read_bytes() for p in parent.iterdir()}
+    with pytest.raises(ValueError, match="readable_gold_plot_invalid"):
+        readable_gold_plots.export_readable_plots(parent, pin, output, dry_run=False)
+    (parent / "nominal_revenue.parquet").write_bytes(b"tampered")
+    bad = tmp_path / "bad"
+    with pytest.raises(ValueError, match="readable_gold_plot_invalid"):
+        readable_gold_plots.export_readable_plots(parent, pin, bad, dry_run=False)
+    assert not bad.exists()
