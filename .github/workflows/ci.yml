@@ -35,7 +35,7 @@ jobs:
       - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4 # v10.1.0
         with:
           enable-cache: true
-          version: "0.12.17"
+          version: "0.13.5"
       - name: Verify native Windows output pinning
         if: matrix.os == 'windows-latest'
         run: uv run --locked pytest tests/domains/health_appropriations/test_operation_gold_output.py -q --no-cov

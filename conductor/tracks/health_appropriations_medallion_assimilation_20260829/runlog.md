@@ -9500,3 +9500,17 @@ Gold slice remains limited to source-separated canonical fact query/readback
 and contextual June GDP serialization compatibility. Source/donor total
 reconciliation, broader report matrices, cross-source comparability and final
 Phase 6 completion remain open.
+
+2026-10-24 — PR #754 hosted setup and exact-tree rerun: the first hosted
+workflow-policy job failed before test collection because its pinned uv 0.12.17
+could not resolve Python 3.15.1. Updated the five explicit uv pins to 0.13.5;
+the six focused workflow policy tests pass. The first subsequent full run exposed
+a test-only MCP subprocess shutdown timeout (the server completed all protocol
+assertions but graceful EOF exit exceeded the five-second wait under full-suite
+load). The same cached failure-only selection passed; direct focused timing
+measured 6.87 seconds. Raised only that graceful shutdown bound to 15 seconds,
+retaining the return-code assertion. The complete required harness then passed:
+8,300 passed, 14 skipped, 18 warnings, 97.14% coverage; 81 schemas/71 documents,
+parity 9/9, all mutation gates, dependency audit, licence inventory, secret scan,
+and SBOM (115 components). Hosted checks for the amended exact head are pending.
+The Phase 6 source/donor reconciliation and wider report matrix remain open.
