@@ -43,7 +43,7 @@ def _package(root: Path) -> tuple[Path, str]:
             "accounting_basis",
             "period_token",
         ],
-        "completeness": "historical_budget_revenue_pharmac_moh_crown_product_rows",
+        "completeness": "historical_budget_revenue_biff8_budget_biff8_revenue_pharmac_moh_crown_product_rows",
         "difference_interpretation": "not_assessed",
         "other_product_revisions": "not_assessed",
         "cross_source_comparison": "not_performed",
@@ -159,6 +159,50 @@ def _package(root: Path) -> tuple[Path, str]:
         "ambiguous_series_period_count": 0,
         "candidates": [],
     }
+    for name, key_fields in (
+        (
+            "biff8_budget",
+            [
+                "period_token",
+                "measure",
+                "amount_type",
+                "unit",
+                "currency",
+                "price_basis",
+                "base_period",
+                "denominator_definition",
+                "source_label",
+                "vote",
+                "appropriation",
+                "department",
+                "portfolio",
+                "value_basis",
+            ],
+        ),
+        (
+            "biff8_revenue",
+            [
+                "period_token",
+                "measure",
+                "amount_type",
+                "unit",
+                "currency",
+                "price_basis",
+                "base_period",
+                "denominator_definition",
+                "source_label",
+                "vote",
+                "department",
+                "revenue_type",
+                "source_application_id",
+                "value_basis",
+            ],
+        ),
+    ):
+        revision_report["product_revisions"][name] = {
+            **revision_report["product_revisions"]["budget"],
+            "key_fields": key_fields,
+        }
     revision_payload = (
         json.dumps(revision_report, sort_keys=True, separators=(",", ":")) + "\n"
     ).encode()
@@ -359,7 +403,7 @@ def test_consumer_example_summarizes_only_verified_manifest_reports(
                 "changed_candidate_count": 0,
                 "ambiguous_series_period_count": 0,
             }
-            for product in ("pharmac", "moh", "crown")
+            for product in ("biff8_budget", "biff8_revenue", "pharmac", "moh", "crown")
         },
     }
     assert summary["cross_source_period_token_overlaps"] == {
@@ -371,6 +415,40 @@ def test_consumer_example_summarizes_only_verified_manifest_reports(
     assert summary["cross_source_comparison"] == "not_performed"
     assert summary["rights_state"] == "not_evaluated"
     assert summary["publication"] == "not_performed"
+
+
+def test_legacy_v2_gold_package_remains_verifiable(tmp_path: Path) -> None:
+    root, _pin = _package(tmp_path / "legacy-gold")
+    marker = root / "MANIFEST.json"
+    manifest = json.loads(marker.read_text(encoding="utf-8"))
+    report = manifest["revision_reconciliation_report"]
+    report["completeness"] = "historical_budget_revenue_pharmac_moh_crown_product_rows"
+    report["product_revisions"].pop("biff8_budget")
+    report["product_revisions"].pop("biff8_revenue")
+    payload = (
+        json.dumps(report, sort_keys=True, separators=(",", ":")) + "\n"
+    ).encode()
+    (root / "historical_revision_reconciliation.json").write_bytes(payload)
+    manifest["outputs"]["historical_revision_reconciliation.json"].update(
+        {"sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)}
+    )
+    marker.write_text(
+        json.dumps(manifest, sort_keys=True, separators=(",", ":")) + "\n",
+        encoding="utf-8",
+    )
+    pin = hashlib.sha256(marker.read_bytes()).hexdigest()
+
+    receipt = verify_canonical_gold_package(root, pin)
+    summary = summarize_verified_canonical_gold(root, pin)
+
+    assert receipt["status"] == "verified"
+    assert set(summary["product_revisions"]) == {
+        "budget",
+        "revenue",
+        "pharmac",
+        "moh",
+        "crown",
+    }
 
 
 def test_consumer_example_fails_closed_on_unverified_or_malformed_summary(
