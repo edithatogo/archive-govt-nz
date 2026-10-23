@@ -158,6 +158,69 @@ def test_revenue_input_total_report_pins_are_bound_to_manifest_provenance() -> N
 
 
 @pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("unit", ""),
+        ("input_record_count", 2),
+        ("canonical_input_total", "not-a-decimal"),
+        ("gold_output_total", "NaN"),
+        ("gold_output_total", "5"),
+    ],
+)
+def test_revenue_input_total_report_rejects_malformed_groups(
+    field: str, value: object
+) -> None:
+    report = _revenue_input_total_report()
+    report["groups"] = [dict(report["groups"][0])]
+    report["groups"][0][field] = value
+
+    assert not canonical_gold_verification._valid_revenue_input_total_reconciliation(  # noqa: SLF001
+        report
+    )
+
+
+def test_revenue_input_total_report_rejects_duplicate_and_unsorted_groups() -> None:
+    report = _revenue_input_total_report()
+    original = report["groups"][0]
+    later = {
+        **original,
+        "source_vintage": "Budget 2026",
+        "input_record_ids": ["record-2"],
+    }
+    report["groups"] = [original, later]
+    report["group_count"] = report["input_record_count"] = 2
+    assert canonical_gold_verification._valid_revenue_input_total_reconciliation(  # noqa: SLF001
+        report
+    )
+
+    assert not canonical_gold_verification._valid_revenue_input_total_reconciliation(  # noqa: SLF001
+        {**report, "groups": [later, original]}
+    )
+    assert not canonical_gold_verification._valid_revenue_input_total_reconciliation(  # noqa: SLF001
+        {
+            **report,
+            "groups": [original, {**later, "input_record_ids": ["record-1"]}],
+        }
+    )
+
+
+def test_revenue_input_total_report_rejects_invalid_summary_and_group_shapes() -> None:
+    assert not canonical_gold_verification._valid_revenue_input_total_reconciliation(  # noqa: SLF001
+        []
+    )
+    for report in (
+        {**_revenue_input_total_report(), "groups": []},
+        {**_revenue_input_total_report(), "group_count": 0},
+        {**_revenue_input_total_report(), "groups": [None]},
+    ):
+        assert (
+            not canonical_gold_verification._valid_revenue_input_total_reconciliation(  # noqa: SLF001
+                report
+            )
+        )
+
+
+@pytest.mark.parametrize(
     ("product_name", "report_name", "output_name", "report_factory"),
     [
         (
@@ -206,6 +269,24 @@ def test_input_total_controls_require_all_copies_or_none(
         tmp_path, manifest, missing_product_copy
     )
 
+    different_nested = {**report, "official_source_control": "reported"}
+    assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        tmp_path,
+        manifest,
+        {product_name: {"input_total_reconciliation": different_nested}},
+    )
+
+    output.write_text("not-json", encoding="utf-8")
+    assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        tmp_path, manifest, {product_name: product}
+    )
+    output.write_text(
+        json.dumps({**report, "input_record_count": 99}), encoding="utf-8"
+    )
+    assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        tmp_path, manifest, {product_name: product}
+    )
+
     output.unlink()
     assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
         tmp_path, manifest, {product_name: product}
@@ -215,6 +296,9 @@ def test_input_total_controls_require_all_copies_or_none(
     legacy_root.mkdir()
     assert canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
         legacy_root, {}, {product_name: {}}
+    )
+    assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        legacy_root, {}, []
     )
     (legacy_root / output_name).write_text("{}", encoding="utf-8")
     assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
