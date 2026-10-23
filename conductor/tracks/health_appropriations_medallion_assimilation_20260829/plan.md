@@ -1097,6 +1097,10 @@ integrated parent head.
   total/core Crown share, budget-versus-actual, revisions, classifications,
   department/portfolio and CPB views. [M-10, M-13, M-18; AC-08, AC-10,
   AC-11, AC-16]
+  Progress: 2026-10-23 — extending the exact named-query contract for the
+  BIFF8 Budget/revenue products so v3 stored-integer and numeric-evidence
+  witnesses survive Gold readback. The broader matrix and source-level
+  reconciliation remain incomplete.
   Progress: `test_fiscal_analytical_operations.py` now checks exact source IDs,
   Decimal strings, statuses and contextual labels for all four pinned fiscal
   Gold DuckDB tables. Its cross-product golden matrix reconciles nominal,
