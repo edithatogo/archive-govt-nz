@@ -1177,6 +1177,12 @@ integrated parent head.
     status evidence are excluded with reason codes, rights remain unevaluated,
     and no denominator or cross-series calculation is performed. See
     `context-gold-coverage-20260928.md`.
+  - [x] Reconcile the two admitted HAIR2024 MoH Silver profiles to the
+    published-indicator Gold table row-for-row, retaining record identity and
+    every field while refusing measure pooling and cross-source comparison.
+    This source-to-Gold control does not establish official-source recalculation,
+    donor parity, unit/denominator comparability, or redistribution rights. See
+    `canonical-moh-gold-reconciliation-20261024.md`.
 - [~] Build coverage, completeness, reconciliation, source-health,
   classification-drift and revision reports with defined thresholds. [M-13,
   S-04; AC-11]

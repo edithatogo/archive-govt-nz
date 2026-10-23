@@ -229,3 +229,36 @@ def project_moh_indicators(
         pa.ArrowException,
     ):
         raise ValueError(_ERROR) from None
+
+
+def read_verified_moh_tables(
+    packages: tuple[MohIndicatorInput, ...], source_cas_root: Path
+) -> tuple[pa.Table, pa.Table]:
+    """Reopen the pinned Bronze-bound MoH Silver facts for Gold reconciliation."""
+    _require(
+        isinstance(packages, tuple)
+        and len(packages) == len(PROFILES)
+        and {item.profile for item in packages} == set(PROFILES)
+        and not source_cas_root.is_symlink()
+        and source_cas_root.is_dir()
+    )
+    facts: list[dict[str, Any]] = []
+    lineage: list[dict[str, Any]] = []
+    try:
+        for item in sorted(packages, key=lambda value: value.profile):
+            profile_facts, profile_lineage, _ = _read_profile(item, source_cas_root)
+            facts.extend(profile_facts)
+            lineage.extend(profile_lineage)
+        return (
+            pa.Table.from_pylist(facts, schema=moh_indicators.FACT_SCHEMA),
+            pa.Table.from_pylist(lineage, schema=LINEAGE_SCHEMA),
+        )
+    except (
+        OSError,
+        ValueError,
+        TypeError,
+        KeyError,
+        AttributeError,
+        pa.ArrowException,
+    ):
+        raise ValueError(_ERROR) from None

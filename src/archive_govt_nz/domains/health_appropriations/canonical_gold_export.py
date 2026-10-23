@@ -19,6 +19,7 @@ from archive_govt_nz.domains.health_appropriations import (
     crown_expense_canonical_projection,
     fiscal_crown_canonical_projection,
     hyefu_crown_expense_canonical_projection,
+    moh_indicators,
     pharmac,
     pharmac_canonical_projection,
 )
@@ -43,6 +44,7 @@ from archive_govt_nz.domains.health_appropriations.local_provenance_reader impor
 from archive_govt_nz.domains.health_appropriations.moh_canonical_projection import (
     MohGoldInput,
     project_moh_indicators,
+    read_verified_moh_tables,
 )
 from archive_govt_nz.domains.health_appropriations.pharmac_canonical_projection import (
     project_pharmac_cpb,
@@ -639,6 +641,58 @@ def build_pharmac_input_total_reconciliation(
     }
 
 
+def build_moh_input_gold_reconciliation(
+    moh_input: MohGoldInput, source_facts: pa.Table, gold: pa.Table
+) -> dict[str, Any]:
+    """Prove row-for-row MoH Silver-to-Gold preservation without pooling measures."""
+    _require(
+        isinstance(moh_input, MohGoldInput)
+        and source_facts.schema.equals(moh_indicators.FACT_SCHEMA)
+        and gold.schema.equals(moh_indicators.FACT_SCHEMA)
+    )
+    source_rows = source_facts.to_pylist()
+    gold_rows = gold.to_pylist()
+    source = {row["record_id"]: row for row in source_rows}
+    _require(len(source) == len(source_rows) == len(gold_rows) and bool(source))
+    consumed: set[str] = set()
+    by_profile: dict[str, dict[str, Any]] = {}
+    for output in gold_rows:
+        record_id = output["record_id"]
+        _require(type(record_id) is str and record_id not in consumed)
+        original = source.get(record_id)
+        _require(original is not None and output == original)
+        profile = output["profile"]
+        group = by_profile.setdefault(
+            profile, {"profile": profile, "record_ids": [], "row_count": 0}
+        )
+        group["record_ids"].append(record_id)
+        group["row_count"] += 1
+        consumed.add(record_id)
+    _require(
+        consumed == set(source) and set(by_profile) == set(moh_indicators.PROFILES)
+    )
+    for group in by_profile.values():
+        group["record_ids"].sort()
+        group["status"] = "exact_row_match"
+    return {
+        "schema_version": "archive-govt-nz.health-moh-input-gold-reconciliation/v1",
+        "scope": "pinned_moh_silver_facts_to_gold_rows",
+        "source_package_marker_sha256": sorted(
+            item.manifest_sha256 for item in moh_input.packages
+        ),
+        "source_object_sha256": sorted(
+            item.source_sha256 for item in moh_input.packages
+        ),
+        "measure_pooling": "not_performed",
+        "period_alignment": "literal_source_token_only",
+        "cross_source_comparison": "not_performed",
+        "rights_state": "not_evaluated",
+        "row_count": len(source),
+        "status": "exact_source_rows_preserved",
+        "profiles": [by_profile[key] for key in sorted(by_profile)],
+    }
+
+
 def _add_legacy_lineage_companion(
     packages: tuple[CanonicalPackageInput, ...], tables: dict[str, pa.Table]
 ) -> None:
@@ -1198,6 +1252,15 @@ def _output_inventory(
     if "pharmac_input_total_reconciliation.json" in payloads:
         payload = payloads["pharmac_input_total_reconciliation.json"]
         outputs["pharmac_input_total_reconciliation.json"] = {
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "bytes": len(payload),
+            "kind": "report",
+            "rights_state": "not_evaluated",
+            "publication": "not_performed",
+        }
+    if "moh_input_gold_reconciliation.json" in payloads:
+        payload = payloads["moh_input_gold_reconciliation.json"]
+        outputs["moh_input_gold_reconciliation.json"] = {
             "sha256": hashlib.sha256(payload).hexdigest(),
             "bytes": len(payload),
             "kind": "report",
@@ -1935,12 +1998,13 @@ def _readback(path: Path, payload: bytes, table: pa.Table | None = None) -> None
         _require(restored.cast(table.schema).equals(table, check_metadata=True))
 
 
-def _build_payloads(
+def _build_payloads(  # noqa: PLR0913, PLR0917 - explicit product input set
     tables: dict[str, pa.Table],
     products: dict[str, dict[str, Any]],
     query_receipts: list[dict[str, Any]],
     packages: tuple[CanonicalPackageInput, ...],
     pharmac_input: PharmacGoldInput | None,
+    moh_input: MohGoldInput | None,
 ) -> tuple[
     dict[str, bytes],
     dict[str, Any],
@@ -2007,6 +2071,15 @@ def _build_payloads(
         payloads["pharmac_input_total_reconciliation.json"] = _encoded(
             pharmac_reconciliation
         )
+    if moh_input is not None:
+        source_facts, _ = read_verified_moh_tables(
+            moh_input.packages, moh_input.source_cas_root
+        )
+        moh_reconciliation = build_moh_input_gold_reconciliation(
+            moh_input, source_facts, tables["moh"]
+        )
+        products["moh"]["input_gold_reconciliation"] = moh_reconciliation
+        payloads["moh_input_gold_reconciliation.json"] = _encoded(moh_reconciliation)
     payloads["ro-crate-metadata.json"] = _encoded(_ro_crate_metadata(payloads))
     return (
         payloads,
@@ -2127,7 +2200,7 @@ def _export(
         revision_report,
         cross_source_report,
     ) = _build_payloads(
-        tables, product_report, query_receipts, packages, inputs.pharmac
+        tables, product_report, query_receipts, packages, inputs.pharmac, inputs.moh
     )
     package_markers = _package_markers(query_receipts)
     quality_report = _quality_report(tables, product_report)
@@ -2160,6 +2233,9 @@ def _export(
         "pharmac_input_total_reconciliation_report": product_report.get(
             "pharmac", {}
         ).get("input_total_reconciliation"),
+        "moh_input_gold_reconciliation_report": product_report.get("moh", {}).get(
+            "input_gold_reconciliation"
+        ),
         "plot_report": plot_report,
         "quality_report": quality_report,
         "period_ordering": (
