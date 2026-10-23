@@ -954,6 +954,16 @@ integrated parent head.
   remain open. Focused contracts pass at 100% line/branch coverage; the full
   repository harness passes on this tree. [M-05, M-06, M-11; AC-05, AC-09]
 
+- [x] Add an edition-specific Silver profile for the 2012/13 Vote Health
+  Supplementary Estimates “Summary of Financial Activity”. Read only page 2 of
+  the retained 33-page supporting-information PDF; preserve eleven named rows,
+  all five `$000` columns, raw dash/`N/A` tokens, and 55 direct lineage entries.
+  Record two byte-identical Bronze rebuilds and a separate versioned layout
+  fixture. Keep unreviewed PDF contents, currency, rights, cross-edition
+  comparability and downstream admission open. See
+  `vote-health-supplementary-2012-13-financial-activity-20261023.md` and its
+  machine receipt. [M-05, M-06, M-11; AC-05, AC-09]
+
 ### 5.3 Normalize analytical context
 
 - [x] Implement the bounded June2026 QES Table8 QEMQ.SASZ9A published
@@ -1017,6 +1027,13 @@ integrated parent head.
   annualization, denominator selection and rights remain unqualified. See
   `gdp-june-profile-20260930.md`, `context-gold-gdp-vintages-20261002.md` and
   `context-operational-dispatch-native-20261017.json`.
+- [x] Rebuild the separately pinned Stats NZ GDP June 2026 quarter context
+  Silver vintage three times from Bronze and compare each complete manifest and
+  Parquet digest. All 61 facts, 915 lineage rows and 2,323 dispositions are
+  byte-identical; preserve the March vintage separately. No currency, rights,
+  annualization, denominator or publication status is inferred. See
+  `context-gdp-june-2026-repeat-20261023.md` and its machine receipt. [M-05,
+  M-06, M-12; AC-05, AC-10]
 - [x] Resolve the conditional S-05 scope: its exact-export, dictionary and
   resource-rights gate has not passed, so retain the aggregate Health Survey as
   a non-blocking deferred item and leave the Must scope unblocked. Reopen only
