@@ -80,6 +80,26 @@ def test_budget_input_total_report_rejects_unsupported_or_unequal_claims() -> No
     )
 
 
+def test_budget_input_total_report_pins_are_bound_to_manifest_provenance() -> None:
+    report = _budget_input_total_report()
+    budget_product = {"input_total_reconciliation": report}
+    products = {"budget": budget_product}
+    markers = ["a" * 64]
+
+    assert canonical_gold_verification._budget_reconciliation_matches_manifest(  # noqa: SLF001
+        report, markers, products
+    )
+
+    unrelated = {**report, "source_package_marker_sha256": ["b" * 64]}
+    unrelated_products = {"budget": {"input_total_reconciliation": unrelated}}
+    assert not canonical_gold_verification._budget_reconciliation_matches_manifest(  # noqa: SLF001
+        unrelated, markers, unrelated_products
+    )
+    assert not canonical_gold_verification._budget_reconciliation_matches_manifest(  # noqa: SLF001
+        report, markers, {"budget": {"input_total_reconciliation": unrelated}}
+    )
+
+
 def _package(root: Path) -> tuple[Path, str]:
     root.mkdir()
     payload = b"verified-output-payload"

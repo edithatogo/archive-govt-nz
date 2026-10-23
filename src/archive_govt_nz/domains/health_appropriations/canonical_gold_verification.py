@@ -261,6 +261,29 @@ def _valid_budget_input_total_reconciliation(value: object) -> bool:
     return total_records == value["input_record_count"] == len(all_ids)
 
 
+def _budget_reconciliation_matches_manifest(
+    value: object, package_markers: object, products: object
+) -> bool:
+    """Bind the Budget control to package provenance and its product copy."""
+    if (
+        not _valid_budget_input_total_reconciliation(value)
+        or not isinstance(package_markers, list)
+        or any(
+            type(marker) is not str or _DIGEST.fullmatch(marker) is None
+            for marker in package_markers
+        )
+        or not isinstance(products, dict)
+    ):
+        return False
+    budget_product = products.get("budget")
+    if not isinstance(value, dict) or not isinstance(budget_product, dict):
+        return False
+    return (
+        set(value["source_package_marker_sha256"]).issubset(set(package_markers))
+        and budget_product.get("input_total_reconciliation") == value
+    )
+
+
 def _valid_overlap_product_group(value: object) -> bool:
     if not isinstance(value, dict):
         return False
@@ -557,11 +580,12 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
         or (
             budget_control is not None
             and (
-                not _valid_budget_input_total_reconciliation(budget_control)
+                not _budget_reconciliation_matches_manifest(
+                    budget_control, manifest.get("package_marker_sha256"), products
+                )
                 or budget_control_payload != budget_control
             )
         )
-        or (budget_control is not None and "budget" not in products)
         or any(type(name) is not str or not name for name in products)
     ):
         _fail("invalid_gold_reports")
