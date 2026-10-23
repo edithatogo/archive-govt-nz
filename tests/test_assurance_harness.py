@@ -52,7 +52,7 @@ def test_static_and_coverage_policy_is_fail_closed() -> None:
     assert tools["coverage"]["report"]["show_missing"] is True
     codecov = yaml.safe_load((REPOSITORY_ROOT / "codecov.yml").read_text())
     assert codecov["coverage"]["status"]["patch"]["default"]["target"] == "80%"
-    assert COMMAND_TIMEOUT_SECONDS == 900
+    assert COMMAND_TIMEOUT_SECONDS == 1200
 
 
 def test_repository_gate_lists_all_required_stages() -> None:

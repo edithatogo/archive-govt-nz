@@ -9403,3 +9403,11 @@ Budget and revenue products. Added exact readback assertions for v3 stored
 integer basis, canonical integer token, and numeric-evidence identity. This
 extends query/readback assurance only; it does not reconcile cross-source
 amounts or approve unit, period, rights, or comparability claims.
+
+The initial exact-head hosted run passed Ubuntu assurance, lint and CodeQL but
+Windows pytest reached 7,815/8,305 passing tests before the existing 900-second
+per-stage timeout returned 124; no assertion failure was reported. The
+previous successful Windows run completed pytest in 828.68 seconds. Increased
+the bounded per-stage ceiling to 1,200 seconds to provide runtime headroom;
+test selection, coverage threshold, worker count and the 30-minute job limit
+remain unchanged. Fresh exact-head Actions are required.
