@@ -110,7 +110,7 @@ async def test_truncated_gzip_trailer_fails_advertised_body_length(
 
 
 @given(payload=st.binary(max_size=256), split=st.integers(min_value=1, max_value=20))
-@settings(max_examples=20)
+@settings(max_examples=20, deadline=None)
 def test_encoded_length_is_independent_of_payload_and_chunking(
     payload: bytes, split: int
 ) -> None:

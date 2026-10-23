@@ -750,15 +750,15 @@ def test_verify_executes_real_cas_schema_and_provenance_checks(
     }
 
 
-def test_doctor_enforces_python_314(
+def test_doctor_enforces_python_3151(
     capsys: pytest.CaptureFixture[str], monkeypatch: pytest.MonkeyPatch
 ) -> None:
     """Doctor uses the declared project runtime rather than Python 3.11."""
-    monkeypatch.setattr("archive_govt_nz.cli.sys.version_info", (3, 13, 9))
+    monkeypatch.setattr("archive_govt_nz.cli.sys.version_info", (3, 15, 0))
 
     code = doctor(format="json")
     payload = json.loads(capsys.readouterr().out)
 
     assert code == 1
     assert payload["python_min_satisfied"] is False
-    assert payload["required_python"] == ">=3.14"
+    assert payload["required_python"] == ">=3.15.1"

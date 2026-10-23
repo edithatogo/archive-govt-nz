@@ -9429,3 +9429,74 @@ consumer-summary regression. Updated full validation passes 8299 tests/14 skips,
 97.16% coverage, 81 schemas/71 representative documents, parity 9/9, mutation,
 dependency audit, licence, secret scan and SBOM gates. Fresh exact-head hosted
 assurance is required for the review fix.
+
+2026-10-23 — Phase 6 canonical Gold query matrix: added a consolidated exact
+readback golden across all ten named canonical fact products and two period
+tokens. The expected rows are normalized through each declared Arrow schema
+before comparison with DuckDB exact-string output; every field and identity is
+checked, along with unsupported real-spending refusal, package immutability,
+and the existing unassessed rights/publication/cross-source boundaries. The
+focused canonical query suite passes 21 tests. This closes only canonical
+fact-product query/readback coverage; source/donor totals, report matrices and
+cross-source comparability remain open. Full repository validation and
+protected delivery are still required.
+
+2026-10-23 — Phase 6 exact-tree validation and runtime blocker: aligned the
+PyArrow constraint to 26.0.0 and refreshed the lock for CPython 3.15.1; PyArrow
+26 installed from its wheel. The required `./scripts/validate.sh` then stopped
+before tests while building DuckDB 1.5.6 from sdist. AppleClang 21/libc++ fails
+in `variant_shredding.cpp` on incomplete `std::hash<duckdb::VariantLogicalType>`.
+The focused canonical query suite therefore cannot collect in the required
+runtime. An attempted no-DuckDB focused report test also could not collect
+because the existing canonical-consumer test imports DuckDB at module load.
+Ruff and format checks for the Gold query implementation/tests pass, and
+`git diff --check` passes. This is an upstream runtime compatibility blocker,
+not a passing validation result; no PR or merge is ready. Keep source/donor
+comparisons and rights/currency/period comparability holds explicit.
+
+Correction and continuation, 2026-10-23: PyPI now provides DuckDB 2.0.0 with a
+macOS ARM64 `cp312-abi3` wheel and a Python 3.15 classifier. Qualified it on
+CPython 3.15.1, raised the project constraint to `<3`, and migrated the three
+read-only query consumers from DB-API Arrow results to the typed relation API;
+the missing-relation case fails closed. The canonical Gold query matrix passes
+21 tests, and the canonical/fiscal query plus reconciliation suites pass 59.
+Full typing, lint and format pass. The complete harness reached its test stage:
+8,296 passed and 14 skipped, with four `test_context_gold.py` failures on the
+June 2026 GDP source manifest digest. Independent rebuild comparison shows all
+three Arrow tables are semantically equal to the retained package, while each
+Parquet SHA changes under PyArrow 26.0.0; regenerated manifest is
+`103d03e29dcaccd30f66d0499fceffe652df5b5e478593856acd05ff8ec14411`, retained
+manifest is `f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd`.
+This is a frozen-byte/dependency-version reconciliation blocker, not a data
+value difference. Keep historical pins and dependent recovery receipts intact;
+the full harness, report/source/donor reconciliation and protected delivery
+remain open.
+
+2026-10-23 — Phase 6 runtime and contextual Gold recovery: retained the frozen
+PyArrow 23 June GDP manifest pin and added the exact PyArrow 26.0.0 manifest
+digest as a separately accepted serialization. Rebuild comparison confirms all
+three Parquet tables have identical Arrow rows, while output-byte hashes differ;
+the consumer still verifies each manifest output digest, schema, source SHA and
+lineage. Context Gold tests pass 19/19. DuckDB 2.0 relation API compatibility
+fix passes 59 affected query/reconciliation tests. Final `./scripts/validate.sh`
+passes on CPython 3.15.1: 8,300 passed, 14 skipped, 18 warnings, 97.14% branch
+coverage; 81 schemas/71 representative documents, parity 9/9, all mutation gates,
+dependency audit, licence inventory, secret scan and SBOM (115 components) pass.
+This closes the local Phase 6 query/readback and harness slice only. Source/donor
+total reconciliation, broader report matrix, unapproved cross-source
+comparisons, hosted PR Actions and final track completion remain open.
+
+2026-10-23 — exact-tree Phase 6 validation with Python 3.15.1: the required
+`./scripts/validate.sh` completed successfully with the repository's complete
+8,314-test selection using four xdist workers: 8,300 passed, 14 skipped,
+18 warnings, 97.14% coverage. Schema validation (81 schemas, 71 representative
+documents), parity (9/9), all mutation gates, dependency audit, licence
+inventory, secret scan, and SBOM (115 components) passed. The default automatic
+10-worker run had four resource-sensitive timing failures; the required
+failure-only rerun passed all four, and the bounded four-worker full run passed
+without altering selection, adding retries, or skipping tests. This is full
+local harness evidence for this exact tree, not hosted Actions evidence. The
+Gold slice remains limited to source-separated canonical fact query/readback
+and contextual June GDP serialization compatibility. Source/donor total
+reconciliation, broader report matrices, cross-source comparability and final
+Phase 6 completion remain open.

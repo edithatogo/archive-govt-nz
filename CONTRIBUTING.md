@@ -7,6 +7,9 @@ Conductor/GitHub references. Never attach credentials, signed URLs, personal
 information, restricted payloads, or source files whose redistribution rights
 are unclear.
 
+Use the repository-pinned Python 3.15.1 interpreter (`uv python install`, then
+`uv sync --locked`) before running validation.
+
 Changes must preserve originals, provenance, explicit state semantics, and
 fail-closed publication gates. Use test-driven increments and run:
 

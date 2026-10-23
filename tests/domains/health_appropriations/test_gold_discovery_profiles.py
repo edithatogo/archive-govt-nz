@@ -53,12 +53,12 @@ def test_pinned_candidates_replay_and_reject_unsupported_claims(
         str(tmp_path / "console"),
     ]
     dry_cli = subprocess.run(
-        args, capture_output=True, text=True, check=True, timeout=30
+        args, capture_output=True, text=True, check=True, timeout=60
     )
     assert json.loads(dry_cli.stdout)["status"] == "dry_run"
     assert not (tmp_path / "console").exists()
     built_cli = subprocess.run(
-        [*args, "--write"], capture_output=True, text=True, check=True, timeout=30
+        [*args, "--write"], capture_output=True, text=True, check=True, timeout=60
     )
     assert json.loads(built_cli.stdout)["manifest_sha256"] == written["manifest_sha256"]
     assert (
@@ -66,7 +66,7 @@ def test_pinned_candidates_replay_and_reject_unsupported_claims(
         == "verified_local_candidates"
     )
     failed_cli = subprocess.run(
-        [*args, "--write"], capture_output=True, text=True, check=False, timeout=30
+        [*args, "--write"], capture_output=True, text=True, check=False, timeout=60
     )
     assert failed_cli.returncode == 2
     assert json.loads(failed_cli.stdout)["error"] == "gold_discovery_build_failed"

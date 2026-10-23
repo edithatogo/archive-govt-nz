@@ -52,7 +52,7 @@ acceptance criteria without silently weakening any Must requirement.
 
 ### Engineering and security
 
-- Use Python 3.14 as the primary language and admit Rust only for benchmarked
+- Use Python 3.15.1 as the primary language and admit Rust only for benchmarked
   hot paths.
 - Provide a typed, non-interactive CLI and scheduled jobs without requiring an
   always-on service.

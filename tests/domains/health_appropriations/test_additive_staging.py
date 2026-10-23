@@ -176,8 +176,8 @@ def test_existing_and_forbidden_roots_are_untouched(
 ) -> None:
     output = _output(tmp_path, "existing")
     output.mkdir()
-    sentinel = output / "sentinel"
-    sentinel.write_bytes(b"keep")
+    sentinel_path = output / "sentinel"
+    sentinel_path.write_bytes(b"keep")
     with pytest.raises(ValueError, match="additive_staging_contract"):
         stage_additive_bundle(
             staging, output, forbidden_roots=(tmp_path / "candidates",)
@@ -188,7 +188,7 @@ def test_existing_and_forbidden_roots_are_untouched(
             tmp_path / "candidates/new",
             forbidden_roots=(tmp_path / "candidates",),
         )
-    assert sentinel.read_bytes() == b"keep"
+    assert sentinel_path.read_bytes() == b"keep"
     assert not (tmp_path / "candidates").exists()
 
 

@@ -1093,7 +1093,7 @@ integrated parent head.
   denominator controls. [M-10, M-12, M-13; AC-08, AC-10] See
   `fiscal-health-cpi-benchmark-20261004.md`.
 
-- [ ] Add DuckDB query golden tests for nominal, real, per-capita, GDP share,
+- [~] Add DuckDB query golden tests for nominal, real, per-capita, GDP share,
   total/core Crown share, budget-versus-actual, revisions, classifications,
   department/portfolio and CPB views. [M-10, M-13, M-18; AC-08, AC-10,
   AC-11, AC-16]
@@ -1117,6 +1117,26 @@ integrated parent head.
   `test_fiscal_share_analysis.py`. The broader matrix across Budget, revisions,
   classifications, department/portfolio and CPB remains open; this checklist
   stays incomplete until those contracts are reconciled.
+  The 2026-10-23 consolidated canonical query matrix now independently
+  round-trips all ten source-separated fact products over two periods, compares
+  every field with its schema-typed expected row, and checks read-only package
+  bytes plus fail-closed refusal of an unsupported real-spending query. This
+  closes only the fact-product query/readback slice; the separate report matrix
+  and source/donor controls remain open.
+  DuckDB 1.5.6 lacked a CPython 3.15 wheel and failed to build locally. This was
+  resolved by qualifying DuckDB 2.0.0's macOS ARM64 `cp312-abi3` wheel and
+  updating the consumer/query paths to use its typed Arrow relation API. The
+  focused Phase 6 canonical query suite passes 21 tests; three affected query
+  and reconciliation suites pass 59 tests; full typing, lint and format pass.
+  The first full run exposed four contextual Gold failures because PyArrow
+  26.0.0 rebuilds June 2026 GDP Silver tables with identical Arrow rows but
+  different Parquet bytes. Added the exact PyArrow 26 manifest digest beside
+  the retained PyArrow 23 digest; source, output-file hash, schema and lineage
+  checks remain mandatory. The contextual Gold suite then passed 19 tests, and
+  the complete harness passed on the exact tree: 8,300 tests passed, 14 skipped,
+  97.14% coverage, 81 schemas/71 documents, parity 9/9, supply-chain audit,
+  licenses, secret scan and SBOM. Broader report/source/donor reconciliation
+  remains open; no cross-source equivalence or rights/publication claim is made.
 - [x] Add invariant/property tests for denominator identity, CPI base changes,
   financial-year alignment, additive/non-additive measures, revision isolation,
   rounding and incompatible series. [M-06, M-12, M-13, M-18; AC-10, AC-11,
@@ -1277,6 +1297,11 @@ integrated parent head.
   [M-08, M-11, M-12, M-13; AC-06, AC-10, AC-11]
 - [ ] Run deterministic query/plot tests, self-review and the full repository
   harness; record paired evidence. [M-18, M-19; AC-16]
+  Progress: the ten-product canonical fact query golden and contextual June GDP
+  package serialization variants pass exact pinned readback; affected query and
+  reconciliation suites pass 59 tests. Full harness passed as recorded above.
+  Source/donor total controls, broader report matrices, cross-source
+  comparability and final track review remain open.
 
 ## Phase 7 — Platinum metadata, federation and discovery
 

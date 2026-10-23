@@ -106,6 +106,52 @@ def test_all_existing_fact_products_have_named_queries() -> None:
     }
 
 
+def _query_value(value: object) -> object:
+    if isinstance(value, Decimal):
+        return str(value)
+    if isinstance(value, (date, datetime)):
+        return value.isoformat()
+    if isinstance(value, list):
+        return [_query_value(item) for item in value]
+    return value
+
+
+def test_all_fact_products_match_the_ordered_exact_value_golden_matrix(
+    package: tuple[Path, str],
+) -> None:
+    """Named queries return complete, exact rows for every admitted product."""
+    root, pin = package
+    before = {path.name: path.read_bytes() for path in root.iterdir()}
+
+    for product, (_filename, schema) in query.PRODUCTS.items():
+        result = query.query_canonical_gold(root, pin, product=product, limit=2)
+        assert result["status"] == "verified", (product, result)
+        assert result["row_count"] == result["total_rows"] == 2
+        assert result["truncated"] is False
+        assert result["decimal_encoding"] == "exact_string"
+        assert result["source_reverification"] == "not_performed"
+        assert result["publication"] == "not_performed"
+        assert result["rights"] == "not_evaluated"
+        assert result["package_report_caveats"]["cross_source_comparison"] == (
+            "not_performed"
+        )
+
+        expected = []
+        for year in (2024, 2025):
+            typed_row = pa.Table.from_pylist(
+                [source_row(schema, year)], schema=schema
+            ).to_pylist()[0]
+            expected.append(
+                {key: _query_value(value) for key, value in typed_row.items()}
+            )
+        assert result["rows"] == expected, product
+
+    unsupported = query.query_canonical_gold(root, pin, product="real", limit=2)
+    assert unsupported["status"] == "failed"
+    assert unsupported["error"] == "canonical_gold_query_invalid"
+    assert before == {path.name: path.read_bytes() for path in root.iterdir()}
+
+
 @pytest.mark.parametrize("product", list(query.PRODUCTS))
 def test_exact_named_query_retains_source_context_without_writes(
     package: tuple[Path, str], product: str

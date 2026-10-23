@@ -95,12 +95,12 @@ def test_cli_doctor(
     assert payload["integrity_status"] == "not_checked"
     assert code_json == 0
 
-    # Simulate Python version < 3.14
-    monkeypatch.setattr(sys, "version_info", (3, 13, 0))
+    # Python 3.15.0 does not satisfy the exact project runtime floor.
+    monkeypatch.setattr(sys, "version_info", (3, 15, 0))
     code_degraded = doctor(format="text")
     captured_degraded = capsys.readouterr()
     assert "doctor: status=runtime_incompatible" in captured_degraded.out
-    assert "Python >= 3.14 requirement not satisfied" in captured_degraded.err
+    assert "Python >= 3.15.1 requirement not satisfied" in captured_degraded.err
     assert code_degraded == 1
 
 

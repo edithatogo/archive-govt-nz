@@ -7,7 +7,7 @@ name = "archive-govt-nz"
 version = "0.1.0"
 description = "Evidence-first archival tooling for New Zealand government data."
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.15.1,<3.16"
 license = "Apache-2.0"
 authors = [{ name = "edithatogo" }]
 dependencies = [
@@ -17,8 +17,8 @@ dependencies = [
   "httpx>=0.28.1,<1",
   "jsonschema>=4.25.1,<5",
   "blake3>=1.0.8,<2",
-  "duckdb>=1.4.3,<2",
-  "pyarrow>=23.0.1,<26",
+  "duckdb>=2.0.0,<3",
+  "pyarrow>=26.0.0,<27",
   "pyyaml>=6.0.3,<7",
   "pypdf>=6.21.1,<7",
   "huggingface_hub>=0.28.0,<2",
@@ -58,7 +58,7 @@ dev = [
 [tool.basedpyright]
 include = ["src", "tools", "tests"]
 typeCheckingMode = "standard"
-pythonVersion = "3.14"
+pythonVersion = "3.15"
 reportMissingTypeStubs = false
 
 [tool.uv]
@@ -75,7 +75,7 @@ max-pardons-pct = 0.0
 
 [tool.ruff]
 line-length = 88
-target-version = "py314"
+target-version = "py315"
 src = ["src", "tools", "tests"]
 
 [tool.ruff.lint]

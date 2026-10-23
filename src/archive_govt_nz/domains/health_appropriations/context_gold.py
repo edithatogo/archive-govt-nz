@@ -57,11 +57,27 @@ _EXPECTED_VINTAGES = {
     "population": "2026-08-18",
 }
 _EXPECTED_MANIFESTS = {
-    "cpi": "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e",
-    "wage": "0bf89bd6c10a0458ef4c578b209c3252292961976d2f50b3c27fe92907c3cb04",
-    "gdp": "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35",
-    "population": "067255c4ac18377312d0a8234dc94804c876ba68866cfba3a483a4dd89415798",
-    "gdp_june": "f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd",
+    "cpi": frozenset(
+        {"edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e"}
+    ),
+    "wage": frozenset(
+        {"0bf89bd6c10a0458ef4c578b209c3252292961976d2f50b3c27fe92907c3cb04"}
+    ),
+    "gdp": frozenset(
+        {"639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35"}
+    ),
+    "population": frozenset(
+        {"067255c4ac18377312d0a8234dc94804c876ba68866cfba3a483a4dd89415798"}
+    ),
+    # PyArrow 23 and 26 produce distinct Parquet bytes for identical rows.
+    # Preserve the historical pin and explicitly admit the qualified 26.0.0
+    # serialization while source, schema and lineage checks remain mandatory.
+    "gdp_june": frozenset(
+        {
+            "f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd",
+            "103d03e29dcaccd30f66d0499fceffe652df5b5e478593856acd05ff8ec14411",
+        }
+    ),
 }
 _EXPECTED_PROFILE_SOURCES = {
     "cpi": (
@@ -401,7 +417,7 @@ def _source_native_packages(
             series_id=series,
             source_root=source_root,
         )
-        _require(_marker_digest == _EXPECTED_MANIFESTS[profile_id])
+        _require(_marker_digest in _EXPECTED_MANIFESTS[profile_id])
         marker_digests.append(_marker_digest)
         if family == "cpi":
             profile = PRICE_WAGE_PROFILES["cpi"]
