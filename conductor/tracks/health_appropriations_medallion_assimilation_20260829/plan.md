@@ -1282,6 +1282,13 @@ integrated parent head.
     overlapping periods or reporting bases. See
     `fiscal-gold-source-reconciliation-20261005.md` and its machine receipt.
     [M-13, S-04; AC-11]
+  - [x] Reconcile each Bronze-verified BEFU, HYEFU, and historical Fiscal Crown
+    source projection to its Gold rows by exact source record identity and
+    numeric value token. Retain literal periods, source vintage, measure, unit,
+    and source-object hashes; do not aggregate, compare core and total measures,
+    compare vintages, or infer currency, accounting basis, rights, or publication
+    status. Bind the deterministic report into the Gold manifest and read-only
+    verifier. See `canonical-crown-projection-reconciliation-20261024.md`.
 - [ ] Generate deterministic plots, structured summaries and consumer examples
   from the same queries; make source drill-through available. [M-09, M-10,
   M-13, S-06; AC-07, AC-08]

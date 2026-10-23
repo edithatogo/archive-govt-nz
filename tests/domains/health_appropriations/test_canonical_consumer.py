@@ -1072,6 +1072,25 @@ def test_canonical_gold_preserves_befu_and_hyefu_as_separate_vintages(
         row["record_id"] for row in hyefu_facts
     }
     assert manifest["crown_projection"]["cross_source_join"] == "not_performed"
+    crown_reconciliation = manifest["crown_projection_gold_reconciliation_report"]
+    assert crown_reconciliation["row_count"] == 20
+    assert [item["product"] for item in crown_reconciliation["families"]] == [
+        "crown_befu",
+        "crown_hyefu",
+    ]
+    assert all(
+        item["status"] == "exact_source_rows_preserved"
+        and all(row["status"] == "exact_numeric_value_match" for row in item["rows"])
+        for item in crown_reconciliation["families"]
+    )
+    assert (
+        json.loads(
+            (output / "crown_projection_gold_reconciliation.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        == crown_reconciliation
+    )
     assert manifest["products"]["crown_befu"]["currency_and_accounting_basis"] == (
         "unknown_not_inferred"
     )
@@ -1082,6 +1101,12 @@ def test_canonical_gold_preserves_befu_and_hyefu_as_separate_vintages(
         "crown_expense_befu_2026.parquet",
         "crown_expense_hyefu_2025.parquet",
     } <= set(manifest["outputs"])
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
+    )
     assert {path.name: path.read_bytes() for path in output.iterdir()} == {
         path.name: path.read_bytes() for path in repeated.iterdir()
     }
@@ -1242,8 +1267,19 @@ def test_canonical_gold_preserves_historical_fiscal_crown_measure_families(
         "not_performed"
     )
     assert manifest["products"]["fiscal_crown"]["rights_state"] == "not_evaluated"
+    crown_reconciliation = manifest["crown_projection_gold_reconciliation_report"]
+    assert crown_reconciliation["row_count"] == 61
+    assert [item["product"] for item in crown_reconciliation["families"]] == [
+        "fiscal_crown"
+    ]
     assert any(
         path.name.startswith("plot_fiscal_crown_") for path in output.glob("plot_*.png")
+    )
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
     )
     row_index = {
         row["input_record_id"]: row

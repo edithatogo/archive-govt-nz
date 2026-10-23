@@ -9623,7 +9623,6 @@ basedpyright passed. The required `./scripts/validate.sh` passed on Python
 dependency and licence audits, secret scan, and 115-component SBOM passed.
 Phase 6.2 broader analytical/report coverage, Phase 6.3 external reconciliation,
 and final track completion remain open.
-
 ## 2026-10-24 — Phase 5 Vote Health 2013/14 financial activity
 
 Added a distinct pinned Silver profile for PDF page 7 of the 2013/14
@@ -9665,3 +9664,18 @@ coverage against the 80% gate; 81 schemas/71 representative documents, parity
 SBOM passed. This completes one local Phase 5 Vote Health profile only. Rights,
 currency, annual bounds, cross-edition comparison, Gold admission and
 publication remain unqualified; Phase 5 and contextual-series work remain open.
+
+## 2026-10-24 — Phase 6 BEFU, HYEFU, and Fiscal Crown Gold controls
+
+Canonical Gold now emits a deterministic projection-to-Gold report for each
+available BEFU, HYEFU, and historical Fiscal Crown product. It accounts for all
+rows by unique source/output record identity and confirms Decimal equality
+between the retained source numeric token and Gold amount. The report is bound
+to the manifest and each included product; the read-only package verifier
+recomputes it from the pinned Gold tables and rejects inconsistent report
+copies. Focused Crown build/replay and verifier selection passed. The report
+does not establish an official-publisher total, compare vintages, aggregate
+core/total measures, qualify currencies or fiscal boundaries, or assert rights
+or publication. See
+`canonical-crown-projection-reconciliation-20261024.md`. The required full
+repository harness remains the delivery gate.

@@ -7,7 +7,7 @@ import json
 from contextlib import suppress
 from dataclasses import dataclass
 from datetime import date
-from decimal import Decimal, localcontext
+from decimal import Decimal, InvalidOperation, localcontext
 from io import BytesIO
 from typing import TYPE_CHECKING, Any, cast
 
@@ -65,6 +65,9 @@ _PRODUCT_REVISION_WITNESS_FIELDS = {
     "biff8_revenue": ("canonical_stored_integer", "numeric_evidence_id"),
 }
 SCHEMA = "archive-govt-nz.health-canonical-gold/v2"
+_CROWN_RECONCILIATION_SCHEMA = (
+    "archive-govt-nz.health-crown-projection-gold-reconciliation/v1"
+)
 
 
 @dataclass(frozen=True)
@@ -693,6 +696,104 @@ def build_moh_input_gold_reconciliation(
     }
 
 
+def build_crown_projection_gold_reconciliation(
+    tables: dict[str, pa.Table],
+) -> dict[str, Any]:
+    """Account for exact Bronze-verified Crown projection rows in Gold."""
+    definitions = {
+        "crown_befu": "crown_expense_befu_2026.parquet",
+        "crown_hyefu": "crown_expense_hyefu_2025.parquet",
+        "fiscal_crown": "historical_fiscal_crown.parquet",
+    }
+    families: list[dict[str, Any]] = []
+    for family, filename in definitions.items():
+        table = tables.get(family)
+        if table is None:
+            continue
+        rows = table.to_pylist()
+        _require(bool(rows))
+        source_ids: set[str] = set()
+        output_ids: set[str] = set()
+        source_objects: set[str] = set()
+        controls = []
+        for row in rows:
+            source_id = row.get("source_record_id")
+            output_id = row.get("record_id")
+            token = row.get("value_token")
+            amount = row.get("amount")
+            _require(
+                type(source_id) is str
+                and bool(source_id)
+                and source_id not in source_ids
+                and type(output_id) is str
+                and bool(output_id)
+                and output_id not in output_ids
+                and type(token) is str
+                and bool(token)
+                and isinstance(amount, Decimal)
+                and amount.is_finite()
+            )
+            try:
+                source_amount = Decimal(token)
+            except InvalidOperation as exc:
+                message = "canonical_gold_export_invalid"
+                raise ValueError(message) from exc
+            _require(source_amount.is_finite() and source_amount == amount)
+            source_ids.add(source_id)
+            output_ids.add(output_id)
+            source_object = row.get("source_object_sha256")
+            _require(type(source_object) is str and bool(source_object))
+            source_objects.add(source_object)
+            controls.append(
+                {
+                    "source_record_id": source_id,
+                    "gold_record_id": output_id,
+                    "source_object_sha256": row["source_object_sha256"],
+                    "source_vintage": row["source_vintage"],
+                    "period_token": row["period_token"],
+                    "measure": row["measure"],
+                    "amount_type": row["amount_type"],
+                    "unit": row["unit"],
+                    "source_value_token": token,
+                    "gold_amount": str(amount),
+                    "status": "exact_numeric_value_match",
+                }
+            )
+        families.append(
+            {
+                "product": family,
+                "gold_table": filename,
+                "row_count": len(rows),
+                "source_record_count": len(source_ids),
+                "source_object_sha256": sorted(source_objects),
+                "status": "exact_source_rows_preserved",
+                "rows": sorted(controls, key=lambda item: item["gold_record_id"]),
+            }
+        )
+    _require(bool(families))
+    return {
+        "schema_version": _CROWN_RECONCILIATION_SCHEMA,
+        "scope": "verified_bronze_projection_value_tokens_to_crown_gold_rows",
+        "source_object_sha256": sorted(
+            {
+                source_hash
+                for family in families
+                for source_hash in family["source_object_sha256"]
+            }
+        ),
+        "period_alignment": "literal_source_tokens_only",
+        "currency_and_accounting_basis": "source_context_preserved_unqualified",
+        "cross_vintage_comparison": "not_performed",
+        "core_total_crown_comparison": "not_performed",
+        "aggregation": "not_performed",
+        "rights_state": "not_evaluated",
+        "publication": "not_performed",
+        "row_count": sum(item["row_count"] for item in families),
+        "status": "exact_source_rows_preserved",
+        "families": families,
+    }
+
+
 def _add_legacy_lineage_companion(
     packages: tuple[CanonicalPackageInput, ...], tables: dict[str, pa.Table]
 ) -> None:
@@ -1261,6 +1362,15 @@ def _output_inventory(
     if "moh_input_gold_reconciliation.json" in payloads:
         payload = payloads["moh_input_gold_reconciliation.json"]
         outputs["moh_input_gold_reconciliation.json"] = {
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "bytes": len(payload),
+            "kind": "report",
+            "rights_state": "not_evaluated",
+            "publication": "not_performed",
+        }
+    if "crown_projection_gold_reconciliation.json" in payloads:
+        payload = payloads["crown_projection_gold_reconciliation.json"]
+        outputs["crown_projection_gold_reconciliation.json"] = {
             "sha256": hashlib.sha256(payload).hexdigest(),
             "bytes": len(payload),
             "kind": "report",
@@ -2080,6 +2190,15 @@ def _build_payloads(  # noqa: PLR0913, PLR0917 - explicit product input set
         )
         products["moh"]["input_gold_reconciliation"] = moh_reconciliation
         payloads["moh_input_gold_reconciliation.json"] = _encoded(moh_reconciliation)
+    if any(name in tables for name in ("crown_befu", "crown_hyefu", "fiscal_crown")):
+        crown_reconciliation = build_crown_projection_gold_reconciliation(tables)
+        for family in crown_reconciliation["families"]:
+            products[family["product"]]["projection_gold_reconciliation"] = (
+                crown_reconciliation
+            )
+        payloads["crown_projection_gold_reconciliation.json"] = _encoded(
+            crown_reconciliation
+        )
     payloads["ro-crate-metadata.json"] = _encoded(_ro_crate_metadata(payloads))
     return (
         payloads,
@@ -2235,6 +2354,15 @@ def _export(
         ).get("input_total_reconciliation"),
         "moh_input_gold_reconciliation_report": product_report.get("moh", {}).get(
             "input_gold_reconciliation"
+        ),
+        "crown_projection_gold_reconciliation_report": next(
+            (
+                product.get("projection_gold_reconciliation")
+                for name, product in product_report.items()
+                if name in {"crown_befu", "crown_hyefu", "fiscal_crown"}
+                and "projection_gold_reconciliation" in product
+            ),
+            None,
         ),
         "plot_report": plot_report,
         "quality_report": quality_report,
