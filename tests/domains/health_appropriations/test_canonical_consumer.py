@@ -757,6 +757,7 @@ def test_canonical_gold_includes_pharmac_as_a_separate_source_product(
         "district_health_board_budget_holder",
         "government_appropriation_allocated_to_pharmac",
     }
+    _assert_pharmac_reconciliation(output, manifest, pharmac_rows, pin, source_sha256)
     assert manifest["pharmac_projection"]["status"] == (
         "verified_source_faithful_projection"
     )
@@ -796,6 +797,42 @@ def test_canonical_gold_includes_pharmac_as_a_separate_source_product(
     assert {path.name: path.read_bytes() for path in output.iterdir()} == {
         path.name: path.read_bytes() for path in repeated.iterdir()
     }
+
+
+def _assert_pharmac_reconciliation(
+    output: Path,
+    manifest: dict[str, Any],
+    rows: list[dict[str, Any]],
+    marker: str,
+    source_sha256: str,
+) -> None:
+    reconciliation = json.loads(
+        (output / "pharmac_input_total_reconciliation.json").read_text(encoding="utf-8")
+    )
+    assert manifest["pharmac_input_total_reconciliation_report"] == reconciliation
+    assert manifest["products"]["pharmac"]["input_total_reconciliation"] == (
+        reconciliation
+    )
+    assert reconciliation["source_package_marker_sha256"] == [marker]
+    assert reconciliation["source_object_sha256"] == source_sha256
+    assert reconciliation["input_record_count"] == len(rows) == 14
+    assert reconciliation["group_count"] == len(reconciliation["groups"]) == 14
+    assert all(
+        group["input_record_count"] == 1
+        and group["status"] == "exact_match"
+        and Decimal(group["canonical_input_total"])
+        == Decimal(group["gold_output_total"])
+        for group in reconciliation["groups"]
+    )
+    assert reconciliation["published_change_recalculation"] == "not_performed"
+    assert reconciliation["actual_expenditure"] == "not_asserted"
+    assert reconciliation["cross_source_comparison"] == "not_performed"
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
+    )
 
 
 def test_canonical_gold_preserves_pinned_moh_indicator_profiles(tmp_path: Path) -> None:

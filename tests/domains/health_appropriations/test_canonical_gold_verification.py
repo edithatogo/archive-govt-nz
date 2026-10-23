@@ -93,6 +93,44 @@ def _revenue_input_total_report() -> dict[str, Any]:
     }
 
 
+def _pharmac_input_total_report() -> dict[str, Any]:
+    return {
+        "schema_version": "archive-govt-nz.health-pharmac-input-total-reconciliation/v1",
+        "scope": "pinned_pharmac_silver_facts_to_pharmac_gold_rows",
+        "source_package_marker_sha256": ["a" * 64],
+        "source_object_sha256": "b" * 64,
+        "period_basis": "literal_source_token_only",
+        "unit_currency_and_price_basis": (
+            "source_context_preserved_currency_and_price_basis_unqualified"
+        ),
+        "published_change_recalculation": "not_performed",
+        "actual_expenditure": "not_asserted",
+        "funding_regime_pooling": "not_performed",
+        "donor_control": "not_performed",
+        "official_source_control": "not_performed",
+        "cross_source_comparison": "not_performed",
+        "group_count": 1,
+        "input_record_count": 1,
+        "status": "exact_canonical_input_totals_reconciled",
+        "groups": [
+            {
+                "source_vintage": "Pharmac-CPB-2026-08-07",
+                "period_token": "2013/14",
+                "amount_type": "published_budget_allocation",
+                "unit": "$ Million",
+                "source_label": "Medicines budget",
+                "funding_regime": "district_health_board_budget_holder",
+                "input_record_count": 1,
+                "input_record_ids": ["silver-record-1"],
+                "gold_record_ids": ["gold-record-1"],
+                "canonical_input_total": "1234.500",
+                "gold_output_total": "1234.500000000000000000",
+                "status": "exact_match",
+            }
+        ],
+    }
+
+
 def test_budget_input_total_report_rejects_unsupported_or_unequal_claims() -> None:
     report = _budget_input_total_report()
     assert canonical_gold_verification._valid_budget_input_total_reconciliation(  # noqa: SLF001
@@ -154,6 +192,73 @@ def test_revenue_input_total_report_pins_are_bound_to_manifest_provenance() -> N
         report,
         markers,
         {"revenue": {"input_total_reconciliation": unrelated}},
+    )
+
+
+def test_pharmac_input_total_report_rejects_unequal_or_unsupported_claims() -> None:
+    report = _pharmac_input_total_report()
+    assert canonical_gold_verification._valid_pharmac_input_total_reconciliation(  # noqa: SLF001
+        report
+    )
+
+    unequal = {**report, "groups": [{**report["groups"][0]}]}
+    unequal["groups"][0]["gold_output_total"] = "5"
+    duplicated = {**report, "groups": [{**report["groups"][0]}]}
+    duplicated["groups"][0]["gold_record_ids"] = ["gold-record-1", "gold-record-1"]
+    unsupported = {**report, "actual_expenditure": "verified"}
+
+    for invalid in (unequal, duplicated, unsupported):
+        assert (
+            not canonical_gold_verification._valid_pharmac_input_total_reconciliation(  # noqa: SLF001
+                invalid
+            )
+        )
+
+
+def test_pharmac_input_total_report_copies_bind_to_manifest_and_source(
+    tmp_path: Path,
+) -> None:
+    report = _pharmac_input_total_report()
+    markers = ["a" * 64]
+    products = {"pharmac": {"input_total_reconciliation": report}}
+    projection = {"source_object_sha256": "b" * 64}
+    manifest = {
+        "package_marker_sha256": markers,
+        "pharmac_input_total_reconciliation_report": report,
+        "pharmac_projection": projection,
+    }
+    path = tmp_path / "pharmac_input_total_reconciliation.json"
+    path.write_text(json.dumps(report), encoding="utf-8")
+
+    assert canonical_gold_verification._pharmac_reconciliation_matches_manifest(  # noqa: SLF001
+        report, markers, products, projection
+    )
+    assert canonical_gold_verification._pharmac_control_copies_match(  # noqa: SLF001
+        tmp_path, manifest, markers, products
+    )
+
+    missing_copy = {**manifest}
+    del missing_copy["pharmac_input_total_reconciliation_report"]
+    assert not canonical_gold_verification._pharmac_control_copies_match(  # noqa: SLF001
+        tmp_path, missing_copy, markers, products
+    )
+    assert not canonical_gold_verification._pharmac_reconciliation_matches_manifest(  # noqa: SLF001
+        report, ["c" * 64], products, projection
+    )
+
+    path.write_text("not-json", encoding="utf-8")
+    assert not canonical_gold_verification._pharmac_control_copies_match(  # noqa: SLF001
+        tmp_path, manifest, markers, products
+    )
+    path.unlink()
+    legacy_root = tmp_path / "legacy"
+    legacy_root.mkdir()
+    assert canonical_gold_verification._pharmac_control_copies_match(  # noqa: SLF001
+        legacy_root, {}, markers, {}
+    )
+    (legacy_root / path.name).write_text("{}", encoding="utf-8")
+    assert not canonical_gold_verification._pharmac_control_copies_match(  # noqa: SLF001
+        legacy_root, {}, markers, {}
     )
 
 
