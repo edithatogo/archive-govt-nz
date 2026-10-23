@@ -9679,3 +9679,13 @@ core/total measures, qualify currencies or fiscal boundaries, or assert rights
 or publication. See
 `canonical-crown-projection-reconciliation-20261024.md`. The required full
 repository harness remains the delivery gate.
+
+The first protected review identified that package verification must require a
+reconciliation family for every Crown Gold table present. The verifier now
+compares the reported family set with the present product set before Parquet
+readback; a regression test covers an omitted HYEFU product. Focused Crown
+build/replay and verifier selection passed 9 tests, and the review thread was
+resolved after the fix. The first refreshed hosted attempt stopped at the
+format gate for this new assertion; `ruff format` corrected it, `ruff check`
+passed, and the same 9-test selection passed again. Fresh hosted assurance is
+required for the final head.
