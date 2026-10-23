@@ -8,7 +8,7 @@ from contextlib import suppress
 from dataclasses import dataclass
 from decimal import Decimal, localcontext
 from io import BytesIO
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, cast
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -21,6 +21,7 @@ from archive_govt_nz.domains.health_appropriations import (
 )
 from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
     NOMINAL_BUDGET_SCHEMA,
+    NOMINAL_REVENUE_SCHEMA,
     query_historical_observations,
     query_nominal_budget,
     query_nominal_revenue,
@@ -342,6 +343,16 @@ _BUDGET_RECONCILIATION_FIELDS = (
     "portfolio",
     "source_label",
 )
+_REVENUE_RECONCILIATION_FIELDS = (
+    "source_vintage",
+    "period_token",
+    "amount_type",
+    "unit",
+    "vote",
+    "department",
+    "revenue_type",
+    "source_label",
+)
 
 
 def build_budget_input_total_reconciliation(
@@ -422,6 +433,93 @@ def build_budget_input_total_reconciliation(
         "input_record_count": len(source),
         "status": "exact_canonical_input_totals_reconciled",
         "groups": rows,
+    }
+
+
+def build_revenue_input_total_reconciliation(
+    packages: tuple[CanonicalPackageInput, ...], gold: pa.Table
+) -> dict[str, Any]:
+    """Tie source-separated revenue Gold observations to pinned canonical facts."""
+    _require(
+        isinstance(packages, tuple)
+        and 0 < len(packages) <= MAX_PACKAGES
+        and all(package.kind == "revenue" for package in packages)
+        and gold.schema.equals(NOMINAL_REVENUE_SCHEMA, check_metadata=True)
+    )
+    source: dict[str, dict[str, Any]] = {}
+    package_markers: list[str] = []
+    for package in packages:
+        canonical, receipt = read_verified_canonical_tables(package)
+        package_markers.append(receipt["marker_sha256"])
+        for row in canonical["revenue_fact"].to_pylist():
+            record_id = row["record_id"]
+            _require(
+                type(record_id) is str and bool(record_id) and record_id not in source
+            )
+            _require(isinstance(row["amount"], Decimal) and row["amount"].is_finite())
+            source[record_id] = row
+
+    grouped: dict[tuple[str, ...], dict[str, Any]] = {}
+    consumed: set[str] = set()
+    for output in gold.to_pylist():
+        record_id = output["input_record_id"]
+        _require(type(record_id) is str and record_id not in consumed)
+        input_row = source.get(record_id)
+        _require(input_row is not None)
+        row = cast("dict[str, Any]", input_row)
+        _require(
+            all(row[field] == output[field] for field in _REVENUE_RECONCILIATION_FIELDS)
+            and row["amount"] == output["amount"]
+        )
+        key = tuple(output[field] for field in _REVENUE_RECONCILIATION_FIELDS)
+        _require(all(type(value) is str and bool(value) for value in key))
+        group = grouped.setdefault(
+            key,
+            {
+                **dict(zip(_REVENUE_RECONCILIATION_FIELDS, key, strict=True)),
+                "input_record_ids": [],
+                "canonical_input_total": Decimal(0),
+                "gold_output_total": Decimal(0),
+            },
+        )
+        group["input_record_ids"].append(record_id)
+        with localcontext() as context:
+            context.prec = 50
+            group["canonical_input_total"] += row["amount"]
+            group["gold_output_total"] += output["amount"]
+        consumed.add(record_id)
+    _require(consumed == set(source) and bool(grouped))
+    groups = []
+    for _, group in sorted(grouped.items()):
+        record_ids = sorted(group["input_record_ids"])
+        _require(group["canonical_input_total"] == group["gold_output_total"])
+        groups.append(
+            {
+                **{field: group[field] for field in _REVENUE_RECONCILIATION_FIELDS},
+                "input_record_count": len(record_ids),
+                "input_record_ids": record_ids,
+                "canonical_input_total": str(group["canonical_input_total"]),
+                "gold_output_total": str(group["gold_output_total"]),
+                "status": "exact_match",
+            }
+        )
+    return {
+        "schema_version": (
+            "archive-govt-nz.health-revenue-input-total-reconciliation/v1"
+        ),
+        "scope": "pinned_canonical_revenue_facts_to_revenue_gold_rows",
+        "source_package_marker_sha256": sorted(package_markers),
+        "period_basis": "literal_source_token_only",
+        "unit_currency_and_price_basis": "source_context_preserved_currency_unknown",
+        "revenue_netting": "not_performed",
+        "vintage_pooling": "not_performed",
+        "donor_control": "not_performed",
+        "official_source_control": "not_performed",
+        "cross_source_comparison": "not_performed",
+        "group_count": len(groups),
+        "input_record_count": len(source),
+        "status": "exact_canonical_input_totals_reconciled",
+        "groups": groups,
     }
 
 
@@ -966,6 +1064,15 @@ def _output_inventory(
     if "budget_input_total_reconciliation.json" in payloads:
         payload = payloads["budget_input_total_reconciliation.json"]
         outputs["budget_input_total_reconciliation.json"] = {
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "bytes": len(payload),
+            "kind": "report",
+            "rights_state": "not_evaluated",
+            "publication": "not_performed",
+        }
+    if "revenue_input_total_reconciliation.json" in payloads:
+        payload = payloads["revenue_input_total_reconciliation.json"]
+        outputs["revenue_input_total_reconciliation.json"] = {
             "sha256": hashlib.sha256(payload).hexdigest(),
             "bytes": len(payload),
             "kind": "report",
@@ -1749,6 +1856,17 @@ def _build_payloads(
         payloads["budget_input_total_reconciliation.json"] = _encoded(
             budget_reconciliation
         )
+    revenue_packages = tuple(
+        package for package in packages if package.kind == "revenue"
+    )
+    if revenue_packages:
+        revenue_reconciliation = build_revenue_input_total_reconciliation(
+            revenue_packages, tables["revenue"]
+        )
+        products["revenue"]["input_total_reconciliation"] = revenue_reconciliation
+        payloads["revenue_input_total_reconciliation.json"] = _encoded(
+            revenue_reconciliation
+        )
     payloads["ro-crate-metadata.json"] = _encoded(_ro_crate_metadata(payloads))
     return (
         payloads,
@@ -1893,6 +2011,9 @@ def _export(
         "cross_source_period_overlap_report": cross_source_report,
         "budget_input_total_reconciliation_report": product_report.get(
             "budget", {}
+        ).get("input_total_reconciliation"),
+        "revenue_input_total_reconciliation_report": product_report.get(
+            "revenue", {}
         ).get("input_total_reconciliation"),
         "plot_report": plot_report,
         "quality_report": quality_report,

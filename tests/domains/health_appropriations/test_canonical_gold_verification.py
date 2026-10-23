@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections.abc import Callable
 from pathlib import Path
 from typing import Any
 
@@ -57,6 +58,41 @@ def _budget_input_total_report() -> dict[str, Any]:
     }
 
 
+def _revenue_input_total_report() -> dict[str, Any]:
+    return {
+        "schema_version": "archive-govt-nz.health-revenue-input-total-reconciliation/v1",
+        "scope": "pinned_canonical_revenue_facts_to_revenue_gold_rows",
+        "source_package_marker_sha256": ["a" * 64],
+        "period_basis": "literal_source_token_only",
+        "unit_currency_and_price_basis": "source_context_preserved_currency_unknown",
+        "revenue_netting": "not_performed",
+        "vintage_pooling": "not_performed",
+        "donor_control": "not_performed",
+        "official_source_control": "not_performed",
+        "cross_source_comparison": "not_performed",
+        "group_count": 1,
+        "input_record_count": 1,
+        "status": "exact_canonical_input_totals_reconciled",
+        "groups": [
+            {
+                "source_vintage": "Budget 2025",
+                "period_token": "FY2025/26",
+                "amount_type": "estimated_actual",
+                "unit": "NZD_thousands",
+                "vote": "Health",
+                "department": "Health",
+                "revenue_type": "Other revenue",
+                "source_label": "Operating",
+                "input_record_count": 1,
+                "input_record_ids": ["record-1"],
+                "canonical_input_total": "4.000000000000000000",
+                "gold_output_total": "4.000000000000000000",
+                "status": "exact_match",
+            }
+        ],
+    }
+
+
 def test_budget_input_total_report_rejects_unsupported_or_unequal_claims() -> None:
     report = _budget_input_total_report()
     assert canonical_gold_verification._valid_budget_input_total_reconciliation(  # noqa: SLF001
@@ -97,6 +133,92 @@ def test_budget_input_total_report_pins_are_bound_to_manifest_provenance() -> No
     )
     assert not canonical_gold_verification._budget_reconciliation_matches_manifest(  # noqa: SLF001
         report, markers, {"budget": {"input_total_reconciliation": unrelated}}
+    )
+
+
+def test_revenue_input_total_report_pins_are_bound_to_manifest_provenance() -> None:
+    report = _revenue_input_total_report()
+    markers = ["a" * 64]
+    products = {"revenue": {"input_total_reconciliation": report}}
+
+    assert canonical_gold_verification._revenue_reconciliation_matches_manifest(  # noqa: SLF001
+        report, markers, products
+    )
+    unrelated = {**report, "source_package_marker_sha256": ["b" * 64]}
+    assert not canonical_gold_verification._revenue_reconciliation_matches_manifest(  # noqa: SLF001
+        unrelated,
+        markers,
+        {"revenue": {"input_total_reconciliation": unrelated}},
+    )
+    assert not canonical_gold_verification._revenue_reconciliation_matches_manifest(  # noqa: SLF001
+        report,
+        markers,
+        {"revenue": {"input_total_reconciliation": unrelated}},
+    )
+
+
+@pytest.mark.parametrize(
+    ("product_name", "report_name", "output_name", "report_factory"),
+    [
+        (
+            "budget",
+            "budget_input_total_reconciliation_report",
+            "budget_input_total_reconciliation.json",
+            _budget_input_total_report,
+        ),
+        (
+            "revenue",
+            "revenue_input_total_reconciliation_report",
+            "revenue_input_total_reconciliation.json",
+            _revenue_input_total_report,
+        ),
+    ],
+)
+def test_input_total_controls_require_all_copies_or_none(
+    tmp_path: Path,
+    product_name: str,
+    report_name: str,
+    output_name: str,
+    report_factory: Callable[[], dict[str, Any]],
+) -> None:
+    report = report_factory()
+    marker = "a" * 64
+    product = {"input_total_reconciliation": report}
+    manifest = {
+        "package_marker_sha256": [marker],
+        report_name: report,
+    }
+    output = tmp_path / output_name
+    output.write_text(json.dumps(report), encoding="utf-8")
+
+    assert canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        tmp_path, manifest, {product_name: product}
+    )
+
+    missing_manifest_copy = dict(manifest)
+    del missing_manifest_copy[report_name]
+    assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        tmp_path, missing_manifest_copy, {product_name: product}
+    )
+
+    missing_product_copy = {product_name: {}}
+    assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        tmp_path, manifest, missing_product_copy
+    )
+
+    output.unlink()
+    assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        tmp_path, manifest, {product_name: product}
+    )
+
+    legacy_root = tmp_path / "legacy"
+    legacy_root.mkdir()
+    assert canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        legacy_root, {}, {product_name: {}}
+    )
+    (legacy_root / output_name).write_text("{}", encoding="utf-8")
+    assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        legacy_root, {}, {product_name: {}}
     )
 
 

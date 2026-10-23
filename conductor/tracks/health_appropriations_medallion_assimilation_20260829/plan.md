@@ -1234,6 +1234,14 @@ integrated parent head.
     controls unperformed. This closes only the canonical-input-to-Gold total
     control; it does not disposition historical differences. See the
     `budget_input_total_reconciliation.json` package product.
+  - [x] Reconcile every source-separated nominal Budget revenue Gold observation
+    against its exact pinned canonical revenue fact. Require every record ID to
+    occur once, preserve literal source dimensions and amount type, and compare
+    Decimal totals by vintage, period token, unit, Vote, department, revenue
+    type and source label. Keep revenue separate from appropriations and state
+    that netting, official-source, donor and cross-source controls are not
+    performed. See `revenue_input_total_reconciliation.json` and
+    `canonical-revenue-input-gold-reconciliation-20261024.md`.
   - [x] Add a deterministic literal-period overlap catalog across observed
     canonical products, retaining source vintages, units and record identities.
     The verifier and example pin/summarize the report; comparability and

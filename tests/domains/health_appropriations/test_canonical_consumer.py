@@ -348,6 +348,49 @@ def test_budget_gold_reconciles_exact_pinned_canonical_input_totals(
     )
 
 
+def test_revenue_gold_reconciles_exact_pinned_canonical_input_totals(
+    tmp_path: Path,
+) -> None:
+    package = _revenue_package(tmp_path / "revenue")
+    canonical, receipt = read_verified_canonical_tables(package)
+    source_rows = canonical["revenue_fact"].to_pylist()
+    output = tmp_path / "gold"
+
+    manifest = export_canonical_gold((package,), output, write=True)
+
+    report = json.loads(
+        (output / "revenue_input_total_reconciliation.json").read_bytes()
+    )
+    assert manifest["revenue_input_total_reconciliation_report"] == report
+    assert manifest["products"]["revenue"]["input_total_reconciliation"] == report
+    assert report["source_package_marker_sha256"] == [receipt["marker_sha256"]]
+    assert report["official_source_control"] == "not_performed"
+    assert report["donor_control"] == "not_performed"
+    assert report["cross_source_comparison"] == "not_performed"
+    assert report["revenue_netting"] == "not_performed"
+    assert report["group_count"] == 2
+    assert all(group["status"] == "exact_match" for group in report["groups"])
+    assert sorted(
+        record_id
+        for group in report["groups"]
+        for record_id in group["input_record_ids"]
+    ) == sorted(row["record_id"] for row in source_rows)
+    assert sum(
+        (Decimal(group["canonical_input_total"]) for group in report["groups"]),
+        Decimal(0),
+    ) == sum((row["amount"] for row in source_rows), Decimal(0))
+    assert sum(
+        (Decimal(group["gold_output_total"]) for group in report["groups"]),
+        Decimal(0),
+    ) == Decimal("58746.000000000000000000")
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
+    )
+
+
 def test_wrong_kind_and_repeated_identity_fail_closed(tmp_path: Path) -> None:
     package = _package(tmp_path)
     with pytest.raises(ValueError, match=r"^canonical_consumer_invalid$"):
