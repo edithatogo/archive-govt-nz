@@ -892,6 +892,18 @@ def test_canonical_gold_preserves_pinned_moh_indicator_profiles(tmp_path: Path) 
     assert {row["denominator"] for row in facts} == {None}
     assert {row["rights_state"] for row in facts} == {"not_evaluated"}
     assert manifest["products"]["moh"]["actual_expenditure"] == "not_asserted"
+    reconciliation = manifest["moh_input_gold_reconciliation_report"]
+    assert reconciliation["status"] == "exact_source_rows_preserved"
+    assert reconciliation["row_count"] == 80
+    assert [item["row_count"] for item in reconciliation["profiles"]] == [40, 40]
+    assert reconciliation["measure_pooling"] == "not_performed"
+    assert reconciliation["cross_source_comparison"] == "not_performed"
+    assert (
+        json.loads(
+            (output / "moh_input_gold_reconciliation.json").read_text(encoding="utf-8")
+        )
+        == manifest["products"]["moh"]["input_gold_reconciliation"]
+    )
     assert manifest["moh_projection"]["cross_source_join"] == "not_performed"
     assert (
         len(
@@ -907,6 +919,12 @@ def test_canonical_gold_preserves_pinned_moh_indicator_profiles(tmp_path: Path) 
     assert {path.name: path.read_bytes() for path in output.iterdir()} == {
         path.name: path.read_bytes() for path in repeated.iterdir()
     }
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
+    )
 
 
 def test_canonical_gold_preserves_befu_and_hyefu_as_separate_vintages(

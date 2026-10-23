@@ -9603,3 +9603,23 @@ branch coverage; 81 schemas/71 representative documents, parity 9/9, all
 mutation gates, dependency and licence audits, secret scan, and 115-component
 SBOM pass. Hosted PR checks remain required before delivery. Phase 6.3 and all
 external comparison controls remain open.
+
+## 2026-10-24 — Phase 6 MoH Silver-to-Gold row control
+
+Canonical Gold now reopens both pinned Bronze-bound MoH Silver profiles and
+requires every complete schema-typed row to match its Gold fact exactly by
+`record_id`, with one-to-one coverage and per-profile identity counts. The
+deterministic report is bound in the MoH product and manifest, inventoried, and
+included in RO-Crate; package verification rejects missing, mismatched, or
+unbound report copies. The control does not pool measures or compare MoH with
+other source families, and does not qualify units, denominators, official-source
+values, donor parity, or rights. See
+`canonical-moh-gold-reconciliation-20261024.md`.
+
+Focused MoH Gold and Gold-verification selection passed 56 tests; Ruff and
+basedpyright passed. The required `./scripts/validate.sh` passed on Python
+3.15.1: 8,324 passed, 14 skipped, 18 warnings, and 97.10% branch coverage;
+81 schemas/71 representative documents, parity 9/9, all mutation gates,
+dependency and licence audits, secret scan, and 115-component SBOM passed.
+Phase 6.2 broader analytical/report coverage, Phase 6.3 external reconciliation,
+and final track completion remain open.

@@ -127,6 +127,9 @@ _LEGACY_PRODUCT_REVISION_KEY_FIELDS = {
     if name not in {"biff8_budget", "biff8_revenue"}
 }
 _MIN_OVERLAP_PRODUCTS = 2
+_MOH_PROFILE_COUNT = 2
+_MOH_PROFILE_ROWS = 40
+_MOH_TOTAL_ROWS = _MOH_PROFILE_COUNT * _MOH_PROFILE_ROWS
 _ALLOWED_OVERLAP_PRODUCTS = {
     "historical",
     "budget",
@@ -440,7 +443,112 @@ def _input_total_controls_match_manifest(
             or not matches_manifest(control, markers, products)
         ):
             return False
-    return _pharmac_control_copies_match(root, manifest, markers, products)
+    return _pharmac_control_copies_match(
+        root, manifest, markers, products
+    ) and _moh_control_copies_match(root, manifest, markers, products)
+
+
+def _moh_control_copies_match(
+    root: Path, manifest: dict[str, Any], markers: object, products: object
+) -> bool:
+    product = products.get("moh") if isinstance(products, dict) else None
+    nested = (
+        product.get("input_gold_reconciliation") if isinstance(product, dict) else None
+    )
+    control = manifest.get("moh_input_gold_reconciliation_report")
+    path = root / "moh_input_gold_reconciliation.json"
+    if nested is None and control is None and not path.exists():
+        return True
+    if (
+        nested is None
+        or control is None
+        or not path.is_file()
+        or not isinstance(markers, list)
+    ):
+        return False
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except OSError, UnicodeDecodeError, json.JSONDecodeError:
+        return False
+    projection = manifest.get("moh_projection")
+    if not isinstance(projection, dict):
+        return False
+    profiles = projection.get("profiles")
+    if not isinstance(profiles, list) or any(
+        not isinstance(item, dict) or type(item.get("source_sha256")) is not str
+        for item in profiles
+    ):
+        return False
+    return (
+        nested == control == payload
+        and _valid_moh_input_gold_reconciliation(control)
+        and control["source_package_marker_sha256"]
+        == sorted(
+            item for item in markers if item in control["source_package_marker_sha256"]
+        )
+        and control["source_object_sha256"]
+        == sorted(item["source_sha256"] for item in profiles)
+        and control["row_count"] == projection.get("input_records")
+    )
+
+
+def _valid_moh_input_gold_reconciliation(value: object) -> bool:
+    if not isinstance(value, dict):
+        return False
+    markers = value.get("source_package_marker_sha256")
+    sources = value.get("source_object_sha256")
+    profiles = value.get("profiles")
+    if (
+        value.get("schema_version")
+        != "archive-govt-nz.health-moh-input-gold-reconciliation/v1"
+        or value.get("scope") != "pinned_moh_silver_facts_to_gold_rows"
+        or value.get("measure_pooling") != "not_performed"
+        or value.get("period_alignment") != "literal_source_token_only"
+        or value.get("cross_source_comparison") != "not_performed"
+        or value.get("rights_state") != "not_evaluated"
+        or value.get("status") != "exact_source_rows_preserved"
+        or type(value.get("row_count")) is not int
+        or value["row_count"] != _MOH_TOTAL_ROWS
+        or not isinstance(markers, list)
+        or len(markers) != _MOH_PROFILE_COUNT
+        or markers != sorted(set(markers))
+        or any(
+            type(item) is not str or _DIGEST.fullmatch(item) is None for item in markers
+        )
+        or not isinstance(sources, list)
+        or len(sources) != _MOH_PROFILE_COUNT
+        or sources != sorted(set(sources))
+        or any(
+            type(item) is not str or _DIGEST.fullmatch(item) is None for item in sources
+        )
+        or not isinstance(profiles, list)
+        or len(profiles) != _MOH_PROFILE_COUNT
+    ):
+        return False
+    expected = {"fig27/v1", "fig28/v1"}
+    observed: set[str] = set()
+    total = 0
+    for profile in profiles:
+        if not isinstance(profile, dict):
+            return False
+        name = profile.get("profile")
+        ids = profile.get("record_ids")
+        count = profile.get("row_count")
+        if (
+            type(name) is not str
+            or name not in expected - observed
+            or profile.get("status") != "exact_row_match"
+            or type(count) is not int
+            or count != _MOH_PROFILE_ROWS
+            or not isinstance(ids, list)
+            or len(ids) != count
+            or ids != sorted(set(ids))
+            or any(type(item) is not str or not item for item in ids)
+        ):
+            return False
+        observed.add(name)
+        total += count
+    return observed == expected and total == value["row_count"]
 
 
 def _pharmac_control_copies_match(
