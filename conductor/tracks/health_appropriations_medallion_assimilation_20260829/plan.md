@@ -964,6 +964,17 @@ integrated parent head.
   `vote-health-supplementary-2012-13-financial-activity-20261023.md` and its
   machine receipt. [M-05, M-06, M-11; AC-05, AC-09]
 
+- [x] Add a distinct edition-specific Silver profile for the 2013/14 Vote
+  Health Supplementary Estimates “Summary of Financial Activity” on PDF page
+  7. Preserve all fourteen source rows, including repeated labels under the
+  MCA heading, five `$000` columns, raw dash/`N/A` tokens, row-ordinal identity,
+  and complete lineage. Rebuild twice from the retained Bronze hash and
+  register the profile for source-operation dispatch. Reconcile the observed
+  470,538-byte CAS object against the older category-profile receipt's
+  inconsistent 91,611-byte field without rewriting that historical receipt.
+  Keep rights, currency, annual bounds, cross-edition comparability, Gold and
+  publication unqualified. [M-05, M-06, M-11; AC-05, AC-09]
+
 ### 5.3 Normalize analytical context
 
 - [x] Implement the bounded June2026 QES Table8 QEMQ.SASZ9A published
