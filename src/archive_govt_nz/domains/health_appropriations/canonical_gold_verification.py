@@ -51,6 +51,38 @@ _PRODUCT_REVISION_KEY_FIELDS = {
         "revenue_type",
         "source_label",
     ),
+    "biff8_budget": (
+        "period_token",
+        "measure",
+        "amount_type",
+        "unit",
+        "currency",
+        "price_basis",
+        "base_period",
+        "denominator_definition",
+        "source_label",
+        "vote",
+        "appropriation",
+        "department",
+        "portfolio",
+        "value_basis",
+    ),
+    "biff8_revenue": (
+        "period_token",
+        "measure",
+        "amount_type",
+        "unit",
+        "currency",
+        "price_basis",
+        "base_period",
+        "denominator_definition",
+        "source_label",
+        "vote",
+        "department",
+        "revenue_type",
+        "source_application_id",
+        "value_basis",
+    ),
     "pharmac": (
         "period_token",
         "measure",
@@ -412,7 +444,10 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
         != "archive-govt-nz.health-revision-reconciliation/v1"
         or revision_report.get("key_fields") != list(_REVISION_KEY_FIELDS)
         or revision_report.get("completeness")
-        != "historical_budget_revenue_pharmac_moh_crown_product_rows"
+        != (
+            "historical_budget_revenue_biff8_budget_biff8_revenue_"
+            "pharmac_moh_crown_product_rows"
+        )
         or revision_report.get("difference_interpretation") != "not_assessed"
         or revision_report.get("other_product_revisions") != "not_assessed"
         or revision_report.get("cross_source_comparison") != "not_performed"

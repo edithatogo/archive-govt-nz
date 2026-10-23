@@ -609,9 +609,9 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
     assert revision_report["schema_version"] == (
         "archive-govt-nz.health-revision-reconciliation/v1"
     )
-    assert (
-        revision_report["completeness"]
-        == "historical_budget_revenue_pharmac_moh_crown_product_rows"
+    assert revision_report["completeness"] == (
+        "historical_budget_revenue_biff8_budget_biff8_revenue_"
+        "pharmac_moh_crown_product_rows"
     )
     assert revision_report["other_product_revisions"] == "not_assessed"
     _assert_ro_crate(output, manifest)
@@ -1305,12 +1305,14 @@ def test_revision_report_flags_exact_historical_changes_without_explaining_them(
     assert "source_label" in report["key_fields"]
     assert "source_locator" not in report["key_fields"]
     assert report["difference_interpretation"] == "not_assessed"
-    assert (
-        report["completeness"]
-        == "historical_budget_revenue_pharmac_moh_crown_product_rows"
+    assert report["completeness"] == (
+        "historical_budget_revenue_biff8_budget_biff8_revenue_"
+        "pharmac_moh_crown_product_rows"
     )
     assert report["product_revisions"]["budget"]["changed_candidate_count"] == 0
     assert report["product_revisions"]["revenue"]["changed_candidate_count"] == 0
+    assert report["product_revisions"]["biff8_budget"]["changed_candidate_count"] == 0
+    assert report["product_revisions"]["biff8_revenue"]["changed_candidate_count"] == 0
     assert report["ambiguous_series_period_count"] == 1
     assert len(report["candidates"]) == 1
     candidate = report["candidates"][0]
@@ -1467,7 +1469,15 @@ def test_revision_report_covers_pharmac_moh_and_crown_contexts() -> None:
     )
 
     products = report["product_revisions"]
-    assert set(products) == {"budget", "revenue", "pharmac", "moh", "crown"}
+    assert set(products) == {
+        "budget",
+        "revenue",
+        "biff8_budget",
+        "biff8_revenue",
+        "pharmac",
+        "moh",
+        "crown",
+    }
     for family, prefix in (("pharmac", "pharmac"), ("moh", "moh"), ("crown", "crown")):
         assert products[family]["changed_candidate_count"] == 1
         ids_by_vintage = products[family]["candidates"][0][
@@ -1478,6 +1488,80 @@ def test_revision_report_covers_pharmac_moh_and_crown_contexts() -> None:
         )
         assert products[family]["candidates"][0]["interpretation"] == "not_assessed"
     assert report["cross_source_comparison"] == "not_performed"
+
+
+def test_revision_report_preserves_biff8_numeric_witnesses() -> None:
+    common = {
+        "period_token": "FY2019/20",
+        "measure": "appropriation_expense",
+        "amount_type": "actual",
+        "unit": "NZD million",
+        "currency": "NZD",
+        "price_basis": "nominal",
+        "base_period": None,
+        "denominator_definition": None,
+        "source_label": "Departmental output expenses",
+        "vote": "Health",
+        "department": "Ministry of Health",
+        "value_basis": "biff8_stored_integer_preserved",
+    }
+    vintages = (("2019", "10", "10000000"), ("2020", "11", "11000000"))
+    biff8_budget = [
+        {
+            **common,
+            "source_vintage": vintage,
+            "appropriation": "Vote Health",
+            "portfolio": "Health",
+            "amount": Decimal(amount),
+            "record_id": f"budget-{vintage}",
+            "canonical_stored_integer": stored,
+            "numeric_evidence_id": f"budget-numeric-{vintage}",
+        }
+        for vintage, amount, stored in vintages
+    ]
+    biff8_revenue = [
+        {
+            **common,
+            "source_vintage": vintage,
+            "revenue_type": "Other revenue",
+            "source_application_id": "application-1",
+            "amount": Decimal(amount),
+            "record_id": f"revenue-{vintage}",
+            "canonical_stored_integer": stored,
+            "numeric_evidence_id": f"revenue-numeric-{vintage}",
+        }
+        for vintage, amount, stored in (
+            ("2019", "2", "2000000"),
+            ("2020", "3", "3000000"),
+        )
+    ]
+    report = canonical_gold_export.build_revision_reconciliation_report(
+        {
+            "biff8_budget": pa.Table.from_pylist(biff8_budget),
+            "biff8_revenue": pa.Table.from_pylist(biff8_revenue),
+        }
+    )
+
+    for product, expected_values, expected_stored, evidence_prefix in (
+        ("biff8_budget", ("10", "11"), ("10000000", "11000000"), "budget"),
+        ("biff8_revenue", ("2", "3"), ("2000000", "3000000"), "revenue"),
+    ):
+        candidate = report["product_revisions"][product]["candidates"][0]
+        assert candidate["status"] == f"{product}_value_change_candidate"
+        assert candidate["values_by_vintage"] == dict(
+            zip(("2019", "2020"), expected_values, strict=True)
+        )
+        assert candidate["input_record_ids_by_vintage"] == {
+            vintage: [f"{evidence_prefix}-{vintage}"] for vintage in ("2019", "2020")
+        }
+        assert candidate["witnesses_by_vintage"] == {
+            vintage: {
+                "canonical_stored_integer": stored,
+                "numeric_evidence_id": f"{evidence_prefix}-numeric-{vintage}",
+            }
+            for vintage, stored in zip(("2019", "2020"), expected_stored, strict=True)
+        }
+        assert candidate["interpretation"] == "not_assessed"
 
 
 @pytest.mark.parametrize("packages", [[], (), [object()]])

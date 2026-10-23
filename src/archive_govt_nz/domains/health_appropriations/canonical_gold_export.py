@@ -51,6 +51,10 @@ MAX_PACKAGES = 32
 MIN_DISTINCT_CLASSIFICATION_LABELS = 2
 MIN_REVISION_VINTAGES = 2
 MIN_OVERLAP_PRODUCTS = 2
+_PRODUCT_REVISION_WITNESS_FIELDS = {
+    "biff8_budget": ("canonical_stored_integer", "numeric_evidence_id"),
+    "biff8_revenue": ("canonical_stored_integer", "numeric_evidence_id"),
+}
 SCHEMA = "archive-govt-nz.health-canonical-gold/v2"
 
 
@@ -1310,6 +1314,50 @@ def build_revision_reconciliation_report(
         value_field="amount",
         record_ids_field="input_record_id",
     )
+    biff8_budget_report = _product_revision_report(
+        tables.get("biff8_budget"),
+        product="biff8_budget",
+        key_fields=(
+            "period_token",
+            "measure",
+            "amount_type",
+            "unit",
+            "currency",
+            "price_basis",
+            "base_period",
+            "denominator_definition",
+            "source_label",
+            "vote",
+            "appropriation",
+            "department",
+            "portfolio",
+            "value_basis",
+        ),
+        value_field="amount",
+        record_ids_field="record_id",
+    )
+    biff8_revenue_report = _product_revision_report(
+        tables.get("biff8_revenue"),
+        product="biff8_revenue",
+        key_fields=(
+            "period_token",
+            "measure",
+            "amount_type",
+            "unit",
+            "currency",
+            "price_basis",
+            "base_period",
+            "denominator_definition",
+            "source_label",
+            "vote",
+            "department",
+            "revenue_type",
+            "source_application_id",
+            "value_basis",
+        ),
+        value_field="amount",
+        record_ids_field="record_id",
+    )
     pharmac_report = _product_revision_report(
         tables.get("pharmac"),
         product="pharmac",
@@ -1377,7 +1425,10 @@ def build_revision_reconciliation_report(
             "across_observed_vintages"
         ),
         "key_fields": list(context_fields),
-        "completeness": "historical_budget_revenue_pharmac_moh_crown_product_rows",
+        "completeness": (
+            "historical_budget_revenue_biff8_budget_biff8_revenue_"
+            "pharmac_moh_crown_product_rows"
+        ),
         "shared_series_period_count": shared_groups,
         "unchanged_series_period_count": unchanged_groups,
         "ambiguous_series_period_count": ambiguous_groups,
@@ -1388,6 +1439,8 @@ def build_revision_reconciliation_report(
         "product_revisions": {
             "budget": budget_report,
             "revenue": revenue_report,
+            "biff8_budget": biff8_budget_report,
+            "biff8_revenue": biff8_revenue_report,
             "pharmac": pharmac_report,
             "moh": moh_report,
             "crown": crown_report,
@@ -1405,6 +1458,7 @@ def _product_revision_report(
     record_ids_field: str,
 ) -> dict[str, Any]:
     """Compare exact source dimensions and period tokens within one mart."""
+    witness_fields = _PRODUCT_REVISION_WITNESS_FIELDS.get(product, ())
     groups: dict[tuple[Any, ...], dict[str, list[dict[str, Any]]]] = {}
     if table is not None:
         for row in table.to_pylist():
@@ -1422,9 +1476,12 @@ def _product_revision_report(
                 and all(type(record_id) is str and record_id for record_id in ids)
             )
             key = tuple(row.get(field) for field in key_fields)
-            groups.setdefault(key, {}).setdefault(vintage, []).append(
-                {"value": value, "record_ids": sorted(ids)}
-            )
+            row_data = {"value": value, "record_ids": sorted(ids)}
+            if witness_fields:
+                row_data["witnesses"] = {
+                    field: row.get(field) for field in witness_fields
+                }
+            groups.setdefault(key, {}).setdefault(vintage, []).append(row_data)
 
     candidates: list[dict[str, Any]] = []
     shared = unchanged = ambiguous = 0
@@ -1446,20 +1503,24 @@ def _product_revision_report(
         if len(set(values.values())) == 1:
             unchanged += 1
             continue
-        candidates.append(
-            {
-                **dict(zip(key_fields, key, strict=True)),
-                "status": f"{product}_value_change_candidate",
-                "values_by_vintage": {
-                    vintage: str(value) for vintage, value in values.items()
-                },
-                "input_record_ids_by_vintage": {
-                    vintage: rows[0]["record_ids"]
-                    for vintage, rows in sorted(vintage_rows.items())
-                },
-                "interpretation": "not_assessed",
+        candidate = {
+            **dict(zip(key_fields, key, strict=True)),
+            "status": f"{product}_value_change_candidate",
+            "values_by_vintage": {
+                vintage: str(value) for vintage, value in values.items()
+            },
+            "input_record_ids_by_vintage": {
+                vintage: rows[0]["record_ids"]
+                for vintage, rows in sorted(vintage_rows.items())
+            },
+            "interpretation": "not_assessed",
+        }
+        if witness_fields:
+            candidate["witnesses_by_vintage"] = {
+                vintage: rows[0]["witnesses"]
+                for vintage, rows in sorted(vintage_rows.items())
             }
-        )
+        candidates.append(candidate)
     return {
         "scope": "same_literal_source_dimensions_and_period_token_within_product",
         "key_fields": list(key_fields),

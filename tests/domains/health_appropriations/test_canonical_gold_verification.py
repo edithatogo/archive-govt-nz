@@ -43,7 +43,7 @@ def _package(root: Path) -> tuple[Path, str]:
             "accounting_basis",
             "period_token",
         ],
-        "completeness": "historical_budget_revenue_pharmac_moh_crown_product_rows",
+        "completeness": "historical_budget_revenue_biff8_budget_biff8_revenue_pharmac_moh_crown_product_rows",
         "difference_interpretation": "not_assessed",
         "other_product_revisions": "not_assessed",
         "cross_source_comparison": "not_performed",
@@ -159,6 +159,50 @@ def _package(root: Path) -> tuple[Path, str]:
         "ambiguous_series_period_count": 0,
         "candidates": [],
     }
+    for name, key_fields in (
+        (
+            "biff8_budget",
+            [
+                "period_token",
+                "measure",
+                "amount_type",
+                "unit",
+                "currency",
+                "price_basis",
+                "base_period",
+                "denominator_definition",
+                "source_label",
+                "vote",
+                "appropriation",
+                "department",
+                "portfolio",
+                "value_basis",
+            ],
+        ),
+        (
+            "biff8_revenue",
+            [
+                "period_token",
+                "measure",
+                "amount_type",
+                "unit",
+                "currency",
+                "price_basis",
+                "base_period",
+                "denominator_definition",
+                "source_label",
+                "vote",
+                "department",
+                "revenue_type",
+                "source_application_id",
+                "value_basis",
+            ],
+        ),
+    ):
+        revision_report["product_revisions"][name] = {
+            **revision_report["product_revisions"]["budget"],
+            "key_fields": key_fields,
+        }
     revision_payload = (
         json.dumps(revision_report, sort_keys=True, separators=(",", ":")) + "\n"
     ).encode()
@@ -359,7 +403,7 @@ def test_consumer_example_summarizes_only_verified_manifest_reports(
                 "changed_candidate_count": 0,
                 "ambiguous_series_period_count": 0,
             }
-            for product in ("pharmac", "moh", "crown")
+            for product in ("biff8_budget", "biff8_revenue", "pharmac", "moh", "crown")
         },
     }
     assert summary["cross_source_period_token_overlaps"] == {

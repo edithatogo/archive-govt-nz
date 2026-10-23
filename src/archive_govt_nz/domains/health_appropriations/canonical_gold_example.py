@@ -93,6 +93,8 @@ def _product_revision_counts(revisions: dict[str, Any]) -> dict[str, dict[str, i
     if not isinstance(products, dict) or set(products) != {
         "budget",
         "revenue",
+        "biff8_budget",
+        "biff8_revenue",
         "pharmac",
         "moh",
         "crown",

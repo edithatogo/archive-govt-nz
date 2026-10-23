@@ -9411,3 +9411,13 @@ previous successful Windows run completed pytest in 828.68 seconds. Increased
 the bounded per-stage ceiling to 1,200 seconds to provide runtime headroom;
 test selection, coverage threshold, worker count and the 30-minute job limit
 remain unchanged. Fresh exact-head Actions are required.
+
+2026-10-23 — Phase 6 BIFF8 revision reconciliation: added exact-context revision
+candidates for the canonical BIFF8 Budget appropriation and revenue products.
+Keys preserve literal period, source dimensions, qualifiers and `value_basis`;
+changed candidates retain each vintage's record ID, canonical stored-integer
+token and numeric-evidence identity. Interpretation remains unassessed and no
+cross-source comparison is introduced. Verifier/example contracts and focused
+regression coverage are being validated; this bounded report extension does not
+close Phase 6 totals/source-control reconciliation or the broader analytical
+matrix.

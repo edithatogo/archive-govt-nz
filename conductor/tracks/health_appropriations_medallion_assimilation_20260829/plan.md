@@ -1199,6 +1199,12 @@ integrated parent head.
     retain record IDs and Decimal values, report duplicate groups as ambiguous,
     and leave change interpretation and cross-source comparability unassessed.
     [M-13, S-04; AC-11, AC-12]
+  - [x] Extend revision reconciliation to canonical BIFF8 Budget appropriation
+    and revenue products. Compare only exact literal dimensions, period tokens,
+    and stored-value basis; retain record IDs, canonical stored-integer tokens,
+    and numeric-evidence IDs per vintage for changed candidates. Differences
+    remain unassessed and source-separated; no semantic or cross-source
+    equivalence is inferred. [M-13, S-04; AC-11, AC-12]
   - [x] Add a deterministic literal-period overlap catalog across observed
     canonical products, retaining source vintages, units and record identities.
     The verifier and example pin/summarize the report; comparability and
