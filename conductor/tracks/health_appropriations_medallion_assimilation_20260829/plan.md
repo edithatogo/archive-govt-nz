@@ -1242,6 +1242,15 @@ integrated parent head.
     that netting, official-source, donor and cross-source controls are not
     performed. See `revenue_input_total_reconciliation.json` and
     `canonical-revenue-input-gold-reconciliation-20261024.md`.
+  - [x] Reconcile each Pharmac Gold allocation to its exact pinned, verified
+    Silver fact. Require complete source and Gold identities, matching source
+    object, literal period, amount type, unit, label, funding regime, and exact
+    Decimal totals; retain funding regimes separately. Keep published change
+    recalculation, actual expenditure, official-source, donor, currency/price
+    basis, and cross-source controls unasserted. This closes only the
+    Silver-to-Gold Pharmac row and total control; it does not establish external
+    source or donor agreement. See `pharmac_input_total_reconciliation.json`
+    and `pharmac-input-gold-reconciliation-20261024.md`.
   - [x] Add a deterministic literal-period overlap catalog across observed
     canonical products, retaining source vintages, units and record identities.
     The verifier and example pin/summarize the report; comparability and

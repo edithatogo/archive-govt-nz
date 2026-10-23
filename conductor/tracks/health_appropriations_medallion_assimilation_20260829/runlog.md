@@ -9573,3 +9573,33 @@ skipped, 97.09% branch coverage, 81 schemas/71 representative documents,
 parity 9/9, all mutation gates, dependency and licence audits, secret scan and
 the 115-component SBOM. Exact-head hosted checks remain pending before delivery;
 Phase 6.3 and source/donor reconciliation are still open.
+
+Delivery update — the revenue control merged as PR #756 at `35f862ad` after
+Ubuntu, macOS, Windows, CodeQL, analysis, and lint passed. Its separate
+Codecov patch check remained below target (76.57%); a test-only follow-up added
+malformed-report, identity-order, and copy-consistency coverage. PR #757 merged
+as `71f29cb6` after the same required platform checks, Codecov patch, CodeQL,
+analysis, and lint passed. These deliveries close only the pinned
+canonical-input-to-Gold Budget and revenue arithmetic controls. Phase 6.3,
+external official-source and donor controls, cross-source comparisons, and
+historical-difference dispositions remain open.
+
+## 2026-10-24 — Phase 6 Pharmac Silver-to-Gold input control
+
+The canonical Gold builder now emits an optional Pharmac reconciliation when
+the verified Pharmac Silver input is included. It reopens Bronze-bound Silver
+facts, requires each source record to map exactly once to its canonical Gold
+row, checks source object/observation identity, literal period and classification
+dimensions, funding regime, and exact Decimal amounts, then groups totals by
+literal context without pooling years or regimes. The report is bound into the
+Gold product, manifest, output inventory, and RO-Crate; verifier support
+requires all three report copies to agree and retains legacy packages with no
+report. The fixed fixture has 14 exact matched source/Gold rows and repeats
+byte-identically. It is a fixture contract, not official-source or donor
+reconciliation. Focused verifier, Pharmac Gold, and canonical projection suites
+pass 59 tests; Ruff and basedpyright pass. The exact-tree `./scripts/validate.sh`
+passes on Python 3.15.1: 8,324 passed, 14 skipped, 18 warnings, and 97.15%
+branch coverage; 81 schemas/71 representative documents, parity 9/9, all
+mutation gates, dependency and licence audits, secret scan, and 115-component
+SBOM pass. Hosted PR checks remain required before delivery. Phase 6.3 and all
+external comparison controls remain open.

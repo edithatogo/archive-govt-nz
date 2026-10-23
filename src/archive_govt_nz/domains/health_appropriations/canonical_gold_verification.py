@@ -440,7 +440,162 @@ def _input_total_controls_match_manifest(
             or not matches_manifest(control, markers, products)
         ):
             return False
-    return True
+    return _pharmac_control_copies_match(root, manifest, markers, products)
+
+
+def _pharmac_control_copies_match(
+    root: Path, manifest: dict[str, Any], markers: object, products: object
+) -> bool:
+    product = products.get("pharmac") if isinstance(products, dict) else None
+    nested = (
+        product.get("input_total_reconciliation") if isinstance(product, dict) else None
+    )
+    control = manifest.get("pharmac_input_total_reconciliation_report")
+    path = root / "pharmac_input_total_reconciliation.json"
+    if nested is None and control is None and not path.exists():
+        return True
+    if nested is None or control is None or not path.is_file():
+        return False
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except OSError, UnicodeDecodeError, json.JSONDecodeError:
+        return False
+    return (
+        nested == control
+        and payload == control
+        and _pharmac_reconciliation_matches_manifest(
+            control, markers, products, manifest.get("pharmac_projection")
+        )
+    )
+
+
+def _pharmac_reconciliation_matches_manifest(
+    value: object,
+    package_markers: object,
+    products: object,
+    projection: object,
+) -> bool:
+    if (
+        not _valid_pharmac_input_total_reconciliation(value)
+        or not isinstance(value, dict)
+        or not isinstance(package_markers, list)
+        or any(
+            type(marker) is not str or _DIGEST.fullmatch(marker) is None
+            for marker in package_markers
+        )
+        or not isinstance(products, dict)
+        or not isinstance(projection, dict)
+    ):
+        return False
+    pharmac_product = products.get("pharmac")
+    return (
+        isinstance(pharmac_product, dict)
+        and set(value["source_package_marker_sha256"]).issubset(set(package_markers))
+        and value["source_object_sha256"] == projection.get("source_object_sha256")
+        and pharmac_product.get("input_total_reconciliation") == value
+    )
+
+
+def _valid_pharmac_input_total_reconciliation(value: object) -> bool:
+    if not isinstance(value, dict):
+        return False
+    groups = value.get("groups")
+    pins = value.get("source_package_marker_sha256")
+    if (
+        value.get("schema_version")
+        != "archive-govt-nz.health-pharmac-input-total-reconciliation/v1"
+        or value.get("scope") != "pinned_pharmac_silver_facts_to_pharmac_gold_rows"
+        or type(value.get("source_object_sha256")) is not str
+        or _DIGEST.fullmatch(value["source_object_sha256"]) is None
+        or value.get("period_basis") != "literal_source_token_only"
+        or value.get("unit_currency_and_price_basis")
+        != "source_context_preserved_currency_and_price_basis_unqualified"
+        or value.get("published_change_recalculation") != "not_performed"
+        or value.get("actual_expenditure") != "not_asserted"
+        or value.get("funding_regime_pooling") != "not_performed"
+        or value.get("donor_control") != "not_performed"
+        or value.get("official_source_control") != "not_performed"
+        or value.get("cross_source_comparison") != "not_performed"
+        or value.get("status") != "exact_canonical_input_totals_reconciled"
+        or type(value.get("group_count")) is not int
+        or type(value.get("input_record_count")) is not int
+        or not isinstance(groups, list)
+        or not groups
+        or value["input_record_count"] <= 0
+        or value["group_count"] != len(groups)
+        or not isinstance(pins, list)
+        or len(pins) != 1
+        or any(type(pin) is not str or _DIGEST.fullmatch(pin) is None for pin in pins)
+    ):
+        return False
+    all_input_ids: set[str] = set()
+    all_gold_ids: set[str] = set()
+    total_records = 0
+    previous_key: tuple[str, ...] | None = None
+    for group in groups:
+        parsed = _parse_pharmac_reconciliation_group(group)
+        if parsed is None:
+            return False
+        key, input_ids, gold_ids, count = parsed
+        if (
+            (previous_key is not None and key <= previous_key)
+            or all_input_ids.intersection(input_ids)
+            or all_gold_ids.intersection(gold_ids)
+        ):
+            return False
+        previous_key = key
+        all_input_ids.update(input_ids)
+        all_gold_ids.update(gold_ids)
+        total_records += count
+    return (
+        total_records == value["input_record_count"] == len(all_input_ids)
+        and len(all_gold_ids) == value["input_record_count"]
+    )
+
+
+def _parse_pharmac_reconciliation_group(
+    group: object,
+) -> tuple[tuple[str, ...], list[str], list[str], int] | None:
+    fields = (
+        "source_vintage",
+        "period_token",
+        "amount_type",
+        "unit",
+        "source_label",
+        "funding_regime",
+    )
+    if not isinstance(group, dict) or any(
+        type(group.get(field)) is not str or not group[field] for field in fields
+    ):
+        return None
+    input_ids = group.get("input_record_ids")
+    gold_ids = group.get("gold_record_ids")
+    count = group.get("input_record_count")
+    if (
+        group.get("status") != "exact_match"
+        or type(count) is not int
+        or count <= 0
+        or not isinstance(input_ids, list)
+        or not isinstance(gold_ids, list)
+        or len(input_ids) != count
+        or len(gold_ids) != count
+        or input_ids != sorted(set(input_ids))
+        or gold_ids != sorted(set(gold_ids))
+        or any(type(item) is not str or not item for item in input_ids + gold_ids)
+    ):
+        return None
+    try:
+        input_total = Decimal(group["canonical_input_total"])
+        output_total = Decimal(group["gold_output_total"])
+    except InvalidOperation, KeyError, TypeError:
+        return None
+    if (
+        not input_total.is_finite()
+        or not output_total.is_finite()
+        or input_total != output_total
+    ):
+        return None
+    return tuple(group[field] for field in fields), input_ids, gold_ids, count
 
 
 def _valid_overlap_product_group(value: object) -> bool:

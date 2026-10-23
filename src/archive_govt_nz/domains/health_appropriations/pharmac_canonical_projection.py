@@ -191,6 +191,17 @@ def _source_tables(
     return tables
 
 
+def read_verified_pharmac_tables(
+    root: Path,
+    manifest_sha256: str,
+    source_cas_root: Path,
+    source_sha256: str,
+) -> tuple[pa.Table, pa.Table, pa.Table]:
+    """Reopen verified Silver facts, lineage and dispositions from Bronze."""
+    manifest, _ = _read_manifest(root, manifest_sha256)
+    return _source_tables(root, manifest, source_cas_root, source_sha256)
+
+
 def _canonical_id(source_record_id: str) -> str:
     payload = f"{PROJECTION_RULE}\0{source_record_id}".encode()
     return "sha256:" + hashlib.sha256(payload).hexdigest()
@@ -272,9 +283,8 @@ def project_pharmac_cpb(
     recalculated, price basis remains unknown, and rights remain unevaluated.
     """
     _require(type(manifest_sha256) is str and _DIGEST.fullmatch(manifest_sha256))
-    manifest, _ = _read_manifest(root, manifest_sha256)
-    facts, lineage, dispositions = _source_tables(
-        root, manifest, source_cas_root, source_sha256
+    facts, lineage, dispositions = read_verified_pharmac_tables(
+        root, manifest_sha256, source_cas_root, source_sha256
     )
     fact_rows = facts.to_pylist()
     lineage_index: dict[str, dict[str, list[dict[str, Any]]]] = {}
