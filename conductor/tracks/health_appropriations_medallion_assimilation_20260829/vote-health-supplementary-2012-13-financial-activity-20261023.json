@@ -12,6 +12,7 @@
     "bytes": 224975,
     "pages": 33,
     "bronze_cas_verified": true,
+    "volume": "PortableSSD",
     "capture_manifest": "official-capture-2026-09-30-health-refresh.json",
     "capture_manifest_sha256": "2de49f07c877aab196afae572db32bfc2d48fd4340eb17c9a4bfb3bb2cc357e7",
     "warc_sha256": "aef3f47a7a2f9b55ead294255e600cf066e342887d156955538a458b22a90306",
@@ -33,9 +34,6 @@
     "unreviewed_content": "All other PDF pages and rows remain preserved-only; the separate main Supplementary Estimates PDF is not substituted for this supporting-information source."
   },
   "silver_builds": {
-    "build_a": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/silver/vote-health-supplementary-2012-13-financial-activity-20261023-a",
-    "build_b": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/silver/vote-health-supplementary-2012-13-financial-activity-20261023-b",
-    "retained_package": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/silver/vote-health-supplementary-2012-13-financial-activity-20261023-v1",
     "identical": true,
     "outputs": {
       "MANIFEST.json": {
@@ -54,7 +52,22 @@
         "bytes": 13392,
         "sha256": "5e1a35eb5a5184df723a71e4d744dd6f64a61fc3c5b8fd8b42e0db8b998601af"
       }
-    }
+    },
+    "build_a_volume_relative": [
+      "health-appropriations",
+      "silver",
+      "vote-health-supplementary-2012-13-financial-activity-20261023-a"
+    ],
+    "build_b_volume_relative": [
+      "health-appropriations",
+      "silver",
+      "vote-health-supplementary-2012-13-financial-activity-20261023-b"
+    ],
+    "retained_package_volume_relative": [
+      "health-appropriations",
+      "silver",
+      "vote-health-supplementary-2012-13-financial-activity-20261023-v1"
+    ]
   },
   "qualification": {
     "period": "2012/13 source edition; fiscal year bounds are not independently inferred here.",

@@ -5,11 +5,9 @@
   "source_vintage": "StatsNZ-GDP-2026Q2",
   "source_sha256": "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
   "bronze_cas_verified": true,
+  "volume": "PortableSSD",
   "profile": "stats-nz-gdp-current-price-expenditure-actual-2026q2/v1",
   "selected_series": "Table 1!C27:BK27; SNEQ/SG03AB01GE00S900; 61 quarterly current-price actuals, June 2011 through June 2026; literal unit $(million).",
-  "build_a": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/silver/gdp-june-2026q2-context-replay-20261023-a",
-  "build_b": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/silver/gdp-june-2026q2-context-replay-20261023-b",
-  "retained_package": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/silver/gdp-june-2026q2-context-20261023-v1",
   "all_package_files_byte_identical": true,
   "counts": {
     "facts": 61,
@@ -42,5 +40,20 @@
     "merge_with_march_2026_vintage": "not_performed",
     "gold_admission": "not_performed",
     "publication": "not_performed"
-  }
+  },
+  "build_a_volume_relative": [
+    "health-appropriations",
+    "silver",
+    "gdp-june-2026q2-context-replay-20261023-a"
+  ],
+  "build_b_volume_relative": [
+    "health-appropriations",
+    "silver",
+    "gdp-june-2026q2-context-replay-20261023-b"
+  ],
+  "retained_package_volume_relative": [
+    "health-appropriations",
+    "silver",
+    "gdp-june-2026q2-context-20261023-v1"
+  ]
 }
