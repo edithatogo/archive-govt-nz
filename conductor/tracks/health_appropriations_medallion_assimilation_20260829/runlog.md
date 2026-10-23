@@ -9418,6 +9418,14 @@ Keys preserve literal period, source dimensions, qualifiers and `value_basis`;
 changed candidates retain each vintage's record ID, canonical stored-integer
 token and numeric-evidence identity. Interpretation remains unassessed and no
 cross-source comparison is introduced. Verifier/example contracts and focused
-regression coverage are being validated; this bounded report extension does not
+regression coverage pass; this bounded report extension does not
 close Phase 6 totals/source-control reconciliation or the broader analytical
 matrix.
+
+Review follow-up: preserved read compatibility for prior canonical Gold v2
+packages using the original five-product revision report while new builds emit
+the seven-product report. Added an end-to-end legacy package verification and
+consumer-summary regression. Updated full validation passes 8299 tests/14 skips,
+97.16% coverage, 81 schemas/71 representative documents, parity 9/9, mutation,
+dependency audit, licence, secret scan and SBOM gates. Fresh exact-head hosted
+assurance is required for the review fix.

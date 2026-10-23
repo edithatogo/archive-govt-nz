@@ -120,6 +120,11 @@ _PRODUCT_REVISION_KEY_FIELDS = {
         "accounting_basis",
     ),
 }
+_LEGACY_PRODUCT_REVISION_KEY_FIELDS = {
+    name: key_fields
+    for name, key_fields in _PRODUCT_REVISION_KEY_FIELDS.items()
+    if name not in {"biff8_budget", "biff8_revenue"}
+}
 _MIN_OVERLAP_PRODUCTS = 2
 _ALLOWED_OVERLAP_PRODUCTS = {
     "historical",
@@ -150,9 +155,15 @@ def _fail_type(message: str) -> NoReturn:
 
 
 def _valid_product_revision_reports(value: object) -> bool:
-    if not isinstance(value, dict) or set(value) != set(_PRODUCT_REVISION_KEY_FIELDS):
+    if not isinstance(value, dict):
         return False
-    for name, key_fields in _PRODUCT_REVISION_KEY_FIELDS.items():
+    if set(value) == set(_PRODUCT_REVISION_KEY_FIELDS):
+        key_fields_by_product = _PRODUCT_REVISION_KEY_FIELDS
+    elif set(value) == set(_LEGACY_PRODUCT_REVISION_KEY_FIELDS):
+        key_fields_by_product = _LEGACY_PRODUCT_REVISION_KEY_FIELDS
+    else:
+        return False
+    for name, key_fields in key_fields_by_product.items():
         report = value.get(name)
         if (
             not isinstance(report, dict)
@@ -444,10 +455,13 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
         != "archive-govt-nz.health-revision-reconciliation/v1"
         or revision_report.get("key_fields") != list(_REVISION_KEY_FIELDS)
         or revision_report.get("completeness")
-        != (
-            "historical_budget_revenue_biff8_budget_biff8_revenue_"
-            "pharmac_moh_crown_product_rows"
-        )
+        not in {
+            "historical_budget_revenue_pharmac_moh_crown_product_rows",
+            (
+                "historical_budget_revenue_biff8_budget_biff8_revenue_"
+                "pharmac_moh_crown_product_rows"
+            ),
+        }
         or revision_report.get("difference_interpretation") != "not_assessed"
         or revision_report.get("other_product_revisions") != "not_assessed"
         or revision_report.get("cross_source_comparison") != "not_performed"

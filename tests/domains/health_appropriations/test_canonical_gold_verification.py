@@ -417,6 +417,40 @@ def test_consumer_example_summarizes_only_verified_manifest_reports(
     assert summary["publication"] == "not_performed"
 
 
+def test_legacy_v2_gold_package_remains_verifiable(tmp_path: Path) -> None:
+    root, _pin = _package(tmp_path / "legacy-gold")
+    marker = root / "MANIFEST.json"
+    manifest = json.loads(marker.read_text(encoding="utf-8"))
+    report = manifest["revision_reconciliation_report"]
+    report["completeness"] = "historical_budget_revenue_pharmac_moh_crown_product_rows"
+    report["product_revisions"].pop("biff8_budget")
+    report["product_revisions"].pop("biff8_revenue")
+    payload = (
+        json.dumps(report, sort_keys=True, separators=(",", ":")) + "\n"
+    ).encode()
+    (root / "historical_revision_reconciliation.json").write_bytes(payload)
+    manifest["outputs"]["historical_revision_reconciliation.json"].update(
+        {"sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)}
+    )
+    marker.write_text(
+        json.dumps(manifest, sort_keys=True, separators=(",", ":")) + "\n",
+        encoding="utf-8",
+    )
+    pin = hashlib.sha256(marker.read_bytes()).hexdigest()
+
+    receipt = verify_canonical_gold_package(root, pin)
+    summary = summarize_verified_canonical_gold(root, pin)
+
+    assert receipt["status"] == "verified"
+    assert set(summary["product_revisions"]) == {
+        "budget",
+        "revenue",
+        "pharmac",
+        "moh",
+        "crown",
+    }
+
+
 def test_consumer_example_fails_closed_on_unverified_or_malformed_summary(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
