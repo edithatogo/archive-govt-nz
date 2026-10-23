@@ -4,10 +4,11 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections.abc import Callable
 from datetime import UTC, date, datetime
 from decimal import Decimal
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any, cast
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -19,10 +20,49 @@ from tests.domains.health_appropriations.test_canonical_gold_verification import
 
 from archive_govt_nz import cli, mcp_server
 from archive_govt_nz.domains.health_appropriations import (
+    canonical_consumer,
+    fiscal_analytical_operations,
+)
+
+if TYPE_CHECKING:
+    import duckdb
+from archive_govt_nz.domains.health_appropriations import (
     canonical_gold_queries as query,
 )
 
 AMOUNT = Decimal("12.345678901234567890")
+
+
+class _NoRelationDatabase:
+    def sql(self, *_args: object, **_kwargs: object) -> None:
+        return None
+
+
+@pytest.mark.parametrize(
+    ("query", "reason"),
+    [
+        (
+            canonical_consumer._query_arrow_table,  # noqa: SLF001
+            "canonical_consumer_query_relation_missing",
+        ),
+        (
+            query._query_arrow_table,  # noqa: SLF001
+            "canonical_gold_query_relation_missing",
+        ),
+        (
+            fiscal_analytical_operations._query_arrow_table,  # noqa: SLF001
+            "fiscal_gold_query_relation_missing",
+        ),
+    ],
+)
+def test_duckdb_query_helpers_fail_closed_without_a_relation(
+    query: Callable[..., pa.Table], reason: str
+) -> None:
+    """Typed DuckDB reads refuse an absent SQL relation explicitly."""
+    database = cast("duckdb.DuckDBPyConnection", _NoRelationDatabase())
+
+    with pytest.raises(ValueError, match=f"^{reason}$"):
+        query(database, "SELECT 1", [])
 
 
 def source_value(field: pa.Field, year: int) -> object:

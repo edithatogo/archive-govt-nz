@@ -9514,3 +9514,13 @@ retaining the return-code assertion. The complete required harness then passed:
 parity 9/9, all mutation gates, dependency audit, licence inventory, secret scan,
 and SBOM (115 components). Hosted checks for the amended exact head are pending.
 The Phase 6 source/donor reconciliation and wider report matrix remain open.
+
+The amended PR #754 exact-head hosted assurance completed on 2026-10-23:
+Ubuntu 14m56s, macOS 19m37s, Windows 23m19s; all three passed, as did
+CodeQL, dependency review and workflow-policy lint. The optional Codecov patch
+check reported 70% against its 80% target because DuckDB's explicit absent-
+relation guards were not yet exercised. Added a parameterized fail-closed
+regression for all three query helpers; focused tests pass 3/3, and the local
+full-suite coverage data now records 30/30 changed executable Python lines
+covered. This test-only follow-up is on the branch and requires fresh hosted
+checks; the prior hosted green results apply to its parent commit only.
