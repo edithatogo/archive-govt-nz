@@ -210,6 +210,7 @@ def _valid_budget_input_total_reconciliation(value: object) -> bool:
         or type(value.get("group_count")) is not int
         or type(value.get("input_record_count")) is not int
         or not isinstance(groups, list)
+        or not groups
         or value["group_count"] != len(groups)
         or not isinstance(pins, list)
         or not pins
@@ -282,6 +283,160 @@ def _budget_reconciliation_matches_manifest(
         set(value["source_package_marker_sha256"]).issubset(set(package_markers))
         and budget_product.get("input_total_reconciliation") == value
     )
+
+
+def _valid_revenue_input_total_reconciliation(value: object) -> bool:
+    if not isinstance(value, dict):
+        return False
+    groups = value.get("groups")
+    pins = value.get("source_package_marker_sha256")
+    fields = (
+        "source_vintage",
+        "period_token",
+        "amount_type",
+        "unit",
+        "vote",
+        "department",
+        "revenue_type",
+        "source_label",
+    )
+    if (
+        value.get("schema_version")
+        != "archive-govt-nz.health-revenue-input-total-reconciliation/v1"
+        or value.get("scope") != "pinned_canonical_revenue_facts_to_revenue_gold_rows"
+        or value.get("period_basis") != "literal_source_token_only"
+        or value.get("unit_currency_and_price_basis")
+        != "source_context_preserved_currency_unknown"
+        or value.get("revenue_netting") != "not_performed"
+        or value.get("vintage_pooling") != "not_performed"
+        or value.get("donor_control") != "not_performed"
+        or value.get("official_source_control") != "not_performed"
+        or value.get("cross_source_comparison") != "not_performed"
+        or value.get("status") != "exact_canonical_input_totals_reconciled"
+        or type(value.get("group_count")) is not int
+        or type(value.get("input_record_count")) is not int
+        or not isinstance(groups, list)
+        or not groups
+        or value["input_record_count"] <= 0
+        or value["group_count"] != len(groups)
+        or not isinstance(pins, list)
+        or not pins
+        or any(type(pin) is not str or _DIGEST.fullmatch(pin) is None for pin in pins)
+        or pins != sorted(set(pins))
+    ):
+        return False
+    all_ids: set[str] = set()
+    total_records = 0
+    previous_key: tuple[str, ...] | None = None
+    for group in groups:
+        parsed = _parse_revenue_input_total_group(group, fields)
+        if parsed is None:
+            return False
+        key, record_ids, record_count = parsed
+        if previous_key is not None and key <= previous_key:
+            return False
+        if all_ids.intersection(record_ids):
+            return False
+        previous_key = key
+        all_ids.update(record_ids)
+        total_records += record_count
+    return total_records == value["input_record_count"] == len(all_ids)
+
+
+def _parse_revenue_input_total_group(
+    group: object, fields: tuple[str, ...]
+) -> tuple[tuple[str, ...], list[str], int] | None:
+    if not isinstance(group, dict) or any(
+        type(group.get(field)) is not str or not group[field] for field in fields
+    ):
+        return None
+    record_ids = group.get("input_record_ids")
+    record_count = group.get("input_record_count")
+    if (
+        group.get("status") != "exact_match"
+        or type(record_count) is not int
+        or record_count <= 0
+        or not isinstance(record_ids, list)
+        or len(record_ids) != record_count
+        or record_ids != sorted(set(record_ids))
+        or any(type(record_id) is not str or not record_id for record_id in record_ids)
+    ):
+        return None
+    try:
+        input_total = Decimal(group["canonical_input_total"])
+        output_total = Decimal(group["gold_output_total"])
+    except InvalidOperation, KeyError, TypeError:
+        return None
+    if (
+        not input_total.is_finite()
+        or not output_total.is_finite()
+        or input_total != output_total
+    ):
+        return None
+    return tuple(group[field] for field in fields), record_ids, record_count
+
+
+def _revenue_reconciliation_matches_manifest(
+    value: object, package_markers: object, products: object
+) -> bool:
+    if (
+        not _valid_revenue_input_total_reconciliation(value)
+        or not isinstance(package_markers, list)
+        or any(
+            type(marker) is not str or _DIGEST.fullmatch(marker) is None
+            for marker in package_markers
+        )
+        or not isinstance(products, dict)
+        or not isinstance(value, dict)
+    ):
+        return False
+    revenue_product = products.get("revenue")
+    return (
+        isinstance(revenue_product, dict)
+        and set(value["source_package_marker_sha256"]).issubset(set(package_markers))
+        and revenue_product.get("input_total_reconciliation") == value
+    )
+
+
+def _input_total_controls_match_manifest(
+    root: Path, manifest: dict[str, Any], products: object
+) -> bool:
+    markers = manifest.get("package_marker_sha256")
+    budget_control = manifest.get("budget_input_total_reconciliation_report")
+    if budget_control is not None:
+        try:
+            payload = json.loads(
+                (root / "budget_input_total_reconciliation.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+        except OSError, UnicodeDecodeError, json.JSONDecodeError:
+            return False
+        if (
+            not _budget_reconciliation_matches_manifest(
+                budget_control, markers, products
+            )
+            or payload != budget_control
+        ):
+            return False
+    revenue_control = manifest.get("revenue_input_total_reconciliation_report")
+    if revenue_control is not None:
+        try:
+            payload = json.loads(
+                (root / "revenue_input_total_reconciliation.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+        except OSError, UnicodeDecodeError, json.JSONDecodeError:
+            return False
+        if (
+            not _revenue_reconciliation_matches_manifest(
+                revenue_control, markers, products
+            )
+            or payload != revenue_control
+        ):
+            return False
+    return True
 
 
 def _valid_overlap_product_group(value: object) -> bool:
@@ -521,7 +676,6 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
     classification_report = manifest.get("classification_drift_report")
     revision_report = manifest.get("revision_reconciliation_report")
     overlap_report = manifest.get("cross_source_period_overlap_report")
-    budget_control = manifest.get("budget_input_total_reconciliation_report")
     try:
         revision_payload = json.loads(
             (root / "historical_revision_reconciliation.json").read_text(
@@ -536,16 +690,6 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
         )
     except OSError, UnicodeDecodeError, json.JSONDecodeError:
         overlap_payload = None
-    budget_control_payload = None
-    if budget_control is not None:
-        try:
-            budget_control_payload = json.loads(
-                (root / "budget_input_total_reconciliation.json").read_text(
-                    encoding="utf-8"
-                )
-            )
-        except OSError, UnicodeDecodeError, json.JSONDecodeError:
-            budget_control_payload = None
     if (
         not isinstance(products, dict)
         or not isinstance(temporal_report, dict)
@@ -577,15 +721,7 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
         or revision_payload != revision_report
         or not _valid_cross_source_period_overlap(overlap_report)
         or overlap_payload != overlap_report
-        or (
-            budget_control is not None
-            and (
-                not _budget_reconciliation_matches_manifest(
-                    budget_control, manifest.get("package_marker_sha256"), products
-                )
-                or budget_control_payload != budget_control
-            )
-        )
+        or not _input_total_controls_match_manifest(root, manifest, products)
         or any(type(name) is not str or not name for name in products)
     ):
         _fail("invalid_gold_reports")

@@ -100,6 +100,58 @@ def test_budget_input_total_report_pins_are_bound_to_manifest_provenance() -> No
     )
 
 
+def test_revenue_input_total_report_pins_are_bound_to_manifest_provenance() -> None:
+    report = {
+        "schema_version": "archive-govt-nz.health-revenue-input-total-reconciliation/v1",
+        "scope": "pinned_canonical_revenue_facts_to_revenue_gold_rows",
+        "source_package_marker_sha256": ["a" * 64],
+        "period_basis": "literal_source_token_only",
+        "unit_currency_and_price_basis": "source_context_preserved_currency_unknown",
+        "revenue_netting": "not_performed",
+        "vintage_pooling": "not_performed",
+        "donor_control": "not_performed",
+        "official_source_control": "not_performed",
+        "cross_source_comparison": "not_performed",
+        "group_count": 1,
+        "input_record_count": 1,
+        "status": "exact_canonical_input_totals_reconciled",
+        "groups": [
+            {
+                "source_vintage": "Budget 2025",
+                "period_token": "FY2025/26",
+                "amount_type": "estimated_actual",
+                "unit": "NZD_thousands",
+                "vote": "Health",
+                "department": "Health",
+                "revenue_type": "Other revenue",
+                "source_label": "Operating",
+                "input_record_count": 1,
+                "input_record_ids": ["record-1"],
+                "canonical_input_total": "4.000000000000000000",
+                "gold_output_total": "4.000000000000000000",
+                "status": "exact_match",
+            }
+        ],
+    }
+    markers = ["a" * 64]
+    products = {"revenue": {"input_total_reconciliation": report}}
+
+    assert canonical_gold_verification._revenue_reconciliation_matches_manifest(  # noqa: SLF001
+        report, markers, products
+    )
+    unrelated = {**report, "source_package_marker_sha256": ["b" * 64]}
+    assert not canonical_gold_verification._revenue_reconciliation_matches_manifest(  # noqa: SLF001
+        unrelated,
+        markers,
+        {"revenue": {"input_total_reconciliation": unrelated}},
+    )
+    assert not canonical_gold_verification._revenue_reconciliation_matches_manifest(  # noqa: SLF001
+        report,
+        markers,
+        {"revenue": {"input_total_reconciliation": unrelated}},
+    )
+
+
 def _package(root: Path) -> tuple[Path, str]:
     root.mkdir()
     payload = b"verified-output-payload"

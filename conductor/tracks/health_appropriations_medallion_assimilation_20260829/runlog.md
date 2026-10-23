@@ -9554,3 +9554,22 @@ selection passed, as did the report valid/invalid focused contracts. The require
 18 warnings, 97.15% branch coverage; 81 schemas/71 documents, parity 9/9, all
 mutation gates, dependency and licence audits, secret scan, and the 115-component
 SBOM passed. Hosted PR Actions remain required before merge.
+
+## 2026-10-24 — Phase 6 Budget revenue canonical-input total control
+
+Added a deterministic revenue-to-Gold reconciliation for the separately
+projected canonical `revenue_fact` inputs. It verifies one-to-one record
+identity, literal dimensions and exact Decimal amounts before grouping by
+vintage, literal period, amount type, unit, Vote, department, revenue type and
+source label. The fixture keeps actual revenue and capital receipts in separate
+groups. The verifier binds report pins to package markers and the nested revenue
+product, rejects incomplete/duplicate identities and unequal totals, and keeps
+netting, official-source, donor and cross-source controls explicitly
+unperformed.
+
+The canonical-consumer and Gold-verification focused suites pass 72 tests. The
+exact-tree `./scripts/validate.sh` passes on Python 3.15.1: 8,313 passed, 14
+skipped, 97.09% branch coverage, 81 schemas/71 representative documents,
+parity 9/9, all mutation gates, dependency and licence audits, secret scan and
+the 115-component SBOM. Exact-head hosted checks remain pending before delivery;
+Phase 6.3 and source/donor reconciliation are still open.
