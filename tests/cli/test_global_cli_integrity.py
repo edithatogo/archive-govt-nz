@@ -713,7 +713,9 @@ def test_schema_directory_reports_missing_and_invalid_schemas(tmp_path: Path) ->
 
 
 def test_verify_executes_real_cas_schema_and_provenance_checks(
-    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     """Global verification succeeds only on inspected integrity evidence."""
     store = ContentAddressedStore(tmp_path / "cas")
@@ -749,6 +751,21 @@ def test_verify_executes_real_cas_schema_and_provenance_checks(
         "python_runtime",
     }
 
+    monkeypatch.setattr("archive_govt_nz.cli.sys.version_info", (3, 16, 0))
+    unsupported_code = verify(
+        cas_dir=str(store.root),
+        schemas_dir=str(schemas),
+        provenance_path=str(ledger),
+        format="json",
+    )
+    unsupported = json.loads(capsys.readouterr().out)
+    runtime_check = next(
+        check for check in unsupported["checks"] if check["name"] == "python_runtime"
+    )
+    assert unsupported_code == 1
+    assert unsupported["status"] == "failed"
+    assert runtime_check["failures"] == ["python_runtime_unsupported"]
+
 
 def test_doctor_enforces_python_3151(
     capsys: pytest.CaptureFixture[str], monkeypatch: pytest.MonkeyPatch
@@ -761,4 +778,4 @@ def test_doctor_enforces_python_3151(
 
     assert code == 1
     assert payload["python_min_satisfied"] is False
-    assert payload["required_python"] == ">=3.15.1"
+    assert payload["required_python"] == ">=3.15.1,<3.16"

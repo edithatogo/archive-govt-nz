@@ -57,6 +57,7 @@ from archive_govt_nz.domains.health_appropriations.source_operations import (
     preflight_source,
 )
 from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
+from archive_govt_nz.python_runtime import REQUIRED_PYTHON, is_supported_python
 from archive_govt_nz.schemas.medallion import (
     DOMAIN_REGISTRY,
     get_domain_schema_definition,
@@ -261,7 +262,7 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                 "integrity_status": {"const": "not_checked"},
                 "python_min_satisfied": {"type": "boolean"},
                 "python_version": {"type": "string"},
-                "required_python": {"const": ">=3.15.1"},
+                "required_python": {"const": REQUIRED_PYTHON},
                 "runtime_state": {
                     "enum": ["runtime_compatible", "runtime_incompatible"]
                 },
@@ -1213,12 +1214,12 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
         raise ValueError(message)
     args = arguments or {}
     if name == "archive_doctor":
-        satisfied = sys.version_info >= (3, 15, 1)
+        satisfied = is_supported_python(sys.version_info[:3])
         result = {
             "integrity_status": "not_checked",
             "python_min_satisfied": satisfied,
             "python_version": sys.version.split()[0],
-            "required_python": ">=3.15.1",
+            "required_python": REQUIRED_PYTHON,
             "runtime_state": (
                 "runtime_compatible" if satisfied else "runtime_incompatible"
             ),

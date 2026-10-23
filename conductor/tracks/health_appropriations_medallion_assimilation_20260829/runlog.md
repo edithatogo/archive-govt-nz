@@ -9524,3 +9524,13 @@ regression for all three query helpers; focused tests pass 3/3, and the local
 full-suite coverage data now records 30/30 changed executable Python lines
 covered. This test-only follow-up is on the branch and requires fresh hosted
 checks; the prior hosted green results apply to its parent commit only.
+
+2026-10-24 — PR #754 review finding: fixed the declared Python upper-bound
+mismatch. A shared predicate now enforces `>=3.15.1,<3.16` across CLI doctor,
+verify, legislation doctor, and MCP doctor; the MCP output schema exposes the
+full requirement. Added boundary tests for Python 3.15.0, 3.15.1, 3.15.9,
+3.16.0, and 4.0.0, plus CLI, verify, and MCP regressions. Focused tests pass
+9/9, Ruff and basedpyright pass, and the complete repository harness passes
+8,308 tests/14 skips at 97.16% coverage, 81 schemas/71 documents, parity 9/9,
+all mutation gates, audit/licence/secret scan, and SBOM. New exact-head hosted
+checks and review-thread resolution remain pending.
