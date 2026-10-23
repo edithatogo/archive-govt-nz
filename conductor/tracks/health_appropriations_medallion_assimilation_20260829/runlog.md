@@ -9623,3 +9623,45 @@ basedpyright passed. The required `./scripts/validate.sh` passed on Python
 dependency and licence audits, secret scan, and 115-component SBOM passed.
 Phase 6.2 broader analytical/report coverage, Phase 6.3 external reconciliation,
 and final track completion remain open.
+
+## 2026-10-24 — Phase 5 Vote Health 2013/14 financial activity
+
+Added a distinct pinned Silver profile for PDF page 7 of the 2013/14
+Supplementary Estimates. It retains fourteen rows, five `$000` values per row,
+literal missing tokens, repeated-label source order, and 70 field-lineage
+coordinates. Bronze remained byte-identical; two clean-room builds and the
+persisted Silver output digests match. The older category-profile receipt's
+91,611-byte discrepancy remains preserved and unresolved in that old record;
+the current source length is verified from the 470,538-byte CAS payload and
+capture manifest. Rights, currency, annual bounds, cross-edition comparison,
+Gold admission and publication remain unqualified.
+
+The repo-local Python 3.15.1 qualification required DuckDB 2.0.0 and PyArrow
+26.0.0. A stable-ABI DuckDB wheel replaced the failing DuckDB 1.5.6 source
+build on this host. PyArrow 26's deterministic GDP June Silver bytes produce
+a new manifest pin; two independent builds match and the prior receipt remains
+unchanged. The active source pin and context tests were updated with evidence
+in `gdp-june-runtime-refresh-20261024.json`. Five newly exposed compatibility
+issues were repaired (profile schema, new manifest pin, modern typing, lint),
+then the focused related suites passed 622 tests/10 skips. Full
+`./scripts/validate.sh` passed 8,309 tests/14 skips at 97.17% coverage, 81
+schemas/71 documents, parity 9/9, all mutation checks, dependency/licence/
+secret audit and SBOM. Fresh exact-head hosted Actions are required.
+
+## 2026-10-24 — Phase 5 Vote Health 2013/14 mainline integration
+
+Rebased the bounded 2013/14 financial-activity profile onto current `main`,
+retaining the incoming Phase 6 log entries and appending this Phase 5 record.
+The evidence receipt now uses the content-addressed CAS locator without an
+absolute PortableSSD path. The initial exact-tree supply-chain scan identified
+that machine-local path and a `secrets` summary-key false positive; both were
+removed, the isolated secret scan passed, and the final full harness passed.
+
+On CPython 3.15.1, the focused Vote Health/source-operation/GDP/context Gold
+selection passed 559 tests with 10 skips. `./scripts/validate.sh` passed on the
+corrected tree: 8,334 passed, 14 skipped, 18 warnings, and 97.11% branch
+coverage against the 80% gate; 81 schemas/71 representative documents, parity
+9/9, mutation gates, dependency/license audits, secret scan, and 115-component
+SBOM passed. This completes one local Phase 5 Vote Health profile only. Rights,
+currency, annual bounds, cross-edition comparison, Gold admission and
+publication remain unqualified; Phase 5 and contextual-series work remain open.
