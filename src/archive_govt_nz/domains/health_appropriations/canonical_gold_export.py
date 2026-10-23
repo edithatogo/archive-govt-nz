@@ -6,7 +6,7 @@ import hashlib
 import json
 from contextlib import suppress
 from dataclasses import dataclass
-from decimal import Decimal
+from decimal import Decimal, localcontext
 from io import BytesIO
 from typing import TYPE_CHECKING, Any
 
@@ -20,6 +20,7 @@ from archive_govt_nz.domains.health_appropriations import (
     hyefu_crown_expense_canonical_projection,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
+    NOMINAL_BUDGET_SCHEMA,
     query_historical_observations,
     query_nominal_budget,
     query_nominal_revenue,
@@ -328,6 +329,99 @@ def _quality_report(
             "revision_reconciliation",
             "cross_source_reconciliation",
         ],
+    }
+
+
+_BUDGET_RECONCILIATION_FIELDS = (
+    "source_vintage",
+    "period_token",
+    "amount_type",
+    "unit",
+    "vote",
+    "department",
+    "portfolio",
+    "source_label",
+)
+
+
+def build_budget_input_total_reconciliation(
+    packages: tuple[CanonicalPackageInput, ...], gold: pa.Table
+) -> dict[str, Any]:
+    """Tie Budget Gold totals to their exact pinned canonical input records."""
+    _require(
+        isinstance(packages, tuple)
+        and 0 < len(packages) <= MAX_PACKAGES
+        and all(package.kind == "budget" for package in packages)
+        and gold.schema.equals(NOMINAL_BUDGET_SCHEMA, check_metadata=True)
+    )
+    source: dict[str, dict[str, Any]] = {}
+    package_markers: list[str] = []
+    for package in packages:
+        canonical, receipt = read_verified_canonical_tables(package)
+        facts = canonical["appropriation_fact"]
+        package_markers.append(receipt["marker_sha256"])
+        for row in facts.to_pylist():
+            record_id = row["record_id"]
+            _require(
+                type(record_id) is str and bool(record_id) and record_id not in source
+            )
+            _require(isinstance(row["amount"], Decimal) and row["amount"].is_finite())
+            source[record_id] = row
+
+    rows = []
+    consumed: set[str] = set()
+    for output in gold.to_pylist():
+        ids = output["input_record_ids"]
+        _require(
+            isinstance(ids, list)
+            and bool(ids)
+            and ids == sorted(set(ids))
+            and not consumed.intersection(ids)
+        )
+        selected = [source.get(record_id) for record_id in ids]
+        _require(all(row is not None for row in selected))
+        inputs = [row for row in selected if row is not None]
+        _require(
+            all(
+                all(
+                    row[field] == output[field]
+                    for field in _BUDGET_RECONCILIATION_FIELDS
+                )
+                for row in inputs
+            )
+        )
+        with localcontext() as context:
+            context.prec = 50
+            total = sum((row["amount"] for row in inputs), Decimal(0))
+        _require(
+            output["input_count"] == len(inputs) and output["total_amount"] == total
+        )
+        consumed.update(ids)
+        rows.append(
+            {
+                **{field: output[field] for field in _BUDGET_RECONCILIATION_FIELDS},
+                "input_record_count": len(inputs),
+                "input_record_ids": ids,
+                "canonical_input_total": str(total),
+                "gold_output_total": str(output["total_amount"]),
+                "status": "exact_match",
+            }
+        )
+    _require(consumed == set(source) and len(rows) == gold.num_rows)
+    return {
+        "schema_version": "archive-govt-nz.health-budget-input-total-reconciliation/v1",
+        "scope": "pinned_canonical_appropriation_facts_to_budget_gold_rows",
+        "source_package_marker_sha256": sorted(package_markers),
+        "period_basis": "literal_source_token_only",
+        "unit_currency_and_price_basis": "source_context_preserved_currency_unknown",
+        "vintage_pooling": "not_performed",
+        "donor_control": "not_performed",
+        "official_source_control": "not_performed",
+        "cross_source_comparison": "not_performed",
+        "group_count": len(rows),
+        "input_record_count": len(source),
+        "status": "exact_canonical_input_totals_reconciled",
+        "groups": rows,
     }
 
 
@@ -866,6 +960,15 @@ def _output_inventory(
             "bytes": len(payload),
             "kind": kind,
             **({"standards_profile": profile} if profile else {}),
+            "rights_state": "not_evaluated",
+            "publication": "not_performed",
+        }
+    if "budget_input_total_reconciliation.json" in payloads:
+        payload = payloads["budget_input_total_reconciliation.json"]
+        outputs["budget_input_total_reconciliation.json"] = {
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "bytes": len(payload),
+            "kind": "report",
             "rights_state": "not_evaluated",
             "publication": "not_performed",
         }
@@ -1637,6 +1740,15 @@ def _build_payloads(
     cross_source_report = build_cross_source_period_overlap_report(tables)
     payloads["historical_revision_reconciliation.json"] = _encoded(revision_report)
     payloads["cross_source_period_overlap.json"] = _encoded(cross_source_report)
+    budget_packages = tuple(package for package in packages if package.kind == "budget")
+    if budget_packages:
+        budget_reconciliation = build_budget_input_total_reconciliation(
+            budget_packages, tables["budget"]
+        )
+        products["budget"]["input_total_reconciliation"] = budget_reconciliation
+        payloads["budget_input_total_reconciliation.json"] = _encoded(
+            budget_reconciliation
+        )
     payloads["ro-crate-metadata.json"] = _encoded(_ro_crate_metadata(payloads))
     return (
         payloads,
@@ -1779,6 +1891,9 @@ def _export(
         "classification_drift_report": classification_drift_report,
         "revision_reconciliation_report": revision_report,
         "cross_source_period_overlap_report": cross_source_report,
+        "budget_input_total_reconciliation_report": product_report.get(
+            "budget", {}
+        ).get("input_total_reconciliation"),
         "plot_report": plot_report,
         "quality_report": quality_report,
         "period_ordering": (

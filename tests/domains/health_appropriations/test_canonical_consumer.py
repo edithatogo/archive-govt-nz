@@ -314,6 +314,40 @@ def test_exact_nominal_query_retains_source_labels_and_lineage(tmp_path: Path) -
     assert before == {path: path.read_bytes() for path in before}
 
 
+def test_budget_gold_reconciles_exact_pinned_canonical_input_totals(
+    tmp_path: Path,
+) -> None:
+    package = _package(tmp_path / "budget")
+    canonical, receipt = read_verified_canonical_tables(package)
+    source_rows = canonical["appropriation_fact"].to_pylist()
+    output = tmp_path / "gold"
+
+    manifest = export_canonical_gold((package,), output, write=True)
+
+    report = json.loads(
+        (output / "budget_input_total_reconciliation.json").read_bytes()
+    )
+    assert manifest["budget_input_total_reconciliation_report"] == report
+    assert report["source_package_marker_sha256"] == [receipt["marker_sha256"]]
+    assert report["official_source_control"] == "not_performed"
+    assert report["donor_control"] == "not_performed"
+    assert report["cross_source_comparison"] == "not_performed"
+    assert report["group_count"] == 1
+    group = report["groups"][0]
+    assert group["status"] == "exact_match"
+    assert group["input_record_ids"] == sorted(row["record_id"] for row in source_rows)
+    assert Decimal(group["canonical_input_total"]) == sum(
+        (row["amount"] for row in source_rows), Decimal(0)
+    )
+    assert Decimal(group["gold_output_total"]) == Decimal("246.000000000000000000")
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
+    )
+
+
 def test_wrong_kind_and_repeated_identity_fail_closed(tmp_path: Path) -> None:
     package = _package(tmp_path)
     with pytest.raises(ValueError, match=r"^canonical_consumer_invalid$"):

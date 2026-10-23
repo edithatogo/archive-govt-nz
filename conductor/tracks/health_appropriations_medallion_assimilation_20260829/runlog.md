@@ -9534,3 +9534,23 @@ full requirement. Added boundary tests for Python 3.15.0, 3.15.1, 3.15.9,
 8,308 tests/14 skips at 97.16% coverage, 81 schemas/71 documents, parity 9/9,
 all mutation gates, audit/licence/secret scan, and SBOM. New exact-head hosted
 checks and review-thread resolution remain pending.
+
+## 2026-10-24 — Phase 6 Budget canonical-input total control
+
+Added a deterministic source-separated report that independently recomputes
+every nominal Budget Gold group from its hash-pinned canonical appropriation
+facts. The control keys include literal vintage and period token plus the full
+source dimensions; every source record ID must occur exactly once, and each
+Decimal input sum must equal its corresponding Gold total. The report is
+content-addressed within the Gold package and included in its RO-Crate
+inventory. Its verifier rejects malformed or unequal controls.
+
+This is a canonical-input-to-Gold arithmetic/accounting control only. It does
+not claim direct official-source or donor reconciliation, resolve the known
+historical differences, infer currency/price basis, pool vintages, or compare
+across source families. The 68-test canonical-consumer and Gold-verification
+selection passed, as did the report valid/invalid focused contracts. The required
+`./scripts/validate.sh` passed on Python 3.15.1: 8,310 passed, 14 skipped,
+18 warnings, 97.15% branch coverage; 81 schemas/71 documents, parity 9/9, all
+mutation gates, dependency and licence audits, secret scan, and the 115-component
+SBOM passed. Hosted PR Actions remain required before merge.
