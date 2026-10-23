@@ -402,38 +402,42 @@ def _input_total_controls_match_manifest(
     root: Path, manifest: dict[str, Any], products: object
 ) -> bool:
     markers = manifest.get("package_marker_sha256")
-    budget_control = manifest.get("budget_input_total_reconciliation_report")
-    if budget_control is not None:
+    if not isinstance(products, dict):
+        return False
+    for product_name, report_name, output_name, matches_manifest in (
+        (
+            "budget",
+            "budget_input_total_reconciliation_report",
+            "budget_input_total_reconciliation.json",
+            _budget_reconciliation_matches_manifest,
+        ),
+        (
+            "revenue",
+            "revenue_input_total_reconciliation_report",
+            "revenue_input_total_reconciliation.json",
+            _revenue_reconciliation_matches_manifest,
+        ),
+    ):
+        product = products.get(product_name)
+        nested_control = (
+            product.get("input_total_reconciliation")
+            if isinstance(product, dict)
+            else None
+        )
+        control = manifest.get(report_name)
+        output_path = root / output_name
+        if control is None and nested_control is None and not output_path.exists():
+            continue
+        if control is None or nested_control is None or not output_path.is_file():
+            return False
         try:
-            payload = json.loads(
-                (root / "budget_input_total_reconciliation.json").read_text(
-                    encoding="utf-8"
-                )
-            )
+            payload = json.loads(output_path.read_text(encoding="utf-8"))
         except OSError, UnicodeDecodeError, json.JSONDecodeError:
             return False
         if (
-            not _budget_reconciliation_matches_manifest(
-                budget_control, markers, products
-            )
-            or payload != budget_control
-        ):
-            return False
-    revenue_control = manifest.get("revenue_input_total_reconciliation_report")
-    if revenue_control is not None:
-        try:
-            payload = json.loads(
-                (root / "revenue_input_total_reconciliation.json").read_text(
-                    encoding="utf-8"
-                )
-            )
-        except OSError, UnicodeDecodeError, json.JSONDecodeError:
-            return False
-        if (
-            not _revenue_reconciliation_matches_manifest(
-                revenue_control, markers, products
-            )
-            or payload != revenue_control
+            control != nested_control
+            or payload != control
+            or not matches_manifest(control, markers, products)
         ):
             return False
     return True
