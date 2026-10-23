@@ -1,0 +1,83 @@
+{
+  "schema_version": "archive-govt-nz.vote-health-financial-activity-evidence/v1",
+  "status": "passed_bounded_silver_extraction",
+  "profile": "vote-health-supplementary-2012-13-financial-activity/v1",
+  "source": {
+    "source_id": "treasury_vote_health_document-566aface4fa2633a",
+    "title": "Vote Health supplementary estimates supporting information 2012/13",
+    "url": "https://www.treasury.govt.nz/sites/default/files/2013-05/isse13-health.pdf",
+    "source_vintage": "Treasury-Vote-Health-Supplementary-2012-13",
+    "observed_at": "2026-08-29T09:00:17Z",
+    "source_sha256": "07aaafdc58bd448ce2ef60d3c2dce071dfc3204838b21d01cad105e7e0d946fc",
+    "bytes": 224975,
+    "pages": 33,
+    "bronze_cas_verified": true,
+    "capture_manifest": "official-capture-2026-09-30-health-refresh.json",
+    "capture_manifest_sha256": "2de49f07c877aab196afae572db32bfc2d48fd4340eb17c9a4bfb3bb2cc357e7",
+    "warc_sha256": "aef3f47a7a2f9b55ead294255e600cf066e342887d156955538a458b22a90306",
+    "rights_notice": "Treasury CC-BY-4.0 is recorded by the capture manifest; normalized fact rights remain not_evaluated and no legal approval is asserted."
+  },
+  "extraction": {
+    "source_page": 2,
+    "table": "Part 1.3 Summary of Financial Activity",
+    "rows": 11,
+    "lineage_rows": 55,
+    "columns": [
+      "Estimates ($000)",
+      "Departmental Transactions ($000)",
+      "Non-Departmental Transactions ($000)",
+      "Total Transactions ($000)",
+      "Total ($000)"
+    ],
+    "raw_dash_and_na_tokens": "Retained in raw_values_json and field lineage; normalized to null without treating them as numeric zero.",
+    "unreviewed_content": "All other PDF pages and rows remain preserved-only; the separate main Supplementary Estimates PDF is not substituted for this supporting-information source."
+  },
+  "silver_builds": {
+    "build_a": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/silver/vote-health-supplementary-2012-13-financial-activity-20261023-a",
+    "build_b": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/silver/vote-health-supplementary-2012-13-financial-activity-20261023-b",
+    "retained_package": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/silver/vote-health-supplementary-2012-13-financial-activity-20261023-v1",
+    "identical": true,
+    "outputs": {
+      "MANIFEST.json": {
+        "bytes": 642,
+        "sha256": "7552ba31c10a02bf608ccf5fcc4e8fd837ec11be60f92079872c64c09c370969"
+      },
+      "field_lineage.parquet": {
+        "bytes": 10437,
+        "sha256": "b6a9b3509dc35b4eb99996638508ef564d5d1c146f259395cb2398477c2e0b5a"
+      },
+      "page_dispositions.parquet": {
+        "bytes": 2502,
+        "sha256": "20690f8e7e240789735c5d0a835be742fb6342e835642224c3c0cbed66af6248"
+      },
+      "vote_health_financial_activity_facts.parquet": {
+        "bytes": 13392,
+        "sha256": "5e1a35eb5a5184df723a71e4d744dd6f64a61fc3c5b8fd8b42e0db8b998601af"
+      }
+    }
+  },
+  "qualification": {
+    "period": "2012/13 source edition; fiscal year bounds are not independently inferred here.",
+    "unit": "$000 as printed; currency code not independently qualified.",
+    "cross_vintage_comparison": "not_performed",
+    "canonical_or_gold_admission": "not_performed",
+    "publication": "not_performed"
+  },
+  "validation": {
+    "command": "PYTHONPATH=src python -m pytest tests/domains/health_appropriations/test_vote_health_supplementary_2012_13.py tests/domains/health_appropriations/test_source_operations.py::test_vote_health_2012_13_financial_activity_profile_is_pinned_and_dispatched -q",
+    "passed": 6,
+    "failed": 0,
+    "repository_harness": {
+      "command": "./scripts/validate.sh",
+      "exit_code": 0,
+      "tests_passed": 8297,
+      "tests_skipped": 14,
+      "coverage_percent": 97.16,
+      "coverage_floor_percent": 80,
+      "schema_documents_validated": 71,
+      "schemas_validated": 81,
+      "differential_parity": "9/9 passed",
+      "mutation_and_supply_chain_stages": "passed"
+    }
+  }
+}
