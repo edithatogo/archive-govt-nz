@@ -4,10 +4,11 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections.abc import Callable
 from datetime import UTC, date, datetime
 from decimal import Decimal
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any, cast
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -19,10 +20,49 @@ from tests.domains.health_appropriations.test_canonical_gold_verification import
 
 from archive_govt_nz import cli, mcp_server
 from archive_govt_nz.domains.health_appropriations import (
+    canonical_consumer,
+    fiscal_analytical_operations,
+)
+
+if TYPE_CHECKING:
+    import duckdb
+from archive_govt_nz.domains.health_appropriations import (
     canonical_gold_queries as query,
 )
 
 AMOUNT = Decimal("12.345678901234567890")
+
+
+class _NoRelationDatabase:
+    def sql(self, *_args: object, **_kwargs: object) -> None:
+        return None
+
+
+@pytest.mark.parametrize(
+    ("query", "reason"),
+    [
+        (
+            canonical_consumer._query_arrow_table,  # noqa: SLF001
+            "canonical_consumer_query_relation_missing",
+        ),
+        (
+            query._query_arrow_table,  # noqa: SLF001
+            "canonical_gold_query_relation_missing",
+        ),
+        (
+            fiscal_analytical_operations._query_arrow_table,  # noqa: SLF001
+            "fiscal_gold_query_relation_missing",
+        ),
+    ],
+)
+def test_duckdb_query_helpers_fail_closed_without_a_relation(
+    query: Callable[..., pa.Table], reason: str
+) -> None:
+    """Typed DuckDB reads refuse an absent SQL relation explicitly."""
+    database = cast("duckdb.DuckDBPyConnection", _NoRelationDatabase())
+
+    with pytest.raises(ValueError, match=f"^{reason}$"):
+        query(database, "SELECT 1", [])
 
 
 def source_value(field: pa.Field, year: int) -> object:
@@ -104,6 +144,52 @@ def test_all_existing_fact_products_have_named_queries() -> None:
         "crown_hyefu",
         "fiscal_crown",
     }
+
+
+def _query_value(value: object) -> object:
+    if isinstance(value, Decimal):
+        return str(value)
+    if isinstance(value, (date, datetime)):
+        return value.isoformat()
+    if isinstance(value, list):
+        return [_query_value(item) for item in value]
+    return value
+
+
+def test_all_fact_products_match_the_ordered_exact_value_golden_matrix(
+    package: tuple[Path, str],
+) -> None:
+    """Named queries return complete, exact rows for every admitted product."""
+    root, pin = package
+    before = {path.name: path.read_bytes() for path in root.iterdir()}
+
+    for product, (_filename, schema) in query.PRODUCTS.items():
+        result = query.query_canonical_gold(root, pin, product=product, limit=2)
+        assert result["status"] == "verified", (product, result)
+        assert result["row_count"] == result["total_rows"] == 2
+        assert result["truncated"] is False
+        assert result["decimal_encoding"] == "exact_string"
+        assert result["source_reverification"] == "not_performed"
+        assert result["publication"] == "not_performed"
+        assert result["rights"] == "not_evaluated"
+        assert result["package_report_caveats"]["cross_source_comparison"] == (
+            "not_performed"
+        )
+
+        expected = []
+        for year in (2024, 2025):
+            typed_row = pa.Table.from_pylist(
+                [source_row(schema, year)], schema=schema
+            ).to_pylist()[0]
+            expected.append(
+                {key: _query_value(value) for key, value in typed_row.items()}
+            )
+        assert result["rows"] == expected, product
+
+    unsupported = query.query_canonical_gold(root, pin, product="real", limit=2)
+    assert unsupported["status"] == "failed"
+    assert unsupported["error"] == "canonical_gold_query_invalid"
+    assert before == {path.name: path.read_bytes() for path in root.iterdir()}
 
 
 @pytest.mark.parametrize("product", list(query.PRODUCTS))

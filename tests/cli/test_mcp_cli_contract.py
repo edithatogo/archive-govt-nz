@@ -264,6 +264,12 @@ def test_doctor_parity_cli_and_mcp(
     mcp_deg = call_tool("archive_doctor")
     assert mcp_deg["runtime_state"] == "runtime_incompatible"
     assert mcp_deg["python_min_satisfied"] is False
+    assert mcp_deg["required_python"] == ">=3.15.1,<3.16"
+    monkeypatch.setattr(sys, "version_info", (3, 16, 0))
+    mcp_unsupported = call_tool("archive_doctor")
+    assert mcp_unsupported["runtime_state"] == "runtime_incompatible"
+    assert mcp_unsupported["python_min_satisfied"] is False
+    assert mcp_unsupported["required_python"] == ">=3.15.1,<3.16"
 
 
 def test_capabilities_parity_cli_and_mcp(

@@ -92,16 +92,26 @@ def test_cli_doctor(
     assert payload["command"] == "doctor"
     assert payload["status"] == "runtime_compatible"
     assert payload["python_min_satisfied"] is True
+    assert payload["required_python"] == ">=3.15.1,<3.16"
     assert payload["integrity_status"] == "not_checked"
     assert code_json == 0
 
-    # Simulate Python version < 3.14
-    monkeypatch.setattr(sys, "version_info", (3, 13, 0))
+    # Python 3.15.0 does not satisfy the exact project runtime floor.
+    monkeypatch.setattr(sys, "version_info", (3, 15, 0))
     code_degraded = doctor(format="text")
     captured_degraded = capsys.readouterr()
     assert "doctor: status=runtime_incompatible" in captured_degraded.out
-    assert "Python >= 3.14 requirement not satisfied" in captured_degraded.err
+    assert "Python >=3.15.1,<3.16 requirement not satisfied" in captured_degraded.err
     assert code_degraded == 1
+
+    # Python 3.16 is outside the declared upper bound.
+    monkeypatch.setattr(sys, "version_info", (3, 16, 0))
+    code_unsupported = doctor(format="json")
+    payload_unsupported = json.loads(capsys.readouterr().out)
+    assert payload_unsupported["status"] == "runtime_incompatible"
+    assert payload_unsupported["python_min_satisfied"] is False
+    assert payload_unsupported["required_python"] == ">=3.15.1,<3.16"
+    assert code_unsupported == 1
 
 
 def test_cli_capabilities(capsys: pytest.CaptureFixture[str]) -> None:

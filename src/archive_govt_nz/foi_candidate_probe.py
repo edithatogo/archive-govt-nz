@@ -321,7 +321,7 @@ def classify_metadata(page: dict[str, Any]) -> str:
 
 
 def robots_path_rules_supported(text: str) -> bool:
-    """Reject path syntax whose interpretation differs across Python 3.14 releases.
+    """Reject path syntax whose interpretation differs across Python 3.15 releases.
 
     Conservatively inspect every Allow/Disallow directive, including other
     agents' groups. This is not a robots implementation or RFC conformance claim.

@@ -84,6 +84,7 @@ from archive_govt_nz.domains.legislation.corpus import LegislationArchiveService
 from archive_govt_nz.domains.legislation.discovery import build_work_inventory
 from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
 from archive_govt_nz.publication import PublicationConfig, prepare_publication
+from archive_govt_nz.python_runtime import REQUIRED_PYTHON, is_supported_python
 from archive_govt_nz.source_sets import (
     SourceSetConfig,
     SourceSetConfigError,
@@ -148,11 +149,11 @@ def version(format: Literal["text", "json"] = "text") -> int:
 def doctor(format: Literal["text", "json"] = "text") -> int:
     """Check the declared runtime without claiming archive integrity."""
     py_ver = sys.version.split()[0]
-    min_sat = sys.version_info >= (3, 14)
+    min_sat = is_supported_python(sys.version_info[:3])
     status = "runtime_compatible" if min_sat else "runtime_incompatible"
 
     if not min_sat:
-        sys.stderr.write("Python >= 3.14 requirement not satisfied.\n")
+        sys.stderr.write(f"Python {REQUIRED_PYTHON} requirement not satisfied.\n")
 
     if format == "json":
         _emit_json(
@@ -161,7 +162,7 @@ def doctor(format: Literal["text", "json"] = "text") -> int:
                 "integrity_status": "not_checked",
                 "python_min_satisfied": min_sat,
                 "python_version": py_ver,
-                "required_python": ">=3.14",
+                "required_python": REQUIRED_PYTHON,
                 "schema_version": "archive-govt-nz.cli/v1",
                 "status": status,
             }
@@ -1509,10 +1510,14 @@ def verify(
             "status": "passed" if provenance_error is None else "failed",
         },
         {
-            "failures": [] if sys.version_info >= (3, 14) else ["python_lt_3_14"],
+            "failures": []
+            if is_supported_python(sys.version_info[:3])
+            else ["python_runtime_unsupported"],
             "name": "python_runtime",
             "observed": sys.version.split()[0],
-            "status": "passed" if sys.version_info >= (3, 14) else "failed",
+            "status": "passed"
+            if is_supported_python(sys.version_info[:3])
+            else "failed",
         },
     ]
     failures = [str(check["name"]) for check in checks if check["status"] != "passed"]
@@ -1741,7 +1746,7 @@ def _handle_leg_doctor(
     """Evaluate runtime health and connectivity of legislation subsystem."""
     cas_dir = Path(cas_path)
     chk_file = Path(checkpoint_path)
-    py_ok = sys.version_info >= (3, 14)
+    py_ok = is_supported_python(sys.version_info[:3])
     checks: list[tuple[str, bool]] = [
         ("python_version", py_ok),
         ("cas_store_accessible", not cas_dir.exists() or cas_dir.is_dir()),

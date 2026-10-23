@@ -753,3 +753,4 @@ unchanged; this is no publisher correction or rights/comparability approval.
 
 - [Readable canonical Gold plot derivative](./readable-canonical-plots.md)
 - [Readable canonical plot native evidence](./readable-canonical-plots-native-20261022.json)
+- Phase 6 canonical Gold query/readback and CPython 3.15.1 full-harness evidence: see [plan](./plan.md#phase-6--gold-analytical-products) and the [latest runlog entry](./runlog.md). Source/donor total reconciliation and broader report matrices remain open.

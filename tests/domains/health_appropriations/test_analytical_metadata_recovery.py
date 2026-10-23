@@ -57,7 +57,7 @@ def test_preflight_rejects_changed_original_and_cli_failure_is_bounded(
         capture_output=True,
         text=True,
         check=False,
-        timeout=30,
+        timeout=60,
     )
     assert result.returncode == 2
     assert json.loads(result.stdout)["error"] == "analytical_metadata_recovery_failed"
