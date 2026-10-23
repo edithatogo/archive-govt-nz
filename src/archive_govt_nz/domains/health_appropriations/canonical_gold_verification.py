@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
+from decimal import Decimal, InvalidOperation
 from typing import TYPE_CHECKING, Any, NoReturn
 
 if TYPE_CHECKING:
@@ -186,6 +187,78 @@ def _valid_product_revision_reports(value: object) -> bool:
         if counts[3] != len(report["candidates"]):
             return False
     return True
+
+
+def _valid_budget_input_total_reconciliation(value: object) -> bool:
+    if not isinstance(value, dict):
+        return False
+    groups = value.get("groups")
+    pins = value.get("source_package_marker_sha256")
+    if (
+        value.get("schema_version")
+        != "archive-govt-nz.health-budget-input-total-reconciliation/v1"
+        or value.get("scope")
+        != "pinned_canonical_appropriation_facts_to_budget_gold_rows"
+        or value.get("period_basis") != "literal_source_token_only"
+        or value.get("unit_currency_and_price_basis")
+        != "source_context_preserved_currency_unknown"
+        or value.get("vintage_pooling") != "not_performed"
+        or value.get("donor_control") != "not_performed"
+        or value.get("official_source_control") != "not_performed"
+        or value.get("cross_source_comparison") != "not_performed"
+        or value.get("status") != "exact_canonical_input_totals_reconciled"
+        or type(value.get("group_count")) is not int
+        or type(value.get("input_record_count")) is not int
+        or not isinstance(groups, list)
+        or value["group_count"] != len(groups)
+        or not isinstance(pins, list)
+        or not pins
+        or any(type(pin) is not str or _DIGEST.fullmatch(pin) is None for pin in pins)
+        or pins != sorted(set(pins))
+    ):
+        return False
+    all_ids: set[str] = set()
+    total_records = 0
+    fields = (
+        "source_vintage",
+        "period_token",
+        "amount_type",
+        "unit",
+        "vote",
+        "department",
+        "portfolio",
+        "source_label",
+    )
+    for group in groups:
+        if (
+            not isinstance(group, dict)
+            or any(
+                type(group.get(field)) is not str or not group[field]
+                for field in fields
+            )
+            or group.get("status") != "exact_match"
+            or type(group.get("input_record_count")) is not int
+            or group["input_record_count"] <= 0
+            or not isinstance(group.get("input_record_ids"), list)
+            or len(group["input_record_ids"]) != group["input_record_count"]
+            or group["input_record_ids"] != sorted(set(group["input_record_ids"]))
+            or any(
+                type(record_id) is not str or not record_id
+                for record_id in group["input_record_ids"]
+            )
+            or all_ids.intersection(group["input_record_ids"])
+        ):
+            return False
+        try:
+            input_total = Decimal(group["canonical_input_total"])
+            output_total = Decimal(group["gold_output_total"])
+        except InvalidOperation, KeyError, TypeError:
+            return False
+        if not input_total.is_finite() or input_total != output_total:
+            return False
+        all_ids.update(group["input_record_ids"])
+        total_records += group["input_record_count"]
+    return total_records == value["input_record_count"] == len(all_ids)
 
 
 def _valid_overlap_product_group(value: object) -> bool:
@@ -425,6 +498,7 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
     classification_report = manifest.get("classification_drift_report")
     revision_report = manifest.get("revision_reconciliation_report")
     overlap_report = manifest.get("cross_source_period_overlap_report")
+    budget_control = manifest.get("budget_input_total_reconciliation_report")
     try:
         revision_payload = json.loads(
             (root / "historical_revision_reconciliation.json").read_text(
@@ -439,6 +513,16 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
         )
     except OSError, UnicodeDecodeError, json.JSONDecodeError:
         overlap_payload = None
+    budget_control_payload = None
+    if budget_control is not None:
+        try:
+            budget_control_payload = json.loads(
+                (root / "budget_input_total_reconciliation.json").read_text(
+                    encoding="utf-8"
+                )
+            )
+        except OSError, UnicodeDecodeError, json.JSONDecodeError:
+            budget_control_payload = None
     if (
         not isinstance(products, dict)
         or not isinstance(temporal_report, dict)
@@ -470,6 +554,14 @@ def _verify(root: Path, manifest_sha256: str) -> dict[str, Any]:
         or revision_payload != revision_report
         or not _valid_cross_source_period_overlap(overlap_report)
         or overlap_payload != overlap_report
+        or (
+            budget_control is not None
+            and (
+                not _valid_budget_input_total_reconciliation(budget_control)
+                or budget_control_payload != budget_control
+            )
+        )
+        or (budget_control is not None and "budget" not in products)
         or any(type(name) is not str or not name for name in products)
     ):
         _fail("invalid_gold_reports")

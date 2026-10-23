@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 from pathlib import Path
+from typing import Any
 
 import pytest
 
@@ -20,6 +21,63 @@ from archive_govt_nz.domains.health_appropriations.canonical_gold_verification i
     verify_canonical_gold_package,
 )
 from archive_govt_nz.mcp_server import PROTOCOL_VERSION, Server, call_tool, list_tools
+
+
+def _budget_input_total_report() -> dict[str, Any]:
+    return {
+        "schema_version": "archive-govt-nz.health-budget-input-total-reconciliation/v1",
+        "scope": "pinned_canonical_appropriation_facts_to_budget_gold_rows",
+        "source_package_marker_sha256": ["a" * 64],
+        "period_basis": "literal_source_token_only",
+        "unit_currency_and_price_basis": "source_context_preserved_currency_unknown",
+        "vintage_pooling": "not_performed",
+        "donor_control": "not_performed",
+        "official_source_control": "not_performed",
+        "cross_source_comparison": "not_performed",
+        "group_count": 1,
+        "input_record_count": 2,
+        "status": "exact_canonical_input_totals_reconciled",
+        "groups": [
+            {
+                "source_vintage": "Budget 2025",
+                "period_token": "FY2025/26",
+                "amount_type": "appropriation",
+                "unit": "NZD_thousands",
+                "vote": "Health",
+                "department": "Health",
+                "portfolio": "Health",
+                "source_label": "Care",
+                "input_record_count": 2,
+                "input_record_ids": ["record-1", "record-2"],
+                "canonical_input_total": "4.000000000000000000",
+                "gold_output_total": "4.000000000000000000",
+                "status": "exact_match",
+            }
+        ],
+    }
+
+
+def test_budget_input_total_report_rejects_unsupported_or_unequal_claims() -> None:
+    report = _budget_input_total_report()
+    assert canonical_gold_verification._valid_budget_input_total_reconciliation(  # noqa: SLF001
+        report
+    )
+
+    mismatched = {**report, "groups": [{**report["groups"][0]}]}
+    mismatched["groups"][0]["gold_output_total"] = "5"
+    unsupported = {**report, "official_source_control": "reconciled"}
+    duplicated = {**report, "groups": [{**report["groups"][0]}]}
+    duplicated["groups"][0]["input_record_ids"] = ["record-1", "record-1"]
+
+    assert not canonical_gold_verification._valid_budget_input_total_reconciliation(  # noqa: SLF001
+        mismatched
+    )
+    assert not canonical_gold_verification._valid_budget_input_total_reconciliation(  # noqa: SLF001
+        unsupported
+    )
+    assert not canonical_gold_verification._valid_budget_input_total_reconciliation(  # noqa: SLF001
+        duplicated
+    )
 
 
 def _package(root: Path) -> tuple[Path, str]:

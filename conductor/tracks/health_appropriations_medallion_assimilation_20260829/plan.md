@@ -1225,6 +1225,15 @@ integrated parent head.
     and numeric-evidence IDs per vintage for changed candidates. Differences
     remain unassessed and source-separated; no semantic or cross-source
     equivalence is inferred. [M-13, S-04; AC-11, AC-12]
+  - [x] Reconcile every source-separated nominal Budget Gold total against
+    its exact pinned canonical appropriation facts. Independently recompute
+    Decimal totals by literal vintage, period token, amount type, unit, Vote,
+    department, portfolio, and source label; require complete disjoint record
+    IDs and exact input/output equality. Preserve package pins and explicitly
+    leave official-source, donor, currency/price-basis, and cross-source
+    controls unperformed. This closes only the canonical-input-to-Gold total
+    control; it does not disposition historical differences. See the
+    `budget_input_total_reconciliation.json` package product.
   - [x] Add a deterministic literal-period overlap catalog across observed
     canonical products, retaining source vintages, units and record identities.
     The verifier and example pin/summarize the report; comparability and
