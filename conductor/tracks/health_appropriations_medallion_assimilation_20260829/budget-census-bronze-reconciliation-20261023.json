@@ -1,0 +1,558 @@
+{
+  "schema_version": "archive-govt-nz.health-budget-census-bronze-reconciliation/v1",
+  "verified_at": "2026-10-23T07:06:33.200859+00:00",
+  "scope": "40 annual Budget expenditure/revenue roles 2007-2026 plus the captured official locator candidates; no rights, numerical alias, or whole-corpus admission",
+  "status": "passed",
+  "annual_register": {
+    "records": 40,
+    "distinct_roles": 40,
+    "registered_existing_exact_captures_reused": 6,
+    "registered_capture_attempts": {
+      "unavailable": 16,
+      "captured": 18
+    }
+  },
+  "role_crosswalk": {
+    "candidate_rows": 40,
+    "archive_assets": 46,
+    "expected_roles_match_candidates": true,
+    "candidate_roles_match_asset_roles": true,
+    "correction_candidate_hashes_present": true,
+    "correction_candidate_count": 16,
+    "role_archive_candidate_hashes_match": true
+  },
+  "archive_assets_by_kind": {
+    "expenditure": 20,
+    "revenue": 20,
+    "departmental_forecast_statements": 6
+  },
+  "locator_page_access": {
+    "first_cohort_403": 4,
+    "second_cohort_403": 6,
+    "total_403": 10
+  },
+  "url_union": {
+    "distinct_urls": 72,
+    "recorded_captured_urls": 46
+  },
+  "rights_and_semantics": "not evaluated by this reconciliation; retain native period/unit/definition and rights gates",
+  "asset_checks": [
+    {
+      "edition": 2022,
+      "kind": "expenditure",
+      "body_sha256": "406f74344833b3f9b91c4c5c22bbbd5dd9484af0d25ab3be054367fd07026338",
+      "body_bytes": 920766,
+      "cas_path": "bronze-cas/sha256/40/406f74344833b3f9b91c4c5c22bbbd5dd9484af0d25ab3be054367fd07026338",
+      "cas_verified": true,
+      "warc_sha256": "e10ee35e48568977f19e97701512818a438a43b3b59647cf8fdd642f9590fe3c",
+      "warc_path": "budget-2022-census-20261018/capture-1/treasury-historical-f7c67ac7f16216bb/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2022,
+      "kind": "revenue",
+      "body_sha256": "6f395e69b5ee2405f4d9e09455402b07df7c99cce0803152db1dba654333bb92",
+      "body_bytes": 105054,
+      "cas_path": "bronze-cas/sha256/6f/6f395e69b5ee2405f4d9e09455402b07df7c99cce0803152db1dba654333bb92",
+      "cas_verified": true,
+      "warc_sha256": "6e2e2d29baeb88fe7480efbcba6cbd1010fbbb41ed943871add08a816fe2bbe6",
+      "warc_path": "budget-2022-census-20261018/capture-1/treasury-historical-57678df8ac69094d/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2023,
+      "kind": "expenditure",
+      "body_sha256": "bee0e4cd776f0511d271ec842ade355661772c804d12239035e32ad61db06da9",
+      "body_bytes": 933618,
+      "cas_path": "bronze-cas/sha256/be/bee0e4cd776f0511d271ec842ade355661772c804d12239035e32ad61db06da9",
+      "cas_verified": true,
+      "warc_sha256": "71eb0608861909300d49c6aba470e7fc879f7758e74a1f7613b46f015b6f589c",
+      "warc_path": "budget-2023-census-20261018/capture-2/treasury-historical-dec1ca1018d3dac5/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2023,
+      "kind": "revenue",
+      "body_sha256": "e2b00177bffd233fd404f5db989a576408f249fc81ef2342f31d95ca452c019b",
+      "body_bytes": 104743,
+      "cas_path": "bronze-cas/sha256/e2/e2b00177bffd233fd404f5db989a576408f249fc81ef2342f31d95ca452c019b",
+      "cas_verified": true,
+      "warc_sha256": "7fd87ed513fa646792ccd534e9422d26ddbee9d1fcb4136429c02e7a8fe54517",
+      "warc_path": "budget-2023-census-20261018/capture-2/treasury-historical-501fbe11fbc07010/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2024,
+      "kind": "expenditure",
+      "body_sha256": "891539afe9f5df4a7c7f73ac29695e19b6fb523a4947d305e1f4bd69ebcb3256",
+      "body_bytes": 943456,
+      "cas_path": "bronze-cas/sha256/89/891539afe9f5df4a7c7f73ac29695e19b6fb523a4947d305e1f4bd69ebcb3256",
+      "cas_verified": true,
+      "warc_sha256": "8100bbe99ee110de65fa59df64f96e57e88f20c6a4482703de713ce59efd4291",
+      "warc_path": "budget-2024-census-20261018/capture-1/treasury-historical-ff5ef101ec75d1b8/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2024,
+      "kind": "revenue",
+      "body_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
+      "body_bytes": 104606,
+      "cas_path": "bronze-cas/sha256/bd/bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
+      "cas_verified": true,
+      "warc_sha256": "ffaa869568f48ccd3dc3518897407c6634cff85cb6cc60ba7c5123440ff48dfa",
+      "warc_path": "budget-2024-census-20261018/capture-1/treasury-historical-c445260e928c9454/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2008,
+      "kind": "revenue",
+      "body_sha256": "c261fb95965f8dc1c0d649000e5bf46012c6e5c37385c050c370de07a580e94a",
+      "body_bytes": 300032,
+      "cas_path": "bronze-cas/sha256/c2/c261fb95965f8dc1c0d649000e5bf46012c6e5c37385c050c370de07a580e94a",
+      "cas_verified": true,
+      "warc_sha256": "1b177c933fe26a9652520bf8224e4af10a4e2d252cacd38aee86f02c89100ded",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-1z0exmj5/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2009,
+      "kind": "revenue",
+      "body_sha256": "dc5ce0e7faf9302cdca3bf9e0af5f423e0cac851cb1bdf031508b732f0ae383d",
+      "body_bytes": 299520,
+      "cas_path": "bronze-cas/sha256/dc/dc5ce0e7faf9302cdca3bf9e0af5f423e0cac851cb1bdf031508b732f0ae383d",
+      "cas_verified": true,
+      "warc_sha256": "897dff29b74eab5a7c5c3ac0aa3c5a2c429532744a7099392487cf23232060bd",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-hbuvmbuv/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2010,
+      "kind": "revenue",
+      "body_sha256": "d6f63516ef967abec18f09cbe347c02a648a53ef04ce382aa8511c7280f08e15",
+      "body_bytes": 347136,
+      "cas_path": "bronze-cas/sha256/d6/d6f63516ef967abec18f09cbe347c02a648a53ef04ce382aa8511c7280f08e15",
+      "cas_verified": true,
+      "warc_sha256": "eb6fbe0901280b18902bc3dfab1ce0ad2971aaf0884d80f4270968c4b6d32c42",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-2nfqzm0z/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2011,
+      "kind": "revenue",
+      "body_sha256": "bd902503455cebe5cc455031bbd2b07f325cce57027c8391c9bec476ad77f073",
+      "body_bytes": 374784,
+      "cas_path": "bronze-cas/sha256/bd/bd902503455cebe5cc455031bbd2b07f325cce57027c8391c9bec476ad77f073",
+      "cas_verified": true,
+      "warc_sha256": "7e4cd4e97ca1632d979832feabbd36117f2e7a49df096a57ae3809f19e7504da",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-amnyqgsg/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2015,
+      "kind": "expenditure",
+      "body_sha256": "4dbabc88f1e0756e0f651ef261b3408b262a10f0b1cdb51977844c97841b9325",
+      "body_bytes": 4418560,
+      "cas_path": "bronze-cas/sha256/4d/4dbabc88f1e0756e0f651ef261b3408b262a10f0b1cdb51977844c97841b9325",
+      "cas_verified": true,
+      "warc_sha256": "eacb66bbf67b1b6cde1aa6e2f1b17d2507f7a1aa2cd818ee7b0f7fd4a37926d0",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-7h_uhacn/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2015,
+      "kind": "revenue",
+      "body_sha256": "481b971d4569cbadbf48440fa1d66f82d8d42942fd855e95e5bfd1ea95e70171",
+      "body_bytes": 325120,
+      "cas_path": "bronze-cas/sha256/48/481b971d4569cbadbf48440fa1d66f82d8d42942fd855e95e5bfd1ea95e70171",
+      "cas_verified": true,
+      "warc_sha256": "11a5770c8f02a64c956ac4f258f068566486ddfc3171a985caa8f30097c34978",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-pz9u00j6/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2018,
+      "kind": "expenditure",
+      "body_sha256": "fecd70019054313f3a11cbb370be684d8bea0eea8cb3623b69a9e193ac085c24",
+      "body_bytes": 4777984,
+      "cas_path": "bronze-cas/sha256/fe/fecd70019054313f3a11cbb370be684d8bea0eea8cb3623b69a9e193ac085c24",
+      "cas_verified": true,
+      "warc_sha256": "29479327f06a4b61167cace8cce5df75a9a3d3ff9f759e9868a0757d90831582",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-ff_9mc_6/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2018,
+      "kind": "revenue",
+      "body_sha256": "4db87e7eddd7a76b5b7523db5a01952d15e7f47b88d03ef9878d37cd077f937f",
+      "body_bytes": 462336,
+      "cas_path": "bronze-cas/sha256/4d/4db87e7eddd7a76b5b7523db5a01952d15e7f47b88d03ef9878d37cd077f937f",
+      "cas_verified": true,
+      "warc_sha256": "337706481f81297101b054bb37277f9898ab89ee7845604e6789d4c839ea4281",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-pji_0a_k/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2019,
+      "kind": "expenditure",
+      "body_sha256": "30602fd66ec1f4fb7d0b47f2766f6560c4d22e90c11e994fba3e404e29ceab48",
+      "body_bytes": 4450304,
+      "cas_path": "bronze-cas/sha256/30/30602fd66ec1f4fb7d0b47f2766f6560c4d22e90c11e994fba3e404e29ceab48",
+      "cas_verified": true,
+      "warc_sha256": "f1f83322e3e2c3284224a473b4bb880ff11853f4a3e22c19685ca766bc684843",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-m_s1deqm/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2019,
+      "kind": "revenue",
+      "body_sha256": "d927995dd91eda6fdfb4020eb2a3e91871a24d5144e837e7801b6725e5f33df8",
+      "body_bytes": 468480,
+      "cas_path": "bronze-cas/sha256/d9/d927995dd91eda6fdfb4020eb2a3e91871a24d5144e837e7801b6725e5f33df8",
+      "cas_verified": true,
+      "warc_sha256": "e911dcca0077a65eefef94539c7c14266536453c3a2b3bc6081115b07f013a03",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-cnw3rao6/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2020,
+      "kind": "expenditure",
+      "body_sha256": "d6a4f00122a05a86bf905f2c43f53cc065b8f033ee080647cf8033961c43aced",
+      "body_bytes": 860536,
+      "cas_path": "bronze-cas/sha256/d6/d6a4f00122a05a86bf905f2c43f53cc065b8f033ee080647cf8033961c43aced",
+      "cas_verified": true,
+      "warc_sha256": "04be8737a35830ea792f7c3adf663f0ebf9f9089578ec52cc2ae0bd18cdf8985",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-aonsqmu4/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2020,
+      "kind": "revenue",
+      "body_sha256": "5b3fc350215110052f67475617540869ce9cb17d9bbc8824120c8911c35c73f3",
+      "body_bytes": 103468,
+      "cas_path": "bronze-cas/sha256/5b/5b3fc350215110052f67475617540869ce9cb17d9bbc8824120c8911c35c73f3",
+      "cas_verified": true,
+      "warc_sha256": "f13d0c670ffb84ce5bce2f3b6239a0a5c7be793de45ac9e00a2a86ce910ec4f8",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-3w0m47t8/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2021,
+      "kind": "expenditure",
+      "body_sha256": "cb29d992015bac9727526db91286f229cf1485bc488d6f85d970a3c759506632",
+      "body_bytes": 889855,
+      "cas_path": "bronze-cas/sha256/cb/cb29d992015bac9727526db91286f229cf1485bc488d6f85d970a3c759506632",
+      "cas_verified": true,
+      "warc_sha256": "f49fa67578b5d5686350578d91b0f1fced97626965acdb0b5d98615b4bd20f3c",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-pudcl66a/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2021,
+      "kind": "revenue",
+      "body_sha256": "b573a4e5e08bd725052acb28f9409db36d48b538ef55d4414f90ba7747102d3a",
+      "body_bytes": 105132,
+      "cas_path": "bronze-cas/sha256/b5/b573a4e5e08bd725052acb28f9409db36d48b538ef55d4414f90ba7747102d3a",
+      "cas_verified": true,
+      "warc_sha256": "d2cd678f2927faab49ee88385b7ffc49f97af75e05e0d2bf96f341f61eaf76f3",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-7gu2puxi/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2025,
+      "kind": "expenditure",
+      "body_sha256": "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
+      "body_bytes": 915479,
+      "cas_path": "bronze-cas/sha256/d6/d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
+      "cas_verified": true,
+      "warc_sha256": "8c869e3e319e64d40bafdb2a70b9a48680b614f10ad54ced20b65a0955ad0a0c",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-2ra8yfqe/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2025,
+      "kind": "revenue",
+      "body_sha256": "2aef43eb419420a549fe56a946539f6e9afcbd91f95e9242457f26c97bafafaa",
+      "body_bytes": 106159,
+      "cas_path": "bronze-cas/sha256/2a/2aef43eb419420a549fe56a946539f6e9afcbd91f95e9242457f26c97bafafaa",
+      "cas_verified": true,
+      "warc_sha256": "5277e00b25be88b01eb3bc076096ec5ae053ecdc861bba4627277c3e3c84cc8a",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-ydetser0/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2026,
+      "kind": "expenditure",
+      "body_sha256": "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0",
+      "body_bytes": 918842,
+      "cas_path": "bronze-cas/sha256/3f/3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0",
+      "cas_verified": true,
+      "warc_sha256": "bcb4339f948e62addb9bc9a47883691649c87a2e842da11ac469c1696c50ef07",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-zfmjxqhg/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2026,
+      "kind": "revenue",
+      "body_sha256": "8243f6a3f9575af5ee048133f2695f3c4764ff7d86e7a74849fdafcf478cbfdb",
+      "body_bytes": 104536,
+      "cas_path": "bronze-cas/sha256/82/8243f6a3f9575af5ee048133f2695f3c4764ff7d86e7a74849fdafcf478cbfdb",
+      "cas_verified": true,
+      "warc_sha256": "6cef57c015b16fb72dc9f450f6784613882ce9f80670a413d38fb40065b6c8f7",
+      "warc_path": "budget-census-reconciliation-20261019/preservation-capture-warcs-1/attempt-4qmrpo10/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2007,
+      "kind": "expenditure",
+      "body_sha256": "803822e4b27c1bda6c7c3bbe95c8bc025e1ef67ded6beca55473011d8b62ba21",
+      "body_bytes": 1805312,
+      "cas_path": "bronze-cas/sha256/80/803822e4b27c1bda6c7c3bbe95c8bc025e1ef67ded6beca55473011d8b62ba21",
+      "cas_verified": true,
+      "warc_sha256": "a1b5d7c487e90c01b8c9f29e2010e744443c2157ff8da1cab11e64456943d980",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-1/attempt-9jn335rc/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2007,
+      "kind": "revenue",
+      "body_sha256": "bbb62b2d4fb16a35315854adc81899bb416a0cebc3f84f4a971158626b8be3e4",
+      "body_bytes": 228352,
+      "cas_path": "bronze-cas/sha256/bb/bbb62b2d4fb16a35315854adc81899bb416a0cebc3f84f4a971158626b8be3e4",
+      "cas_verified": true,
+      "warc_sha256": "065fbab37f6f42639e2526bbc7723d911f7066488d29c2edef108c9ca654f6e1",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-1/attempt-s1_8h0_1/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2012,
+      "kind": "expenditure",
+      "body_sha256": "81429ccc5da52cdba73bb6276bba7d1c55a301dc996a447909fc8fc82ca1af12",
+      "body_bytes": 3843584,
+      "cas_path": "bronze-cas/sha256/81/81429ccc5da52cdba73bb6276bba7d1c55a301dc996a447909fc8fc82ca1af12",
+      "cas_verified": true,
+      "warc_sha256": "46886136ca141bc894a76159151922562346baf548cddbe28d0a86a1011b7621",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-1/attempt-oeay1apa/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2012,
+      "kind": "revenue",
+      "body_sha256": "643fad503424ee6b3aa060a2ff2107fc69d9326bb51446d6fa41755a32d038cb",
+      "body_bytes": 369664,
+      "cas_path": "bronze-cas/sha256/64/643fad503424ee6b3aa060a2ff2107fc69d9326bb51446d6fa41755a32d038cb",
+      "cas_verified": true,
+      "warc_sha256": "5c1ee355283708d658e251d80dae1bed08ce990ede5b456089f494645b679f0d",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-1/attempt-msu8ccxb/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2012,
+      "kind": "departmental_forecast_statements",
+      "body_sha256": "734b313a285b7165b3682f4659289e812556d6a095d058c5f18df4e66e173ea7",
+      "body_bytes": 1458688,
+      "cas_path": "bronze-cas/sha256/73/734b313a285b7165b3682f4659289e812556d6a095d058c5f18df4e66e173ea7",
+      "cas_verified": true,
+      "warc_sha256": "868cb876fab6678778e0549f810bf4365e1f6c9f463f4e4ac56871ee77e34e25",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-1/attempt-ky1ncluw/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2016,
+      "kind": "expenditure",
+      "body_sha256": "bce6d2e55c15c1249881bac9d2a1afdf111cd9d1c258c20913bd4b39300f0f5a",
+      "body_bytes": 4804096,
+      "cas_path": "bronze-cas/sha256/bc/bce6d2e55c15c1249881bac9d2a1afdf111cd9d1c258c20913bd4b39300f0f5a",
+      "cas_verified": true,
+      "warc_sha256": "5405977dff7faac706efda6ea5383521712969b304e608f6acdee69b05df5409",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-1/attempt-p403gqbx/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2016,
+      "kind": "revenue",
+      "body_sha256": "df34849f2ef7ce1903469edb315047afc8ae716574d163f59691a654c51b957f",
+      "body_bytes": 339968,
+      "cas_path": "bronze-cas/sha256/df/df34849f2ef7ce1903469edb315047afc8ae716574d163f59691a654c51b957f",
+      "cas_verified": true,
+      "warc_sha256": "6ecefb9c6d53caaac5dd4b0819cac274e266cec6c2872785233a1a669e820cb2",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-1/attempt-3_4e9c0t/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2017,
+      "kind": "expenditure",
+      "body_sha256": "7e0cc535eb9feb7e82b1a998dd40b7b318e5593e13589aa48ef4a3b5508708fc",
+      "body_bytes": 4772352,
+      "cas_path": "bronze-cas/sha256/7e/7e0cc535eb9feb7e82b1a998dd40b7b318e5593e13589aa48ef4a3b5508708fc",
+      "cas_verified": true,
+      "warc_sha256": "a76bcf52a9a56e8fba5984f8c2bf6bb88475c417d8e007ceea13e837fbdb6211",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-1/attempt-y5_4rr1d/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2017,
+      "kind": "revenue",
+      "body_sha256": "e49a706c4a5ac889e8b9e68165dbfd704a9f05b0300bef7f69abf5f5620b7adf",
+      "body_bytes": 462336,
+      "cas_path": "bronze-cas/sha256/e4/e49a706c4a5ac889e8b9e68165dbfd704a9f05b0300bef7f69abf5f5620b7adf",
+      "cas_verified": true,
+      "warc_sha256": "3f1da9139ba9683504f7c76bdc2f8ea52a6bd1758eedf57a496b5a6d113dd6ca",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-1/attempt-mgbmya7b/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2008,
+      "kind": "expenditure",
+      "body_sha256": "62283a0454233bfeec9ce75bdbc822dcf59326cc2aecf5ea33581a4e1355c51b",
+      "body_bytes": 2411520,
+      "cas_path": "bronze-cas/sha256/62/62283a0454233bfeec9ce75bdbc822dcf59326cc2aecf5ea33581a4e1355c51b",
+      "cas_verified": true,
+      "warc_sha256": "d504312d6af7d754cb18401d41499fc49e2d60f5ab8b876ecc8a59ada28d605f",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-2/attempt-86zrfej8/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2008,
+      "kind": "departmental_forecast_statements",
+      "body_sha256": "021e73643e4447735920ffbb281e41dd96b09f49e0f10f0ea55ce9c722d3f92c",
+      "body_bytes": 2156032,
+      "cas_path": "bronze-cas/sha256/02/021e73643e4447735920ffbb281e41dd96b09f49e0f10f0ea55ce9c722d3f92c",
+      "cas_verified": true,
+      "warc_sha256": "181918b4a165b22093e11c56d2b5ee559b4991cc8bf7edd6822039379eb0d585",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-2/attempt-5s4smujg/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2009,
+      "kind": "expenditure",
+      "body_sha256": "c1177036dd97da6f0e63fb2c91f878a5ec0f98111f62dd881a0e70b536b0bebc",
+      "body_bytes": 1438720,
+      "cas_path": "bronze-cas/sha256/c1/c1177036dd97da6f0e63fb2c91f878a5ec0f98111f62dd881a0e70b536b0bebc",
+      "cas_verified": true,
+      "warc_sha256": "e7cf501e76efc61ad5338af9799b20eba86e54e28596024b9fc1a97e81f1c052",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-2/attempt-lpy1e877/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2009,
+      "kind": "departmental_forecast_statements",
+      "body_sha256": "ffc8307bb6a76b5457aa8716d94ff34d0a2775aac6974cae422340ab765d1edb",
+      "body_bytes": 1492992,
+      "cas_path": "bronze-cas/sha256/ff/ffc8307bb6a76b5457aa8716d94ff34d0a2775aac6974cae422340ab765d1edb",
+      "cas_verified": true,
+      "warc_sha256": "5802d7732020d8069e358d38949c190db3dee3562cd13516d0e1df98d16d6a50",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-2/attempt-6u49g9we/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2010,
+      "kind": "expenditure",
+      "body_sha256": "7e26853cbed914ef19bc6dc426d24708dbf19487ce0a9dbc15db4d32d3d00a4f",
+      "body_bytes": 1992704,
+      "cas_path": "bronze-cas/sha256/7e/7e26853cbed914ef19bc6dc426d24708dbf19487ce0a9dbc15db4d32d3d00a4f",
+      "cas_verified": true,
+      "warc_sha256": "f9000bf25b7f4423843c60eac1d86bf80ef0c700b3b5ad6323212637d4bbd99b",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-2/attempt-4a0o9ebd/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2010,
+      "kind": "departmental_forecast_statements",
+      "body_sha256": "5e8003e093ece8485c652ac2f4655fc35b1b57f02522111180998584048e730c",
+      "body_bytes": 1559040,
+      "cas_path": "bronze-cas/sha256/5e/5e8003e093ece8485c652ac2f4655fc35b1b57f02522111180998584048e730c",
+      "cas_verified": true,
+      "warc_sha256": "1db7e6015d4b7e9c65f4508bd1f359e2656d4a97bff5fa062d9330b314746ee3",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-2/attempt-j1j9_3kv/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2011,
+      "kind": "expenditure",
+      "body_sha256": "8712d27f2da918d1cc8376a8f15e24cafb6b608a3be0cc19da226768a8f69ba0",
+      "body_bytes": 1994240,
+      "cas_path": "bronze-cas/sha256/87/8712d27f2da918d1cc8376a8f15e24cafb6b608a3be0cc19da226768a8f69ba0",
+      "cas_verified": true,
+      "warc_sha256": "cb758a77f4e6d36a29d0bfb2c900a0f7c25f715db35222caed6529193c916f43",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-2/attempt-hpr2_ulz/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2011,
+      "kind": "departmental_forecast_statements",
+      "body_sha256": "de61a9b55e715caf17531ee9004a2e5885282de7c962b44a443638d155768ffb",
+      "body_bytes": 1560064,
+      "cas_path": "bronze-cas/sha256/de/de61a9b55e715caf17531ee9004a2e5885282de7c962b44a443638d155768ffb",
+      "cas_verified": true,
+      "warc_sha256": "df83f89fe5423c557d9f656bf8d2f90b646af32bc43bad26a866969eba6f31d8",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-2/attempt-pd2c8ex5/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2013,
+      "kind": "expenditure",
+      "body_sha256": "c5b7f6916b89a9ea0fd14caf73a979c730116d517d78ffe777d36c5966626140",
+      "body_bytes": 3617792,
+      "cas_path": "bronze-cas/sha256/c5/c5b7f6916b89a9ea0fd14caf73a979c730116d517d78ffe777d36c5966626140",
+      "cas_verified": true,
+      "warc_sha256": "9d019b98ef71dbfee4e795397423fa1a28b1f80757547c2a3a428ef60545c0c1",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-2/attempt-8yveat32/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2013,
+      "kind": "revenue",
+      "body_sha256": "69e9d3d10c72bd01c661ca02633d48404f7add6f5e4fda02017ab5649fa27869",
+      "body_bytes": 372736,
+      "cas_path": "bronze-cas/sha256/69/69e9d3d10c72bd01c661ca02633d48404f7add6f5e4fda02017ab5649fa27869",
+      "cas_verified": true,
+      "warc_sha256": "b2a968a803fff19d991cc46a3cef1ccd14176c0240daef6ed3d730a2e310f587",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-2/attempt-y0dhnm8h/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2013,
+      "kind": "departmental_forecast_statements",
+      "body_sha256": "793e00dc28a9153a87e307827d02495d0c6ddd998c65af9d5d280be50c528264",
+      "body_bytes": 1374720,
+      "cas_path": "bronze-cas/sha256/79/793e00dc28a9153a87e307827d02495d0c6ddd998c65af9d5d280be50c528264",
+      "cas_verified": true,
+      "warc_sha256": "4f24cb9623cee5afa7813558d4fb7e32b79dca58de41202c8d79f4a34d9099a6",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-2/attempt-k4pf434a/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2014,
+      "kind": "expenditure",
+      "body_sha256": "7194eebe691ff57378168439d7ba5a785dfa408bc3c836f2a7cfe50519af5169",
+      "body_bytes": 4505600,
+      "cas_path": "bronze-cas/sha256/71/7194eebe691ff57378168439d7ba5a785dfa408bc3c836f2a7cfe50519af5169",
+      "cas_verified": true,
+      "warc_sha256": "77b05fb8ad53ee846547c9b35da733a62560b6f2dbafbb5b04a857ee0bc47ca7",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-2/attempt-izdxnpqu/response.warc",
+      "warc_verified": true
+    },
+    {
+      "edition": 2014,
+      "kind": "revenue",
+      "body_sha256": "ba1798c82e556afe98188ea58651759cb6fa1f52a461e4529bc664af424db91b",
+      "body_bytes": 355840,
+      "cas_path": "bronze-cas/sha256/ba/ba1798c82e556afe98188ea58651759cb6fa1f52a461e4529bc664af424db91b",
+      "cas_verified": true,
+      "warc_sha256": "f21246848e12490f69f6e6c1961626ac8451c32d237224951ff796e86ce3898d",
+      "warc_path": "budget-locator-census-20261019/capture-warcs-2/attempt-p40_qp8k/response.warc",
+      "warc_verified": true
+    }
+  ],
+  "input_sha256": {
+    "annual-budget-census-20261019-v1.json": "0d2f6d81c2f3d9d6946ae115824cfbb248432c0b8e52272e1812e0db1700dd46",
+    "budget-census-retained-20261019-v1.json": "47638a3e57987476e7fbc5a347fe72ac133491b1fcba6586f840e0e4c50a709d",
+    "budget-preservation-qualification-20261019-v1.json": "173090c1575b6ec5d36d7b38a91a96734a03686ace908d9cce22ca42f4db1654",
+    "budget-locator-qualification-20261019-v1.json": "13e2f5adec25fc94d9fa89855eaf0fa010141b27e5ca39c83a64e4aa5695e71d",
+    "budget-locator-qualification-20261019-v2.json": "8b94bcb86f43f249e108659294aa7db19407a716a2ef269c3495306132260e6f",
+    "budget-locator-correction-candidates-20261019-v1.json": "33e22a9c3f07dc094a6ac6052c7ca2be77dc8a45f9bcfc54f694b39fd24a5451",
+    "edition-role-candidates.json": "c4f01d001f079e746645b18200441c2ba8ff987a584d3071887b062561f93a34"
+  },
+  "aggregate_archive_inventory_sha256": "ba777447fd896aa053d9087dc28ab3672df986d0d1f524fe04d71bd35e5d2bfa",
+  "method": "Recomputed annual edition/kind coverage and candidate body-hash membership; SHA-256 streamed over every CAS object and retained response.warc; object sizes compared with the verified archive inventory."
+}
