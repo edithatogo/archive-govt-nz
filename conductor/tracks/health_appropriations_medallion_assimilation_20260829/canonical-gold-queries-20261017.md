@@ -3,10 +3,13 @@
 M-10, M-13, M-15; AC-08, AC-11, AC-13. Related issues: #205, #212, #214.
 
 The CLI command `health-appropriations-query-canonical-gold` and MCP tool
-`health_appropriations_query_canonical_gold` read one of eight existing fact
-products: historical, budget, revenue, pharmac, moh, crown_befu, crown_hyefu,
-and fiscal_crown. Callers supply a local directory and an independently pinned
-canonical Gold manifest, a product name, and a limit between 1 and 200
+`health_appropriations_query_canonical_gold` read one of ten existing fact
+products: historical, biff8_budget, biff8_revenue, budget, revenue, pharmac,
+moh, crown_befu, crown_hyefu, and fiscal_crown. The BIFF8 products retain
+their v3 `value_basis`, `canonical_stored_integer`, and `numeric_evidence_id`
+fields in query readback; decimal amounts remain at the typed schema scale.
+Callers supply a local directory and an independently pinned canonical Gold
+manifest, a product name, and a limit between 1 and 200
 (default 50). The CLI defaults to historical; MCP requires an explicit product.
 The receipt reports total/returned counts and truncation. This bounded interface
 is not a complete export or a paging API.
@@ -32,8 +35,8 @@ labels do not qualify their unknown denominator/unit definitions.
 
 ## Verification
 
-The focused suite passed 18 tests, covering eight typed product fixtures,
-exact values and identities, deterministic ordering, unchanged package bytes,
+The original focused suite passed 18 tests, covering eight typed product
+fixtures, exact values and identities, deterministic ordering, unchanged package bytes,
 invalid pins/tampering/repinned schema and row-count drift, limits, closed MCP
 arguments, actual CLI parsing and initialized MCP success/failure receipts.
 Dictionary expansion and external column chunks are rejected before Arrow data
@@ -44,8 +47,8 @@ The neighboring verifier, Fiscal query, MCP and CLI integration checks passed
 inputs have identical inventories and file digests. Their shared manifest is
 `2f14fa0930df65f10a835ffa261c920b7331d25c7e8fa72017243239e12084f8`.
 Every returned native row matches independently decoded Arrow values exactly;
-all eight products have identical direct-call, actual CLI-parser and initialized
-MCP receipts, deterministic repeats and unchanged package files. The capped
+all eight products in the original native package have identical direct-call,
+actual CLI-parser and initialized MCP receipts, deterministic repeats and unchanged package files. The capped
 historical/Budget readbacks verify returned subsets and exact total/truncation
 counts, not all-row query coverage.
 
@@ -105,3 +108,9 @@ PR #689 final head `d009509133061c327496e9c205e9c3424f7bba7d` passed Linux,
 macOS, Windows, CodeQL/analyze, lint and patch coverage. It merged normally as
 `2bfe361488ed65d05502488bfe7bd21bdd2578e3` and was verified on `origin/main`;
 the clean local/remote topic branches were pruned before the metadata slice.
+
+The 2026-10-23 test extension adds exact query readback assertions for both
+BIFF8 v3 products, including fixed-scale decimal amounts and the distinct
+unscaled integer/evidence witnesses. The original native receipt and row-count
+table above remain dated eight-product evidence; no native rebuild or new
+row-count claim is made by the focused test change.

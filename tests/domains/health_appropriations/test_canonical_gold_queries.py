@@ -51,6 +51,11 @@ def source_row(schema: pa.Schema, year: int) -> dict[str, Any]:
             row[name] = f"id-{year}"
     if "currency" in row and schema.field("currency").nullable:
         row["currency"] = None
+    if "canonical_stored_integer" in row:
+        row["amount"] = Decimal(str(year))
+        row["value_basis"] = "biff8_stored_integer/v1"
+        row["canonical_stored_integer"] = str(year)
+        row["numeric_evidence_id"] = f"numeric-evidence-{year}"
     return row
 
 
@@ -118,7 +123,16 @@ def test_exact_named_query_retains_source_context_without_writes(
     assert set(row) == set(query.PRODUCTS[product][1].names)
     assert row["source_vintage"] == "pinned-source-vintage"
     amount = "total_amount" if product == "budget" else "amount"
-    assert row[amount] == str(AMOUNT)
+    expected_amount = (
+        str(Decimal("2024.000000000000000000"))
+        if product in {"biff8_budget", "biff8_revenue"}
+        else str(AMOUNT)
+    )
+    assert row[amount] == expected_amount
+    if product in {"biff8_budget", "biff8_revenue"}:
+        assert row["value_basis"] == "biff8_stored_integer/v1"
+        assert row["canonical_stored_integer"] == "2024"
+        assert row["numeric_evidence_id"] == "numeric-evidence-2024"
     if "currency" in row:
         assert row["currency"] is None
     if product == "budget":

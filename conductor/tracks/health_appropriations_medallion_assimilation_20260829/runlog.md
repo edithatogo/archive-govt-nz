@@ -9395,3 +9395,11 @@ PR747 merged as3317bb4e with all8checks, strict rules unchanged and original32st
 2026-10-22: Added one reporting-boundary red contract (expected TypeError before optional flag), then21 focused harness/workflow tests pass; Ruff/format/typing pass. Actual local two-worker three-case probe confirms named starts/worker completions/exact counts and three JUnit cases. Opt-in built-in reports attach only to the main tests command, preserving all32 stages/defaults/coverage/deadlines. Windows uploads completed JUnit only when present; a hard-timeout stdout trail remains available independently. This is diagnostic evidence, not Windows acceptance or an unchanged retry.
 
 2026-10-22: Diagnostic candidate also passes strict typing0/0/0, the original secret scanner and actual three-platform Bash selection (only Windows receives the opt-in flag). Completed JUnit artifacts include the workflow run attempt in their names, preserving earlier attempts without overwrite collisions. The hard-timeout path promises the hosted named/worker/count stdout trail, not a finalized XML file. Original full final-tree validation and fresh Windows diagnostic evidence remain required.
+
+## 2026-10-23 — Phase 6 BIFF8 Gold query witnesses
+
+Started a bounded query-contract slice for the existing BIFF8 canonical Gold
+Budget and revenue products. Added exact readback assertions for v3 stored
+integer basis, canonical integer token, and numeric-evidence identity. This
+extends query/readback assurance only; it does not reconcile cross-source
+amounts or approve unit, period, rights, or comparability claims.
