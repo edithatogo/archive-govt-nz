@@ -8,6 +8,8 @@ import re
 from decimal import Decimal, InvalidOperation
 from typing import TYPE_CHECKING, Any, NoReturn
 
+import pyarrow.parquet as pq
+
 if TYPE_CHECKING:
     from pathlib import Path
 
@@ -20,6 +22,9 @@ MAX_PACKAGE_BYTES = 128 * 1024 * 1024
 MAX_OUTPUTS = 512
 _DIGEST = re.compile(r"^[0-9a-f]{64}$")
 _SCHEMA_VERSION = "archive-govt-nz.health-canonical-gold/v2"
+_CROWN_RECONCILIATION_SCHEMA = (
+    "archive-govt-nz.health-crown-projection-gold-reconciliation/v1"
+)
 _REVISION_KEY_FIELDS = (
     "recordset",
     "measure",
@@ -443,9 +448,143 @@ def _input_total_controls_match_manifest(
             or not matches_manifest(control, markers, products)
         ):
             return False
-    return _pharmac_control_copies_match(
-        root, manifest, markers, products
-    ) and _moh_control_copies_match(root, manifest, markers, products)
+    return (
+        _pharmac_control_copies_match(root, manifest, markers, products)
+        and _moh_control_copies_match(root, manifest, markers, products)
+        and _crown_projection_control_matches(root, manifest, products)
+    )
+
+
+def _crown_projection_control_matches(  # noqa: C901, PLR0911 - cross-copy verifier
+    root: Path, manifest: dict[str, Any], products: dict[str, Any]
+) -> bool:
+    families = {"crown_befu", "crown_hyefu", "fiscal_crown"}
+    report = manifest.get("crown_projection_gold_reconciliation_report")
+    path = root / "crown_projection_gold_reconciliation.json"
+    product_reports = {
+        name: products[name].get("projection_gold_reconciliation")
+        for name in families
+        if isinstance(products.get(name), dict)
+    }
+    if report is None and not path.exists() and not any(product_reports.values()):
+        return True
+    if not isinstance(report, dict) or not path.is_file():
+        return False
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except OSError, UnicodeDecodeError, json.JSONDecodeError:
+        return False
+    if (
+        payload != report
+        or not _valid_crown_projection_gold_reconciliation(report)
+        or any(value != report for value in product_reports.values())
+    ):
+        return False
+    present_families = {
+        name for name in families if isinstance(products.get(name), dict)
+    }
+    reported_families = {family["product"] for family in report["families"]}
+    if reported_families != present_families:
+        return False
+    names = {
+        "crown_befu": "crown_expense_befu_2026.parquet",
+        "crown_hyefu": "crown_expense_hyefu_2025.parquet",
+        "fiscal_crown": "historical_fiscal_crown.parquet",
+    }
+    try:
+        for family in report["families"]:
+            table = pq.read_table(root / names[family["product"]]).to_pylist()
+            expected = []
+            for row in table:
+                amount = row.get("amount")
+                token = row.get("value_token")
+                if not isinstance(amount, Decimal) or type(token) is not str:
+                    return False
+                try:
+                    source_amount = Decimal(token)
+                except InvalidOperation:
+                    return False
+                if not source_amount.is_finite() or source_amount != amount:
+                    return False
+                expected.append(
+                    {
+                        "source_record_id": row.get("source_record_id"),
+                        "gold_record_id": row.get("record_id"),
+                        "source_object_sha256": row.get("source_object_sha256"),
+                        "source_vintage": row.get("source_vintage"),
+                        "period_token": row.get("period_token"),
+                        "measure": row.get("measure"),
+                        "amount_type": row.get("amount_type"),
+                        "unit": row.get("unit"),
+                        "source_value_token": token,
+                        "gold_amount": str(amount),
+                        "status": "exact_numeric_value_match",
+                    }
+                )
+            expected.sort(key=lambda item: item["gold_record_id"])
+            if (
+                family["row_count"] != len(table)
+                or family["source_record_count"] != len(table)
+                or family["rows"] != expected
+                or family["source_object_sha256"]
+                != sorted({row["source_object_sha256"] for row in expected})
+            ):
+                return False
+    except OSError, KeyError, TypeError, ValueError:
+        return False
+    return True
+
+
+def _valid_crown_projection_gold_reconciliation(value: object) -> bool:
+    if not isinstance(value, dict):
+        return False
+    required = {
+        "schema_version": _CROWN_RECONCILIATION_SCHEMA,
+        "scope": "verified_bronze_projection_value_tokens_to_crown_gold_rows",
+        "period_alignment": "literal_source_tokens_only",
+        "currency_and_accounting_basis": "source_context_preserved_unqualified",
+        "cross_vintage_comparison": "not_performed",
+        "core_total_crown_comparison": "not_performed",
+        "aggregation": "not_performed",
+        "rights_state": "not_evaluated",
+        "publication": "not_performed",
+        "status": "exact_source_rows_preserved",
+    }
+    families = value.get("families")
+    if (
+        any(value.get(key) != expected for key, expected in required.items())
+        or type(value.get("row_count")) is not int
+        or not isinstance(families, list)
+        or not families
+    ):
+        return False
+    allowed = {
+        "crown_befu": "crown_expense_befu_2026.parquet",
+        "crown_hyefu": "crown_expense_hyefu_2025.parquet",
+        "fiscal_crown": "historical_fiscal_crown.parquet",
+    }
+    seen: set[str] = set()
+    row_count = 0
+    for family in families:
+        if not isinstance(family, dict):
+            return False
+        name = family.get("product")
+        rows = family.get("rows")
+        if (
+            name not in allowed
+            or name in seen
+            or family.get("gold_table") != allowed[name]
+            or family.get("status") != "exact_source_rows_preserved"
+            or type(family.get("row_count")) is not int
+            or family.get("source_record_count") != family.get("row_count")
+            or not isinstance(family.get("source_object_sha256"), list)
+            or not isinstance(rows, list)
+            or len(rows) != family.get("row_count")
+        ):
+            return False
+        seen.add(name)
+        row_count += family["row_count"]
+    return row_count == value.get("row_count")
 
 
 def _moh_control_copies_match(

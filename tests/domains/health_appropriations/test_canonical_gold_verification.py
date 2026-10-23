@@ -5,14 +5,18 @@ from __future__ import annotations
 import hashlib
 import json
 from collections.abc import Callable
+from decimal import Decimal
 from pathlib import Path
 from typing import Any
 
+import pyarrow as pa
+import pyarrow.parquet as pq
 import pytest
 
 from archive_govt_nz.cli import app
 from archive_govt_nz.domains.health_appropriations import (
     canonical_gold_example,
+    canonical_gold_export,
     canonical_gold_verification,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_gold_example import (
@@ -129,6 +133,148 @@ def _pharmac_input_total_report() -> dict[str, Any]:
             }
         ],
     }
+
+
+def _crown_control_fixture() -> tuple[dict[str, Any], pa.Table]:
+    row = {
+        "record_id": "gold-1",
+        "source_record_id": "source-1",
+        "source_object_sha256": "a" * 64,
+        "source_vintage": "BEFU-2026",
+        "period_token": "year_label:2026",
+        "measure": "core_crown_expense",
+        "amount_type": "estimated",
+        "unit": "$ million",
+        "value_token": "1.25",
+        "amount": Decimal("1.25"),
+    }
+    table = pa.Table.from_pylist([row])
+    report = canonical_gold_export.build_crown_projection_gold_reconciliation(
+        {"crown_befu": table}
+    )
+    return report, table
+
+
+def test_crown_projection_reconciliation_fails_closed_on_bad_inputs() -> None:
+    report, table = _crown_control_fixture()
+    assert report["row_count"] == 1
+
+    with pytest.raises(ValueError, match="canonical_gold_export_invalid"):
+        canonical_gold_export.build_crown_projection_gold_reconciliation({})
+    for field, value in (
+        ("source_record_id", ""),
+        ("value_token", "not-a-number"),
+        ("source_object_sha256", None),
+    ):
+        bad = table.to_pylist()
+        bad[0][field] = value
+        with pytest.raises(ValueError, match="canonical_gold_export_invalid"):
+            canonical_gold_export.build_crown_projection_gold_reconciliation(
+                {"crown_befu": pa.Table.from_pylist(bad)}
+            )
+    bad = table.to_pylist()
+    bad[0]["amount"] = Decimal(2)
+    with pytest.raises(ValueError, match="canonical_gold_export_invalid"):
+        canonical_gold_export.build_crown_projection_gold_reconciliation(
+            {"crown_befu": pa.Table.from_pylist(bad)}
+        )
+
+
+def test_crown_projection_verifier_binds_report_to_gold_rows(tmp_path: Path) -> None:
+    report, table = _crown_control_fixture()
+    product = {"projection_gold_reconciliation": report}
+    manifest = {"crown_projection_gold_reconciliation_report": report}
+    path = tmp_path / "crown_projection_gold_reconciliation.json"
+    parquet = tmp_path / "crown_expense_befu_2026.parquet"
+    path.write_text(json.dumps(report), encoding="utf-8")
+    pq.write_table(table, parquet)
+    assert canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+        tmp_path, manifest, {"crown_befu": product}
+    )
+    assert (
+        canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+            tmp_path,
+            manifest,
+            {
+                "crown_befu": product,
+                "crown_hyefu": {"projection_gold_reconciliation": report},
+            },
+        )
+        is False
+    )
+    path.unlink()
+    assert (
+        canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+            tmp_path, manifest, {"crown_befu": product}
+        )
+        is False
+    )
+    path.write_text(json.dumps(report), encoding="utf-8")
+
+    assert (
+        canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+            tmp_path, {}, {}
+        )
+        is False
+    )
+    assert (
+        canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+            tmp_path, manifest, {"crown_befu": {"projection_gold_reconciliation": {}}}
+        )
+        is False
+    )
+
+    path.write_text("{", encoding="utf-8")
+    assert (
+        canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+            tmp_path, manifest, {"crown_befu": product}
+        )
+        is False
+    )
+    path.write_text(json.dumps(report), encoding="utf-8")
+    bad_table = table.to_pylist()
+    different_amount_text = "2"
+    bad_table[0]["value_token"] = different_amount_text
+    pq.write_table(pa.Table.from_pylist(bad_table), parquet)
+    assert (
+        canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+            tmp_path, manifest, {"crown_befu": product}
+        )
+        is False
+    )
+    invalid_amount_text = "not-a-number"
+    bad_table[0]["value_token"] = invalid_amount_text
+    pq.write_table(pa.Table.from_pylist(bad_table), parquet)
+    assert (
+        canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+            tmp_path, manifest, {"crown_befu": product}
+        )
+        is False
+    )
+
+
+@pytest.mark.parametrize(
+    "mutate",
+    [
+        lambda report: report.update(status="approved"),
+        lambda report: report.update(families=[]),
+        lambda report: report.update(families=[None]),
+        lambda report: report["families"][0].update(row_count=True),
+        lambda report: report["families"][0].update(gold_table="outside.parquet"),
+        lambda report: report.update(row_count=2),
+    ],
+)
+def test_crown_projection_report_shape_rejects_invalid_contracts(
+    mutate: Callable[[dict[str, Any]], None],
+) -> None:
+    report, _table = _crown_control_fixture()
+    mutate(report)
+    assert not canonical_gold_verification._valid_crown_projection_gold_reconciliation(  # noqa: SLF001
+        None
+    )
+    assert not canonical_gold_verification._valid_crown_projection_gold_reconciliation(  # noqa: SLF001
+        report
+    )
 
 
 def test_budget_input_total_report_rejects_unsupported_or_unequal_claims() -> None:
