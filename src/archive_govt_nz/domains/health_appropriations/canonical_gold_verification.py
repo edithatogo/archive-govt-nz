@@ -480,6 +480,12 @@ def _crown_projection_control_matches(  # noqa: C901, PLR0911 - cross-copy verif
         or any(value != report for value in product_reports.values())
     ):
         return False
+    present_families = {
+        name for name in families if isinstance(products.get(name), dict)
+    }
+    reported_families = {family["product"] for family in report["families"]}
+    if reported_families != present_families:
+        return False
     names = {
         "crown_befu": "crown_expense_befu_2026.parquet",
         "crown_hyefu": "crown_expense_hyefu_2025.parquet",
