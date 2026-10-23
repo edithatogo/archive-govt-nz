@@ -191,14 +191,17 @@ def test_crown_projection_verifier_binds_report_to_gold_rows(tmp_path: Path) -> 
     assert canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
         tmp_path, manifest, {"crown_befu": product}
     )
-    assert canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
-        tmp_path,
-        manifest,
-        {
-            "crown_befu": product,
-            "crown_hyefu": {"projection_gold_reconciliation": report},
-        },
-    ) is False
+    assert (
+        canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+            tmp_path,
+            manifest,
+            {
+                "crown_befu": product,
+                "crown_hyefu": {"projection_gold_reconciliation": report},
+            },
+        )
+        is False
+    )
     path.unlink()
     assert (
         canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
