@@ -2529,6 +2529,16 @@ previous qualification results unchanged; original local timeout preserved.
 
 - [~] Reconcile the next19official locator candidates for Budget2008–2011/2013–2014, preserving eight intended expenditure/revenue gaps and five additional departmental-statements variants; reuse retained bytes/bindings, record page/definition/rights gaps and capture only missing eligible originals. [M-02, M-03, M-04, M-06, M-11; AC-03, AC-04, AC-09, AC-16]
 
+  Preservation update (2026-10-23): the bounded 40-role annual Budget cohort
+  and 19-resource additional locator cohort now have a consolidated crosswalk.
+  All40 registered expenditure/revenue roles map to archived candidates, and a
+  fresh local replay verified all46 retained CAS bodies and WARC digests. The
+  original16 registered-URL 404s and ten publication-page403s remain recorded;
+  candidate-role evidence does not authorize URL/version equivalence. These
+  source-census tasks remain in progress for rights, period/unit/definition
+  qualification and broader Budget/BEFU/HYEFU/Vote Health/Pharmac/context
+  coverage. See `budget-census-bronze-reconciliation-20261023.md`.
+
 - [x] Adjudicate the exact immutable archive-verification boolean-field entropy candidate using document/candidate pins and the existing negative guard; preserve producer bytes and all scanner scope/thresholds before full assurance. [M-11, M-15; AC-13, AC-16]
 
 
