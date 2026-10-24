@@ -1,5 +1,22 @@
 # Run Log
 
+## 2026-10-24 — Bounded scheduled discovery report
+
+The scheduled Health discovery workflow now preserves a deterministic Markdown
+report beside its machine heartbeat. It uses only allowlisted workflow and
+discovery states, manifest SHA-256, dataset count, and metadata-drift counts;
+the report excludes dataset metadata and explicitly leaves capture, Silver
+normalization, validation, and publication unclaimed. The command rejects
+input/output and output/output path collisions and atomically replaces each
+output. No discovery permissions or collection behavior changed. See
+`operation-metadata-operations-delivery-20261024.md`.
+
+Focused heartbeat and workflow-policy validation passed 25 tests on Python
+3.15.1, with Ruff format and lint passing. Full repository validation and
+hosted exact-head checks remain pending. This closes the scheduled report
+sub-item only; broader Phase 8 command, scheduling, replay, recovery, and
+review gates remain open.
+
 ## 2026-10-24 — Versioned per-resource rights assertion schema
 
 Added `health-metadata-rights-assertions/v1` as a reusable JSON Schema for
@@ -9714,3 +9731,20 @@ resolved after the fix. The first refreshed hosted attempt stopped at the
 format gate for this new assertion; `ruff format` corrected it, `ruff check`
 passed, and the same 9-test selection passed again. Fresh hosted assurance is
 required for the final head.
+
+## 2026-10-24 — Phase 8 scheduled discovery report and focused testing
+
+The scheduled Health discovery workflow now writes a deterministic, sanitized
+Markdown report beside the heartbeat JSON and uploads both in its existing
+always-run artifact. The report exposes only allowlisted workflow/discovery
+states, manifest digest, dataset count, and drift counts. The focused heartbeat
+and workflow-policy selection passed 25 tests on Python 3.15.1.
+
+The full local harness did not reach its terminal assurance summary within the
+test stage's 1,200-second command limit. Pytest retained ten failed FOI node IDs;
+the repository-local Python 3.15.1 failure-only rerun passed all ten in 18.71
+seconds. Added `scripts/test-focused.sh` and updated `docs/testing-profiles.md`
+so edit cycles can run exact paths/nodes or only cached failures with pytest
+cache enabled. The full `./scripts/validate.sh` remains the PR delivery gate.
+Xdist-generated coverage shards are now ignored rather than appearing as
+untracked files. Full hosted assurance remains pending.

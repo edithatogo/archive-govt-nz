@@ -36,6 +36,7 @@ jobs:
           --manifest build/live/health-discovery.json
           --workflow-outcome "$WORKFLOW_OUTCOME"
           --output build/live/health-discovery-heartbeat.json
+          --report-output build/live/health-discovery-report.md
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
@@ -43,5 +44,6 @@ jobs:
           path: |
             build/live/health-discovery.json
             build/live/health-discovery-heartbeat.json
+            build/live/health-discovery-report.md
             build/live/health-discovery-raw/
           if-no-files-found: error

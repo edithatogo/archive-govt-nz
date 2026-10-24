@@ -13,7 +13,10 @@ import pytest
 from jsonschema import Draft202012Validator
 
 from archive_govt_nz import health_heartbeat as heartbeat_module
-from archive_govt_nz.health_heartbeat import build_discovery_heartbeat
+from archive_govt_nz.health_heartbeat import (
+    build_discovery_heartbeat,
+    render_discovery_report,
+)
 
 
 def _manifest(*, status: str = "observed", baseline_state: str = "compared") -> bytes:
@@ -156,6 +159,68 @@ def test_heartbeat_receipts_match_schema() -> None:
     validator = Draft202012Validator(schema)
     for payload, outcome in ((_manifest(), "success"), (None, "failure")):
         validator.validate(build_discovery_heartbeat(payload, workflow_outcome=outcome))
+
+
+def test_operation_report_is_deterministic_and_allowlisted() -> None:
+    """The report summarizes state without reproducing discovery metadata."""
+    payload = json.loads(_manifest())
+    payload["catalogue_url"] = "https://catalogue.invalid/?token=private-signed-value"
+    payload["datasets"] = [
+        {"title": "private-person-name", "notes": "restricted source bytes"}
+    ]
+    raw = json.dumps(payload).encode()
+    receipt = build_discovery_heartbeat(raw, workflow_outcome="success")
+    report = render_discovery_report(receipt)
+
+    assert report == render_discovery_report(receipt)
+    assert "Workflow outcome: success" in report
+    assert "Discovery state: observed" in report
+    assert "Dataset count: 2" in report
+    assert (
+        "Metadata drift: reported (new=1, changed=1, unchanged=0, withdrawn=1)"
+        in report
+    )
+    assert "Capture state: not_run" in report
+    assert "Silver normalization state: not_run" in report
+    assert "Publication state: not_run" in report
+    assert "Manifest SHA-256:" in report
+    for value in (
+        "private-signed-value",
+        "private-person-name",
+        "restricted source bytes",
+    ):
+        assert value not in report
+
+
+def test_cli_writes_machine_receipt_and_safe_report_atomically(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """The scheduled command emits paired JSON and Markdown evidence."""
+    manifest = tmp_path / "manifest.json"
+    output = tmp_path / "heartbeat.json"
+    report = tmp_path / "report.md"
+    manifest.write_bytes(_manifest())
+    monkeypatch.setattr(
+        sys,
+        "argv",
+        [
+            "health-heartbeat",
+            "--manifest",
+            str(manifest),
+            "--workflow-outcome",
+            "success",
+            "--output",
+            str(output),
+            "--report-output",
+            str(report),
+        ],
+    )
+
+    assert heartbeat_module.main() == 0
+    receipt = json.loads(output.read_bytes())
+    assert report.read_text(encoding="utf-8") == render_discovery_report(receipt)
+    assert not output.with_name("heartbeat.json.tmp").exists()
+    assert not report.with_name("report.md.tmp").exists()
 
 
 def test_cli_writes_atomic_missing_and_unreadable_heartbeats(
