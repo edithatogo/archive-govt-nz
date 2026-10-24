@@ -1,0 +1,75 @@
+{
+  "issue": 211,
+  "profile": "vote-health-supplementary-2014-15-financial-activity/v1",
+  "publication": "not_performed",
+  "repeat_build": {
+    "builds": 2,
+    "identical": true,
+    "outputs_match": true,
+    "source_digest_verified_before_and_after": true
+  },
+  "schema_version": "archive-govt-nz.health-vote-health-financial-activity-evidence/v1",
+  "scope": {
+    "columns": [
+      "estimates",
+      "departmental_transactions",
+      "non_departmental_transactions",
+      "total_transactions",
+      "total"
+    ],
+    "facts": 14,
+    "field_lineage_rows": 70,
+    "limitations": [
+      "Only the page-7 Summary of Financial Activity is normalized.",
+      "This edition remains source-separated; no cross-edition comparison, Gold admission, currency interpretation, or publication is asserted."
+    ],
+    "pdf_page_numbers": [
+      7
+    ],
+    "printed_period": "2014/15 Supplementary Estimates",
+    "source_rows_accounted_for": true,
+    "unit": "$000"
+  },
+  "silver": {
+    "manifest_sha256": "631b4491a52866f61633cbc9fbaf0bcfcfe99e9b180702701008cd203792c921",
+    "outputs": {
+      "field_lineage.parquet": "19c0c8d624bd8a98cd31fb30e8d106989f37b4f8e9541ea8bf76ac1048c4539b",
+      "page_dispositions.parquet": "5a88943d65a94084d58420934fe2e2ffd5d7479d0ba4b713a2377bf3e5d73dec",
+      "vote_health_financial_activity_facts.parquet": "b78f2f1014543c9052b6126fd33e8882d64c0ea4e5e321c8f1ac5e761fda1e0b"
+    },
+    "schema_version": "archive-govt-nz.vote-health-financial-activity-extraction/v1"
+  },
+  "source": {
+    "bytes": 356801,
+    "capture_state": "captured",
+    "existing_bronze_capture_inventory": "capture-inventory-20261017.json",
+    "license": "CC-BY-4.0",
+    "rights_state": "not_evaluated",
+    "source_bytes_unchanged": true,
+    "source_locator": "https://www.treasury.govt.nz/sites/default/files/2015-05/suppest15health.pdf",
+    "source_object_sha256": "99e90dfddd8fc7b6d2bb545148d95f8f3c4c3cbf77760b91103130304176780e",
+    "source_vintage": "Treasury-Vote-Health-Supplementary-2014-15",
+    "title": "Vote Health - The Supplementary Estimates of Appropriations 2014/15",
+    "warc_sha256": "8d06ce8dae466d622fbd86603a74e9f25ff89d74b8deb40f23a6f0ff06885198"
+  },
+  "status": "passed",
+  "validation": {
+    "focused_test": "539 passed, 10 skipped (profile and source-operation tests; broader test file overlap excluded from this selection count details)",
+    "repository_harness": {
+      "command": "./scripts/validate.sh",
+      "coverage_floor_percent": 80,
+      "coverage_percent": 97.08,
+      "differential_parity": "9/9 passed",
+      "mutation_hygiene_dependency_license_secret_sbom": "passed",
+      "representative_documents": 71,
+      "sbom_components": 118,
+      "schemas": 81,
+      "status": "passed",
+      "tests_passed": 8396,
+      "tests_skipped": 14,
+      "transient_failure_recovered": "One unrelated Hypothesis deadline exceeded once at 274ms (200ms deadline), then the cached failing node passed and the final complete harness passed.",
+      "warnings": 18
+    },
+    "runtime": "CPython 3.15.1"
+  }
+}

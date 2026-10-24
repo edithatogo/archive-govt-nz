@@ -47,6 +47,7 @@ from archive_govt_nz.domains.health_appropriations import (
     vote_health_supplementary_2013_14,
     vote_health_supplementary_2013_14_financial_activity,
     vote_health_supplementary_2014_15,
+    vote_health_supplementary_2014_15_financial_activity,
     vote_health_supplementary_2015_16,
     vote_health_supplementary_2016_17,
     vote_health_supplementary_2017_18,
@@ -238,6 +239,12 @@ PROFILES = MappingProxyType(
         ),
         vote_health_supplementary_2013_14_financial_activity.PROFILE: (
             vote_health_supplementary_2013_14_financial_activity.TRANSFORMATION,
+            ("pages", "facts", "lineage"),
+            "vote_health_financial_activity_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2014_15_financial_activity.PROFILE: (
+            vote_health_supplementary_2014_15_financial_activity.TRANSFORMATION,
             ("pages", "facts", "lineage"),
             "vote_health_financial_activity_facts.parquet",
             "page_dispositions.parquet",
@@ -581,6 +588,10 @@ _VOTE_HEALTH_CATEGORY_TOTAL_PROFILES = {
     vote_health_supplementary_2013_14_financial_activity.PROFILE: (
         vote_health_supplementary_2013_14_financial_activity.VINTAGE,
         vote_health_supplementary_2013_14_financial_activity.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2014_15_financial_activity.PROFILE: (
+        vote_health_supplementary_2014_15_financial_activity.VINTAGE,
+        vote_health_supplementary_2014_15_financial_activity.SOURCE_SHA256,
     ),
     vote_health_supplementary_2014_15.PROFILE: (
         vote_health_supplementary_2014_15.VINTAGE,
@@ -1008,6 +1019,10 @@ def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile disp
         )
     if request.profile == vote_health_supplementary_2013_14_financial_activity.PROFILE:
         return vote_health_supplementary_2013_14_financial_activity.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2014_15_financial_activity.PROFILE:
+        return vote_health_supplementary_2014_15_financial_activity.normalize(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
     if request.profile == vote_health_supplementary_2014_15.PROFILE:
