@@ -1652,9 +1652,12 @@ integrated parent head.
 
 ### 8.3 Phase review and checkpoint
 
-- [ ] Exercise interruption, resumption, concurrent invocation, replay,
+- [~] Exercise interruption, resumption, concurrent invocation, replay,
   stale state, remote drift and recovery paths; review workflow permissions
   and secret handling. [M-15, M-18; AC-13, AC-16]
+  - [x] Force two resume callers past read-only preflight together and prove
+    only one can claim the same exclusive output path; verify the winner and
+    preserve all inputs. See `phase8-concurrency-contract-20261025.md`.
 - [ ] Run full local validation and, when available, exact-head hosted checks;
   record these as separate evidence. [M-18, M-19; AC-16]
 

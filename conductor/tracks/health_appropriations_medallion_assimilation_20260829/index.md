@@ -39,6 +39,7 @@ every planned record set, measure or operational workflow.
 - [Pharmac/GDP operational extension](./source-operations-extension.md)
 - [Forecast successor operations](./forecast-source-operations.md)
 - [Phase 8 scheduled workflow contract](./phase8-scheduled-contract-20261025.md)
+- [Phase 8 exclusive resume concurrency contract](./phase8-concurrency-contract-20261025.md)
 - [Explicit forecast source-validation preflight](./forecast-preflight.md)
 - [Bounded source-profile CLI/MCP operations](./source-operations.md)
 - [Exact quarterly GDP source profile](./gdp-profile.md)

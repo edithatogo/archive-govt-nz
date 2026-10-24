@@ -1,5 +1,21 @@
 # Run Log
 
+## 2026-10-25 — Phase 8 exclusive resume concurrency
+
+Added a barrier-controlled regression test that makes two callers complete the
+same read-only preflight before either claims one output path. Exactly one
+caller completes and verifies the envelope; the other is rejected without a
+failure marker or modification of donor, Bronze, prior run, or pinned resume
+plan. This characterizes the executor's existing exclusive `mkdir` claim; no
+production behavior changed. The broader interruption, replay, stale-state,
+remote-drift, workflow-permission and phase-review gates remain open. See
+`phase8-concurrency-contract-20261025.md`.
+
+The required exact-tree `./scripts/validate.sh` passed: 8,423 passed, 14
+skipped, 97% coverage; schema/document, parity, mutation, hygiene, dependency,
+licence, secret-scan and SBOM gates passed on repo-local CPython 3.15.1. Hosted
+exact-head checks remain pending PR creation.
+
 ## 2026-10-25 — Phase 8 scheduled discovery boundary
 
 Added a regression contract proving the scheduled Health discovery lane is

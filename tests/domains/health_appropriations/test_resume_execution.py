@@ -6,8 +6,10 @@ import hashlib
 import json
 import shutil
 import tempfile
+from concurrent.futures import ThreadPoolExecutor
 from decimal import Decimal
 from pathlib import Path
+from threading import Barrier
 from typing import Any
 
 import pyarrow.parquet as pq
@@ -110,6 +112,51 @@ def test_new_attempt_rebuild_and_envelope_verify(tmp_path: Path) -> None:
         "run",
         "RESUME_RECEIPT.json",
     }
+
+
+def test_concurrent_invocations_claim_one_exclusive_attempt(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Two callers past preflight cannot both claim or alter one output path."""
+    inputs = _inputs(tmp_path)
+    before = _files(tmp_path)
+    output = tmp_path / "shared-attempt"
+    destination = module._destination  # noqa: SLF001 - force a check-then-claim race.
+    ready = Barrier(2)
+
+    def concurrent_destination(candidate: Path, protected: list[Path]) -> None:
+        destination(candidate, protected)
+        if candidate == output:
+            ready.wait(timeout=15)
+
+    monkeypatch.setattr(module, "_destination", concurrent_destination)
+
+    def invoke() -> dict[str, Any] | str:
+        try:
+            return module.execute_resume(**inputs, output_dir=output, dry_run=False)
+        except ValueError:
+            return "claim_rejected"
+
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        results = [
+            future.result(timeout=30)
+            for future in [
+                executor.submit(invoke),
+                executor.submit(invoke),
+            ]
+        ]
+
+    assert sum(isinstance(result, dict) for result in results) == 1
+    assert results.count("claim_rejected") == 1
+    receipt_bytes = (output / "RESUME_RECEIPT.json").read_bytes()
+    receipt_pin = hashlib.sha256(receipt_bytes).hexdigest()
+    assert (
+        module.verify_resume(output, inputs["store_root"], receipt_pin)["status"]
+        == "passed"
+    )
+    assert not (output / "FAILURE.json").exists()
+    after = _files(tmp_path)
+    assert {path: after[path] for path in before} == before
 
 
 @pytest.mark.parametrize("value", [None, 0, 1, "false", [], {}])
