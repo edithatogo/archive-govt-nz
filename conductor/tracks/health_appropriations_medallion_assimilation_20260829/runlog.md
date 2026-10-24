@@ -9822,3 +9822,40 @@ The exact-tree `./scripts/validate.sh` passed all 8,379 tests (14 skipped),
 97.05% coverage against the repository's 80% floor, 81 schemas and 71
 representative documents, 9/9 differential parity, all configured mutation
 lanes, hygiene, CAS, dependency audit, licence, secret and SBOM gates.
+
+## 2026-10-25 — Phase 5 Vote Health 2014/15 financial activity
+
+Added the next edition-specific Silver profile for page 7 of the retained
+2014/15 Supplementary Estimates PDF. A fresh response from the official
+Treasury locator matched the existing Bronze capture digest and 356,801-byte
+length; the capture inventory retains its WARC digest and CC BY 4.0 source
+licence. The parser accounts for all 14 printed rows and five `$000` columns,
+including repeated MCA labels, raw dash/`N/A` tokens, parenthesized signed
+adjustments, row-ordinal identity and 70 direct field-lineage rows. Two
+independent builds from the pinned bytes produced identical manifest and
+Parquet hashes. The source-specific operation is registered; normalized-fact
+rights remain unevaluated, and cross-edition comparison, Gold admission and
+publication are not asserted. See
+`vote-health-supplementary-2014-15-financial-activity-20261025.json`.
+
+Final-tree validation initially encountered one timing-sensitive Hypothesis
+failure in the unrelated legislation parent-state suite. The failure-only
+rerun passed; a subsequent complete `./scripts/validate.sh` passed on this
+exact tree: 8,396 passed, 14 skipped, 18 warnings, 97.08% branch coverage,
+81 schemas/71 representative documents, parity 9/9, all mutation and hygiene
+gates, dependency/licence/secret audits, and the 118-component SBOM. Python
+3.15.1, lock, format, lint, and strict typing gates passed. The 80% coverage
+floor was exceeded. See the machine receipt for this profile.
+
+The first hosted assurance matrix reached and passed platform tests, schema,
+parity, and mutation gates but failed the final Windows secret scan because a
+machine-receipt key contained the detector keyword `secret`. This was a
+receipt-label false positive, not credential material. The key is now neutral,
+and the exact-tree local secret scan passes; hosted rerun is required for the
+corrected head.
+
+After that label correction, the exact-tree local secret scan and complete
+`./scripts/validate.sh` both passed again: 8,396 passed, 14 skipped, 18
+warnings, 97.08% coverage; schemas, parity, mutation, dependency, licence,
+credential-scan and SBOM gates passed. Hosted Actions on the corrected commit
+remain the external merge gate.

@@ -996,6 +996,16 @@ integrated parent head.
   Keep rights, currency, annual bounds, cross-edition comparability, Gold and
   publication unqualified. [M-05, M-06, M-11; AC-05, AC-09]
 
+- [x] Add the separate 2014/15 Vote Health Supplementary Estimates page-7
+  “Summary of Financial Activity” profile. Preserve all 14 printed rows, five
+  `$000` columns, repeated MCA labels, raw dash/`N/A` tokens, signed adjustments,
+  ordinal identity and direct field lineage. Reconcile the official source
+  bytes to the existing Bronze capture and record two identical clean-room
+  builds; rights, currency, cross-edition comparability, Gold and publication
+  remain unqualified. See
+  `vote-health-supplementary-2014-15-financial-activity-20261025.md` and its
+  machine receipt. [M-05, M-06, M-11; AC-05, AC-09]
+
 ### 5.3 Normalize analytical context
 
 - [x] Implement the bounded June2026 QES Table8 QEMQ.SASZ9A published
