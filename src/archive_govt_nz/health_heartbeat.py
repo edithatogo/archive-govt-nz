@@ -12,6 +12,10 @@ SCHEMA_VERSION = "archive-govt-nz.health-discovery-heartbeat/v1"
 MAX_MANIFEST_BYTES = 64 * 1024 * 1024
 _OUTCOMES = frozenset({"success", "failure", "cancelled", "skipped"})
 _DRIFT_FIELDS = ("new", "changed", "unchanged", "withdrawn")
+_DISCOVERY_STATES = frozenset(
+    {"missing", "invalid", "unreadable", "unavailable", "observed"}
+)
+_SHA256_HEX_LENGTH = 64
 
 
 def _base(workflow_outcome: str) -> dict[str, object]:
@@ -47,6 +51,82 @@ def build_discovery_heartbeat(
         else:
             _apply_manifest(receipt, document)
     return receipt
+
+
+def render_discovery_report(receipt: dict[str, object]) -> str:
+    """Render a deterministic safe report from bounded heartbeat fields only."""
+    outcome = receipt.get("workflow_outcome")
+    outcome_text = (
+        outcome if isinstance(outcome, str) and outcome in _OUTCOMES else "unknown"
+    )
+    discovery = receipt.get("discovery_state")
+    discovery_text = (
+        discovery
+        if isinstance(discovery, str) and discovery in _DISCOVERY_STATES
+        else "invalid"
+    )
+    digest = receipt.get("manifest_sha256")
+    digest_text = (
+        digest
+        if isinstance(digest, str)
+        and len(digest) == _SHA256_HEX_LENGTH
+        and all(character in "0123456789abcdef" for character in digest)
+        else "not available"
+    )
+    count = receipt.get("dataset_count")
+    count_text = str(count) if type(count) is int and count >= 0 else "not available"
+    drift = receipt.get("metadata_drift")
+    if (
+        isinstance(drift, dict)
+        and drift.get("state") == "reported"
+        and all(
+            type(drift.get(field)) is int and drift[field] >= 0
+            for field in _DRIFT_FIELDS
+        )
+    ):
+        drift_text = (
+            "reported ("
+            + ", ".join(f"{field}={drift[field]}" for field in _DRIFT_FIELDS)
+            + ")"
+        )
+    else:
+        drift_text = "not_available"
+    stage_values = (
+        ("Capture state", "capture_state"),
+        ("Silver normalization state", "silver_normalization_state"),
+        ("Validation state", "validation_state"),
+        ("Publication state", "publication_state"),
+    )
+    stages = []
+    for label, key in stage_values:
+        value = receipt.get(key)
+        safe_value = value if value == "not_run" else "unknown"
+        stages.append(f"- {label}: {safe_value}")
+    return "\n".join(
+        [
+            "# Scheduled Health discovery report",
+            "",
+            f"- Workflow outcome: {outcome_text}",
+            f"- Discovery state: {discovery_text}",
+            f"- Manifest SHA-256: {digest_text}",
+            f"- Dataset count: {count_text}",
+            f"- Metadata drift: {drift_text}",
+            *stages,
+            "",
+            (
+                "Discovery evidence only; capture, normalization, validation, and "
+                "publication are not inferred."
+            ),
+            "",
+        ]
+    )
+
+
+def _atomic_write(path: Path, payload: bytes) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(path.name + ".tmp")
+    temporary.write_bytes(payload)
+    temporary.replace(path)
 
 
 def _apply_manifest(receipt: dict[str, object], document: object) -> None:
@@ -101,7 +181,16 @@ def main() -> int:
     parser.add_argument("--manifest", type=Path, required=True)
     parser.add_argument("--workflow-outcome", required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--report-output", type=Path)
     args = parser.parse_args()
+    destinations = [args.output.resolve()]
+    if args.report_output is not None:
+        destinations.append(args.report_output.resolve())
+    if (
+        len(set(destinations)) != len(destinations)
+        or args.manifest.resolve() in destinations
+    ):
+        parser.error("input and output paths must be distinct")
     try:
         with args.manifest.open("rb") as stream:
             manifest_bytes = stream.read(MAX_MANIFEST_BYTES + 1)
@@ -118,10 +207,11 @@ def main() -> int:
     payload = (
         json.dumps(receipt, sort_keys=True, separators=(",", ":")) + "\n"
     ).encode()
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    temporary = args.output.with_name(args.output.name + ".tmp")
-    temporary.write_bytes(payload)
-    temporary.replace(args.output)
+    _atomic_write(args.output, payload)
+    if args.report_output is not None:
+        _atomic_write(
+            args.report_output, render_discovery_report(receipt).encode("utf-8")
+        )
     return 0
 
 

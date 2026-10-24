@@ -5,6 +5,7 @@
 .mypy_cache/
 .gremlins_cache/
 .coverage
+.coverage.*
 coverage/
 coverage.xml
 htmlcov/

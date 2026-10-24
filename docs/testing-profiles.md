@@ -1,8 +1,16 @@
 # Testing profiles
 
 The repository keeps the complete test suite as the promotion and CI gate.
-For local feedback, use `./scripts/test-fast.sh`; it runs the registered
-`slow`-excluded profile and preserves any additional pytest arguments.
+For edit feedback, use `./scripts/test-focused.sh <path-or-node>` with the
+affected test file or exact pytest node. The script verifies the worktree's
+Python 3.15.1 interpreter and leaves pytest's cache enabled. After a failure,
+`./scripts/test-focused.sh --failed` reruns only cached failures; an empty
+failure cache selects no tests and is not evidence that tests passed.
+
+Use `./scripts/test-fast.sh` when a broader local profile is useful; it runs the
+registered `slow`-excluded profile and preserves any additional pytest
+arguments. Keep the full `./scripts/validate.sh` gate for coherent milestones
+and PR delivery, rather than repeating it during focused edit cycles.
 
 Tests that require the `slow` marker must remain in the full suite and must not
 be used to weaken coverage, mutation, schema, security, or publication gates.

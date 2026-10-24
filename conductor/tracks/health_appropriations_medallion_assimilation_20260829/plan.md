@@ -1600,6 +1600,11 @@ integrated parent head.
 - [ ] Produce operational dashboards/reports from evidence without exposing
   credentials, signed URLs, restricted bytes or personal information. [M-15,
   M-18; AC-13, AC-16]
+  - [x] Emit a deterministic scheduled-discovery Markdown report using only
+    allowlisted heartbeat states, counts and manifest digest; include it beside
+    the machine receipt in the workflow artifact. The report explicitly leaves
+    capture, normalization, validation and publication unclaimed. See
+    `operation-metadata-operations-delivery-20261024.md`.
 
 ### 8.3 Phase review and checkpoint
 
