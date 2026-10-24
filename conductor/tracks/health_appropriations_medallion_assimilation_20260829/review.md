@@ -1,5 +1,15 @@
 # Self-Review
 
+## 2026-10-25 — Phase 8 scheduled discovery contract
+
+- Finding: the regression assertion must distinguish scheduled discovery from
+  downstream capture/normalization, and account for workflow setup steps.
+- Resolution: assert only the least-privilege permission, secret-free workflow
+  definition, non-cancelling concurrency, and the named discovery/heartbeat
+  operations. The contract explicitly leaves capture and normalization pending.
+- Security/provenance: no secrets, source bytes, permissions, or workflow
+  behavior were changed. No publication or source-completeness claim is made.
+
 ## 2026-10-03 — Query-free redirected orphan recovery
 
 The runner adopts a redirected orphan only when the original source URL hash
