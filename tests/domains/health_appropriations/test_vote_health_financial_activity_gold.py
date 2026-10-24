@@ -4,8 +4,12 @@
 from __future__ import annotations
 
 import hashlib
+import json
+from io import BytesIO
 from pathlib import Path
 
+import pyarrow as pa
+import pyarrow.parquet as pq
 import pytest
 
 from archive_govt_nz.domains.health_appropriations import (
@@ -47,6 +51,14 @@ Non-Tax Revenue 700 N/A 80 80 780
 Capital Receipts 30 N/A 40 40 70
 Total Crown Revenue and Capital Receipts 730 N/A 120 120 850
 """
+
+
+def _parquet_payload(table: pa.Table) -> bytes:
+    output = BytesIO()
+    pq.write_table(
+        table, output, compression="zstd", use_dictionary=False, version="2.6"
+    )
+    return output.getvalue()
 
 
 def _silver_package(
@@ -200,3 +212,75 @@ def test_query_bounds_and_silver_output_path_refusal(
         )["status"]
         == "failed"
     )
+
+
+def test_silver_reader_rejects_expanded_parquet_before_decode(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    silver_dir, _ = _silver_package(tmp_path, monkeypatch)
+    manifest_path = silver_dir / "MANIFEST.json"
+    manifest = json.loads(manifest_path.read_bytes())
+    facts_path = silver_dir / gold.SILVER_FACTS
+    facts = pq.read_table(facts_path)
+    repeated = "x" * 1_300_000
+    facts = facts.set_column(
+        facts.schema.get_field_index("raw_values_json"),
+        "raw_values_json",
+        pa.array([repeated] * facts.num_rows, type=pa.string()),
+    )
+    payload = _parquet_payload(facts)
+    facts_path.write_bytes(payload)
+    manifest["output_sha256"][gold.SILVER_FACTS] = hashlib.sha256(payload).hexdigest()
+    manifest_bytes = (
+        json.dumps(manifest, sort_keys=True, separators=(",", ":")) + "\n"
+    ).encode()
+    manifest_path.write_bytes(manifest_bytes)
+    pin = hashlib.sha256(manifest_bytes).hexdigest()
+
+    def reject_decode(*_: object, **__: object) -> None:
+        raise AssertionError
+
+    monkeypatch.setattr(pq.ParquetFile, "read", reject_decode)
+    with pytest.raises(ValueError, match="vote_health_financial_activity_gold_invalid"):
+        gold.export_vote_health_financial_activity(
+            silver_dir, pin, tmp_path / "oversized-silver"
+        )
+
+
+def test_gold_reader_rejects_expanded_parquet_before_decode(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    silver_dir, silver_pin = _silver_package(tmp_path, monkeypatch)
+    gold_dir = tmp_path / "gold"
+    receipt = gold.export_vote_health_financial_activity(
+        silver_dir, silver_pin, gold_dir, write=True
+    )
+    manifest_path = gold_dir / "MANIFEST.json"
+    manifest = json.loads(manifest_path.read_bytes())
+    facts_path = gold_dir / "financial_activity.parquet"
+    facts = pq.read_table(facts_path)
+    repeated = "x" * 1_300_000
+    facts = facts.set_column(
+        facts.schema.get_field_index("record_id"),
+        "record_id",
+        pa.array([repeated] * facts.num_rows, type=pa.string()),
+    )
+    payload = _parquet_payload(facts)
+    facts_path.write_bytes(payload)
+    manifest["payloads"]["financial_activity.parquet"] = {
+        "sha256": hashlib.sha256(payload).hexdigest(),
+        "bytes": len(payload),
+    }
+    manifest_bytes = (
+        json.dumps(manifest, sort_keys=True, separators=(",", ":")) + "\n"
+    ).encode()
+    manifest_path.write_bytes(manifest_bytes)
+    pin = hashlib.sha256(manifest_bytes).hexdigest()
+    assert pin != receipt["manifest_sha256"]
+
+    def reject_decode(*_: object, **__: object) -> None:
+        raise AssertionError
+
+    monkeypatch.setattr(pq.ParquetFile, "read", reject_decode)
+    with pytest.raises(ValueError, match="vote_health_financial_activity_gold_invalid"):
+        gold.read_vote_health_financial_activity(gold_dir, pin)

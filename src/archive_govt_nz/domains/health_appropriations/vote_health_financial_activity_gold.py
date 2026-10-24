@@ -132,6 +132,21 @@ def _parquet_schema_matches(actual: pa.Schema, expected: pa.Schema) -> bool:
     return actual.metadata == expected.metadata
 
 
+def _require_bounded_parquet(parquet: pq.ParquetFile) -> None:
+    """Reject excessive decoded size before asking PyArrow to allocate columns."""
+    metadata = parquet.metadata
+    _require(
+        0 <= metadata.num_rows <= _MAX_PARQUET_ROWS
+        and 0 < metadata.num_row_groups <= max(1, metadata.num_rows)
+    )
+    expanded_bytes = 0
+    for index in range(metadata.num_row_groups):
+        row_group = metadata.row_group(index)
+        _require(row_group.num_rows >= 0 and row_group.total_byte_size >= 0)
+        expanded_bytes += row_group.total_byte_size
+        _require(expanded_bytes <= MAX_BYTES)
+
+
 def _silver_tables(
     package_dir: Path, manifest_sha256: str
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
@@ -185,7 +200,7 @@ def _silver_tables(
             thrift_container_size_limit=100_000,
         ) as parquet:
             _require(_parquet_schema_matches(parquet.schema_arrow, schema))
-            _require(parquet.metadata.num_rows <= _MAX_PARQUET_ROWS)
+            _require_bounded_parquet(parquet)
             tables[name] = parquet.read(use_threads=False).to_pylist()
     facts = tables[SILVER_FACTS]
     lineage = tables[SILVER_LINEAGE]
@@ -483,7 +498,7 @@ def read_vote_health_financial_activity(
             thrift_container_size_limit=100_000,
         ) as parquet:
             _require(_parquet_schema_matches(parquet.schema_arrow, schema))
-            _require(parquet.metadata.num_rows <= _MAX_PARQUET_ROWS)
+            _require_bounded_parquet(parquet)
             tables[name] = parquet.read(use_threads=False)
     facts, lineage = tables[_FACT_PAYLOAD], tables[_LINEAGE_PAYLOAD]
     _require(
