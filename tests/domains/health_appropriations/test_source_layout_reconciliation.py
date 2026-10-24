@@ -108,6 +108,12 @@ def test_reconciliation_rejects_changed_layout_or_capture_identity() -> None:
         ("wrong_layout_media", "layout_source_media_type_mismatch"),
         ("layout_fixity", "layout_source_fixity_mismatch"),
         ("layout_fingerprint", "layout_fingerprint_invalid"),
+        ("unknown_pdf_status", "pdf_layout_status_invalid"),
+        ("unavailable_reason_missing", "pdf_layout_unavailable_reason_missing"),
+        (
+            "unavailable_fingerprint_present",
+            "pdf_unavailable_layout_fingerprint_present",
+        ),
         ("duplicate_pdf_source", "layout_source_duplicate"),
         ("pdf_recheck_changed", "pdf_layout_recheck_changed"),
         ("unassessed_mismatch", "workbook_unassessed_sources_mismatch"),
@@ -161,6 +167,33 @@ def test_reconciliation_fails_closed_on_malformed_or_changed_evidence(  # noqa: 
         workbook_row["source_object_sha256"] = "0" * 64
     elif mutation == "layout_fingerprint":
         workbook_row["layout_sha256"] = "bad"
+    elif mutation in {
+        "unknown_pdf_status",
+        "unavailable_reason_missing",
+        "unavailable_fingerprint_present",
+    }:
+        pdf_row = next(
+            row for row in pdf["pdf_layouts"] if row["status"] == "baseline_recorded"
+        )
+        pdf_recheck_row = next(
+            row
+            for row in pdf_recheck["pdf_layouts"]
+            if row["source_id"] == pdf_row["source_id"]
+        )
+        if mutation == "unknown_pdf_status":
+            pdf_row["status"] = "unknown"
+        else:
+            pdf_row["status"] = "layout_unavailable"
+            pdf_row.pop("layout_sha256")
+            pdf_row["unavailable_reason"] = "parse_error"
+            pdf_recheck_row.clear()
+            pdf_recheck_row.update(pdf_row)
+            if mutation == "unavailable_reason_missing":
+                del pdf_row["unavailable_reason"]
+                del pdf_recheck_row["unavailable_reason"]
+            else:
+                pdf_row["layout_sha256"] = "0" * 64
+                pdf_recheck_row["layout_sha256"] = "0" * 64
     elif mutation == "duplicate_pdf_source":
         pdf["pdf_layouts"].append(deepcopy(pdf_row))
     elif mutation == "pdf_recheck_changed":
@@ -187,3 +220,21 @@ def test_reconciliation_fails_closed_on_malformed_or_changed_evidence(  # noqa: 
             json.dumps(workbook_recheck).encode(),
             json.dumps(pdf_recheck).encode(),
         )
+
+
+def test_reconciliation_preserves_captured_pdfs_with_unavailable_layouts() -> None:
+    census = (TRACK / "source-census.json").read_bytes()
+    workbook = (TRACK / "source-layout-baseline-20261003.json").read_bytes()
+    pdf = (TRACK / "source-pdf-layout-baseline-20261003.json").read_bytes()
+
+    report = reconcile_source_layout_reports(census, workbook, pdf, workbook, pdf)
+
+    assert report["summary"]["pdf_layout_source_count"] == 56
+    assert report["summary"]["pdf_layout_unavailable_count"] == 3
+    assert report["summary"]["sources_without_structural_baseline"] == 13
+    unavailable = [
+        row
+        for row in report["unassessed_sources"]
+        if row["reason"] == "pdf_layout_unavailable"
+    ]
+    assert len(unavailable) == 3

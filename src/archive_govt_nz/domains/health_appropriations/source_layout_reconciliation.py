@@ -44,7 +44,21 @@ def _digest(value: object) -> bool:
     )
 
 
-def _source_rows(
+def _validate_pdf_layout_row(row: dict[str, Any]) -> None:
+    status = row.get("status")
+    if status not in {"baseline_recorded", "layout_unavailable"}:
+        _fail("pdf_layout_status_invalid")
+    if status == "layout_unavailable":
+        reason = row.get("unavailable_reason")
+        if not isinstance(reason, str) or not reason:
+            _fail("pdf_layout_unavailable_reason_missing")
+        if "layout_sha256" in row:
+            _fail("pdf_unavailable_layout_fingerprint_present")
+    elif not _digest(row.get("layout_sha256")):
+        _fail("layout_fingerprint_invalid")
+
+
+def _source_rows(  # noqa: C901 - validate evidence fields in fail-closed order.
     report: dict[str, Any],
     key: str,
     identities: dict[str, dict[str, Any]],
@@ -70,7 +84,9 @@ def _source_rows(
             _fail("layout_source_media_type_mismatch")
         if row.get("source_object_sha256") != source.get("object_sha256"):
             _fail("layout_source_fixity_mismatch")
-        if not _digest(row.get("layout_sha256")):
+        if expected_media_type == _PDF:
+            _validate_pdf_layout_row(row)
+        elif not _digest(row.get("layout_sha256")):
             _fail("layout_fingerprint_invalid")
         source_ids.add(source_id)
         row_key = (source_id, str(row.get("layout_sha256")))
