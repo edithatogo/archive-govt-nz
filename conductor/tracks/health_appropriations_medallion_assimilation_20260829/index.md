@@ -344,6 +344,8 @@ they are not current-state assertions.
 - [2014/15 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2014-15-category-totals-20261006.md)
 - [2014/15 category-total evidence](./vote-health-supplementary-2014-15-category-totals-20261006.json)
 - [2014/15 category totals in clean-room recovery](./clean-room-recovery-20261006-vote-health-2014-15.json)
+- [2014/15 financial-activity Gold projection](./vote-health-financial-activity-gold-20261025.md)
+- [2014/15 financial-activity Gold machine evidence](./vote-health-financial-activity-gold-20261025.json)
 - [2015/16 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2015-16-category-totals-20261006.md)
 - [2015/16 category-total evidence](./vote-health-supplementary-2015-16-category-totals-20261006.json)
 - [2015/16 category totals in clean-room recovery](./clean-room-recovery-20261006-vote-health-2015-16.json)

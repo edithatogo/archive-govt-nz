@@ -9859,3 +9859,27 @@ After that label correction, the exact-tree local secret scan and complete
 warnings, 97.08% coverage; schemas, parity, mutation, dependency, licence,
 credential-scan and SBOM gates passed. Hosted Actions on the corrected commit
 remain the external merge gate.
+
+## 2026-10-25 — Issue #212: source-separated 2014/15 financial-activity Gold
+
+Added a versioned local Gold projection and bounded DuckDB query over the
+2014/15 page-7 Silver product. The exact official Treasury response was
+356,801 bytes and matched the retained Bronze SHA-256; two independent Silver
+and Gold builds produced identical manifests and output hashes. The Gold
+package retains 14 source rows, five printed `$000` columns, original record
+IDs, source row ordinals and 70 field-lineage rows. It makes no calculation or
+edition/cross-source comparison; page coverage remains partial, rights remain
+unevaluated and publication was not performed. pypdf emitted the same xref
+index correction warning on both reads; the pinned source, all fixed row/value
+contracts and package readback passed.
+
+The focused Gold/profile/source-operation suite passed 542 tests with 10
+skipped; Ruff and strict basedpyright passed under CPython 3.15.1. The exact
+tree passed `./scripts/validate.sh`: 8,399 passed, 14 skipped, 18 warnings,
+97% coverage against the 80% floor, 81 schemas/71 representative documents,
+parity 9/9, all mutation and hygiene gates, dependency/licence/secret audits,
+and the 118-component SBOM. This advances only one source-separated Gold
+projection; broader Phase 6 reports, source/donor reconciliation and final
+review remain open. See `vote-health-financial-activity-gold-20261025.md` and
+its machine receipt. The hosted issue #212 was already closed, so this update
+does not reopen or claim to complete the full Phase 6 scope.
