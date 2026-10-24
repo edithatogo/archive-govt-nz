@@ -1404,6 +1404,11 @@ integrated parent head.
     changed, and unreferenced evidence while keeping authority, eligibility,
     and release approval unasserted. See
     `platinum-rights-evidence-fixity-20260928.md`.
+  - [x] Publish the rights-assertion v1 JSON Schema and validate mixed
+    resource states plus conflicting licence/evidence combinations against it.
+    The schema complements application-level payload/path/evidence binding and
+    cannot establish rights or release approval. See
+    `metadata-application-contract.md`.
 - [x] Add offline federation fixtures for namespace, versioned key, mapping
   method, confidence, period and lineage; reject live-runtime or unproven
   mappings. Examples cover unmatched and ambiguous records only; method and
