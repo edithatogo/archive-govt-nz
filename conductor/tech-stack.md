@@ -12,9 +12,9 @@ preservation state.
 
 ## Languages
 
-### Python 3.14
+### Python 3.15.1
 
-Python 3.14 is the primary implementation language for:
+Python 3.15.1 is the primary implementation language for:
 
 - CKAN discovery and metadata retrieval;
 - archive orchestration and CLI commands;
@@ -222,7 +222,7 @@ DCAT/PROV JSON-LD conformance fixtures. The standard library JSON decoder does
 not expand RDF predicates, distinguish literal/resource objects or validate
 typed graph interpretation. RDFLib provides that independent processor without
 adding a runtime graph database, network service, index or publication path.
-On Python 3.14 its required dependency is the already-used `pyparsing`; optional
+On Python 3.15.1 its required dependency is the already-used `pyparsing`; optional
 stores and HTTP extras are not selected. The release declares BSD-3-Clause and
 Python 3.14 support in its
 [package metadata](https://github.com/RDFLib/rdflib/blob/7.6.0/pyproject.toml).
@@ -233,7 +233,7 @@ covered by negative tests, following the
 [upstream security guidance](https://rdflib.readthedocs.io/en/stable/security_considerations/).
 This is a scoped test guard, not a hostile-input operating-system sandbox or a
 general RDF ingestion API. No SPARQL endpoint or persistent store is configured.
-Lock, Python 3.14 compatibility, focused graph fixtures, vulnerability/licence
+Lock, Python 3.15.1 compatibility, focused graph fixtures, vulnerability/licence
 audit, SBOM and full hosted assurance gate adoption. Parsing tests establish
 RDF interpretation, not source rights or an unimplemented application profile.
 

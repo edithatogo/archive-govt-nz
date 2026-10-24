@@ -1,0 +1,44 @@
+{
+  "assertion_failure_reported": false,
+  "conductor_advice_requested": "separate advisory only; owner retains implementation/delivery",
+  "correction_hypothesis": "Use the already-supported worksteal scheduler only for Windows to reduce scope-group tail imbalance; not yet qualified.",
+  "observed_utc": "2026-10-21T20:06:11.219953+00:00",
+  "original_distribution": "loadscope",
+  "original_harness_sha256": "fdcab4a2aedf805c54d8321dbfd735edffdec4c788973effed3b400c58ba7500",
+  "original_stage_limit_seconds": 900,
+  "original_workflow_sha256": "7dc92cab1b9b41f260b6bf9616051ba218ea8ff06a43c5d3225e6a3edd5eeeb1",
+  "other_platforms": "Ubuntu/macOS complete original assurance passed",
+  "preserved_invariants": [
+    "all8301 collected cases remain selected",
+    "same auto worker count",
+    "80percent floor and all coverage gates",
+    "all32 original assurance stages",
+    "900second per-stage and30minute hosted-job bounds",
+    "native Windows output-pinning precheck",
+    "Mac/Linux/local-wrapper scheduling",
+    "all source/provenance/value/rights controls and branch protections"
+  ],
+  "pytest_worker_count": 2,
+  "run_id": 39661874476,
+  "scope": "PR748 Windows full-assurance performance red evidence",
+  "source_head": "c3307f23e283acb7a2fe60f4ebb35128fbb06274",
+  "terminal_failures": [
+    {
+      "attempt": 1,
+      "exit": 124,
+      "job": 119436716382,
+      "last_progress_percent": 99,
+      "log_sha256": "eb07604030474f3e47e54945ee414d4de10235369ac9114982dfb8c45a79ef96",
+      "runner": "GitHub Actions 1000616979"
+    },
+    {
+      "attempt": 2,
+      "exit": 124,
+      "job": 119446088582,
+      "last_progress_percent": 99,
+      "log_sha256": "f106dc15fccf3b1ff8d0f620b930293ff059fa138dcae1088ec89de83b7021d9",
+      "runner": "GitHub Actions 1000617103"
+    }
+  ],
+  "whole_track_complete": false
+}

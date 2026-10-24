@@ -29,6 +29,19 @@ _ERRORS = frozenset(
         "fiscal_gold_schema_or_expansion_invalid",
     }
 )
+
+
+def _query_arrow_table(
+    database: duckdb.DuckDBPyConnection, query: str, params: list[object]
+) -> pa.Table:
+    """Read a bounded SQL relation through DuckDB's Arrow relation API."""
+    relation = database.sql(query, params=params)
+    if relation is None:
+        reason = "fiscal_gold_query_relation_missing"
+        raise ValueError(reason)
+    return relation.to_arrow_table()
+
+
 INPUT_SCHEMA = {
     "$schema": _SCHEMA_URI,
     "type": "object",
@@ -139,7 +152,7 @@ def query_fiscal_analytical_gold(
                 if table == "nominal"
                 else "SELECT * FROM verified_table ORDER BY period_end, measure LIMIT ?"
             )
-            queried = database.execute(sql, [limit]).to_arrow_table()
+            queried = _query_arrow_table(database, sql, [limit])
         rows = [
             {
                 key: str(value) if isinstance(value, (Decimal, date)) else value

@@ -45,6 +45,8 @@ every planned record set, measure or operational workflow.
 - [Source-context census](./context-census.md)
 - [Source-context census data](./context-census.json)
 - [June 2026 GDP release observation](./gdp-release-observation-20260930.json)
+- [June 2026 GDP context Silver repeat-build evidence](./context-gdp-june-2026-repeat-20261023.md)
+- [June 2026 GDP context Silver machine receipt](./context-gdp-june-2026-repeat-20261023.json)
 - [Context Gold GDP vintage evidence](./context-gold-gdp-vintages-20261002.md)
 - [Context GDP June clean-room recovery receipt](./clean-room-recovery-20261002-context-gdp-june.json)
 - [GDP-vintage Conductor phase 7 review receipt](./phase_7_gates-review-receipt-20261002-context-gdp-june.json)
@@ -328,6 +330,11 @@ they are not current-state assertions.
 - [2009/10 category-total evidence](./vote-health-supplementary-2009-10-category-totals-20261006.json)
 - [2009/10 category totals in clean-room recovery](./clean-room-recovery-20261006-vote-health-2009-10.json)
 - [2013/14 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2013-14-category-totals-20261006.md)
+- [2012/13 Vote Health Supplementary Estimates financial activity](./vote-health-supplementary-2012-13-financial-activity-20261023.md)
+- [2012/13 financial activity machine evidence](./vote-health-supplementary-2012-13-financial-activity-20261023.json)
+- [2013/14 Vote Health Supplementary Estimates financial activity](./vote-health-supplementary-2013-14-financial-activity-20261023.md)
+- [2013/14 financial activity machine evidence](./vote-health-supplementary-2013-14-financial-activity-20261023.json)
+- [GDP June contextual Silver runtime refresh evidence](./gdp-june-runtime-refresh-20261024.json)
 - [2013/14 category-total evidence](./vote-health-supplementary-2013-14-category-totals-20261006.json)
 - [2013/14 category totals in clean-room recovery](./clean-room-recovery-20261006-vote-health-2013-14.json)
 - [2014/15 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2014-15-category-totals-20261006.md)
@@ -626,6 +633,8 @@ Producer qualification/implementation and dated census checkpoints retain their 
 
 - [PR727 delivery and topic cleanup](./budget-locator-delivery-20261020-v1.json): all checks/all32 stages across three hosted platforms pass; native legacy/period/unit/rights qualification remains pending.
 
+- [Budget census and Bronze preservation reconciliation (2026-10-23)](./budget-census-bronze-reconciliation-20261023.md): all40 registered annual expenditure/revenue roles have archived candidates; current CAS/WARC replay verifies all46 assets. Original404s, ten403 publication pages, and unresolved alias/rights/metadata qualifications remain explicit.
+
 - Legacy BIFF8 inspector: `health-appropriations-inspect-legacy-workbook SOURCE EXPECTED_SHA256` defaults to inventory only; `--sheet NAME --rows 5 --columns 12` requests bounded decoded stored/cached previews. [Output schema](../../../schemas/health-legacy-workbook-inspection-v1.schema.json).
 
 - [Legacy reader native qualification](./legacy-inspection-qualification-20261020-v1.json):32candidate inspections repeat identically across210worksheet observations; full harness/protected delivery pending.
@@ -738,3 +747,15 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [Phase 4 current acceptance reconciliation](phase4-acceptance-20261022.md) and [pinned native audit](phase4-acceptance-20261022.json). Protected delivery remains pending; wider census and track gates stay open.
 
 - [PDF dependency security unblock](pypdf-security-unblock-20261022.md) and [paired qualification](pypdf-security-unblock-20261022.json): required audit failure preserved; fixed lock,60 existing PDF tests and three retained-source byte comparisons pass. Final assurance pending.
+
+- [Phase 4 protected delivery PR747](phase4-delivery-747-20261022.json): actual eight green checks, three-platform original harness, issue210 closure and verified clean topic pruning. Wider phases and track acceptance remain open.
+
+- [Budget2025 complete32-source native qualification](revenue-2025-complete-cohort-native-20261022.json) and [bounded review](revenue-2025-complete-cohort-review-20261022.md): numeric/recovery/interface proof passes; chart readability finding remains open.
+
+- [Windows deadline red evidence](windows-assurance-timeout-20261022.json) and [bounded scheduling review](windows-scheduling-review-20261022.md): existing Windows-only worksteal trial preserves all tests/stages/limits; actual hosted qualification remains required.
+
+- [Windows failed trial and test-stage-only diagnostic evidence](windows-test-diagnostics-20261022.json): preserves deadline failures and reporting boundaries; actual Windows root-cause repair/qualification remains open.
+
+- [Readable canonical Gold plot derivative](./readable-canonical-plots.md)
+- [Readable canonical plot native evidence](./readable-canonical-plots-native-20261022.json)
+- Phase 6 canonical Gold query/readback and CPython 3.15.1 full-harness evidence: see [plan](./plan.md#phase-6--gold-analytical-products) and the [latest runlog entry](./runlog.md). Source/donor total reconciliation and broader report matrices remain open.

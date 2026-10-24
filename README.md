@@ -130,7 +130,7 @@ and evidence gates authorize them.
 ## Quality Assurance & Verification Contract
 
 The codebase enforces strict quality boundaries via `tools/check.py`:
-- **Python 3.14+** with strict static typing via `basedpyright`.
+- **Python 3.15.1** (the project runtime) with strict static typing via `basedpyright`.
 - **Locked validation harness**: Unit, integration, and adversarial tests enforce
   at least **80% branch-aware coverage**, with critical policy and integrity
   paths held to 100% coverage. Exact local results are recorded in the
@@ -146,6 +146,10 @@ Run the deterministic, process-isolated gate before every pull request:
 ```bash
 ./scripts/validate.sh
 ```
+
+Install the pinned interpreter with `uv python install` and sync the locked
+environment with `uv sync --locked`; the repository `.python-version` file
+selects Python 3.15.1 for local `uv` commands.
 
 The wrapper uses the verified xdist `auto/loadscope` profile so the full suite
 stays within the bounded test-stage timeout. The underlying runner retains a

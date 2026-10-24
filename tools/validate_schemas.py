@@ -149,6 +149,13 @@ VALIDATION_PAIRS = (
         / "health-canonical-input-recovery-v14.json",
     ),
     (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v15.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v15.json",
+    ),
+    (
         REPOSITORY_ROOT
         / "schemas"
         / "legislation-donor-bundle-verification-v1.schema.json",
@@ -274,6 +281,13 @@ VALIDATION_PAIRS = (
     (
         REPOSITORY_ROOT / "schemas" / "health-raw-gold-v1.schema.json",
         REPOSITORY_ROOT / "tests" / "fixtures" / "health-raw-gold-sample-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-readable-canonical-plots-v1.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-readable-canonical-plots-sample-v1.json",
     ),
     (
         REPOSITORY_ROOT / "schemas" / "health-source-plots-v1.schema.json",

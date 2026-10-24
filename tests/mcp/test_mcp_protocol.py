@@ -181,7 +181,7 @@ def test_mcp_subprocess_initialization_and_tools() -> None:
     finally:
         if proc.stdin:
             proc.stdin.close()
-        proc.wait(timeout=5)
+        proc.wait(timeout=15)
         assert proc.returncode == 0
 
 

@@ -4,13 +4,19 @@ from __future__ import annotations
 
 import hashlib
 import json
+from collections.abc import Callable
+from decimal import Decimal
 from pathlib import Path
+from typing import Any
 
+import pyarrow as pa
+import pyarrow.parquet as pq
 import pytest
 
 from archive_govt_nz.cli import app
 from archive_govt_nz.domains.health_appropriations import (
     canonical_gold_example,
+    canonical_gold_export,
     canonical_gold_verification,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_gold_example import (
@@ -20,6 +26,535 @@ from archive_govt_nz.domains.health_appropriations.canonical_gold_verification i
     verify_canonical_gold_package,
 )
 from archive_govt_nz.mcp_server import PROTOCOL_VERSION, Server, call_tool, list_tools
+
+
+def _budget_input_total_report() -> dict[str, Any]:
+    return {
+        "schema_version": "archive-govt-nz.health-budget-input-total-reconciliation/v1",
+        "scope": "pinned_canonical_appropriation_facts_to_budget_gold_rows",
+        "source_package_marker_sha256": ["a" * 64],
+        "period_basis": "literal_source_token_only",
+        "unit_currency_and_price_basis": "source_context_preserved_currency_unknown",
+        "vintage_pooling": "not_performed",
+        "donor_control": "not_performed",
+        "official_source_control": "not_performed",
+        "cross_source_comparison": "not_performed",
+        "group_count": 1,
+        "input_record_count": 2,
+        "status": "exact_canonical_input_totals_reconciled",
+        "groups": [
+            {
+                "source_vintage": "Budget 2025",
+                "period_token": "FY2025/26",
+                "amount_type": "appropriation",
+                "unit": "NZD_thousands",
+                "vote": "Health",
+                "department": "Health",
+                "portfolio": "Health",
+                "source_label": "Care",
+                "input_record_count": 2,
+                "input_record_ids": ["record-1", "record-2"],
+                "canonical_input_total": "4.000000000000000000",
+                "gold_output_total": "4.000000000000000000",
+                "status": "exact_match",
+            }
+        ],
+    }
+
+
+def _revenue_input_total_report() -> dict[str, Any]:
+    return {
+        "schema_version": "archive-govt-nz.health-revenue-input-total-reconciliation/v1",
+        "scope": "pinned_canonical_revenue_facts_to_revenue_gold_rows",
+        "source_package_marker_sha256": ["a" * 64],
+        "period_basis": "literal_source_token_only",
+        "unit_currency_and_price_basis": "source_context_preserved_currency_unknown",
+        "revenue_netting": "not_performed",
+        "vintage_pooling": "not_performed",
+        "donor_control": "not_performed",
+        "official_source_control": "not_performed",
+        "cross_source_comparison": "not_performed",
+        "group_count": 1,
+        "input_record_count": 1,
+        "status": "exact_canonical_input_totals_reconciled",
+        "groups": [
+            {
+                "source_vintage": "Budget 2025",
+                "period_token": "FY2025/26",
+                "amount_type": "estimated_actual",
+                "unit": "NZD_thousands",
+                "vote": "Health",
+                "department": "Health",
+                "revenue_type": "Other revenue",
+                "source_label": "Operating",
+                "input_record_count": 1,
+                "input_record_ids": ["record-1"],
+                "canonical_input_total": "4.000000000000000000",
+                "gold_output_total": "4.000000000000000000",
+                "status": "exact_match",
+            }
+        ],
+    }
+
+
+def _pharmac_input_total_report() -> dict[str, Any]:
+    return {
+        "schema_version": "archive-govt-nz.health-pharmac-input-total-reconciliation/v1",
+        "scope": "pinned_pharmac_silver_facts_to_pharmac_gold_rows",
+        "source_package_marker_sha256": ["a" * 64],
+        "source_object_sha256": "b" * 64,
+        "period_basis": "literal_source_token_only",
+        "unit_currency_and_price_basis": (
+            "source_context_preserved_currency_and_price_basis_unqualified"
+        ),
+        "published_change_recalculation": "not_performed",
+        "actual_expenditure": "not_asserted",
+        "funding_regime_pooling": "not_performed",
+        "donor_control": "not_performed",
+        "official_source_control": "not_performed",
+        "cross_source_comparison": "not_performed",
+        "group_count": 1,
+        "input_record_count": 1,
+        "status": "exact_canonical_input_totals_reconciled",
+        "groups": [
+            {
+                "source_vintage": "Pharmac-CPB-2026-08-07",
+                "period_token": "2013/14",
+                "amount_type": "published_budget_allocation",
+                "unit": "$ Million",
+                "source_label": "Medicines budget",
+                "funding_regime": "district_health_board_budget_holder",
+                "input_record_count": 1,
+                "input_record_ids": ["silver-record-1"],
+                "gold_record_ids": ["gold-record-1"],
+                "canonical_input_total": "1234.500",
+                "gold_output_total": "1234.500000000000000000",
+                "status": "exact_match",
+            }
+        ],
+    }
+
+
+def _crown_control_fixture() -> tuple[dict[str, Any], pa.Table]:
+    row = {
+        "record_id": "gold-1",
+        "source_record_id": "source-1",
+        "source_object_sha256": "a" * 64,
+        "source_vintage": "BEFU-2026",
+        "period_token": "year_label:2026",
+        "measure": "core_crown_expense",
+        "amount_type": "estimated",
+        "unit": "$ million",
+        "value_token": "1.25",
+        "amount": Decimal("1.25"),
+    }
+    table = pa.Table.from_pylist([row])
+    report = canonical_gold_export.build_crown_projection_gold_reconciliation(
+        {"crown_befu": table}
+    )
+    return report, table
+
+
+def test_crown_projection_reconciliation_fails_closed_on_bad_inputs() -> None:
+    report, table = _crown_control_fixture()
+    assert report["row_count"] == 1
+
+    with pytest.raises(ValueError, match="canonical_gold_export_invalid"):
+        canonical_gold_export.build_crown_projection_gold_reconciliation({})
+    for field, value in (
+        ("source_record_id", ""),
+        ("value_token", "not-a-number"),
+        ("source_object_sha256", None),
+    ):
+        bad = table.to_pylist()
+        bad[0][field] = value
+        with pytest.raises(ValueError, match="canonical_gold_export_invalid"):
+            canonical_gold_export.build_crown_projection_gold_reconciliation(
+                {"crown_befu": pa.Table.from_pylist(bad)}
+            )
+    bad = table.to_pylist()
+    bad[0]["amount"] = Decimal(2)
+    with pytest.raises(ValueError, match="canonical_gold_export_invalid"):
+        canonical_gold_export.build_crown_projection_gold_reconciliation(
+            {"crown_befu": pa.Table.from_pylist(bad)}
+        )
+
+
+def test_crown_projection_verifier_binds_report_to_gold_rows(tmp_path: Path) -> None:
+    report, table = _crown_control_fixture()
+    product = {"projection_gold_reconciliation": report}
+    manifest = {"crown_projection_gold_reconciliation_report": report}
+    path = tmp_path / "crown_projection_gold_reconciliation.json"
+    parquet = tmp_path / "crown_expense_befu_2026.parquet"
+    path.write_text(json.dumps(report), encoding="utf-8")
+    pq.write_table(table, parquet)
+    assert canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+        tmp_path, manifest, {"crown_befu": product}
+    )
+    assert (
+        canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+            tmp_path,
+            manifest,
+            {
+                "crown_befu": product,
+                "crown_hyefu": {"projection_gold_reconciliation": report},
+            },
+        )
+        is False
+    )
+    path.unlink()
+    assert (
+        canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+            tmp_path, manifest, {"crown_befu": product}
+        )
+        is False
+    )
+    path.write_text(json.dumps(report), encoding="utf-8")
+
+    assert (
+        canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+            tmp_path, {}, {}
+        )
+        is False
+    )
+    assert (
+        canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+            tmp_path, manifest, {"crown_befu": {"projection_gold_reconciliation": {}}}
+        )
+        is False
+    )
+
+    path.write_text("{", encoding="utf-8")
+    assert (
+        canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+            tmp_path, manifest, {"crown_befu": product}
+        )
+        is False
+    )
+    path.write_text(json.dumps(report), encoding="utf-8")
+    bad_table = table.to_pylist()
+    different_amount_text = "2"
+    bad_table[0]["value_token"] = different_amount_text
+    pq.write_table(pa.Table.from_pylist(bad_table), parquet)
+    assert (
+        canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+            tmp_path, manifest, {"crown_befu": product}
+        )
+        is False
+    )
+    invalid_amount_text = "not-a-number"
+    bad_table[0]["value_token"] = invalid_amount_text
+    pq.write_table(pa.Table.from_pylist(bad_table), parquet)
+    assert (
+        canonical_gold_verification._crown_projection_control_matches(  # noqa: SLF001
+            tmp_path, manifest, {"crown_befu": product}
+        )
+        is False
+    )
+
+
+@pytest.mark.parametrize(
+    "mutate",
+    [
+        lambda report: report.update(status="approved"),
+        lambda report: report.update(families=[]),
+        lambda report: report.update(families=[None]),
+        lambda report: report["families"][0].update(row_count=True),
+        lambda report: report["families"][0].update(gold_table="outside.parquet"),
+        lambda report: report.update(row_count=2),
+    ],
+)
+def test_crown_projection_report_shape_rejects_invalid_contracts(
+    mutate: Callable[[dict[str, Any]], None],
+) -> None:
+    report, _table = _crown_control_fixture()
+    mutate(report)
+    assert not canonical_gold_verification._valid_crown_projection_gold_reconciliation(  # noqa: SLF001
+        None
+    )
+    assert not canonical_gold_verification._valid_crown_projection_gold_reconciliation(  # noqa: SLF001
+        report
+    )
+
+
+def test_budget_input_total_report_rejects_unsupported_or_unequal_claims() -> None:
+    report = _budget_input_total_report()
+    assert canonical_gold_verification._valid_budget_input_total_reconciliation(  # noqa: SLF001
+        report
+    )
+
+    mismatched = {**report, "groups": [{**report["groups"][0]}]}
+    mismatched["groups"][0]["gold_output_total"] = "5"
+    unsupported = {**report, "official_source_control": "reconciled"}
+    duplicated = {**report, "groups": [{**report["groups"][0]}]}
+    duplicated["groups"][0]["input_record_ids"] = ["record-1", "record-1"]
+
+    assert not canonical_gold_verification._valid_budget_input_total_reconciliation(  # noqa: SLF001
+        mismatched
+    )
+    assert not canonical_gold_verification._valid_budget_input_total_reconciliation(  # noqa: SLF001
+        unsupported
+    )
+    assert not canonical_gold_verification._valid_budget_input_total_reconciliation(  # noqa: SLF001
+        duplicated
+    )
+
+
+def test_budget_input_total_report_pins_are_bound_to_manifest_provenance() -> None:
+    report = _budget_input_total_report()
+    budget_product = {"input_total_reconciliation": report}
+    products = {"budget": budget_product}
+    markers = ["a" * 64]
+
+    assert canonical_gold_verification._budget_reconciliation_matches_manifest(  # noqa: SLF001
+        report, markers, products
+    )
+
+    unrelated = {**report, "source_package_marker_sha256": ["b" * 64]}
+    unrelated_products = {"budget": {"input_total_reconciliation": unrelated}}
+    assert not canonical_gold_verification._budget_reconciliation_matches_manifest(  # noqa: SLF001
+        unrelated, markers, unrelated_products
+    )
+    assert not canonical_gold_verification._budget_reconciliation_matches_manifest(  # noqa: SLF001
+        report, markers, {"budget": {"input_total_reconciliation": unrelated}}
+    )
+
+
+def test_revenue_input_total_report_pins_are_bound_to_manifest_provenance() -> None:
+    report = _revenue_input_total_report()
+    markers = ["a" * 64]
+    products = {"revenue": {"input_total_reconciliation": report}}
+
+    assert canonical_gold_verification._revenue_reconciliation_matches_manifest(  # noqa: SLF001
+        report, markers, products
+    )
+    unrelated = {**report, "source_package_marker_sha256": ["b" * 64]}
+    assert not canonical_gold_verification._revenue_reconciliation_matches_manifest(  # noqa: SLF001
+        unrelated,
+        markers,
+        {"revenue": {"input_total_reconciliation": unrelated}},
+    )
+    assert not canonical_gold_verification._revenue_reconciliation_matches_manifest(  # noqa: SLF001
+        report,
+        markers,
+        {"revenue": {"input_total_reconciliation": unrelated}},
+    )
+
+
+def test_pharmac_input_total_report_rejects_unequal_or_unsupported_claims() -> None:
+    report = _pharmac_input_total_report()
+    assert canonical_gold_verification._valid_pharmac_input_total_reconciliation(  # noqa: SLF001
+        report
+    )
+
+    unequal = {**report, "groups": [{**report["groups"][0]}]}
+    unequal["groups"][0]["gold_output_total"] = "5"
+    duplicated = {**report, "groups": [{**report["groups"][0]}]}
+    duplicated["groups"][0]["gold_record_ids"] = ["gold-record-1", "gold-record-1"]
+    unsupported = {**report, "actual_expenditure": "verified"}
+
+    for invalid in (unequal, duplicated, unsupported):
+        assert (
+            not canonical_gold_verification._valid_pharmac_input_total_reconciliation(  # noqa: SLF001
+                invalid
+            )
+        )
+
+
+def test_pharmac_input_total_report_copies_bind_to_manifest_and_source(
+    tmp_path: Path,
+) -> None:
+    report = _pharmac_input_total_report()
+    markers = ["a" * 64]
+    products = {"pharmac": {"input_total_reconciliation": report}}
+    projection = {"source_object_sha256": "b" * 64}
+    manifest = {
+        "package_marker_sha256": markers,
+        "pharmac_input_total_reconciliation_report": report,
+        "pharmac_projection": projection,
+    }
+    path = tmp_path / "pharmac_input_total_reconciliation.json"
+    path.write_text(json.dumps(report), encoding="utf-8")
+
+    assert canonical_gold_verification._pharmac_reconciliation_matches_manifest(  # noqa: SLF001
+        report, markers, products, projection
+    )
+    assert canonical_gold_verification._pharmac_control_copies_match(  # noqa: SLF001
+        tmp_path, manifest, markers, products
+    )
+
+    missing_copy = {**manifest}
+    del missing_copy["pharmac_input_total_reconciliation_report"]
+    assert not canonical_gold_verification._pharmac_control_copies_match(  # noqa: SLF001
+        tmp_path, missing_copy, markers, products
+    )
+    assert not canonical_gold_verification._pharmac_reconciliation_matches_manifest(  # noqa: SLF001
+        report, ["c" * 64], products, projection
+    )
+
+    path.write_text("not-json", encoding="utf-8")
+    assert not canonical_gold_verification._pharmac_control_copies_match(  # noqa: SLF001
+        tmp_path, manifest, markers, products
+    )
+    path.unlink()
+    legacy_root = tmp_path / "legacy"
+    legacy_root.mkdir()
+    assert canonical_gold_verification._pharmac_control_copies_match(  # noqa: SLF001
+        legacy_root, {}, markers, {}
+    )
+    (legacy_root / path.name).write_text("{}", encoding="utf-8")
+    assert not canonical_gold_verification._pharmac_control_copies_match(  # noqa: SLF001
+        legacy_root, {}, markers, {}
+    )
+
+
+@pytest.mark.parametrize(
+    ("field", "value"),
+    [
+        ("unit", ""),
+        ("input_record_count", 2),
+        ("canonical_input_total", "not-a-decimal"),
+        ("gold_output_total", "NaN"),
+        ("gold_output_total", "5"),
+    ],
+)
+def test_revenue_input_total_report_rejects_malformed_groups(
+    field: str, value: object
+) -> None:
+    report = _revenue_input_total_report()
+    report["groups"] = [dict(report["groups"][0])]
+    report["groups"][0][field] = value
+
+    assert not canonical_gold_verification._valid_revenue_input_total_reconciliation(  # noqa: SLF001
+        report
+    )
+
+
+def test_revenue_input_total_report_rejects_duplicate_and_unsorted_groups() -> None:
+    report = _revenue_input_total_report()
+    original = report["groups"][0]
+    later = {
+        **original,
+        "source_vintage": "Budget 2026",
+        "input_record_ids": ["record-2"],
+    }
+    report["groups"] = [original, later]
+    report["group_count"] = report["input_record_count"] = 2
+    assert canonical_gold_verification._valid_revenue_input_total_reconciliation(  # noqa: SLF001
+        report
+    )
+
+    assert not canonical_gold_verification._valid_revenue_input_total_reconciliation(  # noqa: SLF001
+        {**report, "groups": [later, original]}
+    )
+    assert not canonical_gold_verification._valid_revenue_input_total_reconciliation(  # noqa: SLF001
+        {
+            **report,
+            "groups": [original, {**later, "input_record_ids": ["record-1"]}],
+        }
+    )
+
+
+def test_revenue_input_total_report_rejects_invalid_summary_and_group_shapes() -> None:
+    assert not canonical_gold_verification._valid_revenue_input_total_reconciliation(  # noqa: SLF001
+        []
+    )
+    for report in (
+        {**_revenue_input_total_report(), "groups": []},
+        {**_revenue_input_total_report(), "group_count": 0},
+        {**_revenue_input_total_report(), "groups": [None]},
+    ):
+        assert (
+            not canonical_gold_verification._valid_revenue_input_total_reconciliation(  # noqa: SLF001
+                report
+            )
+        )
+
+
+@pytest.mark.parametrize(
+    ("product_name", "report_name", "output_name", "report_factory"),
+    [
+        (
+            "budget",
+            "budget_input_total_reconciliation_report",
+            "budget_input_total_reconciliation.json",
+            _budget_input_total_report,
+        ),
+        (
+            "revenue",
+            "revenue_input_total_reconciliation_report",
+            "revenue_input_total_reconciliation.json",
+            _revenue_input_total_report,
+        ),
+    ],
+)
+def test_input_total_controls_require_all_copies_or_none(
+    tmp_path: Path,
+    product_name: str,
+    report_name: str,
+    output_name: str,
+    report_factory: Callable[[], dict[str, Any]],
+) -> None:
+    report = report_factory()
+    marker = "a" * 64
+    product = {"input_total_reconciliation": report}
+    manifest = {
+        "package_marker_sha256": [marker],
+        report_name: report,
+    }
+    output = tmp_path / output_name
+    output.write_text(json.dumps(report), encoding="utf-8")
+
+    assert canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        tmp_path, manifest, {product_name: product}
+    )
+
+    missing_manifest_copy = dict(manifest)
+    del missing_manifest_copy[report_name]
+    assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        tmp_path, missing_manifest_copy, {product_name: product}
+    )
+
+    missing_product_copy = {product_name: {}}
+    assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        tmp_path, manifest, missing_product_copy
+    )
+
+    different_nested = {**report, "official_source_control": "reported"}
+    assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        tmp_path,
+        manifest,
+        {product_name: {"input_total_reconciliation": different_nested}},
+    )
+
+    output.write_text("not-json", encoding="utf-8")
+    assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        tmp_path, manifest, {product_name: product}
+    )
+    output.write_text(
+        json.dumps({**report, "input_record_count": 99}), encoding="utf-8"
+    )
+    assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        tmp_path, manifest, {product_name: product}
+    )
+
+    output.unlink()
+    assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        tmp_path, manifest, {product_name: product}
+    )
+
+    legacy_root = tmp_path / "legacy"
+    legacy_root.mkdir()
+    assert canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        legacy_root, {}, {product_name: {}}
+    )
+    assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        legacy_root, {}, []
+    )
+    (legacy_root / output_name).write_text("{}", encoding="utf-8")
+    assert not canonical_gold_verification._input_total_controls_match_manifest(  # noqa: SLF001
+        legacy_root, {}, {product_name: {}}
+    )
 
 
 def _package(root: Path) -> tuple[Path, str]:
@@ -43,7 +578,7 @@ def _package(root: Path) -> tuple[Path, str]:
             "accounting_basis",
             "period_token",
         ],
-        "completeness": "historical_budget_revenue_pharmac_moh_crown_product_rows",
+        "completeness": "historical_budget_revenue_biff8_budget_biff8_revenue_pharmac_moh_crown_product_rows",
         "difference_interpretation": "not_assessed",
         "other_product_revisions": "not_assessed",
         "cross_source_comparison": "not_performed",
@@ -159,6 +694,50 @@ def _package(root: Path) -> tuple[Path, str]:
         "ambiguous_series_period_count": 0,
         "candidates": [],
     }
+    for name, key_fields in (
+        (
+            "biff8_budget",
+            [
+                "period_token",
+                "measure",
+                "amount_type",
+                "unit",
+                "currency",
+                "price_basis",
+                "base_period",
+                "denominator_definition",
+                "source_label",
+                "vote",
+                "appropriation",
+                "department",
+                "portfolio",
+                "value_basis",
+            ],
+        ),
+        (
+            "biff8_revenue",
+            [
+                "period_token",
+                "measure",
+                "amount_type",
+                "unit",
+                "currency",
+                "price_basis",
+                "base_period",
+                "denominator_definition",
+                "source_label",
+                "vote",
+                "department",
+                "revenue_type",
+                "source_application_id",
+                "value_basis",
+            ],
+        ),
+    ):
+        revision_report["product_revisions"][name] = {
+            **revision_report["product_revisions"]["budget"],
+            "key_fields": key_fields,
+        }
     revision_payload = (
         json.dumps(revision_report, sort_keys=True, separators=(",", ":")) + "\n"
     ).encode()
@@ -359,7 +938,7 @@ def test_consumer_example_summarizes_only_verified_manifest_reports(
                 "changed_candidate_count": 0,
                 "ambiguous_series_period_count": 0,
             }
-            for product in ("pharmac", "moh", "crown")
+            for product in ("biff8_budget", "biff8_revenue", "pharmac", "moh", "crown")
         },
     }
     assert summary["cross_source_period_token_overlaps"] == {
@@ -371,6 +950,40 @@ def test_consumer_example_summarizes_only_verified_manifest_reports(
     assert summary["cross_source_comparison"] == "not_performed"
     assert summary["rights_state"] == "not_evaluated"
     assert summary["publication"] == "not_performed"
+
+
+def test_legacy_v2_gold_package_remains_verifiable(tmp_path: Path) -> None:
+    root, _pin = _package(tmp_path / "legacy-gold")
+    marker = root / "MANIFEST.json"
+    manifest = json.loads(marker.read_text(encoding="utf-8"))
+    report = manifest["revision_reconciliation_report"]
+    report["completeness"] = "historical_budget_revenue_pharmac_moh_crown_product_rows"
+    report["product_revisions"].pop("biff8_budget")
+    report["product_revisions"].pop("biff8_revenue")
+    payload = (
+        json.dumps(report, sort_keys=True, separators=(",", ":")) + "\n"
+    ).encode()
+    (root / "historical_revision_reconciliation.json").write_bytes(payload)
+    manifest["outputs"]["historical_revision_reconciliation.json"].update(
+        {"sha256": hashlib.sha256(payload).hexdigest(), "bytes": len(payload)}
+    )
+    marker.write_text(
+        json.dumps(manifest, sort_keys=True, separators=(",", ":")) + "\n",
+        encoding="utf-8",
+    )
+    pin = hashlib.sha256(marker.read_bytes()).hexdigest()
+
+    receipt = verify_canonical_gold_package(root, pin)
+    summary = summarize_verified_canonical_gold(root, pin)
+
+    assert receipt["status"] == "verified"
+    assert set(summary["product_revisions"]) == {
+        "budget",
+        "revenue",
+        "pharmac",
+        "moh",
+        "crown",
+    }
 
 
 def test_consumer_example_fails_closed_on_unverified_or_malformed_summary(

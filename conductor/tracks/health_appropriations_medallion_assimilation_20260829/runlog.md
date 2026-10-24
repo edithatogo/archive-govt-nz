@@ -9377,3 +9377,315 @@ Fresh donor replay verifies all 23 originals/312 oracle rows and the accepted30 
 ## 2026-10-22 — Required pypdf security unblock
 
 First Phase4 original harness passed8283tests and reached audit, then failed on four newly reported pypdf6.19.0 vulnerabilities. Failed audit/log/terminal and all4935frozen-pin postflight preserved. Updated only pypdf to supported6.21.1 and minimum specifier; lock confirms no other package upgrade. Original audit reports no known vulnerabilities;60existing PDF contracts and exact1999/2000,2016/17,2025/26 source probes pass,22facts/12files byte-identical to retained packages. Prior188Phase4 native files unchanged. Original source/control/runtime pins preserved except the two intentional dependency files, which are separately bound. Fresh full/hosted/dependency-review assurance pending. See paired pypdf-security-unblock-20261022 artifacts.
+
+## 2026-10-22 — Phase4 protected delivery and next canonical slice
+
+PR747 merged as3317bb4e with all8checks, strict rules unchanged and original32stages on3platforms. Issue210 closure/readback and scoped comment6323350930 verified;94-file delivery packet mirrored, primary clean and exact topic pruned. New managed Revenue2025 worktree is attached and independently baselined59tests. Newv15cohort contracts red5/40, then63green,80schemas/70docs and0typing issues; earlier fixture-generation path error preserved. Exact Revenue2025 source69facts/1000rows/931out-of-scope, no rejects, two raw/canonical repeats with exact tokens/amounts, unknown currency/start and old raw bytes preserved. Full32-source/Gold/query/metadata qualification remains pending.
+
+2026-10-22: Budget2025 complete32-source v15 native producer dee70456 completed14 stages, terminal0; all5944 pins unchanged, owner/group absent and independent free lease confirmed.289 input/64 Gold files repeat; legacy v14 byte control unchanged;69 new exact revenue facts,128 binding refusals, all15 versions,10 queries, metadata and actual console/MCP pass. Visual review of3 new PNGs found label overlap/clipping; recorded as open additive-rendering work, without rewriting frozen outputs. Original final-tree harness/protected delivery pending.
+
+2026-10-22: Original full assurance attempt1 on fee44dc8 passed8287tests/80schemas/70documents/parity/mutations/audit/licenses, then failed the final secret scanner on one newly introduced high-entropy public filesystem proof-root string. The value is the local recovery output directory, not a credential. Failed scan/log/terminal1 and unchanged-pin/owner-absence/free-lease proof retained externally. Represent this locator as losslessly reconstructable path components instead; no baseline, scanner rule or suppression changes. Rerun the exact final tree through the original harness.
+
+2026-10-22: PR748 exactc3307f23 passed Ubuntu/macOS original assurance, CodeQL/lint/coverage. Windows jobs119436716382 and fresh-runner119446088582 both terminated124 at the original900second test deadline, continuing to99percent with no assertion failure reported. Raw logs/job snapshots retained externally; this is performance red evidence, not a runner-stall claim. No identical third retry. Next bounded hypothesis uses the already-supported worksteal option only for Windows, preserving test selection/worker count/coverage/deadlines/native output-pinning and all source contracts; fresh exact-tree full validation/hosted qualification required.
+
+2026-10-22: The Windows-only supported-scheduler trial passes14 existing harness contracts,6 existing workflow-policy tests, actual before/after three-platform shell argument capture and32-stage command equivalence. Original strict secret scan passes without baseline/rule changes. Conductor independently confirms this is an unqualified performance hypothesis, not a guaranteed cause/fix. No source/application code, tests, worker count, coverage or deadlines changed. Full final-tree validation and exact-head Windows qualification remain required.
+
+2026-10-22: Original full local assurance on47b56c5d passes all32 stages/8287tests14skips18warnings794.36s; all frozen pins unchanged, terminal0/owner-group absence/free lease verified. Current-head Ubuntu and macOS pass separately; Windows worksteal job119457618235 still terminates124 at900s after99percent (last20:24:27, exit20:26:00). Both scheduling hypotheses remain bounded evidence, not root-cause proof. Preserve the third log and add test-stage-only built-in reporting rather than another unchanged run; avoid global PYTEST_ADDOPTS because mutation subprocesses must not overwrite main-suite reports.
+
+2026-10-22: Added one reporting-boundary red contract (expected TypeError before optional flag), then21 focused harness/workflow tests pass; Ruff/format/typing pass. Actual local two-worker three-case probe confirms named starts/worker completions/exact counts and three JUnit cases. Opt-in built-in reports attach only to the main tests command, preserving all32 stages/defaults/coverage/deadlines. Windows uploads completed JUnit only when present; a hard-timeout stdout trail remains available independently. This is diagnostic evidence, not Windows acceptance or an unchanged retry.
+
+2026-10-22: Diagnostic candidate also passes strict typing0/0/0, the original secret scanner and actual three-platform Bash selection (only Windows receives the opt-in flag). Completed JUnit artifacts include the workflow run attempt in their names, preserving earlier attempts without overwrite collisions. The hard-timeout path promises the hosted named/worker/count stdout trail, not a finalized XML file. Original full final-tree validation and fresh Windows diagnostic evidence remain required.
+
+## 2026-10-23 — Phase 6 BIFF8 Gold query witnesses
+
+Started a bounded query-contract slice for the existing BIFF8 canonical Gold
+Budget and revenue products. Added exact readback assertions for v3 stored
+integer basis, canonical integer token, and numeric-evidence identity. This
+extends query/readback assurance only; it does not reconcile cross-source
+amounts or approve unit, period, rights, or comparability claims.
+
+The initial exact-head hosted run passed Ubuntu assurance, lint and CodeQL but
+Windows pytest reached 7,815/8,305 passing tests before the existing 900-second
+per-stage timeout returned 124; no assertion failure was reported. The
+previous successful Windows run completed pytest in 828.68 seconds. Increased
+the bounded per-stage ceiling to 1,200 seconds to provide runtime headroom;
+test selection, coverage threshold, worker count and the 30-minute job limit
+remain unchanged. Fresh exact-head Actions are required.
+
+2026-10-23 — Phase 6 BIFF8 revision reconciliation: added exact-context revision
+candidates for the canonical BIFF8 Budget appropriation and revenue products.
+Keys preserve literal period, source dimensions, qualifiers and `value_basis`;
+changed candidates retain each vintage's record ID, canonical stored-integer
+token and numeric-evidence identity. Interpretation remains unassessed and no
+cross-source comparison is introduced. Verifier/example contracts and focused
+regression coverage pass; this bounded report extension does not
+close Phase 6 totals/source-control reconciliation or the broader analytical
+matrix.
+
+Review follow-up: preserved read compatibility for prior canonical Gold v2
+packages using the original five-product revision report while new builds emit
+the seven-product report. Added an end-to-end legacy package verification and
+consumer-summary regression. Updated full validation passes 8299 tests/14 skips,
+97.16% coverage, 81 schemas/71 representative documents, parity 9/9, mutation,
+dependency audit, licence, secret scan and SBOM gates. Fresh exact-head hosted
+assurance is required for the review fix.
+
+2026-10-23 — Phase 6 canonical Gold query matrix: added a consolidated exact
+readback golden across all ten named canonical fact products and two period
+tokens. The expected rows are normalized through each declared Arrow schema
+before comparison with DuckDB exact-string output; every field and identity is
+checked, along with unsupported real-spending refusal, package immutability,
+and the existing unassessed rights/publication/cross-source boundaries. The
+focused canonical query suite passes 21 tests. This closes only canonical
+fact-product query/readback coverage; source/donor totals, report matrices and
+cross-source comparability remain open. Full repository validation and
+protected delivery are still required.
+
+2026-10-23 — Phase 6 exact-tree validation and runtime blocker: aligned the
+PyArrow constraint to 26.0.0 and refreshed the lock for CPython 3.15.1; PyArrow
+26 installed from its wheel. The required `./scripts/validate.sh` then stopped
+before tests while building DuckDB 1.5.6 from sdist. AppleClang 21/libc++ fails
+in `variant_shredding.cpp` on incomplete `std::hash<duckdb::VariantLogicalType>`.
+The focused canonical query suite therefore cannot collect in the required
+runtime. An attempted no-DuckDB focused report test also could not collect
+because the existing canonical-consumer test imports DuckDB at module load.
+Ruff and format checks for the Gold query implementation/tests pass, and
+`git diff --check` passes. This is an upstream runtime compatibility blocker,
+not a passing validation result; no PR or merge is ready. Keep source/donor
+comparisons and rights/currency/period comparability holds explicit.
+
+Correction and continuation, 2026-10-23: PyPI now provides DuckDB 2.0.0 with a
+macOS ARM64 `cp312-abi3` wheel and a Python 3.15 classifier. Qualified it on
+CPython 3.15.1, raised the project constraint to `<3`, and migrated the three
+read-only query consumers from DB-API Arrow results to the typed relation API;
+the missing-relation case fails closed. The canonical Gold query matrix passes
+21 tests, and the canonical/fiscal query plus reconciliation suites pass 59.
+Full typing, lint and format pass. The complete harness reached its test stage:
+8,296 passed and 14 skipped, with four `test_context_gold.py` failures on the
+June 2026 GDP source manifest digest. Independent rebuild comparison shows all
+three Arrow tables are semantically equal to the retained package, while each
+Parquet SHA changes under PyArrow 26.0.0; regenerated manifest is
+`103d03e29dcaccd30f66d0499fceffe652df5b5e478593856acd05ff8ec14411`, retained
+manifest is `f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd`.
+This is a frozen-byte/dependency-version reconciliation blocker, not a data
+value difference. Keep historical pins and dependent recovery receipts intact;
+the full harness, report/source/donor reconciliation and protected delivery
+remain open.
+
+2026-10-23 — Phase 6 runtime and contextual Gold recovery: retained the frozen
+PyArrow 23 June GDP manifest pin and added the exact PyArrow 26.0.0 manifest
+digest as a separately accepted serialization. Rebuild comparison confirms all
+three Parquet tables have identical Arrow rows, while output-byte hashes differ;
+the consumer still verifies each manifest output digest, schema, source SHA and
+lineage. Context Gold tests pass 19/19. DuckDB 2.0 relation API compatibility
+fix passes 59 affected query/reconciliation tests. Final `./scripts/validate.sh`
+passes on CPython 3.15.1: 8,300 passed, 14 skipped, 18 warnings, 97.14% branch
+coverage; 81 schemas/71 representative documents, parity 9/9, all mutation gates,
+dependency audit, licence inventory, secret scan and SBOM (115 components) pass.
+This closes the local Phase 6 query/readback and harness slice only. Source/donor
+total reconciliation, broader report matrix, unapproved cross-source
+comparisons, hosted PR Actions and final track completion remain open.
+
+2026-10-23 — exact-tree Phase 6 validation with Python 3.15.1: the required
+`./scripts/validate.sh` completed successfully with the repository's complete
+8,314-test selection using four xdist workers: 8,300 passed, 14 skipped,
+18 warnings, 97.14% coverage. Schema validation (81 schemas, 71 representative
+documents), parity (9/9), all mutation gates, dependency audit, licence
+inventory, secret scan, and SBOM (115 components) passed. The default automatic
+10-worker run had four resource-sensitive timing failures; the required
+failure-only rerun passed all four, and the bounded four-worker full run passed
+without altering selection, adding retries, or skipping tests. This is full
+local harness evidence for this exact tree, not hosted Actions evidence. The
+Gold slice remains limited to source-separated canonical fact query/readback
+and contextual June GDP serialization compatibility. Source/donor total
+reconciliation, broader report matrices, cross-source comparability and final
+Phase 6 completion remain open.
+
+2026-10-24 — PR #754 hosted setup and exact-tree rerun: the first hosted
+workflow-policy job failed before test collection because its pinned uv 0.12.17
+could not resolve Python 3.15.1. Updated the five explicit uv pins to 0.13.5;
+the six focused workflow policy tests pass. The first subsequent full run exposed
+a test-only MCP subprocess shutdown timeout (the server completed all protocol
+assertions but graceful EOF exit exceeded the five-second wait under full-suite
+load). The same cached failure-only selection passed; direct focused timing
+measured 6.87 seconds. Raised only that graceful shutdown bound to 15 seconds,
+retaining the return-code assertion. The complete required harness then passed:
+8,300 passed, 14 skipped, 18 warnings, 97.14% coverage; 81 schemas/71 documents,
+parity 9/9, all mutation gates, dependency audit, licence inventory, secret scan,
+and SBOM (115 components). Hosted checks for the amended exact head are pending.
+The Phase 6 source/donor reconciliation and wider report matrix remain open.
+
+The amended PR #754 exact-head hosted assurance completed on 2026-10-23:
+Ubuntu 14m56s, macOS 19m37s, Windows 23m19s; all three passed, as did
+CodeQL, dependency review and workflow-policy lint. The optional Codecov patch
+check reported 70% against its 80% target because DuckDB's explicit absent-
+relation guards were not yet exercised. Added a parameterized fail-closed
+regression for all three query helpers; focused tests pass 3/3, and the local
+full-suite coverage data now records 30/30 changed executable Python lines
+covered. This test-only follow-up is on the branch and requires fresh hosted
+checks; the prior hosted green results apply to its parent commit only.
+
+2026-10-24 — PR #754 review finding: fixed the declared Python upper-bound
+mismatch. A shared predicate now enforces `>=3.15.1,<3.16` across CLI doctor,
+verify, legislation doctor, and MCP doctor; the MCP output schema exposes the
+full requirement. Added boundary tests for Python 3.15.0, 3.15.1, 3.15.9,
+3.16.0, and 4.0.0, plus CLI, verify, and MCP regressions. Focused tests pass
+9/9, Ruff and basedpyright pass, and the complete repository harness passes
+8,308 tests/14 skips at 97.16% coverage, 81 schemas/71 documents, parity 9/9,
+all mutation gates, audit/licence/secret scan, and SBOM. New exact-head hosted
+checks and review-thread resolution remain pending.
+
+## 2026-10-24 — Phase 6 Budget canonical-input total control
+
+Added a deterministic source-separated report that independently recomputes
+every nominal Budget Gold group from its hash-pinned canonical appropriation
+facts. The control keys include literal vintage and period token plus the full
+source dimensions; every source record ID must occur exactly once, and each
+Decimal input sum must equal its corresponding Gold total. The report is
+content-addressed within the Gold package and included in its RO-Crate
+inventory. Its verifier rejects malformed or unequal controls.
+
+This is a canonical-input-to-Gold arithmetic/accounting control only. It does
+not claim direct official-source or donor reconciliation, resolve the known
+historical differences, infer currency/price basis, pool vintages, or compare
+across source families. The 68-test canonical-consumer and Gold-verification
+selection passed, as did the report valid/invalid focused contracts. The required
+`./scripts/validate.sh` passed on Python 3.15.1: 8,310 passed, 14 skipped,
+18 warnings, 97.15% branch coverage; 81 schemas/71 documents, parity 9/9, all
+mutation gates, dependency and licence audits, secret scan, and the 115-component
+SBOM passed. Hosted PR Actions remain required before merge.
+
+## 2026-10-24 — Phase 6 Budget revenue canonical-input total control
+
+Added a deterministic revenue-to-Gold reconciliation for the separately
+projected canonical `revenue_fact` inputs. It verifies one-to-one record
+identity, literal dimensions and exact Decimal amounts before grouping by
+vintage, literal period, amount type, unit, Vote, department, revenue type and
+source label. The fixture keeps actual revenue and capital receipts in separate
+groups. The verifier binds report pins to package markers and the nested revenue
+product, rejects incomplete/duplicate identities and unequal totals, and keeps
+netting, official-source, donor and cross-source controls explicitly
+unperformed.
+
+The canonical-consumer and Gold-verification focused suites pass 72 tests. The
+exact-tree `./scripts/validate.sh` passes on Python 3.15.1: 8,313 passed, 14
+skipped, 97.09% branch coverage, 81 schemas/71 representative documents,
+parity 9/9, all mutation gates, dependency and licence audits, secret scan and
+the 115-component SBOM. Exact-head hosted checks remain pending before delivery;
+Phase 6.3 and source/donor reconciliation are still open.
+
+Delivery update — the revenue control merged as PR #756 at `35f862ad` after
+Ubuntu, macOS, Windows, CodeQL, analysis, and lint passed. Its separate
+Codecov patch check remained below target (76.57%); a test-only follow-up added
+malformed-report, identity-order, and copy-consistency coverage. PR #757 merged
+as `71f29cb6` after the same required platform checks, Codecov patch, CodeQL,
+analysis, and lint passed. These deliveries close only the pinned
+canonical-input-to-Gold Budget and revenue arithmetic controls. Phase 6.3,
+external official-source and donor controls, cross-source comparisons, and
+historical-difference dispositions remain open.
+
+## 2026-10-24 — Phase 6 Pharmac Silver-to-Gold input control
+
+The canonical Gold builder now emits an optional Pharmac reconciliation when
+the verified Pharmac Silver input is included. It reopens Bronze-bound Silver
+facts, requires each source record to map exactly once to its canonical Gold
+row, checks source object/observation identity, literal period and classification
+dimensions, funding regime, and exact Decimal amounts, then groups totals by
+literal context without pooling years or regimes. The report is bound into the
+Gold product, manifest, output inventory, and RO-Crate; verifier support
+requires all three report copies to agree and retains legacy packages with no
+report. The fixed fixture has 14 exact matched source/Gold rows and repeats
+byte-identically. It is a fixture contract, not official-source or donor
+reconciliation. Focused verifier, Pharmac Gold, and canonical projection suites
+pass 59 tests; Ruff and basedpyright pass. The exact-tree `./scripts/validate.sh`
+passes on Python 3.15.1: 8,324 passed, 14 skipped, 18 warnings, and 97.15%
+branch coverage; 81 schemas/71 representative documents, parity 9/9, all
+mutation gates, dependency and licence audits, secret scan, and 115-component
+SBOM pass. Hosted PR checks remain required before delivery. Phase 6.3 and all
+external comparison controls remain open.
+
+## 2026-10-24 — Phase 6 MoH Silver-to-Gold row control
+
+Canonical Gold now reopens both pinned Bronze-bound MoH Silver profiles and
+requires every complete schema-typed row to match its Gold fact exactly by
+`record_id`, with one-to-one coverage and per-profile identity counts. The
+deterministic report is bound in the MoH product and manifest, inventoried, and
+included in RO-Crate; package verification rejects missing, mismatched, or
+unbound report copies. The control does not pool measures or compare MoH with
+other source families, and does not qualify units, denominators, official-source
+values, donor parity, or rights. See
+`canonical-moh-gold-reconciliation-20261024.md`.
+
+Focused MoH Gold and Gold-verification selection passed 56 tests; Ruff and
+basedpyright passed. The required `./scripts/validate.sh` passed on Python
+3.15.1: 8,324 passed, 14 skipped, 18 warnings, and 97.10% branch coverage;
+81 schemas/71 representative documents, parity 9/9, all mutation gates,
+dependency and licence audits, secret scan, and 115-component SBOM passed.
+Phase 6.2 broader analytical/report coverage, Phase 6.3 external reconciliation,
+and final track completion remain open.
+## 2026-10-24 — Phase 5 Vote Health 2013/14 financial activity
+
+Added a distinct pinned Silver profile for PDF page 7 of the 2013/14
+Supplementary Estimates. It retains fourteen rows, five `$000` values per row,
+literal missing tokens, repeated-label source order, and 70 field-lineage
+coordinates. Bronze remained byte-identical; two clean-room builds and the
+persisted Silver output digests match. The older category-profile receipt's
+91,611-byte discrepancy remains preserved and unresolved in that old record;
+the current source length is verified from the 470,538-byte CAS payload and
+capture manifest. Rights, currency, annual bounds, cross-edition comparison,
+Gold admission and publication remain unqualified.
+
+The repo-local Python 3.15.1 qualification required DuckDB 2.0.0 and PyArrow
+26.0.0. A stable-ABI DuckDB wheel replaced the failing DuckDB 1.5.6 source
+build on this host. PyArrow 26's deterministic GDP June Silver bytes produce
+a new manifest pin; two independent builds match and the prior receipt remains
+unchanged. The active source pin and context tests were updated with evidence
+in `gdp-june-runtime-refresh-20261024.json`. Five newly exposed compatibility
+issues were repaired (profile schema, new manifest pin, modern typing, lint),
+then the focused related suites passed 622 tests/10 skips. Full
+`./scripts/validate.sh` passed 8,309 tests/14 skips at 97.17% coverage, 81
+schemas/71 documents, parity 9/9, all mutation checks, dependency/licence/
+secret audit and SBOM. Fresh exact-head hosted Actions are required.
+
+## 2026-10-24 — Phase 5 Vote Health 2013/14 mainline integration
+
+Rebased the bounded 2013/14 financial-activity profile onto current `main`,
+retaining the incoming Phase 6 log entries and appending this Phase 5 record.
+The evidence receipt now uses the content-addressed CAS locator without an
+absolute PortableSSD path. The initial exact-tree supply-chain scan identified
+that machine-local path and a `secrets` summary-key false positive; both were
+removed, the isolated secret scan passed, and the final full harness passed.
+
+On CPython 3.15.1, the focused Vote Health/source-operation/GDP/context Gold
+selection passed 559 tests with 10 skips. `./scripts/validate.sh` passed on the
+corrected tree: 8,334 passed, 14 skipped, 18 warnings, and 97.11% branch
+coverage against the 80% gate; 81 schemas/71 representative documents, parity
+9/9, mutation gates, dependency/license audits, secret scan, and 115-component
+SBOM passed. This completes one local Phase 5 Vote Health profile only. Rights,
+currency, annual bounds, cross-edition comparison, Gold admission and
+publication remain unqualified; Phase 5 and contextual-series work remain open.
+
+## 2026-10-24 — Phase 6 BEFU, HYEFU, and Fiscal Crown Gold controls
+
+Canonical Gold now emits a deterministic projection-to-Gold report for each
+available BEFU, HYEFU, and historical Fiscal Crown product. It accounts for all
+rows by unique source/output record identity and confirms Decimal equality
+between the retained source numeric token and Gold amount. The report is bound
+to the manifest and each included product; the read-only package verifier
+recomputes it from the pinned Gold tables and rejects inconsistent report
+copies. Focused Crown build/replay and verifier selection passed. The report
+does not establish an official-publisher total, compare vintages, aggregate
+core/total measures, qualify currencies or fiscal boundaries, or assert rights
+or publication. See
+`canonical-crown-projection-reconciliation-20261024.md`. The required full
+repository harness remains the delivery gate.
+
+The first protected review identified that package verification must require a
+reconciliation family for every Crown Gold table present. The verifier now
+compares the reported family set with the present product set before Parquet
+readback; a regression test covers an omitted HYEFU product. Focused Crown
+build/replay and verifier selection passed 9 tests, and the review thread was
+resolved after the fix. The first refreshed hosted attempt stopped at the
+format gate for this new assertion; `ruff format` corrected it, `ruff check`
+passed, and the same 9-test selection passed again. Fresh hosted assurance is
+required for the final head.

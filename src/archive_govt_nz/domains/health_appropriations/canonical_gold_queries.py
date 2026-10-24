@@ -73,6 +73,19 @@ _CAVEATS = {
     "revision_interpretation": "not_assessed",
     "cross_source_comparison": "not_performed",
 }
+
+
+def _query_arrow_table(
+    database: duckdb.DuckDBPyConnection, query: str, params: list[object]
+) -> pa.Table:
+    """Read a bounded SQL relation through DuckDB's Arrow relation API."""
+    relation = database.sql(query, params=params)
+    if relation is None:
+        reason = "canonical_gold_query_relation_missing"
+        raise ValueError(reason)
+    return relation.to_arrow_table()
+
+
 _ERRORS = frozenset(
     {
         "canonical_gold_query_package_invalid",
@@ -274,10 +287,11 @@ def query_canonical_gold(
             },
         ) as database:
             database.register("verified_facts", table)
-            queried = database.execute(
+            queried = _query_arrow_table(
+                database,
                 "SELECT * FROM verified_facts ORDER BY ALL ASC NULLS LAST LIMIT ?",
                 [limit],
-            ).to_arrow_table()
+            )
         # Restore declared Arrow types, including UTC timestamps, after SQL.
         queried = queried.cast(table.schema)
         rows = [

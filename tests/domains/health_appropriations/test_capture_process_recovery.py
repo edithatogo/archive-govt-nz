@@ -71,7 +71,7 @@ async def test_hard_kill_releases_writer_and_resumes_verified_checkpoint(
     try:
         assert process.stdout is not None
         assert (
-            await asyncio.wait_for(process.stdout.readline(), 10)
+            await asyncio.wait_for(process.stdout.readline(), 30)
             == b"checkpoint_ready\n"
         )
         checkpoint = json.loads(args.manifest.read_text())

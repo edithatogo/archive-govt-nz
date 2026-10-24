@@ -25,6 +25,11 @@ def parse_arguments() -> argparse.Namespace:
         help="xdist scheduling policy (default: loadscope)",
     )
     parser.add_argument(
+        "--pytest-diagnostics",
+        action="store_true",
+        help="emit named test progress, durations and build/pytest-results.xml",
+    )
+    parser.add_argument(
         "--include-heavy",
         action="store_true",
         help="append bounded pytest-gremlins and Scalene evidence lanes",
@@ -39,6 +44,7 @@ def main() -> int:
         stages = build_stages(
             pytest_workers=arguments.pytest_workers,
             pytest_distribution=arguments.pytest_distribution,
+            pytest_diagnostics=arguments.pytest_diagnostics,
             include_heavy=arguments.include_heavy,
         )
     except ValueError as error:

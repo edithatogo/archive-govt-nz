@@ -1,0 +1,29 @@
+{
+  "schema_version": "archive-govt-nz.health-readable-canonical-plots/v1",
+  "status": "complete",
+  "point_count": 0,
+  "page_count": 0,
+  "omissions": [],
+  "geometry": "all_visible_text_inside_canvas",
+  "numeric_conversion": "float_for_display_only",
+  "rights": "not_evaluated",
+  "publication": "not_performed",
+  "parent_manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "renderer": {
+    "matplotlib": "fixture",
+    "pillow": "fixture",
+    "freetype": "fixture",
+    "backend": "Agg"
+  },
+  "outputs": {
+    "plot-points.json": {
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "bytes": 1
+    },
+    "plot-schema.json": {
+      "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "bytes": 1
+    }
+  },
+  "schema_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+}

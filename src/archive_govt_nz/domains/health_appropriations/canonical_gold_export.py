@@ -6,9 +6,10 @@ import hashlib
 import json
 from contextlib import suppress
 from dataclasses import dataclass
-from decimal import Decimal
+from datetime import date
+from decimal import Decimal, InvalidOperation, localcontext
 from io import BytesIO
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, cast
 
 import pyarrow as pa
 import pyarrow.parquet as pq
@@ -18,8 +19,13 @@ from archive_govt_nz.domains.health_appropriations import (
     crown_expense_canonical_projection,
     fiscal_crown_canonical_projection,
     hyefu_crown_expense_canonical_projection,
+    moh_indicators,
+    pharmac,
+    pharmac_canonical_projection,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
+    NOMINAL_BUDGET_SCHEMA,
+    NOMINAL_REVENUE_SCHEMA,
     query_historical_observations,
     query_nominal_budget,
     query_nominal_revenue,
@@ -38,10 +44,13 @@ from archive_govt_nz.domains.health_appropriations.local_provenance_reader impor
 from archive_govt_nz.domains.health_appropriations.moh_canonical_projection import (
     MohGoldInput,
     project_moh_indicators,
+    read_verified_moh_tables,
 )
 from archive_govt_nz.domains.health_appropriations.pharmac_canonical_projection import (
     project_pharmac_cpb,
+    read_verified_pharmac_tables,
 )
+from archive_govt_nz.schemas.health_recordsets import recordset_schema
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -51,7 +60,14 @@ MAX_PACKAGES = 32
 MIN_DISTINCT_CLASSIFICATION_LABELS = 2
 MIN_REVISION_VINTAGES = 2
 MIN_OVERLAP_PRODUCTS = 2
+_PRODUCT_REVISION_WITNESS_FIELDS = {
+    "biff8_budget": ("canonical_stored_integer", "numeric_evidence_id"),
+    "biff8_revenue": ("canonical_stored_integer", "numeric_evidence_id"),
+}
 SCHEMA = "archive-govt-nz.health-canonical-gold/v2"
+_CROWN_RECONCILIATION_SCHEMA = (
+    "archive-govt-nz.health-crown-projection-gold-reconciliation/v1"
+)
 
 
 @dataclass(frozen=True)
@@ -324,6 +340,457 @@ def _quality_report(
             "revision_reconciliation",
             "cross_source_reconciliation",
         ],
+    }
+
+
+_BUDGET_RECONCILIATION_FIELDS = (
+    "source_vintage",
+    "period_token",
+    "amount_type",
+    "unit",
+    "vote",
+    "department",
+    "portfolio",
+    "source_label",
+)
+_REVENUE_RECONCILIATION_FIELDS = (
+    "source_vintage",
+    "period_token",
+    "amount_type",
+    "unit",
+    "vote",
+    "department",
+    "revenue_type",
+    "source_label",
+)
+_PHARMAC_RECONCILIATION_FIELDS = (
+    "source_vintage",
+    "period_token",
+    "amount_type",
+    "unit",
+    "source_label",
+    "funding_regime",
+)
+
+
+def build_budget_input_total_reconciliation(
+    packages: tuple[CanonicalPackageInput, ...], gold: pa.Table
+) -> dict[str, Any]:
+    """Tie Budget Gold totals to their exact pinned canonical input records."""
+    _require(
+        isinstance(packages, tuple)
+        and 0 < len(packages) <= MAX_PACKAGES
+        and all(package.kind == "budget" for package in packages)
+        and gold.schema.equals(NOMINAL_BUDGET_SCHEMA, check_metadata=True)
+    )
+    source: dict[str, dict[str, Any]] = {}
+    package_markers: list[str] = []
+    for package in packages:
+        canonical, receipt = read_verified_canonical_tables(package)
+        facts = canonical["appropriation_fact"]
+        package_markers.append(receipt["marker_sha256"])
+        for row in facts.to_pylist():
+            record_id = row["record_id"]
+            _require(
+                type(record_id) is str and bool(record_id) and record_id not in source
+            )
+            _require(isinstance(row["amount"], Decimal) and row["amount"].is_finite())
+            source[record_id] = row
+
+    rows = []
+    consumed: set[str] = set()
+    for output in gold.to_pylist():
+        ids = output["input_record_ids"]
+        _require(
+            isinstance(ids, list)
+            and bool(ids)
+            and ids == sorted(set(ids))
+            and not consumed.intersection(ids)
+        )
+        selected = [source.get(record_id) for record_id in ids]
+        _require(all(row is not None for row in selected))
+        inputs = [row for row in selected if row is not None]
+        _require(
+            all(
+                all(
+                    row[field] == output[field]
+                    for field in _BUDGET_RECONCILIATION_FIELDS
+                )
+                for row in inputs
+            )
+        )
+        with localcontext() as context:
+            context.prec = 50
+            total = sum((row["amount"] for row in inputs), Decimal(0))
+        _require(
+            output["input_count"] == len(inputs) and output["total_amount"] == total
+        )
+        consumed.update(ids)
+        rows.append(
+            {
+                **{field: output[field] for field in _BUDGET_RECONCILIATION_FIELDS},
+                "input_record_count": len(inputs),
+                "input_record_ids": ids,
+                "canonical_input_total": str(total),
+                "gold_output_total": str(output["total_amount"]),
+                "status": "exact_match",
+            }
+        )
+    _require(consumed == set(source) and len(rows) == gold.num_rows)
+    return {
+        "schema_version": "archive-govt-nz.health-budget-input-total-reconciliation/v1",
+        "scope": "pinned_canonical_appropriation_facts_to_budget_gold_rows",
+        "source_package_marker_sha256": sorted(package_markers),
+        "period_basis": "literal_source_token_only",
+        "unit_currency_and_price_basis": "source_context_preserved_currency_unknown",
+        "vintage_pooling": "not_performed",
+        "donor_control": "not_performed",
+        "official_source_control": "not_performed",
+        "cross_source_comparison": "not_performed",
+        "group_count": len(rows),
+        "input_record_count": len(source),
+        "status": "exact_canonical_input_totals_reconciled",
+        "groups": rows,
+    }
+
+
+def build_revenue_input_total_reconciliation(
+    packages: tuple[CanonicalPackageInput, ...], gold: pa.Table
+) -> dict[str, Any]:
+    """Tie source-separated revenue Gold observations to pinned canonical facts."""
+    _require(
+        isinstance(packages, tuple)
+        and 0 < len(packages) <= MAX_PACKAGES
+        and all(package.kind == "revenue" for package in packages)
+        and gold.schema.equals(NOMINAL_REVENUE_SCHEMA, check_metadata=True)
+    )
+    source: dict[str, dict[str, Any]] = {}
+    package_markers: list[str] = []
+    for package in packages:
+        canonical, receipt = read_verified_canonical_tables(package)
+        package_markers.append(receipt["marker_sha256"])
+        for row in canonical["revenue_fact"].to_pylist():
+            record_id = row["record_id"]
+            _require(
+                type(record_id) is str and bool(record_id) and record_id not in source
+            )
+            _require(isinstance(row["amount"], Decimal) and row["amount"].is_finite())
+            source[record_id] = row
+
+    grouped: dict[tuple[str, ...], dict[str, Any]] = {}
+    consumed: set[str] = set()
+    for output in gold.to_pylist():
+        record_id = output["input_record_id"]
+        _require(type(record_id) is str and record_id not in consumed)
+        input_row = source.get(record_id)
+        _require(input_row is not None)
+        row = cast("dict[str, Any]", input_row)
+        _require(
+            all(row[field] == output[field] for field in _REVENUE_RECONCILIATION_FIELDS)
+            and row["amount"] == output["amount"]
+        )
+        key = tuple(output[field] for field in _REVENUE_RECONCILIATION_FIELDS)
+        _require(all(type(value) is str and bool(value) for value in key))
+        group = grouped.setdefault(
+            key,
+            {
+                **dict(zip(_REVENUE_RECONCILIATION_FIELDS, key, strict=True)),
+                "input_record_ids": [],
+                "canonical_input_total": Decimal(0),
+                "gold_output_total": Decimal(0),
+            },
+        )
+        group["input_record_ids"].append(record_id)
+        with localcontext() as context:
+            context.prec = 50
+            group["canonical_input_total"] += row["amount"]
+            group["gold_output_total"] += output["amount"]
+        consumed.add(record_id)
+    _require(consumed == set(source) and bool(grouped))
+    groups = []
+    for _, group in sorted(grouped.items()):
+        record_ids = sorted(group["input_record_ids"])
+        _require(group["canonical_input_total"] == group["gold_output_total"])
+        groups.append(
+            {
+                **{field: group[field] for field in _REVENUE_RECONCILIATION_FIELDS},
+                "input_record_count": len(record_ids),
+                "input_record_ids": record_ids,
+                "canonical_input_total": str(group["canonical_input_total"]),
+                "gold_output_total": str(group["gold_output_total"]),
+                "status": "exact_match",
+            }
+        )
+    return {
+        "schema_version": (
+            "archive-govt-nz.health-revenue-input-total-reconciliation/v1"
+        ),
+        "scope": "pinned_canonical_revenue_facts_to_revenue_gold_rows",
+        "source_package_marker_sha256": sorted(package_markers),
+        "period_basis": "literal_source_token_only",
+        "unit_currency_and_price_basis": "source_context_preserved_currency_unknown",
+        "revenue_netting": "not_performed",
+        "vintage_pooling": "not_performed",
+        "donor_control": "not_performed",
+        "official_source_control": "not_performed",
+        "cross_source_comparison": "not_performed",
+        "group_count": len(groups),
+        "input_record_count": len(source),
+        "status": "exact_canonical_input_totals_reconciled",
+        "groups": groups,
+    }
+
+
+def build_pharmac_input_total_reconciliation(
+    pharmac_input: PharmacGoldInput,
+    source_facts: pa.Table,
+    gold: pa.Table,
+) -> dict[str, Any]:
+    """Tie every Pharmac Gold allocation to its pinned, verified Silver fact."""
+    _require(
+        isinstance(pharmac_input, PharmacGoldInput)
+        and source_facts.schema.equals(pharmac.FACT_SCHEMA, check_metadata=True)
+        and gold.schema.equals(
+            recordset_schema("pharmaceutical_budget_fact"), check_metadata=True
+        )
+    )
+    source_rows = source_facts.to_pylist()
+    source = {row["record_id"]: row for row in source_rows}
+    _require(len(source) == len(source_rows) and bool(source))
+    grouped: dict[tuple[str, ...], dict[str, Any]] = {}
+    consumed: set[str] = set()
+    for output in gold.to_pylist():
+        source_id = output["source_record_id"]
+        _require(type(source_id) is str and source_id not in consumed)
+        input_row = source.get(source_id)
+        _require(input_row is not None)
+        row = cast("dict[str, Any]", input_row)
+        expected_regime = (
+            "government_appropriation_allocated_to_pharmac"
+            if row["period_start"] >= date(2022, 7, 1)
+            else "district_health_board_budget_holder"
+        )
+        _require(
+            output["record_id"] == pharmac_canonical_projection._canonical_id(source_id)  # noqa: SLF001
+            and output["source_object_sha256"] == row["source_object_sha256"]
+            and output["source_observation_id"] == row["source_observation_id"]
+            and output["source_vintage"] == row["source_vintage"]
+            and output["period_token"] == row["period_token"]
+            and output["amount_type"] == row["amount_type"]
+            and output["unit"] == row["unit"]
+            and output["source_label"] == row["series_caption"]
+            and output["budget_scope"] == row["series_caption"]
+            and output["funding_regime"] == expected_regime
+            and output["amount"] == row["amount"]
+            and output["measure"] == "pharmaceutical_budget_allocation"
+        )
+        key = tuple(output[field] for field in _PHARMAC_RECONCILIATION_FIELDS)
+        _require(all(type(value) is str and bool(value) for value in key))
+        group = grouped.setdefault(
+            key,
+            {
+                **dict(zip(_PHARMAC_RECONCILIATION_FIELDS, key, strict=True)),
+                "input_record_ids": [],
+                "gold_record_ids": [],
+                "canonical_input_total": Decimal(0),
+                "gold_output_total": Decimal(0),
+            },
+        )
+        group["input_record_ids"].append(source_id)
+        group["gold_record_ids"].append(output["record_id"])
+        with localcontext() as context:
+            context.prec = 50
+            group["canonical_input_total"] += row["amount"]
+            group["gold_output_total"] += output["amount"]
+        consumed.add(source_id)
+    _require(consumed == set(source) and bool(grouped) and gold.num_rows == len(source))
+    groups = []
+    for _, group in sorted(grouped.items()):
+        input_ids = sorted(group["input_record_ids"])
+        gold_ids = sorted(group["gold_record_ids"])
+        _require(group["canonical_input_total"] == group["gold_output_total"])
+        groups.append(
+            {
+                **{field: group[field] for field in _PHARMAC_RECONCILIATION_FIELDS},
+                "input_record_count": len(input_ids),
+                "input_record_ids": input_ids,
+                "gold_record_ids": gold_ids,
+                "canonical_input_total": str(group["canonical_input_total"]),
+                "gold_output_total": str(group["gold_output_total"]),
+                "status": "exact_match",
+            }
+        )
+    return {
+        "schema_version": (
+            "archive-govt-nz.health-pharmac-input-total-reconciliation/v1"
+        ),
+        "scope": "pinned_pharmac_silver_facts_to_pharmac_gold_rows",
+        "source_package_marker_sha256": [pharmac_input.manifest_sha256],
+        "source_object_sha256": pharmac_input.source_sha256,
+        "period_basis": "literal_source_token_only",
+        "unit_currency_and_price_basis": (
+            "source_context_preserved_currency_and_price_basis_unqualified"
+        ),
+        "published_change_recalculation": "not_performed",
+        "actual_expenditure": "not_asserted",
+        "funding_regime_pooling": "not_performed",
+        "donor_control": "not_performed",
+        "official_source_control": "not_performed",
+        "cross_source_comparison": "not_performed",
+        "group_count": len(groups),
+        "input_record_count": len(source),
+        "status": "exact_canonical_input_totals_reconciled",
+        "groups": groups,
+    }
+
+
+def build_moh_input_gold_reconciliation(
+    moh_input: MohGoldInput, source_facts: pa.Table, gold: pa.Table
+) -> dict[str, Any]:
+    """Prove row-for-row MoH Silver-to-Gold preservation without pooling measures."""
+    _require(
+        isinstance(moh_input, MohGoldInput)
+        and source_facts.schema.equals(moh_indicators.FACT_SCHEMA)
+        and gold.schema.equals(moh_indicators.FACT_SCHEMA)
+    )
+    source_rows = source_facts.to_pylist()
+    gold_rows = gold.to_pylist()
+    source = {row["record_id"]: row for row in source_rows}
+    _require(len(source) == len(source_rows) == len(gold_rows) and bool(source))
+    consumed: set[str] = set()
+    by_profile: dict[str, dict[str, Any]] = {}
+    for output in gold_rows:
+        record_id = output["record_id"]
+        _require(type(record_id) is str and record_id not in consumed)
+        original = source.get(record_id)
+        _require(original is not None and output == original)
+        profile = output["profile"]
+        group = by_profile.setdefault(
+            profile, {"profile": profile, "record_ids": [], "row_count": 0}
+        )
+        group["record_ids"].append(record_id)
+        group["row_count"] += 1
+        consumed.add(record_id)
+    _require(
+        consumed == set(source) and set(by_profile) == set(moh_indicators.PROFILES)
+    )
+    for group in by_profile.values():
+        group["record_ids"].sort()
+        group["status"] = "exact_row_match"
+    return {
+        "schema_version": "archive-govt-nz.health-moh-input-gold-reconciliation/v1",
+        "scope": "pinned_moh_silver_facts_to_gold_rows",
+        "source_package_marker_sha256": sorted(
+            item.manifest_sha256 for item in moh_input.packages
+        ),
+        "source_object_sha256": sorted(
+            item.source_sha256 for item in moh_input.packages
+        ),
+        "measure_pooling": "not_performed",
+        "period_alignment": "literal_source_token_only",
+        "cross_source_comparison": "not_performed",
+        "rights_state": "not_evaluated",
+        "row_count": len(source),
+        "status": "exact_source_rows_preserved",
+        "profiles": [by_profile[key] for key in sorted(by_profile)],
+    }
+
+
+def build_crown_projection_gold_reconciliation(
+    tables: dict[str, pa.Table],
+) -> dict[str, Any]:
+    """Account for exact Bronze-verified Crown projection rows in Gold."""
+    definitions = {
+        "crown_befu": "crown_expense_befu_2026.parquet",
+        "crown_hyefu": "crown_expense_hyefu_2025.parquet",
+        "fiscal_crown": "historical_fiscal_crown.parquet",
+    }
+    families: list[dict[str, Any]] = []
+    for family, filename in definitions.items():
+        table = tables.get(family)
+        if table is None:
+            continue
+        rows = table.to_pylist()
+        _require(bool(rows))
+        source_ids: set[str] = set()
+        output_ids: set[str] = set()
+        source_objects: set[str] = set()
+        controls = []
+        for row in rows:
+            source_id = row.get("source_record_id")
+            output_id = row.get("record_id")
+            token = row.get("value_token")
+            amount = row.get("amount")
+            _require(
+                type(source_id) is str
+                and bool(source_id)
+                and source_id not in source_ids
+                and type(output_id) is str
+                and bool(output_id)
+                and output_id not in output_ids
+                and type(token) is str
+                and bool(token)
+                and isinstance(amount, Decimal)
+                and amount.is_finite()
+            )
+            try:
+                source_amount = Decimal(token)
+            except InvalidOperation as exc:
+                message = "canonical_gold_export_invalid"
+                raise ValueError(message) from exc
+            _require(source_amount.is_finite() and source_amount == amount)
+            source_ids.add(source_id)
+            output_ids.add(output_id)
+            source_object = row.get("source_object_sha256")
+            _require(type(source_object) is str and bool(source_object))
+            source_objects.add(source_object)
+            controls.append(
+                {
+                    "source_record_id": source_id,
+                    "gold_record_id": output_id,
+                    "source_object_sha256": row["source_object_sha256"],
+                    "source_vintage": row["source_vintage"],
+                    "period_token": row["period_token"],
+                    "measure": row["measure"],
+                    "amount_type": row["amount_type"],
+                    "unit": row["unit"],
+                    "source_value_token": token,
+                    "gold_amount": str(amount),
+                    "status": "exact_numeric_value_match",
+                }
+            )
+        families.append(
+            {
+                "product": family,
+                "gold_table": filename,
+                "row_count": len(rows),
+                "source_record_count": len(source_ids),
+                "source_object_sha256": sorted(source_objects),
+                "status": "exact_source_rows_preserved",
+                "rows": sorted(controls, key=lambda item: item["gold_record_id"]),
+            }
+        )
+    _require(bool(families))
+    return {
+        "schema_version": _CROWN_RECONCILIATION_SCHEMA,
+        "scope": "verified_bronze_projection_value_tokens_to_crown_gold_rows",
+        "source_object_sha256": sorted(
+            {
+                source_hash
+                for family in families
+                for source_hash in family["source_object_sha256"]
+            }
+        ),
+        "period_alignment": "literal_source_tokens_only",
+        "currency_and_accounting_basis": "source_context_preserved_unqualified",
+        "cross_vintage_comparison": "not_performed",
+        "core_total_crown_comparison": "not_performed",
+        "aggregation": "not_performed",
+        "rights_state": "not_evaluated",
+        "publication": "not_performed",
+        "row_count": sum(item["row_count"] for item in families),
+        "status": "exact_source_rows_preserved",
+        "families": families,
     }
 
 
@@ -865,6 +1332,51 @@ def _output_inventory(
             "rights_state": "not_evaluated",
             "publication": "not_performed",
         }
+    if "budget_input_total_reconciliation.json" in payloads:
+        payload = payloads["budget_input_total_reconciliation.json"]
+        outputs["budget_input_total_reconciliation.json"] = {
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "bytes": len(payload),
+            "kind": "report",
+            "rights_state": "not_evaluated",
+            "publication": "not_performed",
+        }
+    if "revenue_input_total_reconciliation.json" in payloads:
+        payload = payloads["revenue_input_total_reconciliation.json"]
+        outputs["revenue_input_total_reconciliation.json"] = {
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "bytes": len(payload),
+            "kind": "report",
+            "rights_state": "not_evaluated",
+            "publication": "not_performed",
+        }
+    if "pharmac_input_total_reconciliation.json" in payloads:
+        payload = payloads["pharmac_input_total_reconciliation.json"]
+        outputs["pharmac_input_total_reconciliation.json"] = {
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "bytes": len(payload),
+            "kind": "report",
+            "rights_state": "not_evaluated",
+            "publication": "not_performed",
+        }
+    if "moh_input_gold_reconciliation.json" in payloads:
+        payload = payloads["moh_input_gold_reconciliation.json"]
+        outputs["moh_input_gold_reconciliation.json"] = {
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "bytes": len(payload),
+            "kind": "report",
+            "rights_state": "not_evaluated",
+            "publication": "not_performed",
+        }
+    if "crown_projection_gold_reconciliation.json" in payloads:
+        payload = payloads["crown_projection_gold_reconciliation.json"]
+        outputs["crown_projection_gold_reconciliation.json"] = {
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "bytes": len(payload),
+            "kind": "report",
+            "rights_state": "not_evaluated",
+            "publication": "not_performed",
+        }
     return outputs
 
 
@@ -1310,6 +1822,50 @@ def build_revision_reconciliation_report(
         value_field="amount",
         record_ids_field="input_record_id",
     )
+    biff8_budget_report = _product_revision_report(
+        tables.get("biff8_budget"),
+        product="biff8_budget",
+        key_fields=(
+            "period_token",
+            "measure",
+            "amount_type",
+            "unit",
+            "currency",
+            "price_basis",
+            "base_period",
+            "denominator_definition",
+            "source_label",
+            "vote",
+            "appropriation",
+            "department",
+            "portfolio",
+            "value_basis",
+        ),
+        value_field="amount",
+        record_ids_field="record_id",
+    )
+    biff8_revenue_report = _product_revision_report(
+        tables.get("biff8_revenue"),
+        product="biff8_revenue",
+        key_fields=(
+            "period_token",
+            "measure",
+            "amount_type",
+            "unit",
+            "currency",
+            "price_basis",
+            "base_period",
+            "denominator_definition",
+            "source_label",
+            "vote",
+            "department",
+            "revenue_type",
+            "source_application_id",
+            "value_basis",
+        ),
+        value_field="amount",
+        record_ids_field="record_id",
+    )
     pharmac_report = _product_revision_report(
         tables.get("pharmac"),
         product="pharmac",
@@ -1377,7 +1933,10 @@ def build_revision_reconciliation_report(
             "across_observed_vintages"
         ),
         "key_fields": list(context_fields),
-        "completeness": "historical_budget_revenue_pharmac_moh_crown_product_rows",
+        "completeness": (
+            "historical_budget_revenue_biff8_budget_biff8_revenue_"
+            "pharmac_moh_crown_product_rows"
+        ),
         "shared_series_period_count": shared_groups,
         "unchanged_series_period_count": unchanged_groups,
         "ambiguous_series_period_count": ambiguous_groups,
@@ -1388,6 +1947,8 @@ def build_revision_reconciliation_report(
         "product_revisions": {
             "budget": budget_report,
             "revenue": revenue_report,
+            "biff8_budget": biff8_budget_report,
+            "biff8_revenue": biff8_revenue_report,
             "pharmac": pharmac_report,
             "moh": moh_report,
             "crown": crown_report,
@@ -1405,6 +1966,7 @@ def _product_revision_report(
     record_ids_field: str,
 ) -> dict[str, Any]:
     """Compare exact source dimensions and period tokens within one mart."""
+    witness_fields = _PRODUCT_REVISION_WITNESS_FIELDS.get(product, ())
     groups: dict[tuple[Any, ...], dict[str, list[dict[str, Any]]]] = {}
     if table is not None:
         for row in table.to_pylist():
@@ -1422,9 +1984,12 @@ def _product_revision_report(
                 and all(type(record_id) is str and record_id for record_id in ids)
             )
             key = tuple(row.get(field) for field in key_fields)
-            groups.setdefault(key, {}).setdefault(vintage, []).append(
-                {"value": value, "record_ids": sorted(ids)}
-            )
+            row_data = {"value": value, "record_ids": sorted(ids)}
+            if witness_fields:
+                row_data["witnesses"] = {
+                    field: row.get(field) for field in witness_fields
+                }
+            groups.setdefault(key, {}).setdefault(vintage, []).append(row_data)
 
     candidates: list[dict[str, Any]] = []
     shared = unchanged = ambiguous = 0
@@ -1446,20 +2011,24 @@ def _product_revision_report(
         if len(set(values.values())) == 1:
             unchanged += 1
             continue
-        candidates.append(
-            {
-                **dict(zip(key_fields, key, strict=True)),
-                "status": f"{product}_value_change_candidate",
-                "values_by_vintage": {
-                    vintage: str(value) for vintage, value in values.items()
-                },
-                "input_record_ids_by_vintage": {
-                    vintage: rows[0]["record_ids"]
-                    for vintage, rows in sorted(vintage_rows.items())
-                },
-                "interpretation": "not_assessed",
+        candidate = {
+            **dict(zip(key_fields, key, strict=True)),
+            "status": f"{product}_value_change_candidate",
+            "values_by_vintage": {
+                vintage: str(value) for vintage, value in values.items()
+            },
+            "input_record_ids_by_vintage": {
+                vintage: rows[0]["record_ids"]
+                for vintage, rows in sorted(vintage_rows.items())
+            },
+            "interpretation": "not_assessed",
+        }
+        if witness_fields:
+            candidate["witnesses_by_vintage"] = {
+                vintage: rows[0]["witnesses"]
+                for vintage, rows in sorted(vintage_rows.items())
             }
-        )
+        candidates.append(candidate)
     return {
         "scope": "same_literal_source_dimensions_and_period_token_within_product",
         "key_fields": list(key_fields),
@@ -1539,11 +2108,13 @@ def _readback(path: Path, payload: bytes, table: pa.Table | None = None) -> None
         _require(restored.cast(table.schema).equals(table, check_metadata=True))
 
 
-def _build_payloads(
+def _build_payloads(  # noqa: PLR0913, PLR0917 - explicit product input set
     tables: dict[str, pa.Table],
     products: dict[str, dict[str, Any]],
     query_receipts: list[dict[str, Any]],
     packages: tuple[CanonicalPackageInput, ...],
+    pharmac_input: PharmacGoldInput | None,
+    moh_input: MohGoldInput | None,
 ) -> tuple[
     dict[str, bytes],
     dict[str, Any],
@@ -1576,6 +2147,58 @@ def _build_payloads(
     cross_source_report = build_cross_source_period_overlap_report(tables)
     payloads["historical_revision_reconciliation.json"] = _encoded(revision_report)
     payloads["cross_source_period_overlap.json"] = _encoded(cross_source_report)
+    budget_packages = tuple(package for package in packages if package.kind == "budget")
+    if budget_packages:
+        budget_reconciliation = build_budget_input_total_reconciliation(
+            budget_packages, tables["budget"]
+        )
+        products["budget"]["input_total_reconciliation"] = budget_reconciliation
+        payloads["budget_input_total_reconciliation.json"] = _encoded(
+            budget_reconciliation
+        )
+    revenue_packages = tuple(
+        package for package in packages if package.kind == "revenue"
+    )
+    if revenue_packages:
+        revenue_reconciliation = build_revenue_input_total_reconciliation(
+            revenue_packages, tables["revenue"]
+        )
+        products["revenue"]["input_total_reconciliation"] = revenue_reconciliation
+        payloads["revenue_input_total_reconciliation.json"] = _encoded(
+            revenue_reconciliation
+        )
+    if pharmac_input is not None:
+        source_facts, _, _ = read_verified_pharmac_tables(
+            pharmac_input.root,
+            pharmac_input.manifest_sha256,
+            pharmac_input.source_cas_root,
+            pharmac_input.source_sha256,
+        )
+        pharmac_reconciliation = build_pharmac_input_total_reconciliation(
+            pharmac_input, source_facts, tables["pharmac"]
+        )
+        products["pharmac"]["input_total_reconciliation"] = pharmac_reconciliation
+        payloads["pharmac_input_total_reconciliation.json"] = _encoded(
+            pharmac_reconciliation
+        )
+    if moh_input is not None:
+        source_facts, _ = read_verified_moh_tables(
+            moh_input.packages, moh_input.source_cas_root
+        )
+        moh_reconciliation = build_moh_input_gold_reconciliation(
+            moh_input, source_facts, tables["moh"]
+        )
+        products["moh"]["input_gold_reconciliation"] = moh_reconciliation
+        payloads["moh_input_gold_reconciliation.json"] = _encoded(moh_reconciliation)
+    if any(name in tables for name in ("crown_befu", "crown_hyefu", "fiscal_crown")):
+        crown_reconciliation = build_crown_projection_gold_reconciliation(tables)
+        for family in crown_reconciliation["families"]:
+            products[family["product"]]["projection_gold_reconciliation"] = (
+                crown_reconciliation
+            )
+        payloads["crown_projection_gold_reconciliation.json"] = _encoded(
+            crown_reconciliation
+        )
     payloads["ro-crate-metadata.json"] = _encoded(_ro_crate_metadata(payloads))
     return (
         payloads,
@@ -1695,7 +2318,9 @@ def _export(
         classification_drift_report,
         revision_report,
         cross_source_report,
-    ) = _build_payloads(tables, product_report, query_receipts, packages)
+    ) = _build_payloads(
+        tables, product_report, query_receipts, packages, inputs.pharmac, inputs.moh
+    )
     package_markers = _package_markers(query_receipts)
     quality_report = _quality_report(tables, product_report)
     _require(sum(map(len, payloads.values())) <= MAX_OUTPUT_BYTES)
@@ -1718,6 +2343,27 @@ def _export(
         "classification_drift_report": classification_drift_report,
         "revision_reconciliation_report": revision_report,
         "cross_source_period_overlap_report": cross_source_report,
+        "budget_input_total_reconciliation_report": product_report.get(
+            "budget", {}
+        ).get("input_total_reconciliation"),
+        "revenue_input_total_reconciliation_report": product_report.get(
+            "revenue", {}
+        ).get("input_total_reconciliation"),
+        "pharmac_input_total_reconciliation_report": product_report.get(
+            "pharmac", {}
+        ).get("input_total_reconciliation"),
+        "moh_input_gold_reconciliation_report": product_report.get("moh", {}).get(
+            "input_gold_reconciliation"
+        ),
+        "crown_projection_gold_reconciliation_report": next(
+            (
+                product.get("projection_gold_reconciliation")
+                for name, product in product_report.items()
+                if name in {"crown_befu", "crown_hyefu", "fiscal_crown"}
+                and "projection_gold_reconciliation" in product
+            ),
+            None,
+        ),
         "plot_report": plot_report,
         "quality_report": quality_report,
         "period_ordering": (

@@ -11,14 +11,22 @@ from datetime import UTC, datetime
 from decimal import Decimal, InvalidOperation
 from typing import TYPE_CHECKING, Any
 
-import pyarrow.parquet as pq
-
 if TYPE_CHECKING:
     from pathlib import Path
+    from types import ModuleType
 
     import pyarrow as pa
 
 _MAX_YEAR = 9999
+
+
+def __getattr__(name: str) -> ModuleType:
+    """Keep the Parquet alias available without loading it for JSON inspection."""
+    if name == "pq":
+        import pyarrow.parquet as pq  # noqa: PLC0415 - Preserve lazy compatibility.
+
+        return pq
+    raise AttributeError(name)
 
 
 def identity(*parts: object) -> str:
@@ -123,6 +131,8 @@ def write_workbook_outputs(
     Partial directories are not resumable or valid without a complete manifest
     and matching hashes. No original, existing output or publication is changed.
     """
+    import pyarrow.parquet as pq  # noqa: PLC0415 - JSON inspection needs no Arrow runtime.
+
     if not outputs:
         raise ValueError("empty_outputs")
     if any(

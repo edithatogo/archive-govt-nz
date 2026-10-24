@@ -314,6 +314,83 @@ def test_exact_nominal_query_retains_source_labels_and_lineage(tmp_path: Path) -
     assert before == {path: path.read_bytes() for path in before}
 
 
+def test_budget_gold_reconciles_exact_pinned_canonical_input_totals(
+    tmp_path: Path,
+) -> None:
+    package = _package(tmp_path / "budget")
+    canonical, receipt = read_verified_canonical_tables(package)
+    source_rows = canonical["appropriation_fact"].to_pylist()
+    output = tmp_path / "gold"
+
+    manifest = export_canonical_gold((package,), output, write=True)
+
+    report = json.loads(
+        (output / "budget_input_total_reconciliation.json").read_bytes()
+    )
+    assert manifest["budget_input_total_reconciliation_report"] == report
+    assert report["source_package_marker_sha256"] == [receipt["marker_sha256"]]
+    assert report["official_source_control"] == "not_performed"
+    assert report["donor_control"] == "not_performed"
+    assert report["cross_source_comparison"] == "not_performed"
+    assert report["group_count"] == 1
+    group = report["groups"][0]
+    assert group["status"] == "exact_match"
+    assert group["input_record_ids"] == sorted(row["record_id"] for row in source_rows)
+    assert Decimal(group["canonical_input_total"]) == sum(
+        (row["amount"] for row in source_rows), Decimal(0)
+    )
+    assert Decimal(group["gold_output_total"]) == Decimal("246.000000000000000000")
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
+    )
+
+
+def test_revenue_gold_reconciles_exact_pinned_canonical_input_totals(
+    tmp_path: Path,
+) -> None:
+    package = _revenue_package(tmp_path / "revenue")
+    canonical, receipt = read_verified_canonical_tables(package)
+    source_rows = canonical["revenue_fact"].to_pylist()
+    output = tmp_path / "gold"
+
+    manifest = export_canonical_gold((package,), output, write=True)
+
+    report = json.loads(
+        (output / "revenue_input_total_reconciliation.json").read_bytes()
+    )
+    assert manifest["revenue_input_total_reconciliation_report"] == report
+    assert manifest["products"]["revenue"]["input_total_reconciliation"] == report
+    assert report["source_package_marker_sha256"] == [receipt["marker_sha256"]]
+    assert report["official_source_control"] == "not_performed"
+    assert report["donor_control"] == "not_performed"
+    assert report["cross_source_comparison"] == "not_performed"
+    assert report["revenue_netting"] == "not_performed"
+    assert report["group_count"] == 2
+    assert all(group["status"] == "exact_match" for group in report["groups"])
+    assert sorted(
+        record_id
+        for group in report["groups"]
+        for record_id in group["input_record_ids"]
+    ) == sorted(row["record_id"] for row in source_rows)
+    assert sum(
+        (Decimal(group["canonical_input_total"]) for group in report["groups"]),
+        Decimal(0),
+    ) == sum((row["amount"] for row in source_rows), Decimal(0))
+    assert sum(
+        (Decimal(group["gold_output_total"]) for group in report["groups"]),
+        Decimal(0),
+    ) == Decimal("58746.000000000000000000")
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
+    )
+
+
 def test_wrong_kind_and_repeated_identity_fail_closed(tmp_path: Path) -> None:
     package = _package(tmp_path)
     with pytest.raises(ValueError, match=r"^canonical_consumer_invalid$"):
@@ -609,9 +686,9 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
     assert revision_report["schema_version"] == (
         "archive-govt-nz.health-revision-reconciliation/v1"
     )
-    assert (
-        revision_report["completeness"]
-        == "historical_budget_revenue_pharmac_moh_crown_product_rows"
+    assert revision_report["completeness"] == (
+        "historical_budget_revenue_biff8_budget_biff8_revenue_"
+        "pharmac_moh_crown_product_rows"
     )
     assert revision_report["other_product_revisions"] == "not_assessed"
     _assert_ro_crate(output, manifest)
@@ -680,6 +757,7 @@ def test_canonical_gold_includes_pharmac_as_a_separate_source_product(
         "district_health_board_budget_holder",
         "government_appropriation_allocated_to_pharmac",
     }
+    _assert_pharmac_reconciliation(output, manifest, pharmac_rows, pin, source_sha256)
     assert manifest["pharmac_projection"]["status"] == (
         "verified_source_faithful_projection"
     )
@@ -719,6 +797,42 @@ def test_canonical_gold_includes_pharmac_as_a_separate_source_product(
     assert {path.name: path.read_bytes() for path in output.iterdir()} == {
         path.name: path.read_bytes() for path in repeated.iterdir()
     }
+
+
+def _assert_pharmac_reconciliation(
+    output: Path,
+    manifest: dict[str, Any],
+    rows: list[dict[str, Any]],
+    marker: str,
+    source_sha256: str,
+) -> None:
+    reconciliation = json.loads(
+        (output / "pharmac_input_total_reconciliation.json").read_text(encoding="utf-8")
+    )
+    assert manifest["pharmac_input_total_reconciliation_report"] == reconciliation
+    assert manifest["products"]["pharmac"]["input_total_reconciliation"] == (
+        reconciliation
+    )
+    assert reconciliation["source_package_marker_sha256"] == [marker]
+    assert reconciliation["source_object_sha256"] == source_sha256
+    assert reconciliation["input_record_count"] == len(rows) == 14
+    assert reconciliation["group_count"] == len(reconciliation["groups"]) == 14
+    assert all(
+        group["input_record_count"] == 1
+        and group["status"] == "exact_match"
+        and Decimal(group["canonical_input_total"])
+        == Decimal(group["gold_output_total"])
+        for group in reconciliation["groups"]
+    )
+    assert reconciliation["published_change_recalculation"] == "not_performed"
+    assert reconciliation["actual_expenditure"] == "not_asserted"
+    assert reconciliation["cross_source_comparison"] == "not_performed"
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
+    )
 
 
 def test_canonical_gold_preserves_pinned_moh_indicator_profiles(tmp_path: Path) -> None:
@@ -778,6 +892,18 @@ def test_canonical_gold_preserves_pinned_moh_indicator_profiles(tmp_path: Path) 
     assert {row["denominator"] for row in facts} == {None}
     assert {row["rights_state"] for row in facts} == {"not_evaluated"}
     assert manifest["products"]["moh"]["actual_expenditure"] == "not_asserted"
+    reconciliation = manifest["moh_input_gold_reconciliation_report"]
+    assert reconciliation["status"] == "exact_source_rows_preserved"
+    assert reconciliation["row_count"] == 80
+    assert [item["row_count"] for item in reconciliation["profiles"]] == [40, 40]
+    assert reconciliation["measure_pooling"] == "not_performed"
+    assert reconciliation["cross_source_comparison"] == "not_performed"
+    assert (
+        json.loads(
+            (output / "moh_input_gold_reconciliation.json").read_text(encoding="utf-8")
+        )
+        == manifest["products"]["moh"]["input_gold_reconciliation"]
+    )
     assert manifest["moh_projection"]["cross_source_join"] == "not_performed"
     assert (
         len(
@@ -793,6 +919,12 @@ def test_canonical_gold_preserves_pinned_moh_indicator_profiles(tmp_path: Path) 
     assert {path.name: path.read_bytes() for path in output.iterdir()} == {
         path.name: path.read_bytes() for path in repeated.iterdir()
     }
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
+    )
 
 
 def test_canonical_gold_preserves_befu_and_hyefu_as_separate_vintages(
@@ -940,6 +1072,25 @@ def test_canonical_gold_preserves_befu_and_hyefu_as_separate_vintages(
         row["record_id"] for row in hyefu_facts
     }
     assert manifest["crown_projection"]["cross_source_join"] == "not_performed"
+    crown_reconciliation = manifest["crown_projection_gold_reconciliation_report"]
+    assert crown_reconciliation["row_count"] == 20
+    assert [item["product"] for item in crown_reconciliation["families"]] == [
+        "crown_befu",
+        "crown_hyefu",
+    ]
+    assert all(
+        item["status"] == "exact_source_rows_preserved"
+        and all(row["status"] == "exact_numeric_value_match" for row in item["rows"])
+        for item in crown_reconciliation["families"]
+    )
+    assert (
+        json.loads(
+            (output / "crown_projection_gold_reconciliation.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        == crown_reconciliation
+    )
     assert manifest["products"]["crown_befu"]["currency_and_accounting_basis"] == (
         "unknown_not_inferred"
     )
@@ -950,6 +1101,12 @@ def test_canonical_gold_preserves_befu_and_hyefu_as_separate_vintages(
         "crown_expense_befu_2026.parquet",
         "crown_expense_hyefu_2025.parquet",
     } <= set(manifest["outputs"])
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
+    )
     assert {path.name: path.read_bytes() for path in output.iterdir()} == {
         path.name: path.read_bytes() for path in repeated.iterdir()
     }
@@ -1110,8 +1267,19 @@ def test_canonical_gold_preserves_historical_fiscal_crown_measure_families(
         "not_performed"
     )
     assert manifest["products"]["fiscal_crown"]["rights_state"] == "not_evaluated"
+    crown_reconciliation = manifest["crown_projection_gold_reconciliation_report"]
+    assert crown_reconciliation["row_count"] == 61
+    assert [item["product"] for item in crown_reconciliation["families"]] == [
+        "fiscal_crown"
+    ]
     assert any(
         path.name.startswith("plot_fiscal_crown_") for path in output.glob("plot_*.png")
+    )
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
     )
     row_index = {
         row["input_record_id"]: row
@@ -1305,12 +1473,14 @@ def test_revision_report_flags_exact_historical_changes_without_explaining_them(
     assert "source_label" in report["key_fields"]
     assert "source_locator" not in report["key_fields"]
     assert report["difference_interpretation"] == "not_assessed"
-    assert (
-        report["completeness"]
-        == "historical_budget_revenue_pharmac_moh_crown_product_rows"
+    assert report["completeness"] == (
+        "historical_budget_revenue_biff8_budget_biff8_revenue_"
+        "pharmac_moh_crown_product_rows"
     )
     assert report["product_revisions"]["budget"]["changed_candidate_count"] == 0
     assert report["product_revisions"]["revenue"]["changed_candidate_count"] == 0
+    assert report["product_revisions"]["biff8_budget"]["changed_candidate_count"] == 0
+    assert report["product_revisions"]["biff8_revenue"]["changed_candidate_count"] == 0
     assert report["ambiguous_series_period_count"] == 1
     assert len(report["candidates"]) == 1
     candidate = report["candidates"][0]
@@ -1467,7 +1637,15 @@ def test_revision_report_covers_pharmac_moh_and_crown_contexts() -> None:
     )
 
     products = report["product_revisions"]
-    assert set(products) == {"budget", "revenue", "pharmac", "moh", "crown"}
+    assert set(products) == {
+        "budget",
+        "revenue",
+        "biff8_budget",
+        "biff8_revenue",
+        "pharmac",
+        "moh",
+        "crown",
+    }
     for family, prefix in (("pharmac", "pharmac"), ("moh", "moh"), ("crown", "crown")):
         assert products[family]["changed_candidate_count"] == 1
         ids_by_vintage = products[family]["candidates"][0][
@@ -1478,6 +1656,80 @@ def test_revision_report_covers_pharmac_moh_and_crown_contexts() -> None:
         )
         assert products[family]["candidates"][0]["interpretation"] == "not_assessed"
     assert report["cross_source_comparison"] == "not_performed"
+
+
+def test_revision_report_preserves_biff8_numeric_witnesses() -> None:
+    common = {
+        "period_token": "FY2019/20",
+        "measure": "appropriation_expense",
+        "amount_type": "actual",
+        "unit": "NZD million",
+        "currency": "NZD",
+        "price_basis": "nominal",
+        "base_period": None,
+        "denominator_definition": None,
+        "source_label": "Departmental output expenses",
+        "vote": "Health",
+        "department": "Ministry of Health",
+        "value_basis": "biff8_stored_integer_preserved",
+    }
+    vintages = (("2019", "10", "10000000"), ("2020", "11", "11000000"))
+    biff8_budget = [
+        {
+            **common,
+            "source_vintage": vintage,
+            "appropriation": "Vote Health",
+            "portfolio": "Health",
+            "amount": Decimal(amount),
+            "record_id": f"budget-{vintage}",
+            "canonical_stored_integer": stored,
+            "numeric_evidence_id": f"budget-numeric-{vintage}",
+        }
+        for vintage, amount, stored in vintages
+    ]
+    biff8_revenue = [
+        {
+            **common,
+            "source_vintage": vintage,
+            "revenue_type": "Other revenue",
+            "source_application_id": "application-1",
+            "amount": Decimal(amount),
+            "record_id": f"revenue-{vintage}",
+            "canonical_stored_integer": stored,
+            "numeric_evidence_id": f"revenue-numeric-{vintage}",
+        }
+        for vintage, amount, stored in (
+            ("2019", "2", "2000000"),
+            ("2020", "3", "3000000"),
+        )
+    ]
+    report = canonical_gold_export.build_revision_reconciliation_report(
+        {
+            "biff8_budget": pa.Table.from_pylist(biff8_budget),
+            "biff8_revenue": pa.Table.from_pylist(biff8_revenue),
+        }
+    )
+
+    for product, expected_values, expected_stored, evidence_prefix in (
+        ("biff8_budget", ("10", "11"), ("10000000", "11000000"), "budget"),
+        ("biff8_revenue", ("2", "3"), ("2000000", "3000000"), "revenue"),
+    ):
+        candidate = report["product_revisions"][product]["candidates"][0]
+        assert candidate["status"] == f"{product}_value_change_candidate"
+        assert candidate["values_by_vintage"] == dict(
+            zip(("2019", "2020"), expected_values, strict=True)
+        )
+        assert candidate["input_record_ids_by_vintage"] == {
+            vintage: [f"{evidence_prefix}-{vintage}"] for vintage in ("2019", "2020")
+        }
+        assert candidate["witnesses_by_vintage"] == {
+            vintage: {
+                "canonical_stored_integer": stored,
+                "numeric_evidence_id": f"{evidence_prefix}-numeric-{vintage}",
+            }
+            for vintage, stored in zip(("2019", "2020"), expected_stored, strict=True)
+        }
+        assert candidate["interpretation"] == "not_assessed"
 
 
 @pytest.mark.parametrize("packages", [[], (), [object()]])

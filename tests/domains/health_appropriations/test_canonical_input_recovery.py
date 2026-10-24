@@ -426,7 +426,7 @@ def test_explicit_expanded_recovery_keeps_prior_cohorts(
 
 def test_expanded_recovery_versions_resolve_independently() -> None:
     root = Path(__file__).parents[3]
-    versions = tuple(range(1, 15))
+    versions = tuple(range(1, 16))
     schemas = {
         version: json.loads(
             (
@@ -498,7 +498,7 @@ def test_partial_new_cohort_fails_before_source_reads_or_output(
     assert calls == []
 
 
-@pytest.mark.parametrize("version", [5, 6, 7, 8, 9, 10, 11, 12, 13, 14])
+@pytest.mark.parametrize("version", [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])
 def test_new_schema_refuses_incomplete_source_and_profile_bindings(
     version: int,
 ) -> None:
@@ -526,3 +526,103 @@ def test_new_schema_refuses_incomplete_source_and_profile_bindings(
                 substituted[name]["biffbudget-2006"] = substituted[name].pop(key)
                 with pytest.raises(ValidationError):
                     validator.validate(substituted)
+
+
+def test_complete_revenue_2025_cohort_preserves_previous_input_bytes(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    sources: tuple[Path, list[str]],
+) -> None:
+    """The additional revenue binding is explicit and cannot rewrite v14 inputs."""
+    cas, _ = sources
+    baseline = recovery.SOURCES
+    monkeypatch.setattr(
+        recovery,
+        "SOURCES",
+        (*baseline, *(replace(spec, key=spec.kind + "-2002") for spec in baseline[:2])),
+    )
+    _name_v6_fixture_baselines(monkeypatch)
+    editions = tuple(range(2007, 2020))
+    for edition in editions:
+        _biff_sources(cas, monkeypatch, edition=edition)
+    revenue = next(spec for spec in recovery.SOURCES if spec.kind == "revenue")
+    monkeypatch.setattr(
+        recovery,
+        "REVENUE_2025_SOURCE",
+        replace(revenue, key="revenue-2025"),
+        raising=False,
+    )
+    before = inventory(cas)
+    old_root, first_root, second_root = (
+        tmp_path / name for name in ("v14", "v15-first", "v15-second")
+    )
+    old = recovery.rebuild_canonical_inputs(
+        cas, old_root, include_biff8=True, biff8_editions=editions
+    )
+    first = recovery.rebuild_canonical_inputs(
+        cas,
+        first_root,
+        include_biff8=True,
+        biff8_editions=editions,
+        include_revenue_2025=True,
+    )
+    second = recovery.rebuild_canonical_inputs(
+        cas,
+        second_root,
+        include_biff8=True,
+        biff8_editions=tuple(reversed(editions)),
+        include_revenue_2025=True,
+    )
+    assert old.receipt["schema_version"].endswith("/v14")
+    assert first.receipt["schema_version"].endswith("/v15")
+    assert first.receipt == second.receipt
+    assert inventory(first_root) == inventory(second_root)
+    assert len(first.packages) == 32
+    assert set(first.receipt["profiles"]) == {*old.receipt["profiles"], "revenue-2025"}
+    for name, payload in inventory(old_root).items():
+        if name != "RECOVERY_INPUTS.json":
+            assert (first_root / name).read_bytes() == payload
+    assert inventory(cas) == before
+    schema = json.loads(
+        (
+            Path(__file__).parents[3]
+            / "schemas/health-canonical-input-recovery-v15.schema.json"
+        ).read_bytes()
+    )
+    Draft202012Validator(schema).validate(first.receipt)
+
+
+@pytest.mark.parametrize("mode", ["disabled_biff", "incomplete_legacy"])
+def test_revenue_2025_requires_complete_legacy_cohort_before_io(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    sources: tuple[Path, list[str]],
+    mode: str,
+) -> None:
+    """An enabled extra must not silently produce a smaller unsupported cohort."""
+    cas, calls = sources
+    baseline = recovery.SOURCES
+    monkeypatch.setattr(
+        recovery,
+        "SOURCES",
+        (*baseline, *(replace(spec, key=spec.kind + "-2002") for spec in baseline[:2])),
+    )
+    _name_v6_fixture_baselines(monkeypatch)
+
+    def unexpected_io(*_args: object) -> None:
+        pytest.fail("unsupported selection reached source I/O")
+
+    monkeypatch.setattr(recovery, "_sources", unexpected_io)
+    output = tmp_path / "unsupported"
+    with pytest.raises(ValueError, match="canonical_input_recovery_contract"):
+        recovery.rebuild_canonical_inputs(
+            cas,
+            output,
+            include_biff8=mode != "disabled_biff",
+            biff8_editions=tuple(range(2008, 2020))
+            if mode == "incomplete_legacy"
+            else (2019,),
+            include_revenue_2025=True,
+        )
+    assert not output.exists()
+    assert calls == []

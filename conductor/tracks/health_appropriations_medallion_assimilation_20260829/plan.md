@@ -954,6 +954,27 @@ integrated parent head.
   remain open. Focused contracts pass at 100% line/branch coverage; the full
   repository harness passes on this tree. [M-05, M-06, M-11; AC-05, AC-09]
 
+- [x] Add an edition-specific Silver profile for the 2012/13 Vote Health
+  Supplementary Estimates “Summary of Financial Activity”. Read only page 2 of
+  the retained 33-page supporting-information PDF; preserve eleven named rows,
+  all five `$000` columns, raw dash/`N/A` tokens, and 55 direct lineage entries.
+  Record two byte-identical Bronze rebuilds and a separate versioned layout
+  fixture. Keep unreviewed PDF contents, currency, rights, cross-edition
+  comparability and downstream admission open. See
+  `vote-health-supplementary-2012-13-financial-activity-20261023.md` and its
+  machine receipt. [M-05, M-06, M-11; AC-05, AC-09]
+
+- [x] Add a distinct edition-specific Silver profile for the 2013/14 Vote
+  Health Supplementary Estimates “Summary of Financial Activity” on PDF page
+  7. Preserve all fourteen source rows, including repeated labels under the
+  MCA heading, five `$000` columns, raw dash/`N/A` tokens, row-ordinal identity,
+  and complete lineage. Rebuild twice from the retained Bronze hash and
+  register the profile for source-operation dispatch. Reconcile the observed
+  470,538-byte CAS object against the older category-profile receipt's
+  inconsistent 91,611-byte field without rewriting that historical receipt.
+  Keep rights, currency, annual bounds, cross-edition comparability, Gold and
+  publication unqualified. [M-05, M-06, M-11; AC-05, AC-09]
+
 ### 5.3 Normalize analytical context
 
 - [x] Implement the bounded June2026 QES Table8 QEMQ.SASZ9A published
@@ -1017,6 +1038,13 @@ integrated parent head.
   annualization, denominator selection and rights remain unqualified. See
   `gdp-june-profile-20260930.md`, `context-gold-gdp-vintages-20261002.md` and
   `context-operational-dispatch-native-20261017.json`.
+- [x] Rebuild the separately pinned Stats NZ GDP June 2026 quarter context
+  Silver vintage three times from Bronze and compare each complete manifest and
+  Parquet digest. All 61 facts, 915 lineage rows and 2,323 dispositions are
+  byte-identical; preserve the March vintage separately. No currency, rights,
+  annualization, denominator or publication status is inferred. See
+  `context-gdp-june-2026-repeat-20261023.md` and its machine receipt. [M-05,
+  M-06, M-12; AC-05, AC-10]
 - [x] Resolve the conditional S-05 scope: its exact-export, dictionary and
   resource-rights gate has not passed, so retain the aggregate Health Survey as
   a non-blocking deferred item and leave the Must scope unblocked. Reopen only
@@ -1076,10 +1104,14 @@ integrated parent head.
   denominator controls. [M-10, M-12, M-13; AC-08, AC-10] See
   `fiscal-health-cpi-benchmark-20261004.md`.
 
-- [ ] Add DuckDB query golden tests for nominal, real, per-capita, GDP share,
+- [~] Add DuckDB query golden tests for nominal, real, per-capita, GDP share,
   total/core Crown share, budget-versus-actual, revisions, classifications,
   department/portfolio and CPB views. [M-10, M-13, M-18; AC-08, AC-10,
   AC-11, AC-16]
+  Progress: 2026-10-23 — extending the exact named-query contract for the
+  BIFF8 Budget/revenue products so v3 stored-integer and numeric-evidence
+  witnesses survive Gold readback. The broader matrix and source-level
+  reconciliation remain incomplete.
   Progress: `test_fiscal_analytical_operations.py` now checks exact source IDs,
   Decimal strings, statuses and contextual labels for all four pinned fiscal
   Gold DuckDB tables. Its cross-product golden matrix reconciles nominal,
@@ -1096,6 +1128,26 @@ integrated parent head.
   `test_fiscal_share_analysis.py`. The broader matrix across Budget, revisions,
   classifications, department/portfolio and CPB remains open; this checklist
   stays incomplete until those contracts are reconciled.
+  The 2026-10-23 consolidated canonical query matrix now independently
+  round-trips all ten source-separated fact products over two periods, compares
+  every field with its schema-typed expected row, and checks read-only package
+  bytes plus fail-closed refusal of an unsupported real-spending query. This
+  closes only the fact-product query/readback slice; the separate report matrix
+  and source/donor controls remain open.
+  DuckDB 1.5.6 lacked a CPython 3.15 wheel and failed to build locally. This was
+  resolved by qualifying DuckDB 2.0.0's macOS ARM64 `cp312-abi3` wheel and
+  updating the consumer/query paths to use its typed Arrow relation API. The
+  focused Phase 6 canonical query suite passes 21 tests; three affected query
+  and reconciliation suites pass 59 tests; full typing, lint and format pass.
+  The first full run exposed four contextual Gold failures because PyArrow
+  26.0.0 rebuilds June 2026 GDP Silver tables with identical Arrow rows but
+  different Parquet bytes. Added the exact PyArrow 26 manifest digest beside
+  the retained PyArrow 23 digest; source, output-file hash, schema and lineage
+  checks remain mandatory. The contextual Gold suite then passed 19 tests, and
+  the complete harness passed on the exact tree: 8,300 tests passed, 14 skipped,
+  97.14% coverage, 81 schemas/71 documents, parity 9/9, supply-chain audit,
+  licenses, secret scan and SBOM. Broader report/source/donor reconciliation
+  remains open; no cross-source equivalence or rights/publication claim is made.
 - [x] Add invariant/property tests for denominator identity, CPI base changes,
   financial-year alignment, additive/non-additive measures, revision isolation,
   rounding and incompatible series. [M-06, M-12, M-13, M-18; AC-10, AC-11,
@@ -1136,6 +1188,12 @@ integrated parent head.
     status evidence are excluded with reason codes, rights remain unevaluated,
     and no denominator or cross-series calculation is performed. See
     `context-gold-coverage-20260928.md`.
+  - [x] Reconcile the two admitted HAIR2024 MoH Silver profiles to the
+    published-indicator Gold table row-for-row, retaining record identity and
+    every field while refusing measure pooling and cross-source comparison.
+    This source-to-Gold control does not establish official-source recalculation,
+    donor parity, unit/denominator comparability, or redistribution rights. See
+    `canonical-moh-gold-reconciliation-20261024.md`.
 - [~] Build coverage, completeness, reconciliation, source-health,
   classification-drift and revision reports with defined thresholds. [M-13,
   S-04; AC-11]
@@ -1178,6 +1236,38 @@ integrated parent head.
     retain record IDs and Decimal values, report duplicate groups as ambiguous,
     and leave change interpretation and cross-source comparability unassessed.
     [M-13, S-04; AC-11, AC-12]
+  - [x] Extend revision reconciliation to canonical BIFF8 Budget appropriation
+    and revenue products. Compare only exact literal dimensions, period tokens,
+    and stored-value basis; retain record IDs, canonical stored-integer tokens,
+    and numeric-evidence IDs per vintage for changed candidates. Differences
+    remain unassessed and source-separated; no semantic or cross-source
+    equivalence is inferred. [M-13, S-04; AC-11, AC-12]
+  - [x] Reconcile every source-separated nominal Budget Gold total against
+    its exact pinned canonical appropriation facts. Independently recompute
+    Decimal totals by literal vintage, period token, amount type, unit, Vote,
+    department, portfolio, and source label; require complete disjoint record
+    IDs and exact input/output equality. Preserve package pins and explicitly
+    leave official-source, donor, currency/price-basis, and cross-source
+    controls unperformed. This closes only the canonical-input-to-Gold total
+    control; it does not disposition historical differences. See the
+    `budget_input_total_reconciliation.json` package product.
+  - [x] Reconcile every source-separated nominal Budget revenue Gold observation
+    against its exact pinned canonical revenue fact. Require every record ID to
+    occur once, preserve literal source dimensions and amount type, and compare
+    Decimal totals by vintage, period token, unit, Vote, department, revenue
+    type and source label. Keep revenue separate from appropriations and state
+    that netting, official-source, donor and cross-source controls are not
+    performed. See `revenue_input_total_reconciliation.json` and
+    `canonical-revenue-input-gold-reconciliation-20261024.md`.
+  - [x] Reconcile each Pharmac Gold allocation to its exact pinned, verified
+    Silver fact. Require complete source and Gold identities, matching source
+    object, literal period, amount type, unit, label, funding regime, and exact
+    Decimal totals; retain funding regimes separately. Keep published change
+    recalculation, actual expenditure, official-source, donor, currency/price
+    basis, and cross-source controls unasserted. This closes only the
+    Silver-to-Gold Pharmac row and total control; it does not establish external
+    source or donor agreement. See `pharmac_input_total_reconciliation.json`
+    and `pharmac-input-gold-reconciliation-20261024.md`.
   - [x] Add a deterministic literal-period overlap catalog across observed
     canonical products, retaining source vintages, units and record identities.
     The verifier and example pin/summarize the report; comparability and
@@ -1192,6 +1282,13 @@ integrated parent head.
     overlapping periods or reporting bases. See
     `fiscal-gold-source-reconciliation-20261005.md` and its machine receipt.
     [M-13, S-04; AC-11]
+  - [x] Reconcile each Bronze-verified BEFU, HYEFU, and historical Fiscal Crown
+    source projection to its Gold rows by exact source record identity and
+    numeric value token. Retain literal periods, source vintage, measure, unit,
+    and source-object hashes; do not aggregate, compare core and total measures,
+    compare vintages, or infer currency, accounting basis, rights, or publication
+    status. Bind the deterministic report into the Gold manifest and read-only
+    verifier. See `canonical-crown-projection-reconciliation-20261024.md`.
 - [ ] Generate deterministic plots, structured summaries and consumer examples
   from the same queries; make source drill-through available. [M-09, M-10,
   M-13, S-06; AC-07, AC-08]
@@ -1250,6 +1347,11 @@ integrated parent head.
   [M-08, M-11, M-12, M-13; AC-06, AC-10, AC-11]
 - [ ] Run deterministic query/plot tests, self-review and the full repository
   harness; record paired evidence. [M-18, M-19; AC-16]
+  Progress: the ten-product canonical fact query golden and contextual June GDP
+  package serialization variants pass exact pinned readback; affected query and
+  reconciliation suites pass 59 tests. Full harness passed as recorded above.
+  Source/donor total controls, broader report matrices, cross-source
+  comparability and final track review remain open.
 
 ## Phase 7 — Platinum metadata, federation and discovery
 
@@ -2427,6 +2529,16 @@ previous qualification results unchanged; original local timeout preserved.
 
 - [~] Reconcile the next19official locator candidates for Budget2008–2011/2013–2014, preserving eight intended expenditure/revenue gaps and five additional departmental-statements variants; reuse retained bytes/bindings, record page/definition/rights gaps and capture only missing eligible originals. [M-02, M-03, M-04, M-06, M-11; AC-03, AC-04, AC-09, AC-16]
 
+  Preservation update (2026-10-23): the bounded 40-role annual Budget cohort
+  and 19-resource additional locator cohort now have a consolidated crosswalk.
+  All40 registered expenditure/revenue roles map to archived candidates, and a
+  fresh local replay verified all46 retained CAS bodies and WARC digests. The
+  original16 registered-URL 404s and ten publication-page403s remain recorded;
+  candidate-role evidence does not authorize URL/version equivalence. These
+  source-census tasks remain in progress for rights, period/unit/definition
+  qualification and broader Budget/BEFU/HYEFU/Vote Health/Pharmac/context
+  coverage. See `budget-census-bronze-reconciliation-20261023.md`.
+
 - [x] Adjudicate the exact immutable archive-verification boolean-field entropy candidate using document/candidate pins and the existing negative guard; preserve producer bytes and all scanner scope/thresholds before full assurance. [M-11, M-15; AC-13, AC-16]
 
 
@@ -2574,7 +2686,7 @@ previous qualification results unchanged; original local timeout preserved.
 
 ## Phase 4 current acceptance reconciliation — 2026-10-22
 
-- [~] Audit every Phase 4 task against current retained-source, analysis and
+- [x] Audit every Phase 4 task against current retained-source, analysis and
   six-plot evidence before reconciling issue #210. Reverify the 23-object,
   312-row donor oracle and accepted historical dispositions; independently
   rebuild the twelve selected source areas and original functional products,
@@ -2586,10 +2698,47 @@ previous qualification results unchanged; original local timeout preserved.
 
 Native Phase4 acceptance reconciliation passed: pinned donor tree/archive,23objects/312rows,30 accepted retain-both historical dispositions; two exact twelve-stage50-file replays and two functional pipelines, six inspected PNGs. The unsupported historical35 summary count is preserved and separately reconciled; first audit assumption failure retained. Final-tree validation and protected delivery remain pending before issue210 closure. See phase4-acceptance-20261022.md/.json.
 
-- [~] Resolve the new Phase4 assurance dependency blocker: original final-tree
+- [x] Resolve the new Phase4 assurance dependency blocker: original final-tree
   harness passes8283tests/schemas/parity/mutations, then the OSV audit reports
   four vulnerabilities in locked pypdf6.19.0. Preserve failed run/receipt and
   unchanged-pin postflight, promote the verified current supported6.x security
   release within the existing approved stack, requalify affected PDF contracts
   and retained sources, rerun the original full harness, then require dependency
   review and exact-head Actions before protected delivery. [M-18, M-19; AC-16]
+
+
+## Budget 2025 revenue complete-cohort integration — 2026-10-22
+
+- [~] Add the already verified Budget2025 revenue original to a new explicit
+  complete32-source recovery cohort and canonical Gold integration, using the
+  existing revenue reader/projector/exporter. Preserve the baseline and every
+  v1–v14 selector/schema/output; refuse partial or mismatched new selectors
+  before source I/O. Reuse retained observation identity and exact native
+  values/lineage/accounting; do not infer currency, starts, joins or rights.
+  Add meaningful red contracts to the existing matrix, qualify the new schema
+  and actual repeat/source/Gold/query/metadata products with original limits,
+  validate and deliver through protected checks before managed-worktree pruning.
+  This does not complete the remaining2020–2024 specialized OOXML bridges or
+  whole-track acceptance. Phase4 delivered separately through PR747.
+  [M-05, M-06, M-10, M-11, M-16, M-18, M-19;
+  AC-05, AC-08, AC-09, AC-11, AC-12, AC-16]
+
+Phase4 reconciliation/security blocker delivered by PR747, protected merge3317bb4e; all8checks and original32stages locally/on3platforms pass. Issue210 closed, primary clean and exact topic refs pruned, native/evidence/runtime retained. See phase4-delivery-747-20261022.json. Earlier producer pending-state receipts remain unchanged; wider phases/track stay open.
+
+- [~] Address observed clipped/overlapping canonical revenue chart labels with an additive versioned readable rendering contract, retaining v1 bytes, exact point/source mappings, deterministic repeat builds and bounded page/size limits. Validate actual complete-cohort plots visually; do not claim visual acceptance from numeric parity. [M-10, M-13; AC-08, AC-12]
+
+- [~] Resolve the two terminal Windows900second pytest-stage timeouts on PR748 (both99percent, no assertion failures reported). Preserve both logs; qualify the existing worksteal option for Windows-only scheduling while keeping all tests, auto workers, coverage, all32 stages and original deadlines. Keep other platforms/local wrappers unchanged; validate exact final tree and require fresh green hosted checks before merge/prune. No third identical retry. [M-18, M-19; AC-16]
+
+- [~] Windows worksteal trial47b56c5d also reaches99percent and terminates124 at900s; keep the hypothesis unqualified. Add opt-in reporting only to the test-stage command (verbose named/worker/count progress, durations and JUnit), preserve a partial-run stdout trail and available report artifact, then locate/fix the actual slow contract. Keep all tests, workers, gates and deadlines unchanged; no unchanged rerun. [M-18, M-19; AC-16]
+
+Readable canonical chart implementation is in progress; see
+`readable-canonical-plots.md`. PR748 is merged on origin/main at933a120;
+its native worktree archive remains queued and its local branch is retained.
+Conductor advised preserving that checkout while continuing in a separate owned
+worktree. This does not mark chart visual acceptance or track completion.
+
+- [x] Fix the full-harness cold-start input-spec boundary without widening the
+  ten-second FIFO guard: scientific/table-schema imports are deferred, forty
+  existing contracts pass, MCP definitions and native chart bytes match their
+  controls. Final full validation and protected delivery remain pending. See
+  `readable-plot-input-inspection-review-fix-20261022.json`.

@@ -21,9 +21,9 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
-      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e
         with:
-          version: "0.12.17"
+          version: "0.13.5"
       - name: Install locked dependencies
         run: uv sync --locked
       - name: Build and verify approved package
@@ -39,7 +39,7 @@ jobs:
           uv run --locked hf upload edithatogo/foi-ca-federal-atip build/ca-atip-upload . --repo-type dataset --commit-message "Refresh approved Canada ATI package"
       - name: Preserve refresh receipt
         if: always()
-        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: ca-atip-refresh-${{ github.run_id }}-${{ github.run_attempt }}
           path: build/ca-atip
