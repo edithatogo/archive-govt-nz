@@ -1,0 +1,121 @@
+{
+  "all_metadata_bytes_equal": true,
+  "bronze_rebuild": "not_performed_in_this_recipe",
+  "full_health_completion": "not_asserted",
+  "gold_inputs_unchanged": true,
+  "independent_metadata_builds": 2,
+  "native_output": {
+    "external_root": "ArchiveGovtNZ/health-appropriations",
+    "relative_path": "assurance/gold-metadata-20261005-v1"
+  },
+  "native_receipt_sha256": "3b9bc54e9f2a8b66dd0f70eeb82fc91002b0d6f74f95e205f75ecc6323826634",
+  "production_module_sha256": "48d411911857cca63441a3a8109d73439008bd50d92c5ba3f1ae7ff8c7c54a48",
+  "publication": "not_performed",
+  "recipe_sha256": "d8afd11159fdbff5912d91bf8f39e60e4485e54c03f2afe1829cf0b3a69f7bb8",
+  "rights": "not_evaluated",
+  "runs": [
+    {
+      "bad_pin_rejected": true,
+      "described_rows": 384,
+      "exclusive_cli_exit_2": true,
+      "independent_inventory_schemas_counts_periods": "passed",
+      "inventory": {
+        "DATASET_CARD.md": "35f13fb353e473f4e8595cd6c5b3beb919174ad7d3c1385d79d57645fbba4a2b",
+        "MANIFEST.json": "ec16d618a4fec78e19cb29b545e76d6f23cba37d28313169d994d34458df4670",
+        "catalogue.json": "5bf28493db6d78046e66149c00b50e916a13e27643484d06701d318117f50cdd",
+        "dcat.jsonld": "00140f57c91315212ddbee708e36b5ba1231a02d2525f94484934bef315553b4",
+        "prov.jsonld": "90d5a8f91d73056d3bb59d790cb794f940ad6a2ee4787ca8e0021312cbf9c8d6",
+        "schemas.json": "efdedb8bcfcc18c6be3ee4dbe1a191893e9bb17fa92cf799854c08456ceaee97"
+      },
+      "receipt": {
+        "command": "health-appropriations-build-gold-metadata",
+        "manifest_sha256": "ec16d618a4fec78e19cb29b545e76d6f23cba37d28313169d994d34458df4670",
+        "packages": 2,
+        "publication": "not_performed",
+        "rights": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-gold-metadata/v1",
+        "status": "written",
+        "verification": {
+          "manifest_sha256": "ec16d618a4fec78e19cb29b545e76d6f23cba37d28313169d994d34458df4670",
+          "packages": 2,
+          "publication": "not_performed",
+          "rights": "not_evaluated",
+          "schema_version": "archive-govt-nz.health-gold-metadata/v1",
+          "status": "verified",
+          "verification_scope": "gold_reverified_metadata_reconstructed"
+        }
+      },
+      "reconstruction": {
+        "manifest_sha256": "ec16d618a4fec78e19cb29b545e76d6f23cba37d28313169d994d34458df4670",
+        "packages": 2,
+        "publication": "not_performed",
+        "rights": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-gold-metadata/v1",
+        "status": "verified",
+        "verification_scope": "gold_reverified_metadata_reconstructed"
+      },
+      "recordsets": 5
+    },
+    {
+      "bad_pin_rejected": true,
+      "described_rows": 384,
+      "exclusive_cli_exit_2": true,
+      "independent_inventory_schemas_counts_periods": "passed",
+      "inventory": {
+        "DATASET_CARD.md": "35f13fb353e473f4e8595cd6c5b3beb919174ad7d3c1385d79d57645fbba4a2b",
+        "MANIFEST.json": "ec16d618a4fec78e19cb29b545e76d6f23cba37d28313169d994d34458df4670",
+        "catalogue.json": "5bf28493db6d78046e66149c00b50e916a13e27643484d06701d318117f50cdd",
+        "dcat.jsonld": "00140f57c91315212ddbee708e36b5ba1231a02d2525f94484934bef315553b4",
+        "prov.jsonld": "90d5a8f91d73056d3bb59d790cb794f940ad6a2ee4787ca8e0021312cbf9c8d6",
+        "schemas.json": "efdedb8bcfcc18c6be3ee4dbe1a191893e9bb17fa92cf799854c08456ceaee97"
+      },
+      "receipt": {
+        "command": "health-appropriations-build-gold-metadata",
+        "manifest_sha256": "ec16d618a4fec78e19cb29b545e76d6f23cba37d28313169d994d34458df4670",
+        "packages": 2,
+        "publication": "not_performed",
+        "rights": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-gold-metadata/v1",
+        "status": "written",
+        "verification": {
+          "manifest_sha256": "ec16d618a4fec78e19cb29b545e76d6f23cba37d28313169d994d34458df4670",
+          "packages": 2,
+          "publication": "not_performed",
+          "rights": "not_evaluated",
+          "schema_version": "archive-govt-nz.health-gold-metadata/v1",
+          "status": "verified",
+          "verification_scope": "gold_reverified_metadata_reconstructed"
+        }
+      },
+      "reconstruction": {
+        "manifest_sha256": "ec16d618a4fec78e19cb29b545e76d6f23cba37d28313169d994d34458df4670",
+        "packages": 2,
+        "publication": "not_performed",
+        "rights": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-gold-metadata/v1",
+        "status": "verified",
+        "verification_scope": "gold_reverified_metadata_reconstructed"
+      },
+      "recordsets": 5
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-gold-metadata-assurance/v1",
+  "source_code_sha256": {
+    "src/archive_govt_nz/cli.py": "2270748359171616e07bb2ba53079689d0613ba4ea1ccd8d6a6e264f23b1e1fb",
+    "src/archive_govt_nz/domains/health_appropriations/gold_metadata.py": "48d411911857cca63441a3a8109d73439008bd50d92c5ba3f1ae7ff8c7c54a48"
+  },
+  "source_reverification": "not_performed; consumes qualified Gold snapshots",
+  "status": "passed",
+  "validation": {
+    "coverage_floor_percent": 80,
+    "coverage_percent": 97.9,
+    "exit_code": 0,
+    "focused_tests": 3,
+    "full_harness_log_sha256": "203db3f02818152d522469e1b5fbab6ea5ddf9c56e4c5641db98aeed9937a6a3",
+    "offline_rdf_external_access": "denied",
+    "required_command": "./scripts/validate.sh",
+    "scoped_phase_review": "passed_not_final_health_completion_review",
+    "tests_passed": 7472,
+    "tests_skipped": 10
+  }
+}

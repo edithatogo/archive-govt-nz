@@ -1,0 +1,34 @@
+{
+  "correction": "Native Context Gold defers its plotting import to the existing export/render call. No schema or calculation change.",
+  "evidence_sha256": {
+    "reader-dependency-diagnostic-1.log": "5e3997ece15f11eb8bb8194a2c751b12e8b38cf9b5bbd24ecbd70f4505c87beb",
+    "reader-dependency-red-1.log": "4314a1fd30381f557f3a01ef23a16ce757edde3abddc369130d477c6593303df",
+    "reader-focused-green-1.log": "004a67cc7de7f5745b005133a2eca1bdeaf42fc580ff5ef212a676fa7ab3cbe7",
+    "reader-focused-green-2.log": "c91170e63e565dceacf01b3285838af9b0394715d79e57007a0ed05005a0a361"
+  },
+  "focused": {
+    "passed": 41,
+    "seconds": 316.31,
+    "suites": [
+      "test_operation_context_gold_operations.py",
+      "test_operation_context_gold.py",
+      "test_context_gold.py"
+    ]
+  },
+  "full_harness": "pending_original_run_before_PR",
+  "intermediate_failure": "Initial deferred operation imports still initialized plots through eager MCP schema projection of native context_gold; preserved1failed/21passed receipt.",
+  "native_product_qualification": "pending; compare two native20-file builds against independent retained prior pins,5original sources/input packages unchanged",
+  "protected_delivery": "pending",
+  "red": "Input inspection fails if plotting runtime is unavailable; original source imported matplotlib before reading the spec.",
+  "rights_joins_currency_publication": "not_performed",
+  "ruff": "passed",
+  "schema_version": "archive-govt-nz.health-context-reader-startup/v1",
+  "scope": "Defer product/canonical/plot imports until their existing build or schema use; retain all typed inputs, native formats, rendering rules, guards and no-write defaults.",
+  "status": "focused_qualified_native_and_full_pending",
+  "typing": "0_errors_0_warnings_focused_source_and_tests",
+  "unchanged_limits": {
+    "FIFO_subprocess_seconds": 10,
+    "coverage_floor_percent": 80,
+    "original_full_stage_seconds": 900
+  }
+}

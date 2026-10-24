@@ -1,0 +1,250 @@
+{
+  "additional_inspection": {
+    "path": "/Users/doughnut/Documents/Codex/2026-10-14/ch/.local/health-biff8-2009-20261021/source-unit-inspection-1.json",
+    "sha256": "4d735f23470087e9dde7a176e16c604604c46345613529868c384aa739330c16"
+  },
+  "amount_scale": "not stated in full Explanation/header; unit null, no inferred $000",
+  "department_label_basis": {
+    "expense": {
+      "row_label": "A4",
+      "sheet": "Total Exp by Dept Data",
+      "title": "Total Expenses by Department for 2010",
+      "title_coordinate": "F1",
+      "value": "Unit"
+    },
+    "revenue": {
+      "row_label": "A4",
+      "sheet": "Dept Total Data",
+      "title": "Total Crown Revenue and Capital Receipts by Department for 2010",
+      "title_coordinate": "B1",
+      "value": "Unit"
+    }
+  },
+  "edition_basis": "expense Explanation B4 / revenue B5 explicitly Budget2009 and 2009/10 Estimates; no conflict",
+  "periods": "actual2006-2008; estimated2009; MainEstimates2010; June30 only",
+  "postflight": {
+    "exit": 0,
+    "head": "b745642a78f6c140fb90f5be33d7677e6b547587",
+    "independent_lease_free": true,
+    "owner_and_group_absent": true,
+    "pins_unchanged": 4919,
+    "status": "verified",
+    "tree": "813a286b8192baa834702213ad9e1f74a5389e8e"
+  },
+  "rights": "not_evaluated",
+  "scope": "retained Budget2009 source preflight; no new capture or publication",
+  "sources": [
+    {
+      "counts": {
+        "out_of_scope": 4306,
+        "selected_numeric_verified": 267
+      },
+      "kind": "expenditure",
+      "numeric_columns": [
+        [
+          "app_id",
+          3
+        ],
+        [
+          "mcoa_id",
+          4
+        ],
+        [
+          "amount",
+          8
+        ],
+        [
+          "year",
+          9
+        ]
+      ],
+      "numeric_ranges": {
+        "amount": {
+          "max": 1078053,
+          "min": 13,
+          "zeros": 0
+        },
+        "app_id": {
+          "max": 9496,
+          "min": 372,
+          "zeros": 0
+        },
+        "mcoa_id": {
+          "max": 9496,
+          "min": 372,
+          "zeros": 0
+        },
+        "year": {
+          "max": 2010,
+          "min": 2006,
+          "zeros": 0
+        }
+      },
+      "numeric_witnesses": 1068,
+      "period_mismatches": [],
+      "period_pairs": [
+        {
+          "amount_type": "Actuals",
+          "rows": 52,
+          "year": 2006
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 53,
+          "year": 2007
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 54,
+          "year": 2008
+        },
+        {
+          "amount_type": "Estimated Actual",
+          "rows": 55,
+          "year": 2009
+        },
+        {
+          "amount_type": "Main Estimates",
+          "rows": 53,
+          "year": 2010
+        }
+      ],
+      "prior_definition_cells_verified": 44,
+      "prior_evidence": [
+        {
+          "path": "legacy-definition-preflight-20261020/native-inspection-1/treasury-locator-9c10a792d4248d02-1.json",
+          "sha256": "0ea1df972c8293f6d1e63d6e9a42fa4fdc3c993c3fced346bc11570b3226f06d"
+        },
+        {
+          "path": "legacy-definition-window-preflight-20261020/native-window-preflight-1/treasury-locator-9c10a792d4248d02-1.json",
+          "sha256": "e10bb9b2d3a303595e25351be7f0d8651c774c110c5cb0060197b5c675879de1"
+        },
+        {
+          "path": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-9c10a792d4248d02-1.json",
+          "sha256": "b07087ef84bfd9e5162f64b0fe3e96d879adc30e97c1b3ab9405b9487d6c42be"
+        }
+      ],
+      "proof_path": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2009-20261021/preflight-1/first-expenditure.json",
+      "proof_sha256": "ac673d2e07b320e2fdf3a75e1f1669a3b8bff2e7672c46257b096af32c91315d",
+      "raw_header_values": [
+        "Unit",
+        "Vote",
+        "App id",
+        "MCOA id",
+        "Description",
+        "Expense Type",
+        "Functional Classification",
+        "Amount",
+        "Year",
+        "Type"
+      ],
+      "rejections": [],
+      "repeat_equal": true,
+      "source_id": "treasury-locator-9c10a792d4248d02",
+      "source_row_count": 4573,
+      "source_sha256": "c1177036dd97da6f0e63fb2c91f878a5ec0f98111f62dd881a0e70b536b0bebc",
+      "source_vintage": "Budget-2009"
+    },
+    {
+      "counts": {
+        "out_of_scope": 759,
+        "selected_numeric_verified": 64
+      },
+      "kind": "revenue",
+      "numeric_columns": [
+        [
+          "app_id",
+          3
+        ],
+        [
+          "amount",
+          7
+        ],
+        [
+          "year",
+          8
+        ]
+      ],
+      "numeric_ranges": {
+        "amount": {
+          "max": 247971,
+          "min": -110000,
+          "zeros": 0
+        },
+        "app_id": {
+          "max": 9136,
+          "min": 397,
+          "zeros": 0
+        },
+        "year": {
+          "max": 2010,
+          "min": 2006,
+          "zeros": 0
+        }
+      },
+      "numeric_witnesses": 192,
+      "period_mismatches": [],
+      "period_pairs": [
+        {
+          "amount_type": "Actuals",
+          "rows": 14,
+          "year": 2006
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 12,
+          "year": 2007
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 13,
+          "year": 2008
+        },
+        {
+          "amount_type": "Estimated Actual",
+          "rows": 13,
+          "year": 2009
+        },
+        {
+          "amount_type": "Main Estimates",
+          "rows": 12,
+          "year": 2010
+        }
+      ],
+      "prior_definition_cells_verified": 56,
+      "prior_evidence": [
+        {
+          "path": "legacy-definition-preflight-20261020/native-inspection-1/treasury-historical-2f8ab31aef8d5f85-1.json",
+          "sha256": "08e5221c661fd9aa6b0fd228f77555c12f2275e17c999bc3421cd7bfe6df6fc2"
+        },
+        {
+          "path": "legacy-definition-window-preflight-20261020/native-window-preflight-1/treasury-historical-2f8ab31aef8d5f85-1.json",
+          "sha256": "26f0760b1e1419acb51d252ab4bbe98afd795885057c9331dd5e5672169fff04"
+        },
+        {
+          "path": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-historical-2f8ab31aef8d5f85-1.json",
+          "sha256": "c9c707fb773cf350d716c555c8233da30a531b9d5e9d838f720029ae524410d8"
+        }
+      ],
+      "proof_path": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2009-20261021/preflight-1/first-revenue.json",
+      "proof_sha256": "bf44b86dd47c0874300e69708e786e82cf479a2fd539ea0dd904c85201be8e38",
+      "raw_header_values": [
+        "Unit",
+        "Vote",
+        "App id",
+        "Description",
+        "Revenue Type",
+        "FunctionalClassification",
+        "Amount",
+        "Year",
+        "Type"
+      ],
+      "rejections": [],
+      "repeat_equal": true,
+      "source_id": "treasury-historical-2f8ab31aef8d5f85",
+      "source_row_count": 823,
+      "source_sha256": "dc5ce0e7faf9302cdca3bf9e0af5f423e0cac851cb1bdf031508b732f0ae383d",
+      "source_vintage": "Budget-2009"
+    }
+  ]
+}

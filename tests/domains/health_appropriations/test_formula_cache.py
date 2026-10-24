@@ -4,11 +4,16 @@ from __future__ import annotations
 
 import json
 from pathlib import Path
+from typing import TYPE_CHECKING
 from zipfile import ZipFile
 
 from openpyxl import Workbook
 
+from archive_govt_nz.domains.health_appropriations import formats
 from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
+
+if TYPE_CHECKING:
+    import pytest
 
 
 def _cached_fixture(tmp_path: Path) -> Path:
@@ -19,7 +24,7 @@ def _cached_fixture(tmp_path: Path) -> Path:
     path = tmp_path / "cached.xlsx"
     worksheet = (
         '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'
-        '<sheetData><row r="1">'
+        '<dimension ref="A1:XFD1048576"/><sheetData><row r="1">'
         '<c r="A1"><f>1-1</f><v>0</v></c>'
         '<c r="B1" t="b"><f>FALSE()</f><v>0</v></c>'
         '<c r="C1" t="str"><f>"cached content"</f><v>cached content</v></c>'
@@ -42,10 +47,24 @@ def _cached_fixture(tmp_path: Path) -> Path:
 
 def test_formula_cache_states_do_not_evaluate_or_disclose_values(
     tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     path = _cached_fixture(tmp_path)
+    read_modes: list[bool] = []
+    original = formats.load_workbook
+
+    def load(
+        source: Path, *, read_only: bool, data_only: bool, keep_links: bool
+    ) -> Workbook:
+        read_modes.append(read_only)
+        return original(
+            source, read_only=read_only, data_only=data_only, keep_links=keep_links
+        )
+
+    monkeypatch.setattr(formats, "load_workbook", load)
     before = path.read_bytes()
     result = inventory_workbook(path)
+    assert read_modes == [False, True]
     assert result["formula_cache_freshness"] == "not_verified"
     sheets = result["sheets"]
     assert isinstance(sheets, list)

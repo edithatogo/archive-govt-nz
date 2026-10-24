@@ -1,0 +1,166 @@
+{
+  "edition_resolution": {
+    "conflict": "revenue Explanation B10 ends Budget2015",
+    "preserved": true,
+    "publication_day_discrepancy_retained": true,
+    "publication_day_not_resolved_or_normalized": true,
+    "publisher_correction_claimed": false,
+    "publisher_issue_date": "2014-05-14",
+    "publisher_locator": "https://www.treasury.govt.nz/publications/data/budget-2014-data-estimates-appropriations-2014-15",
+    "publisher_observation_scope": "read_only_web_tool_not_bronze_capture_or_rights_approval",
+    "publisher_readback_sha256": "073869ad9db979e06a41fe5f021b5832d6b31737c25dc3e7e2a76f367cc5ee61",
+    "rights": "not_evaluated",
+    "source_coordinates": [
+      "B1",
+      "B4",
+      "B24",
+      "B26",
+      "B34"
+    ],
+    "status": "Budget-2014_from_independent_source_context",
+    "workbook_publication_literal": "Published 15 May 2014"
+  },
+  "files": {
+    "first-expenditure.json": {
+      "bytes": 1271414,
+      "sha256": "05f4f84deb8aa4c3c6b81ac40edbb0ddef53fc22b19c759fcfdb3d9a142c3f67"
+    },
+    "first-revenue.json": {
+      "bytes": 211212,
+      "sha256": "ce3cc07b559d4dc56ab60da944158e54045bc015de2b5eb7074d7f2575518eb4"
+    },
+    "first-summary.json": {
+      "bytes": 799,
+      "sha256": "2438ee107d00fad0a2ccca419d21f1d015bfe56c5f75c2b113dcb8c275403e5d"
+    },
+    "repeat.json": {
+      "bytes": 260,
+      "sha256": "93cfeb5874c08821376e5fc5eea81425919a29d569c85364260fb5154085f704"
+    },
+    "second-expenditure.json": {
+      "bytes": 1271414,
+      "sha256": "05f4f84deb8aa4c3c6b81ac40edbb0ddef53fc22b19c759fcfdb3d9a142c3f67"
+    },
+    "second-revenue.json": {
+      "bytes": 211212,
+      "sha256": "ce3cc07b559d4dc56ab60da944158e54045bc015de2b5eb7074d7f2575518eb4"
+    },
+    "second-summary.json": {
+      "bytes": 799,
+      "sha256": "f1a08aeb06ccb5b91676bb863a800770a89fea3367bf51743e6dffcc2f76c22c"
+    }
+  },
+  "postflight": {
+    "exit": 0,
+    "head": "43fca6b043a682146300a139227dc7e8a18042a1",
+    "independent_lease_free": true,
+    "owner_and_group_absent": true,
+    "pins_unchanged": 4876,
+    "status": "verified",
+    "tree": "bb2a3b7721de371b52c60a9154a9bb1fe50fa981"
+  },
+  "resources": [
+    {
+      "counts": {
+        "out_of_scope": 5599,
+        "selected_numeric_verified": 313
+      },
+      "period_mismatches": [],
+      "period_pairs": [
+        {
+          "amount_type": "Actuals",
+          "rows": 52,
+          "year": 2010
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 54,
+          "year": 2011
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 50,
+          "year": 2012
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 51,
+          "year": 2013
+        },
+        {
+          "amount_type": "Estimated Actual",
+          "rows": 53,
+          "year": 2014
+        },
+        {
+          "amount_type": "Main Estimates",
+          "rows": 53,
+          "year": 2015
+        }
+      ],
+      "prior_definition_evidence_sha256": "d01afa18049eca99f4bd51f34044720dc39cf13413f5e9a6bc59a5dd58996826",
+      "selected_text_values": {
+        "group_type": [
+          "MCA",
+          "MCOA",
+          "Single"
+        ],
+        "is_mca": [
+          "No",
+          "Yes"
+        ]
+      },
+      "source_id": "treasury-locator-be43a82d5a1e7360",
+      "source_row_count": 5912,
+      "source_sha256": "7194eebe691ff57378168439d7ba5a785dfa408bc3c836f2a7cfe50519af5169"
+    },
+    {
+      "counts": {
+        "out_of_scope": 942,
+        "selected_numeric_verified": 67
+      },
+      "period_mismatches": [],
+      "period_pairs": [
+        {
+          "amount_type": "Actuals",
+          "rows": 10,
+          "year": 2010
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 12,
+          "year": 2011
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 12,
+          "year": 2012
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 11,
+          "year": 2013
+        },
+        {
+          "amount_type": "Estimated Actual",
+          "rows": 11,
+          "year": 2014
+        },
+        {
+          "amount_type": "Main Estimates",
+          "rows": 11,
+          "year": 2015
+        }
+      ],
+      "prior_definition_evidence_sha256": "ac30f09af28466b538066d45f1dbdceb15930206ebbf5732c741cad792b64001",
+      "selected_text_values": {
+        "periodicity": [
+          "A"
+        ]
+      },
+      "source_id": "treasury-locator-5da68f356249366b",
+      "source_row_count": 1009,
+      "source_sha256": "ba1798c82e556afe98188ea58651759cb6fa1f52a461e4529bc664af424db91b"
+    }
+  ]
+}

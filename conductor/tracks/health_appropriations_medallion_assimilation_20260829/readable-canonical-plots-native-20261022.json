@@ -1,0 +1,84 @@
+{
+  "schema_version": "archive-govt-nz.health-readable-plots-native-evidence/v1",
+  "producer_base_head": "e9d8e3bba93be943fb7ca4652074fb25123290d7",
+  "producer_content_pins": {
+    "src/archive_govt_nz/domains/health_appropriations/readable_gold_plots.py": "58621198b31f432798956b1230da90d766feb7858237fe213657d199a9fc4090",
+    "schemas/health-readable-canonical-plots-v1.schema.json": "869af1248d362154c6310a28d4b138b698d4426fccf32a0919b8cbe329382936",
+    "tools/validate_schemas.py": "4aede28cca30a4c6849c1b0f0d97c4afc99f1826bbb24005dd4ab791f534abbd",
+    "tests/domains/health_appropriations/test_canonical_gold_plots.py": "de330eb7a292366f514edbdb83d7aabf23b48cfd0cbd92c3c6ef956954001eb0",
+    "tests/fixtures/health-readable-canonical-plots-sample-v1.json": "0ba04dc07d96fdd02555531d1414fd3512435d5b54cfdbc16d3c76749fdbf06b"
+  },
+  "parent_manifest_sha256": "8ae7010e1bb99ab28f4a7ab307eb4aee8d848e690b5b4c4db7186655e70e4f38",
+  "native_exit": 0,
+  "native_seconds": 86.84398708399385,
+  "parent_files_unchanged": 64,
+  "paired_identical_files": 127,
+  "manifest_sha256": "68a13ac485e0d411de1a11c41de4209c1b50371792eb86aa60aa42c2bbe63614",
+  "schema_and_sidecar_valid": true,
+  "typed_source_row_and_amount_parity": {
+    "historical": {
+      "exact_rows": 214,
+      "pages": 30
+    },
+    "budget": {
+      "exact_rows": 341,
+      "pages": 46
+    },
+    "revenue": {
+      "exact_rows": 139,
+      "pages": 20
+    },
+    "pharmac": {
+      "exact_rows": 14,
+      "pages": 3
+    },
+    "moh": {
+      "exact_rows": 80,
+      "pages": 12
+    },
+    "crown_befu": {
+      "exact_rows": 10,
+      "pages": 2
+    },
+    "crown_hyefu": {
+      "exact_rows": 10,
+      "pages": 2
+    },
+    "fiscal_crown": {
+      "exact_rows": 61,
+      "pages": 9
+    },
+    "biff8_budget": {
+      "excluded_rows": 3789,
+      "reason": "biff8_display_excluded"
+    },
+    "biff8_revenue": {
+      "excluded_rows": 825,
+      "reason": "biff8_display_excluded"
+    }
+  },
+  "production_visual_review": {
+    "pages": 124,
+    "contact_sheets": 31,
+    "individually_viewed": 17,
+    "finding": "no observed caption overlap, title or axis clipping"
+  },
+  "limits_unchanged": {
+    "groups_per_product": 32,
+    "points_per_group": 500,
+    "total_points": 4000,
+    "points_per_page": 8,
+    "output_bytes": 33554432,
+    "manifest_bytes": 4194304,
+    "coverage_floor": 80
+  },
+  "legacy_gold_renderer_changed": false,
+  "rights": "not_evaluated",
+  "publication": "not_performed",
+  "whole_track_complete": false,
+  "pending": [
+    "exact final-tree original validation",
+    "focused PR and exact-head required Actions",
+    "protected merge and clean owned worktree pruning"
+  ]
+}

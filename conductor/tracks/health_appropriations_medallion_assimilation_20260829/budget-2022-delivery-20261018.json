@@ -1,0 +1,160 @@
+{
+  "Gold_analytical_joins_publication": "not_performed",
+  "ISO_currency_and_period_start": "not_asserted",
+  "all32_on_each_platform": true,
+  "all7_exact_head_success": true,
+  "broader_track": "incomplete",
+  "checked_head": "65bf09ac4cd7f12c7c7e9099d0796eb32df74421",
+  "checked_tree": "0090da4e29b90ea9107ff7ba3728453af6350c52",
+  "cleanup": {
+    "checked_head": "65bf09ac4cd7f12c7c7e9099d0796eb32df74421",
+    "checked_tree": "0090da4e29b90ea9107ff7ba3728453af6350c52",
+    "clean": true,
+    "equal_merge_tree": true,
+    "fetched_main": "95f9f638c0aa28196675b1988958137dddc4d8a6",
+    "merged_head_ancestor": true,
+    "primary_branch": "main",
+    "primary_head": "95f9f638c0aa28196675b1988958137dddc4d8a6",
+    "primary_retained": true,
+    "proofs_CAS_runtime_preserved": true,
+    "topic_local_absent": true,
+    "topic_remote_absent": true,
+    "topic_tracking_absent": true,
+    "unique_commits": 0,
+    "unique_patches": 0,
+    "worktrees": 1
+  },
+  "hosted_full": {
+    "macos": {
+      "all32stage_headers_verified": true,
+      "job": 117680768545,
+      "log_sha256": "a2b8cc740a670e8ac87435a5a579ba72bdc26eb063db6fc760c32413858a1afc",
+      "pytest_summary": [
+        "8050",
+        "30",
+        "18",
+        "885.82"
+      ]
+    },
+    "ubuntu": {
+      "all32stage_headers_verified": true,
+      "job": 117680768251,
+      "log_sha256": "b1d431c47e128e5050ae3d9e1a6263bb8a6bb28d431d6200fa3f952035d37146",
+      "pytest_summary": [
+        "8050",
+        "30",
+        "18",
+        "545.52"
+      ]
+    },
+    "windows": {
+      "all32stage_headers_verified": true,
+      "job": 117680768486,
+      "log_sha256": "b1186e34bc688381eedeff4e95a26e0eeb877168ad3f2ce40dcb6db93268f264",
+      "pytest_summary": [
+        "8044",
+        "36",
+        "18",
+        "828.53"
+      ]
+    }
+  },
+  "local_attempt1": "budget-2022-assurance-20261018.json",
+  "local_attempt2": {
+    "actual_exit": 124,
+    "all32_local_pass_claim": false,
+    "all32_stages_verified": false,
+    "all_frozen_code_runtime_source_pins_unchanged": true,
+    "command": "./scripts/validate.sh",
+    "coverage_complete": false,
+    "failed_test_nodes": [
+      "tests/tools/test_legislation_parent_state.py::test_state_rejects_arbitrary_unrecognized_receipts",
+      "tests/domains/health_appropriations/test_operation_context_gold_operations.py::test_input_spec_refuses_fifo_without_blocking"
+    ],
+    "full_log_sha256": "1fbd08da3f9d23e038dd05518d3978016833825a2503911b45700630849edbff",
+    "head": "65bf09ac4cd7f12c7c7e9099d0796eb32df74421",
+    "kernel_lease_free": true,
+    "merge_qualification": "not_decided_by_this_receipt; separate hosted and failure-disposition review required",
+    "observed_failed_entries": 2,
+    "stage": "tests",
+    "stage_cap_seconds": 900,
+    "status": "original_local_test_timeout_with_observed_failures_preserved",
+    "tree": "0090da4e29b90ea9107ff7ba3728453af6350c52"
+  },
+  "local_failure_disposition": {
+    "FIFO_disposition": "Serial passes; original-seed two-worker pair reproduces10s subprocess timeout. Instrumented pair passes with4.02s imports and0.000186s FIFO rejection; exact earlier timeout location unproven. Full affected modules pass unmodified with original seed/two workers. Retain startup timing sensitivity as explicit follow-up.",
+    "affected_contract_files_unchanged_from_main": {
+      "src/archive_govt_nz/domains/health_appropriations/operation_context_gold.py": "1e6d11604fe8252aab1d2f1ca9973bae4c7bb1cc98d51d962491d29b9c9154d6",
+      "src/archive_govt_nz/domains/health_appropriations/workbook_common.py": "c4f62da4c550b7f0182385f9bda7c8c70d9006960a1d3f4b477fd2b6d346a7cb",
+      "tests/domains/health_appropriations/test_operation_context_gold_operations.py": "0a9bee61f7204531bd6b4e83af83dbcb8ccd7ddceb695b810964003c66508dd8",
+      "tests/tools/test_legislation_parent_state.py": "ddbe780239be2943896a4cf264f2bf4dbb5269aef36b3b0090648ec284c1740e",
+      "tools/legislation_parent_state.py": "f47343f4f9d85287ba049f38e3471e1c81225b8ef523c3427777beee28def8ba"
+    },
+    "affected_modules_original_seed": 2663309433,
+    "affected_modules_passed": 140,
+    "affected_modules_seconds": 92.85,
+    "affected_modules_workers": 2,
+    "authority": "AGENTS.md permits solo-maintainer self-review/self-merge on required green automated checks and requires local harness run before PR; both local attempts preserved. No local full-pass requirement invented or claimed.",
+    "conductor_advice": "requested; no relevant reply observed; not represented as approval",
+    "evidence_sha256": {
+      "fifo-startup-probe-90396.json": "d49780eefa488caba99180c00f54094f0f7082c743aa75ee39b4938a8e71abbb",
+      "fifo_startup_probe.py": "b57187b936aa53f2f3708b51f650a2e61d4a5e781c54d3c95ab2bb40e132a2e7",
+      "full-failure-observation-2.json": "9e0087ce37f87eda65e314de5c28d476417ea779fd6398672b53a47d9066d793",
+      "full-postflight-2-initial.py": "7055f88c73404503949c74508326f69f1814d66d87f28025aaaebe52d8452956",
+      "local-affected-modules-4.log": "c9c7a2eef59d57dfd2cc597c446fb9d61eb1d9ef701e87cc737c4dc2167f53ee",
+      "local-failure-instrumented-3.log": "082afc4c142fbf44b43976d912689b5b6f636a7119ab5a47eef0f08910ff4f06",
+      "local-failure-reproduction-1.log": "8afdb76e8721ef3252d40cb90d0189a99ee4fd97ed95d62d2bf83a6fe27227a8",
+      "local-failure-reproduction-2.log": "7514656c75e8379589bbba106ef0f68d43fd8780c1ecb65fa868e86d3bce6d26"
+    },
+    "follow_up": "Phase8 bounded fast-first reader startup investigation/hardening, preserving FIFO10s guard and original900s/global80% gates. Continue2023/2024registry integration thereafter.",
+    "gate_changes": "none: no tests skipped, deadlines/caps/coverage or branch rules changed",
+    "head": "65bf09ac4cd7f12c7c7e9099d0796eb32df74421",
+    "legislation_disposition": "Not reproduced in serial, original-seed two-worker pair, instrumented pair or full affected modules; no counterexample trace survived the full-stage timeout. Functional cause remains unproven.",
+    "local_full_exit": 124,
+    "local_full_pass": false,
+    "local_observed_failures": 2,
+    "required_hosted_full": "all32original stages passed on Ubuntu/macOS/Windows at exact head; verified again by merge guard",
+    "schema_version": "archive-govt-nz.health-local-failure-disposition/v1",
+    "status": "hosted_delivery_qualified_local_full_failure_retained"
+  },
+  "merge_commit": "95f9f638c0aa28196675b1988958137dddc4d8a6",
+  "merge_guard_sha256": "c4fdd18fe09611f717531d7458e6d94fd3b820505041fdf7b48a4077bc60f830",
+  "merged_at": "2026-10-18T13:29:46Z",
+  "open_CodeQL_alerts": 0,
+  "pr": 722,
+  "release_page": "single_native_HTTP403_retained_no_retry_Conductor_consulted",
+  "required_checks": [
+    "Assurance (macos-latest)",
+    "Assurance (ubuntu-latest)",
+    "Assurance (windows-latest)",
+    "CodeQL",
+    "analyze",
+    "codecov/patch",
+    "lint"
+  ],
+  "review_routing_native": {
+    "both_legacy_normalizer_repeats_equal_prior_four_files": true,
+    "facts": 307,
+    "files": {
+      "MANIFEST.json": "11000774d1210242f29150ffd4d7a05f634da2a32253d7cb671ec1f78f10895d",
+      "budget_facts.parquet": "88866708653c1ec511e76c2958798f644c6e4475858ceeae7864745df1d502ca",
+      "field_lineage.parquet": "0978f6ff9eb100fda628b938f50d86c2a1c04a5026b114a5895115e22a1570cc",
+      "row_dispositions.parquet": "2887433a6476737e49bcdd831eb89a95e418c20be3aafe6a26cb9818170498ec"
+    },
+    "head": "65bf09ac4cd7f12c7c7e9099d0796eb32df74421",
+    "lineage": 8289,
+    "registry_selected": "nz-budget-2022-health-expenditure",
+    "source_bytes_unchanged": true,
+    "status": "passed",
+    "tree": "0090da4e29b90ea9107ff7ba3728453af6350c52"
+  },
+  "rights_eligibility": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-budget-2022-delivery/v1",
+  "source_native_facts": {
+    "expenditure": 307,
+    "revenue": 64
+  },
+  "status": "merged_and_clean_topic_pruned_source_native_scope_only",
+  "unresolved_review_threads": 0,
+  "url": "https://github.com/edithatogo/archive-govt-nz/pull/722"
+}

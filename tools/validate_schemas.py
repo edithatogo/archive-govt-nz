@@ -20,6 +20,142 @@ type JsonValue = (
 REPOSITORY_ROOT = Path(__file__).parents[1]
 VALIDATION_PAIRS = (
     (
+        REPOSITORY_ROOT / "schemas" / "health-gold-citations-v5.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "health-gold-citations-v5.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-gold-changelog-v5.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "health-gold-changelog-v5.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-gold-source-drillthrough-v3.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-gold-source-drillthrough-v3.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-capture-inventory-v1.schema.json",
+        REPOSITORY_ROOT
+        / "conductor"
+        / "tracks"
+        / "health_appropriations_medallion_assimilation_20260829"
+        / "capture-inventory-20261017-addition.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-capture-inventory-v1.schema.json",
+        REPOSITORY_ROOT
+        / "conductor"
+        / "tracks"
+        / "health_appropriations_medallion_assimilation_20260829"
+        / "capture-inventory-20261017.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v1.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v2.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v2.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v3.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v3.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v4.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v4.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v5.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v5.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v6.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v6.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v7.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v7.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v8.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v8.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v9.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v9.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v10.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v10.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v11.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v11.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v12.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v12.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v13.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v13.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v14.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v14.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-canonical-input-recovery-v15.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-canonical-input-recovery-v15.json",
+    ),
+    (
         REPOSITORY_ROOT
         / "schemas"
         / "legislation-donor-bundle-verification-v1.schema.json",
@@ -109,12 +245,49 @@ VALIDATION_PAIRS = (
         / "health-federation-ambiguous-record-v1.json",
     ),
     (
+        REPOSITORY_ROOT / "schemas" / "health-gold-citations-v4.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "health-gold-citations-v4.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-gold-changelog-v4.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "health-gold-changelog-v4.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-gold-source-drillthrough-v2.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-gold-source-drillthrough-v2.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-gold-citations-v3.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "health-gold-citations-v3.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-gold-changelog-v3.schema.json",
+        REPOSITORY_ROOT / "tests" / "fixtures" / "health-gold-changelog-v3.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-gold-source-drillthrough-v1.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-gold-source-drillthrough-v1.json",
+    ),
+    (
         REPOSITORY_ROOT / "schemas" / "health-raw-rebuild-v1.schema.json",
         REPOSITORY_ROOT / "tests" / "fixtures" / "health-raw-rebuild-sample-v1.json",
     ),
     (
         REPOSITORY_ROOT / "schemas" / "health-raw-gold-v1.schema.json",
         REPOSITORY_ROOT / "tests" / "fixtures" / "health-raw-gold-sample-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-readable-canonical-plots-v1.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-readable-canonical-plots-sample-v1.json",
     ),
     (
         REPOSITORY_ROOT / "schemas" / "health-source-plots-v1.schema.json",
@@ -141,6 +314,21 @@ VALIDATION_PAIRS = (
         / "tracks"
         / "health_appropriations_medallion_assimilation_20260829"
         / "donor-historical-dispositions-20260927.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-source-health-report-v2.schema.json",
+        REPOSITORY_ROOT
+        / "tests"
+        / "fixtures"
+        / "health-source-health-report-sample-v2.json",
+    ),
+    (
+        REPOSITORY_ROOT / "schemas" / "health-source-health-report-v1.schema.json",
+        REPOSITORY_ROOT
+        / "conductor"
+        / "tracks"
+        / "health_appropriations_medallion_assimilation_20260829"
+        / "source-health-report.json",
     ),
     (
         REPOSITORY_ROOT / "schemas" / "cli-envelope-v1.schema.json",

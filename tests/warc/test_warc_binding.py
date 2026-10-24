@@ -15,6 +15,29 @@ from archive_govt_nz.warc import write_response_record
 URL = "https://example.test/data?q=one#fragment"
 
 
+def test_immutable_snapshot_binding_survives_source_path_removal(
+    tmp_path: Path,
+) -> None:
+    """The snapshot entry verifies exact bytes without reopening mutable paths."""
+    path = tmp_path / "snapshot.warc"
+    receipt = write_response_record(
+        path, url=URL, status_code=200, headers={}, body=b"abc"
+    )
+    snapshot = path.read_bytes()
+    path.unlink()
+    arguments = {
+        "request_url": URL,
+        "final_url": URL,
+        "status_code": 200,
+        "body_sha256": hashlib.sha256(b"abc").hexdigest(),
+        "body_bytes": 3,
+        "warc_sha256": receipt.sha256,
+    }
+    warc_binding.verify_response_snapshot(snapshot, **arguments)
+    with pytest.raises(ValueError, match="resume_warc_binding_invalid"):
+        warc_binding.verify_response_snapshot(bytearray(snapshot), **arguments)  # type: ignore[arg-type] -- exercise mutable caller input
+
+
 def test_decoded_body_is_not_measured_by_wire_content_length(tmp_path: Path) -> None:
     """WARC framing covers decoded bytes even with a different wire length."""
     path = tmp_path / "response.warc"

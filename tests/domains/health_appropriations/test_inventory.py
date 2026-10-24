@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import sqlite3
+from contextvars import copy_context
+from io import BytesIO
 from pathlib import Path
 from zipfile import ZipFile
 
@@ -174,3 +176,70 @@ def test_pdf_and_sqlite_inventory(tmp_path: Path) -> None:
     tables = result["tables"]
     assert isinstance(tables, list)
     assert tables[0]["row_count"] == 2
+
+
+def test_scoped_workbook_reuse_is_byte_bound_and_reset_after_error(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Reuse cannot poison metadata, cross sources, or survive its owner."""
+
+    def payload(label: str) -> bytes:
+        book = Workbook()
+        sheet = book.active
+        assert sheet is not None
+        sheet["A1"] = label
+        out = BytesIO()
+        book.save(out)
+        book.close()
+        return out.getvalue()
+
+    first, second = payload("first"), payload("second")
+    loads, closed = [], []
+    original = formats.load_workbook
+
+    def load(
+        path: Path | BytesIO, *, read_only: bool, data_only: bool, keep_links: bool
+    ) -> Workbook:
+        book = original(
+            path, read_only=read_only, data_only=data_only, keep_links=keep_links
+        )
+        loads.append(book)
+        close = book.close
+
+        def release() -> None:
+            closed.append(book)
+            close()
+
+        monkeypatch.setattr(book, "close", release)
+        return book
+
+    monkeypatch.setattr(formats, "load_workbook", load)
+    before: dict[str, object] = {}
+    captured_context = copy_context()
+    with pytest.raises(RuntimeError, match="probe"):  # noqa: PT012, SIM117 - verify cleanup during exceptional scope exit
+        with formats.inspected_workbook(first) as inspected:
+            before = inspected.inventory
+            captured_context = copy_context()
+            assert len(loads) == 1
+            copy = formats.inventory_workbook(BytesIO(first))
+            copy["kind"] = "poisoned"
+            assert formats.inventory_workbook(BytesIO(first)) == before
+            assert len(loads) == 1
+            with pytest.raises(ValueError, match="invalid_workbook_package"):
+                formats.inventory_workbook(BytesIO(b"not a workbook"))
+            with formats.inspected_workbook(first) as nested:
+                assert nested is inspected
+            with formats.inspected_workbook(second) as other:
+                assert other is not inspected
+                sheet = other.workbook.active
+                assert sheet is not None
+                assert sheet["A1"].value == "second"
+            assert len(loads) == 2
+            assert formats.inventory_workbook(BytesIO(first)) == before
+            message = "probe"
+            raise RuntimeError(message)
+    assert len(closed) == 2
+    assert captured_context.run(formats.inventory_workbook, BytesIO(first)) == before
+    assert len(loads) == len(closed) == 3
+    assert formats.inventory_workbook(BytesIO(first)) == before
+    assert len(loads) == len(closed) == 4

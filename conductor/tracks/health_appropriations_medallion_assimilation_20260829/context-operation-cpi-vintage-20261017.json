@@ -1,0 +1,36 @@
+{
+  "scope": "fixture qualification of CPI recorded-vintage registration only; five-profile operational bridge still pending",
+  "recorded_native_reference": {
+    "package": "raw-cpi-20260831-v1",
+    "manifest_sha256": "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e",
+    "source_object_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+    "source_vintage": "Stats-NZ-CPI-2026-Q2",
+    "independent_pin_location": "tools/health_recovery_assurance.py CONTEXT[cpi]"
+  },
+  "registration_paths": [
+    {
+      "source_vintage": "2026-Q2",
+      "version": "1.0.0",
+      "behavior": "unchanged legacy adapter"
+    },
+    {
+      "source_vintage": "Stats-NZ-CPI-2026-Q2",
+      "version": "1.1.0",
+      "behavior": "explicit recorded adapter; actual literal retained in records and mapping vintage"
+    }
+  ],
+  "unrelated_vintages": "preserved_only, no records; direct legacy class does not implicitly accept recorded alias",
+  "red_log_sha256": "72f6823c6b4467c923e8c3ceb8c20832e051be89064644e83f43856441f992e2",
+  "red_result": "recorded literal was preserved_only instead of selected; legacy and refusal cases passed",
+  "focused": {
+    "passed": 80,
+    "seconds": 3.24,
+    "log_sha256": "55e813faf346a35753e62e369b6a6cf56fb5f07513ed95156e605ee07a9fc535"
+  },
+  "targeted_typing": "0 errors, 0 warnings",
+  "ruff": "passed",
+  "native_api_changed": false,
+  "native_case_or_full_harness_qualification": "pending full operational slice; no native replay yet",
+  "rights_denominator_currency_or_join_approval": false,
+  "phase_complete": false
+}

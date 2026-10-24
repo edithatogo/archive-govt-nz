@@ -1,0 +1,90 @@
+{
+  "schema_version": "archive-govt-nz.health-vote-revenue-evidence/v1",
+  "observed_at": "2026-10-03",
+  "scope": "local_source_operation_and_bronze_dispatch_only",
+  "source": {
+    "source_id": "treasury-vote-health-pdf-fd37e5ad2657936d",
+    "title": "Vote Health - The Estimates of Appropriations 2002/03",
+    "source_locator": "https://www.treasury.govt.nz/sites/default/files/2008-03/est02health.pdf",
+    "source_census_sha256": "4bea6001b0a1af4a362075508c521befe5bd6e04d20b2dd2f7c23ef8c6256964",
+    "candidate_manifest_sha256": "9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e",
+    "candidate_original_path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/candidates/2026-08-29-v3/original/treasury-vote-health-pdf-fd37e5ad2657936d.pdf",
+    "media_type": "application/pdf",
+    "bytes": 317126,
+    "sha256": "1170e0bf5d11e6ac93620a2d76d68004ed99b88ed45a0c6c3c48bbc38f72fafe",
+    "source_census_rights": {
+      "license_label": "CC-BY-4.0",
+      "policy_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+      "legal_assessment": "not_evaluated"
+    },
+    "source_after_build_sha256": "1170e0bf5d11e6ac93620a2d76d68004ed99b88ed45a0c6c3c48bbc38f72fafe"
+  },
+  "silver_profile": {
+    "profile": "vote-health-estimates-2002-03-revenue/v1",
+    "transformation_id": "vote-health-estimates-revenue-2002-03/v1",
+    "source_vintage": "Treasury-Vote-Health-Estimates-2002-03",
+    "source_pages": [
+      43,
+      44
+    ],
+    "fact_count": 16,
+    "columns": [
+      "prior_year_budgeted",
+      "prior_year_estimated_actual",
+      "current_year_budgeted"
+    ],
+    "period_context": "2001/02 budgeted and estimated actual; 2002/03 budget",
+    "unit": "$000",
+    "rights_state": "not_evaluated",
+    "publication_state": "local_validation_only",
+    "output_root": "external_local_silver_vote_health_estimates_revenue_2002_03",
+    "build_a_manifest_sha256": "6f1c7f3c5b8097543f9897a0fd37908560ca0232bca5ebe20522ec8aa2314907",
+    "build_b_manifest_sha256": "6f1c7f3c5b8097543f9897a0fd37908560ca0232bca5ebe20522ec8aa2314907",
+    "repeat_identical": true,
+    "output_sha256": {
+      "field_lineage.parquet": "044723f3d8f3147001ef863eceed69734de3063292e14e876d00a8b4f3d0ce55",
+      "page_dispositions.parquet": "ba83db8ae4cb8ce174d96c732a2d3380cb792d198b8a656cf9e315b94cea9806",
+      "vote_health_estimates_revenue_facts.parquet": "32f4987b3ca9be7153d94d52fb4892b6621fb8df115c539ab14da9152097c960"
+    }
+  },
+  "bronze_dispatch": {
+    "status": "selected",
+    "adapter_id": "nz-treasury-vote-health-estimates-2002-03-tables",
+    "layout": "vote-health-estimates-2002-03-tables/v1",
+    "record_count": 43,
+    "revenue_record_count": 16,
+    "field_lineage_count": 210,
+    "page_loss_accounting_count": 44,
+    "silver_record_id_and_field_parity": true,
+    "matched_silver_fields": [
+      "source_page",
+      "revenue_name",
+      "prior_year_budgeted",
+      "prior_year_estimated_actual",
+      "current_year_budgeted",
+      "unit",
+      "rights_state",
+      "quality_flags",
+      "transformation_id",
+      "lineage_id",
+      "raw_values_json"
+    ]
+  },
+  "validation": {
+    "focused_command": "uv run pytest tests/domains/health_appropriations/test_vote_health_revenue.py tests/domains/health_appropriations/test_vote_health_pdf_adapter.py tests/domains/health_appropriations/test_source_operations.py -q",
+    "focused_passed": 493,
+    "focused_skipped": 10,
+    "ruff": "passed",
+    "full_repository_harness": "passed",
+    "test_passed": 7300,
+    "test_skipped": 10,
+    "coverage_percent": 98.1,
+    "coverage_floor_percent": 80,
+    "conductor_phase_7": "passed"
+  },
+  "limitations": [
+    "Part A narrative, Part B1 detail, pages between the selected tables, and other source editions are not normalized by this profile.",
+    "Revenue fact fields preserve the source's prior-year and current-year column meanings; no canonical Gold projection or comparability claim is made.",
+    "Rights are not legally evaluated, and no remote upload or publication occurred."
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "delivery": "budget-preservation-delivery-20261019.json",
+  "next": "Source-backed locator reconciliation and missing publication-workbook coverage; legacy layout/period/units/rights remain pending",
+  "phases_and_track_complete": false,
+  "registered_cohort_still_partial": true,
+  "schema_version": "archive-govt-nz.health-budget-preservation-state/v1",
+  "state": "bounded_preservation_lane_delivered_and_topic_pruned",
+  "supersedes_no_producer_receipts": true
+}

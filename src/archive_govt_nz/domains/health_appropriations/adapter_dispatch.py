@@ -12,7 +12,10 @@ from zipfile import BadZipFile
 
 from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     AdapterOutput,
+    CompoundAdapterOutput,
+    CompoundHealthAdapter,
     HealthAdapter,
+    NativeProfileContract,
     preserved_only,
 )
 from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
@@ -25,6 +28,7 @@ MediaType = str
 _MEDIA_TYPES = frozenset(
     {
         "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "application/vnd.ms-excel",
         "text/csv",
         "text/html",
         "application/pdf",
@@ -43,6 +47,21 @@ class AdapterRegistration:
     media_type: MediaType
     adapter: HealthAdapter
     layout_probe: Callable[[bytes], bool] | None = None
+
+
+@dataclass(frozen=True, slots=True)
+class CompoundAdapterRegistration:
+    """Explicit opt-in registration for complete, schema-bound native profiles."""
+
+    adapter_id: str
+    version: str
+    media_type: MediaType
+    adapter: CompoundHealthAdapter
+    profile_contracts: tuple[NativeProfileContract, ...]
+    layout_probe: Callable[[bytes], bool] | None = None
+
+
+type RegisteredAdapter = AdapterRegistration | CompoundAdapterRegistration
 
 
 @dataclass(frozen=True, slots=True)
@@ -90,10 +109,22 @@ class DispatchResult:
     output: AdapterOutput
 
 
+@dataclass(frozen=True, slots=True)
+class NativeDispatchResult:
+    """Native consumers explicitly discriminate single and compound outputs."""
+
+    selection: AdapterSelection
+    output: AdapterOutput | CompoundAdapterOutput
+    kind: Literal["health-native-dispatch/v1"] = "health-native-dispatch/v1"
+
+
 def _detect(payload: bytes, declared: str) -> str | None:
     detected: str | None = None
     if payload.startswith(b"PK\x03\x04"):
         detected = _detect_workbook(payload)
+    elif payload.startswith(bytes.fromhex("d0cf11e0a1b11ae1")):
+        # Container identification only; exact registered profiles check BIFF8.
+        detected = "application/vnd.ms-excel"
     elif payload.startswith(b"%PDF-"):
         detected = "application/pdf"
     elif payload.startswith(_SQLITE):
@@ -128,7 +159,11 @@ def _detect_html(payload: bytes) -> str | None:
 
 
 def _validate_inputs(
-    bronze: bytes, source_sha256: str, registrations: tuple[AdapterRegistration, ...]
+    bronze: bytes,
+    source_sha256: str,
+    registrations: tuple[RegisteredAdapter, ...],
+    *,
+    allow_compound: bool = False,
 ) -> str:
     if type(bronze) is not bytes:
         message = "bronze_bytes_required"
@@ -143,9 +178,14 @@ def _validate_inputs(
     if type(registrations) is not tuple:
         message = "registrations_tuple_required"
         raise TypeError(message)
+    allowed = (
+        (AdapterRegistration, CompoundAdapterRegistration)
+        if allow_compound
+        else (AdapterRegistration,)
+    )
     ids: set[str] = set()
     for item in registrations:
-        if type(item) is not AdapterRegistration:
+        if type(item) not in allowed:
             message = "invalid_adapter_registration"
             raise TypeError(message)
         if (
@@ -165,9 +205,9 @@ def _select_adapter(
     declared: str,
     detected: str | None,
     payload: bytes,
-    registrations: tuple[AdapterRegistration, ...],
+    registrations: tuple[RegisteredAdapter, ...],
 ) -> tuple[
-    AdapterRegistration | None,
+    RegisteredAdapter | None,
     str | None,
     tuple[str, ...],
     tuple[str, ...],
@@ -196,16 +236,16 @@ def _select_adapter(
 
 
 def _probe_candidates(
-    candidates: list[tuple[AdapterRegistration, Callable[[bytes], bool]]],
+    candidates: list[tuple[RegisteredAdapter, Callable[[bytes], bool]]],
     payload: bytes,
     considered: tuple[str, ...],
 ) -> tuple[
-    AdapterRegistration | None,
+    RegisteredAdapter | None,
     str | None,
     tuple[str, ...],
     tuple[str, ...],
 ]:
-    matches: list[AdapterRegistration] = []
+    matches: list[RegisteredAdapter] = []
     for candidate, probe in candidates:
         probe_result = probe(payload)
         if type(probe_result) is not bool:
@@ -221,12 +261,13 @@ def _probe_candidates(
     return matches[0], None, considered, matched_ids
 
 
-def select_bronze_adapter(
+def _select_bronze_adapter(
     bronze: bytes,
     *,
     source_sha256: str,
     media_type: str,
-    registrations: tuple[AdapterRegistration, ...],
+    registrations: tuple[RegisteredAdapter, ...],
+    allow_compound: bool,
 ) -> AdapterSelection:
     """Select an adapter without extraction and return hash-bound evidence.
 
@@ -234,7 +275,9 @@ def select_bronze_adapter(
     mismatch yields a ``preserved_only`` decision. Layout semantics remain
     bounded by the explicitly registered probes.
     """
-    actual = _validate_inputs(bronze, source_sha256, registrations)
+    actual = _validate_inputs(
+        bronze, source_sha256, registrations, allow_compound=allow_compound
+    )
     detected = _detect(bronze, media_type) if media_type in _MEDIA_TYPES else None
     selected, reason, considered, matched = _select_adapter(
         media_type, detected, bronze, registrations
@@ -263,6 +306,40 @@ def select_bronze_adapter(
         None,
         considered,
         matched,
+    )
+
+
+def select_bronze_adapter(
+    bronze: bytes,
+    *,
+    source_sha256: str,
+    media_type: str,
+    registrations: tuple[AdapterRegistration, ...],
+) -> AdapterSelection:
+    """Select only v1 registrations with the unchanged strict input boundary."""
+    return _select_bronze_adapter(
+        bronze,
+        source_sha256=source_sha256,
+        media_type=media_type,
+        registrations=registrations,
+        allow_compound=False,
+    )
+
+
+def select_native_bronze_adapter(
+    bronze: bytes,
+    *,
+    source_sha256: str,
+    media_type: str,
+    registrations: tuple[RegisteredAdapter, ...],
+) -> AdapterSelection:
+    """Select across explicit native and v1 handlers without source ambiguity."""
+    return _select_bronze_adapter(
+        bronze,
+        source_sha256=source_sha256,
+        media_type=media_type,
+        registrations=registrations,
+        allow_compound=True,
     )
 
 
@@ -297,3 +374,55 @@ def dispatch_bronze(
         message = "invalid_adapter_output"
         raise TypeError(message)
     return DispatchResult(selection, output)
+
+
+def dispatch_native_bronze(
+    bronze: bytes,
+    *,
+    source_sha256: str,
+    media_type: str,
+    registrations: tuple[RegisteredAdapter, ...],
+) -> NativeDispatchResult:
+    """Expose native compounds only after all trusted profile contracts pass."""
+    selection = select_native_bronze_adapter(
+        bronze,
+        source_sha256=source_sha256,
+        media_type=media_type,
+        registrations=registrations,
+    )
+    if selection.status == "preserved_only":
+        return NativeDispatchResult(
+            selection,
+            preserved_only(
+                source_coordinate="bronze:sha256:" + selection.source_sha256,
+                reason=selection.reason or "no_registered_adapter",
+            ),
+        )
+    selected = next(
+        r
+        for r in registrations
+        if r.adapter_id == selection.adapter_id
+        and r.version == selection.adapter_version
+    )
+    if isinstance(selected, CompoundAdapterRegistration):
+        from archive_govt_nz.domains.health_appropriations.compound_validation import (  # noqa: PLC0415 - Keep Arrow validation off the v1 import path.
+            validate_compound_output,
+        )
+
+        compound = selected.adapter.extract(
+            bronze, source_sha256=selection.source_sha256
+        )
+        if type(compound) is not CompoundAdapterOutput:
+            message = "invalid_compound_adapter_output"
+            raise TypeError(message)
+        validate_compound_output(
+            compound,
+            source_sha256=selection.source_sha256,
+            contracts=selected.profile_contracts,
+        )
+        return NativeDispatchResult(selection, compound)
+    ordinary = selected.adapter.extract(bronze, source_sha256=selection.source_sha256)
+    if type(ordinary) is not AdapterOutput:
+        message = "invalid_adapter_output"
+        raise TypeError(message)
+    return NativeDispatchResult(selection, ordinary)

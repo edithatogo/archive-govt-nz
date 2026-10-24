@@ -1,0 +1,55 @@
+{
+  "actual_exit": 0,
+  "all_frozen_pins_unchanged": true,
+  "both_modes_repeat_bytes_equal": true,
+  "changed_layout_state_ids": [
+    "treasury-vote-health-pdf-54029b9e6efd28b4",
+    "treasury-vote-health-pdf-e6e53e9c0c008d22",
+    "treasury-vote-health-pdf-f0c9dd2e768da2d6"
+  ],
+  "comparison_control": "current_context_census_with_retained_prior_PDF_baseline",
+  "context_series_vintages": 11,
+  "cpi_label_grid_unchanged": {
+    "labels": 449,
+    "numeric": 422,
+    "publisher_NA": 27
+  },
+  "cpi_originals_unchanged": 14,
+  "delivery_receipt": "readable-pdf-layout-delivery-20261018.json",
+  "exec_session": 94646,
+  "failed_first_comparison": {
+    "actual_exit": 1,
+    "all_frozen_pins_unchanged": true,
+    "cause": "Retained v1 source-health report predates current context census; CPI period wording and context SHA/base commit differ in addition to expected3PDF layout states and baseline pin. All4candidate reports built and repeated before comparison.",
+    "exec_session": 14775,
+    "head": "a74b5954ae8af28364951df23f37ce76eec30b2d",
+    "kernel_lease_free": true,
+    "log_sha256": "2530c257e92ae42edd89749534d3b4b3f9377a71609ebd509f74630de4d4b237",
+    "next_correction": "Build a matched current-context control with old PDF baseline, explicitly verify previously merged context differences, then isolate3PDF-only state changes in a fresh output root.",
+    "status": "failed_comparison_not_production_defect",
+    "tree": "2b24996cf339275c081efcbb2a6f996733965dd8"
+  },
+  "head": "a74b5954ae8af28364951df23f37ce76eec30b2d",
+  "kernel_lease_free": true,
+  "numeric_facts_emitted": 0,
+  "previously_merged_context_changes": {
+    "context_base_commit": "38bc5158295bcc6f23696e084ac1a3faa4b79cf4",
+    "context_census_sha256": "cd4d6311ee237b7ab07b41812d1030a49f401805a37136dbe004850f0fcbe1e8",
+    "cpi_period_description": "quarter-ending YYYY.MM; 449 labels from 1914Q2 to 2026Q2, 422 numeric and 27 publisher NA; exact quarter-label grid verified in the separate source-evidence report; continuous numeric coverage not asserted"
+  },
+  "products": {
+    "v1/SOURCE_HEALTH.json": "c6cf0328a4f26462b641f312d6642973ec9549acb7eb224f62c8e686ff39a2bc",
+    "v1/SOURCE_HEALTH.md": "1775dd3ea49c0336adbaace24806b7174cd365ad9ef25948cf974b1d1ff3eceb",
+    "v2/SOURCE_HEALTH.json": "95980d627956b5f745e79e036db545d394ae78e28785d0d8740a8bc330fa1e31",
+    "v2/SOURCE_HEALTH.md": "6fd15e4500125d9b48fdd5f6901eb5cd8bac86a1f40f8c5e825f910ad6e46d57"
+  },
+  "protected_delivery": "merged_pr721_verified_on_origin_main",
+  "publication": "not_performed",
+  "rights": "not_evaluated",
+  "scope": "PDF structural-baseline adoption on the existing143-source/11-context census; does not include separate later Budget registry editions or imply census completeness.",
+  "source_resources": 143,
+  "status": "passed",
+  "summary_sha256": "d2321e69b6bb67e62f9014201a2d9853b5916c9e1b3977ec3068f5c10dee599f",
+  "tree": "2b24996cf339275c081efcbb2a6f996733965dd8",
+  "v1_only_three_layout_states_and_baseline_pin_changed_against_current_context_control": true
+}

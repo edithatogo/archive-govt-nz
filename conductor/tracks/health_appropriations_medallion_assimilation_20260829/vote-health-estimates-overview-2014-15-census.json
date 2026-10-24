@@ -1,0 +1,26 @@
+{
+  "capture_reconciliation": {
+    "capture_manifest": "vote-health-estimates-overview-2014-15-capture-evidence.json",
+    "matched": 1
+  },
+  "cutoff": "2026-10-04",
+  "observed_at": "2026-10-04T00:04:07Z",
+  "record_count": 1,
+  "records": [
+    {
+      "cutoff": "2026-10-04",
+      "disposition": "captured",
+      "family": "treasury_vote_health_document",
+      "license": "CC-BY-4.0",
+      "media_type": "application/pdf",
+      "object_sha256": "039706f735a3652aa911e4fa7eaf776a6d534271d96e478aad0ce45789351dfb",
+      "observed_at": "2026-08-29T09:00:17Z",
+      "reason": "Existing official Treasury capture receipt verified against the Bronze CAS object; no recapture performed. Selected overview profile only.",
+      "rights_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+      "source_id": "treasury-vote-health-pdf-6c8a449e4c16f435",
+      "title": "Vote Health - Health Sector - The Estimates of Appropriations 2014/15",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2014-05/est14-v6-health.pdf"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-source-census/v1"
+}

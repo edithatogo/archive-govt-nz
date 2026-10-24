@@ -44,7 +44,7 @@ def _package(root: Path) -> tuple[Path, str]:
             "excluded_observations_plotted": False,
             "series": [],
         },
-        "source_marker_sha256": ["a" * 64] * 4,
+        "source_marker_sha256": ["a" * 64] * 5,
         "rights_state": "not_evaluated",
         "denominator_selection": "not_performed",
         "publication": "not_performed",

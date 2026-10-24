@@ -1,0 +1,156 @@
+{
+  "schema_version": "archive-govt-nz.health-vote-health-category-totals-evidence/v1",
+  "status": "passed",
+  "profile": "vote-health-supplementary-2007-08-category-totals/v1",
+  "issue": 211,
+  "source": {
+    "source_id": "treasury-vote-health-pdf-f1a09322538d8791",
+    "title": "Vote Health - The Supplementary Estimates of Appropriations and Supporting Information 2007/08",
+    "source_object_sha256": "e76311821f75c2b02c82c8c63d771b9948eb0547caa1af40df662213588ec9f8",
+    "bytes": 235897,
+    "source_locator": "https://www.treasury.govt.nz/sites/default/files/2008-05/suppest08health.pdf",
+    "source_vintage": "Treasury-Vote-Health-Supplementary-2007-08",
+    "source_bytes_unchanged": true,
+    "census": "source-census.json",
+    "recorded_license": "CC-BY-4.0",
+    "rights_state": "not_evaluated"
+  },
+  "scope": {
+    "pdf_page_numbers": [
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "pdf_page_count": 36,
+    "unit": "$000",
+    "columns": [
+      "Estimates Budget",
+      "Supplementary Estimates Budget",
+      "Total Budget"
+    ],
+    "facts": 6,
+    "field_lineage_rows": 18,
+    "page_dispositions": 5,
+    "category_totals": [
+      {
+        "source_page": 2,
+        "label": "Total Departmental Output Expenses",
+        "estimates_budget": "204033",
+        "supplementary_estimates_budget": "11798",
+        "total_budget": "215831"
+      },
+      {
+        "source_page": 5,
+        "label": "Total Non-Departmental Output Expenses",
+        "estimates_budget": "10860491",
+        "supplementary_estimates_budget": "(225819)",
+        "total_budget": "10634672"
+      },
+      {
+        "source_page": 5,
+        "label": "Total Other Expenses to be Incurred by the Crown",
+        "estimates_budget": "17912",
+        "supplementary_estimates_budget": "6180",
+        "total_budget": "24092"
+      },
+      {
+        "source_page": 5,
+        "label": "Total Capital Expenditure to be Incurred by the Department",
+        "estimates_budget": "-",
+        "supplementary_estimates_budget": "18537",
+        "total_budget": "18537"
+      },
+      {
+        "source_page": 6,
+        "label": "Total Capital Expenditure to be Incurred by the Crown",
+        "estimates_budget": "846267",
+        "supplementary_estimates_budget": "(530407)",
+        "total_budget": "315860"
+      },
+      {
+        "source_page": 6,
+        "label": "Total Annual and Permanent Appropriations",
+        "estimates_budget": "11928703",
+        "supplementary_estimates_budget": "(719711)",
+        "total_budget": "11208992"
+      }
+    ],
+    "rights_state": "not_evaluated",
+    "limitations": [
+      "Only six edition-specific category totals are normalized; remaining rows and PDF pages are outside this profile.",
+      "Official category labels differ from nearby editions and are retained verbatim.",
+      "No currency interpretation, edition comparison, Gold measure, federation, or publication is asserted."
+    ]
+  },
+  "persistent_silver": {
+    "path": "silver/vote-health-supplementary-2007-08-category-totals-20261007-v1",
+    "manifest_sha256": "1a70ef4d79b925096739290c1b20496d33c52c9c254397aa823021196618b84d",
+    "outputs": {
+      "field_lineage.parquet": "3ecad6e6fe1f0572cd3fa487c35763eeb256e1b873e4d5b70c60420a3a12a9df",
+      "page_dispositions.parquet": "91f8cfd37800ae092c1439199fcfc3db4b923de05b05579678211dbe31b97431",
+      "vote_health_category_total_facts.parquet": "758ee1c64510baa959e6f121b9d37b853e3cee50a3cd2697e6d6d9f741284f4a"
+    },
+    "matches_clean_room_build": true
+  },
+  "repeat_build": {
+    "identical": true,
+    "matches_persistent_silver": true,
+    "bronze_objects_unchanged": true,
+    "integrated_recovery_receipt": "clean-room-recovery-20261007-vote-health-2007-08.json"
+  },
+  "validation": {
+    "focused_tests": {
+      "command": "uv run --locked pytest tests/domains/health_appropriations/test_vote_health_supplementary_2007_08.py tests/domains/health_appropriations/test_source_operations.py tests/domains/health_appropriations/test_health_recovery_assurance.py -q",
+      "status": "passed",
+      "passed": 528,
+      "skipped": 10
+    },
+    "repository_harness": {
+      "command": "./scripts/validate.sh",
+      "status": "passed",
+      "exit_code": 0,
+      "tests_passed": 7629,
+      "tests_skipped": 10,
+      "coverage_percent": 97.55,
+      "coverage_floor_percent": 80,
+      "schemas": 56,
+      "representative_documents": 46,
+      "differential_parity": "9/9 passed",
+      "mutation_security_supply_chain": "passed",
+      "retry_history": [
+        {
+          "status": "failed_lint_only",
+          "failure": "Ruff PT018 requested splitting a compound assertion in the new dash-lineage test.",
+          "resolution": "Separated truthiness and dash-presence assertions."
+        },
+        {
+          "status": "passed",
+          "command": "./scripts/validate.sh",
+          "exit_code": 0,
+          "tests_passed": 7629,
+          "tests_skipped": 10,
+          "coverage_percent": 97.55,
+          "schemas": 56,
+          "representative_documents": 46,
+          "differential_parity": "9/9 passed",
+          "mutation_security_supply_chain": "passed"
+        }
+      ]
+    }
+  },
+  "integrated_recovery": {
+    "status": "partial_with_blockers",
+    "bronze_objects_unchanged": true,
+    "this_profile_repeat_identical": true,
+    "matches_persistent_silver": true,
+    "final_gate": "blocked_until_all_required_products_are_built_from_bronze_and_validated",
+    "required_but_not_rebuilt": [
+      "cross_source_comparison",
+      "remaining_source_native_silver_profiles_and_canonical_adapters",
+      "platinum_dcat_croissant_ro_crate_prov_complete_profile"
+    ]
+  },
+  "publication": "not_performed"
+}

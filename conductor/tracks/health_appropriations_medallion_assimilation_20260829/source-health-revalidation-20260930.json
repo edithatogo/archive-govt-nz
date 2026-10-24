@@ -1,0 +1,65 @@
+{
+  "schema_version": "archive-govt-nz.health-source-health-revalidation/v1",
+  "recorded_at": "2026-09-29T20:52:25Z",
+  "base_commit": "453f84e5df8ae9759cbd58baa90a15d848f6b646",
+  "scope": "local_validation_and_read_only_external_bronze_reconciliation",
+  "recovered_source": {
+    "source_id": "befu_2026-002",
+    "object_sha256": "521e7649b3814c8de2efa2e72502c8e35c6db7a94d6f84ebc22fd3fa9f7976d4",
+    "object_blake3": "ba4350936f7b959aacf8013a24be4fe314040555770ec21c03db152462278404",
+    "bytes": 2126154,
+    "fresh_warc_sha256": "162ab99d733c8680d786a35e3f8342fcaa3756eed3b8474ab0588db556faad9a"
+  },
+  "source_health_report": {
+    "json_sha256": "45cd636189ab1455c8d6c7d8d0fb282c50f0650b0292f199cfe8396433648356",
+    "markdown_sha256": "fe7c47c554bb55b3eb5abd45c09ae53d2495fc7b503571497f2fb9390730a340",
+    "resources": 141,
+    "captured": 73,
+    "bronze_objects_verified": 73,
+    "bronze_bytes_verified": 38877606,
+    "context_series_vintages": 10
+  },
+  "clean_room_recovery": {
+    "receipt": "clean-room-recovery-20260930.json",
+    "receipt_sha256": "109057c8770c62894e47e7855039b5816920d532f0a317fca74dbec60a5e1ba2",
+    "status": "partial_with_blockers",
+    "bronze_objects_unchanged": true,
+    "repeat_builds_identical": true,
+    "unrebuilt": [
+      "donor_and_canonical_reports",
+      "additional_source_native_silver_profiles_and_canonical_adapters",
+      "platinum_dcat_croissant_ro_crate_prov_complete_profile"
+    ]
+  },
+  "focused_validation": {
+    "status": "passed",
+    "tests_passed": 89,
+    "ruff": "passed",
+    "ruff_format": "passed",
+    "basedpyright": "passed"
+  },
+  "repository_harness": {
+    "command": "./scripts/validate.sh",
+    "status": "passed",
+    "tests_passed": 7180,
+    "tests_skipped": 9,
+    "branch_coverage_percent": 98.27,
+    "coverage_floor_percent": 80.0,
+    "schemas": 53,
+    "representative_documents": 43,
+    "parity_passed": 9,
+    "parity_total": 9,
+    "configured_mutation_gates": "passed",
+    "supply_chain_gates": "passed",
+    "cas_streaming_megabytes_per_second": 587.31
+  },
+  "conductor_state": {
+    "status": "passed",
+    "track_count": 93,
+    "errors": []
+  },
+  "rights": "not_evaluated",
+  "publication": "not_performed",
+  "analytical_admission": "not_performed",
+  "hosted_validation": "pending"
+}

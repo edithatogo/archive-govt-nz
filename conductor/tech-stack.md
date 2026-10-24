@@ -12,9 +12,9 @@ preservation state.
 
 ## Languages
 
-### Python 3.14
+### Python 3.15.1
 
-Python 3.14 is the primary implementation language for:
+Python 3.15.1 is the primary implementation language for:
 
 - CKAN discovery and metadata retrieval;
 - archive orchestration and CLI commands;
@@ -222,7 +222,7 @@ DCAT/PROV JSON-LD conformance fixtures. The standard library JSON decoder does
 not expand RDF predicates, distinguish literal/resource objects or validate
 typed graph interpretation. RDFLib provides that independent processor without
 adding a runtime graph database, network service, index or publication path.
-On Python 3.14 its required dependency is the already-used `pyparsing`; optional
+On Python 3.15.1 its required dependency is the already-used `pyparsing`; optional
 stores and HTTP extras are not selected. The release declares BSD-3-Clause and
 Python 3.14 support in its
 [package metadata](https://github.com/RDFLib/rdflib/blob/7.6.0/pyproject.toml).
@@ -233,7 +233,7 @@ covered by negative tests, following the
 [upstream security guidance](https://rdflib.readthedocs.io/en/stable/security_considerations/).
 This is a scoped test guard, not a hostile-input operating-system sandbox or a
 general RDF ingestion API. No SPARQL endpoint or persistent store is configured.
-Lock, Python 3.14 compatibility, focused graph fixtures, vulnerability/licence
+Lock, Python 3.15.1 compatibility, focused graph fixtures, vulnerability/licence
 audit, SBOM and full hosted assurance gate adoption. Parsing tests establish
 RDF interpretation, not source rights or an unimplemented application profile.
 
@@ -337,3 +337,28 @@ bound at 88% despite a prior green run. Two workers preserve all tests, coverage
 thresholds and stage limits while reducing serial execution time. The manifest
 property generates 32-byte digests and converts them to hex, preserving the full
 64-character SHA-256 input space with less per-character generation overhead.
+
+
+## Legacy Health workbook inspection — 2026-10-20 adoption decision
+
+Adopt xlrd2.0.2 (compatible2.x, locked) for a separate read-only legacy XLS
+inspection adapter. openpyxl deliberately handles XLSX and cannot read the32
+preserved OLE candidates; a bespoke BIFF parser or new office/runtime service
+would add unnecessary maintenance. The original source is authoritative and
+the adapter is replaceable. Existing XLSX behavior remains unchanged.
+
+Primary evidence: [PyPI](https://pypi.org/project/xlrd/2.0.2/) supplies the BSD
+license, exact wheel hashes and no mandatory runtime dependencies. The verified
+wheel imports and reads a synthetic BIFF8 cached-result fixture on the retained
+Python3.14.6 runtime. [Reader documentation](https://xlrd.readthedocs.io/en/latest/)
+explicitly excludes formula text, comments, charts/macros and other embedded
+structure. These losses must be reported; stored values are not verified fresh
+formula results. On-demand/ragged reads, corruption rejection, existing source/
+traversal/preview bounds and native external deadlines apply. Parser allocation
+is not fully bounded by a post-load traversal check. Source rights/period/unit
+admission remains a separate gate.
+
+Dependency audit, license inventory, focused real-reader fixtures, strict types,
+secret scan, SBOM and original full harness gate delivery. This is a bounded
+implementation choice under the approved source-adapter track, with no new
+service, runtime, publication action or dependency exception.

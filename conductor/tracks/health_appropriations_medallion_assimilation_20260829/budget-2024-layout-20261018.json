@@ -1,0 +1,199 @@
+{
+  "canonical_facts_emitted": 0,
+  "exit": 0,
+  "frozen_head": "f83c09e99304fea360c82f49b1a57057fa44923b",
+  "frozen_tree": "682a450691e5188863327270090c2223c2b54a58",
+  "gaps": [
+    "raw_headers_and_Intro_notice_content_not_previewed",
+    "native_definitions_below_Explanation_row20_not_read",
+    "revenue_max_row1005_exceeds_existing1000_data_row_profile_if_all_rows_contain_data",
+    "Budget-2024_revenue_adapter_vintage_unsupported",
+    "item_rights_and_currency_not_adjudicated"
+  ],
+  "launcher_sha256": "15fd0cedaecab2fd90dbfa32b4c1f914791bcc3265acbc304d91739eaab20739",
+  "period_observation": "Both native Explanation B3 agree with release: June years2020-2023 actuals,2024 estimated actual,2025 budget. This does not validate every data-row period.",
+  "preview_scope": "Explanation rows1-20 columnsA-T only; decoded values remain private",
+  "private_directory": "budget-2024-census-20261018/inspection-1",
+  "publication": "not_performed",
+  "recipe_sha256": "35d5ecf6897539c2b9e30e26e84fb04447f38088a9366a2349e73ff9ecb0a6d8",
+  "records": [
+    {
+      "external_link_count": 0,
+      "has_macros": false,
+      "inventory_repeat_equal": true,
+      "object_sha256": "891539afe9f5df4a7c7f73ac29695e19b6fb523a4947d305e1f4bd69ebcb3256",
+      "private_report_sha256": "d659f9657ed683f81dc20317e4a71616390154d73ec12c8c34cf2c19d4a5689a",
+      "sheets": [
+        {
+          "chart_count": 0,
+          "formula_cells": 0,
+          "max_column": 1,
+          "max_row": 14,
+          "merged_ranges": 0,
+          "state": "visible",
+          "table_names": [],
+          "title": "Intro"
+        },
+        {
+          "chart_count": 0,
+          "formula_cells": 0,
+          "max_column": 4,
+          "max_row": 57,
+          "merged_ranges": 0,
+          "state": "visible",
+          "table_names": [],
+          "title": "Explanation"
+        },
+        {
+          "chart_count": 0,
+          "formula_cells": 1,
+          "max_column": 11,
+          "max_row": 11,
+          "merged_ranges": 1,
+          "state": "visible",
+          "table_names": [],
+          "title": "PivotAppnTypeSpendbyYear"
+        },
+        {
+          "chart_count": 1,
+          "formula_cells": 0,
+          "max_column": 1,
+          "max_row": 1,
+          "merged_ranges": 0,
+          "state": "visible",
+          "table_names": [],
+          "title": "GraphAppnTypeSpendbyYear"
+        },
+        {
+          "chart_count": 0,
+          "formula_cells": 1,
+          "max_column": 8,
+          "max_row": 56,
+          "merged_ranges": 1,
+          "state": "visible",
+          "table_names": [],
+          "title": "PivotAppnTypeByVote"
+        },
+        {
+          "chart_count": 1,
+          "formula_cells": 0,
+          "max_column": 1,
+          "max_row": 1,
+          "merged_ranges": 0,
+          "state": "visible",
+          "table_names": [],
+          "title": "GraphAppnTypeByVote"
+        },
+        {
+          "chart_count": 0,
+          "formula_cells": 0,
+          "max_column": 7,
+          "max_row": 80,
+          "merged_ranges": 0,
+          "state": "visible",
+          "table_names": [],
+          "title": "PivotAppnTypeByPortfolio"
+        },
+        {
+          "chart_count": 0,
+          "formula_cells": 0,
+          "max_column": 17,
+          "max_row": 6646,
+          "merged_ranges": 0,
+          "state": "visible",
+          "table_names": [],
+          "title": "Raw Data"
+        }
+      ],
+      "source_bytes_unchanged": true,
+      "source_id": "treasury-historical-ff5ef101ec75d1b8",
+      "status": "inspected"
+    },
+    {
+      "external_link_count": 0,
+      "has_macros": false,
+      "inventory_repeat_equal": true,
+      "object_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
+      "private_report_sha256": "129f7dbc5d9f12a2526c8066a60ae7aa3aef9d21790a1e628485bdfec1365f0f",
+      "sheets": [
+        {
+          "chart_count": 0,
+          "formula_cells": 0,
+          "max_column": 1,
+          "max_row": 14,
+          "merged_ranges": 0,
+          "state": "visible",
+          "table_names": [],
+          "title": "Intro"
+        },
+        {
+          "chart_count": 0,
+          "formula_cells": 0,
+          "max_column": 2,
+          "max_row": 46,
+          "merged_ranges": 0,
+          "state": "visible",
+          "table_names": [],
+          "title": "Explanation"
+        },
+        {
+          "chart_count": 0,
+          "formula_cells": 0,
+          "max_column": 5,
+          "max_row": 10,
+          "merged_ranges": 0,
+          "state": "visible",
+          "table_names": [],
+          "title": "Pivot Trend by Type"
+        },
+        {
+          "chart_count": 1,
+          "formula_cells": 0,
+          "max_column": 1,
+          "max_row": 1,
+          "merged_ranges": 0,
+          "state": "visible",
+          "table_names": [],
+          "title": "Graph Trend by Type"
+        },
+        {
+          "chart_count": 0,
+          "formula_cells": 1,
+          "max_column": 8,
+          "max_row": 34,
+          "merged_ranges": 0,
+          "state": "visible",
+          "table_names": [],
+          "title": "Pivot Trend by Vote"
+        },
+        {
+          "chart_count": 1,
+          "formula_cells": 0,
+          "max_column": 1,
+          "max_row": 1,
+          "merged_ranges": 0,
+          "state": "visible",
+          "table_names": [],
+          "title": "Graph Trend by Vote"
+        },
+        {
+          "chart_count": 0,
+          "formula_cells": 0,
+          "max_column": 8,
+          "max_row": 1005,
+          "merged_ranges": 0,
+          "state": "visible",
+          "table_names": [],
+          "title": "Raw Data"
+        }
+      ],
+      "source_bytes_unchanged": true,
+      "source_id": "treasury-historical-c445260e928c9454",
+      "status": "inspected"
+    }
+  ],
+  "root_session": 35584,
+  "scope": "retained original structural inventory and decoded Explanation head only",
+  "summary_sha256": "0dc80cacfdadcbc0c6733e028ba7fc965e8944da3d8d9ae1a7c6bf988911bb55",
+  "terminal_and_lease_released": true
+}

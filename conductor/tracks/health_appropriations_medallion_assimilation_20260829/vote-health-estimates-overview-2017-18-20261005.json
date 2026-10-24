@@ -1,0 +1,63 @@
+{
+  "capture": {
+    "bytes": 980866,
+    "observed_at": "2026-08-29T09:00:17Z",
+    "page_count": 95,
+    "source_id": "treasury-vote-health-pdf-4cad52281f0c61e6",
+    "source_object_sha256": "3fc0cc6a193c232e9278389f42dbd9003cff03228ac3c83cbfe58452f5711604",
+    "source_url": "https://www.treasury.govt.nz/sites/default/files/2017-05/est17-v6-health-v2.pdf",
+    "warc_sha256": "e19b746dd545f78fc1a8d5458c8ce15c9468d21d6d2cfc430af95660ca6c203d"
+  },
+  "edition": "2017/18",
+  "profile": "vote-health-estimates-2017-18-overview/v1",
+  "selected_scope": {
+    "fact_count": 25,
+    "normalized_pages": [
+      2
+    ],
+    "preserved_unreviewed_pages": 94,
+    "unit": "$ million, source-reported amount",
+    "currency_code": null,
+    "rights_state": "not_evaluated",
+    "publication_state": "local_validation_only"
+  },
+  "repeat_build": {
+    "identical": true,
+    "hashes": {
+      "field_lineage.parquet": "eb463c229965c0908f622dd426bd3248f11a4a9399421e2dde4219526d4f9ed7",
+      "page_dispositions.parquet": "0d3b059a9ebf54c1cee0893e7b441477c9d46535918fdc46d22cedb2950d02bf",
+      "vote_health_overview_facts.parquet": "e894f79d5677b6c905e99ef3a419a90148055c3b0c77b7867447557ded62020a",
+      "MANIFEST.json": "cf5e94a2cd56419e906d525924dce597acc1cbcb2260ceeb66415634f8f05826"
+    }
+  },
+  "scope_limits": [
+    "Source-reported percentages and category names are preserved as edition-specific qualifiers; no values are summed or mapped across editions.",
+    "No CPI, wage, population, GDP or Crown expense series are joined.",
+    "No semantic review of the remaining 94 pages, currency admission, rights decision for derived facts, or publication authorization is claimed.",
+    "The 2017/18 Supplementary Estimates are excluded from this overview profile."
+  ],
+  "integrated_operation": {
+    "command": "health-appropriations-extract-source",
+    "status": "written_local",
+    "counts": {
+      "facts": 25,
+      "pages": 1
+    },
+    "profile": "vote-health-estimates-2017-18-overview/v1",
+    "transformation_id": "vote-health-estimates-overview-2017-18/v1",
+    "schema_validation": "passed",
+    "repeat_identical": true,
+    "rights_state": "not_evaluated",
+    "publication_state": "local_validation_only"
+  },
+  "full_validation": {
+    "command": "./scripts/validate.sh",
+    "status": "passed",
+    "exit_code": 0,
+    "passed": 7482,
+    "skipped": 10,
+    "coverage_percent_rounded": 98,
+    "coverage_floor_percent": 80,
+    "lock_format_lint_types_tests_schema_mutation_supply_chain": "passed"
+  }
+}

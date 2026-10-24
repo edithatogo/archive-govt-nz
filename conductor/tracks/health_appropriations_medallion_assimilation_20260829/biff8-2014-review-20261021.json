@@ -1,0 +1,56 @@
+{
+  "checks": {
+    "bounds": "source120/interface30/stage900/manifest4MiB/package128MiB/coverage80 unchanged",
+    "dimensions": "IsMCA and Periodicity retained; null absent minister/portfolio dimensions have no invented coordinates",
+    "edition": "B10 conflict retained; B1/B4/B24/B26/B34 and publisher context; day discrepancy retained",
+    "focused": "570 source checks;88 integrated checks;20 recovery checks;72 schemas and62 fixtures; strict typing0; final lint clean",
+    "numeric": "all selected stored integers replayed; no source value replacement",
+    "rights": "not_evaluated; no publication or collection mutation",
+    "source_identity": "exact retained hashes and definitions",
+    "versioning": "v1\u2013v6 schema files unchanged; explicit v7 distinct URI and all17 named bindings"
+  },
+  "findings": [],
+  "head": "176971bf12d5723001378990c4bb95034fe9ffe0",
+  "native_binding_refusals": 68,
+  "native_postflight": {
+    "exit": 0,
+    "head": "176971bf12d5723001378990c4bb95034fe9ffe0",
+    "independent_lease_free": true,
+    "owner_and_group_absent": true,
+    "pins_unchanged": 5863,
+    "status": "verified",
+    "tree": "e3bfe0af4aae37d75bc9612359ee6eda481c61d8"
+  },
+  "native_summary": {
+    "all10_queries_verified": true,
+    "canonical_packages": 17,
+    "composite_metadata_verified": true,
+    "current_2014_raw_profiles_match_native_qualification": true,
+    "fresh_input_builds": 2,
+    "gold_files": 61,
+    "head": "176971bf12d5723001378990c4bb95034fe9ffe0",
+    "input_files": 155,
+    "legacy_gold11_61_files_identical": true,
+    "legacy_gold13_61_files_identical": true,
+    "legacy_gold15_61_files_identical": true,
+    "legacy_gold9_61_files_identical": true,
+    "legacy_gold_60_files_identical": true,
+    "legacy_v1_47_files_identical": true,
+    "legacy_v2_65_files_identical": true,
+    "legacy_v3_83_files_identical": true,
+    "legacy_v4_101_files_identical": true,
+    "legacy_v5_119_files_identical": true,
+    "legacy_v6_137_files_identical": true,
+    "publication": "not_performed",
+    "repeat_identical": true,
+    "retained_derivatives_consumed": false,
+    "rights": "not_evaluated",
+    "tree": "e3bfe0af4aae37d75bc9612359ee6eda481c61d8"
+  },
+  "pending": [
+    "original exact-final-tree validation",
+    "required hosted assurance and protected merge/prune"
+  ],
+  "qualifier_guard_review_cases": 7,
+  "scope": "Budget2014 source profiles, edition disposition, complete recoveryv7, source operation schema and canonical/Gold fixture extensions"
+}

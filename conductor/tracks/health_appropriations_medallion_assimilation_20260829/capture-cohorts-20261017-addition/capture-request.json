@@ -1,0 +1,20 @@
+{
+  "cutoff": "2026-10-17",
+  "observed_at": "2026-10-17T01:16:27.865674Z",
+  "record_count": 1,
+  "records": [
+    {
+      "cutoff": "2026-10-17",
+      "disposition": "discovered",
+      "family": "treasury_vote_health_document",
+      "media_type": "application/pdf",
+      "observed_at": "2026-10-17T01:16:27.865674Z",
+      "reason": "separate official Supplementary Addition; existing capture contract applies; layout normalization and analytical admission remain pending",
+      "rights_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+      "source_id": "treasury-vote-health-pdf-4315859d7da244f4",
+      "title": "Vote Health - Addition to the Supplementary Estimates of Appropriations 2019/20",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2020-06/suppest20health-vol2.pdf"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-source-census/v1"
+}

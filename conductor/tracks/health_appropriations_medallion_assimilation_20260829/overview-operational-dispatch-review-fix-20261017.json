@@ -1,0 +1,316 @@
+{
+  "scope": "fourteen_reviewed_overview_operational_common_dispatch_repeat_and_pinned_readback",
+  "observed_at": "2026-10-17T02:26:53.633274+00:00",
+  "head": "2e9cd6743b5606ee716d0b7d177d5a03e2222d14",
+  "implementation_sha256": {
+    "src/archive_govt_nz/domains/health_appropriations/overview_operations.py": "85b5184507dfba5cfbbf4e76c5d8c09f53ddab08df69f2cde04744715de5d261",
+    "src/archive_govt_nz/domains/health_appropriations/source_operations.py": "e7194f9597f4d109f6aa1c8058d0938e3524a1cf013c86b7ab792371034bc488",
+    "src/archive_govt_nz/domains/health_appropriations/vote_health_estimates_overview_adapter.py": "360c19fdc62945179272c4f2c1f5f8c35209cf74fb7da294a42a839039e56999"
+  },
+  "reference_receipt_sha256": "59126d224032bd2bfaf2602c6cf067797a0531af2234d61af5b9427b316894b4",
+  "profiles": 14,
+  "facts": 209,
+  "parquet_files_compared_per_repeat": 42,
+  "common_dispatch_calls": 70,
+  "rows": [
+    {
+      "year": "2004/05",
+      "profile": "vote-health-estimates-2004-05-overview/v1",
+      "source_sha256": "6dac0aaa3fd181fffacf30cffa829b0f189e8b68ebfdbeb0dd5ef88736af96a2",
+      "source_bytes": 334380,
+      "facts": 8,
+      "page_dispositions": 48,
+      "source_unchanged": true,
+      "three_parquet_hashes_match_reference": true,
+      "repeat_manifest_sha256": "618022a0e11c1d6b18ba0d3f2c7fb58b1c88057ad8e89d93181bc7558d87a0a2",
+      "manifest_metadata_intentionally_versioned": true,
+      "old_manifest_sha256": "eade3a78cb478a61533e5e8d0e92a411aa52d4f803610c5d3c718d48882c0a18",
+      "parquet_sha256": {
+        "field_lineage.parquet": "fe5df65d10cefe76d55cc25886ab03d7fadd83ab38692d43d848ac81b18f6c09",
+        "page_dispositions.parquet": "35684b922cf37e524f58e6624054b8426632a0b7bfebf7429d87e6d30dcc44c7",
+        "vote_health_overview_facts.parquet": "cd4048c0f26daae7eb93850fab6b19919d1cdfe20209e2fa8b05caf6403cc78c"
+      },
+      "pinned_readback": "passed",
+      "actual_common_dispatch": true,
+      "native_direct_normalizer_forbidden": true
+    },
+    {
+      "year": "2005/06",
+      "profile": "vote-health-estimates-2005-06-overview/v1",
+      "source_sha256": "9a269a87a0cef8fc998fc1b012ae9fd734fb48b111504bb7a1ca01cdcf97c2b4",
+      "source_bytes": 319930,
+      "facts": 8,
+      "page_dispositions": 50,
+      "source_unchanged": true,
+      "three_parquet_hashes_match_reference": true,
+      "repeat_manifest_sha256": "84259924e24008899483d6a8673dd475383e05ed3e0a32fca6c9339010b79ea2",
+      "manifest_metadata_intentionally_versioned": true,
+      "old_manifest_sha256": "906da1c5b7c22f665ae2749cc5ce96780faef23bf4e121f2b5f7d917bf6ccf60",
+      "parquet_sha256": {
+        "field_lineage.parquet": "bab92396f6a33fb8e59557f111f509daa541b11457cb2250471c91848bb1ed79",
+        "page_dispositions.parquet": "cec4bc917bdedf98fbbdee89f18833654312dc53f81f2049ba7da3a8ebd36225",
+        "vote_health_overview_facts.parquet": "ffc00101791b8594ce39926e32436b2fe3aaf713f2d46c6aa280742a67f8a297"
+      },
+      "pinned_readback": "passed",
+      "actual_common_dispatch": true,
+      "native_direct_normalizer_forbidden": true
+    },
+    {
+      "year": "2006/07",
+      "profile": "vote-health-estimates-2006-07-overview/v1",
+      "source_sha256": "866bce96ac216344c5dcdf25fee1f31548d5c32ba3cd94ef4b4977a495f509ea",
+      "source_bytes": 367397,
+      "facts": 8,
+      "page_dispositions": 41,
+      "source_unchanged": true,
+      "three_parquet_hashes_match_reference": true,
+      "repeat_manifest_sha256": "7570d5fd02fb978ed8c273fe0be9b84dcd33113ef0886da76702b4117350f7e3",
+      "manifest_metadata_intentionally_versioned": true,
+      "old_manifest_sha256": "105a76bea1bca23a9bedd0fd29b3d75157dc3c3addec1c26834cb55b1c6786ef",
+      "parquet_sha256": {
+        "field_lineage.parquet": "fa227985d2ca78a93e7d3133549a54b2c94018c935f0281e2b11ba44d60044f9",
+        "page_dispositions.parquet": "37062e5cebf07fd75cee7d519bb9c3a1d4dcdc1d121f6e0754d1875480f4f69a",
+        "vote_health_overview_facts.parquet": "93e65044bd5212b2947f69f5c5bcd882aee1bad043d1eaacea9c6e0078929a8a"
+      },
+      "pinned_readback": "passed",
+      "actual_common_dispatch": true,
+      "native_direct_normalizer_forbidden": true
+    },
+    {
+      "year": "2007/08",
+      "profile": "vote-health-estimates-2007-08-overview/v1",
+      "source_sha256": "fccd1fe0001e12f8238e6c4618328eac2da8d26729f997265b05688ec89a2795",
+      "source_bytes": 472226,
+      "facts": 8,
+      "page_dispositions": 53,
+      "source_unchanged": true,
+      "three_parquet_hashes_match_reference": true,
+      "repeat_manifest_sha256": "be5a09af96ef0211e08d0e5d77ed0059785f79be66cd5591c20aafb7a213123a",
+      "manifest_metadata_intentionally_versioned": true,
+      "old_manifest_sha256": "e6461097ccf696eba8163915c7a97a39014b6dd93a15f6b04ee14410c411567d",
+      "parquet_sha256": {
+        "field_lineage.parquet": "56d910d68aea0c94f634d9f9b036225cfa5dcfeb256a03ef2bf3609a0521095a",
+        "page_dispositions.parquet": "6b5c0b0c480c1f6fbb6f1a37875457fd133927ca806260e4cc7d7960ceeea860",
+        "vote_health_overview_facts.parquet": "e0591c3fa508b478de6c81ada096d228561f8e1fdd3548e00243a9640ad36131"
+      },
+      "pinned_readback": "passed",
+      "actual_common_dispatch": true,
+      "native_direct_normalizer_forbidden": true
+    },
+    {
+      "year": "2008/09",
+      "profile": "vote-health-estimates-2008-09-overview/v1",
+      "source_sha256": "2d346a460278fa278eef4fbda3f613d18bc13b486a1f2e21e503a05b5d3f9121",
+      "source_bytes": 91611,
+      "facts": 6,
+      "page_dispositions": 8,
+      "source_unchanged": true,
+      "three_parquet_hashes_match_reference": true,
+      "repeat_manifest_sha256": "88f1b9db277654f6e3a61557b2b93e91a8d22b2599c94446f81118118cf94775",
+      "manifest_metadata_intentionally_versioned": true,
+      "old_manifest_sha256": "ed908921eb7be6180e00f6caf766d36fbfb54bc24a4470e5e5bf8e12ba09681d",
+      "parquet_sha256": {
+        "field_lineage.parquet": "6b8a2cbbea3e4708acca71eb16bb979ee79868ad0e086d31acf1d0a13c9daab1",
+        "page_dispositions.parquet": "7b0ed1ff7a4548f5ae4d9ddf46543f2e93fc8b6f1799264afd74f14763b35dd7",
+        "vote_health_overview_facts.parquet": "21f2d58dc63e7460536749cfa6843b5640d6ca21085268ee3f6fbf93058c1604"
+      },
+      "pinned_readback": "passed",
+      "actual_common_dispatch": true,
+      "native_direct_normalizer_forbidden": true
+    },
+    {
+      "year": "2009/10",
+      "profile": "vote-health-estimates-2009-10-overview/v1",
+      "source_sha256": "acd253a1d68738a06e5310c002f8051698146fe018d3d6c10fc6b5e0f6d7ac1f",
+      "source_bytes": 60661,
+      "facts": 17,
+      "page_dispositions": 8,
+      "source_unchanged": true,
+      "three_parquet_hashes_match_reference": true,
+      "repeat_manifest_sha256": "41a3be93f7e3aeaa8dcf09fcddbc48968009562246d2b8c25604b317223e7ce0",
+      "manifest_metadata_intentionally_versioned": true,
+      "old_manifest_sha256": "0800661223409b6316074a8897e45dcb75de206bf4b7c7d0eedc34cd9e5c7c79",
+      "parquet_sha256": {
+        "field_lineage.parquet": "c7e8e7fa9c62de8736d7559d3803f2911a51ffe4dd93ec15b6b892ba2400f892",
+        "page_dispositions.parquet": "15b2e27cc9e8f6bc4c9a93873af835e9b00e83eadee2b492dde9e16b7dd2f42c",
+        "vote_health_overview_facts.parquet": "e023d44e0fd925af872c9d8e7de78f766d767730705d3b274c2cc213d0864597"
+      },
+      "pinned_readback": "passed",
+      "actual_common_dispatch": true,
+      "native_direct_normalizer_forbidden": true
+    },
+    {
+      "year": "2010/11",
+      "profile": "vote-health-estimates-2010-11-overview/v1",
+      "source_sha256": "5dabf866e4f60c5fdf9df88b3fcc5b0e537652d1d6817465efb46a97c0bbe497",
+      "source_bytes": 55369,
+      "facts": 18,
+      "page_dispositions": 9,
+      "source_unchanged": true,
+      "three_parquet_hashes_match_reference": true,
+      "repeat_manifest_sha256": "859a37bb2d63feb6a2d426fff334bc4bca41c5a49a0cd7a365fdf350c3fd132a",
+      "manifest_metadata_intentionally_versioned": true,
+      "old_manifest_sha256": "b73670278faab4a924b417f89f9ddcebc855e6c2179b60cf4e1d9f90318656b5",
+      "parquet_sha256": {
+        "field_lineage.parquet": "775d56f6e23998cc4cf49ef4247d76f01dae61fc3e58ad7478fbc00ae0c4f5fb",
+        "page_dispositions.parquet": "6465033aa91e92d8df03611b8ef4f3e02f700cd6df2eb67163b2683485c7087f",
+        "vote_health_overview_facts.parquet": "9e77117c907e9c7a7cbe96f9d950aa999ce0280f6d31727f5d5d6288de217078"
+      },
+      "pinned_readback": "passed",
+      "actual_common_dispatch": true,
+      "native_direct_normalizer_forbidden": true
+    },
+    {
+      "year": "2011/12",
+      "profile": "vote-health-estimates-2011-12-overview/v1",
+      "source_sha256": "5b56c8a0641a870d82558f2c61fc87df90bcabf318541af4c3d86ba8ce3063af",
+      "source_bytes": 76397,
+      "facts": 17,
+      "page_dispositions": 9,
+      "source_unchanged": true,
+      "three_parquet_hashes_match_reference": true,
+      "repeat_manifest_sha256": "e552e8f5853cb484c583e845112efd2cc59bc6c88e6b714a00ab7d931a30ea1f",
+      "manifest_metadata_intentionally_versioned": true,
+      "old_manifest_sha256": "6473773556f648bb64ce333bf8eb516bbd09d8306d4b98d6042706497e2f657c",
+      "parquet_sha256": {
+        "field_lineage.parquet": "624569d3cbc4b6eb0e194eb4b204ff28ac4049cdf7d91ae795146740d3ef1ba2",
+        "page_dispositions.parquet": "ab46c3cafdecf32b4b098f819bd3861fd25162f06e33f9c310b7846c3f627d8e",
+        "vote_health_overview_facts.parquet": "32fa7bd544868df5692bdeb90bff2317a303c523d3aa6408a64b05b6aad16985"
+      },
+      "pinned_readback": "passed",
+      "actual_common_dispatch": true,
+      "native_direct_normalizer_forbidden": true
+    },
+    {
+      "year": "2012/13",
+      "profile": "vote-health-estimates-2012-13-overview/v1",
+      "source_sha256": "5994108997ead9f301f71f73952b8fb04f6b1e4a00207c16dfe8b172f72b60ff",
+      "source_bytes": 97539,
+      "facts": 18,
+      "page_dispositions": 8,
+      "source_unchanged": true,
+      "three_parquet_hashes_match_reference": true,
+      "repeat_manifest_sha256": "637d54a87597682d1d5c2844a6ccfc8d5a62fc2be282acaf87ac2c2be2c2b0d8",
+      "manifest_metadata_intentionally_versioned": true,
+      "old_manifest_sha256": "ad770a86ed54f6a968b6c5ac62aff1aca3c631b4c1991992fb7908d02fec4327",
+      "parquet_sha256": {
+        "field_lineage.parquet": "60aa74bce8e49699396c9a86f4f1421bf72d9e7b6814400aba3a23ee322c4267",
+        "page_dispositions.parquet": "1798433641022ac766d74d95041f36dc21880879611c5d83669fc9755c92a1e7",
+        "vote_health_overview_facts.parquet": "cc3054ccb876ddf60f696b8a646d2dec5333b1e3aec8c0fbb54d5895d7846b3b"
+      },
+      "pinned_readback": "passed",
+      "actual_common_dispatch": true,
+      "native_direct_normalizer_forbidden": true
+    },
+    {
+      "year": "2013/14",
+      "profile": "vote-health-estimates-2013-14-overview/v1",
+      "source_sha256": "f29271aad328bad5fcfdcf655c61dc6c59600a20666860c037ceb478bff681f1",
+      "source_bytes": 80589,
+      "facts": 17,
+      "page_dispositions": 8,
+      "source_unchanged": true,
+      "three_parquet_hashes_match_reference": true,
+      "repeat_manifest_sha256": "e7481e0c97b15b78e95b2a98c8f14ef14621ec5d5a1ad162ea8695afd8501adb",
+      "manifest_metadata_intentionally_versioned": true,
+      "old_manifest_sha256": "487a7dbfbde65c14266aa017ce38ef0ab8d4a386702cbb6a5ad48f8d9b97c8b4",
+      "parquet_sha256": {
+        "field_lineage.parquet": "297a268e0deb654ca8ae523b947abe61525f6aabb652768a0260a0738f6de071",
+        "page_dispositions.parquet": "f862403f6d98f55f1b26533fbcdc0bbec6eb0d86676860656d0c7074816afe6c",
+        "vote_health_overview_facts.parquet": "1b267db169ce452897d3913905c941152a06e739d6ace3c16a74a2187c35aa53"
+      },
+      "pinned_readback": "passed",
+      "actual_common_dispatch": true,
+      "native_direct_normalizer_forbidden": true
+    },
+    {
+      "year": "2014/15",
+      "profile": "vote-health-estimates-2014-15-overview/v1",
+      "source_sha256": "039706f735a3652aa911e4fa7eaf776a6d534271d96e478aad0ce45789351dfb",
+      "source_bytes": 1049358,
+      "facts": 18,
+      "page_dispositions": 109,
+      "source_unchanged": true,
+      "three_parquet_hashes_match_reference": true,
+      "repeat_manifest_sha256": "264ec5d30fd4be052f0a9b6b3f8546629dc1e374759e225ac78491ce0c1c6273",
+      "manifest_metadata_intentionally_versioned": true,
+      "old_manifest_sha256": "24d1388d02888ff77bcf78e9701d24c285e3e155f28ae10000feb0390f9f3458",
+      "parquet_sha256": {
+        "field_lineage.parquet": "6eeb65be340302a3b2c64941c39480e970fc32391a005f6099981593526f0332",
+        "page_dispositions.parquet": "fc9e6d02aef2b2bad4a917d9d3fe35d1ecaff177facdf4447d82c97a271ca18b",
+        "vote_health_overview_facts.parquet": "b66c20fd8db95e235fd526201ed4f75c262c319b20229df291bcb1c5efb44f95"
+      },
+      "pinned_readback": "passed",
+      "actual_common_dispatch": true,
+      "native_direct_normalizer_forbidden": true
+    },
+    {
+      "year": "2015/16",
+      "profile": "vote-health-estimates-2015-16-overview/v1",
+      "source_sha256": "dbb8a9c4fab8a53b5279c26d98a5e0a6fa60d9360b88030189d43273bf0e5d1a",
+      "source_bytes": 867091,
+      "facts": 17,
+      "page_dispositions": 100,
+      "source_unchanged": true,
+      "three_parquet_hashes_match_reference": true,
+      "repeat_manifest_sha256": "d85bd14c91a84a4a3e9625654b26077b0978d2e50df9e5416f531b189ef87ab9",
+      "manifest_metadata_intentionally_versioned": true,
+      "old_manifest_sha256": "70b34f83f8b25df6c50e6cbb207793c53558a291e74975172128b4f29329cdf7",
+      "parquet_sha256": {
+        "field_lineage.parquet": "cff01942a6d9f581ed2691743ce61525e4fc7ebc1e64814297eeee88021959c9",
+        "page_dispositions.parquet": "d2fc0a4cd20926ad959ab5b08c0da8ca9fb6ba46f3895654243845a65ab2750e",
+        "vote_health_overview_facts.parquet": "44334d61d92f3e1ac86fb4644ea50c8d3f496f53e109ad8fc6b147329133b3a7"
+      },
+      "pinned_readback": "passed",
+      "actual_common_dispatch": true,
+      "native_direct_normalizer_forbidden": true
+    },
+    {
+      "year": "2016/17",
+      "profile": "vote-health-estimates-2016-17-overview/v1",
+      "source_sha256": "c997ffecb631e4dfd0ffd8a1e620585b6b963df11f94164adb2ac02cfa391b2e",
+      "source_bytes": 1024038,
+      "facts": 24,
+      "page_dispositions": 102,
+      "source_unchanged": true,
+      "three_parquet_hashes_match_reference": true,
+      "repeat_manifest_sha256": "a33c6929e320b755e3c144103f0b55464fd7ba0370ac29e872a4471886f68c8c",
+      "manifest_metadata_intentionally_versioned": true,
+      "old_manifest_sha256": "ab7dba63171d81056a927d4cb6771b38354ccd28f252c126354c7af8ed2b9ac4",
+      "parquet_sha256": {
+        "field_lineage.parquet": "90966164e05d83178d894855ec7f26d5bb3b113ea7e0f2f9484dac52510fe9ad",
+        "page_dispositions.parquet": "066187978ff78351e75ebdcdfa5e7783b6fb3df1527b897dfb7febe6f73d7910",
+        "vote_health_overview_facts.parquet": "283617e8429ae4edcba3170036659714d0ba49f8f5d29b44505d206d12e9e329"
+      },
+      "pinned_readback": "passed",
+      "actual_common_dispatch": true,
+      "native_direct_normalizer_forbidden": true
+    },
+    {
+      "year": "2017/18",
+      "profile": "vote-health-estimates-2017-18-overview/v1",
+      "source_sha256": "3fc0cc6a193c232e9278389f42dbd9003cff03228ac3c83cbfe58452f5711604",
+      "source_bytes": 980866,
+      "facts": 25,
+      "page_dispositions": 95,
+      "source_unchanged": true,
+      "three_parquet_hashes_match_reference": true,
+      "repeat_manifest_sha256": "6873218ff466efe5e51ca7510feb6eb9b4a515c39e4b955df12b7d9f221c95a0",
+      "manifest_metadata_intentionally_versioned": true,
+      "old_manifest_sha256": "cf5e94a2cd56419e906d525924dce597acc1cbcb2260ceeb66415634f8f05826",
+      "parquet_sha256": {
+        "field_lineage.parquet": "eb463c229965c0908f622dd426bd3248f11a4a9399421e2dde4219526d4f9ed7",
+        "page_dispositions.parquet": "0d3b059a9ebf54c1cee0893e7b441477c9d46535918fdc46d22cedb2950d02bf",
+        "vote_health_overview_facts.parquet": "e894f79d5677b6c905e99ef3a419a90148055c3b0c77b7867447557ded62020a"
+      },
+      "pinned_readback": "passed",
+      "actual_common_dispatch": true,
+      "native_direct_normalizer_forbidden": true
+    }
+  ],
+  "public_source_operation_v1_unchanged": true,
+  "existing_native_reference_files_unchanged": true,
+  "new_source_acquisition": false,
+  "rights_or_analytical_policy_changed": false,
+  "full_phase_complete": false
+}

@@ -1,0 +1,169 @@
+{
+  "ISO_currency": "not_asserted",
+  "actual_exit": 0,
+  "all_frozen_pins_unchanged": true,
+  "canonical_admission": "not_performed",
+  "comparison_sha256": "c1de6952513799388c386ac5262503941e050895792212743006023045f30b75",
+  "exec_session": 35993,
+  "head": "8e75070de09da37b1509ed3f11615476277c67bc",
+  "kernel_lease_free": true,
+  "numeric_facts_emitted": 0,
+  "observed_period_types": {
+    "2018": "Actuals",
+    "2019": "Actuals",
+    "2020": "Actuals",
+    "2021": "Actuals",
+    "2022": "Estimated Actual",
+    "2023": "Main Estimates"
+  },
+  "period_start": "not_asserted_annual_or_permanent_and_multiyear_qualifiers_retained",
+  "publication": "not_performed",
+  "records": [
+    {
+      "canonical_facts_emitted": 0,
+      "explanation_shape": [
+        57,
+        4
+      ],
+      "intro_shape": [
+        14,
+        1
+      ],
+      "media": [
+        {
+          "bytes": 7414,
+          "member": "xl/media/image1.png",
+          "sha256": "89c81a9813ed4e398998a97be866a20c3c1e72602956bbfa8409c3e907c4aa06"
+        }
+      ],
+      "raw_shape": [
+        6569,
+        17
+      ],
+      "report_sha256": "980f2d9ad383f4fd998b8e7383655e8e8e1fbf3d354bfa2b2b4f91fb7cc1734c",
+      "row_occupancy": {
+        "blank": 0,
+        "last_eight_rows": [
+          {
+            "nonempty": true,
+            "row": 6562
+          },
+          {
+            "nonempty": true,
+            "row": 6563
+          },
+          {
+            "nonempty": true,
+            "row": 6564
+          },
+          {
+            "nonempty": true,
+            "row": 6565
+          },
+          {
+            "nonempty": true,
+            "row": 6566
+          },
+          {
+            "nonempty": true,
+            "row": 6567
+          },
+          {
+            "nonempty": true,
+            "row": 6568
+          },
+          {
+            "nonempty": true,
+            "row": 6569
+          }
+        ],
+        "occupied": 6568,
+        "rows_below_header": 6568
+      },
+      "source_bytes": 920766,
+      "source_bytes_unchanged": true,
+      "source_id": "treasury-historical-f7c67ac7f16216bb",
+      "source_sha256": "406f74344833b3f9b91c4c5c22bbbd5dd9484af0d25ab3be054367fd07026338"
+    },
+    {
+      "canonical_facts_emitted": 0,
+      "explanation_shape": [
+        46,
+        2
+      ],
+      "intro_shape": [
+        14,
+        1
+      ],
+      "media": [
+        {
+          "bytes": 7414,
+          "member": "xl/media/image1.png",
+          "sha256": "89c81a9813ed4e398998a97be866a20c3c1e72602956bbfa8409c3e907c4aa06"
+        }
+      ],
+      "raw_shape": [
+        1016,
+        8
+      ],
+      "report_sha256": "58c0df411b42cbe206a055c3fa9bd6d8b5c7563838cdd2e6287ee01a80d44d83",
+      "row_occupancy": {
+        "blank": 0,
+        "last_eight_rows": [
+          {
+            "nonempty": true,
+            "row": 1009
+          },
+          {
+            "nonempty": true,
+            "row": 1010
+          },
+          {
+            "nonempty": true,
+            "row": 1011
+          },
+          {
+            "nonempty": true,
+            "row": 1012
+          },
+          {
+            "nonempty": true,
+            "row": 1013
+          },
+          {
+            "nonempty": true,
+            "row": 1014
+          },
+          {
+            "nonempty": true,
+            "row": 1015
+          },
+          {
+            "nonempty": true,
+            "row": 1016
+          }
+        ],
+        "occupied": 1015,
+        "rows_below_header": 1015
+      },
+      "source_bytes": 105054,
+      "source_bytes_unchanged": true,
+      "source_id": "treasury-historical-57678df8ac69094d",
+      "source_sha256": "6f395e69b5ee2405f4d9e09455402b07df7c99cce0803152db1dba654333bb92"
+    }
+  ],
+  "release_page_transport": "HTTP403_not_retried",
+  "rights": "not_adjudicated",
+  "rights_notice_scope": "Bounded text/structure and inert media digests only; not a complete legal/media-rights review",
+  "scope": "Observed native structure/definitions only; shared literal profiles have not yet been extended or qualified for2022.",
+  "shared_definition_match": {
+    "expenditure": "All8shared definition cells equal; B3edition statement separately observed",
+    "revenue": "All4non-B3 shared definition cells equal; B3edition statement differs as expected"
+  },
+  "source_count": 2,
+  "source_profiles": "not_implemented",
+  "status": "inspected_native_observations_only",
+  "summary_sha256": "382f1af6f32ba08c15dafe17b4014adfd6961fab001e6e248907d8a4b91ec289",
+  "tree": "931caf8ab0dc0a584d2e63de1c415bbbb4169b7b",
+  "unit": "literal $000, native definition states amount in thousands"
+}

@@ -1,0 +1,26 @@
+{
+  "capture_reconciliation": {
+    "capture_manifest": "vote-health-estimates-overview-2013-14-capture-final.json",
+    "matched": 1
+  },
+  "cutoff": "2026-10-04",
+  "observed_at": "2026-10-04T00:04:07Z",
+  "record_count": 1,
+  "records": [
+    {
+      "cutoff": "2026-10-04",
+      "disposition": "captured",
+      "family": "treasury_vote_health_document",
+      "license": "CC-BY-4.0",
+      "media_type": "application/pdf",
+      "object_sha256": "f29271aad328bad5fcfdcf655c61dc6c59600a20666860c037ceb478bff681f1",
+      "observed_at": "2026-10-04T00:04:07Z",
+      "reason": "bounded capture with fixity and WARC evidence",
+      "rights_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+      "source_id": "treasury-vote-health-pdf-2013-14-estimates",
+      "title": "Vote Health - The Estimates of Appropriations 2013/14",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2013-05/est13health.pdf"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-source-census/v1"
+}

@@ -19,7 +19,10 @@ from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     preserved_only,
 )
 from archive_govt_nz.domains.health_appropriations.budget import _extract, _headers
-from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
+from archive_govt_nz.domains.health_appropriations.formats import (
+    inspected_workbook,
+    inventory_workbook,
+)
 from archive_govt_nz.domains.health_appropriations.source_dimensions import (
     budget_source_dimensions,
 )
@@ -49,25 +52,22 @@ class BudgetExpenditureAdapter:
 
     def matches_layout(self, bronze: bytes) -> bool:
         """Recognize only the named-column expenditure profile."""
-        if len(bronze) > _MAX_SOURCE_BYTES:
+        if len(bronze) > _MAX_SOURCE_BYTES or self.source_vintage in {
+            "Budget-2020",
+            "Budget-2021",
+            "Budget-2022",
+            "Budget-2023",
+            "Budget-2024",
+        }:
             return False
         try:
-            inventory_workbook(BytesIO(bronze))
-            workbook = load_workbook(
-                BytesIO(bronze), read_only=False, data_only=False, keep_links=True
-            )
+            with inspected_workbook(bronze) as inspection:
+                if _SHEET not in inspection.workbook.sheetnames:
+                    return False
+                _headers(inspection.workbook[_SHEET])
+                return True
         except BadZipFile, OSError, ValueError, KeyError, TypeError, EOFError:
             return False
-        try:
-            if _SHEET not in workbook.sheetnames:
-                return False
-            _headers(workbook[_SHEET])
-        except ValueError:
-            return False
-        else:
-            return True
-        finally:
-            workbook.close()
 
     def extract(self, bronze: bytes, *, source_sha256: str) -> AdapterOutput:
         """Return typed records, field lineage, and losses from the profile."""
@@ -76,6 +76,17 @@ class BudgetExpenditureAdapter:
         actual = hashlib.sha256(bronze).hexdigest()
         if actual != source_sha256:
             raise ValueError(_SOURCE_HASH_ERROR)
+        if self.source_vintage in {
+            "Budget-2020",
+            "Budget-2021",
+            "Budget-2022",
+            "Budget-2023",
+            "Budget-2024",
+        }:
+            return preserved_only(
+                source_coordinate="bronze:sha256:" + actual,
+                reason=f"budget_{self.source_vintage.removeprefix('Budget-')}_requires_pinned_source_profile",
+            )
         context = source_context(
             source_sha256, self.source_locator, self.source_vintage, self.observed_at
         )

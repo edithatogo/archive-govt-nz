@@ -1,0 +1,234 @@
+{
+  "actual_source_native": {
+    "all_other_values": "unchanged",
+    "changed_fields": [
+      "/methodology/lci",
+      "/methodology/ppi",
+      "/methodology/vintage_limit"
+    ],
+    "head": "4126170a0c8b40876a949149d2afd46296546a89",
+    "inputs": "unchanged",
+    "network": "denied",
+    "objects": 14,
+    "previous_report_sha256": "bbd251a4c4d60135bbced079a94dcfc6ebb69e993fb486c6e1290b232a00c746",
+    "receipt": "component-index-source-native-20261018.json",
+    "report_sha256": "fccc38505c0983ff60c12371e714f4233e54c84efa7c52b0b04e7d31c62fe8e4",
+    "runs": 2
+  },
+  "analytical_selection": "not_selected",
+  "base_commit": "31ba7ee64b0ee6bef4287191c8dd403be12e00bd",
+  "current_full_assurance": "component-index-source-current-assurance-20261018.json",
+  "current_native_comparison": "component-index-source-current-native-20261018.json",
+  "delivery": "component-index-source-delivery-20261018.json",
+  "documentation_scan": {
+    "cause": "descriptive summary label matched entropy detector; not a credential",
+    "exit_code": 1,
+    "field": "/methodology/ppi",
+    "head": "12d65559b7126f0b9e6b1d6da37de9cff52009f3",
+    "new_candidate_count": 1,
+    "scanner_policy": "unchanged; no exception or baseline change",
+    "type": "Base64 High Entropy String",
+    "value_sha1": "408c19f1e761038e8781b33b2128cb11e87fd7b0"
+  },
+  "focused": {
+    "log_sha256": "7635f5a29695d48b2e88981df49e2a2d9534af2c94628113e5f073cabcf03680",
+    "passed": 22,
+    "scope": "15component contracts plus7existing CPI contracts; actual-style escaped link and wrong-host refusal",
+    "seconds": 2.4
+  },
+  "full_alphanumeric_series_identifiers": "not_inferred; table and dimension identities explicit",
+  "full_harness": {
+    "coverage_floor": 80,
+    "exit_code": 0,
+    "head": "69afe04bd15bd3f0c2ecc5e012658d5819e6f703",
+    "log_sha256": "9aabb76c560d263146d373992673643b366c44c61a20c6b77f1279c278c922f2",
+    "post_test_gates": "passed",
+    "receipt": "component-index-source-assurance-final-20261018.json",
+    "seconds": 261.09,
+    "tests_passed": 7916,
+    "tests_skipped": 12,
+    "tree": "12528659a7c1ea846b53471689b69062f311b43d"
+  },
+  "native_attempt_1": {
+    "cause": "embedded PageBlocks JSON slash escapes were not decoded before Infoshare link comparison",
+    "exit_code": 1,
+    "head": "ced56bf03d2ecf6b59ff8a2f2a5735813147643d",
+    "inputs": "unchanged; failed native-proof-1 retained",
+    "native_tmpdir": "not set; recipe uses only explicit paths",
+    "scope": "first retained-source inspection failed before full harness"
+  },
+  "preservation": "immutable originals/query configs and WARC responses retained outside Git; no cleanup",
+  "preservation_objects": 14,
+  "prior_full_harness": {
+    "coverage_floor": 80,
+    "exit_code": 0,
+    "head": "c3e87580d9df984df5b344d11cf0444c41e67090",
+    "log_sha256": "2485307c081474852c270559a1af1ae522577b19edf99e8271785657f27b98c4",
+    "post_test_gates": "passed",
+    "receipt": "component-index-source-assurance-20261018.json",
+    "seconds": 322.55,
+    "tests_passed": 7916,
+    "tests_skipped": 12
+  },
+  "producer_summary_remedy": "three summaries now readable prose; native3 confirms unchanged facts and original bytes; corrected full2 passed without scanner policy changes",
+  "publication": "not_performed",
+  "queries": [
+    {
+      "bytes": 6311,
+      "filename": "LCI358301_20261018_043738_13.tqx",
+      "scope": "publisher_generated_selection_configuration_not_numeric_observations",
+      "sha256": "d207c87521eda54f0ab545c86334283b875a456a1508fb81e7fa5b8559df9896",
+      "transport": "browser_download_no_WARC_claim"
+    },
+    {
+      "bytes": 5926,
+      "filename": "PPI387801_20261018_044726_51.tqx",
+      "scope": "publisher_generated_selection_configuration_not_numeric_observations",
+      "sha256": "2a40ab6d43ed74e048d118d5c9636e329ae9300a527450ada2d9fbfa7000dd3a",
+      "transport": "browser_download_no_WARC_claim"
+    }
+  ],
+  "remaining": [
+    "eligible Silver normalization and source-family coverage",
+    "resource rights decisions and analytical policies",
+    "full alphanumeric references if a later ExportDirect route requires them",
+    "historical reform, break and reweighting qualification",
+    "broader track gates remain open"
+  ],
+  "report": "component-index-source-evidence-report-20261018.json",
+  "rights": "not_evaluated; pinned copyright observation and resource ownership do not adjudicate eligibility",
+  "rights_observation": "publisher default, resource ownership and specific-statement exceptions retained; eligibility unadjudicated",
+  "schema_version": "archive-govt-nz.health-component-index-source-checkpoint/v1",
+  "scope": "source_census_only_no_analytical_admission",
+  "series": {
+    "lci": {
+      "base": "2009Q2=1000",
+      "first": "1992Q4",
+      "first_numeric": "2009Q2",
+      "last": "2026Q2",
+      "missing": 66,
+      "numeric": 69,
+      "periods": 135,
+      "scope": "Central Government; Health Care and Social Assistance; All Salary and Wage Rates",
+      "selector": {
+        "Labour Cost": "3",
+        "Observations": "LCI025AC"
+      },
+      "table": "LCI025AA",
+      "table_file": "LCI358301.px",
+      "unit": "Index; Magnitude Units",
+      "updated_literal": "05 August 2026 10:45am"
+    },
+    "ppi": {
+      "base": "2010Q4=1000",
+      "first": "1994Q2",
+      "first_numeric": "1996Q3",
+      "last": "2026Q2",
+      "missing": 9,
+      "numeric": 120,
+      "periods": 129,
+      "precision": "native decimal tokens retained; TQX Decimals0 is display configuration",
+      "scope": "Inputs; ANZSIC06; NZSIOC level3; Health Care and Social Assistance; not central-government-only",
+      "selector": {
+        "Observations": "PPI021CC"
+      },
+      "table": "PPI021AA",
+      "table_file": "PPI387801.px",
+      "unit": "Index; Magnitude Units",
+      "updated_literal": "19 August 2026 10:45am"
+    }
+  },
+  "sources": [
+    {
+      "admission": "not_performed",
+      "body_bytes": 2719,
+      "body_sha256": "4a525c427a6cd403d03e21b0ed3db1325e3d92d2c44e05bd18a76ff77a832d01",
+      "browser_credentials_transferred": false,
+      "browser_export_equal": true,
+      "content_type": "text/csv",
+      "final_url": "https://infoshare.stats.govt.nz/FileDownload.aspx?fileName=LCI358301_20261018_043719_82.csv&contentType=text%2fcsv&AspxAutoDetectCookieSupport=1",
+      "observed_at": "2026-10-17T15:42:27.336809+00:00",
+      "requested_url": "https://infoshare.stats.govt.nz/FileDownload.aspx?fileName=LCI358301_20261018_043719_82.csv&contentType=text%2fcsv",
+      "response_binding": "verified",
+      "rights": "not_evaluated",
+      "role": "lci-public-get-1",
+      "scope": "external_discovery_capture",
+      "status": "captured",
+      "status_code": 200,
+      "warc_bytes": 3297,
+      "warc_sha256": "1c6d99623630a830706c51787abe51ecf42b012b7d1edb833b4580aa1c936eb0"
+    },
+    {
+      "admission": "not_performed",
+      "body_bytes": 3470,
+      "body_sha256": "159708fcf183ec24d160483c5f16bf2dd9ecc9f4f98cfe5e28de56870d36573b",
+      "browser_credentials_transferred": false,
+      "browser_export_equal": true,
+      "content_type": "text/csv",
+      "final_url": "https://infoshare.stats.govt.nz/FileDownload.aspx?fileName=PPI387801_20261018_044701_27.csv&contentType=text%2fcsv&AspxAutoDetectCookieSupport=1",
+      "observed_at": "2026-10-17T15:49:30.259065+00:00",
+      "requested_url": "https://infoshare.stats.govt.nz/FileDownload.aspx?fileName=PPI387801_20261018_044701_27.csv&contentType=text%2fcsv",
+      "response_binding": "verified",
+      "rights": "not_evaluated",
+      "role": "ppi-public-get-1",
+      "scope": "external_discovery_capture",
+      "status": "captured",
+      "status_code": 200,
+      "warc_bytes": 4048,
+      "warc_sha256": "fd3c66ae46cfb9c2aa3d13af5de7806a7e44789b596e1335c7530cc3b36b1da3"
+    },
+    {
+      "admission": "not_performed",
+      "body_bytes": 76512,
+      "body_sha256": "c6232ad690d16b361704288997ab7265c12498c8d0401c95e82f204a7e913dc1",
+      "content_type": "text/html; charset=utf-8",
+      "final_url": "https://www.stats.govt.nz/tools/stats-infoshare/",
+      "observed_at": "2026-10-17T15:49:48.226324+00:00",
+      "requested_url": "https://www.stats.govt.nz/tools/stats-infoshare/",
+      "response_binding": "verified",
+      "rights": "not_evaluated",
+      "role": "infoshare-owner-1",
+      "scope": "external_discovery_capture",
+      "status": "captured",
+      "status_code": 200,
+      "warc_bytes": 77131,
+      "warc_sha256": "ced51ee553de84735f2c9c815b3a7af3561ef9b120f6cb99d3ae0aa4023334a6"
+    },
+    {
+      "admission": "not_performed",
+      "body_bytes": 66343,
+      "body_sha256": "dc62202c3ce939f11a9283cf0e8814535317031e8b67981819341ba25ad4efe7",
+      "content_type": "text/html; charset=utf-8",
+      "final_url": "https://datainfoplus.stats.govt.nz/Item/nz.govt.stats/9007195c-8dc3-4dfb-b5da-1b12c32e90ac/66",
+      "observed_at": "2026-10-17T15:49:48.711021+00:00",
+      "requested_url": "https://datainfoplus.stats.govt.nz/Item/nz.govt.stats/9007195c-8dc3-4dfb-b5da-1b12c32e90ac/66",
+      "response_binding": "verified",
+      "rights": "not_evaluated",
+      "role": "lci-method-v66-1",
+      "scope": "external_discovery_capture",
+      "status": "captured",
+      "status_code": 200,
+      "warc_bytes": 66960,
+      "warc_sha256": "257f32e1271b4d8bf749ca36cad3d1dcb93fb3f7cf315b9517386aa662362ad3"
+    },
+    {
+      "admission": "not_performed",
+      "body_bytes": 53747,
+      "body_sha256": "28e15f19e4fcaf9e411e5c0f9b2adcc2cd1d47da781f71cb387c680253d6451e",
+      "content_type": "text/html; charset=utf-8",
+      "final_url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/66006ba0-02ee-4c5e-9b31-9c093ba8d84f/3",
+      "observed_at": "2026-10-17T15:49:49.060616+00:00",
+      "requested_url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/66006ba0-02ee-4c5e-9b31-9c093ba8d84f/3",
+      "response_binding": "verified",
+      "rights": "not_evaluated",
+      "role": "ppi-method-v3-1",
+      "scope": "external_discovery_capture",
+      "status": "captured",
+      "status_code": 200,
+      "warc_bytes": 54363,
+      "warc_sha256": "dc71e228a1c565482f575cf85918b4d66fb5d9259ce0e84052dde2237481b3a3"
+    }
+  ],
+  "status": "source_cohort_delivered",
+  "status_flags": "ShowNonFinalFlags requested; absent flags remain unflagged_unknown, not FINAL"
+}

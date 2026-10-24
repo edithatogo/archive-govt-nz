@@ -1,0 +1,26 @@
+{
+  "capture_reconciliation": {
+    "capture_manifest": "official-capture-2026-10-03-health-complete.json",
+    "matched": 1
+  },
+  "cutoff": "2026-10-05",
+  "observed_at": "2026-10-05",
+  "record_count": 1,
+  "records": [
+    {
+      "cutoff": "2026-10-03",
+      "disposition": "captured",
+      "family": "treasury_vote_health_document",
+      "license": "CC-BY-4.0",
+      "media_type": "application/pdf",
+      "object_sha256": "c997ffecb631e4dfd0ffd8a1e620585b6b963df11f94164adb2ac02cfa391b2e",
+      "observed_at": "2026-08-29T09:00:17Z",
+      "reason": "Existing official Treasury capture receipt reconciled to the pinned source object and WARC; no recapture performed. Selected Estimates overview profile only.",
+      "rights_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+      "source_id": "treasury-vote-health-pdf-6941bba9f5f094ca",
+      "title": "Vote Health - Health Sector - The Estimates of Appropriations 2016/17",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2016-05/est16-v6-health.pdf"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-source-census/v1"
+}

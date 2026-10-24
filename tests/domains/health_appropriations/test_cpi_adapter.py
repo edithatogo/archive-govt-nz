@@ -6,11 +6,16 @@ import hashlib
 from decimal import Decimal
 from typing import TYPE_CHECKING, Never
 
+import pyarrow as pa
+import pyarrow.parquet as pq
 import pytest
 
 if TYPE_CHECKING:
+    from pathlib import Path
+
     from _pytest.monkeypatch import MonkeyPatch
 
+from archive_govt_nz.domains.health_appropriations import cpi
 from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
     dispatch_bronze,
 )
@@ -21,6 +26,77 @@ from archive_govt_nz.domains.health_appropriations.cpi_adapter import (
 
 HEADER = "Series_reference,Period,Data_value,STATUS,UNITS,Subject,Group,Series_title_1,Series_title_2\n"
 META = ",FINAL,Index,CPI,CPI All Groups for New Zealand,All groups,NA\n"
+
+
+@pytest.mark.parametrize(
+    ("vintage", "version"),
+    [("2026-Q2", "1.0.0"), ("Stats-NZ-CPI-2026-Q2", "1.1.0")],
+)
+def test_versioned_cpi_registration_preserves_native_vintage_literal(
+    tmp_path: Path,
+    vintage: str,
+    version: str,
+) -> None:
+    bronze = (
+        HEADER + "CPIQ.SE9A,2026.06,123.4" + META + "OTHER,2026.06,10" + META
+    ).encode()
+    digest = hashlib.sha256(bronze).hexdigest()
+    source = tmp_path / "source.csv"
+    source.write_bytes(bronze)
+    native = tmp_path / "native"
+    locator = "https://example.test/cpi.csv"
+    observed = "2026-08-31T00:00:00Z"
+    cpi.normalize_cpi(
+        source,
+        native,
+        expected_sha256=digest,
+        source_locator=locator,
+        source_vintage=vintage,
+        observed_at=observed,
+        dry_run=False,
+    )
+    registration = cpi_registration(
+        source_locator=locator, source_vintage=vintage, observed_at=observed
+    )
+    result = dispatch_bronze(
+        bronze,
+        source_sha256=digest,
+        media_type="text/csv",
+        registrations=(registration,),
+    )
+    assert result.selection.status == "selected"
+    assert result.selection.adapter_version == version
+    assert all(row["source_vintage"] == vintage for row in result.output.records)
+    assert (
+        pa.Table.from_pylist(list(result.output.records), cpi.FACT_SCHEMA).to_pylist()
+        == pq.read_table(native / "cpi_facts.parquet").to_pylist()
+    )
+    assert result.output.dimensions
+    assert result.output.dimension_links
+    assert all(
+        mapping.vintage == vintage and mapping.target is None
+        for mapping in result.output.dimensions
+    )
+    assert source.read_bytes() == bronze
+
+
+def test_legacy_cpi_adapter_does_not_implicitly_accept_recorded_alias() -> None:
+    bronze = (HEADER + "CPIQ.SE9A,2026.06,123.4" + META).encode()
+    adapter = CpiAdapter("source", "Stats-NZ-CPI-2026-Q2", "2026-08-31T00:00:00Z")
+    assert not adapter.matches_layout(bronze)
+    unrelated = cpi_registration(
+        source_locator="source",
+        source_vintage="Stats-NZ-CPI-2026-Q3",
+        observed_at="2026-08-31T00:00:00Z",
+    )
+    result = dispatch_bronze(
+        bronze,
+        source_sha256=hashlib.sha256(bronze).hexdigest(),
+        media_type="text/csv",
+        registrations=(unrelated,),
+    )
+    assert result.selection.status == "preserved_only"
+    assert not result.output.records
 
 
 def test_dispatch_extracts_exact_series_and_accounts_for_other_rows() -> None:

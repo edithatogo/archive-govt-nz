@@ -1,0 +1,25 @@
+{
+  "authority": "donor-historical-dispositions-20260927.json",
+  "authority_sha256": "547d901ec8c4b2a467351d1a69ba6391d728b699ff05013688c3fa4de6a73ea0",
+  "clarification": "Recent bounded-source receipts inherited stale unresolved-differences wording. Preserve original snapshots; no replacement/publication approval is inferred, and Phase4 is not reopened.",
+  "comparison_counts": {
+    "exact_match": 76,
+    "source_only": 29,
+    "value_difference": 1
+  },
+  "current_validation": {
+    "checked_head": "c4bfb94287d1b4d607108734301f628f2c930291",
+    "local_tests_passed": 8246,
+    "merge": "66d67117326c85fe29d726ac0a8ed4a38eb6e793",
+    "original_stages_all_platforms": 32,
+    "parity_suites_passed": 9,
+    "pr": 743
+  },
+  "disposition": "accepted_retain_both_no_replacement",
+  "entries": 30,
+  "publication_approved": false,
+  "repair_approval": "not_asserted",
+  "replacement_values": null,
+  "schema_version": "archive-govt-nz.health-donor-status-clarification/v1",
+  "status": "accepted_retain_both_not_open_parity_blocker"
+}

@@ -1,0 +1,330 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-canonical-input-recovery-v11.schema.json",
+  "title": "Admitted complete 2010\u20132019 BIFF8 canonical input recovery receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "scope",
+    "definitions_sha256",
+    "source_inputs",
+    "profiles",
+    "retained_derivatives_consumed",
+    "observation_context",
+    "originals_unchanged",
+    "rights",
+    "publication"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-canonical-input-recovery/v11"
+    },
+    "status": {
+      "const": "written_local"
+    },
+    "scope": {
+      "const": "pinned_originals_to_fresh_raw_and_canonical"
+    },
+    "definitions_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "source_inputs": {
+      "type": "object",
+      "minProperties": 25,
+      "maxProperties": 25,
+      "propertyNames": {
+        "pattern": "^[a-z]+-[0-9]{4}$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/source_binding"
+      },
+      "required": [
+        "historical-2024",
+        "historical-2025",
+        "budget-2025",
+        "budget-2026",
+        "revenue-2026",
+        "biffbudget-2015",
+        "biffrevenue-2015",
+        "biffbudget-2016",
+        "biffrevenue-2016",
+        "biffbudget-2017",
+        "biffrevenue-2017",
+        "biffbudget-2018",
+        "biffrevenue-2018",
+        "biffbudget-2019",
+        "biffrevenue-2019",
+        "biffbudget-2014",
+        "biffrevenue-2014",
+        "biffbudget-2013",
+        "biffrevenue-2013",
+        "biffbudget-2012",
+        "biffrevenue-2012",
+        "biffbudget-2011",
+        "biffrevenue-2011",
+        "biffbudget-2010",
+        "biffrevenue-2010"
+      ]
+    },
+    "profiles": {
+      "type": "object",
+      "minProperties": 25,
+      "maxProperties": 25,
+      "propertyNames": {
+        "pattern": "^[a-z]+-[0-9]{4}$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/profile"
+      },
+      "required": [
+        "historical-2024",
+        "historical-2025",
+        "budget-2025",
+        "budget-2026",
+        "revenue-2026",
+        "biffbudget-2015",
+        "biffrevenue-2015",
+        "biffbudget-2016",
+        "biffrevenue-2016",
+        "biffbudget-2017",
+        "biffrevenue-2017",
+        "biffbudget-2018",
+        "biffrevenue-2018",
+        "biffbudget-2019",
+        "biffrevenue-2019",
+        "biffbudget-2014",
+        "biffrevenue-2014",
+        "biffbudget-2013",
+        "biffrevenue-2013",
+        "biffbudget-2012",
+        "biffrevenue-2012",
+        "biffbudget-2011",
+        "biffrevenue-2011",
+        "biffbudget-2010",
+        "biffrevenue-2010"
+      ]
+    },
+    "retained_derivatives_consumed": {
+      "const": false
+    },
+    "observation_context": {
+      "const": "exact_prior_local_tokens_replayed_no_new_capture_attestation"
+    },
+    "originals_unchanged": {
+      "const": true
+    },
+    "rights": {
+      "const": "not_evaluated"
+    },
+    "publication": {
+      "const": "not_performed"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 134217728
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 16,
+      "propertyNames": {
+        "pattern": "^[A-Za-z0-9_-]+\\.(json|jsonl|parquet)$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/binding"
+      }
+    },
+    "definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "kind",
+        "sha256",
+        "source_locator",
+        "source_vintage",
+        "observation_token",
+        "observation_id"
+      ],
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z]+-[0-9]{4}$"
+        },
+        "kind": {
+          "enum": [
+            "historical",
+            "budget",
+            "revenue",
+            "biff8_budget",
+            "biff8_revenue"
+          ]
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "source_locator": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "source_vintage": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "observation_token": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "observation_id": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "definition",
+        "raw_manifest_sha256",
+        "canonical_marker_sha256",
+        "raw_inventory",
+        "canonical_inventory"
+      ],
+      "properties": {
+        "definition": {
+          "$ref": "#/$defs/definition"
+        },
+        "raw_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "canonical_marker_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "raw_inventory": {
+          "$ref": "#/$defs/inventory"
+        },
+        "canonical_inventory": {
+          "$ref": "#/$defs/inventory"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "definition": {
+                "properties": {
+                  "kind": {
+                    "const": "biff8_budget"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "raw_inventory": {
+                "required": [
+                  "MANIFEST.json",
+                  "budget_facts.parquet",
+                  "field_lineage.parquet",
+                  "row_dispositions.parquet",
+                  "numeric_evidence.parquet"
+                ],
+                "maxProperties": 5
+              },
+              "canonical_inventory": {
+                "required": [
+                  "MANIFEST.json",
+                  "appropriation_fact.parquet",
+                  "field_lineage.parquet",
+                  "numeric_evidence.parquet"
+                ],
+                "maxProperties": 4
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "definition": {
+                "properties": {
+                  "kind": {
+                    "const": "biff8_revenue"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "raw_inventory": {
+                "required": [
+                  "MANIFEST.json",
+                  "budget_facts.parquet",
+                  "field_lineage.parquet",
+                  "row_dispositions.parquet",
+                  "numeric_evidence.parquet"
+                ],
+                "maxProperties": 5
+              },
+              "canonical_inventory": {
+                "required": [
+                  "MANIFEST.json",
+                  "revenue_fact.parquet",
+                  "field_lineage.parquet",
+                  "numeric_evidence.parquet"
+                ],
+                "maxProperties": 4
+              }
+            }
+          }
+        }
+      ]
+    },
+    "source_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 67108864
+        }
+      }
+    }
+  }
+}

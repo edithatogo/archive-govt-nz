@@ -1,0 +1,27 @@
+{
+  "all_checks": "SUCCESS",
+  "clean_before_cleanup": true,
+  "equal_trees": true,
+  "head": "f4c2b8330606cf97e8747ab3e9b4d3361baabe70",
+  "head_and_merge_ancestors": true,
+  "local_topic_deleted": true,
+  "merge": "bde4f72187b614391a4da08f077bc934ef9e6c83",
+  "merged_at": "2026-10-18T05:16:16Z",
+  "origin_main": "bde4f72187b614391a4da08f077bc934ef9e6c83",
+  "pr": 717,
+  "primary_retained": true,
+  "remote_topic_absent": true,
+  "required_checks": [
+    "Assurance (ubuntu-latest)",
+    "Assurance (macos-latest)",
+    "Assurance (windows-latest)",
+    "analyze",
+    "lint",
+    "CodeQL",
+    "codecov/patch"
+  ],
+  "review_threads_resolved": 1,
+  "status": "merged_and_topic_refs_pruned",
+  "tree": "fde19483b5a7158f37559152902b882cac118c60",
+  "unique_commits": 0
+}

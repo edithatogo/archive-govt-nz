@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import sqlite3
+from contextlib import closing
 from pathlib import Path
 from typing import Self
 
@@ -31,7 +32,7 @@ def _database(path: Path, *, omit: str | None = None) -> None:
         "historical_health_spending": 'CREATE TABLE historical_health_spending ("Year" INTEGER, "HealthSpendingMillions" REAL)',
         "recent_health_appropriations": 'CREATE TABLE recent_health_appropriations ("Year" INTEGER, "Department" TEXT, "AppropriationName" TEXT, "FunctionalClassification" TEXT, "AmountThousands" INTEGER, "AmountType" TEXT, "PortfolioName" TEXT)',
     }
-    with sqlite3.connect(path) as connection:
+    with closing(sqlite3.connect(path)) as connection, connection:
         for table, statement in definitions.items():
             if table == omit:
                 continue

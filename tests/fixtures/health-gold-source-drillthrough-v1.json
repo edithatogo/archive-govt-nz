@@ -1,0 +1,34 @@
+{
+  "schema_version": "archive-govt-nz.health-gold-source-drillthrough/v1",
+  "scope": "source_manifest_field_references_only",
+  "rights": "not_evaluated",
+  "publication": "not_performed",
+  "locator_semantics": "recorded_reference_only_no_access_or_rights_claim",
+  "packages": [
+    {
+      "package_id": "urn:archive-govt-nz:health:gold:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "profile": "fiscal_analytical",
+      "manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "references": [
+        {
+          "field_path": "/input_receipts/cpi_benchmark/cpi_input/source_object_sha256",
+          "kind": "sha256",
+          "value": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        },
+        {
+          "field_path": "/input_receipts/cpi_benchmark/cpi_definition_url",
+          "kind": "recorded_https_locator",
+          "value": "https://example.govt.nz/series"
+        }
+      ],
+      "no_reference_reason": null
+    },
+    {
+      "package_id": "urn:archive-govt-nz:health:gold:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "profile": "budget_comparison",
+      "manifest_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "references": [],
+      "no_reference_reason": "source_reference_fields_absent_from_package_manifest"
+    }
+  ]
+}

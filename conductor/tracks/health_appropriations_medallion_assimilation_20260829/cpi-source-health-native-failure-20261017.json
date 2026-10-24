@@ -1,0 +1,16 @@
+{
+  "failure": "existing output selected as prior report input; JSONDecodeError before intended refusal",
+  "fix": "v2 default prior report independently selects retained baseline; v1 unchanged",
+  "focused_recovery": {
+    "passed": 70,
+    "seconds": 7.66
+  },
+  "full_launched": false,
+  "head": "e30780a9cf26eeb6292a6a2f6d8c2819a5ae0634",
+  "log_sha256": "6834a6996d9543e2c2cb0d20ca9ffc3e5e2052dd53ec4aeaee9184895938f015",
+  "native_exit": 1,
+  "output_preserved": true,
+  "partial_scope": "first source-v2 generation and identical replay passed; second fresh repeat and final readback did not execute",
+  "status": "failed_preserved",
+  "unit_regression_observation": "native failure is the red evidence; preliminary unit command observed fixed code and passed, not a separate red result"
+}

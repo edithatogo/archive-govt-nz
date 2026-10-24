@@ -9,7 +9,7 @@ from typing import Any
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
-from hypothesis import given
+from hypothesis import given, settings
 from hypothesis import strategies as st
 
 from archive_govt_nz.schemas.health_recordset_normalization import (
@@ -137,6 +137,7 @@ def test_nullable_and_precision_boundaries(
     assert normalize_rows("fiscal_context_fact", [row]).num_rows == 1
 
 
+@settings(deadline=None)
 @given(st.integers(min_value=-(10**18 - 1), max_value=10**18 - 1))
 def test_decimal_context_cannot_round_values(coefficient: int) -> None:
     """Caller precision and traps do not affect exact conversion."""

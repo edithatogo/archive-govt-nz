@@ -109,6 +109,53 @@ def _family(report: _Review, name: str) -> dict:
     return value
 
 
+def _vote_edition_years(records: list[dict]) -> tuple[set[int], set[int]]:
+    """Select appropriation editions, excluding supporting-information volumes."""
+    estimates: set[int] = set()
+    supplementary: set[int] = set()
+    for row in records:
+        title = row.get("title", "").casefold()
+        if (
+            row.get("family") != "treasury_vote_health_document"
+            or row.get("disposition") != "captured"
+            or "estimates" not in title
+            or any(
+                label in title
+                for label in (
+                    "performance information",
+                    "information supporting",
+                    "estimates supporting information",
+                )
+            )
+        ):
+            continue
+        year = _fiscal_year(title)
+        if "supplementary" in title:
+            supplementary.add(year)
+        else:
+            estimates.add(year)
+    return estimates, supplementary
+
+
+def _published_vote_editions(records: list[dict]) -> dict[str, dict[int, set[str]]]:
+    """Retain all publisher locators under their native fiscal-start identity."""
+    editions: dict[str, dict[int, set[str]]] = {"estimates": {}, "supplementary": {}}
+    for row in records:
+        title = row.get("title", "")
+        if (
+            row.get("family") != "treasury_vote_health"
+            or "Estimates of Appropriations" not in title
+            or any(
+                label in title
+                for label in ("Performance Information", "Information Supporting")
+            )
+        ):
+            continue
+        group = "supplementary" if "Supplementary" in title else "estimates"
+        editions[group].setdefault(_fiscal_year(title), set()).add(row["url"])
+    return editions
+
+
 def _check_vote_history(report: _Review, records: list[dict]) -> None:
     family = _family(report, "vote_health")
     docs = [
@@ -117,20 +164,7 @@ def _check_vote_history(report: _Review, records: list[dict]) -> None:
         if row.get("family") == "treasury_vote_health_document"
         and row.get("disposition") == "captured"
     ]
-    estimates: set[int] = set()
-    supplementary: set[int] = set()
-    for row in docs:
-        title = row.get("title", "")
-        if "Estimates of Appropriations" not in title:
-            continue
-        year = _fiscal_year(title)
-        if "Supplementary" in title:
-            supplementary.add(year)
-        elif (
-            "Performance Information" not in title
-            and "Information Supporting" not in title
-        ):
-            estimates.add(year)
+    estimates, supplementary = _vote_edition_years(records)
     if len(docs) != family["captured_documents"]:
         msg = "Vote Health captured count mismatch"
         raise ValueError(msg)
@@ -140,15 +174,18 @@ def _check_vote_history(report: _Review, records: list[dict]) -> None:
     if supplementary != set(family["supplementary_years"]):
         msg = "Vote Health Supplementary coverage mismatch"
         raise ValueError(msg)
-    years = set(range(1998, 2027))
-    if years - estimates != set(family["missing_estimates_years"]):
-        msg = "Vote Health missing Estimates mismatch"
-        raise ValueError(msg)
-    if years - supplementary != set(family["missing_supplementary_years"]):
-        msg = "Vote Health missing Supplementary mismatch"
-        raise ValueError(msg)
-    _check_discovered(family, "discovered_estimates_urls", years - estimates)
-    _check_discovered(family, "discovered_supplementary_urls", years - supplementary)
+    published = _published_vote_editions(records)
+    for group, captured in (("estimates", estimates), ("supplementary", supplementary)):
+        missing = set(published[group]) - captured
+        if missing != set(family[f"missing_{group}_years"]):
+            msg = f"Vote Health missing {group.title()} mismatch"
+            raise ValueError(msg)
+        key = f"discovered_{group}_urls"
+        _check_discovered(family, key, missing)
+        for year, url in family[key].items():
+            if url not in published[group][int(year)]:
+                msg = "invalid discovered Vote Health locator"
+                raise ValueError(msg)
 
 
 def _check_discovered(family: dict, key: str, missing: set[int]) -> None:

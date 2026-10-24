@@ -23,6 +23,7 @@ from archive_govt_nz.domains.health_appropriations.workbook_common import source
 _MEDIA_TYPE = "text/csv"
 _HASH_ERROR = "source_hash_mismatch"
 _VINTAGE = "2026-Q2"
+RECORDED_VINTAGE = "Stats-NZ-CPI-2026-Q2"
 
 
 @dataclass(frozen=True, slots=True)
@@ -33,10 +34,13 @@ class CpiAdapter:
     source_vintage: str
     observed_at: str
 
+    def _supported_vintage(self) -> bool:
+        return self.source_vintage == _VINTAGE
+
     def matches_layout(self, bronze: bytes) -> bool:
         """Recognize the bounded layout only when its selected series is valid."""
         if (
-            self.source_vintage != _VINTAGE
+            not self._supported_vintage()
             or len(bronze) > cpi.MAX_BYTES
             or not cpi.is_supported_bronze_layout(bronze)
         ):
@@ -104,14 +108,25 @@ class CpiAdapter:
         )
 
 
+@dataclass(frozen=True, slots=True)
+class RecordedCpiAdapter(CpiAdapter):
+    """The recorded native vintage literal, without relabeling source context."""
+
+    def _supported_vintage(self) -> bool:
+        return self.source_vintage == RECORDED_VINTAGE
+
+
 def cpi_registration(
     *, source_locator: str, source_vintage: str, observed_at: str
 ) -> AdapterRegistration:
-    """Register only the explicitly supported CPI profile."""
-    adapter = CpiAdapter(source_locator, source_vintage, observed_at)
+    """Keep the short-label 1.0.0 path; bind the recorded literal through 1.1.0."""
+    adapter_type = (
+        RecordedCpiAdapter if source_vintage == RECORDED_VINTAGE else CpiAdapter
+    )
+    adapter = adapter_type(source_locator, source_vintage, observed_at)
     return AdapterRegistration(
         adapter_id="stats-nz-cpiq-se9a",
-        version="1.0.0",
+        version="1.1.0" if source_vintage == RECORDED_VINTAGE else "1.0.0",
         media_type=_MEDIA_TYPE,
         adapter=adapter,
         layout_probe=adapter.matches_layout,

@@ -1,0 +1,186 @@
+{
+  "actual_verified_reads": 10,
+  "currency_admission": "not_performed",
+  "denominator_selection": "not_performed",
+  "facts": 615,
+  "gold_common_operation_adoption": "pending",
+  "head": "3c9cadf7a3fa2111b9c44885ba3dd21753355439",
+  "independent_review": {
+    "blocking_findings": 0,
+    "scope": "all 30 generated files and four committed reference-code pins checked; generated QES facts/lineage validated without source replay"
+  },
+  "new_source_capture": false,
+  "pre_refactor_reference_commit": "6a13aab0f81fa990dfecf5da8fbc33fc8cea25c6",
+  "profiles": [
+    {
+      "fact_bytes_equal_pre_refactor": true,
+      "facts": 449,
+      "family": "cpi",
+      "files": {
+        "facts.parquet": {
+          "bytes": 121824,
+          "sha256": "96c4fdd7d53a7164031a4b1ba27d5812f5b4d0264fa53cd1b92174183a7dfaec"
+        },
+        "field_lineage.parquet": {
+          "bytes": 357904,
+          "sha256": "67f61426e1703d836027cd4c5eac5324d7979b65c5dc88492816053b061a7603"
+        },
+        "projection-receipt.json": {
+          "bytes": 1560,
+          "sha256": "cd977d10099af78dde16e2afecc4258c27509c3159a2d31f0db14e0b7e7f7258"
+        }
+      },
+      "full_lineage_byte_parity": true,
+      "lineage": 3143,
+      "lineage_completion": null,
+      "operation_manifest_sha256": "a6baab080ac9556f3dbaf9a918d80037d865f58c9e8489762a42abd870501e74",
+      "profile": "cpiq-se9a/v1",
+      "qes_mapping_tuple_parity": false,
+      "recordset": "price_population_fact",
+      "recordset_version": "v1",
+      "repeat_identical": true,
+      "source_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d"
+    },
+    {
+      "fact_bytes_equal_pre_refactor": true,
+      "facts": 9,
+      "family": "wage",
+      "files": {
+        "facts.parquet": {
+          "bytes": 16894,
+          "sha256": "2d62801a783bfcdc66206969544166d90a4d3dd3ef0c56f78f021c24afe04ad8"
+        },
+        "field_lineage.parquet": {
+          "bytes": 21598,
+          "sha256": "0d33f439c0d6afb957355ea4d53deadbd44df343799feb1b38437289793d15b8"
+        },
+        "projection-receipt.json": {
+          "bytes": 2085,
+          "sha256": "eaa071da3ff980d9981eabadaa991eb65ed5191dab02d1ef62ecd4e2f8b9cbf1"
+        }
+      },
+      "full_lineage_byte_parity": false,
+      "lineage": 90,
+      "lineage_completion": {
+        "historical_outputs_unchanged": true,
+        "legacy_digest_encoding": "canonical_json_with_serialized_arrow_schema/v1",
+        "legacy_fields_preserved": [
+          "target_record_id",
+          "field",
+          "source_coordinate",
+          "raw_value",
+          "normalized_value",
+          "rule"
+        ],
+        "legacy_lineage_sha256": "44fa083834f96fe169e435ac26e96e5a0fd62b5741c76189751e969dfe59c59d",
+        "metadata_source": "verified_canonical_target_facts_and_original_common_evidence",
+        "reason": "legacy_qes_lineage_required_identity_and_context_fields_null",
+        "transformation_id": "qes-operation-canonical-lineage-completion/v1"
+      },
+      "operation_manifest_sha256": "819a6b08860d0607e1729403ef14a2b179e267038f882b9df7c95e9e4a4c1415",
+      "profile": "qes-june2026-table8/v1",
+      "qes_mapping_tuple_parity": true,
+      "recordset": "earnings_fact",
+      "recordset_version": "v2",
+      "repeat_identical": true,
+      "source_sha256": "1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97"
+    },
+    {
+      "fact_bytes_equal_pre_refactor": true,
+      "facts": 36,
+      "family": "population",
+      "files": {
+        "facts.parquet": {
+          "bytes": 24061,
+          "sha256": "0d0f5a80899ac19dba7748fc495497c76256f908e188d97c4137d027367217b5"
+        },
+        "field_lineage.parquet": {
+          "bytes": 28754,
+          "sha256": "fd3977490d84fda39de411faec0fcfd5eca9a786097f19fda09e7130ec9fbd6a"
+        },
+        "projection-receipt.json": {
+          "bytes": 1465,
+          "sha256": "a503cb80ce5ba8f402fbc9894648021145250ca70f4abe53f7e338882a1b01f1"
+        }
+      },
+      "full_lineage_byte_parity": true,
+      "lineage": 110,
+      "lineage_completion": null,
+      "operation_manifest_sha256": "2b9b175e398413b980b8dd7e0c71efac69c464a46b8521cf8ac7d3192afe5eea",
+      "profile": "population-annual-mean-context/v1",
+      "qes_mapping_tuple_parity": false,
+      "recordset": "price_population_fact",
+      "recordset_version": "v1",
+      "repeat_identical": true,
+      "source_sha256": "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9"
+    },
+    {
+      "fact_bytes_equal_pre_refactor": true,
+      "facts": 60,
+      "family": "gdp",
+      "files": {
+        "facts.parquet": {
+          "bytes": 29363,
+          "sha256": "02498ae96460a23d786999312a2905acc7fbfd194ad9e23a0c00d7293a5d9fef"
+        },
+        "field_lineage.parquet": {
+          "bytes": 57935,
+          "sha256": "a2a75bb6c62d29f800546aa25a4678c6a493df0bd784ad11748c2e9099803313"
+        },
+        "projection-receipt.json": {
+          "bytes": 1615,
+          "sha256": "9e4fbddd3023dcc11f2a8e9d6daff83af12231b67a3ae4f0f925af2ba53f11f4"
+        }
+      },
+      "full_lineage_byte_parity": true,
+      "lineage": 420,
+      "lineage_completion": null,
+      "operation_manifest_sha256": "b96efff32de3d964b5cea12af9ac731ac51d731e8c4a9c81f38cefb3fd269ad8",
+      "profile": "gdp-expenditure-actual-2026q1/v1",
+      "qes_mapping_tuple_parity": false,
+      "recordset": "fiscal_context_fact",
+      "recordset_version": "v1",
+      "repeat_identical": true,
+      "source_sha256": "a7326e84e7704446a18e5c8942f99901a452b2170af4228e8a5c242a5532ed21"
+    },
+    {
+      "fact_bytes_equal_pre_refactor": true,
+      "facts": 61,
+      "family": "gdp-june",
+      "files": {
+        "facts.parquet": {
+          "bytes": 29618,
+          "sha256": "7f151eb0014710f214a72c9954ef1b3368bf523f912e65189c1b73e2a912640b"
+        },
+        "field_lineage.parquet": {
+          "bytes": 58696,
+          "sha256": "40e768649cf644d42ca7cabb7e80740c21fec2f11435fe1b34ba103c42f8af2c"
+        },
+        "projection-receipt.json": {
+          "bytes": 1625,
+          "sha256": "4a9bf0c3b4210182d7bf8a63557d26898c44b570ebf7b4a6560be33f227bc4e9"
+        }
+      },
+      "full_lineage_byte_parity": true,
+      "lineage": 427,
+      "lineage_completion": null,
+      "operation_manifest_sha256": "7f9a0ca0e5bf9bef618769718828aa8daff0c8b09a0febc4aad3e0c5074da3e5",
+      "profile": "gdp-expenditure-actual-2026q2/v1",
+      "qes_mapping_tuple_parity": false,
+      "recordset": "fiscal_context_fact",
+      "recordset_version": "v1",
+      "repeat_identical": true,
+      "source_sha256": "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d"
+    }
+  ],
+  "proof_script_sha256": "d2010de47ab6fbe15ba1fa5f90d7518c0b7e319cf95afdd0ec11556daa960838",
+  "reference_code_sha256": {
+    "src/archive_govt_nz/domains/health_appropriations/cpi_canonical_projection.py": "497bbd4819062906ccefd93a5bc442cbb628393aab96f2a7a51c4374686cdf39",
+    "src/archive_govt_nz/domains/health_appropriations/gdp_canonical_projection.py": "bc952f3f0b2e09cee4e54d0d209d5e1587c97e7c17af30a50ad96380a17ebf56",
+    "src/archive_govt_nz/domains/health_appropriations/population_annual_canonical_projection.py": "5d7db0c121a46cada5b312ee172260480577e9a39e0a6218e33f0e3da8708c5c",
+    "src/archive_govt_nz/domains/health_appropriations/qes_canonical_projection.py": "27cd75438231c88806fd5570201d2a55c31885b98ad4274c6490567cc5a6da97"
+  },
+  "rights_state": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-context-operation-canonical-native/v1",
+  "source_and_input_package_bytes_unchanged": true
+}

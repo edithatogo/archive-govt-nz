@@ -1,0 +1,29 @@
+{
+  "schema_version": "archive-govt-nz.vote-health-overview-extraction/v1",
+  "status": "passed",
+  "profile": "vote-health-estimates-2002-03-overview/v1",
+  "source_object_sha256": "1170e0bf5d11e6ac93620a2d76d68004ed99b88ed45a0c6c3c48bbc38f72fafe",
+  "source_page_count": 44,
+  "source_pages": [2, 3],
+  "output_recordset": "vote_health_appropriation_overview_fact",
+  "counts": {"pages": 2, "facts": 7},
+  "measures": {
+    "vote_total": "8645.493",
+    "vote_increase": "940.846",
+    "departmental_total": "166.917",
+    "non_departmental_total": "8432.327",
+    "other_services_total": "26.398",
+    "other_expenses_total": "19.851",
+    "crown_revenue_total": "292.005"
+  },
+  "unit": "$ million",
+  "currency_code": null,
+  "rights_state": "not_evaluated",
+  "publication_state": "local_validation_only",
+  "limitations": [
+    "overview headlines only; surrounding prose and component bullets remain preserved-only",
+    "no prior-year total derived",
+    "no currency or cross-source comparability claimed",
+    "no canonical Gold promotion or publication"
+  ]
+}

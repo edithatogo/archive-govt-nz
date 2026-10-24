@@ -1,0 +1,140 @@
+{
+  "schema_version": "archive-govt-nz.vote-health-estimates-overview-receipt/v1",
+  "source_id": "treasury-vote-health-pdf-2009-10-estimates",
+  "source_title": "Vote Health - The Estimates of Appropriations 2009/10",
+  "source_url": "https://www.treasury.govt.nz/sites/default/files/2009-05/est09health.pdf",
+  "landing_page": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2009-10",
+  "issued": "2009-05-28",
+  "fiscal_year": "2009/10",
+  "source_object_sha256": "acd253a1d68738a06e5310c002f8051698146fe018d3d6c10fc6b5e0f6d7ac1f",
+  "source_bytes": 60661,
+  "source_blake3": "8a0c0c8fd163a8283e1da618a22b0e505b2654e0bab9062da9448f4cee14aa12",
+  "source_warc_sha256": "385f32232445f4b21982cef3660c1796a5d3d1d100037c9a460432e58d1373a5",
+  "capture_manifest_sha256": "856f17a58631981fe6152ee6fcf9ac77bad197f69a5163f79ebe3bea918a9ed2",
+  "capture_request_sha256": "2d38b4e99d2bfeab4055f5806646eb6c11226b0358318e68673e06dcc2f0b72e",
+  "capture_observed_at": "2026-10-03T16:31:35.751358Z",
+  "capture_status_code": 200,
+  "capture_content_type": "application/pdf",
+  "publisher_etag": "\"64506229-ecf5\"",
+  "publisher_last_modified": "Tue, 02 May 2023 01:06:49 GMT",
+  "rights": {
+    "attribution": "The Treasury New Zealand",
+    "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+    "license": "CC-BY-4.0",
+    "state": "eligible"
+  },
+  "license_evidence": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2009-10",
+  "source_page_count": 8,
+  "normalized_source_pages": [
+    2
+  ],
+  "preserved_unreviewed_pages": [
+    1,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "fact_count": 17,
+  "lineage_rows": 17,
+  "facts_output_sha256": "442d0b821f3a82e99825db3ff3047ff06e338ddd4893bfc093380ebd5a4ce4e6",
+  "lineage_output_sha256": "a4db872a78e5c617e54ff80797282cb9f8bbc2ec0339a2c9615d6ba1297b6bff",
+  "page_dispositions_output_sha256": "32fdf4dea054a3aece7e8ec581e6c795856b4e3202712563664e56c88264aa4d",
+  "repeat_builds": 2,
+  "repeat_outputs_byte_identical": true,
+  "rights_state_of_normalized_facts": "not_evaluated",
+  "publication": "not_approved",
+  "excluded_claims": [
+    "exact dollar precision",
+    "cross-edition comparability",
+    "recomputed totals",
+    "Crown revenue headline not located"
+  ],
+  "integrated_operation": {
+    "command": "health-appropriations-extract-source",
+    "profile": "vote-health-estimates-2009-10-overview/v1",
+    "status": "written_local",
+    "verification_scope": "adapter_execution_only",
+    "runs": 2,
+    "counts": {
+      "pages": 1,
+      "facts": 17,
+      "page_dispositions": 8
+    },
+    "output_sha256": {
+      "field_lineage.parquet": "a4db872a78e5c617e54ff80797282cb9f8bbc2ec0339a2c9615d6ba1297b6bff",
+      "page_dispositions.parquet": "32fdf4dea054a3aece7e8ec581e6c795856b4e3202712563664e56c88264aa4d",
+      "vote_health_overview_facts.parquet": "442d0b821f3a82e99825db3ff3047ff06e338ddd4893bfc093380ebd5a4ce4e6"
+    },
+    "repeat_outputs_byte_identical": true,
+    "full_harness": "pending",
+    "phase_7_gates": "pending"
+  },
+  "parser_observation": "pypdf emitted the retained warning: Xref table not zero-indexed; ID numbers will be corrected.",
+  "full_harness": {
+    "command": "./scripts/validate.sh",
+    "status": "passed",
+    "passed": 7363,
+    "skipped": 10,
+    "branch_coverage_percent": 98.08,
+    "coverage_floor_percent": 80,
+    "schemas": "53_schemas_43_representative_documents",
+    "parity": "9_of_9",
+    "mutations": "all_configured_gates_passed",
+    "supply_chain": "dependency_and_license_passed",
+    "credentials_review": "passed",
+    "sbom_components": 113
+  },
+  "phase_7_gates": {
+    "status": "passed",
+    "receipt": "phase_7_gates-review-receipt-20261004-vote-health-overview-2009-10.json",
+    "sha256": "7320aeb3a4350021a8e161c33a86418452b332a3e755842e448f99c4655a5b53"
+  },
+  "reconciliation_events": [
+    {
+      "gate": "ruff_format",
+      "first_result": "failed",
+      "failure": "new test expected-value list formatting",
+      "resolution": "formatted test file; final required harness passed"
+    },
+    {
+      "gate": "ruff_lint",
+      "first_result": "failed",
+      "failure": "17 ISC004 implicit regex literal concatenations",
+      "resolution": "parenthesized regex patterns; lint and final required harness passed"
+    },
+    {
+      "gate": "source_measure_evidence_pin",
+      "first_result": "failed",
+      "failure": "health track index.md hash changed after adding capture and extraction receipt links",
+      "resolution": "refreshed the exact index evidence hash; all 36 focused source-review tests passed"
+    },
+    {
+      "gate": "review_page_disposition_completeness",
+      "first_result": "blocked_by_review",
+      "failure": "the initial adapter emitted only pages 2 and 3 despite recording an eight-page source",
+      "resolution": "emit a deterministic disposition row for every source page; only page 2 is partially normalized, all other pages are preserved-unreviewed; captured-source test asserts all eight pages"
+    }
+  ],
+  "coverage_tests_added_for_threshold": false,
+  "source_census_addendum": {
+    "file": "vote-health-estimates-overview-2009-10-census.json",
+    "sha256": "af61dbad29e1f51ab8e6ef3f74c0bdb80ff83ce4a8ef3fe9bf4bef1f6b7767bb",
+    "resource_count": 1,
+    "disposition": "captured"
+  },
+  "source_health_reconciliation": {
+    "json_file": "source-health-report-20261004-vote-health-2009-10.json",
+    "json_sha256": "9b5a5c377bb56d79659072c7c94a3d1171419ffcdfcd95ed658066f7525aecca",
+    "markdown_file": "source-health-report-20261004-vote-health-2009-10.md",
+    "markdown_sha256": "db06ae849fcdab205b538acabc6f9d7a0c7310230371bb41566331ad60d1ca83",
+    "status": "passed",
+    "matched_resource_count": 1,
+    "bronze_object_count_verified": 1,
+    "bronze_bytes_verified": 60661,
+    "rights_state_recorded": "eligible",
+    "context_series_vintages": 11
+  }
+}

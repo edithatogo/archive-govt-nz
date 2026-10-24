@@ -33,6 +33,21 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 _MAX_CONTEXT_PACKAGE = 64 * 1024 * 1024
+
+
+def _query_arrow_table(
+    database: duckdb.DuckDBPyConnection,
+    query: str,
+    params: list[object] | None = None,
+) -> pa.Table:
+    """Use DuckDB's relation API and fail closed if SQL yields no relation."""
+    relation = database.sql(query, params=params)
+    if relation is None:
+        reason = "canonical_consumer_query_relation_missing"
+        raise ValueError(reason)
+    return relation.to_arrow_table()
+
+
 _CONTEXT_INPUT_INVALID = "canonical_context_input_invalid"
 _CONTEXT_INPUT_UNVERIFIED = "canonical_context_input_unverified"
 _CONTEXT_INPUT_LIMIT = "canonical_context_input_limit"
@@ -304,7 +319,7 @@ def query_nominal_budget(
         )
         with closing(duckdb.connect(":memory:")) as database:
             database.register("canonical_appropriations", combined)
-            result = database.execute(_QUERY).to_arrow_table()
+            result = _query_arrow_table(database, _QUERY)
         result = result.cast(NOMINAL_BUDGET_SCHEMA)
         used = [item for row in result["input_record_ids"].to_pylist() for item in row]
         _require(sorted(used) == sorted(ids))
@@ -375,7 +390,7 @@ def query_historical_nominal(
         )
         with closing(duckdb.connect(":memory:")) as database:
             database.register("canonical_historical", combined)
-            result = database.execute(_HISTORICAL_QUERY).to_arrow_table()
+            result = _query_arrow_table(database, _HISTORICAL_QUERY)
         result = result.cast(HISTORICAL_NOMINAL_SCHEMA)
         _require(sorted(result["input_record_id"].to_pylist()) == sorted(ids))
         return result, {
@@ -455,11 +470,9 @@ def query_historical_observations(
         with closing(duckdb.connect(":memory:")) as database:
             database.register("canonical_health", health)
             database.register("canonical_context", context)
-            observations = (
-                database.execute(_HISTORICAL_OBSERVATION_QUERY)
-                .to_arrow_table()
-                .cast(HISTORICAL_OBSERVATION_SCHEMA)
-            )
+            observations = _query_arrow_table(
+                database, _HISTORICAL_OBSERVATION_QUERY
+            ).cast(HISTORICAL_OBSERVATION_SCHEMA)
         observed_ids = sorted(observations["input_record_id"].to_pylist())
         _require(observed_ids == sorted(source_ids))
         coverage = summarize_historical_coverage(observations)
@@ -517,7 +530,7 @@ def summarize_historical_coverage(
         )
         with closing(duckdb.connect(":memory:")) as database:
             database.register("historical_observations", observations)
-            result = database.execute(_HISTORICAL_COVERAGE_QUERY).to_arrow_table()
+            result = _query_arrow_table(database, _HISTORICAL_COVERAGE_QUERY)
         result = result.cast(HISTORICAL_COVERAGE_SCHEMA)
         _require(
             sorted(
@@ -583,7 +596,7 @@ def query_nominal_revenue(
         )
         with closing(duckdb.connect(":memory:")) as database:
             database.register("canonical_revenue", combined)
-            result = database.execute(_REVENUE_QUERY).to_arrow_table()
+            result = _query_arrow_table(database, _REVENUE_QUERY)
         result = result.cast(NOMINAL_REVENUE_SCHEMA)
         _require(sorted(result["input_record_id"].to_pylist()) == sorted(ids))
         return result, {

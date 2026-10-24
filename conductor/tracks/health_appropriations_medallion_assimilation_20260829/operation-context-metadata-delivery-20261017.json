@@ -1,0 +1,61 @@
+{
+  "checked_and_merged_tree": "7bada49cd55f26d4b568f442f12fba1bf0adc12a",
+  "checked_head": "3f86e6fe4fd60fc38ce73ceff2cd7e4db3e2abd6",
+  "checked_head_and_merge_on_main": true,
+  "checks_receipt_sha256": "b32756505053a25b9d9c40d0592e55ba6c9f704b1cfe4643235dc08ac4fc7357",
+  "fetched_main": "0a534f13aa6481888c467088b6117318e3d77178",
+  "head_checks_all_passed": true,
+  "hosted_run": 39027688262,
+  "merge_commit": "0a534f13aa6481888c467088b6117318e3d77178",
+  "merged_at": "2026-10-17T11:30:08Z",
+  "native_receipt_sha256": "1f70250e5d34caf438f8aecedad516d5083448d6e797d27882c6989b7eed5b71",
+  "platforms": {
+    "macos": {
+      "bounded_evidence": [
+        "2026-10-17T11:24:05.4777720Z Required test coverage of 80.0% reached. Total coverage: 97.26%",
+        "2026-10-17T11:24:05.4778630Z ========== 7860 passed, 28 skipped, 23 warnings in 711.73s (0:11:51) ===========",
+        "2026-10-17T11:24:07.3135850Z validated 65 schemas and 55 representative documents",
+        "2026-10-17T11:24:08.3113770Z Parity Harness: 9/9 passed, 0 divergences (status=passed)",
+        "2026-10-17T11:27:24.1122620Z secret scan passed; receipt=build/detect-secrets.json",
+        "2026-10-17T11:27:30.5300970Z SBOM validated; components=113; receipt=build/sbom.cdx.json"
+      ],
+      "log_bytes": 127310,
+      "log_sha256": "875faec12c593e5668d9b448ace35fc50c3f4ae24eee86364543279f871c67e9"
+    },
+    "ubuntu": {
+      "bounded_evidence": [
+        "2026-10-17T11:18:47.3633966Z Required test coverage of 80.0% reached. Total coverage: 97.26%",
+        "2026-10-17T11:18:47.3635210Z ========== 7860 passed, 28 skipped, 23 warnings in 443.35s (0:07:23) ===========",
+        "2026-10-17T11:18:50.1887259Z validated 65 schemas and 55 representative documents",
+        "2026-10-17T11:18:51.6305506Z Parity Harness: 9/9 passed, 0 divergences (status=passed)",
+        "2026-10-17T11:22:33.0214185Z secret scan passed; receipt=build/detect-secrets.json",
+        "2026-10-17T11:22:42.2078001Z SBOM validated; components=114; receipt=build/sbom.cdx.json"
+      ],
+      "log_bytes": 159466,
+      "log_sha256": "1b4d657663a0c9e5e8056b19649ced2abbb617605b9f41d76d61bc2d614501a2"
+    },
+    "windows": {
+      "bounded_evidence": [
+        "2026-10-17T11:11:06.5219495Z 3 passed, 3 skipped in 0.99s",
+        "2026-10-17T11:23:00.4235136Z Required test coverage of 80.0% reached. Total coverage: 97.20%",
+        "2026-10-17T11:23:00.4236440Z ========== 7852 passed, 36 skipped, 23 warnings in 677.29s (0:11:17) ==========",
+        "2026-10-17T11:23:03.3893286Z validated 65 schemas and 55 representative documents",
+        "2026-10-17T11:23:04.9631709Z Parity Harness: 9/9 passed, 0 divergences (status=passed)",
+        "2026-10-17T11:28:58.6552251Z secret scan passed; receipt=build\\detect-secrets.json",
+        "2026-10-17T11:29:09.0444288Z SBOM validated; components=114; receipt=build\\sbom.cdx.json"
+      ],
+      "log_bytes": 131199,
+      "log_sha256": "0126fdd538865d9a903d78518b98baf4d408301eda376cd9f9dab0a6146a9a22"
+    }
+  },
+  "primary_worktree": "retained",
+  "pruning": "verified_clean_local_remote_and_tracking_topic_pruned",
+  "pull_request": 705,
+  "review_receipt_sha256": "41aeb6f0b1637a4efc5c37cb0e47797c832b8582b70af2ac844f38a484b3a0b8",
+  "schema_version": "archive-govt-nz.health-operation-context-metadata-delivery/v1",
+  "topic_clean_before_pruning": true,
+  "track_complete": false,
+  "unique_topic_commits": 0,
+  "url": "https://github.com/edithatogo/archive-govt-nz/pull/705",
+  "worktree_count": 1
+}

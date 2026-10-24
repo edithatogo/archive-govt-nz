@@ -1,0 +1,134 @@
+{
+  "attempts": {
+    "preflight1": "blank census empty string differs from native None; failed header check retained",
+    "preflight2": "private control versioning accidentally changed row offsets; failed B1 assertion retained, no proof admitted",
+    "preflight3": "corrected controls; both full native reads repeat and all frozen pins verified"
+  },
+  "currency": "not_qualified",
+  "definitions": "every retained Explanation/header census cell verified twice",
+  "edition_resolution": "Budget2011 named in expenditure B4 and revenue B5;2011/12 Estimates agree, no publication day inferred",
+  "layout": "preserve App id and MCOA id case, blank expenditure M structurally null; no Current Scope interpretation",
+  "producer_head": "8d05b09f22d4d0f7a9bd69d13b901b1b5db546d0",
+  "rights": "not_evaluated",
+  "runs": {
+    "expenditure": {
+      "counts": {
+        "blank": 2,
+        "out_of_scope": 5341,
+        "selected_numeric_verified": 315
+      },
+      "evidence": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2011-20261021/preflight-3/first-expenditure.json",
+      "numeric_witnesses": 1260,
+      "period_pairs": [
+        {
+          "amount_type": "Actuals",
+          "rows": 53,
+          "year": 2007
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 54,
+          "year": 2008
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 52,
+          "year": 2009
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 52,
+          "year": 2010
+        },
+        {
+          "amount_type": "Estimated Actual",
+          "rows": 54,
+          "year": 2011
+        },
+        {
+          "amount_type": "Main Estimates",
+          "rows": 50,
+          "year": 2012
+        }
+      ],
+      "prior_definition_cells_verified": 46,
+      "raw_header_values": [
+        "Department",
+        "Vote",
+        "App id",
+        "MCOA id",
+        "Description",
+        "Appropriation Type",
+        "Output Expense Type",
+        "Functional Classification",
+        "Amount ($000)",
+        "Year",
+        "Amount_Type_Desc",
+        "Periodicity",
+        null
+      ],
+      "source_row_count": 5658,
+      "source_sha256": "8712d27f2da918d1cc8376a8f15e24cafb6b608a3be0cc19da226768a8f69ba0",
+      "unlabelled_m_all_blank": true
+    },
+    "revenue": {
+      "counts": {
+        "out_of_scope": 919,
+        "selected_numeric_verified": 71
+      },
+      "evidence": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2011-20261021/preflight-3/first-revenue.json",
+      "numeric_witnesses": 284,
+      "period_pairs": [
+        {
+          "amount_type": "Actuals",
+          "rows": 12,
+          "year": 2007
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 13,
+          "year": 2008
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 13,
+          "year": 2009
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 10,
+          "year": 2010
+        },
+        {
+          "amount_type": "Estimated Actual",
+          "rows": 12,
+          "year": 2011
+        },
+        {
+          "amount_type": "Main Estimates",
+          "rows": 11,
+          "year": 2012
+        }
+      ],
+      "prior_definition_cells_verified": 770,
+      "raw_header_values": [
+        "Department",
+        "Vote",
+        "App id",
+        "MCOA id",
+        "Description",
+        "Revenue Type",
+        "Functional Classification",
+        "Amount ($000)",
+        "Year",
+        "Amount_Type_Desc",
+        "Periodicity"
+      ],
+      "source_row_count": 990,
+      "source_sha256": "bd902503455cebe5cc455031bbd2b07f325cce57027c8391c9bec476ad77f073",
+      "unlabelled_m_all_blank": false
+    }
+  },
+  "schema_version": "archive-govt-nz.health-budget-biff8-preflight/v1",
+  "source_capture_mutations": false
+}

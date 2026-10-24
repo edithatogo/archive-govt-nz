@@ -1,0 +1,100 @@
+{
+  "schema_version": "archive-govt-nz.health-vote-health-supplementary-summary-evidence/v1",
+  "status": "passed",
+  "profile": "vote-health-supplementary-2025-26-summary-totals/v1",
+  "source": {
+    "source_object_sha256": "575e3744f555d668f3748f46cc55781378bfc0ad35008c9512a942c57279f31f",
+    "source_locator": "https://www.treasury.govt.nz/sites/default/files/2026-05/suppest26health.pdf",
+    "source_vintage": "Treasury-Vote-Health-Supplementary-2025-26",
+    "source_bytes_unchanged": true,
+    "capture_manifest": "official-capture-2026-10-03-health-complete.json"
+  },
+  "scope": {
+    "pdf_page_numbers": [6],
+    "unit": "$000",
+    "columns": [
+      "Estimates Budget",
+      "Supplementary Estimates Budget",
+      "Total Budget"
+    ],
+    "facts": 6,
+    "field_lineage_rows": 18,
+    "page_dispositions": 1,
+    "rights_state": "not_evaluated",
+    "limitations": [
+      "Only six named page-six rows are normalized; remaining rows and PDF pages stay preserved-only.",
+      "Source labels and tokens are retained; dash tokens are represented as null without replacing their raw values in lineage.",
+      "No currency interpretation, edition comparison, redistribution or publication is asserted."
+    ]
+  },
+  "persistent_silver": {
+    "path": "silver/vote-health-supplementary-2025-26-summary-totals-20261006-v1",
+    "manifest_sha256": "3975a41c38f651569247ed01a047f6b74416ed7340204aad01135ac3471126aa",
+    "outputs": {
+      "MANIFEST.json": {
+        "bytes": 628,
+        "sha256": "3975a41c38f651569247ed01a047f6b74416ed7340204aad01135ac3471126aa"
+      },
+      "field_lineage.parquet": {
+        "bytes": 6715,
+        "sha256": "9b5a5aac7aa27a5482b9841eae772a90f1060c8523027bf66fc9626cfcdbab1a"
+      },
+      "page_dispositions.parquet": {
+        "bytes": 2446,
+        "sha256": "2e349ef8c8627b15d142cee6b1a92cb2dc34fb9f8d2ff644d61907096ea9c8e0"
+      },
+      "vote_health_supplementary_summary_facts.parquet": {
+        "bytes": 11197,
+        "sha256": "d9a850aeacf8018a75ac9d1038b30f5bf347bf0af5298b6d9f76e975cfd77f3d"
+      }
+    },
+    "matches_clean_room_build": true
+  },
+  "repeat_build": {
+    "identical": true,
+    "recovery_entry_point_builds": 2,
+    "output_manifest_sha256": "3975a41c38f651569247ed01a047f6b74416ed7340204aad01135ac3471126aa"
+  },
+  "recovery_scope": {
+    "receipt": "clean-room-recovery-20261006-vote-health-2025-26.json",
+    "status": "partial_with_blockers",
+    "bronze_objects_unchanged": true,
+    "entry_point": "tools/health_recovery_assurance.py:rebuild_vote_health_2025_26_summary_totals",
+    "entry_point_repeat_identical": true,
+    "remaining_track_gates_not_closed": true,
+    "clean_room_receipt_status": "partial_with_blockers"
+  },
+  "validation": {
+    "focused_tests": {
+      "command": "uv run --locked pytest tests/domains/health_appropriations/test_vote_health_supplementary_2025_26.py tests/domains/health_appropriations/test_source_operations.py tests/domains/health_appropriations/test_health_recovery_assurance.py -q",
+      "passed": 526,
+      "skipped": 10
+    },
+    "repository_harness": {
+      "command": "./scripts/validate.sh",
+      "status": "passed",
+      "tests_passed": 7555,
+      "tests_skipped": 10,
+      "coverage_percent": 97.67,
+      "coverage_floor_percent": 80,
+      "critical_profile_line_branch_coverage_percent": 100,
+      "schemas": 56,
+      "representative_documents": 46,
+      "differential_parity": "9/9 passed",
+      "gates": [
+        "lock",
+        "format",
+        "lint",
+        "strict_typing",
+        "schemas",
+        "parity",
+        "mutation",
+        "dependency_audit",
+        "licenses",
+        "secrets",
+        "sbom"
+      ]
+    },
+    "source_locator_and_hash_guard": "passed"
+  }
+}

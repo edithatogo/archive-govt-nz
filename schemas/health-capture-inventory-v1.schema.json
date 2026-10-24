@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-capture-inventory-v1.schema.json",
+  "title": "Observation-preserving Health capture cohort inventory",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "scope",
+    "inputs",
+    "summary",
+    "resources"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-capture-inventory/v1"
+    },
+    "scope": {
+      "const": "supplied_cohorts_only_not_whole_corpus_or_publication_completeness"
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resource_count",
+        "recorded_captured_resource_count",
+        "census_observation_count",
+        "capture_observation_count"
+      ],
+      "properties": {
+        "resource_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "recorded_captured_resource_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "census_observation_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "capture_observation_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "url",
+          "source_ids",
+          "versions",
+          "recorded_captured",
+          "census_observations",
+          "capture_observations",
+          "fixity_state",
+          "rights_state"
+        ],
+        "properties": {
+          "url": {
+            "type": "string",
+            "pattern": "^https://"
+          },
+          "source_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "minItems": 1,
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "versions": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          },
+          "recorded_captured": {
+            "type": "boolean"
+          },
+          "census_observations": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "census",
+                "record"
+              ],
+              "properties": {
+                "census": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "record": {
+                  "type": "object",
+                  "required": [
+                    "source_id",
+                    "url"
+                  ],
+                  "properties": {
+                    "source_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "url": {
+                      "type": "string",
+                      "pattern": "^https://"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "capture_observations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "manifest",
+                "request",
+                "request_binding",
+                "record"
+              ],
+              "properties": {
+                "manifest": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "request": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "request_binding": {
+                  "enum": [
+                    "capture_time_request_hash_verified",
+                    "not_verified_legacy_request_context_unavailable"
+                  ]
+                },
+                "record": {
+                  "type": "object",
+                  "required": [
+                    "source_id",
+                    "url"
+                  ],
+                  "properties": {
+                    "source_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "url": {
+                      "type": "string",
+                      "pattern": "^https://"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "fixity_state": {
+            "const": "not_replayed_by_inventory"
+          },
+          "rights_state": {
+            "const": "not_evaluated_by_inventory"
+          }
+        }
+      }
+    }
+  }
+}

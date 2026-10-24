@@ -1,0 +1,81 @@
+{
+  "files": {
+    "first-expenditure.json": {
+      "bytes": 1280712,
+      "sha256": "c9718755d282f7f5c24ff8f4a411ce61f854c701869c90deb9e4e1119eddd831"
+    },
+    "first-revenue.json": {
+      "bytes": 207509,
+      "sha256": "df3f50fb6abd48f72f05f9636642e40d18c367f750e1980dec58c2c414f94018"
+    },
+    "first-summary.json": {
+      "bytes": 807,
+      "sha256": "713954a1575f2cd471d16cc1903ce83d680905cf4b1319cba997dd49cbff6516"
+    },
+    "repeat.json": {
+      "bytes": 260,
+      "sha256": "a75d394b15d52a1b2cda0c021559e6395da57d400d760c37ee7f3f54f5e1580e"
+    },
+    "second-expenditure.json": {
+      "bytes": 1280712,
+      "sha256": "c9718755d282f7f5c24ff8f4a411ce61f854c701869c90deb9e4e1119eddd831"
+    },
+    "second-revenue.json": {
+      "bytes": 207509,
+      "sha256": "df3f50fb6abd48f72f05f9636642e40d18c367f750e1980dec58c2c414f94018"
+    },
+    "second-summary.json": {
+      "bytes": 805,
+      "sha256": "11023becae3b629b976ed6ac57c77c1dd62b3f0815f7bb3b7a6c288141bec4a3"
+    }
+  },
+  "native_postflight": {
+    "exit": 0,
+    "head": "2df9453c378f7e9620e76708b0e8f955dcb9a954",
+    "independent_lease_free": true,
+    "owner_and_group_absent": true,
+    "pins_unchanged": 4864,
+    "status": "verified",
+    "tree": "c8f93f902a8fbb902742f0be5ba40c45ff0011a3"
+  },
+  "numeric_admission": "preflight_only_not_source_profile",
+  "publication": "not_performed",
+  "repeat": {
+    "all_source_artifact_hashes_equal": true,
+    "head": "2df9453c378f7e9620e76708b0e8f955dcb9a954",
+    "publication": "not_performed",
+    "retained_derivatives_consumed": false,
+    "rights": "not_evaluated",
+    "tree": "c8f93f902a8fbb902742f0be5ba40c45ff0011a3"
+  },
+  "rights": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-biff8-numeric-preflight/v1",
+  "source_summaries": [
+    {
+      "counts": {
+        "out_of_scope": 5662,
+        "selected_numeric_verified": 315
+      },
+      "eligible_for_profile": true,
+      "numeric_witnesses": 1260,
+      "period_mismatches": [],
+      "seconds": 1.9794957910198718,
+      "source_id": "treasury-historical-1986b1eeb8a119b5",
+      "source_row_count": 5977,
+      "source_sha256": "4dbabc88f1e0756e0f651ef261b3408b262a10f0b1cdb51977844c97841b9325"
+    },
+    {
+      "counts": {
+        "out_of_scope": 940,
+        "selected_numeric_verified": 66
+      },
+      "eligible_for_profile": true,
+      "numeric_witnesses": 198,
+      "period_mismatches": [],
+      "seconds": 0.14992579200770706,
+      "source_id": "treasury-historical-d7eb66f4860bc179",
+      "source_row_count": 1006,
+      "source_sha256": "481b971d4569cbadbf48440fa1d66f82d8d42942fd855e95e5bfd1ea95e70171"
+    }
+  ]
+}

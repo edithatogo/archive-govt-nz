@@ -1,0 +1,14 @@
+{
+  "complete_Explanation_and_raw_header_coverage": true,
+  "direct_unit_statements": 23,
+  "edition_conflicts": 1,
+  "native_control_count": 7,
+  "production_code_tests_schema_dependencies": "unchanged",
+  "public_census_sha256": "5685d1f242cab119831c69343c05d7542d205b00ca78d1173f8957990bb108ff",
+  "references_text_digests_source_fixity_period_years_and_headers": "verified",
+  "rights_numeric_currency_start_dates_joins": "not_admitted",
+  "schema_version": "health-legacy-census-reference-validation/v1",
+  "scope": "Source/reference and transcription validation on the working projection; original full harness and exact-head hosted delivery still pending",
+  "source_count": 32,
+  "unit_gaps": 9
+}

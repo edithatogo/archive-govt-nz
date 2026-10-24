@@ -1,0 +1,282 @@
+{
+  "currency": "not_qualified",
+  "definitions": "every cell in all pinned split Explanation windows verified twice; exact full raw headers and inventories verified",
+  "edition_resolution": "Budget2010 explicitly named at expenditure B4 and revenue B5;2010/11 Estimates notes agree; no publication date inferred",
+  "layout": "expenditure MCOA id and revenue ParentAppropriationID retained as distinct source fields; no inferred relationships",
+  "producer_head": "ea08ae166c48a0a2ab3f2115e23aac541ac1619e",
+  "rights": "not_evaluated",
+  "runs": {
+    "expenditure": {
+      "counts": {
+        "out_of_scope": 5194,
+        "selected_numeric_verified": 319
+      },
+      "evidence": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2010-20261021/preflight-1/first-expenditure.json",
+      "fields": [
+        "department",
+        "vote",
+        "app_id",
+        "mcoa_id",
+        "appropriation_name",
+        "appropriation_or_category_type",
+        "output_expense_type",
+        "functional_classification",
+        "amount",
+        "year",
+        "amount_type",
+        "periodicity"
+      ],
+      "header_cells_verified": 0,
+      "inventory_checks": 1,
+      "numeric_columns": [
+        [
+          "app_id",
+          3
+        ],
+        [
+          "mcoa_id",
+          4
+        ],
+        [
+          "amount",
+          9
+        ],
+        [
+          "year",
+          10
+        ]
+      ],
+      "numeric_ranges": {
+        "amount": {
+          "max": 1123123,
+          "min": 13,
+          "zeros": 0
+        },
+        "app_id": {
+          "max": 9778,
+          "min": 372,
+          "zeros": 0
+        },
+        "mcoa_id": {
+          "max": 9776,
+          "min": 372,
+          "zeros": 0
+        },
+        "year": {
+          "max": 2011,
+          "min": 2006,
+          "zeros": 0
+        }
+      },
+      "numeric_witnesses": 1276,
+      "period_pairs": [
+        {
+          "amount_type": "Actuals",
+          "rows": 52,
+          "year": 2006
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 53,
+          "year": 2007
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 54,
+          "year": 2008
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 52,
+          "year": 2009
+        },
+        {
+          "amount_type": "Estimated Actual",
+          "rows": 54,
+          "year": 2010
+        },
+        {
+          "amount_type": "Main Estimates",
+          "rows": 54,
+          "year": 2011
+        }
+      ],
+      "prior_definition_cells_verified": 46,
+      "prior_evidence": [
+        {
+          "path": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-cd307714183be5ec-1.json",
+          "sha256": "9360717ff89aa8dfa2058fd8e917017b2875ac0c4b9906a9372ce697f0b4927c"
+        }
+      ],
+      "raw_header_values": [
+        "Department",
+        "Vote",
+        "App id",
+        "MCOA id",
+        "Description",
+        "Appropriation Type",
+        "Output Expense Type",
+        "FunctionalClassification",
+        "Amount ($000)",
+        "Year",
+        "Amount_Type_Desc",
+        "Periodicity"
+      ],
+      "selected_text_values": {
+        "appropriation_or_category_type": {
+          "Capital Expenditure - Departmental": 2,
+          "Capital Expenditure - Non-Departmental": 34,
+          "Other Expenses - Non-Departmental": 20,
+          "Output Expenses - Departmental": 50,
+          "Output Expenses - Non-Departmental": 213
+        },
+        "output_expense_type": {
+          "None": 315,
+          "Permanent Legislative Authority": 2,
+          "Revenue Dependent": 2
+        },
+        "periodicity": {
+          "A": 319
+        }
+      },
+      "source_row_count": 5513,
+      "source_sha256": "7e26853cbed914ef19bc6dc426d24708dbf19487ce0a9dbc15db4d32d3d00a4f"
+    },
+    "revenue": {
+      "counts": {
+        "out_of_scope": 907,
+        "selected_numeric_verified": 76
+      },
+      "evidence": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2010-20261021/preflight-1/first-revenue.json",
+      "fields": [
+        "department",
+        "vote",
+        "app_id",
+        "parent_appropriation_id",
+        "description",
+        "revenue_type",
+        "functional_classification",
+        "amount",
+        "year",
+        "amount_type",
+        "periodicity"
+      ],
+      "header_cells_verified": 11,
+      "inventory_checks": 2,
+      "numeric_columns": [
+        [
+          "app_id",
+          3
+        ],
+        [
+          "parent_appropriation_id",
+          4
+        ],
+        [
+          "amount",
+          8
+        ],
+        [
+          "year",
+          9
+        ]
+      ],
+      "numeric_ranges": {
+        "amount": {
+          "max": 254631,
+          "min": -159609,
+          "zeros": 0
+        },
+        "app_id": {
+          "max": 9136,
+          "min": 397,
+          "zeros": 0
+        },
+        "parent_appropriation_id": {
+          "max": 9136,
+          "min": 397,
+          "zeros": 0
+        },
+        "year": {
+          "max": 2011,
+          "min": 2006,
+          "zeros": 0
+        }
+      },
+      "numeric_witnesses": 304,
+      "period_pairs": [
+        {
+          "amount_type": "Actuals",
+          "rows": 14,
+          "year": 2006
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 12,
+          "year": 2007
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 13,
+          "year": 2008
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 13,
+          "year": 2009
+        },
+        {
+          "amount_type": "Estimated Actual",
+          "rows": 12,
+          "year": 2010
+        },
+        {
+          "amount_type": "Main Estimates",
+          "rows": 12,
+          "year": 2011
+        }
+      ],
+      "prior_definition_cells_verified": 58,
+      "prior_evidence": [
+        {
+          "path": "legacy-definition-preflight-20261020/native-inspection-1/treasury-historical-f4282a2d6ae19875-1.json",
+          "sha256": "6b75a8628a832cc04f1d335d11330166c9ccf727e764506b132504751e9fd94e"
+        },
+        {
+          "path": "legacy-definition-final-window-preflight-20261020/native-window-preflight-1/treasury-historical-f4282a2d6ae19875-1.json",
+          "sha256": "56a35b42c0797a727bc5533702c93125496a441a4e665de6845224d5abae1302"
+        },
+        {
+          "path": "legacy-workbook-reader-20261020/native-inspection-1/treasury-historical-f4282a2d6ae19875-1.json",
+          "sha256": "c516315ad35798529f145b08d8cc38497325319b74bc6b6c7da3ae729f60f177"
+        }
+      ],
+      "raw_header_values": [
+        "UnitName",
+        "VoteName",
+        "AppropriationID",
+        "ParentAppropriationID",
+        "Description",
+        "Revenue Type",
+        "FunctionalClassification",
+        "Amount $(000)",
+        "Year",
+        "AmountType",
+        "Periodicity"
+      ],
+      "selected_text_values": {
+        "periodicity": {
+          "A": 76
+        },
+        "revenue_type": {
+          "Capital Receipts": 15,
+          "Non-Tax Revenue": 61
+        }
+      },
+      "source_row_count": 983,
+      "source_sha256": "d6f63516ef967abec18f09cbe347c02a648a53ef04ce382aa8511c7280f08e15"
+    }
+  },
+  "schema_version": "archive-govt-nz.health-budget-biff8-preflight/v1",
+  "source_capture_mutations": false
+}

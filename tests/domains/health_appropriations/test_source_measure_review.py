@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import gzip
 import hashlib
 import json
 from pathlib import Path
@@ -14,21 +15,72 @@ from archive_govt_nz.domains.health_appropriations.source_measure_review import 
 from archive_govt_nz.domains.health_appropriations.source_measure_review import (
     _captured_years,
     _check_discovered,
+    _check_vote_history,
     _family,
     _fiscal_year,
+    _published_vote_editions,
     _Review,
+    _vote_edition_years,
     validate_review,
 )
 
 ROOT = Path(__file__).resolve().parents[3]
 TRACK = ROOT / TRACK_RELATIVE
-REPORT = TRACK / "source-measure-review-20260927.json"
+REPORT = TRACK / "source-measure-review-20261017-cpi-snapshot-binding.json"
+
+
+def _assert_historical_locator_coverage(report: dict) -> None:
+    history = report["source_families"]["historical_editions"]
+    assert history["editions_with_locators"] == list(range(1997, 2027))
+    assert history["editions_missing_locators"] == []
+    assert history["fully_enumerated_editions"] == []
+    assert history["complete"] is False
+
+
+def _assert_vote_inventory_description(report: dict) -> None:
+    vote = report["source_families"]["vote_health"]
+    description = report["series"]["vote_health"]["vintage_or_range"]
+    assert f"contains {vote['captured_documents']} PDFs" in description
+    assert f"{len(vote['discovered_estimates_urls'])} Estimates years" in description
 
 
 def test_review_reports_exact_series_and_preserves_blockers() -> None:
     report = validate_review(REPORT, ROOT)
-    assert report["series_count"] == 8
-    assert report["source_families"]["vote_health"]["captured_documents"] == 58
+    assert report["series_count"] == 19
+    for family, receipt_name in (
+        ("cpi", "fiscal-health-cpi-benchmark-20261004.json"),
+        ("population", "fiscal-health-per-capita-20261004.json"),
+    ):
+        receipt = json.loads((TRACK / receipt_name).read_text())
+        policy = receipt["query_receipt"]["formula_policy"]
+        assert policy in report["series"][family]["period_basis"]
+    historical_gaap = report["series"]["historical_gaap_crown_expenses"]
+    assert "Total Expenses" in historical_gaap["series_id"]
+    assert (
+        "2002 Previous Budget and Estimated Actual"
+        in historical_gaap["vintage_or_range"]
+    )
+    assert historical_gaap["rights"] == "publisher_default_observed_unadjudicated"
+    assert "no join to Core Crown Expenses" in historical_gaap["analytical_status"]
+    defu = report["series"]["historical_defu_core_crown_expenses"]
+    assert "Table B.1" in defu["series_id"]
+    assert defu["vintage_or_range"] == "2001/02 Actual; 2002/03-2006/07 Forecast"
+    assert defu["rights"] == "publisher_default_observed_unadjudicated"
+    assert "no cross-basis join" in defu["analytical_status"]
+    gaap_1998 = report["series"]["historical_gaap_1998_crown_expenses"]
+    sna_1998 = report["series"]["historical_sna_1998_central_outlay"]
+    assert "Forecast; 2000-2001 Projection" in gaap_1998["vintage_or_range"]
+    assert "1999-2001 Budget columns" in sna_1998["vintage_or_range"]
+    assert "not identical to GAAP Crown" in sna_1998["period_basis"]
+    assert sna_1998["rights"] == "publisher_default_observed_unadjudicated"
+    health_1999 = report["series"]["historical_befu_1999_health_expenses"]
+    assert "1998/99 Forecast" in health_1999["vintage_or_range"]
+    assert "GAAP definitions" in health_1999["period_basis"]
+    assert "No status relabelling" in health_1999["analytical_status"]
+    _assert_historical_locator_coverage(report)
+    _assert_vote_inventory_description(report)
+    assert all(not item["path"].endswith("/index.md") for item in report["evidence"])
+    assert report["source_families"]["vote_health"]["captured_documents"] == 59
     assert report["source_families"]["vote_health"]["estimates_years"] == [
         1998,
         1999,
@@ -40,6 +92,7 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
         2005,
         2006,
         2007,
+        2008,
         2014,
         2015,
         2016,
@@ -50,37 +103,45 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
         2025,
         2026,
     ]
-    assert report["source_families"]["vote_health"]["supplementary_years"] == [
-        1998,
-        1999,
-        2000,
-        2001,
-        2002,
-        2003,
-        2004,
-        2005,
-        2006,
-        2007,
-        2008,
-        2009,
-        2010,
-        2011,
-        2013,
-        2014,
-        2015,
-        2016,
-        2017,
-        2018,
-        2019,
-        2020,
-        2021,
-        2022,
-        2023,
-        2024,
-        2025,
-    ]
+    assert report["source_families"]["vote_health"]["supplementary_years"] == list(
+        range(1998, 2026)
+    )
     assert report["series"]["population"]["series_id"].startswith("DPE056AA")
-    assert report["series"]["population"]["rights"] == "infoshare_export_not_evaluated"
+    assert (
+        report["series"]["population"]["rights"]
+        == "publisher_default_observed_unadjudicated"
+    )
+    population_rights = next(
+        item
+        for item in report["evidence"]
+        if item["path"].endswith("population-rights-review-20261002.md")
+    )
+    assert (
+        population_rights["sha256"]
+        == hashlib.sha256(
+            (TRACK / "population-rights-review-20261002.md").read_bytes()
+        ).hexdigest()
+    )
+    wages = report["series"]["wages"]
+    assert "pay week ending on or before the 20th" in wages["period_basis"]
+    assert "not a full-quarter average" in wages["period_basis"]
+    assert "not a constant-quality wage index" in wages["analytical_status"]
+    assert wages["rights"] == "publisher_default_observed_unadjudicated"
+    assert any(
+        evidence["path"].endswith("qes-methodology-rights-review-20261002.md")
+        for evidence in report["evidence"]
+    )
+    for path, digest in (
+        (
+            TRACK / "qes-series-metadata-20261002.json.gz",
+            "be2715d1549f68bf2b0e60a9262b204690f8dbf8105c4c565594ea09d566df3f",
+        ),
+        (
+            TRACK / "qes-data-collection-metadata-20261002.json.gz",
+            "699a1fbb3df5b849974604b1a67dbbe0b1e15997921a3877699565c15151a19b",
+        ),
+    ):
+        assert hashlib.sha256(gzip.decompress(path.read_bytes())).hexdigest() == digest
     assert "2011Q2" in report["series"]["gdp"]["vintage_or_range"]
     assert "2026Q1" in report["series"]["gdp"]["vintage_or_range"]
     assert (
@@ -88,12 +149,13 @@ def test_review_reports_exact_series_and_preserves_blockers() -> None:
         in report["series"]["gdp"]["vintage_or_range"]
     )
     assert report["source_families"]["historical_editions"]["complete"] is False
+    assert report["source_families"]["historical_editions"]["locator_count"] == 131
     assert (
-        len(report["source_families"]["vote_health"]["discovered_estimates_urls"]) == 10
+        len(report["source_families"]["vote_health"]["discovered_estimates_urls"]) == 9
     )
     assert (
         len(report["source_families"]["vote_health"]["discovered_supplementary_urls"])
-        == 2
+        == 0
     )
 
 
@@ -137,6 +199,30 @@ def _pin(report: dict, root: Path, relative: str) -> None:
     )
 
 
+def test_review_binds_historical_bytes_without_following_current_census(
+    tmp_path: Path,
+) -> None:
+    path, root, report = _fixture(tmp_path)
+    prior = json.loads(
+        (TRACK / "source-measure-review-20261017-forecast-binding.json").read_bytes()
+    )
+    for key in ("series", "series_count", "source_families", "observed_at", "scope"):
+        assert report[key] == prior[key]
+    current = root / TRACK_RELATIVE / "context-census.json"
+    assert str(current.relative_to(root)) not in {
+        item["path"] for item in report["evidence"]
+    }
+    baseline = validate_review(path, root)
+    current.write_text("{}")
+    assert validate_review(path, root) == baseline
+    historical = (
+        root / TRACK_RELATIVE / "context-census-pre-cpi-source-evidence-20261017.json"
+    )
+    historical.write_bytes(b"changed historical snapshot")
+    with pytest.raises(ValueError, match="invalid source-measure evidence"):
+        validate_review(path, root)
+
+
 def _mutate_vote(report: dict, mutation: str) -> None:
     vote = report["source_families"]["vote_health"]
     if mutation == "vote_count":
@@ -148,7 +234,7 @@ def _mutate_vote(report: dict, mutation: str) -> None:
     elif mutation == "vote_missing_estimates":
         vote["missing_estimates_years"].pop()
     elif mutation == "vote_missing_supplementary":
-        vote["missing_supplementary_years"].pop()
+        vote["missing_supplementary_years"].append(2012)
     elif mutation == "discovered_year":
         vote["discovered_estimates_urls"]["2014"] = (
             "https://www.treasury.govt.nz/publications/budget"
@@ -170,7 +256,9 @@ def _mutate_history(report: dict, mutation: str) -> None:
     elif mutation == "historical_editions":
         history["editions_with_locators"].pop()
     elif mutation == "historical_missing":
-        history["editions_missing_locators"].pop()
+        history["editions_missing_locators"].append(
+            history["editions_with_locators"][0]
+        )
     elif mutation == "historical_complete":
         history["complete"] = True
     elif mutation == "historical_fully_enumerated":
@@ -341,3 +429,118 @@ def test_discovered_locator_rejects_nonmissing_year_and_nonofficial_host(
 ) -> None:
     with pytest.raises(ValueError, match="invalid discovered Vote Health locator"):
         _check_discovered({"locators": {str(year): url}}, "locators", {2012})
+
+
+def test_component_index_candidates_keep_codes_and_admission_separate() -> None:
+    """Publisher table/dimension identities cannot approve a whole-budget deflator."""
+    report = validate_review(REPORT, ROOT)
+    observation = json.loads(
+        (TRACK / "health-component-index-discovery-20261017.json").read_text()
+    )
+    lci = observation["central_government_catalogue_readback"]
+    ppi = observation["ppi_inputs_catalogue_readback"]
+    assert lci["table_reference"] == "LCI025AA"
+    assert lci["labour_cost"] == {"code": "3", "label": "All Salary and Wage Rates"}
+    assert lci["observations"]["code"] == "LCI025AC"
+    assert ppi["table_reference"] == "PPI021AA"
+    assert ppi["observations"]["code"] == "PPI021CC"
+    assert (
+        lci["observations"]["label"]
+        == ppi["observations"]["label"]
+        == "Health Care and Social Assistance"
+    )
+    for key in [
+        "central_government_catalogue_readback",
+        "ppi_inputs_catalogue_readback",
+    ]:
+        row = observation[key]
+        assert row["bounded_query_cells"] == 1
+        assert row["status_flags_enabled"] is True
+        assert row["numeric_value_retained_in_receipt"] is False
+        assert row["native_payload_capture_performed"] is False
+        assert row["session_query_url_is_durable"] is False
+    assert observation["numeric_cells_admitted"] is False
+    assert observation["policy_status"] == "not_selected"
+    assert observation["rights_adjudication"] is False
+    assert (
+        report["series"]["health_lci_component_candidate"]["rights"]
+        == "infoshare_export_not_evaluated"
+    )
+    assert (
+        report["series"]["health_ppi_component_candidate"]["rights"]
+        == "infoshare_export_not_evaluated"
+    )
+    for name in ["health_lci_component_candidate", "health_ppi_component_candidate"]:
+        assert (
+            "No whole-Vote-Health deflator"
+            in report["series"][name]["analytical_status"]
+        )
+
+
+def test_vote_scope_uses_published_fiscal_editions() -> None:
+    report = json.loads(REPORT.read_text())
+    vote = report["source_families"]["vote_health"]
+    vote["missing_supplementary_years"] = []
+    vote["discovered_supplementary_urls"].pop("2026", None)
+    records = json.loads((TRACK / "source-census.json").read_text())["records"]
+    _check_vote_history(_Review.model_validate(report), records)
+
+
+def test_vote_rejects_same_domain_wrong_edition() -> None:
+    report = json.loads(REPORT.read_text())
+    vote = report["source_families"]["vote_health"]
+    records = json.loads((TRACK / "source-census.json").read_text())["records"]
+    vote["discovered_estimates_urls"]["2012"] = next(
+        iter(_published_vote_editions(records)["estimates"][2025])
+    )
+    with pytest.raises(ValueError, match="invalid discovered Vote Health locator"):
+        _check_vote_history(_Review.model_validate(report), records)
+
+
+def test_publisher_editions_preserve_additions_and_internal_gaps() -> None:
+    records = json.loads((TRACK / "source-census.json").read_text())["records"]
+    published = _published_vote_editions(records)
+    assert set(published["estimates"]) == set(range(1998, 2027))
+    assert set(published["supplementary"]) == set(range(1998, 2026))
+    assert len(published["supplementary"][2019]) == 2
+    assert any("addition-" in url for url in published["supplementary"][2019])
+    without_2012 = [
+        row
+        for row in records
+        if not (
+            row.get("family") == "treasury_vote_health"
+            and "2012/13" in row.get("title", "")
+        )
+    ]
+    assert 2012 not in _published_vote_editions(without_2012)["supplementary"]
+
+
+def test_short_titles_count_appropriations_excluding_supporting_volumes() -> None:
+    records = json.loads((TRACK / "source-census.json").read_text())["records"]
+    short = [
+        row
+        for row in records
+        if row.get("source_id")
+        in {
+            "treasury_vote_health_document-90791173089c47e3",
+            "treasury_vote_health_document-566aface4fa2633a",
+        }
+    ]
+    assert len(short) == 2
+    assert _vote_edition_years(short) == (set(), {2012})
+    supporting = [row for row in short if "supporting information" in row["title"]]
+    assert _vote_edition_years(supporting) == (set(), set())
+
+
+def test_combined_supplementary_titles_remain_appropriation_documents() -> None:
+    records = json.loads((TRACK / "source-census.json").read_text())["records"]
+    combined = [
+        row
+        for row in records
+        if row.get("family") == "treasury_vote_health_document"
+        and "Supplementary Estimates of Appropriations and Supporting Information"
+        in row.get("title", "")
+    ]
+    assert len(combined) == 2
+    assert _vote_edition_years(combined) == (set(), {2007, 2013})
+    assert _vote_edition_years(records)[1] == set(range(1998, 2026))

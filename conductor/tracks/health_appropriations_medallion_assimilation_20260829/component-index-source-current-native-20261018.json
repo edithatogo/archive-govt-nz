@@ -1,0 +1,12 @@
+{
+  "head": "7ada6fec474ac4a572143adb66a594515e30627b",
+  "hosted_checks": "all seven successful at PR709 delivery",
+  "inputs": "unchanged",
+  "native3_native4_changed_report_fields": [],
+  "native3_native4_report_sha256": "fccc38505c0983ff60c12371e714f4233e54c84efa7c52b0b04e7d31c62fe8e4",
+  "native4_receipt_scope": "changed_fields in original receipt compare against the pre-summary bbd251a4 report, not native3",
+  "network": "denied",
+  "original_comparison_receipt_sha256": "ce173cb6a74a0838142399dc432c7345113c425162f65e9fe415a96629714162",
+  "original_receipt": "native-proof-4.json",
+  "source_query_objects": 14
+}

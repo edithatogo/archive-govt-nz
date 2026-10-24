@@ -13,6 +13,7 @@ from archive_govt_nz.domains.health_appropriations.befu_chart_literals import (
 from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
 from archive_govt_nz.domains.health_appropriations.historical import _exact_amount
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
+    verified_payload,
     verified_snapshot,
 )
 
@@ -49,6 +50,12 @@ def admit_hyefu_allowances(source: Path) -> dict[str, Any]:
     """Return 16 source observations, never converted to yearly totals."""
     _require(source.is_file() and not source.is_symlink())
     payload = verified_snapshot(source, SOURCE_SHA256, max_bytes=4 * 1024 * 1024)
+    return admit_hyefu_allowances_snapshot(payload)
+
+
+def admit_hyefu_allowances_snapshot(payload: bytes) -> dict[str, Any]:
+    """Admit the same exact bounded original directly from Bronze bytes."""
+    payload = verified_payload(payload, SOURCE_SHA256, max_bytes=4 * 1024 * 1024)
     inventory = inventory_workbook(BytesIO(payload))
     tokens = _selected_tokens(payload, selected_sheets=frozenset({SHEET}))[SHEET]
     book = load_workbook(BytesIO(payload), data_only=False, keep_links=True)

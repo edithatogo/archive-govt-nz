@@ -15,6 +15,14 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Budget2015 source-to-products contract](./biff8-2015-contract.md)
+- [Budget2015 numeric preflight](./budget-2015-biff8-preflight-20261021.json)
+- [Budget2015 source/native qualification](./budget-2015-biff8-native-qualification-20261021.json)
+- [Budget2015 complete native products](./biff8-2015-products-native-20261021.json)
+- [Budget2015 bounded review closure](./biff8-2015-review-closure-20261021.json)
+- [Budget2015 audit blocker evidence](./biff8-2015-certifi-audit-blocker-20261021.json)
+- [Budget2015 certifi security update](./biff8-2015-certifi-security-update-20261021.json)
+
 - [SQLite inventory path and identifier repair](./sqlite-inventory-boundary.md)
 
 - [Negative-fixture matrix](./negative-fixture-matrix.md)
@@ -36,6 +44,16 @@ every planned record set, measure or operational workflow.
 - [Health analytical-context register](./analytical-context-register.md)
 - [Source-context census](./context-census.md)
 - [Source-context census data](./context-census.json)
+- [June 2026 GDP release observation](./gdp-release-observation-20260930.json)
+- [June 2026 GDP context Silver repeat-build evidence](./context-gdp-june-2026-repeat-20261023.md)
+- [June 2026 GDP context Silver machine receipt](./context-gdp-june-2026-repeat-20261023.json)
+- [Context Gold GDP vintage evidence](./context-gold-gdp-vintages-20261002.md)
+- [Context GDP June clean-room recovery receipt](./clean-room-recovery-20261002-context-gdp-june.json)
+- [GDP-vintage Conductor phase 7 review receipt](./phase_7_gates-review-receipt-20261002-context-gdp-june.json)
+- [Recovered BEFU Bronze object receipt](./bronze-object-recovery-20260930.json)
+- [Source-health and recovery revalidation](./source-health-revalidation-20260930.json)
+- [Whole-census source-health and vintage-state report](./source-health-report.md)
+- [Machine-readable source-health report](./source-health-report.json)
 - [Population census integration validation](./population-census-integration.json)
 
 - [Exclusive local classification occurrence export](./classification-export.md)
@@ -47,6 +65,38 @@ every planned record set, measure or operational workflow.
 - [Hash-bound Bronze adapter dispatch and validation](./adapter-dispatch.validation.json)
 - [Named-column Budget workbook dispatch adapter validation](./budget-adapter.validation.json)
 - [Budget revenue workbook dispatch adapter validation](./budget-revenue-adapter.validation.json)
+- [Vote Health 2002/03 Part F revenue recovery](./vote-health-revenue-2002-03-20261003.md)
+- [Vote Health 2002/03 Part F machine receipt](./vote-health-revenue-2002-03-20261003.json)
+- [Vote Health 2002/03 overview headlines](./vote-health-estimates-overview-2002-03-20261003.md)
+- [Vote Health 2002/03 overview machine receipt](./vote-health-estimates-overview-2002-03-20261003.json)
+- [Vote Health 2004/05 overview headlines](./vote-health-estimates-overview-2004-05-20261003.md)
+- [Vote Health 2004/05 overview phase review receipt](./phase_7_gates-review-receipt-20261003-vote-health-overview-2004-05.json)
+- [Vote Health 2008/09 overview headlines](./vote-health-estimates-overview-2008-09-20261003.md)
+- [Vote Health 2008/09 overview machine receipt](./vote-health-estimates-overview-2008-09-20261003.json)
+- [Vote Health 2008/09 phase 7 review receipt](./phase_7_gates-review-receipt-20261003-vote-health-overview-2008-09.json)
+- [Vote Health 2008/09 incremental capture request](./vote-health-estimates-overview-2008-09-capture-request.json)
+- [Vote Health 2008/09 incremental capture receipt](./vote-health-estimates-overview-2008-09-capture.json)
+- [Vote Health Supplementary Estimates 2005/06 overview totals](./vote-health-supplementary-2005-06-overview-totals-20261007.md)
+- [Vote Health Supplementary Estimates 2005/06 machine evidence](./vote-health-supplementary-2005-06-overview-totals-20261007.json)
+- [Vote Health Supplementary Estimates 2005/06 clean-room recovery](./clean-room-recovery-20261007-vote-health-2005-06.json)
+- [Vote Health 2009/10 overview headlines](./vote-health-estimates-overview-2009-10-20261004.md)
+- [Vote Health 2009/10 overview receipt](./vote-health-estimates-overview-2009-10-20261004.json)
+- [Vote Health 2009/10 incremental capture request](./vote-health-estimates-overview-2009-10-capture-request.json)
+- [Vote Health 2009/10 incremental capture receipt](./vote-health-estimates-overview-2009-10-capture.json)
+- [Vote Health 2009/10 captured-source census addendum](./vote-health-estimates-overview-2009-10-census.json)
+- [Vote Health 2009/10 source-health reconciliation](./source-health-report-20261004-vote-health-2009-10.md)
+- [Vote Health 2009/10 source-health machine receipt](./source-health-report-20261004-vote-health-2009-10.json)
+- [Vote Health 2010/11 overview headlines](./vote-health-estimates-overview-2010-11-20261004.md)
+- [Vote Health 2010/11 overview machine receipt](./vote-health-estimates-overview-2010-11-20261004.json)
+- [Vote Health 2010/11 incremental capture request](./vote-health-estimates-overview-2010-11-capture-request.json)
+- [Vote Health 2010/11 incremental capture receipt](./vote-health-estimates-overview-2010-11-capture.json)
+- [Vote Health 2010/11 captured-source census addendum](./vote-health-estimates-overview-2010-11-census.json)
+- [Vote Health 2010/11 source-health reconciliation](./source-health-report-20261004-vote-health-2010-11.md)
+- [Vote Health 2010/11 source-health machine receipt](./source-health-report-20261004-vote-health-2010-11.json)
+- [Vote Health 2010/11 phase 7 review receipt](./phase_7_gates-review-receipt-20261004-vote-health-overview-2010-11.json)
+- [Cumulative official source capture manifest, 2026-10-03](./official-capture-2026-10-03-health-complete.json)
+- [Source PDF structural layout baseline, 2026-10-03](./source-pdf-layout-baseline-20261003.json)
+- [Source layout inventory baseline, 2026-10-03](./source-layout-baseline-20261003.json)
 - [Budget source-literal dimensions and unresolved mapping validation](./budget-source-dimensions.validation.json)
 - [Context-source Bronze adapters](./context-adapters.md)
 - [Context-source adapter validation](./context-adapters.validation.json)
@@ -96,8 +146,10 @@ every planned record set, measure or operational workflow.
 - Scope and plan: explicitly approved on 2026-08-29.
 - Donor preservation: 23/23 paths imported into external Bronze CAS and
   reconstructed, according to the recorded preservation receipts.
-- Official source census: 73 captured resources and 68 discovery-only entries
-  in the recorded 141-entry census; discovery is not capture.
+- Official source census: 74 captured resources and 68 discovery-only entries
+  in the recorded 142-entry census; discovery is not capture. The June 2026
+  Stats NZ GDP workbook is a separate captured vintage with an unqualified
+  analytical and rights state.
 - Exact CPIQ.SE9A source adapter: PR #271 observed merged after seven passing
   exact-head checks (1,956 hosted tests). Independent local builds retain 449
   selected facts, including 27 literal NA values, 4,041 lineage entries and
@@ -170,9 +222,540 @@ they are not current-state assertions.
 - [Implementation Plan](plan.md)
 - [Read-only partial-rebuild planner](readonly-resume-planner.md)
 - [Historical Budget and forecast source register](historical-source-register.md)
+- [BEFU 2002 GAAP expense source/period census addendum](historical-source-register.md)
 - [Exact source series and period/rights review](source-measure-review-20260927.json)
+- [Budget source-label occurrence comparison](classification-label-occurrences-20260930.json)
+- [GDP March/June vintage differences](gdp-vintage-reconciliation-20260930.json)
+- [Canonical Gold source-coordinate drill-through](canonical-gold-source-coordinate-drillthrough-20261001.md)
 
 - [Normalization and SQLite checkpoint integration](./normalization-checkpoint-integration-20260913.md)
 - [Preserved final normalization checkpoint](./normalization-admission-checkpoint-20260906.json)
 - [Bronze checkpoint durability contracts](./bronze-checkpoint-contracts.md)
 - [POSIX directory durability validation receipt](./checkpoint-directory-durability.json)
+- [Current-head clean-room recovery receipt (2026-10-01)](clean-room-recovery-20261001.json)
+- [Vote Health 2009/10 overview phase 7 review receipt](./phase_7_gates-review-receipt-20261004-vote-health-overview-2009-10.json)
+
+- [Vote Health 2011/12 overview extraction](./vote-health-estimates-overview-2011-12-20261004.md)
+- [Vote Health 2011/12 machine receipt](./vote-health-estimates-overview-2011-12-20261004.json)
+- [Vote Health 2011/12 captured-source census](./vote-health-estimates-overview-2011-12-census.json)
+- [Vote Health 2011/12 capture manifest](./vote-health-estimates-overview-2011-12-capture-final.json)
+- [Vote Health 2011/12 source-health reconciliation](./source-health-report-20261004-vote-health-2011-12.md)
+- [Vote Health 2011/12 source-health machine receipt](./source-health-report-20261004-vote-health-2011-12.json)
+- [Vote Health 2011/12 source-operation output receipt](./vote-health-estimates-overview-2011-12-source-operation.json)
+
+- [Vote Health 2012/13 overview extraction](./vote-health-estimates-overview-2012-13-20261004.md)
+- [Vote Health 2012/13 machine receipt](./vote-health-estimates-overview-2012-13-20261004.json)
+- [Vote Health 2012/13 captured-source census](./vote-health-estimates-overview-2012-13-census.json)
+- [Vote Health 2012/13 capture request](./vote-health-estimates-overview-2012-13-capture-request.json)
+- [Vote Health 2012/13 capture manifest](./vote-health-estimates-overview-2012-13-capture-final.json)
+- [Vote Health 2012/13 source-health reconciliation](./source-health-report-20261004-vote-health-2012-13.md)
+- [Vote Health 2012/13 source-operation output receipt](./vote-health-estimates-overview-2012-13-source-operation.json)
+- [Vote Health 2013/14 overview extraction](./vote-health-estimates-overview-2013-14-20261004.md)
+- [Vote Health 2013/14 machine receipt](./vote-health-estimates-overview-2013-14-20261004.json)
+- [Vote Health 2013/14 captured-source census](./vote-health-estimates-overview-2013-14-census.json)
+- [Vote Health 2013/14 capture request](./vote-health-estimates-overview-2013-14-capture-request.json)
+- [Vote Health 2013/14 capture manifest](./vote-health-estimates-overview-2013-14-capture-final.json)
+- [Vote Health 2013/14 source-health reconciliation](./source-health-report-20261004-vote-health-2013-14.md)
+- [Vote Health 2013/14 source-operation output receipt](./vote-health-estimates-overview-2013-14-source-operation.json)
+- [Vote Health 2013/14 source-health machine receipt](./source-health-report-20261004-vote-health-2013-14.json)
+- [Vote Health 2014/15 overview extraction](./vote-health-estimates-overview-2014-15-20261004.md)
+- [Vote Health 2014/15 machine receipt](./vote-health-estimates-overview-2014-15-20261004.json)
+- [Vote Health 2014/15 captured-source census](./vote-health-estimates-overview-2014-15-census.json)
+- [Vote Health 2014/15 capture evidence](./vote-health-estimates-overview-2014-15-capture-evidence.json)
+- [Vote Health 2014/15 source-health reconciliation](./source-health-report-20261004-vote-health-2014-15.md)
+- [Vote Health 2014/15 source-health machine receipt](./source-health-report-20261004-vote-health-2014-15.json)
+- [Vote Health 2014/15 source-operation output receipt](./vote-health-estimates-overview-2014-15-source-operation.json)
+
+- [Source-qualified Fiscal Health shares](./fiscal-health-shares-20261004.md)
+- [Fiscal share repeat-build receipt](./fiscal-health-shares-20261004.json)
+
+- [Annual mean resident spending rate](fiscal-health-per-capita-20261004.md)
+- [Per-capita native replay evidence](fiscal-health-per-capita-20261004.json)
+
+- [Household CPI fiscal benchmark](fiscal-health-cpi-benchmark-20261004.md)
+- [CPI benchmark native replay evidence](fiscal-health-cpi-benchmark-20261004.json)
+
+- [Fiscal analytical Gold package](fiscal-analytical-gold-20261004.md)
+- [Analytical Gold repeat-build receipt](fiscal-analytical-gold-20261004.json)
+
+- [Read-only Fiscal analytical CLI/MCP access](fiscal-analytical-access-20261004.md)
+- [Native CLI/MCP and Arrow comparison receipt](fiscal-analytical-access-20261004.json)
+
+- [Fiscal analytical reports and metadata](fiscal-analytical-reports-20261004.md)
+- [Report native repeat-build assurance](fiscal-analytical-reports-20261004.json)
+- [Fiscal Gold source reconciliation](fiscal-gold-source-reconciliation-20261005.md)
+- [Source reconciliation machine receipt](fiscal-gold-source-reconciliation-20261005.json)
+
+- [Integrated Fiscal analytical recovery](fiscal-analytical-recovery-20261004.md)
+- [Native reconstruction and interface evidence](fiscal-analytical-recovery-20261004.json)
+
+- [Budget estimate-transition comparison](./budget-vintage-comparison-20261005.md)
+
+- [Budget comparison Gold and operations](./budget-comparison-gold-20261005.md)
+
+- [Local analytical Gold metadata](./gold-metadata-20261005.md)
+
+- [Local Gold discovery profiles](./gold-discovery-profiles-20261005.md)
+
+- [Fresh analytical products and metadata recovery](./analytical-metadata-recovery-20261005.md)
+- [Analytical metadata recovery evidence](./analytical-metadata-recovery-20261005.json)
+- [Scoped analytical metadata recovery review](./phase_7_gates-review-receipt-20261005-analytical-metadata-recovery.json)
+
+- [2015/16 Vote Health overview](vote-health-estimates-overview-2015-16-20261005.md)
+- [2015/16 overview evidence](vote-health-estimates-overview-2015-16-20261005.json)
+- [2016/17 Vote Health overview source census](./vote-health-estimates-overview-2016-17-census.md)
+- [2016/17 Vote Health overview census receipt](./vote-health-estimates-overview-2016-17-census.json)
+- [Source/measure census review refreshed for this evidence snapshot](./source-measure-review-20261005.json)
+- [Source/measure census review with BEFU 2002 period and scope](./source-measure-review-20261006.json)
+- [Source/measure policy reconciliation at 16 October](./source-measure-review-20261016.json)
+- [Historical Vote Health 2002 main and supplementary estimate locators](./historical-source-register.md#vote-health-estimates-and-supplementary-estimates-budget-2002--6-october-2026)
+- [2016/17 Vote Health overview implementation and census review](./vote-health-estimates-overview-2016-17-review-20261005.md)
+- [2016/17 Vote Health overview Conductor phase review receipt](./phase_7_gates-review-receipt-20261005-vote-health-2016-17.json)
+- [2011/12 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2011-12-category-totals-20261006.md)
+- [2011/12 category-total evidence](./vote-health-supplementary-2011-12-category-totals-20261006.json)
+- [2011/12 category totals in clean-room recovery](./clean-room-recovery-20261006-vote-health-2011-12.json)
+- [2010/11 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2010-11-category-totals-20261006.md)
+- [2010/11 category-total evidence](./vote-health-supplementary-2010-11-category-totals-20261006.json)
+- [2010/11 category totals in clean-room recovery](./clean-room-recovery-20261006-vote-health-2010-11.json)
+- [2006/07 Vote Health Supplementary Estimates overview totals](./vote-health-supplementary-2006-07-overview-totals-20261007.md)
+- [2006/07 overview-total evidence](./vote-health-supplementary-2006-07-overview-totals-20261007.json)
+- [2006/07 overview totals in clean-room recovery](./clean-room-recovery-20261007-vote-health-2006-07.json)
+- [2007/08 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2007-08-category-totals-20261007.md)
+- [2007/08 category-total evidence](./vote-health-supplementary-2007-08-category-totals-20261007.json)
+- [2007/08 category totals in clean-room recovery](./clean-room-recovery-20261007-vote-health-2007-08.json)
+- [2008/09 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2008-09-category-totals-20261007.md)
+- [2008/09 category-total evidence](./vote-health-supplementary-2008-09-category-totals-20261007.json)
+- [2008/09 category totals in clean-room recovery](./clean-room-recovery-20261007-vote-health-2008-09.json)
+- [2009/10 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2009-10-category-totals-20261006.md)
+- [2009/10 category-total evidence](./vote-health-supplementary-2009-10-category-totals-20261006.json)
+- [2009/10 category totals in clean-room recovery](./clean-room-recovery-20261006-vote-health-2009-10.json)
+- [2013/14 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2013-14-category-totals-20261006.md)
+- [2012/13 Vote Health Supplementary Estimates financial activity](./vote-health-supplementary-2012-13-financial-activity-20261023.md)
+- [2012/13 financial activity machine evidence](./vote-health-supplementary-2012-13-financial-activity-20261023.json)
+- [2013/14 Vote Health Supplementary Estimates financial activity](./vote-health-supplementary-2013-14-financial-activity-20261023.md)
+- [2013/14 financial activity machine evidence](./vote-health-supplementary-2013-14-financial-activity-20261023.json)
+- [GDP June contextual Silver runtime refresh evidence](./gdp-june-runtime-refresh-20261024.json)
+- [2013/14 category-total evidence](./vote-health-supplementary-2013-14-category-totals-20261006.json)
+- [2013/14 category totals in clean-room recovery](./clean-room-recovery-20261006-vote-health-2013-14.json)
+- [2014/15 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2014-15-category-totals-20261006.md)
+- [2014/15 category-total evidence](./vote-health-supplementary-2014-15-category-totals-20261006.json)
+- [2014/15 category totals in clean-room recovery](./clean-room-recovery-20261006-vote-health-2014-15.json)
+- [2015/16 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2015-16-category-totals-20261006.md)
+- [2015/16 category-total evidence](./vote-health-supplementary-2015-16-category-totals-20261006.json)
+- [2015/16 category totals in clean-room recovery](./clean-room-recovery-20261006-vote-health-2015-16.json)
+- [2016/17 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2016-17-category-totals-20261006.md)
+- [2016/17 category-total evidence](./vote-health-supplementary-2016-17-category-totals-20261006.json)
+- [2016/17 category totals in clean-room recovery](./clean-room-recovery-20261006-vote-health-2016-17.json)
+- [2017/18 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2017-18-category-totals-20261006.md)
+- [2017/18 category-total evidence](./vote-health-supplementary-2017-18-category-totals-20261006.json)
+- [2017/18 category totals in clean-room recovery](./clean-room-recovery-20261006-vote-health-2017-18.json)
+- [2018/19 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2018-19-category-totals-20261006.md)
+- [2019/20 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2019-20-category-totals-20261006.md)
+- [2019/20 Vote Health category-total evidence](./vote-health-supplementary-2019-20-category-totals-20261006.json)
+- [2020/21 Vote Health Supplementary Estimates summary totals](./vote-health-supplementary-2020-21-summary-totals-20261006.md)
+- [2020/21 Vote Health summary-total evidence](./vote-health-supplementary-2020-21-summary-totals-20261006.json)
+- [2021/22 Vote Health Supplementary Estimates summary totals](./vote-health-supplementary-2021-22-summary-totals-20261006.md)
+- [2021/22 Vote Health summary-total evidence](./vote-health-supplementary-2021-22-summary-totals-20261006.json)
+- [2022/23 Vote Health Supplementary Estimates summary totals](./vote-health-supplementary-2022-23-summary-totals-20261006.md)
+- [2022/23 Vote Health summary-total evidence](./vote-health-supplementary-2022-23-summary-totals-20261006.json)
+- [2023/24 Vote Health Supplementary Estimates summary totals](./vote-health-supplementary-2023-24-summary-totals-20261006.md)
+- [2023/24 Vote Health summary-total evidence](./vote-health-supplementary-2023-24-summary-totals-20261006.json)
+- [2024/25 Vote Health Supplementary Estimates summary totals](./vote-health-supplementary-2024-25-summary-totals-20261006.md)
+- [2024/25 Vote Health summary-total evidence](./vote-health-supplementary-2024-25-summary-totals-20261006.json)
+- [2025/26 Vote Health Supplementary Estimates summary totals](./vote-health-supplementary-2025-26-summary-totals-20261006.md)
+- [2025/26 Vote Health summary evidence](./vote-health-supplementary-2025-26-summary-totals-20261006.json)
+- [2025/26 Vote Health clean-room recovery](./clean-room-recovery-20261006-vote-health-2025-26.json)
+- [2018/19 category-total evidence receipt](./vote-health-supplementary-2018-19-category-totals-20261006.json)
+- [2018/19 category-total Conductor review](./phase_7_gates-review-receipt-20261006-vote-health-2018-19-totals.json)
+- [Vote Health 2018/19 category totals in clean-room recovery](./clean-room-recovery-20261006-vote-health-2018-19.json)
+- [Vote Health 2021/22 summary in clean-room recovery](./clean-room-recovery-20261006-vote-health-2021-22.json)
+- [Vote Health 2022/23 summary in clean-room recovery](./clean-room-recovery-20261006-vote-health-2022-23.json)
+- [Vote Health 2023/24 summary in clean-room recovery](./clean-room-recovery-20261006-vote-health-2023-24.json)
+- [Vote Health 2024/25 summary in clean-room recovery](./clean-room-recovery-20261006-vote-health-2024-25.json)
+- [Vote Health 2004/05 Supplementary Estimates overview](./vote-health-supplementary-2004-05-overview-20261007.md)
+- [Vote Health 2004/05 overview extraction evidence](./vote-health-supplementary-2004-05-overview-20261007.json)
+- [Vote Health 2004/05 overview in clean-room recovery](./clean-room-recovery-20261007-vote-health-2004-05.json)
+- [Vote Health 2001/02 Supplementary Estimates overview](./vote-health-supplementary-2001-02-overview-20261007.md)
+- [Vote Health 2001/02 overview extraction evidence](./vote-health-supplementary-2001-02-overview-20261007.json)
+- [Vote Health 2001/02 overview in clean-room recovery](./clean-room-recovery-20261007-vote-health-2001-02.json)
+- [Vote Health 2000/01 Supplementary Estimates overview](./vote-health-supplementary-2000-01-overview-20261007.md)
+- [Vote Health 2000/01 overview extraction evidence](./vote-health-supplementary-2000-01-overview-20261007.json)
+- [Vote Health 2000/01 overview in clean-room recovery](./clean-room-recovery-20261007-vote-health-2000-01.json)
+- [Vote Health 2002/03 Supplementary Estimates overview](./vote-health-supplementary-2002-03-overview-20261007.md)
+- [Vote Health 2002/03 overview extraction evidence](./vote-health-supplementary-2002-03-overview-20261007.json)
+- [Vote Health 2002/03 overview in clean-room recovery](./clean-room-recovery-20261007-vote-health-2002-03.json)
+
+- [Vote Health 1999/2000 Supplementary Estimates overview](./vote-health-supplementary-1999-00-overview-20261007.md)
+- [Vote Health 1999/2000 overview extraction evidence](./vote-health-supplementary-1999-00-overview-20261007.json)
+- [Vote Health 1999/2000 overview in integrated clean-room recovery](./clean-room-recovery-20261007-vote-health-1999-00.json)
+- [Fiscal Gold cross-product query matrix and real-view exclusion](./fiscal-gold-query-matrix-20261007.md)
+- [Canonical Gold named queries and readback evidence](./canonical-gold-queries-20261017.md)
+- [Canonical Gold metadata profile and version compatibility](./canonical-gold-metadata-20261017.md)
+- [Fresh canonical inputs and query/metadata recovery](./canonical-recovery-inputs-20261017.md)
+
+- [Fresh canonical recovery native validation](./canonical-recovery-validation-20261017.json)
+
+- [Independent ordered query recovery validation](./canonical-recovery-ordered-validation-20261017.json)
+
+- [2002 BEFU/DEFU census observation](./source-census-2002-befu-defu-20261017.md)
+- [2002 source identity/period/layout evidence](./source-census-2002-befu-defu-20261017.json)
+- [Source/measure review after the 2002 slice](./source-measure-review-20261017.json)
+
+- [BEFU 1998 census observation](./source-census-befu-1998-20261017.md)
+- [BEFU 1998 source identity/layout evidence](./source-census-befu-1998-20261017.json)
+- [Previous source/measure census review, BEFU 1998](./source-measure-review-20261017-1998.json)
+
+- [BEFU 1999 and year-end publication census](./source-census-befu-1999-20261017.md)
+- [BEFU 1999 source and disposition evidence](./source-census-befu-1999-20261017.json)
+- [Previous source/measure census review, BEFU 1999](./source-measure-review-20261017-1999.json)
+
+- [Remaining year-level source locator census](./source-census-locator-gaps-20261017.md)
+- [Locator identity and period evidence](./source-census-locator-gaps-20261017.json)
+- [Health component index discovery](./health-component-index-discovery-20261017.md)
+- [Component table and method evidence](./health-component-index-discovery-20261017.json)
+- [Previous source/measure census review, locator gaps](./source-measure-review-20261017-locator-gaps.json)
+- [Source/measure review bound to retained census](./source-measure-review-20261017-cpi-snapshot-binding.json)
+
+
+- [Retained capture inventory reconciliation](./capture-inventory-20261017.md)
+- [Distinct 2019/20 Supplementary Addition census](./supplementary-addition-2019-20-census-20261017.md)
+- [Latest bounded capture inventory including the Addition](./capture-inventory-20261017-addition.json)
+
+- [Operational reviewed overview dispatch](./overview-operational-dispatch-20261017.md)
+  and [native run inventory/pinned readback proof](./overview-operational-dispatch-20261017.json).
+
+- [Operational overview review-fix native proof](./overview-operational-dispatch-review-fix-20261017.json).
+
+- [Bounded donor-area partial metadata mappings](./donor-area-partial-mappings-20261017.json);
+  not whole-sheet completeness or output verification. Phase4issue #210 remains open.
+
+- [Reviewed forecast common adapters](./forecast-common-adapters-20261017.md)
+  and [four-API/two-common native proof](./forecast-common-adapters-20261017.json).
+
+- [Forecast evidence rebinding](./forecast-evidence-rebinding-20261017.json), [historical context snapshot](./context-census-pre-forecast-common-20261017.json), and [successor source-measure binding](./source-measure-review-20261017-forecast-binding.json).
+
+- [Forecast common adapter full local validation](./forecast-common-adapters-validation-20261017.json).
+
+- [Forecast operational dispatch checkpoint](./forecast-operational-dispatch-20261017.json).
+
+- [Forecast operation native repeat/readback proof](./forecast-operational-dispatch-native-20261017.json).
+
+- [Forecast operation full validation and timeout recovery evidence](./forecast-operational-dispatch-validation-20261017.json).
+
+- [Forecast operation size review fix](./forecast-operation-size-review-fix-20261017.json).
+
+- [Forecast operation size-fix native and real regression proof](./forecast-operation-size-fix-native-20261017.json).
+
+- [Forecast operation size-fix full validation](./forecast-operation-size-fix-validation-20261017.json).
+
+- [Forecast operational dispatch delivered and pruned](./forecast-operational-dispatch-delivery-20261017.json).
+
+- [Context operation CPI literal/version boundary](./context-operation-cpi-vintage-20261017.json).
+
+- [Five-profile context operational dispatch checkpoint](./context-operational-dispatch-20261017.json).
+
+- [Context dispatch native repeat/recovery proof](./context-operational-dispatch-native-20261017.json) and [full local validation](./context-operational-dispatch-validation-20261017.json).
+
+- [Context operations delivered and clean topic pruned](./context-operational-dispatch-delivery-20261017.json).
+
+- [Operation-bound canonical context and QES lineage disposition](./context-operation-canonical-20261017.json).
+
+- [Canonical operation native proof](./context-operation-canonical-native-20261017.json) and [full local validation](./context-operation-canonical-validation-20261017.json).
+
+- [Canonical operation consumer delivered and topic pruned](./context-operation-canonical-delivery-20261017.json).
+
+- [Operation Context Gold implementation and resource-contract checkpoint](./operation-context-gold-20261017.json).
+
+- [Operation Context Gold actual-source repeat proof](./operation-context-gold-native-20261017.json).
+- [Operation Context Gold initial full-gate failure evidence](./operation-context-gold-initial-validation-20261017.json).
+
+- [Operation Context Gold full local validation](./operation-context-gold-validation-20261017.json).
+
+- [PR704 reserved-output race correction checkpoint](./operation-context-gold-output-correction-20261017.json).
+
+- [PR704 pinned-output actual-source repeat proof](./operation-context-gold-output-native-20261017.json).
+
+- [Operation Context Gold protected delivery and pruning](./operation-context-gold-delivery-20261017.json).
+
+- [Operation-context metadata in-progress checkpoint](./operation-context-metadata-20261017.json).
+
+- [Operation-context metadata delivery](./operation-context-metadata-delivery-20261017.json) — PR705 merged, required checks passed, fetched/pruned proof; broader track remains open.
+
+- [CPI source-evidence checkpoint](./cpi-source-evidence-20261017.json) — response-bound current metadata and same-byte CSV recapture; offline contract and census reconciliation in progress.
+
+- [CPI offline source contract and replay](./cpi-source-evidence-20261017.md), [verified report](./cpi-source-evidence-report-20261017.json), [native proof](./cpi-source-evidence-native-20261017.json), and [preservation](./cpi-source-preservation-20261017.json) — current census reconciled; full/hosted delivery pending.
+
+- [CPI source-review historical binding](./cpi-source-review-rebinding-20261017.json) — original review and assessment unchanged; successor retains the exact historical census digest rather than following mutable current metadata.
+
+- [CPI source-health v2 profile](./cpi-source-health-20261017.md) — fixed source-evidence adoption; focused/static qualified, actual-source/full/hosted pending.
+
+- [Operation-context metadata CLI/MCP](./operation-metadata-operations-20261017.md) and [focused checkpoint](./operation-metadata-operations-20261017.json) — source-regenerated v5 operations; native/full/hosted pending.
+- [CPI source-health delivery](./cpi-source-health-delivery-20261017.json) — PR707 merged and verified; topic refs pruned.
+
+- [Metadata operations delivery](./operation-metadata-operations-delivery-20261018.json) — PR708 merged, seven checks passed, fetched tree verified and topic refs pruned; historical pending receipt superseded.
+- [Component-index source checkpoint](./component-index-source-checkpoint-20261018.json) — actual LCI/PPI exports and source metadata captured/preserved; offline qualification and rights observations pending.
+
+- [Component-index source contract and guide](./component-index-source-evidence-20261018.md), [report](./component-index-source-evidence-report-20261018.json), [native proof](./component-index-source-native-20261018.json), [initial failure](./component-index-source-native-failure-20261018.json), and [full assurance](./component-index-source-assurance-20261018.json) — source-census qualification passes; rights/admission and hosted delivery remain separate.
+
+- [Component-index corrected full assurance](./component-index-source-assurance-final-20261018.json) and [scan recovery](./component-index-source-scan-recovery-20261018.json) — native3/current report and corrected full2 pass; prior proof/scan evidence retained, no scanner policy changes.
+
+- [Component-index delivery](./component-index-source-delivery-20261018.json), [current full assurance](./component-index-source-current-assurance-20261018.json), and [native comparison](./component-index-source-current-native-20261018.json) — PR709 merged after exact-head checks; original proofs/failures preserved and clean topic refs pruned.
+
+- [Supplementary summary common dispatch checkpoint](./supplementary-summary-dispatch-20261018.json) — two existing source-specific normalizers now expose shared snapshot extraction; focused qualification complete, native/full/hosted pending.
+
+- [Exact donor-stage reconstruction](./donor-area-reconstruction-20261018.json); two new retained runs match all50 historical file pins and12stage receipts. Remaining area bindings stay open.
+
+- [Recovered nine-stage source-area bindings](./donor-stage-area-bindings-20261018.json); native613-fact/12binding report and full local assurance, with all global unit remainders open.
+
+- [Five physical literal source adapters](./literal-common-adapters-20261018.json); seven shared native profiles, complete area qualifiers, two native replays and full harness qualified; hosted delivery pending.
+
+- [Fiscal2024 historical common dispatch](./historical-common-dispatch-20261018.json); focused308, native two-run parity and full7954 passed; historical census binding reconciled; hosted delivery pending.
+
+- [Compound native workbook contract](./compound-native-recordsets-20261018.md); planned typed forecast/detail composition with unchanged v1 consumers and native schemas.
+
+- [Compound carrier checkpoint](./compound-native-recordsets-20261018.json); carrier, native dispatch, bounded envelopes and v1 regression checks pass96; source composition/native/full assurance pending.
+
+- [Read-only native workbook inspection](./native-workbook-inspection-20261018.md) — delivered PR #716; actual Windows qualification, seven exact-head successes and verified cleanup.
+
+- [Budget 2024 expenditure/revenue census](./source-census-budget-2024-20261018.md) — originals preserved; native headers/definitions and item notices observed; source-bound 2024 revenue locally qualified; hosted delivery pending.
+
+- [Budget 2024 structural inventory](./budget-2024-layout-20261018.json) and [native definitions/item notices](./budget-2024-definitions-20261018.json).
+
+- [Source/measure review with Budget 2024 retained-source overlay](./source-measure-review-20261018-budget-2024.json) — 19 existing series retained; wider edition and analytical gaps remain explicit.
+
+- [Budget 2024 revenue native/full qualification](./budget-2024-revenue-qualification-20261018.json) —66facts, all1004rows accounted, byte-identical repeats; hosted delivery pending.
+
+- [Budget 2024 source-operation entry correction](./budget-2024-source-entry-20261018.json) — supported CLI/MCP actual-source entry and corrected 32-stage full harness pass; fresh hosted delivery pending.
+
+- [Budget2024 expenditure profile](./budget-2024-expenditure-profile-20261018.json) — native and hosted qualified; delivered PR 718, local timing failures retained.
+- [PR717 delivery](./budget-2024-revenue-delivery-20261018.json) — protected merge and verified topic cleanup.
+
+- [PR 718 delivery](./budget-2024-expenditure-delivery-20261018.json) — protected merge, full hosted assurance and verified cleanup.
+- [Budget 2023 census](./source-census-budget-2023-20261018.json) — originals privately preserved; native definitions, layout and item rights pending.
+
+- [Budget 2023 capture](./budget-2023-capture-20261018.json) — source fixity, WARC binding and receipts independently verified.
+
+- [Budget 2023 bounded native inspection](./budget-2023-native-inspection-20261018.json)
+
+- [Budget 2023 revenue native qualification](./budget-2023-revenue-native-20261018.json)
+
+- [Budget 2023 revenue full assurance](./budget-2023-revenue-assurance-20261018.json)
+
+- [Budget 2023 revenue protected delivery](./budget-2023-revenue-delivery-20261018.json)
+
+- [Budget 2023 expenditure source profile](./budget-2023-expenditure-profile-20261018.json)
+
+- [Budget 2023 expenditure native qualification](./budget-2023-expenditure-native-20261018.json)
+
+- [Budget 2023 expenditure local assurance result](./budget-2023-expenditure-assurance-20261018.json)
+
+- [Budget 2023 expenditure protected delivery](./budget-2023-expenditure-delivery-20261018.json)
+
+- [Readable PDF layout diagnosis and focused parser fixes](./readable-pdf-layout-diagnostic-20261018.json)
+
+- [Retained PDF layout qualification](./readable-pdf-layout-qualification-20261018.json) and [59-source layout baseline](./source-pdf-layout-baseline-20261018.json).
+
+- [PDF local assurance](./readable-pdf-layout-assurance-20261018.json), [source-health qualification](./readable-pdf-source-health-qualification-20261018.json), [refreshed readable source-health report](./source-health-report-20261018-pdf-layouts.md) and [v2 JSON](./source-health-report-20261018-pdf-layouts.json). Prior default report remains a retained historical receipt.
+
+- [PDF layout protected delivery and cleanup](./readable-pdf-layout-delivery-20261018.json) — PR721 merged and verified; topic refs pruned.
+
+- [Budget2022 working source census](./source-census-budget-2022-20261018.json) — official release observed; bounded capture/native verification pending.
+
+- [Budget2022 partial capture qualification](./budget-2022-capture-20261018.json) — workbook pair preserved; release-page403 and native/rights gates explicit.
+
+- [Budget2022 native structure and definitions](./budget-2022-native-inspection-20261018.json) — observed row bounds and profile prerequisites; no numerical admission.
+
+- [Budget2022 source-profile implementation and focused evidence](./budget-2022-profile-implementation-20261018.json) — native/full/protected qualification pending.
+
+- [Budget2022 actual-source repeat/CLI/MCP/compatibility qualification](./budget-2022-native-qualification-20261018.json) — local source-native profiles pass; full/protected delivery pending.
+
+- [Budget2022 original local assurance attempt](./budget-2022-assurance-20261018.json) — terminal test cap; all32clean-hosted and protected delivery required.
+
+- [Budget2022 protected delivery and local failure dispositions](./budget-2022-delivery-20261018.json)
+
+- [Context reader startup implementation](./context-reader-startup-implementation-20261018.json)
+
+- [Reader/API native product proof and explicit CLI timing gap](./context-reader-startup-native-20261018.json)
+
+- [Reader original local assurance attempt](./context-reader-startup-assurance-20261018.json)
+
+- [Budget2022 versioned delivery/status projection](./budget-2022-state-20261019-v1.json)
+- [Reader versioned current-status projection](./context-reader-startup-state-20261019-v1.json)
+
+Producer qualification/implementation and dated census checkpoints retain their pre-delivery state. Later merge and assurance transitions are recorded in separate receipts/projections.
+
+- [Standalone CLI and initialized MCP replay](./context-reader-startup-replay-20261019-v1.json) — earlier timeout receipts retained.
+- [Reader current-state projection v2](./context-reader-startup-state-20261019-v2.json) — supersedes v1 status only; protected assurance pending.
+
+- [Reader protected delivery](./context-reader-startup-delivery-20261019.json)
+- [Reader current-state projection v3](./context-reader-startup-state-20261019-v3.json)
+
+- [Budget edition routing focused implementation](./budget-edition-routing-implementation-20261019.json)
+
+- [Edition-routing actual-source qualification](./budget-edition-routing-native-20261019.json)
+- [Edition-routing original assurance and failure disposition](./budget-edition-routing-assurance-20261019.json)
+
+- [Edition-routing protected delivery](./budget-edition-routing-delivery-20261019.json)
+- [Edition-routing current-state projection v1](./budget-edition-routing-state-20261019-v1.json)
+
+- [Annual Budget retained capture verification v1](./budget-census-retained-20261019-v1.json) — partial scoped reconciliation; six originals reused, no new capture/admission.
+
+- [Preservation-only implementation checkpoint](./preservation-only-implementation-20261019.json)
+- [Annual Budget cohort census v1](./annual-budget-census-20261019-v1.json) — six existing captures,34pending exact requests.
+- [Pinned preservation-only request v1](./annual-budget-preservation-request-20261019-v1.json) — no rights or format admission.
+
+- [Final preservation-only focused validation](./preservation-only-validation-20261019-v1.json)
+
+- [Budget preservation native qualification](./budget-preservation-qualification-20261019-v1.json)
+
+- [Budget preservation original local assurance](./budget-preservation-assurance-20261019-v1.json)
+
+- [Exact archive-provenance secret adjudication](./budget-provenance-secret-adjudication-20261019-v1.json)
+
+- [Budget preservation protected delivery](./budget-preservation-delivery-20261019.json)
+- [Budget preservation separate delivered state](./budget-preservation-state-20261019-v1.json)
+- [Official Budget locator candidates](./budget-locator-discovery-20261019-v1.json)
+
+- [First official-locator native qualification](./budget-locator-qualification-20261019-v1.json)
+
+- [Additional official Budget locator candidates](./budget-locator-additional-discovery-20261019-v1.json)
+
+- [Complete locator archive qualification](./budget-locator-qualification-20261019-v2.json)
+- [Forty intended edition and role archive candidates](./budget-edition-role-candidates-20261019-v1.json)
+- [Sixteen source-backed locator correction candidates](./budget-locator-correction-candidates-20261019-v1.json)
+- [Forty-six verified archive assets](./budget-verified-archive-assets-20261019-v1.json)
+
+- [Exact immutable metadata-flag adjudication](./budget-locator-metadata-adjudication-20261020-v1.json)
+
+- [Exact historical status-field adjudication](./budget-locator-status-adjudication-20261020-v1.json)
+
+- [Complete original local locator assurance](./budget-locator-assurance-20261020-v1.json)
+
+- [PR727 delivery and topic cleanup](./budget-locator-delivery-20261020-v1.json): all checks/all32 stages across three hosted platforms pass; native legacy/period/unit/rights qualification remains pending.
+
+- [Budget census and Bronze preservation reconciliation (2026-10-23)](./budget-census-bronze-reconciliation-20261023.md): all40 registered annual expenditure/revenue roles have archived candidates; current CAS/WARC replay verifies all46 assets. Original404s, ten403 publication pages, and unresolved alias/rights/metadata qualifications remain explicit.
+
+- Legacy BIFF8 inspector: `health-appropriations-inspect-legacy-workbook SOURCE EXPECTED_SHA256` defaults to inventory only; `--sheet NAME --rows 5 --columns 12` requests bounded decoded stored/cached previews. [Output schema](../../../schemas/health-legacy-workbook-inspection-v1.schema.json).
+
+- [Legacy reader native qualification](./legacy-inspection-qualification-20261020-v1.json):32candidate inspections repeat identically across210worksheet observations; full harness/protected delivery pending.
+
+- [Legacy reader original full local assurance](./legacy-inspection-assurance-20261020-v1.json):all32stages pass; exact final-head hosted/protected delivery pending.
+
+- [Legacy output-schema correction and fresh assurance](./legacy-inspection-schema-correction-20261020-v1.json): malformed empty titles reject; all32valid outputs preserved; protected delivery pending.
+
+- [Legacy workbook inspector protected delivery](./legacy-inspection-delivery-20261020.json)
+
+- [Budget2021 source-native Silver qualification](./budget-2021-native-qualification-20261020.json)
+
+- [Budget2021 original local assurance](./budget-2021-original-assurance-20261020.json)
+
+- [Budget2021 source-native Silver qualification](./budget-2021-native-qualification-20261020-v2.json)
+
+- [Budget2021 original local assurance](./budget-2021-original-assurance-20261020-v2.json)
+
+- [Budget2021 protected delivery and cleanup](./budget-2021-delivery-20261020.json)
+
+- [Budget2020 native source qualification](./budget-2020-native-qualification-20261020.json)
+
+- [Budget 2020 original local assurance](./budget-2020-original-assurance-20261020.json)
+
+- [Budget 2020 protected delivery](./budget-2020-delivery-20261020.json)
+- [Legacy Budget source census](./source-census-budget-legacy-20261020.md) and [machine receipt](./source-census-budget-legacy-20261020.json)
+
+- [Legacy census source/reference validation](./source-census-budget-legacy-validation-20261020.json)
+
+- [Legacy census original local assurance](./source-census-budget-legacy-assurance-20261020.json)
+
+- [Legacy census protected delivery](./legacy-definition-census-delivery-20261020.json)
+- [BIFF8 stored-value contract](./biff8-stored-value-contract.md)
+
+## Budget2019 BIFF8 source-native foundation
+
+- [Separate stored-value contract](./biff8-stored-value-contract.md)
+- [Stored-integer core qualification](./biff8-core-native-qualification-20261020.json)
+- [2019 source-native Silver and remaining boundaries](./budget-2019-biff8-silver.md)
+- [2019 full native qualification](./budget-2019-biff8-native-qualification-20261020.json)
+
+- [2019 BIFF8 original full assurance and interrupted-run recovery](./budget-2019-biff8-original-assurance-20261020.json)
+
+- [BIFF8 canonical and Gold contract](./biff8-canonical-gold-contract.md)
+- [BIFF8 native canonical and Gold qualification](./biff8-canonical-gold-native-20261020.json)
+
+- [BIFF8 closed-registry native requalification](./biff8-canonical-gold-native-20261020-v2.json)
+
+- [BIFF8 original local assurance observations](./biff8-canonical-gold-original-assurance-20261020.json)
+- [BIFF8 pre-PR assurance receipt](./biff8-canonical-gold-prepr-20261020.json)
+
+- [BIFF8-inclusive recovery contract](biff8-recovery-contract.md)
+- [BIFF8-inclusive native recovery receipt](biff8-recovery-native-20261020.json)
+- [BIFF8-inclusive recovery review](biff8-recovery-review-20261020.md)
+
+- [Budget2018 BIFF8 contract](biff8-2018-contract.md)
+- [Budget2018 source-native qualification](budget-2018-biff8-native-qualification-20261021.json)
+- [BIFF8 recovery delivery PR734](biff8-recovery-delivery-734-20261021.json)
+
+- [Budget2015 protected delivery PR739](biff8-2015-delivery-739-20261021.json)
+- [Budget2014 source-to-products contract](biff8-2014-contract.md)
+- [Budget2014 edition disposition and numeric preflight](budget-2014-biff8-preflight-20261021.json)
+- [Budget2014 source/native/interface qualification](budget-2014-biff8-native-qualification-20261021.json)
+- [Budget2014 full recovery and Gold evidence](biff8-2014-products-native-20261021.json)
+- [Budget2014 bounded review](biff8-2014-review-20261021.json)
+
+The completed legacy census remains an immutable historical observation. Its
+Budget2014 edition-pending flag is superseded by the explicitly source-backed
+2014 disposition above. Revenue B10 and the publication-day discrepancy remain
+unchanged; this is no publisher correction or rights/comparability approval.
+
+- [Budget2013 source-to-products contract](biff8-2013-contract.md)
+- [Budget2013 source edition, fields and numeric preflight](budget-2013-biff8-preflight-20261021.json)
+- [Budget2013 native source and interface qualification](budget-2013-biff8-native-qualification-20261021.json)
+- [Budget2013 complete recovery and Gold evidence](biff8-2013-products-native-20261021.json)
+- [Budget2013 bounded review](biff8-2013-review-20261021.json)
+
+- [Budget2012 source-to-products contract](biff8-2012-contract.md)
+- [Budget2012 source/numeric preflight](budget-2012-biff8-preflight-20261021.json)
+- [Budget2012 native source and interface qualification](budget-2012-biff8-native-qualification-20261021.json)
+- [Budget2012 complete recovery and Gold evidence](biff8-2012-products-native-20261021.json)
+- [Budget2012 bounded review](biff8-2012-review-20261021.json)
+
+- [Budget2011 source-to-products contract](biff8-2011-contract.md)
+- [Budget2011 source/numeric preflight](budget-2011-biff8-preflight-20261021.json)
+- [Budget2011 native source/interface qualification](budget-2011-biff8-native-qualification-20261021.json)
+- [Budget2011 full recovery and Gold evidence](biff8-2011-products-native-20261021.json)
+- [Budget2011 bounded review](biff8-2011-review-20261021.json)
+
+- [Current donor retain-both status clarification](donor-status-clarification-20261021.json): all30 reconciliation dispositions are accepted; replacement/publication remain unapproved. The Phase4 ledger is authoritative over stale blocker wording in later bounded snapshots.
+
+- [Budget2010 source-to-products contract](biff8-2010-contract.md)
+- [Budget2010 complete census/numeric preflight](budget-2010-biff8-preflight-20261021.json)
+- [Budget2010 native source/interface qualification](budget-2010-biff8-native-qualification-20261021.json)
+- [Budget2010 complete recovery and Gold evidence](biff8-2010-products-native-20261021.json)
+- [Budget2010 bounded review](biff8-2010-review-20261021.json)
+
+- [Budget2009 source-to-products contract](biff8-2009-contract.md)
+- [Budget2009 census/numeric preflight](budget-2009-biff8-preflight-20261021.json)
+- [Budget2009 native source/interface qualification](budget-2009-biff8-native-qualification-20261021.json)
+- [Budget2009 complete recovery and Gold evidence](biff8-2009-products-native-20261021.json)
+- [Budget2009 bounded review](biff8-2009-review-20261021.json)
+
+- [Budget2007–2008 source-to-products contract](biff8-2007-2008-contract.md)
+- [Budget2007–2008 census/numeric preflight](budget-2007-2008-biff8-preflight-20261022.json)
+- [Budget2007–2008 native source/interface qualification](budget-2007-2008-biff8-native-qualification-20261022.json)
+- [Budget2007–2008 complete recovery/Gold evidence](biff8-2007-2008-products-native-20261022.json)
+- [Budget2007–2008 bounded review](biff8-2007-2008-review-20261022.json)
+
+- [Phase 4 current acceptance reconciliation](phase4-acceptance-20261022.md) and [pinned native audit](phase4-acceptance-20261022.json). Protected delivery remains pending; wider census and track gates stay open.
+
+- [PDF dependency security unblock](pypdf-security-unblock-20261022.md) and [paired qualification](pypdf-security-unblock-20261022.json): required audit failure preserved; fixed lock,60 existing PDF tests and three retained-source byte comparisons pass. Final assurance pending.
+
+- [Phase 4 protected delivery PR747](phase4-delivery-747-20261022.json): actual eight green checks, three-platform original harness, issue210 closure and verified clean topic pruning. Wider phases and track acceptance remain open.
+
+- [Budget2025 complete32-source native qualification](revenue-2025-complete-cohort-native-20261022.json) and [bounded review](revenue-2025-complete-cohort-review-20261022.md): numeric/recovery/interface proof passes; chart readability finding remains open.
+
+- [Windows deadline red evidence](windows-assurance-timeout-20261022.json) and [bounded scheduling review](windows-scheduling-review-20261022.md): existing Windows-only worksteal trial preserves all tests/stages/limits; actual hosted qualification remains required.
+
+- [Windows failed trial and test-stage-only diagnostic evidence](windows-test-diagnostics-20261022.json): preserves deadline failures and reporting boundaries; actual Windows root-cause repair/qualification remains open.
+
+- [Readable canonical Gold plot derivative](./readable-canonical-plots.md)
+- [Readable canonical plot native evidence](./readable-canonical-plots-native-20261022.json)
+- Phase 6 canonical Gold query/readback and CPython 3.15.1 full-harness evidence: see [plan](./plan.md#phase-6--gold-analytical-products) and the [latest runlog entry](./runlog.md). Source/donor total reconciliation and broader report matrices remain open.

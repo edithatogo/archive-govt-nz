@@ -1,0 +1,19 @@
+{
+  "checked_and_merge_ancestors_of_origin_main": true,
+  "checked_tree": "d940fbba2acceb43db5f5deed832f70da298c2db",
+  "headRefOid": "b1e00485a93bdbb9e4c712ef8a48f153de883780",
+  "mergeCommit": {
+    "oid": "02926da7be5d000da57ff88e8dfa6694f2f1f1e0"
+  },
+  "merge_tree": "d940fbba2acceb43db5f5deed832f70da298c2db",
+  "mergedAt": "2026-10-17T17:48:59Z",
+  "primary_worktree_retained": true,
+  "review_threads_resolved": true,
+  "seven_named_checks_success": true,
+  "state": "MERGED",
+  "topic_local_remote_tracking_refs_absent": true,
+  "track_complete": false,
+  "unique_topic_commits": 0,
+  "url": "https://github.com/edithatogo/archive-govt-nz/pull/710",
+  "worktree_clean": true
+}

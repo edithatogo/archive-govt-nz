@@ -13,6 +13,7 @@ from archive_govt_nz.domains.health_appropriations.befu_chart_literals import (
 from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
 from archive_govt_nz.domains.health_appropriations.historical import _exact_amount
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
+    verified_payload,
     verified_snapshot,
 )
 
@@ -95,6 +96,16 @@ def admit_health_chart_residuals(source: Path, vintage: str) -> dict[str, Any]:
     profile = PROFILES[vintage]
     _require(source.is_file() and not source.is_symlink())
     payload = verified_snapshot(source, profile["sha256"], max_bytes=4 * 1024 * 1024)
+    return admit_health_chart_residuals_snapshot(payload, vintage)
+
+
+def admit_health_chart_residuals_snapshot(
+    payload: bytes, vintage: str
+) -> dict[str, Any]:
+    """Admit the same exact bounded original directly from Bronze bytes."""
+    _require(vintage in PROFILES)
+    profile = PROFILES[vintage]
+    payload = verified_payload(payload, profile["sha256"], max_bytes=4 * 1024 * 1024)
     inventory = inventory_workbook(BytesIO(payload))
     title = profile["sheet"]
     tokens = _selected_tokens(payload, selected_sheets=frozenset({title}))[title]

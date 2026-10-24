@@ -1,0 +1,17 @@
+{
+  "scope": "implementation evidence rebinding only; no source or measure admission",
+  "previous_census_sha256": "579e63a757cae410a26e0f371ae8cb79bf31e10e30c46ccb652789b160199708",
+  "historical_snapshot": "context-census-pre-forecast-common-20261017.json",
+  "current_census_sha256": "3f0f15221c41abcc2f0c5ecf21effc69805f2e565a8d27a88fcde84680bf20ca",
+  "previous_forecast_sha256": "83df491b4daca836e519e61250883ebcde89d227a81bce50eae8a60f4fddc6eb",
+  "current_forecast_sha256": "bdb60ff1bf09c2993b453e6310c8ea15f3abcd1567b3584369c394017cef0bce",
+  "series_unchanged": true,
+  "historical_source_measure_review_unchanged": true,
+  "successor_review": "source-measure-review-20261017-forecast-binding.json",
+  "historical_recovery_product_pins_unchanged": true,
+  "full_validation_failure": {
+    "passed": 7780,
+    "failed": 2,
+    "log_sha256": "0c2b20db26564e8eb48d6fe6e05fd09a7fdbc9e525d2140dee4016bcf8d28bed"
+  }
+}

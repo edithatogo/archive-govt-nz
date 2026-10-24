@@ -110,13 +110,12 @@ def test_loader_retains_formula_and_link_metadata(
     path = tmp_path / "options.xlsx"
     _write_rich_fixture(path)
     original = formats.load_workbook
-    views: list[bool] = []
+    views: list[tuple[bool, bool]] = []
 
     def load_preserving(
         filename: Path, *, read_only: bool, data_only: bool, keep_links: bool
     ) -> Workbook:
-        assert not read_only
-        views.append(data_only)
+        views.append((read_only, data_only))
         assert keep_links
         return original(
             filename, read_only=read_only, data_only=data_only, keep_links=keep_links
@@ -124,4 +123,4 @@ def test_loader_retains_formula_and_link_metadata(
 
     monkeypatch.setattr(formats, "load_workbook", load_preserving)
     assert inventory_workbook(path)["kind"] == "xlsx"
-    assert views == [False, True]
+    assert views == [(False, False), (True, True)]

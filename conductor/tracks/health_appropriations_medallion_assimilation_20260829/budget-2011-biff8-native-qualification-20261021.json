@@ -1,0 +1,1009 @@
+{
+  "dimension_disposition": "MCOA remains separate; unlabeled column M null with structural lineage only, Current Scope absent/null/flagged; Revenue Dependent literal only for2011; no parent/group/category inference",
+  "files": {
+    "baseline-expenditure/MANIFEST.json": {
+      "bytes": 4408,
+      "sha256": "5192d42399c9985e444029a7fe684be83b3205dd2e0f451745f01a9f2f8f6e7b"
+    },
+    "baseline-expenditure/budget_facts.parquet": {
+      "bytes": 116861,
+      "sha256": "64c1a508a0e9a0395c1e8a606a7cf7f9873041f72690856d181cf97cb8844a0a"
+    },
+    "baseline-expenditure/field_lineage.parquet": {
+      "bytes": 217066,
+      "sha256": "eba2d1f7e5ea3c1e7bacad2cf61e6a0c72a5a8fea55c9035eec86809f79b8bcf"
+    },
+    "baseline-expenditure/numeric_evidence.parquet": {
+      "bytes": 191364,
+      "sha256": "085f676532b3ebcd5a74951b3e9093c5d17bc8d1466974e2fb5c92bfd8f8224e"
+    },
+    "baseline-expenditure/row_dispositions.parquet": {
+      "bytes": 623581,
+      "sha256": "9a569ac9d4251346760d9bf01785b0b954cca47cb9e39b294e61264e266aa93b"
+    },
+    "baseline-result.json": {
+      "bytes": 1281,
+      "sha256": "672bebf7a08684ec31c1d5ead399a89c00e9b1136d99087704ae2f9c31ce1e3e"
+    },
+    "baseline-revenue/MANIFEST.json": {
+      "bytes": 3612,
+      "sha256": "ab99f3ff63b4afe62c98ecba07f5620425b76d17446f7d332e452dbfe6881029"
+    },
+    "baseline-revenue/budget_facts.parquet": {
+      "bytes": 28338,
+      "sha256": "fdf94a6aab4217a1f67c9833c645ae1578cdac58a171dba8a6b66de19644c144"
+    },
+    "baseline-revenue/field_lineage.parquet": {
+      "bytes": 34510,
+      "sha256": "4381aac69ac70719684ed0a31aad77b70533681babb4a0c7540ebd5375a2ea22"
+    },
+    "baseline-revenue/numeric_evidence.parquet": {
+      "bytes": 30894,
+      "sha256": "488369d4943f5311e7b544b167f3ec4b19b386c00d021d2658b7e05a81b8f84f"
+    },
+    "baseline-revenue/row_dispositions.parquet": {
+      "bytes": 45941,
+      "sha256": "ee5af6729400f2c746e054a82048e172ab259dd82b2b22c7b9d5fa77027fc072"
+    },
+    "baseline2012-expenditure/MANIFEST.json": {
+      "bytes": 5014,
+      "sha256": "8fce971a764a4a7bfaff14dc811494b5a1c970be6b974021c0459ecf542771c0"
+    },
+    "baseline2012-expenditure/budget_facts.parquet": {
+      "bytes": 113825,
+      "sha256": "d7ef46cd2b06baa9ff35b32d9b177235da02ddb74fd65c8e8cf65e6def6c91f8"
+    },
+    "baseline2012-expenditure/field_lineage.parquet": {
+      "bytes": 182194,
+      "sha256": "a1e42e50efc30594da9763bbc73fe8fcd89515d3942595f11caf9acbf2d494dd"
+    },
+    "baseline2012-expenditure/numeric_evidence.parquet": {
+      "bytes": 146651,
+      "sha256": "88836a181196b7dee4286967d00d939d5af21857d9b8432e981c778b8b4ab917"
+    },
+    "baseline2012-expenditure/row_dispositions.parquet": {
+      "bytes": 532540,
+      "sha256": "155d5f17954c887220257478e8d32265bf3f5fba7df646b9873556d5f92b0456"
+    },
+    "baseline2012-result.json": {
+      "bytes": 1280,
+      "sha256": "683933b35cc5a8998a5380956f738edd03e05d62f2416773fd6b922a1500543c"
+    },
+    "baseline2012-revenue/MANIFEST.json": {
+      "bytes": 4878,
+      "sha256": "c9099f7c947fc23e87e71e2f5f5e354f7c2b4a47fbcf7a29d7daa2452093a10d"
+    },
+    "baseline2012-revenue/budget_facts.parquet": {
+      "bytes": 32725,
+      "sha256": "ea96cb5c607532cde7f1f87459b7242a511de195622ea5b3fdadd4dca429cc4c"
+    },
+    "baseline2012-revenue/field_lineage.parquet": {
+      "bytes": 44612,
+      "sha256": "5b8034d2a4534061376825f187e3224da3f3f08bb52907409a7454257024fa57"
+    },
+    "baseline2012-revenue/numeric_evidence.parquet": {
+      "bytes": 38944,
+      "sha256": "c1501005699ae5f319f8183f44dd290d86c68279ca307f13aa270632b6c369e2"
+    },
+    "baseline2012-revenue/row_dispositions.parquet": {
+      "bytes": 53053,
+      "sha256": "01e9a0351c168e598a2fd3a8a66ad0ac0f30cb6c352c709c4118904ebde25a95"
+    },
+    "baseline2013-expenditure/MANIFEST.json": {
+      "bytes": 5282,
+      "sha256": "1190d5b22a3dda61429c441f323ed148c16ef2ce60b83133c5efc6ee9efa7961"
+    },
+    "baseline2013-expenditure/budget_facts.parquet": {
+      "bytes": 113757,
+      "sha256": "a51bb1339dada584835d6ccc97a29bc996f1f8f99338fc0dc80b9e947feccfaf"
+    },
+    "baseline2013-expenditure/field_lineage.parquet": {
+      "bytes": 182007,
+      "sha256": "023d15659d9c1e586ddb8eb41efec71b98f522246b552136fea06509f7d18bc6"
+    },
+    "baseline2013-expenditure/numeric_evidence.parquet": {
+      "bytes": 145616,
+      "sha256": "e8331dd6b5e236e1a5144f2b4396c24a4a77f41197e6049a22ce0ddad4122774"
+    },
+    "baseline2013-expenditure/row_dispositions.parquet": {
+      "bytes": 532945,
+      "sha256": "8aac3881411963e032522fce4a24396adb5d8aa1c345eb18bee871a7e192ddef"
+    },
+    "baseline2013-result.json": {
+      "bytes": 1282,
+      "sha256": "79ed5443b80630b65b8869a62172209928f7b9c1c8022a9dc34ee159809da542"
+    },
+    "baseline2013-revenue/MANIFEST.json": {
+      "bytes": 5146,
+      "sha256": "18677a520d6adf9524a89ceb354083a115405d1def148e53b1f03a8ef05a30ae"
+    },
+    "baseline2013-revenue/budget_facts.parquet": {
+      "bytes": 31876,
+      "sha256": "0c9d3307b06d2c3483fd391b2475bc70fa139bf87f054618486f48dad1a20397"
+    },
+    "baseline2013-revenue/field_lineage.parquet": {
+      "bytes": 43015,
+      "sha256": "03d9fd29355c6747c68721cdb468bcd5c40e7cc2f20a4672d69d77bea882d783"
+    },
+    "baseline2013-revenue/numeric_evidence.parquet": {
+      "bytes": 37540,
+      "sha256": "160f7481ea28501037d3bd65cbfc7848c4f1def6dcbf56fa137cc8612c71ef53"
+    },
+    "baseline2013-revenue/row_dispositions.parquet": {
+      "bytes": 53420,
+      "sha256": "812943d4d49069ce99f972bfabf8dbc44495167b85dd18e305f04dcb453b89d6"
+    },
+    "baseline2014-expenditure/MANIFEST.json": {
+      "bytes": 5565,
+      "sha256": "c1888966a70072162a3b8414743bf33c943d8f9a360550d6e26aa8802298176e"
+    },
+    "baseline2014-expenditure/budget_facts.parquet": {
+      "bytes": 120046,
+      "sha256": "f432e25625b470179db6b7d5f97813090bf7014fa3aad8fab97456118c7349ce"
+    },
+    "baseline2014-expenditure/field_lineage.parquet": {
+      "bytes": 193615,
+      "sha256": "4903309b5faefe2439ae381129edb35e4eca1cd584635a7e13325f0f00ca7a26"
+    },
+    "baseline2014-expenditure/numeric_evidence.parquet": {
+      "bytes": 147944,
+      "sha256": "261c61be2f6ca4de46327b660090a93afc27ee27921ee726d3ad699f17e1d760"
+    },
+    "baseline2014-expenditure/row_dispositions.parquet": {
+      "bytes": 602914,
+      "sha256": "e1a8a9e5da69a0d819f61ac3e389ee5138de4fd6c1cca3fdcfaf0a451f8e715b"
+    },
+    "baseline2014-result.json": {
+      "bytes": 1282,
+      "sha256": "27f1d1775060830be629e4de98006926cd40d85bf7ce025f1e38dd3ad668ff6b"
+    },
+    "baseline2014-revenue/MANIFEST.json": {
+      "bytes": 5004,
+      "sha256": "229355987ab665bd462ba7af53b6b6afdb369f679e4ea832be2635e861ca2bf6"
+    },
+    "baseline2014-revenue/budget_facts.parquet": {
+      "bytes": 30248,
+      "sha256": "f5307e46b4a811ecd94b76204f8b55af26c6d497cfb664ecea57631335dedf8f"
+    },
+    "baseline2014-revenue/field_lineage.parquet": {
+      "bytes": 37426,
+      "sha256": "4aeb3a26aeb2b9fc9e5edabafb3c3e3eed14d856ab63e2683ede4dd92702bcb2"
+    },
+    "baseline2014-revenue/numeric_evidence.parquet": {
+      "bytes": 32524,
+      "sha256": "e1fa769e29d98651c2f7710881bc247e031a2b05739b99b8f0e2c4a98474405c"
+    },
+    "baseline2014-revenue/row_dispositions.parquet": {
+      "bytes": 47956,
+      "sha256": "97c2accc654f03dc813bca6c25e6abb2e3de7b337d3bc7f38421179a31f1a792"
+    },
+    "baseline2015-expenditure/MANIFEST.json": {
+      "bytes": 4198,
+      "sha256": "f5345623acfd42b2457ea41457173ac7600aae95d9ce6d68411b346a08e3596c"
+    },
+    "baseline2015-expenditure/budget_facts.parquet": {
+      "bytes": 117902,
+      "sha256": "0441039695c46e962b3c6e342ba983f52ea0e2b149c410a152166f607badfacd"
+    },
+    "baseline2015-expenditure/field_lineage.parquet": {
+      "bytes": 191715,
+      "sha256": "e4e6be02d7168aaf88de701ced5573d6829f86c7310c7fbaa7c85e54fef3788b"
+    },
+    "baseline2015-expenditure/numeric_evidence.parquet": {
+      "bytes": 146935,
+      "sha256": "c6b0285503377ad4db8ea97062fdfc4f6ca2dc62eee362c4b8c7885551b87476"
+    },
+    "baseline2015-expenditure/row_dispositions.parquet": {
+      "bytes": 613194,
+      "sha256": "66f61bb41a26715def1d1e9c7840277772cba8488f43f4c676d4e976e32d6ee7"
+    },
+    "baseline2015-result.json": {
+      "bytes": 1281,
+      "sha256": "5440e7b3e3ffd0fab3ed4e666f412265e60fbb7b373aa5a42d18bb111e1a6bf0"
+    },
+    "baseline2015-revenue/MANIFEST.json": {
+      "bytes": 3612,
+      "sha256": "e31ae252e0a56bdd5fe60ea7e7f8ffbca78a4da67934da264bdbc303d21fb766"
+    },
+    "baseline2015-revenue/budget_facts.parquet": {
+      "bytes": 29479,
+      "sha256": "ea53035c51ba6b80daaa33f8c338d2247be636e4c47a4c0a023173664c3f5833"
+    },
+    "baseline2015-revenue/field_lineage.parquet": {
+      "bytes": 35836,
+      "sha256": "5e2dc6423cd61d78e01daef038c3eef41559f821bdb880102bef7f6fb311a6a2"
+    },
+    "baseline2015-revenue/numeric_evidence.parquet": {
+      "bytes": 32131,
+      "sha256": "94e8f8a1ada2636443bf8e53479257e4359f6a2d02fe2ff4652d8a30ad39b305"
+    },
+    "baseline2015-revenue/row_dispositions.parquet": {
+      "bytes": 47333,
+      "sha256": "a3abd3148f85d72aecc55e2e4245753644777be64f64b848031c93bc2f1163b6"
+    },
+    "baseline2016-expenditure/MANIFEST.json": {
+      "bytes": 4198,
+      "sha256": "b33a1f402ff755d456be044242945970071d78d631bcd295f28763ad8ebe99bc"
+    },
+    "baseline2016-expenditure/budget_facts.parquet": {
+      "bytes": 114735,
+      "sha256": "630b839c18ee5cded3bb3b34846209cf8d1b7b39d50b995ec3a69645ddbb512c"
+    },
+    "baseline2016-expenditure/field_lineage.parquet": {
+      "bytes": 212566,
+      "sha256": "cdcf07dbeb349b3e52d8f72972f0d85fa2c52d570854c2e7234f43ad0e84c95f"
+    },
+    "baseline2016-expenditure/numeric_evidence.parquet": {
+      "bytes": 191484,
+      "sha256": "6df04200e7753279b5220c9cedb41738135f550fc72328af8254f26732e6faeb"
+    },
+    "baseline2016-expenditure/row_dispositions.parquet": {
+      "bytes": 638561,
+      "sha256": "43ecbb2e1c1d14b0ddb28493754249a7f1984ef0b6e286fca270d97f8bea431a"
+    },
+    "baseline2016-result.json": {
+      "bytes": 1280,
+      "sha256": "dbdb80387e1d3bf5de137f2bda1ebd3a354cb4c856732374535c97c7fbd80514"
+    },
+    "baseline2016-revenue/MANIFEST.json": {
+      "bytes": 3612,
+      "sha256": "a3ca31dd8d5d9ff6433326c6d5fc1835a40a53e64bbe45473e33e86c6e394ba5"
+    },
+    "baseline2016-revenue/budget_facts.parquet": {
+      "bytes": 29209,
+      "sha256": "1470250e3028b2aeeca2ef4fa2fbcfdbe8b1613c6fc760423d672c56e9ed99e5"
+    },
+    "baseline2016-revenue/field_lineage.parquet": {
+      "bytes": 35434,
+      "sha256": "8ad06e028efd239691d5042bb8486fe9665f7b8631f8c3f67ec8bc191cea773d"
+    },
+    "baseline2016-revenue/numeric_evidence.parquet": {
+      "bytes": 31740,
+      "sha256": "9287596d00972f9d45f34db54038cce2eb61221df49c7dfcc84ab71bf08dd369"
+    },
+    "baseline2016-revenue/row_dispositions.parquet": {
+      "bytes": 47459,
+      "sha256": "b44b233a8749dd3fb961494b6504645f9968e9c473832db5bf9cbf3f458d2964"
+    },
+    "baseline2017-expenditure/MANIFEST.json": {
+      "bytes": 4408,
+      "sha256": "52fbcd592ebb3a66a18aa125534e4ea3a96ae50d40acbef212e6ee083ee2d687"
+    },
+    "baseline2017-expenditure/budget_facts.parquet": {
+      "bytes": 116082,
+      "sha256": "551d506f5e419b919fb5d18e6c5b804ab62b4722717ecc766e09d4d03366281a"
+    },
+    "baseline2017-expenditure/field_lineage.parquet": {
+      "bytes": 214929,
+      "sha256": "9adf4580ed3f9f6a8c4827c931f1d896aa7ef67ff2bf7567f9f147625542cf58"
+    },
+    "baseline2017-expenditure/numeric_evidence.parquet": {
+      "bytes": 189322,
+      "sha256": "e1d739abd1264236733bade0db7ffa4073e549fd5ae5d4ef2ae57f680d66b838"
+    },
+    "baseline2017-expenditure/row_dispositions.parquet": {
+      "bytes": 627197,
+      "sha256": "d02fde77ce5f0c962259ee693da0db74ccd041d6648f73c75a59fd3ef0077401"
+    },
+    "baseline2017-result.json": {
+      "bytes": 1281,
+      "sha256": "53ab12ebcd91f4fab236638528ac6474f262c33c1c92f9708fad393a34624a5f"
+    },
+    "baseline2017-revenue/MANIFEST.json": {
+      "bytes": 3612,
+      "sha256": "98c00d9c8140b3a0cd3491cf825c7b5940becd73a403abc6f0728336c17e1206"
+    },
+    "baseline2017-revenue/budget_facts.parquet": {
+      "bytes": 28681,
+      "sha256": "f149b668710f6f83b744e29b816889ca5ab304f400c7497a3745f2c806c4e70a"
+    },
+    "baseline2017-revenue/field_lineage.parquet": {
+      "bytes": 34908,
+      "sha256": "bba8fa74e207ed9354cbc1d07baa526df65d3bb7a445f488ea132a3c8897823b"
+    },
+    "baseline2017-revenue/numeric_evidence.parquet": {
+      "bytes": 31216,
+      "sha256": "c922999a1162c8718643626225e03c54bf9300bff11a7ba0b18d3d21043db598"
+    },
+    "baseline2017-revenue/row_dispositions.parquet": {
+      "bytes": 46316,
+      "sha256": "5d5d2a06c4874aa0292dff7fd710071057f427e4ca0682b91a74a0f784af5754"
+    },
+    "baseline2018-expenditure/MANIFEST.json": {
+      "bytes": 4408,
+      "sha256": "a99ae2d54df0409a8999d97fcaeb2890ca2b38f71d7b758e55901d1f79b39fda"
+    },
+    "baseline2018-expenditure/budget_facts.parquet": {
+      "bytes": 116513,
+      "sha256": "225f8db0278f9882e507e8ec1d1217b52c460be606154a6e449ffc3cebd6ac4c"
+    },
+    "baseline2018-expenditure/field_lineage.parquet": {
+      "bytes": 216037,
+      "sha256": "4c82e174831153219841fd37fdb3bc67af5fe7d49b0156800bdd359861115974"
+    },
+    "baseline2018-expenditure/numeric_evidence.parquet": {
+      "bytes": 193301,
+      "sha256": "724acd2b85ed6903ef3469da6fe173ea213d94b847f2edfe7b88d9d6cd9bf38c"
+    },
+    "baseline2018-expenditure/row_dispositions.parquet": {
+      "bytes": 634452,
+      "sha256": "0d8bd2230b8625e4e6cbe97ade3d86b3398d76b605dbeeb1a87442974da85f04"
+    },
+    "baseline2018-result.json": {
+      "bytes": 1282,
+      "sha256": "b9ca6ec35162a676f299eece502afec269c7da9a866e7897607125e5fa8f5c49"
+    },
+    "baseline2018-revenue/MANIFEST.json": {
+      "bytes": 3612,
+      "sha256": "6db669f9dcb79588731b2cd05673e3e8c322469355010b4a7648f8ed8d6afdbf"
+    },
+    "baseline2018-revenue/budget_facts.parquet": {
+      "bytes": 28660,
+      "sha256": "468755a70a9b566d8167513a9fc77f04d5d8ba994951c4ffd800c3a9e610481b"
+    },
+    "baseline2018-revenue/field_lineage.parquet": {
+      "bytes": 34875,
+      "sha256": "8501c9ec846c53b4d15887b621923ed2ed2476189595a6b2f5e3bef0ff3463f2"
+    },
+    "baseline2018-revenue/numeric_evidence.parquet": {
+      "bytes": 31193,
+      "sha256": "6fadd9968aa7a63e36b24962919337bfd109a542ae2d19a64b7bba25b03f1d3b"
+    },
+    "baseline2018-revenue/row_dispositions.parquet": {
+      "bytes": 45793,
+      "sha256": "4e1f62c170e4b5f8cd0dc7a57365036edbc7dff50fe5b5db4bac7dc6ad0ebb88"
+    },
+    "first-expenditure/MANIFEST.json": {
+      "bytes": 4876,
+      "sha256": "eacfdc20ea7072d5f8918a0a3de30b6b3df369b5d86c5cb8389cbf1a7dcfd2ff"
+    },
+    "first-expenditure/budget_facts.parquet": {
+      "bytes": 101705,
+      "sha256": "64e7448b0289f405370a63d110f5d6555c927cf512b750c0442a7f658bfcc43e"
+    },
+    "first-expenditure/field_lineage.parquet": {
+      "bytes": 176945,
+      "sha256": "fbe30204c95d357b4129641c6f318d6d95348015cc680e20701b902014337de3"
+    },
+    "first-expenditure/numeric_evidence.parquet": {
+      "bytes": 147238,
+      "sha256": "c820560166c34e0be5d4149f2c953ee8991d88972f0c5ff57f52245896198341"
+    },
+    "first-expenditure/row_dispositions.parquet": {
+      "bytes": 306315,
+      "sha256": "48c019500fe0c9df9792e70fc492224392ea6892415d6a834917337eef9e5235"
+    },
+    "first-operation-expenditure/MANIFEST.json": {
+      "bytes": 4876,
+      "sha256": "eacfdc20ea7072d5f8918a0a3de30b6b3df369b5d86c5cb8389cbf1a7dcfd2ff"
+    },
+    "first-operation-expenditure/budget_facts.parquet": {
+      "bytes": 101705,
+      "sha256": "64e7448b0289f405370a63d110f5d6555c927cf512b750c0442a7f658bfcc43e"
+    },
+    "first-operation-expenditure/field_lineage.parquet": {
+      "bytes": 176945,
+      "sha256": "fbe30204c95d357b4129641c6f318d6d95348015cc680e20701b902014337de3"
+    },
+    "first-operation-expenditure/numeric_evidence.parquet": {
+      "bytes": 147238,
+      "sha256": "c820560166c34e0be5d4149f2c953ee8991d88972f0c5ff57f52245896198341"
+    },
+    "first-operation-expenditure/row_dispositions.parquet": {
+      "bytes": 306315,
+      "sha256": "48c019500fe0c9df9792e70fc492224392ea6892415d6a834917337eef9e5235"
+    },
+    "first-operation-revenue/MANIFEST.json": {
+      "bytes": 4879,
+      "sha256": "46b19c33fa79a5cf1c291deca3922b89de103203b2af882c1391e2e6dbc1c03e"
+    },
+    "first-operation-revenue/budget_facts.parquet": {
+      "bytes": 32849,
+      "sha256": "0c912a3512f30b7f395def6294d204875d701a28e403df942c0ed7eeb6e7e8ad"
+    },
+    "first-operation-revenue/field_lineage.parquet": {
+      "bytes": 44606,
+      "sha256": "7bb578238d8802706ff023f46dada50eb5e2d807d6242d2e783e2663ced81883"
+    },
+    "first-operation-revenue/numeric_evidence.parquet": {
+      "bytes": 38955,
+      "sha256": "b0b145730fe5905cf32c56779d8215f1e595403c7a25270ba4903ba1a2c449c5"
+    },
+    "first-operation-revenue/row_dispositions.parquet": {
+      "bytes": 52846,
+      "sha256": "069ccc554d647678f1ada4830b8262d19e3ca7b8cc0c44a3b7bda6b04f1278ff"
+    },
+    "first-result.json": {
+      "bytes": 4360,
+      "sha256": "172e9e48612a25dd1a6ca02c042744880ec75dc503ead0f2f05da2f68b4a759c"
+    },
+    "first-revenue/MANIFEST.json": {
+      "bytes": 4879,
+      "sha256": "46b19c33fa79a5cf1c291deca3922b89de103203b2af882c1391e2e6dbc1c03e"
+    },
+    "first-revenue/budget_facts.parquet": {
+      "bytes": 32849,
+      "sha256": "0c912a3512f30b7f395def6294d204875d701a28e403df942c0ed7eeb6e7e8ad"
+    },
+    "first-revenue/field_lineage.parquet": {
+      "bytes": 44606,
+      "sha256": "7bb578238d8802706ff023f46dada50eb5e2d807d6242d2e783e2663ced81883"
+    },
+    "first-revenue/numeric_evidence.parquet": {
+      "bytes": 38955,
+      "sha256": "b0b145730fe5905cf32c56779d8215f1e595403c7a25270ba4903ba1a2c449c5"
+    },
+    "first-revenue/row_dispositions.parquet": {
+      "bytes": 52846,
+      "sha256": "069ccc554d647678f1ada4830b8262d19e3ca7b8cc0c44a3b7bda6b04f1278ff"
+    },
+    "second-expenditure/MANIFEST.json": {
+      "bytes": 4876,
+      "sha256": "eacfdc20ea7072d5f8918a0a3de30b6b3df369b5d86c5cb8389cbf1a7dcfd2ff"
+    },
+    "second-expenditure/budget_facts.parquet": {
+      "bytes": 101705,
+      "sha256": "64e7448b0289f405370a63d110f5d6555c927cf512b750c0442a7f658bfcc43e"
+    },
+    "second-expenditure/field_lineage.parquet": {
+      "bytes": 176945,
+      "sha256": "fbe30204c95d357b4129641c6f318d6d95348015cc680e20701b902014337de3"
+    },
+    "second-expenditure/numeric_evidence.parquet": {
+      "bytes": 147238,
+      "sha256": "c820560166c34e0be5d4149f2c953ee8991d88972f0c5ff57f52245896198341"
+    },
+    "second-expenditure/row_dispositions.parquet": {
+      "bytes": 306315,
+      "sha256": "48c019500fe0c9df9792e70fc492224392ea6892415d6a834917337eef9e5235"
+    },
+    "second-operation-expenditure/MANIFEST.json": {
+      "bytes": 4876,
+      "sha256": "eacfdc20ea7072d5f8918a0a3de30b6b3df369b5d86c5cb8389cbf1a7dcfd2ff"
+    },
+    "second-operation-expenditure/budget_facts.parquet": {
+      "bytes": 101705,
+      "sha256": "64e7448b0289f405370a63d110f5d6555c927cf512b750c0442a7f658bfcc43e"
+    },
+    "second-operation-expenditure/field_lineage.parquet": {
+      "bytes": 176945,
+      "sha256": "fbe30204c95d357b4129641c6f318d6d95348015cc680e20701b902014337de3"
+    },
+    "second-operation-expenditure/numeric_evidence.parquet": {
+      "bytes": 147238,
+      "sha256": "c820560166c34e0be5d4149f2c953ee8991d88972f0c5ff57f52245896198341"
+    },
+    "second-operation-expenditure/row_dispositions.parquet": {
+      "bytes": 306315,
+      "sha256": "48c019500fe0c9df9792e70fc492224392ea6892415d6a834917337eef9e5235"
+    },
+    "second-operation-revenue/MANIFEST.json": {
+      "bytes": 4879,
+      "sha256": "46b19c33fa79a5cf1c291deca3922b89de103203b2af882c1391e2e6dbc1c03e"
+    },
+    "second-operation-revenue/budget_facts.parquet": {
+      "bytes": 32849,
+      "sha256": "0c912a3512f30b7f395def6294d204875d701a28e403df942c0ed7eeb6e7e8ad"
+    },
+    "second-operation-revenue/field_lineage.parquet": {
+      "bytes": 44606,
+      "sha256": "7bb578238d8802706ff023f46dada50eb5e2d807d6242d2e783e2663ced81883"
+    },
+    "second-operation-revenue/numeric_evidence.parquet": {
+      "bytes": 38955,
+      "sha256": "b0b145730fe5905cf32c56779d8215f1e595403c7a25270ba4903ba1a2c449c5"
+    },
+    "second-operation-revenue/row_dispositions.parquet": {
+      "bytes": 52846,
+      "sha256": "069ccc554d647678f1ada4830b8262d19e3ca7b8cc0c44a3b7bda6b04f1278ff"
+    },
+    "second-result.json": {
+      "bytes": 4362,
+      "sha256": "b0e10dfc02b3ed534169ec09ee5e5e48a97b75387928c24f522354fee798ab54"
+    },
+    "second-revenue/MANIFEST.json": {
+      "bytes": 4879,
+      "sha256": "46b19c33fa79a5cf1c291deca3922b89de103203b2af882c1391e2e6dbc1c03e"
+    },
+    "second-revenue/budget_facts.parquet": {
+      "bytes": 32849,
+      "sha256": "0c912a3512f30b7f395def6294d204875d701a28e403df942c0ed7eeb6e7e8ad"
+    },
+    "second-revenue/field_lineage.parquet": {
+      "bytes": 44606,
+      "sha256": "7bb578238d8802706ff023f46dada50eb5e2d807d6242d2e783e2663ced81883"
+    },
+    "second-revenue/numeric_evidence.parquet": {
+      "bytes": 38955,
+      "sha256": "b0b145730fe5905cf32c56779d8215f1e595403c7a25270ba4903ba1a2c449c5"
+    },
+    "second-revenue/row_dispositions.parquet": {
+      "bytes": 52846,
+      "sha256": "069ccc554d647678f1ada4830b8262d19e3ca7b8cc0c44a3b7bda6b04f1278ff"
+    },
+    "summary.json": {
+      "bytes": 496,
+      "sha256": "bdfbfc7b7ed2e447b80b35948d37ee3bc1bc9ea00d191c11a4bfe4f9250c61b5"
+    }
+  },
+  "observed_at": "2026-10-21T09:12:10.277245+00:00",
+  "postflight": {
+    "exit": 0,
+    "group_absent": true,
+    "head": "321228c19d3c381867e9d26e6351cc5bdb8b4c5a",
+    "independent_lease_free": true,
+    "owner_absent": true,
+    "pins_unchanged": 4993,
+    "status": "verified",
+    "tree": "052fe8b72fa92f8ed975791f958eb77854d8949b"
+  },
+  "prior_80_source_files_byte_identical": true,
+  "producer_head": "321228c19d3c381867e9d26e6351cc5bdb8b4c5a",
+  "producer_tree": "052fe8b72fa92f8ed975791f958eb77854d8949b",
+  "publication": "not_performed",
+  "rights": "not_evaluated",
+  "runs": {
+    "baseline": [
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2019,
+        "files": {
+          "MANIFEST.json": "5192d42399c9985e444029a7fe684be83b3205dd2e0f451745f01a9f2f8f6e7b",
+          "budget_facts.parquet": "64c1a508a0e9a0395c1e8a606a7cf7f9873041f72690856d181cf97cb8844a0a",
+          "field_lineage.parquet": "eba2d1f7e5ea3c1e7bacad2cf61e6a0c72a5a8fea55c9035eec86809f79b8bcf",
+          "numeric_evidence.parquet": "085f676532b3ebcd5a74951b3e9093c5d17bc8d1466974e2fb5c92bfd8f8224e",
+          "row_dispositions.parquet": "9a569ac9d4251346760d9bf01785b0b954cca47cb9e39b294e61264e266aa93b"
+        },
+        "kind": "expenditure",
+        "seconds": 1.6879074999596924
+      },
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2019,
+        "files": {
+          "MANIFEST.json": "ab99f3ff63b4afe62c98ecba07f5620425b76d17446f7d332e452dbfe6881029",
+          "budget_facts.parquet": "fdf94a6aab4217a1f67c9833c645ae1578cdac58a171dba8a6b66de19644c144",
+          "field_lineage.parquet": "4381aac69ac70719684ed0a31aad77b70533681babb4a0c7540ebd5375a2ea22",
+          "numeric_evidence.parquet": "488369d4943f5311e7b544b167f3ec4b19b386c00d021d2658b7e05a81b8f84f",
+          "row_dispositions.parquet": "ee5af6729400f2c746e054a82048e172ab259dd82b2b22c7b9d5fa77027fc072"
+        },
+        "kind": "revenue",
+        "seconds": 0.1746725420234725
+      }
+    ],
+    "baseline2012": [
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2012,
+        "files": {
+          "MANIFEST.json": "8fce971a764a4a7bfaff14dc811494b5a1c970be6b974021c0459ecf542771c0",
+          "budget_facts.parquet": "d7ef46cd2b06baa9ff35b32d9b177235da02ddb74fd65c8e8cf65e6def6c91f8",
+          "field_lineage.parquet": "a1e42e50efc30594da9763bbc73fe8fcd89515d3942595f11caf9acbf2d494dd",
+          "numeric_evidence.parquet": "88836a181196b7dee4286967d00d939d5af21857d9b8432e981c778b8b4ab917",
+          "row_dispositions.parquet": "155d5f17954c887220257478e8d32265bf3f5fba7df646b9873556d5f92b0456"
+        },
+        "kind": "expenditure",
+        "seconds": 1.72069066693075
+      },
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2012,
+        "files": {
+          "MANIFEST.json": "c9099f7c947fc23e87e71e2f5f5e354f7c2b4a47fbcf7a29d7daa2452093a10d",
+          "budget_facts.parquet": "ea96cb5c607532cde7f1f87459b7242a511de195622ea5b3fdadd4dca429cc4c",
+          "field_lineage.parquet": "5b8034d2a4534061376825f187e3224da3f3f08bb52907409a7454257024fa57",
+          "numeric_evidence.parquet": "c1501005699ae5f319f8183f44dd290d86c68279ca307f13aa270632b6c369e2",
+          "row_dispositions.parquet": "01e9a0351c168e598a2fd3a8a66ad0ac0f30cb6c352c709c4118904ebde25a95"
+        },
+        "kind": "revenue",
+        "seconds": 0.14344745897687972
+      }
+    ],
+    "baseline2013": [
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2013,
+        "files": {
+          "MANIFEST.json": "1190d5b22a3dda61429c441f323ed148c16ef2ce60b83133c5efc6ee9efa7961",
+          "budget_facts.parquet": "a51bb1339dada584835d6ccc97a29bc996f1f8f99338fc0dc80b9e947feccfaf",
+          "field_lineage.parquet": "023d15659d9c1e586ddb8eb41efec71b98f522246b552136fea06509f7d18bc6",
+          "numeric_evidence.parquet": "e8331dd6b5e236e1a5144f2b4396c24a4a77f41197e6049a22ce0ddad4122774",
+          "row_dispositions.parquet": "8aac3881411963e032522fce4a24396adb5d8aa1c345eb18bee871a7e192ddef"
+        },
+        "kind": "expenditure",
+        "seconds": 1.7969729590695351
+      },
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2013,
+        "files": {
+          "MANIFEST.json": "18677a520d6adf9524a89ceb354083a115405d1def148e53b1f03a8ef05a30ae",
+          "budget_facts.parquet": "0c9d3307b06d2c3483fd391b2475bc70fa139bf87f054618486f48dad1a20397",
+          "field_lineage.parquet": "03d9fd29355c6747c68721cdb468bcd5c40e7cc2f20a4672d69d77bea882d783",
+          "numeric_evidence.parquet": "160f7481ea28501037d3bd65cbfc7848c4f1def6dcbf56fa137cc8612c71ef53",
+          "row_dispositions.parquet": "812943d4d49069ce99f972bfabf8dbc44495167b85dd18e305f04dcb453b89d6"
+        },
+        "kind": "revenue",
+        "seconds": 0.30304350005462766
+      }
+    ],
+    "baseline2014": [
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2014,
+        "files": {
+          "MANIFEST.json": "c1888966a70072162a3b8414743bf33c943d8f9a360550d6e26aa8802298176e",
+          "budget_facts.parquet": "f432e25625b470179db6b7d5f97813090bf7014fa3aad8fab97456118c7349ce",
+          "field_lineage.parquet": "4903309b5faefe2439ae381129edb35e4eca1cd584635a7e13325f0f00ca7a26",
+          "numeric_evidence.parquet": "261c61be2f6ca4de46327b660090a93afc27ee27921ee726d3ad699f17e1d760",
+          "row_dispositions.parquet": "e1a8a9e5da69a0d819f61ac3e389ee5138de4fd6c1cca3fdcfaf0a451f8e715b"
+        },
+        "kind": "expenditure",
+        "seconds": 1.5566854999633506
+      },
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2014,
+        "files": {
+          "MANIFEST.json": "229355987ab665bd462ba7af53b6b6afdb369f679e4ea832be2635e861ca2bf6",
+          "budget_facts.parquet": "f5307e46b4a811ecd94b76204f8b55af26c6d497cfb664ecea57631335dedf8f",
+          "field_lineage.parquet": "4aeb3a26aeb2b9fc9e5edabafb3c3e3eed14d856ab63e2683ede4dd92702bcb2",
+          "numeric_evidence.parquet": "e1fa769e29d98651c2f7710881bc247e031a2b05739b99b8f0e2c4a98474405c",
+          "row_dispositions.parquet": "97c2accc654f03dc813bca6c25e6abb2e3de7b337d3bc7f38421179a31f1a792"
+        },
+        "kind": "revenue",
+        "seconds": 0.26096591691020876
+      }
+    ],
+    "baseline2015": [
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2015,
+        "files": {
+          "MANIFEST.json": "f5345623acfd42b2457ea41457173ac7600aae95d9ce6d68411b346a08e3596c",
+          "budget_facts.parquet": "0441039695c46e962b3c6e342ba983f52ea0e2b149c410a152166f607badfacd",
+          "field_lineage.parquet": "e4e6be02d7168aaf88de701ced5573d6829f86c7310c7fbaa7c85e54fef3788b",
+          "numeric_evidence.parquet": "c6b0285503377ad4db8ea97062fdfc4f6ca2dc62eee362c4b8c7885551b87476",
+          "row_dispositions.parquet": "66f61bb41a26715def1d1e9c7840277772cba8488f43f4c676d4e976e32d6ee7"
+        },
+        "kind": "expenditure",
+        "seconds": 2.021207374986261
+      },
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2015,
+        "files": {
+          "MANIFEST.json": "e31ae252e0a56bdd5fe60ea7e7f8ffbca78a4da67934da264bdbc303d21fb766",
+          "budget_facts.parquet": "ea53035c51ba6b80daaa33f8c338d2247be636e4c47a4c0a023173664c3f5833",
+          "field_lineage.parquet": "5e2dc6423cd61d78e01daef038c3eef41559f821bdb880102bef7f6fb311a6a2",
+          "numeric_evidence.parquet": "94e8f8a1ada2636443bf8e53479257e4359f6a2d02fe2ff4652d8a30ad39b305",
+          "row_dispositions.parquet": "a3abd3148f85d72aecc55e2e4245753644777be64f64b848031c93bc2f1163b6"
+        },
+        "kind": "revenue",
+        "seconds": 0.16279049997683614
+      }
+    ],
+    "baseline2016": [
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2016,
+        "files": {
+          "MANIFEST.json": "b33a1f402ff755d456be044242945970071d78d631bcd295f28763ad8ebe99bc",
+          "budget_facts.parquet": "630b839c18ee5cded3bb3b34846209cf8d1b7b39d50b995ec3a69645ddbb512c",
+          "field_lineage.parquet": "cdcf07dbeb349b3e52d8f72972f0d85fa2c52d570854c2e7234f43ad0e84c95f",
+          "numeric_evidence.parquet": "6df04200e7753279b5220c9cedb41738135f550fc72328af8254f26732e6faeb",
+          "row_dispositions.parquet": "43ecbb2e1c1d14b0ddb28493754249a7f1984ef0b6e286fca270d97f8bea431a"
+        },
+        "kind": "expenditure",
+        "seconds": 2.042748334002681
+      },
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2016,
+        "files": {
+          "MANIFEST.json": "a3ca31dd8d5d9ff6433326c6d5fc1835a40a53e64bbe45473e33e86c6e394ba5",
+          "budget_facts.parquet": "1470250e3028b2aeeca2ef4fa2fbcfdbe8b1613c6fc760423d672c56e9ed99e5",
+          "field_lineage.parquet": "8ad06e028efd239691d5042bb8486fe9665f7b8631f8c3f67ec8bc191cea773d",
+          "numeric_evidence.parquet": "9287596d00972f9d45f34db54038cce2eb61221df49c7dfcc84ab71bf08dd369",
+          "row_dispositions.parquet": "b44b233a8749dd3fb961494b6504645f9968e9c473832db5bf9cbf3f458d2964"
+        },
+        "kind": "revenue",
+        "seconds": 0.3431827079039067
+      }
+    ],
+    "baseline2017": [
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2017,
+        "files": {
+          "MANIFEST.json": "52fbcd592ebb3a66a18aa125534e4ea3a96ae50d40acbef212e6ee083ee2d687",
+          "budget_facts.parquet": "551d506f5e419b919fb5d18e6c5b804ab62b4722717ecc766e09d4d03366281a",
+          "field_lineage.parquet": "9adf4580ed3f9f6a8c4827c931f1d896aa7ef67ff2bf7567f9f147625542cf58",
+          "numeric_evidence.parquet": "e1d739abd1264236733bade0db7ffa4073e549fd5ae5d4ef2ae57f680d66b838",
+          "row_dispositions.parquet": "d02fde77ce5f0c962259ee693da0db74ccd041d6648f73c75a59fd3ef0077401"
+        },
+        "kind": "expenditure",
+        "seconds": 1.7204145410796627
+      },
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2017,
+        "files": {
+          "MANIFEST.json": "98c00d9c8140b3a0cd3491cf825c7b5940becd73a403abc6f0728336c17e1206",
+          "budget_facts.parquet": "f149b668710f6f83b744e29b816889ca5ab304f400c7497a3745f2c806c4e70a",
+          "field_lineage.parquet": "bba8fa74e207ed9354cbc1d07baa526df65d3bb7a445f488ea132a3c8897823b",
+          "numeric_evidence.parquet": "c922999a1162c8718643626225e03c54bf9300bff11a7ba0b18d3d21043db598",
+          "row_dispositions.parquet": "5d5d2a06c4874aa0292dff7fd710071057f427e4ca0682b91a74a0f784af5754"
+        },
+        "kind": "revenue",
+        "seconds": 0.1388472500257194
+      }
+    ],
+    "baseline2018": [
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2018,
+        "files": {
+          "MANIFEST.json": "a99ae2d54df0409a8999d97fcaeb2890ca2b38f71d7b758e55901d1f79b39fda",
+          "budget_facts.parquet": "225f8db0278f9882e507e8ec1d1217b52c460be606154a6e449ffc3cebd6ac4c",
+          "field_lineage.parquet": "4c82e174831153219841fd37fdb3bc67af5fe7d49b0156800bdd359861115974",
+          "numeric_evidence.parquet": "724acd2b85ed6903ef3469da6fe173ea213d94b847f2edfe7b88d9d6cd9bf38c",
+          "row_dispositions.parquet": "0d8bd2230b8625e4e6cbe97ade3d86b3398d76b605dbeeb1a87442974da85f04"
+        },
+        "kind": "expenditure",
+        "seconds": 1.9833348749671131
+      },
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2018,
+        "files": {
+          "MANIFEST.json": "6db669f9dcb79588731b2cd05673e3e8c322469355010b4a7648f8ed8d6afdbf",
+          "budget_facts.parquet": "468755a70a9b566d8167513a9fc77f04d5d8ba994951c4ffd800c3a9e610481b",
+          "field_lineage.parquet": "8501c9ec846c53b4d15887b621923ed2ed2476189595a6b2f5e3bef0ff3463f2",
+          "numeric_evidence.parquet": "6fadd9968aa7a63e36b24962919337bfd109a542ae2d19a64b7bba25b03f1d3b",
+          "row_dispositions.parquet": "4e1f62c170e4b5f8cd0dc7a57365036edbc7dff50fe5b5db4bac7dc6ad0ebb88"
+        },
+        "kind": "revenue",
+        "seconds": 0.23505270795430988
+      }
+    ],
+    "first": [
+      {
+        "cli_mcp_preflights": [
+          {
+            "attempt": 1,
+            "cli_seconds": 5.857495083939284,
+            "cli_status": "preflight_passed",
+            "mcp_seconds": 4.186991874943487,
+            "mcp_status": "preflight_passed",
+            "no_output_created": true
+          },
+          {
+            "attempt": 2,
+            "cli_seconds": 4.206192207988352,
+            "cli_status": "preflight_passed",
+            "mcp_seconds": 3.233109875000082,
+            "mcp_status": "preflight_passed",
+            "no_output_created": true
+          }
+        ],
+        "counts": {
+          "blank": 2,
+          "input": 5658,
+          "normalized": 315,
+          "out_of_scope": 5341,
+          "rejected": 0
+        },
+        "files": {
+          "MANIFEST.json": "eacfdc20ea7072d5f8918a0a3de30b6b3df369b5d86c5cb8389cbf1a7dcfd2ff",
+          "budget_facts.parquet": "64e7448b0289f405370a63d110f5d6555c927cf512b750c0442a7f658bfcc43e",
+          "field_lineage.parquet": "fbe30204c95d357b4129641c6f318d6d95348015cc680e20701b902014337de3",
+          "numeric_evidence.parquet": "c820560166c34e0be5d4149f2c953ee8991d88972f0c5ff57f52245896198341",
+          "row_dispositions.parquet": "48c019500fe0c9df9792e70fc492224392ea6892415d6a834917337eef9e5235"
+        },
+        "kind": "expenditure",
+        "native_and_metadata_parity": true,
+        "native_tables": {
+          "budget_facts.parquet": 315,
+          "field_lineage.parquet": 5355,
+          "numeric_evidence.parquet": 1260,
+          "row_dispositions.parquet": 5658
+        },
+        "operation_files": {
+          "MANIFEST.json": "eacfdc20ea7072d5f8918a0a3de30b6b3df369b5d86c5cb8389cbf1a7dcfd2ff",
+          "budget_facts.parquet": "64e7448b0289f405370a63d110f5d6555c927cf512b750c0442a7f658bfcc43e",
+          "field_lineage.parquet": "fbe30204c95d357b4129641c6f318d6d95348015cc680e20701b902014337de3",
+          "numeric_evidence.parquet": "c820560166c34e0be5d4149f2c953ee8991d88972f0c5ff57f52245896198341",
+          "row_dispositions.parquet": "48c019500fe0c9df9792e70fc492224392ea6892415d6a834917337eef9e5235"
+        },
+        "profile": "budget-expenditure-2011-biff8/v1",
+        "publication": "not_performed",
+        "rights": "not_evaluated",
+        "seconds": 22.082028292003088,
+        "source_sha256": "8712d27f2da918d1cc8376a8f15e24cafb6b608a3be0cc19da226768a8f69ba0"
+      },
+      {
+        "cli_mcp_preflights": [
+          {
+            "attempt": 1,
+            "cli_seconds": 3.103862375020981,
+            "cli_status": "preflight_passed",
+            "mcp_seconds": 3.630671999999322,
+            "mcp_status": "preflight_passed",
+            "no_output_created": true
+          },
+          {
+            "attempt": 2,
+            "cli_seconds": 5.822574416990392,
+            "cli_status": "preflight_passed",
+            "mcp_seconds": 3.7433823340106755,
+            "mcp_status": "preflight_passed",
+            "no_output_created": true
+          }
+        ],
+        "counts": {
+          "blank": 0,
+          "input": 990,
+          "normalized": 71,
+          "out_of_scope": 919,
+          "rejected": 0
+        },
+        "files": {
+          "MANIFEST.json": "46b19c33fa79a5cf1c291deca3922b89de103203b2af882c1391e2e6dbc1c03e",
+          "budget_facts.parquet": "0c912a3512f30b7f395def6294d204875d701a28e403df942c0ed7eeb6e7e8ad",
+          "field_lineage.parquet": "7bb578238d8802706ff023f46dada50eb5e2d807d6242d2e783e2663ced81883",
+          "numeric_evidence.parquet": "b0b145730fe5905cf32c56779d8215f1e595403c7a25270ba4903ba1a2c449c5",
+          "row_dispositions.parquet": "069ccc554d647678f1ada4830b8262d19e3ca7b8cc0c44a3b7bda6b04f1278ff"
+        },
+        "kind": "revenue",
+        "native_and_metadata_parity": true,
+        "native_tables": {
+          "budget_facts.parquet": 71,
+          "field_lineage.parquet": 1065,
+          "numeric_evidence.parquet": 284,
+          "row_dispositions.parquet": 990
+        },
+        "operation_files": {
+          "MANIFEST.json": "46b19c33fa79a5cf1c291deca3922b89de103203b2af882c1391e2e6dbc1c03e",
+          "budget_facts.parquet": "0c912a3512f30b7f395def6294d204875d701a28e403df942c0ed7eeb6e7e8ad",
+          "field_lineage.parquet": "7bb578238d8802706ff023f46dada50eb5e2d807d6242d2e783e2663ced81883",
+          "numeric_evidence.parquet": "b0b145730fe5905cf32c56779d8215f1e595403c7a25270ba4903ba1a2c449c5",
+          "row_dispositions.parquet": "069ccc554d647678f1ada4830b8262d19e3ca7b8cc0c44a3b7bda6b04f1278ff"
+        },
+        "profile": "budget-revenue-2011-biff8/v1",
+        "publication": "not_performed",
+        "rights": "not_evaluated",
+        "seconds": 17.183781833969988,
+        "source_sha256": "bd902503455cebe5cc455031bbd2b07f325cce57027c8391c9bec476ad77f073"
+      }
+    ],
+    "second": [
+      {
+        "cli_mcp_preflights": [
+          {
+            "attempt": 1,
+            "cli_seconds": 6.48902045795694,
+            "cli_status": "preflight_passed",
+            "mcp_seconds": 3.1693924999563023,
+            "mcp_status": "preflight_passed",
+            "no_output_created": true
+          },
+          {
+            "attempt": 2,
+            "cli_seconds": 3.4533232079120353,
+            "cli_status": "preflight_passed",
+            "mcp_seconds": 2.8562102919677272,
+            "mcp_status": "preflight_passed",
+            "no_output_created": true
+          }
+        ],
+        "counts": {
+          "blank": 2,
+          "input": 5658,
+          "normalized": 315,
+          "out_of_scope": 5341,
+          "rejected": 0
+        },
+        "files": {
+          "MANIFEST.json": "eacfdc20ea7072d5f8918a0a3de30b6b3df369b5d86c5cb8389cbf1a7dcfd2ff",
+          "budget_facts.parquet": "64e7448b0289f405370a63d110f5d6555c927cf512b750c0442a7f658bfcc43e",
+          "field_lineage.parquet": "fbe30204c95d357b4129641c6f318d6d95348015cc680e20701b902014337de3",
+          "numeric_evidence.parquet": "c820560166c34e0be5d4149f2c953ee8991d88972f0c5ff57f52245896198341",
+          "row_dispositions.parquet": "48c019500fe0c9df9792e70fc492224392ea6892415d6a834917337eef9e5235"
+        },
+        "kind": "expenditure",
+        "native_and_metadata_parity": true,
+        "native_tables": {
+          "budget_facts.parquet": 315,
+          "field_lineage.parquet": 5355,
+          "numeric_evidence.parquet": 1260,
+          "row_dispositions.parquet": 5658
+        },
+        "operation_files": {
+          "MANIFEST.json": "eacfdc20ea7072d5f8918a0a3de30b6b3df369b5d86c5cb8389cbf1a7dcfd2ff",
+          "budget_facts.parquet": "64e7448b0289f405370a63d110f5d6555c927cf512b750c0442a7f658bfcc43e",
+          "field_lineage.parquet": "fbe30204c95d357b4129641c6f318d6d95348015cc680e20701b902014337de3",
+          "numeric_evidence.parquet": "c820560166c34e0be5d4149f2c953ee8991d88972f0c5ff57f52245896198341",
+          "row_dispositions.parquet": "48c019500fe0c9df9792e70fc492224392ea6892415d6a834917337eef9e5235"
+        },
+        "profile": "budget-expenditure-2011-biff8/v1",
+        "publication": "not_performed",
+        "rights": "not_evaluated",
+        "seconds": 22.462219333043322,
+        "source_sha256": "8712d27f2da918d1cc8376a8f15e24cafb6b608a3be0cc19da226768a8f69ba0"
+      },
+      {
+        "cli_mcp_preflights": [
+          {
+            "attempt": 1,
+            "cli_seconds": 2.81619745795615,
+            "cli_status": "preflight_passed",
+            "mcp_seconds": 2.4139446249464527,
+            "mcp_status": "preflight_passed",
+            "no_output_created": true
+          },
+          {
+            "attempt": 2,
+            "cli_seconds": 2.9714542500441894,
+            "cli_status": "preflight_passed",
+            "mcp_seconds": 2.551126708043739,
+            "mcp_status": "preflight_passed",
+            "no_output_created": true
+          }
+        ],
+        "counts": {
+          "blank": 0,
+          "input": 990,
+          "normalized": 71,
+          "out_of_scope": 919,
+          "rejected": 0
+        },
+        "files": {
+          "MANIFEST.json": "46b19c33fa79a5cf1c291deca3922b89de103203b2af882c1391e2e6dbc1c03e",
+          "budget_facts.parquet": "0c912a3512f30b7f395def6294d204875d701a28e403df942c0ed7eeb6e7e8ad",
+          "field_lineage.parquet": "7bb578238d8802706ff023f46dada50eb5e2d807d6242d2e783e2663ced81883",
+          "numeric_evidence.parquet": "b0b145730fe5905cf32c56779d8215f1e595403c7a25270ba4903ba1a2c449c5",
+          "row_dispositions.parquet": "069ccc554d647678f1ada4830b8262d19e3ca7b8cc0c44a3b7bda6b04f1278ff"
+        },
+        "kind": "revenue",
+        "native_and_metadata_parity": true,
+        "native_tables": {
+          "budget_facts.parquet": 71,
+          "field_lineage.parquet": 1065,
+          "numeric_evidence.parquet": 284,
+          "row_dispositions.parquet": 990
+        },
+        "operation_files": {
+          "MANIFEST.json": "46b19c33fa79a5cf1c291deca3922b89de103203b2af882c1391e2e6dbc1c03e",
+          "budget_facts.parquet": "0c912a3512f30b7f395def6294d204875d701a28e403df942c0ed7eeb6e7e8ad",
+          "field_lineage.parquet": "7bb578238d8802706ff023f46dada50eb5e2d807d6242d2e783e2663ced81883",
+          "numeric_evidence.parquet": "b0b145730fe5905cf32c56779d8215f1e595403c7a25270ba4903ba1a2c449c5",
+          "row_dispositions.parquet": "069ccc554d647678f1ada4830b8262d19e3ca7b8cc0c44a3b7bda6b04f1278ff"
+        },
+        "profile": "budget-revenue-2011-biff8/v1",
+        "publication": "not_performed",
+        "rights": "not_evaluated",
+        "seconds": 11.336049000034109,
+        "source_sha256": "bd902503455cebe5cc455031bbd2b07f325cce57027c8391c9bec476ad77f073"
+      }
+    ]
+  },
+  "schema_version": "archive-govt-nz.health-budget-biff8-native-qualification/v1",
+  "scope": "Budget2011 source-native integer evidence and interfaces; no external capture or rights decisions",
+  "source_vintage": "Budget-2011",
+  "summary": {
+    "actual_cli_mcp_preflights_each_twice": true,
+    "all20_source_operation_hashes_repeat": true,
+    "all80_prior_2012_to_2019_hashes_equal": true,
+    "head": "321228c19d3c381867e9d26e6351cc5bdb8b4c5a",
+    "interface_cap_seconds": 30,
+    "native_all4_tables_and_metadata_equal": true,
+    "publication": "not_performed",
+    "repeats": 2,
+    "rights": "not_evaluated",
+    "source_cap_seconds": 120,
+    "source_profiles": 2,
+    "stage_cap_seconds": 900,
+    "tree": "052fe8b72fa92f8ed975791f958eb77854d8949b"
+  }
+}

@@ -20,13 +20,18 @@ from openpyxl import Workbook, load_workbook
 from archive_govt_nz.domains.health_appropriations import gdp, workbook_common
 
 
-def workbook(path: Path) -> Path:
+def workbook(path: Path, source_vintage: str = gdp.VINTAGE) -> Path:
+    profile = gdp._PROFILE_DATA[source_vintage]  # noqa: SLF001
+    periods = profile["periods"]
+    headers = {**gdp.HEADERS, "A4": profile["range"]}
+    last_column = 2 + len(periods)
+    last_letter = "BJ" if last_column == 62 else "BK"
     book = Workbook()
     assert book.active is not None
     book.active.title = "Contents"
     for name in ("Table 1", "Table 2"):
         sheet = book.create_sheet(name)
-        for coordinate, value in gdp.HEADERS.items():
+        for coordinate, value in headers.items():
             sheet[coordinate] = value
         sheet["A1"] = name
         sheet["A3"] = (
@@ -34,13 +39,13 @@ def workbook(path: Path) -> Path:
             if name == "Table 1"
             else "Seasonally adjusted current prices"
         )
-        sheet.merge_cells("C5:BJ5")
-        sheet.merge_cells("C7:BJ7")
-        for column, (token, _) in enumerate(gdp.PERIODS, 3):
+        sheet.merge_cells(f"C5:{last_letter}5")
+        sheet.merge_cells(f"C7:{last_letter}7")
+        for column, (token, _) in enumerate(periods, 3):
             sheet.cell(6, column, token)
             sheet.cell(27, column, 50000 + column).number_format = "#,##0"
-    book["Contents"]["A1"] = gdp.TITLE
-    book["Contents"]["A33"] = "18 June 2026"
+    book["Contents"]["A1"] = profile["title"]
+    book["Contents"]["A33"] = profile["publication"]
     book.save(path)
     book.close()
     return path
@@ -64,6 +69,31 @@ def test_dry_run_preserves_original(tmp_path: Path) -> None:
     assert receipt["currency"] is None
     assert not output.parent.exists()
     assert source.read_bytes() == before
+
+
+def test_june_vintage_remains_separate_and_preserves_all_61_quarters(
+    tmp_path: Path,
+) -> None:
+    source = workbook(tmp_path / "june.xlsx", gdp.JUNE_VINTAGE)
+    receipt = gdp.normalize_gdp(
+        source,
+        tmp_path / "june-silver",
+        expected_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),
+        source_locator="https://example.invalid/gdp-june.xlsx",
+        source_vintage=gdp.JUNE_VINTAGE,
+        observed_at="2026-09-29T21:28:10.739074Z",
+        dry_run=False,
+    )
+    assert receipt["transformation_id"] == gdp.JUNE_TRANSFORMATION
+    assert receipt["source_vintage"] == gdp.JUNE_VINTAGE
+    facts = pq.read_table(tmp_path / "june-silver" / "gdp_facts.parquet").to_pylist()
+    assert len(facts) == 61
+    assert facts[0]["period_token"] == gdp.JUNE_PERIODS[0][0]
+    assert facts[-1]["period_token"] == gdp.JUNE_PERIODS[-1][0]
+    assert facts[-1]["period_end"] == date(2026, 6, 30)
+    assert all(fact["currency"] is None for fact in facts)
+    assert all(fact["rights_state"] == "not_evaluated" for fact in facts)
+    assert {fact["transformation_id"] for fact in facts} == {gdp.JUNE_TRANSFORMATION}
 
 
 def run(source: Path, output: Path, **kwargs: Any) -> dict[str, Any]:  # noqa: ANN401 - synthetic call overrides

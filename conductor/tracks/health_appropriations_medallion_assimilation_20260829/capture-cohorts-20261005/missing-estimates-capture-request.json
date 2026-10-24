@@ -1,0 +1,56 @@
+{
+  "schema_version": "archive-govt-nz.health-source-census/v1",
+  "observed_at": "2026-10-05T06:42:05.590587+00:00",
+  "cutoff": "2026-10-05",
+  "record_count": 4,
+  "records": [
+    {
+      "source_id": "treasury-vote-health-pdf-2018-19-estimates",
+      "family": "treasury_vote_health_document",
+      "title": "Vote Health - Health Sector - The Estimates of Appropriations 2018/19",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2018-05/est18-v6-health.pdf",
+      "media_type": "application/pdf",
+      "disposition": "discovered",
+      "reason": "official edition PDF link verified from Treasury landing page; preserve original pending source profile review",
+      "rights_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+      "observed_at": "2026-10-05T06:42:05.590587+00:00",
+      "cutoff": "2026-10-05"
+    },
+    {
+      "source_id": "treasury-vote-health-pdf-2019-20-estimates",
+      "family": "treasury_vote_health_document",
+      "title": "Vote Health - Health Sector - The Estimates of Appropriations 2019/20",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2019-05/est19-v6-health.pdf",
+      "media_type": "application/pdf",
+      "disposition": "discovered",
+      "reason": "official edition PDF link verified from Treasury landing page; preserve original pending source profile review",
+      "rights_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+      "observed_at": "2026-10-05T06:42:05.590587+00:00",
+      "cutoff": "2026-10-05"
+    },
+    {
+      "source_id": "treasury-vote-health-pdf-2020-21-estimates",
+      "family": "treasury_vote_health_document",
+      "title": "Vote Health - Health Sector - The Estimates of Appropriations 2020/21",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2020-05/est20-v6-health.pdf",
+      "media_type": "application/pdf",
+      "disposition": "discovered",
+      "reason": "official edition PDF link verified from Treasury landing page; preserve original pending source profile review",
+      "rights_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+      "observed_at": "2026-10-05T06:42:05.590587+00:00",
+      "cutoff": "2026-10-05"
+    },
+    {
+      "source_id": "treasury-vote-health-pdf-2021-22-estimates",
+      "family": "treasury_vote_health_document",
+      "title": "Vote Health - Health Sector - The Estimates of Appropriations 2021/22",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2021-05/est21-v6-health.pdf",
+      "media_type": "application/pdf",
+      "disposition": "discovered",
+      "reason": "official edition PDF link verified from Treasury landing page; preserve original pending source profile review",
+      "rights_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+      "observed_at": "2026-10-05T06:42:05.590587+00:00",
+      "cutoff": "2026-10-05"
+    }
+  ]
+}

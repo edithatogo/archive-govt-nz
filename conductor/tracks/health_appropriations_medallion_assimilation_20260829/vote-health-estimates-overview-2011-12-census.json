@@ -1,0 +1,26 @@
+{
+  "schema_version": "archive-govt-nz.health-source-census/v1",
+  "observed_at": "2026-10-03T20:06:22Z",
+  "cutoff": "2026-10-04",
+  "record_count": 1,
+  "records": [
+    {
+      "cutoff": "2026-10-04",
+      "disposition": "captured",
+      "family": "treasury_vote_health_document",
+      "license": "CC-BY-4.0",
+      "media_type": "application/pdf",
+      "observed_at": "2026-10-03T20:06:22Z",
+      "reason": "official exact Vote Health Estimates 2011/12 PDF captured with response WARC, SHA-256 and BLAKE3 fixity; source profile normalizes selected overview only",
+      "rights_uri": "https://www.treasury.govt.nz/copyright-and-licensing",
+      "source_id": "treasury-vote-health-pdf-2011-12-estimates",
+      "title": "Vote Health - The Estimates of Appropriations 2011/12",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2011-05/est11health.pdf",
+      "object_sha256": "5b56c8a0641a870d82558f2c61fc87df90bcabf318541af4c3d86ba8ce3063af"
+    }
+  ],
+  "capture_reconciliation": {
+    "capture_manifest": "vote-health-estimates-overview-2011-12-capture-final.json",
+    "matched": 1
+  }
+}

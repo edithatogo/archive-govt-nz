@@ -153,13 +153,26 @@ Offline tests prove a unique orphan avoids a second request and an ambiguous
 pair is not adopted. Focused checkpoint suite: 30 passed; Ruff and basedpyright
 passed. The full repository harness is required before hosted delivery.
 
-This does not reconcile redirected orphan WARCs; their full final URL cannot
-be recovered from the current WARC fields. At this checkpoint, directory
-fsync durability across power loss was still unimplemented. The runner also
-does not adopt arbitrary WARC locations outside its attempt-directory layout.
+Redirected orphan WARCs are now recoverable when the WARC's query-free
+`WARC-Target-URI` is the complete final URL: its SHA-256 must match the
+capture-time full final-URL digest, while the original census URL remains bound
+by its request digest. This preserves redirect provenance without retaining a
+query string that could contain a signed URL or token. A final URL with a query
+or fragment cannot be reconstructed from the privacy-preserving WARC and stays
+unadopted; resume performs a fresh capture. The runner also does not adopt
+arbitrary WARC locations outside its attempt-directory layout.
 
-The original Phase 2.1 task therefore stays `[~]`. These are executable
-preservation/recovery limits, not source-census or rights-promotion gates.
+An offline regression test simulates a redirected response followed by a
+checkpoint-write failure, then proves resume adopts the exact immutable WARC,
+preserves the final URL and avoids another source request. The focused
+checkpoint suite passes (34 tests); `ruff` and `basedpyright` pass for the
+changed runner and contract file.
+
+The Phase 2.1 executable preservation/recovery contract is now covered by the
+focused tests and existing Bronze/CAS/inventory/versioning contracts. The
+query/fragment limitation is an explicit privacy boundary, not a coverage
+target or a source-census/rights-promotion gate. Scheduled discovery and any
+capture gaps listed under Phase 2.3 remain separate work.
 Self-review found no remaining actionable defect within this bounded
 cooperative-resume slice. No automatic lock deletion, source eligibility
 promotion, payload publication, historical rewrite or dependency was added.
@@ -179,3 +192,35 @@ Windows.
 Offline tests prove replace precedes parent fsync and exercise the platform
 directory-sync helper. Focused and full repository validation are recorded in
 the paired run log and evidence receipt.
+
+
+## Preservation-only transport lane — 19 October 2026
+
+Use `--preservation-only` on the existing capture runner to preserve selected
+public originals at its established hosts while their item rights remain
+unevaluated. This lane also accepts legacy Excel as an opaque media hint.
+The actual HTTP media and bytes remain recorded; no workbook parsing, numerical
+admission, approved federation link, reuse rights or publication is granted.
+
+```sh
+uv run --locked python tools/capture_health_resources.py \
+  --census <pinned-request.json> --store-root <existing-private-cas> \
+  --warc-dir <private-attempt-warcs> --manifest <private-checkpoint.json> \
+  --preservation-only
+```
+
+Resume with the same request bytes, limits, paths and mode plus `--resume`.
+The preservation-rights policy is bound into the existing checkpoint context.
+A request may require `preservation-only/not-evaluated/v1` through
+`required_rights_policy`; an incompatible invocation fails before capture.
+Changing modes or tampering rights does not reinterpret a saved checkpoint.
+Unique orphan recovery retains unknown rights and the original WARC/CAS bytes.
+Existing full URL digests, response framing/body checks and concurrency locks
+remain mandatory. Recovery enforces its existing65MiB WARC bound before reading
+and rejects nonregular input. Legacy default contexts remain unchanged.
+
+A partial capture retains its checkpoint and evidence, reports `partial`, and
+keeps the existing nonzero exit. Do not blindly retry terminal source failures.
+The offline preservation-mode/inventory bridge and bounded-read contracts plus
+existing ingestion/process recovery tests pass. Native cohort and full protected
+assurance are recorded separately; this is not a source-census completion claim.

@@ -1,0 +1,58 @@
+{
+  "actual_terminal_exit": 0,
+  "capture_context_census_sha256": "c2899e89027d0c267e8495628594870ca1f19abb2ac1ae5ca278d5a6c4fdbe07",
+  "capture_context_head": "3ca17fe4e58da395d7fa313a456308147a42f324",
+  "capture_context_tree": "23028309095d76966dfb94d54ad404838195cb68",
+  "exec_session": 76446,
+  "kernel_lock_acquired_nonblocking_then_released": true,
+  "native_layout_units": "not_evaluated",
+  "numerical_admission": "not_performed",
+  "pre_capture_import_failure": {
+    "capture_core_not_entered": true,
+    "correction": "Explicit repository PYTHONPATH; import probe passed; fresh exclusive attempt",
+    "no_source_network_or_CAS_write": true,
+    "preserved": true
+  },
+  "private_evidence_directory": "budget-2023-census-20261018/capture-2",
+  "publication": "not_performed",
+  "resources": [
+    {
+      "blake3": "8c5fa2442a2a42f0bddfeacae0ebe1bb7f98f01dc4698d96cbbade6089c02a29",
+      "byte_count": 933618,
+      "completed_at": "2026-10-18T07:09:45.484302+00:00",
+      "etag": "\"650b6d39-e3ef2\"",
+      "final_url": "https://www.treasury.govt.nz/sites/default/files/2023-09/b23-expenditure-data.xlsx",
+      "last_modified": "Wed, 20 Sep 2023 22:07:53 GMT",
+      "receipt_sha256": "c28848179027589e1d78416d07b62c65c9d73efb4703f396d6875c2d5afc6a52",
+      "request_url": "https://www.treasury.govt.nz/sites/default/files/2023-09/b23-expenditure-data.xlsx",
+      "rights_assessment": "resource_specific_assessment_pending",
+      "sha256": "bee0e4cd776f0511d271ec842ade355661772c804d12239035e32ad61db06da9",
+      "source_id": "treasury-historical-dec1ca1018d3dac5",
+      "started_at": "2026-10-18T07:09:44.941292+00:00",
+      "status_code": 200,
+      "warc_bytes": 934360,
+      "warc_sha256": "71eb0608861909300d49c6aba470e7fc879f7758e74a1f7613b46f015b6f589c"
+    },
+    {
+      "blake3": "4613bf8d3dabf564d690d334e8fc1b37732b5a594587019bc4b51cfa52c185c9",
+      "byte_count": 104743,
+      "completed_at": "2026-10-18T07:09:45.595721+00:00",
+      "etag": "\"650b6d29-19927\"",
+      "final_url": "https://www.treasury.govt.nz/sites/default/files/2023-09/b23-revenue-data.xlsx",
+      "last_modified": "Wed, 20 Sep 2023 22:07:37 GMT",
+      "receipt_sha256": "b554f9dda2490ba596a3f9af1bc84eecdbe4ae4d64b70856aac1ab8002033f30",
+      "request_url": "https://www.treasury.govt.nz/sites/default/files/2023-09/b23-revenue-data.xlsx",
+      "rights_assessment": "resource_specific_assessment_pending",
+      "sha256": "e2b00177bffd233fd404f5db989a576408f249fc81ef2342f31d95ca452c019b",
+      "source_id": "treasury-historical-501fbe11fbc07010",
+      "started_at": "2026-10-18T07:09:45.487296+00:00",
+      "status_code": 200,
+      "warc_bytes": 105481,
+      "warc_sha256": "7fd87ed513fa646792ccd534e9422d26ddbee9d1fcb4136429c02e7a8fe54517"
+    }
+  ],
+  "rights_eligibility": "not_evaluated",
+  "status": "two_originals_preserved_and_independently_verified",
+  "summary_sha256": "704f1069a3664862e408cafd1e970add6e1ad45db59fe4e1d8acc6b8c670e01f",
+  "working_evidence_copy_hashes_verified": true
+}

@@ -1,0 +1,33 @@
+{
+  "actual_full_source_CLI_MCP_timing": "observed CLI12.13s and initialized MCPcall10.11s within original30s; prior timeouts retained; no unconditional SLA",
+  "as_of_utc_date": "2026-10-18",
+  "assurance_receipt": "context-reader-startup-assurance-20261018.json",
+  "focused_tests": 41,
+  "hosted_observation": {
+    "head": "b2212f7c92aac9a7f2b566ba52ca38ef0c365870",
+    "macos_job_id": 117700900766,
+    "macos_log_sha256": "1f6bfae57fe2704f745b566e492d972399eeb2107e4a333ef7932dddda7fd2f1",
+    "macos_status": "failed_test_stage_cap900s_exit124_at96percent_no_final_pytest_summary",
+    "merge_permitted": false,
+    "run_id": 39136051904,
+    "ubuntu": "success",
+    "windows": "non_terminal_at_observation"
+  },
+  "implementation_checkpoint": "context-reader-startup-implementation-20261018.json",
+  "implementation_checkpoint_sha256": "a2fc6d7e01c0f4063cf68da6877b1f2768c118da247f888dbc9c70cc1ab17c3c",
+  "implementation_producer_head": "5f0a94dfdbb85ca06027c260737fd2f9ba6d02a2",
+  "local_full_pass": false,
+  "native_product_file_matches": {
+    "files_each": 20,
+    "repeats": 2
+  },
+  "native_receipt": "context-reader-startup-native-20261018.json",
+  "operational_replay_receipt": "context-reader-startup-replay-20261019-v1.json",
+  "record_policy": "Preserve producer qualification/implementation and assurance checkpoints; later delivery/status transitions belong in new receipts or projections.",
+  "schema_version": "archive-govt-nz.health-current-state/v1",
+  "state_type": "versioned_derived_status_projection_not_producer_receipt",
+  "status": "focused_API_and_standalone_CLI_MCP_qualified_original_local_timeout_hosted_macOS_timeout_delivery_pending",
+  "subject": "Context Gold reader startup",
+  "supersedes": "context-reader-startup-state-20261019-v1.json",
+  "version": 2
+}

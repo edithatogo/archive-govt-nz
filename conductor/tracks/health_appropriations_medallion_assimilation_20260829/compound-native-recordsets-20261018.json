@@ -1,0 +1,155 @@
+{
+  "composition_review": "Conductor reviewed working composition; no actionable finding; retained native proof pending",
+  "dispatch_extension": "implemented_focused_qualified",
+  "envelope_limits": {
+    "bytes": 4194304,
+    "cycles": "rejected",
+    "depth": 16,
+    "excluded_sheets_total": 256,
+    "held_source_losses": 64,
+    "nodes": 100000,
+    "total_output_bytes_includes_envelope_and_native_schema_descriptors": true,
+    "unsupported_types": "rejected",
+    "values": "retained_without_coercion"
+  },
+  "envelope_review_finding": {
+    "initial_behavior": "unsupported metadata object admitted",
+    "metadata_preflight": "four retained native manifests admitted under default envelope limits; metadata-only evidence",
+    "red_log_sha256": "ae55959f8841f1e0d90533900efd2b33214cc298161e8a5526754fd4af8fbdfa",
+    "source": "Conductor review",
+    "status": "fixed"
+  },
+  "evidence_directory": "compound-native-workbooks-20261018",
+  "evidence_scope": "Health Appropriations archive, evidence directory",
+  "expected_facts": 180,
+  "expected_forecast_excluded_sheets": 4,
+  "expected_lineage": 1784,
+  "expected_profile_dispositions": 4833,
+  "focused_carrier": {
+    "log_sha256": "6431f1ca6c1d5a59a71563a6e2e74cd168614eae562be7dd799ab2e435c586ed",
+    "passed": 79,
+    "seconds": 1.64
+  },
+  "focused_native_api": {
+    "log_sha256": "550f5d7a27b67a840fbe42d91779f040496502d080688b765a0d36c3a8eace37",
+    "passed": 96,
+    "seconds": 3.17
+  },
+  "focused_source": {
+    "log_sha256": "6f87bc8549e469d6931b8eb988c85955bebec1ffa42e04d030da77694fc26f16",
+    "passed": 57,
+    "seconds": 1.91
+  },
+  "full": {
+    "head": "e596ccd2f0f62bf5c42650da16214a43cc62c739",
+    "log_sha256": "0ac469ba7b1f6916ac5e93af03a790255c533533eda5cffe3c0600ea544b7232",
+    "original_four_pins_unchanged": true,
+    "parity_cases": 9,
+    "pytest": {
+      "coveragePercent": 97.18,
+      "elapsedSeconds": 241.01,
+      "passed": 7993,
+      "skipped": 12,
+      "warnings": 18
+    },
+    "receipt_sha256": "c1260c2e1e26e30dbb5e1de2acd46111b5a4c5b0b95c16c5d16c6cb01b1714f3",
+    "schema_documents": 56,
+    "schemas": 66,
+    "stages": 32,
+    "status": "passed",
+    "tree": "10d584b7ed23ff7bf8476f28146c80af671a1f6d"
+  },
+  "hosted": "ce7913a4 historical all-seven success; corrected metadata code requires new exact-head hosted checks",
+  "hosted_failure": {
+    "classification": "public local evidence directory path; not a credential",
+    "detector": "Base64 High Entropy String",
+    "hashed_identity": "bc436395f03ec2376aeb5f12b246e1aec8fc1966",
+    "head": "4e7ef464f2361aae759501e98de24c8c7dfcf5c7",
+    "job": 117525142523,
+    "log_sha256": "646bfce252af574ad06d2a7c0dc08c0c310a1991137d4cc36d00304f82c8198d",
+    "remedy": "portable evidence directory identifier; scanner/exclusion policy unchanged",
+    "stage": "secrets"
+  },
+  "legacy_api": "unchanged; focused protocol/dispatch/registry checks passed",
+  "metadata_identity_review": {
+    "classification": "code defect",
+    "fix": "trusted native metadata schema and source/profile identity; parsed context matches every fact row without changing retained values",
+    "focused_log_sha256": "46dacae8f0ed865abee912c3709f1982ee7e6d971f3da3ca0c8421ddfddbc902",
+    "focused_passed": 96,
+    "focused_seconds": 4.8,
+    "native_requalification": {
+      "native_files_per_run": 16,
+      "proof_sha256": "67330d668478f8f23ee99cd4a5021912955b9d3394456797e3597aaf135a129e",
+      "report_sha256": "8dbfc72a39d5d4ee50c6aa60e4fc3b49bf1e375979e4d8ec4a3568bab56f67fb",
+      "runs": 2,
+      "source_and_native_bytes": "unchanged",
+      "status": "passed"
+    },
+    "original_full_requalification": {
+      "log_sha256": "629b0d2080a14c16f81fbc85f233dbc28025e01793b270aa0fedd848fb38a8fe",
+      "original_four_pins_unchanged": true,
+      "pytest": {
+        "coveragePercent": 97.18,
+        "passed": 8012,
+        "seconds": 303.49,
+        "skipped": 12,
+        "warnings": 18
+      },
+      "receipt_sha256": "348286403f6112d6eef9824364532ccbd8cdbd53baae572d6e98a03fc1ba34f8",
+      "stages": 32,
+      "status": "passed"
+    },
+    "qualified_head": "1bbd8577a01a78dc3d6cc0a54086f27632a70d77",
+    "qualified_tree": "59e67de187d511b9aa91d30e5e28ff98774acb71",
+    "red_cases": 2,
+    "red_log_sha256": "64620bee7c51fcb7fdfb4145d08bca41e01fcc570997a0a3110a4708dc493c88",
+    "registration_context": "exact reviewed source locator/vintage and caller observation bound before byte extraction",
+    "review_thread_resolution": "pending PR push and evidence-backed response",
+    "thread": "PRRT_kwDOTo2MOM6tlREY",
+    "typing_errors": 0
+  },
+  "mixed_registry": "duplicate IDs rejected and competing physical matches preserved-only",
+  "namespace": "source SHA256/profile/fact-schema ID/version/original record ID",
+  "native": {
+    "dependency_warmup": "retained Arrow UTC conversion and unchanged native parsers before dispatch-only denial",
+    "facts": 180,
+    "forecast_excluded_sheets": 4,
+    "global_worksheet_semantics": "unchanged_unresolved",
+    "lineage": 1784,
+    "native_bytes": "identical to retained historical pins",
+    "native_product_files_per_run": 16,
+    "native_profiles": 4,
+    "native_schemas": "complete trusted schemas including metadata",
+    "network": "denied",
+    "physical_sources": 2,
+    "profile_dispositions": 4833,
+    "profile_metadata": "complete manifests including output hashes; original typed values retained",
+    "proof_sha256": "67330d668478f8f23ee99cd4a5021912955b9d3394456797e3597aaf135a129e",
+    "publication": "not_performed",
+    "python_file_apis_during_dispatch": "denied",
+    "reference_files": "all16 unchanged",
+    "report_sha256": "8dbfc72a39d5d4ee50c6aa60e4fc3b49bf1e375979e4d8ec4a3568bab56f67fb",
+    "rights": "not_evaluated",
+    "runs": 2,
+    "source_bytes": "unchanged",
+    "status": "passed"
+  },
+  "native_files_per_run": 16,
+  "native_metadata": "complete typed receipts plus in-memory standalone Parquet hashes; no filesystem access in extraction",
+  "native_profiles": 4,
+  "native_schema_metadata": "exact equality with independently declared expected schemas",
+  "physical_sources": 2,
+  "pr": "not_opened",
+  "publication": "not_performed",
+  "rights": "not_evaluated",
+  "row_nullability": "recursive non-nullable checks; allowed nulls retained",
+  "secret_scan_correction": {
+    "log_sha256": "a0b916c2f9045c22f50b4a52f63047728ed6b371dce7559805638b4412ffb1dc",
+    "scanner_and_policy": "unchanged",
+    "status": "passed",
+    "unresolved_count": 0
+  },
+  "shared_source_adapters": "implemented_two_sources_four_profiles",
+  "single_result_boundary": "original exact registration/output checks retained; compounds refused",
+  "status": "metadata_identity_fixed_native2_full2_passed_hosted_requalification_pending"
+}

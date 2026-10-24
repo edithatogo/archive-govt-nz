@@ -1,0 +1,12 @@
+{
+  "headRefOid": "730e12e871313e27967a154a10888c7feb0b47e5",
+  "mergeCommit": {
+    "oid": "4cf8d8082099b3138b7b4a52669fea403de0ca0f"
+  },
+  "mergedAt": "2026-10-17T13:00:46Z",
+  "state": "MERGED",
+  "tree": "734e2f60fa5d5e6dba7165cdb43f4123a7175b4b",
+  "unique_changes": 0,
+  "url": "https://github.com/edithatogo/archive-govt-nz/pull/706",
+  "verified_origin_main": "4cf8d8082099b3138b7b4a52669fea403de0ca0f"
+}

@@ -1,0 +1,187 @@
+{
+  "capture_context": {
+    "census_sha256": "42555bfc903e4120f3b2f6c938d886a372068b66a02202e2883ecd15a51b7486",
+    "contract": "health-capture-resume/v1",
+    "max_resource_bytes": 67108864
+  },
+  "captured": 4,
+  "cutoff": "2026-10-05",
+  "observations": [
+    {
+      "attempts": [
+        {
+          "outcome": "captured",
+          "status_code": 200
+        }
+      ],
+      "etag": "\"645066ec-19bf5d\"",
+      "last_modified": "Tue, 02 May 2023 01:27:08 GMT",
+      "object_id": "sha256:dca08f23c9ba5ac87cf8c0c2129d38afb25ce288bd6d16c8eca239f24c38bac8",
+      "observation_id": "treasury-vote-health-pdf-2018-19-estimates:5aced53da77fa6ca7465af3c825890580aad4f9a936f6024a280ef8016d35467",
+      "observed_at": "2026-10-05T06:42:06.490183Z",
+      "outcome": "captured",
+      "sha256": "dca08f23c9ba5ac87cf8c0c2129d38afb25ce288bd6d16c8eca239f24c38bac8",
+      "source_id": "treasury-vote-health-pdf-2018-19-estimates",
+      "validator_state": "present",
+      "warc_path": "attempt-tdfiau77/response.warc",
+      "warc_sha256": "b95aa2ccdcdfb81306d005ab50593a01d073ae10cf342d8a4375239c6d826d0c"
+    },
+    {
+      "attempts": [
+        {
+          "outcome": "captured",
+          "status_code": 200
+        }
+      ],
+      "etag": "\"64506978-152a0a\"",
+      "last_modified": "Tue, 02 May 2023 01:38:00 GMT",
+      "object_id": "sha256:eb519370527ecf474ce7a261a62a84835cd219c56aecdc200712d05ac65f71b2",
+      "observation_id": "treasury-vote-health-pdf-2019-20-estimates:98430f752d77b0536790d46e994ca7542a8cc4638383006708d25f4442ad402d",
+      "observed_at": "2026-10-05T06:42:07.320539Z",
+      "outcome": "captured",
+      "sha256": "eb519370527ecf474ce7a261a62a84835cd219c56aecdc200712d05ac65f71b2",
+      "source_id": "treasury-vote-health-pdf-2019-20-estimates",
+      "validator_state": "present",
+      "warc_path": "attempt-8k1ln9c4/response.warc",
+      "warc_sha256": "7709180ef5e629e4bc35e2556435fedb47c638ca74820fc4273688a823de6ccb"
+    },
+    {
+      "attempts": [
+        {
+          "outcome": "captured",
+          "status_code": 200
+        }
+      ],
+      "etag": "\"64506b1e-1f1e62\"",
+      "last_modified": "Tue, 02 May 2023 01:45:02 GMT",
+      "object_id": "sha256:f9ef5b191e5136654877ecf924cf95664293deed91021ea36b0916914cfdeb51",
+      "observation_id": "treasury-vote-health-pdf-2020-21-estimates:87b5e727372307ff2de64e9373da53fbe5a3cd20dae07d0ab9bd18ef9b1641dc",
+      "observed_at": "2026-10-05T06:42:07.573571Z",
+      "outcome": "captured",
+      "sha256": "f9ef5b191e5136654877ecf924cf95664293deed91021ea36b0916914cfdeb51",
+      "source_id": "treasury-vote-health-pdf-2020-21-estimates",
+      "validator_state": "present",
+      "warc_path": "attempt-9ec8kbp6/response.warc",
+      "warc_sha256": "8c3d1bc52a1d65e7526b6019111974b5d9b993f0c651b76cf33122a616bc0219"
+    },
+    {
+      "attempts": [
+        {
+          "outcome": "captured",
+          "status_code": 200
+        }
+      ],
+      "etag": "\"64506d12-1a934b\"",
+      "last_modified": "Tue, 02 May 2023 01:53:22 GMT",
+      "object_id": "sha256:52e711375e1908db80b5e2253b3577dd37b815896a81e65781a3d58eb3e8b503",
+      "observation_id": "treasury-vote-health-pdf-2021-22-estimates:38621e818687fa22dd5979c1992dc07c4adfcb9ab2eef01a7c88d67f9ae65850",
+      "observed_at": "2026-10-05T06:42:07.852782Z",
+      "outcome": "captured",
+      "sha256": "52e711375e1908db80b5e2253b3577dd37b815896a81e65781a3d58eb3e8b503",
+      "source_id": "treasury-vote-health-pdf-2021-22-estimates",
+      "validator_state": "present",
+      "warc_path": "attempt-qww_yfh6/response.warc",
+      "warc_sha256": "1ae94e5e84dd52e4ac9af1df015196c30f8acbe71e3d33ecf8c22fe764302c91"
+    }
+  ],
+  "results": [
+    {
+      "blake3": "2817682bf009bf3c061235c2c53f30d522db1e84b1dd760d476307f0f027e821",
+      "bytes": 1687389,
+      "content_type": "application/pdf",
+      "etag": "\"645066ec-19bf5d\"",
+      "last_modified": "Tue, 02 May 2023 01:27:08 GMT",
+      "object_id": "sha256:dca08f23c9ba5ac87cf8c0c2129d38afb25ce288bd6d16c8eca239f24c38bac8",
+      "observed_at": "2026-10-05T06:42:06.490183Z",
+      "request_url_sha256": "af11aaf78c4237402f69f04dec99818d35e7333368a1dc0a7dad7a0e20eedc42",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "dca08f23c9ba5ac87cf8c0c2129d38afb25ce288bd6d16c8eca239f24c38bac8",
+      "source_id": "treasury-vote-health-pdf-2018-19-estimates",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2018-05/est18-v6-health.pdf",
+      "validator_state": "present",
+      "warc_path": "attempt-tdfiau77/response.warc",
+      "warc_sha256": "b95aa2ccdcdfb81306d005ab50593a01d073ae10cf342d8a4375239c6d826d0c"
+    },
+    {
+      "blake3": "b380f4e0bb5193ee1edf01ff4413e736216abcaa984a0b9c494336c616ad2578",
+      "bytes": 1387018,
+      "content_type": "application/pdf",
+      "etag": "\"64506978-152a0a\"",
+      "last_modified": "Tue, 02 May 2023 01:38:00 GMT",
+      "object_id": "sha256:eb519370527ecf474ce7a261a62a84835cd219c56aecdc200712d05ac65f71b2",
+      "observed_at": "2026-10-05T06:42:07.320539Z",
+      "request_url_sha256": "c0eedd74a0665bb1828c4f195f029c250b658fa6b843024b1e68cdef7049511b",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "eb519370527ecf474ce7a261a62a84835cd219c56aecdc200712d05ac65f71b2",
+      "source_id": "treasury-vote-health-pdf-2019-20-estimates",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2019-05/est19-v6-health.pdf",
+      "validator_state": "present",
+      "warc_path": "attempt-8k1ln9c4/response.warc",
+      "warc_sha256": "7709180ef5e629e4bc35e2556435fedb47c638ca74820fc4273688a823de6ccb"
+    },
+    {
+      "blake3": "b8c352eaea67573110e441838dbea5ba84f89ad88563d38dd7d555be99130c59",
+      "bytes": 2039394,
+      "content_type": "application/pdf",
+      "etag": "\"64506b1e-1f1e62\"",
+      "last_modified": "Tue, 02 May 2023 01:45:02 GMT",
+      "object_id": "sha256:f9ef5b191e5136654877ecf924cf95664293deed91021ea36b0916914cfdeb51",
+      "observed_at": "2026-10-05T06:42:07.573571Z",
+      "request_url_sha256": "8605b7b6993586a2db118f6c3a4f0ef4e2f684012149dfa6a088903f2ba40df6",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "f9ef5b191e5136654877ecf924cf95664293deed91021ea36b0916914cfdeb51",
+      "source_id": "treasury-vote-health-pdf-2020-21-estimates",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2020-05/est20-v6-health.pdf",
+      "validator_state": "present",
+      "warc_path": "attempt-9ec8kbp6/response.warc",
+      "warc_sha256": "8c3d1bc52a1d65e7526b6019111974b5d9b993f0c651b76cf33122a616bc0219"
+    },
+    {
+      "blake3": "1cf8f1a7fd133218f20b6da9d087f0890b96f478c98fdf0776e580eaf5976527",
+      "bytes": 1741643,
+      "content_type": "application/pdf",
+      "etag": "\"64506d12-1a934b\"",
+      "last_modified": "Tue, 02 May 2023 01:53:22 GMT",
+      "object_id": "sha256:52e711375e1908db80b5e2253b3577dd37b815896a81e65781a3d58eb3e8b503",
+      "observed_at": "2026-10-05T06:42:07.852782Z",
+      "request_url_sha256": "76aa62c94b2d120e96357299bc4fba1e416f6b05a8271cbb372c50e01d22a43e",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "52e711375e1908db80b5e2253b3577dd37b815896a81e65781a3d58eb3e8b503",
+      "source_id": "treasury-vote-health-pdf-2021-22-estimates",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2021-05/est21-v6-health.pdf",
+      "validator_state": "present",
+      "warc_path": "attempt-qww_yfh6/response.warc",
+      "warc_sha256": "1ae94e5e84dd52e4ac9af1df015196c30f8acbe71e3d33ecf8c22fe764302c91"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-capture-manifest/v1",
+  "selected": 4
+}

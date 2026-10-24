@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+from functools import partial
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
 
@@ -13,7 +14,24 @@ from jsonschema import Draft202012Validator
 from archive_govt_nz import __version__, mcp_health_inspection
 from archive_govt_nz.ckan.redaction import redact_sensitive
 from archive_govt_nz.core.registry import AgencyRegistry
-from archive_govt_nz.domains.health_appropriations import resume_operations
+from archive_govt_nz.domains.health_appropriations import (
+    budget_comparison_gold as budget_comparison,
+)
+from archive_govt_nz.domains.health_appropriations import (
+    canonical_gold_queries as canonical_queries,
+)
+from archive_govt_nz.domains.health_appropriations import (
+    fiscal_analytical_operations as fiscal_analytics,
+)
+from archive_govt_nz.domains.health_appropriations import (
+    gold_metadata,
+    operation_context_gold,
+    operation_metadata,
+    resume_operations,
+)
+from archive_govt_nz.domains.health_appropriations import (
+    native_workbook_inspection as native_inspection,
+)
 from archive_govt_nz.domains.health_appropriations.budget_operations import (
     BUDGET_VERIFICATION_SCHEMA,
     verify_budget_package,
@@ -39,6 +57,7 @@ from archive_govt_nz.domains.health_appropriations.source_operations import (
     preflight_source,
 )
 from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
+from archive_govt_nz.python_runtime import REQUIRED_PYTHON, is_supported_python
 from archive_govt_nz.schemas.medallion import (
     DOMAIN_REGISTRY,
     get_domain_schema_definition,
@@ -87,10 +106,17 @@ def _object_schema(properties: dict[str, Any], required: list[str]) -> dict[str,
 _NO_ARGUMENTS = _object_schema({}, [])
 _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
     *resume_operations.MCP_TOOLS,
+    *operation_context_gold.MCP_TOOLS,
+    operation_metadata.MCP_TOOL,
+    fiscal_analytics.MCP_TOOL,
+    canonical_queries.MCP_TOOL,
+    budget_comparison.MCP_TOOL,
+    native_inspection.MCP_TOOL,
     {
         "name": "health_appropriations_preflight_context_gold",
         "description": (
-            "Verify the pinned CPI, wage, GDP and population Silver inputs and "
+            "Verify the pinned CPI, wage, population and separate GDP-vintage "
+            "Silver inputs and "
             "report planned source-separated context Gold outputs without writes. "
             "No denominator selection, rights evaluation or publication is performed."
         ),
@@ -142,7 +168,7 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                         },
                         "numeric_conversion": {"const": "float_for_display_only"},
                         "excluded_observations_plotted": {"const": False},
-                        "series": {"type": "array", "maxItems": 4},
+                        "series": {"type": "array", "maxItems": 5},
                     },
                     "required": [
                         "schema_version",
@@ -156,8 +182,8 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                 },
                 "source_marker_sha256": {
                     "type": "array",
-                    "minItems": 4,
-                    "maxItems": 4,
+                    "minItems": 5,
+                    "maxItems": 5,
                     "items": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
                 },
                 "source_family_policy": {
@@ -236,7 +262,7 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                 "integrity_status": {"const": "not_checked"},
                 "python_min_satisfied": {"type": "boolean"},
                 "python_version": {"type": "string"},
-                "required_python": {"const": ">=3.14"},
+                "required_python": {"const": REQUIRED_PYTHON},
                 "runtime_state": {
                     "enum": ["runtime_compatible", "runtime_incompatible"]
                 },
@@ -503,6 +529,89 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
         },
     },
     {
+        "name": "health_appropriations_verify_gold_metadata",
+        "description": (
+            "Rebuild and verify a hash-pinned local Platinum metadata package "
+            "from pinned Fiscal/Budget and optional canonical Gold without writes. "
+            "This does not evaluate rights or publication readiness."
+        ),
+        "inputSchema": {
+            **_object_schema(
+                {
+                    "fiscal_package": {"type": "string", "minLength": 1},
+                    "fiscal_manifest_sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$",
+                    },
+                    "budget_package": {"type": "string", "minLength": 1},
+                    "budget_manifest_sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$",
+                    },
+                    "canonical_package": {"type": "string", "minLength": 1},
+                    "canonical_manifest_sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$",
+                    },
+                    "output_dir": {"type": "string", "minLength": 1},
+                    "manifest_sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$",
+                    },
+                },
+                [
+                    "fiscal_package",
+                    "fiscal_manifest_sha256",
+                    "budget_package",
+                    "budget_manifest_sha256",
+                    "output_dir",
+                    "manifest_sha256",
+                ],
+            ),
+            "dependentRequired": {
+                "canonical_package": ["canonical_manifest_sha256"],
+                "canonical_manifest_sha256": ["canonical_package"],
+            },
+        },
+        "outputSchema": _object_schema(
+            {
+                "schema_version": {
+                    "enum": [
+                        "archive-govt-nz.health-gold-metadata/v3",
+                        "archive-govt-nz.health-gold-metadata/v4",
+                    ]
+                },
+                "status": {"const": "verified"},
+                "manifest_sha256": {
+                    "type": "string",
+                    "pattern": "^[0-9a-f]{64}$",
+                },
+                "packages": {"enum": [2, 3]},
+                "rights": {"const": "not_evaluated"},
+                "publication": {"const": "not_performed"},
+                "verification_scope": {
+                    "const": "gold_reverified_metadata_reconstructed"
+                },
+            },
+            [
+                "schema_version",
+                "status",
+                "manifest_sha256",
+                "packages",
+                "rights",
+                "publication",
+                "verification_scope",
+            ],
+        ),
+        "annotations": {
+            "title": "Verify Health Gold metadata package",
+            "readOnlyHint": True,
+            "destructiveHint": False,
+            "idempotentHint": True,
+            "openWorldHint": False,
+        },
+    },
+    {
         "name": "health_appropriations_verify_rebuild",
         "description": (
             "Verify a hash-pinned completed raw run and its Bronze sources "
@@ -617,6 +726,18 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
     },
 )
 _TOOLS_BY_NAME = {tool["name"]: tool for tool in _TOOL_DEFINITIONS}
+# Explicit read-only domain handlers keep dispatch closed as tools grow.
+_DOMAIN_TOOL_HANDLERS = {
+    native_inspection.TOOL_NAME: native_inspection.mcp_call,
+    budget_comparison.TOOL_NAME: budget_comparison.mcp_call,
+    operation_metadata.TOOL_NAME: operation_metadata.mcp_call,
+    fiscal_analytics.TOOL_NAME: fiscal_analytics.mcp_call,
+    canonical_queries.TOOL_NAME: canonical_queries.mcp_call,
+    **{
+        name: partial(operation_context_gold.mcp_call, name)
+        for name in operation_context_gold.MCP_OPERATIONS
+    },
+}
 
 
 class StdioServerTransport:
@@ -837,6 +958,8 @@ class Server:
                 if name == "health_appropriations_inspect_workbook"
                 else "Invalid source operation arguments"
                 if name == "health_appropriations_preflight_source"
+                else "Invalid native workbook inspection arguments"
+                if name == native_inspection.TOOL_NAME
                 else errors[0].message
             )
             return _error(req_id, JSONRPC_INVALID_PARAMS, message)
@@ -868,12 +991,22 @@ class Server:
                 ],
                 "structuredContent": structured,
                 "isError": (
-                    name
-                    in {
-                        "health_appropriations_verify_budget",
-                        "health_appropriations_verify_canonical_gold",
-                    }
-                    and structured["status"] == "failed"
+                    (
+                        name
+                        in {
+                            fiscal_analytics.TOOL_NAME,
+                            canonical_queries.TOOL_NAME,
+                            budget_comparison.TOOL_NAME,
+                            native_inspection.TOOL_NAME,
+                            "health_appropriations_verify_budget",
+                            "health_appropriations_verify_canonical_gold",
+                        }
+                        and structured["status"] == "failed"
+                    )
+                    or (
+                        name == native_inspection.TOOL_NAME
+                        and structured["status"] == "preserved_only"
+                    )
                 ),
             },
         )
@@ -1035,6 +1168,31 @@ def _health_read_only_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
         result = verify_context_gold_package(
             Path(str(args["package_dir"])), str(args["manifest_sha256"])
         )
+    elif name == "health_appropriations_verify_gold_metadata":
+        inputs = (
+            gold_metadata.GoldInput(
+                "fiscal_analytical",
+                Path(str(args["fiscal_package"])),
+                str(args["fiscal_manifest_sha256"]),
+            ),
+            gold_metadata.GoldInput(
+                "budget_comparison",
+                Path(str(args["budget_package"])),
+                str(args["budget_manifest_sha256"]),
+            ),
+        )
+        inputs = gold_metadata.with_canonical_input(
+            inputs,
+            Path(str(args["canonical_package"]))
+            if "canonical_package" in args
+            else None,
+            str(args["canonical_manifest_sha256"])
+            if "canonical_manifest_sha256" in args
+            else None,
+        )
+        result = gold_metadata.verify_gold_metadata(
+            inputs, Path(str(args["output_dir"])), str(args["manifest_sha256"])
+        )
     elif name == "health_appropriations_verify_rebuild":
         result = verify_rebuild(
             Path(str(args["output_dir"])),
@@ -1056,12 +1214,12 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
         raise ValueError(message)
     args = arguments or {}
     if name == "archive_doctor":
-        satisfied = sys.version_info >= (3, 14)
+        satisfied = is_supported_python(sys.version_info[:3])
         result = {
             "integrity_status": "not_checked",
             "python_min_satisfied": satisfied,
             "python_version": sys.version.split()[0],
-            "required_python": ">=3.14",
+            "required_python": REQUIRED_PYTHON,
             "runtime_state": (
                 "runtime_compatible" if satisfied else "runtime_incompatible"
             ),
@@ -1106,6 +1264,8 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
             "title": schema_def.title,
             "fields": fields_list,
         }
+    elif name in _DOMAIN_TOOL_HANDLERS:
+        result = _DOMAIN_TOOL_HANDLERS[name](args)
     elif name in resume_operations.MCP_OPERATIONS:
         result = resume_operations.mcp_call(name, args)
     elif name in (
@@ -1115,6 +1275,7 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
         "health_appropriations_verify_budget",
         "health_appropriations_verify_canonical_gold",
         "health_appropriations_verify_context_gold",
+        "health_appropriations_verify_gold_metadata",
         "health_appropriations_verify_rebuild",
         "health_appropriations_status",
     ):

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+from datetime import UTC, date, datetime
 from decimal import Decimal
 from pathlib import Path
 from typing import Any
@@ -17,6 +18,10 @@ from tests.domains.health_appropriations.test_budget_revenue_projection import (
 )
 from tests.domains.health_appropriations.test_historical_snapshot import (
     _package as historical_raw_package,
+)
+from tests.domains.health_appropriations.test_moh_indicators import source as moh_source
+from tests.domains.health_appropriations.test_pharmac_canonical_projection import (
+    package as pharmac_silver_package,
 )
 
 from archive_govt_nz.domains.health_appropriations import (
@@ -42,6 +47,9 @@ from archive_govt_nz.domains.health_appropriations.canonical_consumer import (
     summarize_historical_coverage,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_gold_export import (
+    GoldInputs,
+    MohGoldInput,
+    PharmacGoldInput,
     export_canonical_gold,
     export_historical_gold,
 )
@@ -53,7 +61,18 @@ from archive_govt_nz.domains.health_appropriations.historical_canonical_export i
 )
 from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
     CanonicalPackageInput,
+    read_verified_canonical_tables,
 )
+from archive_govt_nz.domains.health_appropriations.moh_canonical_projection import (
+    PROFILES as MOH_PROFILES,
+)
+from archive_govt_nz.domains.health_appropriations.moh_canonical_projection import (
+    MohIndicatorInput,
+)
+from archive_govt_nz.domains.health_appropriations.moh_indicators import (
+    normalize_moh_indicators,
+)
+from archive_govt_nz.schemas.health_recordsets import recordset_schema
 
 
 def _package(tmp_path: Path) -> CanonicalPackageInput:
@@ -146,8 +165,11 @@ def _assert_dataset_card(output: Path, manifest: dict[str, Any]) -> None:
     for boundary in (
         "Analytical completeness: not evaluated.",
         "Source health: unresolved.",
-        "Classification drift: unresolved.",
-        "Revision reconciliation: unresolved.",
+        "Budget/revenue label-change candidates: observed only;",
+        "Other classification drift: unresolved.",
+        "Historical revision candidates are observed only; reasons for change",
+        "  are not assessed.",
+        "Full revision reconciliation: unresolved.",
         "Cross-source reconciliation: not performed.",
         "Rights: not evaluated.",
         "Publication: not performed.",
@@ -179,14 +201,54 @@ def _assert_canonical_gold_outputs(
     }.issubset(set(manifest["outputs"]))
     drillthrough = manifest["source_drillthrough"]
     assert drillthrough["schema_version"] == (
-        "archive-govt-nz.health-source-drillthrough/v1"
+        "archive-govt-nz.health-source-drillthrough/v2"
     )
+    assert drillthrough["scope"] == "exact_row_and_source_coordinate_lookup_only"
     output_by_record = {
         row["input_record_id"]: row["output_rows"] for row in drillthrough["records"]
     }
     assert set(output_by_record) == set(quality["input_record_products"])
+    expected_coordinates: dict[str, list[dict[str, Any]]] = {}
+    for package in packages:
+        canonical, _receipt = read_verified_canonical_tables(package)
+        for lineage in canonical["field_lineage"].to_pylist():
+            locator = lineage["source_locator"]
+            expected_coordinates.setdefault(lineage["target_record_id"], []).append(
+                {
+                    "field": lineage["field"],
+                    "source_coordinate": lineage["source_coordinate"],
+                    "source_object_sha256": lineage["source_object_sha256"],
+                    "source_locator_sha256": hashlib.sha256(
+                        locator.encode("utf-8")
+                    ).hexdigest(),
+                    "source_vintage": lineage["source_vintage"],
+                    "rights_state": lineage["rights_state"],
+                }
+            )
     for input_record_id, output_rows in output_by_record.items():
         assert output_rows
+        record = next(
+            item
+            for item in drillthrough["records"]
+            if item["input_record_id"] == input_record_id
+        )
+        assert record["source_coordinates"] == sorted(
+            expected_coordinates[input_record_id],
+            key=lambda item: (
+                item["source_vintage"],
+                item["source_object_sha256"],
+                item["source_coordinate"],
+                item["field"],
+            ),
+        )
+        assert all(
+            item["source_coordinate"]
+            and item["field"]
+            and item["source_object_sha256"]
+            and item["source_locator_sha256"]
+            and item["rights_state"] == "not_evaluated"
+            for item in record["source_coordinates"]
+        )
         for output_row in output_rows:
             metadata = manifest["outputs"][output_row["output_name"]]
             assert metadata["sha256"] == output_row["output_sha256"]
@@ -197,7 +259,16 @@ def _assert_canonical_gold_outputs(
             )
     assert {
         item["product"]: item["status"] for item in manifest["plot_report"]["series"]
-    } == {"historical": "rendered", "budget": "rendered", "revenue": "rendered"}
+    } == {
+        "historical": "rendered",
+        "budget": "rendered",
+        "revenue": "rendered",
+        "pharmac": "not_present",
+        "moh": "not_present",
+        "crown_befu": "not_present",
+        "crown_hyefu": "not_present",
+        "fiscal_crown": "not_present",
+    }
     assert all(
         manifest["outputs"][name]["kind"] == "plot_png"
         and manifest["outputs"][name]["display_only"] is True
@@ -241,6 +312,83 @@ def test_exact_nominal_query_retains_source_labels_and_lineage(tmp_path: Path) -
     assert receipt["price_basis_state"] == "unknown"
     assert receipt["classification_mapping"] == "not_performed"
     assert before == {path: path.read_bytes() for path in before}
+
+
+def test_budget_gold_reconciles_exact_pinned_canonical_input_totals(
+    tmp_path: Path,
+) -> None:
+    package = _package(tmp_path / "budget")
+    canonical, receipt = read_verified_canonical_tables(package)
+    source_rows = canonical["appropriation_fact"].to_pylist()
+    output = tmp_path / "gold"
+
+    manifest = export_canonical_gold((package,), output, write=True)
+
+    report = json.loads(
+        (output / "budget_input_total_reconciliation.json").read_bytes()
+    )
+    assert manifest["budget_input_total_reconciliation_report"] == report
+    assert report["source_package_marker_sha256"] == [receipt["marker_sha256"]]
+    assert report["official_source_control"] == "not_performed"
+    assert report["donor_control"] == "not_performed"
+    assert report["cross_source_comparison"] == "not_performed"
+    assert report["group_count"] == 1
+    group = report["groups"][0]
+    assert group["status"] == "exact_match"
+    assert group["input_record_ids"] == sorted(row["record_id"] for row in source_rows)
+    assert Decimal(group["canonical_input_total"]) == sum(
+        (row["amount"] for row in source_rows), Decimal(0)
+    )
+    assert Decimal(group["gold_output_total"]) == Decimal("246.000000000000000000")
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
+    )
+
+
+def test_revenue_gold_reconciles_exact_pinned_canonical_input_totals(
+    tmp_path: Path,
+) -> None:
+    package = _revenue_package(tmp_path / "revenue")
+    canonical, receipt = read_verified_canonical_tables(package)
+    source_rows = canonical["revenue_fact"].to_pylist()
+    output = tmp_path / "gold"
+
+    manifest = export_canonical_gold((package,), output, write=True)
+
+    report = json.loads(
+        (output / "revenue_input_total_reconciliation.json").read_bytes()
+    )
+    assert manifest["revenue_input_total_reconciliation_report"] == report
+    assert manifest["products"]["revenue"]["input_total_reconciliation"] == report
+    assert report["source_package_marker_sha256"] == [receipt["marker_sha256"]]
+    assert report["official_source_control"] == "not_performed"
+    assert report["donor_control"] == "not_performed"
+    assert report["cross_source_comparison"] == "not_performed"
+    assert report["revenue_netting"] == "not_performed"
+    assert report["group_count"] == 2
+    assert all(group["status"] == "exact_match" for group in report["groups"])
+    assert sorted(
+        record_id
+        for group in report["groups"]
+        for record_id in group["input_record_ids"]
+    ) == sorted(row["record_id"] for row in source_rows)
+    assert sum(
+        (Decimal(group["canonical_input_total"]) for group in report["groups"]),
+        Decimal(0),
+    ) == sum((row["amount"] for row in source_rows), Decimal(0))
+    assert sum(
+        (Decimal(group["gold_output_total"]) for group in report["groups"]),
+        Decimal(0),
+    ) == Decimal("58746.000000000000000000")
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
+    )
 
 
 def test_wrong_kind_and_repeated_identity_fail_closed(tmp_path: Path) -> None:
@@ -508,19 +656,41 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
     assert quality["input_records_with_product"] == quality["input_record_count"]
     assert quality["unresolved_reports"] == [
         "source_health",
-        "classification_drift",
         "revision_reconciliation",
         "cross_source_reconciliation",
     ]
+    assert receipt["classification_drift_report"]["schema_version"] == (
+        "archive-govt-nz.health-classification-drift/v1"
+    )
+    assert receipt["classification_drift_report"]["mapping"] == "not_inferred"
     assert quality["input_record_products"]
     assert {
         "historical_observations.parquet",
         "historical_coverage.parquet",
         "nominal_budget.parquet",
         "nominal_revenue.parquet",
+        "historical_revision_reconciliation.json",
         "MANIFEST.json",
     }.issubset({path.name for path in output.iterdir()})
     manifest = json.loads((output / "MANIFEST.json").read_text(encoding="utf-8"))
+    overlap_report = json.loads(
+        (output / "cross_source_period_overlap.json").read_text(encoding="utf-8")
+    )
+    assert manifest["cross_source_period_overlap_report"] == overlap_report
+    assert overlap_report["match_basis"] == "literal_period_token_only"
+    assert overlap_report["comparability"] == "not_assessed"
+    assert overlap_report["numeric_variance"] == "not_computed"
+    assert overlap_report["cross_source_join"] == "not_performed"
+    assert overlap_report["overlap_group_count"] == len(overlap_report["groups"])
+    revision_report = manifest["revision_reconciliation_report"]
+    assert revision_report["schema_version"] == (
+        "archive-govt-nz.health-revision-reconciliation/v1"
+    )
+    assert revision_report["completeness"] == (
+        "historical_budget_revenue_biff8_budget_biff8_revenue_"
+        "pharmac_moh_crown_product_rows"
+    )
+    assert revision_report["other_product_revisions"] == "not_assessed"
     _assert_ro_crate(output, manifest)
     _assert_dataset_card(output, manifest)
     _assert_temporal_report(manifest)
@@ -529,6 +699,599 @@ def test_canonical_gold_builds_source_separated_facts_and_report(
     )
     with pytest.raises(ValueError, match=r"^canonical_gold_export_invalid$"):
         export_canonical_gold((object(),), tmp_path / "invalid")  # type: ignore[arg-type]
+
+
+def test_canonical_gold_includes_pharmac_as_a_separate_source_product(
+    tmp_path: Path,
+) -> None:
+    historical = _historical_package(tmp_path / "historical")
+    budget = _package(tmp_path / "budget")
+    revenue = _revenue_package(tmp_path / "revenue")
+    pharmac_root = tmp_path / "pharmac"
+    pharmac_root.mkdir()
+    silver, cas, pin, source_sha256 = pharmac_silver_package(pharmac_root)
+    pharmac_input = PharmacGoldInput(silver, pin, cas, source_sha256)
+    output = tmp_path / "gold-with-pharmac"
+    repeated = tmp_path / "gold-with-pharmac-repeat"
+
+    receipt = export_canonical_gold(
+        (historical, budget, revenue),
+        output,
+        inputs=GoldInputs(pharmac=pharmac_input),
+    )
+    assert receipt["status"] == "dry_run"
+    assert receipt["products"]["pharmac"]["aggregation"] == (
+        "none_source_record_rows_preserved"
+    )
+    assert receipt["products"]["pharmac"]["actual_expenditure"] == "not_asserted"
+    assert receipt["cross_source_join"] == "not_performed"
+    assert receipt["vintage_pooling"] == "not_performed"
+    assert not output.exists()
+
+    export_canonical_gold(
+        (historical, budget, revenue),
+        output,
+        write=True,
+        inputs=GoldInputs(pharmac=pharmac_input),
+    )
+    export_canonical_gold(
+        (historical, budget, revenue),
+        repeated,
+        write=True,
+        inputs=GoldInputs(pharmac=pharmac_input),
+    )
+    manifest = json.loads((output / "MANIFEST.json").read_text(encoding="utf-8"))
+    pharmac_rows = pq.read_table(
+        output / "nominal_pharmaceutical_budget.parquet"
+    ).to_pylist()
+    lineage_rows = pq.read_table(
+        output / "pharmaceutical_budget_lineage.parquet"
+    ).to_pylist()
+    assert len(pharmac_rows) == 14
+    assert len(lineage_rows) == 14 * 8
+    assert {row["rights_state"] for row in pharmac_rows} == {"not_evaluated"}
+    assert {row["amount_type"] for row in pharmac_rows} == {
+        "published_budget_allocation"
+    }
+    assert {row["funding_regime"] for row in pharmac_rows} == {
+        "district_health_board_budget_holder",
+        "government_appropriation_allocated_to_pharmac",
+    }
+    _assert_pharmac_reconciliation(output, manifest, pharmac_rows, pin, source_sha256)
+    assert manifest["pharmac_projection"]["status"] == (
+        "verified_source_faithful_projection"
+    )
+
+    assert manifest["products"]["pharmac"]["funding_regimes"] == sorted(
+        {row["funding_regime"] for row in pharmac_rows}
+    )
+    pharmac_groups = [
+        row
+        for row in manifest["temporal_coverage_report"]["groups"]
+        if row["output_name"] == "nominal_pharmaceutical_budget.parquet"
+    ]
+    assert len(pharmac_groups) == 2
+    assert {row["context"]["funding_regime"] for row in pharmac_groups} == {
+        "district_health_board_budget_holder",
+        "government_appropriation_allocated_to_pharmac",
+    }
+    pharmac_plots = [
+        item
+        for item in manifest["plot_report"]["series"]
+        if item["product"] == "pharmac"
+    ]
+    assert pharmac_plots[0]["status"] == "rendered"
+    assert len(pharmac_plots[0]["plots"]) == 2
+    drillthrough = {
+        row["input_record_id"]: row
+        for row in manifest["source_drillthrough"]["records"]
+    }
+    assert {row["record_id"] for row in pharmac_rows}.issubset(drillthrough)
+    for row in pharmac_rows:
+        record = drillthrough[row["record_id"]]
+        assert len(record["source_coordinates"]) == 8
+        assert any(
+            item["output_name"] == "nominal_pharmaceutical_budget.parquet"
+            for item in record["output_rows"]
+        )
+    assert {path.name: path.read_bytes() for path in output.iterdir()} == {
+        path.name: path.read_bytes() for path in repeated.iterdir()
+    }
+
+
+def _assert_pharmac_reconciliation(
+    output: Path,
+    manifest: dict[str, Any],
+    rows: list[dict[str, Any]],
+    marker: str,
+    source_sha256: str,
+) -> None:
+    reconciliation = json.loads(
+        (output / "pharmac_input_total_reconciliation.json").read_text(encoding="utf-8")
+    )
+    assert manifest["pharmac_input_total_reconciliation_report"] == reconciliation
+    assert manifest["products"]["pharmac"]["input_total_reconciliation"] == (
+        reconciliation
+    )
+    assert reconciliation["source_package_marker_sha256"] == [marker]
+    assert reconciliation["source_object_sha256"] == source_sha256
+    assert reconciliation["input_record_count"] == len(rows) == 14
+    assert reconciliation["group_count"] == len(reconciliation["groups"]) == 14
+    assert all(
+        group["input_record_count"] == 1
+        and group["status"] == "exact_match"
+        and Decimal(group["canonical_input_total"])
+        == Decimal(group["gold_output_total"])
+        for group in reconciliation["groups"]
+    )
+    assert reconciliation["published_change_recalculation"] == "not_performed"
+    assert reconciliation["actual_expenditure"] == "not_asserted"
+    assert reconciliation["cross_source_comparison"] == "not_performed"
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
+    )
+
+
+def test_canonical_gold_preserves_pinned_moh_indicator_profiles(tmp_path: Path) -> None:
+    historical = _historical_package(tmp_path / "historical")
+    budget = _package(tmp_path / "budget")
+    revenue = _revenue_package(tmp_path / "revenue")
+    cas_root = tmp_path / "moh-cas"
+    packages = []
+    for profile in ("fig27/v1", "fig28/v1"):
+        source_dir = tmp_path / profile.replace("/", "-")
+        source_dir.mkdir()
+        source_path, source_sha256 = moh_source(source_dir, profile)
+        cas_object = cas_root / source_sha256[:2] / source_sha256
+        cas_object.parent.mkdir(parents=True, exist_ok=True)
+        cas_object.write_bytes(source_path.read_bytes())
+        silver = tmp_path / "silver" / profile.replace("/", "-")
+        normalize_moh_indicators(
+            cas_object,
+            silver,
+            expected_sha256=source_sha256,
+            profile=profile,
+            source_vintage="MoH-HAIR-2024",
+            observed_at="2026-08-29T09:00:17Z",
+            source_locator=MOH_PROFILES[profile],
+            dry_run=False,
+        )
+        manifest_sha256 = hashlib.sha256(
+            (silver / "MANIFEST.json").read_bytes()
+        ).hexdigest()
+        packages.append(
+            MohIndicatorInput(profile, silver, manifest_sha256, source_sha256)
+        )
+    moh_input = MohGoldInput(tuple(packages), cas_root)
+    inputs = (historical, budget, revenue)
+    output = tmp_path / "gold-with-moh"
+    repeated = tmp_path / "gold-with-moh-repeat"
+
+    planned = export_canonical_gold(inputs, output, inputs=GoldInputs(moh=moh_input))
+    assert planned["status"] == "dry_run"
+    assert planned["products"]["moh"]["output_rows"] == 80
+    assert not output.exists()
+
+    export_canonical_gold(inputs, output, write=True, inputs=GoldInputs(moh=moh_input))
+    export_canonical_gold(
+        inputs, repeated, write=True, inputs=GoldInputs(moh=moh_input)
+    )
+    manifest = json.loads((output / "MANIFEST.json").read_text(encoding="utf-8"))
+    facts = pq.read_table(output / "published_health_indicators.parquet").to_pylist()
+    lineage = pq.read_table(
+        output / "published_health_indicator_lineage.parquet"
+    ).to_pylist()
+    assert len(facts) == 80
+    assert len(lineage) == 240
+    assert {row["profile"] for row in facts} == {"fig27/v1", "fig28/v1"}
+    assert {row["unit"] for row in facts} == {None}
+    assert {row["price_base"] for row in facts} == {None}
+    assert {row["denominator"] for row in facts} == {None}
+    assert {row["rights_state"] for row in facts} == {"not_evaluated"}
+    assert manifest["products"]["moh"]["actual_expenditure"] == "not_asserted"
+    reconciliation = manifest["moh_input_gold_reconciliation_report"]
+    assert reconciliation["status"] == "exact_source_rows_preserved"
+    assert reconciliation["row_count"] == 80
+    assert [item["row_count"] for item in reconciliation["profiles"]] == [40, 40]
+    assert reconciliation["measure_pooling"] == "not_performed"
+    assert reconciliation["cross_source_comparison"] == "not_performed"
+    assert (
+        json.loads(
+            (output / "moh_input_gold_reconciliation.json").read_text(encoding="utf-8")
+        )
+        == manifest["products"]["moh"]["input_gold_reconciliation"]
+    )
+    assert manifest["moh_projection"]["cross_source_join"] == "not_performed"
+    assert (
+        len(
+            [
+                group
+                for group in manifest["temporal_coverage_report"]["groups"]
+                if group["output_name"] == "published_health_indicators.parquet"
+            ]
+        )
+        == 4
+    )
+    assert any(path.name.startswith("plot_moh_") for path in output.glob("plot_*.png"))
+    assert {path.name: path.read_bytes() for path in output.iterdir()} == {
+        path.name: path.read_bytes() for path in repeated.iterdir()
+    }
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
+    )
+
+
+def test_canonical_gold_preserves_befu_and_hyefu_as_separate_vintages(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    historical = _historical_package(tmp_path / "historical")
+    budget = _package(tmp_path / "budget")
+    revenue = _revenue_package(tmp_path / "revenue")
+    schema = recordset_schema("fiscal_context_fact")
+    lineage_schema = recordset_schema("field_lineage")
+    pins = ("a" * 64, "b" * 64)
+
+    def projection(
+        vintage: str, marker: str
+    ) -> tuple[pa.Table, pa.Table, dict[str, Any]]:
+        facts = []
+        lineage = []
+        for index in range(10):
+            record_id = f"{vintage}-{index}"
+            facts.append(
+                {
+                    "record_id": record_id,
+                    "schema_version": "archive-govt-nz.health-recordsets/v1",
+                    "recordset": "fiscal_context_fact",
+                    "domain": "health_appropriations",
+                    "source_object_sha256": marker,
+                    "source_observation_id": record_id,
+                    "source_locator": "workbook.xlsx#sheet=Core",
+                    "source_vintage": vintage,
+                    "valid_time_start": None,
+                    "valid_time_end": None,
+                    "valid_time_status": "financial_year_boundaries_unqualified",
+                    "period_token": f"year_label:{2015 + index}",
+                    "observed_at": datetime(2026, 8, 29, 9, 0, 17, tzinfo=UTC),
+                    "observation_context": f"treasury_{vintage.lower()}_core_crown_expense_formula_cache",
+                    "rights_state": "not_evaluated",
+                    "quality_flags": [
+                        "canonical_projection_preserves_source_uncertainty"
+                    ],
+                    "transformation_id": f"{vintage}/v1",
+                    "lineage_id": f"lineage-{record_id}",
+                    "source_record_id": record_id,
+                    "source_schema_version": "archive-govt-nz.health-recordsets/v1",
+                    "measure": "core_crown_expense",
+                    "amount": Decimal(index + 100),
+                    "value_token": str(index + 100),
+                    "null_reason": None,
+                    "source_decimal_precision": 3,
+                    "source_decimal_scale": 0,
+                    "unit": "unknown_source_unit",
+                    "currency": None,
+                    "price_basis": None,
+                    "base_period": None,
+                    "denominator_definition": None,
+                    "amount_type": "forecast",
+                    "source_label": "Core Crown expense",
+                    "institutional_coverage": "core_crown",
+                    "accounting_basis": None,
+                    "seasonal_adjustment": None,
+                }
+            )
+            lineage.extend(
+                {
+                    "record_id": f"lineage-{record_id}-{field_index}",
+                    "schema_version": "archive-govt-nz.health-recordsets/v1",
+                    "recordset": "field_lineage",
+                    "domain": "health_appropriations",
+                    "source_object_sha256": marker,
+                    "source_observation_id": record_id,
+                    "source_locator": "workbook.xlsx#sheet=Core",
+                    "source_vintage": vintage,
+                    "valid_time_start": None,
+                    "valid_time_end": None,
+                    "valid_time_status": "financial_year_boundaries_unqualified",
+                    "period_token": f"year_label:{2015 + index}",
+                    "observed_at": datetime(2026, 8, 29, 9, 0, 17, tzinfo=UTC),
+                    "observation_context": "source_coordinate_lineage",
+                    "rights_state": "not_evaluated",
+                    "quality_flags": [],
+                    "transformation_id": f"{vintage}/v1",
+                    "lineage_id": f"lineage-{record_id}-{field_index}",
+                    "source_record_id": record_id,
+                    "source_schema_version": "archive-govt-nz.health-recordsets/v1",
+                    "target_record_id": record_id,
+                    "field": f"field-{field_index}",
+                    "source_coordinate": f"Core!A{index + field_index + 1}",
+                    "raw_value": str(index),
+                    "normalized_value": str(index),
+                    "rule": f"{vintage}/v1",
+                }
+                for field_index in range(8)
+            )
+        return (
+            pa.Table.from_pylist(facts, schema=schema),
+            pa.Table.from_pylist(lineage, schema=lineage_schema),
+            {"input_records": 10, "vintage": vintage},
+        )
+
+    def befu(
+        _root: Path, marker: str, _cas: Path
+    ) -> tuple[pa.Table, pa.Table, dict[str, Any]]:
+        return projection("BEFU-2026", marker)
+
+    def hyefu(
+        _root: Path, marker: str, _cas: Path
+    ) -> tuple[pa.Table, pa.Table, dict[str, Any]]:
+        return projection("HYEFU-2025", marker)
+
+    monkeypatch.setattr(
+        canonical_gold_export.crown_expense_canonical_projection,
+        "project_befu_core_expense",
+        befu,
+    )
+    monkeypatch.setattr(
+        canonical_gold_export.hyefu_crown_expense_canonical_projection,
+        "project_hyefu_core_expense",
+        hyefu,
+    )
+    crown = canonical_gold_export.CrownGoldInput(
+        befu_root=tmp_path / "befu-silver",
+        befu_manifest_sha256=pins[0],
+        hyefu_root=tmp_path / "hyefu-silver",
+        hyefu_manifest_sha256=pins[1],
+        source_cas_root=tmp_path / "bronze-cas",
+    )
+    inputs = (historical, budget, revenue)
+    output = tmp_path / "gold-with-crown"
+    repeated = tmp_path / "gold-with-crown-repeat"
+
+    planned = export_canonical_gold(inputs, output, inputs=GoldInputs(crown=crown))
+    assert planned["status"] == "dry_run"
+    assert planned["products"]["crown_befu"]["output_rows"] == 10
+    assert planned["products"]["crown_hyefu"]["output_rows"] == 10
+    assert not output.exists()
+
+    export_canonical_gold(inputs, output, write=True, inputs=GoldInputs(crown=crown))
+    export_canonical_gold(inputs, repeated, write=True, inputs=GoldInputs(crown=crown))
+    manifest = json.loads((output / "MANIFEST.json").read_text(encoding="utf-8"))
+    befu_facts = pq.read_table(output / "crown_expense_befu_2026.parquet").to_pylist()
+    hyefu_facts = pq.read_table(output / "crown_expense_hyefu_2025.parquet").to_pylist()
+    assert {row["source_vintage"] for row in befu_facts} == {"BEFU-2026"}
+    assert {row["source_vintage"] for row in hyefu_facts} == {"HYEFU-2025"}
+    assert not {row["record_id"] for row in befu_facts} & {
+        row["record_id"] for row in hyefu_facts
+    }
+    assert manifest["crown_projection"]["cross_source_join"] == "not_performed"
+    crown_reconciliation = manifest["crown_projection_gold_reconciliation_report"]
+    assert crown_reconciliation["row_count"] == 20
+    assert [item["product"] for item in crown_reconciliation["families"]] == [
+        "crown_befu",
+        "crown_hyefu",
+    ]
+    assert all(
+        item["status"] == "exact_source_rows_preserved"
+        and all(row["status"] == "exact_numeric_value_match" for row in item["rows"])
+        for item in crown_reconciliation["families"]
+    )
+    assert (
+        json.loads(
+            (output / "crown_projection_gold_reconciliation.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        == crown_reconciliation
+    )
+    assert manifest["products"]["crown_befu"]["currency_and_accounting_basis"] == (
+        "unknown_not_inferred"
+    )
+    assert manifest["products"]["crown_hyefu"]["cross_vintage_comparison"] == (
+        "not_performed"
+    )
+    assert {
+        "crown_expense_befu_2026.parquet",
+        "crown_expense_hyefu_2025.parquet",
+    } <= set(manifest["outputs"])
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
+    )
+    assert {path.name: path.read_bytes() for path in output.iterdir()} == {
+        path.name: path.read_bytes() for path in repeated.iterdir()
+    }
+
+
+def test_canonical_gold_preserves_historical_fiscal_crown_measure_families(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    historical = _historical_package(tmp_path / "historical")
+    budget = _package(tmp_path / "budget")
+    revenue = _revenue_package(tmp_path / "revenue")
+    fact_schema = recordset_schema("fiscal_context_fact")
+    lineage_schema = recordset_schema("field_lineage")
+    source_sha256 = "c" * 64
+    vintage = "Fiscal-Time-Series-1972-2025"
+    observed_at = datetime(2026, 8, 29, 9, 0, 17, tzinfo=UTC)
+
+    def project(_source: Path) -> tuple[pa.Table, pa.Table, dict[str, Any]]:
+        facts = []
+        lineage = []
+        for index in range(61):
+            family = "core_crown" if index < 32 else "total_crown"
+            measure = f"{family}_expenses"
+            source_id = f"fiscal-source-{index}"
+            record_id = f"fiscal-canonical-{index}"
+            period_end = date(1994 + index, 6, 30)
+            facts.append(
+                {
+                    "record_id": record_id,
+                    "schema_version": "archive-govt-nz.health-recordsets/v1",
+                    "recordset": "fiscal_context_fact",
+                    "domain": "health_appropriations",
+                    "source_object_sha256": source_sha256,
+                    "source_observation_id": source_id,
+                    "source_locator": "fiscal.xlsx#Spending!A1",
+                    "source_vintage": vintage,
+                    "valid_time_start": None,
+                    "valid_time_end": period_end,
+                    "valid_time_status": "june_year_end_start_unqualified",
+                    "period_token": f"year_label:{1994 + index}",
+                    "observed_at": observed_at,
+                    "observation_context": "treasury_fiscal_time_series_crown_as_published",
+                    "rights_state": "not_evaluated",
+                    "quality_flags": ["consolidation_equivalence_not_asserted"],
+                    "transformation_id": "fiscal-crown-canonical/v1",
+                    "lineage_id": f"fact-lineage-{index}",
+                    "source_record_id": source_id,
+                    "source_schema_version": "archive-govt-nz.fiscal-crown-literal-admission/v1",
+                    "measure": measure,
+                    "amount": Decimal(index + 100),
+                    "value_token": str(index + 100),
+                    "null_reason": None,
+                    "source_decimal_precision": 3,
+                    "source_decimal_scale": 0,
+                    "unit": "$ millions",
+                    "currency": None,
+                    "price_basis": None,
+                    "base_period": None,
+                    "denominator_definition": None,
+                    "amount_type": "historical_as_published",
+                    "source_label": measure,
+                    "institutional_coverage": family,
+                    "accounting_basis": "PBE Standards",
+                    "seasonal_adjustment": None,
+                }
+            )
+            lineage.extend(
+                {
+                    "record_id": f"fiscal-lineage-{index}-{field_index}",
+                    "schema_version": "archive-govt-nz.health-recordsets/v1",
+                    "recordset": "field_lineage",
+                    "domain": "health_appropriations",
+                    "source_object_sha256": source_sha256,
+                    "source_observation_id": source_id,
+                    "source_locator": "fiscal.xlsx#Spending!A1",
+                    "source_vintage": vintage,
+                    "valid_time_start": None,
+                    "valid_time_end": period_end,
+                    "valid_time_status": "june_year_end_start_unqualified",
+                    "period_token": f"year_label:{1994 + index}",
+                    "observed_at": observed_at,
+                    "observation_context": "treasury_fiscal_time_series_crown_as_published",
+                    "rights_state": "not_evaluated",
+                    "quality_flags": [],
+                    "transformation_id": "fiscal-crown-canonical/v1",
+                    "lineage_id": f"fact-lineage-{index}",
+                    "source_record_id": source_id,
+                    "source_schema_version": "archive-govt-nz.fiscal-crown-literal-admission/v1",
+                    "target_record_id": record_id,
+                    "field": f"field-{field_index}",
+                    "source_coordinate": f"Spending!A{index * 11 + field_index + 1}",
+                    "raw_value": str(index),
+                    "normalized_value": str(index),
+                    "rule": "fiscal-crown-canonical/v1",
+                }
+                for field_index in range(11)
+            )
+        return (
+            pa.Table.from_pylist(facts, schema=fact_schema),
+            pa.Table.from_pylist(lineage, schema=lineage_schema),
+            {
+                "source_object_sha256": source_sha256,
+                "source_vintage": vintage,
+                "input_records": 61,
+                "core_crown_records": 32,
+                "total_crown_records": 29,
+                "currency": "unknown",
+                "accounting_basis": "source_label_retained",
+                "financial_year_start": "unqualified",
+                "rights_state": "not_evaluated",
+                "cross_measure_comparison": "not_performed",
+            },
+        )
+
+    monkeypatch.setattr(
+        canonical_gold_export.fiscal_crown_canonical_projection,
+        "project_fiscal_crown",
+        project,
+    )
+    fiscal = canonical_gold_export.FiscalCrownGoldInput(
+        source_path=tmp_path / "pinned-fiscal-bronze.xlsx"
+    )
+    packages = (historical, budget, revenue)
+    output = tmp_path / "gold-with-fiscal-crown"
+    repeated = tmp_path / "gold-with-fiscal-crown-repeat"
+
+    planned = export_canonical_gold(
+        packages, output, inputs=GoldInputs(fiscal_crown=fiscal)
+    )
+    assert planned["products"]["fiscal_crown"]["output_rows"] == 61
+    assert planned["products"]["fiscal_crown"]["lineage_rows"] == 671
+    assert not output.exists()
+
+    export_canonical_gold(
+        packages, output, write=True, inputs=GoldInputs(fiscal_crown=fiscal)
+    )
+    export_canonical_gold(
+        packages, repeated, write=True, inputs=GoldInputs(fiscal_crown=fiscal)
+    )
+    manifest = json.loads((output / "MANIFEST.json").read_text(encoding="utf-8"))
+    facts = pq.read_table(output / "historical_fiscal_crown.parquet").to_pylist()
+    lineage = pq.read_table(
+        output / "historical_fiscal_crown_lineage.parquet"
+    ).to_pylist()
+    assert len(facts) == 61
+    assert len(lineage) == 671
+    assert {row["institutional_coverage"] for row in facts} == {
+        "core_crown",
+        "total_crown",
+    }
+    assert {row["measure"] for row in facts} == {
+        "core_crown_expenses",
+        "total_crown_expenses",
+    }
+    assert {row["currency"] for row in facts} == {None}
+    assert manifest["products"]["fiscal_crown"]["cross_measure_comparison"] == (
+        "not_performed"
+    )
+    assert manifest["products"]["fiscal_crown"]["rights_state"] == "not_evaluated"
+    crown_reconciliation = manifest["crown_projection_gold_reconciliation_report"]
+    assert crown_reconciliation["row_count"] == 61
+    assert [item["product"] for item in crown_reconciliation["families"]] == [
+        "fiscal_crown"
+    ]
+    assert any(
+        path.name.startswith("plot_fiscal_crown_") for path in output.glob("plot_*.png")
+    )
+    assert (
+        verify_canonical_gold_package(
+            output, hashlib.sha256((output / "MANIFEST.json").read_bytes()).hexdigest()
+        )["status"]
+        == "verified"
+    )
+    row_index = {
+        row["input_record_id"]: row
+        for row in manifest["source_drillthrough"]["records"]
+    }
+    assert all(
+        len(row_index[f"fiscal-canonical-{index}"]["source_coordinates"]) == 11
+        for index in range(61)
+    )
+    assert {path.name: path.read_bytes() for path in output.iterdir()} == {
+        path.name: path.read_bytes() for path in repeated.iterdir()
+    }
 
 
 def test_temporal_coverage_keeps_historical_source_series_distinct(
@@ -558,6 +1321,415 @@ def test_temporal_coverage_keeps_historical_source_series_distinct(
         (original["source_label"], original["source_locator"]),
         (alternate["source_label"], alternate["source_locator"]),
     }
+
+
+def test_cross_source_overlap_report_is_literal_sorted_and_non_comparative() -> None:
+    report = canonical_gold_export.build_cross_source_period_overlap_report(
+        {
+            "observations": pa.table(
+                {
+                    "period_token": ["FY2025/26", "FY2024/25"],
+                    "source_vintage": ["History 1", "History 1"],
+                    "unit": ["NZD million", "NZD million"],
+                    "input_record_id": ["history-b", "history-a"],
+                }
+            ),
+            "budget": pa.table(
+                {
+                    "period_token": ["FY2025/26", "FY2025/26"],
+                    "source_vintage": ["Budget 1", "Budget 1"],
+                    "unit": ["NZD million", "NZD million"],
+                    "input_record_ids": [["budget-b"], ["budget-a"]],
+                }
+            ),
+            "pharmac": pa.table(
+                {
+                    "period_token": ["FY2023/24"],
+                    "source_vintage": ["Pharmac 1"],
+                    "unit": ["NZD million"],
+                    "record_id": ["pharmac-only"],
+                }
+            ),
+        }
+    )
+
+    assert report["overlap_group_count"] == 1
+    assert report["groups"] == [
+        {
+            "period_token": "FY2025/26",
+            "status": "literal_period_token_overlap_candidate",
+            "product_groups": [
+                {
+                    "product": "budget",
+                    "row_count": 2,
+                    "source_vintages": ["Budget 1"],
+                    "units": ["NZD million"],
+                    "input_record_ids": ["budget-a", "budget-b"],
+                },
+                {
+                    "product": "historical",
+                    "row_count": 1,
+                    "source_vintages": ["History 1"],
+                    "units": ["NZD million"],
+                    "input_record_ids": ["history-b"],
+                },
+            ],
+            "comparability": "not_assessed",
+            "numeric_variance": "not_computed",
+        }
+    ]
+    assert report["cross_source_join"] == "not_performed"
+
+
+def test_classification_drift_report_flags_only_same_exact_budget_dimensions(
+    tmp_path: Path,
+) -> None:
+    budget, _receipt = query_nominal_budget((_package(tmp_path),))
+    rows = budget.to_pylist()
+    first = rows[0]
+    changed_label = {
+        **first,
+        "source_vintage": "Budget 2027",
+        "source_label": "Changed source wording",
+    }
+    separate_vote = {
+        **changed_label,
+        "vote": "A separate Vote",
+    }
+    table = pa.Table.from_pylist(
+        [first, changed_label, separate_vote], schema=budget.schema
+    )
+
+    report = canonical_gold_export.build_classification_drift_report({"budget": table})
+
+    assert report["scope"] == (
+        "same_source_family_and_exact_dimensions_across_observed_vintages"
+    )
+    assert report["mapping"] == "not_inferred"
+    assert report["cross_source_comparison"] == "not_performed"
+    assert len(report["candidates"]) == 1
+    candidate = report["candidates"][0]
+    assert candidate["key"]["vote"] == first["vote"]
+    assert candidate["observed_labels"] == sorted(
+        [first["source_label"], changed_label["source_label"]]
+    )
+    assert candidate["status"] == "source_label_change_candidate"
+
+
+def test_revision_report_flags_exact_historical_changes_without_explaining_them(
+    tmp_path: Path,
+) -> None:
+    observations, _receipt = query_historical_observations(
+        (_historical_package(tmp_path),)
+    )
+    baseline = observations.to_pylist()[0]
+    revised = {
+        **baseline,
+        "source_vintage": "Observed successor vintage",
+        "amount": baseline["amount"] + Decimal(1),
+        "input_record_id": "successor-record-1",
+    }
+    separate_unit = {
+        **revised,
+        "unit": "a distinct unit",
+        "input_record_id": "successor-record-2",
+    }
+    ambiguous_original = {
+        **baseline,
+        "period_token": "ambiguous-period",
+        "input_record_id": "baseline-record-ambiguous",
+    }
+    ambiguous_successor = {
+        **revised,
+        "period_token": "ambiguous-period",
+        "input_record_id": "successor-record-ambiguous-1",
+    }
+    ambiguous_duplicate = {
+        **ambiguous_successor,
+        "amount": ambiguous_successor["amount"] + Decimal(1),
+        "input_record_id": "successor-record-ambiguous-2",
+    }
+
+    report = canonical_gold_export.build_revision_reconciliation_report(
+        {
+            "observations": pa.Table.from_pylist(
+                [
+                    baseline,
+                    revised,
+                    separate_unit,
+                    ambiguous_original,
+                    ambiguous_successor,
+                    ambiguous_duplicate,
+                ],
+                schema=observations.schema,
+            )
+        }
+    )
+
+    assert report["scope"] == (
+        "same_recordset_measure_source_label_and_exact_context_period_"
+        "across_observed_vintages"
+    )
+    assert "source_label" in report["key_fields"]
+    assert "source_locator" not in report["key_fields"]
+    assert report["difference_interpretation"] == "not_assessed"
+    assert report["completeness"] == (
+        "historical_budget_revenue_biff8_budget_biff8_revenue_"
+        "pharmac_moh_crown_product_rows"
+    )
+    assert report["product_revisions"]["budget"]["changed_candidate_count"] == 0
+    assert report["product_revisions"]["revenue"]["changed_candidate_count"] == 0
+    assert report["product_revisions"]["biff8_budget"]["changed_candidate_count"] == 0
+    assert report["product_revisions"]["biff8_revenue"]["changed_candidate_count"] == 0
+    assert report["ambiguous_series_period_count"] == 1
+    assert len(report["candidates"]) == 1
+    candidate = report["candidates"][0]
+    assert candidate["period_token"] == baseline["period_token"]
+    assert candidate["values_by_vintage"] == {
+        baseline["source_vintage"]: str(baseline["amount"]),
+        revised["source_vintage"]: str(revised["amount"]),
+    }
+    assert candidate["interpretation"] == "not_assessed"
+
+
+def test_revision_report_covers_budget_and_revenue_exact_source_contexts() -> None:
+    budget = [
+        {
+            "source_vintage": vintage,
+            "period_token": "FY2025/26",
+            "amount_type": "estimated_actual",
+            "unit": "NZD million",
+            "vote": "Health",
+            "department": "Health New Zealand",
+            "portfolio": "Health",
+            "source_label": "Operating",
+            "total_amount": Decimal(amount),
+            "input_record_ids": [f"{vintage}-1", f"{vintage}-2"],
+            "input_count": 2,
+            "formula_policy": "exact_sum_same_source_labels_and_unit/v1",
+        }
+        for vintage, amount in (("Budget-2025", "100"), ("Budget-2026", "110"))
+    ]
+    ambiguous_budget = [
+        {
+            **row,
+            "period_token": "FY2024/25",
+            "input_record_ids": [f"{row['source_vintage']}-ambiguous-{index}"],
+        }
+        for row, index in ((budget[0], 1), (budget[0], 2), (budget[1], 1))
+    ]
+    different_unit = {
+        **budget[1],
+        "unit": "NZD thousand",
+        "input_record_ids": ["different-unit"],
+    }
+    budget.extend([*ambiguous_budget, different_unit])
+    revenue = [
+        {
+            "source_vintage": vintage,
+            "period_token": "FY2025/26",
+            "amount_type": "estimated_actual",
+            "unit": "NZD million",
+            "vote": "Health",
+            "department": "Health New Zealand",
+            "revenue_type": "Other revenue",
+            "source_label": "Operating revenue",
+            "amount": Decimal(amount),
+            "input_record_id": f"{vintage}-revenue",
+            "formula_policy": "identity_projection_no_expenditure_netting/v1",
+        }
+        for vintage, amount in (("Budget-2025", "4"), ("Budget-2026", "4"))
+    ]
+    report = canonical_gold_export.build_revision_reconciliation_report(
+        {
+            "budget": pa.Table.from_pylist(
+                budget, schema=canonical_consumer.NOMINAL_BUDGET_SCHEMA
+            ),
+            "revenue": pa.Table.from_pylist(
+                revenue, schema=canonical_consumer.NOMINAL_REVENUE_SCHEMA
+            ),
+        }
+    )
+
+    budget_report = report["product_revisions"]["budget"]
+    assert budget_report["shared_series_period_count"] == 2
+    assert budget_report["changed_candidate_count"] == 1
+    assert budget_report["ambiguous_series_period_count"] == 1
+    candidate = budget_report["candidates"][0]
+    assert candidate["status"] == "budget_value_change_candidate"
+    assert candidate["values_by_vintage"] == {
+        "Budget-2025": "100.000000000000000000",
+        "Budget-2026": "110.000000000000000000",
+    }
+    assert candidate["input_record_ids_by_vintage"] == {
+        "Budget-2025": ["Budget-2025-1", "Budget-2025-2"],
+        "Budget-2026": ["Budget-2026-1", "Budget-2026-2"],
+    }
+    assert candidate["interpretation"] == "not_assessed"
+    revenue_report = report["product_revisions"]["revenue"]
+    assert revenue_report["shared_series_period_count"] == 1
+    assert revenue_report["unchanged_series_period_count"] == 1
+    assert revenue_report["changed_candidate_count"] == 0
+
+
+def test_revision_report_covers_pharmac_moh_and_crown_contexts() -> None:
+    pharmac = [
+        {
+            "source_vintage": vintage,
+            "period_token": "FY2025/26",
+            "measure": "pharmaceutical_budget_allocation",
+            "unit": "NZD million",
+            "currency": "NZD",
+            "price_basis": None,
+            "base_period": None,
+            "denominator_definition": None,
+            "amount_type": "published_budget",
+            "source_label": "Total allocation",
+            "budget_scope": "CPB",
+            "funding_regime": "pre-2022",
+            "amount": Decimal(amount),
+            "record_id": f"pharmac-{vintage}",
+        }
+        for vintage, amount in (("Pharmac-2025", "8"), ("Pharmac-2026", "9"))
+    ]
+    moh = [
+        {
+            "source_vintage": vintage,
+            "period_token": "2024/25",
+            "profile": "health-expenditure-source",
+            "source_label": "Government",
+            "price_basis": "real",
+            "per_capita": False,
+            "unit": "NZD million",
+            "price_base": "2023/24",
+            "denominator": None,
+            "amount": Decimal(amount),
+            "record_id": f"moh-{vintage}",
+        }
+        for vintage, amount in (("MoH-2025", "12"), ("MoH-2026", "13"))
+    ]
+    crown = [
+        {
+            "source_vintage": vintage,
+            "period_token": "2025/26",
+            "measure": "core_crown_expense",
+            "amount_type": "estimated_actual",
+            "unit": "NZD million",
+            "currency": "NZD",
+            "price_basis": "nominal",
+            "base_period": None,
+            "denominator_definition": None,
+            "source_label": "Health",
+            "institutional_coverage": "core_crown",
+            "accounting_basis": "published_crown_basis",
+            "amount": Decimal(amount),
+            "record_id": f"crown-{vintage}",
+        }
+        for vintage, amount in (("BEFU-2025", "15"), ("BEFU-2026", "16"))
+    ]
+
+    report = canonical_gold_export.build_revision_reconciliation_report(
+        {
+            "pharmac": pa.Table.from_pylist(pharmac),
+            "moh": pa.Table.from_pylist(moh),
+            "crown_befu": pa.Table.from_pylist(crown),
+        }
+    )
+
+    products = report["product_revisions"]
+    assert set(products) == {
+        "budget",
+        "revenue",
+        "biff8_budget",
+        "biff8_revenue",
+        "pharmac",
+        "moh",
+        "crown",
+    }
+    for family, prefix in (("pharmac", "pharmac"), ("moh", "moh"), ("crown", "crown")):
+        assert products[family]["changed_candidate_count"] == 1
+        ids_by_vintage = products[family]["candidates"][0][
+            "input_record_ids_by_vintage"
+        ]
+        assert all(
+            ids == [f"{prefix}-{vintage}"] for vintage, ids in ids_by_vintage.items()
+        )
+        assert products[family]["candidates"][0]["interpretation"] == "not_assessed"
+    assert report["cross_source_comparison"] == "not_performed"
+
+
+def test_revision_report_preserves_biff8_numeric_witnesses() -> None:
+    common = {
+        "period_token": "FY2019/20",
+        "measure": "appropriation_expense",
+        "amount_type": "actual",
+        "unit": "NZD million",
+        "currency": "NZD",
+        "price_basis": "nominal",
+        "base_period": None,
+        "denominator_definition": None,
+        "source_label": "Departmental output expenses",
+        "vote": "Health",
+        "department": "Ministry of Health",
+        "value_basis": "biff8_stored_integer_preserved",
+    }
+    vintages = (("2019", "10", "10000000"), ("2020", "11", "11000000"))
+    biff8_budget = [
+        {
+            **common,
+            "source_vintage": vintage,
+            "appropriation": "Vote Health",
+            "portfolio": "Health",
+            "amount": Decimal(amount),
+            "record_id": f"budget-{vintage}",
+            "canonical_stored_integer": stored,
+            "numeric_evidence_id": f"budget-numeric-{vintage}",
+        }
+        for vintage, amount, stored in vintages
+    ]
+    biff8_revenue = [
+        {
+            **common,
+            "source_vintage": vintage,
+            "revenue_type": "Other revenue",
+            "source_application_id": "application-1",
+            "amount": Decimal(amount),
+            "record_id": f"revenue-{vintage}",
+            "canonical_stored_integer": stored,
+            "numeric_evidence_id": f"revenue-numeric-{vintage}",
+        }
+        for vintage, amount, stored in (
+            ("2019", "2", "2000000"),
+            ("2020", "3", "3000000"),
+        )
+    ]
+    report = canonical_gold_export.build_revision_reconciliation_report(
+        {
+            "biff8_budget": pa.Table.from_pylist(biff8_budget),
+            "biff8_revenue": pa.Table.from_pylist(biff8_revenue),
+        }
+    )
+
+    for product, expected_values, expected_stored, evidence_prefix in (
+        ("biff8_budget", ("10", "11"), ("10000000", "11000000"), "budget"),
+        ("biff8_revenue", ("2", "3"), ("2000000", "3000000"), "revenue"),
+    ):
+        candidate = report["product_revisions"][product]["candidates"][0]
+        assert candidate["status"] == f"{product}_value_change_candidate"
+        assert candidate["values_by_vintage"] == dict(
+            zip(("2019", "2020"), expected_values, strict=True)
+        )
+        assert candidate["input_record_ids_by_vintage"] == {
+            vintage: [f"{evidence_prefix}-{vintage}"] for vintage in ("2019", "2020")
+        }
+        assert candidate["witnesses_by_vintage"] == {
+            vintage: {
+                "canonical_stored_integer": stored,
+                "numeric_evidence_id": f"{evidence_prefix}-numeric-{vintage}",
+            }
+            for vintage, stored in zip(("2019", "2020"), expected_stored, strict=True)
+        }
+        assert candidate["interpretation"] == "not_assessed"
 
 
 @pytest.mark.parametrize("packages", [[], (), [object()]])

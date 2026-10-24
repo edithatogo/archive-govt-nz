@@ -1,0 +1,30 @@
+{
+  "actual_contract": "list[str] membership uses full string equality; no URL navigation or network operation",
+  "alert": 3,
+  "before_remedy_refusal": {
+    "case": "trusted URL nested in attacker URL path rejected",
+    "passed": 1,
+    "seconds": 1.43
+  },
+  "check_run": 117446919271,
+  "finding": "URL membership on parsed anchor list classified as substring sanitization",
+  "focused_after_remedy": {
+    "log_sha256": "6d586a6e73caf74c007c331a1ee1b9b9c9481bc9a1de6d205c5c7d82c0434a59",
+    "passed": 23,
+    "seconds": 1.17
+  },
+  "head": "0b50bcb011dac54a2c06f22483d8f7b9084f22c6",
+  "hosted_validation": {
+    "all_seven_checks": "success",
+    "current_open_alerts": 0,
+    "delivery": "component-index-source-delivery-20261018.json",
+    "head": "7ada6fec474ac4a572143adb66a594515e30627b"
+  },
+  "local_native_scope": "native4 confirms exact current report identity; full3 passes on final executable head",
+  "local_requirement": "AGENTS and VCS require full harness before opening PR; original PR opened after full2 and doc gates. This same-PR equality clarification uses fresh focused/native/affected gates and exact-head hosted full assurance.",
+  "policy": "no suppression or branch-rule change",
+  "pr": 709,
+  "remedy": "make any(link == exact_source_url for link in owner.links) explicit",
+  "report_and_inputs": "unchanged by equality semantics",
+  "rule": "py/incomplete-url-substring-sanitization"
+}

@@ -1,0 +1,90 @@
+{
+  "actual_final_schema_registry_readbacks": [
+    {
+      "all_cross_versions_refused": true,
+      "independent_resolution": true,
+      "profiles": 5,
+      "schema_sha256": "4c81f24f9a6a229b1daeaf81574a87883302626dc685b4e4de97210706924fcc",
+      "version": 1
+    },
+    {
+      "all_cross_versions_refused": true,
+      "independent_resolution": true,
+      "profiles": 7,
+      "schema_sha256": "1950d2f016bd24ced935793586772e34ea70d70d684bfcda73652b34b7c723cc",
+      "version": 2
+    },
+    {
+      "all_cross_versions_refused": true,
+      "independent_resolution": true,
+      "profiles": 9,
+      "schema_sha256": "0aa42b50a5a0950820b0cb4832247f09025ca78dd7054d40f72240c4646c5444",
+      "version": 3
+    },
+    {
+      "all_cross_versions_refused": true,
+      "independent_resolution": true,
+      "profiles": 11,
+      "schema_sha256": "beaf2418cf2c5612139d72c8d9632faa0da58d08f8f6e28083a1866d29075839",
+      "version": 4
+    },
+    {
+      "all_cross_versions_refused": true,
+      "independent_resolution": true,
+      "profiles": 13,
+      "schema_sha256": "fec8ae42ee4fb7f59ccec404f7e0454078f9ce7aa3b1e452fee4bdf5aafabcd8",
+      "version": 5
+    },
+    {
+      "all_cross_versions_refused": true,
+      "independent_resolution": true,
+      "profiles": 15,
+      "schema_sha256": "71087830171adbb194e0705810c2861c03991d876702af5d4866d44922b44593",
+      "version": 6
+    }
+  ],
+  "all_originals_and_prior_product_bytes_preserved": true,
+  "all_prior_native_files_unchanged": 1255,
+  "findings": [
+    {
+      "evidence": "new absent_fields default inserted before existing group_types/period_types shifts prior optional positional arguments",
+      "file": "src/archive_govt_nz/domains/health_appropriations/budget_biff8.py",
+      "fix": "append absent_fields after existing fields and verify legacy positional construction",
+      "id": "2015-constructor-compatibility",
+      "severity": "medium",
+      "state": "fixed_and_native_verified"
+    },
+    {
+      "evidence": "fifteen-count and all ten BIFF8 keys still permit replacing a baseline key with an unrelated name",
+      "file": "schemas/health-canonical-input-recovery-v6.schema.json",
+      "fix": "require the five existing baseline keys too; keep all previous schemas unchanged and strengthen existing v6 negative fixture",
+      "id": "2015-v6-named-baseline-bindings",
+      "severity": "medium",
+      "state": "fixed_and_native_verified"
+    }
+  ],
+  "focused_tests_passed": 83,
+  "native_postflight": {
+    "exit": 0,
+    "head": "cf544476f8d4244ed462a03e0d0d4909162d7e9a",
+    "independent_lease_free": true,
+    "owner_and_group_absent": true,
+    "pins_unchanged": 6805,
+    "status": "verified",
+    "tree": "95f837079b472c7503a10ecfca9c4df0312e71b1"
+  },
+  "original_final_harness_and_delivery": "pending",
+  "replay": {
+    "all15_bindings_verified": true,
+    "each_missing_binding_refused": true,
+    "each_substituted_binding_refused": true,
+    "fresh_input_builds": 2,
+    "head": "cf544476f8d4244ed462a03e0d0d4909162d7e9a",
+    "input_files": 137,
+    "prior_qualified_input_bytes_identical": true,
+    "retained_derivatives_consumed": false,
+    "tree": "95f837079b472c7503a10ecfca9c4df0312e71b1"
+  },
+  "schema_version": "archive-govt-nz.health-biff8-2015-review-closure/v1",
+  "whole_track_complete": false
+}

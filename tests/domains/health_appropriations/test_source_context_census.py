@@ -1,5 +1,6 @@
 """Source-context census admission and evidence regression tests."""
 
+import hashlib
 import json
 from pathlib import Path
 
@@ -35,6 +36,45 @@ def test_retained_census_is_deterministic_and_evidence_bound() -> None:
         "total_crown",
     }
     assert all(row.qualification == "unqualified" for row in census.series)
+
+
+def test_cpi_census_retains_prior_context_and_verified_source_evidence() -> None:
+    current = Census.model_validate(document())
+    previous = Census.model_validate_json(
+        (TRACK / "context-census-pre-cpi-source-evidence-20261017.json").read_bytes()
+    )
+    old_rows = {row.id: row for row in previous.series}
+    rows = {row.id: row for row in current.series}
+    for identity in rows.keys() - {"cpi-2026q2"}:
+        assert rows[identity] == old_rows[identity]
+    cpi = rows["cpi-2026q2"]
+    old = old_rows[cpi.id]
+    assert cpi.sources == old.sources
+    assert cpi.base == old.base
+    assert cpi.retained_manifest_sha256 == old.retained_manifest_sha256
+    assert cpi.rights == "not_evaluated"
+    assert cpi.qualification == "unqualified"
+    assert "fiscal-2025-cpi2026q2-equal-quarter-FY2025/v1" in cpi.join_policy
+    name = "cpi-source-evidence-report-20261017.json"
+    reference = (
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/" + name
+    )
+    assert reference in cpi.evidence
+    payload = (TRACK / name).read_bytes()
+    assert (
+        hashlib.sha256(payload).hexdigest()
+        == "0716432ebf5bd6460819c2634206d666ff675f43e64340328b1b67969f8f6665"
+    )
+    report = json.loads(payload)
+    assert report["periods"]["observed_labels"] == 449
+    assert report["periods"]["numeric"] == 422
+    assert report["periods"]["publisher_NA"] == 27
+    assert report["periods"]["missing_labels"] == []
+    assert report["rights"]["decision"] == "not_evaluated"
+    assert report["analytical_admission"] == report["publication"] == "not_performed"
+    capture = next(row for row in report["captures"] if row["role"] == "csv")
+    assert capture["body_sha256"] == old.sources[0].object_sha256
+    assert capture["observed_at"] != old.sources[0].observed_at
 
 
 @pytest.mark.parametrize(
@@ -127,7 +167,15 @@ def test_duplicate_evidence_and_unpinned_census_are_rejected() -> None:
 
 def test_pinned_selectors_keep_denominator_boundaries() -> None:
     rows = {row.id: row for row in Census.model_validate(document()).series}
-    assert rows["cpi-2026q2"].series_id == "CPIQ.SE9A"
+    cpi = rows["cpi-2026q2"]
+    assert cpi.series_id == "CPIQ.SE9A"
+    assert "2017Q2) = 1000" in cpi.base
+    assert "index_base_not_verified" not in cpi.gaps
+    assert "fiscal_aggregation_not_qualified" in cpi.gaps
+    assert any(
+        path.endswith("cpi-index-base-qualification-20261002.md")
+        for path in cpi.evidence
+    )
     assert rows["qes-2026q2"].series_id == "QEMQ.SASZ9A"
     assert "D27:D58" in rows["core_crown-fiscal-2025"].selector
     assert "E30:E58" in rows["total_crown-fiscal-2025"].selector
@@ -146,3 +194,41 @@ def test_pinned_selectors_keep_denominator_boundaries() -> None:
     assert "1991" in population.period
     assert "2026" in population.period
     assert "transport_http_warc_receipt_unavailable" in population.gaps
+
+
+def test_gdp_release_date_is_bound_to_official_page_observation() -> None:
+    rows = {row.id: row for row in Census.model_validate(document()).series}
+    gdp = rows["gdp-stats-2026q1"]
+    assert "published 17 September 2026" in gdp.period
+    observation_path = (
+        "conductor/tracks/health_appropriations_medallion_assimilation_20260829/"
+        "gdp-release-observation-20260930.json"
+    )
+    assert observation_path in gdp.evidence
+    observation = json.loads((ROOT / observation_path).read_text(encoding="utf-8"))
+    assert observation["publication_date_string"] == "17 September 2026"
+    assert observation["workbook_capture_state"] == "captured_separately"
+    assert observation["rights_decision"] == "not_evaluated"
+
+
+def test_june_gdp_capture_is_a_separate_unqualified_vintage() -> None:
+    rows = {row.id: row for row in Census.model_validate(document()).series}
+    march = rows["gdp-stats-2026q1"]
+    june = rows["gdp-stats-2026q2"]
+    assert march.qualification == june.qualification == "unqualified"
+    assert june.rights == "not_evaluated"
+    assert "C27:BK27" in june.selector
+    assert "Table 2" in june.selector
+    assert "61" in june.period
+    assert "not spliced" in march.period
+    assert june.sources[0].source_id == "stats_nz_gdp-588a47c19c9dbc44"
+    capture = json.loads(
+        (
+            ROOT
+            / "conductor/tracks/health_appropriations_medallion_assimilation_20260829/"
+            "gdp-june-capture-20260930.json"
+        ).read_text(encoding="utf-8")
+    )
+    assert capture["selected_series"]["quarter_observations"] == 61
+    assert capture["selected_series"]["currency_code"] == "unverified"
+    assert capture["analytical_disposition"]["qualification"] == "unqualified"

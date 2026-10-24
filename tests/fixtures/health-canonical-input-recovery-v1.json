@@ -1,0 +1,130 @@
+{
+  "definitions_sha256": "917503893e3d896239b48c5d4aa0a9c0c3c86c428ef3b7151ed95700984370c3",
+  "observation_context": "exact_prior_local_tokens_replayed_no_new_capture_attestation",
+  "originals_unchanged": true,
+  "profiles": {
+    "budget-2001": {
+      "canonical_inventory": {
+        "LOCAL_BUDGET.json": {
+          "bytes": 80,
+          "sha256": "dde8ad5bab64f5f2b9d5ebc46501f7783f3557f319ff4dcae1f17c78ce94a5a4"
+        },
+        "facts.parquet": {
+          "bytes": 15,
+          "sha256": "ad675291069613038b456819150f72f89b0dc1100e961f8c82b786ff1893b50f"
+        },
+        "lineage_accounting.jsonl": {
+          "bytes": 45,
+          "sha256": "fc134c4dc6fc9ea2f17b3185878590bc92c9091cf9b441d11295950be27fdfe7"
+        }
+      },
+      "canonical_marker_sha256": "dde8ad5bab64f5f2b9d5ebc46501f7783f3557f319ff4dcae1f17c78ce94a5a4",
+      "definition": {
+        "key": "budget-2001",
+        "kind": "budget",
+        "observation_id": "sha256:cc87769881dd78ac5728d7e098c5a5428b8faf090844eba9bd5ffd56dfef1898",
+        "observation_token": "2001-01-01T00:00:00Z",
+        "sha256": "ad675291069613038b456819150f72f89b0dc1100e961f8c82b786ff1893b50f",
+        "source_locator": "budget.xlsx",
+        "source_vintage": "fixture-budget"
+      },
+      "raw_inventory": {
+        "MANIFEST.json": {
+          "bytes": 196,
+          "sha256": "ed47279d13c47390cd90a652c8894f3a747331d3650f1658a0ed34664bf87031"
+        },
+        "facts.parquet": {
+          "bytes": 15,
+          "sha256": "ad675291069613038b456819150f72f89b0dc1100e961f8c82b786ff1893b50f"
+        }
+      },
+      "raw_manifest_sha256": "ed47279d13c47390cd90a652c8894f3a747331d3650f1658a0ed34664bf87031"
+    },
+    "historical-2001": {
+      "canonical_inventory": {
+        "LOCAL_CANONICAL.json": {
+          "bytes": 80,
+          "sha256": "e74c0fed936934196014d97f9bff405317687a9aefd8f6bfc3ac5c5070b10934"
+        },
+        "facts.parquet": {
+          "bytes": 19,
+          "sha256": "0003797f95f0fd44e46dad7e77a48ba449c4bef0332ee62459751c2eb30b2ec8"
+        }
+      },
+      "canonical_marker_sha256": "e74c0fed936934196014d97f9bff405317687a9aefd8f6bfc3ac5c5070b10934",
+      "definition": {
+        "key": "historical-2001",
+        "kind": "historical",
+        "observation_id": "sha256:8fe59cfcbde8cc2b3ca68ebd3ecb7af3d8396e0ef5124de005c35031a5dddcc0",
+        "observation_token": "2001-01-01T00:00:00Z",
+        "sha256": "0003797f95f0fd44e46dad7e77a48ba449c4bef0332ee62459751c2eb30b2ec8",
+        "source_locator": "historical.xlsx",
+        "source_vintage": "fixture-historical"
+      },
+      "raw_inventory": {
+        "MANIFEST.json": {
+          "bytes": 204,
+          "sha256": "6acb82665776b182db43f23efc617e00bd125e2d379784cfd4da23ea65f69866"
+        },
+        "facts.parquet": {
+          "bytes": 19,
+          "sha256": "0003797f95f0fd44e46dad7e77a48ba449c4bef0332ee62459751c2eb30b2ec8"
+        }
+      },
+      "raw_manifest_sha256": "6acb82665776b182db43f23efc617e00bd125e2d379784cfd4da23ea65f69866"
+    },
+    "revenue-2001": {
+      "canonical_inventory": {
+        "LOCAL_REVENUE.json": {
+          "bytes": 80,
+          "sha256": "3826da8c1b99d9b2689e61f4417d21f3f27b7f49ffe167eec78cb57e87dd78fd"
+        },
+        "facts.parquet": {
+          "bytes": 16,
+          "sha256": "604176eb9da2c8a1e2db8d3a4291aa883613caa580db854fb49b379dc3a7f674"
+        }
+      },
+      "canonical_marker_sha256": "3826da8c1b99d9b2689e61f4417d21f3f27b7f49ffe167eec78cb57e87dd78fd",
+      "definition": {
+        "key": "revenue-2001",
+        "kind": "revenue",
+        "observation_id": "sha256:62111f029ee0cb93273f6bee42f86f7bed2fbd8147c329bc1edf96ca255632be",
+        "observation_token": "2001-01-01T00:00:00Z",
+        "sha256": "604176eb9da2c8a1e2db8d3a4291aa883613caa580db854fb49b379dc3a7f674",
+        "source_locator": "revenue.xlsx",
+        "source_vintage": "fixture-revenue"
+      },
+      "raw_inventory": {
+        "MANIFEST.json": {
+          "bytes": 198,
+          "sha256": "15b290c9c6f999725d530aa40fb6fbdea8ee33c3800995bcfbbc7e68692c16aa"
+        },
+        "facts.parquet": {
+          "bytes": 16,
+          "sha256": "604176eb9da2c8a1e2db8d3a4291aa883613caa580db854fb49b379dc3a7f674"
+        }
+      },
+      "raw_manifest_sha256": "15b290c9c6f999725d530aa40fb6fbdea8ee33c3800995bcfbbc7e68692c16aa"
+    }
+  },
+  "publication": "not_performed",
+  "retained_derivatives_consumed": false,
+  "rights": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-canonical-input-recovery/v1",
+  "scope": "pinned_originals_to_fresh_raw_and_canonical",
+  "source_inputs": {
+    "budget-2001": {
+      "bytes": 15,
+      "sha256": "ad675291069613038b456819150f72f89b0dc1100e961f8c82b786ff1893b50f"
+    },
+    "historical-2001": {
+      "bytes": 19,
+      "sha256": "0003797f95f0fd44e46dad7e77a48ba449c4bef0332ee62459751c2eb30b2ec8"
+    },
+    "revenue-2001": {
+      "bytes": 16,
+      "sha256": "604176eb9da2c8a1e2db8d3a4291aa883613caa580db854fb49b379dc3a7f674"
+    }
+  },
+  "status": "written_local"
+}

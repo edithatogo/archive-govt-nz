@@ -1,0 +1,43 @@
+{
+  "pr": 701,
+  "url": "https://github.com/edithatogo/archive-govt-nz/pull/701",
+  "head": "f2883fcff9a59c5d7e004be06ac66f336a70e8eb",
+  "merge_commit": "3fe73c7636a335f5587f767cd8ae249deb534adf",
+  "merged_at": "2026-10-17T05:16:46Z",
+  "origin_main": "3fe73c7636a335f5587f767cd8ae249deb534adf",
+  "head_and_merge_on_origin_main": true,
+  "checked_and_merged_tree": "f55038e71d29f1dd41fc2ab81ca32caba4d45737",
+  "unique_commits_before_prune": 0,
+  "clean_before_and_after_prune": true,
+  "topic_local_remote_tracking_pruned": true,
+  "primary_worktree_retained": true,
+  "required_checks": "all passed; supplemental intentionally skipped",
+  "review_thread": "PRRT_kwDOTo2MOM6tdDD8",
+  "review_resolved": true,
+  "unresolved_review_threads": 0,
+  "hosted_log_sha256": {
+    "ubuntu": "0ce390fef584a2f3e7effe75d613bbd28e5bb84c36924a0839cf7c067d9e70dd",
+    "macos": "f1aed7bd72cf6df84500aa5bb28c498a5119a34799305a8473e3858f82240695",
+    "windows": "e151b74e1435abd3a432c40cd35607e88792daf9fb943672660b8dd2639dc7c3"
+  },
+  "hosted_validation_summaries": {
+    "ubuntu": [
+      "2026-10-17T05:02:04.2748739Z Required test coverage of 80.0% reached. Total coverage: 97.36%",
+      "2026-10-17T05:02:04.2750224Z ========== 7790 passed, 26 skipped, 23 warnings in 241.31s (0:04:01) ===========",
+      "2026-10-17T05:02:06.3740250Z validated 62 schemas and 52 representative documents",
+      "2026-10-17T05:02:07.5565811Z Parity Harness: 9/9 passed, 0 divergences (status=passed)"
+    ],
+    "macos": [
+      "2026-10-17T05:03:52.8489530Z Required test coverage of 80.0% reached. Total coverage: 97.36%",
+      "2026-10-17T05:03:52.8490410Z ========== 7790 passed, 26 skipped, 23 warnings in 330.19s (0:05:30) ===========",
+      "2026-10-17T05:03:54.1564330Z validated 62 schemas and 52 representative documents",
+      "2026-10-17T05:03:55.3098160Z Parity Harness: 9/9 passed, 0 divergences (status=passed)"
+    ],
+    "windows": [
+      "2026-10-17T05:10:17.4202453Z Required test coverage of 80.0% reached. Total coverage: 97.24%",
+      "2026-10-17T05:10:17.4203684Z ========== 7786 passed, 30 skipped, 23 warnings in 705.67s (0:11:45) ==========",
+      "2026-10-17T05:10:20.1667034Z validated 62 schemas and 52 representative documents",
+      "2026-10-17T05:10:21.6005069Z Parity Harness: 9/9 passed, 0 divergences (status=passed)"
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": "archive-govt-nz.health-source-health-mutation/v1",
+  "recorded_at": "2026-09-29T19:05:21Z",
+  "status": "passed_local",
+  "command": "uv run pytest tests/domains/health_appropriations/test_source_health_report.py -q --gremlins --gremlin-targets=src/archive_govt_nz/domains/health_appropriations/source_health_report.py --gremlin-report=console --gremlin-clear-cache --gremlin-no-coverage-filter --strict-pardons --gremlin-max-pardons-pct=0 --max-pardons=0 --no-cov",
+  "focused_tests_passed": 30,
+  "mutants_total": 78,
+  "mutants_killed": 78,
+  "mutants_survived": 0,
+  "pardons": 0,
+  "cache_hits": 0,
+  "scope": "source-health report module only",
+  "module_line_and_branch_coverage_percent": 100.0
+}

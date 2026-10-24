@@ -1,0 +1,44 @@
+{
+  "actual_retained_source_proof": "context-operation-canonical-native-20261017.json",
+  "approved_joins": "none",
+  "currency_admission": "not_performed",
+  "denominator_selection": "not_performed",
+  "existing_canonical_fact_transforms": "reused_without_value_changes",
+  "external_mutations": "not_performed",
+  "focused": {
+    "log_sha256": "894ff93403cbd1de00ca82b539550f279559dcb0a65dc2a6112c080331812e18",
+    "passed": 57,
+    "seconds": 10.4
+  },
+  "full_harness": "context-operation-canonical-validation-20261017.json",
+  "gold_common_operation_adoption": "pending_after_canonical_qualification",
+  "historical_readers_and_pins": "unchanged",
+  "hosted_delivery": "pending",
+  "input_contract": "independent operation manifest pin; exact fixed official source/profile/vintage/locator/observation; source-regenerated typed tables plus full common evidence",
+  "lint": "passed",
+  "profiles": [
+    "cpiq-se9a/v1",
+    "population-annual-mean-context/v1",
+    "qes-june2026-table8/v1",
+    "gdp-expenditure-actual-2026q1/v1",
+    "gdp-expenditure-actual-2026q2/v1"
+  ],
+  "qes_legacy_finding": {
+    "cause": "six-field mapping dictionaries supplied to full v2 lineage schema; mandatory metadata becomes null",
+    "completion_transformation": "qes-operation-canonical-lineage-completion/v1",
+    "effects": [
+      "full recordset validation fails",
+      "Parquet serialization fails"
+    ],
+    "historical_representation": "preserved",
+    "legacy_digest_encoding": "canonical_json_with_serialized_arrow_schema/v1",
+    "new_path": "complete evidenced metadata from uniquely resolved verified target facts; preserve all 90 mapping tuples",
+    "old_tests": "earnings validated; lineage schema shape only",
+    "schema_or_gate_relaxation": false
+  },
+  "receipt_schema": "archive-govt-nz.health-context-operation-canonical-projection/v1",
+  "rights_state": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-operation-canonical-checkpoint/v1",
+  "status": "implemented_native_and_full_local_qualified_hosted_pending",
+  "typing_errors": 0
+}

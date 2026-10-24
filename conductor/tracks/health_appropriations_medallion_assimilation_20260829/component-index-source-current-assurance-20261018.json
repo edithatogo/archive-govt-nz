@@ -1,0 +1,26 @@
+{
+  "cas_MB_per_s": 384.38,
+  "command": "./scripts/validate.sh",
+  "coverage_percent_rounded": 97,
+  "earlier_failures": "preserved; no scanner rule or gate change",
+  "head": "7ada6fec474ac4a572143adb66a594515e30627b",
+  "log_sha256": "8975145fa5fb9852b17e87a74dbb007fa96390e16b8240b826373924ab6180f6",
+  "native_report_sha256": "fccc38505c0983ff60c12371e714f4233e54c84efa7c52b0b04e7d31c62fe8e4",
+  "original_receipt": "validation-result-3.json retained outside Git; only completion label normalized to boolean",
+  "original_receipt_sha256": "511f505c6e7c54c8b4b66475fa4ed74a72722b2eaef85be2a3190d9d62cc2c4f",
+  "parity": "9/9; zero divergences",
+  "pytest_addopts": "-vv",
+  "runtime": "Python 3.14.6; uv 0.13.1",
+  "sbom_components": 113,
+  "secret_scan_completed": true,
+  "stage_timeout_seconds": 900,
+  "status": "passed",
+  "tests": {
+    "passed": 7917,
+    "seconds": 237.76,
+    "skipped": 12,
+    "warnings": 23
+  },
+  "tree": "8d5fcaf1fd21d77e2a455c90072d87e799363dae",
+  "workers": 4
+}

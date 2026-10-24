@@ -1,0 +1,99 @@
+{
+  "schema_version": "archive-govt-nz.vote-health-overview-extraction-receipt/v1",
+  "status": "passed",
+  "profile": "vote-health-estimates-2005-06-overview/v1",
+  "transformation_id": "vote-health-estimates-overview-2005-06/v1",
+  "source_object_sha256": "9a269a87a0cef8fc998fc1b012ae9fd734fb48b111504bb7a1ca01cdcf97c2b4",
+  "source_vintage": "Treasury-Vote-Health-Estimates-2005-06",
+  "source_locator": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2005-06",
+  "source_page_count": 50,
+  "normalized_pages": [
+    2,
+    3
+  ],
+  "counts": {
+    "facts": 8,
+    "pages": 2
+  },
+  "output_sha256": {
+    "field_lineage.parquet": "3d8bf56979d6e272f58c69394619e434bca6034adb6957ba27b28026749cf97b",
+    "page_dispositions.parquet": "5450f9493af7732ba89b61c4b67130576c2ccb26354117a538083d801d05f1f9",
+    "vote_health_overview_facts.parquet": "c7c5304139ab3e54f11a365cf552babc7cb59b4faa9559caaf2dc0ceb14e461f"
+  },
+  "rights_state": "not_evaluated",
+  "publication_state": "local_validation_only",
+  "facts": [
+    {
+      "measure": "vote_total",
+      "value": "9681.000",
+      "unit": "$ million, GST exclusive",
+      "reference_period": "2005/06",
+      "source_page": 2,
+      "source_phrase": "Appropriations sought for Vote Health in 2005/06 total $9,681 million (GST exclusive)",
+      "raw_token": "9,681"
+    },
+    {
+      "measure": "vote_increase",
+      "value": "824.600",
+      "unit": "$ million, GST exclusive",
+      "reference_period": "2004/05_to_2005/06",
+      "source_page": 2,
+      "source_phrase": "an increase of $824.6 million or 9.3% from 2004/05 (Supplementary Estimates)",
+      "raw_token": "824.6"
+    },
+    {
+      "measure": "departmental_functions",
+      "value": "150.198",
+      "unit": "$ million, GST exclusive",
+      "reference_period": "2005/06",
+      "source_page": 2,
+      "source_phrase": "$150.198 million (1.55% of the Vote) relates to the functions of the Ministry of Health",
+      "raw_token": "150.198"
+    },
+    {
+      "measure": "non_departmental_total",
+      "value": "9530.767",
+      "unit": "$ million, GST exclusive",
+      "reference_period": "2005/06",
+      "source_page": 2,
+      "source_phrase": "$9,530.767 million (98.45% of the Vote) is for non-departmental expenditure",
+      "raw_token": "9,530.767"
+    },
+    {
+      "measure": "service_funding_total",
+      "value": "9048.762",
+      "unit": "$ million, GST exclusive",
+      "reference_period": "2005/06",
+      "source_page": 2,
+      "source_phrase": "$9,048.762 million (93.47% of the Vote) is for the funders of health services",
+      "raw_token": "9,048.762"
+    },
+    {
+      "measure": "other_expenses_total",
+      "value": "17.712",
+      "unit": "$ million, GST exclusive",
+      "reference_period": "2005/06",
+      "source_page": 3,
+      "source_phrase": "$17.712 million (0.18% of the Vote) is for other expenses",
+      "raw_token": "17.712"
+    },
+    {
+      "measure": "capital_funding",
+      "value": "464.293",
+      "unit": "$ million, GST exclusive",
+      "reference_period": "2005/06",
+      "source_page": 3,
+      "source_phrase": "$464.293 million (4.77% of the Vote) is to provide capital funding",
+      "raw_token": "464.293"
+    },
+    {
+      "measure": "crown_revenue_total",
+      "value": "474.340",
+      "unit": "$ million, GST inclusive",
+      "reference_period": "2005/06",
+      "source_page": 3,
+      "source_phrase": "expects to collect $474.340 million of Crown Revenue and Receipts in \n2005/06",
+      "raw_token": "474.340"
+    }
+  ]
+}
