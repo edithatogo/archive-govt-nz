@@ -18,12 +18,18 @@ from tests.domains.health_appropriations.test_fiscal_analytical_gold import (
     fixture_inputs,
     fixture_tables,
 )
+from tests.domains.health_appropriations.test_vote_health_financial_activity_gold import (
+    silver_package_fixture,
+)
 
 from archive_govt_nz.cli import app
 from archive_govt_nz.domains.health_appropriations import (
     fiscal_analytical_gold as fiscal,
 )
 from archive_govt_nz.domains.health_appropriations import gold_metadata as metadata
+from archive_govt_nz.domains.health_appropriations import (
+    vote_health_financial_activity_gold as financial_gold,
+)
 from archive_govt_nz.mcp_server import call_tool
 
 pytest_plugins = ["tests.domains.health_appropriations.test_local_rdf"]
@@ -44,6 +50,127 @@ def packages(
         metadata.GoldInput("budget_comparison", budget, pin),
         metadata.GoldInput("fiscal_analytical", target, receipt["manifest_sha256"]),
     )
+
+
+def test_financial_activity_gold_is_admitted_to_platinum_metadata(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    values = packages(tmp_path, monkeypatch)
+    silver_root, silver_pin = silver_package_fixture(tmp_path, monkeypatch)
+    gold_root = tmp_path / "financial-gold"
+    gold_receipt = financial_gold.export_vote_health_financial_activity(
+        silver_root,
+        silver_pin,
+        gold_root,
+        write=True,
+    )
+    financial_input = metadata.GoldInput(
+        "vote_health_financial_activity",
+        gold_root,
+        gold_receipt["manifest_sha256"],
+    )
+    values = metadata.with_financial_activity_input(
+        values, financial_input.root, financial_input.manifest_sha256
+    )
+    first = metadata.project_gold_metadata(values)
+    replay = metadata.project_gold_metadata(tuple(reversed(values)))
+    assert first == replay
+
+    catalogue = json.loads(first["catalogue.json"])
+    package = next(
+        value
+        for value in catalogue["packages"]
+        if value["profile"] == "vote_health_financial_activity"
+    )
+    assert package["gold_schema_version"] == financial_gold.VERSION
+    assert package["rights"] == "not_evaluated"
+    assert package["publication"] == "not_performed"
+    tables = {table["path"]: table for table in package["tables"]}
+    assert {name: table["rows"] for name, table in tables.items()} == {
+        "financial_activity.parquet": 14,
+        "financial_activity_lineage.parquet": 70,
+    }
+    assert all(
+        table["period_basis"] == "not_applicable_no_period_fields"
+        and table["period_token_field_present"] is False
+        for table in tables.values()
+    )
+    references = package["source_references"]
+    assert any(
+        reference["field_path"].endswith("/source_silver_manifest_sha256")
+        and reference["value"] == silver_pin
+        for reference in references
+    )
+    assert (
+        json.loads(first["changelog.json"])["federation"] == "no_approved_links_emitted"
+    )
+    assert "no_arithmetic_or_cross_source_comparison_performed" in package["caveats"]
+    card = first["DATASET_CARD.md"].decode()
+    assert "not applicable: no period-token field" in card
+    assert "Dates below are observed period-end extrema" not in card
+
+    schemas = Path(__file__).parents[3] / "schemas"
+    for filename, schema_name in (
+        ("citations.json", "health-gold-citations-v6.schema.json"),
+        ("changelog.json", "health-gold-changelog-v6.schema.json"),
+        ("source_drillthrough.json", "health-gold-source-drillthrough-v4.schema.json"),
+    ):
+        schema = json.loads((schemas / schema_name).read_text())
+        Draft202012Validator(schema).validate(json.loads(first[filename]))
+
+    output = tmp_path / "financial-metadata"
+    receipt = metadata.export_gold_metadata(values, output, write=True)
+    assert receipt["schema_version"] == metadata.FINANCIAL_ACTIVITY_VERSION
+    verified = metadata.verify_gold_metadata(values, output, receipt["manifest_sha256"])
+    assert verified["status"] == "verified"
+    assert verified["rights"] == "not_evaluated"
+    assert verified["publication"] == "not_performed"
+    budget_input = next(
+        value for value in values if value.profile == "budget_comparison"
+    )
+    fiscal_input = next(
+        value for value in values if value.profile == "fiscal_analytical"
+    )
+    cli = app(
+        [
+            "health-appropriations-verify-gold-metadata",
+            "--fiscal-package",
+            str(fiscal_input.root),
+            "--fiscal-manifest-sha256",
+            fiscal_input.manifest_sha256,
+            "--budget-package",
+            str(budget_input.root),
+            "--budget-manifest-sha256",
+            budget_input.manifest_sha256,
+            "--financial-activity-package",
+            str(gold_root),
+            "--financial-activity-manifest-sha256",
+            gold_receipt["manifest_sha256"],
+            "--output-dir",
+            str(output),
+            "--manifest-sha256",
+            receipt["manifest_sha256"],
+        ],
+        exit_on_error=False,
+        result_action="return_value",
+    )
+    cli_result = json.loads(capsys.readouterr().out)
+    assert cli == 0
+    assert cli_result.pop("command") == "health-appropriations-verify-gold-metadata"
+    assert cli_result == verified
+    args = {
+        "fiscal_package": str(fiscal_input.root),
+        "fiscal_manifest_sha256": fiscal_input.manifest_sha256,
+        "budget_package": str(budget_input.root),
+        "budget_manifest_sha256": budget_input.manifest_sha256,
+        "financial_activity_package": str(gold_root),
+        "financial_activity_manifest_sha256": gold_receipt["manifest_sha256"],
+        "output_dir": str(output),
+        "manifest_sha256": receipt["manifest_sha256"],
+    }
+    assert call_tool("health_appropriations_verify_gold_metadata", args) == verified
 
 
 def assert_snapshot_projections(
