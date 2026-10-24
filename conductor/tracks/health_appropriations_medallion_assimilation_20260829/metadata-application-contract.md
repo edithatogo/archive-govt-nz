@@ -57,13 +57,18 @@ existing supplied member identities, not inferred remote access URLs. Contexts
 are compared literally and never retrieved or RDF-expanded.
 
 The rights sidecar has schema
-`archive-govt-nz.health-metadata-rights-assertions/v1` and exactly one resource
+`archive-govt-nz.health-metadata-rights-assertions/v1`, defined by
+`schemas/health-metadata-rights-assertions-v1.schema.json`, and exactly one resource
 assertion per payload, including derivatives. Each row has `path`,
 `payload_sha256`, `state`, `license`, `evidence_sha256`. `unresolved` and
 `restricted` have null licence/evidence in this narrow profile; richer negative
 rights-evidence models are unsupported. `eligible_asserted` requires a nonblank
 licence assertion and SHA-256 evidence reference. Missing, conflicting, extra or
 misbound records fail. Mixed states remain per-resource, never blanket licensing.
+The JSON Schema checks the versioned shape and state/license/evidence
+consistency. The application validator additionally checks exact resource
+coverage, unique paths, payload binding and supplied evidence-byte fixity; neither
+layer establishes the legal accuracy of an assertion or grants release approval.
 
 The receipt pins both input documents and distinguishes verified supplied payload
 bytes from **rights assertion consistency only**. Rights evidence bytes and
@@ -99,9 +104,9 @@ tests cast only intentionally invalid runtime values. Self-review tightened exac
 descriptor comparison against Python numeric equality (`14.0 == 14`) and rejects
 unknown timezone offset `-00:00`. No remaining in-scope blocking finding identified.
 
-No dependency changes, shared plan/runlog/metadata edits, source adapters, federation
-mapping changes, full harness, hosted writes, new source capture or publication.
-Parent owns integration/full-gate/lifecycle reconciliation.
+No dependency changes, source adapters, federation mapping changes, hosted writes,
+new source capture or publication. The schema addition and tests are recorded in
+the track plan; full harness and lifecycle reconciliation remain outstanding.
 
 ## Reproduction
 

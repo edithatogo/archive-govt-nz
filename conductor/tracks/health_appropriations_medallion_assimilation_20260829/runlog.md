@@ -1,5 +1,30 @@
 # Run Log
 
+## 2026-10-24 — Versioned per-resource rights assertion schema
+
+Added `health-metadata-rights-assertions/v1` as a reusable JSON Schema for
+resource-level assertions. It enforces the permitted states, nonblank licence
+plus evidence pin for `eligible_asserted`, and null licence/evidence for
+`unresolved` or `restricted`. The application validator remains responsible for
+exact manifest coverage, unique paths, payload binding and supplied evidence
+fixity; the schema does not determine legal rights or grant release approval.
+Mixed restricted/unresolved fixture rows validate while release readiness stays
+`not_assessed` and publication approval remains `not_granted`.
+
+The focused metadata/federation selection passed 142 tests. The required
+`./scripts/validate.sh` reached all 8,237 tests and reported 8,220 passed,
+14 skipped, 96.80% coverage, three unrelated Hypothesis timing/slow-generation
+failures under concurrent machine load, and a collection error from this new
+test's stale parameter name. After correcting the parameter name, the exact
+affected metadata, legislation-state, checkpoint, and Zenodo identity selection
+passed 127 tests. A fresh full validation and hosted exact-head checks remain
+required; this entry does not claim the full harness passed.
+
+Actual approved partner mappings remain absent. Federation output continues to
+emit no approved links; the existing unmatched/ambiguous fixtures remain
+negative evidence only. The broader Phase 7 rights review and Phase 7/8 gates
+remain open.
+
 ## 2026-10-01 — HAIR2024 indicators in canonical Gold
 
 Added a bounded canonical-Gold projection for the two retained Ministry

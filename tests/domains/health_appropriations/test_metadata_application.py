@@ -3,12 +3,14 @@
 import hashlib
 import json
 from copy import deepcopy
+from pathlib import Path
 from typing import Any, cast
 
 import blake3
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
+from jsonschema import Draft202012Validator, ValidationError
 
 from archive_govt_nz.dist.packaging import (
     PublicationItem,
@@ -258,6 +260,54 @@ def test_each_rights_state_never_promoted() -> None:
     rights["resources"][0]["evidence_sha256"] = None
     with pytest.raises(ValueError, match="metadata_application_contract"):
         check(manifest, payloads, rights)
+
+
+def test_rights_assertion_schema_validates_mixed_states_without_approval() -> None:
+    """The versioned schema covers assertion shape, not rights authority."""
+    schema_path = (
+        Path(__file__).parents[3]
+        / "schemas/health-metadata-rights-assertions-v1.schema.json"
+    )
+    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    Draft202012Validator.check_schema(schema)
+    manifest, payloads, rights = multiple()
+    rights["resources"][0]["state"] = "restricted"
+    rights["resources"][0]["license"] = None
+    rights["resources"][0]["evidence_sha256"] = None
+    rights["resources"][1].update(
+        state="unresolved", license=None, evidence_sha256=None
+    )
+    Draft202012Validator(schema).validate(rights)
+    result = check(manifest, payloads, rights)
+    assert result["rights_states"] == ["restricted", "unresolved"]
+    assert result["release_readiness"] == "not_assessed"
+    assert result["publication_approval"] == "not_granted"
+
+
+@pytest.mark.parametrize(
+    ("state", "license_value", "evidence_sha256"),
+    [
+        ("eligible_asserted", None, None),
+        ("eligible_asserted", "CC0-1.0", None),
+        ("restricted", "CC0-1.0", "a" * 64),
+        ("unresolved", None, "a" * 64),
+    ],
+)
+def test_rights_assertion_schema_rejects_conflicting_states(
+    state: str, license_value: str | None, evidence_sha256: str | None
+) -> None:
+    """Contradictory license/evidence claims fail schema validation."""
+    schema_path = (
+        Path(__file__).parents[3]
+        / "schemas/health-metadata-rights-assertions-v1.schema.json"
+    )
+    schema = json.loads(schema_path.read_text(encoding="utf-8"))
+    _, _, rights = fixture()
+    rights["resources"][0].update(
+        state=state, license=license_value, evidence_sha256=evidence_sha256
+    )
+    with pytest.raises(ValidationError):
+        Draft202012Validator(schema).validate(rights)
 
 
 def test_rights_evidence_bytes_are_required_and_pinned() -> None:
