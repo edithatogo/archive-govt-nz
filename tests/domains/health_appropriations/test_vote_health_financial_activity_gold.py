@@ -284,3 +284,45 @@ def test_gold_reader_rejects_expanded_parquet_before_decode(
     monkeypatch.setattr(pq.ParquetFile, "read", reject_decode)
     with pytest.raises(ValueError, match="vote_health_financial_activity_gold_invalid"):
         gold.read_vote_health_financial_activity(gold_dir, pin)
+
+
+@pytest.mark.parametrize(
+    ("field", "replacement"),
+    [
+        ("field", "unapproved_field"),
+        ("source_silver_manifest_sha256", "0" * 64),
+        ("source_object_sha256", "0" * 64),
+        ("raw_value", "999999"),
+        ("normalized_value", "999999"),
+    ],
+)
+def test_gold_reader_rejects_repinned_lineage_drift(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    field: str,
+    replacement: str,
+) -> None:
+    silver_dir, silver_pin = _silver_package(tmp_path, monkeypatch)
+    gold_dir = tmp_path / "gold"
+    gold.export_vote_health_financial_activity(
+        silver_dir, silver_pin, gold_dir, write=True
+    )
+    manifest_path = gold_dir / "MANIFEST.json"
+    manifest = json.loads(manifest_path.read_bytes())
+    lineage_path = gold_dir / "financial_activity_lineage.parquet"
+    rows = pq.read_table(lineage_path).to_pylist()
+    rows[0][field] = replacement
+    payload = _parquet_payload(pa.Table.from_pylist(rows, schema=gold.LINEAGE_SCHEMA))
+    lineage_path.write_bytes(payload)
+    manifest["payloads"]["financial_activity_lineage.parquet"] = {
+        "sha256": hashlib.sha256(payload).hexdigest(),
+        "bytes": len(payload),
+    }
+    manifest_bytes = (
+        json.dumps(manifest, sort_keys=True, separators=(",", ":")) + "\n"
+    ).encode()
+    manifest_path.write_bytes(manifest_bytes)
+    pin = hashlib.sha256(manifest_bytes).hexdigest()
+
+    with pytest.raises(ValueError, match="vote_health_financial_activity_gold_invalid"):
+        gold.read_vote_health_financial_activity(gold_dir, pin)

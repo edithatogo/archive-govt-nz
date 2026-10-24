@@ -375,6 +375,80 @@ def _readme(summary: dict[str, Any]) -> bytes:
     return ("\n".join(lines) + "\n").encode("utf-8")
 
 
+def _verify_gold_lineage(
+    facts: pa.Table, lineage: pa.Table, silver_manifest_sha256: str
+) -> None:
+    """Bind every projected amount and provenance row back to retained tokens."""
+    fact_rows = facts.to_pylist()
+    lineage_rows = lineage.to_pylist()
+    _require(len(fact_rows) == _FACT_ROWS and len(lineage_rows) == _LINEAGE_ROWS)
+    facts_by_id = {row["record_id"]: row for row in fact_rows}
+    _require(len(facts_by_id) == _FACT_ROWS)
+    _require(
+        {(row["section"], row["source_label"]) for row in fact_rows}
+        == set(silver_profile._EXPECTED_ROWS)  # noqa: SLF001
+    )
+    ordered_facts = sorted(fact_rows, key=lambda row: row["source_row_ordinal"])
+    _require(
+        [(row["section"], row["source_label"]) for row in ordered_facts]
+        == list(silver_profile._EXPECTED_ROWS)  # noqa: SLF001
+    )
+    lineage_by_id: dict[str, dict[str, dict[str, Any]]] = {}
+    for row in lineage_rows:
+        fields = lineage_by_id.setdefault(row["record_id"], {})
+        _require(row["field"] not in fields)
+        fields[row["field"]] = row
+    _require(set(lineage_by_id) == set(facts_by_id))
+    for fact in fact_rows:
+        ordinal = fact["source_row_ordinal"]
+        _require(type(ordinal) is int and 1 <= ordinal <= _FACT_ROWS)
+        source_row = json.loads(fact["raw_values_json"])
+        tokens = source_row.get("tokens")
+        _require(
+            isinstance(tokens, dict)
+            and set(tokens) == set(silver_profile.COLUMNS)
+            and source_row.get("source_page") == _SOURCE_PAGE
+            and source_row.get("source_row_ordinal") == ordinal
+            and source_row.get("section") == fact["section"]
+            and source_row.get("source_label") == fact["source_label"]
+            and fact["record_id"]
+            == silver_profile.identity(
+                silver_profile.TRANSFORMATION,
+                silver_profile.SOURCE_SHA256,
+                _SOURCE_PAGE,
+                ordinal,
+                fact["section"],
+                fact["source_label"],
+            )
+            and fact["source_silver_manifest_sha256"] == silver_manifest_sha256
+            and fact["source_object_sha256"] == silver_profile.SOURCE_SHA256
+            and fact["source_vintage"] == silver_profile.VINTAGE
+            and fact["unit"] == "$000"
+            and fact["rights_state"] == "not_evaluated"
+        )
+        fields = lineage_by_id[fact["record_id"]]
+        _require(set(fields) == set(silver_profile.COLUMNS))
+        for name in silver_profile.COLUMNS:
+            item = fields[name]
+            token = tokens[name]
+            _require(isinstance(token, str) and item["raw_value"] == token)
+            value = _raw_amount(token)
+            normalized = "None" if value is None else str(value)
+            _require(
+                fact[name] == value
+                and item["normalized_value"] == normalized
+                and item["source_silver_manifest_sha256"] == silver_manifest_sha256
+                and item["source_object_sha256"] == silver_profile.SOURCE_SHA256
+                and item["source_locator"] == silver_profile.SOURCE_LOCATOR
+                and item["source_coordinate"]
+                == (
+                    f"pdf:page={_SOURCE_PAGE};section={fact['section']};"
+                    f"row={fact['source_label']};ordinal={ordinal};column={name}"
+                )
+                and item["rule"] == silver_profile.TRANSFORMATION
+            )
+
+
 def export_vote_health_financial_activity(
     silver_package_dir: Path,
     silver_manifest_sha256: str,
@@ -506,25 +580,8 @@ def read_vote_health_financial_activity(
         and manifest["row_count"] == facts.num_rows == _FACT_ROWS
         and type(manifest["lineage_row_count"]) is int
         and manifest["lineage_row_count"] == lineage.num_rows == _LINEAGE_ROWS
-        and {row["source_silver_manifest_sha256"] for row in facts.to_pylist()}
-        == {manifest["source_silver_manifest_sha256"]}
-        and {row["source_object_sha256"] for row in facts.to_pylist()}
-        == {manifest["source_object_sha256"]}
-        and {row["source_vintage"] for row in facts.to_pylist()}
-        == {silver_profile.VINTAGE}
-        and {row["source_page"] for row in facts.to_pylist()} == {_SOURCE_PAGE}
-        and {row["unit"] for row in facts.to_pylist()} == {"$000"}
-        and {row["rights_state"] for row in facts.to_pylist()} == {"not_evaluated"}
-        and {row["source_row_ordinal"] for row in facts.to_pylist()}
-        == set(range(1, _FACT_ROWS + 1))
-        and len({row["record_id"] for row in facts.to_pylist()}) == _FACT_ROWS
-        and {row["source_silver_manifest_sha256"] for row in lineage.to_pylist()}
-        == {manifest["source_silver_manifest_sha256"]}
-        and len({(row["record_id"], row["field"]) for row in lineage.to_pylist()})
-        == _LINEAGE_ROWS
-        and {row["record_id"] for row in lineage.to_pylist()}
-        == {row["record_id"] for row in facts.to_pylist()}
     )
+    _verify_gold_lineage(facts, lineage, manifest["source_silver_manifest_sha256"])
     summary = _summary(facts, lineage, manifest["source_silver_manifest_sha256"])
     _require(payloads[_SUMMARY_PAYLOAD] == _json_bytes(summary))
     _require(payloads[_README_PAYLOAD] == _readme(summary))
