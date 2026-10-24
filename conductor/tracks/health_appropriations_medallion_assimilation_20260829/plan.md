@@ -1633,9 +1633,14 @@ integrated parent head.
   tampered packages, redaction, JSON parity and no writes. This proves package
   fixity only, not Parquet semantics, source completeness, rights, or
   publication. See `canonical-gold-verification-20260928.md`.
-- [ ] Add fast-first scheduled discovery/capture/normalization lanes with
+- [~] Add fast-first scheduled discovery/capture/normalization lanes with
   heavier reconciliation and reconstruction behind explicit triggers and
   bounded resource limits. [M-15, M-18; AC-13, AC-16]
+  - [x] Pin the existing metadata-only Health discovery lane to contents-read,
+    credential-free, non-cancelling scheduled operation; keep capture and
+    normalization explicitly absent from this discovery lane. See
+    `phase8-scheduled-contract-20261025.md`. This does not provide the still
+    pending capture/normalization lanes.
 - [ ] Produce operational dashboards/reports from evidence without exposing
   credentials, signed URLs, restricted bytes or personal information. [M-15,
   M-18; AC-13, AC-16]

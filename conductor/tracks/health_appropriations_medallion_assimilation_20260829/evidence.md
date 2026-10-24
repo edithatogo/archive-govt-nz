@@ -1,5 +1,17 @@
 # Evidence
 
+## 2026-10-25 — Phase 8 scheduled discovery regression contract
+
+- Issue: #214; requirement references M-15/M-18 and AC-13/AC-16.
+- Changed: `tests/tools/test_workflow_policy.py` and the track-local Phase 8
+  plan, index, run log, evidence and contract receipt.
+- Runtime: repo-local CPython 3.15.1 via `uv run --locked`.
+- Focused test: `uv run --locked pytest tests/tools/test_workflow_policy.py::test_health_discovery_schedule_is_read_only_and_does_not_need_secrets -q --no-cov` — 1 passed.
+- Static checks: `uv run --locked ruff check tests/tools/test_workflow_policy.py` and `uv run --locked ruff format --check tests/tools/test_workflow_policy.py` — passed.
+- Full harness: `./scripts/validate.sh` — passed on the exact pre-commit tree: 8,408 passed, 14 skipped, 97.07% coverage; 81 schemas/71 representative documents; parity 9/9; configured mutation, hygiene, dependency, licence, secret-scan and SBOM gates passed.
+- Scope: local regression assurance for read-only permission, no secret interpolation, non-cancelling concurrency, and discovery-only behavior. No workflow behavior or external state changed.
+- Remaining: this does not implement scheduled capture/normalization or triggered reconciliation/reconstruction, and does not complete issue #214.
+
 ## Merged RDF validation and bounded task reconciliation — 2026-09-05 UTC
 
 PR #401 merged at `c92c3d2f717b55537b5d338d430689125e95fa66` after all

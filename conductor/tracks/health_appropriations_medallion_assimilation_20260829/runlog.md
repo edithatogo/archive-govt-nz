@@ -1,5 +1,18 @@
 # Run Log
 
+## 2026-10-25 — Phase 8 scheduled discovery boundary
+
+Added a regression contract proving the scheduled Health discovery lane is
+limited to `contents: read`, contains no secret interpolation, does not cancel
+overlapping runs, and invokes metadata discovery plus its bounded heartbeat
+without capture or normalization. The first test run exposed an overly strict
+test assumption about workflow step kinds; after narrowing it to the intended
+operation names, the focused test passed on Python 3.15.1. This is an existing-
+behavior characterization, not a workflow permission or behavior change. The
+Phase 8 schedule item remains in progress: capture/normalization lanes and
+heavier triggered work are still unimplemented. See
+`phase8-scheduled-contract-20261025.md`.
+
 ## 2026-10-24 — Bounded scheduled discovery report
 
 The scheduled Health discovery workflow now preserves a deterministic Markdown
