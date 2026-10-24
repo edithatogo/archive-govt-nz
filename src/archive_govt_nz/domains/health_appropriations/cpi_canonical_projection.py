@@ -34,6 +34,12 @@ OBSERVED_AT = "2026-08-29T09:00:17Z"
 SOURCE_MANIFEST_SHA256 = (
     "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e"
 )
+# PyArrow 26.0.0 rewrites the three Parquet payloads without changing any
+# typed rows; keep the historical artifact pin above and admit this separately
+# qualified clean-room rendering.
+PYARROW_26_SOURCE_MANIFEST_SHA256 = (
+    "f51493ea21f20fb96ea5a9348eca4f560854593a27e5c50bb09fb5b562dbc77d"
+)
 TRANSFORMATION = "cpi-canonical-source-faithful/v1"
 _MANIFEST_SCHEMA = "archive-govt-nz.health-cpi-extraction/v1"
 _PRODUCTS = {"cpi_facts.parquet", "field_lineage.parquet", "row_dispositions.parquet"}
@@ -117,7 +123,8 @@ def _source_tables(
     _require(
         len(payload) <= _MAX_MANIFEST_BYTES
         and hashlib.sha256(payload).hexdigest() == manifest_sha256
-        and manifest_sha256 == SOURCE_MANIFEST_SHA256
+        and manifest_sha256
+        in {SOURCE_MANIFEST_SHA256, PYARROW_26_SOURCE_MANIFEST_SHA256}
     )
     manifest = json.loads(payload, object_pairs_hook=_pairs)
     _require(
