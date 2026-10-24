@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-canonical-input-recovery-v1.schema.json",
+  "title": "Fresh canonical input recovery receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "scope",
+    "definitions_sha256",
+    "source_inputs",
+    "profiles",
+    "retained_derivatives_consumed",
+    "observation_context",
+    "originals_unchanged",
+    "rights",
+    "publication"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-canonical-input-recovery/v1"
+    },
+    "status": {
+      "const": "written_local"
+    },
+    "scope": {
+      "const": "pinned_originals_to_fresh_raw_and_canonical"
+    },
+    "definitions_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "source_inputs": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 5,
+      "propertyNames": {
+        "pattern": "^[a-z]+-[0-9]{4}$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/source_binding"
+      }
+    },
+    "profiles": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 5,
+      "propertyNames": {
+        "pattern": "^[a-z]+-[0-9]{4}$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/profile"
+      }
+    },
+    "retained_derivatives_consumed": {
+      "const": false
+    },
+    "observation_context": {
+      "const": "exact_prior_local_tokens_replayed_no_new_capture_attestation"
+    },
+    "originals_unchanged": {
+      "const": true
+    },
+    "rights": {
+      "const": "not_evaluated"
+    },
+    "publication": {
+      "const": "not_performed"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 134217728
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 16,
+      "propertyNames": {
+        "pattern": "^[A-Za-z0-9_-]+\\.(json|jsonl|parquet)$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/binding"
+      }
+    },
+    "definition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "kind",
+        "sha256",
+        "source_locator",
+        "source_vintage",
+        "observation_token",
+        "observation_id"
+      ],
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z]+-[0-9]{4}$"
+        },
+        "kind": {
+          "enum": [
+            "historical",
+            "budget",
+            "revenue"
+          ]
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "source_locator": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "source_vintage": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 256
+        },
+        "observation_token": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "observation_id": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      }
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "definition",
+        "raw_manifest_sha256",
+        "canonical_marker_sha256",
+        "raw_inventory",
+        "canonical_inventory"
+      ],
+      "properties": {
+        "definition": {
+          "$ref": "#/$defs/definition"
+        },
+        "raw_manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "canonical_marker_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "raw_inventory": {
+          "$ref": "#/$defs/inventory"
+        },
+        "canonical_inventory": {
+          "$ref": "#/$defs/inventory"
+        }
+      }
+    },
+    "source_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 67108864
+        }
+      }
+    }
+  }
+}

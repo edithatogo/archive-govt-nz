@@ -1,0 +1,46 @@
+{
+  "all_required_local_gates": "passed",
+  "command": "./scripts/validate.sh",
+  "coverage_percent": 97.41,
+  "existing_external_cdx_validation": "skipped_by_existing_tool",
+  "exit_code": 0,
+  "gold_common_operation_adoption": "pending",
+  "head": "3c9cadf7a3fa2111b9c44885ba3dd21753355439",
+  "hosted_checks": "pending",
+  "log_sha256": "7a86b8299f6e9b9cf0c729a91d80f247f0e9f51c61516c685d4cc2ef5d884729",
+  "merge": "pending",
+  "native_proof_sha256": "717c9e1c3c84ba5d615c804b3b933c29383a88ae670b93c4b61558cd77fcb52a",
+  "parity": {
+    "divergences": 0,
+    "passed": 9
+  },
+  "post_harness_changes": "documentation_and_evidence_only; affected and hosted checks required",
+  "pruning": "pending",
+  "recorded_at": "2026-10-17T06:42:17.463195+00:00",
+  "representative_documents": 52,
+  "required_coverage_percent": 80,
+  "runtime": {
+    "build_backend_requires": [
+      "uv_build>=0.11.29,<0.13.0"
+    ],
+    "executable": "/Volumes/PortableSSD/GitHub/archive-govt-nz/.venv/bin/python",
+    "head": "3c9cadf7a3fa2111b9c44885ba3dd21753355439",
+    "input_sha256": {
+      ".github/workflows/ci.yml": "ea64184ac1b08951854e7c242cc2a297b28fb23d9a8d052afe28bfc4dab2b8a9",
+      "pyproject.toml": "be73b1f781ea130314fac61ce0cda8dfd11c7b419122668a1cbde31a498a8730",
+      "uv.lock": "9c3e36933d40d8547e32b41db6ecdef9fb11c5188c78afca1d81b6bbde4751aa"
+    },
+    "python": "3.14.6 (main, Aug  4 2026, 19:23:56) [Clang 22.1.3 ]",
+    "uv_cli": "uv 0.13.1 (Homebrew 2026-10-14 aarch64-apple-darwin)"
+  },
+  "sbom_components": 113,
+  "schema_version": "archive-govt-nz.health-context-operation-canonical-validation/v1",
+  "schemas": 62,
+  "tests": {
+    "passed": 7847,
+    "seconds": 314.23,
+    "skipped": 10,
+    "warnings": 23
+  },
+  "typing_errors": 0
+}

@@ -19,7 +19,7 @@ from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     LossAccounting,
     preserved_only,
 )
-from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
+from archive_govt_nz.domains.health_appropriations.formats import inspected_workbook
 from archive_govt_nz.domains.health_appropriations.historical import _number_tokens
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
     source_context,
@@ -32,6 +32,31 @@ _SOURCE_LIMIT_ERROR = "budget_revenue_source_limit_or_type"
 _SOURCE_HASH_ERROR = "source_hash_mismatch"
 _VINTAGE_ERROR = "unsupported_budget_revenue_vintage"
 _PROFILE = {
+    "Budget-2020": (
+        budget_revenue.TRANSFORMATION_2020,
+        budget_revenue.PERIOD_TYPES_2020,
+        budget_revenue.DEFINITIONS_2020,
+    ),
+    "Budget-2021": (
+        budget_revenue.TRANSFORMATION_2021,
+        budget_revenue.PERIOD_TYPES_2021,
+        budget_revenue.DEFINITIONS_2021,
+    ),
+    "Budget-2022": (
+        budget_revenue.TRANSFORMATION_2022,
+        budget_revenue.PERIOD_TYPES_2022,
+        budget_revenue.DEFINITIONS_2022,
+    ),
+    "Budget-2023": (
+        budget_revenue.TRANSFORMATION_2023,
+        budget_revenue.PERIOD_TYPES_2023,
+        budget_revenue.DEFINITIONS_2023,
+    ),
+    "Budget-2024": (
+        budget_revenue.TRANSFORMATION_2024,
+        budget_revenue.PERIOD_TYPES_2024,
+        budget_revenue.DEFINITIONS_2024,
+    ),
     "Budget-2025": (
         budget_revenue.TRANSFORMATION,
         budget_revenue.PERIOD_TYPES,
@@ -55,32 +80,40 @@ class BudgetRevenueAdapter:
 
     def matches_layout(self, bronze: bytes) -> bool:
         """Return true only for the exact revenue sheet and embedded edition."""
-        if len(bronze) > _MAX_SOURCE_BYTES or self.source_vintage not in _PROFILE:
+        if (
+            len(bronze) > _MAX_SOURCE_BYTES
+            or self.source_vintage not in _PROFILE
+            or not budget_revenue._source_binding(  # noqa: SLF001 - same profile contract
+                self.source_vintage,
+                self.source_locator,
+                hashlib.sha256(bronze).hexdigest(),
+            )
+        ):
             return False
         _, _, definitions = _PROFILE[self.source_vintage]
         try:
-            inventory_workbook(BytesIO(bronze))
-            workbook = load_workbook(
-                BytesIO(bronze), data_only=False, read_only=False, keep_links=False
-            )
-        except BadZipFile, OSError, ValueError, KeyError, TypeError, EOFError:
+            with inspected_workbook(bronze) as inspection:
+                workbook = inspection.workbook
+                if not {"Raw Data", "Explanation", "Intro"} <= set(workbook.sheetnames):
+                    return False
+                raw = workbook["Raw Data"]
+                headers = tuple(cell.value for cell in next(raw.iter_rows(max_row=1)))
+                if headers != tuple(budget_revenue.FIELDS):
+                    return False
+                budget_revenue._metadata(  # noqa: SLF001 - same reviewed profile.
+                    workbook, hashlib.sha256(bronze).hexdigest(), definitions
+                )
+                return True
+        except (
+            BadZipFile,
+            OSError,
+            ValueError,
+            KeyError,
+            TypeError,
+            EOFError,
+            StopIteration,
+        ):
             return False
-        try:
-            if not {"Raw Data", "Explanation", "Intro"} <= set(workbook.sheetnames):
-                return False
-            raw = workbook["Raw Data"]
-            headers = tuple(cell.value for cell in next(raw.iter_rows(max_row=1)))
-            if headers != tuple(budget_revenue.FIELDS):
-                return False
-            budget_revenue._metadata(  # noqa: SLF001 - same reviewed profile contract
-                workbook, hashlib.sha256(bronze).hexdigest(), definitions
-            )
-        except ValueError, StopIteration:
-            return False
-        else:
-            return True
-        finally:
-            workbook.close()
 
     def extract(self, bronze: bytes, *, source_sha256: str) -> AdapterOutput:
         """Return revenue facts, source-row dispositions, and field lineage."""

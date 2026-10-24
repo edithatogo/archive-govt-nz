@@ -1,0 +1,38 @@
+{
+  "schema_version": "archive-govt-nz.health-biff8-core-qualification/v1",
+  "status": "passed",
+  "scope": "stored_integer_witness_core_only",
+  "producer": {
+    "head": "84c7430069a713fa4d191287acc833e8f4eb6d21",
+    "tree": "21ebbfaa3cfcb4411ea8627f18cf9f426af35436"
+  },
+  "postflight": {
+    "actual_exit": 0,
+    "frozen_pin_count": 4877,
+    "frozen_pin_state": "unchanged",
+    "head": "84c7430069a713fa4d191287acc833e8f4eb6d21",
+    "kernel_lease": "free",
+    "numeric_evidence_counts": [
+      1595,
+      189
+    ],
+    "owner_and_group": "absent",
+    "prior_inventory_bytes": "all32_exact_equal",
+    "prior_inventory_count": 32,
+    "repeats": "both_equal",
+    "source_count": 2,
+    "source_profile_facts_operations_canonical_and_rights_admission": "not_performed",
+    "summary_sha256": "09d8bc04a9724ea34112e2eadfabfc691f95716dde2315311c32af24c8793391",
+    "tree": "21ebbfaa3cfcb4411ea8627f18cf9f426af35436"
+  },
+  "private_evidence": {
+    "postflight_sha256": "21c35ab978ab29d4292cbaa39b7c44940887d47ba2ea5ae167945b4c09d15d3a",
+    "archive_fixity_sha256": "1b1ab7caeb8b7b3f8ae4b0f14f548067be332635d926836a3e88a889137da181"
+  },
+  "holds": [
+    "2019_source_profiles_not_implemented",
+    "facts_operations_native_product_dispatch_not_qualified",
+    "canonical_gold_mapping_not_qualified",
+    "rights_currency_period_start_and_joins_not_admitted"
+  ]
+}

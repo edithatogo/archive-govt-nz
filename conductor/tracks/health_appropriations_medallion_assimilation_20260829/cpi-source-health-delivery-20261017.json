@@ -1,0 +1,37 @@
+{
+  "headRefOid": "27e79f3c86fb3c82c93d9aff6636479ad0297463",
+  "local_assurance": {
+    "command": "./scripts/validate.sh",
+    "head": "27e79f3c86fb3c82c93d9aff6636479ad0297463",
+    "log_sha256": "c414124a606929e7f3a89c0c623ac5c3d3146fdfbfc0bc598aa88aed32b40f6a",
+    "native_failure": "native1 retained; fixed v2 prior-input selection before native2/full2",
+    "native_repeat": "passed; v1 current/historical producer byte equality; v2 JSON/Markdown repeat identity",
+    "parity": "9/9; zero divergences",
+    "post_test_gates": "passed",
+    "representative_documents": 56,
+    "sbom_components": 113,
+    "schemas": 66,
+    "status": "passed",
+    "tests": {
+      "coverage_percent": 97.28,
+      "passed": 7897,
+      "required_coverage_percent": 80,
+      "seconds": 618.46,
+      "skipped": 12,
+      "warnings": 23
+    },
+    "tree": "13f421b43d6f42f80cbd45791fcf7ab29676a088"
+  },
+  "mergeCommit": {
+    "oid": "28e48f5220a6d73dde28e7127f7d91ff95a1e9f2"
+  },
+  "mergedAt": "2026-10-17T13:44:58Z",
+  "native_json_sha256": "eeb30260ce8439f6cc5190eb80eb04bde8e9a7e2e1b9b3013ca02f07847ec202",
+  "native_markdown_sha256": "e1dd145b7bcb28bbdde6e0927394d08de0d77861b9d672dac43955a1d9962b5c",
+  "native_proof_sha256": "e59616bab63564953ef8ef1aa03c25ebe07815092ea56d63be46e51344e73727",
+  "state": "MERGED",
+  "tree": "13f421b43d6f42f80cbd45791fcf7ab29676a088",
+  "unique_changes": 0,
+  "url": "https://github.com/edithatogo/archive-govt-nz/pull/707",
+  "verified_origin_main": "28e48f5220a6d73dde28e7127f7d91ff95a1e9f2"
+}

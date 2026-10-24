@@ -57,6 +57,32 @@ def verify_response_binding(  # noqa: PLR0913 -- explicit receipt bindings
     """
     with path.open("rb") as stream:
         payload = stream.read(MAX_WARC_BYTES + 1)
+    verify_response_snapshot(
+        payload,
+        request_url=request_url,
+        final_url=final_url,
+        status_code=status_code,
+        content_type=content_type,
+        body_sha256=body_sha256,
+        body_bytes=body_bytes,
+        warc_sha256=warc_sha256,
+    )
+
+
+def verify_response_snapshot(  # noqa: PLR0913 -- explicit receipt bindings
+    payload: bytes,
+    *,
+    request_url: str,
+    final_url: str,
+    status_code: int,
+    content_type: str | None = None,
+    body_sha256: str,
+    body_bytes: int,
+    warc_sha256: str,
+) -> None:
+    """Apply the same binding contract to an immutable, caller-bounded snapshot."""
+    if not isinstance(payload, bytes):
+        _fail("resume_warc_binding_invalid")
     if len(payload) > MAX_WARC_BYTES:
         _fail("resume_warc_size_limit")
     if hashlib.sha256(payload).hexdigest() != warc_sha256:

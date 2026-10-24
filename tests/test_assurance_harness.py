@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any
 
 import pytest
+import yaml
 
 from archive_govt_nz import assurance
 from archive_govt_nz.assurance import (
@@ -49,7 +50,9 @@ def test_static_and_coverage_policy_is_fail_closed() -> None:
     assert tools["coverage"]["run"]["branch"] is True
     assert tools["coverage"]["report"]["fail_under"] == 80
     assert tools["coverage"]["report"]["show_missing"] is True
-    assert COMMAND_TIMEOUT_SECONDS == 900
+    codecov = yaml.safe_load((REPOSITORY_ROOT / "codecov.yml").read_text())
+    assert codecov["coverage"]["status"]["patch"]["default"]["target"] == "80%"
+    assert COMMAND_TIMEOUT_SECONDS == 1200
 
 
 def test_repository_gate_lists_all_required_stages() -> None:
@@ -133,6 +136,30 @@ def test_parallel_pytest_lane_rejects_unsafe_worker_values() -> None:
     """Worker values cannot become arbitrary pytest arguments."""
     with pytest.raises(ValueError, match="pytest worker count"):
         build_stages(pytest_workers="auto --maxfail=0")
+
+
+def test_pytest_diagnostics_preserve_test_selection_and_other_gates() -> None:
+    """Reporting cannot filter tests or alter mutation/security commands."""
+    ordinary = build_stages(pytest_workers="auto", pytest_distribution="worksteal")
+    diagnostic = build_stages(
+        pytest_workers="auto",
+        pytest_distribution="worksteal",
+        pytest_diagnostics=True,
+    )
+    assert len(ordinary) == len(diagnostic) == 32
+    for before, after in zip(ordinary, diagnostic, strict=True):
+        assert before.name == after.name
+        if before.name == "tests":
+            assert after.command[: len(before.command)] == before.command
+            assert after.command[len(before.command) :] == (
+                "--verbose",
+                "--durations=30",
+                "--junitxml=build/pytest-results.xml",
+                "-o",
+                "console_output_style=count",
+            )
+        else:
+            assert before == after
 
 
 def test_heavy_assurance_lanes_are_explicit_and_bounded() -> None:

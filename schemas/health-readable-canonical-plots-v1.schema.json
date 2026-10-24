@@ -1,0 +1,292 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-readable-canonical-plots-v1",
+  "title": "Additive readable canonical Gold plot package and point sidecar",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/manifest"
+    },
+    {
+      "$ref": "#/$defs/sidecar"
+    }
+  ],
+  "$defs": {
+    "point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ordinal",
+        "caption",
+        "amount",
+        "input_record_ids",
+        "source_row"
+      ],
+      "properties": {
+        "ordinal": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 500
+        },
+        "caption": {
+          "type": "string",
+          "minLength": 1
+        },
+        "amount": {
+          "type": "string",
+          "pattern": "^-?\\d+(\\.\\d+)?([eE][+-]?\\d+)?$"
+        },
+        "input_record_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        },
+        "source_row": {
+          "type": "object"
+        }
+      }
+    },
+    "page": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "product",
+        "context",
+        "context_sha256",
+        "points"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^plot_[a-z_]+_[a-f0-9]{20}_\\d{3}\\.png$"
+        },
+        "product": {
+          "enum": [
+            "historical",
+            "budget",
+            "revenue",
+            "pharmac",
+            "moh",
+            "crown_befu",
+            "crown_hyefu",
+            "fiscal_crown",
+            "biff8_budget",
+            "biff8_revenue"
+          ]
+        },
+        "context": {
+          "type": "object"
+        },
+        "context_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "points": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {
+            "$ref": "#/$defs/point"
+          }
+        }
+      }
+    },
+    "omission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "product",
+        "reason",
+        "input_record_ids"
+      ],
+      "properties": {
+        "product": {
+          "enum": [
+            "historical",
+            "budget",
+            "revenue",
+            "pharmac",
+            "moh",
+            "crown_befu",
+            "crown_hyefu",
+            "fiscal_crown",
+            "biff8_budget",
+            "biff8_revenue"
+          ]
+        },
+        "reason": {
+          "enum": [
+            "group_limit",
+            "point_limit",
+            "biff8_display_excluded"
+          ]
+        },
+        "input_record_ids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "context": {
+          "type": "object"
+        }
+      }
+    },
+    "sidecar": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "pages",
+        "omissions"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "archive-govt-nz.health-readable-canonical-plots/v1"
+        },
+        "pages": {
+          "type": "array",
+          "maxItems": 4000,
+          "items": {
+            "$ref": "#/$defs/page"
+          }
+        },
+        "omissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/omission"
+          }
+        }
+      }
+    },
+    "manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_version",
+        "status",
+        "point_count",
+        "page_count",
+        "omissions",
+        "geometry",
+        "numeric_conversion",
+        "rights",
+        "publication",
+        "parent_manifest_sha256",
+        "renderer",
+        "outputs",
+        "schema_sha256"
+      ],
+      "properties": {
+        "schema_version": {
+          "const": "archive-govt-nz.health-readable-canonical-plots/v1"
+        },
+        "status": {
+          "enum": [
+            "planned",
+            "complete",
+            "complete_with_omissions"
+          ]
+        },
+        "point_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4000
+        },
+        "page_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 4000
+        },
+        "omissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/omission"
+          }
+        },
+        "geometry": {
+          "const": "all_visible_text_inside_canvas"
+        },
+        "numeric_conversion": {
+          "const": "float_for_display_only"
+        },
+        "rights": {
+          "const": "not_evaluated"
+        },
+        "publication": {
+          "const": "not_performed"
+        },
+        "parent_manifest_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "renderer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "matplotlib",
+            "pillow",
+            "freetype",
+            "backend"
+          ],
+          "properties": {
+            "matplotlib": {
+              "type": "string",
+              "minLength": 1
+            },
+            "pillow": {
+              "type": "string",
+              "minLength": 1
+            },
+            "freetype": {
+              "type": "string",
+              "minLength": 1
+            },
+            "backend": {
+              "const": "Agg"
+            }
+          }
+        },
+        "outputs": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 4002,
+          "required": [
+            "plot-points.json",
+            "plot-schema.json"
+          ],
+          "propertyNames": {
+            "pattern": "^(plot-(points|schema)\\.json|plot_[a-z_]+_[a-f0-9]{20}_\\d{3}\\.png)$"
+          },
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sha256",
+              "bytes"
+            ],
+            "properties": {
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "bytes": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 33554432
+              }
+            }
+          }
+        },
+        "schema_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    }
+  }
+}

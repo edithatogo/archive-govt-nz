@@ -1,0 +1,28 @@
+{
+  "aggregate_source_totals": "not_computed_overlapping_periods_and_bases",
+  "cli_report_readback": "verified",
+  "cli_report_payloads_verified": 12,
+  "excluded_points": 67,
+  "gold_manifest_sha256": "1b79d6f582dc8e9935e16bce2d3fe78b78d77e2a68aacf201ac9118b28462fa2",
+  "independent_arrow_reconciliation": {
+    "cpi_rows": 54,
+    "derived_rows_with_parent_amount_and_identity_checks": 270,
+    "per_capita_rows": 54,
+    "share_rows": 162,
+    "source_observations": 54,
+    "source_amount_and_metadata_checks": 54,
+    "status": "verified"
+  },
+  "location": {
+    "external_root": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations",
+    "relative_path": "assurance/fiscal-analytical-reconciliation-20261005-v1"
+  },
+  "plotted_points": 257,
+  "publication": "not_performed",
+  "repeat_build": "all_13_files_byte_equal",
+  "report_manifest_sha256": "c46099e1d06fa716c66f3677cb3d7076a6d91019d09aa83998e3fc1c13109d72",
+  "rights": "not_evaluated",
+  "schema_version": "archive-govt-nz.fiscal-analytical-reports/v2",
+  "source_reverification": "not_performed",
+  "source_tree_unchanged": true
+}

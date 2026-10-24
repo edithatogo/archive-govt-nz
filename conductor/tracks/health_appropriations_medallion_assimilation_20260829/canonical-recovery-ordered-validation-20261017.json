@@ -1,0 +1,97 @@
+{
+  "bronze_objects_unchanged": true,
+  "canonical_gold_file_count": 53,
+  "fresh_canonical_input_file_count": 47,
+  "fresh_input_receipts_schema_valid": true,
+  "full_targeted_receipt_sha256": "08c8cc1657489cbceb0ab4387f7c81eede29b37cfdfc7f109c1777435a67f2e5",
+  "gold_manifest_sha256": "6ce7b84d351c4e7a69d7fc7c2a710637bbb8041999e5bf58eb2942ae057052a6",
+  "implementation_commit": "49becbc7b05982412834293dd6fcd7f912a19b48",
+  "metadata_recovery": "unchanged_producer_outputs_match_original_full_native_receipt_metadata_not_rerun_in_targeted_check",
+  "original_native_evidence": "canonical-recovery-validation-20261017.json",
+  "outputs_retained": "persistent_external_targeted_recovery_directory",
+  "prior_native_receipt_scope": "retained_membership_repeat_metadata_evidence_not_ordered_oracle_proof",
+  "prior_native_receipt_sha256": "cd755a4da9cb243396f4eb6dd60894df30f3d820703ce10c38e384bc55b05d3a",
+  "prior_query_rows_match": true,
+  "producer_outputs_match_prior_native": true,
+  "publication": "not_performed",
+  "query_readback": {
+    "gold_unchanged": true,
+    "manifest_sha256": "6ce7b84d351c4e7a69d7fc7c2a710637bbb8041999e5bf58eb2942ae057052a6",
+    "ordering_validation": "independent_typed_columns_asc_nulls_last",
+    "products": {
+      "budget": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 200,
+        "rows_sha256": "91c9eb3ac578760793f4d06f8dbd69cd6bf0d585e07d7796f6cdfae03765d608",
+        "source_rows": 341,
+        "truncated": true
+      },
+      "crown_befu": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 10,
+        "rows_sha256": "5d445d244235063f4e586121d1f1d5db327adbb481eb1f8e5a6efb3c5fc4dc9f",
+        "source_rows": 10,
+        "truncated": false
+      },
+      "crown_hyefu": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 10,
+        "rows_sha256": "db6561b5181a9cf7cb564e21d6d60ef0ce8c407fb5f0eb48ee25179df7b6f252",
+        "source_rows": 10,
+        "truncated": false
+      },
+      "fiscal_crown": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 61,
+        "rows_sha256": "d549984a77521288c8c95fbb301c75fa0c9a9732108c16faf4827580f8763ee6",
+        "source_rows": 61,
+        "truncated": false
+      },
+      "historical": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 200,
+        "rows_sha256": "db3b16065fce5afb6f2a077096f1864aa6de57649d512e0a10c6a914f81f092a",
+        "source_rows": 214,
+        "truncated": true
+      },
+      "moh": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 80,
+        "rows_sha256": "70eb3a768e277dc0d6f6de8ef521d63b4e9179138da53fed0ee384f1a0f0851d",
+        "source_rows": 80,
+        "truncated": false
+      },
+      "pharmac": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 14,
+        "rows_sha256": "54af8ef0fbc0ce1d9059e9745f9723029eb4e99351a798e49853ed3288b9be43",
+        "source_rows": 14,
+        "truncated": false
+      },
+      "revenue": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 70,
+        "rows_sha256": "1f038a1c7bbf720a7992253115c1fa091e8211af4fd458fa0ec040cfbd1d7976",
+        "source_rows": 70,
+        "truncated": false
+      }
+    },
+    "publication": "not_performed",
+    "repeat_identical": true,
+    "rights": "not_evaluated",
+    "source_reverification": "not_performed_by_query"
+  },
+  "rights": "not_evaluated",
+  "scope": "targeted_fresh_canonical_recovery_and_independent_ordered_query_readback",
+  "source_definitions_sha256": "4a41fc5670d9b1c0bf76decea778edad637a09736d504cf8057f80716f15e3fe",
+  "source_inputs_match_prior_native": true,
+  "whole_track_complete": false
+}

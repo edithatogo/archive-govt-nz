@@ -42,7 +42,7 @@ def _require_type(condition: object) -> None:
 
 
 def _context(kind: str, row: dict[str, Any]) -> dict[str, Any]:
-    if kind == "historical":
+    if kind in {"historical", "fiscal_crown"}:
         names = (
             "source_vintage",
             "recordset",
@@ -55,13 +55,53 @@ def _context(kind: str, row: dict[str, Any]) -> dict[str, Any]:
             "institutional_coverage",
             "accounting_basis",
         )
+    elif kind == "pharmac":
+        names = (
+            "source_vintage",
+            "amount_type",
+            "unit",
+            "budget_scope",
+            "funding_regime",
+        )
+    elif kind == "moh":
+        names = (
+            "source_vintage",
+            "profile",
+            "source_label",
+            "price_basis",
+            "per_capita",
+            "unit",
+            "price_base",
+            "denominator",
+        )
+    elif kind in {"crown_befu", "crown_hyefu"}:
+        names = (
+            "source_vintage",
+            "observation_context",
+            "measure",
+            "amount_type",
+            "unit",
+            "currency",
+            "institutional_coverage",
+            "accounting_basis",
+            "source_label",
+        )
     else:
         names = ("source_vintage", "amount_type", "unit")
     return {name: row[name] for name in names}
 
 
 def _value(kind: str, row: dict[str, Any]) -> Decimal:
-    name = {"historical": "amount", "budget": "total_amount", "revenue": "amount"}[kind]
+    name = {
+        "historical": "amount",
+        "budget": "total_amount",
+        "revenue": "amount",
+        "pharmac": "amount",
+        "moh": "amount",
+        "crown_befu": "amount",
+        "crown_hyefu": "amount",
+        "fiscal_crown": "amount",
+    }[kind]
     value = row[name]
     _require_type(isinstance(value, Decimal))
     return value
@@ -73,7 +113,7 @@ def _label(row: dict[str, Any]) -> str:
         value = row.get(name)
         if value:
             category.append(str(value))
-    identity = row.get("input_record_id")
+    identity = row.get("input_record_id", row.get("record_id"))
     if identity is None:
         identity = ",".join(row["input_record_ids"])
     category.append(str(identity))
@@ -125,6 +165,11 @@ def build_discrete_plots(
             "historical": "historical_observations.parquet",
             "budget": "nominal_budget.parquet",
             "revenue": "nominal_revenue.parquet",
+            "pharmac": "nominal_pharmaceutical_budget.parquet",
+            "moh": "published_health_indicators.parquet",
+            "crown_befu": "crown_expense_befu_2026.parquet",
+            "crown_hyefu": "crown_expense_hyefu_2025.parquet",
+            "fiscal_crown": "historical_fiscal_crown.parquet",
         }
         files: dict[str, bytes] = {}
         report: dict[str, Any] = {
@@ -177,7 +222,10 @@ def build_discrete_plots(
                         "label": _label(row),
                         "amount": _value(kind, row),
                         "input_record_ids": sorted(
-                            row.get("input_record_ids", [row.get("input_record_id")])
+                            row.get(
+                                "input_record_ids",
+                                [row.get("input_record_id", row.get("record_id"))],
+                            )
                         ),
                     }
                     for row in entries

@@ -1,0 +1,120 @@
+{
+  "schema_version": "archive-govt-nz.vote-health-estimates-overview-receipt/v1",
+  "source_id": "treasury-vote-health-pdf-93afa43f588f1cae",
+  "source_url": "https://www.treasury.govt.nz/sites/default/files/2018-04/est15-v6-health.pdf",
+  "landing_page": "https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2015-16",
+  "fiscal_year": "2015/16",
+  "source_object_sha256": "dbb8a9c4fab8a53b5279c26d98a5e0a6fa60d9360b88030189d43273bf0e5d1a",
+  "source_bytes": 867091,
+  "source_page_count": 100,
+  "normalized_source_pages": [
+    2
+  ],
+  "preserved_unreviewed_page_count": 99,
+  "source_warc_sha256": "695fa56fd4a86c2784a68343f658137e3496f4bd8abaa23f7b07d513c065cedb",
+  "capture_timestamp": "unavailable; retained WARC has no WARC-Date",
+  "native_verification": {
+    "repeat_identical": true,
+    "hashes": {
+      "field_lineage.parquet": "cff01942a6d9f581ed2691743ce61525e4fc7ebc1e64814297eeee88021959c9",
+      "page_dispositions.parquet": "d2fc0a4cd20926ad959ab5b08c0da8ca9fb6ba46f3895654243845a65ab2750e",
+      "vote_health_overview_facts.parquet": "a8d5e88df03d518462ddfb88363a217f6c72c817b385020c8c5be2850f16aa89",
+      "MANIFEST.json": "368adcdbe2a848ef2f1de5c48db84332668704c45cdcf247051ba92ac1f78e49"
+    },
+    "facts": 17,
+    "source_qualifiers": 14,
+    "source_unchanged": true,
+    "observed_at": "2026-10-05T06:29:49.644931+00:00",
+    "observation_kind": "local retained-source verification; not remote recapture",
+    "capture_timestamp": "unavailable; WARC lacks WARC-Date",
+    "initial_probe": "wrong fact readback key; retained outputs not used for final proof",
+    "rights": "not_evaluated",
+    "publication": "not_performed"
+  },
+  "integrated_operation": {
+    "command": "health-appropriations-extract-source",
+    "counts": {
+      "facts": 17,
+      "pages": 1
+    },
+    "output_sha256": {
+      "field_lineage.parquet": "cff01942a6d9f581ed2691743ce61525e4fc7ebc1e64814297eeee88021959c9",
+      "page_dispositions.parquet": "d2fc0a4cd20926ad959ab5b08c0da8ca9fb6ba46f3895654243845a65ab2750e",
+      "vote_health_overview_facts.parquet": "a8d5e88df03d518462ddfb88363a217f6c72c817b385020c8c5be2850f16aa89"
+    },
+    "profile": "vote-health-estimates-2015-16-overview/v1",
+    "publication_state": "local_validation_only",
+    "rights_state": "not_evaluated",
+    "schema_version": "archive-govt-nz.health-source-operation/v1",
+    "source_object_sha256": "dbb8a9c4fab8a53b5279c26d98a5e0a6fa60d9360b88030189d43273bf0e5d1a",
+    "status": "written_local",
+    "transformation_id": "vote-health-estimates-overview-2015-16/v1",
+    "verification_scope": "adapter_execution_only"
+  },
+  "production_sha256": {
+    "src/archive_govt_nz/domains/health_appropriations/vote_health_estimates_summary.py": "5a70d0a9e0e240dfc3d3aeed77577ad89e6487b403accd637713d71c4fa26896",
+    "src/archive_govt_nz/domains/health_appropriations/source_operations.py": "d2ed4e7991890625dbe2ff236628c91f62281c70c92b47c555239617e29ff5dc"
+  },
+  "full_harness": {
+    "command": "./scripts/validate.sh",
+    "status": "passed",
+    "exit_code": 0,
+    "passed": 7476,
+    "skipped": 10,
+    "coverage_floor_percent": 80,
+    "parity": "9_of_9_no_divergences",
+    "mutations": "all_configured_passed",
+    "supply_chain": "passed",
+    "sbom_components": 113
+  },
+  "phase_7_gates": {
+    "status": "passed",
+    "scope": "generic phase checks; not whole-Health completion",
+    "receipt": "phase_7_gates-review-receipt-20261005-vote-health-2015-16.json",
+    "sha256": "be9854a73ecca93dcff82f36f1a67383c20521340f8ab894d347916a2e114274"
+  },
+  "installed_cli_negative_contracts": {
+    "wrong-pin": {
+      "exit_code": 2,
+      "receipt": {
+        "command": "health-appropriations-extract-source",
+        "error": "invalid_source_operation",
+        "publication_state": "local_validation_only",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-source-operation/v1",
+        "status": "failed",
+        "verification_scope": "adapter_execution_only"
+      }
+    },
+    "wrong-vintage": {
+      "exit_code": 2,
+      "receipt": {
+        "command": "health-appropriations-extract-source",
+        "error": "invalid_source_operation",
+        "publication_state": "local_validation_only",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-source-operation/v1",
+        "status": "failed",
+        "verification_scope": "adapter_execution_only"
+      }
+    },
+    "existing-output": {
+      "exit_code": 2,
+      "receipt": {
+        "command": "health-appropriations-extract-source",
+        "error": "invalid_source_operation",
+        "publication_state": "local_validation_only",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-source-operation/v1",
+        "status": "failed",
+        "verification_scope": "adapter_execution_only"
+      }
+    }
+  },
+  "evidence_sha256": {
+    "native-build-receipt.json": "1cb2fde1200c2d9041a0926e5d8ecdd4835317794346609ba2fc95e490019bd8",
+    "installed-cli-receipt.json": "cab903e8884e0127fed9310fa6b8bb81b83223e8e73de83ca57bd520f4f5cd7f",
+    "installed-cli-negative-contracts.json": "1b688fc0e0b3b5de87ede99c02be2f4fb3a7a6973a810aaed7a38861a63ea7d1",
+    "capture-context.json": "658e7827f3ba7666928d39ed4b5cb69c44cd0656ffa396a82d40b6f2ef042a79"
+  }
+}

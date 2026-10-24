@@ -1,0 +1,291 @@
+{
+  "actual_dispatch_calls": 25,
+  "approved_joins": "none",
+  "common_records": 615,
+  "currency": "not_newly_qualified",
+  "denominator_selection": "not_performed",
+  "head": "a798e1282774e88a505cc7114b507324e03f7e1f",
+  "historical_gdp_june_outer_report": {
+    "canonical_projection": {
+      "fact_count": 61,
+      "files": {
+        "field_lineage.parquet": {
+          "bytes": 38061,
+          "sha256": "1ea5d543d2b95fb11f7eb3f7386abc2c82aa657d9033fd565dcfa64de0346639"
+        },
+        "fiscal_context_fact.parquet": {
+          "bytes": 23520,
+          "sha256": "62724a4e9aa99eb1e4ac684b5d37165ca134f958cd3963c13503f2488c185077"
+        },
+        "projection-receipt.json": {
+          "bytes": 976,
+          "sha256": "48ee1faaf842c50461382133c616bd0272b553dfba6483fea6a95fb0d9981acc"
+        }
+      },
+      "lineage_count": 427,
+      "manifest_sha256": "f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd",
+      "repeat_identical": true,
+      "transformation_id": "stats-nz-gdp-june-canonical-current-price-context/v1"
+    },
+    "counts": {
+      "dispositions": 2323,
+      "facts": 61,
+      "lineage": 915
+    },
+    "currency": "unverified",
+    "denominator_selection": "not_performed",
+    "files": {
+      "MANIFEST.json": {
+        "bytes": 1081,
+        "sha256": "f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd"
+      },
+      "cell_dispositions.parquet": {
+        "bytes": 37848,
+        "sha256": "22143c282b9e28cbfcae41c9531f1b37b710b6a5a5d5fbcf9fa6112e196b9dd9"
+      },
+      "field_lineage.parquet": {
+        "bytes": 17815,
+        "sha256": "ad698d41f4709b633df875d256c419107ebe044fd325b5afdc74f56e3113e6dc"
+      },
+      "gdp_facts.parquet": {
+        "bytes": 29409,
+        "sha256": "ab95deb1701876f285b567da245bdabd842559c7ea9c64ebd2aca2740373d35a"
+      }
+    },
+    "publication": "not_performed",
+    "repeat_identical": true,
+    "rights_state": "not_evaluated",
+    "source_capture_receipt_sha256": "28609dbc48f7a4b68ea14f277267c7af0e2eec9b274d0c369865d7d090a2b868",
+    "source_id": "stats_nz_gdp-588a47c19c9dbc44",
+    "source_object_sha256": "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
+    "source_vintage": "StatsNZ-GDP-2026Q2"
+  },
+  "historical_gdp_june_outer_report_identical": true,
+  "independent_review": "Conductor read-only audit verified all 40 generated files and complete historical June report equality",
+  "profiles": [
+    {
+      "actual_dispatch_calls": 5,
+      "binding": {
+        "observed_at": "2026-08-29T09:00:17Z",
+        "source_locator": "https://www.stats.govt.nz/assets/Uploads/Consumers-price-index/Consumers-price-index-June-2026-quarter/Download-data/consumers-price-index-june-2026-quarter-index-numbers.csv",
+        "source_object_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+        "source_vintage": "Stats-NZ-CPI-2026-Q2"
+      },
+      "common_dimension_links": 898,
+      "common_dimensions": 2,
+      "common_lineage": 4041,
+      "common_losses": 22252,
+      "common_records": 449,
+      "counts": {
+        "input": 22701,
+        "missing": 27,
+        "numeric": 422,
+        "selected": 449,
+        "unselected": 22252
+      },
+      "family": "cpi",
+      "files": {
+        "MANIFEST.json": {
+          "bytes": 4181290,
+          "sha256": "a6baab080ac9556f3dbaf9a918d80037d865f58c9e8489762a42abd870501e74"
+        },
+        "cpi_facts.parquet": {
+          "bytes": 98613,
+          "sha256": "0dfed3330c379af6c08dfcac0235149b81fa76f3131b32865ae92ddc98911560"
+        },
+        "field_lineage.parquet": {
+          "bytes": 111499,
+          "sha256": "948e0533cd941f08401026bb71b577c6a1e145ac0d1882e31125aa8d06ae6df5"
+        },
+        "row_dispositions.parquet": {
+          "bytes": 766994,
+          "sha256": "bc4c5af889ff01bae782c9c6321bfdd31afa03433998c178d2af1357e71643d0"
+        }
+      },
+      "manifest_sha256": "a6baab080ac9556f3dbaf9a918d80037d865f58c9e8489762a42abd870501e74",
+      "native_tables_byte_identical": true,
+      "profile": "cpiq-se9a/v1",
+      "reference_manifest_sha256": "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e",
+      "repeat_identical": true
+    },
+    {
+      "actual_dispatch_calls": 5,
+      "binding": {
+        "observed_at": "2026-08-29T09:00:17Z",
+        "source_locator": "https://www.stats.govt.nz/assets/Uploads/Labour-market-statistics/Labour-market-statistics-June-2026-quarter/Download-data/quarterly-employment-survey-june-2026-quarter.xlsx",
+        "source_object_sha256": "1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97",
+        "source_vintage": "QES-2026-Q2"
+      },
+      "common_dimension_links": 27,
+      "common_dimensions": 11,
+      "common_lineage": 207,
+      "common_losses": 6012,
+      "common_records": 9,
+      "counts": {
+        "field_lineage": 207,
+        "inventoried_cells": 6021,
+        "normalized": 9
+      },
+      "family": "wage",
+      "files": {
+        "MANIFEST.json": {
+          "bytes": 770950,
+          "sha256": "819a6b08860d0607e1729403ef14a2b179e267038f882b9df7c95e9e4a4c1415"
+        },
+        "cell_dispositions.parquet": {
+          "bytes": 59155,
+          "sha256": "978125c7011649db91d8898c20c780da1f6a66b728c820c82178dba41d0c0d8e"
+        },
+        "field_lineage.parquet": {
+          "bytes": 21010,
+          "sha256": "355e73cb2424ada938b6a8f40213b841be2511cb5b60173074452d412d8c0150"
+        },
+        "qes_facts.parquet": {
+          "bytes": 16198,
+          "sha256": "7fe02c2e6126a46c2fd5427cef37924a202d5292ce56520437f320ef26012e87"
+        }
+      },
+      "manifest_sha256": "819a6b08860d0607e1729403ef14a2b179e267038f882b9df7c95e9e4a4c1415",
+      "native_tables_byte_identical": true,
+      "profile": "qes-june2026-table8/v1",
+      "reference_manifest_sha256": "0bf89bd6c10a0458ef4c578b209c3252292961976d2f50b3c27fe92907c3cb04",
+      "repeat_identical": true
+    },
+    {
+      "actual_dispatch_calls": 5,
+      "binding": {
+        "observed_at": "2026-09-25T09:37:50Z",
+        "source_locator": "https://infoshare.stats.govt.nz/ExportDirect.aspx",
+        "source_object_sha256": "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9",
+        "source_vintage": "2026-08-18"
+      },
+      "common_dimension_links": 36,
+      "common_dimensions": 36,
+      "common_lineage": 108,
+      "common_losses": 0,
+      "common_records": 36,
+      "counts": {
+        "facts": 36,
+        "input": 36,
+        "lineage": 72,
+        "missing": 1,
+        "numeric": 35,
+        "provisional": 2
+      },
+      "family": "population",
+      "files": {
+        "MANIFEST.json": {
+          "bytes": 87188,
+          "sha256": "2b9b175e398413b980b8dd7e0c71efac69c464a46b8521cf8ac7d3192afe5eea"
+        },
+        "field_lineage.parquet": {
+          "bytes": 10335,
+          "sha256": "f91b093e37a13a1f6de6cc2d862eba976df1e9ec5d0ef481a2f403cc66a98717"
+        },
+        "population_facts.parquet": {
+          "bytes": 21296,
+          "sha256": "564a02a2c28865da1cfac461d83baaa705419fb8a14ea1aebda5b3f362c5ffa8"
+        },
+        "row_dispositions.parquet": {
+          "bytes": 6505,
+          "sha256": "ff8ebd57263ebc05ed9da1632d20ad30b0dabe13aff44323aab960e13469e96f"
+        }
+      },
+      "manifest_sha256": "2b9b175e398413b980b8dd7e0c71efac69c464a46b8521cf8ac7d3192afe5eea",
+      "native_tables_byte_identical": true,
+      "profile": "population-annual-mean-context/v1",
+      "reference_manifest_sha256": "067255c4ac18377312d0a8234dc94804c876ba68866cfba3a483a4dd89415798",
+      "repeat_identical": true
+    },
+    {
+      "actual_dispatch_calls": 5,
+      "binding": {
+        "observed_at": "2026-08-29T09:00:17Z",
+        "source_locator": "https://www.stats.govt.nz/assets/Uploads/Gross-domestic-product/Gross-domestic-product-March-2026-quarter/Download-data/gross-domestic-product-march-2026-quarter-current-price-income-and-expenditure.xlsx",
+        "source_object_sha256": "a7326e84e7704446a18e5c8942f99901a452b2170af4228e8a5c242a5532ed21",
+        "source_vintage": "StatsNZ-GDP-2026Q1"
+      },
+      "common_dimension_links": 240,
+      "common_dimensions": 63,
+      "common_lineage": 900,
+      "common_losses": 2227,
+      "common_records": 60,
+      "counts": {
+        "dispositions": 2287,
+        "facts": 60,
+        "lineage": 900
+      },
+      "family": "gdp",
+      "files": {
+        "MANIFEST.json": {
+          "bytes": 762911,
+          "sha256": "b96efff32de3d964b5cea12af9ac731ac51d731e8c4a9c81f38cefb3fd269ad8"
+        },
+        "cell_dispositions.parquet": {
+          "bytes": 37136,
+          "sha256": "453d5c0114be80cf2c1abf6eda7512638f00112c7f5ffb2abe5c12ed4d7864bd"
+        },
+        "field_lineage.parquet": {
+          "bytes": 17694,
+          "sha256": "45c0dc5b317bf76d6e6d1c7980040ab37be38d6cd032cb5ac304e2b62e20f587"
+        },
+        "gdp_facts.parquet": {
+          "bytes": 29270,
+          "sha256": "9b9fbb51323654b84982666bc278d4b7068ab4bdc93b533bf1e0a6ecfc44363d"
+        }
+      },
+      "manifest_sha256": "b96efff32de3d964b5cea12af9ac731ac51d731e8c4a9c81f38cefb3fd269ad8",
+      "native_tables_byte_identical": true,
+      "profile": "gdp-expenditure-actual-2026q1/v1",
+      "reference_manifest_sha256": "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35",
+      "repeat_identical": true
+    },
+    {
+      "actual_dispatch_calls": 5,
+      "binding": {
+        "observed_at": "2026-09-29T21:28:10.739074Z",
+        "source_locator": "https://www.stats.govt.nz/assets/Uploads/Gross-domestic-product/Gross-domestic-product-June-2026-quarter/Download-data/gross-domestic-product-june-2026-quarter-current-price-income-and-expenditure.xlsx",
+        "source_object_sha256": "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
+        "source_vintage": "StatsNZ-GDP-2026Q2"
+      },
+      "common_dimension_links": 244,
+      "common_dimensions": 64,
+      "common_lineage": 915,
+      "common_losses": 2262,
+      "common_records": 61,
+      "counts": {
+        "dispositions": 2323,
+        "facts": 61,
+        "lineage": 915
+      },
+      "family": "gdp-june",
+      "files": {
+        "MANIFEST.json": {
+          "bytes": 776161,
+          "sha256": "7f9a0ca0e5bf9bef618769718828aa8daff0c8b09a0febc4aad3e0c5074da3e5"
+        },
+        "cell_dispositions.parquet": {
+          "bytes": 37848,
+          "sha256": "22143c282b9e28cbfcae41c9531f1b37b710b6a5a5d5fbcf9fa6112e196b9dd9"
+        },
+        "field_lineage.parquet": {
+          "bytes": 17815,
+          "sha256": "ad698d41f4709b633df875d256c419107ebe044fd325b5afdc74f56e3113e6dc"
+        },
+        "gdp_facts.parquet": {
+          "bytes": 29409,
+          "sha256": "ab95deb1701876f285b567da245bdabd842559c7ea9c64ebd2aca2740373d35a"
+        }
+      },
+      "manifest_sha256": "7f9a0ca0e5bf9bef618769718828aa8daff0c8b09a0febc4aad3e0c5074da3e5",
+      "native_tables_byte_identical": true,
+      "profile": "gdp-expenditure-actual-2026q2/v1",
+      "reference_manifest_sha256": "f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd",
+      "repeat_identical": true
+    }
+  ],
+  "proof_script_sha256": "9d7d04319e3b3eacfb903a9b03134eeeb9e316082923a631019a1b7eb6f14f96",
+  "rights_state": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-context-operational-native-proof/v1",
+  "source_and_reference_bytes_unchanged": true
+}

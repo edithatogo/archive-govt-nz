@@ -5,13 +5,11 @@ from __future__ import annotations
 import hashlib
 from datetime import date
 from decimal import Context, localcontext
-from io import BytesIO
 from typing import TYPE_CHECKING, Any, cast
 
 import pyarrow as pa
-from openpyxl import load_workbook
 
-from archive_govt_nz.domains.health_appropriations.formats import inventory_workbook
+from archive_govt_nz.domains.health_appropriations.formats import inspected_workbook
 from archive_govt_nz.domains.health_appropriations.historical import _number_tokens
 from archive_govt_nz.domains.health_appropriations.silver import LINEAGE_SCHEMA
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
@@ -36,6 +34,37 @@ MAX_ROWS = 1000
 MAX_TEXT = 4096
 MAX_ID = 2**63 - 1
 _DISPATCH_SELECTION_ERROR = "unsupported_budget_revenue_dispatch_selection"
+TRANSFORMATION_2020 = "budget-2020-health-revenue/v1"
+MAX_ROWS_2020 = 1026
+SOURCE_SHA256_2020 = "5b3fc350215110052f67475617540869ce9cb17d9bbc8824120c8911c35c73f3"
+SOURCE_LOCATOR_2020 = (
+    "https://www.treasury.govt.nz/sites/default/files/2020-05/b20-revenue-data.xlsx"
+)
+TRANSFORMATION_2021 = "budget-2021-health-revenue/v1"
+MAX_ROWS_2021 = 1014
+SOURCE_SHA256_2021 = "b573a4e5e08bd725052acb28f9409db36d48b538ef55d4414f90ba7747102d3a"
+SOURCE_LOCATOR_2021 = (
+    "https://www.treasury.govt.nz/sites/default/files/2021-12/b21-revenue-data.xlsx"
+)
+TRANSFORMATION_2022 = "budget-2022-health-revenue/v1"
+MAX_ROWS_2022 = 1015
+SOURCE_SHA256_2022 = "6f395e69b5ee2405f4d9e09455402b07df7c99cce0803152db1dba654333bb92"
+SOURCE_LOCATOR_2022 = (
+    "https://www.treasury.govt.nz/sites/default/files/2022-05/b22-revenue-data.xlsx"
+)
+TRANSFORMATION_2023 = "budget-2023-health-revenue/v1"
+MAX_ROWS_2023 = 1013
+SOURCE_SHA256_2023 = "e2b00177bffd233fd404f5db989a576408f249fc81ef2342f31d95ca452c019b"
+SOURCE_LOCATOR_2023 = (
+    "https://www.treasury.govt.nz/sites/default/files/2023-09/b23-revenue-data.xlsx"
+)
+TRANSFORMATION_2024 = "budget-2024-health-revenue/v1"
+# Exact captured edition: all 1,004 rows are occupied, not a formatting tail.
+MAX_ROWS_2024 = 1004
+SOURCE_SHA256_2024 = "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea"
+SOURCE_LOCATOR_2024 = (
+    "https://www.treasury.govt.nz/sites/default/files/2024-06/b24-revenue-data.xlsx"
+)
 TRANSFORMATION = "budget-2025-health-revenue/v1"
 TRANSFORMATION_2026 = "budget-2026-health-revenue/v1"
 FIELDS = {
@@ -73,6 +102,105 @@ DEFINITIONS = {
         "App ID: Number used to uniquely identify each Crown revenue "
         "or capital receipt line."
     ),
+}
+DEFINITIONS_2020 = {
+    "B4": (
+        "The Revenue workbook contains details of  actual government Crown "
+        "revenue and capital receipts for the years ended 30 June 2016, 2017, "
+        "2018 and 2019; estimated actual government Crown revenue and capital "
+        "receipts for the year ending 30 June 2020 and budgeted government "
+        "Crown revenue and capital receipts for the year ending 30 June 2021 as "
+        "published in Budget 2020."
+    ),
+    "B36": DEFINITIONS["B37"],
+    "B37": DEFINITIONS["B38"],
+    "B38": DEFINITIONS["B39"],
+    "B42": DEFINITIONS["B43"],
+}
+PERIOD_TYPES_2020 = {
+    2016: "Actuals",
+    2017: "Actuals",
+    2018: "Actuals",
+    2019: "Actuals",
+    2020: "Estimated Actual",
+    2021: "Main Estimates",
+}
+DEFINITIONS_2021 = {
+    "B4": (
+        "The Revenue workbook contains details of  actual government Crown "
+        "revenue and capital receipts for the years ended 30 June 2017, 2018, "
+        "2019 and 2020; estimated actual government Crown revenue and capital "
+        "receipts for the year ending 30 June 2021 and budgeted government "
+        "Crown revenue and capital receipts for the year ending 30 June 2022 as "
+        "published in Budget 2021."
+    ),
+    "B35": DEFINITIONS["B37"],
+    "B36": DEFINITIONS["B38"],
+    "B37": DEFINITIONS["B39"],
+    "B41": DEFINITIONS["B43"],
+}
+PERIOD_TYPES_2021 = {
+    2017: "Actuals",
+    2018: "Actuals",
+    2019: "Actuals",
+    2020: "Actuals",
+    2021: "Estimated Actual",
+    2022: "Main Estimates",
+}
+DEFINITIONS_2022 = {
+    **DEFINITIONS,
+    "B3": (
+        "The Revenue workbook contains details of  actual government Crown "
+        "revenue and capital receipts for the years ended 30 June 2018, 2019, "
+        "2020 and 2021; estimated actual government Crown revenue and capital "
+        "receipts for the year ending 30 June 2022 and budgeted government "
+        "Crown revenue and capital receipts for the year ending 30 June 2023 as"
+        " published in Budget 2022."
+    ),
+}
+PERIOD_TYPES_2022 = {
+    2018: "Actuals",
+    2019: "Actuals",
+    2020: "Actuals",
+    2021: "Actuals",
+    2022: "Estimated Actual",
+    2023: "Main Estimates",
+}
+DEFINITIONS_2023 = {
+    **DEFINITIONS,
+    "B3": (
+        "The Revenue workbook contains details of  actual government Crown revenue "
+        "and capital receipts for the years ended 30 June 2019, 2020, 2021 and 2022; "
+        "estimated actual government Crown revenue and capital receipts for the year "
+        "ending 30 June 2023 and budgeted government Crown revenue and capital "
+        "receipts for the year ending 30 June 2024 as published in Budget 2023."
+    ),
+}
+PERIOD_TYPES_2023 = {
+    2019: "Actuals",
+    2020: "Actuals",
+    2021: "Actuals",
+    2022: "Actuals",
+    2023: "Estimated Actual",
+    2024: "Main Estimates",
+}
+DEFINITIONS_2024 = {
+    **DEFINITIONS,
+    "B3": (
+        "The Revenue workbook contains details of  actual government Crown revenue "
+        "and capital receipts for the years ended 30 June 2020, 2021, 2022 and 2023; "
+        "estimated actual government Crown revenue and capital receipts for the year "
+        "ending 30 June 2024 and budgeted government Crown revenue and capital "
+        "receipts for the year ending 30 June 2025 as published in Budget 2024."
+    ),
+}
+PERIOD_TYPES_2024 = {
+    2020: "Actuals",
+    2021: "Actuals",
+    2022: "Actuals",
+    2023: "Actuals",
+    2024: "Estimated Actual",
+    2025: "Main Estimates",
 }
 PERIOD_TYPES = {
     2021: "Actuals",
@@ -168,6 +296,21 @@ def _require(condition: object) -> None:
         raise ValueError(message)
 
 
+def _source_binding(vintage: str, locator: str, digest: str) -> bool:
+    """Bind historical profiles to their reviewed original observations."""
+    if vintage == "Budget-2020":
+        return digest == SOURCE_SHA256_2020 and locator == SOURCE_LOCATOR_2020
+    if vintage == "Budget-2021":
+        return digest == SOURCE_SHA256_2021 and locator == SOURCE_LOCATOR_2021
+    if vintage == "Budget-2022":
+        return digest == SOURCE_SHA256_2022 and locator == SOURCE_LOCATOR_2022
+    if vintage == "Budget-2023":
+        return digest == SOURCE_SHA256_2023 and locator == SOURCE_LOCATOR_2023
+    return vintage != "Budget-2024" or (
+        digest == SOURCE_SHA256_2024 and locator == SOURCE_LOCATOR_2024
+    )
+
+
 def _metadata(
     book: Workbook, digest: str, definitions: dict[str, str]
 ) -> dict[str, object]:
@@ -256,7 +399,14 @@ def _extract(  # noqa: PLR0913 - edition-specific source contracts are explicit.
     period_types: dict[int, str],
     definitions: dict[str, str],
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
-    _require(sheet.max_row <= MAX_ROWS + 1 and sheet.max_column == len(FIELDS))
+    max_rows = {
+        TRANSFORMATION_2020: MAX_ROWS_2020,
+        TRANSFORMATION_2021: MAX_ROWS_2021,
+        TRANSFORMATION_2022: MAX_ROWS_2022,
+        TRANSFORMATION_2023: MAX_ROWS_2023,
+        TRANSFORMATION_2024: MAX_ROWS_2024,
+    }.get(transformation, MAX_ROWS)
+    _require(sheet.max_row <= max_rows + 1 and sheet.max_column == len(FIELDS))
     _require(tuple(c.value for c in next(sheet.iter_rows(max_row=1))) == tuple(FIELDS))
     facts, lineage, dispositions = [], [], []
     for number, cells in enumerate(sheet.iter_rows(min_row=2), 2):
@@ -310,15 +460,19 @@ def _extract(  # noqa: PLR0913 - edition-specific source contracts are explicit.
             )
             for field, cell in zip(FIELDS.values(), cells, strict=True)
         ]
+        intro, unit, year, amount_type, app_id = {
+            TRANSFORMATION_2020: ("B4", "B36", "B37", "B38", "B42"),
+            TRANSFORMATION_2021: ("B4", "B35", "B36", "B37", "B41"),
+        }.get(transformation, ("B3", "B37", "B38", "B39", "B43"))
         links += [
-            ("source_vintage", "'Explanation'!B3", definitions["B3"]),
-            ("amount_type", "'Explanation'!B3", definitions["B3"]),
+            ("source_vintage", f"'Explanation'!{intro}", definitions[intro]),
+            ("amount_type", f"'Explanation'!{intro}", definitions[intro]),
             ("unit", "'Raw Data'!F1", "Amount $000"),
-            ("unit", "'Explanation'!B37", definitions["B37"]),
+            ("unit", f"'Explanation'!{unit}", definitions[unit]),
             ("valid_time_end", f"'Raw Data'!G{number}", str(raw["Year"])),
-            ("valid_time_end", "'Explanation'!B38", definitions["B38"]),
-            ("amount_type", "'Explanation'!B39", definitions["B39"]),
-            ("app_id", "'Explanation'!B43", definitions["B43"]),
+            ("valid_time_end", f"'Explanation'!{year}", definitions[year]),
+            ("amount_type", f"'Explanation'!{amount_type}", definitions[amount_type]),
+            ("app_id", f"'Explanation'!{app_id}", definitions[app_id]),
         ]
         for field, coordinate, value in links:
             lineage.append(
@@ -347,7 +501,7 @@ def normalize_budget_revenue(  # noqa: PLR0913 - source observation fields are e
     source_vintage: str = "Budget-2025",
     dry_run: bool = False,
 ) -> dict[str, Any]:
-    """Extract a reviewed Budget-2025 or Budget-2026 profile.
+    """Extract a reviewed Budget-2020 through Budget-2026 profile.
 
     Amounts come from literal OOXML numeric tokens, never formula caches or
     binary-float rendering. Notice text is only fingerprinted, not interpreted.
@@ -360,10 +514,16 @@ def normalize_budget_revenue(  # noqa: PLR0913 - source observation fields are e
         and (not dry_run or not output_dir.exists())
     )
     profiles = {
+        "Budget-2020": (TRANSFORMATION_2020, PERIOD_TYPES_2020, DEFINITIONS_2020),
+        "Budget-2021": (TRANSFORMATION_2021, PERIOD_TYPES_2021, DEFINITIONS_2021),
+        "Budget-2022": (TRANSFORMATION_2022, PERIOD_TYPES_2022, DEFINITIONS_2022),
+        "Budget-2023": (TRANSFORMATION_2023, PERIOD_TYPES_2023, DEFINITIONS_2023),
+        "Budget-2024": (TRANSFORMATION_2024, PERIOD_TYPES_2024, DEFINITIONS_2024),
         "Budget-2025": (TRANSFORMATION, PERIOD_TYPES, DEFINITIONS),
         "Budget-2026": (TRANSFORMATION_2026, PERIOD_TYPES_2026, DEFINITIONS_2026),
     }
     _require(source_vintage in profiles)
+    _require(_source_binding(source_vintage, source_locator, expected_sha256))
     transformation, period_types, definitions = profiles[source_vintage]
     context = source_context(
         expected_sha256, source_locator, source_vintage, observed_at
@@ -386,19 +546,19 @@ def normalize_budget_revenue(  # noqa: PLR0913 - source observation fields are e
         "source_vintage": source_vintage,
         "observed_at": observed_at,
     }
-    selection = select_bronze_adapter(
-        payload,
-        source_sha256=expected_sha256,
-        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-        registrations=(
-            budget_expenditure_registration(**adapter_context),
-            budget_revenue_registration(**adapter_context),
-        ),
-    )
-    inventory = inventory_workbook(BytesIO(payload))
-    tokens = _number_tokens(payload)
-    book = load_workbook(BytesIO(payload), data_only=False, keep_links=False)
-    try:
+    with inspected_workbook(payload) as inspection:
+        selection = select_bronze_adapter(
+            payload,
+            source_sha256=expected_sha256,
+            media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            registrations=(
+                budget_expenditure_registration(**adapter_context),
+                budget_revenue_registration(**adapter_context),
+            ),
+        )
+        inventory = inspection.inventory
+        tokens = _number_tokens(payload)
+        book = inspection.workbook
         notice = _metadata(book, expected_sha256, definitions)
         with localcontext(Context(prec=50)):
             facts, lineage, dispositions = _extract(
@@ -422,8 +582,6 @@ def normalize_budget_revenue(  # noqa: PLR0913 - source observation fields are e
             for name in book.sheetnames
             if name != "Raw Data"
         ]
-    finally:
-        book.close()
     counts = {
         state: sum(r["disposition"] == state for r in dispositions)
         for state in ("normalized", "out_of_scope", "blank", "rejected")

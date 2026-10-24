@@ -1,0 +1,305 @@
+{
+  "actual_cli_mcp_preflights_each_twice": true,
+  "all20_prior_2018_2019_hashes_equal": true,
+  "all20_source_operation_hashes_repeat": true,
+  "head": "bdf877ab97e15816ee4fdd80aba04e83976036ee",
+  "interface_cap_seconds": 30,
+  "native_all4_tables_and_metadata_equal": true,
+  "observation_scope": "caller_supplied_local_inspection_not_retrieval_attestation",
+  "observation_time_token": "2026-10-20T16:57:19.820018+00:00",
+  "postflight": {
+    "exit": 0,
+    "group_absent": true,
+    "head": "bdf877ab97e15816ee4fdd80aba04e83976036ee",
+    "independent_lease_free": true,
+    "owner_absent": true,
+    "pins_unchanged": 4871,
+    "status": "verified",
+    "tree": "bef1ca8b6bcbb015343ad7189845cde24bc4d807"
+  },
+  "publication": "not_performed",
+  "repeats": 2,
+  "rights": "not_evaluated",
+  "runs": {
+    "baseline": [
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2019,
+        "files": {
+          "MANIFEST.json": "5192d42399c9985e444029a7fe684be83b3205dd2e0f451745f01a9f2f8f6e7b",
+          "budget_facts.parquet": "64c1a508a0e9a0395c1e8a606a7cf7f9873041f72690856d181cf97cb8844a0a",
+          "field_lineage.parquet": "eba2d1f7e5ea3c1e7bacad2cf61e6a0c72a5a8fea55c9035eec86809f79b8bcf",
+          "numeric_evidence.parquet": "085f676532b3ebcd5a74951b3e9093c5d17bc8d1466974e2fb5c92bfd8f8224e",
+          "row_dispositions.parquet": "9a569ac9d4251346760d9bf01785b0b954cca47cb9e39b294e61264e266aa93b"
+        },
+        "kind": "expenditure",
+        "seconds": 2.4174728749785572
+      },
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2019,
+        "files": {
+          "MANIFEST.json": "ab99f3ff63b4afe62c98ecba07f5620425b76d17446f7d332e452dbfe6881029",
+          "budget_facts.parquet": "fdf94a6aab4217a1f67c9833c645ae1578cdac58a171dba8a6b66de19644c144",
+          "field_lineage.parquet": "4381aac69ac70719684ed0a31aad77b70533681babb4a0c7540ebd5375a2ea22",
+          "numeric_evidence.parquet": "488369d4943f5311e7b544b167f3ec4b19b386c00d021d2658b7e05a81b8f84f",
+          "row_dispositions.parquet": "ee5af6729400f2c746e054a82048e172ab259dd82b2b22c7b9d5fa77027fc072"
+        },
+        "kind": "revenue",
+        "seconds": 0.25918016594368964
+      }
+    ],
+    "baseline2018": [
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2018,
+        "files": {
+          "MANIFEST.json": "a99ae2d54df0409a8999d97fcaeb2890ca2b38f71d7b758e55901d1f79b39fda",
+          "budget_facts.parquet": "225f8db0278f9882e507e8ec1d1217b52c460be606154a6e449ffc3cebd6ac4c",
+          "field_lineage.parquet": "4c82e174831153219841fd37fdb3bc67af5fe7d49b0156800bdd359861115974",
+          "numeric_evidence.parquet": "724acd2b85ed6903ef3469da6fe173ea213d94b847f2edfe7b88d9d6cd9bf38c",
+          "row_dispositions.parquet": "0d8bd2230b8625e4e6cbe97ade3d86b3398d76b605dbeeb1a87442974da85f04"
+        },
+        "kind": "expenditure",
+        "seconds": 1.76989870890975
+      },
+      {
+        "all5_prior_hashes_equal": true,
+        "edition": 2018,
+        "files": {
+          "MANIFEST.json": "6db669f9dcb79588731b2cd05673e3e8c322469355010b4a7648f8ed8d6afdbf",
+          "budget_facts.parquet": "468755a70a9b566d8167513a9fc77f04d5d8ba994951c4ffd800c3a9e610481b",
+          "field_lineage.parquet": "8501c9ec846c53b4d15887b621923ed2ed2476189595a6b2f5e3bef0ff3463f2",
+          "numeric_evidence.parquet": "6fadd9968aa7a63e36b24962919337bfd109a542ae2d19a64b7bba25b03f1d3b",
+          "row_dispositions.parquet": "4e1f62c170e4b5f8cd0dc7a57365036edbc7dff50fe5b5db4bac7dc6ad0ebb88"
+        },
+        "kind": "revenue",
+        "seconds": 0.2065797500545159
+      }
+    ],
+    "first": [
+      {
+        "cli_mcp_preflights": [
+          {
+            "attempt": 1,
+            "cli_seconds": 4.95343800005503,
+            "cli_status": "preflight_passed",
+            "mcp_seconds": 4.585904791019857,
+            "mcp_status": "preflight_passed",
+            "no_output_created": true
+          },
+          {
+            "attempt": 2,
+            "cli_seconds": 4.465717833023518,
+            "cli_status": "preflight_passed",
+            "mcp_seconds": 4.858696958981454,
+            "mcp_status": "preflight_passed",
+            "no_output_created": true
+          }
+        ],
+        "counts": {
+          "blank": 0,
+          "input": 6079,
+          "normalized": 316,
+          "out_of_scope": 5763,
+          "rejected": 0
+        },
+        "files": {
+          "MANIFEST.json": "52fbcd592ebb3a66a18aa125534e4ea3a96ae50d40acbef212e6ee083ee2d687",
+          "budget_facts.parquet": "551d506f5e419b919fb5d18e6c5b804ab62b4722717ecc766e09d4d03366281a",
+          "field_lineage.parquet": "9adf4580ed3f9f6a8c4827c931f1d896aa7ef67ff2bf7567f9f147625542cf58",
+          "numeric_evidence.parquet": "e1d739abd1264236733bade0db7ffa4073e549fd5ae5d4ef2ae57f680d66b838",
+          "row_dispositions.parquet": "d02fde77ce5f0c962259ee693da0db74ccd041d6648f73c75a59fd3ef0077401"
+        },
+        "kind": "expenditure",
+        "native_and_metadata_parity": true,
+        "native_tables": {
+          "budget_facts.parquet": 316,
+          "field_lineage.parquet": 8532,
+          "numeric_evidence.parquet": 1580,
+          "row_dispositions.parquet": 6079
+        },
+        "operation_files": {
+          "MANIFEST.json": "52fbcd592ebb3a66a18aa125534e4ea3a96ae50d40acbef212e6ee083ee2d687",
+          "budget_facts.parquet": "551d506f5e419b919fb5d18e6c5b804ab62b4722717ecc766e09d4d03366281a",
+          "field_lineage.parquet": "9adf4580ed3f9f6a8c4827c931f1d896aa7ef67ff2bf7567f9f147625542cf58",
+          "numeric_evidence.parquet": "e1d739abd1264236733bade0db7ffa4073e549fd5ae5d4ef2ae57f680d66b838",
+          "row_dispositions.parquet": "d02fde77ce5f0c962259ee693da0db74ccd041d6648f73c75a59fd3ef0077401"
+        },
+        "profile": "budget-expenditure-2017-biff8/v1",
+        "publication": "not_performed",
+        "rights": "not_evaluated",
+        "seconds": 24.667905332986265,
+        "source_sha256": "7e0cc535eb9feb7e82b1a998dd40b7b318e5593e13589aa48ef4a3b5508708fc"
+      },
+      {
+        "cli_mcp_preflights": [
+          {
+            "attempt": 1,
+            "cli_seconds": 3.270810874993913,
+            "cli_status": "preflight_passed",
+            "mcp_seconds": 2.712614541989751,
+            "mcp_status": "preflight_passed",
+            "no_output_created": true
+          },
+          {
+            "attempt": 2,
+            "cli_seconds": 3.6509263329207897,
+            "cli_status": "preflight_passed",
+            "mcp_seconds": 3.723676500027068,
+            "mcp_status": "preflight_passed",
+            "no_output_created": true
+          }
+        ],
+        "counts": {
+          "blank": 0,
+          "input": 1026,
+          "normalized": 64,
+          "out_of_scope": 962,
+          "rejected": 0
+        },
+        "files": {
+          "MANIFEST.json": "98c00d9c8140b3a0cd3491cf825c7b5940becd73a403abc6f0728336c17e1206",
+          "budget_facts.parquet": "f149b668710f6f83b744e29b816889ca5ab304f400c7497a3745f2c806c4e70a",
+          "field_lineage.parquet": "bba8fa74e207ed9354cbc1d07baa526df65d3bb7a445f488ea132a3c8897823b",
+          "numeric_evidence.parquet": "c922999a1162c8718643626225e03c54bf9300bff11a7ba0b18d3d21043db598",
+          "row_dispositions.parquet": "5d5d2a06c4874aa0292dff7fd710071057f427e4ca0682b91a74a0f784af5754"
+        },
+        "kind": "revenue",
+        "native_and_metadata_parity": true,
+        "native_tables": {
+          "budget_facts.parquet": 64,
+          "field_lineage.parquet": 896,
+          "numeric_evidence.parquet": 192,
+          "row_dispositions.parquet": 1026
+        },
+        "operation_files": {
+          "MANIFEST.json": "98c00d9c8140b3a0cd3491cf825c7b5940becd73a403abc6f0728336c17e1206",
+          "budget_facts.parquet": "f149b668710f6f83b744e29b816889ca5ab304f400c7497a3745f2c806c4e70a",
+          "field_lineage.parquet": "bba8fa74e207ed9354cbc1d07baa526df65d3bb7a445f488ea132a3c8897823b",
+          "numeric_evidence.parquet": "c922999a1162c8718643626225e03c54bf9300bff11a7ba0b18d3d21043db598",
+          "row_dispositions.parquet": "5d5d2a06c4874aa0292dff7fd710071057f427e4ca0682b91a74a0f784af5754"
+        },
+        "profile": "budget-revenue-2017-biff8/v1",
+        "publication": "not_performed",
+        "rights": "not_evaluated",
+        "seconds": 13.924040124984458,
+        "source_sha256": "e49a706c4a5ac889e8b9e68165dbfd704a9f05b0300bef7f69abf5f5620b7adf"
+      }
+    ],
+    "second": [
+      {
+        "cli_mcp_preflights": [
+          {
+            "attempt": 1,
+            "cli_seconds": 5.468384875101037,
+            "cli_status": "preflight_passed",
+            "mcp_seconds": 4.837144333054312,
+            "mcp_status": "preflight_passed",
+            "no_output_created": true
+          },
+          {
+            "attempt": 2,
+            "cli_seconds": 5.306681000045501,
+            "cli_status": "preflight_passed",
+            "mcp_seconds": 4.754245457937941,
+            "mcp_status": "preflight_passed",
+            "no_output_created": true
+          }
+        ],
+        "counts": {
+          "blank": 0,
+          "input": 6079,
+          "normalized": 316,
+          "out_of_scope": 5763,
+          "rejected": 0
+        },
+        "files": {
+          "MANIFEST.json": "52fbcd592ebb3a66a18aa125534e4ea3a96ae50d40acbef212e6ee083ee2d687",
+          "budget_facts.parquet": "551d506f5e419b919fb5d18e6c5b804ab62b4722717ecc766e09d4d03366281a",
+          "field_lineage.parquet": "9adf4580ed3f9f6a8c4827c931f1d896aa7ef67ff2bf7567f9f147625542cf58",
+          "numeric_evidence.parquet": "e1d739abd1264236733bade0db7ffa4073e549fd5ae5d4ef2ae57f680d66b838",
+          "row_dispositions.parquet": "d02fde77ce5f0c962259ee693da0db74ccd041d6648f73c75a59fd3ef0077401"
+        },
+        "kind": "expenditure",
+        "native_and_metadata_parity": true,
+        "native_tables": {
+          "budget_facts.parquet": 316,
+          "field_lineage.parquet": 8532,
+          "numeric_evidence.parquet": 1580,
+          "row_dispositions.parquet": 6079
+        },
+        "operation_files": {
+          "MANIFEST.json": "52fbcd592ebb3a66a18aa125534e4ea3a96ae50d40acbef212e6ee083ee2d687",
+          "budget_facts.parquet": "551d506f5e419b919fb5d18e6c5b804ab62b4722717ecc766e09d4d03366281a",
+          "field_lineage.parquet": "9adf4580ed3f9f6a8c4827c931f1d896aa7ef67ff2bf7567f9f147625542cf58",
+          "numeric_evidence.parquet": "e1d739abd1264236733bade0db7ffa4073e549fd5ae5d4ef2ae57f680d66b838",
+          "row_dispositions.parquet": "d02fde77ce5f0c962259ee693da0db74ccd041d6648f73c75a59fd3ef0077401"
+        },
+        "profile": "budget-expenditure-2017-biff8/v1",
+        "publication": "not_performed",
+        "rights": "not_evaluated",
+        "seconds": 26.79366583400406,
+        "source_sha256": "7e0cc535eb9feb7e82b1a998dd40b7b318e5593e13589aa48ef4a3b5508708fc"
+      },
+      {
+        "cli_mcp_preflights": [
+          {
+            "attempt": 1,
+            "cli_seconds": 3.395474541001022,
+            "cli_status": "preflight_passed",
+            "mcp_seconds": 3.378772291005589,
+            "mcp_status": "preflight_passed",
+            "no_output_created": true
+          },
+          {
+            "attempt": 2,
+            "cli_seconds": 3.2440462090307847,
+            "cli_status": "preflight_passed",
+            "mcp_seconds": 3.283064499963075,
+            "mcp_status": "preflight_passed",
+            "no_output_created": true
+          }
+        ],
+        "counts": {
+          "blank": 0,
+          "input": 1026,
+          "normalized": 64,
+          "out_of_scope": 962,
+          "rejected": 0
+        },
+        "files": {
+          "MANIFEST.json": "98c00d9c8140b3a0cd3491cf825c7b5940becd73a403abc6f0728336c17e1206",
+          "budget_facts.parquet": "f149b668710f6f83b744e29b816889ca5ab304f400c7497a3745f2c806c4e70a",
+          "field_lineage.parquet": "bba8fa74e207ed9354cbc1d07baa526df65d3bb7a445f488ea132a3c8897823b",
+          "numeric_evidence.parquet": "c922999a1162c8718643626225e03c54bf9300bff11a7ba0b18d3d21043db598",
+          "row_dispositions.parquet": "5d5d2a06c4874aa0292dff7fd710071057f427e4ca0682b91a74a0f784af5754"
+        },
+        "kind": "revenue",
+        "native_and_metadata_parity": true,
+        "native_tables": {
+          "budget_facts.parquet": 64,
+          "field_lineage.parquet": 896,
+          "numeric_evidence.parquet": 192,
+          "row_dispositions.parquet": 1026
+        },
+        "operation_files": {
+          "MANIFEST.json": "98c00d9c8140b3a0cd3491cf825c7b5940becd73a403abc6f0728336c17e1206",
+          "budget_facts.parquet": "f149b668710f6f83b744e29b816889ca5ab304f400c7497a3745f2c806c4e70a",
+          "field_lineage.parquet": "bba8fa74e207ed9354cbc1d07baa526df65d3bb7a445f488ea132a3c8897823b",
+          "numeric_evidence.parquet": "c922999a1162c8718643626225e03c54bf9300bff11a7ba0b18d3d21043db598",
+          "row_dispositions.parquet": "5d5d2a06c4874aa0292dff7fd710071057f427e4ca0682b91a74a0f784af5754"
+        },
+        "profile": "budget-revenue-2017-biff8/v1",
+        "publication": "not_performed",
+        "rights": "not_evaluated",
+        "seconds": 13.965016333037056,
+        "source_sha256": "e49a706c4a5ac889e8b9e68165dbfd704a9f05b0300bef7f69abf5f5620b7adf"
+      }
+    ]
+  },
+  "source_cap_seconds": 120,
+  "source_profiles": 2,
+  "stage_cap_seconds": 900,
+  "tree": "bef1ca8b6bcbb015343ad7189845cde24bc4d807"
+}

@@ -1,0 +1,21 @@
+{
+  "actual_full_source_CLI_MCP_timing": "open;CLI30sprobe_timeout_no_output_MCPnot_reached",
+  "as_of_utc_date": "2026-10-18",
+  "assurance_receipt": "context-reader-startup-assurance-20261018.json",
+  "focused_tests": 41,
+  "implementation_checkpoint": "context-reader-startup-implementation-20261018.json",
+  "implementation_checkpoint_sha256": "a2fc6d7e01c0f4063cf68da6877b1f2768c118da247f888dbc9c70cc1ab17c3c",
+  "implementation_producer_head": "5f0a94dfdbb85ca06027c260737fd2f9ba6d02a2",
+  "local_full_pass": false,
+  "native_product_file_matches": {
+    "files_each": 20,
+    "repeats": 2
+  },
+  "native_receipt": "context-reader-startup-native-20261018.json",
+  "record_policy": "Preserve producer qualification/implementation and assurance checkpoints; later delivery/status transitions belong in new receipts or projections.",
+  "schema_version": "archive-govt-nz.health-current-state/v1",
+  "state_type": "versioned_derived_status_projection_not_producer_receipt",
+  "status": "focused_API_products_qualified_original_local_timeout_hosted_and_review_pending_CLI_timing_open",
+  "subject": "Context Gold reader startup",
+  "version": 1
+}

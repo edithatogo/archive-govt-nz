@@ -27,8 +27,44 @@
     },
     "profile": {
       "enum": [
+        "budget-expenditure-2007-biff8/v1",
+        "budget-expenditure-2008-biff8/v1",
+        "budget-expenditure-2009-biff8/v1",
+        "budget-expenditure-2010-biff8/v1",
+        "budget-expenditure-2011-biff8/v1",
+        "budget-expenditure-2012-biff8/v1",
+        "budget-expenditure-2013-biff8/v1",
+        "budget-expenditure-2014-biff8/v1",
+        "budget-expenditure-2015-biff8/v1",
+        "budget-expenditure-2016-biff8/v1",
+        "budget-expenditure-2017-biff8/v1",
+        "budget-expenditure-2018-biff8/v1",
+        "budget-expenditure-2019-biff8/v1",
+        "budget-revenue-2007-biff8/v1",
+        "budget-revenue-2008-biff8/v1",
+        "budget-revenue-2009-biff8/v1",
+        "budget-revenue-2010-biff8/v1",
+        "budget-revenue-2011-biff8/v1",
+        "budget-revenue-2012-biff8/v1",
+        "budget-revenue-2013-biff8/v1",
+        "budget-revenue-2014-biff8/v1",
+        "budget-revenue-2015-biff8/v1",
+        "budget-revenue-2016-biff8/v1",
+        "budget-revenue-2017-biff8/v1",
+        "budget-revenue-2018-biff8/v1",
+        "budget-revenue-2019-biff8/v1",
+        "budget-expenditure-2020/v1",
+        "budget-expenditure-2021/v1",
+        "budget-expenditure-2022/v1",
+        "budget-expenditure-2023/v1",
+        "budget-expenditure-2024/v1",
         "cpiq-se9a/v1",
         "population-annual-mean-context/v1",
+        "budget-revenue-2020/v1",
+        "budget-revenue-2021/v1",
+        "budget-revenue-2022/v1",
+        "budget-revenue-2023/v1",
+        "budget-revenue-2024/v1",
         "budget-revenue-2025/v1",
         "budget-revenue-2026/v1",
         "moh-hair2024-fig27/v1",
@@ -36,11 +72,56 @@
         "qes-june2026-table8/v1",
         "pharmac-cpb-20260807/v1",
         "gdp-expenditure-actual-2026q1/v1",
+        "gdp-expenditure-actual-2026q2/v1",
         "befu-2026/v1",
         "hyefu-2025/v1",
         "vote-health-supplementary-2003-04-summary/v1",
+        "vote-health-supplementary-2013-14-category-totals/v1",
+        "vote-health-supplementary-2012-13-financial-activity/v1",
+        "vote-health-supplementary-2013-14-financial-activity/v1",
+        "vote-health-supplementary-2014-15-category-totals/v1",
+        "vote-health-supplementary-2015-16-category-totals/v1",
+        "vote-health-supplementary-2016-17-category-totals/v1",
+        "vote-health-supplementary-2017-18-category-totals/v1",
+        "vote-health-supplementary-2011-12-category-totals/v1",
+        "vote-health-supplementary-2010-11-category-totals/v1",
+        "vote-health-supplementary-2009-10-category-totals/v1",
+        "vote-health-supplementary-2007-08-category-totals/v1",
+        "vote-health-supplementary-2006-07-overview-totals/v1",
+        "vote-health-supplementary-2005-06-overview-totals/v1",
+        "vote-health-supplementary-2004-05-overview/v1",
+        "vote-health-supplementary-2001-02-overview/v1",
+        "vote-health-supplementary-2000-01-overview/v1",
+        "vote-health-supplementary-1999-00-overview/v1",
+        "vote-health-supplementary-2002-03-overview/v1",
+        "vote-health-supplementary-2008-09-category-totals/v1",
+        "vote-health-supplementary-2018-19-category-totals/v1",
+        "vote-health-supplementary-2019-20-category-totals/v1",
+        "vote-health-supplementary-2020-21-summary-totals/v1",
+        "vote-health-supplementary-2021-22-summary-totals/v1",
+        "vote-health-supplementary-2022-23-summary-totals/v1",
+        "vote-health-supplementary-2023-24-summary-totals/v1",
+        "vote-health-supplementary-2024-25-summary-totals/v1",
+        "vote-health-supplementary-2025-26-summary-totals/v1",
         "vote-health-supplementary-2003-04-detail/v1",
-        "vote-health-supplementary-2003-04-revenue/v1"
+        "vote-health-estimates-2002-03-detail/v1",
+        "vote-health-supplementary-2003-04-revenue/v1",
+        "vote-health-estimates-2002-03-revenue/v1",
+        "vote-health-estimates-2002-03-overview/v1",
+        "vote-health-estimates-2004-05-overview/v1",
+        "vote-health-estimates-2005-06-overview/v1",
+        "vote-health-estimates-2006-07-overview/v1",
+        "vote-health-estimates-2007-08-overview/v1",
+        "vote-health-estimates-2008-09-overview/v1",
+        "vote-health-estimates-2009-10-overview/v1",
+        "vote-health-estimates-2010-11-overview/v1",
+        "vote-health-estimates-2011-12-overview/v1",
+        "vote-health-estimates-2012-13-overview/v1",
+        "vote-health-estimates-2013-14-overview/v1",
+        "vote-health-estimates-2014-15-overview/v1",
+        "vote-health-estimates-2015-16-overview/v1",
+        "vote-health-estimates-2016-17-overview/v1",
+        "vote-health-estimates-2017-18-overview/v1"
       ]
     },
     "source_object_sha256": {
@@ -50,6 +131,42 @@
     },
     "transformation_id": {
       "enum": [
+        "budget-2007-health-expenditure-biff8/v1",
+        "budget-2007-health-revenue-biff8/v1",
+        "budget-2008-health-expenditure-biff8/v1",
+        "budget-2008-health-revenue-biff8/v1",
+        "budget-2009-health-expenditure-biff8/v1",
+        "budget-2009-health-revenue-biff8/v1",
+        "budget-2010-health-expenditure-biff8/v1",
+        "budget-2010-health-revenue-biff8/v1",
+        "budget-2011-health-expenditure-biff8/v1",
+        "budget-2011-health-revenue-biff8/v1",
+        "budget-2012-health-expenditure-biff8/v1",
+        "budget-2012-health-revenue-biff8/v1",
+        "budget-2013-health-expenditure-biff8/v1",
+        "budget-2013-health-revenue-biff8/v1",
+        "budget-2014-health-expenditure-biff8/v1",
+        "budget-2014-health-revenue-biff8/v1",
+        "budget-2015-health-expenditure-biff8/v1",
+        "budget-2015-health-revenue-biff8/v1",
+        "budget-2016-health-expenditure-biff8/v1",
+        "budget-2016-health-revenue-biff8/v1",
+        "budget-2017-health-expenditure-biff8/v1",
+        "budget-2017-health-revenue-biff8/v1",
+        "budget-2018-health-expenditure-biff8/v1",
+        "budget-2018-health-revenue-biff8/v1",
+        "budget-2019-health-expenditure-biff8/v1",
+        "budget-2019-health-revenue-biff8/v1",
+        "budget-2020-health-expenditure/v1",
+        "budget-2020-health-revenue/v1",
+        "budget-2021-health-expenditure/v1",
+        "budget-2021-health-revenue/v1",
+        "budget-2022-health-expenditure/v1",
+        "budget-2022-health-revenue/v1",
+        "budget-2023-health-expenditure/v1",
+        "budget-2023-health-revenue/v1",
+        "budget-2024-health-expenditure/v1",
+        "budget-2024-health-revenue/v1",
         "budget-2025-health-revenue/v1",
         "budget-2026-health-revenue/v1",
         "moh-hair2024-published-indicators/v1",
@@ -57,8 +174,53 @@
         "qes-june2026-table8-ordinary-hourly/v1",
         "stats-nz-cpi-all-groups/v1",
         "stats-nz-gdp-current-price-expenditure-actual-2026q1/v1",
+        "stats-nz-gdp-current-price-expenditure-actual-2026q2/v1",
         "stats-nz-population-annual-mean-context/v1",
         "treasury-health-expense-summary/v1",
+        "vote-health-estimates-detail-2002-03/v1",
+        "vote-health-estimates-overview-2002-03/v1",
+        "vote-health-estimates-overview-2004-05/v1",
+        "vote-health-estimates-overview-2005-06/v1",
+        "vote-health-estimates-overview-2006-07/v1",
+        "vote-health-estimates-overview-2007-08/v1",
+        "vote-health-estimates-overview-2008-09/v1",
+        "vote-health-estimates-overview-2009-10/v1",
+        "vote-health-estimates-overview-2010-11/v1",
+        "vote-health-estimates-overview-2011-12/v1",
+        "vote-health-estimates-overview-2012-13/v1",
+        "vote-health-estimates-overview-2013-14/v1",
+        "vote-health-estimates-overview-2014-15/v1",
+        "vote-health-estimates-overview-2015-16/v1",
+        "vote-health-estimates-overview-2016-17/v1",
+        "vote-health-estimates-overview-2017-18/v1",
+        "vote-health-estimates-revenue-2002-03/v1",
+        "vote-health-supplementary-1999-00-overview/v1",
+        "vote-health-supplementary-2000-01-overview/v1",
+        "vote-health-supplementary-2001-02-overview/v1",
+        "vote-health-supplementary-2002-03-overview/v1",
+        "vote-health-supplementary-2004-05-overview/v1",
+        "vote-health-supplementary-2005-06-overview-totals/v1",
+        "vote-health-supplementary-2006-07-overview-totals/v1",
+        "vote-health-supplementary-2007-08-category-totals/v1",
+        "vote-health-supplementary-2008-09-category-totals/v1",
+        "vote-health-supplementary-2009-10-category-totals/v1",
+        "vote-health-supplementary-2010-11-category-totals/v1",
+        "vote-health-supplementary-2011-12-category-totals/v1",
+        "vote-health-supplementary-2012-13-financial-activity/v1",
+        "vote-health-supplementary-2013-14-category-totals/v1",
+        "vote-health-supplementary-2013-14-financial-activity/v1",
+        "vote-health-supplementary-2014-15-category-totals/v1",
+        "vote-health-supplementary-2015-16-category-totals/v1",
+        "vote-health-supplementary-2016-17-category-totals/v1",
+        "vote-health-supplementary-2017-18-category-totals/v1",
+        "vote-health-supplementary-2018-19-category-totals/v1",
+        "vote-health-supplementary-2019-20-category-totals/v1",
+        "vote-health-supplementary-2020-21-summary-totals/v1",
+        "vote-health-supplementary-2021-22-summary-totals/v1",
+        "vote-health-supplementary-2022-23-summary-totals/v1",
+        "vote-health-supplementary-2023-24-summary-totals/v1",
+        "vote-health-supplementary-2024-25-summary-totals/v1",
+        "vote-health-supplementary-2025-26-summary-totals/v1",
         "vote-health-supplementary-revenue/v1",
         "vote-health-supplementary-summary/v1"
       ]
@@ -110,6 +272,2301 @@
         ]
       },
       "oneOf": [
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2007-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2007-health-expenditure-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2008-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2008-health-expenditure-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2009-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2009-health-expenditure-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2010-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2010-health-expenditure-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2011-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2011-health-expenditure-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2012-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2012-health-expenditure-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2013-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2013-health-expenditure-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2014-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2014-health-expenditure-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2015-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2015-health-expenditure-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2016-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2016-health-expenditure-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2017-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2017-health-expenditure-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2018-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2018-health-expenditure-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2019-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2019-health-expenditure-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2007-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2007-health-revenue-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2008-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2008-health-revenue-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2009-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2009-health-revenue-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2010-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2010-health-revenue-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2011-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2011-health-revenue-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2012-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2012-health-revenue-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2013-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2013-health-revenue-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2014-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2014-health-revenue-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2015-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2015-health-revenue-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2016-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2016-health-revenue-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2017-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2017-health-revenue-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2018-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2018-health-revenue-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2019-biff8/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2019-health-revenue-biff8/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "numeric_evidence.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet",
+                "numeric_evidence.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2020/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2020-health-expenditure/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2021/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2021-health-expenditure/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2022/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2022-health-expenditure/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2023/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2023-health-expenditure/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-expenditure-2024/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2024-health-expenditure/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "budget_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "budget_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet"
+              ]
+            }
+          }
+        },
         {
           "properties": {
             "profile": {
@@ -247,6 +2704,351 @@
               },
               "required": [
                 "population_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2020/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2020-health-revenue/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "revenue_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "revenue_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2021/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2021-health-revenue/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "revenue_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "revenue_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2022/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2022-health-revenue/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "revenue_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "revenue_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2023/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2023-health-revenue/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "revenue_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "revenue_facts.parquet",
+                "field_lineage.parquet",
+                "row_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "budget-revenue-2024/v1"
+            },
+            "transformation_id": {
+              "const": "budget-2024-health-revenue/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "input": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "normalized": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "out_of_scope": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "blank": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "rejected": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "input",
+                "normalized",
+                "out_of_scope",
+                "blank",
+                "rejected"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "revenue_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "row_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "revenue_facts.parquet",
                 "field_lineage.parquet",
                 "row_dispositions.parquet"
               ]
@@ -689,6 +3491,65 @@
         {
           "properties": {
             "profile": {
+              "const": "gdp-expenditure-actual-2026q2/v1"
+            },
+            "transformation_id": {
+              "const": "stats-nz-gdp-current-price-expenditure-actual-2026q2/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "lineage": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "dispositions": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "facts",
+                "lineage",
+                "dispositions"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "gdp_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "cell_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "gdp_facts.parquet",
+                "field_lineage.parquet",
+                "cell_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
               "const": "befu-2026/v1"
             },
             "transformation_id": {
@@ -881,10 +3742,1532 @@
         {
           "properties": {
             "profile": {
+              "const": "vote-health-supplementary-2013-14-category-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2013-14-category-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_category_total_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_category_total_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2012-13-financial-activity/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2012-13-financial-activity/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "lineage": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts",
+                "lineage"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_financial_activity_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_financial_activity_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2013-14-financial-activity/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2013-14-financial-activity/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "lineage": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts",
+                "lineage"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_financial_activity_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_financial_activity_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2014-15-category-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2014-15-category-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_category_total_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_category_total_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2015-16-category-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2015-16-category-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_category_total_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_category_total_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2016-17-category-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2016-17-category-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_category_total_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_category_total_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2017-18-category-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2017-18-category-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_category_total_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_category_total_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2011-12-category-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2011-12-category-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_category_total_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_category_total_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2010-11-category-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2010-11-category-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_category_total_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_category_total_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2009-10-category-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2009-10-category-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_category_total_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_category_total_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2007-08-category-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2007-08-category-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_category_total_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_category_total_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2006-07-overview-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2006-07-overview-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_appropriation_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_appropriation_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2005-06-overview-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2005-06-overview-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_appropriation_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_appropriation_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2004-05-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2004-05-overview/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_appropriation_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_appropriation_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2001-02-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2001-02-overview/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_appropriation_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_appropriation_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2000-01-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2000-01-overview/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_appropriation_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_appropriation_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-1999-00-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-1999-00-overview/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_appropriation_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_appropriation_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2002-03-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2002-03-overview/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_appropriation_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_appropriation_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2008-09-category-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2008-09-category-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_category_total_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_category_total_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2018-19-category-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2018-19-category-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_category_total_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_category_total_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2019-20-category-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2019-20-category-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_category_total_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_category_total_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2020-21-summary-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2020-21-summary-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_supplementary_summary_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_supplementary_summary_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2021-22-summary-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2021-22-summary-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_supplementary_summary_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_supplementary_summary_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2022-23-summary-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2022-23-summary-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_supplementary_summary_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_supplementary_summary_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2023-24-summary-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2023-24-summary-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_supplementary_summary_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_supplementary_summary_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2024-25-summary-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2024-25-summary-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_supplementary_summary_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_supplementary_summary_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-supplementary-2025-26-summary-totals/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-supplementary-2025-26-summary-totals/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_supplementary_summary_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_supplementary_summary_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
               "const": "vote-health-supplementary-2003-04-detail/v1"
             },
             "transformation_id": {
               "const": "vote-health-supplementary-summary/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_detail_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_detail_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2002-03-detail/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-detail-2002-03/v1"
             },
             "counts": {
               "type": "object",
@@ -980,6 +5363,870 @@
               },
               "required": [
                 "vote_health_revenue_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2002-03-revenue/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-revenue-2002-03/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_estimates_revenue_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_estimates_revenue_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2002-03-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2002-03/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2004-05-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2004-05/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2005-06-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2005-06/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2006-07-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2006-07/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2007-08-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2007-08/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2008-09-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2008-09/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2009-10-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2009-10/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2010-11-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2010-11/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2011-12-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2011-12/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2012-13-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2012-13/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2013-14-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2013-14/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2014-15-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2014-15/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2015-16-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2015-16/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2016-17-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2016-17/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2017-18-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2017-18/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
                 "field_lineage.parquet",
                 "page_dispositions.parquet"
               ]

@@ -11,16 +11,53 @@ from urllib.parse import urlsplit
 from jsonschema import Draft202012Validator
 
 from archive_govt_nz.domains.health_appropriations import (
+    budget_biff8_adapter,
+    budget_expenditure_2020,
+    budget_expenditure_2021,
+    budget_expenditure_2022,
+    budget_expenditure_2023,
+    budget_expenditure_2024,
     budget_revenue,
+    context_operations,
     cpi,
     forecast,
+    forecast_operations,
     gdp,
     moh_indicators,
+    overview_operations,
     pharmac,
     population_annual_silver,
     qes,
     vote_health,
+    vote_health_estimates_summary,
     vote_health_revenue,
+    vote_health_supplementary_1999_00,
+    vote_health_supplementary_2000_01,
+    vote_health_supplementary_2001_02,
+    vote_health_supplementary_2002_03,
+    vote_health_supplementary_2004_05,
+    vote_health_supplementary_2005_06,
+    vote_health_supplementary_2006_07,
+    vote_health_supplementary_2007_08,
+    vote_health_supplementary_2008_09,
+    vote_health_supplementary_2009_10,
+    vote_health_supplementary_2010_11,
+    vote_health_supplementary_2011_12,
+    vote_health_supplementary_2012_13,
+    vote_health_supplementary_2013_14,
+    vote_health_supplementary_2013_14_financial_activity,
+    vote_health_supplementary_2014_15,
+    vote_health_supplementary_2015_16,
+    vote_health_supplementary_2016_17,
+    vote_health_supplementary_2017_18,
+    vote_health_supplementary_2018_19,
+    vote_health_supplementary_2019_20,
+    vote_health_supplementary_2020_21,
+    vote_health_supplementary_2021_22,
+    vote_health_supplementary_2022_23,
+    vote_health_supplementary_2023_24,
+    vote_health_supplementary_2024_25,
+    vote_health_supplementary_2025_26,
 )
 from archive_govt_nz.domains.health_appropriations.workbook_common import source_context
 
@@ -28,6 +65,45 @@ MAX_CONTEXT = 2048
 _INVALID_SOURCE_OPERATION = "invalid_source_operation"
 PROFILES = MappingProxyType(
     {
+        **{
+            name: (
+                budget_biff8_adapter.get_profile(name).transformation,
+                ("input", "normalized", "out_of_scope", "blank", "rejected"),
+                "budget_facts.parquet",
+                "row_dispositions.parquet",
+            )
+            for name in sorted(budget_biff8_adapter.PROFILE_IDS)
+        },
+        budget_expenditure_2020.PROFILE: (
+            budget_expenditure_2020.TRANSFORMATION,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "budget_facts.parquet",
+            "row_dispositions.parquet",
+        ),
+        budget_expenditure_2021.PROFILE: (
+            budget_expenditure_2021.TRANSFORMATION,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "budget_facts.parquet",
+            "row_dispositions.parquet",
+        ),
+        budget_expenditure_2022.PROFILE: (
+            budget_expenditure_2022.TRANSFORMATION,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "budget_facts.parquet",
+            "row_dispositions.parquet",
+        ),
+        budget_expenditure_2023.PROFILE: (
+            budget_expenditure_2023.TRANSFORMATION,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "budget_facts.parquet",
+            "row_dispositions.parquet",
+        ),
+        budget_expenditure_2024.PROFILE: (
+            budget_expenditure_2024.TRANSFORMATION,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "budget_facts.parquet",
+            "row_dispositions.parquet",
+        ),
         "cpiq-se9a/v1": (
             cpi.TRANSFORMATION,
             ("input", "selected", "numeric", "missing", "unselected"),
@@ -38,6 +114,36 @@ PROFILES = MappingProxyType(
             population_annual_silver.TRANSFORMATION,
             ("input", "facts", "numeric", "missing", "provisional", "lineage"),
             "population_facts.parquet",
+            "row_dispositions.parquet",
+        ),
+        "budget-revenue-2020/v1": (
+            budget_revenue.TRANSFORMATION_2020,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "revenue_facts.parquet",
+            "row_dispositions.parquet",
+        ),
+        "budget-revenue-2021/v1": (
+            budget_revenue.TRANSFORMATION_2021,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "revenue_facts.parquet",
+            "row_dispositions.parquet",
+        ),
+        "budget-revenue-2022/v1": (
+            budget_revenue.TRANSFORMATION_2022,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "revenue_facts.parquet",
+            "row_dispositions.parquet",
+        ),
+        "budget-revenue-2023/v1": (
+            budget_revenue.TRANSFORMATION_2023,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "revenue_facts.parquet",
+            "row_dispositions.parquet",
+        ),
+        "budget-revenue-2024/v1": (
+            budget_revenue.TRANSFORMATION_2024,
+            ("input", "normalized", "out_of_scope", "blank", "rejected"),
+            "revenue_facts.parquet",
             "row_dispositions.parquet",
         ),
         "budget-revenue-2025/v1": (
@@ -82,6 +188,12 @@ PROFILES = MappingProxyType(
             "gdp_facts.parquet",
             "cell_dispositions.parquet",
         ),
+        "gdp-expenditure-actual-2026q2/v1": (
+            gdp.JUNE_TRANSFORMATION,
+            ("facts", "lineage", "dispositions"),
+            "gdp_facts.parquet",
+            "cell_dispositions.parquet",
+        ),
         "befu-2026/v1": (
             forecast.TRANSFORMATION,
             (
@@ -112,8 +224,176 @@ PROFILES = MappingProxyType(
             "vote_health_summary_facts.parquet",
             "page_dispositions.parquet",
         ),
+        vote_health_supplementary_2013_14.PROFILE: (
+            vote_health_supplementary_2013_14.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_category_total_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2012_13.PROFILE: (
+            vote_health_supplementary_2012_13.TRANSFORMATION,
+            ("pages", "facts", "lineage"),
+            "vote_health_financial_activity_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2013_14_financial_activity.PROFILE: (
+            vote_health_supplementary_2013_14_financial_activity.TRANSFORMATION,
+            ("pages", "facts", "lineage"),
+            "vote_health_financial_activity_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2014_15.PROFILE: (
+            vote_health_supplementary_2014_15.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_category_total_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2015_16.PROFILE: (
+            vote_health_supplementary_2015_16.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_category_total_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2016_17.PROFILE: (
+            vote_health_supplementary_2016_17.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_category_total_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2017_18.PROFILE: (
+            vote_health_supplementary_2017_18.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_category_total_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2011_12.PROFILE: (
+            vote_health_supplementary_2011_12.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_category_total_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2010_11.PROFILE: (
+            vote_health_supplementary_2010_11.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_category_total_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2009_10.PROFILE: (
+            vote_health_supplementary_2009_10.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_category_total_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2007_08.PROFILE: (
+            vote_health_supplementary_2007_08.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_category_total_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2006_07.PROFILE: (
+            vote_health_supplementary_2006_07.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_appropriation_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2005_06.PROFILE: (
+            vote_health_supplementary_2005_06.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_appropriation_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2004_05.PROFILE: (
+            vote_health_supplementary_2004_05.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_appropriation_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2001_02.PROFILE: (
+            vote_health_supplementary_2001_02.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_appropriation_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2000_01.PROFILE: (
+            vote_health_supplementary_2000_01.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_appropriation_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_1999_00.PROFILE: (
+            vote_health_supplementary_1999_00.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_appropriation_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2002_03.PROFILE: (
+            vote_health_supplementary_2002_03.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_appropriation_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2008_09.PROFILE: (
+            vote_health_supplementary_2008_09.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_category_total_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2018_19.PROFILE: (
+            vote_health_supplementary_2018_19.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_category_total_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2019_20.PROFILE: (
+            vote_health_supplementary_2019_20.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_category_total_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2020_21.PROFILE: (
+            vote_health_supplementary_2020_21.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_supplementary_summary_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2021_22.PROFILE: (
+            vote_health_supplementary_2021_22.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_supplementary_summary_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2022_23.PROFILE: (
+            vote_health_supplementary_2022_23.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_supplementary_summary_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2023_24.PROFILE: (
+            vote_health_supplementary_2023_24.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_supplementary_summary_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2024_25.PROFILE: (
+            vote_health_supplementary_2024_25.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_supplementary_summary_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2025_26.PROFILE: (
+            vote_health_supplementary_2025_26.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_supplementary_summary_facts.parquet",
+            "page_dispositions.parquet",
+        ),
         "vote-health-supplementary-2003-04-detail/v1": (
             vote_health.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_detail_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        "vote-health-estimates-2002-03-detail/v1": (
+            vote_health.DETAIL_2002_03_TRANSFORMATION,
             ("pages", "facts"),
             "vote_health_detail_facts.parquet",
             "page_dispositions.parquet",
@@ -124,12 +404,311 @@ PROFILES = MappingProxyType(
             "vote_health_revenue_facts.parquet",
             "page_dispositions.parquet",
         ),
+        "vote-health-estimates-2002-03-revenue/v1": (
+            vote_health_revenue.ESTIMATES_2002_03_TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_estimates_revenue_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_estimates_summary.PROFILE: (
+            vote_health_estimates_summary.TRANSFORMATION,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_estimates_summary.PROFILE_2004_05: (
+            vote_health_estimates_summary.TRANSFORMATION_2004_05,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_estimates_summary.PROFILE_2005_06: (
+            vote_health_estimates_summary.TRANSFORMATION_2005_06,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_estimates_summary.PROFILE_2006_07: (
+            vote_health_estimates_summary.TRANSFORMATION_2006_07,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_estimates_summary.PROFILE_2007_08: (
+            vote_health_estimates_summary.TRANSFORMATION_2007_08,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_estimates_summary.PROFILE_2008_09: (
+            vote_health_estimates_summary.TRANSFORMATION_2008_09,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_estimates_summary.PROFILE_2009_10: (
+            vote_health_estimates_summary.TRANSFORMATION_2009_10,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_estimates_summary.PROFILE_2010_11: (
+            vote_health_estimates_summary.TRANSFORMATION_2010_11,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_estimates_summary.PROFILE_2011_12: (
+            vote_health_estimates_summary.TRANSFORMATION_2011_12,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_estimates_summary.PROFILE_2012_13: (
+            vote_health_estimates_summary.TRANSFORMATION_2012_13,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_estimates_summary.PROFILE_2013_14: (
+            vote_health_estimates_summary.TRANSFORMATION_2013_14,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_estimates_summary.PROFILE_2014_15: (
+            vote_health_estimates_summary.TRANSFORMATION_2014_15,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_estimates_summary.PROFILE_2015_16: (
+            vote_health_estimates_summary.TRANSFORMATION_2015_16,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_estimates_summary.PROFILE_2016_17: (
+            vote_health_estimates_summary.TRANSFORMATION_2016_17,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_estimates_summary.PROFILE_2017_18: (
+            vote_health_estimates_summary.TRANSFORMATION_2017_18,
+            ("pages", "facts"),
+            "vote_health_overview_facts.parquet",
+            "page_dispositions.parquet",
+        ),
     }
 )
 _REVENUE_VINTAGES = {
+    "budget-revenue-2020/v1": "Budget-2020",
+    "budget-revenue-2021/v1": "Budget-2021",
+    "budget-revenue-2022/v1": "Budget-2022",
+    "budget-revenue-2023/v1": "Budget-2023",
+    "budget-revenue-2024/v1": "Budget-2024",
     "budget-revenue-2025/v1": "Budget-2025",
     "budget-revenue-2026/v1": "Budget-2026",
 }
+_GDP_VINTAGES = {
+    "gdp-expenditure-actual-2026q1/v1": gdp.VINTAGE,
+    "gdp-expenditure-actual-2026q2/v1": gdp.JUNE_VINTAGE,
+}
+_VOTE_HEALTH_DETAIL_PROFILES = {
+    "vote-health-supplementary-2003-04-detail/v1": (
+        vote_health.DETAIL_VINTAGE_2003_04,
+        None,
+    ),
+    "vote-health-estimates-2002-03-detail/v1": (
+        vote_health.DETAIL_VINTAGE_2002_03,
+        vote_health.DETAIL_2002_03_SHA256,
+    ),
+}
+_VOTE_HEALTH_CATEGORY_TOTAL_PROFILES = {
+    vote_health_supplementary_1999_00.PROFILE: (
+        vote_health_supplementary_1999_00.VINTAGE,
+        vote_health_supplementary_1999_00.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2002_03.PROFILE: (
+        vote_health_supplementary_2002_03.VINTAGE,
+        vote_health_supplementary_2002_03.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2000_01.PROFILE: (
+        vote_health_supplementary_2000_01.VINTAGE,
+        vote_health_supplementary_2000_01.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2001_02.PROFILE: (
+        vote_health_supplementary_2001_02.VINTAGE,
+        vote_health_supplementary_2001_02.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2004_05.PROFILE: (
+        vote_health_supplementary_2004_05.VINTAGE,
+        vote_health_supplementary_2004_05.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2005_06.PROFILE: (
+        vote_health_supplementary_2005_06.VINTAGE,
+        vote_health_supplementary_2005_06.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2006_07.PROFILE: (
+        vote_health_supplementary_2006_07.VINTAGE,
+        vote_health_supplementary_2006_07.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2007_08.PROFILE: (
+        vote_health_supplementary_2007_08.VINTAGE,
+        vote_health_supplementary_2007_08.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2008_09.PROFILE: (
+        vote_health_supplementary_2008_09.VINTAGE,
+        vote_health_supplementary_2008_09.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2009_10.PROFILE: (
+        vote_health_supplementary_2009_10.VINTAGE,
+        vote_health_supplementary_2009_10.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2010_11.PROFILE: (
+        vote_health_supplementary_2010_11.VINTAGE,
+        vote_health_supplementary_2010_11.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2013_14.PROFILE: (
+        vote_health_supplementary_2013_14.VINTAGE,
+        vote_health_supplementary_2013_14.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2012_13.PROFILE: (
+        vote_health_supplementary_2012_13.VINTAGE,
+        vote_health_supplementary_2012_13.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2013_14_financial_activity.PROFILE: (
+        vote_health_supplementary_2013_14_financial_activity.VINTAGE,
+        vote_health_supplementary_2013_14_financial_activity.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2014_15.PROFILE: (
+        vote_health_supplementary_2014_15.VINTAGE,
+        vote_health_supplementary_2014_15.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2015_16.PROFILE: (
+        vote_health_supplementary_2015_16.VINTAGE,
+        vote_health_supplementary_2015_16.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2016_17.PROFILE: (
+        vote_health_supplementary_2016_17.VINTAGE,
+        vote_health_supplementary_2016_17.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2017_18.PROFILE: (
+        vote_health_supplementary_2017_18.VINTAGE,
+        vote_health_supplementary_2017_18.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2011_12.PROFILE: (
+        vote_health_supplementary_2011_12.VINTAGE,
+        vote_health_supplementary_2011_12.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2018_19.PROFILE: (
+        vote_health_supplementary_2018_19.VINTAGE,
+        vote_health_supplementary_2018_19.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2019_20.PROFILE: (
+        vote_health_supplementary_2019_20.VINTAGE,
+        vote_health_supplementary_2019_20.SOURCE_SHA256,
+    ),
+}
+_VOTE_HEALTH_SUMMARY_PROFILES = {
+    vote_health_supplementary_2020_21.PROFILE: (
+        vote_health_supplementary_2020_21.VINTAGE,
+        vote_health_supplementary_2020_21.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2021_22.PROFILE: (
+        vote_health_supplementary_2021_22.VINTAGE,
+        vote_health_supplementary_2021_22.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2022_23.PROFILE: (
+        vote_health_supplementary_2022_23.VINTAGE,
+        vote_health_supplementary_2022_23.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2023_24.PROFILE: (
+        vote_health_supplementary_2023_24.VINTAGE,
+        vote_health_supplementary_2023_24.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2024_25.PROFILE: (
+        vote_health_supplementary_2024_25.VINTAGE,
+        vote_health_supplementary_2024_25.SOURCE_SHA256,
+    ),
+    vote_health_supplementary_2025_26.PROFILE: (
+        vote_health_supplementary_2025_26.VINTAGE,
+        vote_health_supplementary_2025_26.SOURCE_SHA256,
+    ),
+}
+_VOTE_HEALTH_REVENUE_PROFILES = {
+    vote_health_revenue.ESTIMATES_2002_03_PROFILE: (
+        vote_health_revenue.ESTIMATES_2002_03_VINTAGE,
+        vote_health_revenue.ESTIMATES_2002_03_SHA256,
+    ),
+}
+_VOTE_HEALTH_OVERVIEW_PROFILES = {
+    vote_health_estimates_summary.PROFILE: (
+        vote_health_estimates_summary.VINTAGE,
+        vote_health_estimates_summary.SOURCE_SHA256,
+    ),
+    vote_health_estimates_summary.PROFILE_2004_05: (
+        vote_health_estimates_summary.VINTAGE_2004_05,
+        vote_health_estimates_summary.SOURCE_SHA256_2004_05,
+    ),
+    vote_health_estimates_summary.PROFILE_2005_06: (
+        vote_health_estimates_summary.VINTAGE_2005_06,
+        vote_health_estimates_summary.SOURCE_SHA256_2005_06,
+    ),
+    vote_health_estimates_summary.PROFILE_2006_07: (
+        vote_health_estimates_summary.VINTAGE_2006_07,
+        vote_health_estimates_summary.SOURCE_SHA256_2006_07,
+    ),
+    vote_health_estimates_summary.PROFILE_2007_08: (
+        vote_health_estimates_summary.VINTAGE_2007_08,
+        vote_health_estimates_summary.SOURCE_SHA256_2007_08,
+    ),
+    vote_health_estimates_summary.PROFILE_2008_09: (
+        vote_health_estimates_summary.VINTAGE_2008_09,
+        vote_health_estimates_summary.SOURCE_SHA256_2008_09,
+    ),
+    vote_health_estimates_summary.PROFILE_2009_10: (
+        vote_health_estimates_summary.VINTAGE_2009_10,
+        vote_health_estimates_summary.SOURCE_SHA256_2009_10,
+    ),
+    vote_health_estimates_summary.PROFILE_2010_11: (
+        vote_health_estimates_summary.VINTAGE_2010_11,
+        vote_health_estimates_summary.SOURCE_SHA256_2010_11,
+    ),
+    vote_health_estimates_summary.PROFILE_2011_12: (
+        vote_health_estimates_summary.VINTAGE_2011_12,
+        vote_health_estimates_summary.SOURCE_SHA256_2011_12,
+    ),
+    vote_health_estimates_summary.PROFILE_2012_13: (
+        vote_health_estimates_summary.VINTAGE_2012_13,
+        vote_health_estimates_summary.SOURCE_SHA256_2012_13,
+    ),
+    vote_health_estimates_summary.PROFILE_2013_14: (
+        vote_health_estimates_summary.VINTAGE_2013_14,
+        vote_health_estimates_summary.SOURCE_SHA256_2013_14,
+    ),
+    vote_health_estimates_summary.PROFILE_2014_15: (
+        vote_health_estimates_summary.VINTAGE_2014_15,
+        vote_health_estimates_summary.SOURCE_SHA256_2014_15,
+    ),
+    vote_health_estimates_summary.PROFILE_2015_16: (
+        vote_health_estimates_summary.VINTAGE_2015_16,
+        vote_health_estimates_summary.SOURCE_SHA256_2015_16,
+    ),
+    vote_health_estimates_summary.PROFILE_2016_17: (
+        vote_health_estimates_summary.VINTAGE_2016_17,
+        vote_health_estimates_summary.SOURCE_SHA256_2016_17,
+    ),
+    vote_health_estimates_summary.PROFILE_2017_18: (
+        vote_health_estimates_summary.VINTAGE_2017_18,
+        vote_health_estimates_summary.SOURCE_SHA256_2017_18,
+    ),
+}
+_DUPLICATE_PROFILE = "duplicate_source_operation_profile"
+if len(PROFILES) != len(set(PROFILES)):
+    raise ValueError(_DUPLICATE_PROFILE)
+
 _COMMON = {
     "schema_version": "archive-govt-nz.health-source-operation/v1",
     "verification_scope": "adapter_execution_only",
@@ -161,6 +740,15 @@ SOURCE_PREFLIGHT_INPUT_SCHEMA = {
         "observed_at",
     ],
 }
+
+
+def _output_names(name: str, values: tuple) -> list[str]:
+    files = [values[2], "field_lineage.parquet", values[3]]
+    if name in budget_biff8_adapter.PROFILE_IDS:
+        files.append("numeric_evidence.parquet")
+    return files
+
+
 SOURCE_OPERATION_SCHEMA: dict[str, Any] = {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "type": "object",
@@ -208,9 +796,9 @@ SOURCE_OPERATION_SCHEMA: dict[str, Any] = {
                             "type": "object",
                             "additionalProperties": False,
                             "properties": dict.fromkeys(
-                                (values[2], "field_lineage.parquet", values[3]), _DIGEST
+                                _output_names(name, values), _DIGEST
                             ),
-                            "required": [values[2], "field_lineage.parquet", values[3]],
+                            "required": _output_names(name, values),
                         },
                     }
                 }
@@ -277,13 +865,55 @@ def _validate(request: SourceRequest, *, dry_run: bool) -> None:
         request.source_vintage,
         request.observed_at,
     )
-    if request.profile in _REVENUE_VINTAGES and (
-        request.source_vintage != _REVENUE_VINTAGES[request.profile]
+    if (
+        request.profile in budget_biff8_adapter.PROFILE_IDS
+        and not budget_biff8_adapter.source_binding(
+            request.profile,
+            request.source_vintage,
+            request.source_locator,
+            request.expected_sha256,
+        )
     ):
         raise ValueError(_INVALID_SOURCE_OPERATION)
+    expenditure_bindings = {
+        budget_expenditure_2020.PROFILE: budget_expenditure_2020.source_binding,
+        budget_expenditure_2021.PROFILE: budget_expenditure_2021.source_binding,
+        budget_expenditure_2022.PROFILE: budget_expenditure_2022.source_binding,
+        budget_expenditure_2023.PROFILE: budget_expenditure_2023.source_binding,
+        budget_expenditure_2024.PROFILE: budget_expenditure_2024.source_binding,
+    }
+    if request.profile in expenditure_bindings and not expenditure_bindings[
+        request.profile
+    ](request.source_vintage, request.source_locator, request.expected_sha256):
+        raise ValueError(_INVALID_SOURCE_OPERATION)
+    if request.profile in _REVENUE_VINTAGES and (
+        request.source_vintage != _REVENUE_VINTAGES[request.profile]
+        or not budget_revenue._source_binding(  # noqa: SLF001 - same edition contract
+            request.source_vintage, request.source_locator, request.expected_sha256
+        )
+    ):
+        raise ValueError(_INVALID_SOURCE_OPERATION)
+    if request.profile in _GDP_VINTAGES and (
+        request.source_vintage != _GDP_VINTAGES[request.profile]
+    ):
+        raise ValueError(_INVALID_SOURCE_OPERATION)
+    pinned_profiles = {
+        **_VOTE_HEALTH_DETAIL_PROFILES,
+        **_VOTE_HEALTH_REVENUE_PROFILES,
+        **_VOTE_HEALTH_CATEGORY_TOTAL_PROFILES,
+        **_VOTE_HEALTH_SUMMARY_PROFILES,
+        **_VOTE_HEALTH_OVERVIEW_PROFILES,
+    }
+    if request.profile in pinned_profiles:
+        expected_vintage, expected_source_sha256 = pinned_profiles[request.profile]
+        if request.source_vintage != expected_vintage or (
+            expected_source_sha256 is not None
+            and request.expected_sha256 != expected_source_sha256
+        ):
+            raise ValueError(_INVALID_SOURCE_OPERATION)
 
 
-def _invoke(  # noqa: C901, PLR0911 - explicit allowlisted profile dispatch
+def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile dispatch
     request: SourceRequest, *, dry_run: bool
 ) -> dict[str, Any]:
     context = {
@@ -292,6 +922,34 @@ def _invoke(  # noqa: C901, PLR0911 - explicit allowlisted profile dispatch
         "source_vintage": request.source_vintage,
         "source_locator": request.source_locator,
     }
+    if request.profile in budget_biff8_adapter.PROFILE_IDS:
+        return budget_biff8_adapter.normalize(
+            request.source,
+            request.output_dir,
+            profile=request.profile,
+            **context,
+            dry_run=dry_run,
+        )
+    if request.profile == budget_expenditure_2020.PROFILE:
+        return budget_expenditure_2020.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == budget_expenditure_2021.PROFILE:
+        return budget_expenditure_2021.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == budget_expenditure_2022.PROFILE:
+        return budget_expenditure_2022.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == budget_expenditure_2023.PROFILE:
+        return budget_expenditure_2023.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == budget_expenditure_2024.PROFILE:
+        return budget_expenditure_2024.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
     if request.profile in _REVENUE_VINTAGES:
         return budget_revenue.normalize_budget_revenue(
             request.source,
@@ -299,28 +957,37 @@ def _invoke(  # noqa: C901, PLR0911 - explicit allowlisted profile dispatch
             **context,
             dry_run=dry_run,
         )
-    if request.profile == "cpiq-se9a/v1":
-        return cpi.normalize_cpi(
+    if request.profile in context_operations.PROFILES:
+        return context_operations.normalize_context(
+            request.source,
+            request.output_dir,
+            profile=request.profile,
+            **context,
+            dry_run=dry_run,
+        )
+    if request.profile == vote_health_revenue.ESTIMATES_2002_03_PROFILE:
+        return vote_health_revenue.normalize_vote_health_estimates_revenue_2002_03(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
-    if request.profile == "population-annual-mean-context/v1":
-        return population_annual_silver.normalize_population_annual(
-            request.source, request.output_dir, **context, dry_run=dry_run
-        )
-    if request.profile == "qes-june2026-table8/v1":
-        return qes.normalize_qes(
-            request.source, request.output_dir, **context, dry_run=dry_run
+    if request.profile in _VOTE_HEALTH_OVERVIEW_PROFILES:
+        if request.profile == vote_health_estimates_summary.PROFILE:
+            summary = vote_health_estimates_summary
+            return summary.normalize_vote_health_estimates_overview_2002_03(
+                request.source, request.output_dir, **context, dry_run=dry_run
+            )
+        return overview_operations.normalize_overview(
+            request.source,
+            request.output_dir,
+            profile=request.profile,
+            **context,
+            dry_run=dry_run,
         )
     if request.profile == "pharmac-cpb-20260807/v1":
         return pharmac.normalize_pharmac_budget(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
-    if request.profile == "gdp-expenditure-actual-2026q1/v1":
-        return gdp.normalize_gdp(
-            request.source, request.output_dir, **context, dry_run=dry_run
-        )
     if request.profile in {"befu-2026/v1", "hyefu-2025/v1"}:
-        return forecast.normalize_forecast_workbook(
+        return forecast_operations.normalize_forecast(
             request.source,
             request.output_dir,
             profile=request.profile,
@@ -331,7 +998,115 @@ def _invoke(  # noqa: C901, PLR0911 - explicit allowlisted profile dispatch
         return vote_health.normalize_vote_health_summary(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
-    if request.profile == "vote-health-supplementary-2003-04-detail/v1":
+    if request.profile == vote_health_supplementary_2013_14.PROFILE:
+        return vote_health_supplementary_2013_14.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2012_13.PROFILE:
+        return vote_health_supplementary_2012_13.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2013_14_financial_activity.PROFILE:
+        return vote_health_supplementary_2013_14_financial_activity.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2014_15.PROFILE:
+        return vote_health_supplementary_2014_15.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2015_16.PROFILE:
+        return vote_health_supplementary_2015_16.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2016_17.PROFILE:
+        return vote_health_supplementary_2016_17.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2017_18.PROFILE:
+        return vote_health_supplementary_2017_18.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2011_12.PROFILE:
+        return vote_health_supplementary_2011_12.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2010_11.PROFILE:
+        return vote_health_supplementary_2010_11.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2009_10.PROFILE:
+        return vote_health_supplementary_2009_10.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2007_08.PROFILE:
+        return vote_health_supplementary_2007_08.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2006_07.PROFILE:
+        return vote_health_supplementary_2006_07.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2005_06.PROFILE:
+        return vote_health_supplementary_2005_06.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2004_05.PROFILE:
+        return vote_health_supplementary_2004_05.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2001_02.PROFILE:
+        return vote_health_supplementary_2001_02.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2000_01.PROFILE:
+        return vote_health_supplementary_2000_01.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_1999_00.PROFILE:
+        return vote_health_supplementary_1999_00.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2002_03.PROFILE:
+        return vote_health_supplementary_2002_03.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2008_09.PROFILE:
+        return vote_health_supplementary_2008_09.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2018_19.PROFILE:
+        return vote_health_supplementary_2018_19.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2019_20.PROFILE:
+        return vote_health_supplementary_2019_20.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2020_21.PROFILE:
+        return vote_health_supplementary_2020_21.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2021_22.PROFILE:
+        return vote_health_supplementary_2021_22.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2022_23.PROFILE:
+        return vote_health_supplementary_2022_23.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2023_24.PROFILE:
+        return vote_health_supplementary_2023_24.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2024_25.PROFILE:
+        return vote_health_supplementary_2024_25.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2025_26.PROFILE:
+        return vote_health_supplementary_2025_26.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile in _VOTE_HEALTH_DETAIL_PROFILES:
         return vote_health.normalize_vote_health_detail(
             request.source, request.output_dir, **context, dry_run=dry_run
         )

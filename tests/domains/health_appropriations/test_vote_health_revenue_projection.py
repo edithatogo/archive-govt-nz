@@ -127,6 +127,11 @@ def test_projects_all_source_columns_without_zeroing_dashes() -> None:
     )
     assert all(row["revenue_type"] == "Crown Revenue and Receipts" for row in rows)
     assert all(row["valid_time_end"] is None for row in rows)
+    assert {row["recordset"] for row in rows} == {"revenue_fact"}
+    assert {row["vote"] for row in rows} == {"Health"}
+    assert {row["source_vintage"] for row in rows} == {VINTAGE}
+    assert all(row["period_token"] == "2003/04" for row in rows)  # noqa: S105
+    assert all(row["unit"] == "$000" and row["currency"] is None for row in rows)
     assert cast("dict[str, Any]", result.receipt["counts"])["revenue_facts"] == 51
     repeat = project_vote_health_revenue(
         manifest=manifest,

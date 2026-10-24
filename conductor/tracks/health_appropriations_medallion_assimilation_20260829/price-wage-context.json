@@ -61,12 +61,12 @@
       "base_period": null,
       "base_value": null,
       "sex": "Both sexes",
-      "adjustment": "not_supplied",
+      "adjustment": "not_seasonally_adjusted",
       "first_period": "2024Q2",
       "last_period": "2026Q2",
       "definition": "Total All Sectors - Total Both Sexes - Ordinary Time Hourly",
       "measure_basis": "ordinary-time earnings divided by paid hours",
-      "adjustment_detail": "Not supplied for Table 8 / QEMQ.SASZ9A; other-table adjustment labels are not transferable."
+      "adjustment_detail": "Stats NZ June 2026 labour-market summary states average ordinary time hourly earnings are not seasonally adjusted; the 2021 QES release maps SASZ9A to that measure. This is source metadata, not analytical approval."
     }
   ]
 }

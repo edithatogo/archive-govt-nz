@@ -1,0 +1,32 @@
+{
+  "schema_version": "archive-govt-nz.vote-health-appropriation-overview-extraction/v1",
+  "status": "passed",
+  "profile": "vote-health-supplementary-2002-03-overview/v1",
+  "source_id": "treasury-vote-health-pdf-9c9b8d9ae4a1b6fd",
+  "source_object_sha256": "e3a08643337f2f8b4864b2191e44dee95444164a5eca1df613aacfd1942e2df8",
+  "source_locator": "https://www.treasury.govt.nz/sites/default/files/2008-03/supp03health.pdf",
+  "source_vintage": "Treasury-Vote-Health-Supplementary-2002-03",
+  "source_page": 2,
+  "counts": {
+    "pages": 1,
+    "facts": 9,
+    "lineage_records": 45,
+    "page_dispositions": 1
+  },
+  "persistent_silver_manifest_sha256": "1fddf962d3b65ba2d0b850c63bcf29a51b71ca217b04b8774f025bff84a390de",
+  "output_sha256": {
+    "field_lineage.parquet": "0de960b2a65d02ff9d9c1f51d57384bb51f973acac0926a326f019b2a5da7a99",
+    "page_dispositions.parquet": "8876b2297de9cd918e2a3192374c6f825dfbce113ce3b353e1efe9717b9697c8",
+    "vote_health_appropriation_overview_facts.parquet": "1817473334a9b32def365b62d3969877ac1af1a17b804cb9f87e4591ba46b59f"
+  },
+  "source_rights_evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+  "source_license": "CC-BY-4.0",
+  "normalized_fact_rights": "not_evaluated",
+  "excluded_content": [
+    "Part B1 detailed appropriation rows on page 3 onward",
+    "other source pages and tables",
+    "cross-edition comparisons"
+  ],
+  "bronze_mutation": false,
+  "publication": "not_performed"
+}

@@ -1,0 +1,47 @@
+{
+  "branch_policy": "normal protected merge; active strict rules unchanged",
+  "checked_and_merge_ancestry_verified": true,
+  "checked_head": "6de7028dc596988cd45a7c0e7a21f6cd09bad6a4",
+  "clean": true,
+  "equal_tree_verified": true,
+  "full2": "all32stages passed on1bbd8577;8012passed12skipped;finaldeltafourConductor files only;originalsecretgatepasses",
+  "hosted_ci": 39081091575,
+  "hosted_log_sha256": "daae6ae56d7ea92645b0656c43b40f01aa20cd4dcfc6ca34961eee2e4a000a40",
+  "hosted_tests": [
+    {
+      "job": "Assurance (windows-latest)",
+      "passed": 7988,
+      "seconds": 469.85,
+      "skipped": 36,
+      "warnings": 18
+    },
+    {
+      "job": "Assurance (macos-latest)",
+      "passed": 7996,
+      "seconds": 559.95,
+      "skipped": 28,
+      "warnings": 18
+    },
+    {
+      "job": "Assurance (ubuntu-latest)",
+      "passed": 7996,
+      "seconds": 413.12,
+      "skipped": 28,
+      "warnings": 18
+    }
+  ],
+  "local_topic_pruned": true,
+  "merge_commit": "02ca851b931b92cfb815ba4861b923423c2147f7",
+  "merged_at": "2026-10-18T00:14:04Z",
+  "native2": "two identical actual-source runs, all16native files perrun matchoriginalpins",
+  "open_codeql_alerts": 0,
+  "pr": "https://github.com/edithatogo/archive-govt-nz/pull/715",
+  "primary_worktree_retained": true,
+  "remote_topic_auto_deleted": true,
+  "remote_tracking_topic_pruned": true,
+  "required_checks": "all seven terminalSUCCESS on exact checked head",
+  "review_threads": "all resolved",
+  "scope": "bounded compound source admission; wider HealthAppropriations track remains open",
+  "tree": "efc3867c32f2ba7f840c83f8fcff915b315c99f3",
+  "unique_commits": 0
+}

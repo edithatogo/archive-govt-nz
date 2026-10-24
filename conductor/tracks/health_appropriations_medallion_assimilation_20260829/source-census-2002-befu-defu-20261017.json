@@ -1,0 +1,225 @@
+{
+  "accounting_boundary": {
+    "effective_date_stated": "2002-07-01",
+    "observation": "Full line-by-line SOE/Crown-entity consolidation and core Crown GST/GSF presentation changes are described; historical accounting bases are not assumed comparable",
+    "reader_pdf_page": 1,
+    "resource_url": "https://www.treasury.govt.nz/sites/default/files/2007-09/defu02-6.pdf"
+  },
+  "annex_label_discrepancy": {
+    "annex_reader_location": {
+      "printed_page": "148",
+      "reader_pdf_page": 48,
+      "resource_url": "https://www.treasury.govt.nz/sites/default/files/2007-09/defu02-6.pdf",
+      "scope": "Annex B observed in GAAP reader result; native original fixity/layout pending"
+    },
+    "layout_status": "publisher_label_web_reader_extent_discrepancy",
+    "native_layout_verified": false,
+    "source_id": "treasury-historical-53645e4a600cdee7"
+  },
+  "native_payload_capture_performed": false,
+  "observed_at": "2026-10-16T18:47:05.891300+00:00",
+  "period_observations": [
+    {
+      "measure_boundary": "Health service purchasing and health-related payments are separately labelled; no equality with core or total Crown expense measures is inferred",
+      "period_tokens": [
+        "1996/97",
+        "1997/98",
+        "1998/99",
+        "1999/2000",
+        "2000/01",
+        "2001/02",
+        "2002/03",
+        "2003/04",
+        "2004/05",
+        "2005/06"
+      ],
+      "reader_pdf_page": 8,
+      "resource_url": "https://www.treasury.govt.nz/sites/default/files/2007-11/add-gaap02.pdf",
+      "status_labels": [
+        "Actual",
+        "Actual",
+        "Actual",
+        "Actual",
+        "Actual",
+        "Forecast",
+        "Forecast",
+        "Forecast",
+        "Forecast",
+        "Forecast"
+      ],
+      "unit_literal": "$ million"
+    },
+    {
+      "measure_boundary": "Core Crown expense table; no ISO currency, native byte identity or approved cross-basis join is inferred",
+      "period_tokens": [
+        "2001/02",
+        "2002/03",
+        "2003/04",
+        "2004/05",
+        "2005/06",
+        "2006/07"
+      ],
+      "printed_page": "148",
+      "reader_pdf_page": 48,
+      "resource_url": "https://www.treasury.govt.nz/sites/default/files/2007-09/defu02-6.pdf",
+      "status_labels": [
+        "Actual",
+        "Forecast",
+        "Forecast",
+        "Forecast",
+        "Forecast",
+        "Forecast"
+      ],
+      "table": "B.1 Core Crown expenses by category",
+      "unit_literal": "$ million"
+    },
+    {
+      "measure_boundary": "Core Crown Health Expenses and GST-inclusive Total Health Servicing Purchasing remain distinct",
+      "period_tokens": [
+        "1997/98",
+        "1998/99",
+        "1999/2000",
+        "2000/01",
+        "2001/02",
+        "2002/03",
+        "2003/04",
+        "2004/05",
+        "2005/06",
+        "2006/07"
+      ],
+      "reader_pdf_page": 7,
+      "resource_url": "https://www.treasury.govt.nz/sites/default/files/2007-11/add-gaap-defu02.pdf",
+      "status_labels": [
+        "Actual",
+        "Actual",
+        "Actual",
+        "Actual",
+        "Actual",
+        "Forecast",
+        "Forecast",
+        "Forecast",
+        "Forecast",
+        "Forecast"
+      ],
+      "unit_literal": "$ million"
+    }
+  ],
+  "publication": "not_performed",
+  "resources": [
+    {
+      "byte_count": null,
+      "disposition": "discovered",
+      "edition_year": 2002,
+      "family": "befu",
+      "issue_date": "2002-05-23",
+      "kind": "additional_gaap_tables",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-2002",
+      "layout_status": "web_reader_metadata_only_native_original_pending",
+      "native_layout_verified": false,
+      "observation_date": "2026-10-17",
+      "observation_date_timezone": "Australia/Brisbane",
+      "release_title": "Budget Economic and Fiscal Update (BEFU) 2002",
+      "rights_evidence": "landing_page_states_cc_by_4_0",
+      "rights_state": "not_evaluated",
+      "sha256": null,
+      "source_id": "treasury-historical-719d601bd070f8d5",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2007-11/add-gaap02.pdf"
+    },
+    {
+      "byte_count": null,
+      "disposition": "discovered",
+      "edition_year": 2002,
+      "family": "defu",
+      "issue_date": "2002-12-19",
+      "kind": "gaap_series_tables",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/december-economic-and-fiscal-update-defu-2002",
+      "layout_status": "web_reader_metadata_only_native_original_pending",
+      "native_layout_verified": false,
+      "observation_date": "2026-10-17",
+      "observation_date_timezone": "Australia/Brisbane",
+      "release_title": "December Economic and Fiscal Update (DEFU) 2002",
+      "rights_evidence": "landing_page_states_cc_by_4_0",
+      "rights_state": "not_evaluated",
+      "sha256": null,
+      "source_id": "treasury-historical-5a46b37897f2666a",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2007-09/defu02-6.pdf"
+    },
+    {
+      "annex_reader_location": {
+        "printed_page": "148",
+        "reader_pdf_page": 48,
+        "resource_url": "https://www.treasury.govt.nz/sites/default/files/2007-09/defu02-6.pdf",
+        "scope": "Annex B observed in GAAP reader result; native original fixity/layout pending"
+      },
+      "byte_count": null,
+      "disposition": "discovered",
+      "edition_year": 2002,
+      "family": "defu",
+      "issue_date": "2002-12-19",
+      "kind": "annex_glossary_link",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/december-economic-and-fiscal-update-defu-2002",
+      "layout_status": "publisher_label_web_reader_extent_discrepancy",
+      "native_layout_verified": false,
+      "observation_date": "2026-10-17",
+      "observation_date_timezone": "Australia/Brisbane",
+      "publisher_title": "Annex A: Tax Revenue Tables, Annex B: Expense Tables, Glossary of Terms - December Economic and Fiscal Update 2002",
+      "release_title": "December Economic and Fiscal Update (DEFU) 2002",
+      "rights_evidence": "landing_page_states_cc_by_4_0",
+      "rights_state": "not_evaluated",
+      "sha256": null,
+      "source_id": "treasury-historical-53645e4a600cdee7",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2007-09/defu02-7.pdf",
+      "web_reader_observation": "Three pages headed Glossary of Terms; first printed page 155. No Annex B table observed in this reader result. Native original verification is pending."
+    },
+    {
+      "byte_count": null,
+      "disposition": "discovered",
+      "edition_year": 2002,
+      "family": "defu",
+      "issue_date": "2002-12-19",
+      "kind": "additional_gaap_tables",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/december-economic-and-fiscal-update-defu-2002",
+      "layout_status": "web_reader_metadata_only_native_original_pending",
+      "native_layout_verified": false,
+      "observation_date": "2026-10-17",
+      "observation_date_timezone": "Australia/Brisbane",
+      "release_title": "December Economic and Fiscal Update (DEFU) 2002",
+      "rights_evidence": "landing_page_states_cc_by_4_0",
+      "rights_state": "not_evaluated",
+      "sha256": null,
+      "source_id": "treasury-historical-6c9da2376bfb4d1f",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2007-11/add-gaap-defu02.pdf"
+    },
+    {
+      "byte_count": null,
+      "disposition": "discovered",
+      "edition_year": 2002,
+      "family": "defu",
+      "issue_date": "2002-12-19",
+      "kind": "economic_forecasts",
+      "landing_url": "https://www.treasury.govt.nz/publications/efu/december-economic-and-fiscal-update-defu-2002",
+      "layout_status": "workbook_native_layout_pending",
+      "native_layout_verified": false,
+      "observation_date": "2026-10-17",
+      "observation_date_timezone": "Australia/Brisbane",
+      "publisher_displayed_format": "XLS",
+      "publisher_displayed_size": "84 KB",
+      "release_title": "December Economic and Fiscal Update (DEFU) 2002",
+      "rights_evidence": "landing_page_states_cc_by_4_0",
+      "rights_state": "not_evaluated",
+      "sha256": null,
+      "source_id": "treasury-historical-002cdc318f3ef03f",
+      "url": "https://www.treasury.govt.nz/sites/default/files/2007-09/extra-econ-forecasts-defu02.xls"
+    }
+  ],
+  "scope": "five_official_2002_resource_discoveries_and_qualified_period_definition_observations",
+  "unqualified": [
+    "resource_specific_redistribution_rights",
+    "actual_payload_fixity_and_Bronze_retention",
+    "native_workbook_and_PDF_layout",
+    "ISO_currency",
+    "cross_release_and_cross_basis_joins",
+    "whole_2002_edition_census"
+  ],
+  "whole_history_complete": false
+}

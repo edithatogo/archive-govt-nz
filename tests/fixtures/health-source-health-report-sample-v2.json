@@ -1,0 +1,180 @@
+{
+  "capture_reconciliation": {
+    "manifest_name_recorded": null,
+    "matched_resource_count_recorded": null,
+    "state": "recorded_not_replayed_manifest_unavailable"
+  },
+  "context_series_vintages": [
+    {
+      "entity_id": "cpi-2026q2",
+      "entity_type": "context_series_vintage",
+      "family": "cpi",
+      "known_gaps": [
+        "fiscal_aggregation_not_qualified",
+        "household_prices_not_health_input_costs"
+      ],
+      "layout_drift_state": "not_assessed_per_vintage_baseline_not_in_census",
+      "period_description": "quarter-ending YYYY.MM; 449 labels from 1914Q2 to 2026Q2, 422 numeric and 27 publisher NA; exact quarter-label grid verified in the separate source-evidence report; continuous numeric coverage not asserted",
+      "qualification_state": "unqualified",
+      "rights": {
+        "state": "not_evaluated"
+      },
+      "series_id": "CPIQ.SE9A",
+      "target_vintage_label": "Stats-NZ-CPI-2026-Q2",
+      "temporal_coverage_state": "quarter_labels_complete_publisher_NA_retained",
+      "vintage_basis": "context_census_verbatim"
+    }
+  ],
+  "cpi_period_evidence": {
+    "analytical_admission": "not_performed",
+    "captures": [
+      {
+        "body_bytes": 53671,
+        "body_sha256": "35d97118d6901af9b88ffe660770d439ba720563dcf55f2e069e313f2a051915",
+        "content_type": "application/json",
+        "observed_at": "2026-10-17T08:32:13.753036+00:00",
+        "role": "metadata_v159_json",
+        "url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/159/json",
+        "warc_bytes": 54286,
+        "warc_sha256": "d09d5778845c7fec717f904f00ded2ec050cbd9896e2a9aa05fceaaf9a91aa5c"
+      },
+      {
+        "body_bytes": 192443,
+        "body_sha256": "b61325cd3911458e7257e5eca3508d059190e33597d4195509fda88e5498fcdd",
+        "content_type": "text/html; charset=utf-8",
+        "observed_at": "2026-10-17T08:33:30.333284+00:00",
+        "role": "metadata_v159_html",
+        "url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/159",
+        "warc_bytes": 193062,
+        "warc_sha256": "149341f6518b5d0debecbabd49ef70bc2f3212779c3eee77530135b1a16696e1"
+      },
+      {
+        "body_bytes": 86497,
+        "body_sha256": "e9607f65bf65c4daaab39e1a16d02f96a58048ff63c97afb0ba62f7643148ab9",
+        "content_type": "text/html; charset=utf-8",
+        "observed_at": "2026-10-17T08:33:30.678997+00:00",
+        "role": "release",
+        "url": "https://www.stats.govt.nz/information-releases/consumers-price-index-june-2026-quarter/",
+        "warc_bytes": 87155,
+        "warc_sha256": "f5ae69b99d95e146e6b09db5b51426bc691e3927abacb30adef8299f83083fe1"
+      },
+      {
+        "body_bytes": 48412,
+        "body_sha256": "3022463f1546f2afb2f25330d24598c3e0a6a51de98b61af750a490594727584",
+        "content_type": "text/html; charset=utf-8",
+        "observed_at": "2026-10-17T11:12:40.518466+00:00",
+        "role": "copyright",
+        "url": "https://www.stats.govt.nz/about-us/copyright/",
+        "warc_bytes": 49028,
+        "warc_sha256": "5fdd90ec959c8cfccb0dded0677e53f00c9a0cea16d9c26008c0cec6eb6beffd"
+      },
+      {
+        "body_bytes": 192443,
+        "body_sha256": "f37de92102e108bb83f6d3d40693947dce8904c64ebd568223d55487cb7ce0c3",
+        "content_type": "text/html; charset=utf-8",
+        "observed_at": "2026-10-17T11:13:49.977652+00:00",
+        "role": "metadata_current_html",
+        "url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/",
+        "warc_bytes": 193059,
+        "warc_sha256": "6914b9d2c9f21cc9608eb8bf53dd92e1a86cb8fc12779f43ddd0dbf3cfb3c623"
+      },
+      {
+        "body_bytes": 53671,
+        "body_sha256": "dcfc421025bc5a4e6416b8ea35760195e466b541e9644ea6a69f9bc569fb028a",
+        "content_type": "application/json",
+        "observed_at": "2026-10-17T11:13:50.540644+00:00",
+        "role": "metadata_current_json",
+        "url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3/json",
+        "warc_bytes": 54282,
+        "warc_sha256": "e71d58eab6924ae118f184b109cdbd531dfebc18cd267bdc8420be2cba9a4169"
+      },
+      {
+        "body_bytes": 2917074,
+        "body_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+        "content_type": "application/octet-stream",
+        "observed_at": "2026-10-17T11:36:01.622523+00:00",
+        "role": "csv",
+        "url": "https://www.stats.govt.nz/assets/Uploads/Consumers-price-index/Consumers-price-index-June-2026-quarter/Download-data/consumers-price-index-june-2026-quarter-index-numbers.csv",
+        "warc_bytes": 2917863,
+        "warc_sha256": "0fa0c5715dc208c23b268624bbdb0a258de818466e238d5264d361fcbde61202"
+      }
+    ],
+    "entity_id": "cpi-2026q2",
+    "freshness": "not_assessed",
+    "periods": {
+      "anchor": {
+        "period": "2017.06",
+        "source_row": 22666,
+        "value_token": "1000"
+      },
+      "first": "1914.06",
+      "fiscal_alignment": "not_selected_by_this_census",
+      "last": "2026.06",
+      "missing_labels": [],
+      "numeric": 422,
+      "numeric_continuity": "not_asserted; publisher_NA_retained",
+      "observed_labels": 449,
+      "period_tokens_sha256": "7e2062e3b17040365bba82970b96539fefb3835d2b352ee4db238b4600b2a009",
+      "publisher_NA": 27,
+      "source_rows_inventoried": 22701
+    },
+    "rights_decision": "not_evaluated",
+    "series_id": "CPIQ.SE9A",
+    "source_evidence_sha256": "0716432ebf5bd6460819c2634206d666ff675f43e64340328b1b67969f8f6665",
+    "source_id": "stats_nz_cpi-053a0705526fac8d",
+    "source_observed_at": "2026-08-29T09:00:17Z",
+    "vintage": "Stats-NZ-CPI-2026-Q2"
+  },
+  "inputs": {
+    "capture_manifest_sha256": null,
+    "context_census_base_commit": "38bc5158295bcc6f23696e084ac1a3faa4b79cf4",
+    "context_census_sha256": "5f99e2962288aab6a18e4763e0a85a03e848c916a4efe173cbc91e6ea876e584",
+    "cpi_source_evidence_sha256": "0716432ebf5bd6460819c2634206d666ff675f43e64340328b1b67969f8f6665",
+    "pdf_layout_baseline_sha256": null,
+    "source_census_cutoff": "2026-10-03",
+    "source_census_observed_at": "2026-09-29T21:28:10.739074Z",
+    "source_census_sha256": "a4ffaba88ffe0797299eb932d87a8a8bd00766fcbfff5b50d182f428e93fe136"
+  },
+  "limitations": [
+    "Resource states and policy references are copied from the pinned censuses; rights are not approved by this report.",
+    "Only the exact CPI source-vintage quarter-label grid is independently verified; publisher NA values remain missing. Numeric continuity, freshness, other calendars and cross-source fiscal alignment are not assessed.",
+    "Structural PDF baselines record page geometry and resources only; text, tables and semantic layout are not assessed. Other source families without a supplied baseline remain unassessed.",
+    "Capture-manifest rights classifications are retained workflow evidence, not an independent legal assessment.",
+    "This report does not certify discovery, vintage coverage, analytical comparability, or reconciliation completeness."
+  ],
+  "resources": [
+    {
+      "capture_receipt_rights_state": "not_independently_verified",
+      "entity_id": "stats_nz_cpi-053a0705526fac8d",
+      "entity_type": "source_resource",
+      "family": "stats_nz_cpi",
+      "inventory_reason": "bounded capture with fixity and WARC evidence",
+      "inventory_state": "captured",
+      "layout_drift_state": "not_assessed_per_source_baseline_not_in_census",
+      "object_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+      "rights": {
+        "license_label": "CC-BY-4.0",
+        "policy_uri": "https://www.stats.govt.nz/about-us/copyright/",
+        "state": "policy_reference_recorded_not_evaluated"
+      },
+      "target_vintage_label": "Consumers price index: June 2026 quarter - index numbers",
+      "temporal_coverage_state": "not_assessed_source_calendar_not_in_census",
+      "vintage_basis": "source_title_verbatim"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-source-health-report/v2",
+  "scope": "recorded_census_states_not_a_completeness_or_rights_approval",
+  "summary": {
+    "context_qualification_states": {
+      "unqualified": 1
+    },
+    "context_rights_states": {
+      "not_evaluated": 1
+    },
+    "context_series_vintage_count": 1,
+    "resource_count": 1,
+    "resource_dispositions": {
+      "captured": 1
+    }
+  }
+}

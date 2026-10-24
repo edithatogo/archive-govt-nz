@@ -1,0 +1,42 @@
+{
+  "schema_version": "archive-govt-nz.health-context-runtime-refresh/v1",
+  "status": "passed_deterministic_rebuild",
+  "runtime": {
+    "python": "3.15.1",
+    "duckdb": "2.0.0",
+    "pyarrow": "26.0.0"
+  },
+  "source": {
+    "source_vintage": "StatsNZ-GDP-2026Q2",
+    "source_object_sha256": "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
+    "source_bytes": 50067,
+    "prior_silver_manifest_sha256": "f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd",
+    "current_silver_manifest_sha256": "103d03e29dcaccd30f66d0499fceffe652df5b5e478593856acd05ff8ec14411"
+  },
+  "outputs": {
+    "cell_dispositions.parquet": "47dadd631be23cb020183c7f662642c2063416f24af6810726be83e41f9b09e9",
+    "field_lineage.parquet": "02eeb91800ecd1225bb129a605d1d1e0796cd688499c1baf7bfcf2b3232133f7",
+    "gdp_facts.parquet": "f88ef1d4bae8809733635d3b6de0d9fcfbf2012cf0a9ca36837c3e490b3d2906"
+  },
+  "counts": {
+    "facts": 61,
+    "lineage": 915,
+    "dispositions": 2323
+  },
+  "rebuilds": {
+    "runs": 2,
+    "identical": true,
+    "output_root": "/tmp/phase5-gdp-june-pyarrow26"
+  },
+  "context_gold": {
+    "source_manifest_pin_updated": true,
+    "focused_repeat_build_and_series_tests": "passed",
+    "rights": "not_evaluated",
+    "cross_source_comparison": "not_performed"
+  },
+  "historical_evidence": {
+    "prior_receipt_preserved": true,
+    "source_values_replaced": false,
+    "note": "The manifest change records deterministic Parquet serialization under the qualified Python 3.15.1/PyArrow 26 runtime; the Bronze source identity and 61 fact rows are unchanged."
+  }
+}

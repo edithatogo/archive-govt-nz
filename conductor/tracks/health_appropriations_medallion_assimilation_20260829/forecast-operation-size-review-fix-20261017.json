@@ -1,0 +1,47 @@
+{
+  "pr": 701,
+  "review_thread": "PRRT_kwDOTo2MOM6tdDD8",
+  "scope": "generated-output bounds and writer/readback consistency",
+  "real_red": {
+    "source_bytes": 208357,
+    "native_status": "passed",
+    "native_counts": {
+      "context": 22,
+      "inventoried_cells": 80034,
+      "normalized": 10,
+      "preserved_only": 80002,
+      "rejected": 0
+    },
+    "operation_result": {
+      "schema_version": "archive-govt-nz.health-source-operation/v1",
+      "verification_scope": "adapter_execution_only",
+      "rights_state": "not_evaluated",
+      "publication_state": "local_validation_only",
+      "status": "failed",
+      "error": "invalid_source_operation"
+    },
+    "manifest_bytes": 10929247,
+    "manifest_sha256": "b54fb7556e74d12bb55f53f834fb18a991c72b5719811198abc78c6a14ae4357",
+    "output_files": [
+      "MANIFEST.json",
+      "cell_dispositions.parquet",
+      "field_lineage.parquet",
+      "forecast_facts.parquet"
+    ]
+  },
+  "real_red_log_sha256": "b7f8b06bbc2c95317d8a779ece8374859f4b442a16400ca4cfb1b184dce2d010",
+  "setup_failure": "Initial external script could not import repository test helpers and failed before source I/O; runpy invocation corrected setup. This is not the defect evidence.",
+  "fast_bound_contract_red_log_sha256": "6cc800e5cf0c31de95a9e1cac7a1cfb480594d9e87daffa720c934853ecff5b0",
+  "policy": "Source-regenerated exact table sizes/hashes and native-writer canonical UTF-8 manifest size before write; independent caller pin still required for verifier. No limits derived from candidate stats or declarations.",
+  "focused": {
+    "passed": 610,
+    "skipped": 10,
+    "seconds": 46.18,
+    "log_sha256": "98731b7d0ace1f19dbb4a4b9eb74b1d4dcdf61be8fb5fbb30717a75fe7c733e5"
+  },
+  "typing": "0 errors, 0 warnings",
+  "ruff": "passed",
+  "native_and_large_source_green": "pending frozen verification",
+  "new_full_and_hosted_checks": "pending",
+  "review_thread_resolution": "pending qualified final head"
+}

@@ -1,0 +1,17 @@
+{
+  "focused": {
+    "command": "uv run --locked pytest tests/domains/health_appropriations/test_capture_checkpoint.py tests/domains/health_appropriations/test_bronze_ingestion_contracts.py tests/domains/health_appropriations/test_capture_process_recovery.py -q --no-cov",
+    "exit": 0,
+    "log_sha256": "f8e6e18d36b4a77739df82ef6d733209e484b21ff5c5e364a39a5fdee3c125d9",
+    "passed": 61,
+    "seconds": 11.37
+  },
+  "full_original_harness": "pending",
+  "native_capture": "pending",
+  "new_tests": 2,
+  "no_dependencies_or_gate_limits_changed": true,
+  "pyright": "0 errors, 0 warnings",
+  "ruff": "passed",
+  "schema_version": "archive-govt-nz.health-preservation-only-validation/v1",
+  "scope": "Final selection/helper refactor and required-mode inventory integration"
+}

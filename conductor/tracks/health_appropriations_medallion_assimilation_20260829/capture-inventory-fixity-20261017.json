@@ -1,0 +1,682 @@
+{
+  "inventory_sha256": "ac659770818c5e73814b4dc340feb019c0381839d4fc139318d66be6c314a983",
+  "observed_at": "2026-10-17T00:21:37.127357+00:00",
+  "rows": [
+    {
+      "blake3": "ba4350936f7b959aacf8013a24be4fe314040555770ec21c03db152462278404",
+      "bytes": 2126154,
+      "capture_observations_matched": 1,
+      "sha256": "521e7649b3814c8de2efa2e72502c8e35c6db7a94d6f84ebc22fd3fa9f7976d4",
+      "stat_stable": true,
+      "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-charts-data.xlsx"
+    },
+    {
+      "blake3": "9e5e5b1b3fd650453c9ba20c9282b703fd6c261d2b669d0065598c04db9d4ae1",
+      "bytes": 193830,
+      "capture_observations_matched": 1,
+      "sha256": "313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1",
+      "stat_stable": true,
+      "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-data-expense-tables.xlsx"
+    },
+    {
+      "blake3": "9c6c1da837420da60489e20a0a6849ff1e249224dcbf3c35c97964ff2725cf55",
+      "bytes": 48676,
+      "capture_observations_matched": 1,
+      "sha256": "632afd3c24b4ca9c9f2066dd1112f4e5d6a0c9c503ae20f845d4153a7f2ac472",
+      "stat_stable": true,
+      "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-economic-forecasts-data.xlsx"
+    },
+    {
+      "blake3": "932b4607d1405329668622a410aa4fbf85fe4e50ce76910a03aeafcc11129b27",
+      "bytes": 918842,
+      "capture_observations_matched": 1,
+      "sha256": "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0",
+      "stat_stable": true,
+      "url": "https://budget.govt.nz/budget/excel/data/b26-expenditure-data.xlsx"
+    },
+    {
+      "blake3": "0a0cb22ba90effa0fa16f6270d2b0e219ce405b536aef28431b0cf03a26e6cae",
+      "bytes": 104536,
+      "capture_observations_matched": 1,
+      "sha256": "8243f6a3f9575af5ee048133f2695f3c4764ff7d86e7a74849fdafcf478cbfdb",
+      "stat_stable": true,
+      "url": "https://budget.govt.nz/budget/excel/data/b26-revenue-data.xlsx"
+    },
+    {
+      "blake3": "7b453384b859582488b7033e62a25318492126189647c1b6d4d8bfc0cb29ccb8",
+      "bytes": 116265,
+      "capture_observations_matched": 1,
+      "sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+      "stat_stable": true,
+      "url": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx"
+    },
+    {
+      "blake3": "ce15a30f9fb525dd484405e7a9f33363508c2de1942bb2b3eb8ee7ad3b521758",
+      "bytes": 1949413,
+      "capture_observations_matched": 1,
+      "sha256": "588bb95b3c8632261b40f90eecf42ecb89559103d7ab277c0046ee30a995a4b0",
+      "stat_stable": true,
+      "url": "https://budget.govt.nz/budget/excel/hyefu2025/hyefu25-charts-data.xlsx"
+    },
+    {
+      "blake3": "99034629b2b6c2b06799e7d12e0ab83d5afdab8738b0a3ff5e9691910f2c3219",
+      "bytes": 191581,
+      "capture_observations_matched": 1,
+      "sha256": "f9f9190a69ce0a7c53b89d690d50170e2a6a457e6821afeb93edc08cef4b9c7d",
+      "stat_stable": true,
+      "url": "https://budget.govt.nz/budget/excel/hyefu2025/hyefu25-data-expense-tables.xlsx"
+    },
+    {
+      "blake3": "86f8a0f032dec3038290c5e3fad6b31a9249051733f86901d8d3f111cd40f29f",
+      "bytes": 516,
+      "capture_observations_matched": 1,
+      "sha256": "c1e7758667b8255e049603de8325d732f34a76e6099e0fe4de6553a36d48e9fc",
+      "stat_stable": true,
+      "url": "https://www.health.govt.nz/system/files/2025-08/hair2024-fig27.csv"
+    },
+    {
+      "blake3": "e7aaff7794b1260ef60f8e2e5f3f6a8e0b18594db71fb3b678483c11aaa77589",
+      "bytes": 622,
+      "capture_observations_matched": 1,
+      "sha256": "7b9a51643550e3d890f4f341f27346d3466708fe924702ade4a731d1bb6266e4",
+      "stat_stable": true,
+      "url": "https://www.health.govt.nz/system/files/2025-08/hair2024-fig28.csv"
+    },
+    {
+      "blake3": "757579a3912d352ac7dbfe61ef6c04cf7f9837831587ee7ad92c81c7dd50c1c9",
+      "bytes": 548867,
+      "capture_observations_matched": 1,
+      "sha256": "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea",
+      "stat_stable": true,
+      "url": "https://www.pharmac.govt.nz/medicine-funding-and-supply/the-funding-process/setting-and-managing-the-combined-pharmaceutical-budget-cpb/budget-bid-information"
+    },
+    {
+      "blake3": "9fb638d7d4e83999f3789471875644c219a84291d21696393912d04c48b6384a",
+      "bytes": 2917074,
+      "capture_observations_matched": 1,
+      "sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+      "stat_stable": true,
+      "url": "https://www.stats.govt.nz/assets/Uploads/Consumers-price-index/Consumers-price-index-June-2026-quarter/Download-data/consumers-price-index-june-2026-quarter-index-numbers.csv"
+    },
+    {
+      "blake3": "3061346bfcf196e52f55cb60cc5a8f611a6c5a22287cf1b2dddad9538e9acbd6",
+      "bytes": 50067,
+      "capture_observations_matched": 1,
+      "sha256": "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
+      "stat_stable": true,
+      "url": "https://www.stats.govt.nz/assets/Uploads/Gross-domestic-product/Gross-domestic-product-June-2026-quarter/Download-data/gross-domestic-product-june-2026-quarter-current-price-income-and-expenditure.xlsx"
+    },
+    {
+      "blake3": "f48a3f45735580130e860d026330fe79c96b181ead537872edae25b6c583f04e",
+      "bytes": 49887,
+      "capture_observations_matched": 1,
+      "sha256": "a7326e84e7704446a18e5c8942f99901a452b2170af4228e8a5c242a5532ed21",
+      "stat_stable": true,
+      "url": "https://www.stats.govt.nz/assets/Uploads/Gross-domestic-product/Gross-domestic-product-March-2026-quarter/Download-data/gross-domestic-product-march-2026-quarter-current-price-income-and-expenditure.xlsx"
+    },
+    {
+      "blake3": "2aa380ed3b595922716b86217693bbfe001917933a53871c6355f2481dc8f1f5",
+      "bytes": 269401,
+      "capture_observations_matched": 1,
+      "sha256": "315f48f981cb237bbd1c4834676fd030f84e7eddc7f7660402956c05ca53a8c0",
+      "stat_stable": true,
+      "url": "https://www.stats.govt.nz/assets/Uploads/Labour-market-statistics/Labour-market-statistics-June-2026-quarter/Download-data/household-labour-force-survey-june-2026-quarter.xlsx"
+    },
+    {
+      "blake3": "d527667f30ca6096a5d33052f4954d181de9ed36888b05f4cc8313446d2d5c1d",
+      "bytes": 124556,
+      "capture_observations_matched": 1,
+      "sha256": "1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97",
+      "stat_stable": true,
+      "url": "https://www.stats.govt.nz/assets/Uploads/Labour-market-statistics/Labour-market-statistics-June-2026-quarter/Download-data/quarterly-employment-survey-june-2026-quarter.xlsx"
+    },
+    {
+      "blake3": "34f9443d5747fd1f1aa68db0a5a79e26f48c83ecd2c21a6dc7e7d9a3a1de4630",
+      "bytes": 367397,
+      "capture_observations_matched": 1,
+      "sha256": "866bce96ac216344c5dcdf25fee1f31548d5c32ba3cd94ef4b4977a495f509ea",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2007-09/est06health.pdf"
+    },
+    {
+      "blake3": "9ff81d3df45878c383bf6cdfe85668f8396ce6c07a3d58ec09e015aa749196dc",
+      "bytes": 472226,
+      "capture_observations_matched": 1,
+      "sha256": "fccd1fe0001e12f8238e6c4618328eac2da8d26729f997265b05688ec89a2795",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2007-09/est07health.pdf"
+    },
+    {
+      "blake3": "6b0dce2d51f6c1a35920b73f753d815df54d56a4c4b26af484d43ee138263282",
+      "bytes": 279018,
+      "capture_observations_matched": 1,
+      "sha256": "9907280937726b80a2f623f3879f9bc69814e02a1702a3cb0b2fb39d2d7d7074",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2007-09/supp06health.pdf"
+    },
+    {
+      "blake3": "49d5f3f32dd488cef0e59bb5671ee426a0bd2d90cb7425054dc74c50a0a47d0e",
+      "bytes": 162634,
+      "capture_observations_matched": 1,
+      "sha256": "f319471bd62ca7302a9984c95fc28036cf7aa68113e9cd9733e6c6b5ac587b43",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2007-09/supp07health.pdf"
+    },
+    {
+      "blake3": "7817d5f0f35ff578717b8cdb2682d3bc3b074b67467ebc37af675ce5e8a99b90",
+      "bytes": 220155,
+      "capture_observations_matched": 1,
+      "sha256": "515864508729d71553774d9afe3647b6f61dbe6538ae24516d30f904271cfd99",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/est00health.pdf"
+    },
+    {
+      "blake3": "5d6510578cb785a8875044028ae7c80bdce7185b02ff347041c1891543fb23ba",
+      "bytes": 451691,
+      "capture_observations_matched": 1,
+      "sha256": "b898c6ead5a998ae4d8aafb588a6259f79505b6e711e9a523e7d659340a916f4",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/est01health.pdf"
+    },
+    {
+      "blake3": "bd59e4946f0aa9053bf8e07430ea34a37082099686bd6e05fc00977301727be3",
+      "bytes": 317126,
+      "capture_observations_matched": 1,
+      "sha256": "1170e0bf5d11e6ac93620a2d76d68004ed99b88ed45a0c6c3c48bbc38f72fafe",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/est02health.pdf"
+    },
+    {
+      "blake3": "1ee574f6004c7643014cf9cec88b0ae73eb3b158b3555af1680750cbe39d21e2",
+      "bytes": 322345,
+      "capture_observations_matched": 1,
+      "sha256": "13338e7ef740191c9e576c56575eca56f38c340fda55e3628165ed3668e55ad8",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/est03health.pdf"
+    },
+    {
+      "blake3": "5fef3adfbfc8d99b1da1777abfc9b05d546de44c34e250a33e7d9859882887ec",
+      "bytes": 334380,
+      "capture_observations_matched": 1,
+      "sha256": "6dac0aaa3fd181fffacf30cffa829b0f189e8b68ebfdbeb0dd5ef88736af96a2",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/est04health.pdf"
+    },
+    {
+      "blake3": "539cb3fdbb6e991631cbe9b69916e400d208bf0b982a3b2867988aa61dba886c",
+      "bytes": 319930,
+      "capture_observations_matched": 1,
+      "sha256": "9a269a87a0cef8fc998fc1b012ae9fd734fb48b111504bb7a1ca01cdcf97c2b4",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/est05health.pdf"
+    },
+    {
+      "blake3": "781b4cd9fa2c617c8794a5145a0c43e5869c09a6c61e70681c95a30213bb377d",
+      "bytes": 201019,
+      "capture_observations_matched": 1,
+      "sha256": "19864bad3c28561e065bcbf69df7cb245fe52123aa80d9e3a84ba650815054cb",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/supp01health.pdf"
+    },
+    {
+      "blake3": "cf1845d4d55650b1be5614076a2adf50de2f01f8f24e8638ec915d6ac7f57185",
+      "bytes": 175759,
+      "capture_observations_matched": 1,
+      "sha256": "5849babe79f21c644920cd16fcf830ab4538488a0ff8253aa76070433f7ef572",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/supp02health.pdf"
+    },
+    {
+      "blake3": "2670da4103be67bf643c1f0d6683dba2da1d6a22ee44f38d5005573570addbbd",
+      "bytes": 159357,
+      "capture_observations_matched": 1,
+      "sha256": "e3a08643337f2f8b4864b2191e44dee95444164a5eca1df613aacfd1942e2df8",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/supp03health.pdf"
+    },
+    {
+      "blake3": "c001c8508cbd6d3167ad58314bf68bafa4abd41f23715329f527a653bc89980a",
+      "bytes": 187266,
+      "capture_observations_matched": 1,
+      "sha256": "d2b1bef458e88590c81f448870295beddf81e4f258f24702980526836ccda50a",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/supp04health.pdf"
+    },
+    {
+      "blake3": "37b30698cf3ab50ebc65e1172cf8e2358673b50adb265c83b6dd41a9f56d2500",
+      "bytes": 130451,
+      "capture_observations_matched": 1,
+      "sha256": "deb17095776a3441607a29d17bfe10c2d2c8f186c5ff9b2c3fdef8d0bbe1eb7d",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/supp05health.pdf"
+    },
+    {
+      "blake3": "e4c32aa411e8483607ea18f61cfc63da7caa7f1c02bdb6fb85c322ffcedbb709",
+      "bytes": 91611,
+      "capture_observations_matched": 1,
+      "sha256": "2d346a460278fa278eef4fbda3f613d18bc13b486a1f2e21e503a05b5d3f9121",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-05/est08health.pdf"
+    },
+    {
+      "blake3": "b639420bfeafc347c1a417c5f59ba06046424c0cdd26b4de0fd7b7aeeeb909de",
+      "bytes": 636829,
+      "capture_observations_matched": 1,
+      "sha256": "475eab78585b8f14024187198c3844d0766ead94e04e36a118f3974f974d3c83",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-05/ise08-v6-pia-health.pdf"
+    },
+    {
+      "blake3": "e2261f1bda32739dde53553bc8e86e403b81b64bd6552982e5479eeaaa51b965",
+      "bytes": 235897,
+      "capture_observations_matched": 1,
+      "sha256": "e76311821f75c2b02c82c8c63d771b9948eb0547caa1af40df662213588ec9f8",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-05/suppest08health.pdf"
+    },
+    {
+      "blake3": "8a0c0c8fd163a8283e1da618a22b0e505b2654e0bab9062da9448f4cee14aa12",
+      "bytes": 60661,
+      "capture_observations_matched": 1,
+      "sha256": "acd253a1d68738a06e5310c002f8051698146fe018d3d6c10fc6b5e0f6d7ac1f",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2009-05/est09health.pdf"
+    },
+    {
+      "blake3": "41b9e056ca4918a3a9374a54ea93ff60e8ab9c930a6f415611f12648d747806e",
+      "bytes": 523148,
+      "capture_observations_matched": 1,
+      "sha256": "18306b33c7346c984a73a006f68c93ba59ad88c011bc8e877f2bfd87e5e3b7ca",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2009-05/ise09-v6-pia-health.pdf"
+    },
+    {
+      "blake3": "53bfcb98c5a16c48326d3b81e0d844848435a2bb1a7038bce4d89508a36bf94d",
+      "bytes": 133072,
+      "capture_observations_matched": 1,
+      "sha256": "9b017d40a8f48609231c5cd944af0366892039a0d663e439b63479a5805a004e",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2009-05/isse09-health.pdf"
+    },
+    {
+      "blake3": "ee5161fbd43fc8dd644664aefb617db179e073ff23dbb1e64d239ba48ca2c6f2",
+      "bytes": 57379,
+      "capture_observations_matched": 1,
+      "sha256": "4cb75bd49333e616f1693b478be3f8e98e8a986aed0485993311febe3fb534cf",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2009-05/suppest09health.pdf"
+    },
+    {
+      "blake3": "3754a501e1b7ab6ca733d897a7af12081561e257ed6b5d9ff762a7d38f2db29d",
+      "bytes": 1169732,
+      "capture_observations_matched": 1,
+      "sha256": "819a006df9c280acfb20c34079eaa31065014b0871f351ee92ba2ede9b970008",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2009-06/est98health.pdf"
+    },
+    {
+      "blake3": "50e4087f03f8b4938eaeae616d6bd41da3ee1291e696f01fb28678c17e464bc6",
+      "bytes": 1357199,
+      "capture_observations_matched": 1,
+      "sha256": "4e2a7b1b9bf2390a38ee23d51b911874cddd608fb252612ab906b219007330d5",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2009-06/est99health.pdf"
+    },
+    {
+      "blake3": "f644e32dca76949f7afcb37f87eb668fd2924b6a459132bcb8f43aeb57a881f1",
+      "bytes": 62550,
+      "capture_observations_matched": 1,
+      "sha256": "179742d361f373f8a44d1ae08c36a985dea8fe6f30fc5a1f65978fe344a94775",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2009-06/supp00health.pdf"
+    },
+    {
+      "blake3": "0ad02e4047429ebcfdf28654bfa497afa3cb823c742e3fa07069f49cb387cce8",
+      "bytes": 613670,
+      "capture_observations_matched": 1,
+      "sha256": "a492b49c712c7c60fd31478c51df25225e3193fe4a2dd094fb899b11a588d292",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2009-06/suppest99health.pdf"
+    },
+    {
+      "blake3": "e2cc84b044b0c17d88bca7f04b9fd2c17e4c917f416362e9ab1cb2105b05c857",
+      "bytes": 55369,
+      "capture_observations_matched": 1,
+      "sha256": "5dabf866e4f60c5fdf9df88b3fcc5b0e537652d1d6817465efb46a97c0bbe497",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2010-05/est10health.pdf"
+    },
+    {
+      "blake3": "9615b2e8cd07457d8327ba7515f09e04c66ede7b5f34e06da93f8fede1541a79",
+      "bytes": 522136,
+      "capture_observations_matched": 1,
+      "sha256": "ed7d6b30aa732b5b2b6b5ed85d4e3a530741415c90e3aa8e6753504dc96564b5",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2010-05/ise10-v6-pia-health.pdf"
+    },
+    {
+      "blake3": "b6f923b41f83883eab8acfbedf698b8b690e8a5f5dc101197b65848882bd1d95",
+      "bytes": 110598,
+      "capture_observations_matched": 1,
+      "sha256": "ae76053ea1e2867ba1fb129cc417473cf807da31cbad3f2e4ea62b89407eba5a",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2010-05/isse10-health.pdf"
+    },
+    {
+      "blake3": "84d2d63f6e4dbd8b54d9b59098bcba71d604ffabf71ee0edff830ffd3e53958c",
+      "bytes": 47163,
+      "capture_observations_matched": 1,
+      "sha256": "c6ed655b1dbca81b0fc54ef62547b71d5f984c6556cfdc77b6299c1bcc870a0e",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2010-05/suppest10health.pdf"
+    },
+    {
+      "blake3": "cbb5988d5f9fa7f3fd72fac1c3131bcc40d6d4dc1cbffa4d746b4e2cf7882528",
+      "bytes": 76397,
+      "capture_observations_matched": 1,
+      "sha256": "5b56c8a0641a870d82558f2c61fc87df90bcabf318541af4c3d86ba8ce3063af",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2011-05/est11health.pdf"
+    },
+    {
+      "blake3": "d55b4fb49d9f34154b61197ac1c423a349bd16135b729f446089476786ee24d2",
+      "bytes": 684571,
+      "capture_observations_matched": 1,
+      "sha256": "40c5c592da96cda884236d1d3dc56e13ca55e83f3b61798343df124ab6ec7e2f",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2011-05/ise11-v6-pia-health.pdf"
+    },
+    {
+      "blake3": "2ee5f84158511c8852c87e4fe700bedd8b06d3caba607de0f9c56b84ff23dfa9",
+      "bytes": 212650,
+      "capture_observations_matched": 1,
+      "sha256": "95d78b3a38f0f19132d35fce473015e2b2c374c293378d345966737de2bfcb20",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2011-05/isse11-health.pdf"
+    },
+    {
+      "blake3": "0b0c64d24f5265052947e20afee752fe0b9c922084707b6bae516a77961805fb",
+      "bytes": 69819,
+      "capture_observations_matched": 1,
+      "sha256": "a5f65c3d741ebc0e426fd8ca5ce4da088718fbfc3930ba2720958ecf3cee556d",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2011-05/suppest11health.pdf"
+    },
+    {
+      "blake3": "4d30a428c649103854a11f4cc915bb5ff65a48c4738a111588d7cd691be3e765",
+      "bytes": 97539,
+      "capture_observations_matched": 1,
+      "sha256": "5994108997ead9f301f71f73952b8fb04f6b1e4a00207c16dfe8b172f72b60ff",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2012-05/est12health.pdf"
+    },
+    {
+      "blake3": "8b80d60d55199947416c801888f7800dc6ad648e744e045e59dab30577062fbf",
+      "bytes": 573823,
+      "capture_observations_matched": 1,
+      "sha256": "c1ae457e002eecf9a994291d34abfe0ff41101e78f72f98c7208983ec1bb14a8",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2012-05/ise12-v6-pia-health.pdf"
+    },
+    {
+      "blake3": "5a4d4e88e1a20eaf258e8f515841f0322cbc595907e7770afff1ccf85607f925",
+      "bytes": 192519,
+      "capture_observations_matched": 1,
+      "sha256": "51283a95a523e1405a6a5634d0c1ed74add62759f6d067f32a8b33a6c9afe5e0",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2012-05/isse12-health.pdf"
+    },
+    {
+      "blake3": "3ca273f9175da7e0d1a684b30bf189087d6e3574a00880548eec406531e5c8be",
+      "bytes": 90498,
+      "capture_observations_matched": 1,
+      "sha256": "71b905562f6701923961b47578a638a7fbed3731d5d1840fa55b8955300ce0d9",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2012-05/suppest12health.pdf"
+    },
+    {
+      "blake3": "9b1d49d338e0d33ec12f204325b19e40b3ac20f4aff205be3d611c42e27468b5",
+      "bytes": 80589,
+      "capture_observations_matched": 1,
+      "sha256": "f29271aad328bad5fcfdcf655c61dc6c59600a20666860c037ceb478bff681f1",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2013-05/est13health.pdf"
+    },
+    {
+      "blake3": "3320224d6ae4b9795b41120ff6a028716396f2f494516c96795b3a03da268365",
+      "bytes": 224975,
+      "capture_observations_matched": 1,
+      "sha256": "07aaafdc58bd448ce2ef60d3c2dce071dfc3204838b21d01cad105e7e0d946fc",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2013-05/isse13-health.pdf"
+    },
+    {
+      "blake3": "9bad471d7ec2a1a0729c5a6073123b6105ab65c2ca46379607d1bf0e01506d52",
+      "bytes": 68490,
+      "capture_observations_matched": 1,
+      "sha256": "eec443d19bd7fe0767301ab101de5cbe67da8e9183d3f0af8b946b7ba8f93272",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2013-05/suppest13health.pdf"
+    },
+    {
+      "blake3": "605174a556ec93f9496b2cc608fff8953c230b204f44aa5965d93dcf7f5c4144",
+      "bytes": 1049358,
+      "capture_observations_matched": 2,
+      "sha256": "039706f735a3652aa911e4fa7eaf776a6d534271d96e478aad0ce45789351dfb",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2014-05/est14-v6-health.pdf"
+    },
+    {
+      "blake3": "753eaebf7db3c0421e58f4539bef2072ce75c342fbeb737e1160591dfc8a4972",
+      "bytes": 470538,
+      "capture_observations_matched": 1,
+      "sha256": "1ec8cf9e4c33d027f3ed02593ab3e8c7cab89883d5b286e0cf4aa4b1e947f5a2",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2014-05/suppest14health.pdf"
+    },
+    {
+      "blake3": "8ad3655e4384ce8a2fdd2ceffa9e783ee8e9214f530daa18ea6c090b2705a465",
+      "bytes": 356801,
+      "capture_observations_matched": 1,
+      "sha256": "99e90dfddd8fc7b6d2bb545148d95f8f3c4c3cbf77760b91103130304176780e",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2015-05/suppest15health.pdf"
+    },
+    {
+      "blake3": "e6209022ab578bd3fae909c9831c803ed0304e8c20b7f2862eb0960e22fd5af6",
+      "bytes": 1024038,
+      "capture_observations_matched": 1,
+      "sha256": "c997ffecb631e4dfd0ffd8a1e620585b6b963df11f94164adb2ac02cfa391b2e",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2016-05/est16-v6-health.pdf"
+    },
+    {
+      "blake3": "0bd856e0be9f1b14dc57d980cb9214545d682deddded18e1f6a84da13da8c438",
+      "bytes": 361073,
+      "capture_observations_matched": 1,
+      "sha256": "694aece23fdb2eac82d96e5dc075339f39ba481b12b33a03db2de5596cf2a47d",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2016-05/suppest16health.pdf"
+    },
+    {
+      "blake3": "eed2bc189c511f4b3380f70ef77b4bc882b28c981fc53a76675872318142ac62",
+      "bytes": 980866,
+      "capture_observations_matched": 1,
+      "sha256": "3fc0cc6a193c232e9278389f42dbd9003cff03228ac3c83cbfe58452f5711604",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2017-05/est17-v6-health-v2.pdf"
+    },
+    {
+      "blake3": "e9a05589317cfeb7fc52946cac7878edda7fc30604bba04b54ae7b36cdb031b3",
+      "bytes": 476767,
+      "capture_observations_matched": 1,
+      "sha256": "5a07182b093c129e4e6ea69bb47679a1ba79ec96b4cdf6196d4590b42c17531f",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2017-05/suppest17health.pdf"
+    },
+    {
+      "blake3": "ed88a8c40be786d0b0a200c04748d4e67af4a22a5a79df9e331789c3368cd2b1",
+      "bytes": 867091,
+      "capture_observations_matched": 1,
+      "sha256": "dbb8a9c4fab8a53b5279c26d98a5e0a6fa60d9360b88030189d43273bf0e5d1a",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2018-04/est15-v6-health.pdf"
+    },
+    {
+      "blake3": "2817682bf009bf3c061235c2c53f30d522db1e84b1dd760d476307f0f027e821",
+      "bytes": 1687389,
+      "capture_observations_matched": 1,
+      "sha256": "dca08f23c9ba5ac87cf8c0c2129d38afb25ce288bd6d16c8eca239f24c38bac8",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2018-05/est18-v6-health.pdf"
+    },
+    {
+      "blake3": "1f4aef72ce36bf50aa6d4e30dcbb7a7ea0184d76d5c2211431f6f2aead8f8a93",
+      "bytes": 743436,
+      "capture_observations_matched": 1,
+      "sha256": "ebea2a9db0dd1a19b227f0c474d0acb7414505a3874ce4b303bd7ad241262ef1",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2018-05/ise13-v6-pia-health.pdf"
+    },
+    {
+      "blake3": "95b1dd314c0a2b8c170cff315574bb975726719727e6e32f031777dac32b21b0",
+      "bytes": 752343,
+      "capture_observations_matched": 1,
+      "sha256": "f2c49d272af66dea8cc3cf0d705d4f953d5690a3c71a647fbb43d7ba8769b059",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2018-05/suppest18health.pdf"
+    },
+    {
+      "blake3": "b380f4e0bb5193ee1edf01ff4413e736216abcaa984a0b9c494336c616ad2578",
+      "bytes": 1387018,
+      "capture_observations_matched": 1,
+      "sha256": "eb519370527ecf474ce7a261a62a84835cd219c56aecdc200712d05ac65f71b2",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2019-05/est19-v6-health.pdf"
+    },
+    {
+      "blake3": "59fbadc370798fd3af80d5c3df6738663c268a0951402e7470a8f8455eb883ee",
+      "bytes": 559898,
+      "capture_observations_matched": 1,
+      "sha256": "fc1cb3f5bc39d5ff7cd2805feaefd3ab1e2c0a3b2157249fb8de9084befce069",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2019-05/suppest19health.pdf"
+    },
+    {
+      "blake3": "b8c352eaea67573110e441838dbea5ba84f89ad88563d38dd7d555be99130c59",
+      "bytes": 2039394,
+      "capture_observations_matched": 1,
+      "sha256": "f9ef5b191e5136654877ecf924cf95664293deed91021ea36b0916914cfdeb51",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2020-05/est20-v6-health.pdf"
+    },
+    {
+      "blake3": "e10618dfd6277128fd52aecb42cdcce2952350cb48f91ba8069311e1784eb115",
+      "bytes": 541133,
+      "capture_observations_matched": 1,
+      "sha256": "a38e8520b07207670cb139d6814605659d457a626ee070db2bdc91075211e418",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2020-05/suppest20health.pdf"
+    },
+    {
+      "blake3": "1cf8f1a7fd133218f20b6da9d087f0890b96f478c98fdf0776e580eaf5976527",
+      "bytes": 1741643,
+      "capture_observations_matched": 1,
+      "sha256": "52e711375e1908db80b5e2253b3577dd37b815896a81e65781a3d58eb3e8b503",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2021-05/est21-v6-health.pdf"
+    },
+    {
+      "blake3": "00134cc2d16ec80e2c210f880839898a796c3bba1fc3077ac3b5b5f6ea38abe3",
+      "bytes": 693999,
+      "capture_observations_matched": 1,
+      "sha256": "fd2afd86cd0f827d5896705bb9eaefe827a645143f3b7573a95d642b455f5bfe",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2021-05/suppest21health.pdf"
+    },
+    {
+      "blake3": "e0e6022456ba1c0d7e6a0cf4133f25c8d16b582738e9c70e91be3df8133b6392",
+      "bytes": 1260848,
+      "capture_observations_matched": 1,
+      "sha256": "f800749dc339a2f8bc99469bcbd365f1183323002cd90d3225c942e2e6d92dc9",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2022-06/est22-v5-health.pdf"
+    },
+    {
+      "blake3": "141d01bca0133db75e0fd61f5d3b9a74654db46fff256fef8301f1e6c926224a",
+      "bytes": 775160,
+      "capture_observations_matched": 1,
+      "sha256": "f567098d4f98fd9ea34df90ca330b295346a8f567b924f8b11694a494d3ce502",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2022-06/suppest22health.pdf"
+    },
+    {
+      "blake3": "5d90b7068ebd6d5c5e773c0a8601d6d0e8b80bbbe35475d8d6da8bb9127933d6",
+      "bytes": 1233951,
+      "capture_observations_matched": 1,
+      "sha256": "5602df94c5944dad0e97dde2ddc73e79bd3126a7739184bd2fb117e6d6765914",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2023-06/est23-v5-health.pdf"
+    },
+    {
+      "blake3": "40cb21d09291b354c7d5146c82d1bb16c8881efb9b262bff58a1b59c0a2eff33",
+      "bytes": 682887,
+      "capture_observations_matched": 1,
+      "sha256": "98cd7a110628349648926007ba37d6ca9f5ad4525e1d9fdf34a94560e3078741",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2023-06/suppest23health.pdf"
+    },
+    {
+      "blake3": "e076bb05ded08297968526738dc239ea9aca24865c33602700dbad8ef05094a7",
+      "bytes": 1017191,
+      "capture_observations_matched": 1,
+      "sha256": "c55082208ebb42923dd56e3e8ac2ae75318b8fd9ee468c52284bbda0b9b43a20",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2024-06/est24-v5-health.pdf"
+    },
+    {
+      "blake3": "1153b020851baea2083d3966869b13fd0b9cc01815d887357d89930429ff6b3b",
+      "bytes": 588576,
+      "capture_observations_matched": 1,
+      "sha256": "7c35d7c49827e5f4a478203007fb388f3f403698765472ab5e44167ed61c2b72",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2024-06/suppest24health.pdf"
+    },
+    {
+      "blake3": "f264d890b2b1ab2644768dd38322199c7bbf9f37746bdd0ce9b71e8eddb932eb",
+      "bytes": 995851,
+      "capture_observations_matched": 1,
+      "sha256": "d00952c47c4e6485b0768575ba295ac4da6002ce4c525b5637287b25e32849b9",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2025-05/est25-v5-health.pdf"
+    },
+    {
+      "blake3": "91151f16dfa9ba55d39b4467d602aad0982f020a23d083ba18c943aef4de05be",
+      "bytes": 584476,
+      "capture_observations_matched": 1,
+      "sha256": "5cacffe39f056f092291d8dc0a5ba2e72851b23da1696a63964b726b7a6ebf8b",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2025-05/suppest25health.pdf"
+    },
+    {
+      "blake3": "9c355b84746c1c762e44f3343f648328edeb12d204de7b6b0ddd3f8bc7474a7f",
+      "bytes": 1013375,
+      "capture_observations_matched": 1,
+      "sha256": "023c99801cc11305848772a859d2491940f25389725e08f162b4156492dcae4e",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2026-05/est26-v5-health.pdf"
+    },
+    {
+      "blake3": "373eb26f9646977fbca1ef75432c9030242a3efd55b07b329f76395336b8758f",
+      "bytes": 600258,
+      "capture_observations_matched": 1,
+      "sha256": "575e3744f555d668f3748f46cc55781378bfc0ad35008c9512a942c57279f31f",
+      "stat_stable": true,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2026-05/suppest26health.pdf"
+    }
+  ],
+  "scope": "bounded_inventory_cohort_CAS_fixity_only_not_WARC_replay_or_rights",
+  "source_bytes_modified": false,
+  "verified_bytes": 46245283,
+  "verified_resource_versions": 84
+}

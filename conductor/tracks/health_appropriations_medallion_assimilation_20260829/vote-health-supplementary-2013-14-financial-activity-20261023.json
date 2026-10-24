@@ -1,0 +1,120 @@
+{
+  "schema_version": "archive-govt-nz.health-vote-health-financial-activity-evidence/v1",
+  "status": "passed_bounded_profile",
+  "profile": "vote-health-supplementary-2013-14-financial-activity/v1",
+  "source": {
+    "source_id": "treasury-vote-health-pdf-3a6b190885f22e4b",
+    "title": "Vote Health - The Supplementary Estimates of Appropriations and Supporting Information 2013/14",
+    "source_object_sha256": "1ec8cf9e4c33d027f3ed02593ab3e8c7cab89883d5b286e0cf4aa4b1e947f5a2",
+    "bytes": 470538,
+    "pages": 44,
+    "source_locator": "https://www.treasury.govt.nz/sites/default/files/2014-05/suppest14health.pdf",
+    "source_vintage": "Treasury-Vote-Health-Supplementary-2013-14",
+    "bronze_cas_object": "sha256/1e/1ec8cf9e4c33d027f3ed02593ab3e8c7cab89883d5b286e0cf4aa4b1e947f5a2",
+    "source_bytes_unchanged": true,
+    "capture_manifest": "official-capture-2026-10-03-health-complete.json",
+    "capture_manifest_sha256": "017b3a9adbda288c60693ef038e4c0da198d8db99b2bca9cf4bb81adbc6efb5f",
+    "recorded_license_notice": "CC-BY-4.0",
+    "rights_state": "not_evaluated"
+  },
+  "scope": {
+    "pdf_page_numbers": [
+      7
+    ],
+    "table": "Summary of Financial Activity",
+    "sections": [
+      "appropriations",
+      "crown_revenue_and_capital_receipts"
+    ],
+    "facts": 14,
+    "field_lineage_rows": 70,
+    "page_dispositions": 1,
+    "columns": [
+      "estimates",
+      "departmental_transactions",
+      "non_departmental_transactions",
+      "total_transactions",
+      "total"
+    ],
+    "unit_label": "$000",
+    "literal_missing_tokens": [
+      "-",
+      "N/A"
+    ],
+    "duplicate_source_labels_disambiguated_by_row_ordinal": true,
+    "excluded_claims": [
+      "currency code",
+      "annual date bounds",
+      "cross-edition comparability",
+      "rights approval",
+      "canonical or Gold admission",
+      "publication"
+    ]
+  },
+  "source_length_reconciliation": {
+    "observed_cas_bytes": 470538,
+    "official_capture_manifest_bytes": 470538,
+    "older_category_profile_receipt_bytes": 91611,
+    "older_receipt": "vote-health-supplementary-2013-14-category-totals-20261006.json",
+    "same_sha256": true,
+    "resolution": "Retain the older receipt unchanged; use the official capture manifest and rehashed CAS object for current source length."
+  },
+  "persistent_silver": {
+    "path": "silver/vote-health-supplementary-2013-14-financial-activity-20261023-v1",
+    "manifest_sha256": "2a0bc3e3ebba0de39999d54ecff6a7d6a81a42acaa620297b8c48603345c6373",
+    "outputs": {
+      "field_lineage.parquet": "4bfeeefff69f59987b13e61e3c854f9c4d139a238b190e5fa643acd3d7e83d87",
+      "page_dispositions.parquet": "dabb341bed103a725bba899725d1e2b423de7a4202e2ac32e7030764a0dc28bf",
+      "vote_health_financial_activity_facts.parquet": "266a8cc81bcf29c095f34f1e431cd9c2469913e0541d80f6bf9c2ac6bc0fad03"
+    },
+    "matches_two_clean_room_builds": true,
+    "bronze_unchanged": true
+  },
+  "clean_room_rebuilds": {
+    "runs": 2,
+    "identical": true,
+    "run_root": "/tmp/phase5-vote-health-financial-2013-14",
+    "output_sha256": {
+      "field_lineage.parquet": "4bfeeefff69f59987b13e61e3c854f9c4d139a238b190e5fa643acd3d7e83d87",
+      "page_dispositions.parquet": "dabb341bed103a725bba899725d1e2b423de7a4202e2ac32e7030764a0dc28bf",
+      "vote_health_financial_activity_facts.parquet": "266a8cc81bcf29c095f34f1e431cd9c2469913e0541d80f6bf9c2ac6bc0fad03"
+    }
+  },
+  "source_operation": {
+    "status": "preflight_passed",
+    "verification_scope": "adapter_execution_only",
+    "rights_state": "not_evaluated",
+    "publication_state": "local_validation_only",
+    "counts": {
+      "pages": 1,
+      "facts": 14,
+      "lineage": 70
+    }
+  },
+  "validation": {
+    "runtime": {
+      "python": "3.15.1",
+      "duckdb": "2.0.0",
+      "pyarrow": "26.0.0"
+    },
+    "focused_command": "COVERAGE_FILE=/tmp/phase5-vote-health-2013-14.coverage PYTHONPATH=src .venv/bin/python -m pytest tests/domains/health_appropriations/test_vote_health_supplementary_2013_14_financial_activity.py -q --cov=archive_govt_nz.domains.health_appropriations.vote_health_supplementary_2013_14_financial_activity --cov-branch --cov-report=term-missing",
+    "focused_tests": 9,
+    "focused_passed": 9,
+    "profile_line_coverage_percent": 100.0,
+    "profile_branch_coverage_percent": 100.0,
+    "ruff": "passed",
+    "basedpyright": "passed: 0 errors, 0 warnings, 0 notes",
+    "full_harness": {
+      "command": "PYTEST_XDIST_AUTO_NUM_WORKERS=4 ./scripts/validate.sh",
+      "tests": "8309 passed, 14 skipped",
+      "coverage_percent": 97.17,
+      "schemas_and_documents": "81 schemas and 71 representative documents passed",
+      "differential_parity": "9/9 passed",
+      "mutation_gates": "passed",
+      "supply_chain_gates": "passed",
+      "status": "passed"
+    },
+    "affected_regressions": "622 passed, 10 skipped"
+  },
+  "publication": "not_performed"
+}

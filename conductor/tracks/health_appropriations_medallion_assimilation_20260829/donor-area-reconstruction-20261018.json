@@ -1,0 +1,115 @@
+{
+  "checked_commit": "33ae9e4e1c7744918808aca3a4cddd6830a7c31b",
+  "checked_tree": "8fa7c33fdc1bb48705dc4219543f08b80ff9b6a4",
+  "facts": 739,
+  "files_per_run": 50,
+  "historical_files": {
+    "differences": [],
+    "different": 0,
+    "matched": 50
+  },
+  "legacy_normalization_context": "2026-08-30T08:58:00+00:00",
+  "metadata_inputs": "unchanged",
+  "native_recipe_sha256": "7ed05e7d0d999409f9143ee5dc05122943673e7505caaa2e0225894646efa4a9",
+  "native_report_sha256": "63a7fdd6eb5e99e9fcb1489f591860ccb85abd10b3e72f1958b22de69afd1f8f",
+  "native_result_sha256": "56ee861cdc9afc021f6c76a16c992c20c79830561c05b3c3ddcf6e02b6cfeee1",
+  "network": "denied",
+  "next_gate": "Nine-stage bindings and full local assurance qualified; final documentation and hosted delivery pending",
+  "old_original_run_directory": "not_retained",
+  "publication": "not_performed",
+  "reconstruction_is_not_original_directory": true,
+  "runs": 2,
+  "scope": "two current reconstruction runs; historical hash comparison retained separately",
+  "source_bytes": "unchanged",
+  "source_objects_verified": 24,
+  "stage_receipts": [
+    {
+      "historical_sha256": "f051c4f815da3085363f0a00b592b8a5e4521398a544529353781debfaf3cd3b",
+      "matches_historical_pin": true,
+      "reconstructed_path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/evidence/donor-area-recovery-20261018/native-1/first/budget/MANIFEST.json",
+      "reconstructed_sha256": "f051c4f815da3085363f0a00b592b8a5e4521398a544529353781debfaf3cd3b",
+      "stage": "budget"
+    },
+    {
+      "historical_sha256": "9217b02ffb2a03e56a0a45cb7b865cb05227d6ed3a59e3f429d8faf154d3644e",
+      "matches_historical_pin": true,
+      "reconstructed_path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/evidence/donor-area-recovery-20261018/native-1/first/befu/MANIFEST.json",
+      "reconstructed_sha256": "9217b02ffb2a03e56a0a45cb7b865cb05227d6ed3a59e3f429d8faf154d3644e",
+      "stage": "befu"
+    },
+    {
+      "historical_sha256": "c1d04065992825f1e122e0c9b384cf23e94104a8e0fc2310155161c60a6fa9d6",
+      "matches_historical_pin": true,
+      "reconstructed_path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/evidence/donor-area-recovery-20261018/native-1/first/hyefu/MANIFEST.json",
+      "reconstructed_sha256": "c1d04065992825f1e122e0c9b384cf23e94104a8e0fc2310155161c60a6fa9d6",
+      "stage": "hyefu"
+    },
+    {
+      "historical_sha256": "dbdba7dbae941e29f25fc5bc1227479107d8d1eaa8d761d6fe2d03ec63347f1f",
+      "matches_historical_pin": true,
+      "reconstructed_path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/evidence/donor-area-recovery-20261018/native-1/first/historical/MANIFEST.json",
+      "reconstructed_sha256": "dbdba7dbae941e29f25fc5bc1227479107d8d1eaa8d761d6fe2d03ec63347f1f",
+      "stage": "historical"
+    },
+    {
+      "historical_sha256": "71b64a9ea7ebb953688f6c3b5d9c38366bb527a429ce7f9a4ad710652f4af81e",
+      "matches_historical_pin": true,
+      "reconstructed_path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/evidence/donor-area-recovery-20261018/native-1/first/revenue/MANIFEST.json",
+      "reconstructed_sha256": "71b64a9ea7ebb953688f6c3b5d9c38366bb527a429ce7f9a4ad710652f4af81e",
+      "stage": "revenue"
+    },
+    {
+      "historical_sha256": "42cf811aef35d5adf24421c917525ae8f0d6f9d83bd6b10cdf430e64a60c287d",
+      "matches_historical_pin": true,
+      "reconstructed_path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/evidence/donor-area-recovery-20261018/native-1/first/befu-detail/MANIFEST.json",
+      "reconstructed_sha256": "42cf811aef35d5adf24421c917525ae8f0d6f9d83bd6b10cdf430e64a60c287d",
+      "stage": "befu-detail"
+    },
+    {
+      "historical_sha256": "6615ca6b601283aae75b80dd15627bae32d2769b95f4b7b71f18c9fa9ce5a321",
+      "matches_historical_pin": true,
+      "reconstructed_path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/evidence/donor-area-recovery-20261018/native-1/first/hyefu-detail/MANIFEST.json",
+      "reconstructed_sha256": "6615ca6b601283aae75b80dd15627bae32d2769b95f4b7b71f18c9fa9ce5a321",
+      "stage": "hyefu-detail"
+    },
+    {
+      "historical_sha256": "14088607bd4211104f69d1cf4553bea515705971cb47604feef8af709a2a26ea",
+      "matches_historical_pin": true,
+      "reconstructed_path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/evidence/donor-area-recovery-20261018/native-1/first/befu-chart/MANIFEST.json",
+      "reconstructed_sha256": "14088607bd4211104f69d1cf4553bea515705971cb47604feef8af709a2a26ea",
+      "stage": "befu-chart"
+    },
+    {
+      "historical_sha256": "bd033aff9bb90cd60ca99b65fb1405aa8b02f488ff9e9754b3a0837af71ea0c9",
+      "matches_historical_pin": true,
+      "reconstructed_path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/evidence/donor-area-recovery-20261018/native-1/first/hyefu-allowance/MANIFEST.json",
+      "reconstructed_sha256": "bd033aff9bb90cd60ca99b65fb1405aa8b02f488ff9e9754b3a0837af71ea0c9",
+      "stage": "hyefu-allowance"
+    },
+    {
+      "historical_sha256": "888e1d70d48866a579c7c57b99f674601002ebf1dff14914efca8a00e9d3f930",
+      "matches_historical_pin": true,
+      "reconstructed_path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/evidence/donor-area-recovery-20261018/native-1/first/befu-residual/MANIFEST.json",
+      "reconstructed_sha256": "888e1d70d48866a579c7c57b99f674601002ebf1dff14914efca8a00e9d3f930",
+      "stage": "befu-residual"
+    },
+    {
+      "historical_sha256": "bbedd633a5283fb29409b334196e161bd068839cb5ccb029d2eaf6af6216cc40",
+      "matches_historical_pin": true,
+      "reconstructed_path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/evidence/donor-area-recovery-20261018/native-1/first/hyefu-residual/MANIFEST.json",
+      "reconstructed_sha256": "bbedd633a5283fb29409b334196e161bd068839cb5ccb029d2eaf6af6216cc40",
+      "stage": "hyefu-residual"
+    },
+    {
+      "historical_sha256": "0df04c977f870a6abba4105706a7e51af179eba35234221fcbf5a13482139503",
+      "matches_historical_pin": true,
+      "reconstructed_path": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/evidence/donor-area-recovery-20261018/native-1/first/crown/MANIFEST.json",
+      "reconstructed_sha256": "0df04c977f870a6abba4105706a7e51af179eba35234221fcbf5a13482139503",
+      "stage": "crown"
+    }
+  ],
+  "stages": 12,
+  "status": "passed",
+  "track_complete": false,
+  "whole_worksheet_semantics": "unresolved"
+}

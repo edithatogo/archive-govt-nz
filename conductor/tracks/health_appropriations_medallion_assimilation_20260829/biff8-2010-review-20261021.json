@@ -1,0 +1,91 @@
+{
+  "checks": {
+    "bounds": "source120/interface30/stage900/manifest4MiB/package128MiB/coverage80 unchanged",
+    "dimensions": "expenditure MCOA id distinct from revenue ParentAppropriationID; no inferred relationships; publisher Pivot Revenue by Department A5 supports UnitName department-label mapping",
+    "donor": "all30 retain-both dispositions accepted; replacement/publication unapproved; not an open parity blocker",
+    "edition": "Budget2010 explicitly at expenditure B4/revenue B5,2010/11 Estimates notes agree; no publication date inferred",
+    "preservation": "319 expense/76 revenue facts; all5513/983 source rows;1580 integer witnesses; old classification labels, two negative revenue amounts, qualifiers and absent-field flags retained",
+    "source_identity": "exact originals, every split Explanation census cell, full headers and inventories verified twice",
+    "tests": "45 source/103 integrated tests,76 schemas/66 representative documents; native focused suite passed",
+    "typing": "0 errors,0 warnings,0 notes",
+    "versioning": "distinct complete25-source v11 with all named source/profile bindings; prior v1-v10 bytes and identities unchanged; incomplete new cohorts refused before I/O"
+  },
+  "donor_authority": {
+    "disposition": "accepted_retain_both_no_replacement",
+    "path": "donor-historical-dispositions-20260927.json",
+    "sha256": "547d901ec8c4b2a467351d1a69ba6391d728b699ff05013688c3fa4de6a73ea0"
+  },
+  "external_capture_publication_collection_mutations": false,
+  "fictional_qualifier_cases": 10,
+  "findings": [],
+  "head": "6361e7fef80f0178ac81738ec3631542690a2ab3",
+  "holds": [
+    "rights",
+    "currency",
+    "period starts",
+    "historical comparability",
+    "aggregation and joins"
+  ],
+  "native_binding_refusals": 100,
+  "native_postflight": {
+    "exit": 0,
+    "head": "6361e7fef80f0178ac81738ec3631542690a2ab3",
+    "independent_lease_free": true,
+    "owner_and_group_absent": true,
+    "pins_unchanged": 6918,
+    "status": "verified",
+    "tree": "0cb5c51d69c14ca2ad51fd4612cb361644a23fd5"
+  },
+  "native_summary": {
+    "all10_queries_verified": true,
+    "canonical_packages": 25,
+    "composite_metadata_verified": true,
+    "current_2010_raw_profiles_match_native_qualification": true,
+    "fresh_input_builds": 2,
+    "gold_files": 61,
+    "head": "6361e7fef80f0178ac81738ec3631542690a2ab3",
+    "input_files": 227,
+    "legacy_gold11_61_files_identical": true,
+    "legacy_gold13_61_files_identical": true,
+    "legacy_gold15_61_files_identical": true,
+    "legacy_gold17_61_files_identical": true,
+    "legacy_gold19_61_files_identical": true,
+    "legacy_gold21_61_files_identical": true,
+    "legacy_gold23_61_files_identical": true,
+    "legacy_gold9_61_files_identical": true,
+    "legacy_gold_60_files_identical": true,
+    "legacy_v10_209_files_identical": true,
+    "legacy_v1_47_files_identical": true,
+    "legacy_v2_65_files_identical": true,
+    "legacy_v3_83_files_identical": true,
+    "legacy_v4_101_files_identical": true,
+    "legacy_v5_119_files_identical": true,
+    "legacy_v6_137_files_identical": true,
+    "legacy_v7_155_files_identical": true,
+    "legacy_v8_173_files_identical": true,
+    "legacy_v9_191_files_identical": true,
+    "publication": "not_performed",
+    "repeat_identical": true,
+    "retained_derivatives_consumed": false,
+    "rights": "not_evaluated",
+    "runtime_warmup": "Arrow dependency initialized before each source stage; no source reads before timers; inherited qualified runtime contract",
+    "tree": "0cb5c51d69c14ca2ad51fd4612cb361644a23fd5"
+  },
+  "pending": [
+    "original exact-final-tree validation",
+    "green hosted checks and normal protected merge",
+    "zero-unique clean owned-topic pruning"
+  ],
+  "publisher_label_basis": {
+    "authority_scope": "source-stated label only, not an agency identity or cross-source relationship",
+    "coordinate": "A5",
+    "evidence": "/Volumes/PortableSSD/ArchiveGovtNZ/health-appropriations/evidence/legacy-workbook-reader-20261020/native-inspection-1/treasury-historical-f4282a2d6ae19875-1.json",
+    "evidence_sha256": "c516315ad35798529f145b08d8cc38497325319b74bc6b6c7da3ae729f60f177",
+    "mapping": "Raw Data UnitName is retained as department label with original header and coordinate preserved",
+    "parent_identifier": "ParentAppropriationID remains distinct, with no MCOA alias or emitted relationship",
+    "publisher_row_label": "UnitName",
+    "publisher_view": "Pivot Revenue by Department",
+    "source_sha256": "d6f63516ef967abec18f09cbe347c02a648a53ef04ce382aa8511c7280f08e15"
+  },
+  "scope": "Budget2010 retained expenditure/revenue to canonical/Gold and complete recoveryv11; bounded slice only"
+}

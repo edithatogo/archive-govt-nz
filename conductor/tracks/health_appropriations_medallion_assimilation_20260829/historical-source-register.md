@@ -7,6 +7,29 @@ electronic documents are not held by Treasury according to that index; other
 custodians have not been investigated. All 30 editions remain pending full
 payload enumeration and reconciliation with existing retained objects.
 
+## Vote Health Estimates and Supplementary Estimates, Budget 2002 — 6 October 2026
+
+Treasury's [historical Vote Health index](https://www.treasury.govt.nz/publications/budgets/vote-information?vote=1640&year=All)
+links the [2002/03 main Estimates chapter](https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2002-03)
+and [2001/02 Supplementary Estimates chapter](https://www.treasury.govt.nz/publications/supplementary-estimates/vote-health-supplementary-estimates-appropriations-2001-02).
+The exact PDFs are `est02health.pdf` (44 pages) and `supp02health.pdf` (19 pages).
+The main chapter reports Vote Health appropriations and Crown revenue for
+2002/03, including total sought of $8,645.493 million and expected Crown
+revenue of $292.005 million. The supplementary chapter reports annual and
+other appropriation fields in `$000`, with separate Main Estimates,
+Supplementary Estimates and cumulative totals for 2001/02; it also contains
+Crown revenue and receipts tables. These are separate fiscal periods and
+statuses, not one continuous measure.
+
+The Treasury history notes that Vote Health Service Providers merged into
+Vote Health in the 2002/03 Estimates. Keep this structural change explicit in
+any future mapping; this locator record does not claim a longitudinally
+comparable series. Each item page states CC BY 4.0, recorded as page-level
+evidence only; bytes remain uncaptured and unhashed, and item-level rights
+remain `not_evaluated`. Both locators are added to the machine register, but
+the 2002 edition and all 30 editions remain pending full source-family
+enumeration.
+
 Each resource has a stable `treasury-historical-` source ID followed by the
 first 16 hexadecimal characters of the SHA-256 of its exact observed URL.
 Uniqueness and derivation are checked by the register test. These identify
@@ -68,11 +91,35 @@ separate. Treasury page-level CC BY 4.0 statements are retained only as rights
 leads. No locator in this register establishes item-specific rights,
 redistribution eligibility, retained bytes, or fixity.
 
-Years 1998–2000, 2002–2004, 2006, and 2025–2026 have no historical locators in
-this discovery pass. All 30 years remain pending because no edition has had
-its complete source families enumerated; a locator never marks an edition
-complete. Captured Budget 2026, BEFU 2026 and HYEFU 2025 resources remain
-separately represented in the source census.
+Budget workbook and other source-family locators for 1998–2000, 2002–2004,
+2006, and 2025–2026 remain missing from this discovery pass; BEFU 2002 has a
+separate GAAP expense-table locator described below. All 30 years remain
+pending because no edition has had its complete source families enumerated; a
+locator never marks an edition complete. Captured Budget 2026, BEFU 2026 and
+HYEFU 2025 resources remain separately represented in the source census.
+
+## BEFU 2002 GAAP expense series — 6 October 2026
+
+The official [BEFU 2002 page](https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-befu-2002)
+links [Generally Accepted Accounting Practice (GAAP) Series Tables](https://www.treasury.govt.nz/sites/default/files/2007-09/befu02-gaap.pdf)
+and states the Treasury copyright licence as CC BY 4.0. The observed item is
+the 52-page PDF `befu02-gaap.pdf`; bytes have not been retained or hashed and
+the item-level rights state remains `not_evaluated`.
+
+The printed page 144 (`PDF page 4`) contains a Forecast Statement of Financial
+Performance for years ending 30 June. Its exact total-expense series is
+`Total Expenses`, in `$ million`: 2001 Actual, 2002 Previous Budget, 2002
+Estimated Actual, and 2003–2006 Forecast. The PDF states that forecasts follow
+the Fiscal Responsibility Act 1994 and reflect information and decisions
+communicated by 10 May 2002. This is a GAAP Crown reporting-entity measure; it
+is not assumed interchangeable with Core Crown Expenses, later accounting
+bases, or modern financial-year tables.
+
+This adds one official BEFU resource locator and a source-backed period/unit
+description. It does not enumerate the complete 2002 source families, locate
+the Budget 2002 expenditure/revenue data workbooks, retain payload bytes, or
+approve a historical join. The 2002 edition remains pending and publication
+remains unauthorized.
 
 ## Follow-up edition observations
 
@@ -118,3 +165,45 @@ The 2018–2019 Budget workbooks use legacy `.xls` format. The browser could not
 Read-only review of Treasury's official [Budget 2017 data](https://www.treasury.govt.nz/publications/data/budget-2017-data-estimates-appropriations-2017-18), [BEFU 2017](https://www.treasury.govt.nz/publications/efu/budget-economic-and-fiscal-update-2017), and [HYEFU 2017](https://www.treasury.govt.nz/publications/efu/half-year-economic-and-fiscal-update-2017) pages found five workbook locators: Budget expenditure and revenue, BEFU charts/data and expense tables, and HYEFU charts/data. The Budget page warns historical detail predates later restructuring and excludes the prior year's Supplementary Estimates. Landing pages state CC BY 4.0; this is page-level evidence only and rights remain not evaluated.
 
 The linked payloads were not retrieved; hashes and byte counts remain null. These five discoveries do not close the 2017 edition's full source-family enumeration or qualify data for analysis/publication.
+
+## BEFU/DEFU 2002 extension — 17 October 2026
+
+Five additional official locators bring the register to 76: BEFU Additional
+GAAP and the four DEFU GAAP, annex/glossary, Additional GAAP and forecast
+resources. Publication-native DEFU identity, accounting boundaries and the
+annex label/reader-extent discrepancy are recorded in the
+[bounded census observation](./source-census-2002-befu-defu-20261017.md).
+Actual hashes/bytes and native layouts are unverified; resource rights and
+joins remain unapproved. All 30 editions remain pending complete enumeration.
+
+## BEFU 1998 release extension — 17 October 2026
+
+The ten links on the official BEFU 1998 release page bring the discovery
+register to 86 locators. GAAP/SNA scope and table-status distinctions, reader
+layout caveats and the separate Budget 1998 Supplementary withdrawal notice
+are recorded in the [bounded observation](./source-census-befu-1998-20261017.md).
+The retained 1998/99 captures are unchanged, and the withdrawal notice is not
+assigned a fiscal period. All 30 editions remain pending full enumeration.
+
+## BEFU 1999 and separate December dispositions — 2026-10-17
+
+Seven official BEFU 1999 PDF links extend the register from 86 to 93 resources.
+The publisher contents label says 2019; release and reader identify 1999. Fiscal
+and GAAP period/status observations remain separate and unqualified for joins.
+December 1998 is corroborated as published with its original locator unresolved;
+Parliament reports December 1999 nonpublication. Neither BPS nor PREFU is admitted
+as a substitute. See the [bounded source observation](./source-census-befu-1999-20261017.md).
+All previous resource records remain unchanged; all 30 editions still need full
+source-family reconciliation, qualified fixity/layout and resource rights.
+
+## Remaining year-level locators — 2026-10-17
+
+The [six-edition observation](./source-census-locator-gaps-20261017.md) adds 38
+primary BEFU/Budget locators, raising the register to 131. Every scoped year
+1997–2026 now has at least one primary locator, but all 30 editions still need
+complete source-family enumeration and qualified fixity/layout/rights review.
+Four related 2000 links remain discovered with content-scope review pending.
+Publisher/reader label discrepancies, accounting/GST boundaries, conflicting
+metadata dates and unverified Treasury/Budget.govt.nz URL equivalence remain
+explicit. All previous 93 primary resource records are preserved unchanged;
+existing captures and current-workbook evidence receive no new byte credit.

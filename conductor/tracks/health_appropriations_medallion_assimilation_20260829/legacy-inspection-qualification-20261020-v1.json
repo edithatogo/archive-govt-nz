@@ -1,0 +1,282 @@
+{
+  "actual_native_exit": 0,
+  "all_frozen_pins_unchanged": true,
+  "all_repeat_equal": true,
+  "candidate_count": 32,
+  "evidence": "legacy-workbook-reader-20261020/native-inspection-1/summary.json",
+  "full_assurance_gate": {
+    "state": "pending"
+  },
+  "head": "12198f1499eef9672670bf50c8a82796b61a35cd",
+  "inspected_count": 32,
+  "pending_inspections": 0,
+  "period_units_rights_and_numeric_admission": "not_performed",
+  "protected_delivery_gate": {
+    "state": "pending"
+  },
+  "resources": [
+    {
+      "biff_version": 80,
+      "preview_cells": 135,
+      "sheet_count": 5,
+      "source_bytes": 300032,
+      "source_id": "treasury-historical-de9956ad7a7b3449",
+      "source_sha256": "c261fb95965f8dc1c0d649000e5bf46012c6e5c37385c050c370de07a580e94a"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 150,
+      "sheet_count": 6,
+      "source_bytes": 299520,
+      "source_id": "treasury-historical-2f8ab31aef8d5f85",
+      "source_sha256": "dc5ce0e7faf9302cdca3bf9e0af5f423e0cac851cb1bdf031508b732f0ae383d"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 120,
+      "sheet_count": 6,
+      "source_bytes": 347136,
+      "source_id": "treasury-historical-f4282a2d6ae19875",
+      "source_sha256": "d6f63516ef967abec18f09cbe347c02a648a53ef04ce382aa8511c7280f08e15"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 195,
+      "sheet_count": 7,
+      "source_bytes": 374784,
+      "source_id": "treasury-historical-a5ede5d1d74ffbeb",
+      "source_sha256": "bd902503455cebe5cc455031bbd2b07f325cce57027c8391c9bec476ad77f073"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 180,
+      "sheet_count": 7,
+      "source_bytes": 4418560,
+      "source_id": "treasury-historical-1986b1eeb8a119b5",
+      "source_sha256": "4dbabc88f1e0756e0f651ef261b3408b262a10f0b1cdb51977844c97841b9325"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 105,
+      "sheet_count": 7,
+      "source_bytes": 325120,
+      "source_id": "treasury-historical-d7eb66f4860bc179",
+      "source_sha256": "481b971d4569cbadbf48440fa1d66f82d8d42942fd855e95e5bfd1ea95e70171"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 235,
+      "sheet_count": 8,
+      "source_bytes": 4777984,
+      "source_id": "treasury-historical-3dcc17c2c882e42c",
+      "source_sha256": "fecd70019054313f3a11cbb370be684d8bea0eea8cb3623b69a9e193ac085c24"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 115,
+      "sheet_count": 7,
+      "source_bytes": 462336,
+      "source_id": "treasury-historical-e6ba8a7f1451c681",
+      "source_sha256": "4db87e7eddd7a76b5b7523db5a01952d15e7f47b88d03ef9878d37cd077f937f"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 235,
+      "sheet_count": 8,
+      "source_bytes": 4450304,
+      "source_id": "treasury-historical-75b102427fca550d",
+      "source_sha256": "30602fd66ec1f4fb7d0b47f2766f6560c4d22e90c11e994fba3e404e29ceab48"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 120,
+      "sheet_count": 7,
+      "source_bytes": 468480,
+      "source_id": "treasury-historical-3672fad7f6d51c5c",
+      "source_sha256": "d927995dd91eda6fdfb4020eb2a3e91871a24d5144e837e7801b6725e5f33df8"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 200,
+      "sheet_count": 6,
+      "source_bytes": 1805312,
+      "source_id": "treasury-locator-30919ff114f55b44",
+      "source_sha256": "803822e4b27c1bda6c7c3bbe95c8bc025e1ef67ded6beca55473011d8b62ba21"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 135,
+      "sheet_count": 5,
+      "source_bytes": 228352,
+      "source_id": "treasury-locator-965a0a7f646bde34",
+      "source_sha256": "bbb62b2d4fb16a35315854adc81899bb416a0cebc3f84f4a971158626b8be3e4"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 175,
+      "sheet_count": 7,
+      "source_bytes": 3843584,
+      "source_id": "treasury-locator-aec212e7d9fea490",
+      "source_sha256": "81429ccc5da52cdba73bb6276bba7d1c55a301dc996a447909fc8fc82ca1af12"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 155,
+      "sheet_count": 7,
+      "source_bytes": 369664,
+      "source_id": "treasury-locator-f0b9b89915c26ffa",
+      "source_sha256": "643fad503424ee6b3aa060a2ff2107fc69d9326bb51446d6fa41755a32d038cb"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 95,
+      "sheet_count": 5,
+      "source_bytes": 1458688,
+      "source_id": "treasury-locator-8a2ef732811d29cf",
+      "source_sha256": "734b313a285b7165b3682f4659289e812556d6a095d058c5f18df4e66e173ea7"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 180,
+      "sheet_count": 7,
+      "source_bytes": 4804096,
+      "source_id": "treasury-locator-8c3da1c2b903cba0",
+      "source_sha256": "bce6d2e55c15c1249881bac9d2a1afdf111cd9d1c258c20913bd4b39300f0f5a"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 110,
+      "sheet_count": 7,
+      "source_bytes": 339968,
+      "source_id": "treasury-locator-237c11f98b8c41c9",
+      "source_sha256": "df34849f2ef7ce1903469edb315047afc8ae716574d163f59691a654c51b957f"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 235,
+      "sheet_count": 8,
+      "source_bytes": 4772352,
+      "source_id": "treasury-locator-9e603138cf551b21",
+      "source_sha256": "7e0cc535eb9feb7e82b1a998dd40b7b318e5593e13589aa48ef4a3b5508708fc"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 110,
+      "sheet_count": 7,
+      "source_bytes": 462336,
+      "source_id": "treasury-locator-827202ea343c3852",
+      "source_sha256": "e49a706c4a5ac889e8b9e68165dbfd704a9f05b0300bef7f69abf5f5620b7adf"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 200,
+      "sheet_count": 6,
+      "source_bytes": 2411520,
+      "source_id": "treasury-locator-766f5f38a81ed87e",
+      "source_sha256": "62283a0454233bfeec9ce75bdbc822dcf59326cc2aecf5ea33581a4e1355c51b"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 90,
+      "sheet_count": 5,
+      "source_bytes": 2156032,
+      "source_id": "treasury-locator-136e89a5fbb94127",
+      "source_sha256": "021e73643e4447735920ffbb281e41dd96b09f49e0f10f0ea55ce9c722d3f92c"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 235,
+      "sheet_count": 6,
+      "source_bytes": 1438720,
+      "source_id": "treasury-locator-9c10a792d4248d02",
+      "source_sha256": "c1177036dd97da6f0e63fb2c91f878a5ec0f98111f62dd881a0e70b536b0bebc"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 125,
+      "sheet_count": 5,
+      "source_bytes": 1492992,
+      "source_id": "treasury-locator-7d150e8bde79bb46",
+      "source_sha256": "ffc8307bb6a76b5457aa8716d94ff34d0a2775aac6974cae422340ab765d1edb"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 185,
+      "sheet_count": 7,
+      "source_bytes": 1992704,
+      "source_id": "treasury-locator-cd307714183be5ec",
+      "source_sha256": "7e26853cbed914ef19bc6dc426d24708dbf19487ce0a9dbc15db4d32d3d00a4f"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 125,
+      "sheet_count": 5,
+      "source_bytes": 1559040,
+      "source_id": "treasury-locator-7c80560159757085",
+      "source_sha256": "5e8003e093ece8485c652ac2f4655fc35b1b57f02522111180998584048e730c"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 175,
+      "sheet_count": 7,
+      "source_bytes": 1994240,
+      "source_id": "treasury-locator-c3c2bbb6ab07bf6e",
+      "source_sha256": "8712d27f2da918d1cc8376a8f15e24cafb6b608a3be0cc19da226768a8f69ba0"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 125,
+      "sheet_count": 6,
+      "source_bytes": 1560064,
+      "source_id": "treasury-locator-5bf7c39ea5ce8219",
+      "source_sha256": "de61a9b55e715caf17531ee9004a2e5885282de7c962b44a443638d155768ffb"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 175,
+      "sheet_count": 7,
+      "source_bytes": 3617792,
+      "source_id": "treasury-locator-bdb470d57f6a6454",
+      "source_sha256": "c5b7f6916b89a9ea0fd14caf73a979c730116d517d78ffe777d36c5966626140"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 155,
+      "sheet_count": 7,
+      "source_bytes": 372736,
+      "source_id": "treasury-locator-f29be12d65472299",
+      "source_sha256": "69e9d3d10c72bd01c661ca02633d48404f7add6f5e4fda02017ab5649fa27869"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 95,
+      "sheet_count": 5,
+      "source_bytes": 1374720,
+      "source_id": "treasury-locator-39db957dabe259ed",
+      "source_sha256": "793e00dc28a9153a87e307827d02495d0c6ddd998c65af9d5d280be50c528264"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 290,
+      "sheet_count": 10,
+      "source_bytes": 4505600,
+      "source_id": "treasury-locator-be43a82d5a1e7360",
+      "source_sha256": "7194eebe691ff57378168439d7ba5a785dfa408bc3c836f2a7cfe50519af5169"
+    },
+    {
+      "biff_version": 80,
+      "preview_cells": 135,
+      "sheet_count": 7,
+      "source_bytes": 355840,
+      "source_id": "treasury-locator-5da68f356249366b",
+      "source_sha256": "ba1798c82e556afe98188ea58651759cb6fa1f52a461e4529bc664af424db91b"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-legacy-inspection-qualification/v1",
+  "source_bytes_preserved": true,
+  "summary_sha256": "13a7cfb05542514350039c1deaf9fe84da3a80d0efbce8818493deb153fd14fc",
+  "track_complete": false,
+  "tree": "07027da1e73c7d2f49bb672d0ddbaec4fd409748",
+  "value_semantics": "decoded_stored_or_cached_not_canonical_facts",
+  "worksheet_observations": 210
+}

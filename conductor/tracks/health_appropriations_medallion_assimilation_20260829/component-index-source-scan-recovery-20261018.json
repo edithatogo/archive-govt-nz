@@ -1,0 +1,18 @@
+{
+  "baseline_and_rules": "unchanged",
+  "detector": "Base64 High Entropy String",
+  "full_harness": {
+    "exit_code": 0,
+    "head": "69afe04bd15bd3f0c2ecc5e012658d5819e6f703",
+    "receipt": "component-index-source-assurance-final-20261018.json"
+  },
+  "line": 5,
+  "matched_field": "/methodology/ppi",
+  "meaning": "descriptive source-method summary, not a credential",
+  "new_report_sha256": "fccc38505c0983ff60c12371e714f4233e54c84efa7c52b0b04e7d31c62fe8e4",
+  "path": "component-index-source-evidence-report-20261018.json",
+  "producer_fix": "three methodology summaries changed to readable prose; native3 confirms all other report values and every input byte unchanged",
+  "scan_report_sha256": "f7ab3f26c3b88359b915e987369caeacc8404c4587a9a8aab744fb0bea86b8bc",
+  "status": "resolved_on_full2",
+  "value_sha1": "408c19f1e761038e8781b33b2128cb11e87fd7b0"
+}

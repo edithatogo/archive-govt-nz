@@ -1,0 +1,250 @@
+{
+  "aggregation": "not_performed",
+  "amounts": "literal OOXML numeric tokens",
+  "broader": {
+    "passed": 647,
+    "seconds": 51.95,
+    "skipped": 10
+  },
+  "currency": null,
+  "delivery_evidence": "budget-2024-expenditure-delivery-20261018.json",
+  "final_focused": {
+    "passed": 9,
+    "seconds": 20.98
+  },
+  "hosted_full": {
+    "macos": {
+      "all32stage_headers_verified": true,
+      "job": 117607490594,
+      "log_sha256": "5602e08041d8aceaecb299b3ae116b765ba43f0348093b0ae91fb70b2f60c6e0",
+      "pytest_summary": [
+        "8031",
+        "30",
+        "18",
+        "736.78"
+      ]
+    },
+    "ubuntu": {
+      "all32stage_headers_verified": true,
+      "job": 117607490515,
+      "log_sha256": "cbb1fab5a4d631b5e588da3d4b5f0430a3b5d0ce3dee4c071b7d985c066f2cb2",
+      "pytest_summary": [
+        "8031",
+        "30",
+        "18",
+        "508.99"
+      ]
+    },
+    "windows": {
+      "all32stage_headers_verified": true,
+      "job": 117607490545,
+      "log_sha256": "4b64507523300308dceb55c331170f85c5963f798e877fb5d8131ed6e5d81faa",
+      "pytest_summary": [
+        "8025",
+        "36",
+        "18",
+        "778.58"
+      ]
+    }
+  },
+  "legacy_2025_2026_contracts": "unchanged",
+  "logs": {
+    "based-types-1.log": "56882e01cb80173ef053c4096e4ee43e3123a15f5c0a06715f96988d48fbd91c",
+    "conductor-1.log": "be7b0e678f0581caa2a6234abf52ffc1e00519aaef0afb53883c8873fb963b38",
+    "focused-2.log": "cff185a778b7cb3c8bff2e188091621cbe5d74ae0540b8ffb8644d23848c47c5",
+    "focused-3.log": "2e3545e478febafc52c891ecb50fe1884b891ef9f51bbcfe18dddd07dd522e7a",
+    "lint-4.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+    "red-1.log": "cfa6c31dc90e14090f8fd40ecdca43f75aa78c066686c36563e60c22593c86a8",
+    "schemas-1.log": "fab0eeb1ae367003a00c3b25ede08c3d3420d536fc71d6e775cacf83c8e166b5"
+  },
+  "native": {
+    "directory": "budget-2024-expenditure-20261018/native-1",
+    "exit": 0,
+    "independently_verified_both_packages": true,
+    "result": {
+      "CLI_MCP_preflight_equal": true,
+      "actual_CLI_preflight": {
+        "counts": {
+          "blank": 0,
+          "input": 6645,
+          "normalized": 244,
+          "out_of_scope": 6401,
+          "rejected": 0
+        },
+        "profile": "budget-expenditure-2024/v1",
+        "publication_state": "local_validation_only",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-source-operation/v1",
+        "source_object_sha256": "891539afe9f5df4a7c7f73ac29695e19b6fb523a4947d305e1f4bd69ebcb3256",
+        "status": "preflight_passed",
+        "transformation_id": "budget-2024-health-expenditure/v1",
+        "verification_scope": "adapter_execution_only"
+      },
+      "actual_CLI_write": {
+        "counts": {
+          "blank": 0,
+          "input": 6645,
+          "normalized": 244,
+          "out_of_scope": 6401,
+          "rejected": 0
+        },
+        "output_sha256": {
+          "budget_facts.parquet": "afb3814a366013acda4dbc0148f6b09826838a1404745b6ed4dbc78c368fc745",
+          "field_lineage.parquet": "0e4efa7822569761bfd212fc19d7ed17abba5f2b7d065666233523c8719fdbe1",
+          "row_dispositions.parquet": "f25ee897f2f3df0b24751dbac162b48d7bfed1456179206476729e6a5290e027"
+        },
+        "profile": "budget-expenditure-2024/v1",
+        "publication_state": "local_validation_only",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-source-operation/v1",
+        "source_object_sha256": "891539afe9f5df4a7c7f73ac29695e19b6fb523a4947d305e1f4bd69ebcb3256",
+        "status": "written_local",
+        "transformation_id": "budget-2024-health-expenditure/v1",
+        "verification_scope": "adapter_execution_only"
+      },
+      "actual_MCP_preflight": {
+        "counts": {
+          "blank": 0,
+          "input": 6645,
+          "normalized": 244,
+          "out_of_scope": 6401,
+          "rejected": 0
+        },
+        "profile": "budget-expenditure-2024/v1",
+        "publication_state": "local_validation_only",
+        "rights_state": "not_evaluated",
+        "schema_version": "archive-govt-nz.health-source-operation/v1",
+        "source_object_sha256": "891539afe9f5df4a7c7f73ac29695e19b6fb523a4947d305e1f4bd69ebcb3256",
+        "status": "preflight_passed",
+        "transformation_id": "budget-2024-health-expenditure/v1",
+        "verification_scope": "adapter_execution_only"
+      },
+      "canonical_Gold_admission": "not_performed",
+      "common_dispatch_facts_equal": true,
+      "common_dispatch_lineage_equal": true,
+      "common_dispatch_losses_equal": true,
+      "counts": {
+        "blank": 0,
+        "input": 6645,
+        "normalized": 244,
+        "out_of_scope": 6401,
+        "rejected": 0
+      },
+      "dispositions": 6645,
+      "facts": 244,
+      "lineage": 6100,
+      "preflight_output_absent": true,
+      "publication": "not_performed",
+      "repeat_build_files": {
+        "MANIFEST.json": "b43d3b4a4421f77883e278a55d66a7da93728382b86f8f87db36f16a0ec05a00",
+        "budget_facts.parquet": "afb3814a366013acda4dbc0148f6b09826838a1404745b6ed4dbc78c368fc745",
+        "field_lineage.parquet": "0e4efa7822569761bfd212fc19d7ed17abba5f2b7d065666233523c8719fdbe1",
+        "row_dispositions.parquet": "f25ee897f2f3df0b24751dbac162b48d7bfed1456179206476729e6a5290e027"
+      },
+      "rights": "not_evaluated",
+      "source_bytes_unchanged": true,
+      "source_sha256": "891539afe9f5df4a7c7f73ac29695e19b6fb523a4947d305e1f4bd69ebcb3256",
+      "status": "passed"
+    },
+    "status": "passed",
+    "summary_sha256": "dc4cc144b9d36141da16f0f04f09111ecb04a9567f4c683b8e233c35e98e7ef7"
+  },
+  "original_full": {
+    "attempts": [
+      {
+        "actual_processes_absent": [
+          79577,
+          5808,
+          8628
+        ],
+        "failure_scope": "unchanged legislation property tests: DeadlineExceeded321.15ms vs200ms, input generation1.40s",
+        "full_exit": 1,
+        "full_log_sha256": "231f8b3e1d58839334abfde5d2b4a9d5ff443500b4d97b38d89618732d103672",
+        "head": "101af09f411a0698d30ac3d6f85c0362048c5a15",
+        "kernel_lock_acquired_nonblocking_then_released": true,
+        "native_exit": 0,
+        "new_expenditure_tests": "all9passed",
+        "quality_gates": "unchanged; no suppression or deadline extension",
+        "skipped": 14,
+        "test_seconds": 622.78,
+        "tests_failed": 2,
+        "tests_passed": 8045,
+        "tree": "88a18dc71ade5066fbc2a822982d104cde930514",
+        "warnings": 18
+      },
+      {
+        "actual_processes_absent": [
+          39437,
+          39558,
+          42459,
+          42697
+        ],
+        "failed_test_entries": 0,
+        "full_exit": 124,
+        "full_log_sha256": "55cdb7ee70cc2b6cea5a9c207fded9636ab426f1158f0e907cf7675e2aad475b",
+        "head": "101af09f411a0698d30ac3d6f85c0362048c5a15",
+        "kernel_lock_acquired_nonblocking_then_released": true,
+        "previous_timing_contracts": "both passed unchanged in full2",
+        "progress_percent": 84,
+        "pytest_workers": 1,
+        "quality_gates": "unchanged; no suppression or deadline extension",
+        "stage_time_limit_seconds": 900,
+        "tree": "88a18dc71ade5066fbc2a822982d104cde930514"
+      },
+      {
+        "actual_processes_absent": [
+          79104,
+          79143,
+          81604,
+          81813,
+          81837
+        ],
+        "failure_scope": [
+          "unchanged parent-state test:303.47ms deadline,19.01ms replay",
+          "unchanged manifest-root property:input generation1.04s"
+        ],
+        "full_exit": 1,
+        "full_log_sha256": "c5cd02ed95677c7fdba42d9715f6b4456368473d38a1addb1e15aeb7f68bd19a",
+        "head": "101af09f411a0698d30ac3d6f85c0362048c5a15",
+        "kernel_lock_acquired_nonblocking_then_released": true,
+        "pytest_workers": 2,
+        "quality_gates": "unchanged; no suppression or deadline extension",
+        "skipped": 14,
+        "test_seconds": 641.25,
+        "tests_failed": 2,
+        "tests_passed": 8045,
+        "tree": "88a18dc71ade5066fbc2a822982d104cde930514",
+        "warnings": 18
+      }
+    ],
+    "focused_failed_contracts": {
+      "passed": 2,
+      "seconds": 1.98
+    },
+    "hosted_full": "all 32 stages passed on Ubuntu, macOS and Windows; exact head 9d882d46; see delivery receipt",
+    "local_full_pass_claim": false,
+    "status": "local_runs_failed_timing_or_host_capacity",
+    "tests_deadlines_healthchecks_caps": "unchanged"
+  },
+  "profile": "budget-expenditure-2024/v1",
+  "publication": "not_performed",
+  "qualified_source_head": "101af09f411a0698d30ac3d6f85c0362048c5a15",
+  "qualified_source_tree": "88a18dc71ade5066fbc2a822982d104cde930514",
+  "red": "new profile module absent; expected import failure",
+  "rights": "not_evaluated",
+  "source_columns": 17,
+  "source_locator": "https://www.treasury.govt.nz/sites/default/files/2024-06/b24-expenditure-data.xlsx",
+  "source_rows": 6645,
+  "source_sha256": "891539afe9f5df4a7c7f73ac29695e19b6fb523a4947d305e1f4bd69ebcb3256",
+  "source_vintage": "Budget-2024",
+  "static": {
+    "conductor_tracks": 93,
+    "representative_documents": 56,
+    "ruff": "passed",
+    "schemas": 66,
+    "strict_types": "0 errors/warnings/notes"
+  },
+  "status": "native_and_hosted_qualified_delivered_PR718",
+  "unit": "$000",
+  "valid_time_start": null
+}

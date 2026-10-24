@@ -1,0 +1,83 @@
+{
+  "CLI_limit_seconds": 30,
+  "CLI_product_hashes_match_prior19": true,
+  "CLI_seconds": 12.126685208058916,
+  "CLI_status": "planned",
+  "MCP": {
+    "action": "preflight",
+    "currency_admission": "not_performed",
+    "denominator_selection": "not_performed",
+    "input_operations": 5,
+    "input_records": 615,
+    "output_count": 19,
+    "publication": "not_performed",
+    "rights_state": "not_evaluated",
+    "schema_version": "archive-govt-nz.health-operation-context-gold-operation/v1",
+    "status": "planned"
+  },
+  "MCP_response_limit_seconds": 30,
+  "MCP_response_seconds": {
+    "initialize": 1.2113299160264432,
+    "tools/call": 10.11338504194282,
+    "tools/list": 0.008265499956905842
+  },
+  "actual_exit": 0,
+  "archive_sha256": {
+    "cli-diagnostic-1": {
+      "cli-profile-1.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "cli-profile-1.log": "b8316693f26bc53f6e43a32119d2139aee46ac50647381eaca0853db31c8c61b",
+      "cli-profile-1.py": "f052c1fad07eefdeae29baaaff42c5cfeae250f55f2a27a72da507cefab252ec",
+      "cli-profile-1/profile.pstats": "c94b5513f6ed0930d2fc1eb447398f6b7fccc5120cce0905393e886ca84799e1",
+      "cli-profile-1/stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "cli-profile-1/stdout.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "cli-profile-1/summary.json": "0d58f66e6b263deb6fd2272cbbcef38d540135a44b8bff0aca2701b647e4e730",
+      "frozen-cli-profile-1.json": "1682b5a82ae03a993802daa01cdd47f66e526412cbf52e69e7c6db522339275b",
+      "proposed-owner-cli-profile1.zsh": "98d4655572fcdcf719a8aafef0510cf02155bb15b686ae445b938f689b1f4596"
+    },
+    "cli-diagnostic-2": {
+      "cli-profile-2.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "cli-profile-2.log": "559e1f90845dbf7726855db2d2aaaf3ebaca83cbb8e373c2a67654431d28b9eb",
+      "cli-profile-2.py": "d49488fad3042b5381c91c611d3f35badb0dc61b154a604ce3792fe3ec025c1d",
+      "cli-profile-2/stderr.log": "ed5f6eb958a18a5b5ecf5dc9a090de7b4ffc6a20aaddb68da377855907f34e60",
+      "cli-profile-2/stdout.log": "44115bfbbb2f2b7ebb9c6b9335f5f24c60788cd1318c4f7d5f14d61eb677057b",
+      "cli-profile-2/summary.json": "f2ff32e168da35aebc87a5fb2a03641b68c83c18eee8d8106c96e903a7e663a2",
+      "cli-stage-child-2.py": "c2f1360ef5bbacce9fe585f3be8cda23fb2df54dbbf8fc38bf159f65a320fd9d",
+      "frozen-cli-profile-2.json": "1889db4c4b52ccd2a2f73ce62caed1c9d9b035c69c07aa308cf26af021e0a78c",
+      "proposed-owner-cli-profile2.zsh": "af0ff7d86d8439f232e5f619a83a10465ca40d9531295b6bc019277723e28304"
+    },
+    "operational-replay-3": {
+      "frozen-operational-replay-3.json": "63f5edf34760b9e33fa3f8eba009bdccbc15132bdf7067c29496605e8cb47376",
+      "operational-replay-3.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "operational-replay-3.log": "2914f621c983273a2bd6a26230a8afb92d1a26c00db0bf005b23696b596768b4",
+      "operational-replay-3.py": "7c4cf329ca5685e2591dd4cc6668969ef8d5843c323fa95b4311d35c68659f87",
+      "operational-replay-3/cli-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "operational-replay-3/cli-stdout.json": "44115bfbbb2f2b7ebb9c6b9335f5f24c60788cd1318c4f7d5f14d61eb677057b",
+      "operational-replay-3/mcp-responses.json": "75309978f32d5c0377197a1aab9cdffb57b5546eab9adf0a607a04feb0281998",
+      "operational-replay-3/mcp-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "operational-replay-3/summary.json": "a9f66aef7439a9a4b0fb141e023624104650a66e016bc4a7befe961c2fbbc524",
+      "proposed-owner-operational-replay3.zsh": "1b647d6f97165f993c76ab94a1fdfdca6c722d66364c9e2ac26b42349e147adf"
+    }
+  },
+  "both_outputs_absent": true,
+  "earlier_timeouts": "retained; exact cause not established; no unconditional startup SLA",
+  "head": "b2212f7c92aac9a7f2b566ba52ca38ef0c365870",
+  "initialized_MCP_stdio": true,
+  "kernel_lease_free": true,
+  "prior_failure_receipt": "context-reader-startup-native-20261018.json",
+  "protected_delivery": "pending",
+  "qualification_scope": "Observed standalone console and initialized read-only MCP replay; no unconditional startup SLA or erasure of native1/2timeouts",
+  "reconnection_all_pins_match": true,
+  "reconnection_pin_count": 250,
+  "rights_currency_joins_publication": "unchanged_not_admitted",
+  "runtime_postflight": {
+    "status": "matches_frozen_config_after_execution_and_reconnection",
+    "versions": {
+      "python": "Python 3.14.6",
+      "uv": "0.13.1"
+    }
+  },
+  "schema_version": "archive-govt-nz.health-context-operational-replay/v1",
+  "source_and_input_pins_unchanged": true,
+  "status": "passed_standalone_replay_prior_timeouts_retained",
+  "tree": "b0881b6761dad3156b5fb2096e1e98ecf69f91a5"
+}

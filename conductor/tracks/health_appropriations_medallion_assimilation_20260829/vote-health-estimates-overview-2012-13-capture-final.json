@@ -1,0 +1,58 @@
+{
+  "capture_context": {
+    "census_sha256": "a1a44622d5c510551bf72c3fb7e820a7a1b0b0cf98e4a8678e623028d3474384",
+    "contract": "health-capture-resume/v1",
+    "max_resource_bytes": 67108864
+  },
+  "captured": 1,
+  "cutoff": "2026-10-04",
+  "observations": [
+    {
+      "attempts": [
+        {
+          "outcome": "captured",
+          "status_code": 200
+        }
+      ],
+      "etag": "\"645064b0-17d03\"",
+      "last_modified": "Tue, 02 May 2023 01:17:36 GMT",
+      "object_id": "sha256:5994108997ead9f301f71f73952b8fb04f6b1e4a00207c16dfe8b172f72b60ff",
+      "observation_id": "treasury-vote-health-pdf-2012-13-estimates:4b780f107694e1655d30aa5b6048e90e59f0661d62c7c9830feea4ad0c100d15",
+      "observed_at": "2026-10-03T22:37:57.436271Z",
+      "outcome": "captured",
+      "sha256": "5994108997ead9f301f71f73952b8fb04f6b1e4a00207c16dfe8b172f72b60ff",
+      "source_id": "treasury-vote-health-pdf-2012-13-estimates",
+      "validator_state": "present",
+      "warc_path": "attempt-g9s255jv/response.warc",
+      "warc_sha256": "e3e2b636d39edcd74a7b49dbd9deb1e25c8921d96e2fdd97c8ec408a6e6abb74"
+    }
+  ],
+  "results": [
+    {
+      "blake3": "4d30a428c649103854a11f4cc915bb5ff65a48c4738a111588d7cd691be3e765",
+      "bytes": 97539,
+      "content_type": "application/pdf",
+      "etag": "\"645064b0-17d03\"",
+      "last_modified": "Tue, 02 May 2023 01:17:36 GMT",
+      "object_id": "sha256:5994108997ead9f301f71f73952b8fb04f6b1e4a00207c16dfe8b172f72b60ff",
+      "observed_at": "2026-10-03T22:37:57.436271Z",
+      "request_url_sha256": "92fbd13e7a51a63280681f4cd00395d55fa709092e71dcd9baa1d3d238598712",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "5994108997ead9f301f71f73952b8fb04f6b1e4a00207c16dfe8b172f72b60ff",
+      "source_id": "treasury-vote-health-pdf-2012-13-estimates",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2012-05/est12health.pdf",
+      "validator_state": "present",
+      "warc_path": "attempt-g9s255jv/response.warc",
+      "warc_sha256": "e3e2b636d39edcd74a7b49dbd9deb1e25c8921d96e2fdd97c8ec408a6e6abb74"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-capture-manifest/v1",
+  "selected": 1
+}

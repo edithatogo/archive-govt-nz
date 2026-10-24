@@ -113,7 +113,7 @@ shape after the child read.
 
 ## Initial evidence
 
-- CPython 3.14.6, isolated locked environment; no source acquisition/publication.
+- CPython 3.15.1, isolated locked environment; no source acquisition/publication.
 - Public completion-descriptor tests: four failures because the API was absent.
 - Executor tests: missing-module collection failure before implementation.
 - First focused implementation: 12 tests passed, then 39 tests passed in 15.83s,

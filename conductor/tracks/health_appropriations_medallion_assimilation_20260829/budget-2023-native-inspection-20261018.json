@@ -1,0 +1,130 @@
+{
+  "canonical_Gold_admission": "not_performed",
+  "inspection_exit": 0,
+  "inspection_head": "152060e93d01a5eb8755051029a77a766b535aa3",
+  "publication": "not_performed",
+  "records": [
+    {
+      "media": [
+        {
+          "bytes": 7414,
+          "member": "xl/media/image1.png",
+          "sha256": "89c81a9813ed4e398998a97be866a20c3c1e72602956bbfa8409c3e907c4aa06"
+        }
+      ],
+      "raw_shape": [
+        6697,
+        17
+      ],
+      "row_occupancy": {
+        "blank": 0,
+        "last_eight_rows": [
+          {
+            "nonempty": true,
+            "row": 6690
+          },
+          {
+            "nonempty": true,
+            "row": 6691
+          },
+          {
+            "nonempty": true,
+            "row": 6692
+          },
+          {
+            "nonempty": true,
+            "row": 6693
+          },
+          {
+            "nonempty": true,
+            "row": 6694
+          },
+          {
+            "nonempty": true,
+            "row": 6695
+          },
+          {
+            "nonempty": true,
+            "row": 6696
+          },
+          {
+            "nonempty": true,
+            "row": 6697
+          }
+        ],
+        "occupied": 6696,
+        "rows_below_header": 6696
+      },
+      "sha256": "f73bcf61192fabfc0b3a30f66e2d6f23729ceb412a625c297cd572abb80801fa",
+      "source_id": "treasury-historical-dec1ca1018d3dac5",
+      "source_sha256": "bee0e4cd776f0511d271ec842ade355661772c804d12239035e32ad61db06da9",
+      "status": "inspected"
+    },
+    {
+      "media": [
+        {
+          "bytes": 7414,
+          "member": "xl/media/image1.png",
+          "sha256": "89c81a9813ed4e398998a97be866a20c3c1e72602956bbfa8409c3e907c4aa06"
+        }
+      ],
+      "raw_shape": [
+        1014,
+        8
+      ],
+      "row_occupancy": {
+        "blank": 0,
+        "last_eight_rows": [
+          {
+            "nonempty": true,
+            "row": 1007
+          },
+          {
+            "nonempty": true,
+            "row": 1008
+          },
+          {
+            "nonempty": true,
+            "row": 1009
+          },
+          {
+            "nonempty": true,
+            "row": 1010
+          },
+          {
+            "nonempty": true,
+            "row": 1011
+          },
+          {
+            "nonempty": true,
+            "row": 1012
+          },
+          {
+            "nonempty": true,
+            "row": 1013
+          },
+          {
+            "nonempty": true,
+            "row": 1014
+          }
+        ],
+        "occupied": 1013,
+        "rows_below_header": 1013
+      },
+      "sha256": "2dcab02de841954dd380c104aad640c17d9c72976a401c91c2a9866fd743826e",
+      "source_id": "treasury-historical-501fbe11fbc07010",
+      "source_sha256": "e2b00177bffd233fd404f5db989a576408f249fc81ef2342f31d95ca452c019b",
+      "status": "inspected"
+    }
+  ],
+  "report_summary_sha256": "4aee5ef6d163b6f5abdd7ae726d8f9b39b2087e9038a784d00d007e53b51670f",
+  "revenue_periods": {
+    "2019-2022": "Actuals",
+    "2023": "Estimated Actual",
+    "2024": "Main Estimates"
+  },
+  "revenue_profile": "budget-revenue-2023/v1",
+  "rights": "embedded_notices_recorded_no_eligibility_admission",
+  "status": "native_inspected_normalization_in_progress",
+  "units": "literal $000; ISO currency unverified; period start unasserted"
+}

@@ -13,6 +13,7 @@ from typing import TYPE_CHECKING, Any, Literal, cast
 
 import httpx
 from cyclopts import App
+from jsonschema import ValidationError
 
 from archive_govt_nz import __version__
 from archive_govt_nz.capture import CaptureConfig, CaptureError, capture_url
@@ -26,9 +27,15 @@ from archive_govt_nz.cli_integrity import (
     verify_cas,
 )
 from archive_govt_nz.core.registry import AgencyRegistry
-from archive_govt_nz.domains.health_appropriations import resume_operations
+from archive_govt_nz.domains.health_appropriations import (
+    operation_context_gold,
+    resume_operations,
+)
 from archive_govt_nz.domains.health_appropriations.budget_operations import (
     verify_budget_package,
+)
+from archive_govt_nz.domains.health_appropriations.canonical_gold_queries import (
+    query_canonical_gold,
 )
 from archive_govt_nz.domains.health_appropriations.canonical_gold_verification import (
     verify_canonical_gold_package,
@@ -42,8 +49,17 @@ from archive_govt_nz.domains.health_appropriations.context_gold import (
 from archive_govt_nz.domains.health_appropriations.context_gold_verification import (
     verify_context_gold_package,
 )
+from archive_govt_nz.domains.health_appropriations.fiscal_analytical_operations import (
+    query_fiscal_analytical_gold,
+)
 from archive_govt_nz.domains.health_appropriations.gold_export import export_gold
 from archive_govt_nz.domains.health_appropriations.inspection import inspect_workbook
+from archive_govt_nz.domains.health_appropriations.legacy_inspection import (
+    inspect_legacy_workbook,
+)
+from archive_govt_nz.domains.health_appropriations.native_workbook_inspection import (
+    inspect_native_workbook,
+)
 from archive_govt_nz.domains.health_appropriations.operations import (
     HealthAppropriationsStateError,
     inspect_archive_status,
@@ -68,6 +84,7 @@ from archive_govt_nz.domains.legislation.corpus import LegislationArchiveService
 from archive_govt_nz.domains.legislation.discovery import build_work_inventory
 from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
 from archive_govt_nz.publication import PublicationConfig, prepare_publication
+from archive_govt_nz.python_runtime import REQUIRED_PYTHON, is_supported_python
 from archive_govt_nz.source_sets import (
     SourceSetConfig,
     SourceSetConfigError,
@@ -132,11 +149,11 @@ def version(format: Literal["text", "json"] = "text") -> int:
 def doctor(format: Literal["text", "json"] = "text") -> int:
     """Check the declared runtime without claiming archive integrity."""
     py_ver = sys.version.split()[0]
-    min_sat = sys.version_info >= (3, 14)
+    min_sat = is_supported_python(sys.version_info[:3])
     status = "runtime_compatible" if min_sat else "runtime_incompatible"
 
     if not min_sat:
-        sys.stderr.write("Python >= 3.14 requirement not satisfied.\n")
+        sys.stderr.write(f"Python {REQUIRED_PYTHON} requirement not satisfied.\n")
 
     if format == "json":
         _emit_json(
@@ -145,7 +162,7 @@ def doctor(format: Literal["text", "json"] = "text") -> int:
                 "integrity_status": "not_checked",
                 "python_min_satisfied": min_sat,
                 "python_version": py_ver,
-                "required_python": ">=3.14",
+                "required_python": REQUIRED_PYTHON,
                 "schema_version": "archive-govt-nz.cli/v1",
                 "status": status,
             }
@@ -201,6 +218,28 @@ def health_appropriations_inspect_workbook(
                 "error": str(error),
             }
         )
+        return 2
+    _emit_json({"command": command, **result})
+    return 0
+
+
+@app.command(name="health-appropriations-inspect-legacy-workbook")
+def health_appropriations_inspect_legacy_workbook(
+    source: Path,
+    expected_sha256: str,
+    *,
+    sheet: str | None = None,
+    rows: int = 0,
+    columns: int = 12,
+) -> int:
+    """Inventory verified BIFF8; request bounded stored-value previews explicitly."""
+    command = "health-appropriations-inspect-legacy-workbook"
+    try:
+        result = inspect_legacy_workbook(
+            source, expected_sha256, sheet=sheet, rows=rows, columns=columns
+        )
+    except ValueError as error:
+        _emit_json({"command": command, "status": "failed", "error": str(error)})
         return 2
     _emit_json({"command": command, **result})
     return 0
@@ -353,6 +392,22 @@ def health_appropriations_verify_canonical_gold(
     return 0 if receipt["status"] == "verified" else 2
 
 
+@app.command(name="health-appropriations-query-canonical-gold")
+def health_appropriations_query_canonical_gold(
+    package_dir: Path,
+    manifest_sha256: str,
+    *,
+    product: str = "historical",
+    limit: int = 50,
+) -> int:
+    """Read a named canonical Gold fact product with exact values and no writes."""
+    receipt = query_canonical_gold(
+        package_dir, manifest_sha256, product=product, limit=limit
+    )
+    _emit_json({"command": "health-appropriations-query-canonical-gold", **receipt})
+    return 0 if receipt["status"] == "verified" else 2
+
+
 @app.command(name="health-appropriations-extract-source")
 def health_appropriations_extract_source(
     *,
@@ -382,6 +437,24 @@ def health_appropriations_extract_source(
     return 2 if result["status"] == "failed" else 0
 
 
+@app.command(name="health-appropriations-inspect-native-workbook")
+def health_appropriations_inspect_native_workbook(
+    *, cas_root: Path, source_id: str, observed_at: str
+) -> int:
+    """Inspect a known retained workbook's native profiles without creating state.
+
+    CAS_ROOT contains the SHA256-prefix directories. SOURCE_ID is
+    nz-treasury-befu-2025-expense-workbook or
+    nz-treasury-hyefu-2024-expense-workbook. OBSERVED_AT is the explicit
+    normalization observation time, including its timezone.
+    """
+    result = inspect_native_workbook(
+        cas_root, source_id=source_id, observed_at=observed_at
+    )
+    _emit_json({"command": "health-appropriations-inspect-native-workbook", **result})
+    return 0 if result["status"] == "inspected" else 2
+
+
 @app.command(name="health-appropriations-build-context-gold")
 def health_appropriations_build_context_gold(
     *, silver_root: Path, source_root: Path, output_dir: Path, write: bool = False
@@ -400,6 +473,448 @@ def health_appropriations_build_context_gold(
         return 2
     _emit_json({"command": "health-appropriations-build-context-gold", **result})
     return 0
+
+
+@app.command(name="health-appropriations-build-operation-context-gold")
+def health_appropriations_build_operation_context_gold(
+    *,
+    input_spec: Path,
+    source_root: Path,
+    output_dir: Path,
+    write: bool = False,
+) -> int:
+    """Build source-reconciled operation Context Gold; default to no-write preflight."""
+    command = "health-appropriations-build-operation-context-gold"
+    try:
+        result = operation_context_gold.export_operation_context_gold(
+            operation_context_gold.read_input_spec(input_spec),
+            source_root,
+            output_dir,
+            write=write,
+        )
+    except ValueError as error:
+        _emit_json({"command": command, "status": "failed", "error": str(error)})
+        return 2
+    _emit_json({"command": command, **result})
+    return 0
+
+
+@app.command(name="health-appropriations-verify-operation-context-gold")
+def health_appropriations_verify_operation_context_gold(
+    *,
+    input_spec: Path,
+    source_root: Path,
+    package_dir: Path,
+    manifest_sha256: str,
+) -> int:
+    """Verify independent Gold/input pins and regenerate canonical product controls."""
+    command = "health-appropriations-verify-operation-context-gold"
+    try:
+        result = operation_context_gold.verify_operation_context_gold(
+            operation_context_gold.read_input_spec(input_spec),
+            source_root,
+            package_dir,
+            manifest_sha256=manifest_sha256,
+        )
+    except ValueError as error:
+        _emit_json({"command": command, "status": "failed", "error": str(error)})
+        return 2
+    _emit_json({"command": command, **result})
+    return 0
+
+
+@app.command(name="health-appropriations-query-operation-context-gold")
+def health_appropriations_query_operation_context_gold(
+    *,
+    input_spec: Path,
+    source_root: Path,
+    package_dir: Path,
+    manifest_sha256: str,
+    limit: int = 20,
+) -> int:
+    """Read bounded source-reconciled observations; no arbitrary SQL or writes."""
+    try:
+        result = operation_context_gold.mcp_call(
+            "health_appropriations_query_operation_context_gold",
+            {
+                "input_spec": str(input_spec),
+                "source_root": str(source_root),
+                "package_dir": str(package_dir),
+                "manifest_sha256": manifest_sha256,
+                "limit": limit,
+            },
+        )
+    except ValidationError:
+        _emit_json(
+            {
+                "command": "health-appropriations-query-operation-context-gold",
+                "status": "failed",
+                "error": "operation_context_gold_invalid",
+            }
+        )
+        return 2
+    _emit_json(
+        {"command": "health-appropriations-query-operation-context-gold", **result}
+    )
+    return 2 if result["status"] == "failed" else 0
+
+
+@app.command(name="health-appropriations-build-fiscal-reports")
+def health_appropriations_build_fiscal_reports(
+    package_dir: Path, manifest_sha256: str, output_dir: Path, *, write: bool = False
+) -> int:
+    """Build discrete fiscal plots and reports; verify inputs without writes by default."""
+    from archive_govt_nz.domains.health_appropriations.fiscal_analytical_reports import (
+        export_fiscal_analytical_reports,
+    )
+
+    try:
+        receipt = export_fiscal_analytical_reports(
+            package_dir, manifest_sha256, output_dir, write=write
+        )
+    except ValueError, OSError:
+        _emit_json(
+            {
+                "command": "health-appropriations-build-fiscal-reports",
+                "status": "failed",
+                "error": "fiscal_report_build_failed",
+            }
+        )
+        return 2
+    _emit_json({"command": "health-appropriations-build-fiscal-reports", **receipt})
+    return 0
+
+
+@app.command(name="health-appropriations-verify-fiscal-reports")
+def health_appropriations_verify_fiscal_reports(
+    package_dir: Path, manifest_sha256: str
+) -> int:
+    """Verify report bytes and local metadata projections without source re-verification."""
+    from archive_govt_nz.domains.health_appropriations.fiscal_analytical_reports import (
+        verify_fiscal_analytical_reports,
+    )
+
+    try:
+        receipt = verify_fiscal_analytical_reports(package_dir, manifest_sha256)
+    except ValueError, OSError, KeyError, TypeError:
+        _emit_json(
+            {
+                "command": "health-appropriations-verify-fiscal-reports",
+                "status": "failed",
+                "error": "fiscal_report_verification_failed",
+            }
+        )
+        return 2
+    _emit_json({"command": "health-appropriations-verify-fiscal-reports", **receipt})
+    return 0
+
+
+@app.command(name="health-appropriations-recover-analytical-metadata")
+def health_appropriations_recover_analytical_metadata(
+    archive: Path,
+    output_dir: Path,
+    *,
+    write: bool = False,
+) -> int:
+    """Rebuild supported analytical products and metadata twice; dry run by default."""
+    from subprocess import SubprocessError
+
+    from archive_govt_nz.domains.health_appropriations.analytical_metadata_recovery import (
+        recover_analytical_metadata,
+    )
+
+    try:
+        receipt = recover_analytical_metadata(archive, output_dir, write=write)
+    except ValueError, OSError, KeyError, TypeError, SubprocessError:
+        _emit_json(
+            {
+                "command": "health-appropriations-recover-analytical-metadata",
+                "status": "failed",
+                "error": "analytical_metadata_recovery_failed",
+            }
+        )
+        return 2
+    _emit_json(
+        {"command": "health-appropriations-recover-analytical-metadata", **receipt}
+    )
+    return 0
+
+
+@app.command(name="health-appropriations-build-gold-discovery-candidates")
+def health_appropriations_build_gold_discovery_candidates(
+    *,
+    fiscal_package: Path,
+    fiscal_manifest_sha256: str,
+    budget_package: Path,
+    budget_manifest_sha256: str,
+    output_dir: Path,
+    write: bool = False,
+) -> int:
+    """Build local discovery candidates with standards gaps; dry run by default."""
+    from archive_govt_nz.domains.health_appropriations.gold_discovery_profiles import (
+        GoldInput,
+        export_profiles,
+        verify_profiles,
+    )
+
+    try:
+        inputs = (
+            GoldInput("fiscal_analytical", fiscal_package, fiscal_manifest_sha256),
+            GoldInput("budget_comparison", budget_package, budget_manifest_sha256),
+        )
+        receipt = export_profiles(inputs, output_dir, write=write)
+        if write:
+            receipt["verification"] = verify_profiles(
+                inputs, output_dir, receipt["manifest_sha256"]
+            )
+    except ValueError, OSError, KeyError, TypeError:
+        _emit_json(
+            {
+                "command": "health-appropriations-build-gold-discovery-candidates",
+                "status": "failed",
+                "error": "gold_discovery_build_failed",
+            }
+        )
+        return 2
+    _emit_json(
+        {"command": "health-appropriations-build-gold-discovery-candidates", **receipt}
+    )
+    return 0
+
+
+@app.command(name="health-appropriations-build-gold-metadata")
+def health_appropriations_build_gold_metadata(
+    *,
+    fiscal_package: Path,
+    fiscal_manifest_sha256: str,
+    budget_package: Path,
+    budget_manifest_sha256: str,
+    output_dir: Path,
+    canonical_package: Path | None = None,
+    canonical_manifest_sha256: str | None = None,
+    write: bool = False,
+) -> int:
+    """Build pinned Gold metadata with optional canonical input; dry run by default."""
+    from archive_govt_nz.domains.health_appropriations.gold_metadata import (
+        GoldInput,
+        export_gold_metadata,
+        verify_gold_metadata,
+        with_canonical_input,
+    )
+
+    try:
+        inputs = (
+            GoldInput("fiscal_analytical", fiscal_package, fiscal_manifest_sha256),
+            GoldInput("budget_comparison", budget_package, budget_manifest_sha256),
+        )
+        inputs = with_canonical_input(
+            inputs, canonical_package, canonical_manifest_sha256
+        )
+        receipt = export_gold_metadata(inputs, output_dir, write=write)
+        if write:
+            receipt["verification"] = verify_gold_metadata(
+                inputs, output_dir, receipt["manifest_sha256"]
+            )
+    except ValueError, OSError, KeyError, TypeError:
+        _emit_json(
+            {
+                "command": "health-appropriations-build-gold-metadata",
+                "status": "failed",
+                "error": "gold_metadata_build_failed",
+            }
+        )
+        return 2
+    _emit_json({"command": "health-appropriations-build-gold-metadata", **receipt})
+    return 0
+
+
+@app.command(name="health-appropriations-verify-gold-metadata")
+def health_appropriations_verify_gold_metadata(
+    *,
+    fiscal_package: Path,
+    fiscal_manifest_sha256: str,
+    budget_package: Path,
+    budget_manifest_sha256: str,
+    output_dir: Path,
+    canonical_package: Path | None = None,
+    canonical_manifest_sha256: str | None = None,
+    manifest_sha256: str,
+) -> int:
+    """Verify pinned Gold metadata against its inputs without writing state."""
+    from archive_govt_nz.domains.health_appropriations.gold_metadata import (
+        GoldInput,
+        verify_gold_metadata,
+        with_canonical_input,
+    )
+
+    inputs = (
+        GoldInput("fiscal_analytical", fiscal_package, fiscal_manifest_sha256),
+        GoldInput("budget_comparison", budget_package, budget_manifest_sha256),
+    )
+    try:
+        inputs = with_canonical_input(
+            inputs, canonical_package, canonical_manifest_sha256
+        )
+        receipt = verify_gold_metadata(inputs, output_dir, manifest_sha256)
+    except ValueError, OSError, KeyError, TypeError:
+        _emit_json(
+            {
+                "command": "health-appropriations-verify-gold-metadata",
+                "status": "failed",
+                "error": "gold_metadata_verification_failed",
+            }
+        )
+        return 2
+    _emit_json({"command": "health-appropriations-verify-gold-metadata", **receipt})
+    return 0
+
+
+@app.command(name="health-appropriations-build-operation-context-metadata")
+def health_appropriations_build_operation_context_metadata(
+    *,
+    input_spec: Path,
+    source_root: Path,
+    gold_package: Path,
+    gold_manifest_sha256: str,
+    output_dir: Path,
+    write: bool = False,
+) -> int:
+    """Regenerate v5 metadata from Bronze-verified Gold; dry run by default."""
+    from archive_govt_nz.domains.health_appropriations import (
+        gold_metadata,
+        operation_metadata,
+    )
+
+    command = "health-appropriations-build-operation-context-metadata"
+    try:
+        inputs = operation_metadata.read_metadata_inputs(
+            input_spec, source_root, gold_package, gold_manifest_sha256
+        )
+        receipt = gold_metadata.export_gold_metadata(inputs, output_dir, write=write)
+        if write:
+            receipt["verification"] = gold_metadata.verify_gold_metadata(
+                inputs, output_dir, receipt["manifest_sha256"]
+            )
+    except ValueError, OSError, KeyError, TypeError:
+        _emit_json(
+            {
+                "command": command,
+                "status": "failed",
+                "error": "operation_metadata_build_failed",
+            }
+        )
+        return 2
+    _emit_json({"command": command, **receipt})
+    return 0
+
+
+@app.command(name="health-appropriations-verify-operation-context-metadata")
+def health_appropriations_verify_operation_context_metadata(
+    *,
+    input_spec: Path,
+    source_root: Path,
+    gold_package: Path,
+    gold_manifest_sha256: str,
+    output_dir: Path,
+    manifest_sha256: str,
+) -> int:
+    """Read-only source-regenerated verification of operation-context metadata."""
+    from archive_govt_nz.domains.health_appropriations import operation_metadata
+
+    command = "health-appropriations-verify-operation-context-metadata"
+    try:
+        receipt = operation_metadata.mcp_call(
+            {
+                "input_spec": str(input_spec),
+                "source_root": str(source_root),
+                "gold_package": str(gold_package),
+                "gold_manifest_sha256": gold_manifest_sha256,
+                "output_dir": str(output_dir),
+                "manifest_sha256": manifest_sha256,
+            }
+        )
+    except ValueError, OSError, KeyError, TypeError:
+        _emit_json(
+            {
+                "command": command,
+                "status": "failed",
+                "error": "operation_metadata_verification_failed",
+            }
+        )
+        return 2
+    _emit_json({"command": command, **receipt})
+    return 0
+
+
+@app.command(name="health-appropriations-build-budget-comparison")
+def health_appropriations_build_budget_comparison(
+    *,
+    earlier_original: Path,
+    earlier_package: Path,
+    earlier_manifest_sha256: str,
+    later_original: Path,
+    later_package: Path,
+    later_manifest_sha256: str,
+    output_dir: Path,
+    write: bool = False,
+) -> int:
+    """Build pinned Budget comparison Gold and reports; dry run by default."""
+    from archive_govt_nz.domains.health_appropriations.budget_comparison_gold import (
+        export_budget_comparison,
+    )
+    from archive_govt_nz.domains.health_appropriations.budget_vintage_comparison import (
+        BudgetComparisonInput,
+    )
+
+    try:
+        receipt = export_budget_comparison(
+            BudgetComparisonInput(
+                earlier_original, earlier_package, earlier_manifest_sha256
+            ),
+            BudgetComparisonInput(later_original, later_package, later_manifest_sha256),
+            output_dir,
+            write=write,
+        )
+    except ValueError, OSError, KeyError, TypeError:
+        _emit_json(
+            {
+                "command": "health-appropriations-build-budget-comparison",
+                "status": "failed",
+                "error": "budget_comparison_build_failed",
+            }
+        )
+        return 2
+    _emit_json({"command": "health-appropriations-build-budget-comparison", **receipt})
+    return 0
+
+
+@app.command(name="health-appropriations-query-budget-comparison")
+def health_appropriations_query_budget_comparison(
+    package_dir: Path,
+    manifest_sha256: str,
+    *,
+    limit: int = 50,
+) -> int:
+    """Read bounded exact rows from a pinned Budget comparison package."""
+    from archive_govt_nz.domains.health_appropriations.budget_comparison_gold import (
+        query_budget_comparison,
+    )
+
+    receipt = query_budget_comparison(package_dir, manifest_sha256, limit=limit)
+    _emit_json({"command": "health-appropriations-query-budget-comparison", **receipt})
+    return 0 if receipt["status"] == "verified" else 2
+
+
+@app.command(name="health-appropriations-query-fiscal-gold")
+def health_appropriations_query_fiscal_gold(
+    package_dir: Path, manifest_sha256: str, *, table: str = "nominal", limit: int = 50
+) -> int:
+    """Query a named, pinned fiscal Gold table with exact values and no writes."""
+    receipt = query_fiscal_analytical_gold(
+        package_dir, manifest_sha256, table=table, limit=limit
+    )
+    _emit_json({"command": "health-appropriations-query-fiscal-gold", **receipt})
+    return 0 if receipt["status"] == "verified" else 2
 
 
 @app.command(name="health-appropriations-verify-context-gold")
@@ -995,10 +1510,14 @@ def verify(
             "status": "passed" if provenance_error is None else "failed",
         },
         {
-            "failures": [] if sys.version_info >= (3, 14) else ["python_lt_3_14"],
+            "failures": []
+            if is_supported_python(sys.version_info[:3])
+            else ["python_runtime_unsupported"],
             "name": "python_runtime",
             "observed": sys.version.split()[0],
-            "status": "passed" if sys.version_info >= (3, 14) else "failed",
+            "status": "passed"
+            if is_supported_python(sys.version_info[:3])
+            else "failed",
         },
     ]
     failures = [str(check["name"]) for check in checks if check["status"] != "passed"]
@@ -1227,7 +1746,7 @@ def _handle_leg_doctor(
     """Evaluate runtime health and connectivity of legislation subsystem."""
     cas_dir = Path(cas_path)
     chk_file = Path(checkpoint_path)
-    py_ok = sys.version_info >= (3, 14)
+    py_ok = is_supported_python(sys.version_info[:3])
     checks: list[tuple[str, bool]] = [
         ("python_version", py_ok),
         ("cas_store_accessible", not cas_dir.exists() or cas_dir.is_dir()),

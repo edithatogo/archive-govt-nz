@@ -1,0 +1,27 @@
+{
+  "schema_version": "archive-govt-nz.vote-health-silver-recovery/v1",
+  "status": "passed",
+  "profile": "vote-health-estimates-2002-03-detail/v1",
+  "source": {
+    "source_id": "treasury-vote-health-pdf-fd37e5ad2657936d",
+    "source_object_sha256": "1170e0bf5d11e6ac93620a2d76d68004ed99b88ed45a0c6c3c48bbc38f72fafe",
+    "source_locator": "https://www.treasury.govt.nz/sites/default/files/2008-03/est02health.pdf",
+    "source_vintage": "Treasury-Vote-Health-Estimates-2002-03",
+    "capture_observed_at": "2026-08-29T09:00:17Z"
+  },
+  "repeat_builds": 2,
+  "repeat_output_bytes_identical": true,
+  "retained_silver_output_hashes_match": true,
+  "retained_output_sha256": {
+    "field_lineage.parquet": "41ba9f71b594ba9b24cf3c65ae20188fe233f839e5937a75326803dde2125cd7",
+    "page_dispositions.parquet": "2f060c56d315414c8ba4d2b149f3a4e3aa82472e0eec2704a6c836147485b045",
+    "vote_health_detail_facts.parquet": "baea141bde6b4b8185fa7c7d7346178af09593c6f2831a0a767a844383c98aa5"
+  },
+  "counts": {
+    "facts": 27,
+    "pages": 26
+  },
+  "bronze_source_unchanged": true,
+  "rights_state": "not_evaluated",
+  "publication_state": "local_validation_only"
+}

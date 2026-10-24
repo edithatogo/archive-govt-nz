@@ -1,0 +1,63 @@
+{
+  "actual_original_full_run": {
+    "actual_exit": 124,
+    "completed_stages": [
+      "lock",
+      "conductor",
+      "format",
+      "lint",
+      "types"
+    ],
+    "coverage_floor_percent": 80,
+    "failure_trace": "not_available_before_stage_cap",
+    "frozen_pin_state": "unchanged",
+    "full_pytest_summary": null,
+    "head": "2a36724d6a58969f030749b72d1cb0001cbe2317",
+    "last_observed_progress_percent": 71,
+    "lease": "independently_free",
+    "log_sha256": "7d6ce7f74aa5eca837e5ca38186fad6ef77e0c1b3c9fcf7398d47154cb30f58a",
+    "observed_failed": 1,
+    "observed_failed_test": "tests/domains/test_legislation_archive_service.py::test_checkpoint_root_preserves_arbitrary_persisted_json_bytes",
+    "observed_passed": 5822,
+    "owners_and_nested_process_groups": "absent",
+    "per_stage_cap_seconds": 900,
+    "pins": 4884,
+    "remaining_gate": "exact_final_head_original_all32stages_on_three_hosted_platforms_and_all_required_checks",
+    "stages_reached": [
+      "lock",
+      "conductor",
+      "format",
+      "lint",
+      "types",
+      "tests"
+    ],
+    "status": "incomplete_local_assurance",
+    "tree": "3a5a1802640252746027ad28ac86a97f245a6d12"
+  },
+  "authority": "AGENTS.md_requires_running_original_harness_before_PR_solo_maintainer_may_self_merge_only_with_required_automated_checks_green",
+  "focused_repairs": "157_passed_94.88s_original_cli_and_hypothesis_limits",
+  "hosted_exact_final_head_all32_three_platforms": "required_before_merge",
+  "intermediate_launch": "exclusive_log_guard_prevented_launch_no_job_created",
+  "local_all32_pass": false,
+  "native_requalification": "biff8-canonical-gold-native-20261020-v2.json",
+  "prior_actual_run": {
+    "actual_exit": 1,
+    "classification": [
+      "v3_registry_admitted_unimplemented_recordsets",
+      "two_recovery_fixture_inventory_assertions_stale",
+      "actual_cli_30s_timeout_under_observed_concurrent_host_load",
+      "hypothesis_input_generation_health_check_under_observed_concurrent_host_load"
+    ],
+    "frozen_pin_state": "unchanged",
+    "head": "0feee14b1f06cde6beb39d075aa1d24754030cf5",
+    "lease": "independently_free",
+    "log_sha256": "396278a7cba2158c99e4559489d3ee9ed12004790321639142a177116198602d",
+    "pid_pgid": "absent",
+    "pin_count": 4883,
+    "pytest_summary": "5 failed, 8166 passed, 14 skipped, 18 warnings in 749.31s",
+    "stage_count": 6,
+    "tree": "1b8cee5a7739ea0fddc685e1124237c97ee7f3b5"
+  },
+  "schema_version": "archive-govt-nz.health-biff8-canonical-original-assurance/v1",
+  "whole_track_completion": false
+}

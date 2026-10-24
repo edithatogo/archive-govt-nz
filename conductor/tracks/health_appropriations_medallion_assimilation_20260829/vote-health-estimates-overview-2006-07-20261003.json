@@ -1,0 +1,99 @@
+{
+  "schema_version": "archive-govt-nz.vote-health-overview-extraction-receipt/v1",
+  "status": "passed",
+  "profile": "vote-health-estimates-2006-07-overview/v1",
+  "transformation_id": "vote-health-estimates-overview-2006-07/v1",
+  "source_object_sha256": "866bce96ac216344c5dcdf25fee1f31548d5c32ba3cd94ef4b4977a495f509ea",
+  "source_vintage": "Treasury-Vote-Health-Estimates-2006-07",
+  "source_locator": "https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2006-07",
+  "source_page_count": 41,
+  "normalized_pages": [
+    2,
+    3
+  ],
+  "counts": {
+    "facts": 8,
+    "pages": 2
+  },
+  "output_sha256": {
+    "field_lineage.parquet": "a8e28038c42cf866ee1266dc7d34c8596faf80f769d681c7c7c0bd5837a42a99",
+    "page_dispositions.parquet": "e66f8019e065bee1d9399646b332fa71d3079c51f262f87b4a666a7cc000c618",
+    "vote_health_overview_facts.parquet": "c17c8c1c70b3a62356dbc11f72557f014b7a3ad714b126789e637145836ece0b"
+  },
+  "rights_state": "not_evaluated",
+  "publication_state": "local_validation_only",
+  "facts": [
+    {
+      "measure": "vote_total",
+      "value": "10644.927",
+      "unit": "$ million",
+      "reference_period": "2006/07",
+      "source_page": 2,
+      "source_phrase": "Appropriations sought for Vote Health in 2006/07 total $10,644.927 million",
+      "raw_token": "10,644.927"
+    },
+    {
+      "measure": "vote_increase",
+      "value": "834.759",
+      "unit": "$ million",
+      "reference_period": "2005/06_to_2006/07",
+      "source_page": 2,
+      "source_phrase": "an increase of $834.759 \nmillion or 8.51% from 2005/06",
+      "raw_token": "834.759"
+    },
+    {
+      "measure": "departmental_functions",
+      "value": "157.408",
+      "unit": "$ million",
+      "reference_period": "2006/07",
+      "source_page": 2,
+      "source_phrase": "$157.408 million (1.48% of the Vote) relates to the functions of the Ministry of Health",
+      "raw_token": "157.408"
+    },
+    {
+      "measure": "non_departmental_total",
+      "value": "10487.519",
+      "unit": "$ million",
+      "reference_period": "2006/07",
+      "source_page": 2,
+      "source_phrase": "$10,487.519 million (98.52% of the Vote) is for operating expenses incurred on behalf of the Crown",
+      "raw_token": "10,487.519"
+    },
+    {
+      "measure": "service_funding_total",
+      "value": "10083.830",
+      "unit": "$ million",
+      "reference_period": "2006/07",
+      "source_page": 2,
+      "source_phrase": "$10,083.830 million (94.73% of the Vote) is for the funders of health services",
+      "raw_token": "10,083.830"
+    },
+    {
+      "measure": "other_expenses_total",
+      "value": "22.912",
+      "unit": "$ million",
+      "reference_period": "2006/07",
+      "source_page": 2,
+      "source_phrase": "$22.912 million (0.22% of the Vote) is for other expenses",
+      "raw_token": "22.912"
+    },
+    {
+      "measure": "capital_funding",
+      "value": "380.777",
+      "unit": "$ million",
+      "reference_period": "2006/07",
+      "source_page": 3,
+      "source_phrase": "$380.777 million (3.58% of the Vote) is to provide capital funding",
+      "raw_token": "380.777"
+    },
+    {
+      "measure": "crown_revenue_total",
+      "value": "529.194",
+      "unit": "$ million",
+      "reference_period": "2006/07",
+      "source_page": 3,
+      "source_phrase": "expects to collect $529.194 million of Crown Revenue and Receipts in 2006/07",
+      "raw_token": "529.194"
+    }
+  ]
+}

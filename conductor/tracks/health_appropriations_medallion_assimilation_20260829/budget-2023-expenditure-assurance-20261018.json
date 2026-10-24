@@ -1,0 +1,49 @@
+{
+  "actual_exit": 124,
+  "all32_local_pass_claim": false,
+  "cap_source_matches_producer_git_blob": true,
+  "cap_source_sha256": "fdcab4a2aedf805c54d8321dbfd735edffdec4c788973effed3b400c58ba7500",
+  "command": "env PYTEST_XDIST_AUTO_NUM_WORKERS=2 PYTEST_ADDOPTS=-vv ./scripts/validate.sh",
+  "completed_stages": [
+    "lock",
+    "conductor",
+    "format",
+    "lint",
+    "types"
+  ],
+  "coverage_floor": 80,
+  "delivery_evidence": "budget-2023-expenditure-delivery-20261018.json",
+  "exec_session": 10867,
+  "existing_2024_cases_observed_passed": 9,
+  "failing_stage": "tests",
+  "frozen_pins_and_native_proof_unchanged": true,
+  "full_log_sha256": "0d2ed1445618cd5f3369ac4ded0b941a10d1f28544433b09a105a5b2b510f019",
+  "gates_deadlines_healthchecks_caps_unchanged": true,
+  "hosted_assurance": "all32_stages_passed_three_platforms_on_96185cf5",
+  "initial_failure_receipt_sha256": "60d02986d6a15fe23ed9e0203a26d271a4c10386b6fb182db8d9295b4964d4a0",
+  "kernel_lease_free": true,
+  "last_observed_progress_percent": 97,
+  "native_summary_sha256": "9d9114cf8993d0d0c20fe994521372cf7da4f61016a9793dcadb1a090e9d98f1",
+  "new_2023_cases_observed_passed": 6,
+  "observed_failed_entries": 0,
+  "observed_passed_entries": 7826,
+  "observed_skipped_entries": 14,
+  "owned_process_and_test_group_absent": true,
+  "producer_head": "0c6bc59002287e8d40fcf3577d90242941a20aa2",
+  "producer_tree": "3f076824ab48e9671eb079fd381db74534324555",
+  "required_next": "unchanged_original_full_hosted_assurance_on_all_three_platforms_and_seven_exact_head_successes_before_merge",
+  "stage_cap": {
+    "scope": "unchanged_global_per_command_cap",
+    "seconds": 900
+  },
+  "stage_headers": [
+    "lock",
+    "conductor",
+    "format",
+    "lint",
+    "types",
+    "tests"
+  ],
+  "status": "local_test_timeout_preserved_hosted_qualification_delivered",
+  "tests_complete": false
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-gold-citations-v5.schema.json",
+  "title": "Local content-addressed Health Gold citations",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "scope",
+    "source_citation",
+    "records"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-gold-metadata/v5"
+    },
+    "scope": {
+      "const": "local_content_addressed_gold_packages"
+    },
+    "source_citation": {
+      "const": "not_asserted"
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "package_id",
+        "profile",
+        "manifest_sha256",
+        "identifier_scope",
+        "rights",
+        "publication"
+      ],
+      "properties": {
+        "package_id": {
+          "type": "string",
+          "pattern": "^urn:archive-govt-nz:health:gold:[a-f0-9]{64}$"
+        },
+        "profile": {
+          "enum": [
+            "budget_comparison",
+            "fiscal_analytical",
+            "canonical_source_separated",
+            "operation_context"
+          ]
+        },
+        "manifest_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "identifier_scope": {
+          "enum": [
+            "pinned_gold_package_snapshots",
+            "source_regenerated_canonical_products"
+          ]
+        },
+        "rights": {
+          "const": "not_evaluated"
+        },
+        "publication": {
+          "const": "not_performed"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "profile": {
+                "const": "operation_context"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "identifier_scope": {
+                "const": "source_regenerated_canonical_products"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "identifier_scope": {
+                "const": "pinned_gold_package_snapshots"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

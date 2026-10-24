@@ -1,0 +1,373 @@
+{
+  "analytical_admission": "not_performed",
+  "changed_period_count": 49,
+  "changed_period_tokens": [
+    "Dec-14",
+    "Dec-15",
+    "Dec-16",
+    "Dec-17",
+    "Dec-18",
+    "Dec-19",
+    "Dec-20",
+    "Dec-21",
+    "Dec-22",
+    "Dec-23",
+    "Dec-24",
+    "Dec-25",
+    "Jun-14",
+    "Jun-15",
+    "Jun-16",
+    "Jun-17",
+    "Jun-18",
+    "Jun-19",
+    "Jun-20",
+    "Jun-21",
+    "Jun-22",
+    "Jun-23",
+    "Jun-24",
+    "Jun-25",
+    "Mar-14",
+    "Mar-15",
+    "Mar-16",
+    "Mar-17",
+    "Mar-18",
+    "Mar-19",
+    "Mar-20",
+    "Mar-21",
+    "Mar-22",
+    "Mar-23",
+    "Mar-24",
+    "Mar-25",
+    "Mar-26",
+    "Sep-14",
+    "Sep-15",
+    "Sep-16",
+    "Sep-17",
+    "Sep-18",
+    "Sep-19",
+    "Sep-20",
+    "Sep-21",
+    "Sep-22",
+    "Sep-23",
+    "Sep-24",
+    "Sep-25"
+  ],
+  "changes": [
+    {
+      "delta": "-63.000000000000000000",
+      "june_value": "63630.000000000000000000",
+      "march_value": "63693.000000000000000000",
+      "period_token": "Dec-14"
+    },
+    {
+      "delta": "-87.000000000000000000",
+      "june_value": "66575.000000000000000000",
+      "march_value": "66662.000000000000000000",
+      "period_token": "Dec-15"
+    },
+    {
+      "delta": "10.000000000000000000",
+      "june_value": "71197.000000000000000000",
+      "march_value": "71187.000000000000000000",
+      "period_token": "Dec-16"
+    },
+    {
+      "delta": "-56.000000000000000000",
+      "june_value": "77109.000000000000000000",
+      "march_value": "77165.000000000000000000",
+      "period_token": "Dec-17"
+    },
+    {
+      "delta": "-65.000000000000000000",
+      "june_value": "80235.000000000000000000",
+      "march_value": "80300.000000000000000000",
+      "period_token": "Dec-18"
+    },
+    {
+      "delta": "-128.000000000000000000",
+      "june_value": "85441.000000000000000000",
+      "march_value": "85569.000000000000000000",
+      "period_token": "Dec-19"
+    },
+    {
+      "delta": "-11.000000000000000000",
+      "june_value": "88271.000000000000000000",
+      "march_value": "88282.000000000000000000",
+      "period_token": "Dec-20"
+    },
+    {
+      "delta": "-49.000000000000000000",
+      "june_value": "94992.000000000000000000",
+      "march_value": "95041.000000000000000000",
+      "period_token": "Dec-21"
+    },
+    {
+      "delta": "-21.000000000000000000",
+      "june_value": "104048.000000000000000000",
+      "march_value": "104069.000000000000000000",
+      "period_token": "Dec-22"
+    },
+    {
+      "delta": "-64.000000000000000000",
+      "june_value": "107990.000000000000000000",
+      "march_value": "108054.000000000000000000",
+      "period_token": "Dec-23"
+    },
+    {
+      "delta": "60.000000000000000000",
+      "june_value": "112345.000000000000000000",
+      "march_value": "112285.000000000000000000",
+      "period_token": "Dec-24"
+    },
+    {
+      "delta": "140.000000000000000000",
+      "june_value": "118009.000000000000000000",
+      "march_value": "117869.000000000000000000",
+      "period_token": "Dec-25"
+    },
+    {
+      "delta": "-21.000000000000000000",
+      "june_value": "59130.000000000000000000",
+      "march_value": "59151.000000000000000000",
+      "period_token": "Jun-14"
+    },
+    {
+      "delta": "-81.000000000000000000",
+      "june_value": "62021.000000000000000000",
+      "march_value": "62102.000000000000000000",
+      "period_token": "Jun-15"
+    },
+    {
+      "delta": "-19.000000000000000000",
+      "june_value": "65432.000000000000000000",
+      "march_value": "65451.000000000000000000",
+      "period_token": "Jun-16"
+    },
+    {
+      "delta": "-50.000000000000000000",
+      "june_value": "69628.000000000000000000",
+      "march_value": "69678.000000000000000000",
+      "period_token": "Jun-17"
+    },
+    {
+      "delta": "-38.000000000000000000",
+      "june_value": "74444.000000000000000000",
+      "march_value": "74482.000000000000000000",
+      "period_token": "Jun-18"
+    },
+    {
+      "delta": "-109.000000000000000000",
+      "june_value": "78534.000000000000000000",
+      "march_value": "78643.000000000000000000",
+      "period_token": "Jun-19"
+    },
+    {
+      "delta": "-11.000000000000000000",
+      "june_value": "73154.000000000000000000",
+      "march_value": "73165.000000000000000000",
+      "period_token": "Jun-20"
+    },
+    {
+      "delta": "-138.000000000000000000",
+      "june_value": "87793.000000000000000000",
+      "march_value": "87931.000000000000000000",
+      "period_token": "Jun-21"
+    },
+    {
+      "delta": "-142.000000000000000000",
+      "june_value": "94495.000000000000000000",
+      "march_value": "94637.000000000000000000",
+      "period_token": "Jun-22"
+    },
+    {
+      "delta": "16.000000000000000000",
+      "june_value": "102696.000000000000000000",
+      "march_value": "102680.000000000000000000",
+      "period_token": "Jun-23"
+    },
+    {
+      "delta": "131.000000000000000000",
+      "june_value": "106176.000000000000000000",
+      "march_value": "106045.000000000000000000",
+      "period_token": "Jun-24"
+    },
+    {
+      "delta": "-34.000000000000000000",
+      "june_value": "109616.000000000000000000",
+      "march_value": "109650.000000000000000000",
+      "period_token": "Jun-25"
+    },
+    {
+      "delta": "1.000000000000000000",
+      "june_value": "60247.000000000000000000",
+      "march_value": "60246.000000000000000000",
+      "period_token": "Mar-14"
+    },
+    {
+      "delta": "-107.000000000000000000",
+      "june_value": "61966.000000000000000000",
+      "march_value": "62073.000000000000000000",
+      "period_token": "Mar-15"
+    },
+    {
+      "delta": "27.000000000000000000",
+      "june_value": "65691.000000000000000000",
+      "march_value": "65664.000000000000000000",
+      "period_token": "Mar-16"
+    },
+    {
+      "delta": "-13.000000000000000000",
+      "june_value": "70285.000000000000000000",
+      "march_value": "70298.000000000000000000",
+      "period_token": "Mar-17"
+    },
+    {
+      "delta": "35.000000000000000000",
+      "june_value": "74544.000000000000000000",
+      "march_value": "74509.000000000000000000",
+      "period_token": "Mar-18"
+    },
+    {
+      "delta": "-25.000000000000000000",
+      "june_value": "78168.000000000000000000",
+      "march_value": "78193.000000000000000000",
+      "period_token": "Mar-19"
+    },
+    {
+      "delta": "-58.000000000000000000",
+      "june_value": "81589.000000000000000000",
+      "march_value": "81647.000000000000000000",
+      "period_token": "Mar-20"
+    },
+    {
+      "delta": "-13.000000000000000000",
+      "june_value": "86225.000000000000000000",
+      "march_value": "86238.000000000000000000",
+      "period_token": "Mar-21"
+    },
+    {
+      "delta": "-42.000000000000000000",
+      "june_value": "91974.000000000000000000",
+      "march_value": "92016.000000000000000000",
+      "period_token": "Mar-22"
+    },
+    {
+      "delta": "29.000000000000000000",
+      "june_value": "100465.000000000000000000",
+      "march_value": "100436.000000000000000000",
+      "period_token": "Mar-23"
+    },
+    {
+      "delta": "-48.000000000000000000",
+      "june_value": "105342.000000000000000000",
+      "march_value": "105390.000000000000000000",
+      "period_token": "Mar-24"
+    },
+    {
+      "delta": "130.000000000000000000",
+      "june_value": "109698.000000000000000000",
+      "march_value": "109568.000000000000000000",
+      "period_token": "Mar-25"
+    },
+    {
+      "delta": "171.000000000000000000",
+      "june_value": "115275.000000000000000000",
+      "march_value": "115104.000000000000000000",
+      "period_token": "Mar-26"
+    },
+    {
+      "delta": "-74.000000000000000000",
+      "june_value": "57826.000000000000000000",
+      "march_value": "57900.000000000000000000",
+      "period_token": "Sep-14"
+    },
+    {
+      "delta": "-147.000000000000000000",
+      "june_value": "60883.000000000000000000",
+      "march_value": "61030.000000000000000000",
+      "period_token": "Sep-15"
+    },
+    {
+      "delta": "-48.000000000000000000",
+      "june_value": "64492.000000000000000000",
+      "march_value": "64540.000000000000000000",
+      "period_token": "Sep-16"
+    },
+    {
+      "delta": "-42.000000000000000000",
+      "june_value": "69324.000000000000000000",
+      "march_value": "69366.000000000000000000",
+      "period_token": "Sep-17"
+    },
+    {
+      "delta": "-39.000000000000000000",
+      "june_value": "72985.000000000000000000",
+      "march_value": "73024.000000000000000000",
+      "period_token": "Sep-18"
+    },
+    {
+      "delta": "-21.000000000000000000",
+      "june_value": "77561.000000000000000000",
+      "march_value": "77582.000000000000000000",
+      "period_token": "Sep-19"
+    },
+    {
+      "delta": "-12.000000000000000000",
+      "june_value": "81252.000000000000000000",
+      "march_value": "81264.000000000000000000",
+      "period_token": "Sep-20"
+    },
+    {
+      "delta": "-73.000000000000000000",
+      "june_value": "83665.000000000000000000",
+      "march_value": "83738.000000000000000000",
+      "period_token": "Sep-21"
+    },
+    {
+      "delta": "43.000000000000000000",
+      "june_value": "94760.000000000000000000",
+      "march_value": "94717.000000000000000000",
+      "period_token": "Sep-22"
+    },
+    {
+      "delta": "16.000000000000000000",
+      "june_value": "101377.000000000000000000",
+      "march_value": "101361.000000000000000000",
+      "period_token": "Sep-23"
+    },
+    {
+      "delta": "180.000000000000000000",
+      "june_value": "103802.000000000000000000",
+      "march_value": "103622.000000000000000000",
+      "period_token": "Sep-24"
+    },
+    {
+      "delta": "307.000000000000000000",
+      "june_value": "108643.000000000000000000",
+      "march_value": "108336.000000000000000000",
+      "period_token": "Sep-25"
+    }
+  ],
+  "comparison_basis": "exact canonical Decimal values in matching period tokens",
+  "currency": "unresolved",
+  "denominator_selection": "not_performed",
+  "difference_interpretation": "not_assessed",
+  "difference_payload_sha256": "1d8bfee0ae51721d971cf6f169dec2006bdd30ddcdee8f0ccbe80ec145ea7497",
+  "june_period_count": 61,
+  "june_source_manifest_sha256": "f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd",
+  "june_source_sha256": "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
+  "june_source_vintage": "StatsNZ-GDP-2026Q2",
+  "june_transformation_id": "stats-nz-gdp-june-canonical-current-price-context/v1",
+  "march_period_count": 60,
+  "march_source_manifest_sha256": "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35",
+  "march_source_sha256": "a7326e84e7704446a18e5c8942f99901a452b2170af4228e8a5c242a5532ed21",
+  "march_source_vintage": "StatsNZ-GDP-2026Q1",
+  "march_transformation_id": "stats-nz-gdp-canonical-current-price-context/v1",
+  "overlap_count": 60,
+  "publication": "not_performed",
+  "repeat_identical": true,
+  "rights_state": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-gdp-vintage-comparison/v1",
+  "status": "verified_source_vintage_comparison",
+  "unchanged_period_count": 11
+}

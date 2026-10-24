@@ -1,0 +1,26 @@
+{
+  "checkpoint_property_recheck": "1_passed_8.34s_unchanged_contract",
+  "coverage_floor_percent": 80,
+  "focused_repairs": "157_passed_94.88s",
+  "lease": "independently_free",
+  "local_full_pass": false,
+  "native_qualification": "biff8-canonical-gold-native-20261020-v2.json",
+  "original_harness": "biff8-canonical-gold-original-assurance-20261020.json",
+  "pid_pgid": "absent",
+  "producer_head": "ec82b990fd7eb6226b7863ce155947d37fbc6a42",
+  "rights_currency_start_date_aggregation_and_donor_difference_holds": "unchanged",
+  "schema_version": "archive-govt-nz.health-biff8-canonical-prepr/v1",
+  "status": "reviewable_awaiting_required_exact_head_hosted_all32_three_platforms",
+  "supplemental_exit": 0,
+  "supplemental_log_sha256": "c5bb57a27c405b48aba4cd94cc0bff26ca95d9b7967fe83e99668b41cd1207b8",
+  "supplemental_stages": [
+    "conductor",
+    "schemas",
+    "audit",
+    "licenses",
+    "secrets",
+    "sbom"
+  ],
+  "thresholds_and_deadlines": "unchanged",
+  "whole_track_completion": false
+}

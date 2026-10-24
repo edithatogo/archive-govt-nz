@@ -1,0 +1,26 @@
+{
+  "all_26_single_missing_bindings_rejected_per_receipt": true,
+  "all_prior_native_files_unchanged": 1037,
+  "earlier_api_versions_unchanged": true,
+  "finding_id": 4329123029,
+  "focused_tests_passed": 78,
+  "native_replay": {
+    "all13_bindings_verified": true,
+    "each_missing_binding_refused": true,
+    "fresh_input_builds": 2,
+    "head": "dea8046f15a3ccdc243e6642c306663a40a5e999",
+    "input_files": 119,
+    "prior_qualified_input_bytes_identical": true,
+    "retained_derivatives_consumed": false,
+    "tree": "720cfa870b702d4b5e5ef0b7d2bd7a49f6790073"
+  },
+  "producer": {
+    "exit": 0,
+    "head": "dea8046f15a3ccdc243e6642c306663a40a5e999",
+    "independent_lease_free": true,
+    "owner_and_group_absent": true,
+    "pins_unchanged": 5360,
+    "status": "verified",
+    "tree": "720cfa870b702d4b5e5ef0b7d2bd7a49f6790073"
+  }
+}

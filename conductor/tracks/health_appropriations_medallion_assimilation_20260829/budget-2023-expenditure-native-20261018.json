@@ -1,0 +1,108 @@
+{
+  "actual_terminal_exit": 0,
+  "delivery_evidence": "budget-2023-expenditure-delivery-20261018.json",
+  "exec_session": 50803,
+  "frozen_source_code_and_evidence_pins_unchanged": true,
+  "full_original_harness": "local_tests_timed_out_900s_no_full_pass_claim",
+  "hosted_assurance": "all32_stages_passed_three_platforms_on_96185cf5",
+  "kernel_lease_free": true,
+  "local_assurance_evidence": "budget-2023-expenditure-assurance-20261018.json",
+  "native": {
+    "CLI_MCP_preflight_equal": true,
+    "actual_CLI_preflight": {
+      "counts": {
+        "blank": 0,
+        "input": 6696,
+        "normalized": 277,
+        "out_of_scope": 6419,
+        "rejected": 0
+      },
+      "profile": "budget-expenditure-2023/v1",
+      "publication_state": "local_validation_only",
+      "rights_state": "not_evaluated",
+      "schema_version": "archive-govt-nz.health-source-operation/v1",
+      "source_object_sha256": "bee0e4cd776f0511d271ec842ade355661772c804d12239035e32ad61db06da9",
+      "status": "preflight_passed",
+      "transformation_id": "budget-2023-health-expenditure/v1",
+      "verification_scope": "adapter_execution_only"
+    },
+    "actual_CLI_write": {
+      "counts": {
+        "blank": 0,
+        "input": 6696,
+        "normalized": 277,
+        "out_of_scope": 6419,
+        "rejected": 0
+      },
+      "output_sha256": {
+        "budget_facts.parquet": "cb56fd3ae7eea53fa432b1fa5220b8b0121f6110e6a2215a4e7c089be2ccff91",
+        "field_lineage.parquet": "3a50df31e0ce6b611faaccb5c03f542dd473dc9c6048d768fc99941f3070b6ff",
+        "row_dispositions.parquet": "dc7ff03cb75d0456b4b06fc98043c7e03b99692aab6a707292c98def89805a20"
+      },
+      "profile": "budget-expenditure-2023/v1",
+      "publication_state": "local_validation_only",
+      "rights_state": "not_evaluated",
+      "schema_version": "archive-govt-nz.health-source-operation/v1",
+      "source_object_sha256": "bee0e4cd776f0511d271ec842ade355661772c804d12239035e32ad61db06da9",
+      "status": "written_local",
+      "transformation_id": "budget-2023-health-expenditure/v1",
+      "verification_scope": "adapter_execution_only"
+    },
+    "actual_MCP_preflight": {
+      "counts": {
+        "blank": 0,
+        "input": 6696,
+        "normalized": 277,
+        "out_of_scope": 6419,
+        "rejected": 0
+      },
+      "profile": "budget-expenditure-2023/v1",
+      "publication_state": "local_validation_only",
+      "rights_state": "not_evaluated",
+      "schema_version": "archive-govt-nz.health-source-operation/v1",
+      "source_object_sha256": "bee0e4cd776f0511d271ec842ade355661772c804d12239035e32ad61db06da9",
+      "status": "preflight_passed",
+      "transformation_id": "budget-2023-health-expenditure/v1",
+      "verification_scope": "adapter_execution_only"
+    },
+    "canonical_Gold_admission": "not_performed",
+    "common_dispatch_facts_equal": true,
+    "common_dispatch_lineage_equal": true,
+    "common_dispatch_losses_equal": true,
+    "counts": {
+      "blank": 0,
+      "input": 6696,
+      "normalized": 277,
+      "out_of_scope": 6419,
+      "rejected": 0
+    },
+    "dispositions": 6696,
+    "facts": 277,
+    "lineage": 7479,
+    "preflight_output_absent": true,
+    "prior_2024_all_four_files_equal": true,
+    "prior_2024_output_sha256": {
+      "MANIFEST.json": "b43d3b4a4421f77883e278a55d66a7da93728382b86f8f87db36f16a0ec05a00",
+      "budget_facts.parquet": "afb3814a366013acda4dbc0148f6b09826838a1404745b6ed4dbc78c368fc745",
+      "field_lineage.parquet": "0e4efa7822569761bfd212fc19d7ed17abba5f2b7d065666233523c8719fdbe1",
+      "row_dispositions.parquet": "f25ee897f2f3df0b24751dbac162b48d7bfed1456179206476729e6a5290e027"
+    },
+    "publication": "not_performed",
+    "repeat_build_files": {
+      "MANIFEST.json": "6a0e88eccbca41184283761dcea0511c93c343d91bd152b432e686dfe2a3b52c",
+      "budget_facts.parquet": "cb56fd3ae7eea53fa432b1fa5220b8b0121f6110e6a2215a4e7c089be2ccff91",
+      "field_lineage.parquet": "3a50df31e0ce6b611faaccb5c03f542dd473dc9c6048d768fc99941f3070b6ff",
+      "row_dispositions.parquet": "dc7ff03cb75d0456b4b06fc98043c7e03b99692aab6a707292c98def89805a20"
+    },
+    "rights": "not_evaluated",
+    "source_bytes_unchanged": true,
+    "source_sha256": "bee0e4cd776f0511d271ec842ade355661772c804d12239035e32ad61db06da9",
+    "status": "passed"
+  },
+  "producer_head": "2a43004313fcc94ac68bb6cf82ab2a0b7bd2a7eb",
+  "producer_tree": "7b5f9f40be9adbcdad8aaa5dd5b9f49483f47b85",
+  "protected_delivery": "PR720_merged_f641c55b_topic_pruned",
+  "recipe_sha256": "c6cda02c1c8ef681c7fadefcaa93f85a7a750af7379cd4a68d60368c69ff7191",
+  "status": "native_and_2024_compatibility_and_hosted_assurance_passed_delivered",
+  "summary_sha256": "9d9114cf8993d0d0c20fe994521372cf7da4f61016a9793dcadb1a090e9d98f1"
+}

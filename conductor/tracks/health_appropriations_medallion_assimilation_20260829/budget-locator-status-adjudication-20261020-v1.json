@@ -1,0 +1,46 @@
+{
+  "additional_case": "one more existing-contract profile for historical status; no coverage target change",
+  "candidate_class": "noncredential_historical_pending_status",
+  "classification": "Finding hash equals the documented pending status sentinel, not a credential. Exact immutable document and candidate/type binding required; preserve producer bytes.",
+  "document": "conductor/tracks/health_appropriations_medallion_assimilation_20260829/budget-locator-metadata-adjudication-20261020-v1.json",
+  "document_sha256": "9157773b79b859adbc4583e6bf57b304a0e7759473cbf4bff11ff7ce7e25c0cc",
+  "evidence_files_sha256": {
+    "detect-secrets.json": "868831799b63a14f962f568c7a004ee9c5f12936afcb097918e4ab74db11c0d0",
+    "metadata-status-disposition-1.json": "7c1c0985b976a61d45176618a671107688f20d71fa9ef063ae16e92ed37dab16",
+    "metadata-status-green-1.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "metadata-status-green-1.log": "04aae3555f54f287114420751eb623df4cf39ff8d83af2b890f4cd8337fb9d86",
+    "metadata-status-red-1.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "metadata-status-red-1.log": "759f6f7a2afdb22a577b5185eca7a27f1f8ed032a810fd4d01e9bbf34d9be5ce",
+    "secret-adjudications.json": "24ff83428ca589637d09d916ecff0cefaf52abb7bf19e629036b17214081ad7e",
+    "secret-scan-before-full-2.exit": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "secret-scan-before-full-2.log": "b5e12a6d9395d88337dacff99ce09e3378f17ee935ec6c11d64f420d2fd6fb51"
+  },
+  "fingerprint": "1f8050d610fd7437d1ed2da737866d1d83e5cf20",
+  "focused": {
+    "passed": 32,
+    "seconds": 3.63
+  },
+  "full_harness": {
+    "state": "pending"
+  },
+  "guard": "exact unchanged document SHA256 plus known candidate hash and detector type, with line-content verification",
+  "line": 15,
+  "new_test_functions": 0,
+  "observed_scan_exit": 1,
+  "producer_bytes": "unchanged",
+  "protected_delivery": {
+    "state": "pending"
+  },
+  "red": {
+    "failed": 1,
+    "passed": 2,
+    "seconds": 0.97
+  },
+  "scan_gate": {
+    "state": "pending"
+  },
+  "schema_version": "archive-govt-nz.health-metadata-status-adjudication/v1",
+  "scope": "three individually reviewed metadata candidates only; no general status/key/path exemption",
+  "type": "Secret Keyword",
+  "types_and_ruff": "passed"
+}

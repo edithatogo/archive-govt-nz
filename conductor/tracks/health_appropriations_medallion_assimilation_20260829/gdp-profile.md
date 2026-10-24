@@ -1,8 +1,12 @@
-# Exact quarterly GDP source profile
+# Exact March 2026 quarterly GDP source profile
 
 Focused, cold mutation, full native and two-build reconciliation assurance pass.
 Hosted delivery remains pending. No source download, annual
 aggregation, health/GDP denominator selection or publication occurs.
+
+The separate June 2026 successor is now supported by its own exact profile;
+see `gdp-june-profile-20260930.md`. It retains its own transformation and
+vintage and is not spliced into the March series.
 
 ## Retained original and literal meaning
 

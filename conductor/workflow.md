@@ -70,6 +70,15 @@ in-scope work remains.
 
 ### Bounded recovery
 
+For coordinated local assurance, assign one launch owner for broad/native runs
+and retain that ownership across topic transitions. Hand that owner one frozen
+head/tree, verified runtime, exact command, log destination and terminal marker;
+the owner serializes the launch and records the marker before releasing the
+validation slot. Inspect its actual process or session before deciding it stopped.
+Focused/static checks and hosted CI remain independently owned. Record the active
+assignment in the run log; this is launch coordination, not a new human approval
+gate, and does not introduce a second validation framework.
+
 For a failed command or check, make up to three materially distinct corrective
 attempts. Each attempt must change the hypothesis, input, tool, or environment;
 repeating the same failing action does not consume progress. Classify and record

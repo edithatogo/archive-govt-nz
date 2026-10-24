@@ -1,0 +1,4714 @@
+{
+  "composite_metadata": {
+    "files": {
+      "DATASET_CARD.md": {
+        "bytes": 3801,
+        "sha256": "335b57ddc4a70fa2bfe7afe9bbb1c58975cb83dfa8302de0e58fd8210e67d163"
+      },
+      "MANIFEST.json": {
+        "bytes": 1491,
+        "sha256": "82aba0db2a1a3566bdecf9656c5b35496b6741546469fab92c9f295a4a7f98c7"
+      },
+      "catalogue.json": {
+        "bytes": 1265067,
+        "sha256": "8f40d7e4b82729a68a2afedf99b7ea5b775766771b938391cfe5f6be34ddf796"
+      },
+      "changelog.json": {
+        "bytes": 2991,
+        "sha256": "3271486a79db9f0b354161b690200b6cec8b954dd6020635504c2e63b7a39e08"
+      },
+      "citations.json": {
+        "bytes": 1362,
+        "sha256": "96923a899479cee00740997e4b60f5270783142f93f84cc01b81eae1a40b90be"
+      },
+      "dcat.jsonld": {
+        "bytes": 20443,
+        "sha256": "6973af0fa637f77dfbe821b45a5bcfe5223cb285ca6b96ee59a77ae0b7e9fe61"
+      },
+      "prov.jsonld": {
+        "bytes": 26475,
+        "sha256": "256c7e9c9616a503d72d39160222f47b4dfe53bbf72f221cf357db9d6f285f9a"
+      },
+      "schemas.json": {
+        "bytes": 111327,
+        "sha256": "53d702fdaa2cd2e3097e1fe639e6706ef4f43f18fbfbee22b8c3c475fa173c69"
+      },
+      "source_drillthrough.json": {
+        "bytes": 1129337,
+        "sha256": "1fed022871ac4dc96459fc76216fb00107dbcaf1faca60223244b8e703b77c43"
+      }
+    },
+    "full_standards_conformance": "not_asserted",
+    "gold_unchanged": true,
+    "manifest_sha256": "82aba0db2a1a3566bdecf9656c5b35496b6741546469fab92c9f295a4a7f98c7",
+    "metadata_reconstructed": true,
+    "packages": 3,
+    "publication": "not_performed",
+    "recordsets": 15,
+    "repeat_identical": true,
+    "rights": "not_evaluated",
+    "rows": 1566,
+    "schema_version": "archive-govt-nz.health-gold-metadata/v4"
+  },
+  "failure_history": {
+    "baseline_aggregate_120s": "incomplete_retained",
+    "combined_gold_probe1": {
+      "failed_queries": 10,
+      "functional_status": "failed",
+      "manifest_bytes": 4691517,
+      "process_exit": 0,
+      "reader_cap_bytes": 4194304
+    },
+    "per_source_attempt1": "Budget2025_120s_timeout_retained",
+    "temporary_directory_loss": "next_launch_failed_before_spawn; temporary_test_logs_lost; archived_receipts_and_durable_final_logs_preserved"
+  },
+  "focused_tests": {
+    "log_sha256": "91e04d5e2051b94a602d15d9d0333e2926c714b99de3fa87b4f1a29bc9529987",
+    "passed": 65,
+    "seconds": 177.04,
+    "warnings": 2
+  },
+  "fresh_input_files": {
+    "canonical-source-inputs/RECOVERY_INPUTS.json": {
+      "bytes": 17116,
+      "sha256": "b7a34cd56ca40610101096f6095382d6c14e6e62471016f1a8d478ebdac91456"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2019/MANIFEST.json": {
+      "bytes": 931,
+      "sha256": "21c32551e51e018251673ae2b7bd81e155ade2c6ce0aefb23c6438704b38b9db"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2019/appropriation_fact.parquet": {
+      "bytes": 109346,
+      "sha256": "1f4443034950c5b3c898de105a497f49fee028b68fbd7b2d782ec4d5b8e80725"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2019/field_lineage.parquet": {
+      "bytes": 807303,
+      "sha256": "5493268939013d98716af06c30679bce62945488f0e919b24ddafe811b665b23"
+    },
+    "canonical-source-inputs/canonical-biffbudget-2019/numeric_evidence.parquet": {
+      "bytes": 191364,
+      "sha256": "085f676532b3ebcd5a74951b3e9093c5d17bc8d1466974e2fb5c92bfd8f8224e"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2019/MANIFEST.json": {
+      "bytes": 912,
+      "sha256": "df02aa63ca91dd19589e40f7783f0039e537496e12c0f580cec8767c9216a97f"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2019/field_lineage.parquet": {
+      "bytes": 102815,
+      "sha256": "a7aa1e4dd1b9c9afaa27b83e65cee613df3a137467f14e5033a313cf54c7fb19"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2019/numeric_evidence.parquet": {
+      "bytes": 30894,
+      "sha256": "488369d4943f5311e7b544b167f3ec4b19b386c00d021d2658b7e05a81b8f84f"
+    },
+    "canonical-source-inputs/canonical-biffrevenue-2019/revenue_fact.parquet": {
+      "bytes": 33533,
+      "sha256": "08bb995b877553c9d030d63e2d66846509964b491884b15650462ce87d76d4e7"
+    },
+    "canonical-source-inputs/canonical-budget-2025/LOCAL_BUDGET.json": {
+      "bytes": 1959,
+      "sha256": "2c6dd2ea3dffb496cdf6bc752b0a3a5870bafb1dedffa5412c6b8acf3ed34d77"
+    },
+    "canonical-source-inputs/canonical-budget-2025/appropriation_fact.parquet": {
+      "bytes": 51490,
+      "sha256": "327bcf48a3710a53512c09c033d3588849afb08847b97a3b165b744db0fa0585"
+    },
+    "canonical-source-inputs/canonical-budget-2025/classification_dimension.parquet": {
+      "bytes": 43658,
+      "sha256": "8f0a84ee95c06576bc8803a3a4dd3b09e8687593edfd6555747e06c54731b8c8"
+    },
+    "canonical-source-inputs/canonical-budget-2025/field_lineage.parquet": {
+      "bytes": 169389,
+      "sha256": "4e44e81d4c6caa10d39d085c3d1da645464ee0ae8d709ff261d5e6523c5410c4"
+    },
+    "canonical-source-inputs/canonical-budget-2025/lineage_accounting.jsonl": {
+      "bytes": 732075,
+      "sha256": "2f9eb7d7adc5e7dbbb0497869ff6794462223fa645b0ff2bc0b13af4339d3339"
+    },
+    "canonical-source-inputs/canonical-budget-2025/projection_receipt.json": {
+      "bytes": 738779,
+      "sha256": "3d18fd37f26e3ba4641bb6715fef40543621eedf28633951b5c213bc69973050"
+    },
+    "canonical-source-inputs/canonical-budget-2026/LOCAL_BUDGET.json": {
+      "bytes": 1959,
+      "sha256": "078dab2ecb0854f51f08b658bcf5ce021b93079de31aa66c2c4ecbe2400bf179"
+    },
+    "canonical-source-inputs/canonical-budget-2026/appropriation_fact.parquet": {
+      "bytes": 47192,
+      "sha256": "75b488345be2fff81728b3ab3788e9f0acd1a6e7891ae7ae5d4eb9e75809f501"
+    },
+    "canonical-source-inputs/canonical-budget-2026/classification_dimension.parquet": {
+      "bytes": 39525,
+      "sha256": "c1a9fb374d26691293df26cd21344334dc05d397f4b2f48dd45410cbcc98321d"
+    },
+    "canonical-source-inputs/canonical-budget-2026/field_lineage.parquet": {
+      "bytes": 148215,
+      "sha256": "4b3f589e76529e3e471382a4438835751c2d7364c0473337e09912c95a00861c"
+    },
+    "canonical-source-inputs/canonical-budget-2026/lineage_accounting.jsonl": {
+      "bytes": 629925,
+      "sha256": "79391debaecb3cfd013aae5444b5c1735f6196dec44e33dda05f539c694f9b51"
+    },
+    "canonical-source-inputs/canonical-budget-2026/projection_receipt.json": {
+      "bytes": 636119,
+      "sha256": "02d1ff169260fa69326f870446b8daf2a18c247054807e2c8f30ad98f9a71439"
+    },
+    "canonical-source-inputs/canonical-historical-2024/LOCAL_CANONICAL.json": {
+      "bytes": 1965,
+      "sha256": "f97874a46cc3b9aa6b0623c208a48861d0491695ceae731726e249587d6aea54"
+    },
+    "canonical-source-inputs/canonical-historical-2024/field_lineage.parquet": {
+      "bytes": 75742,
+      "sha256": "9cc09b787383bf6a0a4d38811e00bcdda0fa8380763a93f9bf6076e4f4bd6a9e"
+    },
+    "canonical-source-inputs/canonical-historical-2024/fiscal_context_fact.parquet": {
+      "bytes": 18975,
+      "sha256": "ef044a4e20f1461a7fcb137563e07b1890dd3752b3419ea58e1a261b17e5b4b0"
+    },
+    "canonical-source-inputs/canonical-historical-2024/health_spending_fact.parquet": {
+      "bytes": 18991,
+      "sha256": "6086c7db7923b98adaf4b81235e1fa245055cc03dd6fc864ec8db39c655e0ac5"
+    },
+    "canonical-source-inputs/canonical-historical-2024/lineage_accounting.json": {
+      "bytes": 241157,
+      "sha256": "5b4a5672602501583a26ebacf0b058b35f89f428181b997528513d9366b47298"
+    },
+    "canonical-source-inputs/canonical-historical-2025/LOCAL_CANONICAL.json": {
+      "bytes": 1965,
+      "sha256": "0bb6bd598ad3bc58c103251f4711e0092a75ec0ae80f63c89c623b93c0711507"
+    },
+    "canonical-source-inputs/canonical-historical-2025/field_lineage.parquet": {
+      "bytes": 77323,
+      "sha256": "e2098b2d03fc909741620f9d78aa58587852894b8dacf9ba5491aa79ab7e49e8"
+    },
+    "canonical-source-inputs/canonical-historical-2025/fiscal_context_fact.parquet": {
+      "bytes": 19445,
+      "sha256": "b2491a94d6901b0f05e101eabbb18abf445b67a6d9865ae2f4ba62d1d27e8e54"
+    },
+    "canonical-source-inputs/canonical-historical-2025/health_spending_fact.parquet": {
+      "bytes": 19464,
+      "sha256": "e7d86618e1edb0166f11331bf59754bd9d85fd8c0b976cc8826096bb4c5c7ff6"
+    },
+    "canonical-source-inputs/canonical-historical-2025/lineage_accounting.json": {
+      "bytes": 245614,
+      "sha256": "59f9b8a7a5ae8e7d860def3c12b6756226f59d1ecf7085c6247d9e454037bcbc"
+    },
+    "canonical-source-inputs/canonical-revenue-2026/LOCAL_REVENUE.json": {
+      "bytes": 1462,
+      "sha256": "f448378bd4b61a9353bfdfdbb1c9118ccf73fb3efcbcbefd967fdf3efe37f498"
+    },
+    "canonical-source-inputs/canonical-revenue-2026/field_lineage.parquet": {
+      "bytes": 46992,
+      "sha256": "e6f31b098ea1e077255165bad411819037eb18fcd2b0d4d3d88b1835eeb0981d"
+    },
+    "canonical-source-inputs/canonical-revenue-2026/projection_receipt.json": {
+      "bytes": 382,
+      "sha256": "f543667e15d27dad1a04265bcf4df2466c502659c06ce09586304d8aaf5af522"
+    },
+    "canonical-source-inputs/canonical-revenue-2026/revenue_fact.parquet": {
+      "bytes": 23481,
+      "sha256": "5410174e1cd5859385e935551f1cb3ad2e63ed79fa34c0190a6be17df2769d4e"
+    },
+    "canonical-source-inputs/raw-biffbudget-2019/MANIFEST.json": {
+      "bytes": 4408,
+      "sha256": "5192d42399c9985e444029a7fe684be83b3205dd2e0f451745f01a9f2f8f6e7b"
+    },
+    "canonical-source-inputs/raw-biffbudget-2019/budget_facts.parquet": {
+      "bytes": 116861,
+      "sha256": "64c1a508a0e9a0395c1e8a606a7cf7f9873041f72690856d181cf97cb8844a0a"
+    },
+    "canonical-source-inputs/raw-biffbudget-2019/field_lineage.parquet": {
+      "bytes": 217066,
+      "sha256": "eba2d1f7e5ea3c1e7bacad2cf61e6a0c72a5a8fea55c9035eec86809f79b8bcf"
+    },
+    "canonical-source-inputs/raw-biffbudget-2019/numeric_evidence.parquet": {
+      "bytes": 191364,
+      "sha256": "085f676532b3ebcd5a74951b3e9093c5d17bc8d1466974e2fb5c92bfd8f8224e"
+    },
+    "canonical-source-inputs/raw-biffbudget-2019/row_dispositions.parquet": {
+      "bytes": 623581,
+      "sha256": "9a569ac9d4251346760d9bf01785b0b954cca47cb9e39b294e61264e266aa93b"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2019/MANIFEST.json": {
+      "bytes": 3612,
+      "sha256": "ab99f3ff63b4afe62c98ecba07f5620425b76d17446f7d332e452dbfe6881029"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2019/budget_facts.parquet": {
+      "bytes": 28338,
+      "sha256": "fdf94a6aab4217a1f67c9833c645ae1578cdac58a171dba8a6b66de19644c144"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2019/field_lineage.parquet": {
+      "bytes": 34510,
+      "sha256": "4381aac69ac70719684ed0a31aad77b70533681babb4a0c7540ebd5375a2ea22"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2019/numeric_evidence.parquet": {
+      "bytes": 30894,
+      "sha256": "488369d4943f5311e7b544b167f3ec4b19b386c00d021d2658b7e05a81b8f84f"
+    },
+    "canonical-source-inputs/raw-biffrevenue-2019/row_dispositions.parquet": {
+      "bytes": 45941,
+      "sha256": "ee5af6729400f2c746e054a82048e172ab259dd82b2b22c7b9d5fa77027fc072"
+    },
+    "canonical-source-inputs/raw-budget-2025/MANIFEST.json": {
+      "bytes": 7120,
+      "sha256": "bc74d0140e606091efdf9104dc8c9ef556726dc15372f6f9cacab346ba8b6bc4"
+    },
+    "canonical-source-inputs/raw-budget-2025/budget_facts.parquet": {
+      "bytes": 64493,
+      "sha256": "50a2a4d4ffe5b5e9adb44575e4a865f706170c306088b3e7d29ea822cfeae0a4"
+    },
+    "canonical-source-inputs/raw-budget-2025/field_lineage.parquet": {
+      "bytes": 81832,
+      "sha256": "f8d80b30e5d4641707e7c39cbb435de97bb4b44a49fd8c5ae705072ed867ad9c"
+    },
+    "canonical-source-inputs/raw-budget-2025/row_dispositions.parquet": {
+      "bytes": 682366,
+      "sha256": "dabc8533c1ff8b49ff46b4301374225315771a76c27e64020526ebcda6486397"
+    },
+    "canonical-source-inputs/raw-budget-2026/MANIFEST.json": {
+      "bytes": 7112,
+      "sha256": "bb13d59f783bf21ac507884a40e21b20990bfe5fc14c6da14c330ef709ca1950"
+    },
+    "canonical-source-inputs/raw-budget-2026/budget_facts.parquet": {
+      "bytes": 57345,
+      "sha256": "42781cb2723f9b1b32a536a46389b0c5a54431d9c600380c6058e740a96b6f9f"
+    },
+    "canonical-source-inputs/raw-budget-2026/field_lineage.parquet": {
+      "bytes": 72437,
+      "sha256": "917e14e0de9d5fc3f7c56d14da9cc103031aa475e59157da46824d63c06c9a4b"
+    },
+    "canonical-source-inputs/raw-budget-2026/row_dispositions.parquet": {
+      "bytes": 677927,
+      "sha256": "e4bad4ad0a92b80257526fddcf4d7b7e665d1eddee90cedf6706977e65260b0f"
+    },
+    "canonical-source-inputs/raw-historical-2024/MANIFEST.json": {
+      "bytes": 125989,
+      "sha256": "2f39ad4dbeb7cb872118ddc634985b5e21b18f2ef2421ca3c0a1e9bf90411288"
+    },
+    "canonical-source-inputs/raw-historical-2024/cell_dispositions.parquet": {
+      "bytes": 31132,
+      "sha256": "79bb5cad2f1f8f612d930acb5405070af8f7a20fe357c4560d96d220deedf960"
+    },
+    "canonical-source-inputs/raw-historical-2024/field_lineage.parquet": {
+      "bytes": 27102,
+      "sha256": "506debdaf2b5b54e5f0d6677fb4969aa589946296be748cdc5b793e8d6beb4cf"
+    },
+    "canonical-source-inputs/raw-historical-2024/historical_facts.parquet": {
+      "bytes": 32847,
+      "sha256": "585c54a54e00ebea7e70288b5ac0736d6e8589922ecd9f0e4e35c5808deee7c7"
+    },
+    "canonical-source-inputs/raw-historical-2025/MANIFEST.json": {
+      "bytes": 127706,
+      "sha256": "aee4578f1ee83f8c1ede63e36e840c6cd2140df8c6f463e71ec93da9e4e7d75a"
+    },
+    "canonical-source-inputs/raw-historical-2025/cell_dispositions.parquet": {
+      "bytes": 31617,
+      "sha256": "9f5118560318865c56bd1713ec10bfc43b39625f670e490a71d876eea351cbdc"
+    },
+    "canonical-source-inputs/raw-historical-2025/field_lineage.parquet": {
+      "bytes": 27855,
+      "sha256": "c0d7b3691fe7040373717e7daaf6a3f3be4c6447f24d8773b1a741efc904bd9a"
+    },
+    "canonical-source-inputs/raw-historical-2025/historical_facts.parquet": {
+      "bytes": 33634,
+      "sha256": "6fcf3ef095e3889de879d4a130fcc8b0ae25319562a46e96706180c74d40cebf"
+    },
+    "canonical-source-inputs/raw-revenue-2026/MANIFEST.json": {
+      "bytes": 7024,
+      "sha256": "9a53c6533d413b46d4b5b632d7dc8bfc60140ebf168c9ce5e3e3d4ed9efe883f"
+    },
+    "canonical-source-inputs/raw-revenue-2026/field_lineage.parquet": {
+      "bytes": 21792,
+      "sha256": "7224693584835db34e07e4423bd4a5f38de4aca80b7764a1d84dc86d5fa0e51b"
+    },
+    "canonical-source-inputs/raw-revenue-2026/revenue_facts.parquet": {
+      "bytes": 24662,
+      "sha256": "a9c96ae287f0ea13f146e8fceda6c21cd09968bd13d26c0bb8cb81e23cb14b46"
+    },
+    "canonical-source-inputs/raw-revenue-2026/row_dispositions.parquet": {
+      "bytes": 52830,
+      "sha256": "5135d1fe763f2e2df34fffc6dfb3d0ac42147184b76c93667e06d29ec39d6f2a"
+    }
+  },
+  "frozen_parameters_sha256": "e0b5a04593987224dc3fbab19b210159005944f9ef95afbee63ce81783dd475c",
+  "full_standards_conformance": "not_asserted",
+  "gold_files": {
+    "MANIFEST.json": {
+      "bytes": 3368303,
+      "sha256": "8cd6f972ce264026201923cac73067207cf8896e92951a65718cd2d0ca78d6b5"
+    },
+    "biff8_budget.parquet": {
+      "bytes": 64236,
+      "sha256": "c9c5403e4ad625fbf2f3de5122581f6a2e07fa62330d2e22058b96725c3d275c"
+    },
+    "biff8_budget_lineage.parquet": {
+      "bytes": 416368,
+      "sha256": "d5e1e5910b04588e524c352cf93f03ad8f7a228e36cfe8eda4e4b342c7dc7e46"
+    },
+    "biff8_budget_numeric.parquet": {
+      "bytes": 100723,
+      "sha256": "5a6aa039a2d3424a75195cd0eadea67ab455cf6200094bc9eeb699d5e53030e9"
+    },
+    "biff8_revenue.parquet": {
+      "bytes": 24226,
+      "sha256": "0265fe60da25a863ad0cd66775d4d23b0096d298b6996ce4a3c4d0d42454e4fd"
+    },
+    "biff8_revenue_lineage.parquet": {
+      "bytes": 59038,
+      "sha256": "1e0060863dcc57b625f6e309707a5faf656d2c1c9407c53df3dcb56ade70cd4f"
+    },
+    "biff8_revenue_numeric.parquet": {
+      "bytes": 18908,
+      "sha256": "c7e37312e6adc08b44f1e3114c4d9b4bb633781f446359918f401607a7df02f8"
+    },
+    "canonical_input_lineage.parquet": {
+      "bytes": 460180,
+      "sha256": "43366f43e6d9c6d2a3cafbfb72371d28873d539d1eb0c7d9a89898ecc1bac516"
+    },
+    "cross_source_period_overlap.json": {
+      "bytes": 88651,
+      "sha256": "f7b5b3b4d1bb38322416ee3eb46e8d835a6c66812125bc150572992319025cd9"
+    },
+    "crown_expense_befu_2026.parquet": {
+      "bytes": 14196,
+      "sha256": "24e75fb2e21c000a4fc8066ff1bac77127db9f7c4e6d0a2ab493fe1ccbe3d561"
+    },
+    "crown_expense_befu_2026_lineage.parquet": {
+      "bytes": 3924,
+      "sha256": "4023f8a0ad0f9fb735043b1a212c40ccbd266e5031d698ccb1cf99795ba9cf94"
+    },
+    "crown_expense_hyefu_2025.parquet": {
+      "bytes": 14253,
+      "sha256": "016da08fafd2daf4060602fad498232ce5b307bca4f026652d96f2980c2cf6f1"
+    },
+    "crown_expense_hyefu_2025_lineage.parquet": {
+      "bytes": 3940,
+      "sha256": "0d4165de846735d6f5c37b907bc286f508804a704eb6f225bdc71628a39a0489"
+    },
+    "dataset-card.md": {
+      "bytes": 2002,
+      "sha256": "3878db552ba3435cf6b75683794c65f06578b81b917e2e3864989b09c48da511"
+    },
+    "historical_coverage.parquet": {
+      "bytes": 11890,
+      "sha256": "35f4b977cfccc1e669b785dee31d2f31faa2b5551d1af29d881a1fb2c8a27917"
+    },
+    "historical_fiscal_crown.parquet": {
+      "bytes": 23173,
+      "sha256": "c39eb048eeab9d4c0a3164bbc54930bed7cfe7cb4d1eb71338a1842fa5dd7ae9"
+    },
+    "historical_fiscal_crown_lineage.parquet": {
+      "bytes": 9682,
+      "sha256": "278a92ebec99d7f937b08d2d084c73713e589d77609c7760e7f276d93f774e43"
+    },
+    "historical_observations.parquet": {
+      "bytes": 14205,
+      "sha256": "b7070aa4f7651794e3da59521579d495402291d9d09369708b3bc6d0b84ea1c6"
+    },
+    "historical_revision_reconciliation.json": {
+      "bytes": 11838,
+      "sha256": "8d1eec0a0b4a9e7e34336162f0c5870dc618bd4d2fcfe73e32a7d56ddac4ba5f"
+    },
+    "nominal_budget.parquet": {
+      "bytes": 21872,
+      "sha256": "61aa8f6fc5bbf1052a3e38f88d4b5417911358ccfdfcb654ffbf006fc21917f3"
+    },
+    "nominal_pharmaceutical_budget.parquet": {
+      "bytes": 15758,
+      "sha256": "04dadcbf364c46665657322b45fb9d679c278f13e64d65fc3be2250fa8dbb019"
+    },
+    "nominal_revenue.parquet": {
+      "bytes": 7469,
+      "sha256": "29df524215a678cabc6008ec5bd99ed7e38fb24a783601ecbc1c39f4c8cacd75"
+    },
+    "pharmaceutical_budget_lineage.parquet": {
+      "bytes": 4766,
+      "sha256": "fab415c4e47f65cd4b18f0dee53c90fef4ca510f27fad1e4362e0a9ec873511f"
+    },
+    "plot_budget_19f00f88854fe78ebde9.png": {
+      "bytes": 139549,
+      "sha256": "7940d95b8d34aa13275ae987d9109d57a503a7c47e54d4ac5295155bc0aac10c"
+    },
+    "plot_budget_1b04219e6a259c577ccf.png": {
+      "bytes": 137936,
+      "sha256": "44eca12a389a02ea6511c48f896bda3e24c36fbbdb5d7b8e354b2761435841bf"
+    },
+    "plot_budget_502284c66d1b8e52adc6.png": {
+      "bytes": 134136,
+      "sha256": "9a6af08fabecb6799a3bfe5a490df08be2d4e2d1b0885e70b3dd772c89bb2c7e"
+    },
+    "plot_budget_5299a9d311817a6a404c.png": {
+      "bytes": 421119,
+      "sha256": "8242e45adbc20be69ea55b4fee600c0d18148b3216e483a25b4906da8f9392ea"
+    },
+    "plot_budget_74cd52b37798e3cf9750.png": {
+      "bytes": 365513,
+      "sha256": "e4e785991314c76a35fe1983fb76193b0436c7a8404f5c017e91e25c5221b455"
+    },
+    "plot_budget_7dfc30e1bb6ea30168c6.png": {
+      "bytes": 135908,
+      "sha256": "2b0885c4c3e2e972176fba2c0f31f81582d6258db88212886baf5685ef416222"
+    },
+    "plot_crown_befu_2550c78c3610f53f9ad5.png": {
+      "bytes": 68137,
+      "sha256": "29202e0802062568f638064a41e467f3a67e63446e4f1a7534816add118a8c5c"
+    },
+    "plot_crown_befu_6d873ddee469a22c2f5c.png": {
+      "bytes": 67086,
+      "sha256": "96861cbcef00bf6ff665e2eea61c478596758edeb628a7152a2e181302fbc3a9"
+    },
+    "plot_crown_hyefu_1699d96ca50f1665314d.png": {
+      "bytes": 67724,
+      "sha256": "59f4a783f8546aa8e3e568d70e77262c65166e60db9d7f5afb97c6aea2eac247"
+    },
+    "plot_crown_hyefu_eadd76c35d4812f761b6.png": {
+      "bytes": 67772,
+      "sha256": "24ff45220393c337d9c5c51a706cd13a350616ba476431f5d3fe00c50680c60c"
+    },
+    "plot_fiscal_crown_0d68d767a847fef2e27c.png": {
+      "bytes": 141638,
+      "sha256": "b85032b0ecfa14b67944edf2f75d14fa597e8bdd8620af2228b2e65b642ad93e"
+    },
+    "plot_fiscal_crown_3549a149b3be5cc1a22b.png": {
+      "bytes": 54094,
+      "sha256": "39bf9aa9414a40c686fbd83e3d73ebb7f75dea4f3606fec6e6d70a79297fa754"
+    },
+    "plot_fiscal_crown_9d921d8b6a2304c51ec0.png": {
+      "bytes": 86842,
+      "sha256": "c1bc8f113b9da3893586afe4f7a3d7a06fe96b6c27418ac472cc9f6e3e33c6e1"
+    },
+    "plot_fiscal_crown_b198e3d702f33d23ec39.png": {
+      "bytes": 85042,
+      "sha256": "7291a92f202f9c6cc540344cd11b925ff8c6aae5154d7251b74877edeae808a2"
+    },
+    "plot_fiscal_crown_cd809e25a59e219eb4bd.png": {
+      "bytes": 141080,
+      "sha256": "7ab972bc5fd56bdb6c3e88f18ecef338138d5846b955cccb890a4318423bd6b0"
+    },
+    "plot_historical_0110612a35c0bf230b18.png": {
+      "bytes": 140874,
+      "sha256": "8c4030a3ceaf1939fcf3abb23656bf559b97ddbc16458f15eee08fa4f986d96e"
+    },
+    "plot_historical_22c05a464921e6a49c13.png": {
+      "bytes": 135049,
+      "sha256": "d3a7f37196457b9fe845698a3b1c18ca09b9ea13614268edba384fd00f931ef6"
+    },
+    "plot_historical_423981e75d32ebd10d12.png": {
+      "bytes": 84506,
+      "sha256": "df761f1399b2ac8021d0714dab9bc420a6e2f0688921d8febfc1437608cd8d69"
+    },
+    "plot_historical_959f44ae6a4e923aa28b.png": {
+      "bytes": 141747,
+      "sha256": "606f1e0de4e8d0e34d7fb0a8d299ff1dd8847ead9cd4a6ddfc5bfefaa0b0e994"
+    },
+    "plot_historical_a2a298f5a61c5c88bcc9.png": {
+      "bytes": 258989,
+      "sha256": "a12f59f90cbb85dd3064297b08e4cfb1b16454aa482fa3c90610fb080aa6877c"
+    },
+    "plot_historical_ba67687f1fc0668a24e6.png": {
+      "bytes": 260615,
+      "sha256": "b6a15f74a37782940bfe1e906f579306b7728512045e64d4aa885f4baebf8228"
+    },
+    "plot_historical_c8b40593627d1af24daa.png": {
+      "bytes": 49041,
+      "sha256": "ea18e6e69e9d21c829c9c7ad43d5d6dd8493da0db5babca929338a0076bfc346"
+    },
+    "plot_historical_cf6ce572cdbea34320c6.png": {
+      "bytes": 143169,
+      "sha256": "9bb05d79f6d4e66c4edc7e3e510b7782603e9158c7a967b00c368ce1a51589d0"
+    },
+    "plot_historical_f7a9ddaef13d1f087d40.png": {
+      "bytes": 86519,
+      "sha256": "6872d9c9042fd0b635709093bd58586169a24242243da6512272c5a834419ec3"
+    },
+    "plot_historical_fd563e67f0fdf7300a56.png": {
+      "bytes": 51060,
+      "sha256": "8b5b658d79d6139237c633297295441b62767046e3d0455cb163baa81407c1cb"
+    },
+    "plot_moh_0dc87b48d6563b896097.png": {
+      "bytes": 138530,
+      "sha256": "f89212042e2dce715dddbfca0ef87e59d5ee58710cc1bc6c691e3fa01eed17e4"
+    },
+    "plot_moh_5f64d53645ae1e9cc1b3.png": {
+      "bytes": 135777,
+      "sha256": "5dfee0d2d45cabe5525050566b70d06c0523d4ffe2e2d09ae27a982d5f051c55"
+    },
+    "plot_moh_67496a2172237d54d579.png": {
+      "bytes": 135510,
+      "sha256": "a48f558e2e172441be679355d3179f69a65161fbd7d4230b6017e4f10f907fce"
+    },
+    "plot_moh_a84da9b0d440697802ca.png": {
+      "bytes": 136413,
+      "sha256": "ca25b726f900d9462ac62418114009d29ba410e8b835d6350e92ef6bbaa9af0d"
+    },
+    "plot_pharmac_2f31fc76c132e9372cfb.png": {
+      "bytes": 88977,
+      "sha256": "c80282a95953db69d52e9f851407e12a8ffb2f7f935890d1af6bff72a35e86dc"
+    },
+    "plot_pharmac_643d59e3ada11de2d983.png": {
+      "bytes": 68944,
+      "sha256": "b1f8116c85978967cf6d1c0274e9e5d1b9da0553b6217c1b4de13f97a117f3dc"
+    },
+    "plot_revenue_024c65483954ffb1cbe4.png": {
+      "bytes": 92754,
+      "sha256": "8b0361a012e141963093fb88ea924d8cc5c2f1de90047783465f0160e151d02c"
+    },
+    "plot_revenue_a15cf39df0dc6380df60.png": {
+      "bytes": 211370,
+      "sha256": "b2ce8e5921f57c713cb345787e9044d246e619ed422e1527a06829fd79d6fc21"
+    },
+    "plot_revenue_cc07415ac1b803b875db.png": {
+      "bytes": 105786,
+      "sha256": "b9a4481a93efa195b3c3982d21b56a0dc094212270c12b04364d93d7a871ed1c"
+    },
+    "published_health_indicator_lineage.parquet": {
+      "bytes": 11027,
+      "sha256": "07424b23c6a3e41de3b437b1c07e1e084d44522d8458cd7512fe488edab63db6"
+    },
+    "published_health_indicators.parquet": {
+      "bytes": 17225,
+      "sha256": "6818b53313cbc5221b460d388cde6af2d256e4715b55c15a5eff27b0a86db3e6"
+    },
+    "ro-crate-metadata.json": {
+      "bytes": 14449,
+      "sha256": "f6e9ce14b9e66ba5a8745aba8517738c5b808c3b0d7987d2132d329bafad4b24"
+    }
+  },
+  "gold_manifest_bytes": 3368303,
+  "gold_manifest_sha256": "8cd6f972ce264026201923cac73067207cf8896e92951a65718cd2d0ca78d6b5",
+  "gold_reader_cap_bytes": 4194304,
+  "input_records": 1241,
+  "legacy_gold_parity": {
+    "baseline": "canonical-recovery-validation-20261017.json",
+    "different": [],
+    "identical": [
+      "crown_expense_befu_2026.parquet",
+      "crown_expense_befu_2026_lineage.parquet",
+      "crown_expense_hyefu_2025.parquet",
+      "crown_expense_hyefu_2025_lineage.parquet",
+      "historical_coverage.parquet",
+      "historical_fiscal_crown.parquet",
+      "historical_fiscal_crown_lineage.parquet",
+      "historical_observations.parquet",
+      "nominal_budget.parquet",
+      "nominal_pharmaceutical_budget.parquet",
+      "nominal_revenue.parquet",
+      "pharmaceutical_budget_lineage.parquet",
+      "plot_budget_19f00f88854fe78ebde9.png",
+      "plot_budget_1b04219e6a259c577ccf.png",
+      "plot_budget_502284c66d1b8e52adc6.png",
+      "plot_budget_5299a9d311817a6a404c.png",
+      "plot_budget_74cd52b37798e3cf9750.png",
+      "plot_budget_7dfc30e1bb6ea30168c6.png",
+      "plot_crown_befu_2550c78c3610f53f9ad5.png",
+      "plot_crown_befu_6d873ddee469a22c2f5c.png",
+      "plot_crown_hyefu_1699d96ca50f1665314d.png",
+      "plot_crown_hyefu_eadd76c35d4812f761b6.png",
+      "plot_fiscal_crown_0d68d767a847fef2e27c.png",
+      "plot_fiscal_crown_3549a149b3be5cc1a22b.png",
+      "plot_fiscal_crown_9d921d8b6a2304c51ec0.png",
+      "plot_fiscal_crown_b198e3d702f33d23ec39.png",
+      "plot_fiscal_crown_cd809e25a59e219eb4bd.png",
+      "plot_historical_0110612a35c0bf230b18.png",
+      "plot_historical_22c05a464921e6a49c13.png",
+      "plot_historical_423981e75d32ebd10d12.png",
+      "plot_historical_959f44ae6a4e923aa28b.png",
+      "plot_historical_a2a298f5a61c5c88bcc9.png",
+      "plot_historical_ba67687f1fc0668a24e6.png",
+      "plot_historical_c8b40593627d1af24daa.png",
+      "plot_historical_cf6ce572cdbea34320c6.png",
+      "plot_historical_f7a9ddaef13d1f087d40.png",
+      "plot_historical_fd563e67f0fdf7300a56.png",
+      "plot_moh_0dc87b48d6563b896097.png",
+      "plot_moh_5f64d53645ae1e9cc1b3.png",
+      "plot_moh_67496a2172237d54d579.png",
+      "plot_moh_a84da9b0d440697802ca.png",
+      "plot_pharmac_2f31fc76c132e9372cfb.png",
+      "plot_pharmac_643d59e3ada11de2d983.png",
+      "plot_revenue_024c65483954ffb1cbe4.png",
+      "plot_revenue_a15cf39df0dc6380df60.png",
+      "plot_revenue_cc07415ac1b803b875db.png",
+      "published_health_indicator_lineage.parquet",
+      "published_health_indicators.parquet"
+    ],
+    "legacy_parquet_and_plots_compared": 48
+  },
+  "legacy_source_parity": {
+    "all47_identical": true,
+    "baseline": "canonical-recovery-validation-20261017.json",
+    "files": {
+      "RECOVERY_INPUTS.json": "db17e436e6a25ad3d48824642753cfe8342585e9e1dbe689cf0d49f0a6f4f371",
+      "canonical-budget-2025/LOCAL_BUDGET.json": "2c6dd2ea3dffb496cdf6bc752b0a3a5870bafb1dedffa5412c6b8acf3ed34d77",
+      "canonical-budget-2025/appropriation_fact.parquet": "327bcf48a3710a53512c09c033d3588849afb08847b97a3b165b744db0fa0585",
+      "canonical-budget-2025/classification_dimension.parquet": "8f0a84ee95c06576bc8803a3a4dd3b09e8687593edfd6555747e06c54731b8c8",
+      "canonical-budget-2025/field_lineage.parquet": "4e44e81d4c6caa10d39d085c3d1da645464ee0ae8d709ff261d5e6523c5410c4",
+      "canonical-budget-2025/lineage_accounting.jsonl": "2f9eb7d7adc5e7dbbb0497869ff6794462223fa645b0ff2bc0b13af4339d3339",
+      "canonical-budget-2025/projection_receipt.json": "3d18fd37f26e3ba4641bb6715fef40543621eedf28633951b5c213bc69973050",
+      "canonical-budget-2026/LOCAL_BUDGET.json": "078dab2ecb0854f51f08b658bcf5ce021b93079de31aa66c2c4ecbe2400bf179",
+      "canonical-budget-2026/appropriation_fact.parquet": "75b488345be2fff81728b3ab3788e9f0acd1a6e7891ae7ae5d4eb9e75809f501",
+      "canonical-budget-2026/classification_dimension.parquet": "c1a9fb374d26691293df26cd21344334dc05d397f4b2f48dd45410cbcc98321d",
+      "canonical-budget-2026/field_lineage.parquet": "4b3f589e76529e3e471382a4438835751c2d7364c0473337e09912c95a00861c",
+      "canonical-budget-2026/lineage_accounting.jsonl": "79391debaecb3cfd013aae5444b5c1735f6196dec44e33dda05f539c694f9b51",
+      "canonical-budget-2026/projection_receipt.json": "02d1ff169260fa69326f870446b8daf2a18c247054807e2c8f30ad98f9a71439",
+      "canonical-historical-2024/LOCAL_CANONICAL.json": "f97874a46cc3b9aa6b0623c208a48861d0491695ceae731726e249587d6aea54",
+      "canonical-historical-2024/field_lineage.parquet": "9cc09b787383bf6a0a4d38811e00bcdda0fa8380763a93f9bf6076e4f4bd6a9e",
+      "canonical-historical-2024/fiscal_context_fact.parquet": "ef044a4e20f1461a7fcb137563e07b1890dd3752b3419ea58e1a261b17e5b4b0",
+      "canonical-historical-2024/health_spending_fact.parquet": "6086c7db7923b98adaf4b81235e1fa245055cc03dd6fc864ec8db39c655e0ac5",
+      "canonical-historical-2024/lineage_accounting.json": "5b4a5672602501583a26ebacf0b058b35f89f428181b997528513d9366b47298",
+      "canonical-historical-2025/LOCAL_CANONICAL.json": "0bb6bd598ad3bc58c103251f4711e0092a75ec0ae80f63c89c623b93c0711507",
+      "canonical-historical-2025/field_lineage.parquet": "e2098b2d03fc909741620f9d78aa58587852894b8dacf9ba5491aa79ab7e49e8",
+      "canonical-historical-2025/fiscal_context_fact.parquet": "b2491a94d6901b0f05e101eabbb18abf445b67a6d9865ae2f4ba62d1d27e8e54",
+      "canonical-historical-2025/health_spending_fact.parquet": "e7d86618e1edb0166f11331bf59754bd9d85fd8c0b976cc8826096bb4c5c7ff6",
+      "canonical-historical-2025/lineage_accounting.json": "59f9b8a7a5ae8e7d860def3c12b6756226f59d1ecf7085c6247d9e454037bcbc",
+      "canonical-revenue-2026/LOCAL_REVENUE.json": "f448378bd4b61a9353bfdfdbb1c9118ccf73fb3efcbcbefd967fdf3efe37f498",
+      "canonical-revenue-2026/field_lineage.parquet": "e6f31b098ea1e077255165bad411819037eb18fcd2b0d4d3d88b1835eeb0981d",
+      "canonical-revenue-2026/projection_receipt.json": "f543667e15d27dad1a04265bcf4df2466c502659c06ce09586304d8aaf5af522",
+      "canonical-revenue-2026/revenue_fact.parquet": "5410174e1cd5859385e935551f1cb3ad2e63ed79fa34c0190a6be17df2769d4e",
+      "raw-budget-2025/MANIFEST.json": "bc74d0140e606091efdf9104dc8c9ef556726dc15372f6f9cacab346ba8b6bc4",
+      "raw-budget-2025/budget_facts.parquet": "50a2a4d4ffe5b5e9adb44575e4a865f706170c306088b3e7d29ea822cfeae0a4",
+      "raw-budget-2025/field_lineage.parquet": "f8d80b30e5d4641707e7c39cbb435de97bb4b44a49fd8c5ae705072ed867ad9c",
+      "raw-budget-2025/row_dispositions.parquet": "dabc8533c1ff8b49ff46b4301374225315771a76c27e64020526ebcda6486397",
+      "raw-budget-2026/MANIFEST.json": "bb13d59f783bf21ac507884a40e21b20990bfe5fc14c6da14c330ef709ca1950",
+      "raw-budget-2026/budget_facts.parquet": "42781cb2723f9b1b32a536a46389b0c5a54431d9c600380c6058e740a96b6f9f",
+      "raw-budget-2026/field_lineage.parquet": "917e14e0de9d5fc3f7c56d14da9cc103031aa475e59157da46824d63c06c9a4b",
+      "raw-budget-2026/row_dispositions.parquet": "e4bad4ad0a92b80257526fddcf4d7b7e665d1eddee90cedf6706977e65260b0f",
+      "raw-historical-2024/MANIFEST.json": "2f39ad4dbeb7cb872118ddc634985b5e21b18f2ef2421ca3c0a1e9bf90411288",
+      "raw-historical-2024/cell_dispositions.parquet": "79bb5cad2f1f8f612d930acb5405070af8f7a20fe357c4560d96d220deedf960",
+      "raw-historical-2024/field_lineage.parquet": "506debdaf2b5b54e5f0d6677fb4969aa589946296be748cdc5b793e8d6beb4cf",
+      "raw-historical-2024/historical_facts.parquet": "585c54a54e00ebea7e70288b5ac0736d6e8589922ecd9f0e4e35c5808deee7c7",
+      "raw-historical-2025/MANIFEST.json": "aee4578f1ee83f8c1ede63e36e840c6cd2140df8c6f463e71ec93da9e4e7d75a",
+      "raw-historical-2025/cell_dispositions.parquet": "9f5118560318865c56bd1713ec10bfc43b39625f670e490a71d876eea351cbdc",
+      "raw-historical-2025/field_lineage.parquet": "c0d7b3691fe7040373717e7daaf6a3f3be4c6447f24d8773b1a741efc904bd9a",
+      "raw-historical-2025/historical_facts.parquet": "6fcf3ef095e3889de879d4a130fcc8b0ae25319562a46e96706180c74d40cebf",
+      "raw-revenue-2026/MANIFEST.json": "9a53c6533d413b46d4b5b632d7dc8bfc60140ebf168c9ce5e3e3d4ed9efe883f",
+      "raw-revenue-2026/field_lineage.parquet": "7224693584835db34e07e4423bd4a5f38de4aca80b7764a1d84dc86d5fa0e51b",
+      "raw-revenue-2026/revenue_facts.parquet": "a9c96ae287f0ea13f146e8fceda6c21cd09968bd13d26c0bb8cb81e23cb14b46",
+      "raw-revenue-2026/row_dispositions.parquet": "5135d1fe763f2e2df34fffc6dfb3d0ac42147184b76c93667e06d29ec39d6f2a"
+    }
+  },
+  "native_summary": {
+    "all10_queries_verified": true,
+    "canonical_packages": 7,
+    "composite_metadata_verified": true,
+    "fresh_input_builds": 2,
+    "gold_files": 60,
+    "head": "32a2da51d84affb7bd191a1dea6a6e38c4779f63",
+    "input_files": 65,
+    "publication": "not_performed",
+    "repeat_identical": true,
+    "retained_derivatives_consumed": false,
+    "rights": "not_evaluated",
+    "tree": "fdbc31552907310d8c3de1752e859f3f6bf2255d"
+  },
+  "native_summary_sha256": "b00fbd3b41b32d8d7f7fc78537385010ef3553076e38a6c395b55628831a1556",
+  "original_full_harness": "pending_run_on_final_prePR_tree",
+  "postflight": {
+    "exit": 0,
+    "group_absent": true,
+    "head": "32a2da51d84affb7bd191a1dea6a6e38c4779f63",
+    "lease_free": true,
+    "owner_absent": true,
+    "pins_unchanged": 4848,
+    "tree": "fdbc31552907310d8c3de1752e859f3f6bf2255d"
+  },
+  "producer_head": "32a2da51d84affb7bd191a1dea6a6e38c4779f63",
+  "producer_tree": "fdbc31552907310d8c3de1752e859f3f6bf2255d",
+  "protected_delivery": "pending",
+  "publication": "not_performed",
+  "quality": {
+    "input_record_count": 1241,
+    "input_record_products": {
+      "sha256:00747b871d70f946ccd3754c2781afe7d8435ac44d0709e3924dfbd0e3ee492f": [
+        "fiscal_crown"
+      ],
+      "sha256:00907b072710fb2a910efe1ae3e5ccff632464c475dab5b00caca2ff2f987803": [
+        "historical"
+      ],
+      "sha256:00ca77970d0dd2ce764e3637f3c2ca50d184fabbd65602ea26f37d5ec3342209": [
+        "biff8_budget"
+      ],
+      "sha256:00d28bc50dfd6653ac432af47a92825d3fd1fa773a2b6a156429d6c21d8237fe": [
+        "budget"
+      ],
+      "sha256:00dcf86644dfabb9f16c6d3d6b8381987a575dbebbdadf1a868467655ff709c5": [
+        "budget"
+      ],
+      "sha256:010b1f26b1e4c8b5e2a7d0bcd4e79b66d1bca562c628ec6ec81a341bca45b46a": [
+        "biff8_budget"
+      ],
+      "sha256:0114b2d7f1b1c5e84e24b7957c93c0e6392cc5161eefeb42e714cae344f2198b": [
+        "budget"
+      ],
+      "sha256:01390d3321de0375142264cb6b9bcdca0ea2000d8f448a70c66b9f2561bcbcbf": [
+        "fiscal_crown"
+      ],
+      "sha256:0144715253efea73480af67b215b9755ea69fa411e8b8ed202f1ac2e5b59c505": [
+        "biff8_revenue"
+      ],
+      "sha256:0163d6722f5f4d1b73a28e424297ad09b4ca18db83489bca58b69270c6a702c6": [
+        "historical"
+      ],
+      "sha256:01778ab9ab64511801b7633134ab52a1e6eb7e1af49316f91d19b36cc1ef87d8": [
+        "historical"
+      ],
+      "sha256:01928c321fc625f6e0e98e802fa277ab86c225664bafc4f06397b7d02e9c04ac": [
+        "moh"
+      ],
+      "sha256:019fbbf6a65d8dff598e19d4d1921d32c1133ad8416d9549337464e3d02483da": [
+        "biff8_revenue"
+      ],
+      "sha256:01a16fdb9ae6a3d2bc2175134dd41f6ffc40a106197c32cb5c34ad3b97fa8e74": [
+        "budget"
+      ],
+      "sha256:01ae417bbbf43e6504f921cb4590f55daac00dee0a9a84185333256cc4a05f0e": [
+        "budget"
+      ],
+      "sha256:01b821be0429932d70ac307d60a1464e550e3163d217de5875aa427c83d32e67": [
+        "budget"
+      ],
+      "sha256:01d28b9949140e3abc4b924e4199e46850564f786b224c772177917c61f66d42": [
+        "biff8_budget"
+      ],
+      "sha256:02012e93f3601b772af89eebf915e1404021a8615db783e2a8833149d7a35ca7": [
+        "budget"
+      ],
+      "sha256:0218d270ac0ab992aa4818d383f2482999112537ad58618626b52f551eab5c0f": [
+        "historical"
+      ],
+      "sha256:0226d1e12ec0837983e4a650a18a121909bd33b47e9d7687e9959b0a03270d19": [
+        "moh"
+      ],
+      "sha256:0247af3f90dba9937cde7462fa354bb79c1ab942ec9163a476aadff1285cccb7": [
+        "budget"
+      ],
+      "sha256:0343e7f172acb4ad889369380753cc1186f97ce46659508a77968f3d9d109642": [
+        "budget"
+      ],
+      "sha256:0359a4d2e1f12f078434ce94cbcb17326c806cc2a0d65bbf3f96cdc730276712": [
+        "biff8_budget"
+      ],
+      "sha256:03731788645584a59f2be5d410708c3300c25df94fd2c00b0493f7a27ff15088": [
+        "fiscal_crown"
+      ],
+      "sha256:03cbfdca6df564c6f5b16466b73aa22be4ac4be5e984bd05b53907c40b1d8871": [
+        "budget"
+      ],
+      "sha256:045a12c2af8e2e8ca8a88c55bb22e992b5022b947717ac35bde58973ba702800": [
+        "budget"
+      ],
+      "sha256:0476b0caf85fad047ad24965535f973d4be7673dbcd718b5e2a543a5a4b31d92": [
+        "moh"
+      ],
+      "sha256:04a5bfd3ce2806a3ff1645f610657789ce4fbce78f7476fd83b435a9e0d933a7": [
+        "budget"
+      ],
+      "sha256:04bf787245c5d20ac89585b2664353a85af5593845b0a85b50b294c59b301a77": [
+        "revenue"
+      ],
+      "sha256:04dc476e8366d055aca3f7d0a9f4c890420019f05aac251b031f3d35ccc7bfd5": [
+        "historical"
+      ],
+      "sha256:04e230e4e14a8c350e88c83ccf4d0b39d27dca094205e6e5da7d40e37acaca09": [
+        "budget"
+      ],
+      "sha256:04f537a6df4378d108ac06cf8e37b879afb76792e6f3717286b500c0967ebbb2": [
+        "biff8_budget"
+      ],
+      "sha256:057cdfc9ed7039be2428aca02727b499364350f4a3698cdc744542ae5d559c7a": [
+        "moh"
+      ],
+      "sha256:0596c2cb711177a57f93d4ce42f57d2e94ef99fea6261ef4595bdd7d5739cae3": [
+        "biff8_revenue"
+      ],
+      "sha256:05f31788e7f2b2736383cf0e98212e44b38dd68ef10f6996b1f9605ad67254e6": [
+        "pharmac"
+      ],
+      "sha256:06932af6aad1bf9cb12dac93ab24e66bdc5157630943843c2405668b67dd6f48": [
+        "budget"
+      ],
+      "sha256:06ee7ea0d80d9d6512d429f380801b5baec8cb00b3764ac41255e4a453a01bdc": [
+        "moh"
+      ],
+      "sha256:06f6860c1101b2a8735f4493598ad743efc29bea2a194b1e7a6c5ea47de718a4": [
+        "budget"
+      ],
+      "sha256:07335fdef3a8313ef227a958768f9f66fe7356afffca4729a6e4ada72d6decb2": [
+        "historical"
+      ],
+      "sha256:07758ba1095b0d02ee64c567022899363b9cc95acb145bf845d9c36dd9fe4395": [
+        "biff8_budget"
+      ],
+      "sha256:0786c9cb2db006dbd94f9737faa069a045a7bfad1434728cca1e83d9ee1cbb46": [
+        "biff8_revenue"
+      ],
+      "sha256:07eeecdbca7455c24d241312afd349359e3ceeeb61e289dd3a8a3c846d3adab7": [
+        "moh"
+      ],
+      "sha256:07f9ac72709926f251a55b57566bff738f31b241ffb739bb6d54015261246fd5": [
+        "budget"
+      ],
+      "sha256:08279575b3e286fd2f1095e5d755c30b5dbb67fc3010264cbd25ceb26a663d6f": [
+        "moh"
+      ],
+      "sha256:0838a247de7054236317fc6f9c6e5249a79b3859bc2a2d93037c6d4b461164c8": [
+        "revenue"
+      ],
+      "sha256:095c5a81972ce50324344ca5e2192823e19f1a6c34c5768572a913cb7d235136": [
+        "biff8_budget"
+      ],
+      "sha256:097293e8f9eba8efb7eb90fdb95a62245a6a12bb259aa0dc5a5d7611b2704e9f": [
+        "budget"
+      ],
+      "sha256:099d73a6ed4d94aac0a5c1be3e89a09c70f8f2d5258399e37fd228e6562b5217": [
+        "budget"
+      ],
+      "sha256:0a1bcb86f502671ca97c57160e812b61a0d1438fc0c2a496eccd9e2dd93d2cc2": [
+        "biff8_budget"
+      ],
+      "sha256:0a70126778997afe394a0f4e1788593f3b21967a566a632c75ec79f98f042d85": [
+        "budget"
+      ],
+      "sha256:0a7f3efe069f4b569949d2105399a8ea6e7e485bd0a9d9e31da69298909cf988": [
+        "biff8_budget"
+      ],
+      "sha256:0a9b6b0e5099a3492ae7c0af943b2e18413df9ab162a191db51504442561e3ab": [
+        "biff8_budget"
+      ],
+      "sha256:0a9ce64ee7c933dd00266af49db74439c55db7f0fe88f413f780f918c8511f4d": [
+        "budget"
+      ],
+      "sha256:0b33ec596b5e6050ec1b06863cd29acaca2ab537a2ed48e68b8637d507762117": [
+        "biff8_budget"
+      ],
+      "sha256:0b37c7b870f537a4e3780376f502aead3b81069df6588189e1a77b3b5e711574": [
+        "revenue"
+      ],
+      "sha256:0b682c0f51a6f47a28362473e66c5c8d08cabf5e40c73435e52f965704b51b26": [
+        "budget"
+      ],
+      "sha256:0bc32c6d4a981217aaa680928d3620a644caf8ff6bd0a3249771f5ee4f36abef": [
+        "budget"
+      ],
+      "sha256:0bd24c100cb784aee5a05d4789c58dc832efc8b92688dd41502885d8a379ed2a": [
+        "revenue"
+      ],
+      "sha256:0c409a96561973051e52dc509a222890d9a78e2578a7418f253de3bb3a2fbb60": [
+        "moh"
+      ],
+      "sha256:0c4b3473d9c6e4b96b4d9079912607cbf0dc5d7e0ef6fd18ff40722f6231f868": [
+        "biff8_budget"
+      ],
+      "sha256:0d4bfe0eca82ecb9c57d3a915b8277ca0eb4b9254ad0abfd6890a5c11ffcc99a": [
+        "historical"
+      ],
+      "sha256:0d8fd0f4d06808034267b91231d1586c085216f769c1dafce2205a51aef81b65": [
+        "budget"
+      ],
+      "sha256:0dad87ac0325a5f15785f9035acf33a0b8bc6595d2b461fe4b12a07bb4b224cf": [
+        "budget"
+      ],
+      "sha256:0df9412d2e1bde01c522e4d86b69e4ec421262766919bfee2bf299360681c633": [
+        "biff8_budget"
+      ],
+      "sha256:0e0c4715c32f876c2dba372f5240a6c3ea22e68c5e6fe03b755354e9483f9889": [
+        "revenue"
+      ],
+      "sha256:0e0e642495e258a188d93abb9536c4d4aec3b7b7641794f00e64347cc9b02ddb": [
+        "budget"
+      ],
+      "sha256:0e0eeabf80336c511a1012c4887f0d22b91188c245663fe701fc42083339c313": [
+        "budget"
+      ],
+      "sha256:0e20ea9e32954a4beaea1711aeaab138ba249c0001bc40b8164ed4a2275fdd66": [
+        "biff8_budget"
+      ],
+      "sha256:0e2db035ee0df05ac133fcc3d2fad51682e6938b2cdd49658fedb86b8077c185": [
+        "budget"
+      ],
+      "sha256:0e42164c549680641721f50a530cc3b5739ac6a28c84da889a6898bda683b855": [
+        "budget"
+      ],
+      "sha256:0e542707bffec1fd0399299223081adfba0aa02d5d90456a087403278465cc8c": [
+        "budget"
+      ],
+      "sha256:0ef4f9e19fd9094d5b0836d71d07875333c9f6437d86cb443df740b33d8f03f4": [
+        "biff8_revenue"
+      ],
+      "sha256:0efb47ec73f4c324c5bcd9b5788c12ab4b12cd14274b5ad5707f9b3c629220b8": [
+        "budget"
+      ],
+      "sha256:0f33dc0afea54a94f6e326a98a04c62ba79f842083862c1ded4be853e2bad643": [
+        "budget"
+      ],
+      "sha256:0f5b9ab2f439fc15b10932ae113f712c9a6912e554dd1747df3a9b6b987aceff": [
+        "budget"
+      ],
+      "sha256:0f7c43b66513c7c02709529c57fd98ba523af6dda4a5a381e787b6aaad3afd65": [
+        "moh"
+      ],
+      "sha256:0fa19c1f7e13494f105326894098b7fac69dbd480384a40df401fb631360c929": [
+        "biff8_budget"
+      ],
+      "sha256:0fa489bbc9af542ee7b18426faa91caa111403606cddedb63f52c64c480e0840": [
+        "fiscal_crown"
+      ],
+      "sha256:0fc8dcd2ddf286373e0239cc2eff6bb04c6a0bbd51c9e0e1631316499752a8dd": [
+        "budget"
+      ],
+      "sha256:0fe393b57463cc2e52497a098c4a687c4e6633bc0fba69fb9e03a905e0a3e7f6": [
+        "biff8_budget"
+      ],
+      "sha256:1015ab2edf75b4f7bef03a4254abe763e8f97a93d40b9fbb706248b24bc8e963": [
+        "budget"
+      ],
+      "sha256:109adac01886a7c3523fbc08363f8e8ecc88222804d26578352af8a369e51ec3": [
+        "fiscal_crown"
+      ],
+      "sha256:10eb1920b5a520abf8b2091da6e236470e2edf3c0d05a6bdfa7ea821877cddc2": [
+        "revenue"
+      ],
+      "sha256:1115f0099d412205004d0e7ff718f5c2133711f4c45db57aa7336581ffb96bb2": [
+        "biff8_budget"
+      ],
+      "sha256:114b599a4f24f0fa4e82259d28fd00217a88a3fc2f54ff81fbd457fd301a0eab": [
+        "biff8_budget"
+      ],
+      "sha256:114ff6f75caadc835bf81896b659a966f13f4061fb56f2fe3638d17a9d87310d": [
+        "biff8_budget"
+      ],
+      "sha256:115ca9702918aaa4860fe0bf57cc3393b360b8ccd50aabfc86ba779e8d0d6322": [
+        "historical"
+      ],
+      "sha256:116bd2e991f78eb39e85ada0cc65ccd928c7ddd17c16ffe7dca25f96f0bab69a": [
+        "budget"
+      ],
+      "sha256:11af3048fadca65e15210bcfe5caa84abb0b887b518c9fd7b93c5ac316f99bd7": [
+        "historical"
+      ],
+      "sha256:1211691894e7836716cc8186c42c44060e5527c68bc786f09aafaa8a0c54aeb0": [
+        "revenue"
+      ],
+      "sha256:12170eb6932100bfd74706193d1d57d7234083f8012df5d11e3b27e0210ddafa": [
+        "budget"
+      ],
+      "sha256:128387abe30d9e5fa9105faa472c123be8f5d06e9f720764189c5c7d82b9272f": [
+        "moh"
+      ],
+      "sha256:12e57e9c490aaa70f523ef670b0e2eb68b7917726b1f74a67427e8a80f1d9d83": [
+        "biff8_revenue"
+      ],
+      "sha256:133dbd6da2ef5cec1d2232fd12c68cec71e1d5ee28b9e06ceee4abec8b804770": [
+        "biff8_budget"
+      ],
+      "sha256:135729ea29c9a74562a9171db8ed0754937e65842b6f1a66029430b9523c4b33": [
+        "biff8_budget"
+      ],
+      "sha256:137a3111314b965498d30688e51eb083e55898ad26f083bfe462afb5e6258758": [
+        "budget"
+      ],
+      "sha256:138871313011f04ba713e943b1a1db031369daad0e3b7e48e24b3c2c4d55a686": [
+        "biff8_revenue"
+      ],
+      "sha256:13a6ce2ff1253e406880bcc2e160d571357f7972f550411e3b6b317b57898295": [
+        "biff8_revenue"
+      ],
+      "sha256:13a81d526f66bd1e1d4cb95ebff7a961bb9cc5aa80d71f4b9bb581f07853603a": [
+        "biff8_revenue"
+      ],
+      "sha256:13b3e54be9af508fcb732e14e9692ef25a3bb7179d7abae2b6766756b64a11db": [
+        "budget"
+      ],
+      "sha256:147befdd9853840a2df6b7a7cb5b6eb85c6c759bddaabe9ed7a12204eaf43271": [
+        "historical"
+      ],
+      "sha256:14997e3340823155ece76606297e2ac568c2f9c69a4921f16e197ce4eb15adcf": [
+        "budget"
+      ],
+      "sha256:14af291aef8bbcfae1905b388f3a6cba67ef5cb23905195cce070b589f8351d4": [
+        "historical"
+      ],
+      "sha256:1530e9272494b11effe6692c440206012796569a272e63e4aeb7537e3df6542c": [
+        "budget"
+      ],
+      "sha256:15437c0f93ef79f3e28a01b36705a08375bd5c26aeec3399e69228146636ad4b": [
+        "historical"
+      ],
+      "sha256:15696b5195f89ced84081baa6a60a51ab8c42e8442ee6e7806b62810baf34bbd": [
+        "biff8_budget"
+      ],
+      "sha256:1577b2761e8aae7c21a3daba15878e6daebca4a3d754a66daf1e6a530cf2ec07": [
+        "historical"
+      ],
+      "sha256:1589498629e3e5a9d13c487b5bf10c92740d2fb22608ae1467f74192d73f0cf4": [
+        "crown_befu"
+      ],
+      "sha256:1595f4a92eff98955aa919a1154d8b2b115478effc86cbf5f03dc1867295a33f": [
+        "revenue"
+      ],
+      "sha256:15e74f4c7cbfddb570a767589e3e028d224125a4e898ccd7e1822df6f2d4605e": [
+        "budget"
+      ],
+      "sha256:15f085867c30fa9901b15e1c10cc125a3f45e750079ccaff4f97baabd5cef14b": [
+        "crown_befu"
+      ],
+      "sha256:15f1f2be20597a815c58f5a91a7f59a70c95e6fe718819307787addc5117394b": [
+        "budget"
+      ],
+      "sha256:16160bbd5f64420b2b4b16e983976c1b219160832791797e68274e203ec78d94": [
+        "historical"
+      ],
+      "sha256:163a7b724d66040f460d86af4ff0ae42bd84684628f3d3a4e76ad43e0e5afb9e": [
+        "biff8_budget"
+      ],
+      "sha256:16679952e861acf93542a714565ff3cd19e9ddd116794120cb889871484072a3": [
+        "budget"
+      ],
+      "sha256:17755a9046dbd389800086278599bfd4f332464e49b76533ae87c9012df789c3": [
+        "budget"
+      ],
+      "sha256:178ee87b71e0b0575504233e0f653ecafce1933649c118e5325e99d0fbb81bd7": [
+        "revenue"
+      ],
+      "sha256:17c7ac73d5cd34845a9aa5ffce2bc9e580bbc676b3c89e5682fda930bed023e0": [
+        "biff8_budget"
+      ],
+      "sha256:17e7e09c9a779682f1d836e098790a84a5b03ff69561625d890eb8156c2a3d56": [
+        "historical"
+      ],
+      "sha256:1854bfc759d0cc011c632b555416841a8e51f69a1cb52c11afff31b7a5ba5ebe": [
+        "budget"
+      ],
+      "sha256:1863e16807720dbdfcee81f0cca2233373bc6995ba315755dafcb0a62ca2c2bc": [
+        "biff8_revenue"
+      ],
+      "sha256:186c632ee063f14eb3a3cf93aebccc0a78438d88e5d48394f55c9c4e9c4e3ed5": [
+        "historical"
+      ],
+      "sha256:189f4d824af47712fb32a04b067cbc958f648218038b5b7760023ebf82399c58": [
+        "historical"
+      ],
+      "sha256:191ce0e8751c9e9d7bc92ef65aaf292d4dbc3892822a713212d09f9fcdccf6f7": [
+        "fiscal_crown"
+      ],
+      "sha256:193049e6b3de8884031b95758253f9a7056ba724ee239ca92914fc2d6689aa60": [
+        "historical"
+      ],
+      "sha256:197ea98931332c516c067f15e37d2778e872b6ea78cda8cd9639b69c2cd1e68f": [
+        "budget"
+      ],
+      "sha256:19b7edba120c079fd99f8e5872e9820be20cbef72be17a8f7a9c8cdb9ee38c42": [
+        "historical"
+      ],
+      "sha256:19cd7d0532f3f319980847066c75823324f236d6a00c0e6f07d543b2d7bb6651": [
+        "revenue"
+      ],
+      "sha256:1a4ec3b50cc38efd7b60f3447ce089c6152544244a769107bfb07c01ea32c030": [
+        "biff8_budget"
+      ],
+      "sha256:1a94a5da179d0d0893d2e315a0fd68910836eb63d1ea05971f2338526a4e9770": [
+        "revenue"
+      ],
+      "sha256:1ab552d8f7a177995105a86b4fdda62d1859d3af818cd2e31a35c8f8ec9579bc": [
+        "budget"
+      ],
+      "sha256:1ad6593d8adc92d12aa6f7cdc23a79642e858f66be94368abd5d588ac1a607cb": [
+        "budget"
+      ],
+      "sha256:1b87c74a6f62771452a3beec0c752a9d3e176f42b45fea3e7e469551658cf99a": [
+        "historical"
+      ],
+      "sha256:1b8fb22feef98e878477a3a014539d699fc3924f627bd4e74863ae86892440b3": [
+        "moh"
+      ],
+      "sha256:1bb63dd69e36a475db822eb1f0b501a8fd0b70b5af696fe920d4ec2a6b5599a6": [
+        "biff8_budget"
+      ],
+      "sha256:1bcaf5c90ae8e88104a46b2bfd017bee6fa977dfbf08d6a5bee2157da517f182": [
+        "biff8_revenue"
+      ],
+      "sha256:1bf91a4f0804cd88d0dab73ef699acb9f147e439aaf659e22cb09472bc7eceba": [
+        "revenue"
+      ],
+      "sha256:1c1bc98e13b1f30ef298b9617d4c12ec4d5676777ae72a1c6059b193d09ae9eb": [
+        "moh"
+      ],
+      "sha256:1c52600dca3e41d71cabada5016dc3d2bd08a5f9b93228ee0546e8a3b9bb6b9d": [
+        "budget"
+      ],
+      "sha256:1c9580577ce132bc5b76e373215216080d18a2d567d729e352cbf586788fb299": [
+        "budget"
+      ],
+      "sha256:1cb55223e9c7e8d898d6432efd34824309a35c7604a2017126e06765f96ef1d0": [
+        "moh"
+      ],
+      "sha256:1ccd5731180481ceef464f89360e7ff66a71f613fde6da364fd4decda2e0f51f": [
+        "crown_befu"
+      ],
+      "sha256:1d025225b30fa2f3badc7cd496eb5e7e591c1bc39f78477fb9a2517c61ba8ead": [
+        "budget"
+      ],
+      "sha256:1d420f2e4ba2ceb567db61624e80998948b51cb727276908e1388a6c8fc71ba5": [
+        "budget"
+      ],
+      "sha256:1d4fcb2d01d0bb928719c601f937ba1d000fefc3492f1af4439b0e6ec77c5d41": [
+        "budget"
+      ],
+      "sha256:1d7619a0128cb0baa11e02d170291dccc1096f3fd0e4cf72127829c2244e118f": [
+        "budget"
+      ],
+      "sha256:1e032ce569ab5034ba7c0d032db6c767c3605c29759837e8a021aa1ef0d3c41c": [
+        "budget"
+      ],
+      "sha256:1e1014afa35635959669cbec6d321519daf7ea1efd28075c04ea5717ed002a4b": [
+        "fiscal_crown"
+      ],
+      "sha256:1e141b8086ae6bf542d37738d5a2d31a129b118eb6a9490e569c7da8be7b858d": [
+        "historical"
+      ],
+      "sha256:1e5c4304ad6a3384b9730ccf168515e81eded6cc03ba7f8ee57f600832feae33": [
+        "biff8_budget"
+      ],
+      "sha256:1e60bab642594e77c2562b0d0c3c92d24a1a7e00d081d899c61bef1a3d924388": [
+        "revenue"
+      ],
+      "sha256:1e635e3b63f2d98d66cf04bed8950136e0f330553ab4668044eff4070acfdfbc": [
+        "revenue"
+      ],
+      "sha256:1ef386fbfa01ea30b006588350c267a9da44568b184f35086ed529fd5d8c3d3d": [
+        "fiscal_crown"
+      ],
+      "sha256:1f1538116236e4b493258c6fd57ccaa7ce16983f34a5477c51d3e8bce5b81324": [
+        "budget"
+      ],
+      "sha256:1f5c7a010976d42726701455e8ef67c14eb44395b55c14d17a85092c5a9a67f7": [
+        "revenue"
+      ],
+      "sha256:1f70b9b282172f86089f0fa10175b3ee94a1e9bc3519f20a210bcf56ce28e340": [
+        "fiscal_crown"
+      ],
+      "sha256:1f7481050f77a78f53ee714da5bc097f46a1a0faf1b1a038785bcf7a4d3fcccc": [
+        "moh"
+      ],
+      "sha256:1f7b8aebb1a46fbdfe7f36b64d49dfb37ad102042b87e9b64cbaea5cfe308a9c": [
+        "moh"
+      ],
+      "sha256:1f921741b1c741f18923737d3ec1c84917118d111dbd3cce6b0f684567b02b1f": [
+        "biff8_revenue"
+      ],
+      "sha256:1fb2a7237b97f08b73d42c7992608308e6bded9eb6ac18b92409da990bbcf9b0": [
+        "revenue"
+      ],
+      "sha256:201a83bbf698288533363c8cb679aaacd005afbf61e8e545311147cedd63a829": [
+        "biff8_budget"
+      ],
+      "sha256:205b1ce380138c24385d4bbac2df0f57aab3e5b82bbe06a60679fa14922cd42d": [
+        "moh"
+      ],
+      "sha256:207587e111761bd5bc068c7367dae64a4c5d6178da43193c814c2e8342bdc73e": [
+        "revenue"
+      ],
+      "sha256:209d3c3eb8714b2220548ec22ad225a515cef6fa7090829a3f4f5d3607053c7e": [
+        "budget"
+      ],
+      "sha256:20f471ad1ad720172c57a6744a78c7353ce75f5ea477ea477de8a272b19f3bbc": [
+        "revenue"
+      ],
+      "sha256:2148cadbdffdec9e50dd2eac80ca54e33f0e0f034aa9ea0e2cef5fe443e74e76": [
+        "biff8_budget"
+      ],
+      "sha256:215c31d9d266c26900caaa2e5f61a8951cba34657241246d4b1d05c82841581a": [
+        "biff8_budget"
+      ],
+      "sha256:21d536a28f208f2f94f08a70305b37f6083413e72eb7c8159d63468f6591120e": [
+        "moh"
+      ],
+      "sha256:21d8a3bca24339853ad74de1192a55f7245222acfe94b9e063503e9539b2ce25": [
+        "fiscal_crown"
+      ],
+      "sha256:22043cc1798679c1304cdab560808f1e6a9f16bed13669aba2d127c37542ed11": [
+        "budget"
+      ],
+      "sha256:2250d6308eeb5e8725ef6b0fbd57dbf686953f7c14c894ad08206fb42f5eb081": [
+        "fiscal_crown"
+      ],
+      "sha256:22bcf20a3e4e3bbd9eaf4a865ede1c55615d882a63f4ba41213c9a415fc3a044": [
+        "historical"
+      ],
+      "sha256:22c3e418462d3e08383794f6dc286feed9b242c732e47ea66d50ff83d4b6c924": [
+        "crown_hyefu"
+      ],
+      "sha256:22f6c7fa163e33c657c61cc978481613eef2dc7ccc34523a4686ee505c72b2fb": [
+        "biff8_budget"
+      ],
+      "sha256:2321245df4135994168c0f2fc86285e146bd1fac5acf97c336be8e25b3842a01": [
+        "revenue"
+      ],
+      "sha256:236d9c682e6dbd97fd35f6a4a0ca7383eac97fd5c6b92dfd19db73d325b72058": [
+        "fiscal_crown"
+      ],
+      "sha256:238eb4aa3140c0b7c5d5f40089079691721315ac124adb2578d0c5e6fce0db47": [
+        "budget"
+      ],
+      "sha256:23a6964c255a560e58c275d4b57bac37e36d965056cdcd5c5b9b4535fe6f4ca3": [
+        "budget"
+      ],
+      "sha256:23ed80bd2971a97326013cf68922bebc76f6de98d752523330b40c3afea98c81": [
+        "budget"
+      ],
+      "sha256:247986dcd95fb19c8d10a1b2755a6320ae3b67e47367aab7c0966f7d4586e79b": [
+        "budget"
+      ],
+      "sha256:249cb0ad38ac92e09044d8bd3823ebb8a3ddf66f2a2280c12df2dbb30faeb6ff": [
+        "historical"
+      ],
+      "sha256:24c9ef05054c403e1425a8463b40e6cecadaa89be1bfd9c02232eb7583b08292": [
+        "biff8_revenue"
+      ],
+      "sha256:24eb65c7cfa6d63d06228a183cba2473c3f72cec0b9a3b91c7e97f84011b11bf": [
+        "biff8_budget"
+      ],
+      "sha256:24f700fec21864f9e8dc29eb6c25521f2b9706120e7681c4e76ec11dad990208": [
+        "biff8_budget"
+      ],
+      "sha256:25109a51911c2010821dd8d73d5f857781f0f6aac3400498ddfa2704c6bcea74": [
+        "historical"
+      ],
+      "sha256:25ba7e482a26c086731ac282f093d13d05518e726c50090b0ef56e4311253fc1": [
+        "biff8_budget"
+      ],
+      "sha256:25d6e5d6024998c926c1b145db6be499c261cab0a88400c386e9fb7b8dfd5ff5": [
+        "moh"
+      ],
+      "sha256:25ec422909c65330000c957e9ef325dba7894e8286228f886752d8e5fd01a102": [
+        "budget"
+      ],
+      "sha256:2648f5d2b65aac53412ead0b77c6798d3729293f9b174406fc49332a6a9d4a43": [
+        "budget"
+      ],
+      "sha256:26aa7ed43a6c746feda5f35be00a6badb688b9108e691bc288b363e38415da68": [
+        "fiscal_crown"
+      ],
+      "sha256:27047dd6e773640fc3684d1a1965c67e241eeac26e20f7c884c4cdd3c46048a9": [
+        "budget"
+      ],
+      "sha256:27075832517cbdbac423220959dfd10ceaedba4d1f16b01e13abad52b2a03afd": [
+        "moh"
+      ],
+      "sha256:27156ae3d15eb5c30489c8a75422d232f5b25ee667cf0a186b7a6f37b2fb80c6": [
+        "biff8_revenue"
+      ],
+      "sha256:27230063b88c333acf50d61565cb96e62ef4242e608a6ddea016b48f35031245": [
+        "historical"
+      ],
+      "sha256:2739ba7b4f9945683525e9fa888ec909a0e1bb8f4d2626c412f911fa5a900422": [
+        "moh"
+      ],
+      "sha256:27a5a6b90dbd423e871bb0d137e52dc1f355f24287fd1e3e26527149360186a3": [
+        "biff8_revenue"
+      ],
+      "sha256:27d837b78184322b86147305e1c502d7eb413475f9b96d838e88dabd8bfa859b": [
+        "budget"
+      ],
+      "sha256:27f6c76f97f535c3faaaae754e64919e7463c87ebaab170b750aac5a0e00ecff": [
+        "fiscal_crown"
+      ],
+      "sha256:28b71c783d4fdc5c905cb8c3ed174596b7f6f2a1376681a90860819129d78f60": [
+        "budget"
+      ],
+      "sha256:28bfd3276e226b88309636ac772e99d0d0d046728fefd9ee37b04dea8f3f3c7e": [
+        "historical"
+      ],
+      "sha256:2902e6ed1ad5ac1b14049069edbc4d33d543fc22258ac871e0e3ad57fa596e36": [
+        "budget"
+      ],
+      "sha256:29099bc6861f7d00baafe2472088a03d708e606e2bab384622148bf9040eacd8": [
+        "historical"
+      ],
+      "sha256:29424ddf1c8c817077d0060ede02a95e11c8c6d1f0446b9668134eda80b4c45a": [
+        "moh"
+      ],
+      "sha256:2966fe3e8533921dfed686e6f7faa113cf1628544954197890ece3ebd0823d8a": [
+        "budget"
+      ],
+      "sha256:29e4c86bf837452d8361bdab9a49c91da8d858d3073b3c16a23c167a3aec5b26": [
+        "historical"
+      ],
+      "sha256:29e8349a443dde3de9a446cbd8aaacd5775fa23c5bfef8feb7db5f94ac045ba4": [
+        "moh"
+      ],
+      "sha256:29fe59d3f0d6d1bd692efcf48d901bf1317f9e8c734751598bdccd6aa36023c8": [
+        "biff8_budget"
+      ],
+      "sha256:2a37589ce0d172b28d0de0243359fa60f041eff62eb21a2fcdab33afd0a62939": [
+        "crown_befu"
+      ],
+      "sha256:2a621862b14ea17f1f09671830597ca345e948e2be0afcb36cb74931134d9697": [
+        "revenue"
+      ],
+      "sha256:2a78e430f83d1ff87e8abddd7f6bcff672f977fc2169266d5fc6d2cbcb9d1763": [
+        "biff8_budget"
+      ],
+      "sha256:2aac08ddb17eac4e180c9614d92a55bb5bb2f9dd018a9fc5011870b1f7b8c962": [
+        "historical"
+      ],
+      "sha256:2abd09a94f8eb7e722c6e48f8ddc7710254b46f60fbd27f414348f758f0cb4bf": [
+        "historical"
+      ],
+      "sha256:2b6f833cae390dbcb0f7da4a62fcd1642856fafb44dafb74146328623a7eb4e8": [
+        "biff8_budget"
+      ],
+      "sha256:2b9bb1cdb4712420c75e68dffc53662e37ec07782b635e08923b2338f74a6c42": [
+        "budget"
+      ],
+      "sha256:2bb17a80ba5a451973501a82b4923a43af8443f10bb4ee972a7095b95ce98b6a": [
+        "historical"
+      ],
+      "sha256:2c05400a9943ef4dd1a450ba44dc12a56d306f3012f39feebbd0f99fc7fa5135": [
+        "budget"
+      ],
+      "sha256:2c3296c2d53a5376619875bf147f96c52325205156e22e9b4dfe814703c90639": [
+        "historical"
+      ],
+      "sha256:2c45479fc4922598c75415e959100e7ffe07a043cfbbc4558541d0bb3c0c53cf": [
+        "historical"
+      ],
+      "sha256:2c88ceae420bf856733b051459f71effeca1771ad2c80ccd620102749193ffd1": [
+        "biff8_budget"
+      ],
+      "sha256:2cdbc69ad029ce55e81e558a40c945f26ae9de3dbf74a5658ee8168ea8dfc009": [
+        "biff8_budget"
+      ],
+      "sha256:2cf1811195889e60cd81b54f8693980c3c4f993539b796a4898c6c0f142316b1": [
+        "biff8_budget"
+      ],
+      "sha256:2cf8c1219125029f8d5deba4f5f25635c107d5c47f04b1d1a93f8970bd1b347f": [
+        "moh"
+      ],
+      "sha256:2d016d1a4dd9256376c8b1052b512a357de5d11b35a65d740bfd8486db31bbef": [
+        "budget"
+      ],
+      "sha256:2d7e808735f1ca909d616b1812ee547de4c7c55d3bc9c5f4326119f96c7f5b84": [
+        "biff8_budget"
+      ],
+      "sha256:2d96c74e4a28649e30b4a0a1db6ececad92f2afce030b48d770166b28d93eff8": [
+        "revenue"
+      ],
+      "sha256:2d97c75952e5d7947e74441bbc2c8166b3d2b03fa87307f29d39c1251a940c59": [
+        "budget"
+      ],
+      "sha256:2de6b1d229b14d3eeb41315933946b3c238418d2886715c5b99f8c4a2b74d2ba": [
+        "budget"
+      ],
+      "sha256:2df4d8efc46f0737834c281d99c179e6d17292b0dcf109c06dce2665d964dc48": [
+        "biff8_revenue"
+      ],
+      "sha256:2df93fe8e3853c0c8ec81969d25a7d96b29bbeba801da313065f3b2d9a14d48c": [
+        "revenue"
+      ],
+      "sha256:2e3d2a4a770efeda33a6d6d4fee66a088c40e052116a59ece56bd81773b85888": [
+        "historical"
+      ],
+      "sha256:2eae808929fcb50187bd477bbf3ca41e5073efc69eaf9d0b4b24af0ef1973349": [
+        "budget"
+      ],
+      "sha256:2f8d4ed8ec47bd2d001504a044fa25bf831e7a7800d42e09b319a129e9486257": [
+        "biff8_budget"
+      ],
+      "sha256:2fd0be3f3695db675aa8fb91142b7cd10ac624ceda6c4e8b82fc75e48e256973": [
+        "historical"
+      ],
+      "sha256:303043c4c397ef2c786b94f6ccfcf6051a042171467dedae7a39c1c8f4cf0403": [
+        "biff8_budget"
+      ],
+      "sha256:30764256e56f60a499db6e967bfcec9a45256c266fa23cc0b39eedc83d4ff33e": [
+        "budget"
+      ],
+      "sha256:307f940cc4377f8473f1efb373c9e9de8d00f9b25fcb5f34f583c35944e9bd52": [
+        "biff8_budget"
+      ],
+      "sha256:308a94dff0da6568620726e77f28afcb859bab4bc8f22fb33af82a96aaf53a1c": [
+        "budget"
+      ],
+      "sha256:31080f4c39849a74e223a1b022fb690941d8dd591734e96bb582e933c69136c8": [
+        "budget"
+      ],
+      "sha256:310e82d85cef37f5bc601dc5cf06c06ad25eb6a6310cdc5f2fb8c7edd4d3c29f": [
+        "historical"
+      ],
+      "sha256:31371d5b213d1d982f13158a27e6db5eb7e1243dd9e8d049d48ab8ca0e81a525": [
+        "historical"
+      ],
+      "sha256:3143e02fb1f6067dbb6222784081b400e17c44f52be281385b6a30c0af700a6c": [
+        "moh"
+      ],
+      "sha256:3148045308351211e39cba028f773db40ef0f3ae58ef8722aee2a11dd60532fa": [
+        "historical"
+      ],
+      "sha256:316b3d92e503fbfaf4f189b299b1d63c1e0e9af52795ceb7e85ca1358764db5b": [
+        "historical"
+      ],
+      "sha256:31763c8a6e8977fff7523ea9e7d66849e39cba848b1b308bfb89b83bddc3405a": [
+        "biff8_revenue"
+      ],
+      "sha256:31bd748e5ad9de4508aba6a5bbf54742cc23446315c4103cea1398c33f108694": [
+        "budget"
+      ],
+      "sha256:31ca6b35a31c51b367301ce587a65d7e6ab95cf22337303b59972b8ca0289b8b": [
+        "biff8_budget"
+      ],
+      "sha256:3203ffe6a81f75b6592134881209bf28f954fc6e435b8bb5931a24fe99d9e270": [
+        "revenue"
+      ],
+      "sha256:3205ade08a990473db7ddd7b29e19f73e6d33190c0f6cc362533414bd1135f01": [
+        "biff8_budget"
+      ],
+      "sha256:3220dd065fa5c8d2de5e5c0020b1df587fd6b35b8deb793a0a247063d4c19837": [
+        "budget"
+      ],
+      "sha256:32893c1029446e7a4557b1a945d198f8306685dcac8a99d15271acdb92dba10c": [
+        "budget"
+      ],
+      "sha256:32a5b6ed932af371db7e397f7e5875427b83a5a84e260d8578917747205154fe": [
+        "historical"
+      ],
+      "sha256:32f59ae1278432798ff6477ffb901575ff16fce5d5a7b7f6a1bd70d4c73a93fb": [
+        "fiscal_crown"
+      ],
+      "sha256:32faec2db90074643c9f537c359c315547d0c85aba3f78cae1ad06241abd9f07": [
+        "budget"
+      ],
+      "sha256:32fc69e86056e4dd04946342023d3fe698ce4185bcf9f8e1fdc8561326b40a06": [
+        "biff8_budget"
+      ],
+      "sha256:330b286393821df8c02585126280bb6b4940e99b6ff412668ad584e3b6310b99": [
+        "biff8_budget"
+      ],
+      "sha256:331bfb9ad0262cd24dcb8f7e21d0bf36384e6032dc893d958c02efa711d7e487": [
+        "budget"
+      ],
+      "sha256:333296b071c15a4a3413f88ac5804d94b1882a39cdc9a92f0c471f0243217f6d": [
+        "fiscal_crown"
+      ],
+      "sha256:336a343b7cb3989fb42338de17d0cce2811d86f933cd6e2b8b23abb240d092b9": [
+        "biff8_budget"
+      ],
+      "sha256:33a65c6b23d0fd7082814af6369b81ecdb2bd9486404f2b58c49d756739d205c": [
+        "budget"
+      ],
+      "sha256:340ea41dd06ff422fa782dbbafbc1ce4543f5b75341e75efddccf8db1f408eee": [
+        "historical"
+      ],
+      "sha256:3411d5447caed590648bfb31f467d0e92d6649d7284554c0138e2ef7bc3cb079": [
+        "historical"
+      ],
+      "sha256:3492212626064e9619e7e997b6b11038f25cbdfbcbe06d6001660ef9b37d51a1": [
+        "biff8_budget"
+      ],
+      "sha256:349cd1b17494ca9bc20f5a38c065b3a2404581f49140df8cb4cf422fdee5863b": [
+        "budget"
+      ],
+      "sha256:34b50aee7af078268ec82f151f31a1c3ab0a6ceb2fb951e42aec8c2f90f6f336": [
+        "pharmac"
+      ],
+      "sha256:34be7039e071e484f6217f7cf486ab1bbd57cd64cab87e6eb8dcc4db456685a6": [
+        "budget"
+      ],
+      "sha256:3517bc769f09ae968c1b8432f9e5e7668bd5e4156d140f2820130a8b344a9b47": [
+        "revenue"
+      ],
+      "sha256:356561bf6bd5544204781da2f19fab8cb96859622a040fefd288bc5b8877723a": [
+        "biff8_revenue"
+      ],
+      "sha256:35c2ec6dbc7d11aa7c5f8392bdaab8c960ae6e4dcc05c17809ab6feaa2d036a4": [
+        "fiscal_crown"
+      ],
+      "sha256:35c776f6dc0a7c580f5c1428bb61a1176b90f76486967f9e0c2f586fe7a4f635": [
+        "biff8_budget"
+      ],
+      "sha256:35cfa8f2f72d213a9a7a465d154eac71731101b822eeeaeeff937eed83216ae4": [
+        "budget"
+      ],
+      "sha256:35da410e2581553e1adac336b516a7cb55350792ce9bdfd28511f2aec444276b": [
+        "budget"
+      ],
+      "sha256:35de850bb9e1a9fd0daab4d51af7c90ecc409294bc61f309d322f1c77dfc50e5": [
+        "budget"
+      ],
+      "sha256:3628bd4062e30ede7ca1d49ebf35efe64442f8120a79a9be9d42e037c499e27e": [
+        "budget"
+      ],
+      "sha256:3646f671a195a4159e2843277fad6b1ceb63537b99bded3babe5691b7cd17858": [
+        "historical"
+      ],
+      "sha256:364c4f6bb45f6a111d17464327d22205049a220c091ccf5bb27b94da1ae97389": [
+        "budget"
+      ],
+      "sha256:365fbc42b21608db74fff67dede50a28319e030660ba38c2486a0cc0f982e671": [
+        "historical"
+      ],
+      "sha256:36c4cebedf7727f91f04d746f39b09305d8f4c29e5650d6ec5c2daabe324b7eb": [
+        "crown_hyefu"
+      ],
+      "sha256:36c9dfe8da21e0a577fc53a55e7320a9ff8e37d0fe13a3bbc5dbca531fc6010c": [
+        "revenue"
+      ],
+      "sha256:3743a66c8834b271f19fb31acbb92653fa0f041b6dd5f067d36f496fa51b7058": [
+        "budget"
+      ],
+      "sha256:3758062178fa9fa2b9b958981f300ad975d2d99ddfec66eedbcb137b9bbeaa6c": [
+        "historical"
+      ],
+      "sha256:377f7aa0074ca47310d3521399464d4b5b5f647759861743a58556ec643c5a78": [
+        "budget"
+      ],
+      "sha256:37983eea8f662cf9c08242caf8e27414dec327d73fb1e2a65b40a409cc6a2e5f": [
+        "biff8_budget"
+      ],
+      "sha256:37f4e2a1e65ddc6ac99ff809b761bbded38c0926a52606b5deaf2444e20943a5": [
+        "biff8_budget"
+      ],
+      "sha256:3888a3c03c9ceabeb5d0f0ef67f9f7be6273dc58c8fa19ed46cacde947c2cd65": [
+        "budget"
+      ],
+      "sha256:38b2850821691d570b3874c7b35787439fd4a635a852dc0dcf77d17ea7954506": [
+        "biff8_budget"
+      ],
+      "sha256:38ba7ecafe45257530d0b3055f2215d7b37be16adf28e151005336d4bd4e77b6": [
+        "revenue"
+      ],
+      "sha256:38fe4c5639a091b13c51ca09824e2d938ff6b6d7ece6c8ea59623b32a059f147": [
+        "historical"
+      ],
+      "sha256:390e4201b0e3dc87d085076cb31896c913a65fb7301d0e13a6b2d3eee8a480a1": [
+        "biff8_budget"
+      ],
+      "sha256:3946e4d1b65a0007cb2049229abdf7a6d9324d67ea48f01618f2d22aaeb3af6b": [
+        "budget"
+      ],
+      "sha256:398af5fc387b281a4ed40fa2f082ba289fd0213538f99967dfa81cbfd4eced15": [
+        "biff8_budget"
+      ],
+      "sha256:39db982217877c49397137ba439f620f94c70e232e4467bfe67b1685500e6d30": [
+        "budget"
+      ],
+      "sha256:39e6c0352a260972203e727bc72984edc23fb6be8ebcada1650671661896beab": [
+        "biff8_budget"
+      ],
+      "sha256:39f0ffaa48b315f1103638abd38e1ec69831724c0b40d960b4f048b7512b033a": [
+        "biff8_budget"
+      ],
+      "sha256:3a09ea57a15fc4d7389a57b740f1f4a385ee30b730e1ef8bb0658478f6754eaa": [
+        "budget"
+      ],
+      "sha256:3a2187004289ec37309cb825a5f266a8d287eb1b45ea8779f716c1bd29e19ae3": [
+        "budget"
+      ],
+      "sha256:3a2d56efe2fad8a8496fcd46ab1bba3c3ac88de18f4708a3b4eaa6dbba506140": [
+        "budget"
+      ],
+      "sha256:3b0c44748bc2991b90e1765084f43c9f485d920ecfc6c902aa5c279cdcd7e39a": [
+        "budget"
+      ],
+      "sha256:3b0fa7ee0ef3a6c0f123b49cee321227178ce4ab14229e021d086a7d75c95cb8": [
+        "crown_befu"
+      ],
+      "sha256:3b4c411433389d7fd6569ae82ba119dbbcf5020c9c7e5038035be359bf52f196": [
+        "historical"
+      ],
+      "sha256:3b526917695fd8a9ed30167ef24adc3400c3a95eeec5924906626aa0922b0816": [
+        "budget"
+      ],
+      "sha256:3b6156b873511ac17dc7d4ceef660a57f42829466d5556431508febf3094b870": [
+        "biff8_budget"
+      ],
+      "sha256:3bc1653f9424eea7eb700286585f57bb4916bf011434af7f4244214bd5a193fe": [
+        "budget"
+      ],
+      "sha256:3c064218fc02b8b7af82279bdfa8cadfe6ab8209d765a9adfef744b76e63e958": [
+        "budget"
+      ],
+      "sha256:3cb14192cd60f80d4e793d54ca078a75a6890fa50b9c513a2ba66d2f510ac6c3": [
+        "moh"
+      ],
+      "sha256:3d754da58743852c250358992e257f3fb2916b01209981ec0017554922d15d3d": [
+        "budget"
+      ],
+      "sha256:3d7a8cccf3b3f6754f97d3c1d6de799a0f7025807bc97e9ac3871cceb884c8ee": [
+        "budget"
+      ],
+      "sha256:3d81055ee6240deebd55ed02b4f2630fbeb7a1b63d93a9cf93c24e0edad863c7": [
+        "historical"
+      ],
+      "sha256:3d8b9fb8a04a8b21991ac749038de58874f6bf7890b2b24aa46ff78335153760": [
+        "crown_hyefu"
+      ],
+      "sha256:3dafc0210eef8b4a6ed63c763882f97129983bc5841e500ced2fdf3d043ac0dc": [
+        "biff8_budget"
+      ],
+      "sha256:3dbaf35508555ec1a22653275363ba38d309d532e456289f75fdc8425d885c53": [
+        "fiscal_crown"
+      ],
+      "sha256:3dbbad710534d756c140e79df78b2652c2f732ee9059bd044b1394dc05aef5b3": [
+        "budget"
+      ],
+      "sha256:3dee8d7a1c5bc1cab1519da3f9967a0acc9e479e493e41a25d4780d714eeb8e4": [
+        "biff8_revenue"
+      ],
+      "sha256:3e03b9bfccddc25d802fa99a7533be618961fa1161d9faa2b66e76e0d4915b61": [
+        "biff8_budget"
+      ],
+      "sha256:3f09851c5de866ab699da392c05f484308c42542935a1046e27acc7d6cfac025": [
+        "biff8_budget"
+      ],
+      "sha256:3f0e536e0db053abd059eb6fdca40ba585f17e6632979c5e4edd087431a468fb": [
+        "budget"
+      ],
+      "sha256:3f23f19fcbb5eb413ab37ce8f2000737f1b36cbd961f72e124dc32a8615d7139": [
+        "biff8_revenue"
+      ],
+      "sha256:3f4090c4a05424613c6891e88f6a6e93060f039c4151b92f90af2ff8b77681be": [
+        "historical"
+      ],
+      "sha256:3fd01024a40533dc2f188ffd648ac02b60edfc7530396bf930660a8d3cb2dee6": [
+        "fiscal_crown"
+      ],
+      "sha256:403ea2ecba2c07d503eb0676722a1a4c1dce9034d976f670e4c7e9cf3139e060": [
+        "budget"
+      ],
+      "sha256:406bacd4c72ce3ec5c990f83a94f912830051836a2d8c3d60fe442f7e06ea8f4": [
+        "budget"
+      ],
+      "sha256:406ccae24521dad9231cc3ca8345d77aabcd0a01bcc560a080eeb46eb6b23802": [
+        "biff8_budget"
+      ],
+      "sha256:407b95d5774c1f3a654ec75e20018f1cd27a1050d905c0d9078a540c32059d13": [
+        "budget"
+      ],
+      "sha256:40aa5e04d3a494a41f8fa50e7a3dbaa4b143659857a5ef77a08b741f857b70a4": [
+        "historical"
+      ],
+      "sha256:40aff677d41d8b990fe7b7c1c98dabc78be99aea6c78629addcf7207f5cb4546": [
+        "biff8_budget"
+      ],
+      "sha256:40bdf21b60a4897d507f8554b4514f35475e5c2da567b20f226fd150a563b1d3": [
+        "historical"
+      ],
+      "sha256:413c2bec29f330aeaff85f7afd6b0e14160682346db79bc0b7f19667afb9b176": [
+        "historical"
+      ],
+      "sha256:4160342f41be2806adf6cd527fa36fa0526820e3256e27b3854bc6bbafdde81e": [
+        "budget"
+      ],
+      "sha256:417d2195a1ce9007ab6f53ff0c5cc7c10267d29eca9de79bd32172be2d8f3738": [
+        "moh"
+      ],
+      "sha256:41c5c9a2abb04fd5bfbec89bc7acbe0b4f9cfe22a680c3e189c08d5318a121f0": [
+        "budget"
+      ],
+      "sha256:41e7cb7d2c1710b82db4a31154063ad88c65a206fb8261c67e82faf59f26bd91": [
+        "biff8_budget"
+      ],
+      "sha256:41feaaf1946317c45fb52b57da4fa3e5cc6e5ca3c95f1544c4f171c15d11a35a": [
+        "biff8_budget"
+      ],
+      "sha256:4229241d5dc6380343b2b37781ab205c8d00ccc67aabfe89317aa58baacedf2d": [
+        "historical"
+      ],
+      "sha256:42408f4ff858d72647cd05ab0d4f1948f1ab622c19c1cbfd550725f1ec9c5b28": [
+        "biff8_budget"
+      ],
+      "sha256:42484f47f6318aab828fe28a259657b174f2253933ae75cc208b7579e14116bf": [
+        "budget"
+      ],
+      "sha256:4256d1e79429249cb2ddb79f5b5562691a3702a27e939f1fc8523b38424bf865": [
+        "historical"
+      ],
+      "sha256:4266482536095a0f55d1d7b1e427be0fe40f123a559337388f5d242f83b5add1": [
+        "biff8_budget"
+      ],
+      "sha256:42b37a7a0cb798cbb142f6cb54c28fa0bdebbfcbbf961fbef5b7637e12896d41": [
+        "historical"
+      ],
+      "sha256:42c73db1ecfcca4db5ce5a9cb162969a340ae7feee12489ae58d3d4e8eff649b": [
+        "biff8_revenue"
+      ],
+      "sha256:4313d7ad0c7fac11b2b035569b2474b73c82f9a6fe3c524e86274abd5c7f8755": [
+        "biff8_budget"
+      ],
+      "sha256:43205279524b8d09901e0847147a180235ac244955624ffd96da7a24d9aebd23": [
+        "budget"
+      ],
+      "sha256:436109bf9516259099cc929e393c7b72aa0485985124c91da71c7942b78afb22": [
+        "budget"
+      ],
+      "sha256:43ca0f1c1345f9287f33f56c760707ac6bdc5cae7594f9f4db2a2cc57d9e8698": [
+        "fiscal_crown"
+      ],
+      "sha256:4460a1d4cda62cbd0c6a077f224389c02e9cee5cc8a7b29d70d02546255732bd": [
+        "revenue"
+      ],
+      "sha256:4473bbd4febd1b62a4f01af21e55528f8d9b6bdf52a7c3b856f8945f31aa330d": [
+        "historical"
+      ],
+      "sha256:45071cc205cee5ec3475aeeac6c15c629036d24f23b3788f93b65af885f99859": [
+        "historical"
+      ],
+      "sha256:4518c133c5d7f313db4c82502e913e0d8abdd919edbc6e7de69a1e4f30945144": [
+        "budget"
+      ],
+      "sha256:452cb578851612434f42e9cae1fca1f09822637e49aa2af1e17683226b7d3ce7": [
+        "budget"
+      ],
+      "sha256:455e29beafd883f5b11df2e2033a464b7809c99878d3293454d85b085b942380": [
+        "biff8_revenue"
+      ],
+      "sha256:45ab066b1cb273a79cc9ebb8a2d158302751d1b40022f936be256bcd1f2f36d9": [
+        "budget"
+      ],
+      "sha256:45b46657f188c8467379028efe52177bf3c68c9838fc679e0906542407a5c102": [
+        "historical"
+      ],
+      "sha256:45be1c3054340d5097cd3cfb640f1fbbfa74624c8854919fb1b4fd8a879d6082": [
+        "biff8_budget"
+      ],
+      "sha256:46022d569d1d2613751fafdadb056bd1a951b8e25f7991559f698880eef23476": [
+        "biff8_budget"
+      ],
+      "sha256:46239387e02ec9c8d6b10c4ee04893cd45b1726066a8eeced8b9fea1ee15e405": [
+        "historical"
+      ],
+      "sha256:4677e3de1d2d80c24eff7d6a35d1993beaf361b9d0c54ba0c311fe7dce6e8ca3": [
+        "historical"
+      ],
+      "sha256:467a968c871aad0b5bb38fa67ab80cf7259aa4de1cb2374c6cdf0821e5253ddc": [
+        "historical"
+      ],
+      "sha256:469955caa1eda66d1e2404ea3ac6d9996feab0bbae71fda881301055e878f772": [
+        "biff8_budget"
+      ],
+      "sha256:46bb01c633fc4fcefd2103f698afbdd308ab15a2f3ff02f9ba146f20ded07071": [
+        "historical"
+      ],
+      "sha256:46c2db627f146d2d193e0a2cb19b3321b582ca587fa2ae7767c90a17dcbf2ec8": [
+        "revenue"
+      ],
+      "sha256:46ce239e8bba331ab6e251d98327d90c9f59aec2c086abf969a959829d22e850": [
+        "biff8_budget"
+      ],
+      "sha256:46f0569b7ccef0b03b7d6c4d707c176e7e3c92b17f9d0c78117bde1dbfe900a5": [
+        "biff8_budget"
+      ],
+      "sha256:4707b17f1ddbf6dd6fcd0fa3044e7c1a02ea352265a041c27579db7ad7a032db": [
+        "historical"
+      ],
+      "sha256:4776490bb9ad53c215595c5a6ff30155835814dd1488b8b9f9d519591ab50c4d": [
+        "budget"
+      ],
+      "sha256:47b4f5b70f7b42b4c0565a19c3b9712a293fe9d7e3f7a33d513b5fa83f551778": [
+        "biff8_budget"
+      ],
+      "sha256:47c1c907c6cbaf37f1b3e9d3fdd83d0a475c8dac86615c9a61dcc0b3d1632878": [
+        "biff8_budget"
+      ],
+      "sha256:484665ea8d21d5549f8cddb464b9d2d2d3bbb7cc3d721353019c79cf777572c6": [
+        "biff8_budget"
+      ],
+      "sha256:48b81f76169e5357342df663a426c6cbf196598379a2e1c6922176d3f7ca7707": [
+        "crown_befu"
+      ],
+      "sha256:48b868ccda8253250da1760fde2f6348e0aa891e1e1b49e773f828b3429c5645": [
+        "pharmac"
+      ],
+      "sha256:48ec26e3d32a3580fe4a30ca17019f5b5aafb95b18430622328ab7d35d2614f6": [
+        "budget"
+      ],
+      "sha256:48f179d321667d5547ed8fa77e7a3d4e619e029183e7db1ab874aeab91f583f6": [
+        "moh"
+      ],
+      "sha256:4910badcf86d8d27ba887f1b30c0be43856bcb366d77b2a89c10fdb599bba274": [
+        "pharmac"
+      ],
+      "sha256:4916b3454ddff84c0d775900e21c25ce00c80995213f682fbbfd4c2a54171b74": [
+        "historical"
+      ],
+      "sha256:4936e82c499fdfd452f34fbc72bd78410a2197aba41771c42614cfff2afc56d3": [
+        "revenue"
+      ],
+      "sha256:497c74f23c10999fdd4dbe45da95ae4adf79d58198b263aba164be05eddb5dba": [
+        "biff8_revenue"
+      ],
+      "sha256:49bd3b6903cf78054431d195246abad458559d2958cfda1ac773dd32ce67a87b": [
+        "historical"
+      ],
+      "sha256:4a9473ed033fd08b55b6af1b56534c84b2932a69b13e515295264c1807eda458": [
+        "biff8_budget"
+      ],
+      "sha256:4aabed2af47042ccb54d4fa424a4ea298eadde5c6d12349c04a6e9479d28de34": [
+        "historical"
+      ],
+      "sha256:4ac6354985460d12efa08ad5ed3302068db8de6896d131b1eb6314291880a3a5": [
+        "biff8_budget"
+      ],
+      "sha256:4b92c621d8fa63eaa5b2e7a4f37da3069d917502eac100fed67879c2b31aec42": [
+        "budget"
+      ],
+      "sha256:4bb0814f10f6be76aefd2d7825ebae67969cfe2490fb3881eebf3988cb17c9ef": [
+        "fiscal_crown"
+      ],
+      "sha256:4bb8a60bc3757db1b6813a85be69509e287286278c16808ed6f5204ddc4e7ab5": [
+        "budget"
+      ],
+      "sha256:4bd8c8cb65c1b8604665cfb927c19116f92abaaae810fb9c44e1c2138f0090e7": [
+        "budget"
+      ],
+      "sha256:4c20a1e67410dec399da97dfae2a3de1cb324e24d3ae7afb1692634f5cecfbb2": [
+        "budget"
+      ],
+      "sha256:4c4e6bee7df90aff44ffe96d4f95022c41ae121dd3dbdf92971d1d76e34f869f": [
+        "historical"
+      ],
+      "sha256:4c7ff9159bc7b35fcf0b1e5fa7a29ea10bb5fd9c90a4c4f1b0dac6ff97134312": [
+        "fiscal_crown"
+      ],
+      "sha256:4cab3b8442c1c046d491252dd3741218742a1dbc3235482b0a004414f4e48a91": [
+        "budget"
+      ],
+      "sha256:4cc34bdcb517565e0f56316fe0f57339b920483f664190158d89a025ceac95c5": [
+        "budget"
+      ],
+      "sha256:4cfd4f23fe41312ffb97ed79a04a816cea056c3c4c9458036f1b22e64c8f672f": [
+        "biff8_budget"
+      ],
+      "sha256:4d0e7d1ac9d273906e1000058f69747d33c342d7476a1ebfa54f75a6afa12efb": [
+        "budget"
+      ],
+      "sha256:4d50c88550a7783e8815d54b02c4353069f68918bfaa224f82e6835a803a5c0a": [
+        "fiscal_crown"
+      ],
+      "sha256:4d6a178065b64e4916e16ece1d5a1515926a47d37c97f8a88d7a1f16b4731c43": [
+        "moh"
+      ],
+      "sha256:4e1863d4db7bc4a5f15c0e88cf4813cbafa0c60c65393ff4b98f79d449ab917f": [
+        "biff8_budget"
+      ],
+      "sha256:4e2615f83269f7ac93ceba5e58b48c3a451e2113768704b8e347578dcd209fd6": [
+        "historical"
+      ],
+      "sha256:4e4f3ea211370d4fc901f586e03529608d8b6a7037bbf30f6d210b6ff5de4d9d": [
+        "biff8_budget"
+      ],
+      "sha256:4e50e365c9b45711fe3f4d25bfef1fc83e1b13ed3573a2addc268574e86a6965": [
+        "fiscal_crown"
+      ],
+      "sha256:4e7346653d1e95df92b48544188f1ba04c9f8ef2adb49299d5ec2a2a4c0980b2": [
+        "budget"
+      ],
+      "sha256:4ecf3961c4a6f3573dd01cc2cb4affc1d03d9acb8fbec4e48df763874b85a944": [
+        "biff8_revenue"
+      ],
+      "sha256:4f55366448a5c4ef88c24cc0ca382677a25d597820bf1cd946bd18ca8019d454": [
+        "fiscal_crown"
+      ],
+      "sha256:4f8535e83744c565de139dfdefe6e7a05d8200b9cc1f0290e409b1764bf0382e": [
+        "historical"
+      ],
+      "sha256:503ef2a3c1c8c9f69df0e43354fa69b8a0d1760f7b1410b7034369235b8fb883": [
+        "historical"
+      ],
+      "sha256:50d335f609cec770d029acb7492e1308d56d68d6ad9d53847eefc46563c8d653": [
+        "biff8_budget"
+      ],
+      "sha256:50dd6c52038f7ac4c4211af3788e15b8be6f84d23460945ca536a1f1ca3ba1b1": [
+        "budget"
+      ],
+      "sha256:50e4ece70640d423f0c6c80c041a722b773dba4698e2790c8e518ef7c3ebf609": [
+        "biff8_budget"
+      ],
+      "sha256:510c58907da1b0b11bba3e4bcc6f35f5b64e5e11c38389515d848056cf525920": [
+        "crown_befu"
+      ],
+      "sha256:51562a444a69704e0d3f31e3afeba04243a6ce825abd197e4b642704ff42e5cc": [
+        "historical"
+      ],
+      "sha256:5163b3744b32a4d889c96276eaf5a0f96313de4866f8a817f256083124dbb5ad": [
+        "budget"
+      ],
+      "sha256:51831dfcf716d6eda55cb4d6ba1e85e05e9ac1bb34d890d6186ed58a6e7c863b": [
+        "historical"
+      ],
+      "sha256:51e5234c42b1606f5b6c52960bf494652c3bfce5e9d364838c5a91d32e65fca8": [
+        "budget"
+      ],
+      "sha256:51fccc1dacfde04cf74c00388be4d3cc4434b5508a7235182a124a1cb8bc75aa": [
+        "historical"
+      ],
+      "sha256:52340386b3e32562a5471243e1be54ee275d042274f2c712e077d6516db492d8": [
+        "budget"
+      ],
+      "sha256:5241d147b944120ec321d9d161a871470609d3a63308543aefbbb46ff5e73911": [
+        "moh"
+      ],
+      "sha256:525cfe74204dd00ff632eba3c306b2bde2d67d237d1be63310c3c40e5d67a2d7": [
+        "budget"
+      ],
+      "sha256:5301f42bd34df1668dbc4e71c9ad7eaa409f3486b0e1d4ed5d44611261ce8304": [
+        "biff8_revenue"
+      ],
+      "sha256:5309cd93554a36f2b98de35e820b525aeba6a0f285e0b09e856b62fd64accd9a": [
+        "biff8_budget"
+      ],
+      "sha256:533428a943a28bdbc4eaa6277956d5325f67cc26dfffe6cf4bbd9be1f2dee884": [
+        "biff8_budget"
+      ],
+      "sha256:53843dd3f05d04c0049d138c2ef5c974f5efd5de2f7f6934e106bfb45d6e67fd": [
+        "biff8_budget"
+      ],
+      "sha256:53a76ba69b1071e68e0f3f5395843b33a9808a3f15d34cb9cb983a5692dac2a4": [
+        "biff8_budget"
+      ],
+      "sha256:53caa8d36f4604ce764353f80c19ea08d7baf6dd03d80b59b22cac8bb57e6c4e": [
+        "budget"
+      ],
+      "sha256:53f8d6689bd4b566db6b29aa0794f1e0e65f0aaf45d15d4765da93cd8a3789f2": [
+        "budget"
+      ],
+      "sha256:5444cc75a1659bd4b687dede43885e8844ac06ee575dc7151d25cee5a6d07273": [
+        "historical"
+      ],
+      "sha256:54dc6b802672ab74e0b7e45559e80d6ee022c4955ac7d7c82e215ecdc8c1778f": [
+        "fiscal_crown"
+      ],
+      "sha256:54f5afc644ab4df447ea2d4828754ba232bf17c2fc146bb3442bc995f0e08d17": [
+        "biff8_budget"
+      ],
+      "sha256:5555f07bd43e1fb2509a6d4a303695fa73041e36313a7140defcab4f803fff60": [
+        "historical"
+      ],
+      "sha256:5608f37f52a8c504e708fd305a370183167bb1ba19da67433ad3ed2b7430ad42": [
+        "historical"
+      ],
+      "sha256:561e18577bdb1028b1ec24f9ff484d640dc432b1e89cb288a227af29e6325f37": [
+        "biff8_revenue"
+      ],
+      "sha256:56209e585725e6119cfc7db9334505228bc18916eb010a04282ca2acab4c2b19": [
+        "budget"
+      ],
+      "sha256:563d1f85010a0ad542593baa2c846348c636d0b6e04f05667d8547074e26da91": [
+        "biff8_budget"
+      ],
+      "sha256:5666bbe1058975e46c9f28456e0aadd00a5795e9108e7f89330c78158c72a104": [
+        "budget"
+      ],
+      "sha256:56b1c74f6cf52a6c9bb65229f8530fc91f4badc75ffd634295bef097c915a744": [
+        "budget"
+      ],
+      "sha256:573c3c9ccdb5e2f8b54cb92f4f6e595de2c9feb35abf6bbb6cc20bf27762f432": [
+        "biff8_budget"
+      ],
+      "sha256:574eee0e4d8c1faa23f0afc07333c431063479ba5b828ee361e6adbdeb6075b7": [
+        "biff8_budget"
+      ],
+      "sha256:57a318b0f5dde946fa9c69e768a320ea0eea6629668770b387d2a4bea0d47026": [
+        "biff8_budget"
+      ],
+      "sha256:581f052f607cf23e74c327a3b06d3b7c409d08b05cc259e9de75d47347606c1c": [
+        "biff8_revenue"
+      ],
+      "sha256:582751191139ff1e4a56419ab03d4f2b27b91362f7b1dee9b88a0c45389e41c2": [
+        "moh"
+      ],
+      "sha256:58418bf1de56739a1e799933aec632b50f1decea8e95745c0ea202d7bfec7d2c": [
+        "revenue"
+      ],
+      "sha256:585488293b2a9367373cdc4fab9fda52738ddd9669f5e5bdc484d5e7736f8988": [
+        "biff8_revenue"
+      ],
+      "sha256:589e52fa9b425126e1b9327043d5485e20df848d763d84e917ca0368814a82ac": [
+        "fiscal_crown"
+      ],
+      "sha256:58a3cb180d30329c01502d5ba223137755b4ae208b219daa66febd317e8aeddf": [
+        "fiscal_crown"
+      ],
+      "sha256:58b780a4a0efa61f7b62279783c1c9273b4be172b735f5ea9d9ce59b67ac784b": [
+        "budget"
+      ],
+      "sha256:58c9bc64a77ebe1e1178e4bd148bc61a89cff4fd5ab325058beec23339ba159c": [
+        "budget"
+      ],
+      "sha256:58e452d60dcab1ac37075df791e111a61d7580e2f17b487bebac97cf30bec51b": [
+        "moh"
+      ],
+      "sha256:590af0d994d7551c25a8fc1ea1cc61e519ad752266c2c60b99ee9959bbb72ef4": [
+        "budget"
+      ],
+      "sha256:592d1f537c81e9dc6e182a35889501f846b31fe0ec0e0c5b2e7d560f0bc6bd42": [
+        "biff8_revenue"
+      ],
+      "sha256:59b64b3bd59cf9cc33f38950d5faf1eb820de0e710b4f8c1c93926005e840602": [
+        "biff8_budget"
+      ],
+      "sha256:59d112818df68563da71a07232431cb9e49f7ad97e9e07d915ddf2b45ac03e1d": [
+        "budget"
+      ],
+      "sha256:59e0bd2b423298301730e199d02910fb7c293ebda151a175019d68e4e289a7d9": [
+        "biff8_budget"
+      ],
+      "sha256:5a789f2a17e4f4a1b934bf91049bca636532373df33c8ff36c2461636625a059": [
+        "biff8_budget"
+      ],
+      "sha256:5a9aed88352596241ec2352d2a7f3ff630fed47733ce7bb88d6bd11f9b97bf14": [
+        "budget"
+      ],
+      "sha256:5aacdfcc3fb07812ccb1a44c2b0134910c4759c4d4775acb05ca250d032707db": [
+        "revenue"
+      ],
+      "sha256:5ac34119ebb965b5c7199977f2a72b0ddcee24f5c690a9323e064fa171a87c8f": [
+        "historical"
+      ],
+      "sha256:5b4d8e001d3ec419cf53bd35d288b91ee49491eadde4a1cc7f9de51292b21721": [
+        "budget"
+      ],
+      "sha256:5be1915e94e52618018e3cf4dbd10c46de5fc7aaca18f52706ea4b6d5d91872f": [
+        "budget"
+      ],
+      "sha256:5c6a6b8f81f6fca2f8499d2fc5d3d176955663e76b9a6480bb3d965c362e0608": [
+        "historical"
+      ],
+      "sha256:5c8a3d4fcd038916ca383f71d4899ccb89d21faf427d232a00788f0f758b9c3a": [
+        "biff8_budget"
+      ],
+      "sha256:5ccaeea863e2b4f3f5e869a51385c2279e1165a35386f5cb7af8ed8442490811": [
+        "biff8_budget"
+      ],
+      "sha256:5ce2c7f4fe151f0f427e4357de1ba737112fa4051d321d7b5dc189b54e124344": [
+        "budget"
+      ],
+      "sha256:5d4c922d95b668f0dee9ec9d1054be54a4c93f79b225347c63ab7d199588f9ec": [
+        "biff8_budget"
+      ],
+      "sha256:5d65ebb019eae643ce4f364282208986e931f2f37bfed005dfe5da2a556b85f2": [
+        "budget"
+      ],
+      "sha256:5d8388dd8fc1555a11f2c602e79d231a1c78e60e36c7a1af47d9fc57c0b3c9ca": [
+        "moh"
+      ],
+      "sha256:5db2dc32df9e1c5fa51d66294bb07d0653a086d2d7c870a27d26f83a4c385b88": [
+        "historical"
+      ],
+      "sha256:5db37f7297f3d087890838b54ea5ac25f43e7a1a08608b9a243cceb1e831132b": [
+        "budget"
+      ],
+      "sha256:5dbcae13a06efd96f19a748d5b8d9c996250ee1cc71caf616cfb2c0960e74f98": [
+        "historical"
+      ],
+      "sha256:5de1ec59bfd8e7eedd0761dc6fa3bc4fb30d9d76fe13f6b1f05cfb475bc33da8": [
+        "historical"
+      ],
+      "sha256:5e214a65ed0511f9888b9dfb9fbcc71fe4a8534a8dd821d2570fbcf7d5b0c8d7": [
+        "historical"
+      ],
+      "sha256:5e2e511aa8f1035f24c52e5b324df99cc6f957d156ef02891e45d196f2f3c42d": [
+        "budget"
+      ],
+      "sha256:5e9427689fb60882cd034ee3e07af0d609d29c1590340b5653b86e964fd3534a": [
+        "historical"
+      ],
+      "sha256:5f4e7da469c1117c431dc5f401c5d19bfa2ea43fdf4a88fda71090b88395c626": [
+        "budget"
+      ],
+      "sha256:5f6136c55cf1a73051caa3d54dde50986e86bede6226f3ce1b074769b344bb51": [
+        "biff8_budget"
+      ],
+      "sha256:5fb3cb3ef04ea68e14b2900d187cdb4b09cf2adfe8b41a700ae7260bdee87aa9": [
+        "biff8_revenue"
+      ],
+      "sha256:5fc7bb8c232f24b1b11380f8e053b94c041205e7973b0b2375d6e3a1aa210c63": [
+        "budget"
+      ],
+      "sha256:602c7102b99d06a3213cb0b370b9d0fc77f41b9eabd17e9d4adfafd661bd2fe9": [
+        "biff8_budget"
+      ],
+      "sha256:602e9448e0ddd9a2639a3301cb01ac3f7ad9ae8a76e8eb963e3afb2320e40629": [
+        "fiscal_crown"
+      ],
+      "sha256:603fd6f0e24f673ba34bbbddaa775f277ca195cfe940cc4da59cba6ff025600a": [
+        "budget"
+      ],
+      "sha256:6043890ebc2205ddd7acefc3ffcbee815507d2368fbe645a4757f1d3d6052236": [
+        "budget"
+      ],
+      "sha256:6094e8c0c5c62c6555117336b2c8aff61e1d718ca2f9e92f5ecda35b6f7d8109": [
+        "budget"
+      ],
+      "sha256:6097743f16d630f4a0bf446f1b367d967614b24cf1ea64f607a4de33c27f5928": [
+        "budget"
+      ],
+      "sha256:60d9180468a752adeb140943105e6e49ab9d51bd9f6edd8331c9d3405a2ad3e3": [
+        "biff8_budget"
+      ],
+      "sha256:61045c45b205a579dc6d0e00870d2764e7eecf44f3f983c5ae339d887dedbc2e": [
+        "revenue"
+      ],
+      "sha256:6143b6a8d910d46ac72e2eb3e88c9e8aac55ece589d972f5c11d57d771196a7a": [
+        "biff8_budget"
+      ],
+      "sha256:6173d3ed86a908a1f3a84a636102eb46472330f37b1772309e78bd16bfa2fb1d": [
+        "biff8_budget"
+      ],
+      "sha256:6191ed06b2bc4b3377f72c7ed2f3a11e552906176c69249dca1b8ea6b208f94b": [
+        "budget"
+      ],
+      "sha256:61d049c59700580a3259384a06fcfe37b238f497da5cc44faaf0282b8deed294": [
+        "biff8_budget"
+      ],
+      "sha256:61d8a7b388bdbbedc039e256b9373c5dc63998249cf148e342fc7a1437fa2d9f": [
+        "budget"
+      ],
+      "sha256:61f5eb6fe0fd92d0af9ffcb50087490ee2f41cb215cee5f174359b5f15133aff": [
+        "budget"
+      ],
+      "sha256:6237f583bc8fe98b5d4710721b15b16c10c808011f46f9c4ac35ac383af1ef89": [
+        "historical"
+      ],
+      "sha256:62394ac90b6e16b14d023d16eb46162184e91d7f7918df32be00893d9439b15c": [
+        "biff8_budget"
+      ],
+      "sha256:628f6aca847b43961530f5649e45f0d69b3d75387d29a8152ffb54835a576c7f": [
+        "biff8_revenue"
+      ],
+      "sha256:632839f8809c89a6642b46e842c31e12a17bb23ee444650c0ecdb6454e965798": [
+        "budget"
+      ],
+      "sha256:63958b97b683d80391d00b6d70c27ce6ca05118d5c64fcf23b3e5615b4a1e304": [
+        "biff8_budget"
+      ],
+      "sha256:63990883d7213f5166e103462e6005eb6547d2dbbad905adfa2ab68db839533f": [
+        "historical"
+      ],
+      "sha256:63d78bb0d95cf7635c5b96e3c1133fe233619c341d8b673b7da2805f4a5822d6": [
+        "budget"
+      ],
+      "sha256:63fbe074c2d37746639bd207bb42033ecc41ce2e4845fcbdb7ccab0c7f4684a2": [
+        "budget"
+      ],
+      "sha256:64527cb420b291aac8a8733b6c9dd6bed3312cc046253f8785f994e055b63266": [
+        "moh"
+      ],
+      "sha256:64703c7747e52b26fa02d4b3fde35abd0b31953a2bbb6af539de1e6249698dd7": [
+        "historical"
+      ],
+      "sha256:647eceb194c2dbd15b11403df1e969add7b34ee4f924473ee187af9c76210c35": [
+        "revenue"
+      ],
+      "sha256:64a9d3bc20440071a5c9557d9ac3dd0307f2f9f1e7781a498bdaec4ae03ef224": [
+        "budget"
+      ],
+      "sha256:64b4c993daf0748e68e3d4e8e352a283504f9d566b853f46e443ce2aa6d08c87": [
+        "budget"
+      ],
+      "sha256:64c6d44624bfe77d26800a5b4089487ece754c43c4e5d2f9d6d02431a0f5703e": [
+        "budget"
+      ],
+      "sha256:64c8787e60d80d3d8d1ad97e8b2877730c3e451ca8bcb12bbb2cddb773d6368f": [
+        "biff8_budget"
+      ],
+      "sha256:64ec668e46dec66abb15cd17135aa46b9b3003b79764d9cfdde923d2c84aeb47": [
+        "moh"
+      ],
+      "sha256:6516f4a4352eadf1f8e23a87950cc9956d049970a8ae9eb9f51c787a035fa1b3": [
+        "budget"
+      ],
+      "sha256:656f7f5fa167788f4095b1422fec4d6965335737aefb8ab9c2dff12c88f97dc4": [
+        "crown_hyefu"
+      ],
+      "sha256:657e2160960c851baedc214a64baa6f1f73da6396b1fc2e3bf4030e45eea2991": [
+        "biff8_budget"
+      ],
+      "sha256:65ae10e5e7ee11498e8c71213ba5e3ff180e38d517a8bf81b63e2d0c5938b05e": [
+        "budget"
+      ],
+      "sha256:65bb042d1165df2a53e7459cccbed9e6c72f97bc9fe069e0590a2bd68a2d1ff6": [
+        "biff8_budget"
+      ],
+      "sha256:65bc7b7b6ca59ebb82fd16e0fcffe42aaeb4cfd724621422b2ce67d343f184d3": [
+        "budget"
+      ],
+      "sha256:6628b5673023b2cd0da3de7547fbe5921be03b238d4b738a8058cf5b6a771e0e": [
+        "biff8_budget"
+      ],
+      "sha256:669a9bbbb0ce8e0d1783d206f0a9794f14d09705dae8f9199fce490cbd5efaea": [
+        "historical"
+      ],
+      "sha256:676081665b0c428d9ea45f2a7d9c4286c1b357be5740aec609942bb465d60ccb": [
+        "budget"
+      ],
+      "sha256:676da36c62466f124a95b73f21ac52d5ba77390ad54b1767ee951261442d44be": [
+        "historical"
+      ],
+      "sha256:6774c4b4d07320221094f2f30f0f33e4d7591fa8489c8d53d965da6a8ed5c25e": [
+        "biff8_revenue"
+      ],
+      "sha256:677df3a28ec6de23376f302a918ee5e7192fb201e5ba1c7ec93e8dbcdc7c39b4": [
+        "budget"
+      ],
+      "sha256:67baebba5a2f4eb403abe64009b54242bbd0fcabff99923aace244164a6f3aa5": [
+        "budget"
+      ],
+      "sha256:680330b48025ca801ffcdace392f597f2d1a524798ecac3b49b0fe66a924191a": [
+        "budget"
+      ],
+      "sha256:685ae8def8867c1c225e4b93166309e1d76a7dae5948eba6cc59fd19e05fbe03": [
+        "pharmac"
+      ],
+      "sha256:68a833ea32bfdbe7249f2120f658605f6a9aa56b940b7daa71659d25738670d3": [
+        "biff8_revenue"
+      ],
+      "sha256:68c8b89683ef3488d671dd56b5d08a9eb0b9a8ac4fbe1504296604f19a1136af": [
+        "historical"
+      ],
+      "sha256:6907d4fa9e8e12c296cbd5f73ab55ee844e4219e01b7d27455661cfd9c07d3a5": [
+        "moh"
+      ],
+      "sha256:691d48de3f53169fc888dda2a356fd56f6ff1f7a4b7cb3cf38effd916151ada8": [
+        "budget"
+      ],
+      "sha256:6980b78a9a3e43871fd025e0f1884972dbdbc3e08b0319bd7c5ae85b10149a06": [
+        "biff8_budget"
+      ],
+      "sha256:6983e902ddc82e4517394070316d2e99a6362596817284388d61145eddd08572": [
+        "historical"
+      ],
+      "sha256:6a0ff3fbf9502ee5bbd6ef336db1bbfe319a7b91995a4ec0298a14ed3561cf01": [
+        "budget"
+      ],
+      "sha256:6ab0b53324be5e158794a63bb9ad20522b12c5f5247643025fe913b099055a82": [
+        "moh"
+      ],
+      "sha256:6ab645894a53aa563070671c14876edb298226e191c0e77f0b689b42ebc49bdf": [
+        "biff8_budget"
+      ],
+      "sha256:6ad2065666e52f2084b6dad84972574d6a414feaaf644d706f944d0a7de127c4": [
+        "historical"
+      ],
+      "sha256:6b31c3f3f62e96e23eb63584e4e4850bafb1da712aba2ad6f610fdedcd49ae5c": [
+        "budget"
+      ],
+      "sha256:6b33b9b66d9cb91884846b4f73be6fab7bf6216842dea8771f689fbff2693f2f": [
+        "budget"
+      ],
+      "sha256:6b41cf58f370c2deb4d36ce77588ee9bb7e8780257624932849f681bf6e5adff": [
+        "revenue"
+      ],
+      "sha256:6becf353c3c1e5003f1040ba94ebd1b7c296b1f0fbdb8bb81944ea7898e046f9": [
+        "budget"
+      ],
+      "sha256:6c7496c7ce6a2a4c65131de1dcd769166e6fa657c6514d845ed92ff784551ba1": [
+        "budget"
+      ],
+      "sha256:6c8f6e7b209a008e5c42f6c204cadf3699a7f1ff50d175f27a38a075cfa6d13d": [
+        "historical"
+      ],
+      "sha256:6c99b39167642cd62ac190b8c1c2d06e800afcfb32778ed6a7f90451d3dfbc8c": [
+        "budget"
+      ],
+      "sha256:6d1dac071ae8224cf3c416476eeb87a05ab6ee9624e3fe28195379a9c8356305": [
+        "budget"
+      ],
+      "sha256:6d308b241b6c6623e936e4b41d44dfe6d76f00a009dbbb1ed3a8c782439da2ad": [
+        "revenue"
+      ],
+      "sha256:6d84f8947f34b47eb9c9787860beb046da3703a33515f461991c2808ee0a1d24": [
+        "revenue"
+      ],
+      "sha256:6ddcb1126970e599dc1c3e91f99bca094a20db0db2588dc9013e6e49476f332c": [
+        "historical"
+      ],
+      "sha256:6dde3ecefa26cc0c6ec5a54735e7774f9475e3353823e75f15889604fb21ef1d": [
+        "historical"
+      ],
+      "sha256:6dfe207c686a54ec1fb441dde9382c0a7662494f1ca8458e9193a22db31b37cc": [
+        "biff8_budget"
+      ],
+      "sha256:6e791be7df15ae24df350727236b508812e318bd2904ad0c4f1ff4b40f9f7e0c": [
+        "historical"
+      ],
+      "sha256:6e7bb6cc9a66ed8b7e22caac9df6995d6c48cf48fcac442afd1c4cb9b6ead12a": [
+        "biff8_budget"
+      ],
+      "sha256:6ec6aea3733a786a503fc4f340345932421f2899107128bb95149e1dc390d274": [
+        "budget"
+      ],
+      "sha256:6ecd5d26c5ac5196bfaadbb3c54b5266af15659fc57ad912e87f026c07a51b84": [
+        "budget"
+      ],
+      "sha256:6ed18de5194b14feb926bf80968f4d8c92cf56cb58784514bf989af5e164cc86": [
+        "biff8_budget"
+      ],
+      "sha256:6f4f7d452548cb1c15ef3b0f96adbbcc45b9ca89463993a76f300cff5ae0b58e": [
+        "historical"
+      ],
+      "sha256:6f6c1c3f638eb9f8392409b91653a20006577c78195ee79497bd4dd25dbdd107": [
+        "revenue"
+      ],
+      "sha256:6fbbda45ddeb9a6f1eff72322bc1dd45d612479841bac0bff912be6d86c1dddd": [
+        "moh"
+      ],
+      "sha256:6fe4678820496b93ced8dbce7508e51da9f1779964e88a9120af995567e138de": [
+        "historical"
+      ],
+      "sha256:70169afcbc7c2e0471beaca8ecfac621b999ddd162f24ecc2fd01f4d61e92f6d": [
+        "budget"
+      ],
+      "sha256:7017c028da5ac30bfd9cfadb7216d0b02f0a9c73fcdcc0fc87665831a6db7ab9": [
+        "revenue"
+      ],
+      "sha256:7043f598504ff307c17de75d7eae3a62496897483cec87efd4cb0d83f41c52ad": [
+        "budget"
+      ],
+      "sha256:70b1b1a2baff866300d51a70acdb02b6057bb8321a796d8002839d9415956f74": [
+        "biff8_budget"
+      ],
+      "sha256:70d402b899380803a4e903da21696e024138d150597f293708871402544d7c6b": [
+        "revenue"
+      ],
+      "sha256:7139ec7b5e8ce71e341ea9043e44ab8d327c7c8ecd4532bea63d248dfd95f6e1": [
+        "biff8_budget"
+      ],
+      "sha256:715a4ea8adc493be61c0f50778e93aa2e081c4a4fa54ecf1c14a210a3b675e0e": [
+        "budget"
+      ],
+      "sha256:715b4c83177fafee118e3d7abaffc5acf5c43ed3e561a8db4c86ca5a0d9869f8": [
+        "moh"
+      ],
+      "sha256:717b306b26300745bda3c84ab43c0e66121e0ef6a493011f6eec053a091b5031": [
+        "biff8_budget"
+      ],
+      "sha256:71a2d55697a93172e46dedd348b1a208a3dbd2fac3a12cde2959f7b87bd88e41": [
+        "budget"
+      ],
+      "sha256:71ee52e44408f3f0eb9c00ff5eb991edb3acd44ce3918b0f08c7a8561b3ab7c7": [
+        "biff8_budget"
+      ],
+      "sha256:71f19b2add67a88fb37a027a5f687f934e2c97cfa59069afad5f0a3f5b2b1806": [
+        "crown_hyefu"
+      ],
+      "sha256:71fccb51584edd9feb4063a3d9e54786b3d5203a732336dbe874cf15ea0971dd": [
+        "biff8_budget"
+      ],
+      "sha256:7200241e9896167e40c3562f3b551a0507c03ff868a430a3e5dc3d13465b02fd": [
+        "biff8_budget"
+      ],
+      "sha256:723276df63ceb2d8ab9cc39fadf436ffd97c8059133fbc2c10dc0a1b9d8143af": [
+        "biff8_budget"
+      ],
+      "sha256:726dd04a62651ff05ffecf2e3ecf0b63f93097240962576b807cd450a51a370c": [
+        "budget"
+      ],
+      "sha256:72d92f9578c12dbed39cbff1494c183a61c114e9ee071d2e8b3ec06d5366f37b": [
+        "moh"
+      ],
+      "sha256:72e6d945bd6cdcb6036b52eddc72e727386fb14e0627479d13040c1208cbd8a9": [
+        "moh"
+      ],
+      "sha256:7323e8262de0d51670cdece01c31d1930ae3ed783e52fc3b04d30cc6ce10a0a2": [
+        "biff8_budget"
+      ],
+      "sha256:732e106a144b7326d9e24d451ce46232ca30bd3d3fe2a215d4da842f311951b5": [
+        "biff8_budget"
+      ],
+      "sha256:7348171a7f92342e1df4ed444ed5672dd7cf1cd2d4b4895aec0d516aa64ccf63": [
+        "historical"
+      ],
+      "sha256:73d749611411b3f95302cb594bc16851a4b0d8ffd7d3f021891d1fdd437f46ee": [
+        "biff8_budget"
+      ],
+      "sha256:746775a66b6d4fcfc7b082ac004b7c9e7d7f6a5b687783c27ba75ce2b6acbcd6": [
+        "historical"
+      ],
+      "sha256:74d8d3c8b27b599b85df352d2fa862108c24832c621dfdd9e5b2b1e368056263": [
+        "budget"
+      ],
+      "sha256:750204e48bb145686581066c870ee60c0a621edcbf564191c1069059c260ecc7": [
+        "biff8_budget"
+      ],
+      "sha256:750fa6e00f566a95926c6faf8166f62460397a0666d25877db5cc8d2f65297af": [
+        "budget"
+      ],
+      "sha256:75a0309d3b66d07d1bcd9d54efeff6571b6c8e10d72ef52e4fc1c26790c56ffd": [
+        "budget"
+      ],
+      "sha256:7639b8d85449254485bdd74cd79de69edfacb8c1bca7a097c4fbd804d9cf12ed": [
+        "historical"
+      ],
+      "sha256:7679fedea7bd875ee356b12993f2db7beedb1882dda30ac7d6c60f169aeee0a0": [
+        "moh"
+      ],
+      "sha256:76c75d9d91f89662be67fdad6e6d7f71fc29ed53c91c9324f2f0716000fd0bbb": [
+        "budget"
+      ],
+      "sha256:76d2ac74ecc9512f448dc54b4ef7c59ef443b7e76e905fee13901b474c00e311": [
+        "historical"
+      ],
+      "sha256:76dcf95358abd63553faceace068623a8e834bf31cbf059c388457dee98b7d7e": [
+        "moh"
+      ],
+      "sha256:770e7570d07ca8c1bfc4edabc2e0e9abd9f9bc5d6ea605877e034c3cd6222e80": [
+        "revenue"
+      ],
+      "sha256:772a4ceef3b6a28cb4cee81c2819a2992c30a0389177e11263809ae289ed1ee8": [
+        "pharmac"
+      ],
+      "sha256:77fa901ffdc13bf00eba8cb53d44c914a4a5210762085d09936c09a04e39d379": [
+        "biff8_budget"
+      ],
+      "sha256:78397bbea49e0938f9d4f685d493a031251abaf7769880d51f4814613f8987ee": [
+        "budget"
+      ],
+      "sha256:7866c8b9c19c9c7e44843ea2f62914338270cdc8a530c6ad119831c5666f6420": [
+        "biff8_budget"
+      ],
+      "sha256:787fa33b2d2ae2e7770902711f724cf23a44e9e371b626f60d81354a43460320": [
+        "biff8_revenue"
+      ],
+      "sha256:78a3edbb4a3291b5d0ea8a1bfc397c610e383b32b2212baae9b0909fc6e524fd": [
+        "biff8_budget"
+      ],
+      "sha256:78c54550f364ae21c70d64e5ce43ddeb16be6681f9bddba50c55f0efd10ad487": [
+        "biff8_budget"
+      ],
+      "sha256:7951f40bb0ab64c2ccc674a47e92e8adc0c277972ea4e42547c4ce996d265dd9": [
+        "moh"
+      ],
+      "sha256:79a1bcb37bfaf1d9532681f7d2a8a3451be9aeecfaf199a2e7e2d86f90ac4502": [
+        "budget"
+      ],
+      "sha256:79be45e2883df59be60ac9571e4f6f30e929aef893af0b228833b7a33c0785dc": [
+        "historical"
+      ],
+      "sha256:79d63659483fd036aa69a67bc4f28c22dacf9bb4c9f25955dc745b2cec78520a": [
+        "crown_befu"
+      ],
+      "sha256:79fe60c674ea6f8026deb6476888a1af84d1778182910bc19a2994ac27143da7": [
+        "biff8_revenue"
+      ],
+      "sha256:7a7a031e22636974b8ee100bc609b472da5386ecfdaa68e6f993ae0b9289cb4b": [
+        "biff8_budget"
+      ],
+      "sha256:7ac1d29bd0435a3f82aabf7a92f6c9f88f8c238c3bfcfa10db4c913ee40b9d43": [
+        "budget"
+      ],
+      "sha256:7add752747e5ee3aeda9a4dbfd87516a69e258d99a83e8a0bcff6b22c8820858": [
+        "budget"
+      ],
+      "sha256:7b27b07e26cc0e34a85b23caf9a5861591fcdb383361a7a267a4c43e9cd02a0b": [
+        "biff8_budget"
+      ],
+      "sha256:7b47a731f14fa85cc9e8dca18f77bc1ab07cf496e50ab2687d549604cd05385b": [
+        "budget"
+      ],
+      "sha256:7b96ac8e515346ebbac868f3dcd3ca1e135c3ce9291aa7224ef8f98a8140563f": [
+        "biff8_budget"
+      ],
+      "sha256:7bbd6319dca10c6d8b8c1d68791bb734c8f15442fe54e5da9547ff805efe0e1b": [
+        "budget"
+      ],
+      "sha256:7bdb7b3b3709a62735b7616190342622ae1f07a5df40bf3a91231af4c2798578": [
+        "biff8_revenue"
+      ],
+      "sha256:7c559f9cf08a14ca8613931c73c82c83e9fc177cbc10d2bf8d3019a6c6a93f22": [
+        "biff8_revenue"
+      ],
+      "sha256:7c57c18d112d416ea3fe394c0d7e3e78232966c2b4feb78b1e653c45cf5e653d": [
+        "budget"
+      ],
+      "sha256:7c84a64516696103381e4705edf8ac6e3c652cacdd71b66e27fcd477096d5a80": [
+        "budget"
+      ],
+      "sha256:7c885a868cdd295b6576b410e6006b7644711d1507e68755a2835a1bc5f91feb": [
+        "biff8_budget"
+      ],
+      "sha256:7c906417a0eec423e3223a894a2218ec69fc34b67388aa1c346b29db57d2d846": [
+        "fiscal_crown"
+      ],
+      "sha256:7c9dd1b2e4c0b7ca5d1f727a84fd1e9a52223cbf419582159240e45cf4586f9b": [
+        "budget"
+      ],
+      "sha256:7d59dd612924ae92fe1683aa0f1a452352a5a3986326fe8cf98f2a1f9f2244f0": [
+        "biff8_budget"
+      ],
+      "sha256:7d93ee033c088338b808483cf756ce859e7e3f52ebbd428fc9751567b039df82": [
+        "historical"
+      ],
+      "sha256:7d991e1da2f1f30c7f134908e99c9832c52032ae6db23ce024344b67040351d9": [
+        "crown_befu"
+      ],
+      "sha256:7e4ec8f91e2af8e2db2774bde41c720bb5ec8f9366225b33bf4a7eeb12ea6d62": [
+        "biff8_budget"
+      ],
+      "sha256:7f3fdfd1c6a86cbc0e8d866379a659fb18a7807a0a78a6870a7e1cc59dfb9107": [
+        "historical"
+      ],
+      "sha256:7f710ade83ec3b5a9735f27bbc7131d02ae52e55d15fda8c0826c5137f699fc1": [
+        "biff8_budget"
+      ],
+      "sha256:7fe21334032f5a293322d2539e85eb07aea77a1229cc87449f618e117fe8ad36": [
+        "historical"
+      ],
+      "sha256:80492443c3881309fb9063c50cf8d6211ec16f68b37271a2ad819f8cc9c0d268": [
+        "budget"
+      ],
+      "sha256:806e51f75bd9802ccb96aa3accb878bd8efe8d506294256291bd36b73e7338e6": [
+        "biff8_budget"
+      ],
+      "sha256:80824e04e5f39681a4c4502eccc6720e00b70800d5fffa9931a745c4f6ab5a88": [
+        "historical"
+      ],
+      "sha256:80a58936ab30325dd7c813e9c5a4fdf6c713940303704b12295295389421ebb7": [
+        "biff8_budget"
+      ],
+      "sha256:80e118847b9c3d25ab3a7218bc6f12f10507fcd87ac1b4954cfdacc9da06aefc": [
+        "budget"
+      ],
+      "sha256:81049e3da55794532c0acebd6f20481b512f36e7852def0323db6e923507f5dc": [
+        "biff8_budget"
+      ],
+      "sha256:8127262ecf2de2d30ed89a883e11353d248f9b4aa54710dde3c1a96ef7e68eaa": [
+        "historical"
+      ],
+      "sha256:813778d64df121bce8ec56e80082ff336198471195b850b54b6d596113d95890": [
+        "biff8_budget"
+      ],
+      "sha256:8143052fb962b27b55562c0a39bfdac02c8af15cce533d5da71ed7b7689af8f4": [
+        "biff8_budget"
+      ],
+      "sha256:8149b9f5f03b7e488d83759d34c30a102866d859489cd9bcda7c81173a649985": [
+        "revenue"
+      ],
+      "sha256:8149cb3927d0c26da1f0260d2b18318c60ccf99823284a02e11b2ae2194754c0": [
+        "budget"
+      ],
+      "sha256:8175d405470d9300ce8b29d9b229c8b7b119bf1ea38f66c2b5a366d824e368f9": [
+        "budget"
+      ],
+      "sha256:81a23f069444c9095e1aa5322a7747d6d850a80c02299ee59a049ad9db843445": [
+        "fiscal_crown"
+      ],
+      "sha256:81c4b100c08d6c17bdba21306603a8bd37c53e60c5969a005b8e93ab05201887": [
+        "biff8_budget"
+      ],
+      "sha256:81dff9378a6409d2666e5f82439caa32d38978ca94433053e10b573a8350c055": [
+        "fiscal_crown"
+      ],
+      "sha256:81e514343201394565f54ea1fc5e6a746e56e5f148031617ed31c94466db7665": [
+        "historical"
+      ],
+      "sha256:824e4d706f452a64525c18ca9a9d79e352000d7eae7b84c70252a43743161c3c": [
+        "biff8_budget"
+      ],
+      "sha256:824f77e2a4ff0c42569831c9fff3af9b352788402376dd635111093168668786": [
+        "biff8_budget"
+      ],
+      "sha256:828fdec2fd6953bffe551b4097fb10c5aa67819b1f0e33cf81ac3505d92ba5fe": [
+        "biff8_budget"
+      ],
+      "sha256:82904e0e34046fbff89f54fddcaaaf0592aa3d0daac484f0c0db37e747934e3c": [
+        "historical"
+      ],
+      "sha256:829acb085f7554c00698d78e25779cfd8a46720f132c955b0569521f424d1305": [
+        "budget"
+      ],
+      "sha256:82a4bca4117bc606b6120c2c1542c5b033af4fa082130162cd4fb6d0e52b64e7": [
+        "biff8_budget"
+      ],
+      "sha256:82e033ec65a3b921a27698b194b4dd8c8c6b3c123e4643d087bccc8b1dc25f9e": [
+        "historical"
+      ],
+      "sha256:82f15f4489cb5a2dd7c9312d8517292129e7e886f958938786bb60b5bda5e115": [
+        "biff8_budget"
+      ],
+      "sha256:83042b49700e36232f442e29e36db40c43ff3b450977f16658acc65e2d5e2ecf": [
+        "revenue"
+      ],
+      "sha256:832fb057e62a0d780b8fc69998ee3d05aacd00cd55f4b43312fe888c6c7cf5d9": [
+        "budget"
+      ],
+      "sha256:8339da51f76721b23425dfebfe4f7e113e4ffe43cfed4c9a1f2117cc0bb18ade": [
+        "budget"
+      ],
+      "sha256:83458cae5406333619dd3faa47860dd65e89536ab72e58ee072ab56b692f0d58": [
+        "biff8_budget"
+      ],
+      "sha256:83491ee720487a658da15fefaf94f9ff123e6bff878da0016154185a09cb770c": [
+        "biff8_revenue"
+      ],
+      "sha256:8386044c48990c8607a0fa830ecfc1bf45031eaf46cd5642a99320b7404b5180": [
+        "biff8_budget"
+      ],
+      "sha256:849af04726cbca32fc0778da176e29ca0bda4d06c6a3dda992c7161a81ba8de7": [
+        "biff8_budget"
+      ],
+      "sha256:8533bf1af5242502254696088a2d16a8d5e2c5198c7de9923f1d1c3081ce3238": [
+        "biff8_budget"
+      ],
+      "sha256:8546cb65c3aec7a0d7f79a8a366ed5fd99615f8e1e523afbe0676a94338f73df": [
+        "historical"
+      ],
+      "sha256:85724adc4c30ade622c04b69276068170b1395f597eb927ff509eed28d6964eb": [
+        "biff8_budget"
+      ],
+      "sha256:85a8e99e2d2508701b279e2dffb2029174523681fafe4126364fe07f6d5c64ef": [
+        "biff8_budget"
+      ],
+      "sha256:862343841425e7563f1b35d96d3b2fbbe2b68eae6221e1917d4d88c5e484300c": [
+        "budget"
+      ],
+      "sha256:8623dfbee3f3994e9c724a9712e036b1781f5b7d36f819b8776ff9198edc1f7b": [
+        "fiscal_crown"
+      ],
+      "sha256:865f284eef66fee16b1e5b0ebbeca47e88aad8f200dcda04e9efb2a58106be7d": [
+        "biff8_budget"
+      ],
+      "sha256:867cb55352a0e36c3410ad5ed53cd9c8fc8a434432f853e0b3e300b7e38beb93": [
+        "biff8_budget"
+      ],
+      "sha256:867fdaa1b9f63748370e6d7e194e04047403b029da7517d7eb9de8846e63bf5b": [
+        "biff8_budget"
+      ],
+      "sha256:86ec267bd8c3cf39c73dda80721cae483c4054a757fa9ff57ce313c7155617ec": [
+        "biff8_budget"
+      ],
+      "sha256:872904838837e283aa874e7c5e2821c2c2b35785f6368b402187b8cc03c76c43": [
+        "budget"
+      ],
+      "sha256:878c6ac34dae77b5a8c959a72f87665a069fd407f2d2346c4d259f5d654b1805": [
+        "historical"
+      ],
+      "sha256:87bab7d35c4b6f68ae0f2eefe3498bf47b6de2241cbdef1292a6b1738b1670f8": [
+        "budget"
+      ],
+      "sha256:87e2d73ad2d56c09bf9c8eb48f3b938c80203ab8bfa7245627b9b97d8d66c68a": [
+        "budget"
+      ],
+      "sha256:8801b5666ab38c43f271fcde0c28a1be64dc06cfe1e13de65dd5d59527f8941c": [
+        "budget"
+      ],
+      "sha256:8887c02b2b840134813010d133adc8ee8f34ec42db2f928fd0a02f6e2f837ce9": [
+        "historical"
+      ],
+      "sha256:8892131232c427089621975f40b04637a6f7f5aae38af75db1e26165ff308367": [
+        "biff8_budget"
+      ],
+      "sha256:88ac9489d7504b9d15fd953563974878d4ec137122607b3f192bb0c119f8861a": [
+        "historical"
+      ],
+      "sha256:88cef18b4696ec0051c9b135387930e6e9f18e7ffe25152d5bca22963ac05644": [
+        "budget"
+      ],
+      "sha256:88d22fa674fb27ebcc0a65f68a32c9709b0d9826ef877f78608dd4a37123c68c": [
+        "biff8_budget"
+      ],
+      "sha256:890297e89c51287873f924428311db682bacb580eddb9f1c258685f00c15a8f8": [
+        "moh"
+      ],
+      "sha256:89298abd6d98b73707ec86eeea8c78130a94af82e5cfc3f1bc5bdaf3356cb44a": [
+        "budget"
+      ],
+      "sha256:892d2d23701323c1ecd53a8b8cb89c20bbf61efbe81f3a5380cd0567101cdac1": [
+        "biff8_budget"
+      ],
+      "sha256:899ab2e281ac4568bd8fbd7b3bc860637d33dc720a5e2325b03ee88eba4df595": [
+        "budget"
+      ],
+      "sha256:899bfe1c6257c0d2be688e5574df6a65b8cdbc5c8f4ad4901a7efd283a0f7cf8": [
+        "budget"
+      ],
+      "sha256:89ab4fe52c49a5e0d4692bbb439865d864de6ad1e9beff07d345926d3af27d76": [
+        "biff8_budget"
+      ],
+      "sha256:8a01d8463ab768256977e9f2e9b2901517541725cf95f5a474d52a33f5a55b44": [
+        "biff8_revenue"
+      ],
+      "sha256:8a1ac427335f53671eda16fe899e75bcab2621c1aac7d1e5e69e549273015d31": [
+        "historical"
+      ],
+      "sha256:8a1c4e81fc9baff66d4adfa93e999097a4a053f011d317eee1b499cfbf69acc8": [
+        "biff8_budget"
+      ],
+      "sha256:8a433ddb939d8d78eb8a7ee258cd5b345775ff3ba1ff3cf93dc204c05291cda8": [
+        "fiscal_crown"
+      ],
+      "sha256:8a5a048362e5a1c167016b57889f4e0221ad80db82e269c0b90756aba713f472": [
+        "budget"
+      ],
+      "sha256:8b0bc75cd7988d0d5f3663b5bdecc41c29dcd3f2b454ec598321ba813cb9168c": [
+        "moh"
+      ],
+      "sha256:8b6f5a7b7813ad69f7847100947a478314d1484cbaed45d1adf6af49933e23a5": [
+        "fiscal_crown"
+      ],
+      "sha256:8b75c5d160a6bad26472c38dfcbe44422f05e90a27e13a940640dae3a732d8ab": [
+        "biff8_budget"
+      ],
+      "sha256:8bc6becfd3a4149082762c9984b1b288eb5e2d8a801227b0d0674c47a05f2185": [
+        "historical"
+      ],
+      "sha256:8bef02eeca9eeac32961395bb51c296a8f6a98b64869cc1613446f1e69a014ce": [
+        "budget"
+      ],
+      "sha256:8c0f9b3dbe8407b0b43048fa8b3951616b44fb857c90cc6e0e0bc1e9e7dc728a": [
+        "historical"
+      ],
+      "sha256:8c1465d96ec70749fe241c184f14e6482f6e9d939b96bc4ec73519c7f4f48fde": [
+        "historical"
+      ],
+      "sha256:8c465d2ab9eeaf9f3353fb5893e1ac2a892ef796cc474910c14f78a003065c6c": [
+        "pharmac"
+      ],
+      "sha256:8c98eff3958b9d47eb9d781bcb895cdf9f5feb629e4f541d0323e7e5929d4b7f": [
+        "fiscal_crown"
+      ],
+      "sha256:8cd72abaa54b7fad157c4d28e3409cac7b9cf64c2f04ecc447edd389a8f3fe3a": [
+        "biff8_budget"
+      ],
+      "sha256:8ce1a8922158901fe3d1ab307ee5635e7dae1696fa3cfa6320fa37b389b2ed5e": [
+        "budget"
+      ],
+      "sha256:8cf5eb3584749a7389199b75fdc313136f40a97d4503fd61336c2c9995292594": [
+        "historical"
+      ],
+      "sha256:8d6d98119636c17f21f972fcd7cb53299da376429196d3796f4df64b3f247098": [
+        "budget"
+      ],
+      "sha256:8daa2e43cce855c8f379452dd3d9aea826a506536c26be1b61a1e3ec010a4afa": [
+        "historical"
+      ],
+      "sha256:8db4aa00fef68a230d65f5ee5d4b001c5cedf12619fe89057d1661adb1e0b7a9": [
+        "budget"
+      ],
+      "sha256:8dde0d99938c6861644b047eaf47b3a7d45f4d5ec2efeba23dfe61150e6c1374": [
+        "historical"
+      ],
+      "sha256:8debd800ac16249c218b11f68d819d1f50854cba1751bd3e67d7ee506e4ca12e": [
+        "biff8_budget"
+      ],
+      "sha256:8e2d5e6a574463f31da5c54d4deabd1e8e35729f0e277b1b52ec6ab38c0c0383": [
+        "budget"
+      ],
+      "sha256:8e618153bd56807bd810759b64d5b477aadfb2f0e601ea3c37c66b98f28e03fd": [
+        "budget"
+      ],
+      "sha256:8e89556d0be978a3e249aedf96fd1a7d25eb9a25208434fbaf19705f3a70fb10": [
+        "revenue"
+      ],
+      "sha256:8ebf011ba8a51f48b18b505fe201866564645ac988c44d8d03d562045f22d8ba": [
+        "budget"
+      ],
+      "sha256:8f1531714cec2cf4e469d71a806815740ed439cdf0109b7c5aa49b4c81c13a28": [
+        "budget"
+      ],
+      "sha256:8f4e1f9bbd9d6b6dfd35a707c7190e68e755c84c1a709bc79eedf18ca97d123a": [
+        "biff8_budget"
+      ],
+      "sha256:8f5a83d4bd1c6b46deb302a3e49275b44abb43dd14cc46a0d154dc6828028845": [
+        "historical"
+      ],
+      "sha256:8f682153781e65ef252566844367556f315cb80a4742ca8adf90553c2200b1a7": [
+        "historical"
+      ],
+      "sha256:8fdee9f869da17a255462215115855811a6f6ad010c52279bf374920f6293f2d": [
+        "budget"
+      ],
+      "sha256:9069f855f39b58aac1a48d6efd01a71416f75b1e921b94a0f6b6816a311400f0": [
+        "biff8_budget"
+      ],
+      "sha256:90bfd12ae00d804101779f3d457101ed9feb463c882a0cecdd68ae99306da29e": [
+        "moh"
+      ],
+      "sha256:90e52d7cfaad814ce1873b222581d706bb2b5f60cf50f3bd7809fc45d50b832c": [
+        "biff8_budget"
+      ],
+      "sha256:9117120d43ae48e375d277e8ab11665b8b8c49e20d7f3af1b0dcf29ab7c3a803": [
+        "biff8_budget"
+      ],
+      "sha256:9123d77ec30312f616803f2ccb0ca8fbe1393bdd1e4cba476059bb167cebcefa": [
+        "fiscal_crown"
+      ],
+      "sha256:9170e48e5a6eea58e2686a67d709ec67a95772896a677ade891b8ae2ad737835": [
+        "budget"
+      ],
+      "sha256:91ac7de6cecea663a7a22990c0f6af6000c1e66dd6558de470f82eb8c2012d2b": [
+        "budget"
+      ],
+      "sha256:91cd3d5c78a08bd74f31614afbd804bf20dad0a831693b190639431f952e2be6": [
+        "biff8_budget"
+      ],
+      "sha256:91dce6fe163ac877275004b8182846e24aa34dd2bc164a903b888f5672c43283": [
+        "biff8_budget"
+      ],
+      "sha256:9234f8d280372933d4eebf6b68f58bc07debcce1b5a462f23ca24f3e204e4e1e": [
+        "historical"
+      ],
+      "sha256:925bb41c8313c8f119081f2b390ec8d7f9fdca3591192c023766d937e00575f3": [
+        "budget"
+      ],
+      "sha256:927d77721b6f03f043cbb7671ff8d29de73bf3d0474e62686d06a1bce12864ad": [
+        "biff8_revenue"
+      ],
+      "sha256:92cd6cf9b698a82c73fe211455530185e3422dc98f5e13adb46994e551a564d9": [
+        "budget"
+      ],
+      "sha256:931592c562ac5d0100c38b2f1962a442837ae7a38be54ffbda9dcc0337484b99": [
+        "biff8_budget"
+      ],
+      "sha256:93aa53e0a1deaca28eb3241532abbddca14f3f1e10e08b01037806f8c4e0684a": [
+        "budget"
+      ],
+      "sha256:93ccbef6fe86ffdf9ac1d14bddff34fae324e7e5a70d705f0d997e1bd1d82046": [
+        "biff8_budget"
+      ],
+      "sha256:93ed21484152a7de82bd1645b8437a332f3175fd683dafbde5ac4c171bc96512": [
+        "biff8_budget"
+      ],
+      "sha256:9465bcb70e624f744b5839e8928fa8228dac22db06bb568f2536d5bf61343f8e": [
+        "historical"
+      ],
+      "sha256:949f46ae4c6c9d4e94ed7a3aa8351c3a33ab456786959c85ec51d06377a7637f": [
+        "budget"
+      ],
+      "sha256:94c9b170af9c046f6ebf6aa270b99bcecc3da5e0137d2e77300d0df58d9b24d4": [
+        "moh"
+      ],
+      "sha256:94db3fbe59071eccc83cc51cfe66bbdc4a0b5c87df56b4bd560b9f1e78c3b913": [
+        "fiscal_crown"
+      ],
+      "sha256:94e779c6a5dbfe17554704d2481d79571224454c5cc2d294ae754e0430aad43f": [
+        "budget"
+      ],
+      "sha256:9511ba94db7f7a3a2c513eaf32c5908baf7f34932cdb4e264f43fbbc6996b80b": [
+        "budget"
+      ],
+      "sha256:951787b0e7c636b1bdfa171d66f1aebb3f3ca7e569e08171e04c10126d83437a": [
+        "historical"
+      ],
+      "sha256:95bfc491470424348d84b58fae105c753ba79c6952e444a56e1fa3310dd8ad99": [
+        "budget"
+      ],
+      "sha256:95c35ba693749a6180d07da55973e89fe25d788d6a02213759bee881c420fa6b": [
+        "budget"
+      ],
+      "sha256:960d306c4baf2812221d9296d844340a9cbea89e12b9440440aa1b83da7b07f7": [
+        "revenue"
+      ],
+      "sha256:96108718f692ca297e5389ecc53e6c414d7406bc8a451a2ab5d8fe3f3517c1d8": [
+        "revenue"
+      ],
+      "sha256:96b85ef7e22633d10583b992a16b16aa0030eac360f79d77ab3d4d1dfeeeb3c5": [
+        "biff8_budget"
+      ],
+      "sha256:96c7fa56675af6de59d4bb179f9b4ea98b494c327ecb28015623960bdaba414e": [
+        "historical"
+      ],
+      "sha256:9709b6ae6dc8d0402f8e533f27264fb2a5dca45cfe5387667dae99d974ca1509": [
+        "budget"
+      ],
+      "sha256:970e9257de5b65666fe0a6c4541683738f598f40093c02f6ffa13d2489445785": [
+        "historical"
+      ],
+      "sha256:973c225daf53b87fcb36d7c96ac2aff250f231fc1c50401f8fff8d15f5f7f90e": [
+        "historical"
+      ],
+      "sha256:9748ca2651ce4152d5d3b873f5b88f4f7e9f69859805159ad9c04e30ea9bb69e": [
+        "biff8_budget"
+      ],
+      "sha256:975a769c34dabf27f7c13d313cd7eb1a6fb259d71081a9db63f41bb3531504e7": [
+        "budget"
+      ],
+      "sha256:975d6e59d2a7f393fd252c1ee460458db4f9cbf45bbf823bdb71c390030aafe7": [
+        "budget"
+      ],
+      "sha256:97a9f22afe8bf635dafb5b599637c9c119a9bb5a48e5d40b7d05f8c3c8d32b65": [
+        "historical"
+      ],
+      "sha256:97ce2aa0457e6140aef275b687054610c6f1219a73ec392c171c46d4ad095ea9": [
+        "historical"
+      ],
+      "sha256:97d0837f9472f4ff1c6a891d1c931c4fb63e53bd445bb2dadc5262fb98daa6ca": [
+        "budget"
+      ],
+      "sha256:9809b88323f5d41299a1c7d5fdd87afd389371f4937b93c8c492a4fe5251d052": [
+        "historical"
+      ],
+      "sha256:9821cc8250c36bcb2783f8adbc9f03997e47a526fb82e19447d557141d4d063f": [
+        "revenue"
+      ],
+      "sha256:9842bae9e86f170ab597868b866f3e7b5032705a10d7001d212451627fefa7d0": [
+        "moh"
+      ],
+      "sha256:99101a15242d8e995bf6899df67e1f92bd90d4b276d8d061b82b17ca0082c6cb": [
+        "historical"
+      ],
+      "sha256:99120c514d93246a14249f87cd54edbfabb7b5277c31ec37f46f062218dcff7e": [
+        "biff8_budget"
+      ],
+      "sha256:9939feb85bcb275f11d6b9987b33315f9c800e62e80d42708eea84ddb79979ec": [
+        "budget"
+      ],
+      "sha256:9973adefe222e13cc7cab0e0ec9efb97af1a82c2988718d839259e75f6bac8d3": [
+        "biff8_budget"
+      ],
+      "sha256:9989daa9cd7ce75891a1e2ae8c0d6bfdf82076de95cc1dc24265ea692de82ec5": [
+        "budget"
+      ],
+      "sha256:99b9576772b9cbfd664dc75d08eec7938664f673fe01940fcc7fa58ddfd141e8": [
+        "budget"
+      ],
+      "sha256:99c95c992b3206df39ddfd03ff417cca36d714bb8d26952211de45846c3ee43a": [
+        "budget"
+      ],
+      "sha256:9a2db0736ce9879d40b5e4574981289e5a68f09ff6dc1ce17261d515d5233abe": [
+        "budget"
+      ],
+      "sha256:9a4e928b4c6aa06f697763027e16c51d560e9630bb720ab14d68d5c8d00f915b": [
+        "revenue"
+      ],
+      "sha256:9a90016c3428ecec96891f455eab0dd5762b76f5647b347ee31b4b164b2397d5": [
+        "budget"
+      ],
+      "sha256:9a9060d89b679b5274c28fd4603b949e99b4adabf0b2fd82ead638ff588286d0": [
+        "budget"
+      ],
+      "sha256:9a90f87a71296db8200ded28d637597a9697ecb10c23c02f354af570f1be766a": [
+        "biff8_budget"
+      ],
+      "sha256:9ad859768300546e09015e1f9dee37107b1b908d169ed52cf82f8112bd1f849e": [
+        "budget"
+      ],
+      "sha256:9b59b5da371bb6a6919e96ab4be5d4a24d5fed2fc7759d6314ae99b7f704529c": [
+        "biff8_budget"
+      ],
+      "sha256:9b7e29bc34dcfbd30b0de8abfd941835725886e7d5f929d1cf86cc4a59969d38": [
+        "revenue"
+      ],
+      "sha256:9bb97a9721e9043d94f80de24d9d316799704d2fdd76be0685c6b5ed61151d8f": [
+        "biff8_budget"
+      ],
+      "sha256:9c3de82d924e72c7f3fabcaee7bce0d2b46c407266782a98d9c39e7015418018": [
+        "biff8_budget"
+      ],
+      "sha256:9c41d9cbe5a4f0d702cbca73dc9b9d1cacbbb56549171d49f35d808ac4615926": [
+        "biff8_budget"
+      ],
+      "sha256:9c788436bc48bf91319b956e4c2af882f6b1c4b0520adbc2d8a090cde543dd8f": [
+        "historical"
+      ],
+      "sha256:9c8a3d896ef8ce635aa8979093dc0679832f81597e09b86f517db54b19a18cae": [
+        "budget"
+      ],
+      "sha256:9ca42fcc436bd558144c5c9c8405d0a5640cf395143f8edbc8da135cb5fb677f": [
+        "biff8_budget"
+      ],
+      "sha256:9cad045981ab4104dd247f81f49a1e228bc9be993b0f1c8b39162110012a4644": [
+        "budget"
+      ],
+      "sha256:9d06a58a8c902a4078a67e33cca6660f8a55edf3f7b56b97a8a26a4828c54fef": [
+        "biff8_revenue"
+      ],
+      "sha256:9d28ac647e1f395424d6317f4b8cfd92b6ac9c9343a527d0f7516350927dd5f7": [
+        "budget"
+      ],
+      "sha256:9da728d06bbe903f402ced05d52f4f45005849652fed622433008f32586a5211": [
+        "budget"
+      ],
+      "sha256:9db67f2b8840953538ef31b76bf11729f9bf7f94bfbf4e874a12ac4d96661e7a": [
+        "biff8_budget"
+      ],
+      "sha256:9defe7e5f8e31f8e9a43cbcfc70cf02e48028f05be0c2204a0cefb3d2fb5c640": [
+        "historical"
+      ],
+      "sha256:9e396f0c51d7ab316625c39e396e83350c84d030f901028ba11db72f92ea3e5b": [
+        "biff8_budget"
+      ],
+      "sha256:9e4971695cc9aa0b0e65a8d1532ba8a1eb1a91e2f76fa14b9092c4c81eeaa4d3": [
+        "historical"
+      ],
+      "sha256:9e4ec4f6bf5defbc4221f718736eb78e50b44c9e86338c94a148e6ce282faf56": [
+        "budget"
+      ],
+      "sha256:9e7cbbf8f4b17c6c1b7124e84d1a91e1ecb8d4c1adeeca72e204d779d26a0bb9": [
+        "moh"
+      ],
+      "sha256:9e9da55b8443482c0e2e5265b471217fc2d5828a676ec0bdb8a329ba9bf2f3b9": [
+        "historical"
+      ],
+      "sha256:9ec5488ce212ebe364f508ec574676f59966bb9b70cd4d18d1e6f1c4bf5781b4": [
+        "budget"
+      ],
+      "sha256:9edade161d8395576583baa9fc17cb66ed26a2cdc78aa002b7372d7faee6cf64": [
+        "fiscal_crown"
+      ],
+      "sha256:9f465f10a9b9792e25f7d1ac76b3a3f81867d32f233bc3b8b96304c45ab9dc0f": [
+        "biff8_budget"
+      ],
+      "sha256:9f4acf84c7978dae62ec941fec40b37b649487e1324915b3fbc1bc37fa11912b": [
+        "biff8_budget"
+      ],
+      "sha256:9f4d7ba55b85d4cff5f05e64173bd6e1618d996f34fff9b420247733f32199d9": [
+        "historical"
+      ],
+      "sha256:9f706b83c55f07f10edbe4f396f4b8d64e347d7e2d71f5e9b681045c7fb5e315": [
+        "revenue"
+      ],
+      "sha256:9f905c9fbf04497a8a05eaba290bc8507cb9988bfaf1d8b72be3deb9babf32ce": [
+        "biff8_budget"
+      ],
+      "sha256:9f9a82a0bc0418ece1f0c4064904fa01c3ee933b51f15ec07af8fc93f522b5d0": [
+        "biff8_budget"
+      ],
+      "sha256:9fa77b2acf49caa2b9de4c08ab57f8b5013bc8cd3a19747490b7cc915ea7c04d": [
+        "biff8_revenue"
+      ],
+      "sha256:9fe495a153a485920d3a43353c152e39d278794ffa8ba21bad701247387841e4": [
+        "budget"
+      ],
+      "sha256:a014fd555e9caf168bdaf824c53d6adb136482afc65665e3da587619c6a7b84f": [
+        "pharmac"
+      ],
+      "sha256:a06398b5b7420137a2c4a045c044d93d31fa3474a755b841658d5474204e90dc": [
+        "biff8_budget"
+      ],
+      "sha256:a06e4c255bf9d1c4379ac42c3f8f481a5e4165431cb71475312de46b9469f202": [
+        "biff8_budget"
+      ],
+      "sha256:a07911247de578b4fcf6ec806033062f90a332c18beec62237adb4c5c9279716": [
+        "historical"
+      ],
+      "sha256:a093116afa913fd24cdaf735e9ccca57a06fc35ee9c54a4ab89939771efe0be2": [
+        "budget"
+      ],
+      "sha256:a0948a7233393582648e94c43c848fff5d7565a5400a14b1448cd48a3074cf21": [
+        "historical"
+      ],
+      "sha256:a09d525e5d0e6d5f17c76dcd9ab7f4659bc68f642857f3ef1b8471f9ac0b408e": [
+        "revenue"
+      ],
+      "sha256:a0d7c3e1b89249dba70483099a02387bc25832546f0d006bb10129c187ec3738": [
+        "budget"
+      ],
+      "sha256:a133d51a61124c649a078d7f3c51b71429b06240f6a1f248dd861105d0736488": [
+        "biff8_budget"
+      ],
+      "sha256:a1fca6c8b4eee8d6cfc3eb6fcafccd67703d933c3eff469a710f071c9cc7cb39": [
+        "biff8_budget"
+      ],
+      "sha256:a23021c1065c386aed61560030670c21fc7e0ef4b06ae7d5c8cf6caa2e969f54": [
+        "biff8_budget"
+      ],
+      "sha256:a243481c08888c1941933307bc4310b7cbad313fabfe6fc0044414c1b196f56e": [
+        "biff8_budget"
+      ],
+      "sha256:a2bf38d486f37f35c2227a0dbe3aa65f8f2f7dd6edca6303a939acc562955a6c": [
+        "historical"
+      ],
+      "sha256:a2caa3960fd35d8a537f739b335c59a61cc39fc6f0f609027d68d45685fb9ea2": [
+        "budget"
+      ],
+      "sha256:a31a788de3e38ce10fcda11d0aee259d647155966ae45843f171b2f514c1eb87": [
+        "budget"
+      ],
+      "sha256:a35034e5eb0627a6ebed8507ceb2576b3ee1e931a4f8f80cdfaae028b98d9172": [
+        "budget"
+      ],
+      "sha256:a39b05e5457c139533e8ab8539f1b23a0bfa59214afb8c6892005f8ea8c6010c": [
+        "pharmac"
+      ],
+      "sha256:a3b5ad5761cf6fae6d95c15e13cec393e2d191fcd716921541e06d478143f0bf": [
+        "fiscal_crown"
+      ],
+      "sha256:a3e1c0215352e29e3e88d093872a8456ab8d329b9697daa88cc162f86a549438": [
+        "biff8_budget"
+      ],
+      "sha256:a447b5f404d4592692d02ab3e86a4f43942643bdbc0fb2797cc0619fdff37fca": [
+        "biff8_budget"
+      ],
+      "sha256:a4de12e3eb7b6c8024a36de56f4727ea900e08880f983031bf66e7f128ffc27b": [
+        "biff8_budget"
+      ],
+      "sha256:a4e21587c25e01e1c684b4cef8e10a29e649e80e63917eb94080ba97da36c04e": [
+        "budget"
+      ],
+      "sha256:a503dcd34351304bccff0d2c713c7291167d5b16c194cea340ac9fbaf9e88151": [
+        "historical"
+      ],
+      "sha256:a515cd2ce15c70f295ca5dec1d17dd1871ddfb968ca941f1f4726c6c32996d7f": [
+        "biff8_budget"
+      ],
+      "sha256:a567cf4e005cc2baba4fe7d0eee5dce38cf860ed439750a84d7ea792473195df": [
+        "pharmac"
+      ],
+      "sha256:a5b5bcbbe7f115a10780cbe5152a28b844f3db778703d60d1ac0318a5aa0f882": [
+        "historical"
+      ],
+      "sha256:a5bea3ae581ce49d1100b590904e2129b8f781f37a37e0932f659087bc2bb51e": [
+        "historical"
+      ],
+      "sha256:a5fd94bdd6ff29b672b7b62a43c9effb9b9a54fb101ca0e768366f8426caa759": [
+        "biff8_budget"
+      ],
+      "sha256:a63debcd79ddd3a4b5f40dce597bc7420e6208da4f4aff529e27886d4f9d76f5": [
+        "historical"
+      ],
+      "sha256:a6bf1030c65e6b326f17f32777d040450246c78b55125180b6c377c2b2fe8c1c": [
+        "biff8_budget"
+      ],
+      "sha256:a6f25a4e24891bf2c87bb5f341960ab9eb3b17e4aabec27b64036fb6ce9155e7": [
+        "budget"
+      ],
+      "sha256:a701acb08f2f18563b372e6b60539dd68b2b9ecf63dcedd77a47326a6956208c": [
+        "biff8_revenue"
+      ],
+      "sha256:a75e0d04a5ee71d45df9f1e87f99e451f638d954be60dee160a48237d3fd73f8": [
+        "biff8_revenue"
+      ],
+      "sha256:a796c9c2173f15d087a7e30105f0aafcbc85d04d6082d772c84149701131b0aa": [
+        "biff8_budget"
+      ],
+      "sha256:a8247f5e20d98d61856726bc90ff3a9271fe0c1aaca7db5c6467c9fedaf0aa1b": [
+        "biff8_revenue"
+      ],
+      "sha256:a85d5e05dc81b5de6b74bc2c59ebd87bab3e92ed4c038f557d5613331d0dfdbb": [
+        "biff8_budget"
+      ],
+      "sha256:a8711f53b92cced29edc2511440a32dea751d6ffad0414403a9da45428f66587": [
+        "historical"
+      ],
+      "sha256:a8894aacdaf51472cb90758a7b57ebd109c92dd622dc55e8aa7bab254d8b1afe": [
+        "revenue"
+      ],
+      "sha256:a8ba76d4006970dbd8b7b47d579643a64a615461c1b052d457ac3215e73e99ea": [
+        "biff8_budget"
+      ],
+      "sha256:a8c6d55c6ab548d6d7e5d64a219e3ee8c1dc2e96acb78363c5a5eb11e7893b63": [
+        "biff8_budget"
+      ],
+      "sha256:a912048c1297e7930ef600325e87b6beb12e55dc8de9cb747306fb93c637817d": [
+        "budget"
+      ],
+      "sha256:a9132e083db9b125ae5361ba8d7dfd59404cf8ebd712ae6598b6bf7e099cde17": [
+        "budget"
+      ],
+      "sha256:a91f002dc5288cb2e6ffab3f124f820b3c1a7440dedaaeb5ff636df8636726d4": [
+        "budget"
+      ],
+      "sha256:a9337c4ccc6b643df769ab712e46a00ca68734894be02cb491d9cda4b39d957b": [
+        "biff8_budget"
+      ],
+      "sha256:a9af46c41c878b4f78abe48c7b6ff402f5acd5150541fb3ee7654784536e1669": [
+        "moh"
+      ],
+      "sha256:a9cfe13986ac2a84a7414f9d2107a1726d10ee8c5cd2b5e404faf846d74a5326": [
+        "historical"
+      ],
+      "sha256:a9d864672660bc58ba6d1d1dd07af2a6db5e4fd000f5181bcf41661499d0b66b": [
+        "biff8_budget"
+      ],
+      "sha256:aa360d1e2634a287a55f1f538cfd2424968cf32a85174ce9dce622728c0c5a75": [
+        "biff8_revenue"
+      ],
+      "sha256:aa772cc664b13a3ec6593e0128fc2b7673170c0c8f73c08d20f37f9a598c801d": [
+        "moh"
+      ],
+      "sha256:ab30441ae8ed1b214af563a8790bdf93b8bffdeebedcb2dd6e365fe3d18dd735": [
+        "budget"
+      ],
+      "sha256:ab49720ad16098d1eaafb13f57b47d98228595216333cb2c622c83333e827090": [
+        "fiscal_crown"
+      ],
+      "sha256:abff1059d51bd3d36175878c15568f373c15d3627a033726916fc683bb696d05": [
+        "biff8_budget"
+      ],
+      "sha256:ac3c3621b04a947a19702f9327ceb336616b9c352584f98dce69cf449b3f5da9": [
+        "budget"
+      ],
+      "sha256:acc453ea308fbc36f6e6c0e743dd216df319c13d818ca3ab6b378f13683e1ff1": [
+        "fiscal_crown"
+      ],
+      "sha256:acff015bf321f24dfee657b458efa3392c7d052508fe92c8ce623cd41b19d3fc": [
+        "biff8_budget"
+      ],
+      "sha256:ad4ec3107f382f7de0814871272788c74764bcf66d4ba7f53d48d704a47de8b9": [
+        "biff8_budget"
+      ],
+      "sha256:ad7d76eb8437937ddfe8077a85ca445a45c9728fa3863de63973a3c68d7cc590": [
+        "historical"
+      ],
+      "sha256:ad9de7618275056ebb37ec9dbc31d0a9058d04a9c36ea6e7e5ef776bee74ba71": [
+        "budget"
+      ],
+      "sha256:ad9fb884935cfc0f1e6dafabf101f511c0271c03980ff31312e78fc2405ecddf": [
+        "budget"
+      ],
+      "sha256:adb25aafdc3d54bae4e43d520faeab22d19cc995fedfcb235572a54983124862": [
+        "biff8_budget"
+      ],
+      "sha256:adccc2e571d14b04d1c0bfb3c1c025c27d95ddfc1eb5f5db863c65523ad23fe5": [
+        "biff8_budget"
+      ],
+      "sha256:adf74ef889f7016aa6d62475a275240fe5323b02210897952f0199dbea24f1f9": [
+        "revenue"
+      ],
+      "sha256:ae15bb55e5c307e32e4f8aca8f1ad91aaa76a2efd05e13fbb2f71daf84dab958": [
+        "biff8_revenue"
+      ],
+      "sha256:ae28c882cceb7eb15538576ad4fc929c3ba42a01aa37cebc16420aee60a55c41": [
+        "historical"
+      ],
+      "sha256:ae856a6c54f7c8526dd9a71822d935c3fa17e2a7ff9abb3bb3a7cedc188df498": [
+        "biff8_budget"
+      ],
+      "sha256:aece3a4497021ee0a22ba1ea3c7a9d51d7400eb42956ee493cbb2a835adffd0e": [
+        "budget"
+      ],
+      "sha256:aee5bb2104917c4c5d2d56243cc09a75011f5386a031ade821ea47adc8d0be17": [
+        "biff8_budget"
+      ],
+      "sha256:aeea1ed4be7c592b98b678332a592504049f43a3bda9a01e645db8e8cc65c8f2": [
+        "budget"
+      ],
+      "sha256:aefe2d5576977e15d31f510f57f90d29fd0b9b325a3efb6411790c476133a1f4": [
+        "moh"
+      ],
+      "sha256:af00ef396d6ca0f4de25bf5b12007372a7669420f4230576ab9c386acec1c248": [
+        "historical"
+      ],
+      "sha256:af26f77a261f27c452560fbc24816ca7cf94ab10a1d936d6f4fa3e7c23ffe2d6": [
+        "biff8_budget"
+      ],
+      "sha256:af30298e234479bf0914e0459fa8532a1331aa6686d5cfc66ae46b4f8bfaef5b": [
+        "historical"
+      ],
+      "sha256:af370a7bdf485a77d12f2a779568442c9d90d75f1fbb111b0b89ddc904392253": [
+        "biff8_budget"
+      ],
+      "sha256:af3c28e4d914d32048c2d31bdb0e3f247a307d424b1f93ec2fc6a25d8a741ddf": [
+        "budget"
+      ],
+      "sha256:afab5c2e664adf6783db16bf96e0a0817010f89808ea6b7ea0a9efa878d4d964": [
+        "historical"
+      ],
+      "sha256:b01a5ece52b52f1103a98350e3748cd9e3a089d229cb142defe81e2c64d31ed4": [
+        "fiscal_crown"
+      ],
+      "sha256:b04f18b7af36244b1ed3be8ff47f8658777c9b842a7d11215a90a4e411f79039": [
+        "fiscal_crown"
+      ],
+      "sha256:b12c5c7972f12e9521bd89aea1b930c73036f97a761f4438553a097ceaebd7db": [
+        "historical"
+      ],
+      "sha256:b1308cb7c9025df9580473a4cbac982532ff714cc9bc722b85b393044703ec14": [
+        "budget"
+      ],
+      "sha256:b166430cc30a395133d94bb0dd5f389204c2da89a72c400c350c9718359c5c86": [
+        "biff8_budget"
+      ],
+      "sha256:b191dea423fc546c642245bbe1fb68ab7768df03b28bca3568abfefad5ac537d": [
+        "biff8_budget"
+      ],
+      "sha256:b1b28a8ae85397591b124f55600321b8523785ceba114a5bfda16236bc641b85": [
+        "biff8_budget"
+      ],
+      "sha256:b2b0133eee7ed12798a83cb52b59e2427f2560fd3129dea7cffe55c2d3fed002": [
+        "budget"
+      ],
+      "sha256:b2c315e5fc3a7c50e2a22458a94663e55598cf6e1cba7f01cd1d8dc88bb7c234": [
+        "budget"
+      ],
+      "sha256:b3304b6289dfbbf2d8b7e3e9f183e629aa1e991f1328a93452f300c3566df105": [
+        "biff8_budget"
+      ],
+      "sha256:b3836f0ac406ad832b7b0721da14520219a17602be1cac3406c9fd4f16cc1432": [
+        "biff8_budget"
+      ],
+      "sha256:b3b837a33441d335591ab1fe96e64e275a30004c0fc5a51cbc497772287d04d4": [
+        "budget"
+      ],
+      "sha256:b447a23c088f575442ad86f39dae8e6d6e817af64f53ad2f6f760f58031f6d47": [
+        "historical"
+      ],
+      "sha256:b48191cab540b3af991bcbbf7aa7de6763bf336c41fc8b4d87e3f2aa26b6eb51": [
+        "budget"
+      ],
+      "sha256:b4933c19c49359d82753322386e48803747f14591b6b4c4ed534077c13d6795e": [
+        "budget"
+      ],
+      "sha256:b4bb2e839a444f10a3992b718e9a984543962cb0a0879b500ba56140b7d5826d": [
+        "historical"
+      ],
+      "sha256:b4d470562c4ca78dfb024dc09719acd4227720c7fcfa6f5788ef2692e792ff16": [
+        "budget"
+      ],
+      "sha256:b4e9fcaf8e66f7730f420ff091ec0ad7e8ab6d9cbc03f3bb41100f735c25606b": [
+        "budget"
+      ],
+      "sha256:b4ff1093db998911b6feea396db7ec91ea99871108c996975d496794974efac7": [
+        "historical"
+      ],
+      "sha256:b51ab5bb0c74446bbe8a5d450aab9d03817f2b8a26a524f4e1db46471295e9bf": [
+        "biff8_budget"
+      ],
+      "sha256:b560a6de941d0f4ff2893809d71a20ae60a73958d3203e2c409f2a6fe5452ed8": [
+        "budget"
+      ],
+      "sha256:b583464a2fab2385e7569b5dd8246629a1a67e87b607be63664806bd68fe722c": [
+        "biff8_budget"
+      ],
+      "sha256:b5eb32d831258b9e093fd92d4c9470d751a04362257d051267c40bba0a6c01c4": [
+        "revenue"
+      ],
+      "sha256:b5f1b3355126cb16cfeef5fdf9d87d181eb42b0f9b334ab5f7370153264d721e": [
+        "revenue"
+      ],
+      "sha256:b67f5be21b51024040144fe46767ad19aaf853b8db0b62fb7048777874ca264d": [
+        "historical"
+      ],
+      "sha256:b6cf3f0d5a36784d5ed5beeaf7eafc4be3189745d282267b0713e3c47f2a0d80": [
+        "revenue"
+      ],
+      "sha256:b7064db5a8fbfc139e08f6fc61e5415fbfa322926f9db9413c0126138c9bf589": [
+        "moh"
+      ],
+      "sha256:b72897ccba1cb2605a4aa439b26355326cb77c84811e7a8bad3348f591f68639": [
+        "biff8_revenue"
+      ],
+      "sha256:b745645c55912fcab63b94ec1f70c609e5c1c8373a8ad7bcc4c128167a278c8d": [
+        "biff8_budget"
+      ],
+      "sha256:b7d848115a35da8c020da2ff59a1412df7534fdf308f8f69450bf56fbe27796f": [
+        "biff8_budget"
+      ],
+      "sha256:b80c5c4dea0181b2a078e9e44bfc9d671fce5bc64f5d300c0a9ffe62cb26e2a6": [
+        "budget"
+      ],
+      "sha256:b85561e577b09bdc618a94ce9db4190629796b48c939ef86c88080487c13c78e": [
+        "budget"
+      ],
+      "sha256:b86d630a02ad1b2b7bc3fdc9839c24961118b214ffd05e46421d61cb88384e51": [
+        "budget"
+      ],
+      "sha256:b8731514604b38b35071b6e880beb0d262a10f4e56eea6a85378697d0ff1f607": [
+        "budget"
+      ],
+      "sha256:b8ee006fcdd4934772e0cb2beca72033ad7bd0c415faf1d103e6208b8e588c00": [
+        "historical"
+      ],
+      "sha256:b92284e726522c6f7bc79164f6738bce0bb64a7ce1ebd040c7c38589bac5d50d": [
+        "biff8_budget"
+      ],
+      "sha256:b934bae6611703e1f6f10c72699f84fc2c8c158c22c8585edff5003c99c1c5f8": [
+        "biff8_budget"
+      ],
+      "sha256:b95ff4be31b9728b4c544bf74a567c63989dd89d3e6827752d985c14876eb916": [
+        "fiscal_crown"
+      ],
+      "sha256:ba415caa71e72f61ae060b7914f5358d336537621b64a044f30ca6cb72ee2f9f": [
+        "budget"
+      ],
+      "sha256:ba72f4d8295876f555a2890a5f38bedddcb47a81313f298f58a8f198555e3567": [
+        "historical"
+      ],
+      "sha256:bac2c32376f4c8eb6cadaa38918c615fbc9fe24f2e52b1ff0bb05838c03e40a5": [
+        "biff8_revenue"
+      ],
+      "sha256:bb240c877dda5a41b29ef4fda273540754cea50bc0e1f220bf9ea14282a770ea": [
+        "moh"
+      ],
+      "sha256:bb6ef662c54f5dcc2726cfe4c3c711b3f1bcf5e2b8f9a2d6ce985f06126a68f8": [
+        "crown_hyefu"
+      ],
+      "sha256:bbb2f91980ac5c7dd5b1d0fa9673c319d3c11f483831461e926fed993b30e79c": [
+        "budget"
+      ],
+      "sha256:bbfa70d0894a7e1ff768e23cf67c20a69eeb2dcc146f5f66c54c11fb14f0de1d": [
+        "budget"
+      ],
+      "sha256:bbfd679c5e2b3656fe32ac6ff1d5891f205ccc16f1d2a48ba01c6caec510bf54": [
+        "budget"
+      ],
+      "sha256:bc055316870e2a02f2e420042238f1ca7bd087834cec45f7ab678e3d7e4f6a0d": [
+        "budget"
+      ],
+      "sha256:bc19331b4a282fb3f03ebb803693c961db281a8a9b61faa7811e17dd8a4c4387": [
+        "budget"
+      ],
+      "sha256:bc50cc22bccb7d8e398f2dcd6248bd78c31fa0303fa138994c08b986a7d6dcaf": [
+        "budget"
+      ],
+      "sha256:bd54f587fd04caad2180b803b2647313bd0fafdf3fd884fd1d2d6a187a81fd2a": [
+        "budget"
+      ],
+      "sha256:bda00a7ea96f5996cf4fb7923e360d0f21da5896124d4eaffe8317329a821541": [
+        "historical"
+      ],
+      "sha256:bdd22cc1a0e7927af7e4e4037272785c3b54ddd16ad97abfe8740a32b786f6c0": [
+        "historical"
+      ],
+      "sha256:bdf5cbd81ca4a8d304f5911b07aaf2e788a328830d7ee496f2c47130638010fc": [
+        "fiscal_crown"
+      ],
+      "sha256:be2200de1dd9b953bf7cba8ff57884851d691b7d3cc4b6191fedb680324d9204": [
+        "biff8_budget"
+      ],
+      "sha256:be43d06cb42c3b7d26ea7b9d237f753bf5a4863e44575e3e98da4cf303738fe4": [
+        "budget"
+      ],
+      "sha256:be49997c39f57257dbfc656e24e54038c4798f2ef45fbffe68c7d8a534afb32e": [
+        "budget"
+      ],
+      "sha256:be6d543d973d40acbdfb4ce8a4ea27f76ded500ca4a8c08d35fba11bcd8d9efd": [
+        "budget"
+      ],
+      "sha256:bebb7930667ba348e2e834618573041dc48440d99234216a78f8ef4e877b3b7a": [
+        "biff8_budget"
+      ],
+      "sha256:bec2956f4e0b55ff5bfddd890665e0234d772ff6b034aa988fe268fe6c5aa670": [
+        "biff8_budget"
+      ],
+      "sha256:beef1311b7e49cb4d6213e8efb0b27fd58d293c44c3ced06682e4041b1b63327": [
+        "moh"
+      ],
+      "sha256:bef0a8390a9ed0a00687a3cb9eddbb1ec24fc49ce80b7622d5aee0f6ee71de0d": [
+        "historical"
+      ],
+      "sha256:befe759da40609fde76acca60270e2d67d1d0f43bba91b1bb26cd425fb4fba4d": [
+        "budget"
+      ],
+      "sha256:bf00e87327d13eb9756171a5d58f3bfac98f77b1ba7bd28037e25391896d1db2": [
+        "biff8_budget"
+      ],
+      "sha256:bfab53ab120faf1149bd0c1ab451e51c749cf4e0ec9d3fc1c883b81e9bcdec6c": [
+        "budget"
+      ],
+      "sha256:bfac3722fa43a2e6e1e6b81169408943974603594b9823209f18a5088e5073d9": [
+        "biff8_budget"
+      ],
+      "sha256:bfc4f27165ecf3c89f772f2b49675b3660267f727a77f9d6e3409ae9bae485c4": [
+        "historical"
+      ],
+      "sha256:bfd0a0b6315ceeb9e4d863dc34e096984b862fcac0e379e763e9c6790d477cf6": [
+        "biff8_budget"
+      ],
+      "sha256:bfebe356f26334769abd0f3caaedb75fc83a23e1f1a59d28fd1a3e72ae9277fc": [
+        "biff8_budget"
+      ],
+      "sha256:c03d0e54c2c9b4b3d7a192ac0d57648b9d9c23b16e62bec68ef3a2ff832a2013": [
+        "fiscal_crown"
+      ],
+      "sha256:c07b45e93903a3f5f0d52fc3ec8646765993cde30f659b999f115a28a805cc6c": [
+        "biff8_budget"
+      ],
+      "sha256:c0fa47260bf6a24382457368189462a1096fe5dd056942d8e54bb277f571f549": [
+        "biff8_budget"
+      ],
+      "sha256:c13b4e4136e7f61979186f09aeb6c39e141a3e8c5267cfb09bf4703ec77ae01b": [
+        "budget"
+      ],
+      "sha256:c15158bdb2aec63572023cbf8649c51b6a3b1e7aa90f84871856cbe20f48aa5b": [
+        "budget"
+      ],
+      "sha256:c1a7090a9204816c3db744df7b699f0b5598efea7cb716dd35fa5f4bcef732fb": [
+        "biff8_budget"
+      ],
+      "sha256:c1da6c34d04a4754c8ffb384e969e96818ec0ab03cc4a4b84badd65ce40edfbb": [
+        "revenue"
+      ],
+      "sha256:c23c0bce9852dbd8bc7a2baa6bd2a856e0e87907eb6cfc56498d6932bbc931d0": [
+        "budget"
+      ],
+      "sha256:c30de55635b91bc366282789b7b02bf02980a2c4a3f948c3cf60955099221eb2": [
+        "biff8_revenue"
+      ],
+      "sha256:c31f546e3724b2f46d7544acfcf7439d15f35bf3ad126bc7ad50405024bb0b40": [
+        "fiscal_crown"
+      ],
+      "sha256:c32510d76b87763a407ec7cd7b1a119332ccfd9eb32677dc8ae97cf06eedf8dd": [
+        "budget"
+      ],
+      "sha256:c333cbef625ada54e6e95aa0602d74992d04a6df4f6e7debd4f0c3e3b865562c": [
+        "revenue"
+      ],
+      "sha256:c339d28f8c4893c60873b6ef9b3ec66c583d592a8012d6e8b765ca301a120cce": [
+        "biff8_budget"
+      ],
+      "sha256:c33e0120eddbc397c19a0a4c7fb49444ffa2482cfcba787271e24b42e970fef2": [
+        "biff8_revenue"
+      ],
+      "sha256:c382ea702d0f071fe0e07bc3a6cd9b24fc2ceff65d6b8d76f03e4ed654e5d8cb": [
+        "budget"
+      ],
+      "sha256:c397928941aa5cc06fef84b62429ba46d4feacded70be20a36b2103e0da7479e": [
+        "fiscal_crown"
+      ],
+      "sha256:c3c9e92c9f90555d0769aa8d0a34fdf48be2656dc51b7c7fd55fa9a91abc2693": [
+        "budget"
+      ],
+      "sha256:c443e3f1f453c78c191f500ee9926b7abd65420b854e4fef1af053b95f42fea2": [
+        "biff8_budget"
+      ],
+      "sha256:c45e96b86af25aa6e1abbdceab72480d618755265a1061ee1ca6c173cbabaf79": [
+        "budget"
+      ],
+      "sha256:c4d4039316058a1a340346b3a7b9816efed6af48f64f0018b52261742bacd2fe": [
+        "budget"
+      ],
+      "sha256:c4f8107a445d48153faab9589e6f1782e181292a8304f777ad145298c83dff2e": [
+        "budget"
+      ],
+      "sha256:c524c2831252a455859e2c5f698c380782ce56e4cd49621fb45214b30483032b": [
+        "budget"
+      ],
+      "sha256:c5623b99f728099cd4bce14ca7238f44f50c47ba146b8f4f36c7b77f32d61039": [
+        "biff8_budget"
+      ],
+      "sha256:c5d3769ecf03cd7819b5d349285111fef0011ae0e649c1fd3af0795d5f457dde": [
+        "budget"
+      ],
+      "sha256:c61b098df04fa48ffce6e867ee91e288110ff0ac22fece4382c6aff34de5c1a0": [
+        "moh"
+      ],
+      "sha256:c62a652bf4919211a5bb1ace5fa07004301d0ecc627fdd81af896f22e22c8694": [
+        "biff8_budget"
+      ],
+      "sha256:c653510769bc340662270536ff8b88d24a98654acd7f2420e4a41dcdf166dbd4": [
+        "budget"
+      ],
+      "sha256:c656cb1e4ad5bdff37cb5a8b517a4646a55b599086e0affd9c00569d5c219a9f": [
+        "budget"
+      ],
+      "sha256:c659a49ffe98bee8e8ea70503051526be39d011a87bb2f2ab3b1365870dcbc27": [
+        "moh"
+      ],
+      "sha256:c6b4d7ec7d8f9b6628bd84914bb7cc34e9f25661d30e2c6b339ca2b6a012a705": [
+        "budget"
+      ],
+      "sha256:c6dab70bc6abbfc949a40713cea9298bb84c2331298faa96a1b6a237774bf1d9": [
+        "historical"
+      ],
+      "sha256:c6e001146b3944f9d437c71f9d1cc377f39bf8aa616bd6ff0791f2cf2d190486": [
+        "biff8_budget"
+      ],
+      "sha256:c6f1a1f55ce46d99b85e4f381941b54f99f5dac19d9482357ae8e4b94cc78f11": [
+        "historical"
+      ],
+      "sha256:c6f48ef9a95f2e05831df467c1e9193e56e444caba0d0ac2475dbb15abbf5ff2": [
+        "biff8_budget"
+      ],
+      "sha256:c6f5acba9deb191aece17ce47b59eba0a6b0b38d97978145ce6c6422a8d8892d": [
+        "revenue"
+      ],
+      "sha256:c715f7834ba1e04f7252b78e52276a7187c9606d2a2603b0ebd33d82365f5f67": [
+        "budget"
+      ],
+      "sha256:c71ba37ada7831d91179acc6639ac56b7c1526bf354d31c14d0dd65cef0986f2": [
+        "historical"
+      ],
+      "sha256:c71d258f6206ae355d9968c72373d7f78e19f8a0571a5e06f69e98e56b203ba0": [
+        "biff8_revenue"
+      ],
+      "sha256:c73e97e4ddfef90c6b436d8153b3efec1979e90f1de3e2d0ff1508f234c89ede": [
+        "budget"
+      ],
+      "sha256:c7779555102d3487698dde3806316fde068aa0abd3121fb07cf41049e44ac4ae": [
+        "budget"
+      ],
+      "sha256:c7f92f95b0ed43ae2b50bf7f86c093e7857236c7ff9e18233ad99df16c947eb3": [
+        "historical"
+      ],
+      "sha256:c7fb4f30d2af332b7215eb2250ff4f98989437dd9b2155fb9e74327fa261ed20": [
+        "biff8_budget"
+      ],
+      "sha256:c876d005548a229c0b43c52c244b1d6f94bf0fc48b1151dff5683188fb032a7e": [
+        "budget"
+      ],
+      "sha256:c88566832253679ce510b27c10260314b2a5a479925dcfa0a2f67aaff5a3f1c4": [
+        "budget"
+      ],
+      "sha256:c8951cb1022fb00e15c0bf4f8f4dce62a034337d370160e320d69862d9a9e3c5": [
+        "historical"
+      ],
+      "sha256:c8959636b5f2713dda45bcfd3546cb07782813279c0ae1d9b38a6f64110343ec": [
+        "historical"
+      ],
+      "sha256:c8ae0d614d6c5445eaf4fbceb76eeef653513c1d4321d84ffa92e6c3189fa7be": [
+        "fiscal_crown"
+      ],
+      "sha256:c8e696ee2f2b714cc4888e19cd6860d473554cebddcbc968022001870822b049": [
+        "biff8_budget"
+      ],
+      "sha256:c8ea06f873bbbcad03a3c5b7821090b91e5bcd3c70522fdf86fcb6cb0a8fb3f0": [
+        "budget"
+      ],
+      "sha256:c926cb2d1d1404a06a0cddffec6c545e91e09be3a7ad5fb26220415bc1c5e1d2": [
+        "historical"
+      ],
+      "sha256:c9d574a9aa2197e20b9a191f7f14c3bbf37e9206fe70dc9c8fa555b57a7c2633": [
+        "historical"
+      ],
+      "sha256:ca2438ed7018caa9fb6d8f045a6261cf61904419b2a0660e73582fefea65b7d3": [
+        "biff8_budget"
+      ],
+      "sha256:ca46eacb8ad997fb6eee2bda5ef7d89433515dc41f5b157f20d1f10488f694de": [
+        "moh"
+      ],
+      "sha256:ca6d04bdf70025e8e595e7de7d06b2d8bfa8295f3e411b8b0084612f89aa8ad0": [
+        "biff8_budget"
+      ],
+      "sha256:ca99f916dcdf02b3689fd59de1f86503f9855b7e770630ec902d3de60da93c73": [
+        "budget"
+      ],
+      "sha256:caa7262ef1ddc251d89e82dd6286dc827e5e4a76d66df1cb4d0d448d221f28c3": [
+        "biff8_budget"
+      ],
+      "sha256:caf896677ea0e8b303c550ea4a5dc558c3529dcd2d59101ad5a3ec4c4dc2fe2e": [
+        "moh"
+      ],
+      "sha256:cb1c74108cd40ab847d4f72c4785e61ed0f729d906e1a48028d6644e805016d4": [
+        "budget"
+      ],
+      "sha256:cbb0a96dc5aca70f0980e743479e9fcc3395f029300579499d905f799465f0c1": [
+        "revenue"
+      ],
+      "sha256:cbd5d87e649e1c9347cd1cd8fb6260f49170ab2b5df4ff65d1a790b18363a073": [
+        "biff8_budget"
+      ],
+      "sha256:cbef28a6a99309af23e8d55d2a69c66dc30b459035035c7aed70f57dbba3ee0b": [
+        "biff8_budget"
+      ],
+      "sha256:cbf288f6fa1893b7bf0471957fe719895dbd66aa10951d81b3ddb359bdb2402b": [
+        "biff8_revenue"
+      ],
+      "sha256:cc2d3e1046b273799b7946120f9997163f89a98c9caf428c0a196ae40491c1ef": [
+        "moh"
+      ],
+      "sha256:cca4d4eea328198d1cea43a2b2ff3f68fb9be38c1949046d9e0d5b94c701df96": [
+        "budget"
+      ],
+      "sha256:cce34dacfc352ab7898c73cb774264ccf7a284a1ee31b2f8406d5332f68182b4": [
+        "fiscal_crown"
+      ],
+      "sha256:cd07bc2e3a9fb9163b9d23ec8535c49ef33966329d009371f9dcbc5c9c832634": [
+        "revenue"
+      ],
+      "sha256:cd93b6e6bc6760d9f8807ad56c4082af5ac22dfe4c6c048f0ac19b44bcd4c310": [
+        "biff8_budget"
+      ],
+      "sha256:cddaa08d14714c07b906c8d56bf5b7bbc61e88fe14fd52e54c7ba79b369390e0": [
+        "biff8_revenue"
+      ],
+      "sha256:ce1baccbd34ad233ec08b65586c307d7d48c7a53e7d0f6c170aebc6ea7498695": [
+        "historical"
+      ],
+      "sha256:ce2977c1211fe665e60faa7c77ccbfb8d1679be9502e56a3953198ee75000852": [
+        "budget"
+      ],
+      "sha256:ceaea05173a486c7a0e7595f98c1d7a7c114fde83796444be9bd581a910ae100": [
+        "biff8_budget"
+      ],
+      "sha256:cece69c6e04c8e9015eec378d3130bc12590581ef41eab98a007504eae178dff": [
+        "budget"
+      ],
+      "sha256:cf2f70d99274440a245637f129261bfc2229f4e7890cb7d54c7c1b61ba827d1a": [
+        "budget"
+      ],
+      "sha256:cf4d4b41bb5ff6ae6e2de859cc4c3424410857d8a68300c94c1abb5cf4910dd7": [
+        "biff8_budget"
+      ],
+      "sha256:cf6ddd59c11f4ddf99f7624aed38916d8f270a72dd78311ed654eb58e8327ac1": [
+        "historical"
+      ],
+      "sha256:cf914b722d5b151b4d61fb6f08a0c71581bf93889a24242602b85234291d61a6": [
+        "biff8_revenue"
+      ],
+      "sha256:cff59d50ec1434319349170727dff1c399f8e963b178ffb2efb3d3d2a77fc322": [
+        "budget"
+      ],
+      "sha256:d0200f1ef409b88ce6c7df4a9243c3bb26e1b530da251e5c712ef63631287f71": [
+        "historical"
+      ],
+      "sha256:d025e8703de445eae38445e82ec221e74c6984c0dff0422d0e250c00788ad83d": [
+        "budget"
+      ],
+      "sha256:d04a2f4418d923d0165a3ce485696c398cda7a84c5470b82de1452d8ef5aa1da": [
+        "pharmac"
+      ],
+      "sha256:d04fed4b3e584f2f8bbbe4741a55f12d9f6be4a63d097ee8848c21bb971006d4": [
+        "historical"
+      ],
+      "sha256:d05c38e402ac2eb80cb1aac50602ce57c2392d40e95e64d8eaede42b19b9ad6b": [
+        "budget"
+      ],
+      "sha256:d08d3f6f2b845d1376a68aac69e209643d88eddd4a8d6502f36c47c8ac7042c5": [
+        "budget"
+      ],
+      "sha256:d0cdd0c06fe4f370572aaf059113cc2a7e1528b231638fc69c219f0fefc1e791": [
+        "fiscal_crown"
+      ],
+      "sha256:d1107dc6b1d48f70463e1169de0f425a60ef8d27f908c047ffb55385fa0302bf": [
+        "revenue"
+      ],
+      "sha256:d17d57cc480e6945ab684c9e6d2429888563e4c24409cba5837056e9fa119845": [
+        "budget"
+      ],
+      "sha256:d1927f3cd86b5f51dcfafdbe3ed29dbf0dd1096238482e46a01719037a67006a": [
+        "budget"
+      ],
+      "sha256:d1cbe0917180b33450b4b45a0b957f95bd3585ce64cfaa454f184c92a3ac4df3": [
+        "budget"
+      ],
+      "sha256:d2314fc60d54590e427534c945808716596455e693030edb33f0d5b5a9446202": [
+        "biff8_budget"
+      ],
+      "sha256:d27ad18d30a3d25fa1022e8ad7f99f38da078069040591397885e3f390a5fc2a": [
+        "historical"
+      ],
+      "sha256:d2847eeb6f580387a0c6fc8c6aeedb27f69c561bb26a171ca167299d58f5e0ca": [
+        "historical"
+      ],
+      "sha256:d3028d3ba399a43981ff94ed9d07d9e945ed7a9557a01271b5668788ae3edc4d": [
+        "budget"
+      ],
+      "sha256:d333a3be7551ac8fbeeb496e557e6efd5aae6e8ecba3b3e4d5c9f52bf673c134": [
+        "historical"
+      ],
+      "sha256:d368d55d70d0f9d145c625c12901ef15010c33224ee285f04a16aebb6030c48e": [
+        "biff8_budget"
+      ],
+      "sha256:d3838ddc9162a2e791e4ee0e0a812d9f750222f0afdb0e0703a99d4bdfb7205c": [
+        "biff8_budget"
+      ],
+      "sha256:d398a802a408615cbf6453739991d64d31e64ab08f995ab25b23ddd413d51056": [
+        "biff8_budget"
+      ],
+      "sha256:d3b486d0d65635ad534bd99036414192fbef612e1efb1503832c85c9ae2f62ab": [
+        "budget"
+      ],
+      "sha256:d3e012de29d918a55f83c057dcf48addf4e39ce8e21bd884caffefcf9ebf5336": [
+        "biff8_budget"
+      ],
+      "sha256:d4083f567535b03304b5d8b3091038b1304fb1bc15273cd71c4c6688223459fc": [
+        "budget"
+      ],
+      "sha256:d4231d439b667b52ce06386d44623bd8f7e748c06e8d63f4310e59d1ba878a2e": [
+        "moh"
+      ],
+      "sha256:d470295e3c22244f4d68de9e2058182f6a4aec9f58e4d64ae8e8f82c84ba5bec": [
+        "biff8_budget"
+      ],
+      "sha256:d4b2eaca46b61a4e08a5db09ff9e8289f8133d76f88c269ac4d8860e6df49a8c": [
+        "budget"
+      ],
+      "sha256:d4dec7be9b32cf19a386528dd5a7bdb473227c287ebe9ccaa50f050f15797e90": [
+        "biff8_budget"
+      ],
+      "sha256:d504a17ee1bd63db544c99f98384eb3c748466c529a9f562f19c30a79f16eea4": [
+        "historical"
+      ],
+      "sha256:d5cf05899480386b8e13633bd06c1bec3dcf4a3fad75071f5c5297826685183d": [
+        "historical"
+      ],
+      "sha256:d5dba1fbb7c138ccd3a96159267375aa25d238bc4c9b6ed056737df349077d7a": [
+        "budget"
+      ],
+      "sha256:d5f1abc7f17c0eb9f0a452e054d9b54b5b1c731833059961699818b99f19ba96": [
+        "budget"
+      ],
+      "sha256:d6bcf016ee48abdf395839ead2f97220bd7f3cf322a6e3bfe78b7f35effb4325": [
+        "biff8_budget"
+      ],
+      "sha256:d6dbe7dd874e69bfa5f9df4ec99ab4ca975c5c5faf26f3955eea9996d13804d6": [
+        "moh"
+      ],
+      "sha256:d6e95647b5a6986eb4f651ad1085c6bd70cbc2dc5ddfe77808dc14ad7af4a702": [
+        "historical"
+      ],
+      "sha256:d6fddc732fb217e00fe122d28d86f0abeddd357746fa9cdd8d0543722c6fbe6a": [
+        "budget"
+      ],
+      "sha256:d73c630dcef31a531bc8fdfeb2c862c6202fe4a1a47f1da5f816dea8ab09513e": [
+        "biff8_budget"
+      ],
+      "sha256:d73d73845aa76b973350a9d281b09fe9a4add7586f9d2b2ddc2db45892450fee": [
+        "budget"
+      ],
+      "sha256:d73f4d09329de2e36f12567302dd1cbc524c3dec914f722822d71b160fb2fd61": [
+        "biff8_budget"
+      ],
+      "sha256:d7494ca3b34dc12225df0bbab1bcc4dcf13e1d8aa751337eca56d5b714ffe5b7": [
+        "biff8_budget"
+      ],
+      "sha256:d79e03d0b5aba55dd9fdda591d67e4c6f86c4ef388bb995caedc5f9ecc46d414": [
+        "revenue"
+      ],
+      "sha256:d7d78afab140463d742fc2c4aec3e480f3c645ee74b50cb55c4cec646f8b5268": [
+        "biff8_budget"
+      ],
+      "sha256:d7ef888eb403bdbcb6f421568328321c5c3b4df356b2a51b801e060aacca3b15": [
+        "historical"
+      ],
+      "sha256:d825bda61fcc28944606ebf74e12533752a5a9860ce463f8ea184b590ec7cc6a": [
+        "budget"
+      ],
+      "sha256:d90221ce73f1f4fd348660e327760446a50cf9d95753d3f33c9d1ca2db3a8f7b": [
+        "revenue"
+      ],
+      "sha256:d9240c3d5f5a596c2aadb5c3f645eb8bf893876b32a4400c331a52e74bebf319": [
+        "moh"
+      ],
+      "sha256:d96b1ed17d736534a9fcbb2aa64ca0ddec00b55444e97767a582022de1780663": [
+        "budget"
+      ],
+      "sha256:d9730fb0764c5f95753f712be064ccffa7be460ba66831242803d0884ffa8946": [
+        "budget"
+      ],
+      "sha256:d99e5a86dc9e0040b71e62ef79a6f6e4a867e01d3d445334a833c9859adc9b0b": [
+        "budget"
+      ],
+      "sha256:d9a7a612a5087d1d265565c2e3450f46eaf6f2425fae4dd30ce5018878e63ebc": [
+        "budget"
+      ],
+      "sha256:d9eac27245eef97e74634aa177ff5b5c8c8bceb2b7f6fb13fd23af34efdc12d8": [
+        "revenue"
+      ],
+      "sha256:d9f7613860a5679ffd19482eab318c2d73f733dcd229599ec36573c613c1ccfc": [
+        "budget"
+      ],
+      "sha256:d9fc25a99cfd517ba0b4d8ad3031172321661db32e807a8d7222af3061f18e37": [
+        "budget"
+      ],
+      "sha256:da36c5ef45b54e921b7a7b5abea6e2b24389b354c0be34ce60fceea5992fb2c1": [
+        "moh"
+      ],
+      "sha256:da6acbed6e09056d7816a59d5b2b591e4ac3d480357e0535a5fddf28811f5778": [
+        "historical"
+      ],
+      "sha256:da74be577ed79bc499d8e580493d9a5c3e7103e3c5787c719f8bec34289bb22a": [
+        "budget"
+      ],
+      "sha256:dada1ccb74be8c98f686cd43819fb278f23be9d0af0efb627766fda13edfdc4d": [
+        "revenue"
+      ],
+      "sha256:daeb1306d66f2a434e3218d399836bbf89e8e15eb7a6555cdb783e52b5a5097a": [
+        "biff8_revenue"
+      ],
+      "sha256:db1c4ba2acdb2a9b82f096e28e8f5eff38174ea803eb2d3b8646284ee3ef861e": [
+        "biff8_budget"
+      ],
+      "sha256:db3bc7dd3cbedd7919be595449776e55eaac8e8c76cef01b417f11783d34b466": [
+        "historical"
+      ],
+      "sha256:dbb2d06a51cc7c53f4d045bbf55057e19b0b1e7cbfe0b0b015bc6f2ca9e1cb32": [
+        "historical"
+      ],
+      "sha256:dbf2cf38e53c1bb21d86472ffb4f9b4a8ae37e20a469fe8113f2d0e5fb719409": [
+        "budget"
+      ],
+      "sha256:dc13e1595f0b71954722b09e7852231bdd0bbece8b88740c8fbf26bbdfc6cab6": [
+        "fiscal_crown"
+      ],
+      "sha256:dc2f70388088882093f59fd7f9fac47403b6ce01f9f6bf1bd9521d63ac7a4ef9": [
+        "historical"
+      ],
+      "sha256:dd1eac5603e95bfe18c8d85b89f23d582fc6806ab494161e45278bfe8a95cbe3": [
+        "historical"
+      ],
+      "sha256:dd5207483a234e1fc9527c68396facfefd5a0c8344351970297c8252abf1ce53": [
+        "budget"
+      ],
+      "sha256:df477dcc894a384525ed55ac06ca1ae3ae3f90df033a96b97342ef7fd02bb633": [
+        "biff8_revenue"
+      ],
+      "sha256:df525b6fea5d0081a7049ca422946108d3524abf957d29ebfee84d414858dbef": [
+        "biff8_budget"
+      ],
+      "sha256:df8b7b5b7b7cdf93579668715188013e01834f4c8ae598af5531c65029fc4289": [
+        "fiscal_crown"
+      ],
+      "sha256:dfc67d654e26b05c76506ba79ba9fa02ca3fca6dd6edf4566b72d5e3b27a48d6": [
+        "budget"
+      ],
+      "sha256:dfeecbed09971a559f85eda2cde35e85ea1aeef27cedf2c7d5235872d78af7e5": [
+        "historical"
+      ],
+      "sha256:e00e89dfa989dc38f8426a12d34387012917f10785bd08da2ab513854577faea": [
+        "biff8_budget"
+      ],
+      "sha256:e02b40c974fcffd94d33b47e1381d55d8d75c7b3996d2928d3e96a7f595af8b1": [
+        "historical"
+      ],
+      "sha256:e08a48e049945638635806759c72d9c06f54ef9975b1fc427b8d0629ae12377d": [
+        "biff8_budget"
+      ],
+      "sha256:e127aabb9e29e512c54923e0dd9d938c0206ddb43dcbded53c4bc8ddc83faa66": [
+        "budget"
+      ],
+      "sha256:e145dfc5c00401bf1a1658633734ef905c73d777708e70aca76949d6ec85ef63": [
+        "biff8_budget"
+      ],
+      "sha256:e158e3cb9700009748ce05baca8ac6a7610c7462bb21f044e4e9b0235e9bdf69": [
+        "budget"
+      ],
+      "sha256:e159055d5c4eaccc772f50a2fd5da50081f501bc39961b9d313bf1882f7e025e": [
+        "pharmac"
+      ],
+      "sha256:e1c96af4eaa38f8add299ddaebe2ade174ea9d96e72bf2a6cdcb57114bf3378d": [
+        "moh"
+      ],
+      "sha256:e2485820a5d578a7732ed115845e05abb02cefd154e022cd936c4ef8b1d7e5bc": [
+        "biff8_revenue"
+      ],
+      "sha256:e2bc3c26691fe00e5e686966032059e2d96dcc8f91ab170b44d2ac5a7b7e8d99": [
+        "budget"
+      ],
+      "sha256:e34b78bb41307b4d7df397fd129ec872b4cefd9d4a25aeb08bf5374d9e02b51b": [
+        "historical"
+      ],
+      "sha256:e382ad96cc3e8905a6ed9b0bd3bbf4793034ba1ba77a4d918687a3175167135f": [
+        "fiscal_crown"
+      ],
+      "sha256:e38cdaaa241da3fc473f64e7943f28522bffb1df4605517407ef068235439d30": [
+        "budget"
+      ],
+      "sha256:e38f9ec9a5d0d2d23dae8de6ec04e350826191cec9de554453897511a7e36666": [
+        "budget"
+      ],
+      "sha256:e39815267ba1a6a3a9bf03af6f55469e2d70a3e66ce693634bfb9916763e4ac4": [
+        "pharmac"
+      ],
+      "sha256:e3ba15f662bf184e989d8e5174417c62d527d6a15fdddd7a3c5b8a47807dab09": [
+        "moh"
+      ],
+      "sha256:e3cff3ef6dda53de11cfeae9c84c882280769ae8e12bba39449168bf7cde3485": [
+        "biff8_budget"
+      ],
+      "sha256:e41f378914cde43581f55af8e18a0cdf1fd13122718c9e1bb9cc7a43f2719947": [
+        "budget"
+      ],
+      "sha256:e42650fad2f4c31f0dc8dac18a7e26f26a7a5a089a9fc9d0fe21b08fad249953": [
+        "budget"
+      ],
+      "sha256:e46e68b582b859105558ed50d1125d522ecd73bef9c7399932279a5bba02cf82": [
+        "biff8_budget"
+      ],
+      "sha256:e49d3b3a35a6e16565a679044f7b9014d099ea6992fcd830c4763e47254605a2": [
+        "budget"
+      ],
+      "sha256:e4c71d200bab67d051539f19fd976d99e1df6d4d5f41e993fce7764b35c7a5dd": [
+        "biff8_budget"
+      ],
+      "sha256:e4f1a3d6b3b8694cdee53571d77393e750b158dd44f822cd98800c53e346ee46": [
+        "historical"
+      ],
+      "sha256:e4f2317100e0659c408e8b07a65862b22193cd65b96598fc3cb992447537111d": [
+        "budget"
+      ],
+      "sha256:e53a77ae661f1f20aa89d1f92d8270443bdb287db6bc6f09c1da89712e462eb7": [
+        "biff8_budget"
+      ],
+      "sha256:e59e6948cb678075aa2790cbd321b09a2a312ce7b223e918e8d42b9fd1292895": [
+        "budget"
+      ],
+      "sha256:e5a4b33eff5a4d47becc68e7f177098d9092c2a4b22e9f1c14fbd1bb64727496": [
+        "biff8_budget"
+      ],
+      "sha256:e5f7b1273f0949f73b47a6d28e647ea4b316d1600452774d8fdec86e0c41a9aa": [
+        "biff8_budget"
+      ],
+      "sha256:e63d35877ba0730cf8835a1c865d26db5a0a82de963ef726857ecffe9f8e1e5a": [
+        "budget"
+      ],
+      "sha256:e6662f60e4ff9c720f1775ece90cd4965d8f686d1b8b1f6e3ad052107b0b7cf2": [
+        "revenue"
+      ],
+      "sha256:e6f3dac44587bb49ce398bb97df474bc289465c57c536f922ec4fe67e899110b": [
+        "biff8_revenue"
+      ],
+      "sha256:e710b4acf4133f0b78ae065529b2c160176a476f24ca3d06b3d01a1f815b547d": [
+        "fiscal_crown"
+      ],
+      "sha256:e7308bcc43482e36c3d491c9da79595e4a4d228c5b45e5c2d147ee93e27a5bc7": [
+        "crown_befu"
+      ],
+      "sha256:e75e47000fde302d4b329e813b1657219069ac7f2a8b572327e0d5c405d13924": [
+        "biff8_budget"
+      ],
+      "sha256:e7a0b31dedd2fccc6d6ee83f323942975beb9dde305c4fb0b95ed49793c7ed8e": [
+        "biff8_budget"
+      ],
+      "sha256:e7fc3bfe68f99f6bcce7ecd7dd8689584e23ec91f2b04e4c057fdc157731d9b3": [
+        "biff8_budget"
+      ],
+      "sha256:e862856018cb5175d95c687f17bfd3f7c8e14bfb29d9a28f9d25d59fcee420c4": [
+        "budget"
+      ],
+      "sha256:e8bfb6baa6ddaa2f454aa986cf52e1a207430cc9507c1227ed99f29dadbd8dd2": [
+        "budget"
+      ],
+      "sha256:e8d526886810ce78544ee13d4885786018eceab220ec9604f4f9ec70bb8d0812": [
+        "biff8_budget"
+      ],
+      "sha256:e9263ee0ccdeb1ff82ce5a96483398151378bb444dbba4e77392215428b6c371": [
+        "moh"
+      ],
+      "sha256:e9a596bf5f1594c8c718251ecff6d204103f5401679e7fd5e9675ddbcbe8c1c8": [
+        "budget"
+      ],
+      "sha256:e9d729d158eebc96a1c2ce15865ab777bce19e9712b2dee1b8ed4f2dcf75c62e": [
+        "biff8_budget"
+      ],
+      "sha256:ea0f9fa5d958dcf373b1b9b5ac92fcacfe8ae1ce4f8e87fc108dfb72cc43d090": [
+        "budget"
+      ],
+      "sha256:ea270c90b018de16e2e40982b2f86f3fecf994dbb427d32b05f6bfd1d5e00d59": [
+        "biff8_budget"
+      ],
+      "sha256:eae72698d0410676c51f57cc6f1006bdb5c379df06dc078dc97a1ce0f7ef364d": [
+        "budget"
+      ],
+      "sha256:eaf1a717515c33cf0682780c864df5717be705a022e3374acb25bf253832e61c": [
+        "budget"
+      ],
+      "sha256:eaf75b0ff23a30ed735428bd2ec51f3d5e1edc5847e2d7565d81386a3d7d89de": [
+        "moh"
+      ],
+      "sha256:eb002e6bd1087deec46ae1c1b78c3e4d352fe56b48641b000040973ac7180e14": [
+        "biff8_budget"
+      ],
+      "sha256:eb0660fa04875b10024d0c2ff12728197d900b51c95e16ea2e15eedc3e901ca8": [
+        "historical"
+      ],
+      "sha256:eb0945f1a5e8c6f98c6bde83e8e81a4e4e0a72f359f938d43c2e65b3f436dd93": [
+        "budget"
+      ],
+      "sha256:eb45d093d37ff7802bdbf2f4682836a6f19aa1b14f97e021701f3205930655da": [
+        "biff8_budget"
+      ],
+      "sha256:eb5e78adad502ad907935ec94a3df9f0682b146bfad03f8cf7fb0d94ec0e0640": [
+        "budget"
+      ],
+      "sha256:eb6750e9f5f91477c0b5ae0e8c330fa3a04aaa444beb77928b22d45d5c5aa462": [
+        "biff8_revenue"
+      ],
+      "sha256:eb6ed9984a66222226ef390cc5cb4297c83c323e11dc1b9efa9f547dd49cf344": [
+        "moh"
+      ],
+      "sha256:eb7d69c7149fbfb58066c83e932232449c56591a8f7417728a63b3ad8eaac388": [
+        "historical"
+      ],
+      "sha256:eb9e390b534581fba10400bb31b0b2ba845baa21d4fe195786dceee2d855f1b4": [
+        "budget"
+      ],
+      "sha256:eba93c38678a1ecdbce98ca850b4351ce13d78cf7362da8ebf8b34eaff039b57": [
+        "moh"
+      ],
+      "sha256:ebb562497e24a7e55349bbb5cd037d31ca4ea0c4850986b058f5398275a3afd7": [
+        "biff8_budget"
+      ],
+      "sha256:ebb711d80f257e79efd3863dd99184c1530ec7f1600f9817b1f9bc79724d1488": [
+        "historical"
+      ],
+      "sha256:ebdbbba85058697d401e32c1ffc2d08bfa5aae7bc33dc31a02db4ef339e3be9a": [
+        "biff8_budget"
+      ],
+      "sha256:ebe652ddf5dbf4de1ff79446fa071ec4e592808dfd29adec9e0f9bcdbf63b3d7": [
+        "biff8_budget"
+      ],
+      "sha256:ece70aaaeea71d7d2d0ba86d742026044d2fe7f8860d1b112b4b1e8755b0ae2b": [
+        "biff8_budget"
+      ],
+      "sha256:ecfea49cf2427478ded72af56cf864b6fe06f91285a727a40b4467c766dba2a9": [
+        "biff8_budget"
+      ],
+      "sha256:ed2936b85887392136ee5070f9dc6933f6d7449bf596e7f47eaf993024fde21c": [
+        "historical"
+      ],
+      "sha256:ed3675399f70e30faf763884910cb7c86dcffc1385196ca65d8fec84d98674cd": [
+        "budget"
+      ],
+      "sha256:ed59d603b41f21564f04105b93ff72640852c81f669d14502d3dbcae7e083614": [
+        "crown_hyefu"
+      ],
+      "sha256:ed6ce124e8ced0bdd1412dce12a4e29b73fa9e8d9e8faec299c162108c92fd42": [
+        "budget"
+      ],
+      "sha256:ed9451564273b621d260d99a6a96bc761dab9d3136273f010f8ae4db348b97d1": [
+        "biff8_budget"
+      ],
+      "sha256:edaab8a2d52782d73b18ce6ce6bab054f7e6451e59fbba23304ec4997dabe186": [
+        "budget"
+      ],
+      "sha256:edb27b6c8b7bb98045f5a73fc498fc06b31ebbce623277564ec468b61cc6db52": [
+        "budget"
+      ],
+      "sha256:edc7fadfd09e7d91edd57af5e09bb9f889f3edfa38267ade4ab327de07022c30": [
+        "historical"
+      ],
+      "sha256:ee242bcf08f181a2469253813d20c2d2c7aa8f6421dbf0ec008c581f3e0a1d93": [
+        "biff8_budget"
+      ],
+      "sha256:ee3a0d96d31eb80948fa056b533a76bba13494a6ec0796c8961f334d5a060fa2": [
+        "revenue"
+      ],
+      "sha256:eea8b61e3db38525a6e38706f620cc06f1fc0e8f44c14a02d18b0e62818fa33e": [
+        "historical"
+      ],
+      "sha256:eedfefb1ee134acd3a4604b111db6b47ccd776c756aa806f60f2aba833a36e8e": [
+        "biff8_budget"
+      ],
+      "sha256:ef084bb6555b07d0d69c1f5b31f82d11d3facda0666c100c6c90f65ab0e0e70e": [
+        "budget"
+      ],
+      "sha256:ef24bd2d865f89ea5d8d5ee982ccbbd4049e79393aae758958fe778fbe8420d4": [
+        "biff8_budget"
+      ],
+      "sha256:efd36c9b4ec92345c24e6ed0af64531abdee11e352a7498c2e786679c863d6d6": [
+        "crown_hyefu"
+      ],
+      "sha256:eff49ee3b57d8073721bc3fd10879130cf0209a3a2f8940fda16abebcb77aee0": [
+        "revenue"
+      ],
+      "sha256:f01a287318200ae6d0ded7558b8781332d98db0d091d99a5590dba288ae9d3f4": [
+        "biff8_revenue"
+      ],
+      "sha256:f056fe220781cc95e7200fbf03cc66a029eeb7f3fea65788cc57de44ca95be89": [
+        "historical"
+      ],
+      "sha256:f0660d2fac7893949300db54b6546358fad296defd1b4fa7fef9cce38f5e89f2": [
+        "budget"
+      ],
+      "sha256:f0672e02993340f566d9b50d3c9e2c9ca971b518027520c7f135aa04d16fa4be": [
+        "historical"
+      ],
+      "sha256:f0f9deb3fc0359730f5beb7c848a90c487556c9a6257c594d98cd5372264d7a6": [
+        "budget"
+      ],
+      "sha256:f11b4741b61a04eac2aa71db315a12cd8e70f97a0a77eac9035caeeb1e4afb8d": [
+        "revenue"
+      ],
+      "sha256:f1a2b065618066d8c3c4fe5c9c2eefd261c3047f60d1a1cecc1865c2d2383d9a": [
+        "pharmac"
+      ],
+      "sha256:f24792ce5a432453349ad22ce3b49e07e991206ce35c875ba3875c3dd620756c": [
+        "budget"
+      ],
+      "sha256:f24f4dcc3fa33dac361c30d79c496a729b55bb61cdff993f2e3edc9fd980d55d": [
+        "historical"
+      ],
+      "sha256:f26d0df9a3223d943a331441074864502cde0892d41eab624ad3e82d6c20a883": [
+        "biff8_budget"
+      ],
+      "sha256:f29fe56864b2da725aa5cae8babd4823cc8c11cfaeac3a3bb63460befc846fa2": [
+        "budget"
+      ],
+      "sha256:f2cde5e0a057e13415e409a4026d135baafe2bec0227ff936c9727aae9cf2827": [
+        "biff8_budget"
+      ],
+      "sha256:f2dc0bbe23a8492fd418f99ca1a0e80844ff3e997fe34124785f4fd247d63e87": [
+        "biff8_revenue"
+      ],
+      "sha256:f30ee699f14f934d30f588a3dfa3d5980991f29009d3327bf33c8d0ce6f462dc": [
+        "historical"
+      ],
+      "sha256:f334bd9df9163391c95e64e2437c46ab07a6201841ffe82478001df411422b5f": [
+        "biff8_budget"
+      ],
+      "sha256:f33b344fee6e9202d5f05fcf3766cef2c32c7051e09f2337b3f92654b7bb1bae": [
+        "moh"
+      ],
+      "sha256:f34bcca0635ba4be3085859750bf404601fae3a0e4f61d7deaff20404ae8ad4d": [
+        "fiscal_crown"
+      ],
+      "sha256:f36fe32281bc3d6e10f167549a23e4bccd9ad28354ad26792118e53736cce143": [
+        "budget"
+      ],
+      "sha256:f38ec0dfc9848d76b76f73ec45a1e35f6cd6b690c30ebde1f1e3f068880aca17": [
+        "historical"
+      ],
+      "sha256:f3c1c5cf15314ede123c5b57aae55b9d53cd52c67a533137dbb80a9c8518c6d4": [
+        "biff8_budget"
+      ],
+      "sha256:f41c0cdeb010169d623f045ee599f3098e842ab0013e48dceb081a75885c378f": [
+        "biff8_budget"
+      ],
+      "sha256:f4328cc773f6782f3c4577e340546d54e26af2a42706a569c9dc0a37382aeeda": [
+        "biff8_budget"
+      ],
+      "sha256:f43e5d3f9981903bbafc91ca16755667471b7cd141fccb807d6d73195b96edff": [
+        "budget"
+      ],
+      "sha256:f442db1c9a31e8238ea094ccecf99c7f0ad9b106dd528904079c646f8836196a": [
+        "budget"
+      ],
+      "sha256:f4adf47f0c558c160664b6d329100d99da2edac128f1b4f67d1c114da0e499dd": [
+        "biff8_budget"
+      ],
+      "sha256:f5149bfb2d81002f340fc835684bbea2604413d9140cd442219ebc54c27f45dc": [
+        "biff8_budget"
+      ],
+      "sha256:f62e03505cabecee1634ffb4b6ff6071602307f50736cb97fbf05b7d552b2a53": [
+        "historical"
+      ],
+      "sha256:f635d09588b6bec305def0f246b44621b04deeca117d8f78759054457a016e87": [
+        "biff8_budget"
+      ],
+      "sha256:f6420356d4c75f0d78382f883472c8dba0df6013a9d39792492b6db83e721373": [
+        "budget"
+      ],
+      "sha256:f65ea5ef06e31d80f36ce023ad285256447baed888b821de02c338fd54187119": [
+        "historical"
+      ],
+      "sha256:f73214fbde9d1b096f8090ff026ad08865ac14f2fa4d8c952d9b8c22e08f591a": [
+        "budget"
+      ],
+      "sha256:f74acec89fb5a1cd8c979703b1bd7dfd70d7bbf8c6c41295ec2aae4d87b13288": [
+        "biff8_budget"
+      ],
+      "sha256:f7b0cf7511491c81257827037ef8cdd225528f987f12b33845bc37849f894537": [
+        "historical"
+      ],
+      "sha256:f7b7664d030cd3009679b2bcce0bc4f5dbc80145a90d556f861f35365e739695": [
+        "budget"
+      ],
+      "sha256:f7bb397ced8559a6a3a7859d667ae0f7d3c3b1dac04d27771ccc7b12d041e514": [
+        "biff8_budget"
+      ],
+      "sha256:f7d0afcc4270f4285e4cbfcfae1a581b852b84e281278a45195461bebde8023a": [
+        "budget"
+      ],
+      "sha256:f7d8594514679c6f7d716559ec3981b10ed11f8b4a53053dd55502a6ccc386c1": [
+        "historical"
+      ],
+      "sha256:f7e28f66d23dac7be2e579c108b87f044522c5c1d4b9b5708a2aa620185efd39": [
+        "moh"
+      ],
+      "sha256:f845afcd0d0ca11b7ec45cc4996edd524468a51cf14ed259aa1859c8c78da2fb": [
+        "fiscal_crown"
+      ],
+      "sha256:f8a601e935a67d431ec8530d81689e45630ed155e88b75d5216d7374f5e01420": [
+        "biff8_budget"
+      ],
+      "sha256:f8ae0893534d1a30d885654dc179a1fc33825103b80e87aeabc26831218d4cb0": [
+        "historical"
+      ],
+      "sha256:f8b0b1791fc038d5efa511300fb6ebdef49d36929f0ed7a493a384dd6cdb9a2e": [
+        "moh"
+      ],
+      "sha256:f8f8ead222537d1326a369e64dd150fe1d48f7d15f990174725e25b1bd1d1f1b": [
+        "historical"
+      ],
+      "sha256:f9310bf0062d7d21bdd17e9dcede92859154989a94b1388a3961d072507d587e": [
+        "historical"
+      ],
+      "sha256:f98046449f72b36ae9b095d9eb1920a78dcd4e890d1e05e6e54793f464ea58ab": [
+        "biff8_budget"
+      ],
+      "sha256:f9abc004b6e9b4bcf7313124b6869edfedd7caab0d885b8ab1ef5877827ceeec": [
+        "fiscal_crown"
+      ],
+      "sha256:f9b9257391829dfd8d15e71e07cbaa06c5564fd69140de7cae9956af65c438d4": [
+        "budget"
+      ],
+      "sha256:f9d2b6459368838ed1627c098e5fac2d6cf82b01c2928ef067e238d66f4b4855": [
+        "fiscal_crown"
+      ],
+      "sha256:f9f53708d66dcdfaefe538694954b474761a9092bc33bd768cd0fd1edf870475": [
+        "biff8_budget"
+      ],
+      "sha256:fa2e4e22ed38ad89057306a4e6e3e9d60b4859fdf4c833a70af8e57c65fe745a": [
+        "budget"
+      ],
+      "sha256:fabe0ddd33534a05c316b481c3ecbfe4a5df0b32b8a7b9cbf607728984696ba1": [
+        "revenue"
+      ],
+      "sha256:fabf096fdc5b87c34f3c263dd160d53888e0e4e4ced9c9a1ae467085ebf55045": [
+        "biff8_budget"
+      ],
+      "sha256:fb4bb41ca35c991c4f899a002e71e26c260749a29588ef27215ef8026cdb762c": [
+        "historical"
+      ],
+      "sha256:fb50c99e16ae58462285cee359955302febade5a7842212663d0b422bc385e00": [
+        "budget"
+      ],
+      "sha256:fbbcc53d9d969c3278cb490af22aa099ab01eeeb65061a0939ad7cf4778b0944": [
+        "budget"
+      ],
+      "sha256:fbf3abac1d9fa477c920f58ea0813e4ee27b0917ebea2d4455f19e8ee4f0cce8": [
+        "historical"
+      ],
+      "sha256:fbf9960a002619c1d82167ac72e208891b24bbd4e6d8d11599287495f05e33e0": [
+        "biff8_budget"
+      ],
+      "sha256:fc199e9fa5c94cbf782e43ab3f8d6ff87fb4b0917ec8074c17d510936dde3e18": [
+        "biff8_budget"
+      ],
+      "sha256:fc3c409c83fb8a0aa003705b8bc54a2287aba7d17fa9c5e899e4ffde072c7063": [
+        "biff8_budget"
+      ],
+      "sha256:fc5bdaa9c25ce799d8679f38c048bd435704c60bc18be1dd08494c52ce3afef4": [
+        "crown_hyefu"
+      ],
+      "sha256:fc7aa86826b04bf4fd2b651f5c40da64d91e3ac53dbd4ba78a4bbc4ba4b0730a": [
+        "budget"
+      ],
+      "sha256:fc81ce717bb87dfb91cd4ecb8358a5d67222b0fef581336e2baafe5d8db5bbe9": [
+        "historical"
+      ],
+      "sha256:fc9ced306d0134bb9d55e3a6b1bd2e5edfc6e13acd11cf0706ae724a07fea0a1": [
+        "moh"
+      ],
+      "sha256:fc9f9036b56a44edfa120bc9c7eebf999d662d11e5834e5eccb31e35d9c60889": [
+        "biff8_budget"
+      ],
+      "sha256:fcc7949392db17050c54b2650e8c587797faa2db288c807831ac311d21b91dff": [
+        "biff8_budget"
+      ],
+      "sha256:fd46e16f575588f06a1a853292f080223ce354d7ff6a86c0fb3dde9cb51bec54": [
+        "moh"
+      ],
+      "sha256:fd555550c1188a1b54450a294eb31a0092fd8bbee6d66563a78f327e94156903": [
+        "fiscal_crown"
+      ],
+      "sha256:fd6675c7edbc7c055129e15fd8f30d2c9f2b8cd44727e72411d0019cff3f72ad": [
+        "moh"
+      ],
+      "sha256:fd71c2e11194bf9fe9128ba97bd015947bedfca43e615d0b66145c3b285d566f": [
+        "budget"
+      ],
+      "sha256:fda33a5c9122bd24c99dbad9f777c2d87f28d7a2b464ac319281a9a5b6a50111": [
+        "biff8_budget"
+      ],
+      "sha256:fdb7c39e9949d898a5debeba3e584f511daa3b031b8c50232bf7d0e17984011c": [
+        "moh"
+      ],
+      "sha256:fdee18f6216450d6d7f994d7b54fae02b6085b6ca8f047b051deffd6bd399bd8": [
+        "moh"
+      ],
+      "sha256:fdf8736238cd8f687723ea35eecb7f2159cdcb3dfe7f93095de753eca0772c01": [
+        "budget"
+      ],
+      "sha256:fdfbf6438d1ebc46f450040322a512ac9f59722fc6902f67bec2a770f7d8b888": [
+        "moh"
+      ],
+      "sha256:fe0c1d6be80ff9ffc0a136cedc19161619b5ee4799a776110d5f2b4f22e9994c": [
+        "biff8_budget"
+      ],
+      "sha256:fe1e8ae7edff30e3d4f87e47065fa521afca8a75c1a0c40bbc116da020aae782": [
+        "budget"
+      ],
+      "sha256:fe209ae0494359907f7b340f4a0b242a07f64bc10abca1425ade06d6e28c0d49": [
+        "budget"
+      ],
+      "sha256:fe22a2276a7696190a7ad3d4cfe8aa39316129e5ee83432f297005716f5694e5": [
+        "historical"
+      ],
+      "sha256:fe40e1a80b5f505e24442ec542eee3e11dcd0323be8d72bfe53fb076f950594a": [
+        "biff8_revenue"
+      ],
+      "sha256:fe8f24c6be345863dba3e5addfd44595d06337ed12c0535e1b40aba7091cbd50": [
+        "biff8_budget"
+      ],
+      "sha256:fea1d2e6afd12e783bd006e3ee1648344d9c907f83598a07c9c5c66d17406f6c": [
+        "historical"
+      ],
+      "sha256:fed8537eaf7e353537765a65dafa9c85874a9f13dc02208d3b2b76a43ec94988": [
+        "budget"
+      ],
+      "sha256:fedabec2b30aa2b6d04d5cf902ee0199ba643873ef82ab877abf1e38f69ef9fb": [
+        "moh"
+      ],
+      "sha256:fee72a3e08edf602c2ebca22b5a6e89b8a8c40a87cfe485936d7127404563212": [
+        "budget"
+      ],
+      "sha256:ff0506785f1c0806efb3ab6eaed419935063c4c4ef1e795d6bfc98d3c80af80a": [
+        "budget"
+      ],
+      "sha256:ff2dbd301b5d8b0a550e7646e7f5c71d3a726be15c3475308bc779e7c0b68c21": [
+        "budget"
+      ],
+      "sha256:ff3a0b3e90667fc2f934417891308e8b5327bf69707cdcbc67bf09dfb49262e4": [
+        "budget"
+      ],
+      "sha256:ff411c1f2f62a9b9d0fb843496c8d0cc0f2b4ef85e8264098812e8fae90274e4": [
+        "budget"
+      ],
+      "sha256:ffe05ac7c7c8d5a7e340fcf1f9d26a8f20facefb57452ea407b93713837269c4": [
+        "crown_hyefu"
+      ]
+    },
+    "input_records_with_product": 1241,
+    "products": {
+      "biff8_budget": {
+        "analytical_completeness": "not_evaluated",
+        "cross_source_join": "not_performed",
+        "input_record_count": 319,
+        "output_rows": 319,
+        "vintage_pooling": "not_performed"
+      },
+      "biff8_revenue": {
+        "analytical_completeness": "not_evaluated",
+        "cross_source_join": "not_performed",
+        "input_record_count": 63,
+        "output_rows": 63,
+        "vintage_pooling": "not_performed"
+      },
+      "budget": {
+        "analytical_completeness": "not_evaluated",
+        "cross_source_join": "not_performed",
+        "input_record_count": 400,
+        "output_rows": 341,
+        "vintage_pooling": "not_performed"
+      },
+      "crown_befu": {
+        "analytical_completeness": "not_evaluated",
+        "cross_source_join": "not_performed",
+        "input_record_count": 10,
+        "output_rows": 10,
+        "vintage_pooling": "not_performed"
+      },
+      "crown_hyefu": {
+        "analytical_completeness": "not_evaluated",
+        "cross_source_join": "not_performed",
+        "input_record_count": 10,
+        "output_rows": 10,
+        "vintage_pooling": "not_performed"
+      },
+      "fiscal_crown": {
+        "analytical_completeness": "not_evaluated",
+        "cross_source_join": "not_performed",
+        "input_record_count": 61,
+        "output_rows": 61,
+        "vintage_pooling": "not_performed"
+      },
+      "historical": {
+        "analytical_completeness": "not_evaluated",
+        "cross_source_join": "not_performed",
+        "input_record_count": 214,
+        "output_rows": 214,
+        "vintage_pooling": "not_performed"
+      },
+      "moh": {
+        "analytical_completeness": "not_evaluated",
+        "cross_source_join": "not_performed",
+        "input_record_count": 80,
+        "output_rows": 80,
+        "vintage_pooling": "not_performed"
+      },
+      "pharmac": {
+        "analytical_completeness": "not_evaluated",
+        "cross_source_join": "not_performed",
+        "input_record_count": 14,
+        "output_rows": 14,
+        "vintage_pooling": "not_performed"
+      },
+      "revenue": {
+        "analytical_completeness": "not_evaluated",
+        "cross_source_join": "not_performed",
+        "input_record_count": 70,
+        "output_rows": 70,
+        "vintage_pooling": "not_performed"
+      }
+    },
+    "schema_version": "archive-govt-nz.health-canonical-gold-quality/v1",
+    "unaccounted_input_records": 0,
+    "unresolved_reports": [
+      "source_health",
+      "revision_reconciliation",
+      "cross_source_reconciliation"
+    ]
+  },
+  "queries": {
+    "gold_unchanged": true,
+    "manifest_sha256": "8cd6f972ce264026201923cac73067207cf8896e92951a65718cd2d0ca78d6b5",
+    "ordering_validation": "independent_typed_columns_asc_nulls_last",
+    "products": {
+      "biff8_budget": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 200,
+        "rows_sha256": "3538812f62102ba98d8f94ec08c11f43432a2803f65fd8f15730102653e0d8b4",
+        "source_rows": 319,
+        "truncated": true
+      },
+      "biff8_revenue": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 63,
+        "rows_sha256": "85b54d23c02cfc1ca0b6f83a74d011437bdf4479fb453288fa8777bba12b1b56",
+        "source_rows": 63,
+        "truncated": false
+      },
+      "budget": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 200,
+        "rows_sha256": "91c9eb3ac578760793f4d06f8dbd69cd6bf0d585e07d7796f6cdfae03765d608",
+        "source_rows": 341,
+        "truncated": true
+      },
+      "crown_befu": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 10,
+        "rows_sha256": "5d445d244235063f4e586121d1f1d5db327adbb481eb1f8e5a6efb3c5fc4dc9f",
+        "source_rows": 10,
+        "truncated": false
+      },
+      "crown_hyefu": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 10,
+        "rows_sha256": "db6561b5181a9cf7cb564e21d6d60ef0ce8c407fb5f0eb48ee25179df7b6f252",
+        "source_rows": 10,
+        "truncated": false
+      },
+      "fiscal_crown": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 61,
+        "rows_sha256": "d549984a77521288c8c95fbb301c75fa0c9a9732108c16faf4827580f8763ee6",
+        "source_rows": 61,
+        "truncated": false
+      },
+      "historical": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 200,
+        "rows_sha256": "db3b16065fce5afb6f2a077096f1864aa6de57649d512e0a10c6a914f81f092a",
+        "source_rows": 214,
+        "truncated": true
+      },
+      "moh": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 80,
+        "rows_sha256": "70eb3a768e277dc0d6f6de8ef521d63b4e9179138da53fed0ee384f1a0f0851d",
+        "source_rows": 80,
+        "truncated": false
+      },
+      "pharmac": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 14,
+        "rows_sha256": "54af8ef0fbc0ce1d9059e9745f9723029eb4e99351a798e49853ed3288b9be43",
+        "source_rows": 14,
+        "truncated": false
+      },
+      "revenue": {
+        "exact_readback": true,
+        "ordering_verified": true,
+        "returned_rows": 70,
+        "rows_sha256": "1f038a1c7bbf720a7992253115c1fa091e8211af4fd458fa0ec040cfbd1d7976",
+        "source_rows": 70,
+        "truncated": false
+      }
+    },
+    "publication": "not_performed",
+    "repeat_identical": true,
+    "rights": "not_evaluated",
+    "source_reverification": "not_performed_by_query"
+  },
+  "rights": "not_evaluated",
+  "scope": "Budget2019_BIFF8_expanded_canonical_Gold_metadata_recovery",
+  "source_cap_seconds": 120,
+  "source_inputs": {
+    "biffbudget-2019": {
+      "bytes": 4450304,
+      "sha256": "30602fd66ec1f4fb7d0b47f2766f6560c4d22e90c11e994fba3e404e29ceab48"
+    },
+    "biffrevenue-2019": {
+      "bytes": 468480,
+      "sha256": "d927995dd91eda6fdfb4020eb2a3e91871a24d5144e837e7801b6725e5f33df8"
+    },
+    "budget-2025": {
+      "bytes": 915479,
+      "sha256": "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338"
+    },
+    "budget-2026": {
+      "bytes": 918842,
+      "sha256": "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0"
+    },
+    "historical-2024": {
+      "bytes": 232417,
+      "sha256": "769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d"
+    },
+    "historical-2025": {
+      "bytes": 116265,
+      "sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f"
+    },
+    "revenue-2026": {
+      "bytes": 104536,
+      "sha256": "8243f6a3f9575af5ee048133f2695f3c4764ff7d86e7a74849fdafcf478cbfdb"
+    }
+  },
+  "source_timings": {
+    "1": [
+      {
+        "key": "historical-2024",
+        "seconds": 1.9874082499882206
+      },
+      {
+        "key": "historical-2025",
+        "seconds": 1.092840624973178
+      },
+      {
+        "key": "budget-2025",
+        "seconds": 33.909010917064734
+      },
+      {
+        "key": "budget-2026",
+        "seconds": 46.92084054206498
+      },
+      {
+        "key": "revenue-2026",
+        "seconds": 7.223430749960244
+      },
+      {
+        "key": "biffbudget-2019",
+        "seconds": 9.98094395804219
+      },
+      {
+        "key": "biffrevenue-2019",
+        "seconds": 1.0238499579718336
+      }
+    ],
+    "2": [
+      {
+        "key": "historical-2024",
+        "seconds": 1.8875159580493346
+      },
+      {
+        "key": "historical-2025",
+        "seconds": 0.9703378749545664
+      },
+      {
+        "key": "budget-2025",
+        "seconds": 23.675868874997832
+      },
+      {
+        "key": "budget-2026",
+        "seconds": 51.852312583010644
+      },
+      {
+        "key": "revenue-2026",
+        "seconds": 3.3183934590779245
+      },
+      {
+        "key": "biffbudget-2019",
+        "seconds": 7.185091707971878
+      },
+      {
+        "key": "biffrevenue-2019",
+        "seconds": 0.7363540410296991
+      }
+    ]
+  },
+  "stage_cap_seconds": 900,
+  "whole_track_completion": false
+}

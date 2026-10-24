@@ -33,7 +33,7 @@ def test_archivebox_pilot_is_manual_digest_pinned_and_bounded() -> None:
 
 
 def test_archivebox_is_not_a_python_runtime_dependency() -> None:
-    """ArchiveBox remains isolated from the governed Python 3.14 environment."""
+    """ArchiveBox remains isolated from the governed Python 3.15.1 environment."""
     root = Path(__file__).parents[2]
     pyproject = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))
     lock = (root / "uv.lock").read_text(encoding="utf-8")

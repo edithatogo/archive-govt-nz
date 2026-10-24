@@ -40,6 +40,12 @@ from tests.domains.health_appropriations.test_population_annual_export import (
     payload as population_annual_payload,
 )
 from tests.domains.health_appropriations.test_qes import fixture as qes_fixture
+from tests.domains.health_appropriations.test_vote_health import (
+    TEXT as VOTE_SUMMARY_TEXT,
+)
+from tests.domains.health_appropriations.test_vote_health_revenue import (
+    _pages as vote_revenue_pages,
+)
 
 from archive_govt_nz import cli, mcp_server
 from archive_govt_nz.cli import app, health_appropriations_extract_source
@@ -64,6 +70,7 @@ from archive_govt_nz.mcp_server import Server, call_tool, list_tools
         "qes-june2026-table8/v1",
         "pharmac-cpb-20260807/v1",
         "gdp-expenditure-actual-2026q1/v1",
+        "gdp-expenditure-actual-2026q2/v1",
         "befu-2026/v1",
         "hyefu-2025/v1",
     ]
@@ -121,9 +128,16 @@ def request_source(
     elif profile == "pharmac-cpb-20260807/v1":
         source, _ = pharmac_fixture(tmp_path)
         vintage = "Pharmac-CPB-2026-08-07"
-    elif profile == "gdp-expenditure-actual-2026q1/v1":
-        gdp_fixture(source)
-        vintage = gdp.VINTAGE
+    elif profile in {
+        "gdp-expenditure-actual-2026q1/v1",
+        "gdp-expenditure-actual-2026q2/v1",
+    }:
+        vintage = (
+            gdp.JUNE_VINTAGE
+            if profile == "gdp-expenditure-actual-2026q2/v1"
+            else gdp.VINTAGE
+        )
+        gdp_fixture(source, vintage)
     else:
         qes_fixture(source)
         vintage = "QES-2026-Q2"
@@ -154,6 +168,107 @@ def test_preflight_and_explicit_local_write(
     assert written["publication_state"] == "local_validation_only"
     assert len(written["output_sha256"]) == 3
     assert request_source.source.read_bytes() == before
+
+
+def test_repeated_source_normalization_has_identical_manifest_and_outputs(
+    request_source: source_operations.SourceRequest,
+) -> None:
+    """Every fixture-backed operation profile is repeatable from fixed inputs."""
+    source_before = request_source.source.read_bytes()
+    first = replace(
+        request_source, output_dir=request_source.output_dir.parent / "first"
+    )
+    second = replace(
+        request_source, output_dir=request_source.output_dir.parent / "second"
+    )
+
+    first_result = source_operations.operate_source(first, dry_run=False)
+    second_result = source_operations.operate_source(second, dry_run=False)
+
+    assert first_result["status"] == second_result["status"] == "written_local"
+    assert first_result["profile"] == second_result["profile"] == request_source.profile
+    assert first_result["counts"] == second_result["counts"]
+    assert first_result["output_sha256"] == second_result["output_sha256"]
+    assert {path.name: path.read_bytes() for path in first.output_dir.iterdir()} == {
+        path.name: path.read_bytes() for path in second.output_dir.iterdir()
+    }
+    assert request_source.source.read_bytes() == source_before
+
+
+@pytest.mark.parametrize(
+    "profile",
+    [
+        "vote-health-supplementary-2003-04-summary/v1",
+        "vote-health-supplementary-2003-04-detail/v1",
+        "vote-health-supplementary-2003-04-revenue/v1",
+    ],
+)
+def test_repeated_vote_pdf_normalization_has_identical_outputs(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, profile: str
+) -> None:
+    """Vote Health PDF operations are byte-repeatable with fixed extracted text."""
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixed PDF fixture bytes")
+    source_hash = hashlib.sha256(source.read_bytes()).hexdigest()
+    vintage = "Treasury-Vote-Health-Supplementary-2003-04"
+    context = {
+        "expected_sha256": source_hash,
+        "source_vintage": vintage,
+        "source_locator": "https://example.invalid/vote-health-supplementary.pdf",
+        "observed_at": "2026-08-31T00:00:00Z",
+    }
+
+    class Page:
+        def __init__(self, text: str) -> None:
+            self.text = text
+
+        def extract_text(self, *, extraction_mode: str) -> str:
+            expected_mode = "layout" if profile.endswith("summary/v1") else "plain"
+            assert extraction_mode == expected_mode
+            return self.text
+
+    class Reader:
+        def __init__(self, *_args: object, **_kwargs: object) -> None:
+            self.is_encrypted = False
+            if profile.endswith("summary/v1"):
+                texts = [VOTE_SUMMARY_TEXT]
+            elif profile.endswith("detail/v1"):
+                texts = [
+                    (
+                        "Part B1 - Details of Appropriations\n"
+                        "Sector Policy 12,459 - 110 - 12,569 - reason"
+                    ),
+                    "Part E - Statement of Intent",
+                ]
+            else:
+                texts = ["front matter"] * 19 + vote_revenue_pages() + ["blank"]
+            self.pages = [Page(text) for text in texts]
+
+    vote_module = (
+        source_operations.vote_health_revenue
+        if profile.endswith("revenue/v1")
+        else source_operations.vote_health
+    )
+    monkeypatch.setattr(vote_module, "PdfReader", Reader)
+    base_request = source_operations.SourceRequest(
+        source,
+        tmp_path / "unused-output",
+        profile,
+        **context,
+    )
+    first = replace(base_request, output_dir=tmp_path / "first")
+    second = replace(base_request, output_dir=tmp_path / "second")
+
+    first_result = source_operations.operate_source(first, dry_run=False)
+    second_result = source_operations.operate_source(second, dry_run=False)
+
+    assert first_result["status"] == second_result["status"] == "written_local"
+    assert first_result["counts"] == second_result["counts"]
+    assert first_result["output_sha256"] == second_result["output_sha256"]
+    assert {path.name: path.read_bytes() for path in first.output_dir.iterdir()} == {
+        path.name: path.read_bytes() for path in second.output_dir.iterdir()
+    }
+    assert source.read_bytes() == b"fixed PDF fixture bytes"
 
 
 def test_vote_health_summary_profile_dispatches_to_its_allowlisted_adapter(
@@ -190,6 +305,72 @@ def test_vote_health_detail_profile_dispatches_to_its_allowlisted_adapter(
     assert source_operations.operate_source(request)["status"] == "preflight_passed"
 
 
+def test_vote_health_2002_03_profile_binds_vintage_and_source_hash(
+    tmp_path: Path,
+) -> None:
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"not the pinned Estimates 2002/03 PDF")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile="vote-health-estimates-2002-03-detail/v1",
+        expected_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),
+        source_vintage=source_operations.vote_health.DETAIL_VINTAGE_2002_03,
+        source_locator="https://example.test/est02health.pdf",
+        observed_at="2026-08-29T09:00:17Z",
+    )
+
+    result = source_operations.operate_source(request)
+
+    assert result["status"] == "failed"
+    assert result["error"] == "invalid_source_operation"
+    assert not request.output_dir.exists()
+
+
+def test_vote_health_2002_03_profile_dispatches_with_its_exact_vintage(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"synthetic profile operation fixture")
+    digest = hashlib.sha256(source.read_bytes()).hexdigest()
+    profile = "vote-health-estimates-2002-03-detail/v1"
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=profile,
+        expected_sha256=digest,
+        source_vintage=source_operations.vote_health.DETAIL_VINTAGE_2002_03,
+        source_locator="https://example.test/est02health.pdf",
+        observed_at="2026-08-29T09:00:17Z",
+    )
+    allowed = {
+        "vote-health-estimates-detail/v1": (
+            source_operations.vote_health.DETAIL_VINTAGE_2003_04,
+            None,
+        ),
+        profile: (request.source_vintage, None),
+    }
+    monkeypatch.setattr(source_operations, "_VOTE_HEALTH_DETAIL_PROFILES", allowed)
+    monkeypatch.setattr(
+        source_operations.vote_health,
+        "normalize_vote_health_detail",
+        lambda *_args, **_kwargs: {
+            "status": "planned",
+            "counts": {"pages": 26, "facts": 2},
+        },
+    )
+
+    result = source_operations.operate_source(request)
+
+    assert result["status"] == "preflight_passed"
+    assert result["profile"] == profile
+    assert result["transformation_id"] == (
+        source_operations.vote_health.DETAIL_2002_03_TRANSFORMATION
+    )
+    assert result["counts"] == {"pages": 26, "facts": 2}
+    assert not request.output_dir.exists()
+
+
 def test_vote_health_revenue_profile_dispatches_to_its_allowlisted_adapter(
     request_source: source_operations.SourceRequest, monkeypatch: pytest.MonkeyPatch
 ) -> None:
@@ -207,7 +388,53 @@ def test_vote_health_revenue_profile_dispatches_to_its_allowlisted_adapter(
     assert source_operations.operate_source(request)["status"] == "preflight_passed"
 
 
-@pytest.mark.parametrize("family", ["pharmac", "gdp"])
+def test_vote_health_2002_03_revenue_profile_dispatches_to_its_adapter(
+    request_source: source_operations.SourceRequest, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    request = replace(
+        request_source,
+        profile="vote-health-estimates-2002-03-revenue/v1",
+        source_vintage=source_operations.vote_health_revenue.ESTIMATES_2002_03_VINTAGE,
+        expected_sha256=source_operations.vote_health_revenue.ESTIMATES_2002_03_SHA256,
+    )
+    expected = {"status": "planned", "counts": {"pages": 2, "facts": 16}}
+    monkeypatch.setattr(
+        source_operations.vote_health_revenue,
+        "normalize_vote_health_estimates_revenue_2002_03",
+        lambda *_args, **_kwargs: expected,
+    )
+    assert source_operations.operate_source(request)["status"] == "preflight_passed"
+
+
+def test_vote_health_2002_03_overview_profile_dispatches_to_its_adapter(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    summary = source_operations.vote_health_estimates_summary
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; adapter is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=summary.PROFILE,
+        expected_sha256=summary.SOURCE_SHA256,
+        source_vintage=summary.VINTAGE,
+        source_locator="https://www.treasury.govt.nz/publications/estimates/vote-health-estimates-appropriations-2004-05",
+        observed_at="2026-10-03T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 2, "facts": 7}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(
+        summary, "_normalize_overview", lambda *_args, **_kwargs: expected
+    )
+    monkeypatch.setattr(
+        source_operations.vote_health_estimates_summary,
+        "normalize_vote_health_estimates_overview_2002_03",
+        lambda *_args, **_kwargs: expected,
+    )
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+
+
+@pytest.mark.parametrize("family", ["pharmac", "gdp", "gdp-june"])
 def test_extended_dispatch_preserves_source_specific_package(
     tmp_path: Path, family: str
 ) -> None:
@@ -215,11 +442,16 @@ def test_extended_dispatch_preserves_source_specific_package(
         source, pin = pharmac_fixture(tmp_path)
         normalizer = pharmac.normalize_pharmac_budget
         profile, vintage = "pharmac-cpb-20260807/v1", "Pharmac-CPB-2026-08-07"
-    else:
+    elif family == "gdp":
         source = gdp_fixture(tmp_path / "source.xlsx")
         pin = hashlib.sha256(source.read_bytes()).hexdigest()
         normalizer = gdp.normalize_gdp
         profile, vintage = "gdp-expenditure-actual-2026q1/v1", gdp.VINTAGE
+    else:
+        source = gdp_fixture(tmp_path / "source.xlsx", gdp.JUNE_VINTAGE)
+        pin = hashlib.sha256(source.read_bytes()).hexdigest()
+        normalizer = gdp.normalize_gdp
+        profile, vintage = "gdp-expenditure-actual-2026q2/v1", gdp.JUNE_VINTAGE
     before = source.read_bytes()
     context = {
         "expected_sha256": pin,
@@ -234,9 +466,27 @@ def test_extended_dispatch_preserves_source_specific_package(
     result = source_operations.operate_source(request, dry_run=False)
     assert result["status"] == "written_local"
     assert result["counts"] == raw["counts"]
-    assert {p.name: p.read_bytes() for p in destination.iterdir()} == {
-        p.name: p.read_bytes() for p in direct.iterdir()
-    }
+    if family == "pharmac":
+        assert {p.name: p.read_bytes() for p in destination.iterdir()} == {
+            p.name: p.read_bytes() for p in direct.iterdir()
+        }
+    else:
+        assert {p.name: p.read_bytes() for p in destination.glob("*.parquet")} == {
+            p.name: p.read_bytes() for p in direct.glob("*.parquet")
+        }
+        manifest = json.loads((destination / "MANIFEST.json").read_text())
+        assert (
+            manifest["schema_version"] == "archive-govt-nz.health-context-operation/v1"
+        )
+        assert manifest["native_extraction_schema_version"] == raw["schema_version"]
+        for key, value in raw.items():
+            if key != "schema_version":
+                assert manifest[key] == value
+        assert manifest["adapter_selection"]["status"] == "selected"
+        assert (
+            len(manifest["common_output"]["records"])
+            == cast("dict[str, int]", raw["counts"])["facts"]
+        )
     assert source.read_bytes() == before
 
 
@@ -265,9 +515,17 @@ def test_forecast_dispatch_preserves_package_and_partial_failure(
     assert result["status"] == "written_local"
     assert result["counts"] == raw["counts"]
     assert result["transformation_id"] == "treasury-health-expense-summary/v1"
-    assert {p.name: p.read_bytes() for p in destination.iterdir()} == {
-        p.name: p.read_bytes() for p in direct.iterdir()
+    assert {p.name: p.read_bytes() for p in destination.glob("*.parquet")} == {
+        p.name: p.read_bytes() for p in direct.glob("*.parquet")
     }
+    operational = json.loads((destination / "MANIFEST.json").read_bytes())
+    assert (
+        operational["schema_version"] == "archive-govt-nz.health-forecast-operation/v1"
+    )
+    assert operational["native_extraction_schema_version"] == raw["schema_version"]
+    assert operational["adapter_selection"]["status"] == "selected"
+    for name in ("counts", "selection", "excluded_sheets", "workbook_inventory"):
+        assert operational[name] == raw[name]
     facts = pq.read_table(destination / "forecast_facts.parquet").to_pylist()
     assert [fact["amount_type"] for fact in facts] == ["Actual"] * 5 + ["Forecast"] * 5
     assert source.read_bytes() == before
@@ -749,3 +1007,914 @@ def test_mcp_generic_errors_redact_sensitive_exception_text(
     encoded = json.dumps(result)
     assert "secret" not in encoded
     assert "user:" not in encoded
+
+
+def test_source_operation_profile_registries_have_unique_keys() -> None:
+    summary = source_operations.vote_health_estimates_summary
+    assert len(source_operations.PROFILES) == len(set(source_operations.PROFILES))
+    assert len(source_operations._VOTE_HEALTH_OVERVIEW_PROFILES) == len(  # noqa: SLF001
+        set(source_operations._VOTE_HEALTH_OVERVIEW_PROFILES)  # noqa: SLF001
+    )
+    assert summary.PROFILE_2005_06 in source_operations.PROFILES
+
+
+def test_vote_health_2018_19_category_totals_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2018_19
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2019-05/suppest19health.pdf",
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 5, "facts": 7}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_category_total_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2013_14_category_totals_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2013_14
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 5, "facts": 6}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_category_total_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2012_13_financial_activity_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2012_13
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-23T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 1, "facts": 11, "lineage": 55}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts", "lineage"),
+        "vote_health_financial_activity_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2013_14_financial_activity_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2013_14_financial_activity
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-23T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 1, "facts": 14, "lineage": 70}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts", "lineage"),
+        "vote_health_financial_activity_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2014_15_category_totals_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2014_15
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 5, "facts": 7}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_category_total_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2015_16_category_totals_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2015_16
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 5, "facts": 7}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_category_total_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2016_17_category_totals_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2016_17
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 4, "facts": 7}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_category_total_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2017_18_category_totals_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2017_18
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 4, "facts": 7}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_category_total_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2011_12_category_totals_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2011_12
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 4, "facts": 7}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_category_total_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2010_11_category_totals_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2010_11
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 5, "facts": 6}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_category_total_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2009_10_category_totals_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2009_10
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 5, "facts": 6}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_category_total_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2008_09_category_totals_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2008_09
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-07T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 5, "facts": 6}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_category_total_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2007_08_category_totals_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2007_08
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-07T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 5, "facts": 6}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_category_total_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2006_07_overview_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2006_07
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-07T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 1, "facts": 7}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_appropriation_overview_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2005_06_overview_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2005_06
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-07T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 1, "facts": 7}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_appropriation_overview_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2005_06_overview_profile_rejects_wrong_source_hash(
+    tmp_path: Path,
+) -> None:
+    module = source_operations.vote_health_supplementary_2005_06
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256="0" * 64,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-07T00:00:00Z",
+    )
+
+    with pytest.raises(ValueError, match="invalid_source_operation"):
+        source_operations._validate(request, dry_run=True)  # noqa: SLF001
+
+
+def test_vote_health_2004_05_overview_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2004_05
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-07T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 1, "facts": 9}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_appropriation_overview_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2001_02_overview_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2001_02
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-07T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 1, "facts": 9}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_appropriation_overview_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2000_01_overview_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2000_01
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-07T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 1, "facts": 9}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_appropriation_overview_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2001_02_overview_rejects_wrong_source_hash(
+    tmp_path: Path,
+) -> None:
+    module = source_operations.vote_health_supplementary_2001_02
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256="0" * 64,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-07T00:00:00Z",
+    )
+
+    with pytest.raises(ValueError, match="invalid_source_operation"):
+        source_operations._validate(request, dry_run=True)  # noqa: SLF001
+
+
+def test_vote_health_2002_03_overview_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2002_03
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-07T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 1, "facts": 9}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_appropriation_overview_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2000_01_overview_rejects_wrong_source_hash(
+    tmp_path: Path,
+) -> None:
+    module = source_operations.vote_health_supplementary_2000_01
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256="0" * 64,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-07T00:00:00Z",
+    )
+
+    with pytest.raises(ValueError, match="invalid_source_operation"):
+        source_operations._validate(request, dry_run=True)  # noqa: SLF001
+
+
+def test_vote_health_2002_03_overview_rejects_wrong_source_hash(
+    tmp_path: Path,
+) -> None:
+    module = source_operations.vote_health_supplementary_2002_03
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256="0" * 64,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-07T00:00:00Z",
+    )
+
+    with pytest.raises(ValueError, match="invalid_source_operation"):
+        source_operations._validate(request, dry_run=True)  # noqa: SLF001
+
+
+def test_vote_health_2019_20_category_totals_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2019_20
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator="https://www.treasury.govt.nz/sites/default/files/2020-05/suppest20health.pdf",
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 5, "facts": 7}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+
+
+def test_vote_health_2025_26_summary_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2025_26
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 1, "facts": 6}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_supplementary_summary_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2020_21_summary_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2020_21
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 1, "facts": 4}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_supplementary_summary_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2021_22_summary_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2021_22
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 1, "facts": 4}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_supplementary_summary_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2022_23_summary_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2022_23
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 1, "facts": 4}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_supplementary_summary_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+def test_vote_health_2023_24_summary_profile_is_pinned_and_dispatched(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = source_operations.vote_health_supplementary_2023_24
+    source = tmp_path / "source.pdf"
+    source.write_bytes(b"fixture PDF source; profile call is mocked")
+    request = source_operations.SourceRequest(
+        source=source,
+        output_dir=tmp_path / "output",
+        profile=module.PROFILE,
+        expected_sha256=module.SOURCE_SHA256,
+        source_vintage=module.VINTAGE,
+        source_locator=module.SOURCE_LOCATOR,
+        observed_at="2026-10-06T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 1, "facts": 4}}
+    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
+    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
+
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+    assert source_operations.PROFILES[module.PROFILE] == (
+        module.TRANSFORMATION,
+        ("pages", "facts"),
+        "vote_health_supplementary_summary_facts.parquet",
+        "page_dispositions.parquet",
+    )
+
+
+@pytest.mark.parametrize("year", range(2004, 2018))
+def test_reviewed_overview_operation_routes_to_common_bridge(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, year: int
+) -> None:
+    summary = source_operations.vote_health_estimates_summary
+    suffix = f"{year}_{str(year + 1)[-2:]}"
+    request = source_operations.SourceRequest(
+        tmp_path / "source.pdf",
+        tmp_path / "output",
+        getattr(summary, "PROFILE_" + suffix),
+        getattr(summary, "SOURCE_SHA256_" + suffix),
+        getattr(summary, "VINTAGE_" + suffix),
+        "https://example.test/source.pdf",
+        "2026-10-17T00:00:00Z",
+    )
+    expected = {"status": "planned", "counts": {"pages": 2, "facts": year}}
+
+    def bridge(source: Path, output: Path, **kwargs: object) -> dict[str, Any]:
+        assert source == request.source
+        assert output == request.output_dir
+        assert kwargs == {
+            "profile": request.profile,
+            "expected_sha256": request.expected_sha256,
+            "source_vintage": request.source_vintage,
+            "source_locator": request.source_locator,
+            "observed_at": request.observed_at,
+            "dry_run": True,
+        }
+        return expected
+
+    monkeypatch.setattr(
+        source_operations.overview_operations, "normalize_overview", bridge
+    )
+    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
+
+
+def test_budget_2024_cli_mcp_routes_exact_reviewed_source_context(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+) -> None:
+    source = tmp_path / "route-only-source"
+    source.write_bytes(b"synthetic route probe; actual workbook verified separately")
+    arguments: dict[str, Any] = {
+        "source": source,
+        "output_dir": tmp_path / "unwritten",
+        "profile": "budget-revenue-2024/v1",
+        "expected_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
+        "source_vintage": "Budget-2024",
+        "source_locator": "https://www.treasury.govt.nz/sites/default/files/2024-06/b24-revenue-data.xlsx",
+        "observed_at": "2026-10-18T03:01:13.664113+00:00",
+    }
+    calls = []
+
+    def normalize(path: Path, output: Path, **context: object) -> dict[str, Any]:
+        calls.append((path, output, context))
+        return {
+            "status": "planned",
+            "counts": {
+                "input": 1004,
+                "normalized": 66,
+                "out_of_scope": 938,
+                "blank": 0,
+                "rejected": 0,
+            },
+        }
+
+    monkeypatch.setattr(
+        source_operations.budget_revenue, "normalize_budget_revenue", normalize
+    )
+    assert health_appropriations_extract_source(**arguments) == 0
+    result = json.loads(capsys.readouterr().out)
+    assert result.pop("command") == "health-appropriations-extract-source"
+    mcp_arguments = {key: str(value) for key, value in arguments.items()}
+    assert call_tool("health_appropriations_preflight_source", mcp_arguments) == result
+    assert len(calls) == 2
+    for path, output, context in calls:
+        assert path == source
+        assert output == arguments["output_dir"]
+        assert context == {
+            key: arguments[key]
+            for key in (
+                "expected_sha256",
+                "source_vintage",
+                "source_locator",
+                "observed_at",
+            )
+        } | {"dry_run": True}
+    assert result["transformation_id"] == "budget-2024-health-revenue/v1"
+    assert result["rights_state"] == "not_evaluated"
+    assert result["publication_state"] == "local_validation_only"
+    assert str(source) not in json.dumps(result)
+    assert not (tmp_path / "unwritten").exists()
+
+
+@pytest.mark.parametrize(
+    "bad_field", ["expected_sha256", "source_vintage", "source_locator"]
+)
+def test_budget_2024_source_operation_refuses_unreviewed_context_before_parser(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, bad_field: str
+) -> None:
+    source = tmp_path / "source"
+    source.write_bytes(b"route guard probe")
+    arguments = {
+        "source": str(source),
+        "output_dir": str(tmp_path / "unwritten"),
+        "profile": "budget-revenue-2024/v1",
+        "expected_sha256": "bdaed462ac4f517a571c2f0e29a18bd4da726e25ca7be85ff6372f0a370d2eea",
+        "source_vintage": "Budget-2024",
+        "source_locator": "https://www.treasury.govt.nz/sites/default/files/2024-06/b24-revenue-data.xlsx",
+        "observed_at": "2026-10-18T03:01:13.664113+00:00",
+    }
+    arguments[bad_field] = {
+        "expected_sha256": "0" * 64,
+        "source_vintage": "Budget-2025",
+        "source_locator": "https://example.invalid/unreviewed",
+    }[bad_field]
+
+    def forbidden(*_args: object, **_kwargs: object) -> None:
+        pytest.fail("unreviewed source context reached the parser")
+
+    monkeypatch.setattr(
+        source_operations.budget_revenue, "normalize_budget_revenue", forbidden
+    )
+    result = call_tool("health_appropriations_preflight_source", arguments)
+    assert result["status"] == "failed"
+    assert result["error"] == "invalid_source_operation"
+    assert not (tmp_path / "unwritten").exists()

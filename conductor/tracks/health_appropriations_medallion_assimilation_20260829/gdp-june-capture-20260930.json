@@ -1,0 +1,70 @@
+{
+  "schema_version": "archive-govt-nz.health-gdp-june-capture/v1",
+  "scope": "source_capture_and_series_identification_only_no_analytical_admission_or_legal_approval",
+  "observed_at": "2026-09-29T21:28:10.739074Z",
+  "source": {
+    "source_id": "stats_nz_gdp-588a47c19c9dbc44",
+    "title": "Gross domestic product: June 2026 quarter – current price income and expenditure",
+    "url": "https://www.stats.govt.nz/assets/Uploads/Gross-domestic-product/Gross-domestic-product-June-2026-quarter/Download-data/gross-domestic-product-june-2026-quarter-current-price-income-and-expenditure.xlsx",
+    "http_status": 200,
+    "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "bytes": 50067,
+    "etag": "\"b7faaed7\"",
+    "last_modified": "Wed, 16 Sep 2026 22:45:16 GMT",
+    "sha256": "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
+    "blake3": "3061346bfcf196e52f55cb60cc5a8f611a6c5a22287cf1b2dddad9538e9acbd6",
+    "warc_sha256": "29b1208c7ab036deb64cbe14ba5669eb251a9bf45e90b04d181a609f423081df",
+    "warc_path": "warc/2026-09-30-gdp-june/attempt-sij9r08f/response.warc",
+    "single_capture_manifest": {
+      "manifest_name": "gdp-june-2026.json",
+      "sha256": "b01779a4f01cb1c7833037bb68d2da237cd7c3788aadd22c607c84867fcffafb"
+    },
+    "whole_census_refresh_manifest": {
+      "manifest_name": "official-capture-2026-09-30-health-refresh.json",
+      "sha256": "2de49f07c877aab196afae572db32bfc2d48fd4340eb17c9a4bfb3bb2cc357e7",
+      "historical_capture_manifest_preserved": "official-capture-2026-08-29-complete.json",
+      "historical_results": 73,
+      "successor_capture_results": 1,
+      "combined_results": 74
+    }
+  },
+  "official_release": {
+    "url": "https://www.stats.govt.nz/information-releases/gross-domestic-product-june-2026-quarter/",
+    "publication_date": "17 September 2026",
+    "publication_page_sha256": "ad203feaf3c15a5ce558338fc128d4bb2fca227e418da64f197c316b5be61d2a"
+  },
+  "selected_series": {
+    "workbook_sheet": "Table 1",
+    "cell_selector": "C27:BK27",
+    "series_label": "Gross domestic product - expenditure measure",
+    "reference": "SG03AB01GE00S900",
+    "prefix": "SNEQ",
+    "period_row": "Quarterly, June 2011–June 2026",
+    "quarter_observations": 61,
+    "unit_label": "$(million)",
+    "table_2_disposition": "excluded_seasonally_adjusted_series_is_distinct",
+    "currency_code": "unverified"
+  },
+  "rights_evidence": {
+    "official_terms_url": "https://www.stats.govt.nz/about-us/copyright/",
+    "observed_terms": "Stats NZ states that its content is licensed under CC BY 4.0 unless otherwise specified, with exceptions and attribution conditions on the official page.",
+    "attribution": "Stats NZ Tatauranga Aotearoa",
+    "terms_page_capture_manifest_sha256": "7cc652701dd0bb105d6dbfa9477d621eabd82fc339a92203c966458c6bf9da50",
+    "terms_page_object_sha256": "6d4b02b53668bcdbac42bbb996cd63a624dd282eef6c3d4c803e36d9fd61e20f",
+    "terms_page_warc_sha256": "873cf9d358e3d8147c4c261f8e2e509a7b88db641b85bdce1d96d2fa2fcc9a53",
+    "terms_page_warc_path": "warc/2026-09-30-gdp-june/attempt-ib2z9be8/response.warc",
+    "qualification": "publisher_terms_observed_and_capture_eligible; exceptions/resource-specific notices not independently adjudicated; this is not a legal approval"
+  },
+  "analytical_disposition": {
+    "qualification": "unqualified",
+    "rights": "not_evaluated",
+    "vintage_policy": "Keep StatsNZ-GDP-2026Q2 separate from StatsNZ-GDP-2026Q1; do not splice or replace historic observations implicitly.",
+    "blocked_items": [
+      "currency code",
+      "annual aggregation and period alignment",
+      "canonical projection",
+      "denominator approval",
+      "publication approval"
+    ]
+  }
+}

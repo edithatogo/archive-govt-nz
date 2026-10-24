@@ -1,0 +1,118 @@
+{
+  "currency": "not_qualified",
+  "definitions": "complete_retained_census_cells_verified_twice",
+  "edition_resolution": "matching_exact_titles_B1_publication_B2_and_periods_B8_Budget2013",
+  "mcoa_id_disposition": "preserve_numeric_MCOA_ID_separately_no_ParentID_or_group_inference",
+  "preliminary_artifact_disposition": "Preflight1 numeric alias parent_id is superseded by source-specific mcoa_id in preflight2. Encoded witnesses, values and coordinates unchanged; both artifacts retained. No parent relationship was admitted.",
+  "producer_head": "7697f8aa8cd6afc2cba9eb09fc399fcb36865329",
+  "qualified_numeric_field_names": [
+    "app_id",
+    "mcoa_id",
+    "amount",
+    "year"
+  ],
+  "qualified_postflight": {
+    "exit": 0,
+    "head": "54d26d3e7657b1a0029eed2fd0aab59f7626677c",
+    "independent_lease_free": true,
+    "owner_and_group_absent": true,
+    "pins_unchanged": 4886,
+    "status": "verified",
+    "tree": "bd2bfeb6c0315b8258ee2454c4c17ba9708267df"
+  },
+  "rights": "not_evaluated",
+  "runs": {
+    "expenditure": {
+      "counts": {
+        "out_of_scope": 5538,
+        "selected_numeric_verified": 310
+      },
+      "eligible_for_profile": true,
+      "evidence": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2013-20261021/preflight-1/first-expenditure.json",
+      "period_pairs": [
+        {
+          "amount_type": "Actuals",
+          "rows": 52,
+          "year": 2009
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 52,
+          "year": 2010
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 54,
+          "year": 2011
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 50,
+          "year": 2012
+        },
+        {
+          "amount_type": "Estimated Actual",
+          "rows": 51,
+          "year": 2013
+        },
+        {
+          "amount_type": "Main Estimates",
+          "rows": 51,
+          "year": 2014
+        }
+      ],
+      "prior_definition_cells_verified": 60,
+      "qualified_evidence": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2013-20261021/preflight-2/first-expenditure.json",
+      "qualified_evidence_sha256": "4e4f9ee1070af624778371a9a2a234d61a0cd6c5ff996619b817fb92498150cc",
+      "source_row_count": 5848,
+      "source_sha256": "c5b7f6916b89a9ea0fd14caf73a979c730116d517d78ffe777d36c5966626140"
+    },
+    "revenue": {
+      "counts": {
+        "out_of_scope": 927,
+        "selected_numeric_verified": 68
+      },
+      "eligible_for_profile": true,
+      "evidence": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2013-20261021/preflight-1/first-revenue.json",
+      "period_pairs": [
+        {
+          "amount_type": "Actuals",
+          "rows": 13,
+          "year": 2009
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 10,
+          "year": 2010
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 12,
+          "year": 2011
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 12,
+          "year": 2012
+        },
+        {
+          "amount_type": "Estimated Actual",
+          "rows": 11,
+          "year": 2013
+        },
+        {
+          "amount_type": "Main Estimates",
+          "rows": 10,
+          "year": 2014
+        }
+      ],
+      "prior_definition_cells_verified": 66,
+      "qualified_evidence": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2013-20261021/preflight-2/first-revenue.json",
+      "qualified_evidence_sha256": "ee5502c8f49ab72d68e166b1f3d853b759a35e994d8ef21fe87c6dba1dd19034",
+      "source_row_count": 995,
+      "source_sha256": "69e9d3d10c72bd01c661ca02633d48404f7add6f5e4fda02017ab5649fa27869"
+    }
+  },
+  "schema_version": "archive-govt-nz.health-budget-biff8-preflight/v1",
+  "source_capture_mutations": false
+}

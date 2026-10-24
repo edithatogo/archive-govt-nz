@@ -15,6 +15,7 @@ from archive_govt_nz.domains.health_appropriations.historical import (
     _xml,
 )
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
+    verified_payload,
     verified_snapshot,
 )
 
@@ -150,6 +151,12 @@ def admit_befu_chart_literals(source: Path) -> dict[str, Any]:
     """Read one hash-pinned original into distinct raw/context records only."""
     _require(source.is_file() and not source.is_symlink())
     payload = verified_snapshot(source, SOURCE_SHA256, max_bytes=4 * 1024 * 1024)
+    return admit_befu_chart_literals_snapshot(payload)
+
+
+def admit_befu_chart_literals_snapshot(payload: bytes) -> dict[str, Any]:
+    """Admit the same exact bounded original directly from Bronze bytes."""
+    payload = verified_payload(payload, SOURCE_SHA256, max_bytes=4 * 1024 * 1024)
     inventory = inventory_workbook(BytesIO(payload))
     tokens = _selected_tokens(payload)
     book = load_workbook(BytesIO(payload), data_only=False, keep_links=True)

@@ -1,0 +1,45 @@
+{
+  "schema_version": "archive-govt-nz.health-vote-health-category-totals-evidence/v1",
+  "status": "passed",
+  "profile": "vote-health-supplementary-2018-19-category-totals/v1",
+  "source": {
+    "source_object_sha256": "fc1cb3f5bc39d5ff7cd2805feaefd3ab1e2c0a3b2157249fb8de9084befce069",
+    "source_locator": "https://www.treasury.govt.nz/sites/default/files/2019-05/suppest19health.pdf",
+    "source_vintage": "Treasury-Vote-Health-Supplementary-2018-19",
+    "source_bytes_unchanged": true
+  },
+  "scope": {
+    "pdf_page_numbers": [2, 3, 4, 5, 6],
+    "printed_page_numbers": [386, 387, 388, 389, 390],
+    "unit": "$000",
+    "columns": [
+      "Estimates Budget",
+      "Supplementary Estimates Budget",
+      "Total Budget"
+    ],
+    "facts": 7,
+    "field_lineage_rows": 21,
+    "page_dispositions": 5,
+    "rights_state": "not_evaluated",
+    "limitations": [
+      "Only seven named category totals are normalized; other table rows and PDF pages remain preserved-only.",
+      "No currency interpretation, edition comparison, or publication is asserted."
+    ]
+  },
+  "repeat_build": {
+    "identical": true,
+    "outputs": {
+      "vote_health_category_total_facts.parquet": "f781644340258776a7b7d0bfab9e3ed924af96ec399c942c86c7c25fd76dec36",
+      "field_lineage.parquet": "0ce2ff9c6a608bab184bf8efb80e88a0fa01a4b5f3c5288ab2bf15cc4d3dca51",
+      "page_dispositions.parquet": "6c63e686f7fde476063b2ba2a865731ef701959bb02b7692d7fbd652c62fd918"
+    }
+  },
+  "validation": {
+    "focused_tests": "501 passed, 10 skipped",
+    "full_harness": "7496 passed, 10 skipped, 97.77% coverage; configured gates passed",
+    "schemas": "56 schemas and 46 representative documents passed",
+    "differential_parity": "9/9 passed",
+    "conductor_phase_review": "phase_7_gates passed",
+    "conductor_phase_review_receipt": "phase_7_gates-review-receipt-20261006-vote-health-2018-19-totals.json"
+  }
+}

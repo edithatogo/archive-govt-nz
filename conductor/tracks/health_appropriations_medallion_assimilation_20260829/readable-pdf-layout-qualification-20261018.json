@@ -1,0 +1,548 @@
+{
+  "all_frozen_pins_unchanged": true,
+  "cohort": {
+    "credentials_supplied": false,
+    "explicit_decrypt_called": false,
+    "financial_preflight": "existing_evidence_reused_not_replayed",
+    "newly_recorded": [
+      {
+        "family": "treasury_vote_health_document",
+        "layout": {
+          "metadata_keys": [
+            "/Author",
+            "/CreationDate",
+            "/Creator",
+            "/Keywords",
+            "/ModDate",
+            "/Producer",
+            "/Subject",
+            "/Title"
+          ],
+          "page_count": 47,
+          "page_layouts": [
+            {
+              "page_count": 1,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "resource_counts": {
+                  "/Font": 1
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 3,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "resource_counts": {
+                  "/Font": 2
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 6,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "resource_counts": {
+                  "/Font": 3
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 13,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "resource_counts": {
+                  "/Font": 4
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 13,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "resource_counts": {
+                  "/Font": 5
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 3,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "resource_counts": {
+                  "/Font": 6
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 6,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "842",
+                  "595"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "842",
+                  "595"
+                ],
+                "resource_counts": {
+                  "/Font": 3
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 2,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "842",
+                  "595"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "842",
+                  "595"
+                ],
+                "resource_counts": {
+                  "/Font": 4
+                },
+                "rotation": 0
+              }
+            }
+          ]
+        },
+        "layout_sha256": "1b08779b51a55760f026015278e0aa23fd4d0450b83cc2c46b0333185cb7bdc3",
+        "source_bytes": 1357199,
+        "source_id": "treasury-vote-health-pdf-54029b9e6efd28b4",
+        "source_object_sha256": "4e2a7b1b9bf2390a38ee23d51b911874cddd608fb252612ab906b219007330d5",
+        "source_title": "Vote Health - The Estimates of Appropriations 1999/00",
+        "status": "baseline_recorded"
+      },
+      {
+        "family": "treasury_vote_health_document",
+        "layout": {
+          "metadata_keys": [
+            "/Author",
+            "/CreationDate",
+            "/Creator",
+            "/Keywords",
+            "/ModDate",
+            "/Producer",
+            "/Subject",
+            "/Title"
+          ],
+          "page_count": 12,
+          "page_layouts": [
+            {
+              "page_count": 1,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "resource_counts": {
+                  "/Font": 1
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 2,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "resource_counts": {
+                  "/Font": 4
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 8,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "842",
+                  "595"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "842",
+                  "595"
+                ],
+                "resource_counts": {
+                  "/Font": 3
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 1,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "842",
+                  "595"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "842",
+                  "595"
+                ],
+                "resource_counts": {
+                  "/Font": 4
+                },
+                "rotation": 0
+              }
+            }
+          ]
+        },
+        "layout_sha256": "04567e93973b28d42096503fbb5e53cd9553727a7b96362b89b6f9af2af34774",
+        "source_bytes": 613670,
+        "source_id": "treasury-vote-health-pdf-e6e53e9c0c008d22",
+        "source_object_sha256": "a492b49c712c7c60fd31478c51df25225e3193fe4a2dd094fb899b11a588d292",
+        "source_title": "Vote Health - The Supplementary Estimates of Appropriations 1998/99",
+        "status": "baseline_recorded"
+      },
+      {
+        "family": "treasury_vote_health_document",
+        "layout": {
+          "metadata_keys": [
+            "/Author",
+            "/CreationDate",
+            "/Creator",
+            "/Keywords",
+            "/ModDate",
+            "/Producer",
+            "/Subject",
+            "/Title"
+          ],
+          "page_count": 49,
+          "page_layouts": [
+            {
+              "page_count": 1,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "resource_counts": {
+                  "/Font": 1
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 2,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "resource_counts": {
+                  "/Font": 2
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 8,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "resource_counts": {
+                  "/Font": 3
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 13,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "resource_counts": {
+                  "/Font": 4
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 14,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "resource_counts": {
+                  "/Font": 5
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 3,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "595",
+                  "842"
+                ],
+                "resource_counts": {
+                  "/Font": 6
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 6,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "842",
+                  "595"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "842",
+                  "595"
+                ],
+                "resource_counts": {
+                  "/Font": 2
+                },
+                "rotation": 0
+              }
+            },
+            {
+              "page_count": 2,
+              "profile": {
+                "annotation_count": 0,
+                "crop_box": [
+                  "0",
+                  "0",
+                  "842",
+                  "595"
+                ],
+                "media_box": [
+                  "0",
+                  "0",
+                  "842",
+                  "595"
+                ],
+                "resource_counts": {
+                  "/Font": 3
+                },
+                "rotation": 0
+              }
+            }
+          ]
+        },
+        "layout_sha256": "574334331a8f79b4d2326fe9fcbf282d5058d8de19f6a4b49be81416a1e2814d",
+        "source_bytes": 1169732,
+        "source_id": "treasury-vote-health-pdf-f0c9dd2e768da2d6",
+        "source_object_sha256": "819a006df9c280acfb20c34079eaa31065014b0871f351ee92ba2ede9b970008",
+        "source_title": "Vote Health - The Estimates of Appropriations 1998/99",
+        "status": "baseline_recorded"
+      }
+    ],
+    "numeric_facts_emitted": 0,
+    "prior_recorded_rows_unchanged": 56,
+    "prior_report_sha256": "f54157679466382b665e228a5abba26388296f95b603184ff868cb188b1ec698",
+    "producer_head": "2fe286c722009702ad87856e6197c03990c4f7a9",
+    "publication": "not_performed",
+    "repeat_bytes_equal": true,
+    "repeat_report_sha256": "481f1e486e2f96943710cad49a2a8bdf8eb20f815399090577521399d514df9b",
+    "rights": "not_evaluated",
+    "source_count": 59,
+    "source_fixity_unchanged": true,
+    "status": "qualified_geometry_only",
+    "summary": {
+      "family_count": 1,
+      "layout_baseline_count": 59,
+      "layout_unavailable_count": 0,
+      "pdf_capture_count": 59
+    }
+  },
+  "exec_exit": 0,
+  "exec_session": 68097,
+  "head": "2fe286c722009702ad87856e6197c03990c4f7a9",
+  "kernel_lease_free": true,
+  "report_sha256": "481f1e486e2f96943710cad49a2a8bdf8eb20f815399090577521399d514df9b",
+  "schema_version": "archive-govt-nz.health-readable-pdf-layout-qualification/v1",
+  "status": "passed",
+  "summary_sha256": "192f4d1972fb079ffcc6fccecafb04c6bf260a3f9630180bbf0fd276ae82e893",
+  "tree": "f5477fbadf475c90e5b7f03611bf3b6f38762ee6"
+}

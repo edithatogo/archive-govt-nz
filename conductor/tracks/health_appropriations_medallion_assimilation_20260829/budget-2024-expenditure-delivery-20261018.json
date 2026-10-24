@@ -1,0 +1,65 @@
+{
+  "all_checks": "SUCCESS",
+  "clean_before_cleanup": true,
+  "equal_trees": true,
+  "head": "9d882d4605a50cde110808cb1b4214bb40baf97a",
+  "head_and_merge_ancestors": true,
+  "hosted_full": {
+    "macos": {
+      "all32stage_headers_verified": true,
+      "job": 117607490594,
+      "log_sha256": "5602e08041d8aceaecb299b3ae116b765ba43f0348093b0ae91fb70b2f60c6e0",
+      "pytest_summary": [
+        "8031",
+        "30",
+        "18",
+        "736.78"
+      ]
+    },
+    "ubuntu": {
+      "all32stage_headers_verified": true,
+      "job": 117607490515,
+      "log_sha256": "cbb1fab5a4d631b5e588da3d4b5f0430a3b5d0ce3dee4c071b7d985c066f2cb2",
+      "pytest_summary": [
+        "8031",
+        "30",
+        "18",
+        "508.99"
+      ]
+    },
+    "windows": {
+      "all32stage_headers_verified": true,
+      "job": 117607490545,
+      "log_sha256": "4b64507523300308dceb55c331170f85c5963f798e877fb5d8131ed6e5d81faa",
+      "pytest_summary": [
+        "8025",
+        "36",
+        "18",
+        "778.58"
+      ]
+    }
+  },
+  "local_full_failures_preserved": true,
+  "local_full_pass_claim": false,
+  "local_topic_deleted": true,
+  "merge": "d95a76a82456b5e4d38c3b05adeed2a65f8502d5",
+  "merged_at": "2026-10-18T06:57:00Z",
+  "open_codeql_alerts": 0,
+  "origin_main": "d95a76a82456b5e4d38c3b05adeed2a65f8502d5",
+  "pr": 718,
+  "primary_retained": true,
+  "remote_topic_absent": true,
+  "required_checks": [
+    "Assurance (macos-latest)",
+    "Assurance (ubuntu-latest)",
+    "Assurance (windows-latest)",
+    "CodeQL",
+    "analyze",
+    "codecov/patch",
+    "lint"
+  ],
+  "review_threads_resolved": 0,
+  "status": "merged_and_topic_refs_pruned",
+  "tree": "7d6b0feaf03062943a673c0dc7bf0acfb7956f60",
+  "unique_commits": 0
+}

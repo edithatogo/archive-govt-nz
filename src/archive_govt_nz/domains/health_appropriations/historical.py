@@ -22,6 +22,7 @@ from archive_govt_nz.domains.health_appropriations.workbook_common import (
     encode_json,
     identity,
     source_context,
+    verified_payload,
     verified_snapshot,
     write_workbook_outputs,
 )
@@ -366,20 +367,19 @@ def _rows(
     return facts, lineage, selected
 
 
-def normalize_historical_workbook(
-    source: Path,
-    output_dir: Path,
+def extract_historical_snapshot(
+    payload: bytes,
     *,
     expected_sha256: str,
     source_locator: str,
     source_vintage: str,
     observed_at: str,
-) -> dict[str, object]:
-    """Write separately identified historical currency observations from originals."""
+) -> tuple[dict[str, pa.Table], dict[str, object]]:
+    """Extract native typed products from bounded, hash-verified Bronze bytes."""
     context = source_context(
         expected_sha256, source_locator, source_vintage, observed_at
     )
-    payload = verified_snapshot(source, expected_sha256, max_bytes=64 * 1024 * 1024)
+    verified_payload(payload, expected_sha256, max_bytes=64 * 1024 * 1024)
     inventory = inventory_workbook(BytesIO(payload))
     tokens = _number_tokens(payload)
     book = load_workbook(BytesIO(payload), data_only=False, keep_links=True)
@@ -424,8 +424,7 @@ def normalize_historical_workbook(
     finally:
         book.close()
     rejected = sum(row["disposition"] == "rejected" for row in dispositions)
-    return write_workbook_outputs(
-        output_dir,
+    return (
         {
             "historical_facts.parquet": pa.Table.from_pylist(facts, schema=_SCHEMA),
             "field_lineage.parquet": pa.Table.from_pylist(
@@ -457,3 +456,25 @@ def normalize_historical_workbook(
             "workbook_inventory": inventory,
         },
     )
+
+
+def normalize_historical_workbook(
+    source: Path,
+    output_dir: Path,
+    *,
+    expected_sha256: str,
+    source_locator: str,
+    source_vintage: str,
+    observed_at: str,
+) -> dict[str, object]:
+    """Persist the unchanged native historical package from a guarded path."""
+    source_context(expected_sha256, source_locator, source_vintage, observed_at)
+    payload = verified_snapshot(source, expected_sha256, max_bytes=64 * 1024 * 1024)
+    tables, manifest = extract_historical_snapshot(
+        payload,
+        expected_sha256=expected_sha256,
+        source_locator=source_locator,
+        source_vintage=source_vintage,
+        observed_at=observed_at,
+    )
+    return write_workbook_outputs(output_dir, tables, manifest)

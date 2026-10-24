@@ -1,0 +1,32 @@
+{
+  "coverage_floor_percent": 80,
+  "focused": {
+    "modules": [
+      "test_budget_expenditure_2023.py",
+      "test_budget_expenditure_2024.py",
+      "test_budget_2022.py",
+      "test_budget.py"
+    ],
+    "passed": 72,
+    "seconds": 33.24
+  },
+  "full_harness": "pending_original_run_before_PR",
+  "native": "pending_reuse_prior2023_and2024_four_file_packages",
+  "original_stage_cap_seconds": 900,
+  "proof_sha256": {
+    "routing-focused-green-1.log": "b1bc69b9c29e4032bff666f5ee12f5d5258a86118e9903438ea71e2bb284fe06",
+    "routing-pyright-1.log": "f552d237ad0bd249c05f97eb62dbc65d2d0e4a5fe2346608e10fb7838dba9ed1",
+    "routing-red-1.log": "af9c619710de9597ca1d8bb4262d966051a65fc978c21b89e6b3cd6d0ddd9b76"
+  },
+  "protected_delivery": "pending",
+  "red": {
+    "cause": "Shared registry returned no facts for either pinned edition",
+    "failed": 2,
+    "seconds": 2.17
+  },
+  "rights_currency_periods_and_publication": "unchanged_not_admitted",
+  "schema_version": "archive-govt-nz.health-budget-edition-routing/v1",
+  "scope": "Shared registry and legacy normalizer select existing hash-bound expenditure2023/2024 profiles; generic fallback retained for other editions.",
+  "static": "Ruff/check passed after wrapping two imports; focused Pyright passed",
+  "tests": "Extend two existing contract cases; no added test count. Formatting-only import wrapping followed focused pass."
+}

@@ -1,0 +1,188 @@
+{
+  "all_candidate_bytes_equal": true,
+  "bronze_rebuild": "not_performed",
+  "full_health_completion": "not_asserted",
+  "gold_inputs_unchanged": true,
+  "hosted_ci_blocker": {
+    "fail_ci_if_error": true,
+    "failure": "Codecov CLI download TLS handshake failure",
+    "hosted_final_head": "pending",
+    "observed_attempts": 2,
+    "oidc": "retained",
+    "resolution": "official GitHub v11.3.1 binary with required pinned SHA256 verification",
+    "sha256": "ca1d64196d2d34771084afe76ea657d581bf628e31d993ff8e52ea09cc88a56d"
+  },
+  "independent_builds": 2,
+  "native_output": {
+    "external_root": "ArchiveGovtNZ/health-appropriations",
+    "relative_path": "assurance/gold-discovery-20261005-v2"
+  },
+  "native_receipt_sha256": "19da22dc6bc1fa9dee8ea1233048b685481a822e43a68708afca4dfd4cbf72d9",
+  "payload_staging": "not_performed",
+  "production_module_sha256": "91883b589b58f63a39b790af79b8e7101fe3f8af1bc1c3629ab0cd32b58706fd",
+  "recipe_sha256": "d1f16b463a0193224641161b087018641cf990300af462127850162d03fc1cd0",
+  "repository_validation": {
+    "coverage_floor_percent": 80,
+    "coverage_percent": 97.87,
+    "full_health_completion": "not_asserted",
+    "scoped_phase_review": "passed",
+    "status": "passed",
+    "tests_passed": 7474,
+    "tests_skipped": 10
+  },
+  "runs": [
+    {
+      "exclusive_cli_exit_2": true,
+      "independent_gold_inventory_and_all_columns": "passed",
+      "inventory": {
+        "MANIFEST.json": "854f4eadaabce73bd43e036c3a216a307048d0aa560af4bd16587efcbc3be791",
+        "croissant.json": "5ff45284f98c2cce8ef3fd792b7eebf46baaf8def5c06ca61d8fca8d774cb3aa",
+        "profile-validation.json": "7bfd055c303cbfd6c9b44be1c31f0cc21ff1e1c09f2237fd6a41cc742d41e634",
+        "ro-crate-metadata.json": "92fa222e2b373c0186aa5ba874f0492bfa91c187bb4f4ca12d0ef38937916ef9"
+      },
+      "offline_rdf_with_external_access_denied": {
+        "croissant_triples": 1098,
+        "ro_crate_triples": 65
+      },
+      "receipt": {
+        "command": "health-appropriations-build-gold-discovery-candidates",
+        "full_conformance": "not_asserted",
+        "manifest_sha256": "854f4eadaabce73bd43e036c3a216a307048d0aa560af4bd16587efcbc3be791",
+        "release_readiness": "blocked",
+        "schema_version": "archive-govt-nz.health-gold-discovery-candidates/v1",
+        "status": "written",
+        "verification": {
+          "full_conformance": "not_asserted",
+          "manifest_sha256": "854f4eadaabce73bd43e036c3a216a307048d0aa560af4bd16587efcbc3be791",
+          "release_readiness": "blocked",
+          "schema_version": "archive-govt-nz.health-gold-discovery-candidates/v1",
+          "status": "verified_local_candidates"
+        }
+      },
+      "report": {
+        "croissant": {
+          "missing_content_urls": 10,
+          "missing_dataset_properties": [
+            "creator",
+            "datePublished",
+            "dct:conformsTo",
+            "license",
+            "url"
+          ],
+          "target_specification": "http://mlcommons.org/croissant/1.0"
+        },
+        "fields": 101,
+        "file_objects": 10,
+        "full_conformance": "not_asserted",
+        "input_manifest_sha256": [
+          "1b79d6f582dc8e9935e16bce2d3fe78b78d77e2a68aacf201ac9118b28462fa2",
+          "e8c7efda7773368bcee1b7f596f373c0aa6ec3f4453485b9b6fb9cc447ebd5fc"
+        ],
+        "ml_loading": "not_validated_custom_arrow_type_identifiers",
+        "payload_staging": "not_performed",
+        "publication": "not_performed",
+        "recordsets": 5,
+        "release_readiness": "blocked",
+        "rights": "not_evaluated",
+        "ro_crate": {
+          "descriptor_conformance_assertion": "withheld",
+          "missing_root_properties": [
+            "datePublished",
+            "license"
+          ],
+          "target_specification": "https://w3id.org/ro/crate/1.1"
+        },
+        "schema_version": "archive-govt-nz.health-gold-discovery-candidates/v1",
+        "source_reverification": "not_performed",
+        "status": "passed_local_inventory_contract"
+      },
+      "verification": {
+        "full_conformance": "not_asserted",
+        "manifest_sha256": "854f4eadaabce73bd43e036c3a216a307048d0aa560af4bd16587efcbc3be791",
+        "release_readiness": "blocked",
+        "schema_version": "archive-govt-nz.health-gold-discovery-candidates/v1",
+        "status": "verified_local_candidates"
+      }
+    },
+    {
+      "exclusive_cli_exit_2": true,
+      "independent_gold_inventory_and_all_columns": "passed",
+      "inventory": {
+        "MANIFEST.json": "854f4eadaabce73bd43e036c3a216a307048d0aa560af4bd16587efcbc3be791",
+        "croissant.json": "5ff45284f98c2cce8ef3fd792b7eebf46baaf8def5c06ca61d8fca8d774cb3aa",
+        "profile-validation.json": "7bfd055c303cbfd6c9b44be1c31f0cc21ff1e1c09f2237fd6a41cc742d41e634",
+        "ro-crate-metadata.json": "92fa222e2b373c0186aa5ba874f0492bfa91c187bb4f4ca12d0ef38937916ef9"
+      },
+      "offline_rdf_with_external_access_denied": {
+        "croissant_triples": 1098,
+        "ro_crate_triples": 65
+      },
+      "receipt": {
+        "command": "health-appropriations-build-gold-discovery-candidates",
+        "full_conformance": "not_asserted",
+        "manifest_sha256": "854f4eadaabce73bd43e036c3a216a307048d0aa560af4bd16587efcbc3be791",
+        "release_readiness": "blocked",
+        "schema_version": "archive-govt-nz.health-gold-discovery-candidates/v1",
+        "status": "written",
+        "verification": {
+          "full_conformance": "not_asserted",
+          "manifest_sha256": "854f4eadaabce73bd43e036c3a216a307048d0aa560af4bd16587efcbc3be791",
+          "release_readiness": "blocked",
+          "schema_version": "archive-govt-nz.health-gold-discovery-candidates/v1",
+          "status": "verified_local_candidates"
+        }
+      },
+      "report": {
+        "croissant": {
+          "missing_content_urls": 10,
+          "missing_dataset_properties": [
+            "creator",
+            "datePublished",
+            "dct:conformsTo",
+            "license",
+            "url"
+          ],
+          "target_specification": "http://mlcommons.org/croissant/1.0"
+        },
+        "fields": 101,
+        "file_objects": 10,
+        "full_conformance": "not_asserted",
+        "input_manifest_sha256": [
+          "1b79d6f582dc8e9935e16bce2d3fe78b78d77e2a68aacf201ac9118b28462fa2",
+          "e8c7efda7773368bcee1b7f596f373c0aa6ec3f4453485b9b6fb9cc447ebd5fc"
+        ],
+        "ml_loading": "not_validated_custom_arrow_type_identifiers",
+        "payload_staging": "not_performed",
+        "publication": "not_performed",
+        "recordsets": 5,
+        "release_readiness": "blocked",
+        "rights": "not_evaluated",
+        "ro_crate": {
+          "descriptor_conformance_assertion": "withheld",
+          "missing_root_properties": [
+            "datePublished",
+            "license"
+          ],
+          "target_specification": "https://w3id.org/ro/crate/1.1"
+        },
+        "schema_version": "archive-govt-nz.health-gold-discovery-candidates/v1",
+        "source_reverification": "not_performed",
+        "status": "passed_local_inventory_contract"
+      },
+      "verification": {
+        "full_conformance": "not_asserted",
+        "manifest_sha256": "854f4eadaabce73bd43e036c3a216a307048d0aa560af4bd16587efcbc3be791",
+        "release_readiness": "blocked",
+        "schema_version": "archive-govt-nz.health-gold-discovery-candidates/v1",
+        "status": "verified_local_candidates"
+      }
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-gold-discovery-assurance/v1",
+  "source_code_sha256": {
+    "src/archive_govt_nz/cli.py": "9cfeed7300546e5f5ce6245ad1bf32eb9857d5228d226c1bb46cf2e8db967d1d",
+    "src/archive_govt_nz/domains/health_appropriations/gold_discovery_profiles.py": "91883b589b58f63a39b790af79b8e7101fe3f8af1bc1c3629ab0cd32b58706fd"
+  },
+  "source_reverification": "not_performed",
+  "status": "passed"
+}

@@ -1,0 +1,77 @@
+{
+  "all32_on_each_platform": true,
+  "all7_exact_head_success": true,
+  "broader_track": "incomplete",
+  "checked_head": "625a8b8e547aa61e938fdd281fe3472b55542720",
+  "checked_tree": "9e17847b58863d3d243f1d7f13a523f6c3fc4f10",
+  "cleanup": {
+    "clean": true,
+    "head": "ae4f870c5dbe5ecfb82d86bf290142af48885279",
+    "local_topic_absent": true,
+    "primary_retained": true,
+    "remote_topic_absent": true,
+    "source_head": "625a8b8e547aa61e938fdd281fe3472b55542720",
+    "stale_tracking_ref_absent": true,
+    "unique_changes": 0,
+    "worktrees": "worktree /Volumes/PortableSSD/GitHub/archive-govt-nz\nHEAD ae4f870c5dbe5ecfb82d86bf290142af48885279\nbranch refs/heads/main"
+  },
+  "earlier_hosted_failure": "b2212f7c macOS original900s test cap retained in private hosted-attempt-1; no gate weakened",
+  "hosted_full": {
+    "macos": {
+      "all32stage_headers_verified": true,
+      "job": 117705891496,
+      "log_sha256": "c71d2b0b98859019a8601aa8cfe01e412af9dcd1ffc2018a8bda00e41dc773fd",
+      "pytest_summary": [
+        "8051",
+        "30",
+        "18",
+        "794.62"
+      ]
+    },
+    "ubuntu": {
+      "all32stage_headers_verified": true,
+      "job": 117705891679,
+      "log_sha256": "9f41fd93ccd5bdbbf6e0eab8e03a8685481daadf9b0f471827808ab1c46026b2",
+      "pytest_summary": [
+        "8051",
+        "30",
+        "18",
+        "414.64"
+      ]
+    },
+    "windows": {
+      "all32stage_headers_verified": true,
+      "job": 117705891675,
+      "log_sha256": "84cd3f0ec9d613d007bab732f969fb451554a7f0e7f08463681ed3cad8fec5d4",
+      "pytest_summary": [
+        "8045",
+        "36",
+        "18",
+        "816.03"
+      ]
+    }
+  },
+  "local_full_pass": false,
+  "merge_commit": "ae4f870c5dbe5ecfb82d86bf290142af48885279",
+  "merge_guard_sha256": "5ef2afb307e577912f17f1d946f7a490c72f800e147941a3b799238777e0dd43",
+  "merged_at": "2026-10-18T15:13:09Z",
+  "native_product_repeat_receipt": "context-reader-startup-native-20261018.json",
+  "open_CodeQL_alerts": 0,
+  "original_local_attempt": "context-reader-startup-assurance-20261018.json",
+  "pr": 723,
+  "required_checks": [
+    "Assurance (macos-latest)",
+    "Assurance (ubuntu-latest)",
+    "Assurance (windows-latest)",
+    "CodeQL",
+    "analyze",
+    "codecov/patch",
+    "lint"
+  ],
+  "rights_currency_joins_publication": "unchanged_not_admitted",
+  "schema_version": "archive-govt-nz.health-context-reader-delivery/v1",
+  "standalone_operational_replay": "context-reader-startup-replay-20261019-v1.json",
+  "status": "merged_and_clean_topic_pruned",
+  "unresolved_review_threads": 0,
+  "url": "https://github.com/edithatogo/archive-govt-nz/pull/723"
+}

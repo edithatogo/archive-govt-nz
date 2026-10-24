@@ -1,0 +1,1424 @@
+{
+  "captured": 75,
+  "composition": {
+    "components": [
+      {
+        "name": "official-capture-2026-09-30-health-refresh.json",
+        "sha256": "2de49f07c877aab196afae572db32bfc2d48fd4340eb17c9a4bfb3bb2cc357e7"
+      },
+      {
+        "name": "official-capture-2026-10-03-vote-health-2008-09.json",
+        "sha256": "e6add5863bceaba7b23c438efc8c6279ad3082e18773e8960fa3cc1c11d9119f"
+      }
+    ],
+    "contract": "health-capture-cumulative-snapshot/v1",
+    "source_census_sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272"
+  },
+  "cutoff": "2026-10-03",
+  "observations": [
+    {
+      "attempts": [
+        {
+          "outcome": "captured",
+          "status_code": 200
+        }
+      ],
+      "etag": "\"b7faaed7\"",
+      "last_modified": "Wed, 16 Sep 2026 22:45:16 GMT",
+      "object_id": "sha256:b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
+      "observation_id": "stats_nz_gdp-588a47c19c9dbc44:9e6491e0e9e0ef0e02e0e80fe2ae577be7ed01f4b6b7534d00f14b0d672ddde7",
+      "observed_at": "2026-09-29T21:28:10.739074Z",
+      "outcome": "captured",
+      "sha256": "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
+      "source_id": "stats_nz_gdp-588a47c19c9dbc44",
+      "validator_state": "present",
+      "warc_path": "attempt-sij9r08f/response.warc",
+      "warc_sha256": "29b1208c7ab036deb64cbe14ba5669eb251a9bf45e90b04d181a609f423081df"
+    },
+    {
+      "attempts": [
+        {
+          "outcome": "captured",
+          "status_code": 200
+        }
+      ],
+      "etag": "\"645061a4-165db\"",
+      "last_modified": "Tue, 02 May 2023 01:04:36 GMT",
+      "object_id": "sha256:2d346a460278fa278eef4fbda3f613d18bc13b486a1f2e21e503a05b5d3f9121",
+      "observation_id": "treasury-vote-health-pdf-2008-09-estimates:0c3fa34edfb87aab2461f1baf05fd8294a16d6c15b63c41d0cd685ce08ab00b7",
+      "observed_at": "2026-10-03T12:34:00.964355Z",
+      "outcome": "captured",
+      "sha256": "2d346a460278fa278eef4fbda3f613d18bc13b486a1f2e21e503a05b5d3f9121",
+      "source_id": "treasury-vote-health-pdf-2008-09-estimates",
+      "validator_state": "present",
+      "warc_path": "attempt-uurtybpj/response.warc",
+      "warc_sha256": "960260feb1a7a40f46dcc2178fc6a2761ddb542a01316b42853a509d5582ccf6"
+    }
+  ],
+  "results": [
+    {
+      "blake3": "ba4350936f7b959aacf8013a24be4fe314040555770ec21c03db152462278404",
+      "bytes": 2126154,
+      "content_type": "application/zip",
+      "object_id": "sha256:521e7649b3814c8de2efa2e72502c8e35c6db7a94d6f84ebc22fd3fa9f7976d4",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "521e7649b3814c8de2efa2e72502c8e35c6db7a94d6f84ebc22fd3fa9f7976d4",
+      "source_id": "befu_2026-002",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-charts-data.xlsx",
+      "warc_sha256": "4a637066399a9e7ea3e0b36cd2ecfd4eb0d291e415bcce2c21b6f79fc82e8d34"
+    },
+    {
+      "blake3": "9e5e5b1b3fd650453c9ba20c9282b703fd6c261d2b669d0065598c04db9d4ae1",
+      "bytes": 193830,
+      "content_type": "application/zip",
+      "object_id": "sha256:313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "313ee040abd9a332cc36245da5a0c2cb0d38fe2cedc013d731c1f12db463b0d1",
+      "source_id": "befu_2026-003",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-data-expense-tables.xlsx",
+      "warc_sha256": "991b476de9254bea8e657b197f25b50f79c5acc51f70dee0a5a8413de15d9307"
+    },
+    {
+      "blake3": "9c6c1da837420da60489e20a0a6849ff1e249224dcbf3c35c97964ff2725cf55",
+      "bytes": 48676,
+      "content_type": "application/zip",
+      "object_id": "sha256:632afd3c24b4ca9c9f2066dd1112f4e5d6a0c9c503ae20f845d4153a7f2ac472",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "632afd3c24b4ca9c9f2066dd1112f4e5d6a0c9c503ae20f845d4153a7f2ac472",
+      "source_id": "befu_2026-004",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://budget.govt.nz/budget/excel/befu2026/befu26-economic-forecasts-data.xlsx",
+      "warc_sha256": "d27afddff5da979fec396751be68a03eb132c6b75a70a008672572cec8887589"
+    },
+    {
+      "blake3": "932b4607d1405329668622a410aa4fbf85fe4e50ce76910a03aeafcc11129b27",
+      "bytes": 918842,
+      "content_type": "application/zip",
+      "object_id": "sha256:3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0",
+      "source_id": "budget_2026-000",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://budget.govt.nz/budget/excel/data/b26-expenditure-data.xlsx",
+      "warc_sha256": "94a9637ed1c1e363a5a0a0cab84268343982ae11fbba92c55cb3f20cd579ea55"
+    },
+    {
+      "blake3": "0a0cb22ba90effa0fa16f6270d2b0e219ce405b536aef28431b0cf03a26e6cae",
+      "bytes": 104536,
+      "content_type": "application/zip",
+      "object_id": "sha256:8243f6a3f9575af5ee048133f2695f3c4764ff7d86e7a74849fdafcf478cbfdb",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "8243f6a3f9575af5ee048133f2695f3c4764ff7d86e7a74849fdafcf478cbfdb",
+      "source_id": "budget_2026-001",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://budget.govt.nz/budget/excel/data/b26-revenue-data.xlsx",
+      "warc_sha256": "6ecd14b38e9e78f54224919d90af6055817c124e224c11fbb5cc1e2d4e5e342e"
+    },
+    {
+      "blake3": "7b453384b859582488b7033e62a25318492126189647c1b6d4d8bfc0cb29ccb8",
+      "bytes": 116265,
+      "content_type": "application/zip",
+      "object_id": "sha256:de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+      "source_id": "fiscal_time_series-007",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx",
+      "warc_sha256": "66eb43594840a083c4d871000cfd4b16068ba276ce88aaea2aa19bd13cde01e6"
+    },
+    {
+      "blake3": "ce15a30f9fb525dd484405e7a9f33363508c2de1942bb2b3eb8ee7ad3b521758",
+      "bytes": 1949413,
+      "content_type": "application/zip",
+      "object_id": "sha256:588bb95b3c8632261b40f90eecf42ecb89559103d7ab277c0046ee30a995a4b0",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "588bb95b3c8632261b40f90eecf42ecb89559103d7ab277c0046ee30a995a4b0",
+      "source_id": "hyefu_2025-005",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://budget.govt.nz/budget/excel/hyefu2025/hyefu25-charts-data.xlsx",
+      "warc_sha256": "ab0f7793a92625619039640ef0f3d0105bbff1c6d56a4dccb6e4c75468ecf687"
+    },
+    {
+      "blake3": "99034629b2b6c2b06799e7d12e0ab83d5afdab8738b0a3ff5e9691910f2c3219",
+      "bytes": 191581,
+      "content_type": "application/zip",
+      "object_id": "sha256:f9f9190a69ce0a7c53b89d690d50170e2a6a457e6821afeb93edc08cef4b9c7d",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "f9f9190a69ce0a7c53b89d690d50170e2a6a457e6821afeb93edc08cef4b9c7d",
+      "source_id": "hyefu_2025-006",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://budget.govt.nz/budget/excel/hyefu2025/hyefu25-data-expense-tables.xlsx",
+      "warc_sha256": "69c4497e45ce1751075745923a0c35beff4ee84d8c78a086a31d5a0c951e4c12"
+    },
+    {
+      "blake3": "86f8a0f032dec3038290c5e3fad6b31a9249051733f86901d8d3f111cd40f29f",
+      "bytes": 516,
+      "content_type": "text/csv; charset=UTF-8",
+      "object_id": "sha256:c1e7758667b8255e049603de8325d732f34a76e6099e0fe4de6553a36d48e9fc",
+      "rights": {
+        "attribution": "Ministry of Health New Zealand",
+        "evidence": "https://www.health.govt.nz/about-this-site/copyright",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "c1e7758667b8255e049603de8325d732f34a76e6099e0fe4de6553a36d48e9fc",
+      "source_id": "moh_vote_health-008",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.health.govt.nz/system/files/2025-08/hair2024-fig27.csv",
+      "warc_sha256": "276c33b23616b96a074c50e443d48e5c18945253419a5b9e6d930b9a6cae8ee0"
+    },
+    {
+      "blake3": "e7aaff7794b1260ef60f8e2e5f3f6a8e0b18594db71fb3b678483c11aaa77589",
+      "bytes": 622,
+      "content_type": "text/csv; charset=UTF-8",
+      "object_id": "sha256:7b9a51643550e3d890f4f341f27346d3466708fe924702ade4a731d1bb6266e4",
+      "rights": {
+        "attribution": "Ministry of Health New Zealand",
+        "evidence": "https://www.health.govt.nz/about-this-site/copyright",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "7b9a51643550e3d890f4f341f27346d3466708fe924702ade4a731d1bb6266e4",
+      "source_id": "moh_vote_health-009",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.health.govt.nz/system/files/2025-08/hair2024-fig28.csv",
+      "warc_sha256": "c9e9ff02a8f0577c93b1ec3dce8afa09551394427f8d9bb7856be647f4738fad"
+    },
+    {
+      "blake3": "757579a3912d352ac7dbfe61ef6c04cf7f9837831587ee7ad92c81c7dd50c1c9",
+      "bytes": 548867,
+      "content_type": "text/html; charset=utf-8",
+      "object_id": "sha256:eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea",
+      "rights": {
+        "attribution": "Pharmac Te Pataka Whaioranga",
+        "evidence": "https://www.pharmac.govt.nz/about-this-site/copyright",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea",
+      "source_id": "pharmac_cpb-010",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.pharmac.govt.nz/medicine-funding-and-supply/the-funding-process/setting-and-managing-the-combined-pharmaceutical-budget-cpb/budget-bid-information",
+      "warc_sha256": "9c96475019f2784eafe3434a0fb8ffb0c81c183c93ba8a134ae01a8060574f90"
+    },
+    {
+      "blake3": "9fb638d7d4e83999f3789471875644c219a84291d21696393912d04c48b6384a",
+      "bytes": 2917074,
+      "content_type": "application/octet-stream",
+      "object_id": "sha256:f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+      "rights": {
+        "attribution": "Stats NZ Tatauranga Aotearoa",
+        "evidence": "https://www.stats.govt.nz/about-us/copyright/",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+      "source_id": "stats_nz_cpi-053a0705526fac8d",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.stats.govt.nz/assets/Uploads/Consumers-price-index/Consumers-price-index-June-2026-quarter/Download-data/consumers-price-index-june-2026-quarter-index-numbers.csv",
+      "warc_sha256": "46c14f159010c594f8ff75db09ca3400976ff957c88ce3a73f6d4f12fec0e7ac"
+    },
+    {
+      "blake3": "f48a3f45735580130e860d026330fe79c96b181ead537872edae25b6c583f04e",
+      "bytes": 49887,
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "object_id": "sha256:a7326e84e7704446a18e5c8942f99901a452b2170af4228e8a5c242a5532ed21",
+      "rights": {
+        "attribution": "Stats NZ Tatauranga Aotearoa",
+        "evidence": "https://www.stats.govt.nz/about-us/copyright/",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "a7326e84e7704446a18e5c8942f99901a452b2170af4228e8a5c242a5532ed21",
+      "source_id": "stats_nz_gdp-9fc80ed4b7f234b2",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.stats.govt.nz/assets/Uploads/Gross-domestic-product/Gross-domestic-product-March-2026-quarter/Download-data/gross-domestic-product-march-2026-quarter-current-price-income-and-expenditure.xlsx",
+      "warc_sha256": "a0f16f207f0e346627de9cc7c2656026eed9cdb737aad6b01ce5e54516138648"
+    },
+    {
+      "blake3": "2aa380ed3b595922716b86217693bbfe001917933a53871c6355f2481dc8f1f5",
+      "bytes": 269401,
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "object_id": "sha256:315f48f981cb237bbd1c4834676fd030f84e7eddc7f7660402956c05ca53a8c0",
+      "rights": {
+        "attribution": "Stats NZ Tatauranga Aotearoa",
+        "evidence": "https://www.stats.govt.nz/about-us/copyright/",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "315f48f981cb237bbd1c4834676fd030f84e7eddc7f7660402956c05ca53a8c0",
+      "source_id": "stats_nz_population-806dead2a5b8ab69",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.stats.govt.nz/assets/Uploads/Labour-market-statistics/Labour-market-statistics-June-2026-quarter/Download-data/household-labour-force-survey-june-2026-quarter.xlsx",
+      "warc_sha256": "39dd2fecc7ab5c496ba293c2eb5572825d8584b41c28cbf4961ccc3998146cc1"
+    },
+    {
+      "blake3": "d527667f30ca6096a5d33052f4954d181de9ed36888b05f4cc8313446d2d5c1d",
+      "bytes": 124556,
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "object_id": "sha256:1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97",
+      "rights": {
+        "attribution": "Stats NZ Tatauranga Aotearoa",
+        "evidence": "https://www.stats.govt.nz/about-us/copyright/",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97",
+      "source_id": "stats_nz_qes-faab0efe46470af8",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.stats.govt.nz/assets/Uploads/Labour-market-statistics/Labour-market-statistics-June-2026-quarter/Download-data/quarterly-employment-survey-june-2026-quarter.xlsx",
+      "warc_sha256": "d3eb7fb386b32f1c6cea600d779d240fa72bac63fbcc3ecdd7bc5237de10f5c1"
+    },
+    {
+      "blake3": "e9a05589317cfeb7fc52946cac7878edda7fc30604bba04b54ae7b36cdb031b3",
+      "bytes": 476767,
+      "content_type": "application/pdf",
+      "object_id": "sha256:5a07182b093c129e4e6ea69bb47679a1ba79ec96b4cdf6196d4590b42c17531f",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "5a07182b093c129e4e6ea69bb47679a1ba79ec96b4cdf6196d4590b42c17531f",
+      "source_id": "treasury-vote-health-pdf-035ffd1ba849d25b",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2017-05/suppest17health.pdf",
+      "warc_sha256": "bc0fc6a565318c2f81ede4813e006830803f8662a9c01d224a6690d3ac52b805"
+    },
+    {
+      "blake3": "37b30698cf3ab50ebc65e1172cf8e2358673b50adb265c83b6dd41a9f56d2500",
+      "bytes": 130451,
+      "content_type": "application/pdf",
+      "object_id": "sha256:deb17095776a3441607a29d17bfe10c2d2c8f186c5ff9b2c3fdef8d0bbe1eb7d",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "deb17095776a3441607a29d17bfe10c2d2c8f186c5ff9b2c3fdef8d0bbe1eb7d",
+      "source_id": "treasury-vote-health-pdf-07fb6437f104d1f8",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/supp05health.pdf",
+      "warc_sha256": "6e2699b5147f0f76890aee0ade923d5c18cd719c3cab4daf5ebeedfae6c98814"
+    },
+    {
+      "blake3": "f264d890b2b1ab2644768dd38322199c7bbf9f37746bdd0ce9b71e8eddb932eb",
+      "bytes": 995851,
+      "content_type": "application/pdf",
+      "object_id": "sha256:d00952c47c4e6485b0768575ba295ac4da6002ce4c525b5637287b25e32849b9",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "d00952c47c4e6485b0768575ba295ac4da6002ce4c525b5637287b25e32849b9",
+      "source_id": "treasury-vote-health-pdf-0951064262bf028c",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2025-05/est25-v5-health.pdf",
+      "warc_sha256": "ba808f0f6f0392d03b69e830e3ef82aca4fbf118b4fa97e808c5dbd9d4552fe1"
+    },
+    {
+      "blake3": "e076bb05ded08297968526738dc239ea9aca24865c33602700dbad8ef05094a7",
+      "bytes": 1017191,
+      "content_type": "application/pdf",
+      "object_id": "sha256:c55082208ebb42923dd56e3e8ac2ae75318b8fd9ee468c52284bbda0b9b43a20",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "c55082208ebb42923dd56e3e8ac2ae75318b8fd9ee468c52284bbda0b9b43a20",
+      "source_id": "treasury-vote-health-pdf-108f3025b5ec5f8c",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2024-06/est24-v5-health.pdf",
+      "warc_sha256": "0b9961929d6582087bb271bb28dd50daaa304c585a1f4899532a32300f202c36"
+    },
+    {
+      "blake3": "0bd856e0be9f1b14dc57d980cb9214545d682deddded18e1f6a84da13da8c438",
+      "bytes": 361073,
+      "content_type": "application/pdf",
+      "object_id": "sha256:694aece23fdb2eac82d96e5dc075339f39ba481b12b33a03db2de5596cf2a47d",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "694aece23fdb2eac82d96e5dc075339f39ba481b12b33a03db2de5596cf2a47d",
+      "source_id": "treasury-vote-health-pdf-10b7f8eb82fd802f",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2016-05/suppest16health.pdf",
+      "warc_sha256": "e8a3ca454be92afe8fdd01b01e7645002b1322f08bb670ca571eeb44ecb43ef3"
+    },
+    {
+      "blake3": "91151f16dfa9ba55d39b4467d602aad0982f020a23d083ba18c943aef4de05be",
+      "bytes": 584476,
+      "content_type": "application/pdf",
+      "object_id": "sha256:5cacffe39f056f092291d8dc0a5ba2e72851b23da1696a63964b726b7a6ebf8b",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "5cacffe39f056f092291d8dc0a5ba2e72851b23da1696a63964b726b7a6ebf8b",
+      "source_id": "treasury-vote-health-pdf-1822d21d12bf27b6",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2025-05/suppest25health.pdf",
+      "warc_sha256": "812c3fb87c1505aa546eb81537280a099ca519f551022216f9031f34ab55e25c"
+    },
+    {
+      "blake3": "781b4cd9fa2c617c8794a5145a0c43e5869c09a6c61e70681c95a30213bb377d",
+      "bytes": 201019,
+      "content_type": "application/pdf",
+      "object_id": "sha256:19864bad3c28561e065bcbf69df7cb245fe52123aa80d9e3a84ba650815054cb",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "19864bad3c28561e065bcbf69df7cb245fe52123aa80d9e3a84ba650815054cb",
+      "source_id": "treasury-vote-health-pdf-204e7446a15e64f1",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/supp01health.pdf",
+      "warc_sha256": "c34ec4cd9ecfd372d179b925e61034e809a4f944b18994b9c48227297ec48db6"
+    },
+    {
+      "blake3": "539cb3fdbb6e991631cbe9b69916e400d208bf0b982a3b2867988aa61dba886c",
+      "bytes": 319930,
+      "content_type": "application/pdf",
+      "object_id": "sha256:9a269a87a0cef8fc998fc1b012ae9fd734fb48b111504bb7a1ca01cdcf97c2b4",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "9a269a87a0cef8fc998fc1b012ae9fd734fb48b111504bb7a1ca01cdcf97c2b4",
+      "source_id": "treasury-vote-health-pdf-28bd7aee2320eb4d",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/est05health.pdf",
+      "warc_sha256": "8e03f063a6fe847635a7767338504469aa8dae17bee24423a4d3dbc8eede6e81"
+    },
+    {
+      "blake3": "ee5161fbd43fc8dd644664aefb617db179e073ff23dbb1e64d239ba48ca2c6f2",
+      "bytes": 57379,
+      "content_type": "application/pdf",
+      "object_id": "sha256:4cb75bd49333e616f1693b478be3f8e98e8a986aed0485993311febe3fb534cf",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "4cb75bd49333e616f1693b478be3f8e98e8a986aed0485993311febe3fb534cf",
+      "source_id": "treasury-vote-health-pdf-2fc2f6b518bccd82",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2009-05/suppest09health.pdf",
+      "warc_sha256": "115b6fed7c25a0be8fca982549acc5b30a9410d278090287514718b3bb24ab5a"
+    },
+    {
+      "blake3": "753eaebf7db3c0421e58f4539bef2072ce75c342fbeb737e1160591dfc8a4972",
+      "bytes": 470538,
+      "content_type": "application/pdf",
+      "object_id": "sha256:1ec8cf9e4c33d027f3ed02593ab3e8c7cab89883d5b286e0cf4aa4b1e947f5a2",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "1ec8cf9e4c33d027f3ed02593ab3e8c7cab89883d5b286e0cf4aa4b1e947f5a2",
+      "source_id": "treasury-vote-health-pdf-3a6b190885f22e4b",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2014-05/suppest14health.pdf",
+      "warc_sha256": "1b326943e6c2034d162b192436756a7cb5103b72eba12744ce8168eeec33a915"
+    },
+    {
+      "blake3": "7817d5f0f35ff578717b8cdb2682d3bc3b074b67467ebc37af675ce5e8a99b90",
+      "bytes": 220155,
+      "content_type": "application/pdf",
+      "object_id": "sha256:515864508729d71553774d9afe3647b6f61dbe6538ae24516d30f904271cfd99",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "515864508729d71553774d9afe3647b6f61dbe6538ae24516d30f904271cfd99",
+      "source_id": "treasury-vote-health-pdf-442b6f066441fd35",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/est00health.pdf",
+      "warc_sha256": "8507768568a844b61ecde3e5644eafd28f18e0da43f2209102320184115bbca0"
+    },
+    {
+      "blake3": "eed2bc189c511f4b3380f70ef77b4bc882b28c981fc53a76675872318142ac62",
+      "bytes": 980866,
+      "content_type": "application/pdf",
+      "object_id": "sha256:3fc0cc6a193c232e9278389f42dbd9003cff03228ac3c83cbfe58452f5711604",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "3fc0cc6a193c232e9278389f42dbd9003cff03228ac3c83cbfe58452f5711604",
+      "source_id": "treasury-vote-health-pdf-4cad52281f0c61e6",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2017-05/est17-v6-health-v2.pdf",
+      "warc_sha256": "e19b746dd545f78fc1a8d5458c8ce15c9468d21d6d2cfc430af95660ca6c203d"
+    },
+    {
+      "blake3": "50e4087f03f8b4938eaeae616d6bd41da3ee1291e696f01fb28678c17e464bc6",
+      "bytes": 1357199,
+      "content_type": "application/pdf",
+      "object_id": "sha256:4e2a7b1b9bf2390a38ee23d51b911874cddd608fb252612ab906b219007330d5",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "4e2a7b1b9bf2390a38ee23d51b911874cddd608fb252612ab906b219007330d5",
+      "source_id": "treasury-vote-health-pdf-54029b9e6efd28b4",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2009-06/est99health.pdf",
+      "warc_sha256": "6603ddec43cef849c05c51e5795e159c583909030a170647d9e91a20280bf3b8"
+    },
+    {
+      "blake3": "59fbadc370798fd3af80d5c3df6738663c268a0951402e7470a8f8455eb883ee",
+      "bytes": 559898,
+      "content_type": "application/pdf",
+      "object_id": "sha256:fc1cb3f5bc39d5ff7cd2805feaefd3ab1e2c0a3b2157249fb8de9084befce069",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "fc1cb3f5bc39d5ff7cd2805feaefd3ab1e2c0a3b2157249fb8de9084befce069",
+      "source_id": "treasury-vote-health-pdf-58d5cc9631f5a755",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2019-05/suppest19health.pdf",
+      "warc_sha256": "cfa33c859e62d62e3cdb5ed4b51e30e01dba1597974d7655a048ef1ca393ce6c"
+    },
+    {
+      "blake3": "5d90b7068ebd6d5c5e773c0a8601d6d0e8b80bbbe35475d8d6da8bb9127933d6",
+      "bytes": 1233951,
+      "content_type": "application/pdf",
+      "object_id": "sha256:5602df94c5944dad0e97dde2ddc73e79bd3126a7739184bd2fb117e6d6765914",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "5602df94c5944dad0e97dde2ddc73e79bd3126a7739184bd2fb117e6d6765914",
+      "source_id": "treasury-vote-health-pdf-620a8273d0423176",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2023-06/est23-v5-health.pdf",
+      "warc_sha256": "73f936f0041b11a8f16a341866e15286ee7c1292c224fb70bacecce5bad39cfd"
+    },
+    {
+      "blake3": "9ff81d3df45878c383bf6cdfe85668f8396ce6c07a3d58ec09e015aa749196dc",
+      "bytes": 472226,
+      "content_type": "application/pdf",
+      "object_id": "sha256:fccd1fe0001e12f8238e6c4618328eac2da8d26729f997265b05688ec89a2795",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "fccd1fe0001e12f8238e6c4618328eac2da8d26729f997265b05688ec89a2795",
+      "source_id": "treasury-vote-health-pdf-6245cdd071463083",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2007-09/est07health.pdf",
+      "warc_sha256": "d187895cd89625cf31ed92dcf242bdba73134d72b459a6c0e60d6c60be7e34ee"
+    },
+    {
+      "blake3": "41b9e056ca4918a3a9374a54ea93ff60e8ab9c930a6f415611f12648d747806e",
+      "bytes": 523148,
+      "content_type": "application/pdf",
+      "object_id": "sha256:18306b33c7346c984a73a006f68c93ba59ad88c011bc8e877f2bfd87e5e3b7ca",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "18306b33c7346c984a73a006f68c93ba59ad88c011bc8e877f2bfd87e5e3b7ca",
+      "source_id": "treasury-vote-health-pdf-63d9e750b8f3eab0",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2009-05/ise09-v6-pia-health.pdf",
+      "warc_sha256": "6c31c6b3ee166b9ed1863a761d751c5e0c9dd329db0a01278e1a6f964688ada7"
+    },
+    {
+      "blake3": "9615b2e8cd07457d8327ba7515f09e04c66ede7b5f34e06da93f8fede1541a79",
+      "bytes": 522136,
+      "content_type": "application/pdf",
+      "object_id": "sha256:ed7d6b30aa732b5b2b6b5ed85d4e3a530741415c90e3aa8e6753504dc96564b5",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "ed7d6b30aa732b5b2b6b5ed85d4e3a530741415c90e3aa8e6753504dc96564b5",
+      "source_id": "treasury-vote-health-pdf-6907dd245dbd051f",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2010-05/ise10-v6-pia-health.pdf",
+      "warc_sha256": "bd02c3523ccb6830ace7c227dae0678ddb30609f57073e7c74ca6e2a9f1cabd2"
+    },
+    {
+      "blake3": "e6209022ab578bd3fae909c9831c803ed0304e8c20b7f2862eb0960e22fd5af6",
+      "bytes": 1024038,
+      "content_type": "application/pdf",
+      "object_id": "sha256:c997ffecb631e4dfd0ffd8a1e620585b6b963df11f94164adb2ac02cfa391b2e",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "c997ffecb631e4dfd0ffd8a1e620585b6b963df11f94164adb2ac02cfa391b2e",
+      "source_id": "treasury-vote-health-pdf-6941bba9f5f094ca",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2016-05/est16-v6-health.pdf",
+      "warc_sha256": "5ec442ec495efd804b6db6761ace86c8bb605c7c6ead0cdb6b9d892c7bcb102d"
+    },
+    {
+      "blake3": "d55b4fb49d9f34154b61197ac1c423a349bd16135b729f446089476786ee24d2",
+      "bytes": 684571,
+      "content_type": "application/pdf",
+      "object_id": "sha256:40c5c592da96cda884236d1d3dc56e13ca55e83f3b61798343df124ab6ec7e2f",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "40c5c592da96cda884236d1d3dc56e13ca55e83f3b61798343df124ab6ec7e2f",
+      "source_id": "treasury-vote-health-pdf-69c46d1cb70da95c",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2011-05/ise11-v6-pia-health.pdf",
+      "warc_sha256": "8a03d800db3a03bf5db916e9af4c0194c230e5b408bdbbbd89582ca1b390f777"
+    },
+    {
+      "blake3": "605174a556ec93f9496b2cc608fff8953c230b204f44aa5965d93dcf7f5c4144",
+      "bytes": 1049358,
+      "content_type": "application/pdf",
+      "object_id": "sha256:039706f735a3652aa911e4fa7eaf776a6d534271d96e478aad0ce45789351dfb",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "039706f735a3652aa911e4fa7eaf776a6d534271d96e478aad0ce45789351dfb",
+      "source_id": "treasury-vote-health-pdf-6c8a449e4c16f435",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2014-05/est14-v6-health.pdf",
+      "warc_sha256": "6ec60a70e6df913f62fb2aa726deb815b9fb3cfcde7e95ffcba1c9673d816061"
+    },
+    {
+      "blake3": "1f4aef72ce36bf50aa6d4e30dcbb7a7ea0184d76d5c2211431f6f2aead8f8a93",
+      "bytes": 743436,
+      "content_type": "application/pdf",
+      "object_id": "sha256:ebea2a9db0dd1a19b227f0c474d0acb7414505a3874ce4b303bd7ad241262ef1",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "ebea2a9db0dd1a19b227f0c474d0acb7414505a3874ce4b303bd7ad241262ef1",
+      "source_id": "treasury-vote-health-pdf-6d1e5456f194340a",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2018-05/ise13-v6-pia-health.pdf",
+      "warc_sha256": "72ad2f513e1df6b726e0ce489b2970b467492a8f323efa82e6c5a20867649368"
+    },
+    {
+      "blake3": "3ca273f9175da7e0d1a684b30bf189087d6e3574a00880548eec406531e5c8be",
+      "bytes": 90498,
+      "content_type": "application/pdf",
+      "object_id": "sha256:71b905562f6701923961b47578a638a7fbed3731d5d1840fa55b8955300ce0d9",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "71b905562f6701923961b47578a638a7fbed3731d5d1840fa55b8955300ce0d9",
+      "source_id": "treasury-vote-health-pdf-76a91f222ef3e3cc",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2012-05/suppest12health.pdf",
+      "warc_sha256": "ec83e006026a7cc22f8a29b8888d4603c03a4031224eb53e2e531d5cb1b189c4"
+    },
+    {
+      "blake3": "5a4d4e88e1a20eaf258e8f515841f0322cbc595907e7770afff1ccf85607f925",
+      "bytes": 192519,
+      "content_type": "application/pdf",
+      "object_id": "sha256:51283a95a523e1405a6a5634d0c1ed74add62759f6d067f32a8b33a6c9afe5e0",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "51283a95a523e1405a6a5634d0c1ed74add62759f6d067f32a8b33a6c9afe5e0",
+      "source_id": "treasury-vote-health-pdf-78e70bb1b77acf05",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2012-05/isse12-health.pdf",
+      "warc_sha256": "c773d6c7f86eaba82df03485f08a66a0398eb6b8d5618947b1836a5190c3694e"
+    },
+    {
+      "blake3": "1ee574f6004c7643014cf9cec88b0ae73eb3b158b3555af1680750cbe39d21e2",
+      "bytes": 322345,
+      "content_type": "application/pdf",
+      "object_id": "sha256:13338e7ef740191c9e576c56575eca56f38c340fda55e3628165ed3668e55ad8",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "13338e7ef740191c9e576c56575eca56f38c340fda55e3628165ed3668e55ad8",
+      "source_id": "treasury-vote-health-pdf-7fb489b770848e08",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/est03health.pdf",
+      "warc_sha256": "91600ab818a939c9495be91f01a6d71e235bbcda3c8040ed6174e867f5c21c10"
+    },
+    {
+      "blake3": "49d5f3f32dd488cef0e59bb5671ee426a0bd2d90cb7425054dc74c50a0a47d0e",
+      "bytes": 162634,
+      "content_type": "application/pdf",
+      "object_id": "sha256:f319471bd62ca7302a9984c95fc28036cf7aa68113e9cd9733e6c6b5ac587b43",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "f319471bd62ca7302a9984c95fc28036cf7aa68113e9cd9733e6c6b5ac587b43",
+      "source_id": "treasury-vote-health-pdf-82f7370954cb9c4a",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2007-09/supp07health.pdf",
+      "warc_sha256": "99e001c2c90925b78dd2a4a4184abcf8040626bd29460cae7350fa813e4cfa2b"
+    },
+    {
+      "blake3": "5d6510578cb785a8875044028ae7c80bdce7185b02ff347041c1891543fb23ba",
+      "bytes": 451691,
+      "content_type": "application/pdf",
+      "object_id": "sha256:b898c6ead5a998ae4d8aafb588a6259f79505b6e711e9a523e7d659340a916f4",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "b898c6ead5a998ae4d8aafb588a6259f79505b6e711e9a523e7d659340a916f4",
+      "source_id": "treasury-vote-health-pdf-8ea10c8cddf61f5b",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/est01health.pdf",
+      "warc_sha256": "1a67786d9e38b690252554435a8ac8f9de8e7fa7684138048ba2b4ff8cc30628"
+    },
+    {
+      "blake3": "6b0dce2d51f6c1a35920b73f753d815df54d56a4c4b26af484d43ee138263282",
+      "bytes": 279018,
+      "content_type": "application/pdf",
+      "object_id": "sha256:9907280937726b80a2f623f3879f9bc69814e02a1702a3cb0b2fb39d2d7d7074",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "9907280937726b80a2f623f3879f9bc69814e02a1702a3cb0b2fb39d2d7d7074",
+      "source_id": "treasury-vote-health-pdf-8f1922ba340774db",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2007-09/supp06health.pdf",
+      "warc_sha256": "831a73a99570309b92dae8a1fc60ff1e89005590eb87d277640559f844abd5ce"
+    },
+    {
+      "blake3": "ed88a8c40be786d0b0a200c04748d4e67af4a22a5a79df9e331789c3368cd2b1",
+      "bytes": 867091,
+      "content_type": "application/pdf",
+      "object_id": "sha256:dbb8a9c4fab8a53b5279c26d98a5e0a6fa60d9360b88030189d43273bf0e5d1a",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "dbb8a9c4fab8a53b5279c26d98a5e0a6fa60d9360b88030189d43273bf0e5d1a",
+      "source_id": "treasury-vote-health-pdf-93afa43f588f1cae",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2018-04/est15-v6-health.pdf",
+      "warc_sha256": "695fa56fd4a86c2784a68343f658137e3496f4bd8abaa23f7b07d513c065cedb"
+    },
+    {
+      "blake3": "53bfcb98c5a16c48326d3b81e0d844848435a2bb1a7038bce4d89508a36bf94d",
+      "bytes": 133072,
+      "content_type": "application/pdf",
+      "object_id": "sha256:9b017d40a8f48609231c5cd944af0366892039a0d663e439b63479a5805a004e",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "9b017d40a8f48609231c5cd944af0366892039a0d663e439b63479a5805a004e",
+      "source_id": "treasury-vote-health-pdf-9afbc1fe9dfafb1f",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2009-05/isse09-health.pdf",
+      "warc_sha256": "d87c54901cdac74897f29326908136c4832ce8aa0afbd10d1fc8a6663b7ef094"
+    },
+    {
+      "blake3": "2670da4103be67bf643c1f0d6683dba2da1d6a22ee44f38d5005573570addbbd",
+      "bytes": 159357,
+      "content_type": "application/pdf",
+      "object_id": "sha256:e3a08643337f2f8b4864b2191e44dee95444164a5eca1df613aacfd1942e2df8",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "e3a08643337f2f8b4864b2191e44dee95444164a5eca1df613aacfd1942e2df8",
+      "source_id": "treasury-vote-health-pdf-9c9b8d9ae4a1b6fd",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/supp03health.pdf",
+      "warc_sha256": "e89d41be0a3571b1ddeaab983f19474c241d4015349f7d6040856d68b22182a2"
+    },
+    {
+      "blake3": "f644e32dca76949f7afcb37f87eb668fd2924b6a459132bcb8f43aeb57a881f1",
+      "bytes": 62550,
+      "content_type": "application/pdf",
+      "object_id": "sha256:179742d361f373f8a44d1ae08c36a985dea8fe6f30fc5a1f65978fe344a94775",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "179742d361f373f8a44d1ae08c36a985dea8fe6f30fc5a1f65978fe344a94775",
+      "source_id": "treasury-vote-health-pdf-a2c78259b5489074",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2009-06/supp00health.pdf",
+      "warc_sha256": "6c5da60bda7e8f6d12f393b4c11b8ab0603efd49dcf7f7b4f70332b46a6d3a23"
+    },
+    {
+      "blake3": "c001c8508cbd6d3167ad58314bf68bafa4abd41f23715329f527a653bc89980a",
+      "bytes": 187266,
+      "content_type": "application/pdf",
+      "object_id": "sha256:d2b1bef458e88590c81f448870295beddf81e4f258f24702980526836ccda50a",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "d2b1bef458e88590c81f448870295beddf81e4f258f24702980526836ccda50a",
+      "source_id": "treasury-vote-health-pdf-a5f5b96621e51a7c",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/supp04health.pdf",
+      "warc_sha256": "a5bdf1c44c18e61dc308c8ecc28521b4f181be14dc78a8972032287473560105"
+    },
+    {
+      "blake3": "1153b020851baea2083d3966869b13fd0b9cc01815d887357d89930429ff6b3b",
+      "bytes": 588576,
+      "content_type": "application/pdf",
+      "object_id": "sha256:7c35d7c49827e5f4a478203007fb388f3f403698765472ab5e44167ed61c2b72",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "7c35d7c49827e5f4a478203007fb388f3f403698765472ab5e44167ed61c2b72",
+      "source_id": "treasury-vote-health-pdf-abd3356360cac950",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2024-06/suppest24health.pdf",
+      "warc_sha256": "b82f6ce0e844000bef294148c23cd62e68efa14b8f33035d4292b6cefaeff1ce"
+    },
+    {
+      "blake3": "00134cc2d16ec80e2c210f880839898a796c3bba1fc3077ac3b5b5f6ea38abe3",
+      "bytes": 693999,
+      "content_type": "application/pdf",
+      "object_id": "sha256:fd2afd86cd0f827d5896705bb9eaefe827a645143f3b7573a95d642b455f5bfe",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "fd2afd86cd0f827d5896705bb9eaefe827a645143f3b7573a95d642b455f5bfe",
+      "source_id": "treasury-vote-health-pdf-b3fb306465d0ad51",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2021-05/suppest21health.pdf",
+      "warc_sha256": "4b453ac272c9dfb4cd172d04744cacf049e131ab53a768a05d86ce29614eef5a"
+    },
+    {
+      "blake3": "b6f923b41f83883eab8acfbedf698b8b690e8a5f5dc101197b65848882bd1d95",
+      "bytes": 110598,
+      "content_type": "application/pdf",
+      "object_id": "sha256:ae76053ea1e2867ba1fb129cc417473cf807da31cbad3f2e4ea62b89407eba5a",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "ae76053ea1e2867ba1fb129cc417473cf807da31cbad3f2e4ea62b89407eba5a",
+      "source_id": "treasury-vote-health-pdf-b402b75c6004b066",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2010-05/isse10-health.pdf",
+      "warc_sha256": "f94d1d30f079616e07ded45b0f993e54124a6b0b499f70f609dd70e61b55e641"
+    },
+    {
+      "blake3": "2ee5f84158511c8852c87e4fe700bedd8b06d3caba607de0f9c56b84ff23dfa9",
+      "bytes": 212650,
+      "content_type": "application/pdf",
+      "object_id": "sha256:95d78b3a38f0f19132d35fce473015e2b2c374c293378d345966737de2bfcb20",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "95d78b3a38f0f19132d35fce473015e2b2c374c293378d345966737de2bfcb20",
+      "source_id": "treasury-vote-health-pdf-b84a095804287bc6",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2011-05/isse11-health.pdf",
+      "warc_sha256": "2df09f40f5e7916921d7cbb93dbf3b770e41563a0d632a75be42111529f12f77"
+    },
+    {
+      "blake3": "e10618dfd6277128fd52aecb42cdcce2952350cb48f91ba8069311e1784eb115",
+      "bytes": 541133,
+      "content_type": "application/pdf",
+      "object_id": "sha256:a38e8520b07207670cb139d6814605659d457a626ee070db2bdc91075211e418",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "a38e8520b07207670cb139d6814605659d457a626ee070db2bdc91075211e418",
+      "source_id": "treasury-vote-health-pdf-bac4aa5902dbe98c",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2020-05/suppest20health.pdf",
+      "warc_sha256": "1fb320c9ba71188e32c34183e1a388fea232b024569ecb80dcb88a092df717de"
+    },
+    {
+      "blake3": "b639420bfeafc347c1a417c5f59ba06046424c0cdd26b4de0fd7b7aeeeb909de",
+      "bytes": 636829,
+      "content_type": "application/pdf",
+      "object_id": "sha256:475eab78585b8f14024187198c3844d0766ead94e04e36a118f3974f974d3c83",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "475eab78585b8f14024187198c3844d0766ead94e04e36a118f3974f974d3c83",
+      "source_id": "treasury-vote-health-pdf-be263bbceff0e841",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-05/ise08-v6-pia-health.pdf",
+      "warc_sha256": "a8aff40eeeb80d2edc70cf6596497d67ea519369e3c9c20705bcda9b2c0d20d8"
+    },
+    {
+      "blake3": "5fef3adfbfc8d99b1da1777abfc9b05d546de44c34e250a33e7d9859882887ec",
+      "bytes": 334380,
+      "content_type": "application/pdf",
+      "object_id": "sha256:6dac0aaa3fd181fffacf30cffa829b0f189e8b68ebfdbeb0dd5ef88736af96a2",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "6dac0aaa3fd181fffacf30cffa829b0f189e8b68ebfdbeb0dd5ef88736af96a2",
+      "source_id": "treasury-vote-health-pdf-c1badbfe19cec0fa",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/est04health.pdf",
+      "warc_sha256": "09faedbc197bc9fb1c19c7d928f35c6575f52de7a9cb1a400ab746145cbd7db4"
+    },
+    {
+      "blake3": "0b0c64d24f5265052947e20afee752fe0b9c922084707b6bae516a77961805fb",
+      "bytes": 69819,
+      "content_type": "application/pdf",
+      "object_id": "sha256:a5f65c3d741ebc0e426fd8ca5ce4da088718fbfc3930ba2720958ecf3cee556d",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "a5f65c3d741ebc0e426fd8ca5ce4da088718fbfc3930ba2720958ecf3cee556d",
+      "source_id": "treasury-vote-health-pdf-c819ad222f451478",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2011-05/suppest11health.pdf",
+      "warc_sha256": "fd63fbf99d4da58e8660bc6709aec23608434d3c3941c49bcdea616b55416979"
+    },
+    {
+      "blake3": "9c355b84746c1c762e44f3343f648328edeb12d204de7b6b0ddd3f8bc7474a7f",
+      "bytes": 1013375,
+      "content_type": "application/pdf",
+      "object_id": "sha256:023c99801cc11305848772a859d2491940f25389725e08f162b4156492dcae4e",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "023c99801cc11305848772a859d2491940f25389725e08f162b4156492dcae4e",
+      "source_id": "treasury-vote-health-pdf-cb06627735366d4e",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2026-05/est26-v5-health.pdf",
+      "warc_sha256": "3504e823bc45528430fc7ea9da8532341a66ce950c04f55a61cf012854378c56"
+    },
+    {
+      "blake3": "373eb26f9646977fbca1ef75432c9030242a3efd55b07b329f76395336b8758f",
+      "bytes": 600258,
+      "content_type": "application/pdf",
+      "object_id": "sha256:575e3744f555d668f3748f46cc55781378bfc0ad35008c9512a942c57279f31f",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "575e3744f555d668f3748f46cc55781378bfc0ad35008c9512a942c57279f31f",
+      "source_id": "treasury-vote-health-pdf-d08d82adecad984f",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2026-05/suppest26health.pdf",
+      "warc_sha256": "16f1cafe3592de09d9a5334b0c720185d7591a58d70f930b7cba11775d0b578a"
+    },
+    {
+      "blake3": "e0e6022456ba1c0d7e6a0cf4133f25c8d16b582738e9c70e91be3df8133b6392",
+      "bytes": 1260848,
+      "content_type": "application/pdf",
+      "object_id": "sha256:f800749dc339a2f8bc99469bcbd365f1183323002cd90d3225c942e2e6d92dc9",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "f800749dc339a2f8bc99469bcbd365f1183323002cd90d3225c942e2e6d92dc9",
+      "source_id": "treasury-vote-health-pdf-d8d62566dfda18c5",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2022-06/est22-v5-health.pdf",
+      "warc_sha256": "a5cbeab7fb8354ffe7ffc746f4553f8a798cbc6675d4cf35c6c20a6143ad367e"
+    },
+    {
+      "blake3": "8b80d60d55199947416c801888f7800dc6ad648e744e045e59dab30577062fbf",
+      "bytes": 573823,
+      "content_type": "application/pdf",
+      "object_id": "sha256:c1ae457e002eecf9a994291d34abfe0ff41101e78f72f98c7208983ec1bb14a8",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "c1ae457e002eecf9a994291d34abfe0ff41101e78f72f98c7208983ec1bb14a8",
+      "source_id": "treasury-vote-health-pdf-d93865418ad7fa0e",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2012-05/ise12-v6-pia-health.pdf",
+      "warc_sha256": "b7d4b114e25e579d8d5634cc79ee6011f5652162bc3db9d515fcfa5aba457418"
+    },
+    {
+      "blake3": "84d2d63f6e4dbd8b54d9b59098bcba71d604ffabf71ee0edff830ffd3e53958c",
+      "bytes": 47163,
+      "content_type": "application/pdf",
+      "object_id": "sha256:c6ed655b1dbca81b0fc54ef62547b71d5f984c6556cfdc77b6299c1bcc870a0e",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "c6ed655b1dbca81b0fc54ef62547b71d5f984c6556cfdc77b6299c1bcc870a0e",
+      "source_id": "treasury-vote-health-pdf-d9a9e1e77c8e340c",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2010-05/suppest10health.pdf",
+      "warc_sha256": "299e62ca3e1b1edc1e4f9969dfa26f3ef8f5be26d31ae3be2b8fbd0ccc9e79bb"
+    },
+    {
+      "blake3": "141d01bca0133db75e0fd61f5d3b9a74654db46fff256fef8301f1e6c926224a",
+      "bytes": 775160,
+      "content_type": "application/pdf",
+      "object_id": "sha256:f567098d4f98fd9ea34df90ca330b295346a8f567b924f8b11694a494d3ce502",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "f567098d4f98fd9ea34df90ca330b295346a8f567b924f8b11694a494d3ce502",
+      "source_id": "treasury-vote-health-pdf-e321c9ce60f710c3",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2022-06/suppest22health.pdf",
+      "warc_sha256": "f9b58c8766d114c1832f8adc9af9c5c1eab24e693504daf8ba968b9de261bcfd"
+    },
+    {
+      "blake3": "0ad02e4047429ebcfdf28654bfa497afa3cb823c742e3fa07069f49cb387cce8",
+      "bytes": 613670,
+      "content_type": "application/pdf",
+      "object_id": "sha256:a492b49c712c7c60fd31478c51df25225e3193fe4a2dd094fb899b11a588d292",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "a492b49c712c7c60fd31478c51df25225e3193fe4a2dd094fb899b11a588d292",
+      "source_id": "treasury-vote-health-pdf-e6e53e9c0c008d22",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2009-06/suppest99health.pdf",
+      "warc_sha256": "31d6951b32cc7870b4af089276cc40ed2b3fd2156802dab925e62e6abd5610ef"
+    },
+    {
+      "blake3": "95b1dd314c0a2b8c170cff315574bb975726719727e6e32f031777dac32b21b0",
+      "bytes": 752343,
+      "content_type": "application/pdf",
+      "object_id": "sha256:f2c49d272af66dea8cc3cf0d705d4f953d5690a3c71a647fbb43d7ba8769b059",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "f2c49d272af66dea8cc3cf0d705d4f953d5690a3c71a647fbb43d7ba8769b059",
+      "source_id": "treasury-vote-health-pdf-e97c9cbaf558baba",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2018-05/suppest18health.pdf",
+      "warc_sha256": "bb9ea47b0456dec68ea532492a8b737cf2a52e3428d868071d14b4f622ab847c"
+    },
+    {
+      "blake3": "34f9443d5747fd1f1aa68db0a5a79e26f48c83ecd2c21a6dc7e7d9a3a1de4630",
+      "bytes": 367397,
+      "content_type": "application/pdf",
+      "object_id": "sha256:866bce96ac216344c5dcdf25fee1f31548d5c32ba3cd94ef4b4977a495f509ea",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "866bce96ac216344c5dcdf25fee1f31548d5c32ba3cd94ef4b4977a495f509ea",
+      "source_id": "treasury-vote-health-pdf-ea06fc9587ef04f0",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2007-09/est06health.pdf",
+      "warc_sha256": "f3cb05a6c008f760b4bb8194de2c58c2d88a27544c40894920297ec4cd3a4beb"
+    },
+    {
+      "blake3": "40cb21d09291b354c7d5146c82d1bb16c8881efb9b262bff58a1b59c0a2eff33",
+      "bytes": 682887,
+      "content_type": "application/pdf",
+      "object_id": "sha256:98cd7a110628349648926007ba37d6ca9f5ad4525e1d9fdf34a94560e3078741",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "98cd7a110628349648926007ba37d6ca9f5ad4525e1d9fdf34a94560e3078741",
+      "source_id": "treasury-vote-health-pdf-ef547ad2d9a047c4",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2023-06/suppest23health.pdf",
+      "warc_sha256": "f4f84e0977ffb120ee2136095c537f02b3ba5e52a44be6f1c7a2c5325e3478d0"
+    },
+    {
+      "blake3": "3754a501e1b7ab6ca733d897a7af12081561e257ed6b5d9ff762a7d38f2db29d",
+      "bytes": 1169732,
+      "content_type": "application/pdf",
+      "object_id": "sha256:819a006df9c280acfb20c34079eaa31065014b0871f351ee92ba2ede9b970008",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "819a006df9c280acfb20c34079eaa31065014b0871f351ee92ba2ede9b970008",
+      "source_id": "treasury-vote-health-pdf-f0c9dd2e768da2d6",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2009-06/est98health.pdf",
+      "warc_sha256": "d69aee351dd322f8bbfc9b01da32d7555372cc21f2bc8ce58e46d4c358202b8e"
+    },
+    {
+      "blake3": "e2261f1bda32739dde53553bc8e86e403b81b64bd6552982e5479eeaaa51b965",
+      "bytes": 235897,
+      "content_type": "application/pdf",
+      "object_id": "sha256:e76311821f75c2b02c82c8c63d771b9948eb0547caa1af40df662213588ec9f8",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "e76311821f75c2b02c82c8c63d771b9948eb0547caa1af40df662213588ec9f8",
+      "source_id": "treasury-vote-health-pdf-f1a09322538d8791",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-05/suppest08health.pdf",
+      "warc_sha256": "5a3d02bd108b92051d8a83be81dd6cf7d86ae6aa96b1d538ead1b256fa861e31"
+    },
+    {
+      "blake3": "8ad3655e4384ce8a2fdd2ceffa9e783ee8e9214f530daa18ea6c090b2705a465",
+      "bytes": 356801,
+      "content_type": "application/pdf",
+      "object_id": "sha256:99e90dfddd8fc7b6d2bb545148d95f8f3c4c3cbf77760b91103130304176780e",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "99e90dfddd8fc7b6d2bb545148d95f8f3c4c3cbf77760b91103130304176780e",
+      "source_id": "treasury-vote-health-pdf-f2dee67a359229eb",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2015-05/suppest15health.pdf",
+      "warc_sha256": "8d06ce8dae466d622fbd86603a74e9f25ff89d74b8deb40f23a6f0ff06885198"
+    },
+    {
+      "blake3": "cf1845d4d55650b1be5614076a2adf50de2f01f8f24e8638ec915d6ac7f57185",
+      "bytes": 175759,
+      "content_type": "application/pdf",
+      "object_id": "sha256:5849babe79f21c644920cd16fcf830ab4538488a0ff8253aa76070433f7ef572",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "5849babe79f21c644920cd16fcf830ab4538488a0ff8253aa76070433f7ef572",
+      "source_id": "treasury-vote-health-pdf-f6d63e6d47916167",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/supp02health.pdf",
+      "warc_sha256": "80ef87680f97d5d5f9e031858e948ef82a219bb57c229b0d4b9edd4db3c0952d"
+    },
+    {
+      "blake3": "bd59e4946f0aa9053bf8e07430ea34a37082099686bd6e05fc00977301727be3",
+      "bytes": 317126,
+      "content_type": "application/pdf",
+      "object_id": "sha256:1170e0bf5d11e6ac93620a2d76d68004ed99b88ed45a0c6c3c48bbc38f72fafe",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "1170e0bf5d11e6ac93620a2d76d68004ed99b88ed45a0c6c3c48bbc38f72fafe",
+      "source_id": "treasury-vote-health-pdf-fd37e5ad2657936d",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-03/est02health.pdf",
+      "warc_sha256": "4912b1afbe2dae9e87f3030e8925d63dd00bc3d30baf2c6f0999bd55433fb76b"
+    },
+    {
+      "blake3": "3320224d6ae4b9795b41120ff6a028716396f2f494516c96795b3a03da268365",
+      "bytes": 224975,
+      "content_type": "application/pdf",
+      "object_id": "sha256:07aaafdc58bd448ce2ef60d3c2dce071dfc3204838b21d01cad105e7e0d946fc",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "07aaafdc58bd448ce2ef60d3c2dce071dfc3204838b21d01cad105e7e0d946fc",
+      "source_id": "treasury_vote_health_document-566aface4fa2633a",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2013-05/isse13-health.pdf",
+      "warc_sha256": "aef3f47a7a2f9b55ead294255e600cf066e342887d156955538a458b22a90306"
+    },
+    {
+      "blake3": "9bad471d7ec2a1a0729c5a6073123b6105ab65c2ca46379607d1bf0e01506d52",
+      "bytes": 68490,
+      "content_type": "application/pdf",
+      "object_id": "sha256:eec443d19bd7fe0767301ab101de5cbe67da8e9183d3f0af8b946b7ba8f93272",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "eec443d19bd7fe0767301ab101de5cbe67da8e9183d3f0af8b946b7ba8f93272",
+      "source_id": "treasury_vote_health_document-90791173089c47e3",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2013-05/suppest13health.pdf",
+      "warc_sha256": "e00a80619bd7ab5cb12e6d811cad523dca45743fca425c9dc5a71800afd9ce86"
+    },
+    {
+      "blake3": "3061346bfcf196e52f55cb60cc5a8f611a6c5a22287cf1b2dddad9538e9acbd6",
+      "bytes": 50067,
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "etag": "\"b7faaed7\"",
+      "last_modified": "Wed, 16 Sep 2026 22:45:16 GMT",
+      "object_id": "sha256:b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
+      "observed_at": "2026-09-29T21:28:10.739074Z",
+      "request_url_sha256": "588a47c19c9dbc44ff56a116ce102d3c180f488b0f454b8b7422a9fba7761317",
+      "rights": {
+        "attribution": "Stats NZ Tatauranga Aotearoa",
+        "evidence": "https://www.stats.govt.nz/about-us/copyright/",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d",
+      "source_id": "stats_nz_gdp-588a47c19c9dbc44",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.stats.govt.nz/assets/Uploads/Gross-domestic-product/Gross-domestic-product-June-2026-quarter/Download-data/gross-domestic-product-june-2026-quarter-current-price-income-and-expenditure.xlsx",
+      "validator_state": "present",
+      "warc_path": "attempt-sij9r08f/response.warc",
+      "warc_sha256": "29b1208c7ab036deb64cbe14ba5669eb251a9bf45e90b04d181a609f423081df"
+    },
+    {
+      "blake3": "e4c32aa411e8483607ea18f61cfc63da7caa7f1c02bdb6fb85c322ffcedbb709",
+      "bytes": 91611,
+      "content_type": "application/pdf",
+      "etag": "\"645061a4-165db\"",
+      "last_modified": "Tue, 02 May 2023 01:04:36 GMT",
+      "object_id": "sha256:2d346a460278fa278eef4fbda3f613d18bc13b486a1f2e21e503a05b5d3f9121",
+      "observed_at": "2026-10-03T12:34:00.964355Z",
+      "request_url_sha256": "ef138166c868068b0165a88c3d13e43f878fe01e7c82fb3f437f1b284fb3cdb0",
+      "rights": {
+        "attribution": "The Treasury New Zealand",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "license": "CC-BY-4.0",
+        "state": "eligible"
+      },
+      "sha256": "2d346a460278fa278eef4fbda3f613d18bc13b486a1f2e21e503a05b5d3f9121",
+      "source_id": "treasury-vote-health-pdf-2008-09-estimates",
+      "state": "captured",
+      "status_code": 200,
+      "url": "https://www.treasury.govt.nz/sites/default/files/2008-05/est08health.pdf",
+      "validator_state": "present",
+      "warc_path": "attempt-uurtybpj/response.warc",
+      "warc_sha256": "960260feb1a7a40f46dcc2178fc6a2761ddb542a01316b42853a509d5582ccf6"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-capture-manifest/v1",
+  "selected": 75
+}

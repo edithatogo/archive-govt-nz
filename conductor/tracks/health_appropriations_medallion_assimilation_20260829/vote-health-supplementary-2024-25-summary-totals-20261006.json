@@ -1,0 +1,105 @@
+{
+  "schema_version": "archive-govt-nz.health-vote-health-supplementary-summary-evidence/v1",
+  "status": "passed",
+  "profile": "vote-health-supplementary-2024-25-summary-totals/v1",
+  "source": {
+    "source_object_sha256": "5cacffe39f056f092291d8dc0a5ba2e72851b23da1696a63964b726b7a6ebf8b",
+    "source_locator": "https://www.treasury.govt.nz/sites/default/files/2025-05/suppest25health.pdf",
+    "source_vintage": "Treasury-Vote-Health-Supplementary-2024-25",
+    "source_bytes_unchanged": true,
+    "capture_manifest": "official-capture-2026-10-03-health-complete.json"
+  },
+  "scope": {
+    "pdf_page_numbers": [
+      5
+    ],
+    "unit": "$000",
+    "columns": [
+      "Estimates Budget",
+      "Supplementary Estimates Budget",
+      "Total Budget"
+    ],
+    "facts": 5,
+    "field_lineage_rows": 15,
+    "page_dispositions": 1,
+    "rights_state": "not_evaluated",
+    "limitations": [
+      "Only five named page-five rows are normalized; remaining rows and PDF pages stay preserved-only.",
+      "The source has separate summary and capital-injection table sections; no further category is inferred.",
+      "No currency interpretation, edition comparison, redistribution or publication is asserted."
+    ]
+  },
+  "persistent_silver": {
+    "path": "silver/vote-health-supplementary-2024-25-summary-totals-20261006-v1",
+    "manifest_sha256": "15c3fee090b89b88ddeea1cb2bdaf407bf50f2519ebe21f5fd0df15263c8e924",
+    "outputs": {
+      "MANIFEST.json": {
+        "bytes": 628,
+        "sha256": "15c3fee090b89b88ddeea1cb2bdaf407bf50f2519ebe21f5fd0df15263c8e924"
+      },
+      "field_lineage.parquet": {
+        "bytes": 6362,
+        "sha256": "23bba06be3e2c32f75701249ed5a31193ce660fa5823c38ba2b5a868d49a327e"
+      },
+      "page_dispositions.parquet": {
+        "bytes": 2455,
+        "sha256": "d55f6d929ee5fbc168caf0646562012177a0853a9c6bdf697159288aad308ad7"
+      },
+      "vote_health_supplementary_summary_facts.parquet": {
+        "bytes": 11007,
+        "sha256": "046b738b66bd8803a2a9e85b18cf6ddf724231b64b25afe0b644b895b88d2209"
+      }
+    },
+    "matches_clean_room_build": true
+  },
+  "repeat_build": {
+    "identical": true,
+    "recovery_entry_point_builds": 2,
+    "outputs": {
+      "MANIFEST.json": "15c3fee090b89b88ddeea1cb2bdaf407bf50f2519ebe21f5fd0df15263c8e924",
+      "field_lineage.parquet": "23bba06be3e2c32f75701249ed5a31193ce660fa5823c38ba2b5a868d49a327e",
+      "page_dispositions.parquet": "d55f6d929ee5fbc168caf0646562012177a0853a9c6bdf697159288aad308ad7",
+      "vote_health_supplementary_summary_facts.parquet": "046b738b66bd8803a2a9e85b18cf6ddf724231b64b25afe0b644b895b88d2209"
+    }
+  },
+  "recovery_scope": {
+    "receipt": "clean-room-recovery-20261006-vote-health-2024-25.json",
+    "status": "partial_with_blockers",
+    "bronze_objects_unchanged": true,
+    "entry_point": "tools/health_recovery_assurance.py:rebuild_vote_health_2024_25_summary_totals",
+    "entry_point_repeat_identical": true,
+    "remaining_track_gates_not_closed": true,
+    "clean_room_receipt_status": "partial_with_blockers"
+  },
+  "validation": {
+    "focused_tests": {
+      "command": "uv run --locked pytest tests/domains/health_appropriations/test_vote_health_supplementary_2024_25.py tests/domains/health_appropriations/test_source_operations.py tests/domains/health_appropriations/test_health_recovery_assurance.py -q",
+      "passed": 517,
+      "skipped": 10
+    },
+    "repository_harness": {
+      "command": "./scripts/validate.sh",
+      "status": "passed",
+      "tests_passed": 7539,
+      "tests_skipped": 10,
+      "coverage_percent": 97.66,
+      "coverage_floor_percent": 80,
+      "schemas": 56,
+      "representative_documents": 46,
+      "differential_parity": "9/9 passed",
+      "gates": [
+        "format",
+        "lint",
+        "strict_typing",
+        "schemas",
+        "parity",
+        "mutation",
+        "dependency_audit",
+        "licenses",
+        "secrets",
+        "sbom"
+      ]
+    },
+    "source_locator_and_hash_guard": "passed"
+  }
+}

@@ -145,15 +145,10 @@ def _source_tables(
     )
 
 
-def project_qes_earnings(
-    silver_root: Path,
-    manifest_sha256: str,
-    cas_root: Path,
-) -> tuple[pa.Table, pa.Table, dict[str, Any]]:
-    """Verify pinned Silver against Bronze and produce v2 canonical earnings."""
-    source_facts, source_lineage, _ = _source_tables(
-        silver_root, manifest_sha256, cas_root
-    )
+def canonicalize_qes_tables(
+    source_facts: pa.Table, source_lineage: pa.Table
+) -> tuple[pa.Table, pa.Table]:
+    """Pure v2 earnings mapping; the calling reader must verify its inputs."""
     lineage_by_record: dict[str, dict[str, dict[str, Any]]] = {}
     for item in source_lineage.to_pylist():
         lineage_by_record.setdefault(item["record_id"], {})[item["field"]] = item
@@ -313,6 +308,19 @@ def project_qes_earnings(
     canonical_lineage = pa.Table.from_pylist(
         lineage, schema=recordset_schema("field_lineage", version="v2")
     )
+    return canonical, canonical_lineage
+
+
+def project_qes_earnings(
+    silver_root: Path,
+    manifest_sha256: str,
+    cas_root: Path,
+) -> tuple[pa.Table, pa.Table, dict[str, Any]]:
+    """Verify pinned Silver against Bronze and produce v2 canonical earnings."""
+    source_facts, source_lineage, _ = _source_tables(
+        silver_root, manifest_sha256, cas_root
+    )
+    canonical, canonical_lineage = canonicalize_qes_tables(source_facts, source_lineage)
     return (
         canonical,
         canonical_lineage,

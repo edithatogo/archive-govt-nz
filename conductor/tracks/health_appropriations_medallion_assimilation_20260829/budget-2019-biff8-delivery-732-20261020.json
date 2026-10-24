@@ -1,0 +1,13 @@
+{
+  "schema_version": "archive-govt-nz.health-track-delivery/v1",
+  "pr": "https://github.com/edithatogo/archive-govt-nz/pull/732",
+  "checked_head": "21d2fc0d5d2e6503c076ad4f044b528f5b3d6f11",
+  "tree": "4f04b7ffda606bf56f5b43841afcf7e1b2927bd9",
+  "merge": "169fd175707b5d3424e4407201ba5678ea072684",
+  "required_checks": "seven_green",
+  "original_harness": "all32_on_ubuntu_macos_windows",
+  "review": "maintainer_self_review_hosted_codex_quota_unavailable",
+  "cleanup": "verified_merged_tree_clean_checkout_no_unique_commits_then_topic_refs_deleted",
+  "physical_primary_checkout": "retained",
+  "remaining": "canonical_and_gold_integration"
+}

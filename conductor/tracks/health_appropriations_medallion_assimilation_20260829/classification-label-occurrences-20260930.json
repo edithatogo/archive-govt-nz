@@ -1,0 +1,54 @@
+{
+  "schema_version": "archive-govt-nz.health-classification-label-occurrences/v1",
+  "status": "verified_exact_literal_occurrence_counts",
+  "comparison_scope": "exact_literal_label_occurrence_counts",
+  "packages": {
+    "2025": {
+      "source_vintage": "Budget-2025",
+      "package_marker_sha256": "7e4d65d5bedfec72fe83d0882529d395a6401e816545286ab3fa9c8cfca8fcb3",
+      "source_object_sha256": "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
+      "input_manifest_sha256": "1b1e5dfd3fa90d98dcf5200997001db236df7b40f4404b658c36f5cb0264d2fe",
+      "dimension_rows": 215,
+      "dimension_sha256": "869fd0fd5ae330054fe30a450f99f2fe61966204e3dd4aafcdfca34e864edcf1",
+      "dimension_schema_sha256": "56e31b7f813d8746f40b15e2e67f1f5cb38d66a9fb5139895365df5c7d2d6f03",
+      "literal_label_occurrences": {
+        "Core Government Services": 2,
+        "Health": 179,
+        "No Functional Classification": 32,
+        "Social Security and Welfare": 2
+      },
+      "rights": "not_evaluated",
+      "authoritative_mapping": "not_performed"
+    },
+    "2026": {
+      "source_vintage": "Budget-2026",
+      "package_marker_sha256": "1a5aae6c79d79901c6bcaca9396fa6efa69e3572c9f382bbc011a427c5179c8d",
+      "source_object_sha256": "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0",
+      "input_manifest_sha256": "f34000992fd65dca445e7ad251cb06df3c68107410355ea057ea9a2bf8481738",
+      "dimension_rows": 185,
+      "dimension_sha256": "8de8f47aa262985ce23fd9666327b4618bad72c95702354080f66615835a614d",
+      "dimension_schema_sha256": "56e31b7f813d8746f40b15e2e67f1f5cb38d66a9fb5139895365df5c7d2d6f03",
+      "literal_label_occurrences": {
+        "Core Government Services": 3,
+        "Health": 144,
+        "No Functional Classification": 35,
+        "Social Security and Welfare": 3
+      },
+      "rights": "not_evaluated",
+      "authoritative_mapping": "not_performed"
+    }
+  },
+  "changes": [
+    {"source_label": "Core Government Services", "budget_2025_occurrences": 2, "budget_2026_occurrences": 3, "occurrence_delta": 1},
+    {"source_label": "Health", "budget_2025_occurrences": 179, "budget_2026_occurrences": 144, "occurrence_delta": -35},
+    {"source_label": "No Functional Classification", "budget_2025_occurrences": 32, "budget_2026_occurrences": 35, "occurrence_delta": 3},
+    {"source_label": "Social Security and Welfare", "budget_2025_occurrences": 2, "budget_2026_occurrences": 3, "occurrence_delta": 1}
+  ],
+  "classification_system_identity": "not_established",
+  "authoritative_crosswalk": "not_performed",
+  "valid_time": "not_assessed",
+  "rights": "not_evaluated",
+  "comparability": "not_asserted",
+  "drift_disposition": "observed_surface_change_unmapped",
+  "repeat_identical": true
+}

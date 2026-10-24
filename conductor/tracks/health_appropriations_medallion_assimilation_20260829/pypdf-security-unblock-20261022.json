@@ -1,0 +1,191 @@
+{
+  "dependency": {
+    "lock": {
+      "name": "pypdf",
+      "sdist": {
+        "hash": "sha256:2d62c383acd6e0dff0a96322ba8b1135229343b084d73c6f6cfd947fd291afcb",
+        "size": 7088597,
+        "upload-time": "2026-10-17T10:29:52.801Z",
+        "url": "https://files.pythonhosted.org/packages/51/e1/32a9c4dbd94618145f8bab5c623bdb0a528f23fc8719afd77ba0278fd377/pypdf-6.21.1.tar.gz"
+      },
+      "source": {
+        "registry": "https://pypi.org/simple"
+      },
+      "version": "6.21.1",
+      "wheels": [
+        {
+          "hash": "sha256:553e2d42f5bb3bb2a785a7d3de8ef90bb7df74b5413eff5a7b4388007ea9254b",
+          "size": 405134,
+          "upload-time": "2026-10-17T10:29:50.687Z",
+          "url": "https://files.pythonhosted.org/packages/85/e6/24c944e473c34e818cf1b98085796fcd780465ecfe17663f2bf8fee1958b/pypdf-6.21.1-py3-none-any.whl"
+        }
+      ]
+    },
+    "lock_delta": {
+      "changed_lock_entries": [
+        "archive-govt-nz",
+        "pypdf"
+      ],
+      "dependency_change": {
+        "pypdf": [
+          "6.19.0",
+          "6.21.1"
+        ]
+      },
+      "other_package_entries_unchanged": true
+    },
+    "name": "pypdf",
+    "new_version": "6.21.1",
+    "official_changelog": "https://pypdf.readthedocs.io/en/6.21.1/meta/CHANGELOG.html",
+    "official_release": "https://pypi.org/project/pypdf/6.21.1/",
+    "old_version": "6.19.0",
+    "supported_range": ">=6.21.1,<7"
+  },
+  "exact_head_hosted_checks": "pending_including_dependency_review",
+  "failed_audit_sha256": "e41cd3a8c6c36146e8edb13ee1c01ee3d0cf48c8deb4a6ee3315c1d867c03b7b",
+  "failed_harness": {
+    "dependency": "pypdf",
+    "exit": 1,
+    "failed_stage": "audit",
+    "head": "020d87ab6814fcf4df72c23d4c17196b8cc4d79f",
+    "independent_lease_free": true,
+    "known_vulnerabilities": 4,
+    "owner_and_group_absent": true,
+    "pins_unchanged": 4935,
+    "tests_passed": 8283,
+    "tree": "1aea7f362e637bff2f4db4dfab9d37079811ac69",
+    "version": "6.19.0"
+  },
+  "files_sha256": {
+    "pyproject.toml": "0c40aad7b3340b405fb9b33bbda1e8ae8669f61c4c908d749d6f5faaa223413d",
+    "uv.lock": "16229e093500ee118b226c04a930135af7c34871ff832918c0b1e7ce9d4a0063"
+  },
+  "final_original_harness": "pending",
+  "prior_phase4_native_preservation": {
+    "intentional_non_conductor_pin_changes": [
+      "/Volumes/PortableSSD/GitHub/archive-govt-nz/pyproject.toml",
+      "/Volumes/PortableSSD/GitHub/archive-govt-nz/uv.lock"
+    ],
+    "original_workbook_and_functional_products_unchanged": true,
+    "other_native_code_control_source_runtime_pins_unchanged": true,
+    "retained_native_files_verified": 188,
+    "scope": "Prior Phase4 producer remains its original locked-runtime observation; only the PDF compatibility probes run under the new lock."
+  },
+  "publication": "not_performed",
+  "qualification": {
+    "audit": "no_known_vulnerabilities",
+    "audit_sha256": "28f56a5d04ad2911d716a7f88e0ef4c780aaaf21e6aa803f685d75afbc80714c",
+    "existing_tests_only": true,
+    "exit": 0,
+    "focused_pdf_tests": 60,
+    "independent_validation_lease_free": true,
+    "log_sha256": "e54913b22a5c4448daadbf9848895172141fd03b513c328f438684b0eb7c3f8b",
+    "native_profiles": {
+      "all_retained_bytes_identical": true,
+      "compared_files": 12,
+      "facts": 22,
+      "originals_unchanged": true,
+      "profiles": [
+        {
+          "counts": {
+            "facts": 9,
+            "pages": 1
+          },
+          "files": {
+            "MANIFEST.json": "90b01a953007932a3f59d577e1260ce6b9b7a6fcf53f017a4e728cde4437fef9",
+            "field_lineage.parquet": "179e37d25ee5b133a80bfc6f0d9873192460c6bbcb2065e84125663d0707c302",
+            "page_dispositions.parquet": "865028c6ed27b0f9ac414735181a6a1b81383cdb91c0f2543d67b815a44724c7",
+            "vote_health_appropriation_overview_facts.parquet": "cdfde9bce479b1600f99b1c761a0a39f622a183c94582712437cae296fdb9905"
+          },
+          "profile": "vote-health-supplementary-1999-00-overview/v1",
+          "retained_bytes_identical": true,
+          "seconds": 0.03,
+          "source_sha256": "179742d361f373f8a44d1ae08c36a985dea8fe6f30fc5a1f65978fe344a94775",
+          "source_unchanged": true
+        },
+        {
+          "counts": {
+            "facts": 7,
+            "pages": 4
+          },
+          "files": {
+            "MANIFEST.json": "3675793bbb06c28be58d49ae0399baec4662748fb099bb53757e66843d03f18a",
+            "field_lineage.parquet": "97f7aa8a5604d3069401cde5c7acf5840b7f0bc55ba0f63d09ba9864b24c394b",
+            "page_dispositions.parquet": "6538d57eb6e6e70fa823e1c366b4b61d5cf8a0d490c775c35911836e55a448b7",
+            "vote_health_category_total_facts.parquet": "7cde1265fcdd1e417705503c308f56df3cc9523e70bc72e2d6137f6bdca575e9"
+          },
+          "profile": "vote-health-supplementary-2016-17-category-totals/v1",
+          "retained_bytes_identical": true,
+          "seconds": 0.17,
+          "source_sha256": "5a07182b093c129e4e6ea69bb47679a1ba79ec96b4cdf6196d4590b42c17531f",
+          "source_unchanged": true
+        },
+        {
+          "counts": {
+            "facts": 6,
+            "pages": 1
+          },
+          "files": {
+            "MANIFEST.json": "3975a41c38f651569247ed01a047f6b74416ed7340204aad01135ac3471126aa",
+            "field_lineage.parquet": "9b5a5aac7aa27a5482b9841eae772a90f1060c8523027bf66fc9626cfcdbab1a",
+            "page_dispositions.parquet": "2e349ef8c8627b15d142cee6b1a92cb2dc34fb9f8d2ff644d61907096ea9c8e0",
+            "vote_health_supplementary_summary_facts.parquet": "d9a850aeacf8018a75ac9d1038b30f5bf347bf0af5298b6d9f76e975cfd77f3d"
+          },
+          "profile": "vote-health-supplementary-2025-26-summary-totals/v1",
+          "retained_bytes_identical": true,
+          "seconds": 0.11,
+          "source_sha256": "575e3744f555d668f3748f46cc55781378bfc0ad35008c9512a942c57279f31f",
+          "source_unchanged": true
+        }
+      ],
+      "publication": "not_performed",
+      "pypdf": "6.21.1",
+      "rights": "unchanged",
+      "source_bound_seconds": 120
+    },
+    "session": 53584
+  },
+  "rights": "unchanged",
+  "schema_version": "archive-govt-nz.health-dependency-security-unblock/v1",
+  "source_values_and_originals": "unchanged",
+  "status": "focused_and_native_passed_final_assurance_pending",
+  "vulnerabilities": [
+    {
+      "aliases": [
+        "GHSA-39mj-jf6j-2qj3"
+      ],
+      "fix_versions": [
+        "6.20.0"
+      ],
+      "id": "CVE-2026-113794"
+    },
+    {
+      "aliases": [
+        "GHSA-7mh2-4gg2-979f"
+      ],
+      "fix_versions": [
+        "6.20.0"
+      ],
+      "id": "CVE-2026-113795"
+    },
+    {
+      "aliases": [
+        "GHSA-9mx8-4j7g-633p"
+      ],
+      "fix_versions": [
+        "6.20.1"
+      ],
+      "id": "CVE-2026-113793"
+    },
+    {
+      "aliases": [
+        "GHSA-qfv9-64jg-mh7p"
+      ],
+      "fix_versions": [
+        "6.20.1"
+      ],
+      "id": "CVE-2026-113792"
+    }
+  ],
+  "whole_track_completion": "not_established"
+}

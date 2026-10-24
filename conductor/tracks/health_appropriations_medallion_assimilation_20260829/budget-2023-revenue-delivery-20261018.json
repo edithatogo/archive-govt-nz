@@ -1,0 +1,110 @@
+{
+  "base": "d95a76a82456b5e4d38c3b05adeed2a65f8502d5",
+  "branch_ruleset": {
+    "enforcement": "active",
+    "id": 22180861,
+    "name": "main-integrated-assurance"
+  },
+  "broader_track": "in_progress",
+  "checked_head": "558016051a009297b279c446c657720385d66db3",
+  "checked_tree": "fdfd87d608072bbd661517f9dd74ce725111973c",
+  "cleanup": {
+    "checked_head": "558016051a009297b279c446c657720385d66db3",
+    "clean_primary_retained": true,
+    "local_topic_branch_removed": true,
+    "merge_commit": "d8b75ab34b44e62ef5fafe55d68af1422239339a",
+    "pr": 719,
+    "remote_topic_branch_absent": true,
+    "remote_tracking_topic_branch_absent": true,
+    "worktrees": "worktree /Volumes/PortableSSD/GitHub/archive-govt-nz\nHEAD d8b75ab34b44e62ef5fafe55d68af1422239339a\nbranch refs/heads/main"
+  },
+  "hosted_full": {
+    "macos": {
+      "all32stage_headers_verified": true,
+      "job": 117622904322,
+      "log_sha256": "45a8161c4ba61b3b260af323aa480a1e373a785665f0324653a852ddd90f39b1",
+      "pytest_summary": [
+        "8035",
+        "30",
+        "18",
+        "704.03"
+      ]
+    },
+    "ubuntu": {
+      "all32stage_headers_verified": true,
+      "job": 117622904277,
+      "log_sha256": "9acef71e3467d4476749e14408381b73c45ae41d7458faa5f6cbcee468aa4b68",
+      "pytest_summary": [
+        "8035",
+        "30",
+        "18",
+        "522.87"
+      ]
+    },
+    "windows": {
+      "all32stage_headers_verified": true,
+      "job": 117622904153,
+      "log_sha256": "865a775303af288e8fa604c0b2762e6de9b25f0dd0984257ec177bdba4175e51",
+      "pytest_summary": [
+        "8029",
+        "36",
+        "18",
+        "794.66"
+      ]
+    }
+  },
+  "local_full_pass": true,
+  "open_codeql_alerts": 0,
+  "postflight": {
+    "checked_head_and_merge_ancestry_verified": true,
+    "checked_tree_equal_merge_tree": true,
+    "clean": true,
+    "guard_sha256": "57fe88832f05b39c96ca0e54eb1b57c6f6b35b4b023c6f055a94fbd8ddbbf926",
+    "origin_main": "d8b75ab34b44e62ef5fafe55d68af1422239339a",
+    "pr": {
+      "headRefName": "codex/health-budget-2023-census-20261018",
+      "headRefOid": "558016051a009297b279c446c657720385d66db3",
+      "mergeCommit": {
+        "oid": "d8b75ab34b44e62ef5fafe55d68af1422239339a"
+      },
+      "mergedAt": "2026-10-18T08:20:36Z",
+      "state": "MERGED",
+      "url": "https://github.com/edithatogo/archive-govt-nz/pull/719"
+    },
+    "primary_worktree_retained": true,
+    "pruning": "eligible_after_fresh_verification",
+    "unique_commits": 0,
+    "unique_patches": 0
+  },
+  "pr": {
+    "headRefName": "codex/health-budget-2023-census-20261018",
+    "headRefOid": "558016051a009297b279c446c657720385d66db3",
+    "mergeCommit": {
+      "oid": "d8b75ab34b44e62ef5fafe55d68af1422239339a"
+    },
+    "mergedAt": "2026-10-18T08:20:36Z",
+    "state": "MERGED",
+    "url": "https://github.com/edithatogo/archive-govt-nz/pull/719"
+  },
+  "required_checks": [
+    "Assurance (macos-latest)",
+    "Assurance (ubuntu-latest)",
+    "Assurance (windows-latest)",
+    "CodeQL",
+    "analyze",
+    "codecov/patch",
+    "lint"
+  ],
+  "review_threads": {
+    "nodes": [
+      {
+        "isResolved": true
+      }
+    ],
+    "pageInfo": {
+      "hasNextPage": false
+    },
+    "totalCount": 1
+  },
+  "status": "delivered_protected_merge_verified_topic_pruned"
+}

@@ -1,0 +1,66 @@
+{
+  "checked_and_merge_ancestors_of_origin_main": true,
+  "checked_tree": "a5bbb5bc767d1d70230d705fd1afe85c3f40b053",
+  "cleanup_follow_up": "Exact absent-remote topic ref removed after bounded initial cleanup assertion failure.",
+  "cleanup_receipt_sha256": "3fa9f5bb66026e9ee923fa1f88d11ee92d135c98d4c2bc2e6f482a78c726f303",
+  "cpi449labels_preserved": true,
+  "equal_checked_and_merge_trees": true,
+  "headRefOid": "5a6f1be150304bd91318a4291b5dd10dc485c85b",
+  "hosted_full": {
+    "macos": {
+      "all32stage_headers_verified": true,
+      "job": 117650200230,
+      "log_sha256": "0f5f7428f8d511959ecdef61bd7a6923009b15fc18837b90ab3032fa12864875",
+      "pytest_summary": [
+        "8044",
+        "30",
+        "18",
+        "582.74"
+      ]
+    },
+    "ubuntu": {
+      "all32stage_headers_verified": true,
+      "job": 117650200585,
+      "log_sha256": "004bf4f4c7fa14b01ea1dd7e390b08233c7e91f0187916cdbf340952d7b33ff6",
+      "pytest_summary": [
+        "8044",
+        "30",
+        "18",
+        "500.81"
+      ]
+    },
+    "windows": {
+      "all32stage_headers_verified": true,
+      "job": 117650200455,
+      "log_sha256": "0bbe7bdbf77d3a50192becd7f273875342e8ab07f320400fbf002f17292e14b2",
+      "pytest_summary": [
+        "8038",
+        "36",
+        "18",
+        "672.35"
+      ]
+    }
+  },
+  "local_full_passed_all32": true,
+  "mergeCommit": {
+    "oid": "2fa3183b32163395e45960b54d213ce550299dc6"
+  },
+  "merge_guard_sha256": "ff450c4daf1c92cc42f7e1691c57f76808be180a5f5786d737820ff1c2231724",
+  "mergedAt": "2026-10-18T10:40:20Z",
+  "native_cohort_59_recorded": true,
+  "open_codeql_alerts": 0,
+  "primary_worktree_retained": true,
+  "prior56layout_rows_unchanged": true,
+  "review_threads_resolved": true,
+  "seven_named_checks_success": true,
+  "source_health_v1_v2_repeated": true,
+  "state": "MERGED",
+  "topic_local_remote_tracking_refs_absent": true,
+  "track_complete": false,
+  "unique_topic_commits": 0,
+  "unique_topic_patches": 0,
+  "url": "https://github.com/edithatogo/archive-govt-nz/pull/721",
+  "verified_origin_main": "2fa3183b32163395e45960b54d213ce550299dc6",
+  "worktree_clean_before_cleanup": true,
+  "worktree_count": 1
+}

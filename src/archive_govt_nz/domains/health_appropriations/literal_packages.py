@@ -20,10 +20,12 @@ from archive_govt_nz.domains.health_appropriations.donor_health_detail import (
 )
 from archive_govt_nz.domains.health_appropriations.donor_health_detail import (
     admit_donor_health_detail,
+    admit_donor_health_detail_snapshot,
 )
 from archive_govt_nz.domains.health_appropriations.fiscal_crown_literals import (
     SOURCE_SHA256,
     admit_fiscal_crown,
+    admit_fiscal_crown_snapshot,
 )
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
     encode_json,
@@ -91,14 +93,15 @@ def _require(condition: object) -> None:
         raise ValueError(message)
 
 
-def write_literal_package(  # noqa: C901 -- explicit source-profile persistence branches.
-    output: Path, admission: dict[str, Any], *, profile: str, context: dict[str, Any]
-) -> dict[str, object]:
-    """Persist exact admission records and disjoint adapter-scoped remainders.
+def project_literal_admission(  # noqa: C901 -- preserve reviewed source-specific packaging rules.
+    admission: dict[str, Any], *, profile: str, context: dict[str, Any]
+) -> tuple[
+    list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]
+]:
+    """Project the existing admitted records without filesystem access.
 
-    This pure packaging boundary does not qualify arbitrary input as source
-    evidence. Operational callers must use package_admitted_source, which
-    invokes the existing hash-bound admission rather than accepting records.
+    This alone does not qualify input as source evidence. Operational callers
+    must invoke the reviewed path or snapshot admission first.
     """
     _require(profile in PROFILES and context["source_vintage"] == PROFILES[profile])
     context = source_context(
@@ -234,6 +237,27 @@ def write_literal_package(  # noqa: C901 -- explicit source-profile persistence 
                 "except_selectors": sorted(selectors),
             }
         )
+    receipt = {
+        "schema_version": SCHEMA,
+        "profile": profile,
+        **context,
+        "status": "passed",
+        "admission_state": "literal_context_only",
+        "rights_state": "not_evaluated",
+        "promotion": "not_performed",
+        "counts": {"facts": len(facts), "lineage": len(links), "areas": len(areas)},
+        "workbook_inventory": admission["workbook_inventory"],
+    }
+    return facts, links, areas, receipt
+
+
+def write_literal_package(
+    output: Path, admission: dict[str, Any], *, profile: str, context: dict[str, Any]
+) -> dict[str, object]:
+    """Persist the shared projection in the unchanged exclusive native package."""
+    facts, links, areas, receipt = project_literal_admission(
+        admission, profile=profile, context=context
+    )
     return write_workbook_outputs(
         output,
         {
@@ -243,28 +267,22 @@ def write_literal_package(  # noqa: C901 -- explicit source-profile persistence 
                 areas, schema=AREA_SCHEMA
             ),
         },
-        {
-            "schema_version": SCHEMA,
-            "profile": profile,
-            **context,
-            "status": "passed",
-            "admission_state": "literal_context_only",
-            "rights_state": "not_evaluated",
-            "promotion": "not_performed",
-            "counts": {"facts": len(facts), "lineage": len(links), "areas": len(areas)},
-            "workbook_inventory": admission["workbook_inventory"],
-        },
+        receipt,
     )
 
 
-def package_admitted_source(
-    source: Path, output: Path, *, profile: str, context: dict[str, Any]
-) -> dict[str, object]:
-    """Invoke approved hash-bound admission and persist without new interpretation."""
+def _admit_literal_source(
+    source: Path | bytes, *, profile: str, context: dict[str, Any]
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Share native identity/context rules for path and immutable byte inputs."""
     _require(profile in PROFILES)
     if profile == "crown":
         _require(context["source_object_sha256"] == SOURCE_SHA256)
-        admission = admit_fiscal_crown(source)
+        admission = (
+            admit_fiscal_crown_snapshot(source)
+            if isinstance(source, bytes)
+            else admit_fiscal_crown(source)
+        )
         retained = admission["facts"][0]
         _require(
             all(
@@ -279,18 +297,49 @@ def package_admitted_source(
         _require(
             context["source_object_sha256"] == residual.PROFILES[vintage]["sha256"]
         )
-        admission = residual.admit_health_chart_residuals(source, vintage)
+        admission = (
+            residual.admit_health_chart_residuals_snapshot(source, vintage)
+            if isinstance(source, bytes)
+            else residual.admit_health_chart_residuals(source, vintage)
+        )
         _require(context["source_locator"] == admission["records"][0]["source_locator"])
     elif profile == "befu-chart":
         _require(context["source_object_sha256"] == befu_chart.SOURCE_SHA256)
-        admission = befu_chart.admit_befu_chart_literals(source)
+        admission = (
+            befu_chart.admit_befu_chart_literals_snapshot(source)
+            if isinstance(source, bytes)
+            else befu_chart.admit_befu_chart_literals(source)
+        )
         _require(context["source_locator"] == admission["records"][0]["source_locator"])
     elif profile == "hyefu-allowance":
         _require(context["source_object_sha256"] == allowance.SOURCE_SHA256)
-        admission = allowance.admit_hyefu_allowances(source)
+        admission = (
+            allowance.admit_hyefu_allowances_snapshot(source)
+            if isinstance(source, bytes)
+            else allowance.admit_hyefu_allowances(source)
+        )
         _require(context["source_locator"] == admission["records"][0]["source_locator"])
     else:
         vintage = PROFILES[profile]
         _require(context["source_object_sha256"] == DETAIL_PROFILES[vintage][0])
-        admission = admit_donor_health_detail(source, vintage)
+        admission = (
+            admit_donor_health_detail_snapshot(source, vintage)
+            if isinstance(source, bytes)
+            else admit_donor_health_detail(source, vintage)
+        )
+    return admission, context
+
+
+def admit_literal_snapshot(
+    payload: bytes, *, profile: str, context: dict[str, Any]
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Invoke the same reviewed admission and context binding without file I/O."""
+    return _admit_literal_source(payload, profile=profile, context=context)
+
+
+def package_admitted_source(
+    source: Path, output: Path, *, profile: str, context: dict[str, Any]
+) -> dict[str, object]:
+    """Invoke approved hash-bound admission and persist without reinterpretation."""
+    admission, context = _admit_literal_source(source, profile=profile, context=context)
     return write_literal_package(output, admission, profile=profile, context=context)

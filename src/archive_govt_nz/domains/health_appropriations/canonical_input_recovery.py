@@ -1,0 +1,744 @@
+"""Exclusive Bronze-to-raw-to-canonical input rebuilding with fixed identities."""
+
+from __future__ import annotations
+
+import hashlib
+import json
+import re
+from dataclasses import asdict, dataclass
+from typing import TYPE_CHECKING, Any
+
+from archive_govt_nz.domains.health_appropriations import (
+    biff8_canonical,
+    budget_biff8,
+    budget_biff8_adapter,
+    budget_revenue_canonical_export,
+)
+from archive_govt_nz.domains.health_appropriations.budget import (
+    normalize_budget_workbook,
+)
+from archive_govt_nz.domains.health_appropriations.budget_canonical_export import (
+    export_budget_appropriations,
+)
+from archive_govt_nz.domains.health_appropriations.budget_revenue import (
+    normalize_budget_revenue,
+)
+from archive_govt_nz.domains.health_appropriations.historical import (
+    normalize_historical_workbook,
+)
+from archive_govt_nz.domains.health_appropriations.historical_canonical_export import (
+    export_historical_canonical,
+)
+from archive_govt_nz.domains.health_appropriations.local_provenance_reader import (
+    CanonicalPackageInput,
+)
+from archive_govt_nz.domains.health_appropriations.workbook_common import (
+    source_context,
+    verified_snapshot,
+)
+
+if TYPE_CHECKING:
+    from pathlib import Path
+
+VERSION = "archive-govt-nz.health-canonical-input-recovery/v1"
+BIFF8_VERSION = "archive-govt-nz.health-canonical-input-recovery/v2"
+BIFF8_2018_VERSION = "archive-govt-nz.health-canonical-input-recovery/v3"
+BIFF8_2017_VERSION = "archive-govt-nz.health-canonical-input-recovery/v4"
+BIFF8_2016_VERSION = "archive-govt-nz.health-canonical-input-recovery/v5"
+BIFF8_2015_VERSION = "archive-govt-nz.health-canonical-input-recovery/v6"
+BIFF8_2014_VERSION = "archive-govt-nz.health-canonical-input-recovery/v7"
+BIFF8_2013_VERSION = "archive-govt-nz.health-canonical-input-recovery/v8"
+BIFF8_2012_VERSION = "archive-govt-nz.health-canonical-input-recovery/v9"
+BIFF8_2011_VERSION = "archive-govt-nz.health-canonical-input-recovery/v10"
+BIFF8_2010_VERSION = "archive-govt-nz.health-canonical-input-recovery/v11"
+BIFF8_2009_VERSION = "archive-govt-nz.health-canonical-input-recovery/v12"
+BIFF8_2008_VERSION = "archive-govt-nz.health-canonical-input-recovery/v13"
+BIFF8_2007_VERSION = "archive-govt-nz.health-canonical-input-recovery/v14"
+REVENUE_2025_VERSION = "archive-govt-nz.health-canonical-input-recovery/v15"
+ALL_BIFF8_EDITIONS = (
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+)
+COMPLETE_COHORT_STARTS = (2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016)
+MAX_EXPANDED_SOURCES = 32
+MAX_SOURCES = 5
+MAX_BIFF8_SOURCES = 7
+MAX_OUTPUT_FILES = 16
+MAX_SOURCE_BYTES = 64 * 1024 * 1024
+MAX_OUTPUT_BYTES = 128 * 1024 * 1024
+
+
+@dataclass(frozen=True)
+class SourceDefinition:
+    """Locked original identity and exact prior local observation context."""
+
+    key: str
+    kind: str
+    sha256: str
+    source_locator: str
+    source_vintage: str
+    observation_token: str
+    observation_id: str
+
+
+@dataclass(frozen=True)
+class RebuiltCanonicalInputs:
+    """Fresh package bindings and their payload-free completion receipt."""
+
+    packages: tuple[CanonicalPackageInput, ...]
+    receipt: dict[str, Any]
+
+
+# Reproduce recorded local observation identities, not new HTTP capture claims.
+# See the track's canonical-recovery-preflight-20261017.json and cited pilots.
+SOURCES = (
+    SourceDefinition(
+        "historical-2024",
+        "historical",
+        "769f2e7dd6000878cd29c2d913ad6979f28c5391c971292e6abf6148e83eb32d",
+        "data/raw/fiscaltimeseries1972-2024.xlsx",
+        "fiscal-2024",
+        "2026-08-30T08:28:37.374000+00:00",
+        "sha256:d610fb9a74809a229bce682b8773ef7b34af533d22e467ba79acbc57fc4cd8b5",
+    ),
+    SourceDefinition(
+        "historical-2025",
+        "historical",
+        "de59f9028a81a697ee66eea04861edfd8e2c3a7e472b3b8798d976951964f70f",
+        "https://budget.govt.nz/budget/excel/fiscal-time-series/fiscaltimeseries1972-2025-year-end25.xlsx",
+        "Fiscal-Time-Series-1972-2025",
+        "2026-08-31T12:26:32Z",
+        "sha256:d431933be47fb66651ed54c3556c96348783e447d9dc00c7a0f97dc2040e5bc4",
+    ),
+    SourceDefinition(
+        "budget-2025",
+        "budget",
+        "d67c01b0a3f1fbee5cb5121b641bda42f91f3e5bc84e599d22d32aeacbbb3338",
+        "data/raw/b25-expenditure-data.xlsx",
+        "Budget-2025",
+        "2026-08-30T00:00:00Z",
+        "sha256:c710d5caa5490fa447a9d062a13c300a1d58c6e67fc01a062ba4dfdbe2e25ff6",
+    ),
+    SourceDefinition(
+        "budget-2026",
+        "budget",
+        "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0",
+        "https://budget.govt.nz/budget/excel/data/b26-expenditure-data.xlsx",
+        "Budget-2026",
+        "2026-08-31T05:50:00Z",
+        "sha256:fd44a04149db3d11b7926373748a0c8810686ef087205345bb1efcbb8526a4ba",
+    ),
+    SourceDefinition(
+        "revenue-2026",
+        "revenue",
+        "8243f6a3f9575af5ee048133f2695f3c4764ff7d86e7a74849fdafcf478cbfdb",
+        "https://budget.govt.nz/budget/excel/data/b26-revenue-data.xlsx",
+        "Budget-2026",
+        "2026-08-29T09:00:17Z",
+        "sha256:ee970e4d024950c89270b0b27257aaae6e02d2502588acc9d97aeff9fd1a6902",
+    ),
+)
+
+
+# Reuse the retained donor-area revenue observation; this is no new capture.
+REVENUE_2025_SOURCE = SourceDefinition(
+    "revenue-2025",
+    "revenue",
+    "2aef43eb419420a549fe56a946539f6e9afcbd91f95e9242457f26c97bafafaa",
+    "data/raw/b25-revenue-data.xlsx",
+    "Budget-2025",
+    "2026-08-30T08:58:00+00:00",
+    "sha256:0bce28d4985ef6a9c9003d1776c808589652f718baabdb020d9bd0a50cb29927",
+)
+
+
+# Exact observation identities from the admitted Budget2019 source pair.
+BIFF8_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2019",
+        "biff8_budget",
+        "30602fd66ec1f4fb7d0b47f2766f6560c4d22e90c11e994fba3e404e29ceab48",
+        "https://www.treasury.govt.nz/sites/default/files/2019-05/b19-expenditure-data.xls",
+        "Budget-2019",
+        "2026-10-19T21:46:39.456033+00:00",
+        "sha256:4f774ce3135942997d4daa8e2db5c8ac4b5776cb145b554f230580b813ae3215",
+    ),
+    SourceDefinition(
+        "biffrevenue-2019",
+        "biff8_revenue",
+        "d927995dd91eda6fdfb4020eb2a3e91871a24d5144e837e7801b6725e5f33df8",
+        "https://www.treasury.govt.nz/sites/default/files/2019-05/b19-revenue-data.xls",
+        "Budget-2019",
+        "2026-10-19T21:46:39.456033+00:00",
+        "sha256:77275d0dc352a785d9778e0e0498be8a19573de52391008e4d8461bd56d85f6a",
+    ),
+)
+
+# Exact prior local-inspection tokens; these do not attest a new capture.
+BIFF8_2018_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2018",
+        "biff8_budget",
+        "fecd70019054313f3a11cbb370be684d8bea0eea8cb3623b69a9e193ac085c24",
+        "https://www.treasury.govt.nz/sites/default/files/2018-05/b18-expenditure-data.xls",
+        "Budget-2018",
+        "2026-10-20T14:44:44.843862+00:00",
+        "sha256:af8434e4d018b62907a7d5152edba93eb1d90766520a26ae16e97478b35bf17b",
+    ),
+    SourceDefinition(
+        "biffrevenue-2018",
+        "biff8_revenue",
+        "4db87e7eddd7a76b5b7523db5a01952d15e7f47b88d03ef9878d37cd077f937f",
+        "https://www.treasury.govt.nz/sites/default/files/2018-05/b18-revenue-data.xls",
+        "Budget-2018",
+        "2026-10-20T14:44:44.843862+00:00",
+        "sha256:dc9ae0d69080736adeadc17cc89d78837744297cd088f1ebc5eae26f5a3c4170",
+    ),
+)
+
+
+# Exact qualified2017 local observation context, not a new capture.
+BIFF8_2017_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2017",
+        "biff8_budget",
+        "7e0cc535eb9feb7e82b1a998dd40b7b318e5593e13589aa48ef4a3b5508708fc",
+        "https://www.treasury.govt.nz/sites/default/files/2018-04/b17-expenditure-data.xls",
+        "Budget-2017",
+        "2026-10-20T16:57:19.820018+00:00",
+        "sha256:5c4e70842744902ce0cded13b122fa1a2260daa2be4698a18d39a81da876419f",
+    ),
+    SourceDefinition(
+        "biffrevenue-2017",
+        "biff8_revenue",
+        "e49a706c4a5ac889e8b9e68165dbfd704a9f05b0300bef7f69abf5f5620b7adf",
+        "https://www.treasury.govt.nz/sites/default/files/2018-04/b17-revenue-data.xls",
+        "Budget-2017",
+        "2026-10-20T16:57:19.820018+00:00",
+        "sha256:40ac55251ee38cec454d67d4946584c5102d8bc6db4b231363be929e53bcd716",
+    ),
+)
+
+
+# Exact qualified2016 local inspection tokens, not new capture attestations.
+BIFF8_2016_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2016",
+        "biff8_budget",
+        "bce6d2e55c15c1249881bac9d2a1afdf111cd9d1c258c20913bd4b39300f0f5a",
+        "https://www.treasury.govt.nz/sites/default/files/2018-04/b16-expenditure-data.xls",
+        "Budget-2016",
+        "2026-10-20T18:30:09.435785+00:00",
+        "sha256:d457d5a5545e3035a8c66008a22a1cf03946b4b40fe8d5b8bbcaaf3fffd5a0fa",
+    ),
+    SourceDefinition(
+        "biffrevenue-2016",
+        "biff8_revenue",
+        "df34849f2ef7ce1903469edb315047afc8ae716574d163f59691a654c51b957f",
+        "https://www.treasury.govt.nz/sites/default/files/2018-04/b16-revenue-data.xls",
+        "Budget-2016",
+        "2026-10-20T18:30:09.435785+00:00",
+        "sha256:fbbecabcc9eaa6ab9824fb3caa5ac37cfafe0bdb8c7b20da88a8b40fb6c105cb",
+    ),
+)
+
+
+# Exact qualified2015 local inspection tokens, not new capture attestations.
+BIFF8_2015_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2015",
+        "biff8_budget",
+        "4dbabc88f1e0756e0f651ef261b3408b262a10f0b1cdb51977844c97841b9325",
+        "https://www.treasury.govt.nz/sites/default/files/2015-05/b15-expenditure-data.xls",
+        "Budget-2015",
+        "2026-10-20T19:42:27.758345+00:00",
+        "sha256:cf8de2cd77bff170581a4b94a1afc1b3fe217853c4624563b280f4001fe112e4",
+    ),
+    SourceDefinition(
+        "biffrevenue-2015",
+        "biff8_revenue",
+        "481b971d4569cbadbf48440fa1d66f82d8d42942fd855e95e5bfd1ea95e70171",
+        "https://www.treasury.govt.nz/sites/default/files/2015-05/b15-revenue-data.xls",
+        "Budget-2015",
+        "2026-10-20T19:42:27.758345+00:00",
+        "sha256:083eb8e571b7b58919d655d7a78a883e9768ac589254a28cff9b91b3282dfaa7",
+    ),
+)
+
+
+# Exact qualified2014 local inspection; source edition conflict is retained.
+BIFF8_2014_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2014",
+        "biff8_budget",
+        "7194eebe691ff57378168439d7ba5a785dfa408bc3c836f2a7cfe50519af5169",
+        "https://www.treasury.govt.nz/sites/default/files/2018-04/b14-expenditure-data.xls",
+        "Budget-2014",
+        "2026-10-21T02:11:52.212618+00:00",
+        "sha256:0aa2374ec3b02963d64ff2256f189db9528a47832b02243b9e2344215b8a6771",
+    ),
+    SourceDefinition(
+        "biffrevenue-2014",
+        "biff8_revenue",
+        "ba1798c82e556afe98188ea58651759cb6fa1f52a461e4529bc664af424db91b",
+        "https://www.treasury.govt.nz/sites/default/files/2018-04/b14-revenue-data.xls",
+        "Budget-2014",
+        "2026-10-21T02:11:52.212618+00:00",
+        "sha256:54579fa6d2249f060f2bbd6ad920aad8ed0407e13d9c03bcd4c234b47acdf6c6",
+    ),
+)
+
+
+# Exact qualified2013 local inspection, not a new retrieval attestation.
+BIFF8_2013_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2013",
+        "biff8_budget",
+        "c5b7f6916b89a9ea0fd14caf73a979c730116d517d78ffe777d36c5966626140",
+        "https://www.treasury.govt.nz/sites/default/files/2018-04/b13-expenditure-data.xls",
+        "Budget-2013",
+        "2026-10-21T04:46:08.493336+00:00",
+        "sha256:d50c99b0de33a6f0bf3586a861efb368b51306e0378edff3b054986594e8274f",
+    ),
+    SourceDefinition(
+        "biffrevenue-2013",
+        "biff8_revenue",
+        "69e9d3d10c72bd01c661ca02633d48404f7add6f5e4fda02017ab5649fa27869",
+        "https://www.treasury.govt.nz/sites/default/files/2018-04/b13-revenue-data.xls",
+        "Budget-2013",
+        "2026-10-21T04:46:08.493336+00:00",
+        "sha256:13828e406a324a3d283296428876fb3b3f551da55929511deb9589e76de2872e",
+    ),
+)
+
+
+# Exact qualified2012 inspection token; no new retrieval attestation.
+BIFF8_2012_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2012",
+        "biff8_budget",
+        "81429ccc5da52cdba73bb6276bba7d1c55a301dc996a447909fc8fc82ca1af12",
+        "https://www.treasury.govt.nz/sites/default/files/2018-04/b12-expenditure-data.xls",
+        "Budget-2012",
+        "2026-10-21T07:44:25.297538+00:00",
+        "sha256:7a541a7aba9aaa5e14ed9b76d6a4ad3d45a937b019884f8a9c8c5d043338e957",
+    ),
+    SourceDefinition(
+        "biffrevenue-2012",
+        "biff8_revenue",
+        "643fad503424ee6b3aa060a2ff2107fc69d9326bb51446d6fa41755a32d038cb",
+        "https://www.treasury.govt.nz/sites/default/files/2018-04/b12-revenue-data.xls",
+        "Budget-2012",
+        "2026-10-21T07:44:25.297538+00:00",
+        "sha256:dc4adb5a25a2adab214b09be99dc5dacb97dcb288f9a008e2f2570f703206268",
+    ),
+)
+
+
+# Exact qualified2011 local inspection token; not a new capture attestation.
+BIFF8_2011_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2011",
+        "biff8_budget",
+        "8712d27f2da918d1cc8376a8f15e24cafb6b608a3be0cc19da226768a8f69ba0",
+        "https://www.treasury.govt.nz/sites/default/files/2011-05/b11-expense-data.xls",
+        "Budget-2011",
+        "2026-10-21T09:12:10.277245+00:00",
+        "sha256:40affaba1b81c3a9b9c7b795afb49b9758b49432e6bd1e2d76c0ab16fd2911ef",
+    ),
+    SourceDefinition(
+        "biffrevenue-2011",
+        "biff8_revenue",
+        "bd902503455cebe5cc455031bbd2b07f325cce57027c8391c9bec476ad77f073",
+        "https://www.treasury.govt.nz/sites/default/files/2011-05/b11-revenue-data.xls",
+        "Budget-2011",
+        "2026-10-21T09:12:10.277245+00:00",
+        "sha256:bc09a4f03b7b4b6c6bbbcdd3bebee97e8503998785d67b438c78e1a399b44a00",
+    ),
+)
+
+
+# Exact qualified2010 local inspection token; not a new capture attestation.
+BIFF8_2010_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2010",
+        "biff8_budget",
+        "7e26853cbed914ef19bc6dc426d24708dbf19487ce0a9dbc15db4d32d3d00a4f",
+        "https://www.treasury.govt.nz/sites/default/files/2010-05/b10-expense-data.xls",
+        "Budget-2010",
+        "2026-10-21T11:28:21.825267+00:00",
+        "sha256:721a0e171c62e8b133e1738bfbef7c0b8ba0d2ff35756071bfab037dd03e1807",
+    ),
+    SourceDefinition(
+        "biffrevenue-2010",
+        "biff8_revenue",
+        "d6f63516ef967abec18f09cbe347c02a648a53ef04ce382aa8511c7280f08e15",
+        "https://www.treasury.govt.nz/sites/default/files/2010-05/b10-revenue-data.xls",
+        "Budget-2010",
+        "2026-10-21T11:28:21.825267+00:00",
+        "sha256:3f7b14750fea0a211626d693bf1df3d3b89505ee65997656a909512710fd2091",
+    ),
+)
+
+
+# Exact qualified2009 local inspection token; not a new capture attestation.
+BIFF8_2009_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2009",
+        "biff8_budget",
+        "c1177036dd97da6f0e63fb2c91f878a5ec0f98111f62dd881a0e70b536b0bebc",
+        "https://www.treasury.govt.nz/sites/default/files/2009-05/b09-expense-data.xls",
+        "Budget-2009",
+        "2026-10-21T13:08:42.651060+00:00",
+        "sha256:634a90619ebe44be8d1eff04044e106a0c3ed6dcd0115fd5a43c007c810be58a",
+    ),
+    SourceDefinition(
+        "biffrevenue-2009",
+        "biff8_revenue",
+        "dc5ce0e7faf9302cdca3bf9e0af5f423e0cac851cb1bdf031508b732f0ae383d",
+        "https://www.treasury.govt.nz/sites/default/files/2009-05/b09-revenue-data.xls",
+        "Budget-2009",
+        "2026-10-21T13:08:42.651060+00:00",
+        "sha256:e847a93b02948cc4929a6294e3021ca67aefa9ff2ec474487d61da53d058ad77",
+    ),
+)
+
+
+# Exact qualified2008 local inspection token; not a capture attestation.
+BIFF8_2008_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2008",
+        "biff8_budget",
+        "62283a0454233bfeec9ce75bdbc822dcf59326cc2aecf5ea33581a4e1355c51b",
+        "https://www.treasury.govt.nz/sites/default/files/2008-05/b08-expense-data.xls",
+        "Budget-2008",
+        "2026-10-21T14:55:18.062744+00:00",
+        "sha256:86d89a2cb13c684e064d7feb24b0416002f85e53bda5d37974ce58e27ce7b4e9",
+    ),
+    SourceDefinition(
+        "biffrevenue-2008",
+        "biff8_revenue",
+        "c261fb95965f8dc1c0d649000e5bf46012c6e5c37385c050c370de07a580e94a",
+        "https://www.treasury.govt.nz/sites/default/files/2008-05/b08-revenue-data.xls",
+        "Budget-2008",
+        "2026-10-21T14:55:18.062744+00:00",
+        "sha256:97cbcfa7f30106897007e432027e8f8e653ff1831448be0d65968684d3d72b65",
+    ),
+)
+# Exact qualified2007 local inspection token; not a capture attestation.
+BIFF8_2007_SOURCES = (
+    SourceDefinition(
+        "biffbudget-2007",
+        "biff8_budget",
+        "803822e4b27c1bda6c7c3bbe95c8bc025e1ef67ded6beca55473011d8b62ba21",
+        "https://www.treasury.govt.nz/sites/default/files/2007-11/b07-data-expenses.xls",
+        "Budget-2007",
+        "2026-10-21T14:55:18.062744+00:00",
+        "sha256:22157ad202c2b3975b1aebab8e868125273bc5da941e4159a6ef05cdbf6f0002",
+    ),
+    SourceDefinition(
+        "biffrevenue-2007",
+        "biff8_revenue",
+        "bbb62b2d4fb16a35315854adc81899bb416a0cebc3f84f4a971158626b8be3e4",
+        "https://www.treasury.govt.nz/sites/default/files/2007-11/b07-data-revenue.xls",
+        "Budget-2007",
+        "2026-10-21T14:55:18.062744+00:00",
+        "sha256:9ad6b571edecc9b4a331705e86ca98f2aeb02e83d1d506a13ec0834fc17984dd",
+    ),
+)
+
+
+def _require(condition: object) -> None:
+    if not condition:
+        message = "canonical_input_recovery_contract"
+        raise ValueError(message)
+
+
+def _json(value: object) -> bytes:
+    return (
+        json.dumps(value, sort_keys=True, indent=2, ensure_ascii=False) + "\n"
+    ).encode()
+
+
+def _biff_profile(spec: SourceDefinition) -> budget_biff8.BiffBudgetProfile:
+    profiles = [
+        profile
+        for profile in budget_biff8.declared_profiles()
+        if profile.kind == biff8_canonical.KINDS[spec.kind]
+        and budget_biff8_adapter.source_binding(
+            profile.profile_id, spec.source_vintage, spec.source_locator, spec.sha256
+        )
+    ]
+    _require(len(profiles) == 1)
+    return profiles[0]
+
+
+def _sources(
+    cas: Path, definitions: tuple[SourceDefinition, ...]
+) -> dict[str, dict[str, Any]]:
+    _require(
+        0 < len(definitions) <= MAX_EXPANDED_SOURCES
+        and len({s.key for s in definitions}) == len(definitions)
+    )
+    originals = {}
+    for spec in definitions:
+        _require(
+            re.fullmatch(r"[a-z]+-[0-9]{4}", spec.key) is not None
+            and spec.kind in {"historical", "budget", "revenue", *biff8_canonical.KINDS}
+            and source_context(
+                spec.sha256,
+                spec.source_locator,
+                spec.source_vintage,
+                spec.observation_token,
+            )["source_observation_id"]
+            == spec.observation_id
+        )
+        if spec.kind in biff8_canonical.KINDS:
+            _biff_profile(spec)
+        source = cas / spec.sha256[:2] / spec.sha256
+        _require(not source.is_symlink())
+        payload = verified_snapshot(source, spec.sha256, max_bytes=MAX_SOURCE_BYTES)
+        originals[spec.key] = {"sha256": spec.sha256, "bytes": len(payload)}
+    return originals
+
+
+def _inventory(root: Path) -> dict[str, dict[str, Any]]:
+    paths = sorted(root.iterdir())
+    _require(0 < len(paths) <= MAX_OUTPUT_FILES)
+    result = {}
+    for path in paths:
+        _require(not path.is_symlink() and path.is_file())
+        with path.open("rb") as stream:
+            payload = stream.read(MAX_OUTPUT_BYTES + 1)
+        _require(len(payload) <= MAX_OUTPUT_BYTES)
+        result[path.name] = {
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "bytes": len(payload),
+        }
+    return result
+
+
+def _build_biff(
+    spec: SourceDefinition, cas: Path, output: Path
+) -> tuple[CanonicalPackageInput, dict[str, Any]]:
+    profile = _biff_profile(spec)
+    source = cas / spec.sha256[:2] / spec.sha256
+    raw = output / ("raw-" + spec.key)
+    canonical = output / ("canonical-" + spec.key)
+    budget_biff8_adapter.normalize(
+        source,
+        raw,
+        profile=profile.profile_id,
+        expected_sha256=spec.sha256,
+        source_locator=spec.source_locator,
+        source_vintage=spec.source_vintage,
+        observed_at=spec.observation_token,
+    )
+    raw_inventory = _inventory(raw)
+    raw_pin = raw_inventory["MANIFEST.json"]["sha256"]
+    biff8_canonical.export_canonical(
+        raw,
+        raw_pin,
+        source,
+        profile.kind,
+        canonical,
+        write=True,
+        observed_at=spec.observation_token,
+    )
+    canonical_inventory = _inventory(canonical)
+    canonical_pin = canonical_inventory["MANIFEST.json"]["sha256"]
+    return CanonicalPackageInput(
+        spec.kind, canonical, canonical_pin, source, raw, raw_pin
+    ), {
+        "definition": asdict(spec),
+        "raw_manifest_sha256": raw_pin,
+        "canonical_marker_sha256": canonical_pin,
+        "raw_inventory": raw_inventory,
+        "canonical_inventory": canonical_inventory,
+    }
+
+
+def _build(
+    spec: SourceDefinition, cas: Path, output: Path
+) -> tuple[CanonicalPackageInput, dict[str, Any]]:
+    if spec.kind in biff8_canonical.KINDS:
+        return _build_biff(spec, cas, output)
+    source = cas / spec.sha256[:2] / spec.sha256
+    raw, canonical = output / ("raw-" + spec.key), output / ("canonical-" + spec.key)
+    normalizer = {
+        "historical": normalize_historical_workbook,
+        "budget": normalize_budget_workbook,
+        "revenue": normalize_budget_revenue,
+    }[spec.kind]
+    normalizer(
+        source,
+        raw,
+        expected_sha256=spec.sha256,
+        source_locator=spec.source_locator,
+        source_vintage=spec.source_vintage,
+        observed_at=spec.observation_token,
+    )
+    raw_inventory = _inventory(raw)
+    raw_pin = raw_inventory["MANIFEST.json"]["sha256"]
+    if spec.kind == "historical":
+        export_historical_canonical(raw, source, raw_pin, canonical, write=True)
+        marker = "LOCAL_CANONICAL.json"
+    elif spec.kind == "budget":
+        export_budget_appropriations(raw, raw_pin, source, canonical, dry_run=False)
+        marker = "LOCAL_BUDGET.json"
+    else:
+        budget_revenue_canonical_export.export_budget_revenue(
+            raw, raw_pin, source, canonical, dry_run=False
+        )
+        marker = "LOCAL_REVENUE.json"
+    canonical_inventory = _inventory(canonical)
+    canonical_pin = canonical_inventory[marker]["sha256"]
+    package = CanonicalPackageInput(
+        spec.kind, canonical, canonical_pin, source, raw, raw_pin
+    )
+    return package, {
+        "definition": asdict(spec),
+        "raw_manifest_sha256": raw_pin,
+        "canonical_marker_sha256": canonical_pin,
+        "raw_inventory": raw_inventory,
+        "canonical_inventory": canonical_inventory,
+    }
+
+
+def _biff_definitions(editions: tuple[int, ...]) -> tuple[SourceDefinition, ...]:
+    _require(
+        type(editions) is tuple
+        and bool(editions)
+        and all(type(year) is int and year in ALL_BIFF8_EDITIONS for year in editions)
+        and len(set(editions)) == len(editions)
+    )
+    earliest = min(editions)
+    if earliest in COMPLETE_COHORT_STARTS:
+        _require(
+            set(editions) == {year for year in ALL_BIFF8_EDITIONS if year >= earliest}
+            and len(SOURCES) == MAX_SOURCES
+        )
+    selected: tuple[SourceDefinition, ...] = ()
+    for year, definitions in (
+        (2019, BIFF8_SOURCES),
+        (2018, BIFF8_2018_SOURCES),
+        (2017, BIFF8_2017_SOURCES),
+        (2016, BIFF8_2016_SOURCES),
+        (2015, BIFF8_2015_SOURCES),
+        (2014, BIFF8_2014_SOURCES),
+        (2013, BIFF8_2013_SOURCES),
+        (2012, BIFF8_2012_SOURCES),
+        (2011, BIFF8_2011_SOURCES),
+        (2010, BIFF8_2010_SOURCES),
+        (2009, BIFF8_2009_SOURCES),
+        (2008, BIFF8_2008_SOURCES),
+        (2007, BIFF8_2007_SOURCES),
+    ):
+        if year not in editions:
+            continue
+        _require(
+            len(definitions) == len(biff8_canonical.KINDS)
+            and {s.kind for s in definitions} == set(biff8_canonical.KINDS)
+        )
+        selected += definitions
+    return selected
+
+
+def rebuild_canonical_inputs(
+    source_cas: Path,
+    output: Path,
+    *,
+    include_biff8: bool = False,
+    biff8_editions: tuple[int, ...] = (2019,),
+    include_revenue_2025: bool = False,
+) -> RebuiltCanonicalInputs:
+    """Build only exclusive fresh inputs; retain partial attempts on failure.
+
+    Trusted local paths and fixed source definitions are required. Existing
+    Silver/canonical packages are not read. No capture, rights or publication
+    authority is inferred, and the function never overwrites or resumes outputs.
+    """
+    _require(
+        type(include_biff8) is bool
+        and type(include_revenue_2025) is bool
+        and type(biff8_editions) is tuple
+        and all(type(year) is int for year in biff8_editions)
+        and 0 < len(SOURCES) <= MAX_SOURCES
+        and all(spec.kind in {"historical", "budget", "revenue"} for spec in SOURCES)
+    )
+    _require(include_biff8 or biff8_editions == (2019,))
+    _require(
+        not include_revenue_2025
+        or (
+            include_biff8
+            and set(biff8_editions) == set(ALL_BIFF8_EDITIONS)
+            and len(SOURCES) == MAX_SOURCES
+            and REVENUE_2025_SOURCE.key == "revenue-2025"
+            and REVENUE_2025_SOURCE.kind == "revenue"
+        )
+    )
+    definitions_biff = _biff_definitions(biff8_editions) if include_biff8 else ()
+    extra_revenue = (REVENUE_2025_SOURCE,) if include_revenue_2025 else ()
+    selected = (*SOURCES, *definitions_biff, *extra_revenue)
+    version = VERSION
+    if include_biff8:
+        version = {
+            2007: BIFF8_2007_VERSION,
+            2008: BIFF8_2008_VERSION,
+            2009: BIFF8_2009_VERSION,
+            2010: BIFF8_2010_VERSION,
+            2011: BIFF8_2011_VERSION,
+            2012: BIFF8_2012_VERSION,
+            2013: BIFF8_2013_VERSION,
+            2014: BIFF8_2014_VERSION,
+            2015: BIFF8_2015_VERSION,
+            2016: BIFF8_2016_VERSION,
+            2017: BIFF8_2017_VERSION,
+            2018: BIFF8_2018_VERSION,
+            2019: BIFF8_VERSION,
+        }[min(biff8_editions)]
+    if include_revenue_2025:
+        version = REVENUE_2025_VERSION
+    _require(not output.exists() and not output.is_symlink())
+    _require(source_cas.is_dir() and not source_cas.is_symlink())
+    target, original_root = output.resolve(), source_cas.resolve()
+    _require(
+        not target.is_relative_to(original_root)
+        and not original_root.is_relative_to(target)
+    )
+    before = _sources(source_cas, selected)
+    definitions = _json([asdict(spec) for spec in selected])
+    output.mkdir(parents=True, exist_ok=False)
+    products = [_build(spec, source_cas, output) for spec in selected]
+    _require(before == _sources(source_cas, selected))
+    receipt = {
+        "schema_version": version,
+        "status": "written_local",
+        "scope": "pinned_originals_to_fresh_raw_and_canonical",
+        "definitions_sha256": hashlib.sha256(definitions).hexdigest(),
+        "source_inputs": before,
+        "profiles": {
+            spec.key: result[1] for spec, result in zip(selected, products, strict=True)
+        },
+        "retained_derivatives_consumed": False,
+        "observation_context": (
+            "exact_prior_local_tokens_replayed_no_new_capture_attestation"
+        ),
+        "originals_unchanged": True,
+        "rights": "not_evaluated",
+        "publication": "not_performed",
+    }
+    with (output / "RECOVERY_INPUTS.json").open("xb") as stream:
+        stream.write(_json(receipt))
+    return RebuiltCanonicalInputs(tuple(result[0] for result in products), receipt)

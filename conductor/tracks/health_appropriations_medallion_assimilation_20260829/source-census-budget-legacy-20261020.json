@@ -1,0 +1,3885 @@
+{
+  "broader_source_census_and_track_completion": "not_established",
+  "capture_crosswalk": {
+    "evidence": "budget-locator-census-20261019/native-verification-2/verified-archive-assets.json",
+    "new_capture": "not_performed",
+    "sha256": "ba777447fd896aa053d9087dc28ab3672df986d0d1f524fe04d71bd35e5d2bfa"
+  },
+  "cell_text_digest_encoding": "sha256 of exact decoded UTF-8 string, preserving Unicode and spaces",
+  "definition_sheet_observations_complete": 32,
+  "direct_unit_statement_count": 23,
+  "edition_identity_conflict_count": 1,
+  "edition_identity_conflict_disposition": "Keep original locator and literal workbook statement; no silent correction or approved edition binding for the conflicting resource.",
+  "evidence_storage": "immutable receipts outside Git; original source bytes retained in existing CAS",
+  "native_postflight_controls": [
+    {
+      "actual_exit": 0,
+      "evidence": "budget-2019-profile-preflight-20261020/native-assurance-1/native-postflight-1.json",
+      "sha256": "f08a02fe991888bbaeb352387e8366c8d041466c5ac6af75486cbd41d51f068b"
+    },
+    {
+      "actual_exit": 0,
+      "evidence": "legacy-definition-completion-preflight-20261020/native-assurance-1/native-postflight-1.json",
+      "sha256": "055ba6c4a66e416b96b27bc9a0940ce98aab55ac7e8460a904e05d52dfa6b287"
+    },
+    {
+      "actual_exit": 0,
+      "evidence": "legacy-definition-final-window-preflight-20261020/native-assurance-1/native-postflight-1.json",
+      "sha256": "446f46e8011eba0fa0de1a7754e9bc612aeeccddb5f1fa196f1a4de8a74e00fc"
+    },
+    {
+      "actual_exit": 0,
+      "evidence": "legacy-unit-header-preflight-20261020/native-assurance-1/native-postflight-1.json",
+      "sha256": "8cf5e32c2332aecc018086f1ab66341f256a49c626102740a4070d5708f9e332"
+    },
+    {
+      "actual_exit": 0,
+      "evidence": "legacy-definition-preflight-20261020/native-assurance-1/native-postflight-1.json",
+      "original_exit_field": "actual_native_exit",
+      "sha256": "684b2b2f541389492cb8534fbd956b25a4fe5bb443f921b8581167fc0be6c9af"
+    },
+    {
+      "actual_exit": 0,
+      "evidence": "legacy-definition-window-preflight-20261020/native-assurance-1/native-postflight-1.json",
+      "original_exit_field": "actual_native_exit",
+      "sha256": "07f5602903dbeb57b2f41c82c75d6799dfee073ae2d4f63a676d316cbcfa1b68"
+    },
+    {
+      "actual_exit": 0,
+      "evidence": "legacy-workbook-reader-20261020/native-assurance-1/native-postflight-1.json",
+      "original_exit_field": "actual_native_exit",
+      "sha256": "36db6e757fdfc9b5e8ecb4e056301dea86376b1ee7aa26421261c66bf0c9e925"
+    }
+  ],
+  "observation_value_class": "decoded_stored_or_cached_text_metadata_only; no_formula_origin_or_numeric_admission",
+  "producer_head": "8d76d3ce6ed02d1d280e2fa76fb6bcbf40ab7aed",
+  "producer_tree": "9855bb18ff77dd4cd128c612593a04eed716d23e",
+  "public_projection": "coordinates, source-period metadata, amount-scale dispositions and digests; complete decoded observations retained in pinned private evidence",
+  "raw_headers_complete": 32,
+  "resources": [
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 4,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 224,
+        "repeat_equal": true,
+        "rows": 56
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-historical-1986b1eeb8a119b5-1.json",
+          "sha256": "da9cc7b433babdac37b7fc6a4424e0a78bb3bbf4baee0173e9f7b3911868f46d"
+        }
+      ],
+      "locator_edition_year": 2015,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B3",
+          "decoded_text_sha256": "a4aa524df45b40bf3eeecf6e0a0eec7153bf85ac0fef9aac691af40c206d6c25"
+        },
+        {
+          "coordinate": "B40",
+          "decoded_text_sha256": "b41ceaafec7ea8601fade88a91f20236f9dd573e986676c477638057a0a4c521"
+        },
+        {
+          "coordinate": "B41",
+          "decoded_text_sha256": "e9cf54849ea7343775a03833341d73a23e78a50ee53dcc45e863e00e6762d115"
+        },
+        {
+          "coordinate": "B51",
+          "decoded_text_sha256": "e1924cf8dcfbcdeb8bc01a3bc047cc0c3be0162a437ce4f354e69f35451dc928"
+        }
+      ],
+      "raw_layout": {
+        "columns": 15,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-historical-1986b1eeb8a119b5-1.json",
+        "header_evidence_sha256": "da9cc7b433babdac37b7fc6a4424e0a78bb3bbf4baee0173e9f7b3911868f46d",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App ID"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "Parent ID"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Appropriation Name"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Category Name"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Group Type"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Appropriation or Category Type"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Restriction Type"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "K1",
+            "decoded_stored_or_cached_value": "Amount $000"
+          },
+          {
+            "coordinate": "L1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "M1",
+            "decoded_stored_or_cached_value": "Amount Type"
+          },
+          {
+            "coordinate": "N1",
+            "decoded_stored_or_cached_value": "Periodicity"
+          },
+          {
+            "coordinate": "O1",
+            "decoded_stored_or_cached_value": "Current Scope"
+          }
+        ],
+        "rows_including_header": 5978,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 4418560,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2011,
+          2012,
+          2013,
+          2014
+        ],
+        "budgeted": [
+          2016
+        ],
+        "estimated_actual": [
+          2015
+        ]
+      },
+      "source_family": "expenditure",
+      "source_id": "treasury-historical-1986b1eeb8a119b5",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2015-05/b15-expenditure-data.xls",
+      "source_sha256": "4dbabc88f1e0756e0f651ef261b3408b262a10f0b1cdb51977844c97841b9325",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B39",
+          "decoded_text_sha256": "77f9bd43460b2a407a8bbb242d2817949e4ad1bd193b99d8b7ac9c0a781a8e2b"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "eacb66bbf67b1b6cde1aa6e2f1b17d2507f7a1aa2cd818ee7b0f7fd4a37926d0"
+    },
+    {
+      "additional_header_check": {
+        "amount_coordinate": "G1",
+        "amount_label": "Amount",
+        "amount_scale": "not_declared_in_header",
+        "complete_header": true,
+        "evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-historical-2f8ab31aef8d5f85-1.json",
+        "row": 1,
+        "sha256": "c9c707fb773cf350d716c555c8233da30a531b9d5e9d838f720029ae524410d8",
+        "sheet": "Raw Data",
+        "unit_evidence_status": "pending_no_amount_scale_in_complete_Explanation_or_header"
+      },
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 56,
+        "repeat_equal": true,
+        "rows": 28
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-preflight-20261020/native-inspection-1/treasury-historical-2f8ab31aef8d5f85-1.json",
+          "sha256": "08e5221c661fd9aa6b0fd228f77555c12f2275e17c999bc3421cd7bfe6df6fc2"
+        },
+        {
+          "evidence": "legacy-definition-window-preflight-20261020/native-window-preflight-1/treasury-historical-2f8ab31aef8d5f85-1.json",
+          "sha256": "26f0760b1e1419acb51d252ab4bbe98afd795885057c9331dd5e5672169fff04"
+        }
+      ],
+      "locator_edition_year": 2009,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B5",
+          "decoded_text_sha256": "7c023de9d39d9d7ea9469ded62f1e4ab358088834ff7f7a010653f824ba5f4ee"
+        }
+      ],
+      "raw_layout": {
+        "columns": 9,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-historical-2f8ab31aef8d5f85-1.json",
+        "header_evidence_sha256": "c9c707fb773cf350d716c555c8233da30a531b9d5e9d838f720029ae524410d8",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Unit"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App id"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Revenue Type"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "FunctionalClassification"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Amount"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Type"
+          }
+        ],
+        "rows_including_header": 824,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 299520,
+      "source_declared_amount_scale": "pending",
+      "source_declared_june_years": {
+        "actual": [
+          2006,
+          2007,
+          2008
+        ],
+        "budgeted": [
+          2010
+        ],
+        "estimated_actual": [
+          2009
+        ]
+      },
+      "source_family": "revenue",
+      "source_id": "treasury-historical-2f8ab31aef8d5f85",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2009-05/b09-revenue-data.xls",
+      "source_sha256": "dc5ce0e7faf9302cdca3bf9e0af5f423e0cac851cb1bdf031508b732f0ae383d",
+      "unit_evidence_status": "pending_no_unit_statement_in_Explanation",
+      "unit_observations": [],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "897dff29b74eab5a7c5c3ac0aa3c5a2c429532744a7099392487cf23232060bd"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 90,
+        "repeat_equal": true,
+        "rows": 45
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "budget-2019-profile-preflight-20261020/native-profile-preflight-1/revenue-1.json",
+          "sha256": "9b020a65724323f6c0aa945a27a3db2004d8c56db948a859e951abdf3df8f740"
+        }
+      ],
+      "locator_edition_year": 2019,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B37",
+          "decoded_text_sha256": "b41ceaafec7ea8601fade88a91f20236f9dd573e986676c477638057a0a4c521"
+        },
+        {
+          "coordinate": "B38",
+          "decoded_text_sha256": "e9cf54849ea7343775a03833341d73a23e78a50ee53dcc45e863e00e6762d115"
+        },
+        {
+          "coordinate": "B4",
+          "decoded_text_sha256": "3f931ca8f8374bf24867830973e7b98a5a7dc0486c28e0867a653b4bc89834aa"
+        }
+      ],
+      "raw_layout": {
+        "columns": 8,
+        "complete_header_observed": true,
+        "header_evidence": "budget-2019-profile-preflight-20261020/native-profile-preflight-1/revenue-1.json",
+        "header_evidence_sha256": "9b020a65724323f6c0aa945a27a3db2004d8c56db948a859e951abdf3df8f740",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App ID"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Revenue Type"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Amount $000"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Amount Type"
+          }
+        ],
+        "rows_including_header": 1021,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 468480,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2015,
+          2016,
+          2017,
+          2018
+        ],
+        "budgeted": [
+          2020
+        ],
+        "estimated_actual": [
+          2019
+        ]
+      },
+      "source_family": "revenue",
+      "source_id": "treasury-historical-3672fad7f6d51c5c",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2019-05/b19-revenue-data.xls",
+      "source_sha256": "d927995dd91eda6fdfb4020eb2a3e91871a24d5144e837e7801b6725e5f33df8",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B36",
+          "decoded_text_sha256": "77f9bd43460b2a407a8bbb242d2817949e4ad1bd193b99d8b7ac9c0a781a8e2b"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "e911dcca0077a65eefef94539c7c14266536453c3a2b3bc6081115b07f013a03"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 4,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 228,
+        "repeat_equal": true,
+        "rows": 57
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-historical-3dcc17c2c882e42c-1.json",
+          "sha256": "c40fca66d0a03e6d6464db77f242433dcf9f89eb7ccdb65899c44969add05831"
+        }
+      ],
+      "locator_edition_year": 2018,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B3",
+          "decoded_text_sha256": "166e4226c563accd2df1401ed502846b45a8e3a6e1d09631d47c7fccac3358be"
+        },
+        {
+          "coordinate": "B39",
+          "decoded_text_sha256": "b41ceaafec7ea8601fade88a91f20236f9dd573e986676c477638057a0a4c521"
+        },
+        {
+          "coordinate": "B40",
+          "decoded_text_sha256": "e9cf54849ea7343775a03833341d73a23e78a50ee53dcc45e863e00e6762d115"
+        },
+        {
+          "coordinate": "B52",
+          "decoded_text_sha256": "e1924cf8dcfbcdeb8bc01a3bc047cc0c3be0162a437ce4f354e69f35451dc928"
+        }
+      ],
+      "raw_layout": {
+        "columns": 17,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-historical-3dcc17c2c882e42c-1.json",
+        "header_evidence_sha256": "c40fca66d0a03e6d6464db77f242433dcf9f89eb7ccdb65899c44969add05831",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App ID"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "Parent ID"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Appropriation Name"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Category Name"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Group Type"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Appropriation or Category Type"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Restriction Type"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "K1",
+            "decoded_stored_or_cached_value": "Amount $000"
+          },
+          {
+            "coordinate": "L1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "M1",
+            "decoded_stored_or_cached_value": "Amount Type"
+          },
+          {
+            "coordinate": "N1",
+            "decoded_stored_or_cached_value": "Periodicity"
+          },
+          {
+            "coordinate": "O1",
+            "decoded_stored_or_cached_value": "Current Scope"
+          },
+          {
+            "coordinate": "P1",
+            "decoded_stored_or_cached_value": "M Number"
+          },
+          {
+            "coordinate": "Q1",
+            "decoded_stored_or_cached_value": "Portfolio Name"
+          }
+        ],
+        "rows_including_header": 6168,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 4777984,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2014,
+          2015,
+          2016,
+          2017
+        ],
+        "budgeted": [
+          2019
+        ],
+        "estimated_actual": [
+          2018
+        ]
+      },
+      "source_family": "expenditure",
+      "source_id": "treasury-historical-3dcc17c2c882e42c",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-05/b18-expenditure-data.xls",
+      "source_sha256": "fecd70019054313f3a11cbb370be684d8bea0eea8cb3623b69a9e193ac085c24",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B38",
+          "decoded_text_sha256": "77f9bd43460b2a407a8bbb242d2817949e4ad1bd193b99d8b7ac9c0a781a8e2b"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "29479327f06a4b61167cace8cce5df75a9a3d3ff9f759e9868a0757d90831582"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 4,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 220,
+        "repeat_equal": true,
+        "rows": 55
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "budget-2019-profile-preflight-20261020/native-profile-preflight-1/expenditure-1.json",
+          "sha256": "dfd47b86ae5e3729745f3c6b54684e445a23c59e1e6ec683394a2da687fbac5b"
+        }
+      ],
+      "locator_edition_year": 2019,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B3",
+          "decoded_text_sha256": "29d65650c244df30cedf6f61e545cac0956fce416db5acba6140904226e2263c"
+        },
+        {
+          "coordinate": "B39",
+          "decoded_text_sha256": "b41ceaafec7ea8601fade88a91f20236f9dd573e986676c477638057a0a4c521"
+        },
+        {
+          "coordinate": "B40",
+          "decoded_text_sha256": "e9cf54849ea7343775a03833341d73a23e78a50ee53dcc45e863e00e6762d115"
+        }
+      ],
+      "raw_layout": {
+        "columns": 17,
+        "complete_header_observed": true,
+        "header_evidence": "budget-2019-profile-preflight-20261020/native-profile-preflight-1/expenditure-1.json",
+        "header_evidence_sha256": "dfd47b86ae5e3729745f3c6b54684e445a23c59e1e6ec683394a2da687fbac5b",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App ID"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "Parent ID"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Appropriation Name"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Category Name"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Group Type"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Appropriation or Category Type"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Restriction Type"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "K1",
+            "decoded_stored_or_cached_value": "Amount $000"
+          },
+          {
+            "coordinate": "L1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "M1",
+            "decoded_stored_or_cached_value": "Amount Type"
+          },
+          {
+            "coordinate": "N1",
+            "decoded_stored_or_cached_value": "Periodicity"
+          },
+          {
+            "coordinate": "O1",
+            "decoded_stored_or_cached_value": "Current Scope"
+          },
+          {
+            "coordinate": "P1",
+            "decoded_stored_or_cached_value": "M Number"
+          },
+          {
+            "coordinate": "Q1",
+            "decoded_stored_or_cached_value": "Portfolio Name"
+          }
+        ],
+        "rows_including_header": 6289,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 4450304,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2015,
+          2016,
+          2017,
+          2018
+        ],
+        "budgeted": [
+          2020
+        ],
+        "estimated_actual": [
+          2019
+        ]
+      },
+      "source_family": "expenditure",
+      "source_id": "treasury-historical-75b102427fca550d",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2019-05/b19-expenditure-data.xls",
+      "source_sha256": "30602fd66ec1f4fb7d0b47f2766f6560c4d22e90c11e994fba3e404e29ceab48",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B38",
+          "decoded_text_sha256": "77f9bd43460b2a407a8bbb242d2817949e4ad1bd193b99d8b7ac9c0a781a8e2b"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "f1f83322e3e2c3284224a473b4bb880ff11853f4a3e22c19685ca766bc684843"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 10,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 770,
+        "repeat_equal": true,
+        "rows": 77
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-historical-a5ede5d1d74ffbeb-1.json",
+          "sha256": "de1ea43cff2b15754d172c7d199ec249bf7372ae1c07555c6d69e38fe1f12e1a"
+        }
+      ],
+      "locator_edition_year": 2011,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B5",
+          "decoded_text_sha256": "ac98f0ab26892a50086d18406d1028c1e1c2272e87d8b85b4fe0e97b78050966"
+        }
+      ],
+      "raw_layout": {
+        "columns": 11,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-historical-a5ede5d1d74ffbeb-1.json",
+        "header_evidence_sha256": "de1ea43cff2b15754d172c7d199ec249bf7372ae1c07555c6d69e38fe1f12e1a",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App id"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "MCOA id"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Revenue Type"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Amount ($000)"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "Amount_Type_Desc"
+          },
+          {
+            "coordinate": "K1",
+            "decoded_stored_or_cached_value": "Periodicity"
+          }
+        ],
+        "rows_including_header": 991,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 374784,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2007,
+          2008,
+          2009,
+          2010
+        ],
+        "budgeted": [
+          2012
+        ],
+        "estimated_actual": [
+          2011
+        ]
+      },
+      "source_family": "revenue",
+      "source_id": "treasury-historical-a5ede5d1d74ffbeb",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2011-05/b11-revenue-data.xls",
+      "source_sha256": "bd902503455cebe5cc455031bbd2b07f325cce57027c8391c9bec476ad77f073",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B13",
+          "decoded_text_sha256": "06dab7ecc51fcd49a578d2e279f4117591221d37435894787280c7866133d941"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "7e4cd4e97ca1632d979832feabbd36117f2e7a49df096a57ae3809f19e7504da"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 80,
+        "repeat_equal": true,
+        "rows": 40
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-historical-d7eb66f4860bc179-1.json",
+          "sha256": "81ade3e2182dce78f262efa7a4911384a77e2c7cdd1b47ff284c853c55289ac3"
+        }
+      ],
+      "locator_edition_year": 2015,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B35",
+          "decoded_text_sha256": "b41ceaafec7ea8601fade88a91f20236f9dd573e986676c477638057a0a4c521"
+        },
+        {
+          "coordinate": "B36",
+          "decoded_text_sha256": "e9cf54849ea7343775a03833341d73a23e78a50ee53dcc45e863e00e6762d115"
+        },
+        {
+          "coordinate": "B4",
+          "decoded_text_sha256": "e05af3ba350a9c9538e06aecb354885c671949dae30d23dd6ab28df200f86c0c"
+        }
+      ],
+      "raw_layout": {
+        "columns": 8,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-historical-d7eb66f4860bc179-1.json",
+        "header_evidence_sha256": "81ade3e2182dce78f262efa7a4911384a77e2c7cdd1b47ff284c853c55289ac3",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App ID"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Revenue Type"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Amount $000"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Amount Type"
+          }
+        ],
+        "rows_including_header": 1007,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 325120,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2011,
+          2012,
+          2013,
+          2014
+        ],
+        "budgeted": [
+          2016
+        ],
+        "estimated_actual": [
+          2015
+        ]
+      },
+      "source_family": "revenue",
+      "source_id": "treasury-historical-d7eb66f4860bc179",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2015-05/b15-revenue-data.xls",
+      "source_sha256": "481b971d4569cbadbf48440fa1d66f82d8d42942fd855e95e5bfd1ea95e70171",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B34",
+          "decoded_text_sha256": "77f9bd43460b2a407a8bbb242d2817949e4ad1bd193b99d8b7ac9c0a781a8e2b"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "11a5770c8f02a64c956ac4f258f068566486ddfc3171a985caa8f30097c34978"
+    },
+    {
+      "additional_header_check": {
+        "amount_coordinate": "G1",
+        "amount_label": "Amount",
+        "amount_scale": "not_declared_in_header",
+        "complete_header": true,
+        "evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-historical-de9956ad7a7b3449-1.json",
+        "row": 1,
+        "sha256": "3637fb67bdbdf009cc62d6c469b1739f8bbdb1889594df8147a13ba2c3fdc3ae",
+        "sheet": "Raw Data",
+        "unit_evidence_status": "pending_no_amount_scale_in_complete_Explanation_or_header"
+      },
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 78,
+        "repeat_equal": true,
+        "rows": 39
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-preflight-20261020/native-inspection-1/treasury-historical-de9956ad7a7b3449-1.json",
+          "sha256": "4a4bf471978884bfc869be609f7c2289c53ff4266b5cdc3d2448db517788688e"
+        },
+        {
+          "evidence": "legacy-definition-window-preflight-20261020/native-window-preflight-1/treasury-historical-de9956ad7a7b3449-1.json",
+          "sha256": "ca086847674ab3072533806474d2521438edb14e993868c348f7ad83acdb9d97"
+        }
+      ],
+      "locator_edition_year": 2008,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B4",
+          "decoded_text_sha256": "c81767a9aa49e0b23a42805ad7395bc4071d96e60e06005b8c6750572af7864d"
+        }
+      ],
+      "raw_layout": {
+        "columns": 9,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-historical-de9956ad7a7b3449-1.json",
+        "header_evidence_sha256": "3637fb67bdbdf009cc62d6c469b1739f8bbdb1889594df8147a13ba2c3fdc3ae",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Unit"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App id"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Revenue Type"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Amount"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Type"
+          }
+        ],
+        "rows_including_header": 652,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 300032,
+      "source_declared_amount_scale": "pending",
+      "source_declared_june_years": {
+        "actual": [
+          2006,
+          2007
+        ],
+        "budgeted": [
+          2009
+        ],
+        "estimated_actual": [
+          2008
+        ]
+      },
+      "source_family": "revenue",
+      "source_id": "treasury-historical-de9956ad7a7b3449",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2008-05/b08-revenue-data.xls",
+      "source_sha256": "c261fb95965f8dc1c0d649000e5bf46012c6e5c37385c050c370de07a580e94a",
+      "unit_evidence_status": "pending_no_unit_statement_in_Explanation",
+      "unit_observations": [],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "1b177c933fe26a9652520bf8224e4af10a4e2d252cacd38aee86f02c89100ded"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 90,
+        "repeat_equal": true,
+        "rows": 45
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-historical-e6ba8a7f1451c681-1.json",
+          "sha256": "e320eab7708e0f347c2b2e3c5efc9803224f983aa1a063728e984231fcae639c"
+        }
+      ],
+      "locator_edition_year": 2018,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B37",
+          "decoded_text_sha256": "b41ceaafec7ea8601fade88a91f20236f9dd573e986676c477638057a0a4c521"
+        },
+        {
+          "coordinate": "B38",
+          "decoded_text_sha256": "e9cf54849ea7343775a03833341d73a23e78a50ee53dcc45e863e00e6762d115"
+        },
+        {
+          "coordinate": "B4",
+          "decoded_text_sha256": "4d5ecbcc4e128c0d54cbc1abd7666c74f6796e30e36871f8f50b2cbb9f587cc7"
+        }
+      ],
+      "raw_layout": {
+        "columns": 8,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-historical-e6ba8a7f1451c681-1.json",
+        "header_evidence_sha256": "e320eab7708e0f347c2b2e3c5efc9803224f983aa1a063728e984231fcae639c",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App ID"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Revenue Type"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Amount $000"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Amount Type"
+          }
+        ],
+        "rows_including_header": 1012,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 462336,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2014,
+          2015,
+          2016,
+          2017
+        ],
+        "budgeted": [
+          2019
+        ],
+        "estimated_actual": [
+          2018
+        ]
+      },
+      "source_family": "revenue",
+      "source_id": "treasury-historical-e6ba8a7f1451c681",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-05/b18-revenue-data.xls",
+      "source_sha256": "4db87e7eddd7a76b5b7523db5a01952d15e7f47b88d03ef9878d37cd077f937f",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B36",
+          "decoded_text_sha256": "77f9bd43460b2a407a8bbb242d2817949e4ad1bd193b99d8b7ac9c0a781a8e2b"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "337706481f81297101b054bb37277f9898ab89ee7845604e6789d4c839ea4281"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 58,
+        "repeat_equal": true,
+        "rows": 29
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-preflight-20261020/native-inspection-1/treasury-historical-f4282a2d6ae19875-1.json",
+          "sha256": "6b75a8628a832cc04f1d335d11330166c9ccf727e764506b132504751e9fd94e"
+        },
+        {
+          "evidence": "legacy-definition-final-window-preflight-20261020/native-window-preflight-1/treasury-historical-f4282a2d6ae19875-1.json",
+          "sha256": "56a35b42c0797a727bc5533702c93125496a441a4e665de6845224d5abae1302"
+        }
+      ],
+      "locator_edition_year": 2010,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B5",
+          "decoded_text_sha256": "0aee4dc44f59b31c65bcf732caa7adb558f10923f5340c9fbae034b1c4c88c60"
+        }
+      ],
+      "raw_layout": {
+        "columns": 11,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-workbook-reader-20261020/native-inspection-1/treasury-historical-f4282a2d6ae19875-1.json",
+        "header_evidence_sha256": "c516315ad35798529f145b08d8cc38497325319b74bc6b6c7da3ae729f60f177",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "UnitName"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "VoteName"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "AppropriationID"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "ParentAppropriationID"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Revenue Type"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "FunctionalClassification"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Amount $(000)"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "AmountType"
+          },
+          {
+            "coordinate": "K1",
+            "decoded_stored_or_cached_value": "Periodicity"
+          }
+        ],
+        "rows_including_header": 984,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 347136,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2006,
+          2007,
+          2008,
+          2009
+        ],
+        "budgeted": [
+          2011
+        ],
+        "estimated_actual": [
+          2010
+        ]
+      },
+      "source_family": "revenue",
+      "source_id": "treasury-historical-f4282a2d6ae19875",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2010-05/b10-revenue-data.xls",
+      "source_sha256": "d6f63516ef967abec18f09cbe347c02a648a53ef04ce382aa8511c7280f08e15",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B13",
+          "decoded_text_sha256": "06dab7ecc51fcd49a578d2e279f4117591221d37435894787280c7866133d941"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "eb6fbe0901280b18902bc3dfab1ce0ad2971aaf0884d80f4270968c4b6d32c42"
+    },
+    {
+      "additional_header_check": {
+        "amount_coordinate": "G1",
+        "amount_label": "Amount",
+        "amount_scale": "not_declared_in_header",
+        "complete_header": true,
+        "evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-136e89a5fbb94127-1.json",
+        "row": 1,
+        "sha256": "b0e7a53d81ea7953dc6114887affa6d0452a4d09bebca9fe04f149ab8ffd659a",
+        "sheet": "RawData",
+        "unit_evidence_status": "pending_no_amount_scale_in_complete_Explanation_or_header"
+      },
+      "additional_variant": true,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 1,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 40,
+        "repeat_equal": true,
+        "rows": 40
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-preflight-20261020/native-inspection-1/treasury-locator-136e89a5fbb94127-1.json",
+          "sha256": "77e545f93ceb710dc28e4028f2753a653f82600f2b5d506746c4d7ac89615847"
+        },
+        {
+          "evidence": "legacy-definition-window-preflight-20261020/native-window-preflight-1/treasury-locator-136e89a5fbb94127-1.json",
+          "sha256": "68f6a03f07f35c5e62d5329fc6051e58090bf64326c346be0656ffdbe4167163"
+        }
+      ],
+      "locator_edition_year": 2008,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "A4",
+          "decoded_text_sha256": "a46cbe81f155b5415fbaa23b18b020945afd25a1e17b2f6d6dd6d5771d9328f8"
+        }
+      ],
+      "raw_layout": {
+        "columns": 7,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-136e89a5fbb94127-1.json",
+        "header_evidence_sha256": "b0e7a53d81ea7953dc6114887affa6d0452a4d09bebca9fe04f149ab8ffd659a",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "EntityName"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Statement"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "LineName"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "LineOrder"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "AmountType"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Amount"
+          }
+        ],
+        "rows_including_header": 10251,
+        "sheet": "RawData"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 2156032,
+      "source_declared_amount_scale": "pending",
+      "source_declared_june_years": {
+        "actual": [
+          2007
+        ],
+        "estimated_actual": [
+          2008
+        ],
+        "forecast": [
+          2009
+        ]
+      },
+      "source_family": "departmental_forecast_statements",
+      "source_id": "treasury-locator-136e89a5fbb94127",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2008-05/b08-dept-ffs-data.xls",
+      "source_sha256": "021e73643e4447735920ffbb281e41dd96b09f49e0f10f0ea55ce9c722d3f92c",
+      "unit_evidence_status": "pending_no_unit_statement_in_Explanation",
+      "unit_observations": [],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "181918b4a165b22093e11c56d2b5ee559b4991cc8bf7edd6822039379eb0d585"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 84,
+        "repeat_equal": true,
+        "rows": 42
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-237c11f98b8c41c9-1.json",
+          "sha256": "4c721edc4d7e6d2792977edfc2e34c01d114038a11ec561cad3faabc9ae0d774"
+        }
+      ],
+      "locator_edition_year": 2016,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B34",
+          "decoded_text_sha256": "b41ceaafec7ea8601fade88a91f20236f9dd573e986676c477638057a0a4c521"
+        },
+        {
+          "coordinate": "B35",
+          "decoded_text_sha256": "e9cf54849ea7343775a03833341d73a23e78a50ee53dcc45e863e00e6762d115"
+        },
+        {
+          "coordinate": "B4",
+          "decoded_text_sha256": "6092637ce5980171cdfb81db109c9acddc89bd9ef313d4523b143a3f7ee63826"
+        }
+      ],
+      "raw_layout": {
+        "columns": 8,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-237c11f98b8c41c9-1.json",
+        "header_evidence_sha256": "4c721edc4d7e6d2792977edfc2e34c01d114038a11ec561cad3faabc9ae0d774",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App ID"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Revenue Type"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Amount $000"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Amount Type"
+          }
+        ],
+        "rows_including_header": 1012,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 339968,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2012,
+          2013,
+          2014,
+          2015
+        ],
+        "budgeted": [
+          2017
+        ],
+        "estimated_actual": [
+          2016
+        ]
+      },
+      "source_family": "revenue",
+      "source_id": "treasury-locator-237c11f98b8c41c9",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b16-revenue-data.xls",
+      "source_sha256": "df34849f2ef7ce1903469edb315047afc8ae716574d163f59691a654c51b957f",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B33",
+          "decoded_text_sha256": "77f9bd43460b2a407a8bbb242d2817949e4ad1bd193b99d8b7ac9c0a781a8e2b"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "6ecefb9c6d53caaac5dd4b0819cac274e266cec6c2872785233a1a669e820cb2"
+    },
+    {
+      "additional_header_check": {
+        "amount_coordinate": "H1",
+        "amount_label": "Amount",
+        "amount_scale": "not_declared_in_header",
+        "complete_header": true,
+        "evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-30919ff114f55b44-1.json",
+        "row": 1,
+        "sha256": "676a9bb7ea7e4ecd0f4eef47daebf09aad8d68ae3d69dd76c9a07abef3638d77",
+        "sheet": "Raw Data",
+        "unit_evidence_status": "pending_no_amount_scale_in_complete_Explanation_or_header"
+      },
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 72,
+        "repeat_equal": true,
+        "rows": 36
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-preflight-20261020/native-inspection-1/treasury-locator-30919ff114f55b44-1.json",
+          "sha256": "67882e0d5fc5b35967301a37b74bc56c9fda16863339c0c2179899fd1ecf25f9"
+        },
+        {
+          "evidence": "legacy-definition-window-preflight-20261020/native-window-preflight-1/treasury-locator-30919ff114f55b44-1.json",
+          "sha256": "dda0a76ef45eae78abdb1d9cd77c8b8e457a200fc641ebb2dbc7e6a60b95ef2e"
+        }
+      ],
+      "locator_edition_year": 2007,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B4",
+          "decoded_text_sha256": "8838bcaa41f721b373d976451b19a67c8b5e70b60d46c18577aa6350dcd443f9"
+        }
+      ],
+      "raw_layout": {
+        "columns": 10,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-30919ff114f55b44-1.json",
+        "header_evidence_sha256": "676a9bb7ea7e4ecd0f4eef47daebf09aad8d68ae3d69dd76c9a07abef3638d77",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Unit"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App id"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "MCOA id"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Expense Type"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Amount"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "Type"
+          }
+        ],
+        "rows_including_header": 2567,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 1805312,
+      "source_declared_amount_scale": "pending",
+      "source_declared_june_years": {
+        "actual": [
+          2006
+        ],
+        "budgeted": [
+          2008
+        ],
+        "estimated_actual": [
+          2007
+        ]
+      },
+      "source_family": "expenditure",
+      "source_id": "treasury-locator-30919ff114f55b44",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2007-11/b07-data-expenses.xls",
+      "source_sha256": "803822e4b27c1bda6c7c3bbe95c8bc025e1ef67ded6beca55473011d8b62ba21",
+      "unit_evidence_status": "pending_no_unit_statement_in_Explanation",
+      "unit_observations": [],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "a1b5d7c487e90c01b8c9f29e2010e744443c2157ff8da1cab11e64456943d980"
+    },
+    {
+      "additional_variant": true,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 64,
+        "repeat_equal": true,
+        "rows": 32
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-39db957dabe259ed-1.json",
+          "sha256": "7ae3a3482a3db28388b7d323576621d657a0ff27698a123b43c57f696c4f179e"
+        }
+      ],
+      "locator_edition_year": 2013,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B8",
+          "decoded_text_sha256": "7088d3deb53e94ee0ae5e65e5aae4c5c64e677112f3e5f6fa3bca8381f5fd1b4"
+        }
+      ],
+      "raw_layout": {
+        "columns": 7,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-39db957dabe259ed-1.json",
+        "header_evidence_sha256": "7ae3a3482a3db28388b7d323576621d657a0ff27698a123b43c57f696c4f179e",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Statement"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "LineName"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "LineOrder"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "AmountType"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Amount $000"
+          }
+        ],
+        "rows_including_header": 9513,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 1374720,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2012
+        ],
+        "estimated_actual": [
+          2013
+        ],
+        "forecast": [
+          2014
+        ]
+      },
+      "source_family": "departmental_forecast_statements",
+      "source_id": "treasury-locator-39db957dabe259ed",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b13-dept-ffs-data.xls",
+      "source_sha256": "793e00dc28a9153a87e307827d02495d0c6ddd998c65af9d5d280be50c528264",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B14",
+          "decoded_text_sha256": "3f90c67fc3f3fe530132a7a21ab83859ce10374a1b319528b564ca370f3bbacb"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "4f24cb9623cee5afa7813558d4fb7e32b79dca58de41202c8d79f4a34d9099a6"
+    },
+    {
+      "additional_variant": true,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 58,
+        "repeat_equal": true,
+        "rows": 29
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-5bf7c39ea5ce8219-1.json",
+          "sha256": "4c3e7b35d21b7e67f7d96f9f1c6d3d40386eb59988fa384e86857d980827922a"
+        }
+      ],
+      "locator_edition_year": 2011,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B5",
+          "decoded_text_sha256": "c647f3c8918fc280346e36c003276c5dc66823bf1723c3227a508d3060fa1273"
+        }
+      ],
+      "raw_layout": {
+        "columns": 7,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-5bf7c39ea5ce8219-1.json",
+        "header_evidence_sha256": "4c3e7b35d21b7e67f7d96f9f1c6d3d40386eb59988fa384e86857d980827922a",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Statement"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "LineName"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "LineOrder"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "AmountType"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Amount $000"
+          }
+        ],
+        "rows_including_header": 10333,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 1560064,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2010
+        ],
+        "estimated_actual": [
+          2011
+        ],
+        "forecast": [
+          2012
+        ]
+      },
+      "source_family": "departmental_forecast_statements",
+      "source_id": "treasury-locator-5bf7c39ea5ce8219",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2011-05/b11-dept-ffs-data.xls",
+      "source_sha256": "de61a9b55e715caf17531ee9004a2e5885282de7c962b44a443638d155768ffb",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B11",
+          "decoded_text_sha256": "20d4ed345691dbe4203ce9599491cb1d0722349575762f5a63fba32167f3e3df"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "df83f89fe5423c557d9f656bf8d2f90b646af32bc43bad26a866969eba6f31d8"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 92,
+        "repeat_equal": true,
+        "rows": 46
+      },
+      "edition_identity_status": "pending_locator_2014_but_Explanation_B10_says_Budget_2015",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-5da68f356249366b-1.json",
+          "sha256": "ac30f09af28466b538066d45f1dbdceb15930206ebbf5732c741cad792b64001"
+        }
+      ],
+      "locator_edition_year": 2014,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B10",
+          "decoded_text_sha256": "2839efff57e1453e364ae20afbd420aaccb3dd84d7c8067f5ee1c6973d1cb7bb"
+        },
+        {
+          "coordinate": "B42",
+          "decoded_text_sha256": "b41ceaafec7ea8601fade88a91f20236f9dd573e986676c477638057a0a4c521"
+        },
+        {
+          "coordinate": "B43",
+          "decoded_text_sha256": "e9cf54849ea7343775a03833341d73a23e78a50ee53dcc45e863e00e6762d115"
+        }
+      ],
+      "raw_layout": {
+        "columns": 9,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-5da68f356249366b-1.json",
+        "header_evidence_sha256": "ac30f09af28466b538066d45f1dbdceb15930206ebbf5732c741cad792b64001",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App ID"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Revenue Type"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Amount ($000)"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Amount Type"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Periodicity"
+          }
+        ],
+        "rows_including_header": 1010,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 355840,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2010,
+          2011,
+          2012,
+          2013
+        ],
+        "budgeted": [
+          2015
+        ],
+        "estimated_actual": [
+          2014
+        ]
+      },
+      "source_family": "revenue",
+      "source_id": "treasury-locator-5da68f356249366b",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b14-revenue-data.xls",
+      "source_sha256": "ba1798c82e556afe98188ea58651759cb6fa1f52a461e4529bc664af424db91b",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B29",
+          "decoded_text_sha256": "06dab7ecc51fcd49a578d2e279f4117591221d37435894787280c7866133d941"
+        },
+        {
+          "coordinate": "B41",
+          "decoded_text_sha256": "c31f74354aef1264a6629fda522383388273a7278b7047227c5d1354a76f2976"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "f21246848e12490f69f6e6c1961626ac8451c32d237224951ff796e86ce3898d"
+    },
+    {
+      "additional_header_check": {
+        "amount_coordinate": "H1",
+        "amount_label": "Amount",
+        "amount_scale": "not_declared_in_header",
+        "complete_header": true,
+        "evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-766f5f38a81ed87e-1.json",
+        "row": 1,
+        "sha256": "af3ea4d335ca2a402c1fa8e93f1ed7b218abce285a846bb14991f7b2f0f2563b",
+        "sheet": "Raw Data",
+        "unit_evidence_status": "pending_no_amount_scale_in_complete_Explanation_or_header"
+      },
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 72,
+        "repeat_equal": true,
+        "rows": 36
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-preflight-20261020/native-inspection-1/treasury-locator-766f5f38a81ed87e-1.json",
+          "sha256": "84c3b95d8922d1e113c9ef553146b72fbbd007d54fe4ac20cc3bbc1da55cff66"
+        },
+        {
+          "evidence": "legacy-definition-window-preflight-20261020/native-window-preflight-1/treasury-locator-766f5f38a81ed87e-1.json",
+          "sha256": "f9714a0b45985ab6acd16a4b42375754eff71804a24e8b640df0e033605596fb"
+        }
+      ],
+      "locator_edition_year": 2008,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B4",
+          "decoded_text_sha256": "7e55a8da0bfd3814e45045b9804e8052c72f206275be4eb23b63263943c6c1b7"
+        }
+      ],
+      "raw_layout": {
+        "columns": 10,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-766f5f38a81ed87e-1.json",
+        "header_evidence_sha256": "af3ea4d335ca2a402c1fa8e93f1ed7b218abce285a846bb14991f7b2f0f2563b",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Unit"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App id"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "MCOA id"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Expense Type"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Amount"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "Type"
+          }
+        ],
+        "rows_including_header": 3558,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 2411520,
+      "source_declared_amount_scale": "pending",
+      "source_declared_june_years": {
+        "actual": [
+          2006,
+          2007
+        ],
+        "budgeted": [
+          2009
+        ],
+        "estimated_actual": [
+          2008
+        ]
+      },
+      "source_family": "expenditure",
+      "source_id": "treasury-locator-766f5f38a81ed87e",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2008-05/b08-expense-data.xls",
+      "source_sha256": "62283a0454233bfeec9ce75bdbc822dcf59326cc2aecf5ea33581a4e1355c51b",
+      "unit_evidence_status": "pending_no_unit_statement_in_Explanation",
+      "unit_observations": [],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "d504312d6af7d754cb18401d41499fc49e2d60f5ab8b876ecc8a59ada28d605f"
+    },
+    {
+      "additional_header_check": {
+        "amount_coordinate": "G1",
+        "amount_label": "Amount",
+        "amount_scale": "not_declared_in_header",
+        "complete_header": true,
+        "evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-7c80560159757085-1.json",
+        "row": 1,
+        "sha256": "0099d86e2356604bc6c8c16782be9041cb0a03a6074c1ffcd4391f7b062f6cd8",
+        "sheet": "Raw Data",
+        "unit_evidence_status": "pending_no_amount_scale_in_complete_Explanation_or_header"
+      },
+      "additional_variant": true,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 54,
+        "repeat_equal": true,
+        "rows": 27
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-7c80560159757085-1.json",
+          "sha256": "45c22aa6e3a9818aa558a8e8a7e2d35577b0b250cb9c460b341bb0462b21d356"
+        }
+      ],
+      "locator_edition_year": 2010,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B5",
+          "decoded_text_sha256": "bbd8f3ccdf1212042c46aa5343e02bafc2b6f33df6894af8f665295dfa9ca9ea"
+        }
+      ],
+      "raw_layout": {
+        "columns": 7,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-7c80560159757085-1.json",
+        "header_evidence_sha256": "0099d86e2356604bc6c8c16782be9041cb0a03a6074c1ffcd4391f7b062f6cd8",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "EntityName"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Statement"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "LineName"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "LineOrder"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "AmountType"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Amount"
+          }
+        ],
+        "rows_including_header": 10334,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 1559040,
+      "source_declared_amount_scale": "pending",
+      "source_declared_june_years": {
+        "actual": [
+          2009
+        ],
+        "estimated_actual": [
+          2010
+        ],
+        "forecast": [
+          2011
+        ]
+      },
+      "source_family": "departmental_forecast_statements",
+      "source_id": "treasury-locator-7c80560159757085",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2010-05/b10-dept-ffs-data.xls",
+      "source_sha256": "5e8003e093ece8485c652ac2f4655fc35b1b57f02522111180998584048e730c",
+      "unit_evidence_status": "pending_no_unit_statement_in_Explanation",
+      "unit_observations": [],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "1db7e6015d4b7e9c65f4508bd1f359e2656d4a97bff5fa062d9330b314746ee3"
+    },
+    {
+      "additional_header_check": {
+        "amount_coordinate": "G1",
+        "amount_label": "Amount",
+        "amount_scale": "not_declared_in_header",
+        "complete_header": true,
+        "evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-7d150e8bde79bb46-1.json",
+        "row": 1,
+        "sha256": "6f9724b78ade5f99252ce1e51ac947ec9d38c7758f1f8a4e137b0b414ba67315",
+        "sheet": "Raw Data",
+        "unit_evidence_status": "pending_no_amount_scale_in_complete_Explanation_or_header"
+      },
+      "additional_variant": true,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 54,
+        "repeat_equal": true,
+        "rows": 27
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-preflight-20261020/native-inspection-1/treasury-locator-7d150e8bde79bb46-1.json",
+          "sha256": "28e77835f7e801f0b8ce081b035b71334ede065013a6ac09ee98a52c274c6a09"
+        },
+        {
+          "evidence": "legacy-definition-window-preflight-20261020/native-window-preflight-1/treasury-locator-7d150e8bde79bb46-1.json",
+          "sha256": "3b0878f321e4c017aab9b56f1b68c1ebe5e06a56ac2c0af7404d891a56cdee9c"
+        }
+      ],
+      "locator_edition_year": 2009,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B5",
+          "decoded_text_sha256": "7838bda7892114ea2f6c029cefea9d41fe1516b9decb017a68df00577b6b6277"
+        }
+      ],
+      "raw_layout": {
+        "columns": 7,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-7d150e8bde79bb46-1.json",
+        "header_evidence_sha256": "6f9724b78ade5f99252ce1e51ac947ec9d38c7758f1f8a4e137b0b414ba67315",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "EntityName"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Statement"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "LineName"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "LineOrder"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "AmountType"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Amount"
+          }
+        ],
+        "rows_including_header": 10333,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 1492992,
+      "source_declared_amount_scale": "pending",
+      "source_declared_june_years": {
+        "actual": [
+          2008
+        ],
+        "estimated_actual": [
+          2009
+        ],
+        "forecast": [
+          2010
+        ]
+      },
+      "source_family": "departmental_forecast_statements",
+      "source_id": "treasury-locator-7d150e8bde79bb46",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2009-05/b09-dept-ffs-data.xls",
+      "source_sha256": "ffc8307bb6a76b5457aa8716d94ff34d0a2775aac6974cae422340ab765d1edb",
+      "unit_evidence_status": "pending_no_unit_statement_in_Explanation",
+      "unit_observations": [],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "5802d7732020d8069e358d38949c190db3dee3562cd13516d0e1df98d16d6a50"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 90,
+        "repeat_equal": true,
+        "rows": 45
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-827202ea343c3852-1.json",
+          "sha256": "1b36b818ec9d050e150641be6b21865437d081ca6133ce6f077c55b09e579d07"
+        }
+      ],
+      "locator_edition_year": 2017,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B37",
+          "decoded_text_sha256": "b41ceaafec7ea8601fade88a91f20236f9dd573e986676c477638057a0a4c521"
+        },
+        {
+          "coordinate": "B38",
+          "decoded_text_sha256": "e9cf54849ea7343775a03833341d73a23e78a50ee53dcc45e863e00e6762d115"
+        },
+        {
+          "coordinate": "B4",
+          "decoded_text_sha256": "fc8b08a7239ca33e023458b179ce6e322cc7dce0e13de69004a9245cccaa2d34"
+        }
+      ],
+      "raw_layout": {
+        "columns": 8,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-827202ea343c3852-1.json",
+        "header_evidence_sha256": "1b36b818ec9d050e150641be6b21865437d081ca6133ce6f077c55b09e579d07",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App ID"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Revenue Type"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Amount $000"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Amount Type"
+          }
+        ],
+        "rows_including_header": 1027,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 462336,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2013,
+          2014,
+          2015,
+          2016
+        ],
+        "budgeted": [
+          2018
+        ],
+        "estimated_actual": [
+          2017
+        ]
+      },
+      "source_family": "revenue",
+      "source_id": "treasury-locator-827202ea343c3852",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b17-revenue-data.xls",
+      "source_sha256": "e49a706c4a5ac889e8b9e68165dbfd704a9f05b0300bef7f69abf5f5620b7adf",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B36",
+          "decoded_text_sha256": "77f9bd43460b2a407a8bbb242d2817949e4ad1bd193b99d8b7ac9c0a781a8e2b"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "3f1da9139ba9683504f7c76bdc2f8ea52a6bd1758eedf57a496b5a6d113dd6ca"
+    },
+    {
+      "additional_variant": true,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 58,
+        "repeat_equal": true,
+        "rows": 29
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-8a2ef732811d29cf-1.json",
+          "sha256": "9ec3146cbe55953ad41c67588f8955e36a7dcc69c77b5eb1589cbbefbbfb2983"
+        }
+      ],
+      "locator_edition_year": 2012,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B5",
+          "decoded_text_sha256": "a17f75767c81fe42ab17f7386afe091040714da2ce05cec98ebb124ba068058c"
+        }
+      ],
+      "raw_layout": {
+        "columns": 7,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-8a2ef732811d29cf-1.json",
+        "header_evidence_sha256": "9ec3146cbe55953ad41c67588f8955e36a7dcc69c77b5eb1589cbbefbbfb2983",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Statement"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "LineName"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "LineOrder"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "AmountType"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Amount $000"
+          }
+        ],
+        "rows_including_header": 10087,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 1458688,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2011
+        ],
+        "estimated_actual": [
+          2012
+        ],
+        "forecast": [
+          2013
+        ]
+      },
+      "source_family": "departmental_forecast_statements",
+      "source_id": "treasury-locator-8a2ef732811d29cf",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b12-dept-ffs-data.xls",
+      "source_sha256": "734b313a285b7165b3682f4659289e812556d6a095d058c5f18df4e66e173ea7",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B11",
+          "decoded_text_sha256": "3f90c67fc3f3fe530132a7a21ab83859ce10374a1b319528b564ca370f3bbacb"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "868cb876fab6678778e0549f810bf4365e1f6c9f463f4e4ac56871ee77e34e25"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 4,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 228,
+        "repeat_equal": true,
+        "rows": 57
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-8c3da1c2b903cba0-1.json",
+          "sha256": "9b70e74a201b2a5b9c8230b793a497244105bc2611c06b6bf056aaaf3e68c43d"
+        }
+      ],
+      "locator_edition_year": 2016,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B3",
+          "decoded_text_sha256": "2e6e9536d4d85d68a19b04e9090e1abbe62555425fcf9a890b57febe81adeb32"
+        },
+        {
+          "coordinate": "B39",
+          "decoded_text_sha256": "b41ceaafec7ea8601fade88a91f20236f9dd573e986676c477638057a0a4c521"
+        },
+        {
+          "coordinate": "B40",
+          "decoded_text_sha256": "e9cf54849ea7343775a03833341d73a23e78a50ee53dcc45e863e00e6762d115"
+        },
+        {
+          "coordinate": "B52",
+          "decoded_text_sha256": "e1924cf8dcfbcdeb8bc01a3bc047cc0c3be0162a437ce4f354e69f35451dc928"
+        }
+      ],
+      "raw_layout": {
+        "columns": 17,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-8c3da1c2b903cba0-1.json",
+        "header_evidence_sha256": "9b70e74a201b2a5b9c8230b793a497244105bc2611c06b6bf056aaaf3e68c43d",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App ID"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "Parent ID"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Appropriation Name"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Category Name"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Group Type"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Appropriation or Category Type"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Restriction Type"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "K1",
+            "decoded_stored_or_cached_value": "Amount $000"
+          },
+          {
+            "coordinate": "L1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "M1",
+            "decoded_stored_or_cached_value": "Amount Type"
+          },
+          {
+            "coordinate": "N1",
+            "decoded_stored_or_cached_value": "Periodicity"
+          },
+          {
+            "coordinate": "O1",
+            "decoded_stored_or_cached_value": "Current Scope"
+          },
+          {
+            "coordinate": "P1",
+            "decoded_stored_or_cached_value": "M Number"
+          },
+          {
+            "coordinate": "Q1",
+            "decoded_stored_or_cached_value": "Portfolio Name"
+          }
+        ],
+        "rows_including_header": 5973,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 4804096,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2012,
+          2013,
+          2014,
+          2015
+        ],
+        "budgeted": [
+          2017
+        ],
+        "estimated_actual": [
+          2016
+        ]
+      },
+      "source_family": "expenditure",
+      "source_id": "treasury-locator-8c3da1c2b903cba0",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b16-expenditure-data.xls",
+      "source_sha256": "bce6d2e55c15c1249881bac9d2a1afdf111cd9d1c258c20913bd4b39300f0f5a",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B38",
+          "decoded_text_sha256": "77f9bd43460b2a407a8bbb242d2817949e4ad1bd193b99d8b7ac9c0a781a8e2b"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "5405977dff7faac706efda6ea5383521712969b304e608f6acdee69b05df5409"
+    },
+    {
+      "additional_header_check": {
+        "amount_coordinate": "G1",
+        "amount_label": "Amount",
+        "amount_scale": "not_declared_in_header",
+        "complete_header": true,
+        "evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-965a0a7f646bde34-1.json",
+        "row": 1,
+        "sha256": "787eb35e71249a73cf35e199a85142f03207e82404e4053f8a046a4dd5b9b259",
+        "sheet": "Raw Data",
+        "unit_evidence_status": "pending_no_amount_scale_in_complete_Explanation_or_header"
+      },
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 78,
+        "repeat_equal": true,
+        "rows": 39
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-preflight-20261020/native-inspection-1/treasury-locator-965a0a7f646bde34-1.json",
+          "sha256": "699006d8f3fa5ce1cf3f0d30ef7007aa8ccf396c102bb970153f588bb8b421c6"
+        },
+        {
+          "evidence": "legacy-definition-window-preflight-20261020/native-window-preflight-1/treasury-locator-965a0a7f646bde34-1.json",
+          "sha256": "6c43824accc76a9fc398ce1d3877519a83e1973fdfc8cd73349ce8d64017785e"
+        }
+      ],
+      "locator_edition_year": 2007,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B4",
+          "decoded_text_sha256": "c257ce8cf1ecccc269fd0238e1eb0f02e8487e4259e2b6c617743f274235cafd"
+        }
+      ],
+      "raw_layout": {
+        "columns": 9,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-965a0a7f646bde34-1.json",
+        "header_evidence_sha256": "787eb35e71249a73cf35e199a85142f03207e82404e4053f8a046a4dd5b9b259",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Unit"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App id"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Revenue Type"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Amount"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Type"
+          }
+        ],
+        "rows_including_header": 481,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 228352,
+      "source_declared_amount_scale": "pending",
+      "source_declared_june_years": {
+        "actual": [
+          2006
+        ],
+        "budgeted": [
+          2008
+        ],
+        "estimated_actual": [
+          2007
+        ]
+      },
+      "source_family": "revenue",
+      "source_id": "treasury-locator-965a0a7f646bde34",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2007-11/b07-data-revenue.xls",
+      "source_sha256": "bbb62b2d4fb16a35315854adc81899bb416a0cebc3f84f4a971158626b8be3e4",
+      "unit_evidence_status": "pending_no_unit_statement_in_Explanation",
+      "unit_observations": [],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "065fbab37f6f42639e2526bbc7723d911f7066488d29c2edef108c9ca654f6e1"
+    },
+    {
+      "additional_header_check": {
+        "amount_coordinate": "H1",
+        "amount_label": "Amount",
+        "amount_scale": "not_declared_in_header",
+        "complete_header": true,
+        "evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-9c10a792d4248d02-1.json",
+        "row": 1,
+        "sha256": "b07087ef84bfd9e5162f64b0fe3e96d879adc30e97c1b3ab9405b9487d6c42be",
+        "sheet": "Raw Data",
+        "unit_evidence_status": "pending_no_amount_scale_in_complete_Explanation_or_header"
+      },
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 44,
+        "repeat_equal": true,
+        "rows": 22
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-preflight-20261020/native-inspection-1/treasury-locator-9c10a792d4248d02-1.json",
+          "sha256": "0ea1df972c8293f6d1e63d6e9a42fa4fdc3c993c3fced346bc11570b3226f06d"
+        },
+        {
+          "evidence": "legacy-definition-window-preflight-20261020/native-window-preflight-1/treasury-locator-9c10a792d4248d02-1.json",
+          "sha256": "e10bb9b2d3a303595e25351be7f0d8651c774c110c5cb0060197b5c675879de1"
+        }
+      ],
+      "locator_edition_year": 2009,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B4",
+          "decoded_text_sha256": "1f473b78f24e1c71d7a443bacd45d209499a60d5186d9816608a7701439f17b4"
+        }
+      ],
+      "raw_layout": {
+        "columns": 10,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-9c10a792d4248d02-1.json",
+        "header_evidence_sha256": "b07087ef84bfd9e5162f64b0fe3e96d879adc30e97c1b3ab9405b9487d6c42be",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Unit"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App id"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "MCOA id"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Expense Type"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Amount"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "Type"
+          }
+        ],
+        "rows_including_header": 4574,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 1438720,
+      "source_declared_amount_scale": "pending",
+      "source_declared_june_years": {
+        "actual": [
+          2006,
+          2007,
+          2008
+        ],
+        "budgeted": [
+          2010
+        ],
+        "estimated_actual": [
+          2009
+        ]
+      },
+      "source_family": "expenditure",
+      "source_id": "treasury-locator-9c10a792d4248d02",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2009-05/b09-expense-data.xls",
+      "source_sha256": "c1177036dd97da6f0e63fb2c91f878a5ec0f98111f62dd881a0e70b536b0bebc",
+      "unit_evidence_status": "pending_no_unit_statement_in_Explanation",
+      "unit_observations": [],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "e7cf501e76efc61ad5338af9799b20eba86e54e28596024b9fc1a97e81f1c052"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 4,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 228,
+        "repeat_equal": true,
+        "rows": 57
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-9e603138cf551b21-1.json",
+          "sha256": "60cf68c9f6dbb9c6072c640f29fd1d9af622d8d9d84036d6531df9c988ef2c0b"
+        }
+      ],
+      "locator_edition_year": 2017,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B3",
+          "decoded_text_sha256": "c88f44df1d58600c3003d52d38a3a04598e0c25561437237d79cbcc5a583d0c5"
+        },
+        {
+          "coordinate": "B39",
+          "decoded_text_sha256": "b41ceaafec7ea8601fade88a91f20236f9dd573e986676c477638057a0a4c521"
+        },
+        {
+          "coordinate": "B40",
+          "decoded_text_sha256": "e9cf54849ea7343775a03833341d73a23e78a50ee53dcc45e863e00e6762d115"
+        },
+        {
+          "coordinate": "B52",
+          "decoded_text_sha256": "e1924cf8dcfbcdeb8bc01a3bc047cc0c3be0162a437ce4f354e69f35451dc928"
+        }
+      ],
+      "raw_layout": {
+        "columns": 17,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-9e603138cf551b21-1.json",
+        "header_evidence_sha256": "60cf68c9f6dbb9c6072c640f29fd1d9af622d8d9d84036d6531df9c988ef2c0b",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App ID"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "Parent ID"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Appropriation Name"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Category Name"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Group Type"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Appropriation or Category Type"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Restriction Type"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "K1",
+            "decoded_stored_or_cached_value": "Amount $000"
+          },
+          {
+            "coordinate": "L1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "M1",
+            "decoded_stored_or_cached_value": "Amount Type"
+          },
+          {
+            "coordinate": "N1",
+            "decoded_stored_or_cached_value": "Periodicity"
+          },
+          {
+            "coordinate": "O1",
+            "decoded_stored_or_cached_value": "Current Scope"
+          },
+          {
+            "coordinate": "P1",
+            "decoded_stored_or_cached_value": "M Number"
+          },
+          {
+            "coordinate": "Q1",
+            "decoded_stored_or_cached_value": "Portfolio Name"
+          }
+        ],
+        "rows_including_header": 6080,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 4772352,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2013,
+          2014,
+          2015,
+          2016
+        ],
+        "budgeted": [
+          2018
+        ],
+        "estimated_actual": [
+          2017
+        ]
+      },
+      "source_family": "expenditure",
+      "source_id": "treasury-locator-9e603138cf551b21",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b17-expenditure-data.xls",
+      "source_sha256": "7e0cc535eb9feb7e82b1a998dd40b7b318e5593e13589aa48ef4a3b5508708fc",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B38",
+          "decoded_text_sha256": "77f9bd43460b2a407a8bbb242d2817949e4ad1bd193b99d8b7ac9c0a781a8e2b"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "a76bcf52a9a56e8fba5984f8c2bf6bb88475c417d8e007ceea13e837fbdb6211"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 52,
+        "repeat_equal": true,
+        "rows": 26
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-aec212e7d9fea490-1.json",
+          "sha256": "7384892158c824ac31565e50392b52ce4c21084b5dc5b5829be8f14e96f07515"
+        }
+      ],
+      "locator_edition_year": 2012,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B4",
+          "decoded_text_sha256": "81e1256a426944f9fbc8aa3bf97b12ca7cb38738a0eb1b47a5f6bb626796a24f"
+        }
+      ],
+      "raw_layout": {
+        "columns": 13,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-aec212e7d9fea490-1.json",
+        "header_evidence_sha256": "7384892158c824ac31565e50392b52ce4c21084b5dc5b5829be8f14e96f07515",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App ID"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "MCOA ID"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Appropriation Type"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Output Expense Type"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Amount ($000)"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "K1",
+            "decoded_stored_or_cached_value": "Amount_Type_Desc"
+          },
+          {
+            "coordinate": "L1",
+            "decoded_stored_or_cached_value": "Periodicity"
+          },
+          {
+            "coordinate": "M1",
+            "decoded_stored_or_cached_value": "Current Scope"
+          }
+        ],
+        "rows_including_header": 5790,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 3843584,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2008,
+          2009,
+          2010,
+          2011
+        ],
+        "budgeted": [
+          2013
+        ],
+        "estimated_actual": [
+          2012
+        ]
+      },
+      "source_family": "expenditure",
+      "source_id": "treasury-locator-aec212e7d9fea490",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b12-expenditure-data.xls",
+      "source_sha256": "81429ccc5da52cdba73bb6276bba7d1c55a301dc996a447909fc8fc82ca1af12",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B11",
+          "decoded_text_sha256": "3f90c67fc3f3fe530132a7a21ab83859ce10374a1b319528b564ca370f3bbacb"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "46886136ca141bc894a76159151922562346baf548cddbe28d0a86a1011b7621"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 60,
+        "repeat_equal": true,
+        "rows": 30
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-bdb470d57f6a6454-1.json",
+          "sha256": "888d3701011fbb59294795faae79c82b63908e3d982537ec0a295a359b9baf0e"
+        }
+      ],
+      "locator_edition_year": 2013,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B8",
+          "decoded_text_sha256": "9c77b1cc900af935ff3ef92f1aa7e025cf4799b34dd52494c47dbac4c4dcc38f"
+        }
+      ],
+      "raw_layout": {
+        "columns": 13,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-bdb470d57f6a6454-1.json",
+        "header_evidence_sha256": "888d3701011fbb59294795faae79c82b63908e3d982537ec0a295a359b9baf0e",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App ID"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "MCOA ID"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Appropriation Type"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Output Expense Type"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Amount ($000)"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "K1",
+            "decoded_stored_or_cached_value": "Amount_Type_Desc"
+          },
+          {
+            "coordinate": "L1",
+            "decoded_stored_or_cached_value": "Periodicity"
+          },
+          {
+            "coordinate": "M1",
+            "decoded_stored_or_cached_value": "Current Scope"
+          }
+        ],
+        "rows_including_header": 5849,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 3617792,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2009,
+          2010,
+          2011,
+          2012
+        ],
+        "budgeted": [
+          2014
+        ],
+        "estimated_actual": [
+          2013
+        ]
+      },
+      "source_family": "expenditure",
+      "source_id": "treasury-locator-bdb470d57f6a6454",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b13-expenditure-data.xls",
+      "source_sha256": "c5b7f6916b89a9ea0fd14caf73a979c730116d517d78ffe777d36c5966626140",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B15",
+          "decoded_text_sha256": "3f90c67fc3f3fe530132a7a21ab83859ce10374a1b319528b564ca370f3bbacb"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "9d019b98ef71dbfee4e795397423fa1a28b1f80757547c2a3a428ef60545c0c1"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 4,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 212,
+        "repeat_equal": true,
+        "rows": 53
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-be43a82d5a1e7360-1.json",
+          "sha256": "d01afa18049eca99f4bd51f34044720dc39cf13413f5e9a6bc59a5dd58996826"
+        }
+      ],
+      "locator_edition_year": 2014,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B43",
+          "decoded_text_sha256": "b41ceaafec7ea8601fade88a91f20236f9dd573e986676c477638057a0a4c521"
+        },
+        {
+          "coordinate": "B44",
+          "decoded_text_sha256": "e9cf54849ea7343775a03833341d73a23e78a50ee53dcc45e863e00e6762d115"
+        },
+        {
+          "coordinate": "B9",
+          "decoded_text_sha256": "e2642795254cd6849e57d96dc75fdb760601a7616256546fc608d4bc995c05ac"
+        }
+      ],
+      "raw_layout": {
+        "columns": 16,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-be43a82d5a1e7360-1.json",
+        "header_evidence_sha256": "d01afa18049eca99f4bd51f34044720dc39cf13413f5e9a6bc59a5dd58996826",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App ID"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "Parent ID"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Appropriation Name"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Category Name"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Group Type"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "IsMCA"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Appropriation Type"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "Restriction Type"
+          },
+          {
+            "coordinate": "K1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "L1",
+            "decoded_stored_or_cached_value": "Amount ($000)"
+          },
+          {
+            "coordinate": "M1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "N1",
+            "decoded_stored_or_cached_value": "Amount Type"
+          },
+          {
+            "coordinate": "O1",
+            "decoded_stored_or_cached_value": "Periodicity"
+          },
+          {
+            "coordinate": "P1",
+            "decoded_stored_or_cached_value": "Current Scope"
+          }
+        ],
+        "rows_including_header": 5913,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 4505600,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2010,
+          2011,
+          2012,
+          2013
+        ],
+        "budgeted": [
+          2015
+        ],
+        "estimated_actual": [
+          2014
+        ]
+      },
+      "source_family": "expenditure",
+      "source_id": "treasury-locator-be43a82d5a1e7360",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b14-expenditure-data.xls",
+      "source_sha256": "7194eebe691ff57378168439d7ba5a785dfa408bc3c836f2a7cfe50519af5169",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B42",
+          "decoded_text_sha256": "c31f74354aef1264a6629fda522383388273a7278b7047227c5d1354a76f2976"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "77b05fb8ad53ee846547c9b35da733a62560b6f2dbafbb5b04a857ee0bc47ca7"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 46,
+        "repeat_equal": true,
+        "rows": 23
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-c3c2bbb6ab07bf6e-1.json",
+          "sha256": "5b44755fdd6f66d05d809becf3bf6a69bee14d7c2d1e6be17e954b2cba1f8019"
+        }
+      ],
+      "locator_edition_year": 2011,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B4",
+          "decoded_text_sha256": "92e33313f3d3900795b238bf0b9f793fcf549ee90255291b767d7398957ca561"
+        }
+      ],
+      "raw_layout": {
+        "columns": 13,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-c3c2bbb6ab07bf6e-1.json",
+        "header_evidence_sha256": "5b44755fdd6f66d05d809becf3bf6a69bee14d7c2d1e6be17e954b2cba1f8019",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App id"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "MCOA id"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Appropriation Type"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Output Expense Type"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Amount ($000)"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "K1",
+            "decoded_stored_or_cached_value": "Amount_Type_Desc"
+          },
+          {
+            "coordinate": "L1",
+            "decoded_stored_or_cached_value": "Periodicity"
+          },
+          {
+            "coordinate": "M1",
+            "decoded_stored_or_cached_value": ""
+          }
+        ],
+        "rows_including_header": 5659,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 1994240,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2007,
+          2008,
+          2009,
+          2010
+        ],
+        "budgeted": [
+          2012
+        ],
+        "estimated_actual": [
+          2011
+        ]
+      },
+      "source_family": "expenditure",
+      "source_id": "treasury-locator-c3c2bbb6ab07bf6e",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2011-05/b11-expense-data.xls",
+      "source_sha256": "8712d27f2da918d1cc8376a8f15e24cafb6b608a3be0cc19da226768a8f69ba0",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B11",
+          "decoded_text_sha256": "06dab7ecc51fcd49a578d2e279f4117591221d37435894787280c7866133d941"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "cb758a77f4e6d36a29d0bfb2c900a0f7c25f715db35222caed6529193c916f43"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 46,
+        "repeat_equal": true,
+        "rows": 23
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-cd307714183be5ec-1.json",
+          "sha256": "9360717ff89aa8dfa2058fd8e917017b2875ac0c4b9906a9372ce697f0b4927c"
+        }
+      ],
+      "locator_edition_year": 2010,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B4",
+          "decoded_text_sha256": "b228e66b61e84eccd2c7d400bbc7cbe83d96e4dc47360cf435a5d3b7b202545e"
+        }
+      ],
+      "raw_layout": {
+        "columns": 12,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-cd307714183be5ec-1.json",
+        "header_evidence_sha256": "9360717ff89aa8dfa2058fd8e917017b2875ac0c4b9906a9372ce697f0b4927c",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App id"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "MCOA id"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Appropriation Type"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Output Expense Type"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "FunctionalClassification"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Amount ($000)"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "K1",
+            "decoded_stored_or_cached_value": "Amount_Type_Desc"
+          },
+          {
+            "coordinate": "L1",
+            "decoded_stored_or_cached_value": "Periodicity"
+          }
+        ],
+        "rows_including_header": 5514,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 1992704,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2006,
+          2007,
+          2008,
+          2009
+        ],
+        "budgeted": [
+          2011
+        ],
+        "estimated_actual": [
+          2010
+        ]
+      },
+      "source_family": "expenditure",
+      "source_id": "treasury-locator-cd307714183be5ec",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2010-05/b10-expense-data.xls",
+      "source_sha256": "7e26853cbed914ef19bc6dc426d24708dbf19487ce0a9dbc15db4d32d3d00a4f",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B11",
+          "decoded_text_sha256": "06dab7ecc51fcd49a578d2e279f4117591221d37435894787280c7866133d941"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "f9000bf25b7f4423843c60eac1d86bf80ef0c700b3b5ad6323212637d4bbd99b"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 60,
+        "repeat_equal": true,
+        "rows": 30
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-f0b9b89915c26ffa-1.json",
+          "sha256": "da565b8bfee3af5157763ad53792f3b6d20f2a4bb2f69a5fcda433b65f85ac37"
+        }
+      ],
+      "locator_edition_year": 2012,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B5",
+          "decoded_text_sha256": "f135f7930270a1f41d44324a76ffdf4513d5e6cf3d6951ee7b004b0eb1a1b039"
+        }
+      ],
+      "raw_layout": {
+        "columns": 11,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-f0b9b89915c26ffa-1.json",
+        "header_evidence_sha256": "da565b8bfee3af5157763ad53792f3b6d20f2a4bb2f69a5fcda433b65f85ac37",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App id"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "MCOA id"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Revenue Type"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Amount ($000)"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "Amount_Type_Desc"
+          },
+          {
+            "coordinate": "K1",
+            "decoded_stored_or_cached_value": "Periodicity"
+          }
+        ],
+        "rows_including_header": 994,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 369664,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2008,
+          2009,
+          2010,
+          2011
+        ],
+        "budgeted": [
+          2013
+        ],
+        "estimated_actual": [
+          2012
+        ]
+      },
+      "source_family": "revenue",
+      "source_id": "treasury-locator-f0b9b89915c26ffa",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b12-revenue-data.xls",
+      "source_sha256": "643fad503424ee6b3aa060a2ff2107fc69d9326bb51446d6fa41755a32d038cb",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B13",
+          "decoded_text_sha256": "06dab7ecc51fcd49a578d2e279f4117591221d37435894787280c7866133d941"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "5c1ee355283708d658e251d80dae1bed08ce990ede5b456089f494645b679f0d"
+    },
+    {
+      "additional_variant": false,
+      "archive_binding": "verified",
+      "canonical_and_cross_source_joins": "not_performed",
+      "currency": "not_qualified",
+      "definition_sheet": {
+        "columns": 2,
+        "coverage": "every_cell_in_retained_extent",
+        "name": "Explanation",
+        "observed_cells": 66,
+        "repeat_equal": true,
+        "rows": 33
+      },
+      "edition_identity_status": "source_statement_agrees_with_locator_year",
+      "evidence_files": [
+        {
+          "evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-f29be12d65472299-1.json",
+          "sha256": "c711fc782d47dfe464ad750502b4e8fcfa81ce7048490c75db93c44e834454a3"
+        }
+      ],
+      "locator_edition_year": 2013,
+      "numeric_admission": "not_performed_BIFF_numeric_formula_contract_pending",
+      "period_observations": [
+        {
+          "coordinate": "B8",
+          "decoded_text_sha256": "824f907512086c72b2812b438d5b3a344f7a51d15a3d0a5cd3d9c2e3c7485b14"
+        }
+      ],
+      "raw_layout": {
+        "columns": 11,
+        "complete_header_observed": true,
+        "header_evidence": "legacy-definition-completion-preflight-20261020/native-profile-preflight-1/treasury-locator-f29be12d65472299-1.json",
+        "header_evidence_sha256": "c711fc782d47dfe464ad750502b4e8fcfa81ce7048490c75db93c44e834454a3",
+        "header_row": 1,
+        "headers": [
+          {
+            "coordinate": "A1",
+            "decoded_stored_or_cached_value": "Department"
+          },
+          {
+            "coordinate": "B1",
+            "decoded_stored_or_cached_value": "Vote"
+          },
+          {
+            "coordinate": "C1",
+            "decoded_stored_or_cached_value": "App id"
+          },
+          {
+            "coordinate": "D1",
+            "decoded_stored_or_cached_value": "MCOA id"
+          },
+          {
+            "coordinate": "E1",
+            "decoded_stored_or_cached_value": "Description"
+          },
+          {
+            "coordinate": "F1",
+            "decoded_stored_or_cached_value": "Revenue Type"
+          },
+          {
+            "coordinate": "G1",
+            "decoded_stored_or_cached_value": "Functional Classification"
+          },
+          {
+            "coordinate": "H1",
+            "decoded_stored_or_cached_value": "Amount ($000)"
+          },
+          {
+            "coordinate": "I1",
+            "decoded_stored_or_cached_value": "Year"
+          },
+          {
+            "coordinate": "J1",
+            "decoded_stored_or_cached_value": "Amount_Type_Desc"
+          },
+          {
+            "coordinate": "K1",
+            "decoded_stored_or_cached_value": "Periodicity"
+          }
+        ],
+        "rows_including_header": 996,
+        "sheet": "Raw Data"
+      },
+      "rights_review_scope": "No keyword candidate in Explanation cells; no whole-workbook or policy absence claim.",
+      "rights_state": "not_evaluated",
+      "source_bytes": 372736,
+      "source_declared_amount_scale": "thousands_of_dollars",
+      "source_declared_june_years": {
+        "actual": [
+          2009,
+          2010,
+          2011,
+          2012
+        ],
+        "budgeted": [
+          2014
+        ],
+        "estimated_actual": [
+          2013
+        ]
+      },
+      "source_family": "revenue",
+      "source_id": "treasury-locator-f29be12d65472299",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2018-04/b13-revenue-data.xls",
+      "source_sha256": "69e9d3d10c72bd01c661ca02633d48404f7add6f5e4fda02017ab5649fa27869",
+      "unit_evidence_status": "direct_thousands_of_dollars_statement",
+      "unit_observations": [
+        {
+          "coordinate": "B16",
+          "decoded_text_sha256": "06dab7ecc51fcd49a578d2e279f4117591221d37435894787280c7866133d941"
+        }
+      ],
+      "valid_time_start": "not_inferred",
+      "warc_sha256": "b2a968a803fff19d991cc46a3cef1ccd14176c0240daef6ed3d730a2e310f587"
+    }
+  ],
+  "review_method": "Source-by-source reading of pinned complete Explanation windows; period years transcribed from the retained source sentences, ending 30 June; no valid-time start/currency/fiscal-comparability inference.",
+  "reviewed_at": "2026-10-19T20:08:52.528699+00:00",
+  "schema_version": "health-legacy-definition-census/v1",
+  "source_capture_or_external_publication_mutations": "not_performed",
+  "source_census_sha256": "9d4ba1a971204b95f8866c979303dd9616b82589c68fce8e19edbc8e45984721",
+  "source_count": 32,
+  "unit_evidence_pending_count": 9,
+  "unit_header_check_summary_sha256": "16e467f0e18b97bdeb0d4dc25884e4496f90f3d2156b7c270a55ce4a7b9ec759"
+}

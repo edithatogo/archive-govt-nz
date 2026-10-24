@@ -20,7 +20,7 @@ It did not revalidate every derivative member or historical rights claim.
 | CPI | CPIQ.SE9A, all-groups New Zealand, June-2026 vintage | Source-bound index base and fiscal average/rebase policy |
 | QES | QEMQ.SASZ9A, Table 8 total-sector ordinary-time hourly earnings, nine quarters | Currency/sex/adjustment, deflator selection and annual weighting |
 | Population | Stats NZ DPE054AA; population C (Total), age DPE054FF (Total All Ages), estimates As at or Mean year ended | Numeric export, resource rights and fiscal-period policy selecting the two estimate bases |
-| Stats NZ GDP | SNEQ / SG03AB01GE00S900, Table 1 C27:BJ27, March-2026 vintage | Currency, annual aggregation and semantic projection |
+| Stats NZ GDP | SNEQ / SG03AB01GE00S900, Table 1 C27:BJ27 (March 2026) and C27:BK27 (June 2026); separate vintages | Currency, annual aggregation and semantic projection |
 | Treasury GDP | Fiscal-2025 Nominal GDP sheet, C3 label, B/C year/value columns | Preserve period transitions and revision vintage in derived joins |
 | Core Crown | Fiscal-2025 Spending D27:D58, 1994–2025 | Canonical adapter and accounting/consolidation comparability |
 | Total Crown | Fiscal-2025 Spending E30:E58, 1997–2025 | Canonical adapter, restatement footnotes and consolidation comparability |
@@ -96,3 +96,18 @@ unresolved. No population payload was requested, acquired, or promoted.
 Combined local assurance on the parent-integrated change passed 6,857 tests,
 9 skips, 48 schemas, 9/9 parity and all configured mutation and supply-chain
 gates; see `population-census-integration.json`.
+
+## Parent reconciliation — CPI index reference period (2026-10-02)
+
+Stats NZ DataInfo+ defines the CPI index-reference period as the June 2017
+quarter (=1000). The exact retained `CPIQ.SE9A` series has a matching 2017.06
+observation. This resolves the CPI base-definition gap in the current
+`context-census.json`; the historical 2026-09-07 table above remains a record
+of the earlier assessment. The source-linked reconciliation is in
+`cpi-index-base-qualification-20261002.md`.
+
+Phase 1.2 remains in progress. CPI fiscal-year aggregation and use as a health
+input-cost deflator, QES currency/sex/adjustment and annual weighting,
+population rights/vintage and spending-period denominator choice, GDP currency
+and annual aggregation, and Crown measure basis/comparability remain open.
+This update selects no deflator, denominator, or new Gold measure.

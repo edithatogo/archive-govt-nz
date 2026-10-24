@@ -1,0 +1,439 @@
+{
+  "amount_scale": "not stated in complete Explanation/header; unit null and explicitly flagged",
+  "department_label_basis": {
+    "expenditure": {
+      "coordinate": "A4",
+      "sheet": "Total Exp by Dept Data",
+      "value": "Unit"
+    },
+    "revenue": {
+      "coordinate": "A2",
+      "sheet": "Dept Data",
+      "value": "Unit"
+    }
+  },
+  "inspection": {
+    "path": "/Users/doughnut/Documents/Codex/2026-10-14/ch/.local/health-biff8-2007-2008-20261022/source-unit-inspection-1.json",
+    "sha256": "13ad484f7ce1a590fbe42af0e99cb276c49971bfd27ac4147f535a460a2b1e26"
+  },
+  "postflight": {
+    "exit": 0,
+    "head": "e2059f15265d548ed5051ef0d376054284efd925",
+    "independent_lease_free": true,
+    "owner_and_group_absent": true,
+    "pins_unchanged": 4935,
+    "status": "verified",
+    "tree": "8b1200e908a6ccd4667f1d2244445067dd5b9267"
+  },
+  "rights": "not_evaluated",
+  "scope": "four retained Budget2007/2008 originals; no new capture or publication",
+  "source_labels": "preserve all classifications including General, Restricted by Revenue, Capital Expenditure and Other Expenses to be Incurred by the Crown; no inferred restriction mapping",
+  "sources": [
+    {
+      "counts": {
+        "out_of_scope": 3342,
+        "selected_numeric_verified": 215
+      },
+      "edition": 2008,
+      "kind": "expenditure",
+      "literal_backslash_xa0_preserved": false,
+      "negative_amounts": 0,
+      "numeric_columns": [
+        [
+          "app_id",
+          3
+        ],
+        [
+          "mcoa_id",
+          4
+        ],
+        [
+          "amount",
+          8
+        ],
+        [
+          "year",
+          9
+        ]
+      ],
+      "numeric_ranges": {
+        "amount": {
+          "max": 1013312,
+          "min": 13,
+          "zeros": 0
+        },
+        "app_id": {
+          "max": 9216,
+          "min": 372,
+          "zeros": 0
+        },
+        "mcoa_id": {
+          "max": 9216,
+          "min": 372,
+          "zeros": 0
+        },
+        "year": {
+          "max": 2009,
+          "min": 2006,
+          "zeros": 0
+        }
+      },
+      "numeric_witnesses": 860,
+      "period_mismatches": [],
+      "period_pairs": [
+        {
+          "amount_type": "Actuals",
+          "rows": 52,
+          "year": 2006
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 53,
+          "year": 2007
+        },
+        {
+          "amount_type": "Estimated Actual",
+          "rows": 56,
+          "year": 2008
+        },
+        {
+          "amount_type": "Main Estimates",
+          "rows": 54,
+          "year": 2009
+        }
+      ],
+      "prior_definition_cells_verified": 72,
+      "prior_evidence": [
+        {
+          "path": "legacy-definition-preflight-20261020/native-inspection-1/treasury-locator-766f5f38a81ed87e-1.json",
+          "sha256": "84c3b95d8922d1e113c9ef553146b72fbbd007d54fe4ac20cc3bbc1da55cff66"
+        },
+        {
+          "path": "legacy-definition-window-preflight-20261020/native-window-preflight-1/treasury-locator-766f5f38a81ed87e-1.json",
+          "sha256": "f9714a0b45985ab6acd16a4b42375754eff71804a24e8b640df0e033605596fb"
+        },
+        {
+          "path": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-766f5f38a81ed87e-1.json",
+          "sha256": "af3ea4d335ca2a402c1fa8e93f1ed7b218abce285a846bb14991f7b2f0f2563b"
+        }
+      ],
+      "proof_path": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2007-2008-20261022/preflight-1/first-2008-expenditure.json",
+      "proof_sha256": "c00c3d1fa18e6180fff7781f94919f64576bdc2893560058e2227a8f380dbdd3",
+      "raw_header_values": [
+        "Unit",
+        "Vote",
+        "App id",
+        "MCOA id",
+        "Description",
+        "Expense Type",
+        "Functional Classification",
+        "Amount",
+        "Year",
+        "Type"
+      ],
+      "rejections": [],
+      "repeat_equal": true,
+      "source_id": "treasury-locator-766f5f38a81ed87e",
+      "source_row_count": 3557,
+      "source_sha256": "62283a0454233bfeec9ce75bdbc822dcf59326cc2aecf5ea33581a4e1355c51b",
+      "source_vintage": "Budget-2008"
+    },
+    {
+      "counts": {
+        "out_of_scope": 602,
+        "selected_numeric_verified": 49
+      },
+      "edition": 2008,
+      "kind": "revenue",
+      "literal_backslash_xa0_preserved": false,
+      "negative_amounts": 2,
+      "numeric_columns": [
+        [
+          "app_id",
+          3
+        ],
+        [
+          "amount",
+          7
+        ],
+        [
+          "year",
+          8
+        ]
+      ],
+      "numeric_ranges": {
+        "amount": {
+          "max": 202523,
+          "min": -49250,
+          "zeros": 0
+        },
+        "app_id": {
+          "max": 9136,
+          "min": 397,
+          "zeros": 0
+        },
+        "year": {
+          "max": 2009,
+          "min": 2006,
+          "zeros": 0
+        }
+      },
+      "numeric_witnesses": 147,
+      "period_mismatches": [],
+      "period_pairs": [
+        {
+          "amount_type": "Actuals",
+          "rows": 14,
+          "year": 2006
+        },
+        {
+          "amount_type": "Actuals",
+          "rows": 12,
+          "year": 2007
+        },
+        {
+          "amount_type": "Estimated Actual",
+          "rows": 12,
+          "year": 2008
+        },
+        {
+          "amount_type": "Main Estimates",
+          "rows": 11,
+          "year": 2009
+        }
+      ],
+      "prior_definition_cells_verified": 78,
+      "prior_evidence": [
+        {
+          "path": "legacy-definition-preflight-20261020/native-inspection-1/treasury-historical-de9956ad7a7b3449-1.json",
+          "sha256": "4a4bf471978884bfc869be609f7c2289c53ff4266b5cdc3d2448db517788688e"
+        },
+        {
+          "path": "legacy-definition-window-preflight-20261020/native-window-preflight-1/treasury-historical-de9956ad7a7b3449-1.json",
+          "sha256": "ca086847674ab3072533806474d2521438edb14e993868c348f7ad83acdb9d97"
+        },
+        {
+          "path": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-historical-de9956ad7a7b3449-1.json",
+          "sha256": "3637fb67bdbdf009cc62d6c469b1739f8bbdb1889594df8147a13ba2c3fdc3ae"
+        }
+      ],
+      "proof_path": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2007-2008-20261022/preflight-1/first-2008-revenue.json",
+      "proof_sha256": "5f0044b4d8ef532f3b035a278034d6d0b974618cf7540a13b3b74758a9c3b4d7",
+      "raw_header_values": [
+        "Unit",
+        "Vote",
+        "App id",
+        "Description",
+        "Revenue Type",
+        "Functional Classification",
+        "Amount",
+        "Year",
+        "Type"
+      ],
+      "rejections": [],
+      "repeat_equal": true,
+      "source_id": "treasury-historical-de9956ad7a7b3449",
+      "source_row_count": 651,
+      "source_sha256": "c261fb95965f8dc1c0d649000e5bf46012c6e5c37385c050c370de07a580e94a",
+      "source_vintage": "Budget-2008"
+    },
+    {
+      "counts": {
+        "out_of_scope": 2406,
+        "selected_numeric_verified": 160
+      },
+      "edition": 2007,
+      "kind": "expenditure",
+      "literal_backslash_xa0_preserved": false,
+      "negative_amounts": 0,
+      "numeric_columns": [
+        [
+          "app_id",
+          3
+        ],
+        [
+          "mcoa_id",
+          4
+        ],
+        [
+          "amount",
+          8
+        ],
+        [
+          "year",
+          9
+        ]
+      ],
+      "numeric_ranges": {
+        "amount": {
+          "max": 960146,
+          "min": 13,
+          "zeros": 0
+        },
+        "app_id": {
+          "max": 9105,
+          "min": 372,
+          "zeros": 0
+        },
+        "mcoa_id": {
+          "max": 9105,
+          "min": 372,
+          "zeros": 0
+        },
+        "year": {
+          "max": 2008,
+          "min": 2006,
+          "zeros": 0
+        }
+      },
+      "numeric_witnesses": 640,
+      "period_mismatches": [],
+      "period_pairs": [
+        {
+          "amount_type": "Actuals",
+          "rows": 52,
+          "year": 2006
+        },
+        {
+          "amount_type": "Estimated Actual",
+          "rows": 53,
+          "year": 2007
+        },
+        {
+          "amount_type": "Main Estimates",
+          "rows": 55,
+          "year": 2008
+        }
+      ],
+      "prior_definition_cells_verified": 72,
+      "prior_evidence": [
+        {
+          "path": "legacy-definition-preflight-20261020/native-inspection-1/treasury-locator-30919ff114f55b44-1.json",
+          "sha256": "67882e0d5fc5b35967301a37b74bc56c9fda16863339c0c2179899fd1ecf25f9"
+        },
+        {
+          "path": "legacy-definition-window-preflight-20261020/native-window-preflight-1/treasury-locator-30919ff114f55b44-1.json",
+          "sha256": "dda0a76ef45eae78abdb1d9cd77c8b8e457a200fc641ebb2dbc7e6a60b95ef2e"
+        },
+        {
+          "path": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-30919ff114f55b44-1.json",
+          "sha256": "676a9bb7ea7e4ecd0f4eef47daebf09aad8d68ae3d69dd76c9a07abef3638d77"
+        }
+      ],
+      "proof_path": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2007-2008-20261022/preflight-1/first-2007-expenditure.json",
+      "proof_sha256": "854001d810d6698df92eb6231247d68beb78435be17ab477cde74eb24099266d",
+      "raw_header_values": [
+        "Unit",
+        "Vote",
+        "App id",
+        "MCOA id",
+        "Description",
+        "Expense Type",
+        "Functional Classification",
+        "Amount",
+        "Year",
+        "Type"
+      ],
+      "rejections": [],
+      "repeat_equal": true,
+      "source_id": "treasury-locator-30919ff114f55b44",
+      "source_row_count": 2566,
+      "source_sha256": "803822e4b27c1bda6c7c3bbe95c8bc025e1ef67ded6beca55473011d8b62ba21",
+      "source_vintage": "Budget-2007"
+    },
+    {
+      "counts": {
+        "out_of_scope": 443,
+        "selected_numeric_verified": 37
+      },
+      "edition": 2007,
+      "kind": "revenue",
+      "literal_backslash_xa0_preserved": false,
+      "negative_amounts": 2,
+      "numeric_columns": [
+        [
+          "app_id",
+          3
+        ],
+        [
+          "amount",
+          7
+        ],
+        [
+          "year",
+          8
+        ]
+      ],
+      "numeric_ranges": {
+        "amount": {
+          "max": 199709,
+          "min": -22533,
+          "zeros": 0
+        },
+        "app_id": {
+          "max": 9136,
+          "min": 397,
+          "zeros": 0
+        },
+        "year": {
+          "max": 2008,
+          "min": 2006,
+          "zeros": 0
+        }
+      },
+      "numeric_witnesses": 111,
+      "period_mismatches": [],
+      "period_pairs": [
+        {
+          "amount_type": "Actuals",
+          "rows": 14,
+          "year": 2006
+        },
+        {
+          "amount_type": "Estimated Actual",
+          "rows": 12,
+          "year": 2007
+        },
+        {
+          "amount_type": "Main Estimates",
+          "rows": 11,
+          "year": 2008
+        }
+      ],
+      "prior_definition_cells_verified": 78,
+      "prior_evidence": [
+        {
+          "path": "legacy-definition-preflight-20261020/native-inspection-1/treasury-locator-965a0a7f646bde34-1.json",
+          "sha256": "699006d8f3fa5ce1cf3f0d30ef7007aa8ccf396c102bb970153f588bb8b421c6"
+        },
+        {
+          "path": "legacy-definition-window-preflight-20261020/native-window-preflight-1/treasury-locator-965a0a7f646bde34-1.json",
+          "sha256": "6c43824accc76a9fc398ce1d3877519a83e1973fdfc8cd73349ce8d64017785e"
+        },
+        {
+          "path": "legacy-unit-header-preflight-20261020/native-inspection-1/treasury-locator-965a0a7f646bde34-1.json",
+          "sha256": "787eb35e71249a73cf35e199a85142f03207e82404e4053f8a046a4dd5b9b259"
+        }
+      ],
+      "proof_path": "/Volumes/PortableSSD/ArchiveGovtNZRecovery/health-biff8-2007-2008-20261022/preflight-1/first-2007-revenue.json",
+      "proof_sha256": "fd8387b28592e39c40284f2558781ac31895439da9b2fbba78b5040b12c77680",
+      "raw_header_values": [
+        "Unit",
+        "Vote",
+        "App id",
+        "Description",
+        "Revenue Type",
+        "Functional Classification",
+        "Amount",
+        "Year",
+        "Type"
+      ],
+      "rejections": [],
+      "repeat_equal": true,
+      "source_id": "treasury-locator-965a0a7f646bde34",
+      "source_row_count": 480,
+      "source_sha256": "bbb62b2d4fb16a35315854adc81899bb416a0cebc3f84f4a971158626b8be3e4",
+      "source_vintage": "Budget-2007"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "counts": {
+    "facts": 17,
+    "pages": 2
+  },
+  "output_sha256": {
+    "field_lineage.parquet": "7d6bfd2e3761434daffdc8bedc8dedcbe2eacfa619a3cb0a89d309b7d6888fcf",
+    "page_dispositions.parquet": "d76ab0c6142edd63ca174d1d8a9d0d8dbabd83bafadb32c9653b94b902a9d2a3",
+    "vote_health_overview_facts.parquet": "a3ac711147a035275f16d27a78b845455507b629f64cd68a7b38dac0032bfb51"
+  },
+  "profile": "vote-health-estimates-2011-12-overview/v1",
+  "publication_state": "local_validation_only",
+  "rights_state": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-source-operation/v1",
+  "source_object_sha256": "5b56c8a0641a870d82558f2c61fc87df90bcabf318541af4c3d86ba8ce3063af",
+  "status": "written_local",
+  "transformation_id": "vote-health-estimates-overview-2011-12/v1",
+  "verification_scope": "adapter_execution_only"
+}
