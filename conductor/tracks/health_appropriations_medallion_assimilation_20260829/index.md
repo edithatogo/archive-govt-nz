@@ -766,3 +766,10 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [Readable canonical Gold plot derivative](./readable-canonical-plots.md)
 - [Readable canonical plot native evidence](./readable-canonical-plots-native-20261022.json)
 - Phase 6 canonical Gold query/readback and CPython 3.15.1 full-harness evidence: see [plan](./plan.md#phase-6--gold-analytical-products) and the [latest runlog entry](./runlog.md). Source/donor total reconciliation and broader report matrices remain open.
+# Issue #215 recovery refresh (2026-10-25)
+
+- [Clean-room recovery receipt](./clean-room-recovery-20261025-issue-215.json):
+  supported Bronze-derived products rebuilt with unchanged Bronze fixity;
+  remaining groups and final gate are explicitly blocked.
+- See the current [Phase 9 plan](./plan.md#phase-9--recovery-assurance-and-publication-candidate)
+  and [runlog](./runlog.md) for implementation and validation evidence.
