@@ -84,7 +84,7 @@ def test_supplementary_assurance_preserves_failures_and_exact_revision() -> None
         "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
         "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97",
         "astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e",
-        "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a",
+        "actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9",
     }
     execution = next(
         step for step in steps if step["name"] == "Run existing integrity suite"
