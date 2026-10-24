@@ -1,0 +1,132 @@
+{
+  "capture_manifest_sha256": "017b3a9adbda288c60693ef038e4c0da198d8db99b2bca9cf4bb81adbc6efb5f",
+  "limitations": [
+    "The report covers only the exact census and capture-manifest digests above.",
+    "PDF structure records geometry/resource metadata, not text, tables or semantics.",
+    "Unassessed media types remain gaps; no baseline, normalization or mapping is inferred.",
+    "Observed layout agreement does not grant cross-vintage comparability or rights."
+  ],
+  "media_types": [
+    {
+      "captured_source_count": 59,
+      "media_type": "application/pdf",
+      "sources_with_structural_baseline": 59,
+      "sources_without_structural_baseline": 0
+    },
+    {
+      "captured_source_count": 12,
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sources_with_structural_baseline": 6,
+      "sources_without_structural_baseline": 6
+    },
+    {
+      "captured_source_count": 3,
+      "media_type": "text/csv",
+      "sources_with_structural_baseline": 0,
+      "sources_without_structural_baseline": 3
+    },
+    {
+      "captured_source_count": 1,
+      "media_type": "text/html",
+      "sources_with_structural_baseline": 0,
+      "sources_without_structural_baseline": 1
+    }
+  ],
+  "pinned_reports": {
+    "pdf": {
+      "pdf_capture_count": 59,
+      "pinned_parser": {
+        "name": "pypdf",
+        "strict": true,
+        "version": "6.19.0"
+      },
+      "recheck_layout_rows_unchanged": true,
+      "recheck_parser": {
+        "name": "pypdf",
+        "strict": true,
+        "version": "6.21.2"
+      },
+      "sha256": "481f1e486e2f96943710cad49a2a8bdf8eb20f815399090577521399d514df9b"
+    },
+    "workbook": {
+      "current_silver_manifests_outside_capture_count": 24,
+      "excluded_silver_manifest_count": 9,
+      "layout_manifest_count": 10,
+      "layout_source_count": 6,
+      "recheck_layout_rows_unchanged": true,
+      "sha256": "d876c92097bbd1c209fbaaadfd2f3cabcc03ab742cd7aed11763a98163b4ba6a"
+    }
+  },
+  "schema_version": "archive-govt-nz.health-source-layout-reconciliation/v1",
+  "source_census_sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272",
+  "summary": {
+    "captured_source_count": 75,
+    "pdf_layout_source_count": 59,
+    "pdf_layout_unavailable_count": 0,
+    "sources_with_structural_baseline": 65,
+    "sources_without_structural_baseline": 10,
+    "workbook_layout_source_count": 6
+  },
+  "unassessed_sources": [
+    {
+      "family": "befu_2026",
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "reason": "silver_workbook_inventory_missing",
+      "source_id": "befu_2026-002"
+    },
+    {
+      "family": "befu_2026",
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "reason": "silver_workbook_inventory_missing",
+      "source_id": "befu_2026-004"
+    },
+    {
+      "family": "hyefu_2025",
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "reason": "silver_workbook_inventory_missing",
+      "source_id": "hyefu_2025-005"
+    },
+    {
+      "family": "moh_vote_health",
+      "media_type": "text/csv",
+      "reason": "no_matching_workbook_or_pdf_layout_profile",
+      "source_id": "moh_vote_health-008"
+    },
+    {
+      "family": "moh_vote_health",
+      "media_type": "text/csv",
+      "reason": "no_matching_workbook_or_pdf_layout_profile",
+      "source_id": "moh_vote_health-009"
+    },
+    {
+      "family": "pharmac_cpb",
+      "media_type": "text/html",
+      "reason": "no_matching_workbook_or_pdf_layout_profile",
+      "source_id": "pharmac_cpb-010"
+    },
+    {
+      "family": "stats_nz_cpi",
+      "media_type": "text/csv",
+      "reason": "no_matching_workbook_or_pdf_layout_profile",
+      "source_id": "stats_nz_cpi-053a0705526fac8d"
+    },
+    {
+      "family": "stats_nz_gdp",
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "reason": "silver_workbook_inventory_missing",
+      "source_id": "stats_nz_gdp-588a47c19c9dbc44"
+    },
+    {
+      "family": "stats_nz_gdp",
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "reason": "silver_workbook_inventory_missing",
+      "source_id": "stats_nz_gdp-9fc80ed4b7f234b2"
+    },
+    {
+      "family": "stats_nz_population",
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "reason": "silver_workbook_inventory_missing",
+      "source_id": "stats_nz_population-806dead2a5b8ab69"
+    }
+  ]
+}

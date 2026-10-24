@@ -302,16 +302,24 @@ repository validation command. External gates block only their affected task.
   `bronze-checkpoint-contracts.md`.
 - [~] Establish per-vintage source-layout baselines from retained Silver
   workbook inventories and captured official PDF page structures, linked to
-  capture identities and Bronze fixity. The retained 2026-10-02 workbook baseline fingerprints six of its
-  74 captured sources; BEFU-2026 and HYEFU-2025 show observed layout variation
-  under their shared extraction profile. PDF evidence now fingerprints all 59 retained captured PDFs, including three
-  default-readable encrypted originals previously excluded. All 56 previously
-  recorded rows are unchanged; two complete builds are byte-identical. This is
-  the pinned 2026-10-03 capture cohort, not the entire current census. Other
-  source-layout coverage and mapping approval remain open.
-  Structural variation is not an approved mapping. See
-  `source-layout-baseline-20261002.md` and
-  `source-pdf-layout-baseline-20261018.json` and
+  capture identities and Bronze fixity. The pinned 2026-10-03 cohort contains
+  75 verified captured objects. Its workbook baseline has six unique source
+  inventories across ten manifests; BEFU-2026 and HYEFU-2025 show observed
+  variation under their shared extraction profile. The 2026-10-18 PDF report
+  fingerprints all 59 captured PDFs, including three default-readable
+  encrypted originals previously excluded. A 2026-10-24 recheck verified that
+  all ten workbook inventory rows and all 59 PDF layout rows remain unchanged
+  against Bronze. The PDF parser moved from 6.19.0 to 6.21.2; the pinned row
+  fingerprints did not change. The retained Silver tree now has 24 manifests
+  outside the pinned capture, up from nine; they remain excluded from this
+  cohort. Combined coverage is 65/75 sources: six of twelve workbooks have
+  inventories, all 59 PDFs have structural baselines, and ten sources remain
+  unassessed (six workbooks, three CSVs and one HTML resource). No source
+  values, URL or mapping approval is inferred. Structural variation is not an
+  approved mapping; source-specific layout work beyond this cohort remains
+  open. See `source-layout-reconciliation-20261024.md`,
+  `source-layout-baseline-20261002.md`,
+  `source-pdf-layout-baseline-20261018.json`, and
   `readable-pdf-layout-qualification-20261018.json`. [M-02, M-11, S-04; AC-03, AC-09]
 - [x] Confirm Git contains manifests/schemas/evidence only, not source payloads
   or large generated derivatives. Verified 2,998 tracked paths against all 73
