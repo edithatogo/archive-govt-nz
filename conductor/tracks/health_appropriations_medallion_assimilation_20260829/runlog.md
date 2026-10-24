@@ -9912,3 +9912,24 @@ projection; broader Phase 6 reports, source/donor reconciliation and final
 review remain open. See `vote-health-financial-activity-gold-20261025.md` and
 its machine receipt. The hosted issue #212 was already closed, so this update
 does not reopen or claim to complete the full Phase 6 scope.
+# 2026-10-25 — Issue #215 clean-room recovery refresh
+
+- Refreshed clean-room recovery from pinned Bronze under locked CPython 3.15.1
+  and PyArrow 26.0.0. The machine receipt records `bronze_objects_unchanged: true`
+  and `status: partial_with_blockers`; it explicitly leaves cross-source
+  comparison, remaining source-native Silver/adapters, and the complete
+  Platinum profile open. No publication was performed and rights remain
+  unevaluated.
+- Kept historical Context Silver pins and added a fail-closed semantic check
+  for serialization drift across PyArrow versions. Current writer hashes are
+  separately admitted only after file inventory, manifest/output hashes,
+  Parquet schema metadata, and all rows compare. GDP June current-writer files
+  were separately repeat-built before their hashes were accepted.
+- Corrected the MoH recovery observation token to use the exact canonical
+  profile timestamp; canonical Gold now binds fresh MoH and Crown manifest
+  digests. Expanded the revision-report gate to require Budget, revenue, BIFF8
+  Budget/revenue, Pharmac, MoH, and Crown entries.
+- Focused suite: 122 passed. Ruff and basedpyright passed. The required `./scripts/validate.sh` passed on this tree: 8,413 tests passed,
+  14 skipped, 18 warnings, 97.07% coverage; all schema, parity, mutation,
+  dependency, licence, secret, and SBOM gates passed. PR and hosted Actions
+  remain outstanding.

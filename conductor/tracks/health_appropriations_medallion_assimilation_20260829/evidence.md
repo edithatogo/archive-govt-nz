@@ -3504,3 +3504,20 @@ within30s twice each per source/run. Existing2019 source packages retain all10
 file hashes. Original/full/hosted delivery remains pending;2018 canonical,Gold
 and recovery integration is not claimed. Rights/currency/start-date/aggregation
 and cross-source holds, older unit/edition gaps and donor decisions remain.
+# 2026-10-25 — Issue #215 recovery refresh
+
+`clean-room-recovery-20261025-issue-215.json` records the current locked-runtime
+rebuild. Bronze objects were unchanged; supported products were rebuilt, and
+the recovery remains `partial_with_blockers`. The receipt identifies the
+unbuilt cross-source comparison, remaining source-native Silver/adapters, and
+complete Platinum profile. Historical Context Silver manifest pins remain
+intact: where PyArrow 23.0.1 and 26.0.0 produce different Parquet bytes, the
+recovery gate now checks manifest integrity plus exact schema and row equality.
+Current PyArrow 26.0.0 hashes are separately pinned. MoH recovery now uses the
+canonical observation timestamp, and canonical Gold revision validation
+includes Budget BIFF8 and revenue. No source values, rights, or publication
+status were changed. Focused validation: 122 tests passed. The required repository harness then
+passed with 8,413 tests passed, 14 skipped, 18 warnings, and 97.07% coverage
+against the 80% floor; 81 schemas/71 representative documents, parity 9/9, all
+mutation gates, supply-chain checks, and the 118-component SBOM passed. Hosted
+PR checks remain pending.

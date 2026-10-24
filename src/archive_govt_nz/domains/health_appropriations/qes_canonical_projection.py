@@ -33,6 +33,11 @@ OBSERVED_AT = "2026-08-29T09:00:17Z"
 SOURCE_MANIFEST_SHA256 = (
     "0bf89bd6c10a0458ef4c578b209c3252292961976d2f50b3c27fe92907c3cb04"
 )
+# PyArrow 26.0.0's Parquet rendering is separately pinned; semantic rows,
+# source coordinates and lineage still have to verify against Bronze below.
+PYARROW_26_SOURCE_MANIFEST_SHA256 = (
+    "99056e30cf03310a8138af800e62f5c1523287b6c3617a47586fe8986babdc99"
+)
 TRANSFORMATION = "qes-canonical-source-faithful/v1"
 _MANIFEST_SCHEMA = "archive-govt-nz.qes-extraction/v1"
 _PRODUCTS = {"qes_facts.parquet", "field_lineage.parquet", "cell_dispositions.parquet"}
@@ -75,7 +80,8 @@ def _source_tables(
     _require(
         len(payload) <= _MAX_MANIFEST_BYTES
         and hashlib.sha256(payload).hexdigest() == manifest_sha256
-        and manifest_sha256 == SOURCE_MANIFEST_SHA256
+        and manifest_sha256
+        in {SOURCE_MANIFEST_SHA256, PYARROW_26_SOURCE_MANIFEST_SHA256}
     )
     manifest = json.loads(payload, object_pairs_hook=_pairs)
     _require(

@@ -1707,6 +1707,11 @@ integrated parent head.
   from fresh Silver, with identical output digests; base and rights remain
   unresolved. Donor/canonical reports, additional source-native profiles and
   canonical adapters, and complete validated Platinum remain open.
+  Refreshed on 2026-10-25 by issue #215: the current-runtime clean-room receipt
+  confirms Bronze fixity and repeat builds, with `partial_with_blockers` status;
+  cross-source comparison, remaining source-native adapters, and full Platinum
+  still prevent closing this recovery task. See
+  `clean-room-recovery-20261025-issue-215.json`.
 - [~] Compare output manifests/digests and explain permitted rendering-only
   variation; prove original objects were not mutated. [M-03, M-16; AC-02,
   AC-12] Repeat output inventories match within this runtime across raw, SQLite,

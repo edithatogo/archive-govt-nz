@@ -58,16 +58,28 @@ _EXPECTED_VINTAGES = {
 }
 _EXPECTED_MANIFESTS = {
     "cpi": frozenset(
-        {"edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e"}
+        {
+            "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e",
+            "f51493ea21f20fb96ea5a9348eca4f560854593a27e5c50bb09fb5b562dbc77d",
+        }
     ),
     "wage": frozenset(
-        {"0bf89bd6c10a0458ef4c578b209c3252292961976d2f50b3c27fe92907c3cb04"}
+        {
+            "0bf89bd6c10a0458ef4c578b209c3252292961976d2f50b3c27fe92907c3cb04",
+            "99056e30cf03310a8138af800e62f5c1523287b6c3617a47586fe8986babdc99",
+        }
     ),
     "gdp": frozenset(
-        {"639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35"}
+        {
+            "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35",
+            "109e90ecbe008dcd682d8ae0a499a74d2c0c7ae9f92f4c9e50f45df2431137e2",
+        }
     ),
     "population": frozenset(
-        {"067255c4ac18377312d0a8234dc94804c876ba68866cfba3a483a4dd89415798"}
+        {
+            "067255c4ac18377312d0a8234dc94804c876ba68866cfba3a483a4dd89415798",
+            "9534264aedef3964b25e10512603d27c9d1214f3e6cdcb8e61ae0033943b3b1f",
+        }
     ),
     # PyArrow 23 and 26 produce distinct Parquet bytes for identical rows.
     # Preserve the historical pin and explicitly admit the qualified 26.0.0

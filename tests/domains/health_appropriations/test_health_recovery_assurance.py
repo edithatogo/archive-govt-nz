@@ -342,6 +342,144 @@ def test_repeat_build_mismatch_fails_closed(tmp_path: Path) -> None:
         MODULE.compare_product_outputs(first, second, "canonical_gold")
 
 
+def _write_serialized_context_package(
+    root: Path, values: list[int], *, compression: str
+) -> str:
+    root.mkdir()
+    payload = root / "facts.parquet"
+    pq.write_table(pa.table({"observation": values}), payload, compression=compression)
+    manifest = {
+        "schema_version": "synthetic-context/v1",
+        "source_object_sha256": "a" * 64,
+        "status": "passed",
+        "output_sha256": {payload.name: MODULE.digest(payload)},
+    }
+    marker = root / "MANIFEST.json"
+    marker.write_text(json.dumps(manifest, sort_keys=True) + "\n", encoding="utf-8")
+    return MODULE.digest(marker)
+
+
+def test_context_rebuild_accepts_only_semantic_parquet_serialization_variation(
+    tmp_path: Path,
+) -> None:
+    retained = tmp_path / "retained"
+    rebuilt = tmp_path / "rebuilt"
+    retained_pin = _write_serialized_context_package(
+        retained, [1, 2, 3], compression="snappy"
+    )
+    _write_serialized_context_package(rebuilt, [1, 2, 3], compression="gzip")
+
+    result = MODULE.compare_context_silver_serialization(
+        rebuilt, retained, retained_pin
+    )
+
+    assert result["retained_manifest_sha256"] == retained_pin
+    assert result["semantic_rows_equal"] is True
+    assert result["serialization_only_files"] == ["facts.parquet"]
+
+
+def test_context_rebuild_rejects_semantic_change_during_serialization_review(
+    tmp_path: Path,
+) -> None:
+    retained = tmp_path / "retained"
+    rebuilt = tmp_path / "rebuilt"
+    retained_pin = _write_serialized_context_package(
+        retained, [1, 2, 3], compression="snappy"
+    )
+    _write_serialized_context_package(rebuilt, [1, 2, 4], compression="gzip")
+
+    with pytest.raises(RuntimeError, match="context_silver_semantic_drift"):
+        MODULE.compare_context_silver_serialization(rebuilt, retained, retained_pin)
+
+
+def test_context_rebuild_requires_exact_retained_manifest_pin(tmp_path: Path) -> None:
+    retained = tmp_path / "retained"
+    rebuilt = tmp_path / "rebuilt"
+    _write_serialized_context_package(retained, [1, 2, 3], compression="snappy")
+    _write_serialized_context_package(rebuilt, [1, 2, 3], compression="gzip")
+
+    with pytest.raises(
+        RuntimeError, match="context_silver_retained_manifest_pin_mismatch"
+    ):
+        MODULE.compare_context_silver_serialization(rebuilt, retained, "0" * 64)
+
+
+def test_moh_recovery_uses_projection_observation_timestamp(
+    monkeypatch: MonkeyPatch, tmp_path: Path
+) -> None:
+    source_pin = "a" * 64
+    monkeypatch.setattr(MODULE, "ARCHIVE", tmp_path)
+    monkeypatch.setitem(MODULE.MOH_SOURCE_SHA256, "fig27/v1", source_pin)
+    monkeypatch.setitem(
+        MODULE.MOH_SILVER_MANIFEST_SHA256,
+        "fig27/v1",
+        MODULE.hashlib.sha256(b"native").hexdigest(),
+    )
+
+    def normalize(_source: Path, output: Path, **kwargs: object) -> dict[str, object]:
+        assert kwargs["observed_at"] == MODULE.moh_canonical_projection.OBSERVED_AT
+        output.mkdir()
+        (output / "MANIFEST.json").write_bytes(b"native")
+        pq.write_table(pa.table({"row": [1]}), output / "moh_indicator_facts.parquet")
+        pq.write_table(pa.table({"row": [1]}), output / "field_lineage.parquet")
+        return {"counts": {"facts": 1, "lineage": 1}}
+
+    monkeypatch.setattr(MODULE.moh_indicators, "normalize_moh_indicators", normalize)
+    result = MODULE._rebuild_moh_profile(tmp_path, "fig27/v1", 1)  # noqa: SLF001
+
+    assert result["source_object_sha256"] == source_pin
+
+
+def test_revision_report_gate_includes_biff8_recovery_products(tmp_path: Path) -> None:
+    report = {
+        "schema_version": "archive-govt-nz.health-revision-reconciliation/v1",
+        "key_fields": [
+            "recordset",
+            "measure",
+            "source_label",
+            "unit",
+            "currency",
+            "price_basis",
+            "base_period",
+            "denominator_definition",
+            "institutional_coverage",
+            "accounting_basis",
+            "period_token",
+        ],
+        "completeness": "historical_budget_revenue_biff8_budget_biff8_revenue_pharmac_moh_crown_product_rows",
+        "difference_interpretation": "not_assessed",
+        "other_product_revisions": "not_assessed",
+        "cross_source_comparison": "not_performed",
+        "product_revisions": {
+            name: {}
+            for name in (
+                "budget",
+                "revenue",
+                "biff8_budget",
+                "biff8_revenue",
+                "pharmac",
+                "moh",
+                "crown",
+            )
+        },
+        "candidates": [],
+        "changed_candidate_count": 0,
+    }
+    report_path = tmp_path / "historical_revision_reconciliation.json"
+    report_path.write_text(json.dumps(report), encoding="utf-8")
+    output = {"sha256": MODULE.digest(report_path)}
+
+    MODULE.verify_canonical_revision_report(report, report_path, output)
+
+    report["product_revisions"].pop("biff8_revenue")
+    report_path.write_text(json.dumps(report), encoding="utf-8")
+    output["sha256"] = MODULE.digest(report_path)
+    with pytest.raises(
+        RuntimeError, match="canonical_gold_revision_reconciliation_report_invalid"
+    ):
+        MODULE.verify_canonical_revision_report(report, report_path, output)
+
+
 def test_gdp_vintage_recovery_is_bound_to_recorded_comparison(
     monkeypatch: MonkeyPatch, tmp_path: Path
 ) -> None:

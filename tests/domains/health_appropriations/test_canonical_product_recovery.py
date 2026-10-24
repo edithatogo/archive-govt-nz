@@ -185,11 +185,30 @@ def test_gold_inputs_bind_the_corresponding_fresh_run(tmp_path: Path) -> None:
     pharmac = tmp_path / "pharmac-silver-2"
     pharmac.mkdir()
     (pharmac / "MANIFEST.json").write_bytes(b"fresh second-run manifest")
+    fresh_roots = [
+        tmp_path / f"moh-{profile.replace('/', '-')}-2"
+        for profile in MODULE.moh_canonical_projection.PROFILES
+    ] + [tmp_path / "crown-silver-2", tmp_path / "hyefu-crown-silver-2"]
+    for fresh_root in fresh_roots:
+        fresh_root.mkdir()
+        (fresh_root / "MANIFEST.json").write_bytes(
+            f"fresh manifest for {fresh_root.name}".encode()
+        )
     inputs = MODULE.canonical_gold_inputs(tmp_path, 2)
     assert inputs.pharmac is not None
     assert inputs.pharmac.root == pharmac
     assert inputs.moh is not None
     assert all(p.root.name.endswith("-2") for p in inputs.moh.packages)
+    assert all(
+        p.manifest_sha256 == MODULE.digest(p.root / "MANIFEST.json")
+        for p in inputs.moh.packages
+    )
     assert inputs.crown is not None
     assert inputs.crown.befu_root == tmp_path / "crown-silver-2"
     assert inputs.crown.hyefu_root == tmp_path / "hyefu-crown-silver-2"
+    assert inputs.crown.befu_manifest_sha256 == MODULE.digest(
+        inputs.crown.befu_root / "MANIFEST.json"
+    )
+    assert inputs.crown.hyefu_manifest_sha256 == MODULE.digest(
+        inputs.crown.hyefu_root / "MANIFEST.json"
+    )
