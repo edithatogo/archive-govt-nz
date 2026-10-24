@@ -61,7 +61,7 @@ def _parquet_payload(table: pa.Table) -> bytes:
     return output.getvalue()
 
 
-def _silver_package(
+def silver_package_fixture(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> tuple[Path, str]:
     source = tmp_path / "source.pdf"
@@ -98,7 +98,7 @@ def _silver_package(
 def test_projection_is_pinned_source_separated_and_repeatable(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    silver_dir, silver_pin = _silver_package(tmp_path, monkeypatch)
+    silver_dir, silver_pin = silver_package_fixture(tmp_path, monkeypatch)
     first = tmp_path / "gold-first"
     second = tmp_path / "gold-second"
 
@@ -157,7 +157,7 @@ def test_projection_is_pinned_source_separated_and_repeatable(
 def test_projection_fails_closed_on_silver_or_gold_drift(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    silver_dir, silver_pin = _silver_package(tmp_path, monkeypatch)
+    silver_dir, silver_pin = silver_package_fixture(tmp_path, monkeypatch)
     with pytest.raises(ValueError, match="source_hash_mismatch"):
         gold.export_vote_health_financial_activity(
             silver_dir, "0" * 64, tmp_path / "bad"
@@ -195,7 +195,7 @@ def test_projection_fails_closed_on_silver_or_gold_drift(
 def test_query_bounds_and_silver_output_path_refusal(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    silver_dir, silver_pin = _silver_package(tmp_path, monkeypatch)
+    silver_dir, silver_pin = silver_package_fixture(tmp_path, monkeypatch)
     with pytest.raises(ValueError, match="vote_health_financial_activity_gold_invalid"):
         gold.export_vote_health_financial_activity(
             silver_dir, silver_pin, silver_dir / "nested", write=True
@@ -217,7 +217,7 @@ def test_query_bounds_and_silver_output_path_refusal(
 def test_silver_reader_rejects_expanded_parquet_before_decode(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    silver_dir, _ = _silver_package(tmp_path, monkeypatch)
+    silver_dir, _ = silver_package_fixture(tmp_path, monkeypatch)
     manifest_path = silver_dir / "MANIFEST.json"
     manifest = json.loads(manifest_path.read_bytes())
     facts_path = silver_dir / gold.SILVER_FACTS
@@ -250,7 +250,7 @@ def test_silver_reader_rejects_expanded_parquet_before_decode(
 def test_gold_reader_rejects_expanded_parquet_before_decode(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    silver_dir, silver_pin = _silver_package(tmp_path, monkeypatch)
+    silver_dir, silver_pin = silver_package_fixture(tmp_path, monkeypatch)
     gold_dir = tmp_path / "gold"
     receipt = gold.export_vote_health_financial_activity(
         silver_dir, silver_pin, gold_dir, write=True
@@ -302,7 +302,7 @@ def test_gold_reader_rejects_repinned_lineage_drift(
     field: str,
     replacement: str,
 ) -> None:
-    silver_dir, silver_pin = _silver_package(tmp_path, monkeypatch)
+    silver_dir, silver_pin = silver_package_fixture(tmp_path, monkeypatch)
     gold_dir = tmp_path / "gold"
     gold.export_vote_health_financial_activity(
         silver_dir, silver_pin, gold_dir, write=True

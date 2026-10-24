@@ -206,4 +206,6 @@ def test_mcp_contract_is_closed_read_only_and_keeps_legacy_profiles() -> None:
     assert legacy["outputSchema"]["properties"]["schema_version"]["enum"] == [
         "archive-govt-nz.health-gold-metadata/v3",
         "archive-govt-nz.health-gold-metadata/v4",
+        "archive-govt-nz.health-gold-metadata/v5",
+        "archive-govt-nz.health-gold-metadata/v6",
     ]

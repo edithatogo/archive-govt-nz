@@ -553,6 +553,11 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                         "type": "string",
                         "pattern": "^[0-9a-f]{64}$",
                     },
+                    "financial_activity_package": {"type": "string", "minLength": 1},
+                    "financial_activity_manifest_sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$",
+                    },
                     "output_dir": {"type": "string", "minLength": 1},
                     "manifest_sha256": {
                         "type": "string",
@@ -571,6 +576,8 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
             "dependentRequired": {
                 "canonical_package": ["canonical_manifest_sha256"],
                 "canonical_manifest_sha256": ["canonical_package"],
+                "financial_activity_package": ["financial_activity_manifest_sha256"],
+                "financial_activity_manifest_sha256": ["financial_activity_package"],
             },
         },
         "outputSchema": _object_schema(
@@ -579,6 +586,8 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                     "enum": [
                         "archive-govt-nz.health-gold-metadata/v3",
                         "archive-govt-nz.health-gold-metadata/v4",
+                        "archive-govt-nz.health-gold-metadata/v5",
+                        "archive-govt-nz.health-gold-metadata/v6",
                     ]
                 },
                 "status": {"const": "verified"},
@@ -586,7 +595,7 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                     "type": "string",
                     "pattern": "^[0-9a-f]{64}$",
                 },
-                "packages": {"enum": [2, 3]},
+                "packages": {"enum": [2, 3, 4]},
                 "rights": {"const": "not_evaluated"},
                 "publication": {"const": "not_performed"},
                 "verification_scope": {
@@ -1188,6 +1197,15 @@ def _health_read_only_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
             else None,
             str(args["canonical_manifest_sha256"])
             if "canonical_manifest_sha256" in args
+            else None,
+        )
+        inputs = gold_metadata.with_financial_activity_input(
+            inputs,
+            Path(str(args["financial_activity_package"]))
+            if "financial_activity_package" in args
+            else None,
+            str(args["financial_activity_manifest_sha256"])
+            if "financial_activity_manifest_sha256" in args
             else None,
         )
         result = gold_metadata.verify_gold_metadata(
