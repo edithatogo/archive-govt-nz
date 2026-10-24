@@ -121,3 +121,68 @@ def test_bronze_layout_report_requires_complete_capture_reconciliation(
         build_bronze_workbook_layout_report(
             census, json.dumps(record).encode(), tmp_path / "cas"
         )
+
+
+@pytest.mark.parametrize(
+    ("census_bytes", "capture_bytes", "error"),
+    [
+        (b"{", b"{}", "source_census_invalid"),
+        (b"[]", b"{}", "source_census_invalid"),
+        (
+            json.dumps(
+                {"schema_version": "wrong", "cutoff": "d", "records": []}
+            ).encode(),
+            json.dumps({"cutoff": "d", "results": []}).encode(),
+            "source_census_schema_invalid",
+        ),
+        (
+            json.dumps(
+                {
+                    "schema_version": "archive-govt-nz.health-source-census/v1",
+                    "cutoff": "one",
+                    "records": [],
+                }
+            ).encode(),
+            json.dumps({"cutoff": "two", "results": []}).encode(),
+            "capture_census_cutoff_mismatch",
+        ),
+    ],
+)
+def test_bronze_layout_report_rejects_invalid_pinned_documents(
+    tmp_path: Path,
+    census_bytes: bytes,
+    capture_bytes: bytes,
+    error: str,
+) -> None:
+    with pytest.raises(BronzeWorkbookLayoutError, match=error):
+        build_bronze_workbook_layout_report(census_bytes, capture_bytes, tmp_path)
+
+
+def test_bronze_layout_report_records_unavailable_workbook_profile(
+    tmp_path: Path,
+) -> None:
+    census, capture = _evidence(
+        tmp_path / "cas", {"workbook": (_XLSX, b"not a workbook")}
+    )
+
+    report = build_bronze_workbook_layout_report(census, capture, tmp_path / "cas")
+
+    assert report["summary"]["xlsx_layout_unavailable"] == 1
+    assert report["unavailable"] == [
+        {"source_id": "workbook", "reason": "workbook_layout_invalid"}
+    ]
+
+
+def test_bronze_layout_report_rejects_malformed_capture_identity(
+    tmp_path: Path,
+) -> None:
+    census, capture = _evidence(
+        tmp_path / "cas", {"workbook": (_XLSX, _workbook("value"))}
+    )
+    record = json.loads(capture)
+    record["results"][0]["sha256"] = "invalid"
+
+    with pytest.raises(BronzeWorkbookLayoutError, match="capture_identity_invalid"):
+        build_bronze_workbook_layout_report(
+            census, json.dumps(record).encode(), tmp_path / "cas"
+        )
