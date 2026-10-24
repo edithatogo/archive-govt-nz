@@ -458,8 +458,13 @@ integrated parent head.
 - [~] Add schema fingerprints, adapter selection evidence, deterministic
   ordering/serialization, source-layout drift reports and fail-closed unknown
   layout handling. Dispatch selection and source-family Arrow schema/layout
-  fingerprint comparison now have deterministic contracts; per-source captured
-  layout baselines and integrated drift receipts remain open. See
+  fingerprint comparison now have deterministic contracts. The 2026-10-24
+  Bronze-only structural inventory fingerprints all 12 captured XLSX sources,
+  including six that lack Silver-derived inventories. The rechecked PDF cohort
+  fingerprints 59 of 59 captured PDFs. Three captured CSV sources and one HTML
+  source still lack a source-specific structural profile. Per-adapter
+  schema-drift integration remains open. See
+  `bronze-workbook-layout-baseline-20261024.md`,
   `context-adapters.md` and its validation receipt. [M-05, M-07, M-18, S-04;
   AC-03, AC-05, AC-16]
 - [x] Demonstrate repeat normalization yields identical manifests and Parquet

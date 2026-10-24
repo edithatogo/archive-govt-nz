@@ -9800,3 +9800,25 @@ then passed: 8,352 tests, 14 skipped, 97.01% coverage, 81 schemas/71
 representative documents, 9/9 differential parity, and all mutation,
 dependency-audit, licence, secret and SBOM gates. Focused layout/static/type
 checks and distribution inspection also passed.
+
+## 2026-10-24 — Bronze-native workbook structural baselines
+
+Added a read-only structural inventory that fingerprints captured XLSX bytes
+directly from hash-verified Bronze CAS, independently of Silver manifests. This
+closes the narrow gap where six of 12 captured workbooks lacked Silver-derived
+inventories; all 12 now have a Bronze structural fingerprint from the pinned
+2026-10-03 cohort. The report includes census/capture pins, per-object SHA-256
+and size, and the `openpyxl` version. It omits cell values and does not claim
+semantic mapping, rights, or cross-vintage comparability. Three captured CSVs
+and one HTML source still need source-specific structural profiles, and
+per-adapter drift integration remains open.
+
+The bounded fixture suite passes three tests, including repeat-build identity,
+fixity rejection and full capture reconciliation. Validation used qualified
+Python 3.15.1. Live Bronze inventory verified 75 captured objects, all 12 XLSX
+baselines available, zero unavailable; see
+`bronze-workbook-layout-baseline-20261024.md` and its pinned JSON receipt.
+The exact-tree `./scripts/validate.sh` passed all 8,379 tests (14 skipped),
+97.05% coverage against the repository's 80% floor, 81 schemas and 71
+representative documents, 9/9 differential parity, all configured mutation
+lanes, hygiene, CAS, dependency audit, licence, secret and SBOM gates.
