@@ -9846,3 +9846,16 @@ exact tree: 8,396 passed, 14 skipped, 18 warnings, 97.08% branch coverage,
 gates, dependency/licence/secret audits, and the 118-component SBOM. Python
 3.15.1, lock, format, lint, and strict typing gates passed. The 80% coverage
 floor was exceeded. See the machine receipt for this profile.
+
+The first hosted assurance matrix reached and passed platform tests, schema,
+parity, and mutation gates but failed the final Windows secret scan because a
+machine-receipt key contained the detector keyword `secret`. This was a
+receipt-label false positive, not credential material. The key is now neutral,
+and the exact-tree local secret scan passes; hosted rerun is required for the
+corrected head.
+
+After that label correction, the exact-tree local secret scan and complete
+`./scripts/validate.sh` both passed again: 8,396 passed, 14 skipped, 18
+warnings, 97.08% coverage; schemas, parity, mutation, dependency, licence,
+credential-scan and SBOM gates passed. Hosted Actions on the corrected commit
+remain the external merge gate.
