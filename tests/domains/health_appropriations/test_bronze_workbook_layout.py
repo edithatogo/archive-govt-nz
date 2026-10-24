@@ -41,6 +41,7 @@ def _evidence(cas: Path, files: dict[str, tuple[str, bytes]]) -> tuple[bytes, by
                 "disposition": "captured",
                 "media_type": media_type,
                 "family": "fixture",
+                "object_sha256": digest,
             }
         )
         results.append(
@@ -185,4 +186,21 @@ def test_bronze_layout_report_rejects_malformed_capture_identity(
     with pytest.raises(BronzeWorkbookLayoutError, match="capture_identity_invalid"):
         build_bronze_workbook_layout_report(
             census, json.dumps(record).encode(), tmp_path / "cas"
+        )
+
+
+def test_bronze_layout_report_binds_capture_to_census_object_digest(
+    tmp_path: Path,
+) -> None:
+    census, capture = _evidence(
+        tmp_path / "cas", {"workbook": (_XLSX, _workbook("value"))}
+    )
+    record = json.loads(census)
+    record["records"][0]["object_sha256"] = "0" * 64
+
+    with pytest.raises(
+        BronzeWorkbookLayoutError, match="capture_census_fixity_mismatch"
+    ):
+        build_bronze_workbook_layout_report(
+            json.dumps(record).encode(), capture, tmp_path / "cas"
         )

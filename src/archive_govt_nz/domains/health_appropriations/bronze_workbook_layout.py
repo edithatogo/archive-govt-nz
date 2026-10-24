@@ -136,6 +136,8 @@ def build_bronze_workbook_layout_report(  # noqa: C901, PLR0912 - ordered eviden
             or source_id in captures
         ):
             _fail("capture_identity_invalid")
+        if identities[source_id].get("object_sha256") != digest:
+            _fail("capture_census_fixity_mismatch")
         captures[source_id] = (digest, size)
     expected = {
         source_id
