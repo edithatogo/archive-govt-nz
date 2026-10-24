@@ -9764,3 +9764,39 @@ untracked files. Full hosted assurance remains pending.
 - The release edition, whole historical census, native layout/fixity, rights,
   capture and publication remain open. Focused source-register validation is
   pending.
+
+## 2026-10-24 — Issue #208: source-layout cohort reconciliation
+
+Added a read-only reconciliation that binds the retained workbook and PDF
+layout reports to the same source-census and capture-manifest digests, checks
+each baselined source identity/fixity against the census, and compares fresh
+builder output to the pinned layout rows. Rebuilt both reports against the
+retained Silver tree and Bronze CAS on repo-local Python 3.15.1. All ten
+workbook-manifest rows and all 59 PDF rows were unchanged. The PDF parser
+advanced from pypdf 6.19.0 to 6.21.2; fingerprints remained identical. Current
+Silver now contains 24 manifests outside the pinned capture, versus nine in
+the prior workbook receipt; the newer manifests remain excluded.
+
+The combined 2026-10-03 cohort has 75 verified captures, 65 sources with
+structural baselines, and ten unresolved sources: six XLSX inventories, three
+CSV profiles and one HTML profile. PDF coverage is 59/59; workbook inventory
+coverage is 6/12. Source IDs and reason codes are in
+`source-layout-reconciliation-20261024.json`; its SHA-256 is
+`3cb9158afb0909d14fa745abdd704c5439efafdfccd2f5886ce24400263dbb75`.
+No source values or URLs were added and no mapping/normalization, rights or
+comparability approval was inferred. Focused tests cover exact cohort/fixity
+linkage, unassessed reasons and rejection of changed layout/capture identity.
+Retry/version recording, scheduled source discovery, WARC orphan reconciliation
+and remaining source-specific layouts are still open; issue #208 remains open.
+Project-owned-code licensing was also aligned with the current repository
+instructions: `LICENSE` is the complete Apache-2.0 text, package metadata now
+explicitly includes that file, and SPDX identifiers mark the new Python files.
+Built wheel and sdist both contain the complete license and Apache-2.0 package
+metadata; third-party and source-document rights remain separate.
+
+An earlier 10-worker full run produced 14 failures; its cached failure-only
+rerun passed all 14 in 48.43 seconds. The exact final-tree `./scripts/validate.sh`
+then passed: 8,352 tests, 14 skipped, 97.01% coverage, 81 schemas/71
+representative documents, 9/9 differential parity, and all mutation,
+dependency-audit, licence, secret and SBOM gates. Focused layout/static/type
+checks and distribution inspection also passed.

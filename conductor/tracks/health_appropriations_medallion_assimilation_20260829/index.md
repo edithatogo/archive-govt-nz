@@ -97,6 +97,8 @@ every planned record set, measure or operational workflow.
 - [Cumulative official source capture manifest, 2026-10-03](./official-capture-2026-10-03-health-complete.json)
 - [Source PDF structural layout baseline, 2026-10-03](./source-pdf-layout-baseline-20261003.json)
 - [Source layout inventory baseline, 2026-10-03](./source-layout-baseline-20261003.json)
+- [Source layout cohort recheck, 2026-10-24](./source-layout-reconciliation-20261024.md)
+- [Source layout cohort recheck machine receipt, 2026-10-24](./source-layout-reconciliation-20261024.json)
 - [Budget source-literal dimensions and unresolved mapping validation](./budget-source-dimensions.validation.json)
 - [Context-source Bronze adapters](./context-adapters.md)
 - [Context-source adapter validation](./context-adapters.validation.json)

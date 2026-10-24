@@ -21,6 +21,14 @@ This repository is a solo-maintainer codebase.
 - Keep gates fast-first; schedule heavier evidence lanes behind explicit triggers.
 - Record failures with bounded evidence before making follow-up modifications.
 
+## Project-owned code licensing
+- Project-owned code uses Apache-2.0; keep the complete root `LICENSE` and the
+  package's `Apache-2.0` declaration aligned.
+- Preserve upstream and third-party licences, copyright notices, attribution,
+  and applicable inherited terms. Do not relabel third-party code.
+- This licence does not grant redistribution rights over external documents,
+  datasets, private evidence, or operational history.
+
 ## Human accountability
 - PR narratives should include issue references, scope, expected outcomes, and
   any risk/failure modes observed.
