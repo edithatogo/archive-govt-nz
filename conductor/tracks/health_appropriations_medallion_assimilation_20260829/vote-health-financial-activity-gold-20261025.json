@@ -1,0 +1,86 @@
+{
+  "schema_version": "archive-govt-nz.health-vote-financial-activity-gold-evidence/v1",
+  "issue": 212,
+  "status": "passed",
+  "profile": "archive-govt-nz.vote-health-financial-activity-gold/v1",
+  "silver_profile": "vote-health-supplementary-2014-15-financial-activity/v1",
+  "source": {
+    "source_locator": "https://www.treasury.govt.nz/sites/default/files/2015-05/suppest15health.pdf",
+    "source_object_sha256": "99e90dfddd8fc7b6d2bb545148d95f8f3c4c3cbf77760b91103130304176780e",
+    "source_bytes": 356801,
+    "matches_existing_bronze_capture": true,
+    "capture_inventory": "capture-inventory-20261017.json",
+    "warc_sha256": "8d06ce8dae466d622fbd86603a74e9f25ff89d74b8deb40f23a6f0ff06885198",
+    "source_license": "CC-BY-4.0",
+    "rights_state": "not_evaluated"
+  },
+  "silver": {
+    "manifest_sha256": "a8edcf80133f17d16dfe381a8eac5972d26d9a1b2fb9142c21f7186bd6f93ba4",
+    "facts": 14,
+    "field_lineage": 70,
+    "output_sha256": {
+      "field_lineage.parquet": "19c0c8d624bd8a98cd31fb30e8d106989f37b4f8e9541ea8bf76ac1048c4539b",
+      "page_dispositions.parquet": "5a88943d65a94084d58420934fe2e2ffd5d7479d0ba4b713a2377bf3e5d73dec",
+      "vote_health_financial_activity_facts.parquet": "a0c7bbadb6cdb8a31442704b62cfc9d281b7cde28b06ea149d7fc1a27911fd1d"
+    }
+  },
+  "gold": {
+    "manifest_sha256": "62571c0f64837f309f7a3c0da4a9bff1f4166b3aa2b436719f15f737e1f44690",
+    "facts": 14,
+    "field_lineage": 70,
+    "output_sha256": {
+      "MANIFEST.json": "62571c0f64837f309f7a3c0da4a9bff1f4166b3aa2b436719f15f737e1f44690",
+      "README.md": "d8f1ae52b76bc5c02a51cda88cf1c9fcf6f07829b5cea7036adbb7b20d84ffee",
+      "financial_activity.parquet": "c01b0e8b261cb2d12d8c16dc1d1e736b9884afdeb59b92f003c21a303e2e395f",
+      "financial_activity_lineage.parquet": "f1d5dab4fa5159146767f7c47073e1f9a970aaf521ae35d607cb402bab76a712",
+      "summary.json": "1f4c1db51ca215f2f7a499e0ef208a26ea9109e4aff5bfd96123eafedb75c862"
+    },
+    "query": {
+      "engine": "DuckDB",
+      "rows": 14,
+      "bounded_sections": [
+        "appropriations",
+        "crown_revenue_and_capital_receipts"
+      ],
+      "arithmetic": "none",
+      "cross_source_comparison": "not_performed",
+      "semantic_comparability": "not_established",
+      "rights": "not_evaluated",
+      "publication": "not_performed"
+    }
+  },
+  "repeat_build": {
+    "independent_silver_builds": 2,
+    "independent_gold_builds": 2,
+    "silver_manifest_and_payloads_identical": true,
+    "gold_manifest_and_payloads_identical": true,
+    "observed_at": "2026-10-25T00:00:00Z"
+  },
+  "warnings": [
+    "pypdf reported that the official PDF xref table was not zero-indexed and corrected object IDs during each independent read; both exact-digest builds completed and all fixed row/value contracts passed."
+  ],
+  "validation": {
+    "python": "CPython 3.15.1",
+    "focused_tests": "542 passed, 10 skipped",
+    "ruff": "passed",
+    "pyright": "passed",
+    "repository_harness": {
+      "command": "./scripts/validate.sh",
+      "status": "passed",
+      "tests_passed": 8399,
+      "tests_skipped": 14,
+      "warnings": 18,
+      "coverage_percent": 97,
+      "coverage_floor_percent": 80,
+      "schemas": 81,
+      "representative_documents": 71,
+      "differential_parity": "9/9 passed",
+      "mutations": "passed",
+      "dependency_audit": "passed",
+      "license_audit": "passed",
+      "credential_scan": "passed",
+      "sbom_components": 118
+    }
+  },
+  "phase_boundary": "One source-separated Gold product is complete; Phase 6 and issue #212's previously closed issue scope are not represented as fully complete."
+}

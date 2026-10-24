@@ -1225,6 +1225,14 @@ integrated parent head.
     This source-to-Gold control does not establish official-source recalculation,
     donor parity, unit/denominator comparability, or redistribution rights. See
     `canonical-moh-gold-reconciliation-20261024.md`.
+  - [x] Add a source-separated 2014/15 Vote Health financial-activity Gold
+    projection from its exact Silver manifest. Preserve all 14 source rows, five
+    `$000` columns, source record IDs, printed row ordinals and 70 field-level
+    coordinates; provide a bounded read-only DuckDB query and deterministic
+    package report. Verify source/Silver/Gold fixity and repeated full builds.
+    Do not calculate totals, compare editions, infer currency semantics, or
+    upgrade rights/publication state. See
+    `vote-health-financial-activity-gold-20261025.md` and its machine receipt.
 - [~] Build coverage, completeness, reconciliation, source-health,
   classification-drift and revision reports with defined thresholds. [M-13,
   S-04; AC-11]
