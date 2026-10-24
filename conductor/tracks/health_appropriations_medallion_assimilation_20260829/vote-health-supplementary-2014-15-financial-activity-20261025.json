@@ -60,7 +60,7 @@
       "coverage_floor_percent": 80,
       "coverage_percent": 97.08,
       "differential_parity": "9/9 passed",
-      "mutation_hygiene_dependency_license_secret_sbom": "passed",
+      "mutation_hygiene_dependency_license_sbom": "passed",
       "representative_documents": 71,
       "sbom_components": 118,
       "schemas": 81,
