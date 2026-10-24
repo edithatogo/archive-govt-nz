@@ -123,6 +123,14 @@ repository validation command. External gates block only their affected task.
   unevaluated; 2002's other source families and annual Budget workbooks remain
   unresolved. This locator and period assessment are pinned in
   `source-measure-review-20261006.json`; they do not mark 2002 complete.
+  A read-only recheck of the official BEFU 2001 release page added its seven
+  previously unregistered PDF links to a dated successor register; the
+  eight-link page count, 24 May 2001 release metadata and page-level CC BY 4.0
+  are recorded separately. Reader text establishes Annex B Table B.6 Health
+  periods/statuses and `$ million` units, with neighbouring Health purchasing
+  and ACC measures kept distinct. Linked bytes, native layout, item-level
+  rights and whole-edition enumeration remain pending
+  (`source-census-befu-2001-20261024.json`).
   Treasury's historical Vote Health index and exact 2002/03 main and 2001/02
   Supplementary Estimates PDFs are now separately registered. Fiscal periods,
   `$000` Supplementary Estimates fields, page-level rights evidence, and the
