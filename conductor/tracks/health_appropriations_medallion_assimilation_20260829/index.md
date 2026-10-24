@@ -223,6 +223,8 @@ they are not current-state assertions.
 - [Read-only partial-rebuild planner](readonly-resume-planner.md)
 - [Historical Budget and forecast source register](historical-source-register.md)
 - [BEFU 2002 GAAP expense source/period census addendum](historical-source-register.md)
+- [BEFU 2001 additional locators and period census](source-census-befu-2001-20261024.json)
+- [BEFU 2001 dated historical source register review](historical-source-register-20261024.md)
 - [Exact source series and period/rights review](source-measure-review-20260927.json)
 - [Budget source-label occurrence comparison](classification-label-occurrences-20260930.json)
 - [GDP March/June vintage differences](gdp-vintage-reconciliation-20260930.json)

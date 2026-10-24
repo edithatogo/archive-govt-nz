@@ -9748,3 +9748,19 @@ so edit cycles can run exact paths/nodes or only cached failures with pytest
 cache enabled. The full `./scripts/validate.sh` remains the PR delivery gate.
 Xdist-generated coverage shards are now ignored rather than appearing as
 untracked files. Full hosted assurance remains pending.
+# 2026-10-24 — Issue #207: BEFU 2001 source census extension
+
+- Re-observed the official Treasury BEFU 2001 page and linked PDF reader
+  surfaces without downloading payloads. Added seven URL-derived discovery
+  records to a dated successor register; the original pinned 131-resource
+  register remains byte-identical.
+- Recorded the page issue date and page-level CC BY 4.0 separately from
+  resource rights. New payload hashes/byte counts remain unknown and item
+  rights remain unevaluated.
+- Added reader-only periods/statuses/unit evidence for GAAP Annex B Table B.6
+  Health and the separate Forecast Statement of Financial Performance. No
+  numeric values were promoted; Health purchasing and ACC measures remain
+  distinct.
+- The release edition, whole historical census, native layout/fixity, rights,
+  capture and publication remain open. Focused source-register validation is
+  pending.
