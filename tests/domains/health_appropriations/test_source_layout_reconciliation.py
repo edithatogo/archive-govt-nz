@@ -3,7 +3,9 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
+from copy import deepcopy
 from pathlib import Path
 
 import pytest
@@ -84,4 +86,104 @@ def test_reconciliation_rejects_changed_layout_or_capture_identity() -> None:
     ):
         reconcile_source_layout_reports(
             census, workbook, pdf, workbook, json.dumps(changed_pdf).encode()
+        )
+
+
+@pytest.mark.parametrize(
+    ("mutation", "code"),
+    [
+        ("census_json", "source_census_invalid"),
+        ("census_object", "source_census_invalid"),
+        ("census_schema", "source_census_schema_invalid"),
+        ("workbook_schema", "workbook_baseline_schema_invalid"),
+        ("pdf_schema", "pdf_baseline_schema_invalid"),
+        ("records_missing", "source_census_records_invalid"),
+        ("record_not_object", "source_census_row_invalid"),
+        ("duplicate_source", "source_id_missing_or_duplicate"),
+        ("captured_fixity", "captured_source_fixity_invalid"),
+        ("captured_media", "captured_source_media_type_missing"),
+        ("layout_rows_missing", "layout_rows_invalid"),
+        ("layout_row_not_object", "layout_row_invalid"),
+        ("unknown_layout_source", "layout_source_not_captured"),
+        ("wrong_layout_media", "layout_source_media_type_mismatch"),
+        ("layout_fixity", "layout_source_fixity_mismatch"),
+        ("layout_fingerprint", "layout_fingerprint_invalid"),
+        ("duplicate_pdf_source", "layout_source_duplicate"),
+        ("pdf_recheck_changed", "pdf_layout_recheck_changed"),
+        ("unassessed_mismatch", "workbook_unassessed_sources_mismatch"),
+        ("excluded_invalid", "excluded_silver_manifests_invalid"),
+    ],
+)
+def test_reconciliation_fails_closed_on_malformed_or_changed_evidence(  # noqa: C901, PLR0912, PLR0915 - mutation matrix covers the error contract.
+    mutation: str, code: str
+) -> None:
+    census_bytes, workbook_bytes, pdf_bytes = _evidence()
+    census = json.loads(census_bytes)
+    workbook = json.loads(workbook_bytes)
+    pdf = json.loads(pdf_bytes)
+    workbook_recheck = deepcopy(workbook)
+    pdf_recheck = deepcopy(pdf)
+
+    captured = next(
+        row for row in census["records"] if row["disposition"] == "captured"
+    )
+    workbook_row = workbook["layouts"][0]
+    pdf_row = pdf["pdf_layouts"][0]
+    if mutation == "census_json":
+        census_bytes = b"not-json"
+    elif mutation == "census_object":
+        census_bytes = b"[]"
+    elif mutation == "census_schema":
+        census["schema_version"] = "unknown"
+    elif mutation == "workbook_schema":
+        workbook["schema_version"] = "unknown"
+    elif mutation == "pdf_schema":
+        pdf_recheck["schema_version"] = "unknown"
+    elif mutation == "records_missing":
+        census["records"] = None
+    elif mutation == "record_not_object":
+        census["records"][0] = "invalid"
+    elif mutation == "duplicate_source":
+        census["records"].append(deepcopy(census["records"][0]))
+    elif mutation == "captured_fixity":
+        captured["object_sha256"] = "bad"
+    elif mutation == "captured_media":
+        captured["media_type"] = ""
+    elif mutation == "layout_rows_missing":
+        workbook["layouts"] = None
+    elif mutation == "layout_row_not_object":
+        workbook["layouts"][0] = None
+    elif mutation == "unknown_layout_source":
+        workbook["layouts"][0]["source_id"] = "not-captured"
+    elif mutation == "wrong_layout_media":
+        workbook_row["source_id"] = pdf_row["source_id"]
+    elif mutation == "layout_fixity":
+        workbook_row["source_object_sha256"] = "0" * 64
+    elif mutation == "layout_fingerprint":
+        workbook_row["layout_sha256"] = "bad"
+    elif mutation == "duplicate_pdf_source":
+        pdf["pdf_layouts"].append(deepcopy(pdf_row))
+    elif mutation == "pdf_recheck_changed":
+        pdf_recheck["pdf_layouts"][0]["layout_sha256"] = "0" * 64
+    elif mutation == "baseline_overlap":
+        workbook["layouts"][0]["source_id"] = pdf_row["source_id"]
+        workbook["layouts"][0]["source_object_sha256"] = pdf_row["source_object_sha256"]
+    elif mutation == "unassessed_mismatch":
+        workbook_recheck["unassessed_source_ids"] = []
+    elif mutation == "excluded_invalid":
+        workbook_recheck["excluded_silver_manifests"] = "invalid"
+
+    if mutation not in {"census_json", "census_object"}:
+        census_bytes = json.dumps(census).encode()
+        census_digest = hashlib.sha256(census_bytes).hexdigest()
+        for report in (workbook, pdf, workbook_recheck, pdf_recheck):
+            report["source_census_sha256"] = census_digest
+
+    with pytest.raises(SourceLayoutReconciliationError, match=code):
+        reconcile_source_layout_reports(
+            census_bytes,
+            json.dumps(workbook).encode(),
+            json.dumps(pdf).encode(),
+            json.dumps(workbook_recheck).encode(),
+            json.dumps(pdf_recheck).encode(),
         )
