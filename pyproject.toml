@@ -13,7 +13,7 @@ authors = [{ name = "edithatogo" }]
 dependencies = [
   "anyio>=4.14.2,<5",
   "ckanapi>=4.11,<5",
-  "cyclopts>=4.22.3,<5",
+  "cyclopts>=4.22.3,<6",
   "httpx>=0.28.1,<1",
   "jsonschema>=4.25.1,<5",
   "blake3>=1.0.8,<2",
@@ -21,7 +21,7 @@ dependencies = [
   "pyarrow>=26.0.0,<27",
   "pyyaml>=6.0.3,<7",
   "pypdf>=6.21.1,<7",
-  "huggingface_hub>=0.28.0,<2",
+  "huggingface_hub>=0.28.0,<3",
   "openpyxl>=3.1.5,<4",
   "matplotlib>=3.10.8,<4",
   "warcio>=1.8.1,<2",
