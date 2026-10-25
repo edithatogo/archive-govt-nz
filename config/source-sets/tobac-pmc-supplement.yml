@@ -1,0 +1,22 @@
+name: tobac-pmc-supplement
+description: Explicit source URLs referenced by tobac; metadata and source HTML remain
+  distinct from original datasets and scientific validation.
+enabled: true
+adapters:
+- web
+schedule: manual
+rights_class: source_specific_review_required
+output_preservation_policy:
+  format: warc_and_manifest
+  compression: none
+  cas_hash_algorithm: sha256
+  retention: permanent_subject_to_rights_review
+publication_policy:
+  huggingface:
+    enabled: false
+  zenodo:
+    enabled: false
+targets:
+- https://pmc.ncbi.nlm.nih.gov/articles/PMC12887742/
+- https://pmc.ncbi.nlm.nih.gov/articles/PMC13389531/
+- https://pmc.ncbi.nlm.nih.gov/articles/PMC4517929/

@@ -1,0 +1,632 @@
+{
+  "consumer_repository": "https://github.com/edithatogo/tobac",
+  "consumer_commit": "59bb0e4ebaf1881158849df1702a1d3101aad58f",
+  "inputs": [
+    {
+      "path": "data/empirical_intake_20261024/nz_historical_legal_supply.csv",
+      "sha256": "2332ca526e157910f6b0fd051ad2c22773ef6d624198285a8ae1023bc694e738",
+      "rows": 12,
+      "columns": [
+        "year",
+        "source_id",
+        "source_locator",
+        "legal_sales_cigarette_equivalent",
+        "reported_upper_smoker_bound_consumption",
+        "reported_lower_smoker_bound_consumption",
+        "reported_signed_gap",
+        "reported_upper_scenario_gap_percent",
+        "unit",
+        "ryo_conversion_g_per_stick",
+        "uplift_factor",
+        "role",
+        "source_dependency",
+        "limitations"
+      ],
+      "source_references": [
+        {
+          "source_id": "parallel-S08",
+          "archive_id": "tobac-297be26fc11cb7b3",
+          "status": "mapped"
+        }
+      ],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "data/longitudinal_20261024/nz_tobacco_release_tonnes_2010_2025.csv",
+      "sha256": "ef85faa4e338f499bf15a5bed85ffdf139c839a54ea1d7c682d79f350256232e",
+      "rows": 16,
+      "columns": [
+        "series_id",
+        "year",
+        "period_start",
+        "period_end",
+        "value",
+        "unit",
+        "available_on",
+        "accessed_on",
+        "source_id",
+        "source_locator",
+        "evidence_status",
+        "uncertainty_status",
+        "dependency_group",
+        "limitations"
+      ],
+      "source_references": [
+        {
+          "source_id": "long-nz-tobacco-tonnes-2025",
+          "archive_id": "tobac-7ee48855a1ed1c4b",
+          "status": "mapped"
+        }
+      ],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "evidence/prior_work/v2.9.0/data/empirical_intake_20261024/action_effect_components.csv",
+      "sha256": "125dc513041f102065e01a67a9d85aa44df94d60bd3049887335e1d053aecf75",
+      "rows": 5,
+      "columns": [
+        "component_id",
+        "source_id",
+        "candidate_action_id",
+        "estimand",
+        "estimate",
+        "lower",
+        "upper",
+        "unit",
+        "status",
+        "population",
+        "can_use_as_national_action_effect",
+        "limitations"
+      ],
+      "source_references": [
+        {
+          "source_id": "empirical-walker-2012",
+          "archive_id": "tobac-920a4be1c51c0a89",
+          "status": "mapped"
+        },
+        {
+          "source_id": "empirical-walker-2015",
+          "archive_id": "tobac-f4107b08100d71c4",
+          "status": "mapped"
+        },
+        {
+          "source_id": "empirical-walker-2020",
+          "archive_id": "tobac-21e5ac57790c9907",
+          "status": "mapped"
+        }
+      ],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "evidence/prior_work/v2.9.0/data/empirical_intake_20261024/action_evidence_coverage.csv",
+      "sha256": "17634aa1799e217689c86cd674ee82bd53c4025fc754013888558a5b5407d83c",
+      "rows": 23,
+      "columns": [
+        "action_id",
+        "title",
+        "evidence_status",
+        "source_ids",
+        "national_effect_ready",
+        "cost_ready",
+        "remaining"
+      ],
+      "source_references": [
+        {
+          "source_id": "empirical-walker-2012",
+          "archive_id": "tobac-920a4be1c51c0a89",
+          "status": "mapped"
+        },
+        {
+          "source_id": "empirical-walker-2015",
+          "archive_id": "tobac-f4107b08100d71c4",
+          "status": "mapped"
+        },
+        {
+          "source_id": "empirical-walker-2020",
+          "archive_id": "tobac-21e5ac57790c9907",
+          "status": "mapped"
+        }
+      ],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "evidence/prior_work/v2.9.0/data/empirical_intake_20261024/cessation_trial_arms.csv",
+      "sha256": "52e9cca6e6457b6001dedec9336876cb8f015ad04253eb5c3a65960923c2ac04",
+      "rows": 3,
+      "columns": [
+        "trial_id",
+        "source_id",
+        "arm_id",
+        "label",
+        "successes",
+        "randomized",
+        "withdrawn_or_lost",
+        "outcome",
+        "followup_months",
+        "population",
+        "recruitment_period",
+        "analysis",
+        "source_locator",
+        "allowed_use",
+        "limitations"
+      ],
+      "source_references": [
+        {
+          "source_id": "empirical-walker-2020",
+          "archive_id": "tobac-21e5ac57790c9907",
+          "status": "mapped"
+        }
+      ],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "evidence/prior_work/v2.9.0/data/empirical_intake_20261024/measurement_evidence.csv",
+      "sha256": "144cded7b838487bf492496bd97936878689556a48d104c7bf95fa339514c73d",
+      "rows": 36,
+      "columns": [
+        "evidence_id",
+        "source_id",
+        "measure",
+        "value",
+        "unit",
+        "observation_period",
+        "geography",
+        "population",
+        "matrix",
+        "statistic",
+        "lower",
+        "upper",
+        "dispersion",
+        "dispersion_type",
+        "sample_n",
+        "source_locator",
+        "dependency_cluster",
+        "allowed_use",
+        "admissible_as_current_nz_raw_assay",
+        "uncertainty_resolved",
+        "limitations"
+      ],
+      "source_references": [
+        {
+          "source_id": "empirical-vanwichelen-2026",
+          "archive_id": "tobac-912f6f818e46055e",
+          "status": "mapped"
+        },
+        {
+          "source_id": "parallel-S01",
+          "archive_id": "tobac-dd9c3bf3d07dcc0a",
+          "status": "mapped"
+        },
+        {
+          "source_id": "parallel-S02",
+          "archive_id": "tobac-384f7a90f3fc0133",
+          "status": "mapped"
+        },
+        {
+          "source_id": "parallel-S03",
+          "archive_id": "tobac-f362d5809ccf2fa2",
+          "status": "mapped"
+        }
+      ],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "evidence/prior_work/v2.9.0/data/longitudinal_20261024/au_wbe_longitudinal_summary.csv",
+      "sha256": "b22cd8013cae4c6d967a4aa7243c3860dda57e4b357f2c2399253340267bdae6",
+      "rows": 6,
+      "columns": [
+        "outcome",
+        "region",
+        "start",
+        "end",
+        "annual_change_percent",
+        "lower95",
+        "upper95",
+        "pooled_mean_mg_1000_day",
+        "pooled_sd",
+        "source_id",
+        "source_locator",
+        "method",
+        "dependency_group",
+        "limitations"
+      ],
+      "source_references": [
+        {
+          "source_id": "parallel-S02",
+          "archive_id": "tobac-384f7a90f3fc0133",
+          "status": "mapped"
+        }
+      ],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "evidence/prior_work/v2.9.0/data/longitudinal_20261024/au_wbe_published_endpoints.csv",
+      "sha256": "a17770e609a96aa8b923da456d8c1c5f4b4a6db168dc06b9cdfc588627c9fc7e",
+      "rows": 6,
+      "columns": [
+        "year",
+        "outcome",
+        "value",
+        "lower95",
+        "upper95",
+        "unit",
+        "source_id",
+        "source_locator",
+        "evidence_status",
+        "dependency_group",
+        "limitations"
+      ],
+      "source_references": [
+        {
+          "source_id": "parallel-S02",
+          "archive_id": "tobac-384f7a90f3fc0133",
+          "status": "mapped"
+        }
+      ],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "evidence/prior_work/v2.9.0/data/longitudinal_20261024/nz_historical_intensity_2012_2023.csv",
+      "sha256": "cb588ff94d193a3e778da09e6c5c76d40ef652416f608b59128a582ec2784049",
+      "rows": 12,
+      "columns": [
+        "year",
+        "cigarettes_per_daily_smoker_per_day",
+        "unit",
+        "source_id",
+        "source_locator",
+        "dependency_group",
+        "status",
+        "notes"
+      ],
+      "source_references": [
+        {
+          "source_id": "parallel-S08",
+          "archive_id": "tobac-297be26fc11cb7b3",
+          "status": "mapped"
+        }
+      ],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "evidence/prior_work/v2.9.0/data/longitudinal_20261024/nzhs_published_anchors.csv",
+      "sha256": "7beb5c727cee3f64f39e4d45bcc7ecdef332bba511ff2cc46f17ee5082665d34",
+      "rows": 48,
+      "columns": [
+        "series_id",
+        "indicator",
+        "group",
+        "survey_year",
+        "period_start",
+        "period_end",
+        "period_precision",
+        "estimate_percent",
+        "lower95",
+        "upper95",
+        "available_on",
+        "source_id",
+        "source_locator",
+        "evidence_status",
+        "uncertainty_status",
+        "population_basis",
+        "dependency_group",
+        "notes"
+      ],
+      "source_references": [
+        {
+          "source_id": "long-nz-hir-2024",
+          "archive_id": "tobac-45820b66185001cd",
+          "status": "mapped"
+        },
+        {
+          "source_id": "long-nzhs-2021",
+          "archive_id": "tobac-2d95e1cbd10671ab",
+          "status": "mapped"
+        },
+        {
+          "source_id": "long-nzhs-2022-corrected",
+          "archive_id": "tobac-dc3b98f881a03390",
+          "status": "mapped"
+        },
+        {
+          "source_id": "long-nzhs-2022-original",
+          "archive_id": "tobac-78830630d9ed6d6c",
+          "status": "mapped"
+        },
+        {
+          "source_id": "long-nzhs-2024",
+          "archive_id": "tobac-52fb080dad9b1459",
+          "status": "mapped"
+        },
+        {
+          "source_id": "long-nzhs-module-2015",
+          "archive_id": "tobac-ea4f96240c07fbb1",
+          "status": "mapped"
+        },
+        {
+          "source_id": "long-nzhs-trends-2025",
+          "archive_id": "tobac-1487495c6f446674",
+          "status": "mapped"
+        },
+        {
+          "source_id": "nz-key-results-2024-25",
+          "archive_id": "tobac-05790f0b796014c5",
+          "status": "mapped"
+        }
+      ],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "evidence/prior_work/v2.9.0/data/longitudinal_20261024/parameter_estimates_v2.7.0.csv",
+      "sha256": "e5366806d524eb62586a892f4151f542a4a1e5ec235ba68ddca48018934c33e7",
+      "rows": 76,
+      "columns": [
+        "parameter_id",
+        "value",
+        "unit",
+        "evidence_status",
+        "source_ids",
+        "basis",
+        "low",
+        "high",
+        "distribution",
+        "dependency_group",
+        "permitted_use",
+        "current_raw_observation",
+        "inherited_from",
+        "current_release",
+        "change_in_v2_7",
+        "review_trigger"
+      ],
+      "source_references": [
+        {
+          "source_id": "empirical-walker-2020",
+          "archive_id": "tobac-21e5ac57790c9907",
+          "status": "mapped"
+        },
+        {
+          "source_id": "est-auckland-mash",
+          "archive_id": "tobac-a0e764a08a2e49bd",
+          "status": "mapped"
+        },
+        {
+          "source_id": "est-blakely-2015",
+          "archive_id": "tobac-91da5c77f9915eb3",
+          "status": "mapped"
+        },
+        {
+          "source_id": "est-gao-2018",
+          "archive_id": "tobac-62f3f431b388649e",
+          "status": "mapped"
+        },
+        {
+          "source_id": "est-gendall-2026",
+          "archive_id": "tobac-dc2d41f13bad4122",
+          "status": "mapped"
+        },
+        {
+          "source_id": "est-li-2017",
+          "archive_id": "tobac-fa4060e2c085d607",
+          "status": "mapped"
+        },
+        {
+          "source_id": "est-marsh-2016",
+          "archive_id": "tobac-c0f15e46211f48d9",
+          "status": "mapped"
+        },
+        {
+          "source_id": "long-nz-tobacco-tonnes-2025",
+          "archive_id": "tobac-7ee48855a1ed1c4b",
+          "status": "mapped"
+        },
+        {
+          "source_id": "parallel-S01",
+          "archive_id": "tobac-dd9c3bf3d07dcc0a",
+          "status": "mapped"
+        },
+        {
+          "source_id": "parallel-S02",
+          "archive_id": "tobac-384f7a90f3fc0133",
+          "status": "mapped"
+        },
+        {
+          "source_id": "parallel-S03",
+          "archive_id": "tobac-f362d5809ccf2fa2",
+          "status": "mapped"
+        },
+        {
+          "source_id": "parallel-S05",
+          "archive_id": "tobac-5988c3901a530650",
+          "status": "mapped"
+        },
+        {
+          "source_id": "parallel-S06",
+          "archive_id": "tobac-653a099a62934bb1",
+          "status": "mapped"
+        },
+        {
+          "source_id": "parallel-S08",
+          "archive_id": "tobac-297be26fc11cb7b3",
+          "status": "mapped"
+        }
+      ],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "evidence/prior_work/v2.9.0/data/longitudinal_20261024/time_assumption_register.csv",
+      "sha256": "58b4f783c02b4b6de53a5453d126485224a44c10eec45a4ef18a4510b78832cf",
+      "rows": 10,
+      "columns": [
+        "parameter_id",
+        "value",
+        "low",
+        "high",
+        "unit",
+        "evidence_status",
+        "rationale",
+        "source_ids",
+        "review_trigger"
+      ],
+      "source_references": [
+        {
+          "source_id": "longitudinal_protocol",
+          "archive_id": null,
+          "status": "unresolved_or_internal_reference"
+        },
+        {
+          "source_id": "v2.6.0_parameter_estimates",
+          "archive_id": null,
+          "status": "unresolved_or_internal_reference"
+        }
+      ],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "evidence/prior_work/v2.9.0/docs/decision_contracts/INFORMATION_PORTFOLIOS_v2.4.0.csv",
+      "sha256": "ac5a9f91a48661eb3594d2e41f13eb6fb6280b223550fde02568744a6e324ce6",
+      "rows": 15,
+      "columns": [
+        "study_id",
+        "title",
+        "channels",
+        "design_rationale",
+        "sequential",
+        "marginal_cost_nzd_pv",
+        "cost_status",
+        "reporting_delay_days",
+        "sample_schedule",
+        "source_ids",
+        "empirical_precision_status"
+      ],
+      "source_references": [
+        {
+          "source_id": "parallel-S01",
+          "archive_id": "tobac-dd9c3bf3d07dcc0a",
+          "status": "mapped"
+        },
+        {
+          "source_id": "parallel-S02",
+          "archive_id": "tobac-384f7a90f3fc0133",
+          "status": "mapped"
+        },
+        {
+          "source_id": "parallel-S03",
+          "archive_id": "tobac-f362d5809ccf2fa2",
+          "status": "mapped"
+        }
+      ],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "evidence/prior_work/v2.9.0/docs/decision_contracts/NZ_ACTION_CATALOGUE_v2.4.0.csv",
+      "sha256": "65830ca6835ded177c03b9613dc9e3a509d4ca16045cffe3e4ff1070b639500b",
+      "rows": 23,
+      "columns": [
+        "action_id",
+        "title",
+        "scope",
+        "definition",
+        "potentially_informative_evidence",
+        "required_causal_evidence",
+        "authority_status",
+        "implementation_quantity",
+        "implementation_cost_nzd_pv",
+        "feasibility_confirmed",
+        "legal_context_source_ids",
+        "numerical_consequences_status"
+      ],
+      "source_references": [],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "evidence/prior_work/v2.9.0/requests/empirical_20261024/assay_data_request_fields.csv",
+      "sha256": "e0d903c18c39f1bb69cf9142375d36ca0bfe9eabc39d38895f9f9cc112711f2b",
+      "rows": 13,
+      "columns": [
+        "field_id",
+        "description",
+        "units",
+        "notes"
+      ],
+      "source_references": [],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "evidence/prior_work/v2.9.0/requests/empirical_20261024/marginal_price_response_template.csv",
+      "sha256": "9ffaea9bc257d3c1b594d749881243336007ae91f30f78d3b767f666af7c3861",
+      "rows": 10,
+      "columns": [
+        "item_id",
+        "description",
+        "quantity_basis",
+        "volume_tiers",
+        "currency",
+        "unit_price",
+        "GST_basis",
+        "fixed_setup_cost",
+        "incremental_collection_cost",
+        "turnaround_days",
+        "valid_until",
+        "inclusions",
+        "exclusions",
+        "assay_performance",
+        "quote_status"
+      ],
+      "source_references": [],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "evidence/prior_work/v2.9.0/requests/empirical_20261024/operational_action_request_fields.csv",
+      "sha256": "b1062c4521d382ece10c906848743b155b45e0136d15f97f08b8ddef1d2fa972",
+      "rows": 6,
+      "columns": [
+        "item_id",
+        "request"
+      ],
+      "source_references": [],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    },
+    {
+      "path": "evidence/prior_work/v2.9.0/requests/empirical_20261024/supply_data_request_fields.csv",
+      "sha256": "c3fabb3e1caec5e96c479d1e5517a4fb3a86db1e8d312953ffb285acd495279e",
+      "rows": 6,
+      "columns": [
+        "item_id",
+        "request"
+      ],
+      "source_references": [],
+      "role": "consumer_extraction_or_assumption_not_original_source",
+      "scientific_qualification": "unchanged"
+    }
+  ],
+  "qualification": "File fixity and exact source-ID mapping; values, units, covariance, assumptions and row-level scientific status remain authoritative in consumer files.",
+  "supporting_files": [
+    {
+      "path": "data/calibration_20261024/raw/tobacco_returns_completion.txt",
+      "sha256": "b1ead4c90cacda71b50e8ccfcbbda3e416ace9ffc64173848741d11b21e8bcb5",
+      "role": "agent_extraction_note_not_original_source"
+    },
+    {
+      "path": "data/empirical_longitudinal_20261024/source_record.json",
+      "sha256": "48368264e86ca0aeab7f329b4ec4aea419b6232c4711ad31f0770611081450b6",
+      "role": "agent_extraction_note_not_original_source"
+    }
+  ]
+}

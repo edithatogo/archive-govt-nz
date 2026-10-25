@@ -308,3 +308,6 @@ implementation has occurred under these tracks.
 
 - [x] **Track: Final integrated assurance closeout (Prompt 20)**
   *Archived: [./archive/integrated_assurance_closeout_20260905/index.md](./archive/integrated_assurance_closeout_20260905/index.md)*
+
+- [~] **Track: Tobacco research source archival integration**
+  *Link: [tracks/tobac_sources_20261025/index.md](tracks/tobac_sources_20261025/index.md)*
