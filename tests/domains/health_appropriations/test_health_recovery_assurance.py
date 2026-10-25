@@ -501,13 +501,23 @@ def test_gdp_vintage_recovery_is_bound_to_recorded_comparison(
     monkeypatch.setattr(MODULE, "TRACK", track)
     monkeypatch.setattr(
         MODULE.gdp_canonical_projection,
-        "SOURCE_MANIFEST_SHA256",
+        "HISTORICAL_SOURCE_MANIFEST_SHA256",
         march_manifest,
     )
     monkeypatch.setattr(
         MODULE.gdp_canonical_projection,
-        "JUNE_SOURCE_MANIFEST_SHA256",
+        "JUNE_HISTORICAL_SOURCE_MANIFEST_SHA256",
         june_manifest,
+    )
+    monkeypatch.setattr(
+        MODULE.gdp_canonical_projection,
+        "PYARROW_26_SOURCE_MANIFEST_SHA256",
+        "march-runtime-manifest-pin",
+    )
+    monkeypatch.setattr(
+        MODULE.gdp_canonical_projection,
+        "JUNE_SOURCE_MANIFEST_SHA256",
+        "june-runtime-manifest-pin",
     )
     monkeypatch.setattr(
         MODULE.pq,
@@ -528,6 +538,8 @@ def test_gdp_vintage_recovery_is_bound_to_recorded_comparison(
         "june_source_manifest_sha256": june_manifest,
         "recorded_comparison_sha256": MODULE.digest(receipt_path),
         "recorded_repeat_identical": True,
+        "march_runtime_manifest_sha256": "march-runtime-manifest-pin",
+        "june_runtime_manifest_sha256": "june-runtime-manifest-pin",
     }
 
     monkeypatch.setattr(
@@ -539,6 +551,37 @@ def test_gdp_vintage_recovery_is_bound_to_recorded_comparison(
         RuntimeError, match=r"^gdp_vintage_comparison_recorded_mismatch:"
     ):
         MODULE.gdp_vintage_comparison_report(tmp_path)
+
+
+def test_canonical_gold_inputs_bind_the_rebuilt_serialization_manifests(
+    monkeypatch: MonkeyPatch, tmp_path: Path
+) -> None:
+    monkeypatch.setattr(MODULE, "ARCHIVE", tmp_path / "archive")
+    (MODULE.ARCHIVE / "bronze-cas" / "sha256").mkdir(parents=True)
+    package_roots = {
+        "pharmac-silver-1",
+        "moh-fig27-v1-1",
+        "moh-fig28-v1-1",
+        "crown-silver-1",
+        "hyefu-crown-silver-1",
+    }
+    expected: dict[str, str] = {}
+    for index, name in enumerate(sorted(package_roots), start=1):
+        package = tmp_path / name
+        package.mkdir()
+        marker = package / "MANIFEST.json"
+        marker.write_bytes(f"current-runtime-manifest-{index}".encode())
+        expected[name] = MODULE.digest(marker)
+
+    inputs = MODULE.canonical_gold_inputs(tmp_path, 1)
+
+    assert inputs.pharmac.manifest_sha256 == expected["pharmac-silver-1"]
+    assert [item.manifest_sha256 for item in inputs.moh.packages] == [
+        expected["moh-fig27-v1-1"],
+        expected["moh-fig28-v1-1"],
+    ]
+    assert inputs.crown.befu_manifest_sha256 == expected["crown-silver-1"]
+    assert inputs.crown.hyefu_manifest_sha256 == expected["hyefu-crown-silver-1"]
 
 
 def _classification_package_fixture(tmp_path: Path, monkeypatch: MonkeyPatch) -> None:

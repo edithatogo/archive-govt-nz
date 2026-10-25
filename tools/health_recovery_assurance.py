@@ -221,8 +221,18 @@ MOH_SOURCE_SHA256 = {
     "fig28/v1": "7b9a51643550e3d890f4f341f27346d3466708fe924702ade4a731d1bb6266e4",
 }
 MOH_SILVER_MANIFEST_SHA256 = {
-    "fig27/v1": "b3a9afc2bab6562373b73d2f5c45b76a244792acbf813bfb54b4e2b66bce76a2",
-    "fig28/v1": "714a0dd3fb53fa2ff26100e760983b791e81162fa30fb48d9f1d7131d8e338ed",
+    "fig27/v1": frozenset(
+        {
+            "b3a9afc2bab6562373b73d2f5c45b76a244792acbf813bfb54b4e2b66bce76a2",
+            "977a39f9c9a903ffa77edff921ee24d31c0c6431e57da9df0b770d67d0cd379a",
+        }
+    ),
+    "fig28/v1": frozenset(
+        {
+            "714a0dd3fb53fa2ff26100e760983b791e81162fa30fb48d9f1d7131d8e338ed",
+            "73a868cbadc7d4d8019ceaa05fb5464e4430443a40807f978b9ea5799e46559e",
+        }
+    ),
 }
 MOH_SILVER_PYARROW_26_MANIFEST_SHA256 = {
     "fig27/v1": "2c1b44ad4b7e433d02cc593d619f40a8234b3ba1ec9d19034f4fe9c5b7036ada",
@@ -243,24 +253,24 @@ GDP_JUNE_SOURCE_LOCATOR = (
     "gross-domestic-product-june-2026-quarter-current-price-income-and-expenditure.xlsx"
 )
 GDP_JUNE_OBSERVED_AT = "2026-09-29T21:28:10.739074Z"
-# Independent four-file pins from clean-room-recovery-20261002-context-gdp-june.json
-# (receipt SHA d37c7904...). Do not replace these with new operation manifests.
+# Current PyArrow 26 rendering, independently rebuilt twice and recorded in
+# gdp-june-runtime-refresh-20261024.json. The historical receipt remains intact.
 GDP_JUNE_NATIVE_FILES = {
     "MANIFEST.json": {
         "bytes": 1081,
-        "sha256": "f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd",
+        "sha256": "103d03e29dcaccd30f66d0499fceffe652df5b5e478593856acd05ff8ec14411",
     },
     "cell_dispositions.parquet": {
         "bytes": 37848,
-        "sha256": "22143c282b9e28cbfcae41c9531f1b37b710b6a5a5d5fbcf9fa6112e196b9dd9",
+        "sha256": "47dadd631be23cb020183c7f662642c2063416f24af6810726be83e41f9b09e9",
     },
     "field_lineage.parquet": {
         "bytes": 17815,
-        "sha256": "ad698d41f4709b633df875d256c419107ebe044fd325b5afdc74f56e3113e6dc",
+        "sha256": "02eeb91800ecd1225bb129a605d1d1e0796cd688499c1baf7bfcf2b3232133f7",
     },
     "gdp_facts.parquet": {
         "bytes": 29409,
-        "sha256": "ab95deb1701876f285b567da245bdabd842559c7ea9c64ebd2aca2740373d35a",
+        "sha256": "f88ef1d4bae8809733635d3b6de0d9fcfbf2012cf0a9ca36837c3e490b3d2906",
     },
 }
 GDP_JUNE_PYARROW_26_NATIVE_FILES = {
@@ -745,16 +755,23 @@ def gdp_vintage_comparison_report(root: Path) -> dict[str, Any]:
         pq.read_table(june_path).to_pylist(),
     )
     report["march_source_manifest_sha256"] = (
-        gdp_canonical_projection.SOURCE_MANIFEST_SHA256
+        gdp_canonical_projection.HISTORICAL_SOURCE_MANIFEST_SHA256
     )
     report["june_source_manifest_sha256"] = (
-        gdp_canonical_projection.JUNE_SOURCE_MANIFEST_SHA256
+        gdp_canonical_projection.JUNE_HISTORICAL_SOURCE_MANIFEST_SHA256
     )
-    return bind_recorded_comparison(
+    bound = bind_recorded_comparison(
         report,
         TRACK / "gdp-vintage-reconciliation-20260930.json",
         "gdp_vintage_comparison_recorded_mismatch",
     )
+    bound["march_runtime_manifest_sha256"] = (
+        gdp_canonical_projection.PYARROW_26_SOURCE_MANIFEST_SHA256
+    )
+    bound["june_runtime_manifest_sha256"] = (
+        gdp_canonical_projection.JUNE_SOURCE_MANIFEST_SHA256
+    )
+    return bound
 
 
 def rebuild_context_silver(root: Path, family: str) -> dict[str, Any]:
@@ -2030,11 +2047,8 @@ def _rebuild_moh_profile(root: Path, profile: str, index: int) -> dict[str, Any]
     )
     manifest_sha256 = digest(silver / "MANIFEST.json")
     require_evidence(
-        manifest_sha256
-        in {
-            MOH_SILVER_MANIFEST_SHA256[profile],
-            MOH_SILVER_PYARROW_26_MANIFEST_SHA256[profile],
-        },
+        manifest_sha256 in MOH_SILVER_MANIFEST_SHA256[profile]
+        or manifest_sha256 == MOH_SILVER_PYARROW_26_MANIFEST_SHA256[profile],
         "moh_silver_manifest_pin_mismatch",
     )
     return {

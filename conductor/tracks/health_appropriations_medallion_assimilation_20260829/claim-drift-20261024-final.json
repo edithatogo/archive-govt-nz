@@ -1,0 +1,54 @@
+{
+  "schema_version": "archive-govt-nz.claim-drift-receipt/v1",
+  "checked_at": "2026-10-25T07:47:06Z",
+  "status": "passed",
+  "claims_checked": 5,
+  "divergences_detected": 0,
+  "claims": [
+    {
+      "claim_id": "CLM-CORPUS-LEG-ARCHIVED",
+      "subject": "edithatogo/corpus-legislation-nz",
+      "claim_type": "is_archived",
+      "recorded_value": true,
+      "actual_value": true,
+      "status": "match",
+      "detail": null
+    },
+    {
+      "claim_id": "CLM-SM-GOVT-ARCHIVED",
+      "subject": "edithatogo/sm-govt-nz",
+      "claim_type": "is_archived",
+      "recorded_value": true,
+      "actual_value": true,
+      "status": "match",
+      "detail": null
+    },
+    {
+      "claim_id": "CLM-HANSARD-ARCHIVED",
+      "subject": "edithatogo/corpus-nz-hansard",
+      "claim_type": "is_archived",
+      "recorded_value": true,
+      "actual_value": true,
+      "status": "match",
+      "detail": null
+    },
+    {
+      "claim_id": "CLM-HATHI-ARCHIVED",
+      "subject": "edithatogo/hathi-nz",
+      "claim_type": "is_archived",
+      "recorded_value": true,
+      "actual_value": true,
+      "status": "match",
+      "detail": null
+    },
+    {
+      "claim_id": "CLM-MEDILEGAL-ARCHIVED",
+      "subject": "edithatogo/corpus-cases-medilegal-nz",
+      "claim_type": "is_archived",
+      "recorded_value": true,
+      "actual_value": true,
+      "status": "match",
+      "detail": null
+    }
+  ]
+}
