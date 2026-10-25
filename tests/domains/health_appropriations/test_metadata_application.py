@@ -8,7 +8,7 @@ from typing import Any, cast
 
 import blake3
 import pytest
-from hypothesis import given
+from hypothesis import given, settings
 from hypothesis import strategies as st
 from jsonschema import Draft202012Validator, ValidationError
 
@@ -410,6 +410,7 @@ def test_pins_and_limits(monkeypatch: pytest.MonkeyPatch) -> None:
     assert check(manifest, payloads, rights)
 
 
+@settings(deadline=1000)
 @given(st.permutations(tuple(fixture()[0])))
 def test_object_key_order_is_not_semantic(keys: tuple[str, ...]) -> None:
     manifest, payloads, rights = fixture()

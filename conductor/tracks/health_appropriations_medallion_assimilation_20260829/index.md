@@ -765,6 +765,7 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [Windows failed trial and test-stage-only diagnostic evidence](windows-test-diagnostics-20261022.json): preserves deadline failures and reporting boundaries; actual Windows root-cause repair/qualification remains open.
 
 - [Readable canonical Gold plot derivative](./readable-canonical-plots.md)
+- [BIFF8 Gold numeric-witness reconciliation](./canonical-biff8-gold-witness-reconciliation-20261024.md)
 - [Readable canonical plot native evidence](./readable-canonical-plots-native-20261022.json)
 - Phase 6 canonical Gold query/readback and CPython 3.15.1 full-harness evidence: see [plan](./plan.md#phase-6--gold-analytical-products) and the [latest runlog entry](./runlog.md). Source/donor total reconciliation and broader report matrices remain open.
 # Issue #215 recovery refresh (2026-10-25)

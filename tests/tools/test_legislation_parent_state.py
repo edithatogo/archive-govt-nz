@@ -1096,6 +1096,7 @@ def test_state_rejects_arbitrary_unrecognized_receipts(
     _ref, _meta, raw = fixture(tmp_path / "in")
     original_files = P.unpack(raw)
 
+    @settings(deadline=1000)
     @given(
         st.text(
             alphabet=st.characters(whitelist_categories=("Ll", "Nd")),

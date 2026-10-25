@@ -21,6 +21,7 @@ from tests.domains.health_appropriations.test_canonical_gold_verification import
 from archive_govt_nz import cli, mcp_server
 from archive_govt_nz.domains.health_appropriations import (
     canonical_consumer,
+    canonical_gold_export,
     fiscal_analytical_operations,
 )
 
@@ -92,6 +93,7 @@ def source_row(schema: pa.Schema, year: int) -> dict[str, Any]:
     if "currency" in row and schema.field("currency").nullable:
         row["currency"] = None
     if "canonical_stored_integer" in row:
+        row["source_object_sha256"] = "a" * 64
         row["amount"] = Decimal(str(year))
         row["value_basis"] = "biff8_stored_integer/v1"
         row["canonical_stored_integer"] = str(year)
@@ -115,13 +117,66 @@ def fact_package(tmp_path: Path) -> tuple[Path, str]:
     manifest = json.loads(marker.read_bytes())
     del manifest["outputs"]["observations.parquet"]
     (root / "observations.parquet").unlink()
+    biff8_tables: dict[str, pa.Table] = {}
     for product, (name, schema) in query.PRODUCTS.items():
-        table = pa.Table.from_pylist(
-            [source_row(schema, year) for year in (2025, 2024)], schema=schema
-        )
+        rows = [source_row(schema, year) for year in (2025, 2024)]
+        if product in {"biff8_budget", "biff8_revenue"}:
+            for row in rows:
+                row["source_object_sha256"] = "a" * 64
+        table = pa.Table.from_pylist(rows, schema=schema)
         pq.write_table(table, root / name, compression="zstd", use_dictionary=False)
         manifest["products"][product] = {"input_records": 2}
         manifest["outputs"][name] = {"rows": 2}
+        if product in {"biff8_budget", "biff8_revenue"}:
+            biff8_tables[product] = table
+    reconciliation_tables = dict(biff8_tables)
+    for product, table in biff8_tables.items():
+        facts = table.to_pylist()
+        witnesses = []
+        links = []
+        for index, fact in enumerate(facts, start=1):
+            witness_id = fact["numeric_evidence_id"]
+            source_hash = fact["source_object_sha256"]
+            stored_integer = fact["canonical_stored_integer"]
+            witnesses.append(
+                {
+                    "numeric_evidence_id": witness_id,
+                    "source_sha256": source_hash,
+                    "source_row": index,
+                    "source_column": index + 4,
+                    "record_type": 2,
+                    "record_payload_sha256": "b" * 64,
+                    "encoded_value_hex": f"{int(stored_integer):08x}",
+                    "canonical_stored_integer": stored_integer,
+                }
+            )
+            links.append(
+                {
+                    "target_record_id": fact["record_id"],
+                    "field": "amount",
+                    "numeric_evidence_id": witness_id,
+                    "source_object_sha256": source_hash,
+                    "source_coordinate": f"Raw Data!F{index}",
+                    "canonical_stored_integer": stored_integer,
+                    "normalized_value": str(fact["amount"]),
+                }
+            )
+        reconciliation_tables[product + "_numeric"] = pa.Table.from_pylist(witnesses)
+        reconciliation_tables[product + "_lineage"] = pa.Table.from_pylist(links)
+    report = canonical_gold_export.build_biff8_numeric_witness_reconciliation(
+        reconciliation_tables
+    )
+    for family in report["families"]:
+        manifest["products"][family["product"]]["numeric_witness_reconciliation"] = (
+            report
+        )
+    manifest["biff8_numeric_witness_reconciliation_report"] = report
+    payload = (
+        json.dumps(report, sort_keys=True, separators=(",", ":")) + "\n"
+    ).encode()
+    report_name = "biff8_numeric_witness_reconciliation.json"
+    (root / report_name).write_bytes(payload)
+    manifest["outputs"][report_name] = {"kind": "report"}
     marker.write_text(json.dumps(manifest))
     return root, repin(root)
 

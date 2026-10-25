@@ -1119,6 +1119,11 @@ integrated parent head.
 
 ## Phase 6 — Gold analytical products
 
+Runtime qualification note: active development, build and test use the
+explicitly selected repo-local CPython 3.15.1 interpreter. Older version
+literals remain only in immutable historical evidence or synthetic tests that
+deliberately exercise version handling.
+
 ### 6.1 Analytical contracts first
 
 - [x] Add source-qualified, read-only Fiscal 1972–2025 Health/GDP and
@@ -1283,6 +1288,12 @@ integrated parent head.
     and numeric-evidence IDs per vintage for changed candidates. Differences
     remain unassessed and source-separated; no semantic or cross-source
     equivalence is inferred. [M-13, S-04; AC-11, AC-12]
+  - [x] Reconcile every BIFF8 canonical Gold amount to its retained encoded
+    integer witness and amount-field lineage, preserving source vintage, source
+    object digest, literal period, source row/column, record type, payload hash,
+    encoded bytes and exact Decimal projection. Bind the report to package and
+    product copies; donor, official-source, rights and cross-source controls
+    remain explicitly outside scope.
   - [x] Reconcile every source-separated nominal Budget Gold total against
     its exact pinned canonical appropriation facts. Independently recompute
     Decimal totals by literal vintage, period token, amount type, unit, Vote,
