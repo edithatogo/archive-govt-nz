@@ -28,6 +28,7 @@ from archive_govt_nz.domains.health_appropriations import (
     budget_revenue_canonical_export,
     canonical_consumer,
     canonical_gold_export,
+    canonical_gold_verification,
 )
 from archive_govt_nz.domains.health_appropriations.budget_export import (
     export_budget_appropriations,
@@ -1730,6 +1731,106 @@ def test_revision_report_preserves_biff8_numeric_witnesses() -> None:
             for vintage, stored in zip(("2019", "2020"), expected_stored, strict=True)
         }
         assert candidate["interpretation"] == "not_assessed"
+
+
+def test_biff8_gold_witness_report_ties_amounts_to_encoded_source_and_lineage(
+    tmp_path: Path,
+) -> None:
+    tables: dict[str, pa.Table] = {}
+    for kind, record_id, evidence_id, column in (
+        ("biff8_budget", "budget-2019", "budget-evidence-1", 5),
+        ("biff8_revenue", "revenue-2019", "revenue-evidence-1", 8),
+    ):
+        amount = Decimal("123.000000000000000000")
+        source_hash = "a" * 64
+        payload_hash = "b" * 64
+        fact = {
+            "record_id": record_id,
+            "source_vintage": "Budget-2019",
+            "source_object_sha256": source_hash,
+            "period_token": "FY2019/20",
+            "source_row": 42,
+            "amount": amount,
+            "canonical_stored_integer": "123",
+            "numeric_evidence_id": evidence_id,
+        }
+        witness = {
+            "numeric_evidence_id": evidence_id,
+            "source_sha256": source_hash,
+            "source_row": 42,
+            "source_column": column,
+            "record_type": 2,
+            "record_payload_sha256": payload_hash,
+            "encoded_value_hex": "7b000000",
+            "canonical_stored_integer": "123",
+        }
+        link = {
+            "target_record_id": record_id,
+            "field": "amount",
+            "numeric_evidence_id": evidence_id,
+            "source_object_sha256": source_hash,
+            "source_row": 42,
+            "source_coordinate": "Raw Data!F42" if column == 5 else "Raw Data!H42",
+            "canonical_stored_integer": "123",
+            "normalized_value": "123",
+        }
+        tables[kind] = pa.Table.from_pylist([fact])
+        tables[kind + "_numeric"] = pa.Table.from_pylist([witness])
+        tables[kind + "_lineage"] = pa.Table.from_pylist([link])
+
+    report = canonical_gold_export.build_biff8_numeric_witness_reconciliation(tables)
+
+    assert report["status"] == "exact_witness_reconciliation_complete"
+    assert canonical_gold_verification._valid_biff8_numeric_witness_reconciliation(  # noqa: SLF001
+        report
+    )
+    assert report["cross_source_comparison"] == "not_performed"
+    assert report["donor_control"] == "not_performed"
+    assert [family["product"] for family in report["families"]] == [
+        "biff8_budget",
+        "biff8_revenue",
+    ]
+    for family in report["families"]:
+        assert family["fact_count"] == family["amount_witness_count"] == 1
+        assert family["controls"][0]["canonical_stored_integer"] == "123"
+        assert family["controls"][0]["encoded_value_hex"] == "7b000000"
+        assert family["controls"][0]["source_normalized_value"] == "123"
+        assert family["controls"][0]["amount_decimal"] == str(
+            Decimal("123.000000000000000000")
+        )
+
+    tables["biff8_revenue_lineage"] = pa.Table.from_pylist(
+        [
+            {
+                **tables["biff8_revenue_lineage"].to_pylist()[0],
+                "numeric_evidence_id": "wrong",
+            }
+        ]
+    )
+    with pytest.raises(ValueError, match=r"^canonical_gold_export_invalid$"):
+        canonical_gold_export.build_biff8_numeric_witness_reconciliation(tables)
+
+    invalid_report = {**report, "donor_control": "matched"}
+    assert not canonical_gold_verification._valid_biff8_numeric_witness_reconciliation(  # noqa: SLF001
+        invalid_report
+    )
+    assert not canonical_gold_verification._valid_biff8_numeric_witness_reconciliation(  # noqa: SLF001
+        {**report, "family_count": True}
+    )
+    invalid_family = {**report["families"][0], "fact_count": True}
+    assert not canonical_gold_verification._valid_biff8_numeric_witness_reconciliation(  # noqa: SLF001
+        {**report, "families": [invalid_family, report["families"][1]]}
+    )
+    malformed_product = {**report["families"][0], "product": []}
+    malformed_report = {
+        **report,
+        "families": [malformed_product, report["families"][1]],
+    }
+    assert not canonical_gold_verification._biff8_witness_control_matches_manifest(  # noqa: SLF001
+        tmp_path,
+        {"biff8_numeric_witness_reconciliation_report": malformed_report},
+        {"biff8_budget": {}, "biff8_revenue": {}},
+    )
 
 
 @pytest.mark.parametrize("packages", [[], (), [object()]])

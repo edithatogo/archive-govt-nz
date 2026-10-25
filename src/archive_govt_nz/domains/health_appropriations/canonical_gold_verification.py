@@ -25,6 +25,7 @@ _SCHEMA_VERSION = "archive-govt-nz.health-canonical-gold/v2"
 _CROWN_RECONCILIATION_SCHEMA = (
     "archive-govt-nz.health-crown-projection-gold-reconciliation/v1"
 )
+_MAX_BIFF8_WITNESS_FAMILIES = 2
 _REVISION_KEY_FIELDS = (
     "recordset",
     "measure",
@@ -452,6 +453,7 @@ def _input_total_controls_match_manifest(
         _pharmac_control_copies_match(root, manifest, markers, products)
         and _moh_control_copies_match(root, manifest, markers, products)
         and _crown_projection_control_matches(root, manifest, products)
+        and _biff8_witness_control_matches_manifest(root, manifest, products)
     )
 
 
@@ -533,6 +535,225 @@ def _crown_projection_control_matches(  # noqa: C901, PLR0911 - cross-copy verif
     except OSError, KeyError, TypeError, ValueError:
         return False
     return True
+
+
+def _valid_biff8_numeric_witness_reconciliation(  # noqa: PLR0911 - independent fail-closed field guards
+    value: object,
+) -> bool:
+    if not isinstance(value, dict) or set(value) != {
+        "schema_version",
+        "scope",
+        "numeric_witnesses",
+        "amount_decimal",
+        "cross_source_comparison",
+        "donor_control",
+        "rights_state",
+        "publication",
+        "family_count",
+        "families",
+        "status",
+    }:
+        return False
+    families = value.get("families")
+    if (
+        value.get("schema_version")
+        != "archive-govt-nz.health-biff8-gold-witness-reconciliation/v1"
+        or value.get("scope")
+        != "source_separated_biff8_gold_amounts_and_retained_numeric_evidence"
+        or value.get("numeric_witnesses")
+        != "original_encoded_integer_evidence_preserved"
+        or value.get("amount_decimal") != "canonical_exact_number_representation"
+        or value.get("cross_source_comparison") != "not_performed"
+        or value.get("donor_control") != "not_performed"
+        or value.get("rights_state") != "not_evaluated"
+        or value.get("publication") != "not_performed"
+        or value.get("status") != "exact_witness_reconciliation_complete"
+        or not isinstance(families, list)
+        or type(value.get("family_count")) is not int
+        or value.get("family_count") != len(families)
+        or not 0 < len(families) <= _MAX_BIFF8_WITNESS_FAMILIES
+    ):
+        return False
+    expected_products = {"biff8_budget", "biff8_revenue"}
+    observed_products: set[str] = set()
+    for family in families:
+        if not isinstance(family, dict) or set(family) != {
+            "product",
+            "fact_count",
+            "numeric_evidence_count",
+            "amount_witness_count",
+            "amount_lineage_record_count",
+            "control_count",
+            "controls",
+            "status",
+        }:
+            return False
+        product = family.get("product")
+        controls = family.get("controls")
+        if (
+            type(product) is not str
+            or product not in expected_products - observed_products
+            or family.get("status")
+            != "all_gold_amounts_tied_to_numeric_and_lineage_witnesses"
+            or not isinstance(controls, list)
+            or not controls
+            or any(
+                type(family.get(name)) is not int
+                for name in (
+                    "fact_count",
+                    "amount_witness_count",
+                    "amount_lineage_record_count",
+                    "control_count",
+                )
+            )
+            or family.get("fact_count") != len(controls)
+            or family.get("amount_witness_count") != len(controls)
+            or family.get("amount_lineage_record_count") != len(controls)
+            or type(family.get("numeric_evidence_count")) is not int
+            or family["numeric_evidence_count"] < len(controls)
+            or family.get("control_count") != len(controls)
+        ):
+            return False
+        observed_products.add(product)
+        seen_ids: set[str] = set()
+        for control in controls:
+            if not isinstance(control, dict) or set(control) != {
+                "record_id",
+                "source_vintage",
+                "source_object_sha256",
+                "period_token",
+                "source_row",
+                "numeric_evidence_id",
+                "canonical_stored_integer",
+                "source_column",
+                "source_coordinate",
+                "record_type",
+                "record_payload_sha256",
+                "encoded_value_hex",
+                "source_normalized_value",
+                "amount_decimal",
+            }:
+                return False
+            record_id = control.get("record_id")
+            evidence_id = control.get("numeric_evidence_id")
+            if (
+                type(record_id) is not str
+                or not record_id
+                or record_id in seen_ids
+                or type(evidence_id) is not str
+                or not evidence_id
+                or type(control.get("source_vintage")) is not str
+                or not control["source_vintage"]
+                or type(control.get("period_token")) is not str
+                or not control["period_token"]
+                or type(control.get("source_coordinate")) is not str
+                or not control["source_coordinate"]
+                or type(control.get("canonical_stored_integer")) is not str
+                or not control["canonical_stored_integer"].lstrip("-").isdigit()
+                or type(control.get("source_normalized_value")) is not str
+                or not _valid_decimal_string(control["source_normalized_value"])
+                or type(control.get("amount_decimal")) is not str
+                or not _valid_decimal_string(control["amount_decimal"])
+                or Decimal(control["source_normalized_value"])
+                != Decimal(control["amount_decimal"])
+                or any(
+                    type(control.get(name)) is not int or control[name] < 0
+                    for name in ("source_row", "source_column", "record_type")
+                )
+                or any(
+                    type(control.get(name)) is not str
+                    or _DIGEST.fullmatch(control[name]) is None
+                    for name in ("source_object_sha256", "record_payload_sha256")
+                )
+                or type(control.get("encoded_value_hex")) is not str
+                or re.fullmatch(r"[0-9a-f]+", control["encoded_value_hex"]) is None
+            ):
+                return False
+            seen_ids.add(record_id)
+    return len(observed_products) == len(families)
+
+
+def _valid_decimal_string(value: str) -> bool:
+    try:
+        parsed = Decimal(value)
+    except InvalidOperation:
+        return False
+    return parsed.is_finite() and str(parsed) == value
+
+
+def _biff8_witness_control_matches_manifest(
+    root: Path, manifest: dict[str, Any], products: object
+) -> bool:
+    reference = manifest.get("biff8_numeric_witness_reconciliation_report")
+    contract = manifest.get("biff8_numeric_witness_contract")
+    path = root / "biff8_numeric_witness_reconciliation.json"
+    product_reports = {
+        name: products[name].get("numeric_witness_reconciliation")
+        for name in ("biff8_budget", "biff8_revenue")
+        if isinstance(products, dict) and isinstance(products.get(name), dict)
+    }
+    expected = (
+        {name for name in ("biff8_budget", "biff8_revenue") if name in products}
+        if isinstance(products, dict)
+        else set()
+    )
+    if reference is None and not path.exists() and not any(product_reports.values()):
+        # v2 packages pre-dating the witness report remain readable. New exports
+        # identify the required companion contract explicitly and fail closed.
+        return contract is None
+    if (
+        contract != "v1"
+        or not isinstance(reference, dict)
+        or set(reference)
+        != {
+            "contract",
+            "output_name",
+            "sha256",
+            "bytes",
+            "family_count",
+            "control_count",
+            "status",
+        }
+        or reference.get("contract")
+        != "archive-govt-nz.health-biff8-gold-witness-reconciliation/v1"
+        or reference.get("output_name") != path.name
+        or type(reference.get("bytes")) is not int
+        or reference["bytes"] < 0
+        or type(reference.get("family_count")) is not int
+        or type(reference.get("control_count")) is not int
+        or type(reference.get("status")) is not str
+        or not isinstance(reference.get("sha256"), str)
+        or _DIGEST.fullmatch(reference["sha256"]) is None
+        or not path.is_file()
+    ):
+        return False
+    try:
+        payload_bytes = path.read_bytes()
+        report = json.loads(payload_bytes)
+    except OSError, UnicodeDecodeError, json.JSONDecodeError:
+        return False
+    if not _valid_biff8_numeric_witness_reconciliation(report):
+        return False
+    expected_reference = {
+        "contract": "archive-govt-nz.health-biff8-gold-witness-reconciliation/v1",
+        "output_name": path.name,
+        "sha256": hashlib.sha256(payload_bytes).hexdigest(),
+        "bytes": len(payload_bytes),
+        "family_count": report["family_count"],
+        "control_count": sum(family["control_count"] for family in report["families"]),
+        "status": report["status"],
+    }
+    family_names = {
+        family.get("product")
+        for family in report.get("families", [])
+        if isinstance(family, dict)
+    }
+    return (
+        reference == expected_reference
+        and family_names == expected
+        and all(value == reference for value in product_reports.values())
+        and set(product_reports) == expected
+    )
 
 
 def _valid_crown_projection_gold_reconciliation(value: object) -> bool:

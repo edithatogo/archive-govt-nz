@@ -16,6 +16,15 @@ This repository is a solo-maintainer codebase.
 - The harness runs `tools/check.py`, which enforces lock, format, lint,
   typing, tests, schemas, mutation gates, and supply-chain checks.
 
+## Python runtime qualification
+- All active Python use in this repository must use CPython 3.15.1 through an
+  explicitly selected repo-local interpreter. Verify the interpreter version
+  and dependency/runtime behavior in that environment.
+- Older version literals may remain only in immutable historical evidence or
+  synthetic tests that deliberately exercise version handling.
+- Preserve a working latest-version environment and any in-flight operation;
+  do not downgrade or rebuild it without a task need.
+
 ## Quality boundaries
 - Preserve originals and provenance over rewriting.
 - Keep gates fast-first; schedule heavier evidence lanes behind explicit triggers.

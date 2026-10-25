@@ -794,6 +794,126 @@ def build_crown_projection_gold_reconciliation(
     }
 
 
+def build_biff8_numeric_witness_reconciliation(
+    tables: dict[str, pa.Table],
+) -> dict[str, Any]:
+    """Tie each BIFF8 Gold amount to its retained numeric and lineage witness."""
+    families: list[dict[str, Any]] = []
+    for kind in sorted(biff8_canonical.KINDS):
+        facts = tables.get(kind)
+        if facts is None:
+            continue
+        numeric = tables.get(kind + "_numeric")
+        lineage = tables.get(kind + "_lineage")
+        _require(numeric is not None and lineage is not None and facts.num_rows > 0)
+        witnesses = cast("pa.Table", numeric).to_pylist()
+        links = cast("pa.Table", lineage).to_pylist()
+        by_witness: dict[str, dict[str, Any]] = {}
+        for witness in witnesses:
+            witness_id = witness.get("numeric_evidence_id")
+            _require(type(witness_id) is str and bool(witness_id))
+            _require(witness_id not in by_witness)
+            by_witness[witness_id] = witness
+        amount_links: dict[str, list[dict[str, Any]]] = {}
+        for link in links:
+            if link.get("field") == "amount":
+                record_id = link.get("target_record_id")
+                _require(type(record_id) is str and bool(record_id))
+                amount_links.setdefault(record_id, []).append(link)
+        fact_rows = facts.to_pylist()
+        _require(
+            len({row.get("record_id") for row in fact_rows}) == len(fact_rows)
+            and set(amount_links) == {row["record_id"] for row in fact_rows}
+        )
+        controls = []
+        used_witnesses: set[str] = set()
+        for fact in sorted(fact_rows, key=lambda row: row["record_id"]):
+            record_id = fact.get("record_id")
+            witness_id = fact.get("numeric_evidence_id")
+            stored_integer = fact.get("canonical_stored_integer")
+            _require(
+                type(record_id) is str
+                and bool(record_id)
+                and type(witness_id) is str
+                and bool(witness_id)
+                and type(stored_integer) is str
+                and bool(stored_integer)
+                and witness_id not in used_witnesses
+            )
+            witness = by_witness.get(witness_id)
+            fact_links = amount_links.get(record_id, [])
+            _require(witness is not None and len(fact_links) == 1)
+            witness = cast("dict[str, Any]", witness)
+            link = fact_links[0]
+            _require(
+                witness["canonical_stored_integer"] == stored_integer
+                and witness["source_sha256"] == fact["source_object_sha256"]
+                and link["numeric_evidence_id"] == witness_id
+                and link["source_object_sha256"] == fact["source_object_sha256"]
+                and link["canonical_stored_integer"] == stored_integer
+                and Decimal(link["normalized_value"]) == fact["amount"]
+            )
+            used_witnesses.add(witness_id)
+            controls.append(
+                {
+                    "record_id": record_id,
+                    "source_vintage": fact["source_vintage"],
+                    "source_object_sha256": fact["source_object_sha256"],
+                    "period_token": fact["period_token"],
+                    "source_row": witness["source_row"],
+                    "numeric_evidence_id": witness_id,
+                    "canonical_stored_integer": stored_integer,
+                    "source_column": witness["source_column"],
+                    "source_coordinate": link["source_coordinate"],
+                    "record_type": witness["record_type"],
+                    "record_payload_sha256": witness["record_payload_sha256"],
+                    "encoded_value_hex": witness["encoded_value_hex"],
+                    "source_normalized_value": link["normalized_value"],
+                    "amount_decimal": str(fact["amount"]),
+                }
+            )
+        families.append(
+            {
+                "product": kind,
+                "fact_count": facts.num_rows,
+                "numeric_evidence_count": len(by_witness),
+                "amount_witness_count": len(used_witnesses),
+                "amount_lineage_record_count": len(amount_links),
+                "control_count": len(controls),
+                "controls": controls,
+                "status": "all_gold_amounts_tied_to_numeric_and_lineage_witnesses",
+            }
+        )
+    return {
+        "schema_version": "archive-govt-nz.health-biff8-gold-witness-reconciliation/v1",
+        "scope": "source_separated_biff8_gold_amounts_and_retained_numeric_evidence",
+        "numeric_witnesses": "original_encoded_integer_evidence_preserved",
+        "amount_decimal": "canonical_exact_number_representation",
+        "cross_source_comparison": "not_performed",
+        "donor_control": "not_performed",
+        "rights_state": "not_evaluated",
+        "publication": "not_performed",
+        "family_count": len(families),
+        "families": families,
+        "status": "exact_witness_reconciliation_complete",
+    }
+
+
+def _biff8_numeric_witness_report_reference(
+    payload: bytes, report: dict[str, Any]
+) -> dict[str, Any]:
+    """Bind the companion report without copying its controls into the manifest."""
+    return {
+        "contract": "archive-govt-nz.health-biff8-gold-witness-reconciliation/v1",
+        "output_name": "biff8_numeric_witness_reconciliation.json",
+        "sha256": hashlib.sha256(payload).hexdigest(),
+        "bytes": len(payload),
+        "family_count": report["family_count"],
+        "control_count": sum(family["control_count"] for family in report["families"]),
+        "status": report["status"],
+    }
+
+
 def _add_legacy_lineage_companion(
     packages: tuple[CanonicalPackageInput, ...], tables: dict[str, pa.Table]
 ) -> None:
@@ -1371,6 +1491,15 @@ def _output_inventory(
     if "crown_projection_gold_reconciliation.json" in payloads:
         payload = payloads["crown_projection_gold_reconciliation.json"]
         outputs["crown_projection_gold_reconciliation.json"] = {
+            "sha256": hashlib.sha256(payload).hexdigest(),
+            "bytes": len(payload),
+            "kind": "report",
+            "rights_state": "not_evaluated",
+            "publication": "not_performed",
+        }
+    if "biff8_numeric_witness_reconciliation.json" in payloads:
+        payload = payloads["biff8_numeric_witness_reconciliation.json"]
+        outputs["biff8_numeric_witness_reconciliation.json"] = {
             "sha256": hashlib.sha256(payload).hexdigest(),
             "bytes": len(payload),
             "kind": "report",
@@ -2147,6 +2276,17 @@ def _build_payloads(  # noqa: PLR0913, PLR0917 - explicit product input set
     cross_source_report = build_cross_source_period_overlap_report(tables)
     payloads["historical_revision_reconciliation.json"] = _encoded(revision_report)
     payloads["cross_source_period_overlap.json"] = _encoded(cross_source_report)
+    if any(kind in tables for kind in biff8_canonical.KINDS):
+        biff8_reconciliation = build_biff8_numeric_witness_reconciliation(tables)
+        biff8_report_payload = _encoded(biff8_reconciliation)
+        biff8_report_reference = _biff8_numeric_witness_report_reference(
+            biff8_report_payload, biff8_reconciliation
+        )
+        for family in biff8_reconciliation["families"]:
+            products[family["product"]]["numeric_witness_reconciliation"] = (
+                biff8_report_reference
+            )
+        payloads["biff8_numeric_witness_reconciliation.json"] = biff8_report_payload
     budget_packages = tuple(package for package in packages if package.kind == "budget")
     if budget_packages:
         budget_reconciliation = build_budget_input_total_reconciliation(
@@ -2364,6 +2504,15 @@ def _export(
             ),
             None,
         ),
+        "biff8_numeric_witness_reconciliation_report": next(
+            (
+                product.get("numeric_witness_reconciliation")
+                for name, product in product_report.items()
+                if name in biff8_canonical.KINDS
+                and "numeric_witness_reconciliation" in product
+            ),
+            None,
+        ),
         "plot_report": plot_report,
         "quality_report": quality_report,
         "period_ordering": (
@@ -2376,6 +2525,9 @@ def _export(
         "report_scope": "exact_canonical_inputs_and_source_separated_outputs",
         "rights_state": "not_evaluated",
         "publication": "not_performed",
+        "biff8_numeric_witness_contract": (
+            "v1" if any(kind in tables for kind in biff8_canonical.KINDS) else None
+        ),
     }
     marker = _encoded(receipt)
     _require(

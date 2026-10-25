@@ -9751,6 +9751,21 @@ or publication. See
 `canonical-crown-projection-reconciliation-20261024.md`. The required full
 repository harness remains the delivery gate.
 
+## 2026-10-24 — BIFF8 numeric-witness reconciliation in canonical Gold
+
+Canonical Gold now emits a source-separated reconciliation for BIFF8
+appropriation/revenue amount facts. It requires each fact's amount lineage and
+numeric evidence to agree on identity, source object, row, encoded stored
+integer and exact Decimal value, and retains the source column, record type,
+record-payload digest and encoded bytes. Missing, duplicate or mismatched links
+fail closed. The report is bound to the manifest and product copies, with
+fail-closed structural and cross-copy verification. It makes no donor,
+official-source, currency/price-basis, rights or cross-source equivalence
+claim. The focused reconciliation and revision-witness tests passed; the full
+canonical consumer plus Gold verification suites passed 92 tests. Exact-tree
+`./scripts/validate.sh`, review and protected hosted delivery remain pending.
+See `canonical-biff8-gold-witness-reconciliation-20261024.md`.
+
 The first protected review identified that package verification must require a
 reconciliation family for every Crown Gold table present. The verifier now
 compares the reported family set with the present product set before Parquet
@@ -9948,3 +9963,17 @@ does not reopen or claim to complete the full Phase 6 scope.
   14 skipped, 18 warnings, 97.07% coverage; all schema, parity, mutation,
   dependency, licence, secret, and SBOM gates passed. PR and hosted Actions
   remain outstanding.
+
+# 2026-10-25 — BIFF8 Gold numeric-witness reconciliation review and validation
+
+- Review hardened malformed family and count handling: invalid family
+  identities now fail closed before constructing identity sets, and booleans
+  cannot satisfy integer count fields. The focused regression node passed.
+- The first final-tree harness attempt found one unrelated intermittent
+  Hypothesis deadline overrun (279 ms against 200 ms) in
+  `test_object_key_order_is_not_semantic`; the synthetic metadata-order test
+  has no timing contract, so its bounded deadline was raised to 1000 ms.
+- The final `./scripts/validate.sh` run on CPython 3.15.1 passed: 8,415 passed,
+  14 skipped, 97.06% coverage (80% required), 81 schemas and 71 representative
+  documents validated, parity 9/9, all mutation gates passed, and dependency,
+  licence, secret-scan and SBOM gates passed. Hosted Actions remain pending.
