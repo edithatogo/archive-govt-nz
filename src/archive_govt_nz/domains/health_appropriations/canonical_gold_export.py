@@ -899,6 +899,21 @@ def build_biff8_numeric_witness_reconciliation(
     }
 
 
+def _biff8_numeric_witness_report_reference(
+    payload: bytes, report: dict[str, Any]
+) -> dict[str, Any]:
+    """Bind the companion report without copying its controls into the manifest."""
+    return {
+        "contract": "archive-govt-nz.health-biff8-gold-witness-reconciliation/v1",
+        "output_name": "biff8_numeric_witness_reconciliation.json",
+        "sha256": hashlib.sha256(payload).hexdigest(),
+        "bytes": len(payload),
+        "family_count": report["family_count"],
+        "control_count": sum(family["control_count"] for family in report["families"]),
+        "status": report["status"],
+    }
+
+
 def _add_legacy_lineage_companion(
     packages: tuple[CanonicalPackageInput, ...], tables: dict[str, pa.Table]
 ) -> None:
@@ -2263,13 +2278,15 @@ def _build_payloads(  # noqa: PLR0913, PLR0917 - explicit product input set
     payloads["cross_source_period_overlap.json"] = _encoded(cross_source_report)
     if any(kind in tables for kind in biff8_canonical.KINDS):
         biff8_reconciliation = build_biff8_numeric_witness_reconciliation(tables)
+        biff8_report_payload = _encoded(biff8_reconciliation)
+        biff8_report_reference = _biff8_numeric_witness_report_reference(
+            biff8_report_payload, biff8_reconciliation
+        )
         for family in biff8_reconciliation["families"]:
             products[family["product"]]["numeric_witness_reconciliation"] = (
-                biff8_reconciliation
+                biff8_report_reference
             )
-        payloads["biff8_numeric_witness_reconciliation.json"] = _encoded(
-            biff8_reconciliation
-        )
+        payloads["biff8_numeric_witness_reconciliation.json"] = biff8_report_payload
     budget_packages = tuple(package for package in packages if package.kind == "budget")
     if budget_packages:
         budget_reconciliation = build_budget_input_total_reconciliation(
@@ -2508,6 +2525,9 @@ def _export(
         "report_scope": "exact_canonical_inputs_and_source_separated_outputs",
         "rights_state": "not_evaluated",
         "publication": "not_performed",
+        "biff8_numeric_witness_contract": (
+            "v1" if any(kind in tables for kind in biff8_canonical.KINDS) else None
+        ),
     }
     marker = _encoded(receipt)
     _require(

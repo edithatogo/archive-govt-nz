@@ -166,15 +166,19 @@ def fact_package(tmp_path: Path) -> tuple[Path, str]:
     report = canonical_gold_export.build_biff8_numeric_witness_reconciliation(
         reconciliation_tables
     )
-    for family in report["families"]:
-        manifest["products"][family["product"]]["numeric_witness_reconciliation"] = (
-            report
-        )
-    manifest["biff8_numeric_witness_reconciliation_report"] = report
+    report_name = "biff8_numeric_witness_reconciliation.json"
     payload = (
         json.dumps(report, sort_keys=True, separators=(",", ":")) + "\n"
     ).encode()
-    report_name = "biff8_numeric_witness_reconciliation.json"
+    reference = canonical_gold_export._biff8_numeric_witness_report_reference(  # noqa: SLF001
+        payload, report
+    )
+    for family in report["families"]:
+        manifest["products"][family["product"]]["numeric_witness_reconciliation"] = (
+            reference
+        )
+    manifest["biff8_numeric_witness_reconciliation_report"] = reference
+    manifest["biff8_numeric_witness_contract"] = "v1"
     (root / report_name).write_bytes(payload)
     manifest["outputs"][report_name] = {"kind": "report"}
     marker.write_text(json.dumps(manifest))
@@ -199,6 +203,27 @@ def test_all_existing_fact_products_have_named_queries() -> None:
         "crown_hyefu",
         "fiscal_crown",
     }
+
+
+def test_biff8_witness_controls_live_in_companion_report_not_manifest(
+    package: tuple[Path, str],
+) -> None:
+    root, _ = package
+    manifest = json.loads((root / "MANIFEST.json").read_text(encoding="utf-8"))
+    report = json.loads(
+        (root / "biff8_numeric_witness_reconciliation.json").read_text(encoding="utf-8")
+    )
+    reference = manifest["biff8_numeric_witness_reconciliation_report"]
+    assert manifest["biff8_numeric_witness_contract"] == "v1"
+    assert reference["control_count"] == sum(
+        family["control_count"] for family in report["families"]
+    )
+    assert "controls" not in reference
+    assert (
+        manifest["products"]["biff8_budget"]["numeric_witness_reconciliation"]
+        == reference
+    )
+    assert len(json.dumps(reference)) < len(json.dumps(report))
 
 
 def _query_value(value: object) -> object:

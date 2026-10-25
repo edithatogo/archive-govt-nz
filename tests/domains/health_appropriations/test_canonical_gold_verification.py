@@ -320,6 +320,18 @@ def test_budget_input_total_report_pins_are_bound_to_manifest_provenance() -> No
     )
 
 
+def test_legacy_biff8_gold_without_witness_report_remains_verifiable(
+    tmp_path: Path,
+) -> None:
+    products = {"biff8_budget": {}}
+    assert canonical_gold_verification._biff8_witness_control_matches_manifest(  # noqa: SLF001
+        tmp_path, {}, products
+    )
+    assert not canonical_gold_verification._biff8_witness_control_matches_manifest(  # noqa: SLF001
+        tmp_path, {"biff8_numeric_witness_contract": "v1"}, products
+    )
+
+
 def test_revenue_input_total_report_pins_are_bound_to_manifest_provenance() -> None:
     report = _revenue_input_total_report()
     markers = ["a" * 64]

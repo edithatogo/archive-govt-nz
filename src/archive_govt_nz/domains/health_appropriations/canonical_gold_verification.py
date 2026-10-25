@@ -684,7 +684,8 @@ def _valid_decimal_string(value: str) -> bool:
 def _biff8_witness_control_matches_manifest(
     root: Path, manifest: dict[str, Any], products: object
 ) -> bool:
-    report = manifest.get("biff8_numeric_witness_reconciliation_report")
+    reference = manifest.get("biff8_numeric_witness_reconciliation_report")
+    contract = manifest.get("biff8_numeric_witness_contract")
     path = root / "biff8_numeric_witness_reconciliation.json"
     product_reports = {
         name: products[name].get("numeric_witness_reconciliation")
@@ -696,27 +697,61 @@ def _biff8_witness_control_matches_manifest(
         if isinstance(products, dict)
         else set()
     )
-    if report is None and not path.exists() and not any(product_reports.values()):
-        return not expected
+    if reference is None and not path.exists() and not any(product_reports.values()):
+        # v2 packages pre-dating the witness report remain readable. New exports
+        # identify the required companion contract explicitly and fail closed.
+        return contract is None
     if (
-        not isinstance(report, dict)
-        or not _valid_biff8_numeric_witness_reconciliation(report)
+        contract != "v1"
+        or not isinstance(reference, dict)
+        or set(reference)
+        != {
+            "contract",
+            "output_name",
+            "sha256",
+            "bytes",
+            "family_count",
+            "control_count",
+            "status",
+        }
+        or reference.get("contract")
+        != "archive-govt-nz.health-biff8-gold-witness-reconciliation/v1"
+        or reference.get("output_name") != path.name
+        or type(reference.get("bytes")) is not int
+        or reference["bytes"] < 0
+        or type(reference.get("family_count")) is not int
+        or type(reference.get("control_count")) is not int
+        or type(reference.get("status")) is not str
+        or not isinstance(reference.get("sha256"), str)
+        or _DIGEST.fullmatch(reference["sha256"]) is None
         or not path.is_file()
     ):
         return False
     try:
-        payload = json.loads(path.read_text(encoding="utf-8"))
+        payload_bytes = path.read_bytes()
+        report = json.loads(payload_bytes)
     except OSError, UnicodeDecodeError, json.JSONDecodeError:
         return False
+    if not _valid_biff8_numeric_witness_reconciliation(report):
+        return False
+    expected_reference = {
+        "contract": "archive-govt-nz.health-biff8-gold-witness-reconciliation/v1",
+        "output_name": path.name,
+        "sha256": hashlib.sha256(payload_bytes).hexdigest(),
+        "bytes": len(payload_bytes),
+        "family_count": report["family_count"],
+        "control_count": sum(family["control_count"] for family in report["families"]),
+        "status": report["status"],
+    }
     family_names = {
         family.get("product")
         for family in report.get("families", [])
         if isinstance(family, dict)
     }
     return (
-        payload == report
+        reference == expected_reference
         and family_names == expected
-        and all(value == report for value in product_reports.values())
+        and all(value == reference for value in product_reports.values())
         and set(product_reports) == expected
     )
 
