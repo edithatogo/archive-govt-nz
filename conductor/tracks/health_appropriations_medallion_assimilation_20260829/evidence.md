@@ -1,5 +1,25 @@
 # Evidence
 
+## 2026-10-25 — Phase 8 concurrent resume attempt contract
+
+- Issue: #214; M-15/M-18, AC-13/AC-16.
+- Changed: `tests/domains/health_appropriations/test_resume_execution.py` and
+  Phase 8 plan/index/runlog/evidence/review plus the contract receipt.
+- Runtime: repo-local CPython 3.15.1 via `uv run --locked`.
+- Focused concurrent claim test: passed.
+- Resume execution, operations and planner selection: 217 passed.
+- Ruff, format and basedpyright passed on the changed test.
+- `./scripts/validate.sh` passed on this exact local tree: 8,423 passed,
+  14 skipped, 97% coverage, with schema/document, parity, mutation, hygiene,
+  dependency, licence, secret-scan and SBOM gates passing. Hosted checks remain
+  a separate PR gate.
+- The test forces two same-path invocations to pass read-only destination
+  preflight together. One creates and verifies the exclusive attempt; the other
+  is rejected, with all pre-existing input files unchanged.
+- Remaining: this does not establish distributed locking, hostile-filesystem
+  safety, remote drift handling, or completion of issue #214. Hosted PR checks
+  are pending.
+
 ## 2026-10-25 — Phase 8 scheduled discovery regression contract
 
 - Issue: #214; requirement references M-15/M-18 and AC-13/AC-16.
