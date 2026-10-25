@@ -1,0 +1,47 @@
+[
+  {
+    "run": "20261025-initial",
+    "action": "verify",
+    "receipt": {
+      "action": "verify",
+      "command": "archive",
+      "failures": [],
+      "output_dir": "build/tobac/20261025-initial/warc",
+      "schema_version": "archive-govt-nz.cli/v1",
+      "status": "verified",
+      "total_bytes": 2247414,
+      "verified_files_count": 27,
+      "warc_count": 27
+    }
+  },
+  {
+    "run": "20261025-pubmed-api",
+    "action": "verify",
+    "receipt": {
+      "action": "verify",
+      "command": "archive",
+      "failures": [],
+      "output_dir": "build/tobac/20261025-pubmed-api/warc",
+      "schema_version": "archive-govt-nz.cli/v1",
+      "status": "verified",
+      "total_bytes": 232988,
+      "verified_files_count": 1,
+      "warc_count": 1
+    }
+  },
+  {
+    "run": "20261025-pmc-supplement",
+    "action": "verify",
+    "receipt": {
+      "action": "verify",
+      "command": "archive",
+      "failures": [],
+      "output_dir": "build/tobac/20261025-pmc-supplement/warc",
+      "schema_version": "archive-govt-nz.cli/v1",
+      "status": "verified",
+      "total_bytes": 637190,
+      "verified_files_count": 3,
+      "warc_count": 3
+    }
+  }
+]

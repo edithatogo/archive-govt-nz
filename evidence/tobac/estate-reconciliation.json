@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-10-25",
+  "catalog_sha256": "45162d54cdb00d9d1a235da2f10f8eaf74f67845fe52cfdc8b2d8f995eb7ebaf",
+  "public_web_manifest_sha256": "b8a8a543c49d1afd65e7fb590ccbbd80dd14665a18d363b0bf7145998ab27f8e",
+  "public_web_record_count": 12984,
+  "exact_url_matches": [],
+  "searched_datasets": [
+    {
+      "repo_id": "edithatogo/dataset-estate-registry",
+      "revision": "4802d56a340646043fc91bed218c1e8a958f42c2"
+    },
+    {
+      "repo_id": "edithatogo/corpus-social-media-government-nz",
+      "revision": "55714d41d1b1191584a2af9cf8dbcc5c8dabe60a"
+    },
+    {
+      "repo_id": "edithatogo/corpus-legislation-nz",
+      "revision": "a92c138fdf6343df7278c94735b868beab03776c"
+    },
+    {
+      "repo_id": "edithatogo/archive-govt-nz-global",
+      "revision": "ac5ad2d35a17a7a855450ae3b98e64b195b3c5af"
+    }
+  ],
+  "limitations": [
+    "Public-web record_index URLs searched exactly; document text and compressed payloads not searched.",
+    "Legislation raw_xml directory has no act_public_2024_6 entry; full durable-state ZIP not searched.",
+    "Global archive is code/evidence distribution; no verified exact source-object mapping found.",
+    "No absence claim for the whole archival estate."
+  ]
+}

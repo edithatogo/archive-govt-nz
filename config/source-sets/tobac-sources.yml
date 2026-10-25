@@ -1,0 +1,61 @@
+name: tobac-sources
+description: Explicit source URLs referenced by tobac; metadata and source HTML remain
+  distinct from original datasets and scientific validation.
+enabled: true
+adapters:
+- web
+schedule: manual
+rights_class: source_specific_review_required
+output_preservation_policy:
+  format: warc_and_manifest
+  compression: none
+  cas_hash_algorithm: sha256
+  retention: permanent_subject_to_rights_review
+publication_policy:
+  huggingface:
+    enabled: false
+  zenodo:
+    enabled: false
+targets:
+- https://mash.auckland.ac.nz/shimadzu-8060qqq-acsrc/
+- https://pmc.ncbi.nlm.nih.gov/articles/PMC11672025/
+- https://pmc.ncbi.nlm.nih.gov/articles/PMC12410603/
+- https://pmc.ncbi.nlm.nih.gov/articles/PMC12887742/
+- https://pmc.ncbi.nlm.nih.gov/articles/PMC13389531/
+- https://pmc.ncbi.nlm.nih.gov/articles/PMC4517929/
+- https://pubmed.ncbi.nlm.nih.gov/22594651/
+- https://pubmed.ncbi.nlm.nih.gov/25037156/
+- https://pubmed.ncbi.nlm.nih.gov/25398562/
+- https://pubmed.ncbi.nlm.nih.gov/26138823/
+- https://pubmed.ncbi.nlm.nih.gov/26218517/
+- https://pubmed.ncbi.nlm.nih.gov/27624346/
+- https://pubmed.ncbi.nlm.nih.gov/29571085/
+- https://pubmed.ncbi.nlm.nih.gov/31515173/
+- https://pubmed.ncbi.nlm.nih.gov/32113617/
+- https://pubmed.ncbi.nlm.nih.gov/32653706/
+- https://pubmed.ncbi.nlm.nih.gov/37192131/
+- https://pubmed.ncbi.nlm.nih.gov/38876037/
+- https://pubmed.ncbi.nlm.nih.gov/40919023/
+- https://pubmed.ncbi.nlm.nih.gov/41447812/
+- https://pubmed.ncbi.nlm.nih.gov/41587826/
+- https://pubmed.ncbi.nlm.nih.gov/41661592/
+- https://pubmed.ncbi.nlm.nih.gov/41725392/
+- https://pubmed.ncbi.nlm.nih.gov/42664537/
+- https://www.beehive.govt.nz/release/new-zealand-records-lowest-smoking-rate-ever
+- https://www.customs.govt.nz/about-us/news/important-notices-archive/important-notices-archive-2025/new-excise-duty-rates-for-tobacco-products-from-1-january-2026
+- https://www.customs.govt.nz/about-us/news/media-releases/trio-sentenced-for-smuggling-half-a-million-cigarettes
+- https://www.health.govt.nz/monitoring-statistics/surveys/new-zealand-health-survey/publications/202324-survey-publications/trends-in-smoking-and-vaping
+- https://www.health.govt.nz/monitoring-statistics/surveys/new-zealand-health-survey/publications/202425-survey-publications/trends-in-smoking-and-vaping
+- https://www.health.govt.nz/news/independent-report-on-black-market-tobacco-trade-published
+- https://www.health.govt.nz/news/new-policies-will-help-reach-smokefree-goal-and-address-increase-in-youth-vaping
+- https://www.health.govt.nz/news/refunds-for-applicants-to-the-smoked-tobacco-retail-scheme
+- https://www.health.govt.nz/publications/annual-update-of-key-results-202021-new-zealand-health-survey
+- https://www.health.govt.nz/publications/annual-update-of-key-results-202122-new-zealand-health-survey
+- https://www.health.govt.nz/publications/annual-update-of-key-results-202425-new-zealand-health-survey
+- https://www.health.govt.nz/publications/health-and-independence-report-2024-online-version
+- https://www.health.govt.nz/publications/tobacco-and-electronic-cigarette-use-201516-new-zealand-health-survey
+- https://www.health.govt.nz/regulation-legislation/smoked-tobacco/information-for-manufacturers-and-importers/tobacco-returns/tobacco-returns-2025
+- https://www.health.govt.nz/regulation-legislation/vaping-herbal-smoking-and-smokeless-tobacco/selling-vaping-or-other-notifiable-products/overview-of-products
+- https://www.ispor.org/heor-resources/good-practices/article/value-of-information-analytical-methods-report-2
+- https://www.legislation.govt.nz/act/public/2024/0006/latest/LMS939049.html
+- https://www.legislation.govt.nz/act/public/2024/0006/latest/LMS939112.html
