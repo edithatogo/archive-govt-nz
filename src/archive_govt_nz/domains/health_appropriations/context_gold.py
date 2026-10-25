@@ -57,6 +57,8 @@ _EXPECTED_VINTAGES = {
     "population": "2026-08-18",
 }
 _EXPECTED_MANIFESTS = {
+    # Retain historical manifest pins and admit explicitly qualified PyArrow
+    # 26 serializations after exact source, schema, row and lineage validation.
     "cpi": frozenset(
         {
             "edb62f4b106948502e717f5f6c5e3da00efc0a64bb10b5dcbafc48cd1a6c257e",

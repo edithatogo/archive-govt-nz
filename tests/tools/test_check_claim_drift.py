@@ -3,12 +3,19 @@
 from __future__ import annotations
 
 import json
+import subprocess
 import sys
 from pathlib import Path
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    import pytest
 
 sys.path.insert(0, str(Path(__file__).parents[2]))
 
 from tools.check_claim_drift import check_claims, main
+
+from tools import check_claim_drift
 
 
 def test_check_claims_all_matching() -> None:
@@ -78,3 +85,34 @@ def test_main_cli_execution(tmp_path: Path) -> None:
     assert receipt["status"] == "passed"
     assert receipt["claims_checked"] == 5
     assert receipt["divergences_detected"] == 0
+
+
+def test_github_token_prefers_explicit_environment(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Prefer the workflow token without invoking the CLI credential helper."""
+    monkeypatch.setenv("GH_TOKEN", "explicit-gh-token")
+    monkeypatch.setenv("GITHUB_TOKEN", "explicit-github-token")
+    monkeypatch.setattr(check_claim_drift.shutil, "which", lambda _: None)
+
+    assert (
+        check_claim_drift.github_token_from_environment_or_cli() == "explicit-gh-token"
+    )
+
+
+def test_github_token_uses_logged_in_cli_credential(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Use the existing gh credential when no token was passed by the runner."""
+    monkeypatch.delenv("GH_TOKEN", raising=False)
+    monkeypatch.delenv("GITHUB_TOKEN", raising=False)
+    monkeypatch.setattr(check_claim_drift.shutil, "which", lambda _: "/usr/bin/gh")
+
+    def run(command: list[str], **kwargs: object) -> subprocess.CompletedProcess[str]:
+        assert command == ["/usr/bin/gh", "auth", "token", "--hostname", "github.com"]
+        assert kwargs["capture_output"] is True
+        return subprocess.CompletedProcess(command, 0, stdout="cli-token\n", stderr="")
+
+    monkeypatch.setattr(check_claim_drift.subprocess, "run", run)
+
+    assert check_claim_drift.github_token_from_environment_or_cli() == "cli-token"

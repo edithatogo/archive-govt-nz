@@ -8,6 +8,8 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import shutil
+import subprocess
 import sys
 import urllib.error
 import urllib.request
@@ -134,6 +136,31 @@ def build_receipt(status: str, checks: list[ClaimCheck]) -> dict[str, Any]:
     }
 
 
+def github_token_from_environment_or_cli() -> str | None:
+    """Use an explicit token or the user's existing GitHub CLI credential."""
+    token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+    if token:
+        return token
+    gh = shutil.which("gh")
+    if gh is None:
+        return None
+    try:
+        result = subprocess.run(  # noqa: S603 - executable is resolved via shutil.which.
+            [gh, "auth", "token", "--hostname", "github.com"],
+            check=False,
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+    except OSError, subprocess.TimeoutExpired:
+        return None
+    return (
+        result.stdout.strip()
+        if result.returncode == 0 and result.stdout.strip()
+        else None
+    )
+
+
 def main(argv: list[str] | None = None) -> int:
     """Run CLI claim drift detection and write receipt."""
     parser = argparse.ArgumentParser(
@@ -151,7 +178,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.mock_json:
         mock_data = json.loads(Path(args.mock_json).read_text(encoding="utf-8"))
 
-    token = os.environ.get("GITHUB_TOKEN")
+    token = None if mock_data is not None else github_token_from_environment_or_cli()
     status, checks = check_claims(mock_live_data=mock_data, github_token=token)
     receipt = build_receipt(status, checks)
 

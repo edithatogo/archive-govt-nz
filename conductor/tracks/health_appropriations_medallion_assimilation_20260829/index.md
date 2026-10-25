@@ -775,3 +775,5 @@ unchanged; this is no publisher correction or rights/comparability approval.
   remaining groups and final gate are explicitly blocked.
 - See the current [Phase 9 plan](./plan.md#phase-9--recovery-assurance-and-publication-candidate)
   and [runlog](./runlog.md) for implementation and validation evidence.
+
+- [Final clean-room recovery receipt refreshed after PR #774](./clean-room-recovery-20261024-final.json): 47 product groups rebuilt, Bronze unchanged, no errors; remaining source, comparison, Platinum and rights gates stay open. See the [latest runlog entry](./runlog.md).

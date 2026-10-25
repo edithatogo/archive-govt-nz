@@ -9977,3 +9977,45 @@ does not reopen or claim to complete the full Phase 6 scope.
   14 skipped, 97.06% coverage (80% required), 81 schemas and 71 representative
   documents validated, parity 9/9, all mutation gates passed, and dependency,
   licence, secret-scan and SBOM gates passed. Hosted Actions remain pending.
+
+## 2026-10-24 final clean-room recovery and review reconciliation
+
+Ran `.venv/bin/python tools/health_recovery_assurance.py --receipt conductor/tracks/health_appropriations_medallion_assimilation_20260829/clean-room-recovery-20261024-final.json` on repo-local CPython 3.15.1 with PyArrow 26.0.0. The completed receipt records 47 rebuilt product lanes, paired/repeat-identical outputs, unchanged pinned Bronze CAS objects, and `partial_with_blockers`; its temporary derivative root was removed after the run. The receipt does not claim rights clearance, publication, cross-source comparison, all remaining source-native profiles/adapters, or complete Platinum profiles.
+
+The source-census validator passed (143 records / 13 families), and Conductor-state validation passed (93 tracks / zero errors). Initial claim drift readback used unauthenticated REST and returned 404 for five archived repositories. Authenticated read-only `gh api` calls verified `archived: true` for all five. Updated `tools/check_claim_drift.py` to prefer `GH_TOKEN`/`GITHUB_TOKEN`, then use the existing `gh auth token` credential when available; the final claim-drift receipt records `passed` with zero divergences, and the focused checker tests passed (5 tests).
+
+The clean-room donor report confirms exact parity for 312 rows in the five-table Gold oracle. Thirty historical deviations remain: 29 source-only rows and one value difference. They remain unapproved and require source-backed dispositions; the existing retain-both/no-replacement treatment is not a disposition approval. Rights remain unevaluated. Cross-source comparison, remaining source-native Silver/canonical profiles, and the complete DCAT/Croissant/RO-Crate/PROV set remain unbuilt; the Health Appropriations track remains open. The exact-tree final harness result is pending at this log entry and will be appended after `./scripts/validate.sh` completes.
+
+The required `./scripts/validate.sh` completed successfully on the final
+implementation and test tree; only the following textual harness-result entry
+was appended afterward. Lock consistency, Conductor validation (93 tracks / zero errors), formatting (2,601 files), Ruff lint, basedpyright (0 errors/warnings/notes), the complete pytest/coverage gate (8,352 passed, 14 skipped, 97.10% coverage vs 80% floor), schema/document validation (81 / 71), differential parity (9/9), all configured mutation groups, hygiene, CAS benchmark (577.35 MB/s vs 25 MB/s minimum), dependency audit (no known vulnerabilities), licence inventory, secret scan, and SBOM validation (118 components) passed. The SBOM command emitted `CDX > Validation skipped` as a warning but returned a successful 118-component validation receipt; pytest reported 18 warnings, including ResourceWarning and RDFLib deprecation messages.
+
+The preceding full run had seven failures under overlap with other host workloads. One fixture defect was corrected so `canonical_gold_inputs` tests include and assert fresh Pharmac, MOH, BEFU and HYEFU manifest bindings. The other deadline/timeout findings passed when the seven cached failures were rerun serially (`--lf --last-failed-no-failures=none -n 0`, 7 passed in 38.39 s). A second complete `./scripts/validate.sh` then passed; no global retry, timeout or test-selection policy was weakened.
+
+## 2026-10-25 — Final recovery reconciliation after PR #774
+
+After PR #774 merged, synchronized the preserved Phase 9 recovery worktree with
+`origin/main` and reconciled its shared-file changes. Corrected the recovery
+contract to pin retained CPI, QES, GDP and population manifests to their
+historical hashes, while keeping separately qualified PyArrow 26 writer
+hashes for freshly rebuilt outputs. GDP comparison evidence now distinguishes
+historical source pins from runtime serialization pins; fresh Pharmac, MoH,
+BEFU and HYEFU inputs are bound by their current manifest digests.
+
+The clean-room receipt `clean-room-recovery-20261024-final.json` was regenerated
+from the pinned external Bronze CAS. It records 47 rebuilt product groups,
+`bronze_objects_unchanged: true`, no errors, and the truthful status
+`partial_with_blockers`; the temporary derivative tree was removed. The final
+gate remains blocked on cross-source comparison, remaining source-native
+Silver profiles/canonical adapters, and complete Platinum DCAT/Croissant/
+RO-Crate/PROV profiles. Rights remain unevaluated and publication was not
+performed.
+
+The exact-tree `./scripts/validate.sh` passed on CPython 3.15.1: 8,420 passed,
+14 skipped, 18 warnings, 97.05% coverage against the 80% floor; Conductor
+validation reported 93 tracks with zero errors; 81 schemas and 71 representative
+documents passed; differential parity passed 9/9; all configured mutation,
+dependency, licence, secret and SBOM gates passed (118 SBOM components). The
+CAS benchmark measured 524.09 MB/s against a 25 MB/s minimum. Focused recovery,
+projection, claim-drift and manifest-binding tests passed (68 tests). This
+reconciles local evidence only; the Health Appropriations track remains open.
