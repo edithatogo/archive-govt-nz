@@ -25,8 +25,8 @@
   },
   "period_observations": [
     {
-      "source_id": "treasury-historical-9b7ed9af81531c7c",
-      "resource_url": "https://www.treasury.govt.nz/sites/default/files/2007-09/befu01-gaap.pdf",
+      "source_id": "treasury-historical-071371904cadf19b",
+      "resource_url": "https://www.treasury.govt.nz/sites/default/files/2007-09/befu01-ann.pdf",
       "reader_location": "Annex B Table B.6 Health, reader PDF page 4 / printed page 156",
       "period_tokens": [
         "1997/98",
@@ -42,11 +42,21 @@
         "Actual",
         "Actual",
         "Actual",
-        "Actual",
+        "Forecast",
         "Forecast",
         "Forecast",
         "Forecast",
         "Forecast"
+      ],
+      "value_tokens": [
+        "6,001",
+        "6,573",
+        "6,874",
+        "7,272",
+        "7,684",
+        "7,766",
+        "7,896",
+        "8,019"
       ],
       "unit_literal": "$ million",
       "definition_boundary": "Total Health Expenses; adjacent Health service purchasing and Health-related payments to ACC tables are separate measures",
@@ -73,6 +83,15 @@
         "Forecast",
         "Forecast",
         "Forecast"
+      ],
+      "value_tokens": [
+        "36,171",
+        "38,057",
+        "38,280",
+        "39,365",
+        "40,674",
+        "42,290",
+        "43,819"
       ],
       "unit_literal": "$ million",
       "definition_boundary": "Total Expenses in forecast financial statement; distinct from Annex B Table B.6 Total Health Expenses",

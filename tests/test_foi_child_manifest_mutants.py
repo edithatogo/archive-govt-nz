@@ -36,7 +36,7 @@ def test_child_guard_mutant_killed(before: str, after: str) -> None:
         cwd=Path(__file__).parents[1],
         capture_output=True,
         text=True,
-        timeout=30,
+        timeout=120,
         check=False,
     )
     assert result.returncode == 1, result.stdout + result.stderr

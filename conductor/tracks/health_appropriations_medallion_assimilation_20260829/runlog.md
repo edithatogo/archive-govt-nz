@@ -9794,6 +9794,21 @@ untracked files. Full hosted assurance remains pending.
   capture and publication remain open. Focused source-register validation is
   pending.
 
+## 2026-10-25 — Issue #207: BEFU 2001 source attribution correction
+
+- Verified the official Treasury page's links and reader-visible PDF contents.
+  Annex B Table B.6 Health belongs to `befu01-ann.pdf` and has three Actual
+  periods followed by five Forecast periods; the earlier addendum incorrectly
+  attributed it to the GAAP tables PDF and labelled 2000/01 Actual.
+- Corrected its source ID/URL and statuses; retained displayed Health expense
+  tokens and the separate GAAP Total Expenses tokens as reader evidence.
+  Payload fixity, native layout and item-level rights remain unverified.
+- Focused source-register/source-measure review and affected timeout tests passed.
+  The final full `./scripts/validate.sh` run reported 8,409 passed, 14 skipped,
+  and 5 failed during the full 10-worker local run; the cached failure-only
+  rerun passed all five. This is not a full-harness pass, so retain the local
+  full gate as unresolved pending exact-head hosted assurance.
+
 ## 2026-10-24 — Issue #208: source-layout cohort reconciliation
 
 Added a read-only reconciliation that binds the retained workbook and PDF
