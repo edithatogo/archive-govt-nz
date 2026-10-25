@@ -126,10 +126,12 @@ repository validation command. External gates block only their affected task.
   A read-only recheck of the official BEFU 2001 release page added its seven
   previously unregistered PDF links to a dated successor register; the
   eight-link page count, 24 May 2001 release metadata and page-level CC BY 4.0
-  are recorded separately. Reader text establishes Annex B Table B.6 Health
-  periods/statuses and `$ million` units, with neighbouring Health purchasing
-  and ACC measures kept distinct. Linked bytes, native layout, item-level
-  rights and whole-edition enumeration remain pending
+  are recorded separately. Reader evidence attributes Annex B Table B.6 Health
+  to `befu01-ann.pdf` (printed page 156), retains the displayed numeric tokens,
+  and labels 1997/98–1999/2000 Actual with 2000/01 onward Forecast. Total Crown
+  Expenses remain a separate GAAP PDF observation. Neighbouring Health
+  purchasing and ACC measures stay distinct. Linked bytes, native layout,
+  item-level rights and whole-edition enumeration remain pending
   (`source-census-befu-2001-20261024.json`).
   Treasury's historical Vote Health index and exact 2002/03 main and 2001/02
   Supplementary Estimates PDFs are now separately registered. Fiscal periods,

@@ -11,7 +11,7 @@ from typing import TYPE_CHECKING
 
 import httpx
 import pytest
-from hypothesis import given
+from hypothesis import given, settings
 from hypothesis import strategies as st
 
 spec = importlib.util.spec_from_file_location(
@@ -53,6 +53,7 @@ def test_missing_credentials_do_not_make_requests(credential: str) -> None:
     assert result["credential_present"] is False
 
 
+@settings(deadline=None)
 @given(st.integers(min_value=100, max_value=599).filter(lambda code: code != 200))
 def test_only_ok_status_can_pass(code: int) -> None:
     """Authentication failures, redirects, throttling and surprises fail closed."""

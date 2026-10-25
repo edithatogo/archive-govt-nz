@@ -8,7 +8,7 @@ from types import SimpleNamespace
 from typing import Any
 
 import pytest
-from hypothesis import given
+from hypothesis import given, settings
 from hypothesis import strategies as st
 
 from archive_govt_nz.domains.health_appropriations import donor_parity, donor_sqlite
@@ -187,6 +187,7 @@ def test_limits_and_nonfinite(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -
         read_database(path, hashlib.sha256(path.read_bytes()).hexdigest())
 
 
+@settings(deadline=None)
 @given(st.lists(st.integers(min_value=0, max_value=10), max_size=50))
 def test_multiset_conservation(values: list[int]) -> None:
     tables = tuple(

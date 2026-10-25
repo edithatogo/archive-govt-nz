@@ -203,6 +203,57 @@ def test_befu_2001_addendum_preserves_baseline_and_records_seven_locators() -> N
         "2003/04",
         "2004/05",
     ]
+    health_observation, crown_observation = receipt["period_observations"]
+    assert health_observation["resource_url"].endswith("befu01-ann.pdf")
+    assert health_observation["source_id"] == "treasury-historical-071371904cadf19b"
+    assert (
+        registered[health_observation["source_id"]]["url"]
+        == health_observation["resource_url"]
+    )
+    assert health_observation["status_labels"] == [
+        "Actual",
+        "Actual",
+        "Actual",
+        "Forecast",
+        "Forecast",
+        "Forecast",
+        "Forecast",
+        "Forecast",
+    ]
+    assert health_observation["value_tokens"] == [
+        "6,001",
+        "6,573",
+        "6,874",
+        "7,272",
+        "7,684",
+        "7,766",
+        "7,896",
+        "8,019",
+    ]
+    assert crown_observation["resource_url"].endswith("befu01-gaap.pdf")
+    assert crown_observation["source_id"] == "treasury-historical-9b7ed9af81531c7c"
+    assert (
+        registered[crown_observation["source_id"]]["url"]
+        == crown_observation["resource_url"]
+    )
+    assert crown_observation["status_labels"] == [
+        "Actual",
+        "Budget",
+        "Estimated Actual",
+        "Forecast",
+        "Forecast",
+        "Forecast",
+        "Forecast",
+    ]
+    assert crown_observation["value_tokens"] == [
+        "36,171",
+        "38,057",
+        "38,280",
+        "39,365",
+        "40,674",
+        "42,290",
+        "43,819",
+    ]
     assert receipt["period_observations"][0]["unit_literal"] == "$ million"
     assert receipt["whole_edition_enumeration"] == "pending"
     assert receipt["whole_history_complete"] is False

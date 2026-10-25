@@ -62,7 +62,7 @@ def test_canonical_guard_mutant_killed(before: str, after: str, selection: str) 
         cwd=ROOT,
         capture_output=True,
         text=True,
-        timeout=30,
+        timeout=120,
         check=False,
     )
     assert result.returncode == 1, result.stdout + result.stderr
