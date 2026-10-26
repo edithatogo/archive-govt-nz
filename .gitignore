@@ -1,5 +1,5 @@
 # Local environments and caches
-.venv/
+.venv
 .pytest_cache/
 .ruff_cache/
 .mypy_cache/
@@ -32,7 +32,7 @@ data/profile/
 .tmp/
 tmp/
 /dist/
-build/
+build
 
 # Operating-system and editor files
 .DS_Store

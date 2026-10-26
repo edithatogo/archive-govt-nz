@@ -97,3 +97,9 @@ rights-pending and remotely verified counts separately. Public availability
 does not establish a redistribution licence. Retain applicable rights and
 restriction decisions and support withdrawn/replaced source observations.
 No full-archive or operational-success claim follows from this document.
+
+## Implementation and public-destination update — 26 October 2026
+
+Reports now have a bounded resumable API/capture/publication lane. Ten reports were manually captured and anonymously hash-verified in the existing public, ungated [Hugging Face dataset](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/tree/main/parliament). All eligible Parliament outputs must use that public destination. Code rejects private or gated targets and has no repository-creation fallback. This is a pilot, not all Parliament data.
+
+Submissions and most committee advice are excluded from the current general reuse permission; legacy crawler access is denied. Their full archival and additional legacy collections remain blocked pending qualified source/access/reuse contracts. See the [track evidence](../conductor/tracks/parliament_archive_streams_20261026/evidence.md).

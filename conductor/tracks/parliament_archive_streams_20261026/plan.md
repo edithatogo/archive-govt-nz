@@ -51,3 +51,12 @@ Issue: https://github.com/edithatogo/archive-govt-nz/issues/783
 - [ ] Task: Phase verification and evidence checkpoint under ../../workflow.md; use focused tests first, record local/hosted limits, run milestone assurance and recovery checks where applicable.
 
 Scope control: phases are sequential acceptance milestones. Runtime streams become independently resumable after their contracts pass; this does not authorize competing writers or unlimited parallel requests.
+
+## Implementation checkpoint — 26 October 2026
+
+- [x] Report source/destination qualification and manually executed public pilot (see evidence.md for immutable receipts).
+- [x] Focused synthetic contracts: durable queue, streamed capture, integrity, process-crash recovery, anonymous public publication and old-version metadata preservation.
+- [~] Full repository assurance and Conductor review.
+- [ ] Natural scheduled execution and periodic historical/recent reconciliation.
+
+Original phase checkboxes remain acceptance milestones: P1/P3 are partial because submissions/advice lack source eligibility and a complete mixed business-item pilot. P4 needs natural schedule proof; P5 collections are not qualified through a denied legacy host. Do not archive this active parent or close its phase issues merely because the report implementation is delivered.

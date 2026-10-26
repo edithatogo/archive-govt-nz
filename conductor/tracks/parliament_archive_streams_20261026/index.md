@@ -1,6 +1,6 @@
 # Parliament archival streams
 
-Status: approved plan; implementation not started. Parent: [#778](https://github.com/edithatogo/archive-govt-nz/issues/778).
+Status: implementation in progress; public report pilot verified; submissions/advice and schedule acceptance pending. Parent: [#778](https://github.com/edithatogo/archive-govt-nz/issues/778).
 
 - [Specification](spec.md)
 - [MoSCoW requirements](requirements.md)

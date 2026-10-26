@@ -1,0 +1,29 @@
+{
+  "schema_version": "parliament-batch/v2",
+  "coverage_claim": false,
+  "records": [
+    {
+      "source_id": "synthetic-report",
+      "url": "https://selectcommittees.parliament.nz/download/SelectCommitteeReport/synthetic",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "size": 12,
+      "content_type": "application/pdf",
+      "observed": 1.0,
+      "record": "{\"kind\": \"report\", \"title\": \"Synthetic fixture\"}",
+      "representation": "source_payload",
+      "capture_state": "captured"
+    }
+  ],
+  "decisions": {
+    "synthetic-report": {
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "basis": "Synthetic permission fixture",
+      "evidence_url": "https://example.org/permission"
+    }
+  },
+  "software": {
+    "package_version": "0.1.0",
+    "python": "3.15.1",
+    "implementation_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  }
+}
