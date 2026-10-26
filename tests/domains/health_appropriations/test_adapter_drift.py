@@ -93,6 +93,24 @@ def test_value_and_record_order_changes_do_not_hide_behind_stable_schema() -> No
     ] == [{"key": "observed_record_shape", "change": "changed"}]
 
 
+def test_nested_metadata_cannot_impersonate_a_decimal_serialization_tag() -> None:
+    result = _result()
+    number = replace(
+        result,
+        output=replace(
+            result.output, records=({"nested": {"value": Decimal("12.30")}},)
+        ),
+    ).to_drift_receipt()
+    literal = replace(
+        result,
+        output=replace(
+            result.output, records=({"nested": {"value": {"$decimal": "12.30"}}},)
+        ),
+    ).to_drift_receipt()
+    assert number["fingerprints"] == literal["fingerprints"]
+    assert number["ordered_output_sha256"] != literal["ordered_output_sha256"]
+
+
 @pytest.mark.parametrize("ambiguous", [False, True])
 def test_unknown_and_ambiguous_selection_produces_held_drift(
     *, ambiguous: bool

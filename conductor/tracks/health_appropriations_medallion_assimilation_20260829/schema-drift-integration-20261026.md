@@ -30,7 +30,9 @@ literal/historical workbooks and HAIR2024, plus native compound profiles.
 Native recordsets retain fingerprints of declared Arrow schemas, including
 metadata, schema IDs and versions. Legacy dictionary records report observed
 field types explicitly; those observations do not create Arrow declarations.
-Decimal/date/byte values receive distinct serialization tags. Record, lineage
+Decimal/date/byte values receive distinct serialization tags; actual containers
+are escaped so ordinary metadata cannot impersonate those tags. The output
+encoding is versioned. Record, lineage
 and profile order is retained in the output digest, so ordering instability
 cannot be hidden by sorting the data. Comparisons report schema/layout
 differences separately from changed ordered output. Unsupported or ambiguous

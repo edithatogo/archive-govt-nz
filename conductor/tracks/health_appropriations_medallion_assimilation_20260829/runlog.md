@@ -10085,9 +10085,23 @@ The new report path preserves unavailable/unsupported dispositions and refuses
 to overwrite retained baseline reports. Existing Silver manifests and original
 objects remain unchanged. Focused dispatch/source-operation tests passed 105
 checks; the final affected text/reconciliation tests passed 34 checks, with
-clean Ruff and strict typing. Full milestone validation is pending. The wider
-Phase 3 checkpoint remains open for remaining adapter and mapping requirements.
+clean Ruff and strict typing. The complete milestone harness passed 8,445
+tests, with 14 skips and 96.87% branch-aware coverage; 81 schemas/71
+representative documents, parity 9/9, all mutation and supply-chain gates
+passed (118 SBOM components). The wider Phase 3 checkpoint remains open for
+remaining adapter and mapping requirements.
 
 Prerequisite PR #784 passed every required hosted check and merged through the
 normal protected path at `247e3862089d1cfc6bc84ce93dc654f9ef2bd7a4`, verified
 on `origin/main`. The schema-drift changes are kept on a separate topic branch.
+
+Self-review reproduced one collision between a Decimal serialization tag and
+an ordinary nested dictionary. The new encoding escapes actual containers,
+versions the output representation and preserves original scalar values. The
+regression failed once, then the 14 affected tests passed; Conductor, format,
+lint and strict typing passed again. The broad suite was collected before this
+last correction, so its unchanged evidence is paired with these scoped checks;
+final hosted checks remain separate. The text baselines and comparison were
+regenerated twice identically after the correction; all 75 source objects were
+rechecked without mutation. Initial receipts remain in the prior candidate
+commit history.

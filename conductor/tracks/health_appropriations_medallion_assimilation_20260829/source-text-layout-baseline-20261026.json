@@ -20,11 +20,13 @@
         "fingerprints": {
           "adapter": "0de30f363209edd46e7e9124ce518b23e0b700a909ea59d0e1597b34cf4950ae",
           "layout": "053e3f8ad9b0b121663eb3b5ed57fc2603ea1cea4fd623bba31080228e1334fd",
-          "observed_record_shape": "f5c3f94b92f24d4abd6cb10a5b6f75eec17a33f2bc43c403baaf3761188d1e52"
+          "observed_record_shape": "f5c3f94b92f24d4abd6cb10a5b6f75eec17a33f2bc43c403baaf3761188d1e52",
+          "output_encoding": "a41c48814baef955f413c9d1117d1f24a59386f5b01a2d9711973217269bc669"
         },
         "normalization_approval": "not_granted",
-        "ordered_output_sha256": "109e17fc6bda204f9a500663b37d2cd04f86fea0d9d35a6194d380944f5e42ea",
-        "receipt_sha256": "f6b2c16d5e75991859efce512d695351aa49412a8d5959f4438e167f9f867d87",
+        "ordered_output_sha256": "1b9110c7e0163875c01972e3bff99fecfa975da641d588033735f005bbb3ffd2",
+        "output_serialization": "archive-govt-nz.health-drift-typed-output/v1",
+        "receipt_sha256": "6060a56f645e7f97e911ed6ce157f4a35f13a73f681bcac7b19be5ebb21d0e8b",
         "schema_scope": "observed_runtime_field_types_not_declared_arrow_schema",
         "schema_version": "archive-govt-nz.health-adapter-drift/v1",
         "selection": {
@@ -79,11 +81,13 @@
         "fingerprints": {
           "adapter": "17ad759127989a0e990716059a89c8a87f8eb3dc6c7aa66ca64abdb7741d2b99",
           "layout": "053e3f8ad9b0b121663eb3b5ed57fc2603ea1cea4fd623bba31080228e1334fd",
-          "observed_record_shape": "f5c3f94b92f24d4abd6cb10a5b6f75eec17a33f2bc43c403baaf3761188d1e52"
+          "observed_record_shape": "f5c3f94b92f24d4abd6cb10a5b6f75eec17a33f2bc43c403baaf3761188d1e52",
+          "output_encoding": "a41c48814baef955f413c9d1117d1f24a59386f5b01a2d9711973217269bc669"
         },
         "normalization_approval": "not_granted",
-        "ordered_output_sha256": "e900478900cfe61140c636a2b0b2f2af5807fe5c16499b2e4393690c2fb79e45",
-        "receipt_sha256": "415e3fe570523938dc6a10628a62d4caa09780c890b090ff2b65fe6268b53802",
+        "ordered_output_sha256": "72340ad6db4fbdc64cbfd282af2a61b48fe08015702d38db9953c1e420feaeea",
+        "output_serialization": "archive-govt-nz.health-drift-typed-output/v1",
+        "receipt_sha256": "7c3e1f9a94ef6db1812f49bd93005b95e3fdc04b0ebed0fddb73fa305e8c4a9e",
         "schema_scope": "observed_runtime_field_types_not_declared_arrow_schema",
         "schema_version": "archive-govt-nz.health-adapter-drift/v1",
         "selection": {
@@ -138,11 +142,13 @@
         "fingerprints": {
           "adapter": "8f78765c922aace5e1f835c60f1d2f11e4ba80eecf0e1ff24e6a8f3ee95084e0",
           "layout": "fb789d14c355b599e49ffb70b09ee739f61f3d1a03af199fb71aab4d4393ff14",
-          "observed_record_shape": "a669cbb9baa56ee074018a293277af30772216bdf7418ee367c1d68faa1f2ebd"
+          "observed_record_shape": "a669cbb9baa56ee074018a293277af30772216bdf7418ee367c1d68faa1f2ebd",
+          "output_encoding": "a41c48814baef955f413c9d1117d1f24a59386f5b01a2d9711973217269bc669"
         },
         "normalization_approval": "not_granted",
-        "ordered_output_sha256": "84fd028e7b00777f13c99b1163a9bb6802f2e2db77957e212b7b6ca8963e46a9",
-        "receipt_sha256": "6d08659d343e91ff20ebd37cfeea5d77f03db0c088d89e4f45ef2ae78a9461eb",
+        "ordered_output_sha256": "55b170bc1dbe73353709a4db8fd7a9116452944f714bbc9cfb98d1e9709aa28d",
+        "output_serialization": "archive-govt-nz.health-drift-typed-output/v1",
+        "receipt_sha256": "67fdbc29552f9098381add341644534430d2a52f00428d6890ae6db3411f84d7",
         "schema_scope": "observed_runtime_field_types_not_declared_arrow_schema",
         "schema_version": "archive-govt-nz.health-adapter-drift/v1",
         "selection": {
@@ -304,11 +310,13 @@
         "fingerprints": {
           "adapter": "2582ef6b0eeb9bfb6fea01b9876a048735b1b40c540b8ce72dad8310b6162f11",
           "layout": "b8d94bfc23a3659b0d772d27c213d35f9d5191363c282d6b071dde612cc1a13e",
-          "observed_record_shape": "90256658ad7ca131564072629e08a894603f995a6bc05b8d17675c69512ab47c"
+          "observed_record_shape": "90256658ad7ca131564072629e08a894603f995a6bc05b8d17675c69512ab47c",
+          "output_encoding": "a41c48814baef955f413c9d1117d1f24a59386f5b01a2d9711973217269bc669"
         },
         "normalization_approval": "not_granted",
-        "ordered_output_sha256": "b0d078a29f860a18be875823b1cad2d0e74b0f0cf330782e7eb9ff48fef35da3",
-        "receipt_sha256": "f15c81e12092d4459cfda63446f6c7979b674e0924febde965bea406a9873f06",
+        "ordered_output_sha256": "292ace03325e5ea4418f01f20140c85a5a0b1106827f90f64d43e5a53d3d62d6",
+        "output_serialization": "archive-govt-nz.health-drift-typed-output/v1",
+        "receipt_sha256": "305fa035bfc123abe265552aeb25d040c03da5414b52d39b813f10b478d4ece3",
         "schema_scope": "observed_runtime_field_types_not_declared_arrow_schema",
         "schema_version": "archive-govt-nz.health-adapter-drift/v1",
         "selection": {

@@ -21,6 +21,7 @@ from archive_govt_nz.domains.health_appropriations.schema_drift import (
 )
 
 _SCHEMA = "archive-govt-nz.health-adapter-drift/v1"
+_OUTPUT_ENCODING = "archive-govt-nz.health-drift-typed-output/v1"
 
 
 def _encode_scalar(value: object) -> dict[str, str]:
@@ -37,7 +38,7 @@ def _encode_scalar(value: object) -> dict[str, str]:
 
 
 def canonical_bytes(value: object) -> bytes:
-    """Keep record order and exact scalar types; sort only object keys."""
+    """Serialize receipts and already-tagged outputs with stable object keys."""
     return json.dumps(
         value,
         sort_keys=True,
@@ -46,6 +47,26 @@ def canonical_bytes(value: object) -> bytes:
         allow_nan=False,
         default=_encode_scalar,
     ).encode("utf-8")
+
+
+def _typed_output(value: object) -> object:
+    """Escape actual containers so data cannot impersonate scalar tags."""
+    if isinstance(value, dict):
+        if any(not isinstance(key, str) for key in value):
+            message = "adapter_drift_object_keys_must_be_strings"
+            raise TypeError(message)
+        return {
+            "$object": [
+                [key, _typed_output(item)] for key, item in sorted(value.items())
+            ]
+        }
+    if isinstance(value, tuple):
+        return {"$tuple": [_typed_output(item) for item in value]}
+    if isinstance(value, list):
+        return [_typed_output(item) for item in value]
+    if value is None or isinstance(value, (str, bool, int, float)):
+        return value
+    return _encode_scalar(value)
 
 
 def adapter_drift_receipt(
@@ -60,6 +81,7 @@ def adapter_drift_receipt(
     fingerprints = {
         "adapter": layout_fingerprint({"adapter": selection["adapter"]}),
         "layout": layout_fingerprint({"layout": output.layout}),
+        "output_encoding": layout_fingerprint({"version": _OUTPUT_ENCODING}),
     }
     if isinstance(output, AdapterOutput):
         field_types: dict[str, set[str]] = {}
@@ -120,7 +142,10 @@ def adapter_drift_receipt(
         "status": "preserved_only" if held else "baseline_recorded",
         "schema_scope": schema_scope,
         "fingerprints": dict(sorted(fingerprints.items())),
-        "ordered_output_sha256": hashlib.sha256(canonical_bytes(payload)).hexdigest(),
+        "output_serialization": _OUTPUT_ENCODING,
+        "ordered_output_sha256": hashlib.sha256(
+            canonical_bytes(_typed_output(payload))
+        ).hexdigest(),
         "normalization_approval": "not_granted",
     }
     return receipt | {

@@ -9,7 +9,7 @@
   "code": [
     {
       "path": "src/archive_govt_nz/domains/health_appropriations/adapter_drift.py",
-      "sha256": "50b90c5f1e96b272e09c6c31a92b6301c35bac8f6aaeaaedf5bf5da0cb074e6b"
+      "sha256": "840b0fdb91dde541bbdd97c6f5d3d30b9afe55b6100ce0b03e5ed9da152d14e0"
     },
     {
       "path": "src/archive_govt_nz/domains/health_appropriations/adapter_dispatch.py",
@@ -49,15 +49,15 @@
   "reports": [
     {
       "path": "source-text-layout-baseline-20261026.json",
-      "sha256": "a159eb595c7962e955d210e6dc55c66603ccc941a5070f894d1b5e720a3bcef9"
+      "sha256": "a0ce61a182666998330397a3cd064955626cf8f46ca096b946093d2219f6216c"
     },
     {
       "path": "source-text-layout-drift-20261026.json",
-      "sha256": "158f008b9c576b8c21360d637bf0c492328e16e3e7ae01d2aaba7bfe4a6a34bd"
+      "sha256": "07d49fc142b5b6caec0f2fb3128613e54926c68c13a47a958ecd358ed8b93db6"
     },
     {
       "path": "source-layout-reconciliation-20261026.json",
-      "sha256": "d32382fa35cf706e8bda9bcaacebd0360b525771e4e9d064de27e2f8775b9f18"
+      "sha256": "e063dd10d022fc402311f6535f205e1ac838d041595b5a5ee5f17a8d2cdf15ba"
     },
     {
       "path": "bronze-workbook-layout-baseline-20261024.json",
@@ -66,6 +66,15 @@
     {
       "path": "source-pdf-layout-baseline-20261018.json",
       "sha256": "481f1e486e2f96943710cad49a2a8bdf8eb20f815399090577521399d514df9b"
+    }
+  ],
+  "review_findings": [
+    {
+      "classification": "implementation_defect",
+      "disposition": "Actual containers are escaped before typed scalar encoding; output encoding is explicitly versioned.",
+      "finding": "Ordinary nested dictionaries could impersonate Decimal serialization tags.",
+      "historical_evidence": "prior candidate commit retains initial receipts; original Bronze objects unchanged",
+      "prior_candidate_commit": "7c5514b590f93ab0f3d45349dfca58a70425d63b"
     }
   ],
   "schema_version": "archive-govt-nz.health-schema-drift-integration/v1",
@@ -81,12 +90,38 @@
   },
   "text_repeat_report_status": "matching",
   "validation": {
+    "final_serializer_correction": {
+      "exact_final_hosted_gate": "pending",
+      "green_affected_tests_passed": 14,
+      "red_tests_failed": 1,
+      "regression": "test_nested_metadata_cannot_impersonate_a_decimal_serialization_tag",
+      "static_gates": [
+        "conductor",
+        "format",
+        "lint",
+        "types"
+      ],
+      "unchanged_full_gate_evidence_reused": true
+    },
     "final_text_and_reconciliation": {
       "passed": 34
     },
     "focused_dispatch_and_source_operations": {
       "passed": 105
     },
-    "full_harness": "pending"
+    "full_harness": {
+      "branch_aware_coverage_percent": 96.87,
+      "command": "TMPDIR=/tmp PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh",
+      "exit_code": 0,
+      "log_sha256": "0a5c8a75141799304e27131ca5ec8daa0c071b6bb31c05799d046e09d414340d",
+      "mutation_and_supply_chain": "passed",
+      "parity_passed": 9,
+      "representative_documents": 71,
+      "sbom_components": 118,
+      "schemas": 81,
+      "test_collection_scope": "before final serializer collision regression",
+      "tests_passed": 8445,
+      "tests_skipped": 14
+    }
   }
 }
