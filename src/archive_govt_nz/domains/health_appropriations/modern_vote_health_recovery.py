@@ -15,6 +15,12 @@ from archive_govt_nz.domains.health_appropriations import (
 from archive_govt_nz.domains.health_appropriations import (
     overview_operations,
 )
+from archive_govt_nz.domains.health_appropriations.overview_gold_query import (
+    query_overview,
+)
+from archive_govt_nz.domains.health_appropriations.source_operations import (
+    SourceRequest,
+)
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
     verified_snapshot,
 )
@@ -87,6 +93,9 @@ def recover_modern_overviews(
             runs.append(
                 {
                     "files": files,
+                    "gold_query": query_overview(
+                        SourceRequest(source, output, **context), files["MANIFEST.json"]
+                    ),
                     "value": str(row["value"]),
                     "unit": row["unit"],
                     "reference_period": row["reference_period"],
