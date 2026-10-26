@@ -5,7 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from io import BytesIO
 from typing import TYPE_CHECKING, Literal, cast
 from zipfile import BadZipFile
@@ -101,12 +101,34 @@ class AdapterSelection:
         return receipt
 
 
+def _capture_drift(
+    selection: AdapterSelection, output: AdapterOutput | CompoundAdapterOutput
+) -> bytes:
+    from archive_govt_nz.domains.health_appropriations.adapter_drift import (  # noqa: PLC0415 - Selection-only paths do not load Arrow drift support.
+        adapter_drift_receipt,
+        canonical_bytes,
+    )
+
+    return canonical_bytes(adapter_drift_receipt(selection.to_receipt(), output))
+
+
 @dataclass(frozen=True, slots=True)
 class DispatchResult:
     """Adapter output paired with the decision that selected it."""
 
     selection: AdapterSelection
     output: AdapterOutput
+    _drift_bytes: bytes = field(init=False, repr=False, compare=False)
+
+    def __post_init__(self) -> None:
+        """Retain immutable drift evidence at the dispatch boundary."""
+        object.__setattr__(
+            self, "_drift_bytes", _capture_drift(self.selection, self.output)
+        )
+
+    def to_drift_receipt(self) -> dict[str, object]:
+        """Bind selection, observed schema and ordered output without re-extraction."""
+        return json.loads(self._drift_bytes)
 
 
 @dataclass(frozen=True, slots=True)
@@ -116,6 +138,17 @@ class NativeDispatchResult:
     selection: AdapterSelection
     output: AdapterOutput | CompoundAdapterOutput
     kind: Literal["health-native-dispatch/v1"] = "health-native-dispatch/v1"
+    _drift_bytes: bytes = field(init=False, repr=False, compare=False)
+
+    def __post_init__(self) -> None:
+        """Retain immutable drift evidence at the dispatch boundary."""
+        object.__setattr__(
+            self, "_drift_bytes", _capture_drift(self.selection, self.output)
+        )
+
+    def to_drift_receipt(self) -> dict[str, object]:
+        """Bind native schemas and ordered tables to the exact selection."""
+        return json.loads(self._drift_bytes)
 
 
 def _detect(payload: bytes, declared: str) -> str | None:

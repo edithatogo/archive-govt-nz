@@ -101,6 +101,11 @@ every planned record set, measure or operational workflow.
 - [Source layout inventory baseline, 2026-10-03](./source-layout-baseline-20261003.json)
 - [Source layout cohort recheck, 2026-10-24](./source-layout-reconciliation-20261024.md)
 - [Source layout cohort recheck machine receipt, 2026-10-24](./source-layout-reconciliation-20261024.json)
+- [Schema drift integration, 2026-10-26](./schema-drift-integration-20261026.md)
+- [Schema drift integration machine receipt](./schema-drift-integration-20261026.json)
+- [Captured CSV/HTML structural baselines](./source-text-layout-baseline-20261026.json)
+- [Captured CSV/HTML repeat drift report](./source-text-layout-drift-20261026.json)
+- [Combined workbook/PDF/text reconciliation](./source-layout-reconciliation-20261026.json)
 - [Budget source-literal dimensions and unresolved mapping validation](./budget-source-dimensions.validation.json)
 - [Phase 3.2 dimension-mapping audit, 2026-10-26](./dimension-mapping-audit-20261026.json): source literals, lineage/census coverage and fail-closed mapping rules; no unsupported target mappings were assigned.
 - [Context-source Bronze adapters](./context-adapters.md)

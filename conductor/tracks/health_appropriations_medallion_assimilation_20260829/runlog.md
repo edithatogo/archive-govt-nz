@@ -10067,3 +10067,27 @@ lint, types and two focused selector tests passed. This optimization avoids
 repeating completed gates after an unchanged-tree environmental failure; the
 full PR/CI gate remains intact. Phase 3.2 mapping adjudication and other source
 families remain open.
+
+## 2026-10-26 — Phase 3.3 schema-drift integration
+
+Qualified the three captured CSVs (HAIR2024 fig27/fig28 and CPIQ.SE9A) and the
+Pharmac CPB HTML table against their exact Bronze pins and existing source
+parsers. Two actual rebuilds yielded byte-identical text baseline JSON and
+matching layout/schema/ordered-output drift evidence. Reused and rechecked the
+existing 12-source Bronze workbook inventory and 59-source PDF inventory. The
+combined v2 reconciliation covers all 75 captured objects. This closes the
+four source-profile gaps without granting additional parser, rights, semantic
+or comparability approval.
+
+All common and native dispatch results now retain immutable drift snapshots;
+native Arrow declarations and observed legacy field types remain distinct.
+The new report path preserves unavailable/unsupported dispositions and refuses
+to overwrite retained baseline reports. Existing Silver manifests and original
+objects remain unchanged. Focused dispatch/source-operation tests passed 105
+checks; the final affected text/reconciliation tests passed 34 checks, with
+clean Ruff and strict typing. Full milestone validation is pending. The wider
+Phase 3 checkpoint remains open for remaining adapter and mapping requirements.
+
+Prerequisite PR #784 passed every required hosted check and merged through the
+normal protected path at `247e3862089d1cfc6bc84ce93dc654f9ef2bd7a4`, verified
+on `origin/main`. The schema-drift changes are kept on a separate topic branch.

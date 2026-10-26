@@ -1,0 +1,92 @@
+{
+  "approval": {
+    "comparability": "not_granted",
+    "normalization": "not_granted",
+    "rights": "not_granted"
+  },
+  "as_of": "2026-10-26",
+  "bronze_objects_unchanged": true,
+  "code": [
+    {
+      "path": "src/archive_govt_nz/domains/health_appropriations/adapter_drift.py",
+      "sha256": "50b90c5f1e96b272e09c6c31a92b6301c35bac8f6aaeaaedf5bf5da0cb074e6b"
+    },
+    {
+      "path": "src/archive_govt_nz/domains/health_appropriations/adapter_dispatch.py",
+      "sha256": "bf30e48f90dc4194ba414e3fd947d86e6455160e878c2ddede20bcb9ebbfa31f"
+    },
+    {
+      "path": "src/archive_govt_nz/domains/health_appropriations/text_layout_baseline.py",
+      "sha256": "096a35b1b1017980a32a3f446e4657136678d129f6320d770bb569c190f8d420"
+    },
+    {
+      "path": "src/archive_govt_nz/domains/health_appropriations/source_layout_reconciliation.py",
+      "sha256": "24cc4b0e022874b22be995b0c3ec0464e2a273bf27d65c567659075c9d2dc5e4"
+    },
+    {
+      "path": "tools/health_text_layout_baseline.py",
+      "sha256": "1b8d9b1126baa6bbe7dc927fee9bc8a2abae2755767e964f0466712ed2cc36b7"
+    },
+    {
+      "path": "tools/health_source_layout_reconciliation.py",
+      "sha256": "bca6fa609c4389cd7df7b42ae1c4cd854e34c71b22c78f9a0514f22f3c05151b"
+    }
+  ],
+  "dispatch_integration": {
+    "legacy_schema_scope": "observed_field_types_not_inferred_arrow",
+    "native_compound": "automatic_immutable_snapshot",
+    "native_schema_scope": "declared_arrow_including_metadata_and_contract_identity",
+    "preserved_only_comparison": "held",
+    "prior_package_manifests": "unchanged",
+    "single_result": "automatic_immutable_snapshot"
+  },
+  "issue": 209,
+  "phase_3_checkpoint": "open",
+  "remaining_scope": [
+    "Remaining Phase 3.2 adapter registrations and dimension/mapping evidence.",
+    "Full phase integration and checkpoint acceptance."
+  ],
+  "reports": [
+    {
+      "path": "source-text-layout-baseline-20261026.json",
+      "sha256": "a159eb595c7962e955d210e6dc55c66603ccc941a5070f894d1b5e720a3bcef9"
+    },
+    {
+      "path": "source-text-layout-drift-20261026.json",
+      "sha256": "158f008b9c576b8c21360d637bf0c492328e16e3e7ae01d2aaba7bfe4a6a34bd"
+    },
+    {
+      "path": "source-layout-reconciliation-20261026.json",
+      "sha256": "d32382fa35cf706e8bda9bcaacebd0360b525771e4e9d064de27e2f8775b9f18"
+    },
+    {
+      "path": "bronze-workbook-layout-baseline-20261024.json",
+      "sha256": "29a8501358c358874225df9099f32b19f29649c7cd9e000b2f23be1fe6f8dd0d"
+    },
+    {
+      "path": "source-pdf-layout-baseline-20261018.json",
+      "sha256": "481f1e486e2f96943710cad49a2a8bdf8eb20f815399090577521399d514df9b"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-schema-drift-integration/v1",
+  "source_cohort": "source-census.json",
+  "structural_coverage": {
+    "captured_source_count": 75,
+    "pdf_layout_source_count": 59,
+    "pdf_layout_unavailable_count": 0,
+    "sources_with_structural_baseline": 75,
+    "sources_without_structural_baseline": 0,
+    "text_layout_source_count": 4,
+    "workbook_layout_source_count": 12
+  },
+  "text_repeat_report_status": "matching",
+  "validation": {
+    "final_text_and_reconciliation": {
+      "passed": 34
+    },
+    "focused_dispatch_and_source_operations": {
+      "passed": 105
+    },
+    "full_harness": "pending"
+  }
+}
