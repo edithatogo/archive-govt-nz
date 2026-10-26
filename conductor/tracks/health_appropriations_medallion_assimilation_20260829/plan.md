@@ -1749,6 +1749,17 @@ deliberately exercise version handling.
   Platinum and interrupted-stage recovery. [M-16, M-18; AC-12, AC-16]
   (38 files per run, byte-identical; all 23 donor objects unchanged;
   `originals-product-replay.md`)
+- [x] Rebuild all 20 reviewed common Estimates overview editions twice from
+  exact Bronze, including the source-compatible 2002/03 boundary. Reconcile
+  221 selected facts through the fixed Gold query, preserve every page
+  disposition, and join the five existing 2009/10-2013/14 census supplements
+  by independent pins. Keep the primary census immutable. Verify unchanged
+  modern Silver/Gold receipts and byte-identical 2002/03 native/common tables.
+  See `reviewed-vote-health-recovery-20261027.json` and
+  `reviewed-overview-recovery-20261027.md`. Other source-native/canonical
+  adapters, cross-source comparison and complete Platinum remain open.
+  [M-05, M-06, M-11, M-13, M-16, M-18; AC-08, AC-09, AC-11, AC-12, AC-16]
+
 - [~] Add a failing recovery contract for empty derivative state, then rebuild
   Silver, Gold, SQLite, plots/reports and Platinum metadata from Bronze, locked
   code and parameters. [M-10, M-16, M-18; AC-08, AC-12, AC-16] Two fresh pinned

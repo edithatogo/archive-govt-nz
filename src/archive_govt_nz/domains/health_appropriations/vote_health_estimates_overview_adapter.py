@@ -215,6 +215,18 @@ _PROFILES = MappingProxyType(
             )
             for item in modern.PROFILES.values()
         },
+        vote_health_estimates_summary.VINTAGE: ReviewedOverviewProfile(
+            adapter_id="nz-treasury-vote-health-estimates-2002-03-overview",
+            profile=vote_health_estimates_summary.PROFILE,
+            transformation=vote_health_estimates_summary.TRANSFORMATION,
+            vintage=vote_health_estimates_summary.VINTAGE,
+            source_sha256=vote_health_estimates_summary.SOURCE_SHA256,
+            page_count=vote_health_estimates_summary.PAGE_COUNT,
+            fact_count=7,
+            parse_pages=vote_health_estimates_summary.parse_overview_pages,
+            quality_flags=(),
+            disposition_reason="seven_reviewed_overview_headlines_only",
+        ),
         vote_health_estimates_summary.VINTAGE_2004_05: ReviewedOverviewProfile(
             adapter_id="nz-treasury-vote-health-estimates-2004-05-overview",
             profile=vote_health_estimates_summary.PROFILE_2004_05,
@@ -419,6 +431,12 @@ def reviewed_overview_profile(source_vintage: str) -> ReviewedOverviewProfile:
         message = "unsupported reviewed overview vintage"
         raise ValueError(message)
     return profile
+
+
+def reviewed_overview_profiles() -> tuple[ReviewedOverviewProfile, ...]:
+    """Enumerate exact reviewed controls, including the retained legacy boundary."""
+    vintages = {*_PROFILES, vote_health_estimates_summary.VINTAGE_2016_17}
+    return tuple(reviewed_overview_profile(vintage) for vintage in sorted(vintages))
 
 
 def vote_health_estimates_overview_registration(

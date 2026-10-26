@@ -1294,7 +1294,7 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
     )
     monkeypatch.setattr(
         MODULE.modern_vote_health_recovery,
-        "recover_modern_overviews",
+        "recover_reviewed_overviews",
         lambda *_args: {"status": "verified_repeat_identical"},
     )
     result = MODULE.run()

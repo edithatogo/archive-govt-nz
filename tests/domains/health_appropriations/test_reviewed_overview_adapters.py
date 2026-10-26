@@ -178,8 +178,10 @@ def test_overview_adapter_fails_closed_on_unreviewed_input(
     assert output.losses[0].disposition == "preserved_only"
 
 
-@pytest.mark.parametrize("vintage", [overview.VINTAGE, "unreviewed-edition"])
-def test_overview_factory_rejects_unreviewed_or_composite_editions(
+@pytest.mark.parametrize(
+    "vintage", ["Treasury-Vote-Health-Estimates-2003-04", "unreviewed-edition"]
+)
+def test_overview_factory_rejects_unreviewed_editions(
     vintage: str,
 ) -> None:
     with pytest.raises(ValueError, match="unsupported reviewed overview vintage"):
