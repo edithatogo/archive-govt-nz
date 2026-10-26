@@ -7,8 +7,10 @@ The track remains `in_progress`. A merged helper is not whole-phase completion.
 ## Current implementation checkpoint
 
 See `phases-5-9-review-20261026.md` for the current review and exact remaining
-contracts. The captured census now has 75 records with Bronze objects; the
-counts and profile lists below describe their original dated checkpoints.
+contracts. The primary census has 75 records with Bronze objects; five existing
+edition-specific census supplements are now independently pinned for the
+reviewed overview recovery cohort. See `reviewed-overview-recovery-20261027.md`.
+The counts and profile lists below describe their original dated checkpoints.
 The five modern Estimates headline profiles have separate repeat-build
 evidence; they do not close Phase 5 or the final track gate.
 
