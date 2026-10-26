@@ -1,0 +1,289 @@
+[
+  {
+    "repo": "edithatogo/archive-govt-nz-global",
+    "config": "parliament_catalogue",
+    "http_status": 200,
+    "rows_returned": 21,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/archive-govt-nz-treasury",
+    "config": "treasury",
+    "http_status": 200,
+    "rows_returned": 54,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/archive-govt-nz-treasury-csv",
+    "config": "default",
+    "http_status": 200,
+    "rows_returned": 54,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/archive-govt-nz-treasury-data",
+    "config": "default",
+    "http_status": 200,
+    "rows_returned": 54,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/corpus-legislation-nz",
+    "config": "legislation",
+    "http_status": 200,
+    "rows_returned": 10,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/corpus-nz-hathi",
+    "config": "metadata",
+    "http_status": 200,
+    "rows_returned": 0,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/corpus-social-media-government-nz",
+    "config": "normalized",
+    "http_status": 200,
+    "rows_returned": 10,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/courts-nz-public-notices-archive",
+    "config": "normalized",
+    "http_status": 200,
+    "rows_returned": 100,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/digitalnz",
+    "config": "digitalnz_collections",
+    "http_status": 200,
+    "rows_returned": 100,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/digitalnz",
+    "config": "digitalnz_country_totals",
+    "http_status": 200,
+    "rows_returned": 100,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/digitalnz",
+    "config": "digitalnz_papers_past_newspapers",
+    "http_status": 200,
+    "rows_returned": 66,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/digitalnz",
+    "config": "rnz_collections",
+    "http_status": 200,
+    "rows_returned": 19,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/digitalnz",
+    "config": "rnz_release_manifests",
+    "http_status": 200,
+    "rows_returned": 44,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/digitalnz",
+    "config": "rnz_usage",
+    "http_status": 200,
+    "rows_returned": 4,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "conformance_findings",
+    "http_status": 200,
+    "rows_returned": 1,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "event_log",
+    "http_status": 200,
+    "rows_returned": 4,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "event_revisions",
+    "http_status": 200,
+    "rows_returned": 5,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "evidence_deltas",
+    "http_status": 200,
+    "rows_returned": 5,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "ocel_event_object_links",
+    "http_status": 200,
+    "rows_returned": 4,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "ocel_events",
+    "http_status": 200,
+    "rows_returned": 4,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "ocel_objects",
+    "http_status": 200,
+    "rows_returned": 1,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "process_edges",
+    "http_status": 200,
+    "rows_returned": 3,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "process_variants",
+    "http_status": 200,
+    "rows_returned": 1,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "simulation_cases",
+    "http_status": 200,
+    "rows_returned": 100,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "simulation_daily_metrics",
+    "http_status": 200,
+    "rows_returned": 100,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "simulation_event_log",
+    "http_status": 200,
+    "rows_returned": 100,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "simulation_event_revisions",
+    "http_status": 200,
+    "rows_returned": 100,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "simulation_ocel_event_object_links",
+    "http_status": 200,
+    "rows_returned": 100,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "simulation_ocel_events",
+    "http_status": 200,
+    "rows_returned": 100,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "simulation_ocel_objects",
+    "http_status": 200,
+    "rows_returned": 100,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "config": "simulation_summaries",
+    "http_status": 200,
+    "rows_returned": 4,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/fyi-archive-nz",
+    "config": "default",
+    "http_status": 200,
+    "rows_returned": 100,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/nz-hansard-corpus",
+    "config": "default",
+    "http_status": 200,
+    "rows_returned": 32,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/nz-health-appropriations",
+    "config": "donor_facts",
+    "http_status": 200,
+    "rows_returned": 100,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/nz-health-appropriations",
+    "config": "field_lineage",
+    "http_status": 200,
+    "rows_returned": 100,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/nz-health-appropriations",
+    "config": "health_spending_gdp_share",
+    "http_status": 200,
+    "rows_returned": 24,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/nz-health-appropriations",
+    "config": "historical_nominal",
+    "http_status": 200,
+    "rows_returned": 24,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/nz-health-appropriations",
+    "config": "historical_yoy",
+    "http_status": 200,
+    "rows_returned": 24,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/nz-health-appropriations",
+    "config": "recent_classification_trends",
+    "http_status": 200,
+    "rows_returned": 16,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/nz-health-appropriations",
+    "config": "recent_functional_breakdown",
+    "http_status": 200,
+    "rows_returned": 4,
+    "error": null
+  },
+  {
+    "repo": "edithatogo/corpus-legislation-nz-historical",
+    "config": "historical",
+    "http_status": 200,
+    "rows_returned": 17,
+    "error": null
+  }
+]

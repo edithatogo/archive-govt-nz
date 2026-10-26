@@ -401,3 +401,22 @@ def test_health_provenance_candidate_requires_exact_document_and_fingerprint(
     )
     path.write_bytes(path.read_bytes() + b" ")
     assert not supply_chain.is_reviewed_public_path(filename, finding)
+
+
+def test_public_collection_receipt_is_bound_to_reviewed_bytes(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """Reviewed public IDs do not exempt changed or unrelated documents."""
+    filename = "evidence/huggingface-hardening/20261026/collection-updates.json"
+    finding = {
+        "type": "Base64 High Entropy String",
+        "line_number": 18,
+        "hashed_secret": "ec82554c8f7e51b6cb76a1b4c114b1eb98b60232",
+    }
+    assert supply_chain.is_reviewed_public_path(filename, finding)
+    assert not supply_chain.is_reviewed_public_path("other.json", finding)
+    target = tmp_path / filename
+    target.parent.mkdir(parents=True)
+    target.write_bytes((supply_chain.REPOSITORY_ROOT / filename).read_bytes() + b" ")
+    monkeypatch.setattr(supply_chain, "REPOSITORY_ROOT", tmp_path)
+    assert not supply_chain.is_reviewed_public_path(filename, finding)

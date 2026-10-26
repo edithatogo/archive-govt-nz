@@ -69,11 +69,13 @@ Original phase checkboxes remain acceptance milestones: P1/P3 are partial becaus
 
 ## P6: Hub metadata and collection hardening (user follow-up)
 
+Issue: https://github.com/edithatogo/archive-govt-nz/issues/789
+
 - [x] Audit 44 related datasets and four collections; preserve identity, original payloads and access gates.
 - [x] Correct maintained cards, source-specific rights/coverage, compatible viewer subsets and collection membership; verify saved native revisions.
 - [x] Publish a derived Parliament catalogue and anonymously verify all referenced source objects and 21 viewer rows.
 - [x] Prevent default harvests overwriting a maintained card or a missing explicit card causing fallback replacement; remove fabricated schema/licence assertions.
 - [x] Review metadata and source fixes; qualify affected tests and remaining assurance stages after intentional snapshot update.
-- [ ] Accept remaining hosted viewer conversions after actual config/row readback; pending service conversions are not accepted.
+- [x] Accept all14 hosted viewers after41 actual config/row probes; historical and RNZ faults repaired and isolated Python3.15 readers verified.
 
 This completes metadata maintenance for the inspected estate, not missing source acquisitions, gates, rights clearances or full historical archival.

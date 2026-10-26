@@ -1,0 +1,22 @@
+{
+  "runtime": "Python 3.15.1",
+  "environment": "isolated uv datasets qualification, no repository dependency or lock change",
+  "historical_legislation": {
+    "config": "historical",
+    "split": "train",
+    "rows_streamed": 101,
+    "agency_feature": "List(Value(string))",
+    "revision": "d7ce1a6a4565f3f719c7acc929dca4fa005c7daf"
+  },
+  "rnz_release_manifests": {
+    "config": "rnz_release_manifests",
+    "split": "train",
+    "rows_streamed": 74,
+    "revision": "7a566bb672a627ba8df075ba303fdea74c5fc9c8"
+  },
+  "hosted_row_readback": {
+    "successful_configs": 41,
+    "datasets": 14,
+    "historical_backend": "first_rows_http_200"
+  }
+}

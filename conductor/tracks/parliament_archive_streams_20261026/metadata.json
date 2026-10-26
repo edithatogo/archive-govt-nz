@@ -99,9 +99,12 @@
     "public_collections_verified": 4,
     "ungated_card_downloads_verified": 42,
     "existing_gated_repositories_preserved": 2,
-    "tabular_configurations_verified": 12,
+    "tabular_configurations_verified": 14,
     "tabular_repositories_checked": 14,
     "parliament_catalogue_rows_verified": 21,
-    "evidence": "../../../evidence/huggingface-hardening/20261026"
+    "evidence": "../../../evidence/huggingface-hardening/20261026",
+    "first_row_probes_passed": 41,
+    "phase_issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/789",
+    "estate_landing_collection_verified": true
   }
 }

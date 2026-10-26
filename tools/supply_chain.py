@@ -55,6 +55,10 @@ PUBLIC_LINEAGE_DOCUMENTS = {
 }
 ASSURANCE_ROOT = "evidence/assurance/final-integrated-20260905/"
 PUBLIC_ASSURANCE_DOCUMENTS = {
+    # Native public collection IDs, reviewed in the exact immutable receipt.
+    "evidence/huggingface-hardening/20261026/collection-updates.json": (
+        "57f09e27690a09e26b0562d6fe9251564c92b0586ecb4262a72f07b2fd2f2093"
+    ),
     ASSURANCE_ROOT + "mutation-legislation_durable-logs/mutant-25.log": (
         "aa7cb8776f68ee8518c17c8fd0f574ea3ddf39f8f3e0de119ddf165477972c65"
     ),

@@ -1,0 +1,47 @@
+{
+  "slug": "edithatogo/dataset-estate-catalog-6a695b6dcc338fa1be059d04",
+  "private": false,
+  "description": "Authoritative registry, reconciliation process, and registry-driven collection views for the edithatogo dataset estate.",
+  "items": [
+    {
+      "item_id": "edithatogo/dataset-estate-registry",
+      "type": "dataset",
+      "note": "Authoritative machine-readable registry, schema, process, and reconciliation evidence."
+    },
+    {
+      "item_id": "edithatogo/fyi-archive-global-public-information-request-archives-6a6946d45c8cc5852a1d62d4",
+      "type": "collection",
+      "note": "Independent public-information request archive family."
+    },
+    {
+      "item_id": "edithatogo/new-zealand-legal-and-parliamentary-corpora-6a2eb7e16d4ee03d87eae247",
+      "type": "collection",
+      "note": "NZ legal and parliamentary registry view."
+    },
+    {
+      "item_id": "edithatogo/hathitrust-nz-6a472b1e3de68381856b31f9",
+      "type": "collection",
+      "note": "HathiTrust-NZ registry view."
+    },
+    {
+      "item_id": "edithatogo/new-zealand-public-web-archives-6a2eb7d81aa2f5a72444bd5a",
+      "type": "collection",
+      "note": "NZ public-web archive registry view."
+    },
+    {
+      "item_id": "edithatogo/foi-and-public-information-research-6a2e1141d8c6003998146df8",
+      "type": "collection",
+      "note": "FOI and public-information registry view."
+    },
+    {
+      "item_id": "edithatogo/hermes-tool-calling-experiments-6a2e124b52702b466be7efed",
+      "type": "collection",
+      "note": "Hermes experiment registry view."
+    },
+    {
+      "item_id": "edithatogo/health-economics-and-outcomes-research-6a2e9986698340a8c8f4e4b4",
+      "type": "collection",
+      "note": "Health economics registry view."
+    }
+  ]
+}

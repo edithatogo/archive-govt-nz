@@ -171,78 +171,27 @@
       "simulation_ocel_objects",
       "simulation_summaries"
     ],
-    "actual_configs": [],
-    "configs_verified": false,
-    "pending": [
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "conformance_findings"
-      },
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "event_log"
-      },
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "event_revisions"
-      },
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "evidence_deltas"
-      },
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "ocel_event_object_links"
-      },
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "ocel_events"
-      },
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "ocel_objects"
-      },
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "process_edges"
-      },
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "process_variants"
-      },
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "simulation_cases"
-      },
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "simulation_daily_metrics"
-      },
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "simulation_event_log"
-      },
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "simulation_event_revisions"
-      },
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "simulation_ocel_event_object_links"
-      },
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "simulation_ocel_events"
-      },
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "simulation_ocel_objects"
-      },
-      {
-        "dataset": "edithatogo/foi-process-event-logs",
-        "config": "simulation_summaries"
-      }
+    "actual_configs": [
+      "conformance_findings",
+      "event_log",
+      "event_revisions",
+      "evidence_deltas",
+      "ocel_event_object_links",
+      "ocel_events",
+      "ocel_objects",
+      "process_edges",
+      "process_variants",
+      "simulation_cases",
+      "simulation_daily_metrics",
+      "simulation_event_log",
+      "simulation_event_revisions",
+      "simulation_ocel_event_object_links",
+      "simulation_ocel_events",
+      "simulation_ocel_objects",
+      "simulation_summaries"
     ],
+    "configs_verified": true,
+    "pending": [],
     "failed": [],
     "error": null
   },
@@ -286,38 +235,17 @@
       "recent_classification_trends",
       "recent_functional_breakdown"
     ],
-    "actual_configs": [],
-    "configs_verified": false,
-    "pending": [
-      {
-        "dataset": "edithatogo/nz-health-appropriations",
-        "config": "donor_facts"
-      },
-      {
-        "dataset": "edithatogo/nz-health-appropriations",
-        "config": "field_lineage"
-      },
-      {
-        "dataset": "edithatogo/nz-health-appropriations",
-        "config": "health_spending_gdp_share"
-      },
-      {
-        "dataset": "edithatogo/nz-health-appropriations",
-        "config": "historical_nominal"
-      },
-      {
-        "dataset": "edithatogo/nz-health-appropriations",
-        "config": "historical_yoy"
-      },
-      {
-        "dataset": "edithatogo/nz-health-appropriations",
-        "config": "recent_classification_trends"
-      },
-      {
-        "dataset": "edithatogo/nz-health-appropriations",
-        "config": "recent_functional_breakdown"
-      }
+    "actual_configs": [
+      "donor_facts",
+      "field_lineage",
+      "health_spending_gdp_share",
+      "historical_nominal",
+      "historical_yoy",
+      "recent_classification_trends",
+      "recent_functional_breakdown"
     ],
+    "configs_verified": true,
+    "pending": [],
     "failed": [],
     "error": null
   }
