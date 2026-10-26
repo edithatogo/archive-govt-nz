@@ -135,6 +135,7 @@ def test_retry_after_date_and_invalid_value(tmp_path: Path, retry_after: str) ->
         (503, b"busy", "report_search_failed"),
         (200, b"x" * (4 * 1024 * 1024 + 1), "report_response_oversize"),
     ],
+    ids=["unavailable", "oversize"],
 )
 def test_api_failure_does_not_advance_cursor(
     tmp_path: Path, status: int, body: bytes, reason: str
