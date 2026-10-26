@@ -30,7 +30,9 @@ def test_build_huggingface_dataset_card() -> None:
     }
     card = build_huggingface_dataset_card(summary)
     assert "language:\n- en" in card
-    assert "license: cc-by-4.0" in card
+    assert "license: other" in card
+    assert "size_categories" not in card
+    assert "Source-specific rights apply" in card
     assert "50" in card
     assert "120" in card
 
@@ -106,3 +108,41 @@ def test_publish_archive_missing_token() -> None:
         HuggingFacePublishError, match="Missing Hugging Face authentication token"
     ):
         publish_archive_to_huggingface(config)
+
+
+def test_unknown_counts_do_not_assert_empty_archive() -> None:
+    """Missing harvest evidence is unknown, not zero or whole-repo coverage."""
+    card = build_huggingface_dataset_card()
+    assert "Datasets Catalogued**: unknown" in card
+    assert "Resources Captured into CAS**: unknown" in card
+    assert "not other namespaces" in card
+
+
+def test_maintained_card_survives_scheduled_upload(tmp_path: Path) -> None:
+    """Default publication cannot clobber a human-maintained mixed-source card."""
+    api = MagicMock()
+    api.file_exists.return_value = True
+    publish_archive_to_huggingface(
+        HuggingFacePublishConfig(
+            repo_id="fictional/archive", token="fictional", evidence_dir=tmp_path
+        ),
+        api=api,
+    )
+    assert api.upload_folder.call_args.kwargs["ignore_patterns"] == ["README.md"]
+
+
+def test_missing_replacement_card_fails_before_native_write(tmp_path: Path) -> None:
+    """A typo in a replacement-card path cannot overwrite maintained metadata."""
+    api = MagicMock()
+    with pytest.raises(HuggingFacePublishError, match="Explicit dataset card"):
+        publish_archive_to_huggingface(
+            HuggingFacePublishConfig(
+                repo_id="fictional/archive",
+                token="fictional",
+                card_path=tmp_path / "absent.md",
+                evidence_dir=tmp_path,
+            ),
+            api=api,
+        )
+    api.create_repo.assert_not_called()
+    api.upload_folder.assert_not_called()

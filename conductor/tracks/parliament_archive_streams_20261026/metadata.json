@@ -3,7 +3,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-10-26T10:51:10.498Z",
-  "updated_at": "2026-10-26T13:25:17.414766+00:00",
+  "updated_at": "2026-10-26T13:52:48.431341+00:00",
   "description": "Bounded resumable Parliament submissions, advice and committee-document archival with incremental verified Hugging Face delivery.",
   "approval_status": "approved_implementation_review_and_archive",
   "github": {
@@ -84,7 +84,7 @@
     "repo_type": "dataset",
     "required_visibility": "public",
     "anonymous_read_verified": true,
-    "observed_revision": "f4bb4d6b924e865b5fb58331e1bf42bc20dcc19b",
+    "observed_revision": "cae06e6f925dac9505241c929e3212dac2ef98cb",
     "scope": "all eligible NZ Parliament archive outputs; source reuse eligibility remains separate"
   },
   "automation": {
@@ -93,5 +93,15 @@
     "status": "ACTIVE",
     "interval_hours": 2,
     "natural_run_verified": false
+  },
+  "hub_hardening": {
+    "datasets_verified": 44,
+    "public_collections_verified": 4,
+    "ungated_card_downloads_verified": 42,
+    "existing_gated_repositories_preserved": 2,
+    "tabular_configurations_verified": 12,
+    "tabular_repositories_checked": 14,
+    "parliament_catalogue_rows_verified": 21,
+    "evidence": "../../../evidence/huggingface-hardening/20261026"
   }
 }

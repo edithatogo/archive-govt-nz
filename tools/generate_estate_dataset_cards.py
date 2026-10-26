@@ -146,15 +146,11 @@ def generate_dataset_card_content(
     """Format standard Hugging Face dataset card Markdown with YAML frontmatter."""
     tags_yaml = "\n".join(f"  - {tag}" for tag in spec.tags)
     return f"""---
-dataset_info:
-  config_name: {spec.config_name}
-  features:
-    - name: id
-      dtype: string
-  homepage: {spec.homepage}
-  license: {spec.license_tag}
-  language:
-    - en
+pretty_name: {spec.title}
+homepage: {spec.homepage}
+license: {spec.license_tag}
+language:
+  - en
 tags:
 {tags_yaml}
 ---
@@ -165,10 +161,11 @@ tags:
 
 ## Governed Preservation Architecture
 
-This dataset adheres to the standardized **Archive Govt NZ** architecture:
-- Original source files are preserved byte-for-byte (SHA-256 + BLAKE3).
-- Derivatives and tables are admission-gated and strictly separated.
-- Secondary preservation layers act as non-authoritative fallback mirrors.
+The architecture below describes design intent, not proof that this dataset is
+complete or that every component is deployed. Inspect published manifests for
+actual originals, checksums, rights and coverage. No viewer schema or file
+configuration is asserted until actual compatible files are qualified.
+Project-owned code licences do not relicense archived source documents.
 
 ## Architecture Specification
 

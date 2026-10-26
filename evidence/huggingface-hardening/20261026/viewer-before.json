@@ -1,0 +1,26 @@
+[
+  {
+    "repo": "edithatogo/archive-govt-nz-treasury-data",
+    "status": 200,
+    "error": null,
+    "body": "{\"splits\":[{\"dataset\":\"edithatogo/archive-govt-nz-treasury-data\",\"config\":\"default\",\"split\":\"train\"}],\"pending\":[],\"failed\":[]}"
+  },
+  {
+    "repo": "edithatogo/nz-hansard-corpus",
+    "status": 200,
+    "error": null,
+    "body": "{\"splits\":[{\"dataset\":\"edithatogo/nz-hansard-corpus\",\"config\":\"default\",\"split\":\"train\"}],\"pending\":[],\"failed\":[]}"
+  },
+  {
+    "repo": "edithatogo/nz-health-appropriations",
+    "status": 200,
+    "error": null,
+    "body": "{\"splits\":[{\"dataset\":\"edithatogo/nz-health-appropriations\",\"config\":\"default\",\"split\":\"train\"}],\"pending\":[],\"failed\":[]}"
+  },
+  {
+    "repo": "edithatogo/corpus-legislation-nz",
+    "status": 200,
+    "error": null,
+    "body": "{\"splits\":[{\"dataset\":\"edithatogo/corpus-legislation-nz\",\"config\":\"default\",\"split\":\"validation\"}],\"pending\":[],\"failed\":[]}"
+  }
+]

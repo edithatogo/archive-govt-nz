@@ -1,0 +1,71 @@
+[
+  {
+    "slug": "edithatogo/new-zealand-legal-and-parliamentary-corpora-6a2eb7e16d4ee03d87eae247",
+    "private": false,
+    "item_count": 8,
+    "description": "NZ legislation, Hansard and bounded Parliament report archives. Living, historical, source and DOI roles differ; coverage and gates are explicit.",
+    "verified_notes": {
+      "edithatogo/archive-govt-nz-global": "Public ungated Parliament report batches and metadata; bounded pilot, submissions/advice blocked. See parliament/README.md.",
+      "edithatogo/corpus-legislation-nz": "Canonical living legislation identity; selected published state, not complete legislative coverage.",
+      "edithatogo/corpus-legislation-nz-historical": "Superseded historical operational state, retained for provenance; use living corpus for ongoing work.",
+      "edithatogo/nz-legislation-corpus": "DOI-associated frozen snapshot; public card, gated downloads; source files preserved.",
+      "edithatogo/nz-hansard-corpus": "Canonical document-level Hansard extract; 47\u201354 source coverage is partial, not complete historical Hansard.",
+      "edithatogo/nz-hansard-source-archive": "Original DocumentsDB source ZIP; public card with gated payload; distinct from normalized Hansard.",
+      "edithatogo/corpus-nz-hathi": "Derived historical parliamentary metadata/corpus from HathiTrust; source-specific rights and coverage."
+    }
+  },
+  {
+    "slug": "edithatogo/new-zealand-public-web-archives-6a2eb7d81aa2f5a72444bd5a",
+    "private": false,
+    "item_count": 9,
+    "description": "NZ government, Treasury/Health, Parliament, courts, social-web and cultural archives. Source-specific rights and bounded coverage apply.",
+    "verified_notes": {
+      "edithatogo/archive-govt-nz-global": "Mixed preservation evidence and public Parliament report batches; source-specific rights; no full-site coverage claim.",
+      "edithatogo/archive-govt-nz-treasury": "Treasury source/archive evidence and normalized metadata; independently maintained, source-specific eligibility.",
+      "edithatogo/archive-govt-nz-treasury-data": "54-row Treasury metadata Parquet derivative; convenience table, not source-original financial observations.",
+      "edithatogo/archive-govt-nz-treasury-csv": "CSV compatibility representation of Treasury metadata; do not add to Parquet rows as new coverage.",
+      "edithatogo/nz-health-appropriations": "Vote Health source originals and separate typed analysis/lineage tables; longitudinal expansion remains incomplete."
+    }
+  },
+  {
+    "slug": "edithatogo/hathitrust-nz-6a472b1e3de68381856b31f9",
+    "private": false,
+    "item_count": 5,
+    "description": "HathiTrust-NZ inventory, research plans, extracted features, analytics metadata and Parliament derivatives. Restricted full text is not implied.",
+    "verified_notes": {
+      "edithatogo/hathitrust-nz-htrc-analytics": "Analytics/workset plans and metadata; no claim of restricted full-text availability or complete executed analytics."
+    }
+  },
+  {
+    "slug": "edithatogo/fyi-archive-global-public-information-request-archives-6a6946d45c8cc5852a1d62d4",
+    "private": false,
+    "item_count": 24,
+    "description": "Public-information archives and research products. Includes experimental metadata-only scaffolds; inspect manifests for actual captured originals.",
+    "verified_notes": {
+      "edithatogo/rtk-archive-au": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/transparencia-archive-be": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/queremosdatos-archive-co": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/infoprovsechny-archive-cz": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/asktheeu-archive-eu": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/madada-archive-fr": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/askgov-archive-ge": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/arthro5a-archive-gr": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/accessinfo-archive-hk": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/imamopravoznati-archive-hr": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/kimittud-archive-hu": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/mrtk-archive-ie": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/infolib-archive-lr": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/vreauinfo-archive-md": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/woo-knop-archive-nl": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/fyi-archive-nz": "Bounded NZ OIA capture with published manifests; not complete FYI coverage.",
+      "edithatogo/iastatullaintrebari-archive-ro": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/handlingar-archive-se": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/dostup-archive-ua": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/wdtk-archive-uk": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/opramachine-archive-us-nj": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/quesabes-archive-uy": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/dumedite-archive-xk": "Experimental public metadata/provenance scaffold; no harvested correspondence payload observed in the audited repository.",
+      "edithatogo/foi-process-event-logs": "Process-research event/log schemas and demo outputs; synthetic demonstrations must not be counted as real FOI acquisition."
+    }
+  }
+]

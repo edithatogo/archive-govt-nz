@@ -1,0 +1,490 @@
+[
+  {
+    "repo": "edithatogo/accessinfo-archive-hk",
+    "parent": "1c1ab9c5fc78fd891cfdb3079b4631dbf00bdc24",
+    "revision": "756701b4dfc17997ef2f81aeaf949bf3118f1612",
+    "files": {
+      "README.md": "e36f02fb0a9d92c7c23161de7e83d90e33f62c15e612f3535f998283423eb031"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/archive-govt-nz-global",
+    "parent": "f4bb4d6b924e865b5fb58331e1bf42bc20dcc19b",
+    "revision": "cae06e6f925dac9505241c929e3212dac2ef98cb",
+    "files": {
+      "README.md": "a10c27e90efb719126e25d3b54977365df51e96ff7b56786ad887030c122fcf2",
+      "RIGHTS.md": "facd53604cbcde1375d6d14b0c79f1281df85f1a652dd32ba3238ac3c8df5927",
+      "parliament/README.md": "e94f1f9316537ba4f9e17d81958854ceb8337f750fc3d9aa7ce2213ad3fa3313",
+      "parliament/catalogue-receipt.json": "7428d32e05677bcaade36707c20523627fdfa254e4633c7866ddbbda82144967",
+      "parliament/catalogue.jsonl": "ce6201dfa4cdb004e3dd69761f8d762042f24b2d258d3ed35ae43e5a78626dd4"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/archive-govt-nz-treasury",
+    "parent": "1f148c10687b2c2100659f40d46c6b84de156672",
+    "revision": "88d0c27319fcb7eb74defb66b9b93943be9c7d6c",
+    "files": {
+      "README.md": "ab87106b1a19e6fa6322cd148b1e2b5f334f04ace49359101fa3d6ce8766791c"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/archive-govt-nz-treasury-csv",
+    "parent": "ee45a8a4377935099b0146671b80e9771022d8c9",
+    "revision": "ed1ed13072bdec7d964d9ee6c864c782e647acc0",
+    "files": {
+      "README.md": "3cb0cd48f10ce4d4f0bf417e354d80661e060b23759fe372e926528108ddcba4"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/archive-govt-nz-treasury-data",
+    "parent": "dfb18d76aaf66fc770d9555464b87b2af33a036c",
+    "revision": "e54df4f5445544720c5d1783d132205744b9a1dc",
+    "files": {
+      "README.md": "fe5f8f12ca0d243f3093a2ed88063457602ac58b26a2fbb3601cf69083b8d208"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/arthro5a-archive-gr",
+    "parent": "32be246c72af6f0c1307d888471a74ccceefedd2",
+    "revision": "b354b71aa7ac329fb0b3d3e68fe330cdb16d2a2c",
+    "files": {
+      "README.md": "ec8bf2cc6ff8b1d7c03146a8a8abaebb6796c2ae316f3866fc97820e1af93a65"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/askgov-archive-ge",
+    "parent": "843012cdd79460042850472663829c32eec0b465",
+    "revision": "d7ab559d31b7dc3878567f06cfb9dba7024da98f",
+    "files": {
+      "README.md": "0ce2da5e8ff56c8601ebe18df1b11ad24416b2a53a83225a32d2ac3d591e944a"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/asktheeu-archive-eu",
+    "parent": "6b60fd8faa56e1b88e0fa9017944fef93fe46e35",
+    "revision": "5ab2c0d945a11f7b61de7cb0752785b91c93b74e",
+    "files": {
+      "README.md": "9271db080145a00f6ade16832fee92f08cb68b7ef385ca5bfd691cebc70dc0d8"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/corpus-legislation-nz",
+    "parent": "a92c138fdf6343df7278c94735b868beab03776c",
+    "revision": "0a4dde01a458237a494dc9d0016ef5780dd597e7",
+    "files": {
+      "README.md": "073e8b2bdf8ebca8ccc27004fcd0f2fc7e972354c6b3890c54b127f36c4718c8"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/corpus-legislation-nz-historical",
+    "parent": "ea9e66fb89c3230fc478f7c6f05f1a82f4fa1174",
+    "revision": "44c2d32c1bc1a9011e810761134415ca26c94295",
+    "files": {
+      "README.md": "52bb83202affd6852a9bacbcbad81077f7a03b8ceb1f4d59c01fa77f5ba98640"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/corpus-nz-hathi",
+    "parent": "3a01b0fce4633dc92db82ab61dbb529d2a2a3664",
+    "revision": "980a5c42c9cf7469b484387fbd21f2146f76d184",
+    "files": {
+      "README.md": "5692e401045a533e23c413992c6d7bc3c65c5af4cb1afff9f6a11ff4a1dd7c6a"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/corpus-social-media-government-nz",
+    "parent": "55714d41d1b1191584a2af9cf8dbcc5c8dabe60a",
+    "revision": "df7411aa9efef1236e53f7ff6f93413e9800b79d",
+    "files": {
+      "README.md": "bac8b37cda74e8fe8821548406e609e4c7848f61ce665a5babd072437de1cd9c"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/courts-nz-public-notices-archive",
+    "parent": "9184bd8e7fec7d4f6f0e3e179d11502e293adba1",
+    "revision": "73d3a3e63972a4861672b4e3b91fcaaa6c46f6e9",
+    "files": {
+      "README.md": "eaa8bbaef115a6140b54c2efc8e1b1d5670dcf12a4bef5e37a17ad59543aef72"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/dataset-estate-registry",
+    "parent": "4802d56a340646043fc91bed218c1e8a958f42c2",
+    "revision": "6ff409018c6c4b1a6388368b398f68d129d2e87f",
+    "files": {
+      "README.md": "c87301d35d7220219fe8ed724a2beab402b6c0e682e6c1ae3f7a1bdfe84d3a46"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/digitalnz",
+    "parent": "2eb9825c6bad0418ce3e82826bedba8124446eb4",
+    "revision": "2c3cbea90df9569285f4ba352f9f5bcdc1c61ff9",
+    "files": {
+      "README.md": "e81b225760b1e48fdf4899878085b596589a080d16f47ff69e1bfca6435182f3"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/dostup-archive-ua",
+    "parent": "36beac089463fdac951adeeaec38070e707d8493",
+    "revision": "33f61d04f10755aab51506011fa661acf21c3140",
+    "files": {
+      "README.md": "fe511504e4c2e5b3cfeb47ecd4489f75d5fbac5d0decf4a01021b2a32c3d988e"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/dumedite-archive-xk",
+    "parent": "466745dea2c843692fd10de920cde99b4c231768",
+    "revision": "5dbed3674f784a49785c71af2a0c45067e8cb67c",
+    "files": {
+      "README.md": "602aba2d5130610f6c46490b9546c1ce50c75d02fde693d010bc5d47c17a90fe"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "parent": "a89f4ba2a158b4b3fc771976662de3b5737fd122",
+    "revision": "48f51455b76e9686011417efe89215613a3ad439",
+    "files": {
+      "README.md": "1b0a089193694e3de07d91b1fa41455ddae5bac566e06a7bab6736ac52616030"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/fyi-archive-nz",
+    "parent": "a4c85542f59b94b7868198c6802f842652881921",
+    "revision": "9cc178ed412a74cec39fad846c065601d987941b",
+    "files": {
+      "README.md": "258dc967dd30affe62a16e5bf184be981de253596170e9896c454fd2315bba3c"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/handlingar-archive-se",
+    "parent": "2cb1bd17e9206e63839301c3d903a5f916107412",
+    "revision": "93c7b5c181ba58329f2d31c05751ea3aad45e90c",
+    "files": {
+      "README.md": "9474fae8a37b56f4d05bed230c4af54dad3e323ea0d069846ee301edee1c60f2"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/hathitrust-nz-htrc-analytics",
+    "parent": "5d95da1567c6337e37fa708986d0bdbda953beb1",
+    "revision": "55f3f2cd3e266be8eb79904f1e469da982f887de",
+    "files": {
+      "README.md": "830fc786fbccf0cf29c0c62c0b5d0393b7f8ec0d20692b52e540043016ca3820"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/hathitrust-nz-htrc-extracted-features",
+    "parent": "2279d894588341681ae9274a97d7bb42f0d29cf8",
+    "revision": "e617ae9bfb7f3fc3030450b88b256a557a4d785f",
+    "files": {
+      "README.md": "91539186f232850a88c1ee73b81b2d7e95c513fbf0e2e2dde0940bfe275a121f"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/hathitrust-nz-inventory",
+    "parent": "eef64beba54ad3badbbe4266b4b7fea8c11fed23",
+    "revision": "d46cd4f2e12d0b8d1837b41219ba55d7eb95d1d0",
+    "files": {
+      "README.md": "b8352dbba494a0bc1939a4e6f6e4c601933b0c14600e32851461b774144771c3"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/hathitrust-nz-research-fulltext",
+    "parent": "bb3bf93fad2b3c421baf76585c83045eb280c7fc",
+    "revision": "9d306953a1ec9de69296307b1e14176b5d2f8042",
+    "files": {
+      "README.md": "4b5183e49d28d345c8b7296601be9c43428996c53f9cb9f0886c201eabfe7ca8"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/iastatullaintrebari-archive-ro",
+    "parent": "a279e54174d7066b0d4d3e8163b91ad562a536e0",
+    "revision": "8bde064c80d4eea2ae138958ab24ca00e56d625f",
+    "files": {
+      "README.md": "e905258443d0b0df6f600933a40a362786d0608711b82358dde374e07201b05f"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/imamopravoznati-archive-hr",
+    "parent": "2a98b31a372113bdddac322677328757c2969a93",
+    "revision": "cc186362add18dc977f2d1f4c2881af587553489",
+    "files": {
+      "README.md": "2b8639da512fee9c417b39b75418cd326d89a45a19e7e3a9b93eeb373c351441"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/infolib-archive-lr",
+    "parent": "d1049e612b633d3589c3fdd9cf3cedc1d30a0789",
+    "revision": "98a9e5b689e1d83a8ac56792886532dbd173e9c6",
+    "files": {
+      "README.md": "2f470af7cb2d85f7481c39cfa9200b1d263c64b61ebe7183196b380665a06ab6"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/infoprovsechny-archive-cz",
+    "parent": "57a165e454e4ca7936c92a01da80f4a8a55a46d9",
+    "revision": "86a907892330d3bc9cdc3db7f4f682acc95b7f39",
+    "files": {
+      "README.md": "2535bfad4138be7b0257f9af457edc615dbb2f047743f6b0019b1b2fa7215fc4"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/kimittud-archive-hu",
+    "parent": "dae563f24533fb000b873d7357a482a849a01176",
+    "revision": "a345078d5cc1fcc181726fcdee7cf7049181e7e5",
+    "files": {
+      "README.md": "f00a10695163768f18f19ee099582a601698854e8211cf87c4422549f0ee1a1a"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/madada-archive-fr",
+    "parent": "02ed9b04d1e912a841863699ee67aa47f62c1a52",
+    "revision": "7b82c1d55de3104ffa64cee827964a69f47d27f5",
+    "files": {
+      "README.md": "c6dffebf3f6d0d1a0d741fab24bcfc681b7f0c2353ee58d44a8376b1d370bef5"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/mrtk-archive-ie",
+    "parent": "78b7870856605cfe8fd61ea07370c7e125fd50f4",
+    "revision": "f6f930fb16c6d1a814ee5458b3c36d153d660d53",
+    "files": {
+      "README.md": "6c929247534c704415a2a2d375e2bee094a207c52afb22203f5f50f3a66e25d6"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/nlp-policy-nz-cloud-ocr-pilots",
+    "parent": "3f2cad0fae09936f5613b73446307d07ce4b2c60",
+    "revision": "a1a202820199a8e5c40bf54c35ccb6aed16a4ec5",
+    "files": {
+      "README.md": "5fd0b932ea7efe2f6b1a8cf15ada6f900eab6fa72b80fff9e120fda328cbb754"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/nz-hansard-corpus",
+    "parent": "effad6dcd72eae5685a5c8977639dfbdaad023ea",
+    "revision": "dc8f0937c787e51a1124ea22dd431a0e7b42e03f",
+    "files": {
+      "README.md": "bb66297ade21ecab26e812341067daad3a34615274d0079594a04230bdf8052f"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/nz-hansard-source-archive",
+    "parent": "d26f7986906077f4d7a16f3cfe06646f658017dd",
+    "revision": "72e7f2971d07c2f8a8342a2f4396a68b6584b2b8",
+    "files": {
+      "README.md": "7a1cc1d05ea5a8cb94eb690eee71c0176cccec6b736548ac32be0269f167bae9"
+    },
+    "private": false,
+    "gated": "auto",
+    "verification": "authenticated_download_sha256_public_metadata_gate_preserved"
+  },
+  {
+    "repo": "edithatogo/nz-health-appropriations",
+    "parent": "9b85bac06597d4435fd078f6bed0f30bb008542b",
+    "revision": "b4597c53f4ab5396f15d33010eb43acd5db6e983",
+    "files": {
+      "README.md": "30fd3b5d6f1646c6b5e481d858b26ddcbfee6415a31f782faf7695edf58e9ef1"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/nz-legislation-corpus",
+    "parent": "1dea0c678b419a9c16fe7e363488f91d293391d3",
+    "revision": "389ee079f209a65f1c68efc6adb1d95abd9ce3e4",
+    "files": {
+      "README.md": "56e202a294d0c12fbd0d2f67feb494cd1f0be62931ca676f5151150e2a53b648"
+    },
+    "private": false,
+    "gated": "auto",
+    "verification": "authenticated_download_sha256_public_metadata_gate_preserved"
+  },
+  {
+    "repo": "edithatogo/opramachine-archive-us-nj",
+    "parent": "8b5e71fedbc6cdcf5a71e68dc964147aa1740255",
+    "revision": "8c4575cf3cebbf91f8124712ae9ce97b4d5afa4f",
+    "files": {
+      "README.md": "2c8df2d0dc6bcf6cbe79dd6e8f1b50bdfd80dad217c1bbca55dcb2579f17cdbe"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/queremosdatos-archive-co",
+    "parent": "cfca71f00ab38e7c9c0219791a7ce2d52cef6334",
+    "revision": "e9f21a09e40790e20a8f79bf183964c47c83478d",
+    "files": {
+      "README.md": "2cd5230c5ad884dfcc6be067721cfaa08b9ca4663293d68ef1ba5623c7ea4b4a"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/quesabes-archive-uy",
+    "parent": "5547a88d09d4c7b30827e885483cef07f82421d4",
+    "revision": "3db15f15ad35bda1d771639b15bfc3d6be6b6b5a",
+    "files": {
+      "README.md": "c023b2cf052d8bfe312f3845ed7081127206ba05b95fa654fd478674d4b1255e"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/rtk-archive-au",
+    "parent": "c7d04f5c59491ecef4370348693cb48adfae17fd",
+    "revision": "14b3789285833ce763d1bead89a4cf76c64c05b9",
+    "files": {
+      "README.md": "2fcda73e84952a157dfa0df79a129eb2e8a8292f9bd932ce0cc2f8dee8b96429"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/transparencia-archive-be",
+    "parent": "ff0924afab9d824a865552f7567902ea341d1df1",
+    "revision": "cfc445d2183c57bb71bfd918e84368bea5e676f6",
+    "files": {
+      "README.md": "5555adf87ddb3796540c49a38307078759e16b1381ff6ded4d82937ac9a054f9"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/vreauinfo-archive-md",
+    "parent": "7a4765dc1f7f927b9316882010115cb03642583a",
+    "revision": "2cc537457a82b8e23662b2240bc5cf9be18ac848",
+    "files": {
+      "README.md": "25bce934af571ac03e2b1b149968468099f5719cd295c9185e2e8e5a2690de39"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/wdtk-archive-uk",
+    "parent": "a200cb990f23e834f40bcc6543d184bab174a99e",
+    "revision": "b42c3b6f8af0239eccc50c8f79b5c329c55180f6",
+    "files": {
+      "README.md": "d324f39469ab876cf93f17bb9f3275c5042292bbe88bfe028d27d9069a0d068d"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  },
+  {
+    "repo": "edithatogo/woo-knop-archive-nl",
+    "parent": "8a34942018440b47e2d7800d362edf6fe539abc7",
+    "revision": "b9729c8ca2fca8d3022b113ebb9efcea5a5d9fd6",
+    "files": {
+      "README.md": "98463ba436c979cb8887cbceb7fafc31a59b61535a949d9ca7f6458084173645"
+    },
+    "private": false,
+    "gated": false,
+    "verification": "anonymous_download_sha256"
+  }
+]

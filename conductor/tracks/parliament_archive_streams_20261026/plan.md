@@ -66,3 +66,14 @@ Original phase checkboxes remain acceptance milestones: P1/P3 are partial becaus
 - [x] Task: Apply provenance, source-contract, anonymous-publication and unknown-outcome recovery fixes f18c3ee7.
 - [x] Task: Add isolated mutation guards for public visibility, anonymous download, remote fixity and robots policy; all four killed.
 - [x] Task: Publish focused implementation PR #787 after passing supply-chain gates; unresolved external gates retained.
+
+## P6: Hub metadata and collection hardening (user follow-up)
+
+- [x] Audit 44 related datasets and four collections; preserve identity, original payloads and access gates.
+- [x] Correct maintained cards, source-specific rights/coverage, compatible viewer subsets and collection membership; verify saved native revisions.
+- [x] Publish a derived Parliament catalogue and anonymously verify all referenced source objects and 21 viewer rows.
+- [x] Prevent default harvests overwriting a maintained card or a missing explicit card causing fallback replacement; remove fabricated schema/licence assertions.
+- [x] Review metadata and source fixes; qualify affected tests and remaining assurance stages after intentional snapshot update.
+- [ ] Accept remaining hosted viewer conversions after actual config/row readback; pending service conversions are not accepted.
+
+This completes metadata maintenance for the inspected estate, not missing source acquisitions, gates, rights clearances or full historical archival.

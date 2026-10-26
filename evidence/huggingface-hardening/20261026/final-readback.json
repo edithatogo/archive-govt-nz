@@ -1,0 +1,446 @@
+[
+  {
+    "repo": "edithatogo/accessinfo-archive-hk",
+    "revision": "756701b4dfc17997ef2f81aeaf949bf3118f1612",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/archive-govt-nz-global",
+    "revision": "cae06e6f925dac9505241c929e3212dac2ef98cb",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md",
+      "RIGHTS.md",
+      "parliament/README.md",
+      "parliament/catalogue-receipt.json",
+      "parliament/catalogue.jsonl"
+    ]
+  },
+  {
+    "repo": "edithatogo/archive-govt-nz-treasury",
+    "revision": "88d0c27319fcb7eb74defb66b9b93943be9c7d6c",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/archive-govt-nz-treasury-csv",
+    "revision": "ed1ed13072bdec7d964d9ee6c864c782e647acc0",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/archive-govt-nz-treasury-data",
+    "revision": "e54df4f5445544720c5d1783d132205744b9a1dc",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/arthro5a-archive-gr",
+    "revision": "b354b71aa7ac329fb0b3d3e68fe330cdb16d2a2c",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/askgov-archive-ge",
+    "revision": "d7ab559d31b7dc3878567f06cfb9dba7024da98f",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/asktheeu-archive-eu",
+    "revision": "5ab2c0d945a11f7b61de7cb0752785b91c93b74e",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/corpus-legislation-nz",
+    "revision": "0a4dde01a458237a494dc9d0016ef5780dd597e7",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/corpus-legislation-nz-historical",
+    "revision": "44c2d32c1bc1a9011e810761134415ca26c94295",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/corpus-nz-hathi",
+    "revision": "980a5c42c9cf7469b484387fbd21f2146f76d184",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/corpus-social-media-government-nz",
+    "revision": "df7411aa9efef1236e53f7ff6f93413e9800b79d",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/courts-nz-public-notices-archive",
+    "revision": "73d3a3e63972a4861672b4e3b91fcaaa6c46f6e9",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/dataset-estate-registry",
+    "revision": "6ff409018c6c4b1a6388368b398f68d129d2e87f",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/digitalnz",
+    "revision": "2c3cbea90df9569285f4ba352f9f5bcdc1c61ff9",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/dostup-archive-ua",
+    "revision": "33f61d04f10755aab51506011fa661acf21c3140",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/dumedite-archive-xk",
+    "revision": "5dbed3674f784a49785c71af2a0c45067e8cb67c",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "revision": "48f51455b76e9686011417efe89215613a3ad439",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/fyi-archive-nz",
+    "revision": "9cc178ed412a74cec39fad846c065601d987941b",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/handlingar-archive-se",
+    "revision": "93c7b5c181ba58329f2d31c05751ea3aad45e90c",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/hathitrust-nz-htrc-analytics",
+    "revision": "55f3f2cd3e266be8eb79904f1e469da982f887de",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/hathitrust-nz-htrc-extracted-features",
+    "revision": "e617ae9bfb7f3fc3030450b88b256a557a4d785f",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/hathitrust-nz-inventory",
+    "revision": "d46cd4f2e12d0b8d1837b41219ba55d7eb95d1d0",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/hathitrust-nz-research-fulltext",
+    "revision": "9d306953a1ec9de69296307b1e14176b5d2f8042",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/iastatullaintrebari-archive-ro",
+    "revision": "8bde064c80d4eea2ae138958ab24ca00e56d625f",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/imamopravoznati-archive-hr",
+    "revision": "cc186362add18dc977f2d1f4c2881af587553489",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/infolib-archive-lr",
+    "revision": "98a9e5b689e1d83a8ac56792886532dbd173e9c6",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/infoprovsechny-archive-cz",
+    "revision": "86a907892330d3bc9cdc3db7f4f682acc95b7f39",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/kimittud-archive-hu",
+    "revision": "a345078d5cc1fcc181726fcdee7cf7049181e7e5",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/madada-archive-fr",
+    "revision": "7b82c1d55de3104ffa64cee827964a69f47d27f5",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/mrtk-archive-ie",
+    "revision": "f6f930fb16c6d1a814ee5458b3c36d153d660d53",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/nlp-policy-nz-cloud-ocr-pilots",
+    "revision": "a1a202820199a8e5c40bf54c35ccb6aed16a4ec5",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/nz-hansard-corpus",
+    "revision": "dc8f0937c787e51a1124ea22dd431a0e7b42e03f",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/nz-hansard-source-archive",
+    "revision": "72e7f2971d07c2f8a8342a2f4396a68b6584b2b8",
+    "public": true,
+    "gated": "auto",
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/nz-health-appropriations",
+    "revision": "b4597c53f4ab5396f15d33010eb43acd5db6e983",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/nz-legislation-corpus",
+    "revision": "389ee079f209a65f1c68efc6adb1d95abd9ce3e4",
+    "public": true,
+    "gated": "auto",
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/opramachine-archive-us-nj",
+    "revision": "8c4575cf3cebbf91f8124712ae9ce97b4d5afa4f",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/queremosdatos-archive-co",
+    "revision": "e9f21a09e40790e20a8f79bf183964c47c83478d",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/quesabes-archive-uy",
+    "revision": "3db15f15ad35bda1d771639b15bfc3d6be6b6b5a",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/rtk-archive-au",
+    "revision": "14b3789285833ce763d1bead89a4cf76c64c05b9",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/transparencia-archive-be",
+    "revision": "cfc445d2183c57bb71bfd918e84368bea5e676f6",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/vreauinfo-archive-md",
+    "revision": "2cc537457a82b8e23662b2240bc5cf9be18ac848",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/wdtk-archive-uk",
+    "revision": "b42c3b6f8af0239eccc50c8f79b5c329c55180f6",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  },
+  {
+    "repo": "edithatogo/woo-knop-archive-nl",
+    "revision": "b9729c8ca2fca8d3022b113ebb9efcea5a5d9fd6",
+    "public": true,
+    "gated": false,
+    "original_file_sizes_preserved": true,
+    "changed_paths": [
+      "README.md"
+    ]
+  }
+]

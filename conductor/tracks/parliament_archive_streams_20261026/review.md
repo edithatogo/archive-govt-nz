@@ -39,3 +39,7 @@ The bounded public-report lane has manual remote proof; broader submission/advic
 - **Resolution**: Check the immutable remote namespace, download and compare every existing file, reject partial/conflicting state; use observed parent revision and one mutation at most. Synthetic recovery contracts passed.
 
 Reviewed all new Parliament source modules, CLI entry point, schemas and synthetic tests iteratively, plus changes to the validation-schema registration. No secrets or source personal payloads added to Git; fixtures are fictional. Public report originals remain on Hugging Face with hash-bound eligibility assertions. The unfinished parent track must remain active, not archived.
+
+## Follow-up metadata hardening review
+
+44 native cards and four collection readbacks audited. Corrected stale zero counts, missing source ZIP description, licence/identity overclaims and unsafe table auto-detection. Maintained public card replacements are revision-conflict protected; original payloads and gates preserved. Publication regression tests cover maintained-card preservation, unknown counts and missing explicit-card failure before native writes. The full-suite snapshot mismatch was the expected reviewed metadata change; updated snapshot and eleven affected tests pass. Other assurance stages passed. Remaining hosted conversion acceptance and source acquisition blockers remain explicit; no incomplete track archived. See docs/huggingface-estate-hardening.md and versioned receipts.
