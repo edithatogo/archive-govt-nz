@@ -27,6 +27,11 @@
     },
     "profile": {
       "enum": [
+        "vote-health-estimates-2022-23-overview/v1",
+        "vote-health-estimates-2023-24-overview/v1",
+        "vote-health-estimates-2024-25-overview/v1",
+        "vote-health-estimates-2025-26-overview/v1",
+        "vote-health-estimates-2026-27-overview/v1",
         "budget-expenditure-2007-biff8/v1",
         "budget-expenditure-2008-biff8/v1",
         "budget-expenditure-2009-biff8/v1",
@@ -194,6 +199,11 @@
         "vote-health-estimates-overview-2015-16/v1",
         "vote-health-estimates-overview-2016-17/v1",
         "vote-health-estimates-overview-2017-18/v1",
+        "vote-health-estimates-overview-2022-23/v1",
+        "vote-health-estimates-overview-2023-24/v1",
+        "vote-health-estimates-overview-2024-25/v1",
+        "vote-health-estimates-overview-2025-26/v1",
+        "vote-health-estimates-overview-2026-27/v1",
         "vote-health-estimates-revenue-2002-03/v1",
         "vote-health-supplementary-1999-00-overview/v1",
         "vote-health-supplementary-2000-01-overview/v1",
@@ -274,6 +284,276 @@
         ]
       },
       "oneOf": [
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2022-23-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2022-23/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2023-24-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2023-24/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2024-25-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2024-25/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2025-26-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2025-26/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
+        {
+          "properties": {
+            "profile": {
+              "const": "vote-health-estimates-2026-27-overview/v1"
+            },
+            "transformation_id": {
+              "const": "vote-health-estimates-overview-2026-27/v1"
+            },
+            "counts": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "pages": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "facts": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "required": [
+                "pages",
+                "facts"
+              ]
+            },
+            "output_sha256": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "vote_health_overview_facts.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "field_lineage.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                },
+                "page_dispositions.parquet": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$",
+                  "maxLength": 64
+                }
+              },
+              "required": [
+                "vote_health_overview_facts.parquet",
+                "field_lineage.parquet",
+                "page_dispositions.parquet"
+              ]
+            }
+          }
+        },
         {
           "properties": {
             "profile": {

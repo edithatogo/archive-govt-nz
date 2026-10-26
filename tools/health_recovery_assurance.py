@@ -29,6 +29,7 @@ from archive_govt_nz.domains.health_appropriations import (
     gold_metadata,
     hyefu_crown_expense,
     hyefu_crown_expense_canonical_projection,
+    modern_vote_health_recovery,
     moh_canonical_projection,
     moh_indicators,
     pharmac,
@@ -2808,7 +2809,14 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0912, PLR0915 - recovery products
     original_snapshot = tree(ARCHIVE / "bronze-cas")
     outputs: dict[str, dict[str, Any]] = {}
     with tempfile.TemporaryDirectory(prefix="health-recovery-clean-") as temporary:
-        root = Path(temporary)
+        root = Path(temporary).resolve()
+        outputs["modern_vote_health_estimates_overviews"] = (
+            modern_vote_health_recovery.recover_modern_overviews(
+                ARCHIVE / "bronze-cas" / "sha256",
+                TRACK / "source-census.json",
+                root / "modern-vote-health",
+            )
+        )
         silver_roots = (root / "silver-one", root / "silver-two")
         for silver in silver_roots:
             silver.mkdir()

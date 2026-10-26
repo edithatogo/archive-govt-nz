@@ -1292,6 +1292,11 @@ def test_clean_room_rebuilds_supported_products_and_reports_blockers(  # noqa: P
             {"counts": {"facts": 1}},
         )[-1],
     )
+    monkeypatch.setattr(
+        MODULE.modern_vote_health_recovery,
+        "recover_modern_overviews",
+        lambda *_args: {"status": "verified_repeat_identical"},
+    )
     result = MODULE.run()
     assert result["status"] == "partial_with_blockers"
     assert result["bronze_objects_unchanged"] is True

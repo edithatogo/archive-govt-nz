@@ -1,0 +1,131 @@
+{
+  "limitations": [
+    "one_printed_headline_per_edition_only",
+    "other_source_pages_preserved_unreviewed",
+    "currency_and_comparability_not_qualified",
+    "rights_not_evaluated_by_normalization",
+    "not_full_track_recovery_or_completion_evidence"
+  ],
+  "products_rebuilt": {
+    "Treasury-Vote-Health-Estimates-2022-23": {
+      "files": {
+        "MANIFEST.json": "ad92b355dcd1bdccd274d7e47ac3f2623c1d48b55be594d2d5d7f733b683121d",
+        "field_lineage.parquet": "0a75f0f3f16a095754c89a4c589a935ba84235c0784fbd706a0fa50de3685546",
+        "page_dispositions.parquet": "8fd7b34b7e3f8bb29a7634073f9b1d76c385dbc964349f545021cdff15830921",
+        "vote_health_overview_facts.parquet": "7c45041205f8a33bf4c5391c27cc6c4fe98868132203f091d085d01d533fb1dd"
+      },
+      "page_dispositions": 88,
+      "quality_flags": [
+        "overview_headline_only",
+        "currency_code_not_supplied",
+        "source_reported_in_whole_millions",
+        "headline_only_not_component_sum",
+        "health_reform_scope_not_restated",
+        "cross_year_comparability_not_qualified"
+      ],
+      "reference_period": "2022/23",
+      "repeat_identical": true,
+      "rights_state": "not_evaluated",
+      "source_object_sha256": "f800749dc339a2f8bc99469bcbd365f1183323002cd90d3225c942e2e6d92dc9",
+      "unit": "$ million, source-reported amount",
+      "value": "24009.000"
+    },
+    "Treasury-Vote-Health-Estimates-2023-24": {
+      "files": {
+        "MANIFEST.json": "237514e60ad328151fd2c462042ccb2ca835011e504ee8027331f8537637ae9f",
+        "field_lineage.parquet": "8425b1e49100044a46f82b17a2ff987b2c73656a18eef75460391a9190481aa1",
+        "page_dispositions.parquet": "4597d680110e8613f6fd50ae372b829a2d46c4c75489f92b7497971e1b51626c",
+        "vote_health_overview_facts.parquet": "c82d0c3cb974c2a565e52033e07cd12f7d6f960ed46cc1ec30ee7b7a2eef231c"
+      },
+      "page_dispositions": 61,
+      "quality_flags": [
+        "overview_headline_only",
+        "currency_code_not_supplied",
+        "source_reported_in_whole_millions",
+        "headline_only_not_component_sum",
+        "health_reform_scope_not_restated",
+        "cross_year_comparability_not_qualified"
+      ],
+      "reference_period": "2023/24",
+      "repeat_identical": true,
+      "rights_state": "not_evaluated",
+      "source_object_sha256": "5602df94c5944dad0e97dde2ddc73e79bd3126a7739184bd2fb117e6d6765914",
+      "unit": "$ million, source-reported amount",
+      "value": "26510.000"
+    },
+    "Treasury-Vote-Health-Estimates-2024-25": {
+      "files": {
+        "MANIFEST.json": "1f80400e47f8576af11a1a4112c2c484b001c41b3e0652075adc8d6f36ac7a4d",
+        "field_lineage.parquet": "5996713b0dd4bdcae095efe8a7aed855e060a36e86578ee3f24ccbfdf8f5df3a",
+        "page_dispositions.parquet": "e94b3589b821db3ffe232abaa69a77dd1ce1ed3ad32d8511b6ef47c38f7b5f1e",
+        "vote_health_overview_facts.parquet": "dcd0e7625e97fd337019a8a8a00fc918de75aca739c895568c6a0d43afdd994a"
+      },
+      "page_dispositions": 64,
+      "quality_flags": [
+        "overview_headline_only",
+        "currency_code_not_supplied",
+        "source_reported_in_whole_millions",
+        "headline_only_not_component_sum",
+        "health_reform_scope_not_restated",
+        "cross_year_comparability_not_qualified"
+      ],
+      "reference_period": "2024/25",
+      "repeat_identical": true,
+      "rights_state": "not_evaluated",
+      "source_object_sha256": "c55082208ebb42923dd56e3e8ac2ae75318b8fd9ee468c52284bbda0b9b43a20",
+      "unit": "$ million, source-reported amount",
+      "value": "29637.000"
+    },
+    "Treasury-Vote-Health-Estimates-2025-26": {
+      "files": {
+        "MANIFEST.json": "bb0df688769459fd84607fd90801a5bbfa2ae5563b1d505d0de291f4cc96b63d",
+        "field_lineage.parquet": "2bd40419788a480b8505b3939f6b2e922542a0ca40a78d99f37ab73d47a81970",
+        "page_dispositions.parquet": "8fee1aa73126577333ff51ee1ebb89c8f935edfe726b8c639375bbd4d123cb74",
+        "vote_health_overview_facts.parquet": "c22294dcbce35bddf7261bc79d676abfff5084f3d34cae63d4042350d5d183e0"
+      },
+      "page_dispositions": 62,
+      "quality_flags": [
+        "overview_headline_only",
+        "currency_code_not_supplied",
+        "source_reported_in_whole_millions",
+        "headline_only_not_component_sum",
+        "health_reform_scope_not_restated",
+        "cross_year_comparability_not_qualified"
+      ],
+      "reference_period": "2025/26",
+      "repeat_identical": true,
+      "rights_state": "not_evaluated",
+      "source_object_sha256": "d00952c47c4e6485b0768575ba295ac4da6002ce4c525b5637287b25e32849b9",
+      "unit": "$ million, source-reported amount",
+      "value": "31052.000"
+    },
+    "Treasury-Vote-Health-Estimates-2026-27": {
+      "files": {
+        "MANIFEST.json": "361dfdd239a5f301e239d355903c2c75e2d5a4755e93614e2f24ba17673ef997",
+        "field_lineage.parquet": "ea1671b469dcd794f8001128df0fd04d2d0e3145db9d398ef25c123c964352cd",
+        "page_dispositions.parquet": "b633b9b884ce849b2143a9f56dd790cf54351fd28eddc10259e91bfb499623ff",
+        "vote_health_overview_facts.parquet": "7d94ef08f8244efa4baca07f055c6053e9865e0e9273cbb557dfe610efb117a0"
+      },
+      "page_dispositions": 64,
+      "quality_flags": [
+        "overview_headline_only",
+        "currency_code_not_supplied",
+        "source_reported_in_whole_millions",
+        "headline_only_not_component_sum",
+        "health_reform_scope_not_restated",
+        "cross_year_comparability_not_qualified",
+        "capital_charge_change_not_adjusted"
+      ],
+      "reference_period": "2026/27",
+      "repeat_identical": true,
+      "rights_state": "not_evaluated",
+      "source_object_sha256": "023c99801cc11305848772a859d2491940f25389725e08f162b4156492dcae4e",
+      "unit": "$ million, source-reported amount",
+      "value": "33031.000"
+    }
+  },
+  "schema_version": "archive-govt-nz.modern-vote-health-recovery/v1",
+  "source_census_sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272",
+  "source_payloads_in_receipt": false,
+  "status": "verified_repeat_identical"
+}

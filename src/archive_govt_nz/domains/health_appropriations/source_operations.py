@@ -60,12 +60,24 @@ from archive_govt_nz.domains.health_appropriations import (
     vote_health_supplementary_2024_25,
     vote_health_supplementary_2025_26,
 )
+from archive_govt_nz.domains.health_appropriations import (
+    modern_vote_health_overviews as modern,
+)
 from archive_govt_nz.domains.health_appropriations.workbook_common import source_context
 
 MAX_CONTEXT = 2048
 _INVALID_SOURCE_OPERATION = "invalid_source_operation"
 PROFILES = MappingProxyType(
     {
+        **{
+            item.profile: (
+                item.transformation,
+                ("pages", "facts"),
+                "vote_health_overview_facts.parquet",
+                "page_dispositions.parquet",
+            )
+            for item in modern.PROFILES.values()
+        },
         **{
             name: (
                 budget_biff8_adapter.get_profile(name).transformation,
@@ -655,6 +667,10 @@ _VOTE_HEALTH_REVENUE_PROFILES = {
     ),
 }
 _VOTE_HEALTH_OVERVIEW_PROFILES = {
+    **{
+        item.profile: (item.vintage, item.source_sha256)
+        for item in modern.PROFILES.values()
+    },
     vote_health_estimates_summary.PROFILE: (
         vote_health_estimates_summary.VINTAGE,
         vote_health_estimates_summary.SOURCE_SHA256,

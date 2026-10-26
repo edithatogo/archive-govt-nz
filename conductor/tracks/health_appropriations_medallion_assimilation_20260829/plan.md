@@ -706,6 +706,17 @@ integrated parent head.
 
 ### 5.2 Normalize direct official datasets
 
+- [x] Promote the exact 2022/23–2026/27 captured Estimates overview headline
+  totals through the existing common adapter and source-operation contracts.
+  Preserve literal million-dollar units, source phrases and all-page
+  dispositions, with reform/capital-charge caveats and no cross-year splice.
+  [M-05, M-06, M-11, M-15; AC-05, AC-09, AC-13]
+  See `modern-vote-health-recovery-20261026.json`: five exact Bronze
+  objects, two fresh builds each, independently pinned readback and identical
+  complete output inventories. Common source-operation CLI/MCP allowlists and
+  the clean-room recovery orchestrator include these profiles. This bounded
+  headline slice leaves other pages and the Phase 5 parent task open.
+
 - [x] Normalize the two retained HAIR2024 Ministry CSVs as separately
   attributed published indicators, preserving exact tokens and unknown units,
   real-price base and denominator methodology without semantic promotion.
@@ -1745,6 +1756,10 @@ deliberately exercise version handling.
   cross-source comparison, remaining source-native adapters, and full Platinum
   still prevent closing this recovery task. See
   `clean-room-recovery-20261025-issue-215.json`.
+  The 2026-10-26 integrated rebuild adds five exact modern Estimates
+  headline profiles within 48 rebuilt product/report lanes, with unchanged
+  Bronze. The same three whole-track blocker categories remain explicit; see
+  `clean-room-recovery-20261026-modern-overviews.json`.
 - [~] Compare output manifests/digests and explain permitted rendering-only
   variation; prove original objects were not mutated. [M-03, M-16; AC-02,
   AC-12] Repeat output inventories match within this runtime across raw, SQLite,
@@ -1854,6 +1869,12 @@ deliberately exercise version handling.
   retirement and Zenodo remain out of scope. [M-18, M-19; AC-16]
 
 ## Review fixes
+
+- [x] Apply the bounded modern Vote Health review fixes: synchronized operation
+  schema, exact period-token rejection, consistent synthetic fixity and resolved
+  recovery roots. Record 48-lane integrated recovery and retain the open
+  Phase 5-9 completion contracts. See `phases-5-9-review-20261026.md`
+  (`20b1ce5e`). [M-05, M-06, M-16, M-18, M-19; AC-12, AC-16]
 
 - [x] Add a bounded pure bridge from exact historical canonical projections to
   the existing public historical analysis contract, retaining canonical
