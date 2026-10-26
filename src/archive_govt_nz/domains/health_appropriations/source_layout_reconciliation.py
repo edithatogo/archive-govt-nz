@@ -8,8 +8,19 @@ import json
 from collections import defaultdict
 from typing import Any, NoReturn
 
+from archive_govt_nz.domains.health_appropriations.adapter_drift import (
+    compare_adapter_drift,
+)
+from archive_govt_nz.domains.health_appropriations.schema_drift import (
+    layout_fingerprint,
+)
+from archive_govt_nz.domains.health_appropriations.text_layout_baseline import (
+    REPORT_SCHEMA as TEXT_REPORT_SCHEMA,
+)
+
 _CENSUS_SCHEMA = "archive-govt-nz.health-source-census/v1"
 _WORKBOOK_SCHEMA = "archive-govt-nz.health-source-layout-baseline-report/v1"
+_BRONZE_WORKBOOK_SCHEMA = "archive-govt-nz.health-bronze-workbook-layout/v1"
 _PDF_SCHEMA = "archive-govt-nz.health-source-pdf-layout-baseline-report/v1"
 _REPORT_SCHEMA = "archive-govt-nz.health-source-layout-reconciliation/v1"
 _SHA256_LENGTH = 64
@@ -88,6 +99,8 @@ def _source_rows(  # noqa: C901 - validate evidence fields in fail-closed order.
             _validate_pdf_layout_row(row)
         elif not _digest(row.get("layout_sha256")):
             _fail("layout_fingerprint_invalid")
+        if source_id in source_ids and not allow_repeats:
+            _fail("layout_source_duplicate")
         source_ids.add(source_id)
         row_key = (source_id, str(row.get("layout_sha256")))
         if row_key in seen_rows and not allow_repeats:
@@ -107,23 +120,119 @@ def _rows_match(
 
 
 def _unassessed_reason(
-    source: dict[str, Any], pdf_by_id: dict[str, dict[str, Any]]
+    source: dict[str, Any],
+    pdf_by_id: dict[str, dict[str, Any]],
+    text_by_id: dict[str, dict[str, Any]],
+    workbook_gaps: dict[str, str],
 ) -> str:
     source_id = source["source_id"]
     pdf_row = pdf_by_id.get(source_id)
     if pdf_row is not None and pdf_row.get("status") == "layout_unavailable":
         return "pdf_layout_unavailable"
     if source.get("media_type") == _XLSX:
-        return "silver_workbook_inventory_missing"
+        return workbook_gaps.get(source_id, "silver_workbook_inventory_missing")
+    if source_id in text_by_id:
+        return str(text_by_id[source_id]["unavailable_reason"])
     return "no_matching_workbook_or_pdf_layout_profile"
 
 
-def reconcile_source_layout_reports(  # noqa: C901, PLR0912, PLR0915 - explicit evidence boundary.
+def _validate_text_status(row: dict[str, Any], source: dict[str, Any]) -> None:
+    if row.get("status") == "baseline_recorded":
+        if (
+            not isinstance(row.get("layout"), dict)
+            or layout_fingerprint(row["layout"]) != row.get("layout_sha256")
+            or not _digest(row.get("declared_fact_schema_sha256"))
+        ):
+            _fail("text_layout_fingerprint_invalid")
+        drift = row.get("dispatch_drift")
+        if (
+            not isinstance(drift, dict)
+            or drift.get("source_sha256") != source.get("object_sha256")
+            or drift.get("status") != "baseline_recorded"
+        ):
+            _fail("text_layout_dispatch_invalid")
+        compare_adapter_drift(drift, drift)
+    elif (
+        row.get("status") != "layout_unavailable"
+        or not isinstance(row.get("unavailable_reason"), str)
+        or not row["unavailable_reason"]
+        or "layout_sha256" in row
+    ):
+        _fail("text_layout_status_invalid")
+
+
+def _text_rows(
+    report: dict[str, Any], captured: dict[str, dict[str, Any]]
+) -> list[dict[str, Any]]:
+    if report.get("schema_version") != TEXT_REPORT_SCHEMA or not isinstance(
+        report.get("text_layouts"), list
+    ):
+        _fail("text_baseline_schema_invalid")
+    rows = report["text_layouts"]
+    seen = set()
+    for row in rows:
+        if not isinstance(row, dict):
+            _fail("text_layout_row_invalid")
+        source_id = row.get("source_id")
+        if not isinstance(source_id, str):
+            _fail("text_layout_source_identity_invalid")
+        source = captured.get(source_id)
+        if (
+            source is None
+            or source_id in seen
+            or source.get("media_type") not in {"text/csv", "text/html"}
+        ):
+            _fail("text_layout_source_identity_invalid")
+        seen.add(source_id)
+        if row.get("source_object_sha256") != source.get("object_sha256") or row.get(
+            "media_type"
+        ) != source.get("media_type"):
+            _fail("text_layout_source_fixity_mismatch")
+        _validate_text_status(row, source)
+    expected = {
+        key
+        for key, source in captured.items()
+        if source.get("media_type") in {"text/csv", "text/html"}
+    }
+    if seen != expected:
+        _fail("text_layout_cohort_incomplete")
+    return rows
+
+
+def _bronze_workbook_gaps(
+    report: dict[str, Any], captured: dict[str, dict[str, Any]], assessed: set[str]
+) -> dict[str, str]:
+    rows = report.get("unavailable")
+    if not isinstance(rows, list):
+        _fail("bronze_workbook_unavailable_invalid")
+    reasons: dict[str, str] = {}
+    for row in rows:
+        if (
+            not isinstance(row, dict)
+            or not isinstance(row.get("source_id"), str)
+            or not isinstance(row.get("reason"), str)
+            or not row["reason"]
+            or row["source_id"] in reasons
+        ):
+            _fail("bronze_workbook_unavailable_invalid")
+        reasons[row["source_id"]] = row["reason"]
+    expected = {
+        key for key, source in captured.items() if source.get("media_type") == _XLSX
+    }
+    if assessed & reasons.keys() or assessed | reasons.keys() != expected:
+        _fail("bronze_workbook_cohort_incomplete")
+    return reasons
+
+
+def reconcile_source_layout_reports(  # noqa: C901, PLR0912, PLR0913, PLR0915 - explicit paired evidence boundary.
     census_bytes: bytes,
     workbook_baseline_bytes: bytes,
     pdf_baseline_bytes: bytes,
     workbook_recheck_bytes: bytes,
     pdf_recheck_bytes: bytes,
+    *,
+    text_baseline_bytes: bytes | None = None,
+    text_recheck_bytes: bytes | None = None,
 ) -> dict[str, Any]:
     """Reconcile current rechecks to pinned reports without promoting mappings."""
     census = _object(census_bytes, "source_census_invalid")
@@ -131,12 +240,14 @@ def reconcile_source_layout_reports(  # noqa: C901, PLR0912, PLR0915 - explicit 
     pdf = _object(pdf_baseline_bytes, "pdf_baseline_invalid")
     workbook_recheck = _object(workbook_recheck_bytes, "workbook_recheck_invalid")
     pdf_recheck = _object(pdf_recheck_bytes, "pdf_recheck_invalid")
+    if (text_baseline_bytes is None) != (text_recheck_bytes is None):
+        _fail("text_layout_recheck_required")
     if census.get("schema_version") != _CENSUS_SCHEMA:
         _fail("source_census_schema_invalid")
-    if (
-        workbook.get("schema_version") != _WORKBOOK_SCHEMA
-        or workbook_recheck.get("schema_version") != _WORKBOOK_SCHEMA
-    ):
+    if workbook.get("schema_version") not in {
+        _WORKBOOK_SCHEMA,
+        _BRONZE_WORKBOOK_SCHEMA,
+    } or workbook_recheck.get("schema_version") != workbook.get("schema_version"):
         _fail("workbook_baseline_schema_invalid")
     if (
         pdf.get("schema_version") != _PDF_SCHEMA
@@ -171,11 +282,16 @@ def reconcile_source_layout_reports(  # noqa: C901, PLR0912, PLR0915 - explicit 
                 _fail("captured_source_fixity_invalid")
             captured[source_id] = row
 
+    bronze_workbook = workbook.get("schema_version") == _BRONZE_WORKBOOK_SCHEMA
     workbook_rows, workbook_ids = _source_rows(
-        workbook, "layouts", identities, _XLSX, allow_repeats=True
+        workbook, "layouts", identities, _XLSX, allow_repeats=not bronze_workbook
     )
     workbook_recheck_rows, workbook_recheck_ids = _source_rows(
-        workbook_recheck, "layouts", identities, _XLSX, allow_repeats=True
+        workbook_recheck,
+        "layouts",
+        identities,
+        _XLSX,
+        allow_repeats=not bronze_workbook,
     )
     pdf_rows, pdf_ids = _source_rows(
         pdf, "pdf_layouts", identities, _PDF, allow_repeats=False
@@ -201,12 +317,42 @@ def reconcile_source_layout_reports(  # noqa: C901, PLR0912, PLR0915 - explicit 
         if row.get("status") == "baseline_recorded"
     }
     assessed_ids = workbook_recheck_ids | assessed_pdf_ids
+    text_by_id: dict[str, dict[str, Any]] = {}
+    text_report: dict[str, Any] | None = None
+    text_rows: list[dict[str, Any]] = []
+    if text_baseline_bytes is not None and text_recheck_bytes is not None:
+        text_report = _object(text_baseline_bytes, "text_baseline_invalid")
+        text_recheck = _object(text_recheck_bytes, "text_recheck_invalid")
+        for report in (text_report, text_recheck):
+            if (
+                report.get("source_census_sha256") != census_sha
+                or report.get("capture_manifest_sha256") != capture_sha
+            ):
+                _fail("text_layout_cohort_identity_mismatch")
+        text_rows = _text_rows(text_report, captured)
+        text_current_rows = _text_rows(text_recheck, captured)
+        if not _rows_match(text_rows, text_current_rows, "source_id"):
+            _fail("text_layout_recheck_changed")
+        text_by_id = {row["source_id"]: row for row in text_rows}
+        assessed_ids |= {
+            row["source_id"]
+            for row in text_rows
+            if row["status"] == "baseline_recorded"
+        }
     unassessed = sorted(set(captured) - assessed_ids)
-    workbook_unassessed = workbook_recheck.get("unassessed_source_ids")
-    if not isinstance(workbook_unassessed, list) or set(workbook_unassessed) != (
-        set(captured) - workbook_recheck_ids
-    ):
-        _fail("workbook_unassessed_sources_mismatch")
+    workbook_gaps: dict[str, str] = {}
+    if bronze_workbook:
+        workbook_gaps = _bronze_workbook_gaps(workbook, captured, workbook_ids)
+        if workbook_gaps != _bronze_workbook_gaps(
+            workbook_recheck, captured, workbook_recheck_ids
+        ):
+            _fail("workbook_unassessed_sources_mismatch")
+    else:
+        workbook_unassessed = workbook_recheck.get("unassessed_source_ids")
+        if not isinstance(workbook_unassessed, list) or set(workbook_unassessed) != (
+            set(captured) - workbook_recheck_ids
+        ):
+            _fail("workbook_unassessed_sources_mismatch")
 
     by_media: dict[str, dict[str, set[str]]] = defaultdict(
         lambda: {"captured": set(), "assessed": set()}
@@ -226,8 +372,10 @@ def reconcile_source_layout_reports(  # noqa: C901, PLR0912, PLR0915 - explicit 
     ):
         _fail("excluded_silver_manifests_invalid")
 
-    return {
-        "schema_version": _REPORT_SCHEMA,
+    result: dict[str, Any] = {
+        "schema_version": _REPORT_SCHEMA
+        if text_report is None and not bronze_workbook
+        else "archive-govt-nz.health-source-layout-reconciliation/v2",
         "source_census_sha256": census_sha,
         "capture_manifest_sha256": capture_sha,
         "pinned_reports": {
@@ -273,7 +421,9 @@ def reconcile_source_layout_reports(  # noqa: C901, PLR0912, PLR0915 - explicit 
                 "source_id": source_id,
                 "family": captured[source_id].get("family"),
                 "media_type": captured[source_id].get("media_type"),
-                "reason": _unassessed_reason(captured[source_id], pdf_by_id),
+                "reason": _unassessed_reason(
+                    captured[source_id], pdf_by_id, text_by_id, workbook_gaps
+                ),
             }
             for source_id in unassessed
         ],
@@ -296,3 +446,24 @@ def reconcile_source_layout_reports(  # noqa: C901, PLR0912, PLR0915 - explicit 
             ),
         ],
     }
+    if bronze_workbook:
+        result["pinned_reports"]["workbook"] = {
+            "sha256": hashlib.sha256(workbook_baseline_bytes).hexdigest(),
+            "basis": "verified_bronze_structure",
+            "layout_source_count": len(workbook_ids),
+            "recheck_layout_rows_unchanged": True,
+            "pinned_parser": workbook.get("parser"),
+            "recheck_parser": workbook_recheck.get("parser"),
+        }
+    if text_report is not None:
+        result["pinned_reports"]["text"] = {
+            "sha256": hashlib.sha256(text_baseline_bytes or b"").hexdigest(),
+            "layout_source_count": sum(
+                row["status"] == "baseline_recorded" for row in text_rows
+            ),
+            "recheck_layout_rows_unchanged": True,
+        }
+        result["summary"]["text_layout_source_count"] = sum(
+            row["status"] == "baseline_recorded" for row in text_rows
+        )
+    return result

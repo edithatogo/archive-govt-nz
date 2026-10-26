@@ -467,15 +467,20 @@ integrated parent head.
   their established fail-closed parser errors and write no package. Other
   adapter manifests remain pending. [M-05, M-07, M-10, M-16; AC-03, AC-05,
   AC-08, AC-12]
-- [~] Add schema fingerprints, adapter selection evidence, deterministic
+- [x] Add schema fingerprints, adapter selection evidence, deterministic
   ordering/serialization, source-layout drift reports and fail-closed unknown
   layout handling. Dispatch selection and source-family Arrow schema/layout
   fingerprint comparison now have deterministic contracts. The 2026-10-24
   Bronze-only structural inventory fingerprints all 12 captured XLSX sources,
   including six that lack Silver-derived inventories. The rechecked PDF cohort
-  fingerprints 59 of 59 captured PDFs. Three captured CSV sources and one HTML
-  source still lack a source-specific structural profile. Per-adapter
-  schema-drift integration remains open. See
+  fingerprints 59 of 59 captured PDFs. The exact HAIR2024 fig27/fig28, CPIQ.SE9A
+  CSVs and Pharmac CPB HTML table now have source-specific profiles and
+  byte-identical repeat evidence. The combined v2 reconciliation covers all
+  75 captured objects. Every common/native dispatch now captures immutable
+  selection, schema and ordered-output drift evidence; unknown/ambiguous
+  selections remain held. Dictionary field observations are explicitly distinct
+  from declared Arrow schemas. This does not qualify additional parsers or
+  close the wider Phase 3 checkpoint. See `schema-drift-integration-20261026.md`,
   `bronze-workbook-layout-baseline-20261024.md`,
   `context-adapters.md` and its validation receipt. [M-05, M-07, M-18, S-04;
   AC-03, AC-05, AC-16]
@@ -491,6 +496,11 @@ integrated parent head.
   determinism, not source rights or semantic approval.
 
 ### 3.4 Phase review and checkpoint
+
+- [~] Reconcile the complete Phase 3 checkpoint after remaining adapter,
+  dimension/mapping and integrated evidence requirements are satisfied. The
+  2026-10-26 drift increment does not close those remaining requirements.
+  [M-18, M-19; AC-16]
 
 - [x] Run schema, golden, property, mutation, archive-safety, typing and focused
   coverage gates; review binary preservation and lineage boundaries. [M-18;

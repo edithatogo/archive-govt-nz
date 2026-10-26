@@ -1,0 +1,375 @@
+{
+  "capture_manifest_sha256": "017b3a9adbda288c60693ef038e4c0da198d8db99b2bca9cf4bb81adbc6efb5f",
+  "limitations": [
+    "Profiles bind exact captured objects; changed objects require explicit qualification.",
+    "CSV grids and the reviewed CPB table/context do not establish semantics, rights or whole-document HTML coverage.",
+    "Observed dictionary field types are not trusted Arrow declarations; only declared native schemas receive Arrow fingerprints."
+  ],
+  "normalization_approval": "not_granted",
+  "schema_version": "archive-govt-nz.health-source-text-layout-baseline/v1",
+  "source_census_sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272",
+  "summary": {
+    "baseline_recorded_count": 4,
+    "captured_text_source_count": 4,
+    "layout_unavailable_count": 0
+  },
+  "text_layouts": [
+    {
+      "declared_fact_schema_sha256": "0b302d9c7a36a0897f677f795a1246fd804ba1fc0831ec9d41cec7c021e7a0c7",
+      "dispatch_drift": {
+        "fingerprints": {
+          "adapter": "0de30f363209edd46e7e9124ce518b23e0b700a909ea59d0e1597b34cf4950ae",
+          "layout": "053e3f8ad9b0b121663eb3b5ed57fc2603ea1cea4fd623bba31080228e1334fd",
+          "observed_record_shape": "f5c3f94b92f24d4abd6cb10a5b6f75eec17a33f2bc43c403baaf3761188d1e52",
+          "output_encoding": "a41c48814baef955f413c9d1117d1f24a59386f5b01a2d9711973217269bc669"
+        },
+        "normalization_approval": "not_granted",
+        "ordered_output_sha256": "1b9110c7e0163875c01972e3bff99fecfa975da641d588033735f005bbb3ffd2",
+        "output_serialization": "archive-govt-nz.health-drift-typed-output/v1",
+        "receipt_sha256": "6060a56f645e7f97e911ed6ce157f4a35f13a73f681bcac7b19be5ebb21d0e8b",
+        "schema_scope": "observed_runtime_field_types_not_declared_arrow_schema",
+        "schema_version": "archive-govt-nz.health-adapter-drift/v1",
+        "selection": {
+          "adapter": {
+            "id": "moh-hair2024-fig27-v1",
+            "version": "1.0.0"
+          },
+          "considered_adapter_ids": [
+            "moh-hair2024-fig27-v1"
+          ],
+          "declared_media_type": "text/csv",
+          "detected_media_type": "text/csv",
+          "matched_adapter_ids": [
+            "moh-hair2024-fig27-v1"
+          ],
+          "reason": null,
+          "receipt_sha256": "647e0c743e15867d5bc381b39e872fdc0d92f28a01342c261efcb11d2ec2b3ad",
+          "schema_version": "archive-govt-nz.health-adapter-selection/v1",
+          "source_sha256": "c1e7758667b8255e049603de8325d732f34a76e6099e0fe4de6553a36d48e9fc",
+          "status": "selected"
+        },
+        "source_sha256": "c1e7758667b8255e049603de8325d732f34a76e6099e0fe4de6553a36d48e9fc",
+        "status": "baseline_recorded"
+      },
+      "layout": {
+        "data_row_count": 20,
+        "data_row_width_counts": [
+          [
+            3,
+            20
+          ]
+        ],
+        "headers": [
+          "Year",
+          "Total appropriations, excluding capital, COVID-19 & DSS - real",
+          "Total appropriations, excluding capital, COVID-19 & DSS - nominal"
+        ],
+        "profile": "fig27/v1",
+        "scope": "reviewed_physical_line_csv_grid"
+      },
+      "layout_sha256": "e0ea93befafd9ff01e3a425f542b42bdd6d73b88321d4ae3baf35dad4751cdf6",
+      "media_type": "text/csv",
+      "profile": "fig27/v1",
+      "source_bytes": 516,
+      "source_id": "moh_vote_health-008",
+      "source_object_sha256": "c1e7758667b8255e049603de8325d732f34a76e6099e0fe4de6553a36d48e9fc",
+      "status": "baseline_recorded"
+    },
+    {
+      "declared_fact_schema_sha256": "0b302d9c7a36a0897f677f795a1246fd804ba1fc0831ec9d41cec7c021e7a0c7",
+      "dispatch_drift": {
+        "fingerprints": {
+          "adapter": "17ad759127989a0e990716059a89c8a87f8eb3dc6c7aa66ca64abdb7741d2b99",
+          "layout": "053e3f8ad9b0b121663eb3b5ed57fc2603ea1cea4fd623bba31080228e1334fd",
+          "observed_record_shape": "f5c3f94b92f24d4abd6cb10a5b6f75eec17a33f2bc43c403baaf3761188d1e52",
+          "output_encoding": "a41c48814baef955f413c9d1117d1f24a59386f5b01a2d9711973217269bc669"
+        },
+        "normalization_approval": "not_granted",
+        "ordered_output_sha256": "72340ad6db4fbdc64cbfd282af2a61b48fe08015702d38db9953c1e420feaeea",
+        "output_serialization": "archive-govt-nz.health-drift-typed-output/v1",
+        "receipt_sha256": "7c3e1f9a94ef6db1812f49bd93005b95e3fdc04b0ebed0fddb73fa305e8c4a9e",
+        "schema_scope": "observed_runtime_field_types_not_declared_arrow_schema",
+        "schema_version": "archive-govt-nz.health-adapter-drift/v1",
+        "selection": {
+          "adapter": {
+            "id": "moh-hair2024-fig28-v1",
+            "version": "1.0.0"
+          },
+          "considered_adapter_ids": [
+            "moh-hair2024-fig28-v1"
+          ],
+          "declared_media_type": "text/csv",
+          "detected_media_type": "text/csv",
+          "matched_adapter_ids": [
+            "moh-hair2024-fig28-v1"
+          ],
+          "reason": null,
+          "receipt_sha256": "621f28fad9ba7f48394f221875d173f636830433c8f4a67efc59a5e2bcb68fc4",
+          "schema_version": "archive-govt-nz.health-adapter-selection/v1",
+          "source_sha256": "7b9a51643550e3d890f4f341f27346d3466708fe924702ade4a731d1bb6266e4",
+          "status": "selected"
+        },
+        "source_sha256": "7b9a51643550e3d890f4f341f27346d3466708fe924702ade4a731d1bb6266e4",
+        "status": "baseline_recorded"
+      },
+      "layout": {
+        "data_row_count": 20,
+        "data_row_width_counts": [
+          [
+            3,
+            20
+          ]
+        ],
+        "headers": [
+          "Year",
+          "Total appropriations, excluding capital, COVID-19 & DSS, real per capita",
+          "Total appropriations, excluding capital, COVID-19 & DSS, nominal per capita"
+        ],
+        "profile": "fig28/v1",
+        "scope": "reviewed_physical_line_csv_grid"
+      },
+      "layout_sha256": "17a8244106562730894bd15df43e400b0082bcfc5991e8cb2d1e98a75b07ddcf",
+      "media_type": "text/csv",
+      "profile": "fig28/v1",
+      "source_bytes": 622,
+      "source_id": "moh_vote_health-009",
+      "source_object_sha256": "7b9a51643550e3d890f4f341f27346d3466708fe924702ade4a731d1bb6266e4",
+      "status": "baseline_recorded"
+    },
+    {
+      "declared_fact_schema_sha256": "ceea789174d3dcdc04b4df2c841c2acb001ebbef1eab5ed4cd9de627804da004",
+      "dispatch_drift": {
+        "fingerprints": {
+          "adapter": "8f78765c922aace5e1f835c60f1d2f11e4ba80eecf0e1ff24e6a8f3ee95084e0",
+          "layout": "fb789d14c355b599e49ffb70b09ee739f61f3d1a03af199fb71aab4d4393ff14",
+          "observed_record_shape": "a669cbb9baa56ee074018a293277af30772216bdf7418ee367c1d68faa1f2ebd",
+          "output_encoding": "a41c48814baef955f413c9d1117d1f24a59386f5b01a2d9711973217269bc669"
+        },
+        "normalization_approval": "not_granted",
+        "ordered_output_sha256": "55b170bc1dbe73353709a4db8fd7a9116452944f714bbc9cfb98d1e9709aa28d",
+        "output_serialization": "archive-govt-nz.health-drift-typed-output/v1",
+        "receipt_sha256": "67fdbc29552f9098381add341644534430d2a52f00428d6890ae6db3411f84d7",
+        "schema_scope": "observed_runtime_field_types_not_declared_arrow_schema",
+        "schema_version": "archive-govt-nz.health-adapter-drift/v1",
+        "selection": {
+          "adapter": {
+            "id": "pharmac-combined-pharmaceutical-budget",
+            "version": "1.0.0"
+          },
+          "considered_adapter_ids": [
+            "pharmac-combined-pharmaceutical-budget"
+          ],
+          "declared_media_type": "text/html",
+          "detected_media_type": "text/html",
+          "matched_adapter_ids": [
+            "pharmac-combined-pharmaceutical-budget"
+          ],
+          "reason": null,
+          "receipt_sha256": "b2a6819e0f349557fbc101b75381d00477a99476bd61db059ce4f62911b302c3",
+          "schema_version": "archive-govt-nz.health-adapter-selection/v1",
+          "source_sha256": "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea",
+          "status": "selected"
+        },
+        "source_sha256": "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea",
+        "status": "baseline_recorded"
+      },
+      "layout": {
+        "header_cells": [
+          [
+            "FINANCIAL YEAR",
+            1
+          ],
+          [
+            "CPB ($ MILLION)",
+            1
+          ],
+          [
+            "CHANGE FROM PREVIOUS YEAR ($ MILLION)",
+            1
+          ],
+          [
+            "PERCENTAGE CHANGE FROM PREVIOUS YEAR (%)",
+            2
+          ]
+        ],
+        "profile": "pharmac-cpb/v1",
+        "required_context_sha256": [
+          "28eb83c25d371ac7ecea7f233ec1d85d1d1262ef2c99bc06f0235992a0256a77",
+          "7ed15bc3fb1373d5c41844f24e6a14f52b29c3edbf8b32f94e777c799861fc24",
+          "1b8514486443d40b9a43b711a01906b1d3be582cff66e4e1ca221896d3fd4210"
+        ],
+        "row_spans": [
+          [
+            1,
+            1,
+            1,
+            2
+          ],
+          [
+            1,
+            1,
+            1,
+            2
+          ],
+          [
+            1,
+            1,
+            1,
+            2
+          ],
+          [
+            1,
+            1,
+            1,
+            2
+          ],
+          [
+            1,
+            1,
+            1,
+            2
+          ],
+          [
+            1,
+            1,
+            1,
+            2
+          ],
+          [
+            1,
+            1,
+            1,
+            2
+          ],
+          [
+            1,
+            1,
+            1,
+            2
+          ],
+          [
+            1,
+            1,
+            1,
+            2
+          ],
+          [
+            1,
+            1,
+            1,
+            2
+          ],
+          [
+            1,
+            1,
+            1,
+            2
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        ],
+        "scope": "reviewed_cpb_table_and_required_context_not_whole_dom"
+      },
+      "layout_sha256": "2467e374b93fbcb50fe25ee9bfb91f366715de0b1c4710ec715bee94873b452a",
+      "media_type": "text/html",
+      "profile": "pharmac-cpb/v1",
+      "source_bytes": 548867,
+      "source_id": "pharmac_cpb-010",
+      "source_object_sha256": "eaf5801b819321f8aed7544fb16e6348779267fd3d5f8fb1d59410803acffbea",
+      "status": "baseline_recorded"
+    },
+    {
+      "declared_fact_schema_sha256": "a42486b65600b1f012147a9a7ca6844b119db42030be1681c752f445c2a04806",
+      "dispatch_drift": {
+        "fingerprints": {
+          "adapter": "2582ef6b0eeb9bfb6fea01b9876a048735b1b40c540b8ce72dad8310b6162f11",
+          "layout": "b8d94bfc23a3659b0d772d27c213d35f9d5191363c282d6b071dde612cc1a13e",
+          "observed_record_shape": "90256658ad7ca131564072629e08a894603f995a6bc05b8d17675c69512ab47c",
+          "output_encoding": "a41c48814baef955f413c9d1117d1f24a59386f5b01a2d9711973217269bc669"
+        },
+        "normalization_approval": "not_granted",
+        "ordered_output_sha256": "292ace03325e5ea4418f01f20140c85a5a0b1106827f90f64d43e5a53d3d62d6",
+        "output_serialization": "archive-govt-nz.health-drift-typed-output/v1",
+        "receipt_sha256": "305fa035bfc123abe265552aeb25d040c03da5414b52d39b813f10b478d4ece3",
+        "schema_scope": "observed_runtime_field_types_not_declared_arrow_schema",
+        "schema_version": "archive-govt-nz.health-adapter-drift/v1",
+        "selection": {
+          "adapter": {
+            "id": "stats-nz-cpiq-se9a",
+            "version": "1.1.0"
+          },
+          "considered_adapter_ids": [
+            "stats-nz-cpiq-se9a"
+          ],
+          "declared_media_type": "text/csv",
+          "detected_media_type": "text/csv",
+          "matched_adapter_ids": [
+            "stats-nz-cpiq-se9a"
+          ],
+          "reason": null,
+          "receipt_sha256": "0e27a83323aa81c206a7ceba34b3d85d5eb728f4b9cd596c58aa54c48f18d27f",
+          "schema_version": "archive-govt-nz.health-adapter-selection/v1",
+          "source_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+          "status": "selected"
+        },
+        "source_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+        "status": "baseline_recorded"
+      },
+      "layout": {
+        "data_row_count": 22701,
+        "data_row_width_counts": [
+          [
+            9,
+            22701
+          ]
+        ],
+        "headers": [
+          "Series_reference",
+          "Period",
+          "Data_value",
+          "STATUS",
+          "UNITS",
+          "Subject",
+          "Group",
+          "Series_title_1",
+          "Series_title_2"
+        ],
+        "profile": "cpiq-se9a/v1",
+        "scope": "reviewed_physical_line_csv_grid"
+      },
+      "layout_sha256": "87c453fb40613fe37192ace962ed73b3a78cea2729c1b30d9901a971f3305e92",
+      "media_type": "text/csv",
+      "profile": "cpiq-se9a/v1",
+      "source_bytes": 2917074,
+      "source_id": "stats_nz_cpi-053a0705526fac8d",
+      "source_object_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d",
+      "status": "baseline_recorded"
+    }
+  ]
+}
