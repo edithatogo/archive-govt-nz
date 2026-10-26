@@ -1,0 +1,14 @@
+{
+  "run_id": 40419742407,
+  "head_revision": "f24881533769679fa9774a5728f265e9032fb679",
+  "job_id": 121912810899,
+  "native_failure_seconds": 50,
+  "failed_stage": "focused native Windows preflight collection",
+  "error": "ModuleNotFoundError: No module named tools",
+  "remediation": "Use the established explicit importlib file loader; do not rely on checkout root namespace imports or collection order.",
+  "production_archive_behavior_changed": false,
+  "job_log_sha256": "1dd6d1a577b72436bbedbcf7b3b31b635308b0bb2b85272dbe05688d06ed36aa",
+  "exact_preflight_local_result": "11 passed;2 platform capability skips",
+  "format_lint_types": "passed",
+  "native_acceptance": "pending next head"
+}

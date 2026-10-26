@@ -1,9 +1,18 @@
 """Exercise log retention and the outer deadline with actual child processes."""
 
+import importlib.util
 import sys
-lazy from pathlib import Path
+from pathlib import Path
 
-from tools.windows_assurance import run_logged_gate
+_SPEC = importlib.util.spec_from_file_location(
+    "windows_assurance", Path(__file__).parents[2] / "tools" / "windows_assurance.py"
+)
+assert _SPEC is not None
+assert _SPEC.loader is not None
+_MODULE = importlib.util.module_from_spec(_SPEC)
+sys.modules[_SPEC.name] = _MODULE
+_SPEC.loader.exec_module(_MODULE)
+run_logged_gate = _MODULE.run_logged_gate
 
 
 def test_logged_gate_preserves_output_and_failure(tmp_path: Path) -> None:
