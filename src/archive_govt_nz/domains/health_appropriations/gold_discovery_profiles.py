@@ -6,9 +6,11 @@ import hashlib
 import json
 from itertools import islice
 from typing import TYPE_CHECKING, Any
+from urllib.parse import quote
 
 from archive_govt_nz.domains.health_appropriations.gold_metadata import (
     MAX_BYTES,
+    MAX_PACKAGES,
     GoldInput,
     project_gold_metadata,
 )
@@ -20,6 +22,8 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 VERSION = "archive-govt-nz.health-gold-discovery-candidates/v1"
+_MAX_MEMBERS = 128
+_MAX_FIELDS = 256
 FILES = {"croissant.json", "ro-crate-metadata.json", "profile-validation.json"}
 CONTEXT = {
     "@vocab": "http://schema.org/",
@@ -63,14 +67,44 @@ def project_profiles(
     Required licence, creator, URL and publication properties are intentionally
     absent until evidenced. Inline contexts require no network or context cache.
     """
-    catalogue = json.loads(project_gold_metadata(values)["catalogue.json"])
+    return project_inventory_candidates(
+        json.loads(project_gold_metadata(values)["catalogue.json"])
+    )
+
+
+def project_inventory_candidates(
+    catalogue: dict[str, Any],
+    *,
+    name: str | None = None,
+    description: str | None = None,
+) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
+    """Project bounded supplied inventory assertions without verifying their authority.
+
+    The existing Gold entry point verifies its inputs first. Other callers must
+    bind their own observed inventory. Neither route grants rights, publication,
+    standards conformance or loader qualification.
+    """
+    _require(0 < len(catalogue["packages"]) <= MAX_PACKAGES)
+    _require(
+        all(
+            len(p["inventory"]) <= _MAX_MEMBERS
+            and len(p["tables"]) <= _MAX_MEMBERS
+            and all(len(t["fields"]) <= _MAX_FIELDS for t in p["tables"])
+            for p in catalogue["packages"]
+        )
+    )
     distributions, files, records = [], [], []
     for package in catalogue["packages"]:
         for item in package["inventory"]:
             identity = package["id"] + ":" + item["path"]
-            media = MEDIA[
-                next(suffix for suffix in MEDIA if item["path"].endswith(suffix))
-            ]
+            media = item.get("media_type") or next(
+                (
+                    mime
+                    for suffix, mime in MEDIA.items()
+                    if item["path"].endswith(suffix)
+                ),
+                "application/octet-stream",
+            )
             common = {
                 "@id": identity,
                 "name": item["path"],
@@ -85,7 +119,7 @@ def project_profiles(
             record_id = table["id"] + ":recordset"
             fields = [
                 {
-                    "@id": record_id + "/" + field["name"],
+                    "@id": record_id + "/" + quote(field["name"], safe=""),
                     "@type": "cr:Field",
                     "name": field["name"],
                     "cr:dataType": {
@@ -111,14 +145,14 @@ def project_profiles(
                     "hag:arrowSchemaIpcHex": table["schema_ipc_hex"],
                 }
             )
-    description = (
+    description = description or (
         "Local Gold inventory candidate. Payloads remain in separately "
         "pinned Gold packages; rights and publication are unassessed."
     )
     croissant = {
         "@context": dict(CONTEXT),
         "@type": "Dataset",
-        "name": "Local Health analytical Gold discovery candidate",
+        "name": name or "Local Health analytical Gold discovery candidate",
         "description": description,
         "distribution": distributions,
         "cr:recordSet": records,
@@ -134,7 +168,7 @@ def project_profiles(
             {
                 "@id": "./",
                 "@type": "Dataset",
-                "name": "Local Health analytical Gold inventory candidate",
+                "name": name or "Local Health analytical Gold inventory candidate",
                 "description": description,
                 "hasPart": [{"@id": item["@id"]} for item in files],
             },

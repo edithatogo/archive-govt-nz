@@ -1572,6 +1572,19 @@ deliberately exercise version handling.
 
 ### 7.3 Phase review and checkpoint
 
+- [x] Replace the current local candidate assembler's generic field bindings,
+  fixed publication date, blanket licence and unverified activity assertions
+  with observed payload hashes, exact Arrow schema descriptors and shared
+  inventory-only Croissant/RO-Crate/DCAT/PROV projections. Keep derivative
+  rights, source requalification and release readiness explicit and blocked.
+  Verify deterministic local builds, byte-bound original assertions, encoded
+  field identifiers, RDF parsing and release-guard rejection. Reconcile against
+  the immutable retained v4 payloads without modifying or publishing them.
+  See `candidate-metadata-retained-review-20261027.json` and
+  `candidate-metadata-correction-20261027.md`. This fixes local claim and schema
+  defects; full standards qualification and the Phase 7 parent gate remain open.
+  [M-04, M-14, M-17, M-18, M-19; AC-04, AC-14, AC-15, AC-16]
+
 - [ ] Review every metadata-level rights statement against resource evidence;
   reject hard-coded blanket licensing and unsupported federation claims.
   [M-04, M-14; AC-04, AC-14]

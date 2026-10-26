@@ -596,6 +596,19 @@ def _graphs(
     )
 
 
+def project_inventory_graphs(
+    packages: list[dict[str, Any]], inventory_sha256: str
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Render supplied inventory assertions as entity-only DCAT/PROV graphs.
+
+    This pure projection does not verify input files, rights or source authority.
+    Callers retain that boundary; no activities, actors or dates are invented.
+    """
+    _require(0 < len(packages) <= MAX_PACKAGES)
+    _require(re.fullmatch(r"[0-9a-f]{64}", inventory_sha256) is not None)
+    return _graphs(packages, inventory_sha256)
+
+
 def _period_text(table: dict[str, Any]) -> str:
     if table.get("period_token_field_present") is False:
         return "not applicable: no period-token field"

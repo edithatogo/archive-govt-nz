@@ -1,4 +1,4 @@
-"""Build a rights-filtered Hugging Face candidate for health appropriations."""
+"""Build a local Health candidate inventory without release eligibility claims."""
 
 from __future__ import annotations
 
@@ -9,16 +9,14 @@ import shutil
 from pathlib import Path
 from typing import Any, cast
 
+from archive_govt_nz.domains.health_appropriations.candidate_metadata import (
+    project_candidate_inventory,
+)
 from archive_govt_nz.domains.health_appropriations.candidate_paths import (
     original_paths,
 )
 from archive_govt_nz.object_store import ContentAddressedStore
-from archive_govt_nz.schemas import (
-    generate_domain_croissant_descriptor,
-    generate_domain_dcat_descriptor,
-)
 
-_DOMAIN = "health_appropriations"
 _COLLECTION = (
     "edithatogo/health-economics-and-outcomes-research-6a2e9986698340a8c8f4e4b4"
 )
@@ -47,7 +45,6 @@ def _copy(source: Path, target: Path) -> None:
 
 def _card(candidate_state: str) -> str:
     return f"""---
-license: cc-by-4.0
 task_categories:
 - tabular-classification
 tags:
@@ -61,26 +58,26 @@ pretty_name: New Zealand Health Appropriations
 
 # New Zealand Health Appropriations
 
-This candidate preserves rights-eligible official fiscal originals and provides
-source-faithful Parquet records, field lineage, donor-compatible analytics, and
-reproducible metadata for New Zealand Vote Health appropriations and context.
+This local inventory retains copied originals with their capture assertions
+and describes supplied Parquet and compatibility payloads. The assembler does
+not requalify source semantics, derivative rights or release eligibility.
 
 ## Medallion structure
 
 - `original/`: unchanged, checksum-pinned Treasury/Budget and Ministry files.
-- `data/silver/`: typed donor-parity facts and field lineage.
-- `data/gold/`: rebuildable analysis tables; SQLite and plots remain downloadable
+- `data/silver/`: supplied Parquet facts and lineage, when present.
+- `data/gold/`: supplied analysis tables; SQLite and plots remain local
   compatibility artifacts rather than canonical tabular state.
 - `metadata/`: census, rights, provenance, DCAT, Croissant, and RO-Crate records.
 
 ## Rights and attribution
 
-Eligible official material is reused under the per-resource CC BY 4.0 evidence
-and attribution recorded in `metadata/rights.json`, including Treasury,
-Ministry of Health, Stats NZ, and Pharmac resources. Donor repository code is
-Apache-2.0 and is not included as a blanket licence assertion for government
-data. Logos, design elements, third-party content, and resources lacking
-affirmative rights evidence are excluded or represented by metadata only.
+Original-resource rights assertions and attribution are retained in
+`metadata/rights.json`. Current derivative and whole-candidate rights are
+unassessed. The metadata projections preserve observed payload hashes and
+actual Arrow schemas. Standards conformance, source semantics and release
+readiness require separate evidence. This local inventory grants no publication
+approval or blanket data licence.
 
 ## Limitations
 
@@ -145,71 +142,30 @@ def main() -> int:
     )
     for source in sorted((args.gold_dir / "plots").glob("*.png")):
         _copy(source, args.output_dir / "compatibility" / "plots" / source.name)
-    census = json.loads(args.source_census.read_text(encoding="utf-8"))
+    json.loads(args.source_census.read_text(encoding="utf-8"))
     _copy(args.source_census, args.output_dir / "metadata" / "source-census.json")
     _json(args.output_dir / "metadata" / "rights.json", {"resources": rights})
-    _json(
-        args.output_dir / "metadata" / "dcat.json",
-        generate_domain_dcat_descriptor(_DOMAIN),
-    )
-    _json(
-        args.output_dir / "metadata" / "croissant.json",
-        generate_domain_croissant_descriptor(
-            _DOMAIN,
-            version="1.0.0",
-            date_published="2026-08-29T00:00:00Z",
-            parquet_distribution_url="data/silver/donor_facts.parquet",
-        ),
-    )
-    _json(
-        args.output_dir / "metadata" / "prov.json",
-        {
-            "@context": {"prov": "http://www.w3.org/ns/prov#"},
-            "@type": "prov:Bundle",
-            "entities": [item["path"] for item in rights],
-            "activities": ["bronze-capture", "silver-normalization", "gold-analysis"],
-        },
-    )
-    source_disposition_passed = all(
-        row["disposition"] not in {"discovered", "retryable"}
-        for row in census["records"]
-    )
-    candidate_state = (
-        "release_candidate_pending_exact_manifest_approval"
-        if source_disposition_passed
-        else "partial_not_release_ready"
-    )
+    candidate_state = "partial_not_release_ready"
     (args.output_dir / "README.md").write_text(_card(candidate_state), encoding="utf-8")
+    projections = project_candidate_inventory(args.output_dir)
+    for relative, payload in sorted(projections.items()):
+        target = args.output_dir / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        with target.open("xb") as stream:
+            stream.write(payload)
     files = sorted(path for path in args.output_dir.rglob("*") if path.is_file())
-    crate = {
-        "@context": "https://w3id.org/ro/crate/1.1/context",
-        "@graph": [
-            {
-                "@id": "ro-crate-metadata.json",
-                "@type": "CreativeWork",
-                "about": {"@id": "./"},
-            },
-            {
-                "@id": "./",
-                "@type": "Dataset",
-                "name": "New Zealand Health Appropriations",
-            },
-            *[
-                {"@id": path.relative_to(args.output_dir).as_posix(), "@type": "File"}
-                for path in files
-            ],
-        ],
-    }
-    _json(args.output_dir / "ro-crate-metadata.json", crate)
-    files = sorted(path for path in args.output_dir.rglob("*") if path.is_file())
+    payload_inventory = json.loads(projections["metadata/payload-inventory.json"])
+    for entry in payload_inventory["inventory"]:
+        if _digest(args.output_dir / entry["path"]) != entry["sha256"]:
+            error = "candidate_payload_changed_during_projection"
+            raise ValueError(error)
     manifest = {
         "schema_version": "archive-govt-nz.health-hf-candidate/v1",
         "dataset": "edithatogo/nz-health-appropriations",
         "collection": _COLLECTION,
-        "rights_gate": "passed_for_included_resources",
-        "source_disposition_gate": (
-            "passed" if source_disposition_passed else "failed_incomplete"
-        ),
+        "rights_gate": "original_assertions_only_derivatives_unqualified",
+        "metadata_gate": "incomplete_inventory_profile",
+        "source_disposition_gate": "recorded_assertions_only_not_requalified",
         "candidate_state": candidate_state,
         "files": [
             {
@@ -224,7 +180,9 @@ def main() -> int:
     print(
         json.dumps(
             {
-                "status": "passed",
+                "status": "built_local_inventory",
+                "candidate_state": candidate_state,
+                "release_readiness": "blocked",
                 "files": len(files),
                 "manifest_sha256": _digest(args.output_dir / "MANIFEST.json"),
             },
