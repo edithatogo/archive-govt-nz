@@ -96,3 +96,5 @@ This completes metadata maintenance for the inspected estate, not missing source
 - [ ] Resume one bounded report batch after merge, recover/verify publication first, preserve the maintained dataset card and immutable originals.
 
 Account evidence: `../../../evidence/huggingface-hardening/20261027/`. Windows diagnostic evidence: `../../../evidence/parliament-assurance/20261027/`. Parent source rights, legacy access and natural schedule gates remain active.
+
+Hosted follow-up: the integrated Linux run passed tests, schemas, parity, mutation, audit and licence gates, then identified a benign status sentence in the newly materialized local-assurance receipt as a Secret Keyword candidate. Reused the existing exact receipt pass-status convention and retained scope in a separate field; no scan policy/exemption was changed. Rerun only the affected secret stage locally, then require the full hosted candidate checks.

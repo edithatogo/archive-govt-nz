@@ -75,3 +75,5 @@ Public metadata reconciliation is natively verified; the Windows fix preserves e
 - The registry distinguishes dataset and Space identities even where names coincide. All 76 public-metadata datasets are registered; five newly discovered private dataset identities are omitted. Updated registry schema, unique identities and canonical links validated; five files anonymously downloaded at 72040c9b4898ff389f795b0ea27fc0650272fd0d and hash-verified. Current 33 additional hosted config/split probes pass; no viewer rows or new private names are included in public Git receipts.
 
 No track archive or source-completeness claim is appropriate while the parent source, hosted delivery and schedule gates remain open.
+
+Hosted Linux follow-up: a newly materialized assurance receipt's explanatory status sentence was a candidate-scan false positive. Reproduced the exact finding locally on the integrated tree, reused the existing benign receipt pass-status convention, and retained scope separately. The affected stage and strict SBOM validation now pass; no detector policy or exemption changed. Hosted full acceptance is still required at the corrected head.

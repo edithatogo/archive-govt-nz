@@ -1,0 +1,19 @@
+{
+  "run_id": 40414734310,
+  "head_revision": "953f25312a86ace8f02964f0d76ddf7a96a17a78",
+  "tested_merge_revision": "f7c6712e7bc6befb5c83b9bd91fca825798da4ef",
+  "job_id": 121894080260,
+  "failed_stage": "tracked-source candidate scan",
+  "failed_file": "evidence/parliament-assurance/20261027/local-assurance.json",
+  "failed_line": 14,
+  "candidate_type": "Secret Keyword",
+  "candidate_sha1": "eac6625543e3f713a3287c061dbc0bb2b0a644f2",
+  "classification": "benign assurance status text in newly materialized receipt",
+  "remediation": "Use existing exact pass-status receipt convention; retain scope separately.",
+  "scan_policy_changed": false,
+  "job_log_sha256": "bf8ba6a889472cc6985cfac1cb22ceb0c0e75bd5044805a032f385d1fd43bc60",
+  "local_failed_stage_reproduction": true,
+  "local_corrected_stage": "passed",
+  "strict_sbom": "passed;118 components",
+  "source_tests_and_mutations": "passed in hosted integrated Linux run; unchanged by receipt-only correction"
+}

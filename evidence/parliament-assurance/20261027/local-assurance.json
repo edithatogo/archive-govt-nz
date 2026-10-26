@@ -11,10 +11,11 @@
   "mutation_stages": "all passed",
   "dependency_audit": "passed; no known vulnerabilities",
   "licences": "passed",
-  "secrets": "passed; tracked staged source included",
+  "secrets": "passed",
   "sbom": "validated;118 components",
   "targeted_final_cleanup_tests": "2 passed",
   "workflow_lint": "Actionlint passed",
   "strict_types": "passed",
-  "hosted_acceptance": "pending final head"
+  "hosted_acceptance": "pending final head",
+  "scan_scope": "tracked staged source included"
 }
