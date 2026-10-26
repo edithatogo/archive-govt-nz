@@ -103,6 +103,25 @@ def test_dispatch_selects_exact_profile_and_repeats_without_value_inference(
     assert first.output == repeated.output
     assert len(first.output.records) == 40
     assert len(first.output.lineage) == 120
+    assert len(first.output.dimensions) == 22
+    assert len(first.output.dimension_links) == 80
+    assert {mapping.dimension.kind for mapping in first.output.dimensions} == {
+        "measure",
+        "period",
+    }
+    assert all(
+        mapping.target is None
+        and mapping.method is None
+        and mapping.evidence == ()
+        and mapping.unresolved_reason
+        and mapping.source_references
+        for mapping in first.output.dimensions
+    )
+    assert all(
+        reference.startswith("sha256:" + digest + "#")
+        for mapping in first.output.dimensions
+        for reference in mapping.source_references
+    )
     assert first.output.losses == ()
     fact = first.output.records[0]
     assert fact["source_object_sha256"] == digest

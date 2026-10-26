@@ -13,8 +13,16 @@ from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
 )
 from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     AdapterOutput,
+    DimensionLink,
     FieldLineage,
     preserved_only,
+)
+from archive_govt_nz.domains.health_appropriations.dimension_mapping import (
+    Dimension,
+    Mapping,
+    dimension_key,
+    source_reference,
+    validate_mappings,
 )
 from archive_govt_nz.domains.health_appropriations.moh_canonical_projection import (
     PROFILES,
@@ -31,6 +39,105 @@ SOURCE_SHA256_BY_PROFILE = MappingProxyType(
     }
 )
 _MEDIA_TYPE = "text/csv"
+_DIMENSION_VERSION = "moh-hair2024-source-literal/v1"
+_MAX_SOURCE_REFERENCES = 32
+
+
+def _literal_dimensions(
+    facts: tuple[dict[str, object], ...], lineage: tuple[FieldLineage, ...]
+) -> tuple[tuple[Mapping, ...], tuple[DimensionLink, ...]]:
+    """Expose only the source's exact measure headers and year tokens."""
+    by_record: dict[str, dict[str, FieldLineage]] = {}
+    for item in lineage:
+        by_record.setdefault(item.record_id, {})[item.field] = item
+    assertions: dict[str, Mapping] = {}
+    links: list[DimensionLink] = []
+    for fact in facts:
+        record_id = str(fact["record_id"])
+        for kind, field, scheme, label in (
+            (
+                "measure",
+                f"raw:{fact['source_label']}",
+                "moh_hair2024_published_indicator_header",
+                str(fact["source_label"]),
+            ),
+            (
+                "period",
+                "period_token",
+                "moh_hair2024_financial_year_source_token",
+                str(fact["period_token"]),
+            ),
+        ):
+            source = by_record.get(record_id, {}).get(field)
+            if kind == "measure":
+                headers = moh_indicators.PROFILES[str(fact["profile"])]
+                if label not in headers[1:]:
+                    message = "moh_indicator_dimension_lineage_missing"
+                    raise ValueError(message)
+                source = FieldLineage(
+                    record_id=record_id,
+                    field=field,
+                    source_coordinate=f"csv:row=1;column={headers.index(label) + 1}",
+                    raw_value=label,
+                    normalized_value=label,
+                    rule=_DIMENSION_VERSION,
+                )
+            if source is None or source.raw_value is None:
+                message = "moh_indicator_dimension_lineage_missing"
+                raise ValueError(message)
+            dimension = Dimension(
+                kind=kind,
+                scheme=scheme,
+                label=label,
+                period_token=label if kind == "period" else None,
+            )
+            key = dimension_key(dimension)
+            reference = source_reference(
+                str(fact["source_object_sha256"]), source.source_coordinate
+            )
+            reason = (
+                "The published header is retained verbatim; no conformed measure "
+                "crosswalk or effective period is evidenced."
+                if kind == "measure"
+                else "The source year token has no verified calendar bounds or "
+                "approved period join."
+            )
+            existing = assertions.get(key)
+            references = {reference}
+            if existing is not None:
+                references.update(existing.source_references)
+            assertions[key] = Mapping(
+                dimension=dimension,
+                vintage=str(fact["source_vintage"]),
+                version=_DIMENSION_VERSION,
+                unresolved_reason=reason,
+                source_references=tuple(sorted(references)[:_MAX_SOURCE_REFERENCES]),
+            )
+            links.append(
+                DimensionLink(
+                    source_record_id=record_id,
+                    kind=kind,
+                    dimension_key=key,
+                    source_coordinate=source.source_coordinate,
+                    raw_value=source.raw_value,
+                    normalized_value=label,
+                    rule=_DIMENSION_VERSION,
+                )
+            )
+    return (
+        validate_mappings(tuple(assertions.values())),
+        tuple(
+            sorted(
+                links,
+                key=lambda row: (
+                    row.source_record_id,
+                    row.kind,
+                    row.dimension_key,
+                    row.source_coordinate,
+                ),
+            )
+        ),
+    )
 
 
 @dataclass(frozen=True, slots=True)
@@ -76,24 +183,29 @@ class MohIndicatorAdapter:
         rows = moh_indicators._rows(  # noqa: SLF001
             bronze, moh_indicators.PROFILES[self.profile]
         )
-        facts, lineage, _dispositions = moh_indicators._extract(  # noqa: SLF001
+        facts, raw_lineage, _dispositions = moh_indicators._extract(  # noqa: SLF001
             rows, context, self.profile
         )
+        records = tuple(dict(row) for row in facts)
+        field_lineage = tuple(
+            FieldLineage(
+                record_id=str(row["record_id"]),
+                field=str(row["field"]),
+                source_coordinate=str(row["source_coordinate"]),
+                raw_value=row["raw_value"],
+                normalized_value=row["normalized_value"],
+                rule=str(row["rule"]),
+            )
+            for row in raw_lineage
+        )
+        dimensions, dimension_links = _literal_dimensions(records, field_lineage)
         return AdapterOutput(
-            records=tuple(dict(row) for row in facts),
+            records=records,
             losses=(),
-            lineage=tuple(
-                FieldLineage(
-                    record_id=str(row["record_id"]),
-                    field=str(row["field"]),
-                    source_coordinate=str(row["source_coordinate"]),
-                    raw_value=row["raw_value"],
-                    normalized_value=row["normalized_value"],
-                    rule=str(row["rule"]),
-                )
-                for row in lineage
-            ),
+            lineage=field_lineage,
             layout=moh_indicators.TRANSFORMATION,
+            dimensions=dimensions,
+            dimension_links=dimension_links,
         )
 
 

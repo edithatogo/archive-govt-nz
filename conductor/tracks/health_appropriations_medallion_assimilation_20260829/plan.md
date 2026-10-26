@@ -439,10 +439,16 @@ integrated parent head.
   appropriation, department, portfolio, amount type, functional/economic
   classification, measure, unit and period. The Budget expenditure adapter now
   emits source-literal assertions and field links for its observed labels,
-  period token, amount header and adapter measure rule; all mapping targets stay
-  unresolved. Economic classification, evidence-backed crosswalks, confidence
-  and effective periods remain open. See
-  `budget-source-dimensions.validation.json`. [M-06; AC-05, AC-11]
+  period token, amount header and adapter measure rule. Context and HAIR2024
+  adapters also retain exact measure/period literals. Unresolved assertions
+  now require a reason and captured-object hash/coordinate reference; resolved
+  targets require evidence digests and explicit inclusive effective dates.
+  Source-census review supports no authoritative crosswalk, so no production
+  mapping target was assigned. Economic classification is absent from the
+  reviewed Budget profile. Currency, period bounds, confidence/adjudication,
+  other source-family projections and integrated mapping drift remain open.
+  See `budget-source-dimensions.validation.json` and
+  `dimension-mapping-audit-20261026.json`. [M-06; AC-05, AC-11]
 
 ### 3.3 Determinism and drift hardening
 

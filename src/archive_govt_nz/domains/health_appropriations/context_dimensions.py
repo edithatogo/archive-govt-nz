@@ -10,6 +10,7 @@ from archive_govt_nz.domains.health_appropriations.dimension_mapping import (
     Dimension,
     Mapping,
     dimension_key,
+    source_reference,
     validate_mappings,
 )
 
@@ -47,6 +48,18 @@ def _source_dimension(
         dimension=dimension,
         vintage=str(row["source_vintage"]),
         version=_VERSION,
+        unresolved_reason=(
+            "The source preserves a period token without approved calendar bounds."
+            if dimension_kind == "period"
+            else (
+                "The source literal has no crosswalk with an approved effective period."
+            )
+        ),
+        source_references=(
+            source_reference(
+                str(row["source_object_sha256"]), source.source_coordinate
+            ),
+        ),
     )
     link = DimensionLink(
         source_record_id=record_id,
@@ -116,7 +129,21 @@ def context_source_dimensions(
             if result is None:
                 continue
             mapping, link = result
-            assertions.setdefault(link.dimension_key, mapping)
+            previous = assertions.get(link.dimension_key)
+            if previous is not None:
+                mapping = Mapping(
+                    dimension=mapping.dimension,
+                    vintage=mapping.vintage,
+                    version=mapping.version,
+                    unresolved_reason=mapping.unresolved_reason,
+                    source_references=tuple(
+                        sorted(
+                            set(previous.source_references)
+                            | set(mapping.source_references)
+                        )[:32]
+                    ),
+                )
+            assertions[link.dimension_key] = mapping
             occurrences.append(link)
     mappings = validate_mappings(tuple(assertions.values()))
     links = tuple(

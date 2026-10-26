@@ -15,6 +15,7 @@ def test_context_dimensions_are_literal_unresolved_and_stably_linked() -> None:
         {
             "record_id": "r2",
             "source_vintage": "2026-Q2",
+            "source_object_sha256": "a" * 64,
             "series_reference": "CPIQ.SE9A",
             "period_token": "2026.06",
             "unit": "Index",
@@ -23,6 +24,7 @@ def test_context_dimensions_are_literal_unresolved_and_stably_linked() -> None:
         {
             "record_id": "r1",
             "source_vintage": "2026-Q2",
+            "source_object_sha256": "a" * 64,
             "series_reference": "CPIQ.SE9A",
             "period_token": "2026.03",
             "unit": "Index",
@@ -53,7 +55,11 @@ def test_context_dimensions_are_literal_unresolved_and_stably_linked() -> None:
     mappings, links = first
     assert mappings
     assert all(
-        row.target is None and row.method is None and not row.evidence
+        row.target is None
+        and row.method is None
+        and not row.evidence
+        and row.unresolved_reason
+        and row.source_references
         for row in mappings
     )
     assert {item.raw_value for item in links} >= {"CPIQ.SE9A", "2026.06", "Index"}
@@ -71,6 +77,7 @@ def test_blank_dimension_values_are_not_materialized() -> None:
             {
                 "record_id": "blank",
                 "source_vintage": "v1",
+                "source_object_sha256": "b" * 64,
                 "series_reference": " ",
                 "period_token": "",
                 "unit": None,
@@ -82,3 +89,46 @@ def test_blank_dimension_values_are_not_materialized() -> None:
     )
     assert mappings == ()
     assert links == ()
+
+
+def test_source_reference_summary_is_bounded_and_occurrence_links_are_complete() -> (
+    None
+):
+    rows = tuple(
+        {
+            "record_id": f"r{index:02}",
+            "source_vintage": "2026-Q2",
+            "source_object_sha256": "c" * 64,
+            "series_reference": "CPIQ.SE9A",
+            "period_token": "2026.06",
+            "unit": "Index",
+            "index_base": None,
+        }
+        for index in range(40)
+    )
+    lineage = tuple(
+        FieldLineage(
+            row["record_id"],
+            field,
+            f"csv:row={row['record_id']}:{field}",
+            value,
+            value,
+            "retain",
+        )
+        for row in rows
+        for field, value in (
+            ("series_reference", row["series_reference"]),
+            ("period_token", row["period_token"]),
+            ("unit", row["unit"]),
+        )
+    )
+
+    mappings, links = context_source_dimensions(rows, lineage, family="cpi")
+    repeated, repeated_links = context_source_dimensions(
+        tuple(reversed(rows)), tuple(reversed(lineage)), family="cpi"
+    )
+
+    assert mappings == repeated
+    assert links == repeated_links
+    assert len(links) == 120
+    assert all(len(mapping.source_references) == 32 for mapping in mappings)

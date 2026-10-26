@@ -102,6 +102,7 @@ every planned record set, measure or operational workflow.
 - [Source layout cohort recheck, 2026-10-24](./source-layout-reconciliation-20261024.md)
 - [Source layout cohort recheck machine receipt, 2026-10-24](./source-layout-reconciliation-20261024.json)
 - [Budget source-literal dimensions and unresolved mapping validation](./budget-source-dimensions.validation.json)
+- [Phase 3.2 dimension-mapping audit, 2026-10-26](./dimension-mapping-audit-20261026.json): source literals, lineage/census coverage and fail-closed mapping rules; no unsupported target mappings were assigned.
 - [Context-source Bronze adapters](./context-adapters.md)
 - [Context-source adapter validation](./context-adapters.validation.json)
 - [Historical package snapshot verification](./historical-snapshot.md)
@@ -777,5 +778,6 @@ unchanged; this is no publisher correction or rights/comparability approval.
   and [runlog](./runlog.md) for implementation and validation evidence.
 
 - [Phase 3 HAIR2024 common-dispatch evidence](./phase3-moh-indicator-common-dispatch-20261025.json): both retained Ministry indicator CSV profiles select exact hash-pinned adapters and repeat identically; amounts, labels and lineage are retained while units, price bases, denominators, period dates and rights remain unqualified. The Phase 3.2 adapter task remains partial.
+- [Phase 3.2 stable dimension and mapping contracts](./dimension-mapping-audit-20261026.json): Budget, context and HAIR2024 outputs emit reasoned, source-referenced unresolved assertions; the actual source census currently supports zero canonical target mappings.
 
 - [Final clean-room recovery receipt refreshed after PR #774](./clean-room-recovery-20261024-final.json): 47 product groups rebuilt, Bronze unchanged, no errors; remaining source, comparison, Platinum and rights gates stay open. See the [latest runlog entry](./runlog.md).

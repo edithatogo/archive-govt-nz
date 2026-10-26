@@ -130,7 +130,9 @@ Before implementation:
 2. Include success, failure, and boundary behaviour.
 3. For archive state, include partial, unchanged, retryable, withdrawn,
    restricted, and corrupt cases where relevant.
-4. Run the focused test and confirm it fails for the expected reason.
+4. Run the focused test and confirm it fails for the expected reason. During
+   edit cycles, select only the affected test file/node and relevant static or
+   schema gates; preserve pytest's failure cache and reuse unchanged results.
 5. Record the command and bounded outcome in `runlog.md`.
 
 Tests that cannot begin red because they characterize existing behaviour must
@@ -140,7 +142,8 @@ say so explicitly and preserve the observed contract.
 
 1. Implement only enough to satisfy the task requirements.
 2. Preserve stable public and machine-readable contracts.
-3. Run the focused test until it passes.
+3. Run the focused test until it passes. Do not repeat unrelated suites or
+   gates while iterating on the same change.
 4. Run relevant static, schema, security, and integration checks.
 5. Do not suppress a failing check without a documented, time-bounded
    exception.
@@ -156,6 +159,13 @@ With focused tests passing:
 - check secret and personal-information redaction;
 - test interruption and resumption when the task changes persistent state;
 - rerun all affected checks.
+
+Run the complete repository harness once when a change is a reviewable PR
+candidate. If a named stage fails for an environmental or reporting reason,
+record the failure and rerun only that stage using `scripts/validate-stage.sh`.
+After a fix, rerun the failed stage and any gates its inputs affect. Repeat the
+complete harness only when the tree or shared gate inputs changed materially;
+hosted CI remains the complete PR assurance gate.
 
 ### 5. Verify coverage
 

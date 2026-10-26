@@ -10045,3 +10045,25 @@ complete result was captured. Do not treat the full harness as passed. This is
 one bounded Phase 3.2 adapter slice; historical workbook/PDF coverage, other
 common source-operation profiles, dimension mappings and integrated
 per-adapter drift remain open.
+
+## 2026-10-26 — Phase 3.2 dimension contracts and validation economy
+
+Added reasoned, hash-and-coordinate source references to unresolved dimension
+assertions; resolved mappings now require evidence and inclusive effective
+bounds. Reviewed Budget, context and HAIR2024 literals; no production target
+mapping was supported by current evidence. The dimension audit records source
+coverage and open decisions. Focused dimension/adapter coverage passed 124
+tests; Ruff and basedpyright passed.
+
+The complete `./scripts/validate.sh` run passed on CPython 3.15.1: 8,430 passed,
+14 skipped, 18 warnings, 97.02% coverage; 81 schemas and 71 representative
+documents passed; parity passed 9/9; all configured mutation, dependency,
+licence, secrets and SBOM gates passed. Two earlier full attempts ended on
+unrelated volume exhaustion / PortableSSD I/O errors; the successful run used
+local `/tmp` for pytest temporary files. A later small assurance-runner change
+added `--stage` selection and `scripts/validate-stage.sh` for exact failed-gate
+reruns while leaving the complete wrapper unchanged. Its Conductor, format,
+lint, types and two focused selector tests passed. This optimization avoids
+repeating completed gates after an unchanged-tree environmental failure; the
+full PR/CI gate remains intact. Phase 3.2 mapping adjudication and other source
+families remain open.

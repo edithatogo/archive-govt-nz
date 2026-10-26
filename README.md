@@ -141,7 +141,8 @@ The codebase enforces strict quality boundaries via `tools/check.py`:
   forbidden-pattern classes.
 - **Supply-Chain Hardening**: Automated CycloneDX SBOM generation, `pip-audit`, `pip-licenses`, and `detect-secrets`.
 
-Run the deterministic, process-isolated gate before every pull request:
+Run focused checks while editing, then run the deterministic, process-isolated
+full gate once for the reviewable pull request candidate:
 
 ```bash
 ./scripts/validate.sh
@@ -152,9 +153,13 @@ environment with `uv sync --locked`; the repository `.python-version` file
 selects Python 3.15.1 for local `uv` commands.
 
 The wrapper uses the verified xdist `auto/loadscope` profile so the full suite
-stays within the bounded test-stage timeout. The underlying runner retains a
-serial diagnostic mode when invoked without worker options. A separate heavy
-profile keeps mutation and resource profiling out of the ordinary lane:
+stays within the bounded test-stage timeout. If a single named gate fails and
+its inputs are unchanged, rerun only that gate with
+`./scripts/validate-stage.sh <stage>`; rerun every gate affected by a fix. A
+complete harness rerun is needed when the source tree or shared gate inputs
+change materially. The underlying runner retains a serial diagnostic mode
+when invoked without worker options. A separate heavy profile keeps mutation
+and resource profiling out of the ordinary lane:
 
 ```bash
 # Re-run the complete suite under the wrapper's isolated xdist profile.

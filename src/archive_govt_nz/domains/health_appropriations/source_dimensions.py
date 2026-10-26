@@ -13,6 +13,7 @@ from archive_govt_nz.domains.health_appropriations.dimension_mapping import (
     Dimension,
     Mapping,
     dimension_key,
+    source_reference,
     validate_mappings,
 )
 
@@ -51,6 +52,10 @@ _SOURCE_FIELDS = (
         "functional_classification",
     ),
 )
+_LABEL_TARGET_REASON = (
+    "The captured field is a source literal; no crosswalk with an effective "
+    "period is evidenced."
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -65,6 +70,7 @@ class _DimensionSpec:
     use_source_raw_value: bool = True
     normalized_value: str | None = None
     rule: str | None = None
+    unresolved_reason: str = "No source-backed canonical target or effective period."
 
 
 @dataclass(slots=True)
@@ -72,7 +78,13 @@ class _DimensionBuilder:
     assertions: dict[str, Mapping]
     occurrences: list[DimensionLink]
 
-    def add(self, source_record_id: str, vintage: str, spec: _DimensionSpec) -> None:
+    def add(
+        self,
+        source_record_id: str,
+        vintage: str,
+        source_sha256: str,
+        spec: _DimensionSpec,
+    ) -> None:
         dimension = Dimension(
             kind=spec.kind,
             scheme=spec.scheme,
@@ -80,8 +92,27 @@ class _DimensionBuilder:
             period_token=spec.period_token,
         )
         key = dimension_key(dimension)
-        assertion = Mapping(dimension=dimension, vintage=vintage, version=_VERSION)
-        self.assertions.setdefault(key, assertion)
+        coordinate = spec.coordinate or spec.source.source_coordinate
+        reference = source_reference(source_sha256, coordinate)
+        assertion = Mapping(
+            dimension=dimension,
+            vintage=vintage,
+            version=_VERSION,
+            unresolved_reason=spec.unresolved_reason,
+            source_references=(reference,),
+        )
+        existing = self.assertions.get(key)
+        if existing is not None:
+            assertion = Mapping(
+                dimension=dimension,
+                vintage=vintage,
+                version=_VERSION,
+                unresolved_reason=spec.unresolved_reason,
+                source_references=tuple(
+                    sorted(set(existing.source_references) | {reference})[:32]
+                ),
+            )
+        self.assertions[key] = assertion
         raw_value = (
             spec.source.raw_value if spec.use_source_raw_value else spec.raw_value
         )
@@ -113,7 +144,11 @@ def _fact_specs(
             raise ValueError(message)
         specs.append(
             _DimensionSpec(
-                kind=kind, scheme=scheme, label=source.raw_value, source=source
+                kind=kind,
+                scheme=scheme,
+                label=source.raw_value,
+                source=source,
+                unresolved_reason=_LABEL_TARGET_REASON,
             )
         )
 
@@ -128,6 +163,10 @@ def _fact_specs(
             label=period.raw_value,
             source=period,
             period_token=period.raw_value,
+            unresolved_reason=(
+                "The source retains a year token but the admitted evidence does "
+                "not establish calendar bounds or a period join."
+            ),
         )
     )
 
@@ -151,6 +190,10 @@ def _fact_specs(
                 raw_value="Amount $000",
                 use_source_raw_value=False,
                 rule="budget-expenditure/amount-header/v1",
+                unresolved_reason=(
+                    "The source header establishes the displayed scale only; "
+                    "currency semantics are not evidenced."
+                ),
             ),
             _DimensionSpec(
                 kind="measure",
@@ -160,6 +203,10 @@ def _fact_specs(
                 raw_value=None,
                 use_source_raw_value=False,
                 rule="budget-expenditure/measure-rule/v1",
+                unresolved_reason=(
+                    "This adapter measure is source-profile specific; "
+                    "cross-source equivalence is not evidenced."
+                ),
             ),
         )
     )
@@ -193,7 +240,12 @@ def budget_source_dimensions(
         source_links = links_by_record.get(record_id, {})
         vintage = str(fact["source_vintage"])
         for spec in _fact_specs(fact, source_links):
-            builder.add(record_id, vintage, spec)
+            builder.add(
+                record_id,
+                vintage,
+                str(fact["source_object_sha256"]),
+                spec,
+            )
 
     dimensions = validate_mappings(tuple(builder.assertions.values()))
     occurrences = tuple(
