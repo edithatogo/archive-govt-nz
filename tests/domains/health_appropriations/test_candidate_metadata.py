@@ -72,9 +72,11 @@ def test_inventory_uses_actual_fields_and_rejects_ambiguous_arrow_columns(
         project_candidate_inventory(tmp_path)
 
 
+@pytest.mark.parametrize("suffix", ["csv", "1234567890"])
 def test_builder_preserves_originals_and_emits_an_unqualified_local_inventory(
     tmp_path: Path,
     monkeypatch: pytest.MonkeyPatch,
+    suffix: str,
 ) -> None:
     original = tmp_path / "source.csv"
     original.write_bytes(b"year,value\n2026,1\n")
@@ -96,10 +98,10 @@ def test_builder_preserves_originals_and_emits_an_unqualified_local_inventory(
                 "results": [
                     {
                         "state": "captured",
-                        "source_id": "fiscal-original",
+                        "source_id": "f" * 128,
                         "object_id": "sha256:" + source_hash,
                         "sha256": source_hash,
-                        "url": "https://example.test/source.csv",
+                        "url": f"https://example.test/source.{suffix}",
                         "rights": {
                             "state": "eligible",
                             "license": "CC-BY-4.0",
@@ -152,7 +154,7 @@ def test_builder_preserves_originals_and_emits_an_unqualified_local_inventory(
             == "original_assertions_only_derivatives_unqualified"
         )
         assert (
-            output / "original/fiscal-original.csv"
+            output / "original" / ("f" * 128 + "." + suffix)
         ).read_bytes() == original.read_bytes()
         assert "license:" not in (output / "README.md").read_text()
         croissant = json.loads((output / "metadata/croissant.json").read_text())

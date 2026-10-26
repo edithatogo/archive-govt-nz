@@ -55,3 +55,14 @@ review repeated with all 94 source payloads unchanged. Every projection byte
 except that report marker remained identical. Relevant static/evidence gates
 are rerun for this clarification; exact final-head hosted assurance remains
 separate from the preceding full local run.
+
+Hosted review identified an original-destination compatibility boundary: a valid
+128-character source identifier plus a suffix exceeded the inventory's generic
+128-character component limit. The inventory now applies the existing bounded
+original filename contract only to direct children of `original/`; all other
+components retain the generic limit and traversal, reserved-name and collision
+checks. The actual builder is exercised with both `.csv` and the maximum
+10-character extension, preserving originals and repeat-build equivalence.
+All 147 affected metadata, original-path and inventory contracts passed. Required
+hosted assurance is repeated for the corrected commit; earlier successful local
+full-harness stages are retained rather than rerun unnecessarily.
