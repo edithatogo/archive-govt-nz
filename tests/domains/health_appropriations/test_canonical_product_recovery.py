@@ -182,14 +182,36 @@ def test_composite_metadata_rebuilds_from_both_fresh_gold_runs(
 
 
 def test_gold_inputs_bind_the_corresponding_fresh_run(tmp_path: Path) -> None:
-    pharmac = tmp_path / "pharmac-silver-2"
-    pharmac.mkdir()
-    (pharmac / "MANIFEST.json").write_bytes(b"fresh second-run manifest")
+    manifest_bytes = {
+        "pharmac-silver-2": b"fresh second-run pharmac manifest",
+        "moh-fig27-v1-2": b"fresh second-run fig27 manifest",
+        "moh-fig28-v1-2": b"fresh second-run fig28 manifest",
+        "crown-silver-2": b"fresh second-run crown manifest",
+        "hyefu-crown-silver-2": b"fresh second-run hyefu manifest",
+    }
+    for name, content in manifest_bytes.items():
+        package = tmp_path / name
+        package.mkdir()
+        (package / "MANIFEST.json").write_bytes(content)
+
     inputs = MODULE.canonical_gold_inputs(tmp_path, 2)
     assert inputs.pharmac is not None
-    assert inputs.pharmac.root == pharmac
+    assert inputs.pharmac.root == tmp_path / "pharmac-silver-2"
+    assert inputs.pharmac.manifest_sha256 == MODULE.digest(
+        tmp_path / "pharmac-silver-2" / "MANIFEST.json"
+    )
     assert inputs.moh is not None
     assert all(p.root.name.endswith("-2") for p in inputs.moh.packages)
+    assert all(
+        p.manifest_sha256 == MODULE.digest(p.root / "MANIFEST.json")
+        for p in inputs.moh.packages
+    )
     assert inputs.crown is not None
     assert inputs.crown.befu_root == tmp_path / "crown-silver-2"
     assert inputs.crown.hyefu_root == tmp_path / "hyefu-crown-silver-2"
+    assert inputs.crown.befu_manifest_sha256 == MODULE.digest(
+        inputs.crown.befu_root / "MANIFEST.json"
+    )
+    assert inputs.crown.hyefu_manifest_sha256 == MODULE.digest(
+        inputs.crown.hyefu_root / "MANIFEST.json"
+    )

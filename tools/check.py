@@ -34,6 +34,12 @@ def parse_arguments() -> argparse.Namespace:
         action="store_true",
         help="append bounded pytest-gremlins and Scalene evidence lanes",
     )
+    parser.add_argument(
+        "--stage",
+        action="append",
+        metavar="NAME",
+        help="run only this named gate; repeat to select multiple gates",
+    )
     return parser.parse_args()
 
 
@@ -49,6 +55,15 @@ def main() -> int:
         )
     except ValueError as error:
         raise SystemExit(str(error)) from error
+    if arguments.stage:
+        available = {stage.name for stage in stages}
+        unknown = sorted(set(arguments.stage) - available)
+        if unknown:
+            names = ", ".join(unknown)
+            message = f"unknown assurance stage(s): {names}"
+            raise SystemExit(message)
+        selected = set(arguments.stage)
+        stages = tuple(stage for stage in stages if stage.name in selected)
     if arguments.list:
         for stage in stages:
             print(stage.name)

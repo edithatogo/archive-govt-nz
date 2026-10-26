@@ -30,6 +30,10 @@ OBSERVED_AT = "2026-08-29T09:00:17Z"
 SOURCE_MANIFEST_SHA256 = (
     "639b3c7da60f2afa1b860c5f6c8f1c4c0ae24bf17aa7af63bf8a06a1f6471b35"
 )
+PYARROW_26_SOURCE_MANIFEST_SHA256 = (
+    "109e90ecbe008dcd682d8ae0a499a74d2c0c7ae9f92f4c9e50f45df2431137e2"
+)
+HISTORICAL_SOURCE_MANIFEST_SHA256 = SOURCE_MANIFEST_SHA256
 TRANSFORMATION = "stats-nz-gdp-canonical-current-price-context/v1"
 JUNE_SOURCE_SHA256 = "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d"
 JUNE_SOURCE_LOCATOR = (
@@ -39,8 +43,14 @@ JUNE_SOURCE_LOCATOR = (
 )
 JUNE_SOURCE_VINTAGE = "StatsNZ-GDP-2026Q2"
 JUNE_OBSERVED_AT = "2026-09-29T21:28:10.739074Z"
-JUNE_SOURCE_MANIFEST_SHA256 = (
+JUNE_HISTORICAL_SOURCE_MANIFEST_SHA256 = (
     "f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd"
+)
+JUNE_PYARROW_26_SOURCE_MANIFEST_SHA256 = (
+    "103d03e29dcaccd30f66d0499fceffe652df5b5e478593856acd05ff8ec14411"
+)
+JUNE_SOURCE_MANIFEST_SHA256 = (
+    "103d03e29dcaccd30f66d0499fceffe652df5b5e478593856acd05ff8ec14411"
 )
 JUNE_SILVER_TRANSFORMATION = "stats-nz-gdp-current-price-expenditure-actual-2026q2/v1"
 JUNE_TRANSFORMATION = "stats-nz-gdp-june-canonical-current-price-context/v1"
@@ -88,11 +98,23 @@ def _verify_silver(
     marker = silver_root / "MANIFEST.json"
     _require(not marker.is_symlink() and marker.is_file())
     marker_bytes = marker.read_bytes()
+    qualified_manifests = {profile.source_manifest_sha256}
+    if profile.source_sha256 == SOURCE_SHA256:
+        qualified_manifests.add(PYARROW_26_SOURCE_MANIFEST_SHA256)
+    elif profile.source_sha256 == JUNE_SOURCE_SHA256:
+        qualified_manifests.add(JUNE_PYARROW_26_SOURCE_MANIFEST_SHA256)
     _require(
-        hashlib.sha256(marker_bytes).hexdigest()
-        == manifest_sha256
-        == profile.source_manifest_sha256
+        hashlib.sha256(marker_bytes).hexdigest() == manifest_sha256
+        and manifest_sha256 in qualified_manifests
     )
+    if (
+        profile.source_sha256 == SOURCE_SHA256
+        and profile.silver_transformation == gdp.TRANSFORMATION
+    ):
+        _require(
+            manifest_sha256
+            in {SOURCE_MANIFEST_SHA256, PYARROW_26_SOURCE_MANIFEST_SHA256}
+        )
     manifest = json.loads(marker_bytes, object_pairs_hook=_pairs)
     _require(
         isinstance(manifest, dict)
@@ -349,7 +371,7 @@ def project_gdp(
             source_locator=SOURCE_LOCATOR,
             source_vintage=SOURCE_VINTAGE,
             observed_at=OBSERVED_AT,
-            source_manifest_sha256=SOURCE_MANIFEST_SHA256,
+            source_manifest_sha256=manifest_sha256,
             silver_transformation=gdp.TRANSFORMATION,
             canonical_transformation=TRANSFORMATION,
         ),

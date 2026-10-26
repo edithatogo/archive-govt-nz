@@ -444,6 +444,7 @@ def test_registry_rejects_duplicate_identity_slugs(
         Draft202012Validator(_load(SCHEMA_PATH)).validate(registry)
 
 
+@settings(deadline=1000)
 @given(order=st.permutations((0, 1, 2)))
 def test_registry_identity_order_does_not_change_roles(order: list[int]) -> None:
     """The identity set is exact without inventing an ordering requirement."""

@@ -25,6 +25,9 @@ SOURCE_SHA256 = crown_expense.SOURCE_SHA256
 SOURCE_MANIFEST_SHA256 = (
     "8440d81f4cab378b47cba1e3de22b57f687571ea60f2e95728d179e7527847e3"
 )
+PYARROW_26_SOURCE_MANIFEST_SHA256 = (
+    "9f5e67817c2c1738954b99a0ccf6ee2bcaed32b10b5c165cfdd312a9c4bf98ca"
+)
 TRANSFORMATION = "hyefu-2025-core-crown-canonical-source-faithful/v1"
 OBSERVED_AT = "2026-08-29T09:00:17Z"
 _MANIFEST_SCHEMA = "archive-govt-nz.health-crown-expense-extraction/v1"
@@ -68,7 +71,8 @@ def _source_tables(
     _require(
         len(payload) <= _MAX_MANIFEST_BYTES
         and hashlib.sha256(payload).hexdigest() == manifest_sha256
-        and manifest_sha256 == SOURCE_MANIFEST_SHA256
+        and manifest_sha256
+        in {SOURCE_MANIFEST_SHA256, PYARROW_26_SOURCE_MANIFEST_SHA256}
     )
     manifest = json.loads(payload, object_pairs_hook=_pairs)
     _require(

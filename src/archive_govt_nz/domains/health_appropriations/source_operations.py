@@ -47,6 +47,7 @@ from archive_govt_nz.domains.health_appropriations import (
     vote_health_supplementary_2013_14,
     vote_health_supplementary_2013_14_financial_activity,
     vote_health_supplementary_2014_15,
+    vote_health_supplementary_2014_15_financial_activity,
     vote_health_supplementary_2015_16,
     vote_health_supplementary_2016_17,
     vote_health_supplementary_2017_18,
@@ -59,12 +60,24 @@ from archive_govt_nz.domains.health_appropriations import (
     vote_health_supplementary_2024_25,
     vote_health_supplementary_2025_26,
 )
+from archive_govt_nz.domains.health_appropriations import (
+    modern_vote_health_overviews as modern,
+)
 from archive_govt_nz.domains.health_appropriations.workbook_common import source_context
 
 MAX_CONTEXT = 2048
 _INVALID_SOURCE_OPERATION = "invalid_source_operation"
 PROFILES = MappingProxyType(
     {
+        **{
+            item.profile: (
+                item.transformation,
+                ("pages", "facts"),
+                "vote_health_overview_facts.parquet",
+                "page_dispositions.parquet",
+            )
+            for item in modern.PROFILES.values()
+        },
         **{
             name: (
                 budget_biff8_adapter.get_profile(name).transformation,
@@ -238,6 +251,12 @@ PROFILES = MappingProxyType(
         ),
         vote_health_supplementary_2013_14_financial_activity.PROFILE: (
             vote_health_supplementary_2013_14_financial_activity.TRANSFORMATION,
+            ("pages", "facts", "lineage"),
+            "vote_health_financial_activity_facts.parquet",
+            "page_dispositions.parquet",
+        ),
+        vote_health_supplementary_2014_15_financial_activity.PROFILE: (
+            vote_health_supplementary_2014_15_financial_activity.TRANSFORMATION,
             ("pages", "facts", "lineage"),
             "vote_health_financial_activity_facts.parquet",
             "page_dispositions.parquet",
@@ -582,6 +601,10 @@ _VOTE_HEALTH_CATEGORY_TOTAL_PROFILES = {
         vote_health_supplementary_2013_14_financial_activity.VINTAGE,
         vote_health_supplementary_2013_14_financial_activity.SOURCE_SHA256,
     ),
+    vote_health_supplementary_2014_15_financial_activity.PROFILE: (
+        vote_health_supplementary_2014_15_financial_activity.VINTAGE,
+        vote_health_supplementary_2014_15_financial_activity.SOURCE_SHA256,
+    ),
     vote_health_supplementary_2014_15.PROFILE: (
         vote_health_supplementary_2014_15.VINTAGE,
         vote_health_supplementary_2014_15.SOURCE_SHA256,
@@ -644,6 +667,10 @@ _VOTE_HEALTH_REVENUE_PROFILES = {
     ),
 }
 _VOTE_HEALTH_OVERVIEW_PROFILES = {
+    **{
+        item.profile: (item.vintage, item.source_sha256)
+        for item in modern.PROFILES.values()
+    },
     vote_health_estimates_summary.PROFILE: (
         vote_health_estimates_summary.VINTAGE,
         vote_health_estimates_summary.SOURCE_SHA256,
@@ -1008,6 +1035,10 @@ def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile disp
         )
     if request.profile == vote_health_supplementary_2013_14_financial_activity.PROFILE:
         return vote_health_supplementary_2013_14_financial_activity.normalize(
+            request.source, request.output_dir, **context, dry_run=dry_run
+        )
+    if request.profile == vote_health_supplementary_2014_15_financial_activity.PROFILE:
+        return vote_health_supplementary_2014_15_financial_activity.normalize(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
     if request.profile == vote_health_supplementary_2014_15.PROFILE:

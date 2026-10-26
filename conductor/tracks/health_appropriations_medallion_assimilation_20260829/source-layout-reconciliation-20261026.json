@@ -1,0 +1,83 @@
+{
+  "capture_manifest_sha256": "017b3a9adbda288c60693ef038e4c0da198d8db99b2bca9cf4bb81adbc6efb5f",
+  "limitations": [
+    "The report covers only the exact census and capture-manifest digests above.",
+    "PDF structure records geometry/resource metadata, not text, tables or semantics.",
+    "Unassessed media types remain gaps; no baseline, normalization or mapping is inferred.",
+    "Observed layout agreement does not grant cross-vintage comparability or rights."
+  ],
+  "media_types": [
+    {
+      "captured_source_count": 59,
+      "media_type": "application/pdf",
+      "sources_with_structural_baseline": 59,
+      "sources_without_structural_baseline": 0
+    },
+    {
+      "captured_source_count": 12,
+      "media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "sources_with_structural_baseline": 12,
+      "sources_without_structural_baseline": 0
+    },
+    {
+      "captured_source_count": 3,
+      "media_type": "text/csv",
+      "sources_with_structural_baseline": 3,
+      "sources_without_structural_baseline": 0
+    },
+    {
+      "captured_source_count": 1,
+      "media_type": "text/html",
+      "sources_with_structural_baseline": 1,
+      "sources_without_structural_baseline": 0
+    }
+  ],
+  "pinned_reports": {
+    "pdf": {
+      "pdf_capture_count": 59,
+      "pinned_parser": {
+        "name": "pypdf",
+        "strict": true,
+        "version": "6.19.0"
+      },
+      "recheck_layout_rows_unchanged": true,
+      "recheck_parser": {
+        "name": "pypdf",
+        "strict": true,
+        "version": "6.21.2"
+      },
+      "sha256": "481f1e486e2f96943710cad49a2a8bdf8eb20f815399090577521399d514df9b"
+    },
+    "text": {
+      "layout_source_count": 4,
+      "recheck_layout_rows_unchanged": true,
+      "sha256": "a0ce61a182666998330397a3cd064955626cf8f46ca096b946093d2219f6216c"
+    },
+    "workbook": {
+      "basis": "verified_bronze_structure",
+      "layout_source_count": 12,
+      "pinned_parser": {
+        "name": "openpyxl",
+        "version": "3.1.5"
+      },
+      "recheck_layout_rows_unchanged": true,
+      "recheck_parser": {
+        "name": "openpyxl",
+        "version": "3.1.5"
+      },
+      "sha256": "29a8501358c358874225df9099f32b19f29649c7cd9e000b2f23be1fe6f8dd0d"
+    }
+  },
+  "schema_version": "archive-govt-nz.health-source-layout-reconciliation/v2",
+  "source_census_sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272",
+  "summary": {
+    "captured_source_count": 75,
+    "pdf_layout_source_count": 59,
+    "pdf_layout_unavailable_count": 0,
+    "sources_with_structural_baseline": 75,
+    "sources_without_structural_baseline": 0,
+    "text_layout_source_count": 4,
+    "workbook_layout_source_count": 12
+  },
+  "unassessed_sources": []
+}

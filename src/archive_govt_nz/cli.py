@@ -692,6 +692,8 @@ def health_appropriations_build_gold_metadata(
     output_dir: Path,
     canonical_package: Path | None = None,
     canonical_manifest_sha256: str | None = None,
+    financial_activity_package: Path | None = None,
+    financial_activity_manifest_sha256: str | None = None,
     write: bool = False,
 ) -> int:
     """Build pinned Gold metadata with optional canonical input; dry run by default."""
@@ -700,6 +702,7 @@ def health_appropriations_build_gold_metadata(
         export_gold_metadata,
         verify_gold_metadata,
         with_canonical_input,
+        with_financial_activity_input,
     )
 
     try:
@@ -709,6 +712,9 @@ def health_appropriations_build_gold_metadata(
         )
         inputs = with_canonical_input(
             inputs, canonical_package, canonical_manifest_sha256
+        )
+        inputs = with_financial_activity_input(
+            inputs, financial_activity_package, financial_activity_manifest_sha256
         )
         receipt = export_gold_metadata(inputs, output_dir, write=write)
         if write:
@@ -738,6 +744,8 @@ def health_appropriations_verify_gold_metadata(
     output_dir: Path,
     canonical_package: Path | None = None,
     canonical_manifest_sha256: str | None = None,
+    financial_activity_package: Path | None = None,
+    financial_activity_manifest_sha256: str | None = None,
     manifest_sha256: str,
 ) -> int:
     """Verify pinned Gold metadata against its inputs without writing state."""
@@ -745,6 +753,7 @@ def health_appropriations_verify_gold_metadata(
         GoldInput,
         verify_gold_metadata,
         with_canonical_input,
+        with_financial_activity_input,
     )
 
     inputs = (
@@ -754,6 +763,9 @@ def health_appropriations_verify_gold_metadata(
     try:
         inputs = with_canonical_input(
             inputs, canonical_package, canonical_manifest_sha256
+        )
+        inputs = with_financial_activity_input(
+            inputs, financial_activity_package, financial_activity_manifest_sha256
         )
         receipt = verify_gold_metadata(inputs, output_dir, manifest_sha256)
     except ValueError, OSError, KeyError, TypeError:

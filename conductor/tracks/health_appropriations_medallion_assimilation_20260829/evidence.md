@@ -1,5 +1,37 @@
 # Evidence
 
+## 2026-10-25 — Phase 8 concurrent resume attempt contract
+
+- Issue: #214; M-15/M-18, AC-13/AC-16.
+- Changed: `tests/domains/health_appropriations/test_resume_execution.py` and
+  Phase 8 plan/index/runlog/evidence/review plus the contract receipt.
+- Runtime: repo-local CPython 3.15.1 via `uv run --locked`.
+- Focused concurrent claim test: passed.
+- Resume execution, operations and planner selection: 217 passed.
+- Ruff, format and basedpyright passed on the changed test.
+- `./scripts/validate.sh` passed on this exact local tree: 8,423 passed,
+  14 skipped, 97% coverage, with schema/document, parity, mutation, hygiene,
+  dependency, licence, secret-scan and SBOM gates passing. Hosted checks remain
+  a separate PR gate.
+- The test forces two same-path invocations to pass read-only destination
+  preflight together. One creates and verifies the exclusive attempt; the other
+  is rejected, with all pre-existing input files unchanged.
+- Remaining: this does not establish distributed locking, hostile-filesystem
+  safety, remote drift handling, or completion of issue #214. Hosted PR checks
+  are pending.
+
+## 2026-10-25 — Phase 8 scheduled discovery regression contract
+
+- Issue: #214; requirement references M-15/M-18 and AC-13/AC-16.
+- Changed: `tests/tools/test_workflow_policy.py` and the track-local Phase 8
+  plan, index, run log, evidence and contract receipt.
+- Runtime: repo-local CPython 3.15.1 via `uv run --locked`.
+- Focused test: `uv run --locked pytest tests/tools/test_workflow_policy.py::test_health_discovery_schedule_is_read_only_and_does_not_need_secrets -q --no-cov` — 1 passed.
+- Static checks: `uv run --locked ruff check tests/tools/test_workflow_policy.py` and `uv run --locked ruff format --check tests/tools/test_workflow_policy.py` — passed.
+- Full harness: `./scripts/validate.sh` — passed on the exact pre-commit tree: 8,408 passed, 14 skipped, 97.07% coverage; 81 schemas/71 representative documents; parity 9/9; configured mutation, hygiene, dependency, licence, secret-scan and SBOM gates passed.
+- Scope: local regression assurance for read-only permission, no secret interpolation, non-cancelling concurrency, and discovery-only behavior. No workflow behavior or external state changed.
+- Remaining: this does not implement scheduled capture/normalization or triggered reconciliation/reconstruction, and does not complete issue #214.
+
 ## Merged RDF validation and bounded task reconciliation — 2026-09-05 UTC
 
 PR #401 merged at `c92c3d2f717b55537b5d338d430689125e95fa66` after all
@@ -3472,3 +3504,20 @@ within30s twice each per source/run. Existing2019 source packages retain all10
 file hashes. Original/full/hosted delivery remains pending;2018 canonical,Gold
 and recovery integration is not claimed. Rights/currency/start-date/aggregation
 and cross-source holds, older unit/edition gaps and donor decisions remain.
+# 2026-10-25 — Issue #215 recovery refresh
+
+`clean-room-recovery-20261025-issue-215.json` records the current locked-runtime
+rebuild. Bronze objects were unchanged; supported products were rebuilt, and
+the recovery remains `partial_with_blockers`. The receipt identifies the
+unbuilt cross-source comparison, remaining source-native Silver/adapters, and
+complete Platinum profile. Historical Context Silver manifest pins remain
+intact: where PyArrow 23.0.1 and 26.0.0 produce different Parquet bytes, the
+recovery gate now checks manifest integrity plus exact schema and row equality.
+Current PyArrow 26.0.0 hashes are separately pinned. MoH recovery now uses the
+canonical observation timestamp, and canonical Gold revision validation
+includes Budget BIFF8 and revenue. No source values, rights, or publication
+status were changed. Focused validation: 122 tests passed. The required repository harness then
+passed with 8,413 tests passed, 14 skipped, 18 warnings, and 97.07% coverage
+against the 80% floor; 81 schemas/71 representative documents, parity 9/9, all
+mutation gates, supply-chain checks, and the 118-component SBOM passed. Hosted
+PR checks remain pending.

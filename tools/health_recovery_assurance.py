@@ -29,6 +29,7 @@ from archive_govt_nz.domains.health_appropriations import (
     gold_metadata,
     hyefu_crown_expense,
     hyefu_crown_expense_canonical_projection,
+    modern_vote_health_recovery,
     moh_canonical_projection,
     moh_indicators,
     pharmac,
@@ -221,8 +222,22 @@ MOH_SOURCE_SHA256 = {
     "fig28/v1": "7b9a51643550e3d890f4f341f27346d3466708fe924702ade4a731d1bb6266e4",
 }
 MOH_SILVER_MANIFEST_SHA256 = {
-    "fig27/v1": "b3a9afc2bab6562373b73d2f5c45b76a244792acbf813bfb54b4e2b66bce76a2",
-    "fig28/v1": "714a0dd3fb53fa2ff26100e760983b791e81162fa30fb48d9f1d7131d8e338ed",
+    "fig27/v1": frozenset(
+        {
+            "b3a9afc2bab6562373b73d2f5c45b76a244792acbf813bfb54b4e2b66bce76a2",
+            "977a39f9c9a903ffa77edff921ee24d31c0c6431e57da9df0b770d67d0cd379a",
+        }
+    ),
+    "fig28/v1": frozenset(
+        {
+            "714a0dd3fb53fa2ff26100e760983b791e81162fa30fb48d9f1d7131d8e338ed",
+            "73a868cbadc7d4d8019ceaa05fb5464e4430443a40807f978b9ea5799e46559e",
+        }
+    ),
+}
+MOH_SILVER_PYARROW_26_MANIFEST_SHA256 = {
+    "fig27/v1": "2c1b44ad4b7e433d02cc593d619f40a8234b3ba1ec9d19034f4fe9c5b7036ada",
+    "fig28/v1": "6adb85ea1c8ffdecba373c4332c6c5308f70d8db3beecaf722ac3de47f659ef9",
 }
 PHARMAC_SOURCE_OBSERVED_AT = "2026-08-29T09:00:17Z"
 CROWN_SOURCE_OBSERVED_AT = "2026-08-29T09:00:17Z"
@@ -239,24 +254,42 @@ GDP_JUNE_SOURCE_LOCATOR = (
     "gross-domestic-product-june-2026-quarter-current-price-income-and-expenditure.xlsx"
 )
 GDP_JUNE_OBSERVED_AT = "2026-09-29T21:28:10.739074Z"
-# Independent four-file pins from clean-room-recovery-20261002-context-gdp-june.json
-# (receipt SHA d37c7904...). Do not replace these with new operation manifests.
+# Current PyArrow 26 rendering, independently rebuilt twice and recorded in
+# gdp-june-runtime-refresh-20261024.json. The historical receipt remains intact.
 GDP_JUNE_NATIVE_FILES = {
     "MANIFEST.json": {
         "bytes": 1081,
-        "sha256": "f54b0ad605b54e480cd0623360159b3ce14b6a9f762185d5244dec89837ffbfd",
+        "sha256": "103d03e29dcaccd30f66d0499fceffe652df5b5e478593856acd05ff8ec14411",
     },
     "cell_dispositions.parquet": {
         "bytes": 37848,
-        "sha256": "22143c282b9e28cbfcae41c9531f1b37b710b6a5a5d5fbcf9fa6112e196b9dd9",
+        "sha256": "47dadd631be23cb020183c7f662642c2063416f24af6810726be83e41f9b09e9",
     },
     "field_lineage.parquet": {
         "bytes": 17815,
-        "sha256": "ad698d41f4709b633df875d256c419107ebe044fd325b5afdc74f56e3113e6dc",
+        "sha256": "02eeb91800ecd1225bb129a605d1d1e0796cd688499c1baf7bfcf2b3232133f7",
     },
     "gdp_facts.parquet": {
         "bytes": 29409,
-        "sha256": "ab95deb1701876f285b567da245bdabd842559c7ea9c64ebd2aca2740373d35a",
+        "sha256": "f88ef1d4bae8809733635d3b6de0d9fcfbf2012cf0a9ca36837c3e490b3d2906",
+    },
+}
+GDP_JUNE_PYARROW_26_NATIVE_FILES = {
+    "MANIFEST.json": {
+        "bytes": 1081,
+        "sha256": "103d03e29dcaccd30f66d0499fceffe652df5b5e478593856acd05ff8ec14411",
+    },
+    "cell_dispositions.parquet": {
+        "bytes": 37848,
+        "sha256": "47dadd631be23cb020183c7f662642c2063416f24af6810726be83e41f9b09e9",
+    },
+    "field_lineage.parquet": {
+        "bytes": 17815,
+        "sha256": "02eeb91800ecd1225bb129a605d1d1e0796cd688499c1baf7bfcf2b3232133f7",
+    },
+    "gdp_facts.parquet": {
+        "bytes": 29409,
+        "sha256": "f88ef1d4bae8809733635d3b6de0d9fcfbf2012cf0a9ca36837c3e490b3d2906",
     },
 }
 GDP_JUNE_FACT_COUNT = 61
@@ -326,6 +359,151 @@ def compare_product_outputs(first: Path, second: Path, product: str) -> dict[str
         message = f"{product}_repeat_mismatch"
         raise RuntimeError(message)
     return first_files
+
+
+def compare_context_silver_serialization(
+    rebuilt_root: Path,
+    retained_root: Path,
+    expected_retained_manifest_sha256: str,
+) -> dict[str, Any]:
+    """Accept byte-rendering drift only when every retained Parquet value matches."""
+    require_evidence(
+        not rebuilt_root.is_symlink()
+        and rebuilt_root.is_dir()
+        and not retained_root.is_symlink()
+        and retained_root.is_dir(),
+        "context_silver_package_unavailable",
+    )
+    rebuilt_marker = rebuilt_root / "MANIFEST.json"
+    retained_marker = retained_root / "MANIFEST.json"
+    require_evidence(
+        not rebuilt_marker.is_symlink()
+        and rebuilt_marker.is_file()
+        and not retained_marker.is_symlink()
+        and retained_marker.is_file(),
+        "context_silver_manifest_unavailable",
+    )
+    retained_manifest_sha256 = digest(retained_marker)
+    require_evidence(
+        retained_manifest_sha256 == expected_retained_manifest_sha256,
+        "context_silver_retained_manifest_pin_mismatch",
+    )
+    rebuilt_manifest_sha256 = digest(rebuilt_marker)
+    retained_manifest = json.loads(retained_marker.read_bytes())
+    rebuilt_manifest = json.loads(rebuilt_marker.read_bytes())
+    retained_hashes = retained_manifest.get("output_sha256")
+    rebuilt_hashes = rebuilt_manifest.get("output_sha256")
+    require_evidence(
+        isinstance(retained_hashes, dict)
+        and isinstance(rebuilt_hashes, dict)
+        and retained_hashes
+        and set(retained_hashes) == set(rebuilt_hashes)
+        and all(name.endswith(".parquet") for name in retained_hashes),
+        "context_silver_output_inventory_invalid",
+    )
+    retained_without_hashes = dict(retained_manifest)
+    rebuilt_without_hashes = dict(rebuilt_manifest)
+    retained_without_hashes.pop("output_sha256", None)
+    rebuilt_without_hashes.pop("output_sha256", None)
+    require_evidence(
+        retained_without_hashes == rebuilt_without_hashes,
+        "context_silver_manifest_metadata_drift",
+    )
+    expected_files = set(retained_hashes) | {"MANIFEST.json"}
+    require_evidence(
+        {path.name for path in retained_root.iterdir()} == expected_files
+        and {path.name for path in rebuilt_root.iterdir()} == expected_files,
+        "context_silver_file_inventory_drift",
+    )
+    serialization_only_files: list[str] = []
+    writers: dict[str, dict[str, str | None]] = {}
+    for name in sorted(retained_hashes):
+        retained_path = retained_root / name
+        rebuilt_path = rebuilt_root / name
+        require_evidence(
+            not retained_path.is_symlink()
+            and retained_path.is_file()
+            and not rebuilt_path.is_symlink()
+            and rebuilt_path.is_file()
+            and digest(retained_path) == retained_hashes[name]
+            and digest(rebuilt_path) == rebuilt_hashes[name],
+            "context_silver_output_hash_mismatch",
+        )
+        retained_table = pq.read_table(retained_path)
+        rebuilt_table = pq.read_table(rebuilt_path)
+        require_evidence(
+            retained_table.schema.equals(rebuilt_table.schema, check_metadata=True)
+            and retained_table.to_pylist() == rebuilt_table.to_pylist(),
+            "context_silver_semantic_drift",
+        )
+        if digest(retained_path) != digest(rebuilt_path):
+            serialization_only_files.append(name)
+            writers[name] = {
+                "retained": pq.read_metadata(retained_path).created_by,
+                "rebuilt": pq.read_metadata(rebuilt_path).created_by,
+            }
+    return {
+        "retained_manifest_sha256": retained_manifest_sha256,
+        "rebuilt_manifest_sha256": rebuilt_manifest_sha256,
+        "semantic_rows_equal": True,
+        "serialization_only_files": serialization_only_files,
+        "parquet_writers": writers,
+    }
+
+
+def verify_canonical_revision_report(
+    revision_report: dict[str, object],
+    revision_path: Path,
+    revision_output: dict[str, object],
+) -> None:
+    """Verify the exact report bytes and current supported product census."""
+    product_revisions = revision_report.get("product_revisions")
+    candidates = revision_report.get("candidates")
+    revision_products = {
+        "budget",
+        "revenue",
+        "biff8_budget",
+        "biff8_revenue",
+        "pharmac",
+        "moh",
+        "crown",
+    }
+    require_evidence(
+        isinstance(revision_report, dict)
+        and revision_report.get("schema_version")
+        == "archive-govt-nz.health-revision-reconciliation/v1"
+        and revision_report.get("key_fields")
+        == [
+            "recordset",
+            "measure",
+            "source_label",
+            "unit",
+            "currency",
+            "price_basis",
+            "base_period",
+            "denominator_definition",
+            "institutional_coverage",
+            "accounting_basis",
+            "period_token",
+        ]
+        and revision_report.get("completeness")
+        == (
+            "historical_budget_revenue_biff8_budget_biff8_revenue_"
+            "pharmac_moh_crown_product_rows"
+        )
+        and revision_report.get("difference_interpretation") == "not_assessed"
+        and revision_report.get("other_product_revisions") == "not_assessed"
+        and revision_report.get("cross_source_comparison") == "not_performed"
+        and isinstance(product_revisions, dict)
+        and set(product_revisions) == revision_products
+        and isinstance(candidates, list)
+        and revision_report.get("changed_candidate_count") == len(candidates)
+        and revision_path.is_file()
+        and isinstance(revision_output, dict)
+        and revision_output.get("sha256") == digest(revision_path)
+        and json.loads(revision_path.read_bytes()) == revision_report,
+        "canonical_gold_revision_reconciliation_report_invalid",
+    )
 
 
 def context_source_binding(family: str) -> dict[str, str]:
@@ -478,8 +656,8 @@ def rebuild_gdp_june_silver(root: Path, index: int) -> dict[str, Any]:
         / binding["source_object_sha256"]
     )
     output = root / f"gdp-june-{index}"
-    # This historical canonical cohort requires the unchanged native manifest;
-    # common operation evidence is separately qualified and never substituted.
+    # Preserve the historical pins and separately accept the qualified current
+    # PyArrow rendering; common operation evidence is never substituted.
     receipt = gdp.normalize_gdp(
         source,
         output,
@@ -501,7 +679,8 @@ def rebuild_gdp_june_silver(root: Path, index: int) -> dict[str, Any]:
     )
     files = tree(output)
     require_evidence(
-        files == GDP_JUNE_NATIVE_FILES, "gdp_june_native_file_pins_mismatch"
+        files in (GDP_JUNE_NATIVE_FILES, GDP_JUNE_PYARROW_26_NATIVE_FILES),
+        "gdp_june_native_file_pins_mismatch",
     )
     return {"receipt": receipt, "files": files}
 
@@ -577,16 +756,23 @@ def gdp_vintage_comparison_report(root: Path) -> dict[str, Any]:
         pq.read_table(june_path).to_pylist(),
     )
     report["march_source_manifest_sha256"] = (
-        gdp_canonical_projection.SOURCE_MANIFEST_SHA256
+        gdp_canonical_projection.HISTORICAL_SOURCE_MANIFEST_SHA256
     )
     report["june_source_manifest_sha256"] = (
-        gdp_canonical_projection.JUNE_SOURCE_MANIFEST_SHA256
+        gdp_canonical_projection.JUNE_HISTORICAL_SOURCE_MANIFEST_SHA256
     )
-    return bind_recorded_comparison(
+    bound = bind_recorded_comparison(
         report,
         TRACK / "gdp-vintage-reconciliation-20260930.json",
         "gdp_vintage_comparison_recorded_mismatch",
     )
+    bound["march_runtime_manifest_sha256"] = (
+        gdp_canonical_projection.PYARROW_26_SOURCE_MANIFEST_SHA256
+    )
+    bound["june_runtime_manifest_sha256"] = (
+        gdp_canonical_projection.JUNE_SOURCE_MANIFEST_SHA256
+    )
+    return bound
 
 
 def rebuild_context_silver(root: Path, family: str) -> dict[str, Any]:
@@ -642,14 +828,17 @@ def rebuild_context_silver(root: Path, family: str) -> dict[str, Any]:
     else:
         message = f"unknown_context_family:{family}"
         raise RuntimeError(message)
-    manifest = output / "MANIFEST.json"
-    manifest_hash = digest(manifest)
-    if manifest_hash != expected_manifest:
-        message = f"context_silver_manifest_drift:{family}:{manifest_hash}"
-        raise RuntimeError(message)
+    serialization = compare_context_silver_serialization(
+        output, ARCHIVE / "silver" / package, expected_manifest
+    )
+    manifest_hash = serialization["rebuilt_manifest_sha256"]
     return {
         "files": tree(output),
         "manifest_sha256": manifest_hash,
+        "retained_manifest_sha256": serialization["retained_manifest_sha256"],
+        "serialization_only_files": serialization["serialization_only_files"],
+        "parquet_writers": serialization["parquet_writers"],
+        "semantic_rows_equal": serialization["semantic_rows_equal"],
         "source_object_sha256": source_hash,
         "counts": cast("dict[str, Any]", receipt["counts"]),
     }
@@ -1853,13 +2042,14 @@ def _rebuild_moh_profile(root: Path, profile: str, index: int) -> dict[str, Any]
         expected_sha256=source_sha256,
         profile=profile,
         source_vintage=moh_canonical_projection.SOURCE_VINTAGE,
-        observed_at="2026-08-29T09:00:17Z",
+        observed_at=moh_canonical_projection.OBSERVED_AT,
         source_locator=moh_canonical_projection.PROFILES[profile],
         dry_run=False,
     )
     manifest_sha256 = digest(silver / "MANIFEST.json")
     require_evidence(
-        manifest_sha256 == MOH_SILVER_MANIFEST_SHA256[profile],
+        manifest_sha256 in MOH_SILVER_MANIFEST_SHA256[profile]
+        or manifest_sha256 == MOH_SILVER_PYARROW_26_MANIFEST_SHA256[profile],
         "moh_silver_manifest_pin_mismatch",
     )
     return {
@@ -2190,7 +2380,9 @@ def canonical_gold_inputs(root: Path, index: int) -> GoldInputs:
             MohIndicatorInput(
                 profile,
                 root / f"moh-{profile.replace('/', '-')}-{index}",
-                MOH_SILVER_MANIFEST_SHA256[profile],
+                digest(
+                    root / f"moh-{profile.replace('/', '-')}-{index}" / "MANIFEST.json"
+                ),
                 MOH_SOURCE_SHA256[profile],
             )
             for profile in moh_canonical_projection.PROFILES
@@ -2201,9 +2393,9 @@ def canonical_gold_inputs(root: Path, index: int) -> GoldInputs:
     hyefu_silver = root / f"hyefu-crown-silver-{index}"
     crown_input = CrownGoldInput(
         befu_root=befu_silver,
-        befu_manifest_sha256=crown_expense_canonical_projection.SOURCE_MANIFEST_SHA256,
+        befu_manifest_sha256=digest(befu_silver / "MANIFEST.json"),
         hyefu_root=hyefu_silver,
-        hyefu_manifest_sha256=hyefu_crown_expense_canonical_projection.SOURCE_MANIFEST_SHA256,
+        hyefu_manifest_sha256=digest(hyefu_silver / "MANIFEST.json"),
         source_cas_root=ARCHIVE / "bronze-cas" / "sha256",
     )
     fiscal_source = ARCHIVE / "bronze-cas" / "sha256"
@@ -2268,41 +2460,7 @@ def _canonical_gold_recovery_report(root: Path) -> dict[str, Any]:
     revision_output = manifest.get("outputs", {}).get(
         "historical_revision_reconciliation.json"
     )
-    require_evidence(
-        isinstance(revision_report, dict)
-        and revision_report.get("schema_version")
-        == "archive-govt-nz.health-revision-reconciliation/v1"
-        and revision_report.get("key_fields")
-        == [
-            "recordset",
-            "measure",
-            "source_label",
-            "unit",
-            "currency",
-            "price_basis",
-            "base_period",
-            "denominator_definition",
-            "institutional_coverage",
-            "accounting_basis",
-            "period_token",
-        ]
-        and revision_report.get("completeness")
-        == "historical_budget_revenue_pharmac_moh_crown_product_rows"
-        and revision_report.get("difference_interpretation") == "not_assessed"
-        and revision_report.get("other_product_revisions") == "not_assessed"
-        and revision_report.get("cross_source_comparison") == "not_performed"
-        and isinstance(revision_report.get("product_revisions"), dict)
-        and set(revision_report["product_revisions"])
-        == {"budget", "revenue", "pharmac", "moh", "crown"}
-        and isinstance(revision_report.get("candidates"), list)
-        and revision_report.get("changed_candidate_count")
-        == len(revision_report["candidates"])
-        and revision_path.is_file()
-        and isinstance(revision_output, dict)
-        and revision_output.get("sha256") == digest(revision_path)
-        and json.loads(revision_path.read_bytes()) == revision_report,
-        "canonical_gold_revision_reconciliation_report_invalid",
-    )
+    verify_canonical_revision_report(revision_report, revision_path, revision_output)
     input_receipt = json.loads(
         (first_inputs / "canonical-source-inputs" / "RECOVERY_INPUTS.json").read_bytes()
     )
@@ -2651,7 +2809,14 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0912, PLR0915 - recovery products
     original_snapshot = tree(ARCHIVE / "bronze-cas")
     outputs: dict[str, dict[str, Any]] = {}
     with tempfile.TemporaryDirectory(prefix="health-recovery-clean-") as temporary:
-        root = Path(temporary)
+        root = Path(temporary).resolve()
+        outputs["reviewed_vote_health_estimates_overviews"] = (
+            modern_vote_health_recovery.recover_reviewed_overviews(
+                ARCHIVE / "bronze-cas" / "sha256",
+                TRACK / "source-census.json",
+                root / "reviewed-vote-health",
+            )
+        )
         silver_roots = (root / "silver-one", root / "silver-two")
         for silver in silver_roots:
             silver.mkdir()

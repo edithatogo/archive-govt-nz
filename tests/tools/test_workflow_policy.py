@@ -126,6 +126,33 @@ def test_health_discovery_preserves_failure_receipts() -> None:
     assert "--report-output build/live/health-discovery-report.md" in workflow
 
 
+def test_health_discovery_schedule_is_read_only_and_does_not_need_secrets() -> None:
+    """The scheduled Health lane stays metadata-only and credential-free."""
+    root = Path(__file__).parents[2]
+    workflow = yaml.safe_load(
+        (root / ".github/workflows/scheduled-health-discovery.yml").read_text(
+            encoding="utf-8"
+        )
+    )
+
+    assert workflow["permissions"] == {"contents": "read"}
+    assert workflow["concurrency"] == {
+        "group": "scheduled-health-discovery",
+        "cancel-in-progress": False,
+    }
+    assert "${{ secrets." not in yaml.safe_dump(workflow)
+    steps = workflow["jobs"]["discover"]["steps"]
+    assert [step.get("name") for step in steps if "name" in step] == [
+        "Discover health metadata",
+        "Record bounded operations heartbeat",
+    ]
+    discovery = next(
+        step for step in steps if step.get("name") == "Discover health metadata"
+    )
+    assert "capture" not in discovery["run"]
+    assert "normalize" not in discovery["run"]
+
+
 def test_optional_workflow_arguments_use_shell_arrays() -> None:
     """Optional CLI values must preserve argument boundaries and empty state."""
     root = Path(__file__).parents[2]

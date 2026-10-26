@@ -1,5 +1,27 @@
 # Self-Review
 
+## 2026-10-25 — Phase 8 concurrent resume claim
+
+- Finding: a read-only preflight does not alone prove concurrent callers cannot
+  both create the same exclusive attempt.
+- Resolution: a barrier forces both test callers past the parent/output
+  preflight; filesystem exclusive directory creation allows one winner only.
+  The successful envelope is read back and every pre-existing input byte is
+  compared; the rejected caller does not write failure evidence.
+- Boundary: this validates same-process competing callers on the local test
+  filesystem. It does not establish distributed locking, hostile-filesystem
+  race safety, or remote-source drift behavior.
+
+## 2026-10-25 — Phase 8 scheduled discovery contract
+
+- Finding: the regression assertion must distinguish scheduled discovery from
+  downstream capture/normalization, and account for workflow setup steps.
+- Resolution: assert only the least-privilege permission, secret-free workflow
+  definition, non-cancelling concurrency, and the named discovery/heartbeat
+  operations. The contract explicitly leaves capture and normalization pending.
+- Security/provenance: no secrets, source bytes, permissions, or workflow
+  behavior were changed. No publication or source-completeness claim is made.
+
 ## 2026-10-03 — Query-free redirected orphan recovery
 
 The runner adopts a redirected orphan only when the original source URL hash

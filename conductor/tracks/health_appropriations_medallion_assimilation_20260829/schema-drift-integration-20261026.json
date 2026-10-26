@@ -1,0 +1,127 @@
+{
+  "approval": {
+    "comparability": "not_granted",
+    "normalization": "not_granted",
+    "rights": "not_granted"
+  },
+  "as_of": "2026-10-26",
+  "bronze_objects_unchanged": true,
+  "code": [
+    {
+      "path": "src/archive_govt_nz/domains/health_appropriations/adapter_drift.py",
+      "sha256": "840b0fdb91dde541bbdd97c6f5d3d30b9afe55b6100ce0b03e5ed9da152d14e0"
+    },
+    {
+      "path": "src/archive_govt_nz/domains/health_appropriations/adapter_dispatch.py",
+      "sha256": "bf30e48f90dc4194ba414e3fd947d86e6455160e878c2ddede20bcb9ebbfa31f"
+    },
+    {
+      "path": "src/archive_govt_nz/domains/health_appropriations/text_layout_baseline.py",
+      "sha256": "096a35b1b1017980a32a3f446e4657136678d129f6320d770bb569c190f8d420"
+    },
+    {
+      "path": "src/archive_govt_nz/domains/health_appropriations/source_layout_reconciliation.py",
+      "sha256": "24cc4b0e022874b22be995b0c3ec0464e2a273bf27d65c567659075c9d2dc5e4"
+    },
+    {
+      "path": "tools/health_text_layout_baseline.py",
+      "sha256": "1b8d9b1126baa6bbe7dc927fee9bc8a2abae2755767e964f0466712ed2cc36b7"
+    },
+    {
+      "path": "tools/health_source_layout_reconciliation.py",
+      "sha256": "bca6fa609c4389cd7df7b42ae1c4cd854e34c71b22c78f9a0514f22f3c05151b"
+    }
+  ],
+  "dispatch_integration": {
+    "legacy_schema_scope": "observed_field_types_not_inferred_arrow",
+    "native_compound": "automatic_immutable_snapshot",
+    "native_schema_scope": "declared_arrow_including_metadata_and_contract_identity",
+    "preserved_only_comparison": "held",
+    "prior_package_manifests": "unchanged",
+    "single_result": "automatic_immutable_snapshot"
+  },
+  "issue": 209,
+  "phase_3_checkpoint": "open",
+  "remaining_scope": [
+    "Remaining Phase 3.2 adapter registrations and dimension/mapping evidence.",
+    "Full phase integration and checkpoint acceptance."
+  ],
+  "reports": [
+    {
+      "path": "source-text-layout-baseline-20261026.json",
+      "sha256": "a0ce61a182666998330397a3cd064955626cf8f46ca096b946093d2219f6216c"
+    },
+    {
+      "path": "source-text-layout-drift-20261026.json",
+      "sha256": "07d49fc142b5b6caec0f2fb3128613e54926c68c13a47a958ecd358ed8b93db6"
+    },
+    {
+      "path": "source-layout-reconciliation-20261026.json",
+      "sha256": "e063dd10d022fc402311f6535f205e1ac838d041595b5a5ee5f17a8d2cdf15ba"
+    },
+    {
+      "path": "bronze-workbook-layout-baseline-20261024.json",
+      "sha256": "29a8501358c358874225df9099f32b19f29649c7cd9e000b2f23be1fe6f8dd0d"
+    },
+    {
+      "path": "source-pdf-layout-baseline-20261018.json",
+      "sha256": "481f1e486e2f96943710cad49a2a8bdf8eb20f815399090577521399d514df9b"
+    }
+  ],
+  "review_findings": [
+    {
+      "classification": "implementation_defect",
+      "disposition": "Actual containers are escaped before typed scalar encoding; output encoding is explicitly versioned.",
+      "finding": "Ordinary nested dictionaries could impersonate Decimal serialization tags.",
+      "historical_evidence": "prior candidate commit retains initial receipts; original Bronze objects unchanged",
+      "prior_candidate_commit": "7c5514b590f93ab0f3d45349dfca58a70425d63b"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-schema-drift-integration/v1",
+  "source_cohort": "source-census.json",
+  "structural_coverage": {
+    "captured_source_count": 75,
+    "pdf_layout_source_count": 59,
+    "pdf_layout_unavailable_count": 0,
+    "sources_with_structural_baseline": 75,
+    "sources_without_structural_baseline": 0,
+    "text_layout_source_count": 4,
+    "workbook_layout_source_count": 12
+  },
+  "text_repeat_report_status": "matching",
+  "validation": {
+    "final_serializer_correction": {
+      "exact_final_hosted_gate": "pending",
+      "green_affected_tests_passed": 14,
+      "red_tests_failed": 1,
+      "regression": "test_nested_metadata_cannot_impersonate_a_decimal_serialization_tag",
+      "static_gates": [
+        "conductor",
+        "format",
+        "lint",
+        "types"
+      ],
+      "unchanged_full_gate_evidence_reused": true
+    },
+    "final_text_and_reconciliation": {
+      "passed": 34
+    },
+    "focused_dispatch_and_source_operations": {
+      "passed": 105
+    },
+    "full_harness": {
+      "branch_aware_coverage_percent": 96.87,
+      "command": "TMPDIR=/tmp PYTEST_XDIST_AUTO_NUM_WORKERS=2 ./scripts/validate.sh",
+      "exit_code": 0,
+      "log_sha256": "0a5c8a75141799304e27131ca5ec8daa0c071b6bb31c05799d046e09d414340d",
+      "mutation_and_supply_chain": "passed",
+      "parity_passed": 9,
+      "representative_documents": 71,
+      "sbom_components": 118,
+      "schemas": 81,
+      "test_collection_scope": "before final serializer collision regression",
+      "tests_passed": 8445,
+      "tests_skipped": 14
+    }
+  }
+}

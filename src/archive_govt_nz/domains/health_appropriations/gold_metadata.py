@@ -31,6 +31,9 @@ from archive_govt_nz.domains.health_appropriations import (
 from archive_govt_nz.domains.health_appropriations import (
     operation_context_gold as operation_gold,
 )
+from archive_govt_nz.domains.health_appropriations import (
+    vote_health_financial_activity_gold as financial_activity,
+)
 from archive_govt_nz.domains.health_appropriations.operation_gold_output import (
     reserve_gold_directory,
 )
@@ -41,12 +44,16 @@ from archive_govt_nz.domains.health_appropriations.workbook_common import (
 VERSION = "archive-govt-nz.health-gold-metadata/v3"
 CANONICAL_VERSION = "archive-govt-nz.health-gold-metadata/v4"
 OPERATION_VERSION = "archive-govt-nz.health-gold-metadata/v5"
+FINANCIAL_ACTIVITY_VERSION = "archive-govt-nz.health-gold-metadata/v6"
 SOURCE_DRILLTHROUGH_VERSION = "archive-govt-nz.health-gold-source-drillthrough/v1"
 CANONICAL_SOURCE_DRILLTHROUGH_VERSION = (
     "archive-govt-nz.health-gold-source-drillthrough/v2"
 )
 OPERATION_SOURCE_DRILLTHROUGH_VERSION = (
     "archive-govt-nz.health-gold-source-drillthrough/v3"
+)
+FINANCIAL_ACTIVITY_SOURCE_DRILLTHROUGH_VERSION = (
+    "archive-govt-nz.health-gold-source-drillthrough/v4"
 )
 MAX_BYTES = 16 * 1024 * 1024
 MAX_PACKAGES = 8
@@ -65,6 +72,7 @@ SOURCE_HASH_FIELDS = {
     "source_manifest_sha256",
     "source_object_sha256",
     "raw_manifest_sha256",
+    "source_silver_manifest_sha256",
 }
 CONTEXT = {
     "dcat": "http://www.w3.org/ns/dcat#",
@@ -110,6 +118,16 @@ def with_canonical_input(
         _require(root is None and pin is None)
         return values
     return (*values, GoldInput("canonical_source_separated", root, pin))
+
+
+def with_financial_activity_input(
+    values: tuple[GoldInput, ...], root: Path | None, pin: str | None
+) -> tuple[GoldInput, ...]:
+    """Append one pinned Vote Health financial-activity Gold input."""
+    if root is None or pin is None:
+        _require(root is None and pin is None)
+        return values
+    return (*values, GoldInput("vote_health_financial_activity", root, pin))
 
 
 def _require(condition: object) -> None:
@@ -426,11 +444,33 @@ def _snapshot_package(value: GoldInput) -> dict[str, Any]:
     _require(
         type(value) is GoldInput
         and value.profile
-        in {"budget_comparison", "fiscal_analytical", "canonical_source_separated"}
+        in {
+            "budget_comparison",
+            "fiscal_analytical",
+            "canonical_source_separated",
+            "vote_health_financial_activity",
+        }
     )
     if value.profile == "canonical_source_separated":
         return _canonical_package(value)
-    if value.profile == "budget_comparison":
+    if value.profile == "vote_health_financial_activity":
+        facts, lineage, _ = financial_activity.read_vote_health_financial_activity(
+            value.root, value.manifest_sha256
+        )
+        tables = {
+            "financial_activity.parquet": facts,
+            "financial_activity_lineage.parquet": lineage,
+        }
+        marker_name = "MANIFEST.json"
+        caveats = [
+            "source_separated_financial_activity_only",
+            "source_unit_retained_without_currency_or_denominator_inference",
+            "no_arithmetic_or_cross_source_comparison_performed",
+            "period_fields_absent_not_inferred",
+            "rights_and_publication_not_evaluated",
+        ]
+        version = financial_activity.VERSION
+    elif value.profile == "budget_comparison":
         table, summary = budget.read_budget_comparison(
             value.root, value.manifest_sha256
         )
@@ -463,7 +503,7 @@ def _snapshot_package(value: GoldInput) -> dict[str, Any]:
     )
     bindings = (
         manifest["payloads"]
-        if value.profile == "budget_comparison"
+        if value.profile in {"budget_comparison", "vote_health_financial_activity"}
         else {entry["filename"]: entry for entry in manifest["tables"].values()}
     )
     inventory = _inventory(value, marker_name, marker, bindings)
@@ -475,7 +515,14 @@ def _snapshot_package(value: GoldInput) -> dict[str, Any]:
         "manifest_sha256": value.manifest_sha256,
         "inventory": sorted(inventory, key=lambda item: item["path"]),
         "tables": [
-            _table(name, table, package_id) for name, table in sorted(tables.items())
+            dict(
+                _table(name, table, package_id),
+                period_basis="not_applicable_no_period_fields",
+                period_token_field_present=False,
+            )
+            if value.profile == "vote_health_financial_activity"
+            else _table(name, table, package_id)
+            for name, table in sorted(tables.items())
         ],
         "caveats": caveats,
         "verification_scope": "pinned_gold_package_snapshots",
@@ -549,6 +596,19 @@ def _graphs(
     )
 
 
+def project_inventory_graphs(
+    packages: list[dict[str, Any]], inventory_sha256: str
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    """Render supplied inventory assertions as entity-only DCAT/PROV graphs.
+
+    This pure projection does not verify input files, rights or source authority.
+    Callers retain that boundary; no activities, actors or dates are invented.
+    """
+    _require(0 < len(packages) <= MAX_PACKAGES)
+    _require(re.fullmatch(r"[0-9a-f]{64}", inventory_sha256) is not None)
+    return _graphs(packages, inventory_sha256)
+
+
 def _period_text(table: dict[str, Any]) -> str:
     if table.get("period_token_field_present") is False:
         return "not applicable: no period-token field"
@@ -564,6 +624,8 @@ def _period_text(table: dict[str, Any]) -> str:
 
 
 def _version(values: tuple[MetadataInput, ...]) -> str:
+    if any(v.profile == "vote_health_financial_activity" for v in values):
+        return FINANCIAL_ACTIVITY_VERSION
     if any(type(v) is OperationContextGoldInput for v in values):
         return OPERATION_VERSION
     return (
@@ -645,6 +707,8 @@ def project_gold_metadata(values: tuple[MetadataInput, ...]) -> dict[str, bytes]
                 if version == OPERATION_VERSION
                 else CANONICAL_SOURCE_DRILLTHROUGH_VERSION
                 if version == CANONICAL_VERSION
+                else FINANCIAL_ACTIVITY_SOURCE_DRILLTHROUGH_VERSION
+                if version == FINANCIAL_ACTIVITY_VERSION
                 else SOURCE_DRILLTHROUGH_VERSION
             ),
             "scope": "source_manifest_field_references_only",
@@ -678,6 +742,9 @@ def project_gold_metadata(values: tuple[MetadataInput, ...]) -> dict[str, bytes]
         p["profile"] in {"canonical_source_separated", "operation_context"}
         for p in packages
     )
+    has_no_period_fields = any(
+        p["profile"] == "vote_health_financial_activity" for p in packages
+    )
     has_operation = any(p["profile"] == "operation_context" for p in packages)
     lines = [
         "# Local Health analytical Gold dataset card",
@@ -696,6 +763,8 @@ def project_gold_metadata(values: tuple[MetadataInput, ...]) -> dict[str, bytes]
         (
             "Observed dates and literal source tokens are not continuous coverage."
             if has_tokens
+            else "Period details are shown only where a source period field exists."
+            if has_no_period_fields
             else "Dates below are observed period-end extrema, not continuous coverage."
         ),
         (

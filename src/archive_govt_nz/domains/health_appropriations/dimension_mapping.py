@@ -54,7 +54,7 @@ class Dimension:
 
 @dataclass(frozen=True)
 class Mapping:
-    """Caller assertion; target None means unresolved, never an inferred match."""
+    """Caller assertion; unresolved states explain why no target is assigned."""
 
     dimension: Dimension
     vintage: str
@@ -62,6 +62,8 @@ class Mapping:
     target: str | None = None
     method: str | None = None
     evidence: tuple[str, ...] = ()
+    unresolved_reason: str | None = None
+    source_references: tuple[str, ...] = ()
 
 
 @dataclass(frozen=True)
@@ -110,6 +112,16 @@ def dimension_key(value: Dimension) -> str:
     return "sha256:" + hashlib.sha256(payload).hexdigest()
 
 
+def source_reference(object_sha256: str, coordinate: str) -> str:
+    """Bind a stable source coordinate to the exact captured object digest."""
+    _require(type(object_sha256) is str)
+    _require(re.fullmatch(r"[0-9a-f]{64}", object_sha256) is not None)
+    _text(coordinate)
+    reference = f"sha256:{object_sha256}#{coordinate}"
+    _text(reference)
+    return reference
+
+
 def _mapping(value: Mapping) -> str:
     _require(type(value) is Mapping)
     key = dimension_key(value.dimension)
@@ -119,12 +131,23 @@ def _mapping(value: Mapping) -> str:
     for digest in value.evidence:
         _require(type(digest) is str and re.fullmatch(r"[0-9a-f]{64}", digest))
     _require(tuple(sorted(set(value.evidence))) == value.evidence)
+    _require(
+        type(value.source_references) is tuple
+        and 0 < len(value.source_references) <= MAX_EVIDENCE
+    )
+    for reference in value.source_references:
+        _text(reference)
+        _require(re.fullmatch(r"sha256:[0-9a-f]{64}#[^\r\n]+", reference) is not None)
+    _require(tuple(sorted(set(value.source_references))) == value.source_references)
     if value.target is None:
         _require(value.method is None and not value.evidence)
+        _text(value.unresolved_reason)
     else:
         _text(value.target)
         _text(value.method)
         _require(bool(value.evidence))
+        _require(value.unresolved_reason is None)
+        _require(value.dimension.start is not None and value.dimension.end is not None)
     return key
 
 
@@ -156,6 +179,8 @@ def validate_mappings(rows: tuple[Mapping, ...]) -> tuple[Mapping, ...]:
             _require(
                 (left.target, left.vintage, left.version)
                 == (right.target, right.vintage, right.version)
+                and (left.method, left.unresolved_reason)
+                == (right.method, right.unresolved_reason)
             )
     return tuple(indexed[key] for key in sorted(indexed))
 
@@ -180,7 +205,15 @@ def compare_mappings(
         else:
             changes = tuple(
                 field
-                for field in ("vintage", "version", "target", "method", "evidence")
+                for field in (
+                    "vintage",
+                    "version",
+                    "target",
+                    "method",
+                    "evidence",
+                    "unresolved_reason",
+                    "source_references",
+                )
                 if getattr(old[key], field) != getattr(new[key], field)
             )
         if changes:

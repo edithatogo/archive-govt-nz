@@ -1,5 +1,34 @@
 # Run Log
 
+## 2026-10-25 — Phase 8 exclusive resume concurrency
+
+Added a barrier-controlled regression test that makes two callers complete the
+same read-only preflight before either claims one output path. Exactly one
+caller completes and verifies the envelope; the other is rejected without a
+failure marker or modification of donor, Bronze, prior run, or pinned resume
+plan. This characterizes the executor's existing exclusive `mkdir` claim; no
+production behavior changed. The broader interruption, replay, stale-state,
+remote-drift, workflow-permission and phase-review gates remain open. See
+`phase8-concurrency-contract-20261025.md`.
+
+The required exact-tree `./scripts/validate.sh` passed: 8,423 passed, 14
+skipped, 97% coverage; schema/document, parity, mutation, hygiene, dependency,
+licence, secret-scan and SBOM gates passed on repo-local CPython 3.15.1. Hosted
+exact-head checks remain pending PR creation.
+
+## 2026-10-25 — Phase 8 scheduled discovery boundary
+
+Added a regression contract proving the scheduled Health discovery lane is
+limited to `contents: read`, contains no secret interpolation, does not cancel
+overlapping runs, and invokes metadata discovery plus its bounded heartbeat
+without capture or normalization. The first test run exposed an overly strict
+test assumption about workflow step kinds; after narrowing it to the intended
+operation names, the focused test passed on Python 3.15.1. This is an existing-
+behavior characterization, not a workflow permission or behavior change. The
+Phase 8 schedule item remains in progress: capture/normalization lanes and
+heavier triggered work are still unimplemented. See
+`phase8-scheduled-contract-20261025.md`.
+
 ## 2026-10-24 — Bounded scheduled discovery report
 
 The scheduled Health discovery workflow now preserves a deterministic Markdown
@@ -9722,6 +9751,21 @@ or publication. See
 `canonical-crown-projection-reconciliation-20261024.md`. The required full
 repository harness remains the delivery gate.
 
+## 2026-10-24 — BIFF8 numeric-witness reconciliation in canonical Gold
+
+Canonical Gold now emits a source-separated reconciliation for BIFF8
+appropriation/revenue amount facts. It requires each fact's amount lineage and
+numeric evidence to agree on identity, source object, row, encoded stored
+integer and exact Decimal value, and retains the source column, record type,
+record-payload digest and encoded bytes. Missing, duplicate or mismatched links
+fail closed. The report is bound to the manifest and product copies, with
+fail-closed structural and cross-copy verification. It makes no donor,
+official-source, currency/price-basis, rights or cross-source equivalence
+claim. The focused reconciliation and revision-witness tests passed; the full
+canonical consumer plus Gold verification suites passed 92 tests. Exact-tree
+`./scripts/validate.sh`, review and protected hosted delivery remain pending.
+See `canonical-biff8-gold-witness-reconciliation-20261024.md`.
+
 The first protected review identified that package verification must require a
 reconciliation family for every Crown Gold table present. The verifier now
 compares the reported family set with the present product set before Parquet
@@ -9748,3 +9792,316 @@ so edit cycles can run exact paths/nodes or only cached failures with pytest
 cache enabled. The full `./scripts/validate.sh` remains the PR delivery gate.
 Xdist-generated coverage shards are now ignored rather than appearing as
 untracked files. Full hosted assurance remains pending.
+# 2026-10-24 — Issue #207: BEFU 2001 source census extension
+
+- Re-observed the official Treasury BEFU 2001 page and linked PDF reader
+  surfaces without downloading payloads. Added seven URL-derived discovery
+  records to a dated successor register; the original pinned 131-resource
+  register remains byte-identical.
+- Recorded the page issue date and page-level CC BY 4.0 separately from
+  resource rights. New payload hashes/byte counts remain unknown and item
+  rights remain unevaluated.
+- Added reader-only periods/statuses/unit evidence for GAAP Annex B Table B.6
+  Health and the separate Forecast Statement of Financial Performance. No
+  numeric values were promoted; Health purchasing and ACC measures remain
+  distinct.
+- The release edition, whole historical census, native layout/fixity, rights,
+  capture and publication remain open. Focused source-register validation is
+  pending.
+
+## 2026-10-25 — Issue #207: BEFU 2001 source attribution correction
+
+- Verified the official Treasury page's links and reader-visible PDF contents.
+  Annex B Table B.6 Health belongs to `befu01-ann.pdf` and has three Actual
+  periods followed by five Forecast periods; the earlier addendum incorrectly
+  attributed it to the GAAP tables PDF and labelled 2000/01 Actual.
+- Corrected its source ID/URL and statuses; retained displayed Health expense
+  tokens and the separate GAAP Total Expenses tokens as reader evidence.
+  Payload fixity, native layout and item-level rights remain unverified.
+- Focused source-register/source-measure review and affected timeout tests passed.
+  The final full `./scripts/validate.sh` run reported 8,409 passed, 14 skipped,
+  and 5 failed during the full 10-worker local run; the cached failure-only
+  rerun passed all five. This is not a full-harness pass, so retain the local
+  full gate as unresolved pending exact-head hosted assurance.
+
+## 2026-10-24 — Issue #208: source-layout cohort reconciliation
+
+Added a read-only reconciliation that binds the retained workbook and PDF
+layout reports to the same source-census and capture-manifest digests, checks
+each baselined source identity/fixity against the census, and compares fresh
+builder output to the pinned layout rows. Rebuilt both reports against the
+retained Silver tree and Bronze CAS on repo-local Python 3.15.1. All ten
+workbook-manifest rows and all 59 PDF rows were unchanged. The PDF parser
+advanced from pypdf 6.19.0 to 6.21.2; fingerprints remained identical. Current
+Silver now contains 24 manifests outside the pinned capture, versus nine in
+the prior workbook receipt; the newer manifests remain excluded.
+
+The combined 2026-10-03 cohort has 75 verified captures, 65 sources with
+structural baselines, and ten unresolved sources: six XLSX inventories, three
+CSV profiles and one HTML profile. PDF coverage is 59/59; workbook inventory
+coverage is 6/12. Source IDs and reason codes are in
+`source-layout-reconciliation-20261024.json`; its SHA-256 is
+`3cb9158afb0909d14fa745abdd704c5439efafdfccd2f5886ce24400263dbb75`.
+No source values or URLs were added and no mapping/normalization, rights or
+comparability approval was inferred. Focused tests cover exact cohort/fixity
+linkage, unassessed reasons and rejection of changed layout/capture identity.
+Retry/version recording, scheduled source discovery, WARC orphan reconciliation
+and remaining source-specific layouts are still open; issue #208 remains open.
+Project-owned-code licensing was also aligned with the current repository
+instructions: `LICENSE` is the complete Apache-2.0 text, package metadata now
+explicitly includes that file, and SPDX identifiers mark the new Python files.
+Built wheel and sdist both contain the complete license and Apache-2.0 package
+metadata; third-party and source-document rights remain separate.
+
+An earlier 10-worker full run produced 14 failures; its cached failure-only
+rerun passed all 14 in 48.43 seconds. The exact final-tree `./scripts/validate.sh`
+then passed: 8,352 tests, 14 skipped, 97.01% coverage, 81 schemas/71
+representative documents, 9/9 differential parity, and all mutation,
+dependency-audit, licence, secret and SBOM gates. Focused layout/static/type
+checks and distribution inspection also passed.
+
+## 2026-10-24 — Bronze-native workbook structural baselines
+
+Added a read-only structural inventory that fingerprints captured XLSX bytes
+directly from hash-verified Bronze CAS, independently of Silver manifests. This
+closes the narrow gap where six of 12 captured workbooks lacked Silver-derived
+inventories; all 12 now have a Bronze structural fingerprint from the pinned
+2026-10-03 cohort. The report includes census/capture pins, per-object SHA-256
+and size, and the `openpyxl` version. It omits cell values and does not claim
+semantic mapping, rights, or cross-vintage comparability. Three captured CSVs
+and one HTML source still need source-specific structural profiles, and
+per-adapter drift integration remains open.
+
+The bounded fixture suite passes three tests, including repeat-build identity,
+fixity rejection and full capture reconciliation. Validation used qualified
+Python 3.15.1. Live Bronze inventory verified 75 captured objects, all 12 XLSX
+baselines available, zero unavailable; see
+`bronze-workbook-layout-baseline-20261024.md` and its pinned JSON receipt.
+The exact-tree `./scripts/validate.sh` passed all 8,379 tests (14 skipped),
+97.05% coverage against the repository's 80% floor, 81 schemas and 71
+representative documents, 9/9 differential parity, all configured mutation
+lanes, hygiene, CAS, dependency audit, licence, secret and SBOM gates.
+
+## 2026-10-25 — Phase 5 Vote Health 2014/15 financial activity
+
+Added the next edition-specific Silver profile for page 7 of the retained
+2014/15 Supplementary Estimates PDF. A fresh response from the official
+Treasury locator matched the existing Bronze capture digest and 356,801-byte
+length; the capture inventory retains its WARC digest and CC BY 4.0 source
+licence. The parser accounts for all 14 printed rows and five `$000` columns,
+including repeated MCA labels, raw dash/`N/A` tokens, parenthesized signed
+adjustments, row-ordinal identity and 70 direct field-lineage rows. Two
+independent builds from the pinned bytes produced identical manifest and
+Parquet hashes. The source-specific operation is registered; normalized-fact
+rights remain unevaluated, and cross-edition comparison, Gold admission and
+publication are not asserted. See
+`vote-health-supplementary-2014-15-financial-activity-20261025.json`.
+
+Final-tree validation initially encountered one timing-sensitive Hypothesis
+failure in the unrelated legislation parent-state suite. The failure-only
+rerun passed; a subsequent complete `./scripts/validate.sh` passed on this
+exact tree: 8,396 passed, 14 skipped, 18 warnings, 97.08% branch coverage,
+81 schemas/71 representative documents, parity 9/9, all mutation and hygiene
+gates, dependency/licence/secret audits, and the 118-component SBOM. Python
+3.15.1, lock, format, lint, and strict typing gates passed. The 80% coverage
+floor was exceeded. See the machine receipt for this profile.
+
+The first hosted assurance matrix reached and passed platform tests, schema,
+parity, and mutation gates but failed the final Windows secret scan because a
+machine-receipt key contained the detector keyword `secret`. This was a
+receipt-label false positive, not credential material. The key is now neutral,
+and the exact-tree local secret scan passes; hosted rerun is required for the
+corrected head.
+
+After that label correction, the exact-tree local secret scan and complete
+`./scripts/validate.sh` both passed again: 8,396 passed, 14 skipped, 18
+warnings, 97.08% coverage; schemas, parity, mutation, dependency, licence,
+credential-scan and SBOM gates passed. Hosted Actions on the corrected commit
+remain the external merge gate.
+
+## 2026-10-25 — Issue #212: source-separated 2014/15 financial-activity Gold
+
+Added a versioned local Gold projection and bounded DuckDB query over the
+2014/15 page-7 Silver product. The exact official Treasury response was
+356,801 bytes and matched the retained Bronze SHA-256; two independent Silver
+and Gold builds produced identical manifests and output hashes. The Gold
+package retains 14 source rows, five printed `$000` columns, original record
+IDs, source row ordinals and 70 field-lineage rows. It makes no calculation or
+edition/cross-source comparison; page coverage remains partial, rights remain
+unevaluated and publication was not performed. pypdf emitted the same xref
+index correction warning on both reads; the pinned source, all fixed row/value
+contracts and package readback passed.
+
+The focused Gold/profile/source-operation suite passed 542 tests with 10
+skipped; Ruff and strict basedpyright passed under CPython 3.15.1. The exact
+tree passed `./scripts/validate.sh`: 8,399 passed, 14 skipped, 18 warnings,
+97% coverage against the 80% floor, 81 schemas/71 representative documents,
+parity 9/9, all mutation and hygiene gates, dependency/licence/secret audits,
+and the 118-component SBOM. This advances only one source-separated Gold
+projection; broader Phase 6 reports, source/donor reconciliation and final
+review remain open. See `vote-health-financial-activity-gold-20261025.md` and
+its machine receipt. The hosted issue #212 was already closed, so this update
+does not reopen or claim to complete the full Phase 6 scope.
+# 2026-10-25 — Issue #215 clean-room recovery refresh
+
+- Refreshed clean-room recovery from pinned Bronze under locked CPython 3.15.1
+  and PyArrow 26.0.0. The machine receipt records `bronze_objects_unchanged: true`
+  and `status: partial_with_blockers`; it explicitly leaves cross-source
+  comparison, remaining source-native Silver/adapters, and the complete
+  Platinum profile open. No publication was performed and rights remain
+  unevaluated.
+- Kept historical Context Silver pins and added a fail-closed semantic check
+  for serialization drift across PyArrow versions. Current writer hashes are
+  separately admitted only after file inventory, manifest/output hashes,
+  Parquet schema metadata, and all rows compare. GDP June current-writer files
+  were separately repeat-built before their hashes were accepted.
+- Corrected the MoH recovery observation token to use the exact canonical
+  profile timestamp; canonical Gold now binds fresh MoH and Crown manifest
+  digests. Expanded the revision-report gate to require Budget, revenue, BIFF8
+  Budget/revenue, Pharmac, MoH, and Crown entries.
+- Focused suite: 122 passed. Ruff and basedpyright passed. The required `./scripts/validate.sh` passed on this tree: 8,413 tests passed,
+  14 skipped, 18 warnings, 97.07% coverage; all schema, parity, mutation,
+  dependency, licence, secret, and SBOM gates passed. PR and hosted Actions
+  remain outstanding.
+
+# 2026-10-25 — BIFF8 Gold numeric-witness reconciliation review and validation
+
+- Review hardened malformed family and count handling: invalid family
+  identities now fail closed before constructing identity sets, and booleans
+  cannot satisfy integer count fields. The focused regression node passed.
+- The first final-tree harness attempt found one unrelated intermittent
+  Hypothesis deadline overrun (279 ms against 200 ms) in
+  `test_object_key_order_is_not_semantic`; the synthetic metadata-order test
+  has no timing contract, so its bounded deadline was raised to 1000 ms.
+- The final `./scripts/validate.sh` run on CPython 3.15.1 passed: 8,415 passed,
+  14 skipped, 97.06% coverage (80% required), 81 schemas and 71 representative
+  documents validated, parity 9/9, all mutation gates passed, and dependency,
+  licence, secret-scan and SBOM gates passed. Hosted Actions remain pending.
+
+## 2026-10-24 final clean-room recovery and review reconciliation
+
+Ran `.venv/bin/python tools/health_recovery_assurance.py --receipt conductor/tracks/health_appropriations_medallion_assimilation_20260829/clean-room-recovery-20261024-final.json` on repo-local CPython 3.15.1 with PyArrow 26.0.0. The completed receipt records 47 rebuilt product lanes, paired/repeat-identical outputs, unchanged pinned Bronze CAS objects, and `partial_with_blockers`; its temporary derivative root was removed after the run. The receipt does not claim rights clearance, publication, cross-source comparison, all remaining source-native profiles/adapters, or complete Platinum profiles.
+
+The source-census validator passed (143 records / 13 families), and Conductor-state validation passed (93 tracks / zero errors). Initial claim drift readback used unauthenticated REST and returned 404 for five archived repositories. Authenticated read-only `gh api` calls verified `archived: true` for all five. Updated `tools/check_claim_drift.py` to prefer `GH_TOKEN`/`GITHUB_TOKEN`, then use the existing `gh auth token` credential when available; the final claim-drift receipt records `passed` with zero divergences, and the focused checker tests passed (5 tests).
+
+The clean-room donor report confirms exact parity for 312 rows in the five-table Gold oracle. Thirty historical deviations remain: 29 source-only rows and one value difference. They remain unapproved and require source-backed dispositions; the existing retain-both/no-replacement treatment is not a disposition approval. Rights remain unevaluated. Cross-source comparison, remaining source-native Silver/canonical profiles, and the complete DCAT/Croissant/RO-Crate/PROV set remain unbuilt; the Health Appropriations track remains open. The exact-tree final harness result is pending at this log entry and will be appended after `./scripts/validate.sh` completes.
+
+The required `./scripts/validate.sh` completed successfully on the final
+implementation and test tree; only the following textual harness-result entry
+was appended afterward. Lock consistency, Conductor validation (93 tracks / zero errors), formatting (2,601 files), Ruff lint, basedpyright (0 errors/warnings/notes), the complete pytest/coverage gate (8,352 passed, 14 skipped, 97.10% coverage vs 80% floor), schema/document validation (81 / 71), differential parity (9/9), all configured mutation groups, hygiene, CAS benchmark (577.35 MB/s vs 25 MB/s minimum), dependency audit (no known vulnerabilities), licence inventory, secret scan, and SBOM validation (118 components) passed. The SBOM command emitted `CDX > Validation skipped` as a warning but returned a successful 118-component validation receipt; pytest reported 18 warnings, including ResourceWarning and RDFLib deprecation messages.
+
+The preceding full run had seven failures under overlap with other host workloads. One fixture defect was corrected so `canonical_gold_inputs` tests include and assert fresh Pharmac, MOH, BEFU and HYEFU manifest bindings. The other deadline/timeout findings passed when the seven cached failures were rerun serially (`--lf --last-failed-no-failures=none -n 0`, 7 passed in 38.39 s). A second complete `./scripts/validate.sh` then passed; no global retry, timeout or test-selection policy was weakened.
+
+## 2026-10-25 — Final recovery reconciliation after PR #774
+
+After PR #774 merged, synchronized the preserved Phase 9 recovery worktree with
+`origin/main` and reconciled its shared-file changes. Corrected the recovery
+contract to pin retained CPI, QES, GDP and population manifests to their
+historical hashes, while keeping separately qualified PyArrow 26 writer
+hashes for freshly rebuilt outputs. GDP comparison evidence now distinguishes
+historical source pins from runtime serialization pins; fresh Pharmac, MoH,
+BEFU and HYEFU inputs are bound by their current manifest digests.
+
+The clean-room receipt `clean-room-recovery-20261024-final.json` was regenerated
+from the pinned external Bronze CAS. It records 47 rebuilt product groups,
+`bronze_objects_unchanged: true`, no errors, and the truthful status
+`partial_with_blockers`; the temporary derivative tree was removed. The final
+gate remains blocked on cross-source comparison, remaining source-native
+Silver profiles/canonical adapters, and complete Platinum DCAT/Croissant/
+RO-Crate/PROV profiles. Rights remain unevaluated and publication was not
+performed.
+
+The exact-tree `./scripts/validate.sh` passed on CPython 3.15.1: 8,420 passed,
+14 skipped, 18 warnings, 97.05% coverage against the 80% floor; Conductor
+validation reported 93 tracks with zero errors; 81 schemas and 71 representative
+documents passed; differential parity passed 9/9; all configured mutation,
+dependency, licence, secret and SBOM gates passed (118 SBOM components). The
+CAS benchmark measured 524.09 MB/s against a 25 MB/s minimum. Focused recovery,
+projection, claim-drift and manifest-binding tests passed (68 tests). This
+reconciles local evidence only; the Health Appropriations track remains open.
+
+## 2026-10-25 — Phase 3 HAIR2024 common-dispatch slice
+
+Registered exact common Bronze dispatch for the retained HAIR2024 fig27/v1 and
+fig28/v1 CSV profiles. The adapters bind locator, source vintage, profile and
+captured SHA-256; bounded parsing rejects an unpinned lookalike, changed header
+and ambiguous probe result to preserved-only. Real retained sources in the
+PortableSSD archive matched the pinned census digests. Repeated dispatches for
+each profile produced identical selection receipts and outputs (40 facts and
+120 lineage rows per profile), with unchanged source bytes. Source numeric
+tokens and labels are retained; period dates, units, price bases, denominators
+and rights remain unknown/not evaluated. Evidence is in
+`phase3-moh-indicator-common-dispatch-20261025.json`.
+
+Focused adapter, registry and dispatch checks passed (40 tests); Ruff and
+basedpyright passed with no findings. The required validation harness passed
+lock, Conductor state (93 tracks, zero errors), formatting, lint and typing.
+Its 8,440-item pytest run reached 98% and recorded one failure in the existing
+`test_metadata_package_repeat_readback_and_forged_rights_fail_closed` test.
+The cached failure-only rerun passed (1 test). The full harness did not reach
+its final gates: the shared data volume fell to 200 MiB free while another
+repository's test process was active, and the run was interrupted before a
+complete result was captured. Do not treat the full harness as passed. This is
+one bounded Phase 3.2 adapter slice; historical workbook/PDF coverage, other
+common source-operation profiles, dimension mappings and integrated
+per-adapter drift remain open.
+
+## 2026-10-26 — Phase 3.2 dimension contracts and validation economy
+
+Added reasoned, hash-and-coordinate source references to unresolved dimension
+assertions; resolved mappings now require evidence and inclusive effective
+bounds. Reviewed Budget, context and HAIR2024 literals; no production target
+mapping was supported by current evidence. The dimension audit records source
+coverage and open decisions. Focused dimension/adapter coverage passed 124
+tests; Ruff and basedpyright passed.
+
+The complete `./scripts/validate.sh` run passed on CPython 3.15.1: 8,430 passed,
+14 skipped, 18 warnings, 97.02% coverage; 81 schemas and 71 representative
+documents passed; parity passed 9/9; all configured mutation, dependency,
+licence, secrets and SBOM gates passed. Two earlier full attempts ended on
+unrelated volume exhaustion / PortableSSD I/O errors; the successful run used
+local `/tmp` for pytest temporary files. A later small assurance-runner change
+added `--stage` selection and `scripts/validate-stage.sh` for exact failed-gate
+reruns while leaving the complete wrapper unchanged. Its Conductor, format,
+lint, types and two focused selector tests passed. This optimization avoids
+repeating completed gates after an unchanged-tree environmental failure; the
+full PR/CI gate remains intact. Phase 3.2 mapping adjudication and other source
+families remain open.
+
+## 2026-10-26 — Phase 3.3 schema-drift integration
+
+Qualified the three captured CSVs (HAIR2024 fig27/fig28 and CPIQ.SE9A) and the
+Pharmac CPB HTML table against their exact Bronze pins and existing source
+parsers. Two actual rebuilds yielded byte-identical text baseline JSON and
+matching layout/schema/ordered-output drift evidence. Reused and rechecked the
+existing 12-source Bronze workbook inventory and 59-source PDF inventory. The
+combined v2 reconciliation covers all 75 captured objects. This closes the
+four source-profile gaps without granting additional parser, rights, semantic
+or comparability approval.
+
+All common and native dispatch results now retain immutable drift snapshots;
+native Arrow declarations and observed legacy field types remain distinct.
+The new report path preserves unavailable/unsupported dispositions and refuses
+to overwrite retained baseline reports. Existing Silver manifests and original
+objects remain unchanged. Focused dispatch/source-operation tests passed 105
+checks; the final affected text/reconciliation tests passed 34 checks, with
+clean Ruff and strict typing. The complete milestone harness passed 8,445
+tests, with 14 skips and 96.87% branch-aware coverage; 81 schemas/71
+representative documents, parity 9/9, all mutation and supply-chain gates
+passed (118 SBOM components). The wider Phase 3 checkpoint remains open for
+remaining adapter and mapping requirements.
+
+Prerequisite PR #784 passed every required hosted check and merged through the
+normal protected path at `247e3862089d1cfc6bc84ce93dc654f9ef2bd7a4`, verified
+on `origin/main`. The schema-drift changes are kept on a separate topic branch.
+
+Self-review reproduced one collision between a Decimal serialization tag and
+an ordinary nested dictionary. The new encoding escapes actual containers,
+versions the output representation and preserves original scalar values. The
+regression failed once, then the 14 affected tests passed; Conductor, format,
+lint and strict typing passed again. The broad suite was collected before this
+last correction, so its unchanged evidence is paired with these scoped checks;
+final hosted checks remain separate. The text baselines and comparison were
+regenerated twice identically after the correction; all 75 source objects were
+rechecked without mutation. Initial receipts remain in the prior candidate
+commit history.

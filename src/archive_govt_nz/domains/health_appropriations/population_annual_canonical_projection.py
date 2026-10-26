@@ -28,6 +28,9 @@ OBSERVED_AT = "2026-09-25T09:37:50Z"
 SOURCE_MANIFEST_SHA256 = (
     "067255c4ac18377312d0a8234dc94804c876ba68866cfba3a483a4dd89415798"
 )
+PYARROW_26_SOURCE_MANIFEST_SHA256 = (
+    "9534264aedef3964b25e10512603d27c9d1214f3e6cdcb8e61ae0033943b3b1f"
+)
 TRANSFORMATION = "population-annual-canonical-source-faithful/v1"
 _PRODUCTS = {
     "population_facts.parquet",
@@ -97,7 +100,9 @@ def _verified_silver(
     _require(not marker.is_symlink() and marker.is_file())
     payload = marker.read_bytes()
     _require(
-        hashlib.sha256(payload).hexdigest() == manifest_sha256 == SOURCE_MANIFEST_SHA256
+        hashlib.sha256(payload).hexdigest() == manifest_sha256
+        and manifest_sha256
+        in {SOURCE_MANIFEST_SHA256, PYARROW_26_SOURCE_MANIFEST_SHA256}
     )
     manifest = json.loads(payload, object_pairs_hook=_pairs)
     _require(

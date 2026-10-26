@@ -38,6 +38,8 @@ every planned record set, measure or operational workflow.
 
 - [Pharmac/GDP operational extension](./source-operations-extension.md)
 - [Forecast successor operations](./forecast-source-operations.md)
+- [Phase 8 scheduled workflow contract](./phase8-scheduled-contract-20261025.md)
+- [Phase 8 exclusive resume concurrency contract](./phase8-concurrency-contract-20261025.md)
 - [Explicit forecast source-validation preflight](./forecast-preflight.md)
 - [Bounded source-profile CLI/MCP operations](./source-operations.md)
 - [Exact quarterly GDP source profile](./gdp-profile.md)
@@ -97,7 +99,15 @@ every planned record set, measure or operational workflow.
 - [Cumulative official source capture manifest, 2026-10-03](./official-capture-2026-10-03-health-complete.json)
 - [Source PDF structural layout baseline, 2026-10-03](./source-pdf-layout-baseline-20261003.json)
 - [Source layout inventory baseline, 2026-10-03](./source-layout-baseline-20261003.json)
+- [Source layout cohort recheck, 2026-10-24](./source-layout-reconciliation-20261024.md)
+- [Source layout cohort recheck machine receipt, 2026-10-24](./source-layout-reconciliation-20261024.json)
+- [Schema drift integration, 2026-10-26](./schema-drift-integration-20261026.md)
+- [Schema drift integration machine receipt](./schema-drift-integration-20261026.json)
+- [Captured CSV/HTML structural baselines](./source-text-layout-baseline-20261026.json)
+- [Captured CSV/HTML repeat drift report](./source-text-layout-drift-20261026.json)
+- [Combined workbook/PDF/text reconciliation](./source-layout-reconciliation-20261026.json)
 - [Budget source-literal dimensions and unresolved mapping validation](./budget-source-dimensions.validation.json)
+- [Phase 3.2 dimension-mapping audit, 2026-10-26](./dimension-mapping-audit-20261026.json): source literals, lineage/census coverage and fail-closed mapping rules; no unsupported target mappings were assigned.
 - [Context-source Bronze adapters](./context-adapters.md)
 - [Context-source adapter validation](./context-adapters.validation.json)
 - [Historical package snapshot verification](./historical-snapshot.md)
@@ -223,6 +233,8 @@ they are not current-state assertions.
 - [Read-only partial-rebuild planner](readonly-resume-planner.md)
 - [Historical Budget and forecast source register](historical-source-register.md)
 - [BEFU 2002 GAAP expense source/period census addendum](historical-source-register.md)
+- [BEFU 2001 additional locators and period census](source-census-befu-2001-20261024.json)
+- [BEFU 2001 dated historical source register review](historical-source-register-20261024.md)
 - [Exact source series and period/rights review](source-measure-review-20260927.json)
 - [Budget source-label occurrence comparison](classification-label-occurrences-20260930.json)
 - [GDP March/June vintage differences](gdp-vintage-reconciliation-20260930.json)
@@ -340,6 +352,8 @@ they are not current-state assertions.
 - [2014/15 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2014-15-category-totals-20261006.md)
 - [2014/15 category-total evidence](./vote-health-supplementary-2014-15-category-totals-20261006.json)
 - [2014/15 category totals in clean-room recovery](./clean-room-recovery-20261006-vote-health-2014-15.json)
+- [2014/15 financial-activity Gold projection](./vote-health-financial-activity-gold-20261025.md)
+- [2014/15 financial-activity Gold machine evidence](./vote-health-financial-activity-gold-20261025.json)
 - [2015/16 Vote Health Supplementary Estimates category totals](./vote-health-supplementary-2015-16-category-totals-20261006.md)
 - [2015/16 category-total evidence](./vote-health-supplementary-2015-16-category-totals-20261006.json)
 - [2015/16 category totals in clean-room recovery](./clean-room-recovery-20261006-vote-health-2015-16.json)
@@ -757,5 +771,18 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [Windows failed trial and test-stage-only diagnostic evidence](windows-test-diagnostics-20261022.json): preserves deadline failures and reporting boundaries; actual Windows root-cause repair/qualification remains open.
 
 - [Readable canonical Gold plot derivative](./readable-canonical-plots.md)
+- [BIFF8 Gold numeric-witness reconciliation](./canonical-biff8-gold-witness-reconciliation-20261024.md)
 - [Readable canonical plot native evidence](./readable-canonical-plots-native-20261022.json)
 - Phase 6 canonical Gold query/readback and CPython 3.15.1 full-harness evidence: see [plan](./plan.md#phase-6--gold-analytical-products) and the [latest runlog entry](./runlog.md). Source/donor total reconciliation and broader report matrices remain open.
+# Issue #215 recovery refresh (2026-10-25)
+
+- [Clean-room recovery receipt](./clean-room-recovery-20261025-issue-215.json):
+  supported Bronze-derived products rebuilt with unchanged Bronze fixity;
+  remaining groups and final gate are explicitly blocked.
+- See the current [Phase 9 plan](./plan.md#phase-9--recovery-assurance-and-publication-candidate)
+  and [runlog](./runlog.md) for implementation and validation evidence.
+
+- [Phase 3 HAIR2024 common-dispatch evidence](./phase3-moh-indicator-common-dispatch-20261025.json): both retained Ministry indicator CSV profiles select exact hash-pinned adapters and repeat identically; amounts, labels and lineage are retained while units, price bases, denominators, period dates and rights remain unqualified. The Phase 3.2 adapter task remains partial.
+- [Phase 3.2 stable dimension and mapping contracts](./dimension-mapping-audit-20261026.json): Budget, context and HAIR2024 outputs emit reasoned, source-referenced unresolved assertions; the actual source census currently supports zero canonical target mappings.
+
+- [Final clean-room recovery receipt refreshed after PR #774](./clean-room-recovery-20261024-final.json): 47 product groups rebuilt, Bronze unchanged, no errors; remaining source, comparison, Platinum and rights gates stay open. See the [latest runlog entry](./runlog.md).

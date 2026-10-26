@@ -25,7 +25,13 @@ from archive_govt_nz.domains.health_appropriations.dimension_mapping import (
 
 def sample() -> Mapping:
     """Return an unresolved synthetic label."""
-    return Mapping(Dimension("vote", "synthetic/v1", "Example"), "v1", "m1")
+    return Mapping(
+        Dimension("vote", "synthetic/v1", "Example"),
+        "v1",
+        "m1",
+        unresolved_reason="No source-backed crosswalk is supplied.",
+        source_references=(dm.source_reference("0" * 64, "synthetic.csv!A2"),),
+    )
 
 
 def test_unresolved_and_stability() -> None:
@@ -43,7 +49,14 @@ def test_evidence_required_and_conflict() -> None:
     with pytest.raises(ValueError, match="dimension_mapping_contract"):
         validate_mappings((replace(item, target="synthetic:1"),))
     mapped = replace(
-        item, target="synthetic:1", method="asserted", evidence=("a" * 64,)
+        item,
+        dimension=replace(
+            item.dimension, start=date(2025, 7, 1), end=date(2026, 6, 30)
+        ),
+        target="synthetic:1",
+        method="source-crosswalk/v1",
+        evidence=("a" * 64,),
+        unresolved_reason=None,
     )
     assert validate_mappings((mapped,)) == (mapped,)
     with pytest.raises(ValueError, match="dimension_mapping_contract"):
@@ -86,6 +99,38 @@ def test_key_components_and_exact_bounds() -> None:
     )
     evidence = tuple(f"{i:064x}" for i in range(dm.MAX_EVIDENCE))
     assert validate_mappings((replace(mapped(), evidence=evidence),))
+
+
+def test_source_reference_binds_object_digest_and_coordinate() -> None:
+    reference = dm.source_reference("a" * 64, "Sheet1!B7")
+    assert reference == "sha256:" + "a" * 64 + "#Sheet1!B7"
+    with pytest.raises(ValueError, match="dimension_mapping_contract"):
+        dm.source_reference("A" * 64, "Sheet1!B7")
+    with pytest.raises(ValueError, match="dimension_mapping_contract"):
+        dm.source_reference("a" * 64, "")
+
+
+def test_unresolved_requires_reason_and_source_reference() -> None:
+    item = sample()
+    with pytest.raises(ValueError, match="dimension_mapping_contract"):
+        validate_mappings((replace(item, unresolved_reason=None),))
+    with pytest.raises(ValueError, match="dimension_mapping_contract"):
+        validate_mappings((replace(item, source_references=()),))
+    with pytest.raises(ValueError, match="dimension_mapping_contract"):
+        validate_mappings((replace(item, source_references=("unbound.csv!A2",)),))
+
+
+def test_resolved_mapping_requires_explicit_effective_period() -> None:
+    item = mapped()
+    with pytest.raises(ValueError, match="dimension_mapping_contract"):
+        validate_mappings(
+            (
+                replace(
+                    item,
+                    dimension=replace(item.dimension, start=None),
+                ),
+            )
+        )
 
 
 @pytest.mark.parametrize("field", ["vintage", "version"])
@@ -143,8 +188,18 @@ def test_bad_mapping(field: str, value: object) -> None:
 
 
 def mapped() -> Mapping:
-    """Return an evidence-reference-only synthetic assertion."""
-    return replace(sample(), target="test:1", method="fixture", evidence=("a" * 64,))
+    """Return an explicitly bounded synthetic mapping with source evidence."""
+    item = sample()
+    return replace(
+        item,
+        dimension=replace(
+            item.dimension, start=date(2025, 7, 1), end=date(2026, 6, 30)
+        ),
+        target="test:1",
+        method="fixture-crosswalk/v1",
+        evidence=("a" * 64,),
+        unresolved_reason=None,
+    )
 
 
 @pytest.mark.parametrize("evidence", [("b" * 64, "a" * 64), ("a" * 64,) * 2, ()])
@@ -164,10 +219,20 @@ def test_mapped_evidence_format_and_bound(evidence: tuple[str, ...]) -> None:
 
 def test_overlap_and_inclusive_endpoints() -> None:
     first = replace(
-        mapped(), dimension=replace(sample().dimension, end=date(2026, 1, 1))
+        mapped(),
+        dimension=replace(
+            sample().dimension,
+            start=date(2025, 1, 1),
+            end=date(2026, 1, 1),
+        ),
     )
     second = replace(
-        mapped(), dimension=replace(sample().dimension, start=date(2026, 1, 1))
+        mapped(),
+        dimension=replace(
+            sample().dimension,
+            start=date(2026, 1, 1),
+            end=date(2027, 1, 1),
+        ),
     )
     assert len(validate_mappings((first, second))) == 2
     with pytest.raises(ValueError, match="dimension_mapping_contract"):

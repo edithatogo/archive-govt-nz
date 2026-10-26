@@ -12,6 +12,15 @@ registered `slow`-excluded profile and preserves any additional pytest
 arguments. Keep the full `./scripts/validate.sh` gate for coherent milestones
 and PR delivery, rather than repeating it during focused edit cycles.
 
+The full harness runs each named stage once. If one stage fails and the source
+tree and that stage's inputs have not changed, rerun the failed gate directly
+with `./scripts/validate-stage.sh <stage>`; pass multiple stage names to rerun
+only those gates. For example, after a secrets receipt write failure, rerun
+`./scripts/validate-stage.sh secrets` after storage recovers instead of
+repeating pytest, coverage, mutation and schema checks. After changing code or
+configuration, rerun the failed stage and the other gates affected by that
+change. Do not treat a focused profile as full release evidence.
+
 Tests that require the `slow` marker must remain in the full suite and must not
 be used to weaken coverage, mutation, schema, security, or publication gates.
 The fast profile is deliberately dependency-free and deterministic: it only

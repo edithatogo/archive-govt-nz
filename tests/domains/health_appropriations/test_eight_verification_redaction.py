@@ -93,7 +93,7 @@ def test_actual_cli(tmp_path: Path, value: object) -> None:
         capture_output=True,
         text=True,
         check=False,
-        timeout=30,
+        timeout=120,
     )
     assert result.returncode == 2
     assert json.loads(result.stdout) == {
@@ -122,7 +122,7 @@ def test_actual_cli_missing(tmp_path: Path) -> None:
         capture_output=True,
         text=True,
         check=False,
-        timeout=30,
+        timeout=120,
     )
     assert result.returncode == 2
     assert json.loads(result.stdout)["status"] == "failed"

@@ -1,0 +1,128 @@
+{
+  "collection_mutation": "not_performed",
+  "corrected_absent_column_bindings": 0,
+  "legacy_absent_column_bindings": [
+    {
+      "declared_column": "record_urn",
+      "field": "records_health_appropriations/record_urn",
+      "source_path": "data/silver/donor_facts.parquet"
+    },
+    {
+      "declared_column": "domain",
+      "field": "records_health_appropriations/domain",
+      "source_path": "data/silver/donor_facts.parquet"
+    },
+    {
+      "declared_column": "source_observed_at",
+      "field": "records_health_appropriations/source_observed_at",
+      "source_path": "data/silver/donor_facts.parquet"
+    },
+    {
+      "declared_column": "effective_date",
+      "field": "records_health_appropriations/effective_date",
+      "source_path": "data/silver/donor_facts.parquet"
+    },
+    {
+      "declared_column": "revoked_date",
+      "field": "records_health_appropriations/revoked_date",
+      "source_path": "data/silver/donor_facts.parquet"
+    },
+    {
+      "declared_column": "payload_cid",
+      "field": "records_health_appropriations/payload_cid",
+      "source_path": "data/silver/donor_facts.parquet"
+    },
+    {
+      "declared_column": "title",
+      "field": "records_health_appropriations/title",
+      "source_path": "data/silver/donor_facts.parquet"
+    },
+    {
+      "declared_column": "text_content",
+      "field": "records_health_appropriations/text_content",
+      "source_path": "data/silver/donor_facts.parquet"
+    },
+    {
+      "declared_column": "metadata_json",
+      "field": "records_health_appropriations/metadata_json",
+      "source_path": "data/silver/donor_facts.parquet"
+    },
+    {
+      "declared_column": "financial_year",
+      "field": "records_health_appropriations/financial_year",
+      "source_path": "data/silver/donor_facts.parquet"
+    },
+    {
+      "declared_column": "source_label",
+      "field": "records_health_appropriations/source_label",
+      "source_path": "data/silver/donor_facts.parquet"
+    },
+    {
+      "declared_column": "resource_rights_uri",
+      "field": "records_health_appropriations/resource_rights_uri",
+      "source_path": "data/silver/donor_facts.parquet"
+    }
+  ],
+  "parquet_schema_count": 7,
+  "projection_payload_sha256": {
+    "metadata/croissant.json": "2615be850d34b7ca437fe15b239c8bae5791c4ba14825a3fcf0e5428445113d0",
+    "metadata/dcat.json": "f5f937c052e2bce0540f159fc58c84e6c42288ef1fef814aa40b4f2dc4751369",
+    "metadata/payload-inventory.json": "dc1b5d93e928f9eae878e3aee5f36d9157293f58ab252bc4dd1e9848279420f6",
+    "metadata/profile-validation.json": "827a87a9c9fc0031fc450107be1125eb6d0c8d4cbc5afe6a2868c1363e99effc",
+    "metadata/prov.json": "b4f251d980305badfd66976c6aa9fe53de7e13694e6b4c5a4370e6b240c8c845",
+    "metadata/schemas.json": "d4c365f52f6df50e6e7eeaa854b5cf5bcacb5d9688166d57e6c5a93f085112d8",
+    "ro-crate-metadata.json": "6225dd9cb5988879c18cece84280fa01d2897ba26ed2a0de4e4c499e8da19ec8"
+  },
+  "projection_repeat_identical": true,
+  "projection_scope_review": {
+    "other_projection_bytes_unchanged": true,
+    "payload_staging": "outside_projection_scope"
+  },
+  "publication": "not_performed",
+  "qualification": {
+    "candidate_profile": "archive-govt-nz.health-candidate-inventory-metadata/v1",
+    "croissant": {
+      "missing_content_urls": 94,
+      "missing_dataset_properties": [
+        "creator",
+        "datePublished",
+        "dct:conformsTo",
+        "license",
+        "url"
+      ],
+      "target_specification": "http://mlcommons.org/croissant/1.0"
+    },
+    "derivative_rights": "not_evaluated",
+    "fields": 51,
+    "file_objects": 94,
+    "full_conformance": "not_asserted",
+    "input_manifest_sha256": [
+      "dc1b5d93e928f9eae878e3aee5f36d9157293f58ab252bc4dd1e9848279420f6"
+    ],
+    "inventory_scope": "payloads_before_generated_metadata_excluding_manifest",
+    "ml_loading": "not_validated_custom_arrow_type_identifiers",
+    "original_rights_assertions_bound_to_bytes": 73,
+    "payload_staging": "outside_projection_scope",
+    "publication": "not_performed",
+    "recordsets": 7,
+    "release_readiness": "blocked",
+    "rights": "not_evaluated",
+    "ro_crate": {
+      "descriptor_conformance_assertion": "withheld",
+      "missing_root_properties": [
+        "datePublished",
+        "license"
+      ],
+      "target_specification": "https://w3id.org/ro/crate/1.1"
+    },
+    "schema_version": "archive-govt-nz.health-gold-discovery-candidates/v1",
+    "source_reverification": "not_performed",
+    "status": "passed_local_inventory_contract"
+  },
+  "root_license_and_publication_date_omitted": true,
+  "schema_version": "archive-govt-nz.health-retained-metadata-review/v1",
+  "source_candidate_manifest_sha256": "9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e",
+  "source_candidate_unchanged": true,
+  "source_files_verified": 94,
+  "status": "verified_local_projection_with_open_qualification"
+}

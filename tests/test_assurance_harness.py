@@ -103,6 +103,35 @@ def test_repository_gate_lists_all_required_stages() -> None:
     ]
 
 
+def test_repository_gate_lists_only_requested_stages() -> None:
+    """A failed gate can be rerun without repeating completed stages."""
+    result = subprocess.run(
+        [sys.executable, "tools/check.py", "--list", "--stage", "secrets"],
+        cwd=REPOSITORY_ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 0
+    assert result.stderr == ""
+    assert result.stdout.splitlines() == ["secrets"]
+
+
+def test_repository_gate_rejects_unknown_requested_stage() -> None:
+    """Stage selection fails closed instead of silently selecting no gates."""
+    result = subprocess.run(
+        [sys.executable, "tools/check.py", "--list", "--stage", "misspelled"],
+        cwd=REPOSITORY_ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 1
+    assert "unknown assurance stage(s): misspelled" in result.stderr
+
+
 def test_type_gate_uses_bounded_parallel_analysis() -> None:
     """Repository-wide typing completes within the per-stage time budget."""
     type_stage = next(stage for stage in STAGES if stage.name == "types")

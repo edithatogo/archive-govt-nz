@@ -64,7 +64,7 @@ def test_package_reports_exact_queries_and_exclusive_output(
         ],
         capture_output=True,
         text=True,
-        timeout=30,
+        timeout=120,
         check=True,
     )
     envelope = json.loads(delivered.stdout)

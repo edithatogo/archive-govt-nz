@@ -137,6 +137,129 @@ def test_historical_source_register_retains_scope_and_discovery_boundary() -> No
         assert gap["other_custodian_availability"] == "not_investigated"
 
 
+def test_befu_2001_addendum_preserves_baseline_and_records_seven_locators() -> None:
+    """New source observations extend a dated snapshot, not pinned evidence."""
+    track = (
+        Path(__file__).parents[2]
+        / "conductor/tracks/health_appropriations_medallion_assimilation_20260829"
+    )
+    base_bytes = (track / "historical-source-register.json").read_bytes()
+    base = json.loads(base_bytes)
+    successor = json.loads(
+        (track / "historical-source-register-20261024.json").read_text()
+    )
+    receipt = json.loads((track / "source-census-befu-2001-20261024.json").read_text())
+    assert len(base["resource_observations"]) == 131
+    assert len(successor["resource_observations"]) == 138
+    assert (
+        receipt["baseline_register"]["sha256"] == hashlib.sha256(base_bytes).hexdigest()
+    )
+    assert receipt["baseline_register"]["resource_count"] == 131
+    assert receipt["successor_register"]["resource_count"] == 138
+    successor_path = track / "historical-source-register-20261024.json"
+    assert (
+        receipt["successor_register"]["sha256"]
+        == hashlib.sha256(successor_path.read_bytes()).hexdigest()
+    )
+    registered = {
+        row["source_id"]: row
+        for row in successor["resource_observations"]
+        if row["edition_year"] == 2001 and row["family"] == "befu"
+    }
+    observed = {row["source_id"]: row for row in receipt["resources"]}
+    assert len(registered) == 8
+    assert len(observed) == 7
+    assert all(registered[key] == value for key, value in observed.items())
+    assert len({row["url"] for row in registered.values()}) == 8
+    assert len({row["source_id"] for row in registered.values()}) == 8
+    assert {row["url"].rsplit("/", 1)[-1] for row in observed.values()} == {
+        "befu01-resp.pdf",
+        "befu01-1.pdf",
+        "befu01-2.pdf",
+        "befu01-3.pdf",
+        "befu01-4.pdf",
+        "befu01-5.pdf",
+        "befu01-ann.pdf",
+    }
+    assert receipt["page_observations"]["linked_resource_count_on_page"] == 8
+    assert all(row["disposition"] == "discovered" for row in observed.values())
+    assert all(row["rights_state"] == "not_evaluated" for row in observed.values())
+    assert all(
+        row["sha256"] is None and row["byte_count"] is None for row in observed.values()
+    )
+    assert all(row["native_layout_verified"] is False for row in observed.values())
+    assert all(
+        row["source_id"]
+        == "treasury-historical-" + hashlib.sha256(row["url"].encode()).hexdigest()[:16]
+        for row in observed.values()
+    )
+    assert receipt["period_observations"][0]["period_tokens"] == [
+        "1997/98",
+        "1998/99",
+        "1999/2000",
+        "2000/01",
+        "2001/02",
+        "2002/03",
+        "2003/04",
+        "2004/05",
+    ]
+    health_observation, crown_observation = receipt["period_observations"]
+    assert health_observation["resource_url"].endswith("befu01-ann.pdf")
+    assert health_observation["source_id"] == "treasury-historical-071371904cadf19b"
+    assert (
+        registered[health_observation["source_id"]]["url"]
+        == health_observation["resource_url"]
+    )
+    assert health_observation["status_labels"] == [
+        "Actual",
+        "Actual",
+        "Actual",
+        "Forecast",
+        "Forecast",
+        "Forecast",
+        "Forecast",
+        "Forecast",
+    ]
+    assert health_observation["value_tokens"] == [
+        "6,001",
+        "6,573",
+        "6,874",
+        "7,272",
+        "7,684",
+        "7,766",
+        "7,896",
+        "8,019",
+    ]
+    assert crown_observation["resource_url"].endswith("befu01-gaap.pdf")
+    assert crown_observation["source_id"] == "treasury-historical-9b7ed9af81531c7c"
+    assert (
+        registered[crown_observation["source_id"]]["url"]
+        == crown_observation["resource_url"]
+    )
+    assert crown_observation["status_labels"] == [
+        "Actual",
+        "Budget",
+        "Estimated Actual",
+        "Forecast",
+        "Forecast",
+        "Forecast",
+        "Forecast",
+    ]
+    assert crown_observation["value_tokens"] == [
+        "36,171",
+        "38,057",
+        "38,280",
+        "39,365",
+        "40,674",
+        "42,290",
+        "43,819",
+    ]
+    assert receipt["period_observations"][0]["unit_literal"] == "$ million"
+    assert receipt["whole_edition_enumeration"] == "pending"
+    assert receipt["whole_history_complete"] is False
+    assert receipt["preservation_mutations"] is False
+
+
 def test_befu_1998_links_preserve_status_scope_and_withdrawal_boundaries() -> None:
     """Release notices cannot change differently dated retained source records."""
     path = (

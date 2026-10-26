@@ -1,0 +1,79 @@
+{
+  "schema_version": "archive-govt-nz.health-phase3-dimension-mapping-audit/v1",
+  "as_of": "2026-10-26",
+  "track": "health_appropriations_medallion_assimilation_20260829",
+  "evidence": {
+    "source_census": {
+      "path": "source-census.json",
+      "sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272"
+    },
+    "budget_dimension_validation": {
+      "path": "budget-source-dimensions.validation.json",
+      "sha256": "ea09811e5f1984e2d4fabadbf3d810ac166ca02bb1fb02a711c0cce5bee02af1",
+      "mapping_targets": "unresolved",
+      "emitted_kinds": ["vote", "appropriation", "department", "portfolio", "amount_type", "functional_classification", "measure", "unit", "period"]
+    },
+    "previous_contract_evidence": {
+      "path": "dimension-mapping-contracts.json",
+      "sha256": "daf53ab834b9c841284a583358529e7c117328cb0b742554402db75869bcc4a2",
+      "factual_mappings_assigned": 0
+    },
+    "population_export": {
+      "path": "population-annual-export.validation.json",
+      "table_id": "DPE056AA",
+      "source_sha256": "a52e0344d1b6e707de04b7b968f2667fc969c0f0777b319921ff716ead82a1d9",
+      "selection": "Mean year ended / Total / Total All Ages / Annual-Jun"
+    }
+  },
+  "retained_source_objects": [
+    {"source_id": "budget_2026-000", "family": "budget_2026", "source_sha256": "3fc6bba178c78c4a4b259c920a6f55307ec95a547353f340086c86fc2a26f5a0"},
+    {"source_id": "moh_vote_health-008", "family": "moh_vote_health", "source_sha256": "c1e7758667b8255e049603de8325d732f34a76e6099e0fe4de6553a36d48e9fc"},
+    {"source_id": "moh_vote_health-009", "family": "moh_vote_health", "source_sha256": "7b9a51643550e3d890f4f341f27346d3466708fe924702ade4a731d1bb6266e4"},
+    {"source_id": "stats_nz_cpi-053a0705526fac8d", "family": "stats_nz_cpi", "source_sha256": "f474a6a3bfbe9b6377c3c68cc94a4cb494335130af3940fe538f5a0dd1274e9d"},
+    {"source_id": "stats_nz_qes-faab0efe46470af8", "family": "stats_nz_qes", "source_sha256": "1af2e7e37f1c108a2656842cf1f519c903e1a982bcdc03ee02d0ad888ebc3a97"},
+    {"source_id": "stats_nz_gdp-588a47c19c9dbc44", "family": "stats_nz_gdp", "source_sha256": "b6d2fe15b4656143f600abeb1849432f60d769570667eb90d07ddacd3498e22d"},
+    {"source_id": "stats_nz_population-806dead2a5b8ab69", "family": "stats_nz_population", "source_sha256": "315f48f981cb237bbd1c4834676fd030f84e7eddc7f7660402956c05ca53a8c0", "note": "HLFS working-age population object; distinct from the DPE056AA annual export above"}
+  ],
+  "dimension_review": [
+    {"kind": "vote", "source_literal_support": "Budget expenditure profile", "state": "unresolved", "reason": "Literal Vote label has no evidenced canonical identifier or effective-period crosswalk."},
+    {"kind": "appropriation", "source_literal_support": "Budget expenditure profile", "state": "unresolved", "reason": "Appropriation label is retained without an approved stable target identifier."},
+    {"kind": "department", "source_literal_support": "Budget expenditure profile", "state": "unresolved", "reason": "Department label does not establish a stable agency identity or relationship."},
+    {"kind": "portfolio", "source_literal_support": "Budget expenditure profile", "state": "unresolved", "reason": "Portfolio label has no evidenced identity crosswalk or effective period."},
+    {"kind": "amount_type", "source_literal_support": "Budget expenditure profile", "state": "unresolved", "reason": "Source amount-type label is retained; no approved canonical vocabulary mapping exists."},
+    {"kind": "functional_classification", "source_literal_support": "Budget expenditure profile; four labels are projected as unmapped occurrences", "state": "unresolved", "observed_labels": ["Health", "Core Government Services", "No Functional Classification", "Social Security and Welfare"], "reason": "No source-backed classification identifier or crosswalk with effective dates was found."},
+    {"kind": "economic_classification", "source_literal_support": "Absent from the reviewed Budget expenditure profile", "state": "not_observed", "reason": "No value or field is emitted by this profile; no target can be assigned."},
+    {"kind": "measure", "source_literal_support": "Budget adapter rule; CPI, population, QES and GDP literal series/measure fields; HAIR2024 column headers", "state": "unresolved", "reason": "Source-specific measure literals are retained; conformed cross-source equivalence is not approved."},
+    {"kind": "unit", "source_literal_support": "Budget Amount $000 header and present context-source unit labels; DPE056AA metadata says persons", "state": "unresolved", "reason": "Source units are retained without a qualified conversion, currency assertion or approved cross-source unit mapping."},
+    {"kind": "period", "source_literal_support": "Budget year tokens; context-source period tokens; HAIR2024 year tokens", "state": "unresolved", "reason": "Tokens remain literal; no approved calendar bounds, fiscal alignment or analytical join is assigned."}
+  ],
+  "contract": {
+    "unresolved_requires": ["reason", "one_or_more_sha256_object_and_source_coordinate_references"],
+    "resolved_requires": ["target", "method", "evidence_digest_references", "source_references", "inclusive_effective_start", "inclusive_effective_end"],
+    "source_reference_format": "sha256:<64 lowercase hex>#<source coordinate>",
+    "assertion_reference_limit": 32,
+    "occurrence_links_remain_complete": true,
+    "production_target_mappings_assigned": 0,
+    "evidence_bytes_authenticated_by_contract": false
+  },
+  "changes": [
+    "Budget and context unresolved assertions now require reasons and hash-bound source references.",
+    "The shared validator rejects resolved targets without explicit effective bounds and evidence references.",
+    "HAIR2024 fig27/v1 and fig28/v1 now emit literal source-header measure and year-token period assertions with complete occurrence links."
+  ],
+  "validation": {
+    "focused_command": "pytest -n 0 -q tests/domains/health_appropriations/test_dimension_mapping.py tests/domains/health_appropriations/test_budget_adapter.py tests/domains/health_appropriations/test_context_dimensions.py tests/domains/health_appropriations/test_cpi_adapter.py tests/domains/health_appropriations/test_gdp_adapter.py tests/domains/health_appropriations/test_qes_adapter.py tests/domains/health_appropriations/test_population_annual_adapter.py tests/domains/health_appropriations/test_moh_indicator_adapter.py tests/domains/health_appropriations/test_adapter_protocol.py tests/domains/health_appropriations/test_adapter_dispatch.py",
+    "focused_tests_passed": 124,
+    "ruff": "passed",
+    "basedpyright": "passed",
+    "required_full_harness": "./scripts/validate.sh",
+    "required_full_harness_status": "passed",
+    "full_harness_result": "8430 passed, 14 skipped, 18 warnings, 97.02% branch-aware coverage; 81 schemas/71 representative documents; parity 9/9; mutation, dependency, license, secret and SBOM gates passed",
+    "post_harness_assurance_tooling_checks": "Conductor validation (93 tracks), Ruff format/lint, basedpyright and the two focused stage-selection contracts passed"
+  },
+  "limitations": [
+    "No production mapping target is supported by current retained evidence.",
+    "Economic classification is not present in the reviewed Budget profile.",
+    "Other source-family projections, mapping adjudication/confidence, integrated drift, Gold and federation remain open.",
+    "Currency, rights, denominator, price-base, comparability and period-join decisions are not inferred."
+  ]
+}

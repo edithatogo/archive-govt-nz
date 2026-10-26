@@ -1,0 +1,90 @@
+{
+  "baseline_canonical_sha256": "097718bd6cc660fc7760a0e8167e2c3e068ae5a2ca8315c6cdb923ee3b8ede53",
+  "cohort_changed": false,
+  "current_canonical_sha256": "097718bd6cc660fc7760a0e8167e2c3e068ae5a2ca8315c6cdb923ee3b8ede53",
+  "normalization_approval": "not_granted",
+  "schema_version": "archive-govt-nz.health-source-text-layout-drift/v1",
+  "sources": [
+    {
+      "dispatch": {
+        "baseline_receipt_sha256": "6060a56f645e7f97e911ed6ce157f4a35f13a73f681bcac7b19be5ebb21d0e8b",
+        "changes": [],
+        "current_receipt_sha256": "6060a56f645e7f97e911ed6ce157f4a35f13a73f681bcac7b19be5ebb21d0e8b",
+        "normalization_approval": "not_granted",
+        "ordered_output_identical": true,
+        "schema_version": "archive-govt-nz.health-schema-layout-drift/v1",
+        "source_changed": false,
+        "status": "matching"
+      },
+      "source_id": "moh_vote_health-008",
+      "status": "matching",
+      "structure": {
+        "changes": [],
+        "normalization_approval": "not_granted",
+        "schema_version": "archive-govt-nz.health-schema-layout-drift/v1",
+        "status": "matching"
+      }
+    },
+    {
+      "dispatch": {
+        "baseline_receipt_sha256": "7c3e1f9a94ef6db1812f49bd93005b95e3fdc04b0ebed0fddb73fa305e8c4a9e",
+        "changes": [],
+        "current_receipt_sha256": "7c3e1f9a94ef6db1812f49bd93005b95e3fdc04b0ebed0fddb73fa305e8c4a9e",
+        "normalization_approval": "not_granted",
+        "ordered_output_identical": true,
+        "schema_version": "archive-govt-nz.health-schema-layout-drift/v1",
+        "source_changed": false,
+        "status": "matching"
+      },
+      "source_id": "moh_vote_health-009",
+      "status": "matching",
+      "structure": {
+        "changes": [],
+        "normalization_approval": "not_granted",
+        "schema_version": "archive-govt-nz.health-schema-layout-drift/v1",
+        "status": "matching"
+      }
+    },
+    {
+      "dispatch": {
+        "baseline_receipt_sha256": "67fdbc29552f9098381add341644534430d2a52f00428d6890ae6db3411f84d7",
+        "changes": [],
+        "current_receipt_sha256": "67fdbc29552f9098381add341644534430d2a52f00428d6890ae6db3411f84d7",
+        "normalization_approval": "not_granted",
+        "ordered_output_identical": true,
+        "schema_version": "archive-govt-nz.health-schema-layout-drift/v1",
+        "source_changed": false,
+        "status": "matching"
+      },
+      "source_id": "pharmac_cpb-010",
+      "status": "matching",
+      "structure": {
+        "changes": [],
+        "normalization_approval": "not_granted",
+        "schema_version": "archive-govt-nz.health-schema-layout-drift/v1",
+        "status": "matching"
+      }
+    },
+    {
+      "dispatch": {
+        "baseline_receipt_sha256": "305fa035bfc123abe265552aeb25d040c03da5414b52d39b813f10b478d4ece3",
+        "changes": [],
+        "current_receipt_sha256": "305fa035bfc123abe265552aeb25d040c03da5414b52d39b813f10b478d4ece3",
+        "normalization_approval": "not_granted",
+        "ordered_output_identical": true,
+        "schema_version": "archive-govt-nz.health-schema-layout-drift/v1",
+        "source_changed": false,
+        "status": "matching"
+      },
+      "source_id": "stats_nz_cpi-053a0705526fac8d",
+      "status": "matching",
+      "structure": {
+        "changes": [],
+        "normalization_approval": "not_granted",
+        "schema_version": "archive-govt-nz.health-schema-layout-drift/v1",
+        "status": "matching"
+      }
+    }
+  ],
+  "status": "matching"
+}
