@@ -415,13 +415,17 @@ integrated parent head.
   accounting and source lineage through the same hash-bound dispatcher;
   CPI/population/vintage boundaries remain explicit. Four context adapters
   additionally emit unresolved literal dimension assertions and source-row
-  links. Common dispatch coverage for other source-operation profiles,
-  Pharmac CPB HTML is now supported through its exact-profile adapter;
-  the reviewed 2003/04 Vote Health composite PDF profile is now registered;
-  the pinned 2016/17 Estimates overview now also dispatches through its
-  source-specific parser with all-page dispositions and field lineage. Pinned donor SQLite dispatch was delivered in PR #711; the five literal
-  bundles now have native/full qualification. Other source-specific PDF and
-  historical workbook coverage, mappings and integrated drift remain open. See
+  links. Common dispatch coverage for source-operation profiles now also
+  includes the exact Pharmac CPB HTML adapter and the two profiles below;
+  two exact Ministry HAIR2024 figure CSV profiles (`fig27/v1` and `fig28/v1`)
+  now dispatch through hash-pinned adapters, preserving source labels, numeric
+  tokens, row lineage, unknown period dates/units/price bases/denominators and
+  `not_evaluated` rights. Their fixture contracts reject lookalike hashes,
+  layout drift and ambiguous matches; exact captured inputs produced identical
+  repeat dispatch receipts and 40 facts / 120 lineage rows per profile. See
+  `phase3-moh-indicator-common-dispatch-20261025.json`. Other source-specific
+  PDF and historical workbook coverage, broader source-operation profiles,
+  mappings and integrated drift remain open. See
   `adapter-dispatch.validation.json`, `budget-adapter.validation.json`, and
   `budget-revenue-adapter.validation.json` and
   `context-adapters.validation.json`. [M-05, M-07; AC-03, AC-05]

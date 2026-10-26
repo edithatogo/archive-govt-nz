@@ -10019,3 +10019,29 @@ dependency, licence, secret and SBOM gates passed (118 SBOM components). The
 CAS benchmark measured 524.09 MB/s against a 25 MB/s minimum. Focused recovery,
 projection, claim-drift and manifest-binding tests passed (68 tests). This
 reconciles local evidence only; the Health Appropriations track remains open.
+
+## 2026-10-25 — Phase 3 HAIR2024 common-dispatch slice
+
+Registered exact common Bronze dispatch for the retained HAIR2024 fig27/v1 and
+fig28/v1 CSV profiles. The adapters bind locator, source vintage, profile and
+captured SHA-256; bounded parsing rejects an unpinned lookalike, changed header
+and ambiguous probe result to preserved-only. Real retained sources in the
+PortableSSD archive matched the pinned census digests. Repeated dispatches for
+each profile produced identical selection receipts and outputs (40 facts and
+120 lineage rows per profile), with unchanged source bytes. Source numeric
+tokens and labels are retained; period dates, units, price bases, denominators
+and rights remain unknown/not evaluated. Evidence is in
+`phase3-moh-indicator-common-dispatch-20261025.json`.
+
+Focused adapter, registry and dispatch checks passed (40 tests); Ruff and
+basedpyright passed with no findings. The required validation harness passed
+lock, Conductor state (93 tracks, zero errors), formatting, lint and typing.
+Its 8,440-item pytest run reached 98% and recorded one failure in the existing
+`test_metadata_package_repeat_readback_and_forged_rights_fail_closed` test.
+The cached failure-only rerun passed (1 test). The full harness did not reach
+its final gates: the shared data volume fell to 200 MiB free while another
+repository's test process was active, and the run was interrupted before a
+complete result was captured. Do not treat the full harness as passed. This is
+one bounded Phase 3.2 adapter slice; historical workbook/PDF coverage, other
+common source-operation profiles, dimension mappings and integrated
+per-adapter drift remain open.
