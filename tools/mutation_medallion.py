@@ -15,6 +15,30 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 
 MUTANTS = {
+    "parliament_public_visibility": (
+        "src/archive_govt_nz/parliament/publication.py",
+        "if info.private or info.gated or not info.sha:",
+        "if info.gated or not info.sha:",
+        "tests/parliament/test_publication.py",
+    ),
+    "parliament_anonymous_download": (
+        "src/archive_govt_nz/parliament/publication.py",
+        "token=False,",
+        "token=True,",
+        "tests/parliament/test_publication.py",
+    ),
+    "parliament_remote_fixity": (
+        "src/archive_govt_nz/parliament/publication.py",
+        "if actual != expected:",
+        "if False:",
+        "tests/parliament/test_publication.py",
+    ),
+    "parliament_robots_policy": (
+        "src/archive_govt_nz/parliament/pipeline.py",
+        "if not parser.can_fetch(USER_AGENT, url):",
+        "if False:",
+        "tests/parliament/test_recovery.py",
+    ),
     "manifest_fixity": (
         "src/archive_govt_nz/bronze/manifest.py",
         "sha256_manifest = hashlib.sha256(serialized).hexdigest()",

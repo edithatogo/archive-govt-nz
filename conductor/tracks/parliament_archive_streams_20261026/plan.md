@@ -60,3 +60,9 @@ Scope control: phases are sequential acceptance milestones. Runtime streams beco
 - [ ] Natural scheduled execution and periodic historical/recent reconciliation.
 
 Original phase checkboxes remain acceptance milestones: P1/P3 are partial because submissions/advice lack source eligibility and a complete mixed business-item pilot. P4 needs natural schedule proof; P5 collections are not qualified through a denied legacy host. Do not archive this active parent or close its phase issues merely because the report implementation is delivered.
+
+## Phase: Review fixes
+
+- [x] Task: Apply provenance, source-contract, anonymous-publication and unknown-outcome recovery fixes f18c3ee7.
+- [x] Task: Add isolated mutation guards for public visibility, anonymous download, remote fixity and robots policy; all four killed.
+- [~] Task: Complete remaining supply-chain gates and publish focused implementation PR; retain unresolved external gates.
