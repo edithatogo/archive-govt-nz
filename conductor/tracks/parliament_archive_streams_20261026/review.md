@@ -9,8 +9,8 @@ The bounded public-report lane has manual remote proof; broader submission/advic
 - [ ] **Plan Compliance**: Partial — report discovery/capture/publication implemented; P1/P3 mixed-source qualification, P4 natural schedule/reconciliation and P5 expansion remain open.
 - [x] **Style Compliance**: Pass — Ruff format/lint; whole-project type gate passed after correcting optional schema-version lookup.
 - [x] **New Tests**: Yes — 74 synthetic contracts for source drift, integrity, public visibility, immutable provenance, bounded capture and independent recovery.
-- [ ] **Test Coverage**: Partial — focused contracts pass; full suite aggregate coverage 97%; repository mutation stages passed; supply-chain stages pending. Four added Parliament policy mutants killed; no assertion of 100% policy-critical coverage.
-- [ ] **Test Results**: Passed tests — 8,423 passed, 14 capability skips; full remaining harness running. Focused suite 74 passed, strengthened provenance regression passed separately. Native report and metadata-only batches anonymously verified.
+- [ ] **Test Coverage**: Partial — focused contracts pass; full suite aggregate coverage 97%; repository mutation stages passed; all supply-chain stages passed after exact synthetic-fixture correction. Four added Parliament policy mutants killed; no assertion of 100% policy-critical coverage.
+- [x] **Test Results**: Passed tests — 8,423 passed, 14 capability skips; all remaining stages passed; secret scan resumed after exact synthetic-fixture correction. Focused suite 74 passed, strengthened provenance regression passed separately. Native report and metadata-only batches anonymously verified.
 
 ## Findings
 

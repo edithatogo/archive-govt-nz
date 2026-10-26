@@ -41,7 +41,8 @@ def test_schema_and_malformed_decisions() -> None:
             validate_decisions(value)
     for evidence, basis in [
         ("https://www.parliament.nz/Copyright", " "),
-        ("https://user:secret@example.test/", "basis"),
+        # Fictional negative fixture verifies credentials are rejected.
+        ("https://user:secret@example.test/", "basis"),  # pragma: allowlist secret
         ("https://example.test/?token=secret", "basis"),
         ("https://example.test/#secret", "basis"),
     ]:

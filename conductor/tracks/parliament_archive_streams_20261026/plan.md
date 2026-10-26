@@ -65,4 +65,4 @@ Original phase checkboxes remain acceptance milestones: P1/P3 are partial becaus
 
 - [x] Task: Apply provenance, source-contract, anonymous-publication and unknown-outcome recovery fixes f18c3ee7.
 - [x] Task: Add isolated mutation guards for public visibility, anonymous download, remote fixity and robots policy; all four killed.
-- [~] Task: Complete remaining supply-chain gates and publish focused implementation PR; retain unresolved external gates.
+- [~] Task: Publish focused implementation PR after passing supply-chain gates; retain unresolved external gates.
