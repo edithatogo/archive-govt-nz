@@ -10,9 +10,21 @@ This repository is a solo-maintainer codebase.
   tokens, personal data, or restricted source artefacts.
 
 ## Required command contract
-- Run the repository validation harness before opening a pull request:
+- During implementation, run only the affected pytest file/node with
+  `./scripts/test-focused.sh <path-or-node>` and the affected non-test gates.
+  Keep pytest's last-failed cache enabled; after a failure, use
+  `./scripts/test-focused.sh --failed` only when its cache names the failures.
+- Run the complete repository validation harness once for a reviewable PR
+  candidate:
   - `./scripts/validate.sh` (Linux/macOS)
   - `./scripts/validate.ps1` (Windows PowerShell)
+- If a single harness stage fails, preserve its output and rerun only that
+  named stage with `./scripts/validate-stage.sh <stage>`. After a fix, rerun
+  the failed stage and every directly affected gate. Do not restart the full
+  harness for an unrelated storage/reporting failure when the tree and gate
+  inputs are unchanged. Repeat the complete harness when source, tests,
+  dependencies, configuration, runtime, or generated evidence affecting
+  multiple gates changes. Hosted CI remains the full PR assurance gate.
 - The harness runs `tools/check.py`, which enforces lock, format, lint,
   typing, tests, schemas, mutation gates, and supply-chain checks.
 

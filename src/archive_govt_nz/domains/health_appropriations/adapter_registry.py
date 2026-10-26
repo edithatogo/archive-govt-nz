@@ -44,6 +44,9 @@ from archive_govt_nz.domains.health_appropriations.historical_source_adapter imp
 from archive_govt_nz.domains.health_appropriations.literal_source_adapter import (
     literal_source_registration,
 )
+from archive_govt_nz.domains.health_appropriations.moh_indicator_adapter import (
+    registration as moh_indicator_registration,
+)
 from archive_govt_nz.domains.health_appropriations.pharmac_adapter import (
     pharmac_budget_registration,
 )
@@ -93,6 +96,7 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
     donor_sqlite: DonorSQLiteContext | None = None,
     literal_workbooks: tuple[AdapterContext, ...] = (),
     historical_workbook: AdapterContext | None = None,
+    moh_indicator_profiles: tuple[tuple[str, AdapterContext], ...] = (),
 ) -> tuple[AdapterRegistration, ...]:
     """Return deterministic, probe-bound registrations for supplied families.
 
@@ -121,6 +125,15 @@ def context_adapter_registrations(  # noqa: PLR0913 - each family has explicit c
             observed_at=gdp.observed_at,
         ),
     ]
+    registrations.extend(
+        moh_indicator_registration(
+            profile=profile,
+            source_locator=context.source_locator,
+            source_vintage=context.source_vintage,
+            observed_at=context.observed_at,
+        )
+        for profile, context in moh_indicator_profiles
+    )
     registrations.extend(
         () if donor_sqlite is None else (donor_sqlite_registration(donor_sqlite),)
     )

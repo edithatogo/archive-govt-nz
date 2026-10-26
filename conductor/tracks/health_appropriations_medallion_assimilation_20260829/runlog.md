@@ -10019,3 +10019,51 @@ dependency, licence, secret and SBOM gates passed (118 SBOM components). The
 CAS benchmark measured 524.09 MB/s against a 25 MB/s minimum. Focused recovery,
 projection, claim-drift and manifest-binding tests passed (68 tests). This
 reconciles local evidence only; the Health Appropriations track remains open.
+
+## 2026-10-25 — Phase 3 HAIR2024 common-dispatch slice
+
+Registered exact common Bronze dispatch for the retained HAIR2024 fig27/v1 and
+fig28/v1 CSV profiles. The adapters bind locator, source vintage, profile and
+captured SHA-256; bounded parsing rejects an unpinned lookalike, changed header
+and ambiguous probe result to preserved-only. Real retained sources in the
+PortableSSD archive matched the pinned census digests. Repeated dispatches for
+each profile produced identical selection receipts and outputs (40 facts and
+120 lineage rows per profile), with unchanged source bytes. Source numeric
+tokens and labels are retained; period dates, units, price bases, denominators
+and rights remain unknown/not evaluated. Evidence is in
+`phase3-moh-indicator-common-dispatch-20261025.json`.
+
+Focused adapter, registry and dispatch checks passed (40 tests); Ruff and
+basedpyright passed with no findings. The required validation harness passed
+lock, Conductor state (93 tracks, zero errors), formatting, lint and typing.
+Its 8,440-item pytest run reached 98% and recorded one failure in the existing
+`test_metadata_package_repeat_readback_and_forged_rights_fail_closed` test.
+The cached failure-only rerun passed (1 test). The full harness did not reach
+its final gates: the shared data volume fell to 200 MiB free while another
+repository's test process was active, and the run was interrupted before a
+complete result was captured. Do not treat the full harness as passed. This is
+one bounded Phase 3.2 adapter slice; historical workbook/PDF coverage, other
+common source-operation profiles, dimension mappings and integrated
+per-adapter drift remain open.
+
+## 2026-10-26 — Phase 3.2 dimension contracts and validation economy
+
+Added reasoned, hash-and-coordinate source references to unresolved dimension
+assertions; resolved mappings now require evidence and inclusive effective
+bounds. Reviewed Budget, context and HAIR2024 literals; no production target
+mapping was supported by current evidence. The dimension audit records source
+coverage and open decisions. Focused dimension/adapter coverage passed 124
+tests; Ruff and basedpyright passed.
+
+The complete `./scripts/validate.sh` run passed on CPython 3.15.1: 8,430 passed,
+14 skipped, 18 warnings, 97.02% coverage; 81 schemas and 71 representative
+documents passed; parity passed 9/9; all configured mutation, dependency,
+licence, secrets and SBOM gates passed. Two earlier full attempts ended on
+unrelated volume exhaustion / PortableSSD I/O errors; the successful run used
+local `/tmp` for pytest temporary files. A later small assurance-runner change
+added `--stage` selection and `scripts/validate-stage.sh` for exact failed-gate
+reruns while leaving the complete wrapper unchanged. Its Conductor, format,
+lint, types and two focused selector tests passed. This optimization avoids
+repeating completed gates after an unchanged-tree environmental failure; the
+full PR/CI gate remains intact. Phase 3.2 mapping adjudication and other source
+families remain open.

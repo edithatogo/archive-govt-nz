@@ -142,8 +142,16 @@ def test_dispatch_emits_budget_facts_row_losses_and_cell_lineage() -> None:
         row.target is None
         and row.method is None
         and row.evidence == ()
+        and row.unresolved_reason
+        and row.source_references
         and row.vintage == "Budget-2025"
         for row in result.output.dimensions
+    )
+    source_digest = str(result.output.records[0]["source_object_sha256"])
+    assert all(
+        reference.startswith("sha256:" + source_digest + "#")
+        for row in result.output.dimensions
+        for reference in row.source_references
     )
     period = next(
         row.dimension

@@ -1,0 +1,29 @@
+{
+  "profiles": [
+    {
+      "adapter_id": "moh-hair2024-fig27-v1",
+      "lineage_count": 120,
+      "profile": "fig27/v1",
+      "record_count": 40,
+      "repeat_identical": true,
+      "selection_receipt_sha256": "cf4b8adf1276350398934b266aa9a0414b1924a900f9ce820b4bea0dc14e6c99",
+      "source_file": "moh_vote_health-008.csv",
+      "source_sha256": "c1e7758667b8255e049603de8325d732f34a76e6099e0fe4de6553a36d48e9fc"
+    },
+    {
+      "adapter_id": "moh-hair2024-fig28-v1",
+      "lineage_count": 120,
+      "profile": "fig28/v1",
+      "record_count": 40,
+      "repeat_identical": true,
+      "selection_receipt_sha256": "ef87011738a9f775e513177dccd2b9cab4c919eebb68133475161ecb470bceb5",
+      "source_file": "moh_vote_health-009.csv",
+      "source_sha256": "7b9a51643550e3d890f4f341f27346d3466708fe924702ade4a731d1bb6266e4"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-phase3-moh-common-dispatch/v1",
+  "semantic_or_rights_approval": false,
+  "source_bytes_preserved": true,
+  "source_census": "source-census.json",
+  "source_census_sha256": "aa6f9d55ed8f416c8ea890add9ecc5363cbe4c0333f7efaa02db9fd6d44df272"
+}

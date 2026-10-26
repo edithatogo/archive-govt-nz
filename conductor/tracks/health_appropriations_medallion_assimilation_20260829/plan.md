@@ -415,13 +415,17 @@ integrated parent head.
   accounting and source lineage through the same hash-bound dispatcher;
   CPI/population/vintage boundaries remain explicit. Four context adapters
   additionally emit unresolved literal dimension assertions and source-row
-  links. Common dispatch coverage for other source-operation profiles,
-  Pharmac CPB HTML is now supported through its exact-profile adapter;
-  the reviewed 2003/04 Vote Health composite PDF profile is now registered;
-  the pinned 2016/17 Estimates overview now also dispatches through its
-  source-specific parser with all-page dispositions and field lineage. Pinned donor SQLite dispatch was delivered in PR #711; the five literal
-  bundles now have native/full qualification. Other source-specific PDF and
-  historical workbook coverage, mappings and integrated drift remain open. See
+  links. Common dispatch coverage for source-operation profiles now also
+  includes the exact Pharmac CPB HTML adapter and the two profiles below;
+  two exact Ministry HAIR2024 figure CSV profiles (`fig27/v1` and `fig28/v1`)
+  now dispatch through hash-pinned adapters, preserving source labels, numeric
+  tokens, row lineage, unknown period dates/units/price bases/denominators and
+  `not_evaluated` rights. Their fixture contracts reject lookalike hashes,
+  layout drift and ambiguous matches; exact captured inputs produced identical
+  repeat dispatch receipts and 40 facts / 120 lineage rows per profile. See
+  `phase3-moh-indicator-common-dispatch-20261025.json`. Other source-specific
+  PDF and historical workbook coverage, broader source-operation profiles,
+  mappings and integrated drift remain open. See
   `adapter-dispatch.validation.json`, `budget-adapter.validation.json`, and
   `budget-revenue-adapter.validation.json` and
   `context-adapters.validation.json`. [M-05, M-07; AC-03, AC-05]
@@ -435,10 +439,16 @@ integrated parent head.
   appropriation, department, portfolio, amount type, functional/economic
   classification, measure, unit and period. The Budget expenditure adapter now
   emits source-literal assertions and field links for its observed labels,
-  period token, amount header and adapter measure rule; all mapping targets stay
-  unresolved. Economic classification, evidence-backed crosswalks, confidence
-  and effective periods remain open. See
-  `budget-source-dimensions.validation.json`. [M-06; AC-05, AC-11]
+  period token, amount header and adapter measure rule. Context and HAIR2024
+  adapters also retain exact measure/period literals. Unresolved assertions
+  now require a reason and captured-object hash/coordinate reference; resolved
+  targets require evidence digests and explicit inclusive effective dates.
+  Source-census review supports no authoritative crosswalk, so no production
+  mapping target was assigned. Economic classification is absent from the
+  reviewed Budget profile. Currency, period bounds, confidence/adjudication,
+  other source-family projections and integrated mapping drift remain open.
+  See `budget-source-dimensions.validation.json` and
+  `dimension-mapping-audit-20261026.json`. [M-06; AC-05, AC-11]
 
 ### 3.3 Determinism and drift hardening
 
