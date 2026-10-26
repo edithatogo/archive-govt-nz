@@ -27,7 +27,7 @@ def test_outer_deadline_retains_output_and_terminates_child(tmp_path: Path) -> N
             "import time;print('before stall');time.sleep(60)",
         ),
         log,
-        timeout=0.5,
+        timeout=5,
     )
     assert result == 124
     assert "before stall" in log.read_text()

@@ -77,3 +77,5 @@ Public metadata reconciliation is natively verified; the Windows fix preserves e
 No track archive or source-completeness claim is appropriate while the parent source, hosted delivery and schedule gates remain open.
 
 Hosted Linux follow-up: a newly materialized assurance receipt's explanatory status sentence was a candidate-scan false positive. Reproduced the exact finding locally on the integrated tree, reused the existing benign receipt pass-status convention, and retained scope separately. The affected stage and strict SBOM validation now pass; no detector policy or exemption changed. Hosted full acceptance is still required at the corrected head.
+
+Supervisor refinement: child-log mirroring could itself block deadline enforcement on a stalled console. Removed the mirroring entirely: the supervisor waits with an OS-backed timeout, and complete child output remains in the independently saved artifact. The real-child deadline test allows five seconds of native startup margin without retries.
