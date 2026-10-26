@@ -80,6 +80,15 @@ def test_ci_assurance_timeout_covers_windows_full_harness() -> None:
     assert "tools/check.py" in required["Run locked assurance gate"]["run"]
     gate = required["Run locked assurance gate"]
     assert gate["timeout-minutes"] == 55
+    assert "!= 'windows-latest'" in gate["if"]
+    native = required["Run native Windows locked assurance gate"]
+    assert "== 'windows-latest'" in native["if"]
+    assert native["shell"] == "pwsh"
+    assert native["timeout-minutes"] == 55
+    assert "tools/check.py" in native["run"]
+    assert "Start-Transcript -Path build/assurance.log" in native["run"]
+    assert "exit $gateExit" in native["run"]
+    assert "$gateExit = $LASTEXITCODE" in native["run"]
     assert "set -o pipefail" in gate["run"]
     assert "2>&1 | tee build/assurance.log" in gate["run"]
     diagnostics = required["Preserve Windows assurance diagnostics"]

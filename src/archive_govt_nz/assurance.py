@@ -5,6 +5,7 @@ import signal
 import subprocess
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
+from pathlib import PureWindowsPath
 
 COMMAND_TIMEOUT_SECONDS = 1200
 
@@ -243,7 +244,28 @@ def run_command(command: tuple[str, ...]) -> int:
         if os.name == "posix":
             os.killpg(process.pid, signal.SIGKILL)
         else:
-            process.kill()
+            # Killing uv alone leaves pytest/workers holding runner output pipes.
+            # Terminate the owned tree before reaping its launcher.
+            try:
+                subprocess.run(
+                    (
+                        str(
+                            PureWindowsPath(os.environ.get("SYSTEMROOT", r"C:\Windows"))
+                            / "System32"
+                            / "taskkill.exe"
+                        ),
+                        "/PID",
+                        str(process.pid),
+                        "/T",
+                        "/F",
+                    ),
+                    check=False,
+                    timeout=30,
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.STDOUT,
+                )
+            finally:
+                process.kill()
         process.wait()
         return 124
 

@@ -42,6 +42,7 @@ jobs:
         if: matrix.os == 'windows-latest'
         run: uv run --locked pytest tests/domains/health_appropriations/test_operation_gold_output.py -q --no-cov
       - name: Run locked assurance gate
+        if: matrix.os != 'windows-latest'
         timeout-minutes: 55
         shell: bash
         run: |
@@ -60,6 +61,24 @@ jobs:
             --pytest-workers "$pytest_workers" \
             --pytest-distribution "$pytest_distribution" \
             "${pytest_reporting[@]}" 2>&1 | tee build/assurance.log
+      - name: Run native Windows locked assurance gate
+        if: matrix.os == 'windows-latest'
+        timeout-minutes: 55
+        shell: pwsh
+        env:
+          PYTHONUNBUFFERED: '1'
+        run: |
+          $ErrorActionPreference = 'Stop'
+          New-Item -ItemType Directory -Force -Path build | Out-Null
+          Start-Transcript -Path build/assurance.log -Force
+          $gateExit = 1
+          try {
+            uv run --locked python tools/check.py --pytest-workers auto --pytest-distribution worksteal --pytest-diagnostics
+            $gateExit = $LASTEXITCODE
+          } finally {
+            Stop-Transcript
+          }
+          exit $gateExit
       - name: Preserve Windows assurance diagnostics
         if: always() && matrix.os == 'windows-latest'
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9

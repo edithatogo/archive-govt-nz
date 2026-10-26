@@ -49,3 +49,7 @@ Final P6 acceptance: all14 configured tabular datasets and41 first-row probes pa
 ## Windows hosted-check follow-up
 
 Repeated cancellation was diagnosed through native annotation as an aggregate30-minute job timeout, not a reported failing test. A single targeted rerun had the same outcome; no further blind rerun. Reviewed conditional Windows60-minute allowance, unchanged required commands and1200-second per-command gates,55-minute step ceiling, pipefail exit propagation and always-upload diagnostics. Actionlint and21 focused workflow/harness tests passed. Hosted outcome remains pending; no archive scaling or merge accepted.
+
+## Native Windows execution remediation review
+
+The60-minute run also timed out without Windows artifacts, so the earlier budget change was insufficient. Reviewed the owned-PID-only taskkill tree cleanup (absolute system executable, bounded30-second cleanup, finally kill parent), native PowerShell transcript/finalization and exact exit propagation. No gate removed, no allowance increased, no repeated blind retry. The precise stalled stage and Windows acceptance remain unknown.21 focused tests, Actionlint, PowerShell parser and strict types pass; hosted verification required before acquisition/merge.
