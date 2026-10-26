@@ -17,7 +17,9 @@ jobs:
   quality:
     name: Assurance (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 30
+    # Windows exceeded the aggregate 30-minute job cap twice; each gate
+    # retains its independent 20-minute process bound.
+    timeout-minutes: ${{ matrix.os == 'windows-latest' && 60 || 30 }}
     env:
       COVERAGE_CORE: ctrace
       PYTHON_JIT: "0"
@@ -40,8 +42,11 @@ jobs:
         if: matrix.os == 'windows-latest'
         run: uv run --locked pytest tests/domains/health_appropriations/test_operation_gold_output.py -q --no-cov
       - name: Run locked assurance gate
+        timeout-minutes: 55
         shell: bash
         run: |
+          set -o pipefail
+          mkdir -p build
           pytest_workers=auto
           pytest_distribution=loadscope
           pytest_reporting=()
@@ -54,7 +59,14 @@ jobs:
           uv run --locked python tools/check.py \
             --pytest-workers "$pytest_workers" \
             --pytest-distribution "$pytest_distribution" \
-            "${pytest_reporting[@]}"
+            "${pytest_reporting[@]}" 2>&1 | tee build/assurance.log
+      - name: Preserve Windows assurance diagnostics
+        if: always() && matrix.os == 'windows-latest'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: windows-assurance-${{ github.sha }}-${{ github.run_attempt }}
+          path: build/assurance.log
+          if-no-files-found: error
       - name: Preserve completed Windows pytest report
         if: always() && matrix.os == 'windows-latest' && hashFiles('build/pytest-results.xml') != ''
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9

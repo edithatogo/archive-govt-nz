@@ -1,0 +1,42 @@
+{
+  "observed_at": "2026-10-26T17:31:30.323918+00:00",
+  "run_id": 40337417835,
+  "head_revision": "fea65d448b11a163b64abcd760658d29a63ff5e3",
+  "attempts": [
+    {
+      "attempt": 1,
+      "windows_job_id": 121622613797,
+      "outcome": "cancelled",
+      "elapsed_minutes": 35
+    },
+    {
+      "attempt": 2,
+      "windows_job_id": 121666954999,
+      "outcome": "cancelled",
+      "elapsed_minutes": 35,
+      "annotation": "The job has exceeded the maximum execution time of 30m0s"
+    }
+  ],
+  "linux": "success",
+  "macos": "success",
+  "codeql": "success",
+  "workflow_lint": "success",
+  "job_logs": "BlobNotFound via job-log API on cancelled Windows attempt",
+  "windows_test_artifact": "absent",
+  "remediation": {
+    "windows_job_minutes": 60,
+    "other_platform_job_minutes": 30,
+    "gate_step_minutes": 55,
+    "per_command_seconds_unchanged": 1200,
+    "required_stages_unchanged": true,
+    "diagnostics": "pipefail-preserving tee plus always-upload Windows assurance log"
+  },
+  "local_validation": {
+    "python": "3.15.1",
+    "actionlint": "passed",
+    "focused_workflow_and_assurance_tests": 21,
+    "ruff": "passed"
+  },
+  "native_acquisition_performed": false,
+  "hosted_acceptance": "pending_new_head"
+}

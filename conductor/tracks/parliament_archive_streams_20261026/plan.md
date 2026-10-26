@@ -79,3 +79,9 @@ Issue: https://github.com/edithatogo/archive-govt-nz/issues/789
 - [x] Accept all14 hosted viewers after41 actual config/row probes; historical and RNZ faults repaired and isolated Python3.15 readers verified.
 
 This completes metadata maintenance for the inspected estate, not missing source acquisitions, gates, rights clearances or full historical archival.
+
+## Hosted assurance follow-up
+
+- [x] Diagnose repeated Windows cancellation using native annotations; retain bounded evidence.
+- [x] Apply and review bounded aggregate timeout/diagnostic remediation; Actionlint and21 focused tests pass.
+- [ ] Verify Windows and all required hosted checks at the remediation head before merge or further archive acquisition.
