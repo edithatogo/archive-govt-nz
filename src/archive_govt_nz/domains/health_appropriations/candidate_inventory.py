@@ -81,7 +81,8 @@ def _relative(value: str) -> PurePosixPath:
     for index, part in enumerate(path.parts):
         # Original destinations allow a 128-character ID plus its bounded suffix.
         pattern = (
-            r"[A-Za-z0-9][A-Za-z0-9_-]{0,127}(?:\.[a-z0-9]{1,10})?"
+            r"(?:[A-Za-z0-9][A-Za-z0-9_.-]{0,127}|"
+            r"[A-Za-z0-9][A-Za-z0-9_-]{0,127}\.[a-z0-9]{1,10})"
             if path.parent == PurePosixPath("original") and index == 1
             else r"[A-Za-z0-9][A-Za-z0-9_.-]{0,127}"
         )
