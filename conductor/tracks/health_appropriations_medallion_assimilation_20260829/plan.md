@@ -1233,6 +1233,16 @@ deliberately exercise version handling.
 
 ### 6.2 Build marts, quality products and reports
 
+- [x] Add a fixed, bounded Gold query over independently pinned overview
+  Silver packages, re-extracting exact Bronze before DuckDB reads. Preserve
+  every source field, record identity, Decimal value and qualifier; verify
+  row-for-row reconciliation and repeat results for the five modern Estimates
+  editions. Exclude derived and cross-vintage calculations. This is a read-only
+  query slice, not a new canonical mart or completion of Phase 6. See
+  `modern-vote-health-gold-query-recovery-20261026.json` and
+  `overview-gold-query-20261026.md`. [M-10, M-13, M-16,
+  M-18; AC-08, AC-11, AC-12, AC-16]
+
 - [ ] Build versioned Parquet dimensions/facts and DuckDB views for the
   approved analytical measures, retaining input record IDs and formula
   metadata. [M-10, M-13; AC-08, AC-10]
