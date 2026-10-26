@@ -1,12 +1,12 @@
 # Implementation plan
 
-Approved plan; implementation not started. Parent: [#778](https://github.com/edithatogo/archive-govt-nz/issues/778). Requirements: M1–M10, S1–S3, C1; exclusions W1–W3.
+Implementation authorized on 26 October 2026; qualification in progress. Parent: [#778](https://github.com/edithatogo/archive-govt-nz/issues/778). Requirements: M1–M10, S1–S3, C1; exclusions W1–W3.
 
 ## P1: Source, rights and destination qualification
 
 Issue: https://github.com/edithatogo/archive-govt-nz/issues/779
 
-- [ ] Task: Characterize legacy and new Parliament hosts, source IDs, filters, pagination, attachment links and source access rules using bounded read-only probes.
+- [~] Task: Characterize legacy and new Parliament hosts, source IDs, filters, pagination, attachment links and source access rules using bounded read-only probes.
 - [ ] Task: Reconcile the evidence and submissions/advice indexes by identity and filter scope; record historical coverage limits.
 - [ ] Task: Record source-specific reuse/privacy handling and the exact existing Hugging Face destination, additive namespace and qualified write route.
 - [ ] Task: Phase verification and evidence checkpoint under ../../workflow.md; use focused tests first, record local/hosted limits, run milestone assurance and recovery checks where applicable.
