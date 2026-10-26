@@ -17,3 +17,5 @@ Implemented report API discovery, durable SQLite/CAS state, original API metadat
 Full suite: 8,423 passed, 14 capability skips, 97% aggregate coverage; schema gate and differential parity passed. Two-hour continuation heartbeat configured; first scheduled execution remains pending and acquisition stays gated on remaining assurance.
 
 The full harness stopped at one fictional basic-auth URL in a negative test. Added an exact synthetic-fixture allowlist comment (no scanner scope reduction); affected regression passed. Initial direct supply-chain reruns lacked executable PATH; reran through the harness-equivalent `uv run --locked` environment. Strict SBOM validation passed for 118 components. Secret-scan rerun passed. All required stages now have passing evidence; original full command stopped at the corrected synthetic fixture.
+
+Implementation PR: https://github.com/edithatogo/archive-govt-nz/pull/787. Hosted CI queued; no merge claimed. Parent remains active.
