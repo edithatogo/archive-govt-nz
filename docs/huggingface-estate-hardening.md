@@ -38,3 +38,11 @@ RNZ's published Parquet manifest metadata is represented in a rebuildable CSV (7
 The public estate registry's existing44 archive entries were reconciled for observed access and viewer state; global/Treasury/Health identities are no longer unclassified. The registry schema, unique identities and canonical references passed, unrelated entries stayed intact, and the committed catalog was anonymously downloaded and hash-verified. Exact receipts are linked above.
 
 Final native acceptance: all14 configured tabular repositories, all41 first-row probes passed. The estate landing collection was additionally verified as public with the authoritative registry and four relevant collection links intact. Its unrelated collection links were preserved. The registry now records final row acceptance.
+
+## Account reconciliation — 27 October 2026
+
+The user extended the audit to the relevant entire account. Fresh native discovery found 93 repositories (83 datasets, four models, six Spaces); 76 datasets have public metadata, including the existing gates. All public datasets are registered. Five additional private dataset identities stay in the private operator inventory and appear publicly only as counts; existing historically listed private identities retain corrected access classifications.
+
+Another 42 cards were verified after metadata-only changes (36 public, six private), and 33 actual first-row probes across 12 additional configured datasets pass. All 14 public collections were read anonymously; nine collection updates were verified, with two private collections preserved. Five public Spaces returned HTTP 200 and referenced valid app files; functional application acceptance, model training/evaluation and source completeness are separate.
+
+The [current public registry report](https://huggingface.co/datasets/edithatogo/dataset-estate-registry/blob/72040c9b4898ff389f795b0ea27fc0650272fd0d/reconciliation-report.md) and [account receipt](https://huggingface.co/datasets/edithatogo/dataset-estate-registry/blob/72040c9b4898ff389f795b0ea27fc0650272fd0d/account-audit-20261027.json) are pinned to the verified publication. No private content, newly discovered private identities, original payload rewrites, DOI changes or access-gate changes were published.

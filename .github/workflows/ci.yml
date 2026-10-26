@@ -68,17 +68,8 @@ jobs:
         env:
           PYTHONUNBUFFERED: '1'
         run: |
-          $ErrorActionPreference = 'Stop'
-          New-Item -ItemType Directory -Force -Path build | Out-Null
-          Start-Transcript -Path build/assurance.log -Force
-          $gateExit = 1
-          try {
-            uv run --locked python tools/check.py --pytest-workers auto --pytest-distribution worksteal --pytest-diagnostics
-            $gateExit = $LASTEXITCODE
-          } finally {
-            Stop-Transcript
-          }
-          exit $gateExit
+          uv run --locked python tools/windows_assurance.py
+          exit $LASTEXITCODE
       - name: Preserve Windows assurance diagnostics
         if: always() && matrix.os == 'windows-latest'
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9

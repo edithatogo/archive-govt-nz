@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-10-26T22:38:11.225090+00:00",
+  "run_id": 40387794896,
+  "head_revision": "9e96cfe42d9a764a660350d59ec1ca5263bbd46b",
+  "job_id": 121800580342,
+  "native_log_download_http": 200,
+  "log_bytes": 2169641,
+  "log_sha256": "cda405ed607bca5d5fde27cddcaa85a56a5cf2c30fa9c061d1c66adf84e9ae4b",
+  "last_observed_progress": "5901/8551; ERROR in oversized robots case after generated node ID exceeding 131000 characters",
+  "last_observed_test_time_utc": "2026-10-26T19:44:44.4328049Z",
+  "job_annotation": "The job has exceeded the maximum execution time of 1h0m0s",
+  "remediation": [
+    "Short explicit parameter IDs preserve the 131073-byte synthetic robots body and fail-closed assertions.",
+    "Independent regular-file output avoids descendant ownership of runner output pipes.",
+    "Outer 2700-second deadline and bounded owned-tree cleanup leave diagnostic upload time; per-stage1200-second gates unchanged."
+  ],
+  "native_acceptance": "pending new head; not yet a verified root-cause resolution",
+  "targeted_verification": "23 workflow/harness/real-process tests and three robots-policy cases passed"
+}

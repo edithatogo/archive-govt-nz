@@ -85,3 +85,14 @@ This completes metadata maintenance for the inspected estate, not missing source
 - [x] Diagnose repeated Windows cancellation using native annotations; retain bounded evidence.
 - [x] Apply and review bounded aggregate timeout/diagnostic remediation; Actionlint and21 focused tests pass.
 - [ ] Verify Windows and all required hosted checks at the remediation head before merge or further archive acquisition.
+
+## Account scope and Windows recovery — 27 October 2026
+
+- [x] Reconcile all public account datasets and aggregate private checks without exposing new private identities; parent-bound native registry publication and five anonymous pinned file hashes verified.
+- [x] Complete remaining account viewers: 12 datasets and 33 config/split first-row probes pass; NHANES transient service-busy responses resolved without repeat writes.
+- [x] Inspect actual Windows job log; shorten pathological oversized-robots parameter IDs and add an independently logged bounded gate runner. Targeted native acceptance remains hosted.
+- [x] Run required local assurance and review the remediation: 8429 tests pass, all mutation and supply-chain stages pass.
+- [~] Obtain all green hosted checks before merge.
+- [ ] Resume one bounded report batch after merge, recover/verify publication first, preserve the maintained dataset card and immutable originals.
+
+Account evidence: `../../../evidence/huggingface-hardening/20261027/`. Windows diagnostic evidence: `../../../evidence/parliament-assurance/20261027/`. Parent source rights, legacy access and natural schedule gates remain active.

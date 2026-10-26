@@ -53,3 +53,25 @@ Repeated cancellation was diagnosed through native annotation as an aggregate30-
 ## Native Windows execution remediation review
 
 The60-minute run also timed out without Windows artifacts, so the earlier budget change was insufficient. Reviewed the owned-PID-only taskkill tree cleanup (absolute system executable, bounded30-second cleanup, finally kill parent), native PowerShell transcript/finalization and exact exit propagation. No gate removed, no allowance increased, no repeated blind retry. The precise stalled stage and Windows acceptance remain unknown.21 focused tests, Actionlint, PowerShell parser and strict types pass; hosted verification required before acquisition/merge.
+
+## Review Report: Account reconciliation and Windows recovery — 27 October 2026
+
+### Summary
+
+Public metadata reconciliation is natively verified; the Windows fix preserves every gate and requires new hosted acceptance before delivery/capture.
+
+### Verification Checks
+
+- [x] **Plan Compliance**: Partial parent; current account scope and bounded diagnostic remediation implemented, external source gates retained.
+- [x] **Style Compliance**: Ruff, selected strict types and Actionlint pass.
+- [x] **New Tests**: Two real-child tests exercise retained output, nonzero exits and native owned-tree timeout cleanup; existing workflow contract updated.
+- [x] **Test Coverage**: Full local suite 8429 passed, 14 capability skips; both snapshots, 83 schemas and 9 parity cases pass. The final cleanup refinement also passes both real-process tests.
+- [x] **Test Results**: Full local harness passes, including every mutation stage, dependency audit, licence inventory, tracked-source secret scan and strict SBOM validation (118 components). Hosted Windows acceptance remains pending.
+
+### Findings and resolution
+
+- The retrieved native Windows log stops at an error for a 131073-character parameter-derived node ID. Short explicit IDs preserve the hostile robots input and all fail-closed assertions. The actual cause remains conditional until hosted acceptance.
+- PowerShell transcript and runner pipes failed to retain usable artifacts after a stall. A regular-file child log and outer 2700-second watchdog now leave margin before the existing 55-minute step / 60-minute Windows job limits; per-stage 1200-second bounds and every required check are retained. Parent cleanup is in finally, and waiting is bounded.
+- The registry distinguishes dataset and Space identities even where names coincide. All 76 public-metadata datasets are registered; five newly discovered private dataset identities are omitted. Updated registry schema, unique identities and canonical links validated; five files anonymously downloaded at 72040c9b4898ff389f795b0ea27fc0650272fd0d and hash-verified. Current 33 additional hosted config/split probes pass; no viewer rows or new private names are included in public Git receipts.
+
+No track archive or source-completeness claim is appropriate while the parent source, hosted delivery and schedule gates remain open.

@@ -133,6 +133,7 @@ def test_retry_skips_verified_partial_segment(tmp_path: Path) -> None:
         ("", 404, "robots_unavailable"),
         ("x" * 131073, 200, "robots_oversize"),
     ],
+    ids=["denied", "unavailable", "oversize"],
 )
 def test_robots_fail_closed(
     tmp_path: Path, robots: str, status: int, error: str

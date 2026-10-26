@@ -1,0 +1,20 @@
+{
+  "observed_at": "2026-10-26T22:44:21.318746+00:00",
+  "command": "./scripts/validate.sh",
+  "python": "3.15.1",
+  "log_sha256": "5b1c74f52f18ff5ef9858f8bc70fe9a1d1f215717a4429bb42eca5ed94750e35",
+  "test_passes": 8429,
+  "capability_skips": 14,
+  "snapshots": "2 passed",
+  "schemas": "83 schemas and 73 representative documents",
+  "parity": "9/9 passed",
+  "mutation_stages": "all passed",
+  "dependency_audit": "passed; no known vulnerabilities",
+  "licences": "passed",
+  "secrets": "passed; tracked staged source included",
+  "sbom": "validated;118 components",
+  "targeted_final_cleanup_tests": "2 passed",
+  "workflow_lint": "Actionlint passed",
+  "strict_types": "passed",
+  "hosted_acceptance": "pending final head"
+}
