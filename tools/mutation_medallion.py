@@ -29,8 +29,8 @@ MUTANTS = {
     ),
     "parliament_public_visibility": (
         "src/archive_govt_nz/parliament/publication.py",
-        "if info.private or info.gated or not info.sha:",
-        "if info.gated or not info.sha:",
+        "if info.private is not False or info.gated is not False or not info.sha:",
+        "if info.gated is not False or not info.sha:",
         "tests/parliament/test_publication.py",
     ),
     "parliament_anonymous_download": (

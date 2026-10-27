@@ -19,6 +19,7 @@ from archive_govt_nz.parliament.contracts import PUBLIC_REPOSITORY
 POINTER = "parliament/control/continuation.json"
 LIMIT = 64 * 1024 * 1024
 MAX_COMMIT_FILES = 100
+METADATA_TIMEOUT = 20.0
 
 
 class HostedError(RuntimeError):
@@ -46,10 +47,14 @@ class NativeTransport:
         """Require a public target and current revision, never create a fallback."""
         try:
             self.pace()
-            info = HfApi(token=False).dataset_info(PUBLIC_REPOSITORY)
+            info = HfApi(token=False).dataset_info(
+                PUBLIC_REPOSITORY,
+                timeout=METADATA_TIMEOUT,
+                expand=["sha", "private", "gated"],
+            )
         except Exception:  # noqa: BLE001 - suppress signed SDK diagnostics
             abort("public_checkpoint_unavailable")
-        if info.private or info.gated or not info.sha:
+        if info.private is not False or info.gated is not False or not info.sha:
             abort("public_target_not_qualified")
         return info.sha
 

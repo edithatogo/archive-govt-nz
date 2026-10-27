@@ -16,7 +16,10 @@ if TYPE_CHECKING:
     from archive_govt_nz.parliament.pipeline import ParliamentArchive
 
 from archive_govt_nz.parliament.contracts import PUBLIC_REPOSITORY, validate_manifest
-from archive_govt_nz.parliament.hosted_transport import assert_publication_authority
+from archive_govt_nz.parliament.hosted_transport import (
+    METADATA_TIMEOUT,
+    assert_publication_authority,
+)
 
 DEFAULT_REPOSITORY = PUBLIC_REPOSITORY
 NAMESPACE = "parliament/batches"
@@ -45,8 +48,10 @@ class NativeHub:
 
     def head(self, repo: str) -> str:
         """Read the existing public target and require its current revision."""
-        info = HfApi(token=False).dataset_info(repo)
-        if info.private or info.gated or not info.sha:
+        info = HfApi(token=False).dataset_info(
+            repo, timeout=METADATA_TIMEOUT, expand=["sha", "private", "gated"]
+        )
+        if info.private is not False or info.gated is not False or not info.sha:
             message = "public_target_not_qualified"
             raise ValueError(message)
         assert_publication_authority(repo, info.sha)

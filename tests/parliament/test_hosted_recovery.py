@@ -235,3 +235,24 @@ def test_denied_source_pauses_but_cold_verification_can_recover(
     assert verified["status"] == "cold_restore_verified"
     assert verified["summary"]["failed"] == 1
     assert len(requests) == count
+
+
+def test_expired_initial_bootstrap_lease_can_recover_under_local_lock(
+    tmp_path: Path,
+) -> None:
+    """A suspended desktop bootstrap renews only its exact frozen marker owner."""
+    root = tmp_path / "source"
+    seeded(root)
+    index = tmp_path / "index.json"
+    index.write_text("{}")
+    remote = UnknownInitial()
+    with pytest.raises(HostedError, match="initial_outcome_unknown"):
+        bootstrap(root, index, remote)
+    pointer = json.loads(remote.read(POINTER, remote.head()))
+    pointer["lease_until"] = 1
+    remote.commit({POINTER: json.dumps(pointer).encode()}, remote.head())
+    assert bootstrap(root, index, remote)["status"] == "bootstrap_recovered_disabled"
+    assert (
+        json.loads(remote.read(POINTER, remote.head()))["checkpoint"]["status"]
+        == "verified"
+    )
