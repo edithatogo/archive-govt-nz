@@ -312,10 +312,182 @@ def project_qualified_overview_metadata(
     return _enrich(packages, decisions)
 
 
+def project_qualified_overview_discovery(
+    values: tuple[QualifiedOverviewInput, ...],
+) -> dict[str, bytes]:
+    """Extend verified graphs with scoped discovery and pending federation evidence.
+
+    No partner snapshot or reviewed mapping is accepted by this bounded profile.
+    Pending means unevaluated, not unmatched. Existing v1 graph bytes are reused.
+    """
+    payloads = project_qualified_overview_metadata(values)
+    packages = json.loads(payloads["catalogue.json"])["packages"]
+    by_pin = {v.manifest_sha256: v for v in values}
+    citations, references, snapshots, pending = [], [], [], []
+    card = [
+        "# Qualified Vote Health headline dataset card",
+        "",
+        (
+            "Local verified inventory; publication not performed; "
+            "full conformance not asserted."
+        ),
+        (
+            "Rights apply only to the listed data resources, "
+            "not the dataset or original PDFs."
+        ),
+        (
+            "Source normalization rights observations are preserved; "
+            "rights.json is the scoped overlay."
+        ),
+        "Currency, fiscal boundaries and cross-year comparability are not inferred.",
+        "",
+    ]
+    for package in packages:
+        value = by_pin[package["manifest_sha256"]]
+        manifest = json.loads(
+            verified_snapshot(
+                value.package / "MANIFEST.json",
+                value.manifest_sha256,
+                max_bytes=_MAX_BYTES,
+            )
+        )
+        query = json.loads(
+            verified_snapshot(
+                value.package / "query.json",
+                manifest["output_sha256"]["query.json"],
+                max_bytes=_MAX_BYTES,
+            )
+        )
+        identity = {
+            "package_id": package["id"],
+            "profile": package["profile"],
+            "manifest_sha256": value.manifest_sha256,
+        }
+        citations.append(
+            {
+                **identity,
+                "identifier_scope": "local_content_addressed_package",
+                "resource_rights": manifest["resource_rights"],
+                "attribution": manifest["attribution"],
+                "rights_scope": manifest["rights_scope"],
+            }
+        )
+        references.append(
+            {
+                **identity,
+                "source_object_sha256": manifest["source_object_sha256"],
+                "source_silver_manifest_sha256": manifest[
+                    "source_silver_manifest_sha256"
+                ],
+                "source_locator": value.request.source_locator,
+                "source_vintage": value.request.source_vintage,
+                "locator_semantics": (
+                    "recorded_reference_no_access_or_redistribution_claim"
+                ),
+            }
+        )
+        snapshots.append(
+            {
+                **identity,
+                "change_status": "current_verified_snapshot",
+                "tables": [
+                    {"path": t["path"], "rows": t["rows"]} for t in package["tables"]
+                ],
+                "rights_scope": manifest["rights_scope"],
+            }
+        )
+        pending.extend(
+            {
+                **identity,
+                "target_repository": target,
+                "disposition": "pending",
+                "reason": "partner_snapshot_and_reviewed_mapping_not_supplied",
+                "target_manifest_sha256": None,
+                "target_key": None,
+                "target_scheme_version": None,
+                "mapping_method": "none",
+                "confidence": None,
+                "source_record_ids": sorted(
+                    {
+                        r["record_id"]
+                        for r in query["records"]
+                        if isinstance(r.get("record_id"), str)
+                    }
+                ),
+                "period_tokens": sorted(
+                    {
+                        r["reference_period"]
+                        for r in query["records"]
+                        if isinstance(r.get("reference_period"), str)
+                    }
+                ),
+                "period_basis": ("source_literals_only_no_effective_interval_inferred"),
+            }
+            for target in ("global-medicines-atlas", "reimbursement-atlas")
+        )
+        card.extend(
+            [
+                "## " + package["profile"],
+                "",
+                "Package identifier: " + package["id"],
+                "Source edition: " + value.request.source_vintage,
+                "Rights scope: " + manifest["rights_scope"],
+                manifest["attribution"],
+                "",
+                *[
+                    "Data resource: "
+                    + r["path"]
+                    + "; SHA256 "
+                    + r["payload_sha256"]
+                    + "; licence "
+                    + r["license"]
+                    for r in manifest["resource_rights"]
+                ],
+                "",
+            ]
+        )
+    common = {
+        "schema_version": "archive-govt-nz.qualified-overview-discovery/v1",
+        "publication": "not_performed",
+        "full_conformance": "not_asserted",
+    }
+    return {
+        **payloads,
+        "citations.json": _json({**common, "records": citations}),
+        "source_drillthrough.json": _json({**common, "records": references}),
+        "changelog.json": _json(
+            {
+                **common,
+                "comparison": "snapshot_only_no_prior_version_comparison",
+                "records": snapshots,
+            }
+        ),
+        "federation_readiness.json": _json(
+            {
+                "schema_version": "archive-govt-nz.health-federation-readiness/v1",
+                "scope": "qualified_headline_inputs_only",
+                "approved_links": [],
+                "records": pending,
+                "required_evidence": [
+                    "pinned_partner_snapshot",
+                    "versioned_partner_key",
+                    "reviewed_mapping_method_confidence_period_lineage",
+                ],
+                "publication": "not_performed",
+            }
+        ),
+        "DATASET_CARD.md": ("\n".join(card) + "\n").encode(),
+    }
+
+
 def export_qualified_overview_metadata(
-    values: tuple[QualifiedOverviewInput, ...], output: Path
+    values: tuple[QualifiedOverviewInput, ...],
+    output: Path,
+    *,
+    include_discovery: bool = False,
 ) -> dict[str, str]:
     """Write an exclusive metadata-only version after complete input verification."""
+    _require(type(include_discovery) is bool)
     _safe(output)
     _require(not output.exists() and output.parent.is_dir())
     for value in values:
@@ -328,7 +500,11 @@ def export_qualified_overview_metadata(
             _safe(protected)
             a, b = output.resolve(), protected.resolve()
             _require(not a.is_relative_to(b) and not b.is_relative_to(a))
-    payloads = project_qualified_overview_metadata(values)
+    payloads = (
+        project_qualified_overview_discovery(values)
+        if include_discovery
+        else project_qualified_overview_metadata(values)
+    )
     pins = {
         name: hashlib.sha256(payload).hexdigest() for name, payload in payloads.items()
     }
@@ -337,7 +513,9 @@ def export_qualified_overview_metadata(
         **payloads,
         "MANIFEST.json": _json(
             {
-                "schema_version": _SCHEMA,
+                "schema_version": (
+                    _SCHEMA.removesuffix("v1") + "v2" if include_discovery else _SCHEMA
+                ),
                 "output_sha256": pins,
                 "publication": "not_performed",
                 "full_conformance": "not_asserted",

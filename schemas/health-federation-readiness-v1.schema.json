@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-federation-readiness-v1.schema.json",
+  "title": "Pending federation evidence for verified headline resources",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "scope",
+    "approved_links",
+    "records",
+    "required_evidence",
+    "publication"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-federation-readiness/v1"
+    },
+    "scope": {
+      "const": "qualified_headline_inputs_only"
+    },
+    "approved_links": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "records": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "package_id",
+          "profile",
+          "manifest_sha256",
+          "target_repository",
+          "disposition",
+          "reason",
+          "target_manifest_sha256",
+          "target_key",
+          "target_scheme_version",
+          "mapping_method",
+          "confidence",
+          "source_record_ids",
+          "period_tokens",
+          "period_basis"
+        ],
+        "properties": {
+          "package_id": {
+            "type": "string",
+            "pattern": "^urn:archive-govt-nz:health:qualified:[a-f0-9]{64}$"
+          },
+          "profile": {
+            "type": "string",
+            "minLength": 1
+          },
+          "manifest_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "target_repository": {
+            "enum": [
+              "global-medicines-atlas",
+              "reimbursement-atlas"
+            ]
+          },
+          "disposition": {
+            "const": "pending"
+          },
+          "reason": {
+            "const": "partner_snapshot_and_reviewed_mapping_not_supplied"
+          },
+          "target_manifest_sha256": {
+            "type": "null"
+          },
+          "target_key": {
+            "type": "null"
+          },
+          "target_scheme_version": {
+            "type": "null"
+          },
+          "mapping_method": {
+            "const": "none"
+          },
+          "confidence": {
+            "type": "null"
+          },
+          "source_record_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "maxItems": 100,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "period_tokens": {
+            "type": "array",
+            "uniqueItems": true,
+            "maxItems": 100,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          "period_basis": {
+            "const": "source_literals_only_no_effective_interval_inferred"
+          }
+        }
+      }
+    },
+    "required_evidence": {
+      "const": [
+        "pinned_partner_snapshot",
+        "versioned_partner_key",
+        "reviewed_mapping_method_confidence_period_lineage"
+      ]
+    },
+    "publication": {
+      "const": "not_performed"
+    }
+  }
+}
