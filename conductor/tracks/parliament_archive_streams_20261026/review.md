@@ -140,3 +140,11 @@ logger and exception messages. First-failure red cases are retained privately;
 the two fixed cases prove no public diagnostic leakage and mode600 retention.
 All48 hosted tests pass. This final candidate awaits full/hosted assurance and
 native checkpoint/pilot acceptance before enabling acquisition.
+
+Native initialization found an expired-lease recovery gap after the desktop
+interruption: the exact frozen marker owner must renew under the existing local
+writer lock before saving its first checkpoint. The red regression is retained;
+the corrected recovery passes. Public metadata reads now have a supported explicit
+SDK timeout and minimal fields; unknown visibility flags fail closed. The initial
+public pointer remains disabled with no snapshot or new report acquisition.
+Complete initialization before any cloud pilot or activation.

@@ -345,7 +345,7 @@ def _bootstrap(root: Path, index: Path, transport: NativeTransport) -> dict[str,
             abort("checkpoint_already_bootstrapped")
         # The first pointer mutation may have succeeded before its response was
         # lost. Recover only that exact frozen bootstrap, never an active owner.
-        manager.owner = manager.pointer["owner"]
+        manager.claim(manager.pointer["owner"])
         manager.archive = ParliamentArchive(root)
         manager.refs = json.loads(index.read_bytes())
         try:

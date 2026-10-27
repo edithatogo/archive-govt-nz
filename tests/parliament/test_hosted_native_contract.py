@@ -26,16 +26,21 @@ class SDK:
     def __init__(self, remote: Remote) -> None:
         """Retain the fake immutable server."""
         self.remote = remote
-        self.private = False
+        self.private: bool | None = False
+        self.gated: bool | None = False
         self.failure = False
 
-    def dataset_info(self, _repo: str) -> SimpleNamespace:
+    def dataset_info(
+        self, _repo: str, *, timeout: float, expand: list[str]
+    ) -> SimpleNamespace:
         """Return qualified visibility or a deliberately sensitive error."""
+        assert timeout == transport.METADATA_TIMEOUT
+        assert expand == ["sha", "private", "gated"]
         if self.failure:
             message = "https://example.invalid/?signed=DO_NOT_DISCLOSE"
             raise OSError(message)
         return SimpleNamespace(
-            private=self.private, gated=False, sha=self.remote.head()
+            private=self.private, gated=self.gated, sha=self.remote.head()
         )
 
     def get_paths_info(
@@ -135,3 +140,19 @@ def test_sdk_public_commit_and_fresh_read(
         client.read("missing", revision)
     with pytest.raises(HostedError, match="checkpoint_commit_bound"):
         client.commit({str(n): tmp_path for n in range(100)}, revision)
+
+
+@pytest.mark.parametrize(
+    ("private", "gated"), [(None, False), (False, None), (True, False), (False, True)]
+)
+def test_visibility_must_be_explicit_false(
+    monkeypatch: MonkeyPatch, *, private: bool | None, gated: bool | None
+) -> None:
+    """Missing visibility flags never qualify a public ungated destination."""
+    sdk = SDK(Remote())
+    sdk.private = private
+    sdk.gated = gated
+    monkeypatch.setattr(transport, "HfApi", lambda **_kw: sdk)
+    monkeypatch.setattr(NativeTransport, "pace", lambda _self: None)
+    with pytest.raises(HostedError, match="public_target_not_qualified"):
+        NativeTransport().head()
