@@ -122,3 +122,84 @@ def test_metadata_only_original_response_is_publicly_packaged(tmp_path: Path) ->
     assert (root / "objects" / manifest["records"][0]["sha256"]).read_bytes() == raw
     hub = Hub()
     assert publish_batch(archive, str(batch["batch"]), hub=hub)["status"] == "verified"
+
+
+def test_full_spool_does_not_request_or_advance_discovery(
+    tmp_path: Path, monkeypatch: MonkeyPatch
+) -> None:
+    """A full retained state admits neither another page nor another cursor."""
+    archive = ParliamentArchive(tmp_path, delay=0)
+    before = sum(p.stat().st_size for p in tmp_path.rglob("*") if p.is_file())
+    requested: list[str] = []
+
+    def handle(request: httpx.Request) -> httpx.Response:
+        requested.append(request.url.path)
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /")
+        return httpx.Response(
+            200, json={"results": [REPORT], "page": 1, "pageSize": 1, "totalResults": 1}
+        )
+
+    original = httpx.AsyncClient
+    monkeypatch.setattr(
+        worker.httpx,
+        "AsyncClient",
+        lambda **kwargs: original(transport=httpx.MockTransport(handle), **kwargs),
+    )
+    result = asyncio.run(
+        worker.collect_reports(archive, "historical", Bounds(max_spool_bytes=before))
+    )
+    assert result["status"] == "spool_bound_reached"
+    assert requested == []
+    assert archive.summary()["pending"] == 0
+    assert sum(p.stat().st_size for p in tmp_path.rglob("*") if p.is_file()) == before
+
+
+def test_discovery_body_cannot_consume_persistence_headroom(tmp_path: Path) -> None:
+    """A page exceeding reserved spool space leaves no object or acknowledged cursor."""
+    archive = ParliamentArchive(tmp_path, delay=0)
+    before = sum(p.stat().st_size for p in tmp_path.rglob("*") if p.is_file())
+    cap = before + archive.database.stat().st_size + 4 * 65536 + 8 * 1024
+
+    def handle(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /")
+        return httpx.Response(
+            200,
+            json={
+                "results": [{**REPORT, "title": "x" * 4096}],
+                "page": 1,
+                "pageSize": 1,
+                "totalResults": 1,
+            },
+        )
+
+    async def run() -> dict[str, object]:
+        async with httpx.AsyncClient(transport=httpx.MockTransport(handle)) as http:
+            return await archive.reports(
+                http, partition="historical", bounds=Bounds(max_spool_bytes=cap)
+            )
+
+    result = asyncio.run(run())
+    assert result["status"] == "spool_bound_reached"
+    assert archive.summary()["pending"] == 0
+    assert not list((tmp_path / "candidates").glob("*.json"))
+    assert sum(p.stat().st_size for p in tmp_path.rglob("*") if p.is_file()) <= cap
+
+
+def test_spool_deferral_does_not_start_another_publication(
+    tmp_path: Path, monkeypatch: MonkeyPatch
+) -> None:
+    """Existing unbatched observations stay retained when no spool room remains."""
+    archive = ParliamentArchive(tmp_path, delay=0)
+    monkeypatch.setattr(worker, "ParliamentArchive", lambda _root: archive)
+
+    async def collect(*_args: object) -> dict[str, object]:
+        return {"discovered": 0, "bytes": 0, "status": "spool_bound_reached"}
+
+    def forbidden() -> dict[str, dict[str, str]]:
+        pytest.fail("A full spool must not begin packaging another batch")
+
+    monkeypatch.setattr(worker, "collect_reports", collect)
+    monkeypatch.setattr(archive, "report_decisions", forbidden)
+    assert worker.run_reports(tmp_path)["status"] == "spool_bound_reached"

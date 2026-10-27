@@ -262,3 +262,47 @@ def test_crashed_writer_is_recovered_without_deleting_lock(tmp_path: Path) -> No
     assert result.returncode == 0
     with ParliamentArchive(tmp_path).lease():
         assert (tmp_path / "writer.lock").exists()
+
+
+@pytest.mark.parametrize("streamed", [False, True], ids=["length", "stream"])
+def test_run_byte_allowance_defers_until_fresh_budget(
+    tmp_path: Path, *, streamed: bool
+) -> None:
+    """An admissible file exceeding this run's remainder stays automatically pending."""
+    archive = ParliamentArchive(tmp_path, delay=0)
+    archive.enqueue((record(),), partition="historical", evidence=b"candidate")
+    payload = b"%PDF-" + b"x" * 59
+
+    def transport(request: httpx.Request) -> httpx.Response:
+        if request.url.path == "/robots.txt":
+            return httpx.Response(200, text="User-agent: *\nAllow: /")
+        if streamed:
+            return httpx.Response(
+                200,
+                stream=httpx.ByteStream(payload),
+                headers={"content-type": "application/pdf"},
+            )
+        return httpx.Response(200, content=payload)
+
+    def http() -> httpx.AsyncClient:
+        return httpx.AsyncClient(transport=httpx.MockTransport(transport))
+
+    first = run_capture(archive, http(), Bounds(max_bytes=32, max_file_bytes=128))
+    assert first["failed"] == 0
+    assert archive.summary()["pending"] == 1
+    second = run_capture(archive, http(), Bounds(max_bytes=128, max_file_bytes=128))
+    assert second["captured"] == 1
+    assert archive.summary()["failed"] == 0
+
+
+def test_genuine_per_file_overflow_still_fails(tmp_path: Path) -> None:
+    """A full per-file policy violation is not silently converted to a retry."""
+    archive = ParliamentArchive(tmp_path, delay=0)
+    archive.enqueue((record(),), partition="historical", evidence=b"candidate")
+    result = run_capture(
+        archive,
+        client(payload=b"x" * 64),
+        Bounds(max_bytes=128, max_file_bytes=32),
+    )
+    assert result["failed"] == 1
+    assert archive.summary()["pending"] == 0

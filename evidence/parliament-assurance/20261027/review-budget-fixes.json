@@ -1,0 +1,24 @@
+{
+  "observed_at": "2026-10-27T00:26:03.306053+00:00",
+  "python": "3.15.1",
+  "review_threads": [
+    "PRRT_kwDOTo2MOM6wSAYV",
+    "PRRT_kwDOTo2MOM6wSAYg"
+  ],
+  "before": "Four new regressions failed; genuine per-file rejection already passed. Actual worker full-spool discovery also reproduced independently.",
+  "after": "80 Parliament tests passed; strict types and Ruff passed",
+  "mutation_total": 24,
+  "all_mutants_killed": true,
+  "new_mutants": [
+    "parliament_budget_deferral",
+    "parliament_discovery_spool"
+  ],
+  "behavior": [
+    "Budget-reduced size/decompression limits leave records pending; genuine per-file violations remain failed.",
+    "Discovery reserves SQLite journal and metadata expansion space before requests/persistence; an unadmitted page never advances its cursor.",
+    "Worker forwards the same spool policy and stops without further capture or packaging when discovery reaches the spool bound."
+  ],
+  "before_log_sha256": "b3c4b6a2a2dd544e011157d2d786b8cae3f506d96475ae1fc1f685ede72e5643",
+  "after_log_sha256": "b558a1166e8112c7b1bba7849210532d736281b474e47545818b248d29d05047",
+  "hosted_acceptance": "pending corrected head"
+}

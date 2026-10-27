@@ -100,3 +100,13 @@ Account evidence: `../../../evidence/huggingface-hardening/20261027/`. Windows d
 Hosted follow-up: the integrated Linux run passed tests, schemas, parity, mutation, audit and licence gates, then identified a benign status sentence in the newly materialized local-assurance receipt as a Secret Keyword candidate. Reused the existing exact receipt pass-status convention and retained scope in a separate field; no scan policy/exemption was changed. Rerun only the affected secret stage locally, then require the full hosted candidate checks.
 
 Final Windows candidate: complete collection inspection found a second auto-generated ID over four million characters. Both oversized-input cases now have short IDs while preserving their original bytes and fail-closed assertions. All 8553 collected node IDs fit the Windows environment-variable contract (maximum4186 characters); pytest writes these IDs to its current-test environment variable. Native preflight now selects the affected robots/API cases and real-child supervisor tests before the full gate. Fresh integrated local assurance passes all stages (8539 tests,14 capability skips); final focused cases and Actionlint pass. The earlier hosted run is superseded because it retains the second oversized ID and console-forwarding supervisor.
+
+## Required hosted review fixes — 27 October 2026
+
+- [x] Reproduce both unresolved P2 findings with failing regressions.
+- [x] Defer budget-limited attachments without losing pending work; retain genuine per-file failures.
+- [x] Bound discovery persistence before cursor admission, pass the shared spool policy through the worker/CLI, and stop further packaging at a full spool.
+- [x] Review all affected source, run 80 Parliament tests and strict/static checks; kill both added budget mutants in the existing runner.
+- [~] Complete full local assurance and require hosted checks on the corrected head, then resolve the addressed threads and merge without bypass.
+
+Final account consistency: the public Hermes mixed-artifact archive's stale private/empty labels were corrected, preserving all174 published files and source terms. Final registry correction at `f82a1b706e7c55845ffef5dad0a1d4571b2892dd` was anonymously hash-verified. Source acquisition remains paused until delivery.

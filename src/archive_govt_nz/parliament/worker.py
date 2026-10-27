@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import time
+from dataclasses import replace
 from typing import TYPE_CHECKING, Literal
 
 import httpx
@@ -44,10 +45,18 @@ async def collect_reports(
                     partition=mode,
                     query=query,
                     require_unfiltered=True,
-                    max_bytes=bounds.max_bytes - discovery_bytes,
+                    bounds=replace(
+                        bounds, max_bytes=bounds.max_bytes - discovery_bytes
+                    ),
                 )
                 discovered += int(str(result["discovered"]))
                 discovery_bytes += int(str(result.get("bytes", 0)))
+                if result.get("status") == "spool_bound_reached":
+                    return {
+                        "discovered": discovered,
+                        "bytes": discovery_bytes,
+                        "status": "spool_bound_reached",
+                    }
                 if result.get("next_page") is None:
                     break
                 page += 1
@@ -91,6 +100,8 @@ def run_reports(
             "summary": archive.summary(),
         }
     result = asyncio.run(collect_reports(archive, mode, bounds or Bounds()))
+    if result.get("status") == "spool_bound_reached":
+        return {**result, "summary": archive.summary()}
     decisions = archive.report_decisions()
     if decisions:
         batch = archive.package(decisions)

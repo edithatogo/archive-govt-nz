@@ -83,3 +83,9 @@ Supervisor refinement: child-log mirroring could itself block deadline enforceme
 Final parameter review: Windows permits at most32767 characters in an environment variable, and installed pytest places the complete node ID in PYTEST_CURRENT_TEST. Collection inspection found a second ID of4194409 characters in the hostile API-response case. Added short IDs without changing its4194305-byte body; all8553 collected IDs now fit (maximum4186). The fresh full local harness passes all stages, and focused cases plus Actionlint pass after this ID-only/Windows-preflight change. Hosted acceptance remains required.
 
 Native preflight exposed a portability issue in the new supervisor test import (tools namespace unavailable to the Windows console entry point). Applied the repository's established explicit importlib file loader. The exact console-entry-point preflight passes locally (11 passed, two genuine platform skips), with Ruff and strict typing passed. Production archival behavior is unchanged; require final hosted checks.
+
+## Required hosted budget review fixes
+
+Both unresolved P2 findings were valid and reproduced. Budget-limited files now remain pending for a fresh run, while genuine per-file violations remain failures. Discovery admits a page only with room for its original response, candidate/snapshot representations, bookkeeping and a complete SQLite rollback journal. The same spool bound reaches the worker and explicit CLI discovery; a full-spool deferral stops subsequent capture and packaging. Unadmitted pages do not advance cursors.
+
+All80 affected Parliament tests pass, strict types and Ruff pass, and both new budget guard mutants are killed by the existing Medallion runner. Full repository and corrected-head hosted acceptance remain required before merge. No policy bypass or review-thread dismissal without a fix is authorised.

@@ -41,7 +41,12 @@ async def _network(  # noqa: PLR0913 - explicit network operation inputs
 ) -> dict[str, object]:
     async with httpx.AsyncClient(headers={"User-Agent": USER_AGENT}) as client:
         if action == "reports":
-            return await archive.reports(client, partition=partition, query=query)
+            return await archive.reports(
+                client,
+                partition=partition,
+                query=query,
+                bounds=bounds,
+            )
         if action == "discover":
             if not url:
                 message = "source_url_required"

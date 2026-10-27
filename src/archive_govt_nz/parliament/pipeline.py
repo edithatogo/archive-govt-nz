@@ -386,9 +386,12 @@ class ParliamentArchive:
         partition: str,
         query: ReportQuery | None = None,
         require_unfiltered: bool = False,
-        max_bytes: int = 4 * 1024 * 1024,
+        bounds: Bounds | None = None,
     ) -> dict[str, object]:
         """Persist one qualified report page and its independent durable cursor."""
+        active = bounds or Bounds()
+        if self._report_limit(active.max_bytes, active.max_spool_bytes) <= 0:
+            return self._deferred_report()
         key = "reports:" + partition
         with self.lease():
             if query is None:
@@ -412,25 +415,10 @@ class ParliamentArchive:
                     query = ReportQuery(**value)
                 else:
                     query = ReportQuery()
-            await self._permit(client, ENDPOINT)
-            raw = bytearray()
-            async with client.stream(
-                "POST",
-                ENDPOINT,
-                json=query.body(),
-                headers={"User-Agent": USER_AGENT},
-                timeout=30,
-                follow_redirects=False,
-            ) as response:
-                await self._response(response)
-                if response.status_code != httpx.codes.OK:
-                    message = "report_search_failed"
-                    raise ValueError(message)
-                async for chunk in response.aiter_bytes():
-                    raw.extend(chunk)
-                    if len(raw) > min(4 * 1024 * 1024, max_bytes):
-                        message = "report_response_oversize"
-                        raise ValueError(message)
+            response = await self._report_response(client, query, active)
+            if isinstance(response, dict):
+                return response
+            raw = response
             response_hash = hashlib.sha256(raw).hexdigest()
             response_object = self.store.put_bytes(bytes(raw))
             request = self.store.put_bytes(
@@ -521,6 +509,57 @@ class ParliamentArchive:
                 "coverage_claim": False,
             }
 
+    async def _report_response(
+        self, client: httpx.AsyncClient, query: ReportQuery, bounds: Bounds
+    ) -> bytes | dict[str, object]:
+        """Read only a response whose retained evidence can fit the spool."""
+        await self._permit(client, ENDPOINT)
+        limit = self._report_limit(bounds.max_bytes, bounds.max_spool_bytes)
+        if limit <= 0:
+            return self._deferred_report()
+        raw = bytearray()
+        async with client.stream(
+            "POST",
+            ENDPOINT,
+            json=query.body(),
+            headers={"User-Agent": USER_AGENT},
+            timeout=30,
+            follow_redirects=False,
+        ) as response:
+            await self._response(response)
+            if response.status_code != httpx.codes.OK:
+                message = "report_search_failed"
+                raise ValueError(message)
+            async for chunk in response.aiter_bytes(min(64 * 1024, limit + 1)):
+                raw.extend(chunk)
+                if len(raw) > limit:
+                    if limit < min(4 * 1024 * 1024, bounds.max_bytes):
+                        return self._deferred_report(len(raw))
+                    message = "report_response_oversize"
+                    raise ValueError(message)
+        return bytes(raw)
+
+    def _report_limit(self, max_bytes: int, max_spool_bytes: int) -> int:
+        # Reserve a complete SQLite rollback journal and fixed bookkeeping.
+        # Eight response copies cover CAS staging, candidate JSON, current and
+        # immutable record snapshots, and their SQLite/index/temporary overhead.
+        available = (
+            max_spool_bytes
+            - self._spool_bytes()
+            - self.database.stat().st_size
+            - 4 * STATE_RESERVE_BYTES
+        )
+        return max(0, min(4 * 1024 * 1024, max_bytes, available // 8))
+
+    @staticmethod
+    def _deferred_report(byte_count: int = 0) -> dict[str, object]:
+        return {
+            "discovered": 0,
+            "bytes": byte_count,
+            "status": "spool_bound_reached",
+            "coverage_claim": False,
+        }
+
     @staticmethod
     def _bound_reached() -> None:
         message = "run_bound_reached"
@@ -576,6 +615,7 @@ class ParliamentArchive:
                 if remaining <= 0 or used >= bounds.max_bytes or space <= 0:
                     break
                 record = json.loads(item["record"])
+                limit = bounds.max_file_bytes
                 try:
                     # Keep the source page as context in addition to attachments.
                     # The API supplies report context. Avoid publishing a
@@ -690,7 +730,10 @@ class ParliamentArchive:
                         if isinstance(error, ValueError)
                         else type(error).__name__
                     )
-                    deferred = detail == "run_bound_reached"
+                    deferred = detail == "run_bound_reached" or (
+                        detail in {"size_limit", "decompression_limit"}
+                        and limit < bounds.max_file_bytes
+                    )
                     with self._connection() as connection:
                         connection.execute(
                             "UPDATE records SET status=?,last_error=? "

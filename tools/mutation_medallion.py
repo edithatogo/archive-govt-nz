@@ -15,6 +15,18 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 
 MUTANTS = {
+    "parliament_budget_deferral": (
+        "src/archive_govt_nz/parliament/pipeline.py",
+        "and limit < bounds.max_file_bytes",
+        "and False",
+        "tests/parliament/test_recovery.py",
+    ),
+    "parliament_discovery_spool": (
+        "src/archive_govt_nz/parliament/pipeline.py",
+        "max_bytes, available // 8",
+        "max_bytes",
+        "tests/parliament/test_worker.py",
+    ),
     "parliament_public_visibility": (
         "src/archive_govt_nz/parliament/publication.py",
         "if info.private or info.gated or not info.sha:",
