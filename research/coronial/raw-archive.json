@@ -1,13 +1,14 @@
 {
-  "status": "prepared_not_published",
+  "status": "published_and_anonymous_restore_verified",
   "repo_id": "edithatogo/archive-govt-nz-global",
-  "prepared_batch_path": "coronial/batches/95035b1e7b5056df696919ed202057a42ea3abb6940a699cda638c17137c489d",
-  "immutable_revision": null,
-  "raw_objects_prepared": 7,
+  "revision_branch": "coronial-v13-20261028",
+  "immutable_revision": "9ff39f9834de26754c3a80a7fe555456707fcbec",
+  "path_prefix": "coronial/batches/95035b1e7b5056df696919ed202057a42ea3abb6940a699cda638c17137c489d",
+  "url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/tree/9ff39f9834de26754c3a80a7fe555456707fcbec/coronial/batches/95035b1e7b5056df696919ed202057a42ea3abb6940a699cda638c17137c489d",
+  "raw_objects": 7,
   "metadata_only_source_records": 12,
-  "published_raw_objects": 0,
-  "source_bytes": "Retained and independently re-downloaded with matching hashes",
-  "reason": "Shared destination returned HTTP409 because another commit operation was in progress. No new raw-source snapshot is claimed.",
-  "source_access": "Use raw-source-catalogue.json original publisher URLs and SHA256 values. The public aggregate inputs reproduce calculations without private files.",
-  "checked_at": "2026-10-27T23:46:42.958386+00:00"
+  "files_verified": 10,
+  "root_card_unchanged": true,
+  "verified_at": "2026-10-27T23:49:00.735298+00:00",
+  "notes": "Published on an isolated revision in the existing public archive to avoid concurrent main-branch checkpoints. Immutable commit URL is reader-accessible; no merge into main is claimed. Raw documents remain separate from this derivative recipe."
 }

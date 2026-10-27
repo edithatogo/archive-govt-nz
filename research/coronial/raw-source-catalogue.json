@@ -84,7 +84,8 @@
     "recaptured_at": "2026-10-27T23:25:43.500380+00:00",
     "recapture_http_status": 200,
     "redistribution_qualified": true,
-    "raw_archive_availability": "prepared_not_published"
+    "raw_archive_availability": "published_and_anonymous_restore_verified",
+    "raw_download_url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/resolve/9ff39f9834de26754c3a80a7fe555456707fcbec/coronial/batches/95035b1e7b5056df696919ed202057a42ea3abb6940a699cda638c17137c489d/objects/sha256/fd/fdd580b33f665a1ee8c9081e82aaab8da44c093410c29c9cd1507ffead6a7b6d"
   },
   {
     "id": "Chief-Coroners-Annual-Report-2018-2019.pdf",
@@ -137,7 +138,8 @@
     "recaptured_at": "2026-10-27T23:25:45.471969+00:00",
     "recapture_http_status": 200,
     "redistribution_qualified": true,
-    "raw_archive_availability": "prepared_not_published"
+    "raw_archive_availability": "published_and_anonymous_restore_verified",
+    "raw_download_url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/resolve/9ff39f9834de26754c3a80a7fe555456707fcbec/coronial/batches/95035b1e7b5056df696919ed202057a42ea3abb6940a699cda638c17137c489d/objects/sha256/ed/eda71c311031ada99849e30f0eb6982aa513dbe5d75fe5355e12d2ad6de591d8"
   },
   {
     "id": "MOJ0216-2015-16-v9-web.pdf",
@@ -156,7 +158,8 @@
     "recaptured_at": "2026-10-27T23:25:46.749390+00:00",
     "recapture_http_status": 200,
     "redistribution_qualified": true,
-    "raw_archive_availability": "prepared_not_published"
+    "raw_archive_availability": "published_and_anonymous_restore_verified",
+    "raw_download_url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/resolve/9ff39f9834de26754c3a80a7fe555456707fcbec/coronial/batches/95035b1e7b5056df696919ed202057a42ea3abb6940a699cda638c17137c489d/objects/sha256/6e/6e6d2e3fdddf9daea80ccd35de9a1e71ac2a32ffd50384f846c3071355dbcf8b"
   },
   {
     "id": "ris-justice-prp1-jul14.pdf",
@@ -192,7 +195,8 @@
     "recaptured_at": "2026-10-27T23:25:49.101091+00:00",
     "recapture_http_status": 200,
     "redistribution_qualified": true,
-    "raw_archive_availability": "prepared_not_published"
+    "raw_archive_availability": "published_and_anonymous_restore_verified",
+    "raw_download_url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/resolve/9ff39f9834de26754c3a80a7fe555456707fcbec/coronial/batches/95035b1e7b5056df696919ed202057a42ea3abb6940a699cda638c17137c489d/objects/sha256/5b/5b7fa8c9ea673f18cbe120b552a2a5eee2dcd1b1f18f7299e34b9b36c46d4d65"
   },
   {
     "id": "rogs.xlsx",
@@ -228,7 +232,8 @@
     "recaptured_at": "2026-10-27T23:25:50.454333+00:00",
     "recapture_http_status": 200,
     "redistribution_qualified": true,
-    "raw_archive_availability": "prepared_not_published"
+    "raw_archive_availability": "published_and_anonymous_restore_verified",
+    "raw_download_url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/resolve/9ff39f9834de26754c3a80a7fe555456707fcbec/coronial/batches/95035b1e7b5056df696919ed202057a42ea3abb6940a699cda638c17137c489d/objects/sha256/3f/3f7669e25c69221d4f9336babf499017297b5bb73f5dc5783cdc33ebd195091c"
   },
   {
     "id": "ew.zip",
@@ -247,7 +252,8 @@
     "recaptured_at": "2026-10-27T23:25:56.933815+00:00",
     "recapture_http_status": 200,
     "redistribution_qualified": true,
-    "raw_archive_availability": "prepared_not_published"
+    "raw_archive_availability": "published_and_anonymous_restore_verified",
+    "raw_download_url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/resolve/9ff39f9834de26754c3a80a7fe555456707fcbec/coronial/batches/95035b1e7b5056df696919ed202057a42ea3abb6940a699cda638c17137c489d/objects/sha256/90/90d3d6cf12b7df80a1406687f65d34ea251c73c8cddc4139917ae7bcd3ceba6d"
   },
   {
     "id": "ew-guide.html",
@@ -317,7 +323,8 @@
     "recaptured_at": "2026-10-27T23:26:01.866544+00:00",
     "recapture_http_status": 200,
     "redistribution_qualified": true,
-    "raw_archive_availability": "prepared_not_published"
+    "raw_archive_availability": "published_and_anonymous_restore_verified",
+    "raw_download_url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/resolve/9ff39f9834de26754c3a80a7fe555456707fcbec/coronial/batches/95035b1e7b5056df696919ed202057a42ea3abb6940a699cda638c17137c489d/objects/sha256/1a/1ad22b078e05febcc77b1097556c288edf79cb40279e1071ffd6f8e8c91b68bb"
   },
   {
     "id": "quebec2025",

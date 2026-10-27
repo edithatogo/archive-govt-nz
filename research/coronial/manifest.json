@@ -3,8 +3,8 @@
   "files": [
     {
       "path": "README.md",
-      "sha256": "cf656401ebb23ebce1d8bca0bc71ba4602b0393759afa1e86849498db5964283",
-      "bytes": 3394
+      "sha256": "62636d756f1d0bbca436e8277d4def8633dc8a2384101720a0aa2ce59c3510fa",
+      "bytes": 3830
     },
     {
       "path": "code/cascade.dot",
@@ -58,13 +58,13 @@
     },
     {
       "path": "raw-archive.json",
-      "sha256": "8c0729a045b664f93cca2e8d36e18e940c7277609773a770372670ad3e005570",
-      "bytes": 772
+      "sha256": "8fe049d60ac5d04abee1e859d6ead69c22b3a102300dd7722d1efa3ff55a1220",
+      "bytes": 954
     },
     {
       "path": "raw-source-catalogue.json",
-      "sha256": "ae67c580c83d2345bb9a78b68d21c1ad492a888e55c7a1331a077a2fec0dde2a",
-      "bytes": 18395
+      "sha256": "2c4dbf536b3fa41132ca2ba6cefaa922ef03eb6ce60290d52f83c9baf1563c34",
+      "bytes": 20670
     },
     {
       "path": "results/descriptive-analysis.json",
@@ -117,5 +117,5 @@
       "bytes": 606
     }
   ],
-  "notes": "Derivative recipe only; raw-file publication status is explicit in raw-archive.json. Text files use LF endings so Git blobs match manifest hashes."
+  "notes": "Derivative recipe only; raw-file immutable revision and source-specific rights are recorded separately. Text files use LF endings so Git blobs match manifest hashes."
 }
