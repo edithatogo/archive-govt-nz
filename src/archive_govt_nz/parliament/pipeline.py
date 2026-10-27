@@ -693,6 +693,13 @@ class ParliamentArchive:
                             if not links and record["kind"] in {"submission", "advice"}:
                                 self._attachment_error()
                             urls.extend(link for link in links if link not in urls)
+                        self._checkpoint(
+                            "capture_received",
+                            {
+                                "source_id": item["source_id"],
+                                "sha256": result.receipt.sha256,
+                            },
+                        )
                         with self._connection() as connection:
                             connection.execute(
                                 "INSERT INTO captures VALUES(?,?,?,?,?,?) "

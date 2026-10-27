@@ -232,6 +232,9 @@ class Checkpoints:
         """Acknowledge source milestones only after immutable public durability."""
         if self.saving or self.failed:
             return
+        if stage == "capture_received":
+            self.qualify_capture(detail)
+            return
         self.tick()
         if self.work:
             if stage == "reports":
@@ -252,6 +255,25 @@ class Checkpoints:
             self.held = True
             time.sleep(self.hold_seconds)
         self.last_tick = time.monotonic()
+
+    def qualify_capture(self, detail: dict[str, object]) -> None:
+        """Apply the existing PDF gate before any public checkpoint object write."""
+        if self.archive is None:
+            abort("checkpoint_archive_missing")
+        sha = str(detail["sha256"])
+        receipt = self.archive.store.verify("sha256:" + sha)
+        with receipt.path.open("rb") as handle:
+            if handle.read(5) == b"%PDF-":
+                return
+        # Retain an exact public hash receipt, never the unqualified body. The
+        # ordinary capture error path holds this source without retrying it.
+        with self.archive._connection() as connection:  # noqa: SLF001 - shared archive transaction
+            connection.execute(
+                "INSERT INTO events VALUES(?,?,?,?)",
+                (detail["source_id"], "unqualified_payload", sha, time.time()),
+            )
+        message = "report_payload_not_pdf"
+        raise ValueError(message)
 
     def save(self) -> None:
         """Stage objects/snapshot, verify them, then promote the accepted pointer."""

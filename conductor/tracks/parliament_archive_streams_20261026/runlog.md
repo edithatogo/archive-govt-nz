@@ -109,3 +109,16 @@ Forty-four hosted tests passed with86% branch-aware coverage across the five
 hosted modules; added two further live-owner/card-drift resume guard cases.
 Selected strict types and Ruff pass. Corrected-head complete local and hosted
 checks are required; source acquisition and native handover remain disabled.
+
+Additional ingress/accounting review reproduced two more safety cases before
+native deployment: a non-PDF report attachment could enter a public checkpoint
+before the existing package PDF gate rejected it, and a failed read could lose
+its elapsed time when checkpoint transport reset the timer before retry.
+Both exact tests failed red. Report bodies now pass the inherited PDF gate
+before public staging; rejected bytes stay in the private working CAS, with only
+an exact hash/failure receipt admitted to the public checkpoint. Failed/deferred
+reads now charge elapsed acquisition time before checkpoint/retry. Both red
+regressions and all ten affected qualification/checkpoint tests pass; selected
+strict types and Ruff pass. No rights policy or body-format acceptance expanded.
+The previous corrected head b26a3e53 passes full local assurance and hosted
+Ubuntu/Windows/Codecov; these additional fixes require their own final-head gates.

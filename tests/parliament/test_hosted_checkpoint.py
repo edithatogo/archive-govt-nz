@@ -158,7 +158,7 @@ def test_interrupt_after_durable_object_resumes_without_source(tmp_path: Path) -
             return httpx.Response(200, text="User-agent: *\nAllow: /")
         return httpx.Response(
             200,
-            content=b"immutable original",
+            content=b"%PDF-1.7\nimmutable original",
             headers={"Content-Type": "application/pdf"},
         )
 

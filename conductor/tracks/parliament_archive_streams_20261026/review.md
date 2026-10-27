@@ -128,3 +128,9 @@ and through checkpoint acceptance. Isolated regression tests pass. The operator
 CLI now resides in the measured package and has authority/error/cancellation
 tests. Codecov's79.50% patch result is retained as first-failure evidence;
 the80% requirement is unchanged. Corrected-head hosted acceptance is pending.
+
+Ingress and accounting self-review: applied the existing report PDF qualification
+before public object staging, retaining rejected bytes privately and exact hash
+evidence publicly. Charged failed-read acquisition time before saving/retrying.
+Both defects have isolated red/green regressions; ten affected tests, strict types
+and Ruff pass. Final-head complete assurance is required before any native write.

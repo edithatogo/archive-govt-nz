@@ -251,6 +251,7 @@ async def acquire(manager: Checkpoints) -> None:
                     max_spool_bytes=8589934592,
                 ),
             )
+            manager.tick()
             if result["failed"]:
                 manager.work["bytes"] += manager.work["reserved"]
                 manager.work["reserved"] = 0
