@@ -84,7 +84,7 @@ This completes metadata maintenance for the inspected estate, not missing source
 
 - [x] Diagnose repeated Windows cancellation using native annotations; retain bounded evidence.
 - [x] Apply and review bounded aggregate timeout/diagnostic remediation; Actionlint and21 focused tests pass.
-- [ ] Verify Windows and all required hosted checks at the remediation head before merge or further archive acquisition.
+- [x] Verify Windows and all required hosted checks at the remediation head before merge or further archive acquisition; PR787 merged9472eab7 after green required checks.
 
 ## Account scope and Windows recovery — 27 October 2026
 
@@ -92,8 +92,8 @@ This completes metadata maintenance for the inspected estate, not missing source
 - [x] Complete remaining account viewers: 12 datasets and 33 config/split first-row probes pass; NHANES transient service-busy responses resolved without repeat writes.
 - [x] Inspect actual Windows job log; shorten pathological oversized-robots parameter IDs and add an independently logged bounded gate runner. Targeted native acceptance remains hosted.
 - [x] Run required local assurance and review the remediation: 8429 tests pass, all mutation and supply-chain stages pass.
-- [~] Obtain all green hosted checks before merge.
-- [ ] Resume one bounded report batch after merge, recover/verify publication first, preserve the maintained dataset card and immutable originals.
+- [x] Obtain all green hosted checks before merge; native delivery receipt `build/parliament/delivery-20261027.json`.
+- [x] Resume bounded report batches after merge with publication recovery first, maintained card preserved and immutable originals retained; latest reviewed state798 originals plus1 metadata-only.
 
 Account evidence: `../../../evidence/huggingface-hardening/20261027/`. Windows diagnostic evidence: `../../../evidence/parliament-assurance/20261027/`. Parent source rights, legacy access and natural schedule gates remain active.
 
@@ -107,6 +107,22 @@ Final Windows candidate: complete collection inspection found a second auto-gene
 - [x] Defer budget-limited attachments without losing pending work; retain genuine per-file failures.
 - [x] Bound discovery persistence before cursor admission, pass the shared spool policy through the worker/CLI, and stop further packaging at a full spool.
 - [x] Review all affected source, run 80 Parliament tests and strict/static checks; kill both added budget mutants in the existing runner.
-- [~] Complete full local assurance and require hosted checks on the corrected head, then resolve the addressed threads and merge without bypass.
+- [x] Complete full local assurance and require hosted checks on the corrected head, resolve addressed threads and merge without bypass; merged9472eab7.
 
 Final account consistency: the public Hermes mixed-artifact archive's stale private/empty labels were corrected, preserving all174 published files and source terms. Final registry correction at `f82a1b706e7c55845ffef5dad0a1d4571b2892dd` was anonymously hash-verified. Source acquisition remains paused until delivery.
+
+
+## P7: Continuous, batched and interruptible GitHub Actions execution
+
+User-directed follow-up,27October2026. Contract: [hosted-execution.md](./hosted-execution.md).
+
+- [x] Verify current local versus hosted execution, existing secret names, active writers and report/publication state.
+- [x] Inventory report-only bootstrap:877 referenced objects already have verified public pinned references;119 unreferenced CAS objects explicitly excluded.
+- [x] Define durable checkpoint, interruption, fencing, cold-restore and authority-handover requirements.
+- [ ] Implement and test report-only projection, durable accepted-object/checkpoint protocol and shared writer fencing.
+- [ ] Implement finite serial batch jobs with trusted-main workflow, explicit pause, concurrency, bounded disk and continuation.
+- [ ] Run milestone assurance and Conductor review; fix findings and deliver through green required checks.
+- [ ] Prove exact Actions HF binding, anonymous cold restore, cancellation/resumption and preserved card in a bounded native pilot.
+- [ ] Hand over from local writers and enable scheduled continuation only after native proof; retain separate natural-schedule acceptance.
+
+Latest local workset20261027T075911Z observed100 entries (page-one anchor, deep pages6–9, targeted late-attachment query and forward pages76–79);40new originals published and verified,798total originals+1metadata-only,0failed/0pending. Forward cursor80 and deep-reconciliation cursor10 remain separate. The known metadata-only report still has no attachment. Publication11eaae7bc65fae059f1770358daca78fae07f52af3d72cef00224d670ee07d36 at1c43e95e222ca0059276a7d1994b7714ca85dd7a. Runtime receipts and immutable originals remain on PortableSSD. Selective lane remains eight individually qualified author derivatives; existing holds remain effective. P7 is active work, not deployed collection.
