@@ -63,6 +63,8 @@ def test_api_cursor_is_durable_and_separate_from_capture(
     tmp_path: Path, monkeypatch: MonkeyPatch
 ) -> None:
     """A fresh process resumes the next report page without claiming payload capture."""
+    # The fictional catalogue must not consult the live shared HF authority.
+    monkeypatch.setattr(commands, "legacy_source_guard", lambda: None)
     original = httpx.AsyncClient
     requests: list[int] = []
     guard_calls: list[str] = []

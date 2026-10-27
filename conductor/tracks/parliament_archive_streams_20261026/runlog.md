@@ -131,3 +131,40 @@ Only the sanitized result reaches console/receipt. All48 hosted integration
 tests pass and selected strict typing/Ruff pass. No SDK log or unqualified body
 has been published. The final delivery commit requires complete local/hosted
 checks; there are still no native checkpoint writes or archive acquisitions.
+
+## Native handover checkpoint — 27 October 2026
+
+PR795 mergedf4bfaa5c at13:43:45UTC after all required Ubuntu/macOS/Windows,
+workflow lint, CodeQL and patch-coverage checks passed at23739145. Integrated
+local assurance passed8600 tests,14 capability skips,96.53% coverage and every
+required stage. Actual PortableSSD CPython3.15.1 and editable binding were verified.
+
+The first native bootstrap created only the initial public control pointer, then
+stopped on public_checkpoint_unavailable before a snapshot was committed. Its
+failed receipt is retained as bootstrap-native.json. Later exact same-client
+anonymous read succeeded; no client/authentication fallback was used. Readback
+at342e6ac45e0225cfa6b97546de7c7e76d2e78019 shows checkpoint=null, enabled=false,
+matching frozen local marker/owner,798 originals+1metadata-only locally, no pending
+publication and the unchanged maintained card. No report acquisition occurred.
+
+After the desktop interruption, the initial lease had expired at18:44:53UTC. An
+exact red regression reproduced that the locked bootstrap recovery did not renew
+its own matching marker owner. The fix renews that exact owner only after the
+existing local lock and identity checks. Metadata reads now use the supported
+SDK20-second timeout and only sha/private/gated fields, with missing flags rejected.
+Installed SDK signature and one bounded native exact-target read qualified these
+parameters; no custom HTTP client was injected. Native cloud binding/activation
+remain pending until this runtime fix passes delivery and initialization recovers.
+
+The first runtime-fix full gate passed8604 tests but exposed one fictional cursor
+test consulting the now-existing live shared HF pointer. The production guard
+correctly blocked it. Isolated that test's coordinator alongside its existing
+mock catalogue/client; no production guard was removed. Its cached failure-only
+rerun passes. Retained the first failure; the candidate full gate is rerun after
+this test-input correction.
+
+All8605 tests now pass. The Medallion mutation stage then detected its old
+visibility-condition text anchor no longer matched the stricter fail-closed
+condition. Updated that anchor while retaining the same private-check-removal
+mutation and test selector. No mutation was removed or waived. Reuse completed
+gates and rerun the affected mutation plus the not-yet-completed remaining stages.

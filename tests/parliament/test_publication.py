@@ -119,8 +119,12 @@ def test_native_hub_contract_and_unknown_outcome(
     revision = "parent"
     commits: list[object] = []
 
-    def dataset_info(repo: str) -> object:
+    def dataset_info(repo: str, *, timeout: float, expand: list[str]) -> object:
         assert repo == "example/repo"
+        assert (timeout, expand) == (
+            publication.METADATA_TIMEOUT,
+            ["sha", "private", "gated"],
+        )
         return SimpleNamespace(private=private, gated=gated, sha=revision)
 
     def get_paths_info(repo: str, **kwargs: object) -> list[object]:
