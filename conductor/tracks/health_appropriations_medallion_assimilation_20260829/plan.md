@@ -1580,6 +1580,12 @@ deliberately exercise version handling.
 - [ ] Add rebuildable federation tables for approved links to
   `reimbursement-atlas` and `global-medicines-atlas`; preserve unmatched and
   ambiguous mappings. [M-14; AC-14]
+  - [x] Obtain both immutable partner snapshot slices and pinned review evidence;
+    resolve the ten qualified annual-headline pairs as source-backed record-grain
+    exclusions, preserving source literals and zero positive joins. Verify curated
+    pins, inventory closure, deterministic v3 export and unchanged v1/v2 products.
+    Other grains and positive-link admission remain separate. See
+    `partner-snapshot-review-20261028.md`.
   - [x] Materialize ten reason-coded pending partner pairs from verified five-edition
     inputs; schema-check absent target/method/confidence/interval evidence and
     keep approved links empty. Existing unmatched/ambiguous fixture contracts

@@ -65,6 +65,10 @@ def test_api_cursor_is_durable_and_separate_from_capture(
     """A fresh process resumes the next report page without claiming payload capture."""
     original = httpx.AsyncClient
     requests: list[int] = []
+    guard_calls: list[str] = []
+    monkeypatch.setattr(
+        commands, "legacy_source_guard", lambda: guard_calls.append("checked")
+    )
 
     def handle(request: httpx.Request) -> httpx.Response:
         if request.url.path == "/robots.txt":
@@ -99,6 +103,7 @@ def test_api_cursor_is_durable_and_separate_from_capture(
     assert commands.execute("reports", tmp_path)["next_page"] is None
     assert commands.execute("reports", tmp_path)["observed_exhaustion"] is True
     assert requests == [1, 2]
+    assert guard_calls == ["checked", "checked"]
     assert ParliamentArchive(tmp_path).summary()["pending"] == 11
     assert ParliamentArchive(tmp_path).summary()["captured"] == 0
 

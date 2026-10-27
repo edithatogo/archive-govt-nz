@@ -1,0 +1,520 @@
+{
+  "pair_count": 10,
+  "partners": {
+    "global-medicines-atlas": {
+      "disposition": "excluded",
+      "exclusion_scope": "no_equivalence_join_for_qualified_annual_vote_totals_in_this_snapshot",
+      "method": "reviewed_record_grain_exclusion",
+      "publisher_control_observations": [
+        {
+          "control_path": "SHA256SUMS",
+          "expected_sha256": "7c46869271e8f7173537e9368d2d60817f7f56cc1264aa99ea108244a9fbd146",
+          "observed_sha256": "7c46869271e8f7173537e9368d2d60817f7f56cc1264aa99ea108244a9fbd146",
+          "partner": "global-medicines-atlas",
+          "path": "DATA_LICENSE.md",
+          "status": "matched"
+        },
+        {
+          "control_path": "SHA256SUMS",
+          "expected_sha256": "f62c8c5b18011100b1fcd55cb85d4349a6b9a688849d45489fde4321f0538200",
+          "observed_sha256": "02825cc9f6dd66acf7346711dede1cde366a0ce5ba5b21462f57ff151c0c1736",
+          "partner": "global-medicines-atlas",
+          "path": "README.md",
+          "status": "mismatch"
+        },
+        {
+          "control_path": "SHA256SUMS",
+          "expected_sha256": "8931cf4dfeb10f5c18508387d2aa8129376fc7e52b50e4d074932402d0fb0672",
+          "observed_sha256": "8931cf4dfeb10f5c18508387d2aa8129376fc7e52b50e4d074932402d0fb0672",
+          "partner": "global-medicines-atlas",
+          "path": "SOURCE_RIGHTS.md",
+          "status": "matched"
+        },
+        {
+          "control_path": "SHA256SUMS",
+          "expected_sha256": "2841c91d6fa377db668ed62ad387282ae5fdd941e2572a6f081c3350e2c85917",
+          "observed_sha256": "2841c91d6fa377db668ed62ad387282ae5fdd941e2572a6f081c3350e2c85917",
+          "partner": "global-medicines-atlas",
+          "path": "inventory/archival-manifest.json",
+          "status": "matched"
+        },
+        {
+          "control_path": "SHA256SUMS",
+          "expected_sha256": "18948f83325d22bf34e82ac78c14637f4e27ef6ac75900bc58a461926eb26cf0",
+          "observed_sha256": "18948f83325d22bf34e82ac78c14637f4e27ef6ac75900bc58a461926eb26cf0",
+          "partner": "global-medicines-atlas",
+          "path": "inventory/source-inventory.json",
+          "status": "matched"
+        },
+        {
+          "control_path": "SHA256SUMS",
+          "expected_sha256": "61af7a75818eb4dd9ef94804956c88a18d1d65d8832a9999690f0c5c15fb8325",
+          "observed_sha256": "61af7a75818eb4dd9ef94804956c88a18d1d65d8832a9999690f0c5c15fb8325",
+          "partner": "global-medicines-atlas",
+          "path": "inventory/source-inventory.parquet",
+          "status": "matched"
+        },
+        {
+          "control_path": "SHA256SUMS",
+          "expected_sha256": "11fd3f8ea01fcd3015e00428e52791034527b5b58a6d3aec5a33f386a8aba0e4",
+          "observed_sha256": "11fd3f8ea01fcd3015e00428e52791034527b5b58a6d3aec5a33f386a8aba0e4",
+          "partner": "global-medicines-atlas",
+          "path": "medicine_source_catalog.json",
+          "status": "matched"
+        },
+        {
+          "control_path": "SHA256SUMS",
+          "expected_sha256": "adc732a503cf7a11f8b654fcce408110e74c2222c8795bdec6517e8e5cb4f494",
+          "observed_sha256": "adc732a503cf7a11f8b654fcce408110e74c2222c8795bdec6517e8e5cb4f494",
+          "partner": "global-medicines-atlas",
+          "path": "metadata/publication-identities.json",
+          "status": "matched"
+        },
+        {
+          "control_path": "SHA256SUMS",
+          "expected_sha256": "d9f2680530cf49cabd409332fc4c681746f86acfe0e0326df30f1ced53982951",
+          "observed_sha256": "d9f2680530cf49cabd409332fc4c681746f86acfe0e0326df30f1ced53982951",
+          "partner": "global-medicines-atlas",
+          "path": "metadata/source-rights-disposition.json",
+          "status": "matched"
+        },
+        {
+          "control_path": "SHA256SUMS",
+          "expected_sha256": "ddc5942179ed2384c06606e9dcb94e3fcfdf99bbdc7aa2249a6251f39031e3bc",
+          "observed_sha256": "ddc5942179ed2384c06606e9dcb94e3fcfdf99bbdc7aa2249a6251f39031e3bc",
+          "partner": "global-medicines-atlas",
+          "path": "metadata/sources/nz-medsafe-products.json",
+          "status": "matched"
+        }
+      ],
+      "reason": "record_grain_incompatible_with_annual_vote_total",
+      "record_grain": "medicine_source_catalogue",
+      "rights_policy": "source_specific_not_inherited",
+      "snapshot_key": "medicines-hub",
+      "target_record_field": "source_id",
+      "target_record_ids": [
+        "ae-dha-prices",
+        "ae-ede-register",
+        "ar-anmat-vademecum",
+        "au-amt-rf2",
+        "au-artg",
+        "au-pbs-api",
+        "au-pbs-embargo",
+        "au-pbs-historical-xml",
+        "au-tga-daen",
+        "au-tga-pi-cmi",
+        "au-tga-regulatory-events",
+        "bh-moh-drug-prices",
+        "br-anvisa-medicines",
+        "br-cmed-prices",
+        "br-conitec-decisions",
+        "ca-canada-vigilance",
+        "ca-cda-recommendations",
+        "ca-cihi-nhex-medicines",
+        "ca-dpd",
+        "ca-noc",
+        "ca-nova-scotia-pharmacare",
+        "ca-ontario-odb",
+        "ch-foph-sl-fhir",
+        "ch-foph-specialities",
+        "ch-swissmedic-aips",
+        "ch-swissmedic-authorised",
+        "cl-isp-register",
+        "co-invima-cum",
+        "co-invima-register",
+        "de-bfarm-amice",
+        "dk-medicinpriser",
+        "dk-medstat-utilisation",
+        "eg-eda-register",
+        "eg-eda-safety",
+        "eg-national-eml",
+        "eu-ema-article57",
+        "eu-ema-epar-documents",
+        "eu-ema-json",
+        "eu-ema-medicines",
+        "eu-ema-orphan",
+        "eu-ema-pms-fhir",
+        "eu-ema-referrals",
+        "eu-ema-safety-communications",
+        "eu-ema-xevmpd-credentialed",
+        "eu-eudravigilance-public",
+        "eu-spor-public-metadata",
+        "eu-spor-rms-oms",
+        "eu-union-register",
+        "fr-bdpm",
+        "fr-bdpm-smr-asmr",
+        "fr-open-medic",
+        "gb-emit",
+        "gb-mhra-products",
+        "gb-mhra-yellow-card",
+        "gb-nhs-dmd",
+        "gb-nhs-drug-tariff",
+        "gb-nice-medicines-utilisation",
+        "gb-nice-ta",
+        "gb-openprescribing",
+        "gb-trud-api",
+        "gcc-central-registration",
+        "gh-fda-register",
+        "gh-fda-safety",
+        "gh-national-eml",
+        "global-rxnorm",
+        "global-umc-vigibase",
+        "global-who-amds-gprm",
+        "global-who-availability-surveys",
+        "global-who-databases",
+        "global-who-eml",
+        "global-who-medicine-prices",
+        "global-who-mi4a",
+        "global-who-national-eml-index",
+        "global-who-shortage-sources",
+        "global-who-wla",
+        "id-bpom-product",
+        "ie-pcrs-reimbursement",
+        "in-cdsco-approved-drugs",
+        "in-cdsco-products",
+        "in-nlem",
+        "in-nppa-ceiling-prices",
+        "in-procurement-availability",
+        "in-pvpi-safety",
+        "jp-mhlw-ndb-utilisation",
+        "jp-mhlw-nhi-price",
+        "jp-pmda-approvals",
+        "jp-pmda-package-inserts",
+        "jp-pmda-safety",
+        "ke-national-eml",
+        "ke-ppb-register",
+        "ke-ppb-safety",
+        "kr-hira-atc",
+        "kr-hira-reimbursement",
+        "kr-hira-standard-code",
+        "kr-mfds-nedrug",
+        "kw-moh-medicines",
+        "mus-approved-drug-list",
+        "mus-historical-eml-archive",
+        "mus-pharmacy-board-register",
+        "mus-pharmacy-board-safety",
+        "mx-cofepris-register",
+        "mx-csg-compendium",
+        "my-npra-quest",
+        "ng-nafdac-products",
+        "ng-nafdac-safety",
+        "ng-nhia-medicines",
+        "nl-gipdatabank",
+        "nl-medicijnkosten",
+        "no-dmp-fhir",
+        "no-fest",
+        "no-norpd-utilisation",
+        "nz-medsafe-documents",
+        "nz-medsafe-products",
+        "nz-nzhts-fhir",
+        "nz-nzulm-bulk",
+        "nz-pharmac-hml",
+        "nz-pharmac-schedule",
+        "nz-pharmac-schedule-xml",
+        "om-moh-medicines",
+        "ph-fda-verification",
+        "pk-drap-register",
+        "pk-drap-safety",
+        "pk-neml",
+        "qa-moh-medicines",
+        "rw-national-eml",
+        "rw-rwandafda-register",
+        "rw-rwandafda-safety",
+        "sa-chi-formulary",
+        "sa-sfda-drug-list",
+        "se-npl-nsl",
+        "se-socialstyrelsen-utilisation",
+        "se-tlv-subsidies",
+        "sg-hsa-approval-deltas",
+        "sg-hsa-register",
+        "sg-moh-drug-list",
+        "sn-dpm-register",
+        "sn-dpm-safety",
+        "sn-national-eml",
+        "th-fda-search",
+        "tz-national-eml",
+        "tz-tmda-products",
+        "tz-tmda-safety",
+        "ug-national-eml",
+        "ug-nda-register",
+        "ug-nda-safety",
+        "us-cms-mdrp",
+        "us-cms-nadac",
+        "us-cms-partd-formulary",
+        "us-cms-partd-spending",
+        "us-dailymed-spl",
+        "us-drugsfda",
+        "us-fda-drug-shortages",
+        "us-fda-faers",
+        "us-fda-ndc-directory",
+        "us-fda-nsde",
+        "us-fda-orange-book",
+        "us-fda-recalls-notices",
+        "us-fda-rems",
+        "us-gsrs-unii",
+        "us-openfda-drugsfda",
+        "us-openfda-enforcement",
+        "us-openfda-faers",
+        "us-openfda-ndc",
+        "us-openfda-nsde",
+        "us-rxnorm-api",
+        "za-national-eml",
+        "za-sahpra-register",
+        "za-sahpra-safety",
+        "za-single-exit-price",
+        "zw-mcaz-register",
+        "zw-mcaz-safety",
+        "zw-national-eml"
+      ],
+      "target_table": "medicine_source_catalog.json"
+    },
+    "reimbursement-atlas": {
+      "disposition": "excluded",
+      "exclusion_scope": "no_equivalence_join_for_qualified_annual_vote_totals_in_this_snapshot",
+      "method": "reviewed_record_grain_exclusion",
+      "publisher_control_observations": [
+        {
+          "control_path": "medallion_manifest.json",
+          "expected_sha256": "c27b998f9425714c42da0a9c8192e6fb5a613031210548cc0eb8b44388aaa8c4",
+          "observed_sha256": "c27b998f9425714c42da0a9c8192e6fb5a613031210548cc0eb8b44388aaa8c4",
+          "partner": "reimbursement-atlas",
+          "path": "data/medallion/catalogue_b0/data.jsonl",
+          "status": "matched"
+        },
+        {
+          "control_path": "medallion_manifest.json",
+          "expected_sha256": "299b3721f72af235dc80a9b96f590a39ef8fe0b683618764ad56af713e1848a1",
+          "observed_sha256": "299b3721f72af235dc80a9b96f590a39ef8fe0b683618764ad56af713e1848a1",
+          "partner": "reimbursement-atlas",
+          "path": "data/medallion/silver/data.jsonl",
+          "status": "matched"
+        },
+        {
+          "control_path": "medallion_manifest.json",
+          "expected_sha256": "a4d3a99d9b6db9dff6a9e267e73806460b082d8ee8fbdefb55a3c7d077d85532",
+          "observed_sha256": "a4d3a99d9b6db9dff6a9e267e73806460b082d8ee8fbdefb55a3c7d077d85532",
+          "partner": "reimbursement-atlas",
+          "path": "data/medallion/gold/data.jsonl",
+          "status": "matched"
+        },
+        {
+          "control_path": "medallion_manifest.json",
+          "expected_sha256": "82aa16098cbbdedb8d6583caf367c8a41b34ca00f448e354a3921b12592dc9d6",
+          "observed_sha256": "82aa16098cbbdedb8d6583caf367c8a41b34ca00f448e354a3921b12592dc9d6",
+          "partner": "reimbursement-atlas",
+          "path": "data/medallion/platinum/data.jsonl",
+          "status": "matched"
+        },
+        {
+          "control_path": "medallion_manifest.json",
+          "expected_sha256": "9d73e2f79b44f221486b4ad0e1df576cdbd18763d1aa3fa7adb8e6fe526e639f",
+          "observed_sha256": "9d73e2f79b44f221486b4ad0e1df576cdbd18763d1aa3fa7adb8e6fe526e639f",
+          "partner": "reimbursement-atlas",
+          "path": "data/medallion/lineage/data.jsonl",
+          "status": "matched"
+        }
+      ],
+      "reason": "record_grain_incompatible_with_annual_vote_total",
+      "record_grain": "medallion_artifact_metadata",
+      "rights_policy": "source_specific_not_inherited",
+      "snapshot_key": "reimbursement-hub",
+      "target_record_field": "artifact_id",
+      "target_record_ids": [
+        "gold:mapping-study-expansion-v9",
+        "gold:source-transparency-claim-package"
+      ],
+      "target_table": "data/medallion/gold/data.jsonl"
+    }
+  },
+  "schema_version": "archive-govt-nz.health-partner-review/v1",
+  "scope": "qualified_annual_vote_total_only",
+  "snapshots": {
+    "medicines-hub": {
+      "inventory": [
+        {
+          "bytes": 4057,
+          "path": "README.md",
+          "sha256": "02825cc9f6dd66acf7346711dede1cde366a0ce5ba5b21462f57ff151c0c1736"
+        },
+        {
+          "bytes": 978,
+          "path": "DATA_LICENSE.md",
+          "sha256": "7c46869271e8f7173537e9368d2d60817f7f56cc1264aa99ea108244a9fbd146"
+        },
+        {
+          "bytes": 1721,
+          "path": "SOURCE_RIGHTS.md",
+          "sha256": "8931cf4dfeb10f5c18508387d2aa8129376fc7e52b50e4d074932402d0fb0672"
+        },
+        {
+          "bytes": 5621,
+          "path": "SHA256SUMS",
+          "sha256": "c09ce43753629afa979988bd30b9c099847310c17117672d3435b5f06843078f"
+        },
+        {
+          "bytes": 350768,
+          "path": "medicine_source_catalog.json",
+          "sha256": "11fd3f8ea01fcd3015e00428e52791034527b5b58a6d3aec5a33f386a8aba0e4"
+        },
+        {
+          "bytes": 4576,
+          "path": "inventory/archival-manifest.json",
+          "sha256": "2841c91d6fa377db668ed62ad387282ae5fdd941e2572a6f081c3350e2c85917"
+        },
+        {
+          "bytes": 163058,
+          "path": "inventory/source-inventory.json",
+          "sha256": "18948f83325d22bf34e82ac78c14637f4e27ef6ac75900bc58a461926eb26cf0"
+        },
+        {
+          "bytes": 17608,
+          "path": "inventory/source-inventory.parquet",
+          "sha256": "61af7a75818eb4dd9ef94804956c88a18d1d65d8832a9999690f0c5c15fb8325"
+        },
+        {
+          "bytes": 1521,
+          "path": "metadata/publication-identities.json",
+          "sha256": "adc732a503cf7a11f8b654fcce408110e74c2222c8795bdec6517e8e5cb4f494"
+        },
+        {
+          "bytes": 139997,
+          "path": "metadata/source-rights-disposition.json",
+          "sha256": "d9f2680530cf49cabd409332fc4c681746f86acfe0e0326df30f1ced53982951"
+        },
+        {
+          "bytes": 1114,
+          "path": "metadata/sources/nz-medsafe-products.json",
+          "sha256": "ddc5942179ed2384c06606e9dcb94e3fcfdf99bbdc7aa2249a6251f39031e3bc"
+        }
+      ],
+      "kind": "hugging_face",
+      "partner": "global-medicines-atlas",
+      "repository": "edithatogo/global-medicines-atlas-catalogue",
+      "revision": "117caee3e1cf31d476c6a66a9860963cc35ed0cb",
+      "snapshot_sha256": "2d3903a578e54ae40127588458c30bceaa055fc754acdccfa1f185d74d55fa26"
+    },
+    "medicines-review": {
+      "inventory": [
+        {
+          "bytes": 2173,
+          "path": "docs/publication/data-layer-archive-receipt.md",
+          "sha256": "00e7bc86c2c96272cf6da85b55e869545dc32390f6735f22d9e8fb418dc89981"
+        },
+        {
+          "bytes": 2680,
+          "path": "docs/publication/external-publication-runbook.md",
+          "sha256": "afaea342f1082e5bd573e3cfc945639c6078711fa449756864aec1d94bd4c22c"
+        },
+        {
+          "bytes": 1789,
+          "path": "docs/federation-source-metadata.md",
+          "sha256": "ca6b317ef37ac33e04672bfc205e46d1aafd0cb3dff2f1b0df7ec81e24102bfe"
+        },
+        {
+          "bytes": 978,
+          "path": "DATA_LICENSE.md",
+          "sha256": "7c46869271e8f7173537e9368d2d60817f7f56cc1264aa99ea108244a9fbd146"
+        }
+      ],
+      "kind": "github",
+      "partner": "global-medicines-atlas",
+      "repository": "edithatogo/global-medicines-atlas",
+      "revision": "b87760c980d3e1aaf73207baa970791f55158706",
+      "snapshot_sha256": "c200db1b7d593b3e3465030212d2b3de9821f56bd78fba20d8f15f429adfad63"
+    },
+    "reimbursement-hub": {
+      "inventory": [
+        {
+          "bytes": 3685,
+          "path": "README.md",
+          "sha256": "ebb066a5ad7f46f8bc86001ab8090833eacaeb75494e426171db2f4fc6dfd1a3"
+        },
+        {
+          "bytes": 405,
+          "path": "RIGHTS.md",
+          "sha256": "abe4bc1c7393f7b6008e37c29b58aeb675cae7155cff25418a3f27e1c6625b0c"
+        },
+        {
+          "bytes": 11358,
+          "path": "LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "bytes": 2097,
+          "path": "federation_manifest.json",
+          "sha256": "4bae1c50325189c05652575404f74e86b34cd92b4392e8d322b30c5240092b56"
+        },
+        {
+          "bytes": 3786,
+          "path": "medallion_manifest.json",
+          "sha256": "3f54ba0298d174e56d53380ade5c6b335f1d0102f349cc1394c3070777aa6091"
+        },
+        {
+          "bytes": 1316,
+          "path": "medallion_contract_manifest.json",
+          "sha256": "ef98ac5a452bbdceedbc724c4ed48be0518998083c08a4537b0db275cd38c6b7"
+        },
+        {
+          "bytes": 12732,
+          "path": "data/medallion/silver/data.jsonl",
+          "sha256": "299b3721f72af235dc80a9b96f590a39ef8fe0b683618764ad56af713e1848a1"
+        },
+        {
+          "bytes": 3267,
+          "path": "data/medallion/gold/data.jsonl",
+          "sha256": "a4d3a99d9b6db9dff6a9e267e73806460b082d8ee8fbdefb55a3c7d077d85532"
+        },
+        {
+          "bytes": 2088,
+          "path": "data/medallion/platinum/data.jsonl",
+          "sha256": "82aa16098cbbdedb8d6583caf367c8a41b34ca00f448e354a3921b12592dc9d6"
+        },
+        {
+          "bytes": 27219,
+          "path": "data/medallion/catalogue_b0/data.jsonl",
+          "sha256": "c27b998f9425714c42da0a9c8192e6fb5a613031210548cc0eb8b44388aaa8c4"
+        },
+        {
+          "bytes": 10763,
+          "path": "data/medallion/lineage/data.jsonl",
+          "sha256": "9d73e2f79b44f221486b4ad0e1df576cdbd18763d1aa3fa7adb8e6fe526e639f"
+        },
+        {
+          "bytes": 204112,
+          "path": "data/derived/publication_manifest.json",
+          "sha256": "9f6756db8e913ae0c9af7359a1998add1bbb01dc6369158c684bfdbd4457ccd7"
+        }
+      ],
+      "kind": "hugging_face",
+      "partner": "reimbursement-atlas",
+      "repository": "edithatogo/reimbursement-atlas",
+      "revision": "8c75366a5d5fbf72cdde1d9f83e6f1cbaef7a338",
+      "snapshot_sha256": "00cd631a12702778935c46c313b536eb1627304456455d544e407eb66bd08787"
+    },
+    "reimbursement-review": {
+      "inventory": [
+        {
+          "bytes": 6694,
+          "path": "data/derived/mapping_study/expansion_v9/evaluation_summary.json",
+          "sha256": "d37f4d3ca93f60ac628dfb1ed290887fa06a540298cbf5af157561b5ac80696b"
+        },
+        {
+          "bytes": 981401,
+          "path": "data/mapping_study/expansion_v9/adjudications.jsonl",
+          "sha256": "6c30943a871b72cd2ddce637e840d6a1a2a8a6a0fda89658da95414c1495d545"
+        },
+        {
+          "bytes": 364,
+          "path": "apps/dashboard/public/data/gold_standard_mappings.csv",
+          "sha256": "78f34bad612325c417e55484ee570475e05dc22870c9620cb363e1c1d37258cd"
+        }
+      ],
+      "kind": "github",
+      "partner": "reimbursement-atlas",
+      "repository": "edithatogo/reimbursement-atlas",
+      "revision": "a93516ed416118bc51c1db2b71ab540fa4d0fe52",
+      "snapshot_sha256": "8975e0645ad7fe4fef1fcf8a251cd8ed5d90f837982890fd0108a9a0b94b67be"
+    }
+  },
+  "source_readiness_sha256": "5a6224975294e6766b5c1d92d26ea7609eaaf237dfa782422588c4cf02abc761"
+}

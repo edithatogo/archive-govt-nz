@@ -1,0 +1,66 @@
+{
+  "schema_version": "archive-govt-nz.health-federation-readiness/v2",
+  "scope": "qualified_headline_inputs_only",
+  "approved_links": [],
+  "records": [
+    {
+      "package_id": "urn:archive-govt-nz:health:qualified:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "profile": "synthetic-fixture/v1",
+      "manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "disposition": "excluded",
+      "reason": "record_grain_incompatible_with_annual_vote_total",
+      "target_manifest_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "target_key": null,
+      "target_scheme_version": null,
+      "mapping_method": "reviewed_record_grain_exclusion",
+      "confidence": null,
+      "source_record_ids": [
+        "synthetic:source-record"
+      ],
+      "period_tokens": [
+        "2022/23"
+      ],
+      "period_basis": "source_literals_only_no_effective_interval_inferred",
+      "target_repository": "global-medicines-atlas",
+      "target_snapshot_revision": "cccccccccccccccccccccccccccccccccccccccc",
+      "target_record_grain": "medallion_artifact_metadata",
+      "target_record_count": 2,
+      "mapping_review_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    },
+    {
+      "package_id": "urn:archive-govt-nz:health:qualified:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "profile": "synthetic-fixture/v1",
+      "manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "disposition": "excluded",
+      "reason": "record_grain_incompatible_with_annual_vote_total",
+      "target_manifest_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "target_key": null,
+      "target_scheme_version": null,
+      "mapping_method": "reviewed_record_grain_exclusion",
+      "confidence": null,
+      "source_record_ids": [
+        "synthetic:source-record"
+      ],
+      "period_tokens": [
+        "2022/23"
+      ],
+      "period_basis": "source_literals_only_no_effective_interval_inferred",
+      "target_repository": "reimbursement-atlas",
+      "target_snapshot_revision": "cccccccccccccccccccccccccccccccccccccccc",
+      "target_record_grain": "medallion_artifact_metadata",
+      "target_record_count": 2,
+      "mapping_review_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    }
+  ],
+  "publication": "not_performed",
+  "excluded_pairs": 2,
+  "pending_pairs": 0,
+  "review_scope": "qualified_annual_vote_total_only",
+  "review_status": "complete_for_pinned_scope",
+  "positive_link_admission": "not_qualified",
+  "positive_link_requirements": [
+    "compatible_record_grain_and_versioned_keys",
+    "source_specific_rights_and_period_qualification",
+    "reviewed_relationship_method_confidence_and_lineage"
+  ]
+}

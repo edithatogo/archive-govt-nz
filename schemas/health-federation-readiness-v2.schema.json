@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-federation-readiness-v2.schema.json",
+  "title": "Reviewed exclusions for pinned annual Vote total federation pairs",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "scope",
+    "approved_links",
+    "records",
+    "publication",
+    "excluded_pairs",
+    "pending_pairs",
+    "review_scope",
+    "review_status",
+    "positive_link_admission",
+    "positive_link_requirements"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-federation-readiness/v2"
+    },
+    "scope": {
+      "const": "qualified_headline_inputs_only"
+    },
+    "approved_links": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "records": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "package_id",
+          "profile",
+          "manifest_sha256",
+          "target_repository",
+          "disposition",
+          "reason",
+          "target_manifest_sha256",
+          "target_key",
+          "target_scheme_version",
+          "mapping_method",
+          "confidence",
+          "source_record_ids",
+          "period_tokens",
+          "period_basis",
+          "target_snapshot_revision",
+          "target_record_grain",
+          "target_record_count",
+          "mapping_review_sha256"
+        ],
+        "properties": {
+          "package_id": {
+            "type": "string",
+            "pattern": "^urn:archive-govt-nz:health:qualified:[a-f0-9]{64}$"
+          },
+          "profile": {
+            "type": "string",
+            "minLength": 1
+          },
+          "manifest_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "target_repository": {
+            "enum": [
+              "global-medicines-atlas",
+              "reimbursement-atlas"
+            ]
+          },
+          "disposition": {
+            "const": "excluded"
+          },
+          "reason": {
+            "const": "record_grain_incompatible_with_annual_vote_total"
+          },
+          "target_manifest_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "target_key": {
+            "type": "null"
+          },
+          "target_scheme_version": {
+            "type": "null"
+          },
+          "mapping_method": {
+            "const": "reviewed_record_grain_exclusion"
+          },
+          "confidence": {
+            "type": "null"
+          },
+          "source_record_ids": {
+            "type": "array",
+            "uniqueItems": true,
+            "maxItems": 100,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "period_tokens": {
+            "type": "array",
+            "uniqueItems": true,
+            "maxItems": 100,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100
+            }
+          },
+          "period_basis": {
+            "const": "source_literals_only_no_effective_interval_inferred"
+          },
+          "target_snapshot_revision": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{40}$"
+          },
+          "target_record_grain": {
+            "enum": [
+              "medallion_artifact_metadata",
+              "medicine_source_catalogue"
+            ]
+          },
+          "target_record_count": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10000
+          },
+          "mapping_review_sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "publication": {
+      "const": "not_performed"
+    },
+    "excluded_pairs": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 10
+    },
+    "pending_pairs": {
+      "const": 0
+    },
+    "review_scope": {
+      "const": "qualified_annual_vote_total_only"
+    },
+    "review_status": {
+      "const": "complete_for_pinned_scope"
+    },
+    "positive_link_admission": {
+      "const": "not_qualified"
+    },
+    "positive_link_requirements": {
+      "const": [
+        "compatible_record_grain_and_versioned_keys",
+        "source_specific_rights_and_period_qualification",
+        "reviewed_relationship_method_confidence_and_lineage"
+      ]
+    }
+  }
+}
