@@ -1450,6 +1450,12 @@ deliberately exercise version handling.
 
 ### 7.1 Metadata and rights contracts first
 
+- [x] Project the five qualified headline rights records into resource-scoped
+  DCAT, Croissant, RO-Crate and entity-only PROV; reconstruct pinned inputs,
+  reject forged grants, verify ten licensed data resources per graph and repeat
+  builds without source mutation. See `qualified-overview-metadata-20261027.md`.
+  Full profile, federation and release gates remain open. [M-14, M-17; AC-14]
+
 - [x] Qualify the five 2022/23–2026/27 Vote Health headline data resources
   against exact publisher chapter/collection rights and retained licence evidence;
   emit fresh per-resource Gold rights manifests and attribution while preserving

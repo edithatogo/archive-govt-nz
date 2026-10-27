@@ -1,0 +1,39 @@
+{
+  "status": "verified_native_five_edition_metadata",
+  "profiles": 5,
+  "data_resources": 10,
+  "graphs": {
+    "dcat.json": {
+      "rdf_triples": 135,
+      "licensed_data_resources": 10,
+      "sha256": "e3b9afb765532f57f2f1199562b93e33e15d29b9a8698e5fc0b8c258544405ab"
+    },
+    "prov.json": {
+      "rdf_triples": 203,
+      "licensed_data_resources": 10,
+      "sha256": "d149e1113874f6c5c075ee4cf9a91901c9d80d0ee1682e0d18f548c8964381b3"
+    },
+    "croissant.json": {
+      "rdf_triples": 1068,
+      "licensed_data_resources": 10,
+      "sha256": "1481dd9dc2d156f091682f78eb80352fff8400cba49bad04cbb3641e582be886"
+    },
+    "ro-crate-metadata.json": {
+      "rdf_triples": 97,
+      "licensed_data_resources": 10,
+      "sha256": "2f3d47bd622ff0e52824e991a8f2147b900dbb36feab00940eaece7f5090ffb5"
+    }
+  },
+  "repeat_identical": true,
+  "inputs_unchanged": true,
+  "output_sha256": {
+    "catalogue.json": "13753d67b2ea6ff5b33e8a99f59a4d302188370092b8fb15f4fe3cbc66ad060c",
+    "dcat.json": "e3b9afb765532f57f2f1199562b93e33e15d29b9a8698e5fc0b8c258544405ab",
+    "prov.json": "d149e1113874f6c5c075ee4cf9a91901c9d80d0ee1682e0d18f548c8964381b3",
+    "croissant.json": "1481dd9dc2d156f091682f78eb80352fff8400cba49bad04cbb3641e582be886",
+    "ro-crate-metadata.json": "2f3d47bd622ff0e52824e991a8f2147b900dbb36feab00940eaece7f5090ffb5",
+    "profile-validation.json": "0aec4f153003db85198e7748e3717673352e580f71d7ab518880384ef7523dd7"
+  },
+  "full_conformance": "not_asserted",
+  "publication": "not_performed"
+}
