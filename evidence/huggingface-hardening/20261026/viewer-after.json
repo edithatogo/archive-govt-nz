@@ -1,0 +1,252 @@
+[
+  {
+    "repo": "edithatogo/archive-govt-nz-global",
+    "http_status": 200,
+    "expected_configs": [
+      "parliament_catalogue"
+    ],
+    "actual_configs": [
+      "parliament_catalogue"
+    ],
+    "configs_verified": true,
+    "pending": [],
+    "failed": [],
+    "error": null
+  },
+  {
+    "repo": "edithatogo/archive-govt-nz-treasury",
+    "http_status": 200,
+    "expected_configs": [
+      "treasury"
+    ],
+    "actual_configs": [
+      "treasury"
+    ],
+    "configs_verified": true,
+    "pending": [],
+    "failed": [],
+    "error": null
+  },
+  {
+    "repo": "edithatogo/archive-govt-nz-treasury-csv",
+    "http_status": 200,
+    "expected_configs": [
+      "default"
+    ],
+    "actual_configs": [
+      "default"
+    ],
+    "configs_verified": true,
+    "pending": [],
+    "failed": [],
+    "error": null
+  },
+  {
+    "repo": "edithatogo/archive-govt-nz-treasury-data",
+    "http_status": 200,
+    "expected_configs": [
+      "default"
+    ],
+    "actual_configs": [
+      "default"
+    ],
+    "configs_verified": true,
+    "pending": [],
+    "failed": [],
+    "error": null
+  },
+  {
+    "repo": "edithatogo/corpus-legislation-nz",
+    "http_status": 200,
+    "expected_configs": [
+      "legislation"
+    ],
+    "actual_configs": [
+      "legislation"
+    ],
+    "configs_verified": true,
+    "pending": [],
+    "failed": [],
+    "error": null
+  },
+  {
+    "repo": "edithatogo/corpus-legislation-nz-historical",
+    "http_status": 200,
+    "expected_configs": [
+      "historical"
+    ],
+    "actual_configs": [
+      "historical"
+    ],
+    "configs_verified": true,
+    "pending": [],
+    "failed": [],
+    "error": null
+  },
+  {
+    "repo": "edithatogo/corpus-nz-hathi",
+    "http_status": 200,
+    "expected_configs": [
+      "metadata"
+    ],
+    "actual_configs": [
+      "metadata"
+    ],
+    "configs_verified": true,
+    "pending": [],
+    "failed": [],
+    "error": null
+  },
+  {
+    "repo": "edithatogo/corpus-social-media-government-nz",
+    "http_status": 200,
+    "expected_configs": [
+      "normalized"
+    ],
+    "actual_configs": [
+      "normalized"
+    ],
+    "configs_verified": true,
+    "pending": [],
+    "failed": [],
+    "error": null
+  },
+  {
+    "repo": "edithatogo/courts-nz-public-notices-archive",
+    "http_status": 200,
+    "expected_configs": [
+      "normalized"
+    ],
+    "actual_configs": [
+      "normalized"
+    ],
+    "configs_verified": true,
+    "pending": [],
+    "failed": [],
+    "error": null
+  },
+  {
+    "repo": "edithatogo/digitalnz",
+    "http_status": 200,
+    "expected_configs": [
+      "digitalnz_collections",
+      "digitalnz_country_totals",
+      "digitalnz_papers_past_newspapers",
+      "rnz_collections",
+      "rnz_release_manifests",
+      "rnz_usage"
+    ],
+    "actual_configs": [
+      "digitalnz_collections",
+      "digitalnz_country_totals",
+      "digitalnz_papers_past_newspapers",
+      "rnz_collections",
+      "rnz_release_manifests",
+      "rnz_usage"
+    ],
+    "configs_verified": true,
+    "pending": [],
+    "failed": [],
+    "error": null
+  },
+  {
+    "repo": "edithatogo/foi-process-event-logs",
+    "http_status": 200,
+    "expected_configs": [
+      "conformance_findings",
+      "event_log",
+      "event_revisions",
+      "evidence_deltas",
+      "ocel_event_object_links",
+      "ocel_events",
+      "ocel_objects",
+      "process_edges",
+      "process_variants",
+      "simulation_cases",
+      "simulation_daily_metrics",
+      "simulation_event_log",
+      "simulation_event_revisions",
+      "simulation_ocel_event_object_links",
+      "simulation_ocel_events",
+      "simulation_ocel_objects",
+      "simulation_summaries"
+    ],
+    "actual_configs": [
+      "conformance_findings",
+      "event_log",
+      "event_revisions",
+      "evidence_deltas",
+      "ocel_event_object_links",
+      "ocel_events",
+      "ocel_objects",
+      "process_edges",
+      "process_variants",
+      "simulation_cases",
+      "simulation_daily_metrics",
+      "simulation_event_log",
+      "simulation_event_revisions",
+      "simulation_ocel_event_object_links",
+      "simulation_ocel_events",
+      "simulation_ocel_objects",
+      "simulation_summaries"
+    ],
+    "configs_verified": true,
+    "pending": [],
+    "failed": [],
+    "error": null
+  },
+  {
+    "repo": "edithatogo/fyi-archive-nz",
+    "http_status": 200,
+    "expected_configs": [
+      "default"
+    ],
+    "actual_configs": [
+      "default"
+    ],
+    "configs_verified": true,
+    "pending": [],
+    "failed": [],
+    "error": null
+  },
+  {
+    "repo": "edithatogo/nz-hansard-corpus",
+    "http_status": 200,
+    "expected_configs": [
+      "default"
+    ],
+    "actual_configs": [
+      "default"
+    ],
+    "configs_verified": true,
+    "pending": [],
+    "failed": [],
+    "error": null
+  },
+  {
+    "repo": "edithatogo/nz-health-appropriations",
+    "http_status": 200,
+    "expected_configs": [
+      "donor_facts",
+      "field_lineage",
+      "health_spending_gdp_share",
+      "historical_nominal",
+      "historical_yoy",
+      "recent_classification_trends",
+      "recent_functional_breakdown"
+    ],
+    "actual_configs": [
+      "donor_facts",
+      "field_lineage",
+      "health_spending_gdp_share",
+      "historical_nominal",
+      "historical_yoy",
+      "recent_classification_trends",
+      "recent_functional_breakdown"
+    ],
+    "configs_verified": true,
+    "pending": [],
+    "failed": [],
+    "error": null
+  }
+]

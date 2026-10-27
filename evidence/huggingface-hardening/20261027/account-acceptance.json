@@ -1,0 +1,20 @@
+{
+  "counts": {
+    "repositories": 93,
+    "datasets": 83,
+    "public_datasets": 76,
+    "private_repositories_count_only": 8,
+    "public_catalog_entries": 78,
+    "private_dataset_identities_intentionally_omitted": 5,
+    "private_cards_verified_count_only": 6,
+    "original_file_sizes_preserved": true,
+    "visibility_and_existing_gates_preserved": true
+  },
+  "configured_datasets": 12,
+  "first_row_probes": 33,
+  "passing_probes": 33,
+  "public_collections_read_anonymously": 14,
+  "public_card_updates_verified": 36,
+  "private_card_updates_verified_count_only": 6,
+  "private_identities_or_content_added_to_public_evidence": false
+}

@@ -33,7 +33,10 @@ def test_generate_dataset_card_content() -> None:
         tags=("new-zealand", "test"),
     )
     content = generate_dataset_card_content(spec, "## Test Architecture")
-    assert "config_name: test-config" in content
+    assert "pretty_name: Test Dataset" in content
+    assert "dataset_info:" not in content
+    assert "dtype: string" not in content
+    assert "design intent, not proof" in content
     assert "license: cc-by-4.0" in content
     assert "# Test Dataset" in content
     assert "## Architecture Specification" in content

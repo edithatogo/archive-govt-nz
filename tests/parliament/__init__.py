@@ -1,0 +1,1 @@
+"""Synthetic Parliament archive tests."""

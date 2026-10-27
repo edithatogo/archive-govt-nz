@@ -311,7 +311,7 @@ def test_run_command_kills_process_group_on_timeout(
 def test_run_command_kills_process_on_windows_timeout(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """A timed-out Windows stage uses direct process termination."""
+    """A timed-out Windows stage kills its owned descendants and launcher."""
     killed: list[bool] = []
 
     class TimedOutProcess:
@@ -328,7 +328,20 @@ def test_run_command_kills_process_on_windows_timeout(
     def fake_popen(*_args: object, **_kwargs: object) -> TimedOutProcess:
         return TimedOutProcess()
 
+    tree_calls: list[tuple[object, ...]] = []
+
+    def kill_tree(*args: object, **kwargs: object) -> None:
+        tree_calls.append(args)
+        assert kwargs["timeout"] == 30
+        assert kwargs["check"] is False
+
+    monkeypatch.setattr(assurance.subprocess, "run", kill_tree)
     monkeypatch.setattr(assurance.os, "name", "nt")
     monkeypatch.setattr(assurance.subprocess, "Popen", fake_popen)
     assert run_command(("stage",)) == 124
     assert killed
+    assert len(tree_calls) == 1
+    command = tree_calls[0][0]
+    assert isinstance(command, tuple)
+    assert str(command[0]).endswith("taskkill.exe")
+    assert command[1:] == ("/PID", "4343", "/T", "/F")

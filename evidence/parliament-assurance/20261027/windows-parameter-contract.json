@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-10-26T23:25:40.359195+00:00",
+  "pytest_version": "9.1.1",
+  "collected_tests": 8553,
+  "maximum_node_id_characters": 4186,
+  "oversized_ids_remaining": 0,
+  "original_rejected_inputs_bytes": [
+    131073,
+    4194305
+  ],
+  "input_and_fail_closed_assertions_preserved": true,
+  "windows_environment_variable_limit_characters": 32767,
+  "pytest_contract": "Installed _pytest.runner._update_current_test_var places the complete node ID into PYTEST_CURRENT_TEST.",
+  "primary_reference": "https://learn.microsoft.com/en-us/windows/win32/api/processenv/nf-processenv-setenvironmentvariablew",
+  "supervisor": "OS-backed bounded wait; child output only to regular-file artifact, not console forwarding",
+  "local_integrated_head": "ee383841a29de89c3eb41c407cbf513caca14880",
+  "local_integrated_log_sha256": "f569cc24a36b7466b021fa0a4b1b8f16331f7bf5c371c37ed2b02b0dbbb7acbd",
+  "full_local_suite_passes": 8539,
+  "capability_skips": 14,
+  "all_full_local_stages": "passed",
+  "native_windows_acceptance": "pending corrected head"
+}

@@ -4,7 +4,7 @@
   ---
   language:
   - en
-  license: cc-by-4.0
+  license: other
   tags:
   - open-data
   - new-zealand
@@ -12,10 +12,6 @@
   - preservation
   - ckan
   - tabular
-  size_categories:
-  - 10K<n<100K
-  task_categories:
-  - tabular-analysis
   pretty_name: New Zealand Government Open Data Archive
   ---
   
@@ -25,7 +21,7 @@
   open government datasets published across `catalogue.data.govt.nz`.
   
   ## Archival Provenance & Integrity
-  - **Publisher**: New Zealand Open Government Data Programme
+  - **Maintainer**: edithatogo; independent archive, no official endorsement
   - **Archive System**: [archive-govt-nz](https://github.com/edithatogo/archive-govt-nz)
   - **Snapshot Date**: `2026-08-16T00:00:00Z`
   - **Datasets Catalogued**: 10
@@ -38,7 +34,14 @@
   3. `evidence/`: RO-Crate JSON-LD graphs, BagIt packages, and Wayback receipts.
   
   ## License
-  Open Government datasets are catalogued under Creative Commons Attribution (NZ GOAL).
+  Source-specific rights apply. Public availability and NZGOAL do not grant a blanket
+  licence over all archived material. Inspect each source manifest and attribution.
+  Code licensing is separate from original-document rights.
+  Coverage and related collections:
+  These counts describe this CKAN harvest only, not other namespaces in the
+  repository or full historical coverage. Parliament reports and catalogue
+  metadata are documented in `parliament/README.md` when that lane is present.
+  Use pinned revisions and source checksums for reproducibility.
   
   '''
 # ---

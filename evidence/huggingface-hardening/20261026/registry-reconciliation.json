@@ -1,0 +1,10 @@
+{
+  "repo": "edithatogo/dataset-estate-registry",
+  "parent": "6ff409018c6c4b1a6388368b398f68d129d2e87f",
+  "revision": "348bcc813a3f58574128cda4b8a728135ee3cf91",
+  "catalog_sha256": "962228ef21c589b8094605c6b8b75fdb4e586006b818a9a92fbc74203548073f",
+  "unrelated_entries_preserved": true,
+  "updated_entries": 44,
+  "schema_and_canonical_references_validated": true,
+  "anonymous_download_verified": true
+}

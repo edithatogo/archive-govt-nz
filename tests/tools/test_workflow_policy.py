@@ -66,8 +66,10 @@ def test_ci_assurance_timeout_covers_windows_full_harness() -> None:
     """Cross-platform gates must leave time for the final supply-chain steps."""
     root = Path(__file__).parents[2]
     text = (root / ".github/workflows/ci.yml").read_text(encoding="utf-8")
-    assert "timeout-minutes: 30" in text
     workflow = yaml.safe_load(text)
+    assert workflow["jobs"]["quality"]["timeout-minutes"] == (
+        "${{ matrix.os == 'windows-latest' && 60 || 30 }}"
+    )
     steps = workflow["jobs"]["quality"]["steps"]
     optional = [step for step in steps if step.get("continue-on-error")]
     assert [step["id"] for step in optional] == [
@@ -76,6 +78,23 @@ def test_ci_assurance_timeout_covers_windows_full_harness() -> None:
     ]
     required = {step.get("name"): step for step in steps}
     assert "tools/check.py" in required["Run locked assurance gate"]["run"]
+    gate = required["Run locked assurance gate"]
+    assert gate["timeout-minutes"] == 55
+    assert "!= 'windows-latest'" in gate["if"]
+    native = required["Run native Windows locked assurance gate"]
+    assert "== 'windows-latest'" in native["if"]
+    assert native["shell"] == "pwsh"
+    assert native["timeout-minutes"] == 55
+    assert "tools/windows_assurance.py" in native["run"]
+    assert "exit $LASTEXITCODE" in native["run"]
+    assert "Start-Transcript" not in native["run"]
+    assert "set -o pipefail" in gate["run"]
+    assert "2>&1 | tee build/assurance.log" in gate["run"]
+    diagnostics = required["Preserve Windows assurance diagnostics"]
+    assert "always()" in diagnostics["if"]
+    assert "windows-latest" in diagnostics["if"]
+    assert diagnostics["with"]["path"] == "build/assurance.log"
+    assert diagnostics["with"]["if-no-files-found"] == "error"
     artifact = required["Preserve required local coverage evidence"]
     assert artifact["with"]["path"] == "coverage.xml"
     assert artifact["with"]["if-no-files-found"] == "error"

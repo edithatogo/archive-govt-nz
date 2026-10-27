@@ -116,3 +116,7 @@ upstream project's contribution, authorship, disclosure, and AI-use policies.
   rather than inferred from local workflows.
 - Recovery tests demonstrate that published manifests and archived objects can
   reconstruct each validated release.
+
+## Approved Parliament archival extension — 2026-10-26
+
+The [Parliament archival streams track](./tracks/parliament_archive_streams_20261026/index.md) adds released submissions, official advice, reports and business-item context with bounded historical/recent capture and incremental verified Hugging Face delivery. Additional document collections expand through separate source contracts; media remains deferred. Exact destination, source eligibility, capture, recovery and natural schedule evidence remain qualification tasks. Plan registration does not establish operational archival or full coverage.

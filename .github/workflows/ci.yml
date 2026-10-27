@@ -17,7 +17,9 @@ jobs:
   quality:
     name: Assurance (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 30
+    # Windows exceeded the aggregate 30-minute job cap twice; each gate
+    # retains its independent 20-minute process bound.
+    timeout-minutes: ${{ matrix.os == 'windows-latest' && 60 || 30 }}
     env:
       COVERAGE_CORE: ctrace
       PYTHON_JIT: "0"
@@ -38,10 +40,20 @@ jobs:
           version: "0.13.5"
       - name: Verify native Windows output pinning
         if: matrix.os == 'windows-latest'
-        run: uv run --locked pytest tests/domains/health_appropriations/test_operation_gold_output.py -q --no-cov
+        timeout-minutes: 5
+        run: >-
+          uv run --locked pytest
+          tests/domains/health_appropriations/test_operation_gold_output.py
+          tests/parliament/test_recovery.py::test_robots_fail_closed
+          tests/parliament/test_guards.py::test_api_failure_does_not_advance_cursor
+          tests/tools/test_windows_assurance.py -q --no-cov
       - name: Run locked assurance gate
+        if: matrix.os != 'windows-latest'
+        timeout-minutes: 55
         shell: bash
         run: |
+          set -o pipefail
+          mkdir -p build
           pytest_workers=auto
           pytest_distribution=loadscope
           pytest_reporting=()
@@ -54,7 +66,23 @@ jobs:
           uv run --locked python tools/check.py \
             --pytest-workers "$pytest_workers" \
             --pytest-distribution "$pytest_distribution" \
-            "${pytest_reporting[@]}"
+            "${pytest_reporting[@]}" 2>&1 | tee build/assurance.log
+      - name: Run native Windows locked assurance gate
+        if: matrix.os == 'windows-latest'
+        timeout-minutes: 55
+        shell: pwsh
+        env:
+          PYTHONUNBUFFERED: '1'
+        run: |
+          uv run --locked python tools/windows_assurance.py
+          exit $LASTEXITCODE
+      - name: Preserve Windows assurance diagnostics
+        if: always() && matrix.os == 'windows-latest'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: windows-assurance-${{ github.sha }}-${{ github.run_attempt }}
+          path: build/assurance.log
+          if-no-files-found: error
       - name: Preserve completed Windows pytest report
         if: always() && matrix.os == 'windows-latest' && hashFiles('build/pytest-results.xml') != ''
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9

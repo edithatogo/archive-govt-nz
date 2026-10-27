@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Parliament immutable archive batch v2",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "coverage_claim",
+    "records",
+    "decisions",
+    "software"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "parliament-batch/v2"
+    },
+    "coverage_claim": {
+      "const": false
+    },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1000,
+      "items": {
+        "type": "object",
+        "required": [
+          "source_id",
+          "url",
+          "sha256",
+          "size",
+          "content_type",
+          "observed",
+          "record",
+          "representation",
+          "capture_state"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "pattern": "^https://"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "size": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "content_type": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "observed": {
+            "type": "number",
+            "minimum": 0
+          },
+          "record": {
+            "type": "string",
+            "contentMediaType": "application/json"
+          },
+          "representation": {
+            "enum": [
+              "source_metadata",
+              "source_payload"
+            ]
+          },
+          "capture_state": {
+            "enum": [
+              "pending",
+              "captured",
+              "failed",
+              "metadata_only"
+            ]
+          }
+        }
+      }
+    },
+    "decisions": {
+      "type": "object",
+      "minProperties": 1,
+      "maxProperties": 200,
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "sha256",
+          "basis",
+          "evidence_url"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "basis": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4096
+          },
+          "evidence_url": {
+            "type": "string",
+            "pattern": "^https://"
+          }
+        }
+      }
+    },
+    "software": {
+      "type": "object",
+      "required": [
+        "package_version",
+        "python",
+        "implementation_sha256"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "package_version": {
+          "type": "string"
+        },
+        "python": {
+          "type": "string"
+        },
+        "implementation_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

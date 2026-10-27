@@ -1,0 +1,32 @@
+{
+  "observed_at": "2026-10-26T19:32:10.971418+00:00",
+  "run_id": 40369439736,
+  "head_revision": "0222bf4a6f3118600c455ac1cbe1b6d3b755ab04",
+  "windows_job_id": 121735889102,
+  "native_annotation": "The job has exceeded the maximum execution time of 1h0m0s",
+  "job_logs": "BlobNotFound",
+  "windows_diagnostic_artifact": "absent; later artifact steps never executed",
+  "conclusion": "Increasing aggregate budget did not resolve the stall; precise stage remains unobserved",
+  "source_hazard": "Windows timeout path previously killed only the uv launcher, permitting descendants to retain output handles",
+  "remediation": {
+    "aggregate_job_minutes_unchanged": 60,
+    "gate_step_minutes_unchanged": 55,
+    "per_command_seconds_unchanged": 1200,
+    "windows_shell": "native pwsh with transcript and exact native exit propagation",
+    "timeout_cleanup": "absolute Windows system taskkill.exe /PID owned_launcher /T /F, bounded30 seconds; finally kill launcher",
+    "required_stages_unchanged": true
+  },
+  "validation": {
+    "focused_tests": 21,
+    "actionlint": "passed",
+    "ruff": "passed",
+    "selected_types": "passed",
+    "powershell_parser": "passed"
+  },
+  "acquisition_performed": false,
+  "root_cause_status": "process-tree/output-handling hypothesis; native acceptance pending",
+  "references": [
+    "https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/taskkill",
+    "https://docs.github.com/en/enterprise-cloud%40latest/actions/reference/workflows-and-actions/workflow-cancellation"
+  ]
+}

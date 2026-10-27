@@ -1,0 +1,35 @@
+[
+  {
+    "repo": "edithatogo/corpus-legislation-nz-historical",
+    "parent": "44c2d32c1bc1a9011e810761134415ca26c94295",
+    "revision": "7b6fa4ee3dff3d7d1afdfa334f361cffe05c02af",
+    "paths": [
+      "README.md"
+    ],
+    "anonymous_sha256": "8479dca23988a782df3c879acc0f20d6ebdd33e66a153b41b4d8a155c9c1a145",
+    "reason": "explicit observed list-string schema"
+  },
+  {
+    "repo": "edithatogo/digitalnz",
+    "parent": "2c3cbea90df9569285f4ba352f9f5bcdc1c61ff9",
+    "revision": "7a566bb672a627ba8df075ba303fdea74c5fc9c8",
+    "paths": [
+      "README.md",
+      "rnz/viewer/release-manifests.csv",
+      "rnz/viewer/provenance.json"
+    ],
+    "anonymous_sha256": "c1af240baac2a6a20fd6f0670b5f8a5ebeffad004bb75289edcb408171408b6f",
+    "reason": "CSV-compatible manifest derivative",
+    "rows": 74
+  },
+  {
+    "repo": "edithatogo/corpus-legislation-nz-historical",
+    "parent": "7b6fa4ee3dff3d7d1afdfa334f361cffe05c02af",
+    "revision": "d7ce1a6a4565f3f719c7acc929dca4fa005c7daf",
+    "paths": [
+      "README.md"
+    ],
+    "anonymous_sha256": "6f8b50e34bac5ee3dd413aafa3ca3524be4d1dd0e0e91bd64637fd80ed07298e",
+    "reason": "Features YAML list encoding qualified by isolated Python3.15 datasets loader"
+  }
+]

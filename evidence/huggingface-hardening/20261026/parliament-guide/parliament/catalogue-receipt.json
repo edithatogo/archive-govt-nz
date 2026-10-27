@@ -1,0 +1,8 @@
+{
+  "snapshot_revision": "f4bb4d6b924e865b5fb58331e1bf42bc20dcc19b",
+  "batch_count": 4,
+  "catalogue_rows": 21,
+  "distinct_payload_sha256": 10,
+  "scope": "all published Parliament batches at snapshot revision; not full source coverage",
+  "anonymous_objects_verified": 13
+}

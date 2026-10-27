@@ -2689,6 +2689,69 @@ def query_command(
     return 2
 
 
+@app.command(name="parliament")
+def parliament_command(
+    *,
+    action: Literal[
+        "run-reports",
+        "status",
+        "discover",
+        "reports",
+        "capture",
+        "verify",
+        "package",
+        "publish",
+        "retry",
+        "refresh",
+    ] = "status",
+    state_dir: Path,
+    source_url: str | None = None,
+    partition: str = "historical",
+    decisions_path: Path | None = None,
+    source_id: str | None = None,
+    batch_id: str | None = None,
+    max_records: int = 100,
+    max_bytes: int = 250 * 1024 * 1024,
+    max_seconds: float = 900,
+    max_spool_bytes: int = 1024 * 1024 * 1024,
+    page: int | None = None,
+    keyword: str = "",
+) -> int:
+    """Run bounded Parliament archival against an explicit durable state root."""
+    from archive_govt_nz.parliament.commands import execute
+
+    try:
+        result = execute(
+            action,
+            state_dir,
+            source_url=source_url,
+            partition=partition,
+            decisions_path=decisions_path,
+            source_id=source_id,
+            batch_id=batch_id,
+            max_records=max_records,
+            max_bytes=max_bytes,
+            max_seconds=max_seconds,
+            max_spool_bytes=max_spool_bytes,
+            page=page,
+            keyword=keyword,
+        )
+    except (ValueError, OSError, RuntimeError, httpx.HTTPError) as error:
+        _emit_json(
+            {
+                "command": "parliament",
+                "status": "blocked",
+                "error_class": type(error).__name__,
+                "reason": str(error)
+                if isinstance(error, ValueError)
+                else "operation_failed",
+            }
+        )
+        return 2
+    _emit_json({"command": "parliament", **result})
+    return 2 if result.get("failed") else 0
+
+
 def main() -> None:
     """Run the command-line application."""
     app()

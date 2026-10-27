@@ -308,3 +308,9 @@ implementation has occurred under these tracks.
 
 - [x] **Track: Final integrated assurance closeout (Prompt 20)**
   *Archived: [./archive/integrated_assurance_closeout_20260905/index.md](./archive/integrated_assurance_closeout_20260905/index.md)*
+
+---
+
+- [~] **Track: Parliament archival — resumable submissions and committee document streams**
+  *Link: [tracks/parliament_archive_streams_20261026/index.md](./tracks/parliament_archive_streams_20261026/index.md)*
+  Parent issue: https://github.com/edithatogo/archive-govt-nz/issues/778. Approved plan; implementation and operational acceptance pending.

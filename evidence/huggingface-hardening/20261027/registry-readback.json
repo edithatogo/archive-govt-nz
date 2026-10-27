@@ -1,0 +1,32 @@
+{
+  "repo_id": "edithatogo/dataset-estate-registry",
+  "parent": "55884a3ca51f516bc1e11cfc630869f743d35772",
+  "revision": "72040c9b4898ff389f795b0ea27fc0650272fd0d",
+  "files": [
+    {
+      "path": "catalog.json",
+      "sha256": "421a7c3d4892532adfbc3b2cdbbd399c815a32b28ad2aa6883efa2850065a9d2",
+      "anonymous_verified": true
+    },
+    {
+      "path": "account-audit-20261027.json",
+      "sha256": "ed9d030072abadcd396d63467b20832c02bfa4c98d1af1f29b47fa90255a21f3",
+      "anonymous_verified": true
+    },
+    {
+      "path": "reconciliation-report.md",
+      "sha256": "dea0d36eb7147604ba793a00dd9e45e06fc275611a6c06eb49d88e084027dc7f",
+      "anonymous_verified": true
+    },
+    {
+      "path": "PROCESS.md",
+      "sha256": "66001208905b00e7f008639f54ea636e973524ff4f689604fcadd121c3323e46",
+      "anonymous_verified": true
+    },
+    {
+      "path": "README.md",
+      "sha256": "4b9567bb17bede73c4b40a050491abc58adca12ddf7de4f81371d2b95f627199",
+      "anonymous_verified": true
+    }
+  ]
+}
