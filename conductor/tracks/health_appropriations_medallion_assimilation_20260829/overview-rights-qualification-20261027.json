@@ -1,0 +1,102 @@
+{
+  "runtime": "3.15.1 (main, Oct 21 2026, 17:39:16) [Clang 23.1.3 ]",
+  "status": "five_source_data_rights_qualified",
+  "products": [
+    {
+      "profile": "vote-health-estimates-2022-23-overview/v1",
+      "source_sha256": "f800749dc339a2f8bc99469bcbd365f1183323002cd90d3225c942e2e6d92dc9",
+      "silver_manifest_sha256": "ad92b355dcd1bdccd274d7e47ac3f2623c1d48b55be594d2d5d7f733b683121d",
+      "qualified_output_sha256": {
+        "ATTRIBUTION.txt": "091c8c5cb16fd55dac337d8be8c18658186b2bafef7f33717d87cf7d1af43f63",
+        "query.json": "21e6c75fbf5ba1444ffbe6d7c37c52fc202efd4e9258e583f14a4be0f56ec056",
+        "vote_health_overview_facts.parquet": "7c45041205f8a33bf4c5391c27cc6c4fe98868132203f091d085d01d533fb1dd",
+        "rights.json": "d38addd3918adf2596252c99735dfb06c13fd4aa77ad3caab3f425c67985fa57",
+        "MANIFEST.json": "62f59d969b81e9cfb4eb0666e9964a87d78b32f89434c7fb54f078a91925428e"
+      },
+      "rights": "eligible_asserted",
+      "repeat_identical": true,
+      "original_and_silver_unchanged": true,
+      "numeric_and_lineage_parquet_equal_to_prior_recovery": true
+    },
+    {
+      "profile": "vote-health-estimates-2023-24-overview/v1",
+      "source_sha256": "5602df94c5944dad0e97dde2ddc73e79bd3126a7739184bd2fb117e6d6765914",
+      "silver_manifest_sha256": "237514e60ad328151fd2c462042ccb2ca835011e504ee8027331f8537637ae9f",
+      "qualified_output_sha256": {
+        "ATTRIBUTION.txt": "a373e4a14eb2b06b992a7f0c36cc0d467942cb02b7e63cb7203d37b7ec56c4e6",
+        "query.json": "12072f4a7e77f536b9563db147e149fd5e047b4127b6baffb80abd55ef3c0217",
+        "vote_health_overview_facts.parquet": "c82d0c3cb974c2a565e52033e07cd12f7d6f960ed46cc1ec30ee7b7a2eef231c",
+        "rights.json": "28acf638007d922342bf696073db387db852f09efd170d8a372ea80447c07a85",
+        "MANIFEST.json": "4dc43af0566cb7cd53d1d99d1f19fa103fc225ad70182c899440cf3c60e1bfac"
+      },
+      "rights": "eligible_asserted",
+      "repeat_identical": true,
+      "original_and_silver_unchanged": true,
+      "numeric_and_lineage_parquet_equal_to_prior_recovery": true
+    },
+    {
+      "profile": "vote-health-estimates-2024-25-overview/v1",
+      "source_sha256": "c55082208ebb42923dd56e3e8ac2ae75318b8fd9ee468c52284bbda0b9b43a20",
+      "silver_manifest_sha256": "1f80400e47f8576af11a1a4112c2c484b001c41b3e0652075adc8d6f36ac7a4d",
+      "qualified_output_sha256": {
+        "ATTRIBUTION.txt": "d441a0cbdc228552089d97b206ef24948b0eeedae6e42d896ebc8dd6d4707fa1",
+        "query.json": "565abde79bb7a61aab3f8bd9fa0e8fb8d4618a9603fda406dfd2dc77d43ab248",
+        "vote_health_overview_facts.parquet": "dcd0e7625e97fd337019a8a8a00fc918de75aca739c895568c6a0d43afdd994a",
+        "rights.json": "541891a8d5bed167a769343842ba256d8d9753f0bc906e02a02ae034bd24a234",
+        "MANIFEST.json": "7859115df94ba8059e5f447e7143702c0a6493b83014b38b055c71ccb1213b6f"
+      },
+      "rights": "eligible_asserted",
+      "repeat_identical": true,
+      "original_and_silver_unchanged": true,
+      "numeric_and_lineage_parquet_equal_to_prior_recovery": true
+    },
+    {
+      "profile": "vote-health-estimates-2025-26-overview/v1",
+      "source_sha256": "d00952c47c4e6485b0768575ba295ac4da6002ce4c525b5637287b25e32849b9",
+      "silver_manifest_sha256": "bb0df688769459fd84607fd90801a5bbfa2ae5563b1d505d0de291f4cc96b63d",
+      "qualified_output_sha256": {
+        "ATTRIBUTION.txt": "a438bd2ff0f9b27dfd4f412f8a97c317248f31c4eb84a1b8b04dcc1cf8a1c929",
+        "query.json": "1e7818cb557251e86ae55eb0a8a8333b1a1cbc61e52da06a349a09f603ea5912",
+        "vote_health_overview_facts.parquet": "c22294dcbce35bddf7261bc79d676abfff5084f3d34cae63d4042350d5d183e0",
+        "rights.json": "da6789ddb2fda9860e244adf6a2503e59461c3ff26c755bbbf5477c72d5d1edc",
+        "MANIFEST.json": "5b431770893a4c4199705f1c4ddc87a00808143e3c88ac47670bb0a00899a1b5"
+      },
+      "rights": "eligible_asserted",
+      "repeat_identical": true,
+      "original_and_silver_unchanged": true,
+      "numeric_and_lineage_parquet_equal_to_prior_recovery": true
+    },
+    {
+      "profile": "vote-health-estimates-2026-27-overview/v1",
+      "source_sha256": "023c99801cc11305848772a859d2491940f25389725e08f162b4156492dcae4e",
+      "silver_manifest_sha256": "361dfdd239a5f301e239d355903c2c75e2d5a4755e93614e2f24ba17673ef997",
+      "qualified_output_sha256": {
+        "ATTRIBUTION.txt": "9de0a16b4976d96492e41991766919914d5abbeb48dfca24709e15625fd673f2",
+        "query.json": "a25e552c49fb3f840492c47d68f4db3dcbcc28e7fd3ccfb7ea3f54355711bfe3",
+        "vote_health_overview_facts.parquet": "7d94ef08f8244efa4baca07f055c6053e9865e0e9273cbb557dfe610efb117a0",
+        "rights.json": "a6dcb305b337b97ff11aae4d3d0fe57a7ae4d9719693f0c439285d8ad5454026",
+        "MANIFEST.json": "3f27c4ad638b36780aaf5d05d3aef6ac1c0bd1b6b66e738d135944ba39d72d49"
+      },
+      "rights": "eligible_asserted",
+      "repeat_identical": true,
+      "original_and_silver_unchanged": true,
+      "numeric_and_lineage_parquet_equal_to_prior_recovery": true
+    }
+  ],
+  "evidence_sha256": {
+    "cc-by-4-legalcode.html": "58230517b7895aa219ff46a6ed63e67057a1582fb9ea054b16728a8c13525650",
+    "collection-2022.json": "e9bdda33a6eff7909cf9a227518daa052607cdb560c00e9b2a68b9d3b2b9e049",
+    "collection-2023.json": "768ccf91fdc9afb81bc5b825abbeccde02b7b79299612eb3aa886e65d10f198f",
+    "collection-2024.json": "555ec57338a29b99f7545bb4bc2d519253f1ad4ea696cd356d100aaafd40bf9e",
+    "collection-2025.json": "cb7d484841565f8cf69dc5aa162442503226a4fafbf82747ff0ded36c55027ea",
+    "collection-2026.json": "0468253e9b5fd5909b1880584340bf551e388680ce601e92949d3d6954973481",
+    "publication-2022.json": "0ca2c5f61b7668252c86c893bb1128797499decde2a41a27f7c51af542e83119",
+    "publication-2023.json": "a01811df4a74b710e9fd600ec2950e82df0a778ff4f9b2b3fcb17eb9953e1e37",
+    "publication-2024.json": "365494f595b097d1396d7f0bca1fe01f7b8e4ea21b75d2df9dd4be27e2971d47",
+    "publication-2025.json": "f843d24070ae62a5ad95367e4be30f9c97eca694402943cd6d9e198a46789700",
+    "publication-2026.json": "b836d1caffb447fe1daa39fdab6b463c7cb14ff45a55cb4f5c2e8e930d99c593",
+    "treasury-policy.json": "81188e57f90e52807e570c06991267fb43a1baac0604b09f18a33cb97c918d9d"
+  },
+  "publication": "not_performed",
+  "full_platinum_completion": "not_asserted"
+}

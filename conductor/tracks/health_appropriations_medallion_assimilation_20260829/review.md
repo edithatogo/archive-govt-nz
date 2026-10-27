@@ -4402,3 +4402,8 @@ exact-final-tree original validation and protected delivery remain pending.
 Run the original final-tree harness and required hosted checks before protected
 merge, remote-main verification and clean owned-topic pruning. This review does
 not close the wider track's final completion gate.
+
+
+## Five headline rights qualification — 2026-10-27
+
+Reviewed the five headline qualifications against M-14/AC-14. Corrected the potential blanket-licence claim by restricting qualification to the selected source data and labels; excluded original PDFs and images. Publisher chapter and collection licence fields are explicit. Observation bytes are labelled as rendered-field evidence, not original HTTP captures. Numeric/lineage and original fixity are unchanged. Release/publication, wider rights and full Platinum gates remain open.

@@ -3521,3 +3521,8 @@ passed with 8,413 tests passed, 14 skipped, 18 warnings, and 97.07% coverage
 against the 80% floor; 81 schemas/71 representative documents, parity 9/9, all
 mutation gates, supply-chain checks, and the 118-component SBOM passed. Hosted
 PR checks remain pending.
+
+
+## Five headline rights qualification — 2026-10-27
+
+Five native source editions rebuilt with all prior Silver inventory hashes equal. Each qualified Gold package rebuilt twice identically; original hashes stayed equal. Twelve retained licence/observation payloads are pinned. See `overview-rights-qualification-20261027.json` and its paired Markdown scope/validation record. Full local/hosted gates remain separate delivery evidence.
