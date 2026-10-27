@@ -10315,3 +10315,13 @@ validated 118-component SBOM. Unchanged broader test/coverage evidence is
 paired with these post-correction checks; exact-head hosted assurance is the
 final integration gate. The local v3 metadata installation is a hash-verified
 byte copy of the final repeat-build output; no external publication occurred.
+
+Integrated newly merged main `5d0cf00f` (PR #797) before delivery. Its bootstrap
+recovery and stricter native metadata qualification are retained. Main also
+added report-fixture isolation independently; the integrated fixture keeps that
+intent with a recording guard and per-page invocation assertions, without a
+redundant second mock. Twenty-four affected integration tests passed, plus
+lock, Conductor, format, lint, strict typing, schema and medallion-mutation
+gates. Health snapshot inputs, review pins and output projections are unchanged;
+prior native/recovery evidence remains applicable. Required hosted assurance
+must run again on the integrated head under the unchanged strict branch rule.
