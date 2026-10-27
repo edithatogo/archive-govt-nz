@@ -33,28 +33,28 @@
     },
     {
       "path": "data/annual-edition-observations.csv",
-      "sha256": "729ae8a0ed38166b9f18a4e29d570cd14e95df4c1c5933d27212aacd4968939d",
-      "bytes": 72981
+      "sha256": "711df1c202e89f336a1c1a6f89e5ac676a7bf33923d437f6c6df1cef0a2b7a18",
+      "bytes": 72880
     },
     {
       "path": "data/australian-coronial-observations.csv",
-      "sha256": "457c7418ae1558f13cc36dd794daa37a80a2731af0205a62ed124e99c71dff28",
-      "bytes": 129308
+      "sha256": "b110b565c3b169528319ca693291fc07c08d8e8afbbb1391d80dcd10d4de630f",
+      "bytes": 128027
     },
     {
       "path": "data/historical-ris-observations.csv",
-      "sha256": "e49498a84ddfb230e59a0309bd564f8303d0ad8e3b6f91a80a12eadc0492160d",
-      "bytes": 22262
+      "sha256": "6519b6d41c3e9912656bb8004b6a23c6d9c52a7537b2a023c334bf0340182b14",
+      "bytes": 22211
     },
     {
       "path": "data/international-context-observations.csv",
-      "sha256": "109d091fe59ad865852bc06ff94052da214144f946ce6ebc130a670fea1992e1",
-      "bytes": 3774
+      "sha256": "db3978356981a38a6d3a16298284f3cb6fa0f47e91f92922d2e5bedc683b0e5c",
+      "bytes": 3763
     },
     {
       "path": "data/latest-justice-observations.csv",
-      "sha256": "dc70dac9a3aafcfd6b1c933d9a4c043b3290bd19d18781718d74d409189ea6fe",
-      "bytes": 2562
+      "sha256": "bae7c013c72d6aeb4a10b2eb19f09ba95d0ac9a63b1fde949f4337117791a05b",
+      "bytes": 2554
     },
     {
       "path": "raw-archive.json",
@@ -68,7 +68,7 @@
     },
     {
       "path": "results/descriptive-analysis.json",
-      "sha256": "d10c2db2d8c5cb2ef312c2670e3cb103bd2a02fcde1df3dda955b657e91bc35d",
+      "sha256": "bfec89a56e62531f701450268cca27699005d1403882d11592a731f57845104b",
       "bytes": 984
     },
     {
@@ -108,14 +108,14 @@
     },
     {
       "path": "results/primary-longitudinal.csv",
-      "sha256": "21ac1d7c0a55a0d58147bfd50d2c126e4458ad0c56872d2b2c34260f52208d03",
-      "bytes": 40295
+      "sha256": "91566c32a195efa4aaadcaba8e4c43164d27b0ccf9a5f7052355d152f0737bf6",
+      "bytes": 40239
     },
     {
       "path": "results/within-jurisdiction-sensitivity.csv",
-      "sha256": "d5b7b1acb33af0c6f1945634cc9066020ec7c0cf35a18ddbfeedc8ba75434344",
-      "bytes": 615
+      "sha256": "f6d389b4a9735eda9c6df9f308b26fa9c889e51edd8e23546cfc68a3ed9d89f0",
+      "bytes": 606
     }
   ],
-  "notes": "Derivative recipe only; raw-file publication status is explicit in raw-archive.json."
+  "notes": "Derivative recipe only; raw-file publication status is explicit in raw-archive.json. Text files use LF endings so Git blobs match manifest hashes."
 }
