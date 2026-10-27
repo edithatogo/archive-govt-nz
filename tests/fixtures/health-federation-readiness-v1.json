@@ -1,0 +1,53 @@
+{
+  "schema_version": "archive-govt-nz.health-federation-readiness/v1",
+  "scope": "qualified_headline_inputs_only",
+  "approved_links": [],
+  "records": [
+    {
+      "package_id": "urn:archive-govt-nz:health:qualified:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "profile": "synthetic-fixture/v1",
+      "manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "disposition": "pending",
+      "reason": "partner_snapshot_and_reviewed_mapping_not_supplied",
+      "target_manifest_sha256": null,
+      "target_key": null,
+      "target_scheme_version": null,
+      "mapping_method": "none",
+      "confidence": null,
+      "source_record_ids": [
+        "synthetic:source-record"
+      ],
+      "period_tokens": [
+        "2022/23"
+      ],
+      "period_basis": "source_literals_only_no_effective_interval_inferred",
+      "target_repository": "global-medicines-atlas"
+    },
+    {
+      "package_id": "urn:archive-govt-nz:health:qualified:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "profile": "synthetic-fixture/v1",
+      "manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "disposition": "pending",
+      "reason": "partner_snapshot_and_reviewed_mapping_not_supplied",
+      "target_manifest_sha256": null,
+      "target_key": null,
+      "target_scheme_version": null,
+      "mapping_method": "none",
+      "confidence": null,
+      "source_record_ids": [
+        "synthetic:source-record"
+      ],
+      "period_tokens": [
+        "2022/23"
+      ],
+      "period_basis": "source_literals_only_no_effective_interval_inferred",
+      "target_repository": "reimbursement-atlas"
+    }
+  ],
+  "required_evidence": [
+    "pinned_partner_snapshot",
+    "versioned_partner_key",
+    "reviewed_mapping_method_confidence_period_lineage"
+  ],
+  "publication": "not_performed"
+}

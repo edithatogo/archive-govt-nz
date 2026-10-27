@@ -1549,6 +1549,9 @@ deliberately exercise version handling.
 - [ ] Generate and validate metadata, cards, citations, changelogs, catalogue
   and source drill-through records from actual layer manifests. [M-14, S-06;
   AC-14]
+  - [x] Complete cards, scoped citations, snapshot changelog and source drill-through
+    for the five qualified headline editions, with v2 opt-in output and unchanged
+    v1 graph bytes. See `qualified-overview-discovery-20261027.md`.
   - [x] Generate deterministic local content-addressed citation identifiers
     and snapshot-only changelogs from the verified Fiscal and Budget Gold
     manifests. Bind each record to its manifest SHA256 and propagate only the
@@ -1577,6 +1580,11 @@ deliberately exercise version handling.
 - [ ] Add rebuildable federation tables for approved links to
   `reimbursement-atlas` and `global-medicines-atlas`; preserve unmatched and
   ambiguous mappings. [M-14; AC-14]
+  - [x] Materialize ten reason-coded pending partner pairs from verified five-edition
+    inputs; schema-check absent target/method/confidence/interval evidence and
+    keep approved links empty. Existing unmatched/ambiguous fixture contracts
+    remain separate; this does not approve partner mappings. See
+    `qualified-overview-discovery-20261027.md`.
 - [x] Evaluate graph/vector projections only as non-authoritative Could work
   after a demonstrated query/discovery benefit and pinned reproducibility
   contract. Evaluated and deferred: no health-specific discovery benefit or
