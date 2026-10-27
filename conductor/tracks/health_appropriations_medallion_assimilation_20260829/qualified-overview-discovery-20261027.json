@@ -1,0 +1,25 @@
+{
+  "status": "verified_five_edition_discovery",
+  "profiles": 5,
+  "qualified_data_resources": 10,
+  "federation_pending_pairs": 10,
+  "approved_links": 0,
+  "repeat_identical": true,
+  "inputs_unchanged": true,
+  "prior_metadata_unchanged": true,
+  "output_sha256": {
+    "catalogue.json": "13753d67b2ea6ff5b33e8a99f59a4d302188370092b8fb15f4fe3cbc66ad060c",
+    "dcat.json": "e3b9afb765532f57f2f1199562b93e33e15d29b9a8698e5fc0b8c258544405ab",
+    "prov.json": "d149e1113874f6c5c075ee4cf9a91901c9d80d0ee1682e0d18f548c8964381b3",
+    "croissant.json": "1481dd9dc2d156f091682f78eb80352fff8400cba49bad04cbb3641e582be886",
+    "ro-crate-metadata.json": "2f3d47bd622ff0e52824e991a8f2147b900dbb36feab00940eaece7f5090ffb5",
+    "profile-validation.json": "0aec4f153003db85198e7748e3717673352e580f71d7ab518880384ef7523dd7",
+    "citations.json": "7ab8f3f637156c60c571e07adc84d226ee8d6c3bcd5906f4340ec0eeaf3c1d66",
+    "source_drillthrough.json": "7ddda920b9f4dd1fd14d092fdf10398ed4c96b6583fed1e40928e39b3bdbb862",
+    "changelog.json": "8d68331c51c2d04bda15181edccbda39d026b81c224b52d003be64c158d30c27",
+    "federation_readiness.json": "5a6224975294e6766b5c1d92d26ea7609eaaf237dfa782422588c4cf02abc761",
+    "DATASET_CARD.md": "aa14c55a6bace94271660356b4ca7661415e6a935bb02d671adca01cf0ea3265"
+  },
+  "publication": "not_performed",
+  "full_conformance": "not_asserted"
+}

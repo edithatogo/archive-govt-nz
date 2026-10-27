@@ -1450,6 +1450,19 @@ deliberately exercise version handling.
 
 ### 7.1 Metadata and rights contracts first
 
+- [x] Project the five qualified headline rights records into resource-scoped
+  DCAT, Croissant, RO-Crate and entity-only PROV; reconstruct pinned inputs,
+  reject forged grants, verify ten licensed data resources per graph and repeat
+  builds without source mutation. See `qualified-overview-metadata-20261027.md`.
+  Full profile, federation and release gates remain open. [M-14, M-17; AC-14]
+
+- [x] Qualify the five 2022/23–2026/27 Vote Health headline data resources
+  against exact publisher chapter/collection rights and retained licence evidence;
+  emit fresh per-resource Gold rights manifests and attribution while preserving
+  all original/Silver bytes and excluding PDF facsimiles, images and unreviewed
+  material. See `overview-rights-qualification-20261027.md`. [M-04, M-14, M-17;
+  AC-04, AC-14] Broader Phase 7 and release gates remain open.
+
 - [x] Review clarification: explicitly load the JSON-LD parser plugin without
   an unguarded warm-up parse; retain offline positive/negative fixtures and
   revalidate the exact change. [M-14, M-18; AC-14, AC-16; f111dbf0]
@@ -1536,6 +1549,9 @@ deliberately exercise version handling.
 - [ ] Generate and validate metadata, cards, citations, changelogs, catalogue
   and source drill-through records from actual layer manifests. [M-14, S-06;
   AC-14]
+  - [x] Complete cards, scoped citations, snapshot changelog and source drill-through
+    for the five qualified headline editions, with v2 opt-in output and unchanged
+    v1 graph bytes. See `qualified-overview-discovery-20261027.md`.
   - [x] Generate deterministic local content-addressed citation identifiers
     and snapshot-only changelogs from the verified Fiscal and Budget Gold
     manifests. Bind each record to its manifest SHA256 and propagate only the
@@ -1564,6 +1580,11 @@ deliberately exercise version handling.
 - [ ] Add rebuildable federation tables for approved links to
   `reimbursement-atlas` and `global-medicines-atlas`; preserve unmatched and
   ambiguous mappings. [M-14; AC-14]
+  - [x] Materialize ten reason-coded pending partner pairs from verified five-edition
+    inputs; schema-check absent target/method/confidence/interval evidence and
+    keep approved links empty. Existing unmatched/ambiguous fixture contracts
+    remain separate; this does not approve partner mappings. See
+    `qualified-overview-discovery-20261027.md`.
 - [x] Evaluate graph/vector projections only as non-authoritative Could work
   after a demonstrated query/discovery benefit and pinned reproducibility
   contract. Evaluated and deferred: no health-specific discovery benefit or

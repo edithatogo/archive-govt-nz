@@ -1,0 +1,157 @@
+{
+  "assessed_on": "2026-10-27",
+  "authority": "resource_specific_publisher_licence_evidence",
+  "evidence_sha256": {
+    "cc-by-4-legalcode.html": "58230517b7895aa219ff46a6ed63e67057a1582fb9ea054b16728a8c13525650",
+    "collection-2022.json": "e9bdda33a6eff7909cf9a227518daa052607cdb560c00e9b2a68b9d3b2b9e049",
+    "collection-2023.json": "768ccf91fdc9afb81bc5b825abbeccde02b7b79299612eb3aa886e65d10f198f",
+    "collection-2024.json": "555ec57338a29b99f7545bb4bc2d519253f1ad4ea696cd356d100aaafd40bf9e",
+    "collection-2025.json": "cb7d484841565f8cf69dc5aa162442503226a4fafbf82747ff0ded36c55027ea",
+    "collection-2026.json": "0468253e9b5fd5909b1880584340bf551e388680ce601e92949d3d6954973481",
+    "publication-2022.json": "0ca2c5f61b7668252c86c893bb1128797499decde2a41a27f7c51af542e83119",
+    "publication-2023.json": "a01811df4a74b710e9fd600ec2950e82df0a778ff4f9b2b3fcb17eb9953e1e37",
+    "publication-2024.json": "365494f595b097d1396d7f0bca1fe01f7b8e4ea21b75d2df9dd4be27e2971d47",
+    "publication-2025.json": "f843d24070ae62a5ad95367e4be30f9c97eca694402943cd6d9e198a46789700",
+    "publication-2026.json": "b836d1caffb447fe1daa39fdab6b463c7cb14ff45a55cb4f5c2e8e930d99c593",
+    "treasury-policy.json": "81188e57f90e52807e570c06991267fb43a1baac0604b09f18a33cb97c918d9d"
+  },
+  "publication_approval": "not_granted",
+  "resources": [
+    {
+      "attribution": "\u00a9 Crown Copyright. Source: Government of New Zealand / The Treasury, Vote Health - Health Sector - The Estimates of Appropriations 2022/23, page 2. https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2022-23 . Licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/ . Changes: numeric headline extracted into Parquet/JSON; source labels, units and qualifiers retained. No endorsement implied.",
+      "collection_url": "https://www.treasury.govt.nz/publications/budgets/health-sector-estimates-appropriations-government-new-zealand-year-ending-30-june-2023",
+      "exception_checks": {
+        "excluded_material": [
+          "PDF_facsimiles",
+          "logos_emblems_trademarks",
+          "photographs_images_design",
+          "unreviewed_pages",
+          "unrelated_source_families"
+        ],
+        "publisher_chapter": "explicit_CC_BY_4_0_no_conflicting_item_notice",
+        "publisher_collection": "explicit_CC_BY_4_0_no_conflicting_collection_notice",
+        "selected_page_visual": "page_2_checked_no_third_party_credit_or_restrictive_notice",
+        "source_text_markers": "radiation_licences_and_health_support_services_not_copyright_notices",
+        "source_text_pages_checked": 88
+      },
+      "license": "CC-BY-4.0",
+      "license_uri": "https://creativecommons.org/licenses/by/4.0/",
+      "profile": "vote-health-estimates-2022-23-overview/v1",
+      "publication_url": "https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2022-23",
+      "scope": "page_2_headline_data_and_source_labels_only",
+      "source_sha256": "f800749dc339a2f8bc99469bcbd365f1183323002cd90d3225c942e2e6d92dc9",
+      "source_title": "Vote Health - Health Sector - The Estimates of Appropriations 2022/23",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2022-06/est22-v5-health.pdf",
+      "source_vintage": "Treasury-Vote-Health-Estimates-2022-23"
+    },
+    {
+      "attribution": "\u00a9 Crown Copyright. Source: Government of New Zealand / The Treasury, Vote Health - Health Sector - The Estimates of Appropriations 2023/24, page 2. https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2023-24 . Licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/ . Changes: numeric headline extracted into Parquet/JSON; source labels, units and qualifiers retained. No endorsement implied.",
+      "collection_url": "https://www.treasury.govt.nz/publications/budgets/health-sector-estimates-appropriations-government-new-zealand-year-ending-30-june-2024",
+      "exception_checks": {
+        "excluded_material": [
+          "PDF_facsimiles",
+          "logos_emblems_trademarks",
+          "photographs_images_design",
+          "unreviewed_pages",
+          "unrelated_source_families"
+        ],
+        "publisher_chapter": "explicit_CC_BY_4_0_no_conflicting_item_notice",
+        "publisher_collection": "explicit_CC_BY_4_0_no_conflicting_collection_notice",
+        "selected_page_visual": "page_2_checked_no_third_party_credit_or_restrictive_notice",
+        "source_text_markers": "radiation_licences_and_health_support_services_not_copyright_notices",
+        "source_text_pages_checked": 61
+      },
+      "license": "CC-BY-4.0",
+      "license_uri": "https://creativecommons.org/licenses/by/4.0/",
+      "profile": "vote-health-estimates-2023-24-overview/v1",
+      "publication_url": "https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2023-24",
+      "scope": "page_2_headline_data_and_source_labels_only",
+      "source_sha256": "5602df94c5944dad0e97dde2ddc73e79bd3126a7739184bd2fb117e6d6765914",
+      "source_title": "Vote Health - Health Sector - The Estimates of Appropriations 2023/24",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2023-06/est23-v5-health.pdf",
+      "source_vintage": "Treasury-Vote-Health-Estimates-2023-24"
+    },
+    {
+      "attribution": "\u00a9 Crown Copyright. Source: Government of New Zealand / The Treasury, Vote Health - Health Sector - The Estimates of Appropriations 2024/25, page 2. https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2024-25 . Licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/ . Changes: numeric headline extracted into Parquet/JSON; source labels, units and qualifiers retained. No endorsement implied.",
+      "collection_url": "https://www.treasury.govt.nz/publications/budgets/health-sector-estimates-appropriations-government-new-zealand-year-ending-30-june-2025",
+      "exception_checks": {
+        "excluded_material": [
+          "PDF_facsimiles",
+          "logos_emblems_trademarks",
+          "photographs_images_design",
+          "unreviewed_pages",
+          "unrelated_source_families"
+        ],
+        "publisher_chapter": "explicit_CC_BY_4_0_no_conflicting_item_notice",
+        "publisher_collection": "explicit_CC_BY_4_0_no_conflicting_collection_notice",
+        "selected_page_visual": "page_2_checked_no_third_party_credit_or_restrictive_notice",
+        "source_text_markers": "radiation_licences_and_health_support_services_not_copyright_notices",
+        "source_text_pages_checked": 64
+      },
+      "license": "CC-BY-4.0",
+      "license_uri": "https://creativecommons.org/licenses/by/4.0/",
+      "profile": "vote-health-estimates-2024-25-overview/v1",
+      "publication_url": "https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2024-25",
+      "scope": "page_2_headline_data_and_source_labels_only",
+      "source_sha256": "c55082208ebb42923dd56e3e8ac2ae75318b8fd9ee468c52284bbda0b9b43a20",
+      "source_title": "Vote Health - Health Sector - The Estimates of Appropriations 2024/25",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2024-06/est24-v5-health.pdf",
+      "source_vintage": "Treasury-Vote-Health-Estimates-2024-25"
+    },
+    {
+      "attribution": "\u00a9 Crown Copyright. Source: Government of New Zealand / The Treasury, Vote Health - Health Sector - The Estimates of Appropriations 2025/26, page 2. https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2025-26 . Licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/ . Changes: numeric headline extracted into Parquet/JSON; source labels, units and qualifiers retained. No endorsement implied.",
+      "collection_url": "https://www.treasury.govt.nz/publications/budgets/health-sector-estimates-appropriations-government-new-zealand-year-ending-30-june-2026",
+      "exception_checks": {
+        "excluded_material": [
+          "PDF_facsimiles",
+          "logos_emblems_trademarks",
+          "photographs_images_design",
+          "unreviewed_pages",
+          "unrelated_source_families"
+        ],
+        "publisher_chapter": "explicit_CC_BY_4_0_no_conflicting_item_notice",
+        "publisher_collection": "explicit_CC_BY_4_0_no_conflicting_collection_notice",
+        "selected_page_visual": "page_2_checked_no_third_party_credit_or_restrictive_notice",
+        "source_text_markers": "radiation_licences_and_health_support_services_not_copyright_notices",
+        "source_text_pages_checked": 62
+      },
+      "license": "CC-BY-4.0",
+      "license_uri": "https://creativecommons.org/licenses/by/4.0/",
+      "profile": "vote-health-estimates-2025-26-overview/v1",
+      "publication_url": "https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2025-26",
+      "scope": "page_2_headline_data_and_source_labels_only",
+      "source_sha256": "d00952c47c4e6485b0768575ba295ac4da6002ce4c525b5637287b25e32849b9",
+      "source_title": "Vote Health - Health Sector - The Estimates of Appropriations 2025/26",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2025-05/est25-v5-health.pdf",
+      "source_vintage": "Treasury-Vote-Health-Estimates-2025-26"
+    },
+    {
+      "attribution": "\u00a9 Crown Copyright. Source: Government of New Zealand / The Treasury, Vote Health - Health Sector - The Estimates of Appropriations 2026/27, page 2. https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2026-27 . Licensed under CC BY 4.0: https://creativecommons.org/licenses/by/4.0/ . Changes: numeric headline extracted into Parquet/JSON; source labels, units and qualifiers retained. No endorsement implied.",
+      "collection_url": "https://www.treasury.govt.nz/publications/budgets/health-sector-estimates-appropriations-government-new-zealand-year-ending-30-june-2027",
+      "exception_checks": {
+        "excluded_material": [
+          "PDF_facsimiles",
+          "logos_emblems_trademarks",
+          "photographs_images_design",
+          "unreviewed_pages",
+          "unrelated_source_families"
+        ],
+        "publisher_chapter": "explicit_CC_BY_4_0_no_conflicting_item_notice",
+        "publisher_collection": "explicit_CC_BY_4_0_no_conflicting_collection_notice",
+        "selected_page_visual": "page_2_checked_no_third_party_credit_or_restrictive_notice",
+        "source_text_markers": "radiation_licences_and_health_support_services_not_copyright_notices",
+        "source_text_pages_checked": 64
+      },
+      "license": "CC-BY-4.0",
+      "license_uri": "https://creativecommons.org/licenses/by/4.0/",
+      "profile": "vote-health-estimates-2026-27-overview/v1",
+      "publication_url": "https://www.treasury.govt.nz/publications/estimates/vote-health-health-sector-estimates-appropriations-2026-27",
+      "scope": "page_2_headline_data_and_source_labels_only",
+      "source_sha256": "023c99801cc11305848772a859d2491940f25389725e08f162b4156492dcae4e",
+      "source_title": "Vote Health - Health Sector - The Estimates of Appropriations 2026/27",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2026-05/est26-v5-health.pdf",
+      "source_vintage": "Treasury-Vote-Health-Estimates-2026-27"
+    }
+  ],
+  "schema_version": "archive-govt-nz.overview-rights-assessments/v1"
+}

@@ -3521,3 +3521,105 @@ passed with 8,413 tests passed, 14 skipped, 18 warnings, and 97.07% coverage
 against the 80% floor; 81 schemas/71 representative documents, parity 9/9, all
 mutation gates, supply-chain checks, and the 118-component SBOM passed. Hosted
 PR checks remain pending.
+
+
+## Five headline rights qualification — 2026-10-27
+
+Five native source editions rebuilt with all prior Silver inventory hashes equal. Each qualified Gold package rebuilt twice identically; original hashes stayed equal. Twelve retained licence/observation payloads are pinned. See `overview-rights-qualification-20261027.json` and its paired Markdown scope/validation record. Full local/hosted gates remain separate delivery evidence.
+
+
+## Qualified headline metadata — 2026-10-27
+
+Integrated the five qualified 2022/23–2026/27 rights records into DCAT,
+Croissant, RO-Crate and entity-only PROV metadata. Ten verified facts/query
+resources carry the exact licence, attribution and scoped rights decision.
+Original PDFs, source evidence, package collections and dataset roots receive
+no blanket licence grant. Physical schemas and source/Silver/facts derivations
+remain explicit; source-row normalization-time rights assertions are preserved.
+
+The reader reconstructs qualified packages from pinned Bronze, Silver, ledger
+and licence evidence before projection. A rehashed forged licence is rejected
+before output creation. An initial focused regression caught an unintended
+Dataset licence; the final projection licenses only the two data resources per
+edition. DCAT rights links are typed resources and logical datasets have IDs
+separate from physical files. Reused existing metadata projections; no parallel
+metadata framework or external publication was introduced.
+
+Native five-edition projection parsed all four JSON-LD graphs offline, finding
+exactly ten licensed resources in each. Two complete exports were byte-identical;
+Bronze, Silver, Gold and retained rights evidence were unchanged. The paired
+JSON receipt records output hashes and graph counts. Products remain local
+inventory candidates: payloads are referenced in verified external packages,
+not copied into a distributable crate. Full profile conformance, publication
+and unsupported federation relationships are not asserted. Wider Phase 7 and
+track completion remain open. Focused rights/metadata contracts passed four
+tests; complete milestone validation and hosted assurance are recorded separately.
+
+Standards reviewed: [DCAT distribution licence](https://www.w3.org/TR/vocab-dcat-3/#Property:distribution_license),
+[Croissant](https://docs.mlcommons.org/croissant/docs/croissant-spec.html),
+[RO-Crate 1.1 data entities](https://www.researchobject.org/ro-crate/specification/1.1/data-entities.html),
+and [PROV entities](https://www.w3.org/TR/prov-o/#Entity).
+
+Milestone validation passed on repo-local CPython 3.15.1: 8,549 tests passed,
+14 skipped, 96.78% branch-aware coverage against the 80% floor; 83 schemas and
+73 representative documents; parity 9/9. All configured mutation, dependency,
+licence and secret gates passed; the SBOM validated with 118 components.
+The initial harness stopped at test-import lint before running tests; its
+correction preceded the one complete successful run. A subsequent evidence-only
+receipt update reuses that unchanged implementation evidence.
+
+
+## Qualified headline discovery and federation readiness — 2026-10-27
+
+Completed a bounded Phase 7.2 slice for the five rights-qualified Vote Health
+headline editions. Reused the existing qualified projector and reconstruction
+checks to add a resource-scoped dataset card, local content-addressed package
+citations, a snapshot-only changelog and source drill-through references.
+References carry exact Gold/Silver/source pins, the recorded locator and edition;
+a locator is not an access or redistribution assertion. No source title,
+publisher date, currency, effective interval or cross-year comparison is inferred.
+
+The opt-in exporter emits a separately versioned v2 metadata package. Its six
+existing v1 graph/catalogue/report payloads remain byte-identical; default v1
+projection and export contracts remain unchanged. All eleven output payloads
+are pinned by the fresh output manifest. Retained v1 output is not rewritten.
+Only the ten explicitly qualified data resources carry their scoped rights.
+
+Added a versioned, rebuildable federation-readiness table and strict JSON Schema.
+Ten pending rows retain each actual source package and source record/period
+literal against the two named partner repositories. Pending is unevaluated,
+not a failed match, and is not relabelled as unmatched or ambiguous. No target
+snapshot, partner scheme/key, mapping method, confidence or effective interval
+was supplied to this bounded profile. Approved links remain empty; the schema
+rejects invented approvals, keys, confidence and intervals. Existing synthetic
+unmatched/ambiguous fixture contracts remain unchanged.
+
+The exact federation blocker is a pinned partner snapshot plus a versioned
+partner key and reviewed mapping method/confidence/period/lineage evidence.
+Rights qualification of an aggregate Vote Health headline is not evidence of
+a medicine/product/reimbursement relationship. The new table identifies what
+is missing without asserting partner unavailability or creating live sibling
+runtime dependencies. A future evidence-backed mapping task must preserve
+unmatched/ambiguous outcomes when comparison can actually be performed.
+
+Native validation reconstructed all five real editions twice identically,
+with five citations/source/snapshot records and ten pending federation pairs.
+Original, Silver, Gold, licence evidence and all retained v1 metadata bytes
+were unchanged. The paired receipt records hashes for all eleven projections.
+Four focused discovery/metadata tests passed; strict typing and 84 schemas /
+74 representative documents passed. Initial red evidence was the missing
+projector contract. The complete milestone harness and exact-head hosted
+assurance are recorded separately. Publication, full profile conformance,
+approved partner mappings and the broader Phase 7 checkpoint remain open.
+
+Milestone assurance: original complete harness on repo-local CPython 3.15.1
+reported 8,550 passed / 14 skipped / 96.78% coverage against the 80% floor,
+with one unrelated Hypothesis input-generation health check (legislation
+manifest-order property: four inputs after 1.03 seconds). No property assertion
+failed. Preserved that first failure and made exactly one isolated, failure-cache
+selected replay with the reported seed; it passed in 1.12 seconds without test,
+settings or production changes. Reused the other passing tests and full coverage
+receipt rather than rerunning the suite. All subsequent named harness stages
+passed: 84 schemas / 74 documents, parity 9/9, configured mutation lanes,
+hygiene, CAS benchmark, dependency audit, licences, secrets and validated
+118-component SBOM. Final hosted assurance is required on the exact PR head.
