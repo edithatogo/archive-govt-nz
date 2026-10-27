@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from archive_govt_nz.parliament.pipeline import ParliamentArchive
 
 from archive_govt_nz.parliament.contracts import PUBLIC_REPOSITORY, validate_manifest
+from archive_govt_nz.parliament.hosted_transport import assert_publication_authority
 
 DEFAULT_REPOSITORY = PUBLIC_REPOSITORY
 NAMESPACE = "parliament/batches"
@@ -48,12 +49,14 @@ class NativeHub:
         if info.private or info.gated or not info.sha:
             message = "public_target_not_qualified"
             raise ValueError(message)
+        assert_publication_authority(repo, info.sha)
         return info.sha
 
     def commit(
         self, repo: str, operations: list[CommitOperationAdd], parent: str
     ) -> str:
         """Perform one bounded commit; conflicts surface without write retries."""
+        assert_publication_authority(repo, parent)
         api = HfApi()
         paths = [operation.path_in_repo for operation in operations]
         if not paths or any(

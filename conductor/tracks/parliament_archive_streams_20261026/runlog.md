@@ -43,3 +43,49 @@ Applied a Windows-only60-minute aggregate job allowance, retaining Linux/macOS30
 The new Windows job also exceeded its60-minute aggregate limit; its locked-gate step remained in progress, no Windows diagnostics artifact executed, and job-log storage returns BlobNotFound. Linux/macOS and other checks passed at0222bf4a. Increasing the allowance did not fix the stall. No further blind rerun or allowance increase; archive acquisition remains gated. Precise internal stage remains unobserved.
 
 Source review identified that Windows stage timeout killed only uv, leaving child processes/output handles possible. Applied bounded owned-tree termination via the absolute Windows system taskkill.exe (/PID /T /F,30-second cleanup bound) before launcher reaping. The Windows job now invokes the identical locked harness under native PowerShell with a persistent transcript, finalization and native exit-status propagation; Linux/macOS retain their existing Bash route. Required stages,1200-second command bound,55-minute step and60-minute Windows job caps remain. This is a process-tree/output-handling hypothesis pending native proof, not an established root-cause claim. Actionlint, PowerShell AST parse, Ruff, selected strict types and21 focused workflow/harness tests passed. No other local writers were active.
+
+## P7 implementation candidate — 27 October 2026
+
+Authoritative SSD capture is frozen; no acquisition or publication was launched.
+Actual repo-local CPython3.15.1 and editable binding were retained. Added typed
+report projection, immutable public checkpoints, independent pinned acceptance,
+fenced continuation, lazy cold restore and qualified hosted scratch retirement.
+Added trusted-main finite workflow, operator pause and checkpoint-linked native
+interruption proof requirements. Initial focused tests failed for the missing
+implementation, then passed. Review added prepared-publication cold restore,
+legacy source/publication fencing and exact cancelled-attempt proof tests.
+
+Focused integrated milestone:105 tests passed before the additional fencing test;
+that exact test file subsequently passed5 tests. Strict selected typing passed.
+The first bare basedpyright launcher had a stale shebang after worktree relocation;
+repo-local `python -m basedpyright` succeeded without changing the environment.
+No rights gates, archive card, remote objects or authoritative SSD originals changed.
+Full candidate assurance and hosted/native acceptance remain pending.
+
+P7 full first candidate passed every local stage:8564 tests passed,14 capability
+skips,96% repository coverage, schema/parity, mutation, supply-chain and SBOM
+gates. That run identified SQLite connection warnings in new continuation paths;
+review fixed deterministic connection closure and added initial-pointer unknown
+outcome recovery plus explicit operator resume that preserves existing enable
+authority. Verification remains available while paused, without source traffic.
+A failed report remains held after resume. Added SDK/public-namespace and native
+run/artifact fixtures, source capture/one-transient-retry, lane separation and
+adversarial projection checks. The35 new hosted tests pass with84.67% branch-aware
+coverage of the four new hosted modules; this is scoped evidence, not full-project
+acceptance. Selected strict typing and Actionlint pass. P7 is nested issue794.
+A fresh complete candidate gate follows these review changes.
+
+The reviewed full candidate passed all required local stages:8581 tests,14
+capability skips,96.50% repository coverage, schemas/parity, every mutation lane,
+audit, licences, source scan and118-component SBOM validation. No vulnerabilities
+were reported by that audit. Offline projection of the frozen SSD validates799
+report records,957 qualified objects (80 new request receipts),99 candidate
+shards and an822290-byte compressed snapshot. All119 unreferenced objects remain
+excluded. Receipt: `build/parliament/hosted-handoff-20261027/implementation-preflight.json`.
+
+Final startup review found a disabled scheduler could encounter the initial
+bootstrap pointer before its snapshot existed. An exact red test reproduced
+checkpoint_missing; the controller now checks disabled/paused control before
+loading a snapshot, preserving a harmless no-op during bootstrap. The cached
+failure-only rerun and affected strict typing pass. A fresh full gate runs on
+the delivery commit; hosted checks and native acceptance remain pending.

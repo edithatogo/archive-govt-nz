@@ -86,3 +86,44 @@ a dated observation, not a fixed export allowlist or full-archive denominator.
    coverage, reconciliation and operational acceptance requirements are met.
 
 Hosted collection is NOT configured or enabled at this planning checkpoint.
+
+## Implementation candidate, 27 October 2026
+
+The candidate uses one ten-record catalogue page per small attempt, alternating
+recent and historical lanes. Eight of every ten historical attempts advance the
+forward cursor; one continues the separate deep sweep and one revisits the known
+attachment-free title from page one. Recent pages1–10 cycle independently. A
+pending queue drains before new discovery. These are bounded observations, not
+coverage or completeness claims.
+
+A parent-bound public pointer fences ownership. Each immutable gzip snapshot
+contains typed report rows, sanitized events, exact candidate shards and public
+object references. New objects and the uploaded snapshot pointer commit together;
+fresh anonymous pinned hash/length readback precedes a verified pointer. Unknown
+outcomes recover from that pointer rather than replaying native mutations.
+Originals checkpoint individually, before accepted capture promotion. Interrupted
+acquisition attempts close with their full byte/time budget conservatively charged;
+accepted originals publish before any new bounded attempt drains the remaining
+queue. Immutable snapshots retain accounting and publication checkpoints.
+
+The SSD marker freezes its original state at bootstrap. Legacy CLI acquisition
+checks the shared pointer before source access; native publication checks the
+current owner even from another local state root. Only restored hosted working
+copies with qualified immutable remote references can retire scratch files.
+
+Native acceptance requires a cold-verification run, a deliberately cancelled
+pilot after its durable discovery checkpoint, and a successful recovery whose
+receipt references that exact cancelled run/attempt. All three must use the
+current main head. Only then can the operator enable the public pointer. Workflow
+schedules remain harmless no-ops before bootstrap/enable. The existing HF secret
+value is never handled in evidence. This remains an unmerged implementation
+candidate; native handover and schedule acceptance are pending.
+
+Operational recovery: `verify` may inspect/accept a paused uploaded checkpoint
+without source access. After reviewing and fixing the recorded cause, the local
+operator command `resume` clears pause while retaining the prior enabled flag
+and authority. It cannot enable a bootstrap or bypass the three native proof
+requirements. Failed source records remain held; resume does not requeue them.
+An unknown first bootstrap-pointer outcome may resume only from the matching
+frozen SSD marker. Use fresh hosted restore directories; never reuse a populated
+restore target or delete the authoritative SSD history.

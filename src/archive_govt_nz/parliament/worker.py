@@ -9,6 +9,7 @@ from typing import TYPE_CHECKING, Literal
 
 import httpx
 
+from archive_govt_nz.parliament.hosted_transport import legacy_source_guard
 from archive_govt_nz.parliament.pipeline import USER_AGENT, Bounds, ParliamentArchive
 from archive_govt_nz.parliament.publication import publish_batch
 from archive_govt_nz.parliament.reports import DEFAULT_PAGE_SIZE, ReportQuery
@@ -93,6 +94,7 @@ def run_reports(
 ) -> dict[str, object]:
     """Capture and publish one bounded batch without claiming full coverage."""
     archive = ParliamentArchive(state_dir)
+    archive.source_guard = legacy_source_guard
     pending = archive.pending_report_batch()
     if pending:
         return {

@@ -119,9 +119,9 @@ User-directed follow-up,27October2026. Contract: [hosted-execution.md](./hosted-
 - [x] Verify current local versus hosted execution, existing secret names, active writers and report/publication state.
 - [x] Inventory report-only bootstrap:877 referenced objects already have verified public pinned references;119 unreferenced CAS objects explicitly excluded.
 - [x] Define durable checkpoint, interruption, fencing, cold-restore and authority-handover requirements.
-- [ ] Implement and test report-only projection, durable accepted-object/checkpoint protocol and shared writer fencing.
-- [ ] Implement finite serial batch jobs with trusted-main workflow, explicit pause, concurrency, bounded disk and continuation.
-- [ ] Run milestone assurance and Conductor review; fix findings and deliver through green required checks.
+- [x] Implement and test report-only projection, durable accepted-object/checkpoint protocol and shared writer fencing.
+- [x] Implement finite serial batch jobs with trusted-main workflow, explicit pause, concurrency, bounded disk and continuation.
+- [~] Run milestone assurance and Conductor review; fix findings and deliver through green required checks.
 - [ ] Prove exact Actions HF binding, anonymous cold restore, cancellation/resumption and preserved card in a bounded native pilot.
 - [ ] Hand over from local writers and enable scheduled continuation only after native proof; retain separate natural-schedule acceptance.
 
