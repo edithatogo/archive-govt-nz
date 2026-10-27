@@ -1,0 +1,27 @@
+{
+  "primary_rule": "Mostrecent retainededition by explicitpublicationorder, nottruthadjudication",
+  "edition_order": [
+    "MOJ0216-2015-16-v9-web",
+    "coroners-annual-report-2016-17",
+    "Chief-Coroner-2017-18-Annual-Report",
+    "Chief-Coroners-Annual-Report-2018-2019",
+    "MOJ0216-Chief-Coroner-2019-20-Annual-Report",
+    "Coronial-Services-Annual-report-2021-2021",
+    "Chief-Coroners-Annual-Report-2021-22-and-2022-23",
+    "Coroners-Court-Annual-Report-2023-WEB",
+    "MOJ0216_Coroners-Court-Annual-Report-2024-25"
+  ],
+  "recent_primary_means": [
+    "497",
+    "510",
+    "495",
+    "612",
+    "606"
+  ],
+  "all_retained_recent_means_exceed365": true,
+  "alternative_cells": 8,
+  "latest_dataset_rows": 55,
+  "raw_source_sha256": "729ae8a0ed38166b9f18a4e29d570cd14e95df4c1c5933d27212aacd4968939d",
+  "raw_source_path": "data/annual-edition-observations.csv",
+  "original_unique_extraction_sha256": "591b48890bead08baa7e2bb1cf60c0305719b124617cc834431b001aaeb0c22f"
+}

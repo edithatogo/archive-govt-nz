@@ -1,0 +1,17 @@
+digraph G {
+ graph [rankdir=TB, bgcolor="white", pad=0.25, nodesep=.35, ranksep=.4];
+ node [shape=box, style="rounded,filled", fillcolor="#EDF3F5", color="#55717E", fontname="Times New Roman", fontsize=14, margin=".16,.10"];
+ edge [color="#55717E", fontname="Times New Roman", fontsize=11];
+ death [label="Death occurs\nClinical confirmation and reporting"];
+ registration [label="Civil registration\nMay precede final findings"];
+ inquiry [label="Coronial investigation\nRelevant records, reports and findings"];
+ interim [label="Interim findings where appropriate\nKnown facts and unresolved questions"];
+ final [label="Reasoned findings / case closure\nRecord as distinct milestones"];
+ decision [label="Institution-specific decision\nWhat information and authority are needed?", fillcolor="#F5EFE4"];
+ urgent [label="Urgent, low-risk support\nProposed agreed minimum requirements", fillcolor="#F5EFE4"];
+ settlement [label="Final settlement\nCause, entitlement or estate authority may matter", fillcolor="#F5EFE4"];
+ death -> registration; death -> inquiry;
+ inquiry -> interim [label="where justified"]; inquiry -> final;
+ registration -> decision; interim -> decision; final -> decision;
+ decision -> urgent [style=dashed,label="proposed pathway"]; decision -> settlement;
+}

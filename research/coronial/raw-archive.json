@@ -1,0 +1,13 @@
+{
+  "status": "prepared_not_published",
+  "repo_id": "edithatogo/archive-govt-nz-global",
+  "prepared_batch_path": "coronial/batches/95035b1e7b5056df696919ed202057a42ea3abb6940a699cda638c17137c489d",
+  "immutable_revision": null,
+  "raw_objects_prepared": 7,
+  "metadata_only_source_records": 12,
+  "published_raw_objects": 0,
+  "source_bytes": "Retained and independently re-downloaded with matching hashes",
+  "reason": "Shared destination returned HTTP409 because another commit operation was in progress. No new raw-source snapshot is claimed.",
+  "source_access": "Use raw-source-catalogue.json original publisher URLs and SHA256 values. The public aggregate inputs reproduce calculations without private files.",
+  "checked_at": "2026-10-27T23:46:42.958386+00:00"
+}
