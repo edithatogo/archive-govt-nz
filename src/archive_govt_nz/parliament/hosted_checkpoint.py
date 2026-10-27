@@ -149,14 +149,14 @@ class Checkpoints:
         self.work = self.state["work"]
         self.cycle = self.state["cycle"]
 
-    def claim(self, owner: str, *, previous_terminal: bool = False) -> None:
+    def claim(self, owner: str, *, previous_terminal_owner: str | None = None) -> None:
         """Claim a free/expired owner or one proved terminal by GitHub readback."""
         self.pointer = self.current()
         if (
             self.pointer["owner"]
             and self.pointer["owner"] != owner
             and self.pointer["lease_until"] > time.time()
-            and not previous_terminal
+            and self.pointer["owner"] != previous_terminal_owner
         ):
             abort("parliament_writer_busy")
         self.owner = owner

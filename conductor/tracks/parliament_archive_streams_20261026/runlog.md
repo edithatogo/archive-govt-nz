@@ -89,3 +89,23 @@ checkpoint_missing; the controller now checks disabled/paused control before
 loading a snapshot, preserving a harmless no-op during bootstrap. The cached
 failure-only rerun and affected strict typing pass. A fresh full gate runs on
 the delivery commit; hosted checks and native acceptance remain pending.
+
+## P7 hosted review, PR795
+
+All local stages passed at658dcbc3 (8581 tests,14 capability skips,96.50%
+coverage). Native Ubuntu assurance, workflow lint and CodeQL passed; macOS and
+Windows were still running when review identified three valid P2 findings.
+Exact isolated red tests reproduced stale-owner proof transfer, discovery
+without a total deadline, and bootstrap proceeding while a local writer held
+its lock. Fixed all three: identity-bound terminal proof, remaining-budget
+async deadline, and the existing process-lifetime writer lock held through
+bootstrap acceptance. Each exact red regression now passes.
+
+Codecov reported79.50% patch coverage against the unchanged80% target. Moved
+the operational CLI into a measured package module with a thin checkout entry
+point and tested cold verify, pause/resume/enable authority, explicit index,
+sanitized errors and cancellation. No coverage rule or exemption changed.
+Forty-four hosted tests passed with86% branch-aware coverage across the five
+hosted modules; added two further live-owner/card-drift resume guard cases.
+Selected strict types and Ruff pass. Corrected-head complete local and hosted
+checks are required; source acquisition and native handover remain disabled.

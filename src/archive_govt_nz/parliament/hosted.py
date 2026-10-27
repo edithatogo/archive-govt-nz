@@ -14,8 +14,8 @@ import sys
 import time
 import uuid
 import zipfile
-from contextlib import closing
-from typing import Any
+from contextlib import closing, contextmanager
+from typing import TYPE_CHECKING, Any
 lazy from pathlib import Path
 
 import httpx
@@ -27,9 +27,13 @@ from archive_govt_nz.parliament.hosted_transport import (
     NativeTransport,
     abort,
 )
+from archive_govt_nz.parliament.lease import file_lock
 from archive_govt_nz.parliament.pipeline import USER_AGENT, Bounds, ParliamentArchive
 from archive_govt_nz.parliament.publication import publish_batch
 from archive_govt_nz.parliament.reports import ReportQuery
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
 
 LATE_SLOT = 9
 DEEP_SLOT = 8
@@ -211,17 +215,18 @@ async def acquire(manager: Checkpoints) -> None:
         if manager.work["phase"] == "discover":
             manager.work["reserved"] = 4 * 1024 * 1024
             manager.save()
-            result = await archive.reports(
-                client,
-                partition=manager.work["partition"],
-                query=ReportQuery(**manager.work["query"]),
-                bounds=Bounds(
-                    max_records=10,
-                    max_bytes=262144000,
-                    max_seconds=900,
-                    max_spool_bytes=8589934592,
-                ),
-            )
+            async with asyncio.timeout(900 - manager.work["seconds"]):
+                result = await archive.reports(
+                    client,
+                    partition=manager.work["partition"],
+                    query=ReportQuery(**manager.work["query"]),
+                    bounds=Bounds(
+                        max_records=10,
+                        max_bytes=262144000,
+                        max_seconds=900,
+                        max_spool_bytes=8589934592,
+                    ),
+                )
             if result.get("status"):
                 abort("discovery_deferred")
         while archive.summary()["pending"] and manager.work["captured"] < MAX_RECORDS:
@@ -297,7 +302,31 @@ def finish(manager: Checkpoints) -> dict[str, Any]:
     return result
 
 
+@contextmanager
+def bootstrap_lease(root: Path) -> Iterator[None]:
+    """Exclude an in-flight local writer before freezing or exporting its state."""
+    root.mkdir(parents=True, exist_ok=True)
+    with (root / "writer.lock").open("a+b") as handle:
+        if handle.tell() == 0:
+            handle.write(b"0")
+            handle.flush()
+        try:
+            file_lock(handle)
+        except OSError:
+            abort("bootstrap_writer_busy")
+        try:
+            yield
+        finally:
+            file_lock(handle, release=True)
+
+
 def bootstrap(root: Path, index: Path, transport: NativeTransport) -> dict[str, Any]:
+    """Hold the existing local writer lock through checkpoint acceptance."""
+    with bootstrap_lease(root):
+        return _bootstrap(root, index, transport)
+
+
+def _bootstrap(root: Path, index: Path, transport: NativeTransport) -> dict[str, Any]:
     """Seed only reviewed report references; leave acquisition disabled."""
     manager = Checkpoints(transport, root)
     manager.parent = transport.head()
@@ -432,9 +461,11 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - finite checkpointed lifecycl
             "checkpoint": manager.pointer["checkpoint"],
         }
     manager.load()
-    previous_terminal = (
-        terminal_owner(manager.pointer["owner"]) if manager.pointer["owner"] else False
-    )
+    previous_terminal_owner = manager.pointer["owner"]
+    if previous_terminal_owner is not None and not terminal_owner(
+        previous_terminal_owner
+    ):
+        previous_terminal_owner = None
     owner = (
         "gha_"
         + os.environ["GITHUB_RUN_ID"]
@@ -443,7 +474,7 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - finite checkpointed lifecycl
         if os.environ.get("GITHUB_RUN_ID")
         else "local_" + uuid.uuid4().hex
     )
-    manager.claim(owner, previous_terminal=previous_terminal)
+    manager.claim(owner, previous_terminal_owner=previous_terminal_owner)
     results = []
     started = time.monotonic()
     try:

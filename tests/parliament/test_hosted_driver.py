@@ -163,7 +163,7 @@ def test_retirement_requires_isolated_restore(tmp_path: Path) -> None:
         manager.retire()
     worker = Checkpoints(remote, tmp_path / "worker")
     worker.load()
-    worker.claim("worker", previous_terminal=True)
+    worker.claim("worker", previous_terminal_owner="first")
     worker.accept()
     archive = worker.restore()
     archive.store.put_bytes(b"unqualified scratch")
@@ -178,7 +178,7 @@ def test_prepared_publication_cold_restore(tmp_path: Path) -> None:
     _manager, remote = initial(tmp_path, pending=True)
     worker = Checkpoints(remote, tmp_path / "prepared")
     worker.load()
-    worker.claim("prepared", previous_terminal=True)
+    worker.claim("prepared", previous_terminal_owner="first")
     worker.accept()
     archive = worker.restore()
 

@@ -120,3 +120,11 @@ to load an incomplete bootstrap snapshot. The exact race failed red and passed
 after the change. Full reviewed assurance had passed8581 tests and all gates;
 final-commit assurance and hosted acceptance follow. Public acquisition remains
 disabled throughout bootstrap and pilot qualification.
+
+PR795 required review fixes are valid and reproduced by three red tests.
+Terminal proof is now bound to the current owner; discovery has a total remaining
+timeout; bootstrap holds the existing local writer lock before freezing the SSD
+and through checkpoint acceptance. Isolated regression tests pass. The operator
+CLI now resides in the measured package and has authority/error/cancellation
+tests. Codecov's79.50% patch result is retained as first-failure evidence;
+the80% requirement is unchanged. Corrected-head hosted acceptance is pending.

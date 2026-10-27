@@ -113,7 +113,7 @@ def test_cold_restore_and_stale_writer(tmp_path: Path) -> None:
     fresh.load()
     with pytest.raises(HostedError, match="writer_busy"):
         fresh.claim("second")
-    fresh.claim("second", previous_terminal=True)
+    fresh.claim("second", previous_terminal_owner="first")
     with pytest.raises(HostedError, match="writer_fenced"):
         manager.guard()
     fresh.accept(all_objects=True)
@@ -141,7 +141,7 @@ def test_interrupt_after_durable_object_resumes_without_source(tmp_path: Path) -
     _manager, remote = initial(tmp_path, pending=True)
     resumed = Checkpoints(remote, tmp_path / "worker1")
     resumed.load()
-    resumed.claim("worker1", previous_terminal=True)
+    resumed.claim("worker1", previous_terminal_owner="first")
     resumed.accept()
     archive = resumed.restore()
     checkpoint = resumed.checkpoint
@@ -173,7 +173,7 @@ def test_interrupt_after_durable_object_resumes_without_source(tmp_path: Path) -
         asyncio.run(first())
     saved = Checkpoints(remote, tmp_path / "worker2")
     saved.load()
-    saved.claim("worker2", previous_terminal=True)
+    saved.claim("worker2", previous_terminal_owner="worker1")
     saved.accept()
     archive = saved.restore()
     assert archive.summary()["pending"] == 1
