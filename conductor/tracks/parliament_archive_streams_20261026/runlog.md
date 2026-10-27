@@ -122,3 +122,12 @@ regressions and all ten affected qualification/checkpoint tests pass; selected
 strict types and Ruff pass. No rights policy or body-format acceptance expanded.
 The previous corrected head b26a3e53 passes full local assurance and hosted
 Ubuntu/Windows/Codecov; these additional fixes require their own final-head gates.
+
+SDK-output boundary: direct stdout/stderr diagnostics are now captured in unique
+mode600 files inside the spool-accounted working root, excluded from projection
+and artifacts. Two red cases reproduced direct diagnostic leakage for failure
+and cancellation; both now pass, including private-file permission/readback.
+Only the sanitized result reaches console/receipt. All48 hosted integration
+tests pass and selected strict typing/Ruff pass. No SDK log or unqualified body
+has been published. The final delivery commit requires complete local/hosted
+checks; there are still no native checkpoint writes or archive acquisitions.

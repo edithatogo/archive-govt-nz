@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import os
+import stat
 import sys
 from typing import TYPE_CHECKING
 
@@ -82,17 +84,26 @@ def test_cli_does_not_disclose_sdk_exception_text(
     receipt = arguments(tmp_path, monkeypatch, "pilot")
 
     def fail(*_args: object, **_kwargs: object) -> dict[str, object]:
+        message = "https://example.invalid/?signed=DO_NOT_DISCLOSE"
+        sys.stdout.write(message + "\n")
+        sys.stderr.write(message + "\n")
         if interrupted:
             raise KeyboardInterrupt
-        message = "https://example.invalid/?signed=DO_NOT_DISCLOSE"
         raise OSError(message)
 
     monkeypatch.setattr(hosted_cli, "run", fail)
     assert hosted_cli.main() == (130 if interrupted else 1)
-    output = capsys.readouterr().out
+    captured = capsys.readouterr()
+    output = captured.out
+    assert "signed" not in captured.err
     assert "signed" not in output
     assert "signed" not in receipt.read_text()
     assert json.loads(output)["status"] == ("interrupted" if interrupted else "failed")
+    logs = list((tmp_path / "pilot").glob(".private-sdk-*.log"))
+    assert len(logs) == 1
+    assert "signed" in logs[0].read_text()
+    if os.name == "posix":
+        assert stat.S_IMODE(logs[0].stat().st_mode) == 0o600
     assert len(remote.revisions) > 1
 
 

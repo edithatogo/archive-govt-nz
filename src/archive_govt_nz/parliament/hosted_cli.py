@@ -5,8 +5,12 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import os
 import sys
+from contextlib import contextmanager, redirect_stderr, redirect_stdout
 from pathlib import Path
+from tempfile import mkstemp
+from typing import TYPE_CHECKING
 
 from archive_govt_nz.parliament.hosted import (
     bootstrap,
@@ -21,6 +25,9 @@ from archive_govt_nz.parliament.hosted_transport import (
     NativeTransport,
     abort,
 )
+
+if TYPE_CHECKING:
+    from collections.abc import Iterator
 
 
 def control(args: argparse.Namespace, transport: NativeTransport) -> dict[str, object]:
@@ -57,6 +64,37 @@ def control(args: argparse.Namespace, transport: NativeTransport) -> dict[str, o
     }
 
 
+@contextmanager
+def private_diagnostics(root: Path) -> Iterator[None]:
+    """Keep direct SDK stdout/stderr inside private, spool-accounted files."""
+    root.mkdir(parents=True, exist_ok=True)
+    descriptor, _path = mkstemp(prefix=".private-sdk-", suffix=".log", dir=root)
+    with (
+        os.fdopen(descriptor, "w", encoding="utf-8", errors="backslashreplace") as log,
+        redirect_stdout(log),
+        redirect_stderr(log),
+    ):
+        yield
+
+
+def execute(args: argparse.Namespace) -> dict[str, object]:
+    """Perform one selected operation inside the private diagnostic boundary."""
+    transport = NativeTransport()
+    if args.operation == "bootstrap":
+        if args.index is None:
+            abort("bootstrap_index_required")
+        return bootstrap(args.state_dir, args.index, transport)
+    if args.operation in {"pause", "resume", "enable"}:
+        return control(args, transport)
+    return run(
+        args.state_dir,
+        mode=args.operation,
+        max_batches=args.max_batches,
+        max_seconds=args.max_seconds,
+        hold_seconds=args.hold_seconds,
+    )
+
+
 def main() -> int:
     """Write only a sanitized control receipt; never upload SDK logs or spool."""
     parser = argparse.ArgumentParser(description=__doc__)
@@ -82,21 +120,8 @@ def main() -> int:
     )
     code = 0
     try:
-        transport = NativeTransport()
-        if args.operation == "bootstrap":
-            if args.index is None:
-                abort("bootstrap_index_required")
-            result = bootstrap(args.state_dir, args.index, transport)
-        elif args.operation in {"pause", "resume", "enable"}:
-            result = control(args, transport)
-        else:
-            result = run(
-                args.state_dir,
-                mode=args.operation,
-                max_batches=args.max_batches,
-                max_seconds=args.max_seconds,
-                hold_seconds=args.hold_seconds,
-            )
+        with private_diagnostics(args.state_dir):
+            result = execute(args)
     except KeyboardInterrupt:
         result = {"status": "interrupted", "operation": args.operation}
         code = 130

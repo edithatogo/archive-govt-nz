@@ -134,3 +134,9 @@ before public object staging, retaining rejected bytes privately and exact hash
 evidence publicly. Charged failed-read acquisition time before saving/retrying.
 Both defects have isolated red/green regressions; ten affected tests, strict types
 and Ruff pass. Final-head complete assurance is required before any native write.
+
+SDK diagnostic isolation is now enforced for direct stdout/stderr as well as
+logger and exception messages. First-failure red cases are retained privately;
+the two fixed cases prove no public diagnostic leakage and mode600 retention.
+All48 hosted tests pass. This final candidate awaits full/hosted assurance and
+native checkpoint/pilot acceptance before enabling acquisition.
