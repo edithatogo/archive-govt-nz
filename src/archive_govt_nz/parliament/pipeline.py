@@ -45,7 +45,7 @@ from archive_govt_nz.parliament.reports import (
 )
 
 if TYPE_CHECKING:
-    from collections.abc import Iterator
+    from collections.abc import Callable, Iterator
     from pathlib import Path
 
 USER_AGENT = "archive-govt-nz-preservation/1.0"
@@ -106,12 +106,23 @@ class Bounds:
 class ParliamentArchive:
     """One shared durable state root for all Parliament collection streams."""
 
-    def __init__(self, root: Path, *, delay: float = 1.0) -> None:
+    def __init__(
+        self,
+        root: Path,
+        *,
+        delay: float = 1.0,
+        checkpoint: Callable[[str, dict[str, object]], None] | None = None,
+        guard: Callable[[], None] | None = None,
+        source_guard: Callable[[], None] | None = None,
+    ) -> None:
         """Open one explicitly selected durable state root."""
         if delay < 0:
             message = "invalid_delay"
             raise ValueError(message)
         self.root = root
+        self.checkpoint = checkpoint
+        self.guard = guard
+        self.source_guard = source_guard
         self.delay = delay
         root.mkdir(parents=True, exist_ok=True)
         self.store = ContentAddressedStore(root / "cas")
@@ -175,6 +186,17 @@ class ParliamentArchive:
                 message = "unsupported_parliament_state_version"
                 raise ValueError(message)
 
+    def _checkpoint(self, stage: str, detail: dict[str, object]) -> None:
+        if self.checkpoint is not None:
+            self.checkpoint(stage, detail)
+
+    def _guard(self) -> None:
+        if (self.root / "hosted-authority.json").exists() and self.guard is None:
+            message = "hosted_authority_requires_fenced_controller"
+            raise ValueError(message)
+        if self.guard is not None:
+            self.guard()
+
     @contextmanager
     def _connection(self) -> Iterator[sqlite3.Connection]:
         connection = sqlite3.connect(self.database, timeout=5)
@@ -188,6 +210,7 @@ class ParliamentArchive:
     @contextmanager
     def lease(self) -> Iterator[None]:
         """Fence local writers and recover abandoned SQL ownership after a crash."""
+        self._guard()
         owner = uuid.uuid4().hex
         with (self.root / "writer.lock").open("a+b") as handle:
             if handle.tell() == 0:
@@ -272,6 +295,9 @@ class ParliamentArchive:
                     )
 
     async def _permit(self, client: httpx.AsyncClient, url: str) -> None:
+        self._guard()
+        if self.source_guard is not None:
+            self.source_guard()
         url = safe_url(url)
         with self._connection() as connection:
             cooldown = connection.execute(
@@ -501,13 +527,15 @@ class ParliamentArchive:
                         ).decode(),
                     ),
                 )
-            return {
+            result = {
                 "discovered": len(page.records),
                 "next_page": page.next_page,
                 "observed_total": page.total,
                 "bytes": len(raw),
                 "coverage_claim": False,
             }
+            self._checkpoint("reports", result)
+            return result
 
     async def _report_response(
         self, client: httpx.AsyncClient, query: ReportQuery, bounds: Bounds
@@ -665,6 +693,13 @@ class ParliamentArchive:
                             if not links and record["kind"] in {"submission", "advice"}:
                                 self._attachment_error()
                             urls.extend(link for link in links if link not in urls)
+                        self._checkpoint(
+                            "capture_received",
+                            {
+                                "source_id": item["source_id"],
+                                "sha256": result.receipt.sha256,
+                            },
+                        )
                         with self._connection() as connection:
                             connection.execute(
                                 "INSERT INTO captures VALUES(?,?,?,?,?,?) "
@@ -710,12 +745,16 @@ class ParliamentArchive:
                                     time.time(),
                                 ),
                             )
+                        self._checkpoint(
+                            "capture_object", {"bytes": result.receipt.byte_count}
+                        )
                     with self._connection() as connection:
                         connection.execute(
                             "UPDATE records SET status='captured',last_error=NULL "
                             "WHERE source_id=?",
                             (item["source_id"],),
                         )
+                    self._checkpoint("capture_record", {"captured": 1})
                     captured += 1
                 except (
                     CaptureError,
@@ -873,6 +912,7 @@ class ParliamentArchive:
                         batch,
                     ),
                 )
+        self._checkpoint("package", {"batch": batch})
         return {"batch": batch, "path": str(target), "object_count": len(objects)}
 
     def _package_rows(self, decisions: dict[str, dict[str, str]]) -> list[sqlite3.Row]:
@@ -936,6 +976,8 @@ class ParliamentArchive:
                 "INSERT OR REPLACE INTO publications VALUES(?,?,?,?)",
                 (batch, revision, repo, status),
             )
+
+        self._checkpoint("publication", {"batch": batch, "status": status})
 
     def report_decisions(self) -> dict[str, dict[str, str]]:
         """Select a bounded report-only batch under Parliament's stated reuse basis."""

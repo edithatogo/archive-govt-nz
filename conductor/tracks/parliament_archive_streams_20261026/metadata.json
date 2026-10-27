@@ -3,7 +3,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-10-26T10:51:10.498Z",
-  "updated_at": "2026-10-26T13:52:48.431341+00:00",
+  "updated_at": "2026-10-27T12:05:29.973557+00:00",
   "description": "Bounded resumable Parliament submissions, advice and committee-document archival with incremental verified Hugging Face delivery.",
   "approval_status": "approved_implementation_review_and_archive",
   "github": {
@@ -38,6 +38,18 @@
         "phase": "P5",
         "title": "Additional collections and final reconciliation",
         "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/783",
+        "nested": true
+      },
+      {
+        "phase": "P6",
+        "title": "Hugging Face metadata and viewer acceptance",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/789",
+        "nested": true
+      },
+      {
+        "phase": "P7",
+        "title": "Durable batched GitHub Actions continuation",
+        "issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/794",
         "nested": true
       }
     ],

@@ -21,6 +21,12 @@ if TYPE_CHECKING:
     from _pytest.monkeypatch import MonkeyPatch
 
 
+@pytest.fixture(autouse=True)
+def fictional_shared_authority(monkeypatch: MonkeyPatch) -> None:
+    """Keep acquisition fixtures isolated from the real public control plane."""
+    monkeypatch.setattr(worker, "legacy_source_guard", lambda: None)
+
+
 def test_stream_publishes_once_then_reconciles(
     tmp_path: Path, monkeypatch: MonkeyPatch
 ) -> None:

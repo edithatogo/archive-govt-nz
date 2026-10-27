@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, Literal
 
 import httpx
 
+from archive_govt_nz.parliament.hosted_transport import legacy_source_guard
 from archive_govt_nz.parliament.pipeline import USER_AGENT, Bounds, ParliamentArchive
 from archive_govt_nz.parliament.publication import publish_batch
 from archive_govt_nz.parliament.reports import ReportQuery
@@ -39,6 +40,7 @@ async def _network(  # noqa: PLR0913 - explicit network operation inputs
     *,
     query: ReportQuery | None,
 ) -> dict[str, object]:
+    archive.source_guard = legacy_source_guard
     async with httpx.AsyncClient(headers={"User-Agent": USER_AGENT}) as client:
         if action == "reports":
             return await archive.reports(

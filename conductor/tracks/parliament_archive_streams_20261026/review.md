@@ -89,3 +89,54 @@ Native preflight exposed a portability issue in the new supervisor test import (
 Both unresolved P2 findings were valid and reproduced. Budget-limited files now remain pending for a fresh run, while genuine per-file violations remain failures. Discovery admits a page only with room for its original response, candidate/snapshot representations, bookkeeping and a complete SQLite rollback journal. The same spool bound reaches the worker and explicit CLI discovery; a full-spool deferral stops subsequent capture and packaging. Unadmitted pages do not advance cursors.
 
 All80 affected Parliament tests pass, strict types and Ruff pass, and both new budget guard mutants are killed by the existing Medallion runner. Full repository and corrected-head hosted acceptance remain required before merge. No policy bypass or review-thread dismissal without a fix is authorised.
+
+## P7 pre-delivery review — 27 October 2026
+
+Reviewed durability ordering, shared ownership, unknown native outcomes, typed
+projection, cancellation budgets, disk retirement and unchanged rights/card gates.
+Fixed additional findings: candidate evidence must survive cold restore inside
+immutable snapshots; package restore must hydrate exact object hardlinks before
+publication; interrupted work must retain its originating run/attempt; publication
+proof cannot be inferred from unrelated successful jobs; legacy CLI roots must
+consult shared authority before source access. Dedicated tests cover these cases.
+The original SSD is never eligible for automatic scratch retirement.
+
+Remaining acceptance is explicit: complete local assurance, green required hosted
+checks, merged code, native HF binding, full anonymous cold restore and actual
+cancellation/resumption before enable. No deployment or source-completeness claim.
+
+Additional review fixes: deterministically close SQLite connections during long
+continuations; recover an unknown first bootstrap pointer only when the frozen
+SSD marker matches its exact owner; allow read-only cold verification while
+paused; expose explicit resume without changing enable/authority; retain failed
+reports as held before another acquisition. SDK fixtures enforce immutable
+namespace, anonymous pinned reads, no permission-as-absence behavior and stable
+diagnostics. Exact native execution and bounded artifact ZIP contracts are tested.
+Thirty-five hosted tests pass; four new modules have84.67% branch-aware coverage.
+Full revised-candidate and native hosted acceptance are still required.
+
+Final startup finding fixed: a disabled scheduler now returns before attempting
+to load an incomplete bootstrap snapshot. The exact race failed red and passed
+after the change. Full reviewed assurance had passed8581 tests and all gates;
+final-commit assurance and hosted acceptance follow. Public acquisition remains
+disabled throughout bootstrap and pilot qualification.
+
+PR795 required review fixes are valid and reproduced by three red tests.
+Terminal proof is now bound to the current owner; discovery has a total remaining
+timeout; bootstrap holds the existing local writer lock before freezing the SSD
+and through checkpoint acceptance. Isolated regression tests pass. The operator
+CLI now resides in the measured package and has authority/error/cancellation
+tests. Codecov's79.50% patch result is retained as first-failure evidence;
+the80% requirement is unchanged. Corrected-head hosted acceptance is pending.
+
+Ingress and accounting self-review: applied the existing report PDF qualification
+before public object staging, retaining rejected bytes privately and exact hash
+evidence publicly. Charged failed-read acquisition time before saving/retrying.
+Both defects have isolated red/green regressions; ten affected tests, strict types
+and Ruff pass. Final-head complete assurance is required before any native write.
+
+SDK diagnostic isolation is now enforced for direct stdout/stderr as well as
+logger and exception messages. First-failure red cases are retained privately;
+the two fixed cases prove no public diagnostic leakage and mode600 retention.
+All48 hosted tests pass. This final candidate awaits full/hosted assurance and
+native checkpoint/pilot acceptance before enabling acquisition.

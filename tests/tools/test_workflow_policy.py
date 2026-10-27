@@ -175,3 +175,33 @@ def test_optional_workflow_arguments_use_shell_arrays() -> None:
         assert declaration in workflow
         assert expansion in workflow
         assert unsafe_expansion not in workflow
+
+
+def test_parliament_handover_requires_trusted_serial_execution() -> None:
+    """Only trusted main may run; artifacts cannot become a recursive state export."""
+    root = Path(__file__).parents[2]
+    workflow = yaml.safe_load(
+        (root / ".github/workflows/parliament-continuation.yml").read_text()
+    )
+    assert workflow["permissions"] == {"contents": "read", "actions": "read"}
+    assert workflow["concurrency"]["cancel-in-progress"] is False
+    job = workflow["jobs"]["continue"]
+    assert "github.ref == 'refs/heads/main'" in job["if"]
+    assert "github.repository == 'edithatogo/archive-govt-nz'" in job["if"]
+    uploads = [
+        step
+        for step in job["steps"]
+        if "actions/upload-artifact@" in step.get("uses", "")
+    ]
+    assert len(uploads) == 1
+    assert uploads[0]["with"]["path"] == "build/parliament-hosted/receipt.json"
+    assert uploads[0]["if"] == "always()"
+    continuation = next(
+        step
+        for step in job["steps"]
+        if step.get("name") == "Restore and continue approved reports"
+    )
+    assert "${{ inputs." not in continuation["run"]
+    assert '"$OPERATION"' in continuation["run"]
+    assert '--max-batches "$MAX_BATCHES"' in continuation["run"]
+    assert job["env"]["HF_HUB_DISABLE_XET"] == "1"
