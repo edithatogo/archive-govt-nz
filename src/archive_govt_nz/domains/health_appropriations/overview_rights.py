@@ -105,6 +105,18 @@ def qualify_overview_package(
         _safe(protected)
         a, b = output.resolve(), protected.resolve()
         _require(not a.is_relative_to(b) and not b.is_relative_to(a))
+    result, payloads = _project_package(request, manifest_sha256, evidence_root)
+    output.mkdir(exist_ok=False)
+    for name, payload in payloads.items():
+        with (output / name).open("xb") as stream:
+            stream.write(payload)
+        _require((output / name).read_bytes() == payload)
+    return result
+
+
+def _project_package(
+    request: SourceRequest, manifest_sha256: str, evidence_root: Path
+) -> tuple[dict[str, Any], dict[str, bytes]]:
     ledger = _ledger()
     row = _assessment(request, ledger)
     pins = ledger["evidence_sha256"]
@@ -187,9 +199,32 @@ def qualify_overview_package(
         verified_snapshot(manifest_path, manifest_sha256, max_bytes=_MAX_BYTES)
         == original
     )
-    output.mkdir(exist_ok=False)
-    for name, payload in {**payloads, "MANIFEST.json": _json(result)}.items():
-        with (output / name).open("xb") as stream:
-            stream.write(payload)
-        _require((output / name).read_bytes() == payload)
+    return result, {**payloads, "MANIFEST.json": _json(result)}
+
+
+def verify_qualified_overview_package(
+    request: SourceRequest,
+    silver_manifest_sha256: str,
+    evidence_root: Path,
+    package: Path,
+    *,
+    manifest_sha256: str,
+) -> dict[str, Any]:
+    """Reconstruct rights and data from pinned source evidence without writes."""
+    _safe(package)
+    _require(package.is_dir())
+    snapshot = verified_snapshot(
+        package / "MANIFEST.json", manifest_sha256, max_bytes=_MAX_BYTES
+    )
+    result, expected = _project_package(request, silver_manifest_sha256, evidence_root)
+    _require(
+        {p.name for p in islice(package.iterdir(), len(expected) + 1)} == set(expected)
+    )
+    _require(snapshot == expected["MANIFEST.json"])
+    for name, payload in expected.items():
+        _safe(package / name)
+        observed = verified_snapshot(
+            package / name, hashlib.sha256(payload).hexdigest(), max_bytes=_MAX_BYTES
+        )
+        _require(observed == payload)
     return result
