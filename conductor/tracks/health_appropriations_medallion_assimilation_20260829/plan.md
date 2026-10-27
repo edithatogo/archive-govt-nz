@@ -1450,6 +1450,13 @@ deliberately exercise version handling.
 
 ### 7.1 Metadata and rights contracts first
 
+- [x] Qualify the five 2022/23–2026/27 Vote Health headline data resources
+  against exact publisher chapter/collection rights and retained licence evidence;
+  emit fresh per-resource Gold rights manifests and attribution while preserving
+  all original/Silver bytes and excluding PDF facsimiles, images and unreviewed
+  material. See `overview-rights-qualification-20261027.md`. [M-04, M-14, M-17;
+  AC-04, AC-14] Broader Phase 7 and release gates remain open.
+
 - [x] Review clarification: explicitly load the JSON-LD parser plugin without
   an unguarded warm-up parse; retain offline positive/negative fixtures and
   revalidate the exact change. [M-14, M-18; AC-14, AC-16; f111dbf0]

@@ -1359,3 +1359,8 @@ A final pre-merge synthetic probe reproduced ContextVar inheritance retaining an
 ## BIFF8 stored constants as a distinct evidence class
 
 The [BIFF8 stored-value contract](./biff8-stored-value-contract.md) extends the source-native Silver boundary for the exact retained Budget2019 pair. Typed facts, encoded-byte witnesses, lineage and dispositions travel through existing complete native recordset contracts. Original OOXML lexical-token checks remain unchanged. Exact stored integer values have their own basis/schema and require original-byte witness replay before any downstream numerical mapping; existing literal-only consumers refuse them. Rights, units, currency, period/edition and analytical joins remain independent gates. This implements M-05/M-06/M-07 within the approved source expansion and creates an explicit route to M-10 products without claiming those product mappings complete.
+
+
+## Five headline rights qualification — 2026-10-27
+
+The overview rights producer is an explicit additive boundary over the existing Bronze-verified Gold query. It requires a pinned five-resource assessment ledger and the exact retained evidence inventory, copies facts unchanged into an exclusive fresh output, and binds separate facts/query rights assertions to their payloads and decision bytes. Rendered publisher observations are not represented as original HTTP bodies. Historical manifests and default queries retain their existing behavior.

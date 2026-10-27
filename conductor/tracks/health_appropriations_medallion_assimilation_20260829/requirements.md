@@ -247,3 +247,8 @@ accountable dependency-adoption decision.
 ## BIFF8 implementation boundary for M-05/M-06/M-07/M-10/M-11
 
 The retained legacy Budget originals require a separately versioned stored-value evidence class. The [BIFF8 contract](./biff8-stored-value-contract.md) binds numeric constants to original encoded bytes, source/stream/record/cell identity and exact integer decoding; it does not manufacture OOXML lexical tokens. Formula caches, unsupported/fractional/nonfinite/overflow values and ambiguous or tampered witnesses remain rejected. Complete typed facts/evidence/lineage/dispositions and an explicit witness-aware downstream mapping contract are required. Existing literal-only products and all independent rights/unit/currency/period/edition/join boundaries remain unchanged. This is a bounded source-adapter implementation of existing Must requirements; it does not close the broader track or replace final product/recovery/review gates.
+
+
+## Five headline rights qualification — 2026-10-27
+
+The five modern Vote Health page-2 headline resources may carry resource-specific CC-BY-4.0 assertions only after their exact chapter/collection assessments and retained evidence pins verify. This bounded M-14/AC-14 qualification excludes PDF facsimiles, images, unrelated sources and external publication; it does not qualify all Gold/Platinum resources.

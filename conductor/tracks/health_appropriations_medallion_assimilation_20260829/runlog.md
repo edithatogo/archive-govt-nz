@@ -10105,3 +10105,8 @@ final hosted checks remain separate. The text baselines and comparison were
 regenerated twice identically after the correction; all 75 source objects were
 rechecked without mutation. Initial receipts remain in the prior candidate
 commit history.
+
+
+## Five headline rights qualification — 2026-10-27
+
+Continued five rights records on repo-local CPython 3.15.1. Retained ten publisher/collection observations, policy observation and original CC legal-code HTML; scanned 339 PDF pages and visually reviewed five selected pages. Native qualification produced five fresh per-resource manifests twice identically, with all prior Silver pins equal. Expected red: missing module. Focused green contracts and static checks precede the one reviewable-candidate full harness.
