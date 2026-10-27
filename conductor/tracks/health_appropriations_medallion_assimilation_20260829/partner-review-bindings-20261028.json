@@ -1,0 +1,102 @@
+{
+  "scope": "retained_metadata_slice_only",
+  "publisher_controls": [
+    {
+      "partner": "reimbursement-atlas",
+      "path": "data/medallion/catalogue_b0/data.jsonl",
+      "publisher_hash_matches": true,
+      "publisher_rows_match": true
+    },
+    {
+      "partner": "reimbursement-atlas",
+      "path": "data/medallion/silver/data.jsonl",
+      "publisher_hash_matches": true,
+      "publisher_rows_match": true
+    },
+    {
+      "partner": "reimbursement-atlas",
+      "path": "data/medallion/gold/data.jsonl",
+      "publisher_hash_matches": true,
+      "publisher_rows_match": true
+    },
+    {
+      "partner": "reimbursement-atlas",
+      "path": "data/medallion/platinum/data.jsonl",
+      "publisher_hash_matches": true,
+      "publisher_rows_match": true
+    },
+    {
+      "partner": "reimbursement-atlas",
+      "path": "data/medallion/lineage/data.jsonl",
+      "publisher_hash_matches": true,
+      "publisher_rows_match": true
+    },
+    {
+      "partner": "global-medicines-atlas",
+      "path": "DATA_LICENSE.md",
+      "publisher_hash_matches": true
+    },
+    {
+      "partner": "global-medicines-atlas",
+      "path": "README.md",
+      "publisher_hash_matches": false
+    },
+    {
+      "partner": "global-medicines-atlas",
+      "path": "SOURCE_RIGHTS.md",
+      "publisher_hash_matches": true
+    },
+    {
+      "partner": "global-medicines-atlas",
+      "path": "inventory/archival-manifest.json",
+      "publisher_hash_matches": true
+    },
+    {
+      "partner": "global-medicines-atlas",
+      "path": "inventory/source-inventory.json",
+      "publisher_hash_matches": true
+    },
+    {
+      "partner": "global-medicines-atlas",
+      "path": "inventory/source-inventory.parquet",
+      "publisher_hash_matches": true
+    },
+    {
+      "partner": "global-medicines-atlas",
+      "path": "medicine_source_catalog.json",
+      "publisher_hash_matches": true
+    },
+    {
+      "partner": "global-medicines-atlas",
+      "path": "metadata/publication-identities.json",
+      "publisher_hash_matches": true
+    },
+    {
+      "partner": "global-medicines-atlas",
+      "path": "metadata/source-rights-disposition.json",
+      "publisher_hash_matches": true
+    },
+    {
+      "partner": "global-medicines-atlas",
+      "path": "metadata/sources/nz-medsafe-products.json",
+      "publisher_hash_matches": true
+    }
+  ],
+  "gold_evaluation_sha256": "d37f4d3ca93f60ac628dfb1ed290887fa06a540298cbf5af157561b5ac80696b",
+  "github_evaluation_matches_published_gold": true,
+  "candidate_frame_sha256": "1d11079141b1c4e45bbea85f2630c2f16074efce808492bb616af817ca478818",
+  "all_adjudications_bound_to_frame": true,
+  "adjudications": 1500,
+  "decision_counts": {
+    "negative": 624,
+    "exclude": 16,
+    "positive": 860
+  },
+  "relation_kinds": [
+    "clinically_comparable_service_or_test_class",
+    "same_active_ingredient_or_therapeutic_moiety",
+    "same_device_class_or_intended_use",
+    "same_gene_phenotype_analyte_or_test_family_linkage"
+  ],
+  "annual_vote_total_relation_admitted": false
+}

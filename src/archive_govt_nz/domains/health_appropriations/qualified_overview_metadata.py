@@ -20,6 +20,10 @@ from archive_govt_nz.domains.health_appropriations.gold_metadata import (
 from archive_govt_nz.domains.health_appropriations.overview_rights import (
     verify_qualified_overview_package,
 )
+from archive_govt_nz.domains.health_appropriations.partner_snapshots import (
+    PartnerSnapshot,
+    project_partner_federation,
+)
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
     verified_snapshot,
 )
@@ -314,12 +318,15 @@ def project_qualified_overview_metadata(
 
 def project_qualified_overview_discovery(
     values: tuple[QualifiedOverviewInput, ...],
+    *,
+    partner_snapshots: tuple[PartnerSnapshot, ...] = (),
 ) -> dict[str, bytes]:
     """Extend verified graphs with scoped discovery and pending federation evidence.
 
     No partner snapshot or reviewed mapping is accepted by this bounded profile.
     Pending means unevaluated, not unmatched. Existing v1 graph bytes are reused.
     """
+    _require(type(partner_snapshots) is tuple)
     payloads = project_qualified_overview_metadata(values)
     packages = json.loads(payloads["catalogue.json"])["packages"]
     by_pin = {v.manifest_sha256: v for v in values}
@@ -451,7 +458,7 @@ def project_qualified_overview_discovery(
         "publication": "not_performed",
         "full_conformance": "not_asserted",
     }
-    return {
+    result = {
         **payloads,
         "citations.json": _json({**common, "records": citations}),
         "source_drillthrough.json": _json({**common, "records": references}),
@@ -478,6 +485,30 @@ def project_qualified_overview_discovery(
         ),
         "DATASET_CARD.md": ("\n".join(card) + "\n").encode(),
     }
+    if partner_snapshots:
+        result.update(
+            project_partner_federation(
+                result["federation_readiness.json"], partner_snapshots
+            )
+        )
+        result["DATASET_CARD.md"] += (
+            b"\nFederation: retained partner snapshots resolve these "
+            b"annual-total pairs "
+            b"as scoped record-grain exclusions. No positive join, source-data "
+            b"licence or broader partner-coverage claim is granted.\n"
+        )
+        evidence = json.loads(result["partner_snapshots.json"])
+        mismatches = sum(
+            c["status"] == "mismatch"
+            for p in evidence["partners"]
+            for c in p["publisher_control_observations"]
+        )
+        result["DATASET_CARD.md"] += (
+            "\nPublisher checksum mismatches in the selected partner evidence: "
+            f"{mismatches}. "
+            "See partner_snapshots.json for expected and observed hashes.\n"
+        ).encode()
+    return result
 
 
 def export_qualified_overview_metadata(
@@ -485,9 +516,11 @@ def export_qualified_overview_metadata(
     output: Path,
     *,
     include_discovery: bool = False,
+    partner_snapshots: tuple[PartnerSnapshot, ...] = (),
 ) -> dict[str, str]:
     """Write an exclusive metadata-only version after complete input verification."""
-    _require(type(include_discovery) is bool)
+    _require(type(include_discovery) is bool and type(partner_snapshots) is tuple)
+    _require(not partner_snapshots or include_discovery)
     _safe(output)
     _require(not output.exists() and output.parent.is_dir())
     for value in values:
@@ -500,8 +533,14 @@ def export_qualified_overview_metadata(
             _safe(protected)
             a, b = output.resolve(), protected.resolve()
             _require(not a.is_relative_to(b) and not b.is_relative_to(a))
+    for snapshot in partner_snapshots:
+        _safe(snapshot.root)
+        a, b = output.resolve(), snapshot.root.resolve()
+        _require(not a.is_relative_to(b) and not b.is_relative_to(a))
     payloads = (
-        project_qualified_overview_discovery(values)
+        project_qualified_overview_discovery(
+            values, partner_snapshots=partner_snapshots
+        )
         if include_discovery
         else project_qualified_overview_metadata(values)
     )
@@ -514,7 +553,11 @@ def export_qualified_overview_metadata(
         "MANIFEST.json": _json(
             {
                 "schema_version": (
-                    _SCHEMA.removesuffix("v1") + "v2" if include_discovery else _SCHEMA
+                    _SCHEMA.removesuffix("v1") + "v3"
+                    if partner_snapshots
+                    else _SCHEMA.removesuffix("v1") + "v2"
+                    if include_discovery
+                    else _SCHEMA
                 ),
                 "output_sha256": pins,
                 "publication": "not_performed",
