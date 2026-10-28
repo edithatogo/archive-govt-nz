@@ -309,3 +309,22 @@ to terminal before replacement assurance. Corrected full local harness passes
 Original logs remain intact; corrected receipt:
 evidence/parliament-assurance/20261028/access-hold-corrected-assurance.json.
 PR803 must use the corrected head before native qualification/resumption.
+
+### Native hold, cold restore and resumed continuation
+
+PR803 mergedc0f8b148 after corrected-head45943a4f checks all passed, including
+Windows22m55s. Native40638106153 qualified the exact original failure without
+source re-probe, then a separate anonymous process verified snapshot/proof/card.
+Native40638313911 verified all1002 references cold while paused. Resume preserved
+existing hosted enablement. Pilot40638927253 captured the three previously pending
+historical records with0discovery,515880bytes/49.912620266active-seconds;837originals,
+1metadata-only,24verified batches,0pending,1reviewed failed original,0unreviewed
+failures. Five independent anonymous pinned downloads verified manifest,three
+payloads and maintained card. Numeric HTTP code remains explicitly unknown.
+
+Continuous40639731203 resumed onqualifiedc0f8b148;05:46:19UTC native observation
+confirmed correct GHA owner,enabled=true,paused=null,verified checkpoint and
+historicalpage84 selected atcycle11. This is manual workflow_dispatch, not actual
+natural recurrence acceptance. The original SSD root stays frozen. Parent remains
+active; only technical P7 delivery is complete. Paired native acceptance evidence:
+evidence/parliament-assurance/20261028/access-hold-native-acceptance.{json,md}.

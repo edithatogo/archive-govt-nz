@@ -158,5 +158,7 @@ This is a new operational finding after the previous recovery acceptance.
 - [x] Publish the six already accepted originals before another acquisition; native40628447581 and nine fresh anonymous pinned downloads verified batch1e1d47d6, maintained card unchanged. Preserve three pending records and the exact failed record.
 - [x] Add a bounded, operator-approved hold for one unchanged report attachment using its immutable native failure snapshot/run evidence; no source re-probe, body publication or licence grant.
 - [x] Keep held records failed/explicit, stop every unreviewed failure, and prevent unchanged held URLs being fetched again after metadata refresh.
-- [~] Test typed proof export/cold restore, stale/version/scope rejection, source non-fetch, and continued eligible queue processing; complete required assurance/review and green-check delivery.
-- [ ] Qualify one native hold, independently verify its public proof, then resume eligible backfill with the held original excluded from capture/completeness counts.
+- [x] Test typed proof export/cold restore, stale/version/scope rejection, source non-fetch, and continued eligible queue processing; complete required assurance/review and green-check delivery.
+- [x] Qualify one native hold, independently verify its public proof, then resume eligible backfill with the held original excluded from capture/completeness counts.
+
+Native P7 hold/restart acceptance: [dated evidence](../../../evidence/parliament-assurance/20261028/access-hold-native-acceptance.md). Source837 captured originals+1metadata-only,24verified batches,1explicit reviewed missing original,0pending/unreviewed failures at the bounded pilot. Continuous40639731203 is active; successful natural recurrence and complete parent coverage remain open.

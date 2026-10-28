@@ -30,3 +30,12 @@ cancelled to terminal before replacement broad assurance. Corrected complete loc
 assurance passes8661tests/14capability skips and every stage; measured hold-module
 coverage is89%. Required hosted checks and native approval still apply to the
 corrected head. Original local/hosted receipts remain historical evidence.
+
+## Native completion decision
+
+Mergedc0f8b148 passed all corrected-head checks. Native hold40638106153, full
+1002-object cold verification40638313911 and real three-original pilot40638927253
+passed. Independent anonymous pinned proof/card and payload/manifest/card checks
+passed. Continuous40639731203 is active. No unresolved technical review finding
+remains; native-acceptance evidence records the explicit held-original gap and
+manual-versus-natural distinction. The unfinished parent is retained active.
