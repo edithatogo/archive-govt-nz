@@ -1673,6 +1673,17 @@ deliberately exercise version handling.
   analyze, rebuild, candidate-build and status commands, including JSON output,
   dry-run, idempotency, cancellation, partial state, retry/resume, missing
   credentials and redaction. [M-15, M-18; AC-13, AC-16]
+  The targeted 2026-10-28 audit passed 820 tests/10 capability skips across
+  existing operation, CLI, MCP, capture, resume, rebuild, and scheduled-policy
+  suites. It does not close this matrix: scheduled capture/normalization and
+  an integrated capture-inventory reconciliation command remain unimplemented.
+  See `phase8-command-contract-audit-20261028.md`.
+- [x] Expose a bounded read-only CLI and MCP operation for reconciling
+  hash-pinned source census, workbook/PDF layout baseline and recheck reports.
+  Return only the compact summary, source identities, reason-coded gaps and
+  evidence pins; preserve unassessed sources and do not write files or infer
+  semantic mappings, rights or comparability. [M-15; AC-13] See
+  `phase8-layout-operation-20261029.md` for exact input pins and full validation.
 - [x] Add scheduled-source heartbeat and drift tests that do not equate a
   successful workflow with capture, validation or publication. [M-04, M-15,
   M-19, S-04; AC-04, AC-09, AC-13]

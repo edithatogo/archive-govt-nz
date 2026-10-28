@@ -70,6 +70,9 @@ from archive_govt_nz.domains.health_appropriations.rebuild import (
     plan_rebuild,
     verify_rebuild,
 )
+from archive_govt_nz.domains.health_appropriations.source_layout_operations import (
+    reconcile_source_layout_operation,
+)
 from archive_govt_nz.domains.health_appropriations.source_operations import (
     SourceRequest,
     operate_source,
@@ -1002,6 +1005,66 @@ def health_appropriations_status(
             f"status={status['status']} manifests={status['manifest_count']}"
         )
     return 0 if status["status"] == "ready" else 1
+
+
+@app.command(name="health-appropriations-reconcile-source-layout")
+def health_appropriations_reconcile_source_layout(  # noqa: PLR0917 - each positional pin is explicit and auditable.
+    census: Path,
+    census_sha256: str,
+    workbook_baseline: Path,
+    workbook_baseline_sha256: str,
+    pdf_baseline: Path,
+    pdf_baseline_sha256: str,
+    workbook_recheck: Path,
+    workbook_recheck_sha256: str,
+    pdf_recheck: Path,
+    pdf_recheck_sha256: str,
+    *,
+    text_baseline: Path | None = None,
+    text_baseline_sha256: str | None = None,
+    text_recheck: Path | None = None,
+    text_recheck_sha256: str | None = None,
+) -> int:
+    """Reconcile pinned source-layout reports without writes or interpretation."""
+    arguments: dict[str, Any] = {
+        "census": str(census),
+        "census_sha256": census_sha256,
+        "workbook_baseline": str(workbook_baseline),
+        "workbook_baseline_sha256": workbook_baseline_sha256,
+        "pdf_baseline": str(pdf_baseline),
+        "pdf_baseline_sha256": pdf_baseline_sha256,
+        "workbook_recheck": str(workbook_recheck),
+        "workbook_recheck_sha256": workbook_recheck_sha256,
+        "pdf_recheck": str(pdf_recheck),
+        "pdf_recheck_sha256": pdf_recheck_sha256,
+    }
+    optional = {
+        "text_baseline": text_baseline,
+        "text_baseline_sha256": text_baseline_sha256,
+        "text_recheck": text_recheck,
+        "text_recheck_sha256": text_recheck_sha256,
+    }
+    arguments.update(
+        {
+            key: str(value) if isinstance(value, Path) else value
+            for key, value in optional.items()
+            if value is not None
+        }
+    )
+    try:
+        receipt = reconcile_source_layout_operation(arguments)
+    except ValueError as error:
+        _emit_json(
+            {
+                "command": "health-appropriations-reconcile-source-layout",
+                "schema_version": "archive-govt-nz.health-source-layout-operation/v1",
+                "status": "failed",
+                "error": str(error),
+            }
+        )
+        return 2
+    _emit_json(receipt)
+    return 0
 
 
 @app.command

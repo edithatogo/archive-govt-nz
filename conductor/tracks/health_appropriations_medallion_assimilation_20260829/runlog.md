@@ -10456,6 +10456,25 @@ retained explicitly. Prior v3 payloads and every input hash are unchanged.
 The historical checksum warning remains 1; no hosted correction is repeated.
 The frozen final candidate now owns the broad validation slot.
 
+## 2026-10-29 — Pinned read-only source-layout CLI/MCP operation
+
+Added `health-appropriations-reconcile-source-layout` and
+`health_appropriations_reconcile_source_layout`. Both verify required census,
+workbook/PDF baseline and recheck SHA-256 pins, optionally accept a complete
+text-baseline/recheck pair, reject symlinks/non-regular files and bounded-size
+violations, and return source IDs, compact counts, pins and reason-coded gaps.
+No output is written and errors do not include supplied paths. The existing
+pure reconciliation remains the authority for cohort and drift checks.
+
+Affected layout and operation contracts passed: 40 tests. Exact-tree
+`./scripts/validate.sh` passed on repo-local Python 3.15.1: 8,742 passed, 14
+skipped, 96.43% branch coverage; 95 schemas / 85 documents; parity 9/9; all
+mutation, hygiene, benchmark, dependency audit, licence, secrets and 118-item
+SBOM gates passed. Detailed input/output pins are in
+`phase8-layout-operation-20261029.md`. Hosted delivery remains pending; broader
+Phase 8 command-matrix, scheduled capture/normalization and Phase 8/9 gates stay
+open.
+
 Terminal broad assurance: `./scripts/validate.sh` returned 0 on the frozen
 federation implementation; 8,667 passed / 14 capability skips, 91 schemas /
 81 representative documents, parity 9/9 and all mutation, hygiene, benchmark,
