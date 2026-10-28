@@ -1,0 +1,397 @@
+{
+  "schema_version": "parliament-access-hold-native-acceptance/v1",
+  "observed_at": "2026-10-28T05:48:57.818092+00:00",
+  "code_pull_request": "https://github.com/edithatogo/archive-govt-nz/pull/803",
+  "reviewed_head": "45943a4f089abdf1080f955d2798434404275f83",
+  "merged_code": "c0f8b148cf527d0829d025d14c1cac853da9b7e7",
+  "python": "3.15.1",
+  "required_checks": [
+    {
+      "name": "Supplemental (${{ matrix.suite }})",
+      "result": "SKIPPED"
+    },
+    {
+      "name": "Assurance (ubuntu-latest)",
+      "result": "SUCCESS"
+    },
+    {
+      "name": "analyze",
+      "result": "SUCCESS"
+    },
+    {
+      "name": "lint",
+      "result": "SUCCESS"
+    },
+    {
+      "name": "Assurance (macos-latest)",
+      "result": "SUCCESS"
+    },
+    {
+      "name": "Assurance (windows-latest)",
+      "result": "SUCCESS"
+    },
+    {
+      "name": "CodeQL",
+      "result": "SUCCESS"
+    },
+    {
+      "name": "codecov/patch",
+      "result": "SUCCESS"
+    }
+  ],
+  "native_runs": {
+    "40638106153": {
+      "conclusion": "success",
+      "createdAt": "2026-10-28T05:27:28Z",
+      "databaseId": 40638106153,
+      "event": "workflow_dispatch",
+      "headSha": "c0f8b148cf527d0829d025d14c1cac853da9b7e7",
+      "startedAt": "2026-10-28T05:27:28Z",
+      "status": "completed",
+      "updatedAt": "2026-10-28T05:28:43Z",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/40638106153"
+    },
+    "40638313911": {
+      "conclusion": "success",
+      "createdAt": "2026-10-28T05:29:43Z",
+      "databaseId": 40638313911,
+      "event": "workflow_dispatch",
+      "headSha": "c0f8b148cf527d0829d025d14c1cac853da9b7e7",
+      "startedAt": "2026-10-28T05:29:43Z",
+      "status": "completed",
+      "updatedAt": "2026-10-28T05:32:46Z",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/40638313911"
+    },
+    "40638927253": {
+      "conclusion": "success",
+      "createdAt": "2026-10-28T05:35:57Z",
+      "databaseId": 40638927253,
+      "event": "workflow_dispatch",
+      "headSha": "c0f8b148cf527d0829d025d14c1cac853da9b7e7",
+      "startedAt": "2026-10-28T05:35:57Z",
+      "status": "completed",
+      "updatedAt": "2026-10-28T05:41:35Z",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/40638927253"
+    },
+    "40639731203": {
+      "conclusion": "",
+      "createdAt": "2026-10-28T05:44:25Z",
+      "databaseId": 40639731203,
+      "event": "workflow_dispatch",
+      "headSha": "c0f8b148cf527d0829d025d14c1cac853da9b7e7",
+      "startedAt": "2026-10-28T05:44:25Z",
+      "status": "in_progress",
+      "updatedAt": "2026-10-28T05:44:29Z",
+      "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/40639731203"
+    }
+  },
+  "qualified_hold": {
+    "status": "report_access_hold_qualified",
+    "source_id": "report-b43436d5-987e-40e9-2ea9-08dd6d718a5c",
+    "proof_sha256": "37f4189a37765ed53a9f2599eb44c72691e132c4b02ece50712631e26db0b7b6",
+    "original_http_status": null,
+    "source_acquisition": false,
+    "source_reprobe": false,
+    "original_publication_grant": false,
+    "checkpoint": {
+      "revision": "5e647dab5300fba0b986139ac9d27b92c267625a",
+      "sha256": "a72132be95eeef62118767f41d375e82e6d5277ba4f1f85eef5af5ccc880aa7e",
+      "status": "verified"
+    }
+  },
+  "independent_hold_proof": {
+    "proof_sha256": "37f4189a37765ed53a9f2599eb44c72691e132c4b02ece50712631e26db0b7b6",
+    "checkpoint": {
+      "revision": "5e647dab5300fba0b986139ac9d27b92c267625a",
+      "sha256": "a72132be95eeef62118767f41d375e82e6d5277ba4f1f85eef5af5ccc880aa7e",
+      "status": "verified"
+    },
+    "source_reprobe": false,
+    "held_original_remains_failed": true,
+    "numeric_status_unknown": true,
+    "verified_at": "2026-10-28T05:29:26.966384+00:00",
+    "repo": "edithatogo/archive-govt-nz-global",
+    "public": true,
+    "ungated": true,
+    "independent_of_uploader": true,
+    "files": [
+      {
+        "revision": "5e647dab5300fba0b986139ac9d27b92c267625a",
+        "sha256": "a72132be95eeef62118767f41d375e82e6d5277ba4f1f85eef5af5ccc880aa7e",
+        "bytes": 856606,
+        "anonymous": true,
+        "path_parts": [
+          "parliament",
+          "checkpoints",
+          "a7",
+          "a72132be95eeef62118767f41d375e82e6d5277ba4f1f85eef5af5ccc880aa7e.json.gz"
+        ]
+      },
+      {
+        "revision": "5e647dab5300fba0b986139ac9d27b92c267625a",
+        "sha256": "37f4189a37765ed53a9f2599eb44c72691e132c4b02ece50712631e26db0b7b6",
+        "bytes": 1247,
+        "anonymous": true,
+        "path_parts": [
+          "parliament",
+          "checkpoint-objects",
+          "37",
+          "37f4189a37765ed53a9f2599eb44c72691e132c4b02ece50712631e26db0b7b6"
+        ]
+      },
+      {
+        "revision": "5e647dab5300fba0b986139ac9d27b92c267625a",
+        "sha256": "afa5a09632725f04799700d8ab086d182beff2a1d7dc58db798cccc7d9d6c703",
+        "bytes": 13590,
+        "anonymous": true,
+        "path_parts": [
+          "README.md"
+        ]
+      }
+    ],
+    "coverage_claim": false,
+    "natural_recurrence_acceptance": false
+  },
+  "native_cold_restore": {
+    "status": "cold_restore_verified",
+    "objects": 1002,
+    "summary": {
+      "pending": 3,
+      "captured": 834,
+      "failed": 1,
+      "metadata_only": 1,
+      "published": 23,
+      "last_error": "terminal_status",
+      "coverage_claim": false
+    },
+    "reviewed_access_holds": 1,
+    "unreviewed_failures": 0,
+    "checkpoint": {
+      "revision": "5e647dab5300fba0b986139ac9d27b92c267625a",
+      "sha256": "a72132be95eeef62118767f41d375e82e6d5277ba4f1f85eef5af5ccc880aa7e",
+      "status": "verified"
+    }
+  },
+  "bounded_payload_pilot": {
+    "status": "completed_bounded_invocation",
+    "attempts": [
+      {
+        "cycle": 10,
+        "work": {
+          "bytes": 515880,
+          "captured": 3,
+          "interrupted": false,
+          "invocation": "gha_40638927253_1",
+          "observed": 0,
+          "partition": "recent",
+          "phase": "publish",
+          "query": {
+            "keyword": "",
+            "page": 6,
+            "page_size": 10
+          },
+          "reserved": 0,
+          "seconds": 49.91262026600003
+        },
+        "publication": {
+          "batch": "7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1",
+          "repo": "edithatogo/archive-govt-nz-global",
+          "revision": "2b0dd2de531f2a51aa8f926bbf501e9cac630bd9",
+          "status": "verified"
+        },
+        "summary": {
+          "pending": 0,
+          "captured": 837,
+          "failed": 1,
+          "metadata_only": 1,
+          "published": 24,
+          "last_error": "terminal_status",
+          "coverage_claim": false
+        },
+        "reviewed_access_holds": 1,
+        "unreviewed_failures": 0,
+        "checkpoint": {
+          "revision": "e69f17b4c33f9990790ee87a8d86b41e92df2cde",
+          "sha256": "b143b2d4dbd4f1fdacbcabcbe3349f6451910234dee98d47781bf986856fb6ce",
+          "status": "verified"
+        },
+        "coverage_claim": false,
+        "recurrence_acceptance": false
+      }
+    ],
+    "checkpoint": {
+      "revision": "133e1aea9e092e09964409e50be2c64e22143e04",
+      "sha256": "e7a839456f40316b9676a1e64a1b6be82c50ecbcf43f24648429bc7d05b9e2ff",
+      "status": "verified"
+    },
+    "summary": {
+      "pending": 0,
+      "captured": 837,
+      "failed": 1,
+      "metadata_only": 1,
+      "published": 24,
+      "last_error": "terminal_status",
+      "coverage_claim": false
+    },
+    "reviewed_access_holds": 1,
+    "unreviewed_failures": 0,
+    "execution_kind": "workflow_dispatch"
+  },
+  "independent_payload_pilot": {
+    "publication": {
+      "batch": "7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1",
+      "repo": "edithatogo/archive-govt-nz-global",
+      "revision": "2b0dd2de531f2a51aa8f926bbf501e9cac630bd9",
+      "status": "verified"
+    },
+    "unique_objects": 3,
+    "summary": {
+      "pending": 0,
+      "captured": 837,
+      "failed": 1,
+      "metadata_only": 1,
+      "published": 24,
+      "last_error": "terminal_status",
+      "coverage_claim": false
+    },
+    "reviewed_access_holds": 1,
+    "unreviewed_failures": 0,
+    "verified_at": "2026-10-28T05:42:27.187552+00:00",
+    "repo": "edithatogo/archive-govt-nz-global",
+    "public": true,
+    "ungated": true,
+    "independent_of_uploader": true,
+    "files": [
+      {
+        "revision": "2b0dd2de531f2a51aa8f926bbf501e9cac630bd9",
+        "sha256": "7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1",
+        "bytes": 4829,
+        "anonymous": true,
+        "path_parts": [
+          "parliament",
+          "batches",
+          "7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1",
+          "manifest.json"
+        ]
+      },
+      {
+        "revision": "2b0dd2de531f2a51aa8f926bbf501e9cac630bd9",
+        "sha256": "68f2d324797df3317af00333e461ac05b3b015e590ce410427557a34e805e6dc",
+        "bytes": 72419,
+        "anonymous": true,
+        "path_parts": [
+          "parliament",
+          "batches",
+          "7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1",
+          "objects",
+          "68f2d324797df3317af00333e461ac05b3b015e590ce410427557a34e805e6dc"
+        ]
+      },
+      {
+        "revision": "2b0dd2de531f2a51aa8f926bbf501e9cac630bd9",
+        "sha256": "7927a2d4d731ba4d40b166b48376b3c808d3a8afc30fab478c944bd284fe1916",
+        "bytes": 254567,
+        "anonymous": true,
+        "path_parts": [
+          "parliament",
+          "batches",
+          "7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1",
+          "objects",
+          "7927a2d4d731ba4d40b166b48376b3c808d3a8afc30fab478c944bd284fe1916"
+        ]
+      },
+      {
+        "revision": "2b0dd2de531f2a51aa8f926bbf501e9cac630bd9",
+        "sha256": "91851368c7bf6773e628e971af6dcbf4e78f7658487ced3600f24d9efcfe57c1",
+        "bytes": 188894,
+        "anonymous": true,
+        "path_parts": [
+          "parliament",
+          "batches",
+          "7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1",
+          "objects",
+          "91851368c7bf6773e628e971af6dcbf4e78f7658487ced3600f24d9efcfe57c1"
+        ]
+      },
+      {
+        "revision": "2b0dd2de531f2a51aa8f926bbf501e9cac630bd9",
+        "sha256": "afa5a09632725f04799700d8ab086d182beff2a1d7dc58db798cccc7d9d6c703",
+        "bytes": 13590,
+        "anonymous": true,
+        "path_parts": [
+          "README.md"
+        ]
+      }
+    ],
+    "coverage_claim": false,
+    "natural_recurrence_acceptance": false
+  },
+  "continuous_observation": {
+    "observed_at": "2026-10-28T05:46:19.509553+00:00",
+    "control": {
+      "authority": "hosted",
+      "card_sha256": "afa5a09632725f04799700d8ab086d182beff2a1d7dc58db798cccc7d9d6c703",
+      "checkpoint": {
+        "revision": "b9ac3274dc3341d0cec800bc70ef115b9a018b1c",
+        "sha256": "5dff29dbf14067093a8b21d2a49d1a07ead46e721682e7f95f99ff6f185d7179",
+        "status": "verified"
+      },
+      "enabled": true,
+      "generation": 271,
+      "lease_until": 1793184339.774955,
+      "owner": "gha_40639731203_1",
+      "paused": null,
+      "schema": "parliament-continuation/v1"
+    },
+    "cycle": 11,
+    "work": {
+      "bytes": 0,
+      "captured": 0,
+      "interrupted": false,
+      "invocation": "gha_40639731203_1",
+      "observed": 0,
+      "partition": "historical",
+      "phase": "discover",
+      "query": {
+        "keyword": "",
+        "page": 84,
+        "page_size": 10
+      },
+      "reserved": 4194304,
+      "seconds": 0.0
+    },
+    "counts": {
+      "captured": 837,
+      "metadata_only": 1,
+      "failed": 1
+    },
+    "verified_publications": 24,
+    "failed_sources": [
+      {
+        "source_id": "report-b43436d5-987e-40e9-2ea9-08dd6d718a5c",
+        "reason": "terminal_status"
+      }
+    ],
+    "source_acquisition": false,
+    "state_mutation": false,
+    "natural_recurrence_acceptance": false
+  },
+  "original_http_status": null,
+  "held_original_collected": false,
+  "held_original_reprobed": false,
+  "original_ssd_state_retained_frozen": true,
+  "maintained_card_sha256": "afa5a09632725f04799700d8ab086d182beff2a1d7dc58db798cccc7d9d6c703",
+  "public_ungated_destination": "edithatogo/archive-govt-nz-global",
+  "natural_recurrence_acceptance": false,
+  "complete_coverage_claim": false,
+  "parent_track_complete": false,
+  "reference_encoding": {
+    "field": "path_parts",
+    "separator": "/",
+    "original_receipts_retained": true,
+    "source_receipt_sha256": {
+      "independent_hold_proof": "bdde8d13e7c2dfe1f1e0548eee6e61a9e1a88b57449a2241a9d055e601a24312",
+      "independent_payload_pilot": "6f1d32ab8b537b510d4f53f54730058051431942c7d8624d4be9da8037769379"
+    }
+  }
+}

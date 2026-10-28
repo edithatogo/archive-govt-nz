@@ -41,6 +41,10 @@ class Remote(NativeTransport):
         """Return the fictional current head."""
         return self.revision
 
+    def write_cooldown(self, owner: str | None = None) -> None:
+        """Keep the fictional backend independent of native service history."""
+        del owner
+
     def exists(self, path: str, revision: str) -> bool:
         """Inspect an exact immutable revision."""
         return path in self.revisions[revision]
@@ -120,6 +124,21 @@ def test_cold_restore_and_stale_writer(tmp_path: Path) -> None:
     restored = fresh.restore()
     assert restored.summary()["metadata_only"] == 1
     fresh.release()
+
+
+def test_reviewed_claim_rejects_intervening_control_generation(tmp_path: Path) -> None:
+    """A reviewed quiescent snapshot cannot claim after another control mutation."""
+    manager, remote = initial(tmp_path)
+    manager.release()
+    reviewed = Checkpoints(remote, tmp_path / "reviewed")
+    reviewed.load()
+    generation = reviewed.pointer["generation"]
+    manager.claim("other")
+    manager.release()
+    head = remote.head()
+    with pytest.raises(HostedError, match="generation_changed"):
+        reviewed.claim("reviewer", expected_generation=generation)
+    assert remote.head() == head
 
 
 def test_unknown_staging_outcome_never_promotes_cursor(tmp_path: Path) -> None:

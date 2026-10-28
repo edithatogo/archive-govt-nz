@@ -14,6 +14,15 @@ lazy from pathlib import Path
 from archive_govt_nz.parliament.contracts import validate_manifest
 from archive_govt_nz.parliament.discovery import Record
 from archive_govt_nz.parliament.pipeline import ParliamentArchive
+from archive_govt_nz.parliament.report_holds import (
+    HOLD_EVENT,
+    HTTP_ERROR_MAX,
+    HTTP_ERROR_MIN,
+    HTTP_FAILURE_EVENT,
+    MAX_HOLD_BYTES,
+    V2,
+    read_hold,
+)
 from archive_govt_nz.parliament.reports import (
     DEFAULT_PAGE_SIZE,
     ENDPOINT,
@@ -81,6 +90,18 @@ def safe_event(value: str | None) -> str | None:
         data = json.loads(value)
     except ValueError:
         data = None
+    if (
+        isinstance(data, dict)
+        and set(data) == {"error_class", "http_status", "url_sha256", "record_sha256"}
+        and data["error_class"] == "terminal_status"
+        and type(data["http_status"]) is int
+        and HTTP_ERROR_MIN <= data["http_status"] <= HTTP_ERROR_MAX
+        and all(
+            isinstance(data[k], str) and re.fullmatch(DIGEST, data[k])
+            for k in ("url_sha256", "record_sha256")
+        )
+    ):
+        return canonical(data).decode()
     if (
         isinstance(data, dict)
         and set(data)
@@ -188,11 +209,15 @@ def query(value: dict[str, Any]) -> None:
 
 def validate_state(state: dict[str, Any]) -> None:  # noqa: C901, PLR0912, PLR0915
     """Reject unrelated records, URLs, tables, object paths and snapshot drift."""
-    if (
-        set(state)
-        != {"schema", "tables", "objects", "batches", "candidates", "work", "cycle"}
-        or state["schema"] != SCHEMA
-    ):
+    if set(state) != {
+        "schema",
+        "tables",
+        "objects",
+        "batches",
+        "candidates",
+        "work",
+        "cycle",
+    } or state["schema"] not in {SCHEMA, V2}:
         fail("state_schema")
     tables = state["tables"]
     if set(tables) != set(TABLES):
@@ -266,7 +291,16 @@ def validate_state(state: dict[str, Any]) -> None:  # noqa: C901, PLR0912, PLR09
                 fail("state_control")
         elif key != "schema_version" or row["value"] != "2":
             fail("state_control")
+    if state["schema"] == SCHEMA and any(
+        r["status"] in {HOLD_EVENT, HTTP_FAILURE_EVENT} for r in tables["events"]
+    ):
+        fail("state_semantics_require_v2")
     for row in tables["events"]:
+        if row["status"] == HOLD_EVENT and (
+            row["detail"] not in state["objects"]
+            or state["objects"][row["detail"]]["size"] > MAX_HOLD_BYTES
+        ):
+            fail("state_hold_reference")
         if (
             row["source_id"] not in ids
             or not re.fullmatch(r"[a-z_]{1,80}", row["status"])
@@ -297,6 +331,9 @@ def validate_state(state: dict[str, Any]) -> None:  # noqa: C901, PLR0912, PLR09
         fail("state_candidate_bound")
     for sha, shard in state["candidates"].items():
         candidate(shard, sha, ids, referenced)
+    referenced.update(
+        r["detail"] for r in tables["events"] if r["status"] == HOLD_EVENT
+    )
     if referenced != set(state["objects"]):
         fail("state_unreferenced_objects")
     if type(state["cycle"]) is not int or state["cycle"] < 0:
@@ -361,6 +398,20 @@ def candidate_index(
     return candidates
 
 
+def _hold_references(
+    archive: ParliamentArchive, events: list[dict[str, Any]]
+) -> set[str]:
+    """Admit only bounded, typed own-metadata qualification objects."""
+    wanted: set[str] = set()
+    for event in events:
+        if event["status"] == HOLD_EVENT:
+            proof = read_hold(archive, event["detail"])
+            if proof["source_id"] != event["source_id"]:
+                fail("state_hold_source")
+            wanted.add(event["detail"])
+    return wanted
+
+
 def export_state(
     archive: ParliamentArchive,
     refs: dict[str, Any],
@@ -376,7 +427,11 @@ def export_state(
         tables = {
             name: [
                 dict(row)
-                for row in connection.execute("SELECT * FROM " + name)  # noqa: S608 - fixed TABLES keys
+                for row in connection.execute(
+                    "SELECT * FROM "  # noqa: S608 - fixed TABLES keys
+                    + name
+                    + (" ORDER BY rowid" if name == "events" else "")
+                )
             ]
             for name in TABLES
         }
@@ -402,6 +457,7 @@ def export_state(
     objects: dict[str, Any] = {}
     files: dict[str, Path] = {}
     wanted = {row["sha256"] for row in tables["captures"]}
+    wanted.update(_hold_references(archive, tables["events"]))
     for row in tables["pages"]:
         request_sha = row["url"].split("#request=")[1]
         request = (
@@ -456,7 +512,11 @@ def export_state(
             }
             files[objects[sha]["path"]] = receipt.path
     state = {
-        "schema": SCHEMA,
+        "schema": V2
+        if any(
+            r["status"] in {HOLD_EVENT, HTTP_FAILURE_EVENT} for r in tables["events"]
+        )
+        else SCHEMA,
         "tables": tables,
         "objects": objects,
         "batches": batches,

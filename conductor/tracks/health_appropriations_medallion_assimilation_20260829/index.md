@@ -15,6 +15,9 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Metadata rights and federation review](./metadata-rights-review-20261028.md)
+- [Rights review evidence pins](./metadata-rights-review-20261028.json)
+
 - [Budget2015 source-to-products contract](./biff8-2015-contract.md)
 - [Budget2015 numeric preflight](./budget-2015-biff8-preflight-20261021.json)
 - [Budget2015 source/native qualification](./budget-2015-biff8-native-qualification-20261021.json)
@@ -788,3 +791,7 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [Final clean-room recovery receipt refreshed after PR #774](./clean-room-recovery-20261024-final.json): 47 product groups rebuilt, Bronze unchanged, no errors; remaining source, comparison, Platinum and rights gates stay open. See the [latest runlog entry](./runlog.md).
 
 - [Qualified metadata reconstruction and approved checksum correction](./qualified-metadata-verification-20261028.md) and [paired evidence](./qualified-metadata-verification-20261028.json). Historical snapshots and broader Phase 7 gates remain open.
+
+- [Product metadata coverage](./product-metadata-coverage-20261028.md) and [paired native evidence](./product-metadata-coverage-20261028.json): contextual Gold and Fiscal companion reports; local/native assurance passed, protected delivery pending.
+
+- [Reviewed federation tables](./federation-tables-20261028.md) and [paired native evidence](./federation-tables-20261028.json): five source identities, 174 selected partner identities, ten exclusions and zero approved links.

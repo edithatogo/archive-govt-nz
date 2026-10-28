@@ -139,7 +139,7 @@ def _validate_closure(
 
 
 def verify_candidate(root: Path, *, expected_manifest_sha256: str) -> dict[str, Any]:
-    """Verify legacy bytes and asserted gates, not metadata or release approval."""
+    """Verify legacy bytes and original assertions, not derivative rights."""
     if root.is_symlink() or not root.is_dir():
         _fail("unsafe_candidate_root")
     manifest_path = root / "MANIFEST.json"
@@ -226,9 +226,11 @@ def verify_candidate(root: Path, *, expected_manifest_sha256: str) -> dict[str, 
         "manifest_sha256": expected_manifest_sha256,
         "files_verified": len(indexed),
         "originals_with_rights": len(originals),
+        "rights_verification_scope": "included_original_assertions_only",
+        "derivative_rights": "not_evaluated",
+        "release_readiness": "not_assessed",
         "publication_performed": False,
         "metadata_validation": "not_assessed",
-        "release_readiness": "not_assessed",
     }
 
 
@@ -257,9 +259,7 @@ def verify_release_readiness(
     expectation: ReleaseExpectation,
 ) -> dict[str, Any]:
     """Bind candidate bytes to fresh, exact parity and recovery evidence."""
-    candidate = verify_candidate(
-        root, expected_manifest_sha256=expectation.manifest_sha256
-    )
+    verify_candidate(root, expected_manifest_sha256=expectation.manifest_sha256)
     if (
         expectation.assurance_path.is_symlink()
         or not expectation.assurance_path.is_file()
@@ -291,6 +291,8 @@ def verify_release_readiness(
     age = expectation.as_of.astimezone(UTC) - validated_at.astimezone(UTC)
     if age < timedelta(0) or age > expectation.maximum_age:
         _fail("candidate_assurance_stale")
+    if candidate.get("rights_verification_scope") == "included_original_assertions_only":
+        _fail("candidate_derivative_rights_unqualified")
     if (
         expectation.metadata is not None
         and evidence.get("metadata_contract_sha256")

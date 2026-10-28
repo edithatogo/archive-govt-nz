@@ -11,6 +11,7 @@ import pytest
 from huggingface_hub import CommitOperationAdd
 
 from archive_govt_nz.parliament import publication
+from archive_govt_nz.parliament.hosted_transport import HostedError
 from archive_govt_nz.parliament.pipeline import Bounds, ParliamentArchive
 from archive_govt_nz.parliament.publication import publish_batch
 
@@ -199,3 +200,36 @@ def test_verified_batch_is_not_counted_healthy_after_failed_recheck(
     with pytest.raises(ValueError, match="remote_integrity_mismatch"):
         publish_batch(archive, str(batch["batch"]), hub=hub)
     assert archive.summary()["published"] == 0
+
+
+def test_publication_write429_retains_bounded_hints_without_replay(
+    monkeypatch: MonkeyPatch,
+) -> None:
+    """A publication mutation shares cooldown handling without exposing SDK text."""
+    calls = []
+
+    class ThrottledError(RuntimeError):
+        response = SimpleNamespace(status_code=429, headers={"Retry-After": "3575"})
+
+    def commit(**_kwargs: object) -> None:
+        calls.append(True)
+        message = "private signed SDK details"
+        raise ThrottledError(message)
+
+    api = SimpleNamespace(
+        get_paths_info=lambda *_args, **_kwargs: [], create_commit=commit
+    )
+    monkeypatch.setattr(publication, "HfApi", lambda **_kwargs: api)
+    name = "parliament/batches/" + "a" * 64 + "/manifest.json"
+    with pytest.raises(
+        HostedError, match="publication_commit_outcome_unknown"
+    ) as caught:
+        publication.NativeHub().commit(
+            "example/repo",
+            [CommitOperationAdd(path_in_repo=name, path_or_fileobj=b"{}")],
+            "parent",
+        )
+    assert caught.value.http_status == 429
+    assert caught.value.retry_after_seconds == 3575
+    assert "private" not in str(caught.value)
+    assert calls == [True]

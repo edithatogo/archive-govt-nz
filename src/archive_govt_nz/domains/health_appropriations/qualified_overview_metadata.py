@@ -321,13 +321,17 @@ def project_qualified_overview_discovery(
     values: tuple[QualifiedOverviewInput, ...],
     *,
     partner_snapshots: tuple[PartnerSnapshot, ...] = (),
+    include_federation_tables: bool = False,
 ) -> dict[str, bytes]:
     """Extend verified graphs with scoped discovery and pending federation evidence.
 
-    No partner snapshot or reviewed mapping is accepted by this bounded profile.
+    Optional pinned partner snapshots carry reviewed exclusions only; positive
+    relationships remain unqualified.
     Pending means unevaluated, not unmatched. Existing v1 graph bytes are reused.
     """
     _require(type(partner_snapshots) is tuple)
+    _require(type(include_federation_tables) is bool)
+    _require(not include_federation_tables or bool(partner_snapshots))
     payloads = project_qualified_overview_metadata(values)
     packages = json.loads(payloads["catalogue.json"])["packages"]
     by_pin = {v.manifest_sha256: v for v in values}
@@ -489,7 +493,9 @@ def project_qualified_overview_discovery(
     if partner_snapshots:
         result.update(
             project_partner_federation(
-                result["federation_readiness.json"], partner_snapshots
+                result["federation_readiness.json"],
+                partner_snapshots,
+                include_tables=include_federation_tables,
             )
         )
         result["DATASET_CARD.md"] += (
@@ -509,6 +515,11 @@ def project_qualified_overview_discovery(
             f"{mismatches}. "
             "See partner_snapshots.json for expected and observed hashes.\n"
         ).encode()
+    if include_federation_tables:
+        result["DATASET_CARD.md"] += (
+            b"\nFederation tables preserve scoped exclusions and literal keys/periods. "
+            b"approved_links.parquet is empty; no positive relationship is admitted.\n"
+        )
     return result
 
 
@@ -517,12 +528,17 @@ def _metadata_packet(
     *,
     include_discovery: bool,
     partner_snapshots: tuple[PartnerSnapshot, ...],
+    include_federation_tables: bool,
 ) -> tuple[dict[str, bytes], dict[str, str]]:
     _require(type(include_discovery) is bool and type(partner_snapshots) is tuple)
     _require(not partner_snapshots or include_discovery)
+    _require(type(include_federation_tables) is bool)
+    _require(not include_federation_tables or bool(partner_snapshots))
     payloads = (
         project_qualified_overview_discovery(
-            values, partner_snapshots=partner_snapshots
+            values,
+            partner_snapshots=partner_snapshots,
+            include_federation_tables=include_federation_tables,
         )
         if include_discovery
         else project_qualified_overview_metadata(values)
@@ -535,7 +551,9 @@ def _metadata_packet(
         "MANIFEST.json": _json(
             {
                 "schema_version": (
-                    _SCHEMA.removesuffix("v1") + "v3"
+                    _SCHEMA.removesuffix("v1") + "v4"
+                    if include_federation_tables
+                    else _SCHEMA.removesuffix("v1") + "v3"
                     if partner_snapshots
                     else _SCHEMA.removesuffix("v1") + "v2"
                     if include_discovery
@@ -556,10 +574,13 @@ def export_qualified_overview_metadata(
     *,
     include_discovery: bool = False,
     partner_snapshots: tuple[PartnerSnapshot, ...] = (),
+    include_federation_tables: bool = False,
 ) -> dict[str, str]:
     """Write an exclusive metadata-only version after complete input verification."""
     _require(type(include_discovery) is bool and type(partner_snapshots) is tuple)
     _require(not partner_snapshots or include_discovery)
+    _require(type(include_federation_tables) is bool)
+    _require(not include_federation_tables or bool(partner_snapshots))
     _safe(output)
     _require(not output.exists() and output.parent.is_dir())
     for value in values:
@@ -577,7 +598,10 @@ def export_qualified_overview_metadata(
         a, b = output.resolve(), snapshot.root.resolve()
         _require(not a.is_relative_to(b) and not b.is_relative_to(a))
     packet, pins = _metadata_packet(
-        values, include_discovery=include_discovery, partner_snapshots=partner_snapshots
+        values,
+        include_discovery=include_discovery,
+        partner_snapshots=partner_snapshots,
+        include_federation_tables=include_federation_tables,
     )
     output.mkdir(exist_ok=False)
     for name, payload in packet.items():
@@ -587,13 +611,14 @@ def export_qualified_overview_metadata(
     return pins
 
 
-def verify_qualified_overview_metadata(
+def verify_qualified_overview_metadata(  # noqa: PLR0913 - Pins and opt-in profiles stay explicit.
     values: tuple[QualifiedOverviewInput, ...],
     package: Path,
     *,
     manifest_sha256: str,
     include_discovery: bool = False,
     partner_snapshots: tuple[PartnerSnapshot, ...] = (),
+    include_federation_tables: bool = False,
 ) -> dict[str, Any]:
     """Reconstruct pinned metadata read-only; grant no release approval."""
     _safe(package)
@@ -603,7 +628,10 @@ def verify_qualified_overview_metadata(
         package / "MANIFEST.json", manifest_sha256, max_bytes=_MAX_BYTES
     )
     expected, _ = _metadata_packet(
-        values, include_discovery=include_discovery, partner_snapshots=partner_snapshots
+        values,
+        include_discovery=include_discovery,
+        partner_snapshots=partner_snapshots,
+        include_federation_tables=include_federation_tables,
     )
     _require(
         {p.name for p in islice(package.iterdir(), len(expected) + 1)} == set(expected)

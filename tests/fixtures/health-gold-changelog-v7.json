@@ -1,0 +1,30 @@
+{
+  "comparison": "snapshot_only_no_prior_version_comparison",
+  "federation": "no_approved_links_emitted",
+  "packages": [
+    {
+      "change_status": "current_verified_snapshot",
+      "gold_schema_version": "archive-govt-nz.health-context-gold/v1",
+      "manifest_sha256": "32838a8c4f4c09faa35d5c42400f290a16288ad79cd7f4e063b3560e135c82bb",
+      "package_id": "urn:archive-govt-nz:health:gold:32838a8c4f4c09faa35d5c42400f290a16288ad79cd7f4e063b3560e135c82bb",
+      "profile": "context_source_separated",
+      "publication": "not_performed",
+      "rights": "not_evaluated",
+      "tables": [
+        {
+          "path": "context_coverage.parquet",
+          "rows": 1
+        },
+        {
+          "path": "context_observations.parquet",
+          "rows": 1
+        },
+        {
+          "path": "context_quality.parquet",
+          "rows": 1
+        }
+      ]
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-gold-metadata/v7"
+}

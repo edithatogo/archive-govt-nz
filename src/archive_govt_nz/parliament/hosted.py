@@ -21,6 +21,7 @@ lazy from pathlib import Path
 import httpx
 
 from archive_govt_nz.parliament.hosted_checkpoint import Checkpoints
+from archive_govt_nz.parliament.hosted_cooldown import is_write_rate_limit
 from archive_govt_nz.parliament.hosted_state import canonical, digest
 from archive_govt_nz.parliament.hosted_transport import (
     POINTER,
@@ -30,6 +31,11 @@ from archive_govt_nz.parliament.hosted_transport import (
 from archive_govt_nz.parliament.lease import file_lock
 from archive_govt_nz.parliament.pipeline import USER_AGENT, Bounds, ParliamentArchive
 from archive_govt_nz.parliament.publication import publish_batch
+from archive_govt_nz.parliament.report_holds import (
+    enforce_holds,
+    reviewed_holds,
+    unreviewed_failures,
+)
 from archive_govt_nz.parliament.reports import ReportQuery
 
 if TYPE_CHECKING:
@@ -70,9 +76,12 @@ def github_run(run: str, attempt: str | None = None) -> dict[str, Any]:
     return value
 
 
-def github_receipt(run: str) -> dict[str, Any]:
+def github_receipt(run: str, attempt: str | None = None) -> dict[str, Any]:
     """Read the single sanitized receipt from this exact trusted workflow run."""
-    github_run(run)
+    if attempt is None:
+        github_run(run)
+    else:
+        github_run(run, attempt)
     endpoint = "repos/edithatogo/archive-govt-nz/actions/runs/" + run + "/artifacts"
     listing = subprocess.run(  # noqa: S603 - fixed gh, validated run ID
         ["gh", "api", endpoint],  # noqa: S607 - qualified native CLI
@@ -83,7 +92,12 @@ def github_receipt(run: str) -> dict[str, Any]:
     artifacts = [
         a
         for a in json.loads(listing.stdout)["artifacts"]
-        if a["name"].startswith("parliament-receipt-" + run + "-") and not a["expired"]
+        if (
+            a["name"] == "parliament-receipt-" + run + "-" + attempt
+            if attempt is not None
+            else a["name"].startswith("parliament-receipt-" + run + "-")
+        )
+        and not a["expired"]
     ]
     if len(artifacts) != 1 or artifacts[0]["size_in_bytes"] > 1024 * 1024:
         abort("native_receipt_missing")
@@ -206,6 +220,15 @@ def retry_transport_once(archive: ParliamentArchive, source_id: str) -> bool:
     return True
 
 
+def _pending_eligible(manager: Checkpoints, archive: ParliamentArchive) -> bool:
+    """Apply exact exclusions before a request and stop every unreviewed failure."""
+    if enforce_holds(archive):
+        manager.save()
+    if unreviewed_failures(archive):
+        abort("held_failed_reports")
+    return bool(archive.summary()["pending"])
+
+
 async def acquire(manager: Checkpoints) -> None:
     """Preserve per-file milestones before source counters can advance."""
     archive = manager.archive
@@ -229,7 +252,10 @@ async def acquire(manager: Checkpoints) -> None:
                 )
             if result.get("status"):
                 abort("discovery_deferred")
-        while archive.summary()["pending"] and manager.work["captured"] < MAX_RECORDS:
+        while (
+            _pending_eligible(manager, archive)
+            and manager.work["captured"] < MAX_RECORDS
+        ):
             manager.tick()
             remaining = 900 - manager.work["seconds"]
             available = 262144000 - manager.work["bytes"]
@@ -290,6 +316,8 @@ def finish(manager: Checkpoints) -> dict[str, Any]:
         "work": manager.work,
         "publication": publication,
         "summary": archive.summary(),
+        "reviewed_access_holds": len(reviewed_holds(archive)),
+        "unreviewed_failures": len(unreviewed_failures(archive)),
         "checkpoint": dict(manager.pointer["checkpoint"]),
         "coverage_claim": False,
         "recurrence_acceptance": False,
@@ -462,6 +490,9 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - finite checkpointed lifecycl
             "checkpoint": manager.pointer["checkpoint"],
         }
     manager.load()
+    cooldown = manager.transport.write_cooldown(manager.pointer["owner"])
+    if cooldown is not None:
+        return cooldown
     previous_terminal_owner = manager.pointer["owner"]
     if previous_terminal_owner is not None and not terminal_owner(
         previous_terminal_owner
@@ -487,6 +518,8 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - finite checkpointed lifecycl
                 "status": "cold_restore_verified",
                 "objects": len(manager.refs),
                 "summary": archive.summary(),
+                "reviewed_access_holds": len(reviewed_holds(archive)),
+                "unreviewed_failures": len(unreviewed_failures(archive)),
                 "checkpoint": manager.pointer["checkpoint"],
             }
         for _ in range(max_batches):
@@ -505,7 +538,9 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - finite checkpointed lifecycl
                 continue
             if archive.pending_report_batch():
                 publish_batch(archive, str(archive.pending_report_batch()))
-            if archive.summary()["failed"]:
+            if enforce_holds(archive):
+                manager.save()
+            if unreviewed_failures(archive):
                 abort("held_failed_reports")
             begin(manager)
             try:
@@ -522,13 +557,18 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - finite checkpointed lifecycl
             "attempts": results,
             "checkpoint": manager.pointer["checkpoint"],
             "summary": archive.summary(),
+            "reviewed_access_holds": len(reviewed_holds(archive)),
+            "unreviewed_failures": len(unreviewed_failures(archive)),
             "execution_kind": os.environ.get("GITHUB_EVENT_NAME", "manual_local"),
         }
     except KeyboardInterrupt:
         # Last acknowledged pointer is authoritative. Never re-save interrupted
         # local state or convert an unknown write outcome to accepted progress.
         raise
-    except Exception:  # noqa: BLE001 - persist pause then re-raise every failure
+    except Exception as error:
+        if is_write_rate_limit(error):
+            manager.write_limited = True
+            raise
         try:
             manager.pointer = manager.current()
             if manager.pointer["owner"] == owner:

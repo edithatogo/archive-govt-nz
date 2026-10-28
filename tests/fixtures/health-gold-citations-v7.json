@@ -1,0 +1,15 @@
+{
+  "records": [
+    {
+      "identifier_scope": "pinned_gold_package_snapshots",
+      "manifest_sha256": "32838a8c4f4c09faa35d5c42400f290a16288ad79cd7f4e063b3560e135c82bb",
+      "package_id": "urn:archive-govt-nz:health:gold:32838a8c4f4c09faa35d5c42400f290a16288ad79cd7f4e063b3560e135c82bb",
+      "profile": "context_source_separated",
+      "publication": "not_performed",
+      "rights": "not_evaluated"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-gold-metadata/v7",
+  "scope": "local_content_addressed_gold_packages",
+  "source_citation": "not_asserted"
+}

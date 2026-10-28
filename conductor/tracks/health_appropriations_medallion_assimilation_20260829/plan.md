@@ -1553,9 +1553,14 @@ deliberately exercise version handling.
   preserve the existing two-package invocation. [M-14, M-15, M-18; AC-13, AC-14,
   AC-16]
 
-- [ ] Generate and validate metadata, cards, citations, changelogs, catalogue
+- [~] Generate and validate metadata, cards, citations, changelogs, catalogue
   and source drill-through records from actual layer manifests. [M-14, S-06;
   AC-14]
+  - [x] Cover native contextual Gold and Fiscal companion reports with opt-in
+    v7 metadata, exact per-payload inventories, scoped citations/changelogs/source
+    references and repeated native reconstruction. Reconcile all admitted product
+    families without claiming standards, rights or future-product coverage. See
+    `product-metadata-coverage-20261028.md` and paired JSON.
   - [x] Complete cards, scoped citations, snapshot changelog and source drill-through
     for the five qualified headline editions, with v2 opt-in output and unchanged
     v1 graph bytes. See `qualified-overview-discovery-20261027.md`.
@@ -1584,9 +1589,17 @@ deliberately exercise version handling.
     Include the card in the manifest and RO-Crate while preserving explicit
     source-health, classification, reconciliation, rights and publication
     boundaries. See `canonical-gold-dataset-card-20260928.md`.
-- [ ] Add rebuildable federation tables for approved links to
+- [x] Add rebuildable federation tables for approved links to
   `reimbursement-atlas` and `global-medicines-atlas`; preserve unmatched and
   ambiguous mappings. [M-14; AC-14]
+  Completed for the pinned reviewed annual-headline scope: ten exclusions and
+  zero approved positive links. Other grains/relationships remain unassessed;
+  new positive admission requires new evidence and is not implied by this task.
+  - [x] Materialize source and partner identity tables, the ten reviewed exclusion
+    dispositions, and a typed empty approved-links table from verified snapshots.
+    Preserve literal periods, record keys, review/snapshot pins and source-specific
+    rights boundaries; v4 opt-in export must preserve v1-v3 bytes and reject forged
+    positive rows. No new positive links are approved.
   - [x] Obtain both immutable partner snapshot slices and pinned review evidence;
     resolve the ten qualified annual-headline pairs as source-backed record-grain
     exclusions, preserving source literals and zero positive joins. Verify curated
@@ -1619,9 +1632,17 @@ deliberately exercise version handling.
   defects; full standards qualification and the Phase 7 parent gate remain open.
   [M-04, M-14, M-17, M-18, M-19; AC-04, AC-14, AC-15, AC-16]
 
-- [ ] Review every metadata-level rights statement against resource evidence;
+- [x] Review every metadata-level rights statement against resource evidence;
   reject hard-coded blanket licensing and unsupported federation claims.
   [M-04, M-14; AC-04, AC-14]
+  - [x] Review all supported emission surfaces, reconstruct qualified v1–v4
+    packets against the five source decisions and 12 official evidence files,
+    independently interpret resource grants, and retain ten scoped federation
+    exclusions with zero positive links. Record four historical blanket-label
+    exceptions, block fresh legacy derivative-rights admission, and distinguish
+    capture assertions from qualification. See `metadata-rights-review-20261028.md`
+    and its pinned machine evidence. This review does not grant unresolved
+    rights or close the remaining standards/security checkpoint.
   - [x] Verify the current Fiscal and Budget Gold catalogue, citation,
     changelog, and source-drill-through rights/publication states against their
     exact manifest pins. No licence is emitted; resource-level rights and

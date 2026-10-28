@@ -1364,3 +1364,28 @@ The [BIFF8 stored-value contract](./biff8-stored-value-contract.md) extends the 
 ## Five headline rights qualification — 2026-10-27
 
 The overview rights producer is an explicit additive boundary over the existing Bronze-verified Gold query. It requires a pinned five-resource assessment ledger and the exact retained evidence inventory, copies facts unchanged into an exclusive fresh output, and binds separate facts/query rights assertions to their payloads and decision bytes. Rendered publisher observations are not represented as original HTTP bodies. Historical manifests and default queries retain their existing behavior.
+
+### Reviewed federation tables — 2026-10-28
+
+The qualified overview v4 opt-in projection reuses source/rights reconstruction
+and the pinned partner-review verifier. It materializes stable versioned local
+source/partner identity keys, retains original keys and literal period tokens,
+and emits scoped mapping dispositions plus an empty typed approved-links table.
+Exclusions do not identify a matched target or qualify a join interval, confidence
+or redistribution grant. Other grains remain unassessed; no pending/ambiguous
+rows are fabricated for unseen records. Existing v1–v3 projections remain byte
+stable. Export is exclusive; read-only verification reconstructs all Parquet
+bytes and rejects self-rehashed positive-link forgeries.
+
+```mermaid
+flowchart LR
+  S[Pinned qualified source products] --> V[Existing reconstruction and review verifier]
+  P[Four retained partner and review snapshots] --> V
+  L[Immutable scoped exclusion ledger] --> V
+  V --> I[Source and partner identity tables]
+  V --> D[Ten exclusion dispositions]
+  V --> E[Typed empty approved links]
+  I --> R[Deterministic manifest and read-only replay]
+  D --> R
+  E --> R
+```

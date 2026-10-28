@@ -1,5 +1,23 @@
 # Run Log
 
+## 2026-10-28 — Rights and federation statement review
+
+Completed the supported emission-surface review: qualified resource grants bind
+to five source decisions and 12 official evidence files; ten federation pairs
+remain excluded, with no approved positive links. Retained historical blanket
+labels exceed original-only assertions and are recorded without rewriting
+published evidence. Fresh legacy readiness now rejects unqualified derivative
+rights; capture and label-only gate scopes are explicit. Independent RDF review
+and exact packet reconstruction passed, as did 55 focused tests. The initial full test run found two test-only import-path defects; the portable
+script-loader correction passed the full test stage (8,673 passed, 14 capability
+skips), and all local gates completed across initial/resumed runs. Hosted
+assurance is pending delivery. The first PR head passed all required checks;
+an automated finding then exposed omitted named graphs in the independent
+reviewer. Dataset quad iteration and two negative regressions correct that
+bypass; 16 affected tests pass and all native statement registers are unchanged.
+The corrected head requires fresh hosted checks. Phase 7 final checkpoint stays open.
+See `metadata-rights-review-20261028.md` and its machine receipt.
+
 ## 2026-10-25 — Phase 8 exclusive resume concurrency
 
 Added a barrier-controlled regression test that makes two callers complete the
@@ -10362,3 +10380,72 @@ Audited the full Phase7.1 contract task and requirements M-14/M-17/AC-14, retain
 the completion matrix in `metadata-contract-completion-20261028.md`. Identified
 legacy release acceptance of empty metadata and original-only rights coverage.
 The full goal remains active; inventory-only validation is not the end state.
+
+
+## 2026-10-28 — Product metadata coverage
+
+Owner: this chat, isolated `codex/health-product-metadata-20261028` worktree.
+The separate metadata-contract prototype and primary dirty worktree are preserved.
+This chat owns the next broad/native validation launch for this frozen topic.
+Python `.venv/bin/python --version`: 3.15.1; locked sync succeeded.
+Observed unsupported-profile failures before implementing each new profile.
+Initial native contextual build exposed nullable statuses; retained failure,
+fixed with separate null counts, and qualified two fresh Bronze repeat builds.
+Two Fiscal report builds and all metadata/discovery readbacks are identical.
+Focused initial regression: 19 passed; final focused/static/schema checks and
+full `./scripts/validate.sh` are pending terminal evidence below. No publication.
+
+Terminal local evidence: `./scripts/validate.sh` returned 0; 8,633 passed,
+14 capability skips; schemas 89 / representative documents 79; parity 9/9;
+mutation, supply-chain, licence, secrets and independently validated SBOM passed.
+The broad candidate was held stable through tests; review then tightened only
+the new expanded-Parquet limit to 256 MiB. Three affected tests passed; final
+metadata/schema/static checks and native combined reconstruction pass. Reuse
+unchanged broad evidence rather than repeat all 8,633 locally; hosted assurance
+will verify the exact committed tree. Native supplemental combined recovery
+matched both runs. Existing financial-activity v6 also rebuilt and reconstructed
+identically from the exact 2014/15 Bronze profile; an earlier exploratory use of
+the 2012/13 Silver edition was correctly rejected, preserved and not admitted.
+
+Final coverage audit: discovery's typed API excluded `OperationContextGoldInput`.
+Two static argument-contract failures reproduced; aligned all discovery entry
+points with the existing shared `MetadataInput` union. The affected operation
+metadata test passes, including discovery roundtrip and 13 recordsets; targeted
+typing passes. Earlier serialized/native evidence is unchanged. Push this final
+head before accepting hosted checks; superseded checks cannot authorize merge.
+
+Whole-repository typing caught the existing CLI re-export of `GoldInput`;
+retained that import contract. Corrected typing, lint, format, Conductor and
+schema gates pass. No historical profile bytes changed.
+
+## 2026-10-28 — Evidence-supported federation tables
+
+Owner: this chat, isolated `codex/health-federation-tables-20261028` from
+`ea1edd33` after protected PR #804 merged and its clean worktree was pruned.
+The primary dirty checkout and separate metadata-contract prototype are retained.
+User scope: ten reviewed headline pairs remain excluded; no positive links are
+approved. Reuse four pinned partner/review snapshots and the immutable ledger;
+produce explicit identity/disposition tables and an empty typed links table.
+Python `.venv/bin/python --version`: 3.15.1; locked sync passed. This chat owns
+serial broad/native assurance for the frozen federation topic.
+
+Three initial failing API contracts retained. The first implemented projection
+correctly rejected a fixture lacking source record IDs; enriched only the
+fictional fixture, preserving fail-closed admission. Rehashed forged positive
+rows remain rejected after canonical manifest serialization. Thirteen affected
+metadata/snapshot/verification tests pass; typing/lint pass. Native v4 repeat
+builds and read-only reconstruction pass against all five qualified editions
+and four retained snapshots: source identities 5, partner identities 174,
+exclusions 10, approved links 0. Actual partner repositories/key fields are
+retained explicitly. Prior v3 payloads and every input hash are unchanged.
+The historical checksum warning remains 1; no hosted correction is repeated.
+The frozen final candidate now owns the broad validation slot.
+
+Terminal broad assurance: `./scripts/validate.sh` returned 0 on the frozen
+federation implementation; 8,667 passed / 14 capability skips, 91 schemas /
+81 representative documents, parity 9/9 and all mutation, hygiene, benchmark,
+audit, licence, secret and independently validated SBOM gates passed. Keep the
+80 percent floor. Only terminal Conductor/evidence status changes follow; run
+the affected documentation/schema gates and reuse unchanged runtime evidence.
+The federation table task is complete for the user-confirmed pinned scope:
+ten excluded pairs, no approved joins. Wider Phase 7 checkpoint stays open.

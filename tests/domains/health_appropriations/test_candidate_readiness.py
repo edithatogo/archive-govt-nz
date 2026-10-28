@@ -72,6 +72,9 @@ def test_verifies_exact_candidate_without_publishing(tmp_path: Path) -> None:
     assert result["files_verified"] == 8
     assert result["originals_with_rights"] == 1
     assert result["publication_performed"] is False
+    assert result["rights_verification_scope"] == "included_original_assertions_only"
+    assert result["derivative_rights"] == "not_evaluated"
+    assert result["release_readiness"] == "not_assessed"
 
 
 @pytest.mark.parametrize(
@@ -256,14 +259,15 @@ def _expectation(
     )
 
 
-def test_fresh_assurance_does_not_qualify_legacy_empty_metadata(tmp_path: Path) -> None:
-    """Parity/recovery cannot substitute for actual metadata qualification."""
+def test_fresh_parity_and_recovery_cannot_qualify_missing_derivative_rights(
+    tmp_path: Path,
+) -> None:
+    """Original-only v1 assertions cannot establish whole-candidate rights."""
     digest = _write_candidate(tmp_path)
     assurance, assurance_sha256 = _write_assurance(tmp_path, digest)
-    with pytest.raises(ValueError, match="candidate_metadata_release_unqualified"):
+    with pytest.raises(ValueError, match="candidate_derivative_rights_unqualified"):
         verify_release_readiness(
-            tmp_path,
-            _expectation(digest, assurance, assurance_sha256),
+            tmp_path, _expectation(digest, assurance, assurance_sha256)
         )
 
 

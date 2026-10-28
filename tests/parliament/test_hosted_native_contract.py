@@ -195,11 +195,14 @@ def test_unknown_commit_retains_only_bounded_http_diagnostics(
         "argv",
         ["hosted", "verify", "--state-dir", str(tmp_path), "--receipt", str(receipt)],
     )
-    assert cli.main() == 1
+    assert cli.main() == 0
     result = json.loads(receipt.read_text())
-    assert result["reason"] == "checkpoint_commit_outcome_unknown"
-    assert result["http_status"] == 429
-    assert result["retry_after_seconds"] == 3600
+    assert result["status"] == "deferred_hub_write"
+    first = result["first_failure"]
+    assert first["status"] == "failed"
+    assert first["reason"] == "checkpoint_commit_outcome_unknown"
+    assert first["http_status"] == 429
+    assert first["retry_after_seconds"] == 3600
     assert calls == [1]
     assert "SECRET" not in receipt.read_text()
     assert "DO_NOT_DISCLOSE" not in receipt.read_text()
