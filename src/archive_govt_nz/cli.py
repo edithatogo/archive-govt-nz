@@ -63,6 +63,9 @@ from archive_govt_nz.domains.health_appropriations.legacy_inspection import (
 from archive_govt_nz.domains.health_appropriations.native_workbook_inspection import (
     inspect_native_workbook,
 )
+from archive_govt_nz.domains.health_appropriations.normalization_schedule import (
+    run_normalization_plan,
+)
 from archive_govt_nz.domains.health_appropriations.operations import (
     HealthAppropriationsStateError,
     inspect_archive_status,
@@ -72,6 +75,9 @@ from archive_govt_nz.domains.health_appropriations.rebuild import (
     execute_rebuild,
     plan_rebuild,
     verify_rebuild,
+)
+from archive_govt_nz.domains.health_appropriations.scheduled_normalization import (
+    run_scheduled_normalization,
 )
 from archive_govt_nz.domains.health_appropriations.source_layout_operations import (
     reconcile_source_layout_operation,
@@ -412,6 +418,51 @@ def health_appropriations_query_canonical_gold(
     )
     _emit_json({"command": "health-appropriations-query-canonical-gold", **receipt})
     return 0 if receipt["status"] == "verified" else 2
+
+
+@app.command(name="health-appropriations-run-normalization-plan")
+def health_appropriations_run_normalization_plan(
+    *, plan: Path, plan_sha256: str, job_root: Path, dry_run: bool = True
+) -> int:
+    """Run a pinned, bounded offline normalization plan."""
+    try:
+        receipt = run_normalization_plan(plan, plan_sha256, job_root, dry_run=dry_run)
+    except ValueError, OSError:
+        _emit_json({"status": "failed", "error": "normalization_plan_invalid"})
+        return 2
+    _emit_json(receipt)
+    return 2 if receipt["status"] == "partial" else 0
+
+
+@app.command(name="health-appropriations-scheduled-normalize")
+def health_appropriations_scheduled_normalize(
+    *,
+    source: Path,
+    job_root: Path,
+    profile: str,
+    expected_sha256: str,
+    source_vintage: str,
+    source_locator: str,
+    observed_at: str,
+    dry_run: bool = True,
+) -> int:
+    """Plan or run a resumable local normalization job."""
+    request = SourceRequest(
+        source,
+        job_root,
+        profile,
+        expected_sha256,
+        source_vintage,
+        source_locator,
+        observed_at,
+    )
+    try:
+        receipt = run_scheduled_normalization(request, job_root, dry_run=dry_run)
+    except ValueError, OSError:
+        _emit_json({"status": "failed", "error": "scheduled_normalization_failed"})
+        return 2
+    _emit_json(receipt)
+    return 2 if receipt["status"] == "failed" else 0
 
 
 @app.command(name="health-appropriations-extract-source")

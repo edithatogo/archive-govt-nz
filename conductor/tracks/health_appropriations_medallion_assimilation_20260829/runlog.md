@@ -1,5 +1,57 @@
 # Run Log
 
+## 2026-10-29 — Scheduled operations ownership
+
+Owner: chat `01a09968-c894-77c3-be45-0c2db277bfc2`; checkout
+`/Users/doughnut/.codex/worktrees/health-phase8-scheduled-operations/archive-govt-nz`,
+branch `codex/health-phase8-scheduled-operations`. Codex created the checkout;
+registration and attachment failed at the identity limit, so use this explicit
+path. This lane owns Phase 8 scheduler implementation, its focused contracts
+and track evidence. Native scope: none. No external capture, publication or
+workflow dispatch is authorized by this lane. Next: implement and qualify a
+durable scheduled normalization path using existing pinned source operations.
+
+Initial implementation is uncommitted. It preserves separate local attempts,
+uses an exclusive kernel-released lock, binds the source digest and generated
+manifest, and rechecks output hashes before replay. The first two focused tests
+failed because the existing operation receipt omitted the generated manifest;
+after adding a separate manifest pin both tests pass. CLI/scheduler wiring,
+additional recovery and concurrency qualification, broader validation and
+delivery remain pending.
+
+CLI wiring now defaults to a read-only plan and allows explicit local execution;
+replay verifies the retained outputs. Four focused tests passed, including a
+competing SQLite lock; the expanded CLI execution/replay contract also passed.
+A transient filesystem/interpreter lookup failure cleared on recheck; no reset
+or checkout recreation was performed. Owned source/evidence files were copied
+to `/tmp/health-scheduled-normalization-recovery-20261029.tar` (SHA-256
+`0fb773bb614d4a442109d6afa215deea277ccb3a54a08c1ce7081aadb2ae0b24`).
+The internal volume has under 1 GiB free; use isolated PortableSSD temporary
+storage for further validation. Scheduling integration, complete recovery
+qualification, full assurance and delivery remain pending.
+The runner now also writes an atomic redacted failure receipt and preserves it
+when a subsequent attempt succeeds; the focused failure/retry and tamper tests
+both passed. No hosted schedule or external source capture was run.
+
+The work now includes a SHA-256-pinned multi-job plan CLI and read-only MCP
+preflight. Jobs run in stable order with individual failures retained; replay
+identity binds application source files, installed dependency versions and
+runtime details. The combined scheduler/MCP selection passed 27 tests before
+the subsequent runtime-identity and bounded-read changes; nine affected tests
+passed after those changes. Scoped Ruff and type checks passed. Remaining work:
+final scheduler/MCP validation on the complete tree, run the required harness,
+and deliver through a protected PR. The hosted capture lane and timer activation
+remain outside this local implementation and are still incomplete.
+
+The final affected scheduler/MCP selection passed 30 tests with 82.09% branch
+coverage over the two new modules; Ruff and scoped typing passed. The first
+focused coverage run had 27 passing tests but missed the 80% floor at 78.38%;
+plan rejection contracts and test database cleanup were added before rerunning.
+The owned idle environment was copied to PortableSSD and verified byte-for-byte;
+the repo-local `.venv` path now selects that copy and reports Python 3.15.1.
+The original environment was preserved separately on PortableSSD. The full
+repository harness and protected PR delivery remain pending.
+
 ## 2026-10-29 — Phase 8 capture inventory operation ownership
 
 Owner: chat `01a09968-c894-77c3-be45-0c2db277bfc2`; checkout
@@ -10516,3 +10568,12 @@ audit, licence, secret and independently validated SBOM gates passed. Keep the
 the affected documentation/schema gates and reuse unchanged runtime evidence.
 The federation table task is complete for the user-confirmed pinned scope:
 ten excluded pairs, no approved joins. Wider Phase 7 checkpoint stays open.
+
+Phase 8 normalization scheduler local assurance: the full `./scripts/validate.sh`
+returned 0 on the implementation tree using Python 3.15.1 and PortableSSD
+scratch space. It passed 8,764 tests with 14 skips, 95 schemas/85 documents,
+parity 9/9, mutation, hygiene, benchmark and supply-chain gates. The focused
+scheduler selection passed 30 tests and 82.09% combined branch coverage for its
+two new modules. Hosted checks and protected delivery remain pending; capture,
+timer activation and the Phase 8 parent remain open. Local receipts are fixity
+evidence, not independent authentication of prior execution.
