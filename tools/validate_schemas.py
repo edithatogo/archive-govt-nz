@@ -20,6 +20,12 @@ type JsonValue = (
 REPOSITORY_ROOT = Path(__file__).parents[1]
 VALIDATION_PAIRS = (
     (
+        REPOSITORY_ROOT
+        / "schemas/health-candidate-metadata-verification-v1.schema.json",
+        REPOSITORY_ROOT
+        / "tests/fixtures/health-candidate-metadata-verification-v1.json",
+    ),
+    (
         REPOSITORY_ROOT / "schemas/health-federation-tables-v1.schema.json",
         REPOSITORY_ROOT / "tests/fixtures/health-federation-tables-v1.json",
     ),
@@ -40,6 +46,23 @@ VALIDATION_PAIRS = (
     (
         REPOSITORY_ROOT / "schemas/health-gold-source-drillthrough-v5.schema.json",
         REPOSITORY_ROOT / "tests/fixtures/health-gold-source-drillthrough-v5.json",
+    ),
+    (
+        REPOSITORY_ROOT
+        / "src/archive_govt_nz/domains/health_appropriations"
+        / "metadata-release-contract-v1.schema.json",
+        REPOSITORY_ROOT / "tests/fixtures/health-metadata-release-contract-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT
+        / "src/archive_govt_nz/domains/health_appropriations/candidate-v2.schema.json",
+        REPOSITORY_ROOT / "tests/fixtures/health-candidate-v2.json",
+    ),
+    (
+        REPOSITORY_ROOT
+        / "src/archive_govt_nz/domains/health_appropriations"
+        / "metadata-release-verification-v1.schema.json",
+        REPOSITORY_ROOT / "tests/fixtures/health-metadata-release-verification-v1.json",
     ),
     (
         REPOSITORY_ROOT

@@ -1,0 +1,163 @@
+{
+  "contracts": {
+    "all_platinum_mutants_killed": 5,
+    "combined_tests_passed": 245,
+    "new_mutants_killed": 2,
+    "new_representative_schemas": 4,
+    "representative_documents": 85,
+    "runtime_schemas": 3,
+    "schemas_validated": 95
+  },
+  "coverage": [
+    {
+      "disposition": "v3_inventory",
+      "family": "fiscal_analytical"
+    },
+    {
+      "disposition": "v3_inventory",
+      "family": "budget_comparison"
+    },
+    {
+      "disposition": "v4_inventory",
+      "family": "canonical_source_separated"
+    },
+    {
+      "disposition": "v5_source_regenerated_inventory",
+      "family": "operation_context"
+    },
+    {
+      "disposition": "v6_inventory",
+      "family": "vote_health_financial_activity"
+    },
+    {
+      "disposition": "v7_inventory",
+      "family": "context_source_separated"
+    },
+    {
+      "disposition": "v7_inventory",
+      "family": "fiscal_analytical_reports"
+    },
+    {
+      "disposition": "v1_v4_resource_scoped",
+      "family": "qualified_overview_2022_2026"
+    }
+  ],
+  "coverage_floor": 80,
+  "delivery_evidence": "external_archive/health-appropriations/assurance/phase7-checkpoint-20261028/delivery.json",
+  "evidence": {
+    "combined-phase-review.json": "a0642fcc9944884879f55915129e225de3db797c095a8f2e881984985846ca39",
+    "phase7-mutation.log": "85986eadeb415b9b5d63664adaa0f9a96858ee3a3660061245ce90f9f7ac12f9",
+    "sdk-review.json": "4743f0da7607976460720bcad665be9642b7a9fcc1e638a0dd719c7129237c37",
+    "wheel-review.json": "0d7e4ea244e4596b53038d8719f8c428393edf911b8d2d82dfde6f3f516fa551"
+  },
+  "external_mutations": "none",
+  "federation": {
+    "approved_links": 0,
+    "excluded_pairs": 10,
+    "other_grains": "not_assessed",
+    "partner_records": 174,
+    "rights": "not_inherited",
+    "source_records": 5
+  },
+  "final_identity_review": {
+    "finding": "contextual_rights_notice_could_alias_retained_payload",
+    "focused_tests_passed": 55,
+    "fresh_exact_head_hosted_checks": "required_before_merge",
+    "normal_projections_unchanged": true,
+    "resolution": "reject_notice_id_in_resource_identity_set",
+    "wheel_review": {
+      "normal_metadata_outputs_unchanged": true,
+      "notice_guard_matches_source": true,
+      "resource_members": [
+        "archive_govt_nz/domains/health_appropriations/candidate-v2.schema.json",
+        "archive_govt_nz/domains/health_appropriations/metadata-release-contract-v1.schema.json",
+        "archive_govt_nz/domains/health_appropriations/metadata-release-verification-v1.schema.json"
+      ],
+      "scope": "wheel_resource_import_not_whole_product_clean_room_recovery",
+      "wheel_module_import": true,
+      "wheel_sha256": "8ef6928a82e1c8b216674a74091ad8464c9a01ade5616318543d20872d4eec1b"
+    }
+  },
+  "final_local_assurance": {
+    "all_stages": "passed",
+    "capability_skips": 14,
+    "command": "./scripts/validate.sh",
+    "coverage_floor": 80,
+    "exit_code": 0,
+    "log_sha256": "163a7796ccc1f6fcd583966eaf26035bfbb68668cd945bf9ba7a93fa8474305c",
+    "observed_coverage": 96.46,
+    "parity": "9/9",
+    "representative_documents": 85,
+    "schemas": 95,
+    "source_base": "00e7fe0d0b0851e0e64ddfa5a9b31fe0f91d6e21",
+    "tests_passed": 8735
+  },
+  "issue_state_before_checkpoint": {
+    "meaning": "administrative closure is not used as checkpoint evidence",
+    "number": 213,
+    "state": "closed"
+  },
+  "phase": "7",
+  "publication_approval": "not_granted",
+  "remaining_outside_phase": [
+    "unadmitted_future_products",
+    "new_resource_rights_decisions",
+    "positive_partner_relationship_approvals",
+    "ML_loading_or_universal_conformance",
+    "unfinished_Phase5_Phase6_Phase8_Phase9_items"
+  ],
+  "retained_baseline_evidence": {
+    "coverage": "product-metadata-coverage-20261028.json",
+    "federation": "federation-tables-20261028.json",
+    "rights": "metadata-rights-review-20261028.json"
+  },
+  "rights": {
+    "historical_candidates_with_recorded_exceptions": 4,
+    "official_evidence_files": 12,
+    "other_product_rights": "not_evaluated_not_promoted",
+    "qualified_resources": 10,
+    "v2_rights": "explicit_operator_pinned_assertions_not_legal_judgment"
+  },
+  "schema_version": "archive-govt-nz.health-phase7-checkpoint/v1",
+  "scope": "all_currently_admitted_health_metadata_product_families",
+  "sdk_review": {
+    "data_loading": "not_requested_not_qualified",
+    "dataset_license_kind": [
+      "CreativeWork"
+    ],
+    "dataset_name": "fictional-health-metadata-fixture",
+    "document_sha256": "acfd318c0391bba2700cd13f2ef4ac27ae59a881db8e52aae91f61f53c1d2b19",
+    "network": "denied",
+    "python": "3.15.1",
+    "recordsets": [
+      {
+        "fields": [
+          "source_amount",
+          "source_label"
+        ],
+        "name": "local_candidate_inventory: data/facts.parquet"
+      }
+    ],
+    "sdk": "mlcroissant",
+    "sdk_adopted_in_lock": false,
+    "sdk_version": "1.1.1",
+    "status": "accepted_static_metadata"
+  },
+  "status": "local_checkpoint_passed_hosted_delivery_pending",
+  "wheel_review": {
+    "licence_file_present": true,
+    "resource_members": [
+      "archive_govt_nz/domains/health_appropriations/candidate-v2.schema.json",
+      "archive_govt_nz/domains/health_appropriations/metadata-release-contract-v1.schema.json",
+      "archive_govt_nz/domains/health_appropriations/metadata-release-verification-v1.schema.json"
+    ],
+    "scope": "wheel_resource_import_not_whole_product_clean_room_recovery",
+    "wheel_module_import": {
+      "module": "archive-govt-nz.health-metadata-release-contract/v1",
+      "schemas_loaded": 3,
+      "wheel_import": true
+    },
+    "wheel_sha256": "2cd00f4d3a6328f2630e63362b7aae4106f5d1b6fd16c534d8ecea612b17127c"
+  },
+  "whole_track_completion": false
+}

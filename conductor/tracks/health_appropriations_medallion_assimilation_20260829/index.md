@@ -15,6 +15,10 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Phase 7 checkpoint reconciliation](./phase7-checkpoint-20261028.md)
+- [Phase 7 checkpoint evidence](./phase7-checkpoint-20261028.json)
+- [Phase 7 implementation review](./phase7-review-20261028.md)
+
 - [Metadata rights and federation review](./metadata-rights-review-20261028.md)
 - [Rights review evidence pins](./metadata-rights-review-20261028.json)
 

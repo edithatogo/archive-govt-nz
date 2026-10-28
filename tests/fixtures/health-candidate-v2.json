@@ -1,0 +1,87 @@
+{
+  "candidate_state": "release_candidate_pending_contract_verification",
+  "dataset": "edithatogo/nz-health-appropriations",
+  "files": [
+    {
+      "bytes": 1655,
+      "path": "README.md",
+      "sha256": "419950731cb60e7ebc64e2249ff6f6335c6a174a823b80ddbae485db0c16721a"
+    },
+    {
+      "bytes": 809,
+      "path": "data/facts.parquet",
+      "sha256": "88394f23299a86b3e79f7a4827f4ca485d24dd9b831359e30d6b9250fe981c59"
+    },
+    {
+      "bytes": 2484,
+      "path": "metadata/catalogue.json",
+      "sha256": "81625b48ee4cca8c2cdea36956075d85a923a6a3439e51c8989c7aa79af26d06"
+    },
+    {
+      "bytes": 1066,
+      "path": "metadata/changelog.json",
+      "sha256": "7ffbbbb1312b39ae8b531f78a9fa15e917b38e9bc558c24120966f45b3fba5d4"
+    },
+    {
+      "bytes": 1218,
+      "path": "metadata/citations.json",
+      "sha256": "32c2d733a1a86ea5e62c699d4ca6cf5ec67d03b6bcf8a1da871271e57da7a51b"
+    },
+    {
+      "bytes": 6185,
+      "path": "metadata/croissant.json",
+      "sha256": "acfd318c0391bba2700cd13f2ef4ac27ae59a881db8e52aae91f61f53c1d2b19"
+    },
+    {
+      "bytes": 2464,
+      "path": "metadata/dcat.json",
+      "sha256": "f054f7b65b25a11318689fdbb39f949f94af453d3bf1a4f5d1df115ea2bc146a"
+    },
+    {
+      "bytes": 909,
+      "path": "metadata/payload-inventory.json",
+      "sha256": "62f4269c4c6f112629401918ebb64e00078de182d229733c312d99d54a6f6c6a"
+    },
+    {
+      "bytes": 1364,
+      "path": "metadata/profile-validation.json",
+      "sha256": "b6f3ff08d94790179ded9356a67c0ab7addd9bf342b1b727d8f649718eeeb069"
+    },
+    {
+      "bytes": 3682,
+      "path": "metadata/prov.json",
+      "sha256": "694791970477fb88f448b2b30db09c015e27a0ece4bcb7e1acb047c32befcfc9"
+    },
+    {
+      "bytes": 22,
+      "path": "metadata/rights.json",
+      "sha256": "3544ceb6d9770ba4a72e429a8a73eec3313c482365c4b8c35784f3709e4a0571"
+    },
+    {
+      "bytes": 1083,
+      "path": "metadata/schemas.json",
+      "sha256": "41e1e72da06c8ba862aa04c1ba3a4d0aaa4f9fc40eb0b4d7e4c3c6b0e2d7d132"
+    },
+    {
+      "bytes": 67,
+      "path": "metadata/source-census.json",
+      "sha256": "31d0ad77e1de7c5ffd09df67475a765e916e4e0e7c450563a2e0bd9eda44fabc"
+    },
+    {
+      "bytes": 880,
+      "path": "metadata/source_drillthrough.json",
+      "sha256": "b6459823438ed242f7c055bc8351a6a129a9696e26bb8899492939d4ac434174"
+    },
+    {
+      "bytes": 4015,
+      "path": "ro-crate-metadata.json",
+      "sha256": "7bc378519b481844cc4eacf075f2cddb653e4f3971d30c9e1ada523a7f677317"
+    }
+  ],
+  "metadata_identifier": "urn:example:health:fixture",
+  "metadata_profile": "archive-govt-nz.health-metadata-release-contract/v1",
+  "rights_gate": "requires_pinned_resource_contract",
+  "schema_version": "archive-govt-nz.health-hf-candidate/v2",
+  "source_disposition_gate": "passed",
+  "version": "1.0.0"
+}

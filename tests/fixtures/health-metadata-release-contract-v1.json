@@ -1,0 +1,151 @@
+{
+  "candidate_manifest_sha256": "95653fa8818b8d8b2aa08c047b97af4dc0a8ccf672de3acd72b11045cbba9061",
+  "facts": {
+    "creators": [
+      {
+        "id": "urn:example:publisher",
+        "name": "Fictional publisher",
+        "type": "Organization"
+      }
+    ],
+    "date_published": "2026-01-01",
+    "description": "Synthetic source assertions; no real publication is performed.",
+    "identifier": "urn:example:health:fixture",
+    "name": "fictional-health-metadata-fixture",
+    "url": "https://example.test/dataset",
+    "version": "1.0.0"
+  },
+  "facts_evidence_sha256": "09c7845f3bf8a948c05d53bd209f0ec12651b02c8a3fb24f76c83ebfbf70d7f9",
+  "intended_use": "candidate_redistribution_review",
+  "resources": [
+    {
+      "attribution": "Fictional reviewed holder",
+      "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
+      "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
+      "path": "MANIFEST.json",
+      "payload_sha256": "95653fa8818b8d8b2aa08c047b97af4dc0a8ccf672de3acd72b11045cbba9061",
+      "state": "eligible_asserted"
+    },
+    {
+      "attribution": "Fictional reviewed holder",
+      "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
+      "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
+      "path": "README.md",
+      "payload_sha256": "419950731cb60e7ebc64e2249ff6f6335c6a174a823b80ddbae485db0c16721a",
+      "state": "eligible_asserted"
+    },
+    {
+      "attribution": "Fictional reviewed holder",
+      "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
+      "license_uri": "https://creativecommons.org/licenses/by/4.0/",
+      "path": "data/facts.parquet",
+      "payload_sha256": "88394f23299a86b3e79f7a4827f4ca485d24dd9b831359e30d6b9250fe981c59",
+      "state": "eligible_asserted"
+    },
+    {
+      "attribution": "Fictional reviewed holder",
+      "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
+      "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
+      "path": "metadata/catalogue.json",
+      "payload_sha256": "81625b48ee4cca8c2cdea36956075d85a923a6a3439e51c8989c7aa79af26d06",
+      "state": "eligible_asserted"
+    },
+    {
+      "attribution": "Fictional reviewed holder",
+      "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
+      "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
+      "path": "metadata/changelog.json",
+      "payload_sha256": "7ffbbbb1312b39ae8b531f78a9fa15e917b38e9bc558c24120966f45b3fba5d4",
+      "state": "eligible_asserted"
+    },
+    {
+      "attribution": "Fictional reviewed holder",
+      "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
+      "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
+      "path": "metadata/citations.json",
+      "payload_sha256": "32c2d733a1a86ea5e62c699d4ca6cf5ec67d03b6bcf8a1da871271e57da7a51b",
+      "state": "eligible_asserted"
+    },
+    {
+      "attribution": "Fictional reviewed holder",
+      "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
+      "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
+      "path": "metadata/croissant.json",
+      "payload_sha256": "acfd318c0391bba2700cd13f2ef4ac27ae59a881db8e52aae91f61f53c1d2b19",
+      "state": "eligible_asserted"
+    },
+    {
+      "attribution": "Fictional reviewed holder",
+      "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
+      "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
+      "path": "metadata/dcat.json",
+      "payload_sha256": "f054f7b65b25a11318689fdbb39f949f94af453d3bf1a4f5d1df115ea2bc146a",
+      "state": "eligible_asserted"
+    },
+    {
+      "attribution": "Fictional reviewed holder",
+      "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
+      "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
+      "path": "metadata/payload-inventory.json",
+      "payload_sha256": "62f4269c4c6f112629401918ebb64e00078de182d229733c312d99d54a6f6c6a",
+      "state": "eligible_asserted"
+    },
+    {
+      "attribution": "Fictional reviewed holder",
+      "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
+      "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
+      "path": "metadata/profile-validation.json",
+      "payload_sha256": "b6f3ff08d94790179ded9356a67c0ab7addd9bf342b1b727d8f649718eeeb069",
+      "state": "eligible_asserted"
+    },
+    {
+      "attribution": "Fictional reviewed holder",
+      "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
+      "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
+      "path": "metadata/prov.json",
+      "payload_sha256": "694791970477fb88f448b2b30db09c015e27a0ece4bcb7e1acb047c32befcfc9",
+      "state": "eligible_asserted"
+    },
+    {
+      "attribution": "Fictional reviewed holder",
+      "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
+      "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
+      "path": "metadata/rights.json",
+      "payload_sha256": "3544ceb6d9770ba4a72e429a8a73eec3313c482365c4b8c35784f3709e4a0571",
+      "state": "eligible_asserted"
+    },
+    {
+      "attribution": "Fictional reviewed holder",
+      "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
+      "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
+      "path": "metadata/schemas.json",
+      "payload_sha256": "41e1e72da06c8ba862aa04c1ba3a4d0aaa4f9fc40eb0b4d7e4c3c6b0e2d7d132",
+      "state": "eligible_asserted"
+    },
+    {
+      "attribution": "Fictional reviewed holder",
+      "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
+      "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
+      "path": "metadata/source-census.json",
+      "payload_sha256": "31d0ad77e1de7c5ffd09df67475a765e916e4e0e7c450563a2e0bd9eda44fabc",
+      "state": "eligible_asserted"
+    },
+    {
+      "attribution": "Fictional reviewed holder",
+      "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
+      "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
+      "path": "metadata/source_drillthrough.json",
+      "payload_sha256": "b6459823438ed242f7c055bc8351a6a129a9696e26bb8899492939d4ac434174",
+      "state": "eligible_asserted"
+    },
+    {
+      "attribution": "Fictional reviewed holder",
+      "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
+      "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
+      "path": "ro-crate-metadata.json",
+      "payload_sha256": "7bc378519b481844cc4eacf075f2cddb653e4f3971d30c9e1ada523a7f677317",
+      "state": "eligible_asserted"
+    }
+  ],
+  "schema_version": "archive-govt-nz.health-metadata-release-contract/v1"
+}

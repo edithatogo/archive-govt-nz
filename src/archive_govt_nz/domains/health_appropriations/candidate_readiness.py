@@ -9,7 +9,18 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path, PurePosixPath
 from typing import Any, NoReturn
 
+from archive_govt_nz.domains.health_appropriations.candidate_metadata import (
+    verify_candidate_inventory,
+)
 from archive_govt_nz.domains.health_appropriations.inventory import Disposition
+from archive_govt_nz.domains.health_appropriations.release_metadata import (
+    VERSION as METADATA_PROFILE,
+)
+from archive_govt_nz.domains.health_appropriations.release_metadata import (
+    MetadataReleaseInput,
+    validate_release_manifest,
+    verify_release_metadata,
+)
 
 _SCHEMA = "archive-govt-nz.health-hf-candidate/v1"
 _DATASET = "edithatogo/nz-health-appropriations"
@@ -41,6 +52,7 @@ class ReleaseExpectation:
     code_revision: str
     as_of: datetime
     maximum_age: timedelta
+    metadata: MetadataReleaseInput | None = None
 
 
 def _fail(reason: str) -> NoReturn:
@@ -126,34 +138,7 @@ def _validate_closure(
         _fail("candidate_file_set_mismatch")
 
 
-def verify_candidate(root: Path, *, expected_manifest_sha256: str) -> dict[str, Any]:
-    """Verify legacy bytes and original assertions, not derivative rights."""
-    if root.is_symlink() or not root.is_dir():
-        _fail("unsafe_candidate_root")
-    manifest_path = root / "MANIFEST.json"
-    if (
-        manifest_path.is_symlink()
-        or not manifest_path.is_file()
-        or _sha256(manifest_path) != expected_manifest_sha256
-    ):
-        _fail("candidate_manifest_mismatch")
-    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    if manifest.get("schema_version") != _SCHEMA or manifest.get("dataset") != _DATASET:
-        _fail("candidate_identity_mismatch")
-    if (
-        manifest.get("rights_gate") != "passed_for_included_resources"
-        or manifest.get("source_disposition_gate") != "passed"
-        or manifest.get("candidate_state")
-        != "release_candidate_pending_exact_manifest_approval"
-    ):
-        _fail("candidate_release_gate_failed")
-
-    indexed = _verify_files(root, manifest.get("files"))
-
-    _validate_closure(root, manifest_path, indexed)
-    if not set(indexed) >= _REQUIRED_METADATA:
-        _fail("candidate_metadata_incomplete")
-
+def _verify_original_assertions(root: Path, originals: list[str]) -> None:
     rights = json.loads((root / "metadata/rights.json").read_text(encoding="utf-8"))
     resources = rights.get("resources", [])
     if not isinstance(resources, list) or any(
@@ -173,9 +158,58 @@ def verify_candidate(root: Path, *, expected_manifest_sha256: str) -> dict[str, 
     ):
         _fail("candidate_rights_mismatch")
     rights_paths = [_relative(row["path"]).as_posix() for row in resources]
-    originals = sorted(path for path in indexed if path.startswith("original/"))
     if sorted(rights_paths) != originals or len(rights_paths) != len(set(rights_paths)):
         _fail("candidate_rights_mismatch")
+
+
+def verify_candidate(root: Path, *, expected_manifest_sha256: str) -> dict[str, Any]:
+    """Verify byte closure; resource rights require separate explicit input."""
+    if root.is_symlink() or not root.is_dir():
+        _fail("unsafe_candidate_root")
+    manifest_path = root / "MANIFEST.json"
+    if (
+        manifest_path.is_symlink()
+        or not manifest_path.is_file()
+        or _sha256(manifest_path) != expected_manifest_sha256
+    ):
+        _fail("candidate_manifest_mismatch")
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    version = manifest.get("schema_version")
+    if (
+        version not in {_SCHEMA, _SCHEMA.removesuffix("v1") + "v2"}
+        or manifest.get("dataset") != _DATASET
+    ):
+        _fail("candidate_identity_mismatch")
+    required_rights = (
+        "passed_for_included_resources"
+        if version == _SCHEMA
+        else "requires_pinned_resource_contract"
+    )
+    required_state = (
+        "release_candidate_pending_exact_manifest_approval"
+        if version == _SCHEMA
+        else "release_candidate_pending_contract_verification"
+    )
+    if (
+        manifest.get("rights_gate") != required_rights
+        or manifest.get("source_disposition_gate") != "passed"
+        or manifest.get("candidate_state") != required_state
+        or (version != _SCHEMA and manifest.get("metadata_profile") != METADATA_PROFILE)
+    ):
+        _fail("candidate_release_gate_failed")
+
+    if version != _SCHEMA:
+        validate_release_manifest(manifest)
+
+    indexed = _verify_files(root, manifest.get("files"))
+
+    _validate_closure(root, manifest_path, indexed)
+    if not set(indexed) >= _REQUIRED_METADATA:
+        _fail("candidate_metadata_incomplete")
+
+    originals = sorted(path for path in indexed if path.startswith("original/"))
+    if version == _SCHEMA:
+        _verify_original_assertions(root, originals)
     census = json.loads(
         (root / "metadata/source-census.json").read_text(encoding="utf-8")
     )
@@ -196,12 +230,37 @@ def verify_candidate(root: Path, *, expected_manifest_sha256: str) -> dict[str, 
         "dataset": _DATASET,
         "manifest_sha256": expected_manifest_sha256,
         "files_verified": len(indexed),
-        "originals_with_rights": len(originals),
-        "rights_verification_scope": "included_original_assertions_only",
+        "originals_with_rights": len(originals) if version == _SCHEMA else 0,
+        "rights_verification_scope": (
+            "included_original_assertions_only"
+            if version == _SCHEMA
+            else "byte_closure_only"
+        ),
         "derivative_rights": "not_evaluated",
         "release_readiness": "not_assessed",
         "publication_performed": False,
+        "metadata_validation": "not_assessed",
     }
+
+
+def _metadata_qualification(
+    root: Path, expectation: ReleaseExpectation
+) -> dict[str, Any]:
+    try:
+        if expectation.metadata is None:
+            metadata = verify_candidate_inventory(
+                root, expected_manifest_sha256=expectation.manifest_sha256
+            )
+        else:
+            metadata = verify_release_metadata(
+                root, expectation.manifest_sha256, expectation.metadata
+            )
+    except (ValueError, OSError, KeyError, TypeError) as error:
+        reason = "candidate_metadata_release_unqualified"
+        raise ValueError(reason) from error
+    if metadata.get("status") != "qualified_for_explicit_gate":
+        _fail("candidate_metadata_release_unqualified")
+    return metadata
 
 
 def verify_release_readiness(
@@ -209,7 +268,9 @@ def verify_release_readiness(
     expectation: ReleaseExpectation,
 ) -> dict[str, Any]:
     """Bind candidate bytes to fresh, exact parity and recovery evidence."""
-    verify_candidate(root, expected_manifest_sha256=expectation.manifest_sha256)
+    candidate = verify_candidate(
+        root, expected_manifest_sha256=expectation.manifest_sha256
+    )
     if (
         expectation.assurance_path.is_symlink()
         or not expectation.assurance_path.is_file()
@@ -241,6 +302,26 @@ def verify_release_readiness(
     age = expectation.as_of.astimezone(UTC) - validated_at.astimezone(UTC)
     if age < timedelta(0) or age > expectation.maximum_age:
         _fail("candidate_assurance_stale")
-    # Candidate/v1 contains original-only assertions. Neither fresh technical
-    # assurance nor its historical gate label qualifies derivative metadata/data.
-    _fail("candidate_derivative_rights_unqualified")
+    if (
+        candidate.get("rights_verification_scope")
+        == "included_original_assertions_only"
+    ):
+        _fail("candidate_derivative_rights_unqualified")
+    if (
+        expectation.metadata is not None
+        and evidence.get("metadata_contract_sha256")
+        != expectation.metadata.contract_sha256
+    ):
+        _fail("candidate_metadata_assurance_mismatch")
+    metadata = _metadata_qualification(root, expectation)
+    return {
+        **candidate,
+        "assurance_sha256": expectation.assurance_sha256,
+        "code_revision": revision,
+        "parity": "passed",
+        "recovery": "passed",
+        "validated_at": evidence["validated_at"],
+        "metadata_validation": metadata,
+        "release_readiness": "ready_for_explicit_gate",
+        "publication_approval": "not_granted",
+    }

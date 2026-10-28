@@ -1,0 +1,22 @@
+{
+  "blockers": [],
+  "candidate_manifest_sha256": "95653fa8818b8d8b2aa08c047b97af4dc0a8ccf672de3acd72b11045cbba9061",
+  "contract_sha256": "ebda4045b252094ecb290eeca9fd2494309ffb6f99d91628dae199e2243b96d3",
+  "evidence_objects_verified": 2,
+  "full_conformance": "not_asserted",
+  "licenses": [
+    "https://creativecommons.org/licenses/by/4.0/",
+    "https://www.apache.org/licenses/LICENSE-2.0"
+  ],
+  "metadata_files_verified": 11,
+  "ml_loading": "not_qualified",
+  "publication": "not_performed",
+  "publication_approval": "not_granted",
+  "resources_verified": 16,
+  "rights_scope": "all_candidate_members_including_manifest",
+  "rights_validation": "pinned_assertions_and_supplied_evidence_fixity_not_legal_judgment",
+  "schema_version": "archive-govt-nz.health-metadata-release-contract/v1",
+  "scope": "metadata_and_resource_assertions_only",
+  "source_disposition_validation": "outside_metadata_contract",
+  "status": "qualified_for_explicit_gate"
+}

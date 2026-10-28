@@ -1,5 +1,20 @@
 # Run Log
 
+## 2026-10-28 — Phase 7 checkpoint launch
+
+Root is the sole broad-validation owner in the metadata-contracts worktree.
+Reconciled the preserved prototype with origin/main, retaining PR #808 legacy
+rights rejection; completed the contract and product coverage matrix. The
+combined 245-test selection passed, and a stale schema fixture was corrected
+by rerunning only its schema stage (95 schemas / 85 documents). Both new
+Platinum mutants are killed. Independent SDK static and wheel/schema import
+proofs pass. Launch one complete `./scripts/validate.sh` after freezing code;
+record terminal evidence before any broad rerun. Terminal result: 8,735 passed,
+14 capability skips; all schema (95/85), parity, mutation, security, licence,
+secret and SBOM stages passed. No broad rerun is needed for the final document
+status reconciliation. Exact-head hosted delivery follows. Whole track and publication
+authority remain separate from this engineering checkpoint.
+
 ## 2026-10-28 — Rights and federation statement review
 
 Completed the supported emission-surface review: qualified resource grants bind
@@ -10369,6 +10384,18 @@ for that evidenced shape without credential/permission changes. Seven focused
 contracts pass, including wrong-account/read-only rejection and private-scope
 filtering. Retained the failed run and all previously passing assurance; final
 protected Actions and the approved hosted correction remain required.
+
+## 2026-10-28 — Complete metadata contracts (active goal)
+
+Own worktree: `archive-govt-nz-metadata-contracts-20261028`; branch
+`codex/health-metadata-contracts-20261028`, based on merged PR801. Primary dirty
+work and other topic checkouts are preserved. This chat owns broad local assurance
+for this topic; no broad run has been launched. Repo-local Python3.15.1 is locked.
+Audited the full Phase7.1 contract task and requirements M-14/M-17/AC-14, retaining
+the completion matrix in `metadata-contract-completion-20261028.md`. Identified
+legacy release acceptance of empty metadata and original-only rights coverage.
+The full goal remains active; inventory-only validation is not the end state.
+
 
 ## 2026-10-28 — Product metadata coverage
 
