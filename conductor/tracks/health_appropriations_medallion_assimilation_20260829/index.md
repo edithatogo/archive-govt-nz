@@ -15,6 +15,9 @@ every planned record set, measure or operational workflow.
 
 ## Artifacts
 
+- [Metadata rights and federation review](./metadata-rights-review-20261028.md)
+- [Rights review evidence pins](./metadata-rights-review-20261028.json)
+
 - [Budget2015 source-to-products contract](./biff8-2015-contract.md)
 - [Budget2015 numeric preflight](./budget-2015-biff8-preflight-20261021.json)
 - [Budget2015 source/native qualification](./budget-2015-biff8-native-qualification-20261021.json)

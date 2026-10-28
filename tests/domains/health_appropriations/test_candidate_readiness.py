@@ -72,6 +72,9 @@ def test_verifies_exact_candidate_without_publishing(tmp_path: Path) -> None:
     assert result["files_verified"] == 8
     assert result["originals_with_rights"] == 1
     assert result["publication_performed"] is False
+    assert result["rights_verification_scope"] == "included_original_assertions_only"
+    assert result["derivative_rights"] == "not_evaluated"
+    assert result["release_readiness"] == "not_assessed"
 
 
 @pytest.mark.parametrize(
@@ -256,15 +259,16 @@ def _expectation(
     )
 
 
-def test_binds_candidate_to_fresh_parity_and_recovery(tmp_path: Path) -> None:
-    """Exact fresh assurance closes the local release-readiness contract."""
+def test_fresh_parity_and_recovery_cannot_qualify_missing_derivative_rights(
+    tmp_path: Path,
+) -> None:
+    """Original-only v1 assertions cannot establish whole-candidate rights."""
     digest = _write_candidate(tmp_path)
     assurance, assurance_sha256 = _write_assurance(tmp_path, digest)
-    result = verify_release_readiness(
-        tmp_path,
-        _expectation(digest, assurance, assurance_sha256),
-    )
-    assert result["parity"] == result["recovery"] == "passed"
+    with pytest.raises(ValueError, match="candidate_derivative_rights_unqualified"):
+        verify_release_readiness(
+            tmp_path, _expectation(digest, assurance, assurance_sha256)
+        )
 
 
 @pytest.mark.parametrize(

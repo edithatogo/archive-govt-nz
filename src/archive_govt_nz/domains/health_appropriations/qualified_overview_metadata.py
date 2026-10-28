@@ -325,7 +325,8 @@ def project_qualified_overview_discovery(
 ) -> dict[str, bytes]:
     """Extend verified graphs with scoped discovery and pending federation evidence.
 
-    No partner snapshot or reviewed mapping is accepted by this bounded profile.
+    Optional pinned partner snapshots carry reviewed exclusions only; positive
+    relationships remain unqualified.
     Pending means unevaluated, not unmatched. Existing v1 graph bytes are reused.
     """
     _require(type(partner_snapshots) is tuple)

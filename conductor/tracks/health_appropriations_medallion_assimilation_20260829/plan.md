@@ -1632,9 +1632,17 @@ deliberately exercise version handling.
   defects; full standards qualification and the Phase 7 parent gate remain open.
   [M-04, M-14, M-17, M-18, M-19; AC-04, AC-14, AC-15, AC-16]
 
-- [ ] Review every metadata-level rights statement against resource evidence;
+- [x] Review every metadata-level rights statement against resource evidence;
   reject hard-coded blanket licensing and unsupported federation claims.
   [M-04, M-14; AC-04, AC-14]
+  - [x] Review all supported emission surfaces, reconstruct qualified v1–v4
+    packets against the five source decisions and 12 official evidence files,
+    independently interpret resource grants, and retain ten scoped federation
+    exclusions with zero positive links. Record four historical blanket-label
+    exceptions, block fresh legacy derivative-rights admission, and distinguish
+    capture assertions from qualification. See `metadata-rights-review-20261028.md`
+    and its pinned machine evidence. This review does not grant unresolved
+    rights or close the remaining standards/security checkpoint.
   - [x] Verify the current Fiscal and Budget Gold catalogue, citation,
     changelog, and source-drill-through rights/publication states against their
     exact manifest pins. No licence is emitted; resource-level rights and

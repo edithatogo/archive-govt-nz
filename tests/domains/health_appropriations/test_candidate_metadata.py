@@ -157,6 +157,10 @@ def test_builder_preserves_originals_and_emits_an_unqualified_local_inventory(
             output / "original" / ("f" * 128 + "." + suffix)
         ).read_bytes() == original.read_bytes()
         assert "license:" not in (output / "README.md").read_text()
+        rights = json.loads((output / "metadata/rights.json").read_text())
+        assert {row["eligibility"] for row in rights["resources"]} == {
+            "capture_asserted_eligible"
+        }
         croissant = json.loads((output / "metadata/croissant.json").read_text())
         assert "datePublished" not in croissant
         assert {
