@@ -1,0 +1,14 @@
+{
+  "files": 18,
+  "full_conformance": "not_asserted",
+  "manifest_sha256": "4d26078f4232770efd975a3152d137dd1593c21be95a2ef78525b1855d821439",
+  "metadata_schema_version": "archive-govt-nz.qualified-overview-metadata/v4",
+  "partner_snapshots": 4,
+  "publication": "not_performed",
+  "publisher_checksum_mismatches": 1,
+  "release_readiness": "not_assessed",
+  "schema_version": "archive-govt-nz.qualified-overview-metadata-verification/v1",
+  "scope": "pinned_source_rights_and_metadata_reconstruction_not_release_approval",
+  "source_profiles": 5,
+  "status": "verified_reconstruction"
+}

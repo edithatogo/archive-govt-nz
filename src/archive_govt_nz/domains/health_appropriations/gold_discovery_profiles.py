@@ -11,7 +11,8 @@ from urllib.parse import quote
 from archive_govt_nz.domains.health_appropriations.gold_metadata import (
     MAX_BYTES,
     MAX_PACKAGES,
-    GoldInput,
+    GoldInput,  # noqa: F401 - Retain the existing CLI import contract.
+    MetadataInput,
     project_gold_metadata,
 )
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
@@ -57,7 +58,7 @@ def _sha(value: bytes) -> str:
 
 
 def project_profiles(
-    values: tuple[GoldInput, ...],
+    values: tuple[MetadataInput, ...],
 ) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
     """Read Gold before constructing inventory candidates; never claim full validity.
 
@@ -213,7 +214,7 @@ def project_inventory_candidates(
 
 
 def validate_documents(
-    values: tuple[GoldInput, ...], croissant: dict[str, Any], crate: dict[str, Any]
+    values: tuple[MetadataInput, ...], croissant: dict[str, Any], crate: dict[str, Any]
 ) -> dict[str, Any]:
     """Reject changed identity, extraction, types or unsupported promotion claims."""
     expected_cr, expected_ro, report = project_profiles(values)
@@ -223,7 +224,7 @@ def validate_documents(
     return report
 
 
-def _payloads(values: tuple[GoldInput, ...]) -> tuple[dict[str, bytes], bytes]:
+def _payloads(values: tuple[MetadataInput, ...]) -> tuple[dict[str, bytes], bytes]:
     cr, ro, report = project_profiles(values)
     data = {
         "croissant.json": _json(cr),
@@ -245,7 +246,7 @@ def _payloads(values: tuple[GoldInput, ...]) -> tuple[dict[str, bytes], bytes]:
 
 
 def export_profiles(
-    values: tuple[GoldInput, ...], output: Path, *, write: bool = False
+    values: tuple[MetadataInput, ...], output: Path, *, write: bool = False
 ) -> dict[str, Any]:
     """Dry run verifies Gold; writing preserves exclusive output and partials."""
     data, marker = _payloads(values)
@@ -269,7 +270,7 @@ def export_profiles(
 
 
 def verify_profiles(
-    values: tuple[GoldInput, ...], output: Path, manifest_sha256: str
+    values: tuple[MetadataInput, ...], output: Path, manifest_sha256: str
 ) -> dict[str, Any]:
     """Reverify Gold and reconstruct every candidate byte from its pinned inputs."""
     _require(output.is_dir() and not output.is_symlink())
