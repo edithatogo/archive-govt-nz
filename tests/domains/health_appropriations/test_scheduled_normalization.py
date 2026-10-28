@@ -165,6 +165,62 @@ def test_runtime_change_does_not_reuse_old_output(
     assert first["job_id"] != second["job_id"]
 
 
+def test_replay_rejects_changed_receipt_and_output_inventory(
+    source_request: SourceRequest, tmp_path: Path
+) -> None:
+    root = tmp_path / "scheduler"
+    result = scheduled_normalization.run_scheduled_normalization(
+        source_request, root, dry_run=False
+    )
+    attempt = root / result["job_id"] / result["attempt"]
+    receipt_path = attempt / "receipt.json"
+    original = receipt_path.read_bytes()
+    receipt_path.write_text("{}", encoding="utf-8")
+    with pytest.raises(ValueError, match="scheduled_receipt_or_output_invalid"):
+        scheduled_normalization.run_scheduled_normalization(
+            source_request, root, dry_run=False
+        )
+    receipt_path.write_bytes(original)
+    extra = attempt / "output" / "unexpected"
+    extra.write_bytes(b"unexpected")
+    with pytest.raises(ValueError, match="scheduled_receipt_or_output_invalid"):
+        scheduled_normalization.run_scheduled_normalization(
+            source_request, root, dry_run=False
+        )
+
+
+def test_invalid_state_and_lock_paths_are_rejected(
+    source_request: SourceRequest, tmp_path: Path
+) -> None:
+    root = tmp_path / "scheduler"
+    with pytest.raises(ValueError, match="scheduled_arguments_invalid"):
+        scheduled_normalization.run_scheduled_normalization(
+            source_request, root, dry_run=1
+        )  # type: ignore[arg-type]
+    root.mkdir()
+    (root / ".scheduled-normalization.lock").mkdir()
+    with pytest.raises(ValueError, match="scheduled_lock_invalid"):
+        scheduled_normalization.run_scheduled_normalization(
+            source_request, root, dry_run=False
+        )
+
+
+def test_replay_rejects_non_directory_attempt(
+    source_request: SourceRequest, tmp_path: Path
+) -> None:
+    root = tmp_path / "scheduler"
+    job_id = scheduled_normalization.run_scheduled_normalization(source_request, root)[
+        "job_id"
+    ]
+    job = root / job_id
+    job.mkdir(parents=True)
+    (job / "invalid-attempt").write_text("not a directory", encoding="utf-8")
+    with pytest.raises(ValueError, match="scheduled_attempt_invalid"):
+        scheduled_normalization.run_scheduled_normalization(
+            source_request, root, dry_run=False
+        )
+
+
 def test_cli_defaults_to_read_only_and_redacts_failures(
     source_request: SourceRequest, tmp_path: Path, capsys: pytest.CaptureFixture[str]
 ) -> None:

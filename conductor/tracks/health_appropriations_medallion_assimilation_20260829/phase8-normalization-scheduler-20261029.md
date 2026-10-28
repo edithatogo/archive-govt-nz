@@ -30,3 +30,10 @@ passed on Python 3.15.1: 8,764 tests passed, 14 skipped, schemas 95/85 and
 parity 9/9 passed, along with mutation, hygiene, benchmark and supply-chain
 gates. Temporary files were placed on PortableSSD. Hosted assurance and protected
 delivery remain pending; these results do not close Phase 8 or the track.
+
+PR #812's initial hosted Codecov patch check failed despite passing all three
+platform assurance jobs. Additional focused tests reject changed receipts,
+unexpected outputs and invalid scheduler state. The two affected test files
+passed 15 tests with 86.49% combined branch coverage of the new modules; the
+unchanged implementation retains the earlier full-harness evidence. Fresh
+exact-head hosted checks remain required.
