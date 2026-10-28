@@ -1,5 +1,20 @@
 # Run Log
 
+## 2026-10-28 — Phase 7 checkpoint launch
+
+Root is the sole broad-validation owner in the metadata-contracts worktree.
+Reconciled the preserved prototype with origin/main, retaining PR #808 legacy
+rights rejection; completed the contract and product coverage matrix. The
+combined 245-test selection passed, and a stale schema fixture was corrected
+by rerunning only its schema stage (95 schemas / 85 documents). Both new
+Platinum mutants are killed. Independent SDK static and wheel/schema import
+proofs pass. Launch one complete `./scripts/validate.sh` after freezing code;
+record terminal evidence before any broad rerun. Terminal result: 8,735 passed,
+14 capability skips; all schema (95/85), parity, mutation, security, licence,
+secret and SBOM stages passed. No broad rerun is needed for the final document
+status reconciliation. Exact-head hosted delivery follows. Whole track and publication
+authority remain separate from this engineering checkpoint.
+
 ## 2026-10-28 — Rights and federation statement review
 
 Completed the supported emission-surface review: qualified resource grants bind

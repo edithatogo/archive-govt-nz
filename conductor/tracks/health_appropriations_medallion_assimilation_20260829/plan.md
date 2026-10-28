@@ -1508,7 +1508,7 @@ deliberately exercise version handling.
   fixity/eligibility claims or publication metadata. This does not complete
   Platinum or whole-product recovery. [M-14, M-18; AC-14, AC-16]
 
-- [~] Add failing contracts for schema-as-code, DCAT, Croissant, RO-Crate,
+- [x] Add failing contracts for schema-as-code, DCAT, Croissant, RO-Crate,
   PROV, estate cards, mixed/per-resource licensing, citations and fail-closed
   release readiness. Include missing, conflicting and incompatible rights
   states. [M-04, M-14, M-17, M-18; AC-04, AC-14, AC-16]
@@ -1553,7 +1553,7 @@ deliberately exercise version handling.
   preserve the existing two-package invocation. [M-14, M-15, M-18; AC-13, AC-14,
   AC-16]
 
-- [~] Generate and validate metadata, cards, citations, changelogs, catalogue
+- [x] Generate and validate metadata, cards, citations, changelogs, catalogue
   and source drill-through records from actual layer manifests. [M-14, S-06;
   AC-14]
   - [x] Cover native contextual Gold and Fiscal companion reports with opt-in
@@ -1648,8 +1648,14 @@ deliberately exercise version handling.
     exact manifest pins. No licence is emitted; resource-level rights and
     federation approvals remain unresolved. This bounded check does not close
     the broader review. See `gold-metadata-rights-provenance-review-20261005.md`.
-- [ ] Run schema/metadata/federation/security gates, self-review and the full
+- [x] Run schema/metadata/federation/security gates, self-review and the full
   repository harness; record paired evidence. [M-18, M-19; AC-16]
+  Implementation and coverage reconciled for the eight admitted product families;
+  245 combined tests, 95 schemas / 85 documents, independent SDK static review,
+  wheel/schema import and five Platinum mutants pass. Final full harness passed
+  (8,735 tests, 14 capability skips, 95 schemas / 85 documents, parity 9/9 and
+  all security/supply-chain gates). Exact-head protected delivery is recorded
+  separately. See `phase7-checkpoint-20261028.md`.
 
 ## Phase 8 — CLI, MCP and scheduled operation
 

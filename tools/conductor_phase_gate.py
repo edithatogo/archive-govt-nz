@@ -20,6 +20,29 @@ REPOSITORY_ROOT = Path(__file__).resolve().parents[1]
 REVIEW_DIR = REPOSITORY_ROOT / "build" / "conductor-reviews"
 
 PHASE_TARGETS: dict[str, dict[str, Any]] = {
+    "health_phase7_metadata": {
+        "title": "Health Phase 7: metadata, rights, federation and security contracts",
+        "test_targets": [
+            "tests/domains/health_appropriations/test_gold_metadata.py",
+            "tests/domains/health_appropriations/test_context_gold_metadata.py",
+            "tests/domains/health_appropriations/test_canonical_gold_metadata.py",
+            "tests/domains/health_appropriations/test_operation_context_metadata.py",
+            "tests/domains/health_appropriations/test_metadata_application.py",
+            "tests/domains/health_appropriations/test_candidate_metadata_contract.py",
+            "tests/domains/health_appropriations/test_release_metadata_contracts.py",
+            "tests/domains/health_appropriations/test_candidate_readiness.py",
+            "tests/domains/health_appropriations/test_partner_snapshots.py",
+            "tests/domains/health_appropriations/test_federation_tables.py",
+            "tests/domains/health_appropriations/test_health_federation_contract.py",
+            "tests/domains/health_appropriations/test_qualified_metadata_verification.py",
+            "tests/domains/health_appropriations/test_qualified_overview_metadata.py",
+            "tests/domains/health_appropriations/test_overview_rights.py",
+            "tests/domains/health_appropriations/test_local_rdf.py",
+            "tests/tools/test_health_rights_review.py",
+        ],
+        "source_paths": ["src/archive_govt_nz/domains/health_appropriations/"],
+        "schemas": [],
+    },
     "phase_1_bronze": {
         "title": "Phase 1: Bronze Ingestion Layer",
         "test_targets": [

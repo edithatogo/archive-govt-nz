@@ -1,55 +1,34 @@
-# Metadata contract completion audit — 2026-10-28
+# Metadata contract completion — 2026-10-28
 
-Objective: complete the remaining Phase 7.1 metadata contracts, including schemas,
-standards profiles, mixed/resource licensing and fail-closed release readiness.
-This is not a whole-Phase-7 completion or external publication task.
+The retained prototype is now reconciled with protected main and the rights
+review in PR #808. The Phase 7.1 contract matrix is implemented: bounded v1
+inventory reconstruction, a separate v2 all-member application contract,
+resource/evidence/fact pins, schema-as-code, standards projections, mixed grants,
+citations/cards and fail-closed readiness. No actual publication or new licence
+record is created. See `phase7-checkpoint-20261028.md` and paired evidence.
 
-## Completion requirements and current evidence
+Four representative schemas are registered; three runtime schemas are packaged
+with the new module. The runtime validates closed manifest and resource records,
+including metadata and manifest bytes, using an external contract to avoid
+self-hash cycles. It rejects incomplete, duplicate, contradictory or forged
+records. Fresh technical assurance cannot qualify candidate/v1 derivative rights.
+The v2 positive fixture requires explicit pinned facts, resource records and
+matching fresh assurance, and grants no publication approval. Unresolved,
+restricted, incompatible or unsupported typed resources remain blocked.
 
-| Requirement | Current evidence | Remaining proof/work |
-| --- | --- | --- |
-| Versioned schema-as-code for admitted metadata | Rights assertion v1 and verification receipt v1 schemas exist | Validate remaining metadata/profile envelopes and representative positive/negative fixtures |
-| DCAT, Croissant, RO-Crate, PROV application profiles | Gold, candidate and qualified headline projectors; offline RDF tests; scoped reconstruction | Complete explicit profile contracts, actual field/source bindings and independent offline standards checks; separate local inventory validity from publication conformance |
-| Estate/dataset cards, catalogue and citations | Gold and qualified discovery builders reconstruct pinned outputs | Bind contract-level claims and rights to supplied resources and report unsupported profiles |
-| Mixed/resource licensing | metadata_application validates v2 inventory assertions and supplied evidence fixity; qualified overview binds approved narrow source evidence | Cover every included derivative and metadata member; reject missing/conflicting/incompatible grants without blanket inheritance |
-| Release readiness integration | Legacy verify_candidate checks hashes and original rights; synthetic positive uses empty metadata dictionaries | Integrate metadata/profile and all-resource rights qualification; demonstrate qualified positive and missing/conflicting/unsupported negatives without granting publication approval |
-| Original/historical stability | Existing products/reviews/candidate publication are retained | Prove new validations do not rewrite old bytes or inherit historical publication authority |
-| Assurance and reconciliation | Existing focused/full/hosted evidence for prior slices | Focused contract tests, required full harness once reviewable, protected PR delivery and requirement-by-requirement completion audit |
+Croissant 1.0, RO-Crate 1.1, DCAT 3 and entity-only PROV application projections
+retain resource identities, physical schemas and source field names. Primitive
+Arrow representation descriptors use explicit Croissant equivalents without
+changing payload values; decimal/other unsupported types are retained and
+blocked. Container licensing is a contextual CreativeWork notice saying that
+only individual resource terms apply, not a blanket licence URI. Independent
+RDF checks compare grants and actual field/file bindings. Earlier inventory
+profiles remain unchanged and do not acquire missing publication facts.
 
-## Initial actionable finding
-
-`verify_release_readiness` currently returns success for a hash-consistent legacy
-candidate whose Croissant/DCAT/PROV/RO-Crate payloads are `{}`. Its rights check
-covers originals but not derived outputs. The separate generic publication/v2
-metadata validator is not connected to that path. Candidate inventory generators
-correctly leave rights and standards qualification blocked. Fix integration rather
-than trusting manifest gate strings or replacing historical candidate bytes.
-
-Primary standards references: MLCommons Croissant 1.0 specification,
-https://docs.mlcommons.org/croissant/docs/croissant-spec.html;
-RO-Crate 1.1, https://www.researchobject.org/ro-crate/specification/1.1/;
-W3C DCAT 3, https://www.w3.org/TR/vocab-dcat-3/;
-W3C PROV-O, https://www.w3.org/TR/prov-o/.
-
-Remaining unproven rows stay open until their stated proof is retained. Missing
-source rights may produce a correctly blocked contract result; it must not be
-reported as release eligibility or bypassed by a schema/conformance assertion.
-
-## Isolated SDK evaluation remains unqualified
-
-`mlcroissant` 1.1.1 installed on the isolated Python 3.15.1 evaluation runtime;
-it is not adopted in the repository lock. Three synthetic, network-denied static
-analysis probes are retained. The first rejected the HTTP schema.org Dataset
-namespace. The second encountered missing default-language context handling.
-The third proceeds to seven validation errors involving conformsTo/version
-recognition, FileObject type selection, mixed-rights notice representation and
-the supplied fictional dataset name; two recommendations concern citation and
-semantic-version syntax. No values are cast or silently renamed to force a pass.
-The latest prototype explicitly uses a neutral null default language and the
-HTTPS contentUrl property. It is not yet qualified for SDK loading or final
-standards-profile completion. Preserve these failures and finish the remaining
-independent graph/negative contracts before the original goal can close.
-
-The separate product-coverage PR #804 is on integrated head `30095507` and
-awaits required hosted platform assurance. Its inventory-only discovery claims
-remain distinct from this unfinished release-contract prototype.
+The isolated Python 3.15.1 / mlcroissant 1.1.1 static probe accepts the current
+synthetic mixed-license profile with networking denied, including its CreativeWork
+notice and both source fields. Earlier namespace/version/URL/type failures are
+retained. Context-alias and absent recommended citation warnings are disclosed.
+This is a scoped static model check, not universal conformance or ML loading;
+the SDK is not adopted in the repository lock. Wheel resource import also passes.
+Final full local and exact-head hosted assurance are recorded at delivery.

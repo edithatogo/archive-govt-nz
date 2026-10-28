@@ -15,6 +15,21 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 
 MUTANTS: dict[str, tuple[str, str, str, str]] = {
+    "health_resource_state": (
+        "src/archive_govt_nz/domains/health_appropriations/release_metadata.py",
+        'if r["state"] != "eligible_asserted"',
+        "if False",
+        "tests/domains/health_appropriations/test_release_metadata_contracts.py::test_noneligible_resource_states_block_release",
+    ),
+    "health_metadata_reconstruction": (
+        "src/archive_govt_nz/domains/health_appropriations/release_metadata.py",
+        (
+            "_require(all(observed[name] == payload "
+            "for name, payload in expected.items()))"
+        ),
+        "_require(True)",
+        "tests/domains/health_appropriations/test_release_metadata_contracts.py::test_repinned_contract_does_not_admit_conflicts[forged_graph]",
+    ),
     "croissant_context_check": (
         "src/archive_govt_nz/schemas/medallion.py",
         '"cr": "http://mlcommons.org/croissant/",',
@@ -62,7 +77,7 @@ def _run_single_mutant(
         result = subprocess.run(  # noqa: S603
             cmd,
             cwd=ROOT,
-            env={"PYTHONPATH": str(root), **os.environ},
+            env={**os.environ, "PYTHONPATH": str(root)},
             capture_output=True,
             text=True,
             check=False,

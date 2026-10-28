@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-candidate-metadata-verification-v1.schema.json",
+  "title": "Read-only observed inventory reconstruction, no release or rights qualification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "manifest_sha256",
+    "metadata_files_verified",
+    "payload_members_verified",
+    "recordsets",
+    "fields",
+    "release_readiness",
+    "derivative_rights",
+    "publication_approval",
+    "full_conformance"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-candidate-metadata-verification/v1"
+    },
+    "status": {
+      "const": "verified_inventory_metadata"
+    },
+    "release_readiness": {
+      "const": "blocked"
+    },
+    "derivative_rights": {
+      "const": "not_evaluated"
+    },
+    "publication_approval": {
+      "const": "not_granted"
+    },
+    "full_conformance": {
+      "const": "not_asserted"
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "metadata_files_verified": {
+      "const": 7
+    },
+    "payload_members_verified": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "recordsets": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "fields": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

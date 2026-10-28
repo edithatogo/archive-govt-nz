@@ -106,5 +106,5 @@ def test_self_rehashed_empty_standard_documents_are_not_accepted(
 def test_fresh_assurance_cannot_release_empty_legacy_metadata(tmp_path: Path) -> None:
     pin = legacy._write_candidate(tmp_path)
     path, evidence = legacy._write_assurance(tmp_path, pin)
-    with pytest.raises(ValueError, match="candidate_metadata_release_unqualified"):
+    with pytest.raises(ValueError, match="candidate_derivative_rights_unqualified"):
         verify_release_readiness(tmp_path, legacy._expectation(pin, path, evidence))

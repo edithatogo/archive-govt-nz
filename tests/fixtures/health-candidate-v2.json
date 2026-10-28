@@ -3,9 +3,9 @@
   "dataset": "edithatogo/nz-health-appropriations",
   "files": [
     {
-      "bytes": 1660,
+      "bytes": 1655,
       "path": "README.md",
-      "sha256": "72fa6bcb3e7adbacf4dfb876bdd4472677a40e5b043d19db2662fd533edae0db"
+      "sha256": "419950731cb60e7ebc64e2249ff6f6335c6a174a823b80ddbae485db0c16721a"
     },
     {
       "bytes": 809,
@@ -13,44 +13,44 @@
       "sha256": "88394f23299a86b3e79f7a4827f4ca485d24dd9b831359e30d6b9250fe981c59"
     },
     {
-      "bytes": 2489,
+      "bytes": 2484,
       "path": "metadata/catalogue.json",
-      "sha256": "1eee9bf74311f8e884225a5c5383845997ff742b19465c37415c3e42125ad953"
+      "sha256": "81625b48ee4cca8c2cdea36956075d85a923a6a3439e51c8989c7aa79af26d06"
     },
     {
       "bytes": 1066,
       "path": "metadata/changelog.json",
-      "sha256": "99501388beb38e10d8621f59187266406649bbcb6ccb28987a73e52d4776256f"
+      "sha256": "7ffbbbb1312b39ae8b531f78a9fa15e917b38e9bc558c24120966f45b3fba5d4"
     },
     {
       "bytes": 1218,
       "path": "metadata/citations.json",
-      "sha256": "bca8372e7a08d16d89dd26ea7453ddab002ae90cfeeb515680ea0bb2b445471d"
+      "sha256": "32c2d733a1a86ea5e62c699d4ca6cf5ec67d03b6bcf8a1da871271e57da7a51b"
     },
     {
-      "bytes": 5919,
+      "bytes": 6185,
       "path": "metadata/croissant.json",
-      "sha256": "89a86af315b7a02ae04d8937c27a20b4235eb462873fa0311e3e3e04e6b56e10"
+      "sha256": "acfd318c0391bba2700cd13f2ef4ac27ae59a881db8e52aae91f61f53c1d2b19"
     },
     {
-      "bytes": 2148,
+      "bytes": 2464,
       "path": "metadata/dcat.json",
-      "sha256": "ac50e8336a02e63aac957a37d7c828a44957d754d3dc18686bf84166ac3dcc49"
+      "sha256": "f054f7b65b25a11318689fdbb39f949f94af453d3bf1a4f5d1df115ea2bc146a"
     },
     {
       "bytes": 909,
       "path": "metadata/payload-inventory.json",
-      "sha256": "caef3140253b1092d7eb3a02399b8d6731b07054d1abe7987c51302250e069e5"
+      "sha256": "62f4269c4c6f112629401918ebb64e00078de182d229733c312d99d54a6f6c6a"
     },
     {
-      "bytes": 1317,
+      "bytes": 1364,
       "path": "metadata/profile-validation.json",
-      "sha256": "62fe555db45f0f91ca41d0e264115e67fabcf44c15bfccf7764aa5c114e4ae61"
+      "sha256": "b6f3ff08d94790179ded9356a67c0ab7addd9bf342b1b727d8f649718eeeb069"
     },
     {
-      "bytes": 3214,
+      "bytes": 3682,
       "path": "metadata/prov.json",
-      "sha256": "35a6038ef898318d3ae6699a66ff0c72cf5916627febabac6f020c08fe75edc6"
+      "sha256": "694791970477fb88f448b2b30db09c015e27a0ece4bcb7e1acb047c32befcfc9"
     },
     {
       "bytes": 22,
@@ -60,7 +60,7 @@
     {
       "bytes": 1083,
       "path": "metadata/schemas.json",
-      "sha256": "aef47f6d96b3ec1b8b7ae2f71f5a395181c4f40dae9ffd771a6280d4c2e142a9"
+      "sha256": "41e1e72da06c8ba862aa04c1ba3a4d0aaa4f9fc40eb0b4d7e4c3c6b0e2d7d132"
     },
     {
       "bytes": 67,
@@ -70,12 +70,12 @@
     {
       "bytes": 880,
       "path": "metadata/source_drillthrough.json",
-      "sha256": "ec5b037e76d733f07fb89c7d063694d1c95ced2446ffe2d95e3946292db492bf"
+      "sha256": "b6459823438ed242f7c055bc8351a6a129a9696e26bb8899492939d4ac434174"
     },
     {
-      "bytes": 4421,
+      "bytes": 4015,
       "path": "ro-crate-metadata.json",
-      "sha256": "83b8b2f883670e895d9e08e58a8a156f675de42283c74bc2a0088d710098758e"
+      "sha256": "7bc378519b481844cc4eacf075f2cddb653e4f3971d30c9e1ada523a7f677317"
     }
   ],
   "metadata_identifier": "urn:example:health:fixture",
@@ -83,5 +83,5 @@
   "rights_gate": "requires_pinned_resource_contract",
   "schema_version": "archive-govt-nz.health-hf-candidate/v2",
   "source_disposition_gate": "passed",
-  "version": "fixture-v1"
+  "version": "1.0.0"
 }

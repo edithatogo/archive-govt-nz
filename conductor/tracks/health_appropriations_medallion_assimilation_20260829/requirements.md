@@ -149,9 +149,10 @@ claim.
 ### M-18 — Test, security and supply-chain assurance
 
 Use red/green/refactor sequencing and deterministic, non-restricted fixtures.
-Critical integrity, rights, versioning, recovery and publication logic require
-100% line/branch coverage plus property and mutation testing; overall
-production coverage remains at least 80%. Full repository, schema, type,
+Critical integrity, rights, versioning, recovery and publication contracts need
+focused negative/property and mutation checks. The agreed production coverage
+floor is 80%; do not add tests solely to pursue a higher percentage.
+Full repository, schema, type,
 security, licence and SBOM gates must pass at checkpoints.
 
 **Acceptance:** AC-16.

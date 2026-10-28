@@ -49,6 +49,21 @@ VOCAB = (
 )
 GENERATED_MEMBERS = BASE_MEMBERS | EXTENDED_MEMBERS
 MAX_RELEASE_MEMBERS = MAX_MEMBERS + len(GENERATED_MEMBERS)
+# Exact representation descriptors only; payload values are never cast.
+_CROISSANT_TYPES = {
+    **{
+        f"{sign}int{bits}": "cr:" + ("U" if sign else "") + "Int" + str(bits)
+        for sign in ("", "u")
+        for bits in (8, 16, 32, 64)
+    },
+    "bool": "sc:Boolean",
+    "string": "sc:Text",
+    "large_string": "sc:Text",
+    "halffloat": "cr:Float16",
+    "float": "cr:Float32",
+    "double": "cr:Float64",
+}
+
 _SCHEMA = json.loads(
     files(__package__).joinpath("metadata-release-contract-v1.schema.json").read_text()
 )
@@ -163,7 +178,7 @@ def _apply_facts(
             ]
     complete = all(facts[k] is not None for k in ("url", "date_published", "creators"))
     if complete:
-        croissant["dct:conformsTo"] = {"@id": "http://mlcommons.org/croissant/1.0"}
+        croissant["dct:conformsTo"] = "http://mlcommons.org/croissant/1.0"
         descriptor = next(
             n for n in crate["@graph"] if n["@id"] == "ro-crate-metadata.json"
         )
@@ -211,7 +226,6 @@ def _staged_references(
 ) -> None:
     croissant["@context"]["contentUrl"] = {
         "@id": "https://schema.org/contentUrl",
-        "@type": "@id",
     }
     for node in croissant["distribution"]:
         node["contentUrl"] = "../" + rights[node["@id"]]["path"]
@@ -276,6 +290,14 @@ def _profile_graphs(
     croissant["@context"]["@vocab"] = "https://schema.org/"
     croissant["@context"]["sc"] = "https://schema.org/"
     _apply_facts(croissant, crate, facts)
+    for record in croissant["cr:recordSet"]:
+        for field in record["cr:field"]:
+            physical = field["hag:arrowType"]
+            if physical in _CROISSANT_TYPES:
+                field["cr:dataType"] = {"@id": _CROISSANT_TYPES[physical]}
+            else:
+                croissant.pop("dct:conformsTo", None)
+
     for document in (croissant, crate, dcat, prov):
         document["@context"] = {
             **document["@context"],
@@ -364,6 +386,7 @@ def project_release_metadata(
         {
             "schema_version": VERSION,
             "rights": "per_resource_assertions_only",
+            "ml_loading": "not_qualified_no_data_loading_performed",
             "release_readiness": "requires_pinned_contract_verification",
             "fact_gaps": [
                 k for k in ("url", "date_published", "creators") if facts[k] is None
@@ -386,6 +409,17 @@ def project_release_metadata(
     report["ro_crate"]["missing_root_properties"] = (
         ["datePublished"] if facts["date_published"] is None else []
     )
+
+    report["unsupported_croissant_arrow_types"] = sorted(
+        {
+            f["type"]
+            for table in tables
+            for f in table["fields"]
+            if f["type"] not in _CROISSANT_TYPES
+        }
+    )
+    if report["unsupported_croissant_arrow_types"]:
+        report["croissant"]["missing_dataset_properties"].append("supported_dataType")
     report["croissant"]["missing_content_urls"] = 0
     report["payload_staging"] = "verified_local_candidate_members"
     report["ro_crate"]["descriptor_conformance_assertion"] = (
@@ -532,6 +566,11 @@ def _verify(
         "metadata_fact_missing:" + k
         for k in ("url", "date_published", "creators")
         if facts[k] is None
+    )
+    profile = json.loads(expected["metadata/profile-validation.json"])
+    blockers.extend(
+        "croissant_type_unsupported:" + name
+        for name in profile["unsupported_croissant_arrow_types"]
     )
     if contract["facts_evidence_sha256"] is None:
         blockers.append("metadata_fact_evidence_missing")

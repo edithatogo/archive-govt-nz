@@ -21,8 +21,10 @@ The local profile uses Croissant 1.0, RO-Crate 1.1, DCAT 3 and entity-only PROV-
 Its exact generated documents are reconstructed from observed inputs and explicit
 facts. Croissant FileObject content references resolve to included local members;
 they do not assert a hosted download endpoint. Field sources retain exact column
-names and Arrow physical types. Custom Arrow type identifiers are not a qualified
-ML-loader cast. RO-Crate uses an embedded context subset, flattened contextual
+names and Arrow physical types. Explicit primitive Arrow-to-Croissant representation descriptors retain the
+physical type separately and never cast payload values. Unsupported physical
+types retain their custom identifier and block profile readiness; ML loading
+requires separate proof. RO-Crate uses an embedded context subset, flattened contextual
 entities, relative member identifiers and resource-scoped rights.
 
 Administrative generated metadata is covered by the manifest and detached rights

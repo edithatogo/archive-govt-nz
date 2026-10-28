@@ -1,0 +1,13 @@
+{
+  "derivative_rights": "not_evaluated",
+  "fields": 1,
+  "full_conformance": "not_asserted",
+  "manifest_sha256": "27199c814c8bfc036bb602c8e8f6b0ca8a8d828e8c4494fb8e2ce76cbf82e4be",
+  "metadata_files_verified": 7,
+  "payload_members_verified": 9,
+  "publication_approval": "not_granted",
+  "recordsets": 1,
+  "release_readiness": "blocked",
+  "schema_version": "archive-govt-nz.health-candidate-metadata-verification/v1",
+  "status": "verified_inventory_metadata"
+}

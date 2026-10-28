@@ -1,5 +1,5 @@
 {
-  "candidate_manifest_sha256": "086a6a67e4f0d8b513066788f5cda6f90ee3601f516aad90843c20acbf1265f6",
+  "candidate_manifest_sha256": "95653fa8818b8d8b2aa08c047b97af4dc0a8ccf672de3acd72b11045cbba9061",
   "facts": {
     "creators": [
       {
@@ -11,18 +11,19 @@
     "date_published": "2026-01-01",
     "description": "Synthetic source assertions; no real publication is performed.",
     "identifier": "urn:example:health:fixture",
-    "name": "Fictional Health metadata fixture",
+    "name": "fictional-health-metadata-fixture",
     "url": "https://example.test/dataset",
-    "version": "fixture-v1"
+    "version": "1.0.0"
   },
   "facts_evidence_sha256": "09c7845f3bf8a948c05d53bd209f0ec12651b02c8a3fb24f76c83ebfbf70d7f9",
+  "intended_use": "candidate_redistribution_review",
   "resources": [
     {
       "attribution": "Fictional reviewed holder",
       "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
       "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
       "path": "MANIFEST.json",
-      "payload_sha256": "086a6a67e4f0d8b513066788f5cda6f90ee3601f516aad90843c20acbf1265f6",
+      "payload_sha256": "95653fa8818b8d8b2aa08c047b97af4dc0a8ccf672de3acd72b11045cbba9061",
       "state": "eligible_asserted"
     },
     {
@@ -30,7 +31,7 @@
       "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
       "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
       "path": "README.md",
-      "payload_sha256": "72fa6bcb3e7adbacf4dfb876bdd4472677a40e5b043d19db2662fd533edae0db",
+      "payload_sha256": "419950731cb60e7ebc64e2249ff6f6335c6a174a823b80ddbae485db0c16721a",
       "state": "eligible_asserted"
     },
     {
@@ -46,7 +47,7 @@
       "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
       "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
       "path": "metadata/catalogue.json",
-      "payload_sha256": "1eee9bf74311f8e884225a5c5383845997ff742b19465c37415c3e42125ad953",
+      "payload_sha256": "81625b48ee4cca8c2cdea36956075d85a923a6a3439e51c8989c7aa79af26d06",
       "state": "eligible_asserted"
     },
     {
@@ -54,7 +55,7 @@
       "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
       "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
       "path": "metadata/changelog.json",
-      "payload_sha256": "99501388beb38e10d8621f59187266406649bbcb6ccb28987a73e52d4776256f",
+      "payload_sha256": "7ffbbbb1312b39ae8b531f78a9fa15e917b38e9bc558c24120966f45b3fba5d4",
       "state": "eligible_asserted"
     },
     {
@@ -62,7 +63,7 @@
       "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
       "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
       "path": "metadata/citations.json",
-      "payload_sha256": "bca8372e7a08d16d89dd26ea7453ddab002ae90cfeeb515680ea0bb2b445471d",
+      "payload_sha256": "32c2d733a1a86ea5e62c699d4ca6cf5ec67d03b6bcf8a1da871271e57da7a51b",
       "state": "eligible_asserted"
     },
     {
@@ -70,7 +71,7 @@
       "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
       "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
       "path": "metadata/croissant.json",
-      "payload_sha256": "89a86af315b7a02ae04d8937c27a20b4235eb462873fa0311e3e3e04e6b56e10",
+      "payload_sha256": "acfd318c0391bba2700cd13f2ef4ac27ae59a881db8e52aae91f61f53c1d2b19",
       "state": "eligible_asserted"
     },
     {
@@ -78,7 +79,7 @@
       "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
       "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
       "path": "metadata/dcat.json",
-      "payload_sha256": "ac50e8336a02e63aac957a37d7c828a44957d754d3dc18686bf84166ac3dcc49",
+      "payload_sha256": "f054f7b65b25a11318689fdbb39f949f94af453d3bf1a4f5d1df115ea2bc146a",
       "state": "eligible_asserted"
     },
     {
@@ -86,7 +87,7 @@
       "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
       "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
       "path": "metadata/payload-inventory.json",
-      "payload_sha256": "caef3140253b1092d7eb3a02399b8d6731b07054d1abe7987c51302250e069e5",
+      "payload_sha256": "62f4269c4c6f112629401918ebb64e00078de182d229733c312d99d54a6f6c6a",
       "state": "eligible_asserted"
     },
     {
@@ -94,7 +95,7 @@
       "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
       "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
       "path": "metadata/profile-validation.json",
-      "payload_sha256": "62fe555db45f0f91ca41d0e264115e67fabcf44c15bfccf7764aa5c114e4ae61",
+      "payload_sha256": "b6f3ff08d94790179ded9356a67c0ab7addd9bf342b1b727d8f649718eeeb069",
       "state": "eligible_asserted"
     },
     {
@@ -102,7 +103,7 @@
       "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
       "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
       "path": "metadata/prov.json",
-      "payload_sha256": "35a6038ef898318d3ae6699a66ff0c72cf5916627febabac6f020c08fe75edc6",
+      "payload_sha256": "694791970477fb88f448b2b30db09c015e27a0ece4bcb7e1acb047c32befcfc9",
       "state": "eligible_asserted"
     },
     {
@@ -118,7 +119,7 @@
       "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
       "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
       "path": "metadata/schemas.json",
-      "payload_sha256": "aef47f6d96b3ec1b8b7ae2f71f5a395181c4f40dae9ffd771a6280d4c2e142a9",
+      "payload_sha256": "41e1e72da06c8ba862aa04c1ba3a4d0aaa4f9fc40eb0b4d7e4c3c6b0e2d7d132",
       "state": "eligible_asserted"
     },
     {
@@ -134,7 +135,7 @@
       "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
       "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
       "path": "metadata/source_drillthrough.json",
-      "payload_sha256": "ec5b037e76d733f07fb89c7d063694d1c95ced2446ffe2d95e3946292db492bf",
+      "payload_sha256": "b6459823438ed242f7c055bc8351a6a129a9696e26bb8899492939d4ac434174",
       "state": "eligible_asserted"
     },
     {
@@ -142,7 +143,7 @@
       "evidence_sha256": "3ac61730db7a4c548fbe7f9beb44af90a9ce8511c55e858e467e856dfa62b2a2",
       "license_uri": "https://www.apache.org/licenses/LICENSE-2.0",
       "path": "ro-crate-metadata.json",
-      "payload_sha256": "83b8b2f883670e895d9e08e58a8a156f675de42283c74bc2a0088d710098758e",
+      "payload_sha256": "7bc378519b481844cc4eacf075f2cddb653e4f3971d30c9e1ada523a7f677317",
       "state": "eligible_asserted"
     }
   ],
