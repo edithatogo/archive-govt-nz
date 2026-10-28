@@ -136,3 +136,8 @@ Latest local workset20261027T075911Z observed100 entries (page-one anchor, deep 
 - [x] Require the corrected-head local and hosted assurance before merge/native handover.
 
 P7 technical activation is verified in evidence/parliament-assurance/20261028/hosted-execution-acceptance.json. Natural recurrence, full coverage and remaining source/rights gates are separate unfinished parent acceptance.
+
+### P7 scheduled-input review remediation
+
+- [~] Fix cron's absent dispatch input selecting an empty hold-seconds argument; retain first native failure, red/green workflow contract and required corrected-head checks.
+- [ ] Verify corrected scheduled invocation separately from manual production continuation; no natural recurrence claim before native evidence.

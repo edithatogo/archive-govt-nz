@@ -194,3 +194,11 @@ Main subsequently merged unrelated Health PR798 at0fbaaeb4; Parliament productio
 code, workflow and locked runtime inputs are byte-unchanged from the qualified
 head. All four native runs were manual dispatch proofs. Natural trigger/start/end,
 recurrence and source completeness remain separate acceptance; parent stays active.
+
+### P7 scheduled invocation parameter correction
+
+Native job122519908295 (schedule40598353582) retained privately; bounded extraction
+confirmed `--hold-seconds: invalid int value: ''`. Added workflow regression and
+observed its expected red result before changing the expression to the explicit
+string fallback. Full workflow policy tests/actionlint and corrected-head assurance
+follow. Enabled production dispatch40606566606 is manual, not recurrence evidence.
