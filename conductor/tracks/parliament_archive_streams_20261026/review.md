@@ -163,3 +163,11 @@ schedule40598353582 failed argparse before a receipt could be created because
 with a string-zero default. Manual native proof remains valid; natural scheduling
 is not accepted. Manual enabled continuation40606566606 was separately dispatched
 with explicit numeric inputs while this fix passes delivery. No local writer runs.
+
+Continuous-run recovery review: generic unknown-write receipts correctly stop
+progress but cannot distinguish native throttling/conflict from other failures.
+Retain only HTTP status100–599 and an ASCII decimal Retry-After no greater than
+86400seconds. Preserve the existing unknown-outcome reason and single-send
+semantics; URLs, messages, bodies and arbitrary headers remain private. Boundary
+fixtures cover malicious/Unicode/oversized headers and missing/invalid statuses.
+This is diagnostic hardening; it grants no automatic retry or clearance.

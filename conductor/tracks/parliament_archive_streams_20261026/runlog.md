@@ -202,3 +202,21 @@ confirmed `--hold-seconds: invalid int value: ''`. Added workflow regression and
 observed its expected red result before changing the expression to the explicit
 string fallback. Full workflow policy tests/actionlint and corrected-head assurance
 follow. Enabled production dispatch40606566606 is manual, not recurrence evidence.
+
+### P7 first continuous-run checkpoint recovery
+
+PR799 merged01ffe237 after every required check passed. Enabled manual hosted
+run40606566606 published ten additional originals (818total+1metadata-only,
+21verified report batches); an independent verifier freshly checked the manifest,
+all11 unique objects and maintained card at97e904f5a07e25eb82e2ec03b6a939e5d9d7f205.
+It then failed with checkpoint_commit_outcome_unknown; exact recovery verify run
+40608984002 failed with the same sanitized code. Current immutable uploaded
+snapshotafc0ab46c8d49b595125dd4ca2a5dda5b14eb8239c39f44938b71ee46076052d
+retains cycle5 historicalpage82 discovery, zero observed/captured and a4194304-byte
+reservation. No source acquisition may precede recovery. Original failed receipts
+are retained. Do not infer quota, permission or successful commit from that code.
+Added a failing sanitized-diagnostic regression, then bounded HTTP status and
+numeric Retry-After fields; one native mutation attempt only, no response bodies,
+URLs or arbitrary headers. Native operator cold verification uses the existing
+qualified cached SDK credential and no source acquisition. Actions and operator
+bindings remain separate evidence.
