@@ -8,6 +8,7 @@ import json
 import sqlite3
 from contextlib import closing
 from pathlib import Path
+from typing import cast
 
 import pytest
 from tests.domains.health_appropriations.test_cpi import HEADER, META
@@ -195,8 +196,8 @@ def test_invalid_state_and_lock_paths_are_rejected(
     root = tmp_path / "scheduler"
     with pytest.raises(ValueError, match="scheduled_arguments_invalid"):
         scheduled_normalization.run_scheduled_normalization(
-            source_request, root, dry_run=1
-        )  # type: ignore[arg-type]
+            source_request, root, dry_run=cast("bool", 1)
+        )
     root.mkdir()
     (root / ".scheduled-normalization.lock").mkdir()
     with pytest.raises(ValueError, match="scheduled_lock_invalid"):
