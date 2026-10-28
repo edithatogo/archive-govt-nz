@@ -7,6 +7,7 @@ import json
 import logging
 import os
 import sys
+import time
 from contextlib import contextmanager, redirect_stderr, redirect_stdout
 from pathlib import Path
 from tempfile import mkstemp
@@ -19,9 +20,15 @@ from archive_govt_nz.parliament.hosted import (
     validate_enable_proofs,
 )
 from archive_govt_nz.parliament.hosted_checkpoint import Checkpoints
+from archive_govt_nz.parliament.hosted_cooldown import (
+    deferred_failure,
+    is_write_rate_limit,
+    valid_delay,
+)
 from archive_govt_nz.parliament.hosted_holds import approve_access_hold
 from archive_govt_nz.parliament.hosted_state import digest
 from archive_govt_nz.parliament.hosted_transport import (
+    POINTER,
     HostedError,
     NativeTransport,
     abort,
@@ -81,6 +88,15 @@ def private_diagnostics(root: Path) -> Iterator[None]:
 def execute(args: argparse.Namespace) -> dict[str, object]:
     """Perform one selected operation inside the private diagnostic boundary."""
     transport = NativeTransport()
+    head = transport.head()
+    owner = None
+    if transport.exists(POINTER, head):
+        preflight = Checkpoints(transport, args.state_dir)
+        preflight.load()
+        owner = preflight.pointer["owner"]
+    cooldown = transport.write_cooldown(owner)
+    if cooldown is not None:
+        return {**cooldown, "operation": args.operation}
     if args.operation == "bootstrap":
         if args.index is None:
             abort("bootstrap_index_required")
@@ -102,6 +118,7 @@ def execute(args: argparse.Namespace) -> dict[str, object]:
         max_batches=args.max_batches,
         max_seconds=args.max_seconds,
         hold_seconds=args.hold_seconds,
+        transport=transport,
     )
 
 
@@ -161,6 +178,13 @@ def main() -> int:
             if error.retry_after_seconds is not None:
                 result["retry_after_seconds"] = error.retry_after_seconds
         code = 1
+        if (
+            isinstance(error, HostedError)
+            and is_write_rate_limit(error)
+            and valid_delay(error.retry_after_seconds)
+        ):
+            result = deferred_failure(result, time.time())
+            code = 0
     args.receipt.write_text(json.dumps(result, indent=2))
     sys.stdout.write(json.dumps(result) + "\n")
     return code

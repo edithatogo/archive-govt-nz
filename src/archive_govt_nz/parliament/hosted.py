@@ -21,6 +21,7 @@ lazy from pathlib import Path
 import httpx
 
 from archive_govt_nz.parliament.hosted_checkpoint import Checkpoints
+from archive_govt_nz.parliament.hosted_cooldown import is_write_rate_limit
 from archive_govt_nz.parliament.hosted_state import canonical, digest
 from archive_govt_nz.parliament.hosted_transport import (
     POINTER,
@@ -489,6 +490,9 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - finite checkpointed lifecycl
             "checkpoint": manager.pointer["checkpoint"],
         }
     manager.load()
+    cooldown = manager.transport.write_cooldown(manager.pointer["owner"])
+    if cooldown is not None:
+        return cooldown
     previous_terminal_owner = manager.pointer["owner"]
     if previous_terminal_owner is not None and not terminal_owner(
         previous_terminal_owner
@@ -561,7 +565,10 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - finite checkpointed lifecycl
         # Last acknowledged pointer is authoritative. Never re-save interrupted
         # local state or convert an unknown write outcome to accepted progress.
         raise
-    except Exception:  # noqa: BLE001 - persist pause then re-raise every failure
+    except Exception as error:
+        if is_write_rate_limit(error):
+            manager.write_limited = True
+            raise
         try:
             manager.pointer = manager.current()
             if manager.pointer["owner"] == owner:

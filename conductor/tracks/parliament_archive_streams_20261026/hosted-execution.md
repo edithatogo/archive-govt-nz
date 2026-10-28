@@ -181,3 +181,30 @@ bodies or raw diagnostics. Only exact401/403/404/410/451 evidence qualifies the
 new known-status exclusion; server/integrity/robots/rights failures stay blocked.
 An exclusion never establishes source authentication, rights clearance, complete
 coverage or a successful original capture.
+
+## Native Hub write cooldown recovery
+
+The explicit429 from40639731203 differs from the earlier unknown outcomes: its
+3575-second Retry-After was retained. The source workflow was disabled through
+GitHub while its uploaded checkpoint stayed intact. No new source request or HF
+control mutation is justified during a qualified server window.
+
+Before mutable CLI operations, the runtime reads bounded native trusted-main
+workflow history and exact-attempt sanitized artifacts. An original Hub mutation
+429 supplies the delay; the native terminal timestamp supplies the conservative
+time anchor. Subsequent read-only deferrals reference that immutable origin and
+cannot slide or invent a reset time. Missing/malformed deadlines fail closed.
+GitHub evidence supplies negative write eligibility only; HF public snapshots
+remain authoritative for originals, publication and cursors.
+
+The first429 stops acquisition, suppresses pause/release cleanup writes and
+retains its failed outcome inside a distinct deferred receipt. A green deferral
+is neither archive success nor recurrence acceptance. After expiry, the existing
+fenced owner/checkpoint readback reconciles unknown writes before discovery; no
+mutation is blindly replayed. Publication429 uses the same bounded diagnostics.
+The guard does not waive source errors, restrictions, rights gates or maintained
+README checks, and does not reduce per-original durability acknowledgement.
+
+Native early-window deferral must be distinguished from fixture proof and
+post-deadline native recovery. The original observed window expired before
+candidate delivery; do not manufacture a native early-window acceptance claim.
