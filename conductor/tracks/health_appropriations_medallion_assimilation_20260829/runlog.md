@@ -10325,3 +10325,13 @@ lock, Conductor, format, lint, strict typing, schema and medallion-mutation
 gates. Health snapshot inputs, review pins and output projections are unchanged;
 prior native/recovery evidence remains applicable. Required hosted assurance
 must run again on the integrated head under the unchanged strict branch rule.
+
+## 2026-10-28 — Qualified metadata verification and approved publisher repair
+
+Added a read-only v1/v2/v3 reconstruction verifier and strict receipt schema.
+Focused contracts reject rehashed blanket licences, unreviewed federation and
+unknown packet members. Original inputs and retained metadata remain untouched.
+Prepared a separately gated GitHub Actions checksum-only job under explicit
+maintainer approval; no local upload or collection is authorized. Publication,
+native readback and protected delivery are recorded only after completion.
+See `qualified-metadata-verification-20261028.md` and paired JSON.

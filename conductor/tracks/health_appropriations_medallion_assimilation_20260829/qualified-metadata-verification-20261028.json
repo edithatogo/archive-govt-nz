@@ -1,0 +1,64 @@
+{
+  "status": "implementation_under_validation",
+  "scope": "qualified_headline_metadata_reconstruction_and_approved_checksum_only_correction",
+  "historical_review_sha256": "7d8038095f29b739eb1028e72f8f67d1b9d4192fc86c1c28f61b2f152254720b",
+  "publisher_correction": {
+    "target": "edithatogo/global-medicines-atlas-catalogue",
+    "parent_revision": "117caee3e1cf31d476c6a66a9860963cc35ed0cb",
+    "path": "SHA256SUMS",
+    "approved_sha256": "b0ca284d64824f14e8ddb4a618917dba87114ddac9ea3cf99c4e9b0d3336e00d",
+    "approval": "explicit_maintainer_checksum_only",
+    "publication": "pending_hosted_execution"
+  },
+  "release_readiness": "not_assessed",
+  "full_conformance": "not_asserted",
+  "phase_checkpoint": "open",
+  "native_metadata_verification": {
+    "status": "three_installed_profiles_reconstructed_read_only",
+    "source_and_partner_bytes_unchanged": true,
+    "receipts": [
+      {
+        "schema_version": "archive-govt-nz.qualified-overview-metadata-verification/v1",
+        "status": "verified_reconstruction",
+        "manifest_sha256": "fe1477fe76bdb502e7556e5a35ce90a9ea5a789f20c58dc57833f672a844549f",
+        "metadata_schema_version": "archive-govt-nz.qualified-overview-metadata/v1",
+        "files": 7,
+        "source_profiles": 5,
+        "partner_snapshots": 0,
+        "publisher_checksum_mismatches": null,
+        "scope": "pinned_source_rights_and_metadata_reconstruction_not_release_approval",
+        "publication": "not_performed",
+        "release_readiness": "not_assessed",
+        "full_conformance": "not_asserted"
+      },
+      {
+        "schema_version": "archive-govt-nz.qualified-overview-metadata-verification/v1",
+        "status": "verified_reconstruction",
+        "manifest_sha256": "e170017c529373d9ec19f4e10b12113652207aef2dcd456ef89506f7f00de523",
+        "metadata_schema_version": "archive-govt-nz.qualified-overview-metadata/v2",
+        "files": 12,
+        "source_profiles": 5,
+        "partner_snapshots": 0,
+        "publisher_checksum_mismatches": null,
+        "scope": "pinned_source_rights_and_metadata_reconstruction_not_release_approval",
+        "publication": "not_performed",
+        "release_readiness": "not_assessed",
+        "full_conformance": "not_asserted"
+      },
+      {
+        "schema_version": "archive-govt-nz.qualified-overview-metadata-verification/v1",
+        "status": "verified_reconstruction",
+        "manifest_sha256": "88d5475eea942bf0365c86b86fa8a45c8a73252a7eb3dd528fc9398edda3e8c5",
+        "metadata_schema_version": "archive-govt-nz.qualified-overview-metadata/v3",
+        "files": 13,
+        "source_profiles": 5,
+        "partner_snapshots": 4,
+        "publisher_checksum_mismatches": 1,
+        "scope": "pinned_source_rights_and_metadata_reconstruction_not_release_approval",
+        "publication": "not_performed",
+        "release_readiness": "not_assessed",
+        "full_conformance": "not_asserted"
+      }
+    ]
+  }
+}
