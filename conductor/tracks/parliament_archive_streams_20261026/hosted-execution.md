@@ -127,3 +127,22 @@ requirements. Failed source records remain held; resume does not requeue them.
 An unknown first bootstrap-pointer outcome may resume only from the matching
 frozen SSD marker. Use fresh hosted restore directories; never reuse a populated
 restore target or delete the authoritative SSD history.
+
+## Delivered runtime and recovery,28October2026
+
+Implementation/runtime fixes merged through PR795,797,799 and800 after green
+required checks. Native cold verification, exact checkpoint-linked cancellation
+recovery and real payload publication qualified activation. The original SSD
+state remains frozen; the public hosted pointer is authoritative. Current runtime
+f9f65812 adds bounded HTTP recovery hints without changing one-send semantics.
+
+The first continuous dispatch published ten more report originals before an
+unknown checkpoint-write outcome. Original failure evidence remains retained;
+its precise native HTTP cause is not certified. The exact uploaded checkpoint
+was reconciled after a terminal local verification/network interruption, using
+its same still-owned identity without takeover, renewal or source acquisition.
+Native Actions recovery40620940956 then closed the exact interrupted work with
+its full conservative budget and verified a successor checkpoint. At that proof:
+818originals+1metadata-only,21verified batches,0pending/failed. Continuous dispatch
+40621708833 resumes bounded work. Native receipts remain authoritative; these
+manual dispatches do not prove natural recurrence or complete historical coverage.

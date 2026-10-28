@@ -1,0 +1,111 @@
+{
+  "observed_at": "2026-10-28T02:39:37.317996+00:00",
+  "status": "recovered_enabled_continuation_running",
+  "repository": "edithatogo/archive-govt-nz-global",
+  "visibility": "public",
+  "gated": false,
+  "runtime_revision": "f9f65812216e096a615fb55d128d6ed39a7586cf",
+  "qualified_head": "24afe8039923adcf87fd03c142d9d08979dd9aff",
+  "pull_request": 800,
+  "required_hosted_checks": "all_passed",
+  "local_tests_passed": 8618,
+  "local_tests_skipped": 14,
+  "local_all_stages_passed_across_retained_segments": true,
+  "first_failed_native_runs": [
+    40606566606,
+    40608984002
+  ],
+  "first_commit_http_cause": "not_proven",
+  "terminal_local_verifier": "same_identity_accepted_and_released_without_takeover_or_renewal",
+  "unchanged_qualified_refs": 981,
+  "new_unqualified_refs": 0,
+  "native_recovery_run": 40620940956,
+  "native_recovery_execution_kind": "workflow_dispatch",
+  "native_recovery_work": {
+    "bytes": 262144000,
+    "captured": 0,
+    "interrupted": true,
+    "invocation": "gha_40606566606_1",
+    "observed": 0,
+    "partition": "historical",
+    "phase": "publish",
+    "query": {
+      "keyword": "",
+      "page": 82,
+      "page_size": 10
+    },
+    "reserved": 0,
+    "seconds": 900
+  },
+  "native_recovery_summary": {
+    "pending": 0,
+    "captured": 818,
+    "failed": 0,
+    "metadata_only": 1,
+    "published": 21,
+    "last_error": null,
+    "coverage_claim": false
+  },
+  "native_recovery_checkpoint": {
+    "revision": "d429a9067baa697b93a363dd4bf4d3436e1707fd",
+    "sha256": "a9b294df7f19b80a656d5d548a5664a7413fcaa6369c1b4c2b9f92bdbf5a938d",
+    "status": "verified"
+  },
+  "production_continuation_run": 40621708833,
+  "production_continuation_execution_kind": "workflow_dispatch",
+  "maintained_card_sha256": "afa5a09632725f04799700d8ab086d182beff2a1d7dc58db798cccc7d9d6c703",
+  "source_acquisition_during_recovery": false,
+  "no_private_fallback": true,
+  "original_ssd_state_preserved": true,
+  "general_submissions_and_most_advice": "blocked",
+  "selective_author_derivatives_qualified": 8,
+  "natural_recurrence_acceptance": false,
+  "coverage_claim": false,
+  "interruption_accounting": "Full original byte/time allowance conservatively charged; zero source acquisition.",
+  "continuation_observation": {
+    "observed_at": "2026-10-28T02:39:37.317996+00:00",
+    "owner": "gha_40621708833_1",
+    "enabled": true,
+    "paused": null,
+    "checkpoint": {
+      "revision": "817bf60d060fb5b1089efa91d8d3bfaf8fb14367",
+      "sha256": "27957a98880f50c11591015d9d26ac12a038cd1c9ee3c05271c1cc3e5bf49a33",
+      "status": "verified"
+    },
+    "cycle": 7,
+    "work": null,
+    "records": {
+      "captured": 818,
+      "metadata_only": 1
+    },
+    "publications": [
+      {
+        "batch": "626917401502927cdf2e2f25c2fa3a4f595b6efdd250e28d2f61d00df01d788c",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "81e0ae56e58c8e866f0ab9cde6cf3b7fe3052036",
+        "status": "verified"
+      },
+      {
+        "batch": "9a2fd31c0d5d3a920edcd9dbb4aa9d6e542cc7e4348bbc051e13c997d2d482c7",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "97e904f5a07e25eb82e2ec03b6a939e5d9d7f205",
+        "status": "verified"
+      }
+    ],
+    "recurrence_acceptance": false
+  },
+  "natural_fencing_observation": {
+    "run": 40619056595,
+    "event": "schedule",
+    "head": "01ffe23713b726a6ba99f7260c0e4fd57b5fa3b3",
+    "trigger_at": "2026-10-28T02:07:19Z",
+    "run_started_at": "2026-10-28T02:07:19Z",
+    "terminal_updated_at": "2026-10-28T02:07:55Z",
+    "conclusion": "failure",
+    "reason": "parliament_writer_busy",
+    "source_acquisition": false,
+    "recurrence_acceptance": false
+  },
+  "reconciliation_started_at": "2026-10-28T02:36:18.298037+00:00",
+  "reconciled_at": "2026-10-28T02:44:53.527684+00:00"
+}

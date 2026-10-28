@@ -177,3 +177,17 @@ pytest's process and left logging globally disabled. This caused a reproducible
 later structured-logging failure on two hosted platforms. Stub that process-level
 side effect inside the fixture, as existing CLI tests already do; preserve actual
 CLI suppression in production. Ordered red/green pair and27 affected tests passed.
+
+Corrected recovery review: all required checks at24afe803 passed and PR800 merged
+f9f65812. The terminal local verifier was reconciled against its exact failed
+receipt, stopped process, still-owned lease, typed snapshot and unchanged object
+references. Same-identity acceptance/release and anonymous pinned readback passed;
+no owner takeover, lease renewal, source acquisition or blind publication retry.
+The original native commit failures remain unknown outcomes, not evidence of a
+specific quota or permission denial. Actions recovery is checked separately.
+
+Native current-runtime recovery40620940956 passed: exact interrupted invocation,
+full conservative old budget, zero acquisition/publication, no pending/failed
+records and a verified successor checkpoint. Every required hosted check passed
+before runtime merge. Continuous dispatch40621708833 is distinct from natural
+recurrence; the unfinished parent retains coverage, recurrence and rights gates.
