@@ -10335,3 +10335,11 @@ Prepared a separately gated GitHub Actions checksum-only job under explicit
 maintainer approval; no local upload or collection is authorized. Publication,
 native readback and protected delivery are recorded only after completion.
 See `qualified-metadata-verification-20261028.md` and paired JSON.
+
+Local validation completed: 8,619 passed, 14 skipped, 96.53% coverage with the
+80% floor unchanged; all schemas, parity, mutation, hygiene, benchmark and
+supply-chain gates pass. Preserved transient connectivity failures and resumed
+only the SBOM after the interruption. PRs #799/#800 integrated with 9/14
+affected contracts passing. Hosted read-only inspection 40614016612 passed
+and retained the exact approved digest; harvesting/publication were skipped.
+Protected checks and the separately approved checksum write remain pending.

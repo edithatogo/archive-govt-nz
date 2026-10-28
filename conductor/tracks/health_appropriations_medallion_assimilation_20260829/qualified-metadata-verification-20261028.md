@@ -41,3 +41,16 @@ approval/check guards, parent-bound single-send behavior, uncertain responses,
 and workflow side-effect separation. Native verification reconstructs all three
 installed versions without changing sources or metadata. The final harness and
 exact-head protected Actions remain required before delivery.
+
+Local assurance passed with 8,619 tests, 14 skips, 96.53% coverage against the
+unchanged 80% floor, 86 schemas / 76 fixtures, parity 9/9, all mutation lanes,
+hygiene, CAS benchmark, dependency audit, licence inventory, secret scan and
+validated 118-component SBOM. A connection outage affected the audit; its
+existing bounded read-only attempt completed after connectivity recovered.
+The interruption after secret scanning required only the remaining SBOM stage.
+Integrated PRs #799 and #800 with nine and fourteen affected tests respectively;
+unchanged full-suite evidence is retained and final hosted assurance is required.
+
+Hosted read-only inspection run 40614016612 at `d95352db` passed, retained the
+approved correction bytes and skipped the entire harvest/publication job.
+This qualifies preparation on the Python 3.15.1 runner, not a publisher write.

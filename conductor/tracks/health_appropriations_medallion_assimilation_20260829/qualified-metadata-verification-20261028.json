@@ -1,5 +1,5 @@
 {
-  "status": "implementation_under_validation",
+  "status": "local_qualified_awaiting_protected_delivery",
   "scope": "qualified_headline_metadata_reconstruction_and_approved_checksum_only_correction",
   "historical_review_sha256": "7d8038095f29b739eb1028e72f8f67d1b9d4192fc86c1c28f61b2f152254720b",
   "publisher_correction": {
@@ -60,5 +60,35 @@
         "full_conformance": "not_asserted"
       }
     ]
+  },
+  "hosted_inspection": {
+    "run_id": 40614016612,
+    "head_revision": "d95352dbb68874fb7076c964be46c981cedd7283",
+    "conclusion": "success",
+    "harvest_job": "skipped",
+    "publication": "not_performed",
+    "prepared_sha256": "b0ca284d64824f14e8ddb4a618917dba87114ddac9ea3cf99c4e9b0d3336e00d"
+  },
+  "validation": {
+    "python": "3.15.1",
+    "full_suite": {
+      "passed": 8619,
+      "skipped": 14,
+      "coverage_percent": 96.53,
+      "coverage_floor_percent": 80
+    },
+    "schema_documents": 76,
+    "schemas": 86,
+    "parity": "9/9",
+    "mutation_lanes": "passed",
+    "dependency_audit": "passed_after_network_recovery",
+    "licenses": "passed",
+    "secrets": "passed",
+    "sbom_components": 118,
+    "sbom": "validated",
+    "main_799_affected_tests": 9,
+    "main_800_affected_tests": 14,
+    "continuation": "interrupted_after_secret_scan_resumed_sbom_only",
+    "protected_actions": "pending"
   }
 }
