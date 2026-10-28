@@ -1,0 +1,14 @@
+{
+  "schema_version": "archive-govt-nz.qualified-overview-metadata-verification/v1",
+  "status": "verified_reconstruction",
+  "scope": "pinned_source_rights_and_metadata_reconstruction_not_release_approval",
+  "publication": "not_performed",
+  "release_readiness": "not_assessed",
+  "full_conformance": "not_asserted",
+  "manifest_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "metadata_schema_version": "archive-govt-nz.qualified-overview-metadata/v3",
+  "files": 13,
+  "source_profiles": 5,
+  "partner_snapshots": 4,
+  "publisher_checksum_mismatches": 1
+}

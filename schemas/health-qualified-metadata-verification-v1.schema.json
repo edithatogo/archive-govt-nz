@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-qualified-metadata-verification-v1.schema.json",
+  "title": "Read-only qualified metadata reconstruction evidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "manifest_sha256",
+    "metadata_schema_version",
+    "files",
+    "source_profiles",
+    "partner_snapshots",
+    "publisher_checksum_mismatches",
+    "scope",
+    "publication",
+    "release_readiness",
+    "full_conformance"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.qualified-overview-metadata-verification/v1"
+    },
+    "status": {
+      "const": "verified_reconstruction"
+    },
+    "manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "metadata_schema_version": {
+      "enum": [
+        "archive-govt-nz.qualified-overview-metadata/v1",
+        "archive-govt-nz.qualified-overview-metadata/v2",
+        "archive-govt-nz.qualified-overview-metadata/v3"
+      ]
+    },
+    "files": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "source_profiles": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "partner_snapshots": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "publisher_checksum_mismatches": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "scope": {
+      "const": "pinned_source_rights_and_metadata_reconstruction_not_release_approval"
+    },
+    "publication": {
+      "const": "not_performed"
+    },
+    "release_readiness": {
+      "const": "not_assessed"
+    },
+    "full_conformance": {
+      "const": "not_asserted"
+    }
+  }
+}

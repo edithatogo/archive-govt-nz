@@ -5,6 +5,17 @@ on:
     - cron: "0 4 * * 0"
   workflow_dispatch:
     inputs:
+      operation:
+        description: "Harvest or the separately approved metadata-only checksum correction"
+        required: true
+        default: harvest
+        type: choice
+        options: [harvest, checksum-inspect, checksum-publish, checksum-verify, checksum-qualify]
+      approved_checksum_sha256:
+        description: "Explicit approved corrected SHA256SUMS digest; publication only"
+        required: false
+        default: ""
+        type: string
       hf_repo_id:
         description: "Hugging Face dataset repository ID"
         required: false
@@ -40,6 +51,7 @@ concurrency:
 
 jobs:
   harvest-and-publish:
+    if: github.event_name != 'workflow_dispatch' || inputs.operation == 'harvest'
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
@@ -117,3 +129,57 @@ jobs:
           path: evidence/
           retention-days: 90
           if-no-files-found: error
+
+  checksum-correction:
+    if: github.event_name == 'workflow_dispatch' && startsWith(inputs.operation, 'checksum-')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      checks: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.15.1"
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e
+        with:
+          version: "0.13.5"
+      - name: Qualify locked environment
+        run: |
+          uv sync --locked --no-dev --python 3.15.1
+          .venv/bin/python -c 'import sys; assert sys.version_info[:3] == (3, 15, 1)'
+      - name: Prepare frozen-parent intent without credentials
+        if: inputs.operation != 'checksum-verify' && inputs.operation != 'checksum-qualify'
+        run: .venv/bin/python tools/health_partner_checksum.py prepare --output checksum-evidence
+      - name: Retain correction intent before any mutation
+        if: inputs.operation != 'checksum-verify' && inputs.operation != 'checksum-qualify'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: medicines-checksum-intent-${{ github.run_id }}
+          path: checksum-evidence/
+          if-no-files-found: error
+          retention-days: 90
+      - name: Qualify only the existing target permission metadata
+        if: inputs.operation == 'checksum-qualify'
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: .venv/bin/python tools/health_partner_checksum.py qualify --output checksum-evidence
+      - name: Apply the explicitly approved checksum correction once
+        if: inputs.operation == 'checksum-publish'
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
+          APPROVED_SHA256: ${{ inputs.approved_checksum_sha256 }}
+        run: .venv/bin/python tools/health_partner_checksum.py publish --output checksum-evidence --approved-sha256 "$APPROVED_SHA256"
+      - name: Verify public metadata and all unchanged file identities
+        if: inputs.operation == 'checksum-verify'
+        run: .venv/bin/python tools/health_partner_checksum.py verify --output checksum-evidence
+      - name: Retain sanitized correction evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: medicines-checksum-receipt-${{ github.run_id }}
+          path: checksum-evidence/
+          if-no-files-found: error
+          retention-days: 90

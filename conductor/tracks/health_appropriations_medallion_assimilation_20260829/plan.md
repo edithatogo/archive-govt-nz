@@ -1450,6 +1450,13 @@ deliberately exercise version handling.
 
 ### 7.1 Metadata and rights contracts first
 
+- [x] Add read-only reconstruction for qualified v1/v2/v3 metadata packets;
+  require closed inventory and exact source/rights/partner-bound bytes, reject
+  self-rehashed licensing/federation claims and retain explicit release limits.
+  See `qualified-metadata-verification-20261028.md`. Hosted correction and final
+  assurance are separately evidenced; broader metadata contracts remain open.
+  [M-04, M-14, M-17, M-18; AC-04, AC-14, AC-16]
+
 - [x] Project the five qualified headline rights records into resource-scoped
   DCAT, Croissant, RO-Crate and entity-only PROV; reconstruct pinned inputs,
   reject forged grants, verify ten licensed data resources per graph and repeat
