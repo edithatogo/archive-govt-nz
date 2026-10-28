@@ -1676,8 +1676,15 @@ deliberately exercise version handling.
   The targeted 2026-10-28 audit passed 820 tests/10 capability skips across
   existing operation, CLI, MCP, capture, resume, rebuild, and scheduled-policy
   suites. It does not close this matrix: scheduled capture/normalization and
-  an integrated capture-inventory reconciliation command remain unimplemented.
+  the remaining command and recovery contracts are still incomplete.
   See `phase8-command-contract-audit-20261028.md`.
+- [x] Expose a read-only capture-inventory reconciliation through CLI and MCP,
+  requiring named, bounded SHA-256-pinned census, capture and request inputs.
+  Return recorded counts and evidence pins without source URLs; source fixity,
+  rights, normalization and publication remain unassessed. Reuse the retained
+  capture inventory builder with explicit row and request-matching work limits.
+  See `phase8-capture-inventory-operation-20261029.md` for validation and
+  delivery boundaries. [M-15; AC-13]
 - [x] Expose a bounded read-only CLI and MCP operation for reconciling
   hash-pinned source census, workbook/PDF layout baseline and recheck reports.
   Return only the compact summary, source identities, reason-coded gaps and
