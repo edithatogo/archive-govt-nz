@@ -10,6 +10,8 @@ from typing import TYPE_CHECKING
 import pytest
 
 from archive_govt_nz.capture import CaptureResult
+from archive_govt_nz.cli import app
+from archive_govt_nz.mcp_server import call_tool, list_tools
 from archive_govt_nz.warc import write_response_record
 
 if TYPE_CHECKING:
@@ -140,3 +142,36 @@ async def test_capture_and_replay_preserve_originals_without_second_fetch(
     assert first == second
     assert (output / "manifest.json").read_bytes() == before
     assert len(calls) == 1
+
+
+def test_cli_mcp_preflight_match_runner_and_reject_tampering(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    plan, digest = make_plan(tmp_path)
+    command = [
+        "health-appropriations-preflight-capture-plan",
+        "--plan",
+        str(plan),
+        "--plan-sha256",
+        digest,
+    ]
+    assert app(command, exit_on_error=False, result_action="return_value") == 0
+    cli_result = json.loads(capsys.readouterr().out)
+    tool = "health_appropriations_preflight_capture_plan"
+    definition = next(item for item in list_tools() if item["name"] == tool)
+    assert definition["annotations"]["readOnlyHint"] is True
+    assert call_tool(tool, {"plan": str(plan), "plan_sha256": digest}) == cli_result
+    assert cli_result["selected"] == 1
+    assert str(tmp_path) not in json.dumps(cli_result)
+    assert sorted(path.name for path in tmp_path.iterdir()) == [
+        "census.json",
+        "plan.json",
+    ]
+    (tmp_path / "census.json").write_text("{}")
+    assert app(command, exit_on_error=False, result_action="return_value") == 2
+    assert json.loads(capsys.readouterr().out) == {
+        "status": "failed",
+        "error": "capture_plan_invalid",
+    }
+    with pytest.raises(ValueError, match="input_digest_mismatch"):
+        call_tool(tool, {"plan": str(plan), "plan_sha256": digest})

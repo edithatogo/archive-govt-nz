@@ -22,6 +22,7 @@ from archive_govt_nz.domains.health_appropriations import (
 )
 from archive_govt_nz.domains.health_appropriations import (
     capture_inventory_operations,
+    capture_schedule,
     gold_metadata,
     normalization_schedule,
     operation_context_gold,
@@ -117,6 +118,7 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
     native_inspection.MCP_TOOL,
     source_layout_operations.MCP_TOOL,
     capture_inventory_operations.MCP_TOOL,
+    capture_schedule.MCP_TOOL,
     normalization_schedule.MCP_TOOL,
     {
         "name": "health_appropriations_preflight_context_gold",
@@ -1159,8 +1161,10 @@ def _archive_status(arguments: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def _health_read_only_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:  # noqa: C901 - explicit read-only operation dispatch
-    if name == "health_appropriations_preflight_normalization_plan":
+def _health_read_only_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:  # noqa: C901, PLR0912 - explicit read-only operation dispatch
+    if name == "health_appropriations_preflight_capture_plan":
+        result = capture_schedule.mcp_preflight(args)
+    elif name == "health_appropriations_preflight_normalization_plan":
         result = normalization_schedule.mcp_preflight(args)
     elif name == "health_appropriations_reconcile_capture_inventory":
         result = capture_inventory_operations.reconcile_capture_inventory(args)
@@ -1303,6 +1307,7 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
         "health_appropriations_reconcile_source_layout",
         "health_appropriations_reconcile_capture_inventory",
         "health_appropriations_preflight_normalization_plan",
+        "health_appropriations_preflight_capture_plan",
         "health_appropriations_preflight_context_gold",
         "health_appropriations_preflight_source",
         "health_appropriations_verify_budget",
