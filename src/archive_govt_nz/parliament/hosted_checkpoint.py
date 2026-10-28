@@ -5,6 +5,7 @@ from __future__ import annotations
 import gzip
 import json
 import os
+import re
 import shutil
 import time
 import zlib
@@ -30,6 +31,29 @@ lazy from archive_govt_nz.parliament.pipeline import ParliamentArchive
 
 SPOOL = 8589934592
 HEADROOM = 1048576000
+
+
+def read_pinned_snapshot(
+    transport: NativeTransport, revision: str, sha: str
+) -> dict[str, Any]:
+    """Read a bounded immutable snapshot without claiming an owner or writing."""
+    if not re.fullmatch(r"[0-9a-f]{40}", revision) or not re.fullmatch(
+        r"[0-9a-f]{64}", sha
+    ):
+        abort("checkpoint_reference")
+    compressed = transport.read(
+        "parliament/checkpoints/" + sha[:2] + "/" + sha + ".json.gz",
+        revision,
+    )
+    if digest(compressed) != sha:
+        abort("checkpoint_snapshot_integrity")
+    decoder = zlib.decompressobj(16 + zlib.MAX_WBITS)
+    raw = decoder.decompress(compressed, 64 * 1024 * 1024 + 1)
+    if len(raw) > 64 * 1024 * 1024 or not decoder.eof or decoder.unused_data:
+        abort("checkpoint_snapshot_bound")
+    state = json.loads(raw)
+    validate_state(state)
+    return state
 
 
 class RestorableStore(ContentAddressedStore):
@@ -126,22 +150,9 @@ class Checkpoints:
             abort("checkpoint_missing")
         self.state_revision = ref["revision"] or self.parent
         self.state_digest = ref["sha256"]
-        compressed = self.transport.read(
-            "parliament/checkpoints/"
-            + ref["sha256"][:2]
-            + "/"
-            + ref["sha256"]
-            + ".json.gz",
-            self.state_revision,
+        self.state = read_pinned_snapshot(
+            self.transport, self.state_revision, ref["sha256"]
         )
-        if digest(compressed) != ref["sha256"]:
-            abort("checkpoint_snapshot_integrity")
-        decoder = zlib.decompressobj(16 + zlib.MAX_WBITS)
-        raw = decoder.decompress(compressed, 64 * 1024 * 1024 + 1)
-        if len(raw) > 64 * 1024 * 1024 or not decoder.eof or decoder.unused_data:
-            abort("checkpoint_snapshot_bound")
-        self.state = json.loads(raw)
-        validate_state(self.state)
         self.refs = {
             h: {**r, "revision": r["revision"] or self.state_revision}
             for h, r in self.state["objects"].items()
@@ -149,9 +160,20 @@ class Checkpoints:
         self.work = self.state["work"]
         self.cycle = self.state["cycle"]
 
-    def claim(self, owner: str, *, previous_terminal_owner: str | None = None) -> None:
+    def claim(
+        self,
+        owner: str,
+        *,
+        previous_terminal_owner: str | None = None,
+        expected_generation: int | None = None,
+    ) -> None:
         """Claim a free/expired owner or one proved terminal by GitHub readback."""
         self.pointer = self.current()
+        if (
+            expected_generation is not None
+            and self.pointer["generation"] != expected_generation
+        ):
+            abort("checkpoint_generation_changed")
         if (
             self.pointer["owner"]
             and self.pointer["owner"] != owner

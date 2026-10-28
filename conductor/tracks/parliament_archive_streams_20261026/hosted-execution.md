@@ -146,3 +146,38 @@ its full conservative budget and verified a successor checkpoint. At that proof:
 818originals+1metadata-only,21verified batches,0pending/failed. Continuous dispatch
 40621708833 resumes bounded work. Native receipts remain authoritative; these
 manual dispatches do not prove natural recurrence or complete historical coverage.
+
+## Reviewed source-access isolation
+
+A single terminal attachment response must not silently become archive success,
+receive a blind retry, or indefinitely block other eligible originals. A manual
+trusted-main hold operation may use one exact immutable failure snapshot and its
+native failed workflow receipt. Current report metadata must still match. The
+operation makes no Parliament request and grants no publication or reuse right.
+A bounded own-metadata proof is retained through the existing CAS/event index.
+
+The driver keeps that report failed and explicitly counts the reviewed exclusion.
+It blocks the same source URL even when surrounding metadata refreshes. Other
+unreviewed failures continue to stop the lane. A different attachment is not
+covered by the previous hold; a mixed attachment set containing the held URL
+requires further review. Original failures and missing-original coverage remain
+visible. Publication recovery precedes hold approval and further acquisition.
+
+New hold/HTTP-diagnostic semantics use typed snapshot `parliament-hosted-state/v2`.
+The current reader accepts originalv1 history; older unaware writers rejectv2
+before claiming ownership. Hold proofs are bounded own-metadata objects in the
+report-only index, never arbitrary CAS or source evidence. Existing candidate
+source-evidence validation remains separate from this new object class.
+
+Approval requires a quiescent paused verified checkpoint and no outstanding
+publication. It binds the current exact record, immutable failure snapshot,
+original native run/attempt, sanitized artifact and failure timestamp. A
+generation-bound claim rejects an intervening control change; approval preserves
+the pause. Repeating the same accepted hold verifies its pinned proof read-only.
+
+Legacyv1 failures retain an explicitly unknown HTTP code. Newly captured terminal
+responses retain only numeric HTTP status and record/URL hashes, without response
+bodies or raw diagnostics. Only exact401/403/404/410/451 evidence qualifies the
+new known-status exclusion; server/integrity/robots/rights failures stay blocked.
+An exclusion never establishes source authentication, rights clearance, complete
+coverage or a successful original capture.

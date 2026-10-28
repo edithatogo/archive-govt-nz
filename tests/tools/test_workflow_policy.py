@@ -204,6 +204,13 @@ def test_parliament_handover_requires_trusted_serial_execution() -> None:
     assert "${{ inputs." not in continuation["run"]
     assert '"$OPERATION"' in continuation["run"]
     assert '--max-batches "$MAX_BATCHES"' in continuation["run"]
+    for option, variable in (
+        ("hold-source-id", "HOLD_SOURCE_ID"),
+        ("failed-run", "FAILED_RUN"),
+        ("failure-sha", "FAILURE_SHA"),
+        ("failure-revision", "FAILURE_REVISION"),
+    ):
+        assert "--" + option + ' "$' + variable + '"' in continuation["run"]
     assert job["env"]["HF_HUB_DISABLE_XET"] == "1"
 
 

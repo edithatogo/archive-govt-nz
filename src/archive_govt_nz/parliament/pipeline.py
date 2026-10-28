@@ -37,6 +37,7 @@ from archive_govt_nz.parliament.discovery import (
     safe_url,
 )
 from archive_govt_nz.parliament.lease import file_lock
+from archive_govt_nz.parliament.report_holds import record_http_failure
 from archive_govt_nz.parliament.reports import (
     DEFAULT_PAGE_SIZE,
     ENDPOINT,
@@ -643,7 +644,7 @@ class ParliamentArchive:
                 if remaining <= 0 or used >= bounds.max_bytes or space <= 0:
                     break
                 record = json.loads(item["record"])
-                limit = bounds.max_file_bytes
+                limit, url = bounds.max_file_bytes, ""
                 try:
                     # Keep the source page as context in addition to attachments.
                     # The API supplies report context. Avoid publishing a
@@ -774,6 +775,9 @@ class ParliamentArchive:
                         and limit < bounds.max_file_bytes
                     )
                     with self._connection() as connection:
+                        record_http_failure(
+                            connection, item["source_id"], item["record"], url, error
+                        )
                         connection.execute(
                             "UPDATE records SET status=?,last_error=? "
                             "WHERE source_id=?",
