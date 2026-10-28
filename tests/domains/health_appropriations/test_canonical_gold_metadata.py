@@ -32,6 +32,7 @@ from archive_govt_nz.domains.health_appropriations import gold_metadata as metad
 
 if TYPE_CHECKING:
     from rdflib import Graph
+from tests.health_rights_review_support import RIGHTS_REVIEW
 
 pytest_plugins = ["tests.domains.health_appropriations.test_local_rdf"]
 
@@ -71,6 +72,12 @@ def test_canonical_metadata_uses_full_tables_and_rebuilds_offline(
     assert {p.name: p.read_bytes() for p in output.iterdir()} == {
         p.name: p.read_bytes() for p in repeat.iterdir()
     }
+    assert (
+        RIGHTS_REVIEW.review_graph_claims(
+            {p.name: p.read_bytes() for p in output.iterdir()}, {}
+        )["statements"]
+        == []
+    )
     catalogue = json.loads((output / "catalogue.json").read_bytes())
     package = catalogue["packages"][0]
     assert package["profile"] == "canonical_source_separated"

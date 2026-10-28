@@ -11,6 +11,7 @@ import pyarrow.parquet as pq
 import pytest
 from jsonschema import Draft202012Validator
 from tests.domains.health_appropriations.test_operation_context_gold import _inputs
+from tests.health_rights_review_support import RIGHTS_REVIEW
 
 from archive_govt_nz.domains.health_appropriations import (
     gold_discovery_profiles as discovery,
@@ -31,6 +32,7 @@ def test_operation_gold_metadata_describes_all_tables_and_nullable_source_status
         package, receipt["manifest_sha256"], inputs, source_root
     )
     payloads = metadata.project_gold_metadata((value,))
+    assert RIGHTS_REVIEW.review_graph_claims(payloads, {})["statements"] == []
     profiles = tmp_path / "discovery"
     profile_receipt = discovery.export_profiles((value,), profiles, write=True)
     assert (

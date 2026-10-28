@@ -1,0 +1,297 @@
+{
+  "additional_contract_coverage": [
+    "canonical Gold metadata/v4",
+    "operation-context metadata/v5",
+    "publication/v2 structural assertion-only application"
+  ],
+  "code_review_surfaces": [
+    "overview_rights.py",
+    "qualified_overview_metadata.py",
+    "partner_snapshots.py",
+    "federation_tables.py",
+    "gold_metadata.py",
+    "gold_discovery_profiles.py",
+    "local_dcat.py",
+    "local_prov.py",
+    "local_provenance_reader.py",
+    "candidate_metadata.py",
+    "candidate_readiness.py",
+    "candidate_inventory.py",
+    "metadata_application.py",
+    "tools/build_health_candidate.py"
+  ],
+  "evidence_root": "external_archive/health-appropriations/assurance/rights-review-20261028",
+  "evidence_sha256": {
+    "federation-review.json": "d73ee258b5b089c835d9e744825c3936f74a4f1239e9e1e3451677d4e1788c95",
+    "historical-review.json": "18e42c22f3f52eccfff58f6a2ec4378e4b355ec1407659bf1c8e847ecc0c6abe",
+    "inventory-review.json": "d5b682862caadaec654510889b87a2ba0a79eddc715f7849bf158b029cb3a7c9",
+    "qualified-summary.json": "449ddea50d076a56c03e6aeafaea0bdfbe71b1a66d89a63a15072f1e9e6622ee",
+    "qualified-v1.json": "97087cf0d38b2b39e79091f13d6dabe0fdda7cc30358061d960e52f8c31878ff",
+    "qualified-v2.json": "c5ccb12c7b630e5c83a0d58d2bd454ff0a6eb2673dce2c812558d2c224baea1a",
+    "qualified-v3.json": "1dfb71f41defb585d18595c4c42a4413f3264c32ea841ae45cd71eb773a0c12a",
+    "qualified-v4.json": "03c1966e85581cd9bdcbd2c8bbbf312580df82cdf3b42e04e230982bc182949c"
+  },
+  "federation": {
+    "approved_links": 0,
+    "excluded_pairs": 10,
+    "other_grains": "not_assessed",
+    "partner_records": 174,
+    "positive_join_fields": "all_null",
+    "review_sha256": [
+      "7d8038095f29b739eb1028e72f8f67d1b9d4192fc86c1c28f61b2f152254720b"
+    ],
+    "rights": "not_inherited",
+    "source_records": 5
+  },
+  "fixes": [
+    "legacy_v1_derivative_rights_fail_closed",
+    "original_assertion_scope_explicit",
+    "future_capture_assertions_not_relabelled_verified",
+    "assertion_only_gate_scope_explicit"
+  ],
+  "historical_exceptions": {
+    "2026-08-29-v1": {
+      "disposition": "historical_blanket_scope_unsupported_by_original_only_assertions",
+      "historical_bytes": "unchanged",
+      "manifest_sha256": "171018ea4a803df460bb60a1ae225b371b9b5b7f48b8dbb35945927bbcfeaf8e",
+      "new_release_admission": "blocked_derivative_rights_unqualified",
+      "original_members": 10,
+      "original_rights_assertions": 10,
+      "other_members": 21,
+      "publication_receipts": "unchanged_not_repeated",
+      "readme_license_lines": [
+        "license: cc-by-4.0"
+      ],
+      "reviewed_metadata_sha256": {
+        "README.md": "9173423412118dc1de09268223955af0139ade8eb1639d6a6870a241c38a2d67",
+        "metadata/croissant.json": "dd9d0f3f3df20e1ba0cd692705fd49b3155c9013b06934f1a930dbf5303e039a",
+        "metadata/dcat.json": "31ab385262f1701ff15097ab7363f240118f0e87fe72c61cf68e5f34eb4f5995",
+        "metadata/prov.json": "1e4d3585cc02c5ccd93d74c72f4becd5ba04c12f74de2de465b93e31094b2609",
+        "metadata/rights.json": "35fc5d6f4901d0385a33bda40699ca290e75120a4945b6f529f60c512adf683a",
+        "ro-crate-metadata.json": "d6c9f04b406f3febdc5dd04b74a52c081bd2b998a89b9a2936025569b8f50cb9"
+      },
+      "rights_gate": "passed_for_included_resources"
+    },
+    "2026-08-29-v2": {
+      "disposition": "historical_blanket_scope_unsupported_by_original_only_assertions",
+      "historical_bytes": "unchanged",
+      "manifest_sha256": "bd925bccc044c51f2755ad0e261e851d979e9560ab99f50d6862a7bf55dde1db",
+      "new_release_admission": "blocked_derivative_rights_unqualified",
+      "original_members": 10,
+      "original_rights_assertions": 10,
+      "other_members": 21,
+      "publication_receipts": "unchanged_not_repeated",
+      "readme_license_lines": [
+        "license: cc-by-4.0"
+      ],
+      "reviewed_metadata_sha256": {
+        "README.md": "09088d98e72c95cef627ae4c7c359944becbea339baef74c969a920b1d59f41c",
+        "metadata/croissant.json": "dd9d0f3f3df20e1ba0cd692705fd49b3155c9013b06934f1a930dbf5303e039a",
+        "metadata/dcat.json": "31ab385262f1701ff15097ab7363f240118f0e87fe72c61cf68e5f34eb4f5995",
+        "metadata/prov.json": "1e4d3585cc02c5ccd93d74c72f4becd5ba04c12f74de2de465b93e31094b2609",
+        "metadata/rights.json": "35fc5d6f4901d0385a33bda40699ca290e75120a4945b6f529f60c512adf683a",
+        "ro-crate-metadata.json": "d6c9f04b406f3febdc5dd04b74a52c081bd2b998a89b9a2936025569b8f50cb9"
+      },
+      "rights_gate": "passed_for_included_resources"
+    },
+    "2026-08-29-v3": {
+      "disposition": "historical_blanket_scope_unsupported_by_original_only_assertions",
+      "historical_bytes": "unchanged",
+      "manifest_sha256": "9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e",
+      "new_release_admission": "blocked_derivative_rights_unqualified",
+      "original_members": 73,
+      "original_rights_assertions": 73,
+      "other_members": 21,
+      "publication_receipts": "unchanged_not_repeated",
+      "readme_license_lines": [
+        "license: cc-by-4.0"
+      ],
+      "reviewed_metadata_sha256": {
+        "README.md": "824e8fafd00ad9de63c77b7aaca5b300145238dfa1dcaa5d7ca80b92136f71de",
+        "metadata/croissant.json": "dd9d0f3f3df20e1ba0cd692705fd49b3155c9013b06934f1a930dbf5303e039a",
+        "metadata/dcat.json": "31ab385262f1701ff15097ab7363f240118f0e87fe72c61cf68e5f34eb4f5995",
+        "metadata/prov.json": "ce4172f03988e18c0868fcb588d8df6ca249bce6cc63038a234637abfabec280",
+        "metadata/rights.json": "105fa0d45b40fd1c45f4dbd5b2408330c42cec83816e672b5f432c77850a9d1e",
+        "ro-crate-metadata.json": "39aa3710b7caa55aea14be48e1ac06820a991aaf9167efff98d29a40cb1adced"
+      },
+      "rights_gate": "passed_for_included_resources"
+    },
+    "2026-08-29-v4": {
+      "disposition": "historical_blanket_scope_unsupported_by_original_only_assertions",
+      "historical_bytes": "unchanged",
+      "manifest_sha256": "9a33babda857b0aa7c60a6012000cf1e730fed729781cb8ceb6e7a4714cae40e",
+      "new_release_admission": "blocked_derivative_rights_unqualified",
+      "original_members": 73,
+      "original_rights_assertions": 73,
+      "other_members": 21,
+      "publication_receipts": "unchanged_not_repeated",
+      "readme_license_lines": [
+        "license: cc-by-4.0"
+      ],
+      "reviewed_metadata_sha256": {
+        "README.md": "824e8fafd00ad9de63c77b7aaca5b300145238dfa1dcaa5d7ca80b92136f71de",
+        "metadata/croissant.json": "dd9d0f3f3df20e1ba0cd692705fd49b3155c9013b06934f1a930dbf5303e039a",
+        "metadata/dcat.json": "31ab385262f1701ff15097ab7363f240118f0e87fe72c61cf68e5f34eb4f5995",
+        "metadata/prov.json": "ce4172f03988e18c0868fcb588d8df6ca249bce6cc63038a234637abfabec280",
+        "metadata/rights.json": "105fa0d45b40fd1c45f4dbd5b2408330c42cec83816e672b5f432c77850a9d1e",
+        "ro-crate-metadata.json": "39aa3710b7caa55aea14be48e1ac06820a991aaf9167efff98d29a40cb1adced"
+      },
+      "rights_gate": "passed_for_included_resources"
+    }
+  },
+  "hosted_review_correction": {
+    "affected_tests_passed": 16,
+    "defect": "default_graph_iteration_omitted_named_graphs",
+    "evidence_sha256": "da2c4c39f1d4ba9b6b719308a3fd548c26f4c797b10c53bcff482171a6896dc7",
+    "finding": "https://github.com/edithatogo/archive-govt-nz/pull/808#discussion_r4399160346",
+    "fix": "Dataset_quad_iteration_across_all_graphs",
+    "native_registers_unchanged": true,
+    "negative_regressions": 2,
+    "new_exact_head_hosted_checks": "required_before_merge"
+  },
+  "inventory_packets": {
+    "corrected-candidate-inventory": {
+      "disposition": "original_assertions_only_derivative_rights_not_evaluated",
+      "files": 7,
+      "grant_claims": 0,
+      "graph_documents": 4
+    },
+    "gold-discovery-20261005-v1/first": {
+      "disposition": "not_evaluated_no_grant_or_approved_federation_link",
+      "files": 4,
+      "grant_claims": 0,
+      "graph_documents": 2
+    },
+    "gold-discovery-20261005-v2/first": {
+      "disposition": "not_evaluated_no_grant_or_approved_federation_link",
+      "files": 4,
+      "grant_claims": 0,
+      "graph_documents": 2
+    },
+    "gold-metadata-20261005-v1/first": {
+      "disposition": "not_evaluated_no_grant_or_approved_federation_link",
+      "files": 6,
+      "grant_claims": 0,
+      "graph_documents": 2
+    },
+    "gold-metadata-20261005-v2/first": {
+      "disposition": "not_evaluated_no_grant_or_approved_federation_link",
+      "files": 9,
+      "grant_claims": 0,
+      "graph_documents": 2
+    },
+    "product-financial-metadata-20261028-attempt2/first/discovery": {
+      "disposition": "not_evaluated_no_grant_or_approved_federation_link",
+      "files": 4,
+      "grant_claims": 0,
+      "graph_documents": 2
+    },
+    "product-financial-metadata-20261028-attempt2/first/metadata": {
+      "disposition": "not_evaluated_no_grant_or_approved_federation_link",
+      "files": 9,
+      "grant_claims": 0,
+      "graph_documents": 2
+    },
+    "product-metadata-20261028-attempt2/first/discovery": {
+      "disposition": "not_evaluated_no_grant_or_approved_federation_link",
+      "files": 4,
+      "grant_claims": 0,
+      "graph_documents": 2
+    },
+    "product-metadata-20261028-attempt2/first/metadata": {
+      "disposition": "not_evaluated_no_grant_or_approved_federation_link",
+      "files": 9,
+      "grant_claims": 0,
+      "graph_documents": 2
+    },
+    "product-metadata-integration-20261028/supplemental-discovery-1": {
+      "disposition": "not_evaluated_no_grant_or_approved_federation_link",
+      "files": 4,
+      "grant_claims": 0,
+      "graph_documents": 2
+    },
+    "product-metadata-integration-20261028/supplemental-metadata-1": {
+      "disposition": "not_evaluated_no_grant_or_approved_federation_link",
+      "files": 9,
+      "grant_claims": 0,
+      "graph_documents": 2
+    },
+    "product-reports-metadata-20261028/first/discovery": {
+      "disposition": "not_evaluated_no_grant_or_approved_federation_link",
+      "files": 4,
+      "grant_claims": 0,
+      "graph_documents": 2
+    },
+    "product-reports-metadata-20261028/first/metadata": {
+      "disposition": "not_evaluated_no_grant_or_approved_federation_link",
+      "files": 9,
+      "grant_claims": 0,
+      "graph_documents": 2
+    }
+  },
+  "not_claimed": [
+    "new_source_rights",
+    "metadata_or_federation_redistribution_rights",
+    "positive_links",
+    "full_standards_conformance",
+    "release_approval",
+    "external_publication",
+    "phase7_completion",
+    "unfinished_metadata_contract_prototype_admission"
+  ],
+  "official_evidence_files": 12,
+  "qualified_graph_statements_per_version": 130,
+  "qualified_packets": {
+    "qualified-v1": {
+      "manifest_sha256": "fe1477fe76bdb502e7556e5a35ce90a9ea5a789f20c58dc57833f672a844549f",
+      "members": 6,
+      "resource_count": 10,
+      "source_profiles": 5,
+      "statements": 130
+    },
+    "qualified-v2": {
+      "manifest_sha256": "e170017c529373d9ec19f4e10b12113652207aef2dcd456ef89506f7f00de523",
+      "members": 11,
+      "resource_count": 10,
+      "source_profiles": 5,
+      "statements": 130
+    },
+    "qualified-v3": {
+      "manifest_sha256": "88d5475eea942bf0365c86b86fa8a45c8a73252a7eb3dd528fc9398edda3e8c5",
+      "members": 12,
+      "resource_count": 10,
+      "source_profiles": 5,
+      "statements": 130
+    },
+    "qualified-v4": {
+      "manifest_sha256": "4d26078f4232770efd975a3152d137dd1593c21be95a2ef78525b1855d821439",
+      "members": 17,
+      "resource_count": 10,
+      "source_profiles": 5,
+      "statements": 130
+    }
+  },
+  "qualified_resource_count": 10,
+  "requirements": [
+    "M-04",
+    "M-14",
+    "AC-04",
+    "AC-14"
+  ],
+  "schema_version": "archive-govt-nz.health-metadata-rights-review-evidence/v1",
+  "source_profiles": 5,
+  "status": "reviewed_with_explicit_historical_exceptions",
+  "validation": {
+    "base_revision": "1fb03f8fde70dce82f33c8515f791563b08b4d1b",
+    "capability_skips": 14,
+    "correction": "explicit portable script loader; corrected full tests stage and affected gates passed",
+    "hosted_checks": "pending_PR_delivery",
+    "initial_failure": "two test collection imports could not locate the development tool under the console runner",
+    "local_gate": "completed_across_initial_and_resumed_stages",
+    "parity": "9/9",
+    "python": "3.15.1",
+    "representative_documents": 81,
+    "schemas": 91,
+    "tests_passed": 8673
+  }
+}

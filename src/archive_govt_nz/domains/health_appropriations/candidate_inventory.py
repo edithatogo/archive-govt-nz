@@ -291,7 +291,8 @@ def plan_additive_inventory(
 def assess_release_readiness(receipt: Mapping[str, Any]) -> dict[str, Any]:
     """Return explicit blockers for a publication candidate without publishing.
 
-    This is a local gate: a ready result is necessary evidence only and never
+    This checks supplied labels and pin syntax, not resource rights evidence.
+    A ready result is necessary assertion-level evidence only and never
     performs an upload or grants external publication approval.
     """
     blockers: list[str] = []
@@ -315,5 +316,6 @@ def assess_release_readiness(receipt: Mapping[str, Any]) -> dict[str, Any]:
         "schema_version": "archive-govt-nz.health-release-readiness/v1",
         "status": "ready_for_explicit_gate" if not blockers else "blocked",
         "publication_approval": "not_granted",
+        "verification_scope": "supplied_gate_assertions_only",
         "blockers": blockers,
     }

@@ -1,5 +1,23 @@
 # Run Log
 
+## 2026-10-28 — Rights and federation statement review
+
+Completed the supported emission-surface review: qualified resource grants bind
+to five source decisions and 12 official evidence files; ten federation pairs
+remain excluded, with no approved positive links. Retained historical blanket
+labels exceed original-only assertions and are recorded without rewriting
+published evidence. Fresh legacy readiness now rejects unqualified derivative
+rights; capture and label-only gate scopes are explicit. Independent RDF review
+and exact packet reconstruction passed, as did 55 focused tests. The initial full test run found two test-only import-path defects; the portable
+script-loader correction passed the full test stage (8,673 passed, 14 capability
+skips), and all local gates completed across initial/resumed runs. Hosted
+assurance is pending delivery. The first PR head passed all required checks;
+an automated finding then exposed omitted named graphs in the independent
+reviewer. Dataset quad iteration and two negative regressions correct that
+bypass; 16 affected tests pass and all native statement registers are unchanged.
+The corrected head requires fresh hosted checks. Phase 7 final checkpoint stays open.
+See `metadata-rights-review-20261028.md` and its machine receipt.
+
 ## 2026-10-25 — Phase 8 exclusive resume concurrency
 
 Added a barrier-controlled regression test that makes two callers complete the
