@@ -300,3 +300,12 @@ Actionlint and strict selected Python3.15.1 bindings pass. Source evidence and
 review are evidence/parliament-assurance/20261028/access-hold-{assurance.json,review.md}.
 Native hold qualification, required hosted checks and operational resumption are
 still pending. The unfinished parent remains active.
+
+Final review added a red stale-diagnostic regression and correction16889032:
+a later source failure cannot inherit an earlier numeric HTTP status. Events now
+export in explicit SQLite row order. Superseded own CI40634411470 was cancelled
+to terminal before replacement assurance. Corrected full local harness passes
+8661tests/14capability skips and every stage; hold-module measured coverage89%.
+Original logs remain intact; corrected receipt:
+evidence/parliament-assurance/20261028/access-hold-corrected-assurance.json.
+PR803 must use the corrected head before native qualification/resumption.

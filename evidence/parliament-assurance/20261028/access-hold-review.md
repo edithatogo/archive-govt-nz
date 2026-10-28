@@ -18,3 +18,15 @@ Review also identified a control-generation race between qualification and owner
 The original legacy failure retains an unknown numeric HTTP code. No source restriction was re-probed or bypassed. New safe HTTP evidence contains only status and record/URL hashes. Known non-access errors remain unqualified. The original failed row remains failed, missing-original coverage explicit, and the actual driver test captures/publishes a separate eligible original without requesting the held attachment.
 
 No unresolved source finding blocks required hosted CI. Native hold, fresh pinned proof/cold verification and bounded pilot remain mandatory before operational resumption. Parent archival and natural recurrence acceptance remain open.
+
+## Final causal-evidence review correction
+
+A further red regression showed an older HTTP diagnostic could classify a later
+failed attempt lacking its own diagnostic. Commit16889032 now requires the exact
+last diagnostic/failure pair and exports events explicitly in SQLite row order.
+The original uncertain failure remains unknown. The red receipt is retained;
+20affected cases passed after the correction. Own superseded CI40634411470 was
+cancelled to terminal before replacement broad assurance. Corrected complete local
+assurance passes8661tests/14capability skips and every stage; measured hold-module
+coverage is89%. Required hosted checks and native approval still apply to the
+corrected head. Original local/hosted receipts remain historical evidence.
