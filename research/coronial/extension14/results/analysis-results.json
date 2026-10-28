@@ -1,0 +1,140 @@
+{
+  "nz": {
+    "raw_edition_cells": 100,
+    "unique_edition_cells": 95,
+    "recent_duration_edition_cells": 8,
+    "primary_cells": 55,
+    "disagreeing_period_metric_cells": 29,
+    "recent_mean_days": [
+      497.0,
+      510.0,
+      495.0,
+      612.0,
+      606.0
+    ],
+    "all_recent_alternative_means_above365": true,
+    "stock_flow_residual_range": [
+      -1496.0,
+      14.0
+    ]
+  },
+  "australia": {
+    "cells": 1280,
+    "missing_codes": {
+      "..": 64,
+      "na": 33
+    }
+  },
+  "niio": {
+    "monthly_rows": 66,
+    "age_cells": 1254,
+    "age_rows_with_totals": 66,
+    "unknown_age_cases": 14,
+    "annual_composition": [
+      {
+        "year": "2016",
+        "months": 12,
+        "advice_cases": 2174,
+        "coronial_cases": 3364,
+        "total_cases": 5538,
+        "advice_share_percent": 39.256049,
+        "partial_year": false
+      },
+      {
+        "year": "2017",
+        "months": 12,
+        "advice_cases": 2025,
+        "coronial_cases": 3555,
+        "total_cases": 5580,
+        "advice_share_percent": 36.290323,
+        "partial_year": false
+      },
+      {
+        "year": "2018",
+        "months": 12,
+        "advice_cases": 1898,
+        "coronial_cases": 3584,
+        "total_cases": 5482,
+        "advice_share_percent": 34.622401,
+        "partial_year": false
+      },
+      {
+        "year": "2019",
+        "months": 12,
+        "advice_cases": 1695,
+        "coronial_cases": 3850,
+        "total_cases": 5545,
+        "advice_share_percent": 30.568079,
+        "partial_year": false
+      },
+      {
+        "year": "2020",
+        "months": 12,
+        "advice_cases": 1427,
+        "coronial_cases": 3505,
+        "total_cases": 4932,
+        "advice_share_percent": 28.933496,
+        "partial_year": false
+      },
+      {
+        "year": "2021",
+        "months": 6,
+        "advice_cases": 671,
+        "coronial_cases": 1792,
+        "total_cases": 2463,
+        "advice_share_percent": 27.243199,
+        "partial_year": true
+      }
+    ]
+  },
+  "england_wales": {
+    "annual_periods_1995_onward": 31,
+    "latest": {
+      "year": 2025,
+      "year_label": "2025 [p]",
+      "registered_deaths": 571017.0,
+      "reported_deaths": 147814.0,
+      "reported_share_display": "26%",
+      "inquests_opened": 35989.0,
+      "inquest_share_display": "24%",
+      "source_table": "Table_2",
+      "source_row": 41,
+      "series_segment": "annual1995onward",
+      "postmortems": 75852.0,
+      "postmortem_share_display": "51%",
+      "source_table3_row": 37
+    },
+    "estimated_duration": [
+      {
+        "year": 2023,
+        "displayed_weeks": "32",
+        "stored_weeks": 31.5063905547226,
+        "source_row": 98,
+        "source_column": 2,
+        "clock": "reported to coroner to conclusion/nonresumption",
+        "method": "estimated from bands, domestic-occurring deaths"
+      },
+      {
+        "year": 2024,
+        "displayed_weeks": "31",
+        "stored_weeks": 31.1516516509022,
+        "source_row": 98,
+        "source_column": 3,
+        "clock": "reported to coroner to conclusion/nonresumption",
+        "method": "estimated from bands, domestic-occurring deaths"
+      },
+      {
+        "year": 2025,
+        "displayed_weeks": "31",
+        "stored_weeks": 31.3376148879605,
+        "source_row": 98,
+        "source_column": 4,
+        "clock": "reported to coroner to conclusion/nonresumption",
+        "method": "estimated from bands, domestic-occurring deaths"
+      }
+    ]
+  },
+  "funding_observations": 36,
+  "new_causal_models_fitted": 0,
+  "nz_referral_rates_computed": false
+}

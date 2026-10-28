@@ -1,0 +1,68 @@
+[
+  {
+    "id": "age-extract.csv",
+    "sha256": "993ebce103a8d44bb0e1625d959130e5d370636f778b77b033abd486319fa9ef",
+    "bytes": 84757,
+    "snapshot": "inputs/age-extract.csv"
+  },
+  {
+    "id": "australia.csv",
+    "sha256": "b110b565c3b169528319ca693291fc07c08d8e8afbbb1391d80dcd10d4de630f",
+    "bytes": 128027,
+    "snapshot": "inputs/australia.csv"
+  },
+  {
+    "id": "denominator-inventory.json",
+    "sha256": "da2ca5b46c945dfbf87a38eb83ade700906d66b80178287410e00fdba90dd216",
+    "bytes": 1007,
+    "snapshot": "inputs/denominator-inventory.json"
+  },
+  {
+    "id": "edition-analysis.json",
+    "sha256": "bfec89a56e62531f701450268cca27699005d1403882d11592a731f57845104b",
+    "bytes": 984,
+    "snapshot": "inputs/edition-analysis.json"
+  },
+  {
+    "id": "ew-tables.ods",
+    "sha256": "1ad22b078e05febcc77b1097556c288edf79cb40279e1071ffd6f8e8c91b68bb",
+    "bytes": 114108,
+    "snapshot": "inputs/ew-tables.ods"
+  },
+  {
+    "id": "funding.csv",
+    "sha256": "082205f278ffd6eca94ff49d094288eae54b38a51cb0565fe19e6ce2f66c8e25",
+    "bytes": 16217,
+    "snapshot": "inputs/funding.csv"
+  },
+  {
+    "id": "historical-ris.csv",
+    "sha256": "6519b6d41c3e9912656bb8004b6a23c6d9c52a7537b2a023c334bf0340182b14",
+    "bytes": 22211,
+    "snapshot": "inputs/historical-ris.csv"
+  },
+  {
+    "id": "international-context.csv",
+    "sha256": "db3978356981a38a6d3a16298284f3cb6fa0f47e91f92922d2e5bedc683b0e5c",
+    "bytes": 3763,
+    "snapshot": "inputs/international-context.csv"
+  },
+  {
+    "id": "niio.csv",
+    "sha256": "6a75640c8feade996b890ce873c54a0b326c04b231d210b9f1b26f9ccc91ae1f",
+    "bytes": 11065,
+    "snapshot": "inputs/niio.csv"
+  },
+  {
+    "id": "nz-editions.csv",
+    "sha256": "711df1c202e89f336a1c1a6f89e5ac676a7bf33923d437f6c6df1cef0a2b7a18",
+    "bytes": 72880,
+    "snapshot": "inputs/nz-editions.csv"
+  },
+  {
+    "id": "nz-primary.csv",
+    "sha256": "91566c32a195efa4aaadcaba8e4c43164d27b0ccf9a5f7052355d152f0737bf6",
+    "bytes": 40239,
+    "snapshot": "inputs/nz-primary.csv"
+  }
+]

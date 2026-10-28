@@ -1,0 +1,242 @@
+[
+  {
+    "id": "treasury-2021",
+    "sha256": "d94d4e6f0bf4cd760b33b0ffaec7949ed3bd8a326a3f544a4f40ed009a126738",
+    "url": "https://www.treasury.govt.nz/sites/default/files/2021-05/est21-v7-courts.pdf",
+    "bytes": 793572,
+    "observed_at": "2026-10-28T15:46:36.874392+00:00",
+    "prior_import_time": null,
+    "rights": "source-specific review required",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "treasury-2022",
+    "sha256": "3d7f8743d6f677fb8541ab5d21e648647f7a0d4b527125cae594427bed1ff8f1",
+    "url": "https://www.treasury.govt.nz/sites/default/files/2022-06/est22-v6-courts.pdf",
+    "bytes": 701420,
+    "observed_at": "2026-10-28T15:46:36.873900+00:00",
+    "prior_import_time": null,
+    "rights": "source-specific review required",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "treasury-2023",
+    "sha256": "5b3d2dfa75280a49d6d203c67b19e5cc755033d8a308ddf1be651b4607176c93",
+    "url": "https://www.treasury.govt.nz/sites/default/files/2023-06/est23-v6-courts.pdf",
+    "bytes": 852809,
+    "observed_at": "2026-10-28T15:46:36.841261+00:00",
+    "prior_import_time": null,
+    "rights": "source-specific review required",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "treasury-2024",
+    "sha256": "f7c1aeb76ba0bb36d666d4e19edf2085db9c1e2e7b023f108dbc78156a670c17",
+    "url": "https://www.treasury.govt.nz/sites/default/files/2024-06/est24-v6-courts.pdf",
+    "bytes": 718329,
+    "observed_at": "2026-10-28T15:42:10.105499+00:00",
+    "prior_import_time": null,
+    "rights": "source-specific review required",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "treasury-2025",
+    "sha256": "b7bedb9150d3259cda3f2a3c76d6a402e077fbf6b254c1c9540c737bade5c1c5",
+    "url": "https://www.treasury.govt.nz/sites/default/files/2025-05/est25-v6-courts.pdf",
+    "bytes": 688797,
+    "observed_at": "2026-10-28T15:42:09.475925+00:00",
+    "prior_import_time": null,
+    "rights": "source-specific review required",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "treasury-2026",
+    "sha256": "0f3eb8fd212f21dab1176eb3b73bb74da1dd498b138d42840351e426e1ca16d7",
+    "url": "https://www.treasury.govt.nz/sites/default/files/2026-05/est26-v6-courts.pdf",
+    "bytes": 673606,
+    "observed_at": "2026-10-28T15:42:09.460175+00:00",
+    "prior_import_time": null,
+    "rights": "source-specific review required",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "fyi-16111-response",
+    "sha256": "81e6abb8eefde0fe7f71e164478e17f1cf57afc9cdcd93f746999a6bbb89def6",
+    "url": "https://fyi.org.nz/request/16111/response/61742/attach/4/89496%20Baker%20response%20sent.pdf",
+    "bytes": 905019,
+    "observed_at": "2026-10-28T15:52:01.926625+00:00",
+    "prior_import_time": null,
+    "rights": "source-specific review required",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "MOJ0216_Coroners-Court-Annual-Report-2024-25.pdf",
+    "sha256": "dd9378ba3df586c9f3e2e5f70390e2e48aeb58475a588755c3c4d1ab5e3035f6",
+    "url": "https://coronerscourt.govt.nz/assets/Documents/Publications/MOJ0216_Coroners-Court-Annual-Report-2024-25.pdf",
+    "bytes": 1341744,
+    "observed_at": "2026-10-26T12:42:42.807622+00:00",
+    "prior_import_time": "2026-10-27T23:25:40.490358+00:00",
+    "rights": "Metadata only: full raw-file redistribution not qualified; website terms exclude photography and third-party content.",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "Coroners-Court-Annual-Report-2023-WEB.pdf",
+    "sha256": "764cd96bf7bea3e7a00f809ec815821dc8b9cba7ec00e8c23676edb6ac340d89",
+    "url": "https://coronerscourt.govt.nz/assets/Documents/Publications/Coroners-Court-Annual-Report-2023-WEB.pdf",
+    "bytes": 1000729,
+    "observed_at": "2026-10-26T12:42:43.267626+00:00",
+    "prior_import_time": "2026-10-27T23:25:40.490358+00:00",
+    "rights": "Metadata only: full raw-file redistribution not qualified; website terms exclude photography and third-party content.",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "Chief-Coroners-Annual-Report-2021-22-and-2022-23.pdf",
+    "sha256": "b7c4de8e2285d63b5ca236f4ffea8ea0870d81132eec8fd9ac1befcb1c3c109e",
+    "url": "https://coronerscourt.govt.nz/assets/Documents/Publications/Chief-Coroners-Annual-Report-2021-22-and-2022-23.pdf",
+    "bytes": 1420500,
+    "observed_at": "2026-10-26T12:42:43.697301+00:00",
+    "prior_import_time": "2026-10-27T23:25:40.490358+00:00",
+    "rights": "Metadata only: full raw-file redistribution not qualified; website terms exclude photography and third-party content.",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "Coronial-Services-Annual-report-2021-2021.pdf",
+    "sha256": "a743356c38b7b4e473202c49a793b1a9915e0ed624a98506cbfd7c953c3ab3d5",
+    "url": "https://coronerscourt.govt.nz/assets/Uploads/Coronial-Services-Annual-report-2021-2021.pdf",
+    "bytes": 1638479,
+    "observed_at": "2026-10-26T12:42:44.123251+00:00",
+    "prior_import_time": "2026-10-27T23:25:40.490358+00:00",
+    "rights": "Metadata only: full raw-file redistribution not qualified; website terms exclude photography and third-party content.",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "MOJ0216-Chief-Coroner-2019-20-Annual-Report.pdf",
+    "sha256": "fdd580b33f665a1ee8c9081e82aaab8da44c093410c29c9cd1507ffead6a7b6d",
+    "url": "https://coronerscourt.govt.nz/assets/MOJ0216-Chief-Coroner-2019-20-Annual-Report.pdf",
+    "bytes": 2122589,
+    "observed_at": "2026-10-26T12:42:44.624026+00:00",
+    "prior_import_time": "2026-10-27T23:25:40.490358+00:00",
+    "rights": "CC-BY-4.0; explicit whole-work licence printed in report",
+    "raw_availability": "existing immutable core snapshot"
+  },
+  {
+    "id": "Chief-Coroners-Annual-Report-2018-2019.pdf",
+    "sha256": "0ef82558e309a22a86d37f9afbd8b59d082aa97dc6814e2d02bcad76938709dd",
+    "url": "https://coronerscourt.govt.nz/assets/Chief-Coroners-Annual-Report-2018-2019.pdf",
+    "bytes": 1649230,
+    "observed_at": "2026-10-26T12:42:45.076453+00:00",
+    "prior_import_time": "2026-10-27T23:25:40.490358+00:00",
+    "rights": "Metadata only: full raw-file redistribution not qualified; website terms exclude photography and third-party content.",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "Chief-Coroner-2017-18-Annual-Report.pdf",
+    "sha256": "0da1cf545f5dd972d64de960372093187e67ed09076eb8b50cfcea5c602a3f0d",
+    "url": "https://coronerscourt.govt.nz/assets/Chief-Coroner-2017-18-Annual-Report.pdf",
+    "bytes": 3194062,
+    "observed_at": "2026-10-26T12:42:45.573050+00:00",
+    "prior_import_time": "2026-10-27T23:25:40.490358+00:00",
+    "rights": "Metadata only: full raw-file redistribution not qualified; website terms exclude photography and third-party content.",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "coroners-annual-report-2016-17.pdf",
+    "sha256": "eda71c311031ada99849e30f0eb6982aa513dbe5d75fe5355e12d2ad6de591d8",
+    "url": "https://coronerscourt.govt.nz/assets/coroners-annual-report-2016-17.pdf",
+    "bytes": 1886840,
+    "observed_at": "2026-10-26T12:42:46.103670+00:00",
+    "prior_import_time": "2026-10-27T23:25:40.490358+00:00",
+    "rights": "CC-BY-4.0; explicit whole-work licence printed in report",
+    "raw_availability": "existing immutable core snapshot"
+  },
+  {
+    "id": "MOJ0216-2015-16-v9-web.pdf",
+    "sha256": "6e6d2e3fdddf9daea80ccd35de9a1e71ac2a32ffd50384f846c3071355dbcf8b",
+    "url": "https://coronerscourt.govt.nz/assets/MOJ0216-2015-16-v9-web.pdf",
+    "bytes": 4053477,
+    "observed_at": "2026-10-26T12:43:32.480444+00:00",
+    "prior_import_time": "2026-10-27T23:25:40.490358+00:00",
+    "rights": "CC-BY-4.0; explicit whole-work licence printed in report",
+    "raw_availability": "existing immutable core snapshot"
+  },
+  {
+    "id": "ris-justice-prp1-jul14.pdf",
+    "sha256": "c247927eaebcf86f56f0d7fd670e832a5fc09be27e71a264a5179ce216987387",
+    "url": "https://www.regulation.govt.nz/assets/RIS-Documents/ris-justice-prp1-jul14.pdf",
+    "bytes": 304497,
+    "observed_at": "2026-10-26T12:43:58.481779+00:00",
+    "prior_import_time": "2026-10-27T23:25:40.490358+00:00",
+    "rights": "Metadata only: full raw-file redistribution not qualified; website terms exclude photography and third-party content.",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "justice-annual-2025-26.pdf",
+    "sha256": "5b7fa8c9ea673f18cbe120b552a2a5eee2dcd1b1f18f7299e34b9b36c46d4d65",
+    "url": "https://www.justice.govt.nz/assets/Documents/Publications/Ministry-of-Justice-Annual-Report-2025-26-final.pdf",
+    "bytes": 6624548,
+    "observed_at": "2026-10-24T08:48:03.974104+00:00",
+    "prior_import_time": "2026-10-27T23:25:40.490358+00:00",
+    "rights": "CC-BY-4.0; explicit whole-work licence printed in report",
+    "raw_availability": "existing immutable core snapshot"
+  },
+  {
+    "id": "rogs.xlsx",
+    "sha256": "82bebfb16c76fae91eb8c58ba6b1112b730424ed0d7fa972120af1297c0513e4",
+    "url": "https://assets.pc.gov.au/2026-01/rogs-2026-partc-section7-courts-data-tables_0.xlsx?VersionId=ywiKzi9GYlvo.45YczU4CO3iYuojYgfJ",
+    "bytes": 700199,
+    "observed_at": "2026-10-27",
+    "prior_import_time": null,
+    "rights": "Source-specific rights not yet qualified for new publication",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "victoria.pdf",
+    "sha256": "04722fae39f136c14fcc7a7ed94614e4db482568214b770deeaef94aa5af2010",
+    "url": "https://www.coronerscourt.vic.gov.au/sites/default/files/2025-10/Coroners%20Court%20of%20Victoria%20Annual%20Report%202024%E2%80%932025.pdf",
+    "bytes": 1733351,
+    "observed_at": "2026-10-27",
+    "prior_import_time": null,
+    "rights": "Source-specific rights not yet qualified for new publication",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "ew-bulletin",
+    "sha256": "904862910ad4913a8003b38842f67b48f928ff697ab8b422e10af818a5804d8b",
+    "url": "https://www.gov.uk/government/statistics/coroners-statistics-2025/coroners-statistics-2025-england-and-wales",
+    "bytes": 200590,
+    "observed_at": "2026-10-27",
+    "prior_import_time": null,
+    "rights": "Source-specific rights not yet qualified for new publication",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "ew-tables",
+    "sha256": "1ad22b078e05febcc77b1097556c288edf79cb40279e1071ffd6f8e8c91b68bb",
+    "url": "https://assets.publishing.service.gov.uk/media/6ad611aa67af5c09d04797f4/Coroners_Statistics_Annual_2025_Tables.ods",
+    "bytes": 114108,
+    "observed_at": "2026-10-27",
+    "prior_import_time": null,
+    "rights": "Source-specific rights not yet qualified for new publication",
+    "raw_availability": "existing immutable core snapshot"
+  },
+  {
+    "id": "quebec2025",
+    "sha256": "70ad23457af2f1a7a806d9d2cc58e380b393ced3552f968c853290681dab99af",
+    "url": "https://www.coroner.gouv.qc.ca/fileadmin/contenu/Organisation/RAG/Bureau_du_coroner-RAG_2024-2025-final_Accessible.pdf",
+    "bytes": 10486056,
+    "observed_at": "2026-10-27",
+    "prior_import_time": null,
+    "rights": "Source-specific rights not yet qualified for new publication",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  },
+  {
+    "id": "statsnz-monthly-deaths",
+    "sha256": "9a8afbb7cf52f95d3f70962d82ccaf797591d9c3705652ebf2bed27475a079b2",
+    "url": "https://www.stats.govt.nz/assets/Uploads/Births-and-deaths/Births-and-deaths-Year-ended-December-2025-including-abridged-period-life-table/Download-data/monthly-death-registrations-by-ethnicity-age-sex-Jan-2010-Dec-2025.xlsx",
+    "bytes": 909381,
+    "observed_at": "2026-10-28T16:08:54.822570+00:00",
+    "prior_import_time": null,
+    "rights": "source-specific licence and attribution review required",
+    "raw_availability": "Not included; publisher link/hash only; redistribution not qualified"
+  }
+]

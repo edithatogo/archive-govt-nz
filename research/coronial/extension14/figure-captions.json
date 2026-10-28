@@ -1,0 +1,72 @@
+[
+  {
+    "id": "01-nz-timeline",
+    "title_for_Word": "NZ coronial activity and completion time",
+    "data": "nz-timeline.csv",
+    "caption": "Most recent retained edition per year and measure. Counts are independently reported; the stock-flow discrepancy is retained in nz-stock-flow-diagnostic.csv. Older duration points use differing definitions and are not joined to recent means.",
+    "source_provenance": "input-manifest.json; retained source_id/locators in data; track02-source-catalogue.json"
+  },
+  {
+    "id": "02-australia-backlog-age",
+    "title_for_Word": "Age of pending Australian coronial cases",
+    "data": "australia-longitudinal.csv",
+    "caption": "Eight jurisdictions, 2015/16 to 2024/25. Over-24-month cases are a subset of over-12-month cases. Missing codes remain gaps. Each jurisdiction has its own vertical scale; this is not a ranking.",
+    "source_provenance": "input-manifest.json; retained source_id/locators in data; track02-source-catalogue.json"
+  },
+  {
+    "id": "03-australia-clearance",
+    "title_for_Word": "Published Australian clearance indicators",
+    "data": "australia-longitudinal.csv",
+    "caption": "Published indicators retain source scope and missing values. Percentages are annual workload measures, not individual completion probabilities. Vertical scales vary.",
+    "source_provenance": "input-manifest.json; retained source_id/locators in data; track02-source-catalogue.json"
+  },
+  {
+    "id": "04-australia-activity",
+    "title_for_Word": "Australian coronial lodgments and finalisations",
+    "data": "australia-longitudinal.csv",
+    "caption": "Death and fire case totals, not sums of totals and components. Financial years end in June. Vertical scales vary and do not imply equivalent legal populations.",
+    "source_provenance": "input-manifest.json; retained source_id/locators in data; track02-source-catalogue.json"
+  },
+  {
+    "id": "05-niio-monthly",
+    "title_for_Word": "NZ NIIO filing cohorts and advice-case composition",
+    "data": "niio-monthly.csv",
+    "caption": "First application filing month, January 2016 to June 2021, classified at 19 July 2021. Active cases provisional. Advice share is among observed filings, not a mortality or under-referral rate.",
+    "source_provenance": "input-manifest.json; retained source_id/locators in data; track02-source-catalogue.json"
+  },
+  {
+    "id": "06-niio-age",
+    "title_for_Word": "Age composition of NIIO coronial-classified filing cohorts",
+    "data": "niio-age-annual.csv",
+    "caption": "Calendar years 2016 to 2020 and January to June 2021. Unknown ages retained. Monthly cells reconcile to source totals. No advice-case age denominator or age-specific delay is available.",
+    "source_provenance": "input-manifest.json; retained source_id/locators in data; track02-source-catalogue.json"
+  },
+  {
+    "id": "07-funding-components",
+    "title_for_Word": "Two components of NZ coronial funding",
+    "data": "funding-components.csv",
+    "caption": "Six Budget editions, nominal NZ$ million. Original and following-edition final budgets shown separately. Salary coverage changes when associates enter the title. Postmortems are a separate service input. Neither component nor their sum is total audited service spending; estimated actuals remain in the numeric table only.",
+    "source_provenance": "input-manifest.json; retained source_id/locators in data; track02-source-catalogue.json"
+  },
+  {
+    "id": "08-england-wales-activity",
+    "title_for_Word": "England and Wales coronial activity over time",
+    "data": "england-wales-national.csv",
+    "caption": "Official national counts, 1995 to 2025. Registered deaths include non-residents. The 2024 revised and 2025 provisional year flags specifically qualify registered-death denominators in this edition. Reporting-system and medical-examiner changes affect interpretation; no causal effect is estimated. Earlier benchmark years are retained in the table, not joined.",
+    "source_provenance": "input-manifest.json; retained source_id/locators in data; track02-source-catalogue.json"
+  },
+  {
+    "id": "09-duration-contexts",
+    "title_for_Word": "Duration measures in three coronial settings",
+    "data": "international-context.csv; england-wales-inquest-time.csv; nz-timeline.csv",
+    "caption": "Separate clocks and populations: NZ closed-case mean in days; Victoria closed death/fire investigation mean in days with start not specified on inspected source page; England and Wales domestic-occurring inquest time in weeks from reporting to conclusion/nonresumption. The latter is estimated from bands, including an 18-month assignment for over-12-month cases; published rounded values are shown. No conversion, pooling or ranking is justified.",
+    "source_provenance": "input-manifest.json; retained source_id/locators in data; track02-source-catalogue.json"
+  },
+  {
+    "id": "10-historical-nz-routes",
+    "title_for_Word": "Historical NZ closure routes and durations",
+    "data": "historical-ris.csv",
+    "caption": "Financial years2007/08to2011/12 from2014RIS, table onPDFpage28. Incoming cases, total outcomes and outcome strata are displayed as reported; totals and components are not summed. Route-specific means are separate and are not an all-case duration series or a continuation of the modern measure. The period includes transition under the Coroners Act. Archive context only.",
+    "source_provenance": "input-manifest.json; original source URL, SHA256 and PDF locator retained in historical-ris.csv"
+  }
+]

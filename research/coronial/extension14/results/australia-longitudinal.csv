@@ -1,0 +1,1281 @@
+source_id,reporting_edition,table,period,jurisdiction,measure,stratum,metric,unit,value,raw_value,missing_code,source_cell,segment
+rogs2026,2026,7A.21,2015-16,ACT,Backlog,,Cases >12 months,%,31.4,31.4,,S838,0
+rogs2026,2026,7A.21,2016-17,ACT,Backlog,,Cases >12 months,%,42.1,42.1,,S837,0
+rogs2026,2026,7A.21,2017-18,ACT,Backlog,,Cases >12 months,%,48.0,48.0,,S836,0
+rogs2026,2026,7A.21,2018-19,ACT,Backlog,,Cases >12 months,%,54.7,54.7,,S835,0
+rogs2026,2026,7A.21,2019-20,ACT,Backlog,,Cases >12 months,%,46.0,46.0,,S834,0
+rogs2026,2026,7A.21,2020-21,ACT,Backlog,,Cases >12 months,%,30.1,30.1,,S833,0
+rogs2026,2026,7A.21,2021-22,ACT,Backlog,,Cases >12 months,%,34.0,34.0,,S832,0
+rogs2026,2026,7A.21,2022-23,ACT,Backlog,,Cases >12 months,%,46.4,46.4,,S831,0
+rogs2026,2026,7A.21,2023-24,ACT,Backlog,,Cases >12 months,%,55.7,55.7,,S830,0
+rogs2026,2026,7A.21,2024-25,ACT,Backlog,,Cases >12 months,%,53.5,53.5,,S829,0
+rogs2026,2026,7A.21,2015-16,ACT,Backlog,,Cases >12 months,no.,53,53,,S816,0
+rogs2026,2026,7A.21,2016-17,ACT,Backlog,,Cases >12 months,no.,69,69,,S815,0
+rogs2026,2026,7A.21,2017-18,ACT,Backlog,,Cases >12 months,no.,85,85,,S814,0
+rogs2026,2026,7A.21,2018-19,ACT,Backlog,,Cases >12 months,no.,82,82,,S813,0
+rogs2026,2026,7A.21,2019-20,ACT,Backlog,,Cases >12 months,no.,64,64,,S812,0
+rogs2026,2026,7A.21,2020-21,ACT,Backlog,,Cases >12 months,no.,72,72,,S811,0
+rogs2026,2026,7A.21,2021-22,ACT,Backlog,,Cases >12 months,no.,89,89,,S810,0
+rogs2026,2026,7A.21,2022-23,ACT,Backlog,,Cases >12 months,no.,163,163,,S809,0
+rogs2026,2026,7A.21,2023-24,ACT,Backlog,,Cases >12 months,no.,214,214,,S808,0
+rogs2026,2026,7A.21,2024-25,ACT,Backlog,,Cases >12 months,no.,285,285,,S807,0
+rogs2026,2026,7A.21,2015-16,ACT,Backlog,,Cases >24 months,%,17.8,17.8,,S849,0
+rogs2026,2026,7A.21,2016-17,ACT,Backlog,,Cases >24 months,%,20.7,20.7,,S848,0
+rogs2026,2026,7A.21,2017-18,ACT,Backlog,,Cases >24 months,%,26.6,26.6,,S847,0
+rogs2026,2026,7A.21,2018-19,ACT,Backlog,,Cases >24 months,%,34.0,34.0,,S846,0
+rogs2026,2026,7A.21,2019-20,ACT,Backlog,,Cases >24 months,%,31.7,31.7,,S845,0
+rogs2026,2026,7A.21,2020-21,ACT,Backlog,,Cases >24 months,%,20.5,20.5,,S844,0
+rogs2026,2026,7A.21,2021-22,ACT,Backlog,,Cases >24 months,%,19.8,19.8,,S843,0
+rogs2026,2026,7A.21,2022-23,ACT,Backlog,,Cases >24 months,%,16.0,16.0,,S842,0
+rogs2026,2026,7A.21,2023-24,ACT,Backlog,,Cases >24 months,%,20.8,20.8,,S841,0
+rogs2026,2026,7A.21,2024-25,ACT,Backlog,,Cases >24 months,%,29.5,29.5,,S840,0
+rogs2026,2026,7A.21,2015-16,ACT,Backlog,,Cases >24 months,no.,30,30,,S827,0
+rogs2026,2026,7A.21,2016-17,ACT,Backlog,,Cases >24 months,no.,34,34,,S826,0
+rogs2026,2026,7A.21,2017-18,ACT,Backlog,,Cases >24 months,no.,47,47,,S825,0
+rogs2026,2026,7A.21,2018-19,ACT,Backlog,,Cases >24 months,no.,51,51,,S824,0
+rogs2026,2026,7A.21,2019-20,ACT,Backlog,,Cases >24 months,no.,44,44,,S823,0
+rogs2026,2026,7A.21,2020-21,ACT,Backlog,,Cases >24 months,no.,49,49,,S822,0
+rogs2026,2026,7A.21,2021-22,ACT,Backlog,,Cases >24 months,no.,52,52,,S821,0
+rogs2026,2026,7A.21,2022-23,ACT,Backlog,,Cases >24 months,no.,56,56,,S820,0
+rogs2026,2026,7A.21,2023-24,ACT,Backlog,,Cases >24 months,no.,80,80,,S819,0
+rogs2026,2026,7A.21,2024-25,ACT,Backlog,,Cases >24 months,no.,157,157,,S818,0
+rogs2026,2026,7A.21,2015-16,ACT,Backlog,,Pending case load,no.,169,169,,S805,0
+rogs2026,2026,7A.21,2016-17,ACT,Backlog,,Pending case load,no.,164,164,,S804,0
+rogs2026,2026,7A.21,2017-18,ACT,Backlog,,Pending case load,no.,177,177,,S803,0
+rogs2026,2026,7A.21,2018-19,ACT,Backlog,,Pending case load,no.,150,150,,S802,0
+rogs2026,2026,7A.21,2019-20,ACT,Backlog,,Pending case load,no.,139,139,,S801,0
+rogs2026,2026,7A.21,2020-21,ACT,Backlog,,Pending case load,no.,239,239,,S800,0
+rogs2026,2026,7A.21,2021-22,ACT,Backlog,,Pending case load,no.,262,262,,S799,0
+rogs2026,2026,7A.21,2022-23,ACT,Backlog,,Pending case load,no.,351,351,,S798,0
+rogs2026,2026,7A.21,2023-24,ACT,Backlog,,Pending case load,no.,384,384,,S797,0
+rogs2026,2026,7A.21,2024-25,ACT,Backlog,,Pending case load,no.,533,533,,S796,0
+rogs2026,2026,7A.26,2015-16,ACT,Clearance indicator,,Clearance indicator,%,85.6,85.6,,S208,0
+rogs2026,2026,7A.26,2016-17,ACT,Clearance indicator,,Clearance indicator,%,102.0,102.0,,S207,0
+rogs2026,2026,7A.26,2017-18,ACT,Clearance indicator,,Clearance indicator,%,97.1,97.1,,S206,0
+rogs2026,2026,7A.26,2018-19,ACT,Clearance indicator,,Clearance indicator,%,108.6,108.6,,S205,0
+rogs2026,2026,7A.26,2019-20,ACT,Clearance indicator,,Clearance indicator,%,102.9,102.9,,S204,0
+rogs2026,2026,7A.26,2020-21,ACT,Clearance indicator,,Clearance indicator,%,72.4,72.4,,S203,0
+rogs2026,2026,7A.26,2021-22,ACT,Clearance indicator,,Clearance indicator,%,93.6,93.6,,S202,0
+rogs2026,2026,7A.26,2022-23,ACT,Clearance indicator,,Clearance indicator,%,73.6,73.6,,S201,0
+rogs2026,2026,7A.26,2023-24,ACT,Clearance indicator,,Clearance indicator,%,77.5,77.5,,S200,0
+rogs2026,2026,7A.26,2024-25,ACT,Clearance indicator,,Clearance indicator,%,71.8,71.8,,S199,0
+rogs2026,2026,7A.6,2015-16,ACT,Finalisations,Deaths reported,Deaths reported,no.,,na,na,S209,1
+rogs2026,2026,7A.6,2016-17,ACT,Finalisations,Deaths reported,Deaths reported,no.,,na,na,S208,2
+rogs2026,2026,7A.6,2017-18,ACT,Finalisations,Deaths reported,Deaths reported,no.,299,299,,S207,2
+rogs2026,2026,7A.6,2018-19,ACT,Finalisations,Deaths reported,Deaths reported,no.,338,338,,S206,2
+rogs2026,2026,7A.6,2019-20,ACT,Finalisations,Deaths reported,Deaths reported,no.,353,353,,S205,2
+rogs2026,2026,7A.6,2020-21,ACT,Finalisations,Deaths reported,Deaths reported,no.,266,266,,S204,2
+rogs2026,2026,7A.6,2021-22,ACT,Finalisations,Deaths reported,Deaths reported,no.,347,347,,S203,2
+rogs2026,2026,7A.6,2022-23,ACT,Finalisations,Deaths reported,Deaths reported,no.,242,242,,S202,2
+rogs2026,2026,7A.6,2023-24,ACT,Finalisations,Deaths reported,Deaths reported,no.,255,255,,S201,2
+rogs2026,2026,7A.6,2024-25,ACT,Finalisations,Deaths reported,Deaths reported,no.,269,269,,S200,2
+rogs2026,2026,7A.6,2015-16,ACT,Finalisations,Fires reported,Fires reported,no.,,na,na,S220,1
+rogs2026,2026,7A.6,2016-17,ACT,Finalisations,Fires reported,Fires reported,no.,,na,na,S219,2
+rogs2026,2026,7A.6,2017-18,ACT,Finalisations,Fires reported,Fires reported,no.,,na,na,S218,3
+rogs2026,2026,7A.6,2018-19,ACT,Finalisations,Fires reported,Fires reported,no.,3,3,,S217,3
+rogs2026,2026,7A.6,2019-20,ACT,Finalisations,Fires reported,Fires reported,no.,4,4,,S216,3
+rogs2026,2026,7A.6,2020-21,ACT,Finalisations,Fires reported,Fires reported,no.,1,1,,S215,3
+rogs2026,2026,7A.6,2021-22,ACT,Finalisations,Fires reported,Fires reported,no.,2,2,,S214,3
+rogs2026,2026,7A.6,2022-23,ACT,Finalisations,Fires reported,Fires reported,no.,0,0,,S213,3
+rogs2026,2026,7A.6,2023-24,ACT,Finalisations,Fires reported,Fires reported,no.,0,0,,S212,3
+rogs2026,2026,7A.6,2024-25,ACT,Finalisations,Fires reported,Fires reported,no.,1,1,,S211,3
+rogs2026,2026,7A.6,2015-16,ACT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,250,250,,S231,0
+rogs2026,2026,7A.6,2016-17,ACT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,305,305,,S230,0
+rogs2026,2026,7A.6,2017-18,ACT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,299,299,,S229,0
+rogs2026,2026,7A.6,2018-19,ACT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,341,341,,S228,0
+rogs2026,2026,7A.6,2019-20,ACT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,357,357,,S227,0
+rogs2026,2026,7A.6,2020-21,ACT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,267,267,,S226,0
+rogs2026,2026,7A.6,2021-22,ACT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,349,349,,S225,0
+rogs2026,2026,7A.6,2022-23,ACT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,242,242,,S224,0
+rogs2026,2026,7A.6,2023-24,ACT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,255,255,,S223,0
+rogs2026,2026,7A.6,2024-25,ACT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,270,270,,S222,0
+rogs2026,2026,7A.2,2015-16,ACT,Lodgments,Deaths reported,Deaths reported,no.,291,291,,S209,0
+rogs2026,2026,7A.2,2016-17,ACT,Lodgments,Deaths reported,Deaths reported,no.,299,299,,S208,0
+rogs2026,2026,7A.2,2017-18,ACT,Lodgments,Deaths reported,Deaths reported,no.,305,305,,S207,0
+rogs2026,2026,7A.2,2018-19,ACT,Lodgments,Deaths reported,Deaths reported,no.,313,313,,S206,0
+rogs2026,2026,7A.2,2019-20,ACT,Lodgments,Deaths reported,Deaths reported,no.,347,347,,S205,0
+rogs2026,2026,7A.2,2020-21,ACT,Lodgments,Deaths reported,Deaths reported,no.,369,369,,S204,0
+rogs2026,2026,7A.2,2021-22,ACT,Lodgments,Deaths reported,Deaths reported,no.,370,370,,S203,0
+rogs2026,2026,7A.2,2022-23,ACT,Lodgments,Deaths reported,Deaths reported,no.,329,329,,S202,0
+rogs2026,2026,7A.2,2023-24,ACT,Lodgments,Deaths reported,Deaths reported,no.,328,328,,S201,0
+rogs2026,2026,7A.2,2024-25,ACT,Lodgments,Deaths reported,Deaths reported,no.,376,376,,S200,0
+rogs2026,2026,7A.2,2015-16,ACT,Lodgments,Fires reported,Fires reported,no.,1,1,,S220,0
+rogs2026,2026,7A.2,2016-17,ACT,Lodgments,Fires reported,Fires reported,no.,0,0,,S219,0
+rogs2026,2026,7A.2,2017-18,ACT,Lodgments,Fires reported,Fires reported,no.,3,3,,S218,0
+rogs2026,2026,7A.2,2018-19,ACT,Lodgments,Fires reported,Fires reported,no.,1,1,,S217,0
+rogs2026,2026,7A.2,2019-20,ACT,Lodgments,Fires reported,Fires reported,no.,0,0,,S216,0
+rogs2026,2026,7A.2,2020-21,ACT,Lodgments,Fires reported,Fires reported,no.,0,0,,S215,0
+rogs2026,2026,7A.2,2021-22,ACT,Lodgments,Fires reported,Fires reported,no.,3,3,,S214,0
+rogs2026,2026,7A.2,2022-23,ACT,Lodgments,Fires reported,Fires reported,no.,0,0,,S213,0
+rogs2026,2026,7A.2,2023-24,ACT,Lodgments,Fires reported,Fires reported,no.,1,1,,S212,0
+rogs2026,2026,7A.2,2024-25,ACT,Lodgments,Fires reported,Fires reported,no.,0,0,,S211,0
+rogs2026,2026,7A.2,2015-16,ACT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,292,292,,S231,0
+rogs2026,2026,7A.2,2016-17,ACT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,299,299,,S230,0
+rogs2026,2026,7A.2,2017-18,ACT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,308,308,,S229,0
+rogs2026,2026,7A.2,2018-19,ACT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,314,314,,S228,0
+rogs2026,2026,7A.2,2019-20,ACT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,347,347,,S227,0
+rogs2026,2026,7A.2,2020-21,ACT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,369,369,,S226,0
+rogs2026,2026,7A.2,2021-22,ACT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,373,373,,S225,0
+rogs2026,2026,7A.2,2022-23,ACT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,329,329,,S224,0
+rogs2026,2026,7A.2,2023-24,ACT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,329,329,,S223,0
+rogs2026,2026,7A.2,2024-25,ACT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,376,376,,S222,0
+rogs2026,2026,7A.23,2015-16,ACT,On-time case processing,,Cases finalised <=12 months,%,,na,na,S673,1
+rogs2026,2026,7A.23,2016-17,ACT,On-time case processing,,Cases finalised <=12 months,%,92.1,92.1,,S672,1
+rogs2026,2026,7A.23,2017-18,ACT,On-time case processing,,Cases finalised <=12 months,%,91.0,91.0,,S671,1
+rogs2026,2026,7A.23,2018-19,ACT,On-time case processing,,Cases finalised <=12 months,%,87.7,87.7,,S670,1
+rogs2026,2026,7A.23,2019-20,ACT,On-time case processing,,Cases finalised <=12 months,%,87.1,87.1,,S669,1
+rogs2026,2026,7A.23,2020-21,ACT,On-time case processing,,Cases finalised <=12 months,%,94.8,94.8,,S668,1
+rogs2026,2026,7A.23,2021-22,ACT,On-time case processing,,Cases finalised <=12 months,%,92.3,92.3,,S667,1
+rogs2026,2026,7A.23,2022-23,ACT,On-time case processing,,Cases finalised <=12 months,%,82.2,82.2,,S666,1
+rogs2026,2026,7A.23,2023-24,ACT,On-time case processing,,Cases finalised <=12 months,%,59.2,59.2,,S665,1
+rogs2026,2026,7A.23,2024-25,ACT,On-time case processing,,Cases finalised <=12 months,%,72.2,72.2,,S664,1
+rogs2026,2026,7A.23,2015-16,ACT,On-time case processing,,Cases finalised <=12 months,no.,,na,na,S651,1
+rogs2026,2026,7A.23,2016-17,ACT,On-time case processing,,Cases finalised <=12 months,no.,281,281,,S650,1
+rogs2026,2026,7A.23,2017-18,ACT,On-time case processing,,Cases finalised <=12 months,no.,272,272,,S649,1
+rogs2026,2026,7A.23,2018-19,ACT,On-time case processing,,Cases finalised <=12 months,no.,299,299,,S648,1
+rogs2026,2026,7A.23,2019-20,ACT,On-time case processing,,Cases finalised <=12 months,no.,311,311,,S647,1
+rogs2026,2026,7A.23,2020-21,ACT,On-time case processing,,Cases finalised <=12 months,no.,253,253,,S646,1
+rogs2026,2026,7A.23,2021-22,ACT,On-time case processing,,Cases finalised <=12 months,no.,322,322,,S645,1
+rogs2026,2026,7A.23,2022-23,ACT,On-time case processing,,Cases finalised <=12 months,no.,199,199,,S644,1
+rogs2026,2026,7A.23,2023-24,ACT,On-time case processing,,Cases finalised <=12 months,no.,151,151,,S643,1
+rogs2026,2026,7A.23,2024-25,ACT,On-time case processing,,Cases finalised <=12 months,no.,195,195,,S642,1
+rogs2026,2026,7A.23,2015-16,ACT,On-time case processing,,Cases finalised <=24 months,%,,na,na,S684,1
+rogs2026,2026,7A.23,2016-17,ACT,On-time case processing,,Cases finalised <=24 months,%,95.7,95.7,,S683,1
+rogs2026,2026,7A.23,2017-18,ACT,On-time case processing,,Cases finalised <=24 months,%,94.6,94.6,,S682,1
+rogs2026,2026,7A.23,2018-19,ACT,On-time case processing,,Cases finalised <=24 months,%,91.8,91.8,,S681,1
+rogs2026,2026,7A.23,2019-20,ACT,On-time case processing,,Cases finalised <=24 months,%,90.5,90.5,,S680,1
+rogs2026,2026,7A.23,2020-21,ACT,On-time case processing,,Cases finalised <=24 months,%,95.1,95.1,,S679,1
+rogs2026,2026,7A.23,2021-22,ACT,On-time case processing,,Cases finalised <=24 months,%,95.4,95.4,,S678,1
+rogs2026,2026,7A.23,2022-23,ACT,On-time case processing,,Cases finalised <=24 months,%,87.6,87.6,,S677,1
+rogs2026,2026,7A.23,2023-24,ACT,On-time case processing,,Cases finalised <=24 months,%,78.4,78.4,,S676,1
+rogs2026,2026,7A.23,2024-25,ACT,On-time case processing,,Cases finalised <=24 months,%,84.4,84.4,,S675,1
+rogs2026,2026,7A.23,2015-16,ACT,On-time case processing,,Cases finalised <=24 months,no.,,na,na,S662,1
+rogs2026,2026,7A.23,2016-17,ACT,On-time case processing,,Cases finalised <=24 months,no.,292,292,,S661,1
+rogs2026,2026,7A.23,2017-18,ACT,On-time case processing,,Cases finalised <=24 months,no.,283,283,,S660,1
+rogs2026,2026,7A.23,2018-19,ACT,On-time case processing,,Cases finalised <=24 months,no.,313,313,,S659,1
+rogs2026,2026,7A.23,2019-20,ACT,On-time case processing,,Cases finalised <=24 months,no.,323,323,,S658,1
+rogs2026,2026,7A.23,2020-21,ACT,On-time case processing,,Cases finalised <=24 months,no.,254,254,,S657,1
+rogs2026,2026,7A.23,2021-22,ACT,On-time case processing,,Cases finalised <=24 months,no.,333,333,,S656,1
+rogs2026,2026,7A.23,2022-23,ACT,On-time case processing,,Cases finalised <=24 months,no.,212,212,,S655,1
+rogs2026,2026,7A.23,2023-24,ACT,On-time case processing,,Cases finalised <=24 months,no.,200,200,,S654,1
+rogs2026,2026,7A.23,2024-25,ACT,On-time case processing,,Cases finalised <=24 months,no.,228,228,,S653,1
+rogs2026,2026,7A.21,2015-16,NSW,Backlog,,Cases >12 months,%,21.7,21.7,,M838,0
+rogs2026,2026,7A.21,2016-17,NSW,Backlog,,Cases >12 months,%,23.5,23.5,,M837,0
+rogs2026,2026,7A.21,2017-18,NSW,Backlog,,Cases >12 months,%,25.2,25.2,,M836,0
+rogs2026,2026,7A.21,2018-19,NSW,Backlog,,Cases >12 months,%,21.9,21.9,,M835,0
+rogs2026,2026,7A.21,2019-20,NSW,Backlog,,Cases >12 months,%,24.7,24.7,,M834,0
+rogs2026,2026,7A.21,2020-21,NSW,Backlog,,Cases >12 months,%,29.3,29.3,,M833,0
+rogs2026,2026,7A.21,2021-22,NSW,Backlog,,Cases >12 months,%,27.1,27.1,,M832,0
+rogs2026,2026,7A.21,2022-23,NSW,Backlog,,Cases >12 months,%,30.1,30.1,,M831,0
+rogs2026,2026,7A.21,2023-24,NSW,Backlog,,Cases >12 months,%,33.1,33.1,,M830,0
+rogs2026,2026,7A.21,2024-25,NSW,Backlog,,Cases >12 months,%,36.6,36.6,,M829,0
+rogs2026,2026,7A.21,2015-16,NSW,Backlog,,Cases >12 months,no.,540,540,,M816,0
+rogs2026,2026,7A.21,2016-17,NSW,Backlog,,Cases >12 months,no.,669,669,,M815,0
+rogs2026,2026,7A.21,2017-18,NSW,Backlog,,Cases >12 months,no.,753,753,,M814,0
+rogs2026,2026,7A.21,2018-19,NSW,Backlog,,Cases >12 months,no.,776,776,,M813,0
+rogs2026,2026,7A.21,2019-20,NSW,Backlog,,Cases >12 months,no.,786,786,,M812,0
+rogs2026,2026,7A.21,2020-21,NSW,Backlog,,Cases >12 months,no.,972,972,,M811,0
+rogs2026,2026,7A.21,2021-22,NSW,Backlog,,Cases >12 months,no.,1090,1090,,M810,0
+rogs2026,2026,7A.21,2022-23,NSW,Backlog,,Cases >12 months,no.,1212,1212,,M809,0
+rogs2026,2026,7A.21,2023-24,NSW,Backlog,,Cases >12 months,no.,1410,1410,,M808,0
+rogs2026,2026,7A.21,2024-25,NSW,Backlog,,Cases >12 months,no.,1508,1508,,M807,0
+rogs2026,2026,7A.21,2015-16,NSW,Backlog,,Cases >24 months,%,8.6,8.6,,M849,0
+rogs2026,2026,7A.21,2016-17,NSW,Backlog,,Cases >24 months,%,9.9,9.9,,M848,0
+rogs2026,2026,7A.21,2017-18,NSW,Backlog,,Cases >24 months,%,11.5,11.5,,M847,0
+rogs2026,2026,7A.21,2018-19,NSW,Backlog,,Cases >24 months,%,10.3,10.3,,M846,0
+rogs2026,2026,7A.21,2019-20,NSW,Backlog,,Cases >24 months,%,11.1,11.1,,M845,0
+rogs2026,2026,7A.21,2020-21,NSW,Backlog,,Cases >24 months,%,12.1,12.1,,M844,0
+rogs2026,2026,7A.21,2021-22,NSW,Backlog,,Cases >24 months,%,12.6,12.6,,M843,0
+rogs2026,2026,7A.21,2022-23,NSW,Backlog,,Cases >24 months,%,15.3,15.3,,M842,0
+rogs2026,2026,7A.21,2023-24,NSW,Backlog,,Cases >24 months,%,21.2,21.2,,M841,0
+rogs2026,2026,7A.21,2024-25,NSW,Backlog,,Cases >24 months,%,13.0,13.0,,M840,0
+rogs2026,2026,7A.21,2015-16,NSW,Backlog,,Cases >24 months,no.,214,214,,M827,0
+rogs2026,2026,7A.21,2016-17,NSW,Backlog,,Cases >24 months,no.,283,283,,M826,0
+rogs2026,2026,7A.21,2017-18,NSW,Backlog,,Cases >24 months,no.,344,344,,M825,0
+rogs2026,2026,7A.21,2018-19,NSW,Backlog,,Cases >24 months,no.,365,365,,M824,0
+rogs2026,2026,7A.21,2019-20,NSW,Backlog,,Cases >24 months,no.,354,354,,M823,0
+rogs2026,2026,7A.21,2020-21,NSW,Backlog,,Cases >24 months,no.,402,402,,M822,0
+rogs2026,2026,7A.21,2021-22,NSW,Backlog,,Cases >24 months,no.,507,507,,M821,0
+rogs2026,2026,7A.21,2022-23,NSW,Backlog,,Cases >24 months,no.,616,616,,M820,0
+rogs2026,2026,7A.21,2023-24,NSW,Backlog,,Cases >24 months,no.,901,901,,M819,0
+rogs2026,2026,7A.21,2024-25,NSW,Backlog,,Cases >24 months,no.,537,537,,M818,0
+rogs2026,2026,7A.21,2015-16,NSW,Backlog,,Pending case load,no.,2487,2487,,M805,0
+rogs2026,2026,7A.21,2016-17,NSW,Backlog,,Pending case load,no.,2849,2849,,M804,0
+rogs2026,2026,7A.21,2017-18,NSW,Backlog,,Pending case load,no.,2991,2991,,M803,0
+rogs2026,2026,7A.21,2018-19,NSW,Backlog,,Pending case load,no.,3544,3544,,M802,0
+rogs2026,2026,7A.21,2019-20,NSW,Backlog,,Pending case load,no.,3176,3176,,M801,0
+rogs2026,2026,7A.21,2020-21,NSW,Backlog,,Pending case load,no.,3318,3318,,M800,0
+rogs2026,2026,7A.21,2021-22,NSW,Backlog,,Pending case load,no.,4024,4024,,M799,0
+rogs2026,2026,7A.21,2022-23,NSW,Backlog,,Pending case load,no.,4026,4026,,M798,0
+rogs2026,2026,7A.21,2023-24,NSW,Backlog,,Pending case load,no.,4259,4259,,M797,0
+rogs2026,2026,7A.21,2024-25,NSW,Backlog,,Pending case load,no.,4125,4125,,M796,0
+rogs2026,2026,7A.26,2015-16,NSW,Clearance indicator,,Clearance indicator,%,100.2,100.2,,M208,0
+rogs2026,2026,7A.26,2016-17,NSW,Clearance indicator,,Clearance indicator,%,94.5,94.5,,M207,0
+rogs2026,2026,7A.26,2017-18,NSW,Clearance indicator,,Clearance indicator,%,98.2,98.2,,M206,0
+rogs2026,2026,7A.26,2018-19,NSW,Clearance indicator,,Clearance indicator,%,91.9,91.9,,M205,0
+rogs2026,2026,7A.26,2019-20,NSW,Clearance indicator,,Clearance indicator,%,104.7,104.7,,M204,0
+rogs2026,2026,7A.26,2020-21,NSW,Clearance indicator,,Clearance indicator,%,99.5,99.5,,M203,0
+rogs2026,2026,7A.26,2021-22,NSW,Clearance indicator,,Clearance indicator,%,110.4,110.4,,M202,0
+rogs2026,2026,7A.26,2022-23,NSW,Clearance indicator,,Clearance indicator,%,99.9,99.9,,M201,0
+rogs2026,2026,7A.26,2023-24,NSW,Clearance indicator,,Clearance indicator,%,96.4,96.4,,M200,0
+rogs2026,2026,7A.26,2024-25,NSW,Clearance indicator,,Clearance indicator,%,102.0,102.0,,M199,0
+rogs2026,2026,7A.6,2015-16,NSW,Finalisations,Deaths reported,Deaths reported,no.,,na,na,M209,1
+rogs2026,2026,7A.6,2016-17,NSW,Finalisations,Deaths reported,Deaths reported,no.,,na,na,M208,2
+rogs2026,2026,7A.6,2017-18,NSW,Finalisations,Deaths reported,Deaths reported,no.,6294,6294,,M207,2
+rogs2026,2026,7A.6,2018-19,NSW,Finalisations,Deaths reported,Deaths reported,no.,6159,6159,,M206,2
+rogs2026,2026,7A.6,2019-20,NSW,Finalisations,Deaths reported,Deaths reported,no.,6862,6862,,M205,2
+rogs2026,2026,7A.6,2020-21,NSW,Finalisations,Deaths reported,Deaths reported,no.,6367,6367,,M204,2
+rogs2026,2026,7A.6,2021-22,NSW,Finalisations,Deaths reported,Deaths reported,no.,8117,8117,,M203,2
+rogs2026,2026,7A.6,2022-23,NSW,Finalisations,Deaths reported,Deaths reported,no.,7446,7446,,M202,2
+rogs2026,2026,7A.6,2023-24,NSW,Finalisations,Deaths reported,Deaths reported,no.,6949,6949,,M201,2
+rogs2026,2026,7A.6,2024-25,NSW,Finalisations,Deaths reported,Deaths reported,no.,7688,7688,,M200,2
+rogs2026,2026,7A.6,2015-16,NSW,Finalisations,Fires reported,Fires reported,no.,,na,na,M220,1
+rogs2026,2026,7A.6,2016-17,NSW,Finalisations,Fires reported,Fires reported,no.,,na,na,M219,2
+rogs2026,2026,7A.6,2017-18,NSW,Finalisations,Fires reported,Fires reported,no.,93,93,,M218,2
+rogs2026,2026,7A.6,2018-19,NSW,Finalisations,Fires reported,Fires reported,no.,107,107,,M217,2
+rogs2026,2026,7A.6,2019-20,NSW,Finalisations,Fires reported,Fires reported,no.,118,118,,M216,2
+rogs2026,2026,7A.6,2020-21,NSW,Finalisations,Fires reported,Fires reported,no.,74,74,,M215,2
+rogs2026,2026,7A.6,2021-22,NSW,Finalisations,Fires reported,Fires reported,no.,98,98,,M214,2
+rogs2026,2026,7A.6,2022-23,NSW,Finalisations,Fires reported,Fires reported,no.,89,89,,M213,2
+rogs2026,2026,7A.6,2023-24,NSW,Finalisations,Fires reported,Fires reported,no.,168,168,,M212,2
+rogs2026,2026,7A.6,2024-25,NSW,Finalisations,Fires reported,Fires reported,no.,63,63,,M211,2
+rogs2026,2026,7A.6,2015-16,NSW,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6166,6166,,M231,0
+rogs2026,2026,7A.6,2016-17,NSW,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,5991,5991,,M230,0
+rogs2026,2026,7A.6,2017-18,NSW,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6387,6387,,M229,0
+rogs2026,2026,7A.6,2018-19,NSW,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6266,6266,,M228,0
+rogs2026,2026,7A.6,2019-20,NSW,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6980,6980,,M227,0
+rogs2026,2026,7A.6,2020-21,NSW,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6441,6441,,M226,0
+rogs2026,2026,7A.6,2021-22,NSW,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,8215,8215,,M225,0
+rogs2026,2026,7A.6,2022-23,NSW,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7535,7535,,M224,0
+rogs2026,2026,7A.6,2023-24,NSW,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7117,7117,,M223,0
+rogs2026,2026,7A.6,2024-25,NSW,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7751,7751,,M222,0
+rogs2026,2026,7A.2,2015-16,NSW,Lodgments,Deaths reported,Deaths reported,no.,6030,6030,,M209,0
+rogs2026,2026,7A.2,2016-17,NSW,Lodgments,Deaths reported,Deaths reported,no.,6258,6258,,M208,0
+rogs2026,2026,7A.2,2017-18,NSW,Lodgments,Deaths reported,Deaths reported,no.,6401,6401,,M207,0
+rogs2026,2026,7A.2,2018-19,NSW,Lodgments,Deaths reported,Deaths reported,no.,6723,6723,,M206,0
+rogs2026,2026,7A.2,2019-20,NSW,Lodgments,Deaths reported,Deaths reported,no.,6506,6506,,M205,0
+rogs2026,2026,7A.2,2020-21,NSW,Lodgments,Deaths reported,Deaths reported,no.,6304,6304,,M204,0
+rogs2026,2026,7A.2,2021-22,NSW,Lodgments,Deaths reported,Deaths reported,no.,7330,7330,,M203,0
+rogs2026,2026,7A.2,2022-23,NSW,Lodgments,Deaths reported,Deaths reported,no.,7476,7476,,M202,0
+rogs2026,2026,7A.2,2023-24,NSW,Lodgments,Deaths reported,Deaths reported,no.,7342,7342,,M201,0
+rogs2026,2026,7A.2,2024-25,NSW,Lodgments,Deaths reported,Deaths reported,no.,7564,7564,,M200,0
+rogs2026,2026,7A.2,2015-16,NSW,Lodgments,Fires reported,Fires reported,no.,124,124,,M220,0
+rogs2026,2026,7A.2,2016-17,NSW,Lodgments,Fires reported,Fires reported,no.,85,85,,M219,0
+rogs2026,2026,7A.2,2017-18,NSW,Lodgments,Fires reported,Fires reported,no.,100,100,,M218,0
+rogs2026,2026,7A.2,2018-19,NSW,Lodgments,Fires reported,Fires reported,no.,93,93,,M217,0
+rogs2026,2026,7A.2,2019-20,NSW,Lodgments,Fires reported,Fires reported,no.,160,160,,M216,0
+rogs2026,2026,7A.2,2020-21,NSW,Lodgments,Fires reported,Fires reported,no.,171,171,,M215,0
+rogs2026,2026,7A.2,2021-22,NSW,Lodgments,Fires reported,Fires reported,no.,108,108,,M214,0
+rogs2026,2026,7A.2,2022-23,NSW,Lodgments,Fires reported,Fires reported,no.,68,68,,M213,0
+rogs2026,2026,7A.2,2023-24,NSW,Lodgments,Fires reported,Fires reported,no.,44,44,,M212,0
+rogs2026,2026,7A.2,2024-25,NSW,Lodgments,Fires reported,Fires reported,no.,38,38,,M211,0
+rogs2026,2026,7A.2,2015-16,NSW,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6154,6154,,M231,0
+rogs2026,2026,7A.2,2016-17,NSW,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6343,6343,,M230,0
+rogs2026,2026,7A.2,2017-18,NSW,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6501,6501,,M229,0
+rogs2026,2026,7A.2,2018-19,NSW,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6816,6816,,M228,0
+rogs2026,2026,7A.2,2019-20,NSW,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6666,6666,,M227,0
+rogs2026,2026,7A.2,2020-21,NSW,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6475,6475,,M226,0
+rogs2026,2026,7A.2,2021-22,NSW,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7438,7438,,M225,0
+rogs2026,2026,7A.2,2022-23,NSW,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7544,7544,,M224,0
+rogs2026,2026,7A.2,2023-24,NSW,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7386,7386,,M223,0
+rogs2026,2026,7A.2,2024-25,NSW,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7602,7602,,M222,0
+rogs2026,2026,7A.23,2015-16,NSW,On-time case processing,,Cases finalised <=12 months,%,,na,na,M673,1
+rogs2026,2026,7A.23,2016-17,NSW,On-time case processing,,Cases finalised <=12 months,%,89.9,89.9,,M672,1
+rogs2026,2026,7A.23,2017-18,NSW,On-time case processing,,Cases finalised <=12 months,%,89.4,89.4,,M671,1
+rogs2026,2026,7A.23,2018-19,NSW,On-time case processing,,Cases finalised <=12 months,%,86.2,86.2,,M670,1
+rogs2026,2026,7A.23,2019-20,NSW,On-time case processing,,Cases finalised <=12 months,%,83.6,83.6,,M669,1
+rogs2026,2026,7A.23,2020-21,NSW,On-time case processing,,Cases finalised <=12 months,%,87.5,87.5,,M668,1
+rogs2026,2026,7A.23,2021-22,NSW,On-time case processing,,Cases finalised <=12 months,%,88.3,88.3,,M667,1
+rogs2026,2026,7A.23,2022-23,NSW,On-time case processing,,Cases finalised <=12 months,%,84.7,84.7,,M666,1
+rogs2026,2026,7A.23,2023-24,NSW,On-time case processing,,Cases finalised <=12 months,%,78.7,78.7,,M665,1
+rogs2026,2026,7A.23,2024-25,NSW,On-time case processing,,Cases finalised <=12 months,%,78.0,78.0,,M664,1
+rogs2026,2026,7A.23,2015-16,NSW,On-time case processing,,Cases finalised <=12 months,no.,,na,na,M651,1
+rogs2026,2026,7A.23,2016-17,NSW,On-time case processing,,Cases finalised <=12 months,no.,5383,5383,,M650,1
+rogs2026,2026,7A.23,2017-18,NSW,On-time case processing,,Cases finalised <=12 months,no.,5708,5708,,M649,1
+rogs2026,2026,7A.23,2018-19,NSW,On-time case processing,,Cases finalised <=12 months,no.,5401,5401,,M648,1
+rogs2026,2026,7A.23,2019-20,NSW,On-time case processing,,Cases finalised <=12 months,no.,5833,5833,,M647,1
+rogs2026,2026,7A.23,2020-21,NSW,On-time case processing,,Cases finalised <=12 months,no.,5639,5639,,M646,1
+rogs2026,2026,7A.23,2021-22,NSW,On-time case processing,,Cases finalised <=12 months,no.,5952,5952,,M645,1
+rogs2026,2026,7A.23,2022-23,NSW,On-time case processing,,Cases finalised <=12 months,no.,6384,6384,,M644,1
+rogs2026,2026,7A.23,2023-24,NSW,On-time case processing,,Cases finalised <=12 months,no.,5598,5598,,M643,1
+rogs2026,2026,7A.23,2024-25,NSW,On-time case processing,,Cases finalised <=12 months,no.,6049,6049,,M642,1
+rogs2026,2026,7A.23,2015-16,NSW,On-time case processing,,Cases finalised <=24 months,%,,na,na,M684,1
+rogs2026,2026,7A.23,2016-17,NSW,On-time case processing,,Cases finalised <=24 months,%,98.0,98.0,,M683,1
+rogs2026,2026,7A.23,2017-18,NSW,On-time case processing,,Cases finalised <=24 months,%,97.5,97.5,,M682,1
+rogs2026,2026,7A.23,2018-19,NSW,On-time case processing,,Cases finalised <=24 months,%,96.5,96.5,,M681,1
+rogs2026,2026,7A.23,2019-20,NSW,On-time case processing,,Cases finalised <=24 months,%,97.0,97.0,,M680,1
+rogs2026,2026,7A.23,2020-21,NSW,On-time case processing,,Cases finalised <=24 months,%,96.6,96.6,,M679,1
+rogs2026,2026,7A.23,2021-22,NSW,On-time case processing,,Cases finalised <=24 months,%,96.8,96.8,,M678,1
+rogs2026,2026,7A.23,2022-23,NSW,On-time case processing,,Cases finalised <=24 months,%,96.4,96.4,,M677,1
+rogs2026,2026,7A.23,2023-24,NSW,On-time case processing,,Cases finalised <=24 months,%,94.3,94.3,,M676,1
+rogs2026,2026,7A.23,2024-25,NSW,On-time case processing,,Cases finalised <=24 months,%,94.6,94.6,,M675,1
+rogs2026,2026,7A.23,2015-16,NSW,On-time case processing,,Cases finalised <=24 months,no.,,na,na,M662,1
+rogs2026,2026,7A.23,2016-17,NSW,On-time case processing,,Cases finalised <=24 months,no.,5873,5873,,M661,1
+rogs2026,2026,7A.23,2017-18,NSW,On-time case processing,,Cases finalised <=24 months,no.,6226,6226,,M660,1
+rogs2026,2026,7A.23,2018-19,NSW,On-time case processing,,Cases finalised <=24 months,no.,6048,6048,,M659,1
+rogs2026,2026,7A.23,2019-20,NSW,On-time case processing,,Cases finalised <=24 months,no.,6770,6770,,M658,1
+rogs2026,2026,7A.23,2020-21,NSW,On-time case processing,,Cases finalised <=24 months,no.,6221,6221,,M657,1
+rogs2026,2026,7A.23,2021-22,NSW,On-time case processing,,Cases finalised <=24 months,no.,6528,6528,,M656,1
+rogs2026,2026,7A.23,2022-23,NSW,On-time case processing,,Cases finalised <=24 months,no.,7264,7264,,M655,1
+rogs2026,2026,7A.23,2023-24,NSW,On-time case processing,,Cases finalised <=24 months,no.,6710,6710,,M654,1
+rogs2026,2026,7A.23,2024-25,NSW,On-time case processing,,Cases finalised <=24 months,no.,7329,7329,,M653,1
+rogs2026,2026,7A.21,2015-16,NT,Backlog,,Cases >12 months,%,43.4,43.4,,T838,0
+rogs2026,2026,7A.21,2016-17,NT,Backlog,,Cases >12 months,%,31.6,31.6,,T837,0
+rogs2026,2026,7A.21,2017-18,NT,Backlog,,Cases >12 months,%,31.0,31.0,,T836,0
+rogs2026,2026,7A.21,2018-19,NT,Backlog,,Cases >12 months,%,30.9,30.9,,T835,0
+rogs2026,2026,7A.21,2019-20,NT,Backlog,,Cases >12 months,%,35.9,35.9,,T834,0
+rogs2026,2026,7A.21,2020-21,NT,Backlog,,Cases >12 months,%,30.0,30.0,,T833,0
+rogs2026,2026,7A.21,2021-22,NT,Backlog,,Cases >12 months,%,31.7,31.7,,T832,0
+rogs2026,2026,7A.21,2022-23,NT,Backlog,,Cases >12 months,%,29.4,29.4,,T831,0
+rogs2026,2026,7A.21,2023-24,NT,Backlog,,Cases >12 months,%,32.6,32.6,,T830,0
+rogs2026,2026,7A.21,2024-25,NT,Backlog,,Cases >12 months,%,29.8,29.8,,T829,0
+rogs2026,2026,7A.21,2015-16,NT,Backlog,,Cases >12 months,no.,132,132,,T816,0
+rogs2026,2026,7A.21,2016-17,NT,Backlog,,Cases >12 months,no.,87,87,,T815,0
+rogs2026,2026,7A.21,2017-18,NT,Backlog,,Cases >12 months,no.,113,113,,T814,0
+rogs2026,2026,7A.21,2018-19,NT,Backlog,,Cases >12 months,no.,101,101,,T813,0
+rogs2026,2026,7A.21,2019-20,NT,Backlog,,Cases >12 months,no.,103,103,,T812,0
+rogs2026,2026,7A.21,2020-21,NT,Backlog,,Cases >12 months,no.,94,94,,T811,0
+rogs2026,2026,7A.21,2021-22,NT,Backlog,,Cases >12 months,no.,115,115,,T810,0
+rogs2026,2026,7A.21,2022-23,NT,Backlog,,Cases >12 months,no.,112,112,,T809,0
+rogs2026,2026,7A.21,2023-24,NT,Backlog,,Cases >12 months,no.,120,120,,T808,0
+rogs2026,2026,7A.21,2024-25,NT,Backlog,,Cases >12 months,no.,136,136,,T807,0
+rogs2026,2026,7A.21,2015-16,NT,Backlog,,Cases >24 months,%,31.3,31.3,,T849,0
+rogs2026,2026,7A.21,2016-17,NT,Backlog,,Cases >24 months,%,23.3,23.3,,T848,0
+rogs2026,2026,7A.21,2017-18,NT,Backlog,,Cases >24 months,%,18.4,18.4,,T847,0
+rogs2026,2026,7A.21,2018-19,NT,Backlog,,Cases >24 months,%,19.3,19.3,,T846,0
+rogs2026,2026,7A.21,2019-20,NT,Backlog,,Cases >24 months,%,25.1,25.1,,T845,0
+rogs2026,2026,7A.21,2020-21,NT,Backlog,,Cases >24 months,%,22.7,22.7,,T844,0
+rogs2026,2026,7A.21,2021-22,NT,Backlog,,Cases >24 months,%,20.9,20.9,,T843,0
+rogs2026,2026,7A.21,2022-23,NT,Backlog,,Cases >24 months,%,15.5,15.5,,T842,0
+rogs2026,2026,7A.21,2023-24,NT,Backlog,,Cases >24 months,%,12.8,12.8,,T841,0
+rogs2026,2026,7A.21,2024-25,NT,Backlog,,Cases >24 months,%,11.2,11.2,,T840,0
+rogs2026,2026,7A.21,2015-16,NT,Backlog,,Cases >24 months,no.,95,95,,T827,0
+rogs2026,2026,7A.21,2016-17,NT,Backlog,,Cases >24 months,no.,64,64,,T826,0
+rogs2026,2026,7A.21,2017-18,NT,Backlog,,Cases >24 months,no.,67,67,,T825,0
+rogs2026,2026,7A.21,2018-19,NT,Backlog,,Cases >24 months,no.,63,63,,T824,0
+rogs2026,2026,7A.21,2019-20,NT,Backlog,,Cases >24 months,no.,72,72,,T823,0
+rogs2026,2026,7A.21,2020-21,NT,Backlog,,Cases >24 months,no.,71,71,,T822,0
+rogs2026,2026,7A.21,2021-22,NT,Backlog,,Cases >24 months,no.,76,76,,T821,0
+rogs2026,2026,7A.21,2022-23,NT,Backlog,,Cases >24 months,no.,59,59,,T820,0
+rogs2026,2026,7A.21,2023-24,NT,Backlog,,Cases >24 months,no.,47,47,,T819,0
+rogs2026,2026,7A.21,2024-25,NT,Backlog,,Cases >24 months,no.,51,51,,T818,0
+rogs2026,2026,7A.21,2015-16,NT,Backlog,,Pending case load,no.,304,304,,T805,0
+rogs2026,2026,7A.21,2016-17,NT,Backlog,,Pending case load,no.,275,275,,T804,0
+rogs2026,2026,7A.21,2017-18,NT,Backlog,,Pending case load,no.,365,365,,T803,0
+rogs2026,2026,7A.21,2018-19,NT,Backlog,,Pending case load,no.,327,327,,T802,0
+rogs2026,2026,7A.21,2019-20,NT,Backlog,,Pending case load,no.,287,287,,T801,0
+rogs2026,2026,7A.21,2020-21,NT,Backlog,,Pending case load,no.,313,313,,T800,0
+rogs2026,2026,7A.21,2021-22,NT,Backlog,,Pending case load,no.,363,363,,T799,0
+rogs2026,2026,7A.21,2022-23,NT,Backlog,,Pending case load,no.,381,381,,T798,0
+rogs2026,2026,7A.21,2023-24,NT,Backlog,,Pending case load,no.,368,368,,T797,0
+rogs2026,2026,7A.21,2024-25,NT,Backlog,,Pending case load,no.,457,457,,T796,0
+rogs2026,2026,7A.26,2015-16,NT,Clearance indicator,,Clearance indicator,%,115.1,115.1,,T208,0
+rogs2026,2026,7A.26,2016-17,NT,Clearance indicator,,Clearance indicator,%,118.5,118.5,,T207,0
+rogs2026,2026,7A.26,2017-18,NT,Clearance indicator,,Clearance indicator,%,78.2,78.2,,T206,0
+rogs2026,2026,7A.26,2018-19,NT,Clearance indicator,,Clearance indicator,%,110.1,110.1,,T205,0
+rogs2026,2026,7A.26,2019-20,NT,Clearance indicator,,Clearance indicator,%,124.2,124.2,,T204,0
+rogs2026,2026,7A.26,2020-21,NT,Clearance indicator,,Clearance indicator,%,102.1,102.1,,T203,0
+rogs2026,2026,7A.26,2021-22,NT,Clearance indicator,,Clearance indicator,%,80.7,80.7,,T202,0
+rogs2026,2026,7A.26,2022-23,NT,Clearance indicator,,Clearance indicator,%,96.9,96.9,,T201,0
+rogs2026,2026,7A.26,2023-24,NT,Clearance indicator,,Clearance indicator,%,86.4,86.4,,T200,0
+rogs2026,2026,7A.26,2024-25,NT,Clearance indicator,,Clearance indicator,%,93.4,93.4,,T199,0
+rogs2026,2026,7A.6,2015-16,NT,Finalisations,Deaths reported,Deaths reported,no.,305,305,,T209,0
+rogs2026,2026,7A.6,2016-17,NT,Finalisations,Deaths reported,Deaths reported,no.,333,333,,T208,0
+rogs2026,2026,7A.6,2017-18,NT,Finalisations,Deaths reported,Deaths reported,no.,241,241,,T207,0
+rogs2026,2026,7A.6,2018-19,NT,Finalisations,Deaths reported,Deaths reported,no.,349,349,,T206,0
+rogs2026,2026,7A.6,2019-20,NT,Finalisations,Deaths reported,Deaths reported,no.,344,344,,T205,0
+rogs2026,2026,7A.6,2020-21,NT,Finalisations,Deaths reported,Deaths reported,no.,287,287,,T204,0
+rogs2026,2026,7A.6,2021-22,NT,Finalisations,Deaths reported,Deaths reported,no.,305,305,,T203,0
+rogs2026,2026,7A.6,2022-23,NT,Finalisations,Deaths reported,Deaths reported,no.,345,345,,T202,0
+rogs2026,2026,7A.6,2023-24,NT,Finalisations,Deaths reported,Deaths reported,no.,338,338,,T201,0
+rogs2026,2026,7A.6,2024-25,NT,Finalisations,Deaths reported,Deaths reported,no.,352,352,,T200,0
+rogs2026,2026,7A.6,2015-16,NT,Finalisations,Fires reported,Fires reported,no.,,..,..,T220,1
+rogs2026,2026,7A.6,2016-17,NT,Finalisations,Fires reported,Fires reported,no.,,..,..,T219,2
+rogs2026,2026,7A.6,2017-18,NT,Finalisations,Fires reported,Fires reported,no.,,..,..,T218,3
+rogs2026,2026,7A.6,2018-19,NT,Finalisations,Fires reported,Fires reported,no.,,..,..,T217,4
+rogs2026,2026,7A.6,2019-20,NT,Finalisations,Fires reported,Fires reported,no.,,..,..,T216,5
+rogs2026,2026,7A.6,2020-21,NT,Finalisations,Fires reported,Fires reported,no.,,..,..,T215,6
+rogs2026,2026,7A.6,2021-22,NT,Finalisations,Fires reported,Fires reported,no.,,..,..,T214,7
+rogs2026,2026,7A.6,2022-23,NT,Finalisations,Fires reported,Fires reported,no.,,..,..,T213,8
+rogs2026,2026,7A.6,2023-24,NT,Finalisations,Fires reported,Fires reported,no.,,..,..,T212,9
+rogs2026,2026,7A.6,2024-25,NT,Finalisations,Fires reported,Fires reported,no.,,..,..,T211,10
+rogs2026,2026,7A.6,2015-16,NT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,305,305,,T231,0
+rogs2026,2026,7A.6,2016-17,NT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,333,333,,T230,0
+rogs2026,2026,7A.6,2017-18,NT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,241,241,,T229,0
+rogs2026,2026,7A.6,2018-19,NT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,349,349,,T228,0
+rogs2026,2026,7A.6,2019-20,NT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,344,344,,T227,0
+rogs2026,2026,7A.6,2020-21,NT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,287,287,,T226,0
+rogs2026,2026,7A.6,2021-22,NT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,305,305,,T225,0
+rogs2026,2026,7A.6,2022-23,NT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,345,345,,T224,0
+rogs2026,2026,7A.6,2023-24,NT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,338,338,,T223,0
+rogs2026,2026,7A.6,2024-25,NT,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,352,352,,T222,0
+rogs2026,2026,7A.2,2015-16,NT,Lodgments,Deaths reported,Deaths reported,no.,265,265,,T209,0
+rogs2026,2026,7A.2,2016-17,NT,Lodgments,Deaths reported,Deaths reported,no.,281,281,,T208,0
+rogs2026,2026,7A.2,2017-18,NT,Lodgments,Deaths reported,Deaths reported,no.,308,308,,T207,0
+rogs2026,2026,7A.2,2018-19,NT,Lodgments,Deaths reported,Deaths reported,no.,317,317,,T206,0
+rogs2026,2026,7A.2,2019-20,NT,Lodgments,Deaths reported,Deaths reported,no.,277,277,,T205,0
+rogs2026,2026,7A.2,2020-21,NT,Lodgments,Deaths reported,Deaths reported,no.,281,281,,T204,0
+rogs2026,2026,7A.2,2021-22,NT,Lodgments,Deaths reported,Deaths reported,no.,378,378,,T203,0
+rogs2026,2026,7A.2,2022-23,NT,Lodgments,Deaths reported,Deaths reported,no.,356,356,,T202,0
+rogs2026,2026,7A.2,2023-24,NT,Lodgments,Deaths reported,Deaths reported,no.,391,391,,T201,0
+rogs2026,2026,7A.2,2024-25,NT,Lodgments,Deaths reported,Deaths reported,no.,377,377,,T200,0
+rogs2026,2026,7A.2,2015-16,NT,Lodgments,Fires reported,Fires reported,no.,,..,..,T220,1
+rogs2026,2026,7A.2,2016-17,NT,Lodgments,Fires reported,Fires reported,no.,,..,..,T219,2
+rogs2026,2026,7A.2,2017-18,NT,Lodgments,Fires reported,Fires reported,no.,,..,..,T218,3
+rogs2026,2026,7A.2,2018-19,NT,Lodgments,Fires reported,Fires reported,no.,,..,..,T217,4
+rogs2026,2026,7A.2,2019-20,NT,Lodgments,Fires reported,Fires reported,no.,,..,..,T216,5
+rogs2026,2026,7A.2,2020-21,NT,Lodgments,Fires reported,Fires reported,no.,,..,..,T215,6
+rogs2026,2026,7A.2,2021-22,NT,Lodgments,Fires reported,Fires reported,no.,,..,..,T214,7
+rogs2026,2026,7A.2,2022-23,NT,Lodgments,Fires reported,Fires reported,no.,,..,..,T213,8
+rogs2026,2026,7A.2,2023-24,NT,Lodgments,Fires reported,Fires reported,no.,,..,..,T212,9
+rogs2026,2026,7A.2,2024-25,NT,Lodgments,Fires reported,Fires reported,no.,,..,..,T211,10
+rogs2026,2026,7A.2,2015-16,NT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,265,265,,T231,0
+rogs2026,2026,7A.2,2016-17,NT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,281,281,,T230,0
+rogs2026,2026,7A.2,2017-18,NT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,308,308,,T229,0
+rogs2026,2026,7A.2,2018-19,NT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,317,317,,T228,0
+rogs2026,2026,7A.2,2019-20,NT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,277,277,,T227,0
+rogs2026,2026,7A.2,2020-21,NT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,281,281,,T226,0
+rogs2026,2026,7A.2,2021-22,NT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,378,378,,T225,0
+rogs2026,2026,7A.2,2022-23,NT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,356,356,,T224,0
+rogs2026,2026,7A.2,2023-24,NT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,391,391,,T223,0
+rogs2026,2026,7A.2,2024-25,NT,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,377,377,,T222,0
+rogs2026,2026,7A.23,2015-16,NT,On-time case processing,,Cases finalised <=12 months,%,68.9,68.9,,T673,0
+rogs2026,2026,7A.23,2016-17,NT,On-time case processing,,Cases finalised <=12 months,%,72.7,72.7,,T672,0
+rogs2026,2026,7A.23,2017-18,NT,On-time case processing,,Cases finalised <=12 months,%,74.3,74.3,,T671,0
+rogs2026,2026,7A.23,2018-19,NT,On-time case processing,,Cases finalised <=12 months,%,68.2,68.2,,T670,0
+rogs2026,2026,7A.23,2019-20,NT,On-time case processing,,Cases finalised <=12 months,%,76.5,76.5,,T669,0
+rogs2026,2026,7A.23,2020-21,NT,On-time case processing,,Cases finalised <=12 months,%,76.3,76.3,,T668,0
+rogs2026,2026,7A.23,2021-22,NT,On-time case processing,,Cases finalised <=12 months,%,82.3,82.3,,T667,0
+rogs2026,2026,7A.23,2022-23,NT,On-time case processing,,Cases finalised <=12 months,%,82.3,82.3,,T666,0
+rogs2026,2026,7A.23,2023-24,NT,On-time case processing,,Cases finalised <=12 months,%,73.1,73.1,,T665,0
+rogs2026,2026,7A.23,2024-25,NT,On-time case processing,,Cases finalised <=12 months,%,68.8,68.8,,T664,0
+rogs2026,2026,7A.23,2015-16,NT,On-time case processing,,Cases finalised <=12 months,no.,210,210,,T651,0
+rogs2026,2026,7A.23,2016-17,NT,On-time case processing,,Cases finalised <=12 months,no.,242,242,,T650,0
+rogs2026,2026,7A.23,2017-18,NT,On-time case processing,,Cases finalised <=12 months,no.,179,179,,T649,0
+rogs2026,2026,7A.23,2018-19,NT,On-time case processing,,Cases finalised <=12 months,no.,238,238,,T648,0
+rogs2026,2026,7A.23,2019-20,NT,On-time case processing,,Cases finalised <=12 months,no.,263,263,,T647,0
+rogs2026,2026,7A.23,2020-21,NT,On-time case processing,,Cases finalised <=12 months,no.,219,219,,T646,0
+rogs2026,2026,7A.23,2021-22,NT,On-time case processing,,Cases finalised <=12 months,no.,251,251,,T645,0
+rogs2026,2026,7A.23,2022-23,NT,On-time case processing,,Cases finalised <=12 months,no.,284,284,,T644,0
+rogs2026,2026,7A.23,2023-24,NT,On-time case processing,,Cases finalised <=12 months,no.,247,247,,T643,0
+rogs2026,2026,7A.23,2024-25,NT,On-time case processing,,Cases finalised <=12 months,no.,242,242,,T642,0
+rogs2026,2026,7A.23,2015-16,NT,On-time case processing,,Cases finalised <=24 months,%,89.5,89.5,,T684,0
+rogs2026,2026,7A.23,2016-17,NT,On-time case processing,,Cases finalised <=24 months,%,93.1,93.1,,T683,0
+rogs2026,2026,7A.23,2017-18,NT,On-time case processing,,Cases finalised <=24 months,%,95.0,95.0,,T682,0
+rogs2026,2026,7A.23,2018-19,NT,On-time case processing,,Cases finalised <=24 months,%,92.6,92.6,,T681,0
+rogs2026,2026,7A.23,2019-20,NT,On-time case processing,,Cases finalised <=24 months,%,99.1,99.1,,T680,0
+rogs2026,2026,7A.23,2020-21,NT,On-time case processing,,Cases finalised <=24 months,%,91.6,91.6,,T679,0
+rogs2026,2026,7A.23,2021-22,NT,On-time case processing,,Cases finalised <=24 months,%,95.7,95.7,,T678,0
+rogs2026,2026,7A.23,2022-23,NT,On-time case processing,,Cases finalised <=24 months,%,96.8,96.8,,T677,0
+rogs2026,2026,7A.23,2023-24,NT,On-time case processing,,Cases finalised <=24 months,%,92.9,92.9,,T676,0
+rogs2026,2026,7A.23,2024-25,NT,On-time case processing,,Cases finalised <=24 months,%,90.6,90.6,,T675,0
+rogs2026,2026,7A.23,2015-16,NT,On-time case processing,,Cases finalised <=24 months,no.,273,273,,T662,0
+rogs2026,2026,7A.23,2016-17,NT,On-time case processing,,Cases finalised <=24 months,no.,310,310,,T661,0
+rogs2026,2026,7A.23,2017-18,NT,On-time case processing,,Cases finalised <=24 months,no.,229,229,,T660,0
+rogs2026,2026,7A.23,2018-19,NT,On-time case processing,,Cases finalised <=24 months,no.,323,323,,T659,0
+rogs2026,2026,7A.23,2019-20,NT,On-time case processing,,Cases finalised <=24 months,no.,341,341,,T658,0
+rogs2026,2026,7A.23,2020-21,NT,On-time case processing,,Cases finalised <=24 months,no.,263,263,,T657,0
+rogs2026,2026,7A.23,2021-22,NT,On-time case processing,,Cases finalised <=24 months,no.,292,292,,T656,0
+rogs2026,2026,7A.23,2022-23,NT,On-time case processing,,Cases finalised <=24 months,no.,334,334,,T655,0
+rogs2026,2026,7A.23,2023-24,NT,On-time case processing,,Cases finalised <=24 months,no.,314,314,,T654,0
+rogs2026,2026,7A.23,2024-25,NT,On-time case processing,,Cases finalised <=24 months,no.,319,319,,T653,0
+rogs2026,2026,7A.21,2015-16,Qld,Backlog,,Cases >12 months,%,33.2,33.2,,O838,0
+rogs2026,2026,7A.21,2016-17,Qld,Backlog,,Cases >12 months,%,36.9,36.9,,O837,0
+rogs2026,2026,7A.21,2017-18,Qld,Backlog,,Cases >12 months,%,39.0,39.0,,O836,0
+rogs2026,2026,7A.21,2018-19,Qld,Backlog,,Cases >12 months,%,40.0,40.0,,O835,0
+rogs2026,2026,7A.21,2019-20,Qld,Backlog,,Cases >12 months,%,36.8,36.8,,O834,0
+rogs2026,2026,7A.21,2020-21,Qld,Backlog,,Cases >12 months,%,35.9,35.9,,O833,0
+rogs2026,2026,7A.21,2021-22,Qld,Backlog,,Cases >12 months,%,37.8,37.8,,O832,0
+rogs2026,2026,7A.21,2022-23,Qld,Backlog,,Cases >12 months,%,35.8,35.8,,O831,0
+rogs2026,2026,7A.21,2023-24,Qld,Backlog,,Cases >12 months,%,43.9,43.9,,O830,0
+rogs2026,2026,7A.21,2024-25,Qld,Backlog,,Cases >12 months,%,42.6,42.6,,O829,0
+rogs2026,2026,7A.21,2015-16,Qld,Backlog,,Cases >12 months,no.,706,706,,O816,0
+rogs2026,2026,7A.21,2016-17,Qld,Backlog,,Cases >12 months,no.,991,991,,O815,0
+rogs2026,2026,7A.21,2017-18,Qld,Backlog,,Cases >12 months,no.,953,953,,O814,0
+rogs2026,2026,7A.21,2018-19,Qld,Backlog,,Cases >12 months,no.,1020,1020,,O813,0
+rogs2026,2026,7A.21,2019-20,Qld,Backlog,,Cases >12 months,no.,927,927,,O812,0
+rogs2026,2026,7A.21,2020-21,Qld,Backlog,,Cases >12 months,no.,842,842,,O811,0
+rogs2026,2026,7A.21,2021-22,Qld,Backlog,,Cases >12 months,no.,862,862,,O810,0
+rogs2026,2026,7A.21,2022-23,Qld,Backlog,,Cases >12 months,no.,1013,1013,,O809,0
+rogs2026,2026,7A.21,2023-24,Qld,Backlog,,Cases >12 months,no.,1259,1259,,O808,0
+rogs2026,2026,7A.21,2024-25,Qld,Backlog,,Cases >12 months,no.,960,960,,O807,0
+rogs2026,2026,7A.21,2015-16,Qld,Backlog,,Cases >24 months,%,13.6,13.6,,O849,0
+rogs2026,2026,7A.21,2016-17,Qld,Backlog,,Cases >24 months,%,16.6,16.6,,O848,0
+rogs2026,2026,7A.21,2017-18,Qld,Backlog,,Cases >24 months,%,17.7,17.7,,O847,0
+rogs2026,2026,7A.21,2018-19,Qld,Backlog,,Cases >24 months,%,17.6,17.6,,O846,0
+rogs2026,2026,7A.21,2019-20,Qld,Backlog,,Cases >24 months,%,14.8,14.8,,O845,0
+rogs2026,2026,7A.21,2020-21,Qld,Backlog,,Cases >24 months,%,14.2,14.2,,O844,0
+rogs2026,2026,7A.21,2021-22,Qld,Backlog,,Cases >24 months,%,14.8,14.8,,O843,0
+rogs2026,2026,7A.21,2022-23,Qld,Backlog,,Cases >24 months,%,17.7,17.7,,O842,0
+rogs2026,2026,7A.21,2023-24,Qld,Backlog,,Cases >24 months,%,17.5,17.5,,O841,0
+rogs2026,2026,7A.21,2024-25,Qld,Backlog,,Cases >24 months,%,21.5,21.5,,O840,0
+rogs2026,2026,7A.21,2015-16,Qld,Backlog,,Cases >24 months,no.,290,290,,O827,0
+rogs2026,2026,7A.21,2016-17,Qld,Backlog,,Cases >24 months,no.,445,445,,O826,0
+rogs2026,2026,7A.21,2017-18,Qld,Backlog,,Cases >24 months,no.,431,431,,O825,0
+rogs2026,2026,7A.21,2018-19,Qld,Backlog,,Cases >24 months,no.,448,448,,O824,0
+rogs2026,2026,7A.21,2019-20,Qld,Backlog,,Cases >24 months,no.,373,373,,O823,0
+rogs2026,2026,7A.21,2020-21,Qld,Backlog,,Cases >24 months,no.,333,333,,O822,0
+rogs2026,2026,7A.21,2021-22,Qld,Backlog,,Cases >24 months,no.,338,338,,O821,0
+rogs2026,2026,7A.21,2022-23,Qld,Backlog,,Cases >24 months,no.,502,502,,O820,0
+rogs2026,2026,7A.21,2023-24,Qld,Backlog,,Cases >24 months,no.,503,503,,O819,0
+rogs2026,2026,7A.21,2024-25,Qld,Backlog,,Cases >24 months,no.,484,484,,O818,0
+rogs2026,2026,7A.21,2015-16,Qld,Backlog,,Pending case load,no.,2127,2127,,O805,0
+rogs2026,2026,7A.21,2016-17,Qld,Backlog,,Pending case load,no.,2684,2684,,O804,0
+rogs2026,2026,7A.21,2017-18,Qld,Backlog,,Pending case load,no.,2441,2441,,O803,0
+rogs2026,2026,7A.21,2018-19,Qld,Backlog,,Pending case load,no.,2548,2548,,O802,0
+rogs2026,2026,7A.21,2019-20,Qld,Backlog,,Pending case load,no.,2519,2519,,O801,0
+rogs2026,2026,7A.21,2020-21,Qld,Backlog,,Pending case load,no.,2348,2348,,O800,0
+rogs2026,2026,7A.21,2021-22,Qld,Backlog,,Pending case load,no.,2281,2281,,O799,0
+rogs2026,2026,7A.21,2022-23,Qld,Backlog,,Pending case load,no.,2833,2833,,O798,0
+rogs2026,2026,7A.21,2023-24,Qld,Backlog,,Pending case load,no.,2867,2867,,O797,0
+rogs2026,2026,7A.21,2024-25,Qld,Backlog,,Pending case load,no.,2256,2256,,O796,0
+rogs2026,2026,7A.26,2015-16,Qld,Clearance indicator,,Clearance indicator,%,100.5,100.5,,O208,0
+rogs2026,2026,7A.26,2016-17,Qld,Clearance indicator,,Clearance indicator,%,89.7,89.7,,O207,0
+rogs2026,2026,7A.26,2017-18,Qld,Clearance indicator,,Clearance indicator,%,93.1,93.1,,O206,0
+rogs2026,2026,7A.26,2018-19,Qld,Clearance indicator,,Clearance indicator,%,101.1,101.1,,O205,0
+rogs2026,2026,7A.26,2019-20,Qld,Clearance indicator,,Clearance indicator,%,102.0,102.0,,O204,0
+rogs2026,2026,7A.26,2020-21,Qld,Clearance indicator,,Clearance indicator,%,102.3,102.3,,O203,0
+rogs2026,2026,7A.26,2021-22,Qld,Clearance indicator,,Clearance indicator,%,101.2,101.2,,O202,0
+rogs2026,2026,7A.26,2022-23,Qld,Clearance indicator,,Clearance indicator,%,91.9,91.9,,O201,0
+rogs2026,2026,7A.26,2023-24,Qld,Clearance indicator,,Clearance indicator,%,99.7,99.7,,O200,0
+rogs2026,2026,7A.26,2024-25,Qld,Clearance indicator,,Clearance indicator,%,110.6,110.6,,O199,0
+rogs2026,2026,7A.6,2015-16,Qld,Finalisations,Deaths reported,Deaths reported,no.,,na,na,O209,1
+rogs2026,2026,7A.6,2016-17,Qld,Finalisations,Deaths reported,Deaths reported,no.,,na,na,O208,2
+rogs2026,2026,7A.6,2017-18,Qld,Finalisations,Deaths reported,Deaths reported,no.,5403,5403,,O207,2
+rogs2026,2026,7A.6,2018-19,Qld,Finalisations,Deaths reported,Deaths reported,no.,5860,5860,,O206,2
+rogs2026,2026,7A.6,2019-20,Qld,Finalisations,Deaths reported,Deaths reported,no.,5744,5744,,O205,2
+rogs2026,2026,7A.6,2020-21,Qld,Finalisations,Deaths reported,Deaths reported,no.,5845,5845,,O204,2
+rogs2026,2026,7A.6,2021-22,Qld,Finalisations,Deaths reported,Deaths reported,no.,6115,6115,,O203,2
+rogs2026,2026,7A.6,2022-23,Qld,Finalisations,Deaths reported,Deaths reported,no.,5999,5999,,O202,2
+rogs2026,2026,7A.6,2023-24,Qld,Finalisations,Deaths reported,Deaths reported,no.,6055,6055,,O201,2
+rogs2026,2026,7A.6,2024-25,Qld,Finalisations,Deaths reported,Deaths reported,no.,6623,6623,,O200,2
+rogs2026,2026,7A.6,2015-16,Qld,Finalisations,Fires reported,Fires reported,no.,,na,na,O220,1
+rogs2026,2026,7A.6,2016-17,Qld,Finalisations,Fires reported,Fires reported,no.,,na,na,O219,2
+rogs2026,2026,7A.6,2017-18,Qld,Finalisations,Fires reported,Fires reported,no.,,..,..,O218,3
+rogs2026,2026,7A.6,2018-19,Qld,Finalisations,Fires reported,Fires reported,no.,,..,..,O217,4
+rogs2026,2026,7A.6,2019-20,Qld,Finalisations,Fires reported,Fires reported,no.,,..,..,O216,5
+rogs2026,2026,7A.6,2020-21,Qld,Finalisations,Fires reported,Fires reported,no.,,..,..,O215,6
+rogs2026,2026,7A.6,2021-22,Qld,Finalisations,Fires reported,Fires reported,no.,,..,..,O214,7
+rogs2026,2026,7A.6,2022-23,Qld,Finalisations,Fires reported,Fires reported,no.,,..,..,O213,8
+rogs2026,2026,7A.6,2023-24,Qld,Finalisations,Fires reported,Fires reported,no.,,..,..,O212,9
+rogs2026,2026,7A.6,2024-25,Qld,Finalisations,Fires reported,Fires reported,no.,,..,..,O211,10
+rogs2026,2026,7A.6,2015-16,Qld,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,5313,5313,,O231,0
+rogs2026,2026,7A.6,2016-17,Qld,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,5014,5014,,O230,0
+rogs2026,2026,7A.6,2017-18,Qld,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,5403,5403,,O229,0
+rogs2026,2026,7A.6,2018-19,Qld,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,5860,5860,,O228,0
+rogs2026,2026,7A.6,2019-20,Qld,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,5744,5744,,O227,0
+rogs2026,2026,7A.6,2020-21,Qld,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,5845,5845,,O226,0
+rogs2026,2026,7A.6,2021-22,Qld,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6115,6115,,O225,0
+rogs2026,2026,7A.6,2022-23,Qld,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,5999,5999,,O224,0
+rogs2026,2026,7A.6,2023-24,Qld,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6055,6055,,O223,0
+rogs2026,2026,7A.6,2024-25,Qld,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6623,6623,,O222,0
+rogs2026,2026,7A.2,2015-16,Qld,Lodgments,Deaths reported,Deaths reported,no.,5287,5287,,O209,0
+rogs2026,2026,7A.2,2016-17,Qld,Lodgments,Deaths reported,Deaths reported,no.,5587,5587,,O208,0
+rogs2026,2026,7A.2,2017-18,Qld,Lodgments,Deaths reported,Deaths reported,no.,5801,5801,,O207,0
+rogs2026,2026,7A.2,2018-19,Qld,Lodgments,Deaths reported,Deaths reported,no.,5797,5797,,O206,0
+rogs2026,2026,7A.2,2019-20,Qld,Lodgments,Deaths reported,Deaths reported,no.,5631,5631,,O205,0
+rogs2026,2026,7A.2,2020-21,Qld,Lodgments,Deaths reported,Deaths reported,no.,5714,5714,,O204,0
+rogs2026,2026,7A.2,2021-22,Qld,Lodgments,Deaths reported,Deaths reported,no.,6044,6044,,O203,0
+rogs2026,2026,7A.2,2022-23,Qld,Lodgments,Deaths reported,Deaths reported,no.,6530,6530,,O202,0
+rogs2026,2026,7A.2,2023-24,Qld,Lodgments,Deaths reported,Deaths reported,no.,6071,6071,,O201,0
+rogs2026,2026,7A.2,2024-25,Qld,Lodgments,Deaths reported,Deaths reported,no.,5990,5990,,O200,0
+rogs2026,2026,7A.2,2015-16,Qld,Lodgments,Fires reported,Fires reported,no.,,..,..,O220,1
+rogs2026,2026,7A.2,2016-17,Qld,Lodgments,Fires reported,Fires reported,no.,,..,..,O219,2
+rogs2026,2026,7A.2,2017-18,Qld,Lodgments,Fires reported,Fires reported,no.,,..,..,O218,3
+rogs2026,2026,7A.2,2018-19,Qld,Lodgments,Fires reported,Fires reported,no.,,..,..,O217,4
+rogs2026,2026,7A.2,2019-20,Qld,Lodgments,Fires reported,Fires reported,no.,,..,..,O216,5
+rogs2026,2026,7A.2,2020-21,Qld,Lodgments,Fires reported,Fires reported,no.,,..,..,O215,6
+rogs2026,2026,7A.2,2021-22,Qld,Lodgments,Fires reported,Fires reported,no.,,..,..,O214,7
+rogs2026,2026,7A.2,2022-23,Qld,Lodgments,Fires reported,Fires reported,no.,,..,..,O213,8
+rogs2026,2026,7A.2,2023-24,Qld,Lodgments,Fires reported,Fires reported,no.,,..,..,O212,9
+rogs2026,2026,7A.2,2024-25,Qld,Lodgments,Fires reported,Fires reported,no.,,..,..,O211,10
+rogs2026,2026,7A.2,2015-16,Qld,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,5287,5287,,O231,0
+rogs2026,2026,7A.2,2016-17,Qld,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,5587,5587,,O230,0
+rogs2026,2026,7A.2,2017-18,Qld,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,5801,5801,,O229,0
+rogs2026,2026,7A.2,2018-19,Qld,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,5797,5797,,O228,0
+rogs2026,2026,7A.2,2019-20,Qld,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,5631,5631,,O227,0
+rogs2026,2026,7A.2,2020-21,Qld,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,5714,5714,,O226,0
+rogs2026,2026,7A.2,2021-22,Qld,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6044,6044,,O225,0
+rogs2026,2026,7A.2,2022-23,Qld,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6530,6530,,O224,0
+rogs2026,2026,7A.2,2023-24,Qld,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6071,6071,,O223,0
+rogs2026,2026,7A.2,2024-25,Qld,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,5990,5990,,O222,0
+rogs2026,2026,7A.23,2015-16,Qld,On-time case processing,,Cases finalised <=12 months,%,90.2,90.2,,O673,0
+rogs2026,2026,7A.23,2016-17,Qld,On-time case processing,,Cases finalised <=12 months,%,91.0,91.0,,O672,0
+rogs2026,2026,7A.23,2017-18,Qld,On-time case processing,,Cases finalised <=12 months,%,85.7,85.7,,O671,0
+rogs2026,2026,7A.23,2018-19,Qld,On-time case processing,,Cases finalised <=12 months,%,81.4,81.4,,O670,0
+rogs2026,2026,7A.23,2019-20,Qld,On-time case processing,,Cases finalised <=12 months,%,80.4,80.4,,O669,0
+rogs2026,2026,7A.23,2020-21,Qld,On-time case processing,,Cases finalised <=12 months,%,82.4,82.4,,O668,0
+rogs2026,2026,7A.23,2021-22,Qld,On-time case processing,,Cases finalised <=12 months,%,85.0,85.0,,O667,0
+rogs2026,2026,7A.23,2022-23,Qld,On-time case processing,,Cases finalised <=12 months,%,89.0,89.0,,O666,0
+rogs2026,2026,7A.23,2023-24,Qld,On-time case processing,,Cases finalised <=12 months,%,82.4,82.4,,O665,0
+rogs2026,2026,7A.23,2024-25,Qld,On-time case processing,,Cases finalised <=12 months,%,83.0,83.0,,O664,0
+rogs2026,2026,7A.23,2015-16,Qld,On-time case processing,,Cases finalised <=12 months,no.,4794,4794,,O651,0
+rogs2026,2026,7A.23,2016-17,Qld,On-time case processing,,Cases finalised <=12 months,no.,4562,4562,,O650,0
+rogs2026,2026,7A.23,2017-18,Qld,On-time case processing,,Cases finalised <=12 months,no.,4629,4629,,O649,0
+rogs2026,2026,7A.23,2018-19,Qld,On-time case processing,,Cases finalised <=12 months,no.,4772,4772,,O648,0
+rogs2026,2026,7A.23,2019-20,Qld,On-time case processing,,Cases finalised <=12 months,no.,4620,4620,,O647,0
+rogs2026,2026,7A.23,2020-21,Qld,On-time case processing,,Cases finalised <=12 months,no.,4814,4814,,O646,0
+rogs2026,2026,7A.23,2021-22,Qld,On-time case processing,,Cases finalised <=12 months,no.,5200,5200,,O645,0
+rogs2026,2026,7A.23,2022-23,Qld,On-time case processing,,Cases finalised <=12 months,no.,5339,5339,,O644,0
+rogs2026,2026,7A.23,2023-24,Qld,On-time case processing,,Cases finalised <=12 months,no.,4987,4987,,O643,0
+rogs2026,2026,7A.23,2024-25,Qld,On-time case processing,,Cases finalised <=12 months,no.,5495,5495,,O642,0
+rogs2026,2026,7A.23,2015-16,Qld,On-time case processing,,Cases finalised <=24 months,%,96.9,96.9,,O684,0
+rogs2026,2026,7A.23,2016-17,Qld,On-time case processing,,Cases finalised <=24 months,%,97.3,97.3,,O683,0
+rogs2026,2026,7A.23,2017-18,Qld,On-time case processing,,Cases finalised <=24 months,%,95.0,95.0,,O682,0
+rogs2026,2026,7A.23,2018-19,Qld,On-time case processing,,Cases finalised <=24 months,%,94.4,94.4,,O681,0
+rogs2026,2026,7A.23,2019-20,Qld,On-time case processing,,Cases finalised <=24 months,%,93.1,93.1,,O680,0
+rogs2026,2026,7A.23,2020-21,Qld,On-time case processing,,Cases finalised <=24 months,%,95.1,95.1,,O679,0
+rogs2026,2026,7A.23,2021-22,Qld,On-time case processing,,Cases finalised <=24 months,%,95.6,95.6,,O678,0
+rogs2026,2026,7A.23,2022-23,Qld,On-time case processing,,Cases finalised <=24 months,%,96.7,96.7,,O677,0
+rogs2026,2026,7A.23,2023-24,Qld,On-time case processing,,Cases finalised <=24 months,%,93.3,93.3,,O676,0
+rogs2026,2026,7A.23,2024-25,Qld,On-time case processing,,Cases finalised <=24 months,%,94.2,94.2,,O675,0
+rogs2026,2026,7A.23,2015-16,Qld,On-time case processing,,Cases finalised <=24 months,no.,5149,5149,,O662,0
+rogs2026,2026,7A.23,2016-17,Qld,On-time case processing,,Cases finalised <=24 months,no.,4877,4877,,O661,0
+rogs2026,2026,7A.23,2017-18,Qld,On-time case processing,,Cases finalised <=24 months,no.,5132,5132,,O660,0
+rogs2026,2026,7A.23,2018-19,Qld,On-time case processing,,Cases finalised <=24 months,no.,5534,5534,,O659,0
+rogs2026,2026,7A.23,2019-20,Qld,On-time case processing,,Cases finalised <=24 months,no.,5346,5346,,O658,0
+rogs2026,2026,7A.23,2020-21,Qld,On-time case processing,,Cases finalised <=24 months,no.,5556,5556,,O657,0
+rogs2026,2026,7A.23,2021-22,Qld,On-time case processing,,Cases finalised <=24 months,no.,5848,5848,,O656,0
+rogs2026,2026,7A.23,2022-23,Qld,On-time case processing,,Cases finalised <=24 months,no.,5800,5800,,O655,0
+rogs2026,2026,7A.23,2023-24,Qld,On-time case processing,,Cases finalised <=24 months,no.,5648,5648,,O654,0
+rogs2026,2026,7A.23,2024-25,Qld,On-time case processing,,Cases finalised <=24 months,no.,6241,6241,,O653,0
+rogs2026,2026,7A.21,2015-16,SA,Backlog,,Cases >12 months,%,35.1,35.1,,Q838,0
+rogs2026,2026,7A.21,2016-17,SA,Backlog,,Cases >12 months,%,37.0,37.0,,Q837,0
+rogs2026,2026,7A.21,2017-18,SA,Backlog,,Cases >12 months,%,36.7,36.7,,Q836,0
+rogs2026,2026,7A.21,2018-19,SA,Backlog,,Cases >12 months,%,33.9,33.9,,Q835,0
+rogs2026,2026,7A.21,2019-20,SA,Backlog,,Cases >12 months,%,38.5,38.5,,Q834,0
+rogs2026,2026,7A.21,2020-21,SA,Backlog,,Cases >12 months,%,41.6,41.6,,Q833,0
+rogs2026,2026,7A.21,2021-22,SA,Backlog,,Cases >12 months,%,38.3,38.3,,Q832,0
+rogs2026,2026,7A.21,2022-23,SA,Backlog,,Cases >12 months,%,32.2,32.2,,Q831,0
+rogs2026,2026,7A.21,2023-24,SA,Backlog,,Cases >12 months,%,37.0,37.0,,Q830,0
+rogs2026,2026,7A.21,2024-25,SA,Backlog,,Cases >12 months,%,39.5,39.5,,Q829,0
+rogs2026,2026,7A.21,2015-16,SA,Backlog,,Cases >12 months,no.,720,720,,Q816,0
+rogs2026,2026,7A.21,2016-17,SA,Backlog,,Cases >12 months,no.,917,917,,Q815,0
+rogs2026,2026,7A.21,2017-18,SA,Backlog,,Cases >12 months,no.,826,826,,Q814,0
+rogs2026,2026,7A.21,2018-19,SA,Backlog,,Cases >12 months,no.,755,755,,Q813,0
+rogs2026,2026,7A.21,2019-20,SA,Backlog,,Cases >12 months,no.,936,936,,Q812,0
+rogs2026,2026,7A.21,2020-21,SA,Backlog,,Cases >12 months,no.,950,950,,Q811,0
+rogs2026,2026,7A.21,2021-22,SA,Backlog,,Cases >12 months,no.,1013,1013,,Q810,0
+rogs2026,2026,7A.21,2022-23,SA,Backlog,,Cases >12 months,no.,895,895,,Q809,0
+rogs2026,2026,7A.21,2023-24,SA,Backlog,,Cases >12 months,no.,1098,1098,,Q808,0
+rogs2026,2026,7A.21,2024-25,SA,Backlog,,Cases >12 months,no.,1040,1040,,Q807,0
+rogs2026,2026,7A.21,2015-16,SA,Backlog,,Cases >24 months,%,11.2,11.2,,Q849,0
+rogs2026,2026,7A.21,2016-17,SA,Backlog,,Cases >24 months,%,13.1,13.1,,Q848,0
+rogs2026,2026,7A.21,2017-18,SA,Backlog,,Cases >24 months,%,17.1,17.1,,Q847,0
+rogs2026,2026,7A.21,2018-19,SA,Backlog,,Cases >24 months,%,11.4,11.4,,Q846,0
+rogs2026,2026,7A.21,2019-20,SA,Backlog,,Cases >24 months,%,8.0,8.0,,Q845,0
+rogs2026,2026,7A.21,2020-21,SA,Backlog,,Cases >24 months,%,9.6,9.6,,Q844,0
+rogs2026,2026,7A.21,2021-22,SA,Backlog,,Cases >24 months,%,11.9,11.9,,Q843,0
+rogs2026,2026,7A.21,2022-23,SA,Backlog,,Cases >24 months,%,12.1,12.1,,Q842,0
+rogs2026,2026,7A.21,2023-24,SA,Backlog,,Cases >24 months,%,13.4,13.4,,Q841,0
+rogs2026,2026,7A.21,2024-25,SA,Backlog,,Cases >24 months,%,19.4,19.4,,Q840,0
+rogs2026,2026,7A.21,2015-16,SA,Backlog,,Cases >24 months,no.,230,230,,Q827,0
+rogs2026,2026,7A.21,2016-17,SA,Backlog,,Cases >24 months,no.,324,324,,Q826,0
+rogs2026,2026,7A.21,2017-18,SA,Backlog,,Cases >24 months,no.,384,384,,Q825,0
+rogs2026,2026,7A.21,2018-19,SA,Backlog,,Cases >24 months,no.,255,255,,Q824,0
+rogs2026,2026,7A.21,2019-20,SA,Backlog,,Cases >24 months,no.,194,194,,Q823,0
+rogs2026,2026,7A.21,2020-21,SA,Backlog,,Cases >24 months,no.,219,219,,Q822,0
+rogs2026,2026,7A.21,2021-22,SA,Backlog,,Cases >24 months,no.,314,314,,Q821,0
+rogs2026,2026,7A.21,2022-23,SA,Backlog,,Cases >24 months,no.,336,336,,Q820,0
+rogs2026,2026,7A.21,2023-24,SA,Backlog,,Cases >24 months,no.,398,398,,Q819,0
+rogs2026,2026,7A.21,2024-25,SA,Backlog,,Cases >24 months,no.,511,511,,Q818,0
+rogs2026,2026,7A.21,2015-16,SA,Backlog,,Pending case load,no.,2050,2050,,Q805,0
+rogs2026,2026,7A.21,2016-17,SA,Backlog,,Pending case load,no.,2478,2478,,Q804,0
+rogs2026,2026,7A.21,2017-18,SA,Backlog,,Pending case load,no.,2251,2251,,Q803,0
+rogs2026,2026,7A.21,2018-19,SA,Backlog,,Pending case load,no.,2228,2228,,Q802,0
+rogs2026,2026,7A.21,2019-20,SA,Backlog,,Pending case load,no.,2429,2429,,Q801,0
+rogs2026,2026,7A.21,2020-21,SA,Backlog,,Pending case load,no.,2285,2285,,Q800,0
+rogs2026,2026,7A.21,2021-22,SA,Backlog,,Pending case load,no.,2644,2644,,Q799,0
+rogs2026,2026,7A.21,2022-23,SA,Backlog,,Pending case load,no.,2781,2781,,Q798,0
+rogs2026,2026,7A.21,2023-24,SA,Backlog,,Pending case load,no.,2968,2968,,Q797,0
+rogs2026,2026,7A.21,2024-25,SA,Backlog,,Pending case load,no.,2635,2635,,Q796,0
+rogs2026,2026,7A.26,2015-16,SA,Clearance indicator,,Clearance indicator,%,89.8,89.8,,Q208,0
+rogs2026,2026,7A.26,2016-17,SA,Clearance indicator,,Clearance indicator,%,72.9,72.9,,Q207,0
+rogs2026,2026,7A.26,2017-18,SA,Clearance indicator,,Clearance indicator,%,108.4,108.4,,Q206,0
+rogs2026,2026,7A.26,2018-19,SA,Clearance indicator,,Clearance indicator,%,101.2,101.2,,Q205,0
+rogs2026,2026,7A.26,2019-20,SA,Clearance indicator,,Clearance indicator,%,92.7,92.7,,Q204,0
+rogs2026,2026,7A.26,2020-21,SA,Clearance indicator,,Clearance indicator,%,104.8,104.8,,Q203,0
+rogs2026,2026,7A.26,2021-22,SA,Clearance indicator,,Clearance indicator,%,87.0,87.0,,Q202,0
+rogs2026,2026,7A.26,2022-23,SA,Clearance indicator,,Clearance indicator,%,95.8,95.8,,Q201,0
+rogs2026,2026,7A.26,2023-24,SA,Clearance indicator,,Clearance indicator,%,93.4,93.4,,Q200,0
+rogs2026,2026,7A.26,2024-25,SA,Clearance indicator,,Clearance indicator,%,108.5,108.5,,Q199,0
+rogs2026,2026,7A.6,2015-16,SA,Finalisations,Deaths reported,Deaths reported,no.,,na,na,Q209,1
+rogs2026,2026,7A.6,2016-17,SA,Finalisations,Deaths reported,Deaths reported,no.,,na,na,Q208,2
+rogs2026,2026,7A.6,2017-18,SA,Finalisations,Deaths reported,Deaths reported,no.,2818,2818,,Q207,2
+rogs2026,2026,7A.6,2018-19,SA,Finalisations,Deaths reported,Deaths reported,no.,2720,2720,,Q206,2
+rogs2026,2026,7A.6,2019-20,SA,Finalisations,Deaths reported,Deaths reported,no.,2458,2458,,Q205,2
+rogs2026,2026,7A.6,2020-21,SA,Finalisations,Deaths reported,Deaths reported,no.,2868,2868,,Q204,2
+rogs2026,2026,7A.6,2021-22,SA,Finalisations,Deaths reported,Deaths reported,no.,2674,2674,,Q203,2
+rogs2026,2026,7A.6,2022-23,SA,Finalisations,Deaths reported,Deaths reported,no.,3201,3201,,Q202,2
+rogs2026,2026,7A.6,2023-24,SA,Finalisations,Deaths reported,Deaths reported,no.,3261,3261,,Q201,2
+rogs2026,2026,7A.6,2024-25,SA,Finalisations,Deaths reported,Deaths reported,no.,4174,4174,,Q200,2
+rogs2026,2026,7A.6,2015-16,SA,Finalisations,Fires reported,Fires reported,no.,,na,na,Q220,1
+rogs2026,2026,7A.6,2016-17,SA,Finalisations,Fires reported,Fires reported,no.,,na,na,Q219,2
+rogs2026,2026,7A.6,2017-18,SA,Finalisations,Fires reported,Fires reported,no.,0,0,,Q218,2
+rogs2026,2026,7A.6,2018-19,SA,Finalisations,Fires reported,Fires reported,no.,0,0,,Q217,2
+rogs2026,2026,7A.6,2019-20,SA,Finalisations,Fires reported,Fires reported,no.,0,0,,Q216,2
+rogs2026,2026,7A.6,2020-21,SA,Finalisations,Fires reported,Fires reported,no.,0,0,,Q215,2
+rogs2026,2026,7A.6,2021-22,SA,Finalisations,Fires reported,Fires reported,no.,0,0,,Q214,2
+rogs2026,2026,7A.6,2022-23,SA,Finalisations,Fires reported,Fires reported,no.,0,0,,Q213,2
+rogs2026,2026,7A.6,2023-24,SA,Finalisations,Fires reported,Fires reported,no.,0,0,,Q212,2
+rogs2026,2026,7A.6,2024-25,SA,Finalisations,Fires reported,Fires reported,no.,0,0,,Q211,2
+rogs2026,2026,7A.6,2015-16,SA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2181,2181,,Q231,0
+rogs2026,2026,7A.6,2016-17,SA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,1850,1850,,Q230,0
+rogs2026,2026,7A.6,2017-18,SA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2818,2818,,Q229,0
+rogs2026,2026,7A.6,2018-19,SA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2720,2720,,Q228,0
+rogs2026,2026,7A.6,2019-20,SA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2458,2458,,Q227,0
+rogs2026,2026,7A.6,2020-21,SA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2868,2868,,Q226,0
+rogs2026,2026,7A.6,2021-22,SA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2674,2674,,Q225,0
+rogs2026,2026,7A.6,2022-23,SA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,3201,3201,,Q224,0
+rogs2026,2026,7A.6,2023-24,SA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,3261,3261,,Q223,0
+rogs2026,2026,7A.6,2024-25,SA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,4174,4174,,Q222,0
+rogs2026,2026,7A.2,2015-16,SA,Lodgments,Deaths reported,Deaths reported,no.,2430,2430,,Q209,0
+rogs2026,2026,7A.2,2016-17,SA,Lodgments,Deaths reported,Deaths reported,no.,2537,2537,,Q208,0
+rogs2026,2026,7A.2,2017-18,SA,Lodgments,Deaths reported,Deaths reported,no.,2599,2599,,Q207,0
+rogs2026,2026,7A.2,2018-19,SA,Lodgments,Deaths reported,Deaths reported,no.,2687,2687,,Q206,0
+rogs2026,2026,7A.2,2019-20,SA,Lodgments,Deaths reported,Deaths reported,no.,2651,2651,,Q205,0
+rogs2026,2026,7A.2,2020-21,SA,Lodgments,Deaths reported,Deaths reported,no.,2736,2736,,Q204,0
+rogs2026,2026,7A.2,2021-22,SA,Lodgments,Deaths reported,Deaths reported,no.,3074,3074,,Q203,0
+rogs2026,2026,7A.2,2022-23,SA,Lodgments,Deaths reported,Deaths reported,no.,3340,3340,,Q202,0
+rogs2026,2026,7A.2,2023-24,SA,Lodgments,Deaths reported,Deaths reported,no.,3493,3493,,Q201,0
+rogs2026,2026,7A.2,2024-25,SA,Lodgments,Deaths reported,Deaths reported,no.,3848,3848,,Q200,0
+rogs2026,2026,7A.2,2015-16,SA,Lodgments,Fires reported,Fires reported,no.,,..,..,Q220,1
+rogs2026,2026,7A.2,2016-17,SA,Lodgments,Fires reported,Fires reported,no.,,..,..,Q219,2
+rogs2026,2026,7A.2,2017-18,SA,Lodgments,Fires reported,Fires reported,no.,,..,..,Q218,3
+rogs2026,2026,7A.2,2018-19,SA,Lodgments,Fires reported,Fires reported,no.,,..,..,Q217,4
+rogs2026,2026,7A.2,2019-20,SA,Lodgments,Fires reported,Fires reported,no.,,..,..,Q216,5
+rogs2026,2026,7A.2,2020-21,SA,Lodgments,Fires reported,Fires reported,no.,,..,..,Q215,6
+rogs2026,2026,7A.2,2021-22,SA,Lodgments,Fires reported,Fires reported,no.,,..,..,Q214,7
+rogs2026,2026,7A.2,2022-23,SA,Lodgments,Fires reported,Fires reported,no.,,..,..,Q213,8
+rogs2026,2026,7A.2,2023-24,SA,Lodgments,Fires reported,Fires reported,no.,,..,..,Q212,9
+rogs2026,2026,7A.2,2024-25,SA,Lodgments,Fires reported,Fires reported,no.,,..,..,Q211,10
+rogs2026,2026,7A.2,2015-16,SA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2430,2430,,Q231,0
+rogs2026,2026,7A.2,2016-17,SA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2537,2537,,Q230,0
+rogs2026,2026,7A.2,2017-18,SA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2599,2599,,Q229,0
+rogs2026,2026,7A.2,2018-19,SA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2687,2687,,Q228,0
+rogs2026,2026,7A.2,2019-20,SA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2651,2651,,Q227,0
+rogs2026,2026,7A.2,2020-21,SA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2736,2736,,Q226,0
+rogs2026,2026,7A.2,2021-22,SA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,3074,3074,,Q225,0
+rogs2026,2026,7A.2,2022-23,SA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,3340,3340,,Q224,0
+rogs2026,2026,7A.2,2023-24,SA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,3493,3493,,Q223,0
+rogs2026,2026,7A.2,2024-25,SA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,3848,3848,,Q222,0
+rogs2026,2026,7A.23,2015-16,SA,On-time case processing,,Cases finalised <=12 months,%,76.2,76.2,,Q673,0
+rogs2026,2026,7A.23,2016-17,SA,On-time case processing,,Cases finalised <=12 months,%,68.3,68.3,,Q672,0
+rogs2026,2026,7A.23,2017-18,SA,On-time case processing,,Cases finalised <=12 months,%,57.6,57.6,,Q671,0
+rogs2026,2026,7A.23,2018-19,SA,On-time case processing,,Cases finalised <=12 months,%,53.0,53.0,,Q670,0
+rogs2026,2026,7A.23,2019-20,SA,On-time case processing,,Cases finalised <=12 months,%,48.5,48.5,,Q669,0
+rogs2026,2026,7A.23,2020-21,SA,On-time case processing,,Cases finalised <=12 months,%,58.1,58.1,,Q668,0
+rogs2026,2026,7A.23,2021-22,SA,On-time case processing,,Cases finalised <=12 months,%,63.2,63.2,,Q667,0
+rogs2026,2026,7A.23,2022-23,SA,On-time case processing,,Cases finalised <=12 months,%,56.2,56.2,,Q666,0
+rogs2026,2026,7A.23,2023-24,SA,On-time case processing,,Cases finalised <=12 months,%,66.9,66.9,,Q665,0
+rogs2026,2026,7A.23,2024-25,SA,On-time case processing,,Cases finalised <=12 months,%,66.5,66.5,,Q664,0
+rogs2026,2026,7A.23,2015-16,SA,On-time case processing,,Cases finalised <=12 months,no.,1662,1662,,Q651,0
+rogs2026,2026,7A.23,2016-17,SA,On-time case processing,,Cases finalised <=12 months,no.,1263,1263,,Q650,0
+rogs2026,2026,7A.23,2017-18,SA,On-time case processing,,Cases finalised <=12 months,no.,1624,1624,,Q649,0
+rogs2026,2026,7A.23,2018-19,SA,On-time case processing,,Cases finalised <=12 months,no.,1441,1441,,Q648,0
+rogs2026,2026,7A.23,2019-20,SA,On-time case processing,,Cases finalised <=12 months,no.,1193,1193,,Q647,0
+rogs2026,2026,7A.23,2020-21,SA,On-time case processing,,Cases finalised <=12 months,no.,1665,1665,,Q646,0
+rogs2026,2026,7A.23,2021-22,SA,On-time case processing,,Cases finalised <=12 months,no.,1690,1690,,Q645,0
+rogs2026,2026,7A.23,2022-23,SA,On-time case processing,,Cases finalised <=12 months,no.,1798,1798,,Q644,0
+rogs2026,2026,7A.23,2023-24,SA,On-time case processing,,Cases finalised <=12 months,no.,2180,2180,,Q643,0
+rogs2026,2026,7A.23,2024-25,SA,On-time case processing,,Cases finalised <=12 months,no.,2775,2775,,Q642,0
+rogs2026,2026,7A.23,2015-16,SA,On-time case processing,,Cases finalised <=24 months,%,94.2,94.2,,Q684,0
+rogs2026,2026,7A.23,2016-17,SA,On-time case processing,,Cases finalised <=24 months,%,95.5,95.5,,Q683,0
+rogs2026,2026,7A.23,2017-18,SA,On-time case processing,,Cases finalised <=24 months,%,95.6,95.6,,Q682,0
+rogs2026,2026,7A.23,2018-19,SA,On-time case processing,,Cases finalised <=24 months,%,89.9,89.9,,Q681,0
+rogs2026,2026,7A.23,2019-20,SA,On-time case processing,,Cases finalised <=24 months,%,92.5,92.5,,Q680,0
+rogs2026,2026,7A.23,2020-21,SA,On-time case processing,,Cases finalised <=24 months,%,94.1,94.1,,Q679,0
+rogs2026,2026,7A.23,2021-22,SA,On-time case processing,,Cases finalised <=24 months,%,88.0,88.0,,Q678,0
+rogs2026,2026,7A.23,2022-23,SA,On-time case processing,,Cases finalised <=24 months,%,91.6,91.6,,Q677,0
+rogs2026,2026,7A.23,2023-24,SA,On-time case processing,,Cases finalised <=24 months,%,94.1,94.1,,Q676,0
+rogs2026,2026,7A.23,2024-25,SA,On-time case processing,,Cases finalised <=24 months,%,95.8,95.8,,Q675,0
+rogs2026,2026,7A.23,2015-16,SA,On-time case processing,,Cases finalised <=24 months,no.,2055,2055,,Q662,0
+rogs2026,2026,7A.23,2016-17,SA,On-time case processing,,Cases finalised <=24 months,no.,1767,1767,,Q661,0
+rogs2026,2026,7A.23,2017-18,SA,On-time case processing,,Cases finalised <=24 months,no.,2694,2694,,Q660,0
+rogs2026,2026,7A.23,2018-19,SA,On-time case processing,,Cases finalised <=24 months,no.,2444,2444,,Q659,0
+rogs2026,2026,7A.23,2019-20,SA,On-time case processing,,Cases finalised <=24 months,no.,2273,2273,,Q658,0
+rogs2026,2026,7A.23,2020-21,SA,On-time case processing,,Cases finalised <=24 months,no.,2698,2698,,Q657,0
+rogs2026,2026,7A.23,2021-22,SA,On-time case processing,,Cases finalised <=24 months,no.,2353,2353,,Q656,0
+rogs2026,2026,7A.23,2022-23,SA,On-time case processing,,Cases finalised <=24 months,no.,2931,2931,,Q655,0
+rogs2026,2026,7A.23,2023-24,SA,On-time case processing,,Cases finalised <=24 months,no.,3068,3068,,Q654,0
+rogs2026,2026,7A.23,2024-25,SA,On-time case processing,,Cases finalised <=24 months,no.,4000,4000,,Q653,0
+rogs2026,2026,7A.21,2015-16,Tas,Backlog,,Cases >12 months,%,31.9,31.9,,R838,0
+rogs2026,2026,7A.21,2016-17,Tas,Backlog,,Cases >12 months,%,39.5,39.5,,R837,0
+rogs2026,2026,7A.21,2017-18,Tas,Backlog,,Cases >12 months,%,40.7,40.7,,R836,0
+rogs2026,2026,7A.21,2018-19,Tas,Backlog,,Cases >12 months,%,42.6,42.6,,R835,0
+rogs2026,2026,7A.21,2019-20,Tas,Backlog,,Cases >12 months,%,39.5,39.5,,R834,0
+rogs2026,2026,7A.21,2020-21,Tas,Backlog,,Cases >12 months,%,44.1,44.1,,R833,0
+rogs2026,2026,7A.21,2021-22,Tas,Backlog,,Cases >12 months,%,44.6,44.6,,R832,0
+rogs2026,2026,7A.21,2022-23,Tas,Backlog,,Cases >12 months,%,47.6,47.6,,R831,0
+rogs2026,2026,7A.21,2023-24,Tas,Backlog,,Cases >12 months,%,32.2,32.2,,R830,0
+rogs2026,2026,7A.21,2024-25,Tas,Backlog,,Cases >12 months,%,51.3,51.3,,R829,0
+rogs2026,2026,7A.21,2015-16,Tas,Backlog,,Cases >12 months,no.,177,177,,R816,0
+rogs2026,2026,7A.21,2016-17,Tas,Backlog,,Cases >12 months,no.,223,223,,R815,0
+rogs2026,2026,7A.21,2017-18,Tas,Backlog,,Cases >12 months,no.,222,222,,R814,0
+rogs2026,2026,7A.21,2018-19,Tas,Backlog,,Cases >12 months,no.,272,272,,R813,0
+rogs2026,2026,7A.21,2019-20,Tas,Backlog,,Cases >12 months,no.,263,263,,R812,0
+rogs2026,2026,7A.21,2020-21,Tas,Backlog,,Cases >12 months,no.,296,296,,R811,0
+rogs2026,2026,7A.21,2021-22,Tas,Backlog,,Cases >12 months,no.,323,323,,R810,0
+rogs2026,2026,7A.21,2022-23,Tas,Backlog,,Cases >12 months,no.,312,312,,R809,0
+rogs2026,2026,7A.21,2023-24,Tas,Backlog,,Cases >12 months,no.,291,291,,R808,0
+rogs2026,2026,7A.21,2024-25,Tas,Backlog,,Cases >12 months,no.,514,514,,R807,0
+rogs2026,2026,7A.21,2015-16,Tas,Backlog,,Cases >24 months,%,8.1,8.1,,R849,0
+rogs2026,2026,7A.21,2016-17,Tas,Backlog,,Cases >24 months,%,16.5,16.5,,R848,0
+rogs2026,2026,7A.21,2017-18,Tas,Backlog,,Cases >24 months,%,14.3,14.3,,R847,0
+rogs2026,2026,7A.21,2018-19,Tas,Backlog,,Cases >24 months,%,15.4,15.4,,R846,0
+rogs2026,2026,7A.21,2019-20,Tas,Backlog,,Cases >24 months,%,17.6,17.6,,R845,0
+rogs2026,2026,7A.21,2020-21,Tas,Backlog,,Cases >24 months,%,19.8,19.8,,R844,0
+rogs2026,2026,7A.21,2021-22,Tas,Backlog,,Cases >24 months,%,22.3,22.3,,R843,0
+rogs2026,2026,7A.21,2022-23,Tas,Backlog,,Cases >24 months,%,20.0,20.0,,R842,0
+rogs2026,2026,7A.21,2023-24,Tas,Backlog,,Cases >24 months,%,15.8,15.8,,R841,0
+rogs2026,2026,7A.21,2024-25,Tas,Backlog,,Cases >24 months,%,13.4,13.4,,R840,0
+rogs2026,2026,7A.21,2015-16,Tas,Backlog,,Cases >24 months,no.,45,45,,R827,0
+rogs2026,2026,7A.21,2016-17,Tas,Backlog,,Cases >24 months,no.,93,93,,R826,0
+rogs2026,2026,7A.21,2017-18,Tas,Backlog,,Cases >24 months,no.,78,78,,R825,0
+rogs2026,2026,7A.21,2018-19,Tas,Backlog,,Cases >24 months,no.,98,98,,R824,0
+rogs2026,2026,7A.21,2019-20,Tas,Backlog,,Cases >24 months,no.,117,117,,R823,0
+rogs2026,2026,7A.21,2020-21,Tas,Backlog,,Cases >24 months,no.,133,133,,R822,0
+rogs2026,2026,7A.21,2021-22,Tas,Backlog,,Cases >24 months,no.,162,162,,R821,0
+rogs2026,2026,7A.21,2022-23,Tas,Backlog,,Cases >24 months,no.,131,131,,R820,0
+rogs2026,2026,7A.21,2023-24,Tas,Backlog,,Cases >24 months,no.,143,143,,R819,0
+rogs2026,2026,7A.21,2024-25,Tas,Backlog,,Cases >24 months,no.,134,134,,R818,0
+rogs2026,2026,7A.21,2015-16,Tas,Backlog,,Pending case load,no.,555,555,,R805,0
+rogs2026,2026,7A.21,2016-17,Tas,Backlog,,Pending case load,no.,564,564,,R804,0
+rogs2026,2026,7A.21,2017-18,Tas,Backlog,,Pending case load,no.,545,545,,R803,0
+rogs2026,2026,7A.21,2018-19,Tas,Backlog,,Pending case load,no.,638,638,,R802,0
+rogs2026,2026,7A.21,2019-20,Tas,Backlog,,Pending case load,no.,665,665,,R801,0
+rogs2026,2026,7A.21,2020-21,Tas,Backlog,,Pending case load,no.,671,671,,R800,0
+rogs2026,2026,7A.21,2021-22,Tas,Backlog,,Pending case load,no.,725,725,,R799,0
+rogs2026,2026,7A.21,2022-23,Tas,Backlog,,Pending case load,no.,656,656,,R798,0
+rogs2026,2026,7A.21,2023-24,Tas,Backlog,,Pending case load,no.,903,903,,R797,0
+rogs2026,2026,7A.21,2024-25,Tas,Backlog,,Pending case load,no.,1002,1002,,R796,0
+rogs2026,2026,7A.26,2015-16,Tas,Clearance indicator,,Clearance indicator,%,87.1,87.1,,R208,0
+rogs2026,2026,7A.26,2016-17,Tas,Clearance indicator,,Clearance indicator,%,100.5,100.5,,R207,0
+rogs2026,2026,7A.26,2017-18,Tas,Clearance indicator,,Clearance indicator,%,102.2,102.2,,R206,0
+rogs2026,2026,7A.26,2018-19,Tas,Clearance indicator,,Clearance indicator,%,86.0,86.0,,R205,0
+rogs2026,2026,7A.26,2019-20,Tas,Clearance indicator,,Clearance indicator,%,96.9,96.9,,R204,0
+rogs2026,2026,7A.26,2020-21,Tas,Clearance indicator,,Clearance indicator,%,98.7,98.7,,R203,0
+rogs2026,2026,7A.26,2021-22,Tas,Clearance indicator,,Clearance indicator,%,94.2,94.2,,R202,0
+rogs2026,2026,7A.26,2022-23,Tas,Clearance indicator,,Clearance indicator,%,105.4,105.4,,R201,0
+rogs2026,2026,7A.26,2023-24,Tas,Clearance indicator,,Clearance indicator,%,75.0,75.0,,R200,0
+rogs2026,2026,7A.26,2024-25,Tas,Clearance indicator,,Clearance indicator,%,86.8,86.8,,R199,0
+rogs2026,2026,7A.6,2015-16,Tas,Finalisations,Deaths reported,Deaths reported,no.,,na,na,R209,1
+rogs2026,2026,7A.6,2016-17,Tas,Finalisations,Deaths reported,Deaths reported,no.,,na,na,R208,2
+rogs2026,2026,7A.6,2017-18,Tas,Finalisations,Deaths reported,Deaths reported,no.,611,611,,R207,2
+rogs2026,2026,7A.6,2018-19,Tas,Finalisations,Deaths reported,Deaths reported,no.,569,569,,R206,2
+rogs2026,2026,7A.6,2019-20,Tas,Finalisations,Deaths reported,Deaths reported,no.,728,728,,R205,2
+rogs2026,2026,7A.6,2020-21,Tas,Finalisations,Deaths reported,Deaths reported,no.,768,768,,R204,2
+rogs2026,2026,7A.6,2021-22,Tas,Finalisations,Deaths reported,Deaths reported,no.,829,829,,R203,2
+rogs2026,2026,7A.6,2022-23,Tas,Finalisations,Deaths reported,Deaths reported,no.,943,943,,R202,2
+rogs2026,2026,7A.6,2023-24,Tas,Finalisations,Deaths reported,Deaths reported,no.,856,856,,R201,2
+rogs2026,2026,7A.6,2024-25,Tas,Finalisations,Deaths reported,Deaths reported,no.,833,833,,R200,2
+rogs2026,2026,7A.6,2015-16,Tas,Finalisations,Fires reported,Fires reported,no.,,na,na,R220,1
+rogs2026,2026,7A.6,2016-17,Tas,Finalisations,Fires reported,Fires reported,no.,,na,na,R219,2
+rogs2026,2026,7A.6,2017-18,Tas,Finalisations,Fires reported,Fires reported,no.,0,0,,R218,2
+rogs2026,2026,7A.6,2018-19,Tas,Finalisations,Fires reported,Fires reported,no.,0,0,,R217,2
+rogs2026,2026,7A.6,2019-20,Tas,Finalisations,Fires reported,Fires reported,no.,0,0,,R216,2
+rogs2026,2026,7A.6,2020-21,Tas,Finalisations,Fires reported,Fires reported,no.,0,0,,R215,2
+rogs2026,2026,7A.6,2021-22,Tas,Finalisations,Fires reported,Fires reported,no.,0,0,,R214,2
+rogs2026,2026,7A.6,2022-23,Tas,Finalisations,Fires reported,Fires reported,no.,0,0,,R213,2
+rogs2026,2026,7A.6,2023-24,Tas,Finalisations,Fires reported,Fires reported,no.,0,0,,R212,2
+rogs2026,2026,7A.6,2024-25,Tas,Finalisations,Fires reported,Fires reported,no.,0,0,,R211,2
+rogs2026,2026,7A.6,2015-16,Tas,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,495,495,,R231,0
+rogs2026,2026,7A.6,2016-17,Tas,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,582,582,,R230,0
+rogs2026,2026,7A.6,2017-18,Tas,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,611,611,,R229,0
+rogs2026,2026,7A.6,2018-19,Tas,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,569,569,,R228,0
+rogs2026,2026,7A.6,2019-20,Tas,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,728,728,,R227,0
+rogs2026,2026,7A.6,2020-21,Tas,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,768,768,,R226,0
+rogs2026,2026,7A.6,2021-22,Tas,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,829,829,,R225,0
+rogs2026,2026,7A.6,2022-23,Tas,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,943,943,,R224,0
+rogs2026,2026,7A.6,2023-24,Tas,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,856,856,,R223,0
+rogs2026,2026,7A.6,2024-25,Tas,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,833,833,,R222,0
+rogs2026,2026,7A.2,2015-16,Tas,Lodgments,Deaths reported,Deaths reported,no.,568,568,,R209,0
+rogs2026,2026,7A.2,2016-17,Tas,Lodgments,Deaths reported,Deaths reported,no.,579,579,,R208,0
+rogs2026,2026,7A.2,2017-18,Tas,Lodgments,Deaths reported,Deaths reported,no.,598,598,,R207,0
+rogs2026,2026,7A.2,2018-19,Tas,Lodgments,Deaths reported,Deaths reported,no.,662,662,,R206,0
+rogs2026,2026,7A.2,2019-20,Tas,Lodgments,Deaths reported,Deaths reported,no.,751,751,,R205,0
+rogs2026,2026,7A.2,2020-21,Tas,Lodgments,Deaths reported,Deaths reported,no.,778,778,,R204,0
+rogs2026,2026,7A.2,2021-22,Tas,Lodgments,Deaths reported,Deaths reported,no.,880,880,,R203,0
+rogs2026,2026,7A.2,2022-23,Tas,Lodgments,Deaths reported,Deaths reported,no.,895,895,,R202,0
+rogs2026,2026,7A.2,2023-24,Tas,Lodgments,Deaths reported,Deaths reported,no.,1142,1142,,R201,0
+rogs2026,2026,7A.2,2024-25,Tas,Lodgments,Deaths reported,Deaths reported,no.,960,960,,R200,0
+rogs2026,2026,7A.2,2015-16,Tas,Lodgments,Fires reported,Fires reported,no.,0,0,,R220,0
+rogs2026,2026,7A.2,2016-17,Tas,Lodgments,Fires reported,Fires reported,no.,0,0,,R219,0
+rogs2026,2026,7A.2,2017-18,Tas,Lodgments,Fires reported,Fires reported,no.,0,0,,R218,0
+rogs2026,2026,7A.2,2018-19,Tas,Lodgments,Fires reported,Fires reported,no.,0,0,,R217,0
+rogs2026,2026,7A.2,2019-20,Tas,Lodgments,Fires reported,Fires reported,no.,0,0,,R216,0
+rogs2026,2026,7A.2,2020-21,Tas,Lodgments,Fires reported,Fires reported,no.,0,0,,R215,0
+rogs2026,2026,7A.2,2021-22,Tas,Lodgments,Fires reported,Fires reported,no.,0,0,,R214,0
+rogs2026,2026,7A.2,2022-23,Tas,Lodgments,Fires reported,Fires reported,no.,0,0,,R213,0
+rogs2026,2026,7A.2,2023-24,Tas,Lodgments,Fires reported,Fires reported,no.,0,0,,R212,0
+rogs2026,2026,7A.2,2024-25,Tas,Lodgments,Fires reported,Fires reported,no.,0,0,,R211,0
+rogs2026,2026,7A.2,2015-16,Tas,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,568,568,,R231,0
+rogs2026,2026,7A.2,2016-17,Tas,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,579,579,,R230,0
+rogs2026,2026,7A.2,2017-18,Tas,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,598,598,,R229,0
+rogs2026,2026,7A.2,2018-19,Tas,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,662,662,,R228,0
+rogs2026,2026,7A.2,2019-20,Tas,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,751,751,,R227,0
+rogs2026,2026,7A.2,2020-21,Tas,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,778,778,,R226,0
+rogs2026,2026,7A.2,2021-22,Tas,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,880,880,,R225,0
+rogs2026,2026,7A.2,2022-23,Tas,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,895,895,,R224,0
+rogs2026,2026,7A.2,2023-24,Tas,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,1142,1142,,R223,0
+rogs2026,2026,7A.2,2024-25,Tas,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,960,960,,R222,0
+rogs2026,2026,7A.23,2015-16,Tas,On-time case processing,,Cases finalised <=12 months,%,39.2,39.2,,R673,0
+rogs2026,2026,7A.23,2016-17,Tas,On-time case processing,,Cases finalised <=12 months,%,41.1,41.1,,R672,0
+rogs2026,2026,7A.23,2017-18,Tas,On-time case processing,,Cases finalised <=12 months,%,45.0,45.0,,R671,0
+rogs2026,2026,7A.23,2018-19,Tas,On-time case processing,,Cases finalised <=12 months,%,52.0,52.0,,R670,0
+rogs2026,2026,7A.23,2019-20,Tas,On-time case processing,,Cases finalised <=12 months,%,48.1,48.1,,R669,0
+rogs2026,2026,7A.23,2020-21,Tas,On-time case processing,,Cases finalised <=12 months,%,52.5,52.5,,R668,0
+rogs2026,2026,7A.23,2021-22,Tas,On-time case processing,,Cases finalised <=12 months,%,57.9,57.9,,R667,0
+rogs2026,2026,7A.23,2022-23,Tas,On-time case processing,,Cases finalised <=12 months,%,58.7,58.7,,R666,0
+rogs2026,2026,7A.23,2023-24,Tas,On-time case processing,,Cases finalised <=12 months,%,61.9,61.9,,R665,0
+rogs2026,2026,7A.23,2024-25,Tas,On-time case processing,,Cases finalised <=12 months,%,56.9,56.9,,R664,0
+rogs2026,2026,7A.23,2015-16,Tas,On-time case processing,,Cases finalised <=12 months,no.,194,194,,R651,0
+rogs2026,2026,7A.23,2016-17,Tas,On-time case processing,,Cases finalised <=12 months,no.,239,239,,R650,0
+rogs2026,2026,7A.23,2017-18,Tas,On-time case processing,,Cases finalised <=12 months,no.,275,275,,R649,0
+rogs2026,2026,7A.23,2018-19,Tas,On-time case processing,,Cases finalised <=12 months,no.,296,296,,R648,0
+rogs2026,2026,7A.23,2019-20,Tas,On-time case processing,,Cases finalised <=12 months,no.,350,350,,R647,0
+rogs2026,2026,7A.23,2020-21,Tas,On-time case processing,,Cases finalised <=12 months,no.,403,403,,R646,0
+rogs2026,2026,7A.23,2021-22,Tas,On-time case processing,,Cases finalised <=12 months,no.,480,480,,R645,0
+rogs2026,2026,7A.23,2022-23,Tas,On-time case processing,,Cases finalised <=12 months,no.,554,554,,R644,0
+rogs2026,2026,7A.23,2023-24,Tas,On-time case processing,,Cases finalised <=12 months,no.,530,530,,R643,0
+rogs2026,2026,7A.23,2024-25,Tas,On-time case processing,,Cases finalised <=12 months,no.,474,474,,R642,0
+rogs2026,2026,7A.23,2015-16,Tas,On-time case processing,,Cases finalised <=24 months,%,79.6,79.6,,R684,0
+rogs2026,2026,7A.23,2016-17,Tas,On-time case processing,,Cases finalised <=24 months,%,83.5,83.5,,R683,0
+rogs2026,2026,7A.23,2017-18,Tas,On-time case processing,,Cases finalised <=24 months,%,77.1,77.1,,R682,0
+rogs2026,2026,7A.23,2018-19,Tas,On-time case processing,,Cases finalised <=24 months,%,78.2,78.2,,R681,0
+rogs2026,2026,7A.23,2019-20,Tas,On-time case processing,,Cases finalised <=24 months,%,78.4,78.4,,R680,0
+rogs2026,2026,7A.23,2020-21,Tas,On-time case processing,,Cases finalised <=24 months,%,83.5,83.5,,R679,0
+rogs2026,2026,7A.23,2021-22,Tas,On-time case processing,,Cases finalised <=24 months,%,83.7,83.7,,R678,0
+rogs2026,2026,7A.23,2022-23,Tas,On-time case processing,,Cases finalised <=24 months,%,81.8,81.8,,R677,0
+rogs2026,2026,7A.23,2023-24,Tas,On-time case processing,,Cases finalised <=24 months,%,84.0,84.0,,R676,0
+rogs2026,2026,7A.23,2024-25,Tas,On-time case processing,,Cases finalised <=24 months,%,81.4,81.4,,R675,0
+rogs2026,2026,7A.23,2015-16,Tas,On-time case processing,,Cases finalised <=24 months,no.,394,394,,R662,0
+rogs2026,2026,7A.23,2016-17,Tas,On-time case processing,,Cases finalised <=24 months,no.,486,486,,R661,0
+rogs2026,2026,7A.23,2017-18,Tas,On-time case processing,,Cases finalised <=24 months,no.,471,471,,R660,0
+rogs2026,2026,7A.23,2018-19,Tas,On-time case processing,,Cases finalised <=24 months,no.,445,445,,R659,0
+rogs2026,2026,7A.23,2019-20,Tas,On-time case processing,,Cases finalised <=24 months,no.,571,571,,R658,0
+rogs2026,2026,7A.23,2020-21,Tas,On-time case processing,,Cases finalised <=24 months,no.,641,641,,R657,0
+rogs2026,2026,7A.23,2021-22,Tas,On-time case processing,,Cases finalised <=24 months,no.,694,694,,R656,0
+rogs2026,2026,7A.23,2022-23,Tas,On-time case processing,,Cases finalised <=24 months,no.,771,771,,R655,0
+rogs2026,2026,7A.23,2023-24,Tas,On-time case processing,,Cases finalised <=24 months,no.,719,719,,R654,0
+rogs2026,2026,7A.23,2024-25,Tas,On-time case processing,,Cases finalised <=24 months,no.,678,678,,R653,0
+rogs2026,2026,7A.21,2015-16,Vic,Backlog,,Cases >12 months,%,26.5,26.5,,N838,0
+rogs2026,2026,7A.21,2016-17,Vic,Backlog,,Cases >12 months,%,28.2,28.2,,N837,0
+rogs2026,2026,7A.21,2017-18,Vic,Backlog,,Cases >12 months,%,28.2,28.2,,N836,0
+rogs2026,2026,7A.21,2018-19,Vic,Backlog,,Cases >12 months,%,31.5,31.5,,N835,0
+rogs2026,2026,7A.21,2019-20,Vic,Backlog,,Cases >12 months,%,34.1,34.1,,N834,0
+rogs2026,2026,7A.21,2020-21,Vic,Backlog,,Cases >12 months,%,39.2,39.2,,N833,0
+rogs2026,2026,7A.21,2021-22,Vic,Backlog,,Cases >12 months,%,39.8,39.8,,N832,0
+rogs2026,2026,7A.21,2022-23,Vic,Backlog,,Cases >12 months,%,36.2,36.2,,N831,0
+rogs2026,2026,7A.21,2023-24,Vic,Backlog,,Cases >12 months,%,36.6,36.6,,N830,0
+rogs2026,2026,7A.21,2024-25,Vic,Backlog,,Cases >12 months,%,34.4,34.4,,N829,0
+rogs2026,2026,7A.21,2015-16,Vic,Backlog,,Cases >12 months,no.,936,936,,N816,0
+rogs2026,2026,7A.21,2016-17,Vic,Backlog,,Cases >12 months,no.,1066,1066,,N815,0
+rogs2026,2026,7A.21,2017-18,Vic,Backlog,,Cases >12 months,no.,1112,1112,,N814,0
+rogs2026,2026,7A.21,2018-19,Vic,Backlog,,Cases >12 months,no.,1484,1484,,N813,0
+rogs2026,2026,7A.21,2019-20,Vic,Backlog,,Cases >12 months,no.,1569,1569,,N812,0
+rogs2026,2026,7A.21,2020-21,Vic,Backlog,,Cases >12 months,no.,2033,2033,,N811,0
+rogs2026,2026,7A.21,2021-22,Vic,Backlog,,Cases >12 months,no.,1983,1983,,N810,0
+rogs2026,2026,7A.21,2022-23,Vic,Backlog,,Cases >12 months,no.,1689,1689,,N809,0
+rogs2026,2026,7A.21,2023-24,Vic,Backlog,,Cases >12 months,no.,1755,1755,,N808,0
+rogs2026,2026,7A.21,2024-25,Vic,Backlog,,Cases >12 months,no.,1712,1712,,N807,0
+rogs2026,2026,7A.21,2015-16,Vic,Backlog,,Cases >24 months,%,10.1,10.1,,N849,0
+rogs2026,2026,7A.21,2016-17,Vic,Backlog,,Cases >24 months,%,10.5,10.5,,N848,0
+rogs2026,2026,7A.21,2017-18,Vic,Backlog,,Cases >24 months,%,13.3,13.3,,N847,0
+rogs2026,2026,7A.21,2018-19,Vic,Backlog,,Cases >24 months,%,13.8,13.8,,N846,0
+rogs2026,2026,7A.21,2019-20,Vic,Backlog,,Cases >24 months,%,11.8,11.8,,N845,0
+rogs2026,2026,7A.21,2020-21,Vic,Backlog,,Cases >24 months,%,16.2,16.2,,N844,0
+rogs2026,2026,7A.21,2021-22,Vic,Backlog,,Cases >24 months,%,19.6,19.6,,N843,0
+rogs2026,2026,7A.21,2022-23,Vic,Backlog,,Cases >24 months,%,17.5,17.5,,N842,0
+rogs2026,2026,7A.21,2023-24,Vic,Backlog,,Cases >24 months,%,17.0,17.0,,N841,0
+rogs2026,2026,7A.21,2024-25,Vic,Backlog,,Cases >24 months,%,15.5,15.5,,N840,0
+rogs2026,2026,7A.21,2015-16,Vic,Backlog,,Cases >24 months,no.,355,355,,N827,0
+rogs2026,2026,7A.21,2016-17,Vic,Backlog,,Cases >24 months,no.,396,396,,N826,0
+rogs2026,2026,7A.21,2017-18,Vic,Backlog,,Cases >24 months,no.,523,523,,N825,0
+rogs2026,2026,7A.21,2018-19,Vic,Backlog,,Cases >24 months,no.,652,652,,N824,0
+rogs2026,2026,7A.21,2019-20,Vic,Backlog,,Cases >24 months,no.,545,545,,N823,0
+rogs2026,2026,7A.21,2020-21,Vic,Backlog,,Cases >24 months,no.,840,840,,N822,0
+rogs2026,2026,7A.21,2021-22,Vic,Backlog,,Cases >24 months,no.,977,977,,N821,0
+rogs2026,2026,7A.21,2022-23,Vic,Backlog,,Cases >24 months,no.,817,817,,N820,0
+rogs2026,2026,7A.21,2023-24,Vic,Backlog,,Cases >24 months,no.,818,818,,N819,0
+rogs2026,2026,7A.21,2024-25,Vic,Backlog,,Cases >24 months,no.,770,770,,N818,0
+rogs2026,2026,7A.21,2015-16,Vic,Backlog,,Pending case load,no.,3526,3526,,N805,0
+rogs2026,2026,7A.21,2016-17,Vic,Backlog,,Pending case load,no.,3785,3785,,N804,0
+rogs2026,2026,7A.21,2017-18,Vic,Backlog,,Pending case load,no.,3938,3938,,N803,0
+rogs2026,2026,7A.21,2018-19,Vic,Backlog,,Pending case load,no.,4718,4718,,N802,0
+rogs2026,2026,7A.21,2019-20,Vic,Backlog,,Pending case load,no.,4602,4602,,N801,0
+rogs2026,2026,7A.21,2020-21,Vic,Backlog,,Pending case load,no.,5189,5189,,N800,0
+rogs2026,2026,7A.21,2021-22,Vic,Backlog,,Pending case load,no.,4983,4983,,N799,0
+rogs2026,2026,7A.21,2022-23,Vic,Backlog,,Pending case load,no.,4665,4665,,N798,0
+rogs2026,2026,7A.21,2023-24,Vic,Backlog,,Pending case load,no.,4799,4799,,N797,0
+rogs2026,2026,7A.21,2024-25,Vic,Backlog,,Pending case load,no.,4981,4981,,N796,0
+rogs2026,2026,7A.26,2015-16,Vic,Clearance indicator,,Clearance indicator,%,104.6,104.6,,N208,0
+rogs2026,2026,7A.26,2016-17,Vic,Clearance indicator,,Clearance indicator,%,100.6,100.6,,N207,0
+rogs2026,2026,7A.26,2017-18,Vic,Clearance indicator,,Clearance indicator,%,97.9,97.9,,N206,0
+rogs2026,2026,7A.26,2018-19,Vic,Clearance indicator,,Clearance indicator,%,88.8,88.8,,N205,0
+rogs2026,2026,7A.26,2019-20,Vic,Clearance indicator,,Clearance indicator,%,93.4,93.4,,N204,0
+rogs2026,2026,7A.26,2020-21,Vic,Clearance indicator,,Clearance indicator,%,93.4,93.4,,N203,0
+rogs2026,2026,7A.26,2021-22,Vic,Clearance indicator,,Clearance indicator,%,104.8,104.8,,N202,0
+rogs2026,2026,7A.26,2022-23,Vic,Clearance indicator,,Clearance indicator,%,103.9,103.9,,N201,0
+rogs2026,2026,7A.26,2023-24,Vic,Clearance indicator,,Clearance indicator,%,96.4,96.4,,N200,0
+rogs2026,2026,7A.26,2024-25,Vic,Clearance indicator,,Clearance indicator,%,96.1,96.1,,N199,0
+rogs2026,2026,7A.6,2015-16,Vic,Finalisations,Deaths reported,Deaths reported,no.,6588,6588,,N209,0
+rogs2026,2026,7A.6,2016-17,Vic,Finalisations,Deaths reported,Deaths reported,no.,6285,6285,,N208,0
+rogs2026,2026,7A.6,2017-18,Vic,Finalisations,Deaths reported,Deaths reported,no.,6491,6491,,N207,0
+rogs2026,2026,7A.6,2018-19,Vic,Finalisations,Deaths reported,Deaths reported,no.,6007,6007,,N206,0
+rogs2026,2026,7A.6,2019-20,Vic,Finalisations,Deaths reported,Deaths reported,no.,6841,6841,,N205,0
+rogs2026,2026,7A.6,2020-21,Vic,Finalisations,Deaths reported,Deaths reported,no.,6591,6591,,N204,0
+rogs2026,2026,7A.6,2021-22,Vic,Finalisations,Deaths reported,Deaths reported,no.,7543,7543,,N203,0
+rogs2026,2026,7A.6,2022-23,Vic,Finalisations,Deaths reported,Deaths reported,no.,7771,7771,,N202,0
+rogs2026,2026,7A.6,2023-24,Vic,Finalisations,Deaths reported,Deaths reported,no.,7147,7147,,N201,0
+rogs2026,2026,7A.6,2024-25,Vic,Finalisations,Deaths reported,Deaths reported,no.,7290,7290,,N200,0
+rogs2026,2026,7A.6,2015-16,Vic,Finalisations,Fires reported,Fires reported,no.,8,8,,N220,0
+rogs2026,2026,7A.6,2016-17,Vic,Finalisations,Fires reported,Fires reported,no.,0,0,,N219,0
+rogs2026,2026,7A.6,2017-18,Vic,Finalisations,Fires reported,Fires reported,no.,9,9,,N218,0
+rogs2026,2026,7A.6,2018-19,Vic,Finalisations,Fires reported,Fires reported,no.,1,1,,N217,0
+rogs2026,2026,7A.6,2019-20,Vic,Finalisations,Fires reported,Fires reported,no.,0,0,,N216,0
+rogs2026,2026,7A.6,2020-21,Vic,Finalisations,Fires reported,Fires reported,no.,0,0,,N215,0
+rogs2026,2026,7A.6,2021-22,Vic,Finalisations,Fires reported,Fires reported,no.,0,0,,N214,0
+rogs2026,2026,7A.6,2022-23,Vic,Finalisations,Fires reported,Fires reported,no.,2,2,,N213,0
+rogs2026,2026,7A.6,2023-24,Vic,Finalisations,Fires reported,Fires reported,no.,0,0,,N212,0
+rogs2026,2026,7A.6,2024-25,Vic,Finalisations,Fires reported,Fires reported,no.,0,0,,N211,0
+rogs2026,2026,7A.6,2015-16,Vic,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6596,6596,,N231,0
+rogs2026,2026,7A.6,2016-17,Vic,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6285,6285,,N230,0
+rogs2026,2026,7A.6,2017-18,Vic,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6500,6500,,N229,0
+rogs2026,2026,7A.6,2018-19,Vic,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6008,6008,,N228,0
+rogs2026,2026,7A.6,2019-20,Vic,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6841,6841,,N227,0
+rogs2026,2026,7A.6,2020-21,Vic,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6591,6591,,N226,0
+rogs2026,2026,7A.6,2021-22,Vic,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7543,7543,,N225,0
+rogs2026,2026,7A.6,2022-23,Vic,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7773,7773,,N224,0
+rogs2026,2026,7A.6,2023-24,Vic,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7147,7147,,N223,0
+rogs2026,2026,7A.6,2024-25,Vic,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7290,7290,,N222,0
+rogs2026,2026,7A.2,2015-16,Vic,Lodgments,Deaths reported,Deaths reported,no.,6302,6302,,N209,0
+rogs2026,2026,7A.2,2016-17,Vic,Lodgments,Deaths reported,Deaths reported,no.,6248,6248,,N208,0
+rogs2026,2026,7A.2,2017-18,Vic,Lodgments,Deaths reported,Deaths reported,no.,6641,6641,,N207,0
+rogs2026,2026,7A.2,2018-19,Vic,Lodgments,Deaths reported,Deaths reported,no.,6766,6766,,N206,0
+rogs2026,2026,7A.2,2019-20,Vic,Lodgments,Deaths reported,Deaths reported,no.,7323,7323,,N205,0
+rogs2026,2026,7A.2,2020-21,Vic,Lodgments,Deaths reported,Deaths reported,no.,7052,7052,,N204,0
+rogs2026,2026,7A.2,2021-22,Vic,Lodgments,Deaths reported,Deaths reported,no.,7198,7198,,N203,0
+rogs2026,2026,7A.2,2022-23,Vic,Lodgments,Deaths reported,Deaths reported,no.,7480,7480,,N202,0
+rogs2026,2026,7A.2,2023-24,Vic,Lodgments,Deaths reported,Deaths reported,no.,7413,7413,,N201,0
+rogs2026,2026,7A.2,2024-25,Vic,Lodgments,Deaths reported,Deaths reported,no.,7581,7581,,N200,0
+rogs2026,2026,7A.2,2015-16,Vic,Lodgments,Fires reported,Fires reported,no.,3,3,,N220,0
+rogs2026,2026,7A.2,2016-17,Vic,Lodgments,Fires reported,Fires reported,no.,0,0,,N219,0
+rogs2026,2026,7A.2,2017-18,Vic,Lodgments,Fires reported,Fires reported,no.,1,1,,N218,0
+rogs2026,2026,7A.2,2018-19,Vic,Lodgments,Fires reported,Fires reported,no.,1,1,,N217,0
+rogs2026,2026,7A.2,2019-20,Vic,Lodgments,Fires reported,Fires reported,no.,0,0,,N216,0
+rogs2026,2026,7A.2,2020-21,Vic,Lodgments,Fires reported,Fires reported,no.,1,1,,N215,0
+rogs2026,2026,7A.2,2021-22,Vic,Lodgments,Fires reported,Fires reported,no.,2,2,,N214,0
+rogs2026,2026,7A.2,2022-23,Vic,Lodgments,Fires reported,Fires reported,no.,0,0,,N213,0
+rogs2026,2026,7A.2,2023-24,Vic,Lodgments,Fires reported,Fires reported,no.,0,0,,N212,0
+rogs2026,2026,7A.2,2024-25,Vic,Lodgments,Fires reported,Fires reported,no.,1,1,,N211,0
+rogs2026,2026,7A.2,2015-16,Vic,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6305,6305,,N231,0
+rogs2026,2026,7A.2,2016-17,Vic,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6248,6248,,N230,0
+rogs2026,2026,7A.2,2017-18,Vic,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6642,6642,,N229,0
+rogs2026,2026,7A.2,2018-19,Vic,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,6767,6767,,N228,0
+rogs2026,2026,7A.2,2019-20,Vic,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7323,7323,,N227,0
+rogs2026,2026,7A.2,2020-21,Vic,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7053,7053,,N226,0
+rogs2026,2026,7A.2,2021-22,Vic,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7200,7200,,N225,0
+rogs2026,2026,7A.2,2022-23,Vic,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7480,7480,,N224,0
+rogs2026,2026,7A.2,2023-24,Vic,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7413,7413,,N223,0
+rogs2026,2026,7A.2,2024-25,Vic,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,7582,7582,,N222,0
+rogs2026,2026,7A.23,2015-16,Vic,On-time case processing,,Cases finalised <=12 months,%,80.2,80.2,,N673,0
+rogs2026,2026,7A.23,2016-17,Vic,On-time case processing,,Cases finalised <=12 months,%,80.3,80.3,,N672,0
+rogs2026,2026,7A.23,2017-18,Vic,On-time case processing,,Cases finalised <=12 months,%,85.0,85.0,,N671,0
+rogs2026,2026,7A.23,2018-19,Vic,On-time case processing,,Cases finalised <=12 months,%,82.8,82.8,,N670,0
+rogs2026,2026,7A.23,2019-20,Vic,On-time case processing,,Cases finalised <=12 months,%,81.8,81.8,,N669,0
+rogs2026,2026,7A.23,2020-21,Vic,On-time case processing,,Cases finalised <=12 months,%,80.2,80.2,,N668,0
+rogs2026,2026,7A.23,2021-22,Vic,On-time case processing,,Cases finalised <=12 months,%,76.7,76.7,,N667,0
+rogs2026,2026,7A.23,2022-23,Vic,On-time case processing,,Cases finalised <=12 months,%,77.7,77.7,,N666,0
+rogs2026,2026,7A.23,2023-24,Vic,On-time case processing,,Cases finalised <=12 months,%,81.8,81.8,,N665,0
+rogs2026,2026,7A.23,2024-25,Vic,On-time case processing,,Cases finalised <=12 months,%,79.1,79.1,,N664,0
+rogs2026,2026,7A.23,2015-16,Vic,On-time case processing,,Cases finalised <=12 months,no.,5289,5289,,N651,0
+rogs2026,2026,7A.23,2016-17,Vic,On-time case processing,,Cases finalised <=12 months,no.,5047,5047,,N650,0
+rogs2026,2026,7A.23,2017-18,Vic,On-time case processing,,Cases finalised <=12 months,no.,5526,5526,,N649,0
+rogs2026,2026,7A.23,2018-19,Vic,On-time case processing,,Cases finalised <=12 months,no.,4976,4976,,N648,0
+rogs2026,2026,7A.23,2019-20,Vic,On-time case processing,,Cases finalised <=12 months,no.,5629,5629,,N647,0
+rogs2026,2026,7A.23,2020-21,Vic,On-time case processing,,Cases finalised <=12 months,no.,5288,5288,,N646,0
+rogs2026,2026,7A.23,2021-22,Vic,On-time case processing,,Cases finalised <=12 months,no.,5786,5786,,N645,0
+rogs2026,2026,7A.23,2022-23,Vic,On-time case processing,,Cases finalised <=12 months,no.,5920,5920,,N644,0
+rogs2026,2026,7A.23,2023-24,Vic,On-time case processing,,Cases finalised <=12 months,no.,5845,5845,,N643,0
+rogs2026,2026,7A.23,2024-25,Vic,On-time case processing,,Cases finalised <=12 months,no.,5770,5770,,N642,0
+rogs2026,2026,7A.23,2015-16,Vic,On-time case processing,,Cases finalised <=24 months,%,92.1,92.1,,N684,0
+rogs2026,2026,7A.23,2016-17,Vic,On-time case processing,,Cases finalised <=24 months,%,93.9,93.9,,N683,0
+rogs2026,2026,7A.23,2017-18,Vic,On-time case processing,,Cases finalised <=24 months,%,96.1,96.1,,N682,0
+rogs2026,2026,7A.23,2018-19,Vic,On-time case processing,,Cases finalised <=24 months,%,95.9,95.9,,N681,0
+rogs2026,2026,7A.23,2019-20,Vic,On-time case processing,,Cases finalised <=24 months,%,94.5,94.5,,N680,0
+rogs2026,2026,7A.23,2020-21,Vic,On-time case processing,,Cases finalised <=24 months,%,93.7,93.7,,N679,0
+rogs2026,2026,7A.23,2021-22,Vic,On-time case processing,,Cases finalised <=24 months,%,90.8,90.8,,N678,0
+rogs2026,2026,7A.23,2022-23,Vic,On-time case processing,,Cases finalised <=24 months,%,90.3,90.3,,N677,0
+rogs2026,2026,7A.23,2023-24,Vic,On-time case processing,,Cases finalised <=24 months,%,91.9,91.9,,N676,0
+rogs2026,2026,7A.23,2024-25,Vic,On-time case processing,,Cases finalised <=24 months,%,92.0,92.0,,N675,0
+rogs2026,2026,7A.23,2015-16,Vic,On-time case processing,,Cases finalised <=24 months,no.,6074,6074,,N662,0
+rogs2026,2026,7A.23,2016-17,Vic,On-time case processing,,Cases finalised <=24 months,no.,5902,5902,,N661,0
+rogs2026,2026,7A.23,2017-18,Vic,On-time case processing,,Cases finalised <=24 months,no.,6248,6248,,N660,0
+rogs2026,2026,7A.23,2018-19,Vic,On-time case processing,,Cases finalised <=24 months,no.,5761,5761,,N659,0
+rogs2026,2026,7A.23,2019-20,Vic,On-time case processing,,Cases finalised <=24 months,no.,6502,6502,,N658,0
+rogs2026,2026,7A.23,2020-21,Vic,On-time case processing,,Cases finalised <=24 months,no.,6174,6174,,N657,0
+rogs2026,2026,7A.23,2021-22,Vic,On-time case processing,,Cases finalised <=24 months,no.,6851,6851,,N656,0
+rogs2026,2026,7A.23,2022-23,Vic,On-time case processing,,Cases finalised <=24 months,no.,6883,6883,,N655,0
+rogs2026,2026,7A.23,2023-24,Vic,On-time case processing,,Cases finalised <=24 months,no.,6570,6570,,N654,0
+rogs2026,2026,7A.23,2024-25,Vic,On-time case processing,,Cases finalised <=24 months,no.,6709,6709,,N653,0
+rogs2026,2026,7A.21,2015-16,WA,Backlog,,Cases >12 months,%,21.3,21.3,,P838,0
+rogs2026,2026,7A.21,2016-17,WA,Backlog,,Cases >12 months,%,16.6,16.6,,P837,0
+rogs2026,2026,7A.21,2017-18,WA,Backlog,,Cases >12 months,%,21.0,21.0,,P836,0
+rogs2026,2026,7A.21,2018-19,WA,Backlog,,Cases >12 months,%,20.1,20.1,,P835,0
+rogs2026,2026,7A.21,2019-20,WA,Backlog,,Cases >12 months,%,23.4,23.4,,P834,0
+rogs2026,2026,7A.21,2020-21,WA,Backlog,,Cases >12 months,%,25.9,25.9,,P833,0
+rogs2026,2026,7A.21,2021-22,WA,Backlog,,Cases >12 months,%,35.6,35.6,,P832,0
+rogs2026,2026,7A.21,2022-23,WA,Backlog,,Cases >12 months,%,33.2,33.2,,P831,0
+rogs2026,2026,7A.21,2023-24,WA,Backlog,,Cases >12 months,%,24.9,24.9,,P830,0
+rogs2026,2026,7A.21,2024-25,WA,Backlog,,Cases >12 months,%,32.9,32.9,,P829,0
+rogs2026,2026,7A.21,2015-16,WA,Backlog,,Cases >12 months,no.,465,465,,P816,0
+rogs2026,2026,7A.21,2016-17,WA,Backlog,,Cases >12 months,no.,361,361,,P815,0
+rogs2026,2026,7A.21,2017-18,WA,Backlog,,Cases >12 months,no.,447,447,,P814,0
+rogs2026,2026,7A.21,2018-19,WA,Backlog,,Cases >12 months,no.,458,458,,P813,0
+rogs2026,2026,7A.21,2019-20,WA,Backlog,,Cases >12 months,no.,483,483,,P812,0
+rogs2026,2026,7A.21,2020-21,WA,Backlog,,Cases >12 months,no.,806,806,,P811,0
+rogs2026,2026,7A.21,2021-22,WA,Backlog,,Cases >12 months,no.,1307,1307,,P810,0
+rogs2026,2026,7A.21,2022-23,WA,Backlog,,Cases >12 months,no.,1121,1121,,P809,0
+rogs2026,2026,7A.21,2023-24,WA,Backlog,,Cases >12 months,no.,829,829,,P808,0
+rogs2026,2026,7A.21,2024-25,WA,Backlog,,Cases >12 months,no.,1091,1091,,P807,0
+rogs2026,2026,7A.21,2015-16,WA,Backlog,,Cases >24 months,%,6.7,6.7,,P849,0
+rogs2026,2026,7A.21,2016-17,WA,Backlog,,Cases >24 months,%,6.4,6.4,,P848,0
+rogs2026,2026,7A.21,2017-18,WA,Backlog,,Cases >24 months,%,6.6,6.6,,P847,0
+rogs2026,2026,7A.21,2018-19,WA,Backlog,,Cases >24 months,%,6.7,6.7,,P846,0
+rogs2026,2026,7A.21,2019-20,WA,Backlog,,Cases >24 months,%,7.6,7.6,,P845,0
+rogs2026,2026,7A.21,2020-21,WA,Backlog,,Cases >24 months,%,7.7,7.7,,P844,0
+rogs2026,2026,7A.21,2021-22,WA,Backlog,,Cases >24 months,%,9.0,9.0,,P843,0
+rogs2026,2026,7A.21,2022-23,WA,Backlog,,Cases >24 months,%,10.0,10.0,,P842,0
+rogs2026,2026,7A.21,2023-24,WA,Backlog,,Cases >24 months,%,6.2,6.2,,P841,0
+rogs2026,2026,7A.21,2024-25,WA,Backlog,,Cases >24 months,%,7.5,7.5,,P840,0
+rogs2026,2026,7A.21,2015-16,WA,Backlog,,Cases >24 months,no.,147,147,,P827,0
+rogs2026,2026,7A.21,2016-17,WA,Backlog,,Cases >24 months,no.,138,138,,P826,0
+rogs2026,2026,7A.21,2017-18,WA,Backlog,,Cases >24 months,no.,141,141,,P825,0
+rogs2026,2026,7A.21,2018-19,WA,Backlog,,Cases >24 months,no.,153,153,,P824,0
+rogs2026,2026,7A.21,2019-20,WA,Backlog,,Cases >24 months,no.,158,158,,P823,0
+rogs2026,2026,7A.21,2020-21,WA,Backlog,,Cases >24 months,no.,239,239,,P822,0
+rogs2026,2026,7A.21,2021-22,WA,Backlog,,Cases >24 months,no.,329,329,,P821,0
+rogs2026,2026,7A.21,2022-23,WA,Backlog,,Cases >24 months,no.,336,336,,P820,0
+rogs2026,2026,7A.21,2023-24,WA,Backlog,,Cases >24 months,no.,207,207,,P819,0
+rogs2026,2026,7A.21,2024-25,WA,Backlog,,Cases >24 months,no.,249,249,,P818,0
+rogs2026,2026,7A.21,2015-16,WA,Backlog,,Pending case load,no.,2178,2178,,P805,0
+rogs2026,2026,7A.21,2016-17,WA,Backlog,,Pending case load,no.,2173,2173,,P804,0
+rogs2026,2026,7A.21,2017-18,WA,Backlog,,Pending case load,no.,2127,2127,,P803,0
+rogs2026,2026,7A.21,2018-19,WA,Backlog,,Pending case load,no.,2280,2280,,P802,0
+rogs2026,2026,7A.21,2019-20,WA,Backlog,,Pending case load,no.,2067,2067,,P801,0
+rogs2026,2026,7A.21,2020-21,WA,Backlog,,Pending case load,no.,3117,3117,,P800,0
+rogs2026,2026,7A.21,2021-22,WA,Backlog,,Pending case load,no.,3673,3673,,P799,0
+rogs2026,2026,7A.21,2022-23,WA,Backlog,,Pending case load,no.,3375,3375,,P798,0
+rogs2026,2026,7A.21,2023-24,WA,Backlog,,Pending case load,no.,3336,3336,,P797,0
+rogs2026,2026,7A.21,2024-25,WA,Backlog,,Pending case load,no.,3317,3317,,P796,0
+rogs2026,2026,7A.26,2015-16,WA,Clearance indicator,,Clearance indicator,%,92.5,92.5,,P208,0
+rogs2026,2026,7A.26,2016-17,WA,Clearance indicator,,Clearance indicator,%,99.9,99.9,,P207,0
+rogs2026,2026,7A.26,2017-18,WA,Clearance indicator,,Clearance indicator,%,101.4,101.4,,P206,0
+rogs2026,2026,7A.26,2018-19,WA,Clearance indicator,,Clearance indicator,%,93.5,93.5,,P205,0
+rogs2026,2026,7A.26,2019-20,WA,Clearance indicator,,Clearance indicator,%,106.4,106.4,,P204,0
+rogs2026,2026,7A.26,2020-21,WA,Clearance indicator,,Clearance indicator,%,67.8,67.8,,P203,0
+rogs2026,2026,7A.26,2021-22,WA,Clearance indicator,,Clearance indicator,%,81.5,81.5,,P202,0
+rogs2026,2026,7A.26,2022-23,WA,Clearance indicator,,Clearance indicator,%,108.7,108.7,,P201,0
+rogs2026,2026,7A.26,2023-24,WA,Clearance indicator,,Clearance indicator,%,100.8,100.8,,P200,0
+rogs2026,2026,7A.26,2024-25,WA,Clearance indicator,,Clearance indicator,%,101.6,101.6,,P199,0
+rogs2026,2026,7A.6,2015-16,WA,Finalisations,Deaths reported,Deaths reported,no.,,na,na,P209,1
+rogs2026,2026,7A.6,2016-17,WA,Finalisations,Deaths reported,Deaths reported,no.,,na,na,P208,2
+rogs2026,2026,7A.6,2017-18,WA,Finalisations,Deaths reported,Deaths reported,no.,2322,2322,,P207,2
+rogs2026,2026,7A.6,2018-19,WA,Finalisations,Deaths reported,Deaths reported,no.,2293,2293,,P206,2
+rogs2026,2026,7A.6,2019-20,WA,Finalisations,Deaths reported,Deaths reported,no.,2737,2737,,P205,2
+rogs2026,2026,7A.6,2020-21,WA,Finalisations,Deaths reported,Deaths reported,no.,1994,1994,,P204,2
+rogs2026,2026,7A.6,2021-22,WA,Finalisations,Deaths reported,Deaths reported,no.,2396,2396,,P203,2
+rogs2026,2026,7A.6,2022-23,WA,Finalisations,Deaths reported,Deaths reported,no.,3578,3578,,P202,2
+rogs2026,2026,7A.6,2023-24,WA,Finalisations,Deaths reported,Deaths reported,no.,3337,3337,,P201,2
+rogs2026,2026,7A.6,2024-25,WA,Finalisations,Deaths reported,Deaths reported,no.,3367,3367,,P200,2
+rogs2026,2026,7A.6,2015-16,WA,Finalisations,Fires reported,Fires reported,no.,,na,na,P220,1
+rogs2026,2026,7A.6,2016-17,WA,Finalisations,Fires reported,Fires reported,no.,,na,na,P219,2
+rogs2026,2026,7A.6,2017-18,WA,Finalisations,Fires reported,Fires reported,no.,,..,..,P218,3
+rogs2026,2026,7A.6,2018-19,WA,Finalisations,Fires reported,Fires reported,no.,,..,..,P217,4
+rogs2026,2026,7A.6,2019-20,WA,Finalisations,Fires reported,Fires reported,no.,,..,..,P216,5
+rogs2026,2026,7A.6,2020-21,WA,Finalisations,Fires reported,Fires reported,no.,,..,..,P215,6
+rogs2026,2026,7A.6,2021-22,WA,Finalisations,Fires reported,Fires reported,no.,,..,..,P214,7
+rogs2026,2026,7A.6,2022-23,WA,Finalisations,Fires reported,Fires reported,no.,,..,..,P213,8
+rogs2026,2026,7A.6,2023-24,WA,Finalisations,Fires reported,Fires reported,no.,,..,..,P212,9
+rogs2026,2026,7A.6,2024-25,WA,Finalisations,Fires reported,Fires reported,no.,,..,..,P211,10
+rogs2026,2026,7A.6,2015-16,WA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2049,2049,,P231,0
+rogs2026,2026,7A.6,2016-17,WA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2419,2419,,P230,0
+rogs2026,2026,7A.6,2017-18,WA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2322,2322,,P229,0
+rogs2026,2026,7A.6,2018-19,WA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2293,2293,,P228,0
+rogs2026,2026,7A.6,2019-20,WA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2737,2737,,P227,0
+rogs2026,2026,7A.6,2020-21,WA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,1994,1994,,P226,0
+rogs2026,2026,7A.6,2021-22,WA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2396,2396,,P225,0
+rogs2026,2026,7A.6,2022-23,WA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,3578,3578,,P224,0
+rogs2026,2026,7A.6,2023-24,WA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,3337,3337,,P223,0
+rogs2026,2026,7A.6,2024-25,WA,Finalisations,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,3367,3367,,P222,0
+rogs2026,2026,7A.2,2015-16,WA,Lodgments,Deaths reported,Deaths reported,no.,2214,2214,,P209,0
+rogs2026,2026,7A.2,2016-17,WA,Lodgments,Deaths reported,Deaths reported,no.,2422,2422,,P208,0
+rogs2026,2026,7A.2,2017-18,WA,Lodgments,Deaths reported,Deaths reported,no.,2291,2291,,P207,0
+rogs2026,2026,7A.2,2018-19,WA,Lodgments,Deaths reported,Deaths reported,no.,2452,2452,,P206,0
+rogs2026,2026,7A.2,2019-20,WA,Lodgments,Deaths reported,Deaths reported,no.,2573,2573,,P205,0
+rogs2026,2026,7A.2,2020-21,WA,Lodgments,Deaths reported,Deaths reported,no.,2942,2942,,P204,0
+rogs2026,2026,7A.2,2021-22,WA,Lodgments,Deaths reported,Deaths reported,no.,2940,2940,,P203,0
+rogs2026,2026,7A.2,2022-23,WA,Lodgments,Deaths reported,Deaths reported,no.,3291,3291,,P202,0
+rogs2026,2026,7A.2,2023-24,WA,Lodgments,Deaths reported,Deaths reported,no.,3310,3310,,P201,0
+rogs2026,2026,7A.2,2024-25,WA,Lodgments,Deaths reported,Deaths reported,no.,3315,3315,,P200,0
+rogs2026,2026,7A.2,2015-16,WA,Lodgments,Fires reported,Fires reported,no.,0,0,,P220,0
+rogs2026,2026,7A.2,2016-17,WA,Lodgments,Fires reported,Fires reported,no.,0,0,,P219,0
+rogs2026,2026,7A.2,2017-18,WA,Lodgments,Fires reported,Fires reported,no.,,..,..,P218,1
+rogs2026,2026,7A.2,2018-19,WA,Lodgments,Fires reported,Fires reported,no.,,..,..,P217,2
+rogs2026,2026,7A.2,2019-20,WA,Lodgments,Fires reported,Fires reported,no.,,..,..,P216,3
+rogs2026,2026,7A.2,2020-21,WA,Lodgments,Fires reported,Fires reported,no.,,..,..,P215,4
+rogs2026,2026,7A.2,2021-22,WA,Lodgments,Fires reported,Fires reported,no.,,..,..,P214,5
+rogs2026,2026,7A.2,2022-23,WA,Lodgments,Fires reported,Fires reported,no.,,..,..,P213,6
+rogs2026,2026,7A.2,2023-24,WA,Lodgments,Fires reported,Fires reported,no.,,..,..,P212,7
+rogs2026,2026,7A.2,2024-25,WA,Lodgments,Fires reported,Fires reported,no.,,..,..,P211,8
+rogs2026,2026,7A.2,2015-16,WA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2214,2214,,P231,0
+rogs2026,2026,7A.2,2016-17,WA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2422,2422,,P230,0
+rogs2026,2026,7A.2,2017-18,WA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2291,2291,,P229,0
+rogs2026,2026,7A.2,2018-19,WA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2452,2452,,P228,0
+rogs2026,2026,7A.2,2019-20,WA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2573,2573,,P227,0
+rogs2026,2026,7A.2,2020-21,WA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2942,2942,,P226,0
+rogs2026,2026,7A.2,2021-22,WA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,2940,2940,,P225,0
+rogs2026,2026,7A.2,2022-23,WA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,3291,3291,,P224,0
+rogs2026,2026,7A.2,2023-24,WA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,3310,3310,,P223,0
+rogs2026,2026,7A.2,2024-25,WA,Lodgments,Total coroners' courts (incl. deaths and fires reported),Total coroners' courts (incl. deaths and fires reported),no.,3315,3315,,P222,0
+rogs2026,2026,7A.23,2015-16,WA,On-time case processing,,Cases finalised <=12 months,%,54.3,54.3,,P673,0
+rogs2026,2026,7A.23,2016-17,WA,On-time case processing,,Cases finalised <=12 months,%,60.5,60.5,,P672,0
+rogs2026,2026,7A.23,2017-18,WA,On-time case processing,,Cases finalised <=12 months,%,47.5,47.5,,P671,0
+rogs2026,2026,7A.23,2018-19,WA,On-time case processing,,Cases finalised <=12 months,%,60.9,60.9,,P670,0
+rogs2026,2026,7A.23,2019-20,WA,On-time case processing,,Cases finalised <=12 months,%,70.6,70.6,,P669,0
+rogs2026,2026,7A.23,2020-21,WA,On-time case processing,,Cases finalised <=12 months,%,61.9,61.9,,P668,0
+rogs2026,2026,7A.23,2021-22,WA,On-time case processing,,Cases finalised <=12 months,%,56.5,56.5,,P667,0
+rogs2026,2026,7A.23,2022-23,WA,On-time case processing,,Cases finalised <=12 months,%,54.1,54.1,,P666,0
+rogs2026,2026,7A.23,2023-24,WA,On-time case processing,,Cases finalised <=12 months,%,47.4,47.4,,P665,0
+rogs2026,2026,7A.23,2024-25,WA,On-time case processing,,Cases finalised <=12 months,%,57.4,57.4,,P664,0
+rogs2026,2026,7A.23,2015-16,WA,On-time case processing,,Cases finalised <=12 months,no.,1113,1113,,P651,0
+rogs2026,2026,7A.23,2016-17,WA,On-time case processing,,Cases finalised <=12 months,no.,1463,1463,,P650,0
+rogs2026,2026,7A.23,2017-18,WA,On-time case processing,,Cases finalised <=12 months,no.,1103,1103,,P649,0
+rogs2026,2026,7A.23,2018-19,WA,On-time case processing,,Cases finalised <=12 months,no.,1397,1397,,P648,0
+rogs2026,2026,7A.23,2019-20,WA,On-time case processing,,Cases finalised <=12 months,no.,1931,1931,,P647,0
+rogs2026,2026,7A.23,2020-21,WA,On-time case processing,,Cases finalised <=12 months,no.,1235,1235,,P646,0
+rogs2026,2026,7A.23,2021-22,WA,On-time case processing,,Cases finalised <=12 months,no.,1339,1339,,P645,0
+rogs2026,2026,7A.23,2022-23,WA,On-time case processing,,Cases finalised <=12 months,no.,1935,1935,,P644,0
+rogs2026,2026,7A.23,2023-24,WA,On-time case processing,,Cases finalised <=12 months,no.,1583,1583,,P643,0
+rogs2026,2026,7A.23,2024-25,WA,On-time case processing,,Cases finalised <=12 months,no.,1932,1932,,P642,0
+rogs2026,2026,7A.23,2015-16,WA,On-time case processing,,Cases finalised <=24 months,%,93.7,93.7,,P684,0
+rogs2026,2026,7A.23,2016-17,WA,On-time case processing,,Cases finalised <=24 months,%,95.3,95.3,,P683,0
+rogs2026,2026,7A.23,2017-18,WA,On-time case processing,,Cases finalised <=24 months,%,95.6,95.6,,P682,0
+rogs2026,2026,7A.23,2018-19,WA,On-time case processing,,Cases finalised <=24 months,%,94.6,94.6,,P681,0
+rogs2026,2026,7A.23,2019-20,WA,On-time case processing,,Cases finalised <=24 months,%,95.0,95.0,,P680,0
+rogs2026,2026,7A.23,2020-21,WA,On-time case processing,,Cases finalised <=24 months,%,92.3,92.3,,P679,0
+rogs2026,2026,7A.23,2021-22,WA,On-time case processing,,Cases finalised <=24 months,%,89.5,89.5,,P678,0
+rogs2026,2026,7A.23,2022-23,WA,On-time case processing,,Cases finalised <=24 months,%,86.4,86.4,,P677,0
+rogs2026,2026,7A.23,2023-24,WA,On-time case processing,,Cases finalised <=24 months,%,90.1,90.1,,P676,0
+rogs2026,2026,7A.23,2024-25,WA,On-time case processing,,Cases finalised <=24 months,%,94.9,94.9,,P675,0
+rogs2026,2026,7A.23,2015-16,WA,On-time case processing,,Cases finalised <=24 months,no.,1919,1919,,P662,0
+rogs2026,2026,7A.23,2016-17,WA,On-time case processing,,Cases finalised <=24 months,no.,2306,2306,,P661,0
+rogs2026,2026,7A.23,2017-18,WA,On-time case processing,,Cases finalised <=24 months,no.,2219,2219,,P660,0
+rogs2026,2026,7A.23,2018-19,WA,On-time case processing,,Cases finalised <=24 months,no.,2169,2169,,P659,0
+rogs2026,2026,7A.23,2019-20,WA,On-time case processing,,Cases finalised <=24 months,no.,2600,2600,,P658,0
+rogs2026,2026,7A.23,2020-21,WA,On-time case processing,,Cases finalised <=24 months,no.,1841,1841,,P657,0
+rogs2026,2026,7A.23,2021-22,WA,On-time case processing,,Cases finalised <=24 months,no.,2122,2122,,P656,0
+rogs2026,2026,7A.23,2022-23,WA,On-time case processing,,Cases finalised <=24 months,no.,3090,3090,,P655,0
+rogs2026,2026,7A.23,2023-24,WA,On-time case processing,,Cases finalised <=24 months,no.,3006,3006,,P654,0
+rogs2026,2026,7A.23,2024-25,WA,On-time case processing,,Cases finalised <=24 months,no.,3196,3196,,P653,0

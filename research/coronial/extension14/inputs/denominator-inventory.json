@@ -1,0 +1,52 @@
+{
+  "header": [
+    "year_reg",
+    "month_reg",
+    "ethnicity",
+    "sex",
+    "age_group",
+    "count"
+  ],
+  "rows": 31349,
+  "months": 192,
+  "sex_groups": [
+    "Female",
+    "Male"
+  ],
+  "age_groups": [
+    "00_00",
+    "01_04",
+    "05_09",
+    "10_14",
+    "15_19",
+    "20_24",
+    "25_29",
+    "30_34",
+    "35_39",
+    "40_44",
+    "45_49",
+    "50_54",
+    "55_59",
+    "60_64",
+    "65_69",
+    "70_74",
+    "75_79",
+    "80_84",
+    "85_89",
+    "90_94",
+    "95_"
+  ],
+  "ethnicity_groups": [
+    "Asian",
+    "European",
+    "MELAA or Other",
+    "M\u0101ori",
+    "Pacific",
+    "Total",
+    "Unspecified"
+  ],
+  "direct_all_age_total_row_present": false,
+  "ratio_decision": "NO_GO_FROM_THIS_WORKBOOK_ALONE",
+  "reason": "No direct all-age total row; rounded age/sex cells and overlapping ethnicities must not be represented as an exact official total. NIIO population/filing dates are also distinct.",
+  "population": "Deaths occurring and registered in NZ irrespective of residence"
+}

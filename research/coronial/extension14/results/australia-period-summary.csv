@@ -1,0 +1,17 @@
+jurisdiction,metric,periods,missing,first_available_period,first_value,last_available_period,last_value,change_percentage_points
+ACT,Cases >24 months,10,0,2015-16,17.8,2024-25,29.5,11.7
+ACT,Clearance indicator,10,0,2015-16,85.6,2024-25,71.8,-13.8
+NSW,Cases >24 months,10,0,2015-16,8.6,2024-25,13.0,4.4
+NSW,Clearance indicator,10,0,2015-16,100.2,2024-25,102.0,1.8
+NT,Cases >24 months,10,0,2015-16,31.3,2024-25,11.2,-20.1
+NT,Clearance indicator,10,0,2015-16,115.1,2024-25,93.4,-21.7
+Qld,Cases >24 months,10,0,2015-16,13.6,2024-25,21.5,7.9
+Qld,Clearance indicator,10,0,2015-16,100.5,2024-25,110.6,10.1
+SA,Cases >24 months,10,0,2015-16,11.2,2024-25,19.4,8.2
+SA,Clearance indicator,10,0,2015-16,89.8,2024-25,108.5,18.7
+Tas,Cases >24 months,10,0,2015-16,8.1,2024-25,13.4,5.3
+Tas,Clearance indicator,10,0,2015-16,87.1,2024-25,86.8,-0.3
+Vic,Cases >24 months,10,0,2015-16,10.1,2024-25,15.5,5.4
+Vic,Clearance indicator,10,0,2015-16,104.6,2024-25,96.1,-8.5
+WA,Cases >24 months,10,0,2015-16,6.7,2024-25,7.5,0.8
+WA,Clearance indicator,10,0,2015-16,92.5,2024-25,101.6,9.1
