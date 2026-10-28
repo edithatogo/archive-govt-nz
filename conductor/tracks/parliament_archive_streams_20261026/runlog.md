@@ -309,3 +309,56 @@ to terminal before replacement assurance. Corrected full local harness passes
 Original logs remain intact; corrected receipt:
 evidence/parliament-assurance/20261028/access-hold-corrected-assurance.json.
 PR803 must use the corrected head before native qualification/resumption.
+
+### Native hold, cold restore and resumed continuation
+
+PR803 mergedc0f8b148 after corrected-head45943a4f checks all passed, including
+Windows22m55s. Native40638106153 qualified the exact original failure without
+source re-probe, then a separate anonymous process verified snapshot/proof/card.
+Native40638313911 verified all1002 references cold while paused. Resume preserved
+existing hosted enablement. Pilot40638927253 captured the three previously pending
+historical records with0discovery,515880bytes/49.912620266active-seconds;837originals,
+1metadata-only,24verified batches,0pending,1reviewed failed original,0unreviewed
+failures. Five independent anonymous pinned downloads verified manifest,three
+payloads and maintained card. Numeric HTTP code remains explicitly unknown.
+
+Continuous40639731203 resumed onqualifiedc0f8b148;05:46:19UTC native observation
+confirmed correct GHA owner,enabled=true,paused=null,verified checkpoint and
+historicalpage84 selected atcycle11. This is manual workflow_dispatch, not actual
+natural recurrence acceptance. The original SSD root stays frozen. Parent remains
+active; only technical P7 delivery is complete. Paired native acceptance evidence:
+evidence/parliament-assurance/20261028/access-hold-native-acceptance.{json,md}.
+
+PR805 hosted documentation assurance found one Base64 entropy false positive on
+the already verified public hold-object path. Original native/private verifier
+receipts remain intact. The derived evidence now uses lossless path_parts arrays
+with original receipt hashes; no public object, source code, scan policy or
+exemption changed. The initial local scan missed a newly generated untracked
+receipt; final evidence scanning now follows staging. Source/native assurance is
+reused; require corrected-head documentation checks before merge/child794close.
+
+Native40639731203 then stopped at an explicit Hub write429 with Retry-After3575;
+this is newly proven and does not certify the cause of older unknown outcomes.
+Native terminal time yields a conservative not-before07:10:05UTC28October2026.
+Public snapshotd96fe4cf95cfbd846f13e586a7a4803911336751 /
+3e9818d624646539728309cb49b5ab79625fce60642dc53ad0f6fe2f36c9f9ee
+is uploaded,cycle14 recentpage8,publishphase,0newcaptures,4958bytes.857 originals,
+1metadata-only,26verified publications,onlythealreadyqualified missing original.
+Owner remains the terminalgha_40639731203_1; no takeover or HF write was attempted.
+GitHub workflow398299208 was disabled once with intent/readback to prevent cron
+writes during cooldown. Source bodies/receipts/card and frozen SSD state remain
+intact. Implement native-receipt backoff before claims and suppress cleanup writes
+on known429; never blindly resend the unknown mutation or infer another failure's
+cause. Rate-limit recovery remains pending; technical child794 stays open.
+
+PR805 merged6d8cac81 with all required checks green; parent778 and child794
+remain active for quota recovery and coverage. PR807 implements the cooldown
+guard, first-failure preservation, no cleanup writes and bounded publication
+hints. Full candidate assurance at e757158f passed8695tests/14capability skips,
+all stages, secrets and SBOM. First lint-only failures were retained.
+Review corrected unknown-delay aging and propagation of exact unavailable origin
+proof;209affected tests passed with91% module coverage, followed by exact
+origin/CLI/native-contract tests. Mergefe0a1829 preserves main Health804/806 work;
+only Conductor plan/runlog needed lossless additive conflict resolution.
+The production workflow remains disabled pending green delivery and native
+checkpoint reconciliation. No source acquisition or HF mutation was attempted.

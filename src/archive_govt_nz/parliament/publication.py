@@ -19,6 +19,7 @@ from archive_govt_nz.parliament.contracts import PUBLIC_REPOSITORY, validate_man
 from archive_govt_nz.parliament.hosted_transport import (
     METADATA_TIMEOUT,
     assert_publication_authority,
+    commit_failure,
 )
 
 DEFAULT_REPOSITORY = PUBLIC_REPOSITORY
@@ -101,13 +102,18 @@ class NativeHub:
                         message = "immutable_remote_batch_conflict"
                         raise ValueError(message)
             return parent
-        result = api.create_commit(
-            repo_id=repo,
-            repo_type="dataset",
-            operations=operations,
-            parent_commit=parent,
-            commit_message="Preserve Parliament archive batch",
-        )
+        try:
+            result = api.create_commit(
+                repo_id=repo,
+                repo_type="dataset",
+                operations=operations,
+                parent_commit=parent,
+                commit_message="Preserve Parliament archive batch",
+            )
+        except Exception as error:  # noqa: BLE001 - retain bounded hints only
+            raise commit_failure(
+                error, reason="publication_commit_outcome_unknown"
+            ) from None
         return result.oid
 
     def download(self, repo: str, filename: str, revision: str, cache: Path) -> Path:
