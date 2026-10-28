@@ -108,6 +108,26 @@ def test_dispatch_routes_revenue_workbook_to_edition_bound_adapter() -> None:
     assert amount.source_coordinate == "'Raw Data'!F2"
     assert amount.raw_value == "58746"
     assert amount.normalized_value == "58746.000"
+    links = {link.kind: link for link in result.output.dimension_links}
+    assert {
+        kind: (link.raw_value, link.source_coordinate) for kind, link in links.items()
+    } == {
+        "department": ("Ministry of Health", "'Raw Data'!A2"),
+        "vote": ("Health", "'Raw Data'!B2"),
+        "measure": ("Non-Tax Revenue", "'Raw Data'!E2"),
+        "unit": ("Amount $000", "'Raw Data'!F1"),
+        "period": ("2021", "'Raw Data'!G2"),
+        "amount_type": ("Actuals", "'Raw Data'!H2"),
+    }
+    assert all(mapping.target is None for mapping in result.output.dimensions)
+    repeated = dispatch_bronze(
+        payload,
+        source_sha256=digest,
+        media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        registrations=_registrations(),
+    )
+    assert repeated.output.dimensions == result.output.dimensions
+    assert repeated.output.dimension_links == result.output.dimension_links
     assert {row.reason for row in result.output.losses} == {
         "context_or_non_revenue_sheet_inventoried_only"
     }
