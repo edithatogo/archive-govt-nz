@@ -8,7 +8,10 @@ from types import SimpleNamespace
 from typing import TYPE_CHECKING
 
 import pytest
+from httpx2 import Request, Response
+from huggingface_hub.errors import HfHubHTTPError
 
+from archive_govt_nz.parliament import hosted_cli as cli
 from archive_govt_nz.parliament import hosted_transport as transport
 from archive_govt_nz.parliament.hosted_state import digest
 from archive_govt_nz.parliament.hosted_transport import HostedError, NativeTransport
@@ -156,3 +159,77 @@ def test_visibility_must_be_explicit_false(
     monkeypatch.setattr(NativeTransport, "pace", lambda _self: None)
     with pytest.raises(HostedError, match="public_target_not_qualified"):
         NativeTransport().head()
+
+
+def test_unknown_commit_retains_only_bounded_http_diagnostics(
+    tmp_path: Path, monkeypatch: MonkeyPatch
+) -> None:
+    """Recovery can distinguish throttling without leaking response bodies or URLs."""
+    calls = []
+
+    class FailingSDK:
+        def create_commit(self, **_kwargs: object) -> None:
+            calls.append(1)
+            response = Response(
+                429,
+                headers={"Retry-After": "3600", "X-Sensitive": "DO_NOT_DISCLOSE"},
+                request=Request("POST", "https://example.invalid/?signed=SECRET"),
+            )
+            message = "DO_NOT_DISCLOSE"
+            raise HfHubHTTPError(message, response=response)
+
+    monkeypatch.setattr(transport, "HfApi", lambda **_kw: FailingSDK())
+    monkeypatch.setattr(NativeTransport, "pace", lambda _self: None)
+    monkeypatch.setattr(NativeTransport, "exists", lambda *_args: False)
+    # This in-process fixture must preserve pytest's global logging state.
+    monkeypatch.setattr(cli.logging, "disable", lambda _level: None)
+    monkeypatch.setattr(cli, "install_signals", lambda: None)
+    monkeypatch.setattr(
+        cli,
+        "execute",
+        lambda _args: NativeTransport().commit({transport.POINTER: b"{}"}, "1" * 40),
+    )
+    receipt = tmp_path / "receipt.json"
+    monkeypatch.setattr(
+        cli.sys,
+        "argv",
+        ["hosted", "verify", "--state-dir", str(tmp_path), "--receipt", str(receipt)],
+    )
+    assert cli.main() == 1
+    result = json.loads(receipt.read_text())
+    assert result["reason"] == "checkpoint_commit_outcome_unknown"
+    assert result["http_status"] == 429
+    assert result["retry_after_seconds"] == 3600
+    assert calls == [1]
+    assert "SECRET" not in receipt.read_text()
+    assert "DO_NOT_DISCLOSE" not in receipt.read_text()
+
+
+@pytest.mark.parametrize(
+    ("status", "retry", "expected_status", "expected_retry"),
+    [
+        (429, "0", 429, 0),
+        (409, "86400", 409, 86400),
+        (True, "86401", None, None),
+        (700, "999999999999999999999999999999", None, None),
+        (403, "-1", 403, None),
+        (503, "https://example.invalid/?token=SECRET", 503, None),
+        (429, "\uff11\uff12\uff13", 429, None),
+        (None, "Wed, 28 Oct 2026 01:00:00 GMT", None, None),
+    ],
+)
+def test_commit_diagnostics_reject_unbounded_or_sensitive_values(
+    status: object,
+    retry: str,
+    expected_status: int | None,
+    expected_retry: int | None,
+) -> None:
+    """Only small numeric hints may cross the private diagnostic boundary."""
+    error = RuntimeError("DO_NOT_DISCLOSE")
+    error.response = SimpleNamespace(  # type: ignore[attr-defined]
+        status_code=status, headers={"Retry-After": retry}
+    )
+    result = transport.commit_failure(error)
+    assert result.http_status == expected_status
+    assert result.retry_after_seconds == expected_retry
+    assert str(result) == "checkpoint_commit_outcome_unknown"
