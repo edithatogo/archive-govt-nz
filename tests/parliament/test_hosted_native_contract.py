@@ -181,6 +181,8 @@ def test_unknown_commit_retains_only_bounded_http_diagnostics(
     monkeypatch.setattr(transport, "HfApi", lambda **_kw: FailingSDK())
     monkeypatch.setattr(NativeTransport, "pace", lambda _self: None)
     monkeypatch.setattr(NativeTransport, "exists", lambda *_args: False)
+    # This in-process fixture must preserve pytest's global logging state.
+    monkeypatch.setattr(cli.logging, "disable", lambda _level: None)
     monkeypatch.setattr(cli, "install_signals", lambda: None)
     monkeypatch.setattr(
         cli,

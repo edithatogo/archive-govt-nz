@@ -220,3 +220,12 @@ numeric Retry-After fields; one native mutation attempt only, no response bodies
 URLs or arbitrary headers. Native operator cold verification uses the existing
 qualified cached SDK credential and no source acquisition. Actions and operator
 bindings remain separate evidence.
+
+PR800's first Ubuntu/macOS runs exposed an in-process fixture leaking the CLI's
+intentional process-global logging suppression into a later logging test. Windows
+and the full initial local harness passed, showing order sensitivity rather than
+an OS capability gap. Both hosted failures and the deterministic two-node red
+reproduction are retained. The diagnostic fixture now follows the existing CLI
+fixture convention and stubs logging.disable; the production CLI remains unchanged.
+The ordered pair is green, and27 affected native/CLI/logging tests pass. Complete
+corrected-candidate assurance is required; no check is waived or blindly retried.
