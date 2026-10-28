@@ -141,7 +141,10 @@ def _partner_descriptors(
 
 
 def project_partner_federation(
-    readiness: bytes, snapshots: tuple[PartnerSnapshot, ...]
+    readiness: bytes,
+    snapshots: tuple[PartnerSnapshot, ...],
+    *,
+    include_tables: bool = False,
 ) -> dict[str, bytes]:
     """Resolve pinned headline pairs without accepting a positive join or rights grant.
 
@@ -149,6 +152,7 @@ def project_partner_federation(
     snapshots plus their retained review evidence. Exclusion applies only to this
     annual-total grain, not all partner records, future vintages or other joins.
     """
+    _require(type(include_tables) is bool)
     ledger = _ledger()
     _require(ledger["scope"] == "qualified_annual_vote_total_only")
     _require(hashlib.sha256(readiness).hexdigest() == ledger["source_readiness_sha256"])
@@ -200,7 +204,7 @@ def project_partner_federation(
             "reviewed_relationship_method_confidence_and_lineage",
         ],
     }
-    return {
+    result = {
         "federation_readiness.json": _json(report),
         "partner_snapshots.json": _json(
             {
@@ -212,3 +216,13 @@ def project_partner_federation(
             }
         ),
     }
+
+    if include_tables:
+        from archive_govt_nz.domains.health_appropriations.federation_tables import (  # noqa: PLC0415 - Only the opt-in projection needs Parquet.
+            project_reviewed_tables,
+        )
+
+        result.update(
+            project_reviewed_tables(report, descriptors, ledger["partners"], review_pin)
+        )
+    return result

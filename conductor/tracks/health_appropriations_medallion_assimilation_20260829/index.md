@@ -790,3 +790,5 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [Qualified metadata reconstruction and approved checksum correction](./qualified-metadata-verification-20261028.md) and [paired evidence](./qualified-metadata-verification-20261028.json). Historical snapshots and broader Phase 7 gates remain open.
 
 - [Product metadata coverage](./product-metadata-coverage-20261028.md) and [paired native evidence](./product-metadata-coverage-20261028.json): contextual Gold and Fiscal companion reports; local/native assurance passed, protected delivery pending.
+
+- [Reviewed federation tables](./federation-tables-20261028.md) and [paired native evidence](./federation-tables-20261028.json): five source identities, 174 selected partner identities, ten exclusions and zero approved links.

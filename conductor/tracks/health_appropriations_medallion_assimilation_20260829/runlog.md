@@ -10387,3 +10387,35 @@ head before accepting hosted checks; superseded checks cannot authorize merge.
 Whole-repository typing caught the existing CLI re-export of `GoldInput`;
 retained that import contract. Corrected typing, lint, format, Conductor and
 schema gates pass. No historical profile bytes changed.
+
+## 2026-10-28 — Evidence-supported federation tables
+
+Owner: this chat, isolated `codex/health-federation-tables-20261028` from
+`ea1edd33` after protected PR #804 merged and its clean worktree was pruned.
+The primary dirty checkout and separate metadata-contract prototype are retained.
+User scope: ten reviewed headline pairs remain excluded; no positive links are
+approved. Reuse four pinned partner/review snapshots and the immutable ledger;
+produce explicit identity/disposition tables and an empty typed links table.
+Python `.venv/bin/python --version`: 3.15.1; locked sync passed. This chat owns
+serial broad/native assurance for the frozen federation topic.
+
+Three initial failing API contracts retained. The first implemented projection
+correctly rejected a fixture lacking source record IDs; enriched only the
+fictional fixture, preserving fail-closed admission. Rehashed forged positive
+rows remain rejected after canonical manifest serialization. Thirteen affected
+metadata/snapshot/verification tests pass; typing/lint pass. Native v4 repeat
+builds and read-only reconstruction pass against all five qualified editions
+and four retained snapshots: source identities 5, partner identities 174,
+exclusions 10, approved links 0. Actual partner repositories/key fields are
+retained explicitly. Prior v3 payloads and every input hash are unchanged.
+The historical checksum warning remains 1; no hosted correction is repeated.
+The frozen final candidate now owns the broad validation slot.
+
+Terminal broad assurance: `./scripts/validate.sh` returned 0 on the frozen
+federation implementation; 8,667 passed / 14 capability skips, 91 schemas /
+81 representative documents, parity 9/9 and all mutation, hygiene, benchmark,
+audit, licence, secret and independently validated SBOM gates passed. Keep the
+80 percent floor. Only terminal Conductor/evidence status changes follow; run
+the affected documentation/schema gates and reuse unchanged runtime evidence.
+The federation table task is complete for the user-confirmed pinned scope:
+ten excluded pairs, no approved joins. Wider Phase 7 checkpoint stays open.
