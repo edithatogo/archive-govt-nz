@@ -3,7 +3,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-10-26T10:51:10.498Z",
-  "updated_at": "2026-10-28T00:00:23.763773+00:00",
+  "updated_at": "2026-10-28T02:42:27.605856+00:00",
   "description": "Bounded resumable Parliament submissions, advice and committee-document archival with incremental verified Hugging Face delivery.",
   "approval_status": "approved_implementation_review_and_archive",
   "github": {
@@ -131,10 +131,24 @@
       "cold_verify": 40601930474,
       "cancelled_after_durable_discovery": 40603023729,
       "interruption_recovery": 40603567130,
-      "historical_payload_pilot": 40603905138
+      "historical_payload_pilot": 40603905138,
+      "production_recovery": 40620940956
     },
     "evidence": "../../../evidence/parliament-assurance/20261028/hosted-execution-acceptance.json",
     "natural_recurrence_acceptance": false,
-    "coverage_claim": false
+    "coverage_claim": false,
+    "current_runtime_revision": "f9f65812216e096a615fb55d128d6ed39a7586cf",
+    "recovery_diagnostics_pr_url": "https://github.com/edithatogo/archive-govt-nz/pull/800",
+    "production_continuation_run": 40621708833,
+    "recovery_status": "verified",
+    "recovery_checkpoint": {
+      "revision": "d429a9067baa697b93a363dd4bf4d3436e1707fd",
+      "sha256": "a9b294df7f19b80a656d5d548a5664a7413fcaa6369c1b4c2b9f92bdbf5a938d",
+      "status": "verified"
+    },
+    "originals_at_recovery": 818,
+    "metadata_only_at_recovery": 1,
+    "verified_batches_at_recovery": 21,
+    "natural_fencing_observation_run": 40619056595
   }
 }

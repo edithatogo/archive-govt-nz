@@ -39,3 +39,8 @@ Final review fixes: f18c3ee7 implementation, b326ae87 four policy mutation guard
 ## P7 hosted continuation acceptance
 
 Dated native qualification and activation: [hosted-execution-acceptance.json](../../../evidence/parliament-assurance/20261028/hosted-execution-acceptance.json). It binds the green-check implementation/runtime deliveries,957-object anonymous cold verification, exact cancelled-run recovery, real ten-original historical pilot and separate13-download verifier. The public hosted pointer is enabled; local history is frozen/retained. Manual dispatch proof is distinct from pending natural recurrence and source-completeness acceptance.
+
+P7 current-runtime recovery and continuous-run readback:
+[hosted-recovery-acceptance.json](../../../evidence/parliament-assurance/20261028/hosted-recovery-acceptance.json).
+It retains first failures, conservative zero-acquisition recovery, current-runtime
+native proof and the separately observed natural lease-fencing failure.

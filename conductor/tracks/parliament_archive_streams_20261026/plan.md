@@ -125,7 +125,7 @@ User-directed follow-up,27October2026. Contract: [hosted-execution.md](./hosted-
 - [x] Prove exact Actions HF binding, anonymous cold restore, cancellation/resumption and preserved card in a bounded native pilot.
 - [x] Hand over from local writers and enable scheduled continuation only after native proof; retain separate natural-schedule acceptance.
 
-Latest local workset20261027T075911Z observed100 entries (page-one anchor, deep pages6–9, targeted late-attachment query and forward pages76–79);40new originals published and verified,798total originals+1metadata-only,0failed/0pending. Forward cursor80 and deep-reconciliation cursor10 remain separate. The known metadata-only report still has no attachment. Publication11eaae7bc65fae059f1770358daca78fae07f52af3d72cef00224d670ee07d36 at1c43e95e222ca0059276a7d1994b7714ca85dd7a. Runtime receipts and immutable originals remain on PortableSSD. Selective lane remains eight individually qualified author derivatives; existing holds remain effective. P7 is active work, not deployed collection.
+Latest local workset20261027T075911Z observed100 entries (page-one anchor, deep pages6–9, targeted late-attachment query and forward pages76–79);40new originals published and verified,798total originals+1metadata-only,0failed/0pending. Forward cursor80 and deep-reconciliation cursor10 remain separate. The known metadata-only report still has no attachment. Publication11eaae7bc65fae059f1770358daca78fae07f52af3d72cef00224d670ee07d36 at1c43e95e222ca0059276a7d1994b7714ca85dd7a. Runtime receipts and immutable originals remain on PortableSSD. Selective lane remains eight individually qualified author derivatives; existing holds remain effective. That local receipt predates hosted handover; current hosted evidence is recorded below.
 
 ### P7 hosted review remediation
 
@@ -139,11 +139,11 @@ P7 technical activation is verified in evidence/parliament-assurance/20261028/ho
 
 ### P7 scheduled-input review remediation
 
-- [~] Fix cron's absent dispatch input selecting an empty hold-seconds argument; retain first native failure, red/green workflow contract and required corrected-head checks.
-- [ ] Verify corrected scheduled invocation separately from manual production continuation; no natural recurrence claim before native evidence.
+- [x] Fix cron's absent dispatch input selecting an empty hold-seconds argument; retain first native failure, red/green workflow contract and required corrected-head checks.
+- [x] Verify corrected natural scheduled invocation reaches the CLI: run40619056595 correctly fenced the retained verifier lease without acquisition. Completed natural recurrence remains parent acceptance.
 
 ### P7 production recovery diagnostics
 
 - [x] Merge scheduled-input correction01ffe237 after Ubuntu/macOS/Windows, CodeQL, lint and patch coverage checks pass.
-- [~] Recover the first continuous-run unknown checkpoint outcome before further acquisition; retain original failed receipts and staged snapshot.
-- [~] Preserve bounded HTTP status/Retry-After in sanitized receipts without replaying native mutations or exposing SDK diagnostics; qualify and deliver the fix.
+- [x] Recover the first continuous-run unknown checkpoint outcome before further acquisition; retain original failed receipts and staged snapshot.
+- [x] Preserve bounded HTTP status/Retry-After in sanitized receipts without replaying native mutations or exposing SDK diagnostics; qualify and deliver the fix.
