@@ -1,0 +1,17 @@
+{
+  "title": "Coronial delay: extension14 replication view",
+  "creator": "Dylan Mordaunt",
+  "prepared": "2026-10-29",
+  "rendering_revision": 2,
+  "Git_recipe_commit": "4437fe9765b4d24eaf93a767dd34ee5fda8b98be",
+  "Git_recipe_url": "https://github.com/edithatogo/archive-govt-nz/tree/4437fe9765b4d24eaf93a767dd34ee5fda8b98be/research/coronial/extension14",
+  "HF_revision": "0c3acec0405d241343e9193bffb5f1ffdf54f52f",
+  "HF_url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/tree/0c3acec0405d241343e9193bffb5f1ffdf54f52f/coronial/extensions/536f2e9798660a5ff9e6d6967566a42c17f4d9027f8c3890b77c7a47f45fb653",
+  "HF_Bronze_manifest_url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/resolve/0c3acec0405d241343e9193bffb5f1ffdf54f52f/coronial/extensions/536f2e9798660a5ff9e6d6967566a42c17f4d9027f8c3890b77c7a47f45fb653/bronze-manifest.json",
+  "recipe_manifest_sha256": "536f2e9798660a5ff9e6d6967566a42c17f4d9027f8c3890b77c7a47f45fb653",
+  "anonymous_HF_files_verified": 67,
+  "logical_recipe_files_restored": 65,
+  "scope": "Aggregate calculation reproduction, code and PNG/PDF graphics; source-extraction audit of excluded NIIO PDF/StatsNZ workbook is outside this recipe. Rights and source versions remain separate.",
+  "earlier_revisions_retained": true,
+  "DOI": null
+}
