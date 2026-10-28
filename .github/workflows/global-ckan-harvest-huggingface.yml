@@ -10,7 +10,7 @@ on:
         required: true
         default: harvest
         type: choice
-        options: [harvest, checksum-inspect, checksum-publish, checksum-verify]
+        options: [harvest, checksum-inspect, checksum-publish, checksum-verify, checksum-qualify]
       approved_checksum_sha256:
         description: "Explicit approved corrected SHA256SUMS digest; publication only"
         required: false
@@ -150,16 +150,21 @@ jobs:
           uv sync --locked --no-dev --python 3.15.1
           .venv/bin/python -c 'import sys; assert sys.version_info[:3] == (3, 15, 1)'
       - name: Prepare frozen-parent intent without credentials
-        if: inputs.operation != 'checksum-verify'
+        if: inputs.operation != 'checksum-verify' && inputs.operation != 'checksum-qualify'
         run: .venv/bin/python tools/health_partner_checksum.py prepare --output checksum-evidence
       - name: Retain correction intent before any mutation
-        if: inputs.operation != 'checksum-verify'
+        if: inputs.operation != 'checksum-verify' && inputs.operation != 'checksum-qualify'
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: medicines-checksum-intent-${{ github.run_id }}
           path: checksum-evidence/
           if-no-files-found: error
           retention-days: 90
+      - name: Qualify only the existing target permission metadata
+        if: inputs.operation == 'checksum-qualify'
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: .venv/bin/python tools/health_partner_checksum.py qualify --output checksum-evidence
       - name: Apply the explicitly approved checksum correction once
         if: inputs.operation == 'checksum-publish'
         env:

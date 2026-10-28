@@ -134,15 +134,46 @@ def verify(revision: str) -> dict[str, Any]:
     }
 
 
+def permission_summary(identity: dict[str, Any]) -> dict[str, Any]:
+    """Expose target-relevant permission metadata without token or private targets."""
+    auth = identity.get("auth", {})
+    token = auth.get("accessToken", {})
+    fine = token.get("fineGrained", {})
+    scoped = []
+    for grant in fine.get("scoped", []):
+        entity = grant.get("entity", {})
+        if entity.get("name") in {REPO, "edithatogo"}:
+            scoped.append(
+                {
+                    "entity": entity.get("name"),
+                    "type": entity.get("type"),
+                    "permissions": grant.get("permissions", []),
+                }
+            )
+    return {
+        "account_matches": identity.get("name") == "edithatogo",
+        "token_role": token.get("role"),
+        "global_permissions": fine.get("global", []),
+        "target_scopes": scoped,
+        "publication": "not_performed",
+    }
+
+
 def main() -> None:
     """Prepare, apply once, or verify; never run the harvest pipeline."""
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("operation", choices=("prepare", "publish", "verify"))
+    parser.add_argument(
+        "operation", choices=("prepare", "publish", "verify", "qualify")
+    )
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--approved-sha256", default="")
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
-    if args.operation == "verify":
+    if args.operation == "qualify":
+        receipt = permission_summary(
+            HfApi(token=os.environ["HF_TOKEN"]).whoami(cache=False)
+        )
+    elif args.operation == "verify":
         receipt = verify("main")
     else:
         head, _ = snapshot("main")

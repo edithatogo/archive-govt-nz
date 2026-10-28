@@ -163,10 +163,11 @@ def test_checksum_job_cannot_start_harvest_or_notifications() -> None:
         "harvest_" in s.get("run", "") or "notify_" in s.get("run", "") for s in steps
     )
     credentialed = [s for s in steps if "HF_TOKEN" in s.get("env", {})]
-    assert len(credentialed) == 1
-    assert credentialed[0]["if"] == "inputs.operation == 'checksum-publish'"
+    assert len(credentialed) == 2
+    writer = next(s for s in credentialed if " publish " in s["run"])
+    assert writer["if"] == "inputs.operation == 'checksum-publish'"
     assert next(
         i
         for i, s in enumerate(steps)
         if s.get("name") == "Retain correction intent before any mutation"
-    ) < steps.index(credentialed[0])
+    ) < steps.index(writer)
