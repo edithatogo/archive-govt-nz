@@ -133,6 +133,10 @@ def main() -> int:
         }
         if isinstance(error, HostedError):
             result["reason"] = str(error)
+            if error.http_status is not None:
+                result["http_status"] = error.http_status
+            if error.retry_after_seconds is not None:
+                result["retry_after_seconds"] = error.retry_after_seconds
         code = 1
     args.receipt.write_text(json.dumps(result, indent=2))
     sys.stdout.write(json.dumps(result) + "\n")

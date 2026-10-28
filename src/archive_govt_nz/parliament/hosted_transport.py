@@ -20,10 +20,46 @@ POINTER = "parliament/control/continuation.json"
 LIMIT = 64 * 1024 * 1024
 MAX_COMMIT_FILES = 100
 METADATA_TIMEOUT = 20.0
+HTTP_MIN = 100
+HTTP_MAX = 599
+MAX_RETRY_DIGITS = 6
+MAX_RETRY_SECONDS = 86400
 
 
 class HostedError(RuntimeError):
-    """A fail-closed hosted operation; callers publish only this stable reason."""
+    """A fail-closed operation with optional bounded, non-sensitive diagnostics."""
+
+    def __init__(
+        self,
+        reason: str,
+        *,
+        http_status: int | None = None,
+        retry_after_seconds: int | None = None,
+    ) -> None:
+        """Never retain SDK messages, request URLs, bodies or arbitrary headers."""
+        super().__init__(reason)
+        self.http_status = http_status
+        self.retry_after_seconds = retry_after_seconds
+
+
+def commit_failure(error: Exception) -> HostedError:
+    """Retain only bounded numeric response hints; never replay a mutation."""
+    response = getattr(error, "response", None)
+    status = getattr(response, "status_code", None)
+    if type(status) is not int or not HTTP_MIN <= status <= HTTP_MAX:
+        status = None
+    retry = getattr(response, "headers", {}).get("Retry-After", "")
+    seconds = (
+        int(retry)
+        if isinstance(retry, str)
+        and retry.isascii()
+        and retry.isdecimal()
+        and len(retry) <= MAX_RETRY_DIGITS
+        and int(retry) <= MAX_RETRY_SECONDS
+        else None
+    )
+    reason = "checkpoint_commit_outcome_unknown"
+    return HostedError(reason, http_status=status, retry_after_seconds=seconds)
 
 
 def abort(reason: str) -> NoReturn:
@@ -148,10 +184,10 @@ class NativeTransport:
                 )
                 .oid
             )
-        except Exception:  # noqa: BLE001 - suppress signed SDK diagnostics
-            # The commit may have succeeded: its exact pointer/immutable paths
-            # are inspected on resume. Suppress temporary signed URLs.
-            abort("checkpoint_commit_outcome_unknown")
+        except Exception as error:  # noqa: BLE001 - suppress signed SDK diagnostics
+            # Never replay a mutation. Preserve only typed HTTP recovery hints;
+            # the exact pointer/immutable paths must be inspected on resume.
+            raise commit_failure(error) from None
 
 
 def validate_pointer(pointer: dict[str, Any]) -> None:

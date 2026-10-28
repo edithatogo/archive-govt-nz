@@ -141,3 +141,9 @@ P7 technical activation is verified in evidence/parliament-assurance/20261028/ho
 
 - [~] Fix cron's absent dispatch input selecting an empty hold-seconds argument; retain first native failure, red/green workflow contract and required corrected-head checks.
 - [ ] Verify corrected scheduled invocation separately from manual production continuation; no natural recurrence claim before native evidence.
+
+### P7 production recovery diagnostics
+
+- [x] Merge scheduled-input correction01ffe237 after Ubuntu/macOS/Windows, CodeQL, lint and patch coverage checks pass.
+- [~] Recover the first continuous-run unknown checkpoint outcome before further acquisition; retain original failed receipts and staged snapshot.
+- [~] Preserve bounded HTTP status/Retry-After in sanitized receipts without replaying native mutations or exposing SDK diagnostics; qualify and deliver the fix.
