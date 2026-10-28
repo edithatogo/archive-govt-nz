@@ -148,3 +148,11 @@ the corrected recovery passes. Public metadata reads now have a supported explic
 SDK timeout and minimal fields; unknown visibility flags fail closed. The initial
 public pointer remains disabled with no snapshot or new report acquisition.
 Complete initialization before any cloud pilot or activation.
+
+P7 technical native acceptance is complete: green-check PR795/797 delivery,
+957-object anonymous cold restore, exact checkpoint-linked cancellation recovery,
+ten real report originals published and independently hash-verified, unchanged
+maintained card, and explicit public hosted authority activation. The heartbeat
+now monitors/reviews without local acquisition. No unqualified body or SDK log
+was published; all eight selective derivatives and remaining holds are unchanged.
+Keep this unfinished parent active for rights, coverage and natural recurrence.

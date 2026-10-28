@@ -35,3 +35,7 @@ V2 metadata-only tail batch `158ef5274d09fb530cd346066693be9ddbd7665d423a5a30d85
 Review mutation evidence: four isolated mutants (public visibility, anonymous download, remote fixity, robots policy) killed; integrated into the existing Medallion mutation runner. Existing full-harness mutation stages also passed. No mutation ran against production source or real Hub writes.
 
 Final review fixes: f18c3ee7 implementation, b326ae87 four policy mutation guards. Whole-suite result predates only the mutation-registration and fixture-comment changes; focused mutations, format/lint/types, schema, exact affected test and resumed supply-chain evidence cover those bounded edits. Anonymous final dataset readback: private=false, gated=false at f4bb4d6b924e865b5fb58331e1bf42bc20dcc19b. No natural scheduler run claimed.
+
+## P7 hosted continuation acceptance
+
+Dated native qualification and activation: [hosted-execution-acceptance.json](../../../evidence/parliament-assurance/20261028/hosted-execution-acceptance.json). It binds the green-check implementation/runtime deliveries,957-object anonymous cold verification, exact cancelled-run recovery, real ten-original historical pilot and separate13-download verifier. The public hosted pointer is enabled; local history is frozen/retained. Manual dispatch proof is distinct from pending natural recurrence and source-completeness acceptance.

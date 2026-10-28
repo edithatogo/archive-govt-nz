@@ -3,7 +3,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-10-26T10:51:10.498Z",
-  "updated_at": "2026-10-27T12:05:29.973557+00:00",
+  "updated_at": "2026-10-28T00:00:23.763773+00:00",
   "description": "Bounded resumable Parliament submissions, advice and committee-document archival with incremental verified Hugging Face delivery.",
   "approval_status": "approved_implementation_review_and_archive",
   "github": {
@@ -89,7 +89,7 @@
       "status": "pending"
     }
   ],
-  "operational_status": "public_reports_manual_pilot_verified_remaining_sources_blocked",
+  "operational_status": "hosted_reports_enabled_natural_recurrence_and_remaining_sources_pending",
   "assessment": "../../../docs/parliament-archive-assessment.md",
   "publication": {
     "repo_id": "edithatogo/archive-govt-nz-global",
@@ -104,7 +104,8 @@
     "kind": "heartbeat",
     "status": "ACTIVE",
     "interval_hours": 2,
-    "natural_run_verified": false
+    "natural_run_verified": false,
+    "role": "monitor_and_review_only"
   },
   "hub_hardening": {
     "datasets_verified": 44,
@@ -118,5 +119,22 @@
     "first_row_probes_passed": 41,
     "phase_issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/789",
     "estate_landing_collection_verified": true
+  },
+  "hosted_execution": {
+    "status": "enabled",
+    "workflow": ".github/workflows/parliament-continuation.yml",
+    "phase_issue_url": "https://github.com/edithatogo/archive-govt-nz/issues/794",
+    "implementation_pr_url": "https://github.com/edithatogo/archive-govt-nz/pull/795",
+    "runtime_fix_pr_url": "https://github.com/edithatogo/archive-govt-nz/pull/797",
+    "qualified_revision": "5d0cf00ff9d63b1aebd09ffbfa4da319b8c70d0a",
+    "native_runs": {
+      "cold_verify": 40601930474,
+      "cancelled_after_durable_discovery": 40603023729,
+      "interruption_recovery": 40603567130,
+      "historical_payload_pilot": 40603905138
+    },
+    "evidence": "../../../evidence/parliament-assurance/20261028/hosted-execution-acceptance.json",
+    "natural_recurrence_acceptance": false,
+    "coverage_claim": false
   }
 }

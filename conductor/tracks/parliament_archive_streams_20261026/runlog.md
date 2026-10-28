@@ -168,3 +168,29 @@ visibility-condition text anchor no longer matched the stricter fail-closed
 condition. Updated that anchor while retaining the same private-check-removal
 mutation and test selector. No mutation was removed or waived. Reuse completed
 gates and rerun the affected mutation plus the not-yet-completed remaining stages.
+
+## P7 enabled — native acceptance
+
+Runtime PR797 merged5d0cf00f after all required checks, including all three OS
+assurance jobs and patch coverage, were green. Recovered the exact frozen
+bootstrap owner under the local writer lock;957 qualified object references
+accepted and the disabled pointer released. No new discovery during bootstrap.
+
+Cold Actions run40601930474 freshly anonymously verified all957 objects.
+Cancelled run40603023729 after the accepted ten-entry recent discovery barrier.
+Recovery40603567130 succeeded and bound its interrupted work to that exact
+cancelled run/attempt; the old budget closed conservatively with no new discovery.
+Actual historical pilot40603905138 then captured ten new originals from page80
+within2465266 charged bytes and157.78088833 acquisition seconds. Batch626917401502927cdf2e2f25c2fa3a4f595b6efdd250e28d2f61d00df01d788c
+at81e0ae56e58c8e866f0ab9cde6cf3b7fe3052036 passed native anonymous verification,
+then a separate verifier passed13 pinned downloads (manifest,11unique objects,
+maintained card). Current qualification observation:808 originals+1metadata-only,
+20verified report batches,0pending/failed. Root card/YAML remain byte-identical.
+
+Enabled the public pointer only after all native proofs. It now authorizes
+hosted serial continuation; the original SSD remains frozen/retained. The
+heartbeat was updated to monitor/review only, with no competing local capture.
+Main subsequently merged unrelated Health PR798 at0fbaaeb4; Parliament production
+code, workflow and locked runtime inputs are byte-unchanged from the qualified
+head. All four native runs were manual dispatch proofs. Natural trigger/start/end,
+recurrence and source completeness remain separate acceptance; parent stays active.
