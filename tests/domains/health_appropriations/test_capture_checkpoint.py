@@ -74,6 +74,31 @@ with _exclusive_capture_lock(Path(sys.argv[1])):
 
 
 @pytest.mark.anyio
+@pytest.mark.parametrize("pin", ["0" * 64, "BAD", "A" * 64])
+async def test_census_pin_rejects_drift_before_capture(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, pin: str
+) -> None:
+    execute, args, calls = setup(tmp_path, monkeypatch)
+    args.census_sha256 = pin
+    with pytest.raises(ValueError, match="capture_census_pin_mismatch"):
+        await execute(args)
+    assert not calls
+    assert not args.manifest.exists()
+    assert not args.warc_dir.exists()
+
+
+@pytest.mark.anyio
+async def test_census_pin_is_bound_to_capture_context(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    execute, args, calls = setup(tmp_path, monkeypatch)
+    args.census_sha256 = hashlib.sha256(args.census.read_bytes()).hexdigest()
+    result = await execute(args)
+    assert result["capture_context"]["census_sha256"] == args.census_sha256
+    assert calls
+
+
+@pytest.mark.anyio
 @pytest.mark.parametrize("fault", ["swap", "query", "url", "status", "body", "legacy"])
 async def test_resume_requires_warc_source_response_binding(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, fault: str

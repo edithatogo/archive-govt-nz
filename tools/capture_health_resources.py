@@ -22,6 +22,9 @@ import httpx
 from warcio.archiveiterator import ArchiveIterator
 
 from archive_govt_nz.capture import CaptureConfig, CaptureError, capture_url
+from archive_govt_nz.domains.health_appropriations.source_layout_operations import (
+    _read_pinned,
+)
 from archive_govt_nz.object_store import ContentAddressedStore
 from archive_govt_nz.warc_binding import MAX_WARC_BYTES, verify_response_binding
 
@@ -599,13 +602,27 @@ def _select_sources(
     return selected
 
 
+def _census_snapshot(path: Path, expected_digest: str | None) -> tuple[bytes, str]:
+    """Bind scheduled capture to a bounded, regular census snapshot."""
+    if expected_digest is None:
+        census_bytes = path.read_bytes()
+        return census_bytes, hashlib.sha256(census_bytes).hexdigest()
+    try:
+        return _read_pinned(str(path), expected_digest)
+    except ValueError as error:
+        msg = "capture_census_pin_mismatch"
+        raise ValueError(msg) from error
+
+
 async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:
-    census_bytes = args.census.read_bytes()
+    census_bytes, census_digest = _census_snapshot(
+        args.census, getattr(args, "census_sha256", None)
+    )
     census = json.loads(census_bytes)
     preservation_only = getattr(args, "preservation_only", False)
     selected = _select_sources(census, preservation_only=preservation_only)
     context: dict[str, object] = {
-        "census_sha256": hashlib.sha256(census_bytes).hexdigest(),
+        "census_sha256": census_digest,
         "max_resource_bytes": args.max_resource_bytes,
         "contract": "health-capture-resume/v1",
     }
@@ -688,6 +705,7 @@ def main() -> int:
     """Capture selected sources with explicit preservation-only rights on request."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--census", required=True, type=Path)
+    parser.add_argument("--census-sha256", help="Require this exact census SHA-256.")
     parser.add_argument("--store-root", required=True, type=Path)
     parser.add_argument("--warc-dir", required=True, type=Path)
     parser.add_argument("--manifest", required=True, type=Path)
