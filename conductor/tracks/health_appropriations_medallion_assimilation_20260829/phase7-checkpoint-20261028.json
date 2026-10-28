@@ -59,6 +59,25 @@
     "rights": "not_inherited",
     "source_records": 5
   },
+  "final_identity_review": {
+    "finding": "contextual_rights_notice_could_alias_retained_payload",
+    "focused_tests_passed": 55,
+    "fresh_exact_head_hosted_checks": "required_before_merge",
+    "normal_projections_unchanged": true,
+    "resolution": "reject_notice_id_in_resource_identity_set",
+    "wheel_review": {
+      "normal_metadata_outputs_unchanged": true,
+      "notice_guard_matches_source": true,
+      "resource_members": [
+        "archive_govt_nz/domains/health_appropriations/candidate-v2.schema.json",
+        "archive_govt_nz/domains/health_appropriations/metadata-release-contract-v1.schema.json",
+        "archive_govt_nz/domains/health_appropriations/metadata-release-verification-v1.schema.json"
+      ],
+      "scope": "wheel_resource_import_not_whole_product_clean_room_recovery",
+      "wheel_module_import": true,
+      "wheel_sha256": "8ef6928a82e1c8b216674a74091ad8464c9a01ade5616318543d20872d4eec1b"
+    }
+  },
   "final_local_assurance": {
     "all_stages": "passed",
     "capability_skips": 14,

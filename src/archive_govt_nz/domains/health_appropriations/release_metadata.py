@@ -274,7 +274,7 @@ def _profile_graphs(
     rights = {package_id + ":" + i["path"]: by_path[i["path"]] for i in inventory}
     actor_ids = [a["id"] for a in facts["creators"] or []]
     _require(len(set(actor_ids)) == len(actor_ids))
-    _require(facts["identifier"] not in rights)
+    _require(facts["identifier"] not in rights and _notice(facts)["@id"] not in rights)
     _require(
         not (
             set(actor_ids)

@@ -391,3 +391,27 @@ def test_expanded_grants_match_resource_record(
             "source_amount": "int64",
             "source_label": "string",
         }
+
+
+def test_contextual_notice_cannot_alias_a_payload(tmp_path: Path) -> None:
+    """A valid snapshot identifier cannot merge a FileObject with its rights notice."""
+    root, _, inputs = _case(tmp_path)
+    notice = root / "resource-rights-notice"
+    notice.write_bytes(b"Retained source notice, not generated metadata.")
+    contract = json.loads(inputs.contract_path.read_bytes())
+    resources = contract["resources"]
+    resources.append(
+        {
+            **resources[0],
+            "path": notice.name,
+            "payload_sha256": hashlib.sha256(notice.read_bytes()).hexdigest(),
+        }
+    )
+    base = metadata.project_candidate_inventory(root, reconstruct=True)
+    facts = contract["facts"]
+    facts["identifier"] = (
+        "urn:archive-govt-nz:health:candidate-payload-inventory:"
+        + hashlib.sha256(base["metadata/payload-inventory.json"]).hexdigest()
+    )
+    with pytest.raises(ValueError, match="metadata_release_contract"):
+        metadata.project_release_metadata(root, facts, resources)

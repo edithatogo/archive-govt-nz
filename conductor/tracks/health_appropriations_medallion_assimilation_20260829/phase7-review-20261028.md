@@ -26,3 +26,10 @@ Rights truth, source-specific legal decisions, positive joins, ML loading and
 unadmitted products remain explicit external or later-phase boundaries. Their
 absence is represented by fail-closed states, not by a checkpoint-wide approval.
 Whole-track archival/completion is not approved by this phase review.
+
+Final identity review reproduced a contextual rights-notice/payload alias. The
+projection now rejects that namespace collision before graph emission. The new
+regression fails on the prior implementation and passes with the guard; all 55
+affected contract/readiness tests and the five Platinum mutants pass. Existing
+normal metadata outputs are identical. The corrected wheel contains the exact
+source and schemas. Fresh exact-head hosted checks qualify this correction.
