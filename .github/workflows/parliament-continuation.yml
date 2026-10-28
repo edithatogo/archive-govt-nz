@@ -56,7 +56,7 @@ jobs:
         env:
           OPERATION: ${{ github.event_name == 'schedule' && 'run' || inputs.operation }}
           MAX_BATCHES: ${{ github.event_name == 'schedule' && 1000 || inputs.max_batches }}
-          HOLD_SECONDS: ${{ github.event_name == 'schedule' && 0 || inputs.hold_seconds }}
+          HOLD_SECONDS: ${{ inputs.hold_seconds || '0' }}
         run: >-
           .venv/bin/python tools/parliament_hosted.py "$OPERATION"
           --state-dir build/parliament-hosted/state

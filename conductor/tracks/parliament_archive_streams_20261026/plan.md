@@ -121,9 +121,9 @@ User-directed follow-up,27October2026. Contract: [hosted-execution.md](./hosted-
 - [x] Define durable checkpoint, interruption, fencing, cold-restore and authority-handover requirements.
 - [x] Implement and test report-only projection, durable accepted-object/checkpoint protocol and shared writer fencing.
 - [x] Implement finite serial batch jobs with trusted-main workflow, explicit pause, concurrency, bounded disk and continuation.
-- [~] Run milestone assurance and Conductor review; fix findings and deliver through green required checks.
-- [ ] Prove exact Actions HF binding, anonymous cold restore, cancellation/resumption and preserved card in a bounded native pilot.
-- [ ] Hand over from local writers and enable scheduled continuation only after native proof; retain separate natural-schedule acceptance.
+- [x] Run milestone assurance and Conductor review; fix findings and deliver through green required checks.
+- [x] Prove exact Actions HF binding, anonymous cold restore, cancellation/resumption and preserved card in a bounded native pilot.
+- [x] Hand over from local writers and enable scheduled continuation only after native proof; retain separate natural-schedule acceptance.
 
 Latest local workset20261027T075911Z observed100 entries (page-one anchor, deep pages6–9, targeted late-attachment query and forward pages76–79);40new originals published and verified,798total originals+1metadata-only,0failed/0pending. Forward cursor80 and deep-reconciliation cursor10 remain separate. The known metadata-only report still has no attachment. Publication11eaae7bc65fae059f1770358daca78fae07f52af3d72cef00224d670ee07d36 at1c43e95e222ca0059276a7d1994b7714ca85dd7a. Runtime receipts and immutable originals remain on PortableSSD. Selective lane remains eight individually qualified author derivatives; existing holds remain effective. P7 is active work, not deployed collection.
 
@@ -133,4 +133,11 @@ Latest local workset20261027T075911Z observed100 entries (page-one anchor, deep 
 - [x] Enforce a total remaining acquisition deadline during catalogue discovery.
 - [x] Hold the existing local writer lock before freezing/exporting bootstrap state.
 - [x] Exercise the operator CLI in the measured package; preserve the80% patch gate.
-- [~] Require the corrected-head local and hosted assurance before merge/native handover.
+- [x] Require the corrected-head local and hosted assurance before merge/native handover.
+
+P7 technical activation is verified in evidence/parliament-assurance/20261028/hosted-execution-acceptance.json. Natural recurrence, full coverage and remaining source/rights gates are separate unfinished parent acceptance.
+
+### P7 scheduled-input review remediation
+
+- [~] Fix cron's absent dispatch input selecting an empty hold-seconds argument; retain first native failure, red/green workflow contract and required corrected-head checks.
+- [ ] Verify corrected scheduled invocation separately from manual production continuation; no natural recurrence claim before native evidence.
