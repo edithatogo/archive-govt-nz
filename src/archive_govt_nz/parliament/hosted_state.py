@@ -427,7 +427,11 @@ def export_state(
         tables = {
             name: [
                 dict(row)
-                for row in connection.execute("SELECT * FROM " + name)  # noqa: S608 - fixed TABLES keys
+                for row in connection.execute(
+                    "SELECT * FROM "  # noqa: S608 - fixed TABLES keys
+                    + name
+                    + (" ORDER BY rowid" if name == "events" else "")
+                )
             ]
             for name in TABLES
         }

@@ -29,6 +29,7 @@ from archive_govt_nz.parliament.report_holds import (
 )
 
 CLOCK_SKEW = 120
+FAILURE_EVENT_PAIR = 2
 
 
 def _row(state: dict[str, Any], source_id: str) -> dict[str, Any]:
@@ -94,11 +95,15 @@ def _failure_status(
     rows = [
         r
         for r in state["tables"]["events"]
-        if r["source_id"] == sid and r["status"] == HTTP_FAILURE_EVENT
+        if r["source_id"] == sid and r["status"] in {HTTP_FAILURE_EVENT, "failed"}
     ]
-    if not rows:
+    if (
+        len(rows) < FAILURE_EVENT_PAIR
+        or rows[-1]["status"] != "failed"
+        or rows[-2]["status"] != HTTP_FAILURE_EVENT
+    ):
         abort("report_hold_http_evidence_missing")
-    data = json.loads(rows[-1]["detail"])
+    data = json.loads(rows[-2]["detail"])
     if (
         data["record_sha256"] != digest(record.encode())
         or data["url_sha256"] != digest(url.encode())

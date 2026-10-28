@@ -39,6 +39,7 @@ def fixture(
         with manager.archive._connection() as connection:  # noqa: SLF001
             text = connection.execute("SELECT record FROM records").fetchone()[0]
             url = json.loads(text)["attachments"][0]
+            connection.execute("DELETE FROM events WHERE status='failed'")
             connection.execute(
                 "INSERT INTO events VALUES(?,?,?,?)",
                 (
@@ -54,6 +55,10 @@ def fixture(
                     ).decode(),
                     1.0,
                 ),
+            )
+            connection.execute(
+                "INSERT INTO events VALUES(?,?,?,?)",
+                (SID, "failed", "terminal_status", 1.0),
             )
     manager.owner = "gha_1_1"
     manager.pointer["owner"] = manager.owner
@@ -117,6 +122,39 @@ def test_new_failure_must_have_exact_access_status(
     else:
         result = approve_access_hold(tmp_path / "approve", transport=remote, **args)
         assert result["original_http_status"] == status
+
+
+def test_stale_http_diagnostic_cannot_classify_a_later_failure(tmp_path: Path) -> None:
+    """A missing later diagnostic must not inherit an earlier response code."""
+    archive, _ = failed(tmp_path)
+    with archive._connection() as connection:  # noqa: SLF001 - isolated fixture
+        record = connection.execute("SELECT record FROM records").fetchone()[0]
+    url = json.loads(record)["attachments"][0]
+    diagnostic = {
+        "source_id": SID,
+        "status": "source_http_failure",
+        "observed": 1.0,
+        "detail": canonical(
+            {
+                "error_class": "terminal_status",
+                "http_status": 403,
+                "record_sha256": digest(record.encode()),
+                "url_sha256": digest(url.encode()),
+            }
+        ).decode(),
+    }
+    failure = {
+        "source_id": SID,
+        "status": "failed",
+        "detail": "terminal_status",
+        "observed": 2.0,
+    }
+    state = {
+        "schema": "parliament-hosted-state/v2",
+        "tables": {"events": [diagnostic, failure, {**failure, "observed": 3.0}]},
+    }
+    with pytest.raises(HostedError, match="http_evidence_missing"):
+        hosted_holds._failure_status(state, SID, record, url)  # noqa: SLF001 - exact regression
 
 
 def test_native_hold_preserves_pause_failure_and_cold_proof(
