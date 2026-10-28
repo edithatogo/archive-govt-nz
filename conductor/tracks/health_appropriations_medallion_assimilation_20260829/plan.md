@@ -1782,6 +1782,12 @@ deliberately exercise version handling.
 - [~] Add fast-first scheduled discovery/capture/normalization lanes with
   heavier reconciliation and reconstruction behind explicit triggers and
   bounded resource limits. [M-15, M-18; AC-13, AC-16]
+  - [~] Add a pinned local normalization-plan runner, scheduler-callable CLI
+    and read-only MCP preflight, with bounded inputs, exclusive execution,
+    preserved failed/interrupted attempts and hash-verified replay. Local
+    qualification passed; hosted assurance and protected delivery remain pending. This does not activate
+    a timer or implement the capture lane. See
+    `phase8-normalization-scheduler-20261029.md`.
   - [x] Pin the existing metadata-only Health discovery lane to contents-read,
     credential-free, non-cancelling scheduled operation; keep capture and
     normalization explicitly absent from this discovery lane. See
