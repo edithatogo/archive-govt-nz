@@ -1,0 +1,42 @@
+{
+  "locator_semantics": "recorded_reference_only_no_access_or_rights_claim",
+  "packages": [
+    {
+      "manifest_sha256": "32838a8c4f4c09faa35d5c42400f290a16288ad79cd7f4e063b3560e135c82bb",
+      "no_reference_reason": null,
+      "package_id": "urn:archive-govt-nz:health:gold:32838a8c4f4c09faa35d5c42400f290a16288ad79cd7f4e063b3560e135c82bb",
+      "profile": "context_source_separated",
+      "references": [
+        {
+          "field_path": "/source_marker_sha256/0",
+          "kind": "sha256",
+          "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        {
+          "field_path": "/source_marker_sha256/1",
+          "kind": "sha256",
+          "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        {
+          "field_path": "/source_marker_sha256/2",
+          "kind": "sha256",
+          "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        {
+          "field_path": "/source_marker_sha256/3",
+          "kind": "sha256",
+          "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        {
+          "field_path": "/source_marker_sha256/4",
+          "kind": "sha256",
+          "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      ]
+    }
+  ],
+  "publication": "not_performed",
+  "rights": "not_evaluated",
+  "schema_version": "archive-govt-nz.health-gold-source-drillthrough/v5",
+  "scope": "source_manifest_field_references_only"
+}

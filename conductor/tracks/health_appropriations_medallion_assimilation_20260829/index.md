@@ -788,3 +788,5 @@ unchanged; this is no publisher correction or rights/comparability approval.
 - [Final clean-room recovery receipt refreshed after PR #774](./clean-room-recovery-20261024-final.json): 47 product groups rebuilt, Bronze unchanged, no errors; remaining source, comparison, Platinum and rights gates stay open. See the [latest runlog entry](./runlog.md).
 
 - [Qualified metadata reconstruction and approved checksum correction](./qualified-metadata-verification-20261028.md) and [paired evidence](./qualified-metadata-verification-20261028.json). Historical snapshots and broader Phase 7 gates remain open.
+
+- [Product metadata coverage](./product-metadata-coverage-20261028.md) and [paired native evidence](./product-metadata-coverage-20261028.json): contextual Gold and Fiscal companion reports; local/native assurance passed, protected delivery pending.

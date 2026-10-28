@@ -26,6 +26,9 @@ from archive_govt_nz.domains.health_appropriations import (
     canonical_gold_verification as canonical_verifier,
 )
 from archive_govt_nz.domains.health_appropriations import (
+    context_gold_verification as context_verifier,
+)
+from archive_govt_nz.domains.health_appropriations import (
     fiscal_analytical_gold as fiscal,
 )
 from archive_govt_nz.domains.health_appropriations import (
@@ -44,6 +47,10 @@ from archive_govt_nz.domains.health_appropriations.workbook_common import (
 VERSION = "archive-govt-nz.health-gold-metadata/v3"
 CANONICAL_VERSION = "archive-govt-nz.health-gold-metadata/v4"
 OPERATION_VERSION = "archive-govt-nz.health-gold-metadata/v5"
+CONTEXT_VERSION = "archive-govt-nz.health-gold-metadata/v7"
+CONTEXT_SOURCE_DRILLTHROUGH_VERSION = (
+    "archive-govt-nz.health-gold-source-drillthrough/v5"
+)
 FINANCIAL_ACTIVITY_VERSION = "archive-govt-nz.health-gold-metadata/v6"
 SOURCE_DRILLTHROUGH_VERSION = "archive-govt-nz.health-gold-source-drillthrough/v1"
 CANONICAL_SOURCE_DRILLTHROUGH_VERSION = (
@@ -57,6 +64,9 @@ FINANCIAL_ACTIVITY_SOURCE_DRILLTHROUGH_VERSION = (
 )
 MAX_BYTES = 16 * 1024 * 1024
 MAX_PACKAGES = 8
+MAX_TABLE_ROWS = 100_000
+MAX_TABLE_FIELDS = 256
+MAX_EXPANDED_BYTES = 256 * 1024 * 1024
 SHA256_HEX_LENGTH = 64
 FILES = {
     "catalogue.json",
@@ -355,6 +365,128 @@ def _canonical_package(value: GoldInput) -> dict[str, Any]:
     }
 
 
+def _report_package(value: GoldInput) -> dict[str, Any]:
+    """Reuse report verification; do not manufacture tabular source schemas."""
+    # Reporting alone initializes plotting.
+    from archive_govt_nz.domains.health_appropriations import (  # noqa: PLC0415
+        fiscal_analytical_reports as reports,
+    )
+
+    _safe_metadata_path(value.root)
+    reports.verify_fiscal_analytical_reports(value.root, value.manifest_sha256)
+    marker = verified_snapshot(
+        value.root / "manifest.json", value.manifest_sha256, max_bytes=MAX_BYTES
+    )
+    manifest = json.loads(marker)
+    _require(
+        manifest["rights"] == "not_evaluated"
+        and manifest["publication"] == "not_performed"
+    )
+    _require(
+        re.fullmatch(r"[a-f0-9]{64}", manifest["gold_manifest_sha256"]) is not None
+    )
+    return {
+        "id": "urn:archive-govt-nz:health:gold:" + value.manifest_sha256,
+        "profile": value.profile,
+        "gold_schema_version": manifest["schema_version"],
+        "manifest_sha256": value.manifest_sha256,
+        "inventory": _inventory(value, "manifest.json", marker, manifest["files"]),
+        "tables": [],
+        "caveats": [
+            "report_payload_inventory_only_no_tabular_recordsets",
+            "source_gold_and_bronze_not_reverified",
+        ],
+        "verification_scope": "pinned_gold_package_snapshots",
+        "source_reverification": "not_performed",
+        "source_semantics": "not_reassessed",
+        "rights": manifest["rights"],
+        "publication": manifest["publication"],
+        "source_references": [
+            {
+                "field_path": "/gold_manifest_sha256",
+                "kind": "sha256",
+                "value": manifest["gold_manifest_sha256"],
+            }
+        ],
+    }
+
+
+def _context_package(value: GoldInput) -> dict[str, Any]:
+    """Describe verified Context Gold snapshots without reassessing source semantics."""
+    _safe_metadata_path(value.root)
+    _require(
+        context_verifier.verify_context_gold_package(value.root, value.manifest_sha256)[
+            "status"
+        ]
+        == "verified"
+    )
+    marker = verified_snapshot(
+        value.root / "MANIFEST.json",
+        value.manifest_sha256,
+        max_bytes=context_verifier.MAX_MANIFEST_BYTES,
+    )
+    manifest = json.loads(marker)
+    package_id = "urn:archive-govt-nz:health:gold:" + value.manifest_sha256
+    inventory = _inventory(value, "MANIFEST.json", marker, manifest["products"])
+    tables = []
+    for name, binding in sorted(manifest["products"].items()):
+        if not name.endswith(".parquet"):
+            continue
+        payload = verified_snapshot(
+            value.root / name, binding["sha256"], max_bytes=MAX_BYTES
+        )
+        with pq.ParquetFile(
+            pa.BufferReader(payload),
+            thrift_string_size_limit=MAX_BYTES,
+            thrift_container_size_limit=100_000,
+        ) as parquet:
+            _require(
+                parquet.metadata.num_rows <= MAX_TABLE_ROWS
+                and sum(
+                    parquet.metadata.row_group(i).total_byte_size
+                    for i in range(parquet.metadata.num_row_groups)
+                )
+                <= MAX_EXPANDED_BYTES
+                and len(parquet.schema_arrow) <= MAX_TABLE_FIELDS
+            )
+            table = parquet.read()
+        _require(table.num_rows == binding["rows"])
+        descriptor = _table(name, table, package_id, nullable_status=True)
+        descriptor.update(
+            period_basis="source_tokens_not_interpreted",
+            observed_period_tokens=sorted(
+                {v for v in table["period_token"].to_pylist() if v is not None}
+            )
+            if "period_token" in table.column_names
+            else [],
+            period_token_field_present="period_token" in table.column_names,
+        )
+        tables.append(descriptor)
+    references = [
+        {"field_path": f"/source_marker_sha256/{i}", "kind": "sha256", "value": pin}
+        for i, pin in enumerate(manifest["source_marker_sha256"])
+    ]
+    return {
+        "id": package_id,
+        "profile": value.profile,
+        "gold_schema_version": manifest["schema_version"],
+        "manifest_sha256": value.manifest_sha256,
+        "inventory": sorted(inventory, key=lambda item: item["path"]),
+        "tables": tables,
+        "caveats": [
+            "source_tokens_not_interpreted_as_dates",
+            "denominator_selection_not_performed",
+            "source_fixity_only_no_semantic_requalification",
+        ],
+        "verification_scope": "pinned_gold_package_snapshots",
+        "source_reverification": "not_performed",
+        "source_semantics": "not_reassessed",
+        "source_references": references,
+        "rights": manifest["rights_state"],
+        "publication": manifest["publication"],
+    }
+
+
 def _operation_package(value: OperationContextGoldInput) -> dict[str, Any]:
     try:
         verified = operation_gold.read_verified_operation_context_gold(
@@ -449,8 +581,14 @@ def _snapshot_package(value: GoldInput) -> dict[str, Any]:
             "fiscal_analytical",
             "canonical_source_separated",
             "vote_health_financial_activity",
+            "context_source_separated",
+            "fiscal_analytical_reports",
         }
     )
+    if value.profile == "fiscal_analytical_reports":
+        return _report_package(value)
+    if value.profile == "context_source_separated":
+        return _context_package(value)
     if value.profile == "canonical_source_separated":
         return _canonical_package(value)
     if value.profile == "vote_health_financial_activity":
@@ -624,6 +762,11 @@ def _period_text(table: dict[str, Any]) -> str:
 
 
 def _version(values: tuple[MetadataInput, ...]) -> str:
+    if any(
+        v.profile in {"context_source_separated", "fiscal_analytical_reports"}
+        for v in values
+    ):
+        return CONTEXT_VERSION
     if any(v.profile == "vote_health_financial_activity" for v in values):
         return FINANCIAL_ACTIVITY_VERSION
     if any(type(v) is OperationContextGoldInput for v in values):
@@ -703,7 +846,9 @@ def project_gold_metadata(values: tuple[MetadataInput, ...]) -> dict[str, bytes]
     source_drillthrough = _json(
         {
             "schema_version": (
-                OPERATION_SOURCE_DRILLTHROUGH_VERSION
+                CONTEXT_SOURCE_DRILLTHROUGH_VERSION
+                if version == CONTEXT_VERSION
+                else OPERATION_SOURCE_DRILLTHROUGH_VERSION
                 if version == OPERATION_VERSION
                 else CANONICAL_SOURCE_DRILLTHROUGH_VERSION
                 if version == CANONICAL_VERSION
@@ -739,7 +884,12 @@ def project_gold_metadata(values: tuple[MetadataInput, ...]) -> dict[str, bytes]
         }
     )
     has_tokens = any(
-        p["profile"] in {"canonical_source_separated", "operation_context"}
+        p["profile"]
+        in {
+            "canonical_source_separated",
+            "operation_context",
+            "context_source_separated",
+        }
         for p in packages
     )
     has_no_period_fields = any(
@@ -780,6 +930,8 @@ def project_gold_metadata(values: tuple[MetadataInput, ...]) -> dict[str, bytes]
         "| --- | --- | --- |",
     ]
     for p in packages:
+        if not p["tables"]:
+            lines.append(f"| {p['id']} | not tabular | not applicable |")
         lines.extend(
             f"| {t['id']} | {t['rows']} | {_period_text(t)} |" for t in p["tables"]
         )

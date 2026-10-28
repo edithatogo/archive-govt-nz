@@ -2305,6 +2305,62 @@ def canonical_query_recovery_report(first: Path, second: Path) -> dict[str, Any]
     }
 
 
+def supplemental_metadata_recovery_report(root: Path) -> dict[str, Any]:
+    """Recover discovery for contextual products and Fiscal companion reports."""
+    from archive_govt_nz.domains.health_appropriations import (  # noqa: PLC0415
+        gold_discovery_profiles as discovery,
+    )
+
+    runs = []
+    for index, name in ((1, "first"), (2, "second")):
+        context = root / ("context-one" if index == 1 else "context-two")
+        reports = root / "analytical-metadata" / name / "reports"
+        inputs = (
+            gold_metadata.GoldInput(
+                "context_source_separated", context, digest(context / "MANIFEST.json")
+            ),
+            gold_metadata.GoldInput(
+                "fiscal_analytical_reports", reports, digest(reports / "manifest.json")
+            ),
+        )
+        before = [tree(value.root) for value in inputs]
+        metadata_root = root / f"supplemental-metadata-{index}"
+        profiles_root = root / f"supplemental-discovery-{index}"
+        metadata = gold_metadata.export_gold_metadata(inputs, metadata_root, write=True)
+        profiles = discovery.export_profiles(inputs, profiles_root, write=True)
+        runs.append(
+            {
+                "metadata": gold_metadata.verify_gold_metadata(
+                    inputs, metadata_root, metadata["manifest_sha256"]
+                ),
+                "discovery": discovery.verify_profiles(
+                    inputs, profiles_root, profiles["manifest_sha256"]
+                ),
+            }
+        )
+        require_evidence(
+            before == [tree(value.root) for value in inputs],
+            "supplemental_metadata_input_mutation",
+        )
+    require_evidence(runs[0] == runs[1], "supplemental_metadata_repeat_mismatch")
+    return {
+        "metadata": runs[0]["metadata"],
+        "discovery": runs[0]["discovery"],
+        "metadata_files": compare_product_outputs(
+            root / "supplemental-metadata-1",
+            root / "supplemental-metadata-2",
+            "supplemental_metadata",
+        ),
+        "discovery_files": compare_product_outputs(
+            root / "supplemental-discovery-1",
+            root / "supplemental-discovery-2",
+            "supplemental_discovery",
+        ),
+        "repeat_identical": True,
+        "inputs_unchanged": True,
+    }
+
+
 def combined_metadata_recovery_report(root: Path) -> dict[str, Any]:
     """Reconstruct the composite metadata from both sets of fresh Gold outputs."""
     runs = []
@@ -3411,6 +3467,9 @@ def run() -> dict[str, Any]:  # noqa: C901, PLR0912, PLR0915 - recovery products
         if outputs["canonical_gold"].get("repeat_identical"):
             outputs["canonical_gold"]["combined_metadata_recovery"] = (
                 combined_metadata_recovery_report(root)
+            )
+            outputs["supplemental_product_metadata"] = (
+                supplemental_metadata_recovery_report(root)
             )
         outputs["source_health_report"] = source_health_recovery_report()
         outputs["classification_label_occurrences"] = (
