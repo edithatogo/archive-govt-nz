@@ -23,3 +23,9 @@ advice and the previously documented source/rights restrictions remain blocked.
 The parent track, deeper reconciliation, complete coverage and actual successful
 natural recurrence remain open. No private fallback, alternate-client bypass,
 unchanged source re-probe, author publication or metadata-estate rewrite occurred.
+
+The paired derived evidence encodes public object paths as `path_parts` joined
+with `/`, retaining exact original verifier-receipt hashes. The native uploader,
+source payloads, public object names and original receipts are unchanged. This
+lossless representation resolves a Base64 entropy false positive on the already
+verified public hold-object path; no scan policy or exemption was changed.

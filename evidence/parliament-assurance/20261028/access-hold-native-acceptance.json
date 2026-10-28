@@ -116,25 +116,37 @@
     "independent_of_uploader": true,
     "files": [
       {
-        "path": "parliament/checkpoints/a7/a72132be95eeef62118767f41d375e82e6d5277ba4f1f85eef5af5ccc880aa7e.json.gz",
         "revision": "5e647dab5300fba0b986139ac9d27b92c267625a",
         "sha256": "a72132be95eeef62118767f41d375e82e6d5277ba4f1f85eef5af5ccc880aa7e",
         "bytes": 856606,
-        "anonymous": true
+        "anonymous": true,
+        "path_parts": [
+          "parliament",
+          "checkpoints",
+          "a7",
+          "a72132be95eeef62118767f41d375e82e6d5277ba4f1f85eef5af5ccc880aa7e.json.gz"
+        ]
       },
       {
-        "path": "parliament/checkpoint-objects/37/37f4189a37765ed53a9f2599eb44c72691e132c4b02ece50712631e26db0b7b6",
         "revision": "5e647dab5300fba0b986139ac9d27b92c267625a",
         "sha256": "37f4189a37765ed53a9f2599eb44c72691e132c4b02ece50712631e26db0b7b6",
         "bytes": 1247,
-        "anonymous": true
+        "anonymous": true,
+        "path_parts": [
+          "parliament",
+          "checkpoint-objects",
+          "37",
+          "37f4189a37765ed53a9f2599eb44c72691e132c4b02ece50712631e26db0b7b6"
+        ]
       },
       {
-        "path": "README.md",
         "revision": "5e647dab5300fba0b986139ac9d27b92c267625a",
         "sha256": "afa5a09632725f04799700d8ab086d182beff2a1d7dc58db798cccc7d9d6c703",
         "bytes": 13590,
-        "anonymous": true
+        "anonymous": true,
+        "path_parts": [
+          "README.md"
+        ]
       }
     ],
     "coverage_claim": false,
@@ -251,39 +263,64 @@
     "independent_of_uploader": true,
     "files": [
       {
-        "path": "parliament/batches/7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1/manifest.json",
         "revision": "2b0dd2de531f2a51aa8f926bbf501e9cac630bd9",
         "sha256": "7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1",
         "bytes": 4829,
-        "anonymous": true
+        "anonymous": true,
+        "path_parts": [
+          "parliament",
+          "batches",
+          "7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1",
+          "manifest.json"
+        ]
       },
       {
-        "path": "parliament/batches/7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1/objects/68f2d324797df3317af00333e461ac05b3b015e590ce410427557a34e805e6dc",
         "revision": "2b0dd2de531f2a51aa8f926bbf501e9cac630bd9",
         "sha256": "68f2d324797df3317af00333e461ac05b3b015e590ce410427557a34e805e6dc",
         "bytes": 72419,
-        "anonymous": true
+        "anonymous": true,
+        "path_parts": [
+          "parliament",
+          "batches",
+          "7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1",
+          "objects",
+          "68f2d324797df3317af00333e461ac05b3b015e590ce410427557a34e805e6dc"
+        ]
       },
       {
-        "path": "parliament/batches/7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1/objects/7927a2d4d731ba4d40b166b48376b3c808d3a8afc30fab478c944bd284fe1916",
         "revision": "2b0dd2de531f2a51aa8f926bbf501e9cac630bd9",
         "sha256": "7927a2d4d731ba4d40b166b48376b3c808d3a8afc30fab478c944bd284fe1916",
         "bytes": 254567,
-        "anonymous": true
+        "anonymous": true,
+        "path_parts": [
+          "parliament",
+          "batches",
+          "7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1",
+          "objects",
+          "7927a2d4d731ba4d40b166b48376b3c808d3a8afc30fab478c944bd284fe1916"
+        ]
       },
       {
-        "path": "parliament/batches/7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1/objects/91851368c7bf6773e628e971af6dcbf4e78f7658487ced3600f24d9efcfe57c1",
         "revision": "2b0dd2de531f2a51aa8f926bbf501e9cac630bd9",
         "sha256": "91851368c7bf6773e628e971af6dcbf4e78f7658487ced3600f24d9efcfe57c1",
         "bytes": 188894,
-        "anonymous": true
+        "anonymous": true,
+        "path_parts": [
+          "parliament",
+          "batches",
+          "7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1",
+          "objects",
+          "91851368c7bf6773e628e971af6dcbf4e78f7658487ced3600f24d9efcfe57c1"
+        ]
       },
       {
-        "path": "README.md",
         "revision": "2b0dd2de531f2a51aa8f926bbf501e9cac630bd9",
         "sha256": "afa5a09632725f04799700d8ab086d182beff2a1d7dc58db798cccc7d9d6c703",
         "bytes": 13590,
-        "anonymous": true
+        "anonymous": true,
+        "path_parts": [
+          "README.md"
+        ]
       }
     ],
     "coverage_claim": false,
@@ -347,5 +384,14 @@
   "public_ungated_destination": "edithatogo/archive-govt-nz-global",
   "natural_recurrence_acceptance": false,
   "complete_coverage_claim": false,
-  "parent_track_complete": false
+  "parent_track_complete": false,
+  "reference_encoding": {
+    "field": "path_parts",
+    "separator": "/",
+    "original_receipts_retained": true,
+    "source_receipt_sha256": {
+      "independent_hold_proof": "bdde8d13e7c2dfe1f1e0548eee6e61a9e1a88b57449a2241a9d055e601a24312",
+      "independent_payload_pilot": "6f1d32ab8b537b510d4f53f54730058051431942c7d8624d4be9da8037769379"
+    }
+  }
 }

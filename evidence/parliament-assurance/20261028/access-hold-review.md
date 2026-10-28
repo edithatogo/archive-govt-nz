@@ -39,3 +39,15 @@ passed. Independent anonymous pinned proof/card and payload/manifest/card checks
 passed. Continuous40639731203 is active. No unresolved technical review finding
 remains; native-acceptance evidence records the explicit held-original gap and
 manual-versus-natural distinction. The unfinished parent is retained active.
+
+## Native evidence scan correction
+
+Hosted PR805 assurance reached the secret stage and identified one Base64 entropy
+candidate: the already independently verified public hold-object path. The first
+local scan ran before the generated evidence file was Git-tracked, so it did not
+cover that new receipt. Derived path references now use lossless path-part arrays
+and retain original verifier-receipt hashes. Original receipts/payloads and public
+object identities remain unchanged; no scanner policy or exemption was added.
+Final secret scanning must run after staging generated evidence. Source/native
+acceptance stays valid; the corrected documentation head still requires all
+hosted checks before merge.

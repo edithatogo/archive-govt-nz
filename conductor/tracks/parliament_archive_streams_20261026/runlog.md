@@ -328,3 +328,11 @@ historicalpage84 selected atcycle11. This is manual workflow_dispatch, not actua
 natural recurrence acceptance. The original SSD root stays frozen. Parent remains
 active; only technical P7 delivery is complete. Paired native acceptance evidence:
 evidence/parliament-assurance/20261028/access-hold-native-acceptance.{json,md}.
+
+PR805 hosted documentation assurance found one Base64 entropy false positive on
+the already verified public hold-object path. Original native/private verifier
+receipts remain intact. The derived evidence now uses lossless path_parts arrays
+with original receipt hashes; no public object, source code, scan policy or
+exemption changed. The initial local scan missed a newly generated untracked
+receipt; final evidence scanning now follows staging. Source/native assurance is
+reused; require corrected-head documentation checks before merge/child794close.
