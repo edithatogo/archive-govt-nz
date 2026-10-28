@@ -107,6 +107,41 @@ def test_cli_does_not_disclose_sdk_exception_text(
     assert len(remote.revisions) > 1
 
 
+def test_hold_cli_requires_exact_evidence_and_keeps_private_boundary(
+    tmp_path: Path, monkeypatch: MonkeyPatch, remote: Remote
+) -> None:
+    """The real parser forwards immutable proof fields to its own operation."""
+    seen = []
+
+    def approve(root: Path, **kwargs: object) -> dict[str, object]:
+        seen.append((root, kwargs))
+        return {"status": "report_access_hold_qualified", "source_acquisition": False}
+
+    monkeypatch.setattr(hosted_cli, "approve_access_hold", approve)
+    receipt = arguments(
+        tmp_path,
+        monkeypatch,
+        "hold",
+        "--hold-source-id",
+        "report-example",
+        "--failed-run",
+        "1",
+        "--failure-sha",
+        "a" * 64,
+        "--failure-revision",
+        "b" * 40,
+    )
+    assert hosted_cli.main() == 0
+    assert json.loads(receipt.read_text())["source_acquisition"] is False
+    assert seen[0][1] == {
+        "source_id": "report-example",
+        "failed_run": "1",
+        "failure_sha": "a" * 64,
+        "failure_revision": "b" * 40,
+        "transport": remote,
+    }
+
+
 def test_pause_resume_and_enable_preserve_authority(
     tmp_path: Path, monkeypatch: MonkeyPatch, remote: Remote
 ) -> None:

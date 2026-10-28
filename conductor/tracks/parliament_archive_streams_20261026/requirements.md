@@ -28,3 +28,19 @@
 - W1: Capture private/unreleased submissions, adopt new paid infrastructure or claim complete historical coverage from index totals.
 - W2: Archive hearing audio/video until endpoints, rights, volume and recovery are qualified; no automatic media activation.
 - W3: Replace existing dataset cards, licences or working archive lanes wholesale; no upstream document relicensing.
+
+## P7 reviewed access holds
+
+- Must complete pending publication before approving a hold or acquiring again.
+- Must require one exact report ID and its immutable failed-run/snapshot evidence;
+  current and failed metadata must match at approval. Only terminal HTTP failure
+  classification is admissible; unknown, integrity, format and rights failures
+  cannot be silently waived.
+- Must preserve the original failed status, receipts and uncertain HTTP code.
+  A hold excludes one unchanged attachment URL; it grants neither a licence nor
+  permission to publish that original. Approval performs no Parliament request.
+- Must stop on every other unreviewed failure and preserve a held URL across
+  metadata-only changes without probing it again. A changed attachment set needs
+  separate qualification; an old hold cannot authorise any new object.
+- Must retain typed bounded proof in the existing public checkpoint/event model,
+  with anonymous pinned verification and no raw diagnostics or unqualified bytes.

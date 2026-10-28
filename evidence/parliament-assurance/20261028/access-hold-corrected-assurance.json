@@ -1,0 +1,72 @@
+{
+  "schema_version": "parliament-access-hold-assurance/v1",
+  "observed_at": "2026-10-28T05:01:55.227997+00:00",
+  "code_commit": "168890328a630457cae304a8a0799c46293d0271",
+  "integrated_candidate": "168890328a630457cae304a8a0799c46293d0271",
+  "python": "3.15.1",
+  "tests_passed": 8661,
+  "capability_skips": 14,
+  "local_assurance": "passed",
+  "stages": [
+    "lock",
+    "conductor",
+    "format",
+    "lint",
+    "types",
+    "tests",
+    "schemas",
+    "parity",
+    "mutation",
+    "mutation-versioning",
+    "mutation-redundancy",
+    "mutation-archivebox-pilot",
+    "mutation-batch-eligibility",
+    "mutation-global-policy",
+    "mutation-adapters",
+    "mutation-legislation-accounting",
+    "mutation-legislation-reconciliation",
+    "mutation-legislation-checkpoint-root",
+    "mutation-legislation-continuation-integrity",
+    "mutation-legislation-historical-coverage",
+    "mutation-gazette",
+    "mutation-medallion",
+    "mutation-platinum",
+    "mutation-nlp-bridge",
+    "mutation-foi-controls",
+    "mutation-foi-shared",
+    "slops",
+    "benchmark-cas",
+    "audit",
+    "licenses",
+    "secrets",
+    "sbom"
+  ],
+  "validation_log_sha256": "64e40cf87064b7b6b9a43d1ce59b99b4bc82ed8fe029affed133fe954b5fa1b4",
+  "native_hold_acceptance": false,
+  "natural_recurrence_acceptance": false,
+  "coverage_claim": false,
+  "six_accepted_originals": {
+    "workflow_run": 40628447581,
+    "batch": "1e1d47d68db0e6b90fc791c589b8d74a921c08702d2c7619f4264f3eaaf50cae",
+    "revision": "6a1fd122bdb73e39413ba59ecd5d07295e6ff9b0",
+    "independent_anonymous_pinned_downloads": 9,
+    "maintained_card_unchanged": true
+  },
+  "control_at_review": {
+    "enabled": true,
+    "paused": "failure",
+    "owner": null
+  },
+  "failed_source": "report-b43436d5-987e-40e9-2ea9-08dd6d718a5c",
+  "original_http_status": null,
+  "corrected_review": {
+    "stale_http_diagnostic_regression": "red_then_green",
+    "diagnostic_failure_pairing": "same_last_attempt_required",
+    "event_export_order": "explicit_sqlite_rowid",
+    "superseded_hosted_ci": {
+      "run": 40634411470,
+      "conclusion": "cancelled_by_operator_before_replacement_gates"
+    },
+    "prior_assurance_retained": true
+  }
+}

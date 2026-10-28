@@ -280,3 +280,32 @@ Equivalent Conductor/format/secret gates ran through selected repo-local Python
 3.15.1. The first direct secret invocation lacked the venv executable PATH and
 failed before scanning; the qualified venv PATH invocation passed. No environment
 replacement or cache modification was used. Source assurance remains unchanged.
+
+### Exact report-access exclusion implementation,28October2026
+
+PR802 merged9d639133 after green checks, then issue794 was reopened for the new
+source failure40621708833. Six accepted originals were first published by native
+40628447581 and separately verified with nine fresh anonymous pinned downloads.
+Counts834 originals+1metadata-only,23verified batches,3pending,1failed. Control
+is intentionally enabled=true,paused=failure,owner=null. No held source was
+re-probed and no local acquisition occurred.
+
+Implementation5d015980 adds exact native failure evidence, immutable bounded hold
+proofs, typedv2 cold restore/old-reader fencing and safe numeric HTTP diagnostics.
+The failed original stays uncollected; general rights/access gates remain intact.
+Review fixed candidate-object reference admission and a stale control-generation
+claim race. Full integrated candidateb993738b passes all local harness stages:
+8660tests,14capability skips; new hold modules88% combined measured coverage.
+Actionlint and strict selected Python3.15.1 bindings pass. Source evidence and
+review are evidence/parliament-assurance/20261028/access-hold-{assurance.json,review.md}.
+Native hold qualification, required hosted checks and operational resumption are
+still pending. The unfinished parent remains active.
+
+Final review added a red stale-diagnostic regression and correction16889032:
+a later source failure cannot inherit an earlier numeric HTTP status. Events now
+export in explicit SQLite row order. Superseded own CI40634411470 was cancelled
+to terminal before replacement assurance. Corrected full local harness passes
+8661tests/14capability skips and every stage; hold-module measured coverage89%.
+Original logs remain intact; corrected receipt:
+evidence/parliament-assurance/20261028/access-hold-corrected-assurance.json.
+PR803 must use the corrected head before native qualification/resumption.
