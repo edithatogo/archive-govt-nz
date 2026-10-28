@@ -289,3 +289,39 @@ def test_absent_or_invalid_native_receipt_scope(reason: str) -> None:
     else:
         with pytest.raises(HostedError, match=reason):
             find_cooldown("gha_1_1", [], native, receipt, 200)
+
+
+def test_unknown_deadline_does_not_expire_after_a_guessed_day() -> None:
+    """Propagated exact origin proof stays blocked beyond the numeric delay bound."""
+
+    def receipt(run: str, _attempt: str | None) -> dict[str, Any]:
+        if run == "2":
+            return {
+                "status": "failed",
+                "error_class": "HostedError",
+                "reason": "hub_write_cooldown_deadline_missing",
+                "cooldown_origin": {"run_id": "1", "attempt": "1"},
+            }
+        return {**failure(run, _attempt), "retry_after_seconds": None}
+
+    history = [{"id": 2, "run_attempt": 1, "head_branch": "main", "event": "schedule"}]
+    with pytest.raises(HostedError, match="deadline_missing") as caught:
+        find_cooldown(None, history, native, receipt, 100000)
+    assert caught.value.cooldown_origin == {"run_id": "1", "attempt": "1"}
+
+
+def test_missing_linked_origin_never_silently_releases_a_cooldown() -> None:
+    """A known referenced origin requires exact evidence, even after retention loss."""
+
+    def receipt(run: str, _attempt: str | None) -> dict[str, Any]:
+        if run == "1":
+            message = "native_receipt_missing"
+            raise HostedError(message)
+        return {
+            "status": "deferred_hub_write",
+            "cooldown_origin": {"run_id": "1", "attempt": "1"},
+        }
+
+    with pytest.raises(HostedError, match="origin_unavailable") as caught:
+        find_cooldown("gha_2_1", [], native, receipt, 100000)
+    assert caught.value.cooldown_origin == {"run_id": "1", "attempt": "1"}

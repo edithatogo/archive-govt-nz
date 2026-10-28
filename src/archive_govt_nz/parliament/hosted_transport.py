@@ -36,11 +36,13 @@ class HostedError(RuntimeError):
         *,
         http_status: int | None = None,
         retry_after_seconds: int | None = None,
+        cooldown_origin: dict[str, str] | None = None,
     ) -> None:
         """Never retain SDK messages, request URLs, bodies or arbitrary headers."""
         super().__init__(reason)
         self.http_status = http_status
         self.retry_after_seconds = retry_after_seconds
+        self.cooldown_origin = cooldown_origin
 
 
 def commit_failure(

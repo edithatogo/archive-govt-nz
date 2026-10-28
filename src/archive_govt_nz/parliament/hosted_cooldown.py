@@ -117,14 +117,16 @@ class _Proofs:
         ended = datetime.fromisoformat(info["updated_at"])
         if ended.tzinfo is None or ended.timestamp() > self.now + CLOCK_SKEW:
             abort("hub_write_cooldown_clock")
-        # No supported Retry-After can survive this conservative native age.
-        if ended.timestamp() + MAX_RETRY_SECONDS <= self.now:
-            return None
         try:
             receipt = self.get_receipt(*key)
         except HostedError as error:
             if str(error) != "native_receipt_missing":
                 raise
+            if seen:
+                message = "hub_write_cooldown_origin_unavailable"
+                raise HostedError(
+                    message, cooldown_origin={"run_id": key[0], "attempt": key[1]}
+                ) from None
             return None
         value = self._receipt(key, receipt, ended, seen | {key})
         self.cache[key] = value
@@ -148,12 +150,23 @@ class _Proofs:
         ):
             delay = failure.get("retry_after_seconds")
             if not valid_delay(delay):
-                abort("hub_write_cooldown_deadline_missing")
+                message = "hub_write_cooldown_deadline_missing"
+                raise HostedError(
+                    message, cooldown_origin={"run_id": key[0], "attempt": key[1]}
+                )
             return {
                 "cooldown_origin": {"run_id": key[0], "attempt": key[1]},
                 "not_before_epoch": ended.timestamp() + delay,
             }
-        if receipt.get("status") == "deferred_hub_write":
+        if receipt.get("status") == "deferred_hub_write" or (
+            receipt.get("status") == "failed"
+            and receipt.get("error_class") == "HostedError"
+            and receipt.get("reason")
+            in {
+                "hub_write_cooldown_deadline_missing",
+                "hub_write_cooldown_origin_unavailable",
+            }
+        ):
             origin = receipt.get("cooldown_origin", {})
             if set(origin) != {"run_id", "attempt"}:
                 abort("hub_write_cooldown_evidence_unqualified")

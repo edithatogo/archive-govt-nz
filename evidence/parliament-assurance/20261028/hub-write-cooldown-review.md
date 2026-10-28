@@ -14,10 +14,13 @@ Native delivery/recovery remain separate acceptance tasks.
 - [x] **New Tests**: early/expired/native-clock/malformed/transitive/cyclic and
   truncated proofs, all CLI operations, one-send publication and cleanup paths.
 - [x] **Test Coverage**: new cooldown module measured91% in focused execution.
-- [~] **Test Results**: initial207-test selection had205pass/two assertions to
+- [x] **Test Results**: initial207-test selection had205pass/two assertions to
   update for the new deferred semantics and case-sensitive fictional headers.
   Failure-cache rerun passed46cached nodes, including both corrected nodes.
-  Full coherent-candidate assurance follows; no native early-deferral claim.
+  Full candidate assurance passed8695tests/14capability skips and all stages.
+  Review then fixed unknown-deadline expiry and retained linked origin proof;
+  affected209tests passed at91% new-module coverage. Hosted coherent-main
+  assurance still gates delivery; no native early-deferral claim.
 
 ## Findings resolved
 
@@ -36,3 +39,9 @@ No rights, access-hold, public-target, immutable-original, README or acquisition
 budget relaxation was found. Parent coverage/rights and natural recurrence remain
 open. Required full local/hosted checks and post-deadline native recovery gate
 activation; source review alone does not authorize claiming operational health.
+
+A review correction removes an inferred24-hour expiry for missing Retry-After.
+Unknown deadlines propagate their exact origin in sanitized failure artifacts,
+and linked unavailable origin evidence also stays fail-closed. New native reads
+never turn artifact age or retention loss into permission to write. This changes
+only negative write eligibility, never payload/control authority or source rights.

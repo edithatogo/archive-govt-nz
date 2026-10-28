@@ -173,6 +173,8 @@ def main() -> int:
         }
         if isinstance(error, HostedError):
             result["reason"] = str(error)
+            if error.cooldown_origin is not None:
+                result["cooldown_origin"] = error.cooldown_origin
             if error.http_status is not None:
                 result["http_status"] = error.http_status
             if error.retry_after_seconds is not None:

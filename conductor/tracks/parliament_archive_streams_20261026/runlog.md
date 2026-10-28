@@ -350,3 +350,15 @@ writes during cooldown. Source bodies/receipts/card and frozen SSD state remain
 intact. Implement native-receipt backoff before claims and suppress cleanup writes
 on known429; never blindly resend the unknown mutation or infer another failure's
 cause. Rate-limit recovery remains pending; technical child794 stays open.
+
+PR805 merged6d8cac81 with all required checks green; parent778 and child794
+remain active for quota recovery and coverage. PR807 implements the cooldown
+guard, first-failure preservation, no cleanup writes and bounded publication
+hints. Full candidate assurance at e757158f passed8695tests/14capability skips,
+all stages, secrets and SBOM. First lint-only failures were retained.
+Review corrected unknown-delay aging and propagation of exact unavailable origin
+proof;209affected tests passed with91% module coverage, followed by exact
+origin/CLI/native-contract tests. Mergefe0a1829 preserves main Health804/806 work;
+only Conductor plan/runlog needed lossless additive conflict resolution.
+The production workflow remains disabled pending green delivery and native
+checkpoint reconciliation. No source acquisition or HF mutation was attempted.
