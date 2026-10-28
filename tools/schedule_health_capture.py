@@ -13,7 +13,8 @@ from archive_govt_nz.domains.health_appropriations.source_layout_operations impo
 )
 from capture_health_resources import _capture, _select_sources
 
-MAX_RESOURCE_BYTES = 256 * 1024 * 1024
+# CaptureConfig writes response WARCs only up to this body limit.
+MAX_RESOURCE_BYTES = 64 * 1024 * 1024
 MAX_SOURCES = 1000
 
 

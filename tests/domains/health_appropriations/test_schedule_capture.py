@@ -70,6 +70,22 @@ async def test_preflight_is_read_only_and_rejects_changed_census(
 
 
 @pytest.mark.anyio
+async def test_plan_limit_matches_capture_warc_body_limit(tmp_path: Path) -> None:
+    plan, _ = make_plan(tmp_path)
+    config = json.loads(plan.read_text())
+    config["max_resource_bytes"] = 64 * 1024 * 1024
+    digest = pinned(plan, config)
+    assert (await scheduler.run_plan(plan, digest, tmp_path / "out"))[
+        "status"
+    ] == "planned"
+    config["max_resource_bytes"] += 1
+    digest = pinned(plan, config)
+    with pytest.raises(ValueError, match="capture_schedule_invalid"):
+        await scheduler.run_plan(plan, digest, tmp_path / "out", execute=True)
+    assert not (tmp_path / "out").exists()
+
+
+@pytest.mark.anyio
 async def test_execution_is_explicit_and_uses_pinned_preservation_resume(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
