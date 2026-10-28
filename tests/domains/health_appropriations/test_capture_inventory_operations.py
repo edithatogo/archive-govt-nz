@@ -8,9 +8,81 @@ from pathlib import Path
 import pytest
 
 from archive_govt_nz.cli import app
+from archive_govt_nz.domains.health_appropriations import capture_inventory_operations
 from archive_govt_nz.mcp_server import call_tool
 
 TOOL = "health_appropriations_reconcile_capture_inventory"
+
+
+@pytest.mark.parametrize(
+    ("arguments", "error"),
+    [
+        ({}, "inventory_arguments_invalid"),
+        ({"censuses": [], "captures": []}, "inventory_input_count_invalid"),
+        ({"censuses": [{}], "captures": []}, "inventory_input_pin_invalid"),
+    ],
+)
+def test_rejects_invalid_inventory_arguments(arguments: dict, error: str) -> None:
+    with pytest.raises(ValueError, match=error):
+        call_tool(TOOL, arguments)
+
+
+def test_rejects_bad_payload_and_cumulative_bytes(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    path = tmp_path / "input.json"
+    payload = b"not json"
+    path.write_bytes(payload)
+    pin = {
+        "name": "input",
+        "path": str(path),
+        "sha256": hashlib.sha256(payload).hexdigest(),
+    }
+    args = {"censuses": [pin], "captures": []}
+    with pytest.raises(ValueError, match="inventory_input_invalid"):
+        call_tool(TOOL, args)
+    monkeypatch.setattr(
+        capture_inventory_operations, "MAX_TOTAL_INPUT_BYTES", len(payload) - 1
+    )
+    with pytest.raises(ValueError, match="input_total_size_invalid"):
+        call_tool(TOOL, args)
+
+
+def test_rejects_invalid_capture_and_redacts_cli_error(
+    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+) -> None:
+    payload = json.dumps(
+        {
+            "schema_version": "archive-govt-nz.health-source-census/v1",
+            "record_count": 0,
+            "records": [],
+        }
+    ).encode()
+    path = tmp_path / "private.json"
+    path.write_bytes(payload)
+    pin = {
+        "name": "census",
+        "path": str(path),
+        "sha256": hashlib.sha256(payload).hexdigest(),
+    }
+    for invalid in ({"request": pin}, {"unexpected": pin}):
+        with pytest.raises(ValueError, match="inventory_capture_pin_invalid"):
+            call_tool(TOOL, {"censuses": [pin], "captures": [invalid]})
+    assert (
+        app(
+            [
+                "health-appropriations-reconcile-capture-inventory",
+                "--censuses-json",
+                "not json",
+            ],
+            exit_on_error=False,
+            result_action="return_value",
+        )
+        == 2
+    )
+    output = capsys.readouterr().out
+    assert json.loads(output)["error"] == "inventory_reconciliation_failed"
+    assert str(tmp_path) not in output
 
 
 def test_reconcile_cli_mcp_pins_and_redaction(

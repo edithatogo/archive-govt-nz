@@ -41,3 +41,9 @@ After those gates, row and request-matching work limits were added. The affected
 inventory and MCP selection passed 44 tests, and scoped Ruff and typing checks
 passed on Python 3.15.1. Fresh hosted full assurance is required for the final
 PR tree before merge.
+
+PR #811's three hosted assurance jobs passed, but its patch coverage status
+failed. Added focused contracts for malformed inputs, cumulative size limits,
+invalid capture pins and redacted CLI failures. Nine operation tests pass;
+scoped branch coverage reports 97.83%, without changing the 80% repository
+floor. The new PR head requires fresh hosted checks.
