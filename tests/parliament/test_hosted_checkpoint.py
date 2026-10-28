@@ -41,6 +41,10 @@ class Remote(NativeTransport):
         """Return the fictional current head."""
         return self.revision
 
+    def write_cooldown(self, owner: str | None = None) -> None:
+        """Keep the fictional backend independent of native service history."""
+        del owner
+
     def exists(self, path: str, revision: str) -> bool:
         """Inspect an exact immutable revision."""
         return path in self.revisions[revision]

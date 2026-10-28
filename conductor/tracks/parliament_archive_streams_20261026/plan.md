@@ -162,3 +162,17 @@ This is a new operational finding after the previous recovery acceptance.
 - [x] Qualify one native hold, independently verify its public proof, then resume eligible backfill with the held original excluded from capture/completeness counts.
 
 Native P7 hold/restart acceptance: [dated evidence](../../../evidence/parliament-assurance/20261028/access-hold-native-acceptance.md). Source837 captured originals+1metadata-only,24verified batches,1explicit reviewed missing original,0pending/unreviewed failures at the bounded pilot. Continuous40639731203 is active; successful natural recurrence and complete parent coverage remain open.
+
+### P7 Hub write-rate cooldown and checkpoint recovery
+
+Native40639731203 subsequently received an explicit HF429/Retry-After3575 during
+checkpoint acknowledgement.857 originals+1metadata-only and26verified batches
+remain preserved; the recent metadata checkpoint is uploaded/unacknowledged.
+The original report access hold is unchanged, with no new unreviewed source failure.
+
+- [x] Retain exact first failure, terminal run, uploaded snapshot and current owner; disable only the source workflow through GitHub to prevent writes during the explicit server window, without an HF mutation.
+- [x] Implement durable native-receipt cooldown before any hosted/operator owner claim or write; preserve the first429, prevent cleanup writes and blind mutation replay, and expose a deferred outcome distinct from archive success.
+- [~] Test early/expired/missing-deadline/malformed/transitive proof, zero-write deferral, unknown checkpoint recovery and publication hints; full candidate8695tests/14skips/all stages passed, review corrections209affected tests passed, PR807 awaits required coherent-main hosted checks.
+- [ ] Qualify the guarded native route, recover the exact staged checkpoint after the observed Retry-After deadline, then re-enable serial bounded continuation. Keep native early-deferral versus after-deadline recovery proof explicit.
+
+[Exact429 observation](../../../evidence/parliament-assurance/20261028/hub-write-429-observation.json). HF [rate-limit documentation](https://huggingface.co/docs/hub/rate-limits) distinguishes read retry handling and granular action limits; do not invent fixed commit quotas or bypass anonymous verification. Child794 and parent778 remain open until their separate acceptance is met.

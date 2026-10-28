@@ -1,0 +1,272 @@
+{
+  "schema_version": "parliament-hub-write-rate-limit-observation/v1",
+  "observed_at": "2026-10-28T08:45:08.714315+00:00",
+  "native_failure": {
+    "conclusion": "failure",
+    "createdAt": "2026-10-28T05:44:25Z",
+    "databaseId": 40639731203,
+    "event": "workflow_dispatch",
+    "headSha": "c0f8b148cf527d0829d025d14c1cac853da9b7e7",
+    "startedAt": "2026-10-28T05:44:25Z",
+    "status": "completed",
+    "updatedAt": "2026-10-28T06:10:30Z",
+    "url": "https://github.com/edithatogo/archive-govt-nz/actions/runs/40639731203"
+  },
+  "sanitized_first_failure": {
+    "status": "failed",
+    "operation": "run",
+    "error_class": "HostedError",
+    "reason": "checkpoint_commit_outcome_unknown",
+    "http_status": 429,
+    "retry_after_seconds": 3575
+  },
+  "checkpoint_observation": {
+    "observed_at": "2026-10-28T06:34:41.033353+00:00",
+    "state_revision": "d96fe4cf95cfbd846f13e586a7a4803911336751",
+    "state_digest": "3e9818d624646539728309cb49b5ab79625fce60642dc53ad0f6fe2f36c9f9ee",
+    "control": {
+      "authority": "hosted",
+      "card_sha256": "afa5a09632725f04799700d8ab086d182beff2a1d7dc58db798cccc7d9d6c703",
+      "checkpoint": {
+        "revision": null,
+        "sha256": "3e9818d624646539728309cb49b5ab79625fce60642dc53ad0f6fe2f36c9f9ee",
+        "status": "uploaded"
+      },
+      "enabled": true,
+      "generation": 362,
+      "lease_until": 1793185795.8590667,
+      "owner": "gha_40639731203_1",
+      "paused": null,
+      "schema": "parliament-continuation/v1"
+    },
+    "cycle": 14,
+    "work": {
+      "bytes": 4958,
+      "captured": 0,
+      "interrupted": false,
+      "invocation": "gha_40639731203_1",
+      "observed": 10,
+      "partition": "recent",
+      "phase": "publish",
+      "query": {
+        "keyword": "",
+        "page": 8,
+        "page_size": 10
+      },
+      "reserved": 0,
+      "seconds": 12.901781767999637
+    },
+    "counts": {
+      "captured": 857,
+      "metadata_only": 1,
+      "failed": 1
+    },
+    "publications": [
+      {
+        "batch": "25c70191ddbae03b43fa4b92e2a94720274f32cf9de54073a74f6dd8e7648280",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "c82520171de5b5b06182d2d2568f4238faac47f8",
+        "status": "verified"
+      },
+      {
+        "batch": "9bfd3ec35ad08a8795984e83b0f9e2177ec99fd04d708576bace44c7bcbbcd96",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "94be18920ff4ed9dc3bd18a9c5ee7d89d595cdfc",
+        "status": "verified"
+      },
+      {
+        "batch": "31b4b3d9aac62cbd0bf0b9046dda5d138fffc1f5ef74e019af56e894d8a5613d",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "17cedd0eb7b814347cd7c647424dcfebf0d0cf72",
+        "status": "verified"
+      },
+      {
+        "batch": "9ea8c0b7c90bebfdd2edfa7a879f187d37d3316dcce66da1ab2f4f746012fcce",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "cd3016589c4246780259164f8ab3f36efe5f1da5",
+        "status": "verified"
+      },
+      {
+        "batch": "4eae857ed98c4f4d69357d0dbdc522eb870709c3e3c1cf5b0e0d87a40dca2b49",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "056823e09dbd5688cad62e3a864ab12074b356c8",
+        "status": "verified"
+      },
+      {
+        "batch": "8d29553480017b2055152fe76613a39ce3024b68697d466152f9824f67b5cfba",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "9f8f853f70b9ab244217cd37eaa585db46b57e10",
+        "status": "verified"
+      },
+      {
+        "batch": "392da9a48ce089a159f0567b614ad437c0cfcb1a2c47d25bf8a018397c3304cb",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "45101aea35a5b214edd7eda75e79ddafcabfb68d",
+        "status": "verified"
+      },
+      {
+        "batch": "df71462b914e0878560442530cd48a30e4563059721d66c26055a79abba18f4d",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "e193d4577f79cd961c412e79d336037c7625f758",
+        "status": "verified"
+      },
+      {
+        "batch": "8a4faa5f5cd631f24d667a6aa9d52d1606c731de90400638bcbe2162b6112f30",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "6840ad8156c11fb136728318622607922e1d7ea9",
+        "status": "verified"
+      },
+      {
+        "batch": "6cb0fb04af0c7c745e504761d551b89a204ddfbacf471ccc9e6b68ac5cbf36d5",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "ffdd2adf9c0c931b700467c8c37db886563bf777",
+        "status": "verified"
+      },
+      {
+        "batch": "a0679691c4b1341c5eaac27bca859191adc017eaddc1d6c24fe4ef1c733c00a0",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "33ea1116bd261336d77f8c6327d9b9997aea76cc",
+        "status": "verified"
+      },
+      {
+        "batch": "8ec7567f9ccbbd5197f1c751d8f33a50570615ed2191097c16995259cf76c879",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "5b036d8af7127adbc05f1016da50b2b0de364a03",
+        "status": "verified"
+      },
+      {
+        "batch": "ef554457d283cf9fe12afe88f87f72081d6082de734f61778f2273e2b986d25c",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "bb17582164582c3afb23ab4953a95320c3dad668",
+        "status": "verified"
+      },
+      {
+        "batch": "8977f6d5a3edf159cfb04e2df3b2a80ed544de672d43a6bbae545e3d19f428c4",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "5176ae0aa3e7ebcff857851d78ed81bc83b2e768",
+        "status": "verified"
+      },
+      {
+        "batch": "3d1e2729e1d95d1b214cb4e9d44534a7c1104735dfd9d071ae3027efd64a6d0f",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "79911f9c163099a5ad966024808713b3194d72d3",
+        "status": "verified"
+      },
+      {
+        "batch": "9ca8a4e295acf73a17be9a20ba162eb6edb00e544fad2d8e8434a097f6b3c6fe",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "ffee35374137c264d193abca0ffc24cf8352c2cf",
+        "status": "verified"
+      },
+      {
+        "batch": "9dce822c8db40b85d37a5425812d4054b10a2e100d7ca7137e1c6deb203b7a94",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "99301a6ca1c139fa1727bd126c3abb37e23c8f3d",
+        "status": "verified"
+      },
+      {
+        "batch": "52f4a7a4762454a7e9a9d04c959fd3fc7014e50a27d6b76aeb19ccc1074c68ff",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "e938090724a48e08c3beb15424bbdb52356fb660",
+        "status": "verified"
+      },
+      {
+        "batch": "11eaae7bc65fae059f1770358daca78fae07f52af3d72cef00224d670ee07d36",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "1c43e95e222ca0059276a7d1994b7714ca85dd7a",
+        "status": "verified"
+      },
+      {
+        "batch": "626917401502927cdf2e2f25c2fa3a4f595b6efdd250e28d2f61d00df01d788c",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "81e0ae56e58c8e866f0ab9cde6cf3b7fe3052036",
+        "status": "verified"
+      },
+      {
+        "batch": "9a2fd31c0d5d3a920edcd9dbb4aa9d6e542cc7e4348bbc051e13c997d2d482c7",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "97e904f5a07e25eb82e2ec03b6a939e5d9d7f205",
+        "status": "verified"
+      },
+      {
+        "batch": "b46eb47dc97b80d7296f7e3e692baf60c4465f1c0acfb5ecad3965c06d841b94",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "9be14d04658a583f4a64b8d7e8990ea5c2b3a7e1",
+        "status": "verified"
+      },
+      {
+        "batch": "1e1d47d68db0e6b90fc791c589b8d74a921c08702d2c7619f4264f3eaaf50cae",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "6a1fd122bdb73e39413ba59ecd5d07295e6ff9b0",
+        "status": "verified"
+      },
+      {
+        "batch": "7e527c593b2f5c8c94eaa5524aab649453df026ffff027e34c195c9e654c0ee1",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "2b0dd2de531f2a51aa8f926bbf501e9cac630bd9",
+        "status": "verified"
+      },
+      {
+        "batch": "d2880b879a0f7a650060da03d411fd7e8c523a004ff390aa7396c400ddee234b",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "bda5fbd1ab75c96fa2bf7d55c9ed57cb6995de8b",
+        "status": "verified"
+      },
+      {
+        "batch": "0f446d767f13f93e3f02c317f264491b14dfdc4cafb540df5f5e06b8360dfcfc",
+        "repo": "edithatogo/archive-govt-nz-global",
+        "revision": "03e9a7916bbebc42f1a9f4b8815ca35a73826ad5",
+        "status": "verified"
+      }
+    ],
+    "failed_sources": [
+      {
+        "source_id": "report-b43436d5-987e-40e9-2ea9-08dd6d718a5c",
+        "reason": "terminal_status",
+        "record_sha256": "de1cc793730c45b8c414e1239040989db535be86efdf7b29f60f1a8eaa86b588"
+      }
+    ],
+    "failure_events": [
+      {
+        "detail": "terminal_status",
+        "observed": 1793156833.3231065,
+        "source_id": "report-b43436d5-987e-40e9-2ea9-08dd6d718a5c",
+        "status": "failed"
+      }
+    ],
+    "source_acquisition": false,
+    "state_mutation": false
+  },
+  "workflow_disable_intent": {
+    "observed_at": "2026-10-28T08:13:24.307369+00:00",
+    "operation": "disable_github_workflow",
+    "workflow": "parliament-continuation.yml",
+    "reason": "explicit_native_http429_retry_after",
+    "native_run": 40639731203,
+    "retry_after_seconds": 3575,
+    "not_before_using_native_terminal_time": "2026-10-28T07:10:05+00:00",
+    "hf_control_mutation": false,
+    "source_acquisition": false,
+    "one_send": true,
+    "preserved_checkpoint": {
+      "revision": null,
+      "sha256": "3e9818d624646539728309cb49b5ab79625fce60642dc53ad0f6fe2f36c9f9ee",
+      "status": "uploaded"
+    },
+    "old_owner": "gha_40639731203_1",
+    "published_report_records": 857,
+    "verified_batches": 26
+  },
+  "workflow_disable_readback": {
+    "id": 398299208,
+    "name": "Parliament durable continuation",
+    "path": ".github/workflows/parliament-continuation.yml",
+    "state": "disabled_manually"
+  },
+  "source_acquisition_during_operator_response": false,
+  "hf_write_during_operator_response": false,
+  "source_originals_safe": true,
+  "source_code_rate_guard_qualified": false,
+  "natural_recurrence_acceptance": false,
+  "complete_coverage_claim": false
+}

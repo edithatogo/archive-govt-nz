@@ -11,7 +11,7 @@ from typing import TYPE_CHECKING
 import pytest
 
 from archive_govt_nz.parliament import hosted, hosted_cli
-from archive_govt_nz.parliament.hosted_transport import POINTER
+from archive_govt_nz.parliament.hosted_transport import POINTER, HostedError
 
 from .test_hosted_checkpoint import Remote, initial
 from .test_hosted_state import seeded
@@ -69,6 +69,60 @@ def test_verify_cli_receipt(
     assert result["status"] == "cold_restore_verified"
     assert json.loads(capsys.readouterr().out) == result
     assert json.loads(remote.read(POINTER, remote.head()))["enabled"] is False
+
+
+@pytest.mark.parametrize(
+    "operation",
+    ["run", "pilot", "verify", "hold", "pause", "resume", "enable", "bootstrap"],
+)
+def test_all_cli_writes_defer_without_claim_during_known_cooldown(
+    tmp_path: Path, monkeypatch: MonkeyPatch, remote: Remote, operation: str
+) -> None:
+    """Even operator control/approval must not write before the known reset."""
+    blocked = {
+        "status": "deferred_hub_write",
+        "hf_control_mutation": False,
+        "cooldown_origin": {"run_id": "1", "attempt": "1"},
+    }
+    monkeypatch.setattr(remote, "write_cooldown", lambda _owner=None: blocked)
+    before = remote.head()
+    receipt = arguments(tmp_path, monkeypatch, operation)
+    assert hosted_cli.main() == 0
+    assert json.loads(receipt.read_text())["status"] == "deferred_hub_write"
+    assert remote.head() == before
+
+
+@pytest.mark.parametrize("qualified", [False, True])
+def test_cli_retains_first429_without_replaying_mutation(
+    tmp_path: Path, monkeypatch: MonkeyPatch, remote: Remote, *, qualified: bool
+) -> None:
+    """A deferred outcome preserves the actual failure and partial-work uncertainty."""
+    calls = []
+
+    def fail(*_args: object, **_kwargs: object) -> dict[str, object]:
+        calls.append(True)
+        reason = (
+            "checkpoint_commit_outcome_unknown"
+            if qualified
+            else "report_capture_failed"
+        )
+        raise HostedError(reason, http_status=429, retry_after_seconds=500)
+
+    monkeypatch.setattr(hosted_cli, "run", fail)
+    before = remote.head()
+    receipt = arguments(tmp_path, monkeypatch, "pilot")
+    assert hosted_cli.main() == (0 if qualified else 1)
+    result = json.loads(receipt.read_text())
+    assert len(calls) == 1
+    assert remote.head() == before
+    if qualified:
+        assert result["status"] == "deferred_hub_write"
+        assert result["first_failure"]["status"] == "failed"
+        assert result["first_failure"]["retry_after_seconds"] == 500
+        assert result["source_acquisition_stopped"] is True
+        assert "source_acquisition" not in result
+    else:
+        assert result["status"] == "failed"
 
 
 @pytest.mark.parametrize("interrupted", [False, True])

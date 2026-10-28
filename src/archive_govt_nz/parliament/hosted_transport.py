@@ -15,6 +15,7 @@ from typing import Any, NoReturn
 from huggingface_hub import CommitOperationAdd, HfApi, hf_hub_download
 
 from archive_govt_nz.parliament.contracts import PUBLIC_REPOSITORY
+lazy from archive_govt_nz.parliament.hosted_cooldown import current_write_cooldown
 
 POINTER = "parliament/control/continuation.json"
 LIMIT = 64 * 1024 * 1024
@@ -35,14 +36,18 @@ class HostedError(RuntimeError):
         *,
         http_status: int | None = None,
         retry_after_seconds: int | None = None,
+        cooldown_origin: dict[str, str] | None = None,
     ) -> None:
         """Never retain SDK messages, request URLs, bodies or arbitrary headers."""
         super().__init__(reason)
         self.http_status = http_status
         self.retry_after_seconds = retry_after_seconds
+        self.cooldown_origin = cooldown_origin
 
 
-def commit_failure(error: Exception) -> HostedError:
+def commit_failure(
+    error: Exception, *, reason: str = "checkpoint_commit_outcome_unknown"
+) -> HostedError:
     """Retain only bounded numeric response hints; never replay a mutation."""
     response = getattr(error, "response", None)
     status = getattr(response, "status_code", None)
@@ -58,7 +63,6 @@ def commit_failure(error: Exception) -> HostedError:
         and int(retry) <= MAX_RETRY_SECONDS
         else None
     )
-    reason = "checkpoint_commit_outcome_unknown"
     return HostedError(reason, http_status=status, retry_after_seconds=seconds)
 
 
@@ -73,6 +77,13 @@ class NativeTransport:
     def __init__(self) -> None:
         """Pace metadata beneath the documented anonymous shared-IP window."""
         self.last_metadata = 0.0
+        self._cooldowns: dict[str | None, dict[str, Any] | None] = {}
+
+    def write_cooldown(self, owner: str | None = None) -> dict[str, Any] | None:
+        """Consult native receipts once per observed owner before mutable work."""
+        if owner not in self._cooldowns:
+            self._cooldowns[owner] = current_write_cooldown(owner)
+        return self._cooldowns[owner]
 
     def pace(self) -> None:
         """Leave retry handling for reads to the supported native SDK."""
