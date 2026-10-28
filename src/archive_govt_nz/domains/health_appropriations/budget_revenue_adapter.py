@@ -19,6 +19,9 @@ from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     LossAccounting,
     preserved_only,
 )
+from archive_govt_nz.domains.health_appropriations.context_dimensions import (
+    context_source_dimensions,
+)
 from archive_govt_nz.domains.health_appropriations.formats import inspected_workbook
 from archive_govt_nz.domains.health_appropriations.historical import _number_tokens
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
@@ -164,21 +167,33 @@ class BudgetRevenueAdapter:
                 for sheet in workbook.worksheets
                 if sheet.title != "Raw Data"
             )
+            records = tuple(dict(row) for row in facts)
+            field_lineage = tuple(
+                FieldLineage(
+                    record_id=str(row["record_id"]),
+                    field=str(row["field"]),
+                    source_coordinate=str(row["source_coordinate"]),
+                    raw_value=str(row["raw_value"]),
+                    normalized_value=str(row["normalized_value"]),
+                    rule=str(row["rule"]),
+                )
+                for row in lineage
+            )
+            literal_lineage = tuple(
+                item
+                for item in field_lineage
+                if item.source_coordinate.startswith("'Raw Data'!")
+            )
+            dimensions, dimension_links = context_source_dimensions(
+                records, literal_lineage, family="budget_revenue"
+            )
             return AdapterOutput(
-                records=tuple(dict(row) for row in facts),
+                records=records,
                 losses=tuple(losses),
-                lineage=tuple(
-                    FieldLineage(
-                        record_id=str(row["record_id"]),
-                        field=str(row["field"]),
-                        source_coordinate=str(row["source_coordinate"]),
-                        raw_value=str(row["raw_value"]),
-                        normalized_value=str(row["normalized_value"]),
-                        rule=str(row["rule"]),
-                    )
-                    for row in lineage
-                ),
+                lineage=field_lineage,
                 layout=_LAYOUT,
+                dimensions=dimensions,
+                dimension_links=dimension_links,
             )
         finally:
             workbook.close()

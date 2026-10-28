@@ -86,6 +86,18 @@ def context_source_dimensions(
 ) -> tuple[tuple[Mapping, ...], tuple[DimensionLink, ...]]:
     """Retain source labels and periods as unresolved assertions with row links."""
     profiles = {
+        "budget_revenue": (
+            "budget_revenue_workbook",
+            None,
+            "year",
+            (
+                ("department", "department"),
+                ("vote", "vote"),
+                ("measure", "revenue_type"),
+                ("amount_type", "amount_type"),
+                ("unit", "unit"),
+            ),
+        ),
         "forecast": (
             "treasury_forecast_health_summary",
             None,
@@ -145,7 +157,7 @@ def context_source_dimensions(
                 kind=kind,
                 field=field,
                 source=source,
-                literal_source=family == "forecast",
+                literal_source=family in {"forecast", "budget_revenue"},
             )
             if result is None:
                 continue
