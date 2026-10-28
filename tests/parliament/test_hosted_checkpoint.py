@@ -122,6 +122,21 @@ def test_cold_restore_and_stale_writer(tmp_path: Path) -> None:
     fresh.release()
 
 
+def test_reviewed_claim_rejects_intervening_control_generation(tmp_path: Path) -> None:
+    """A reviewed quiescent snapshot cannot claim after another control mutation."""
+    manager, remote = initial(tmp_path)
+    manager.release()
+    reviewed = Checkpoints(remote, tmp_path / "reviewed")
+    reviewed.load()
+    generation = reviewed.pointer["generation"]
+    manager.claim("other")
+    manager.release()
+    head = remote.head()
+    with pytest.raises(HostedError, match="generation_changed"):
+        reviewed.claim("reviewer", expected_generation=generation)
+    assert remote.head() == head
+
+
 def test_unknown_staging_outcome_never_promotes_cursor(tmp_path: Path) -> None:
     """An unknown staging commit cannot promote the accepted pointer."""
     manager, remote = initial(tmp_path)

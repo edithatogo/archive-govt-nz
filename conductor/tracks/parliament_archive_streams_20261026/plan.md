@@ -155,7 +155,7 @@ failure after six accepted originals on historicalpage83. The failed source is
 report-b43436d5-987e-40e9-2ea9-08dd6d718a5c; its actual HTTP code was not retained.
 This is a new operational finding after the previous recovery acceptance.
 
-- [~] Publish the six already accepted originals before another acquisition; preserve three pending records and the exact failed record.
+- [x] Publish the six already accepted originals before another acquisition; native40628447581 and nine fresh anonymous pinned downloads verified batch1e1d47d6, maintained card unchanged. Preserve three pending records and the exact failed record.
 - [ ] Add a bounded, operator-approved hold for one unchanged report attachment using its immutable native failure snapshot/run evidence; no source re-probe, body publication or licence grant.
 - [ ] Keep held records failed/explicit, stop every unreviewed failure, and prevent unchanged held URLs being fetched again after metadata refresh.
 - [ ] Test typed proof export/cold restore, stale/version/scope rejection, source non-fetch, and continued eligible queue processing; complete required assurance/review and green-check delivery.

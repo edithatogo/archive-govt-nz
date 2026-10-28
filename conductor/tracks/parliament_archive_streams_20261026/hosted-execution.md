@@ -162,3 +162,22 @@ unreviewed failures continue to stop the lane. A different attachment is not
 covered by the previous hold; a mixed attachment set containing the held URL
 requires further review. Original failures and missing-original coverage remain
 visible. Publication recovery precedes hold approval and further acquisition.
+
+New hold/HTTP-diagnostic semantics use typed snapshot `parliament-hosted-state/v2`.
+The current reader accepts originalv1 history; older unaware writers rejectv2
+before claiming ownership. Hold proofs are bounded own-metadata objects in the
+report-only index, never arbitrary CAS or source evidence. Existing candidate
+source-evidence validation remains separate from this new object class.
+
+Approval requires a quiescent paused verified checkpoint and no outstanding
+publication. It binds the current exact record, immutable failure snapshot,
+original native run/attempt, sanitized artifact and failure timestamp. A
+generation-bound claim rejects an intervening control change; approval preserves
+the pause. Repeating the same accepted hold verifies its pinned proof read-only.
+
+Legacyv1 failures retain an explicitly unknown HTTP code. Newly captured terminal
+responses retain only numeric HTTP status and record/URL hashes, without response
+bodies or raw diagnostics. Only exact401/403/404/410/451 evidence qualifies the
+new known-status exclusion; server/integrity/robots/rights failures stay blocked.
+An exclusion never establishes source authentication, rights clearance, complete
+coverage or a successful original capture.
