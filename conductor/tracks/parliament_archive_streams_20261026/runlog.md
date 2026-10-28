@@ -229,3 +229,54 @@ reproduction are retained. The diagnostic fixture now follows the existing CLI
 fixture convention and stubs logging.disable; the production CLI remains unchanged.
 The ordered pair is green, and27 affected native/CLI/logging tests pass. Complete
 corrected-candidate assurance is required; no check is waived or blindly retried.
+
+### 28 October 2026: corrected recovery delivery and terminal-verifier reconciliation
+
+PR800 mergedf9f65812216e096a615fb55d128d6ed39a7586cf after every required
+Ubuntu/macOS/Windows, lint, CodeQL and patch-coverage check passed at24afe803.
+The corrected local suite passed8618tests with14capability skips; all other stages
+passed across the retained initial segment and terminal-interruption resumption
+from mutation-legislation-checkpoint-root onward. No gate input changed between
+those segments. No first failure or validation log was replaced.
+
+A local network outage interrupted the operator's cold verification and its owner
+release readback. Exact failed-receipt hash, terminal PID12077, owner identity and
+uploaded snapshot were reconciled after connectivity returned. The same existing
+verifier identity accepted snapshotafc0ab46c8d49b595125dd4ca2a5dda5b14eb8239c39f44938b71ee46076052d
+at pinned revisionda502dc426fd0b960c766cf076d4759f9485bc65, then released itself.
+981unchanged qualified references; zero new unqualified references. No takeover,
+renewal, credential transfer, acquisition or replayed publication occurred. Native
+readback confirmed enabled=true,paused=null,owner=null and verified snapshot.
+Retained helper and intent/accepted/result receipts are under
+build/parliament/hosted-handoff-20261027/terminal-verifier-recovery-20261028T0133;
+the actual intent timestamp02:24UTC is authoritative; suffix is only a unique ID.
+Original failed operator and Actions receipts remain immutable.
+
+Native Actions recovery40620940956 was dispatched separately on mergedf9f65812,
+with one bounded pilot attempt to close interrupted historicalpage82 work before
+any new discovery. Its terminal receipt remains the next acceptance checkpoint.
+
+Native recovery40620940956 SUCCEEDED onf9f65812: exact interrupted invocation
+was gha_40606566606_1; zero observed/captured, no new discovery or publication.
+The unknown interval was conservatively charged262144000bytes/900seconds, not
+reported as transferred bytes. Cycle advanced to6;818originals+1metadata-only,
+21verified batches,0pending/failed. Verified checkpointd429a9067baa697b93a363dd4bf4d3436e1707fd /
+a9b294df7f19b80a656d5d548a5664a7413fcaa6369c1b4c2b9f92bdbf5a938d.
+Continuous manual dispatch40621708833 now resumes serial bounded work. This is
+workflow_dispatch, not natural recurrence acceptance. Evidence:
+evidence/parliament-assurance/20261028/hosted-recovery-acceptance.json.
+
+Actual natural run40619056595 triggered/started02:07:19UTC, terminal02:07:55UTC,
+on01ffe237. The corrected cron inputs reached the CLI and correctly failed closed
+on the retained verifier lease (parliament_writer_busy), without acquisition.
+This is a natural fencing observation, not completed natural recurrence. Current
+continuous run40621708833 was independently observed at02:39:37UTC onf9f65812:
+correct GHA owner,enabled=true,paused=null,verified checkpoint,cycle7,work=null;
+818originals+1metadata-only and21verified publications at that observation.
+
+For documentation gates, our unstarted uv waiter was stopped after its shared
+cache lock was found held by another process; that owner was left untouched.
+Equivalent Conductor/format/secret gates ran through selected repo-local Python
+3.15.1. The first direct secret invocation lacked the venv executable PATH and
+failed before scanning; the qualified venv PATH invocation passed. No environment
+replacement or cache modification was used. Source assurance remains unchanged.
