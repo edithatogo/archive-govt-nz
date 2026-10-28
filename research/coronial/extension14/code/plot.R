@@ -7,10 +7,13 @@ read <- function(n) read.csv(file.path(root,'results',paste0(n,'.csv')),check.na
 theme_set(theme_bw(base_size=11,base_family="Helvetica")+theme(panel.grid.minor=element_blank(),legend.position='bottom',strip.background=element_rect(fill='grey95'),text=element_text(colour='black'),axis.text=element_text(colour='black')))
 pal <- c('#0072B2','#D55E00','#009E73','#CC79A7')
 export <- function(p,n,w=9,h=7) {
-  png(file.path(out,paste0(n,'.png')),width=w,height=h,units='in',res=180,type='cairo'); grob <- ggplotGrob(p); grid::grid.draw(grob); dev.off()
-  svg(file.path(out,paste0(n,'.svg')),width=w,height=h); grid::grid.draw(grob); dev.off()
-  cairo_pdf(file.path(out,paste0(n,'.pdf')),width=w,height=h,onefile=TRUE); grid::grid.draw(grob); dev.off()
+  # Build each plot on its own device; do not reuse device-dependent grobs.
+  ggplot2::ggsave(file.path(out,paste0(n,'.png')),plot=p,width=w,height=h,
+                 units='in',dpi=180,device=grDevices::png,type='cairo')
+  ggplot2::ggsave(file.path(out,paste0(n,'.pdf')),plot=p,width=w,height=h,
+                 units='in',device=grDevices::cairo_pdf)
 }
+
 long <- function(d,keys,groupname='Measure') {do.call(rbind,lapply(keys,function(k)data.frame(d[,setdiff(names(d),keys),drop=FALSE],Measure=k,value=d[[k]],check.names=FALSE)))}
 nz <- read('nz-timeline'); nz$year <- as.numeric(substr(nz$period,1,4))+1
 z <- long(nz,c('deaths_reported','jurisdiction_accepted','cases_closed','cases_on_hand_30_June','mean_days_case_closure'))

@@ -23,8 +23,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "f387192064cc38f0b808e517aa5f5a1e9deebec10d3eec883aaf391fb5022474",
-      "bytes": 2071
+      "sha256": "db62e6b4f09745bbe021c164554e9e5aded9d55c61460ca84208705780807520",
+      "bytes": 2488
     },
     {
       "path": "RIGHTS.md",
@@ -38,8 +38,8 @@
     },
     {
       "path": "code/plot.R",
-      "sha256": "1a4051ec9607e109d218eb148347ca8e3bf4f1636c39e134f660f4f716a85b23",
-      "bytes": 7514
+      "sha256": "51926aaa5bdf84de8b527dec41c3b6dd1361f28990d1b04796e943f1ea19a9f5",
+      "bytes": 7526
     },
     {
       "path": "code/source-analysis.py",
@@ -53,8 +53,8 @@
     },
     {
       "path": "figures/01-nz-timeline.pdf",
-      "sha256": "8cd8db60b51b68b6618688dd45ff309160365bffba7ad8e00998b18e55d8b910",
-      "bytes": 16463
+      "sha256": "374cc25032be767a11578c726e522e04131ca9a2995d41c92c7f2e84fdf3f346",
+      "bytes": 16477
     },
     {
       "path": "figures/01-nz-timeline.png",
@@ -62,14 +62,9 @@
       "bytes": 120265
     },
     {
-      "path": "figures/01-nz-timeline.svg",
-      "sha256": "21b5a6ea0d5c2491b7c6a2b341a102f1001ed602e40d736c60344963963d5a01",
-      "bytes": 110367
-    },
-    {
       "path": "figures/02-australia-backlog-age.pdf",
-      "sha256": "c265dd4ccf9390d09822ee5cc6904adff10d3409198de3b60d2de603d50147c0",
-      "bytes": 21757
+      "sha256": "b4058464facc1bad7da5a5b52a4eefc561bfe0fc04a8b042f8c5c2ddc427c9e9",
+      "bytes": 21812
     },
     {
       "path": "figures/02-australia-backlog-age.png",
@@ -77,14 +72,9 @@
       "bytes": 223822
     },
     {
-      "path": "figures/02-australia-backlog-age.svg",
-      "sha256": "cd99554ba92215fc715dd095871a52fe42dafe1891b0554c5919aec08efdbab0",
-      "bytes": 192119
-    },
-    {
       "path": "figures/03-australia-clearance.pdf",
-      "sha256": "08fc9a6cd94adf0d85b4cc4429bf815df8d15e4a6eaefd7b7d85ba0fc8272f93",
-      "bytes": 18671
+      "sha256": "617c973ff67edae638d7e4a2d85a6900072bcc31ef9bf8ec2bca5bfaa95e1142",
+      "bytes": 18717
     },
     {
       "path": "figures/03-australia-clearance.png",
@@ -92,14 +82,9 @@
       "bytes": 219075
     },
     {
-      "path": "figures/03-australia-clearance.svg",
-      "sha256": "d72496e91a8ebbc5ab7df9196770a81c5e41a8c2849cc87c1a25c9be14c195c1",
-      "bytes": 158485
-    },
-    {
       "path": "figures/04-australia-activity.pdf",
-      "sha256": "27cfe3ee170a7261c262175014e977e22cbb12023b35e56984dc194b0ffb074f",
-      "bytes": 25921
+      "sha256": "fa77f30ce79d9626c2dedbc7990d14b296e2c78d27391c1c429056aa2a380785",
+      "bytes": 25955
     },
     {
       "path": "figures/04-australia-activity.png",
@@ -107,14 +92,9 @@
       "bytes": 267880
     },
     {
-      "path": "figures/04-australia-activity.svg",
-      "sha256": "d729f28cfe3a4fce03d90aab632b1682b23abb9a0b1499d9809dd4c5097d0742",
-      "bytes": 195937
-    },
-    {
       "path": "figures/05-niio-monthly.pdf",
-      "sha256": "ba9667eae073d37a7992952a739d0c8ad9e3d8d3a3ee8cee7b62bc65eb34ad67",
-      "bytes": 18710
+      "sha256": "76754a712e4aeed5bd4d80508af8ff7a4e4f497518c37c287c75c0a2810116c1",
+      "bytes": 18718
     },
     {
       "path": "figures/05-niio-monthly.png",
@@ -122,14 +102,9 @@
       "bytes": 169222
     },
     {
-      "path": "figures/05-niio-monthly.svg",
-      "sha256": "34bc51ba9078f908917c137f1b6860fc6c27d2382af00efb7f3fc5557e5ba940",
-      "bytes": 71755
-    },
-    {
       "path": "figures/06-niio-age.pdf",
-      "sha256": "a7b461c7fb9e5b2f81a6fd022fa8cd9d48099f5aeca3a576c25cab195e93dea4",
-      "bytes": 20925
+      "sha256": "f88d5ff91c910cd219ccabfb91e0f428956f91c89dfcd8e6ef9d1fe36ad7120a",
+      "bytes": 20924
     },
     {
       "path": "figures/06-niio-age.png",
@@ -137,14 +112,9 @@
       "bytes": 66181
     },
     {
-      "path": "figures/06-niio-age.svg",
-      "sha256": "39fa8dcb0500e3cd6f3a582353663a489cdae6dec8530310b63dee9a35edf48f",
-      "bytes": 130502
-    },
-    {
       "path": "figures/07-funding-components.pdf",
-      "sha256": "6cfbfc1dd95baa207d9982c62187997a096150817d168710410467cb0a4c784a",
-      "bytes": 14713
+      "sha256": "a2cf00e6bd56b35ed1830bf4badff0ffbbaad02fbda39d6e8bb659060dd79a6d",
+      "bytes": 14725
     },
     {
       "path": "figures/07-funding-components.png",
@@ -152,14 +122,9 @@
       "bytes": 101158
     },
     {
-      "path": "figures/07-funding-components.svg",
-      "sha256": "2dd0603c163b6867b832cd82b4d35ed5340f4b1bd6290e17745bafb50692767b",
-      "bytes": 90433
-    },
-    {
       "path": "figures/08-england-wales-activity.pdf",
-      "sha256": "7bf048c91391c318e51f912a4cc2d25ed6eed35038cb5d927fa9f66dcef4d0ad",
-      "bytes": 12602
+      "sha256": "9b6e227e699095c53eea1cd07962f9595878e05aa5df7cde720e1711630ef8d0",
+      "bytes": 12595
     },
     {
       "path": "figures/08-england-wales-activity.png",
@@ -167,14 +132,9 @@
       "bytes": 75787
     },
     {
-      "path": "figures/08-england-wales-activity.svg",
-      "sha256": "6fc4141174a34a547cf231cff19e8758a96a49e3a4d2f5ac42c13496dfb51aff",
-      "bytes": 62363
-    },
-    {
       "path": "figures/09-duration-contexts.pdf",
-      "sha256": "6c780b7170f0c5ae272a3ebb0e340354abf4fd262bf4bec6ca26bd0bddcd8cf5",
-      "bytes": 14574
+      "sha256": "c54ee1b4802fc2889ac1b0377a328930d13f3964fc3c414263eb4765aa71923d",
+      "bytes": 14553
     },
     {
       "path": "figures/09-duration-contexts.png",
@@ -182,24 +142,14 @@
       "bytes": 72366
     },
     {
-      "path": "figures/09-duration-contexts.svg",
-      "sha256": "16837bd73accf67aaef8f0f49d1128e0cf649203872e98cd9fc918a7e5179e6b",
-      "bytes": 88718
-    },
-    {
       "path": "figures/10-historical-nz-routes.pdf",
-      "sha256": "687fecd675f187d41c33bcd86fe370049e94ceb2702ad789243ad857af08ba05",
-      "bytes": 16043
+      "sha256": "c0a7ee0cdf223d253c7a20c6c028d2e418ad4b9c0fa49efae0355de6261e05ef",
+      "bytes": 16041
     },
     {
       "path": "figures/10-historical-nz-routes.png",
       "sha256": "0901a6bf4864ef6ca30be4bd86b694c4293c943a6caefb99d70702916766c4f4",
       "bytes": 136461
-    },
-    {
-      "path": "figures/10-historical-nz-routes.svg",
-      "sha256": "18d2564d0a559b1477eb7483e55315563cd30bc31b32391bc419cd0ecbac3a99",
-      "bytes": 112041
     },
     {
       "path": "input-manifest.json",
@@ -265,6 +215,11 @@
       "path": "raw-source-catalogue.json",
       "sha256": "3ef29b8b39ca54e8b40fcd3cc8bd150fd7556998138d9765f9b73870172ac16c",
       "bytes": 12774
+    },
+    {
+      "path": "rendering-revision.json",
+      "sha256": "7c653faa570ee4530d0f454858705930e685d90b2fa62e5d73ad4480329640b8",
+      "bytes": 457
     },
     {
       "path": "reproduce.py",
@@ -358,8 +313,8 @@
     },
     {
       "path": "row-lineage.json",
-      "sha256": "815410eaf0756282022d7e617bcef4ca8769c2da054e84d5644e43fe491897c8",
-      "bytes": 3191450
+      "sha256": "3250c84094ad12a82aee2ff0df1716e4894da1d377551968bccf598bc96eee88",
+      "bytes": 3191653
     },
     {
       "path": "source-analysis-inputs.json",

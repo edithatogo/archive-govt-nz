@@ -85226,5 +85226,7 @@
   ],
   "original_analysis_code_sha256": "3b9b612fcfe65ba7e0395b2d90f5242354c571f0b54aeab20fbac75687c2af0a",
   "public_reproduction_code_sha256": "9f4d99e3643e61f9f3798403f0ffcbc51bdd96cd1ab5cbe7240fbdbd6b99f7e3",
-  "distinction": "Exact original result rows and source locators retained. Public recipe replaces raw NIIO PDF extraction with aggregate age cells and carries the denominator inventory as contextual seed data. This is calculation reproduction, not a new source-extraction audit."
+  "distinction": "Exact original result rows and source locators retained. Public recipe replaces raw NIIO PDF extraction with aggregate age cells and carries the denominator inventory as contextual seed data. This is calculation reproduction, not a new source-extraction audit.",
+  "public_plot_code_sha256": "51926aaa5bdf84de8b527dec41c3b6dd1361f28990d1b04796e943f1ea19a9f5",
+  "rendering_revision": "2: PNG/PDF exporter rebuilt per device; statistical inputs/formulas unchanged."
 }

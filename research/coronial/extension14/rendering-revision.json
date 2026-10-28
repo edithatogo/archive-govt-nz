@@ -1,0 +1,10 @@
+{
+  "revision": 2,
+  "superseded_Git_recipe": "67dbdf7c7bda9f678960d5df01ec283c825f4626",
+  "superseded_HF": "da3765449d871e9ad9274c0e0366c747ae933f35",
+  "change": "Observed layout variation in shared-grob exporter; rebuild separately per device using ggsave and explicit Cairo. Publish PNG/PDF only.",
+  "numeric_outputs_changed": false,
+  "PNG_two_run_byte_matches": 10,
+  "SVG_byte_determinism_claimed": false,
+  "PDF_byte_determinism_claimed": false
+}

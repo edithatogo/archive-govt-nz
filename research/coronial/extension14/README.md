@@ -33,3 +33,5 @@ https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/tree/9ff39f983
 
 Code/data identity does not establish scientific truth, journal acceptance or
 permission to submit. No manuscripts or private records are distributed here.
+
+Rendering revision2: the exporter builds each plot on its own device with ggplot2::ggsave and explicit Cairo PNG/PDF devices. Ten PNGs matched in two clean draws. SVG files are omitted because their layouts varied in the qualified graphics stack. PDF file-byte determinism is not claimed. Numeric inputs and all17calculation outputs are unchanged from the first extension release. Earlier releases remain immutable.
