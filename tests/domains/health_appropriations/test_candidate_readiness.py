@@ -256,15 +256,15 @@ def _expectation(
     )
 
 
-def test_binds_candidate_to_fresh_parity_and_recovery(tmp_path: Path) -> None:
-    """Exact fresh assurance closes the local release-readiness contract."""
+def test_fresh_assurance_does_not_qualify_legacy_empty_metadata(tmp_path: Path) -> None:
+    """Parity/recovery cannot substitute for actual metadata qualification."""
     digest = _write_candidate(tmp_path)
     assurance, assurance_sha256 = _write_assurance(tmp_path, digest)
-    result = verify_release_readiness(
-        tmp_path,
-        _expectation(digest, assurance, assurance_sha256),
-    )
-    assert result["parity"] == result["recovery"] == "passed"
+    with pytest.raises(ValueError, match="candidate_metadata_release_unqualified"):
+        verify_release_readiness(
+            tmp_path,
+            _expectation(digest, assurance, assurance_sha256),
+        )
 
 
 @pytest.mark.parametrize(

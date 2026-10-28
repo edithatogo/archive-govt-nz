@@ -1,0 +1,490 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-metadata-release-contract-v1.schema.json",
+  "title": "Pinned all-resource metadata application and release-review contract",
+  "description": "Explicit supplied assertions and evidence fixity, not legal judgment or publication permission. The operator must select an approved record pin.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "candidate_manifest_sha256",
+    "facts",
+    "facts_evidence_sha256",
+    "resources",
+    "intended_use"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-metadata-release-contract/v1"
+    },
+    "candidate_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifier",
+        "name",
+        "description",
+        "version",
+        "url",
+        "date_published",
+        "creators"
+      ],
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "^(?:urn:|https://)",
+          "format": "uri"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "\\S"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "\\S"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "\\S"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "maxLength": 4096,
+              "pattern": "^https://[^@?#]+$"
+            }
+          ]
+        },
+        "date_published": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        },
+        "creators": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 16,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "type",
+                  "name"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096,
+                    "pattern": "^(?:urn:|https://)",
+                    "format": "uri"
+                  },
+                  "type": {
+                    "enum": [
+                      "Person",
+                      "Organization"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096,
+                    "pattern": "\\S"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "facts_evidence_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "resources": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 140,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "payload_sha256",
+          "state",
+          "license_uri",
+          "attribution",
+          "evidence_sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,138}(?:/[A-Za-z0-9][A-Za-z0-9_.-]{0,138})*$"
+          },
+          "payload_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "state": {
+            "enum": [
+              "eligible_asserted",
+              "unresolved",
+              "restricted",
+              "incompatible"
+            ]
+          },
+          "license_uri": {
+            "anyOf": [
+              {
+                "type": "null"
+              },
+              {
+                "type": "string",
+                "format": "uri",
+                "minLength": 1,
+                "maxLength": 4096,
+                "pattern": "^https://[^@?#]+$"
+              }
+            ]
+          },
+          "attribution": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096,
+                "pattern": "\\S"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "evidence_sha256": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "state": {
+                  "const": "eligible_asserted"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "license_uri": {
+                  "type": "string",
+                  "format": "uri",
+                  "minLength": 1,
+                  "maxLength": 4096,
+                  "pattern": "^https://[^@?#]+$"
+                },
+                "attribution": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 4096,
+                  "pattern": "\\S"
+                },
+                "evidence_sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "license_uri": {
+                  "type": "null"
+                },
+                "attribution": {
+                  "type": "null"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "intended_use": {
+      "const": "candidate_redistribution_review"
+    }
+  },
+  "$defs": {
+    "facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identifier",
+        "name",
+        "description",
+        "version",
+        "url",
+        "date_published",
+        "creators"
+      ],
+      "properties": {
+        "identifier": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "^(?:urn:|https://)",
+          "format": "uri"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "\\S"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "\\S"
+        },
+        "version": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096,
+          "pattern": "\\S"
+        },
+        "url": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "maxLength": 4096,
+              "pattern": "^https://[^@?#]+$"
+            }
+          ]
+        },
+        "date_published": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "string",
+              "format": "date-time"
+            }
+          ]
+        },
+        "creators": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 16,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "type",
+                  "name"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096,
+                    "pattern": "^(?:urn:|https://)",
+                    "format": "uri"
+                  },
+                  "type": {
+                    "enum": [
+                      "Person",
+                      "Organization"
+                    ]
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 4096,
+                    "pattern": "\\S"
+                  }
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "payload_sha256",
+        "state",
+        "license_uri",
+        "attribution",
+        "evidence_sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 240,
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,138}(?:/[A-Za-z0-9][A-Za-z0-9_.-]{0,138})*$"
+        },
+        "payload_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "state": {
+          "enum": [
+            "eligible_asserted",
+            "unresolved",
+            "restricted",
+            "incompatible"
+          ]
+        },
+        "license_uri": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "format": "uri",
+              "minLength": 1,
+              "maxLength": 4096,
+              "pattern": "^https://[^@?#]+$"
+            }
+          ]
+        },
+        "attribution": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 4096,
+              "pattern": "\\S"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "evidence_sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "eligible_asserted"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "license_uri": {
+                "type": "string",
+                "format": "uri",
+                "minLength": 1,
+                "maxLength": 4096,
+                "pattern": "^https://[^@?#]+$"
+              },
+              "attribution": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4096,
+                "pattern": "\\S"
+              },
+              "evidence_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "license_uri": {
+                "type": "null"
+              },
+              "attribution": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

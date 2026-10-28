@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-metadata-release-verification-v1.schema.json",
+  "title": "Read-only metadata/resource qualification without publication approval",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "status",
+    "candidate_manifest_sha256",
+    "contract_sha256",
+    "rights_scope",
+    "resources_verified",
+    "metadata_files_verified",
+    "evidence_objects_verified",
+    "rights_validation",
+    "licenses",
+    "blockers",
+    "publication_approval",
+    "publication",
+    "full_conformance",
+    "ml_loading",
+    "scope",
+    "source_disposition_validation"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-metadata-release-contract/v1"
+    },
+    "status": {
+      "enum": [
+        "blocked",
+        "qualified_for_explicit_gate"
+      ]
+    },
+    "candidate_manifest_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "contract_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "rights_scope": {
+      "const": "all_candidate_members_including_manifest"
+    },
+    "resources_verified": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 140
+    },
+    "metadata_files_verified": {
+      "const": 11
+    },
+    "evidence_objects_verified": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 141
+    },
+    "rights_validation": {
+      "const": "pinned_assertions_and_supplied_evidence_fixity_not_legal_judgment"
+    },
+    "licenses": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096,
+        "pattern": "\\S",
+        "format": "uri"
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4096,
+        "pattern": "\\S"
+      }
+    },
+    "publication_approval": {
+      "const": "not_granted"
+    },
+    "publication": {
+      "const": "not_performed"
+    },
+    "full_conformance": {
+      "const": "not_asserted"
+    },
+    "ml_loading": {
+      "const": "not_qualified"
+    },
+    "scope": {
+      "const": "metadata_and_resource_assertions_only"
+    },
+    "source_disposition_validation": {
+      "const": "outside_metadata_contract"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "qualified_for_explicit_gate"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "blockers": {
+            "maxItems": 0
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "blockers": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

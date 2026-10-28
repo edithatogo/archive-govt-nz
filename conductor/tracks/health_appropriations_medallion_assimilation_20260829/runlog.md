@@ -10351,3 +10351,14 @@ for that evidenced shape without credential/permission changes. Seven focused
 contracts pass, including wrong-account/read-only rejection and private-scope
 filtering. Retained the failed run and all previously passing assurance; final
 protected Actions and the approved hosted correction remain required.
+
+## 2026-10-28 — Complete metadata contracts (active goal)
+
+Own worktree: `archive-govt-nz-metadata-contracts-20261028`; branch
+`codex/health-metadata-contracts-20261028`, based on merged PR801. Primary dirty
+work and other topic checkouts are preserved. This chat owns broad local assurance
+for this topic; no broad run has been launched. Repo-local Python3.15.1 is locked.
+Audited the full Phase7.1 contract task and requirements M-14/M-17/AC-14, retaining
+the completion matrix in `metadata-contract-completion-20261028.md`. Identified
+legacy release acceptance of empty metadata and original-only rights coverage.
+The full goal remains active; inventory-only validation is not the end state.

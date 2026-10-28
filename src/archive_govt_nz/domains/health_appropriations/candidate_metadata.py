@@ -8,7 +8,8 @@ from __future__ import annotations
 import hashlib
 import json
 from io import BytesIO
-from typing import TYPE_CHECKING
+from itertools import islice
+from typing import TYPE_CHECKING, Any, cast
 
 import pyarrow.parquet as pq
 
@@ -21,6 +22,7 @@ from archive_govt_nz.domains.health_appropriations.gold_metadata import (
 )
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
     read_regular_snapshot,
+    verified_snapshot,
 )
 
 if TYPE_CHECKING:
@@ -31,6 +33,27 @@ MAX_MEMBERS = 128
 MAX_PAYLOAD_BYTES = 16 * 1024 * 1024
 MAX_TOTAL_BYTES = 64 * 1024 * 1024
 MAX_FIELDS = 256
+GENERATED_MEMBERS = frozenset(
+    {
+        "metadata/payload-inventory.json",
+        "metadata/schemas.json",
+        "metadata/croissant.json",
+        "ro-crate-metadata.json",
+        "metadata/dcat.json",
+        "metadata/prov.json",
+        "metadata/profile-validation.json",
+    }
+)
+MAX_PACKAGE_BYTES = 128 * 1024 * 1024
+MAX_NODES = (MAX_MEMBERS + len(GENERATED_MEMBERS)) * 8
+EXTENDED_MEMBERS = frozenset(
+    {
+        "metadata/catalogue.json",
+        "metadata/citations.json",
+        "metadata/changelog.json",
+        "metadata/source_drillthrough.json",
+    }
+)
 _ERROR = "candidate_metadata_contract"
 
 
@@ -46,7 +69,9 @@ def _json(value: object) -> bytes:
     ).encode()
 
 
-def project_candidate_inventory(root: Path) -> dict[str, bytes]:
+def project_candidate_inventory(
+    root: Path, *, reconstruct: bool = False
+) -> dict[str, bytes]:
     """Observe bounded local payloads and describe their actual Arrow schemas.
 
     No files are written. The supplied root is operator-selected, not a sandbox
@@ -54,10 +79,16 @@ def project_candidate_inventory(root: Path) -> dict[str, bytes]:
     before saving a final candidate manifest. No rights, source authority,
     publication date, activities or standards conformance are inferred.
     """
+    _require(type(reconstruct) is bool)
     _require(root.is_dir() and not root.is_symlink() and not root.is_junction())
     paths = []
-    for path in root.rglob("*"):
+    for count, path in enumerate(islice(root.rglob("*"), MAX_NODES + 1), 1):
+        _require(count <= MAX_NODES)
         _require(not path.is_symlink() and not path.is_junction())
+        if reconstruct and path.relative_to(root).as_posix() in (
+            GENERATED_MEMBERS | EXTENDED_MEMBERS
+        ):
+            continue
         if path.is_file() and path != root / "MANIFEST.json":
             paths.append(path)
             _require(len(paths) <= MAX_MEMBERS)
@@ -162,4 +193,85 @@ def project_candidate_inventory(root: Path) -> dict[str, bytes]:
         "metadata/dcat.json": _json(dcat),
         "metadata/prov.json": _json(prov),
         "metadata/profile-validation.json": _json(report),
+    }
+
+
+def verify_candidate_inventory(
+    root: Path, *, expected_manifest_sha256: str
+) -> dict[str, object]:
+    """Reconstruct current inventory metadata; never qualify release or rights.
+
+    The generated metadata members are excluded from their own input inventory,
+    exactly as during the original build. Every other member is hash-bound by
+    the caller-pinned candidate manifest. Historical bytes are never rewritten.
+    """
+    _require(not any(p.is_symlink() or p.is_junction() for p in (root, *root.parents)))
+    _require(
+        not (root / "MANIFEST.json").is_symlink()
+        and not (root / "MANIFEST.json").is_junction()
+    )
+    original = verified_snapshot(
+        root / "MANIFEST.json", expected_manifest_sha256, max_bytes=MAX_PAYLOAD_BYTES
+    )
+    manifest = candidate_inventory._json(original)
+    _require(manifest.get("schema_version") == "archive-govt-nz.health-hf-candidate/v1")
+    _require(manifest.get("dataset") == "edithatogo/nz-health-appropriations")
+    records = manifest.get("files")
+    _require(
+        type(records) is list
+        and 0 < len(records) <= MAX_MEMBERS + len(GENERATED_MEMBERS)
+    )
+    records = cast("list[Any]", records)
+    _require(
+        all(
+            type(row) is dict and set(row) == {"path", "bytes", "sha256"}
+            for row in records
+        )
+    )
+    records = cast("list[dict[str, Any]]", records)
+    names = [row["path"] for row in records]
+    candidate_inventory._unique([*names, "MANIFEST.json"])
+    _require("MANIFEST.json" not in names and set(names) >= GENERATED_MEMBERS)
+    total = 0
+    for row in records:
+        _require(type(row["bytes"]) is int and 0 <= row["bytes"] <= MAX_PAYLOAD_BYTES)
+        payload = verified_snapshot(
+            root / row["path"], row["sha256"], max_bytes=MAX_PAYLOAD_BYTES
+        )
+        _require(len(payload) == row["bytes"])
+        total += len(payload)
+        _require(total <= MAX_PACKAGE_BYTES)
+    actual = list(islice(root.rglob("*"), MAX_NODES + 1))
+    _require(len(actual) <= MAX_NODES)
+    _require(all(not p.is_symlink() and not p.is_junction() for p in actual))
+    _require(
+        {p.relative_to(root).as_posix() for p in actual if p.is_file()}
+        == set(names) | {"MANIFEST.json"}
+    )
+    expected = project_candidate_inventory(root, reconstruct=True)
+    for name, payload in expected.items():
+        _require(
+            read_regular_snapshot(root / name, max_bytes=MAX_PAYLOAD_BYTES) == payload
+        )
+    _require(
+        verified_snapshot(
+            root / "MANIFEST.json",
+            expected_manifest_sha256,
+            max_bytes=MAX_PAYLOAD_BYTES,
+        )
+        == original
+    )
+    report = json.loads(expected["metadata/profile-validation.json"])
+    return {
+        "schema_version": "archive-govt-nz.health-candidate-metadata-verification/v1",
+        "status": "verified_inventory_metadata",
+        "manifest_sha256": expected_manifest_sha256,
+        "metadata_files_verified": len(expected),
+        "payload_members_verified": len(records),
+        "recordsets": report["recordsets"],
+        "fields": report["fields"],
+        "release_readiness": report["release_readiness"],
+        "derivative_rights": report["derivative_rights"],
+        "publication_approval": "not_granted",
+        "full_conformance": report["full_conformance"],
     }

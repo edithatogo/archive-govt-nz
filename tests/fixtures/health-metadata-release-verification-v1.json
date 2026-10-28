@@ -1,0 +1,20 @@
+{
+  "schema_version": "archive-govt-nz.health-metadata-release-contract/v1",
+  "status": "qualified_for_explicit_gate",
+  "candidate_manifest_sha256": "086a6a67e4f0d8b513066788f5cda6f90ee3601f516aad90843c20acbf1265f6",
+  "contract_sha256": "84d6e07ca4791b480e6eb337bfe14d622dae4f3d52f39da4d5726490f5d2447e",
+  "rights_scope": "all_candidate_members_including_manifest",
+  "resources_verified": 16,
+  "metadata_files_verified": 11,
+  "evidence_objects_verified": 2,
+  "rights_validation": "pinned_assertions_and_supplied_evidence_fixity_not_legal_judgment",
+  "licenses": [
+    "https://creativecommons.org/licenses/by/4.0/",
+    "https://www.apache.org/licenses/LICENSE-2.0"
+  ],
+  "blockers": [],
+  "publication_approval": "not_granted",
+  "publication": "not_performed",
+  "full_conformance": "not_asserted",
+  "ml_loading": "not_qualified"
+}

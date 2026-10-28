@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive-govt-nz.example/schemas/health-candidate-v2.schema.json",
+  "title": "Bounded candidate requiring a separately pinned metadata/resource contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "dataset",
+    "version",
+    "metadata_identifier",
+    "metadata_profile",
+    "rights_gate",
+    "source_disposition_gate",
+    "candidate_state",
+    "files"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "archive-govt-nz.health-hf-candidate/v2"
+    },
+    "dataset": {
+      "const": "edithatogo/nz-health-appropriations"
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "pattern": "\\S"
+    },
+    "metadata_identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "pattern": "\\S",
+      "format": "uri"
+    },
+    "metadata_profile": {
+      "const": "archive-govt-nz.health-metadata-release-contract/v1"
+    },
+    "rights_gate": {
+      "const": "requires_pinned_resource_contract"
+    },
+    "source_disposition_gate": {
+      "const": "passed"
+    },
+    "candidate_state": {
+      "const": "release_candidate_pending_contract_verification"
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 139,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "bytes",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240,
+            "pattern": "^[A-Za-z0-9][A-Za-z0-9_.-]{0,138}(?:/[A-Za-z0-9][A-Za-z0-9_.-]{0,138})*$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 16777216
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "collection": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 4096
+    }
+  }
+}

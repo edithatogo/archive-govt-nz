@@ -1508,7 +1508,7 @@ deliberately exercise version handling.
   fixity/eligibility claims or publication metadata. This does not complete
   Platinum or whole-product recovery. [M-14, M-18; AC-14, AC-16]
 
-- [ ] Add failing contracts for schema-as-code, DCAT, Croissant, RO-Crate,
+- [~] Add failing contracts for schema-as-code, DCAT, Croissant, RO-Crate,
   PROV, estate cards, mixed/per-resource licensing, citations and fail-closed
   release readiness. Include missing, conflicting and incompatible rights
   states. [M-04, M-14, M-17, M-18; AC-04, AC-14, AC-16]

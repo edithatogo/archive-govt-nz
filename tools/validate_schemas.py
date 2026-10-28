@@ -21,6 +21,21 @@ REPOSITORY_ROOT = Path(__file__).parents[1]
 VALIDATION_PAIRS = (
     (
         REPOSITORY_ROOT
+        / "src/archive_govt_nz/domains/health_appropriations/metadata-release-contract-v1.schema.json",
+        REPOSITORY_ROOT / "tests/fixtures/health-metadata-release-contract-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT
+        / "src/archive_govt_nz/domains/health_appropriations/candidate-v2.schema.json",
+        REPOSITORY_ROOT / "tests/fixtures/health-candidate-v2.json",
+    ),
+    (
+        REPOSITORY_ROOT
+        / "src/archive_govt_nz/domains/health_appropriations/metadata-release-verification-v1.schema.json",
+        REPOSITORY_ROOT / "tests/fixtures/health-metadata-release-verification-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT
         / "schemas/health-qualified-metadata-verification-v1.schema.json",
         REPOSITORY_ROOT
         / "tests/fixtures/health-qualified-metadata-verification-v1.json",
