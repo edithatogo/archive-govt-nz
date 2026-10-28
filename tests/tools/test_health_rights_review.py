@@ -116,3 +116,24 @@ def test_inventory_graph_has_no_authority_to_grant_rights() -> None:
                 )
             },
         )
+
+
+@pytest.mark.parametrize(
+    ("predicate", "expected"),
+    [
+        ("http://schema.org/license", "unbound_claim"),
+        ("http://www.w3.org/2002/07/owl#sameAs", "positive_link_unapproved"),
+    ],
+)
+def test_named_graphs_cannot_hide_unapproved_claims(
+    predicate: str,
+    expected: str,
+) -> None:
+    """Identified JSON-LD graphs must receive the same checks as default graphs."""
+    doc = {
+        "@context": {"claim": {"@id": predicate, "@type": "@id"}},
+        "@id": "urn:identified-graph",
+        "@graph": [{"@id": "urn:unqualified-resource", "claim": "urn:unapproved"}],
+    }
+    with pytest.raises(ValueError, match="rights_review_" + expected):
+        RIGHTS_REVIEW.review_graph_claims({"dcat.json": json.dumps(doc).encode()}, {})

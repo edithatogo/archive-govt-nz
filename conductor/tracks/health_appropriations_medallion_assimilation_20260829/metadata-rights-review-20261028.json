@@ -139,6 +139,16 @@
       "rights_gate": "passed_for_included_resources"
     }
   },
+  "hosted_review_correction": {
+    "affected_tests_passed": 16,
+    "defect": "default_graph_iteration_omitted_named_graphs",
+    "evidence_sha256": "da2c4c39f1d4ba9b6b719308a3fd548c26f4c797b10c53bcff482171a6896dc7",
+    "finding": "https://github.com/edithatogo/archive-govt-nz/pull/808#discussion_r4399160346",
+    "fix": "Dataset_quad_iteration_across_all_graphs",
+    "native_registers_unchanged": true,
+    "negative_regressions": 2,
+    "new_exact_head_hosted_checks": "required_before_merge"
+  },
   "inventory_packets": {
     "corrected-candidate-inventory": {
       "disposition": "original_assertions_only_derivative_rights_not_evaluated",

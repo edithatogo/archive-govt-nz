@@ -13,7 +13,7 @@ import json
 from dataclasses import dataclass
 from typing import TYPE_CHECKING, Any
 
-from rdflib import Graph, URIRef
+from rdflib import Dataset, URIRef
 
 from archive_govt_nz.domains.health_appropriations.qualified_overview_metadata import (
     verify_qualified_overview_metadata,
@@ -132,10 +132,10 @@ def review_graph_claims(
         _require(len(payload) <= _MAX_BYTES, "rights_review_document_size")
         document = json.loads(payload)
         _local_contexts(document)
-        graph = Graph().parse(data=payload.decode("utf-8"), format="json-ld")
+        graph = Dataset().parse(data=payload.decode("utf-8"), format="json-ld")
         documents_reviewed[name] = hashlib.sha256(payload).hexdigest()
         licensed = set()
-        for subject, predicate, value in graph:
+        for subject, predicate, value, _context in graph.quads():
             s, p, v = str(subject), str(predicate), str(value)
             _require(p not in _POSITIVE, "rights_review_positive_link_unapproved")
             expected = _claim_expected(s, p, resources)

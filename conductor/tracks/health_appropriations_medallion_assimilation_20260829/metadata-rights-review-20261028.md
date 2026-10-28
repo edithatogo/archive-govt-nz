@@ -20,7 +20,8 @@ the Phase 7 standards/security checkpoint. See
 | Publication/v2 metadata application | Existing all-item path/hash/evidence consistency contract reports `assertion_consistency_only` and supplied-byte fixity; emits no licence grant. Its RO-Crate context is a structural descriptor, not independently qualified full standards evidence. | Supplied assertions only, not legal review or release authority. |
 | Historical candidates v1–v4 | Check exact retained manifest and metadata hashes. v1/v2 have ten original assertions; v3/v4 have 73. Each has 21 other members. README blanket `license: cc-by-4.0` and broad gate label exceed original-only evidence. | Historical exception recorded; no bytes, remote publication or receipts rewritten. Fresh candidate/v1 release admission blocked pending a resource-complete qualified contract. |
 
-The graph checker rejects disguised licence predicates, unapproved `sameAs` /
+The graph checker iterates dataset quads across every default and named graph.
+It rejects disguised licence predicates, unapproved `sameAs` /
 SKOS match relationships, imported/remote JSON-LD contexts and incomplete
 resource licence coverage. It performs no external reads or writes. Its low-level
 helper requires authenticated evidence from its caller; the qualified packet
@@ -56,3 +57,18 @@ mutation, hygiene, supply-chain, secrets and SBOM gates. The first failure is
 retained. Later protected-main integration and exact-head hosted assurance are
 recorded separately in the external delivery receipt; unchanged local evidence
 is reused rather than restarting unrelated checks.
+
+
+## Hosted review correction
+
+The initial PR head passed all required checks, but an automated review identified
+that a plain RDFLib `Graph` could omit identified JSON-LD graphs from iteration.
+Two regressions reproduced hidden unbound-licence and positive-link claims. The
+reviewer now parses a `Dataset` and checks every quad, including named graphs.
+The first dataset attempt exposed quad/triple arity handling and was retained;
+the corrected 16-test affected selection passed. All eight native review
+registers rebuilt with identical hashes; the supported emitted statements remain
+unchanged. See external `named-graph-repeat.json` and bounded red/green logs.
+Only the affected tests and static/document gates are rerun locally; the prior
+full local evidence remains available. New exact-head hosted checks are required
+before merging, and the finding is resolved only after the fix is pushed.
