@@ -33,7 +33,8 @@
       "enum": [
         "archive-govt-nz.qualified-overview-metadata/v1",
         "archive-govt-nz.qualified-overview-metadata/v2",
-        "archive-govt-nz.qualified-overview-metadata/v3"
+        "archive-govt-nz.qualified-overview-metadata/v3",
+        "archive-govt-nz.qualified-overview-metadata/v4"
       ]
     },
     "files": {

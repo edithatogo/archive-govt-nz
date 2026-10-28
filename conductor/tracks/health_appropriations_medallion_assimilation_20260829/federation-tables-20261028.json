@@ -1,0 +1,403 @@
+{
+  "approved_links": 0,
+  "excluded_pairs": 10,
+  "focused_tests": {
+    "files": 4,
+    "status": "passed",
+    "tests": 13
+  },
+  "full_harness": "passed",
+  "hosted_checks": "pending",
+  "implementation": "qualified-overview-metadata/v4 opt-in",
+  "inputs_and_prior_products_unchanged": true,
+  "other_relationships": "not_assessed",
+  "partner_records": 174,
+  "partner_snapshots": 4,
+  "products": {
+    "output_sha256": {
+      "DATASET_CARD.md": "282fac6abcf132857e391c2c836b106c4f51a5caffff57f8fde6d15df56d4571",
+      "approved_links.parquet": "5c5af1019dbf32a5887eeee5b7e958fbea5a807cb6eb13af366493c877b0fa40",
+      "catalogue.json": "13753d67b2ea6ff5b33e8a99f59a4d302188370092b8fb15f4fe3cbc66ad060c",
+      "changelog.json": "8d68331c51c2d04bda15181edccbda39d026b81c224b52d003be64c158d30c27",
+      "citations.json": "7ab8f3f637156c60c571e07adc84d226ee8d6c3bcd5906f4340ec0eeaf3c1d66",
+      "croissant.json": "1481dd9dc2d156f091682f78eb80352fff8400cba49bad04cbb3641e582be886",
+      "dcat.json": "e3b9afb765532f57f2f1199562b93e33e15d29b9a8698e5fc0b8c258544405ab",
+      "federation_readiness.json": "3d45276f43b921c24aa5892dc7045b958cdded32efc3c73d7671ea24bb170804",
+      "federation_tables.json": "7a8c0136f659a1ae5b75ddc18f5d5bebf4d28d92fa46aa66ccf094d2a961bede",
+      "mapping_dispositions.parquet": "a73bab7b78a03cb8390df4f85d528be4028078e510f640a126be53ca0458e1c2",
+      "partner_records.parquet": "8df0879b3deab53f15bcd030027ca3d9e7b77447bc85d26abb0b52ee9bc60ecb",
+      "partner_snapshots.json": "78140a1baec5dcb9f9b4d6785f985cb7b026b152ff31cb82854e9d494d2284e0",
+      "profile-validation.json": "0aec4f153003db85198e7748e3717673352e580f71d7ab518880384ef7523dd7",
+      "prov.json": "d149e1113874f6c5c075ee4cf9a91901c9d80d0ee1682e0d18f548c8964381b3",
+      "ro-crate-metadata.json": "2f3d47bd622ff0e52824e991a8f2147b900dbb36feab00940eaece7f5090ffb5",
+      "source_drillthrough.json": "7ddda920b9f4dd1fd14d092fdf10398ed4c96b6583fed1e40928e39b3bdbb862",
+      "source_records.parquet": "205b54f3cf20e180bc093ad196eea332a32340a6bd78c2ad042dbc29286ce9a5"
+    },
+    "tables": {
+      "approved_links": 0,
+      "excluded_pairs": 10,
+      "mapping_review_sha256": "7d8038095f29b739eb1028e72f8f67d1b9d4192fc86c1c28f61b2f152254720b",
+      "other_relationships": "not_assessed",
+      "partner_records": 174,
+      "positive_link_admission": "not_qualified",
+      "publication": "not_performed",
+      "readiness_sha256": "3d45276f43b921c24aa5892dc7045b958cdded32efc3c73d7671ea24bb170804",
+      "retained_checksum_mismatches": 1,
+      "rights_policy": "source_specific_not_inherited",
+      "schema_version": "archive-govt-nz.health-federation-tables/v1",
+      "scope": "qualified_annual_vote_total_only",
+      "source_records": 5,
+      "tables": {
+        "approved_links.parquet": {
+          "arrow_schema_sha256": "1f8af05301e72c04509430688ffd0fb6279a50c7788b210881be3d6715c6fb48",
+          "bytes": 2175,
+          "fields": [
+            {
+              "name": "source_key",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "target_key",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "source_scheme_version",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "target_scheme_version",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "mapping_method",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "confidence",
+              "nullable": true,
+              "type": "double"
+            },
+            {
+              "name": "period_start",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "period_end",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "mapping_evidence_sha256",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "rights_evidence_sha256",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "source_manifest_sha256",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "target_snapshot_sha256",
+              "nullable": true,
+              "type": "string"
+            }
+          ],
+          "rows": 0,
+          "sha256": "5c5af1019dbf32a5887eeee5b7e958fbea5a807cb6eb13af366493c877b0fa40"
+        },
+        "mapping_dispositions.parquet": {
+          "arrow_schema_sha256": "2c540b56e2fd9f0aad25f54537c6ba466e9173b47e377603f8b2660975db6fff",
+          "bytes": 12229,
+          "fields": [
+            {
+              "name": "mapping_key",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "key_scheme_version",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "source_package_id",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "source_manifest_sha256",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "source_keys",
+              "nullable": true,
+              "type": "list<element: string>"
+            },
+            {
+              "name": "source_record_ids",
+              "nullable": true,
+              "type": "list<element: string>"
+            },
+            {
+              "name": "source_period_tokens",
+              "nullable": true,
+              "type": "list<element: string>"
+            },
+            {
+              "name": "period_basis",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "target_namespace",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "target_repository",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "target_snapshot_revision",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "target_snapshot_sha256",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "target_record_grain",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "target_record_count",
+              "nullable": true,
+              "type": "int64"
+            },
+            {
+              "name": "disposition",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "reason",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "mapping_method",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "confidence",
+              "nullable": true,
+              "type": "double"
+            },
+            {
+              "name": "target_key",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "target_scheme_version",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "period_start",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "period_end",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "mapping_review_sha256",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "rights_policy",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "publication",
+              "nullable": true,
+              "type": "string"
+            }
+          ],
+          "rows": 10,
+          "sha256": "a73bab7b78a03cb8390df4f85d528be4028078e510f640a126be53ca0458e1c2"
+        },
+        "partner_records.parquet": {
+          "arrow_schema_sha256": "4e05cf8b50e97f50243be88a1613f0304ba55266b08fabdea2bc2f292c4c3d32",
+          "bytes": 12226,
+          "fields": [
+            {
+              "name": "partner_key",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "key_scheme_version",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "namespace",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "repository",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "snapshot_revision",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "snapshot_sha256",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "target_table",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "record_field",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "record_id",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "record_grain",
+              "nullable": true,
+              "type": "string"
+            }
+          ],
+          "rows": 174,
+          "sha256": "8df0879b3deab53f15bcd030027ca3d9e7b77447bc85d26abb0b52ee9bc60ecb"
+        },
+        "source_records.parquet": {
+          "arrow_schema_sha256": "c37907f1abcfb872b37362c40b1e1258e4e977e83e6249686d9a3ccb6d8b9ce5",
+          "bytes": 5672,
+          "fields": [
+            {
+              "name": "source_key",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "key_scheme_version",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "namespace",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "package_id",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "profile",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "manifest_sha256",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "record_id",
+              "nullable": true,
+              "type": "string"
+            },
+            {
+              "name": "period_tokens",
+              "nullable": true,
+              "type": "list<element: string>"
+            },
+            {
+              "name": "period_basis",
+              "nullable": true,
+              "type": "string"
+            }
+          ],
+          "rows": 5,
+          "sha256": "205b54f3cf20e180bc093ad196eea332a32340a6bd78c2ad042dbc29286ce9a5"
+        }
+      }
+    },
+    "verification": {
+      "files": 18,
+      "full_conformance": "not_asserted",
+      "manifest_sha256": "4d26078f4232770efd975a3152d137dd1593c21be95a2ef78525b1855d821439",
+      "metadata_schema_version": "archive-govt-nz.qualified-overview-metadata/v4",
+      "partner_snapshots": 4,
+      "publication": "not_performed",
+      "publisher_checksum_mismatches": 1,
+      "release_readiness": "not_assessed",
+      "schema_version": "archive-govt-nz.qualified-overview-metadata-verification/v1",
+      "scope": "pinned_source_rights_and_metadata_reconstruction_not_release_approval",
+      "source_profiles": 5,
+      "status": "verified_reconstruction"
+    }
+  },
+  "publication": "not_performed",
+  "python": "3.15.1",
+  "repeat_identical": true,
+  "schema_version": "archive-govt-nz.health-federation-tables-assurance/v1",
+  "scope": "qualified_annual_vote_total_only",
+  "source_code_sha256": {
+    "src/archive_govt_nz/domains/health_appropriations/federation_tables.py": "19cd08994deb60dfc06621944e8fbf1527b710f1e15f700c4ecb8d3924868585",
+    "src/archive_govt_nz/domains/health_appropriations/partner_snapshots.py": "b76cf827e258f4c63d9ca5482c8e737514ce83bc150932350c14dc4c3b28de75",
+    "src/archive_govt_nz/domains/health_appropriations/qualified_overview_metadata.py": "31d59f6ea8f60a2920b1249605e81b96531580be06982878893ca6211bbde6d1"
+  },
+  "source_profiles": 5,
+  "source_records": 5,
+  "static_checks": "passed",
+  "status": "verified_local_pending_protected_delivery",
+  "validation": {
+    "coverage_floor": 80,
+    "mutation_and_supply_chain_gates": "passed",
+    "parity": "9/9 passed",
+    "representative_documents": 81,
+    "schemas_validated": 91,
+    "tests_passed": 8667,
+    "tests_skipped": 14
+  }
+}

@@ -20,6 +20,16 @@ type JsonValue = (
 REPOSITORY_ROOT = Path(__file__).parents[1]
 VALIDATION_PAIRS = (
     (
+        REPOSITORY_ROOT / "schemas/health-federation-tables-v1.schema.json",
+        REPOSITORY_ROOT / "tests/fixtures/health-federation-tables-v1.json",
+    ),
+    (
+        REPOSITORY_ROOT
+        / "schemas/health-qualified-metadata-verification-v1.schema.json",
+        REPOSITORY_ROOT
+        / "tests/fixtures/health-qualified-metadata-v4-verification.json",
+    ),
+    (
         REPOSITORY_ROOT / "schemas/health-gold-citations-v7.schema.json",
         REPOSITORY_ROOT / "tests/fixtures/health-gold-citations-v7.json",
     ),

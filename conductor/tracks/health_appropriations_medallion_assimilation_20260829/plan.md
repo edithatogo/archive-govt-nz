@@ -1589,9 +1589,17 @@ deliberately exercise version handling.
     Include the card in the manifest and RO-Crate while preserving explicit
     source-health, classification, reconciliation, rights and publication
     boundaries. See `canonical-gold-dataset-card-20260928.md`.
-- [ ] Add rebuildable federation tables for approved links to
+- [x] Add rebuildable federation tables for approved links to
   `reimbursement-atlas` and `global-medicines-atlas`; preserve unmatched and
   ambiguous mappings. [M-14; AC-14]
+  Completed for the pinned reviewed annual-headline scope: ten exclusions and
+  zero approved positive links. Other grains/relationships remain unassessed;
+  new positive admission requires new evidence and is not implied by this task.
+  - [x] Materialize source and partner identity tables, the ten reviewed exclusion
+    dispositions, and a typed empty approved-links table from verified snapshots.
+    Preserve literal periods, record keys, review/snapshot pins and source-specific
+    rights boundaries; v4 opt-in export must preserve v1-v3 bytes and reject forged
+    positive rows. No new positive links are approved.
   - [x] Obtain both immutable partner snapshot slices and pinned review evidence;
     resolve the ten qualified annual-headline pairs as source-backed record-grain
     exclusions, preserving source literals and zero positive joins. Verify curated
