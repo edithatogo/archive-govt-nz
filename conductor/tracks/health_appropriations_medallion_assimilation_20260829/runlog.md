@@ -10325,3 +10325,29 @@ lock, Conductor, format, lint, strict typing, schema and medallion-mutation
 gates. Health snapshot inputs, review pins and output projections are unchanged;
 prior native/recovery evidence remains applicable. Required hosted assurance
 must run again on the integrated head under the unchanged strict branch rule.
+
+## 2026-10-28 — Qualified metadata verification and approved publisher repair
+
+Added a read-only v1/v2/v3 reconstruction verifier and strict receipt schema.
+Focused contracts reject rehashed blanket licences, unreviewed federation and
+unknown packet members. Original inputs and retained metadata remain untouched.
+Prepared a separately gated GitHub Actions checksum-only job under explicit
+maintainer approval; no local upload or collection is authorized. Publication,
+native readback and protected delivery are recorded only after completion.
+See `qualified-metadata-verification-20261028.md` and paired JSON.
+
+Local validation completed: 8,619 passed, 14 skipped, 96.53% coverage with the
+80% floor unchanged; all schemas, parity, mutation, hygiene, benchmark and
+supply-chain gates pass. Preserved transient connectivity failures and resumed
+only the SBOM after the interruption. PRs #799/#800 integrated with 9/14
+affected contracts passing. Hosted read-only inspection 40614016612 passed
+and retained the exact approved digest; harvesting/publication were skipped.
+Protected checks and the separately approved checksum write remain pending.
+
+Publisher execution 40624342357 stopped at the legacy-role permission guard,
+before any commit. Read-only qualification 40624633658 demonstrated the same
+existing principal's owner-scoped fine-grained `repo.write` grant. Added support
+for that evidenced shape without credential/permission changes. Seven focused
+contracts pass, including wrong-account/read-only rejection and private-scope
+filtering. Retained the failed run and all previously passing assurance; final
+protected Actions and the approved hosted correction remain required.

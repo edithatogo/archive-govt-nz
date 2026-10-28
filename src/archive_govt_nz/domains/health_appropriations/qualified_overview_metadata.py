@@ -7,6 +7,7 @@ import hashlib
 import json
 from dataclasses import dataclass
 from io import BytesIO
+from itertools import islice
 from typing import TYPE_CHECKING, Any
 
 import pyarrow.parquet as pq
@@ -511,6 +512,44 @@ def project_qualified_overview_discovery(
     return result
 
 
+def _metadata_packet(
+    values: tuple[QualifiedOverviewInput, ...],
+    *,
+    include_discovery: bool,
+    partner_snapshots: tuple[PartnerSnapshot, ...],
+) -> tuple[dict[str, bytes], dict[str, str]]:
+    _require(type(include_discovery) is bool and type(partner_snapshots) is tuple)
+    _require(not partner_snapshots or include_discovery)
+    payloads = (
+        project_qualified_overview_discovery(
+            values, partner_snapshots=partner_snapshots
+        )
+        if include_discovery
+        else project_qualified_overview_metadata(values)
+    )
+    pins = {
+        name: hashlib.sha256(payload).hexdigest() for name, payload in payloads.items()
+    }
+    packet = {
+        **payloads,
+        "MANIFEST.json": _json(
+            {
+                "schema_version": (
+                    _SCHEMA.removesuffix("v1") + "v3"
+                    if partner_snapshots
+                    else _SCHEMA.removesuffix("v1") + "v2"
+                    if include_discovery
+                    else _SCHEMA
+                ),
+                "output_sha256": pins,
+                "publication": "not_performed",
+                "full_conformance": "not_asserted",
+            }
+        ),
+    }
+    return packet, pins
+
+
 def export_qualified_overview_metadata(
     values: tuple[QualifiedOverviewInput, ...],
     output: Path,
@@ -537,35 +576,72 @@ def export_qualified_overview_metadata(
         _safe(snapshot.root)
         a, b = output.resolve(), snapshot.root.resolve()
         _require(not a.is_relative_to(b) and not b.is_relative_to(a))
-    payloads = (
-        project_qualified_overview_discovery(
-            values, partner_snapshots=partner_snapshots
-        )
-        if include_discovery
-        else project_qualified_overview_metadata(values)
+    packet, pins = _metadata_packet(
+        values, include_discovery=include_discovery, partner_snapshots=partner_snapshots
     )
-    pins = {
-        name: hashlib.sha256(payload).hexdigest() for name, payload in payloads.items()
-    }
     output.mkdir(exist_ok=False)
-    for name, payload in {
-        **payloads,
-        "MANIFEST.json": _json(
-            {
-                "schema_version": (
-                    _SCHEMA.removesuffix("v1") + "v3"
-                    if partner_snapshots
-                    else _SCHEMA.removesuffix("v1") + "v2"
-                    if include_discovery
-                    else _SCHEMA
-                ),
-                "output_sha256": pins,
-                "publication": "not_performed",
-                "full_conformance": "not_asserted",
-            }
-        ),
-    }.items():
+    for name, payload in packet.items():
         with (output / name).open("xb") as stream:
             stream.write(payload)
         _require((output / name).read_bytes() == payload)
     return pins
+
+
+def verify_qualified_overview_metadata(
+    values: tuple[QualifiedOverviewInput, ...],
+    package: Path,
+    *,
+    manifest_sha256: str,
+    include_discovery: bool = False,
+    partner_snapshots: tuple[PartnerSnapshot, ...] = (),
+) -> dict[str, Any]:
+    """Reconstruct pinned metadata read-only; grant no release approval."""
+    _safe(package)
+    _require(package.is_dir())
+    _safe(package / "MANIFEST.json")
+    original = verified_snapshot(
+        package / "MANIFEST.json", manifest_sha256, max_bytes=_MAX_BYTES
+    )
+    expected, _ = _metadata_packet(
+        values, include_discovery=include_discovery, partner_snapshots=partner_snapshots
+    )
+    _require(
+        {p.name for p in islice(package.iterdir(), len(expected) + 1)} == set(expected)
+    )
+    _require(original == expected["MANIFEST.json"])
+    for name, payload in expected.items():
+        _safe(package / name)
+        observed = verified_snapshot(
+            package / name, hashlib.sha256(payload).hexdigest(), max_bytes=_MAX_BYTES
+        )
+        _require(observed == payload)
+    _require(
+        verified_snapshot(
+            package / "MANIFEST.json", manifest_sha256, max_bytes=_MAX_BYTES
+        )
+        == original
+    )
+    mismatches = None
+    if partner_snapshots:
+        evidence = json.loads(expected["partner_snapshots.json"])
+        mismatches = sum(
+            c["status"] == "mismatch"
+            for p in evidence["partners"]
+            for c in p["publisher_control_observations"]
+        )
+    return {
+        "schema_version": "archive-govt-nz.qualified-overview-metadata-verification/v1",
+        "status": "verified_reconstruction",
+        "manifest_sha256": manifest_sha256,
+        "metadata_schema_version": json.loads(original)["schema_version"],
+        "files": len(expected),
+        "source_profiles": len(values),
+        "partner_snapshots": len(partner_snapshots),
+        "publisher_checksum_mismatches": mismatches,
+        "scope": (
+            "pinned_source_rights_and_metadata_reconstruction_not_release_approval"
+        ),
+        "publication": "not_performed",
+        "release_readiness": "not_assessed",
+        "full_conformance": "not_asserted",
+    }
