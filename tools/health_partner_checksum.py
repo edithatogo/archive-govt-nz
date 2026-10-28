@@ -147,16 +147,41 @@ def permission_summary(identity: dict[str, Any]) -> dict[str, Any]:
                 {
                     "entity": entity.get("name"),
                     "type": entity.get("type"),
-                    "permissions": grant.get("permissions", []),
+                    "permissions": [
+                        p
+                        for p in grant.get("permissions", [])
+                        if p in {"repo.write", "repo.content.read", "repo.access.read"}
+                    ],
                 }
             )
     return {
         "account_matches": identity.get("name") == "edithatogo",
         "token_role": token.get("role"),
-        "global_permissions": fine.get("global", []),
+        "global_permissions": [
+            p
+            for p in fine.get("global", [])
+            if p in {"repo.write", "repo.content.read", "repo.access.read"}
+        ],
         "target_scopes": scoped,
         "publication": "not_performed",
     }
+
+
+def write_guard(identity: dict[str, Any]) -> None:
+    """Qualify the observed owner-scoped fine-grained repo.write grant."""
+    summary = permission_summary(identity)
+    role = summary["token_role"]
+    owner_grant = any(
+        g["entity"] == "edithatogo"
+        and g["type"] == "user"
+        and "repo.write" in g["permissions"]
+        for g in summary["target_scopes"]
+    )
+    if not summary["account_matches"] or not (
+        role == "write" or (role == "fineGrained" and owner_grant)
+    ):
+        msg = "checksum_correction_write_permission_unqualified"
+        raise ValueError(msg)
 
 
 def main() -> None:
@@ -212,14 +237,8 @@ def main() -> None:
                 token = os.environ["HF_TOKEN"]
                 api = HfApi(token=token)
                 identity = api.whoami(cache=False)
-                if (
-                    identity.get("name") != "edithatogo"
-                    or identity.get("auth", {}).get("accessToken", {}).get("role")
-                    != "write"
-                ):
-                    msg = "checksum_correction_write_permission_unqualified"
-                    raise ValueError(msg)
-                # Exactly one request. On response uncertainty inspect; never resend.
+                write_guard(identity)
+                # One commit invocation; inspect uncertain responses without resending.
                 try:
                     commit = api.create_commit(
                         REPO,

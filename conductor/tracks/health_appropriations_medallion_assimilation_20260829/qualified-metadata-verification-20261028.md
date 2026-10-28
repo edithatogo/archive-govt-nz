@@ -54,3 +54,14 @@ unchanged full-suite evidence is retained and final hosted assurance is required
 Hosted read-only inspection run 40614016612 at `d95352db` passed, retained the
 approved correction bytes and skipped the entire harvest/publication job.
 This qualifies preparation on the Python 3.15.1 runner, not a publisher write.
+
+All five required checks passed on `66dee553`. Hosted correction run
+40624342357 then stopped before `create_commit`: the first guard accepted
+legacy `write` tokens only. Read-only qualification run 40624633658 proved
+the existing account matches and its fine-grained user/owner scope includes
+`repo.write` for `edithatogo`. The corrected guard accepts this evidenced
+shape, rejects read-only/unrelated-account scopes, and filters private targets
+and unrelated permissions out of its diagnostic receipt. No credential or
+permission was changed; no commit was sent by the failed run. Seven affected
+contracts, format, lint and strict typing pass. Unchanged full-suite and native
+metadata evidence are reused; fresh exact-head protected assurance is required.

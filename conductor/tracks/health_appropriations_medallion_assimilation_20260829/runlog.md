@@ -10343,3 +10343,11 @@ only the SBOM after the interruption. PRs #799/#800 integrated with 9/14
 affected contracts passing. Hosted read-only inspection 40614016612 passed
 and retained the exact approved digest; harvesting/publication were skipped.
 Protected checks and the separately approved checksum write remain pending.
+
+Publisher execution 40624342357 stopped at the legacy-role permission guard,
+before any commit. Read-only qualification 40624633658 demonstrated the same
+existing principal's owner-scoped fine-grained `repo.write` grant. Added support
+for that evidenced shape without credential/permission changes. Seven focused
+contracts pass, including wrong-account/read-only rejection and private-scope
+filtering. Retained the failed run and all previously passing assurance; final
+protected Actions and the approved hosted correction remain required.

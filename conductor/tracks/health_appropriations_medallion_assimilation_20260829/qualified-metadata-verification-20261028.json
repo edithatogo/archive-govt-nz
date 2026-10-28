@@ -8,7 +8,12 @@
     "path": "SHA256SUMS",
     "approved_sha256": "b0ca284d64824f14e8ddb4a618917dba87114ddac9ea3cf99c4e9b0d3336e00d",
     "approval": "explicit_maintainer_checksum_only",
-    "publication": "pending_hosted_execution"
+    "publication": "pending_hosted_execution",
+    "first_hosted_run": {
+      "run_id": 40624342357,
+      "status": "stopped_before_commit",
+      "reason": "legacy_write_role_guard_did_not_accept_fine_grained_shape"
+    }
   },
   "release_readiness": "not_assessed",
   "full_conformance": "not_asserted",
@@ -89,6 +94,17 @@
     "main_799_affected_tests": 9,
     "main_800_affected_tests": 14,
     "continuation": "interrupted_after_secret_scan_resumed_sbom_only",
-    "protected_actions": "pending"
+    "protected_actions": "pending",
+    "focused_publisher_contracts_after_permission_fix": 7
+  },
+  "publisher_permission_qualification": {
+    "run_id": 40624633658,
+    "account_matches": true,
+    "role": "fineGrained",
+    "owner_entity": "edithatogo",
+    "entity_type": "user",
+    "permission": "repo.write",
+    "publication": "not_performed",
+    "credential_changes": "none"
   }
 }

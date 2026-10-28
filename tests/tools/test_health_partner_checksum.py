@@ -171,3 +171,44 @@ def test_checksum_job_cannot_start_harvest_or_notifications() -> None:
         for i, s in enumerate(steps)
         if s.get("name") == "Retain correction intent before any mutation"
     ) < steps.index(writer)
+
+
+def test_fine_grained_owner_write_and_private_scope_filter() -> None:
+    """Accept owner write; exclude private targets and read-only grants."""
+    from typing import Any  # noqa: PLC0415
+
+    identity: dict[str, Any] = {
+        "name": "edithatogo",
+        "auth": {
+            "accessToken": {
+                "role": "fineGrained",
+                "fineGrained": {
+                    "global": ["discussion.write"],
+                    "scoped": [
+                        {
+                            "entity": {"name": "edithatogo", "type": "user"},
+                            "permissions": ["repo.write", "user.billing.read"],
+                        },
+                        {
+                            "entity": {"name": "private/other", "type": "dataset"},
+                            "permissions": ["repo.write"],
+                        },
+                    ],
+                },
+            }
+        },
+    }
+    correction.write_guard(identity)
+    summary = correction.permission_summary(identity)
+    assert summary["global_permissions"] == []
+    assert summary["target_scopes"] == [
+        {"entity": "edithatogo", "type": "user", "permissions": ["repo.write"]}
+    ]
+    grants = identity["auth"]["accessToken"]["fineGrained"]["scoped"]
+    grants[0]["permissions"] = ["repo.content.read"]
+    with pytest.raises(ValueError, match="write_permission_unqualified"):
+        correction.write_guard(identity)
+    identity["auth"]["accessToken"]["role"] = "write"
+    identity["name"] = "another-user"
+    with pytest.raises(ValueError, match="write_permission_unqualified"):
+        correction.write_guard(identity)
