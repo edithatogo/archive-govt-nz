@@ -148,3 +148,18 @@ the corrected recovery passes. Public metadata reads now have a supported explic
 SDK timeout and minimal fields; unknown visibility flags fail closed. The initial
 public pointer remains disabled with no snapshot or new report acquisition.
 Complete initialization before any cloud pilot or activation.
+
+P7 technical native acceptance is complete: green-check PR795/797 delivery,
+957-object anonymous cold restore, exact checkpoint-linked cancellation recovery,
+ten real report originals published and independently hash-verified, unchanged
+maintained card, and explicit public hosted authority activation. The heartbeat
+now monitors/reviews without local acquisition. No unqualified body or SDK log
+was published; all eight selective derivatives and remaining holds are unchanged.
+Keep this unfinished parent active for rights, coverage and natural recurrence.
+
+Scheduled-path review found a required fix after manual qualification: native
+schedule40598353582 failed argparse before a receipt could be created because
+`condition && 0 || absent_input` selects the empty input. Replace that expression
+with a string-zero default. Manual native proof remains valid; natural scheduling
+is not accepted. Manual enabled continuation40606566606 was separately dispatched
+with explicit numeric inputs while this fix passes delivery. No local writer runs.

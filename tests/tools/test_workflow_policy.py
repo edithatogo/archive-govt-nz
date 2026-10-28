@@ -205,3 +205,18 @@ def test_parliament_handover_requires_trusted_serial_execution() -> None:
     assert '"$OPERATION"' in continuation["run"]
     assert '--max-batches "$MAX_BATCHES"' in continuation["run"]
     assert job["env"]["HF_HUB_DISABLE_XET"] == "1"
+
+
+def test_parliament_schedule_has_numeric_hold_default_without_dispatch_inputs() -> None:
+    """Cron has no inputs; a falsey numeric zero must not select an empty input."""
+    root = Path(__file__).parents[2]
+    workflow = yaml.safe_load(
+        (root / ".github/workflows/parliament-continuation.yml").read_text()
+    )
+    continuation = next(
+        step
+        for step in workflow["jobs"]["continue"]["steps"]
+        if step.get("name") == "Restore and continue approved reports"
+    )
+    assert continuation["env"]["HOLD_SECONDS"] == "${{ inputs.hold_seconds || '0' }}"
+    assert '--hold-seconds "$HOLD_SECONDS"' in continuation["run"]
