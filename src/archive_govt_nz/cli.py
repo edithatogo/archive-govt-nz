@@ -43,6 +43,9 @@ from archive_govt_nz.domains.health_appropriations.canonical_gold_verification i
 from archive_govt_nz.domains.health_appropriations.capture_inventory_operations import (
     reconcile_capture_inventory,
 )
+from archive_govt_nz.domains.health_appropriations.capture_schedule import (
+    preflight_plan,
+)
 from archive_govt_nz.domains.health_appropriations.compatibility_export import (
     export_compatibility,
 )
@@ -418,6 +421,20 @@ def health_appropriations_query_canonical_gold(
     )
     _emit_json({"command": "health-appropriations-query-canonical-gold", **receipt})
     return 0 if receipt["status"] == "verified" else 2
+
+
+@app.command(name="health-appropriations-preflight-capture-plan")
+def health_appropriations_preflight_capture_plan(
+    *, plan: Path, plan_sha256: str
+) -> int:
+    """Verify a pinned capture plan without network access or writes."""
+    try:
+        receipt = preflight_plan(plan, plan_sha256)[1]
+    except ValueError, OSError:
+        _emit_json({"status": "failed", "error": "capture_plan_invalid"})
+        return 2
+    _emit_json(receipt)
+    return 0
 
 
 @app.command(name="health-appropriations-run-normalization-plan")
