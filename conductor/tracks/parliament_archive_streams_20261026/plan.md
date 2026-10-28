@@ -147,3 +147,16 @@ P7 technical activation is verified in evidence/parliament-assurance/20261028/ho
 - [x] Merge scheduled-input correction01ffe237 after Ubuntu/macOS/Windows, CodeQL, lint and patch coverage checks pass.
 - [x] Recover the first continuous-run unknown checkpoint outcome before further acquisition; retain original failed receipts and staged snapshot.
 - [x] Preserve bounded HTTP status/Retry-After in sanitized receipts without replaying native mutations or exposing SDK diagnostics; qualify and deliver the fix.
+
+### P7 exact report access holds
+
+Native continuation40621708833 subsequently paused on one terminal source HTTP
+failure after six accepted originals on historicalpage83. The failed source is
+report-b43436d5-987e-40e9-2ea9-08dd6d718a5c; its actual HTTP code was not retained.
+This is a new operational finding after the previous recovery acceptance.
+
+- [~] Publish the six already accepted originals before another acquisition; preserve three pending records and the exact failed record.
+- [ ] Add a bounded, operator-approved hold for one unchanged report attachment using its immutable native failure snapshot/run evidence; no source re-probe, body publication or licence grant.
+- [ ] Keep held records failed/explicit, stop every unreviewed failure, and prevent unchanged held URLs being fetched again after metadata refresh.
+- [ ] Test typed proof export/cold restore, stale/version/scope rejection, source non-fetch, and continued eligible queue processing; complete required assurance/review and green-check delivery.
+- [ ] Qualify one native hold, independently verify its public proof, then resume eligible backfill with the held original excluded from capture/completeness counts.

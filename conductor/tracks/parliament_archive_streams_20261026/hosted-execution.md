@@ -146,3 +146,19 @@ its full conservative budget and verified a successor checkpoint. At that proof:
 818originals+1metadata-only,21verified batches,0pending/failed. Continuous dispatch
 40621708833 resumes bounded work. Native receipts remain authoritative; these
 manual dispatches do not prove natural recurrence or complete historical coverage.
+
+## Reviewed source-access isolation
+
+A single terminal attachment response must not silently become archive success,
+receive a blind retry, or indefinitely block other eligible originals. A manual
+trusted-main hold operation may use one exact immutable failure snapshot and its
+native failed workflow receipt. Current report metadata must still match. The
+operation makes no Parliament request and grants no publication or reuse right.
+A bounded own-metadata proof is retained through the existing CAS/event index.
+
+The driver keeps that report failed and explicitly counts the reviewed exclusion.
+It blocks the same source URL even when surrounding metadata refreshes. Other
+unreviewed failures continue to stop the lane. A different attachment is not
+covered by the previous hold; a mixed attachment set containing the held URL
+requires further review. Original failures and missing-original coverage remain
+visible. Publication recovery precedes hold approval and further acquisition.
