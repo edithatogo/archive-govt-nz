@@ -1,0 +1,32 @@
+{
+  "schema_version": "parliament-native-evidence-entropy-resolution/v1",
+  "observed_at": "2026-10-28T06:17:30.807639+00:00",
+  "hosted_run": 40640404171,
+  "affected_candidate": "0f36f21c3eaff1f83c34610185f56f420ed5481f",
+  "finding": {
+    "file": "evidence/parliament-assurance/20261028/access-hold-native-acceptance.json",
+    "original_line": 126,
+    "detector": "Base64 High Entropy String",
+    "public_reference_parts": [
+      "parliament",
+      "checkpoint-objects",
+      "37",
+      "37f4189a37765ed53a9f2599eb44c72691e132c4b02ece50712631e26db0b7b6"
+    ],
+    "payload_sha256": "37f4189a37765ed53a9f2599eb44c72691e132c4b02ece50712631e26db0b7b6"
+  },
+  "qualification": {
+    "native_hold_run": 40638106153,
+    "independent_anonymous_pinned_downloads": 3,
+    "verified_public": true,
+    "verified_ungated": true
+  },
+  "fix": "lossless_path_parts_encoding_in_derived_evidence_only",
+  "original_receipts_preserved": true,
+  "original_payloads_changed": false,
+  "production_code_changed": false,
+  "scan_policy_changed": false,
+  "new_exemption_added": false,
+  "initial_local_scan_limitation": "new_generated_receipt_was_not_yet_git_tracked",
+  "required_correction": "stage_generated_evidence_before_its_final_secret_scan"
+}
