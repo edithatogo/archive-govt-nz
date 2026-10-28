@@ -16,6 +16,9 @@ from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     LossAccounting,
     preserved_only,
 )
+from archive_govt_nz.domains.health_appropriations.context_dimensions import (
+    context_source_dimensions,
+)
 
 _PROFILES = {
     "befu-2026/v1": "nz-treasury-befu-2026-health-summary",
@@ -92,14 +95,20 @@ class ForecastHealthAdapter:
             LossAccounting("worksheet:" + row["sheet"], "preserved_only", row["reason"])
             for row in parsed.excluded_sheets
         )
+        records: tuple[dict[str, object], ...] = tuple(
+            {name: row.get(name) for name in forecast.SILVER_SCHEMA.names}
+            for row in parsed.facts
+        )
+        dimensions, links = context_source_dimensions(
+            records, lineage, family="forecast"
+        )
         return AdapterOutput(
-            records=tuple(
-                {name: row.get(name) for name in forecast.SILVER_SCHEMA.names}
-                for row in parsed.facts
-            ),
+            records=records,
             losses=losses,
             lineage=lineage,
             layout=self.profile,
+            dimensions=dimensions,
+            dimension_links=links,
         )
 
 

@@ -77,6 +77,32 @@ def test_common_forecast_matches_native_rows_lineage_and_loss_accounting(
     assert result.output.layout == profile
     assert list(result.output.records) == facts
     assert len(result.output.records) == 10
+    assert len(result.output.dimensions) == 15
+    assert len(result.output.dimension_links) == 50
+    assert {mapping.dimension.kind for mapping in result.output.dimensions} == {
+        "functional_classification",
+        "measure",
+        "amount_type",
+        "unit",
+        "period",
+    }
+    assert all(
+        mapping.target is None and mapping.unresolved_reason
+        for mapping in result.output.dimensions
+    )
+    assert {
+        mapping.dimension.label
+        for mapping in result.output.dimensions
+        if mapping.dimension.kind == "unit"
+    } == {"($millions)"}
+    assert all(
+        mapping.source_references
+        and mapping.source_references[0].startswith("sha256:" + digest + "#")
+        for mapping in result.output.dimensions
+    )
+    assert {link.source_record_id for link in result.output.dimension_links} == {
+        str(row["record_id"]) for row in facts
+    }
     assert [row["amount_type"] for row in result.output.records] == ["Actual"] * 5 + [
         "Forecast"
     ] * 5
@@ -146,6 +172,10 @@ def test_common_forecast_retains_rejected_formula_without_claiming_operation_pas
         result.selection.status == "selected"
     )  # Selection is not successful normalization.
     assert len(result.output.records) == 9
+    assert len(result.output.dimension_links) == 45
+    assert {link.source_record_id for link in result.output.dimension_links} == {
+        str(row["record_id"]) for row in result.output.records
+    }
     assert (
         sum(loss.reason == "formula_not_evaluated" for loss in result.output.losses)
         == 1

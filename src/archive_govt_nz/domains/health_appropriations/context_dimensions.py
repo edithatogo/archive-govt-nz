@@ -18,13 +18,14 @@ _VERSION = "context-source-literal/v1"
 _UNKNOWN_FAMILY = "unknown_context_dimension_family"
 
 
-def _source_dimension(
+def _source_dimension(  # noqa: PLR0913 - explicit source assertion fields
     row: dict[str, object],
     *,
     scheme: str,
     kind: str,
     field: str,
     source: FieldLineage | None,
+    literal_source: bool = False,
 ) -> tuple[Mapping, DimensionLink] | None:
     """Build one assertion only when a source cell backs the literal."""
     value = row.get(field)
@@ -32,6 +33,10 @@ def _source_dimension(
         return None
     record_id = str(row["record_id"])
     value_text = str(value)
+    if literal_source:
+        if source.raw_value is None or not source.raw_value.strip():
+            return None
+        value_text = source.raw_value
     dimension_kind = kind
     if kind == "period":
         dimension_kind = "period"
@@ -81,6 +86,17 @@ def context_source_dimensions(
 ) -> tuple[tuple[Mapping, ...], tuple[DimensionLink, ...]]:
     """Retain source labels and periods as unresolved assertions with row links."""
     profiles = {
+        "forecast": (
+            "treasury_forecast_health_summary",
+            None,
+            "year",
+            (
+                ("functional_classification", "functional_classification"),
+                ("measure", "measure"),
+                ("amount_type", "amount_type"),
+                ("unit", "unit"),
+            ),
+        ),
         "cpi": (
             "stats_nz_cpi_series",
             "series_reference",
@@ -124,7 +140,12 @@ def context_source_dimensions(
         for kind, field in source_fields:
             source = lineage_by_record.get(record_id, {}).get(field)
             result = _source_dimension(
-                row, scheme=scheme, kind=kind, field=field, source=source
+                row,
+                scheme=scheme,
+                kind=kind,
+                field=field,
+                source=source,
+                literal_source=family == "forecast",
             )
             if result is None:
                 continue
