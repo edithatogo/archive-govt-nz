@@ -40,6 +40,9 @@ from archive_govt_nz.domains.health_appropriations.canonical_gold_queries import
 from archive_govt_nz.domains.health_appropriations.canonical_gold_verification import (
     verify_canonical_gold_package,
 )
+from archive_govt_nz.domains.health_appropriations.capture_inventory_operations import (
+    reconcile_capture_inventory,
+)
 from archive_govt_nz.domains.health_appropriations.compatibility_export import (
     export_compatibility,
 )
@@ -1005,6 +1008,25 @@ def health_appropriations_status(
             f"status={status['status']} manifests={status['manifest_count']}"
         )
     return 0 if status["status"] == "ready" else 1
+
+
+@app.command(name="health-appropriations-reconcile-capture-inventory")
+def health_appropriations_reconcile_capture_inventory(
+    censuses_json: str, captures_json: str = "[]"
+) -> int:
+    """Reconcile JSON arrays of named, hash-pinned inventory inputs."""
+    try:
+        receipt = reconcile_capture_inventory(
+            {
+                "censuses": json.loads(censuses_json),
+                "captures": json.loads(captures_json),
+            }
+        )
+    except ValueError, TypeError:
+        _emit_json({"status": "failed", "error": "inventory_reconciliation_failed"})
+        return 2
+    _emit_json(receipt)
+    return 0
 
 
 @app.command(name="health-appropriations-reconcile-source-layout")

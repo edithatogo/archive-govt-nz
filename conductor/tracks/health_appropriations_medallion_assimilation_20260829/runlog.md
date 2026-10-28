@@ -1,5 +1,17 @@
 # Run Log
 
+## 2026-10-29 — Phase 8 capture inventory operation ownership
+
+Owner: chat `01a09968-c894-77c3-be45-0c2db277bfc2`; checkout
+`/Users/doughnut/.codex/worktrees/health-phase8-integration-target/archive-govt-nz`,
+branch `codex/health-phase8-scheduled-lanes`. Codex created the worktree, but
+its registration and attachment failed at the attachment identity limit; use
+the explicit path. This lane owns the capture-inventory operation, its CLI/MCP
+integration, focused contracts and this track's corresponding evidence. Native
+scope: none; no scheduled dispatch, collection or publication. Next: implement
+the pinned read-only inventory reconciliation identified by the Phase 8 audit,
+then validate and deliver through the protected PR path.
+
 ## 2026-10-28 — Phase 7 checkpoint launch
 
 Root is the sole broad-validation owner in the metadata-contracts worktree.

@@ -21,14 +21,15 @@ from archive_govt_nz.domains.health_appropriations import (
     canonical_gold_queries as canonical_queries,
 )
 from archive_govt_nz.domains.health_appropriations import (
-    fiscal_analytical_operations as fiscal_analytics,
-)
-from archive_govt_nz.domains.health_appropriations import (
+    capture_inventory_operations,
     gold_metadata,
     operation_context_gold,
     operation_metadata,
     resume_operations,
     source_layout_operations,
+)
+from archive_govt_nz.domains.health_appropriations import (
+    fiscal_analytical_operations as fiscal_analytics,
 )
 from archive_govt_nz.domains.health_appropriations import (
     native_workbook_inspection as native_inspection,
@@ -114,6 +115,7 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
     budget_comparison.MCP_TOOL,
     native_inspection.MCP_TOOL,
     source_layout_operations.MCP_TOOL,
+    capture_inventory_operations.MCP_TOOL,
     {
         "name": "health_appropriations_preflight_context_gold",
         "description": (
@@ -1155,8 +1157,10 @@ def _archive_status(arguments: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def _health_read_only_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
-    if name == "health_appropriations_reconcile_source_layout":
+def _health_read_only_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:  # noqa: C901 - explicit read-only operation dispatch
+    if name == "health_appropriations_reconcile_capture_inventory":
+        result = capture_inventory_operations.reconcile_capture_inventory(args)
+    elif name == "health_appropriations_reconcile_source_layout":
         result = source_layout_operations.reconcile_source_layout_operation(args)
     elif name == "health_appropriations_preflight_context_gold":
         result = export_context_gold(
@@ -1293,6 +1297,7 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
     elif name in (
         "health_appropriations_inspect_workbook",
         "health_appropriations_reconcile_source_layout",
+        "health_appropriations_reconcile_capture_inventory",
         "health_appropriations_preflight_context_gold",
         "health_appropriations_preflight_source",
         "health_appropriations_verify_budget",
