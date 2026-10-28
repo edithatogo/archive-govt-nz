@@ -59,6 +59,9 @@ from archive_govt_nz.domains.health_appropriations.fiscal_analytical_operations 
     query_fiscal_analytical_gold,
 )
 from archive_govt_nz.domains.health_appropriations.gold_export import export_gold
+from archive_govt_nz.domains.health_appropriations.historical_gold_donor_control import (
+    reconcile_packages as reconcile_historical_gold,
+)
 from archive_govt_nz.domains.health_appropriations.inspection import inspect_workbook
 from archive_govt_nz.domains.health_appropriations.legacy_inspection import (
     inspect_legacy_workbook,
@@ -421,6 +424,33 @@ def health_appropriations_query_canonical_gold(
     )
     _emit_json({"command": "health-appropriations-query-canonical-gold", **receipt})
     return 0 if receipt["status"] == "verified" else 2
+
+
+@app.command(name="health-appropriations-reconcile-historical-gold")
+def health_appropriations_reconcile_historical_gold(
+    *,
+    gold_root: Path,
+    gold_manifest_sha256: str,
+    comparison_root: Path,
+    comparison_manifest_sha256: str,
+    dispositions_path: Path,
+    dispositions_sha256: str,
+) -> int:
+    """Reconcile pinned historical Gold and donor evidence without writes."""
+    try:
+        result = reconcile_historical_gold(
+            gold_root,
+            gold_manifest_sha256,
+            comparison_root,
+            comparison_manifest_sha256,
+            dispositions_path,
+            dispositions_sha256,
+        )
+    except ValueError, OSError:
+        _emit_json({"status": "failed", "error": "historical_gold_control_invalid"})
+        return 2
+    _emit_json(result)
+    return 0
 
 
 @app.command(name="health-appropriations-preflight-capture-plan")
