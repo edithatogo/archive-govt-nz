@@ -1,5 +1,6 @@
 {
   "code_sha256": {
+    "src/archive_govt_nz/domains/health_appropriations/gold_discovery_profiles.py": "08e939fb7283e0b8c4706b9574580432c37b34b6c74298c1c9f7e1a2c38af0d0",
     "src/archive_govt_nz/domains/health_appropriations/gold_metadata.py": "265d33b66190aeeee110852f23f92c6639564e4e93e93bd85c558e3629e7eb96",
     "tools/health_recovery_assurance.py": "e2292df38192461a41f1503b210f72d29324d844949fd1962bdc43428584808b"
   },
@@ -93,6 +94,14 @@
     "status": "verified"
   },
   "full_standards_conformance": "not_asserted",
+  "operation_context_discovery": {
+    "compatibility": "Preserve existing CLI GoldInput import while sharing MetadataInput annotations.",
+    "final_static_contract": "passed",
+    "fix": "share MetadataInput union across discovery entry points; emitted profiles unchanged",
+    "focused_roundtrip": "passed",
+    "initial_static_contract": "two reportArgumentType failures for OperationContextGoldInput",
+    "recordsets_verified": 13
+  },
   "phase7_completion": "not_asserted",
   "publication": "not_performed",
   "python": "3.15.1",
@@ -282,6 +291,7 @@
     "full_tests_passed": 8633,
     "full_tests_skipped": 14,
     "hosted": "pending",
+    "post_harness_operation_contract": "Typed discovery API alignment; one affected export/readback test and type check passed; no serialization change.",
     "representative_documents": 79,
     "schemas": 89
   }

@@ -11,7 +11,7 @@ The earlier metadata-contract worktree is preserved separately.
 | Fiscal analytical nominal/share/per-capita/CPI tables | Gold metadata v3 plus discovery v1 | Unchanged |
 | Budget vintage comparison | Gold metadata v3 plus discovery v1 | Unchanged |
 | Canonical source-separated historical, classification, Crown, MoH, Pharmac and admitted Budget tables | Gold metadata v4 plus discovery v1 | Unchanged |
-| Operation-context source-separated observations, coverage and quality | Gold metadata v5, source-regenerated verification | Unchanged |
+| Operation-context source-separated observations, coverage and quality | Gold metadata v5, source-regenerated verification | Discovery now accepts the shared typed input union; 13-recordset export/readback verified |
 | Vote Health financial activity and lineage | Gold metadata v6 | Unchanged |
 | Five rights-qualified Vote Health headline editions | Qualified overview metadata v2/v3, cards, citations, source references | Unchanged; resource-specific rights retained |
 | Native contextual Gold, including both GDP vintages | No common Platinum package | New opt-in Gold metadata v7 and existing discovery v1 |
@@ -60,3 +60,9 @@ families without changing the prior combined-metadata package.
 
 Focused regression, schema/static checks and final harness/protected delivery
 are recorded in the runlog and delivery evidence as they become terminal.
+
+Final coverage audit also caught the discovery entry points' narrower `GoldInput`
+annotation excluding source-regenerated operation inputs. A failing type contract
+preceded the correction to shared `MetadataInput`; one affected test verifies all
+13 recordsets and export/readback. This changes the supported typed call contract,
+not existing serialization or rights assertions.

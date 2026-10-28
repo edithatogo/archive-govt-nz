@@ -10376,3 +10376,14 @@ will verify the exact committed tree. Native supplemental combined recovery
 matched both runs. Existing financial-activity v6 also rebuilt and reconstructed
 identically from the exact 2014/15 Bronze profile; an earlier exploratory use of
 the 2012/13 Silver edition was correctly rejected, preserved and not admitted.
+
+Final coverage audit: discovery's typed API excluded `OperationContextGoldInput`.
+Two static argument-contract failures reproduced; aligned all discovery entry
+points with the existing shared `MetadataInput` union. The affected operation
+metadata test passes, including discovery roundtrip and 13 recordsets; targeted
+typing passes. Earlier serialized/native evidence is unchanged. Push this final
+head before accepting hosted checks; superseded checks cannot authorize merge.
+
+Whole-repository typing caught the existing CLI re-export of `GoldInput`;
+retained that import contract. Corrected typing, lint, format, Conductor and
+schema gates pass. No historical profile bytes changed.
