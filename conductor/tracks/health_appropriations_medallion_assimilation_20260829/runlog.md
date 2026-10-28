@@ -10475,6 +10475,27 @@ SBOM gates passed. Detailed input/output pins are in
 Phase 8 command-matrix, scheduled capture/normalization and Phase 8/9 gates stay
 open.
 
+## 2026-10-29 — PR #810 review correction and active ownership
+
+The automated review found an MCP output-schema mismatch for the Bronze
+workbook recheck receipt. The regression failed on the Bronze profile before
+the fix and now passes with the standard profile: 7 focused operation tests
+pass; Ruff check/format, typing, schema validation (95 schemas/85 documents),
+and `git diff --check` pass. The correction is local and pushed delivery is
+pending; no fresh hosted assurance has run on the corrected head.
+
+Active owner: chat `01a09968-c894-77c3-be45-0c2db277bfc2`; actual checkout
+`/Volumes/PortableSSD/GitHub/archive-govt-nz-phase8-20261028`. Owned paths are
+`src/archive_govt_nz/domains/health_appropriations/source_layout_operations.py`,
+`tests/domains/health_appropriations/test_source_layout_operations.py`, and the
+Phase 8 operation evidence/runlog. Native scope: none; only repository-local
+code/evidence and read-only GitHub PR #810 checks/review state. Next operation:
+finish the affected checks, commit and push this correction, resolve the
+addressed review thread, wait for fresh required Actions, merge through normal
+protection, verify the merge on `origin/main`, and prune this owned checkout
+only after confirming it has no unique changes. Then take the next bounded
+Phase 8 scheduled capture/normalization task in an isolated worktree.
+
 Terminal broad assurance: `./scripts/validate.sh` returned 0 on the frozen
 federation implementation; 8,667 passed / 14 capability skips, 91 schemas /
 81 representative documents, parity 9/9 and all mutation, hygiene, benchmark,

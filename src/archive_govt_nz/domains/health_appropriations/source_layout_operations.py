@@ -226,6 +226,7 @@ _WORKBOOK_REPORT_SCHEMA = {
                 "layout_source_count": _COUNT_SCHEMA,
                 "recheck_layout_rows_unchanged": {"const": True},
                 "pinned_parser": {"type": "object"},
+                "recheck_parser": {"type": "object"},
             },
             [
                 "sha256",
@@ -233,6 +234,7 @@ _WORKBOOK_REPORT_SCHEMA = {
                 "layout_source_count",
                 "recheck_layout_rows_unchanged",
                 "pinned_parser",
+                "recheck_parser",
             ],
         ),
     ]

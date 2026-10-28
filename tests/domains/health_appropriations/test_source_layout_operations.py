@@ -24,12 +24,19 @@ TRACK = (
 TOOL = "health_appropriations_reconcile_source_layout"
 
 
-def _inputs(tmp_path: Path, *, include_text: bool = False) -> dict[str, str]:
+def _inputs(
+    tmp_path: Path, *, include_text: bool = False, bronze_workbook: bool = False
+) -> dict[str, str]:
+    workbook_baseline = (
+        TRACK / "bronze-workbook-layout-baseline-20261024.json"
+        if bronze_workbook
+        else TRACK / "source-layout-baseline-20261003.json"
+    )
     sources = {
         "census": TRACK / "source-census.json",
-        "workbook_baseline": TRACK / "source-layout-baseline-20261003.json",
+        "workbook_baseline": workbook_baseline,
         "pdf_baseline": TRACK / "source-pdf-layout-baseline-20261018.json",
-        "workbook_recheck": TRACK / "source-layout-baseline-20261003.json",
+        "workbook_recheck": workbook_baseline,
         "pdf_recheck": TRACK / "source-pdf-layout-baseline-20261018.json",
     }
     if include_text:
@@ -49,10 +56,14 @@ def _inputs(tmp_path: Path, *, include_text: bool = False) -> dict[str, str]:
     return arguments
 
 
+@pytest.mark.parametrize("workbook_profile", ["silver", "bronze"])
 def test_cli_and_mcp_return_the_same_compact_read_only_receipt(
-    tmp_path: Path, capsys: pytest.CaptureFixture[str]
+    tmp_path: Path,
+    capsys: pytest.CaptureFixture[str],
+    workbook_profile: str,
 ) -> None:
-    arguments = _inputs(tmp_path)
+    bronze_workbook = workbook_profile == "bronze"
+    arguments = _inputs(tmp_path, bronze_workbook=bronze_workbook)
     before = {path.name: path.read_bytes() for path in tmp_path.iterdir()}
 
     mcp = call_tool(TOOL, arguments)
@@ -66,10 +77,19 @@ def test_cli_and_mcp_return_the_same_compact_read_only_receipt(
     assert mcp["schema_version"] == "archive-govt-nz.health-source-layout-operation/v1"
     assert mcp["status"] == "reconciled"
     assert mcp["summary"]["captured_source_count"] == 75
-    assert mcp["summary"]["sources_without_structural_baseline"] == 10
-    assert len(mcp["unassessed_sources"]) == 10
+    expected_unassessed = 4 if bronze_workbook else 10
+    assert mcp["summary"]["sources_without_structural_baseline"] == expected_unassessed
+    assert len(mcp["unassessed_sources"]) == expected_unassessed
     assert len(mcp["source_ids"]) == 75
     assert mcp["source_ids"] == sorted(mcp["source_ids"])
+    if bronze_workbook:
+        assert mcp["pinned_reports"]["workbook"]["basis"] == (
+            "verified_bronze_structure"
+        )
+        assert (
+            mcp["pinned_reports"]["workbook"]["pinned_parser"]
+            == mcp["pinned_reports"]["workbook"]["recheck_parser"]
+        )
     assert all("url" not in row for row in mcp["unassessed_sources"])
     assert all("sha256" in row for row in mcp["inputs"].values())
     assert {path.name: path.read_bytes() for path in tmp_path.iterdir()} == before

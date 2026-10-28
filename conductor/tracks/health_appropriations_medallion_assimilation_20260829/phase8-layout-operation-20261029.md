@@ -55,3 +55,19 @@ unassessed, demonstrating that the optional text evidence is accounted for.
 This evidence closes only the bounded interface task. Hosted PR delivery and
 the remaining Phase 8 command matrix, scheduled capture/normalization, recovery,
 and overall Health track gates remain open.
+
+## PR review correction — Bronze recheck parser
+
+Automated review of PR #810 found that the Bronze workbook reconciliation
+receipt contains both `pinned_parser` and `recheck_parser`, while the MCP
+output schema allowed only the former. The new Bronze-backed CLI/MCP parity
+case reproduced the failure before the fix: MCP output validation rejected the
+valid receipt while the standard Silver-baseline case passed. The schema now
+requires both parser objects for the Bronze branch, and the regression checks
+that both entry points return the same receipt and parser evidence.
+
+After the correction, the focused operation file passed 7 tests; Ruff check and
+format passed; type checking reported zero errors, warnings, or notes; schema
+validation passed for 95 schemas and 85 representative documents; and
+`git diff --check` passed. These results cover the review correction only. A
+fresh PR head still needs all required hosted checks before merge.
