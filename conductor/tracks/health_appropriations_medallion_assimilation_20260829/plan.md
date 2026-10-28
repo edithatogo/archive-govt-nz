@@ -1553,9 +1553,14 @@ deliberately exercise version handling.
   preserve the existing two-package invocation. [M-14, M-15, M-18; AC-13, AC-14,
   AC-16]
 
-- [ ] Generate and validate metadata, cards, citations, changelogs, catalogue
+- [~] Generate and validate metadata, cards, citations, changelogs, catalogue
   and source drill-through records from actual layer manifests. [M-14, S-06;
   AC-14]
+  - [x] Cover native contextual Gold and Fiscal companion reports with opt-in
+    v7 metadata, exact per-payload inventories, scoped citations/changelogs/source
+    references and repeated native reconstruction. Reconcile all admitted product
+    families without claiming standards, rights or future-product coverage. See
+    `product-metadata-coverage-20261028.md` and paired JSON.
   - [x] Complete cards, scoped citations, snapshot changelog and source drill-through
     for the five qualified headline editions, with v2 opt-in output and unchanged
     v1 graph bytes. See `qualified-overview-discovery-20261027.md`.

@@ -10351,3 +10351,28 @@ for that evidenced shape without credential/permission changes. Seven focused
 contracts pass, including wrong-account/read-only rejection and private-scope
 filtering. Retained the failed run and all previously passing assurance; final
 protected Actions and the approved hosted correction remain required.
+
+## 2026-10-28 — Product metadata coverage
+
+Owner: this chat, isolated `codex/health-product-metadata-20261028` worktree.
+The separate metadata-contract prototype and primary dirty worktree are preserved.
+This chat owns the next broad/native validation launch for this frozen topic.
+Python `.venv/bin/python --version`: 3.15.1; locked sync succeeded.
+Observed unsupported-profile failures before implementing each new profile.
+Initial native contextual build exposed nullable statuses; retained failure,
+fixed with separate null counts, and qualified two fresh Bronze repeat builds.
+Two Fiscal report builds and all metadata/discovery readbacks are identical.
+Focused initial regression: 19 passed; final focused/static/schema checks and
+full `./scripts/validate.sh` are pending terminal evidence below. No publication.
+
+Terminal local evidence: `./scripts/validate.sh` returned 0; 8,633 passed,
+14 capability skips; schemas 89 / representative documents 79; parity 9/9;
+mutation, supply-chain, licence, secrets and independently validated SBOM passed.
+The broad candidate was held stable through tests; review then tightened only
+the new expanded-Parquet limit to 256 MiB. Three affected tests passed; final
+metadata/schema/static checks and native combined reconstruction pass. Reuse
+unchanged broad evidence rather than repeat all 8,633 locally; hosted assurance
+will verify the exact committed tree. Native supplemental combined recovery
+matched both runs. Existing financial-activity v6 also rebuilt and reconstructed
+identically from the exact 2014/15 Bronze profile; an earlier exploratory use of
+the 2012/13 Silver edition was correctly rejected, preserved and not admitted.
