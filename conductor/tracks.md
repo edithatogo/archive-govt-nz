@@ -9,6 +9,15 @@ below remain evidence of their original scope, not prerequisites for every relea
 
 ## Live recovery coordination — 29 October 2026
 
+30 October follow-up: the same chat/worktree owns branch
+`codex/legislation-discovery-auth`, the discovery request script and its focused
+regression test, plus the existing legislation secret/workflow. PR #830 is merged;
+Parliament's bounded manual run succeeded and its schedule is enabled. The PCO
+key recovered through the VUW CLI passed HTTP 200 and replaced the GitHub secret.
+Run `40925187367` exposed a separate bug: discovery omitted the authentication
+header. Next operation: validate and merge that bounded fix, then verify hosted
+discovery and its output. Other native ownership and expansion holds are unchanged.
+
 - Chat: `01a18773-d2f6-7582-9509-9f2588b5c84e`.
 - Worktree: `/Users/doughnut/.codex/worktrees/archive-completion/archive-govt-nz`.
 - Branch: `codex/live-archive-recovery`, based on merged `8568e811`.
