@@ -86,6 +86,12 @@ def context_source_dimensions(
 ) -> tuple[tuple[Mapping, ...], tuple[DimensionLink, ...]]:
     """Retain source labels and periods as unresolved assertions with row links."""
     profiles = {
+        "vote_overview": (
+            "treasury_vote_health_overview",
+            None,
+            "reference_period",
+            (),
+        ),
         "historical": (
             "treasury_historical_health_gdp",
             None,

@@ -183,8 +183,13 @@ def _project(
     output = result.output
     facts = list(output.records)
     ids = {row["record_id"] for row in facts}
+    _require(len(ids) == len(facts))
+    expected_dimensions, expected_links = adapters.overview_period_dimensions(
+        output.records, output.lineage
+    )
     _require(
-        len(ids) == len(facts) and not output.dimensions and not output.dimension_links
+        output.dimensions == expected_dimensions
+        and output.dimension_links == expected_links
     )
     _require(
         all(

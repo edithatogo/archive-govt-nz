@@ -152,6 +152,28 @@ def test_overview_adapter_preserves_qualification_lineage_and_all_pages(
         adapter.extract(payload, source_sha256="0" * 64)
 
 
+def test_overview_period_dimensions_require_literal_source_token(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    adapter, payload = _adapter_fixture(monkeypatch)
+    output = adapter.extract(payload, source_sha256=hashlib.sha256(payload).hexdigest())
+    assert not output.dimensions
+    row = output.records[0]
+    phrase = next(item for item in output.lineage if item.field == "source_phrase")
+    explicit = replace(
+        phrase,
+        raw_value="Vote Health in 2008/09",
+        normalized_value="Vote Health in 2008/09",
+    )
+    dimensions, links = adapters.overview_period_dimensions((row,), (explicit,))
+    assert len(dimensions) == len(links) == 1
+    assert dimensions[0].unresolved_reason
+    assert links[0].raw_value == "2008/09"
+    assert links[0].source_coordinate == phrase.source_coordinate
+    embedded = replace(explicit, raw_value="Vote Health in 12008/09")
+    assert adapters.overview_period_dimensions((row,), (embedded,)) == ((), ())
+
+
 @pytest.mark.parametrize(
     "mismatch", ["vintage", "hash", "page_count", "parser", "page"]
 )
