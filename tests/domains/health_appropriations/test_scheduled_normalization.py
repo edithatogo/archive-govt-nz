@@ -52,9 +52,30 @@ def test_drift_mode_has_distinct_identity_and_replay(
     for result, version in ((legacy, "/v1"), (updated, "/v2")):
         path = root / result["job_id"] / result["attempt"] / "output" / "MANIFEST.json"
         assert json.loads(path.read_bytes())["schema_version"].endswith(version)
-    assert scheduled_normalization.run_scheduled_normalization(
-        drift, root, dry_run=False
-    )["status"] == "reused"
+    assert (
+        scheduled_normalization.run_scheduled_normalization(drift, root, dry_run=False)[
+            "status"
+        ]
+        == "reused"
+    )
+
+
+def test_default_identity_retains_legacy_encoding(
+    source_request: SourceRequest,
+) -> None:
+    payload = {
+        "source": str(source_request.source.absolute()),
+        "profile": source_request.profile,
+        "sha256": source_request.expected_sha256,
+        "vintage": source_request.source_vintage,
+        "locator": source_request.source_locator,
+        "observed_at": source_request.observed_at,
+        "runtime_fingerprint": "runtime",
+    }
+    expected = hashlib.sha256(
+        json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
+    ).hexdigest()
+    assert scheduled_normalization._identity(source_request, "runtime") == expected  # noqa: SLF001
 
 
 def test_dry_run_write_replay_and_tamper_rejection(

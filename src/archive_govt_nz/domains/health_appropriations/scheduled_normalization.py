@@ -86,7 +86,7 @@ def _digest(path: Path, *, max_bytes: int = MAX_OUTPUT_BYTES) -> str:
 
 
 def _identity(request: SourceRequest, runtime_fingerprint: str) -> str:
-    payload = {
+    payload: dict[str, str | bool] = {
         "source": str(request.source.absolute()),
         "profile": request.profile,
         "sha256": request.expected_sha256,
