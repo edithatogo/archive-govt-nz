@@ -523,6 +523,7 @@ def health_appropriations_extract_source(
     source_locator: str,
     observed_at: str,
     dry_run: bool = True,
+    include_drift: bool = False,
 ) -> int:
     """Preflight an approved profile; --no-dry-run writes new local derivatives."""
     result = operate_source(
@@ -534,6 +535,7 @@ def health_appropriations_extract_source(
             source_vintage,
             source_locator,
             observed_at,
+            include_drift,
         ),
         dry_run=dry_run,
     )

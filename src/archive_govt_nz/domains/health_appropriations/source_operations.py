@@ -752,6 +752,7 @@ SOURCE_PREFLIGHT_INPUT_SCHEMA = {
     "properties": {
         "profile": {"enum": list(PROFILES)},
         "expected_sha256": _DIGEST,
+        "include_drift": {"type": "boolean"},
         **dict.fromkeys(
             ("source", "output_dir", "source_vintage", "source_locator", "observed_at"),
             _TEXT,
@@ -854,6 +855,7 @@ class SourceRequest:
     source_vintage: str
     source_locator: str
     observed_at: str
+    include_drift: bool = False
 
 
 def _validate(request: SourceRequest, *, dry_run: bool) -> None:
@@ -865,11 +867,15 @@ def _validate(request: SourceRequest, *, dry_run: bool) -> None:
         "source_vintage": request.source_vintage,
         "source_locator": request.source_locator,
         "observed_at": request.observed_at,
+        "include_drift": request.include_drift,
     }
     Draft202012Validator(SOURCE_PREFLIGHT_INPUT_SCHEMA).validate(arguments)
     locator = urlsplit(request.source_locator)
     if (
         not isinstance(dry_run, bool)
+        or (
+            request.include_drift and request.profile not in context_operations.PROFILES
+        )
         or locator.scheme != "https"
         or not locator.hostname
         or locator.username is not None
@@ -994,6 +1000,7 @@ def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile disp
             source_locator=context["source_locator"],
             observed_at=context["observed_at"],
             dry_run=dry_run,
+            include_drift=request.include_drift,
         )
     if request.profile == vote_health_revenue.ESTIMATES_2002_03_PROFILE:
         return vote_health_revenue.normalize_vote_health_estimates_revenue_2002_03(
@@ -1204,6 +1211,7 @@ def preflight_source(arguments: dict[str, Any]) -> dict[str, Any]:
             arguments["source_vintage"],
             arguments["source_locator"],
             arguments["observed_at"],
+            arguments.get("include_drift", False),
         )
         return operate_source(request, dry_run=True)
     except Exception:  # noqa: BLE001 - schema errors can contain sensitive input values
