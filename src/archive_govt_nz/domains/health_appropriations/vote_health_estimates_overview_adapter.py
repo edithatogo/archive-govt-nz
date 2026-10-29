@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import hashlib
+import re
 from dataclasses import dataclass
 from functools import partial
 from io import BytesIO
@@ -28,6 +29,9 @@ from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     LossAccounting,
     preserved_only,
 )
+from archive_govt_nz.domains.health_appropriations.context_dimensions import (
+    context_source_dimensions,
+)
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
     encode_json,
     identity,
@@ -37,7 +41,47 @@ from archive_govt_nz.domains.health_appropriations.workbook_common import (
 if TYPE_CHECKING:
     from collections.abc import Callable
 
+    from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
+        DimensionLink,
+    )
+    from archive_govt_nz.domains.health_appropriations.dimension_mapping import Mapping
+
 _MAX_BYTES = 8 * 1024 * 1024
+
+
+def overview_period_dimensions(
+    records: tuple[dict[str, object], ...], lineage: tuple[FieldLineage, ...]
+) -> tuple[tuple[Mapping, ...], tuple[DimensionLink, ...]]:
+    """Retain period tokens only when the matched source phrase contains them."""
+    phrases = {
+        item.record_id: item for item in lineage if item.field == "source_phrase"
+    }
+    period_lineage = []
+    for row in records:
+        record_id = row["record_id"]
+        if not isinstance(record_id, str):
+            continue
+        source = phrases.get(record_id)
+        period = row.get("reference_period")
+        if not isinstance(period, str) or not period or source is None:
+            continue
+        if source.raw_value is None or not re.search(
+            rf"(?<![0-9/]){re.escape(period)}(?![0-9/])", source.raw_value
+        ):
+            continue
+        period_lineage.append(
+            FieldLineage(
+                record_id=source.record_id,
+                field="reference_period",
+                source_coordinate=source.source_coordinate,
+                raw_value=period,
+                normalized_value=period,
+                rule="overview_source_period_token/v1",
+            )
+        )
+    return context_source_dimensions(
+        records, tuple(period_lineage), family="vote_overview"
+    )
 
 
 @dataclass(frozen=True, slots=True)
@@ -190,11 +234,16 @@ class ReviewedVoteHealthOverviewAdapter:
             )
             for page in range(1, self.profile.page_count + 1)
         )
+        dimensions, dimension_links = overview_period_dimensions(
+            tuple(records), tuple(lineage)
+        )
         return AdapterOutput(
             records=tuple(records),
             losses=losses,
             lineage=tuple(lineage),
             layout=self.profile.profile,
+            dimensions=dimensions,
+            dimension_links=dimension_links,
         )
 
 
