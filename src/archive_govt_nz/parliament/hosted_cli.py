@@ -118,6 +118,7 @@ def execute(args: argparse.Namespace) -> dict[str, object]:
         max_batches=args.max_batches,
         max_seconds=args.max_seconds,
         hold_seconds=args.hold_seconds,
+        recent_only=args.recent_only,
         transport=transport,
     )
 
@@ -141,6 +142,7 @@ def main() -> int:
     parser.add_argument("--state-dir", type=Path, required=True)
     parser.add_argument("--index", type=Path)
     parser.add_argument("--receipt", type=Path, required=True)
+    parser.add_argument("--recent-only", action="store_true")
     parser.add_argument("--max-batches", type=int, default=1)
     parser.add_argument("--max-seconds", type=int, default=10800)
     parser.add_argument("--hold-seconds", type=int, default=0)

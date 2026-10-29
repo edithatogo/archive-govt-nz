@@ -1,22 +1,21 @@
-"""Transport fallback contracts for the broader-health discovery command."""
+"""Read-only transport contracts for the broader-health discovery command."""
 
 from __future__ import annotations
 
+import asyncio
 import importlib.util
 from pathlib import Path
-from typing import Protocol, cast
+from typing import TYPE_CHECKING, Protocol, cast
 
-import pytest
+import httpx
 
-from archive_govt_nz.ckan.envelope import CkanProtocolError, CkanTransportError
+from archive_govt_nz.ckan.client import BoundedCkanClient
+
+if TYPE_CHECKING:
+    import pytest
 
 
 class _DiscoveryModule(Protocol):
-    @staticmethod
-    async def page_with_fallback(
-        client: object, params: dict[str, object]
-    ) -> tuple[object, str, dict[str, object] | None]: ...
-
     @staticmethod
     def validate_previous_fingerprints(
         previous: dict[str, object] | None,
@@ -29,58 +28,39 @@ assert _SPEC is not None
 assert _SPEC.loader is not None
 _MODULE = importlib.util.module_from_spec(_SPEC)
 _SPEC.loader.exec_module(_MODULE)
-page_with_fallback = cast(
-    "_DiscoveryModule", cast("object", _MODULE)
-).page_with_fallback
 previous_fingerprints = cast(
     "_DiscoveryModule", cast("object", _MODULE)
 ).validate_previous_fingerprints
 
 
-class _Client:
-    def __init__(self, failure: Exception) -> None:
-        self.failure = failure
-        self.get_calls: list[tuple[str, dict[str, object]]] = []
-
-    async def action(self, _action: str, _params: dict[str, object]) -> object:
-        raise self.failure
-
-    async def action_get(self, action: str, params: dict[str, object]) -> str:
-        self.get_calls.append((action, params))
-        return "get-result"
-
-
-@pytest.mark.parametrize(
-    ("failure", "status_code", "error_class"),
-    [
-        (CkanTransportError(400, {}), 400, "http_status"),
-        (CkanProtocolError(), None, "protocol_error"),
-    ],
-)
-@pytest.mark.anyio
-async def test_post_failure_uses_get_with_deterministic_receipt(
-    failure: Exception,
-    status_code: int | None,
-    error_class: str,
+def test_discovery_uses_get_and_stops_on_access_challenge(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
-    """Any bounded POST failure may fall back to the identically bounded GET path."""
-    client = _Client(failure)
-    params: dict[str, object] = {"q": "health", "rows": 25}
+    """A challenged read is retained once, without POST or page-size retries."""
+    observed: list[httpx.Request] = []
 
-    result, method, receipt = await page_with_fallback(
-        client,
-        params,  # type: ignore[arg-type]
+    async def handler(request: httpx.Request) -> httpx.Response:
+        observed.append(request)
+        return httpx.Response(403, text="<html>Access denied</html>")
+
+    original = BoundedCkanClient
+    monkeypatch.setattr(
+        _MODULE,
+        "BoundedCkanClient",
+        lambda config: original(config, transport=httpx.MockTransport(handler)),
     )
-
-    assert result == "get-result"
-    assert method == "GET"
-    assert client.get_calls == [("package_search", params)]
-    assert receipt == {
-        "method": "POST",
-        "status": "failed",
-        "status_code": status_code,
-        "error_class": error_class,
-    }
+    result = asyncio.run(
+        _MODULE._discover(  # noqa: SLF001 - exercise the bounded discovery driver
+            "https://catalogue.data.govt.nz", 100, raw_dir=tmp_path
+        )
+    )
+    assert result["status"] == "unavailable"
+    assert len(observed) == 1
+    assert observed[0].method == "GET"
+    assert result["attempts"] == [
+        {"method": "GET", "rows": 100, "status_code": 403, "error_class": "http_status"}
+    ]
+    assert result["policy"]["post_primary_get_after_failure"] is False
 
 
 def test_previous_manifest_must_be_observed_and_fingerprint_complete() -> None:

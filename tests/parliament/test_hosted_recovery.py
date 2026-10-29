@@ -256,3 +256,15 @@ def test_expired_initial_bootstrap_lease_can_recover_under_local_lock(
         json.loads(remote.read(POINTER, remote.head()))["checkpoint"]["status"]
         == "verified"
     )
+
+
+@pytest.mark.parametrize("cycle", [1, 17, 19])
+def test_recent_only_defers_new_historical_work(tmp_path: Path, cycle: int) -> None:
+    """Recurring operation stays recent even at historical selection slots."""
+    manager, _remote = initial(tmp_path)
+    manager.cycle = cycle
+    hosted.begin(manager, recent_only=True)
+    assert manager.work is not None
+    assert manager.work["partition"] == "recent"
+    assert manager.work["query"]["page"] == cycle % 10 + 1
+    manager.release()

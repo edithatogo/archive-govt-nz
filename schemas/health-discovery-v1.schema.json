@@ -68,7 +68,7 @@
         "payload_capture": {"const": false},
         "publication": {"const": false},
         "max_page_size": {"type": "integer", "minimum": 1, "maximum": 1000},
-        "post_primary_get_after_failure": {"const": true},
+        "post_primary_get_after_failure": {"type": "boolean"},
         "unknown_rights_fail_closed": {"const": true},
         "sensitivity_requires_decision": {"const": true}
       },

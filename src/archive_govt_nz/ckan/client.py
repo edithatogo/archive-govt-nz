@@ -155,17 +155,19 @@ def _random_unit_interval() -> float:
 class BoundedCkanClient:
     """Async CKAN client with bounded attempts, time, and response bytes."""
 
-    def __init__(
+    def __init__(  # noqa: PLR0913 - explicit bounded transport dependencies
         self,
         config: CkanClientConfig,
         *,
         transport: httpx.AsyncBaseTransport | None = None,
+        method: Literal["GET", "POST"] = "POST",
         sleep: Sleep | None = None,
         clock: Clock = _utc_now,
         jitter: Jitter = _random_unit_interval,
     ) -> None:
         """Create a client without performing network activity."""
         self._config = config
+        self._method: Literal["GET", "POST"] = method
         self._sleep = sleep or anyio.sleep
         self._clock = clock
         self._jitter = jitter
@@ -203,8 +205,8 @@ class BoundedCkanClient:
         action: str,
         params: Mapping[str, object] | None = None,
     ) -> ActionObservation:
-        """Perform a mutating or large query via POST."""
-        return await self._execute_action("POST", action, params)
+        """Perform an action using the explicitly selected request method."""
+        return await self._execute_action(self._method, action, params)
 
     async def action_get(
         self,

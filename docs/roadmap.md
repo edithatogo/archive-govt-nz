@@ -5,7 +5,7 @@ baseline. This document sets the current delivery boundary and supersedes
 open-ended progression through historical programmes. It does not mark unfinished
 corpora complete or cancel another owner's in-flight operation.
 
-## Finish now: usable archival software
+## Delivered: usable archival software
 
 The baseline is a locked Python 3.15.1 package with working CLI entry points,
 bounded configured capture, immutable originals and provenance, WARC/fixity
@@ -13,7 +13,7 @@ verification, local replay, and explicit failure/rights handling. Existing domai
 implementations remain available. Completion is not conditional on acquiring
 all historical records or implementing every research product.
 
-This delivery's remaining work is finite:
+PR #829 delivered the software baseline through all required checks:
 
 - Simplify the routine workflow and remove automatic backlog expansion.
 - Provide PR/release assurance profiles without reducing full-suite coverage,
@@ -46,21 +46,39 @@ Previously implemented features stay available. Do not rewrite historical track
 metadata just to make the programme appear finished, or open a fresh issue for
 each row. Existing issues are the backlog references.
 
-## Operational follow-through, separate from implementation
+## Finish now: essential live recovery and publication
 
-- Parliament's existing track records a retained HF 429/checkpoint recovery and
-  paused continuation. Its native owner must reconcile current receipts and
-  authority before any resume; this source-only delivery does not retry writes,
-  enable schedules or claim recurring operation. See issue #794 and the P7 run log.
-- Open PR #828 concerns retained-capture orphan recovery; #776 concerns tobac
-  provenance. Their existing owners retain delivery. They are not absorbed into
-  this change. Dependabot #777 is ordinary maintenance.
-- Natural schedule evidence, exact publication readback, rights decisions and
-  external recovery are accepted against their actual source/manifest. A green
-  software build does not complete these operations.
+The 29 October follow-on delivery owns the existing Parliament checkpoint recovery
+and publication path, has merged Health orphan recovery PR #828, retains complete
+web-capture artifacts, and repairs read-only catalogue discovery. Use one serial
+writer for shared public state. Run independent checks together and report
+external failures once, with exact receipts. Do not repeat known authorization
+failures or ask for credentials one source at a time.
 
-Do not stop or relaunch another lane to apply this roadmap. At its safe terminal
-checkpoint it can retain evidence and place any unselected expansion here.
+- Parliament: reconcile the uploaded checkpoint against immutable public bytes,
+  finish interrupted publication, and verify one bounded recent batch. Hourly
+  continuation attempts at most one batch; existing cooldown and fencing remain.
+  Historical cursors are preserved for later selected backfill.
+- Government web: retain original CAS objects, WARC files and receipts together
+  for 90 days, with fixity and replay verification. These are recovery artifacts,
+  not permanent public publication or proof of redistribution rights.
+- CKAN: bounded public GET works locally (Treasury 54 datasets, Health 803).
+  GitHub runners still receive an HTML challenge, so both hosted discovery
+  workflows are disabled pending access resolution. Keep the existing local CLI
+  fallback and do not cycle methods or identities through the challenge.
+- Legislation: the existing key returned HTTP 401. Key renewal is an external
+  dependency; preserve the failed receipt and do not retry unchanged credentials.
+- Treasury website: HTTP 403 access challenge. Exclude it from recurring default
+  capture until the permitted source route works. The separately qualified CKAN
+  metadata route remains available.
+
+Gazette's empty discovery seed, social-media/newsletter source setup, permanent
+web-capture publication, broad global harvest, and new source expansion remain on
+the roadmap. Gazette retains manual workflow access; its empty scheduled run is
+removed because it supplies no archival coverage. PR #776 (tobac provenance) and
+Dependabot #777 remain separate work. Original native owners and checkouts stay
+intact. Natural recurrence and exact public readback are reported separately from
+manual execution and green software checks.
 
 ## Working cadence
 
