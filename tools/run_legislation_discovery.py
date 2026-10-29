@@ -6,6 +6,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 from pathlib import Path
 from typing import Any
 
@@ -45,11 +46,17 @@ def run(scope_path: Path, output: Path) -> None:
         endpoint=value["endpoint"],
         sort=value["sort"],
     )
+    scope.validate()
+    credential = os.environ.get("LEGISLATION_API_KEY", "").strip()
+    if not credential:
+        raise ValueError("LEGISLATION_API_KEY is required")
     with httpx.Client(timeout=30.0, follow_redirects=False) as client:
 
         def fetch(params: dict[str, Any]) -> Any:  # noqa: ANN401
             response = client.get(
-                scope.endpoint, params=params, headers={"Accept": "application/json"}
+                scope.endpoint,
+                params=params,
+                headers={"Accept": "application/json", "X-Api-Key": credential},
             )
             response.raise_for_status()
             return response.json()
