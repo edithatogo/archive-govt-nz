@@ -73,9 +73,15 @@ S = sibling("seed_registry")
 v = M.v
 
 
-def schema(value: Any, name: str) -> None:  # noqa: ANN401 - JSON validation boundary
+def schema(value: Any, name: str, revision: str | None = None) -> None:  # noqa: ANN401 - JSON validation boundary
     """Validate strict versioned documents without reporting untrusted values."""
-    definition = v.load((ROOT / "schemas" / (name + "-v1.schema.json")).read_bytes())
+    path = "schemas/" + name + "-v1.schema.json"
+    raw = (
+        git_bytes(["show", revision + ":" + path])
+        if revision
+        else (ROOT / path).read_bytes()
+    )
+    definition = v.load(raw)
     validator = Draft202012Validator(definition, format_checker=FormatChecker())
     v.require(condition=validator.is_valid(value), code="schema_" + name)
 
@@ -108,7 +114,7 @@ def allowed_name(name: str) -> bool:
     )
 
 
-def unpack(raw: bytes) -> dict[str, bytes]:
+def unpack(raw: bytes, *, canonical_directories: bool = False) -> dict[str, bytes]:
     """Read bounded safe members only; never extract untrusted paths to disk."""
     v.require(condition=len(raw) <= v.MAX_ZIP, code="archive_size")
     with zipfile.ZipFile(io.BytesIO(raw)) as archive:
@@ -119,11 +125,26 @@ def unpack(raw: bytes) -> dict[str, bytes]:
             code="expanded_size",
         )
         files: dict[str, bytes] = {}
+        seen: set[str] = set()
         for entry in entries:
             name = entry.filename
             v.equal(entry.orig_filename, name, "member_spelling")
+            v.require(condition=name not in seen, code="duplicate_member")
+            seen.add(name)
+            if canonical_directories and entry.is_dir():
+                v.require(
+                    condition=re.fullmatch(
+                        r"(?:cas/|cas/sha256/|cas/sha256/[0-9a-f]{2}/|receipts/|receipts/history/)",
+                        name,
+                    )
+                    is not None
+                    and entry.file_size == 0
+                    and stat.S_IFMT(entry.external_attr >> 16) in {0, stat.S_IFDIR}
+                    and not entry.flag_bits & 1,
+                    code="directory_member",
+                )
+                continue
             v.require(condition=allowed_name(name), code="member_path")
-            v.require(condition=name not in files, code="duplicate_member")
             v.require(
                 condition=stat.S_IFMT(entry.external_attr >> 16) in {0, stat.S_IFREG}
                 and not entry.flag_bits & 1,
@@ -330,9 +351,55 @@ def durable_download(client: httpx.Client, reference: dict[str, Any]) -> bytes:
     return raw
 
 
+def canonical_durable_files(raw: bytes, reference: dict[str, Any]) -> dict[str, bytes]:
+    """Authenticate the pinned canonical ZIP using its original continuation seal."""
+    durable = reference["durable"]
+    v.equal(len(raw), durable["size_bytes"], "durable_package_size")
+    v.equal(v.sha(raw), durable["sha256"], "durable_package_digest")
+    files = unpack(raw, canonical_directories=True)
+    complete = v.load(files[SEAL])
+    schema(complete, "legislation-continuation")
+    context = complete["context"]
+    git_bytes(["merge-base", "--is-ancestor", context["software_commit"], "HEAD"])
+    verify_parent(
+        files,
+        {
+            "roots": complete["roots"],
+            "source": reference["child_source"],
+            "lineage_sha256": v.sha(files[SEAL]),
+            "state_schemas": {"success_receipt": V3_SCHEMA},
+            "repository": REPOSITORY,
+            "workflow": {"path": context["workflow"]},
+            "run": {
+                "head_branch": "main",
+                "id": context["run_id"],
+                "run_attempt": context["run_attempt"],
+                "head_sha": context["software_commit"],
+            },
+        },
+        lineage_revision=context["software_commit"],
+    )
+    manifest = v.load(files["manifest.json"])
+    v.equal(
+        {
+            "manifest_sha256": manifest["manifest_sha256"],
+            "inventory_sha256": manifest["discovered_inventory_sha256"],
+            "records": manifest["total_records"],
+            "work_ids": len(manifest["discovered_work_ids"]),
+        },
+        durable["roots"],
+        "durable_roots",
+    )
+    return files
+
+
 def durable_files(raw: bytes, reference: dict[str, Any]) -> dict[str, bytes]:
     """Verify the Prompt 09 envelope, inner inventory, roots, rights and scope."""
     durable = reference["durable"]
+    if zipfile.is_zipfile(io.BytesIO(raw)):
+        with zipfile.ZipFile(io.BytesIO(raw)) as archive:
+            if "manifest.json" in archive.namelist():
+                return canonical_durable_files(raw, reference)
     module = sibling("legislation_durable_state")
     document, files = module.verify(raw, durable["sha256"])
     v.equal(document["roots"], durable["roots"], "durable_roots")
@@ -453,9 +520,9 @@ def authorize(
     v.equal(request["confirmed_initial"], expected=True, code="initial_confirmation")
 
 
-def check_lineage(lineage: dict[str, Any]) -> None:
+def check_lineage(lineage: dict[str, Any], revision: str | None = None) -> None:
     """Validate semantic origin links, not merely the receipt's JSON shape."""
-    schema(lineage, "legislation-parent-lineage")
+    schema(lineage, "legislation-parent-lineage", revision)
     verified_at = instant(lineage["verified_at"])
     parent, authority = lineage["parent"], lineage["authority"]
     expected_hash = v.sha(M.encoded(parent)) if parent is not None else None
@@ -468,10 +535,10 @@ def check_lineage(lineage: dict[str, Any]) -> None:
     else:
         parent = cast("dict[str, Any]", parent)
         if parent["schema_version"] == DURABLE_REFERENCE_SCHEMA:
-            schema(parent, "legislation-durable-parent-reference")
+            schema(parent, "legislation-durable-parent-reference", revision)
             check_durable_authority(parent)
         else:
-            schema(parent, "legislation-parent-reference")
+            schema(parent, "legislation-parent-reference", revision)
         if parent["schema_version"] == DURABLE_REFERENCE_SCHEMA:
             v.equal(parent["child_source"], lineage["source"], "lineage_child_source")
             v.equal(mode, "continuation", "durable_continuation_mode")
@@ -490,7 +557,12 @@ def check_lineage(lineage: dict[str, Any]) -> None:
         )
 
 
-def verify_parent(files: dict[str, bytes], reference: dict[str, Any]) -> None:
+def verify_parent(
+    files: dict[str, bytes],
+    reference: dict[str, Any],
+    *,
+    lineage_revision: str | None = None,
+) -> None:
     """Validate sealed continuation or explicitly authorized legacy adoption."""
     v.equal(state_roots(files), reference["roots"], "parent_roots")
     parsed = read_harvest_receipt(v.load(files["receipts/harvest.json"]))
@@ -522,7 +594,7 @@ def verify_parent(files: dict[str, bytes], reference: dict[str, Any]) -> None:
         complete["parent_lineage_sha256"], v.sha(files[LINEAGE]), "parent_lineage_hash"
     )
     lineage = v.load(files[LINEAGE])
-    check_lineage(lineage)
+    check_lineage(lineage, lineage_revision)
     v.equal(lineage["source"], complete["source"], "lineage_source")
     v.equal(lineage["context"], complete["context"], "lineage_context")
     expected = {
@@ -675,6 +747,10 @@ def restore(  # noqa: C901, PLR0912, PLR0915 - ordered verification transaction
             "parent_lineage_sha256": v.sha(files[LINEAGE]),
             "mode": mode,
         }
+    except httpx.HTTPStatusError as exc:
+        receipt["failure"] = f"parent_http_{exc.response.status_code}"
+    except httpx.TimeoutException:
+        receipt["failure"] = "parent_download_timeout"
     except (
         OSError,
         ValueError,
