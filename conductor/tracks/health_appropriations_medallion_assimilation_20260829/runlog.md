@@ -1,5 +1,16 @@
 # Run Log
 
+## 2026-10-29 — Capture recovery checkpoint
+
+Owner: chat `01a09968-c894-77c3-be45-0c2db277bfc2`; checkout
+`/Users/doughnut/.codex/worktrees/health-scheduled-capture/archive-govt-nz`,
+branch `codex/health-scheduled-capture`. This is a standard Git worktree;
+Codex app transport was unavailable. Scope: capture checkpoint code and focused
+offline contracts. Native scope: none; no external capture or scheduled run.
+The orphan-adoption checkpoint now includes all previously verified retained
+captures as well as recovered captures, so interruption after checkpoint
+promotion preserves both. Validation and delivery remain pending.
+
 ## 2026-10-29 — Scheduled operations ownership
 
 Owner: chat `01a09968-c894-77c3-be45-0c2db277bfc2`; checkout
