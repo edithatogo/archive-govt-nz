@@ -164,6 +164,16 @@ class ReviewedVoteHealthOverviewAdapter:
                     rule=self.profile.transformation,
                 )
             )
+            lineage.append(
+                FieldLineage(
+                    record_id=record_id,
+                    field="source_phrase",
+                    source_coordinate=f"pdf:page={page};overview:{measure}",
+                    raw_value=str(row["source_phrase"]),
+                    normalized_value=str(row["source_phrase"]),
+                    rule="reviewed_overview_source_phrase/v1",
+                )
+            )
         losses = tuple(
             LossAccounting(
                 source_coordinate=f"pdf:page={page}",

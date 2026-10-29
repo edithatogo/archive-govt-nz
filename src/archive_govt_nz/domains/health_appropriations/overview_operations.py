@@ -202,14 +202,44 @@ def _project(
             for row in facts
         )
     )
+    value_lineage = [row for row in output.lineage if row.field == "value"]
+    phrase_lineage = [row for row in output.lineage if row.field == "source_phrase"]
     _require(
-        len(output.lineage) == len(facts)
-        and {row.record_id for row in output.lineage} == ids
+        len(value_lineage) == len(facts)
+        and {row.record_id for row in value_lineage} == ids
+    )
+    _require(
+        len(value_lineage) + len(phrase_lineage) == len(output.lineage)
+        and (
+            not phrase_lineage
+            or (
+                len(phrase_lineage) == len(facts)
+                and {row.record_id for row in phrase_lineage} == ids
+            )
+        )
     )
     _require(
         all(
             row.field == "value" and row.rule == controls.transformation
-            for row in output.lineage
+            for row in value_lineage
+        )
+    )
+    facts_by_id = {row["record_id"]: row for row in facts}
+    _require(
+        all(
+            row.rule == "reviewed_overview_source_phrase/v1"
+            and row.raw_value == row.normalized_value
+            and isinstance(facts_by_id[row.record_id]["raw_values_json"], str)
+            and row.raw_value
+            == json.loads(str(facts_by_id[row.record_id]["raw_values_json"]))[
+                "source_phrase"
+            ]
+            and row.source_coordinate
+            == (
+                f"pdf:page={facts_by_id[row.record_id]['source_page']};"
+                f"overview:{facts_by_id[row.record_id]['summary_measure']}"
+            )
+            for row in phrase_lineage
         )
     )
     lineage = [
@@ -219,7 +249,7 @@ def _project(
             "source_locator": context["source_locator"],
             **asdict(row),
         }
-        for row in output.lineage
+        for row in value_lineage
     ]
     pages = {row["source_page"] for row in facts}
     _require(pages <= {2, 3} and len(output.losses) == controls.page_count)
