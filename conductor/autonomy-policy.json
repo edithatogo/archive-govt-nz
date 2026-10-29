@@ -1,7 +1,7 @@
 {
   "schema_version": "archive-govt-nz.conductor-autonomy/v1",
   "mode": "continuous_autonomous",
-  "authorization_scope": "approved_project_requirements_and_registered_tracks",
+  "authorization_scope": "selected_delivery_scope_in_docs_roadmap_not_entire_historical_backlog",
   "continuation": {
     "between_tasks": "automatic",
     "between_phases": "automatic",
@@ -12,7 +12,7 @@
     "decision_required_and_no_independent_work",
     "safety_or_scope_violation",
     "same_blocker_after_bounded_recovery_and_no_independent_work",
-    "all_approved_work_complete"
+    "selected_delivery_complete"
   ],
   "decision_gates": [
     "credentials_or_secret_access",
@@ -51,6 +51,7 @@
   },
   "state_ledger": {
     "authorities": [
+      "docs/roadmap.md",
       "conductor/tracks.md",
       "track/plan.md",
       "track/metadata.json",

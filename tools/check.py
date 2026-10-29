@@ -1,4 +1,4 @@
-"""Run the complete local repository assurance gate."""
+"""Run the PR or release assurance profile, or selected named stages."""
 
 import argparse
 
@@ -8,6 +8,12 @@ from archive_govt_nz.assurance import build_stages, run_stages
 def parse_arguments() -> argparse.Namespace:
     """Parse the gate's non-interactive command-line options."""
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--profile",
+        choices=("pr", "release"),
+        default="pr",
+        help="pr keeps full tests/security; release adds mutations and benchmarks",
+    )
     parser.add_argument(
         "--list",
         action="store_true",
@@ -52,6 +58,7 @@ def main() -> int:
             pytest_distribution=arguments.pytest_distribution,
             pytest_diagnostics=arguments.pytest_diagnostics,
             include_heavy=arguments.include_heavy,
+            profile="release" if arguments.stage else arguments.profile,
         )
     except ValueError as error:
         raise SystemExit(str(error)) from error

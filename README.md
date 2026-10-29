@@ -80,7 +80,13 @@ flowchart TD
 ### Local installation
 ```bash
 uv sync --locked
+.venv/bin/python --version  # Python 3.15.1
+uv run --locked archive-govt-nz doctor --format json
 ```
+
+The [delivery scope and roadmap](docs/roadmap.md) separates the usable software
+baseline from ongoing acquisition and later expansion. Routine work follows the
+[bounded workflow](conductor/workflow.md); it does not need a new governance pack.
 
 ### CLI Operations
 ```bash
@@ -127,52 +133,33 @@ and evidence gates authorize them.
 
 ---
 
-## Quality Assurance & Verification Contract
+## Validation
 
-The codebase enforces strict quality boundaries via `tools/check.py`:
-- **Python 3.15.1** (the project runtime) with strict static typing via `basedpyright`.
-- **Locked validation harness**: Unit, integration, and adversarial tests enforce
-  at least **80% branch-aware coverage**, with critical policy and integrity
-  paths held to 100% coverage. Exact local results are recorded in the
-  active Conductor track; they are not hosted or operational proof.
-- **11 Mutation Testing Runners** (`mutation_resource_policy`, `mutation_versioning`, `mutation_redundancy`, `mutation_archivebox_pilot`, `mutation_batch_eligibility`, `mutation_global_policy`, `mutation_adapters`, `mutation_gazette`, `mutation_medallion`, `mutation_platinum`, `mutation_nlp_bridge`).
-- **Differential parity gate**: every change re-runs a 9-source-class donor-vs-canonical parity harness (`parity` stage); divergences fail the build.
-- **Hygiene gate**: The repository validator rejects configured placeholder and
-  forbidden-pattern classes.
-- **Supply-Chain Hardening**: Automated CycloneDX SBOM generation, `pip-audit`, `pip-licenses`, and `detect-secrets`.
-
-Run focused checks while editing, then run the deterministic, process-isolated
-full gate once for the reviewable pull request candidate:
+Use the existing CLI helpers at the appropriate stage:
 
 ```bash
+# While editing: affected tests only, with the worktree pytest cache enabled
+./scripts/test-focused.sh tests/test_assurance_harness.py
+
+# Before a PR: 13 stages, including the full suite and branch coverage
 ./scripts/validate.sh
+
+# At integration/release: all 32 stages, including mutations and CAS benchmark
+./scripts/validate.sh --profile release
+
+# Check the built wheel outside the checkout, without development packages
+./scripts/smoke-package.sh
+
+# Rerun only a failed/affected stage; unchanged successes remain usable
+./scripts/validate-stage.sh secrets
 ```
 
-Install the pinned interpreter with `uv python install` and sync the locked
-environment with `uv sync --locked`; the repository `.python-version` file
-selects Python 3.15.1 for local `uv` commands.
-
-The wrapper uses the verified xdist `auto/loadscope` profile so the full suite
-stays within the bounded test-stage timeout. If a single named gate fails and
-its inputs are unchanged, rerun only that gate with
-`./scripts/validate-stage.sh <stage>`; rerun every gate affected by a fix. A
-complete harness rerun is needed when the source tree or shared gate inputs
-change materially. The underlying runner retains a serial diagnostic mode
-when invoked without worker options. A separate heavy profile keeps mutation
-and resource profiling out of the ordinary lane:
-
-```bash
-# Re-run the complete suite under the wrapper's isolated xdist profile.
-uv run --locked python tools/check.py --pytest-workers auto \
-  --pytest-distribution loadscope
-
-# Append bounded pytest-gremlins and Bronze-to-Gold Scalene evidence stages.
-uv run --locked python tools/check.py --include-heavy
-```
-
-Parallel results are same-host timing evidence only. Scalene writes a portable,
-path-redacted summary to `build/profiling-scalene.json`; raw profiler output and
-all generated coverage shards remain ignored local derivatives.
+Both profiles retain locked Python 3.15.1, typing, the complete test suite,
+the configured 80% branch-aware coverage floor, schemas, donor parity and
+supply-chain checks. Linux CI runs release assurance; macOS and Windows run
+the PR profile with the same full suite. Existing critical-path tests remain.
+Gremlins and Scalene are explicit additional lanes (`--include-heavy`).
+See [testing profiles](docs/testing-profiles.md) for selection and evidence rules.
 
 ---
 

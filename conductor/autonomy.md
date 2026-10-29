@@ -2,38 +2,24 @@
 
 ## Outcome
 
-Once implementation is authorised, Conductor continues through all safe,
-in-scope tasks, phase checkpoints, reviews, documentation synchronization, and
-subsequent approved tracks without asking whether to continue. A task, phase,
-checkpoint, commit, push, review, or track boundary is not a stopping point.
+Once implementation is authorised, complete the selected delivery without routine
+confirmation questions. The [current scope and roadmap](../docs/roadmap.md)
+defines the stopping point. Continue across task/phase boundaries within that
+scope; do not interpret historical approval of a programme as an instruction to
+consume its entire backlog during every request.
 
-This project-local policy overrides upstream Conductor's routine confirmation
-questions at track selection and completion. It does not expand the scope or
-authority granted by the user.
+This 29 October 2026 policy supersedes automatic creation/selection of subsequent
+roadmap tracks. The machine policy is [autonomy-policy.json](./autonomy-policy.json).
 
-The machine-readable authority is
-[`autonomy-policy.json`](./autonomy-policy.json).
-The current upstream feature assessment is
-[`upstream-evaluation.md`](./upstream-evaluation.md).
+## Execution loop
 
-## Continuous loop
+1. Reconcile the selected checkout, ownership, relevant evidence and remote ref.
+2. Implement the next necessary in-scope change using the concise workflow.
+3. Validate affected behaviour; run milestone gates once and reuse unchanged evidence.
+4. Review and deliver the coherent increment with accurate limitations.
+5. Stop when the selected acceptance criteria pass. Keep expansion on the roadmap.
 
-1. Reconcile the repository, Conductor registry, active plan, run log, evidence,
-   GitHub hierarchy, remote ref, and any persisted decision state.
-2. Select the next unblocked task in the active track and execute its workflow.
-3. Commit and remotely verify the evidenced increment.
-4. At a phase boundary, run the checkpoint and continue immediately.
-5. At a track boundary, automatically run Conductor review, add and resolve
-   required review-fix tasks, synchronize evidence-backed project context, close
-   the matching issue, and select the next approved track.
-6. If an approved roadmap item has no track yet, create the smallest bounded
-   track with MoSCoW requirements, Mermaid design where applicable, a plan, and
-   GitHub traceability; then continue implementing it.
-7. Stop only when all approved work is complete or a decision/safety boundary
-   blocks every useful in-scope action.
-
-If the host ends a task or compacts context, the next execution resumes this
-loop from repository evidence without asking for renewed confirmation.
+After interruption, resume the same bounded outcome without reconfirmation.
 
 ## What does not require a decision
 
@@ -44,7 +30,7 @@ including:
 - compatible library and tool versions within the approved stack;
 - test, refactor, documentation, issue-comment, and evidence details;
 - bounded retries, alternate read-only sources, and diagnostic techniques;
-- creation of an already-approved next-scope track;
+- recording later work on the roadmap without starting it;
 - correction of lint, typing, test, schema, security, or review findings;
 - recoverable branches or worktrees when the isolation policy calls for them.
 

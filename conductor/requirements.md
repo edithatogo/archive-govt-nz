@@ -59,7 +59,8 @@ acceptance criteria without silently weakening any Must requirement.
 - Use locked, reproducible environments and current stable dependencies.
 - Require 100% line and branch coverage for critical integrity, policy,
   credential, versioning, and publication logic.
-- Require at least 95% line and branch coverage overall.
+- Require the configured 80% branch-aware coverage floor overall, preserving
+  existing critical-path contracts (aligned 29 October 2026).
 - Use deterministic, redacted fixtures and fail-closed handling of credentials,
   signed URLs, personal information, and sensitive payloads.
 - Test idempotency, interruption, retry, reconciliation, integrity, and recovery.
@@ -69,17 +70,17 @@ acceptance criteria without silently weakening any Must requirement.
 ### Planning and traceability
 
 - Continue autonomously across task, phase, checkpoint, review, and approved
-  track boundaries without requiring renewed confirmation.
+  track boundaries within the selected delivery without renewed confirmation.
+  Stop at that delivery boundary; do not automatically consume the roadmap.
 - Ask the user only for a material decision or authority that lacks an approved
   safe default; continue independent safe work while a decision is pending.
 - Present every decision with two to four options, the recommended option first,
   and an evidence-based rationale and trade-offs.
 - Persist enough repository, Conductor, evidence, and remote state to resume
   after interruption without re-asking whether to continue.
-- Give every implementation track a MoSCoW `requirements.md`.
-- Give every design-bearing track a `design.md` with Mermaid diagrams.
-- Cross-reference Conductor tracks with GitHub parent issues and nested
-  subissues where supported.
+- Use one concise outcome, acceptance and evidence record for routine changes.
+- Reserve separate requirements/design documents and issue hierarchies for
+  substantial work; follow the current bounded workflow and roadmap.
 - Use task-sized commits only after the relevant automated gates and evidence
   are complete.
 - Support a solo maintainer without mandatory second-person review,

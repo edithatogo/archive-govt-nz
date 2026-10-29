@@ -2,4 +2,4 @@
 set -euo pipefail
 uv run --locked python tools/check.py \
   --pytest-workers auto \
-  --pytest-distribution loadscope
+  --pytest-distribution loadscope "$@"

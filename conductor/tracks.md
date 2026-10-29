@@ -2,10 +2,37 @@
 
 ---
 
-Execution policy: [continuous autonomous execution](./autonomy.md). After
-authorisation, proceed through tasks, phases, reviews, checkpoints, and the next
-approved track without asking whether to continue. Pause only at a defined
-decision or safety boundary, and continue independent work while it is pending.
+Execution policy: [bounded autonomous delivery](./autonomy.md). The
+[current delivery scope and roadmap](../docs/roadmap.md) distinguish software
+completion, ongoing operations and deferred expansion. Historical track statuses
+below remain evidence of their original scope, not prerequisites for every release.
+
+## Current coordination — 29 October 2026
+
+- Chat: `01a18773-d2f6-7582-9509-9f2588b5c84e`.
+- Worktree: `/Users/doughnut/.codex/worktrees/archive-completion/archive-govt-nz`.
+- Branch: `codex/archive-completion`; base: `ef9f30be`.
+- Ownership: this delivery's shared workflow/roadmap integration, assurance
+  profiles, wrappers, CI wiring, runtime dependency declarations and focused
+  harness tests. One writing chat.
+- Native scope: none. Existing Health, Parliament, coronial and tobac owners
+  retain their files, runtime, publication objects and recovery state.
+- Next operation: deliver the locally verified source PR through required hosted
+  checks. No source-workflow activation.
+- Preserved: original dirty checkout and all pre-existing worktrees/assignments.
+
+Local delivery evidence: Python 3.15.1; 21 focused harness/supervisor tests;
+full-suite run 8,788 passed, 14 capability skips, 96.34% branch-aware coverage,
+one obsolete README wording assertion failed. Removed that assertion only;
+`test-focused.sh --failed` passed its one selected test. Seven package/autonomy
+tests also passed. Runtime-only wheel startup initially failed on undeclared
+pydantic and defusedxml; both are now declared without changing locked versions.
+The rebuilt wheel passes the locked, isolated install/doctor/version check.
+Synthetic CAS replay and WARC manifest/fixity verification pass. Actionlint and
+ShellCheck pass. All remaining release stages passed separately, reusing the unchanged full-suite
+evidence: lock, format/lint/types, schemas, 9/9 donor parity, every mutation
+runner, hygiene, CAS benchmark, audit, licences, secrets and validated SBOM.
+No dependency versions changed. Logs remain under ignored `build/` locally.
 
 - [x] **Track: Prompt 21 final independent adversarial verification**
   *Archived: [archive/legislation_final_adversarial_verification_20260902/index.md](./archive/legislation_final_adversarial_verification_20260902/index.md)*
