@@ -23,19 +23,34 @@ below remain evidence of their original scope, not prerequisites for every relea
   is verified. Public pointer readback at `da0c0b8e8782e71b90a58134b431e613680483f0`
   has no owner/pause. Summary: 947 captured, 37 publication batches, one reviewed
   access hold, zero pending or unreviewed failures; no coverage claim.
-- Next operation: bounded pilot `40873817940` finishes interrupted work before
-  new discovery; verify public output and then the corrected hosted workflows.
-- Batched read-only GET checks observed Treasury 54 datasets (three pages) and
-  broader Health 803 datasets. Website Treasury remains HTTP 403; legislation
-  existing-key HTTP 401 is retained as one external credential dependency.
-- Source packet: one recent Parliament batch/hour, complete web recovery
-  artifacts retained 90 days, GET metadata discovery, and empty Gazette cron
-  deferred. Focused checks: 77 passed, then 12 directly affected checks passed;
-  actionlint/ShellCheck passed. Release harness is in progress; one type-only
-  annotation failure was corrected and the types stage passed. Evidence is under
-  ignored `build/live-recovery-20261029/`.
-- Existing Health recovery PR828 is reviewed as a scoped integration packet;
-  its original checkout and private runtime remain untouched.
+- Recovery completed: pilot `40873817940` cleared interrupted work without a new
+  write limit. Anonymous readback at `cd9150e3885b67bd7b69e361cf0729fb2db89fa7`
+  verified checkpoint `4b0e06211da405a0b20922f13863649a16db2a2231c6997d48385b759b203bc4`,
+  no owner/pause/work, cycle 37, 1,137 objects and 37 publication batches. The last
+  public batch manifest and all 11 distinct objects (20 records) independently
+  rehashed successfully. No historical coverage or natural recurrence claim.
+- Batched source checks: local GET observed Treasury 54 datasets (three pages)
+  and Health 803. Hosted runs `40874348155`/`40874348337` still receive an HTML
+  access challenge; both scheduled discovery workflows are disabled pending
+  hosted access resolution. Use the qualified local CLI fallback. Treasury web
+  HTTP 403 and legislation existing-key HTTP 401 remain explicit external holds.
+- Web run `40874348348` captured both configured government targets; its complete
+  downloaded artifact passed CAS replay and WARC fixity independently. Retention
+  is 90 days, not permanent publication. Empty Gazette cron and expansion are deferred.
+- Source packet PR #830: one recent Parliament batch/hour, complete web recovery
+  artifacts, GET metadata discovery. Focused checks: 77 plus 12 passed;
+  actionlint/ShellCheck passed. Complete release stages passed, with the single
+  type-annotation failure corrected and its stage rerun: 8,792 tests passed,
+  14 capability skips, 96.35% coverage, 9/9 parity, mutation and supply-chain gates.
+- Health recovery PR #828 merged as `275c424f` after all OS checks; final integration
+  preflight found no overlaps, staged deletions or missing files. Original checkout
+  and private runtime remain untouched. PR #830 now includes that main revision;
+  final hosted assurance covers the combined tree. Reuse unchanged local evidence.
+- Next operation: merge PR #830 after its required integrated checks, re-enable
+  the bounded Parliament workflow, then verify one recent invocation. The old
+  oversized Parliament schedule is disabled during recovery. Native ownership
+  remains with this chat through that terminal handoff. Evidence is under ignored
+  `build/live-recovery-20261029/`.
 
 ## Current coordination — 29 October 2026
 

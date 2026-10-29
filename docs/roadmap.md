@@ -49,7 +49,7 @@ each row. Existing issues are the backlog references.
 ## Finish now: essential live recovery and publication
 
 The 29 October follow-on delivery owns the existing Parliament checkpoint recovery
-and publication path, integrates Health orphan recovery PR #828, retains complete
+and publication path, has merged Health orphan recovery PR #828, retains complete
 web-capture artifacts, and repairs read-only catalogue discovery. Use one serial
 writer for shared public state. Run independent checks together and report
 external failures once, with exact receipts. Do not repeat known authorization
@@ -62,8 +62,10 @@ failures or ask for credentials one source at a time.
 - Government web: retain original CAS objects, WARC files and receipts together
   for 90 days, with fixity and replay verification. These are recovery artifacts,
   not permanent public publication or proof of redistribution rights.
-- CKAN: use bounded public GET for Treasury/Health metadata discovery; retain
-  access failures without cycling request methods through a challenge.
+- CKAN: bounded public GET works locally (Treasury 54 datasets, Health 803).
+  GitHub runners still receive an HTML challenge, so both hosted discovery
+  workflows are disabled pending access resolution. Keep the existing local CLI
+  fallback and do not cycle methods or identities through the challenge.
 - Legislation: the existing key returned HTTP 401. Key renewal is an external
   dependency; preserve the failed receipt and do not retry unchanged credentials.
 - Treasury website: HTTP 403 access challenge. Exclude it from recurring default

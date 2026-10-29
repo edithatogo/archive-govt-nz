@@ -45,7 +45,17 @@ before the complete recovery bundle uploads as an artifact. Download
 below. Artifact retention is 90 days and is not permanent public preservation.
 
 Treasury website capture is held after HTTP 403; metadata discovery uses the
-separate public CKAN GET route. Legislation needs its existing
+separate public CKAN GET route locally. GitHub runners receive an HTML challenge
+from the catalogue; `scheduled-discovery.yml` and
+`scheduled-health-discovery.yml` are disabled until that access is resolved.
+The existing local commands remain available:
+
+```bash
+.venv/bin/python tools/live_treasury_discovery.py --output-dir build/live/treasury --page-size 25
+.venv/bin/python tools/discover_health_metadata.py --output build/live/health-discovery.json --page-size 100
+```
+
+Legislation needs its existing
 `LEGISLATION_API_KEY` renewed after HTTP 401. Gazette has no discovery seed, so
 its empty recurring job is deferred; social-media/newsletter setup and broader
 publication are on the [roadmap](../roadmap.md). Do not retry unchanged access
