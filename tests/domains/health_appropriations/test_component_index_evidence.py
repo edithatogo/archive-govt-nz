@@ -11,10 +11,14 @@ from dataclasses import replace
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
+import pyarrow.parquet as pq
 import pytest
 
 from archive_govt_nz.domains.health_appropriations import (
     component_index_evidence as evidence,
+)
+from archive_govt_nz.domains.health_appropriations import (
+    component_index_silver,
 )
 from archive_govt_nz.warc import write_response_record
 
@@ -253,3 +257,69 @@ def test_closed_cohort_refuses_unbound_or_missing_evidence(
         )
     with pytest.raises(ValueError, match="component_index_evidence_contract"):
         evidence.inspect_component_source_evidence(root)
+
+
+@pytest.mark.parametrize("family", ["lci", "ppi"])
+def test_component_silver_rebuilds_source_tokens_and_lineage(
+    family: str, tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    body, query = _table(family)
+    profile = evidence.EXPORTS[family]
+    capture = next(
+        row for row in evidence.CAPTURES if row["role"] == f"{family}-public-get-1"
+    )
+    monkeypatch.setattr(evidence, "inspect_component_source_evidence", lambda _root: {})
+    monkeypatch.setattr(
+        evidence,
+        "_snapshot",
+        lambda _root, pin, _size: query if pin == profile.query_sha256 else body,
+    )
+    plan = component_index_silver.normalize_component_index(
+        tmp_path, tmp_path / "plan", family=family
+    )
+    assert plan["status"] == "planned"
+    assert not (tmp_path / "plan").exists()
+    first = component_index_silver.normalize_component_index(
+        tmp_path, tmp_path / "one", family=family, dry_run=False
+    )
+    second = component_index_silver.normalize_component_index(
+        tmp_path, tmp_path / "two", family=family, dry_run=False
+    )
+    assert first == second
+    for path in (tmp_path / "one").iterdir():
+        assert path.read_bytes() == (tmp_path / "two" / path.name).read_bytes()
+    facts = pq.read_table(tmp_path / "one" / "component_facts.parquet").to_pylist()
+    lineage = pq.read_table(tmp_path / "one" / "field_lineage.parquet").to_pylist()
+    dispositions = pq.read_table(
+        tmp_path / "one" / "row_dispositions.parquet"
+    ).to_pylist()
+    assert len(facts) == len(profile.periods) == len(dispositions)
+    assert len(lineage) == 2 * len(facts)
+    assert sum(row["amount"] is None for row in facts) == profile.missing
+    assert facts[0]["value_token"] == ".."  # noqa: S105 - source missing token
+    assert facts[profile.missing]["value_token"] == "1000.000000"  # noqa: S105 - numeric fixture
+    assert str(facts[profile.missing]["amount"]).startswith("1000.000000")
+    assert all(row["source_object_sha256"] == capture["body_sha256"] for row in facts)
+    assert all(row["rights_state"] == "not_evaluated" for row in facts)
+    assert all(row["series_id"].startswith(profile.table + ":") for row in facts)
+    assert (
+        lineage[0]["source_coordinate"]
+        == f"csv:row={len(profile.headers) + 1};column=1"
+    )
+    assert first["analytical_selection"] == "not_selected"
+
+
+def test_component_silver_rejects_unqualified_input_without_writing(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    with pytest.raises(ValueError, match="component_index_silver_contract"):
+        component_index_silver.normalize_component_index(
+            tmp_path, tmp_path / "bad", family="unknown"
+        )
+    monkeypatch.setattr(evidence, "inspect_component_source_evidence", lambda _root: {})
+    monkeypatch.setattr(evidence, "_snapshot", lambda *_args: b"tampered")
+    with pytest.raises(ValueError, match="component_index_evidence_contract"):
+        component_index_silver.normalize_component_index(
+            tmp_path, tmp_path / "bad", family="lci", dry_run=False
+        )
+    assert not (tmp_path / "bad").exists()

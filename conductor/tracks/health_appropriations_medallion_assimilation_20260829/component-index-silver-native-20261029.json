@@ -1,0 +1,32 @@
+{
+  "analytical_selection": "not_selected",
+  "products": {
+    "lci": {
+      "lineage_compared": 270,
+      "repeat_outputs": {
+        "component_facts.parquet": "e08c8e28bc5e3deae83f7b576a6052faa27f266eb18018b855f4917d23f7ebdf",
+        "field_lineage.parquet": "4758cfe1e101fbb289e31fef6bc64a7602ca175e7c5ab56a097d9fed64d37f73",
+        "row_dispositions.parquet": "80f4118687f133278b99c4e160c4b3de7cbe862462564a16ca91000ac849a5fc"
+      },
+      "rows_compared": 135,
+      "source_sha256": "4a525c427a6cd403d03e21b0ed3db1325e3d92d2c44e05bd18a76ff77a832d01",
+      "source_unchanged": true
+    },
+    "ppi": {
+      "lineage_compared": 258,
+      "repeat_outputs": {
+        "component_facts.parquet": "c2d3492f7416742ebcdbcabf5c93616f630a6cd46b1e24cdc6325144a0f47ffa",
+        "field_lineage.parquet": "30708d8e8c3db466d6d2bb224a6355c3154c5f28584d9826515017f2f025e099",
+        "row_dispositions.parquet": "56237f3727cce6e5067f048577ba0c850b047496577590aaea8a684ee282ed92"
+      },
+      "rows_compared": 129,
+      "source_sha256": "159708fcf183ec24d160483c5f16bf2dd9ecc9f4f98cfe5e28de56870d36573b",
+      "source_unchanged": true
+    }
+  },
+  "python": "3.15.1",
+  "rights_state": "not_evaluated",
+  "runs": 2,
+  "schema_version": "archive-govt-nz.health-component-index-silver-native-check/v1",
+  "source_scope": "exact retained component cohort"
+}

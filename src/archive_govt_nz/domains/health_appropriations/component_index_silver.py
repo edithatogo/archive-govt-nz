@@ -110,9 +110,9 @@ def normalize_component_index(
             "value_token": value,
             "null_reason": "publisher_figure_not_available" if amount is None else None,
             "source_decimal_precision": None,
-            "source_decimal_scale": -amount.as_tuple().exponent
-            if amount is not None
-            else None,
+            "source_decimal_scale": (
+                len(value.partition(".")[2]) if amount is not None else None
+            ),
             "unit": "Index",
             "currency": None,
             "price_basis": None,
