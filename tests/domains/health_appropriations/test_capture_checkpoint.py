@@ -700,6 +700,44 @@ async def test_refuse_implicit_overwrite_and_competing_writer(
 
 
 @pytest.mark.anyio
+async def test_orphan_recovery_checkpoint_preserves_previously_retained_capture(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    execute, args, calls = setup(tmp_path, monkeypatch)
+    census = json.loads(args.census.read_text())
+    census["records"].append(
+        {
+            **census["records"][0],
+            "source_id": "two",
+            "url": "https://www.treasury.govt.nz/two.csv",
+        }
+    )
+    args.census.write_text(json.dumps(census))
+    first = await execute(args)
+    first["results"] = first["results"][:1]
+    first["captured"] = 1
+    args.manifest.write_text(json.dumps(first))
+    args.resume = True
+    original_write = execute.__globals__["_write"]
+
+    def interrupt_after_checkpoint(path: Path, value: object) -> None:
+        original_write(path, value)
+        msg = "simulated_interruption"
+        raise RuntimeError(msg)
+
+    monkeypatch.setitem(execute.__globals__, "_write", interrupt_after_checkpoint)
+    with pytest.raises(RuntimeError, match="simulated_interruption"):
+        await execute(args)
+    checkpoint = json.loads(args.manifest.read_text())
+    assert checkpoint["captured"] == 2
+    assert {row["source_id"] for row in checkpoint["results"]} == {"one", "two"}
+    monkeypatch.setitem(execute.__globals__, "_write", original_write)
+    resumed = await execute(args)
+    assert resumed["captured"] == 2
+    assert len(calls) == 2
+
+
+@pytest.mark.anyio
 async def test_checkpoint_write_failure_retains_orphan_warc_for_recovery(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

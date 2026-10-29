@@ -600,9 +600,9 @@ async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:
         "observations": observations,
     }
     if recovered:
-        manifest["results"] = list(recovered.values())
+        manifest["results"] = list(retained.values())
         manifest["observations"] = observations
-        manifest["captured"] = len(recovered)
+        manifest["captured"] = len(retained)
         _write(args.manifest, manifest)
     async with httpx.AsyncClient(
         headers={"User-Agent": "archive-govt-nz/0.1.0"}, timeout=90
