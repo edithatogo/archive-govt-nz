@@ -61,6 +61,25 @@ def test_dispatch_emits_only_exact_pharmac_table_facts_and_lineage() -> None:
     assert result.output.records[0]["amount_type"] == "published_budget_allocation"
     assert result.output.records[0]["rights_state"] == "not_evaluated"
     assert len(result.output.lineage) == 186
+    assert len(result.output.dimension_links) == 28
+    assert all(mapping.target is None for mapping in result.output.dimensions)
+    first = result.output.records[0]["record_id"]
+    links = {
+        link.kind: link
+        for link in result.output.dimension_links
+        if link.source_record_id == first
+    }
+    assert links["period"].raw_value == "2026/27"
+    assert links["period"].source_coordinate == "html:table=1;row=2;cell=1"
+    assert links["unit"].raw_value == HEADERS[1]
+    assert links["unit"].source_coordinate == "html:table=1;row=1;cell=2"
+    repeated = dispatch_bronze(
+        bronze,
+        source_sha256=hashlib.sha256(bronze).hexdigest(),
+        media_type="text/html",
+        registrations=(registration(),),
+    )
+    assert repeated.output == result.output
     assert result.output.losses
     assert all(
         loss.disposition not in ("normalized", "context")
