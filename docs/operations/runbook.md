@@ -6,12 +6,13 @@ that the scheduled multi-source workflow is operational.
 
 ## Current operational status
 
-- Global `capture --source-set <name>` performs bounded network acquisition
+- Global `capture --source-type <name>` performs bounded network acquisition
   against the declared source sets in `config/source-sets/` and writes WARC
   evidence plus content-addressed capture receipts. Undeclared source sets
   remain fail-closed as `not_configured` with exit code 2.
 - `.github/workflows/scheduled-multi-source-harvest.yml` runs capture,
-  fixity manifest, verification, and receipt upload per configured source set.
+  fixity manifest, verification, and complete CAS/WARC/receipt retention for
+  90 days. The recurring default is `government-web`; other sets are manual.
   A green run evidences bounded acquisition only; it is not publication or
   redistribution authorization.
 - Publication preparation is local-only. Credentials are capabilities, not
@@ -36,10 +37,20 @@ package ready and does not close publication or redistribution-rights gates.
 
 ## 2. Capture and workflow boundary
 
-The scheduled workflow harvests each configured source set on its cron
-declaration: capture writes WARC records, then fixity manifest and structural
-verification run over the output before receipts upload as artifacts.
-Replay still requires populated production-layout CAS state.
+The scheduled workflow captures the configured government web targets every six
+hours. Capture writes CAS originals and WARC records; fixity and replay run
+before the complete recovery bundle uploads as an artifact. Download
+`harvest-receipts-government-web` from the selected run, then verify its
+`cas/government-web` and `warc/government-web` directories with the commands
+below. Artifact retention is 90 days and is not permanent public preservation.
+
+Treasury website capture is held after HTTP 403; metadata discovery uses the
+separate public CKAN GET route. Legislation needs its existing
+`LEGISLATION_API_KEY` renewed after HTTP 401. Gazette has no discovery seed, so
+its empty recurring job is deferred; social-media/newsletter setup and broader
+publication are on the [roadmap](../roadmap.md). Do not retry unchanged access
+failures. Parliament uses its existing hosted fenced workflow, one recent batch
+per hour, and finishes retained work before new acquisition.
 
 Use this probe only to confirm the fail-closed boundary for an undeclared
 source set:
