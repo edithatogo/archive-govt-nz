@@ -168,6 +168,10 @@ def test_unknown_and_ambiguous_selection_produces_held_drift(
     assert (
         compare_adapter_drift(_result().to_drift_receipt(), receipt)["status"] == "held"
     )
+    assert (
+        compare_adapter_drift(receipt, _result().to_drift_receipt())["status"] == "held"
+    )
+    assert compare_adapter_drift(receipt, receipt)["status"] == "held"
 
 
 def test_native_dispatch_binds_declared_schemas_and_exact_repeat_output(
