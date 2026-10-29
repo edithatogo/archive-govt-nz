@@ -127,7 +127,8 @@ def test_overview_adapter_preserves_qualification_lineage_and_all_pages(
     adapter, payload = _adapter_fixture(monkeypatch)
     assert adapter.matches_layout(payload)
     output = adapter.extract(payload, source_sha256=hashlib.sha256(payload).hexdigest())
-    assert len(output.records) == len(output.lineage) == 6
+    assert len(output.records) == 6
+    assert len(output.lineage) == 12
     assert len(output.losses) == adapter.profile.page_count
     assert output.records[0]["quality_flags"] == [
         "overview_headline_only",
@@ -139,6 +140,9 @@ def test_overview_adapter_preserves_qualification_lineage_and_all_pages(
     assert output.records[0]["currency_code"] is None
     assert output.records[0]["rights_state"] == "not_evaluated"
     assert output.lineage[0].raw_value == "1"
+    assert output.lineage[1].field == "source_phrase"
+    assert output.lineage[1].raw_value == "about $1 million"
+    assert output.lineage[1].source_coordinate == "pdf:page=2;overview:measure_0"
     assert output.losses[1].disposition == "partially_normalized"
     assert all(loss.disposition == "preserved_only" for loss in output.losses[2:])
     assert output == adapter.extract(
