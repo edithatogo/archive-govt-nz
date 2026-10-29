@@ -7,6 +7,7 @@ import hashlib
 import json
 import sqlite3
 from contextlib import closing
+from dataclasses import replace
 from pathlib import Path
 from typing import cast
 
@@ -33,6 +34,27 @@ def source_request(tmp_path: Path) -> SourceRequest:
         "https://example.invalid/source",
         "2026-08-31T00:00:00Z",
     )
+
+
+def test_drift_mode_has_distinct_identity_and_replay(
+    source_request: SourceRequest, tmp_path: Path
+) -> None:
+    root = tmp_path / "scheduler"
+    drift = replace(source_request, include_drift=True)
+    legacy = scheduled_normalization.run_scheduled_normalization(
+        source_request, root, dry_run=False
+    )
+    updated = scheduled_normalization.run_scheduled_normalization(
+        drift, root, dry_run=False
+    )
+    assert legacy["status"] == updated["status"] == "written_local"
+    assert legacy["job_id"] != updated["job_id"]
+    for result, version in ((legacy, "/v1"), (updated, "/v2")):
+        path = root / result["job_id"] / result["attempt"] / "output" / "MANIFEST.json"
+        assert json.loads(path.read_bytes())["schema_version"].endswith(version)
+    assert scheduled_normalization.run_scheduled_normalization(
+        drift, root, dry_run=False
+    )["status"] == "reused"
 
 
 def test_dry_run_write_replay_and_tamper_rejection(
