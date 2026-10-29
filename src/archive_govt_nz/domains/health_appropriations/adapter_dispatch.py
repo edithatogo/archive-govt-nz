@@ -130,6 +130,33 @@ class DispatchResult:
         """Bind selection, observed schema and ordered output without re-extraction."""
         return json.loads(self._drift_bytes)
 
+    def compare_dimensions(self, previous: DispatchResult) -> dict[str, object]:
+        """Compare literal mappings for two selected dispatch results."""
+        from archive_govt_nz.domains.health_appropriations.adapter_drift import (  # noqa: PLC0415
+            compare_dispatch_dimensions,
+        )
+
+        baseline = previous.to_drift_receipt()
+        current = self.to_drift_receipt()
+        compatible = (
+            self.selection.status == previous.selection.status == "selected"
+            and self.selection.adapter_id == previous.selection.adapter_id
+            and self.selection.adapter_version == previous.selection.adapter_version
+        )
+        report = (
+            compare_dispatch_dimensions(previous.output, self.output)
+            if compatible
+            else {
+                "status": "held",
+                "changes": [],
+                "normalization_approval": "not_granted",
+            }
+        )
+        return report | {
+            "baseline_receipt_sha256": baseline["receipt_sha256"],
+            "current_receipt_sha256": current["receipt_sha256"],
+        }
+
 
 @dataclass(frozen=True, slots=True)
 class NativeDispatchResult:

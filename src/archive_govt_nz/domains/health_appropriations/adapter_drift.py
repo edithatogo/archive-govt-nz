@@ -14,6 +14,9 @@ from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     AdapterOutput,
     CompoundAdapterOutput,
 )
+from archive_govt_nz.domains.health_appropriations.dimension_mapping import (
+    compare_mappings,
+)
 from archive_govt_nz.domains.health_appropriations.schema_drift import (
     compare_fingerprints,
     layout_fingerprint,
@@ -22,6 +25,29 @@ from archive_govt_nz.domains.health_appropriations.schema_drift import (
 
 _SCHEMA = "archive-govt-nz.health-adapter-drift/v1"
 _OUTPUT_ENCODING = "archive-govt-nz.health-drift-typed-output/v1"
+
+
+def compare_dispatch_dimensions(
+    before: AdapterOutput, after: AdapterOutput
+) -> dict[str, object]:
+    """Compare source assertions without promoting them to approved mappings.
+
+    Unknown layouts cannot establish a baseline or a current comparison.
+    Source references and all other mapping fields remain subject to the
+    validated mapping contract. The result does not authorize normalization.
+    """
+    if before.layout == "unknown" or after.layout == "unknown":
+        return {
+            "status": "held",
+            "changes": [],
+            "normalization_approval": "not_granted",
+        }
+    changes = compare_mappings(before.dimensions, after.dimensions)
+    return {
+        "status": "drift" if changes else "matching",
+        "changes": [asdict(change) for change in changes],
+        "normalization_approval": "not_granted",
+    }
 
 
 def _encode_scalar(value: object) -> dict[str, str]:

@@ -6,6 +6,7 @@ from __future__ import annotations
 import hashlib
 from dataclasses import replace
 from decimal import Decimal
+from typing import cast
 
 import pytest
 from tests.domains.health_appropriations.test_compound_adapter_dispatch import (
@@ -26,6 +27,11 @@ from archive_govt_nz.domains.health_appropriations.adapter_drift import (
     compare_adapter_drift,
 )
 from archive_govt_nz.domains.health_appropriations.adapter_protocol import AdapterOutput
+from archive_govt_nz.domains.health_appropriations.dimension_mapping import (
+    Dimension,
+    Mapping,
+    source_reference,
+)
 
 
 class Producer:
@@ -50,6 +56,36 @@ def _result() -> DispatchResult:
             ),
         ),
     )
+
+
+def test_dispatch_dimension_comparison_reports_source_assertion_changes() -> None:
+    result = _result()
+    mapping = Mapping(
+        Dimension("measure", "fixture", "value"),
+        "2026",
+        "1",
+        unresolved_reason="source meaning not qualified",
+        source_references=(source_reference(PIN, "row:1"),),
+    )
+    current = replace(result, output=replace(result.output, dimensions=(mapping,)))
+    report = current.compare_dimensions(result)
+    assert report["status"] == "drift"
+    changes = cast("list[dict[str, object]]", report["changes"])
+    assert changes[0]["changes"] == ("added",)
+    assert report["normalization_approval"] == "not_granted"
+    assert (
+        report["baseline_receipt_sha256"] == result.to_drift_receipt()["receipt_sha256"]
+    )
+    assert (
+        report["current_receipt_sha256"] == current.to_drift_receipt()["receipt_sha256"]
+    )
+    assert current.compare_dimensions(current)["status"] == "matching"
+    held = replace(result, output=replace(result.output, layout="unknown"))
+    assert current.compare_dimensions(held)["status"] == "held"
+    incompatible = replace(
+        result, selection=replace(result.selection, adapter_id="different")
+    )
+    assert current.compare_dimensions(incompatible)["status"] == "held"
 
 
 def test_repeat_dispatch_drift_is_exact_and_does_not_treat_field_order_as_drift() -> (
