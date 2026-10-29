@@ -9,6 +9,16 @@ below remain evidence of their original scope, not prerequisites for every relea
 
 ## Live recovery coordination — 29 October 2026
 
+30 October canonical restore follow-up: chat `01a18773-d2f6-7582-9509-9f2588b5c84e`
+retains this worktree and the existing legislation workflow; branch
+`codex/legislation-canonical-restore` owns the parent reader and its focused tests.
+PRs #831/#832 repaired authentication and workflow parent bindings. The pinned
+canonical ZIP now passes a complete isolated cold restore, including original
+seal, state roots and historical schema validation. Next operation: merge this
+reader fix after required checks, verify the hosted main run and its artifacts,
+then re-enable the existing schedule. No canonical publication pointer or source
+scope changes. Local evidence: ignored `build/canonical-restore-20261030/`.
+
 30 October follow-up: the same chat/worktree owns branch
 `codex/legislation-discovery-auth`, the discovery request script and its focused
 regression test, plus the existing legislation secret/workflow. PR #830 is merged;

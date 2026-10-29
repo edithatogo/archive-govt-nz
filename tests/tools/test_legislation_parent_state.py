@@ -1656,3 +1656,61 @@ def test_original_zip_member_spelling_is_preserved(tmp_path: Path) -> None:
     )
     assert result["failure"] == "member_spelling"
     assert not (tmp_path / "state").exists()
+
+
+def test_canonical_recovery_preserves_sealed_state(tmp_path: Path) -> None:
+    """Restore the historical ZIP layout without dropping its seal or lineage."""
+    ref, meta, raw = fixture(tmp_path / "in")
+    output, quarantine = tmp_path / "state", tmp_path / "q"
+    req = request(ref)
+    req["context"]["software_commit"] = (
+        P.git_bytes(["rev-parse", "HEAD"]).decode().strip()
+    )
+    assert (
+        P.restore(
+            req,
+            {"output": output, "quarantine": quarantine},
+            client(meta, raw),
+            "synthetic",
+            NOW,
+        )["status"]
+        == "verified"
+    )
+    files = P.read_state(output)
+    (output / "receipts/harvest.json").write_bytes(v3_harvest(files))
+    P.seal(output, req["context"], quarantine)
+    files = P.read_state(output)
+    raw = fixtures.zip_bytes([("cas/", b""), ("receipts/", b""), *files.items()])
+    pinned = durable_reference(raw)
+    pinned["child_source"] = P.source_identity("")
+    manifest = P.v.load(files["manifest.json"])
+    pinned["durable"]["roots"] = {
+        "manifest_sha256": manifest["manifest_sha256"],
+        "inventory_sha256": manifest["discovered_inventory_sha256"],
+        "records": manifest["total_records"],
+        "work_ids": len(manifest["discovered_work_ids"]),
+    }
+    assert P.durable_files(raw, pinned) == files
+    changed = copy.deepcopy(pinned)
+    changed["durable"]["sha256"] = "0" * 64
+    with pytest.raises(P.v.VerificationError, match="durable_package_digest"):
+        P.durable_files(raw, changed)
+    changed = copy.deepcopy(pinned)
+    changed["durable"]["roots"]["records"] += 1
+    with pytest.raises(P.v.VerificationError, match="durable_roots"):
+        P.durable_files(raw, changed)
+    broken = {**files, P.LINEAGE: b"{}"}
+    altered = fixtures.zip_bytes(list(broken.items()))
+    changed = copy.deepcopy(pinned)
+    changed["durable"].update(sha256=P.v.sha(altered), size_bytes=len(altered))
+    with pytest.raises(P.v.VerificationError, match="parent_lineage_hash"):
+        P.durable_files(altered, changed)
+
+
+@pytest.mark.parametrize("directory", ["../", "cas/../", "unrelated/"])
+def test_canonical_directories_are_bounded(tmp_path: Path, directory: str) -> None:
+    """Directory markers are ignored only for known canonical state folders."""
+    _, _, raw = fixture(tmp_path)
+    entries = [(directory, b""), *P.unpack(raw).items()]
+    with pytest.raises(P.v.VerificationError, match="directory_member"):
+        P.unpack(fixtures.zip_bytes(entries), canonical_directories=True)
