@@ -50,9 +50,9 @@ from tests.domains.health_appropriations.test_vote_health_revenue import (
 from archive_govt_nz import cli, mcp_server
 from archive_govt_nz.cli import app, health_appropriations_extract_source
 from archive_govt_nz.domains.health_appropriations import (
+    context_operations,
     forecast,
     gdp,
-    context_operations,
     moh_indicators,
     pharmac,
     source_operations,
@@ -162,11 +162,15 @@ def test_source_operation_opt_in_drift_is_verifiable(
     assert result["status"] == "written_local"
     manifest = request.output_dir / "MANIFEST.json"
     receipt = context_operations.verify_context(
-        request.source, request.output_dir,
+        request.source,
+        request.output_dir,
         manifest_sha256=hashlib.sha256(manifest.read_bytes()).hexdigest(),
-        profile=request.profile, expected_sha256=request.expected_sha256,
-        source_vintage=request.source_vintage, source_locator=request.source_locator,
-        observed_at=request.observed_at, include_drift=True,
+        profile=request.profile,
+        expected_sha256=request.expected_sha256,
+        source_vintage=request.source_vintage,
+        source_locator=request.source_locator,
+        observed_at=request.observed_at,
+        include_drift=True,
     )
     assert receipt["schema_version"].endswith("/v2")
     assert receipt["adapter_drift"]["selection"] == receipt["adapter_selection"]
@@ -191,7 +195,9 @@ def test_source_drift_preflight_accepts_only_typed_option(
 def test_source_drift_rejects_unsupported_profile(
     request_source: source_operations.SourceRequest,
 ) -> None:
-    result = source_operations.operate_source(replace(request_source, include_drift=True))
+    result = source_operations.operate_source(
+        replace(request_source, include_drift=True)
+    )
     assert result["status"] == "failed"
     assert not request_source.output_dir.exists()
 
@@ -203,7 +209,9 @@ def test_cli_drift_flag_writes_versioned_manifest(
     args = ["health-appropriations-extract-source"]
     for key in request_source.__dataclass_fields__:
         if key != "include_drift":
-            args.extend(["--" + key.replace("_", "-"), str(getattr(request_source, key))])
+            args.extend(
+                ["--" + key.replace("_", "-"), str(getattr(request_source, key))]
+            )
     args.extend(["--include-drift", "--no-dry-run"])
     with pytest.raises(SystemExit) as exc:
         app(args, exit_on_error=False)
@@ -527,8 +535,13 @@ def test_extended_dispatch_preserves_source_specific_package(
     raw = normalizer(source, direct, **context, dry_run=False)
     destination = tmp_path / "dispatch"
     request = source_operations.SourceRequest(
-        source, destination, profile, context["expected_sha256"],
-        context["source_vintage"], context["source_locator"], context["observed_at"],
+        source,
+        destination,
+        profile,
+        context["expected_sha256"],
+        context["source_vintage"],
+        context["source_locator"],
+        context["observed_at"],
     )
     result = source_operations.operate_source(request, dry_run=False)
     assert result["status"] == "written_local"
@@ -578,8 +591,13 @@ def test_forecast_dispatch_preserves_package_and_partial_failure(
         source, direct, profile=profile, **context, dry_run=False
     )
     request = source_operations.SourceRequest(
-        source, destination, profile, context["expected_sha256"],
-        context["source_vintage"], context["source_locator"], context["observed_at"],
+        source,
+        destination,
+        profile,
+        context["expected_sha256"],
+        context["source_vintage"],
+        context["source_locator"],
+        context["observed_at"],
     )
     result = source_operations.operate_source(request, dry_run=False)
     assert result["status"] == "written_local"
@@ -672,7 +690,10 @@ def test_cli_mcp_preflight_parity(
     assert health_appropriations_extract_source(**arguments) == 0
     cli = json.loads(capsys.readouterr().out)
     assert cli.pop("command") == "health-appropriations-extract-source"
-    args = {key: str(value) if isinstance(value, Path) else value for key, value in arguments.items()}
+    args = {
+        key: str(value) if isinstance(value, Path) else value
+        for key, value in arguments.items()
+    }
     assert call_tool("health_appropriations_preflight_source", args) == cli
     tool = next(
         tool

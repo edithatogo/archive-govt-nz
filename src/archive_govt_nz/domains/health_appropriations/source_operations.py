@@ -873,7 +873,9 @@ def _validate(request: SourceRequest, *, dry_run: bool) -> None:
     locator = urlsplit(request.source_locator)
     if (
         not isinstance(dry_run, bool)
-        or (request.include_drift and request.profile not in context_operations.PROFILES)
+        or (
+            request.include_drift and request.profile not in context_operations.PROFILES
+        )
         or locator.scheme != "https"
         or not locator.hostname
         or locator.username is not None
