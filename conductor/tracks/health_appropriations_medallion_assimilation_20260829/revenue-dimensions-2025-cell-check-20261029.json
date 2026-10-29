@@ -1,0 +1,17 @@
+{
+  "all_currency_unknown": true,
+  "all_rights_not_evaluated": true,
+  "all_targets_unresolved": true,
+  "code_commit": "2aa0f335a044588ada9dab93a81f6f350521e2a0",
+  "independent_workbook_cell_checks": 414,
+  "per_kind": {
+    "amount_type": 69,
+    "department": 69,
+    "measure": 69,
+    "period": 69,
+    "unit": 69,
+    "vote": 69
+  },
+  "source_sha256": "2aef43eb419420a549fe56a946539f6e9afcbd91f95e9242457f26c97bafafaa",
+  "source_unchanged": true
+}

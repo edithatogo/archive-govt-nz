@@ -1,0 +1,21 @@
+{
+  "all_currency_unknown": true,
+  "all_rights_not_evaluated": true,
+  "all_targets_unresolved": true,
+  "code_commit": "2aa0f335a044588ada9dab93a81f6f350521e2a0",
+  "dimensions": 14,
+  "independent_workbook_cell_checks": 420,
+  "per_kind": {
+    "amount_type": 70,
+    "department": 70,
+    "measure": 70,
+    "period": 70,
+    "unit": 70,
+    "vote": 70
+  },
+  "records": 70,
+  "repeat_result_equal": true,
+  "source_sha256": "8243f6a3f9575af5ee048133f2695f3c4764ff7d86e7a74849fdafcf478cbfdb",
+  "source_unchanged": true,
+  "source_vintage": "Budget-2026"
+}

@@ -1,0 +1,37 @@
+{
+  "code_commit": "2aa0f335a044588ada9dab93a81f6f350521e2a0",
+  "dimension_links": 414,
+  "dimensions": 14,
+  "lineage": 1104,
+  "link_kinds": {
+    "amount_type": 69,
+    "department": 69,
+    "measure": 69,
+    "period": 69,
+    "unit": 69,
+    "vote": 69
+  },
+  "publication": "not_performed",
+  "records": 69,
+  "repeat_result_equal": true,
+  "rights": "not_evaluated",
+  "selection": {
+    "adapter_id": "nz-budget-health-revenue",
+    "adapter_version": "1.0.0",
+    "considered_adapter_ids": [
+      "nz-budget-health-revenue"
+    ],
+    "declared_media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "detected_media_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "matched_adapter_ids": [
+      "nz-budget-health-revenue"
+    ],
+    "reason": null,
+    "schema_version": "archive-govt-nz.health-adapter-selection/v1",
+    "source_sha256": "2aef43eb419420a549fe56a946539f6e9afcbd91f95e9242457f26c97bafafaa",
+    "status": "selected"
+  },
+  "source_sha256": "2aef43eb419420a549fe56a946539f6e9afcbd91f95e9242457f26c97bafafaa",
+  "source_unchanged": true,
+  "source_vintage": "Budget-2025"
+}
