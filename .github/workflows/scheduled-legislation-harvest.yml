@@ -91,6 +91,7 @@ jobs:
         with:
           mode: continuation
           parent-reference: ${{ inputs.parent_reference || 'config/legislation/parents/current.json' }}
+          seed-id: historical-work-ids-0001
           execution-id: ${{ github.event_name == 'schedule' && format('freshness-{0}', github.run_id) || inputs.batch_id }}
           github-token: ${{ github.token }}
       - name: Acquire into isolated child state
