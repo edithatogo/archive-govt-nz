@@ -105,6 +105,16 @@ def test_dispatch_preserves_native_rows_and_every_cell_and_sheet(
             assert link[field] == by_id[link["record_id"]][field]
     assert len(facts) == 10
     assert str(facts[0]["amount"]) == "605.70000000000005000"
+    assert len(first.output.dimension_links) == 30
+    assert all(mapping.target is None for mapping in first.output.dimensions)
+    first_links = {
+        link.kind: link
+        for link in first.output.dimension_links
+        if link.source_record_id == facts[0]["record_id"]
+    }
+    assert first_links["unit"].raw_value == "$ millions"
+    assert first_links["measure"].raw_value == "Health"
+    assert first_links["period"].raw_value == facts[0]["year_label"]
 
     def deny(*_args: object, **_kwargs: object) -> None:
         message = "dispatch attempted Python file access"
