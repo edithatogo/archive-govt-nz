@@ -35,23 +35,6 @@ def _fingerprint(record: dict[str, Any]) -> str:
     return hashlib.sha256(canonical).hexdigest()
 
 
-async def page_with_fallback(
-    client: BoundedCkanClient,
-    params: dict[str, object],
-) -> tuple[ActionObservation, str, dict[str, object] | None]:
-    """Use GET only after a bounded POST failure and retain its receipt."""
-    try:
-        return await client.action("package_search", params), "POST", None
-    except CkanError as post_error:
-        post_receipt: dict[str, object] = {
-            "method": "POST",
-            "status": "failed",
-            "status_code": getattr(post_error, "status_code", None),
-            "error_class": post_error.error_class,
-        }
-        return await client.action_get("package_search", params), "GET", post_receipt
-
-
 async def _discover(
     base_url: str,
     page_size: int,
@@ -92,9 +75,8 @@ async def _discover(
                         "start": start,
                     }
                     try:
-                        page, method, post_failure = await page_with_fallback(
-                            client, request_params
-                        )
+                        page = await client.action_get("package_search", request_params)
+                        method = "GET"
                         break
                     except CkanError as error:
                         failures.append(
@@ -105,6 +87,8 @@ async def _discover(
                                 "error_class": error.error_class,
                             }
                         )
+                        if getattr(error, "status_code", None) in {200, 401, 403}:
+                            break
                 if page is None:
                     return {
                         "schema_version": "archive-govt-nz.health-discovery/v1",
@@ -131,9 +115,7 @@ async def _discover(
                         "returned": len(rows),
                         "method": method,
                         "fallback_from": post_failure,
-                        "transport_reconciliation": (
-                            "get-fallback" if method == "GET" else "post-primary"
-                        ),
+                        "transport_reconciliation": ("get-primary"),
                         "raw_path": str(raw_path),
                         "raw_bytes": len(page.raw_body),
                         "sha256": page.raw_sha256,
@@ -187,7 +169,7 @@ def _policy(page_size: int) -> dict[str, object]:
         "payload_capture": False,
         "publication": False,
         "max_page_size": page_size,
-        "post_primary_get_after_failure": True,
+        "post_primary_get_after_failure": False,
         "unknown_rights_fail_closed": True,
         "sensitivity_requires_decision": True,
     }

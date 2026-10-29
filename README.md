@@ -56,7 +56,7 @@ flowchart TD
 
 ## Key Features
 
-1. **Config-driven source-set capture**: `capture --source-set <name>` performs
+1. **Config-driven source-set capture**: `capture --source-type <name>` performs
    bounded network acquisition against declared YAML source sets, persists each
    response as a WARC 1.1 record, and emits content-addressed capture receipts.
    Sources requiring credentials or discovery infrastructure are recorded as
@@ -119,15 +119,17 @@ or blocked.
 ### Scheduled multi-source harvesting
 ```bash
 # Capture one configured source set (network operation)
-uv run --locked archive-govt-nz capture --source-set treasury \
-  --output-dir build/receipts/treasury --warc-dir build/warc/treasury
+uv run --locked archive-govt-nz capture --source-type government-web \
+  --store-root build/cas/government-web --warc-dir build/warc/government-web
 
 # Generate and verify fixity over captured WARC output
-uv run --locked archive-govt-nz archive --action manifest --output-dir build/warc/treasury
-uv run --locked archive-govt-nz archive --action verify --output-dir build/warc/treasury
+uv run --locked archive-govt-nz archive --action manifest --output-dir build/warc/government-web
+uv run --locked archive-govt-nz archive --action verify --output-dir build/warc/government-web
 ```
 The `scheduled-multi-source-harvest` workflow runs this sequence per configured
-source set on a schedule, uploads receipts and WARC artifacts, and fails closed
+source set. Its recurring default is `government-web`; Treasury is access-held
+and unconfigured sources remain manual. It retains CAS originals, receipts and
+WARC artifacts for 90 days (recovery retention, not permanent publication), and fails closed
 on any capture or fixity error. Use domain runners only where their own runbook
 and evidence gates authorize them.
 

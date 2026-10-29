@@ -119,6 +119,33 @@ def test_action_get_uses_query_encoding_with_identical_receipt() -> None:
     assert result.raw_sha256 == hashlib.sha256(result.raw_body).hexdigest()
 
 
+def test_selected_get_method_uses_query_encoding_with_identical_receipt() -> None:
+    """GET changes only method/encoding and retains deterministic evidence."""
+    observed: list[httpx.Request] = []
+
+    async def handler(request: httpx.Request) -> httpx.Response:
+        observed.append(request)
+        return httpx.Response(200, json={"success": True, "result": {"count": 1}})
+
+    async def execute() -> ActionObservation:
+        async with BoundedCkanClient(
+            make_config(),
+            method="GET",
+            transport=httpx.MockTransport(handler),
+            clock=lambda: OBSERVED_AT,
+            jitter=lambda: 0.0,
+        ) as client:
+            return await client.action("package_search", {"q": "health", "rows": 1})
+
+    result = asyncio.run(execute())
+
+    assert observed[0].method == "GET"
+    assert str(observed[0].url.params) == "q=health&rows=1"
+    assert observed[0].content == b""
+    assert result.observed_at == OBSERVED_AT
+    assert result.raw_sha256 == hashlib.sha256(result.raw_body).hexdigest()
+
+
 def test_post_and_get_have_parity_for_equivalent_action_results() -> None:
     """Equivalent Action documents produce equivalent hashes and results."""
     body = b'{"success":true,"result":{"count":2,"results":[{"id":"a"},{"id":"b"}]}}'

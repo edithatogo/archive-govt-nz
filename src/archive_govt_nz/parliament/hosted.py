@@ -143,14 +143,15 @@ def controls(archive: ParliamentArchive) -> dict[str, Any]:
         }
 
 
-def begin(manager: Checkpoints) -> None:
-    """Select one small recoverable page, with alternating recent/history lanes."""
+def begin(manager: Checkpoints, *, recent_only: bool = False) -> None:
+    """Select one small page; optional history never resets retained cursors."""
     archive = manager.archive
     if archive is None:
         abort("hosted_archive_missing")
     cursor = controls(archive)
-    recent = manager.cycle % 2 == 0
-    query = {"page": (manager.cycle // 2) % 10 + 1, "page_size": 10, "keyword": ""}
+    recent = recent_only or manager.cycle % 2 == 0
+    page = manager.cycle % 10 + 1 if recent_only else (manager.cycle // 2) % 10 + 1
+    query = {"page": page, "page_size": 10, "keyword": ""}
     partition = "recent"
     if not recent:
         round_number = manager.cycle // 2
@@ -463,6 +464,7 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - finite checkpointed lifecycl
     max_batches: int = 1,
     max_seconds: int = 10800,
     hold_seconds: int = 0,
+    recent_only: bool = False,
     transport: NativeTransport | None = None,
 ) -> dict[str, Any]:
     """Restore, fence and process finite serial attempts; no unrestricted lane."""
@@ -542,7 +544,7 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - finite checkpointed lifecycl
                 manager.save()
             if unreviewed_failures(archive):
                 abort("held_failed_reports")
-            begin(manager)
+            begin(manager, recent_only=recent_only)
             try:
                 asyncio.run(acquire(manager))
             except TimeoutError:

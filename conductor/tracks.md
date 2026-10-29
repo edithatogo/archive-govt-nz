@@ -7,6 +7,36 @@ Execution policy: [bounded autonomous delivery](./autonomy.md). The
 completion, ongoing operations and deferred expansion. Historical track statuses
 below remain evidence of their original scope, not prerequisites for every release.
 
+## Live recovery coordination — 29 October 2026
+
+- Chat: `01a18773-d2f6-7582-9509-9f2588b5c84e`.
+- Worktree: `/Users/doughnut/.codex/worktrees/archive-completion/archive-govt-nz`.
+- Branch: `codex/live-archive-recovery`, based on merged `8568e811`.
+- Scope: essential existing archive recovery/publication and bounded workflow
+  repairs; optional source/corpus expansion remains on the roadmap.
+- Native ownership: this chat coordinates the existing Parliament workflow and
+  its exact `parliament/control/continuation.json` recovery. Use hosted fencing,
+  terminal-owner evidence and original GitHub/HF bindings; no local credential
+  transfer or changes to the frozen SSD source. Other source/native owners remain.
+- Completed: native verify run `40872104266` cold-restored all 1,137 objects;
+  checkpoint `d0c6c398ac97d76552f42e88f49486eee35cbed105d3fbbc19b18a6ed5ede958`
+  is verified. Public pointer readback at `da0c0b8e8782e71b90a58134b431e613680483f0`
+  has no owner/pause. Summary: 947 captured, 37 publication batches, one reviewed
+  access hold, zero pending or unreviewed failures; no coverage claim.
+- Next operation: bounded pilot `40873817940` finishes interrupted work before
+  new discovery; verify public output and then the corrected hosted workflows.
+- Batched read-only GET checks observed Treasury 54 datasets (three pages) and
+  broader Health 803 datasets. Website Treasury remains HTTP 403; legislation
+  existing-key HTTP 401 is retained as one external credential dependency.
+- Source packet: one recent Parliament batch/hour, complete web recovery
+  artifacts retained 90 days, GET metadata discovery, and empty Gazette cron
+  deferred. Focused checks: 77 passed, then 12 directly affected checks passed;
+  actionlint/ShellCheck passed. Release harness is in progress; one type-only
+  annotation failure was corrected and the types stage passed. Evidence is under
+  ignored `build/live-recovery-20261029/`.
+- Existing Health recovery PR828 is reviewed as a scoped integration packet;
+  its original checkout and private runtime remain untouched.
+
 ## Current coordination — 29 October 2026
 
 - Chat: `01a18773-d2f6-7582-9509-9f2588b5c84e`.

@@ -44,7 +44,7 @@ async def _observe(
         jitter_seconds=0.25,
         max_response_bytes=8 * 1024 * 1024,
     )
-    async with BoundedCkanClient(config) as client:
+    async with BoundedCkanClient(config, method="GET") as client:
         capability = await client.observe_capability()
         scope = await TreasuryDiscovery(client, page_size=page_size).discover()
     return write_live_evidence(output_dir, capability, scope)
