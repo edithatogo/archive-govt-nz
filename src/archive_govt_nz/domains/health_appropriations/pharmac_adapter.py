@@ -15,6 +15,9 @@ from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     LossAccounting,
     preserved_only,
 )
+from archive_govt_nz.domains.health_appropriations.context_dimensions import (
+    context_source_dimensions,
+)
 from archive_govt_nz.domains.health_appropriations.workbook_common import source_context
 
 _MEDIA_TYPE = "text/html"
@@ -90,11 +93,17 @@ class PharmacBudgetAdapter:
             for row in dispositions
             if row["disposition"] not in ("normalized", "context")
         )
+        records = tuple(dict(row) for row in facts)
+        dimensions, links = context_source_dimensions(
+            records, field_lineage, family="pharmac"
+        )
         return AdapterOutput(
-            records=tuple(dict(row) for row in facts),
+            records=records,
             losses=losses,
             lineage=field_lineage,
             layout=pharmac.TRANSFORMATION,
+            dimensions=dimensions,
+            dimension_links=links,
         )
 
 
