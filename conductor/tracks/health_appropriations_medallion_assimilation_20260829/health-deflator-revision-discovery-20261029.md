@@ -25,6 +25,18 @@ annualised PPI. This supports distinguishing wage and input components; the
 manual does not identify the selected LCI sub-index as `LCI025AC`, establish
 the current method, or support applying it to all Vote Health appropriations.
 
+The later [component-index source evidence](./component-index-source-evidence-20261018.md)
+supersedes the earlier discovery-only coverage description: it identifies
+retained, hash-bound source CSVs and selection files for LCI025AA/LCI025AC and
+PPI021AA/PPI021CC. LCI has 69 numeric quarters and 66 publisher-missing values;
+PPI has 120 numeric quarters and nine publisher-missing values. The PPI
+selection includes social assistance and is not restricted to central
+government. Neither retained selection identifies the healthcare-sales
+composite deflator or proves equivalence to the historical LCI sub-index.
+The next eligible step is source-separated Silver normalization from the
+retained objects, subject to the existing admission contracts; no recapture is
+needed. Rights and analytical policies remain separate and unresolved.
+
 The existing register's [September 2022 methodology](https://datainfoplus.stats.govt.nz/item/nz.govt.stats/81c86948-c813-486a-b46b-0c614f03291a/4)
 describes a separate improvement to the health compensation-of-employees
 deflator and deferred alignment of health compensation volumes with production
