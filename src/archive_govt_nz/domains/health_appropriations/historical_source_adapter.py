@@ -20,6 +20,9 @@ from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     LossAccounting,
     preserved_only,
 )
+from archive_govt_nz.domains.health_appropriations.context_dimensions import (
+    context_source_dimensions,
+)
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
     encode_json,
     source_context,
@@ -108,7 +111,17 @@ class HistoricalSourceAdapter:
                 source_coordinate="bronze:sha256:" + source_sha256,
                 reason="reviewed_historical_admission_failed",
             )
-        return AdapterOutput(records, tuple(losses), lineage, ADAPTER_ID + "/v1")
+        dimensions, dimension_links = context_source_dimensions(
+            records, lineage, family="historical"
+        )
+        return AdapterOutput(
+            records,
+            tuple(losses),
+            lineage,
+            ADAPTER_ID + "/v1",
+            dimensions,
+            dimension_links,
+        )
 
 
 def historical_source_registration(
