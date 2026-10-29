@@ -95,6 +95,58 @@ def _pin(directory: Path) -> str:
     return hashlib.sha256((directory / "MANIFEST.json").read_bytes()).hexdigest()
 
 
+def test_versioned_drift_manifest_preserves_v1_and_verifies_exact_evidence(
+    tmp_path: Path,
+) -> None:
+    request = _request(tmp_path, *PROFILES[0][:2])
+    kwargs = {"profile": request.profile, **_context(request)}
+    legacy = operations.normalize_context(
+        request.source, request.output_dir, **kwargs, dry_run=False
+    )
+    assert legacy["schema_version"].endswith("/v1")
+    assert "adapter_drift" not in legacy
+    revised = tmp_path / "drift"
+    result = operations.normalize_context(
+        request.source, revised, **kwargs, dry_run=False, include_drift=True
+    )
+    assert result["schema_version"].endswith("/v2")
+    assert result["adapter_drift"]["selection"] == result["adapter_selection"]
+    repeat = tmp_path / "repeat-drift"
+    assert (
+        operations.normalize_context(
+            request.source, repeat, **kwargs, dry_run=False, include_drift=True
+        )
+        == result
+    )
+    assert _pin(repeat) == _pin(revised)
+    assert (
+        operations.verify_context(
+            request.source,
+            revised,
+            **kwargs,
+            manifest_sha256=_pin(revised),
+            include_drift=True,
+        )
+        == result
+    )
+    with pytest.raises(ValueError, match="source_byte_limit"):
+        operations.verify_context(
+            request.source, revised, **kwargs, manifest_sha256=_pin(revised)
+        )
+    manifest_path = revised / "MANIFEST.json"
+    forged = json.loads(manifest_path.read_bytes())
+    forged["adapter_drift"]["ordered_output_sha256"] = "0" * 64
+    manifest_path.write_bytes((encode_json(forged) + "\n").encode("utf-8"))
+    with pytest.raises(ValueError, match="invalid_context_operation"):
+        operations.verify_context(
+            request.source,
+            revised,
+            **kwargs,
+            manifest_sha256=_pin(revised),
+            include_drift=True,
+        )
+
+
 @pytest.mark.parametrize(("profile", "vintage", "native", "method"), PROFILES)
 def test_actual_common_output_native_parity_and_repeat(  # noqa: PLR0913, PLR0917 - five profile contracts
     tmp_path: Path,

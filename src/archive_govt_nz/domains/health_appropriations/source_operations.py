@@ -989,7 +989,10 @@ def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile disp
             request.source,
             request.output_dir,
             profile=request.profile,
-            **context,
+            expected_sha256=context["expected_sha256"],
+            source_vintage=context["source_vintage"],
+            source_locator=context["source_locator"],
+            observed_at=context["observed_at"],
             dry_run=dry_run,
         )
     if request.profile == vote_health_revenue.ESTIMATES_2002_03_PROFILE:
