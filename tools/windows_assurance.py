@@ -72,6 +72,7 @@ def main() -> int:
             "--pytest-distribution",
             "worksteal",
             "--pytest-diagnostics",
+            *sys.argv[1:],
         ),
         Path("build/assurance.log"),
     )

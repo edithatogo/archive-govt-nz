@@ -57,6 +57,10 @@ jobs:
           pytest_workers=auto
           pytest_distribution=loadscope
           pytest_reporting=()
+          assurance_profile="pr"
+          if [ "${{ matrix.os }}" = "ubuntu-latest" ]; then
+            assurance_profile="release"
+          fi
           if [ "${{ matrix.os }}" = "macos-latest" ]; then
             pytest_workers=1
           elif [ "${{ matrix.os }}" = "windows-latest" ]; then
@@ -64,6 +68,7 @@ jobs:
             pytest_reporting+=(--pytest-diagnostics)
           fi
           uv run --locked python tools/check.py \
+            --profile "$assurance_profile" \
             --pytest-workers "$pytest_workers" \
             --pytest-distribution "$pytest_distribution" \
             "${pytest_reporting[@]}" 2>&1 | tee build/assurance.log
@@ -74,8 +79,12 @@ jobs:
         env:
           PYTHONUNBUFFERED: '1'
         run: |
-          uv run --locked python tools/windows_assurance.py
+          uv run --locked python tools/windows_assurance.py --profile pr
           exit $LASTEXITCODE
+      - name: Verify installed runtime package
+        if: matrix.os == 'ubuntu-latest'
+        shell: bash
+        run: ./scripts/smoke-package.sh
       - name: Preserve Windows assurance diagnostics
         if: always() && matrix.os == 'windows-latest'
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9

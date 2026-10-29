@@ -1,6 +1,10 @@
 # Testing profiles
 
-The repository keeps the complete test suite as the promotion and CI gate.
+Both PR and release profiles keep the complete test suite and existing coverage
+policy. The default `./scripts/validate.sh` uses the 13-stage PR profile.
+`./scripts/validate.sh --profile release` retains all 32 original stages; only
+mutation campaigns and the CAS benchmark are additional to PR assurance. Linux
+CI runs release assurance, while macOS/Windows run PR assurance.
 For edit feedback, use `./scripts/test-focused.sh <path-or-node>` with the
 affected test file or exact pytest node. The script verifies the worktree's
 Python 3.15.1 interpreter and leaves pytest's cache enabled. After a failure,
@@ -28,4 +32,9 @@ selects by the registered marker and does not alter pytest configuration,
 randomisation, workers, or coverage settings.
 
 When comparing profiles, record the command, wall time, collected count, and
-executed count. The full CI command remains authoritative for release claims.
+executed count. The release profile remains authoritative for release claims.
+
+`uv run --locked python tools/check.py --list --profile release` lists every
+stage. Named `--stage` selection can run release-only stages directly, regardless
+of the default profile. Shell and PowerShell validation wrappers forward profile
+arguments. No new dependency or test-selection plugin is required.

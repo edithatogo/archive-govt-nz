@@ -36,8 +36,12 @@ def build_stages(
     pytest_distribution: str = "loadscope",
     pytest_diagnostics: bool = False,
     include_heavy: bool = False,
+    profile: str = "release",
 ) -> tuple[GateStage, ...]:
     """Build the gate sequence with an optional isolated xdist test lane."""
+    if profile not in {"pr", "release"}:
+        msg = f"unsupported assurance profile: {profile}"
+        raise ValueError(msg)
     if pytest_workers is not None and not (
         pytest_workers in {"auto", "logical"} or pytest_workers.isdecimal()
     ):
@@ -209,6 +213,12 @@ def build_stages(
             ("uv", "run", "--locked", "python", "tools/supply_chain.py", "sbom"),
         ),
     )
+    if profile == "pr":
+        stages = tuple(
+            stage
+            for stage in stages
+            if not stage.name.startswith("mutation") and stage.name != "benchmark-cas"
+        )
     if include_heavy:
         stages += (
             GateStage(
