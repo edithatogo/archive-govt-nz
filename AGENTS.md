@@ -26,7 +26,14 @@ This repository is a solo-maintainer codebase.
   dependencies, configuration, runtime, or generated evidence affecting
   multiple gates changes. Hosted CI remains the full PR assurance gate.
 - The harness runs `tools/check.py`, which enforces lock, format, lint,
-  typing, tests, schemas, mutation gates, and supply-chain checks.
+  typing, the full test suite, schemas, parity, and supply-chain checks.
+- Use `--profile release` for coherent integration/release milestones; this adds
+  the existing mutation gates and CAS benchmark. Linux CI runs release assurance;
+  macOS/Windows keep the full test suite in the PR profile.
+- Use focused tests during edits and reuse unchanged gate results.
+- Follow `docs/roadmap.md` and `conductor/workflow.md`: complete the selected
+  delivery, avoid routine approval/documentation ceremonies, and leave deferred
+  expansion on the roadmap.
 
 ## Python runtime qualification
 - All active Python use in this repository must use CPython 3.15.1 through an

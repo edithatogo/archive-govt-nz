@@ -97,14 +97,10 @@ upstream project's contribution, authorship, disclosure, and AI-use policies.
 
 ## Planning and traceability
 
-- Conductor tracks define implementation scope and evidence.
-- Every implementation track includes a MoSCoW `requirements.md`.
-- Design-bearing tracks include `design.md` with Mermaid diagrams.
-- GitHub issues use parent and nested subissues where supported.
-- Issues, pull requests, commits, and Conductor tracks cross-reference one
-  another.
-- Human approval, credentials, public publication, legal decisions, and
-  external-system changes remain explicit gates.
+Use the [bounded delivery workflow](./workflow.md) and [current roadmap](../docs/roadmap.md).
+Routine fixes need one concise record in the existing issue, run log or PR;
+new multi-file tracks and issue hierarchies are reserved for substantial work.
+Historical programme acceptance remains distinct from the usable software baseline.
 
 ## Success criteria
 

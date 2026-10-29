@@ -58,7 +58,7 @@ def test_static_and_coverage_policy_is_fail_closed() -> None:
 def test_repository_gate_lists_all_required_stages() -> None:
     """The single gate exposes its deterministic stage sequence."""
     result = subprocess.run(
-        [sys.executable, "tools/check.py", "--list"],
+        [sys.executable, "tools/check.py", "--list", "--profile", "release"],
         cwd=REPOSITORY_ROOT,
         check=False,
         capture_output=True,
@@ -345,3 +345,49 @@ def test_run_command_kills_process_on_windows_timeout(
     assert isinstance(command, tuple)
     assert str(command[0]).endswith("taskkill.exe")
     assert command[1:] == ("/PID", "4343", "/T", "/F")
+
+
+def test_pr_profile_preserves_full_tests_and_security() -> None:
+    """Only mutation campaigns and the CAS benchmark move to release assurance."""
+    release = {stage.name: stage.command for stage in build_stages()}
+    pr = {stage.name: stage.command for stage in build_stages(profile="pr")}
+    assert len(pr) == 13
+    assert all(command == release[name] for name, command in pr.items())
+    assert set(release) - set(pr) == {
+        name
+        for name in release
+        if name.startswith("mutation") or name == "benchmark-cas"
+    }
+    assert {
+        "tests",
+        "parity",
+        "schemas",
+        "audit",
+        "licenses",
+        "secrets",
+        "sbom",
+    } <= pr.keys()
+    result = subprocess.run(
+        [sys.executable, "tools/check.py", "--list"],
+        cwd=REPOSITORY_ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0
+    assert result.stdout.splitlines() == list(pr)
+
+
+def test_profile_selection_retains_explicit_mutation_reruns() -> None:
+    """A named release-only stage remains available in the ordinary CLI."""
+    result = subprocess.run(
+        [sys.executable, "tools/check.py", "--list", "--stage", "mutation"],
+        cwd=REPOSITORY_ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0
+    assert result.stdout.splitlines() == ["mutation"]
+    with pytest.raises(ValueError, match="unsupported assurance profile"):
+        build_stages(profile="unknown")
