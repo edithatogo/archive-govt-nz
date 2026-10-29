@@ -117,7 +117,7 @@ jobs:
       - name: Classify outcomes and request verified merge
         # The accepted-pending-merge receipt requires a later exclusive
         # tools/merge_legislation_states.py run for canonical admission.
-        if: ${{ hashFiles('build/legislation-state/receipts/harvest.json') != '' }}
+        if: ${{ hashFiles('build/legislation-discovery/no-change.json') == '' && hashFiles('build/legislation-state/receipts/harvest.json') != '' }}
         run: >-
           uv run --locked python tools/run_legislation_discovery.py classify
           --candidate-receipt build/legislation-discovery/candidates.json

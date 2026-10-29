@@ -10,6 +10,8 @@ import re
 from dataclasses import dataclass
 from typing import Any, Protocol
 
+from archive_govt_nz.domains.legislation.accounting import HarvestAccounting
+
 SCHEMA = "archive-govt-nz.legislation-discovery-query/v1"
 OFFICIAL_ENDPOINT = "https://api.legislation.govt.nz/v0/works/"
 GENERIC_TERMS = {"act", "bill", "regulation"}
@@ -191,11 +193,10 @@ def acquisition_receipts(
         != "archive-govt-nz.legislation-harvest-receipt/v3"
     ):
         raise ValueError("acquisition requires a v3 harvest receipt")
-    accounting = harvest_receipt.get("accounting")
-    if not isinstance(accounting, dict) or not isinstance(
-        accounting.get("works"), list
-    ):
-        raise ValueError("harvest accounting is incomplete")
+    try:
+        accounting = HarvestAccounting.from_receipt(harvest_receipt).to_receipt()
+    except (TypeError, ValueError) as exc:
+        raise ValueError("harvest accounting is incomplete") from exc
     allowed = {
         "newly_preserved",
         "changed_preserved",
@@ -207,8 +208,6 @@ def acquisition_receipts(
     }
     groups: dict[str, list[dict[str, Any]]] = {key: [] for key in allowed}
     for row in accounting["works"]:
-        if not isinstance(row, dict) or row.get("disposition") not in allowed:
-            raise ValueError("harvest work disposition is malformed")
         groups[row["disposition"]].append(row)
     accepted = groups["newly_preserved"] + groups["changed_preserved"]
     rejected = groups["unavailable"] + groups["partial"] + groups["failed"]
