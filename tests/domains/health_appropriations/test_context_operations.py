@@ -136,7 +136,7 @@ def test_versioned_drift_manifest_preserves_v1_and_verifies_exact_evidence(
     manifest_path = revised / "MANIFEST.json"
     forged = json.loads(manifest_path.read_bytes())
     forged["adapter_drift"]["ordered_output_sha256"] = "0" * 64
-    manifest_path.write_text(encode_json(forged) + "\n")
+    manifest_path.write_bytes((encode_json(forged) + "\n").encode("utf-8"))
     with pytest.raises(ValueError, match="invalid_context_operation"):
         operations.verify_context(
             request.source,
