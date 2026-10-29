@@ -43,6 +43,8 @@ jobs:
       LEGISLATION_API_KEY: ${{ secrets.LEGISLATION_API_KEY }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.15.1"
@@ -91,6 +93,7 @@ jobs:
         with:
           mode: continuation
           parent-reference: ${{ inputs.parent_reference || 'config/legislation/parents/current.json' }}
+          seed-id: historical-work-ids-0001
           execution-id: ${{ github.event_name == 'schedule' && format('freshness-{0}', github.run_id) || inputs.batch_id }}
           github-token: ${{ github.token }}
       - name: Acquire into isolated child state
