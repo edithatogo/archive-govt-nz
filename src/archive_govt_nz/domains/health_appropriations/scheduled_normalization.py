@@ -86,7 +86,7 @@ def _digest(path: Path, *, max_bytes: int = MAX_OUTPUT_BYTES) -> str:
 
 
 def _identity(request: SourceRequest, runtime_fingerprint: str) -> str:
-    payload = {
+    payload: dict[str, str | bool] = {
         "source": str(request.source.absolute()),
         "profile": request.profile,
         "sha256": request.expected_sha256,
@@ -95,6 +95,8 @@ def _identity(request: SourceRequest, runtime_fingerprint: str) -> str:
         "observed_at": request.observed_at,
         "runtime_fingerprint": runtime_fingerprint,
     }
+    if request.include_drift:
+        payload["include_drift"] = True
     return hashlib.sha256(
         json.dumps(payload, sort_keys=True, separators=(",", ":")).encode()
     ).hexdigest()
@@ -193,7 +195,11 @@ def run_scheduled_normalization(  # noqa: C901, PLR0912, PLR0915 - explicit stat
     incomplete attempts are preserved and a completed receipt is reused only
     after verifying its exact output inventory and source digest.
     """
-    if type(dry_run) is not bool or root.is_symlink():
+    if (
+        type(dry_run) is not bool
+        or type(request.include_drift) is not bool
+        or root.is_symlink()
+    ):
         msg = "scheduled_arguments_invalid"
         raise ValueError(msg)
     if _digest(request.source, max_bytes=MAX_SOURCE_BYTES) != request.expected_sha256:
