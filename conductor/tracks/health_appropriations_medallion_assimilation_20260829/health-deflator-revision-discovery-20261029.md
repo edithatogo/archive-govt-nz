@@ -17,6 +17,14 @@ series and did not affect current-price series. This is a healthcare-sales
 component observation, separate from compensation of employees and from the
 whole Vote Health appropriation.
 
+The [2018 quarterly GDP sources and methods, fifth edition](https://www.stats.govt.nz/assets/Uploads/Methods/Quarterly-gross-domestic-product-Sources-and-methods-fifth-edition/quarterly-gross-domestic-product-sources-and-methods-fifth-edition.pdf)
+also describes a historical central-government health production indicator
+based on district health board salaries and wages deflated by an LCI sub-index.
+Its annual method separately deflates balanced intermediate consumption using
+annualised PPI. This supports distinguishing wage and input components; the
+manual does not identify the selected LCI sub-index as `LCI025AC`, establish
+the current method, or support applying it to all Vote Health appropriations.
+
 The existing register's [September 2022 methodology](https://datainfoplus.stats.govt.nz/item/nz.govt.stats/81c86948-c813-486a-b46b-0c614f03291a/4)
 describes a separate improvement to the health compensation-of-employees
 deflator and deferred alignment of health compensation volumes with production
