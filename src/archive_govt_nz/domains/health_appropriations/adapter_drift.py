@@ -201,7 +201,7 @@ def compare_adapter_drift(
     return {
         **comparison,
         "status": "held"
-        if after["status"] == "preserved_only"
+        if any(receipt["status"] == "preserved_only" for receipt in (before, after))
         else comparison["status"],
         "source_changed": before["source_sha256"] != after["source_sha256"],
         "ordered_output_identical": before["ordered_output_sha256"]
