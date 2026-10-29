@@ -9,6 +9,7 @@ import copy
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
+from tests.domains.test_legislation_accounting import accounting
 
 from archive_govt_nz.domains.legislation.discovery_lane import (
     DiscoveryScope,
@@ -83,26 +84,16 @@ def test_query_drift_requires_versioning() -> None:
 
 def test_acquisition_outcomes_remain_pending_merge() -> None:
     candidate = discover(scope(), lambda _params: {"results": []})
-    harvest = {
-        "schema_version": "archive-govt-nz.legislation-harvest-receipt/v3",
-        "accounting": {
-            "works": [
-                {"work_id": "act_1", "disposition": "newly_preserved"},
-                {"work_id": "act_2", "disposition": "failed"},
-                {"work_id": "act_3", "disposition": "already_processed_skipped"},
-            ]
-        },
-    }
+    harvest = accounting().to_receipt()
     receipts = acquisition_receipts(candidate, harvest)
     accepted = receipts["accepted-pending-merge"]
+    assert {row["work_id"] for row in accepted["works"]} == {"new", "changed"}
     assert accepted["canonical_state_changed"] is False
     assert accepted["admission_status"] == "pending_verified_state_merge"
-    assert (
-        receipts["rejected-duplicate-unavailable-partial-failed"]["rejected"][0][
-            "work_id"
-        ]
-        == "act_2"
-    )
+    assert {
+        row["work_id"]
+        for row in receipts["rejected-duplicate-unavailable-partial-failed"]["rejected"]
+    } == {"missing", "partial", "failed"}
 
 
 @pytest.mark.parametrize(
@@ -128,7 +119,7 @@ def test_acquisition_outcomes_remain_pending_merge() -> None:
                 "schema_version": "archive-govt-nz.legislation-harvest-receipt/v3",
                 "accounting": {"works": [{"disposition": "invented"}]},
             },
-            "disposition is malformed",
+            "accounting is incomplete",
         ),
     ],
 )
