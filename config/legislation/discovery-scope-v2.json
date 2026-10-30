@@ -1,0 +1,11 @@
+{
+  "endpoint": "https://api.legislation.govt.nz/v0/works/",
+  "legislation_types": ["act", "bill", "amendment_paper", "secondary_legislation"],
+  "max_candidates": 40,
+  "max_pages": 1,
+  "page_size": 10,
+  "scope_id": "legislation-freshness-0002",
+  "sort_by": "most_recently_updated",
+  "start_page": 1,
+  "terms": ["amendment"]
+}

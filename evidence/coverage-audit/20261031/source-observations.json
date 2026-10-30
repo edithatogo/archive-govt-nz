@@ -1,0 +1,67 @@
+{
+  "source_cards": [
+    {
+      "dataset": "edithatogo/corpus-legislation-nz",
+      "revision": "0a4dde01a458237a494dc9d0016ef5780dd597e7",
+      "card_path": "README.md",
+      "card_sha256": "073e8b2bdf8ebca8ccc27004fcd0f2fc7e972354c6b3890c54b127f36c4718c8"
+    },
+    {
+      "dataset": "edithatogo/corpus-legislation-nz-historical",
+      "revision": "d7ce1a6a4565f3f719c7acc929dca4fa005c7daf",
+      "card_path": "README.md",
+      "card_sha256": "6f8b50e34bac5ee3dd413aafa3ca3524be4d1dd0e0e91bd64637fd80ed07298e"
+    },
+    {
+      "dataset": "edithatogo/nz-hansard-corpus",
+      "revision": "dc8f0937c787e51a1124ea22dd431a0e7b42e03f",
+      "card_path": "README.md",
+      "card_sha256": "bb66297ade21ecab26e812341067daad3a34615274d0079594a04230bdf8052f"
+    },
+    {
+      "dataset": "edithatogo/nz-hansard-source-archive",
+      "revision": "72e7f2971d07c2f8a8342a2f4396a68b6584b2b8",
+      "card_path": "README.md",
+      "card_sha256": "7a1cc1d05ea5a8cb94eb690eee71c0176cccec6b736548ac32be0269f167bae9"
+    },
+    {
+      "dataset": "edithatogo/corpus-cases-medilegal-nz",
+      "revision": "3f28e54c743539bad93a41cb99129f42dbcf8f35",
+      "card_path": "README.md",
+      "card_sha256": "97222830d3fcf916ac9612f85bd73dd5dd3848f81cb7593afeea04878dd644d7"
+    },
+    {
+      "dataset": "edithatogo/courts-nz-public-notices-archive",
+      "revision": "73d3a3e63972a4861672b4e3b91fcaaa6c46f6e9",
+      "card_path": "README.md",
+      "card_sha256": "eaa8bbaef115a6140b54c2efc8e1b1d5670dcf12a4bef5e37a17ad59543aef72"
+    }
+  ],
+  "published_claims_not_recomputed": {
+    "hansard_document_rows": 193922,
+    "hansard_parliaments": [
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54
+    ],
+    "hansard_source_files": 8,
+    "hansard_source_archive_label": "2024-09-06 Hansard Extract from DocumentsDB.zip"
+  },
+  "inspected_related_code": {
+    "corpus-nz-hansard": "2a4acda7a586c29151bd15b0d3230ece0f0d5c81",
+    "corpus-cases-medilegal-nz": "52c30468f692a6337a549c09e00f1caff2efaa75",
+    "hathi-nz": "3addf8260ad5730036d92f15b42b3e30ef7c6881"
+  },
+  "official_sources": [
+    "https://api.legislation.govt.nz/docs/",
+    "https://www.courtsofnz.govt.nz/judgments",
+    "https://www.parliament.nz/Copyright"
+  ],
+  "legislation_bounded_unauthenticated_probe_http_status": 401,
+  "case_pipeline_execution_performed": false
+}

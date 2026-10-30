@@ -1,0 +1,100 @@
+{
+  "pointer": {
+    "authority": "hosted",
+    "card_sha256": "afa5a09632725f04799700d8ab086d182beff2a1d7dc58db798cccc7d9d6c703",
+    "checkpoint": {
+      "revision": "ad0d3d6a939fc531d19ac7a58d76615052ad70b9",
+      "sha256": "2fdea9ad4a0aba6ed85566ec218f3729e7ba3523cffb662dc9ed1011c1800844",
+      "status": "verified"
+    },
+    "enabled": true,
+    "generation": 945,
+    "lease_until": 0,
+    "owner": null,
+    "paused": null,
+    "schema": "parliament-continuation/v1"
+  },
+  "compressed_snapshot_sha256_verified": true,
+  "table_counts": {
+    "captures": 1897,
+    "control": 7,
+    "events": 951,
+    "members": 1897,
+    "observations": 1897,
+    "pages": 115,
+    "publications": 37,
+    "records": 949
+  },
+  "record_status_counts": {
+    "captured": 947,
+    "metadata_only": 1,
+    "failed": 1
+  },
+  "published_batches_verified_in_ledger": 37,
+  "published_distinct_source_ids": 949,
+  "captured_source_ids_missing_verified_membership": 0,
+  "controls": {
+    "schema_version": 2,
+    "reports:historical-reconciliation-anchor-20261027": {
+      "keyword": "",
+      "page": 2,
+      "page_size": 10
+    },
+    "reports:historical-reconciliation-20261027": {
+      "keyword": "",
+      "page": 11,
+      "page_size": 10
+    },
+    "reports:late-attachment-reconciliation-20261027": {
+      "keyword": "T\u0101maki Redevelopment",
+      "page": null,
+      "page_size": 10
+    },
+    "reports:historical": {
+      "keyword": "",
+      "page": 95,
+      "page_size": 10
+    },
+    "last_request": 1793364409.3544066,
+    "reports:recent": {
+      "keyword": "",
+      "page": 3,
+      "page_size": 10
+    }
+  },
+  "latest_observed_source_total": 10970,
+  "page_total_range": [
+    10,
+    10970
+  ],
+  "captures_distinct_payloads": 1041,
+  "published_distinct_payloads": 1041,
+  "sample_verifications": [
+    {
+      "manifest_revision": "a28efc9448c8d3afb4416c48f074e7304c821ae0",
+      "manifest_sha256": "ae315f23bd8aed4caadc89c06b69ddbaca2bb5683c090e4b8f46b61497aadf1a",
+      "object_sha256": "aac8a0f3d55723dc43d3ae920708ff5ed84e06dd719cd030bc5ffb895b7df48e",
+      "object_size": 5120,
+      "hashes_verified": true
+    },
+    {
+      "revision": "c82520171de5b5b06182d2d2568f4238faac47f8",
+      "path": "parliament/batches/25c70191ddbae03b43fa4b92e2a94720274f32cf9de54073a74f6dd8e7648280/objects/cfc09c1d572383d589f1045df527fc3980266aa5ceb681c33e416e39c552a3bc",
+      "sha256": "cfc09c1d572383d589f1045df527fc3980266aa5ceb681c33e416e39c552a3bc",
+      "size": 259946,
+      "pdf_signature": true,
+      "hash_verified": true
+    }
+  ],
+  "live_source_probe": {
+    "endpoint": "https://selectcommittees.parliament.nz/api/data/search",
+    "method": "POST read-only search",
+    "query": {
+      "page": 1,
+      "pageSize": 1,
+      "keyword": ""
+    },
+    "totalResults": 10970,
+    "response_sha256": "00829ca049da08e0cb28d05e5b5debb5f8a34b96e315e571892b52fc68a2bf48"
+  }
+}

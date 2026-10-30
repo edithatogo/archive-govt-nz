@@ -10,6 +10,11 @@ on:
         required: true
         type: boolean
         default: false
+      discovery_only:
+        description: "Query and qualify discovery without parent restoration or acquisition"
+        required: true
+        type: boolean
+        default: false
       batch_id:
         description: "Unique discovery attempt identity"
         required: true
@@ -18,7 +23,7 @@ on:
         description: "Committed versioned discovery scope"
         required: true
         type: string
-        default: "config/legislation/discovery-scope-v1.json"
+        default: "config/legislation/discovery-scope-v2.json"
       parent_reference:
         description: "Committed pinned parent reference"
         required: true
@@ -58,7 +63,7 @@ jobs:
           test -n "$BATCH_ID"
       - name: Query bounded candidate pages
         env:
-          SCOPE_PATH: ${{ inputs.scope_path || 'config/legislation/discovery-scope-v1.json' }}
+          SCOPE_PATH: ${{ inputs.scope_path || 'config/legislation/discovery-scope-v2.json' }}
         run: >-
           uv run --locked python tools/run_legislation_discovery.py query
           --scope "$SCOPE_PATH"
@@ -89,6 +94,7 @@ jobs:
           )
           PY
       - name: Verify selected parent before acquisition
+        if: ${{ !inputs.discovery_only }}
         uses: ./.github/actions/legislation-parent-state
         with:
           mode: continuation
@@ -97,6 +103,7 @@ jobs:
           execution-id: ${{ github.event_name == 'schedule' && format('freshness-{0}', github.run_id) || inputs.batch_id }}
           github-token: ${{ github.token }}
       - name: Acquire into isolated child state
+        if: ${{ !inputs.discovery_only }}
         env:
           BATCH_ID: ${{ github.event_name == 'schedule' && format('freshness-{0}', github.run_id) || inputs.batch_id }}
         run: |

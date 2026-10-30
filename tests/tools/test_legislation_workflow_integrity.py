@@ -55,7 +55,7 @@ def test_discovery_requires_versioned_scope_and_isolated_state() -> None:
         "confirmed_execution",
         "batch_id",
         "scope_path",
-        "discovery-scope-v1.json",
+        "discovery-scope-v2.json",
         "parent_reference",
         "accepted-pending-merge",
         "tools/merge_legislation_states.py",

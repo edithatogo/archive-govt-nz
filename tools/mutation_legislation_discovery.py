@@ -24,7 +24,7 @@ MUTANTS = (
     ("official_endpoint", "if self.endpoint != OFFICIAL_ENDPOINT:", "if False:"),
     (
         "stable_sort",
-        'if self.start_page < 1 or self.sort != "work_id":',
+        "if self.start_page < 1 or self.sort not in SORT_ORDERS:",
         "if self.start_page < 1:",
     ),
     (

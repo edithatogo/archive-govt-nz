@@ -1,0 +1,65 @@
+[
+  {
+    "id": "edithatogo/corpus-legislation-nz",
+    "revision": "0a4dde01a458237a494dc9d0016ef5780dd597e7",
+    "last_modified": "2026-10-26T13:44:55.000Z",
+    "gated": false,
+    "file_count": 115
+  },
+  {
+    "id": "edithatogo/corpus-legislation-nz-historical",
+    "revision": "d7ce1a6a4565f3f719c7acc929dca4fa005c7daf",
+    "last_modified": "2026-10-26T14:01:41.000Z",
+    "gated": false,
+    "file_count": 6788
+  },
+  {
+    "id": "edithatogo/nz-legislation-corpus",
+    "revision": "389ee079f209a65f1c68efc6adb1d95abd9ce3e4",
+    "last_modified": "2026-10-26T13:46:18.000Z",
+    "gated": "auto",
+    "file_count": 20
+  },
+  {
+    "id": "edithatogo/nz-hansard-corpus",
+    "revision": "dc8f0937c787e51a1124ea22dd431a0e7b42e03f",
+    "last_modified": "2026-10-26T13:46:07.000Z",
+    "gated": false,
+    "file_count": 219
+  },
+  {
+    "id": "edithatogo/nz-hansard-source-archive",
+    "revision": "72e7f2971d07c2f8a8342a2f4396a68b6584b2b8",
+    "last_modified": "2026-10-26T13:46:10.000Z",
+    "gated": "auto",
+    "file_count": 4
+  },
+  {
+    "id": "edithatogo/courts-nz-public-notices-archive",
+    "revision": "73d3a3e63972a4861672b4e3b91fcaaa6c46f6e9",
+    "last_modified": "2026-10-26T13:45:07.000Z",
+    "gated": false,
+    "file_count": 7
+  },
+  {
+    "id": "edithatogo/corpus-cases-medilegal-nz",
+    "revision": "3f28e54c743539bad93a41cb99129f42dbcf8f35",
+    "last_modified": "2026-10-26T22:13:48.000Z",
+    "gated": false,
+    "file_count": 108
+  },
+  {
+    "id": "edithatogo/archive-govt-nz-global",
+    "revision": "b079cec38f9d331a6446e6302b0def28709a940a",
+    "last_modified": "2026-10-30T12:48:26.000Z",
+    "gated": false,
+    "file_count": 2543
+  },
+  {
+    "id": "edithatogo/dataset-estate-registry",
+    "revision": "f82a1b706e7c55845ffef5dad0a1d4571b2892dd",
+    "last_modified": "2026-10-26T23:57:56.000Z",
+    "gated": false,
+    "file_count": 12
+  }
+]
