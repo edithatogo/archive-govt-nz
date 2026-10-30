@@ -1,0 +1,74 @@
+{
+  "agency_id": "courts-nz",
+  "agency_name": "Courts of New Zealand",
+  "generated_artifacts": {
+    "historical_archive.jsonl.gz": {
+      "bytes": 12743,
+      "path": "historical_archive.jsonl.gz",
+      "sha256": "c4dd9829c03299ddcbc2c170f82e2b0cfa121fa92621a660e23b0d7295a0d756"
+    },
+    "normalized_archive.jsonl.gz": {
+      "bytes": 716214,
+      "path": "normalized_archive.jsonl.gz",
+      "sha256": "8ca9baffa7db977219da6a04096f2d1e662882c0d75240f7cafdf476909fa0b3"
+    },
+    "normalized_archive.parquet": {
+      "bytes": 1156148,
+      "path": "normalized_archive.parquet",
+      "sha256": "41e1fb8267fab330b465147ade32e4a38dc706df9343aeffcdf3ffbb226c95ac"
+    }
+  },
+  "legacy_json_file_count": 52,
+  "license": "Public source records; verify source-specific terms before redistribution.",
+  "normalized_record_count": 4206,
+  "normalized_shard_count": 315,
+  "provenance": "Records are derived from public Courts of New Zealand source surfaces and preserve source platform, source account, source URL, capture timestamp, original timestamp, content hash, media references, raw path, and extraction method where available.",
+  "raw_file_count": 4215,
+  "source_counts": {
+    "bluesky": 49,
+    "courtsofnz.govt.nz": 10,
+    "email": 1,
+    "rss": 3457,
+    "x": 689
+  },
+  "source_date_ranges": {
+    "bluesky": {
+      "max_original_created_at": "2026-06-11T22:21:56.861Z",
+      "min_original_created_at": "2026-03-23T01:58:43.464Z"
+    },
+    "courtsofnz.govt.nz": {
+      "max_original_created_at": "2026-04-29T12:00:00+00:00",
+      "min_original_created_at": "2023-11-07T19:33:14+00:00"
+    },
+    "email": {
+      "max_original_created_at": "2026-06-14T06:34:00Z",
+      "min_original_created_at": "2026-06-14T06:34:00Z"
+    },
+    "rss": {
+      "max_original_created_at": "2026-06-11T12:00:00+00:00",
+      "min_original_created_at": "2004-05-05T12:00:00+00:00"
+    },
+    "x": {
+      "max_original_created_at": "2024-12-19T00:00:00+00:00",
+      "min_original_created_at": "2015-12-22T00:00:00+00:00"
+    }
+  },
+  "title": "Courts of New Zealand public notices multi-source archive",
+  "manifest_sha256": "ecafdeed97c62763c558dfb4f7eaf334ad9aa2c89a8edef21edf7b6b668a887b",
+  "manifest_keys": [
+    "agency_id",
+    "agency_name",
+    "generated_artifacts",
+    "known_gaps",
+    "legacy_json_file_count",
+    "license",
+    "normalized_record_count",
+    "normalized_shard_count",
+    "provenance",
+    "raw_file_count",
+    "record_index",
+    "source_counts",
+    "source_date_ranges",
+    "title"
+  ]
+}

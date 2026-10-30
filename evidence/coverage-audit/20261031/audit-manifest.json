@@ -1,0 +1,53 @@
+{
+  "audit_date_brisbane": "2026-10-31",
+  "code_revision": "495a54d9",
+  "chat_id": "01a18d6e-759f-76c0-85cd-03413c023c8e",
+  "worktree": "/Users/doughnut/.codex/worktrees/legal-coverage-audit/archive-govt-nz",
+  "branch": "codex/legal-coverage-audit-20261031",
+  "mode": "read_only_remote",
+  "runtime": "Python 3.15.1 verified repo-local .venv",
+  "files": [
+    {
+      "path": "courts-summary.json",
+      "sha256": "cd70d3c9aec4c55a2304868d2224ceded8d3e78817bd12d92bf77018899ab664",
+      "bytes": 2537
+    },
+    {
+      "path": "datasets.json",
+      "sha256": "ff6c0d26643b56adec56e06d61ff96ba3aa6ed0cc81103ef980bd551a2dd9348",
+      "bytes": 1884
+    },
+    {
+      "path": "hathi-summary.json",
+      "sha256": "e419994b31b4da066b58678a412de34c70a1f4c75ea321680785e45d32115681",
+      "bytes": 8800
+    },
+    {
+      "path": "legislation-recovery-readback.json",
+      "sha256": "c95f190a7b47f5aff4b14e6e98a4fac0de59a89b9e1a160805eb663831251145",
+      "bytes": 1009
+    },
+    {
+      "path": "parliament-run-41057634651.json",
+      "sha256": "502956e946d5ff6a9f9050261261e999aafac35066b03ba48d3111444c952fee",
+      "bytes": 1547
+    },
+    {
+      "path": "parliament-summary.json",
+      "sha256": "efe3403268971118c996b8d9ff45c98c73d33b451ac19062228f961a89b07a88",
+      "bytes": 2904
+    },
+    {
+      "path": "source-observations.json",
+      "sha256": "0f3d197b8f9130004bc03e187ed540df64b540fce6a5f0a37206e7b53e0fbee8",
+      "bytes": 2368
+    }
+  ],
+  "limits": [
+    "No upstream-wide enumeration or authenticated legislation query performed.",
+    "No gated source payload downloaded.",
+    "No native mutations, workflow dispatches, publications or lease claims.",
+    "Source documents and personal-level records excluded from committed evidence.",
+    "Two Parliament objects sampled, not every remote object independently downloaded."
+  ]
+}

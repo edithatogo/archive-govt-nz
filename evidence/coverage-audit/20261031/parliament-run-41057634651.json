@@ -1,0 +1,60 @@
+{
+  "status": "completed_bounded_invocation",
+  "attempts": [
+    {
+      "cycle": 41,
+      "work": {
+        "bytes": 4676,
+        "captured": 0,
+        "interrupted": false,
+        "invocation": "gha_41057634651_1",
+        "observed": 10,
+        "partition": "recent",
+        "phase": "publish",
+        "query": {
+          "keyword": "",
+          "page": 2,
+          "page_size": 10
+        },
+        "reserved": 0,
+        "seconds": 13.606211112999972
+      },
+      "publication": null,
+      "summary": {
+        "pending": 0,
+        "captured": 947,
+        "failed": 1,
+        "metadata_only": 1,
+        "published": 37,
+        "last_error": "terminal_status",
+        "coverage_claim": false
+      },
+      "reviewed_access_holds": 1,
+      "unreviewed_failures": 0,
+      "checkpoint": {
+        "revision": "41e9ba1508388457012840683aa7bc2652ee63b9",
+        "sha256": "0adece70a82b421bcbca62b9591fecd266cb8419c7f6afc3668b890a135d1f39",
+        "status": "verified"
+      },
+      "coverage_claim": false,
+      "recurrence_acceptance": false
+    }
+  ],
+  "checkpoint": {
+    "revision": "ad0d3d6a939fc531d19ac7a58d76615052ad70b9",
+    "sha256": "2fdea9ad4a0aba6ed85566ec218f3729e7ba3523cffb662dc9ed1011c1800844",
+    "status": "verified"
+  },
+  "summary": {
+    "pending": 0,
+    "captured": 947,
+    "failed": 1,
+    "metadata_only": 1,
+    "published": 37,
+    "last_error": "terminal_status",
+    "coverage_claim": false
+  },
+  "reviewed_access_holds": 1,
+  "unreviewed_failures": 0,
+  "execution_kind": "schedule"
+}

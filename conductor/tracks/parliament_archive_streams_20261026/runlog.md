@@ -362,3 +362,40 @@ origin/CLI/native-contract tests. Mergefe0a1829 preserves main Health804/806 wor
 only Conductor plan/runlog needed lossless additive conflict resolution.
 The production workflow remains disabled pending green delivery and native
 checkpoint reconciliation. No source acquisition or HF mutation was attempted.
+
+
+### Selected discovery repair and report backfill — 31 October 2026
+
+User authorized legislation discovery repair and resumption of committee-report
+historical backfill with archive preservation and minimal repeated checks.
+Chat `01a18d6e-759f-76c0-85cd-03413c023c8e` owns source integration for this bounded
+packet in `/Users/doughnut/.codex/worktrees/legal-coverage-audit/archive-govt-nz`,
+branch `codex/legal-coverage-audit-20261031`: legislation discovery module/CLI,
+versioned scope, affected tests/mutation anchors, the two affected workflows and
+associated audit/runbook evidence. Other lanes and prior assignments remain intact.
+Prior live-recovery chat `01a18773-d2f6-7582-9509-9f2588b5c84e` is archived; its
+coordination prompt was rejected as archived. Relevant listed source lanes are
+terminal/archived; no local legislation/Parliament capture or hosted job was
+active at the initial bounded read. Native writer remains exclusively GitHub's
+`parliament-report-writer` workflow and existing HF continuation pointer. No
+credential, private cache or source state is transferred.
+
+Definition of done: corrected documented legislation query contract with meaningful
+regressions; required assurance once for the reviewable candidate; preserved report
+cursors/holds; one query-only legislation runtime receipt and one serialized bounded
+report invocation demonstrating historical progress at a pinned accepted checkpoint.
+Next operation: finish the scoped source packet, validate, integrate with required
+hosted checks, then dispatch/read back the two exact workflows once. No broad
+archive-completeness assertion or other collection expansion belongs to this packet.
+
+Local candidate assurance: CPython3.15.1,8821 passed/14capability skips,96%
+coverage;95schemas/85representative documents;parity9/9; all13PR gates passed.
+The initial lint stop preceded tests; only remaining/affected stages resumed.
+Discovery mutation driver initially omitted accounting.py from its isolated
+package; corrected its dependency packaging and all4mutants were killed.
+Production discovery code was unchanged by that driver repair; the full suite
+was not repeated. Detailed hashes: evidence/coverage-audit/20261031/implementation-assurance.json.
+Native query-only41084537406 on489e202a passed its known-Act control and returned
+40candidates (10each Act/Bill/amendment-paper/secondary-legislation). Native parent
+restore and acquisition steps were skipped; no canonical state or HF archive
+changed. Source receipt: evidence/coverage-audit/20261031/discovery-native-readback.json.

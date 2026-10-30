@@ -1,0 +1,93 @@
+{
+  "runtime": "CPython 3.15.1 repo-local .venv",
+  "candidate_source_commit": "489e202a560840b98b6153fe87dbeed5a910a677",
+  "tests": {
+    "passed": 8821,
+    "skipped": 14,
+    "coverage_percent": 96,
+    "full_suite_runs": 1
+  },
+  "schemas": {
+    "schemas": 95,
+    "representative_documents": 85
+  },
+  "parity": {
+    "passed": 9,
+    "divergences": 0
+  },
+  "mutation": {
+    "killed": 4,
+    "mutants": [
+      {
+        "exit_code": 1,
+        "killed": true,
+        "name": "generic_terms"
+      },
+      {
+        "exit_code": 1,
+        "killed": true,
+        "name": "official_endpoint"
+      },
+      {
+        "exit_code": 1,
+        "killed": true,
+        "name": "stable_sort"
+      },
+      {
+        "exit_code": 1,
+        "killed": true,
+        "name": "canonical_state_boundary"
+      }
+    ],
+    "schema_version": "archive-govt-nz.legislation-discovery-mutation/v1",
+    "source_sha256": "7c9ceb5e8bbd28558482b62de62624fab71224598ade0dde637a59a10c9cc63e",
+    "total": 4
+  },
+  "gates_passed": [
+    "lock",
+    "conductor",
+    "format",
+    "lint",
+    "types",
+    "tests",
+    "schemas",
+    "parity",
+    "slops",
+    "audit",
+    "licenses",
+    "secrets",
+    "sbom"
+  ],
+  "retained_first_failures": [
+    "lint: dynamically typed parameter annotation, corrected before tests",
+    "mutation driver: missing accounting.py in isolated package, corrected without changing production code"
+  ],
+  "full_suite_not_repeated": true,
+  "logs": [
+    {
+      "path": "build/validation-20261031.log",
+      "sha256": "20a64a1fc68f3b04d5a8569cab8aa45bfc773e5c8ec6322c637f7037e294884c",
+      "bytes": 747
+    },
+    {
+      "path": "build/validation-remaining-20261031.log",
+      "sha256": "139484447f2bf1abdfaa14b81a1deedda2618d52c31a523670a0c5be39d773fa",
+      "bytes": 137888
+    },
+    {
+      "path": "build/validation-slops-20261031.log",
+      "sha256": "c40d9cafdf41c11cafbdc086938b283bf23b8bb340bd755078fba9c5e4ef21c3",
+      "bytes": 134
+    },
+    {
+      "path": "build/discovery-mutation-20261031.log",
+      "sha256": "cc895313c9cb77f6e1e29e2c962f6b33668153a53ccd136bbd7b4159abca6e5b",
+      "bytes": 1086
+    },
+    {
+      "path": "build/discovery-mutation-corrected-20261031.log",
+      "sha256": "74bb1af22f83a4fe644461fa0b25f158452935b5032e449594958289779b7091",
+      "bytes": 444
+    }
+  ]
+}

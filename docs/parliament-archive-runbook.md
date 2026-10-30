@@ -17,3 +17,15 @@ The public report API response is preserved verbatim, with payloads separately h
 For a failed capture, inspect the bounded error and use `--action retry --source-id ID` only after resolving its cause. For an intentional new source observation, use `--action refresh --source-id ID`; old bytes and metadata remain immutable. A staged batch can be resumed using `--action publish --batch-id HASH`; an unknown upload outcome is checked remotely before another commit. Preserve failed-verification evidence. Do not delete spool originals without a qualified retention/recovery policy.
 
 Submissions and most committee advice lack general reuse permission in the current source statement. Legacy generic crawler access is denied. Their adapters and the additional legacy collections remain unqualified; do not enable them merely because report capture works. Report manual proof, future natural schedule proof and complete archive reconciliation are distinct gates. See [track evidence](../conductor/tracks/parliament_archive_streams_20261026/evidence.md).
+
+
+## Historical rotation resumed — 31 October 2026
+
+The existing serialized hosted workflow now omits `--recent-only`. Its existing
+controller alternates recent ten-record pages with retained historical cursors,
+plus the existing deep/late-attachment reconciliation slots. It still attempts
+one batch per hourly schedule, retains the 1,800-second acquisition budget, and
+honors the same public pointer, leases, cooldowns and exact access holds. No
+checkpoint is reset and no local second writer is started. A manual bounded
+`run` dispatch with at most two batches can demonstrate a historical turn;
+natural recurrence and full source coverage remain separate claims.

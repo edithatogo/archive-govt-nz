@@ -33,7 +33,7 @@ def write(path: Path, value: object) -> None:
     )
 
 
-def run(scope_path: Path, output: Path) -> None:
+def run(scope_path: Path, output: Path, previous: Path | None = None) -> None:
     value = load(scope_path)
     scope = DiscoveryScope(
         scope_id=value["scope_id"],
@@ -44,7 +44,7 @@ def run(scope_path: Path, output: Path) -> None:
         max_candidates=value["max_candidates"],
         start_page=value["start_page"],
         endpoint=value["endpoint"],
-        sort=value["sort"],
+        sort=value["sort_by"],
     )
     scope.validate()
     credential = os.environ.get("LEGISLATION_API_KEY", "").strip()
@@ -61,7 +61,25 @@ def run(scope_path: Path, output: Path) -> None:
             response.raise_for_status()
             return response.json()
 
-        write(output, discover(scope, fetch))
+        control_id = "act_public_1990_109"
+        control = fetch(
+            {
+                "search_term": '"New Zealand Bill of Rights Act 1990"',
+                "search_field": "title",
+                "legislation_type": "act",
+                "page": 1,
+                "per_page": 1,
+                "sort_by": "title_asc",
+            }
+        )
+        if not isinstance(control, dict) or not any(
+            isinstance(row, dict) and row.get("work_id") == control_id
+            for row in control.get("results", [])
+        ):
+            raise ValueError("official API positive control failed")
+        receipt = discover(scope, fetch, load(previous) if previous else None)
+        receipt["positive_control"] = {"work_id": control_id, "passed": True}
+        write(output, receipt)
 
 
 def classify(candidate: Path, harvest: Path, output_dir: Path) -> None:
@@ -75,13 +93,14 @@ def main() -> int:
     query = sub.add_parser("query")
     query.add_argument("--scope", type=Path, required=True)
     query.add_argument("--output", type=Path, required=True)
+    query.add_argument("--previous-receipt", type=Path)
     outcomes = sub.add_parser("classify")
     outcomes.add_argument("--candidate-receipt", type=Path, required=True)
     outcomes.add_argument("--harvest-receipt", type=Path, required=True)
     outcomes.add_argument("--output-dir", type=Path, required=True)
     args = parser.parse_args()
     if args.command == "query":
-        run(args.scope, args.output)
+        run(args.scope, args.output, args.previous_receipt)
     else:
         classify(args.candidate_receipt, args.harvest_receipt, args.output_dir)
     return 0

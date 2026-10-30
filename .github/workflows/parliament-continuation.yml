@@ -79,7 +79,7 @@ jobs:
           --state-dir build/parliament-hosted/state
           --receipt build/parliament-hosted/receipt.json
           --max-batches "$MAX_BATCHES" --hold-seconds "$HOLD_SECONDS"
-          --max-seconds 1800 --recent-only
+          --max-seconds 1800
           --hold-source-id "$HOLD_SOURCE_ID" --failed-run "$FAILED_RUN"
           --failure-sha "$FAILURE_SHA" --failure-revision "$FAILURE_REVISION"
       - name: Preserve sanitized invocation receipt

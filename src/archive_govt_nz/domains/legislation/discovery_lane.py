@@ -12,10 +12,18 @@ from typing import Any, Protocol
 
 from archive_govt_nz.domains.legislation.accounting import HarvestAccounting
 
-SCHEMA = "archive-govt-nz.legislation-discovery-query/v1"
+SCHEMA = "archive-govt-nz.legislation-discovery-query/v2"
+LEGISLATION_TYPES = {"act", "bill", "amendment_paper", "secondary_legislation"}
+SORT_ORDERS = {
+    "title_asc",
+    "title_desc",
+    "year_asc",
+    "year_desc",
+    "most_recently_updated",
+}
 OFFICIAL_ENDPOINT = "https://api.legislation.govt.nz/v0/works/"
 GENERIC_TERMS = {"act", "bill", "regulation"}
-WORK_ID = re.compile(r"^[a-z][a-z0-9_./-]{2,199}$")
+WORK_ID = re.compile(r"^[a-z][A-Za-z0-9_~./-]{2,199}$")
 
 
 class PageFetcher(Protocol):
@@ -36,7 +44,7 @@ class DiscoveryScope:
     max_candidates: int
     start_page: int = 1
     endpoint: str = OFFICIAL_ENDPOINT
-    sort: str = "work_id"
+    sort: str = "most_recently_updated"
 
     def validate(self) -> None:
         """Reject ambiguous, unbounded, or coverage-implying scope."""
@@ -55,108 +63,189 @@ class DiscoveryScope:
             self.legislation_types
         ):
             raise ValueError("legislation types must be non-empty and unique")
+        if not set(self.legislation_types) <= LEGISLATION_TYPES:
+            raise ValueError("unsupported official legislation_type")
         if not 1 <= self.page_size <= 100:
             raise ValueError("page_size must be within 1..100")
         if not 1 <= self.max_pages <= 100:
             raise ValueError("max_pages must be within 1..100")
-        if not 1 <= self.max_candidates <= self.page_size * self.max_pages:
+        if (
+            not 1
+            <= self.max_candidates
+            <= self.page_size
+            * self.max_pages
+            * len(self.terms)
+            * len(self.legislation_types)
+        ):
             raise ValueError("max_candidates exceeds the page bound")
-        if self.start_page < 1 or self.sort != "work_id":
-            raise ValueError("pagination must use positive pages sorted by work_id")
+        if self.start_page < 1 or self.sort not in SORT_ORDERS:
+            raise ValueError(
+                "pagination requires positive pages and an official sort_by"
+            )
 
 
 def _canonical(value: object) -> bytes:
     return (json.dumps(value, sort_keys=True, separators=(",", ":")) + "\n").encode()
 
 
-def discover(scope: DiscoveryScope, fetch: PageFetcher) -> dict[str, Any]:
-    """Fetch deterministic pages and retain malformed/duplicate evidence."""
+def _resume_cursors(
+    scope: DiscoveryScope,
+    cursors: list[dict[str, Any]],
+    query_sha: str,
+    previous: dict[str, Any] | None,
+) -> list[dict[str, Any]]:
+    """Validate every query cursor before making any request."""
+    if previous is None:
+        return cursors
+    assert_same_query(previous, {"query_sha256": query_sha})
+    retained = previous.get("continuations")
+    if (
+        previous.get("schema_version") != SCHEMA
+        or not isinstance(retained, list)
+        or len(retained) != len(cursors)
+    ):
+        raise ValueError("invalid discovery continuation")
+    for cursor, old in zip(cursors, retained, strict=True):
+        if (
+            not isinstance(old, dict)
+            or set(old) != set(cursor)
+            or old["term"] != cursor["term"]
+            or old["legislation_type"] != cursor["legislation_type"]
+            or type(old["page"]) is not int
+            or old["page"] < scope.start_page
+            or type(old["offset"]) is not int
+            or not 0 <= old["offset"] < scope.page_size
+            or type(old["exhausted"]) is not bool
+        ):
+            raise ValueError("invalid discovery continuation")
+    return [dict(old) for old in retained]
+
+
+def _page_results(payload: object, page: int, page_size: int) -> list[Any]:
+    """Reject source bounds that contradict the qualified request."""
+    if not isinstance(payload, dict) or not isinstance(payload.get("results"), list):
+        raise ValueError("partial or malformed discovery page")
+    results = payload["results"]
+    if (
+        len(results) > page_size
+        or payload.get("page", page) != page
+        or payload.get("per_page", page_size) != page_size
+    ):
+        raise ValueError("partial or malformed discovery page bounds")
+    return results
+
+
+def discover(
+    scope: DiscoveryScope,
+    fetch: PageFetcher,
+    previous: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Fetch bounded pages; retain a separate exact continuation for every query."""
     scope.validate()
-    candidates: dict[str, dict[str, Any]] = {}
-    duplicates: list[dict[str, Any]] = []
-    rejected: list[dict[str, Any]] = []
-    pages: list[dict[str, Any]] = []
-    exhausted = False
-    for term in scope.terms:
-        for legislation_type in scope.legislation_types:
-            for page in range(scope.start_page, scope.start_page + scope.max_pages):
-                params = {
-                    "search_term": term,
-                    "search_field": "title",
-                    "legislation_type": legislation_type,
-                    "page": page,
-                    "per_page": scope.page_size,
-                    "sort": scope.sort,
-                }
-                payload = fetch(params)
-                if not isinstance(payload, dict) or not isinstance(
-                    payload.get("results"), list
-                ):
-                    raise ValueError("partial or malformed discovery page")
-                results = payload["results"]
-                page_ids: list[str] = []
-                for position, item in enumerate(results):
-                    if not isinstance(item, dict):
-                        rejected.append(
-                            {"page": page, "position": position, "reason": "not_object"}
-                        )
-                        continue
-                    work_id = str(item.get("work_id", "")).strip()
-                    if not WORK_ID.fullmatch(work_id):
-                        rejected.append(
-                            {
-                                "page": page,
-                                "position": position,
-                                "reason": "malformed_work_id",
-                            }
-                        )
-                        continue
-                    page_ids.append(work_id)
-                    normalized = {
-                        "work_id": work_id,
-                        "canonical_uri": item.get("canonical_uri"),
-                        "legislation_type": item.get("legislation_type"),
-                        "title": item.get("title"),
-                    }
-                    if work_id in candidates:
-                        duplicates.append({"work_id": work_id, "page": page})
-                    else:
-                        candidates[work_id] = normalized
-                    if len(candidates) >= scope.max_candidates:
-                        break
-                pages.append(
-                    {
-                        "term": term,
-                        "legislation_type": legislation_type,
-                        "page": page,
-                        "result_count": len(results),
-                        "result_sha256": hashlib.sha256(
-                            _canonical(page_ids)
-                        ).hexdigest(),
-                    }
-                )
-                if len(candidates) >= scope.max_candidates:
-                    break
-                if len(results) < scope.page_size:
-                    exhausted = True
-                    break
-            if len(candidates) >= scope.max_candidates:
-                break
-        if len(candidates) >= scope.max_candidates:
-            break
-    ordered = [candidates[key] for key in sorted(candidates)]
     query = {
         "scope_id": scope.scope_id,
         "endpoint": scope.endpoint,
         "terms": list(scope.terms),
         "legislation_types": list(scope.legislation_types),
-        "sort": scope.sort,
+        "sort_by": scope.sort,
         "page_size": scope.page_size,
         "max_pages": scope.max_pages,
         "max_candidates": scope.max_candidates,
         "start_page": scope.start_page,
     }
     query_sha = hashlib.sha256(_canonical(query)).hexdigest()
+    queries = [(term, kind) for term in scope.terms for kind in scope.legislation_types]
+    cursors: list[dict[str, Any]] = [
+        {
+            "term": term,
+            "legislation_type": kind,
+            "page": scope.start_page,
+            "offset": 0,
+            "exhausted": False,
+        }
+        for term, kind in queries
+    ]
+    cursors = _resume_cursors(scope, cursors, query_sha, previous)
+    candidates: dict[str, dict[str, Any]] = {}
+    duplicates: list[dict[str, Any]] = []
+    rejected: list[dict[str, Any]] = []
+    pages: list[dict[str, Any]] = []
+    for cursor in cursors:
+        if cursor["exhausted"] or len(candidates) >= scope.max_candidates:
+            continue
+        for _ in range(scope.max_pages):
+            page = cursor["page"]
+            params = {
+                "search_term": cursor["term"],
+                "search_field": "title",
+                "legislation_type": cursor["legislation_type"],
+                "page": page,
+                "per_page": scope.page_size,
+                "sort_by": scope.sort,
+            }
+            payload = fetch(params)
+            results = _page_results(payload, page, scope.page_size)
+            offset = cursor["offset"]
+            if offset > len(results):
+                raise ValueError("discovery page changed before continuation offset")
+            page_ids: list[str] = []
+            for position in range(offset, len(results)):
+                item = results[position]
+                cursor["offset"] = position + 1
+                if not isinstance(item, dict):
+                    rejected.append(
+                        {"page": page, "position": position, "reason": "not_object"}
+                    )
+                    continue
+                if (
+                    item.get("legislation_type", cursor["legislation_type"])
+                    != cursor["legislation_type"]
+                ):
+                    raise ValueError("source did not honor legislation_type")
+                work_id = str(item.get("work_id", "")).strip()
+                if not WORK_ID.fullmatch(work_id):
+                    rejected.append(
+                        {
+                            "page": page,
+                            "position": position,
+                            "reason": "malformed_work_id",
+                        }
+                    )
+                    continue
+                page_ids.append(work_id)
+                version = item.get("latest_matching_version") or {}
+                if not isinstance(version, dict):
+                    raise ValueError("partial or malformed discovery version")
+                normalized = {
+                    "work_id": work_id,
+                    "canonical_uri": item.get("canonical_uri"),
+                    "legislation_type": item.get("legislation_type"),
+                    "title": version.get("title") or item.get("title"),
+                }
+                if work_id in candidates:
+                    duplicates.append({"work_id": work_id, "page": page})
+                else:
+                    candidates[work_id] = normalized
+                if len(candidates) >= scope.max_candidates:
+                    break
+            pages.append(
+                {
+                    "term": cursor["term"],
+                    "legislation_type": cursor["legislation_type"],
+                    "page": page,
+                    "start_offset": offset,
+                    "result_count": len(results),
+                    "response_sha256": hashlib.sha256(_canonical(payload)).hexdigest(),
+                    "result_sha256": hashlib.sha256(_canonical(page_ids)).hexdigest(),
+                }
+            )
+            if cursor["offset"] == len(results):
+                cursor.update(
+                    page=page + 1, offset=0, exhausted=len(results) < scope.page_size
+                )
+            if cursor["exhausted"] or len(candidates) >= scope.max_candidates:
+                break
+    ordered = [candidates[key] for key in sorted(candidates)]
     return {
         "schema_version": SCHEMA,
         "query": query,
@@ -169,7 +258,11 @@ def discover(scope: DiscoveryScope, fetch: PageFetcher) -> dict[str, Any]:
         ).hexdigest(),
         "duplicates": duplicates,
         "rejected": rejected,
-        "next_page": None if exhausted else scope.start_page + scope.max_pages,
+        "continuations": cursors,
+        "next_page": cursors[0]["page"]
+        if len(cursors) == 1 and not cursors[0]["exhausted"]
+        else None,
+        "queries_exhausted": all(cursor["exhausted"] for cursor in cursors),
         "bounded": True,
         "authoritative_completeness": False,
         "custody_or_acquisition_proven": False,
@@ -186,7 +279,10 @@ def acquisition_receipts(
     candidate_receipt: dict[str, Any], harvest_receipt: dict[str, Any]
 ) -> dict[str, dict[str, Any]]:
     """Separate attempt outcomes from pending canonical admission."""
-    if candidate_receipt.get("schema_version") != SCHEMA:
+    if candidate_receipt.get("schema_version") not in {
+        SCHEMA,
+        "archive-govt-nz.legislation-discovery-query/v1",
+    }:
         raise ValueError("invalid candidate receipt")
     if (
         harvest_receipt.get("schema_version")
