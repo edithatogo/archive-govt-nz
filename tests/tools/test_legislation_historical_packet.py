@@ -10,6 +10,7 @@ if TYPE_CHECKING:
 
 import io
 import json
+import logging
 import sys
 import zipfile
 
@@ -385,7 +386,9 @@ def test_cli_does_not_print_private_sdk_error(
         raise OSError(message)
 
     monkeypatch.setattr(packet, "publish", fail)
+    previous_logging_disable = logging.root.manager.disable
     assert packet.main() == 1
+    assert logging.root.manager.disable == previous_logging_disable
     output = capsys.readouterr().out
     assert "fixture-private-url" not in output
     assert json.loads(output)["publication_retried"] is False

@@ -48,3 +48,15 @@ Final review qualified strict representation admission and compressed canonical
 packaging (the prior parent expands beyond the compressed-artifact size cap).
 Next operation: integrate this scoped candidate after required hosted checks,
 capture once on main, inspect exact package, publish once, verify pinned readback.
+
+Hosted first-candidate findings: macOS exposed the CLI leaking process-global
+logging suppression into a later logging test. Restore the prior logging setting
+in `finally`; the original logging oracle remains unchanged and a CLI restoration
+assertion now guards regression. Linux/Windows passed tests but blocked on fresh
+pypdf advisories. This sole active archive lane owns the bounded dependency
+integration: raise pypdf minimum/lock from6.21.2 to6.21.4 (seven reported advisories
+fixed); no other lock entries changed. Environment updated only after the prior
+local harness terminated. CPython3.15.1/pypdf6.21.4 read back. First hosted logs
+and audit receipts retained under the ignored packet evidence directory. Run a
+coherent candidate harness and required hosted checks on these changed inputs;
+reuse unchanged adapter mutation evidence. Native capture has not started.

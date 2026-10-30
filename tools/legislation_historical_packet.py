@@ -428,6 +428,7 @@ def main() -> int:
     parser.add_argument("--start-page", type=int, default=1)
     parser.add_argument("--expected-sha256", default="")
     args = parser.parse_args()
+    previous_logging_disable = logging.root.manager.disable
     logging.disable(logging.CRITICAL)
     private = Path("build/legislation-history-private.log")
     private.parent.mkdir(parents=True, exist_ok=True)
@@ -453,6 +454,8 @@ def main() -> int:
             )
         )
         return 1
+    finally:
+        logging.disable(previous_logging_disable)
     print(
         json.dumps(
             {
