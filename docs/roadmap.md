@@ -26,6 +26,16 @@ Acceptance: these checks pass and the delivered revision is identified. Source
 coverage and live service outcomes are reported separately. Results belong in
 the registry's existing coordination entry and the PR, not a new document pack.
 
+## Selected continuation — 31 October 2026
+
+The user has now selected implementation of the remaining Health Appropriations
+and Global FOI tracks using their finite completion order. Reconcile existing
+receipts first, freeze the remaining required work and deliver coherent batches
+under [the shared workflow](../conductor/workflow.md). This selection does not
+claim whole-corpus completion, change source rights or transfer native ownership.
+The software baseline above remains delivered; unrelated roadmap rows remain
+deferred. Existing requirement IDs define acceptance for the selected tracks.
+
 ## Later work
 
 These remain worthwhile but do not block the software baseline. Historical

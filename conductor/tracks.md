@@ -12,6 +12,20 @@ Execution policy: [bounded autonomous delivery](./autonomy.md). The
 completion, ongoing operations and deferred expansion. Historical track statuses
 below remain evidence of their original scope, not prerequisites for every release.
 
+## Current integration and continuation — 31 October 2026
+
+User authorized integration of the finite-completion policy followed by work on
+the two remaining tracks. Chat `01a18d15-95a4-7c61-b16d-6f13008a57e7` is the
+integrator for this packet and subsequent bounded Health/FOI completion batches.
+Worktree: `/Users/doughnut/.codex/worktrees/conductor-finite-completion/archive-govt-nz`;
+branch: `codex/conductor-finite-completion`. Initial owned scope: the ten
+policy/track documents in the packet; native mutation scope: none. Earlier
+Health, FOI, Parliament, legislation, coronial and tobac native assignments
+remain intact. Next: required PR validation, protected integration, then receipt
+reconciliation before selecting missing implementation. The primary dirty
+checkout and other worktrees remain untouched. Main's existing PR/release
+profiles and bounded delivery policy are retained during conflict resolution.
+
 ## Live recovery coordination — 29 October 2026
 
 30 October canonical restore follow-up: chat `01a18773-d2f6-7582-9509-9f2588b5c84e`

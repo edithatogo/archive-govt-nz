@@ -118,4 +118,3 @@ The continuation loop does not authorize optional expansion or a new framework.
 After the required checklist is satisfied, report completion and keep optional
 work deferred unless separately authorized. Existing Must requirements and
 external approval boundaries remain intact.
-

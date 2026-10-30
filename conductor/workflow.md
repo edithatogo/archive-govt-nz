@@ -126,4 +126,3 @@ for the missing proof, not another implementation cycle or unrelated full suite.
 One final review per coherent batch is sufficient unless changed inputs or an
 observed finding justify revisiting it. Reuse its conclusions at later phase
 boundaries when its scope still matches.
-
