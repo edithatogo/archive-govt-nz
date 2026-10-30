@@ -44,6 +44,18 @@ This repository is a solo-maintainer codebase.
 - Preserve a working latest-version environment and any in-flight operation;
   do not downgrade or rebuild it without a task need.
 
+## Finite delivery and validation
+- Follow the finite-completion and evidence-reuse contract in
+  `conductor/workflow.md` for the remaining tracks.
+- Reconcile existing evidence before implementing open checkboxes; batch related
+  changes and run focused checks during edits.
+- Reuse passing results only when relevant code, tests, inputs, configuration and
+  runtime/dependencies match; record the receipt and scope.
+- Keep the full pre-PR harness and required hosted checks. Do not rerun broad
+  checks merely for a phase boundary or status update, or weaken any gate.
+- Keep optional expansion outside the finite completion checklist; all existing
+  Must requirements and native acceptance boundaries remain binding.
+
 ## Quality boundaries
 - Preserve originals and provenance over rewriting.
 - Keep gates fast-first; schedule heavier evidence lanes behind explicit triggers.

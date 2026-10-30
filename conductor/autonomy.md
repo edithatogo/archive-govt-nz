@@ -107,3 +107,14 @@ high-risk dependency/architecture experiments, or review/reversion safety makes
 isolation materially useful. Verify absolute paths and remote state before
 creation or cleanup. Experimental upstream worktree commands are not vendored;
 normal Git worktrees and the project workflow remain authoritative.
+
+## Finite completion boundary — 2026-10-31
+
+Apply the [finite completion and evidence reuse contract](./workflow.md#finite-completion-and-evidence-reuse--2026-10-31).
+For the remaining Health and FOI tracks, reconcile evidence once, freeze their
+required completion checklist, and execute coherent batches. Checkpoints reuse
+matching evidence; they do not automatically launch another broad validation.
+The continuation loop does not authorize optional expansion or a new framework.
+After the required checklist is satisfied, report completion and keep optional
+work deferred unless separately authorized. Existing Must requirements and
+external approval boundaries remain intact.

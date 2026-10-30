@@ -502,3 +502,26 @@ fresh local environment and file-loaded fixture, no tests namespace dependency.
 Ruff format/lint and BasedPyright pass. All child observations synthetic; source
 rows and default v1 remain unchanged. No remote calls, raw approval, publication,
 schedule activation or full harness. See child-manifest-reconciliation-20260907.
+
+## 2026-10-31 — Finite completion policy update
+
+User authorized the finite completion/evidence-reuse plan and this documentation
+update. Chat 01a18d15-95a4-7c61-b16d-6f13008a57e7 owns only this documentation
+batch on branch codex/conductor-finite-completion at
+/Users/doughnut/.codex/worktrees/conductor-finite-completion/archive-govt-nz.
+Owned paths: AGENTS.md; conductor/index.md, workflow.md, autonomy.md, tracks.md;
+the Health plan.md, continuation.md and runlog.md; the FOI plan.md and runlog.md.
+Native scope: none. Existing source/native owners and prior assignments remain
+unchanged. The dirty primary checkout was not copied or edited. This is an
+isolated documentation proposal for integration, not ownership of main or other
+lanes. Next operation: changed-document consistency/link checks and a terminal
+handoff; no PR, hosted mutation or broad/native validation in this batch.
+No implementation checkbox, requirement, runtime, test threshold or publication
+status changed. Required pre-PR and hosted gates remain in force.
+
+Verification: git diff --check passed. A read-only Node check verified all seven
+added Markdown links/anchors and confirmed that every existing task-checkbox
+line across the ten changed documents is unchanged. Manual diff review confirmed
+that the pre-PR harness and hosted gates remain required; no implementation or
+external acceptance claim was added. Full harness was not run for this isolated
+documentation handoff; PR/integration validation remains with the integrator.

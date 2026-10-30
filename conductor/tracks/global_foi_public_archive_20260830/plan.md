@@ -4,6 +4,29 @@ Approval and initialization are recorded in approval.json and evidence.jsonl.
 Execution started on 2026-08-30; track status is `in_progress`. The order is TDD → implementation → refactoring → phase review/validation.
 The approved destination is archive-govt-nz; no cutover has occurred.
 
+## Finite completion order — 2026-10-31
+
+Apply the [shared delivery contract](../../workflow.md#finite-completion-and-evidence-reuse--2026-10-31).
+Reconcile each open task once as already evidenced, unfinished, specifically
+blocked or optional, using existing receipt links in this plan/run log. Freeze
+the required checklist without reducing the approved country/source universe.
+This routing table does not itself close tasks or prove hosted state.
+
+| Order | Existing scope | Definition of done / verification |
+| --- | --- | --- |
+| 1 | P1.5 hosted recovery | Recover or obtain the missing changed-sync/raw-gap evidence and verify contiguous progress, public revision/card agreement and bounded retry behavior. Reuse qualified local repair tests; do not rebuild them because hosted evidence is missing. |
+| 2 | P2/P3 catalogue and capture | Reconcile required country/source dispositions and existing capture evidence. Implement only missing approved contracts; unsupported/restricted sources retain explicit dispositions, not invented capture success. |
+| 3 | P4 public delivery | Prove eligible raw publication, anonymous hash verification, second-instance isolation and cold restore using the existing publisher and exact authorized targets. Metadata-only success cannot close raw delivery. |
+| 4 | P5 sustainable acquisition | Finish missing durable queue, fairness, monitoring and bounded continuation behavior. Test affected contracts and verify required hosted operation without duplicate source load. |
+| 5 | P6 cutover | Verify shadow parity, ownership fencing and rollback before transfer; observe the required scheduled incremental cycle and publication freshness. Keep the current native owner until these criteria pass. |
+| 6 | P7 final assurance | Reconcile AC01–AC12, required country/source outcomes and local/hosted receipts; run required final gates where no matching evidence exists, then close the track. |
+
+Proceed with independent approved work when an external dependency blocks one
+row. Each batch names its owner/worktree, files/native scope, exact outcome and
+verification selectors. Broader optional collections, speculative infrastructure
+and repeated reviews are deferred; donor deletion remains out of scope. Preserve
+all required source coverage, security, recovery and publication acceptance.
+
 ## Phase 0 — Contract, baseline and traceability
 
 - [x] P0.1 (AC01, AC12): Verify the recorded approval, ownership supersession and initialization commit against current donor/receiver state before execution; do not ask for routine reapproval. Verified against initialization `0529e5f` and activation `68818aa`.

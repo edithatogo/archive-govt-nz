@@ -4,6 +4,14 @@ This is a routing guide for the approved plan, not a replacement task registry
 or new publication authority. Use `plan.md`, requirements and acceptance
 criteria as the source of truth. Status is `in_progress`.
 
+## Current execution order — 2026-10-31
+
+Use the finite completion order in [plan.md](./plan.md) and the shared
+[evidence-reuse contract](../../workflow.md#finite-completion-and-evidence-reuse--2026-10-31).
+First reconcile newer receipts against open requirements. Older milestones and
+next-step notes below are historical routing context, not instructions to repeat
+completed extraction, recovery, validation or delivery.
+
 ## Substantial milestones
 
 1. **Finish characterization and reconcile evidence (Phases 1–2).** Map existing

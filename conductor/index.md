@@ -11,6 +11,7 @@
 ## Workflow
 
 -   [Workflow](./workflow.md)
+-   [Finite completion and evidence reuse](./workflow.md#finite-completion-and-evidence-reuse--2026-10-31)
 -   [VCS Workflow](./vcs.md)
 -   [Continuous Autonomous Execution](./autonomy.md)
 -   [Machine Autonomy Policy](./autonomy-policy.json)
