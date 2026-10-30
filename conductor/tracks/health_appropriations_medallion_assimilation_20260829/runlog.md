@@ -10638,3 +10638,10 @@ partial/failed receipt and exit 2; no private fields appeared in Markdown.
 Resolving the temporary path passed the producer preflight, rendered planned/
 one dry-run job, exited 0 and left the job root absent. This is synthetic
 local smoke evidence, not a live-source or scheduled-operation claim.
+
+Final local PR-profile assurance exited 0: 8,811 passed, 14 capability skips,
+96.35% branch-aware coverage, 95 schemas/85 documents, 9/9 parity, typing,
+format/lint, hygiene, dependency audit, licences, secret scan and validated
+118-component SBOM. The suite ran once after the implementation was frozen;
+subsequent documentation-only entries use the Conductor/link checks. Hosted
+acceptance remains pending. Local logs: /tmp/archive-health-report-validation-20261031.log.
