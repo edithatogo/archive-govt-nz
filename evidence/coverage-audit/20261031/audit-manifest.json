@@ -18,19 +18,9 @@
       "bytes": 1884
     },
     {
-      "path": "discovery-native-readback.json",
-      "sha256": "6f09acba8682f8245bf0e12b95c6378dbf0bbfb15f8b91465fbca213aa253a91",
-      "bytes": 2100
-    },
-    {
       "path": "hathi-summary.json",
       "sha256": "e419994b31b4da066b58678a412de34c70a1f4c75ea321680785e45d32115681",
       "bytes": 8800
-    },
-    {
-      "path": "implementation-assurance.json",
-      "sha256": "10ef25ca2ff9a92e1fb1ba516c6061008a333444080b47e10302aefd3e22b790",
-      "bytes": 2342
     },
     {
       "path": "legislation-recovery-readback.json",
