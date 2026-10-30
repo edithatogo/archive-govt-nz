@@ -2,6 +2,11 @@
 
 ---
 
+Remaining-track delivery: follow [finite completion and evidence reuse](./workflow.md#finite-completion-and-evidence-reuse--2026-10-31).
+Reconcile receipts before work; retain all Must requirements and use coherent
+batches with focused checks and the required pre-PR harness. This policy update
+does not mark any implementation or operational task complete.
+
 Execution policy: [bounded autonomous delivery](./autonomy.md). The
 [current delivery scope and roadmap](../docs/roadmap.md) distinguish software
 completion, ongoing operations and deferred expansion. Historical track statuses

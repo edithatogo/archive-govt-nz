@@ -72,3 +72,58 @@ Ask only when a real missing decision prevents the selected outcome. Explain
 the exact blocker concisely and continue independent in-scope work. After up to
 three materially different recovery attempts, retain an external blocker rather
 than retrying unchanged operations or generating more governance work.
+
+## Finite completion and evidence reuse — 2026-10-31
+
+User-approved delivery method for the remaining Health Appropriations and Global
+FOI tracks. Existing Must requirements and acceptance criteria remain binding.
+This section governs execution cadence when older task or phase wording would
+otherwise cause duplicate work; it does not waive required checks.
+
+1. Reconcile open items once against the newest applicable receipts and owned
+   changes. In the existing plan/run log, classify each as already evidenced,
+   unfinished, blocked by a named dependency, or optional. Close an item only
+   when its full acceptance scope is evidenced; retain historical receipts.
+2. Freeze a finite completion checklist mapped to existing requirement/task IDs.
+   Put optional expansion in a deferred subsection of the existing plan. Do not
+   defer a Must, shrink the approved source universe, or reinterpret a partial
+   result as acceptance merely to finish sooner.
+3. Deliver coherent batches, each with an owner, paths/native scope, concrete
+   outcome, definition of done and affected verification commands. Use one
+   writing chat per worktree and one owner per native object. Batch related
+   changes before PR validation; avoid a PR and broad run for every small edit.
+4. Reuse applicable evidence. Record the receipt, command, result, code/input
+   hashes, runtime/dependency versions and scope in the existing evidence log.
+   Reuse requires unchanged relevant code, tests, configuration, dependencies
+   and input bytes. Changed shared dependencies or integration invalidate the
+   affected results; time-sensitive native claims require bounded fresh reads.
+   Missing provenance or a failed/incomplete run is not passing evidence.
+5. Stop at the checklist boundary. Add work only for an observed failure or an
+   outstanding approved requirement. New frameworks, speculative hardening,
+   broader collections and extra review cycles belong outside this completion
+   batch unless required. Reconcile only changed inputs on resume.
+
+| Change/checkpoint | Required verification |
+| --- | --- |
+| Status or documentation only | Changed links, references, consistency and applicable document checks; no artificial red test. |
+| Behavior change | Exact affected tests plus meaningful failure cases; expand to dependent consumers when the contract changes. |
+| Fix after a failing test | Failure-only rerun, then affected tests; retain the first failure. |
+| Native workflow change | Exact-target readback and bounded runtime proof under existing authority; preserve the mutation journal. |
+| PR-ready coherent batch | Repository validation harness before opening the PR, and required hosted checks on the applicable head. |
+| Phase/track checkpoint | Applicable full integration, recovery, coverage, security and release gates, satisfied by matching receipts where inputs are unchanged. |
+| No relevant input change | Reuse the passing receipt; a phase boundary, new chat or status request alone does not require another run. |
+
+Use the explicitly selected repo-local Python 3.15 runtime and keep pytest's
+cacheprovider enabled per worktree/environment. For failure-only reruns use
+`--lf --last-failed-no-failures=none`; an empty selection proves nothing.
+Do not add selection flags globally, treat partial coverage as full coverage,
+weaken gates, suppress findings, or add retries for speed. Default retries are
+zero; never retry native mutations or sends through a test runner.
+
+Local implementation, native save/readback, runtime success, publication and
+natural scheduled recurrence are separate claims. Missing hosted proof calls
+for the missing proof, not another implementation cycle or unrelated full suite.
+One final review per coherent batch is sufficient unless changed inputs or an
+observed finding justify revisiting it. Reuse its conclusions at later phase
+boundaries when its scope still matches.
+

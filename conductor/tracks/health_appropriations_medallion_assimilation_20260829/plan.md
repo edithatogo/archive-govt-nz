@@ -17,6 +17,29 @@ A phase checkpoint requires paired human/machine evidence, self-review,
 reconstruction or recovery checks where applicable, and the full relevant
 repository validation command. External gates block only their affected task.
 
+## Finite completion order — 2026-10-31
+
+Apply the [shared delivery contract](../../workflow.md#finite-completion-and-evidence-reuse--2026-10-31).
+The table routes existing work; it adds no new acceptance requirements and closes
+no checkbox. Reconcile newer receipts before treating older pending prose as work.
+
+| Order | Existing scope | Definition of done / verification |
+| --- | --- | --- |
+| 1 | All open tasks; AC-01–AC-16 | Reconcile newest source/product/delivery receipts once. Record already evidenced, unfinished, specifically blocked and optional dispositions in this plan/run log, with requirement IDs and receipt links; close only fully evidenced tasks. Freeze the remaining required checklist. |
+| 2 | Phases 1–5; census, preservation, Silver and parity | Complete only missing required source qualification, extraction and accounting. Preserve the approved source universe, originals and explicit gaps. Reuse matching source/parity receipts; test changed adapters and their consumers. |
+| 3 | Phases 6–7; Gold and metadata | Finish required measures, source/donor reconciliation, plots, metadata and rights joins. Verify exact values/lineage and actual rendering when changed; unresolved semantics remain explicit. |
+| 4 | Phases 8–9; operation and recovery | Finish required CLI/MCP/scheduling and recovery behavior. Reuse matching component evidence; prove changed runtime paths and complete integration at the coherent milestone. Natural recurrence needs its own observation. |
+| 5 | Phase 10 and final AC reconciliation | Resolve the exact candidate's remaining authorized publication/readback requirements, reconcile every Must and perform final assurance. Historical publication does not approve changed bytes. |
+
+Each batch records its existing owner/worktree, files/native scope, outcome and
+verification selectors in the run log. The first unchecked Phase 6 umbrella task
+is not an instruction to redo its completed children. Existing requirements and
+ACs determine closure, not a target checkbox percentage.
+
+Optional survey linkage, graph/vector projections and additional source/product
+expansion beyond approved requirements remain deferred. Donor retirement and
+Zenodo remain out of scope. Do not create another framework or review loop.
+
 ## Phase 0 — Track activation and hosted traceability
 
 ### Review correction — current-state reconciliation
