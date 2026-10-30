@@ -7,6 +7,7 @@ import contextlib
 import json
 import logging
 import os
+import re
 import time
 from typing import TYPE_CHECKING, Any
 from urllib.parse import urljoin, urlparse
@@ -328,6 +329,26 @@ class NZLegislationApiClient:
         except (json.JSONDecodeError, KeyError) as exc:
             msg = "Legislation works search returned invalid JSON"
             raise ValueError(msg) from exc
+
+    def get_catalogue_page(self, path: str, params: dict[str, Any]) -> dict[str, Any]:
+        """Read a bounded official work/version catalogue response."""
+        if path != "works/" and not re.fullmatch(
+            r"works/act_[A-Za-z0-9_~-]+/versions/", path
+        ):
+            message = "unsupported historical catalogue path"
+            raise ValueError(message)
+        client = self._client or httpx.Client(timeout=self.timeout)
+        try:
+            response = self._get_json_response(client, path, params)
+            response.raise_for_status()
+            payload = response.json()
+        finally:
+            if self._client is None:
+                client.close()
+        if not isinstance(payload, dict):
+            message = "historical catalogue must be a paginated object"
+            raise TypeError(message)
+        return payload
 
     def iter_work_versions(self, work_id: str) -> Iterator[dict[str, Any]]:
         """Discover canonical expression identities for an exact work identity."""
