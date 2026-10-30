@@ -1,0 +1,68 @@
+{
+  "run_id": 41084537406,
+  "head_sha": "489e202a560840b98b6153fe87dbeed5a910a677",
+  "conclusion": "success",
+  "candidate_count": 40,
+  "positive_control": {
+    "passed": true,
+    "work_id": "act_public_1990_109"
+  },
+  "pages": [
+    {
+      "legislation_type": "act",
+      "page": 1,
+      "response_sha256": "d3d975b9f5690b3bf8499fce34a44351527cffb2c11fdf1aaea3ec40485584a6",
+      "result_count": 10,
+      "result_sha256": "74cde008c8ca0577fc571e800a88be15eec3b5dc243edc39346d04850d7b6f16",
+      "start_offset": 0,
+      "term": "amendment"
+    },
+    {
+      "legislation_type": "bill",
+      "page": 1,
+      "response_sha256": "ac4e4ea5f63c70c663561f07f52077af02f42d3d206f164edd251ead67935543",
+      "result_count": 10,
+      "result_sha256": "06ad61a4eca4610898ed16a417c8ea6e2d6c9e6df62d7db604073643e5a35e41",
+      "start_offset": 0,
+      "term": "amendment"
+    },
+    {
+      "legislation_type": "amendment_paper",
+      "page": 1,
+      "response_sha256": "cc4d419b378a8f21940163620941cb03842d41167beab1aa0383422aafcc471f",
+      "result_count": 10,
+      "result_sha256": "72ab58470d00c527a74e4e11ffb4ef5648de6f087b1b740efc32ea82a5e802f8",
+      "start_offset": 0,
+      "term": "amendment"
+    },
+    {
+      "legislation_type": "secondary_legislation",
+      "page": 1,
+      "response_sha256": "e49cafcde961bffeabb7238e4b170c2495e4757d2ec1a89e8ce580cf4eeeb3a5",
+      "result_count": 10,
+      "result_sha256": "16d4ab412fad68d2db8bdc5eb881721a26946e290bde1eb604f0e30550a6c922",
+      "start_offset": 0,
+      "term": "amendment"
+    }
+  ],
+  "query": {
+    "endpoint": "https://api.legislation.govt.nz/v0/works/",
+    "legislation_types": [
+      "act",
+      "bill",
+      "amendment_paper",
+      "secondary_legislation"
+    ],
+    "max_candidates": 40,
+    "max_pages": 1,
+    "page_size": 10,
+    "scope_id": "legislation-freshness-0002",
+    "sort_by": "most_recently_updated",
+    "start_page": 1,
+    "terms": [
+      "amendment"
+    ]
+  },
+  "receipt_sha256": "b54d73e4e5458a287ca169393f5bd8a6801dc1be9cf10d432b91718f3c8b4e4b",
+  "canonical_state_changed": false
+}

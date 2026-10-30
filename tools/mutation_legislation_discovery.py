@@ -48,6 +48,10 @@ def run(source: str) -> int:
         ):
             (parent / "__init__.py").write_text("", encoding="utf-8")
         (package / "discovery_lane.py").write_text(source, encoding="utf-8")
+        # Keep the real typed receipt dependency; only discovery is mutated.
+        (package / "accounting.py").write_bytes(
+            (SOURCE.parent / "accounting.py").read_bytes()
+        )
         environment = dict(os.environ)
         environment["PYTHONPATH"] = str(base)
         result = subprocess.run(

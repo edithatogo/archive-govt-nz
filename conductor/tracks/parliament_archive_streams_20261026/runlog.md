@@ -387,3 +387,15 @@ report invocation demonstrating historical progress at a pinned accepted checkpo
 Next operation: finish the scoped source packet, validate, integrate with required
 hosted checks, then dispatch/read back the two exact workflows once. No broad
 archive-completeness assertion or other collection expansion belongs to this packet.
+
+Local candidate assurance: CPython3.15.1,8821 passed/14capability skips,96%
+coverage;95schemas/85representative documents;parity9/9; all13PR gates passed.
+The initial lint stop preceded tests; only remaining/affected stages resumed.
+Discovery mutation driver initially omitted accounting.py from its isolated
+package; corrected its dependency packaging and all4mutants were killed.
+Production discovery code was unchanged by that driver repair; the full suite
+was not repeated. Detailed hashes: evidence/coverage-audit/20261031/implementation-assurance.json.
+Native query-only41084537406 on489e202a passed its known-Act control and returned
+40candidates (10each Act/Bill/amendment-paper/secondary-legislation). Native parent
+restore and acquisition steps were skipped; no canonical state or HF archive
+changed. Source receipt: evidence/coverage-audit/20261031/discovery-native-readback.json.
