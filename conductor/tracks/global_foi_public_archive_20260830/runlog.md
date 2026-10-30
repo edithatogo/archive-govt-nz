@@ -525,3 +525,26 @@ line across the ten changed documents is unchanged. Manual diff review confirmed
 that the pre-PR harness and hosted gates remain required; no implementation or
 external acceptance claim was added. Full harness was not run for this isolated
 documentation handoff; PR/integration validation remains with the integrator.
+
+## 2026-10-31 — Bounded P1.5 current-artifact readback
+
+Chat 01a18d15-95a4-7c61-b16d-6f13008a57e7 records read-only reconciliation
+in worktree /Users/doughnut/.codex/worktrees/health-finite-report/archive-govt-nz,
+branch codex/health-normalization-report. Owned FOI path: this appended runlog
+entry only; no native mutation or ownership transfer. Existing assignments stand.
+
+The donor fyi-archive run41041775361 (Automated Historical Backfill, created
+2026-10-30T10:34:48Z) completed successfully. Its sole listed artifact
+12969774936, automated-backfill-plan, downloaded as36,830bytes, has SHA-256
+7712973591aa517e9f8ab61cd543f8019263bf4ab51d3e14ef657db09c2a95a5. It contains backfill-plan.json and
+backfill-state.json, not original source objects. The plan reports zero batches
+and next_id250001; the state has3,074batch entries and an updated_at timestamp
+of2026-07-21T11:21:31.079372+00:00. A successful recent planning run is not new
+raw-capture evidence. Project sync run41043783262 has no listed artifacts.
+
+P1.5 remains open: this bounded read does not supply the missing historical
+17225–17226 originals or a changed-sync receipt with matching public readback.
+Do not repeat the qualified local repair tests to address these evidence gaps.
+Next FOI work requires the specific retained raw package/changed-sync receipt,
+or a separately scoped recovery operation that preserves the historical gap.
+No claim of exhaustive backup search, no source recapture and no publication.

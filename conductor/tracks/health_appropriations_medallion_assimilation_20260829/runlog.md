@@ -10611,3 +10611,30 @@ line across the ten changed documents is unchanged. Manual diff review confirmed
 that the pre-PR harness and hosted gates remain required; no implementation or
 external acceptance claim was added. Full harness was not run for this isolated
 documentation handoff; PR/integration validation remains with the integrator.
+
+## 2026-10-31 — Phase 8 normalization report batch
+
+Chat 01a18d15-95a4-7c61-b16d-6f13008a57e7 prepares this independent batch while
+policy PR #835 completes hosted assurance. Worktree:
+/Users/doughnut/.codex/worktrees/health-finite-report/archive-govt-nz; branch
+codex/health-normalization-report. Owned scope: normalization_schedule.py, the
+existing CLI command, its focused report tests, and Health plan/runlog guidance.
+Native scope: none; no capture, timer activation or publication. Earlier native
+owners remain unchanged. Definition of done: an opt-in human-readable report
+from the existing normalization receipt, identical JSON default and failure exit
+semantics, no private input fields in the report, focused contracts and required
+delivery gates. This is the normalization slice of Phase 8's report task; broader
+operations and the full track remain open. Do not deliver before policy PR #835.
+
+Focused verification: seven new tests failed before implementation; the failure-
+only rerun passed all seven. Final report/scheduler selection passed 29 tests,
+including unchanged JSON defaults and partial exit behavior. Scoped typing and
+Conductor validation passed. Ruff findings were corrected without suppressions.
+Next: full PR profile and required hosted gates; prior native receipts are reused
+only to close the specific historical reader/timing/scheduler delivery entries.
+
+Fixture CLI smoke: the first unresolved temporary-directory path returned a
+partial/failed receipt and exit 2; no private fields appeared in Markdown.
+Resolving the temporary path passed the producer preflight, rendered planned/
+one dry-run job, exited 0 and left the job root absent. This is synthetic
+local smoke evidence, not a live-source or scheduled-operation claim.

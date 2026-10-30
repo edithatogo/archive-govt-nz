@@ -1682,6 +1682,17 @@ deliberately exercise version handling.
 
 ## Phase 8 — CLI, MCP and scheduled operation
 
+31 October reconciliation: the reader-only boundary is delivered in PR #723
+(merge ae4f870c); the retained operational replay records CLI 12.13s and MCP
+call 10.11s within the existing 30s limits, with matching prior products. See
+context-reader-startup-delivery-20261019.json and
+context-reader-startup-replay-20261019-v1.json. The timing-diagnosis and reader
+items below are closed using these retained receipts, not a new native run.
+The local normalization runner was merged in PR #812 (61a216c8), with all
+required checks read back on 31 October; activation/capture remain separate.
+Older pending prose remains historical; it no longer requests repeat delivery.
+
+
 ### 8.1 Operational contracts first
 
 - [x] Implement an exclusive local resume executor over an explicitly pinned
@@ -1805,10 +1816,10 @@ deliberately exercise version handling.
 - [~] Add fast-first scheduled discovery/capture/normalization lanes with
   heavier reconciliation and reconstruction behind explicit triggers and
   bounded resource limits. [M-15, M-18; AC-13, AC-16]
-  - [~] Add a pinned local normalization-plan runner, scheduler-callable CLI
+  - [x] Add a pinned local normalization-plan runner, scheduler-callable CLI
     and read-only MCP preflight, with bounded inputs, exclusive execution,
     preserved failed/interrupted attempts and hash-verified replay. Local
-    qualification passed; hosted assurance and protected delivery remain pending. This does not activate
+    qualification passed; PR #812 merged with all required checks on 28 October. This does not activate
     a timer or implement the capture lane. See
     `phase8-normalization-scheduler-20261029.md`.
   - [x] Pin the existing metadata-only Health discovery lane to contents-read,
@@ -1824,6 +1835,12 @@ deliberately exercise version handling.
     the machine receipt in the workflow artifact. The report explicitly leaves
     capture, normalization, validation and publication unclaimed. See
     `operation-metadata-operations-delivery-20261024.md`.
+
+- [~] Add opt-in Markdown reporting to the existing normalization-plan CLI,
+  using the same receipt and exit status as JSON. Include only validated counts,
+  plan hash and explicit local/capture/publication/recurrence boundaries;
+  never copy job names, paths or source content. This closes only the local
+  normalization report slice of M-15/AC-13; broader reporting remains open.
 
 ### 8.3 Phase review and checkpoint
 
@@ -2723,7 +2740,7 @@ explicit disclosure; require original all32stages on3clean hosted platforms,
   no local full-pass claim and earlier timeout location remains unproven.
   [M-05, M-07, M-15, M-18; AC-03, AC-05, AC-13, AC-16]
 
-- [~] Keep Context Gold input-spec inspection independent of plotting/product
+- [x] Keep Context Gold input-spec inspection independent of plotting/product
   reconstruction startup. Reuse existing reader, source-path guards and native
   products; retain the original FIFO10s and full900s/80% gates. Establish a
   reader-only dependency boundary, verify actual regular/FIFO paths and prove
@@ -2743,7 +2760,7 @@ CLI/MCP or a startup SLA. See context-reader-startup-native-20261018.json.
 Original full harness and protected delivery of the reader-only slice remain
 pending; broader Phase8 stays incomplete. Conductor design advice requested.
 
-- [ ] Diagnose full-source Context Gold CLI/MCP preflight timing against the
+- [x] Diagnose full-source Context Gold CLI/MCP preflight timing against the
   retained5-input/615-observation package. Distinguish import, source
   regeneration and rendering cost; preserve no-write semantics, complete
   controls, source facts and the existing probe/test/full limits. Reader-only
