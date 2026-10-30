@@ -37,3 +37,17 @@ unexpected outputs and invalid scheduler state. The two affected test files
 passed 15 tests with 86.49% combined branch coverage of the new modules; the
 unchanged implementation retains the earlier full-harness evidence. Fresh
 exact-head hosted checks remain required.
+
+## Human-readable local report — 31 October 2026
+
+Use the existing command with `--format markdown` to render a summary from the
+same receipt. JSON remains the default; partial runs still return exit code 2.
+Dry-run is still the default and report formatting never activates a timer.
+The report shows the plan digest and counts for dry-run, written-local, reused
+and failed jobs. It omits job IDs, source paths, locators and operation payloads.
+A local success does not assert capture, rights, public delivery or recurrence.
+Invalid input failures remain redacted machine JSON with exit code 2.
+
+PR #812 is merged (61a216c8d6f1d90a6be9372176ef9cbb9cdb86cd); all required
+checks were read back on 31 October. The pending-delivery wording above is
+historical. No new native execution or scheduling is claimed by this update.

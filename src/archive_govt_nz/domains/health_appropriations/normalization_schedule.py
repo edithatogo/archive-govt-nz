@@ -92,6 +92,55 @@ def run_normalization_plan(
     }
 
 
+def render_normalization_report(receipt: dict[str, Any]) -> str:
+    """Summarize a local run without copying job IDs, paths or source content."""
+    msg = "schedule_report_invalid"
+    states = ("dry_run", "written_local", "reused", "failed")
+    try:
+        jobs = receipt["jobs"]
+        counts = dict.fromkeys(states, 0)
+        if not isinstance(jobs, list) or not 0 < len(jobs) <= _MAX_JOBS:
+            raise ValueError(msg)
+        for job in jobs:
+            counts[job["result"]["status"]] += 1
+        expected = (
+            "partial"
+            if counts["failed"]
+            else ("planned" if counts["dry_run"] == len(jobs) else "completed")
+        )
+        if (
+            receipt["schema_version"]
+            != "archive-govt-nz.health-normalization-schedule-receipt/v1"
+            or not isinstance(receipt["plan_sha256"], str)
+            or not re.fullmatch(r"[0-9a-f]{64}", receipt["plan_sha256"])
+            or type(receipt["job_count"]) is not int
+            or receipt["job_count"] != len(jobs)
+            or type(receipt["failed_count"]) is not int
+            or receipt["failed_count"] != counts["failed"]
+            or receipt["status"] != expected
+            or (counts["dry_run"] and (counts["written_local"] or counts["reused"]))
+        ):
+            raise ValueError(msg)
+    except (KeyError, TypeError) as error:
+        raise ValueError(msg) from error
+    rows = "\n".join(f"| {state} | {counts[state]} |" for state in states)
+    return (
+        "# Health normalization report\n\n"
+        f"Plan SHA-256: {receipt['plan_sha256']}\n\n"
+        f"Run state: {expected}\n\n"
+        f"Jobs accounted for: {len(jobs)}\n\n"
+        "| Local outcome | Jobs |\n| --- | ---: |\n"
+        f"{rows}\n\n"
+        "Scope: this local execution or preflight receipt only.\n"
+        "Reuse checks retained output hashes; it does not independently "
+        "authenticate prior execution.\n"
+        "Capture: not performed\n"
+        "Rights: not evaluated\n"
+        "Publication: not performed\n"
+        "Scheduled recurrence: not established\n"
+    )
+
+
 def mcp_preflight(arguments: dict[str, Any]) -> dict[str, Any]:
     """Expose the schedule only as a read-only MCP preflight."""
     if set(arguments) != {"plan", "plan_sha256", "job_root"} or not all(

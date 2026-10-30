@@ -70,6 +70,7 @@ from archive_govt_nz.domains.health_appropriations.native_workbook_inspection im
     inspect_native_workbook,
 )
 from archive_govt_nz.domains.health_appropriations.normalization_schedule import (
+    render_normalization_report,
     run_normalization_plan,
 )
 from archive_govt_nz.domains.health_appropriations.operations import (
@@ -469,15 +470,24 @@ def health_appropriations_preflight_capture_plan(
 
 @app.command(name="health-appropriations-run-normalization-plan")
 def health_appropriations_run_normalization_plan(
-    *, plan: Path, plan_sha256: str, job_root: Path, dry_run: bool = True
+    *,
+    plan: Path,
+    plan_sha256: str,
+    job_root: Path,
+    dry_run: bool = True,
+    format: Literal["json", "markdown"] = "json",
 ) -> int:
     """Run a pinned, bounded offline normalization plan."""
     try:
         receipt = run_normalization_plan(plan, plan_sha256, job_root, dry_run=dry_run)
+        report = render_normalization_report(receipt) if format == "markdown" else None
     except ValueError, OSError:
         _emit_json({"status": "failed", "error": "normalization_plan_invalid"})
         return 2
-    _emit_json(receipt)
+    if report is None:
+        _emit_json(receipt)
+    else:
+        print(report, end="")
     return 2 if receipt["status"] == "partial" else 0
 
 
