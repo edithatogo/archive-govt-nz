@@ -191,22 +191,23 @@ def test_digest_mismatch_stops_before_native_access(tmp_path: Path) -> None:
         packet.validate_package(tmp_path, "e" * 64)
 
 
-def test_api_catalogue_path_and_response_are_qualified() -> None:
+def test_api_catalogue_path_and_response_are_qualified(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     """Use the selected header credential only on the official JSON endpoint."""
     calls = []
+    monkeypatch.setenv("LEGISLATION_API_KEY", "test")
 
     def respond(request: httpx.Request) -> httpx.Response:
         calls.append(request)
-        assert request.headers["X-Api-Key"] == "synthetic-key"
-        assert "synthetic-key" not in str(request.url)
+        assert request.headers["X-Api-Key"] == "test"
+        assert "test" not in str(request.url)
         return httpx.Response(
             200, json={"results": [], "page": 1, "per_page": 100, "total": 0}
         )
 
     client = httpx.Client(transport=httpx.MockTransport(respond))
-    api = packet.NZLegislationApiClient(
-        client=client, api_key="synthetic-key", min_interval_seconds=0
-    )
+    api = packet.NZLegislationApiClient(client=client, min_interval_seconds=0)
     assert api.get_catalogue_page("works/", {"page": 1})["total"] == 0
     with pytest.raises(ValueError, match="unsupported"):
         api.get_catalogue_page("https://outside.invalid/", {})
@@ -236,9 +237,9 @@ async def test_original_stream_has_hard_budget_and_no_key_transfer(
         lambda **_kw: original(transport=httpx.MockTransport(respond)),
     )
     monkeypatch.setattr(packet, "MAX_FILE", 4 if limited else 100)
+    monkeypatch.setenv("LEGISLATION_API_KEY", "test")
     client = packet.PacketClient()
     client.min_interval_seconds = 0
-    client.api_key = "synthetic-key"
     if limited:
         with pytest.raises(ValueError, match="byte budget"):
             await client.get_document_raw_async(

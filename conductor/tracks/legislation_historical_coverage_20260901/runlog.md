@@ -60,3 +60,13 @@ local harness terminated. CPython3.15.1/pypdf6.21.4 read back. First hosted logs
 and audit receipts retained under the ignored packet evidence directory. Run a
 coherent candidate harness and required hosted checks on these changed inputs;
 reuse unchanged adapter mutation evidence. Native capture has not started.
+
+Patched candidate receipt: full local tests8857 passed/14 capability skips,
+coverage96.32%, all format/lint/types/schema/parity/hygiene/audit/licence gates
+passed with pypdf6.21.4. Secrets then flagged the synthetic credential fixture;
+replace direct dummy assignments with mocked environment inputs matching the
+workflow. Focused affected tests passed; secrets and remaining SBOM named stages
+passed. No scanner exclusions, retry/suppression or runtime changes. Reuse the
+unchanged full-suite and adapter-mutation receipts; hosted checks must pass the
+final exact commit. Logs `validation-patched.log`, `env-fixture-focused.log`,
+`env-stream-focused.log`, `secrets-sbom-terminal.log` retain the terminal scope.
