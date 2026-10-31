@@ -97,3 +97,11 @@ passed; first failure retained. No parent promotion or other writer changes.
 Next operation: isolated branch capture (new workflow is now registered), full
 candidate harness and required hosted checks; publish inspected bytes only after
 source integration. Publication has had zero attempts.
+
+Branch capture41150581631 was denied before acquisition by the existing
+main-only parent-lineage schema. Preserve that boundary: restrict both historical
+workflow operations to main, rather than advertising unsupported branch capture.
+No archive bytes or HF objects changed. Native qualification therefore follows
+source integration; the observed dated endpoints and18 focused tests already
+qualify the alias projection. Actionlint passed the main-only guard. No schema,
+parent authority, authentication or acceptance gate is relaxed.

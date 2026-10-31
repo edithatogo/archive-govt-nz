@@ -32,6 +32,7 @@ checkpoint and continuation-seal verification runs before packaging. The determi
 cumulative ZIP retains old objects, receipts, lineage and history, subject to the
 existing canonical recovery size/expansion limits.
 
+Both operations run from `main`, matching the existing parent-lineage boundary.
 Run `capture` first. Inspect the immutable capture artifact, inventory, source
 metadata, accounting and package SHA-256. The `publish` operation runs only from
 `main`; it requires the exact successful capture run and inspected package digest.
