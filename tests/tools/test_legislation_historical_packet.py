@@ -306,8 +306,9 @@ def test_sealed_package_binding_and_lineage_are_checked(
         packet.validate_package(tmp_path, packet.digest(raw))
 
 
+@pytest.mark.parametrize("failed", [False, True])
 def test_capture_orchestration_keeps_parent_and_binds_package(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, *, failed: bool
 ) -> None:
     """The service output must retain every original record before it can seal."""
     before = {
@@ -333,10 +334,15 @@ def test_capture_orchestration_keeps_parent_and_binds_package(
             assert kwargs["force_resync"] is True
             assert kwargs["fail_fast"] is True
             return SimpleNamespace(
-                status="success",
+                status="failed" if failed else "success",
+                errors=[
+                    "fixture-private-url HTTP 503 historical PDF signature mismatch"
+                ]
+                if failed
+                else [],
                 manifest=after,
                 accounting=SimpleNamespace(
-                    failed=0, partial=0, to_receipt=lambda: {"fixture": True}
+                    failed=int(failed), partial=0, to_receipt=lambda: {"fixture": True}
                 ),
             )
 
@@ -364,6 +370,19 @@ def test_capture_orchestration_keeps_parent_and_binds_package(
     monkeypatch.setattr(packet.parent, "state_roots", lambda _f: roots)
     monkeypatch.setattr(packet.parent, "unpack", lambda _raw: {})
     monkeypatch.setattr(packet, "package_bytes", lambda _f: b"fixture-zip")
+    if failed:
+        with pytest.raises(ValueError, match="capture incomplete"):
+            packet.capture(tmp_path / "state", tmp_path / "output", packet.Bounds())
+        diagnostic = (tmp_path / "output/capture-diagnostic.json").read_text()
+        assert "fixture-private-url" not in diagnostic
+        assert json.loads(diagnostic) == {
+            "status": "failed",
+            "failure_codes": ["historical PDF signature mismatch"],
+            "http_statuses": [503],
+        }
+        assert (tmp_path / "output/harvest.json").exists()
+        assert not (tmp_path / "output/canonical-state.zip").exists()
+        return
     metadata = packet.capture(tmp_path / "state", tmp_path / "output", packet.Bounds())
     assert (tmp_path / "output/harvest.json").read_bytes() == (
         tmp_path / "state/receipts/harvest.json"

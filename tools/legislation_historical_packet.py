@@ -202,6 +202,31 @@ def capture(state: Path, output: Path, bounds: Bounds) -> dict[str, Any]:
         raise ValueError(message)
     write(state / "receipts/harvest.json", result.accounting.to_receipt())
     write(output / "harvest.json", result.accounting.to_receipt())
+    write(
+        output / "capture-diagnostic.json",
+        {
+            "status": result.status,
+            "failure_codes": [
+                code
+                for code in (
+                    "historical PDF signature mismatch",
+                    "historical XML is not an Act representation",
+                    "historical HTML does not identify the offered Act",
+                    "historical original exceeds byte budget",
+                    "historical original redirect bound exceeded",
+                    "unqualified historical manifestation URL",
+                )
+                if any(code in error for error in result.errors)
+            ],
+            "http_statuses": sorted(
+                {
+                    int(status)
+                    for error in result.errors
+                    for status in re.findall(r"\bHTTP ([0-9]{3})\b", error)
+                }
+            ),
+        },
+    )
     if (
         result.status != "success"
         or result.accounting.failed

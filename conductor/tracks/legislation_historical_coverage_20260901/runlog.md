@@ -126,3 +126,12 @@ Retain strong harvest accounting alongside failed capture artifacts and expose
 only allowlisted failure codes; private SDK messages remain suppressed. This is
 local diagnosis, not a native capture/publication acceptance claim. No verifier,
 parent, schema, rights or lineage gate is relaxed; publication attempts remain0.
+
+The same retained21 response bodies now pass the existing full canonical
+reconciliation with the URI correction:904 prior records unchanged,925 cumulative
+records; this is local transport-replay evidence, not native acceptance. New
+multi-version regression passes the actual native identity validator on emitted
+manifest rows. Retain controlled source failure classifications/HTTP statuses
+and strong harvest receipts on failed captures, without private error strings,
+so an access/provider failure can be distinguished from a custody failure.
+Focused changed regressions passed; full coherent pre-PR harness follows.
