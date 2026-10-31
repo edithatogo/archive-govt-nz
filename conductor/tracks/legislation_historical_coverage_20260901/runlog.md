@@ -105,3 +105,9 @@ No archive bytes or HF objects changed. Native qualification therefore follows
 source integration; the observed dated endpoints and18 focused tests already
 qualify the alias projection. Actionlint passed the main-only guard. No schema,
 parent authority, authentication or acceptance gate is relaxed.
+
+Alias follow-up candidate: full local PR harness passed,8859 tests/14 capability
+skips, schema/parity/hygiene/audit/licences/secrets/SBOM passed; actionlint passed.
+Native failed receipts and source pages remain retained. No required gate was
+weakened. Next: required hosted checks and protected merge, main capture, exact
+package inspection, single additive HF publication and anonymous fixity readback.
