@@ -118,6 +118,7 @@ jobs:
             build/legislation-history/metadata.json
             build/legislation-history/inventory.json
             build/legislation-history/source-pages.json
+            build/legislation-history/harvest.json
           if-no-files-found: warn
           retention-days: 90
       - name: Retain publication journal and terminal receipt

@@ -201,6 +201,7 @@ def capture(state: Path, output: Path, bounds: Bounds) -> dict[str, Any]:
         message = "historical accounting missing"
         raise ValueError(message)
     write(state / "receipts/harvest.json", result.accounting.to_receipt())
+    write(output / "harvest.json", result.accounting.to_receipt())
     if (
         result.status != "success"
         or result.accounting.failed
@@ -444,11 +445,28 @@ def main() -> int:
                 else publish(args.directory, args.expected_sha256, args.output)
             )
     except Exception as error:  # noqa: BLE001 - sanitize SDK errors, never retry writes
+        detail = str(error)
+        safe_detail = (
+            detail
+            if detail
+            in {
+                "historical accounting missing",
+                "historical capture incomplete; publication prohibited",
+                "historical parent record changed",
+                "historical package recovery mismatch",
+            }
+            or (
+                isinstance(error, parent.v.VerificationError)
+                and re.fullmatch(r"[a-z0-9_-]{1,80}", detail)
+            )
+            else None
+        )
         print(
             json.dumps(
                 {
                     "status": "failed",
                     "error_type": type(error).__name__,
+                    "failure_code": safe_detail,
                     "publication_retried": False,
                 }
             )

@@ -365,6 +365,9 @@ def test_capture_orchestration_keeps_parent_and_binds_package(
     monkeypatch.setattr(packet.parent, "unpack", lambda _raw: {})
     monkeypatch.setattr(packet, "package_bytes", lambda _f: b"fixture-zip")
     metadata = packet.capture(tmp_path / "state", tmp_path / "output", packet.Bounds())
+    assert (tmp_path / "output/harvest.json").read_bytes() == (
+        tmp_path / "state/receipts/harvest.json"
+    ).read_bytes()
     assert metadata["records_before"] == 1
     assert metadata["records_after"] == 2
     assert metadata["new_records"] == 1
@@ -375,15 +378,28 @@ def test_capture_orchestration_keeps_parent_and_binds_package(
     }
 
 
+@pytest.mark.parametrize(
+    ("message", "expected"),
+    [
+        ("fixture-private-url-must-not-appear", None),
+        (
+            "historical capture incomplete; publication prohibited",
+            "historical capture incomplete; publication prohibited",
+        ),
+    ],
+)
 def test_cli_does_not_print_private_sdk_error(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    message: str,
+    expected: str | None,
 ) -> None:
-    """A failed native operation exposes only its stable exception class."""
+    """Expose controlled archive codes while suppressing private SDK details."""
     monkeypatch.chdir(tmp_path)
     monkeypatch.setattr(sys, "argv", ["packet", "publish"])
 
     def fail(*_args: object) -> dict[str, object]:
-        message = "fixture-private-url-must-not-appear"
         raise OSError(message)
 
     monkeypatch.setattr(packet, "publish", fail)
@@ -393,6 +409,7 @@ def test_cli_does_not_print_private_sdk_error(
     output = capsys.readouterr().out
     assert "fixture-private-url" not in output
     assert json.loads(output)["publication_retried"] is False
+    assert json.loads(output)["failure_code"] == expected
 
 
 @pytest.mark.parametrize(
