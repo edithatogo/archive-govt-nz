@@ -79,3 +79,21 @@ workflow environment. Direct source_identity readback exactly matches the pinned
 reference child_source; actionlint passed. This workflow-only correction reuses
 unchanged Python tests/runtime/dependency evidence. Resolve the addressed review
 and wait for hosted checks on the corrected workflow head before native capture.
+
+PR838 merged as cfac89c9 after all required checks passed. Main/source tree equality
+confirmed. Capture41150186959 restored the904-record/552-work parent successfully,
+enumerated100 oldest PCO Acts (source total5104), then stopped before admission:
+the versions endpoint advertises latest aliases on its newest explicit version.
+The floating-URL guard correctly rejected these; nothing was published. Retain
+source pages in the ignored capture directory and the native artifact.
+
+Same chat/worktree now owns branch `codex/legislation-history-alias-20261031`,
+a bounded follow-up to project advertised latest URLs onto the exact offered
+expression date, as the existing canonical service already does. Qualify the
+matching official work path/date, keep both advertised and dated URLs in inventory,
+and retain the floating-URL ban for downloads. Three dated formats of the observed
+1267 Act returned HTTP200 and valid XML/PDF/HTML representations. Affected tests18
+passed; first failure retained. No parent promotion or other writer changes.
+Next operation: isolated branch capture (new workflow is now registered), full
+candidate harness and required hosted checks; publish inspected bytes only after
+source integration. Publication has had zero attempts.

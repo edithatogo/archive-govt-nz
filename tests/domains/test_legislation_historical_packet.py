@@ -93,6 +93,33 @@ def test_missing_versions_keep_every_format_and_original_parent() -> None:
     assert receipt["source_completeness_claim"] is False
 
 
+def test_api_latest_aliases_are_pinned_without_losing_the_offered_urls() -> None:
+    """The live versions contract advertises latest aliases for its newest row."""
+    client = Catalogue()
+    for fmt in client.graph[0]["formats"][:3]:
+        fmt["url"] = fmt["url"].replace("1841-06-01", "latest")
+    parent = {
+        "records": [{"manifestation_id": BASE + ".xml"}],
+        "discovered_work_ids": [],
+    }
+    targets, receipt = missing_targets(client, parent, Bounds())
+    urls = [m.target_url for m in targets[0].expression_targets[0].manifestations]
+    assert set(urls) == {BASE + "/", BASE + ".pdf", BASE + "-scan.pdf"}
+    projections = receipt["selected"][0]["url_projections"]
+    assert len(projections) == 3
+    assert all("/latest" in row["advertised_url"] for row in projections)
+    assert all("/latest" not in row["dated_url"] for row in projections)
+    assert "latest" in client.graph[0]["formats"][0]["url"]
+
+
+def test_latest_alias_for_a_different_work_is_not_admitted() -> None:
+    """Projection cannot bind another Act's body to the selected expression."""
+    client = Catalogue()
+    client.graph[0]["formats"][0]["url"] = BASE.replace("/1841/1/", "/1841/2/")
+    with pytest.raises(ValueError, match="expression identity"):
+        missing_targets(client, {"records": [], "discovered_work_ids": []}, Bounds())
+
+
 def test_pdf_original_is_not_html_or_fabricated_text() -> None:
     """Preserve binary originals and reject HTML challenges masquerading as PDFs."""
     record = normalise_legislation_payload(

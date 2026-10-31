@@ -15,6 +15,10 @@ secret. Original downloads are anonymous, confined to official PCO Act URLs,
 paced, and limited to 16 MiB/file and 128 MiB of new response bodies per run.
 Advertised PDFs require PDF signatures; XML must be an Act representation, and
 HTML must identify its offered Act before custody. HTTP200 alone is insufficient.
+The newest row of the API versions endpoint can advertise `latest` aliases.
+These are pinned to that row's explicit expression date within the matching Act
+path, and both advertised and dated URLs are retained in the inventory. Downloads
+and canonical identities use dated URLs; floating links remain inadmissible.
 No credential is forwarded to original-document endpoints; no native mutation is
 retried. Unknown source formats, redirects outside the qualified host, partial
 version lists, malformed pages or unsuccessful originals stop admission.
