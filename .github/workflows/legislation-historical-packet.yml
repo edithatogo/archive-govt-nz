@@ -1,0 +1,132 @@
+name: Historical legislation packet
+
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: 'Capture isolated historical state or publish its inspected bytes'
+        type: choice
+        options: [capture, publish]
+        default: capture
+      confirmed_execution:
+        description: 'Execute the user-authorized bounded historical packet'
+        type: boolean
+        required: true
+        default: false
+      start_page:
+        description: 'Oldest-first 100-work catalogue page'
+        type: number
+        default: 1
+      parent_reference:
+        description: 'Committed approved parent reference; never inferred from a failed restore'
+        type: string
+        default: config/legislation/parents/current.json
+      capture_run:
+        description: 'Exact successful capture run for publication'
+        type: string
+      expected_sha256:
+        description: 'Inspected package SHA256 under delegated PCO Act publication authority'
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: legislation-canonical-state
+  cancel-in-progress: false
+
+jobs:
+  packet:
+    if: >-
+      inputs.confirmed_execution && github.repository == 'edithatogo/archive-govt-nz' &&
+      (inputs.operation == 'capture' || github.ref == 'refs/heads/main')
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      GH_TOKEN: ${{ github.token }}
+      PARENT_EXECUTION_ID: ${{ github.run_id }}
+      PARENT_SEED_ID: historical-work-ids-0001
+      HF_HUB_DISABLE_XET: '1'
+      HF_HUB_DISABLE_PROGRESS_BARS: '1'
+      PYTHON_JIT: '0'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e
+        with:
+          version: '0.13.5'
+          python-version: '3.15.1'
+      - name: Install locked runtime
+        run: |
+          uv sync --locked
+          .venv/bin/python -c 'import sys; assert sys.version_info[:3] == (3,15,1)'
+      - name: Restore pinned parent without overwriting it
+        if: inputs.operation == 'capture'
+        uses: ./.github/actions/legislation-parent-state
+        with:
+          parent-reference: ${{ inputs.parent_reference }}
+          seed-id: historical-work-ids-0001
+          execution-id: ${{ github.run_id }}
+          github-token: ${{ github.token }}
+      - name: Capture historical versions and encodings
+        if: inputs.operation == 'capture'
+        env:
+          LEGISLATION_API_KEY: ${{ secrets.LEGISLATION_API_KEY }}
+          START_PAGE: ${{ inputs.start_page }}
+        run: >-
+          .venv/bin/python -m tools.legislation_historical_packet capture
+          --start-page "$START_PAGE"
+      - name: Resolve exact successful capture artifact
+        if: inputs.operation == 'publish'
+        env:
+          CAPTURE_RUN: ${{ inputs.capture_run }}
+        run: |
+          .venv/bin/python - <<'PY'
+          import json, os, re, subprocess
+          run = os.environ['CAPTURE_RUN']
+          if not re.fullmatch(r'[1-9][0-9]{0,19}', run):
+              raise SystemExit('invalid capture run')
+          command = ['gh', 'api', 'repos/edithatogo/archive-govt-nz/actions/runs/' + run]
+          value = json.loads(subprocess.check_output(command))
+          if (value['conclusion'] != 'success' or
+              value['path'] != '.github/workflows/legislation-historical-packet.yml' or
+              value['event'] != 'workflow_dispatch'):
+              raise SystemExit('successful exact capture required')
+          subprocess.run(['gh', 'run', 'download', run, '--repo',
+                          'edithatogo/archive-govt-nz', '-n',
+                          'legislation-history-' + run, '-D',
+                          'build/legislation-history'], check=True)
+          PY
+      - name: Publish exact inspected package and verify anonymous recovery
+        if: inputs.operation == 'publish'
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          EXPECTED_SHA256: ${{ inputs.expected_sha256 }}
+        run: >-
+          .venv/bin/python -m tools.legislation_historical_packet publish
+          --expected-sha256 "$EXPECTED_SHA256"
+      - name: Retain complete package and source accounting
+        if: always() && inputs.operation == 'capture'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: legislation-history-${{ github.run_id }}
+          path: |
+            build/legislation-history/canonical-state.zip
+            build/legislation-history/metadata.json
+            build/legislation-history/inventory.json
+            build/legislation-history/source-pages.json
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Retain publication journal and terminal receipt
+        if: always() && inputs.operation == 'publish'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: legislation-history-publication-${{ github.run_id }}
+          path: |
+            build/legislation-history-publication/receipt.json
+            build/legislation-history-publication/journal.json
+          if-no-files-found: warn
+          retention-days: 90
