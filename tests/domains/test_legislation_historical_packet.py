@@ -10,7 +10,6 @@ if TYPE_CHECKING:
 
 import httpx
 import pytest
-from tools.verify_final_donor_state import check_identity
 
 from archive_govt_nz.domains.legislation.api import NZLegislationApiClient
 from archive_govt_nz.domains.legislation.corpus import (
@@ -292,51 +291,3 @@ def test_capture_cursor_does_not_skip_unselected_inventory_work() -> None:
     assert len(targets) == 1
     assert receipt["pending_work_ids"] == ["act_public_1842_2"]
     assert receipt["capture_resume_page"] == 1
-
-
-@pytest.mark.anyio
-async def test_each_historical_version_passes_the_native_custody_identity_gate(
-    tmp_path: Path,
-) -> None:
-    """A later version must never inherit the first expression's canonical URI."""
-    catalogue = Catalogue()
-    catalogue.graph[0]["formats"] = catalogue.graph[0]["formats"][:3]
-    later = copy.deepcopy(catalogue.graph[0])
-    later["version_id"] = WORK + "_en_1841-06-02"
-    for fmt in later["formats"]:
-        fmt["url"] = fmt["url"].replace("1841-06-01", "1841-06-02")
-    catalogue.graph.append(later)
-    targets, _ = missing_targets(
-        catalogue, {"records": [], "discovered_work_ids": []}, Bounds()
-    )
-
-    def respond(request: httpx.Request) -> httpx.Response:
-        if request.url.path.endswith(".pdf"):
-            body, mime = b"%PDF-1.7 fixture", "application/pdf"
-        elif request.url.path.endswith(".xml"):
-            body, mime = b"<act><title>Fixture Act</title></act>", "application/xml"
-        else:
-            body, mime = b"<html><body>Fixture Act</body></html>", "text/html"
-        return httpx.Response(200, content=body, headers={"content-type": mime})
-
-    async with httpx.AsyncClient(transport=httpx.MockTransport(respond)) as transport:
-        service = LegislationArchiveService(
-            ContentAddressedStore(tmp_path / "cas"),
-            api_client=NZLegislationApiClient(
-                async_client=transport, min_interval_seconds=0
-            ),
-        )
-        result = await service.sync_works(
-            targets=targets,
-            manifest_path=tmp_path / "manifest.json",
-            checkpoint_path=tmp_path / "checkpoint.json",
-            batch_id="historical-identity-fixture",
-            max_works=1,
-        )
-    assert result.status == "success"
-    assert len(result.records) == 6
-    assert {check_identity(record) for record in result.manifest["records"]} == {
-        "html",
-        "xml",
-        "pdf",
-    }

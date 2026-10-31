@@ -135,3 +135,12 @@ manifest rows. Retain controlled source failure classifications/HTTP statuses
 and strong harvest receipts on failed captures, without private error strings,
 so an access/provider failure can be distinguished from a custody failure.
 Focused changed regressions passed; full coherent pre-PR harness follows.
+
+Full candidate harness retained8843 passing tests/14 skips and one collection
+error: the domain lane cannot import the native tools namespace. Move the custody
+regression into the existing tools lane, using the same verifier loaded by the
+publisher. Affected collection/regression19 passed. Run the failed tests stage
+and directly affected/remaining named gates; reuse unchanged lock/Conductor
+results. Open a draft source PR while those gates finish, and mark reviewable
+only after all local gates pass. Hosted required checks and native acceptance
+remain binding; no archive/publication mutation has occurred.
