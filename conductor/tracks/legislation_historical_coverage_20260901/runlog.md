@@ -70,3 +70,12 @@ passed. No scanner exclusions, retry/suppression or runtime changes. Reuse the
 unchanged full-suite and adapter-mutation receipts; hosted checks must pass the
 final exact commit. Logs `validation-patched.log`, `env-fixture-focused.log`,
 `env-stream-focused.log`, `secrets-sbom-terminal.log` retain the terminal scope.
+
+Final hosted head2c8fd1a9 passed every required platform/security/workflow check.
+Merge was correctly held for an unresolved review finding: the historical action
+omitted the approved durable parent's child seed identity. Match the existing
+scheduled harvest's `historical-work-ids-0001` binding in the composite action and
+workflow environment. Direct source_identity readback exactly matches the pinned
+reference child_source; actionlint passed. This workflow-only correction reuses
+unchanged Python tests/runtime/dependency evidence. Resolve the addressed review
+and wait for hosted checks on the corrected workflow head before native capture.

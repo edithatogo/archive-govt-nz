@@ -46,7 +46,7 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       PARENT_EXECUTION_ID: ${{ github.run_id }}
-      PARENT_SEED_ID: ''
+      PARENT_SEED_ID: historical-work-ids-0001
       HF_HUB_DISABLE_XET: '1'
       HF_HUB_DISABLE_PROGRESS_BARS: '1'
       PYTHON_JIT: '0'
@@ -68,6 +68,7 @@ jobs:
         uses: ./.github/actions/legislation-parent-state
         with:
           parent-reference: ${{ inputs.parent_reference }}
+          seed-id: historical-work-ids-0001
           execution-id: ${{ github.run_id }}
           github-token: ${{ github.token }}
       - name: Capture historical versions and encodings
