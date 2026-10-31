@@ -6,6 +6,7 @@ import hashlib
 import json
 import re
 from dataclasses import dataclass
+from datetime import date
 from typing import Any, Protocol
 from urllib.parse import urlsplit
 
@@ -145,6 +146,22 @@ def versions(
     raise ValueError(message)
 
 
+def dated_url(identifier: str, url: str) -> str:
+    """Pin an API-advertised latest alias to its explicit expression date."""
+    work, separator, stamp = identifier.partition("_en_")
+    parts = urlsplit(url)
+    if (
+        not separator
+        or not WORK.fullmatch(work)
+        or date.fromisoformat(stamp).isoformat() != stamp
+        or not parts.path.startswith("/" + work.replace("_", "/") + "/en/")
+    ):
+        message = "historical format does not match its expression identity"
+        raise ValueError(message)
+    path = re.sub(r"/latest(?=[/.]|$)", "/" + stamp, parts.path, count=1)
+    return official_url(parts._replace(path=path).geturl())
+
+
 def missing_expressions(
     graph: list[dict[str, Any]], prior: set[str]
 ) -> tuple[list[ExpressionTarget], int]:
@@ -161,7 +178,7 @@ def missing_expressions(
             if not isinstance(fmt, dict) or fmt.get("type") not in FORMATS:
                 message = "unsupported historical format"
                 raise ValueError(message)
-            url = official_url(str(fmt.get("url", "")))
+            url = dated_url(version["version_id"], str(fmt.get("url", "")))
             offered += 1
             if url not in prior:
                 manifestations.append(
@@ -247,6 +264,16 @@ def missing_targets(
                     "missing_formats": sum(len(e.manifestations) for e in expressions),
                     "version_pages": pages,
                     "versions": graph,
+                    "url_projections": [
+                        {
+                            "version_id": version["version_id"],
+                            "advertised_url": fmt["url"],
+                            "dated_url": dated_url(version["version_id"], fmt["url"]),
+                        }
+                        for version in graph
+                        for fmt in version["formats"]
+                        if "/latest" in fmt["url"]
+                    ],
                 }
             )
     return targets, {
