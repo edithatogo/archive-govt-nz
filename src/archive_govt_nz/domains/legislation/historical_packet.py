@@ -250,10 +250,9 @@ def missing_targets(
             )
             targets.append(
                 WorkTarget(
-                    work_id,
-                    title,
-                    expressions[0].manifestations[0].target_url,
-                    expressions,
+                    work_id=work_id,
+                    title=title,
+                    expression_targets=expressions,
                 )
             )
             selected.append(

@@ -306,8 +306,9 @@ def test_sealed_package_binding_and_lineage_are_checked(
         packet.validate_package(tmp_path, packet.digest(raw))
 
 
+@pytest.mark.parametrize("failed", [False, True])
 def test_capture_orchestration_keeps_parent_and_binds_package(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, *, failed: bool
 ) -> None:
     """The service output must retain every original record before it can seal."""
     before = {
@@ -333,10 +334,15 @@ def test_capture_orchestration_keeps_parent_and_binds_package(
             assert kwargs["force_resync"] is True
             assert kwargs["fail_fast"] is True
             return SimpleNamespace(
-                status="success",
+                status="failed" if failed else "success",
+                errors=[
+                    "fixture-private-url HTTP 503 historical PDF signature mismatch"
+                ]
+                if failed
+                else [],
                 manifest=after,
                 accounting=SimpleNamespace(
-                    failed=0, partial=0, to_receipt=lambda: {"fixture": True}
+                    failed=int(failed), partial=0, to_receipt=lambda: {"fixture": True}
                 ),
             )
 
@@ -364,7 +370,23 @@ def test_capture_orchestration_keeps_parent_and_binds_package(
     monkeypatch.setattr(packet.parent, "state_roots", lambda _f: roots)
     monkeypatch.setattr(packet.parent, "unpack", lambda _raw: {})
     monkeypatch.setattr(packet, "package_bytes", lambda _f: b"fixture-zip")
+    if failed:
+        with pytest.raises(ValueError, match="capture incomplete"):
+            packet.capture(tmp_path / "state", tmp_path / "output", packet.Bounds())
+        diagnostic = (tmp_path / "output/capture-diagnostic.json").read_text()
+        assert "fixture-private-url" not in diagnostic
+        assert json.loads(diagnostic) == {
+            "status": "failed",
+            "failure_codes": ["historical PDF signature mismatch"],
+            "http_statuses": [503],
+        }
+        assert (tmp_path / "output/harvest.json").exists()
+        assert not (tmp_path / "output/canonical-state.zip").exists()
+        return
     metadata = packet.capture(tmp_path / "state", tmp_path / "output", packet.Bounds())
+    assert (tmp_path / "output/harvest.json").read_bytes() == (
+        tmp_path / "state/receipts/harvest.json"
+    ).read_bytes()
     assert metadata["records_before"] == 1
     assert metadata["records_after"] == 2
     assert metadata["new_records"] == 1
@@ -375,15 +397,28 @@ def test_capture_orchestration_keeps_parent_and_binds_package(
     }
 
 
+@pytest.mark.parametrize(
+    ("message", "expected"),
+    [
+        ("fixture-private-url-must-not-appear", None),
+        (
+            "historical capture incomplete; publication prohibited",
+            "historical capture incomplete; publication prohibited",
+        ),
+    ],
+)
 def test_cli_does_not_print_private_sdk_error(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, capsys: pytest.CaptureFixture[str]
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    message: str,
+    expected: str | None,
 ) -> None:
-    """A failed native operation exposes only its stable exception class."""
+    """Expose controlled archive codes while suppressing private SDK details."""
     monkeypatch.chdir(tmp_path)
     monkeypatch.setattr(sys, "argv", ["packet", "publish"])
 
     def fail(*_args: object) -> dict[str, object]:
-        message = "fixture-private-url-must-not-appear"
         raise OSError(message)
 
     monkeypatch.setattr(packet, "publish", fail)
@@ -393,6 +428,7 @@ def test_cli_does_not_print_private_sdk_error(
     output = capsys.readouterr().out
     assert "fixture-private-url" not in output
     assert json.loads(output)["publication_retried"] is False
+    assert json.loads(output)["failure_code"] == expected
 
 
 @pytest.mark.parametrize(
@@ -439,3 +475,75 @@ def test_canonical_compression_keeps_exact_bytes_and_reproducible_headers() -> N
         assert all(
             info.compress_type == zipfile.ZIP_DEFLATED for info in archive.infolist()
         )
+
+
+@pytest.mark.anyio
+async def test_each_historical_version_passes_the_native_custody_identity_gate(
+    tmp_path: Path,
+) -> None:
+    """A later version must never inherit the first expression's canonical URI."""
+    work = "act_public_1841_1"
+    stem = "https://www.legislation.govt.nz/act/public/1841/1/en/"
+    graph = [
+        {
+            "work_id": work,
+            "version_id": work + "_en_" + stamp,
+            "title": "Fixture Act",
+            "formats": [
+                {"type": kind, "url": stem + stamp + suffix}
+                for kind, suffix in [("xml", ".xml"), ("html", "/"), ("pdf", ".pdf")]
+            ],
+        }
+        for stamp in ["1841-06-01", "1841-06-02"]
+    ]
+
+    class Catalogue:
+        """Provide a complete fictional two-expression work graph."""
+
+        def get_catalogue_page(
+            self, path: str, params: dict[str, Any]
+        ) -> dict[str, Any]:
+            rows = [{"work_id": work}] if path == "works/" else graph
+            return {
+                "results": rows,
+                "page": params["page"],
+                "per_page": params["per_page"],
+                "total": len(rows),
+            }
+
+    targets, _ = packet.missing_targets(
+        Catalogue(), {"records": [], "discovered_work_ids": []}, packet.Bounds()
+    )
+
+    def respond(request: httpx.Request) -> httpx.Response:
+        if request.url.path.endswith(".pdf"):
+            body, mime = b"%PDF-1.7 fixture", "application/pdf"
+        elif request.url.path.endswith(".xml"):
+            body, mime = b"<act><title>Fixture Act</title></act>", "application/xml"
+        else:
+            body, mime = b"<html><body>Fixture Act</body></html>", "text/html"
+        return httpx.Response(200, content=body, headers={"content-type": mime})
+
+    async with httpx.AsyncClient(transport=httpx.MockTransport(respond)) as transport:
+        service = packet.LegislationArchiveService(
+            packet.ContentAddressedStore(tmp_path / "cas"),
+            api_client=packet.NZLegislationApiClient(
+                async_client=transport, min_interval_seconds=0
+            ),
+        )
+        result = await service.sync_works(
+            targets=targets,
+            manifest_path=tmp_path / "manifest.json",
+            checkpoint_path=tmp_path / "checkpoint.json",
+            batch_id="historical-identity-fixture",
+            max_works=1,
+        )
+    assert result.status == "success"
+    assert len(result.records) == 6
+    assert {
+        packet.parent.v.check_identity(record) for record in result.manifest["records"]
+    } == {
+        "html",
+        "xml",
+        "pdf",
+    }
