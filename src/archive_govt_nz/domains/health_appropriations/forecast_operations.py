@@ -20,9 +20,6 @@ from archive_govt_nz.domains.health_appropriations.adapter_dispatch import (
     DispatchResult,
     dispatch_bronze,
 )
-from archive_govt_nz.domains.health_appropriations.context_dimensions import (
-    context_source_dimensions,
-)
 from archive_govt_nz.domains.health_appropriations.forecast_adapter import (
     forecast_health_registration,
 )
@@ -99,6 +96,8 @@ def _dispatch(  # noqa: PLR0913 - explicit trusted source context
         == selection.matched_adapter_ids
         == (registration.adapter_id,)
         and result.output.layout == profile
+        and not result.output.dimensions
+        and not result.output.dimension_links
     )
     # The loss protocol omits raw cell types/values and native record links.
     # Recover only that auxiliary metadata from these exact immutable bytes;
@@ -135,11 +134,6 @@ def _dispatch(  # noqa: PLR0913 - explicit trusted source context
         for row in parsed.excluded_sheets
     ]
     _require([asdict(row) for row in result.output.losses] == losses)
-    expected_dimensions, expected_links = context_source_dimensions(
-        result.output.records, result.output.lineage, family="forecast"
-    )
-    _require(result.output.dimensions == expected_dimensions)
-    _require(result.output.dimension_links == expected_links)
     return result, parsed
 
 

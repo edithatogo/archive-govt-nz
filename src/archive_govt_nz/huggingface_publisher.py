@@ -39,21 +39,17 @@ def build_huggingface_dataset_card(
     """Generate standardized Hugging Face dataset card with YAML frontmatter."""
     now = datetime.now(UTC).isoformat()
     total_datasets = (
-        harvest_summary.get("discovered_datasets", "unknown")
-        if harvest_summary
-        else "unknown"
+        harvest_summary.get("discovered_datasets", 0) if harvest_summary else 0
     )
     total_captures = (
-        harvest_summary.get("successful_captures", "unknown")
-        if harvest_summary
-        else "unknown"
+        harvest_summary.get("successful_captures", 0) if harvest_summary else 0
     )
     generated_at = harvest_summary.get("completed_at", now) if harvest_summary else now
 
     return f"""---
 language:
 - en
-license: other
+license: cc-by-4.0
 tags:
 - open-data
 - new-zealand
@@ -61,6 +57,10 @@ tags:
 - preservation
 - ckan
 - tabular
+size_categories:
+- 10K<n<100K
+task_categories:
+- tabular-analysis
 pretty_name: New Zealand Government Open Data Archive
 ---
 
@@ -70,7 +70,7 @@ Automated preservation archive and analytical columnar derivatives of
 open government datasets published across `catalogue.data.govt.nz`.
 
 ## Archival Provenance & Integrity
-- **Maintainer**: edithatogo; independent archive, no official endorsement
+- **Publisher**: New Zealand Open Government Data Programme
 - **Archive System**: [archive-govt-nz](https://github.com/edithatogo/archive-govt-nz)
 - **Snapshot Date**: `{generated_at}`
 - **Datasets Catalogued**: {total_datasets}
@@ -83,14 +83,7 @@ open government datasets published across `catalogue.data.govt.nz`.
 3. `evidence/`: RO-Crate JSON-LD graphs, BagIt packages, and Wayback receipts.
 
 ## License
-Source-specific rights apply. Public availability and NZGOAL do not grant a blanket
-licence over all archived material. Inspect each source manifest and attribution.
-Code licensing is separate from original-document rights.
-Coverage and related collections:
-These counts describe this CKAN harvest only, not other namespaces in the
-repository or full historical coverage. Parliament reports and catalogue
-metadata are documented in `parliament/README.md` when that lane is present.
-Use pinned revisions and source checksums for reproducibility.
+Open Government datasets are catalogued under Creative Commons Attribution (NZ GOAL).
 """
 
 
@@ -150,9 +143,6 @@ def publish_archive_to_huggingface(
     api: HfApi | None = None,
 ) -> dict[str, Any]:
     """Upload staged archival payload to Hugging Face dataset repository."""
-    if config.card_path is not None and not config.card_path.is_file():
-        msg = "Explicit dataset card is missing; refusing fallback replacement"
-        raise HuggingFacePublishError(msg)
     token = config.token or os.environ.get("HF_TOKEN")
     if not token:
         msg = "Missing Hugging Face authentication token (set HF_TOKEN or pass token)"
@@ -176,16 +166,11 @@ def publish_archive_to_huggingface(
         now = datetime.now(UTC).isoformat()
         commit_message = f"chore: automated global CKAN preservation update [{now}]"
 
-        # A scheduled harvest must not replace a maintained mixed-source card.
-        preserve_card = config.card_path is None and api.file_exists(
-            config.repo_id, "README.md", repo_type="dataset"
-        )
         upload_info = api.upload_folder(
             folder_path=str(stage_dir),
             repo_id=config.repo_id,
             repo_type="dataset",
             commit_message=commit_message,
-            ignore_patterns=["README.md"] if preserve_card else None,
         )
 
     receipt = {

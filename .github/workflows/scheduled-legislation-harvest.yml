@@ -10,11 +10,6 @@ on:
         required: true
         type: boolean
         default: false
-      discovery_only:
-        description: "Query and qualify discovery without parent restoration or acquisition"
-        required: true
-        type: boolean
-        default: false
       batch_id:
         description: "Unique discovery attempt identity"
         required: true
@@ -23,7 +18,7 @@ on:
         description: "Committed versioned discovery scope"
         required: true
         type: string
-        default: "config/legislation/discovery-scope-v2.json"
+        default: "config/legislation/discovery-scope-v1.json"
       parent_reference:
         description: "Committed pinned parent reference"
         required: true
@@ -48,8 +43,6 @@ jobs:
       LEGISLATION_API_KEY: ${{ secrets.LEGISLATION_API_KEY }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with:
-          fetch-depth: 0
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
         with:
           python-version: "3.15.1"
@@ -63,7 +56,7 @@ jobs:
           test -n "$BATCH_ID"
       - name: Query bounded candidate pages
         env:
-          SCOPE_PATH: ${{ inputs.scope_path || 'config/legislation/discovery-scope-v2.json' }}
+          SCOPE_PATH: ${{ inputs.scope_path || 'config/legislation/discovery-scope-v1.json' }}
         run: >-
           uv run --locked python tools/run_legislation_discovery.py query
           --scope "$SCOPE_PATH"
@@ -94,16 +87,13 @@ jobs:
           )
           PY
       - name: Verify selected parent before acquisition
-        if: ${{ !inputs.discovery_only }}
         uses: ./.github/actions/legislation-parent-state
         with:
           mode: continuation
           parent-reference: ${{ inputs.parent_reference || 'config/legislation/parents/current.json' }}
-          seed-id: historical-work-ids-0001
           execution-id: ${{ github.event_name == 'schedule' && format('freshness-{0}', github.run_id) || inputs.batch_id }}
           github-token: ${{ github.token }}
       - name: Acquire into isolated child state
-        if: ${{ !inputs.discovery_only }}
         env:
           BATCH_ID: ${{ github.event_name == 'schedule' && format('freshness-{0}', github.run_id) || inputs.batch_id }}
         run: |
@@ -124,7 +114,7 @@ jobs:
       - name: Classify outcomes and request verified merge
         # The accepted-pending-merge receipt requires a later exclusive
         # tools/merge_legislation_states.py run for canonical admission.
-        if: ${{ hashFiles('build/legislation-discovery/no-change.json') == '' && hashFiles('build/legislation-state/receipts/harvest.json') != '' }}
+        if: ${{ hashFiles('build/legislation-state/receipts/harvest.json') != '' }}
         run: >-
           uv run --locked python tools/run_legislation_discovery.py classify
           --candidate-receipt build/legislation-discovery/candidates.json

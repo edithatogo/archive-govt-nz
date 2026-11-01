@@ -1,27 +1,5 @@
 # Self-Review
 
-## 2026-10-25 — Phase 8 concurrent resume claim
-
-- Finding: a read-only preflight does not alone prove concurrent callers cannot
-  both create the same exclusive attempt.
-- Resolution: a barrier forces both test callers past the parent/output
-  preflight; filesystem exclusive directory creation allows one winner only.
-  The successful envelope is read back and every pre-existing input byte is
-  compared; the rejected caller does not write failure evidence.
-- Boundary: this validates same-process competing callers on the local test
-  filesystem. It does not establish distributed locking, hostile-filesystem
-  race safety, or remote-source drift behavior.
-
-## 2026-10-25 — Phase 8 scheduled discovery contract
-
-- Finding: the regression assertion must distinguish scheduled discovery from
-  downstream capture/normalization, and account for workflow setup steps.
-- Resolution: assert only the least-privilege permission, secret-free workflow
-  definition, non-cancelling concurrency, and the named discovery/heartbeat
-  operations. The contract explicitly leaves capture and normalization pending.
-- Security/provenance: no secrets, source bytes, permissions, or workflow
-  behavior were changed. No publication or source-completeness claim is made.
-
 ## 2026-10-03 — Query-free redirected orphan recovery
 
 The runner adopts a redirected orphan only when the original source URL hash
@@ -4402,8 +4380,3 @@ exact-final-tree original validation and protected delivery remain pending.
 Run the original final-tree harness and required hosted checks before protected
 merge, remote-main verification and clean owned-topic pruning. This review does
 not close the wider track's final completion gate.
-
-
-## Five headline rights qualification — 2026-10-27
-
-Reviewed the five headline qualifications against M-14/AC-14. Corrected the potential blanket-licence claim by restricting qualification to the selected source data and labels; excluded original PDFs and images. Publisher chapter and collection licence fields are explicit. Observation bytes are labelled as rendered-field evidence, not original HTTP captures. Numeric/lineage and original fixity are unchanged. Release/publication, wider rights and full Platinum gates remain open.

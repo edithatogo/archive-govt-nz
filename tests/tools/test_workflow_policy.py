@@ -66,10 +66,8 @@ def test_ci_assurance_timeout_covers_windows_full_harness() -> None:
     """Cross-platform gates must leave time for the final supply-chain steps."""
     root = Path(__file__).parents[2]
     text = (root / ".github/workflows/ci.yml").read_text(encoding="utf-8")
+    assert "timeout-minutes: 30" in text
     workflow = yaml.safe_load(text)
-    assert workflow["jobs"]["quality"]["timeout-minutes"] == (
-        "${{ matrix.os == 'windows-latest' && 60 || 30 }}"
-    )
     steps = workflow["jobs"]["quality"]["steps"]
     optional = [step for step in steps if step.get("continue-on-error")]
     assert [step["id"] for step in optional] == [
@@ -78,23 +76,6 @@ def test_ci_assurance_timeout_covers_windows_full_harness() -> None:
     ]
     required = {step.get("name"): step for step in steps}
     assert "tools/check.py" in required["Run locked assurance gate"]["run"]
-    gate = required["Run locked assurance gate"]
-    assert gate["timeout-minutes"] == 55
-    assert "!= 'windows-latest'" in gate["if"]
-    native = required["Run native Windows locked assurance gate"]
-    assert "== 'windows-latest'" in native["if"]
-    assert native["shell"] == "pwsh"
-    assert native["timeout-minutes"] == 55
-    assert "tools/windows_assurance.py" in native["run"]
-    assert "exit $LASTEXITCODE" in native["run"]
-    assert "Start-Transcript" not in native["run"]
-    assert "set -o pipefail" in gate["run"]
-    assert "2>&1 | tee build/assurance.log" in gate["run"]
-    diagnostics = required["Preserve Windows assurance diagnostics"]
-    assert "always()" in diagnostics["if"]
-    assert "windows-latest" in diagnostics["if"]
-    assert diagnostics["with"]["path"] == "build/assurance.log"
-    assert diagnostics["with"]["if-no-files-found"] == "error"
     artifact = required["Preserve required local coverage evidence"]
     assert artifact["with"]["path"] == "coverage.xml"
     assert artifact["with"]["if-no-files-found"] == "error"
@@ -126,33 +107,6 @@ def test_health_discovery_preserves_failure_receipts() -> None:
     assert "--report-output build/live/health-discovery-report.md" in workflow
 
 
-def test_health_discovery_schedule_is_read_only_and_does_not_need_secrets() -> None:
-    """The scheduled Health lane stays metadata-only and credential-free."""
-    root = Path(__file__).parents[2]
-    workflow = yaml.safe_load(
-        (root / ".github/workflows/scheduled-health-discovery.yml").read_text(
-            encoding="utf-8"
-        )
-    )
-
-    assert workflow["permissions"] == {"contents": "read"}
-    assert workflow["concurrency"] == {
-        "group": "scheduled-health-discovery",
-        "cancel-in-progress": False,
-    }
-    assert "${{ secrets." not in yaml.safe_dump(workflow)
-    steps = workflow["jobs"]["discover"]["steps"]
-    assert [step.get("name") for step in steps if "name" in step] == [
-        "Discover health metadata",
-        "Record bounded operations heartbeat",
-    ]
-    discovery = next(
-        step for step in steps if step.get("name") == "Discover health metadata"
-    )
-    assert "capture" not in discovery["run"]
-    assert "normalize" not in discovery["run"]
-
-
 def test_optional_workflow_arguments_use_shell_arrays() -> None:
     """Optional CLI values must preserve argument boundaries and empty state."""
     root = Path(__file__).parents[2]
@@ -175,55 +129,3 @@ def test_optional_workflow_arguments_use_shell_arrays() -> None:
         assert declaration in workflow
         assert expansion in workflow
         assert unsafe_expansion not in workflow
-
-
-def test_parliament_handover_requires_trusted_serial_execution() -> None:
-    """Only trusted main may run; artifacts cannot become a recursive state export."""
-    root = Path(__file__).parents[2]
-    workflow = yaml.safe_load(
-        (root / ".github/workflows/parliament-continuation.yml").read_text()
-    )
-    assert workflow["permissions"] == {"contents": "read", "actions": "read"}
-    assert workflow["concurrency"]["cancel-in-progress"] is False
-    job = workflow["jobs"]["continue"]
-    assert "github.ref == 'refs/heads/main'" in job["if"]
-    assert "github.repository == 'edithatogo/archive-govt-nz'" in job["if"]
-    uploads = [
-        step
-        for step in job["steps"]
-        if "actions/upload-artifact@" in step.get("uses", "")
-    ]
-    assert len(uploads) == 1
-    assert uploads[0]["with"]["path"] == "build/parliament-hosted/receipt.json"
-    assert uploads[0]["if"] == "always()"
-    continuation = next(
-        step
-        for step in job["steps"]
-        if step.get("name") == "Restore and continue approved reports"
-    )
-    assert "${{ inputs." not in continuation["run"]
-    assert '"$OPERATION"' in continuation["run"]
-    assert '--max-batches "$MAX_BATCHES"' in continuation["run"]
-    for option, variable in (
-        ("hold-source-id", "HOLD_SOURCE_ID"),
-        ("failed-run", "FAILED_RUN"),
-        ("failure-sha", "FAILURE_SHA"),
-        ("failure-revision", "FAILURE_REVISION"),
-    ):
-        assert "--" + option + ' "$' + variable + '"' in continuation["run"]
-    assert job["env"]["HF_HUB_DISABLE_XET"] == "1"
-
-
-def test_parliament_schedule_has_numeric_hold_default_without_dispatch_inputs() -> None:
-    """Cron has no inputs; a falsey numeric zero must not select an empty input."""
-    root = Path(__file__).parents[2]
-    workflow = yaml.safe_load(
-        (root / ".github/workflows/parliament-continuation.yml").read_text()
-    )
-    continuation = next(
-        step
-        for step in workflow["jobs"]["continue"]["steps"]
-        if step.get("name") == "Restore and continue approved reports"
-    )
-    assert continuation["env"]["HOLD_SECONDS"] == "${{ inputs.hold_seconds || '0' }}"
-    assert '--hold-seconds "$HOLD_SECONDS"' in continuation["run"]

@@ -54,7 +54,6 @@ if TYPE_CHECKING:
     )
 
 _SCHEMA = "archive-govt-nz.health-context-operation/v1"
-_DRIFT_SCHEMA = "archive-govt-nz.health-context-operation/v2"
 _ERROR = "invalid_context_operation"
 PROFILES = frozenset(
     {
@@ -239,14 +238,13 @@ def _project(
     return tables, metadata
 
 
-def _receipt(  # noqa: PLR0913 - explicit receipt version and preflight mode
+def _receipt(
     result: DispatchResult,
     metadata: dict[str, Any],
     profile: str,
     context: dict[str, Any],
     *,
     dry_run: bool,
-    include_drift: bool = False,
 ) -> dict[str, Any]:
     receipt = {
         "schema_version": _SCHEMA,
@@ -276,9 +274,6 @@ def _receipt(  # noqa: PLR0913 - explicit receipt version and preflight mode
             "historical_canonical_readers": "unchanged_native_packages_only",
         },
     }
-    if include_drift:
-        receipt["schema_version"] = _DRIFT_SCHEMA
-        receipt["adapter_drift"] = result.to_drift_receipt()
     return json.loads(encode_json(receipt))
 
 
@@ -352,23 +347,16 @@ def normalize_context(  # noqa: PLR0913 - explicit trusted source context
     source_locator: str,
     observed_at: str,
     dry_run: bool = True,
-    include_drift: bool = False,
 ) -> dict[str, Any]:
     """Preflight without writes, or create an exclusive common-evidence package."""
     _safe_path(output_dir)
-    _require(
-        type(dry_run) is bool
-        and type(include_drift) is bool
-        and not output_dir.exists()
-    )
+    _require(type(dry_run) is bool and not output_dir.exists())
     context = source_context(
         expected_sha256, source_locator, source_vintage, observed_at
     )
     result, payload = _dispatch(source, profile, context, observed_at)
     tables, metadata = _project(result, payload, profile, context)
-    receipt = _receipt(
-        result, metadata, profile, context, dry_run=dry_run, include_drift=include_drift
-    )
+    receipt = _receipt(result, metadata, profile, context, dry_run=dry_run)
     if dry_run:
         return {**receipt, "preflight_scope": "source_validation_only"}
     package = _expected_package(receipt, tables)
@@ -401,14 +389,12 @@ def read_context(  # noqa: PLR0913 - independent pin and trusted context
     source_vintage: str,
     source_locator: str,
     observed_at: str,
-    include_drift: bool = False,
 ) -> VerifiedContextOperation:
     """Verify pin/source and return regenerated tables without reopening candidates."""
     _require(
         isinstance(manifest_sha256, str)
         and re.fullmatch(r"[0-9a-f]{64}", manifest_sha256) is not None
     )
-    _require(type(include_drift) is bool)
     _safe_path(output_dir / "MANIFEST.json")
     _require((output_dir / "MANIFEST.json").is_file())
     context = source_context(
@@ -416,9 +402,7 @@ def read_context(  # noqa: PLR0913 - independent pin and trusted context
     )
     result, payload = _dispatch(source, profile, context, observed_at)
     tables, metadata = _project(result, payload, profile, context)
-    expected = _receipt(
-        result, metadata, profile, context, dry_run=False, include_drift=include_drift
-    )
+    expected = _receipt(result, metadata, profile, context, dry_run=False)
     manifest = _readback(
         output_dir, manifest_sha256, expected, _expected_package(expected, tables)
     )
@@ -435,7 +419,6 @@ def verify_context(  # noqa: PLR0913 - unchanged public independent verification
     source_vintage: str,
     source_locator: str,
     observed_at: str,
-    include_drift: bool = False,
 ) -> dict[str, Any]:
     """Read back against independent pin and source; never repair or infer a pin."""
     return read_context(
@@ -447,5 +430,4 @@ def verify_context(  # noqa: PLR0913 - unchanged public independent verification
         source_vintage=source_vintage,
         source_locator=source_locator,
         observed_at=observed_at,
-        include_drift=include_drift,
     ).manifest

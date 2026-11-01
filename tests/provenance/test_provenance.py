@@ -93,9 +93,43 @@ def test_manifest_preserves_receipts_and_execution_context() -> None:
         objects=[{"object_id": "sha256:a"}],
         versions=[{"version_id": "v1", "observation_id": "o1"}],
         receipts={
-            "transformations": [{"receipt_id": "t1", "state": "succeeded"}],
-            "validations": [{"receipt_id": "vld1", "state": "passed"}],
-            "publications": [{"receipt_id": "p1", "state": "prepared"}],
+            "transformations": [
+                {
+                    "receipt_id": "t1",
+                    "name": "test_transform",
+                    "version": "1",
+                    "implementation_revision": "abc123",
+                    "input_object_ids": ["sha256:a"],
+                    "output_object_ids": ["sha256:b"],
+                    "parameters": {},
+                    "environment_sbom_id": "sbom-1",
+                    "started_at": "2026-10-29T00:00:00Z",
+                    "ended_at": "2026-10-29T00:01:00Z",
+                    "information_loss": "none",
+                    "deterministic": True,
+                }
+            ],
+            "validations": [
+                {
+                    "receipt_id": "vld1",
+                    "validator_name": "test",
+                    "validator_version": "1",
+                    "subject_ids": ["sha256:a"],
+                    "checks": ["check"],
+                    "findings": [],
+                    "started_at": "2026-10-29T00:00:00Z",
+                    "ended_at": "2026-10-29T00:01:00Z",
+                }
+            ],
+            "publications": [
+                {
+                    "receipt_id": "p1",
+                    "target": "zenodo",
+                    "local_version_id": "v1",
+                    "manifest_sha256": "sha256:abc",
+                    "requested_at": "2026-10-29T00:00:00Z",
+                }
+            ],
         },
         context={
             "software": {"package": "archive-govt-nz", "version": "0.1.0"},

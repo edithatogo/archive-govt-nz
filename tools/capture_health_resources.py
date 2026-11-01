@@ -22,22 +22,47 @@ import httpx
 from warcio.archiveiterator import ArchiveIterator
 
 from archive_govt_nz.capture import CaptureConfig, CaptureError, capture_url
-from archive_govt_nz.domains.health_appropriations.capture_selection import (
-    _PRESERVATION_RIGHTS_POLICY,
-    _RIGHTS,
-    _select_sources,
-)
-from archive_govt_nz.domains.health_appropriations.source_layout_operations import (
-    _read_pinned,
-)
 from archive_govt_nz.object_store import ContentAddressedStore
 from archive_govt_nz.warc_binding import MAX_WARC_BYTES, verify_response_binding
 
 if TYPE_CHECKING:
     from collections.abc import Iterator
 
+_RIGHTS = {
+    "www.treasury.govt.nz": {
+        "state": "eligible",
+        "license": "CC-BY-4.0",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "attribution": "The Treasury New Zealand",
+    },
+    "budget.govt.nz": {
+        "state": "eligible",
+        "license": "CC-BY-4.0",
+        "evidence": "https://www.treasury.govt.nz/copyright-and-licensing",
+        "attribution": "The Treasury New Zealand",
+    },
+    "www.health.govt.nz": {
+        "state": "eligible",
+        "license": "CC-BY-4.0",
+        "evidence": "https://www.health.govt.nz/about-this-site/copyright",
+        "attribution": "Ministry of Health New Zealand",
+    },
+    "www.stats.govt.nz": {
+        "state": "eligible",
+        "license": "CC-BY-4.0",
+        "evidence": "https://www.stats.govt.nz/about-us/copyright/",
+        "attribution": "Stats NZ Tatauranga Aotearoa",
+    },
+    "www.pharmac.govt.nz": {
+        "state": "eligible",
+        "license": "CC-BY-4.0",
+        "evidence": "https://www.pharmac.govt.nz/about-this-site/copyright",
+        "attribution": "Pharmac Te Pataka Whaioranga",
+    },
+}
 _HTTP_ERROR_STATUS = 400
 _MAX_WARC_BYTES = MAX_WARC_BYTES
+_PRESERVATION_RIGHTS_POLICY = "preservation-only/not-evaluated/v1"
 
 
 def _capture_rights(
@@ -542,27 +567,45 @@ def _verify_retained(
     )
 
 
-def _census_snapshot(path: Path, expected_digest: str | None) -> tuple[bytes, str]:
-    """Bind scheduled capture to a bounded, regular census snapshot."""
-    if expected_digest is None:
-        census_bytes = path.read_bytes()
-        return census_bytes, hashlib.sha256(census_bytes).hexdigest()
-    try:
-        return _read_pinned(str(path), expected_digest)
-    except ValueError as error:
-        msg = "capture_census_pin_mismatch"
-        raise ValueError(msg) from error
+def _select_sources(
+    census: dict[str, Any], *, preservation_only: bool
+) -> list[dict[str, Any]]:
+    """Validate the requested rights lane before selecting transport candidates."""
+    records = cast("list[dict[str, Any]]", census["records"])
+    required_rights = census.get("required_rights_policy")
+    if required_rights is not None and (
+        required_rights != _PRESERVATION_RIGHTS_POLICY or not preservation_only
+    ):
+        message = "capture_rights_policy_mismatch"
+        raise ValueError(message)
+    media_types = {
+        "application/pdf",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        "text/csv",
+        "text/html",
+    }
+    if preservation_only:
+        media_types.add("application/vnd.ms-excel")
+    selected = [
+        row
+        for row in records
+        if row.get("disposition") in {"discovered", "captured"}
+        and row.get("media_type") in media_types
+        and urlsplit(cast("str", row["url"])).hostname in _RIGHTS
+    ]
+    if len({row["source_id"] for row in selected}) != len(selected):
+        msg = "duplicate_source_id"
+        raise ValueError(msg)
+    return selected
 
 
 async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:
-    census_bytes, census_digest = _census_snapshot(
-        args.census, getattr(args, "census_sha256", None)
-    )
+    census_bytes = args.census.read_bytes()
     census = json.loads(census_bytes)
     preservation_only = getattr(args, "preservation_only", False)
     selected = _select_sources(census, preservation_only=preservation_only)
     context: dict[str, object] = {
-        "census_sha256": census_digest,
+        "census_sha256": hashlib.sha256(census_bytes).hexdigest(),
         "max_resource_bytes": args.max_resource_bytes,
         "contract": "health-capture-resume/v1",
     }
@@ -600,9 +643,9 @@ async def _capture_locked(args: argparse.Namespace) -> dict[str, object]:
         "observations": observations,
     }
     if recovered:
-        manifest["results"] = list(retained.values())
+        manifest["results"] = list(recovered.values())
         manifest["observations"] = observations
-        manifest["captured"] = len(retained)
+        manifest["captured"] = len(recovered)
         _write(args.manifest, manifest)
     async with httpx.AsyncClient(
         headers={"User-Agent": "archive-govt-nz/0.1.0"}, timeout=90
@@ -645,7 +688,6 @@ def main() -> int:
     """Capture selected sources with explicit preservation-only rights on request."""
     parser = argparse.ArgumentParser()
     parser.add_argument("--census", required=True, type=Path)
-    parser.add_argument("--census-sha256", help="Require this exact census SHA-256.")
     parser.add_argument("--store-root", required=True, type=Path)
     parser.add_argument("--warc-dir", required=True, type=Path)
     parser.add_argument("--manifest", required=True, type=Path)

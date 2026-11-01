@@ -31,7 +31,6 @@ def test_ready_receipt_remains_unpublished(ready_receipt: dict[str, Any]) -> Non
         "schema_version": "archive-govt-nz.health-release-readiness/v1",
         "status": "ready_for_explicit_gate",
         "publication_approval": "not_granted",
-        "verification_scope": "supplied_gate_assertions_only",
         "blockers": [],
     }
 

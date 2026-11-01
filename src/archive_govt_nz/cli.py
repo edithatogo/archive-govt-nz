@@ -40,12 +40,6 @@ from archive_govt_nz.domains.health_appropriations.canonical_gold_queries import
 from archive_govt_nz.domains.health_appropriations.canonical_gold_verification import (
     verify_canonical_gold_package,
 )
-from archive_govt_nz.domains.health_appropriations.capture_inventory_operations import (
-    reconcile_capture_inventory,
-)
-from archive_govt_nz.domains.health_appropriations.capture_schedule import (
-    preflight_plan,
-)
 from archive_govt_nz.domains.health_appropriations.compatibility_export import (
     export_compatibility,
 )
@@ -59,19 +53,12 @@ from archive_govt_nz.domains.health_appropriations.fiscal_analytical_operations 
     query_fiscal_analytical_gold,
 )
 from archive_govt_nz.domains.health_appropriations.gold_export import export_gold
-from archive_govt_nz.domains.health_appropriations.historical_gold_donor_control import (
-    reconcile_packages as reconcile_historical_gold,
-)
 from archive_govt_nz.domains.health_appropriations.inspection import inspect_workbook
 from archive_govt_nz.domains.health_appropriations.legacy_inspection import (
     inspect_legacy_workbook,
 )
 from archive_govt_nz.domains.health_appropriations.native_workbook_inspection import (
     inspect_native_workbook,
-)
-from archive_govt_nz.domains.health_appropriations.normalization_schedule import (
-    render_normalization_report,
-    run_normalization_plan,
 )
 from archive_govt_nz.domains.health_appropriations.operations import (
     HealthAppropriationsStateError,
@@ -82,12 +69,6 @@ from archive_govt_nz.domains.health_appropriations.rebuild import (
     execute_rebuild,
     plan_rebuild,
     verify_rebuild,
-)
-from archive_govt_nz.domains.health_appropriations.scheduled_normalization import (
-    run_scheduled_normalization,
-)
-from archive_govt_nz.domains.health_appropriations.source_layout_operations import (
-    reconcile_source_layout_operation,
 )
 from archive_govt_nz.domains.health_appropriations.source_operations import (
     SourceRequest,
@@ -427,101 +408,6 @@ def health_appropriations_query_canonical_gold(
     return 0 if receipt["status"] == "verified" else 2
 
 
-@app.command(name="health-appropriations-reconcile-historical-gold")
-def health_appropriations_reconcile_historical_gold(
-    *,
-    gold_root: Path,
-    gold_manifest_sha256: str,
-    comparison_root: Path,
-    comparison_manifest_sha256: str,
-    dispositions_path: Path,
-    dispositions_sha256: str,
-) -> int:
-    """Reconcile pinned historical Gold and donor evidence without writes."""
-    try:
-        result = reconcile_historical_gold(
-            gold_root,
-            gold_manifest_sha256,
-            comparison_root,
-            comparison_manifest_sha256,
-            dispositions_path,
-            dispositions_sha256,
-        )
-    except ValueError, OSError:
-        _emit_json({"status": "failed", "error": "historical_gold_control_invalid"})
-        return 2
-    _emit_json(result)
-    return 0
-
-
-@app.command(name="health-appropriations-preflight-capture-plan")
-def health_appropriations_preflight_capture_plan(
-    *, plan: Path, plan_sha256: str
-) -> int:
-    """Verify a pinned capture plan without network access or writes."""
-    try:
-        receipt = preflight_plan(plan, plan_sha256)[1]
-    except ValueError, OSError:
-        _emit_json({"status": "failed", "error": "capture_plan_invalid"})
-        return 2
-    _emit_json(receipt)
-    return 0
-
-
-@app.command(name="health-appropriations-run-normalization-plan")
-def health_appropriations_run_normalization_plan(
-    *,
-    plan: Path,
-    plan_sha256: str,
-    job_root: Path,
-    dry_run: bool = True,
-    format: Literal["json", "markdown"] = "json",
-) -> int:
-    """Run a pinned, bounded offline normalization plan."""
-    try:
-        receipt = run_normalization_plan(plan, plan_sha256, job_root, dry_run=dry_run)
-        report = render_normalization_report(receipt) if format == "markdown" else None
-    except ValueError, OSError:
-        _emit_json({"status": "failed", "error": "normalization_plan_invalid"})
-        return 2
-    if report is None:
-        _emit_json(receipt)
-    else:
-        print(report, end="")
-    return 2 if receipt["status"] == "partial" else 0
-
-
-@app.command(name="health-appropriations-scheduled-normalize")
-def health_appropriations_scheduled_normalize(
-    *,
-    source: Path,
-    job_root: Path,
-    profile: str,
-    expected_sha256: str,
-    source_vintage: str,
-    source_locator: str,
-    observed_at: str,
-    dry_run: bool = True,
-) -> int:
-    """Plan or run a resumable local normalization job."""
-    request = SourceRequest(
-        source,
-        job_root,
-        profile,
-        expected_sha256,
-        source_vintage,
-        source_locator,
-        observed_at,
-    )
-    try:
-        receipt = run_scheduled_normalization(request, job_root, dry_run=dry_run)
-    except ValueError, OSError:
-        _emit_json({"status": "failed", "error": "scheduled_normalization_failed"})
-        return 2
-    _emit_json(receipt)
-    return 2 if receipt["status"] == "failed" else 0
-
-
 @app.command(name="health-appropriations-extract-source")
 def health_appropriations_extract_source(
     *,
@@ -533,7 +419,6 @@ def health_appropriations_extract_source(
     source_locator: str,
     observed_at: str,
     dry_run: bool = True,
-    include_drift: bool = False,
 ) -> int:
     """Preflight an approved profile; --no-dry-run writes new local derivatives."""
     result = operate_source(
@@ -545,7 +430,6 @@ def health_appropriations_extract_source(
             source_vintage,
             source_locator,
             observed_at,
-            include_drift,
         ),
         dry_run=dry_run,
     )
@@ -808,8 +692,6 @@ def health_appropriations_build_gold_metadata(
     output_dir: Path,
     canonical_package: Path | None = None,
     canonical_manifest_sha256: str | None = None,
-    financial_activity_package: Path | None = None,
-    financial_activity_manifest_sha256: str | None = None,
     write: bool = False,
 ) -> int:
     """Build pinned Gold metadata with optional canonical input; dry run by default."""
@@ -818,7 +700,6 @@ def health_appropriations_build_gold_metadata(
         export_gold_metadata,
         verify_gold_metadata,
         with_canonical_input,
-        with_financial_activity_input,
     )
 
     try:
@@ -828,9 +709,6 @@ def health_appropriations_build_gold_metadata(
         )
         inputs = with_canonical_input(
             inputs, canonical_package, canonical_manifest_sha256
-        )
-        inputs = with_financial_activity_input(
-            inputs, financial_activity_package, financial_activity_manifest_sha256
         )
         receipt = export_gold_metadata(inputs, output_dir, write=write)
         if write:
@@ -860,8 +738,6 @@ def health_appropriations_verify_gold_metadata(
     output_dir: Path,
     canonical_package: Path | None = None,
     canonical_manifest_sha256: str | None = None,
-    financial_activity_package: Path | None = None,
-    financial_activity_manifest_sha256: str | None = None,
     manifest_sha256: str,
 ) -> int:
     """Verify pinned Gold metadata against its inputs without writing state."""
@@ -869,7 +745,6 @@ def health_appropriations_verify_gold_metadata(
         GoldInput,
         verify_gold_metadata,
         with_canonical_input,
-        with_financial_activity_input,
     )
 
     inputs = (
@@ -879,9 +754,6 @@ def health_appropriations_verify_gold_metadata(
     try:
         inputs = with_canonical_input(
             inputs, canonical_package, canonical_manifest_sha256
-        )
-        inputs = with_financial_activity_input(
-            inputs, financial_activity_package, financial_activity_manifest_sha256
         )
         receipt = verify_gold_metadata(inputs, output_dir, manifest_sha256)
     except ValueError, OSError, KeyError, TypeError:
@@ -1120,85 +992,6 @@ def health_appropriations_status(
     return 0 if status["status"] == "ready" else 1
 
 
-@app.command(name="health-appropriations-reconcile-capture-inventory")
-def health_appropriations_reconcile_capture_inventory(
-    censuses_json: str, captures_json: str = "[]"
-) -> int:
-    """Reconcile JSON arrays of named, hash-pinned inventory inputs."""
-    try:
-        receipt = reconcile_capture_inventory(
-            {
-                "censuses": json.loads(censuses_json),
-                "captures": json.loads(captures_json),
-            }
-        )
-    except ValueError, TypeError:
-        _emit_json({"status": "failed", "error": "inventory_reconciliation_failed"})
-        return 2
-    _emit_json(receipt)
-    return 0
-
-
-@app.command(name="health-appropriations-reconcile-source-layout")
-def health_appropriations_reconcile_source_layout(  # noqa: PLR0917 - each positional pin is explicit and auditable.
-    census: Path,
-    census_sha256: str,
-    workbook_baseline: Path,
-    workbook_baseline_sha256: str,
-    pdf_baseline: Path,
-    pdf_baseline_sha256: str,
-    workbook_recheck: Path,
-    workbook_recheck_sha256: str,
-    pdf_recheck: Path,
-    pdf_recheck_sha256: str,
-    *,
-    text_baseline: Path | None = None,
-    text_baseline_sha256: str | None = None,
-    text_recheck: Path | None = None,
-    text_recheck_sha256: str | None = None,
-) -> int:
-    """Reconcile pinned source-layout reports without writes or interpretation."""
-    arguments: dict[str, Any] = {
-        "census": str(census),
-        "census_sha256": census_sha256,
-        "workbook_baseline": str(workbook_baseline),
-        "workbook_baseline_sha256": workbook_baseline_sha256,
-        "pdf_baseline": str(pdf_baseline),
-        "pdf_baseline_sha256": pdf_baseline_sha256,
-        "workbook_recheck": str(workbook_recheck),
-        "workbook_recheck_sha256": workbook_recheck_sha256,
-        "pdf_recheck": str(pdf_recheck),
-        "pdf_recheck_sha256": pdf_recheck_sha256,
-    }
-    optional = {
-        "text_baseline": text_baseline,
-        "text_baseline_sha256": text_baseline_sha256,
-        "text_recheck": text_recheck,
-        "text_recheck_sha256": text_recheck_sha256,
-    }
-    arguments.update(
-        {
-            key: str(value) if isinstance(value, Path) else value
-            for key, value in optional.items()
-            if value is not None
-        }
-    )
-    try:
-        receipt = reconcile_source_layout_operation(arguments)
-    except ValueError as error:
-        _emit_json(
-            {
-                "command": "health-appropriations-reconcile-source-layout",
-                "schema_version": "archive-govt-nz.health-source-layout-operation/v1",
-                "status": "failed",
-                "error": str(error),
-            }
-        )
-        return 2
-    _emit_json(receipt)
-    return 0
-
-
 @app.command
 def sources(
     format: Literal["text", "json"] = "text",
@@ -1247,6 +1040,80 @@ def sources(
 
     print(f"Registered sources: {count} seeds loaded from {path}")
     return 0 if count > 0 else 1
+
+
+@app.command(name="source register")
+def source_register(
+    source_id: str,
+    source_uri: str,
+    source_type: str,
+    agency_slug: str,
+    title: str = "",
+    status: str = "active",
+    metadata: str = "{}",
+    format: Literal["text", "json"] = "json",
+    registry_path: str = "registry/seeds",
+) -> int:
+    """Register a new archival source with native URI scheme validation.
+    
+    The source_uri must use a native scheme (e.g., web://, feeds://, ckan://)
+    matching the source_type. Bare HTTPS URIs are rejected.
+    """
+    import json as stdlib_json
+    
+    # Parse metadata JSON
+    try:
+        metadata_dict = stdlib_json.loads(metadata)
+    except stdlib_json.JSONDecodeError as exc:
+        err = f"Invalid metadata JSON: {exc}"
+        if format == "json":
+            _emit_json({"command": "source register", "error": err, "schema_version": "archive-govt-nz.cli/v1", "status": "invalid_metadata"})
+        else:
+            print(f"Error: {err}")
+        return 2
+    
+    # Validate status
+    try:
+        source_status = SourceStatus(status.lower())
+    except ValueError:
+        err = f"Invalid status: {status} (must be one of: {[s.value for s in SourceStatus]})"
+        if format == "json":
+            _emit_json({"command": "source register", "error": err, "schema_version": "archive-govt-nz.cli/v1", "status": "invalid_status"})
+        else:
+            print(f"Error: {err}")
+        return 2
+    
+    # Create and validate SourceManifest (validates native URI scheme)
+    try:
+        manifest = SourceManifest(
+            source_id=source_id,
+            source_uri=source_uri,
+            source_type=source_type,
+            agency_slug=agency_slug,
+            title=title,
+            status=source_status,
+            metadata=metadata_dict,
+        )
+    except ValueError as exc:
+        err = str(exc)
+        if format == "json":
+            _emit_json({"command": "source register", "error": err, "schema_version": "archive-govt-nz.cli/v1", "status": "validation_failed"})
+        else:
+            print(f"Error: {err}")
+        return 2
+    
+    # For now, emit the manifest as validation receipt
+    # In a full implementation, this would persist to the registry
+    if format == "json":
+        _emit_json({
+            "command": "source register",
+            "schema_version": "archive-govt-nz.cli/v1",
+            "status": "validated",
+            "manifest": manifest.to_dict(),
+        })
+    else:
+        print(f"Source registered: {source_id} ({source_uri})")
+    return 0
 
 
 @app.command
@@ -2882,69 +2749,6 @@ def query_command(
         "--croissant-domain, or --hf-card-domain\n"
     )
     return 2
-
-
-@app.command(name="parliament")
-def parliament_command(
-    *,
-    action: Literal[
-        "run-reports",
-        "status",
-        "discover",
-        "reports",
-        "capture",
-        "verify",
-        "package",
-        "publish",
-        "retry",
-        "refresh",
-    ] = "status",
-    state_dir: Path,
-    source_url: str | None = None,
-    partition: str = "historical",
-    decisions_path: Path | None = None,
-    source_id: str | None = None,
-    batch_id: str | None = None,
-    max_records: int = 100,
-    max_bytes: int = 250 * 1024 * 1024,
-    max_seconds: float = 900,
-    max_spool_bytes: int = 1024 * 1024 * 1024,
-    page: int | None = None,
-    keyword: str = "",
-) -> int:
-    """Run bounded Parliament archival against an explicit durable state root."""
-    from archive_govt_nz.parliament.commands import execute
-
-    try:
-        result = execute(
-            action,
-            state_dir,
-            source_url=source_url,
-            partition=partition,
-            decisions_path=decisions_path,
-            source_id=source_id,
-            batch_id=batch_id,
-            max_records=max_records,
-            max_bytes=max_bytes,
-            max_seconds=max_seconds,
-            max_spool_bytes=max_spool_bytes,
-            page=page,
-            keyword=keyword,
-        )
-    except (ValueError, OSError, RuntimeError, httpx.HTTPError) as error:
-        _emit_json(
-            {
-                "command": "parliament",
-                "status": "blocked",
-                "error_class": type(error).__name__,
-                "reason": str(error)
-                if isinstance(error, ValueError)
-                else "operation_failed",
-            }
-        )
-        return 2
-    _emit_json({"command": "parliament", **result})
-    return 2 if result.get("failed") else 0
 
 
 def main() -> None:

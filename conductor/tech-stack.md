@@ -187,8 +187,8 @@ GitHub stores source, schemas, documentation, compact manifests, CI definitions,
 issues, and release evidence. Large archive payloads do not enter the source
 repository.
 
-Link the existing issue or track when relevant. Routine changes do not require
-a new parent/subissue hierarchy; the PR may carry their concise delivery record.
+GitHub issues use parent issues and nested subissues where supported. Each issue,
+pull request, and relevant commit cross-references its Conductor track and task.
 
 ### Hugging Face
 
@@ -269,8 +269,9 @@ RDF interpretation, not source rights or an unimplemented application profile.
 - recovery reconstruction from manifests and objects;
 - live read-only smoke tests separated from deterministic CI.
 
-The current bounded workflow permits one concise record for routine changes.
-Substantial architecture changes retain explicit design and acceptance criteria.
+Every Conductor implementation track contains a MoSCoW `requirements.md`.
+Design-bearing tracks contain `design.md` with Mermaid diagrams covering
+components, data flow, trust boundaries, state transitions, and failure paths.
 
 ## CI/CD and supply-chain security
 

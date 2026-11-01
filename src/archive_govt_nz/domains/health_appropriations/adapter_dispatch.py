@@ -5,7 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import re
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from io import BytesIO
 from typing import TYPE_CHECKING, Literal, cast
 from zipfile import BadZipFile
@@ -101,61 +101,12 @@ class AdapterSelection:
         return receipt
 
 
-def _capture_drift(
-    selection: AdapterSelection, output: AdapterOutput | CompoundAdapterOutput
-) -> bytes:
-    from archive_govt_nz.domains.health_appropriations.adapter_drift import (  # noqa: PLC0415 - Selection-only paths do not load Arrow drift support.
-        adapter_drift_receipt,
-        canonical_bytes,
-    )
-
-    return canonical_bytes(adapter_drift_receipt(selection.to_receipt(), output))
-
-
 @dataclass(frozen=True, slots=True)
 class DispatchResult:
     """Adapter output paired with the decision that selected it."""
 
     selection: AdapterSelection
     output: AdapterOutput
-    _drift_bytes: bytes = field(init=False, repr=False, compare=False)
-
-    def __post_init__(self) -> None:
-        """Retain immutable drift evidence at the dispatch boundary."""
-        object.__setattr__(
-            self, "_drift_bytes", _capture_drift(self.selection, self.output)
-        )
-
-    def to_drift_receipt(self) -> dict[str, object]:
-        """Bind selection, observed schema and ordered output without re-extraction."""
-        return json.loads(self._drift_bytes)
-
-    def compare_dimensions(self, previous: DispatchResult) -> dict[str, object]:
-        """Compare literal mappings for two selected dispatch results."""
-        from archive_govt_nz.domains.health_appropriations.adapter_drift import (  # noqa: PLC0415
-            compare_dispatch_dimensions,
-        )
-
-        baseline = previous.to_drift_receipt()
-        current = self.to_drift_receipt()
-        compatible = (
-            self.selection.status == previous.selection.status == "selected"
-            and self.selection.adapter_id == previous.selection.adapter_id
-            and self.selection.adapter_version == previous.selection.adapter_version
-        )
-        report = (
-            compare_dispatch_dimensions(previous.output, self.output)
-            if compatible
-            else {
-                "status": "held",
-                "changes": [],
-                "normalization_approval": "not_granted",
-            }
-        )
-        return report | {
-            "baseline_receipt_sha256": baseline["receipt_sha256"],
-            "current_receipt_sha256": current["receipt_sha256"],
-        }
 
 
 @dataclass(frozen=True, slots=True)
@@ -165,17 +116,6 @@ class NativeDispatchResult:
     selection: AdapterSelection
     output: AdapterOutput | CompoundAdapterOutput
     kind: Literal["health-native-dispatch/v1"] = "health-native-dispatch/v1"
-    _drift_bytes: bytes = field(init=False, repr=False, compare=False)
-
-    def __post_init__(self) -> None:
-        """Retain immutable drift evidence at the dispatch boundary."""
-        object.__setattr__(
-            self, "_drift_bytes", _capture_drift(self.selection, self.output)
-        )
-
-    def to_drift_receipt(self) -> dict[str, object]:
-        """Bind native schemas and ordered tables to the exact selection."""
-        return json.loads(self._drift_bytes)
 
 
 def _detect(payload: bytes, declared: str) -> str | None:

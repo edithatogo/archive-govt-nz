@@ -78,16 +78,9 @@ def _json(payload: bytes) -> dict[str, Any]:
 def _relative(value: str) -> PurePosixPath:
     path = PurePosixPath(value)
     _require(path.as_posix() == value and not path.is_absolute())
-    for index, part in enumerate(path.parts):
-        # Original destinations allow a 128-character ID plus its bounded suffix.
-        pattern = (
-            r"(?:[A-Za-z0-9][A-Za-z0-9_.-]{0,127}|"
-            r"[A-Za-z0-9][A-Za-z0-9_-]{0,127}\.[a-z0-9]{1,10})"
-            if path.parent == PurePosixPath("original") and index == 1
-            else r"[A-Za-z0-9][A-Za-z0-9_.-]{0,127}"
-        )
+    for part in path.parts:
         _require(
-            re.fullmatch(pattern, part) is not None
+            re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_.-]{0,127}", part) is not None
             and not part.endswith(".")
             and part.split(".")[0].upper() not in _RESERVED
         )
@@ -291,8 +284,7 @@ def plan_additive_inventory(
 def assess_release_readiness(receipt: Mapping[str, Any]) -> dict[str, Any]:
     """Return explicit blockers for a publication candidate without publishing.
 
-    This checks supplied labels and pin syntax, not resource rights evidence.
-    A ready result is necessary assertion-level evidence only and never
+    This is a local gate: a ready result is necessary evidence only and never
     performs an upload or grants external publication approval.
     """
     blockers: list[str] = []
@@ -316,6 +308,5 @@ def assess_release_readiness(receipt: Mapping[str, Any]) -> dict[str, Any]:
         "schema_version": "archive-govt-nz.health-release-readiness/v1",
         "status": "ready_for_explicit_gate" if not blockers else "blocked",
         "publication_approval": "not_granted",
-        "verification_scope": "supplied_gate_assertions_only",
         "blockers": blockers,
     }

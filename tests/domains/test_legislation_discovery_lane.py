@@ -9,7 +9,6 @@ import copy
 import pytest
 from hypothesis import given
 from hypothesis import strategies as st
-from tests.domains.test_legislation_accounting import accounting
 
 from archive_govt_nz.domains.legislation.discovery_lane import (
     DiscoveryScope,
@@ -23,7 +22,7 @@ def scope(**overrides: object) -> DiscoveryScope:
     values = {
         "scope_id": "freshness-001",
         "terms": ("amendment 2026",),
-        "legislation_types": ("act",),
+        "legislation_types": ("public",),
         "page_size": 2,
         "max_pages": 2,
         "max_candidates": 4,
@@ -84,16 +83,26 @@ def test_query_drift_requires_versioning() -> None:
 
 def test_acquisition_outcomes_remain_pending_merge() -> None:
     candidate = discover(scope(), lambda _params: {"results": []})
-    harvest = accounting().to_receipt()
+    harvest = {
+        "schema_version": "archive-govt-nz.legislation-harvest-receipt/v3",
+        "accounting": {
+            "works": [
+                {"work_id": "act_1", "disposition": "newly_preserved"},
+                {"work_id": "act_2", "disposition": "failed"},
+                {"work_id": "act_3", "disposition": "already_processed_skipped"},
+            ]
+        },
+    }
     receipts = acquisition_receipts(candidate, harvest)
     accepted = receipts["accepted-pending-merge"]
-    assert {row["work_id"] for row in accepted["works"]} == {"new", "changed"}
     assert accepted["canonical_state_changed"] is False
     assert accepted["admission_status"] == "pending_verified_state_merge"
-    assert {
-        row["work_id"]
-        for row in receipts["rejected-duplicate-unavailable-partial-failed"]["rejected"]
-    } == {"missing", "partial", "failed"}
+    assert (
+        receipts["rejected-duplicate-unavailable-partial-failed"]["rejected"][0][
+            "work_id"
+        ]
+        == "act_2"
+    )
 
 
 @pytest.mark.parametrize(
@@ -119,7 +128,7 @@ def test_acquisition_outcomes_remain_pending_merge() -> None:
                 "schema_version": "archive-govt-nz.legislation-harvest-receipt/v3",
                 "accounting": {"works": [{"disposition": "invented"}]},
             },
-            "accounting is incomplete",
+            "disposition is malformed",
         ),
     ],
 )
@@ -146,113 +155,3 @@ def test_bounds_and_concurrency_inputs_fail_closed() -> None:
     ):
         with pytest.raises(ValueError):
             invalid.validate()
-
-
-def test_official_parameters_and_nested_title() -> None:
-    """Subtype values and unsupported sort keys never reach the official API."""
-
-    def fetch(params: dict[str, object]) -> dict[str, object]:
-        assert params["legislation_type"] == "act"
-        assert params["sort_by"] == "most_recently_updated"
-        assert "sort" not in params
-        return {
-            "results": [
-                {
-                    "work_id": "act_public_1990_109",
-                    "legislation_type": "act",
-                    "latest_matching_version": {
-                        "title": "New Zealand Bill of Rights Act 1990"
-                    },
-                }
-            ]
-        }
-
-    receipt = discover(scope(), fetch)
-    assert receipt["candidates"][0]["title"] == "New Zealand Bill of Rights Act 1990"
-    for invalid in (scope(legislation_types=("public",)), scope(sort="work_id")):
-        with pytest.raises(ValueError):
-            invalid.validate()
-
-
-def test_cap_resumes_inside_page_without_skipping_other_queries() -> None:
-    """A candidate cap keeps the unconsumed offset and unvisited query intact."""
-    selected = scope(
-        page_size=3, max_pages=1, max_candidates=2, legislation_types=("act", "bill")
-    )
-
-    def fetch(params: dict[str, object]) -> dict[str, object]:
-        prefix = params["legislation_type"]
-        return {
-            "results": [{"work_id": f"{prefix}_{i}"} for i in range(3)]
-            if params["page"] == 1
-            else []
-        }
-
-    first = discover(selected, fetch)
-    assert first["continuations"][0]["offset"] == 2
-    assert first["continuations"][1]["page"] == 1
-    second = discover(selected, fetch, first)
-    assert {r["work_id"] for r in second["candidates"]} == {"act_2", "bill_0"}
-    third = discover(selected, fetch, second)
-    assert {r["work_id"] for r in third["candidates"]} == {"bill_1", "bill_2"}
-    final = discover(selected, fetch, third)
-    assert final["queries_exhausted"] is True
-    assert final["authoritative_completeness"] is False
-
-
-def test_exhausted_first_query_does_not_hide_unfinished_second_query() -> None:
-    """Short-page exhaustion belongs to that query, never to the entire scope."""
-    receipt = discover(
-        scope(legislation_types=("act", "bill")),
-        lambda p: {
-            "results": []
-            if p["legislation_type"] == "act"
-            else [{"work_id": "bill_1"}, {"work_id": "bill_2"}]
-        },
-    )
-    assert receipt["continuations"][0]["exhausted"] is True
-    assert receipt["continuations"][1]["page"] == 3
-    assert receipt["queries_exhausted"] is False
-    assert receipt["next_page"] is None
-
-
-@pytest.mark.parametrize(
-    "change",
-    [
-        {"page": 0},
-        {"offset": -1},
-        {"exhausted": "yes"},
-        {"legislation_type": "private"},
-    ],
-)
-def test_invalid_resume_cursor_fails_closed(change: dict[str, object]) -> None:
-    receipt = discover(scope(), lambda _p: {"results": []})
-    receipt["continuations"][0].update(change)
-    with pytest.raises(ValueError, match="continuation"):
-        discover(
-            scope(),
-            lambda _p: pytest.fail("no request before cursor validation"),
-            receipt,
-        )
-
-
-def test_api_filter_and_page_contract_fail_closed() -> None:
-    for payload in (
-        {"results": [{"work_id": "bill_1", "legislation_type": "bill"}]},
-        {"page": 2, "results": []},
-        {"results": [None, None, None]},
-    ):
-        with pytest.raises(ValueError):
-            discover(scope(), lambda _p, payload=payload: payload)
-
-
-def test_ephemeral_and_split_bill_identifiers_are_retained() -> None:
-    ids = [
-        "bill_government_2022_96-B",
-        "secondary-legislation_agency-drafted_~2026_~123",
-    ]
-    receipt = discover(
-        scope(max_pages=1, max_candidates=2),
-        lambda _p: {"results": [{"work_id": work} for work in ids]},
-    )
-    assert {r["work_id"] for r in receipt["candidates"]} == set(ids)

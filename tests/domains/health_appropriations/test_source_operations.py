@@ -50,7 +50,6 @@ from tests.domains.health_appropriations.test_vote_health_revenue import (
 from archive_govt_nz import cli, mcp_server
 from archive_govt_nz.cli import app, health_appropriations_extract_source
 from archive_govt_nz.domains.health_appropriations import (
-    context_operations,
     forecast,
     gdp,
     moh_indicators,
@@ -151,74 +150,6 @@ def request_source(
         "https://example.invalid/source",
         "2026-08-31T00:00:00Z",
     )
-
-
-@pytest.mark.parametrize("request_source", ["cpiq-se9a/v1"], indirect=True)
-def test_source_operation_opt_in_drift_is_verifiable(
-    request_source: source_operations.SourceRequest,
-) -> None:
-    request = replace(request_source, include_drift=True)
-    result = source_operations.operate_source(request, dry_run=False)
-    assert result["status"] == "written_local"
-    manifest = request.output_dir / "MANIFEST.json"
-    receipt = context_operations.verify_context(
-        request.source,
-        request.output_dir,
-        manifest_sha256=hashlib.sha256(manifest.read_bytes()).hexdigest(),
-        profile=request.profile,
-        expected_sha256=request.expected_sha256,
-        source_vintage=request.source_vintage,
-        source_locator=request.source_locator,
-        observed_at=request.observed_at,
-        include_drift=True,
-    )
-    assert receipt["schema_version"].endswith("/v2")
-    assert receipt["adapter_drift"]["selection"] == receipt["adapter_selection"]
-
-
-@pytest.mark.parametrize("request_source", ["cpiq-se9a/v1"], indirect=True)
-def test_source_drift_preflight_accepts_only_typed_option(
-    request_source: source_operations.SourceRequest,
-) -> None:
-    arguments = {
-        key: str(value) if isinstance(value, Path) else value
-        for key in request_source.__dataclass_fields__
-        for value in [getattr(request_source, key)]
-    }
-    arguments["include_drift"] = True
-    assert source_operations.preflight_source(arguments)["status"] == "preflight_passed"
-    arguments["include_drift"] = "true"
-    assert source_operations.preflight_source(arguments)["status"] == "failed"
-
-
-@pytest.mark.parametrize("request_source", ["befu-2026/v1"], indirect=True)
-def test_source_drift_rejects_unsupported_profile(
-    request_source: source_operations.SourceRequest,
-) -> None:
-    result = source_operations.operate_source(
-        replace(request_source, include_drift=True)
-    )
-    assert result["status"] == "failed"
-    assert not request_source.output_dir.exists()
-
-
-@pytest.mark.parametrize("request_source", ["cpiq-se9a/v1"], indirect=True)
-def test_cli_drift_flag_writes_versioned_manifest(
-    request_source: source_operations.SourceRequest, capsys: pytest.CaptureFixture[str]
-) -> None:
-    args = ["health-appropriations-extract-source"]
-    for key in request_source.__dataclass_fields__:
-        if key != "include_drift":
-            args.extend(
-                ["--" + key.replace("_", "-"), str(getattr(request_source, key))]
-            )
-    args.extend(["--include-drift", "--no-dry-run"])
-    with pytest.raises(SystemExit) as exc:
-        app(args, exit_on_error=False)
-    assert exc.value.code == 0
-    assert json.loads(capsys.readouterr().out)["status"] == "written_local"
-    manifest = json.loads((request_source.output_dir / "MANIFEST.json").read_bytes())
-    assert manifest["schema_version"].endswith("/v2")
 
 
 def test_preflight_and_explicit_local_write(
@@ -323,10 +254,7 @@ def test_repeated_vote_pdf_normalization_has_identical_outputs(
         source,
         tmp_path / "unused-output",
         profile,
-        expected_sha256=context["expected_sha256"],
-        source_vintage=context["source_vintage"],
-        source_locator=context["source_locator"],
-        observed_at=context["observed_at"],
+        **context,
     )
     first = replace(base_request, output_dir=tmp_path / "first")
     second = replace(base_request, output_dir=tmp_path / "second")
@@ -534,15 +462,7 @@ def test_extended_dispatch_preserves_source_specific_package(
     direct = tmp_path / "direct"
     raw = normalizer(source, direct, **context, dry_run=False)
     destination = tmp_path / "dispatch"
-    request = source_operations.SourceRequest(
-        source,
-        destination,
-        profile,
-        context["expected_sha256"],
-        context["source_vintage"],
-        context["source_locator"],
-        context["observed_at"],
-    )
+    request = source_operations.SourceRequest(source, destination, profile, **context)
     result = source_operations.operate_source(request, dry_run=False)
     assert result["status"] == "written_local"
     assert result["counts"] == raw["counts"]
@@ -590,15 +510,7 @@ def test_forecast_dispatch_preserves_package_and_partial_failure(
     raw = forecast.normalize_forecast_workbook(
         source, direct, profile=profile, **context, dry_run=False
     )
-    request = source_operations.SourceRequest(
-        source,
-        destination,
-        profile,
-        context["expected_sha256"],
-        context["source_vintage"],
-        context["source_locator"],
-        context["observed_at"],
-    )
+    request = source_operations.SourceRequest(source, destination, profile, **context)
     result = source_operations.operate_source(request, dry_run=False)
     assert result["status"] == "written_local"
     assert result["counts"] == raw["counts"]
@@ -690,10 +602,7 @@ def test_cli_mcp_preflight_parity(
     assert health_appropriations_extract_source(**arguments) == 0
     cli = json.loads(capsys.readouterr().out)
     assert cli.pop("command") == "health-appropriations-extract-source"
-    args = {
-        key: str(value) if isinstance(value, Path) else value
-        for key, value in arguments.items()
-    }
+    args = {key: str(value) for key, value in arguments.items()}
     assert call_tool("health_appropriations_preflight_source", args) == cli
     tool = next(
         tool
@@ -875,8 +784,6 @@ def test_cli_arguments(
 ) -> None:
     args = ["health-appropriations-extract-source"]
     for key in request_source.__dataclass_fields__:
-        if key == "include_drift":
-            continue
         args.extend(["--" + key.replace("_", "-"), str(getattr(request_source, key))])
     if write:
         args.append("--no-dry-run")
@@ -1209,34 +1116,6 @@ def test_vote_health_2013_14_financial_activity_profile_is_pinned_and_dispatched
         source_vintage=module.VINTAGE,
         source_locator=module.SOURCE_LOCATOR,
         observed_at="2026-10-23T00:00:00Z",
-    )
-    expected = {"status": "planned", "counts": {"pages": 1, "facts": 14, "lineage": 70}}
-    monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)
-    monkeypatch.setattr(module, "normalize", lambda *_args, **_kwargs: expected)
-
-    assert source_operations._invoke(request, dry_run=True) == expected  # noqa: SLF001
-    assert source_operations.PROFILES[module.PROFILE] == (
-        module.TRANSFORMATION,
-        ("pages", "facts", "lineage"),
-        "vote_health_financial_activity_facts.parquet",
-        "page_dispositions.parquet",
-    )
-
-
-def test_vote_health_2014_15_financial_activity_profile_is_pinned_and_dispatched(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    module = source_operations.vote_health_supplementary_2014_15_financial_activity
-    source = tmp_path / "source.pdf"
-    source.write_bytes(b"fixture PDF source; profile call is mocked")
-    request = source_operations.SourceRequest(
-        source=source,
-        output_dir=tmp_path / "output",
-        profile=module.PROFILE,
-        expected_sha256=module.SOURCE_SHA256,
-        source_vintage=module.VINTAGE,
-        source_locator=module.SOURCE_LOCATOR,
-        observed_at="2026-10-25T00:00:00Z",
     )
     expected = {"status": "planned", "counts": {"pages": 1, "facts": 14, "lineage": 70}}
     monkeypatch.setattr(source_operations, "_validate", lambda *_args, **_kwargs: None)

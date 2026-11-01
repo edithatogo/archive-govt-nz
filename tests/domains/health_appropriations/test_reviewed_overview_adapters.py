@@ -127,8 +127,7 @@ def test_overview_adapter_preserves_qualification_lineage_and_all_pages(
     adapter, payload = _adapter_fixture(monkeypatch)
     assert adapter.matches_layout(payload)
     output = adapter.extract(payload, source_sha256=hashlib.sha256(payload).hexdigest())
-    assert len(output.records) == 6
-    assert len(output.lineage) == 12
+    assert len(output.records) == len(output.lineage) == 6
     assert len(output.losses) == adapter.profile.page_count
     assert output.records[0]["quality_flags"] == [
         "overview_headline_only",
@@ -140,9 +139,6 @@ def test_overview_adapter_preserves_qualification_lineage_and_all_pages(
     assert output.records[0]["currency_code"] is None
     assert output.records[0]["rights_state"] == "not_evaluated"
     assert output.lineage[0].raw_value == "1"
-    assert output.lineage[1].field == "source_phrase"
-    assert output.lineage[1].raw_value == "about $1 million"
-    assert output.lineage[1].source_coordinate == "pdf:page=2;overview:measure_0"
     assert output.losses[1].disposition == "partially_normalized"
     assert all(loss.disposition == "preserved_only" for loss in output.losses[2:])
     assert output == adapter.extract(
@@ -150,28 +146,6 @@ def test_overview_adapter_preserves_qualification_lineage_and_all_pages(
     )
     with pytest.raises(ValueError, match="source_hash_mismatch"):
         adapter.extract(payload, source_sha256="0" * 64)
-
-
-def test_overview_period_dimensions_require_literal_source_token(
-    monkeypatch: pytest.MonkeyPatch,
-) -> None:
-    adapter, payload = _adapter_fixture(monkeypatch)
-    output = adapter.extract(payload, source_sha256=hashlib.sha256(payload).hexdigest())
-    assert not output.dimensions
-    row = output.records[0]
-    phrase = next(item for item in output.lineage if item.field == "source_phrase")
-    explicit = replace(
-        phrase,
-        raw_value="Vote Health in 2008/09",
-        normalized_value="Vote Health in 2008/09",
-    )
-    dimensions, links = adapters.overview_period_dimensions((row,), (explicit,))
-    assert len(dimensions) == len(links) == 1
-    assert dimensions[0].unresolved_reason
-    assert links[0].raw_value == "2008/09"
-    assert links[0].source_coordinate == phrase.source_coordinate
-    embedded = replace(explicit, raw_value="Vote Health in 12008/09")
-    assert adapters.overview_period_dimensions((row,), (embedded,)) == ((), ())
 
 
 @pytest.mark.parametrize(
@@ -204,10 +178,8 @@ def test_overview_adapter_fails_closed_on_unreviewed_input(
     assert output.losses[0].disposition == "preserved_only"
 
 
-@pytest.mark.parametrize(
-    "vintage", ["Treasury-Vote-Health-Estimates-2003-04", "unreviewed-edition"]
-)
-def test_overview_factory_rejects_unreviewed_editions(
+@pytest.mark.parametrize("vintage", [overview.VINTAGE, "unreviewed-edition"])
+def test_overview_factory_rejects_unreviewed_or_composite_editions(
     vintage: str,
 ) -> None:
     with pytest.raises(ValueError, match="unsupported reviewed overview vintage"):

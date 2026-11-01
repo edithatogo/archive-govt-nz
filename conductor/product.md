@@ -97,10 +97,14 @@ upstream project's contribution, authorship, disclosure, and AI-use policies.
 
 ## Planning and traceability
 
-Use the [bounded delivery workflow](./workflow.md) and [current roadmap](../docs/roadmap.md).
-Routine fixes need one concise record in the existing issue, run log or PR;
-new multi-file tracks and issue hierarchies are reserved for substantial work.
-Historical programme acceptance remains distinct from the usable software baseline.
+- Conductor tracks define implementation scope and evidence.
+- Every implementation track includes a MoSCoW `requirements.md`.
+- Design-bearing tracks include `design.md` with Mermaid diagrams.
+- GitHub issues use parent and nested subissues where supported.
+- Issues, pull requests, commits, and Conductor tracks cross-reference one
+  another.
+- Human approval, credentials, public publication, legal decisions, and
+  external-system changes remain explicit gates.
 
 ## Success criteria
 
@@ -112,7 +116,3 @@ Historical programme acceptance remains distinct from the usable software baseli
   rather than inferred from local workflows.
 - Recovery tests demonstrate that published manifests and archived objects can
   reconstruct each validated release.
-
-## Approved Parliament archival extension — 2026-10-26
-
-The [Parliament archival streams track](./tracks/parliament_archive_streams_20261026/index.md) adds released submissions, official advice, reports and business-item context with bounded historical/recent capture and incremental verified Hugging Face delivery. Additional document collections expand through separate source contracts; media remains deferred. Exact destination, source eligibility, capture, recovery and natural schedule evidence remain qualification tasks. Plan registration does not establish operational archival or full coverage.

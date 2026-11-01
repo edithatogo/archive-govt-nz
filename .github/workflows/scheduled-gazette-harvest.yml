@@ -1,7 +1,8 @@
 name: Scheduled Gazette Harvest
 
 on:
-  # No discovery seed is configured; retain manual access until one is selected.
+  schedule:
+    - cron: "0 4 * * 4" # Weekly Thursday 04:00 UTC (per config/source-sets/nz-gazette.yml)
   workflow_dispatch:
     inputs:
       backfill_limit:

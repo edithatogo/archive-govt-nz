@@ -6,13 +6,10 @@ import hashlib
 import json
 from itertools import islice
 from typing import TYPE_CHECKING, Any
-from urllib.parse import quote
 
 from archive_govt_nz.domains.health_appropriations.gold_metadata import (
     MAX_BYTES,
-    MAX_PACKAGES,
-    GoldInput,  # noqa: F401 - Retain the existing CLI import contract.
-    MetadataInput,
+    GoldInput,
     project_gold_metadata,
 )
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
@@ -23,8 +20,6 @@ if TYPE_CHECKING:
     from pathlib import Path
 
 VERSION = "archive-govt-nz.health-gold-discovery-candidates/v1"
-_MAX_MEMBERS = 128
-_MAX_FIELDS = 256
 FILES = {"croissant.json", "ro-crate-metadata.json", "profile-validation.json"}
 CONTEXT = {
     "@vocab": "http://schema.org/",
@@ -58,7 +53,7 @@ def _sha(value: bytes) -> str:
 
 
 def project_profiles(
-    values: tuple[MetadataInput, ...],
+    values: tuple[GoldInput, ...],
 ) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
     """Read Gold before constructing inventory candidates; never claim full validity.
 
@@ -68,44 +63,14 @@ def project_profiles(
     Required licence, creator, URL and publication properties are intentionally
     absent until evidenced. Inline contexts require no network or context cache.
     """
-    return project_inventory_candidates(
-        json.loads(project_gold_metadata(values)["catalogue.json"])
-    )
-
-
-def project_inventory_candidates(
-    catalogue: dict[str, Any],
-    *,
-    name: str | None = None,
-    description: str | None = None,
-) -> tuple[dict[str, Any], dict[str, Any], dict[str, Any]]:
-    """Project bounded supplied inventory assertions without verifying their authority.
-
-    The existing Gold entry point verifies its inputs first. Other callers must
-    bind their own observed inventory. Neither route grants rights, publication,
-    standards conformance or loader qualification.
-    """
-    _require(0 < len(catalogue["packages"]) <= MAX_PACKAGES)
-    _require(
-        all(
-            len(p["inventory"]) <= _MAX_MEMBERS
-            and len(p["tables"]) <= _MAX_MEMBERS
-            and all(len(t["fields"]) <= _MAX_FIELDS for t in p["tables"])
-            for p in catalogue["packages"]
-        )
-    )
+    catalogue = json.loads(project_gold_metadata(values)["catalogue.json"])
     distributions, files, records = [], [], []
     for package in catalogue["packages"]:
         for item in package["inventory"]:
             identity = package["id"] + ":" + item["path"]
-            media = item.get("media_type") or next(
-                (
-                    mime
-                    for suffix, mime in MEDIA.items()
-                    if item["path"].endswith(suffix)
-                ),
-                "application/octet-stream",
-            )
+            media = MEDIA[
+                next(suffix for suffix in MEDIA if item["path"].endswith(suffix))
+            ]
             common = {
                 "@id": identity,
                 "name": item["path"],
@@ -120,7 +85,7 @@ def project_inventory_candidates(
             record_id = table["id"] + ":recordset"
             fields = [
                 {
-                    "@id": record_id + "/" + quote(field["name"], safe=""),
+                    "@id": record_id + "/" + field["name"],
                     "@type": "cr:Field",
                     "name": field["name"],
                     "cr:dataType": {
@@ -146,14 +111,14 @@ def project_inventory_candidates(
                     "hag:arrowSchemaIpcHex": table["schema_ipc_hex"],
                 }
             )
-    description = description or (
+    description = (
         "Local Gold inventory candidate. Payloads remain in separately "
         "pinned Gold packages; rights and publication are unassessed."
     )
     croissant = {
         "@context": dict(CONTEXT),
         "@type": "Dataset",
-        "name": name or "Local Health analytical Gold discovery candidate",
+        "name": "Local Health analytical Gold discovery candidate",
         "description": description,
         "distribution": distributions,
         "cr:recordSet": records,
@@ -169,7 +134,7 @@ def project_inventory_candidates(
             {
                 "@id": "./",
                 "@type": "Dataset",
-                "name": name or "Local Health analytical Gold inventory candidate",
+                "name": "Local Health analytical Gold inventory candidate",
                 "description": description,
                 "hasPart": [{"@id": item["@id"]} for item in files],
             },
@@ -214,7 +179,7 @@ def project_inventory_candidates(
 
 
 def validate_documents(
-    values: tuple[MetadataInput, ...], croissant: dict[str, Any], crate: dict[str, Any]
+    values: tuple[GoldInput, ...], croissant: dict[str, Any], crate: dict[str, Any]
 ) -> dict[str, Any]:
     """Reject changed identity, extraction, types or unsupported promotion claims."""
     expected_cr, expected_ro, report = project_profiles(values)
@@ -224,7 +189,7 @@ def validate_documents(
     return report
 
 
-def _payloads(values: tuple[MetadataInput, ...]) -> tuple[dict[str, bytes], bytes]:
+def _payloads(values: tuple[GoldInput, ...]) -> tuple[dict[str, bytes], bytes]:
     cr, ro, report = project_profiles(values)
     data = {
         "croissant.json": _json(cr),
@@ -246,7 +211,7 @@ def _payloads(values: tuple[MetadataInput, ...]) -> tuple[dict[str, bytes], byte
 
 
 def export_profiles(
-    values: tuple[MetadataInput, ...], output: Path, *, write: bool = False
+    values: tuple[GoldInput, ...], output: Path, *, write: bool = False
 ) -> dict[str, Any]:
     """Dry run verifies Gold; writing preserves exclusive output and partials."""
     data, marker = _payloads(values)
@@ -270,7 +235,7 @@ def export_profiles(
 
 
 def verify_profiles(
-    values: tuple[MetadataInput, ...], output: Path, manifest_sha256: str
+    values: tuple[GoldInput, ...], output: Path, manifest_sha256: str
 ) -> dict[str, Any]:
     """Reverify Gold and reconstruct every candidate byte from its pinned inputs."""
     _require(output.is_dir() and not output.is_symlink())

@@ -74,31 +74,6 @@ with _exclusive_capture_lock(Path(sys.argv[1])):
 
 
 @pytest.mark.anyio
-@pytest.mark.parametrize("pin", ["0" * 64, "BAD", "A" * 64])
-async def test_census_pin_rejects_drift_before_capture(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, pin: str
-) -> None:
-    execute, args, calls = setup(tmp_path, monkeypatch)
-    args.census_sha256 = pin
-    with pytest.raises(ValueError, match="capture_census_pin_mismatch"):
-        await execute(args)
-    assert not calls
-    assert not args.manifest.exists()
-    assert not args.warc_dir.exists()
-
-
-@pytest.mark.anyio
-async def test_census_pin_is_bound_to_capture_context(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    execute, args, calls = setup(tmp_path, monkeypatch)
-    args.census_sha256 = hashlib.sha256(args.census.read_bytes()).hexdigest()
-    result = await execute(args)
-    assert result["capture_context"]["census_sha256"] == args.census_sha256
-    assert calls
-
-
-@pytest.mark.anyio
 @pytest.mark.parametrize("fault", ["swap", "query", "url", "status", "body", "legacy"])
 async def test_resume_requires_warc_source_response_binding(
     tmp_path: Path, monkeypatch: pytest.MonkeyPatch, fault: str
@@ -697,44 +672,6 @@ async def test_refuse_implicit_overwrite_and_competing_writer(
     assert len(calls) == 1
     assert lock.is_dir()
     assert (tmp_path / "manifest.json").read_bytes() == before
-
-
-@pytest.mark.anyio
-async def test_orphan_recovery_checkpoint_preserves_previously_retained_capture(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
-) -> None:
-    execute, args, calls = setup(tmp_path, monkeypatch)
-    census = json.loads(args.census.read_text())
-    census["records"].append(
-        {
-            **census["records"][0],
-            "source_id": "two",
-            "url": "https://www.treasury.govt.nz/two.csv",
-        }
-    )
-    args.census.write_text(json.dumps(census))
-    first = await execute(args)
-    first["results"] = first["results"][:1]
-    first["captured"] = 1
-    args.manifest.write_text(json.dumps(first))
-    args.resume = True
-    original_write = execute.__globals__["_write"]
-
-    def interrupt_after_checkpoint(path: Path, value: object) -> None:
-        original_write(path, value)
-        msg = "simulated_interruption"
-        raise RuntimeError(msg)
-
-    monkeypatch.setitem(execute.__globals__, "_write", interrupt_after_checkpoint)
-    with pytest.raises(RuntimeError, match="simulated_interruption"):
-        await execute(args)
-    checkpoint = json.loads(args.manifest.read_text())
-    assert checkpoint["captured"] == 2
-    assert {row["source_id"] for row in checkpoint["results"]} == {"one", "two"}
-    monkeypatch.setitem(execute.__globals__, "_write", original_write)
-    resumed = await execute(args)
-    assert resumed["captured"] == 2
-    assert len(calls) == 2
 
 
 @pytest.mark.anyio

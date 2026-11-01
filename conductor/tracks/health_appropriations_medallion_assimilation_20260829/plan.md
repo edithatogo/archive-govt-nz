@@ -17,29 +17,6 @@ A phase checkpoint requires paired human/machine evidence, self-review,
 reconstruction or recovery checks where applicable, and the full relevant
 repository validation command. External gates block only their affected task.
 
-## Finite completion order — 2026-10-31
-
-Apply the [shared delivery contract](../../workflow.md#finite-completion-and-evidence-reuse--2026-10-31).
-The table routes existing work; it adds no new acceptance requirements and closes
-no checkbox. Reconcile newer receipts before treating older pending prose as work.
-
-| Order | Existing scope | Definition of done / verification |
-| --- | --- | --- |
-| 1 | All open tasks; AC-01–AC-16 | Reconcile newest source/product/delivery receipts once. Record already evidenced, unfinished, specifically blocked and optional dispositions in this plan/run log, with requirement IDs and receipt links; close only fully evidenced tasks. Freeze the remaining required checklist. |
-| 2 | Phases 1–5; census, preservation, Silver and parity | Complete only missing required source qualification, extraction and accounting. Preserve the approved source universe, originals and explicit gaps. Reuse matching source/parity receipts; test changed adapters and their consumers. |
-| 3 | Phases 6–7; Gold and metadata | Finish required measures, source/donor reconciliation, plots, metadata and rights joins. Verify exact values/lineage and actual rendering when changed; unresolved semantics remain explicit. |
-| 4 | Phases 8–9; operation and recovery | Finish required CLI/MCP/scheduling and recovery behavior. Reuse matching component evidence; prove changed runtime paths and complete integration at the coherent milestone. Natural recurrence needs its own observation. |
-| 5 | Phase 10 and final AC reconciliation | Resolve the exact candidate's remaining authorized publication/readback requirements, reconcile every Must and perform final assurance. Historical publication does not approve changed bytes. |
-
-Each batch records its existing owner/worktree, files/native scope, outcome and
-verification selectors in the run log. The first unchecked Phase 6 umbrella task
-is not an instruction to redo its completed children. Existing requirements and
-ACs determine closure, not a target checkbox percentage.
-
-Optional survey linkage, graph/vector projections and additional source/product
-expansion beyond approved requirements remain deferred. Donor retirement and
-Zenodo remain out of scope. Do not create another framework or review loop.
-
 ## Phase 0 — Track activation and hosted traceability
 
 ### Review correction — current-state reconciliation
@@ -146,16 +123,6 @@ Zenodo remain out of scope. Do not create another framework or review loop.
   unevaluated; 2002's other source families and annual Budget workbooks remain
   unresolved. This locator and period assessment are pinned in
   `source-measure-review-20261006.json`; they do not mark 2002 complete.
-  A read-only recheck of the official BEFU 2001 release page added its seven
-  previously unregistered PDF links to a dated successor register; the
-  eight-link page count, 24 May 2001 release metadata and page-level CC BY 4.0
-  are recorded separately. Reader evidence attributes Annex B Table B.6 Health
-  to `befu01-ann.pdf` (printed page 156), retains the displayed numeric tokens,
-  and labels 1997/98–1999/2000 Actual with 2000/01 onward Forecast. Total Crown
-  Expenses remain a separate GAAP PDF observation. Neighbouring Health
-  purchasing and ACC measures stay distinct. Linked bytes, native layout,
-  item-level rights and whole-edition enumeration remain pending
-  (`source-census-befu-2001-20261024.json`).
   Treasury's historical Vote Health index and exact 2002/03 main and 2001/02
   Supplementary Estimates PDFs are now separately registered. Fiscal periods,
   `$000` Supplementary Estimates fields, page-level rights evidence, and the
@@ -327,24 +294,16 @@ Zenodo remain out of scope. Do not create another framework or review loop.
   `bronze-checkpoint-contracts.md`.
 - [~] Establish per-vintage source-layout baselines from retained Silver
   workbook inventories and captured official PDF page structures, linked to
-  capture identities and Bronze fixity. The pinned 2026-10-03 cohort contains
-  75 verified captured objects. Its workbook baseline has six unique source
-  inventories across ten manifests; BEFU-2026 and HYEFU-2025 show observed
-  variation under their shared extraction profile. The 2026-10-18 PDF report
-  fingerprints all 59 captured PDFs, including three default-readable
-  encrypted originals previously excluded. A 2026-10-24 recheck verified that
-  all ten workbook inventory rows and all 59 PDF layout rows remain unchanged
-  against Bronze. The PDF parser moved from 6.19.0 to 6.21.2; the pinned row
-  fingerprints did not change. The retained Silver tree now has 24 manifests
-  outside the pinned capture, up from nine; they remain excluded from this
-  cohort. Combined coverage is 65/75 sources: six of twelve workbooks have
-  inventories, all 59 PDFs have structural baselines, and ten sources remain
-  unassessed (six workbooks, three CSVs and one HTML resource). No source
-  values, URL or mapping approval is inferred. Structural variation is not an
-  approved mapping; source-specific layout work beyond this cohort remains
-  open. See `source-layout-reconciliation-20261024.md`,
-  `source-layout-baseline-20261002.md`,
-  `source-pdf-layout-baseline-20261018.json`, and
+  capture identities and Bronze fixity. The retained 2026-10-02 workbook baseline fingerprints six of its
+  74 captured sources; BEFU-2026 and HYEFU-2025 show observed layout variation
+  under their shared extraction profile. PDF evidence now fingerprints all 59 retained captured PDFs, including three
+  default-readable encrypted originals previously excluded. All 56 previously
+  recorded rows are unchanged; two complete builds are byte-identical. This is
+  the pinned 2026-10-03 capture cohort, not the entire current census. Other
+  source-layout coverage and mapping approval remain open.
+  Structural variation is not an approved mapping. See
+  `source-layout-baseline-20261002.md` and
+  `source-pdf-layout-baseline-20261018.json` and
   `readable-pdf-layout-qualification-20261018.json`. [M-02, M-11, S-04; AC-03, AC-09]
 - [x] Confirm Git contains manifests/schemas/evidence only, not source payloads
   or large generated derivatives. Verified 2,998 tracked paths against all 73
@@ -438,17 +397,13 @@ integrated parent head.
   accounting and source lineage through the same hash-bound dispatcher;
   CPI/population/vintage boundaries remain explicit. Four context adapters
   additionally emit unresolved literal dimension assertions and source-row
-  links. Common dispatch coverage for source-operation profiles now also
-  includes the exact Pharmac CPB HTML adapter and the two profiles below;
-  two exact Ministry HAIR2024 figure CSV profiles (`fig27/v1` and `fig28/v1`)
-  now dispatch through hash-pinned adapters, preserving source labels, numeric
-  tokens, row lineage, unknown period dates/units/price bases/denominators and
-  `not_evaluated` rights. Their fixture contracts reject lookalike hashes,
-  layout drift and ambiguous matches; exact captured inputs produced identical
-  repeat dispatch receipts and 40 facts / 120 lineage rows per profile. See
-  `phase3-moh-indicator-common-dispatch-20261025.json`. Other source-specific
-  PDF and historical workbook coverage, broader source-operation profiles,
-  mappings and integrated drift remain open. See
+  links. Common dispatch coverage for other source-operation profiles,
+  Pharmac CPB HTML is now supported through its exact-profile adapter;
+  the reviewed 2003/04 Vote Health composite PDF profile is now registered;
+  the pinned 2016/17 Estimates overview now also dispatches through its
+  source-specific parser with all-page dispositions and field lineage. Pinned donor SQLite dispatch was delivered in PR #711; the five literal
+  bundles now have native/full qualification. Other source-specific PDF and
+  historical workbook coverage, mappings and integrated drift remain open. See
   `adapter-dispatch.validation.json`, `budget-adapter.validation.json`, and
   `budget-revenue-adapter.validation.json` and
   `context-adapters.validation.json`. [M-05, M-07; AC-03, AC-05]
@@ -462,16 +417,10 @@ integrated parent head.
   appropriation, department, portfolio, amount type, functional/economic
   classification, measure, unit and period. The Budget expenditure adapter now
   emits source-literal assertions and field links for its observed labels,
-  period token, amount header and adapter measure rule. Context and HAIR2024
-  adapters also retain exact measure/period literals. Unresolved assertions
-  now require a reason and captured-object hash/coordinate reference; resolved
-  targets require evidence digests and explicit inclusive effective dates.
-  Source-census review supports no authoritative crosswalk, so no production
-  mapping target was assigned. Economic classification is absent from the
-  reviewed Budget profile. Currency, period bounds, confidence/adjudication,
-  other source-family projections and integrated mapping drift remain open.
-  See `budget-source-dimensions.validation.json` and
-  `dimension-mapping-audit-20261026.json`. [M-06; AC-05, AC-11]
+  period token, amount header and adapter measure rule; all mapping targets stay
+  unresolved. Economic classification, evidence-backed crosswalks, confidence
+  and effective periods remain open. See
+  `budget-source-dimensions.validation.json`. [M-06; AC-05, AC-11]
 
 ### 3.3 Determinism and drift hardening
 
@@ -490,21 +439,11 @@ integrated parent head.
   their established fail-closed parser errors and write no package. Other
   adapter manifests remain pending. [M-05, M-07, M-10, M-16; AC-03, AC-05,
   AC-08, AC-12]
-- [x] Add schema fingerprints, adapter selection evidence, deterministic
+- [~] Add schema fingerprints, adapter selection evidence, deterministic
   ordering/serialization, source-layout drift reports and fail-closed unknown
   layout handling. Dispatch selection and source-family Arrow schema/layout
-  fingerprint comparison now have deterministic contracts. The 2026-10-24
-  Bronze-only structural inventory fingerprints all 12 captured XLSX sources,
-  including six that lack Silver-derived inventories. The rechecked PDF cohort
-  fingerprints 59 of 59 captured PDFs. The exact HAIR2024 fig27/fig28, CPIQ.SE9A
-  CSVs and Pharmac CPB HTML table now have source-specific profiles and
-  byte-identical repeat evidence. The combined v2 reconciliation covers all
-  75 captured objects. Every common/native dispatch now captures immutable
-  selection, schema and ordered-output drift evidence; unknown/ambiguous
-  selections remain held. Dictionary field observations are explicitly distinct
-  from declared Arrow schemas. This does not qualify additional parsers or
-  close the wider Phase 3 checkpoint. See `schema-drift-integration-20261026.md`,
-  `bronze-workbook-layout-baseline-20261024.md`,
+  fingerprint comparison now have deterministic contracts; per-source captured
+  layout baselines and integrated drift receipts remain open. See
   `context-adapters.md` and its validation receipt. [M-05, M-07, M-18, S-04;
   AC-03, AC-05, AC-16]
 - [x] Demonstrate repeat normalization yields identical manifests and Parquet
@@ -519,11 +458,6 @@ integrated parent head.
   determinism, not source rights or semantic approval.
 
 ### 3.4 Phase review and checkpoint
-
-- [~] Reconcile the complete Phase 3 checkpoint after remaining adapter,
-  dimension/mapping and integrated evidence requirements are satisfied. The
-  2026-10-26 drift increment does not close those remaining requirements.
-  [M-18, M-19; AC-16]
 
 - [x] Run schema, golden, property, mutation, archive-safety, typing and focused
   coverage gates; review binary preservation and lineage boundaries. [M-18;
@@ -728,17 +662,6 @@ integrated parent head.
   pending source families or establish semantic equivalence.
 
 ### 5.2 Normalize direct official datasets
-
-- [x] Promote the exact 2022/23–2026/27 captured Estimates overview headline
-  totals through the existing common adapter and source-operation contracts.
-  Preserve literal million-dollar units, source phrases and all-page
-  dispositions, with reform/capital-charge caveats and no cross-year splice.
-  [M-05, M-06, M-11, M-15; AC-05, AC-09, AC-13]
-  See `modern-vote-health-recovery-20261026.json`: five exact Bronze
-  objects, two fresh builds each, independently pinned readback and identical
-  complete output inventories. Common source-operation CLI/MCP allowlists and
-  the clean-room recovery orchestrator include these profiles. This bounded
-  headline slice leaves other pages and the Phase 5 parent task open.
 
 - [x] Normalize the two retained HAIR2024 Ministry CSVs as separately
   attributed published indicators, preserving exact tokens and unknown units,
@@ -1052,16 +975,6 @@ integrated parent head.
   Keep rights, currency, annual bounds, cross-edition comparability, Gold and
   publication unqualified. [M-05, M-06, M-11; AC-05, AC-09]
 
-- [x] Add the separate 2014/15 Vote Health Supplementary Estimates page-7
-  “Summary of Financial Activity” profile. Preserve all 14 printed rows, five
-  `$000` columns, repeated MCA labels, raw dash/`N/A` tokens, signed adjustments,
-  ordinal identity and direct field lineage. Reconcile the official source
-  bytes to the existing Bronze capture and record two identical clean-room
-  builds; rights, currency, cross-edition comparability, Gold and publication
-  remain unqualified. See
-  `vote-health-supplementary-2014-15-financial-activity-20261025.md` and its
-  machine receipt. [M-05, M-06, M-11; AC-05, AC-09]
-
 ### 5.3 Normalize analytical context
 
 - [x] Implement the bounded June2026 QES Table8 QEMQ.SASZ9A published
@@ -1173,11 +1086,6 @@ integrated parent head.
 
 ## Phase 6 — Gold analytical products
 
-Runtime qualification note: active development, build and test use the
-explicitly selected repo-local CPython 3.15.1 interpreter. Older version
-literals remain only in immutable historical evidence or synthetic tests that
-deliberately exercise version handling.
-
 ### 6.1 Analytical contracts first
 
 - [x] Add source-qualified, read-only Fiscal 1972–2025 Health/GDP and
@@ -1256,16 +1164,6 @@ deliberately exercise version handling.
 
 ### 6.2 Build marts, quality products and reports
 
-- [x] Add a fixed, bounded Gold query over independently pinned overview
-  Silver packages, re-extracting exact Bronze before DuckDB reads. Preserve
-  every source field, record identity, Decimal value and qualifier; verify
-  row-for-row reconciliation and repeat results for the five modern Estimates
-  editions. Exclude derived and cross-vintage calculations. This is a read-only
-  query slice, not a new canonical mart or completion of Phase 6. See
-  `modern-vote-health-gold-query-recovery-20261026.json` and
-  `overview-gold-query-20261026.md`. [M-10, M-13, M-16,
-  M-18; AC-08, AC-11, AC-12, AC-16]
-
 - [ ] Build versioned Parquet dimensions/facts and DuckDB views for the
   approved analytical measures, retaining input record IDs and formula
   metadata. [M-10, M-13; AC-08, AC-10]
@@ -1296,14 +1194,6 @@ deliberately exercise version handling.
     This source-to-Gold control does not establish official-source recalculation,
     donor parity, unit/denominator comparability, or redistribution rights. See
     `canonical-moh-gold-reconciliation-20261024.md`.
-  - [x] Add a source-separated 2014/15 Vote Health financial-activity Gold
-    projection from its exact Silver manifest. Preserve all 14 source rows, five
-    `$000` columns, source record IDs, printed row ordinals and 70 field-level
-    coordinates; provide a bounded read-only DuckDB query and deterministic
-    package report. Verify source/Silver/Gold fixity and repeated full builds.
-    Do not calculate totals, compare editions, infer currency semantics, or
-    upgrade rights/publication state. See
-    `vote-health-financial-activity-gold-20261025.md` and its machine receipt.
 - [~] Build coverage, completeness, reconciliation, source-health,
   classification-drift and revision reports with defined thresholds. [M-13,
   S-04; AC-11]
@@ -1352,12 +1242,6 @@ deliberately exercise version handling.
     and numeric-evidence IDs per vintage for changed candidates. Differences
     remain unassessed and source-separated; no semantic or cross-source
     equivalence is inferred. [M-13, S-04; AC-11, AC-12]
-  - [x] Reconcile every BIFF8 canonical Gold amount to its retained encoded
-    integer witness and amount-field lineage, preserving source vintage, source
-    object digest, literal period, source row/column, record type, payload hash,
-    encoded bytes and exact Decimal projection. Bind the report to package and
-    product copies; donor, official-source, rights and cross-source controls
-    remain explicitly outside scope.
   - [x] Reconcile every source-separated nominal Budget Gold total against
     its exact pinned canonical appropriation facts. Independently recompute
     Decimal totals by literal vintage, period token, amount type, unit, Vote,
@@ -1473,26 +1357,6 @@ deliberately exercise version handling.
 
 ### 7.1 Metadata and rights contracts first
 
-- [x] Add read-only reconstruction for qualified v1/v2/v3 metadata packets;
-  require closed inventory and exact source/rights/partner-bound bytes, reject
-  self-rehashed licensing/federation claims and retain explicit release limits.
-  See `qualified-metadata-verification-20261028.md`. Hosted correction and final
-  assurance are separately evidenced; broader metadata contracts remain open.
-  [M-04, M-14, M-17, M-18; AC-04, AC-14, AC-16]
-
-- [x] Project the five qualified headline rights records into resource-scoped
-  DCAT, Croissant, RO-Crate and entity-only PROV; reconstruct pinned inputs,
-  reject forged grants, verify ten licensed data resources per graph and repeat
-  builds without source mutation. See `qualified-overview-metadata-20261027.md`.
-  Full profile, federation and release gates remain open. [M-14, M-17; AC-14]
-
-- [x] Qualify the five 2022/23–2026/27 Vote Health headline data resources
-  against exact publisher chapter/collection rights and retained licence evidence;
-  emit fresh per-resource Gold rights manifests and attribution while preserving
-  all original/Silver bytes and excluding PDF facsimiles, images and unreviewed
-  material. See `overview-rights-qualification-20261027.md`. [M-04, M-14, M-17;
-  AC-04, AC-14] Broader Phase 7 and release gates remain open.
-
 - [x] Review clarification: explicitly load the JSON-LD parser plugin without
   an unguarded warm-up parse; retain offline positive/negative fixtures and
   revalidate the exact change. [M-14, M-18; AC-14, AC-16; f111dbf0]
@@ -1531,7 +1395,7 @@ deliberately exercise version handling.
   fixity/eligibility claims or publication metadata. This does not complete
   Platinum or whole-product recovery. [M-14, M-18; AC-14, AC-16]
 
-- [x] Add failing contracts for schema-as-code, DCAT, Croissant, RO-Crate,
+- [ ] Add failing contracts for schema-as-code, DCAT, Croissant, RO-Crate,
   PROV, estate cards, mixed/per-resource licensing, citations and fail-closed
   release readiness. Include missing, conflicting and incompatible rights
   states. [M-04, M-14, M-17, M-18; AC-04, AC-14, AC-16]
@@ -1576,17 +1440,9 @@ deliberately exercise version handling.
   preserve the existing two-package invocation. [M-14, M-15, M-18; AC-13, AC-14,
   AC-16]
 
-- [x] Generate and validate metadata, cards, citations, changelogs, catalogue
+- [ ] Generate and validate metadata, cards, citations, changelogs, catalogue
   and source drill-through records from actual layer manifests. [M-14, S-06;
   AC-14]
-  - [x] Cover native contextual Gold and Fiscal companion reports with opt-in
-    v7 metadata, exact per-payload inventories, scoped citations/changelogs/source
-    references and repeated native reconstruction. Reconcile all admitted product
-    families without claiming standards, rights or future-product coverage. See
-    `product-metadata-coverage-20261028.md` and paired JSON.
-  - [x] Complete cards, scoped citations, snapshot changelog and source drill-through
-    for the five qualified headline editions, with v2 opt-in output and unchanged
-    v1 graph bytes. See `qualified-overview-discovery-20261027.md`.
   - [x] Generate deterministic local content-addressed citation identifiers
     and snapshot-only changelogs from the verified Fiscal and Budget Gold
     manifests. Bind each record to its manifest SHA256 and propagate only the
@@ -1612,28 +1468,9 @@ deliberately exercise version handling.
     Include the card in the manifest and RO-Crate while preserving explicit
     source-health, classification, reconciliation, rights and publication
     boundaries. See `canonical-gold-dataset-card-20260928.md`.
-- [x] Add rebuildable federation tables for approved links to
+- [ ] Add rebuildable federation tables for approved links to
   `reimbursement-atlas` and `global-medicines-atlas`; preserve unmatched and
   ambiguous mappings. [M-14; AC-14]
-  Completed for the pinned reviewed annual-headline scope: ten exclusions and
-  zero approved positive links. Other grains/relationships remain unassessed;
-  new positive admission requires new evidence and is not implied by this task.
-  - [x] Materialize source and partner identity tables, the ten reviewed exclusion
-    dispositions, and a typed empty approved-links table from verified snapshots.
-    Preserve literal periods, record keys, review/snapshot pins and source-specific
-    rights boundaries; v4 opt-in export must preserve v1-v3 bytes and reject forged
-    positive rows. No new positive links are approved.
-  - [x] Obtain both immutable partner snapshot slices and pinned review evidence;
-    resolve the ten qualified annual-headline pairs as source-backed record-grain
-    exclusions, preserving source literals and zero positive joins. Verify curated
-    pins, inventory closure, deterministic v3 export and unchanged v1/v2 products.
-    Other grains and positive-link admission remain separate. See
-    `partner-snapshot-review-20261028.md`.
-  - [x] Materialize ten reason-coded pending partner pairs from verified five-edition
-    inputs; schema-check absent target/method/confidence/interval evidence and
-    keep approved links empty. Existing unmatched/ambiguous fixture contracts
-    remain separate; this does not approve partner mappings. See
-    `qualified-overview-discovery-20261027.md`.
 - [x] Evaluate graph/vector projections only as non-authoritative Could work
   after a demonstrated query/discovery benefit and pinned reproducibility
   contract. Evaluated and deferred: no health-specific discovery benefit or
@@ -1642,56 +1479,18 @@ deliberately exercise version handling.
 
 ### 7.3 Phase review and checkpoint
 
-- [x] Replace the current local candidate assembler's generic field bindings,
-  fixed publication date, blanket licence and unverified activity assertions
-  with observed payload hashes, exact Arrow schema descriptors and shared
-  inventory-only Croissant/RO-Crate/DCAT/PROV projections. Keep derivative
-  rights, source requalification and release readiness explicit and blocked.
-  Verify deterministic local builds, byte-bound original assertions, encoded
-  field identifiers, RDF parsing and release-guard rejection. Reconcile against
-  the immutable retained v4 payloads without modifying or publishing them.
-  See `candidate-metadata-retained-review-20261027.json` and
-  `candidate-metadata-correction-20261027.md`. This fixes local claim and schema
-  defects; full standards qualification and the Phase 7 parent gate remain open.
-  [M-04, M-14, M-17, M-18, M-19; AC-04, AC-14, AC-15, AC-16]
-
-- [x] Review every metadata-level rights statement against resource evidence;
+- [ ] Review every metadata-level rights statement against resource evidence;
   reject hard-coded blanket licensing and unsupported federation claims.
   [M-04, M-14; AC-04, AC-14]
-  - [x] Review all supported emission surfaces, reconstruct qualified v1–v4
-    packets against the five source decisions and 12 official evidence files,
-    independently interpret resource grants, and retain ten scoped federation
-    exclusions with zero positive links. Record four historical blanket-label
-    exceptions, block fresh legacy derivative-rights admission, and distinguish
-    capture assertions from qualification. See `metadata-rights-review-20261028.md`
-    and its pinned machine evidence. This review does not grant unresolved
-    rights or close the remaining standards/security checkpoint.
   - [x] Verify the current Fiscal and Budget Gold catalogue, citation,
     changelog, and source-drill-through rights/publication states against their
     exact manifest pins. No licence is emitted; resource-level rights and
     federation approvals remain unresolved. This bounded check does not close
     the broader review. See `gold-metadata-rights-provenance-review-20261005.md`.
-- [x] Run schema/metadata/federation/security gates, self-review and the full
+- [ ] Run schema/metadata/federation/security gates, self-review and the full
   repository harness; record paired evidence. [M-18, M-19; AC-16]
-  Implementation and coverage reconciled for the eight admitted product families;
-  245 combined tests, 95 schemas / 85 documents, independent SDK static review,
-  wheel/schema import and five Platinum mutants pass. Final full harness passed
-  (8,735 tests, 14 capability skips, 95 schemas / 85 documents, parity 9/9 and
-  all security/supply-chain gates). Exact-head protected delivery is recorded
-  separately. See `phase7-checkpoint-20261028.md`.
 
 ## Phase 8 — CLI, MCP and scheduled operation
-
-31 October reconciliation: the reader-only boundary is delivered in PR #723
-(merge ae4f870c); the retained operational replay records CLI 12.13s and MCP
-call 10.11s within the existing 30s limits, with matching prior products. See
-context-reader-startup-delivery-20261019.json and
-context-reader-startup-replay-20261019-v1.json. The timing-diagnosis and reader
-items below are closed using these retained receipts, not a new native run.
-The local normalization runner was merged in PR #812 (61a216c8), with all
-required checks read back on 31 October; activation/capture remain separate.
-Older pending prose remains historical; it no longer requests repeat delivery.
-
 
 ### 8.1 Operational contracts first
 
@@ -1707,24 +1506,6 @@ Older pending prose remains historical; it no longer requests repeat delivery.
   analyze, rebuild, candidate-build and status commands, including JSON output,
   dry-run, idempotency, cancellation, partial state, retry/resume, missing
   credentials and redaction. [M-15, M-18; AC-13, AC-16]
-  The targeted 2026-10-28 audit passed 820 tests/10 capability skips across
-  existing operation, CLI, MCP, capture, resume, rebuild, and scheduled-policy
-  suites. It does not close this matrix: scheduled capture/normalization and
-  the remaining command and recovery contracts are still incomplete.
-  See `phase8-command-contract-audit-20261028.md`.
-- [x] Expose a read-only capture-inventory reconciliation through CLI and MCP,
-  requiring named, bounded SHA-256-pinned census, capture and request inputs.
-  Return recorded counts and evidence pins without source URLs; source fixity,
-  rights, normalization and publication remain unassessed. Reuse the retained
-  capture inventory builder with explicit row and request-matching work limits.
-  See `phase8-capture-inventory-operation-20261029.md` for validation and
-  delivery boundaries. [M-15; AC-13]
-- [x] Expose a bounded read-only CLI and MCP operation for reconciling
-  hash-pinned source census, workbook/PDF layout baseline and recheck reports.
-  Return only the compact summary, source identities, reason-coded gaps and
-  evidence pins; preserve unassessed sources and do not write files or infer
-  semantic mappings, rights or comparability. [M-15; AC-13] See
-  `phase8-layout-operation-20261029.md` for exact input pins and full validation.
 - [x] Add scheduled-source heartbeat and drift tests that do not equate a
   successful workflow with capture, validation or publication. [M-04, M-15,
   M-19, S-04; AC-04, AC-09, AC-13]
@@ -1813,20 +1594,9 @@ Older pending prose remains historical; it no longer requests repeat delivery.
   tampered packages, redaction, JSON parity and no writes. This proves package
   fixity only, not Parquet semantics, source completeness, rights, or
   publication. See `canonical-gold-verification-20260928.md`.
-- [~] Add fast-first scheduled discovery/capture/normalization lanes with
+- [ ] Add fast-first scheduled discovery/capture/normalization lanes with
   heavier reconciliation and reconstruction behind explicit triggers and
   bounded resource limits. [M-15, M-18; AC-13, AC-16]
-  - [x] Add a pinned local normalization-plan runner, scheduler-callable CLI
-    and read-only MCP preflight, with bounded inputs, exclusive execution,
-    preserved failed/interrupted attempts and hash-verified replay. Local
-    qualification passed; PR #812 merged with all required checks on 28 October. This does not activate
-    a timer or implement the capture lane. See
-    `phase8-normalization-scheduler-20261029.md`.
-  - [x] Pin the existing metadata-only Health discovery lane to contents-read,
-    credential-free, non-cancelling scheduled operation; keep capture and
-    normalization explicitly absent from this discovery lane. See
-    `phase8-scheduled-contract-20261025.md`. This does not provide the still
-    pending capture/normalization lanes.
 - [ ] Produce operational dashboards/reports from evidence without exposing
   credentials, signed URLs, restricted bytes or personal information. [M-15,
   M-18; AC-13, AC-16]
@@ -1836,20 +1606,11 @@ Older pending prose remains historical; it no longer requests repeat delivery.
     capture, normalization, validation and publication unclaimed. See
     `operation-metadata-operations-delivery-20261024.md`.
 
-- [~] Add opt-in Markdown reporting to the existing normalization-plan CLI,
-  using the same receipt and exit status as JSON. Include only validated counts,
-  plan hash and explicit local/capture/publication/recurrence boundaries;
-  never copy job names, paths or source content. This closes only the local
-  normalization report slice of M-15/AC-13; broader reporting remains open.
-
 ### 8.3 Phase review and checkpoint
 
-- [~] Exercise interruption, resumption, concurrent invocation, replay,
+- [ ] Exercise interruption, resumption, concurrent invocation, replay,
   stale state, remote drift and recovery paths; review workflow permissions
   and secret handling. [M-15, M-18; AC-13, AC-16]
-  - [x] Force two resume callers past read-only preflight together and prove
-    only one can claim the same exclusive output path; verify the winner and
-    preserve all inputs. See `phase8-concurrency-contract-20261025.md`.
 - [ ] Run full local validation and, when available, exact-head hosted checks;
   record these as separate evidence. [M-18, M-19; AC-16]
 
@@ -1887,17 +1648,6 @@ Older pending prose remains historical; it no longer requests repeat delivery.
   Platinum and interrupted-stage recovery. [M-16, M-18; AC-12, AC-16]
   (38 files per run, byte-identical; all 23 donor objects unchanged;
   `originals-product-replay.md`)
-- [x] Rebuild all 20 reviewed common Estimates overview editions twice from
-  exact Bronze, including the source-compatible 2002/03 boundary. Reconcile
-  221 selected facts through the fixed Gold query, preserve every page
-  disposition, and join the five existing 2009/10-2013/14 census supplements
-  by independent pins. Keep the primary census immutable. Verify unchanged
-  modern Silver/Gold receipts and byte-identical 2002/03 native/common tables.
-  See `reviewed-vote-health-recovery-20261027.json` and
-  `reviewed-overview-recovery-20261027.md`. Other source-native/canonical
-  adapters, cross-source comparison and complete Platinum remain open.
-  [M-05, M-06, M-11, M-13, M-16, M-18; AC-08, AC-09, AC-11, AC-12, AC-16]
-
 - [~] Add a failing recovery contract for empty derivative state, then rebuild
   Silver, Gold, SQLite, plots/reports and Platinum metadata from Bronze, locked
   code and parameters. [M-10, M-16, M-18; AC-08, AC-12, AC-16] Two fresh pinned
@@ -1910,15 +1660,6 @@ Older pending prose remains historical; it no longer requests repeat delivery.
   from fresh Silver, with identical output digests; base and rights remain
   unresolved. Donor/canonical reports, additional source-native profiles and
   canonical adapters, and complete validated Platinum remain open.
-  Refreshed on 2026-10-25 by issue #215: the current-runtime clean-room receipt
-  confirms Bronze fixity and repeat builds, with `partial_with_blockers` status;
-  cross-source comparison, remaining source-native adapters, and full Platinum
-  still prevent closing this recovery task. See
-  `clean-room-recovery-20261025-issue-215.json`.
-  The 2026-10-26 integrated rebuild adds five exact modern Estimates
-  headline profiles within 48 rebuilt product/report lanes, with unchanged
-  Bronze. The same three whole-track blocker categories remain explicit; see
-  `clean-room-recovery-20261026-modern-overviews.json`.
 - [~] Compare output manifests/digests and explain permitted rendering-only
   variation; prove original objects were not mutated. [M-03, M-16; AC-02,
   AC-12] Repeat output inventories match within this runtime across raw, SQLite,
@@ -2028,12 +1769,6 @@ Older pending prose remains historical; it no longer requests repeat delivery.
   retirement and Zenodo remain out of scope. [M-18, M-19; AC-16]
 
 ## Review fixes
-
-- [x] Apply the bounded modern Vote Health review fixes: synchronized operation
-  schema, exact period-token rejection, consistent synthetic fixity and resolved
-  recovery roots. Record 48-lane integrated recovery and retain the open
-  Phase 5-9 completion contracts. See `phases-5-9-review-20261026.md`
-  (`20b1ce5e`). [M-05, M-06, M-16, M-18, M-19; AC-12, AC-16]
 
 - [x] Add a bounded pure bridge from exact historical canonical projections to
   the existing public historical analysis contract, retaining canonical
@@ -2740,7 +2475,7 @@ explicit disclosure; require original all32stages on3clean hosted platforms,
   no local full-pass claim and earlier timeout location remains unproven.
   [M-05, M-07, M-15, M-18; AC-03, AC-05, AC-13, AC-16]
 
-- [x] Keep Context Gold input-spec inspection independent of plotting/product
+- [~] Keep Context Gold input-spec inspection independent of plotting/product
   reconstruction startup. Reuse existing reader, source-path guards and native
   products; retain the original FIFO10s and full900s/80% gates. Establish a
   reader-only dependency boundary, verify actual regular/FIFO paths and prove
@@ -2760,7 +2495,7 @@ CLI/MCP or a startup SLA. See context-reader-startup-native-20261018.json.
 Original full harness and protected delivery of the reader-only slice remain
 pending; broader Phase8 stays incomplete. Conductor design advice requested.
 
-- [x] Diagnose full-source Context Gold CLI/MCP preflight timing against the
+- [ ] Diagnose full-source Context Gold CLI/MCP preflight timing against the
   retained5-input/615-observation package. Distinguish import, source
   regeneration and rendering cost; preserve no-write semantics, complete
   controls, source facts and the existing probe/test/full limits. Reader-only

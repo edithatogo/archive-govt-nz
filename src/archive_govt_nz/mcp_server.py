@@ -21,17 +21,13 @@ from archive_govt_nz.domains.health_appropriations import (
     canonical_gold_queries as canonical_queries,
 )
 from archive_govt_nz.domains.health_appropriations import (
-    capture_inventory_operations,
-    capture_schedule,
+    fiscal_analytical_operations as fiscal_analytics,
+)
+from archive_govt_nz.domains.health_appropriations import (
     gold_metadata,
-    normalization_schedule,
     operation_context_gold,
     operation_metadata,
     resume_operations,
-    source_layout_operations,
-)
-from archive_govt_nz.domains.health_appropriations import (
-    fiscal_analytical_operations as fiscal_analytics,
 )
 from archive_govt_nz.domains.health_appropriations import (
     native_workbook_inspection as native_inspection,
@@ -116,10 +112,6 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
     canonical_queries.MCP_TOOL,
     budget_comparison.MCP_TOOL,
     native_inspection.MCP_TOOL,
-    source_layout_operations.MCP_TOOL,
-    capture_inventory_operations.MCP_TOOL,
-    capture_schedule.MCP_TOOL,
-    normalization_schedule.MCP_TOOL,
     {
         "name": "health_appropriations_preflight_context_gold",
         "description": (
@@ -561,11 +553,6 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                         "type": "string",
                         "pattern": "^[0-9a-f]{64}$",
                     },
-                    "financial_activity_package": {"type": "string", "minLength": 1},
-                    "financial_activity_manifest_sha256": {
-                        "type": "string",
-                        "pattern": "^[0-9a-f]{64}$",
-                    },
                     "output_dir": {"type": "string", "minLength": 1},
                     "manifest_sha256": {
                         "type": "string",
@@ -584,8 +571,6 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
             "dependentRequired": {
                 "canonical_package": ["canonical_manifest_sha256"],
                 "canonical_manifest_sha256": ["canonical_package"],
-                "financial_activity_package": ["financial_activity_manifest_sha256"],
-                "financial_activity_manifest_sha256": ["financial_activity_package"],
             },
         },
         "outputSchema": _object_schema(
@@ -594,8 +579,6 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                     "enum": [
                         "archive-govt-nz.health-gold-metadata/v3",
                         "archive-govt-nz.health-gold-metadata/v4",
-                        "archive-govt-nz.health-gold-metadata/v5",
-                        "archive-govt-nz.health-gold-metadata/v6",
                     ]
                 },
                 "status": {"const": "verified"},
@@ -603,7 +586,7 @@ _TOOL_DEFINITIONS: tuple[dict[str, Any], ...] = (
                     "type": "string",
                     "pattern": "^[0-9a-f]{64}$",
                 },
-                "packages": {"enum": [2, 3, 4]},
+                "packages": {"enum": [2, 3]},
                 "rights": {"const": "not_evaluated"},
                 "publication": {"const": "not_performed"},
                 "verification_scope": {
@@ -1161,16 +1144,8 @@ def _archive_status(arguments: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def _health_read_only_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:  # noqa: C901, PLR0912 - explicit read-only operation dispatch
-    if name == "health_appropriations_preflight_capture_plan":
-        result = capture_schedule.mcp_preflight(args)
-    elif name == "health_appropriations_preflight_normalization_plan":
-        result = normalization_schedule.mcp_preflight(args)
-    elif name == "health_appropriations_reconcile_capture_inventory":
-        result = capture_inventory_operations.reconcile_capture_inventory(args)
-    elif name == "health_appropriations_reconcile_source_layout":
-        result = source_layout_operations.reconcile_source_layout_operation(args)
-    elif name == "health_appropriations_preflight_context_gold":
+def _health_read_only_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:
+    if name == "health_appropriations_preflight_context_gold":
         result = export_context_gold(
             Path(str(args["silver_root"])),
             Path(str(args["source_root"])),
@@ -1213,15 +1188,6 @@ def _health_read_only_tool(name: str, args: dict[str, Any]) -> dict[str, Any]:  
             else None,
             str(args["canonical_manifest_sha256"])
             if "canonical_manifest_sha256" in args
-            else None,
-        )
-        inputs = gold_metadata.with_financial_activity_input(
-            inputs,
-            Path(str(args["financial_activity_package"]))
-            if "financial_activity_package" in args
-            else None,
-            str(args["financial_activity_manifest_sha256"])
-            if "financial_activity_manifest_sha256" in args
             else None,
         )
         result = gold_metadata.verify_gold_metadata(
@@ -1304,10 +1270,6 @@ def call_tool(name: str, arguments: dict[str, Any] | None = None) -> dict[str, A
         result = resume_operations.mcp_call(name, args)
     elif name in (
         "health_appropriations_inspect_workbook",
-        "health_appropriations_reconcile_source_layout",
-        "health_appropriations_reconcile_capture_inventory",
-        "health_appropriations_preflight_normalization_plan",
-        "health_appropriations_preflight_capture_plan",
         "health_appropriations_preflight_context_gold",
         "health_appropriations_preflight_source",
         "health_appropriations_verify_budget",

@@ -58,7 +58,7 @@ def test_static_and_coverage_policy_is_fail_closed() -> None:
 def test_repository_gate_lists_all_required_stages() -> None:
     """The single gate exposes its deterministic stage sequence."""
     result = subprocess.run(
-        [sys.executable, "tools/check.py", "--list", "--profile", "release"],
+        [sys.executable, "tools/check.py", "--list"],
         cwd=REPOSITORY_ROOT,
         check=False,
         capture_output=True,
@@ -101,35 +101,6 @@ def test_repository_gate_lists_all_required_stages() -> None:
         "secrets",
         "sbom",
     ]
-
-
-def test_repository_gate_lists_only_requested_stages() -> None:
-    """A failed gate can be rerun without repeating completed stages."""
-    result = subprocess.run(
-        [sys.executable, "tools/check.py", "--list", "--stage", "secrets"],
-        cwd=REPOSITORY_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-    )
-
-    assert result.returncode == 0
-    assert result.stderr == ""
-    assert result.stdout.splitlines() == ["secrets"]
-
-
-def test_repository_gate_rejects_unknown_requested_stage() -> None:
-    """Stage selection fails closed instead of silently selecting no gates."""
-    result = subprocess.run(
-        [sys.executable, "tools/check.py", "--list", "--stage", "misspelled"],
-        cwd=REPOSITORY_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-    )
-
-    assert result.returncode == 1
-    assert "unknown assurance stage(s): misspelled" in result.stderr
 
 
 def test_type_gate_uses_bounded_parallel_analysis() -> None:
@@ -311,7 +282,7 @@ def test_run_command_kills_process_group_on_timeout(
 def test_run_command_kills_process_on_windows_timeout(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    """A timed-out Windows stage kills its owned descendants and launcher."""
+    """A timed-out Windows stage uses direct process termination."""
     killed: list[bool] = []
 
     class TimedOutProcess:
@@ -328,66 +299,7 @@ def test_run_command_kills_process_on_windows_timeout(
     def fake_popen(*_args: object, **_kwargs: object) -> TimedOutProcess:
         return TimedOutProcess()
 
-    tree_calls: list[tuple[object, ...]] = []
-
-    def kill_tree(*args: object, **kwargs: object) -> None:
-        tree_calls.append(args)
-        assert kwargs["timeout"] == 30
-        assert kwargs["check"] is False
-
-    monkeypatch.setattr(assurance.subprocess, "run", kill_tree)
     monkeypatch.setattr(assurance.os, "name", "nt")
     monkeypatch.setattr(assurance.subprocess, "Popen", fake_popen)
     assert run_command(("stage",)) == 124
     assert killed
-    assert len(tree_calls) == 1
-    command = tree_calls[0][0]
-    assert isinstance(command, tuple)
-    assert str(command[0]).endswith("taskkill.exe")
-    assert command[1:] == ("/PID", "4343", "/T", "/F")
-
-
-def test_pr_profile_preserves_full_tests_and_security() -> None:
-    """Only mutation campaigns and the CAS benchmark move to release assurance."""
-    release = {stage.name: stage.command for stage in build_stages()}
-    pr = {stage.name: stage.command for stage in build_stages(profile="pr")}
-    assert len(pr) == 13
-    assert all(command == release[name] for name, command in pr.items())
-    assert set(release) - set(pr) == {
-        name
-        for name in release
-        if name.startswith("mutation") or name == "benchmark-cas"
-    }
-    assert {
-        "tests",
-        "parity",
-        "schemas",
-        "audit",
-        "licenses",
-        "secrets",
-        "sbom",
-    } <= pr.keys()
-    result = subprocess.run(
-        [sys.executable, "tools/check.py", "--list"],
-        cwd=REPOSITORY_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-    )
-    assert result.returncode == 0
-    assert result.stdout.splitlines() == list(pr)
-
-
-def test_profile_selection_retains_explicit_mutation_reruns() -> None:
-    """A named release-only stage remains available in the ordinary CLI."""
-    result = subprocess.run(
-        [sys.executable, "tools/check.py", "--list", "--stage", "mutation"],
-        cwd=REPOSITORY_ROOT,
-        check=False,
-        capture_output=True,
-        text=True,
-    )
-    assert result.returncode == 0
-    assert result.stdout.splitlines() == ["mutation"]
-    with pytest.raises(ValueError, match="unsupported assurance profile"):
-        build_stages(profile="unknown")

@@ -1047,19 +1047,11 @@ class LegislationArchiveService:
             updated_conditionals.update(target_conditionals)
             if target_errs:
                 errors.extend(target_errs)
-            media_by_id = {
-                man.manifestation_id or man.target_url: man.media_type
-                for expression in target.expression_targets
-                for man in expression.manifestations
-            }
             for r in target_recs:
                 records.append(r)
-                media = media_by_id.get(r.manifestation_id or "", "")
-                if "html" in media or (
-                    r.manifestation_id and ":html:" in r.manifestation_id
-                ):
+                if r.manifestation_id and ":html:" in r.manifestation_id:
                     html_count += 1
-                elif "xml" in media or not media:
+                else:
                     xml_count += 1
             if not target_has_err:
                 synced_ids.add(target.work_id)

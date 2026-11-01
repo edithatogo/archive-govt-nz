@@ -47,7 +47,6 @@ from archive_govt_nz.domains.health_appropriations import (
     vote_health_supplementary_2013_14,
     vote_health_supplementary_2013_14_financial_activity,
     vote_health_supplementary_2014_15,
-    vote_health_supplementary_2014_15_financial_activity,
     vote_health_supplementary_2015_16,
     vote_health_supplementary_2016_17,
     vote_health_supplementary_2017_18,
@@ -60,24 +59,12 @@ from archive_govt_nz.domains.health_appropriations import (
     vote_health_supplementary_2024_25,
     vote_health_supplementary_2025_26,
 )
-from archive_govt_nz.domains.health_appropriations import (
-    modern_vote_health_overviews as modern,
-)
 from archive_govt_nz.domains.health_appropriations.workbook_common import source_context
 
 MAX_CONTEXT = 2048
 _INVALID_SOURCE_OPERATION = "invalid_source_operation"
 PROFILES = MappingProxyType(
     {
-        **{
-            item.profile: (
-                item.transformation,
-                ("pages", "facts"),
-                "vote_health_overview_facts.parquet",
-                "page_dispositions.parquet",
-            )
-            for item in modern.PROFILES.values()
-        },
         **{
             name: (
                 budget_biff8_adapter.get_profile(name).transformation,
@@ -251,12 +238,6 @@ PROFILES = MappingProxyType(
         ),
         vote_health_supplementary_2013_14_financial_activity.PROFILE: (
             vote_health_supplementary_2013_14_financial_activity.TRANSFORMATION,
-            ("pages", "facts", "lineage"),
-            "vote_health_financial_activity_facts.parquet",
-            "page_dispositions.parquet",
-        ),
-        vote_health_supplementary_2014_15_financial_activity.PROFILE: (
-            vote_health_supplementary_2014_15_financial_activity.TRANSFORMATION,
             ("pages", "facts", "lineage"),
             "vote_health_financial_activity_facts.parquet",
             "page_dispositions.parquet",
@@ -601,10 +582,6 @@ _VOTE_HEALTH_CATEGORY_TOTAL_PROFILES = {
         vote_health_supplementary_2013_14_financial_activity.VINTAGE,
         vote_health_supplementary_2013_14_financial_activity.SOURCE_SHA256,
     ),
-    vote_health_supplementary_2014_15_financial_activity.PROFILE: (
-        vote_health_supplementary_2014_15_financial_activity.VINTAGE,
-        vote_health_supplementary_2014_15_financial_activity.SOURCE_SHA256,
-    ),
     vote_health_supplementary_2014_15.PROFILE: (
         vote_health_supplementary_2014_15.VINTAGE,
         vote_health_supplementary_2014_15.SOURCE_SHA256,
@@ -667,10 +644,6 @@ _VOTE_HEALTH_REVENUE_PROFILES = {
     ),
 }
 _VOTE_HEALTH_OVERVIEW_PROFILES = {
-    **{
-        item.profile: (item.vintage, item.source_sha256)
-        for item in modern.PROFILES.values()
-    },
     vote_health_estimates_summary.PROFILE: (
         vote_health_estimates_summary.VINTAGE,
         vote_health_estimates_summary.SOURCE_SHA256,
@@ -752,7 +725,6 @@ SOURCE_PREFLIGHT_INPUT_SCHEMA = {
     "properties": {
         "profile": {"enum": list(PROFILES)},
         "expected_sha256": _DIGEST,
-        "include_drift": {"type": "boolean"},
         **dict.fromkeys(
             ("source", "output_dir", "source_vintage", "source_locator", "observed_at"),
             _TEXT,
@@ -855,7 +827,6 @@ class SourceRequest:
     source_vintage: str
     source_locator: str
     observed_at: str
-    include_drift: bool = False
 
 
 def _validate(request: SourceRequest, *, dry_run: bool) -> None:
@@ -867,15 +838,11 @@ def _validate(request: SourceRequest, *, dry_run: bool) -> None:
         "source_vintage": request.source_vintage,
         "source_locator": request.source_locator,
         "observed_at": request.observed_at,
-        "include_drift": request.include_drift,
     }
     Draft202012Validator(SOURCE_PREFLIGHT_INPUT_SCHEMA).validate(arguments)
     locator = urlsplit(request.source_locator)
     if (
         not isinstance(dry_run, bool)
-        or (
-            request.include_drift and request.profile not in context_operations.PROFILES
-        )
         or locator.scheme != "https"
         or not locator.hostname
         or locator.username is not None
@@ -995,12 +962,8 @@ def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile disp
             request.source,
             request.output_dir,
             profile=request.profile,
-            expected_sha256=context["expected_sha256"],
-            source_vintage=context["source_vintage"],
-            source_locator=context["source_locator"],
-            observed_at=context["observed_at"],
+            **context,
             dry_run=dry_run,
-            include_drift=request.include_drift,
         )
     if request.profile == vote_health_revenue.ESTIMATES_2002_03_PROFILE:
         return vote_health_revenue.normalize_vote_health_estimates_revenue_2002_03(
@@ -1045,10 +1008,6 @@ def _invoke(  # noqa: C901, PLR0911, PLR0912 - explicit allowlisted profile disp
         )
     if request.profile == vote_health_supplementary_2013_14_financial_activity.PROFILE:
         return vote_health_supplementary_2013_14_financial_activity.normalize(
-            request.source, request.output_dir, **context, dry_run=dry_run
-        )
-    if request.profile == vote_health_supplementary_2014_15_financial_activity.PROFILE:
-        return vote_health_supplementary_2014_15_financial_activity.normalize(
             request.source, request.output_dir, **context, dry_run=dry_run
         )
     if request.profile == vote_health_supplementary_2014_15.PROFILE:
@@ -1211,7 +1170,6 @@ def preflight_source(arguments: dict[str, Any]) -> dict[str, Any]:
             arguments["source_vintage"],
             arguments["source_locator"],
             arguments["observed_at"],
-            arguments.get("include_drift", False),
         )
         return operate_source(request, dry_run=True)
     except Exception:  # noqa: BLE001 - schema errors can contain sensitive input values

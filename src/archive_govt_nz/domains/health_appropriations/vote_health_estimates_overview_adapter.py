@@ -3,9 +3,7 @@
 from __future__ import annotations
 
 import hashlib
-import re
 from dataclasses import dataclass
-from functools import partial
 from io import BytesIO
 from types import MappingProxyType
 from typing import TYPE_CHECKING, Any
@@ -13,9 +11,6 @@ from typing import TYPE_CHECKING, Any
 from pypdf import PdfReader
 from pypdf.errors import PdfReadError
 
-from archive_govt_nz.domains.health_appropriations import (
-    modern_vote_health_overviews as modern,
-)
 from archive_govt_nz.domains.health_appropriations import (
     vote_health_estimates_2016_17_adapter as legacy_overview,
 )
@@ -29,9 +24,6 @@ from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
     LossAccounting,
     preserved_only,
 )
-from archive_govt_nz.domains.health_appropriations.context_dimensions import (
-    context_source_dimensions,
-)
 from archive_govt_nz.domains.health_appropriations.workbook_common import (
     encode_json,
     identity,
@@ -41,47 +33,7 @@ from archive_govt_nz.domains.health_appropriations.workbook_common import (
 if TYPE_CHECKING:
     from collections.abc import Callable
 
-    from archive_govt_nz.domains.health_appropriations.adapter_protocol import (
-        DimensionLink,
-    )
-    from archive_govt_nz.domains.health_appropriations.dimension_mapping import Mapping
-
 _MAX_BYTES = 8 * 1024 * 1024
-
-
-def overview_period_dimensions(
-    records: tuple[dict[str, object], ...], lineage: tuple[FieldLineage, ...]
-) -> tuple[tuple[Mapping, ...], tuple[DimensionLink, ...]]:
-    """Retain period tokens only when the matched source phrase contains them."""
-    phrases = {
-        item.record_id: item for item in lineage if item.field == "source_phrase"
-    }
-    period_lineage = []
-    for row in records:
-        record_id = row["record_id"]
-        if not isinstance(record_id, str):
-            continue
-        source = phrases.get(record_id)
-        period = row.get("reference_period")
-        if not isinstance(period, str) or not period or source is None:
-            continue
-        if source.raw_value is None or not re.search(
-            rf"(?<![0-9/]){re.escape(period)}(?![0-9/])", source.raw_value
-        ):
-            continue
-        period_lineage.append(
-            FieldLineage(
-                record_id=source.record_id,
-                field="reference_period",
-                source_coordinate=source.source_coordinate,
-                raw_value=period,
-                normalized_value=period,
-                rule="overview_source_period_token/v1",
-            )
-        )
-    return context_source_dimensions(
-        records, tuple(period_lineage), family="vote_overview"
-    )
 
 
 @dataclass(frozen=True, slots=True)
@@ -208,16 +160,6 @@ class ReviewedVoteHealthOverviewAdapter:
                     rule=self.profile.transformation,
                 )
             )
-            lineage.append(
-                FieldLineage(
-                    record_id=record_id,
-                    field="source_phrase",
-                    source_coordinate=f"pdf:page={page};overview:{measure}",
-                    raw_value=str(row["source_phrase"]),
-                    normalized_value=str(row["source_phrase"]),
-                    rule="reviewed_overview_source_phrase/v1",
-                )
-            )
         losses = tuple(
             LossAccounting(
                 source_coordinate=f"pdf:page={page}",
@@ -234,58 +176,16 @@ class ReviewedVoteHealthOverviewAdapter:
             )
             for page in range(1, self.profile.page_count + 1)
         )
-        dimensions, dimension_links = overview_period_dimensions(
-            tuple(records), tuple(lineage)
-        )
         return AdapterOutput(
             records=tuple(records),
             losses=losses,
             lineage=tuple(lineage),
             layout=self.profile.profile,
-            dimensions=dimensions,
-            dimension_links=dimension_links,
         )
 
 
 _PROFILES = MappingProxyType(
     {
-        **{
-            item.vintage: ReviewedOverviewProfile(
-                adapter_id=f"nz-treasury-{item.profile.removesuffix('/v1')}",
-                profile=item.profile,
-                transformation=item.transformation,
-                vintage=item.vintage,
-                source_sha256=item.source_sha256,
-                page_count=item.page_count,
-                fact_count=1,
-                parse_pages=partial(modern.parse_pages, profile=item),
-                quality_flags=(
-                    "source_reported_in_whole_millions",
-                    "headline_only_not_component_sum",
-                    "health_reform_scope_not_restated",
-                    "cross_year_comparability_not_qualified",
-                    *(
-                        ("capital_charge_change_not_adjusted",)
-                        if item.period == "2026/27"
-                        else ()
-                    ),
-                ),
-                disposition_reason="one_published_vote_total_headline_only",
-            )
-            for item in modern.PROFILES.values()
-        },
-        vote_health_estimates_summary.VINTAGE: ReviewedOverviewProfile(
-            adapter_id="nz-treasury-vote-health-estimates-2002-03-overview",
-            profile=vote_health_estimates_summary.PROFILE,
-            transformation=vote_health_estimates_summary.TRANSFORMATION,
-            vintage=vote_health_estimates_summary.VINTAGE,
-            source_sha256=vote_health_estimates_summary.SOURCE_SHA256,
-            page_count=vote_health_estimates_summary.PAGE_COUNT,
-            fact_count=7,
-            parse_pages=vote_health_estimates_summary.parse_overview_pages,
-            quality_flags=(),
-            disposition_reason="seven_reviewed_overview_headlines_only",
-        ),
         vote_health_estimates_summary.VINTAGE_2004_05: ReviewedOverviewProfile(
             adapter_id="nz-treasury-vote-health-estimates-2004-05-overview",
             profile=vote_health_estimates_summary.PROFILE_2004_05,
@@ -490,12 +390,6 @@ def reviewed_overview_profile(source_vintage: str) -> ReviewedOverviewProfile:
         message = "unsupported reviewed overview vintage"
         raise ValueError(message)
     return profile
-
-
-def reviewed_overview_profiles() -> tuple[ReviewedOverviewProfile, ...]:
-    """Enumerate exact reviewed controls, including the retained legacy boundary."""
-    vintages = {*_PROFILES, vote_health_estimates_summary.VINTAGE_2016_17}
-    return tuple(reviewed_overview_profile(vintage) for vintage in sorted(vintages))
 
 
 def vote_health_estimates_overview_registration(

@@ -5,7 +5,6 @@ import signal
 import subprocess
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass
-from pathlib import PureWindowsPath
 
 COMMAND_TIMEOUT_SECONDS = 1200
 
@@ -36,12 +35,8 @@ def build_stages(
     pytest_distribution: str = "loadscope",
     pytest_diagnostics: bool = False,
     include_heavy: bool = False,
-    profile: str = "release",
 ) -> tuple[GateStage, ...]:
     """Build the gate sequence with an optional isolated xdist test lane."""
-    if profile not in {"pr", "release"}:
-        msg = f"unsupported assurance profile: {profile}"
-        raise ValueError(msg)
     if pytest_workers is not None and not (
         pytest_workers in {"auto", "logical"} or pytest_workers.isdecimal()
     ):
@@ -213,12 +208,6 @@ def build_stages(
             ("uv", "run", "--locked", "python", "tools/supply_chain.py", "sbom"),
         ),
     )
-    if profile == "pr":
-        stages = tuple(
-            stage
-            for stage in stages
-            if not stage.name.startswith("mutation") and stage.name != "benchmark-cas"
-        )
     if include_heavy:
         stages += (
             GateStage(
@@ -254,28 +243,7 @@ def run_command(command: tuple[str, ...]) -> int:
         if os.name == "posix":
             os.killpg(process.pid, signal.SIGKILL)
         else:
-            # Killing uv alone leaves pytest/workers holding runner output pipes.
-            # Terminate the owned tree before reaping its launcher.
-            try:
-                subprocess.run(
-                    (
-                        str(
-                            PureWindowsPath(os.environ.get("SYSTEMROOT", r"C:\Windows"))
-                            / "System32"
-                            / "taskkill.exe"
-                        ),
-                        "/PID",
-                        str(process.pid),
-                        "/T",
-                        "/F",
-                    ),
-                    check=False,
-                    timeout=30,
-                    stdout=subprocess.DEVNULL,
-                    stderr=subprocess.STDOUT,
-                )
-            finally:
-                process.kill()
+            process.kill()
         process.wait()
         return 124
 

@@ -149,10 +149,9 @@ claim.
 ### M-18 — Test, security and supply-chain assurance
 
 Use red/green/refactor sequencing and deterministic, non-restricted fixtures.
-Critical integrity, rights, versioning, recovery and publication contracts need
-focused negative/property and mutation checks. The agreed production coverage
-floor is 80%; do not add tests solely to pursue a higher percentage.
-Full repository, schema, type,
+Critical integrity, rights, versioning, recovery and publication logic require
+100% line/branch coverage plus property and mutation testing; overall
+production coverage remains at least 80%. Full repository, schema, type,
 security, licence and SBOM gates must pass at checkpoints.
 
 **Acceptance:** AC-16.
@@ -248,8 +247,3 @@ accountable dependency-adoption decision.
 ## BIFF8 implementation boundary for M-05/M-06/M-07/M-10/M-11
 
 The retained legacy Budget originals require a separately versioned stored-value evidence class. The [BIFF8 contract](./biff8-stored-value-contract.md) binds numeric constants to original encoded bytes, source/stream/record/cell identity and exact integer decoding; it does not manufacture OOXML lexical tokens. Formula caches, unsupported/fractional/nonfinite/overflow values and ambiguous or tampered witnesses remain rejected. Complete typed facts/evidence/lineage/dispositions and an explicit witness-aware downstream mapping contract are required. Existing literal-only products and all independent rights/unit/currency/period/edition/join boundaries remain unchanged. This is a bounded source-adapter implementation of existing Must requirements; it does not close the broader track or replace final product/recovery/review gates.
-
-
-## Five headline rights qualification — 2026-10-27
-
-The five modern Vote Health page-2 headline resources may carry resource-specific CC-BY-4.0 assertions only after their exact chapter/collection assessments and retained evidence pins verify. This bounded M-14/AC-14 qualification excludes PDF facsimiles, images, unrelated sources and external publication; it does not qualify all Gold/Platinum resources.

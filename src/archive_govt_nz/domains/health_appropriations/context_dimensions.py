@@ -10,7 +10,6 @@ from archive_govt_nz.domains.health_appropriations.dimension_mapping import (
     Dimension,
     Mapping,
     dimension_key,
-    source_reference,
     validate_mappings,
 )
 
@@ -18,14 +17,13 @@ _VERSION = "context-source-literal/v1"
 _UNKNOWN_FAMILY = "unknown_context_dimension_family"
 
 
-def _source_dimension(  # noqa: PLR0913 - explicit source assertion fields
+def _source_dimension(
     row: dict[str, object],
     *,
     scheme: str,
     kind: str,
     field: str,
     source: FieldLineage | None,
-    literal_source: bool = False,
 ) -> tuple[Mapping, DimensionLink] | None:
     """Build one assertion only when a source cell backs the literal."""
     value = row.get(field)
@@ -33,10 +31,6 @@ def _source_dimension(  # noqa: PLR0913 - explicit source assertion fields
         return None
     record_id = str(row["record_id"])
     value_text = str(value)
-    if literal_source:
-        if source.raw_value is None or not source.raw_value.strip():
-            return None
-        value_text = source.raw_value
     dimension_kind = kind
     if kind == "period":
         dimension_kind = "period"
@@ -53,18 +47,6 @@ def _source_dimension(  # noqa: PLR0913 - explicit source assertion fields
         dimension=dimension,
         vintage=str(row["source_vintage"]),
         version=_VERSION,
-        unresolved_reason=(
-            "The source preserves a period token without approved calendar bounds."
-            if dimension_kind == "period"
-            else (
-                "The source literal has no crosswalk with an approved effective period."
-            )
-        ),
-        source_references=(
-            source_reference(
-                str(row["source_object_sha256"]), source.source_coordinate
-            ),
-        ),
     )
     link = DimensionLink(
         source_record_id=record_id,
@@ -86,47 +68,6 @@ def context_source_dimensions(
 ) -> tuple[tuple[Mapping, ...], tuple[DimensionLink, ...]]:
     """Retain source labels and periods as unresolved assertions with row links."""
     profiles = {
-        "vote_overview": (
-            "treasury_vote_health_overview",
-            None,
-            "reference_period",
-            (),
-        ),
-        "historical": (
-            "treasury_historical_health_gdp",
-            None,
-            "year_label",
-            (("measure", "measure"), ("unit", "unit")),
-        ),
-        "pharmac": (
-            "pharmac_combined_pharmaceutical_budget",
-            None,
-            "period_token",
-            (("unit", "unit"),),
-        ),
-        "budget_revenue": (
-            "budget_revenue_workbook",
-            None,
-            "year",
-            (
-                ("department", "department"),
-                ("vote", "vote"),
-                ("measure", "revenue_type"),
-                ("amount_type", "amount_type"),
-                ("unit", "unit"),
-            ),
-        ),
-        "forecast": (
-            "treasury_forecast_health_summary",
-            None,
-            "year",
-            (
-                ("functional_classification", "functional_classification"),
-                ("measure", "measure"),
-                ("amount_type", "amount_type"),
-                ("unit", "unit"),
-            ),
-        ),
         "cpi": (
             "stats_nz_cpi_series",
             "series_reference",
@@ -170,32 +111,12 @@ def context_source_dimensions(
         for kind, field in source_fields:
             source = lineage_by_record.get(record_id, {}).get(field)
             result = _source_dimension(
-                row,
-                scheme=scheme,
-                kind=kind,
-                field=field,
-                source=source,
-                literal_source=family
-                in {"forecast", "budget_revenue", "pharmac", "historical"},
+                row, scheme=scheme, kind=kind, field=field, source=source
             )
             if result is None:
                 continue
             mapping, link = result
-            previous = assertions.get(link.dimension_key)
-            if previous is not None:
-                mapping = Mapping(
-                    dimension=mapping.dimension,
-                    vintage=mapping.vintage,
-                    version=mapping.version,
-                    unresolved_reason=mapping.unresolved_reason,
-                    source_references=tuple(
-                        sorted(
-                            set(previous.source_references)
-                            | set(mapping.source_references)
-                        )[:32]
-                    ),
-                )
-            assertions[link.dimension_key] = mapping
+            assertions.setdefault(link.dimension_key, mapping)
             occurrences.append(link)
     mappings = validate_mappings(tuple(assertions.values()))
     links = tuple(
