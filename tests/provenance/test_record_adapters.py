@@ -13,6 +13,7 @@ from archive_govt_nz.provenance import (
 
 
 def test_source_manifest_accepts_native_web_uri() -> None:
+    """SourceManifest accepts native web:// URIs."""
     manifest = SourceManifest(
         source_id="test-1",
         source_uri="web://www.treasury.govt.nz",
@@ -23,6 +24,7 @@ def test_source_manifest_accepts_native_web_uri() -> None:
 
 
 def test_source_manifest_rejects_bare_https_uri() -> None:
+    """SourceManifest rejects bare https:// URIs."""
     with pytest.raises(ValueError, match="unknown native URI scheme"):
         SourceManifest(
             source_id="test-1",
@@ -33,6 +35,7 @@ def test_source_manifest_rejects_bare_https_uri() -> None:
 
 
 def test_source_manifest_rejects_unknown_scheme() -> None:
+    """SourceManifest rejects unknown URI schemes."""
     with pytest.raises(ValueError, match="unknown native URI scheme"):
         SourceManifest(
             source_id="test-1",
@@ -43,6 +46,7 @@ def test_source_manifest_rejects_unknown_scheme() -> None:
 
 
 def test_source_manifest_rejects_mismatched_scheme() -> None:
+    """SourceManifest rejects mismatched URI scheme and source_type."""
     with pytest.raises(ValueError, match="does not match source_type"):
         SourceManifest(
             source_id="test-1",
@@ -53,6 +57,7 @@ def test_source_manifest_rejects_mismatched_scheme() -> None:
 
 
 def test_transformation_record_to_receipt_valid() -> None:
+    """transformation_record_to_receipt accepts a valid transformation record."""
     record = {
         "receipt_id": "t1",
         "name": "extract_workbook",
@@ -74,6 +79,7 @@ def test_transformation_record_to_receipt_valid() -> None:
 
 
 def test_transformation_record_to_receipt_rejects_incomplete() -> None:
+    """transformation_record_to_receipt rejects incomplete records."""
     record = {"receipt_id": "t1", "name": "extract"}
     with pytest.raises(ProvenanceError) as raised:
         transformation_record_to_receipt(record)
@@ -81,6 +87,7 @@ def test_transformation_record_to_receipt_rejects_incomplete() -> None:
 
 
 def test_transformation_record_to_receipt_rejects_missing_id() -> None:
+    """transformation_record_to_receipt rejects records with missing receipt_id."""
     record = {
         "receipt_id": "",
         "name": "extract",
@@ -101,6 +108,7 @@ def test_transformation_record_to_receipt_rejects_missing_id() -> None:
 
 
 def test_validation_record_to_receipt_valid() -> None:
+    """validation_record_to_receipt accepts a valid validation record."""
     record = {
         "receipt_id": "v1",
         "validator_name": "cell_parity",
@@ -117,6 +125,7 @@ def test_validation_record_to_receipt_valid() -> None:
 
 
 def test_publication_record_to_receipt_valid() -> None:
+    """publication_record_to_receipt accepts a valid publication record."""
     record = {
         "receipt_id": "p1",
         "target": "zenodo",
@@ -135,6 +144,10 @@ def test_publication_record_to_receipt_valid() -> None:
 
 
 def test_build_receipts_from_records() -> None:
+    """build_receipts_from_records assembles transformation,.
+
+    validation, and publication receipts.
+    """
     transformations = [
         {
             "receipt_id": "t1",
