@@ -109,7 +109,7 @@ def main() -> None:
     if digest(raw) != reference["sha256"]:
         message = "Parent archive digest mismatch"
         raise ValueError(message)
-    parent = json.loads(unpack(raw)["manifest.json"])
+    parent = json.loads(unpack(raw, canonical_directories=True)["manifest.json"])
     titles = json.loads(args.titles.read_bytes())
     records = [
         record

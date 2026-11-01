@@ -14,7 +14,7 @@ below remain evidence of their original scope, not prerequisites for every relea
 
 ## Legal and parliamentary archive continuation
 
-[Ordered remaining tracks, CLI mechanisms and acceptance checks](tracks/legislation_historical_coverage_20260901/remaining-areas.md). Page 1 has 50 of the 95 works complete and 45 awaiting source access. Proceed with committee reports and time-limited court listings while the legislation route is held. The linked plan assigns the remaining source partitions and rights holds.
+[Ordered remaining tracks, CLI mechanisms and acceptance checks](tracks/legislation_historical_coverage_20260901/remaining-areas.md). Historical Acts page 1 is complete. Page 2, cumulative-state sealing and broader legislation acquisition remain open. The linked plan assigns the remaining source partitions and rights holds.
 
 ## Current integration and continuation — 31 October 2026
 
