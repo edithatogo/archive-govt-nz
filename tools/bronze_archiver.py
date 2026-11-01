@@ -254,6 +254,15 @@ def archive_artifact(
     require(
         artifact["digest"] == "sha256:" + digest(raw), "GitHub artifact digest mismatch"
     )
+    with ZipFile(BytesIO(raw)) as archive:
+        if set(archive.namelist()) == {"capture.json", "archive.json", "replay.json"}:
+            legacy = json.loads(archive.read("capture.json"))
+            if legacy.get("status") == "queued":
+                return {
+                    "artifact": artifact["id"],
+                    "outcome": "ineligible",
+                    "reason": "legacy queued receipts contain no captured originals",
+                }
     provenance = {
         "id": artifact["id"],
         "digest": artifact["digest"],
