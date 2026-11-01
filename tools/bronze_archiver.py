@@ -256,7 +256,10 @@ def archive_artifact(
     )
     with ZipFile(BytesIO(raw)) as archive:
         if "capture.json" in archive.namelist() and set(archive.namelist()) <= {
-            "capture.json", "archive.json", "replay.json", "manifest.json"
+            "capture.json",
+            "archive.json",
+            "replay.json",
+            "manifest.json",
         }:
             return {
                 "artifact": artifact["id"],
