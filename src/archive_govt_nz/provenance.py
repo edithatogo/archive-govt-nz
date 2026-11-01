@@ -108,18 +108,35 @@ def _validate_receipts(receipts: dict[str, list[dict[str, Any]]]) -> None:
 
     required_fields = {
         "transformations": (
-            "receipt_id", "name", "version", "implementation_revision",
-            "input_object_ids", "output_object_ids", "parameters",
-            "environment_sbom_id", "started_at", "ended_at",
-            "information_loss", "deterministic"
+            "receipt_id",
+            "name",
+            "version",
+            "implementation_revision",
+            "input_object_ids",
+            "output_object_ids",
+            "parameters",
+            "environment_sbom_id",
+            "started_at",
+            "ended_at",
+            "information_loss",
+            "deterministic",
         ),
         "validations": (
-            "receipt_id", "validator_name", "validator_version",
-            "subject_ids", "checks", "findings", "started_at", "ended_at"
+            "receipt_id",
+            "validator_name",
+            "validator_version",
+            "subject_ids",
+            "checks",
+            "findings",
+            "started_at",
+            "ended_at",
         ),
         "publications": (
-            "receipt_id", "target", "local_version_id", "manifest_sha256",
-            "requested_at"
+            "receipt_id",
+            "target",
+            "local_version_id",
+            "manifest_sha256",
+            "requested_at",
         ),
     }
 
@@ -134,26 +151,49 @@ def _validate_receipts(receipts: dict[str, list[dict[str, Any]]]) -> None:
             if receipt_type in required_fields:
                 missing = [f for f in required_fields[receipt_type] if f not in entry]
                 if missing:
-                    raise ProvenanceError(f"incomplete_{receipt_type.rstrip('s')}_receipt")
+                    raise ProvenanceError(
+                        f"incomplete_{receipt_type.rstrip('s')}_receipt"
+                    )
 
 
 # === Transformation record adapter for manifest interoperability ===
 
 TRANSFORMATION_RECEIPT_FIELDS = (
-    "receipt_id", "name", "version", "implementation_revision",
-    "input_object_ids", "output_object_ids", "parameters",
-    "environment_sbom_id", "started_at", "ended_at",
-    "information_loss", "deterministic"
+    "receipt_id",
+    "name",
+    "version",
+    "implementation_revision",
+    "input_object_ids",
+    "output_object_ids",
+    "parameters",
+    "environment_sbom_id",
+    "started_at",
+    "ended_at",
+    "information_loss",
+    "deterministic",
 )
 
 VALIDATION_RECEIPT_FIELDS = (
-    "receipt_id", "validator_name", "validator_version",
-    "subject_ids", "checks", "findings", "started_at", "ended_at"
+    "receipt_id",
+    "validator_name",
+    "validator_version",
+    "subject_ids",
+    "checks",
+    "findings",
+    "started_at",
+    "ended_at",
 )
 
 PUBLICATION_RECEIPT_FIELDS = (
-    "receipt_id", "target", "local_version_id", "manifest_sha256",
-    "requested_at", "remote_identifier", "remote_revision", "verified_at", "doi"
+    "receipt_id",
+    "target",
+    "local_version_id",
+    "manifest_sha256",
+    "requested_at",
+    "remote_identifier",
+    "remote_revision",
+    "verified_at",
+    "doi",
 )
 
 
@@ -201,9 +241,13 @@ def build_receipts_from_records(
     """
     receipts: dict[str, list[dict[str, Any]]] = {}
     if transformations:
-        receipts["transformations"] = [transformation_record_to_receipt(r) for r in transformations]
+        receipts["transformations"] = [
+            transformation_record_to_receipt(r) for r in transformations
+        ]
     if validations:
         receipts["validations"] = [validation_record_to_receipt(r) for r in validations]
     if publications:
-        receipts["publications"] = [publication_record_to_receipt(r) for r in publications]
+        receipts["publications"] = [
+            publication_record_to_receipt(r) for r in publications
+        ]
     return receipts

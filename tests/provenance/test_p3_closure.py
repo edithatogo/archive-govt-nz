@@ -35,7 +35,11 @@ def test_corrupt_source_object_rejected() -> None:
             objects=[{"object_id": "sha256:a"}],
             versions=[{"version_id": "v1", "observation_id": "o1"}],
             derivatives=[
-                {"derivative_id": "d1", "source_object_id": "sha256:corrupt", "version_id": "v1"},
+                {
+                    "derivative_id": "d1",
+                    "source_object_id": "sha256:corrupt",
+                    "version_id": "v1",
+                },
             ],
         )
     assert raised.value.error_class == "dangling_source_object"
@@ -49,7 +53,11 @@ def test_swapped_source_object_rejected() -> None:
             objects=[{"object_id": "sha256:a"}, {"object_id": "sha256:b"}],
             versions=[{"version_id": "v1", "observation_id": "o1"}],
             derivatives=[
-                {"derivative_id": "d1", "source_object_id": "sha256:nonexistent", "version_id": "v1"},
+                {
+                    "derivative_id": "d1",
+                    "source_object_id": "sha256:nonexistent",
+                    "version_id": "v1",
+                },
             ],
         )
     assert raised.value.error_class == "dangling_source_object"

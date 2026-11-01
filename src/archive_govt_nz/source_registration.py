@@ -8,15 +8,18 @@ preservation and object records. Verifies real CAS/WARC bytes.
 from __future__ import annotations
 
 import hashlib
-import json
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from archive_govt_nz.core.manifests import SourceManifest, SourceStatus, PreservationRecord
-from archive_govt_nz.provenance import ProvenanceError, build_manifest, build_receipts_from_records
-from archive_govt_nz.warc import WarcReceipt, write_response_record
+from archive_govt_nz.core.manifests import (
+    SourceManifest,
+)
+from archive_govt_nz.provenance import (
+    build_manifest,
+)
+from archive_govt_nz.warc import write_response_record
 
 
 @dataclass(frozen=True, slots=True)
@@ -54,7 +57,7 @@ class NativeSourceRegistration:
     object_sha256: str
     warc_record_id: str | None
     warc_sha256: str | None
-    captured_at: str
+    captured_at: str | None
     capture_time_verified: bool
     warc_date_present: bool
     rights_status: str
@@ -139,9 +142,6 @@ def register_source(
         warc_header = warc_bytes.split(b"\r\n\r\n", 1)[0].decode("utf-8")
         warc_date_present = "WARC-Date:" in warc_header
 
-    if captured_at is None:
-        captured_at = datetime.now(UTC).isoformat()
-
     return NativeSourceRegistration(
         source_id=source_id,
         source_uri=source_uri,
@@ -184,22 +184,29 @@ def build_source_manifest(
     """Build a manifest document from a native source registration."""
     objects = [{"object_id": registration.object_id}]
     observations = [{"observation_id": registration.source_id}]
-    versions = [{"version_id": f"{registration.source_id}-v1", "observation_id": registration.source_id}]
+    versions = [
+        {
+            "version_id": f"{registration.source_id}-v1",
+            "observation_id": registration.source_id,
+        }
+    ]
 
     warc_records = []
     if registration.warc_record_id:
-        warc_records.append({
-            "record_id": registration.warc_record_id,
-            "object_id": registration.object_id,
-            "sha256": registration.warc_sha256 or "",
-            "byte_count": 0,
-        })
+        warc_records.append(
+            {
+                "record_id": registration.warc_record_id,
+                "object_id": registration.object_id,
+                "sha256": registration.warc_sha256 or "",
+                "byte_count": 0,
+            }
+        )
 
     manifest = build_manifest(
         archive_id=registration.archive_id,
         observations=observations,
         objects=objects,
         versions=versions,
-        warc_records=warc_records if warc_records else None,
+        warc_records=warc_records or None,
     )
     return manifest.document

@@ -4,16 +4,12 @@ from pathlib import Path
 
 import pytest
 
-from archive_govt_nz.core.manifests import SourceManifest, SourceStatus
-from archive_govt_nz.provenance import ProvenanceError, build_manifest
+from archive_govt_nz.provenance import build_manifest
 from archive_govt_nz.source_registration import (
-    NativeSourceRegistration,
-    RightsGap,
     build_source_manifest,
     record_rights_gap,
     register_source,
 )
-from archive_govt_nz.warc import write_response_record
 
 
 def test_register_source_creates_native_registration(tmp_path: Path) -> None:
@@ -30,7 +26,9 @@ def test_register_source_creates_native_registration(tmp_path: Path) -> None:
         redistribution_authorized=False,
     )
     assert reg.source_id == "test-source-1"
-    import hashlib; assert reg.object_sha256 == hashlib.sha256(body).hexdigest()
+    import hashlib
+
+    assert reg.object_sha256 == hashlib.sha256(body).hexdigest()
     assert reg.native_lineage_qualified is False
     assert reg.metadata_only is True
     assert reg.redistribution_authorized is False
@@ -129,7 +127,8 @@ def test_register_source_preserves_historical_warc_missing_date() -> None:
     )
     assert reg.warc_record_id is None
     assert reg.warc_date_present is False
-    assert reg.captured_at is not None
+    assert reg.captured_at is None
+    assert reg.capture_time_verified is False
 
 
 def test_duplicate_source_alias_rejected() -> None:
@@ -190,7 +189,11 @@ def test_metadata_only_state_preserved() -> None:
     )
     assert reg.metadata_only is True
     assert reg.native_lineage_qualified is False
-    assert reg.scientific_qualification is False if hasattr(reg, "scientific_qualification") else True
+    assert (
+        reg.scientific_qualification is False
+        if hasattr(reg, "scientific_qualification")
+        else True
+    )
     reg_dict = reg.to_dict()
     assert reg_dict["metadata_only"] is True
     assert reg_dict["native_lineage_qualified"] is False
