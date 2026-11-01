@@ -176,3 +176,9 @@ The original report access hold is unchanged, with no new unreviewed source fail
 - [ ] Qualify the guarded native route, recover the exact staged checkpoint after the observed Retry-After deadline, then re-enable serial bounded continuation. Keep native early-deferral versus after-deadline recovery proof explicit.
 
 [Exact429 observation](../../../evidence/parliament-assurance/20261028/hub-write-429-observation.json). HF [rate-limit documentation](https://huggingface.co/docs/hub/rate-limits) distinguishes read retry handling and granular action limits; do not invent fixed commit quotas or bypass anonymous verification. Child794 and parent778 remain open until their separate acceptance is met.
+
+### Committee-report checkpoint, 1 November 2026
+
+The earlier Hub cooldown has cleared. The enabled serial writer restored its checkpoint and published 10 historical reports from page 99. Recent page 7 added no duplicate reports. The verified ledger contains 997 captured reports in 42 batches, one metadata-only record, one reviewed access hold and zero unreviewed failures. Historical page 100 is next. The existing writer retains ownership. The focused cold-restore test passed. Full historical coverage remains open.
+
+[Native receipt](https://github.com/edithatogo/archive-govt-nz/actions/runs/41292319752) · [Published revision](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/commit/44e82a5f85c42a3afaad96fc9b312d86b9103a83) · [Verified checkpoint](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/commit/1f39d17cb5b9504b642074eb471349e7985eff6b)
