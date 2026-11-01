@@ -16,7 +16,7 @@ output_preservation_policy:
 publication_policy:
   huggingface:
     enabled: true
-    dataset_slug: "edithatogo/corpus-social-media-government-nz"
+    dataset_slug: "edithatogo/archive-govt-nz-global"
   zenodo:
     enabled: true
     concept_doi: "10.5281/zenodo.20991132"
