@@ -1,7 +1,5 @@
 """Provenance P2/P3 gap tests - SourceManifest and record adapters."""
 
-
-
 import pytest
 
 from archive_govt_nz.core.manifests import SourceManifest
