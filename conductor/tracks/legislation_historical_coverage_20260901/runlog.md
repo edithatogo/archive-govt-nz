@@ -111,3 +111,36 @@ skips, schema/parity/hygiene/audit/licences/secrets/SBOM passed; actionlint pass
 Native failed receipts and source pages remain retained. No required gate was
 weakened. Next: required hosted checks and protected merge, main capture, exact
 package inspection, single additive HF publication and anonymous fixity readback.
+
+PR839 merged as1c538b3c after all required checks passed. Main capture41152825744
+retained an inventory of100/5104 PCO Acts, five selected works, seven versions and
+21 offered missing files, then stopped with ValueError; no publication occurred.
+Anonymous bounded diagnosis obtained all21 originals with valid format signatures
+and offered HTML titles. Replaying retained bytes in an isolated local state
+reproduced a canonical_uri custody failure: the planner's work-wide representative
+URI pointed later versions back to the first expression. Prior904 records remained
+exact. Same chat/worktree owns `codex/legislation-history-identities-20261031` for
+the bounded correction: use the service's supported per-manifestation canonical
+URI default, and exercise the actual native identity gate across two versions.
+Retain strong harvest accounting alongside failed capture artifacts and expose
+only allowlisted failure codes; private SDK messages remain suppressed. This is
+local diagnosis, not a native capture/publication acceptance claim. No verifier,
+parent, schema, rights or lineage gate is relaxed; publication attempts remain0.
+
+The same retained21 response bodies now pass the existing full canonical
+reconciliation with the URI correction:904 prior records unchanged,925 cumulative
+records; this is local transport-replay evidence, not native acceptance. New
+multi-version regression passes the actual native identity validator on emitted
+manifest rows. Retain controlled source failure classifications/HTTP statuses
+and strong harvest receipts on failed captures, without private error strings,
+so an access/provider failure can be distinguished from a custody failure.
+Focused changed regressions passed; full coherent pre-PR harness follows.
+
+Full candidate harness retained8843 passing tests/14 skips and one collection
+error: the domain lane cannot import the native tools namespace. Move the custody
+regression into the existing tools lane, using the same verifier loaded by the
+publisher. Affected collection/regression19 passed. Run the failed tests stage
+and directly affected/remaining named gates; reuse unchanged lock/Conductor
+results. Open a draft source PR while those gates finish, and mark reviewable
+only after all local gates pass. Hosted required checks and native acceptance
+remain binding; no archive/publication mutation has occurred.
