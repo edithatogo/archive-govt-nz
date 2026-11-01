@@ -25,6 +25,13 @@ class ManifestReceipt:
     sha256: str
 
 
+def _unique_object_ids(objects: list[dict[str, Any]]) -> set[Any]:
+    ids = {item.get("object_id") for item in objects}
+    if len(ids) != len(objects):
+        raise ProvenanceError("duplicate_object_id")
+    return ids
+
+
 def build_manifest(
     *,
     archive_id: str,
@@ -40,15 +47,7 @@ def build_manifest(
     if not archive_id.strip():
         raise ProvenanceError("missing_archive_id")
 
-    # Reject duplicate object IDs
-    seen_object_ids = set()
-    for item in objects:
-        oid = item.get("object_id")
-        if oid in seen_object_ids:
-            raise ProvenanceError("duplicate_object_id")
-        seen_object_ids.add(oid)
-    object_ids = seen_object_ids
-
+    object_ids = _unique_object_ids(objects)
     observation_ids = {item.get("observation_id") for item in observations}
     version_ids = {item.get("version_id") for item in versions}
     if None in object_ids or None in observation_ids or None in version_ids:
@@ -151,9 +150,8 @@ def _validate_receipts(receipts: dict[str, list[dict[str, Any]]]) -> None:
             if receipt_type in required_fields:
                 missing = [f for f in required_fields[receipt_type] if f not in entry]
                 if missing:
-                    raise ProvenanceError(
-                        f"incomplete_{receipt_type.rstrip('s')}_receipt"
-                    )
+                    msg = f"incomplete_{receipt_type.rstrip('s')}_receipt"
+                    raise ProvenanceError(msg)
 
 
 # === Transformation record adapter for manifest interoperability ===

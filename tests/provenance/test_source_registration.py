@@ -1,6 +1,7 @@
 """P2.1/P2.2: Source/capture contract tests and native registration."""
 
-from pathlib import Path
+import hashlib
+lazy from pathlib import Path
 
 import pytest
 
@@ -12,7 +13,7 @@ from archive_govt_nz.source_registration import (
 )
 
 
-def test_register_source_creates_native_registration(tmp_path: Path) -> None:
+def test_register_source_creates_native_registration() -> None:
     """Registering a source creates a native registration record."""
     body = b"test source bytes"
     reg = register_source(
@@ -26,7 +27,6 @@ def test_register_source_creates_native_registration(tmp_path: Path) -> None:
         redistribution_authorized=False,
     )
     assert reg.source_id == "test-source-1"
-    import hashlib
 
     assert reg.object_sha256 == hashlib.sha256(body).hexdigest()
     assert reg.native_lineage_qualified is False
@@ -52,7 +52,10 @@ def test_register_source_with_warc(tmp_path: Path) -> None:
     assert reg.warc_record_id is not None
     assert reg.warc_sha256 is not None
     assert reg.warc_date_present is True
-    assert warc_path.exists()
+    assert (
+        build_source_manifest(reg)["warc_records"][0]["byte_count"]
+        == warc_path.stat().st_size
+    )
 
 
 def test_register_source_rejects_invalid_uri() -> None:
@@ -189,11 +192,6 @@ def test_metadata_only_state_preserved() -> None:
     )
     assert reg.metadata_only is True
     assert reg.native_lineage_qualified is False
-    assert (
-        reg.scientific_qualification is False
-        if hasattr(reg, "scientific_qualification")
-        else True
-    )
     reg_dict = reg.to_dict()
     assert reg_dict["metadata_only"] is True
     assert reg_dict["native_lineage_qualified"] is False

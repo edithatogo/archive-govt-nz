@@ -5,6 +5,8 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from pathlib import Path
 
+import re
+
 import pytest
 
 from archive_govt_nz.provenance import (
@@ -81,7 +83,6 @@ def test_warc_includes_capture_date(tmp_path: Path) -> None:
     warc_bytes = receipt.path.read_bytes()
     header_block = warc_bytes.split(b"\r\n\r\n", 1)[0].decode("utf-8")
     assert "WARC-Date:" in header_block
-    import re
 
     warc_date_match = re.search(r"WARC-Date:\s*(\S+)", header_block)
     assert warc_date_match

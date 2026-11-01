@@ -8,6 +8,8 @@ from dataclasses import asdict, dataclass, field
 from datetime import UTC, datetime
 from typing import Any
 
+from archive_govt_nz.core.identity import SourceType
+
 
 class SourceStatus(enum.StrEnum):
     """Lifecycle status of a registered archival source."""
@@ -19,26 +21,24 @@ class SourceStatus(enum.StrEnum):
 
 
 # Native URI schemes per archive-govt-nz specification
-_NATIVE_URI_SCHEMES = frozenset({"web", "feeds", "ckan", "legislation", "parliament"})
-_URI_SCHEME_PATTERN = re.compile(r"^([a-z][a-z0-9+.-]*):")
+_NATIVE_URI_SCHEMES = frozenset(SourceType)
+_URI_SCHEME_PATTERN = re.compile(r"^([a-z][a-z0-9+.-]*)://.+")
 
 
 def _validate_source_uri(source_uri: str, source_type: str) -> None:
     """Validate that source_uri uses a native scheme (e.g., web://) not bare HTTPS."""
     match = _URI_SCHEME_PATTERN.match(source_uri)
     if not match:
-        raise ValueError(
-            f"source_uri must use a native scheme (e.g., web://): {source_uri}"
-        )
+        msg = f"source_uri must use a native scheme (e.g., web://): {source_uri}"
+        raise ValueError(msg)
     scheme = match.group(1)
     if scheme not in _NATIVE_URI_SCHEMES:
-        raise ValueError(
-            f"unknown native URI scheme '{scheme}' (allowed: {sorted(_NATIVE_URI_SCHEMES)})"
-        )
+        allowed = sorted(_NATIVE_URI_SCHEMES)
+        msg = f"unknown native URI scheme '{scheme}' (allowed: {allowed})"
+        raise ValueError(msg)
     if scheme != source_type:
-        raise ValueError(
-            f"source_uri scheme '{scheme}' does not match source_type '{source_type}'"
-        )
+        msg = f"source_uri scheme '{scheme}' does not match source_type '{source_type}'"
+        raise ValueError(msg)
 
 
 @dataclass(frozen=True, slots=True)

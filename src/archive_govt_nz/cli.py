@@ -26,6 +26,7 @@ from archive_govt_nz.cli_integrity import (
     verify_archive_directory,
     verify_cas,
 )
+from archive_govt_nz.core.manifests import SourceManifest, SourceStatus
 from archive_govt_nz.core.registry import AgencyRegistry
 from archive_govt_nz.domains.health_appropriations import (
     operation_context_gold,
@@ -34,7 +35,6 @@ from archive_govt_nz.domains.health_appropriations import (
 from archive_govt_nz.domains.health_appropriations.budget_operations import (
     verify_budget_package,
 )
-from archive_govt_nz.core.manifests import SourceManifest, SourceStatus
 from archive_govt_nz.domains.health_appropriations.canonical_gold_queries import (
     query_canonical_gold,
 )
@@ -1250,21 +1250,25 @@ def sources(
     return 0 if count > 0 else 1
 
 
-@app.command(name="source register")
+source_app = App(name="source")
+app.command(source_app)
+
+
+@source_app.command(name="register")
 def source_register(
     source_id: str,
     source_uri: str,
     source_type: str,
     agency_slug: str,
+    *,
     title: str = "",
     status: str = "active",
     metadata: str = "{}",
     format: Literal["text", "json"] = "json",
-    registry_path: str = "registry/seeds",
 ) -> int:
     """Register a new archival source with native URI scheme validation.
 
-    The source_uri must use a native scheme (e.g., web://, feeds://, ckan://)
+    The source_uri must use a native scheme (e.g., web://, feed://, ckan://)
     matching the source_type. Bare HTTPS URIs are rejected.
     """
     import json as stdlib_json
@@ -1343,7 +1347,7 @@ def source_register(
             }
         )
     else:
-        print(f"Source registered: {source_id} ({source_uri})")
+        print(f"Source validated: {source_id} ({source_uri})")
     return 0
 
 
