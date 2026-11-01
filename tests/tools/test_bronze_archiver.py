@@ -3,17 +3,20 @@
 from __future__ import annotations
 
 import json
+import runpy
 from io import BytesIO
-from typing import TYPE_CHECKING
+from pathlib import Path
 from zipfile import ZipFile
 
 import pytest
-from tools.bronze_archiver import digest, prepare
 
 from archive_govt_nz.warc import write_response_record
 
-if TYPE_CHECKING:
-    from pathlib import Path
+_module = runpy.run_path(
+    str(Path(__file__).resolve().parents[2] / "tools/bronze_archiver.py")
+)
+digest = _module["digest"]
+prepare = _module["prepare"]
 
 
 def test_mixed_batch_holds_changed_bytes_and_rejects_tampering(tmp_path: Path) -> None:
