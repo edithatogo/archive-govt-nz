@@ -44,6 +44,7 @@ def write_response_record(
     body: bytes,
     record_id: str | None = None,
     request_url: str | None = None,
+    exclusive: bool = False,
 ) -> WarcReceipt:
     """Write one bounded WARC response record with safe URL/header evidence."""
     parsed = urlsplit(url)
@@ -82,7 +83,8 @@ def write_response_record(
         + b"\r\n\r\n"
     )
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_bytes(payload)
+    with path.open("xb" if exclusive else "wb") as output:
+        output.write(payload)
     return WarcReceipt(
         path, identifier, hashlib.sha256(payload).hexdigest(), len(payload)
     )

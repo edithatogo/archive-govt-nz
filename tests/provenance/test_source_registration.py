@@ -209,3 +209,21 @@ def test_unavailable_source_recorded() -> None:
     assert gap.reason == "terminal_status"
     assert gap.redistribution_authorized is False
     assert gap.to_dict()["schema_version"] == "archive-govt-nz.rights-gap/v1"
+
+
+def test_registration_preserves_existing_warc(tmp_path: Path) -> None:
+    """Refuse an occupied destination without changing historical bytes."""
+    path = tmp_path / "historical.warc"
+    path.write_bytes(b"historical capture")
+    with pytest.raises(FileExistsError):
+        register_source(
+            source_id="source",
+            source_uri="web://agency/source",
+            source_type="web",
+            agency_slug="agency",
+            archive_id="archive",
+            object_bytes=b"new",
+            url="https://example.com/source",
+            warc_path=path,
+        )
+    assert path.read_bytes() == b"historical capture"

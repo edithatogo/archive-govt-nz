@@ -7,6 +7,8 @@ import json
 from dataclasses import dataclass
 from typing import Any
 
+from archive_govt_nz.records import validate_archive_record
+
 
 class ProvenanceError(ValueError):
     """Manifest closure or serialization failure."""
@@ -195,11 +197,19 @@ PUBLICATION_RECEIPT_FIELDS = (
 )
 
 
+def _receipt_identity(record: dict[str, Any]) -> dict[str, Any]:
+    if "record_id" not in record:
+        return record
+    validate_archive_record(record)
+    return {**record, "receipt_id": record["record_id"]}
+
+
 def transformation_record_to_receipt(record: dict[str, Any]) -> dict[str, Any]:
     """Convert a strict TransformationRecord to a manifest transformation receipt entry.
 
     Validates the record has all required fields before inclusion in manifest.
     """
+    record = _receipt_identity(record)
     missing = [f for f in TRANSFORMATION_RECEIPT_FIELDS if f not in record]
     if missing:
         raise ProvenanceError("incomplete_transformation_receipt")
@@ -210,6 +220,7 @@ def transformation_record_to_receipt(record: dict[str, Any]) -> dict[str, Any]:
 
 def validation_record_to_receipt(record: dict[str, Any]) -> dict[str, Any]:
     """Convert a strict ValidationRecord to a manifest validation receipt entry."""
+    record = _receipt_identity(record)
     missing = [f for f in VALIDATION_RECEIPT_FIELDS if f not in record]
     if missing:
         raise ProvenanceError("incomplete_validation_receipt")
@@ -220,6 +231,7 @@ def validation_record_to_receipt(record: dict[str, Any]) -> dict[str, Any]:
 
 def publication_record_to_receipt(record: dict[str, Any]) -> dict[str, Any]:
     """Convert a strict PublicationRecord to a manifest publication receipt entry."""
+    record = _receipt_identity(record)
     missing = [f for f in PUBLICATION_RECEIPT_FIELDS if f not in record and f != "doi"]
     if missing:
         raise ProvenanceError("incomplete_publication_receipt")

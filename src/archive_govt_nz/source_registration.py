@@ -160,6 +160,7 @@ def register_source(
             status_code=fields.get("status_code", 200),
             headers=fields.get("headers") or {},
             body=object_bytes,
+            exclusive=True,
         )
         warc_record_id = warc_receipt.record_id
         warc_sha256 = warc_receipt.sha256
