@@ -1,6 +1,6 @@
 """Provenance P2/P3 gap tests for native archival lineage."""
 
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from pathlib import Path
@@ -10,13 +10,8 @@ import pytest
 from archive_govt_nz.provenance import (
     ProvenanceError,
     build_manifest,
-    build_receipts_from_records,
-    transformation_record_to_receipt,
-    validation_record_to_receipt,
-    publication_record_to_receipt,
 )
 from archive_govt_nz.warc import write_response_record
-from archive_govt_nz.core.manifests import SourceManifest, SourceStatus
 
 
 def test_manifest_rejects_duplicate_object_ids() -> None:

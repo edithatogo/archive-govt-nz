@@ -1,20 +1,17 @@
 """Provenance P2/P3 gap tests - SourceManifest and record adapters."""
 
-from typing import TYPE_CHECKING, Any
 
-if TYPE_CHECKING:
-    from pathlib import Path
 
 import pytest
 
+from archive_govt_nz.core.manifests import SourceManifest
 from archive_govt_nz.provenance import (
     ProvenanceError,
     build_receipts_from_records,
+    publication_record_to_receipt,
     transformation_record_to_receipt,
     validation_record_to_receipt,
-    publication_record_to_receipt,
 )
-from archive_govt_nz.core.manifests import SourceManifest, SourceStatus
 
 
 def test_source_manifest_accepts_native_web_uri() -> None:

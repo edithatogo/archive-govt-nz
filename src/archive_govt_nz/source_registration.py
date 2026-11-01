@@ -8,23 +8,18 @@ preservation and object records. Verifies real CAS/WARC bytes.
 from __future__ import annotations
 
 import hashlib
-import json
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
 from archive_govt_nz.core.manifests import (
     SourceManifest,
-    SourceStatus,
-    PreservationRecord,
 )
 from archive_govt_nz.provenance import (
-    ProvenanceError,
     build_manifest,
-    build_receipts_from_records,
 )
-from archive_govt_nz.warc import WarcReceipt, write_response_record
+from archive_govt_nz.warc import write_response_record
 
 
 @dataclass(frozen=True, slots=True)
@@ -215,6 +210,6 @@ def build_source_manifest(
         observations=observations,
         objects=objects,
         versions=versions,
-        warc_records=warc_records if warc_records else None,
+        warc_records=warc_records or None,
     )
     return manifest.document

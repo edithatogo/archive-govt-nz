@@ -1,22 +1,20 @@
 """P2.1/P2.2: Source/capture contract tests and native registration."""
 
-from pathlib import Path
+import hashlib
+lazy from pathlib import Path
 
 import pytest
 
-from archive_govt_nz.core.manifests import SourceManifest, SourceStatus
-from archive_govt_nz.provenance import ProvenanceError, build_manifest
+from archive_govt_nz.provenance import build_manifest
 from archive_govt_nz.source_registration import (
-    NativeSourceRegistration,
-    RightsGap,
     build_source_manifest,
     record_rights_gap,
     register_source,
 )
-from archive_govt_nz.warc import write_response_record
 
 
-def test_register_source_creates_native_registration(tmp_path: Path) -> None:
+@pytest.mark.usefixtures("tmp_path")
+def test_register_source_creates_native_registration() -> None:
     """Registering a source creates a native registration record."""
     body = b"test source bytes"
     reg = register_source(
@@ -30,7 +28,6 @@ def test_register_source_creates_native_registration(tmp_path: Path) -> None:
         redistribution_authorized=False,
     )
     assert reg.source_id == "test-source-1"
-    import hashlib
 
     assert reg.object_sha256 == hashlib.sha256(body).hexdigest()
     assert reg.native_lineage_qualified is False
