@@ -17,6 +17,7 @@ def _base() -> dict:
 
 
 def test_cycle_in_version_observation_rejected() -> None:
+    """build_manifest rejects cycles in version observations."""
     with pytest.raises(ProvenanceError) as raised:
         build_manifest(
             archive_id="test",
@@ -28,6 +29,7 @@ def test_cycle_in_version_observation_rejected() -> None:
 
 
 def test_corrupt_source_object_rejected() -> None:
+    """build_manifest rejects corrupt source objects."""
     with pytest.raises(ProvenanceError) as raised:
         build_manifest(
             archive_id="test",
@@ -46,6 +48,7 @@ def test_corrupt_source_object_rejected() -> None:
 
 
 def test_swapped_source_object_rejected() -> None:
+    """build_manifest rejects swapped source objects."""
     with pytest.raises(ProvenanceError) as raised:
         build_manifest(
             archive_id="test",
@@ -64,6 +67,7 @@ def test_swapped_source_object_rejected() -> None:
 
 
 def test_multi_parent_derivation() -> None:
+    """build_manifest accepts multi-parent derivations."""
     manifest = build_manifest(
         archive_id="test",
         observations=[{"observation_id": "o1"}],
@@ -83,6 +87,7 @@ def test_multi_parent_derivation() -> None:
 
 
 def test_immutable_completed_records() -> None:
+    """build_manifest enforces immutability of completed records."""
     kwargs = _base()
     first = build_manifest(**kwargs)
     second = build_manifest(**kwargs)
@@ -91,6 +96,7 @@ def test_immutable_completed_records() -> None:
 
 
 def test_distinct_attempt_ids() -> None:
+    """build_manifest requires distinct attempt IDs."""
     kwargs1 = _base()
     kwargs2 = copy.deepcopy(kwargs1)
     kwargs2["archive_id"] = "test-archive-2"
@@ -100,6 +106,7 @@ def test_distinct_attempt_ids() -> None:
 
 
 def test_premature_qualified_status_prevented() -> None:
+    """build_manifest prevents premature qualified status."""
     manifest = build_manifest(
         archive_id="test",
         observations=[{"observation_id": "o1"}],
@@ -111,6 +118,7 @@ def test_premature_qualified_status_prevented() -> None:
 
 
 def test_dangling_warc_object_rejected() -> None:
+    """build_manifest rejects dangling WARC objects."""
     with pytest.raises(ProvenanceError) as raised:
         build_manifest(
             archive_id="test",
@@ -123,6 +131,7 @@ def test_dangling_warc_object_rejected() -> None:
 
 
 def test_unknown_receipt_type_rejected() -> None:
+    """build_manifest rejects unknown receipt types."""
     with pytest.raises(ProvenanceError) as raised:
         build_manifest(
             archive_id="test",
@@ -135,6 +144,7 @@ def test_unknown_receipt_type_rejected() -> None:
 
 
 def test_validation_receipt_missing_fields_rejected() -> None:
+    """build_manifest rejects validation receipts with missing required fields."""
     with pytest.raises(ProvenanceError) as raised:
         build_manifest(
             archive_id="test",
@@ -147,6 +157,7 @@ def test_validation_receipt_missing_fields_rejected() -> None:
 
 
 def test_publication_receipt_missing_fields_rejected() -> None:
+    """build_manifest rejects publication receipts with missing required fields."""
     with pytest.raises(ProvenanceError) as raised:
         build_manifest(
             archive_id="test",
