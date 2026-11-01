@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import uuid
 from dataclasses import dataclass
+from datetime import UTC, datetime
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
@@ -27,6 +28,11 @@ class WarcReceipt:
     record_id: str
     sha256: str
     byte_count: int
+
+
+def _warc_date() -> str:
+    """Return current time in WARC-Date format (ISO 8601, Zulu)."""
+    return datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
 
 
 def write_response_record(
@@ -61,6 +67,7 @@ def write_response_record(
         "WARC/1.1",
         f"WARC-Record-ID: <{identifier}>",
         f"WARC-Target-URI: {safe_url}",
+        f"WARC-Date: {_warc_date()}",
         f"WARC-Request-URL-SHA256: {request_digest}",
         f"WARC-Final-URL-SHA256: {hashlib.sha256(url.encode()).hexdigest()}",
         "WARC-Type: response",

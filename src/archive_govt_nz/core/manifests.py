@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import enum
+import re
 from dataclasses import asdict, dataclass, field
 from datetime import UTC, datetime
 from typing import Any
@@ -15,6 +16,23 @@ class SourceStatus(enum.StrEnum):
     ARCHIVED = "archived"
     QUARANTINED = "quarantined"
     TOMBSTONED = "tombstoned"
+
+
+# Native URI schemes per archive-govt-nz specification
+_NATIVE_URI_SCHEMES = frozenset({"web", "feeds", "ckan", "legislation", "parliament"})
+_URI_SCHEME_PATTERN = re.compile(r"^([a-z][a-z0-9+.-]*):")
+
+
+def _validate_source_uri(source_uri: str, source_type: str) -> None:
+    """Validate that source_uri uses a native scheme (e.g., web://) not bare HTTPS."""
+    match = _URI_SCHEME_PATTERN.match(source_uri)
+    if not match:
+        raise ValueError(f"source_uri must use a native scheme (e.g., web://): {source_uri}")
+    scheme = match.group(1)
+    if scheme not in _NATIVE_URI_SCHEMES:
+        raise ValueError(f"unknown native URI scheme '{scheme}' (allowed: {sorted(_NATIVE_URI_SCHEMES)})")
+    if scheme != source_type:
+        raise ValueError(f"source_uri scheme '{scheme}' does not match source_type '{source_type}'")
 
 
 @dataclass(frozen=True, slots=True)
@@ -31,6 +49,10 @@ class SourceManifest:
     withdrawal_reason: str | None = None
     metadata: dict[str, Any] = field(default_factory=dict)
     schema_version: str = "archive-govt-nz.source-manifest/v1"
+
+    def __post_init__(self) -> None:
+        """Validate native URI scheme matches source_type."""
+        _validate_source_uri(self.source_uri, self.source_type)
 
     def to_dict(self) -> dict[str, Any]:
         """Convert manifest to JSON-serializable dictionary."""
