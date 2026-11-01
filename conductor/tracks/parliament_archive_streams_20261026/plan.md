@@ -195,3 +195,9 @@ Chat 01a18d6e-759f-76c0-85cd-03413c023c8e owns the dated backfill in standard Gi
 - [ ] Resume the 445 enumerated candidate captures still held for replay transport or matching-byte evidence. The other metadata-only entries need separate source eligibility and retrieval work. Full page enumeration does not establish a complete body mirror.
 
 [Verified checkpoint and exact retry queue](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/blob/7a6cbcb3e7444f87d17073f11fc9415237d8f65e/wayback/parliament/checkpoints/8b39444d0035957e24125904e2a8643bbe4e303c8aea5db7e3dc46fd6c6211b1.json). Includes all 22 source page hashes and all 15 cumulative batch revisions.
+
+### Wayback PDF retry queue closed, 1 November 2026
+
+The prior checkpoint listed 445 rows for 439 distinct URL/timestamp identities. Six repeated rows were skipped. Nine additive batches preserved 436 distinct captures in 311 new digest-matched PDFs. Each batch passed one anonymous revision-pinned verification. The remaining three identities were indexed as HTML and returned Radware verification pages at calendar-looking URLs. They are excluded from the PDF lane. Cumulative custody covers 616 capture identities in 445 PDFs. Other inventory-only content remains outside this retry run.
+
+[Verified successor checkpoint](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/blob/0901e26ba5827e9f8714d8c4218bf5c18e869516/wayback/parliament/checkpoints/8c32ec69026c6bad7321637f90f08f44531a14aec463b9cd38aca5276d43378c.json)
