@@ -1055,34 +1055,48 @@ def source_register(
     registry_path: str = "registry/seeds",
 ) -> int:
     """Register a new archival source with native URI scheme validation.
-    
+
     The source_uri must use a native scheme (e.g., web://, feeds://, ckan://)
     matching the source_type. Bare HTTPS URIs are rejected.
     """
     import json as stdlib_json
-    
+
     # Parse metadata JSON
     try:
         metadata_dict = stdlib_json.loads(metadata)
     except stdlib_json.JSONDecodeError as exc:
         err = f"Invalid metadata JSON: {exc}"
         if format == "json":
-            _emit_json({"command": "source register", "error": err, "schema_version": "archive-govt-nz.cli/v1", "status": "invalid_metadata"})
+            _emit_json(
+                {
+                    "command": "source register",
+                    "error": err,
+                    "schema_version": "archive-govt-nz.cli/v1",
+                    "status": "invalid_metadata",
+                }
+            )
         else:
             print(f"Error: {err}")
         return 2
-    
+
     # Validate status
     try:
         source_status = SourceStatus(status.lower())
     except ValueError:
         err = f"Invalid status: {status} (must be one of: {[s.value for s in SourceStatus]})"
         if format == "json":
-            _emit_json({"command": "source register", "error": err, "schema_version": "archive-govt-nz.cli/v1", "status": "invalid_status"})
+            _emit_json(
+                {
+                    "command": "source register",
+                    "error": err,
+                    "schema_version": "archive-govt-nz.cli/v1",
+                    "status": "invalid_status",
+                }
+            )
         else:
             print(f"Error: {err}")
         return 2
-    
+
     # Create and validate SourceManifest (validates native URI scheme)
     try:
         manifest = SourceManifest(
@@ -1097,20 +1111,29 @@ def source_register(
     except ValueError as exc:
         err = str(exc)
         if format == "json":
-            _emit_json({"command": "source register", "error": err, "schema_version": "archive-govt-nz.cli/v1", "status": "validation_failed"})
+            _emit_json(
+                {
+                    "command": "source register",
+                    "error": err,
+                    "schema_version": "archive-govt-nz.cli/v1",
+                    "status": "validation_failed",
+                }
+            )
         else:
             print(f"Error: {err}")
         return 2
-    
+
     # For now, emit the manifest as validation receipt
     # In a full implementation, this would persist to the registry
     if format == "json":
-        _emit_json({
-            "command": "source register",
-            "schema_version": "archive-govt-nz.cli/v1",
-            "status": "validated",
-            "manifest": manifest.to_dict(),
-        })
+        _emit_json(
+            {
+                "command": "source register",
+                "schema_version": "archive-govt-nz.cli/v1",
+                "status": "validated",
+                "manifest": manifest.to_dict(),
+            }
+        )
     else:
         print(f"Source registered: {source_id} ({source_uri})")
     return 0

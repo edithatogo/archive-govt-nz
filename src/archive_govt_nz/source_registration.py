@@ -14,8 +14,16 @@ from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any
 
-from archive_govt_nz.core.manifests import SourceManifest, SourceStatus, PreservationRecord
-from archive_govt_nz.provenance import ProvenanceError, build_manifest, build_receipts_from_records
+from archive_govt_nz.core.manifests import (
+    SourceManifest,
+    SourceStatus,
+    PreservationRecord,
+)
+from archive_govt_nz.provenance import (
+    ProvenanceError,
+    build_manifest,
+    build_receipts_from_records,
+)
 from archive_govt_nz.warc import WarcReceipt, write_response_record
 
 
@@ -184,16 +192,23 @@ def build_source_manifest(
     """Build a manifest document from a native source registration."""
     objects = [{"object_id": registration.object_id}]
     observations = [{"observation_id": registration.source_id}]
-    versions = [{"version_id": f"{registration.source_id}-v1", "observation_id": registration.source_id}]
+    versions = [
+        {
+            "version_id": f"{registration.source_id}-v1",
+            "observation_id": registration.source_id,
+        }
+    ]
 
     warc_records = []
     if registration.warc_record_id:
-        warc_records.append({
-            "record_id": registration.warc_record_id,
-            "object_id": registration.object_id,
-            "sha256": registration.warc_sha256 or "",
-            "byte_count": 0,
-        })
+        warc_records.append(
+            {
+                "record_id": registration.warc_record_id,
+                "object_id": registration.object_id,
+                "sha256": registration.warc_sha256 or "",
+                "byte_count": 0,
+            }
+        )
 
     manifest = build_manifest(
         archive_id=registration.archive_id,

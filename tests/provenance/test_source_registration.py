@@ -30,7 +30,9 @@ def test_register_source_creates_native_registration(tmp_path: Path) -> None:
         redistribution_authorized=False,
     )
     assert reg.source_id == "test-source-1"
-    import hashlib; assert reg.object_sha256 == hashlib.sha256(body).hexdigest()
+    import hashlib
+
+    assert reg.object_sha256 == hashlib.sha256(body).hexdigest()
     assert reg.native_lineage_qualified is False
     assert reg.metadata_only is True
     assert reg.redistribution_authorized is False
@@ -190,7 +192,11 @@ def test_metadata_only_state_preserved() -> None:
     )
     assert reg.metadata_only is True
     assert reg.native_lineage_qualified is False
-    assert reg.scientific_qualification is False if hasattr(reg, "scientific_qualification") else True
+    assert (
+        reg.scientific_qualification is False
+        if hasattr(reg, "scientific_qualification")
+        else True
+    )
     reg_dict = reg.to_dict()
     assert reg_dict["metadata_only"] is True
     assert reg_dict["native_lineage_qualified"] is False

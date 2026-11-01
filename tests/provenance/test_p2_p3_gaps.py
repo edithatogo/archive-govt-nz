@@ -87,6 +87,7 @@ def test_warc_includes_capture_date(tmp_path: Path) -> None:
     header_block = warc_bytes.split(b"\r\n\r\n", 1)[0].decode("utf-8")
     assert "WARC-Date:" in header_block
     import re
+
     warc_date_match = re.search(r"WARC-Date:\s*(\S+)", header_block)
     assert warc_date_match
     date_str = warc_date_match.group(1)

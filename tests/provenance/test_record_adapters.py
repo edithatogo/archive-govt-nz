@@ -56,6 +56,7 @@ def test_source_manifest_rejects_mismatched_scheme() -> None:
             agency_slug="treasury",
         )
 
+
 def test_transformation_record_to_receipt_valid() -> None:
     record = {
         "receipt_id": "t1",
@@ -103,6 +104,7 @@ def test_transformation_record_to_receipt_rejects_missing_id() -> None:
         transformation_record_to_receipt(record)
     assert raised.value.error_class == "missing_transformation_receipt_id"
 
+
 def test_validation_record_to_receipt_valid() -> None:
     record = {
         "receipt_id": "v1",
@@ -138,31 +140,35 @@ def test_publication_record_to_receipt_valid() -> None:
 
 
 def test_build_receipts_from_records() -> None:
-    transformations = [{
-        "receipt_id": "t1",
-        "name": "extract",
-        "version": "1",
-        "implementation_revision": "abc123",
-        "input_object_ids": ["sha256:a"],
-        "output_object_ids": ["sha256:b"],
-        "parameters": {},
-        "environment_sbom_id": "sbom-1",
-        "started_at": "2026-10-29T00:00:00Z",
-        "ended_at": "2026-10-29T00:01:00Z",
-        "information_loss": "none",
-        "deterministic": True,
-    }]
-    validations = [{
-        "receipt_id": "v1",
-        "validator_name": "test",
-        "validator_version": "1",
-        "subject_ids": ["sha256:b"],
-        "checks": ["check"],
-        "findings": [],
-        "started_at": "2026-10-29T00:00:00Z",
-        "ended_at": "2026-10-29T00:01:00Z",
-    }]
-    
+    transformations = [
+        {
+            "receipt_id": "t1",
+            "name": "extract",
+            "version": "1",
+            "implementation_revision": "abc123",
+            "input_object_ids": ["sha256:a"],
+            "output_object_ids": ["sha256:b"],
+            "parameters": {},
+            "environment_sbom_id": "sbom-1",
+            "started_at": "2026-10-29T00:00:00Z",
+            "ended_at": "2026-10-29T00:01:00Z",
+            "information_loss": "none",
+            "deterministic": True,
+        }
+    ]
+    validations = [
+        {
+            "receipt_id": "v1",
+            "validator_name": "test",
+            "validator_version": "1",
+            "subject_ids": ["sha256:b"],
+            "checks": ["check"],
+            "findings": [],
+            "started_at": "2026-10-29T00:00:00Z",
+            "ended_at": "2026-10-29T00:01:00Z",
+        }
+    ]
+
     receipts = build_receipts_from_records(
         transformations=transformations,
         validations=validations,
