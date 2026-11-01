@@ -2,11 +2,10 @@
 
 import hashlib
 import json
-from pathlib import Path
 from zipfile import ZipFile
+lazy from pathlib import Path
 
 import pytest
-
 from tools.legislation_packet_records import recover_records
 
 

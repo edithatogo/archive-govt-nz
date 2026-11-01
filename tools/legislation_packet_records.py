@@ -90,7 +90,6 @@ def recover_records(
 
 def main() -> None:
     """Stage a cumulative manifest; the hosted workflow owns checkpoint sealing."""
-
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--parent", type=Path, required=True)
     parser.add_argument("--parent-reference", type=Path, required=True)
