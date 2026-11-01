@@ -9,3 +9,12 @@
 [Verified packet](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/blob/f5c5ca39919d4cba4b057ac2c265f625a549f88f/judgments/pilots/20261101/packet.zip). SHA-256 `68a53f2ba37dd11e75b2b41d7bea8d4837375679d6c51253958587294682faf2`.
 
 Chat 01a18d6e-759f-76c0-85cd-03413c023c8e, standard worktree /Volumes/PortableSSD/CodexWorkData/legal-coverage-20261031/recovery-checkout-20261101, branch codex/time-sensitive-judgments-20261101. Native scope was the single additive judgments pilot path. The notices archive and Parliament writer retain their existing ownership.
+
+## Wider case law, 2025
+
+- [x] Enumerate all ten court categories returned by the Ministry taxonomy. Page counts and unique document paths agreed for each court, totalling 3,972 distinct published links. Family and Youth Court entries are represented only by opaque document-path hashes in the public inventory.
+- [x] Publish four reviewed original PDFs, one each from the Court of Appeal, High Court, Employment Court and District Court. Their neutral citations, dates, source URLs, byte counts and digests are in the manifest. One anonymous pinned readback verified the ZIP, manifest and every original. The focused court-label and pagination regression passed.
+- [x] Run the companion medico-legal repository’s source-audit and source-rights commands with its own Python 3.15.1. Its ledger classified all 17 sources as fetch scaffolds with parser stubs and source-specific citation/derived-metadata caveats. This supports separate source qualification before raw publication.
+- [ ] Review outstanding 2025 bodies, including orders with annexes, then extend court/year partitions and qualify replacement and withdrawal handling. The 2025 inventory accounts only for JDO’s published selection.
+
+[Verified 2025 packet](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/blob/45d04e439fa2e752c40c402c95feee900da4bbf2/judgments/2025/court-year-inventory-20261101/packet.zip). SHA-256 `4d91908daeb9c376c4a10752d89d806929ae5389c51815035e4cdab26562ca91`. This chat retained the CLI worktree and wrote only the new dated Hub packet. The companion source and its publication scope remain with their existing writer.

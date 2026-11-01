@@ -425,4 +425,4 @@ implementation has occurred under these tracks.
   *Link: [tracks/parliament_archive_streams_20261026/index.md](./tracks/parliament_archive_streams_20261026/index.md)*
   Parent issue: https://github.com/edithatogo/archive-govt-nz/issues/778. Approved plan; implementation and operational acceptance pending.
 
-- [~] [Time-sensitive judgments and JDO pilot](tracks/time_sensitive_judgments_20261101/plan.md)
+- [~] [Time-sensitive judgments and wider case law](tracks/time_sensitive_judgments_20261101/index.md)
