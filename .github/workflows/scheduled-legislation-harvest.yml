@@ -80,6 +80,7 @@ jobs:
           Path("build/legislation-discovery/work-ids.txt").write_text(ids)
           config = json.loads(Path("tests/fixtures/source-set-discovery-v2.json").read_text())
           config["execution"]["mode"] = "dispatch_only"
+          config["execution"]["lane_type"] = "exact_inventory"
           config["schedule"]["active"] = False
           config["scope"] = {
               "type": "exact_inventory",
@@ -138,4 +139,15 @@ jobs:
             build/legislation-discovery/
             build/legislation-state/
           if-no-files-found: error
+          retention-days: 90
+
+      - name: Preserve bounded discovery and accounting on failure
+        if: failure()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: legislation-discovery-failure-${{ github.run_id }}
+          path: |
+            build/legislation-discovery/candidates.json
+            build/legislation-state/receipts/harvest.json
+          if-no-files-found: warn
           retention-days: 90
