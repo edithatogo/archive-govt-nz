@@ -1,0 +1,242 @@
+"""Native source registration through CAS/WARC and manifest records.
+
+P2.2: Implement the producer-owned native registration and capture gaps.
+Registers existing verified originals through native source, observation/version,
+preservation and object records. Verifies real CAS/WARC bytes.
+"""
+
+from __future__ import annotations
+
+import hashlib
+from dataclasses import dataclass
+from datetime import UTC, datetime
+from typing import Any, TypedDict, Unpack
+lazy from pathlib import Path
+
+from archive_govt_nz.core.manifests import (
+    SourceManifest,
+)
+from archive_govt_nz.provenance import (
+    build_manifest,
+)
+from archive_govt_nz.warc import write_response_record
+
+
+@dataclass(frozen=True, slots=True)
+class RightsGap:
+    """Recorded rights gap for a source that cannot be acquired."""
+
+    source_id: str
+    reason: str
+    observed_at: str
+    rights_status: str
+    redistribution_authorized: bool
+    schema_version: str = "archive-govt-nz.rights-gap/v1"
+
+    def to_dict(self) -> dict[str, Any]:
+        """Serialize the record with its schema version."""
+        return {
+            "schema_version": self.schema_version,
+            "source_id": self.source_id,
+            "reason": self.reason,
+            "observed_at": self.observed_at,
+            "rights_status": self.rights_status,
+            "redistribution_authorized": self.redistribution_authorized,
+        }
+
+
+@dataclass(frozen=True, slots=True)
+class NativeSourceRegistration:
+    """Native registration record for a verified original source."""
+
+    source_id: str
+    source_uri: str
+    source_type: str
+    agency_slug: str
+    archive_id: str
+    object_id: str
+    object_sha256: str
+    warc_record_id: str | None
+    warc_sha256: str | None
+    warc_byte_count: int
+    captured_at: str | None
+    capture_time_verified: bool
+    warc_date_present: bool
+    rights_status: str
+    redistribution_authorized: bool
+    metadata_only: bool
+    native_lineage_qualified: bool
+    schema_version: str = "archive-govt-nz.source-registration/v1"
+
+    def to_dict(self) -> dict[str, Any]:
+        """Serialize the record with its schema version."""
+        return {
+            "schema_version": self.schema_version,
+            "source_id": self.source_id,
+            "source_uri": self.source_uri,
+            "source_type": self.source_type,
+            "agency_slug": self.agency_slug,
+            "archive_id": self.archive_id,
+            "object_id": self.object_id,
+            "object_sha256": self.object_sha256,
+            "warc_record_id": self.warc_record_id,
+            "warc_sha256": self.warc_sha256,
+            "warc_byte_count": self.warc_byte_count,
+            "captured_at": self.captured_at,
+            "capture_time_verified": self.capture_time_verified,
+            "warc_date_present": self.warc_date_present,
+            "rights_status": self.rights_status,
+            "redistribution_authorized": self.redistribution_authorized,
+            "metadata_only": self.metadata_only,
+            "native_lineage_qualified": self.native_lineage_qualified,
+        }
+
+
+class RegistrationOptions(TypedDict, total=False):
+    """Optional capture evidence and rights declarations for registration."""
+
+    object_id: str | None
+    warc_path: Path | None
+    url: str | None
+    status_code: int
+    headers: dict[str, str] | None
+    body: bytes | None
+    rights_status: str
+    redistribution_authorized: bool
+    captured_at: str | None
+
+
+class SourceIdentity(TypedDict):
+    """Native source identity and containing archive."""
+
+    source_id: str
+    source_uri: str
+    source_type: str
+    agency_slug: str
+    archive_id: str
+
+
+class RegistrationFields(SourceIdentity, RegistrationOptions):
+    """Required identity and optional registration metadata."""
+
+
+def register_source(
+    *, object_bytes: bytes, **fields: Unpack[RegistrationFields]
+) -> NativeSourceRegistration:
+    """Register an existing verified original through native records.
+
+    Verifies real CAS/WARC bytes. Preserves historical WARC records and their
+    missing-date status unchanged. Records rights gaps for unavailable sources.
+    """
+    object_sha256 = hashlib.sha256(object_bytes).hexdigest()
+    object_id = f"sha256:{object_sha256}"
+    if fields.get("object_id") not in (None, object_id):
+        msg = "Provided object identifier differs from the source bytes"
+        raise ValueError(msg)
+    SourceManifest(
+        source_id=fields["source_id"],
+        source_uri=fields["source_uri"],
+        source_type=fields["source_type"],
+        agency_slug=fields["agency_slug"],
+    )
+    warc_path, url = fields.get("warc_path"), fields.get("url")
+    captured_at = fields.get("captured_at")
+    # Write WARC record if path provided
+    warc_record_id = None
+    warc_sha256 = None
+    warc_date_present = False
+    warc_byte_count = 0
+    response_body = fields.get("body")
+    if response_body is not None and response_body != object_bytes:
+        msg = "Response body differs from registered source bytes"
+        raise ValueError(msg)
+    if (warc_path is None) != (url is None):
+        msg = "WARC path and response URL must be supplied together"
+        raise ValueError(msg)
+    if warc_path is not None and url is not None:
+        warc_receipt = write_response_record(
+            warc_path,
+            url=url,
+            status_code=fields.get("status_code", 200),
+            headers=fields.get("headers") or {},
+            body=object_bytes,
+            exclusive=True,
+        )
+        warc_record_id = warc_receipt.record_id
+        warc_sha256 = warc_receipt.sha256
+        warc_byte_count = warc_receipt.byte_count
+        # Check if WARC-Date is present
+        warc_bytes = warc_path.read_bytes()
+        warc_header = warc_bytes.split(b"\r\n\r\n", 1)[0].decode("utf-8")
+        warc_date_present = "WARC-Date:" in warc_header
+
+    return NativeSourceRegistration(
+        source_id=fields["source_id"],
+        source_uri=fields["source_uri"],
+        source_type=fields["source_type"],
+        agency_slug=fields["agency_slug"],
+        archive_id=fields["archive_id"],
+        object_id=object_id,
+        object_sha256=object_sha256,
+        warc_record_id=warc_record_id,
+        warc_sha256=warc_sha256,
+        warc_byte_count=warc_byte_count,
+        captured_at=captured_at,
+        capture_time_verified=captured_at is not None,
+        warc_date_present=warc_date_present,
+        rights_status=fields.get("rights_status", "source_specific_review_required"),
+        redistribution_authorized=fields.get("redistribution_authorized", False),
+        metadata_only=True,
+        native_lineage_qualified=False,
+    )
+
+
+def record_rights_gap(
+    source_id: str,
+    reason: str,
+    rights_status: str,
+    *,
+    redistribution_authorized: bool = False,
+) -> RightsGap:
+    """Record a rights gap for a source that cannot be acquired."""
+    return RightsGap(
+        source_id=source_id,
+        reason=reason,
+        observed_at=datetime.now(UTC).isoformat(),
+        rights_status=rights_status,
+        redistribution_authorized=redistribution_authorized,
+    )
+
+
+def build_source_manifest(
+    registration: NativeSourceRegistration,
+) -> dict[str, Any]:
+    """Build a manifest document from a native source registration."""
+    objects = [{"object_id": registration.object_id}]
+    observations = [{"observation_id": registration.source_id}]
+    versions = [
+        {
+            "version_id": f"{registration.source_id}-v1",
+            "observation_id": registration.source_id,
+        }
+    ]
+
+    warc_records = []
+    if registration.warc_record_id:
+        warc_records.append(
+            {
+                "record_id": registration.warc_record_id,
+                "object_id": registration.object_id,
+                "sha256": registration.warc_sha256 or "",
+                "byte_count": registration.warc_byte_count,
+            }
+        )
+
+    manifest = build_manifest(
+        archive_id=registration.archive_id,
+        observations=observations,
+        objects=objects,
+        versions=versions,
+        warc_records=warc_records or None,
+    )
+    return manifest.document

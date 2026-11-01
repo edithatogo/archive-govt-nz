@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import uuid
 from dataclasses import dataclass
+from datetime import UTC, datetime
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 
@@ -29,6 +30,11 @@ class WarcReceipt:
     byte_count: int
 
 
+def _warc_date() -> str:
+    """Return current time in WARC-Date format (ISO 8601, Zulu)."""
+    return datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
+
+
 def write_response_record(
     path: Path,
     *,
@@ -38,6 +44,7 @@ def write_response_record(
     body: bytes,
     record_id: str | None = None,
     request_url: str | None = None,
+    exclusive: bool = False,
 ) -> WarcReceipt:
     """Write one bounded WARC response record with safe URL/header evidence."""
     parsed = urlsplit(url)
@@ -61,6 +68,7 @@ def write_response_record(
         "WARC/1.1",
         f"WARC-Record-ID: <{identifier}>",
         f"WARC-Target-URI: {safe_url}",
+        f"WARC-Date: {_warc_date()}",
         f"WARC-Request-URL-SHA256: {request_digest}",
         f"WARC-Final-URL-SHA256: {hashlib.sha256(url.encode()).hexdigest()}",
         "WARC-Type: response",
@@ -75,7 +83,8 @@ def write_response_record(
         + b"\r\n\r\n"
     )
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_bytes(payload)
+    with path.open("xb" if exclusive else "wb") as output:
+        output.write(payload)
     return WarcReceipt(
         path, identifier, hashlib.sha256(payload).hexdigest(), len(payload)
     )
