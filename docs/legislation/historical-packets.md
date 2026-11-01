@@ -23,6 +23,11 @@ No credential is forwarded to original-document endpoints; no native mutation is
 retried. Unknown source formats, redirects outside the qualified host, partial
 version lists, malformed pages or unsuccessful originals stop admission.
 
+Each version uses its own dated manifestation URI; a work-wide preferred URI
+cannot identify multiple dated expressions. Strong harvest accounting is retained
+alongside capture artifacts even on failure; only controlled failure codes are
+printed, while private SDK diagnostics stay private.
+
 The canonical service receives explicit expression/manifestation targets with no
 fallback substitution. An existing XML cannot substitute for a missing PDF or
 scan. PDFs preserve their original bytes and source identities; empty extracted
