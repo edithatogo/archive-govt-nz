@@ -21,3 +21,27 @@ The Hub manifest, content-addressed objects and WARC files are committed against
 ## First published batch
 
 Successful producer run 41305833615, artifact 13082423185, captured two homepages. The eligible DIA HTML and its WARC were preserved; the Govt.nz capture had an inline third-party logo and was recorded as held. A second invocation reported already_verified. [Pinned manifest](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/blob/33d3de7dcb421226d75b1dad1bcf4c799204a0f1/bronze/batches/government-web/13082423185/0818fc6bd7344322e21478950f4af3987359bae9495e7caa26c26339e0b5cec6/manifest.json)
+
+### Held government-web review, 2 November 2026
+
+This chat owns the bounded ten-artifact rights review and additive publication
+in `/Volumes/PortableSSD/CodexWorkData/legal-coverage-20261031/recovery-checkout-20261101`,
+branch `codex/bronze-held-review-20261102`. The native scope is the ten existing
+government-web source artifacts and their new policy-bound batches in
+`edithatogo/archive-govt-nz-global`. Previous batch receipts remain immutable.
+
+The ten exact DIA HTML versions were reviewed against
+https://www.dia.govt.nz/Copyright. They contain linked image assets rather than
+embedded SVG or data images. Original HTML and its bound WARC qualify under
+CC BY 4.0 with written Crown/DIA attribution. Linked assets are excluded.
+All ten Govt.nz HTML versions embed the Shielded logo. The exceptions at
+https://www.govt.nz/about/the-govt-nz-website/using-this-website/copyright-and-attribution/
+continue to require holding those original bytes.
+
+All ten source ZIP digests matched GitHub metadata. One offline admission pass
+confirmed each batch produces one held Govt.nz record and one archived DIA
+record with matching body and WARC checksums. Existing regression evidence from
+PR #851 is reused. Each published batch receives its normal single anonymous
+readback and durable verification receipt. Exact inventory and native results
+are retained locally in `build/bronze-held-review/inventory.json` and
+`build/bronze-held-review/publication.jsonl`.
