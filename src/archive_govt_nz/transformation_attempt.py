@@ -14,7 +14,12 @@ from archive_govt_nz.provenance import ProvenanceError
 def check_material(expected: dict[str, object], actual: dict[str, object]) -> None:
     """Require an independent expectation for each part of the execution."""
     for field in ("operation", "config", "environment", "inputs"):
-        if not expected.get(field) or expected[field] != actual.get(field):
+        if (
+            field not in expected
+            or field not in actual
+            or expected[field] is None
+            or expected[field] != actual[field]
+        ):
             msg = f"unexpected_{field}"
             raise ProvenanceError(msg)
 

@@ -41,3 +41,18 @@ def test_interrupted_attempt_cannot_replace_terminal(tmp_path: Path) -> None:
     assert (
         json.loads((retry.location / "terminal").read_bytes())["state"] == "succeeded"
     )
+
+
+@pytest.mark.parametrize("field", ["config", "inputs"])
+def test_explicit_empty_material_is_distinct_from_missing(field: str) -> None:
+    """Reviewed empty material matches, while omission and null are rejected."""
+    expected: dict[str, object] = dict.fromkeys(
+        ("operation", "config", "environment", "inputs"), "original"
+    )
+    expected[field] = {} if field == "config" else []
+    check_material(expected, expected.copy())
+    missing = {key: value for key, value in expected.items() if key != field}
+    with pytest.raises(ProvenanceError, match=f"unexpected_{field}"):
+        check_material(expected, missing)
+    with pytest.raises(ProvenanceError, match=f"unexpected_{field}"):
+        check_material({**expected, field: None}, {**expected, field: None})
