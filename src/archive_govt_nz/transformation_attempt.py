@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import json
 import os
-from pathlib import Path
 from uuid import uuid4
+lazy from pathlib import Path
 
 from archive_govt_nz.object_store import ContentAddressedStore
 from archive_govt_nz.provenance import ProvenanceError
@@ -14,14 +14,16 @@ from archive_govt_nz.provenance import ProvenanceError
 def check_material(expected: dict[str, object], actual: dict[str, object]) -> None:
     """Require an independent expectation for each part of the execution."""
     for field in ("operation", "config", "environment", "inputs"):
-        if field not in expected or expected[field] != actual.get(field):
-            raise ProvenanceError(f"unexpected_{field}")
+        if not expected.get(field) or expected[field] != actual.get(field):
+            msg = f"unexpected_{field}"
+            raise ProvenanceError(msg)
 
 
 class TransformationAttempt:
     """Reserve the output name before launch. A crash leaves an incomplete attempt."""
 
     def __init__(self, location: Path, material: dict[str, object]) -> None:
+        """Claim a new destination and persist the initial material snapshot."""
         self.location = location
         location.mkdir(parents=True, exist_ok=False)
         self.attempt_id = uuid4().hex
@@ -37,5 +39,6 @@ class TransformationAttempt:
     def finish(self, state: str, result: dict[str, object]) -> None:
         """Atomically publish one terminal outcome without replacing any predecessor."""
         if state not in {"succeeded", "failed", "interrupted"}:
-            raise ProvenanceError("invalid_terminal_state")
+            msg = "invalid_terminal_state"
+            raise ProvenanceError(msg)
         self._publish("terminal", {"state": state, "result": result})
