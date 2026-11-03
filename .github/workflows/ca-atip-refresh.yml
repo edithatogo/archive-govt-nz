@@ -23,7 +23,7 @@ jobs:
           persist-credentials: false
       - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e
         with:
-          version: "0.13.5"
+          version: "0.13.7"
       - name: Install locked dependencies
         run: uv sync --locked
       - name: Build and verify approved package
