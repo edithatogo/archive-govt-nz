@@ -90,7 +90,7 @@ def test_manifest_preserves_receipts_and_execution_context() -> None:
     manifest = build_manifest(
         archive_id="treasury",
         observations=[{"observation_id": "o1"}],
-        objects=[{"object_id": "sha256:a"}],
+        objects=[{"object_id": "sha256:a"}, {"object_id": "sha256:b"}],
         versions=[{"version_id": "v1", "observation_id": "o1"}],
         receipts={
             "transformations": [
@@ -142,3 +142,61 @@ def test_manifest_preserves_receipts_and_execution_context() -> None:
 
     assert manifest.document["receipts"]["transformations"][0]["receipt_id"] == "t1"
     assert manifest.document["context"]["rights"]["status"] == "restricted"
+
+
+@pytest.mark.parametrize(
+    ("mutation", "error"),
+    [
+        ("missing_output", "dangling_transformation_object"),
+        ("self_cycle", "transformation_cycle"),
+        ("indirect_cycle", "transformation_cycle"),
+        ("stale_revision", "transformation_revision_mismatch"),
+        ("missing_receipt", "missing_transformation_receipt"),
+    ],
+)
+def test_transformation_closure(mutation: str, error: str) -> None:
+    """A valid chain closes against independent pins before each mutation."""
+    first: dict[str, Any] = dict.fromkeys(
+        (
+            "parameters",
+            "environment_sbom_id",
+            "started_at",
+            "ended_at",
+            "information_loss",
+            "deterministic",
+            "name",
+            "version",
+        ),
+        "fixture",
+    )
+    first.update(
+        receipt_id="one",
+        implementation_revision="rev1",
+        input_object_ids=["a"],
+        output_object_ids=["b"],
+    )
+    second = dict(
+        first, receipt_id="two", input_object_ids=["b"], output_object_ids=["c"]
+    )
+    args: dict[str, Any] = {
+        "archive_id": "closure",
+        "observations": [],
+        "versions": [],
+        "objects": [{"object_id": obj} for obj in "abc"],
+        "receipts": {"transformations": [first, second]},
+        "expected_revisions": {"one": "rev1", "two": "rev1"},
+    }
+    build_manifest(**args)
+    if mutation == "missing_output":
+        args["objects"].pop()
+    elif mutation == "self_cycle":
+        second["input_object_ids"] = ["c"]
+    elif mutation == "indirect_cycle":
+        first["input_object_ids"] = ["c"]
+    elif mutation == "stale_revision":
+        second["implementation_revision"] = "old"
+    else:
+        args["receipts"]["transformations"].pop()
+    with pytest.raises(ProvenanceError) as raised:
+        build_manifest(**args)
+    assert raised.value.error_class == error

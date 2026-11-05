@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 from dataclasses import dataclass
+from graphlib import CycleError, TopologicalSorter
 from typing import Any
 
 from archive_govt_nz.records import validate_archive_record
@@ -34,6 +35,56 @@ def _unique_object_ids(objects: list[dict[str, Any]]) -> set[Any]:
     return ids
 
 
+def _add_edges(
+    graph: TopologicalSorter[tuple[str, str]],
+    operation: tuple[str, str],
+    entry: dict[str, Any],
+    objects: set[Any],
+) -> None:
+    """Connect existing inputs and outputs through the operation node."""
+    for field in ("input_object_ids", "output_object_ids"):
+        identifiers = entry[field]
+        if not isinstance(identifiers, list):
+            raise ProvenanceError("invalid_transformation_objects")
+        for identifier in identifiers:
+            if not isinstance(identifier, str) or identifier not in objects:
+                raise ProvenanceError("dangling_transformation_object")
+            obj = ("object", identifier)
+            if field == "input_object_ids":
+                graph.add(operation, obj)
+            else:
+                graph.add(obj, operation)
+
+
+def _validate_transformations(
+    entries: list[dict[str, Any]],
+    objects: set[Any],
+    expected_revisions: dict[str, str] | None,
+) -> None:
+    """Check object closure and any caller-supplied revision pins."""
+    graph: TopologicalSorter[tuple[str, str]] = TopologicalSorter()
+    seen: set[str] = set()
+    for entry in entries:
+        receipt_id = entry["receipt_id"]
+        if receipt_id in seen:
+            raise ProvenanceError("duplicate_transformation_receipt")
+        seen.add(receipt_id)
+        if expected_revisions is not None and (
+            receipt_id not in expected_revisions
+            or not expected_revisions[receipt_id]
+            or expected_revisions[receipt_id] != entry["implementation_revision"]
+        ):
+            raise ProvenanceError("transformation_revision_mismatch")
+        operation = ("transformation", receipt_id)
+        _add_edges(graph, operation, entry, objects)
+    if expected_revisions is not None and seen != expected_revisions.keys():
+        raise ProvenanceError("missing_transformation_receipt")
+    try:
+        graph.prepare()
+    except CycleError as exc:
+        raise ProvenanceError("transformation_cycle") from exc
+
+
 def build_manifest(
     *,
     archive_id: str,
@@ -44,6 +95,7 @@ def build_manifest(
     warc_records: list[dict[str, Any]] | None = None,
     receipts: dict[str, list[dict[str, Any]]] | None = None,
     context: dict[str, Any] | None = None,
+    expected_revisions: dict[str, str] | None = None,
 ) -> ManifestReceipt:
     """Build a deterministic manifest and reject dangling relationships."""
     if not archive_id.strip():
@@ -67,6 +119,9 @@ def build_manifest(
             raise ProvenanceError("dangling_warc_object")
     receipt_document = receipts or {}
     _validate_receipts(receipt_document)
+    _validate_transformations(
+        receipt_document.get("transformations", []), object_ids, expected_revisions
+    )
     allowed_receipts = {"transformations", "validations", "publications"}
     document = {
         "schema_version": "archive-govt-nz.manifest/v1",
