@@ -90,12 +90,46 @@ def test_manifest_preserves_receipts_and_execution_context() -> None:
     manifest = build_manifest(
         archive_id="treasury",
         observations=[{"observation_id": "o1"}],
-        objects=[{"object_id": "sha256:a"}],
+        objects=[{"object_id": "sha256:a"}, {"object_id": "sha256:b"}],
         versions=[{"version_id": "v1", "observation_id": "o1"}],
         receipts={
-            "transformations": [{"receipt_id": "t1", "state": "succeeded"}],
-            "validations": [{"receipt_id": "vld1", "state": "passed"}],
-            "publications": [{"receipt_id": "p1", "state": "prepared"}],
+            "transformations": [
+                {
+                    "receipt_id": "t1",
+                    "name": "test_transform",
+                    "version": "1",
+                    "implementation_revision": "abc123",
+                    "input_object_ids": ["sha256:a"],
+                    "output_object_ids": ["sha256:b"],
+                    "parameters": {},
+                    "environment_sbom_id": "sbom-1",
+                    "started_at": "2026-10-29T00:00:00Z",
+                    "ended_at": "2026-10-29T00:01:00Z",
+                    "information_loss": "none",
+                    "deterministic": True,
+                }
+            ],
+            "validations": [
+                {
+                    "receipt_id": "vld1",
+                    "validator_name": "test",
+                    "validator_version": "1",
+                    "subject_ids": ["sha256:a"],
+                    "checks": ["check"],
+                    "findings": [],
+                    "started_at": "2026-10-29T00:00:00Z",
+                    "ended_at": "2026-10-29T00:01:00Z",
+                }
+            ],
+            "publications": [
+                {
+                    "receipt_id": "p1",
+                    "target": "zenodo",
+                    "local_version_id": "v1",
+                    "manifest_sha256": "sha256:abc",
+                    "requested_at": "2026-10-29T00:00:00Z",
+                }
+            ],
         },
         context={
             "software": {"package": "archive-govt-nz", "version": "0.1.0"},
@@ -108,3 +142,61 @@ def test_manifest_preserves_receipts_and_execution_context() -> None:
 
     assert manifest.document["receipts"]["transformations"][0]["receipt_id"] == "t1"
     assert manifest.document["context"]["rights"]["status"] == "restricted"
+
+
+@pytest.mark.parametrize(
+    ("mutation", "error"),
+    [
+        ("missing_output", "dangling_transformation_object"),
+        ("self_cycle", "transformation_cycle"),
+        ("indirect_cycle", "transformation_cycle"),
+        ("stale_revision", "transformation_revision_mismatch"),
+        ("missing_receipt", "missing_transformation_receipt"),
+    ],
+)
+def test_transformation_closure(mutation: str, error: str) -> None:
+    """A valid chain closes against independent pins before each mutation."""
+    first: dict[str, Any] = dict.fromkeys(
+        (
+            "parameters",
+            "environment_sbom_id",
+            "started_at",
+            "ended_at",
+            "information_loss",
+            "deterministic",
+            "name",
+            "version",
+        ),
+        "fixture",
+    )
+    first.update(
+        receipt_id="one",
+        implementation_revision="rev1",
+        input_object_ids=["a"],
+        output_object_ids=["b"],
+    )
+    second = dict(
+        first, receipt_id="two", input_object_ids=["b"], output_object_ids=["c"]
+    )
+    args: dict[str, Any] = {
+        "archive_id": "closure",
+        "observations": [],
+        "versions": [],
+        "objects": [{"object_id": obj} for obj in "abc"],
+        "receipts": {"transformations": [first, second]},
+        "expected_revisions": {"one": "rev1", "two": "rev1"},
+    }
+    build_manifest(**args)
+    if mutation == "missing_output":
+        args["objects"].pop()
+    elif mutation == "self_cycle":
+        second["input_object_ids"] = ["c"]
+    elif mutation == "indirect_cycle":
+        first["input_object_ids"] = ["c"]
+    elif mutation == "stale_revision":
+        second["implementation_revision"] = "old"
+    else:
+        args["receipts"]["transformations"].pop()
+    with pytest.raises(ProvenanceError) as raised:
+        build_manifest(**args)
+    assert raised.value.error_class == error

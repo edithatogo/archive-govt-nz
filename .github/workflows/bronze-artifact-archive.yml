@@ -1,0 +1,51 @@
+name: Bronze artifact archive
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Successful producer run ID (empty processes retained qualified artifacts)
+        required: false
+        type: string
+  workflow_run:
+    workflows: [Scheduled Multi-Source Harvest]
+    types: [completed]
+    branches: [main]
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: bronze-artifact-archive
+  cancel-in-progress: false
+
+jobs:
+  archive:
+    if: >-
+      github.repository == 'edithatogo/archive-govt-nz' && github.ref == 'refs/heads/main' &&
+      (github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_repository.full_name == github.repository &&
+       (github.event.workflow_run.event == 'schedule' || github.event.workflow_run.event == 'workflow_dispatch')))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e
+        with:
+          version: '0.13.5'
+          python-version: '3.15.1'
+      - run: |
+          uv sync --locked --no-dev
+          .venv/bin/python -c 'import sys; assert sys.version_info[:3] == (3,15,1)'
+      - name: Archive retained captures
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          RUN_ID: ${{ github.event.workflow_run.id || inputs.run_id }}
+        run: |
+          args=()
+          if [[ -n "$RUN_ID" ]]; then args=(--run "$RUN_ID"); fi
+          .venv/bin/python -m tools.bronze_archiver "${args[@]}"

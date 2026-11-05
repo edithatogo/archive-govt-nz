@@ -26,6 +26,7 @@ from archive_govt_nz.cli_integrity import (
     verify_archive_directory,
     verify_cas,
 )
+from archive_govt_nz.core.manifests import SourceManifest, SourceStatus
 from archive_govt_nz.core.registry import AgencyRegistry
 from archive_govt_nz.domains.health_appropriations import (
     operation_context_gold,
@@ -1247,6 +1248,107 @@ def sources(
 
     print(f"Registered sources: {count} seeds loaded from {path}")
     return 0 if count > 0 else 1
+
+
+source_app = App(name="source")
+app.command(source_app)
+
+
+@source_app.command(name="register")
+def source_register(
+    source_id: str,
+    source_uri: str,
+    source_type: str,
+    agency_slug: str,
+    *,
+    title: str = "",
+    status: str = "active",
+    metadata: str = "{}",
+    format: Literal["text", "json"] = "json",
+) -> int:
+    """Register a new archival source with native URI scheme validation.
+
+    The source_uri must use a native scheme (e.g., web://, feed://, ckan://)
+    matching the source_type. Bare HTTPS URIs are rejected.
+    """
+    import json as stdlib_json
+
+    # Parse metadata JSON
+    try:
+        metadata_dict = stdlib_json.loads(metadata)
+    except stdlib_json.JSONDecodeError as exc:
+        err = f"Invalid metadata JSON: {exc}"
+        if format == "json":
+            _emit_json(
+                {
+                    "command": "source register",
+                    "error": err,
+                    "schema_version": "archive-govt-nz.cli/v1",
+                    "status": "invalid_metadata",
+                }
+            )
+        else:
+            print(f"Error: {err}")
+        return 2
+
+    # Validate status
+    try:
+        source_status = SourceStatus(status.lower())
+    except ValueError:
+        err = f"Invalid status: {status} (must be one of: {[s.value for s in SourceStatus]})"
+        if format == "json":
+            _emit_json(
+                {
+                    "command": "source register",
+                    "error": err,
+                    "schema_version": "archive-govt-nz.cli/v1",
+                    "status": "invalid_status",
+                }
+            )
+        else:
+            print(f"Error: {err}")
+        return 2
+
+    # Create and validate SourceManifest (validates native URI scheme)
+    try:
+        manifest = SourceManifest(
+            source_id=source_id,
+            source_uri=source_uri,
+            source_type=source_type,
+            agency_slug=agency_slug,
+            title=title,
+            status=source_status,
+            metadata=metadata_dict,
+        )
+    except ValueError as exc:
+        err = str(exc)
+        if format == "json":
+            _emit_json(
+                {
+                    "command": "source register",
+                    "error": err,
+                    "schema_version": "archive-govt-nz.cli/v1",
+                    "status": "validation_failed",
+                }
+            )
+        else:
+            print(f"Error: {err}")
+        return 2
+
+    # For now, emit the manifest as validation receipt
+    # In a full implementation, this would persist to the registry
+    if format == "json":
+        _emit_json(
+            {
+                "command": "source register",
+                "schema_version": "archive-govt-nz.cli/v1",
+                "status": "validated",
+                "manifest": manifest.to_dict(),
+            }
+        )
+    else:
+        print(f"Source validated: {source_id} ({source_uri})")
+    return 0
 
 
 @app.command
