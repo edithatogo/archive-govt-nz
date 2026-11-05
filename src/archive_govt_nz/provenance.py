@@ -25,7 +25,7 @@ class ManifestReceipt:
     sha256: str
 
 
-def build_manifest(
+def build_manifest(  # noqa: C901 - explicit archival integrity closure checks
     *,
     archive_id: str,
     observations: list[dict[str, Any]],
@@ -151,9 +151,8 @@ def _validate_receipts(receipts: dict[str, list[dict[str, Any]]]) -> None:
             if receipt_type in required_fields:
                 missing = [f for f in required_fields[receipt_type] if f not in entry]
                 if missing:
-                    raise ProvenanceError(
-                        f"incomplete_{receipt_type.rstrip('s')}_receipt"
-                    )
+                    error_class = f"incomplete_{receipt_type.rstrip('s')}_receipt"
+                    raise ProvenanceError(error_class)
 
 
 # === Transformation record adapter for manifest interoperability ===
