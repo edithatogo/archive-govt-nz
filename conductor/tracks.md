@@ -430,3 +430,5 @@ implementation has occurred under these tracks.
   Parent issue: https://github.com/edithatogo/archive-govt-nz/issues/778. Approved plan; implementation and operational acceptance pending.
 
 - [~] [Historical Hansard volume reconciliation and scan recovery](tracks/historical_hansard_20261101/index.md)
+
+- [~] [Modern Hansard sitting reconciliation](tracks/modern_hansard_20261101/index.md)
