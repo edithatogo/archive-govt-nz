@@ -3,8 +3,8 @@
 import hashlib
 import json
 import sys
-from zipfile import ZipFile
 from pathlib import Path
+from zipfile import ZipFile
 
 import pytest
 
