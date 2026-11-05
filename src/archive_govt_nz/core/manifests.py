@@ -27,18 +27,18 @@ def _validate_source_uri(source_uri: str, source_type: str) -> None:
     """Validate that source_uri uses a native scheme (e.g., web://) not bare HTTPS."""
     match = _URI_SCHEME_PATTERN.match(source_uri)
     if not match:
-        raise ValueError(
-            f"source_uri must use a native scheme (e.g., web://): {source_uri}"
-        )
+        msg = f"source_uri must use a native scheme (e.g., web://): {source_uri}"
+        raise ValueError(msg)
     scheme = match.group(1)
     if scheme not in _NATIVE_URI_SCHEMES:
-        raise ValueError(
-            f"unknown native URI scheme '{scheme}' (allowed: {sorted(_NATIVE_URI_SCHEMES)})"
+        msg = (
+            f"unknown native URI scheme '{scheme}' "
+            f"(allowed: {sorted(_NATIVE_URI_SCHEMES)})"
         )
+        raise ValueError(msg)
     if scheme != source_type:
-        raise ValueError(
-            f"source_uri scheme '{scheme}' does not match source_type '{source_type}'"
-        )
+        msg = f"source_uri scheme '{scheme}' does not match source_type '{source_type}'"
+        raise ValueError(msg)
 
 
 @dataclass(frozen=True, slots=True)
