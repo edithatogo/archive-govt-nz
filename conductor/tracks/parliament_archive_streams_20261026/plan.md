@@ -201,3 +201,14 @@ Chat 01a18d6e-759f-76c0-85cd-03413c023c8e owns the dated backfill in standard Gi
 The prior checkpoint listed 445 rows for 439 distinct URL/timestamp identities. Six repeated rows were skipped. Nine additive batches preserved 436 distinct captures in 311 new digest-matched PDFs. Each batch passed one anonymous revision-pinned verification. The remaining three identities were indexed as HTML and returned Radware verification pages at calendar-looking URLs. They are excluded from the PDF lane. Cumulative custody covers 616 capture identities in 445 PDFs. Other inventory-only content remains outside this retry run.
 
 [Verified successor checkpoint](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/blob/0901e26ba5827e9f8714d8c4218bf5c18e869516/wayback/parliament/checkpoints/8c32ec69026c6bad7321637f90f08f44531a14aec463b9cd38aca5276d43378c.json)
+
+### Other parliamentary business, 1 November 2026
+
+- [x] Preserve the 49th Parliament Journal volume, two final Order Papers, the 22 September 2026 Daily Progress page, the September Parliamentary Library Monthly Economic Review PDF and ten official bill detail JSON originals. The dated progress page identifies the 22 September agenda and ten bill UUIDs with 48 stage records in the Bills API. Related bills, amendments and other referenced documents retain separate identities.
+- [x] Join written question WQ_41268_2026 to its reply received 28 September. Record official metadata and hashes of both text fields. Connect petitions 2014/86, 2014/88 and 2014/102 to their government-response paper references across the 51st and 52nd schedules. These entries identify relationships only.
+- [x] Isolate the papers-presented section from documents tabled by leave. The 52nd Parliament schedule yielded 3,777 dated rows with 3,768 distinct references against 3,799 presentations reported. Keep the repeated references and partial titles explicit. One boundary regression passed. One anonymous readback verified the published packet, all 15 original hashes and the derived index.
+- [ ] Reconcile unmatched presentations and repeated references with the printed schedule. Backfill additional agenda/progress dates, Library issues, answered questions and petition outcomes. Acquire third-party papers from their originating publisher under item-specific terms.
+
+[Verified packet](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/blob/0b429f7b65f743194741b993cacc748f9b7b120b/parliament/business/20261101/packet.zip). SHA-256 `8d21387a44fb5964f8ba3c6b5605c1786e59c0be2f8b20afedf0482c85914852`.
+
+Chat 01a18d6e-759f-76c0-85cd-03413c023c8e, standard worktree /Volumes/PortableSSD/CodexWorkData/legal-coverage-20261031/recovery-checkout-20261101, branch codex/other-parliamentary-business-20261101. This lane owned the new business packet and schedule index CLI. The committee-report worker retains its existing checkpoint and publication scope.
