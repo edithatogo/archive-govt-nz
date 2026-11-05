@@ -182,3 +182,24 @@ The original report access hold is unchanged, with no new unreviewed source fail
 The earlier Hub cooldown has cleared. The enabled serial writer restored its checkpoint and published 10 historical reports from page 99. Recent page 7 added no duplicate reports. The verified ledger contains 997 captured reports in 42 batches, one metadata-only record, one reviewed access hold and zero unreviewed failures. Historical page 100 is next. The existing writer retains ownership. The focused cold-restore test passed. Full historical coverage remains open.
 
 [Native receipt](https://github.com/edithatogo/archive-govt-nz/actions/runs/41292319752) · [Published revision](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/commit/44e82a5f85c42a3afaad96fc9b312d86b9103a83) · [Verified checkpoint](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/commit/1f39d17cb5b9504b642074eb471349e7985eff6b)
+
+### Other parliamentary business, 1 November 2026
+
+- [x] Preserve the 49th Parliament Journal volume, two final Order Papers, the 22 September 2026 Daily Progress page, the September Parliamentary Library Monthly Economic Review PDF and ten official bill detail JSON originals. The dated progress page identifies the 22 September agenda and ten bill UUIDs with 48 stage records in the Bills API. Related bills, amendments and other referenced documents retain separate identities.
+- [x] Join written question WQ_41268_2026 to its reply received 28 September. Record official metadata and hashes of both text fields. Connect petitions 2014/86, 2014/88 and 2014/102 to their government-response paper references across the 51st and 52nd schedules. These entries identify relationships only.
+- [x] Isolate the papers-presented section from documents tabled by leave. The 52nd Parliament schedule yielded 3,777 dated rows with 3,768 distinct references against 3,799 presentations reported. Keep the repeated references and partial titles explicit. One boundary regression passed. One anonymous readback verified the published packet, all 15 original hashes and the derived index.
+- [ ] Reconcile unmatched presentations and repeated references with the printed schedule. Backfill additional agenda/progress dates, Library issues, answered questions and petition outcomes. Acquire third-party papers from their originating publisher under item-specific terms.
+
+[Verified packet](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/blob/0b429f7b65f743194741b993cacc748f9b7b120b/parliament/business/20261101/packet.zip). SHA-256 `8d21387a44fb5964f8ba3c6b5605c1786e59c0be2f8b20afedf0482c85914852`.
+
+Chat 01a18d6e-759f-76c0-85cd-03413c023c8e, standard worktree /Volumes/PortableSSD/CodexWorkData/legal-coverage-20261031/recovery-checkout-20261101, branch codex/other-parliamentary-business-20261101. This lane owned the new business packet and schedule index CLI. The committee-report worker retains its existing checkpoint and publication scope.
+
+### Rights-dependent material, 1 November 2026
+
+- [x] Reuse the seven earlier selective-submission receipts. The Victim Remains submission was already archived. Independently examine NZCCL’s 7 January 2025 Treaty Principles Bill submission, its six paragraphs, cited links, explicit CC BY 4.0 notice and source restrictions.
+- [x] Preserve the complete author-as-published text derivative with attribution and link references. Separate Parliament-copy identity from the author representation. Bind destination, source and derived bytes in the dated ledger. One focused test exercised a licensed payload and a held control. Anonymous pinned readback checked the ZIP and confirmed one admitted payload and zero payload members for the seven held items.
+- [~] Retain seven item-level holds covering the Arms, residential-demonstration and Valuers submission texts, the IPCA report, the Justice section 7 PDF, an 1893 Google-digitised Hansard candidate and the September 2026 Parliament TV adjournment recording. The Public Service Commission licence was located for its own content; its current page does not supply the quoted version. Obtain the missing component evidence or exact destination permission before admission.
+
+[Published packet and rights ledger](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/blob/8c17be8debe7f76ed08f70295181ae87c92ef8d8/parliament/rights-dependent/20261101/packet.zip). ZIP SHA-256 `f61f9dec6a016f8d6cbe5120eda40d1aed631602c65505a8c5febe3fd95331f9`.
+
+Chat 01a18d6e-759f-76c0-85cd-03413c023c8e, standard worktree /Volumes/PortableSSD/CodexWorkData/legal-coverage-20261031/recovery-checkout-20261101, branch codex/rights-dependent-20261101. Native scope was the dated rights-dependent packet. Existing report, batch and catalogue writers retain their assignments.
