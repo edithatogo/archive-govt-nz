@@ -1,5 +1,10 @@
 """Exercise the distinction between papers presented and documents tabled."""
 
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+
 from tools.parliament_papers_index import paper_rows
 
 
