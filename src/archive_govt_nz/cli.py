@@ -26,6 +26,7 @@ from archive_govt_nz.cli_integrity import (
     verify_archive_directory,
     verify_cas,
 )
+from archive_govt_nz.core.manifests import SourceManifest, SourceStatus
 from archive_govt_nz.core.registry import AgencyRegistry
 from archive_govt_nz.domains.health_appropriations import (
     operation_context_gold,
@@ -995,7 +996,7 @@ def health_appropriations_status(
 @app.command
 def sources(
     format: Literal["text", "json"] = "text",
-    registry_path: str = "registry/seeds",
+    registry_path: str = "registry/seeds",  # noqa: ARG001 - reserved for durable writes
 ) -> int:
     """List registered government sources from the seed registry."""
     path = Path(registry_path)
@@ -1043,7 +1044,7 @@ def sources(
 
 
 @app.command(name="source register")
-def source_register(
+def source_register(  # noqa: PLR0917 - CLI contract retains named options
     source_id: str,
     source_uri: str,
     source_type: str,
