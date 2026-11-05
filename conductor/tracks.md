@@ -430,3 +430,6 @@ implementation has occurred under these tracks.
   Parent issue: https://github.com/edithatogo/archive-govt-nz/issues/778. Approved plan; implementation and operational acceptance pending.
 
 - [~] [Historical Hansard volume reconciliation and scan recovery](tracks/historical_hansard_20261101/index.md)
+
+- [~] **Track: Tobacco research source archival integration**
+  *Link: [tracks/tobac_sources_20261025/index.md](tracks/tobac_sources_20261025/index.md)*

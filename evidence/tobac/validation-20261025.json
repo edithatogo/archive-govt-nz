@@ -1,0 +1,54 @@
+{
+  "archive_base": "4487bd82118cdd122ff1c99b1fc0706c1ebc889c",
+  "consumer_base": "59bb0e4ebaf1881158849df1702a1d3101aad58f",
+  "python": "3.15.1",
+  "full_regression": {
+    "command": "./scripts/validate.sh",
+    "passed": 8431,
+    "skipped": 14,
+    "coverage_percent": 97.05,
+    "scope": "pre-workbook source profile; complete checkout",
+    "subsequent_failure": "mutation-medallion: ENOSPC while copying temporary mutant trees"
+  },
+  "recovery": {
+    "command": "TMPDIR=<external-SSD-owned-directory> .venv/bin/python; build_stages and run_stages from mutation-medallion onward",
+    "status": "passed",
+    "scope": "all remaining native harness stages, including mutations, audit, licences, secrets and SBOM"
+  },
+  "final_changed_scope": {
+    "command": ".venv/bin/python -m pytest -q --no-cov tests/tools/test_tobac_archive.py tests/cli/test_capture_source_sets.py",
+    "passed": 31,
+    "checks": [
+      "ruff format/check",
+      "basedpyright: 0 errors",
+      "Conductor: 94 tracks, 0 errors",
+      "native postflight on canonical local copy equals implementation receipt"
+    ],
+    "staged_secret_scan": {
+      "status": "passed",
+      "command": "uv run --locked python tools/supply_chain.py secrets",
+      "raw_scan_sha256": "35fa7546e61238c19a1027de8ecd6dbb571caa497bd53d10c826151fe18102c8",
+      "adjudication_sha256": "5d2ed6acbd3aec35ceae8bfa90a7fbf6e11ad24be13b8a28e5d71fbf613976cf"
+    }
+  },
+  "preservation": {
+    "cas_objects_verified": 31,
+    "corrupt_objects": 0,
+    "warc_generations_verified": 4,
+    "workbook_rows_matching_consumer": 16,
+    "remote_raw_object_recovery": "not_qualified"
+  },
+  "log_sha256": {
+    "tobac-validation.log": "0b7f268d3d58fb54030b79edcfca2719540ace596b407265cb95d413c091ab52",
+    "tobac-validation-resume.log": "e7a1dd395e4ca26db3697807f9b4d654ebc214bb6958aa5464569cf7014ce37e"
+  },
+  "qualification": "Combined full-regression and final focused evidence; not a fresh full-suite rerun after the workbook addition. Original-source coverage remains partial; no empirical model qualification or raw-object redistribution.",
+  "native_warc_receipt_basis": {
+    "current": "Fresh native verification using portable relative paths from canonical storage root",
+    "originals_retained": "native-receipt-originals/ in canonical local store",
+    "original_sha256": {
+      "canonical-local-warc-assets-20261025.json": "8053e49c3bfca73295901bf905eae7bc57e626a7bbc9cbd238322cda08a29cfc",
+      "canonical-local-warc-20261025.json": "467ba510b1513f65cdc6b2e99a4e4d60b2047aa082efd35ca27941894d48b059"
+    }
+  }
+}
