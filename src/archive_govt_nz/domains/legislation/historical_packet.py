@@ -153,7 +153,8 @@ def dated_url(identifier: str, url: str) -> str:
     if (
         not separator
         or not WORK.fullmatch(work)
-        or date.fromisoformat(stamp).isoformat() != stamp
+        or not re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}[A-Z]?", stamp)
+        or date.fromisoformat(stamp[:10]).isoformat() != stamp[:10]
         or not parts.path.startswith("/" + work.replace("_", "/") + "/en/")
     ):
         message = "historical format does not match its expression identity"

@@ -10,6 +10,7 @@ import argparse
 import hashlib
 import io
 import json
+import re
 import stat
 import zipfile
 from datetime import date, datetime
@@ -265,16 +266,21 @@ def manifestation_identity(value: str) -> tuple[str, str, str]:
     )
     require(condition=not uri.query and not uri.fragment, code="manifestation_query")
     parts = uri.path.removeprefix("/").split("/")
-    if len(parts) == MANIFESTATION_PARTS + 1 and parts[-1] == "":
+    if len(parts) == MANIFESTATION_PARTS + 1 and parts[-1] in {"", "official_scan.pdf"}:
+        extension = "pdf" if parts[-1] else "html"
         parts = parts[:-1]
-        version, extension = parts[-1], "html"
+        version = parts[-1]
     else:
         version, _, extension = parts[-1].rpartition(".")
     require(
         condition=len(parts) == MANIFESTATION_PARTS and parts[-2] == "en",
         code="manifestation_path",
     )
-    equal(date.fromisoformat(version).isoformat(), version, "expression_date")
+    require(
+        condition=bool(re.fullmatch(r"[0-9]{4}-[0-9]{2}-[0-9]{2}[A-Z]?", version)),
+        code="expression_date",
+    )
+    equal(date.fromisoformat(version[:10]).isoformat(), version[:10], "expression_date")
     require(condition=extension in {"xml", "html", "pdf"}, code="manifestation_format")
     return "_".join(parts[:4]), version, extension
 

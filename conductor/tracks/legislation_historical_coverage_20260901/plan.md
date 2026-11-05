@@ -6,3 +6,5 @@
 - [x] Generate canonical JSON/Markdown reports and Prompt 17 correction inputs.
 - [x] Run focused validation and mutation qualification.
 - [x] Deliver through an exact-head pull request and independently read back delivery.
+
+Continued source acquisition is tracked separately in the [remaining areas plan](remaining-areas.md).

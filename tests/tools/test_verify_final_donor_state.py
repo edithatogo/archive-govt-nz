@@ -694,3 +694,9 @@ def test_dated_html_identity(suffix: str) -> None:
     record["canonical_uri"] = record["canonical_uri"].replace("2000/1/", "2000/9/")
     with pytest.raises(V.VerificationError, match="canonical_uri"):
         V.check_identity(record)
+
+
+def test_lettered_expression_and_official_scan() -> None:
+    """An original scan can belong to the second expression on a single date."""
+    url = "https://www.legislation.govt.nz/act/public/1875/34/en/2007-09-03B/official_scan.pdf"
+    assert V.manifestation_identity(url) == ("act_public_1875_34", "2007-09-03B", "pdf")

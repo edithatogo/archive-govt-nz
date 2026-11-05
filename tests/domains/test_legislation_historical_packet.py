@@ -20,6 +20,7 @@ from archive_govt_nz.domains.legislation.corpus import (
 )
 from archive_govt_nz.domains.legislation.historical_packet import (
     Bounds,
+    dated_url,
     missing_targets,
     official_url,
     page_results,
@@ -110,6 +111,12 @@ def test_api_latest_aliases_are_pinned_without_losing_the_offered_urls() -> None
     assert all("/latest" in row["advertised_url"] for row in projections)
     assert all("/latest" not in row["dated_url"] for row in projections)
     assert "latest" in client.graph[0]["formats"][0]["url"]
+
+
+def test_lettered_version_remains_distinct() -> None:
+    """Keep the catalogue suffix when pinning a same-day version."""
+    alias = BASE.replace("1841-06-01", "latest") + ".xml"
+    assert dated_url(WORK + "_en_1841-06-01B", alias) == BASE + "B.xml"
 
 
 def test_latest_alias_for_a_different_work_is_not_admitted() -> None:

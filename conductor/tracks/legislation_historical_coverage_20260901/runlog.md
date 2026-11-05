@@ -144,3 +144,44 @@ and directly affected/remaining named gates; reuse unchanged lock/Conductor
 results. Open a draft source PR while those gates finish, and mark reviewable
 only after all local gates pass. Hosted required checks and native acceptance
 remain binding; no archive/publication mutation has occurred.
+
+1 November2026 resumption: chat01a18d6e-759f-76c0-85cd-03413c023c8e retains
+sole historical-packet source/native ownership. The former checkout and its
+saved source repo were absent. Managed create_worktree against that exact source
+failed: no Git repository at sourceRoot. Pushed source fec3ca315b1f9d8296dca2047975f20970f43271
+and external evidence were preserved. CLI fallback: verified public remote cloned
+into a separate bare repo and standard Git worktree at
+`/Volumes/PortableSSD/CodexWorkData/legal-coverage-20261031/recovery-checkout-20261101`,
+branch `codex/legislation-history-resume-20261101`; this is not app-managed.
+No old checkout, other lane, authentication cache or native operation was changed.
+The existing dedicated Python3.15.1/pypdf6.21.4 environment was retained; only the
+editable source binding and four broken console launchers were reinstalled at
+the same locked versions after confirming no process used that environment.
+Local failed tests stage completed8862 passed/14 skips; all required hosted840
+checks passed exact fec3ca31. Finish only uncompleted local named gates, then
+mark840 ready, protected merge, main capture and inspect; publish only verified
+additions to corpus-legislation-nz. Default904-record parent remains unchanged.
+
+Terminal bounded-packet receipt —1 November2026
+
+PR840 merged as166bca8853da298c0ea2aa067c9993999ee625ab after all required checks passed. Local final tests8862 passed/14 skips and all remaining named gates passed; no broad tests were repeated for recovery. Main capture41285597167 enumerated100 of5104 PCO Acts, selected5 works/7 versions/21 originals, then received HTTP202 on the hosted original route; fail-fast committed no state or CAS delta. This canonical continuation remains an external source-access hold. No response was accepted as a statute and no gate was relaxed.
+
+The already-qualified local anonymous route returned HTTP200, and existing local Hugging Face authentication passed exact dataset write qualification. The authorized five-work original packet was captured locally:7 HTML,7 PDF,7 XML,21 distinct missing manifestation IDs. Every body passed representation and native identity checks; the exact ZIP inventory and dual hashes were inspected. Only these21 new originals and public source evidence were published, excluding all prior parent payload bytes.
+
+One parent-bound additive Hub commit added four files beneath `source-packets/v1/historical-originals-20261101T074757Z`. Every file was downloaded anonymously at revision `88028def3f676d2617e567117b6cca9ea1ffe45b` and compared byte-for-byte. ZIP SHA256 `a624ebf401fefa33595c24c2fa6ead5b1e95b9875b51495158b7730c60c41640`. Native original-packet publication is verified; canonical continuation/promotion is not accepted. The904-record parent, old archives, maintained card, DOI roles and gates remain unchanged.
+
+Public packet: https://huggingface.co/datasets/edithatogo/corpus-legislation-nz/tree/88028def3f676d2617e567117b6cca9ea1ffe45b/source-packets/v1/historical-originals-20261101T074757Z
+
+The inventory retains95 unselected works on page1; resume capture page1 before advancing enumeration page2. This is no national completeness claim. No further native mutation is scheduled for this packet. Future canonical ingestion requires qualification of an allowed source transport, not a retry of the unchanged hosted HTTP202 route. The same chat retains this recovered CLI worktree and the existing private journals; no other writer/authentication binding changed.
+
+Page 1 continuation, 1 November 2026. Chat 01a18d6e-759f-76c0-85cd-03413c023c8e owns the 95 pending IDs and additive source-packet writes in the existing corpus-legislation-nz dataset. Standard Git worktree /Volumes/PortableSSD/CodexWorkData/legal-coverage-20261031/recovery-checkout-20261101, branch codex/legislation-history-resume-20261101. Use local public PCO version lists and original transport, subtract original identities from the prior packet, canonical parent and HF raw inventories, then publish and read back each new packet once. Parliament and court writers retain their existing scopes.
+
+The 95-ID continuation published 33 HTML, 33 PDF and 32 XML originals. The index accounts for 114 known versions, 29 already archived formats and 229 outstanding known originals. Full version lists are available for 47 works. Of these, 31 are complete. The 48 remaining lists may expose additional versions and scans. The source returned HTTP 405 with an explicit CAPTCHA. Stop at the retained cursor until normal source access or a PCO-supported feed is available. The earlier version-list test was reused. One parent-bound addition published the ZIP and index at revision `6ce46eb3d5835497ec7728a60877e0498c5a508f`. Each file passed one anonymous SHA-256 readback. ZIP digest `8ee9bb41019e5725aa36ca4bca7810a9b109d829409e95ba035fd91ffa7cbfd8`. The canonical state is still held. [Resume index](https://huggingface.co/datasets/edithatogo/corpus-legislation-nz/blob/6ce46eb3d5835497ec7728a60877e0498c5a508f/source-packets/v1/historical-page1-remaining-20261101a/index.json)
+
+Packet B published 136 missing originals across 41 versions of 20 works, including 16 original scans. One anonymous readback matched both file hashes. Of the 95 selected works, 50 are complete, one has a complete inventory with outstanding originals, and 44 require full version lists. At least 105 known originals remain. Resume from the index after ordinary publisher access returns. The local route stopped at HTTP 405 on the 31 August 1874 PDF for act_public_1874_44. [Packet and resume index](https://huggingface.co/datasets/edithatogo/corpus-legislation-nz/tree/d5d0eaa73b802e57c2da1ea2679e967cb20aa03d/source-packets/v1/historical-page1-remaining-20261101b)
+
+1 November 2026. This lane resumed the retained page-1 operation, preserving existing writer scopes. [Packet C](https://huggingface.co/datasets/edithatogo/corpus-legislation-nz/tree/092237323c434626f853328b9ffa35cc418d3c14/source-packets/v1/historical-page1-remaining-20261101c) adds 67 HTML, 23 XML, 68 PDF and seven original scans. It completes the 45 outstanding works and leaves zero pending formats on the 95-work index. Next historical catalogue cursor is page 2.
+
+Recovered the four pinned packets through the canonical normaliser with original retrieval timestamps. The isolated candidate manifest reconciles 420 additions with all 904 parent rows unchanged, yielding 1,324 records and 623 works, manifest root b394d9d534f460a0c1e38432fcdd20a26aa7a470a63e5cc5acb70b2e10de39f2. Hosted child sealing, cold restoration and promotion remain outstanding.
+
+The broader workflow discovered ten candidates in each of four types. Main run 41293890423 restored the parent but rejected an exact-inventory request marked as discovery. The corrected configuration passed local preflight for all 40 IDs. Branch run 41294228186 retained the candidate receipt and stopped at the main-only lineage boundary. The integrator can run acquisition from main after integration, then reconcile outcomes and publisher-specific rights. One focused selection passed 104 tests.
