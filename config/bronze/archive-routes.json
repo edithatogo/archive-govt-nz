@@ -10,10 +10,130 @@
           "attribution": "Department of Internal Affairs | Te Tari Taiwhenua, Crown copyright. Original HTML response, unchanged. Linked assets are not included.",
           "licence": "https://creativecommons.org/licenses/by/4.0/",
           "policy": "https://www.dia.govt.nz/Legal-Copyright-Index"
+        },
+        "bfe9a6182bcb92baae877f62099bdfe6c7e1dbfcf35131c00a0bc5165d039126": {
+          "decision": "publish",
+          "content_type": "text/html",
+          "attribution": "Department of Internal Affairs | Te Tari Taiwhenua, Crown copyright. Original HTML response, unchanged. Linked assets are not included.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.dia.govt.nz/Legal-Copyright-Index"
+        },
+        "18744bc5318d2094b89eb5c9b3a14a2bfb1f9533e83cb06d585975ab031706a0": {
+          "decision": "publish",
+          "content_type": "text/html",
+          "attribution": "Department of Internal Affairs | Te Tari Taiwhenua, Crown copyright. Original HTML response, unchanged. Linked assets are not included.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.dia.govt.nz/Legal-Copyright-Index"
+        },
+        "204636795d0e969c63bc5fc78b4ea0b9442f369817a07f9ad1cc1db60010e5e4": {
+          "decision": "publish",
+          "content_type": "text/html",
+          "attribution": "Department of Internal Affairs | Te Tari Taiwhenua, Crown copyright. Original HTML response, unchanged. Linked assets are not included.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.dia.govt.nz/Legal-Copyright-Index"
+        },
+        "b2d391ee3ab8b591861b168af836a01463f9a6edcc4f2d141dc6e336c329033a": {
+          "decision": "publish",
+          "content_type": "text/html",
+          "attribution": "Department of Internal Affairs | Te Tari Taiwhenua, Crown copyright. Original HTML response, unchanged. Linked assets are not included.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.dia.govt.nz/Legal-Copyright-Index"
+        },
+        "7acf2ae14f864fcdfb1d451fdeb25f21dee07db0628a80f4b8b588262f9f497c": {
+          "decision": "publish",
+          "content_type": "text/html",
+          "attribution": "Department of Internal Affairs | Te Tari Taiwhenua, Crown copyright. Original HTML response, unchanged. Linked assets are not included.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.dia.govt.nz/Legal-Copyright-Index"
+        },
+        "4cc3b0cf8fca5c41d82d86332fb9b59c361e1564ad871d1d3c15e6a731669f79": {
+          "decision": "publish",
+          "content_type": "text/html",
+          "attribution": "Department of Internal Affairs | Te Tari Taiwhenua, Crown copyright. Original HTML response, unchanged. Linked assets are not included.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.dia.govt.nz/Legal-Copyright-Index"
+        },
+        "3393e5749edae5cd4f83f5950125097d49777a36610db865d372e3bf96fdf102": {
+          "decision": "publish",
+          "content_type": "text/html",
+          "attribution": "Department of Internal Affairs | Te Tari Taiwhenua, Crown copyright. Original HTML response, unchanged. Linked assets are not included.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.dia.govt.nz/Legal-Copyright-Index"
+        },
+        "929227ed62ac09a02a087da0ae8760178efa114885654122d8330fed36d87091": {
+          "decision": "publish",
+          "content_type": "text/html",
+          "attribution": "Department of Internal Affairs | Te Tari Taiwhenua, Crown copyright. Original HTML response, unchanged. Linked assets are not included.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.dia.govt.nz/Legal-Copyright-Index"
+        },
+        "a15ca46d4c2f10e1e1bb7104c6874293a29ed2d7717f17fbbc3059dd3f657cf2": {
+          "decision": "publish",
+          "content_type": "text/html",
+          "attribution": "Department of Internal Affairs | Te Tari Taiwhenua, Crown copyright. Original HTML response, unchanged. Linked assets are not included.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.dia.govt.nz/Legal-Copyright-Index"
+        },
+        "a38d516c6c641b51aabca031b3177bd2957b8a837592de3ac6bc899818ff8a65": {
+          "decision": "publish",
+          "content_type": "text/html",
+          "attribution": "Department of Internal Affairs | Te Tari Taiwhenua, Crown copyright. Original HTML response, unchanged. Linked assets are not included.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.dia.govt.nz/Legal-Copyright-Index"
         }
       },
       "https://www.govt.nz": {
         "36d64785fe6af437709f03cb03423b2d5ee4703951192d8cc71ce58de149be03": {
+          "decision": "hold",
+          "reason": "The HTML embeds the Shielded logo as inline SVG. Separate rights for redistributing those bytes have not been established.",
+          "policy": "https://www.govt.nz/about/the-govt-nz-website/using-this-website/copyright-and-attribution/"
+        },
+        "9a1446d694f13de5e70a5ca7ad739dfb593274493d2b6e90573b6d6183364e6a": {
+          "decision": "hold",
+          "reason": "The HTML embeds the Shielded logo as inline SVG. Separate rights for redistributing those bytes have not been established.",
+          "policy": "https://www.govt.nz/about/the-govt-nz-website/using-this-website/copyright-and-attribution/"
+        },
+        "192e4c4795b16aab69fb19348b2848131d4f0e40b27648ddd44861cde8a0c816": {
+          "decision": "hold",
+          "reason": "The HTML embeds the Shielded logo as inline SVG. Separate rights for redistributing those bytes have not been established.",
+          "policy": "https://www.govt.nz/about/the-govt-nz-website/using-this-website/copyright-and-attribution/"
+        },
+        "148a5becfe96ac6f7fb12e960aae29d89cb78d41727787015bcaef8ffda1fb28": {
+          "decision": "hold",
+          "reason": "The HTML embeds the Shielded logo as inline SVG. Separate rights for redistributing those bytes have not been established.",
+          "policy": "https://www.govt.nz/about/the-govt-nz-website/using-this-website/copyright-and-attribution/"
+        },
+        "522b1a81a5a57903ec942d63446160d3246d0167e5e71a652e8d23653b4c3aa2": {
+          "decision": "hold",
+          "reason": "The HTML embeds the Shielded logo as inline SVG. Separate rights for redistributing those bytes have not been established.",
+          "policy": "https://www.govt.nz/about/the-govt-nz-website/using-this-website/copyright-and-attribution/"
+        },
+        "c43ef51f25bc04a957fd9766738a5621e47f71310f77684a3e698e432828b810": {
+          "decision": "hold",
+          "reason": "The HTML embeds the Shielded logo as inline SVG. Separate rights for redistributing those bytes have not been established.",
+          "policy": "https://www.govt.nz/about/the-govt-nz-website/using-this-website/copyright-and-attribution/"
+        },
+        "9701c1048bd6a5ede797a4c55a46c7272bcc287d650f30908263c62ecae4388d": {
+          "decision": "hold",
+          "reason": "The HTML embeds the Shielded logo as inline SVG. Separate rights for redistributing those bytes have not been established.",
+          "policy": "https://www.govt.nz/about/the-govt-nz-website/using-this-website/copyright-and-attribution/"
+        },
+        "535f0ee6aed61048735106b59b88e86823506eee288dcdc5192749c0f8d7fa68": {
+          "decision": "hold",
+          "reason": "The HTML embeds the Shielded logo as inline SVG. Separate rights for redistributing those bytes have not been established.",
+          "policy": "https://www.govt.nz/about/the-govt-nz-website/using-this-website/copyright-and-attribution/"
+        },
+        "36fe44b369477c12e536f51ff9467241f401bb2dcd2aaa2ffba75dbef5f63e96": {
+          "decision": "hold",
+          "reason": "The HTML embeds the Shielded logo as inline SVG. Separate rights for redistributing those bytes have not been established.",
+          "policy": "https://www.govt.nz/about/the-govt-nz-website/using-this-website/copyright-and-attribution/"
+        },
+        "79f5f51b3489ee5b5140410a1841085c7e4efe8aa81da6b8a010cf46942ebb90": {
+          "decision": "hold",
+          "reason": "The HTML embeds the Shielded logo as inline SVG. Separate rights for redistributing those bytes have not been established.",
+          "policy": "https://www.govt.nz/about/the-govt-nz-website/using-this-website/copyright-and-attribution/"
+        },
+        "e24be5dc205d6f498e7c7ffce3280a5e0c26c11322f9cc3f5e58bf8e69c3f06d": {
           "decision": "hold",
           "reason": "The HTML embeds the Shielded logo as inline SVG. Separate rights for redistributing those bytes have not been established.",
           "policy": "https://www.govt.nz/about/the-govt-nz-website/using-this-website/copyright-and-attribution/"
