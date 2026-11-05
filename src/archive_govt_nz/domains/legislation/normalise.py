@@ -404,7 +404,7 @@ def normalise_legislation_payload(  # noqa: PLR0913, PLR0917
     canonical_expression_id: str | None = None,
     canonical_manifestation_id: str | None = None,
 ) -> LegislationRecord:
-    """Transform raw XML/HTML payload into a canonical v2 LegislationRecord."""
+    """Preserve XML/HTML text or a PDF original without invented extracted text."""
     sha256 = hashlib.sha256(raw_content).hexdigest()
     blake3_hash = blake3.blake3(raw_content).hexdigest()
     byte_size = len(raw_content)
@@ -414,6 +414,11 @@ def normalise_legislation_payload(  # noqa: PLR0913, PLR0917
         if retrieval_timestamp is not None
         else datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ")
     )
+
+    is_pdf = raw_content.startswith(b"%PDF-")
+    if source_media_type and "pdf" in source_media_type.lower() and not is_pdf:
+        message = "PDF media type without a PDF signature"
+        raise ValueError(message)
 
     is_explicit_html = (
         (source_media_type is not None and "html" in source_media_type.lower())
@@ -428,7 +433,7 @@ def normalise_legislation_payload(  # noqa: PLR0913, PLR0917
     assent_date: str | None = None
     commencement_date: str | None = None
 
-    if not is_explicit_html:
+    if not is_explicit_html and not is_pdf:
         try:
             # DefusedET prevents billion laughs & entity expansion
             root = DefusedET.fromstring(raw_content)
@@ -440,7 +445,7 @@ def normalise_legislation_payload(  # noqa: PLR0913, PLR0917
             root = None
             is_explicit_html = True
 
-    if is_explicit_html:
+    if is_explicit_html and not is_pdf:
         plain_text = _extract_text_from_html(raw_content)
 
     final_type = _extract_legislation_type(root, canonical_uri, title, legislation_type)
@@ -449,9 +454,13 @@ def normalise_legislation_payload(  # noqa: PLR0913, PLR0917
     )
 
     media_type = (
-        source_media_type
-        if source_media_type is not None
-        else ("text/html" if is_explicit_html else "application/xml")
+        "application/pdf"
+        if is_pdf
+        else (
+            source_media_type
+            if source_media_type is not None
+            else ("text/html" if is_explicit_html else "application/xml")
+        )
     )
 
     expression_id = canonical_expression_id or generate_expression_id(

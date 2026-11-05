@@ -6,6 +6,7 @@ from pathlib import Path
 
 import pytest
 
+from archive_govt_nz.provenance import build_receipts_from_records
 from archive_govt_nz.records import (
     ArchiveRecordError,
     RecordHeader,
@@ -276,3 +277,16 @@ def test_unknown_schema_catalogue_key_fails_closed() -> None:
     """A caller cannot infer a schema from an undeclared kind."""
     with pytest.raises(ArchiveRecordError):
         load_archive_schema("unknown")
+
+
+def test_native_ids_survive_receipt_conversion() -> None:
+    """Retain each schema-validated native identity in the manifest receipt."""
+    originals = minimal_records()
+    receipts = build_receipts_from_records(
+        transformations=[originals["transformation"]],
+        validations=[originals["validation"]],
+        publications=[originals["publication"]],
+    )
+    for kind in ("transformation", "validation", "publication"):
+        assert receipts[kind + "s"][0]["receipt_id"] == originals[kind]["record_id"]
+        assert "receipt_id" not in originals[kind]

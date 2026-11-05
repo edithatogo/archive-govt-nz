@@ -1,0 +1,24 @@
+{
+  "government-web": {
+    "repository": "edithatogo/archive-govt-nz-global",
+    "workflow": ".github/workflows/scheduled-multi-source-harvest.yml",
+    "targets": {
+      "https://www.dia.govt.nz": {
+        "280c07fae73023e33c09d933f1ee96c77d6ccd867fbeb8767e2b6a25489a10a4": {
+          "decision": "publish",
+          "content_type": "text/html",
+          "attribution": "Department of Internal Affairs | Te Tari Taiwhenua, Crown copyright. Original HTML response, unchanged. Linked assets are not included.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.dia.govt.nz/Legal-Copyright-Index"
+        }
+      },
+      "https://www.govt.nz": {
+        "36d64785fe6af437709f03cb03423b2d5ee4703951192d8cc71ce58de149be03": {
+          "decision": "hold",
+          "reason": "The HTML embeds the Shielded logo as inline SVG. Separate rights for redistributing those bytes have not been established.",
+          "policy": "https://www.govt.nz/about/the-govt-nz-website/using-this-website/copyright-and-attribution/"
+        }
+      }
+    }
+  }
+}

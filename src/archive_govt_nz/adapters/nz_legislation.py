@@ -146,6 +146,7 @@ class NZLegislationAdapter(AsyncBaseCaptureAdapter):
                 identity.source_id,
                 identity.source_id,
                 url,
+                source_media_type=media_type,
             )
 
             return AdapterCaptureResult(
