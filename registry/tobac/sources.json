@@ -1,0 +1,964 @@
+{
+  "schema_version": "archive-govt-nz.tobac-source-register/v1",
+  "consumer_repository": "https://github.com/edithatogo/tobac",
+  "consumer_commit": "59bb0e4ebaf1881158849df1702a1d3101aad58f",
+  "collection_sha256": {
+    "evidence/longitudinal/references.csl.json": "af0096485d5b8a82e77777a80f10fbd0f747eb217cf667e5f80ce5f106925001",
+    "evidence/m2/references.csl.json": "ff5154f0a8c0cddc48bef7b9f62c7afc472fabc66e7c82ff4a4fd87ce3adfda7",
+    "evidence/prior_work/v2.9.0/references.csl.json": "e0651f908676bec3e8c6296cb02dc4c06738da14100699a6fc14a3be688d41b3",
+    "evidence/references.csl.json": "eb09f4d9feb1219665ba8e67be7d2e3affc349f4c9f1f8052873ca1790bb4e24"
+  },
+  "sources": [
+    {
+      "archive_id": "tobac-05790f0b796014c5",
+      "identity": "url:https://www.health.govt.nz/publications/annual-update-of-key-results-202425-new-zealand-health-survey",
+      "title": "Annual Update of Key Results 2024/25: New Zealand Health Survey",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "nz-key-results-2024-25"
+        }
+      ],
+      "urls": [
+        "https://www.health.govt.nz/publications/annual-update-of-key-results-202425-new-zealand-health-survey"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-0b9d17c38666be28",
+      "identity": "doi:10.1016/j.jval.2020.01.004",
+      "title": "Value of Information Analytical Methods: Report 2 of the ISPOR Value of Information Analysis Emerging Good Practices Task Force",
+      "references": [
+        {
+          "collection": "evidence/references.csl.json",
+          "source_id": "rothery2020"
+        }
+      ],
+      "urls": [
+        "https://www.ispor.org/heor-resources/good-practices/article/value-of-information-analytical-methods-report-2"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-1487495c6f446674",
+      "identity": "url:https://www.health.govt.nz/monitoring-statistics/surveys/new-zealand-health-survey/publications/202425-survey-publications/trends-in-smoking-and-vaping",
+      "title": "Trends in smoking and vaping: New Zealand Health Survey 2024/25",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "long-nzhs-trends-2025"
+        }
+      ],
+      "urls": [
+        "https://www.health.govt.nz/monitoring-statistics/surveys/new-zealand-health-survey/publications/202425-survey-publications/trends-in-smoking-and-vaping"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-161d5ca9516fcdee",
+      "identity": "url:https://www.health.govt.nz/news/new-policies-will-help-reach-smokefree-goal-and-address-increase-in-youth-vaping",
+      "title": "New policies will help reach Smokefree goal and address increase in youth vaping",
+      "references": [
+        {
+          "collection": "evidence/m2/references.csl.json",
+          "source_id": "NZ_RETAIL_SCHEME_2023"
+        }
+      ],
+      "urls": [
+        "https://www.health.govt.nz/news/new-policies-will-help-reach-smokefree-goal-and-address-increase-in-youth-vaping"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-21e5ac57790c9907",
+      "identity": "doi:10.1016/s2213-2600(19)30269-3",
+      "title": "Nicotine patches used in combination with e-cigarettes (with and without nicotine) for smoking cessation: a pragmatic, randomised trial.",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "empirical-walker-2020"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/31515173/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "bibliographic_metadata",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "31515173"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-297be26fc11cb7b3",
+      "identity": "doi:10.1136/bmjph-2025-002853",
+      "title": "Trends in the illicit tobacco market in New Zealand: a consumption gap analysis",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "parallel-S08"
+        },
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "parallel-S08"
+        },
+        {
+          "collection": "evidence/references.csl.json",
+          "source_id": "phyo2025"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/40919023/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12410603/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "40919023"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-2d95e1cbd10671ab",
+      "identity": "url:https://www.health.govt.nz/publications/annual-update-of-key-results-202021-new-zealand-health-survey",
+      "title": "Annual Update of Key Results 2020/21: New Zealand Health Survey",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "long-nzhs-2021"
+        }
+      ],
+      "urls": [
+        "https://www.health.govt.nz/publications/annual-update-of-key-results-202021-new-zealand-health-survey"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-384f7a90f3fc0133",
+      "identity": "doi:10.1001/jamanetworkopen.2025.57319",
+      "title": "National Wastewater Surveillance of Illicit Tobacco and Vaping Use Trends in Australia",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "parallel-S02"
+        },
+        {
+          "collection": "evidence/references.csl.json",
+          "source_id": "wang2026"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41661592/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC12887742/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "41661592"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-45820b66185001cd",
+      "identity": "url:https://www.health.govt.nz/publications/health-and-independence-report-2024-online-version",
+      "title": "Health and Independence Report 2024: online version",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "long-nz-hir-2024"
+        }
+      ],
+      "urls": [
+        "https://www.health.govt.nz/publications/health-and-independence-report-2024-online-version"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-52fb080dad9b1459",
+      "identity": "url:https://www.health.govt.nz/monitoring-statistics/surveys/new-zealand-health-survey/publications/202324-survey-publications/trends-in-smoking-and-vaping",
+      "title": "Trends in smoking and vaping: New Zealand Health Survey 2023/24",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "long-nzhs-2024"
+        }
+      ],
+      "urls": [
+        "https://www.health.govt.nz/monitoring-statistics/surveys/new-zealand-health-survey/publications/202324-survey-publications/trends-in-smoking-and-vaping"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-5601971f49deff67",
+      "identity": "url:https://www.customs.govt.nz/about-us/news/media-releases/trio-sentenced-for-smuggling-half-a-million-cigarettes",
+      "title": "Trio sentenced for smuggling half a million cigarettes",
+      "references": [
+        {
+          "collection": "evidence/references.csl.json",
+          "source_id": "customs2024"
+        }
+      ],
+      "urls": [
+        "https://www.customs.govt.nz/about-us/news/media-releases/trio-sentenced-for-smuggling-half-a-million-cigarettes"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-5988c3901a530650",
+      "identity": "doi:10.1016/j.scitotenv.2020.140551",
+      "title": "Determination of anabasine, anatabine, and nicotine biomarkers in wastewater by enhanced direct injection LC-MS/MS and evaluation of their in-sewer stability",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "parallel-S05"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/32653706/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "bibliographic_metadata",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "32653706"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-62b1f22935ee89bd",
+      "identity": "url:https://www.customs.govt.nz/about-us/news/important-notices-archive/important-notices-archive-2025/new-excise-duty-rates-for-tobacco-products-from-1-january-2026",
+      "title": "New excise duty rates for tobacco products from 1 January 2026",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "parallel-S13"
+        }
+      ],
+      "urls": [
+        "https://www.customs.govt.nz/about-us/news/important-notices-archive/important-notices-archive-2025/new-excise-duty-rates-for-tobacco-products-from-1-january-2026"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-62f3f431b388649e",
+      "identity": "doi:10.1016/j.watres.2018.03.036",
+      "title": "Stability of alcohol and tobacco consumption biomarkers in a real rising main sewer",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "est-gao-2018"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/29571085/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "bibliographic_metadata",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "29571085"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-653a099a62934bb1",
+      "identity": "doi:10.1016/j.talanta.2024.126401",
+      "title": "High throughput and sensitive quantitation of tobacco-specific alkaloids and nitrosamines in wastewater",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "parallel-S06"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/38876037/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "bibliographic_metadata",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "38876037"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-78830630d9ed6d6c",
+      "identity": "url:https://www.beehive.govt.nz/release/new-zealand-records-lowest-smoking-rate-ever",
+      "title": "New Zealand records lowest smoking rate ever (superseded 2021/22 estimates)",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "long-nzhs-2022-original"
+        }
+      ],
+      "urls": [
+        "https://www.beehive.govt.nz/release/new-zealand-records-lowest-smoking-rate-ever"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-7ee48855a1ed1c4b",
+      "identity": "url:https://www.health.govt.nz/regulation-legislation/smoked-tobacco/information-for-manufacturers-and-importers/tobacco-returns/tobacco-returns-2025",
+      "title": "Tobacco returns 2025: annual volume 2010–2025",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "long-nz-tobacco-tonnes-2025"
+        },
+        {
+          "collection": "evidence/m2/references.csl.json",
+          "source_id": "NZ_TOBACCO_RETURNS_2025"
+        },
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "long-nz-tobacco-tonnes-2025"
+        }
+      ],
+      "urls": [
+        "https://www.health.govt.nz/regulation-legislation/smoked-tobacco/information-for-manufacturers-and-importers/tobacco-returns/tobacco-returns-2025"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.health.govt.nz/system/files/2026-08/Total-tobacco-sold-tonnes-2010-2025.xlsx",
+          "kind": "xlsx",
+          "discovered_from": "data/calibration_20261024/raw/tobacco_returns_completion.txt",
+          "consumer_path": "data/longitudinal_20261024/nz_tobacco_release_tonnes_2010_2025.csv",
+          "consumer_sha256": "ef85faa4e338f499bf15a5bed85ffdf139c839a54ea1d7c682d79f350256232e",
+          "expected_header": [
+            "Year",
+            "Total tobacco sold tonnes (excl. cigars/cigarillos)"
+          ],
+          "expected_rows": [
+            [
+              2010,
+              2293.0
+            ],
+            [
+              2011,
+              2102.0
+            ],
+            [
+              2012,
+              2046.0
+            ],
+            [
+              2013,
+              1905.0
+            ],
+            [
+              2014,
+              1857.0
+            ],
+            [
+              2015,
+              1788.0
+            ],
+            [
+              2016,
+              1768.0
+            ],
+            [
+              2017,
+              1687.0
+            ],
+            [
+              2018,
+              1618.0
+            ],
+            [
+              2019,
+              1492.0
+            ],
+            [
+              2020,
+              1429.0
+            ],
+            [
+              2021,
+              1426.0
+            ],
+            [
+              2022,
+              1249.0
+            ],
+            [
+              2023,
+              1052.0
+            ],
+            [
+              2024,
+              968.0
+            ],
+            [
+              2025,
+              755.0
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "archive_id": "tobac-855a41ac092cdd0a",
+      "identity": "doi:10.1136/tobaccocontrol-2013-051362",
+      "title": "Theoretical impacts of a range of major tobacco retail outlet reduction interventions: modelling results in a country with a smoke-free nation goal",
+      "references": [
+        {
+          "collection": "evidence/m2/references.csl.json",
+          "source_id": "PEARSON_2015"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/25037156/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "bibliographic_metadata",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "25037156"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-86b88ce823d5a2c5",
+      "identity": "url:https://www.health.govt.nz/news/refunds-for-applicants-to-the-smoked-tobacco-retail-scheme",
+      "title": "Refunds for applicants to the smoked tobacco retail scheme",
+      "references": [
+        {
+          "collection": "evidence/m2/references.csl.json",
+          "source_id": "NZ_RETAIL_REPEAL_2024"
+        }
+      ],
+      "urls": [
+        "https://www.health.govt.nz/news/refunds-for-applicants-to-the-smoked-tobacco-retail-scheme"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-912f6f818e46055e",
+      "identity": "doi:10.1016/j.drugpo.2026.105475",
+      "title": "Eight years of nationwide routine wastewater surveillance in New Zealand: Demonstrating its complementary role in public health policy.",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "empirical-vanwichelen-2026"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/42664537/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "bibliographic_metadata",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "42664537"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-91da5c77f9915eb3",
+      "identity": "doi:10.1371/journal.pmed.1001856",
+      "title": "Health, Health Inequality, and Cost Impacts of Annual Increases in Tobacco Tax: Multistate Life Table Modeling in New Zealand",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "est-blakely-2015"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/26218517/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC4517929/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "26218517"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-920a4be1c51c0a89",
+      "identity": "doi:10.1111/j.1360-0443.2012.03906.x",
+      "title": "The combined effect of very low nicotine content cigarettes, used as an adjunct to usual Quitline care (nicotine replacement therapy and behavioural support), on smoking cessation: a randomized controlled trial.",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "empirical-walker-2012"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/22594651/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "bibliographic_metadata",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "22594651"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-9487badd2a06b849",
+      "identity": "url:https://www.health.govt.nz/news/independent-report-on-black-market-tobacco-trade-published",
+      "title": "Independent report on black market tobacco trade published",
+      "references": [
+        {
+          "collection": "evidence/references.csl.json",
+          "source_id": "moh2023"
+        }
+      ],
+      "urls": [
+        "https://www.health.govt.nz/news/independent-report-on-black-market-tobacco-trade-published"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-a0e764a08a2e49bd",
+      "identity": "url:https://mash.auckland.ac.nz/shimadzu-8060qqq-acsrc/",
+      "title": "Shimadzu 8060 Triple Quadrupole LC-MS/MS: access and instrument charges",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "est-auckland-mash"
+        }
+      ],
+      "urls": [
+        "https://mash.auckland.ac.nz/shimadzu-8060qqq-acsrc/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-a1d364d2f2412e10",
+      "identity": "doi:10.1021/acs.est.3c01510",
+      "title": "Improving Wastewater-Based Tobacco Use Estimates Using Anabasine",
+      "references": [
+        {
+          "collection": "evidence/references.csl.json",
+          "source_id": "zheng2023"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/37192131/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "bibliographic_metadata",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "37192131"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-a892a52bb0ce2147",
+      "identity": "doi:10.1136/tc-2022-057655",
+      "title": "Tobacco endgame intervention impacts on health gains and Māori:non-Māori health inequity: a simulation study of the Aotearoa/New Zealand Tobacco Action Plan",
+      "references": [
+        {
+          "collection": "evidence/m2/references.csl.json",
+          "source_id": "SHINE_RETAIL_TABLE2"
+        }
+      ],
+      "urls": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11672025/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-bcc0c006961872e2",
+      "identity": "url:https://www.legislation.govt.nz/act/public/2024/0006/latest/LMS939112.html",
+      "title": "Smokefree Environments and Regulated Products Amendment Act 2024",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "linked-serpa-2024"
+        }
+      ],
+      "urls": [
+        "https://www.legislation.govt.nz/act/public/2024/0006/latest/LMS939112.html"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-bf7efcf2c111532e",
+      "identity": "doi:10.1016/j.jval.2020.01.001",
+      "title": "Value of Information Analysis for Research Decisions—An Introduction",
+      "references": [
+        {
+          "collection": "evidence/references.csl.json",
+          "source_id": "fenwick2020"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/32113617/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "bibliographic_metadata",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "32113617"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-c0f15e46211f48d9",
+      "identity": "doi:10.1136/tobaccocontrol-2015-052259",
+      "title": "The impact of an increase in excise tax on the retail price of tobacco in New Zealand",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "est-marsh-2016"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/26138823/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "bibliographic_metadata",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "26138823"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-c90b57a936c5c1eb",
+      "identity": "url:https://www.health.govt.nz/regulation-legislation/vaping-herbal-smoking-and-smokeless-tobacco/selling-vaping-or-other-notifiable-products/overview-of-products",
+      "title": "Overview of tobacco-based and synthetic-based oral nicotine products",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "nz-oral-nicotine-overview"
+        }
+      ],
+      "urls": [
+        "https://www.health.govt.nz/regulation-legislation/vaping-herbal-smoking-and-smokeless-tobacco/selling-vaping-or-other-notifiable-products/overview-of-products"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-dc2d41f13bad4122",
+      "identity": "doi:10.1136/tc-2025-059848",
+      "title": "The case against duty-free tobacco sales: an analysis from Aotearoa (New Zealand)",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "est-gendall-2026"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41587826/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "bibliographic_metadata",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "41587826"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-dc3b98f881a03390",
+      "identity": "url:https://www.health.govt.nz/publications/annual-update-of-key-results-202122-new-zealand-health-survey",
+      "title": "Annual Update of Key Results 2021/22: corrected 14 December 2023",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "long-nzhs-2022-corrected"
+        }
+      ],
+      "urls": [
+        "https://www.health.govt.nz/publications/annual-update-of-key-results-202122-new-zealand-health-survey"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-dd9c3bf3d07dcc0a",
+      "identity": "doi:10.1016/j.scitotenv.2025.181223",
+      "title": "Understanding nicotine consumption habits in Aotearoa New Zealand using wastewater-based epidemiology",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "parallel-S01"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41447812/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "bibliographic_metadata",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "41447812"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-ea4f96240c07fbb1",
+      "identity": "url:https://www.health.govt.nz/publications/tobacco-and-electronic-cigarette-use-201516-new-zealand-health-survey",
+      "title": "Tobacco and electronic cigarette use 2015/16: NZHS; trends through 2018/19",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "long-nzhs-module-2015"
+        }
+      ],
+      "urls": [
+        "https://www.health.govt.nz/publications/tobacco-and-electronic-cigarette-use-201516-new-zealand-health-survey"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-f362d5809ccf2fa2",
+      "identity": "doi:10.1093/ntr/ntag042",
+      "title": "Exploring anabasine excretion factor in individuals who use tobacco cigarettes: a preliminary estimate",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "parallel-S03"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/41725392/",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC13389531/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "41725392"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-f4107b08100d71c4",
+      "identity": "doi:10.1136/tobaccocontrol-2014-051801",
+      "title": "Abrupt nicotine reduction as an endgame policy: a randomised trial.",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "empirical-walker-2015"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/25398562/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "bibliographic_metadata",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "25398562"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    },
+    {
+      "archive_id": "tobac-f8ee1ad4c84cf1c7",
+      "identity": "url:https://www.legislation.govt.nz/act/public/2024/0006/latest/LMS939049.html",
+      "title": "Smokefree Environments and Regulated Products Amendment Act 2024",
+      "references": [
+        {
+          "collection": "evidence/references.csl.json",
+          "source_id": "act2024"
+        }
+      ],
+      "urls": [
+        "https://www.legislation.govt.nz/act/public/2024/0006/latest/LMS939049.html"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "source_page_or_article_html",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match"
+    },
+    {
+      "archive_id": "tobac-fa4060e2c085d607",
+      "identity": "doi:10.1093/ntr/ntw233",
+      "title": "Impact on Smoking Behavior of the New Zealand Annual Increase in Tobacco Tax: Data for the Fifth and Sixth Year of Increases",
+      "references": [
+        {
+          "collection": "evidence/prior_work/v2.9.0/references.csl.json",
+          "source_id": "est-li-2017"
+        }
+      ],
+      "urls": [
+        "https://pubmed.ncbi.nlm.nih.gov/27624346/"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": false,
+      "capture_scope": "bibliographic_metadata",
+      "full_document_status": "not_yet_verified",
+      "archive_match_status": "no_verified_exact_object_match",
+      "metadata_api": {
+        "url": "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml",
+        "pmids": [
+          "27624346"
+        ],
+        "scope": "bibliographic_xml_not_full_text"
+      }
+    }
+  ]
+}
