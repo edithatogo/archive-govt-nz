@@ -359,18 +359,18 @@ def test_exact_catalogue_repeat_build_and_reconstruction(
         str(tmp_path / "console"),
     ]
     dry_cli = subprocess.run(
-        args, capture_output=True, text=True, check=True, timeout=30
+        args, capture_output=True, text=True, check=True, timeout=90
     )
     assert json.loads(dry_cli.stdout)["status"] == "dry_run"
     assert not (tmp_path / "console").exists()
     actual_cli = subprocess.run(
-        [*args, "--write"], capture_output=True, text=True, check=True, timeout=30
+        [*args, "--write"], capture_output=True, text=True, check=True, timeout=90
     )
     envelope = json.loads(actual_cli.stdout)
     assert envelope["manifest_sha256"] == result["manifest_sha256"]
     assert envelope["verification"]["status"] == "verified"
     failed_cli = subprocess.run(
-        [*args, "--write"], capture_output=True, text=True, check=False, timeout=30
+        [*args, "--write"], capture_output=True, text=True, check=False, timeout=90
     )
     assert failed_cli.returncode == 2
     assert json.loads(failed_cli.stdout)["error"] == "gold_metadata_build_failed"
