@@ -3,10 +3,10 @@
 from __future__ import annotations
 
 import json
-from typing import TYPE_CHECKING
+import sys
+from pathlib import Path
 
-if TYPE_CHECKING:
-    from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
 
 import pyarrow as pa
 import pyarrow.parquet as pq
