@@ -432,3 +432,5 @@ implementation has occurred under these tracks.
 - [~] [Historical Hansard volume reconciliation and scan recovery](tracks/historical_hansard_20261101/index.md)
 
 - [~] [Time-sensitive judgments and wider case law](tracks/time_sensitive_judgments_20261101/index.md)
+
+- [~] [Modern Hansard sitting reconciliation](tracks/modern_hansard_20261101/index.md)
