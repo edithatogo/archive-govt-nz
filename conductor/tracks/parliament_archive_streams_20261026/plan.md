@@ -193,3 +193,13 @@ The earlier Hub cooldown has cleared. The enabled serial writer restored its che
 [Verified packet](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/blob/0b429f7b65f743194741b993cacc748f9b7b120b/parliament/business/20261101/packet.zip). SHA-256 `8d21387a44fb5964f8ba3c6b5605c1786e59c0be2f8b20afedf0482c85914852`.
 
 Chat 01a18d6e-759f-76c0-85cd-03413c023c8e, standard worktree /Volumes/PortableSSD/CodexWorkData/legal-coverage-20261031/recovery-checkout-20261101, branch codex/other-parliamentary-business-20261101. This lane owned the new business packet and schedule index CLI. The committee-report worker retains its existing checkpoint and publication scope.
+
+### Rights-dependent material, 1 November 2026
+
+- [x] Reuse the seven earlier selective-submission receipts. The Victim Remains submission was already archived. Independently examine NZCCL’s 7 January 2025 Treaty Principles Bill submission, its six paragraphs, cited links, explicit CC BY 4.0 notice and source restrictions.
+- [x] Preserve the complete author-as-published text derivative with attribution and link references. Separate Parliament-copy identity from the author representation. Bind destination, source and derived bytes in the dated ledger. One focused test exercised a licensed payload and a held control. Anonymous pinned readback checked the ZIP and confirmed one admitted payload and zero payload members for the seven held items.
+- [~] Retain seven item-level holds covering the Arms, residential-demonstration and Valuers submission texts, the IPCA report, the Justice section 7 PDF, an 1893 Google-digitised Hansard candidate and the September 2026 Parliament TV adjournment recording. The Public Service Commission licence was located for its own content; its current page does not supply the quoted version. Obtain the missing component evidence or exact destination permission before admission.
+
+[Published packet and rights ledger](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/blob/8c17be8debe7f76ed08f70295181ae87c92ef8d8/parliament/rights-dependent/20261101/packet.zip). ZIP SHA-256 `f61f9dec6a016f8d6cbe5120eda40d1aed631602c65505a8c5febe3fd95331f9`.
+
+Chat 01a18d6e-759f-76c0-85cd-03413c023c8e, standard worktree /Volumes/PortableSSD/CodexWorkData/legal-coverage-20261031/recovery-checkout-20261101, branch codex/rights-dependent-20261101. Native scope was the dated rights-dependent packet. Existing report, batch and catalogue writers retain their assignments.
