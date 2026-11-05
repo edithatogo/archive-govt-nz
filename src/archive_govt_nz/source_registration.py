@@ -10,7 +10,7 @@ from __future__ import annotations
 import hashlib
 from dataclasses import dataclass
 from datetime import UTC, datetime
-from pathlib import Path
+lazy from pathlib import Path
 from typing import Any
 
 from archive_govt_nz.core.manifests import (
@@ -34,6 +34,7 @@ class RightsGap:
     schema_version: str = "archive-govt-nz.rights-gap/v1"
 
     def to_dict(self) -> dict[str, Any]:
+        """Serialize a held-source rights gap without source payload."""
         return {
             "schema_version": self.schema_version,
             "source_id": self.source_id,
@@ -67,6 +68,7 @@ class NativeSourceRegistration:
     schema_version: str = "archive-govt-nz.source-registration/v1"
 
     def to_dict(self) -> dict[str, Any]:
+        """Serialize native registration metadata for downstream verification."""
         return {
             "schema_version": self.schema_version,
             "source_id": self.source_id,
@@ -88,7 +90,7 @@ class NativeSourceRegistration:
         }
 
 
-def register_source(
+def register_source(  # noqa: PLR0913, PLR0917 - stable producer API
     source_id: str,
     source_uri: str,
     source_type: str,
@@ -102,7 +104,7 @@ def register_source(
     headers: dict[str, str] | None = None,
     body: bytes | None = None,
     rights_status: str = "source_specific_review_required",
-    redistribution_authorized: bool = False,
+    redistribution_authorized: bool = False,  # noqa: FBT001, FBT002
     captured_at: str | None = None,
 ) -> NativeSourceRegistration:
     """Register an existing verified original through native records.
@@ -116,7 +118,7 @@ def register_source(
     object_sha256 = hashlib.sha256(object_bytes).hexdigest()
 
     # Validate native URI scheme
-    manifest = SourceManifest(
+    SourceManifest(
         source_id=source_id,
         source_uri=source_uri,
         source_type=source_type,
@@ -169,7 +171,7 @@ def record_rights_gap(
     source_id: str,
     reason: str,
     rights_status: str,
-    redistribution_authorized: bool = False,
+    redistribution_authorized: bool = False,  # noqa: FBT001, FBT002
 ) -> RightsGap:
     """Record a rights gap for a source that cannot be acquired."""
     return RightsGap(
