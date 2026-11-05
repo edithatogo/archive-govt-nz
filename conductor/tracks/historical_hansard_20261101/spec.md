@@ -1,0 +1,1 @@
+Reconcile the 510-item NZ Parliamentary Debates HathiTrust collection against numbered catalogue witnesses and the chronology printed in Hansard. Preserve eligible source scans and distinguish separately hosted OCR. Require volume-specific evidence for overlap matches. Continue restricted research-dataset acquisition only through the approved source route.
