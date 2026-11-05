@@ -4,7 +4,7 @@ import hashlib
 import json
 import sys
 from zipfile import ZipFile
-lazy from pathlib import Path
+from pathlib import Path
 
 import pytest
 
