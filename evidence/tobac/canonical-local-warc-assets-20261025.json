@@ -1,0 +1,15 @@
+{
+  "run": "20261025-assets",
+  "action": "verify",
+  "receipt": {
+    "action": "verify",
+    "command": "archive",
+    "failures": [],
+    "output_dir": "build/tobac/20261025-assets/warc",
+    "schema_version": "archive-govt-nz.cli/v1",
+    "status": "verified",
+    "total_bytes": 9853,
+    "verified_files_count": 1,
+    "warc_count": 1
+  }
+}

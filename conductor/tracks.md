@@ -434,3 +434,6 @@ implementation has occurred under these tracks.
 - [~] [Time-sensitive judgments and wider case law](tracks/time_sensitive_judgments_20261101/index.md)
 
 - [~] [Modern Hansard sitting reconciliation](tracks/modern_hansard_20261101/index.md)
+
+- [~] **Track: Tobacco research source archival integration**
+  *Link: [tracks/tobac_sources_20261025/index.md](tracks/tobac_sources_20261025/index.md)*
