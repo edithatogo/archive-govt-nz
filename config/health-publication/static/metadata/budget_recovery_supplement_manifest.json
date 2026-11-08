@@ -1,0 +1,380 @@
+{
+  "base_revision": "cc78ecc8d392a1003d248fdd2c7458591e7d3d33",
+  "files": [
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2007/field_lineage.parquet",
+      "sha256": "07cca45654da0c0fcb5fe6ac6fee7ee0f1df75fcd907e653ff3789805ad3cbf7",
+      "bytes": 62328
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2007/numeric_evidence.parquet",
+      "sha256": "00359601327335fbd201b832695100566c6b3399a09a0426211c16fdaaa9aa8a",
+      "bytes": 21051
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2007/revenue_fact.parquet",
+      "sha256": "b31f82ca8c7805c1c13f88583e818963fa8d4f12af2653da680e35b8649e3fa7",
+      "bytes": 26082
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2008/field_lineage.parquet",
+      "sha256": "efd63d7ac86d6fa1a87004b8ce14edd53734e21c642aac45da5e32d894f4430f",
+      "bytes": 77798
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2008/numeric_evidence.parquet",
+      "sha256": "ef9320d3b9ec74005be35d5bb140eb3d0a1fbbc1cf16a456712e3893dc5533f2",
+      "bytes": 25641
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2008/revenue_fact.parquet",
+      "sha256": "bbea20f9e5a23faaed7ddefe2c6c522b9d4239dba3bf99ef0d1864616d476b1e",
+      "bytes": 29695
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2009/field_lineage.parquet",
+      "sha256": "a4f26201099c27044e80542468420f3452d4e25eca5634d0f23ab0c790f6ff66",
+      "bytes": 96770
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2009/numeric_evidence.parquet",
+      "sha256": "de0c98f62f4168d278b29ce4bb86f113003e3f27550c19ba473b7c044d70a3ef",
+      "bytes": 30979
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2009/revenue_fact.parquet",
+      "sha256": "0a53334bda9d86976c7195de84ca2ef895b63d5f073807d99f4c9a38b062003f",
+      "bytes": 34128
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2010/field_lineage.parquet",
+      "sha256": "22309c656211bbe414e6b4517f38634627648096ef6b1e5ecd3c38e0c4c3e87a",
+      "bytes": 133896
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2010/numeric_evidence.parquet",
+      "sha256": "2edfec3fcc258760151ed89b5d3d2bb3521bb2add5d988e808a37604c86c30b0",
+      "bytes": 41086
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2010/revenue_fact.parquet",
+      "sha256": "8275ada0b81bd1510d65f7309d2421d91b04d03573cc9abd502f4462f0fd1293",
+      "bytes": 37803
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2011/field_lineage.parquet",
+      "sha256": "76b408f110ef09c4bef5a4d2577703a78696d976d30ca3a754becf8fef145050",
+      "bytes": 125794
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2011/numeric_evidence.parquet",
+      "sha256": "b0b145730fe5905cf32c56779d8215f1e595403c7a25270ba4903ba1a2c449c5",
+      "bytes": 38955
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2011/revenue_fact.parquet",
+      "sha256": "44c2f3ad2ed9222e378b6c980107bc74f35603c0e30cc90ced6574d9a83fec11",
+      "bytes": 36241
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2012/field_lineage.parquet",
+      "sha256": "aa1b6765ad04d22aeeff0aa024ce8c797e1145e5760621e5845f20e3c84b6e8a",
+      "bytes": 125698
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2012/numeric_evidence.parquet",
+      "sha256": "c1501005699ae5f319f8183f44dd290d86c68279ca307f13aa270632b6c369e2",
+      "bytes": 38944
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2012/revenue_fact.parquet",
+      "sha256": "1dbe75e9fcd8dbcf5337c623c2e518fce71209923e9992eadd1ab5d5b00a5882",
+      "bytes": 36194
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2013/field_lineage.parquet",
+      "sha256": "7385ac2f470cd3e8832028258d2e1bea16f2ec6aa6660842b9f630fe2c7454c8",
+      "bytes": 130078
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2013/numeric_evidence.parquet",
+      "sha256": "160f7481ea28501037d3bd65cbfc7848c4f1def6dcbf56fa137cc8612c71ef53",
+      "bytes": 37540
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2013/revenue_fact.parquet",
+      "sha256": "483f3a9ba4a3e2029d1c323859e3ba5c8a825e95f8d1a964376390495b265b07",
+      "bytes": 35292
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2014/field_lineage.parquet",
+      "sha256": "04fe2dbd5a4ae28faadc6c7e04d9a70fb09911fa077a8d1acfd22c0ff5fd376e",
+      "bytes": 140622
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2014/numeric_evidence.parquet",
+      "sha256": "e1fa769e29d98651c2f7710881bc247e031a2b05739b99b8f0e2c4a98474405c",
+      "bytes": 32524
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2014/revenue_fact.parquet",
+      "sha256": "96f647ded69b5967695736e6db2bcbfe0c8392c63324c778c7c03e60f0d32abb",
+      "bytes": 35162
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2015/field_lineage.parquet",
+      "sha256": "b4a1ed53163f00b4b5aeeb0711d1621bcfc1a48f2153b15f9434f3ccd3368e27",
+      "bytes": 107197
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2015/numeric_evidence.parquet",
+      "sha256": "94e8f8a1ada2636443bf8e53479257e4359f6a2d02fe2ff4652d8a30ad39b305",
+      "bytes": 32131
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2015/revenue_fact.parquet",
+      "sha256": "a85ca09ed59236ca1abb786aa713029ae349573c3e586d7b4da734289dd5b0fb",
+      "bytes": 34751
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2016/field_lineage.parquet",
+      "sha256": "55f4d4cae3c6eb94d0f807929a3d70371f90e4f3b9af7ce13bbc110c42297b3b",
+      "bytes": 105897
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2016/numeric_evidence.parquet",
+      "sha256": "9287596d00972f9d45f34db54038cce2eb61221df49c7dfcc84ab71bf08dd369",
+      "bytes": 31740
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2016/revenue_fact.parquet",
+      "sha256": "5c62e0bb2b8af6ed715eb78e5b838183c91f4360ff4e88020ee2a2a346f7f9fd",
+      "bytes": 34483
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2017/field_lineage.parquet",
+      "sha256": "6201433ece28d2914645f068636ad509ad36ec6ce853787df9eda2a59e660ba6",
+      "bytes": 104174
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2017/numeric_evidence.parquet",
+      "sha256": "c922999a1162c8718643626225e03c54bf9300bff11a7ba0b18d3d21043db598",
+      "bytes": 31216
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2017/revenue_fact.parquet",
+      "sha256": "ac33d9ee21914da64a8c61a5091474f5dda4bac423374ac1211540be937da514",
+      "bytes": 33974
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2018/field_lineage.parquet",
+      "sha256": "818481f8d95318830eb8a3f5903fbe27e577dacc2fc47d9b5d3380587973a209",
+      "bytes": 104188
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2018/numeric_evidence.parquet",
+      "sha256": "6fadd9968aa7a63e36b24962919337bfd109a542ae2d19a64b7bba25b03f1d3b",
+      "bytes": 31193
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2018/revenue_fact.parquet",
+      "sha256": "2f8bc920b0ac9f1e343384be4575342bf41f4c0f89867595bd8c8d398722667b",
+      "bytes": 33946
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2019/field_lineage.parquet",
+      "sha256": "a7aa1e4dd1b9c9afaa27b83e65cee613df3a137467f14e5033a313cf54c7fb19",
+      "bytes": 102815
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2019/numeric_evidence.parquet",
+      "sha256": "488369d4943f5311e7b544b167f3ec4b19b386c00d021d2658b7e05a81b8f84f",
+      "bytes": 30894
+    },
+    {
+      "path": "data/silver/budget_2007_2019_revenue/2019/revenue_fact.parquet",
+      "sha256": "08bb995b877553c9d030d63e2d66846509964b491884b15650462ce87d76d4e7",
+      "bytes": 33533
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2009/appropriation_fact.parquet",
+      "sha256": "4684fb50c91cb65f8828063001be80295fca2a9618b80444f0aca7f0c8c1a11e",
+      "bytes": 95736
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2009/field_lineage.parquet",
+      "sha256": "553814d5d97bc56ddb63204b51ed7da3c6051b81686efbbd0ea6bf5861ca8d88",
+      "bytes": 397282
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2009/numeric_evidence.parquet",
+      "sha256": "5bd417d9f9360b424dd8f5496fb548b80e6bc8b64be643506c0319d64dc0b165",
+      "bytes": 126901
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2010/appropriation_fact.parquet",
+      "sha256": "e53dc633f88d2ecf758260bcc3ced9a3b64183bd3bce50277bba5dd5dc028405",
+      "bytes": 110366
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2010/field_lineage.parquet",
+      "sha256": "55ccb30684a3419c364abbf76b73cde49c11f745f80d1910d44890cbfcdbb6dd",
+      "bytes": 537993
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2010/numeric_evidence.parquet",
+      "sha256": "94acccdea9cf3269c2e1546e8fcca266f306855f0d50ef6436e3570b08bce6bc",
+      "bytes": 147927
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2011/appropriation_fact.parquet",
+      "sha256": "949282fccb090e118993b542500bc91ae56be489496441a75c7ed2b88bdc1e89",
+      "bytes": 109700
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2011/field_lineage.parquet",
+      "sha256": "ca1f19a99fb73eb00f720f8243aa58ba2d3a90b9afcc252aa638c2d5f42ca40d",
+      "bytes": 555829
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2011/numeric_evidence.parquet",
+      "sha256": "c820560166c34e0be5d4149f2c953ee8991d88972f0c5ff57f52245896198341",
+      "bytes": 147238
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2012/appropriation_fact.parquet",
+      "sha256": "d6f9b29f72499bbe854bb00781918bd36fee12c2325965e3d234d20b5acac128",
+      "bytes": 107872
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2012/field_lineage.parquet",
+      "sha256": "3888d096846d7001ee3f35bd66af4b4eaf8e56d604e721e64ab8810846bb222f",
+      "bytes": 554969
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2012/numeric_evidence.parquet",
+      "sha256": "88836a181196b7dee4286967d00d939d5af21857d9b8432e981c778b8b4ab917",
+      "bytes": 146651
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2013/appropriation_fact.parquet",
+      "sha256": "62a10b2a9a06271a3e10a27d44b228a7526f069bcedd1a5d447c7324260352e6",
+      "bytes": 107801
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2013/field_lineage.parquet",
+      "sha256": "ce77dd90ca7cad91ef4fc95ed5ce822c718b775311b4d8ae734b237a733b89de",
+      "bytes": 595955
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2013/numeric_evidence.parquet",
+      "sha256": "e8331dd6b5e236e1a5144f2b4396c24a4a77f41197e6049a22ce0ddad4122774",
+      "bytes": 145616
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2014/appropriation_fact.parquet",
+      "sha256": "853fdc4158c637117bc4de603e17b76dd660f7c4255df8a8b30e9bbed1829b4c",
+      "bytes": 108268
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2014/field_lineage.parquet",
+      "sha256": "21a86b21062710b42e1834fbf871e11f39d63e4a9e0fa6b79abff565189f5e60",
+      "bytes": 856762
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2014/numeric_evidence.parquet",
+      "sha256": "261c61be2f6ca4de46327b660090a93afc27ee27921ee726d3ad699f17e1d760",
+      "bytes": 147944
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2015/appropriation_fact.parquet",
+      "sha256": "ee2116e93bf9d66686bcdffe84dbbf255e83c6195bb1e1f39f2a1989ca39fc5e",
+      "bytes": 108322
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2015/field_lineage.parquet",
+      "sha256": "9154b20a410ed14ffc002388ebc0c6a1292af4eac439685ce51e685edd69387a",
+      "bytes": 732832
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2015/numeric_evidence.parquet",
+      "sha256": "c6b0285503377ad4db8ea97062fdfc4f6ca2dc62eee362c4b8c7885551b87476",
+      "bytes": 146935
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2016/appropriation_fact.parquet",
+      "sha256": "bb93715c19319a5b50fcd2fcffb0da3b7d8cfc3c7a9ce4d0f28e72feccfb898c",
+      "bytes": 107078
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2016/field_lineage.parquet",
+      "sha256": "db817d0695aa3b46e184183d54820c54df5159b690811b87c8809fa86c30cd77",
+      "bytes": 790088
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2016/numeric_evidence.parquet",
+      "sha256": "6df04200e7753279b5220c9cedb41738135f550fc72328af8254f26732e6faeb",
+      "bytes": 191484
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2017/appropriation_fact.parquet",
+      "sha256": "2d6c99dd078b72147df67eca951865fa0ea0f90048254ea3a2607f147b745245",
+      "bytes": 108551
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2017/field_lineage.parquet",
+      "sha256": "81fa1af1e1a77511fd3fbd50c573fe86a069251fe9693e3276bd885753817e4c",
+      "bytes": 799802
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2017/numeric_evidence.parquet",
+      "sha256": "e1d739abd1264236733bade0db7ffa4073e549fd5ae5d4ef2ae57f680d66b838",
+      "bytes": 189322
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2018/appropriation_fact.parquet",
+      "sha256": "a51a73fd8d16016c5e6a85a285417f6f1387c17f43315672df806abf27905571",
+      "bytes": 109030
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2018/field_lineage.parquet",
+      "sha256": "11d677a29fbd3079ca3a9aea205157e1c4fca12b60863e995b18d8aa26fa963f",
+      "bytes": 804675
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2018/numeric_evidence.parquet",
+      "sha256": "724acd2b85ed6903ef3469da6fe173ea213d94b847f2edfe7b88d9d6cd9bf38c",
+      "bytes": 193301
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2019/appropriation_fact.parquet",
+      "sha256": "1f4443034950c5b3c898de105a497f49fee028b68fbd7b2d782ec4d5b8e80725",
+      "bytes": 109346
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2019/field_lineage.parquet",
+      "sha256": "5493268939013d98716af06c30679bce62945488f0e919b24ddafe811b665b23",
+      "bytes": 807303
+    },
+    {
+      "path": "data/silver/budget_2009_2019_expenses/2019/numeric_evidence.parquet",
+      "sha256": "085f676532b3ebcd5a74951b3e9093c5d17bc8d1466974e2fb5c92bfd8f8224e",
+      "bytes": 191364
+    },
+    {
+      "path": "data/silver/budget_2025_revenue/2025/field_lineage.parquet",
+      "sha256": "291d1f33a5b0e18c3ffe25211eecc1616a7be5557123cf4d20c77e2b6641b89d",
+      "bytes": 46359
+    },
+    {
+      "path": "data/silver/budget_2025_revenue/2025/revenue_fact.parquet",
+      "sha256": "5198cfac16a42db876564eaeb6e1dc2e10463eaea1bdd0bcb462045e611fae40",
+      "bytes": 23186
+    },
+    {
+      "path": "metadata/budget_recovery_licence_and_lineage.json",
+      "sha256": "1897f503e61c3a44f2d3fdb1f776c826d5c95020a0b756732bca0ce9d1b94fb3",
+      "bytes": 27494
+    }
+  ]
+}

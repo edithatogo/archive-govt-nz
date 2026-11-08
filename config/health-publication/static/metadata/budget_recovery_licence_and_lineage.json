@@ -1,0 +1,690 @@
+{
+  "base_revision": "cc78ecc8d392a1003d248fdd2c7458591e7d3d33",
+  "verified_on": "2026-11-08",
+  "attribution": "The Treasury, New Zealand. \u00a9 Crown Copyright.",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "policy_url": "https://www.treasury.govt.nz/copyright-and-licensing",
+  "changes": "Vote Health expense and revenue cells were extracted into typed Parquet with source coordinates. Published Parquet files preserve the verified recovery bytes.",
+  "scope": "Source-separated expense and revenue observations. Original workbooks, duplicate builds and unrelated outputs are excluded.",
+  "rights_note": "This record establishes release rights for the listed supplement files. The Parquet rights field preserves the extraction-time state.",
+  "sources": [
+    {
+      "batch": "budget_2009_2019_expenses",
+      "edition": "biffbudget-2009",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2009-05/b09-expense-data.xls",
+      "source_sha256": "c1177036dd97da6f0e63fb2c91f878a5ec0f98111f62dd881a0e70b536b0bebc",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-data-2009-estimates-appropriations-2009-10",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "appropriation_fact": 267,
+        "field_lineage": 3471,
+        "numeric_evidence": 1068
+      },
+      "recovery_manifest_sha256": "73c45a7bc2d78936d835983fab7284fe955be50c403988e9b6449cfd1df4257c",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2009_2019_expenses",
+      "edition": "biffbudget-2010",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2010-05/b10-expense-data.xls",
+      "source_sha256": "7e26853cbed914ef19bc6dc426d24708dbf19487ce0a9dbc15db4d32d3d00a4f",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-data-2010",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "appropriation_fact": 319,
+        "field_lineage": 5104,
+        "numeric_evidence": 1276
+      },
+      "recovery_manifest_sha256": "00531190d1963e99913984d942a2b194580faa7b958ed2df609bafa382da7c8b",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2009_2019_expenses",
+      "edition": "biffbudget-2011",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2011-05/b11-expense-data.xls",
+      "source_sha256": "8712d27f2da918d1cc8376a8f15e24cafb6b608a3be0cc19da226768a8f69ba0",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/information-release/budget-data-2011",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "appropriation_fact": 315,
+        "field_lineage": 5355,
+        "numeric_evidence": 1260
+      },
+      "recovery_manifest_sha256": "daa13176b547db2e3c85525c8ff871dc6848a2d4ab905b388800a9b6ee4521e5",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2009_2019_expenses",
+      "edition": "biffbudget-2012",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2018-04/b12-expenditure-data.xls",
+      "source_sha256": "81429ccc5da52cdba73bb6276bba7d1c55a301dc996a447909fc8fc82ca1af12",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-data-2012",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "appropriation_fact": 310,
+        "field_lineage": 5270,
+        "numeric_evidence": 1240
+      },
+      "recovery_manifest_sha256": "8e5744e7fb73795aaa2ff734e0495de1eab349e7b4c5646492bbfbc6d30692b6",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2009_2019_expenses",
+      "edition": "biffbudget-2013",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2018-04/b13-expenditure-data.xls",
+      "source_sha256": "c5b7f6916b89a9ea0fd14caf73a979c730116d517d78ffe777d36c5966626140",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-2013-data-estimates-appropriations-2013-14",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "appropriation_fact": 310,
+        "field_lineage": 5890,
+        "numeric_evidence": 1240
+      },
+      "recovery_manifest_sha256": "e2867873d68ac78f6c87550b8916d690aaafa3cc06ed2e5c36876145abea389c",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2009_2019_expenses",
+      "edition": "biffbudget-2014",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2018-04/b14-expenditure-data.xls",
+      "source_sha256": "7194eebe691ff57378168439d7ba5a785dfa408bc3c836f2a7cfe50519af5169",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-2014-data-estimates-appropriations-2014-15",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "appropriation_fact": 313,
+        "field_lineage": 9703,
+        "numeric_evidence": 1252
+      },
+      "recovery_manifest_sha256": "cad4ef78fc81bf207c5d4aee888a42d191eb8b8ccab30d1e366d7837b0ffdda0",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2009_2019_expenses",
+      "edition": "biffbudget-2015",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2015-05/b15-expenditure-data.xls",
+      "source_sha256": "4dbabc88f1e0756e0f651ef261b3408b262a10f0b1cdb51977844c97841b9325",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-2015-data-estimates-appropriations-2015-16",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "appropriation_fact": 315,
+        "field_lineage": 7875,
+        "numeric_evidence": 1260
+      },
+      "recovery_manifest_sha256": "982ce14c9907ebdc77cffc5b64e9284f68de9398e402140f0828497d5ea27747",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2009_2019_expenses",
+      "edition": "biffbudget-2016",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2018-04/b16-expenditure-data.xls",
+      "source_sha256": "bce6d2e55c15c1249881bac9d2a1afdf111cd9d1c258c20913bd4b39300f0f5a",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-2016-data-estimates-appropriations-2016-17",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "appropriation_fact": 312,
+        "field_lineage": 8424,
+        "numeric_evidence": 1560
+      },
+      "recovery_manifest_sha256": "7e6db201df0765ea47315681f4f593a1fe4e5149148fff7abcf0a46cfe16a380",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2009_2019_expenses",
+      "edition": "biffbudget-2017",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2018-04/b17-expenditure-data.xls",
+      "source_sha256": "7e0cc535eb9feb7e82b1a998dd40b7b318e5593e13589aa48ef4a3b5508708fc",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-2017-data-estimates-appropriations-2017-18",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "appropriation_fact": 316,
+        "field_lineage": 8532,
+        "numeric_evidence": 1580
+      },
+      "recovery_manifest_sha256": "caa9684863167c92c225a6a065d080a83d9f2c5938dc41fd271717c561fd2e8d",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2009_2019_expenses",
+      "edition": "biffbudget-2018",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2018-05/b18-expenditure-data.xls",
+      "source_sha256": "fecd70019054313f3a11cbb370be684d8bea0eea8cb3623b69a9e193ac085c24",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-2018-data-estimates-appropriations-2018-19",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "appropriation_fact": 318,
+        "field_lineage": 8586,
+        "numeric_evidence": 1590
+      },
+      "recovery_manifest_sha256": "a0558ec35c25a63e0189d9edfe0291ea886b4da5fdc7f4e7327746bc057928d1",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2009_2019_expenses",
+      "edition": "biffbudget-2019",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2019-05/b19-expenditure-data.xls",
+      "source_sha256": "30602fd66ec1f4fb7d0b47f2766f6560c4d22e90c11e994fba3e404e29ceab48",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-2019-data-estimates-appropriations-2019-20",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "appropriation_fact": 319,
+        "field_lineage": 8613,
+        "numeric_evidence": 1595
+      },
+      "recovery_manifest_sha256": "21c32551e51e018251673ae2b7bd81e155ade2c6ce0aefb23c6438704b38b9db",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2007_2019_revenue",
+      "edition": "biffrevenue-2007",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2007-11/b07-data-revenue.xls",
+      "source_sha256": "bbb62b2d4fb16a35315854adc81899bb416a0cebc3f84f4a971158626b8be3e4",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/information-release/budget-data-2007",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "field_lineage": 444,
+        "numeric_evidence": 111,
+        "revenue_fact": 37
+      },
+      "recovery_manifest_sha256": "4e67c873391f81027ad267ded7e82c851b926cbbf744553f88f253f2b602a7b2",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2007_2019_revenue",
+      "edition": "biffrevenue-2008",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2008-05/b08-revenue-data.xls",
+      "source_sha256": "c261fb95965f8dc1c0d649000e5bf46012c6e5c37385c050c370de07a580e94a",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-data-2008",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "field_lineage": 588,
+        "numeric_evidence": 147,
+        "revenue_fact": 49
+      },
+      "recovery_manifest_sha256": "fddad33bc626a54dfa3c847f4e4d4e08e327245f59a20ea16652857af3efd1b6",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2007_2019_revenue",
+      "edition": "biffrevenue-2009",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2009-05/b09-revenue-data.xls",
+      "source_sha256": "dc5ce0e7faf9302cdca3bf9e0af5f423e0cac851cb1bdf031508b732f0ae383d",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-data-2009-estimates-appropriations-2009-10",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "field_lineage": 768,
+        "numeric_evidence": 192,
+        "revenue_fact": 64
+      },
+      "recovery_manifest_sha256": "7b9c959bfd662ee9753c1e165030de42074325b7104266fb877a3e2c8626ec25",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2007_2019_revenue",
+      "edition": "biffrevenue-2010",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2010-05/b10-revenue-data.xls",
+      "source_sha256": "d6f63516ef967abec18f09cbe347c02a648a53ef04ce382aa8511c7280f08e15",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-data-2010",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "field_lineage": 1140,
+        "numeric_evidence": 304,
+        "revenue_fact": 76
+      },
+      "recovery_manifest_sha256": "18d6b6cb75749834f7bec26d61c4a7a501b2ee4cf619b6c9c0409f642a2c3a1f",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2007_2019_revenue",
+      "edition": "biffrevenue-2011",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2011-05/b11-revenue-data.xls",
+      "source_sha256": "bd902503455cebe5cc455031bbd2b07f325cce57027c8391c9bec476ad77f073",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/information-release/budget-data-2011",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "field_lineage": 1065,
+        "numeric_evidence": 284,
+        "revenue_fact": 71
+      },
+      "recovery_manifest_sha256": "5aba032f8c99b8f7da753d68ba168af57b7da9169ba3554108b450eae3e81912",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2007_2019_revenue",
+      "edition": "biffrevenue-2012",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2018-04/b12-revenue-data.xls",
+      "source_sha256": "643fad503424ee6b3aa060a2ff2107fc69d9326bb51446d6fa41755a32d038cb",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-data-2012",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "field_lineage": 1065,
+        "numeric_evidence": 284,
+        "revenue_fact": 71
+      },
+      "recovery_manifest_sha256": "bf37764bab56c1fd68a17810bb0d984f548344ba6ec9bdb07f12200339f01c9e",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2007_2019_revenue",
+      "edition": "biffrevenue-2013",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2018-04/b13-revenue-data.xls",
+      "source_sha256": "69e9d3d10c72bd01c661ca02633d48404f7add6f5e4fda02017ab5649fa27869",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-2013-data-estimates-appropriations-2013-14",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "field_lineage": 1156,
+        "numeric_evidence": 272,
+        "revenue_fact": 68
+      },
+      "recovery_manifest_sha256": "ff05580a8c8b06cc14c4bc6aaf341899cfa523d4e56254f97b651189a18334ad",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2007_2019_revenue",
+      "edition": "biffrevenue-2014",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2018-04/b14-revenue-data.xls",
+      "source_sha256": "ba1798c82e556afe98188ea58651759cb6fa1f52a461e4529bc664af424db91b",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-2014-data-estimates-appropriations-2014-15",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "field_lineage": 1407,
+        "numeric_evidence": 201,
+        "revenue_fact": 67
+      },
+      "recovery_manifest_sha256": "1519759517dce174914835992b4ad17c2755e3a4793793b72c46bc588a502807",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2007_2019_revenue",
+      "edition": "biffrevenue-2015",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2015-05/b15-revenue-data.xls",
+      "source_sha256": "481b971d4569cbadbf48440fa1d66f82d8d42942fd855e95e5bfd1ea95e70171",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-2015-data-estimates-appropriations-2015-16",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "field_lineage": 924,
+        "numeric_evidence": 198,
+        "revenue_fact": 66
+      },
+      "recovery_manifest_sha256": "57f71e4c8448719dfaa16cd93f0ec086c3a1d32114e9a5ede5bf14e15ca24a60",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2007_2019_revenue",
+      "edition": "biffrevenue-2016",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2018-04/b16-revenue-data.xls",
+      "source_sha256": "df34849f2ef7ce1903469edb315047afc8ae716574d163f59691a654c51b957f",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-2016-data-estimates-appropriations-2016-17",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "field_lineage": 910,
+        "numeric_evidence": 195,
+        "revenue_fact": 65
+      },
+      "recovery_manifest_sha256": "9ecd8edcf2c223d61fae6264eae64c2e9e871ebf1fbb3301099c2b4ebd9503ee",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2007_2019_revenue",
+      "edition": "biffrevenue-2017",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2018-04/b17-revenue-data.xls",
+      "source_sha256": "e49a706c4a5ac889e8b9e68165dbfd704a9f05b0300bef7f69abf5f5620b7adf",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-2017-data-estimates-appropriations-2017-18",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "field_lineage": 896,
+        "numeric_evidence": 192,
+        "revenue_fact": 64
+      },
+      "recovery_manifest_sha256": "e00cea8aeb1c354da3f3ed41f7a8722923a137616f4c70e369795c01de7fdfbd",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2007_2019_revenue",
+      "edition": "biffrevenue-2018",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2018-05/b18-revenue-data.xls",
+      "source_sha256": "4db87e7eddd7a76b5b7523db5a01952d15e7f47b88d03ef9878d37cd077f937f",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-2018-data-estimates-appropriations-2018-19",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "field_lineage": 896,
+        "numeric_evidence": 192,
+        "revenue_fact": 64
+      },
+      "recovery_manifest_sha256": "6ec88405707df5f932518983b2aa3f2e0fcab8295869db16b8899bbca283e8ef",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2007_2019_revenue",
+      "edition": "biffrevenue-2019",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2019-05/b19-revenue-data.xls",
+      "source_sha256": "d927995dd91eda6fdfb4020eb2a3e91871a24d5144e837e7801b6725e5f33df8",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-2019-data-estimates-appropriations-2019-20",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "field_lineage": 882,
+        "numeric_evidence": 189,
+        "revenue_fact": 63
+      },
+      "recovery_manifest_sha256": "df02aa63ca91dd19589e40f7783f0039e537496e12c0f580cec8767c9216a97f",
+      "qualification_receipt_sha256": "057c445f4da5330a69373e0caaf7b8f539111bea54253c8e461d73868c80f8fd"
+    },
+    {
+      "batch": "budget_2025_revenue",
+      "edition": "revenue-2025",
+      "source_url": "https://www.treasury.govt.nz/sites/default/files/2025-05/b25-revenue-data.xlsx",
+      "source_sha256": "2aef43eb419420a549fe56a946539f6e9afcbd91f95e9242457f26c97bafafaa",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-2025-data-estimates-appropriations-2025-26",
+      "licence": "CC-BY-4.0",
+      "rows": {
+        "field_lineage": 621,
+        "revenue_fact": 69
+      },
+      "recovery_manifest_sha256": "f67897da94300b89f7e6d44ff7b886bd8e9cc9e3f00385d176e81892a86ed3c8",
+      "qualification_receipt_sha256": "7cfbc81ce80ee9bdd525b1f9ad79a2bc64b902c3094559b925bbbd9be1e140cf"
+    }
+  ],
+  "duplicate_and_lineage_checks": {
+    "biffbudget-2009": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffbudget-2010": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffbudget-2011": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffbudget-2012": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffbudget-2013": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffbudget-2014": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffbudget-2015": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffbudget-2016": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffbudget-2017": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffbudget-2018": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffbudget-2019": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffrevenue-2007": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffrevenue-2008": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffrevenue-2009": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffrevenue-2010": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffrevenue-2011": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffrevenue-2012": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffrevenue-2013": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffrevenue-2014": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffrevenue-2015": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffrevenue-2016": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffrevenue-2017": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffrevenue-2018": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "biffrevenue-2019": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0,
+      "repeated": 0,
+      "wrong_source": 0,
+      "unbound": 0
+    },
+    "revenue-2025": {
+      "repeated_fact_ids": 0,
+      "repeated_observations": 0,
+      "wrong_fact_source": 0,
+      "invalid_lineage": 0,
+      "orphan_lineage": 0,
+      "untraced_facts": 0,
+      "repeated_lineage": 0
+    }
+  },
+  "across_batches": {
+    "repeated_fact_ids": 0,
+    "repeated_lineage_ids": 0,
+    "hosted_fact_id_matches": 0
+  }
+}

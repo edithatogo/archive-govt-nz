@@ -1,0 +1,60 @@
+{
+  "archive_retained": true,
+  "files_verified": 85,
+  "historical_bytes_preserved": true,
+  "public_readback": true,
+  "revision": "3abd3e1715c65f338d8ce01826089a86d3c1735e",
+  "sources_rebuilt": 27,
+  "state": "verified",
+  "typed_table_equality": true,
+  "viewer": [
+    {
+      "config": "budget_2007_2008_appropriation_fact",
+      "http_status": 200
+    },
+    {
+      "config": "budget_2007_2008_field_lineage",
+      "http_status": 200
+    },
+    {
+      "config": "budget_2007_2008_numeric_evidence",
+      "http_status": 200
+    },
+    {
+      "config": "budget_2007_2019_revenue_field_lineage",
+      "http_status": 200
+    },
+    {
+      "config": "budget_2007_2019_revenue_numeric_evidence",
+      "http_status": 200
+    },
+    {
+      "config": "budget_2007_2019_revenue_revenue_fact",
+      "http_status": 200
+    },
+    {
+      "config": "budget_2009_2019_expenses_appropriation_fact",
+      "http_status": 200
+    },
+    {
+      "config": "budget_2009_2019_expenses_field_lineage",
+      "http_status": 200
+    },
+    {
+      "config": "budget_2009_2019_expenses_numeric_evidence",
+      "http_status": 200
+    },
+    {
+      "config": "budget_2025_revenue_field_lineage",
+      "http_status": 200
+    },
+    {
+      "config": "budget_2025_revenue_revenue_fact",
+      "http_status": 200
+    }
+  ],
+  "verified_on": "2026-11-08",
+  "runtime": "CPython 3.15.1",
+  "live_source_check": "blocked_by_treasury_http_403",
+  "github_actions_verification": "pending"
+}

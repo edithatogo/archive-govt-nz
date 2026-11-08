@@ -1,0 +1,44 @@
+{
+  "base_revision": "b4597c53f4ab5396f15d33010eb43acd5db6e983",
+  "verified_on": "2026-11-08",
+  "scope": "Vote Health expense facts and linked field/numeric evidence only",
+  "licence_url": "https://creativecommons.org/licenses/by/4.0/",
+  "policy_url": "https://www.treasury.govt.nz/copyright-and-licensing",
+  "original_workbooks_redistributed": false,
+  "sources": [
+    {
+      "source_vintage": "Budget-2007",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2007-11/b07-data-expenses.xls",
+      "source_object_sha256": "803822e4b27c1bda6c7c3bbe95c8bc025e1ef67ded6beca55473011d8b62ba21",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/information-release/budget-data-2007",
+      "licence": "CC-BY-4.0",
+      "rights_holder": "New Zealand Crown",
+      "attribution": "The Treasury, New Zealand. \u00a9 Crown Copyright.",
+      "transformation_id": "budget-2007-biff8-canonical/v1",
+      "row_counts": {
+        "appropriation_fact": 160,
+        "field_lineage": 2080,
+        "numeric_evidence": 640
+      },
+      "observation_time_token": "2026-10-21T14:55:18.062744+00:00"
+    },
+    {
+      "source_vintage": "Budget-2008",
+      "source_locator": "https://www.treasury.govt.nz/sites/default/files/2008-05/b08-expense-data.xls",
+      "source_object_sha256": "62283a0454233bfeec9ce75bdbc822dcf59326cc2aecf5ea33581a4e1355c51b",
+      "licence_evidence_url": "https://www.treasury.govt.nz/publications/data/budget-data-2008",
+      "licence": "CC-BY-4.0",
+      "rights_holder": "New Zealand Crown",
+      "attribution": "The Treasury, New Zealand. \u00a9 Crown Copyright.",
+      "transformation_id": "budget-2008-biff8-canonical/v1",
+      "row_counts": {
+        "appropriation_fact": 215,
+        "field_lineage": 2795,
+        "numeric_evidence": 860
+      },
+      "observation_time_token": "2026-10-21T14:55:18.062744+00:00"
+    }
+  ],
+  "changes": "Selected Vote Health cells, decoded BIFF8 numbers and projected facts into typed Parquet with source coordinates. Published Parquet bytes equal the verified recovery outputs.",
+  "historical_rights_state": "The unchanged Parquet retains its extraction-time not_evaluated state. This resource-specific record establishes CC BY 4.0 for this supplement."
+}
