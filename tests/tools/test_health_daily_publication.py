@@ -229,12 +229,13 @@ def test_read_only_token_cannot_publish() -> None:
         )
 
 
+@pytest.mark.parametrize("error", [CkanProtocolError(), CkanTransportError(200, {})])
 def test_ckan_supported_post_after_invalid_get(
-    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, error: Exception
 ) -> None:
     """An HTML GET response is never treated as an empty catalogue."""
     client = SimpleNamespace(
-        action_get=AsyncMock(side_effect=CkanProtocolError()), action=AsyncMock()
+        action_get=AsyncMock(side_effect=error), action=AsyncMock()
     )
     client.action.return_value = SimpleNamespace(
         response=SimpleNamespace(
@@ -249,12 +250,9 @@ def test_ckan_supported_post_after_invalid_get(
     result = asyncio.run(_MODULE.discover_health(tmp_path))
     assert result["success"] is True
     client.action.assert_awaited_once()
-    assert (
-        json.loads((tmp_path / "ckan-transport.json").read_text())["attempts"][0][
-            "error"
-        ]
-        == "protocol_error"
-    )
+    assert json.loads((tmp_path / "ckan-transport.json").read_text())["attempts"][0][
+        "error"
+    ] in {"protocol_error", "http_status"}
 
 
 def test_ckan_denial_does_not_switch_transport(

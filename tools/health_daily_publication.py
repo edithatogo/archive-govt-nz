@@ -18,7 +18,11 @@ import pyarrow.parquet as pq
 from huggingface_hub import CommitOperationAdd, DatasetCard, HfApi, hf_hub_download
 
 from archive_govt_nz.ckan.client import BoundedCkanClient, CkanClientConfig
-from archive_govt_nz.ckan.envelope import CkanError, CkanProtocolError
+from archive_govt_nz.ckan.envelope import (
+    CkanError,
+    CkanProtocolError,
+    CkanTransportError,
+)
 from archive_govt_nz.ckan.treasury import LICENCE, Links
 from archive_govt_nz.domains.health_appropriations import (
     biff8_canonical,
@@ -198,7 +202,12 @@ async def discover_health(output: Path) -> dict[str, Any]:
         try:
             try:
                 observation = await client.action_get("package_search", params)
-            except CkanProtocolError as exc:
+            except (CkanProtocolError, CkanTransportError) as exc:
+                if (
+                    isinstance(exc, CkanTransportError)
+                    and exc.status_code != httpx.codes.OK
+                ):
+                    raise
                 attempts.append({"method": "GET", "error": exc.error_class})
                 # Both are supported read-only CKAN Action transports.
                 observation = await client.action("package_search", params)
