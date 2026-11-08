@@ -39,6 +39,7 @@ jobs:
           path: |
             build/health-daily/receipt.json
             build/health-daily/ckan.json
+            build/health-daily/ckan-transport.json
           if-no-files-found: error
           retention-days: 90
       - name: Publish reviewed changes once against the frozen parent
@@ -57,5 +58,6 @@ jobs:
           path: |
             build/health-daily/receipt.json
             build/health-daily/ckan.json
+            build/health-daily/ckan-transport.json
           if-no-files-found: error
           retention-days: 90

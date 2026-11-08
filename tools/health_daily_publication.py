@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import asyncio
 import hashlib
 import json
 import os
@@ -16,6 +17,8 @@ import httpx
 import pyarrow.parquet as pq
 from huggingface_hub import CommitOperationAdd, DatasetCard, HfApi, hf_hub_download
 
+from archive_govt_nz.ckan.client import BoundedCkanClient, CkanClientConfig
+from archive_govt_nz.ckan.envelope import CkanError, CkanProtocolError
 from archive_govt_nz.ckan.treasury import LICENCE, Links
 from archive_govt_nz.domains.health_appropriations import (
     biff8_canonical,
@@ -178,6 +181,48 @@ def verify_files(config: dict[str, Any], release: Path) -> None:
                 seen_fact_ids.update(ids)
 
 
+async def discover_health(output: Path) -> dict[str, Any]:
+    """Use the existing bounded CKAN client and validated Action envelope."""
+    config = CkanClientConfig(
+        base_url="https://catalogue.data.govt.nz",
+        user_agent="archive-govt-nz-health-publication/1.0",
+        timeout_seconds=45,
+        max_attempts=2,
+        base_backoff_seconds=1,
+        jitter_seconds=0,
+        max_response_bytes=16 * 1024 * 1024,
+    )
+    params = {"q": "title:budget AND title:data", "rows": CKAN_ROWS}
+    attempts: list[dict[str, Any]] = []
+    async with BoundedCkanClient(config) as client:
+        try:
+            try:
+                observation = await client.action_get("package_search", params)
+            except CkanProtocolError as exc:
+                attempts.append({"method": "GET", "error": exc.error_class})
+                # Both are supported read-only CKAN Action transports.
+                observation = await client.action("package_search", params)
+        except CkanError as exc:
+            save(
+                output / "ckan-transport.json",
+                {
+                    "attempts": attempts,
+                    "error": exc.error_class,
+                    "status_code": getattr(exc, "status_code", None),
+                },
+            )
+            raise
+    save(
+        output / "ckan-transport.json",
+        {
+            "attempts": attempts,
+            "response_sha256": observation.raw_sha256,
+            "observed_at": observation.observed_at.isoformat(),
+        },
+    )
+    return observation.response.response_document
+
+
 def prepare(config: dict[str, Any], output: Path) -> None:
     """Revalidate CKAN, publisher rights and source bytes before rebuilding."""
     release = output / "release"
@@ -193,12 +238,7 @@ def prepare(config: dict[str, Any], output: Path) -> None:
     }
     save(output / "receipt.json", receipt)
     with httpx.Client(timeout=45, follow_redirects=False) as client:
-        response = client.get(
-            "https://catalogue.data.govt.nz/api/3/action/package_search",
-            params={"q": "title:budget AND title:data", "rows": CKAN_ROWS},
-        )
-        response.raise_for_status()
-        catalogue = response.json()
+        catalogue = asyncio.run(discover_health(output))
         require(
             catalogue.get("success") and catalogue["result"]["results"],
             "empty_health_ckan_discovery",

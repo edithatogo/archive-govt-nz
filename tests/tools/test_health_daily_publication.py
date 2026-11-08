@@ -2,16 +2,19 @@
 
 from __future__ import annotations
 
+import asyncio
 import hashlib
 import importlib.util
 import json
 from pathlib import Path
 from types import SimpleNamespace
-from unittest.mock import Mock
+from unittest.mock import AsyncMock, MagicMock, Mock
 
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
+
+from archive_govt_nz.ckan.envelope import CkanProtocolError, CkanTransportError
 
 _SPEC = importlib.util.spec_from_file_location(
     "health_daily_publication",
@@ -224,3 +227,50 @@ def test_read_only_token_cannot_publish() -> None:
         _MODULE.qualify_write(
             {"name": "edithatogo", "auth": {"accessToken": {"role": "read"}}}
         )
+
+
+def test_ckan_supported_post_after_invalid_get(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """An HTML GET response is never treated as an empty catalogue."""
+    client = SimpleNamespace(
+        action_get=AsyncMock(side_effect=CkanProtocolError()), action=AsyncMock()
+    )
+    client.action.return_value = SimpleNamespace(
+        response=SimpleNamespace(
+            response_document={"success": True, "result": {"count": 1}}
+        ),
+        raw_sha256="digest",
+        observed_at=SimpleNamespace(isoformat=lambda: "observed"),
+    )
+    context = MagicMock()
+    context.__aenter__.return_value = client
+    monkeypatch.setattr(_MODULE, "BoundedCkanClient", lambda _config: context)
+    result = asyncio.run(_MODULE.discover_health(tmp_path))
+    assert result["success"] is True
+    client.action.assert_awaited_once()
+    assert (
+        json.loads((tmp_path / "ckan-transport.json").read_text())["attempts"][0][
+            "error"
+        ]
+        == "protocol_error"
+    )
+
+
+def test_ckan_denial_does_not_switch_transport(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    """An explicit HTTP denial remains a bounded failure."""
+    client = SimpleNamespace(
+        action_get=AsyncMock(side_effect=CkanTransportError(403, {})),
+        action=AsyncMock(),
+    )
+    context = MagicMock()
+    context.__aenter__.return_value = client
+    monkeypatch.setattr(_MODULE, "BoundedCkanClient", lambda _config: context)
+    with pytest.raises(CkanTransportError):
+        asyncio.run(_MODULE.discover_health(tmp_path))
+    client.action.assert_not_awaited()
+    assert (
+        json.loads((tmp_path / "ckan-transport.json").read_text())["status_code"] == 403
+    )
