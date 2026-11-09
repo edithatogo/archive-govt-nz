@@ -2,6 +2,13 @@
 # Global CKAN Harvest & Hugging Face Publication Pipeline
 # Runs on GitLab.com shared runners (unlimited for public repos)
 
+spec:
+  inputs:
+    MAX_DATASETS:
+      type: number
+      default: 0
+      description: "Optional limit on datasets to harvest (0 for full catalogue)"
+
 stages:
   - harvest
   - recover
@@ -33,7 +40,7 @@ harvest:
   script:
     - |
       EXTRA_ARGS=()
-      if [ -n "$MAX_DATASETS" ]; then
+      if [ "$MAX_DATASETS" -gt 0 ]; then
         EXTRA_ARGS=(--max-datasets "$MAX_DATASETS")
       fi
       uv run python tools/harvest_ckan.py \
