@@ -2,13 +2,6 @@
 # Global CKAN Harvest & Hugging Face Publication Pipeline
 # Runs on GitLab.com shared runners (unlimited for public repos)
 
-spec:
-  inputs:
-    MAX_DATASETS:
-      type: number
-      default: 0
-      description: "Optional limit on datasets to harvest (0 for full catalogue)"
-
 stages:
   - harvest
   - recover
@@ -19,6 +12,7 @@ stages:
 variables:
   HF_REPO_ID: "edithatogo/archive-govt-nz-global"
   PYTHON_VERSION: "3.15"
+  MAX_DATASETS: "0"  # 0 = full catalogue, override in pipeline run
   # Cache uv and virtual env between runs
   UV_CACHE_DIR: "$CI_PROJECT_DIR/.uv-cache"
   VENV_DIR: "$CI_PROJECT_DIR/.venv"
@@ -183,7 +177,3 @@ notify:
     - if: $CI_PIPELINE_SOURCE == "schedule"
     - if: $CI_PIPELINE_SOURCE == "pipeline"
     - if: $CI_PIPELINE_SOURCE == "web"
-
-# Include this section for scheduled runs
-# Configure the schedule in GitLab UI: Build > Pipeline schedules
-# Cron: "0 4 * * 0" (Sunday 04:00 UTC)
