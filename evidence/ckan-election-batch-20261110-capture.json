@@ -1,0 +1,340 @@
+{
+  "admitted_for_capture": 28,
+  "broken_url_count": 0,
+  "broken_urls": [],
+  "generated_at": "2026-11-10T13:47:39.066166+00:00",
+  "repair_log": [
+    {
+      "method": "direct curl fetch with --max-time 180 after Wayback 429; byte-identical sha256 to first ingest",
+      "repaired_at": "2026-11-10T13:48:33.907068+00:00",
+      "resource_id": "bd937480-bc40-4c46-b247-188a9ef0fa22"
+    },
+    {
+      "method": "curl -L (redirect-following) after httpx store logged 0-byte bodies (hard redirect not followed)",
+      "note": "Pre-signed redirect target NOT recorded.",
+      "repaired_at": "2026-11-10T13:49:31.713527+00:00",
+      "resource_ids": [
+        "nzes1993-figshare-file-3002940",
+        "nzes1993-figshare-file-6217467"
+      ]
+    }
+  ],
+  "schema_version": "archive-govt-nz.ckan-election-batch-capture/v1",
+  "skipped_tombstones": 0,
+  "source_manifest": "/private/var/folders/m9/_g3wndrn04d80ys2382r700r0000gn/T/opencode/ckan/target-manifest.json",
+  "successful_captures": [
+    {
+      "blake3": "aed4f4c14cbfdfeb138d30f3706db0b3c46bf076e659015648a7d8253621f805",
+      "byte_count": 377808,
+      "content_type": "application/octet-stream",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "elapsed_seconds": 0.5437345000027562,
+      "http_status": 200,
+      "resource_id": "765380b4-4732-4d03-ac45-7de1cd69787b",
+      "sha256": "606244c8c1d195934723446e89823ed0833a0cb2c52ccb0615601f53e1a3dff0",
+      "url": "https://catalogue.data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8/resource/765380b4-4732-4d03-ac45-7de1cd69787b/download/local-authority-election-statistics-2025.xlsm"
+    },
+    {
+      "blake3": "2d97e431e7202f82ee404df30f1728fc1367c776caf3402f923b236f3d74e0ce",
+      "byte_count": 122398,
+      "content_type": "text/csv",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "elapsed_seconds": 0.14173075000144308,
+      "http_status": 200,
+      "resource_id": "04d52569-b5fe-4907-abaf-e7da1900e8d1",
+      "sha256": "2420ba64ad0a0cfdb06387288a164df21ad372a96afa9b55680cad1dd9b24ab7",
+      "url": "https://catalogue.data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8/resource/04d52569-b5fe-4907-abaf-e7da1900e8d1/download/2025-local-authority-election-data.csv"
+    },
+    {
+      "blake3": "502e9525b926be283ec0a32da07f4d9475dcfe9e23f8378cfc18da03a72ceb6a",
+      "byte_count": 344018,
+      "content_type": "application/octet-stream",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "elapsed_seconds": 0.13248787500197068,
+      "http_status": 200,
+      "resource_id": "cc6d44b4-0e08-4d66-8e30-218d883d2ea0",
+      "sha256": "e3ba9e1108a45b3ad61eaa9e0a8e9a6f5f68766095a7cac82eb1daff73e9dea0",
+      "url": "https://catalogue.data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8/resource/cc6d44b4-0e08-4d66-8e30-218d883d2ea0/download/local-authority-election-statistics-2022-updated-in-april-2026.xlsm"
+    },
+    {
+      "blake3": "5bc670997d034b00a63ad6d12f9498b3459cc617a145d3ddb42a17c015c957d7",
+      "byte_count": 119383,
+      "content_type": "text/csv",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "elapsed_seconds": 0.11075983299815562,
+      "http_status": 200,
+      "resource_id": "ebe92b28-7538-4c61-aed5-ec11c4c23e29",
+      "sha256": "58c9112e1888e78dcc0cef460dd6338e7a984ae898e31cae130d1da04044e94d",
+      "url": "https://catalogue.data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8/resource/ebe92b28-7538-4c61-aed5-ec11c4c23e29/download/2022-local-authority-election-data-updated-in-september-2025.csv"
+    },
+    {
+      "blake3": "a194894b4203fc61b12660d6e3393a8794dd9fa4aab22c9a6c133fbbc9d8b48a",
+      "byte_count": 275787,
+      "content_type": "application/octet-stream",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "elapsed_seconds": 0.10006358400278259,
+      "http_status": 200,
+      "resource_id": "b556a1f6-1271-4a02-ae78-ea6840f93ced",
+      "sha256": "b4d5034bf465af2101062f863574da8d7b56e6a361ff8a7758378cfcba3c5b90",
+      "url": "https://catalogue.data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8/resource/b556a1f6-1271-4a02-ae78-ea6840f93ced/download/2019-local-authority-elections-results.xlsx"
+    },
+    {
+      "blake3": "6cc3d8e95f66723fb8c6584816c649fdb10b27b3bc2be17650c027f806b7c98e",
+      "byte_count": 137455,
+      "content_type": "text/csv",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "elapsed_seconds": 0.17531283300195355,
+      "http_status": 200,
+      "resource_id": "6f16bc0e-5ccf-4578-b3e5-a2d6c4330f6d",
+      "sha256": "9d9430eecde75f0b2b0ba6a602efd5d8a27e8afe0f3957885fce472f8a5762f0",
+      "url": "https://catalogue.data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8/resource/6f16bc0e-5ccf-4578-b3e5-a2d6c4330f6d/download/2019-local-elections-statistics.csv"
+    },
+    {
+      "blake3": "71680c9482fee6d40083656b98c207a2be15446fa6fe980fe40d262cd7a82b1f",
+      "byte_count": 2667432,
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "elapsed_seconds": 0.2486867089974112,
+      "http_status": 200,
+      "resource_id": "434f87ff-d54d-4bd2-a0bc-4894b580c7e5",
+      "sha256": "8ffa9331b67769eb9789d40114bc5aefd2ad7b01ae851faf78627a59bfe4c78b",
+      "url": "https://catalogue.data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8/resource/434f87ff-d54d-4bd2-a0bc-4894b580c7e5/download/2016-local-authority-elections-results.xlsx"
+    },
+    {
+      "blake3": "c53330d7137673da33ddde927b7189483a3c03470c77cc04de9937ef693dc690",
+      "byte_count": 213098,
+      "content_type": "text/csv",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "elapsed_seconds": 0.11181629200291354,
+      "http_status": 200,
+      "resource_id": "a8ed304f-19ae-4402-8e53-1ab7d4a7e8b9",
+      "sha256": "6e9f34d89e95cb53bab7df69343d982925c264ae65bd8763ea73bf534518533a",
+      "url": "https://catalogue.data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8/resource/a8ed304f-19ae-4402-8e53-1ab7d4a7e8b9/download/2016-local-authority-elections-results.csv"
+    },
+    {
+      "blake3": "0f47ca4c84b37a246c45f0b11a9f0729ecf0eeab25b4b69de0fd88d4880380ac",
+      "byte_count": 2262743,
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "elapsed_seconds": 0.8763762499947916,
+      "http_status": 200,
+      "resource_id": "31951ca8-29c0-4a79-be66-6c15a78b6b01",
+      "sha256": "bd4ba895dd4bf110b7694e29f862b1893542b8e1a238ba7543fae047e19cc61d",
+      "url": "https://www.dia.govt.nz/diawebsite.nsf/Files/2013-Local-Authority-Elections/$file/2013-Local-Authority-Election-Statistics.xlsx"
+    },
+    {
+      "blake3": "423a789e5e9952e8f3269cd7b99489f8d2dbe8eee32c53a675d9a8a1ebd7ce2b",
+      "byte_count": 198800,
+      "content_type": "application/octet-stream",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "elapsed_seconds": 0.15163504100200953,
+      "http_status": 200,
+      "resource_id": "26619f68-faef-4422-b5bc-7a266e78e4b3",
+      "sha256": "cca5947ad517bef2a763abf60611362a206acd0a63b946444e496eb9a02fd9df",
+      "url": "https://www.dia.govt.nz/diawebsite.nsf/Files/2013-Local-Authority-Elections/$file/2013-Local-Authority-Election-Data.csv"
+    },
+    {
+      "blake3": "a9672ad4d9650faa59dd857829f695f84a2f83d948d2282710b65f1a9c7c0e1f",
+      "byte_count": 205885,
+      "content_type": "application/octet-stream",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "elapsed_seconds": 0.18483329199807486,
+      "http_status": 200,
+      "resource_id": "c33421a5-f473-46dc-85cf-d7d5fd0f2fc4",
+      "sha256": "2c0ce80a6188bca7dc31fd8bcd23e0067b855185112bf76971854c17340bddbf",
+      "url": "https://www.dia.govt.nz/diawebsite.nsf/Files/2013-Local-Authority-Elections/$file/2010-Local-Authority-Election-Data.csv"
+    },
+    {
+      "blake3": "e6f3cef3ce5a7932587419d03b534fbd2589a6c5ef3a37594fb0d8bf3bac620a",
+      "byte_count": 208859,
+      "content_type": "application/octet-stream",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "elapsed_seconds": 0.13463550000597024,
+      "http_status": 200,
+      "resource_id": "df29b6a0-a921-46e0-a286-37882d4c027e",
+      "sha256": "6872ba8f8bce5e7d5b51386a6e0c7bc122f6ec7e309715fcf26f3396c01942bc",
+      "url": "https://www.dia.govt.nz/diawebsite.nsf/Files/2013-Local-Authority-Elections/$file/2007-Local-Authority-Election-Data.csv"
+    },
+    {
+      "blake3": "e9de64608e21bc406fb2a1aae68bed1a799d5c5a4eaebdd9aa2f1eeb9b52879c",
+      "byte_count": 2357760,
+      "content_type": "application/vnd.ms-excel",
+      "dataset_id": "4bc7fc3c-6a37-4463-a505-b71d1c7fb7bd",
+      "elapsed_seconds": 2.1924496249994263,
+      "http_status": 200,
+      "resource_id": "2e1214d7-c2c0-4da5-9996-99db47eb8903",
+      "sha256": "8ec03224b3920a8c59f8773e2ae68181973ede85373b6d8b3ef1a185c181f618",
+      "url": "https://web.archive.org/web/20221226102449id_/https://repository.digitalnz.org/system/uploads/record/attachment/461/1892_women_s_suffrage_petition.xls"
+    },
+    {
+      "blake3": "3746d1608cc3bf8084c494c52b0678d70d253de2258a8279bcc8cbf91121bb80",
+      "byte_count": 11573,
+      "content_type": "text/csv",
+      "dataset_id": "f0f878d5-e2da-477d-85a0-4d2006f8b558",
+      "elapsed_seconds": 0.1850205000009737,
+      "http_status": 200,
+      "resource_id": "89069a40-abcf-4190-9665-3513ff004dd8",
+      "sha256": "9e724affa858c7890099b9701cb9b6e289d2fb2316ee99e4c280d6abd1216fe9",
+      "url": "https://catalogue.data.govt.nz/dataset/f0f878d5-e2da-477d-85a0-4d2006f8b558/resource/89069a40-abcf-4190-9665-3513ff004dd8/download/member-contact-details-at-11-june-2026.csv"
+    },
+    {
+      "blake3": "4ccff7e08083b2dc03f2d1e47adb7a30b268e83e69cb217f53b1ea6d4ca8cb1c",
+      "byte_count": 77612,
+      "content_type": "text/csv",
+      "dataset_id": "f0f878d5-e2da-477d-85a0-4d2006f8b558",
+      "elapsed_seconds": 0.15180374999908963,
+      "http_status": 200,
+      "resource_id": "11b77d31-e8cb-46e6-8924-aabfbb9136ad",
+      "sha256": "8b3adb5282e3f18e80d62c23fb9ed02fc40cbcc3df0c363730ce1034900ff65c",
+      "url": "https://catalogue.data.govt.nz/dataset/f0f878d5-e2da-477d-85a0-4d2006f8b558/resource/11b77d31-e8cb-46e6-8924-aabfbb9136ad/download/member-list.csv"
+    },
+    {
+      "blake3": "e213145d2ac773e75c4b0510a6eeb51e7d8de1d7c3204e3b48ce0e1caa86b8c8",
+      "byte_count": 564412,
+      "content_type": "text/csv",
+      "dataset_id": "f0f878d5-e2da-477d-85a0-4d2006f8b558",
+      "elapsed_seconds": 0.15594295899791177,
+      "http_status": 200,
+      "resource_id": "9767376e-ead0-468d-8b55-a65dfb629b54",
+      "sha256": "c7424b2258f67a648b732c88041c21603e04490b45deb9f851af888e80b1b672",
+      "url": "https://catalogue.data.govt.nz/dataset/f0f878d5-e2da-477d-85a0-4d2006f8b558/resource/9767376e-ead0-468d-8b55-a65dfb629b54/download/member-terms-as-at-27-august-2026.csv"
+    },
+    {
+      "blake3": "5a3bd99dbc7d5e90f44a6606ed44b5c576e9f37c3373be681593e7bfefa2a210",
+      "byte_count": 242103,
+      "content_type": "text/csv",
+      "dataset_id": "8f1256cf-6ff6-4629-a6f5-b47f69587b3e",
+      "elapsed_seconds": 0.7076457079965621,
+      "http_status": 200,
+      "resource_id": "398f0056-f445-4dca-9d64-d10f1bdef08e",
+      "sha256": "ed3355b2d200bd70d9b5189ad847acfa465d736af81faa683974bf9581a6f386",
+      "url": "https://web.archive.org/web/20260129095516id_/https://electionresults.govt.nz/electionresults_2008/2008_Polling_Place_Co-ordinates.csv"
+    },
+    {
+      "blake3": "8178a6faa6fb58a91eb3bfe5628e1f04ff4929a9b1bf1092a226ba8da4990df3",
+      "byte_count": 242103,
+      "content_type": "text/plain",
+      "dataset_id": "8f1256cf-6ff6-4629-a6f5-b47f69587b3e",
+      "elapsed_seconds": 0.2065193750022445,
+      "http_status": 200,
+      "resource_id": "4bb13fe5-2cef-4f67-bab1-4d5feccc6953",
+      "sha256": "6daa90fe17f859b679d448ab8420a49c64cfabda50b65ae06f1e65ae23c0bdf6",
+      "url": "https://web.archive.org/web/20260128234615id_/https://electionresults.govt.nz/electionresults_2008/2008_Polling_Place_Co-ordinates.txt"
+    },
+    {
+      "blake3": "57808d6089e30208ab034a9319e92bf997dbaf1e96bc47c03d8a175dbb6a1ffd",
+      "byte_count": 470528,
+      "content_type": "application/vnd.ms-excel",
+      "dataset_id": "8f1256cf-6ff6-4629-a6f5-b47f69587b3e",
+      "elapsed_seconds": 0.20930141700227978,
+      "http_status": 200,
+      "resource_id": "ca11ad1a-8b97-45f6-b227-a7bb06455fe0",
+      "sha256": "c9ac7272b6073504fdf337b0cebcfd2c40bb875f036eddc97977f85dd7fc3091",
+      "url": "https://web.archive.org/web/20260129095515id_/https://electionresults.govt.nz/electionresults_2008/2008_Polling_Place_Co-ordinates.xls"
+    },
+    {
+      "blake3": "3b5cde79df60132b3c45d68183b4d97b14d8a3319a033a45a1939fc4e2876c3c",
+      "byte_count": 259999,
+      "content_type": "text/csv",
+      "dataset_id": "27337b33-40d3-4cad-8467-321caa960b1e",
+      "elapsed_seconds": 0.2653829589980887,
+      "http_status": 200,
+      "resource_id": "ac39ef63-52ac-466f-a868-e7072b144217",
+      "sha256": "d50989b18d012408ad2dd4a5dc51d07eb0e2aa9eef21d1682be0bfd832414a24",
+      "url": "https://web.archive.org/web/20260129095517id_/https://electionresults.govt.nz/electionresults_2011/2011_Polling_Place_Co-ordinates.csv"
+    },
+    {
+      "blake3": "9072a046544d5ba3eb41aa7bf3cc764f329a9e5414392a03641e4aad90e065d1",
+      "byte_count": 259999,
+      "content_type": "text/plain",
+      "dataset_id": "27337b33-40d3-4cad-8467-321caa960b1e",
+      "elapsed_seconds": 0.20420829200156732,
+      "http_status": 200,
+      "resource_id": "609a2181-6f97-4c3a-b183-317bbc2c76cf",
+      "sha256": "df357440139d1933f209e598f24d71e30d4390f379717a78fd6fb284bd28b52c",
+      "url": "https://web.archive.org/web/20260128234823id_/https://electionresults.govt.nz/electionresults_2011/2011_Polling_Place_Co-ordinates.txt"
+    },
+    {
+      "blake3": "9560fa32f3857d5d2a17d04cf99e64e96d8e0150124473714485d769b30358b4",
+      "byte_count": 503296,
+      "content_type": "application/vnd.ms-excel",
+      "dataset_id": "27337b33-40d3-4cad-8467-321caa960b1e",
+      "elapsed_seconds": 0.39810366700112354,
+      "http_status": 200,
+      "resource_id": "05965801-d5af-429b-a328-70f6242e88ca",
+      "sha256": "0da126fd84614a39c31e5f22df1ee83f3832b99220ea003760f8d77cfcde4fc9",
+      "url": "https://web.archive.org/web/20260129095518id_/https://electionresults.govt.nz/electionresults_2011/2011_Polling_Place_Co-ordinates.xls"
+    },
+    {
+      "blake3": "9e70c2ddd760c77ac411d3f06618f01b5b207084a93b622d1a5f881558869fcc",
+      "byte_count": 588800,
+      "content_type": "application/vnd.ms-excel",
+      "dataset_id": "0140ddde-f908-4ac8-b818-79ec88519e4f",
+      "elapsed_seconds": 0.43284591699921293,
+      "http_status": 200,
+      "resource_id": "ef535617-81f2-436e-bedb-121b6237ac9f",
+      "sha256": "d8f5abe71214e1e43258d99255e03b125eed1fb3e63b047b7555b2820d850444",
+      "url": "https://web.archive.org/web/20260128234614id_/https://electionresults.govt.nz/electionresults_2014/2014_Voting_Place_Co-ordinates.xls"
+    },
+    {
+      "blake3": "a2721f9e9500971f48fac7f08c43db7af9216fca5cf6d7d673fcf1ff452f12d2",
+      "byte_count": 632160,
+      "content_type": "text/plain",
+      "dataset_id": "0140ddde-f908-4ac8-b818-79ec88519e4f",
+      "elapsed_seconds": 0.41247112499695504,
+      "http_status": 200,
+      "resource_id": "e5693fbb-ddd7-4e3e-b8a5-efbbdc4ac286",
+      "sha256": "20b8d54f3e46cdccbd92aa48854ad079c6a0aaf427a1c3d50062be307ebeaad5",
+      "url": "https://web.archive.org/web/20260128234616id_/https://electionresults.govt.nz/electionresults_2014/2014_Voting_Place_Co-ordinates.txt"
+    },
+    {
+      "blake3": "a7618f8f5e28764a85c382687d6384d24c25832824d9b62532f9953779266d5c",
+      "byte_count": 632160,
+      "content_type": "text/csv",
+      "dataset_id": "0140ddde-f908-4ac8-b818-79ec88519e4f",
+      "elapsed_seconds": 0.4061630830037757,
+      "http_status": 200,
+      "resource_id": "2258daaf-fec6-4ebd-8640-f919be093dda",
+      "sha256": "37d0b88159f83c2b4d2b5db3347aabee151802244891cfc3d8b7182b8e3001e7",
+      "url": "https://web.archive.org/web/20260129085452id_/https://electionresults.govt.nz/electionresults_2014/2014_Voting_Place_Co-ordinates.csv"
+    },
+    {
+      "blake3": "80375e539d6583e8eeb42fcb05018d9c5273f9016c7944fc001d0c98499642a2",
+      "byte_count": 1955840,
+      "content_type": "application/vnd.ms-excel",
+      "dataset_id": "4bc7fc3c-6a37-4463-a505-b71d1c7fb7bd",
+      "elapsed_seconds": null,
+      "http_status": 200,
+      "note": "Re-fetched after Wayback HTTP 429 on the bulk pass; byte-identical to the first clean capture (sha256 prefix 10da60978dcc).",
+      "resource_id": "bd937480-bc40-4c46-b247-188a9ef0fa22",
+      "sha256": "10da60978dccd437c14ab9bfa530b3fee8362e52b43b35731a36d08d3f2fde44",
+      "url": "https://web.archive.org/web/20221225130306id_/https://repository.digitalnz.org/system/uploads/record/attachment/462/1893_women_s_suffrage_petition.xls"
+    },
+    {
+      "blake3": "ccec12ea874a6838e050687b2046f19fb68babc1e2dfd3b0fd064fc98a534ba7",
+      "byte_count": 1217600,
+      "content_type": "application/octet-stream",
+      "dataset_id": "oai-figshare-com-article-2002590",
+      "elapsed_seconds": null,
+      "http_status": 200,
+      "note": "ndownloader.figshare.com 302-redirects to a pre-signed storage URL; redirect resolved by curl at capture time. The pre-signed target URL is not recorded (expiring credential). Bytes verified against the Figshare API file size.",
+      "resource_id": "nzes1993-figshare-file-3002940",
+      "sha256": "db23685b09879e2f297b0565efe9fcf418fa9d27c20fde724d353f6f17b69c93",
+      "url": "https://ndownloader.figshare.com/files/3002940"
+    },
+    {
+      "blake3": "e7ca3e71944ecb5840c50f4b8475e1134c87582aeb7cac1a0ccd73917f9e5975",
+      "byte_count": 1727196,
+      "content_type": "application/pdf",
+      "dataset_id": "oai-figshare-com-article-2002590",
+      "elapsed_seconds": null,
+      "http_status": 200,
+      "note": "ndownloader.figshare.com 302-redirects to a pre-signed storage URL; redirect resolved by curl at capture time. The pre-signed target URL is not recorded (expiring credential). Bytes verified against the Figshare API file size.",
+      "resource_id": "nzes1993-figshare-file-6217467",
+      "sha256": "fd471631874b3f6f846062ce4dc84d8621e2f40edd377f547bd1e2765467f5e4",
+      "url": "https://ndownloader.figshare.com/files/6217467"
+    }
+  ],
+  "successful_count": 28,
+  "total_candidates": 28
+}

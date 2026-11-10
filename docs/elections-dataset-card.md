@@ -26,6 +26,11 @@ tags:
 
 **⚠️ 2026 IS PRELIMINARY — Official results due 27 November 2026**
 
+**✏️ Verified captures 9–11 Nov 2026**: this revision also ships the 10-11 November 2026
+verified capture batches (CKAN records; Wikipedia opinion polls 1993–2026; Internet Archive
+raw-byte per-place official CSVs 2017/2020/2023; NZES 1993 figshare files) — see Data
+Components §§6–8.
+
 This dataset captures **all New Zealand General Elections from 1996 to 2026**, including:
 - **2026 Preliminary Results** (held 7 Nov 2026, captured 9 Nov 2026) — ~399,000 special votes not yet counted
 - **Official Results 1996–2023** — Complete historical record
@@ -38,9 +43,9 @@ This dataset captures **all New Zealand General Elections from 1996 to 2026**, i
 | Year | Status | Date | Electorates | Voting-Place CSV | Boundaries |
 |------|--------|------|-------------|------------------|------------|
 | **2026** | **PRELIMINARY** | 7 Nov 2026 | 71 | ✅ 71 XLSX (full) | ✅ 2025 review |
-| **2023** | OFFICIAL | 14 Oct 2023 | 72 | ⚠️ Partial (~55%) | ✅ 2020 review |
-| **2020** | OFFICIAL | 17 Oct 2020 | 72 | ⚠️ Minimal | ✅ 2020 review |
-| **2017** | OFFICIAL | 23 Sep 2017 | 71 | ❌ HTML/PDF only | ✅ 2014 review |
+| **2023** | OFFICIAL | 14 Oct 2023 | 72 | ✅ 72 + 72 per-place CSVs (Wayback `id_`) | ✅ 2020 review |
+| **2020** | OFFICIAL | 17 Oct 2020 | 72 | ✅ 72 + 72 per-place CSVs (Wayback `id_`) | ✅ 2020 review |
+| **2017** | OFFICIAL | 23 Sep 2017 | 71 | ✅ 71 + 71 per-place CSVs (Wayback `id_`) | ✅ 2014 review |
 | **2014** | OFFICIAL | 20 Sep 2014 | 64 | ❌ CSV summary only | ✅ 2014 review |
 | **2011** | OFFICIAL | 26 Nov 2011 | 64 | ❌ CSV summary only | ✅ 2007 review |
 | **2008** | OFFICIAL | 8 Nov 2008 | 64 | ❌ CSV summary only | ✅ 2007 review |
@@ -53,6 +58,7 @@ This dataset captures **all New Zealand General Elections from 1996 to 2026**, i
 
 ### 1. Electoral Commission Results (1996–2026)
 - **2026 Preliminary**: 71 electorate XLSX files (Party + Candidate sheets), 71 PDFs, 76 HTML pages — **~10.1 MB**
+- **2023/2020/2017 per-place CSVs**: 144/144/142 files captured verbatim via Internet Archive `id_` raw-byte snapshots (see §8). Note: only the previously-ingested subsets appear in the Derivatives tables below; the Wayback captures are included as raw bytes under `objects/` with per-file receipts and were NOT yet merged into the parquet derivatives.
 - **2023/2020**: Voting-place CSV for ~55% (2023) and ~3% (2020) of electorates
 - **2017–1996**: HTML statistics pages, PDF reports, summary CSVs
 
@@ -112,6 +118,84 @@ SHA-256. Per-batch provenance lives in `evidence/capture-<capture_id>.json`.
 Returns are published by the Commission under the Electoral Act 1993; individual returns
 contain candidate- and party-supplied financial declarations.
 
+### 6. CKAN & figshare Research Batch (10 November 2026)
+
+Captured directly from `data.govt.nz` (CKAN API, unauthenticated public endpoints) and
+figshare via OAI-PMH, then CAS-verified against their `sha256`/`byte_count` receipts.
+See `evidence/ckan-election-batch-20261110-{classification,capture}.json` (28/28 eligible,
+0 broken, 18,876,807 bytes).
+
+| Publisher | Dataset | Files | Licence |
+|-----------|---------|-------|---------|
+| Department of Internal Affairs | [Local Authority Election Statistics](https://data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8) (elections 2004–2022) | 12 (XLSX/CSV) | CC BY 4.0 |
+| Department of Internal Affairs | [Women's Franchise Petitions 1892 and 1893](https://data.govt.nz/dataset/4bc7fc3c-6a37-4463-a505-b71d1c7fb7bd) | 2 XLS | CC BY 3.0 NZ |
+| Parliamentary Service | [Members of Parliament](https://data.govt.nz/dataset/f0f878d5-e2da-477d-85a0-4d2006f8b558) | 3 CSV | CC BY 4.0 |
+| Electoral Commission | [Enrolment and Voting Statistics, 8 Nov 2008](https://data.govt.nz/dataset/8f1256cf-6ff6-4629-a6f5-b47f69587b3e) | 3 (CSV/TXT/XLS) | CC BY 3.0 NZ |
+| Electoral Commission | [Enrolment and Voting Statistics, 26 Nov 2011](https://data.govt.nz/dataset/27337b33-40d3-4cad-8467-321caa960b1e) | 3 (CSV/TXT/XLS) | CC BY 3.0 NZ |
+| Electoral Commission | [Enrolment and Voting Statistics, 20 Sep 2014](https://data.govt.nz/dataset/0140ddde-f908-4ac8-b818-79ec88519e4f) | 3 (XLS/TXT/CSV) | CC BY 3.0 NZ |
+| figshare (NZES — NZ Election Study Archive) | [NZES 1993 study](https://api.figshare.com/articles/oai:figshare.com:2002590) | 2 (SAS `.sav`; questionnaire PDF) | See figshare record |
+
+Notable: the two figshare files were restored byte-identical via a fresh pre-signed
+`ndownloader.figshare.com` redirect at capture time (the signed URL is never persisted
+anywhere); the original 1892/1893 petition XLS hit a transient 429 and was re-downloaded
+byte-identical (see `repair_log` in the 11-10 capture receipt).
+
+### 7. Opinion Polls 1993–2026 (Wikipedia)
+
+Raw wikitext (`action=raw`) and rendered article HTML (`action=render`) for the
+"Opinion polling for the `<year>` New Zealand general election" pages for the twelve
+general-election years (1993, 1996, 1999, 2002, 2005, 2008, 2011, 2014, 2017, 2020,
+2023, 2026). Licence: **CC BY-SA 4.0** (Wikipedia contributors / Wikimedia Foundation).
+24 files in total (12 raw wikitext + 12 HTML). Per-year columns and pollster coverage
+vary because the pages are volunteer-compiled; bulk normalisation into one analysis-ready
+table is NOT performed and is proposed as a follow-up track.
+
+**Pre-1993 gap:** no compiled polling tables exist on Wikipedia for any election before
+1993 (1990 general election confirmed missing). Historical pre-election polling
+sentiment for those elections is **outside the scope** of this revision.
+
+**Non-election-year 404s (intentional):** the compiled-Wikipedia-polling page only exists
+for years in which a general election was held. The capture attempted all years 1993–2026;
+the 22 non-election years returned HTTP 404 for both raw wikitext and rendered HTML —
+recorded as terminal-status misses in `evidence/polls-capture-20261111-capture.json`
+(44 broken URLs, all `en.wikipedia.org` 404s), not as data loss.
+
+### 8. Official Voting-Place Results — per Polling Place (Internet Archive)
+
+Captured from `web.archive.org` **raw-byte** (`id_`) endpoints of the archived
+`electionresults.govt.nz/electionresults_<year>/statistics/csv/*` CSVs — exactly the
+delivered DOCTYPE/Encoding bytes of the snapshot, not a re-render.
+Licence: **CC BY 3.0 NZ** (Electoral Commission) via the archived per-election site.
+
+| Election | Candidate votes by voting place | Party votes by voting place | Wayback snapshot range |
+|----------|----------------------------------|-----------------------------|------------------------|
+| 2017 | 71 CSV | 71 CSV | 2018-01-27 (id_) |
+| 2020 | 72 CSV | 72 CSV | 2025-02 (id_) |
+| 2023 | 72 CSV | 72 CSV | 2025-02 (id_) |
+
+2011 referendum per-place records — the only per-place official referendum files
+archived (confirmed via availability API): `referendum_ppresults.csv` /
+`.txt` / `.xls` (timestamps 20260128234615 / 20260129085258 / 20260129085453).
+
+**Known gaps (documented, not archived):** 2008 general, 2011 general, 2014, and all
+cycles before 2017 — no per-place official-result CSVs in this form exist on either the
+live site or the Internet Archive at capture time (CDX for 2002/2008 returned data but no
+per-place files; 1996/1999/2005 CDX and 2011/2014 CDX returned the Internet Archive's
+Temporarily Offline interstitial at capture time). Enrolment-and-voting-statistics CSV/TXT/XLS
+from 2008/2011/2014 (aggregate-level, not per-place) ARE included via §§6.
+
+### 9. Stats NZ Boundary Geodata — NOT re-captured, blocked
+
+The Stats NZ OData API (`https://api.stats.govt.nz/opendata/v1`) returned an
+**expired TLS certificate** (`api.stats.govt.nz`, issuer DigiCert, notAfter 29 Oct 2026) at
+capture time; no `STATS_NZ_API_KEY`/subscription key was provisioned on the capture machine,
+and no committed configuration may carry one. The 2025/2020/2014/2007 boundary layers
+already present in this dataset therefore remain as previously captured (Phase 2,
+ArcGIS FeatureServer pipeline — see §2 and Derivatives).
+Follow-up (tracked in the conductor backlog): renew the Stats NZ TLS cert; provision
+`STATS_NZ_API_KEY` as a CI secret only (`Ocp-Apim-Subscription-Key` header, never committed);
+re-capture General and Māori district/constituency boundaries 2011–2026 (~3 formats each).
+
 ## Derivatives (Parquet — Ready for Analysis)
 
 | File | Rows | Description |
@@ -141,32 +225,43 @@ contain candidate- and party-supplied financial declarations.
 
 ## Provenance & Integrity
 
-- **Capture date**: 9 November 2026
-- **Manifest**: `manifest.json` with SHA-256 for all 768 files
-- **Content-Addressed Storage**: 740 raw objects in `objects/sha256/` indexed by `index.json`
-- **Receipts**: CDP capture receipts with HTTP status, headers, timestamps
-- **Source evidence**: Original HTML/PDF/XLSX/CSV preserved in `raw/`
+- **Capture dates**: 9 Nov 2026 (2026 preliminary + historical 1996–2023 phase); 10–11 Nov 2026 (verified batch: CKAN/figshare records, Wikipedia polls, Internet Archive per-place CSVs, 2011 referendum — see §§6–9)
+- **Manifest**: `manifest.json` with SHA-256 for all captured objects
+- **Content-Addressed Storage**: raw bytes under `objects/sha256/<2>/<sha256>` indexed per capture receipt
+- **Receipts**: per-batch capture receipts with HTTP status, headers, timestamps and repair logs, e.g.
+  `evidence/capture-<capture_id>.json`, `evidence/ckan-election-batch-20261110-{classification,capture}.json`,
+  `evidence/polls-classification-2026111{0,1}-classification.json`, `evidence/polls-capture-2026111{0,1}-capture.json`
+- **Source evidence**: Original HTML/PDF/XLSX/CSV preserved in `objects/` with per-file SHA-256 + Blake3 in the receipts
+- **Wayback reliability caveat**: `id_` raw-byte URLs are used verbatim; their bytes depend on the archived snapshot, not on source-system drift. All Wayback-fetched per-place CSVs and referendum files retain their snapshot timestamp in the receipt (`source_url`).
 
 ## Licence & Rights
 
 | Source | Licence | Attribution |
 |--------|---------|-------------|
 | Electoral Commission | Crown Copyright / CC BY 4.0 | "Electoral Commission (Te Kaitiaki Take Kōwhiri)" |
+| Electoral Commission / Internet Archive `id_` snapshots (per-place CSVs, referendum records) | CC BY 3.0 NZ | "Electoral Commission (Te Kaitiaki Take Kōwhiri)" |
 | Stats NZ Boundaries | CC BY 4.0 | "Stats NZ" |
 | Enrolment/Voting Stats | Crown Copyright / CC BY 4.0 | "Electoral Commission" |
+| CKAN: DIA Local Authority Election Statistics | CC BY 4.0 | "Department of Internal Affairs" |
+| CKAN: Women's Franchise Petitions 1892 & 1893 | CC BY 3.0 NZ | "Department of Internal Affairs" |
+| CKAN: Parliament — Members of Parliament | CC BY 4.0 | "Parliamentary Service" |
+| CKAN: EC Enrolment and Voting Statistics 2008/2011/2014 | CC BY 3.0 NZ | "Electoral Commission" |
+| Wikipedia opinion-polling pages (wikitext + rendered HTML) | CC BY-SA 4.0 | "Wikipedia contributors / Wikimedia Foundation" |
+| figshare NZES 1993 | See figshare record | "New Zealand Election Study, via figshare (OAI-PMH)" |
 
 ## Citation
 
 ```
 archive-govt-nz (2026). New Zealand General Elections — Complete Dataset (1996–2026) [Data set].
-edithatogo/archive-govt-nz-global. Captured 9 Nov 2026. https://huggingface.co/datasets/edithatogo/archive-govt-nz-global
+edithatogo/archive-govt-nz-global. Captured 9–11 Nov 2026. https://huggingface.co/datasets/edithatogo/archive-govt-nz-global
 ```
 
 ## Update Schedule
 
-- **Current revision**: 2026 preliminary + historical 1996–2023 (captured 9 Nov 2026)
-- **Next revision**: 2026 official results — planned capture **27 November 2026**
-- **2023/2020 CSV completion**: Ongoing (Cloudflare-protected)
+- **Current revision**: 2026 preliminary + historical 1996–2023 + 10–11 Nov 2026 verified capture batches (CKAN/figshare; opinion polls; per-place per-election CSVs 2017/2020/2023; CKAN-record evidence).
+- **Next revision**: 2026 official results — **planned capture 27 November 2026** (~399k special votes outstanding; results are preliminary until then). At that revision, 2026 preliminary figures may be replaced by the official count, and any 2026 per-place CSVs (if published) re-captured.
+- **2023/2020 per-place CSV completion**: Ongoing (Cloudflare/Incapsula-protected; captured via Internet Archive raw-byte snapshots instead — see §§6–8).
+- **Stats NZ geodata re-capture**: Blocked on renewed `api.stats.govt.nz` TLS certificate and CI-only `STATS_NZ_API_KEY` provision (§9).
 
 ## Part of
 

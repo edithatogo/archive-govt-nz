@@ -1,9 +1,18 @@
 {
-  "commit_message": "chore: automated global CKAN preservation update [2026-11-10T12:27:34.722817+00:00]",
-  "published_at": "2026-11-10T12:27:34.722817+00:00",
+  "commit_message": "chore: publish 2026-11-11 verified election captures (CKAN/figshare 20261110 batch, opinion polls 1993-2026, voting-place official CSVs 2017/2020/2023, 2011 referendum per-place results)",
+  "evidence_files": 6,
+  "files_staged": 492,
+  "publish_method": "create_commit with three UTF-16LE evidence files forced to xet (preupload marked them 'regular'; commit endpoint's binary scan rejected base64 inline); bytes unaltered",
+  "published_at": "2026-11-10T15:47:44+00:00",
+  "receipt_backed_objects": 485,
   "repo_id": "edithatogo/archive-govt-nz-global",
   "repo_url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global",
   "schema_version": "archive-govt-nz.huggingface-publish-receipt/v1",
   "status": "published",
-  "upload_info": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/commit/03ef851173f4112748fcad12d4e93f1aae88ab1f"
+  "upload_info": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/commit/641777c26bcf84884ccdf40a1ba839681c9d1e61",
+  "xet_committed_paths": [
+    "objects/sha256/20/20b8d54f3e46cdccbd92aa48854ad079c6a0aaf427a1c3d50062be307ebeaad5",
+    "objects/sha256/37/37d0b88159f83c2b4d2b5db3347aabee151802244891cfc3d8b7182b8e3001e7",
+    "objects/sha256/53/53257257212ab3d9911de34f4c278546be7a8ffde2b8841d1864981248faa4f4"
+  ]
 }

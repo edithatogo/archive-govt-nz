@@ -1,0 +1,318 @@
+{
+  "counts": {
+    "eligible": 28
+  },
+  "generated_at": "2026-11-10T13:47:27.056550+00:00",
+  "records": [
+    {
+      "classification": "eligible",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": ".xlsx",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "765380b4-4732-4d03-ac45-7de1cd69787b",
+      "size": 377808,
+      "url": "https://catalogue.data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8/resource/765380b4-4732-4d03-ac45-7de1cd69787b/download/local-authority-election-statistics-2025.xlsm"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": ".csv",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "04d52569-b5fe-4907-abaf-e7da1900e8d1",
+      "size": 122398,
+      "url": "https://catalogue.data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8/resource/04d52569-b5fe-4907-abaf-e7da1900e8d1/download/2025-local-authority-election-data.csv"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": ".xlxs",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "cc6d44b4-0e08-4d66-8e30-218d883d2ea0",
+      "size": 344018,
+      "url": "https://catalogue.data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8/resource/cc6d44b4-0e08-4d66-8e30-218d883d2ea0/download/local-authority-election-statistics-2022-updated-in-april-2026.xlsm"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": ".csv",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "ebe92b28-7538-4c61-aed5-ec11c4c23e29",
+      "size": 119383,
+      "url": "https://catalogue.data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8/resource/ebe92b28-7538-4c61-aed5-ec11c4c23e29/download/2022-local-authority-election-data-updated-in-september-2025.csv"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "XLSX",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "b556a1f6-1271-4a02-ae78-ea6840f93ced",
+      "size": 275787,
+      "url": "https://catalogue.data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8/resource/b556a1f6-1271-4a02-ae78-ea6840f93ced/download/2019-local-authority-elections-results.xlsx"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "CSV",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "6f16bc0e-5ccf-4578-b3e5-a2d6c4330f6d",
+      "size": 137455,
+      "url": "https://catalogue.data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8/resource/6f16bc0e-5ccf-4578-b3e5-a2d6c4330f6d/download/2019-local-elections-statistics.csv"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": ".xlsx",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "434f87ff-d54d-4bd2-a0bc-4894b580c7e5",
+      "size": 2667432,
+      "url": "https://catalogue.data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8/resource/434f87ff-d54d-4bd2-a0bc-4894b580c7e5/download/2016-local-authority-elections-results.xlsx"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "CSV",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "a8ed304f-19ae-4402-8e53-1ab7d4a7e8b9",
+      "size": 213098,
+      "url": "https://catalogue.data.govt.nz/dataset/8a06249a-2bdc-4b10-97d0-6bdc962dc4b8/resource/a8ed304f-19ae-4402-8e53-1ab7d4a7e8b9/download/2016-local-authority-elections-results.csv"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "XLSX",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "31951ca8-29c0-4a79-be66-6c15a78b6b01",
+      "size": null,
+      "url": "https://www.dia.govt.nz/diawebsite.nsf/Files/2013-Local-Authority-Elections/$file/2013-Local-Authority-Election-Statistics.xlsx"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "CSV",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "26619f68-faef-4422-b5bc-7a266e78e4b3",
+      "size": null,
+      "url": "https://www.dia.govt.nz/diawebsite.nsf/Files/2013-Local-Authority-Elections/$file/2013-Local-Authority-Election-Data.csv"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "CSV",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "c33421a5-f473-46dc-85cf-d7d5fd0f2fc4",
+      "size": null,
+      "url": "https://www.dia.govt.nz/diawebsite.nsf/Files/2013-Local-Authority-Elections/$file/2010-Local-Authority-Election-Data.csv"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "8a06249a-2bdc-4b10-97d0-6bdc962dc4b8",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "CSV",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "df29b6a0-a921-46e0-a286-37882d4c027e",
+      "size": null,
+      "url": "https://www.dia.govt.nz/diawebsite.nsf/Files/2013-Local-Authority-Elections/$file/2007-Local-Authority-Election-Data.csv"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "oai-figshare-com-article-2002590",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "PDF",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "nzes1993-figshare-file-6217467",
+      "size": 1727196,
+      "url": "https://ndownloader.figshare.com/files/6217467"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "oai-figshare-com-article-2002590",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "SAV",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "nzes1993-figshare-file-3002940",
+      "size": 1217600,
+      "url": "https://ndownloader.figshare.com/files/3002940"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "4bc7fc3c-6a37-4463-a505-b71d1c7fb7bd",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "XLS",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "bd937480-bc40-4c46-b247-188a9ef0fa22",
+      "size": null,
+      "url": "https://web.archive.org/web/20221225130306id_/https://repository.digitalnz.org/system/uploads/record/attachment/462/1893_women_s_suffrage_petition.xls"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "4bc7fc3c-6a37-4463-a505-b71d1c7fb7bd",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "XLS",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "2e1214d7-c2c0-4da5-9996-99db47eb8903",
+      "size": null,
+      "url": "https://web.archive.org/web/20221226102449id_/https://repository.digitalnz.org/system/uploads/record/attachment/461/1892_women_s_suffrage_petition.xls"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "f0f878d5-e2da-477d-85a0-4d2006f8b558",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "CSV",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "89069a40-abcf-4190-9665-3513ff004dd8",
+      "size": 11573,
+      "url": "https://catalogue.data.govt.nz/dataset/f0f878d5-e2da-477d-85a0-4d2006f8b558/resource/89069a40-abcf-4190-9665-3513ff004dd8/download/member-contact-details-at-11-june-2026.csv"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "f0f878d5-e2da-477d-85a0-4d2006f8b558",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "CSV",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "11b77d31-e8cb-46e6-8924-aabfbb9136ad",
+      "size": 77612,
+      "url": "https://catalogue.data.govt.nz/dataset/f0f878d5-e2da-477d-85a0-4d2006f8b558/resource/11b77d31-e8cb-46e6-8924-aabfbb9136ad/download/member-list.csv"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "f0f878d5-e2da-477d-85a0-4d2006f8b558",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "CSV",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "9767376e-ead0-468d-8b55-a65dfb629b54",
+      "size": 564412,
+      "url": "https://catalogue.data.govt.nz/dataset/f0f878d5-e2da-477d-85a0-4d2006f8b558/resource/9767376e-ead0-468d-8b55-a65dfb629b54/download/member-terms-as-at-27-august-2026.csv"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "8f1256cf-6ff6-4629-a6f5-b47f69587b3e",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "CSV",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "398f0056-f445-4dca-9d64-d10f1bdef08e",
+      "size": null,
+      "url": "https://web.archive.org/web/20260129095516id_/https://electionresults.govt.nz/electionresults_2008/2008_Polling_Place_Co-ordinates.csv"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "8f1256cf-6ff6-4629-a6f5-b47f69587b3e",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "TXT",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "4bb13fe5-2cef-4f67-bab1-4d5feccc6953",
+      "size": null,
+      "url": "https://web.archive.org/web/20260128234615id_/https://electionresults.govt.nz/electionresults_2008/2008_Polling_Place_Co-ordinates.txt"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "8f1256cf-6ff6-4629-a6f5-b47f69587b3e",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "XLS",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "ca11ad1a-8b97-45f6-b227-a7bb06455fe0",
+      "size": null,
+      "url": "https://web.archive.org/web/20260129095515id_/https://electionresults.govt.nz/electionresults_2008/2008_Polling_Place_Co-ordinates.xls"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "27337b33-40d3-4cad-8467-321caa960b1e",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "CSV",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "ac39ef63-52ac-466f-a868-e7072b144217",
+      "size": null,
+      "url": "https://web.archive.org/web/20260129095517id_/https://electionresults.govt.nz/electionresults_2011/2011_Polling_Place_Co-ordinates.csv"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "27337b33-40d3-4cad-8467-321caa960b1e",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "TXT",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "609a2181-6f97-4c3a-b183-317bbc2c76cf",
+      "size": null,
+      "url": "https://web.archive.org/web/20260128234823id_/https://electionresults.govt.nz/electionresults_2011/2011_Polling_Place_Co-ordinates.txt"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "27337b33-40d3-4cad-8467-321caa960b1e",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "XLS",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "05965801-d5af-429b-a328-70f6242e88ca",
+      "size": null,
+      "url": "https://web.archive.org/web/20260129095518id_/https://electionresults.govt.nz/electionresults_2011/2011_Polling_Place_Co-ordinates.xls"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "0140ddde-f908-4ac8-b818-79ec88519e4f",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "XLS",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "ef535617-81f2-436e-bedb-121b6237ac9f",
+      "size": null,
+      "url": "https://web.archive.org/web/20260128234614id_/https://electionresults.govt.nz/electionresults_2014/2014_Voting_Place_Co-ordinates.xls"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "0140ddde-f908-4ac8-b818-79ec88519e4f",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "TXT",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "e5693fbb-ddd7-4e3e-b8a5-efbbdc4ac286",
+      "size": null,
+      "url": "https://web.archive.org/web/20260128234616id_/https://electionresults.govt.nz/electionresults_2014/2014_Voting_Place_Co-ordinates.txt"
+    },
+    {
+      "classification": "eligible",
+      "dataset_id": "0140ddde-f908-4ac8-b818-79ec88519e4f",
+      "datastore_active": false,
+      "download_authorized": true,
+      "format": "CSV",
+      "reason": "open_license_https_within_budget",
+      "resource_id": "2258daaf-fec6-4ebd-8640-f919be093dda",
+      "size": null,
+      "url": "https://web.archive.org/web/20260129085452id_/https://electionresults.govt.nz/electionresults_2014/2014_Voting_Place_Co-ordinates.csv"
+    }
+  ],
+  "schema_version": "archive-govt-nz.global-rights-classification/v1",
+  "total_resources_evaluated": 28
+}
