@@ -1,0 +1,9 @@
+{
+  "commit_message": "chore: automated global CKAN preservation update [2026-11-10T12:27:34.722817+00:00]",
+  "published_at": "2026-11-10T12:27:34.722817+00:00",
+  "repo_id": "edithatogo/archive-govt-nz-global",
+  "repo_url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global",
+  "schema_version": "archive-govt-nz.huggingface-publish-receipt/v1",
+  "status": "published",
+  "upload_info": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/commit/03ef851173f4112748fcad12d4e93f1aae88ab1f"
+}
