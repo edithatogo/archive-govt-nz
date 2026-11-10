@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/election/silver-campaign-funding-donors-v1.schema.json",
+  "title": "SilverCampaignFundingDonorsV1",
+  "description": "Granular campaign funding, major donor disclosures, candidate expenditures, and cost per local member.",
+  "type": "object",
+  "required": [
+    "election_year",
+    "filing_vintage",
+    "parties",
+    "major_donors",
+    "local_candidate_metrics"
+  ],
+  "properties": {
+    "election_year": { "type": "integer", "minimum": 1996, "maximum": 2035 },
+    "filing_vintage": { "type": "string", "enum": ["annual_return", "10_day_major_disclosure", "consolidated_archive"] },
+    "parties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "party_name",
+          "total_donations",
+          "total_party_expenses",
+          "total_candidate_expenses",
+          "party_votes",
+          "electorates_won",
+          "total_seats_won",
+          "cost_per_party_vote",
+          "cost_per_elected_mp",
+          "cost_per_local_electorate_mp",
+          "donation_gini"
+        ],
+        "properties": {
+          "party_name": { "type": "string" },
+          "total_donations": { "type": "number", "minimum": 0 },
+          "total_party_expenses": { "type": "number", "minimum": 0 },
+          "total_candidate_expenses": { "type": "number", "minimum": 0 },
+          "party_votes": { "type": "integer", "minimum": 0 },
+          "electorates_won": { "type": "integer", "minimum": 0 },
+          "total_seats_won": { "type": "integer", "minimum": 0 },
+          "cost_per_party_vote": { "type": "number", "minimum": 0 },
+          "cost_per_elected_mp": { "type": "number", "minimum": 0 },
+          "cost_per_local_electorate_mp": { "type": ["number", "null"] },
+          "donation_gini": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+    "major_donors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["donor_name", "recipient_party", "amount", "category", "disclosure_year"],
+        "properties": {
+          "donor_name": { "type": "string" },
+          "recipient_party": { "type": "string" },
+          "amount": { "type": "number", "minimum": 5000 },
+          "category": { "type": "string", "enum": ["individual_hnwi", "corporate_business", "trade_union", "trust_foundation", "bequest", "other"] },
+          "disclosure_year": { "type": "integer" }
+        }
+      }
+    },
+    "local_candidate_metrics": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["electorate_name", "party_name", "candidate_name", "candidate_expenditure", "electorate_won"],
+        "properties": {
+          "electorate_name": { "type": "string" },
+          "party_name": { "type": "string" },
+          "candidate_name": { "type": "string" },
+          "candidate_expenditure": { "type": "number", "minimum": 0 },
+          "electorate_won": { "type": "boolean" },
+          "statutory_limit": { "type": "number", "default": 32600.0 }
+        }
+      }
+    }
+  }
+}

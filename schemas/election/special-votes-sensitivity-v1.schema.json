@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/election/special-votes-sensitivity-v1.schema.json",
+  "title": "Special Votes Sensitivity and Monte Carlo Risk Analysis",
+  "type": "object",
+  "required": [
+    "election_year",
+    "preliminary_capture_date",
+    "estimated_special_votes",
+    "vulnerable_electorates",
+    "simulation_runs",
+    "overhang_probability_distribution",
+    "majority_bloc_probabilities"
+  ],
+  "properties": {
+    "election_year": { "type": "integer" },
+    "preliminary_capture_date": { "type": "string", "format": "date" },
+    "estimated_special_votes": { "type": "integer" },
+    "simulation_runs": { "type": "integer", "default": 10000 },
+    "vulnerable_electorates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "electorate_name",
+          "preliminary_winner",
+          "preliminary_runner_up",
+          "preliminary_margin",
+          "flip_probability"
+        ],
+        "properties": {
+          "electorate_name": { "type": "string" },
+          "preliminary_winner": { "type": "string" },
+          "preliminary_runner_up": { "type": "string" },
+          "preliminary_margin": { "type": "integer" },
+          "flip_probability": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+    "overhang_probability_distribution": {
+      "type": "object",
+      "description": "Mapping from overhang seat count to probability (0 to 1)",
+      "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 }
+    },
+    "majority_bloc_probabilities": {
+      "type": "object",
+      "properties": {
+        "right_bloc_majority": { "type": "number", "minimum": 0, "maximum": 1 },
+        "left_bloc_majority": { "type": "number", "minimum": 0, "maximum": 1 },
+        "hung_parliament": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    }
+  }
+}

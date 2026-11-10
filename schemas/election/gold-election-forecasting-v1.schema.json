@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/election/gold-election-forecasting-v1.schema.json",
+  "title": "GoldElectionForecastingV1",
+  "description": "Econometric, gradient-boosted (XGBoost), and multivariate forecasting models integrating socioeconomic indices, macroeconomic fundamentals, and climate indicators.",
+  "type": "object",
+  "required": [
+    "target_election_year",
+    "forecast_generated_at",
+    "methodology_stack",
+    "macroeconomic_fundamentals",
+    "socioeconomic_indicators",
+    "climate_environmental_indicators",
+    "electorate_flip_forecasts",
+    "parliamentary_seat_projections",
+    "coalition_formation_probabilities"
+  ],
+  "properties": {
+    "target_election_year": { "type": "integer", "minimum": 2026, "maximum": 2035 },
+    "forecast_generated_at": { "type": "string", "format": "date-time" },
+    "methodology_stack": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["xgboost_classifier", "linear_macro_fundamentals", "socioeconomic_nzdep_elastic_net", "bayesian_poll_aggregation"] }
+    },
+    "macroeconomic_fundamentals": {
+      "type": "object",
+      "required": ["real_gdp_growth_pct", "cpi_inflation_pct", "two_year_mortgage_rate_pct", "unemployment_rate_pct", "incumbent_term_count"],
+      "properties": {
+        "real_gdp_growth_pct": { "type": "number" },
+        "cpi_inflation_pct": { "type": "number" },
+        "two_year_mortgage_rate_pct": { "type": "number" },
+        "unemployment_rate_pct": { "type": "number" },
+        "incumbent_term_count": { "type": "integer", "minimum": 1 },
+        "official_cash_rate_pct": { "type": "number" },
+        "terms_of_trade_index": { "type": "number" },
+        "household_debt_to_income_ratio": { "type": "number" },
+        "real_wage_growth_gap_pct": { "type": "number" },
+        "consumer_confidence_index": { "type": "number" }
+      }
+    },
+    "socioeconomic_indicators": {
+      "type": "object",
+      "required": ["nzdep_median_decile", "housing_affordability_ratio", "food_cost_annual_change_pct"],
+      "properties": {
+        "nzdep_median_decile": { "type": "number", "minimum": 1, "maximum": 10 },
+        "housing_affordability_ratio": { "type": "number" },
+        "food_cost_annual_change_pct": { "type": "number" }
+      }
+    },
+    "climate_environmental_indicators": {
+      "type": "object",
+      "required": ["drought_soil_moisture_deficit_anomaly", "severe_flood_cyclone_disaster_events"],
+      "properties": {
+        "drought_soil_moisture_deficit_anomaly": { "type": "number" },
+        "severe_flood_cyclone_disaster_events": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "electorate_flip_forecasts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["electorate_name", "incumbent_party", "challenger_party", "flip_probability_xgboost", "predicted_margin"],
+        "properties": {
+          "electorate_name": { "type": "string" },
+          "incumbent_party": { "type": "string" },
+          "challenger_party": { "type": "string" },
+          "flip_probability_xgboost": { "type": "number", "minimum": 0, "maximum": 1 },
+          "predicted_margin": { "type": "number" }
+        }
+      }
+    },
+    "parliamentary_seat_projections": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["projected_seat_mean", "ci_95_low", "ci_95_high"],
+        "properties": {
+          "projected_seat_mean": { "type": "number" },
+          "ci_95_low": { "type": "integer" },
+          "ci_95_high": { "type": "integer" }
+        }
+      }
+    },
+    "coalition_formation_probabilities": {
+      "type": "object",
+      "additionalProperties": { "type": "number", "minimum": 0, "maximum": 1 }
+    }
+  }
+}

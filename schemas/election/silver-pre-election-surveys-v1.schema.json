@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/election/silver-pre-election-surveys-v1.schema.json",
+  "title": "SilverPreElectionSurveysV1",
+  "description": "Cross-sectional pre-election political opinion surveys and tracking polls.",
+  "type": "object",
+  "required": [
+    "election_year",
+    "polls"
+  ],
+  "properties": {
+    "election_year": { "type": "integer", "minimum": 1996, "maximum": 2035 },
+    "polls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "pollster",
+          "fieldwork_start",
+          "fieldwork_end",
+          "sample_size",
+          "methodology",
+          "party_shares",
+          "lead_coalition_preference"
+        ],
+        "properties": {
+          "pollster": { "type": "string" },
+          "fieldwork_start": { "type": "string", "format": "date" },
+          "fieldwork_end": { "type": "string", "format": "date" },
+          "sample_size": { "type": "integer", "minimum": 500 },
+          "margin_of_error_pct": { "type": "number", "minimum": 0 },
+          "methodology": { "type": "string", "enum": ["live_phone_random_digit", "online_panel_stratified", "mixed_mode_phone_online"] },
+          "party_shares": {
+            "type": "object",
+            "additionalProperties": { "type": "number", "minimum": 0, "maximum": 100 }
+          },
+          "lead_coalition_preference": { "type": "string" }
+        }
+      }
+    }
+  }
+}

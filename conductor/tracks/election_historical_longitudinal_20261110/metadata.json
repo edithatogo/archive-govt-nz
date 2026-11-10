@@ -1,0 +1,13 @@
+{
+  "track_id": "election_historical_longitudinal_20261110",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-11-10T00:00:00Z",
+  "updated_at": "2026-11-10T00:00:00Z",
+  "description": "Cross-election longitudinal analysis benchmarking 1996-2026 overhangs, party vote vs candidate vote split, and electorate stability.",
+  "downstream_consumers": [
+    "election_visualization_space_20261110"
+  ],
+  "implementation_authorized": false,
+  "capability_status": "planned"
+}

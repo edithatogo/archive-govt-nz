@@ -1,0 +1,13 @@
+{
+  "track_id": "election_special_votes_simulation_20261110",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-11-10T00:00:00Z",
+  "updated_at": "2026-11-10T00:00:00Z",
+  "description": "Monte Carlo sensitivity simulation modeling special votes impact, marginal electorate flips, and overhang volatility between preliminary and official counts.",
+  "downstream_consumers": [
+    "election_visualization_space_20261110"
+  ],
+  "implementation_authorized": false,
+  "capability_status": "planned"
+}

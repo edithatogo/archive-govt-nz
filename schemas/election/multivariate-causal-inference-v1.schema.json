@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/election/multivariate-causal-inference-v1.schema.json",
+  "title": "Exploratory Multivariate and Causal Drivers Specification",
+  "type": "object",
+  "required": [
+    "election_year",
+    "feature_matrix_variables",
+    "pca_decomposition",
+    "shap_attribution",
+    "elastic_net_drivers"
+  ],
+  "properties": {
+    "election_year": { "type": "integer" },
+    "feature_matrix_variables": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Census, finance, media visibility, and turnout variables"
+    },
+    "pca_decomposition": {
+      "type": "object",
+      "required": ["components_explained_variance", "factor_loadings"],
+      "properties": {
+        "components_explained_variance": {
+          "type": "array",
+          "items": { "type": "number" }
+        },
+        "factor_loadings": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": { "type": "number" }
+          }
+        }
+      }
+    },
+    "shap_attribution": {
+      "type": "object",
+      "description": "Shapley Additive exPlanations for party vote and electorate swings",
+      "required": ["mean_absolute_shap_values", "top_drivers_by_party"],
+      "properties": {
+        "mean_absolute_shap_values": {
+          "type": "object",
+          "additionalProperties": { "type": "number" }
+        },
+        "top_drivers_by_party": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "elastic_net_drivers": {
+      "type": "object",
+      "description": "Regularized coefficients identifying statistically significant causal predictors",
+      "additionalProperties": { "type": "number" }
+    }
+  }
+}

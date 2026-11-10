@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/election/election-results-raw-v1.schema.json",
+  "title": "New Zealand Election Raw Results",
+  "type": "object",
+  "required": ["election_year", "vintage", "captured_at", "parties", "electorates"],
+  "properties": {
+    "election_year": { "type": "integer", "minimum": 1996, "maximum": 2030 },
+    "vintage": { "type": "string", "enum": ["preliminary", "official"] },
+    "captured_at": { "type": "string", "format": "date-time" },
+    "total_votes_cast": { "type": "integer", "minimum": 0 },
+    "special_votes_estimated": { "type": "integer", "minimum": 0 },
+    "special_votes_counted": { "type": "boolean" },
+    "parties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["party_name", "party_votes", "party_vote_percentage"],
+        "properties": {
+          "party_name": { "type": "string" },
+          "party_votes": { "type": "integer", "minimum": 0 },
+          "party_vote_percentage": { "type": "number", "minimum": 0, "maximum": 100 },
+          "electorate_seats_won": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "electorates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["electorate_name", "type", "winning_candidate", "winning_party", "margin"],
+        "properties": {
+          "electorate_name": { "type": "string" },
+          "type": { "type": "string", "enum": ["general", "maori"] },
+          "winning_candidate": { "type": "string" },
+          "winning_party": { "type": "string" },
+          "margin": { "type": "integer", "minimum": 0 },
+          "runner_up_candidate": { "type": "string" },
+          "runner_up_party": { "type": "string" }
+        }
+      }
+    }
+  }
+}

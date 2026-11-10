@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/election/overhang-analysis-v1.schema.json",
+  "title": "MMP Overhang Analysis and Parliament Size Specification",
+  "type": "object",
+  "required": [
+    "election_year",
+    "vintage",
+    "nominal_seats",
+    "total_house_seats",
+    "overhang_seats_total",
+    "majority_threshold",
+    "overhang_details",
+    "disproportionality_indices"
+  ],
+  "properties": {
+    "election_year": { "type": "integer" },
+    "vintage": { "type": "string", "enum": ["preliminary", "official"] },
+    "nominal_seats": { "type": "integer", "default": 120 },
+    "total_house_seats": { "type": "integer", "minimum": 120 },
+    "overhang_seats_total": { "type": "integer", "minimum": 0 },
+    "majority_threshold": { "type": "integer", "minimum": 61 },
+    "overhang_details": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "party_name",
+          "proportional_entitlement",
+          "electorate_seats_won",
+          "overhang_seats",
+          "seat_share_percentage",
+          "vote_share_percentage"
+        ],
+        "properties": {
+          "party_name": { "type": "string" },
+          "proportional_entitlement": { "type": "integer" },
+          "electorate_seats_won": { "type": "integer" },
+          "overhang_seats": { "type": "integer", "minimum": 0 },
+          "seat_share_percentage": { "type": "number" },
+          "vote_share_percentage": { "type": "number" }
+        }
+      }
+    },
+    "disproportionality_indices": {
+      "type": "object",
+      "required": ["gallagher_index", "loosemore_hanby_index"],
+      "properties": {
+        "gallagher_index": { "type": "number", "minimum": 0 },
+        "loosemore_hanby_index": { "type": "number", "minimum": 0 }
+      }
+    }
+  }
+}

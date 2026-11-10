@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Autonomous 131-MP Boids Parliament Swarm</title>
+  <style>
+    body {
+      margin: 0;
+      background: #0d1117;
+      color: #c9d1d9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow: hidden;
+      user-select: none;
+    }
+    #header {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      z-index: 10;
+      pointer-events: none;
+    }
+    h1 {
+      margin: 0 0 5px 0;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #58a6ff;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #8b949e;
+    }
+    #hud {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: rgba(22, 27, 34, 0.85);
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 12px 16px;
+      z-index: 10;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+    }
+    .hud-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #8b949e;
+      margin-bottom: 6px;
+    }
+    .hud-stat {
+      font-size: 24px;
+      font-weight: 700;
+      color: #3fb950;
+    }
+    .hud-sub {
+      font-size: 12px;
+      color: #8b949e;
+    }
+    #controls {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+      background: rgba(22, 27, 34, 0.9);
+      padding: 8px 14px;
+      border-radius: 30px;
+      border: 1px solid #30363d;
+    }
+    button {
+      background: #21262d;
+      border: 1px solid #363b42;
+      color: #c9d1d9;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    button:hover {
+      background: #30363d;
+      border-color: #8b949e;
+      color: #f0f6fc;
+    }
+    button.active {
+      background: #1f6feb;
+      border-color: #58a6ff;
+      color: white;
+    }
+    #canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h1>131-MP Autonomous Boids Parliament</h1>
+    <div class="subtitle">2026 Expanded Parliament (11 Overhang Seats) • Artificial Life Swarm Simulation</div>
+  </div>
+
+  <div id="hud">
+    <div class="hud-title">Coalition Majority Tracker</div>
+    <div class="hud-stat" id="attractorCount">0 / 66</div>
+    <div class="hud-sub" id="majorityStatus">Threshold: 66 of 131 seats</div>
+  </div>
+
+  <div id="controls">
+    <button class="active" onclick="setPolicy('supermarket')">🛒 Supermarket Duopoly Reform</button>
+    <button onclick="setPolicy('lvt')">🏠 Land Value Tax</button>
+    <button onclick="setPolicy('treaty')">📜 Treaty Principles Alignment</button>
+    <button onclick="resetSwarm()">🔄 Reset Arena</button>
+  </div>
+
+  <canvas id="canvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+
+    // 2026 131-Seat Composition (National 43, Labour 34, Greens 18, ACT 14, NZ First 12, Te Pāti Māori 9, TOP 7)
+    const PARTIES = [
+      { name: 'National', count: 43, color: '#00529F', ideology: { econ: 0.8, social: -0.2 } },
+      { name: 'Labour', count: 34, color: '#D82A20', ideology: { econ: -0.4, social: 0.5 } },
+      { name: 'Greens', count: 18, color: '#098137', ideology: { econ: -0.8, social: 0.9 } },
+      { name: 'ACT', count: 14, color: '#FDE401', ideology: { econ: 1.0, social: -0.6 } },
+      { name: 'NZ First', count: 12, color: '#000000', border: '#8b949e', ideology: { econ: 0.1, social: -0.7 } },
+      { name: 'Te Pāti Māori', count: 9, color: '#B00020', border: '#ff7b72', ideology: { econ: -0.7, social: 0.8 } },
+      { name: 'TOP', count: 7, color: '#00A896', ideology: { econ: -0.1, social: 0.4 } }
+    ];
+
+    const POLICIES = {
+      supermarket: { name: 'Supermarket Duopoly Reform', pos: { x: width * 0.5, y: height * 0.5 }, weights: { 'Labour': 0.8, 'Greens': 0.9, 'Te Pāti Māori': 0.9, 'TOP': 0.95, 'NZ First': 0.6, 'National': -0.3, 'ACT': -0.7 } },
+      lvt: { name: 'Land Value Tax', pos: { x: width * 0.5, y: height * 0.5 }, weights: { 'TOP': 1.0, 'Greens': 0.8, 'Te Pāti Māori': 0.6, 'Labour': -0.2, 'National': -0.9, 'ACT': -0.95, 'NZ First': -0.5 } },
+      treaty: { name: 'Treaty Principles Alignment', pos: { x: width * 0.5, y: height * 0.5 }, weights: { 'Te Pāti Māori': 1.0, 'Greens': 0.9, 'Labour': 0.7, 'TOP': 0.3, 'National': -0.4, 'NZ First': -0.8, 'ACT': -1.0 } }
+    };
+
+    let activePolicyKey = 'supermarket';
+    let activePolicy = POLICIES[activePolicyKey];
+
+    class Boid {
+      constructor(party) {
+        this.party = party;
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.vx = (Math.random() - 0.5) * 3;
+        this.vy = (Math.random() - 0.5) * 3;
+        this.maxSpeed = 3.2;
+        this.maxForce = 0.08;
+        this.radius = 5.5;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+
+        // Wrap around borders smoothly
+        if (this.x < 0) this.x = width;
+        if (this.x > width) this.x = 0;
+        if (this.y < 0) this.y = height;
+        if (this.y > height) this.y = 0;
+      }
+
+      applyForce(fx, fy) {
+        this.vx += fx;
+        this.vy += fy;
+        const speed = Math.hypot(this.vx, this.vy);
+        if (speed > this.maxSpeed) {
+          this.vx = (this.vx / speed) * this.maxSpeed;
+          this.vy = (this.vy / speed) * this.maxSpeed;
+        }
+      }
+
+      flock(boids) {
+        let sepX = 0, sepY = 0, sepCount = 0;
+        let aliX = 0, aliY = 0, aliCount = 0;
+        let cohX = 0, cohY = 0, cohCount = 0;
+
+        for (const other of boids) {
+          if (other === this) continue;
+          const d = Math.hypot(this.x - other.x, this.y - other.y);
+
+          // Separation
+          if (d < 25) {
+            sepX += (this.x - other.x) / d;
+            sepY += (this.y - other.y) / d;
+            sepCount++;
+          }
+
+          // Same party cohesion & alignment
+          if (other.party.name === this.party.name && d < 70) {
+            aliX += other.vx;
+            aliY += other.vy;
+            aliCount++;
+            cohX += other.x;
+            cohY += other.y;
+            cohCount++;
+          }
+        }
+
+        if (sepCount > 0) {
+          this.applyForce((sepX / sepCount) * 0.15, (sepY / sepCount) * 0.15);
+        }
+        if (aliCount > 0) {
+          this.applyForce(((aliX / aliCount) - this.vx) * 0.04, ((aliY / aliCount) - this.vy) * 0.04);
+        }
+        if (cohCount > 0) {
+          const targetX = cohX / cohCount;
+          const targetY = cohY / cohCount;
+          this.applyForce((targetX - this.x) * 0.002, (targetY - this.y) * 0.002);
+        }
+
+        // Policy attractor pull/repel
+        if (activePolicy) {
+          const w = activePolicy.weights[this.party.name] || 0;
+          const dx = activePolicy.pos.x - this.x;
+          const dy = activePolicy.pos.y - this.y;
+          const dist = Math.hypot(dx, dy);
+          if (dist > 10) {
+            const pull = (w * 0.3) / Math.max(1, dist * 0.02);
+            this.applyForce((dx / dist) * pull, (dy / dist) * pull);
+          }
+        }
+      }
+
+      draw() {
+        const angle = Math.atan2(this.vy, this.vx);
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(angle);
+
+        ctx.fillStyle = this.party.color;
+        ctx.beginPath();
+        ctx.moveTo(this.radius * 2, 0);
+        ctx.lineTo(-this.radius, -this.radius);
+        ctx.lineTo(-this.radius * 0.5, 0);
+        ctx.lineTo(-this.radius, this.radius);
+        ctx.closePath();
+        ctx.fill();
+
+        if (this.party.border) {
+          ctx.strokeStyle = this.party.border;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+
+        ctx.restore();
+      }
+    }
+
+    // Instantiate 131 MPs
+    const boids = [];
+    PARTIES.forEach(party => {
+      for (let i = 0; i < party.count; i++) {
+        boids.push(new Boid(party));
+      }
+    });
+
+    function setPolicy(key) {
+      activePolicyKey = key;
+      activePolicy = POLICIES[key];
+      document.querySelectorAll('#controls button').forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    function resetSwarm() {
+      boids.forEach(b => {
+        b.x = Math.random() * width;
+        b.y = Math.random() * height;
+        b.vx = (Math.random() - 0.5) * 3;
+        b.vy = (Math.random() - 0.5) * 3;
+      });
+    }
+
+    // Animation Loop
+    function animate() {
+      ctx.fillStyle = 'rgba(13, 17, 23, 0.25)';
+      ctx.fillRect(0, 0, width, height);
+
+      // Draw policy attractor
+      if (activePolicy) {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(activePolicy.pos.x, activePolicy.pos.y, 80, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(88, 166, 255, 0.2)';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([6, 6]);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(activePolicy.pos.x, activePolicy.pos.y, 14, 0, Math.PI * 2);
+        ctx.fillStyle = '#58a6ff';
+        ctx.shadowColor = '#58a6ff';
+        ctx.shadowBlur = 15;
+        ctx.fill();
+
+        ctx.fillStyle = '#f0f6fc';
+        ctx.font = '12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(activePolicy.name, activePolicy.pos.x, activePolicy.pos.y + 35);
+        ctx.restore();
+      }
+
+      // Update and count MPs supporting policy (within attraction radius)
+      let supportingMPs = 0;
+      boids.forEach(b => {
+        b.flock(boids);
+        b.update();
+        b.draw();
+
+        if (activePolicy) {
+          const d = Math.hypot(b.x - activePolicy.pos.x, b.y - activePolicy.pos.y);
+          if (d < 160) {
+            supportingMPs++;
+          }
+        }
+      });
+
+      // Update HUD
+      const countEl = document.getElementById('attractorCount');
+      const statusEl = document.getElementById('majorityStatus');
+      countEl.innerText = `${supportingMPs} / 66`;
+      if (supportingMPs >= 66) {
+        countEl.style.color = '#3fb950';
+        statusEl.innerText = `PASSED: Governing Majority (${supportingMPs} of 131 seats)`;
+      } else {
+        countEl.style.color = '#f85149';
+        statusEl.innerText = `FAILED: Deficit of ${66 - supportingMPs} seats (Target: 66)`;
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>

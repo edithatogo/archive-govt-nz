@@ -1,0 +1,6 @@
+gradio>=5.0.0
+pandas>=2.2.0
+plotly>=5.24.0
+duckdb>=1.1.0
+pyarrow>=17.0.0
+pydantic>=2.9.0

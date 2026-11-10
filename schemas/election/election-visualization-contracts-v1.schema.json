@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/election/election-visualization-contracts-v1.schema.json",
+  "title": "Frontier and Beyond-Frontier Election Visualization Contracts",
+  "type": "object",
+  "required": [
+    "visualization_id",
+    "paradigm",
+    "election_year",
+    "visual_archetype",
+    "data_feed",
+    "physics_or_shader_parameters"
+  ],
+  "properties": {
+    "visualization_id": {
+      "type": "string",
+      "enum": [
+        "overhang_elasticity_topology",
+        "special_vote_quantum_clouds",
+        "political_splintering_hypervolume",
+        "bivariate_cartographic_anamorphosis",
+        "coalition_matrix_generative_trees",
+        "autonomous_boids_parliament",
+        "quantum_wavefunction_interference",
+        "neural_manifold_umap",
+        "psychoacoustic_haptic_sonification",
+        "wetware_bioluminescent_tank"
+      ]
+    },
+    "paradigm": {
+      "type": "string",
+      "enum": ["frontier_computational_physics", "beyond_frontier_complex_systems"]
+    },
+    "election_year": { "type": "integer", "default": 2026 },
+    "visual_archetype": { "type": "string" },
+    "data_feed": {
+      "type": "object",
+      "required": ["source_dataset", "records_count", "variables_mapped"],
+      "properties": {
+        "source_dataset": { "type": "string" },
+        "records_count": { "type": "integer" },
+        "variables_mapped": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "physics_or_shader_parameters": {
+      "type": "object",
+      "properties": {
+        "gravity": { "type": "number" },
+        "elastic_spring_constant": { "type": "number" },
+        "particle_density": { "type": "integer" },
+        "decay_rate": { "type": "number" },
+        "damping": { "type": "number" },
+        "interference_frequency": { "type": "number" },
+        "boids_parameters": {
+          "type": "object",
+          "properties": {
+            "agent_count": { "type": "integer", "default": 131 },
+            "separation_weight": { "type": "number" },
+            "alignment_weight": { "type": "number" },
+            "cohesion_weight": { "type": "number" },
+            "policy_attractor_strength": { "type": "number" }
+          }
+        }
+      }
+    },
+    "telemetry_contract": {
+      "type": "object",
+      "required": ["fps_target", "render_target", "interactive_events"],
+      "properties": {
+        "fps_target": { "type": "integer", "default": 60 },
+        "render_target": { "type": "string", "enum": ["webgl", "canvas2d", "webaudio", "threejs", "svg"] },
+        "interactive_events": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}

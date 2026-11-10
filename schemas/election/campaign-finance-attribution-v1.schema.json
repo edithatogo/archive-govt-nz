@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/election/campaign-finance-attribution-v1.schema.json",
+  "title": "Campaign Finance Attribution and Causal Inference Specification",
+  "type": "object",
+  "required": [
+    "election_year",
+    "parties_finance",
+    "electorates_finance",
+    "causal_models"
+  ],
+  "properties": {
+    "election_year": { "type": "integer" },
+    "parties_finance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "party_name",
+          "total_donations",
+          "total_expenses",
+          "cost_per_party_vote",
+          "donor_gini_coefficient"
+        ],
+        "properties": {
+          "party_name": { "type": "string" },
+          "total_donations": { "type": "number", "minimum": 0 },
+          "total_expenses": { "type": "number", "minimum": 0 },
+          "cost_per_party_vote": { "type": "number", "minimum": 0 },
+          "donor_gini_coefficient": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+    "electorates_finance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "electorate_name",
+          "winning_candidate_spend",
+          "runner_up_spend",
+          "third_party_promoter_spend",
+          "spend_margin_ratio"
+        ],
+        "properties": {
+          "electorate_name": { "type": "string" },
+          "winning_candidate_spend": { "type": "number" },
+          "runner_up_spend": { "type": "number" },
+          "third_party_promoter_spend": { "type": "number" },
+          "spend_margin_ratio": { "type": "number" }
+        }
+      }
+    },
+    "causal_models": {
+      "type": "object",
+      "required": ["rdd_treatment_effect", "iv_spend_elasticity"],
+      "properties": {
+        "rdd_treatment_effect": {
+          "type": "object",
+          "description": "Regression Discontinuity estimate of spend on vote share at close margins",
+          "properties": {
+            "bandwidth": { "type": "number" },
+            "local_average_treatment_effect": { "type": "number" },
+            "p_value": { "type": "number" },
+            "confidence_interval_95": {
+              "type": "array",
+              "items": { "type": "number" }
+            }
+          }
+        },
+        "iv_spend_elasticity": {
+          "type": "object",
+          "description": "Instrumental Variables spend elasticity using statutory spend caps as instrument",
+          "properties": {
+            "instrument": { "type": "string" },
+            "elasticity_coefficient": { "type": "number" },
+            "f_statistic": { "type": "number" }
+          }
+        }
+      }
+    }
+  }
+}

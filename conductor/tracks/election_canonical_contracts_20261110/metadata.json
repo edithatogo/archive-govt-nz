@@ -1,0 +1,15 @@
+{
+  "track_id": "election_canonical_contracts_20261110",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-11-10T00:00:00Z",
+  "updated_at": "2026-11-10T00:00:00Z",
+  "description": "Establish canonical data contracts, schemas, and typed serializers for New Zealand General Election datasets (1996-2026).",
+  "downstream_consumers": [
+    "election_mmp_overhang_engine_20261110",
+    "election_historical_longitudinal_20261110",
+    "election_visualization_space_20261110"
+  ],
+  "implementation_authorized": false,
+  "capability_status": "planned"
+}

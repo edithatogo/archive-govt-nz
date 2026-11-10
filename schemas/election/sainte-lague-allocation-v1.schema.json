@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/election/sainte-lague-allocation-v1.schema.json",
+  "title": "MMP Sainte-Laguë Allocation Result",
+  "type": "object",
+  "required": [
+    "election_year",
+    "vintage",
+    "nominal_seats",
+    "qualifying_parties",
+    "excluded_parties",
+    "allocations"
+  ],
+  "properties": {
+    "election_year": { "type": "integer" },
+    "vintage": { "type": "string", "enum": ["preliminary", "official"] },
+    "nominal_seats": { "type": "integer", "default": 120 },
+    "threshold_rules": {
+      "type": "object",
+      "required": ["party_vote_percent_threshold", "electorate_threshold_seats"],
+      "properties": {
+        "party_vote_percent_threshold": { "type": "number", "default": 5.0 },
+        "electorate_threshold_seats": { "type": "integer", "default": 1 }
+      }
+    },
+    "qualifying_parties": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "excluded_parties": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "allocations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "party_name",
+          "qualification_reason",
+          "party_vote",
+          "proportional_entitlement",
+          "electorate_seats",
+          "list_seats",
+          "total_seats"
+        ],
+        "properties": {
+          "party_name": { "type": "string" },
+          "qualification_reason": { "type": "string", "enum": ["threshold_5_percent", "electorate_seat", "both"] },
+          "party_vote": { "type": "integer" },
+          "proportional_entitlement": { "type": "integer", "minimum": 0 },
+          "electorate_seats": { "type": "integer", "minimum": 0 },
+          "list_seats": { "type": "integer", "minimum": 0 },
+          "total_seats": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}
