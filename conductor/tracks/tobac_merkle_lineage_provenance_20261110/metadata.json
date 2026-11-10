@@ -1,0 +1,15 @@
+{
+  "track_id": "tobac_merkle_lineage_provenance_20261110",
+  "type": "feature",
+  "status": "new",
+  "created_at": "2026-11-10T00:00:00Z",
+  "updated_at": "2026-11-10T00:00:00Z",
+  "description": "Content-addressed two-tier Merkle provenance manifests and deterministic original-to-extract verification receipts for official NZ/AU statistical and regulatory releases consumed by tobac.",
+  "downstream_consumers": [
+    "edithatogo/tobac",
+    "edithatogo/sourceright",
+    "edithatogo/searchright"
+  ],
+  "implementation_authorized": false,
+  "capability_status": "planned"
+}
