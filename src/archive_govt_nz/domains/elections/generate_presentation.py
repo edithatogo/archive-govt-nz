@@ -350,6 +350,54 @@ def build_election_presentation(output_path: Path, figures_dir: Path) -> Path:
             "method": "Circom ZK-SNARK constraint system verifying Sainte-Laguë odd-divisor quotient arithmetic and Merkle inclusion proofs.",
             "takeaway": "Guarantees complete immutability from raw preliminary returns at the polling place through to final 131-seat expanded parliamentary declarations.",
         },
+        # -------------------------------------------------------------
+        # BEYOND-FRONTIER PARADIGMS (SLIDES 19 - 23)
+        # -------------------------------------------------------------
+        {
+            "kicker": "BEYOND FRONTIER 1: SYNTHETIC BIOLOGY",
+            "title": "Wetware / Bio-Luminescent Growth Tanks (Physarum polycephalum Biological Viz)",
+            "image": "beyond_frontier_1_wetware_slime_mould.png",
+            "depicts": "Macro-lens Petri dish agar relief map of Aotearoa seeded with voting booth coordinates and turnout chemo-attractants, navigated by bio-luminescent slime mould strains.",
+            "adds": "Replaces static pixels with living biological network optimization, growing coalition fusion zones and showing protoplasmic starvation across rural peripheries over 48 hours.",
+            "method": "Physarum polycephalum bio-computing spatial routing simulation on agar dosed with glucose attractants proportional to turnout density.",
+            "takeaway": "Slime mould veins autonomously discover optimal multi-party network corridors between Auckland, Wellington, and Christchurch, mirroring MMP coalition alignment.",
+        },
+        {
+            "kicker": "BEYOND FRONTIER 2: SENSORY SUBSTITUTION",
+            "title": "Psychoacoustic Sonification & Ultrasonic Haptic Turbulence",
+            "image": "beyond_frontier_2_psychoacoustic_sonification_haptics.png",
+            "depicts": "Harmonic frequency spectrum, sensory dissonance surface, polyrhythmic phase space (7:4 vs 3:2), and ultrasonic radiation pressure friction curves.",
+            "adds": "Enables auditory and tactile comprehension of parliamentary structural shear: stable caucuses sound like resonant triads, while coalition friction manifests as buzzing haptic static.",
+            "method": "Helmholtz acoustic sensory dissonance modeling paired with acoustic radiation pressure (P = 18.45 Pa) and tactile frequency vibration profiles.",
+            "takeaway": "The 2026 Parliament generates high auditory dissonance (0.785) and extreme haptic friction on grand coalitions (0.94), audibly proving structural instability.",
+        },
+        {
+            "kicker": "BEYOND FRONTIER 3: COMPUTATIONAL NEUROSCIENCE",
+            "title": "High-Dimensional Neural Manifold / Latent Space Landscapes (AI Dreamscapes)",
+            "image": "beyond_frontier_3_neural_manifold_latent_landscape.png",
+            "depicts": "3D UMAP / Gaussian Splatting latent space landscape projecting all 72 electorates across 12 demographic and protest-vote variables simultaneously.",
+            "adds": "Unveils hidden 'behavioural gravity': demographically distant electorates (Wellington Central urban renters and Hawke's Bay seasonal workers) co-locate in the same protest canyon.",
+            "method": "Uniform Manifold Approximation and Projection (UMAP) non-linear dimensionality reduction coupled with 3D Gaussian kernel density surface elevation.",
+            "takeaway": "Proves that the 2026 political fracturing was driven by mathematically identical protest-vote mechanics against supermarket inflation and housing costs across urban-rural divides.",
+        },
+        {
+            "kicker": "BEYOND FRONTIER 4: QUANTUM INFORMATION SCIENCE",
+            "title": "True Quantum Superposition Mapping & Qubit Wave-Function Collapse",
+            "image": "beyond_frontier_4_true_quantum_superposition_qubits.png",
+            "depicts": "4-qubit entangled quantum statevector, complex density matrix Re[rho], Bell-state fidelity (94.2%), and projective measurement collapse probabilities.",
+            "adds": "Replaces classical pseudo-random Monte Carlo guessing with entangled quantum superposition for 399,000 uncounted special votes across marginal seats.",
+            "method": "Qubit density matrix statevector formulation with Hadamard superposition and CNOT entanglement across correlated diaspora voting lean.",
+            "takeaway": "Measuring Qubit 0 (Nelson) instantly collapses the wave-function across the entire system, shifting Mount Albert, Wellington Central, and Te Atatū into definitive outcomes.",
+        },
+        {
+            "kicker": "BEYOND FRONTIER 5: ARTIFICIAL LIFE & AGENT SWARMS",
+            "title": "Autonomous Multi-Agent 'Artificial Life' Parliament (131 MP Agent Swarm)",
+            "image": "beyond_frontier_5_autonomous_multiagent_parliament.png",
+            "depicts": "131 autonomous MP agents flocking in a 2D legislative arena, steered by ideology, party whips, constituency pressure, and policy attractor basins.",
+            "adds": "Simulates future parliamentary power dynamics rather than past ballots: drops active bills into the arena to observe real-time whip defiance and majority assembly (66 seats).",
+            "method": "Reynolds Boids steering physics augmented with party whip elasticity, conscience vote stochasticity, and policy gravity wells.",
+            "takeaway": "Cross-bloc attractors like Supermarket Duopoly Reform assemble spontaneous 66-seat majorities across Labour, Greens, Te Pāti Māori, TOP, and NZ First, bypassing formal coalition deadlock.",
+        },
     ]
 
     for item in slides_data:

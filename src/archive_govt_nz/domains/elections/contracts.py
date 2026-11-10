@@ -333,3 +333,76 @@ class GoldElectionForecast(BaseModel):
     parliamentary_seat_projections: dict[str, dict[str, Any]]
     coalition_formation_probabilities: dict[str, float]
     provenance: DynamicEngineProvenance | None = None
+
+
+# Beyond-Frontier Multi-Sensory, Biological, Quantum & Neuro-Symbolic Contracts
+
+
+class WetwareSlimeMouldSimulation(BaseModel):
+    """Synthetic biology / Physarum polycephalum bio-computing contract."""
+
+    organism: str = "Physarum polycephalum"
+    medium: str = "Nutrient agar on Aotearoa relief topography"
+    duration_hours: float = 48.0
+    strains: dict[str, dict[str, str]] = Field(
+        default_factory=lambda: {
+            "National": {"color": "#00529F", "fluorescence": "BFP", "initial_biomass": "430mg"},
+            "Labour": {"color": "#D82A20", "fluorescence": "RFP", "initial_biomass": "340mg"},
+            "Greens": {"color": "#098137", "fluorescence": "GFP", "initial_biomass": "180mg"},
+            "ACT": {"color": "#FDE401", "fluorescence": "YFP", "initial_biomass": "140mg"},
+            "NZ First": {"color": "#8b949e", "fluorescence": "CFP", "initial_biomass": "120mg"},
+            "Te Pāti Māori": {"color": "#800020", "fluorescence": "mCherry", "initial_biomass": "90mg"},
+            "TOP": {"color": "#32B5B5", "fluorescence": "mTurquoise", "initial_biomass": "70mg"},
+        }
+    )
+    chemo_attractant_nodes: list[dict[str, Any]]
+    vein_network_density: float = Field(ge=0.0, le=1.0)
+    coalition_fusion_zones: list[str]
+    starvation_desert_zones: list[str]
+
+
+class PsychoacousticSonificationModel(BaseModel):
+    """Spatial psychoacoustics and ultrasonic haptic turbulence contract."""
+
+    fundamental_frequencies_hz: dict[str, float]
+    chord_dissonance_score: float = Field(ge=0.0, le=1.0)
+    polyrhythmic_signature: str
+    ultrasonic_radiation_pressure_pa: float
+    haptic_vibration_profile_hz: list[float]
+    coalition_haptic_friction: dict[str, float]
+
+
+class NeuralManifoldLandscape(BaseModel):
+    """High-dimensional UMAP / Gaussian Splatting latent space contract."""
+
+    embedding_algorithm: Literal["UMAP", "t-SNE", "MDS", "Isomap"]
+    n_features: int = 12
+    explained_variance_ratio: float = Field(ge=0.0, le=1.0)
+    electorate_coordinates: list[dict[str, Any]]
+    latent_canyons: list[dict[str, Any]]
+    elevation_surface_grid: dict[str, Any]
+
+
+class QuantumSuperpositionState(BaseModel):
+    """Qubit statevector and entangled measurement contract for special votes."""
+
+    n_qubits: int = 4
+    marginal_seat_qubit_mapping: dict[int, str]
+    entanglement_circuit_depth: int
+    bell_state_fidelity: float = Field(ge=0.0, le=1.0)
+    density_matrix_real: list[list[float]]
+    density_matrix_imag: list[list[float]]
+    measurement_collapse_probabilities: dict[str, float]
+
+
+class AutonomousMultiAgentParliament(BaseModel):
+    """Artificial life / 131-MP autonomous agent swarm contract."""
+
+    total_agents: int = 131
+    seat_distribution: dict[str, int]
+    active_bills: list[str]
+    majority_threshold: int = 66
+    boids_flocking_parameters: dict[str, float]
+    agent_whip_defiance_rates: dict[str, float]
+    simulation_ticks: int = 500
+

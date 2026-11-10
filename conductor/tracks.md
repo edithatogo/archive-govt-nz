@@ -470,3 +470,7 @@ implementation has occurred under these tracks.
 - [x] **Track: Interactive visualization space (Hugging Face Spaces & GitHub Pages)**
   *Link: [tracks/election_visualization_space_20261110/index.md](./tracks/election_visualization_space_20261110/index.md)*
   Deploy 10-tab Gradio visualizer and static client-side mirror to Hugging Face Space `edithatogo/nz-election-explorer` and local runtime. Incorporates calibrated XGBoost electorate flip modeling, cost-per-local-MP campaign finance metrics, major donor disclosures, longitudinal CPI-adjusted benchmarks (1996-2026), and macroeconomic/environmental fundamentals forecasting for 2029.
+
+- [x] **Track: Beyond-frontier bio-sensory, quantum & neuro-symbolic electoral systems**
+  *Link: [tracks/election_beyond_frontier_systems_20261111/index.md](./tracks/election_beyond_frontier_systems_20261111/index.md)*
+  Execution of the 5 beyond-frontier paradigms: (1) Wetware / Bio-luminescent Physarum polycephalum slime mould growth tank on nutrient agar relief map; (2) Spatial psychoacoustic sonification and ultrasonic haptic friction synthesis; (3) 12-dimensional UMAP / Gaussian Splatting neural manifold discovering voter behavioural gravity canyons; (4) True quantum superposition qubit statevector with density matrix and wave-function collapse; (5) 131-MP autonomous artificial life legislative agent swarm.

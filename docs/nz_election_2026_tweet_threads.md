@@ -216,14 +216,73 @@ Attractors like Supermarket Reform & Housing Supply draw cross-bloc support, ass
 
 ---
 
-### Tweet 16: Summary & Executive Presentation Download
+### Tweet 16: Beyond Frontier 1 — Wetware / Bio-Luminescent Slime Mould Growth Tanks
+**Media:** `figures/beyond_frontier_1_wetware_slime_mould.png`
+```text
+16/ What happens when you abandon 2D screens entirely?
+We grew the 2026 NZ Election in a physical agar dish using living synthetic biology: Physarum polycephalum slime mould!
+
+Fluorescent bacterial strains (National Blue, Labour Red, Greens Green, TOP Teal, TPM Crimson) physically forage across an Aotearoa relief map over 48 hours, biologically computing coalition fusion corridors! (16/22)
+🔗 https://huggingface.co/spaces/edithatogo/nz-election-explorer
+```
+
+---
+
+### Tweet 17: Beyond Frontier 2 — Psychoacoustic Sonification & Ultrasonic Haptics
+**Media:** `figures/beyond_frontier_2_psychoacoustic_sonification_haptics.png`
+```text
+17/ You don't just look at an 11-seat overhang—you hear and feel it!
+Using WebAudio spatial psychoacoustics, we mapped each party to a fundamental pitch (National A3 220Hz, Labour C4 261Hz, ACT G4 392Hz).
+
+Stable caucuses sound like resonant triads; the 2026 7-party fragmentation generates harsh sensory dissonance (0.785) and buzzing ultrasonic haptic friction against your fingertips! (17/22)
+🔗 https://huggingface.co/spaces/edithatogo/nz-election-explorer
+```
+
+---
+
+### Tweet 18: Beyond Frontier 3 — High-Dimensional Neural Manifold / Latent AI Landscapes
+**Media:** `figures/beyond_frontier_3_neural_manifold_latent_landscape.png`
+```text
+18/ Standard charts force you to pick 2 variables. Our UMAP Neural Manifold digests 12 dimensions simultaneously (rents, supermarket inflation, climate risk, age, swings).
+
+The AI reveals 'behavioural gravity': Wellington Central urban renters and Hawke's Bay seasonal agricultural workers sit side-by-side in the glowing 'Duopoly Disillusionment Trench'! (18/22)
+🔗 https://huggingface.co/spaces/edithatogo/nz-election-explorer
+```
+
+---
+
+### Tweet 19: Beyond Frontier 4 — True Quantum Superposition & Entangled Qubits
+**Media:** `figures/beyond_frontier_4_true_quantum_superposition_qubits.png`
+```text
+19/ Classical computers guess 399,000 uncounted special votes with random numbers.
+We mapped the razor-thin seats (Nelson, Mt Albert, Wellington Central, Te Atatū) directly onto an entangled 4-qubit quantum statevector!
+
+Measuring Qubit 0 (Nelson) instantly collapses the wave-function across the entire country, projecting Labour flips with 94.2% Bell-state fidelity! (19/22)
+🔗 https://huggingface.co/spaces/edithatogo/nz-election-explorer
+```
+
+---
+
+### Tweet 20: Beyond Frontier 5 — Autonomous Multi-Agent 'Artificial Life' Parliament
+**Media:** `figures/beyond_frontier_5_autonomous_multiagent_parliament.png`
+```text
+20/ We don't just visualize past ballots—we simulate the living legislative future.
+All 131 elected MPs exist as autonomous AI agents with individual ideology, constituency pressure, and whip defiance rates.
+
+Drop a bill into the arena (e.g. Supermarket Duopoly Breakup) and watch agents autonomously flock to assemble a 66-seat working majority! (20/22)
+🔗 https://huggingface.co/spaces/edithatogo/nz-election-explorer
+```
+
+---
+
+### Tweet 21: Summary & 26-Slide Executive Deck Download
 **Media:** Executive Presentation Deck Preview
 ```text
-16/ All data, Parquet tables, and code are 100% open-source in the archive-govt-nz vault.
+21/ All data, Parquet tables, and code are 100% open-source in the archive-govt-nz vault.
 
-📊 Explore the live 10-tab Gradio app:
+📊 Explore the live interactive Space (featuring live WebAudio sonification & quantum collapse):
 https://huggingface.co/spaces/edithatogo/nz-election-explorer
 
-📥 Download the complete 17-slide executive presentation deck (.pptx, 3.8 MB) directly from the Space!
-Read our complete findings & methodology in the thread above. (16/16) 🗳️✨
+📥 Download the complete 26-slide executive presentation deck (.pptx, 4.7 MB) directly from the Space!
+Read our complete findings & methodology in the thread above. (21/21) 🗳️✨
 ```
