@@ -3,6 +3,7 @@
 # Runs on GitLab.com shared runners (unlimited for public repos)
 
 stages:
+  - election
   - harvest
   - recover
   - derivatives
@@ -16,6 +17,56 @@ variables:
   # Cache uv and virtual env between runs
   UV_CACHE_DIR: "$CI_PROJECT_DIR/.uv-cache"
   VENV_DIR: "$CI_PROJECT_DIR/.venv"
+
+# ---------------------------------------------------------------------------
+# Election results capture (2026 preliminary/official, plus historical vintages)
+# The results host is behind Cloudflare, so the job drives headless Chromium over
+# the DevTools protocol instead of plain HTTP.
+# ---------------------------------------------------------------------------
+election-capture:
+  stage: election
+  image: python:3.15-slim
+  timeout: 3h
+  variables:
+    ELECTION_BASE_URL: "https://electionresults.govt.nz/electionresults_2026/"
+    ELECTION_VINTAGE: "official"
+    ELECTION_MAX_PAGES: "200"
+  cache:
+    key: "${CI_COMMIT_REF_SLUG}-uv"
+    paths:
+      - .uv-cache/
+      - .venv/
+    policy: pull-push
+  before_script:
+    - apt-get update -qq
+    - apt-get install -qq -y curl chromium >/dev/null
+    - pip install --quiet uv
+    - uv sync --locked --no-dev --python 3.15
+  script:
+    - |
+      chromium --headless=new --no-sandbox --disable-gpu \
+        --remote-debugging-port=9222 --user-data-dir=/tmp/cdp-profile \
+        about:blank >/tmp/chromium.log 2>&1 &
+      for i in $(seq 1 30); do
+        curl -sf http://localhost:9222/json/version >/dev/null && break
+        sleep 1
+      done
+      uv run python tools/capture_election_results.py \
+        --base-url "$ELECTION_BASE_URL" \
+        --vintage "$ELECTION_VINTAGE" \
+        --mode cdp --cdp-port 9222 \
+        --max-pages "$ELECTION_MAX_PAGES" \
+        --objects-dir objects --evidence-dir evidence
+  artifacts:
+    when: always
+    expire_in: 1 year
+    paths:
+      - evidence/nz-election-results-*.json
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule" && $ELECTION_CAPTURE == "true"
+    - if: $CI_PIPELINE_SOURCE == "web" && $ELECTION_CAPTURE == "true"
+  when: manual
+  allow_failure: true
 
 harvest:
   stage: harvest
