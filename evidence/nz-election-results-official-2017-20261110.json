@@ -1,0 +1,174 @@
+{
+  "capture_id": "nz-election-results-official-2017-20261110",
+  "vintage": "official",
+  "election_year": "2017",
+  "base_url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/index.html",
+  "transport": "cdp",
+  "started_at": "2026-11-10T09:49:04.727759+00:00",
+  "finished_at": "2026-11-10T09:49:36.381246+00:00",
+  "discovered": 32,
+  "captured": 32,
+  "failed": [],
+  "files": [
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/index.html",
+      "sha256": "790a745c90be6719b34f8ec00e7142949ad12642f2f004e182d8517a89d2e5e2",
+      "size": 24153
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/candidate-sdv-by-electorate.html",
+      "sha256": "3f5af2a727ae63950e40feb5431cd86cb0b7ecddbd32a07f7c8c2845441ead01",
+      "size": 32039
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/candidate-votes-and-turnout-by-electorate.html",
+      "sha256": "8815ea8447573c7e465a09977ac24d73f103829be18011fb777436e5383fd72e",
+      "size": 124999
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/csv/candidate-sdv-by-electorate.csv",
+      "sha256": "4e5e033460ab4e325bfa9cf39255b5cb66619c4c2008cfce1f502ebce2e409d5",
+      "size": 4596
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/csv/candidate-votes-and-turnout-by-electorate.csv",
+      "sha256": "b92ff868f37e46e7ffbb471a1c5058b0fba9bb0f014ff2115cf224cb36208ae6",
+      "size": 6752
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/csv/overall-results-summary.csv",
+      "sha256": "925f7cbf9f5a853eca906315e5b9e16b2848ee46323201d9b12020b029d06a34",
+      "size": 1773
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/csv/party-lists-of-successful-registered-parties.csv",
+      "sha256": "2896ec949559e22908ff0d9590a91d61d9b41fa01cafc31f6e1c1bc9537074b2",
+      "size": 11089
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/csv/party-lists-of-unsuccessful-registered-parties.csv",
+      "sha256": "793dee98b485b26f687517ea0e0167880ffce8e57fc9747aea4a1d9c5dd38c0a",
+      "size": 4279
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/csv/party-quotients.csv",
+      "sha256": "1ec5d0fc9c444f83aee787beddc9ebd0c75b52b39bccfcdc1a4b29ef4d029025",
+      "size": 4123
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/csv/party-sdv-by-electorate.csv",
+      "sha256": "99c07e49810558099f3d4a792ea50afc22224080f6383fa61cb5fb498fd39e4e",
+      "size": 4461
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/csv/party-votes-and-turnout-by-electorate.csv",
+      "sha256": "f0a793e090b82386658ab33578119577055f457fdbf5147408aa30f19efde6e6",
+      "size": 6156
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/csv/percentage-candidate-votes-for-registered-parties.csv",
+      "sha256": "7a5ee8586ced5ce25fe5788fcbb085384928a1d9d2502c3b8cc84cfac815ed90",
+      "size": 6114
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/csv/percentage-votes-for-registered-parties.csv",
+      "sha256": "663e2a9d84bdfcfe2a4400a0de30c4229a72446ecae78ed3233576b2597eec6c",
+      "size": 6274
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/csv/sdv-disallowed.csv",
+      "sha256": "48f1cb3785a349859ab529b0228ea831b17bf275bf815d3b0a15036a7dc50a79",
+      "size": 4768
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/csv/votes-for-registered-parties-by-electorate.csv",
+      "sha256": "874c5e497dcf76fad8b2ae7d7ced80992bd982dc8a4368574346aacec8663a44",
+      "size": 7018
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/csv/voting-place-coordinates.csv",
+      "sha256": "36c8a9dc7dff35bc72f245d06faaba13a7babbac2aff4eeab9602bd55e19dd9b",
+      "size": 378828
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/csv/winning-electorate-candidates.csv",
+      "sha256": "508f2c652dec796a7bf4632db5282fc5b5852902fd38da6fdd55e8bd53143217",
+      "size": 5344
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/overall-results-summary.html",
+      "sha256": "ec8a2eebf54221175ef393069860e9c292d14c5d7eac9da28196c423a106ea04",
+      "size": 19721
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/party-lists-of-successful-registered-parties.html",
+      "sha256": "4ffbcab9aca3dbb26c813d91b65141cf69321740e2c2674090a7dff548be554d",
+      "size": 25118
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/party-lists-of-unsuccessful-registered-parties.html",
+      "sha256": "7f9a265d02577008cc3c98219cb3903fbb222b614d58f820d5b7bcddb9a0488d",
+      "size": 10474
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/party-quotients.html",
+      "sha256": "d07ffb83a975c80ee559a492728fd7920f6dd240ea0343aa88c325a9e144be34",
+      "size": 47784
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/party-sdv-by-electorate.html",
+      "sha256": "8d42ec009ce1ba2b78e22d0302cf101273c57edf2a3016edadace21a05274f85",
+      "size": 31841
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/party-votes-and-turnout-by-electorate.html",
+      "sha256": "479aa505cca21fd8e32f6b964f4cb5c2c020075d7f28b9c5b794e3774cfec1f8",
+      "size": 116208
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/percentage-candidate-votes-for-registered-parties.html",
+      "sha256": "cd276d01441aa9fa5457552c96e1bc8187cd353cbb6067cfec9d282b3e1289b4",
+      "size": 377000
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/percentage-votes-for-registered-parties.html",
+      "sha256": "6fc275af9bc78247bdca3821b05d9c0f33ebc88e0c12a11e3a30b20931306f9a",
+      "size": 377211
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/sainte-lague-formula.html",
+      "sha256": "7f69ecfbbb6f73a6bc74bd63640eb91b4c299a154b8a90467fde53b215260475",
+      "size": 11934
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/sdv-disallowed.html",
+      "sha256": "738d6ec17795e87c2ea85e764c0fa2d8004d9b5f76839672c838ebc3e1968c29",
+      "size": 49141
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/split-votes-index.html",
+      "sha256": "28f0a4845b86fa0b03d112a7166a8e53cbb2ae97f4aba4f373b747cab15484d5",
+      "size": 21204
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/successful-candidates.html",
+      "sha256": "3ab8f46f0298879ded37d8a5691451437dd387ea35bb2e9080c6d4537bb53c64",
+      "size": 16308
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/votes-by-voting-place-electorate-index.html",
+      "sha256": "7a036bb6bc1bdc43d0887e7866fa4decc03649c03d3de69f3ba59528de09d4b7",
+      "size": 32404
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/votes-for-registered-parties-by-electorate.html",
+      "sha256": "9412704244d4d911acd924eb67408c263e3d183a78ff37a07b9fcdfb37e38e8c",
+      "size": 497897
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2017/statistics/winning-electorate-candidates.html",
+      "sha256": "eb65ee728ff7809b2146d8759efefff16e6481232a488a48180c0a08c022abf2",
+      "size": 26876
+    }
+  ]
+}

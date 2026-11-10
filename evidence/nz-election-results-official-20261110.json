@@ -1,0 +1,138 @@
+{
+  "capture_id": "nz-election-results-official-20261110",
+  "vintage": "official",
+  "base_url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/index.html",
+  "transport": "cdp",
+  "started_at": "2026-11-10T08:29:57.355661+00:00",
+  "finished_at": "2026-11-10T08:33:26.584296+00:00",
+  "discovered": 32,
+  "captured": 23,
+  "failed": [
+    "https://archive.electionresults.govt.nz/electionresults_2023/statistics/csv/party-quotients.csv",
+    "https://archive.electionresults.govt.nz/electionresults_2023/statistics/csv/party-votes-and-turnout-by-electorate.csv",
+    "https://archive.electionresults.govt.nz/electionresults_2023/statistics/csv/percentage-votes-for-registered-parties.csv",
+    "https://archive.electionresults.govt.nz/electionresults_2023/statistics/csv/sdv-disallowed.csv",
+    "https://archive.electionresults.govt.nz/electionresults_2023/statistics/csv/winning-electorate-candidates.csv",
+    "https://archive.electionresults.govt.nz/electionresults_2023/statistics/party-sdv-by-electorate.html",
+    "https://archive.electionresults.govt.nz/electionresults_2023/statistics/party-votes-and-turnout-by-electorate.html",
+    "https://archive.electionresults.govt.nz/electionresults_2023/statistics/percentage-votes-for-registered-parties.html",
+    "https://archive.electionresults.govt.nz/electionresults_2023/statistics/sainte-lague-formula.html"
+  ],
+  "files": [
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/index.html",
+      "sha256": "60e9620e6c8048b7ad6552970c0517a6fd54fe110f0e6d3c06438c8fc437091a",
+      "size": 20224
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/candidate-sdv-by-electorate.html",
+      "sha256": "953f55d6ef5c65aac633b1610218251069e70245f07dbedf0b6254b629fe4b2b",
+      "size": 32548
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/candidate-votes-and-turnout-by-electorate.html",
+      "sha256": "8027023ab8e66f09328a55e5040035d4297a8d94a43a8b86e31fb6256b309b1f",
+      "size": 127743
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/csv/candidate-sdv-by-electorate.csv",
+      "sha256": "b4082815a037702f53186b5cd42020de52dcda7fd2242f7e68275b2b81cd119d",
+      "size": 4779
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/csv/candidate-votes-and-turnout-by-electorate.csv",
+      "sha256": "a2de137554b2e4540910d91c3a778fa2079fb3c4ce27e705d866e09a8322ba30",
+      "size": 6880
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/csv/overall-results-summary.csv",
+      "sha256": "013ae008906b1fb71348ce127a5063ae04881aa58d95a65b4ff3054b9132fb12",
+      "size": 2125
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/csv/party-lists-of-successful-registered-parties.csv",
+      "sha256": "8a5d527c9f046b9b30877f024a262d1aabed4363e3a93801da284a6cd541a304",
+      "size": 11404
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/csv/party-lists-of-unsuccessful-registered-parties.csv",
+      "sha256": "6d64e129763c83463a7f7ca5da4cc75f413d4b4159208c164d15694a6adf9c14",
+      "size": 3844
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/csv/party-sdv-by-electorate.csv",
+      "sha256": "d86352cef68e7043c1bc698482e70c733545956afa8996ff55b86f3eefe043e3",
+      "size": 4608
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/csv/percentage-candidate-votes-for-registered-parties.csv",
+      "sha256": "dbafaf889a8c5d26bdcf1491c926648f1f96ed700d18fa873ad5fb82a8f68d58",
+      "size": 6822
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/csv/votes-for-registered-parties-by-electorate.csv",
+      "sha256": "a63372c42effdb86b8354766fd4ed954f5c36af5350e13abd617adbae5c49ab8",
+      "size": 7801
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/csv/voting-place-coordinates.csv",
+      "sha256": "37c19f6b45cd9dee48a291c9ef01b9456f083007a8584867dbb587afb5888c8a",
+      "size": 448882
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/overall-results-summary.html",
+      "sha256": "517f52ee79d1d72d72c3c67ac87d23ca46bc7b04b9d354995e73e9d2b26ad2f0",
+      "size": 21901
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/party-lists-of-successful-registered-parties.html",
+      "sha256": "dff29e8efc69873c8c702935e44be959483ba11c63b32a066c93f427d27b712f",
+      "size": 26442
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/party-lists-of-unsuccessful-registered-parties.html",
+      "sha256": "a1faf39228ea234ff2b9c4487e76588aa0f05c2c6d5faa31039464e81a2c9e1d",
+      "size": 9993
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/party-quotients.html",
+      "sha256": "4c1a9719c5d87422ddf7abe46da0d6867ebe31c2ac1c8797135a4f054bc0cbc4",
+      "size": 48766
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/percentage-candidate-votes-for-registered-parties.html",
+      "sha256": "4118aedc17d944b46b10c4c05a3e8e5ec26e070c4a374bde8a0f38c4cabc9eae",
+      "size": 434608
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/sdv-disallowed.html",
+      "sha256": "1ce603de5c99cae726ebc1719316d6575deff229a1318c2c641d54c022812b38",
+      "size": 48758
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/split-votes-index.html",
+      "sha256": "b4b29dfe993f9ecfe8440c8ec0a088fc49244fbb41c9223cd3c3fa14e42fa401",
+      "size": 20332
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/successful-candidates.html",
+      "sha256": "21ccd94b2768de5c7cf3051c93e2b041a0373e2d2decb17e7ce1893f6ded1139",
+      "size": 15412
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/votes-by-voting-place-electorate-index.html",
+      "sha256": "d47940cac1e6d1a6cc6fa009a2d8fd246f3b88130be1b2773131b7b4090225a8",
+      "size": 31730
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/votes-for-registered-parties-by-electorate.html",
+      "sha256": "18efdd0a6cd03bcbf8cb8a8faad0e364c70af0999554c0253f3810592a07e7b9",
+      "size": 528382
+    },
+    {
+      "url": "https://archive.electionresults.govt.nz/electionresults_2023/statistics/winning-electorate-candidates.html",
+      "sha256": "a230488d9eeddda4acd27356d4392c36e06c6bd34d874738cc8d844a3f1e72da",
+      "size": 26856
+    }
+  ]
+}

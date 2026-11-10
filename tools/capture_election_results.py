@@ -62,6 +62,14 @@ def store_object(objects_dir: Path, data: bytes, meta: dict) -> Path:
     return dest
 
 
+def _election_year(url: str) -> str:
+    """Return the election year encoded in a results URL path, else ``unknown``."""
+    import re
+
+    match = re.search(r"(19|20)\d{2}", urlparse(url).path)
+    return match.group(0) if match else "unknown"
+
+
 def is_candidate_asset(url: str) -> bool:
     path = urlparse(url).path.lower()
     if path.endswith(SKIP_SUFFIXES):
@@ -182,7 +190,13 @@ ws.close();
 """
 
 
-def fetch_cdp(url: str, port: int) -> bytes | None:
+def fetch_cdp(url: str, port: int) -> tuple[bytes | None, str]:
+    """Fetch *url* through the browser page. Returns ``(data, error)``.
+
+    The error string carries the reason a fetch produced no body (subprocess
+    failure, non-200 status, or an empty body) so the receipt can record why a
+    target was missed instead of a bare "no response".
+    """
     import subprocess
 
     script = _CDP_FETCH.format(url=json.dumps(url), port=port)
@@ -193,9 +207,11 @@ def fetch_cdp(url: str, port: int) -> bytes | None:
         check=False,
     )
     if out.returncode != 0:
-        print(f"  fetch failed {url}: {out.stderr.decode()[:200]}", file=sys.stderr)
-        return None
-    return out.stdout or None
+        err = out.stderr.decode().strip()[:200] or f"cdp exit {out.returncode}"
+        return None, err
+    if not out.stdout:
+        return None, "empty body"
+    return out.stdout, ""
 
 
 _CDP_FETCH = """
@@ -241,13 +257,36 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--cdp-port", type=int, default=9222)
     parser.add_argument("--max-pages", type=int, default=200)
     parser.add_argument("--limit", type=int, default=0, help="Cap files fetched (0 = all)")
+    parser.add_argument(
+        "--delay",
+        type=float,
+        default=1.5,
+        help="Seconds to wait between asset requests (politeness / rate-limit avoidance)",
+    )
     parser.add_argument("--dry-run", action="store_true", help="List targets only")
+    parser.add_argument(
+        "--only-missing",
+        type=Path,
+        default=None,
+        help=(
+            "Path to a prior receipt; re-fetch only the URLs it recorded as failed. "
+            "Lets Cloudflare throttling be ridden out over repeated polite passes."
+        ),
+    )
     args = parser.parse_args(argv)
 
     if args.mode == "cdp":
         urls = discover_cdp(args.base_url, args.cdp_port, args.max_pages)
     else:
         urls = discover_http(args.base_url, args.max_pages)
+
+    if args.only_missing:
+        prior = json.loads(args.only_missing.read_text(encoding="utf-8"))
+        wanted = {
+            (f["url"] if isinstance(f, dict) else f) for f in prior.get("failed", [])
+        }
+        urls = [u for u in urls if u in wanted]
+        print(f"refill mode: {len(urls)} previously-failed URLs from {args.only_missing}")
 
     if args.limit:
         urls = urls[: args.limit]
@@ -264,23 +303,35 @@ def main(argv: list[str] | None = None) -> int:
     for url in urls:
         print(f"fetch {url}")
         data = None
-        for attempt in range(3):
+        last_error = ""
+        for attempt in range(5):
             if args.mode == "cdp":
-                data = fetch_cdp(url, args.cdp_port)
+                data, cdp_error = fetch_cdp(url, args.cdp_port)
+                if data is None:
+                    last_error = cdp_error
             else:
                 import httpx
 
-                resp = httpx.get(url, follow_redirects=True, timeout=120)
-                data = resp.content if resp.status_code == 200 else None
+                try:
+                    resp = httpx.get(url, follow_redirects=True, timeout=120)
+                    data = resp.content if resp.status_code == 200 else None
+                    if data is None:
+                        last_error = f"http {resp.status_code}"
+                except Exception as exc:  # pragma: no cover - network dependent
+                    last_error = str(exc)
             if data:
                 break
-            if attempt < 2:
+            if attempt < 4:
                 import time
 
-                time.sleep(2 * (attempt + 1))
+                time.sleep(min(2 ** attempt, 30))
         if not data:
-            failures.append(url)
+            failures.append({"url": url, "reason": last_error or "no response"})
             continue
+        if args.delay:
+            import time
+
+            time.sleep(args.delay)
         dest = store_object(
             args.objects_dir,
             data,
@@ -296,9 +347,14 @@ def main(argv: list[str] | None = None) -> int:
         )
         captured.append({"url": url, "sha256": dest.stem, "size": len(data)})
 
+    # The year is part of the receipt identity: a single date-only name made each
+    # later year overwrite the earlier receipt and lose its file list.
+    year = _election_year(args.base_url)
+    stem = f"nz-election-results-{args.vintage}-{year}-{started:%Y%m%d}"
     receipt = {
-        "capture_id": f"nz-election-results-{args.vintage}-{started:%Y%m%d}",
+        "capture_id": stem,
         "vintage": args.vintage,
+        "election_year": year,
         "base_url": args.base_url,
         "transport": args.mode,
         "started_at": started.isoformat(),
@@ -309,7 +365,16 @@ def main(argv: list[str] | None = None) -> int:
         "files": captured,
     }
     args.evidence_dir.mkdir(parents=True, exist_ok=True)
-    receipt_path = args.evidence_dir / f"{receipt['capture_id']}.json"
+    receipt_path = args.evidence_dir / f"{stem}.json"
+    if args.only_missing and receipt_path.exists():
+        # Preserve what an earlier pass already captured; only the failure list moves.
+        prior = json.loads(receipt_path.read_text(encoding="utf-8"))
+        merged: dict[str, dict] = {}
+        for entry in prior.get("files", []) + captured:
+            merged[entry["url"]] = entry
+        receipt["files"] = sorted(merged.values(), key=lambda e: e["url"])
+        receipt["captured"] = len(receipt["files"])
+        receipt["discovered"] = max(receipt["discovered"], prior.get("discovered", 0))
     receipt_path.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
     print(f"captured {len(captured)}/{len(urls)} assets; receipt {receipt_path}")
     return 0 if not failures else 1

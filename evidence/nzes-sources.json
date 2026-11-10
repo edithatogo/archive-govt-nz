@@ -1,0 +1,1897 @@
+{
+  "capture_id": "nzes-provenance-20261110",
+  "captured_at": "2026-11-10T12:02:28.367191+00:00",
+  "note": "NZES microdata are distributed under access conditions rather than an open licence. This record documents custodians, identifiers and access terms, with SHA-256 evidence for every captured metadata response.",
+  "custodians": {
+    "ADA Dataverse": "https://dataverse.ada.edu.au/dataverse/new-zealand-election-study",
+    "University of Auckland Figshare": "https://auckland.figshare.com/",
+    "NZES project site": "https://www.nzes.net/"
+  },
+  "datasets": [
+    {
+      "doi": "10.7910/dvn/9nkw9u",
+      "title": "Replication Data for: Why Do Majoritarian Systems Benefit the Right? Income Groups and Vote Choice across Different Electoral Systems",
+      "publisher": "Harvard Dataverse",
+      "publication_year": 2024,
+      "resource_type": "Dataset",
+      "rights": [
+        "Creative Commons Zero v1.0 Universal"
+      ],
+      "creators": [
+        "Liñeira, Robert",
+        "Riera, Pedro"
+      ],
+      "access_note": "Third-party replication material citing the NZES, not the source survey."
+    },
+    {
+      "doi": "10.17608/k6.auckland.6453134.v1",
+      "title": "NZES2017: New Zealand Election Study",
+      "publisher": "The University of Auckland",
+      "publication_year": 2018,
+      "resource_type": "Other",
+      "rights": [
+        "Creative Commons Zero v1.0 Universal"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Curtin, Jennifer",
+        "Coffé, Hilde",
+        "McMillan, Kate",
+        "Barker, Fiona",
+        "Crothers, Charles"
+      ],
+      "access_note": "Deposit metadata is CC0; data files are embargoed or not attached, so the record is provenance only."
+    },
+    {
+      "doi": "10.17608/k6.auckland.6453134",
+      "title": "NZES2017: New Zealand Election Study",
+      "publisher": "The University of Auckland",
+      "publication_year": 2018,
+      "resource_type": "Other",
+      "rights": [
+        "Creative Commons Zero v1.0 Universal"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Curtin, Jennifer",
+        "Coffé, Hilde",
+        "McMillan, Kate",
+        "Barker, Fiona",
+        "Crothers, Charles"
+      ],
+      "access_note": "Deposit metadata is CC0; data files are embargoed or not attached, so the record is provenance only."
+    },
+    {
+      "doi": "10.5281/zenodo.17851735",
+      "title": "Settler Autonomy and Indigenous Constraint - The Dual Foundations of New Zealand's Authority Culture",
+      "publisher": "Zenodo",
+      "publication_year": 2025,
+      "resource_type": "Preprint",
+      "rights": [
+        "Creative Commons Attribution 4.0 International"
+      ],
+      "creators": [
+        "Thuemler, Kim Robin"
+      ],
+      "access_note": "Third-party replication material citing the NZES, not the source survey."
+    },
+    {
+      "doi": "10.5281/zenodo.17851736",
+      "title": "Settler Autonomy and Indigenous Constraint - The Dual Foundations of New Zealand's Authority Culture",
+      "publisher": "Zenodo",
+      "publication_year": 2025,
+      "resource_type": "Preprint",
+      "rights": [
+        "Creative Commons Attribution 4.0 International"
+      ],
+      "creators": [
+        "Thuemler, Kim Robin"
+      ],
+      "access_note": "Third-party replication material citing the NZES, not the source survey."
+    },
+    {
+      "doi": "10.26193/hhmeuz",
+      "title": "2023 New Zealand Election Study",
+      "publisher": "ADA Dataverse",
+      "publication_year": 2025,
+      "resource_type": "Dataset",
+      "rights": [
+        "Custom terms specific to this dataset"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Krewel, Mona",
+        "Crawley, Sam",
+        "Curtin, Jennifer",
+        "Gibbons, Matthew"
+      ],
+      "access_note": "Metadata public; every file is gated by an ADA Dataverse guestbook response before download, and some waves also require an approved access request. The NZES conditions of use apply."
+    },
+    {
+      "doi": "10.26193/bpamyj",
+      "title": "2020 New Zealand Election Study",
+      "publisher": "ADA Dataverse",
+      "publication_year": 2022,
+      "resource_type": "Dataset",
+      "rights": [
+        "Custom terms specific to this dataset"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Barker, Fiona",
+        "Krewel, Mona",
+        "Hayward, Janine",
+        "Curtin, Jennifer",
+        "Greaves, Lara"
+      ],
+      "access_note": "Metadata public; every file is gated by an ADA Dataverse guestbook response before download, and some waves also require an approved access request. The NZES conditions of use apply."
+    },
+    {
+      "doi": "10.26193/28jjfb",
+      "title": "2017 New Zealand Election Study",
+      "publisher": "ADA Dataverse",
+      "publication_year": 2022,
+      "resource_type": "Dataset",
+      "rights": [
+        "Custom terms specific to this dataset"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "McMillan, Kate",
+        "Barker, Fiona",
+        "Curtin, Jennifer",
+        "Hayward, Janine",
+        "Greaves, Lara"
+      ],
+      "access_note": "Metadata public; every file is gated by an ADA Dataverse guestbook response before download, and some waves also require an approved access request. The NZES conditions of use apply."
+    },
+    {
+      "doi": "10.26193/mf9dnl",
+      "title": "2014 New Zealand Election Study",
+      "publisher": "ADA Dataverse",
+      "publication_year": 2022,
+      "resource_type": "Dataset",
+      "rights": [
+        "Custom terms specific to this dataset"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Coffé, Hilde",
+        "Curtin, Jennifer",
+        "Cotterell, Gerard"
+      ],
+      "access_note": "Metadata public; every file is gated by an ADA Dataverse guestbook response before download, and some waves also require an approved access request. The NZES conditions of use apply."
+    },
+    {
+      "doi": "10.26193/yzdmf3",
+      "title": "2011 New Zealand Election Study",
+      "publisher": "ADA Dataverse",
+      "publication_year": 2022,
+      "resource_type": "Dataset",
+      "rights": [
+        "Custom terms specific to this dataset"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Cotterell, Gerard",
+        "Miller, Raymond",
+        "Curtin, Jennifer"
+      ],
+      "access_note": "Metadata public; every file is gated by an ADA Dataverse guestbook response before download, and some waves also require an approved access request. The NZES conditions of use apply."
+    },
+    {
+      "doi": "10.26193/6cveym",
+      "title": "2008 New Zealand Election Study",
+      "publisher": "ADA Dataverse",
+      "publication_year": 2022,
+      "resource_type": "Dataset",
+      "rights": [
+        "Custom terms specific to this dataset"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Banducci, Susan",
+        "Karp, Jeffrey",
+        "Miller, Raymond",
+        "Sullivan, Ann",
+        "Curtin, Jennifer"
+      ],
+      "access_note": "Metadata public; every file is gated by an ADA Dataverse guestbook response before download, and some waves also require an approved access request. The NZES conditions of use apply."
+    },
+    {
+      "doi": "10.26193/wj8dgc",
+      "title": "2005 New Zealand Election Study",
+      "publisher": "ADA Dataverse",
+      "publication_year": 2022,
+      "resource_type": "Dataset",
+      "rights": [
+        "Custom terms specific to this dataset"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Banducci, Susan",
+        "Karp, Jeffrey",
+        "Miller, Raymond",
+        "Sullivan, Ann"
+      ],
+      "access_note": "Metadata public; every file is gated by an ADA Dataverse guestbook response before download, and some waves also require an approved access request. The NZES conditions of use apply."
+    },
+    {
+      "doi": "10.26193/ungixj",
+      "title": "1999 New Zealand Election Study",
+      "publisher": "ADA Dataverse",
+      "publication_year": 2019,
+      "resource_type": "Dataset",
+      "rights": [
+        "Custom terms specific to this dataset"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Banducci, Susan",
+        "Karp, Jeffrey",
+        "Aimer, Peter",
+        "Miller, Raymond",
+        "Sullivan, Ann"
+      ],
+      "access_note": "Metadata public; every file is gated by an ADA Dataverse guestbook response before download, and some waves also require an approved access request. The NZES conditions of use apply."
+    },
+    {
+      "doi": "10.26193/o0lrzz",
+      "title": "1996 New Zealand Election Study",
+      "publisher": "ADA Dataverse",
+      "publication_year": 2019,
+      "resource_type": "Dataset",
+      "rights": [
+        "Custom terms specific to this dataset"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Banducci, Susan",
+        "Karp, Jeffrey",
+        "Aimer, Peter",
+        "Catt, Helena",
+        "Miller, Raymond"
+      ],
+      "access_note": "Metadata public; every file is gated by an ADA Dataverse guestbook response before download, and some waves also require an approved access request. The NZES conditions of use apply."
+    },
+    {
+      "doi": "10.26193/u0nbfs",
+      "title": "1990 New Zealand Election Study",
+      "publisher": "ADA Dataverse",
+      "publication_year": 2019,
+      "resource_type": "Dataset",
+      "rights": [
+        "Custom terms specific to this dataset"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Aimer, Peter"
+      ],
+      "access_note": "Metadata public; every file is gated by an ADA Dataverse guestbook response before download, and some waves also require an approved access request. The NZES conditions of use apply."
+    },
+    {
+      "doi": "10.26193/9de0x4",
+      "title": "2002 New Zealand Election Study",
+      "publisher": "ADA Dataverse",
+      "publication_year": 2019,
+      "resource_type": "Dataset",
+      "rights": [
+        "Custom terms specific to this dataset"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Banducci, Susan",
+        "Karp, Jeffrey",
+        "Aimer, Peter",
+        "Miller, Raymond"
+      ],
+      "access_note": "Metadata public; every file is gated by an ADA Dataverse guestbook response before download, and some waves also require an approved access request. The NZES conditions of use apply."
+    },
+    {
+      "doi": "10.26193/9odfxu",
+      "title": "1993 New Zealand Election Study",
+      "publisher": "ADA Dataverse",
+      "publication_year": 2019,
+      "resource_type": "Dataset",
+      "rights": [
+        "Custom terms specific to this dataset"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Aimer, Peter",
+        "Catt, Helena",
+        "Miller, Raymond",
+        "Lamare, Jim"
+      ],
+      "access_note": "Metadata public; every file is gated by an ADA Dataverse guestbook response before download, and some waves also require an approved access request. The NZES conditions of use apply."
+    },
+    {
+      "doi": "10.26193/zyogjs",
+      "title": "1987 New Zealand Election Study",
+      "publisher": "ADA Dataverse",
+      "publication_year": 2019,
+      "resource_type": "Dataset",
+      "rights": [
+        "Custom terms specific to this dataset"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Crothers, Charles",
+        "Aimer, Peter",
+        "Gordon, Alistair"
+      ],
+      "access_note": "Metadata public; every file is gated by an ADA Dataverse guestbook response before download, and some waves also require an approved access request. The NZES conditions of use apply."
+    },
+    {
+      "doi": "10.17608/k6.auckland.2002830.v2",
+      "title": "NZES2008: New Zealand Election Study",
+      "publisher": "The University of Auckland",
+      "publication_year": 2015,
+      "resource_type": "Dataset",
+      "rights": [
+        "Creative Commons Zero v1.0 Universal"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Banducci, Susan",
+        "Karp, Jeffrey",
+        "Miller, Raymond",
+        "Sullivan, Ann",
+        "Curtin, Jennifer"
+      ],
+      "access_note": "Deposit metadata is CC0; data files are embargoed or not attached, so the record is provenance only."
+    },
+    {
+      "doi": "10.17608/k6.auckland.c.2174637.v3",
+      "title": "New Zealand Election Study",
+      "publisher": "Figshare",
+      "publication_year": 2016,
+      "resource_type": "Collection",
+      "rights": [
+        "CC-BY"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Cotterell, Gerard",
+        "Curtin, Jennifer",
+        "Randow, Martin Von"
+      ],
+      "access_note": "Deposit metadata is CC0; data files are embargoed or not attached, so the record is provenance only."
+    },
+    {
+      "doi": "10.17608/k6.auckland.c.2174637",
+      "title": "New Zealand Election Study",
+      "publisher": "Figshare",
+      "publication_year": 2016,
+      "resource_type": "Collection",
+      "rights": [
+        "CC-BY"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Cotterell, Gerard",
+        "Curtin, Jennifer",
+        "Randow, Martin Von"
+      ],
+      "access_note": "Deposit metadata is CC0; data files are embargoed or not attached, so the record is provenance only."
+    },
+    {
+      "doi": "10.17608/k6.auckland.c.2174637.v5",
+      "title": "New Zealand Election Study",
+      "publisher": "Figshare",
+      "publication_year": 2016,
+      "resource_type": "Collection",
+      "rights": [
+        "CC-BY"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Cotterell, Gerard",
+        "Curtin, Jennifer",
+        "Randow, Martin Von"
+      ],
+      "access_note": "Deposit metadata is CC0; data files are embargoed or not attached, so the record is provenance only."
+    },
+    {
+      "doi": "10.17608/k6.auckland.c.2174637.v4",
+      "title": "New Zealand Election Study",
+      "publisher": "Figshare",
+      "publication_year": 2016,
+      "resource_type": "Collection",
+      "rights": [
+        "CC-BY"
+      ],
+      "creators": [
+        "Vowles, Jack",
+        "Cotterell, Gerard",
+        "Curtin, Jennifer",
+        "Randow, Martin Von"
+      ],
+      "access_note": "Deposit metadata is CC0; data files are embargoed or not attached, so the record is provenance only."
+    }
+  ],
+  "ada_dataverse": [
+    {
+      "wave": "1987",
+      "doi": "https://doi.org/10.26193/ZYOGJS",
+      "title": "1987 New Zealand Election Study",
+      "source_url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/zyogjs",
+      "version": "2.4",
+      "license": null,
+      "file_access_request": true,
+      "guestbook_required": true,
+      "guestbook_ids": [
+        "22"
+      ],
+      "terms_of_use": "<html><body><h4>Conditions of Use</h4><p>I acknowledge that:<br /><br />1. Use of the material is restricted to use for analytical purposes and that this means that I can only use the material to produce information of an analytical nature.<br /><br />Examples of such uses are:<br />(a) the manipulation of data to produce means, correlations or other descriptive summary measures;<br />(b) the estimation of population characteristics from sample data;<br />(c) the use of data as input to mathematical models and for other types of analyses (e.g. factor analysis); and<br />(d) to provide graphical and pictorial representation of characteristics of the population or sub-sets of the population.</p><br /><p>2. The material is not to be used for any non-analytical purposes, or for commercial or financial gain, without the express written permission of the Australian Data Archive.<br /><br />Examples of non-analytical purposes are:<br />(a) transmitting or allowing access to the data in part or whole to any other person / Department / Organisation not a party to this undertaking; and<br />(b) attempting to match unit record data in whole or in part with any other information for the purposes of attempting to identify individuals.</p><br /><p>3. Outputs (such as statistics, tables and graphs) obtained from analysis of these data may be further disseminated provided that I:<br /><br />(a) acknowledge both the original depositors and the Australian Data Archive;<br />(b) acknowledge another archive where the data file is made available through the Australian Data Archive by another archive; and<br />(c) declare that those who carried out the original analysis and collection of the data bear no responsibility for the further analysis or interpretation of it.</p><br /><p>4. Use of the material is solely at my risk and I indemnify the Australian Data Archive and its host institution, The Australian National University.</p><br /><p>5. The Australian Data Archive and its host institution, The Australian National University, shall not be held liable for any breach of this undertaking.</p><br /><p>6. The Australian Data Archive and its host institution, The Australian National University, shall not be held responsible for the accuracy and completeness of the material supplied.</p></body></html>",
+      "file_count": 9,
+      "files": [
+        {
+          "id": 6598,
+          "filename": "1987 New Zealand Election Survey - Auto-generated Codebook.pdf",
+          "content_type": "application/pdf",
+          "size": 613007,
+          "checksum": {
+            "type": "MD5",
+            "value": "17a9d2aadf1327b63d61cc7430c336d9"
+          },
+          "restricted": false
+        },
+        {
+          "id": 6599,
+          "filename": "1987 New Zealand Election Survey - Codebook.rtf",
+          "content_type": "application/rtf",
+          "size": 833061,
+          "checksum": {
+            "type": "MD5",
+            "value": "048757a0cbbfc912d69c978e404a74e8"
+          },
+          "restricted": false
+        },
+        {
+          "id": 6600,
+          "filename": "1987 New Zealand Election Survey - Codebook.txt",
+          "content_type": "text/plain",
+          "size": 38822,
+          "checksum": {
+            "type": "MD5",
+            "value": "a5821c9faf982c1a3426a29411f2c51c"
+          },
+          "restricted": false
+        },
+        {
+          "id": 6601,
+          "filename": "1987 New Zealand Election Survey - Questionnaire.pdf",
+          "content_type": "application/pdf",
+          "size": 1152340,
+          "checksum": {
+            "type": "MD5",
+            "value": "4d0b727bd09b4e31cd6a1b77af525c0b"
+          },
+          "restricted": false
+        },
+        {
+          "id": 6602,
+          "filename": "1987 New Zealand Election Survey - Technical Report.pdf",
+          "content_type": "application/pdf",
+          "size": 2939821,
+          "checksum": {
+            "type": "MD5",
+            "value": "d595cebc98c56927a007ace129a83687"
+          },
+          "restricted": false
+        },
+        {
+          "id": 13293,
+          "filename": "DATA - 1987 New Zealand Election Survey - CSV.zip",
+          "content_type": "application/zip",
+          "size": 44523,
+          "checksum": {
+            "type": "MD5",
+            "value": "7abbc69d66beed90b6e2749e752eddfa"
+          },
+          "restricted": false
+        },
+        {
+          "id": 13294,
+          "filename": "DATA - 1987 New Zealand Election Survey - SAS.zip",
+          "content_type": "application/zip",
+          "size": 70666,
+          "checksum": {
+            "type": "MD5",
+            "value": "cb078eac13d0e862211bf1a1d154e030"
+          },
+          "restricted": false
+        },
+        {
+          "id": 13296,
+          "filename": "DATA - 1987 New Zealand Election Survey - SPSS.zip",
+          "content_type": "application/zip",
+          "size": 56065,
+          "checksum": {
+            "type": "MD5",
+            "value": "88b9482c9f3912e2dce9347c87ce4786"
+          },
+          "restricted": false
+        },
+        {
+          "id": 13295,
+          "filename": "DATA - 1987 New Zealand Election Survey - STATA.zip",
+          "content_type": "application/zip",
+          "size": 67832,
+          "checksum": {
+            "type": "MD5",
+            "value": "a887e8d4df4fdb2de713481b7144737d"
+          },
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "wave": "1990",
+      "doi": "https://doi.org/10.26193/U0NBFS",
+      "title": "1990 New Zealand Election Study",
+      "source_url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/u0nbfs",
+      "version": "6.2",
+      "license": null,
+      "file_access_request": true,
+      "guestbook_required": true,
+      "guestbook_ids": [
+        "22"
+      ],
+      "terms_of_use": "<html><body><h4>Conditions of Use</h4><p>I acknowledge that:<br /><br />1. Use of the material is restricted to use for analytical purposes and that this means that I can only use the material to produce information of an analytical nature.<br /><br />Examples of such uses are:<br />(a) the manipulation of data to produce means, correlations or other descriptive summary measures;<br />(b) the estimation of population characteristics from sample data;<br />(c) the use of data as input to mathematical models and for other types of analyses (e.g. factor analysis); and<br />(d) to provide graphical and pictorial representation of characteristics of the population or sub-sets of the population.</p><br /><p>2. The material is not to be used for any non-analytical purposes, or for commercial or financial gain, without the express written permission of the Australian Data Archive.<br /><br />Examples of non-analytical purposes are:<br />(a) transmitting or allowing access to the data in part or whole to any other person / Department / Organisation not a party to this undertaking; and<br />(b) attempting to match unit record data in whole or in part with any other information for the purposes of attempting to identify individuals.</p><br /><p>3. Outputs (such as statistics, tables and graphs) obtained from analysis of these data may be further disseminated provided that I:<br /><br />(a) acknowledge both the original depositors and the Australian Data Archive;<br />(b) acknowledge another archive where the data file is made available through the Australian Data Archive by another archive; and<br />(c) declare that those who carried out the original analysis and collection of the data bear no responsibility for the further analysis or interpretation of it.</p><br /><p>4. Use of the material is solely at my risk and I indemnify the Australian Data Archive and its host institution, The Australian National University.</p><br /><p>5. The Australian Data Archive and its host institution, The Australian National University, shall not be held liable for any breach of this undertaking.</p><br /><p>6. The Australian Data Archive and its host institution, The Australian National University, shall not be held responsible for the accuracy and completeness of the material supplied.</p></body></html>",
+      "file_count": 10,
+      "files": [
+        {
+          "id": 8531,
+          "filename": "1990 New Zealand Election Study - Codebook.pdf",
+          "content_type": "application/pdf",
+          "size": 1200532,
+          "checksum": {
+            "type": "MD5",
+            "value": "4f717dec6f8464c1e2a53a89d4834f8d"
+          },
+          "restricted": false
+        },
+        {
+          "id": 8532,
+          "filename": "1990 New Zealand Election Study - Codebook.rtf",
+          "content_type": "application/rtf",
+          "size": 1999630,
+          "checksum": {
+            "type": "MD5",
+            "value": "2bb3390a30a75ca24012682f25f32736"
+          },
+          "restricted": false
+        },
+        {
+          "id": 8533,
+          "filename": "1990 New Zealand Election Study - Coding Frame.pdf",
+          "content_type": "application/pdf",
+          "size": 116063,
+          "checksum": {
+            "type": "MD5",
+            "value": "721e7eb3fb59e6ec53378263e938e907"
+          },
+          "restricted": false
+        },
+        {
+          "id": 8534,
+          "filename": "1990 New Zealand Election Study - Note.pdf",
+          "content_type": "application/pdf",
+          "size": 543179,
+          "checksum": {
+            "type": "MD5",
+            "value": "afe723bd3a50b5d7d6ad63c64dcb1331"
+          },
+          "restricted": false
+        },
+        {
+          "id": 8535,
+          "filename": "1990 New Zealand Election Study - Questionnaire.pdf",
+          "content_type": "application/pdf",
+          "size": 1501859,
+          "checksum": {
+            "type": "MD5",
+            "value": "b30495e9c68aa56d4896913262b2d9f0"
+          },
+          "restricted": false
+        },
+        {
+          "id": 15105,
+          "filename": "DATA - 1990 New Zealand Election Study - CSV.zip",
+          "content_type": "application/zip",
+          "size": 335914,
+          "checksum": {
+            "type": "MD5",
+            "value": "9259dda4130fe037376ba83c3ccac93f"
+          },
+          "restricted": false
+        },
+        {
+          "id": 15103,
+          "filename": "DATA - 1990 New Zealand Election Study - SAS.zip",
+          "content_type": "application/zip",
+          "size": 517195,
+          "checksum": {
+            "type": "MD5",
+            "value": "055898da7718f007c155ffb7dbb41d78"
+          },
+          "restricted": false
+        },
+        {
+          "id": 15104,
+          "filename": "DATA - 1990 New Zealand Election Study - SPSS.zip",
+          "content_type": "application/zip",
+          "size": 337348,
+          "checksum": {
+            "type": "MD5",
+            "value": "48c11834957d7cd66f0d705ae63d90b4"
+          },
+          "restricted": false
+        },
+        {
+          "id": 15102,
+          "filename": "DATA - 1990 New Zealand Election Study - STATA.zip",
+          "content_type": "application/zip",
+          "size": 524379,
+          "checksum": {
+            "type": "MD5",
+            "value": "b4c4dd5fc223630a9c8d8e30b41d9c9e"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17788,
+          "filename": "DATA DICTIONARY - New Zealand Election Study - ADA, June 2022 (1.3).xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size": 812280,
+          "checksum": {
+            "type": "MD5",
+            "value": "91ef836d7d7d05650600a67a18b77ac9"
+          },
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "wave": "1993",
+      "doi": "https://doi.org/10.26193/9ODFXU",
+      "title": "1993 New Zealand Election Study",
+      "source_url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/9odfxu",
+      "version": "6.1",
+      "license": null,
+      "file_access_request": true,
+      "guestbook_required": true,
+      "guestbook_ids": [
+        "2"
+      ],
+      "terms_of_use": "<html><body><h4>Conditions of Use</h4><p>I acknowledge that:<br /><br />1. Use of the material is restricted to use for analytical purposes and that this means that I can only use the material to produce information of an analytical nature.<br /><br />Examples of such uses are:<br />(a) the manipulation of data to produce means, correlations or other descriptive summary measures;<br />(b) the estimation of population characteristics from sample data;<br />(c) the use of data as input to mathematical models and for other types of analyses (e.g. factor analysis); and<br />(d) to provide graphical and pictorial representation of characteristics of the population or sub-sets of the population.</p><br /><p>2. The material is not to be used for any non-analytical purposes, or for commercial or financial gain, without the express written permission of the Australian Data Archive.<br /><br />Examples of non-analytical purposes are:<br />(a) transmitting or allowing access to the data in part or whole to any other person / Department / Organisation not a party to this undertaking; and<br />(b) attempting to match unit record data in whole or in part with any other information for the purposes of attempting to identify individuals.</p><br /><p>3. Outputs (such as statistics, tables and graphs) obtained from analysis of these data may be further disseminated provided that I:<br /><br />(a) acknowledge both the original depositors and the Australian Data Archive;<br />(b) acknowledge another archive where the data file is made available through the Australian Data Archive by another archive; and<br />(c) declare that those who carried out the original analysis and collection of the data bear no responsibility for the further analysis or interpretation of it.</p><br /><p>4. Use of the material is solely at my risk and I indemnify the Australian Data Archive and its host institution, The Australian National University.</p><br /><p>5. The Australian Data Archive and its host institution, The Australian National University, shall not be held liable for any breach of this undertaking.</p><br /><p>6. The Australian Data Archive and its host institution, The Australian National University, shall not be held responsible for the accuracy and completeness of the material supplied.</p></body></html>",
+      "file_count": 9,
+      "files": [
+        {
+          "id": 6637,
+          "filename": "1993 New Zealand Election Survey - Auto-generated Codebook.pdf",
+          "content_type": "application/pdf",
+          "size": 1847210,
+          "checksum": {
+            "type": "MD5",
+            "value": "6ee1a6c51f1433f4cbdd897d0feda0e8"
+          },
+          "restricted": false
+        },
+        {
+          "id": 6638,
+          "filename": "1993 New Zealand Election Survey - Codebook.rtf",
+          "content_type": "application/rtf",
+          "size": 2928178,
+          "checksum": {
+            "type": "MD5",
+            "value": "4318a78d2496726c46d557525c0af827"
+          },
+          "restricted": false
+        },
+        {
+          "id": 6639,
+          "filename": "1993 New Zealand Election Survey - Note.pdf",
+          "content_type": "application/pdf",
+          "size": 35434,
+          "checksum": {
+            "type": "MD5",
+            "value": "f5237335eb7ebec5909bfa19f566d985"
+          },
+          "restricted": false
+        },
+        {
+          "id": 6640,
+          "filename": "1993 New Zealand Election Survey - Questionnaire.pdf",
+          "content_type": "application/pdf",
+          "size": 1647442,
+          "checksum": {
+            "type": "MD5",
+            "value": "7cd8bdeec831d1b51bc7b301b9fcbb9c"
+          },
+          "restricted": false
+        },
+        {
+          "id": 13313,
+          "filename": "DATA - 1993 New Zealand Election Survey - CSV.zip",
+          "content_type": "application/zip",
+          "size": 430070,
+          "checksum": {
+            "type": "MD5",
+            "value": "eb337d80403eac3c036207dd199555f6"
+          },
+          "restricted": false
+        },
+        {
+          "id": 13314,
+          "filename": "DATA - 1993 New Zealand Election Survey - SAS.zip",
+          "content_type": "application/zip",
+          "size": 643764,
+          "checksum": {
+            "type": "MD5",
+            "value": "9331939f25766f7e58ae9775e4339c46"
+          },
+          "restricted": false
+        },
+        {
+          "id": 13316,
+          "filename": "DATA - 1993 New Zealand Election Survey - SPSS.zip",
+          "content_type": "application/zip",
+          "size": 392793,
+          "checksum": {
+            "type": "MD5",
+            "value": "a8ba3879613d87bb04f447155b4ee7a9"
+          },
+          "restricted": false
+        },
+        {
+          "id": 13315,
+          "filename": "DATA - 1993 New Zealand Election Survey - STATA.zip",
+          "content_type": "application/zip",
+          "size": 633774,
+          "checksum": {
+            "type": "MD5",
+            "value": "42e2de334338a6fe65c9754c65c51535"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17789,
+          "filename": "DATA DICTIONARY - New Zealand Election Study - ADA, June 2022 (1.3).xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size": 812280,
+          "checksum": {
+            "type": "MD5",
+            "value": "91ef836d7d7d05650600a67a18b77ac9"
+          },
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "wave": "1996",
+      "doi": "https://doi.org/10.26193/O0LRZZ",
+      "title": "1996 New Zealand Election Study",
+      "source_url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/o0lrzz",
+      "version": "6.2",
+      "license": null,
+      "file_access_request": true,
+      "guestbook_required": true,
+      "guestbook_ids": [
+        "22"
+      ],
+      "terms_of_use": "<html><body><h4>Conditions of Use</h4><p>I acknowledge that:<br /><br />1. Use of the material is restricted to use for analytical purposes and that this means that I can only use the material to produce information of an analytical nature.<br /><br />Examples of such uses are:<br />(a) the manipulation of data to produce means, correlations or other descriptive summary measures;<br />(b) the estimation of population characteristics from sample data;<br />(c) the use of data as input to mathematical models and for other types of analyses (e.g. factor analysis); and<br />(d) to provide graphical and pictorial representation of characteristics of the population or sub-sets of the population.</p><br /><p>2. The material is not to be used for any non-analytical purposes, or for commercial or financial gain, without the express written permission of the Australian Data Archive.<br /><br />Examples of non-analytical purposes are:<br />(a) transmitting or allowing access to the data in part or whole to any other person / Department / Organisation not a party to this undertaking; and<br />(b) attempting to match unit record data in whole or in part with any other information for the purposes of attempting to identify individuals.</p><br /><p>3. Outputs (such as statistics, tables and graphs) obtained from analysis of these data may be further disseminated provided that I:<br /><br />(a) acknowledge both the original depositors and the Australian Data Archive;<br />(b) acknowledge another archive where the data file is made available through the Australian Data Archive by another archive; and<br />(c) declare that those who carried out the original analysis and collection of the data bear no responsibility for the further analysis or interpretation of it.</p><br /><p>4. Use of the material is solely at my risk and I indemnify the Australian Data Archive and its host institution, The Australian National University.</p><br /><p>5. The Australian Data Archive and its host institution, The Australian National University, shall not be held liable for any breach of this undertaking.</p><br /><p>6. The Australian Data Archive and its host institution, The Australian National University, shall not be held responsible for the accuracy and completeness of the material supplied.</p></body></html>",
+      "file_count": 8,
+      "files": [
+        {
+          "id": 8586,
+          "filename": "1996 New Zealand Election Survey - Auto-generated Codebook.pdf",
+          "content_type": "application/pdf",
+          "size": 3118057,
+          "checksum": {
+            "type": "MD5",
+            "value": "a0c7db7067bd596a55520bb51c6dd7db"
+          },
+          "restricted": false
+        },
+        {
+          "id": 8587,
+          "filename": "1996 New Zealand Election Survey - Codebook.rtf",
+          "content_type": "application/rtf",
+          "size": 3136570,
+          "checksum": {
+            "type": "MD5",
+            "value": "6acb2005e72526722cb309676b3c4f85"
+          },
+          "restricted": false
+        },
+        {
+          "id": 8588,
+          "filename": "1996 New Zealand Election Survey - Questionnaire.pdf",
+          "content_type": "application/pdf",
+          "size": 1643643,
+          "checksum": {
+            "type": "MD5",
+            "value": "2a55e4e98df8d3caecf4c3cd006ca9b3"
+          },
+          "restricted": false
+        },
+        {
+          "id": 14053,
+          "filename": "DATA - 1996 New Zealand Election Survey - CSV.zip",
+          "content_type": "application/zip",
+          "size": 862807,
+          "checksum": {
+            "type": "MD5",
+            "value": "d4da09192a76d575b2197fcdbc4c7836"
+          },
+          "restricted": false
+        },
+        {
+          "id": 14054,
+          "filename": "DATA - 1996 New Zealand Election Survey - SAS.zip",
+          "content_type": "application/zip",
+          "size": 1268574,
+          "checksum": {
+            "type": "MD5",
+            "value": "b89770dfe1fd0252ca2efc6a4d4cca11"
+          },
+          "restricted": false
+        },
+        {
+          "id": 14056,
+          "filename": "DATA - 1996 New Zealand Election Survey - SPSS.zip",
+          "content_type": "application/zip",
+          "size": 848626,
+          "checksum": {
+            "type": "MD5",
+            "value": "3fe72e37546f9f9727a9a9d27dcaec67"
+          },
+          "restricted": false
+        },
+        {
+          "id": 14055,
+          "filename": "DATA - 1996 New Zealand Election Survey - STATA.zip",
+          "content_type": "application/zip",
+          "size": 1245613,
+          "checksum": {
+            "type": "MD5",
+            "value": "e89c862b8dcd2bd923283f2e4696bf7d"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17790,
+          "filename": "DATA DICTIONARY - New Zealand Election Study - ADA, June 2022 (1.3).xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size": 812280,
+          "checksum": {
+            "type": "MD5",
+            "value": "91ef836d7d7d05650600a67a18b77ac9"
+          },
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "wave": "1999",
+      "doi": "https://doi.org/10.26193/UNGIXJ",
+      "title": "1999 New Zealand Election Study",
+      "source_url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/ungixj",
+      "version": "6.2",
+      "license": null,
+      "file_access_request": true,
+      "guestbook_required": true,
+      "guestbook_ids": [
+        "22"
+      ],
+      "terms_of_use": "<html><body><h4>Conditions of Use</h4><p>I acknowledge that:<br /><br />1. Use of the material is restricted to use for analytical purposes and that this means that I can only use the material to produce information of an analytical nature.<br /><br />Examples of such uses are:<br />(a) the manipulation of data to produce means, correlations or other descriptive summary measures;<br />(b) the estimation of population characteristics from sample data;<br />(c) the use of data as input to mathematical models and for other types of analyses (e.g. factor analysis); and<br />(d) to provide graphical and pictorial representation of characteristics of the population or sub-sets of the population.</p><br /><p>2. The material is not to be used for any non-analytical purposes, or for commercial or financial gain, without the express written permission of the Australian Data Archive.<br /><br />Examples of non-analytical purposes are:<br />(a) transmitting or allowing access to the data in part or whole to any other person / Department / Organisation not a party to this undertaking; and<br />(b) attempting to match unit record data in whole or in part with any other information for the purposes of attempting to identify individuals.</p><br /><p>3. Outputs (such as statistics, tables and graphs) obtained from analysis of these data may be further disseminated provided that I:<br /><br />(a) acknowledge both the original depositors and the Australian Data Archive;<br />(b) acknowledge another archive where the data file is made available through the Australian Data Archive by another archive; and<br />(c) declare that those who carried out the original analysis and collection of the data bear no responsibility for the further analysis or interpretation of it.</p><br /><p>4. Use of the material is solely at my risk and I indemnify the Australian Data Archive and its host institution, The Australian National University.</p><br /><p>5. The Australian Data Archive and its host institution, The Australian National University, shall not be held liable for any breach of this undertaking.</p><br /><p>6. The Australian Data Archive and its host institution, The Australian National University, shall not be held responsible for the accuracy and completeness of the material supplied.</p></body></html>",
+      "file_count": 11,
+      "files": [
+        {
+          "id": 8660,
+          "filename": "1999 New Zealand Election Survey - Auto-generated Codebook.pdf",
+          "content_type": "application/pdf",
+          "size": 1383751,
+          "checksum": {
+            "type": "MD5",
+            "value": "123c281d8e5c5d5ca797f86fadba509e"
+          },
+          "restricted": false
+        },
+        {
+          "id": 8661,
+          "filename": "1999 New Zealand Election Survey - Codebook.rtf",
+          "content_type": "application/rtf",
+          "size": 3638776,
+          "checksum": {
+            "type": "MD5",
+            "value": "e04ba98839c59b15b02b252bfc927ae8"
+          },
+          "restricted": false
+        },
+        {
+          "id": 8662,
+          "filename": "1999 New Zealand Election Survey - Note.pdf",
+          "content_type": "application/pdf",
+          "size": 458584,
+          "checksum": {
+            "type": "MD5",
+            "value": "af7539d1c9f09171b2bff95befb92d6e"
+          },
+          "restricted": false
+        },
+        {
+          "id": 8664,
+          "filename": "1999 New Zealand Election Survey - Note.pdf",
+          "content_type": "application/pdf",
+          "size": 40993,
+          "checksum": {
+            "type": "MD5",
+            "value": "617cba994d74c12fcda6ccb6f1950ba3"
+          },
+          "restricted": false
+        },
+        {
+          "id": 8663,
+          "filename": "1999 New Zealand Election Survey - Note.txt",
+          "content_type": "text/plain",
+          "size": 242,
+          "checksum": {
+            "type": "MD5",
+            "value": "adbb275c73536adb4f32e0c1ee8b99f9"
+          },
+          "restricted": false
+        },
+        {
+          "id": 8665,
+          "filename": "1999 New Zealand Election Survey - Questionnaire.pdf",
+          "content_type": "application/pdf",
+          "size": 390767,
+          "checksum": {
+            "type": "MD5",
+            "value": "d9345800e8293c7cc5edce3ce4ee9901"
+          },
+          "restricted": false
+        },
+        {
+          "id": 15275,
+          "filename": "DATA - 1999 New Zealand Election Survey - CSV.zip",
+          "content_type": "application/zip",
+          "size": 1692394,
+          "checksum": {
+            "type": "MD5",
+            "value": "8b7f6938b3e539855a8fdb8e064f223c"
+          },
+          "restricted": false
+        },
+        {
+          "id": 15277,
+          "filename": "DATA - 1999 New Zealand Election Survey - SAS.zip",
+          "content_type": "application/zip",
+          "size": 2632395,
+          "checksum": {
+            "type": "MD5",
+            "value": "a64740cedf45200746050f0ccc50c739"
+          },
+          "restricted": false
+        },
+        {
+          "id": 15274,
+          "filename": "DATA - 1999 New Zealand Election Survey - SPSS.zip",
+          "content_type": "application/zip",
+          "size": 1669158,
+          "checksum": {
+            "type": "MD5",
+            "value": "4fa0493b7d83220f99f9f9f262f5fc04"
+          },
+          "restricted": false
+        },
+        {
+          "id": 15276,
+          "filename": "DATA - 1999 New Zealand Election Survey - STATA.zip",
+          "content_type": "application/zip",
+          "size": 2586997,
+          "checksum": {
+            "type": "MD5",
+            "value": "7855daef7b0e30a6c77fee1db790385f"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17791,
+          "filename": "DATA DICTIONARY - New Zealand Election Study - ADA, June 2022 (1.3).xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size": 812280,
+          "checksum": {
+            "type": "MD5",
+            "value": "91ef836d7d7d05650600a67a18b77ac9"
+          },
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "wave": "2002",
+      "doi": "https://doi.org/10.26193/9DE0X4",
+      "title": "2002 New Zealand Election Study",
+      "source_url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/9de0x4",
+      "version": "6.2",
+      "license": null,
+      "file_access_request": true,
+      "guestbook_required": true,
+      "guestbook_ids": [
+        "22"
+      ],
+      "terms_of_use": "<html><body><h4>Conditions of Use</h4><p>I acknowledge that:<br /><br />1. Use of the material is restricted to use for analytical purposes and that this means that I can only use the material to produce information of an analytical nature.<br /><br />Examples of such uses are:<br />(a) the manipulation of data to produce means, correlations or other descriptive summary measures;<br />(b) the estimation of population characteristics from sample data;<br />(c) the use of data as input to mathematical models and for other types of analyses (e.g. factor analysis); and<br />(d) to provide graphical and pictorial representation of characteristics of the population or sub-sets of the population.</p><br /><p>2. The material is not to be used for any non-analytical purposes, or for commercial or financial gain, without the express written permission of the Australian Data Archive.<br /><br />Examples of non-analytical purposes are:<br />(a) transmitting or allowing access to the data in part or whole to any other person / Department / Organisation not a party to this undertaking; and<br />(b) attempting to match unit record data in whole or in part with any other information for the purposes of attempting to identify individuals.</p><br /><p>3. Outputs (such as statistics, tables and graphs) obtained from analysis of these data may be further disseminated provided that I:<br /><br />(a) acknowledge both the original depositors and the Australian Data Archive;<br />(b) acknowledge another archive where the data file is made available through the Australian Data Archive by another archive; and<br />(c) declare that those who carried out the original analysis and collection of the data bear no responsibility for the further analysis or interpretation of it.</p><br /><p>4. Use of the material is solely at my risk and I indemnify the Australian Data Archive and its host institution, The Australian National University.</p><br /><p>5. The Australian Data Archive and its host institution, The Australian National University, shall not be held liable for any breach of this undertaking.</p><br /><p>6. The Australian Data Archive and its host institution, The Australian National University, shall not be held responsible for the accuracy and completeness of the material supplied.</p></body></html>",
+      "file_count": 10,
+      "files": [
+        {
+          "id": 7320,
+          "filename": "2002 New Zealand Election Survey - Auto-generated Codebook.pdf",
+          "content_type": "application/pdf",
+          "size": 1972789,
+          "checksum": {
+            "type": "MD5",
+            "value": "2b017f59f3bf839deb61e053ca7c9246"
+          },
+          "restricted": false
+        },
+        {
+          "id": 7321,
+          "filename": "2002 New Zealand Election Survey - Codebook.rtf",
+          "content_type": "application/rtf",
+          "size": 3053213,
+          "checksum": {
+            "type": "MD5",
+            "value": "cc2c098bd909eca05bcd37f605479262"
+          },
+          "restricted": false
+        },
+        {
+          "id": 7322,
+          "filename": "2002 New Zealand Election Survey - Questionnaire (1).pdf",
+          "content_type": "application/pdf",
+          "size": 51329,
+          "checksum": {
+            "type": "MD5",
+            "value": "68b514d9fa283343aca8de7bed711277"
+          },
+          "restricted": false
+        },
+        {
+          "id": 7323,
+          "filename": "2002 New Zealand Election Survey - Questionnaire (2).pdf",
+          "content_type": "application/pdf",
+          "size": 629206,
+          "checksum": {
+            "type": "MD5",
+            "value": "da02944ca65ccd99f4a0bcf8f2472aef"
+          },
+          "restricted": false
+        },
+        {
+          "id": 7324,
+          "filename": "2002 New Zealand Election Survey - Technical Report.pdf",
+          "content_type": "application/pdf",
+          "size": 4524,
+          "checksum": {
+            "type": "MD5",
+            "value": "e50252c8bf1f454a18e8f8f0469d464a"
+          },
+          "restricted": false
+        },
+        {
+          "id": 13305,
+          "filename": "DATA - 2002 New Zealand Election Survey - CSV.zip",
+          "content_type": "application/zip",
+          "size": 1156572,
+          "checksum": {
+            "type": "MD5",
+            "value": "e5a52eb2e343b90d5d6e74d2faac84b5"
+          },
+          "restricted": false
+        },
+        {
+          "id": 13306,
+          "filename": "DATA - 2002 New Zealand Election Survey - SAS.zip",
+          "content_type": "application/zip",
+          "size": 1665132,
+          "checksum": {
+            "type": "MD5",
+            "value": "5f808b99c4d569b090de833e6dd41e37"
+          },
+          "restricted": false
+        },
+        {
+          "id": 13308,
+          "filename": "DATA - 2002 New Zealand Election Survey - SPSS.zip",
+          "content_type": "application/zip",
+          "size": 1112021,
+          "checksum": {
+            "type": "MD5",
+            "value": "9c090331b2fb172be08fdeb0f449dd72"
+          },
+          "restricted": false
+        },
+        {
+          "id": 13307,
+          "filename": "DATA - 2002 New Zealand Election Survey - STATA.zip",
+          "content_type": "application/zip",
+          "size": 1644913,
+          "checksum": {
+            "type": "MD5",
+            "value": "6391248e40df4dafb32aaf7f615db9b9"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17792,
+          "filename": "DATA DICTIONARY - New Zealand Election Study - ADA, June 2022 (1.3).xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size": 812280,
+          "checksum": {
+            "type": "MD5",
+            "value": "91ef836d7d7d05650600a67a18b77ac9"
+          },
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "wave": "2005",
+      "doi": "https://doi.org/10.26193/WJ8DGC",
+      "title": "2005 New Zealand Election Study",
+      "source_url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/wj8dgc",
+      "version": "3.1",
+      "license": null,
+      "file_access_request": true,
+      "guestbook_required": true,
+      "guestbook_ids": [
+        "22"
+      ],
+      "terms_of_use": "<b>Conditions of use:</b></p>\r\n\r\nUsers of New Zealand Election Study (NZES) data acknowledge that: <br> <br>\r\n\r\n1.\tUse of the material is restricted to use for analytical purposes and that this means that I can only use the material to produce information of an analytical nature. Examples of such uses are: <br> \r\n1. \tThe manipulation of data to produce means, correlations or other descriptive summary measures; <br> \r\n2.\tThe estimation of population characteristics from sample data;<br> \r\n3.\tThe use of data as input to mathematical models and for other types of analyses (e.g. factor analysis); and <br> \r\n4.\tTo provide graphical and pictorial representation of characteristics of the population or sub-sets of the population. <br> <br> \r\n2.\tThe material is not to be used for any non-analytical purposes, or for commercial or financial gain, without the express written permission of the ADA Director after consultation with the principal researchers of the NZES. Examples of non-analytical purposes are: <br> \r\na. Transmitting or allowing access to the data in part or whole to any other person / Department / Organisation not a party to this undertaking; and <br> \r\nb. Attempting to match unit record data in whole or in part with any other information for the purposes of attempting to re-identify individuals. <br> <br> \r\n3.\tOutputs (such as statistics, tables and graphs) obtained from analysis of these data may be further disseminated provided that I: <br> \r\n1.\tAcknowledge both the NZES and the ADA; <br> \r\n2.\tAcknowledge another archive where the data file is made available through the ADA by another archive; and <br> \r\n3.\tDeclare that those who carried out the original analysis and collection of the data bear no responsibility for the further analysis or interpretation of it. <br> <br> \r\n4.\tUse of the material is solely at my risk and I indemnify the NZES, ADA and its host institution, The ANU.<br> <br> \r\n5.\tThe NZES, the ADA and its host institution, The ANU, shall not be held liable for any breach of this undertaking.<br> <br> \r\n6.\tThe NZES, the ADA and its host institution, The ANU, shall not be held responsible for the accuracy and completeness of the material supplied. The material being supplied on an ‘as-is’ basis. <br> <br> \r\n7.\tOnce access has been granted to the data, abuses of access rights, breaches of this undertaking, or failure to keep the data safe, may result in the application of restrictions. Restrictions will escalate in severity depending upon the seriousness of the breach and vary from termination of access to the user and/or institution, on either a temporary or permanent basis, through to potential legal action in the most extreme cases. <br> <br> \r\n8.\tI will notify promptly the ADA of any non-compliance with these Terms and Conditions of Use or of any infringements of the data, including unintentional disclosure or any errors within the data of which I become aware. <br> <br> \r\n9.\tAt the conclusion of my research notify of use. This may include the offer of publication to the ADA any new dataset that has been derived from the materials supplied or which have been created by the combination of the material supplied with other available data. The deposit of the derived dataset will include sufficient supporting documentation to enable the new dataset to be made accessible to other users. <br> <br> \r\n10.\tThe New Zealand Election Study follows the values of Te Mana Raraunga and the Global Indigenous Data Alliance. Data users who wish to publish findings related to Māori (the Indigenous peoples of Aotearoa/ New Zealand) are expected to do so with due respect for their status as tangata whenua (the Indigenous peoples of New Zealand). We recommend that data users read and apply Te Mana Raraunga’s principles of Māori Data Sovereignty (i.e., https://www.temanararaunga.maori.nz/s/TMR-Maori-Data-Sovereignty- Principles-Oct-2018.pdf). <br> <br> \r\n11.\tData users are expected to report findings related to all social groups and communities with due respect and fairness. <br> <br> \r\n",
+      "file_count": 3,
+      "files": [
+        {
+          "id": 17632,
+          "filename": "2005 New Zealand Election Study - Questionnaire.pdf",
+          "content_type": "application/pdf",
+          "size": 581036,
+          "checksum": {
+            "type": "MD5",
+            "value": "dec4356e362c9ebb5ba9b88671dafd33"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17631,
+          "filename": "DATA - 2005 New Zealand Election Study - SPSS.sav",
+          "content_type": "application/x-spss-sav",
+          "size": 2724903,
+          "checksum": {
+            "type": "MD5",
+            "value": "fc7af993e4563a5ae1f682fc9a9315ba"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17793,
+          "filename": "DATA DICTIONARY - New Zealand Election Study - ADA, June 2022 (1.3).xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size": 812280,
+          "checksum": {
+            "type": "MD5",
+            "value": "91ef836d7d7d05650600a67a18b77ac9"
+          },
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "wave": "2008",
+      "doi": "https://doi.org/10.26193/6CVEYM",
+      "title": "2008 New Zealand Election Study",
+      "source_url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/6cveym",
+      "version": "3.1",
+      "license": null,
+      "file_access_request": true,
+      "guestbook_required": true,
+      "guestbook_ids": [
+        "22"
+      ],
+      "terms_of_use": "<b>Conditions of use:</b></p>\r\n\r\nUsers of New Zealand Election Study (NZES) data acknowledge that: <br> <br>\r\n\r\n1.\tUse of the material is restricted to use for analytical purposes and that this means that I can only use the material to produce information of an analytical nature. Examples of such uses are: <br> \r\n1. \tThe manipulation of data to produce means, correlations or other descriptive summary measures; <br> \r\n2.\tThe estimation of population characteristics from sample data;<br> \r\n3.\tThe use of data as input to mathematical models and for other types of analyses (e.g. factor analysis); and <br> \r\n4.\tTo provide graphical and pictorial representation of characteristics of the population or sub-sets of the population. <br> <br> \r\n2.\tThe material is not to be used for any non-analytical purposes, or for commercial or financial gain, without the express written permission of the ADA Director after consultation with the principal researchers of the NZES. Examples of non-analytical purposes are: <br> \r\na. Transmitting or allowing access to the data in part or whole to any other person / Department / Organisation not a party to this undertaking; and <br> \r\nb. Attempting to match unit record data in whole or in part with any other information for the purposes of attempting to re-identify individuals. <br> <br> \r\n3.\tOutputs (such as statistics, tables and graphs) obtained from analysis of these data may be further disseminated provided that I: <br> \r\n1.\tAcknowledge both the NZES and the ADA; <br> \r\n2.\tAcknowledge another archive where the data file is made available through the ADA by another archive; and <br> \r\n3.\tDeclare that those who carried out the original analysis and collection of the data bear no responsibility for the further analysis or interpretation of it. <br> <br> \r\n4.\tUse of the material is solely at my risk and I indemnify the NZES, ADA and its host institution, The ANU.<br> <br> \r\n5.\tThe NZES, the ADA and its host institution, The ANU, shall not be held liable for any breach of this undertaking.<br> <br> \r\n6.\tThe NZES, the ADA and its host institution, The ANU, shall not be held responsible for the accuracy and completeness of the material supplied. The material being supplied on an ‘as-is’ basis. <br> <br> \r\n7.\tOnce access has been granted to the data, abuses of access rights, breaches of this undertaking, or failure to keep the data safe, may result in the application of restrictions. Restrictions will escalate in severity depending upon the seriousness of the breach and vary from termination of access to the user and/or institution, on either a temporary or permanent basis, through to potential legal action in the most extreme cases. <br> <br> \r\n8.\tI will notify promptly the ADA of any non-compliance with these Terms and Conditions of Use or of any infringements of the data, including unintentional disclosure or any errors within the data of which I become aware. <br> <br> \r\n9.\tAt the conclusion of my research notify of use. This may include the offer of publication to the ADA any new dataset that has been derived from the materials supplied or which have been created by the combination of the material supplied with other available data. The deposit of the derived dataset will include sufficient supporting documentation to enable the new dataset to be made accessible to other users. <br> <br> \r\n10.\tThe New Zealand Election Study follows the values of Te Mana Raraunga and the Global Indigenous Data Alliance. Data users who wish to publish findings related to Māori (the Indigenous peoples of Aotearoa/ New Zealand) are expected to do so with due respect for their status as tangata whenua (the Indigenous peoples of New Zealand). We recommend that data users read and apply Te Mana Raraunga’s principles of Māori Data Sovereignty (i.e., https://www.temanararaunga.maori.nz/s/TMR-Maori-Data-Sovereignty- Principles-Oct-2018.pdf). <br> <br> \r\n11.\tData users are expected to report findings related to all social groups and communities with due respect and fairness. <br> <br> ",
+      "file_count": 3,
+      "files": [
+        {
+          "id": 17639,
+          "filename": "2008 New Zealand Election Study - Questionnaire.pdf",
+          "content_type": "application/pdf",
+          "size": 572661,
+          "checksum": {
+            "type": "MD5",
+            "value": "118bdc55b110d60fa18ab60588c34547"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17638,
+          "filename": "DATA - 2008 New Zealand Election Study - SPSS.sav",
+          "content_type": "application/x-spss-sav",
+          "size": 3288619,
+          "checksum": {
+            "type": "MD5",
+            "value": "ae0a85a14a9b9c45d7d31ccb8fcc60f0"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17794,
+          "filename": "DATA DICTIONARY - New Zealand Election Study - ADA, June 2022 (1.3).xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size": 812280,
+          "checksum": {
+            "type": "MD5",
+            "value": "91ef836d7d7d05650600a67a18b77ac9"
+          },
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "wave": "2011",
+      "doi": "https://doi.org/10.26193/YZDMF3",
+      "title": "2011 New Zealand Election Study",
+      "source_url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/yzdmf3",
+      "version": "3.1",
+      "license": null,
+      "file_access_request": true,
+      "guestbook_required": true,
+      "guestbook_ids": [
+        "22"
+      ],
+      "terms_of_use": "<b>Conditions of use:</b></p>\r\n\r\nUsers of New Zealand Election Study (NZES) data acknowledge that: <br> <br>\r\n\r\n1.\tUse of the material is restricted to use for analytical purposes and that this means that I can only use the material to produce information of an analytical nature. Examples of such uses are: <br> \r\n1. \tThe manipulation of data to produce means, correlations or other descriptive summary measures; <br> \r\n2.\tThe estimation of population characteristics from sample data;<br> \r\n3.\tThe use of data as input to mathematical models and for other types of analyses (e.g. factor analysis); and <br> \r\n4.\tTo provide graphical and pictorial representation of characteristics of the population or sub-sets of the population. <br> <br> \r\n2.\tThe material is not to be used for any non-analytical purposes, or for commercial or financial gain, without the express written permission of the ADA Director after consultation with the principal researchers of the NZES. Examples of non-analytical purposes are: <br> \r\na. Transmitting or allowing access to the data in part or whole to any other person / Department / Organisation not a party to this undertaking; and <br> \r\nb. Attempting to match unit record data in whole or in part with any other information for the purposes of attempting to re-identify individuals. <br> <br> \r\n3.\tOutputs (such as statistics, tables and graphs) obtained from analysis of these data may be further disseminated provided that I: <br> \r\n1.\tAcknowledge both the NZES and the ADA; <br> \r\n2.\tAcknowledge another archive where the data file is made available through the ADA by another archive; and <br> \r\n3.\tDeclare that those who carried out the original analysis and collection of the data bear no responsibility for the further analysis or interpretation of it. <br> <br> \r\n4.\tUse of the material is solely at my risk and I indemnify the NZES, ADA and its host institution, The ANU.<br> <br> \r\n5.\tThe NZES, the ADA and its host institution, The ANU, shall not be held liable for any breach of this undertaking.<br> <br> \r\n6.\tThe NZES, the ADA and its host institution, The ANU, shall not be held responsible for the accuracy and completeness of the material supplied. The material being supplied on an ‘as-is’ basis. <br> <br> \r\n7.\tOnce access has been granted to the data, abuses of access rights, breaches of this undertaking, or failure to keep the data safe, may result in the application of restrictions. Restrictions will escalate in severity depending upon the seriousness of the breach and vary from termination of access to the user and/or institution, on either a temporary or permanent basis, through to potential legal action in the most extreme cases. <br> <br> \r\n8.\tI will notify promptly the ADA of any non-compliance with these Terms and Conditions of Use or of any infringements of the data, including unintentional disclosure or any errors within the data of which I become aware. <br> <br> \r\n9.\tAt the conclusion of my research notify of use. This may include the offer of publication to the ADA any new dataset that has been derived from the materials supplied or which have been created by the combination of the material supplied with other available data. The deposit of the derived dataset will include sufficient supporting documentation to enable the new dataset to be made accessible to other users. <br> <br> \r\n10.\tThe New Zealand Election Study follows the values of Te Mana Raraunga and the Global Indigenous Data Alliance. Data users who wish to publish findings related to Māori (the Indigenous peoples of Aotearoa/ New Zealand) are expected to do so with due respect for their status as tangata whenua (the Indigenous peoples of New Zealand). We recommend that data users read and apply Te Mana Raraunga’s principles of Māori Data Sovereignty (i.e., https://www.temanararaunga.maori.nz/s/TMR-Maori-Data-Sovereignty- Principles-Oct-2018.pdf). <br> <br> \r\n11.\tData users are expected to report findings related to all social groups and communities with due respect and fairness. <br> <br> ",
+      "file_count": 3,
+      "files": [
+        {
+          "id": 17641,
+          "filename": "2011 New Zealand Election Study - Questionnaire.pdf",
+          "content_type": "application/pdf",
+          "size": 1066054,
+          "checksum": {
+            "type": "MD5",
+            "value": "552bb7bbc6b08ef4fee75d4dc35a01e9"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17642,
+          "filename": "DATA - 2011 New Zealand Election Study - SPSS.sav",
+          "content_type": "application/x-spss-sav",
+          "size": 4040123,
+          "checksum": {
+            "type": "MD5",
+            "value": "8e0aada9393649a4dbda7ef93954c7a9"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17795,
+          "filename": "DATA DICTIONARY - New Zealand Election Study - ADA, June 2022 (1.3).xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size": 812280,
+          "checksum": {
+            "type": "MD5",
+            "value": "91ef836d7d7d05650600a67a18b77ac9"
+          },
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "wave": "2014",
+      "doi": "https://doi.org/10.26193/MF9DNL",
+      "title": "2014 New Zealand Election Study",
+      "source_url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/mf9dnl",
+      "version": "3.1",
+      "license": null,
+      "file_access_request": true,
+      "guestbook_required": true,
+      "guestbook_ids": [
+        "22"
+      ],
+      "terms_of_use": "<b>Conditions of use:</b></p>\r\n\r\nUsers of New Zealand Election Study (NZES) data acknowledge that: <br> <br>\r\n\r\n1.\tUse of the material is restricted to use for analytical purposes and that this means that I can only use the material to produce information of an analytical nature. Examples of such uses are: <br> \r\n1. \tThe manipulation of data to produce means, correlations or other descriptive summary measures; <br> \r\n2.\tThe estimation of population characteristics from sample data;<br> \r\n3.\tThe use of data as input to mathematical models and for other types of analyses (e.g. factor analysis); and <br> \r\n4.\tTo provide graphical and pictorial representation of characteristics of the population or sub-sets of the population. <br> <br> \r\n2.\tThe material is not to be used for any non-analytical purposes, or for commercial or financial gain, without the express written permission of the ADA Director after consultation with the principal researchers of the NZES. Examples of non-analytical purposes are: <br> \r\na. Transmitting or allowing access to the data in part or whole to any other person / Department / Organisation not a party to this undertaking; and <br> \r\nb. Attempting to match unit record data in whole or in part with any other information for the purposes of attempting to re-identify individuals. <br> <br> \r\n3.\tOutputs (such as statistics, tables and graphs) obtained from analysis of these data may be further disseminated provided that I: <br> \r\n1.\tAcknowledge both the NZES and the ADA; <br> \r\n2.\tAcknowledge another archive where the data file is made available through the ADA by another archive; and <br> \r\n3.\tDeclare that those who carried out the original analysis and collection of the data bear no responsibility for the further analysis or interpretation of it. <br> <br> \r\n4.\tUse of the material is solely at my risk and I indemnify the NZES, ADA and its host institution, The ANU.<br> <br> \r\n5.\tThe NZES, the ADA and its host institution, The ANU, shall not be held liable for any breach of this undertaking.<br> <br> \r\n6.\tThe NZES, the ADA and its host institution, The ANU, shall not be held responsible for the accuracy and completeness of the material supplied. The material being supplied on an ‘as-is’ basis. <br> <br> \r\n7.\tOnce access has been granted to the data, abuses of access rights, breaches of this undertaking, or failure to keep the data safe, may result in the application of restrictions. Restrictions will escalate in severity depending upon the seriousness of the breach and vary from termination of access to the user and/or institution, on either a temporary or permanent basis, through to potential legal action in the most extreme cases. <br> <br> \r\n8.\tI will notify promptly the ADA of any non-compliance with these Terms and Conditions of Use or of any infringements of the data, including unintentional disclosure or any errors within the data of which I become aware. <br> <br> \r\n9.\tAt the conclusion of my research notify of use. This may include the offer of publication to the ADA any new dataset that has been derived from the materials supplied or which have been created by the combination of the material supplied with other available data. The deposit of the derived dataset will include sufficient supporting documentation to enable the new dataset to be made accessible to other users. <br> <br> \r\n10.\tThe New Zealand Election Study follows the values of Te Mana Raraunga and the Global Indigenous Data Alliance. Data users who wish to publish findings related to Māori (the Indigenous peoples of Aotearoa/ New Zealand) are expected to do so with due respect for their status as tangata whenua (the Indigenous peoples of New Zealand). We recommend that data users read and apply Te Mana Raraunga’s principles of Māori Data Sovereignty (i.e., https://www.temanararaunga.maori.nz/s/TMR-Maori-Data-Sovereignty- Principles-Oct-2018.pdf). <br> <br> \r\n11.\tData users are expected to report findings related to all social groups and communities with due respect and fairness. <br> <br> ",
+      "file_count": 3,
+      "files": [
+        {
+          "id": 17647,
+          "filename": "2014 New Zealand Election Study - Questionnaire.pdf",
+          "content_type": "application/pdf",
+          "size": 760532,
+          "checksum": {
+            "type": "MD5",
+            "value": "1d3b956896ad46fe047863b5e4fc7c88"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17648,
+          "filename": "DATA - 2014 New Zealand Election Study - SPSS.sav",
+          "content_type": "application/x-spss-sav",
+          "size": 4515581,
+          "checksum": {
+            "type": "MD5",
+            "value": "8546c6054d1ef898f4f4d59479b158e0"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17796,
+          "filename": "DATA DICTIONARY - New Zealand Election Study - ADA, June 2022 (1.3).xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size": 812280,
+          "checksum": {
+            "type": "MD5",
+            "value": "91ef836d7d7d05650600a67a18b77ac9"
+          },
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "wave": "2017",
+      "doi": "https://doi.org/10.26193/28JJFB",
+      "title": "2017 New Zealand Election Study",
+      "source_url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/28jjfb",
+      "version": "3.1",
+      "license": null,
+      "file_access_request": true,
+      "guestbook_required": true,
+      "guestbook_ids": [
+        "22"
+      ],
+      "terms_of_use": "<b>Conditions of use:</b></p>\r\n\r\nUsers of New Zealand Election Study (NZES) data acknowledge that: <br> <br>\r\n\r\n1.\tUse of the material is restricted to use for analytical purposes and that this means that I can only use the material to produce information of an analytical nature. Examples of such uses are: <br> \r\n1. \tThe manipulation of data to produce means, correlations or other descriptive summary measures; <br> \r\n2.\tThe estimation of population characteristics from sample data;<br> \r\n3.\tThe use of data as input to mathematical models and for other types of analyses (e.g. factor analysis); and <br> \r\n4.\tTo provide graphical and pictorial representation of characteristics of the population or sub-sets of the population. <br> <br> \r\n2.\tThe material is not to be used for any non-analytical purposes, or for commercial or financial gain, without the express written permission of the ADA Director after consultation with the principal researchers of the NZES. Examples of non-analytical purposes are: <br> \r\na. Transmitting or allowing access to the data in part or whole to any other person / Department / Organisation not a party to this undertaking; and <br> \r\nb. Attempting to match unit record data in whole or in part with any other information for the purposes of attempting to re-identify individuals. <br> <br> \r\n3.\tOutputs (such as statistics, tables and graphs) obtained from analysis of these data may be further disseminated provided that I: <br> \r\n1.\tAcknowledge both the NZES and the ADA; <br> \r\n2.\tAcknowledge another archive where the data file is made available through the ADA by another archive; and <br> \r\n3.\tDeclare that those who carried out the original analysis and collection of the data bear no responsibility for the further analysis or interpretation of it. <br> <br> \r\n4.\tUse of the material is solely at my risk and I indemnify the NZES, ADA and its host institution, The ANU.<br> <br> \r\n5.\tThe NZES, the ADA and its host institution, The ANU, shall not be held liable for any breach of this undertaking.<br> <br> \r\n6.\tThe NZES, the ADA and its host institution, The ANU, shall not be held responsible for the accuracy and completeness of the material supplied. The material being supplied on an ‘as-is’ basis. <br> <br> \r\n7.\tOnce access has been granted to the data, abuses of access rights, breaches of this undertaking, or failure to keep the data safe, may result in the application of restrictions. Restrictions will escalate in severity depending upon the seriousness of the breach and vary from termination of access to the user and/or institution, on either a temporary or permanent basis, through to potential legal action in the most extreme cases. <br> <br> \r\n8.\tI will notify promptly the ADA of any non-compliance with these Terms and Conditions of Use or of any infringements of the data, including unintentional disclosure or any errors within the data of which I become aware. <br> <br> \r\n9.\tAt the conclusion of my research notify of use. This may include the offer of publication to the ADA any new dataset that has been derived from the materials supplied or which have been created by the combination of the material supplied with other available data. The deposit of the derived dataset will include sufficient supporting documentation to enable the new dataset to be made accessible to other users. <br> <br> \r\n10.\tThe New Zealand Election Study follows the values of Te Mana Raraunga and the Global Indigenous Data Alliance. Data users who wish to publish findings related to Māori (the Indigenous peoples of Aotearoa/ New Zealand) are expected to do so with due respect for their status as tangata whenua (the Indigenous peoples of New Zealand). We recommend that data users read and apply Te Mana Raraunga’s principles of Māori Data Sovereignty (i.e., https://www.temanararaunga.maori.nz/s/TMR-Maori-Data-Sovereignty- Principles-Oct-2018.pdf). <br> <br> \r\n11.\tData users are expected to report findings related to all social groups and communities with due respect and fairness. <br> <br> ",
+      "file_count": 7,
+      "files": [
+        {
+          "id": 17651,
+          "filename": "2017 New Zealand Election Study - Codebook.xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size": 70250,
+          "checksum": {
+            "type": "MD5",
+            "value": "577936c5c5be390826a0b5cd38e92ae1"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17652,
+          "filename": "2017 New Zealand Election Study - Detailed Codebook.docx",
+          "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "size": 185626,
+          "checksum": {
+            "type": "MD5",
+            "value": "a01437cbe8d9000bec9b8fb751df4efd"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17653,
+          "filename": "2017 New Zealand Election Study - Questionnaire.pdf",
+          "content_type": "application/pdf",
+          "size": 1505923,
+          "checksum": {
+            "type": "MD5",
+            "value": "6ab836e0e493a8ae19dd0005ad68c046"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17658,
+          "filename": "DATA - 2017 New Zealand Election Study - R.rdata",
+          "content_type": "application/x-rlang-transport",
+          "size": 4421947,
+          "checksum": {
+            "type": "MD5",
+            "value": "e1687d33c841654f2ac42607dafa1852"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17656,
+          "filename": "DATA - 2017 New Zealand Election Study - SPSS.sav",
+          "content_type": "application/x-spss-sav",
+          "size": 3637990,
+          "checksum": {
+            "type": "MD5",
+            "value": "17cbb7f0cd23d3eac4d0207d267681a8"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17657,
+          "filename": "DATA - 2017 New Zealand Election Study - STATA.dta",
+          "content_type": "application/x-stata",
+          "size": 3159868,
+          "checksum": {
+            "type": "MD5",
+            "value": "6324aa03a3a12619b7c3f528708a1993"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17797,
+          "filename": "DATA DICTIONARY - New Zealand Election Study - ADA, June 2022 (1.3).xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size": 812280,
+          "checksum": {
+            "type": "MD5",
+            "value": "91ef836d7d7d05650600a67a18b77ac9"
+          },
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "wave": "2020",
+      "doi": "https://doi.org/10.26193/BPAMYJ",
+      "title": "2020 New Zealand Election Study",
+      "source_url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/bpamyj",
+      "version": "3.1",
+      "license": null,
+      "file_access_request": true,
+      "guestbook_required": true,
+      "guestbook_ids": [
+        "22"
+      ],
+      "terms_of_use": "<b>Conditions of use:</b></p>\r\n\r\nUsers of New Zealand Election Study (NZES) data acknowledge that: <br> <br>\r\n\r\n1.\tUse of the material is restricted to use for analytical purposes and that this means that I can only use the material to produce information of an analytical nature. Examples of such uses are: <br> \r\n1. \tThe manipulation of data to produce means, correlations or other descriptive summary measures; <br> \r\n2.\tThe estimation of population characteristics from sample data;<br> \r\n3.\tThe use of data as input to mathematical models and for other types of analyses (e.g. factor analysis); and <br> \r\n4.\tTo provide graphical and pictorial representation of characteristics of the population or sub-sets of the population. <br> <br> \r\n2.\tThe material is not to be used for any non-analytical purposes, or for commercial or financial gain, without the express written permission of the ADA Director after consultation with the principal researchers of the NZES. Examples of non-analytical purposes are: <br> \r\na. Transmitting or allowing access to the data in part or whole to any other person / Department / Organisation not a party to this undertaking; and <br> \r\nb. Attempting to match unit record data in whole or in part with any other information for the purposes of attempting to re-identify individuals. <br> <br> \r\n3.\tOutputs (such as statistics, tables and graphs) obtained from analysis of these data may be further disseminated provided that I: <br> \r\n1.\tAcknowledge both the NZES and the ADA; <br> \r\n2.\tAcknowledge another archive where the data file is made available through the ADA by another archive; and <br> \r\n3.\tDeclare that those who carried out the original analysis and collection of the data bear no responsibility for the further analysis or interpretation of it. <br> <br> \r\n4.\tUse of the material is solely at my risk and I indemnify the NZES, ADA and its host institution, The ANU.<br> <br> \r\n5.\tThe NZES, the ADA and its host institution, The ANU, shall not be held liable for any breach of this undertaking.<br> <br> \r\n6.\tThe NZES, the ADA and its host institution, The ANU, shall not be held responsible for the accuracy and completeness of the material supplied. The material being supplied on an ‘as-is’ basis. <br> <br> \r\n7.\tOnce access has been granted to the data, abuses of access rights, breaches of this undertaking, or failure to keep the data safe, may result in the application of restrictions. Restrictions will escalate in severity depending upon the seriousness of the breach and vary from termination of access to the user and/or institution, on either a temporary or permanent basis, through to potential legal action in the most extreme cases. <br> <br> \r\n8.\tI will notify promptly the ADA of any non-compliance with these Terms and Conditions of Use or of any infringements of the data, including unintentional disclosure or any errors within the data of which I become aware. <br> <br> \r\n9.\tAt the conclusion of my research notify of use. This may include the offer of publication to the ADA any new dataset that has been derived from the materials supplied or which have been created by the combination of the material supplied with other available data. The deposit of the derived dataset will include sufficient supporting documentation to enable the new dataset to be made accessible to other users. <br> <br> \r\n10.\tThe New Zealand Election Study follows the values of Te Mana Raraunga and the Global Indigenous Data Alliance. Data users who wish to publish findings related to Māori (the Indigenous peoples of Aotearoa/ New Zealand) are expected to do so with due respect for their status as tangata whenua (the Indigenous peoples of New Zealand). We recommend that data users read and apply Te Mana Raraunga’s principles of Māori Data Sovereignty (i.e., https://www.temanararaunga.maori.nz/s/TMR-Maori-Data-Sovereignty- Principles-Oct-2018.pdf). <br> <br> \r\n11.\tData users are expected to report findings related to all social groups and communities with due respect and fairness. <br> <br> \r\n",
+      "file_count": 9,
+      "files": [
+        {
+          "id": 17776,
+          "filename": "DATA - 2020 New Zealand Election Study - SPSS.sav",
+          "content_type": "application/x-spss-sav",
+          "size": 12677549,
+          "checksum": {
+            "type": "MD5",
+            "value": "fecc56fa47ce29663a579afe1dc3e574"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17775,
+          "filename": "DATA - 2020 New Zealand Election Study - STATA.dta",
+          "content_type": "application/x-stata",
+          "size": 5449463,
+          "checksum": {
+            "type": "MD5",
+            "value": "ea2ba00e7c497a238217b2dc032a7691"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17798,
+          "filename": "DATA DICTIONARY - New Zealand Election Study - ADA, June 2022 (1.3).xlsx",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size": 812280,
+          "checksum": {
+            "type": "MD5",
+            "value": "91ef836d7d7d05650600a67a18b77ac9"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17772,
+          "filename": "FREQUENCIES - 2020 New Zealand Election Study - Section A - Politics, the Election, and You.pdf",
+          "content_type": "application/pdf",
+          "size": 120404,
+          "checksum": {
+            "type": "MD5",
+            "value": "b11f6d576e1c3a309f905e7993be352f"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17771,
+          "filename": "FREQUENCIES - 2020 New Zealand Election Study - Section B and C - Parties and Leaders, Your Opinions.pdf",
+          "content_type": "application/pdf",
+          "size": 141807,
+          "checksum": {
+            "type": "MD5",
+            "value": "86b36a4f2add6e5607e8627b776f40dd"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17774,
+          "filename": "FREQUENCIES - 2020 New Zealand Election Study - Section D - Maori Descent Questions.pdf",
+          "content_type": "application/pdf",
+          "size": 64408,
+          "checksum": {
+            "type": "MD5",
+            "value": "dce8d4e6d8f64b372fe216de39e715c7"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17770,
+          "filename": "FREQUENCIES - 2020 New Zealand Election Study - Section E - Party Preferences and Voting.pdf",
+          "content_type": "application/pdf",
+          "size": 42594,
+          "checksum": {
+            "type": "MD5",
+            "value": "b23e23f836cf951d8d9f993744a42b0e"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17769,
+          "filename": "FREQUENCIES - 2020 New Zealand Election Study - Section F - Government, Participation, Representation, Your and Your Background.pdf",
+          "content_type": "application/pdf",
+          "size": 89007,
+          "checksum": {
+            "type": "MD5",
+            "value": "3d2054b3cb85984d9358014598870292"
+          },
+          "restricted": false
+        },
+        {
+          "id": 17773,
+          "filename": "FREQUENCIES - 2020 New Zealand Election Study - Supplementary Codes.pdf",
+          "content_type": "application/pdf",
+          "size": 48510,
+          "checksum": {
+            "type": "MD5",
+            "value": "375103ecd1beb338df453d9638ffc55b"
+          },
+          "restricted": false
+        }
+      ]
+    },
+    {
+      "wave": "2023",
+      "doi": "https://doi.org/10.26193/HHMEUZ",
+      "title": "2023 New Zealand Election Study",
+      "source_url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/hhmeuz",
+      "version": "1.0",
+      "license": null,
+      "file_access_request": false,
+      "guestbook_required": true,
+      "guestbook_ids": [
+        "53"
+      ],
+      "terms_of_use": "<b>Conditions of use:</b></p>\n\nUsers of New Zealand Election Study (NZES) data acknowledge that: <br> <br>\n\n1.\tUse of the material is restricted to use for analytical purposes and that this means that I can only use the material to produce information of an analytical nature. Examples of such uses are: <br> \n<ol>\n<li>The manipulation of data to produce means, correlations or other descriptive summary measures; </li> \n<li>The estimation of population characteristics from sample data;</li> \n<li>The use of data as input to mathematical models and for other types of analyses (e.g. factor analysis); and </li> \n<li>To provide graphical and pictorial representation of characteristics of the population or sub-sets of the population. </li> </ol>\n2.\tThe material is not to be used for any non-analytical purposes, or for commercial or financial gain, without the express written permission of the ADA Director after consultation with the principal researchers of the NZES. Examples of non-analytical purposes are:  \n<ul>\n<li> a. Transmitting or allowing access to the data in part or whole to any other person / Department / Organisation not a party to this undertaking; and <br> \n<li>b. Attempting to match unit record data in whole or in part with any other information for the purposes of attempting to re-identify individuals. </li> </ul>\n3.\tOutputs (such as statistics, tables and graphs) obtained from analysis of these data may be further disseminated provided that I: <ol>\n<li>Acknowledge both the NZES and the ADA; <br> \n<li>Acknowledge another archive where the data file is made available through the ADA by another archive; and <br> \n<li>Declare that those who carried out the original analysis and collection of the data bear no responsibility for the further analysis or interpretation of it. </li> </ol>\n4.\tUse of the material is solely at my risk and I indemnify the NZES, ADA and its host institution, The ANU.<br> <br> \n5.\tThe NZES, the ADA and its host institution, The ANU, shall not be held liable for any breach of this undertaking.<br> <br> \n6.\tThe NZES, the ADA and its host institution, The ANU, shall not be held responsible for the accuracy and completeness of the material supplied. The material being supplied on an ‘as-is’ basis. <br> <br> \n7.\tOnce access has been granted to the data, abuses of access rights, breaches of this undertaking, or failure to keep the data safe, may result in the application of restrictions. Restrictions will escalate in severity depending upon the seriousness of the breach and vary from termination of access to the user and/or institution, on either a temporary or permanent basis, through to potential legal action in the most extreme cases. <br> <br> \n8.\tI will notify promptly the ADA of any non-compliance with these Terms and Conditions of Use or of any infringements of the data, including unintentional disclosure or any errors within the data of which I become aware. <br> <br> \n9.\tAt the conclusion of my research notify of use. This may include the offer of publication to the ADA any new dataset that has been derived from the materials supplied or which have been created by the combination of the material supplied with other available data. The deposit of the derived dataset will include sufficient supporting documentation to enable the new dataset to be made accessible to other users. <br> <br> \n10.\tThe New Zealand Election Study follows the values of Te Mana Raraunga and the Global Indigenous Data Alliance. Data users who wish to publish findings related to Māori (the Indigenous peoples of Aotearoa/ New Zealand) are expected to do so with due respect for their status as tangata whenua (the Indigenous peoples of New Zealand). We recommend that data users read and apply Te Mana Raraunga’s principles of Māori Data Sovereignty (i.e., https://www.temanararaunga.maori.nz/s/TMR-Maori-Data-Sovereignty- Principles-Oct-2018.pdf). <br> <br> \n11.\tData users are expected to report findings related to all social groups and communities with due respect and fairness. <br> <br> ",
+      "file_count": 5,
+      "files": [
+        {
+          "id": 20315,
+          "filename": "1_2023 NZESQuestionnaire_100227.pdf",
+          "content_type": "application/pdf",
+          "size": 207137,
+          "checksum": {
+            "type": "MD5",
+            "value": "106dd2bc6abf4d1d15c986c23d522978"
+          },
+          "restricted": false
+        },
+        {
+          "id": 20316,
+          "filename": "1_CodebookNZES2023_100227.pdf",
+          "content_type": "application/pdf",
+          "size": 98075,
+          "checksum": {
+            "type": "MD5",
+            "value": "7caddb80e018a35ed278b8b8656e7158"
+          },
+          "restricted": false
+        },
+        {
+          "id": 20317,
+          "filename": "1_NZES2023Readme_100227.pdf",
+          "content_type": "application/pdf",
+          "size": 70583,
+          "checksum": {
+            "type": "MD5",
+            "value": "20119a81cb931c6c063b5254b93f90f5"
+          },
+          "restricted": false
+        },
+        {
+          "id": 20318,
+          "filename": "2_NZES23Release_100227.dta",
+          "content_type": "application/x-stata-14",
+          "size": 5686233,
+          "checksum": {
+            "type": "MD5",
+            "value": "d055faf64a152f34a765accf30df2011"
+          },
+          "restricted": false
+        },
+        {
+          "id": 20319,
+          "filename": "2_NZES23Release_100227.sav",
+          "content_type": "application/x-spss-sav",
+          "size": 4502246,
+          "checksum": {
+            "type": "MD5",
+            "value": "aab0d473966556f05929a40714967f06"
+          },
+          "restricted": false
+        }
+      ]
+    }
+  ],
+  "ada_guestbooks": [
+    {
+      "id": 2,
+      "name": "ADA General Access Guestbook - Version 1, 25 July 2017",
+      "enabled": true,
+      "required_fields": {
+        "nameRequired": true,
+        "emailRequired": true,
+        "institutionRequired": true,
+        "positionRequired": true,
+        "emailRequiredForGuestbook": null,
+        "createTime": "Tue Jul 25 23:14:47 AEST 2017"
+      },
+      "custom_questions": [
+        "What is your primary intended use of this data?",
+        "If other uses, please indicate what other intended use you have for this data?",
+        "Please indicate the name and contact email of your supervisor",
+        "Please provide a brief abstract outlining the intended use of this data for your project",
+        "Please detail any sources of funding supporting this research?",
+        "What are the intended publications and outputs that may feature this data?"
+      ]
+    },
+    {
+      "id": 22,
+      "name": "Standard Recorded Open Access Guestbook - Version 1 20190403",
+      "enabled": true,
+      "required_fields": {
+        "nameRequired": true,
+        "emailRequired": true,
+        "institutionRequired": true,
+        "positionRequired": true,
+        "emailRequiredForGuestbook": null,
+        "createTime": "Mon Oct 28 10:10:25 AEDT 2019"
+      },
+      "custom_questions": []
+    },
+    {
+      "id": 53,
+      "name": "ADA Standard Recorded Open Access Guestbook - Version 1.2 11 Nov 19",
+      "enabled": true,
+      "required_fields": {
+        "nameRequired": true,
+        "emailRequired": true,
+        "institutionRequired": true,
+        "positionRequired": true,
+        "emailRequiredForGuestbook": null,
+        "createTime": "Tue Aug 10 09:57:41 AEST 2021"
+      },
+      "custom_questions": []
+    }
+  ],
+  "captured_files": [
+    {
+      "url": "https://api.datacite.org/dois?query=%22New%20Zealand%20Election%20Study%22&page%5Bsize%5D=100",
+      "sha256": "fb5d3e0dbf19f6bb9215ca03d6579ed67354633ef3538dab2070ae6c98b5a95f",
+      "size": 106406,
+      "purpose": "datacite-search-new-zealand-election-study",
+      "retrieved_at": "2026-11-10T12:01:43.878485+00:00"
+    },
+    {
+      "url": "https://api.figshare.com/v2/articles/6453134",
+      "sha256": "0317478e7170f272ca965b5b45a3c1b1d91f104fd86119c5795b2370a1c9572c",
+      "size": 6985,
+      "purpose": "figshare-nzes2017-api",
+      "retrieved_at": "2026-11-10T12:01:46.741935+00:00"
+    },
+    {
+      "url": "https://api.figshare.com/v2/articles/2002830/versions",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "size": 2,
+      "purpose": "figshare-nzes2008-versions-api",
+      "retrieved_at": "2026-11-10T12:01:48.175898+00:00"
+    },
+    {
+      "url": "https://www.nzes.net/",
+      "sha256": "af95d4d89a058bdc0f2457561a6d612f0c32f690d60161c2b537430552009d0b",
+      "size": 89619,
+      "purpose": "nzes-net-home",
+      "retrieved_at": "2026-11-10T12:01:49.461781+00:00"
+    },
+    {
+      "url": "https://www.nzes.net/data/",
+      "sha256": "9d13247df7cf2c9c0df100f0f850c85f9792e388ebf2ec74095172495f09a6e4",
+      "size": 122401,
+      "purpose": "nzes-net-data",
+      "retrieved_at": "2026-11-10T12:01:49.889313+00:00"
+    },
+    {
+      "url": "https://www.nzes.net/who-uses-the-data-and-under-what-conditions-of-access-and-ethics/",
+      "sha256": "cefbe4bde86113e207acae00f8e39779fb7a10f6574e06dc3b9692b1ad66f0e8",
+      "size": 79639,
+      "purpose": "nzes-net-access-conditions",
+      "retrieved_at": "2026-11-10T12:01:50.156620+00:00"
+    },
+    {
+      "url": "https://www.nzes.net/data/citing-the-nzes/",
+      "sha256": "0f9cfbcd0662b847faf7aabf0237318e47355e699be04398b449871d8ddc61f3",
+      "size": 95397,
+      "purpose": "nzes-net-citing",
+      "retrieved_at": "2026-11-10T12:01:51.064420+00:00"
+    },
+    {
+      "url": "https://www.nzes.net/files/2021/12/NZES-Data-Usage-Terms-and-Conditions.pdf",
+      "sha256": "ae8ed81137c012ea63ab6fcaa4fddb9dd5bb5e5f8d3072a05ba3b569cd54d916",
+      "size": 82076,
+      "purpose": "nzes-data-usage-terms",
+      "retrieved_at": "2026-11-10T12:01:52.113069+00:00"
+    },
+    {
+      "url": "https://www.nzes.net/files/2024/10/NZ_Elections1905-43.xls",
+      "sha256": "c2feac2849353767e52d150592c7d443cf428e691fbdee47527d2698f0f70e45",
+      "size": 235520,
+      "purpose": "nzes-elections-1905-43",
+      "retrieved_at": "2026-11-10T12:01:52.552054+00:00"
+    },
+    {
+      "url": "https://www.nzes.net/files/2024/10/NZ_Elections1946-69.xls",
+      "sha256": "e5b01a45e31ca55fedc898508c1b6575e99c73108e37edf3bd5c517e825c0a54",
+      "size": 454144,
+      "purpose": "nzes-elections-1946-69",
+      "retrieved_at": "2026-11-10T12:01:52.923505+00:00"
+    },
+    {
+      "url": "https://www.nzes.net/files/2024/10/NZ_Elections1972-93.xls",
+      "sha256": "4a9e77284dabfea27f5ad3d915ee5612dde9c92b2e524a43525cccad727c665e",
+      "size": 305152,
+      "purpose": "nzes-elections-1972-93",
+      "retrieved_at": "2026-11-10T12:01:53.394953+00:00"
+    },
+    {
+      "url": "https://auckland.figshare.com/articles/online_resource/NZES2017_New_Zealand_Election_Study/6453134",
+      "sha256": "5cf28a35e577a49f777cbb8c86525d4e78b7d31310050a0e1e0ded095da5517a",
+      "size": 283169,
+      "purpose": "figshare-nzes2017-page",
+      "retrieved_at": "2026-11-10T12:02:01.428175+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/zyogjs",
+      "sha256": "92ffb5fb81bf2a842a1455699d9f040aa44538db779ece5c5f43eec7350b0ad9",
+      "size": 25382,
+      "purpose": "ada-dataverse-nzes-1987",
+      "retrieved_at": "2026-11-10T12:02:05.318700+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/u0nbfs",
+      "sha256": "f2617270400dfa3144a514e8806d21df354c80072fbe52edcbef4ea3409f80d4",
+      "size": 22974,
+      "purpose": "ada-dataverse-nzes-1990",
+      "retrieved_at": "2026-11-10T12:02:06.724232+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/9odfxu",
+      "sha256": "f02c50434def11c71128c9e250d86082ea645e3355ffee9b9477f4ca5d3c2cd5",
+      "size": 21526,
+      "purpose": "ada-dataverse-nzes-1993",
+      "retrieved_at": "2026-11-10T12:02:08.206599+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/o0lrzz",
+      "sha256": "00bf4088d98a53446adf76d3134553fe96b6007008e6de1f497cba9430213d76",
+      "size": 25904,
+      "purpose": "ada-dataverse-nzes-1996",
+      "retrieved_at": "2026-11-10T12:02:09.554723+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/ungixj",
+      "sha256": "0e313554090f5940d4e57efe3e4283232e4f78add06b93017579b36070b72b62",
+      "size": 29662,
+      "purpose": "ada-dataverse-nzes-1999",
+      "retrieved_at": "2026-11-10T12:02:11.087459+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/9de0x4",
+      "sha256": "83a2cb4eab62363e003d43e30fdba5f418771e3937901d0b641826d02b90c871",
+      "size": 30320,
+      "purpose": "ada-dataverse-nzes-2002",
+      "retrieved_at": "2026-11-10T12:02:12.538796+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/wj8dgc",
+      "sha256": "f968c3aef8dfc78e516a1b9ea492859b2d39f82ee670e74ca594ec925310179a",
+      "size": 18950,
+      "purpose": "ada-dataverse-nzes-2005",
+      "retrieved_at": "2026-11-10T12:02:14.024739+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/6cveym",
+      "sha256": "130738753e234578cccfe122093ec9c4440fb6e91e209785ec33c7b8ad11b9bb",
+      "size": 18553,
+      "purpose": "ada-dataverse-nzes-2008",
+      "retrieved_at": "2026-11-10T12:02:15.381745+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/yzdmf3",
+      "sha256": "861eccb453abeaf72d375019b55dd1b9ffca7365af51399f57fad27213e5a81f",
+      "size": 18206,
+      "purpose": "ada-dataverse-nzes-2011",
+      "retrieved_at": "2026-11-10T12:02:16.754276+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/mf9dnl",
+      "sha256": "0dd69537b5269645cd80c7e9d11d6a650886ab94ef77d88571989323929d7d60",
+      "size": 22156,
+      "purpose": "ada-dataverse-nzes-2014",
+      "retrieved_at": "2026-11-10T12:02:18.164918+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/28jjfb",
+      "sha256": "287c4284f88d31f04148efc38b418f673dcf635578da9b80618e75ab043bc21c",
+      "size": 22672,
+      "purpose": "ada-dataverse-nzes-2017",
+      "retrieved_at": "2026-11-10T12:02:19.495036+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/bpamyj",
+      "sha256": "80b11c0a06aaaf41a9a461811acc950409f91a524f797f86311076acd7cf326a",
+      "size": 25227,
+      "purpose": "ada-dataverse-nzes-2020",
+      "retrieved_at": "2026-11-10T12:02:20.960503+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId=doi%3A10.26193/hhmeuz",
+      "sha256": "fe19981589fbd7cb1c0f2b572ae697fe8444bb9e8741daa990adf6a00eee6dc4",
+      "size": 20471,
+      "purpose": "ada-dataverse-nzes-2023",
+      "retrieved_at": "2026-11-10T12:02:22.412891+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/dataverse/new-zealand-election-study",
+      "sha256": "0efc4702f3c8476eb5d24de14cca683bd4e0c0f2d7d9ae47da044be3a9a6aefe",
+      "size": 84088,
+      "purpose": "ada-dataverse-nzes-collection",
+      "retrieved_at": "2026-11-10T12:02:23.738801+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/info/version",
+      "sha256": "979b145b6c928f0f5644590ea20e036d273a77dd3c6fc0a584b8dea6ce2ccbfa",
+      "size": 56,
+      "purpose": "ada-dataverse-version",
+      "retrieved_at": "2026-11-10T12:02:24.362649+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/guestbooks/2",
+      "sha256": "2f4d3fb2e6fb17e9cb5674420483f281744283baca28dd271bd1c89f0275e036",
+      "size": 1674,
+      "purpose": "ada-dataverse-guestbook-2",
+      "retrieved_at": "2026-11-10T12:02:24.588968+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/guestbooks/22",
+      "sha256": "71f3a0576054dbb0802aeecfe4acfc325c535ace86463bd5395f4fb7e5e330a4",
+      "size": 291,
+      "purpose": "ada-dataverse-guestbook-22",
+      "retrieved_at": "2026-11-10T12:02:25.827320+00:00"
+    },
+    {
+      "url": "https://dataverse.ada.edu.au/api/guestbooks/53",
+      "sha256": "d3a628e4c7a13de4e904b40b2d6c8a5cedbb689aaa07fead3c67c577a31a1afb",
+      "size": 298,
+      "purpose": "ada-dataverse-guestbook-53",
+      "retrieved_at": "2026-11-10T12:02:27.140406+00:00"
+    }
+  ],
+  "nzes-net-documents": {
+    "usage-terms": "https://www.nzes.net/files/2021/12/NZES-Data-Usage-Terms-and-Conditions.pdf",
+    "historical-spreadsheets": [
+      "https://www.nzes.net/files/2024/10/NZ_Elections1905-43.xls",
+      "https://www.nzes.net/files/2024/10/NZ_Elections1946-69.xls",
+      "https://www.nzes.net/files/2024/10/NZ_Elections1972-93.xls"
+    ]
+  }
+}
