@@ -430,3 +430,7 @@ implementation has occurred under these tracks.
   Parent issue: https://github.com/edithatogo/archive-govt-nz/issues/778. Approved plan; implementation and operational acceptance pending.
 
 - [~] [Historical Hansard volume reconciliation and scan recovery](tracks/historical_hansard_20261101/index.md)
+
+- [ ] **Track: Two-tier Merkle provenance and original-to-extract verification for tobac**
+  *Link: [tracks/tobac_merkle_lineage_provenance_20261110/index.md](./tracks/tobac_merkle_lineage_provenance_20261110/index.md)*
+  Planned consumer-provenance handoff separating runner closure digests from candidate evidence registry Merkle roots for `tobac` (`F00`/`F01`). No runtime or live-schedule change.
