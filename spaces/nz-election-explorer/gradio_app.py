@@ -648,7 +648,7 @@ with gr.Blocks(title="NZ 2026 General Election Analysis") as demo:
             gr.Markdown(
                 """
                 * **What It Depicts:** 131 autonomous MP agents flocking across a 2D legislative arena, governed by ideology, constituency pressure, party whip forces, and dynamic policy bill attraction vectors. Includes caucus whip defiance probability rates.
-                * **The Beyond-Frontier Novelty:** Visualizes future parliamentary power dynamics rather than past ballots. Dropping active legislative bills triggers real-time swarming, conscience vote breakaways, and coalition threshold detection ($N \ge 66$).
+                * **The Beyond-Frontier Novelty:** Visualizes future parliamentary power dynamics rather than past ballots. Dropping active legislative bills triggers real-time swarming, conscience vote breakaways, and coalition threshold detection ($N \\ge 66$).
                 * **Constitutional Takeaway:** Shows that legislative majorities in an expanded 131-seat Parliament can spontaneously assemble across party lines on regulatory reforms, circumventing formal coalition blockage.
                 """
             )
