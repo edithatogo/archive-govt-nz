@@ -1,4 +1,4 @@
-# ruff: noqa: E402, PLR0913, PLR0917, PLR2004, PERF401, W605
+# ruff: noqa: E402, PLR0913, PLR0917, PLR2004, PERF401
 """Gradio Application: New Zealand General Election 2026 Analysis.
 
 Statutory MMP Sainte-Laguë allocation, 11-seat overhang analysis,
@@ -652,6 +652,16 @@ with gr.Blocks(title="NZ 2026 General Election Analysis") as demo:
                 * **Constitutional Takeaway:** Shows that legislative majorities in an expanded 131-seat Parliament can spontaneously assemble across party lines on regulatory reforms, circumventing formal coalition blockage.
                 """
             )
+
+            gr.Markdown("---")
+            gr.Markdown("### Interactive Playable Beyond-Frontier Simulators")
+            with gr.Row():
+                with gr.Column():
+                    gr.Markdown("#### ⚛️ Quantum Wave-Function Interference Map (Live Oscillating Waves & Collapse)")
+                    gr.HTML(value='<iframe src="quantum_interference_map.html" width="100%" height="520px" style="border:1px solid #30363d; border-radius:8px; background:#060913;"></iframe>')
+                with gr.Column():
+                    gr.Markdown("#### 🐦 131-MP Autonomous Boids Parliament (Live Policy Swarm & Whip Defiance)")
+                    gr.HTML(value='<iframe src="boids_parliament.html" width="100%" height="520px" style="border:1px solid #30363d; border-radius:8px; background:#0d1117;"></iframe>')
 
         with gr.TabItem("Geographic Electorate Map"):
             gr.Markdown("### High-Resolution Geographic Map & Hotspots")

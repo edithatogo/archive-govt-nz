@@ -270,6 +270,36 @@
       }
     });
 
+    let isDragging = false;
+    canvas.addEventListener('mousedown', (e) => {
+      if (activePolicy) {
+        const d = Math.hypot(e.clientX - activePolicy.pos.x, e.clientY - activePolicy.pos.y);
+        if (d < 100) isDragging = true;
+      }
+    });
+    window.addEventListener('mousemove', (e) => {
+      if (isDragging && activePolicy) {
+        activePolicy.pos.x = e.clientX;
+        activePolicy.pos.y = e.clientY;
+      }
+    });
+    window.addEventListener('mouseup', () => { isDragging = false; });
+
+    canvas.addEventListener('touchstart', (e) => {
+      if (activePolicy && e.touches.length > 0) {
+        const t = e.touches[0];
+        const d = Math.hypot(t.clientX - activePolicy.pos.x, t.clientY - activePolicy.pos.y);
+        if (d < 100) isDragging = true;
+      }
+    });
+    window.addEventListener('touchmove', (e) => {
+      if (isDragging && activePolicy && e.touches.length > 0) {
+        activePolicy.pos.x = e.touches[0].clientX;
+        activePolicy.pos.y = e.touches[0].clientY;
+      }
+    });
+    window.addEventListener('touchend', () => { isDragging = false; });
+
     function setPolicy(key) {
       activePolicyKey = key;
       activePolicy = POLICIES[key];

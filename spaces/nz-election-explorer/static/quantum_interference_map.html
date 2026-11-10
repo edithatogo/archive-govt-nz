@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quantum Wave-Function Interference Map & Superposition Collapse</title>
+  <style>
+    body {
+      margin: 0;
+      background: #060913;
+      color: #c9d1d9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      overflow: hidden;
+      user-select: none;
+    }
+    #header {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      z-index: 10;
+      pointer-events: none;
+    }
+    h1 {
+      margin: 0 0 5px 0;
+      font-size: 20px;
+      font-weight: 700;
+      color: #a855f7;
+      letter-spacing: 0.5px;
+    }
+    .subtitle {
+      font-size: 13px;
+      color: #94a3b8;
+    }
+    #hud {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 12px 18px;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      min-width: 240px;
+    }
+    .hud-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #94a3b8;
+      margin-bottom: 4px;
+    }
+    .hud-stat {
+      font-size: 20px;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+    .hud-sub {
+      font-size: 12px;
+      color: #cbd5e1;
+      margin-top: 2px;
+    }
+    #controls {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 10;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 10px 18px;
+      border-radius: 30px;
+      border: 1px solid #334155;
+      align-items: center;
+    }
+    button {
+      background: #1e293b;
+      border: 1px solid #475569;
+      color: #f1f5f9;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    button:hover {
+      background: #334155;
+      border-color: #94a3b8;
+      color: #ffffff;
+    }
+    button.collapse-btn {
+      background: #7c3aed;
+      border-color: #a855f7;
+      color: #ffffff;
+    }
+    button.collapse-btn:hover {
+      background: #9333ea;
+    }
+    .slider-label {
+      font-size: 12px;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    #canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="header">
+    <h1>Quantum Wave-Function Interference Map</h1>
+    <div class="subtitle">399,000 Special Votes • Qubit Entanglement & Projective Wave-Packet Collapse</div>
+  </div>
+
+  <div id="hud">
+    <div class="hud-title">Quantum State Superposition</div>
+    <div class="hud-stat" id="state-entropy">Entropy: 1.58 bits</div>
+    <div class="hud-sub" id="state-desc">Wave-function oscillating across 4 entangled seats</div>
+    <hr style="border:0; border-top:1px solid #334155; margin:8px 0;">
+    <div style="font-size:11px; color:#94a3b8;">
+      <b>Nelson:</b> <span id="nelson-status" style="color:#f59e0b;">Superposed (|0⟩ 18% / |1⟩ 82%)</span><br>
+      <b>Mt Albert:</b> <span id="mtalbert-status" style="color:#f59e0b;">Entangled (Hold 12% / Flip 88%)</span><br>
+      <b>Te Atatū:</b> <span id="teatatu-status" style="color:#f59e0b;">Entangled (Hold 31% / Flip 69%)</span>
+    </div>
+  </div>
+
+  <div id="controls">
+    <button class="collapse-btn" id="btn-measure" onclick="toggleMeasurement()">👁️ Observe / Collapse Wave-Function</button>
+    <div class="slider-label">
+      <span>Drift Lean:</span>
+      <input type="range" id="drift-slider" min="-3.0" max="1.0" step="0.1" value="-1.65" oninput="updateDrift(this.value)">
+      <span id="drift-val" style="color:#38bdf8; font-weight:bold;">-1.65%</span>
+    </div>
+    <button onclick="resetSuperposition()">🔄 Reset to Superposition</button>
+  </div>
+
+  <canvas id="canvas"></canvas>
+
+  <script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+      initSources();
+    });
+
+    let collapsed = false;
+    let specialDrift = -1.65;
+    let time = 0;
+
+    // 4 Entangled Marginal Electorates (Wave Packet Sources)
+    let sources = [];
+    function initSources() {
+      sources = [
+        { name: "Nelson", x: width * 0.46, y: height * 0.52, prelimMargin: 72, freq: 0.055, phase: 0.0, color: "#00529F", flipColor: "#D82A20", flipped: false },
+        { name: "Mount Albert", x: width * 0.48, y: height * 0.28, prelimMargin: 320, freq: 0.048, phase: Math.PI * 0.25, color: "#D82A20", flipColor: "#00529F", flipped: false },
+        { name: "Wellington Central", x: width * 0.49, y: height * 0.60, prelimMargin: 112, freq: 0.052, phase: Math.PI * 0.5, color: "#098137", flipColor: "#D82A20", flipped: false },
+        { name: "Te Atatū", x: width * 0.44, y: height * 0.26, prelimMargin: 131, freq: 0.050, phase: Math.PI * 0.75, color: "#D82A20", flipColor: "#00529F", flipped: false }
+      ];
+    }
+    initSources();
+
+    function updateDrift(val) {
+      specialDrift = parseFloat(val);
+      document.getElementById('drift-val').innerText = `${specialDrift.toFixed(2)}%`;
+    }
+
+    function toggleMeasurement() {
+      if (!collapsed) {
+        collapsed = true;
+        document.getElementById('btn-measure').innerText = "🔬 Measurement Locked (Collapsed)";
+        document.getElementById('state-entropy').innerText = "Entropy: 0.00 bits (Collapsed)";
+        document.getElementById('state-entropy').style.color = "#a855f7";
+        document.getElementById('state-desc').innerText = "Wave-function collapsed into sharp spectral eigenvalue";
+        
+        // Nelson collapses to Labour flip (given -1.65% drift)
+        document.getElementById('nelson-status').innerHTML = "<b style='color:#ef4444;'>COLLAPSED: Flipped to Labour (-23 votes)</b>";
+        document.getElementById('mtalbert-status').innerHTML = "<b style='color:#ef4444;'>COLLAPSED: Flipped to Labour (-185 votes)</b>";
+        document.getElementById('teatatu-status').innerHTML = "<b style='color:#38bdf8;'>COLLAPSED: Held by Labour (+48 votes)</b>";
+
+        sources[0].flipped = true;
+        sources[1].flipped = true;
+      } else {
+        resetSuperposition();
+      }
+    }
+
+    function resetSuperposition() {
+      collapsed = false;
+      document.getElementById('btn-measure').innerText = "👁️ Observe / Collapse Wave-Function";
+      document.getElementById('state-entropy').innerText = "Entropy: 1.58 bits";
+      document.getElementById('state-entropy').style.color = "#38bdf8";
+      document.getElementById('state-desc').innerText = "Wave-function oscillating across 4 entangled seats";
+
+      document.getElementById('nelson-status').innerHTML = "Superposed (|0⟩ 18% / |1⟩ 82%)";
+      document.getElementById('mtalbert-status').innerHTML = "Entangled (Hold 12% / Flip 88%)";
+      document.getElementById('teatatu-status').innerHTML = "Entangled (Hold 31% / Flip 69%)";
+
+      sources.forEach(s => s.flipped = false);
+    }
+
+    function animate() {
+      time += 0.04;
+      ctx.fillStyle = '#060913';
+      ctx.fillRect(0, 0, width, height);
+
+      // Render 2D Quantum Wave Interference Shimmer
+      const step = 8;
+      const k = 0.035; // Wave vector
+      const omega = 1.2;
+
+      // Draw faint interference lines
+      if (!collapsed) {
+        ctx.lineWidth = 1;
+        for (let ring = 1; ring <= 18; ring++) {
+          sources.forEach(src => {
+            const r = (ring * 24 + time * 20) % 450;
+            const alpha = Math.max(0, 1 - r / 450) * 0.18;
+            ctx.beginPath();
+            ctx.arc(src.x, src.y, r, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgba(168, 85, 247, ${alpha})`;
+            ctx.stroke();
+          });
+        }
+
+        // Draw entangled cross-ripples between sources
+        for (let i = 0; i < sources.length; i++) {
+          for (let j = i + 1; j < sources.length; j++) {
+            ctx.beginPath();
+            ctx.moveTo(sources[i].x, sources[i].y);
+            ctx.lineTo(sources[j].x, sources[j].y);
+            ctx.strokeStyle = `rgba(56, 189, 248, ${0.15 + 0.1 * Math.sin(time * 2 + i)})`;
+            ctx.lineWidth = 2;
+            ctx.stroke();
+          }
+        }
+      } else {
+        // Collapsed mode: render sharp, discrete spectral bands
+        sources.forEach(src => {
+          ctx.beginPath();
+          ctx.arc(src.x, src.y, 90, 0, Math.PI * 2);
+          ctx.strokeStyle = src.flipped ? 'rgba(239, 68, 68, 0.8)' : 'rgba(56, 189, 248, 0.8)';
+          ctx.lineWidth = 3;
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(src.x, src.y, 140, 0, Math.PI * 2);
+          ctx.strokeStyle = src.flipped ? 'rgba(239, 68, 68, 0.3)' : 'rgba(56, 189, 248, 0.3)';
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+        });
+      }
+
+      // Render Wave-Packet Hubs (Marginal Seats)
+      sources.forEach(src => {
+        ctx.save();
+        ctx.translate(src.x, src.y);
+
+        // Orbital glow
+        const glowRadius = collapsed ? 28 : (25 + 8 * Math.sin(time * 3 + src.phase));
+        const grad = ctx.createRadialGradient(0, 0, 5, 0, 0, glowRadius * 2);
+        const col = src.flipped ? '#ef4444' : (collapsed ? '#38bdf8' : '#a855f7');
+        grad.addColorStop(0, col);
+        grad.addColorStop(1, 'rgba(6, 9, 19, 0)');
+
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(0, 0, glowRadius * 2, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Core nucleus
+        ctx.beginPath();
+        ctx.arc(0, 0, 10, 0, Math.PI * 2);
+        ctx.fillStyle = col;
+        ctx.shadowColor = col;
+        ctx.shadowBlur = 15;
+        ctx.fill();
+
+        // Label
+        ctx.fillStyle = '#f8fafc';
+        ctx.font = 'bold 12px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(src.name, 0, 32);
+
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = '10px monospace';
+        ctx.fillText(`Margin: +${src.prelimMargin}`, 0, 46);
+
+        ctx.restore();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
