@@ -1,0 +1,106 @@
+name: Election results capture
+
+# Captures the Electoral Commission result set into the archive CAS and publishes it to
+# the Hugging Face dataset. The 2026 preliminary capture ran on 9 November 2026; the
+# official count is due on 27 November 2026, which is what the cron below targets.
+#
+# The results host is behind Cloudflare, so the capture needs a real browser session.
+# GitLab CI holds the primary schedule; this workflow is the redundant path and stays
+# disabled until a CDP-capable runner is confirmed for the repository
+# (set repository variable ELECTION_CAPTURE_CDP=true).
+
+on:
+  schedule:
+    - cron: "0 7 27 11 *"    # 20:00 NZDT on 27 November (07:00 UTC)
+  workflow_dispatch:
+    inputs:
+      vintage:
+        description: "Result vintage to capture"
+        required: true
+        default: official
+        type: choice
+        options: [preliminary, official]
+      base_url:
+        description: "Entry page for the result set"
+        required: true
+        default: "https://electionresults.govt.nz/electionresults_2026/"
+        type: string
+      publish:
+        description: "Publish captured objects to Hugging Face after capture"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    name: Capture results
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check enablement
+        id: gate
+        run: |
+          if [ "${{ vars.ELECTION_CAPTURE_CDP }}" = "true" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Election capture is disabled. Set repository variable ELECTION_CAPTURE_CDP=true to enable the schedule."
+          fi
+
+      - name: Set up Python
+        if: steps.gate.outputs.enabled == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+
+      - name: Install dependencies
+        if: steps.gate.outputs.enabled == 'true'
+        run: |
+          pip install uv
+          uv sync --locked --no-dev
+
+      - name: Start headless Chromium with CDP
+        if: steps.gate.outputs.enabled == 'true'
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y chromium-browser || sudo apt-get install -y chromium
+          chromium --headless=new --no-sandbox --disable-gpu \
+            --remote-debugging-port=9222 --user-data-dir=/tmp/cdp-profile \
+            about:blank >/tmp/chromium.log 2>&1 &
+          for i in $(seq 1 30); do
+            curl -sf http://localhost:9222/json/version >/dev/null && break
+            sleep 1
+          done
+
+      - name: Capture results
+        if: steps.gate.outputs.enabled == 'true'
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          uv run python tools/capture_election_results.py \
+            --base-url "${{ inputs.base_url || 'https://electionresults.govt.nz/electionresults_2026/' }}" \
+            --vintage "${{ inputs.vintage || 'official' }}" \
+            --mode cdp --cdp-port 9222 \
+            --objects-dir objects --evidence-dir evidence
+
+      - name: Publish to Hugging Face
+        if: steps.gate.outputs.enabled == 'true' && inputs.publish
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          uv run python tools/publish_to_huggingface.py \
+            --repo-id edithatogo/archive-govt-nz-global \
+            --objects-dir objects --evidence-dir evidence
+
+      - name: Upload capture receipt
+        if: steps.gate.outputs.enabled == 'true' && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: election-capture-receipt
+          path: evidence/nz-election-results-*.json
+          if-no-files-found: warn

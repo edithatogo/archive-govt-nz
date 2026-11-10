@@ -1,0 +1,230 @@
+# .gitlab-ci.yml
+# Global CKAN Harvest & Hugging Face Publication Pipeline
+# Runs on GitLab.com shared runners (unlimited for public repos)
+
+stages:
+  - election
+  - harvest
+  - recover
+  - derivatives
+  - publish
+  - notify
+
+variables:
+  HF_REPO_ID: "edithatogo/archive-govt-nz-global"
+  PYTHON_VERSION: "3.15"
+  MAX_DATASETS: "0"  # 0 = full catalogue, override in pipeline run
+  # Cache uv and virtual env between runs
+  UV_CACHE_DIR: "$CI_PROJECT_DIR/.uv-cache"
+  VENV_DIR: "$CI_PROJECT_DIR/.venv"
+
+# ---------------------------------------------------------------------------
+# Election results capture (2026 preliminary/official, plus historical vintages)
+# The results host is behind Cloudflare, so the job drives headless Chromium over
+# the DevTools protocol instead of plain HTTP.
+# ---------------------------------------------------------------------------
+election-capture:
+  stage: election
+  image: python:3.15-slim
+  timeout: 3h
+  variables:
+    ELECTION_BASE_URL: "https://electionresults.govt.nz/electionresults_2026/"
+    ELECTION_VINTAGE: "official"
+    ELECTION_MAX_PAGES: "200"
+  cache:
+    key: "${CI_COMMIT_REF_SLUG}-uv"
+    paths:
+      - .uv-cache/
+      - .venv/
+    policy: pull-push
+  before_script:
+    - apt-get update -qq
+    - apt-get install -qq -y curl chromium >/dev/null
+    - pip install --quiet uv
+    - uv sync --locked --no-dev --python 3.15
+  script:
+    - |
+      chromium --headless=new --no-sandbox --disable-gpu \
+        --remote-debugging-port=9222 --user-data-dir=/tmp/cdp-profile \
+        about:blank >/tmp/chromium.log 2>&1 &
+      for i in $(seq 1 30); do
+        curl -sf http://localhost:9222/json/version >/dev/null && break
+        sleep 1
+      done
+      uv run python tools/capture_election_results.py \
+        --base-url "$ELECTION_BASE_URL" \
+        --vintage "$ELECTION_VINTAGE" \
+        --mode cdp --cdp-port 9222 \
+        --max-pages "$ELECTION_MAX_PAGES" \
+        --objects-dir objects --evidence-dir evidence
+  artifacts:
+    when: always
+    expire_in: 1 year
+    paths:
+      - evidence/nz-election-results-*.json
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule" && $ELECTION_CAPTURE == "true"
+    - if: $CI_PIPELINE_SOURCE == "web" && $ELECTION_CAPTURE == "true"
+  when: manual
+  allow_failure: true
+
+harvest:
+  stage: harvest
+  image: python:3.15-slim
+  timeout: 6h
+  cache:
+    key: "${CI_COMMIT_REF_SLUG}-uv"
+    paths:
+      - .uv-cache/
+      - .venv/
+    policy: pull-push
+  before_script:
+    - apt-get update -qq && apt-get install -qq -y curl >/dev/null
+    - pip install --quiet uv
+    - uv sync --locked --no-dev --python 3.15
+  script:
+    - |
+      EXTRA_ARGS=()
+      if [ "$MAX_DATASETS" -gt 0 ]; then
+        EXTRA_ARGS=(--max-datasets "$MAX_DATASETS")
+      fi
+      uv run python tools/harvest_ckan.py \
+        --workers 8 \
+        --concurrency-per-host 2 \
+        --page-size 100 \
+        --evidence-dir evidence \
+        --objects-dir objects \
+        "${EXTRA_ARGS[@]}"
+  artifacts:
+    paths:
+      - evidence/
+      - objects/
+    expire_in: 7d
+    when: always
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "pipeline"
+    - if: $CI_PIPELINE_SOURCE == "web"
+
+recover:
+  stage: recover
+  image: python:3.15-slim
+  needs: [harvest]
+  cache:
+    key: "${CI_COMMIT_REF_SLUG}-uv"
+    paths:
+      - .uv-cache/
+      - .venv/
+    policy: pull
+  before_script:
+    - pip install --quiet uv
+    - uv sync --locked --no-dev --python 3.15
+  script:
+    - |
+      if [ -f evidence/global-broken-urls.json ]; then
+        uv run python tools/recover_broken_urls.py \
+          --input evidence/global-broken-urls.json \
+          --objects-dir objects \
+          --output evidence/wayback-recovery-receipt.json
+      else
+        echo "No broken URLs file found, skipping recovery"
+      fi
+  artifacts:
+    paths:
+      - evidence/wayback-recovery-receipt.json
+    expire_in: 7d
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "pipeline"
+    - if: $CI_PIPELINE_SOURCE == "web"
+
+derivatives:
+  stage: derivatives
+  image: python:3.15-slim
+  needs: [harvest]
+  cache:
+    key: "${CI_COMMIT_REF_SLUG}-uv"
+    paths:
+      - .uv-cache/
+      - .venv/
+    policy: pull
+  before_script:
+    - apt-get update -qq && apt-get install -qq -y gcc g++ >/dev/null
+    - pip install --quiet uv
+    - uv sync --locked --no-dev --python 3.15
+  script:
+    - |
+      if [ -f evidence/global-capture-receipt.json ]; then
+        uv run python tools/build_analytical_derivatives.py \
+          --input evidence/global-capture-receipt.json \
+          --objects-dir objects \
+          --derivatives-dir derivatives/parquet \
+          --output evidence/analytical-derivatives-manifest.json
+      else
+        echo "No capture receipt found, skipping derivatives"
+      fi
+  artifacts:
+    paths:
+      - derivatives/
+      - evidence/analytical-derivatives-manifest.json
+    expire_in: 7d
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "pipeline"
+    - if: $CI_PIPELINE_SOURCE == "web"
+
+publish:
+  stage: publish
+  image: python:3.15-slim
+  needs: [harvest, recover, derivatives]
+  variables:
+    HF_TOKEN: $HF_TOKEN
+  cache:
+    key: "${CI_COMMIT_REF_SLUG}-uv"
+    paths:
+      - .uv-cache/
+      - .venv/
+    policy: pull
+  before_script:
+    - pip install --quiet uv
+    - uv sync --locked --no-dev --python 3.15
+  script:
+    - |
+      uv run python tools/publish_to_huggingface.py \
+        --repo-id "${HF_REPO_ID:-edithatogo/archive-govt-nz-global}" \
+        --objects-dir objects \
+        --derivatives-dir derivatives/parquet \
+        --evidence-dir evidence
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "pipeline"
+    - if: $CI_PIPELINE_SOURCE == "web"
+
+notify:
+  stage: notify
+  image: python:3.15-slim
+  needs: [publish]
+  variables:
+    HARVEST_WEBHOOK_URL: $HARVEST_WEBHOOK_URL
+  cache:
+    key: "${CI_COMMIT_REF_SLUG}-uv"
+    paths:
+      - .uv-cache/
+      - .venv/
+    policy: pull
+  before_script:
+    - pip install --quiet uv
+    - uv sync --locked --no-dev --python 3.15
+  script:
+    - |
+      if [ -f evidence/global-harvest-summary.json ] && [ -n "$HARVEST_WEBHOOK_URL" ]; then
+        uv run python tools/notify_webhook.py \
+          --summary-receipt evidence/global-harvest-summary.json
+      else
+        echo "No summary receipt or webhook URL, skipping notification"
+      fi
+  when: always
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
+    - if: $CI_PIPELINE_SOURCE == "pipeline"
+    - if: $CI_PIPELINE_SOURCE == "web"
