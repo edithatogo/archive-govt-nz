@@ -65,14 +65,52 @@ working versus still blocked. This file is an engineering note, not an artifact.
 - `KOORDINATES_API_KEY` can be rotated at `https://datafinder.stats.govt.nz/my/api/`; it is
   independent of the Stats NZ portal key.
 
+## Automation
+
+| Workflow | Trigger | Credential |
+|----------|---------|------------|
+| `.github/workflows/stats-nz-boundary-capture.yml` | cron 08:00 UTC on 28 Nov + manual | `KOORDINATES_API_KEY` (fails closed without it) |
+| `.gitlab-ci.yml` → `boundary-capture` | schedule / manual, `BOUNDARY_CAPTURE=true` | `KOORDINATES_API_KEY` (fails closed without it) |
+
+Both run `scripts/capture_datafinder_attachments.py` first (credential-free) and then
+`scripts/capture_datafinder_exports.py`. Neither echoes a credential; the geometry script
+also strips the auth header before following the pre-signed storage redirect, because the
+storage endpoint rejects a request that carries two auth mechanisms.
+
+`objects/` is gitignored (`.gitignore`), which is why an unrelated `git clean -x` in the tree
+can remove captured payloads. The capture scripts are idempotent and byte-reproducible, so
+that recovery is a re-run rather than a loss.
+
 ## Unblock checklist
 
 1. ~~Obtain a Koordinates API token.~~ Done 2026-11-11 (`KOORDINATES_API_KEY` in the
    gitignored `.env`).
 2. ~~Export boundary geometry and verify.~~ Done for the eight layers above.
-3. Publish the 8 new CAS objects to the Hugging Face dataset.
-4. Wire GitHub Actions + GitLab CI keyed off masked `STATS_NZ_API_KEY` and
-   `KOORDINATES_API_KEY`; no auditable payload may print either value.
+3. ~~Publish the new coverage to the Hugging Face dataset.~~ Done 2026-11-11 at commit
+   `caf3532c` (2002 general + Māori boundaries, 21 files, 21 sha256-verified). The six
+   verification-only re-captures were deliberately not republished. Receipt:
+   `../evidence/huggingface-publish-receipt-20261111-datafinder.json`.
+4. ~~Wire GitHub Actions + GitLab CI keyed off masked credentials.~~ Added
+   `.github/workflows/stats-nz-boundary-capture.yml` and the `boundary-capture` job in
+   `.gitlab-ci.yml`. Both fail closed if `KOORDINATES_API_KEY` is absent and print no
+   secret material.
+
+### Remaining operator action
+
+Set these once in the repository settings; the workflows cannot read them from `.env`:
+
+| Where | Name | Notes |
+|-------|------|-------|
+| GitHub Actions secrets | `KOORDINATES_API_KEY` | required for geometry export |
+| GitHub Actions secrets | `HF_TOKEN` | only needed when `publish` is set |
+| GitHub Actions secrets | `STATS_NZ_API_KEY` | optional; ADE capability probe only |
+| GitLab CI/CD variables | `KOORDINATES_API_KEY` | mark **masked** (and protected) |
+| GitHub Actions variables | `BOUNDARY_CAPTURE=true` | enable the schedule (default off) |
+| GitLab CI/CD variables | `BOUNDARY_CAPTURE=true` | enable the scheduled job |
+
+Schedules: GitHub cron runs 08:00 UTC on 28 November; GitLab runs the manual
+`boundary-capture` job when `BOUNDARY_CAPTURE=true`. The 2026 official count is due
+**27 November 2026**.
 
 Licence: Stats NZ data open under CC BY 4.0. See repo `docs/elections-dataset-card.md` §9
 for the integrator card.
