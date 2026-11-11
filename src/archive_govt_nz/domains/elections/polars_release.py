@@ -46,10 +46,15 @@ def calculate_party_shares(source: Path) -> list[PartyShare]:
     })
     if frame["name"].n_unique() != len(rows):
         raise ValueError("Duplicate party names")
-    if frame.select(pl.selectors.numeric().min()).row(0) != (0, 0, 0, 0):
-        # Negative checks use boolean expressions to permit positive minima.
-        if frame.select(pl.any_horizontal(pl.selectors.numeric() < 0).any()).item():
-            raise ValueError("Negative votes or seats")
+    if frame.filter(
+        pl.any_horizontal(
+            pl.col("votes") < 0,
+            pl.col("electorate_seats") < 0,
+            pl.col("list_seats") < 0,
+            pl.col("total_seats") < 0,
+        )
+    ).height:
+        raise ValueError("Negative votes or seats")
     totals = frame.select(
         pl.col("votes").sum(),
         pl.col("electorate_seats").sum(),
