@@ -3,12 +3,13 @@
 from __future__ import annotations
 
 import json
+from importlib import import_module
 from pathlib import Path
 
 import pytest
 
-pl = pytest.importorskip("polars")
-from archive_govt_nz.domains.elections.polars_release import calculate_party_shares
+pytest.importorskip("polars")
+calculate_party_shares = import_module("archive_govt_nz.domains.elections.polars_release").calculate_party_shares
 
 SOURCE = Path(__file__).resolve().parents[1] / "spaces/nz-election-explorer/data/2026-preliminary.json"
 
