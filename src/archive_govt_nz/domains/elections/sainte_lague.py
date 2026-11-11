@@ -129,5 +129,6 @@ def compute_sainte_lague(
         nominal_seats=nominal_seats,
         qualifying_parties=[p.party_name for p in qualifying],
         excluded_parties=excluded,
+        excluded_party_votes={p.party_name: p.party_votes for p in parties if p.party_name in excluded},
         allocations=allocations,
     )
