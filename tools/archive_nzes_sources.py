@@ -145,9 +145,9 @@ def http_get(url: str, accept: str = "*/*") -> tuple[int, str, bytes]:
     if parsed.scheme != "https" or not parsed.hostname:
         msg = "Only HTTPS publisher resources are permitted"
         raise ValueError(msg)
-    request = urllib.request.Request(
+    request = urllib.request.Request(  # noqa: S310 -- HTTPS scheme checked
         url, headers={"User-Agent": USER_AGENT, "Accept": accept}
-    )  # noqa: S310 -- HTTPS scheme checked
+    )
     try:
         with urllib.request.urlopen(request, timeout=90) as response:  # noqa: S310 -- HTTPS scheme checked
             return (
@@ -184,8 +184,8 @@ def browser_warmup(url: str, port: int, tries: int = 40) -> bool:
     import subprocess
 
     script = _CDP_WARMUP.format(url=json.dumps(url), port=port, tries=tries)
-    out = subprocess.run(  # noqa: S603,S607 -- fixed node argv, no shell
-        ["node", "--input-type=module", "-e", script],
+    out = subprocess.run(  # noqa: S603 -- fixed argv, no shell
+        ["node", "--input-type=module", "-e", script],  # noqa: S607 -- trusted Node CLI
         capture_output=True,
         text=True,
         timeout=600,
