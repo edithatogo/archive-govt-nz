@@ -30,7 +30,20 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git fetch origin main
-          git merge --no-edit --no-ff origin/main
+          if ! git merge --no-edit --no-ff origin/main; then
+            mapfile -t unresolved < <(git diff --name-only --diff-filter=U | sort)
+            expected=$(printf '%s\n' 'spaces/nz-election-explorer/index.html' 'src/archive_govt_nz/domains/elections/generate_frontier_five.py' | sort)
+            actual=$(printf '%s\n' "${unresolved[@]}")
+            if [ "$actual" != "$expected" ]; then
+              echo "::error::Unexpected merge conflicts; refusing automatic resolution"
+              printf '%s\n' "${unresolved[@]}"
+              exit 1
+            fi
+            git checkout --ours -- spaces/nz-election-explorer/index.html
+            git checkout --theirs -- src/archive_govt_nz/domains/elections/generate_frontier_five.py
+            git add spaces/nz-election-explorer/index.html src/archive_govt_nz/domains/elections/generate_frontier_five.py
+            git commit -m 'merge main with reviewed election conflict resolutions'
+          fi
       - name: Reconcile universal lock against merged manifest
         run: |
           uv lock
