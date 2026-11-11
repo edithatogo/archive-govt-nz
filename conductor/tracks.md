@@ -450,6 +450,20 @@ implementation has occurred under these tracks.
   *Link: [tracks/election_publication_integrity_20261111/index.md](./tracks/election_publication_integrity_20261111/index.md)*
   Commission-based preliminary fixture, source-driven static Space, allocation-metric fixes, CI/browser/security verification and deployment parity. Code changes are in PR #861; track remains open until exact-head CI, merge and live release verification.
 
+### Election platform frontier and single-developer assurance — 11 November 2026
+
+- [ ] **Election Explorer reconciliation programme (P0–P3)** — [parent requirements, design, contracts, plan](./tracks/election_platform_frontier_20261111/index.md)
+  Existing finished tracks are historical *implementation* records, not independent evidence of validated 2026 claims. Unverified results and old HF runtime must remain blocked from production.
+
+- [ ] **P0 Release integrity** — [Track 01](./tracks/election_platform_01_release_integrity_20261111/index.md)
+- [ ] **P0 MMP laboratory** — [Track 02](./tracks/election_platform_02_electoral_lab_20261111/index.md)
+- [ ] **P1 Spatial and longitudinal** — [Track 03](./tracks/election_platform_03_spatial_longitudinal_20261111/index.md)
+- [ ] **P1 Special votes and coalitions** — [Track 04](./tracks/election_platform_04_specials_coalitions_20261111/index.md)
+- [ ] **P1 Reproducible publication** — [Track 05](./tracks/election_platform_05_publication_20261111/index.md)
+- [ ] **P2 Finance, demographics and causal/policy research** — [Track 06](./tracks/election_platform_06_political_economy_20261111/index.md)
+- [ ] **P0/P1 Strict solo harness and security** — [Track 07](./tracks/election_platform_07_solo_harness_20261111/index.md)
+- [ ] **P3 Parliamentary bargaining and frontier systems** — [Track 08](./tracks/election_platform_08_frontier_games_20261111/index.md)
+
 ### Election Analytics & Overhang Subsystem — 10 November 2026
 
 - [x] **Track: Election canonical contracts and typed schemas**
