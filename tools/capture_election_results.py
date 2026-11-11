@@ -27,6 +27,7 @@ Capture the official 2026 result set (re-run after 27 November 2026)::
 Dry run to list what would be fetched::
 
     python tools/capture_election_results.py --base-url ... --vintage official --dry-run
+
 """
 
 from __future__ import annotations

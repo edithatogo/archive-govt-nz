@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-Verify Bronze admission byte-matching readback for tobac NZ/AU empirical sources.
+"""Verify Bronze admission byte-matching readback for tobac NZ/AU empirical sources.
 
 This script validates that all artifacts in the Bronze admission manifest
 match their SHA-256 hashes exactly, confirming independent byte-matching readback.
@@ -116,9 +115,8 @@ def main():
             "✅ ALL MAPPED ARTIFACTS VERIFIED - Independent byte-matching readback PASSED"
         )
         return 0
-    else:
-        print("❌ VERIFICATION FAILED")
-        return 1
+    print("❌ VERIFICATION FAILED")
+    return 1
 
 
 if __name__ == "__main__":

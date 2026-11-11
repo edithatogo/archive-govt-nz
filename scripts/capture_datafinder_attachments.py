@@ -14,7 +14,7 @@ import json
 import sys
 import urllib.error
 import urllib.request
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
@@ -67,7 +67,7 @@ def main() -> None:
             "content_type": ctype,
             "byte_count": len(body),
             "sha256": hashlib.sha256(body).hexdigest(),
-            "captured_at": datetime.now(timezone.utc).isoformat(),
+            "captured_at": datetime.now(UTC).isoformat(),
         }
         if status == 200 and body:
             receipt = store.put_bytes(body)
@@ -136,7 +136,7 @@ def main() -> None:
         json.dumps(
             {
                 "schema_version": "archive-govt-nz.datafinder-attachment-capture/v1",
-                "captured_at": datetime.now(timezone.utc).isoformat(),
+                "captured_at": datetime.now(UTC).isoformat(),
                 "operator": "edithatogo",
                 "source": "Stats NZ Geographic Data Service (datafinder.stats.govt.nz), Koordinates",
                 "licence": "CC BY 4.0 Stats NZ",
