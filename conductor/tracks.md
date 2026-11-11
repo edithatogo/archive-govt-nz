@@ -12,6 +12,16 @@ Execution policy: [bounded autonomous delivery](./autonomy.md). The
 completion, ongoing operations and deferred expansion. Historical track statuses
 below remain evidence of their original scope, not prerequisites for every release.
 
+## Daily CKAN and Vote Health publication — 8 November 2026
+
+Chat `01a1b3ad-0053-7d73-994a-2e35a8ff685a` owns
+`/Volumes/PortableSSD/archive-daily-ckan-health`, branch
+`fix/daily-ckan-health-publication`. Scope is Treasury landing resolution,
+empty-harvest failure, daily CKAN and verified Vote Health publication.
+Next operation is focused validation then the required PR harness and hosted
+readback. NAS recovery remains retained until unique data and evidence are
+verified outside the archive. Earlier native owners retain their assignments.
+
 ## Legal and parliamentary archive continuation
 
 [Ordered remaining tracks, CLI mechanisms and acceptance checks](tracks/legislation_historical_coverage_20260901/remaining-areas.md). Historical Acts page 1 is complete. Page 2, cumulative-state sealing and broader legislation acquisition remain open. The linked plan assigns the remaining source partitions and rights holds.

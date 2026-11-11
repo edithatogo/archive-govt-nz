@@ -40,25 +40,39 @@ working versus still blocked. This file is an engineering note, not an artifact.
   The 2014 and 2007 layers publish no attachments.
 - These attachments contain **no geometry**.
 
-## Still blocked: boundary geometry
+## Proven working (3): boundary geometry export
 
-- WFS gateway accepts `STATS_NZ_API_KEY` (`services;key=<key>/wfs/` → HTTP 200 capabilities,
-  94,189 bytes; without a key → HTTP 401) but the capabilities expose **no `FeatureType`
-  entries**, and per-layer WFS paths return 404/400.
-- `services/api/v1.x/exports/` → **HTTP 401** ("Authentication credentials were not
-  provided") without a Koordinates token.
-- `services/query/v1/vector.json?key=<subscription key>` → **HTTP 403
-  `invalid-api-key`**, which proves the subscription key cannot substitute for a Koordinates
-  token.
+- `services/api/v1.x/exports/` is **HTTP 401** without a Koordinates token and **HTTP 201**
+  with one. `STATS_NZ_API_KEY` is not accepted there — the spatial-query service rejects it
+  with `HTTP 403 invalid-api-key`, so a free Koordinates API token
+  (`exports:read`, `exports:write`) is the required credential.
+- Eight layers exported as GeoParquet (EPSG:4326) on 2026-11-11, stored verbatim in CAS and
+  sha256-verified (8 objects, 25,094,596 bytes):
+  `scripts/capture_datafinder_exports.py`, receipt
+  `../evidence/datafinder-geometry-20261111-capture.json`.
+- **New coverage:** General Electoral District 2002 (62 features) and Māori Electoral
+  District 2002 (7), closing the 2002/2005 boundary gap.
+- **Verification:** for General Electorates 2025 the decoded WKB matches the archive's
+  ArcGIS-sourced parquet — same 64 ids and names, 577,688 vertices in both, max relative
+  area delta `3.7e-08`, max bbox delta `2.8e-08°`. Feature counts match for all six
+  re-captured layers.
+
+## Notes on access design
+
+- The layer catalogue, per-layer metadata, and attachment CSVs/PDFs remain public, so the
+  attribute capture needs no credential at all (20 objects, 632,312 bytes).
+- Only geometry export is gated.
+- `KOORDINATES_API_KEY` can be rotated at `https://datafinder.stats.govt.nz/my/api/`; it is
+  independent of the Stats NZ portal key.
 
 ## Unblock checklist
 
-1. Create/sign in to a Koordinates ID and mint an API token with query/download scope.
-2. Export GeoJSON (EPSG:4326) and/or SHP for layers 122741, 122742, 104580, 104579, 104062,
-   104065 via the datafinder Export UI or the export API.
-3. Verify byte count + sha256, store in CAS with per-file receipts.
-4. Wire GitHub Actions + GitLab CI keyed off masked credentials; no auditable payload may
-   print a key.
+1. ~~Obtain a Koordinates API token.~~ Done 2026-11-11 (`KOORDINATES_API_KEY` in the
+   gitignored `.env`).
+2. ~~Export boundary geometry and verify.~~ Done for the eight layers above.
+3. Publish the 8 new CAS objects to the Hugging Face dataset.
+4. Wire GitHub Actions + GitLab CI keyed off masked `STATS_NZ_API_KEY` and
+   `KOORDINATES_API_KEY`; no auditable payload may print either value.
 
 Licence: Stats NZ data open under CC BY 4.0. See repo `docs/elections-dataset-card.md` §9
 for the integrator card.

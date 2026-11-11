@@ -68,8 +68,8 @@ This dataset captures **all New Zealand General Elections from 1996 to 2026**, i
 | 2023 | 48,895 | 33,660 | ~40/72 (55%) |
 | 2020 | 2,424 | 2,122 | ~2/72 (3%) |
 
-### 2. Stats NZ Electoral Boundaries (ArcGIS FeatureServer)
-Authoritative boundaries from Representation Commission reviews, captured as GeoJSON (EPSG:4326) + Parquet:
+### 2. Stats NZ Electoral Boundaries (datafinder + ArcGIS FeatureServer)
+Authoritative boundaries from Representation Commission reviews, captured as GeoParquet/GeoJSON (EPSG:4326) + Parquet. The 2007–2025 sets came from the ArcGIS FeatureServer pipeline; the 2002 sets and an independent re-capture of all six 2007–2025 sets came from datafinder (§9a).
 
 | Layer | Elections Used | Features | Year |
 |-------|----------------|----------|------|
@@ -81,6 +81,8 @@ Authoritative boundaries from Representation Commission reviews, captured as Geo
 | `maori-electorates-2014` | 2014, 2017 | 7 | 2014 review |
 | `general-electorates-2007` | 2008, 2011 | 63 | 2007 review |
 | `maori-electorates-2007` | 2008, 2011 | 7 | 2007 review |
+| `general-electoral-district-2002` | 2002, 2005 | 62 | 2002 review (captured 2026-11-11 from datafinder; see §9a) |
+| `maori-electoral-district-2002` | 2002, 2005 | 7 | 2002 review (captured 2026-11-11 from datafinder; see §9a) |
 | `constituency-2026` | Regional councils | 64 | 2026 |
 | `maori-constituency-2026` | Regional councils | 22 | 2026 |
 
@@ -184,13 +186,12 @@ per-place files; 1996/1999/2005 CDX and 2011/2014 CDX returned the Internet Arch
 Temporarily Offline interstitial at capture time). Enrolment-and-voting-statistics CSV/TXT/XLS
 from 2008/2011/2014 (aggregate-level, not per-place) ARE included via §§6.
 
-### 9. Stats NZ Boundary Geodata — attributes re-captured, geometry still blocked
+### 9. Stats NZ Boundary Geodata — attributes and geometry re-captured from datafinder
 
 The legacy Stats NZ OData API (`https://api.stats.govt.nz/opendata/v1`) still serves an
 **expired TLS certificate** (`api.stats.govt.nz`, issuer DigiCert, notAfter 29 Oct 2026,
 checked again 11 Nov 2026) and returned **HTTP 502** from Azure Application Gateway even
-when certificate verification was bypassed. Certificate renewal alone may therefore not
-restore this service. It is no longer the capture target.
+when certificate verification was bypassed. It is no longer the capture target.
 
 A Stats NZ API subscription key **has now been provisioned** (`STATS_NZ_API_KEY`, sent as
 `Ocp-Apim-Subscription-Key`, stored only in the gitignored repo-local `.env`; the value is
@@ -216,17 +217,41 @@ were captured **byte-for-byte into CAS and sha256-verified** (20 objects, 632,31
 The CSVs carry electoral population, land area, and area per electorate — useful for the
 census/electorate derivatives — but **no geometry**.
 
-**Boundary geometry remains blocked.** The WFS gateway accepts the subscription key
-(HTTP 200 capabilities; HTTP 401 without it) but exposes no `FeatureType` entries, and the
-geometry export API (`services/api/v1.x/exports/`) returns **HTTP 401** without a
-Koordinates account. The probe settled the key question: `STATS_NZ_API_KEY` is **not** a
-Koordinates token — the spatial-query and data-table services reject it with
-`HTTP 403 invalid-api-key`. A Koordinates ID and API token (query/download scope) are
-required. Probe receipt: `evidence/stats-nz-api-capability-20261111.json`.
+### 9a. Boundary geometry (captured 11 Nov 2026)
 
-Follow-up: obtain a Koordinates API token, then export GeoJSON/SHP for the six layers above
-and re-capture General and Māori district/constituency boundaries 2011–2026 (~3 formats
-each) into CAS.
+**Boundary geometry is now captured.** The WFS gateway exposes no `FeatureType` entries and
+`STATS_NZ_API_KEY` is **not** a Koordinates token (the spatial-query service rejects it with
+`HTTP 403 invalid-api-key`), so geometry comes from the datafinder **export API**, which
+needs a free Koordinates API token (`exports:read`, `exports:write`) held in the gitignored
+`.env` as `KOORDINATES_API_KEY`. Eight layers were exported as GeoParquet (EPSG:4326) with
+the publisher's own ISO 19115 metadata, stored verbatim in CAS and sha256-verified
+(8 objects, 25,094,596 bytes) — `evidence/datafinder-geometry-20261111-capture.json`,
+reproducible with `scripts/capture_datafinder_exports.py`.
+
+| Layer | ID | Features | Role |
+|-------|----|----------|------|
+| General Electoral District 2002 | 99645 | 62 | **new coverage** |
+| Māori Electoral District 2002 | 104064 | 7 | **new coverage** |
+| General Electorates 2025 | 122741 | 64 | verification |
+| Māori Electorates 2025 | 122742 | 7 | verification |
+| General Electorates 2020 | 104580 | 65 | verification |
+| Māori Electorates 2020 | 104579 | 7 | verification |
+| General Electoral District 2014 | 104062 | 64 | verification |
+| General Electoral District 2007 | 104065 | 63 | verification |
+
+The 2002 pair closes a real gap: returns in this dataset run back to 1996 but boundaries
+previously stopped at 2007, so the 2002 and 2005 elections had no matching geometry.
+
+**Independent-source verification.** Decoding WKB from the archive's own
+`data/general-electorates-2025.parquet` (ArcGIS FeatureServer pipeline) and from this
+datafinder export gives identical feature ids and names, **577,688 vertices in both**, a
+maximum relative area difference of `3.7e-08`, and a maximum bounding-box difference of
+`2.8e-08°`. The two independent Stats NZ services encode the same boundaries to
+floating-point precision, so the existing geometry is confirmed rather than replaced.
+Feature counts also match for all six verification layers (64/7/65/7/64/63).
+
+Remaining follow-up: capture the 2011 boundary set if a layer is published, and re-run
+both capture scripts when the 2026 official count is released.
 
 ## Derivatives (Parquet — Ready for Analysis)
 
@@ -293,7 +318,7 @@ edithatogo/archive-govt-nz-global. Captured 9–11 Nov 2026. https://huggingface
 - **Current revision**: 2026 preliminary + historical 1996–2023 + 10–11 Nov 2026 verified capture batches (CKAN/figshare; opinion polls; per-place per-election CSVs 2017/2020/2023; CKAN-record evidence).
 - **Next revision**: 2026 official results — **planned capture 27 November 2026** (~399k special votes outstanding; results are preliminary until then). At that revision, 2026 preliminary figures may be replaced by the official count, and any 2026 per-place CSVs (if published) re-captured.
 - **2023/2020 per-place CSV completion**: Ongoing (Cloudflare/Incapsula-protected; captured via Internet Archive raw-byte snapshots instead — see §§6–8).
-- **Stats NZ geodata re-capture**: Boundary **attributes** for 2025/2020 general and Māori electorates captured and sha256-verified from `datafinder.stats.govt.nz`. Boundary **geometry** still blocked: `STATS_NZ_API_KEY` is not a Koordinates token (HTTP 403 `invalid-api-key`), and the export API needs HTTP 401-guarded Koordinates credentials (§9).
+- **Stats NZ geodata re-capture**: Boundary **attributes** (2025/2020 general + Māori) and **geometry** (2002 general + Māori, plus an independent re-capture of all six 2007–2025 sets) captured and sha256-verified from `datafinder.stats.govt.nz`. GeoParquet WKB matches the archive's ArcGIS geometry to `3.7e-08` relative area (§9a). `STATS_NZ_API_KEY` alone is not sufficient: geometry needs a Koordinates token, held in `.env` as `KOORDINATES_API_KEY`.
 
 ## Part of
 

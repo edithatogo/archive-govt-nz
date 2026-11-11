@@ -3,10 +3,14 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import sys
 from datetime import UTC, datetime
 from pathlib import Path
 from unittest.mock import AsyncMock, patch
+
+import httpx
+import pytest
 
 from archive_govt_nz.ckan.global_discovery import (
     GlobalCkanScope,
@@ -113,3 +117,97 @@ def test_unified_harvest_orchestrator(tmp_path: Path) -> None:
     assert (evidence_dir / "global-capture-receipt.json").is_file()
     assert (evidence_dir / "ro-crate-metadata.jsonld").is_file()
     assert (evidence_dir / "preservation-bag" / "bagit.txt").is_file()
+
+
+def test_empty_discovery_fails(tmp_path: Path) -> None:
+    """Empty catalogue discovery must not produce a publishable harvest."""
+    with (
+        patch.object(
+            _MODULE.GlobalCkanDiscovery,
+            "discover",
+            new_callable=AsyncMock,
+            return_value=GlobalCkanScope(datasets=(), pages=()),
+        ),
+        pytest.raises(ValueError, match="empty_ckan_discovery"),
+    ):
+        execute_unified_harvest(
+            HarvestConfig(
+                evidence_dir=tmp_path / "evidence", objects_dir=tmp_path / "objects"
+            )
+        )
+
+
+def test_discovery_error_is_not_replaced_with_fallback(tmp_path: Path) -> None:
+    """A failing live catalogue stays failed rather than inventing licences."""
+    with (
+        patch.object(
+            _MODULE.GlobalCkanDiscovery,
+            "discover",
+            new_callable=AsyncMock,
+            side_effect=httpx.ConnectError("unavailable"),
+        ),
+        pytest.raises(httpx.ConnectError),
+    ):
+        execute_unified_harvest(
+            HarvestConfig(
+                evidence_dir=tmp_path / "evidence", objects_dir=tmp_path / "objects"
+            )
+        )
+
+
+def test_zero_successful_captures_fails_with_receipt(tmp_path: Path) -> None:
+    """Retain failure evidence but block all downstream publication."""
+    network = (
+        b'{"datasets":[{"id":"fixture"}],"discovered_resource_count":1}',
+        b"scope",
+        {"counts": {"eligible": 1}},
+        {"successful_count": 0, "broken_urls": []},
+    )
+    with (
+        patch.object(
+            _MODULE,
+            "_execute_harvest_network_phases",
+            new_callable=AsyncMock,
+            return_value=network,
+        ),
+        pytest.raises(ValueError, match="empty_successful_harvest"),
+    ):
+        execute_unified_harvest(
+            HarvestConfig(
+                evidence_dir=tmp_path / "evidence", objects_dir=tmp_path / "objects"
+            )
+        )
+    assert (
+        json.loads((tmp_path / "evidence/global-harvest-summary.json").read_text())[
+            "successful_captures"
+        ]
+        == 0
+    )
+
+
+def test_failed_treasury_blocks_otherwise_nonempty_harvest(tmp_path: Path) -> None:
+    """A rejected Treasury body cannot leak through the bulk CAS upload."""
+    network = (
+        b'{"datasets":[],"discovered_resource_count":2}',
+        b"scope",
+        {"counts": {"eligible": 2}},
+        {
+            "successful_count": 1,
+            "broken_urls": [],
+            "unresolved_treasury_workbooks": ["https://www.treasury.govt.nz/data.xls"],
+        },
+    )
+    with (
+        patch.object(
+            _MODULE,
+            "_execute_harvest_network_phases",
+            new_callable=AsyncMock,
+            return_value=network,
+        ),
+        pytest.raises(ValueError, match="unresolved_treasury_workbooks"),
+    ):
+        execute_unified_harvest(
+            HarvestConfig(
+                evidence_dir=tmp_path / "evidence", objects_dir=tmp_path / "objects"
+            )
+        )
