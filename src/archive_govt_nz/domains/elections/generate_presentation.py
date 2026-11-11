@@ -27,7 +27,9 @@ def apply_dark_background(slide, width, height):
 
 def add_slide_header(slide, kicker: str, title: str):
     """Add standard structured header with kicker and main title."""
-    header_box = slide.shapes.add_textbox(Inches(0.8), Inches(0.4), Inches(11.7), Inches(1.1))
+    header_box = slide.shapes.add_textbox(
+        Inches(0.8), Inches(0.4), Inches(11.7), Inches(1.1)
+    )
     tf = header_box.text_frame
     tf.word_wrap = True
     tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
@@ -47,24 +49,33 @@ def add_slide_header(slide, kicker: str, title: str):
     p1.font.color.rgb = RGBColor(255, 255, 255)
 
 
-def add_analysis_panel(slide, left, top, width, height, depicts: str, adds: str, method: str, takeaway: str):
+def add_analysis_panel(
+    slide, left, top, width, height, depicts: str, adds: str, method: str, takeaway: str
+):
     """Add structured analytical explanation panel."""
     # Background panel box
-    panel = slide.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, left, top, width, height)
+    panel = slide.shapes.add_shape(
+        MSO_SHAPE.ROUNDED_RECTANGLE, left, top, width, height
+    )
     panel.fill.solid()
     panel.fill.fore_color.rgb = RGBColor(22, 27, 34)  # #161B22
     panel.line.color.rgb = RGBColor(48, 54, 61)  # #30363D
 
-    tb = slide.shapes.add_textbox(left + Inches(0.25), top + Inches(0.2), width - Inches(0.5), height - Inches(0.4))
+    tb = slide.shapes.add_textbox(
+        left + Inches(0.25),
+        top + Inches(0.2),
+        width - Inches(0.5),
+        height - Inches(0.4),
+    )
     tf = tb.text_frame
     tf.word_wrap = True
     tf.margin_left = tf.margin_top = tf.margin_right = tf.margin_bottom = 0
 
     sections = [
         ("WHAT IT DEPICTS", depicts, RGBColor(126, 231, 135)),  # Soft Green
-        ("WHAT IT ADDS", adds, RGBColor(88, 166, 255)),       # Soft Blue
-        ("METHODOLOGY & SPECIFICATION", method, RGBColor(210, 168, 255)), # Soft Purple
-        ("KEY TAKEAWAY", takeaway, RGBColor(255, 123, 114)),   # Soft Red
+        ("WHAT IT ADDS", adds, RGBColor(88, 166, 255)),  # Soft Blue
+        ("METHODOLOGY & SPECIFICATION", method, RGBColor(210, 168, 255)),  # Soft Purple
+        ("KEY TAKEAWAY", takeaway, RGBColor(255, 123, 114)),  # Soft Red
     ]
 
     for i, (label, content, col) in enumerate(sections):
@@ -134,7 +145,11 @@ def build_election_presentation(output_path: Path, figures_dir: Path) -> Path:
     # -------------------------------------------------------------
     slide2 = prs.slides.add_slide(blank_layout)
     apply_dark_background(slide2, prs.slide_width, prs.slide_height)
-    add_slide_header(slide2, "SYSTEM ARCHITECTURE & ROADMAP", "Medallion Datahouse & Core Methodological Pillars")
+    add_slide_header(
+        slide2,
+        "SYSTEM ARCHITECTURE & ROADMAP",
+        "Medallion Datahouse & Core Methodological Pillars",
+    )
 
     # Add 4 column cards for Bronze, Silver, Gold, Platinum
     col_width = Inches(2.7)
@@ -144,20 +159,47 @@ def build_election_presentation(output_path: Path, figures_dir: Path) -> Path:
     card_h = Inches(4.8)
 
     cards = [
-        ("BRONZE LAYER", "Content-Addressed Storage", "• Raw CAS blobs (objects/sha256/)\n• Scraped Electoral Commission returns\n• Stats NZ Census 2023 base tables\n• Immutable audit trail & Merkle roots\n• Cryptographic receipt validation", RGBColor(205, 127, 50)),
-        ("SILVER LAYER", "Standardized Parquets", "• Validated PyArrow schemas\n• Disaggregated campaign expenditure\n• 10-election longitudinal dataset\n• Major donor disclosures (> $20k)\n• Electorate demographic cross-tabulation", RGBColor(192, 192, 192)),
-        ("GOLD LAYER", "Econometric & ML Models", "• Statutory Sainte-Laguë engine\n• 11-seat overhang determination\n• Calibrated XGBoost flip classifier\n• Sharp RDD candidate spend returns\n• Hibbs-Stokes 2029 voting model", RGBColor(255, 215, 0)),
-        ("PLATINUM LAYER", "Interactive Distribution", "• 10-tab Gradio visualizer\n• Zero-cost static mirror on Hugging Face\n• 131-MP Boids artificial life simulation\n• Geographic SVG/PNG map exports\n• Programmatic slide deck generation", RGBColor(229, 228, 226)),
+        (
+            "BRONZE LAYER",
+            "Content-Addressed Storage",
+            "• Raw CAS blobs (objects/sha256/)\n• Scraped Electoral Commission returns\n• Stats NZ Census 2023 base tables\n• Immutable audit trail & Merkle roots\n• Cryptographic receipt validation",
+            RGBColor(205, 127, 50),
+        ),
+        (
+            "SILVER LAYER",
+            "Standardized Parquets",
+            "• Validated PyArrow schemas\n• Disaggregated campaign expenditure\n• 10-election longitudinal dataset\n• Major donor disclosures (> $20k)\n• Electorate demographic cross-tabulation",
+            RGBColor(192, 192, 192),
+        ),
+        (
+            "GOLD LAYER",
+            "Econometric & ML Models",
+            "• Statutory Sainte-Laguë engine\n• 11-seat overhang determination\n• Calibrated XGBoost flip classifier\n• Sharp RDD candidate spend returns\n• Hibbs-Stokes 2029 voting model",
+            RGBColor(255, 215, 0),
+        ),
+        (
+            "PLATINUM LAYER",
+            "Interactive Distribution",
+            "• 10-tab Gradio visualizer\n• Zero-cost static mirror on Hugging Face\n• 131-MP Boids artificial life simulation\n• Geographic SVG/PNG map exports\n• Programmatic slide deck generation",
+            RGBColor(229, 228, 226),
+        ),
     ]
 
     for i, (title_c, subtitle_c, desc, c_col) in enumerate(cards):
         c_left = start_left + i * (col_width + gap)
-        box = slide2.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, c_left, top_pos, col_width, card_h)
+        box = slide2.shapes.add_shape(
+            MSO_SHAPE.ROUNDED_RECTANGLE, c_left, top_pos, col_width, card_h
+        )
         box.fill.solid()
         box.fill.fore_color.rgb = RGBColor(22, 27, 34)
         box.line.color.rgb = c_col
 
-        tbox = slide2.shapes.add_textbox(c_left + Inches(0.2), top_pos + Inches(0.2), col_width - Inches(0.4), card_h - Inches(0.4))
+        tbox = slide2.shapes.add_textbox(
+            c_left + Inches(0.2),
+            top_pos + Inches(0.2),
+            col_width - Inches(0.4),
+            card_h - Inches(0.4),
+        )
         c_tf = tbox.text_frame
         c_tf.word_wrap = True
 
@@ -408,7 +450,9 @@ def build_election_presentation(output_path: Path, figures_dir: Path) -> Path:
         # Add image on left
         img_path = figures_dir / item["image"]
         if img_path.exists():
-            slide.shapes.add_picture(str(img_path), Inches(0.8), Inches(1.6), width=Inches(7.2))
+            slide.shapes.add_picture(
+                str(img_path), Inches(0.8), Inches(1.6), width=Inches(7.2)
+            )
 
         # Add analytical explanation panel on right
         add_analysis_panel(
@@ -428,23 +472,46 @@ def build_election_presentation(output_path: Path, figures_dir: Path) -> Path:
     # -------------------------------------------------------------
     slide12 = prs.slides.add_slide(blank_layout)
     apply_dark_background(slide12, prs.slide_width, prs.slide_height)
-    add_slide_header(slide12, "STRATEGIC GOVERNANCE IMPLICATIONS", "Key Findings & Constitutional Takeaways for New Zealand")
+    add_slide_header(
+        slide12,
+        "STRATEGIC GOVERNANCE IMPLICATIONS",
+        "Key Findings & Constitutional Takeaways for New Zealand",
+    )
 
-    panel12 = slide12.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(1.6), Inches(11.7), Inches(5.2))
+    panel12 = slide12.shapes.add_shape(
+        MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(1.6), Inches(11.7), Inches(5.2)
+    )
     panel12.fill.solid()
     panel12.fill.fore_color.rgb = RGBColor(22, 27, 34)
     panel12.line.color.rgb = RGBColor(48, 54, 61)
 
-    tb12 = slide12.shapes.add_textbox(Inches(1.1), Inches(1.8), Inches(11.1), Inches(4.8))
+    tb12 = slide12.shapes.add_textbox(
+        Inches(1.1), Inches(1.8), Inches(11.1), Inches(4.8)
+    )
     tf12 = tb12.text_frame
     tf12.word_wrap = True
 
     points = [
-        ("1. Overhang Expansion & Razor-Thin Stability:", "The 11-seat overhang creates a 131-seat House, requiring 66 seats to govern. A single electorate flip in Nelson reduces National's overhang and leaves the governing coalition on a knife-edge 1-seat working majority (66 of 130 seats)."),
-        ("2. Campaign Finance Asymmetry:", "Disaggregating spend per local member demonstrates that minor parties without concentrated regional voting bases face severe capital inefficiency in electorate races, while Te Pāti Māori achieves maximum leverage through focused Māori roll campaigns."),
-        ("3. Donor Inequality as a Democratic Vector:", "Gini indices reveal that ACT (0.79) and National (0.74) rely predominantly on high-net-worth individual donors (> $20k), highlighting the structural polarization of New Zealand political financing."),
-        ("4. Predictive Economic Fundamentals (2029):", "Elections are decided by household economic pressures: 2-year fixed mortgage rates and CPI inflation exert a -1.5 pp drag on the governing bloc per unit increase, tilting the 2029 projection toward a Centre-Left majority under baseline economic conditions."),
-        ("5. Open Data & Reproducible Medallion Architecture:", "All underlying models, Parquet datasets, and interactive spaces are 100% reproducible, open source, and available at: https://huggingface.co/spaces/edithatogo/nz-election-explorer"),
+        (
+            "1. Overhang Expansion & Razor-Thin Stability:",
+            "The 11-seat overhang creates a 131-seat House, requiring 66 seats to govern. A single electorate flip in Nelson reduces National's overhang and leaves the governing coalition on a knife-edge 1-seat working majority (66 of 130 seats).",
+        ),
+        (
+            "2. Campaign Finance Asymmetry:",
+            "Disaggregating spend per local member demonstrates that minor parties without concentrated regional voting bases face severe capital inefficiency in electorate races, while Te Pāti Māori achieves maximum leverage through focused Māori roll campaigns.",
+        ),
+        (
+            "3. Donor Inequality as a Democratic Vector:",
+            "Gini indices reveal that ACT (0.79) and National (0.74) rely predominantly on high-net-worth individual donors (> $20k), highlighting the structural polarization of New Zealand political financing.",
+        ),
+        (
+            "4. Predictive Economic Fundamentals (2029):",
+            "Elections are decided by household economic pressures: 2-year fixed mortgage rates and CPI inflation exert a -1.5 pp drag on the governing bloc per unit increase, tilting the 2029 projection toward a Centre-Left majority under baseline economic conditions.",
+        ),
+        (
+            "5. Open Data & Reproducible Medallion Architecture:",
+            "All underlying models, Parquet datasets, and interactive spaces are 100% reproducible, open source, and available at: https://huggingface.co/spaces/edithatogo/nz-election-explorer",
+        ),
     ]
 
     for i, (title_p, body_p) in enumerate(points):

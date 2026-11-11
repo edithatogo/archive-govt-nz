@@ -28,13 +28,17 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: stats-nz-boundary-capture-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   capture:
     name: Capture boundaries
     runs-on: ubuntu-latest
     timeout-minutes: 60
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
       - name: Check enablement and credentials
         id: gate
@@ -54,7 +58,7 @@ jobs:
 
       - name: Set up Python
         if: steps.gate.outputs.enabled == 'true'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
         with:
           python-version-file: .python-version
 
@@ -85,7 +89,7 @@ jobs:
 
       - name: Upload capture receipts
         if: steps.gate.outputs.enabled == 'true' && always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: datafinder-capture-receipts
           path: evidence/datafinder-*.json

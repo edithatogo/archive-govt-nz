@@ -10,7 +10,7 @@ on:
         required: false
         default: "all"
         type: choice
-        options: [all, government-web, treasury, social-media, newsletters, nz-gazette, tobac-bronze, tobac-source-assets, tobac-pmc-supplement, tobac-pubmed-metadata]
+        options: [all, government-web, treasury, social-media, newsletters, nz-gazette, tobac-bronze, tobac-source-assets, tobac-pmc-supplement, tobac-pubmed-metadata, acic-nwdmp-reports]
 
 permissions:
   contents: read
@@ -30,10 +30,10 @@ jobs:
           SELECTED: ${{ inputs.source_set || 'all' }}
         run: |
           if [ "$SELECTED" = "all" ] || [ -z "$SELECTED" ]; then
-            echo 'matrix=["government-web", "tobac-bronze", "tobac-source-assets", "tobac-pmc-supplement", "tobac-pubmed-metadata"]' >> "$GITHUB_OUTPUT"
+            echo 'matrix=["government-web", "tobac-bronze", "tobac-source-assets", "tobac-pmc-supplement", "tobac-pubmed-metadata", "acic-nwdmp-reports"]' >> "$GITHUB_OUTPUT"
           else
             case "$SELECTED" in
-              government-web|treasury|social-media|newsletters|nz-gazette|tobac-bronze|tobac-source-assets|tobac-pmc-supplement|tobac-pubmed-metadata) ;;
+              government-web|treasury|social-media|newsletters|nz-gazette|tobac-bronze|tobac-source-assets|tobac-pmc-supplement|tobac-pubmed-metadata|acic-nwdmp-reports) ;;
               *) exit 2 ;;
             esac
             echo "matrix=[\"$SELECTED\"]" >> "$GITHUB_OUTPUT"

@@ -1,0 +1,19 @@
+{
+  "include": [
+    "../src/archive_govt_nz/domains/elections/polars_release.py"
+  ],
+  "executionEnvironments": [
+    {
+      "root": "../",
+      "extraPaths": ["../src"]
+    }
+  ],
+  "pythonVersion": "3.15",
+  "typeCheckingMode": "all",
+  "reportMissingTypeStubs": "error",
+  "reportUnnecessaryTypeIgnoreComment": "error",
+  "reportUnusedImport": "error",
+  "reportUnusedVariable": "error",
+  "reportUnknownParameterType": "error",
+  "reportUnknownMemberType": "error"
+}

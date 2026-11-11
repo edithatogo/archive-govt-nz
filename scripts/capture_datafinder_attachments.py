@@ -14,8 +14,9 @@ import json
 import sys
 import urllib.error
 import urllib.request
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
+from urllib.parse import urlparse
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "src"))
@@ -35,9 +36,14 @@ LAYERS = [
 
 
 def fetch(url: str, accept: str = "*/*") -> tuple[int, str, bytes]:
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": accept})
+    """Fetch only public resources from the approved Stats NZ host."""
+    parsed = urlparse(url)
+    if parsed.scheme != "https" or parsed.hostname != "datafinder.stats.govt.nz":
+        msg = "Unapproved Datafinder URL"
+        raise ValueError(msg)
+    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": accept})  # noqa: S310 -- validated HTTPS publisher
     try:
-        with urllib.request.urlopen(req, timeout=90) as response:
+        with urllib.request.urlopen(req, timeout=90) as response:  # noqa: S310 -- validated HTTPS publisher
             return (
                 response.status,
                 response.headers.get_content_type() or "",
@@ -67,12 +73,16 @@ def main() -> None:
             "content_type": ctype,
             "byte_count": len(body),
             "sha256": hashlib.sha256(body).hexdigest(),
-            "captured_at": datetime.now(timezone.utc).isoformat(),
+            "captured_at": datetime.now(UTC).isoformat(),
         }
         if status == 200 and body:
             receipt = store.put_bytes(body)
-            assert receipt.sha256 == entry["sha256"], "CAS sha256 mismatch"
-            assert receipt.byte_count == entry["byte_count"], "CAS byte_count mismatch"
+            if (
+                receipt.sha256 != entry["sha256"]
+                or receipt.byte_count != entry["byte_count"]
+            ):
+                msg = "CAS checksum or size mismatch"
+                raise ValueError(msg)
             entry["object_id"] = receipt.object_id
             entry["stored"] = True
             records.append(entry)
@@ -136,7 +146,7 @@ def main() -> None:
         json.dumps(
             {
                 "schema_version": "archive-govt-nz.datafinder-attachment-capture/v1",
-                "captured_at": datetime.now(timezone.utc).isoformat(),
+                "captured_at": datetime.now(UTC).isoformat(),
                 "operator": "edithatogo",
                 "source": "Stats NZ Geographic Data Service (datafinder.stats.govt.nz), Koordinates",
                 "licence": "CC BY 4.0 Stats NZ",

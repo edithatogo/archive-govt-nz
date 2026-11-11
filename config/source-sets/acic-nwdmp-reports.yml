@@ -1,0 +1,28 @@
+name: acic-nwdmp-reports
+description: Australian Criminal Intelligence Commission National Wastewater Drug Monitoring Program reports 16-25
+enabled: true
+adapters:
+- web
+schedule: manual
+rights_class: source_specific_review_required
+output_preservation_policy:
+  format: warc_and_manifest
+  compression: none
+  cas_hash_algorithm: sha256
+  retention: permanent_subject_to_rights_review
+publication_policy:
+  huggingface:
+    enabled: false
+  zenodo:
+    enabled: false
+targets:
+- https://www.acic.gov.au/sites/default/files/2022-06/National%20Wastewater%20Drug%20Monitoring%20Program%20Report%2016.PDF
+- https://www.acic.gov.au/sites/default/files/2022-10/national_wastewater_drug_monitoring_program_report_17.pdf
+- https://www.acic.gov.au/sites/default/files/2023-03/NWDMP%20Report%2018_1.PDF
+- https://www.acic.gov.au/sites/default/files/2023-07/National%20Wastewater%20Drug%20Monitoring%20Program%20-%20Report%2019_0.pdf
+- https://www.acic.gov.au/sites/default/files/2023-11/wastewater_report_20_web.pdf
+- https://www.acic.gov.au/sites/default/files/2024-03/Wastewater%2021%20FOR%20WEB2.PDF
+- https://www.acic.gov.au/sites/default/files/2024-07/National%20Wastewater%20Drug%20Monitoring%20Program%20%E2%80%93%20Report%2022_0.pdf
+- https://www.acic.gov.au/sites/default/files/2024-11/e24-9817_wastewater_23_web.pdf
+- https://www.acic.gov.au/sites/default/files/2025-08/Wastewater%2024%20FA%20ACCESSIBLE.PDF
+- https://www.acic.gov.au/sites/default/files/2026-04/National%20Wastewater%20Drug%20Monitoring%20Program%20-%20Report%2025.PDF

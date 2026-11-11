@@ -7,3 +7,7 @@
 - [x] Build the Parallel Coordinates Political Splintering joyplot flow (WebGL / Plotly / D3).
 - [x] Build the Coalition Matrix Generative Radial Dendrogram with policy tension edge bundling.
 - [x] Integrate into Streamlit components and standalone HTML interactive widgets for Hugging Face Spaces and GitHub Pages.
+
+## Corrective validation gate (2026-11-11)
+
+- [ ] Classify experimental charts, remove unsupported quantitative factual labels and verify rendering/source parity.

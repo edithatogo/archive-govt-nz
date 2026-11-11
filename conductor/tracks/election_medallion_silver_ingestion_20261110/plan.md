@@ -6,3 +6,7 @@
 - [x] Harmonize Stats NZ 2023 Census tables into `silver_census_electorates_2023.parquet`.
 - [x] Validate Parquet outputs against JSON schemas using `pyarrow` and `pydantic`.
 - [x] Generate Merkle provenance receipts linking each Silver row to Bronze CAS SHA-256 blobs (`src/archive_govt_nz/domains/elections/materialize_parquet.py`).
+
+## Corrective validation gate (2026-11-11)
+
+- [ ] Prove Bronze-to-Silver parity against versioned source snapshots and record source rights.

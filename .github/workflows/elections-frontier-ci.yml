@@ -9,6 +9,8 @@ on:
       - 'schemas/election/**'
       - 'zk/**'
       - 'tests/test_elections_*.py'
+      - 'config/elections-basedpyright.json'
+      - 'tools/election_polars_export.py'
       - '.github/workflows/elections-frontier-ci.yml'
   pull_request:
     branches: [main]
@@ -18,7 +20,12 @@ on:
       - 'schemas/election/**'
       - 'zk/**'
       - 'tests/test_elections_*.py'
+      - 'tests/test_elections_publication_integrity.py'
   workflow_dispatch:
+
+concurrency:
+  group: elections-frontier-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -28,17 +35,28 @@ jobs:
     name: Test & Quality Gates
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
         with:
           python-version: "3.12"
 
       - name: Install uv & dependencies
         run: |
           pip install uv
-          uv pip install --system pytest pytest-cov pydantic pyarrow duckdb plotly gradio xgboost scikit-learn matplotlib jsonschema huggingface_hub umap-learn
+          uv pip install --system pytest pytest-cov pydantic pyarrow duckdb plotly gradio xgboost scikit-learn matplotlib jsonschema huggingface_hub umap-learn polars basedpyright ruff hypothesis
+
+      - name: Verify scoped maximal typing and lint policy
+        run: |
+          basedpyright --project config/elections-basedpyright.json
+          ruff check src/archive_govt_nz/domains/elections/polars_release.py tests/test_elections_polars_release.py
+
+      - name: Validate published release independently
+        env:
+          PYTHONPATH: src:.
+        run: |
+          python -m pytest tests/test_elections_publication_integrity.py -q
 
       - name: Run Focused Election Test Suite
         env:
@@ -52,12 +70,12 @@ jobs:
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           fetch-depth: 0
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
         with:
           python-version: "3.12"
 
@@ -72,5 +90,28 @@ jobs:
           if [ -n "$HF_TOKEN" ]; then
             python scripts/deploy_hf_space.py
           else
-            echo "HF_TOKEN not set; skipping automated space push."
+            echo '::error::HF_TOKEN unavailable; cannot certify deployment.'
+            exit 1
           fi
+
+      - name: Verify live Space matches tested release
+        run: |
+          set -euo pipefail
+          origin="https://edithatogo-nz-election-explorer.hf.space"
+          for asset in index.html data/2026-preliminary.json; do
+            mkdir -p "/tmp/election-verify/$(dirname "$asset")"
+            verified=0
+            for attempt in $(seq 1 20); do
+              if curl -fsSL --max-time 20 "$origin/$asset" -o "/tmp/election-verify/$asset" \
+                  && cmp -s "spaces/nz-election-explorer/$asset" "/tmp/election-verify/$asset"; then
+                verified=1
+                break
+              fi
+              sleep 10
+            done
+            if [ "$verified" -ne 1 ]; then
+              echo "::error::Served Space does not match tested file: $asset"
+              exit 1
+            fi
+            sha256sum "/tmp/election-verify/$asset"
+          done

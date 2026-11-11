@@ -4,3 +4,7 @@
 - [x] Run the MMP overhang engine across each historical cycle.
 - [x] Quantify the impact of overhangs on coalition math and government stability for 2005, 2008, 2011, and 2023.
 - [x] Generate comparative historical summary reports in Markdown and JSON.
+
+## Corrective validation gate (2026-11-11)
+
+- [ ] Reconcile cross-election boundary and denominator vintages before publishing longitudinal claims.

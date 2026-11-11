@@ -227,6 +227,24 @@
           "licence": "https://creativecommons.org/licenses/by/4.0/",
           "policy": "https://www.health.govt.nz/about-ministry/copyright-and-disclaimer"
         }
+      },
+      "https://www.abs.gov.au/statistics/health/health-survey-results/national-health-survey-2022-23-results": {
+        "02e07500c40e78de2e1f05d152ad12a26ab0f1b4eed85c7161d56b7e771f6850": {
+          "decision": "publish",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "attribution": "Australian Bureau of Statistics, Crown copyright. National Health Survey 2022-23, Table 36.10 Household consumption of illicit tobacco and nicotine products. Original XLSX response, unchanged.",
+          "licence": "https://www.abs.gov.au/websitedbs/copyright.nsf/home/Copyright",
+          "policy": "https://www.abs.gov.au/websitedbs/copyright.nsf/home/Copyright"
+        }
+      },
+      "https://www.aihw.gov.au/getmedia/5fc9ac6e-2f49-415e-a4fa-001a72fcad52/aihw-phe-371-Tobacco.xlsx": {
+        "c1cb4154174cce1e90fd0a6e3189de488e0198929bdd75fee8422cebc7a5ae51": {
+          "decision": "publish",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "attribution": "Australian Institute of Health and Welfare, Crown copyright. National Drug Strategy Household Survey 2025, Table 1.33 Tobacco purchase bands. Original XLSX response, unchanged.",
+          "licence": "https://www.aihw.gov.au/copyright",
+          "policy": "https://www.aihw.gov.au/copyright"
+        }
       }
     }
   },
@@ -274,6 +292,102 @@
           "attribution": "NCBI PubMed metadata. Public domain metadata. Original XML response, unchanged.",
           "licence": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
           "policy": "https://www.ncbi.nlm.nih.gov/home/about/policies/"
+        }
+      }
+    }
+  },
+  "acic-nwdmp-reports": {
+    "repository": "edithatogo/archive-govt-nz-global",
+    "workflow": ".github/workflows/scheduled-multi-source-harvest.yml",
+    "targets": {
+      "https://www.acic.gov.au/sites/default/files/2022-06/National%20Wastewater%20Drug%20Monitoring%20Program%20Report%2016.PDF": {
+        "3df56eb7f3ffeb7145be40e98194a2fbe64af5f51e1b6a5826399790c225b913": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "Australian Criminal Intelligence Commission, Crown copyright. National Wastewater Drug Monitoring Program Report 16. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.acic.gov.au/about/copyright"
+        }
+      },
+      "https://www.acic.gov.au/sites/default/files/2022-10/national_wastewater_drug_monitoring_program_report_17.pdf": {
+        "ec3ebbe57f3025756a8116f76bb90d904a9962a820faaee45ad08df9e5b13ec3": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "Australian Criminal Intelligence Commission, Crown copyright. National Wastewater Drug Monitoring Program Report 17. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.acic.gov.au/about/copyright"
+        }
+      },
+      "https://www.acic.gov.au/sites/default/files/2023-03/NWDMP%20Report%2018_1.PDF": {
+        "3f5c4de961300b9789e520f465f04fa4d7ce0a277b05d131672dfaa778125790": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "Australian Criminal Intelligence Commission, Crown copyright. National Wastewater Drug Monitoring Program Report 18. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.acic.gov.au/about/copyright"
+        }
+      },
+      "https://www.acic.gov.au/sites/default/files/2023-07/National%20Wastewater%20Drug%20Monitoring%20Program%20-%20Report%2019_0.pdf": {
+        "44ce48a95a2065b53ed9827ffc73f8f131e867c5ee543156c10a799ec79833a0": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "Australian Criminal Intelligence Commission, Crown copyright. National Wastewater Drug Monitoring Program Report 19. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.acic.gov.au/about/copyright"
+        }
+      },
+      "https://www.acic.gov.au/sites/default/files/2023-11/wastewater_report_20_web.pdf": {
+        "a97e41dd5826a0131a1523b3d1a0215eb537af59e8a2d38b8fb2f5eee1ebbd01": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "Australian Criminal Intelligence Commission, Crown copyright. National Wastewater Drug Monitoring Program Report 20. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.acic.gov.au/about/copyright"
+        }
+      },
+      "https://www.acic.gov.au/sites/default/files/2024-03/Wastewater%2021%20FOR%20WEB2.PDF": {
+        "150d29c2dfa250cdcb0c0e66c6965e941097e556e19d9c6473736dcf8564faeb": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "Australian Criminal Intelligence Commission, Crown copyright. National Wastewater Drug Monitoring Program Report 21. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.acic.gov.au/about/copyright"
+        }
+      },
+      "https://www.acic.gov.au/sites/default/files/2024-07/National%20Wastewater%20Drug%20Monitoring%20Program%20%E2%80%93%20Report%2022_0.pdf": {
+        "3f65a0fd9158d1ddafac6de2d1c6c6fc726938431caf43eeeeb6b4393fc5bdb1": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "Australian Criminal Intelligence Commission, Crown copyright. National Wastewater Drug Monitoring Program Report 22. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.acic.gov.au/about/copyright"
+        }
+      },
+      "https://www.acic.gov.au/sites/default/files/2024-11/e24-9817_wastewater_23_web.pdf": {
+        "a5180e9638bcad4e04d6fa0e7d524da49328f49f63ea6848af0799bd52c23fbd": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "Australian Criminal Intelligence Commission, Crown copyright. National Wastewater Drug Monitoring Program Report 23. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.acic.gov.au/about/copyright"
+        }
+      },
+      "https://www.acic.gov.au/sites/default/files/2025-08/Wastewater%2024%20FA%20ACCESSIBLE.PDF": {
+        "50dd0f0ecba5583747629507cf54f13f2d1e725def619db5cea6d2558c6ff466": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "Australian Criminal Intelligence Commission, Crown copyright. National Wastewater Drug Monitoring Program Report 24. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.acic.gov.au/about/copyright"
+        }
+      },
+      "https://www.acic.gov.au/sites/default/files/2026-04/National%20Wastewater%20Drug%20Monitoring%20Program%20-%20Report%2025.PDF": {
+        "c81866de8ff47913b3f2a07c949d1d11bd27446e5cc23c64411ce4988f740f28": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "Australian Criminal Intelligence Commission, Crown copyright. National Wastewater Drug Monitoring Program Report 25. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.acic.gov.au/about/copyright"
         }
       }
     }

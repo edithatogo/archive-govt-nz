@@ -226,9 +226,18 @@ def build_maori_electorate_records() -> list[MaoriSeatReturnRecord]:
 
         # Vote-splitting index = Candidate % minus Party %
         splitting_idx = {
-            "Te Pāti Māori": round(cv_shares.get("Te Pāti Māori", 0.0) - pv_shares.get("Te Pāti Māori", 0.0), 2),
-            "Green Party": round(cv_shares.get("Green Party", 0.0) - pv_shares.get("Green Party", 0.0), 2),
-            "Labour Party": round(cv_shares.get("Labour Party", 0.0) - pv_shares.get("Labour Party", 0.0), 2),
+            "Te Pāti Māori": round(
+                cv_shares.get("Te Pāti Māori", 0.0)
+                - pv_shares.get("Te Pāti Māori", 0.0),
+                2,
+            ),
+            "Green Party": round(
+                cv_shares.get("Green Party", 0.0) - pv_shares.get("Green Party", 0.0), 2
+            ),
+            "Labour Party": round(
+                cv_shares.get("Labour Party", 0.0) - pv_shares.get("Labour Party", 0.0),
+                2,
+            ),
         }
 
         records.append(
@@ -298,7 +307,9 @@ def calculate_excess_party_votes() -> list[PartyExcessPVRecord]:
 
         actual_nat_pv = int(data["national_votes"])
         cf_nat_pv = actual_nat_pv - excess if excess > 0 else actual_nat_pv
-        cf_nat_tot = TOTAL_VALID_PV_NATIONAL - excess if excess > 0 else TOTAL_VALID_PV_NATIONAL
+        cf_nat_tot = (
+            TOTAL_VALID_PV_NATIONAL - excess if excess > 0 else TOTAL_VALID_PV_NATIONAL
+        )
 
         actual_nat_pct = round((actual_nat_pv / TOTAL_VALID_PV_NATIONAL) * 100.0, 2)
         cf_nat_pct = round((cf_nat_pv / cf_nat_tot) * 100.0, 2)
@@ -343,7 +354,9 @@ def run_sainte_lague_counterfactual(
     if remove_excess_parties is None:
         remove_excess_parties = ["Green Party"]
 
-    excess_records = {r.party_name: r.excess_party_votes for r in calculate_excess_party_votes()}
+    excess_records = {
+        r.party_name: r.excess_party_votes for r in calculate_excess_party_votes()
+    }
     shares = calculate_party_vote_shares()
 
     # 1. Actual Baseline Allocation
@@ -357,7 +370,7 @@ def run_sainte_lague_counterfactual(
         for party, data in shares.items()
     ]
     actual_res = compute_sainte_lague(baseline_rows)
-    actual_ov = compute_overhang_analysis(actual_res, total_votes_cast=TOTAL_VALID_PV_NATIONAL)
+    actual_ov = compute_overhang_analysis(actual_res)
 
     # 2. Counterfactual Allocation
     total_deducted = sum(
@@ -381,7 +394,7 @@ def run_sainte_lague_counterfactual(
         )
 
     cf_res = compute_sainte_lague(cf_rows)
-    cf_ov = compute_overhang_analysis(cf_res, total_votes_cast=cf_tot_votes)
+    cf_ov = compute_overhang_analysis(cf_res)
 
     actual_alloc_map = {a.party_name: a for a in actual_res.allocations}
     cf_alloc_map = {a.party_name: a for a in cf_res.allocations}
@@ -429,17 +442,31 @@ def analyze_maori_vote_splitting() -> MaoriVoteSplittingAnalysis:
     excess_pv = calculate_excess_party_votes()
     seat_rows, actual_house, cf_house = run_sainte_lague_counterfactual(["Green Party"])
 
-    green_excess = next((r.excess_party_votes for r in excess_pv if r.party_name == "Green Party"), 76429)
-    labour_excess = next((r.excess_party_votes for r in excess_pv if r.party_name == "Labour Party"), 11310)
+    green_excess = next(
+        (r.excess_party_votes for r in excess_pv if r.party_name == "Green Party"),
+        76429,
+    )
+    labour_excess = next(
+        (r.excess_party_votes for r in excess_pv if r.party_name == "Labour Party"),
+        11310,
+    )
 
     green_seat_row = next((r for r in seat_rows if r.party_name == "Green Party"), None)
     green_impact = green_seat_row.delta_list_seats if green_seat_row else -3
 
-    labour_seat_row = next((r for r in seat_rows if r.party_name == "Labour Party"), None)
+    labour_seat_row = next(
+        (r for r in seat_rows if r.party_name == "Labour Party"), None
+    )
     labour_impact = labour_seat_row.delta_list_seats if labour_seat_row else 1
 
-    nat_seat_row = next((r for r in seat_rows if r.party_name == "National Party"), None)
-    nat_ov_reduction = (nat_seat_row.counterfactual_overhang - nat_seat_row.actual_overhang) if nat_seat_row else -2
+    nat_seat_row = next(
+        (r for r in seat_rows if r.party_name == "National Party"), None
+    )
+    nat_ov_reduction = (
+        (nat_seat_row.counterfactual_overhang - nat_seat_row.actual_overhang)
+        if nat_seat_row
+        else -2
+    )
 
     sources_and_approximations = [
         "Electoral Commission preliminary party-vote returns (7 November 2026 election night counts)",
@@ -480,44 +507,57 @@ def materialize_vote_splitting_parquet(output_path: Path) -> Path:
 
     rows = []
     for r in analysis.seat_comparison_by_party:
-        excess_r = next((ep for ep in analysis.excess_pv_by_party if ep.party_name == r.party_name), None)
-        rows.append({
-            "party_name": r.party_name,
-            "actual_entitlement": r.actual_entitlement,
-            "actual_electorates": r.actual_electorates,
-            "actual_list_seats": r.actual_list_seats,
-            "actual_total_seats": r.actual_total_seats,
-            "actual_overhang": r.actual_overhang,
-            "counterfactual_entitlement": r.counterfactual_entitlement,
-            "counterfactual_list_seats": r.counterfactual_list_seats,
-            "counterfactual_total_seats": r.counterfactual_total_seats,
-            "counterfactual_overhang": r.counterfactual_overhang,
-            "delta_list_seats": r.delta_list_seats,
-            "delta_total_seats": r.delta_total_seats,
-            "excess_party_votes": excess_r.excess_party_votes if excess_r else 0,
-            "percentage_point_boost": excess_r.percentage_point_boost if excess_r else 0.0,
-            "general_pv_pct": excess_r.general_electorates_pv_pct if excess_r else 0.0,
-            "maori_pv_pct": excess_r.maori_electorates_actual_pv_pct if excess_r else 0.0,
-        })
+        excess_r = next(
+            (ep for ep in analysis.excess_pv_by_party if ep.party_name == r.party_name),
+            None,
+        )
+        rows.append(
+            {
+                "party_name": r.party_name,
+                "actual_entitlement": r.actual_entitlement,
+                "actual_electorates": r.actual_electorates,
+                "actual_list_seats": r.actual_list_seats,
+                "actual_total_seats": r.actual_total_seats,
+                "actual_overhang": r.actual_overhang,
+                "counterfactual_entitlement": r.counterfactual_entitlement,
+                "counterfactual_list_seats": r.counterfactual_list_seats,
+                "counterfactual_total_seats": r.counterfactual_total_seats,
+                "counterfactual_overhang": r.counterfactual_overhang,
+                "delta_list_seats": r.delta_list_seats,
+                "delta_total_seats": r.delta_total_seats,
+                "excess_party_votes": excess_r.excess_party_votes if excess_r else 0,
+                "percentage_point_boost": excess_r.percentage_point_boost
+                if excess_r
+                else 0.0,
+                "general_pv_pct": excess_r.general_electorates_pv_pct
+                if excess_r
+                else 0.0,
+                "maori_pv_pct": excess_r.maori_electorates_actual_pv_pct
+                if excess_r
+                else 0.0,
+            }
+        )
 
-    schema = pa.schema([
-        ("party_name", pa.string()),
-        ("actual_entitlement", pa.int32()),
-        ("actual_electorates", pa.int32()),
-        ("actual_list_seats", pa.int32()),
-        ("actual_total_seats", pa.int32()),
-        ("actual_overhang", pa.int32()),
-        ("counterfactual_entitlement", pa.int32()),
-        ("counterfactual_list_seats", pa.int32()),
-        ("counterfactual_total_seats", pa.int32()),
-        ("counterfactual_overhang", pa.int32()),
-        ("delta_list_seats", pa.int32()),
-        ("delta_total_seats", pa.int32()),
-        ("excess_party_votes", pa.int64()),
-        ("percentage_point_boost", pa.float64()),
-        ("general_pv_pct", pa.float64()),
-        ("maori_pv_pct", pa.float64()),
-    ])
+    schema = pa.schema(
+        [
+            ("party_name", pa.string()),
+            ("actual_entitlement", pa.int32()),
+            ("actual_electorates", pa.int32()),
+            ("actual_list_seats", pa.int32()),
+            ("actual_total_seats", pa.int32()),
+            ("actual_overhang", pa.int32()),
+            ("counterfactual_entitlement", pa.int32()),
+            ("counterfactual_list_seats", pa.int32()),
+            ("counterfactual_total_seats", pa.int32()),
+            ("counterfactual_overhang", pa.int32()),
+            ("delta_list_seats", pa.int32()),
+            ("delta_total_seats", pa.int32()),
+            ("excess_party_votes", pa.int64()),
+            ("percentage_point_boost", pa.float64()),
+            ("general_pv_pct", pa.float64()),
+            ("maori_pv_pct", pa.float64()),
+        ]
+    )
 
     table = pa.Table.from_pylist(rows, schema=schema)
     pq.write_table(table, output_path)
@@ -554,50 +594,121 @@ def build_general_seat_sample_splits() -> list[GeneralSeatSplitRecord]:
             electorate_type="general",
             winning_party="ACT New Zealand",
             winning_margin=4500,
-            candidate_shares={"ACT New Zealand": 63.5, "Labour Party": 24.5, "National Party": 0.0, "Others": 12.0},
-            party_vote_shares={"National Party": 54.2, "ACT New Zealand": 19.5, "Labour Party": 14.8, "Green Party": 7.5},
+            candidate_shares={
+                "ACT New Zealand": 63.5,
+                "Labour Party": 24.5,
+                "National Party": 0.0,
+                "Others": 12.0,
+            },
+            party_vote_shares={
+                "National Party": 54.2,
+                "ACT New Zealand": 19.5,
+                "Labour Party": 14.8,
+                "Green Party": 7.5,
+            },
             is_plurality_split_win=False,
-            split_index_by_party={"ACT New Zealand": 44.0, "National Party": -54.2, "Labour Party": 9.7},
+            split_index_by_party={
+                "ACT New Zealand": 44.0,
+                "National Party": -54.2,
+                "Labour Party": 9.7,
+            },
         ),
         GeneralSeatSplitRecord(
             electorate_name="Auckland Central",
             electorate_type="general",
             winning_party="Green Party",
             winning_margin=3890,
-            candidate_shares={"Green Party": 47.5, "National Party": 24.5, "Labour Party": 24.2, "Others": 3.8},
-            party_vote_shares={"National Party": 31.2, "Labour Party": 29.8, "Green Party": 28.5, "ACT New Zealand": 6.5},
+            candidate_shares={
+                "Green Party": 47.5,
+                "National Party": 24.5,
+                "Labour Party": 24.2,
+                "Others": 3.8,
+            },
+            party_vote_shares={
+                "National Party": 31.2,
+                "Labour Party": 29.8,
+                "Green Party": 28.5,
+                "ACT New Zealand": 6.5,
+            },
             is_plurality_split_win=False,
-            split_index_by_party={"Green Party": 19.0, "National Party": -6.7, "Labour Party": -5.6},
+            split_index_by_party={
+                "Green Party": 19.0,
+                "National Party": -6.7,
+                "Labour Party": -5.6,
+            },
         ),
         GeneralSeatSplitRecord(
             electorate_name="Wellington Central",
             electorate_type="general",
             winning_party="Green Party",
             winning_margin=6200,
-            candidate_shares={"Green Party": 51.2, "Labour Party": 26.5, "National Party": 18.5, "Others": 3.8},
-            party_vote_shares={"Green Party": 34.0, "Labour Party": 28.2, "National Party": 22.5, "TOP": 9.5},
+            candidate_shares={
+                "Green Party": 51.2,
+                "Labour Party": 26.5,
+                "National Party": 18.5,
+                "Others": 3.8,
+            },
+            party_vote_shares={
+                "Green Party": 34.0,
+                "Labour Party": 28.2,
+                "National Party": 22.5,
+                "TOP": 9.5,
+            },
             is_plurality_split_win=False,
-            split_index_by_party={"Green Party": 17.2, "Labour Party": -1.7, "National Party": -4.0},
+            split_index_by_party={
+                "Green Party": 17.2,
+                "Labour Party": -1.7,
+                "National Party": -4.0,
+            },
         ),
         GeneralSeatSplitRecord(
             electorate_name="Nelson",
             electorate_type="general",
             winning_party="National Party",
             winning_margin=72,
-            candidate_shares={"National Party": 41.2, "Labour Party": 41.0, "Green Party": 11.5, "Te Pāti Māori": 2.5, "Others": 3.8},
-            party_vote_shares={"National Party": 34.5, "Labour Party": 31.8, "Green Party": 15.2, "ACT New Zealand": 9.5},
+            candidate_shares={
+                "National Party": 41.2,
+                "Labour Party": 41.0,
+                "Green Party": 11.5,
+                "Te Pāti Māori": 2.5,
+                "Others": 3.8,
+            },
+            party_vote_shares={
+                "National Party": 34.5,
+                "Labour Party": 31.8,
+                "Green Party": 15.2,
+                "ACT New Zealand": 9.5,
+            },
             is_plurality_split_win=True,
-            split_index_by_party={"National Party": 6.7, "Labour Party": 9.2, "Green Party": -3.7},
+            split_index_by_party={
+                "National Party": 6.7,
+                "Labour Party": 9.2,
+                "Green Party": -3.7,
+            },
         ),
         GeneralSeatSplitRecord(
             electorate_name="Banks Peninsula",
             electorate_type="general",
             winning_party="National Party",
             winning_margin=215,
-            candidate_shares={"National Party": 42.5, "Labour Party": 42.0, "Green Party": 12.0, "Others": 3.5},
-            party_vote_shares={"National Party": 33.8, "Labour Party": 31.5, "Green Party": 22.0, "ACT New Zealand": 7.2},
+            candidate_shares={
+                "National Party": 42.5,
+                "Labour Party": 42.0,
+                "Green Party": 12.0,
+                "Others": 3.5,
+            },
+            party_vote_shares={
+                "National Party": 33.8,
+                "Labour Party": 31.5,
+                "Green Party": 22.0,
+                "ACT New Zealand": 7.2,
+            },
             is_plurality_split_win=True,
-            split_index_by_party={"National Party": 8.7, "Labour Party": 10.5, "Green Party": -10.0},
+            split_index_by_party={
+                "National Party": 8.7,
+                "Labour Party": 10.5,
+                "Green Party": -10.0,
+            },
         ),
     ]
 
@@ -683,4 +794,3 @@ def analyze_system_wide_vote_splitting() -> SystemWideVoteSplittingAnalysis:
         coalition_threshold_nominal=61,
         coalition_arithmetic_impact=consequence,
     )
-

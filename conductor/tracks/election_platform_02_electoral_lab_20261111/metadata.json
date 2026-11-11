@@ -1,0 +1,22 @@
+{
+  "track_id": "election_platform_02_electoral_lab_20261111",
+  "type": "feature",
+  "status": "pending",
+  "created_at": "2026-11-11T00:00:00Z",
+  "updated_at": "2026-11-11T00:00:00Z",
+  "description": "Implement typed scenario constraints, Sainte-Laguë seat allocation, electorate qualification, overhang, boundary and tie cases, counterfactual legislative arrangements.",
+  "priority": "Must",
+  "capability_status": "planned_not_verified",
+  "gates": [
+    {
+      "id": "independent-fixtures",
+      "kind": "quality",
+      "status": "pending"
+    },
+    {
+      "id": "release-parity",
+      "kind": "publication",
+      "status": "pending"
+    }
+  ]
+}

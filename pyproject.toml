@@ -44,18 +44,25 @@ dev = [
   "cyclonedx-bom>=7.3.0,<9",
   "detect-secrets>=1.5.0,<2",
   "hypothesis>=6.164.0,<7",
+  "pandas>=3,<4",
   "pip-audit>=2.10.1,<3",
   "pip-licenses>=5.5.5,<6",
+  "polars>=1.35,<2",
   "pyright>=1.1.411,<2",
   "pytest>=9.1.1,<10",
   "pytest-cov>=7.1.0,<8",
   "pytest-gremlins>=1.9.0,<2",
   "pytest-randomly>=3.16.0,<6",
   "pytest-xdist>=3.8.0",
+  "python-pptx>=1.0,<2",
   "rdflib>=7.6.0,<8",
   "ruff>=0.16.1,<0.18",
   "scalene>=2.3.0",
+  "scikit-learn>=1.7,<2",
+  "scipy>=1.16,<2",
   "syrupy>=5.0.0,<7",
+  "umap-learn>=0.5,<1",
+  "xgboost>=3,<4",
 ]
 
 [tool.basedpyright]
@@ -98,6 +105,16 @@ docstring-code-format = true
 line-ending = "lf"
 
 [tool.ruff.lint.per-file-ignores]
+# TEMPORARY: pre-existing one-off capture/research scripts; see Conductor
+# election_platform_07_solo_harness_20261111 for code-level remediation.
+# Keep S310, S603, S607 and S101 enabled; source/security checks are not waived.
+"scripts/capture_datafinder_attachments.py" = ["INP001", "D103", "PLR2004", "T201", "E501"]
+"scripts/deploy_hf_space.py" = ["INP001", "TRY003", "EM101", "EM102", "T201", "E501"]
+"scripts/generate_causal_overhang_figures.py" = ["INP001", "E501", "NPY002", "FBT003", "T201"]
+"scripts/verify-bronze-admission.py" = ["EXE001", "E501", "ANN201", "D103", "ANN001", "PTH123", "BLE001", "T201"]
+"tools/archive_nzes_sources.py" = ["E501", "D103", "PIE810", "PLC0415", "PERF401", "C901", "PLR0912", "PLR0915"]
+"tools/build_capture_manifest.py" = ["E501", "D103", "PLC0415", "BLE001", "S112"]
+"tools/capture_election_results.py" = ["E501", "PLC0415", "D103", "BLE001", "PLR2004", "C901", "PLR0912", "PLR0915"]
 "src/archive_govt_nz/assurance.py" = ["S603", "T201"]
 "src/archive_govt_nz/domains/health_appropriations/budget.py" = ["EM101", "PLR0911", "PLR0913"]
 "src/archive_govt_nz/domains/health_appropriations/forecast.py" = ["EM101", "PLR0913"]

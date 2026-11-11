@@ -1,4 +1,5 @@
 """Build an evidence manifest for a capture batch and merge it with the remote manifest."""
+
 from __future__ import annotations
 
 import json

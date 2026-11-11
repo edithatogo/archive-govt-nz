@@ -96,7 +96,12 @@ def test_causal_overhang_attribution_contract():
         total_candidate_votes=1450,
         total_party_votes=1480,
         candidate_votes_by_party={"Greens": 650, "Labour": 400, "National": 350},
-        party_votes_by_party={"Greens": 520, "Labour": 410, "National": 320, "TOP": 120},
+        party_votes_by_party={
+            "Greens": 520,
+            "Labour": 410,
+            "National": 320,
+            "TOP": 120,
+        },
         split_differential={"Greens": 0.088, "Labour": -0.007, "National": 0.020},
         advance_voting=True,
     )
@@ -185,4 +190,3 @@ def test_causal_overhang_attribution_contract():
     assert attr.total_overhang_seats == 11
     assert len(attr.shapley_seat_attributions) == 4
     assert sum(s.total_seats_attributed for s in attr.shapley_seat_attributions) == 11.0
-

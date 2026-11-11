@@ -12,6 +12,8 @@ from __future__ import annotations
 
 from pathlib import Path
 import matplotlib.pyplot as plt
+from matplotlib.axes import Axes
+from matplotlib.figure import Figure
 import numpy as np
 
 from archive_govt_nz.domains.elections.maori_vote_splitting_engine import (
@@ -39,10 +41,10 @@ ACCENT_TEAL = "#1abc9c"
 ACCENT_ORANGE = "#ff9933"
 
 
-def set_dark_theme(fig: plt.Figure, ax: plt.Axes | list[plt.Axes]) -> None:
+def set_dark_theme(fig: Figure, ax: Axes | list[Axes]) -> None:
     """Apply uniform dark academic theme styling."""
     fig.patch.set_facecolor(BG_COLOR)
-    axes_list = [ax] if isinstance(ax, plt.Axes) else ax
+    axes_list = [ax] if isinstance(ax, Axes) else ax
     for a in axes_list:
         a.set_facecolor(BG_COLOR)
         a.tick_params(colors=TEXT_COLOR, labelsize=9)
@@ -59,8 +61,24 @@ def generate_figure1_party_vote_shares(output_path: Path) -> Path:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     shares = calculate_party_vote_shares()
 
-    parties = ["Green Party", "Labour Party", "Te Pāti Māori", "National Party", "ACT New Zealand", "NZ First", "TOP"]
-    party_keys = ["Green Party", "Labour Party", "Te Pāti Māori", "National Party", "ACT New Zealand", "New Zealand First", "The Opportunity Party"]
+    parties = [
+        "Green Party",
+        "Labour Party",
+        "Te Pāti Māori",
+        "National Party",
+        "ACT New Zealand",
+        "NZ First",
+        "TOP",
+    ]
+    party_keys = [
+        "Green Party",
+        "Labour Party",
+        "Te Pāti Māori",
+        "National Party",
+        "ACT New Zealand",
+        "New Zealand First",
+        "The Opportunity Party",
+    ]
 
     maori_pcts = [shares[k]["maori_pct"] for k in party_keys]
     general_pcts = [shares[k]["general_pct"] for k in party_keys]
@@ -72,21 +90,59 @@ def generate_figure1_party_vote_shares(output_path: Path) -> Path:
     fig, ax = plt.subplots(figsize=(12, 6), facecolor=BG_COLOR)
     set_dark_theme(fig, ax)
 
-    rects1 = ax.bar(x - width, maori_pcts, width, label="7 Māori Electorates (220k PV)", color=ACCENT_GREEN, alpha=0.9)
-    rects2 = ax.bar(x, general_pcts, width, label="64 General Electorates (2.52M PV)", color=ACCENT_BLUE, alpha=0.85)
-    rects3 = ax.bar(x + width, national_pcts, width, label="National Total (2.74M PV)", color=ACCENT_PURPLE, alpha=0.85)
+    rects1 = ax.bar(
+        x - width,
+        maori_pcts,
+        width,
+        label="7 Māori Electorates (220k PV)",
+        color=ACCENT_GREEN,
+        alpha=0.9,
+    )
+    rects2 = ax.bar(
+        x,
+        general_pcts,
+        width,
+        label="64 General Electorates (2.52M PV)",
+        color=ACCENT_BLUE,
+        alpha=0.85,
+    )
+    rects3 = ax.bar(
+        x + width,
+        national_pcts,
+        width,
+        label="National Total (2.74M PV)",
+        color=ACCENT_PURPLE,
+        alpha=0.85,
+    )
 
     ax.set_ylabel("Party Vote Share (%)", fontsize=11, fontweight="bold")
-    ax.set_title("Party Vote Disparities: Māori vs General vs National Electorates (2026 Preliminary)", fontsize=13, fontweight="bold", pad=15)
+    ax.set_title(
+        "Party Vote Disparities: Māori vs General vs National Electorates (2026 Preliminary)",
+        fontsize=13,
+        fontweight="bold",
+        pad=15,
+    )
     ax.set_xticks(x)
     ax.set_xticklabels(parties, fontweight="bold")
-    ax.legend(facecolor=PANEL_COLOR, edgecolor=GRID_COLOR, labelcolor=TEXT_COLOR, fontsize=10)
+    ax.legend(
+        facecolor=PANEL_COLOR, edgecolor=GRID_COLOR, labelcolor=TEXT_COLOR, fontsize=10
+    )
 
     # Annotate key contrasts
     for r in rects1:
         h = r.get_height()
         if h > 5:
-            ax.annotate(f"{h:.1f}%", xy=(r.get_x() + r.get_width() / 2, h), xytext=(0, 3), textcoords="offset points", ha="center", va="bottom", color="#ffffff", fontsize=8, fontweight="bold")
+            ax.annotate(
+                f"{h:.1f}%",
+                xy=(r.get_x() + r.get_width() / 2, h),
+                xytext=(0, 3),
+                textcoords="offset points",
+                ha="center",
+                va="bottom",
+                color="#ffffff",
+                fontsize=8,
+                fontweight="bold",
+            )
 
     fig.tight_layout()
     fig.savefig(output_path, dpi=300, facecolor=BG_COLOR)
@@ -117,18 +173,64 @@ def generate_figure2_green_waterfall(output_path: Path) -> Path:
     heights = [270000, 23571, 76429, 370000]
     colors = [ACCENT_BLUE, "#27ae60", ACCENT_GREEN, ACCENT_PURPLE]
 
-    bars = ax.bar(range(len(categories)), heights, bottom=bottoms, color=colors, width=0.55, edgecolor="#ffffff", linewidth=0.5)
+    bars = ax.bar(
+        range(len(categories)),
+        heights,
+        bottom=bottoms,
+        color=colors,
+        width=0.55,
+        edgecolor="#ffffff",
+        linewidth=0.5,
+    )
 
     ax.set_ylabel("Party Votes", fontsize=11, fontweight="bold")
-    ax.set_title("Decomposition of Green Party Vote: Upstream Māori Transfer Shock", fontsize=13, fontweight="bold", pad=15)
+    ax.set_title(
+        "Decomposition of Green Party Vote: Upstream Māori Transfer Shock",
+        fontsize=13,
+        fontweight="bold",
+        pad=15,
+    )
     ax.set_xticks(range(len(categories)))
     ax.set_xticklabels(categories, fontsize=10, fontweight="bold")
 
     # Annotate vote numbers and percentages
-    ax.text(0, 135000, "270,000 votes\n(73.0% of Green total)", ha="center", va="center", color="#ffffff", fontweight="bold")
-    ax.text(1, 270000 + 11785, "23,571", ha="center", va="bottom", color="#ffffff", fontsize=9, fontweight="bold")
-    ax.text(2, 293571 + 38214, "+76,429 Excess PV\n(+2.48 pp national boost)", ha="center", va="center", color="#000000", fontweight="bold")
-    ax.text(3, 185000, "370,000 votes\n17 Sainte-Laguë seats", ha="center", va="center", color="#ffffff", fontweight="bold")
+    ax.text(
+        0,
+        135000,
+        "270,000 votes\n(73.0% of Green total)",
+        ha="center",
+        va="center",
+        color="#ffffff",
+        fontweight="bold",
+    )
+    ax.text(
+        1,
+        270000 + 11785,
+        "23,571",
+        ha="center",
+        va="bottom",
+        color="#ffffff",
+        fontsize=9,
+        fontweight="bold",
+    )
+    ax.text(
+        2,
+        293571 + 38214,
+        "+76,429 Excess PV\n(+2.48 pp national boost)",
+        ha="center",
+        va="center",
+        color="#000000",
+        fontweight="bold",
+    )
+    ax.text(
+        3,
+        185000,
+        "370,000 votes\n17 Sainte-Laguë seats",
+        ha="center",
+        va="center",
+        color="#ffffff",
+        fontweight="bold",
+    )
 
     # Add bracket / arrow showing excess
     ax.annotate(
@@ -160,23 +262,51 @@ def generate_figure3_excess_pv_and_list_impact(output_path: Path) -> Path:
     # Subplot 1: Excess Votes
     bars1 = ax1.bar(parties, excess_votes, color=[ACCENT_GREEN, ACCENT_RED], width=0.45)
     ax1.set_ylabel("Calculated Excess Party Votes", fontsize=11, fontweight="bold")
-    ax1.set_title("Upstream Tactical Excess PV in Māori Seats", fontsize=12, fontweight="bold")
+    ax1.set_title(
+        "Upstream Tactical Excess PV in Māori Seats", fontsize=12, fontweight="bold"
+    )
     for b in bars1:
         h = b.get_height()
-        ax1.annotate(f"+{h:,.0f} votes", xy=(b.get_x() + b.get_width() / 2, h), xytext=(0, 4), textcoords="offset points", ha="center", va="bottom", color="#ffffff", fontweight="bold")
+        ax1.annotate(
+            f"+{h:,.0f} votes",
+            xy=(b.get_x() + b.get_width() / 2, h),
+            xytext=(0, 4),
+            textcoords="offset points",
+            ha="center",
+            va="bottom",
+            color="#ffffff",
+            fontweight="bold",
+        )
 
     # Subplot 2: Downstream List Seat Change
     bars2 = ax2.bar(parties, list_impact, color=[ACCENT_RED, ACCENT_BLUE], width=0.45)
     ax2.set_ylabel("List Seats Entitlement Change", fontsize=11, fontweight="bold")
-    ax2.set_title("Downstream List-Seat Impact (Sainte-Laguë)", fontsize=12, fontweight="bold")
+    ax2.set_title(
+        "Downstream List-Seat Impact (Sainte-Laguë)", fontsize=12, fontweight="bold"
+    )
     ax2.axhline(0, color="#ffffff", linewidth=0.8, linestyle="--")
     for b in bars2:
         h = b.get_height()
         offset = 4 if h >= 0 else -14
         sign = "+" if h > 0 else ""
-        ax2.annotate(f"{sign}{h} list seats", xy=(b.get_x() + b.get_width() / 2, h), xytext=(0, offset), textcoords="offset points", ha="center", va="bottom", color="#ffffff", fontweight="bold")
+        ax2.annotate(
+            f"{sign}{h} list seats",
+            xy=(b.get_x() + b.get_width() / 2, h),
+            xytext=(0, offset),
+            textcoords="offset points",
+            ha="center",
+            va="bottom",
+            color="#ffffff",
+            fontweight="bold",
+        )
 
-    fig.suptitle("Upstream Transfer -> Downstream List-Seat Translation", fontsize=14, fontweight="bold", color="#ffffff", y=0.98)
+    fig.suptitle(
+        "Upstream Transfer -> Downstream List-Seat Translation",
+        fontsize=14,
+        fontweight="bold",
+        color="#ffffff",
+        y=0.98,
+    )
     fig.tight_layout()
     fig.savefig(output_path, dpi=300, facecolor=BG_COLOR)
     plt.close(fig)
@@ -188,7 +318,9 @@ def generate_figure4_counterfactual_seat_comparison(output_path: Path) -> Path:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     rows, act_house, cf_house = run_sainte_lague_counterfactual(["Green Party"])
 
-    parties = [r.party_name.replace(" Party", "").replace(" New Zealand", "") for r in rows]
+    parties = [
+        r.party_name.replace(" Party", "").replace(" New Zealand", "") for r in rows
+    ]
     actual_seats = [r.actual_total_seats for r in rows]
     cf_seats = [r.counterfactual_total_seats for r in rows]
 
@@ -198,14 +330,35 @@ def generate_figure4_counterfactual_seat_comparison(output_path: Path) -> Path:
     fig, ax = plt.subplots(figsize=(12, 6), facecolor=BG_COLOR)
     set_dark_theme(fig, ax)
 
-    rects1 = ax.bar(x - width / 2, actual_seats, width, label=f"Actual (House = {act_house}, Overhang = 11)", color=ACCENT_BLUE, alpha=0.9)
-    rects2 = ax.bar(x + width / 2, cf_seats, width, label=f"Counterfactual without Green Māori Excess (House = {cf_house}, Overhang = 9)", color=ACCENT_ORANGE, alpha=0.9)
+    rects1 = ax.bar(
+        x - width / 2,
+        actual_seats,
+        width,
+        label=f"Actual (House = {act_house}, Overhang = 11)",
+        color=ACCENT_BLUE,
+        alpha=0.9,
+    )
+    rects2 = ax.bar(
+        x + width / 2,
+        cf_seats,
+        width,
+        label=f"Counterfactual without Green Māori Excess (House = {cf_house}, Overhang = 9)",
+        color=ACCENT_ORANGE,
+        alpha=0.9,
+    )
 
     ax.set_ylabel("Total Seats Won", fontsize=11, fontweight="bold")
-    ax.set_title("Parliament Composition: Actual vs Counterfactual (Removing Green Māori Excess PV)", fontsize=13, fontweight="bold", pad=15)
+    ax.set_title(
+        "Parliament Composition: Actual vs Counterfactual (Removing Green Māori Excess PV)",
+        fontsize=13,
+        fontweight="bold",
+        pad=15,
+    )
     ax.set_xticks(x)
     ax.set_xticklabels(parties, fontweight="bold")
-    ax.legend(facecolor=PANEL_COLOR, edgecolor=GRID_COLOR, labelcolor=TEXT_COLOR, fontsize=10)
+    ax.legend(
+        facecolor=PANEL_COLOR, edgecolor=GRID_COLOR, labelcolor=TEXT_COLOR, fontsize=10
+    )
 
     for i, r in enumerate(rows):
         delta = r.delta_total_seats
@@ -267,14 +420,28 @@ def generate_figure5_maori_electorates_heatmap(output_path: Path) -> Path:
     ax.set_yticks(range(len(electorates)))
     ax.set_xticklabels(columns, fontsize=9, fontweight="bold")
     ax.set_yticklabels(electorates, fontsize=10, fontweight="bold")
-    ax.set_title("Tactical Vote-Splitting Landscape Across the 7 Māori Electorates", fontsize=13, fontweight="bold", pad=15)
+    ax.set_title(
+        "Tactical Vote-Splitting Landscape Across the 7 Māori Electorates",
+        fontsize=13,
+        fontweight="bold",
+        pad=15,
+    )
 
     for i in range(len(electorates)):
         for j in range(len(columns)):
             val = data[i, j]
             txt_color = "#000000" if val > 20 else "#ffffff"
             sign = "+" if (j in [4, 5] and val > 0) else ""
-            ax.text(j, i, f"{sign}{val:.1f}%", ha="center", va="center", color=txt_color, fontweight="bold", fontsize=9)
+            ax.text(
+                j,
+                i,
+                f"{sign}{val:.1f}%",
+                ha="center",
+                va="center",
+                color=txt_color,
+                fontweight="bold",
+                fontsize=9,
+            )
 
     fig.tight_layout()
     fig.savefig(output_path, dpi=300, facecolor=BG_COLOR)
@@ -287,7 +454,9 @@ def generate_figure6_all_seats_caucus_crowding(output_path: Path) -> Path:
     output_path.parent.mkdir(parents=True, exist_ok=True)
     records = build_caucus_crowding_out()
 
-    parties = [r.party_name.replace(" Party", "").replace(" New Zealand", "") for r in records]
+    parties = [
+        r.party_name.replace(" Party", "").replace(" New Zealand", "") for r in records
+    ]
     electorate_seats = [r.electorates_won for r in records]
     list_seats = [r.list_seats_allocated for r in records]
 
@@ -297,14 +466,37 @@ def generate_figure6_all_seats_caucus_crowding(output_path: Path) -> Path:
     fig, ax = plt.subplots(figsize=(12, 6), facecolor=BG_COLOR)
     set_dark_theme(fig, ax)
 
-    p1 = ax.bar(x, electorate_seats, width, label="Electorate MPs (Constituency)", color=ACCENT_BLUE, alpha=0.9)
-    p2 = ax.bar(x, list_seats, width, bottom=electorate_seats, label="List MPs (Proportional)", color=ACCENT_PURPLE, alpha=0.85, hatch="//")
+    p1 = ax.bar(
+        x,
+        electorate_seats,
+        width,
+        label="Electorate MPs (Constituency)",
+        color=ACCENT_BLUE,
+        alpha=0.9,
+    )
+    p2 = ax.bar(
+        x,
+        list_seats,
+        width,
+        bottom=electorate_seats,
+        label="List MPs (Proportional)",
+        color=ACCENT_PURPLE,
+        alpha=0.85,
+        hatch="//",
+    )
 
     ax.set_ylabel("Total Parliamentary Seats", fontsize=11, fontweight="bold")
-    ax.set_title("Caucus Composition & List-Seat Crowding Out: Electorate vs List MPs (131 Seats)", fontsize=13, fontweight="bold", pad=15)
+    ax.set_title(
+        "Caucus Composition & List-Seat Crowding Out: Electorate vs List MPs (131 Seats)",
+        fontsize=13,
+        fontweight="bold",
+        pad=15,
+    )
     ax.set_xticks(x)
     ax.set_xticklabels(parties, fontweight="bold")
-    ax.legend(facecolor=PANEL_COLOR, edgecolor=GRID_COLOR, labelcolor=TEXT_COLOR, fontsize=10)
+    ax.legend(
+        facecolor=PANEL_COLOR, edgecolor=GRID_COLOR, labelcolor=TEXT_COLOR, fontsize=10
+    )
 
     for i, r in enumerate(records):
         tot = r.total_seats
@@ -315,7 +507,17 @@ def generate_figure6_all_seats_caucus_crowding(output_path: Path) -> Path:
         else:
             annotation = f"{tot} total\n({list_pct:.0f}% list)"
             color = "#ffffff"
-        ax.annotate(annotation, xy=(x[i], tot), xytext=(0, 4), textcoords="offset points", ha="center", va="bottom", color=color, fontweight="bold", fontsize=8)
+        ax.annotate(
+            annotation,
+            xy=(x[i], tot),
+            xytext=(0, 4),
+            textcoords="offset points",
+            ha="center",
+            va="bottom",
+            color=color,
+            fontweight="bold",
+            fontsize=8,
+        )
 
     fig.tight_layout()
     fig.savefig(output_path, dpi=300, facecolor=BG_COLOR)
@@ -347,19 +549,52 @@ def generate_figure7_plurality_splits(output_path: Path) -> Path:
     fig, ax = plt.subplots(figsize=(11, 7), facecolor=BG_COLOR)
     set_dark_theme(fig, ax)
 
-    ax.barh(y - height / 2, nat_shares, height, label="National Plurality Win (<50%)", color=ACCENT_BLUE, alpha=0.9)
-    ax.barh(y + height / 2, left_shares, height, label="Combined Left (Labour + Green + TPM)", color=ACCENT_RED, alpha=0.85)
+    ax.barh(
+        y - height / 2,
+        nat_shares,
+        height,
+        label="National Plurality Win (<50%)",
+        color=ACCENT_BLUE,
+        alpha=0.9,
+    )
+    ax.barh(
+        y + height / 2,
+        left_shares,
+        height,
+        label="Combined Left (Labour + Green + TPM)",
+        color=ACCENT_RED,
+        alpha=0.85,
+    )
 
     ax.axvline(50.0, color="#ffffff", linestyle="--", linewidth=1.0, alpha=0.7)
     ax.set_xlabel("Candidate Vote Share (%)", fontsize=11, fontweight="bold")
-    ax.set_title("Plurality Split Seat Inversion: General Electorates Won by Divided Opposition", fontsize=13, fontweight="bold", pad=15)
+    ax.set_title(
+        "Plurality Split Seat Inversion: General Electorates Won by Divided Opposition",
+        fontsize=13,
+        fontweight="bold",
+        pad=15,
+    )
     ax.set_yticks(y)
     ax.set_yticklabels(seats, fontweight="bold")
-    ax.legend(facecolor=PANEL_COLOR, edgecolor=GRID_COLOR, labelcolor=TEXT_COLOR, fontsize=10, loc="lower right")
+    ax.legend(
+        facecolor=PANEL_COLOR,
+        edgecolor=GRID_COLOR,
+        labelcolor=TEXT_COLOR,
+        fontsize=10,
+        loc="lower right",
+    )
 
     for i in range(len(seats)):
         diff = left_shares[i] - nat_shares[i]
-        ax.annotate(f"Left +{diff:.1f}%", xy=(left_shares[i], y[i] + height / 2), xytext=(4, -3), textcoords="offset points", color=ACCENT_YELLOW, fontweight="bold", fontsize=8)
+        ax.annotate(
+            f"Left +{diff:.1f}%",
+            xy=(left_shares[i], y[i] + height / 2),
+            xytext=(4, -3),
+            textcoords="offset points",
+            color=ACCENT_YELLOW,
+            fontweight="bold",
+            fontsize=8,
+        )
 
     fig.tight_layout()
     fig.savefig(output_path, dpi=300, facecolor=BG_COLOR)
@@ -382,18 +617,44 @@ def generate_figure8_split_differential_landscape(output_path: Path) -> Path:
         "General: Base Electorates\n(Median Shift)",
     ]
     deltas = [41.4, -45.5, 44.0, 18.1, 7.5, 1.2]
-    colors = [ACCENT_RED, ACCENT_GREEN, ACCENT_YELLOW, ACCENT_TEAL, ACCENT_BLUE, "#8b949e"]
+    colors = [
+        ACCENT_RED,
+        ACCENT_GREEN,
+        ACCENT_YELLOW,
+        ACCENT_TEAL,
+        ACCENT_BLUE,
+        "#8b949e",
+    ]
 
-    bars = ax.bar(categories, deltas, color=colors, width=0.55, edgecolor="#ffffff", linewidth=0.5)
+    bars = ax.bar(
+        categories, deltas, color=colors, width=0.55, edgecolor="#ffffff", linewidth=0.5
+    )
     ax.axhline(0, color="#ffffff", linewidth=1.0, linestyle="--")
-    ax.set_ylabel("Vote-Splitting Index Δ (Candidate % - Party %)", fontsize=11, fontweight="bold")
-    ax.set_title("System-Wide Tactical Split Differential Landscape Across All 71 Electorates", fontsize=13, fontweight="bold", pad=15)
+    ax.set_ylabel(
+        "Vote-Splitting Index Δ (Candidate % - Party %)", fontsize=11, fontweight="bold"
+    )
+    ax.set_title(
+        "System-Wide Tactical Split Differential Landscape Across All 71 Electorates",
+        fontsize=13,
+        fontweight="bold",
+        pad=15,
+    )
 
     for b in bars:
         h = b.get_height()
         offset = 5 if h >= 0 else -15
         sign = "+" if h > 0 else ""
-        ax.annotate(f"{sign}{h:.1f}%", xy=(b.get_x() + b.get_width() / 2, h), xytext=(0, offset), textcoords="offset points", ha="center", va="bottom", color="#ffffff", fontweight="bold", fontsize=9)
+        ax.annotate(
+            f"{sign}{h:.1f}%",
+            xy=(b.get_x() + b.get_width() / 2, h),
+            xytext=(0, offset),
+            textcoords="offset points",
+            ha="center",
+            va="bottom",
+            color="#ffffff",
+            fontweight="bold",
+            fontsize=9,
+        )
 
     fig.tight_layout()
     fig.savefig(output_path, dpi=300, facecolor=BG_COLOR)
@@ -405,14 +666,29 @@ def generate_all_vote_splitting_figures(output_dir: Path) -> dict[str, Path]:
     """Generate all 8 figures in the requested output directory."""
     output_dir.mkdir(parents=True, exist_ok=True)
     generated = {
-        "party_vote_shares": generate_figure1_party_vote_shares(output_dir / "figure_maori_splitting_shares.png"),
-        "green_waterfall": generate_figure2_green_waterfall(output_dir / "figure_green_waterfall_decomposition.png"),
-        "excess_pv_list_impact": generate_figure3_excess_pv_and_list_impact(output_dir / "figure_excess_pv_and_list_impact.png"),
-        "seat_comparison": generate_figure4_counterfactual_seat_comparison(output_dir / "figure_counterfactual_seat_comparison.png"),
-        "maori_heatmap": generate_figure5_maori_electorates_heatmap(output_dir / "figure_maori_electorates_heatmap.png"),
-        "all_seats_caucus_crowding": generate_figure6_all_seats_caucus_crowding(output_dir / "figure_all_seats_caucus_crowding_out.png"),
-        "plurality_splits": generate_figure7_plurality_splits(output_dir / "figure_all_seats_plurality_splits.png"),
-        "split_differential_landscape": generate_figure8_split_differential_landscape(output_dir / "figure_all_seats_split_differential_landscape.png"),
+        "party_vote_shares": generate_figure1_party_vote_shares(
+            output_dir / "figure_maori_splitting_shares.png"
+        ),
+        "green_waterfall": generate_figure2_green_waterfall(
+            output_dir / "figure_green_waterfall_decomposition.png"
+        ),
+        "excess_pv_list_impact": generate_figure3_excess_pv_and_list_impact(
+            output_dir / "figure_excess_pv_and_list_impact.png"
+        ),
+        "seat_comparison": generate_figure4_counterfactual_seat_comparison(
+            output_dir / "figure_counterfactual_seat_comparison.png"
+        ),
+        "maori_heatmap": generate_figure5_maori_electorates_heatmap(
+            output_dir / "figure_maori_electorates_heatmap.png"
+        ),
+        "all_seats_caucus_crowding": generate_figure6_all_seats_caucus_crowding(
+            output_dir / "figure_all_seats_caucus_crowding_out.png"
+        ),
+        "plurality_splits": generate_figure7_plurality_splits(
+            output_dir / "figure_all_seats_plurality_splits.png"
+        ),
+        "split_differential_landscape": generate_figure8_split_differential_landscape(
+            output_dir / "figure_all_seats_split_differential_landscape.png"
+        ),
     }
     return generated
-

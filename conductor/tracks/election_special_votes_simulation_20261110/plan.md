@@ -5,3 +5,7 @@
 - [x] Run 10,000 Monte Carlo iterations on 2026 preliminary vote counts.
 - [x] Output electorate flip probabilities and probability distribution of overhang seats (0 to 5 seats).
 - [x] Generate sensitivity receipts complying with `special-votes-sensitivity-v1.schema.json`.
+
+## Corrective validation gate (2026-11-11)
+
+- [ ] Backtest and prospectively calibrate special-vote uncertainty and freeze forecasts prior to official count.

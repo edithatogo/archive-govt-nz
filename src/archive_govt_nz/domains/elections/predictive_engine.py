@@ -86,13 +86,27 @@ def predict_knife_edge_electorates_xgboost(
         spend_diff_k = float(el.get("challenger_spend_advantage_k", 4.0))
         left_swing = float(el.get("left_bloc_swing", 1.65))
         # Relative challenger swing: positive if challenger benefits from special vote leftward drift
-        challenger_swing = left_swing if el["prelim_winner"] in ["National", "ACT", "NZ First"] else -left_swing
+        challenger_swing = (
+            left_swing
+            if el["prelim_winner"] in ["National", "ACT", "NZ First"]
+            else -left_swing
+        )
         nzdep = float(el.get("nzdep_decile", 6.0))
         renter_pct = float(el.get("renter_pct", 38.0))
         med_age = float(el.get("median_age", 37.0))
 
         feat = np.array(
-            [[margin, spec_pct, spend_diff_k, challenger_swing, nzdep, renter_pct, med_age]]
+            [
+                [
+                    margin,
+                    spec_pct,
+                    spend_diff_k,
+                    challenger_swing,
+                    nzdep,
+                    renter_pct,
+                    med_age,
+                ]
+            ]
         )
         flip_prob = float(model.predict_proba(feat)[0, 1])
 

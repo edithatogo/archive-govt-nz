@@ -31,6 +31,10 @@ on:
         default: false
         type: boolean
 
+concurrency:
+  group: election-results-capture-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions:
   contents: read
 
@@ -40,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 180
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
 
       - name: Check enablement
         id: gate
@@ -54,7 +58,7 @@ jobs:
 
       - name: Set up Python
         if: steps.gate.outputs.enabled == 'true'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
         with:
           python-version-file: .python-version
 
@@ -81,10 +85,12 @@ jobs:
         if: steps.gate.outputs.enabled == 'true'
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          ELECTION_BASE_URL: ${{ inputs.base_url || 'https://electionresults.govt.nz/electionresults_2026/' }}
+          ELECTION_VINTAGE: ${{ inputs.vintage || 'official' }}
         run: |
           uv run python tools/capture_election_results.py \
-            --base-url "${{ inputs.base_url || 'https://electionresults.govt.nz/electionresults_2026/' }}" \
-            --vintage "${{ inputs.vintage || 'official' }}" \
+            --base-url "$ELECTION_BASE_URL" \
+            --vintage "$ELECTION_VINTAGE" \
             --mode cdp --cdp-port 9222 \
             --objects-dir objects --evidence-dir evidence
 
@@ -99,7 +105,7 @@ jobs:
 
       - name: Upload capture receipt
         if: steps.gate.outputs.enabled == 'true' && always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: election-capture-receipt
           path: evidence/nz-election-results-*.json

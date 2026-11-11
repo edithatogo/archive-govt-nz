@@ -18,3 +18,5 @@ publication_policy:
     enabled: false
 targets:
 - https://www.health.govt.nz/system/files/2026-08/Total-tobacco-sold-tonnes-2010-2025.xlsx
+- https://www.abs.gov.au/statistics/health/health-survey-results/national-health-survey-2022-23-results
+- https://www.aihw.gov.au/getmedia/5fc9ac6e-2f49-415e-a4fa-001a72fcad52/aihw-phe-371-Tobacco.xlsx

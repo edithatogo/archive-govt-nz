@@ -71,7 +71,10 @@ def estimate_incumbency_rdd_treatment_on_split(
     se = 0.0185
     t_stat = late_beta / se
     p_value = 0.0034  # Statistically significant at p < 0.01
-    ci_95 = [float(np.round(late_beta - 1.96 * se, 4)), float(np.round(late_beta + 1.96 * se, 4))]
+    ci_95 = [
+        float(np.round(late_beta - 1.96 * se, 4)),
+        float(np.round(late_beta + 1.96 * se, 4)),
+    ]
 
     return {
         "running_variable": "margin_of_victory_2023",
@@ -101,7 +104,9 @@ def estimate_maori_roll_switch_iv_effect() -> dict[str, Any]:
         dict[str, Any]: 2SLS IV regression outputs and first-stage diagnostics.
 
     """
-    iv_beta = 0.1685  # Each 10% expansion in Māori roll caused +1.68 pp TPM margin shift
+    iv_beta = (
+        0.1685  # Each 10% expansion in Māori roll caused +1.68 pp TPM margin shift
+    )
     se = 0.0421
     first_stage_f = 34.82  # Stock-Yogo critical value > 10 (reject weak instrument)
 

@@ -27,13 +27,33 @@ def compute_overhang_elasticity_net() -> dict[str, Any]:
     """
     # Parties: Nominal entitlement vs actual electorates
     parties = {
-        "National": {"entitled": 36, "electorates": 43, "overhang": 7, "color": "#00529F"},
-        "Labour": {"entitled": 31, "electorates": 16, "overhang": 0, "color": "#D82A20"},
+        "National": {
+            "entitled": 36,
+            "electorates": 43,
+            "overhang": 7,
+            "color": "#00529F",
+        },
+        "Labour": {
+            "entitled": 31,
+            "electorates": 16,
+            "overhang": 0,
+            "color": "#D82A20",
+        },
         "Green": {"entitled": 17, "electorates": 3, "overhang": 0, "color": "#098137"},
         "ACT": {"entitled": 13, "electorates": 1, "overhang": 0, "color": "#FDE401"},
-        "NZ First": {"entitled": 11, "electorates": 0, "overhang": 0, "color": "#8b949e"},
+        "NZ First": {
+            "entitled": 11,
+            "electorates": 0,
+            "overhang": 0,
+            "color": "#8b949e",
+        },
         "TOP": {"entitled": 7, "electorates": 0, "overhang": 0, "color": "#32B5B5"},
-        "Te Pāti Māori": {"entitled": 5, "electorates": 9, "overhang": 4, "color": "#800020"},
+        "Te Pāti Māori": {
+            "entitled": 5,
+            "electorates": 9,
+            "overhang": 4,
+            "color": "#800020",
+        },
     }
 
     # Base circular 120-seat baseline mesh radius
@@ -46,16 +66,18 @@ def compute_overhang_elasticity_net() -> dict[str, Any]:
     for p_name, data in parties.items():
         overhang_stretch = (data["overhang"] / 11.0) * 3.5  # Elastic boundary expansion
         radius = r_base + overhang_stretch
-        strain_energy = 0.5 * k_spring * (overhang_stretch ** 2)
-        nodes.append({
-            "party": p_name,
-            "entitlement": data["entitled"],
-            "electorates": data["electorates"],
-            "overhang": data["overhang"],
-            "radius_stretch": round(radius, 2),
-            "strain_energy_joules": round(strain_energy, 3),
-            "color": data["color"],
-        })
+        strain_energy = 0.5 * k_spring * (overhang_stretch**2)
+        nodes.append(
+            {
+                "party": p_name,
+                "entitlement": data["entitled"],
+                "electorates": data["electorates"],
+                "overhang": data["overhang"],
+                "radius_stretch": round(radius, 2),
+                "strain_energy_joules": round(strain_energy, 3),
+                "color": data["color"],
+            }
+        )
 
     return {
         "statutory_baseline_radius": r_base,
@@ -75,11 +97,41 @@ def compute_quantum_probability_field(
     Computes statistical superposition field for knife-edge seats under special vote drift.
     """
     contests = [
-        {"name": "Nelson", "prelim_margin": 72, "specials_est": 5200, "incumbent": "National", "challenger": "Labour"},
-        {"name": "Te Atatū", "prelim_margin": 131, "specials_est": 5800, "incumbent": "Labour", "challenger": "National"},
-        {"name": "Banks Peninsula", "prelim_margin": 215, "specials_est": 5100, "incumbent": "National", "challenger": "Labour"},
-        {"name": "Mount Albert", "prelim_margin": 320, "specials_est": 4950, "incumbent": "Labour", "challenger": "National"},
-        {"name": "Hauraki-Waikato", "prelim_margin": 412, "specials_est": 3800, "incumbent": "Te Pāti Māori", "challenger": "Labour"},
+        {
+            "name": "Nelson",
+            "prelim_margin": 72,
+            "specials_est": 5200,
+            "incumbent": "National",
+            "challenger": "Labour",
+        },
+        {
+            "name": "Te Atatū",
+            "prelim_margin": 131,
+            "specials_est": 5800,
+            "incumbent": "Labour",
+            "challenger": "National",
+        },
+        {
+            "name": "Banks Peninsula",
+            "prelim_margin": 215,
+            "specials_est": 5100,
+            "incumbent": "National",
+            "challenger": "Labour",
+        },
+        {
+            "name": "Mount Albert",
+            "prelim_margin": 320,
+            "specials_est": 4950,
+            "incumbent": "Labour",
+            "challenger": "National",
+        },
+        {
+            "name": "Hauraki-Waikato",
+            "prelim_margin": 412,
+            "specials_est": 3800,
+            "incumbent": "Te Pāti Māori",
+            "challenger": "Labour",
+        },
     ]
 
     clouds = []
@@ -93,14 +145,24 @@ def compute_quantum_probability_field(
             final_margin = c["prelim_margin"] + net_shift
             flip_prob = 1.0 / (1.0 + np.exp(final_margin * 0.08))
 
-        clouds.append({
-            "electorate": c["name"],
-            "prelim_margin": c["prelim_margin"],
-            "projected_official_margin": final_margin,
-            "superposition_entropy": round(float(-flip_prob * np.log2(max(flip_prob, 1e-6)) - (1 - flip_prob) * np.log2(max(1 - flip_prob, 1e-6))), 3),
-            "flip_probability": round(float(flip_prob), 3),
-            "state_status": "FLIPPED_TO_CHALLENGER" if (c["incumbent"] in ("National", "ACT") and final_margin < 0) else "HELD_BY_INCUMBENT",
-        })
+        clouds.append(
+            {
+                "electorate": c["name"],
+                "prelim_margin": c["prelim_margin"],
+                "projected_official_margin": final_margin,
+                "superposition_entropy": round(
+                    float(
+                        -flip_prob * np.log2(max(flip_prob, 1e-6))
+                        - (1 - flip_prob) * np.log2(max(1 - flip_prob, 1e-6))
+                    ),
+                    3,
+                ),
+                "flip_probability": round(float(flip_prob), 3),
+                "state_status": "FLIPPED_TO_CHALLENGER"
+                if (c["incumbent"] in ("National", "ACT") and final_margin < 0)
+                else "HELD_BY_INCUMBENT",
+            }
+        )
 
     return {
         "special_votes_total": special_votes_count,
@@ -117,11 +179,31 @@ def compute_splintering_hypervolume() -> dict[str, Any]:
     return {
         "total_third_party_share_pct": 41.4,
         "splinter_parties": {
-            "Green": {"vote_pct": 13.5, "seats": 17, "dominant_axis": "Urban Renter / Environmental"},
-            "ACT": {"vote_pct": 10.2, "seats": 13, "dominant_axis": "Suburban Capital / Deregulation"},
-            "NZ First": {"vote_pct": 8.8, "seats": 11, "dominant_axis": "Provincial Senior / Nationalist"},
-            "TOP": {"vote_pct": 5.5, "seats": 7, "dominant_axis": "Urban Centrist / Tax Reform (LVT)"},
-            "Te Pāti Māori": {"vote_pct": 3.7, "seats": 9, "dominant_axis": "Tangata Whenua / Constitutional"},
+            "Green": {
+                "vote_pct": 13.5,
+                "seats": 17,
+                "dominant_axis": "Urban Renter / Environmental",
+            },
+            "ACT": {
+                "vote_pct": 10.2,
+                "seats": 13,
+                "dominant_axis": "Suburban Capital / Deregulation",
+            },
+            "NZ First": {
+                "vote_pct": 8.8,
+                "seats": 11,
+                "dominant_axis": "Provincial Senior / Nationalist",
+            },
+            "TOP": {
+                "vote_pct": 5.5,
+                "seats": 7,
+                "dominant_axis": "Urban Centrist / Tax Reform (LVT)",
+            },
+            "Te Pāti Māori": {
+                "vote_pct": 3.7,
+                "seats": 9,
+                "dominant_axis": "Tangata Whenua / Constitutional",
+            },
         },
         "duopoly_vote_share_pct": 54.0,  # National 29.2 + Labour 24.8
         "fragmentation_index_enp": 5.24,  # Effective Number of Parliamentary Parties
@@ -134,7 +216,15 @@ def compute_committee_shapley_shubik_power() -> dict[str, Any]:
     In a 131-seat Parliament where governing coalition holds 66 (1-seat majority),
     calculates pivotal voting power across parliamentary select committees.
     """
-    parties = ["National (43)", "Labour (31)", "Green (17)", "ACT (13)", "NZ First (11)", "Te Pāti Māori (9)", "TOP (7)"]
+    parties = [
+        "National (43)",
+        "Labour (31)",
+        "Green (17)",
+        "ACT (13)",
+        "NZ First (11)",
+        "Te Pāti Māori (9)",
+        "TOP (7)",
+    ]
     seats = [43, 31, 17, 13, 11, 9, 7]
     quota = 66
 
@@ -181,10 +271,30 @@ def compute_bayesian_polling_aggregation() -> dict[str, Any]:
     Decomposes variance into sampling error, pollster house bias, and daily drift.
     """
     pollsters = [
-        {"name": "Verian (1News)", "house_bias_left_pp": +0.4, "sample_size": 1000, "mode": "Online+Phone"},
-        {"name": "Curia (Taxpayers' Union)", "house_bias_left_pp": -0.8, "sample_size": 1000, "mode": "Phone IVR"},
-        {"name": "Talbot Mills", "house_bias_left_pp": +0.6, "sample_size": 1050, "mode": "Online Panel"},
-        {"name": "Reid Research", "house_bias_left_pp": -0.2, "sample_size": 1000, "mode": "Online+Phone"},
+        {
+            "name": "Verian (1News)",
+            "house_bias_left_pp": +0.4,
+            "sample_size": 1000,
+            "mode": "Online+Phone",
+        },
+        {
+            "name": "Curia (Taxpayers' Union)",
+            "house_bias_left_pp": -0.8,
+            "sample_size": 1000,
+            "mode": "Phone IVR",
+        },
+        {
+            "name": "Talbot Mills",
+            "house_bias_left_pp": +0.6,
+            "sample_size": 1050,
+            "mode": "Online Panel",
+        },
+        {
+            "name": "Reid Research",
+            "house_bias_left_pp": -0.2,
+            "sample_size": 1000,
+            "mode": "Online+Phone",
+        },
     ]
 
     # De-biased latent voter preferences
@@ -218,7 +328,9 @@ def compute_zk_merkle_audit_proofs() -> dict[str, Any]:
         "BanksPeninsula_Booth_01:Nat=480,Lab=410,Grn=120",
     ]
 
-    leaf_hashes = [hashlib.sha256(sheet.encode()).hexdigest() for sheet in polling_sheets]
+    leaf_hashes = [
+        hashlib.sha256(sheet.encode()).hexdigest() for sheet in polling_sheets
+    ]
 
     # Merkle Root calculation
     h1 = hashlib.sha256((leaf_hashes[0] + leaf_hashes[1]).encode()).hexdigest()

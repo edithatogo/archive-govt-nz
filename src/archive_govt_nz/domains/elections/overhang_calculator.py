@@ -36,7 +36,15 @@ def compute_overhang_analysis(
 
     """
     allocations = allocation_result.allocations
-    tot_votes = total_votes_cast or sum(a.party_vote for a in allocations)
+    excluded_votes = allocation_result.excluded_party_votes
+    complete_total = sum(a.party_vote for a in allocations) + sum(
+        excluded_votes.values()
+    )
+    tot_votes = complete_total if total_votes_cast is None else total_votes_cast
+    if tot_votes <= 0 or tot_votes != complete_total:
+        raise ValueError(
+            "Valid vote total must match qualifying and excluded party votes"
+        )
 
     overhang_details: list[PartyOverhangDetail] = []
     total_overhang_seats = 0
@@ -75,6 +83,12 @@ def compute_overhang_analysis(
                 vote_share_percentage=round(vote_share, 2),
             )
         )
+
+    # Excluded parties have zero seats but their vote shares enter both indices.
+    for votes in excluded_votes.values():
+        vote_share = votes * 100.0 / tot_votes
+        sum_sq_diff += vote_share**2
+        sum_abs_diff += vote_share
 
     # Gallagher Index: sqrt(0.5 * sum((V_i - S_i)^2))
     gallagher = math.sqrt(0.5 * sum_sq_diff)

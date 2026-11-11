@@ -27,6 +27,7 @@ Capture the official 2026 result set (re-run after 27 November 2026)::
 Dry run to list what would be fetched::
 
     python tools/capture_election_results.py --base-url ... --vintage official --dry-run
+
 """
 
 from __future__ import annotations
@@ -40,7 +41,17 @@ from pathlib import Path
 from urllib.parse import urljoin, urlparse
 
 ASSET_SUFFIXES = (".xlsx", ".xls", ".csv", ".pdf", ".html", ".htm", ".zip")
-SKIP_SUFFIXES = (".css", ".js", ".png", ".jpg", ".jpeg", ".svg", ".ico", ".woff", ".woff2")
+SKIP_SUFFIXES = (
+    ".css",
+    ".js",
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".svg",
+    ".ico",
+    ".woff",
+    ".woff2",
+)
 
 
 def _sha256(data: bytes) -> str:
@@ -83,7 +94,9 @@ def discover_http(base_url: str, max_pages: int) -> list[str]:
     seen: set[str] = set()
     found: set[str] = set()
     queue = [base_url]
-    headers = {"User-Agent": "archive-govt-nz/0.1.0 (+https://github.com/edithatogo/archive-govt-nz)"}
+    headers = {
+        "User-Agent": "archive-govt-nz/0.1.0 (+https://github.com/edithatogo/archive-govt-nz)"
+    }
     with httpx.Client(headers=headers, follow_redirects=True, timeout=60) as client:
         while queue and len(seen) < max_pages:
             url = queue.pop(0)
@@ -117,7 +130,9 @@ def _extract_links(html: str, base: str) -> list[str]:
             super().__init__()
             self.links: list[str] = []
 
-        def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        def handle_starttag(
+            self, tag: str, attrs: list[tuple[str, str | None]]
+        ) -> None:
             if tag != "a":
                 return
             for key, value in attrs:
@@ -138,9 +153,11 @@ def discover_cdp(base_url: str, port: int, max_pages: int) -> list[str]:
     """Collect asset links by walking the site in a real browser."""
     import subprocess
 
-    script = _CDP_DISCOVER.format(base=json.dumps(base_url), port=port, max_pages=max_pages)
-    out = subprocess.run(
-        ["node", "--input-type=module", "-e", script],
+    script = _CDP_DISCOVER.format(
+        base=json.dumps(base_url), port=port, max_pages=max_pages
+    )
+    out = subprocess.run(  # noqa: S603 -- fixed argv, no shell
+        ["node", "--input-type=module", "-e", script],  # noqa: S607 -- trusted Node CLI
         capture_output=True,
         text=True,
         timeout=60 * 60,
@@ -200,8 +217,8 @@ def fetch_cdp(url: str, port: int) -> tuple[bytes | None, str]:
     import subprocess
 
     script = _CDP_FETCH.format(url=json.dumps(url), port=port)
-    out = subprocess.run(
-        ["node", "--input-type=module", "-e", script],
+    out = subprocess.run(  # noqa: S603 -- fixed argv, no shell
+        ["node", "--input-type=module", "-e", script],  # noqa: S607 -- trusted Node CLI
         capture_output=True,
         timeout=300,
         check=False,
@@ -244,7 +261,9 @@ ws.close();
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--base-url", required=True, help="Entry page for the result set")
+    parser.add_argument(
+        "--base-url", required=True, help="Entry page for the result set"
+    )
     parser.add_argument(
         "--vintage",
         required=True,
@@ -256,7 +275,9 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--mode", choices=["cdp", "http"], default="cdp")
     parser.add_argument("--cdp-port", type=int, default=9222)
     parser.add_argument("--max-pages", type=int, default=200)
-    parser.add_argument("--limit", type=int, default=0, help="Cap files fetched (0 = all)")
+    parser.add_argument(
+        "--limit", type=int, default=0, help="Cap files fetched (0 = all)"
+    )
     parser.add_argument(
         "--delay",
         type=float,
@@ -286,7 +307,9 @@ def main(argv: list[str] | None = None) -> int:
             (f["url"] if isinstance(f, dict) else f) for f in prior.get("failed", [])
         }
         urls = [u for u in urls if u in wanted]
-        print(f"refill mode: {len(urls)} previously-failed URLs from {args.only_missing}")
+        print(
+            f"refill mode: {len(urls)} previously-failed URLs from {args.only_missing}"
+        )
 
     if args.limit:
         urls = urls[: args.limit]
@@ -324,7 +347,7 @@ def main(argv: list[str] | None = None) -> int:
             if attempt < 4:
                 import time
 
-                time.sleep(min(2 ** attempt, 30))
+                time.sleep(min(2**attempt, 30))
         if not data:
             failures.append({"url": url, "reason": last_error or "no response"})
             continue

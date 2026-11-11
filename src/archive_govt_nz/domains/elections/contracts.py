@@ -66,6 +66,7 @@ class SainteLagueResult(BaseModel):
     nominal_seats: int = 120
     qualifying_parties: list[str]
     excluded_parties: list[str]
+    excluded_party_votes: dict[str, int] = Field(default_factory=dict)
     allocations: list[PartyAllocation]
 
 
@@ -163,7 +164,6 @@ class MultivariateDrivers(BaseModel):
     elastic_net_drivers: dict[str, float]
 
 
-
 # --- Longitudinal & Expanded Funding / Predictive Contracts ---
 
 
@@ -246,7 +246,9 @@ class CampaignFundingDonorsAnalysis(BaseModel):
     """Full campaign funding, donor concentration, and local member cost contract."""
 
     election_year: int
-    filing_vintage: Literal["annual_return", "10_day_major_disclosure", "consolidated_archive"]
+    filing_vintage: Literal[
+        "annual_return", "10_day_major_disclosure", "consolidated_archive"
+    ]
     parties: list[PartyDetailedFunding]
     major_donors: list[MajorDonorDisclosure]
     local_candidate_metrics: list[LocalCandidateSpendingRecord]
@@ -260,11 +262,21 @@ class MacroeconomicFundamentals(BaseModel):
     two_year_mortgage_rate_pct: float
     unemployment_rate_pct: float
     incumbent_term_count: int = Field(ge=1)
-    official_cash_rate_pct: float = Field(default=4.75, description="RBNZ Official Cash Rate")
-    terms_of_trade_index: float = Field(default=124.5, description="Stats NZ Terms of Trade Index")
-    household_debt_to_income_ratio: float = Field(default=5.8, description="Macroprudential DTI ratio")
-    real_wage_growth_gap_pct: float = Field(default=-0.6, description="Real wage growth minus CPI inflation")
-    consumer_confidence_index: float = Field(default=91.2, description="Westpac-McDermott Miller Consumer Confidence")
+    official_cash_rate_pct: float = Field(
+        default=4.75, description="RBNZ Official Cash Rate"
+    )
+    terms_of_trade_index: float = Field(
+        default=124.5, description="Stats NZ Terms of Trade Index"
+    )
+    household_debt_to_income_ratio: float = Field(
+        default=5.8, description="Macroprudential DTI ratio"
+    )
+    real_wage_growth_gap_pct: float = Field(
+        default=-0.6, description="Real wage growth minus CPI inflation"
+    )
+    consumer_confidence_index: float = Field(
+        default=91.2, description="Westpac-McDermott Miller Consumer Confidence"
+    )
 
 
 class DynamicEngineProvenance(BaseModel):
@@ -346,13 +358,41 @@ class WetwareSlimeMouldSimulation(BaseModel):
     duration_hours: float = 48.0
     strains: dict[str, dict[str, str]] = Field(
         default_factory=lambda: {
-            "National": {"color": "#00529F", "fluorescence": "BFP", "initial_biomass": "430mg"},
-            "Labour": {"color": "#D82A20", "fluorescence": "RFP", "initial_biomass": "340mg"},
-            "Greens": {"color": "#098137", "fluorescence": "GFP", "initial_biomass": "180mg"},
-            "ACT": {"color": "#FDE401", "fluorescence": "YFP", "initial_biomass": "140mg"},
-            "NZ First": {"color": "#8b949e", "fluorescence": "CFP", "initial_biomass": "120mg"},
-            "Te Pāti Māori": {"color": "#800020", "fluorescence": "mCherry", "initial_biomass": "90mg"},
-            "TOP": {"color": "#32B5B5", "fluorescence": "mTurquoise", "initial_biomass": "70mg"},
+            "National": {
+                "color": "#00529F",
+                "fluorescence": "BFP",
+                "initial_biomass": "430mg",
+            },
+            "Labour": {
+                "color": "#D82A20",
+                "fluorescence": "RFP",
+                "initial_biomass": "340mg",
+            },
+            "Greens": {
+                "color": "#098137",
+                "fluorescence": "GFP",
+                "initial_biomass": "180mg",
+            },
+            "ACT": {
+                "color": "#FDE401",
+                "fluorescence": "YFP",
+                "initial_biomass": "140mg",
+            },
+            "NZ First": {
+                "color": "#8b949e",
+                "fluorescence": "CFP",
+                "initial_biomass": "120mg",
+            },
+            "Te Pāti Māori": {
+                "color": "#800020",
+                "fluorescence": "mCherry",
+                "initial_biomass": "90mg",
+            },
+            "TOP": {
+                "color": "#32B5B5",
+                "fluorescence": "mTurquoise",
+                "initial_biomass": "70mg",
+            },
         }
     )
     chemo_attractant_nodes: list[dict[str, Any]]
@@ -731,7 +771,4 @@ class ElectorateBoundaryGeographyAnalysis(BaseModel):
     rural_provincial_efficiency_advantage_pct: float
     maori_electorate_8th_seat_threshold: dict[str, Any]
     methodological_note_and_interpretation: str
-
-
-
 
