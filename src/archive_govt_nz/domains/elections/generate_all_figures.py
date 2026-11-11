@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import matplotlib.pyplot as plt
+from matplotlib.patches import Circle
 import numpy as np
 
 from archive_govt_nz.domains.elections.generate_maps import (
@@ -499,7 +500,7 @@ def generate_boids_phase_figure(output_path: Path) -> Path:
     ]
 
     for att in attractors:
-        circle = plt.Circle((att["x"], att["y"]), 0.16, color=att["color"], alpha=0.18)
+        circle = Circle((att["x"], att["y"]), 0.16, color=att["color"], alpha=0.18)
         ax.add_patch(circle)
         ax.scatter(
             [att["x"]],
