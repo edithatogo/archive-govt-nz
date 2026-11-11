@@ -1,0 +1,1 @@
+Reconcile document-level Hansard records to actual parliamentary sittings, identify retained daily transcripts separately from other documents, and preserve verified missing or revised originals. Keep the DocumentsDB export, normalized corpus, publication programme and official Journals separately identifiable.

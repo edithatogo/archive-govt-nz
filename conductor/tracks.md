@@ -433,6 +433,8 @@ implementation has occurred under these tracks.
 
 - [~] [Time-sensitive judgments and wider case law](tracks/time_sensitive_judgments_20261101/index.md)
 
+- [~] [Modern Hansard sitting reconciliation](tracks/modern_hansard_20261101/index.md)
+
 - [ ] **Track: Two-tier Merkle provenance and original-to-extract verification for tobac**
   *Link: [tracks/tobac_merkle_lineage_provenance_20261110/index.md](./tracks/tobac_merkle_lineage_provenance_20261110/index.md)*
   Planned consumer-provenance handoff separating runner closure digests from candidate evidence registry Merkle roots for `tobac` (`F00`/`F01`). No runtime or live-schedule change.
@@ -480,4 +482,3 @@ implementation has occurred under these tracks.
 - [ ] **Track: Econometric causal inference and attribution of the 11-seat overhang**
   *Link: [tracks/election_causal_overhang_attribution_20261111/index.md](./tracks/election_causal_overhang_attribution_20261111/index.md)*
   Econometric identification and causal attribution of the 2026 11-seat overhang (National +7, Te Pāti Māori +4): Gelman-King counterfactual decomposition, Sharp RDD on candidate incumbency treatment, Instrumental Variables on the 2023–2024 continuous Māori Electoral Option policy shock, and cooperative game-theoretic Shapley additive seat attribution.
-
