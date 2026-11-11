@@ -5,3 +5,7 @@
 - [x] Create `schemas/election/special-votes-sensitivity-v1.schema.json`.
 - [x] Implement Pydantic / dataclass serializers in `src/archive_govt_nz/domains/elections/contracts.py`.
 - [x] Add pytest validation suite verifying existing CAS evidence JSON files against schemas (`tests/test_elections_contracts.py`).
+
+## Corrective validation gate (2026-11-11)
+
+- [ ] Validate contract fixtures against authoritative Commission sources and label synthetic inputs.
