@@ -14,9 +14,9 @@ import json
 import sys
 import urllib.error
 import urllib.request
-from urllib.parse import urlparse
 from datetime import UTC, datetime
 from pathlib import Path
+from urllib.parse import urlparse
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "src"))
