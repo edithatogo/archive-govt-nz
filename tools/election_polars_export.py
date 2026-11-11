@@ -19,9 +19,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-import polars as pl
+import polars as pl  # noqa: E402 -- sys.path configured for standalone script
 
-from archive_govt_nz.domains.elections.polars_release import calculate_party_shares
+from archive_govt_nz.domains.elections.polars_release import calculate_party_shares  # noqa: E402 -- standalone script
 
 
 def main() -> None:
