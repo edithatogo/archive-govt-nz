@@ -8,7 +8,7 @@ from archive_govt_nz.domains.elections.sainte_lague import compute_sainte_lague
 
 
 def test_2026_preliminary_11_seat_overhang():
-    # 2026 Preliminary scenario: National (+7 overhang), Te Pāti Māori (+4 overhang)
+    # Synthetic 2026 stress scenario (NOT the official preliminary result).
     parties = [
         PartyVoteRow(
             party_name="National",
@@ -54,7 +54,7 @@ def test_2026_preliminary_11_seat_overhang():
         ),
     ]
     alloc = compute_sainte_lague(parties, election_year=2026)
-    analysis = compute_overhang_analysis(alloc, total_votes_cast=2740000)
+    analysis = compute_overhang_analysis(alloc)
 
     # National entitlement = 36, won 43 -> overhang = 7
     nat = next(d for d in analysis.overhang_details if d.party_name == "National")
@@ -125,3 +125,18 @@ def test_historical_2005_overhang():
     assert mp.overhang_seats == 1
     assert analysis.total_house_seats == 121
     assert analysis.majority_threshold == 61
+
+
+def test_disproportionality_includes_nonqualifying_parties():
+    """Excluded party votes must enter both nationwide indices as zero seats."""
+    import math
+    parties = [
+        PartyVoteRow(party_name="A", party_votes=60_000, party_vote_percentage=60, electorate_seats_won=30),
+        PartyVoteRow(party_name="B", party_votes=35_000, party_vote_percentage=35, electorate_seats_won=20),
+        PartyVoteRow(party_name="C", party_votes=5_000, party_vote_percentage=5, electorate_seats_won=0),
+    ]
+    allocation = compute_sainte_lague(parties, nominal_seats=10, threshold_pct=6)
+    result = compute_overhang_analysis(allocation)
+    assert result.disproportionality_indices.loosemore_hanby_index == 5.0
+    # Party A: 60% votes / 60% seats, B: 35% / 40%, C: 5% / 0%
+    assert math.isclose(result.disproportionality_indices.gallagher_index, 5.0)
