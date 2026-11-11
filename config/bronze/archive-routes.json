@@ -203,7 +203,7 @@
     "workflow": ".github/workflows/scheduled-multi-source-harvest.yml",
     "targets": {
       "https://pmc.ncbi.nlm.nih.gov/articles/PMC12887742/": {
-        "117c70fb45a4add2d2cb3398241bfa737c0348fb21972713562018be37a1f3e4": {
+        "7df012f7f1ddaf9d2133a802658a755303a6b22be480b5d938fc1567cc6833dc": {
           "decision": "publish",
           "content_type": "text/html",
           "attribution": "Wang et al., JAMA Network Open. CC BY 4.0. Original HTML response, unchanged.",
@@ -212,7 +212,7 @@
         }
       },
       "https://pmc.ncbi.nlm.nih.gov/articles/PMC13389531/": {
-        "9368893bad97551b50f643dcb63ee769dc780bca54431b7e3ed4a8df8aedc8d6": {
+        "7b7825e7eaf313156751a9ddfe7904dd4b1c987733ec4f37cc1f71de0fa79e69": {
           "decision": "publish",
           "content_type": "text/html",
           "attribution": "Weng et al., Environmental Science & Technology. CC BY 4.0. Original HTML response, unchanged.",
@@ -221,7 +221,7 @@
         }
       },
       "https://pmc.ncbi.nlm.nih.gov/articles/PMC4517929/": {
-        "493d918de7f12d0fd9b9510bf953a34162580a9f346e5577d1c74140411890b2": {
+        "126545efec81fad463fc9907af0add0cd47f532084345bd8b79ef1fe80ab28f7": {
           "decision": "publish",
           "content_type": "text/html",
           "attribution": "Bade et al., Drug Testing and Analysis. CC BY 4.0. Original HTML response, unchanged.",
@@ -246,5 +246,4 @@
       }
     }
   }
-}
 }

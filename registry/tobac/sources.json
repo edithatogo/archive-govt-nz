@@ -959,6 +959,114 @@
         ],
         "scope": "bibliographic_xml_not_full_text"
       }
+    },
+    {
+      "archive_id": "tobac-b1670dae2ad9440a88",
+      "identity": "url:https://www.customs.govt.nz/media/adyjbo2l/volume-and-excise-collected-on-various-tobacco-imports.pdf",
+      "title": "Volume and excise collected on various tobacco imports (OIA 25-187)",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "customs-oia-25-187"
+        }
+      ],
+      "urls": [
+        "https://www.customs.govt.nz/media/adyjbo2l/volume-and-excise-collected-on-various-tobacco-imports.pdf"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": true,
+      "capture_scope": "full_document_pdf",
+      "full_document_status": "verified_exact_object_match",
+      "archive_match_status": "verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.customs.govt.nz/media/adyjbo2l/volume-and-excise-collected-on-various-tobacco-imports.pdf",
+          "kind": "pdf",
+          "sha256": "1ca02d0c23b8e98c225994bb3488fd98e8e8024cb6237d5a7d528d469d181627",
+          "bytes": 2383385
+        }
+      ]
+    },
+    {
+      "archive_id": "tobac-10cecc3dcc6a40649b",
+      "identity": "url:https://www.customs.govt.nz/media/u0hhdp2f/oia-25-083-proactive-release.pdf",
+      "title": "Customs seizure data proactive release (OIA 25-083)",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "customs-oia-25-083"
+        }
+      ],
+      "urls": [
+        "https://www.customs.govt.nz/media/u0hhdp2f/oia-25-083-proactive-release.pdf"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": true,
+      "capture_scope": "full_document_pdf",
+      "full_document_status": "verified_exact_object_match",
+      "archive_match_status": "verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.customs.govt.nz/media/u0hhdp2f/oia-25-083-proactive-release.pdf",
+          "kind": "pdf",
+          "sha256": "6f2b925e74e756d34b08ad613cc35e6127b77d55c3ef137aa7ad8bb99535fbd5",
+          "bytes": 1757154
+        }
+      ]
+    },
+    {
+      "archive_id": "tobac-310888eff80d45898b",
+      "identity": "url:https://www.customs.govt.nz/media/qkvjprql/excise-and-excise-equivalent-duties-table-tobacco-products-indexation-2025.pdf",
+      "title": "Excise and excise-equivalent duties table — tobacco products indexation 2025",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "customs-excise-2025"
+        }
+      ],
+      "urls": [
+        "https://www.customs.govt.nz/media/qkvjprql/excise-and-excise-equivalent-duties-table-tobacco-products-indexation-2025.pdf"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": true,
+      "capture_scope": "full_document_pdf",
+      "full_document_status": "verified_exact_object_match",
+      "archive_match_status": "verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.customs.govt.nz/media/qkvjprql/excise-and-excise-equivalent-duties-table-tobacco-products-indexation-2025.pdf",
+          "kind": "pdf",
+          "sha256": "44acf236c2b88a1f439219da71350de9d43b7bdc3b90bfcc2426a9ae36bccb5c",
+          "bytes": 231291
+        }
+      ]
+    },
+    {
+      "archive_id": "tobac-04b9d830a27d4643b4",
+      "identity": "url:https://www.customs.govt.nz/media/45sl0kmj/order-in-council-excise-and-excise-equivalent-duties-table-tobacco-products-indexation-amendment-order-2022.pdf",
+      "title": "Excise and excise-equivalent duties table — tobacco products indexation amendment order 2022",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "customs-excise-2023"
+        }
+      ],
+      "urls": [
+        "https://www.customs.govt.nz/media/45sl0kmj/order-in-council-excise-and-excise-equivalent-duties-table-tobacco-products-indexation-amendment-order-2022.pdf"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": true,
+      "capture_scope": "full_document_pdf",
+      "full_document_status": "verified_exact_object_match",
+      "archive_match_status": "verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.customs.govt.nz/media/45sl0kmj/order-in-council-excise-and-excise-equivalent-duties-table-tobacco-products-indexation-amendment-order-2022.pdf",
+          "kind": "pdf",
+          "sha256": "756b6d6c9f7011ec6320ddd02af4062d981995bcdd3561237413c1aa347a7cc3",
+          "bytes": 229406
+        }
+      ]
     }
   ]
 }
