@@ -301,8 +301,8 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     )
 
     ax.set_facecolor("#050811")
-    ax.xaxis.pane.fill = False
-    ax.yaxis.pane.fill = False
+    ax.xaxis.pane.fill = False  # pyright: ignore[reportAttributeAccessIssue]  # Matplotlib 3D runtime API
+    ax.yaxis.pane.fill = False  # pyright: ignore[reportAttributeAccessIssue]  # Matplotlib 3D runtime API
     ax.zaxis.pane.fill = False
     ax.tick_params(colors="#94a3b8")
     ax.set_xlabel("UMAP Latent Dimension 1", color="#94a3b8", labelpad=8)
