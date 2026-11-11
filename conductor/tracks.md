@@ -435,6 +435,9 @@ implementation has occurred under these tracks.
 
 - [~] [Modern Hansard sitting reconciliation](tracks/modern_hansard_20261101/index.md)
 
+- [~] **Track: Tobacco research source archival integration**
+  *Link: [tracks/tobac_sources_20261025/index.md](tracks/tobac_sources_20261025/index.md)*
+
 - [ ] **Track: Two-tier Merkle provenance and original-to-extract verification for tobac**
   *Link: [tracks/tobac_merkle_lineage_provenance_20261110/index.md](./tracks/tobac_merkle_lineage_provenance_20261110/index.md)*
   Planned consumer-provenance handoff separating runner closure digests from candidate evidence registry Merkle roots for `tobac` (`F00`/`F01`). No runtime or live-schedule change.

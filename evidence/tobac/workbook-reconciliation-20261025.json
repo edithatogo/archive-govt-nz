@@ -1,0 +1,18 @@
+{
+  "source_url": "https://www.health.govt.nz/system/files/2026-08/Total-tobacco-sold-tonnes-2010-2025.xlsx",
+  "source_sha256": "3a55a6469097ebc3fb27a6143db7749e5b885761ada76b197053dfe76f36e883",
+  "warc_sha256": "71a9e24d74d0b83acc83a56e6dbbeeaf75fb8204083f615940ec4bd40fdd28a3",
+  "sheet": "Sheet1",
+  "header": [
+    "Year",
+    "Total tobacco sold tonnes (excl. cigars/cigarillos)"
+  ],
+  "consumer_path": "data/longitudinal_20261024/nz_tobacco_release_tonnes_2010_2025.csv",
+  "consumer_sha256": "ef85faa4e338f499bf15a5bed85ffdf139c839a54ea1d7c682d79f350256232e",
+  "matched_rows": 16,
+  "status": "all_16_values_match_exactly",
+  "limitations": [
+    "Current workbook snapshot; agent historical edition not reconstructed.",
+    "Product conversion, domestic/duty-free scope and source measurement error remain unqualified."
+  ]
+}
