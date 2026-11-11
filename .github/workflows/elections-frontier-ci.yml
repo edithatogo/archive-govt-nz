@@ -21,6 +21,10 @@ on:
       - 'tests/test_elections_publication_integrity.py'
   workflow_dispatch:
 
+concurrency:
+  group: elections-frontier-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
 
@@ -42,6 +46,8 @@ jobs:
           uv pip install --system pytest pytest-cov pydantic pyarrow duckdb plotly gradio xgboost scikit-learn matplotlib jsonschema huggingface_hub umap-learn
 
       - name: Validate published release independently
+        env:
+          PYTHONPATH: src:.
         run: |
           python -m pytest tests/test_elections_publication_integrity.py -q
 
