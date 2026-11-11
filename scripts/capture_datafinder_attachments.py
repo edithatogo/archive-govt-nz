@@ -14,6 +14,7 @@ import json
 import sys
 import urllib.error
 import urllib.request
+from urllib.parse import urlparse
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -35,9 +36,14 @@ LAYERS = [
 
 
 def fetch(url: str, accept: str = "*/*") -> tuple[int, str, bytes]:
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": accept})
+    """Fetch only public resources from the approved Stats NZ host."""
+    parsed = urlparse(url)
+    if parsed.scheme != "https" or parsed.hostname != "datafinder.stats.govt.nz":
+        msg = "Unapproved Datafinder URL"
+        raise ValueError(msg)
+    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": accept})  # noqa: S310 -- validated HTTPS publisher
     try:
-        with urllib.request.urlopen(req, timeout=90) as response:
+        with urllib.request.urlopen(req, timeout=90) as response:  # noqa: S310 -- validated HTTPS publisher
             return (
                 response.status,
                 response.headers.get_content_type() or "",
@@ -71,8 +77,9 @@ def main() -> None:
         }
         if status == 200 and body:
             receipt = store.put_bytes(body)
-            assert receipt.sha256 == entry["sha256"], "CAS sha256 mismatch"
-            assert receipt.byte_count == entry["byte_count"], "CAS byte_count mismatch"
+            if receipt.sha256 != entry["sha256"] or receipt.byte_count != entry["byte_count"]:
+                msg = "CAS checksum or size mismatch"
+                raise ValueError(msg)
             entry["object_id"] = receipt.object_id
             entry["stored"] = True
             records.append(entry)
