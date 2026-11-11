@@ -38,12 +38,13 @@ jobs:
       - name: Install uv & dependencies
         run: |
           pip install uv
-          uv pip install --system pytest pytest-cov pydantic pyarrow duckdb plotly gradio xgboost scikit-learn matplotlib jsonschema huggingface_hub
-          uv pip install --system -e .
+          uv pip install --system pytest pytest-cov pydantic pyarrow duckdb plotly gradio xgboost scikit-learn matplotlib jsonschema huggingface_hub umap-learn
 
       - name: Run Focused Election Test Suite
+        env:
+          PYTHONPATH: src:.
         run: |
-          PYTHONPATH=src pytest tests/test_elections_*.py -v --cov=src/archive_govt_nz/domains/elections --cov-report=term-missing
+          pytest tests/test_elections_*.py -v --cov=src/archive_govt_nz/domains/elections --cov-report=term-missing
 
   sync-hf-space:
     name: Sync to Hugging Face Spaces
