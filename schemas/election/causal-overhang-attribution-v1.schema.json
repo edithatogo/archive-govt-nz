@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://archive.govt.nz/schemas/election/causal-overhang-attribution-v1.schema.json",
+  "title": "CausalOverhangAttribution",
+  "description": "Schema for econometric causal identification and additive attribution of the 2026 New Zealand MMP 11-seat overhang.",
+  "type": "object",
+  "properties": {
+    "analysis_timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "total_overhang_seats": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "national_overhang_seats": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "tpm_overhang_seats": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "oaxaca_blinder_decomposition": {
+      "type": "object",
+      "additionalProperties": { "type": "number" }
+    },
+    "rdd_incumbency_lates": {
+      "type": "object"
+    },
+    "iv_maori_roll_estimates": {
+      "type": "object"
+    },
+    "shapley_seat_attributions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "driver_id": {
+            "type": "string",
+            "enum": [
+              "split_voting_decoupling",
+              "minor_party_siphon_denominator",
+              "maori_roll_switch_shock",
+              "incumbency_candidate_brand",
+              "geographic_concentration"
+            ]
+          },
+          "driver_name": { "type": "string" },
+          "methodology": {
+            "type": "string",
+            "enum": [
+              "oaxaca_blinder_counterfactual",
+              "sharp_rdd",
+              "instrumental_variables_2sls",
+              "shapley_additive_attribution"
+            ]
+          },
+          "seats_attributed_national": { "type": "number" },
+          "seats_attributed_tpm": { "type": "number" },
+          "total_seats_attributed": { "type": "number" },
+          "confidence_interval_95": {
+            "type": "array",
+            "items": { "type": "number" },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "p_value": { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+          "causal_interpretation": { "type": "string" }
+        },
+        "required": [
+          "driver_id",
+          "driver_name",
+          "methodology",
+          "seats_attributed_national",
+          "seats_attributed_tpm",
+          "total_seats_attributed",
+          "confidence_interval_95",
+          "p_value",
+          "causal_interpretation"
+        ]
+      }
+    },
+    "total_attributed_sum": { "type": "number" },
+    "unexplained_residual_seats": { "type": "number" },
+    "counterfactual_review_2012": { "type": "object" }
+  },
+  "required": [
+    "analysis_timestamp",
+    "total_overhang_seats",
+    "national_overhang_seats",
+    "tpm_overhang_seats",
+    "oaxaca_blinder_decomposition",
+    "rdd_incumbency_lates",
+    "iv_maori_roll_estimates",
+    "shapley_seat_attributions",
+    "total_attributed_sum",
+    "unexplained_residual_seats",
+    "counterfactual_review_2012"
+  ]
+}

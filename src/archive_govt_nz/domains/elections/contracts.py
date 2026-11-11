@@ -406,3 +406,75 @@ class AutonomousMultiAgentParliament(BaseModel):
     agent_whip_defiance_rates: dict[str, float]
     simulation_ticks: int = 500
 
+
+# Causal Overhang Attribution & Econometric Identification Contracts
+
+
+class BoothLevelSplitRecord(BaseModel):
+    """Granular voting place return capturing split-ticket behavior."""
+
+    booth_id: str
+    electorate_name: str
+    voting_place_address: str
+    total_candidate_votes: int = Field(ge=0)
+    total_party_votes: int = Field(ge=0)
+    candidate_votes_by_party: dict[str, int]
+    party_votes_by_party: dict[str, int]
+    split_differential: dict[str, float]
+    advance_voting: bool = False
+
+
+class MaoriRollTransferShock(BaseModel):
+    """Natural experiment shock capturing continuous roll migration under 2022 Act."""
+
+    electorate_name: str
+    electorate_type: Literal["maori", "general"]
+    pre_reform_roll_2023: int = Field(ge=0)
+    post_reform_roll_2026: int = Field(ge=0)
+    net_transfers_onto_maori_roll: int
+    pct_roll_expansion: float
+    tpm_candidate_margin_shift: float
+    iv_z_eligibility: float = 1.0
+
+
+class OverhangDriverContribution(BaseModel):
+    """Shapley additive seat contribution from a specific causal driver."""
+
+    driver_id: Literal[
+        "split_voting_decoupling",
+        "minor_party_siphon_denominator",
+        "maori_roll_switch_shock",
+        "incumbency_candidate_brand",
+        "geographic_concentration",
+    ]
+    driver_name: str
+    methodology: Literal[
+        "oaxaca_blinder_counterfactual",
+        "sharp_rdd",
+        "instrumental_variables_2sls",
+        "shapley_additive_attribution",
+    ]
+    seats_attributed_national: float
+    seats_attributed_tpm: float
+    total_seats_attributed: float
+    confidence_interval_95: list[float]
+    p_value: float = Field(ge=0.0, le=1.0)
+    causal_interpretation: str
+
+
+class CausalOverhangAttribution(BaseModel):
+    """Complete econometric causal attribution payload for the 11-seat overhang."""
+
+    analysis_timestamp: datetime
+    total_overhang_seats: int = 11
+    national_overhang_seats: int = 7
+    tpm_overhang_seats: int = 4
+    oaxaca_blinder_decomposition: dict[str, float]
+    rdd_incumbency_lates: dict[str, Any]
+    iv_maori_roll_estimates: dict[str, Any]
+    shapley_seat_attributions: list[OverhangDriverContribution]
+    total_attributed_sum: float
+    unexplained_residual_seats: float
+    counterfactual_review_2012: dict[str, Any]
+    provenance: DynamicEngineProvenance | None = None
+

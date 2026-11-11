@@ -474,3 +474,7 @@ implementation has occurred under these tracks.
 - [x] **Track: Beyond-frontier bio-sensory, quantum & neuro-symbolic electoral systems**
   *Link: [tracks/election_beyond_frontier_systems_20261111/index.md](./tracks/election_beyond_frontier_systems_20261111/index.md)*
   Execution of the 5 beyond-frontier paradigms: (1) Wetware / Bio-luminescent Physarum polycephalum slime mould growth tank on nutrient agar relief map; (2) Spatial psychoacoustic sonification and ultrasonic haptic friction synthesis; (3) 12-dimensional UMAP / Gaussian Splatting neural manifold discovering voter behavioural gravity canyons; (4) True quantum superposition qubit statevector with density matrix and wave-function collapse; (5) 131-MP autonomous artificial life legislative agent swarm.
+
+- [ ] **Track: Econometric causal inference and attribution of the 11-seat overhang**
+  *Link: [tracks/election_causal_overhang_attribution_20261111/index.md](./tracks/election_causal_overhang_attribution_20261111/index.md)*
+  Econometric identification and causal attribution of the 2026 11-seat overhang (National +7, Te Pāti Māori +4): Gelman-King counterfactual decomposition, Sharp RDD on candidate incumbency treatment, Instrumental Variables on the 2023–2024 continuous Māori Electoral Option policy shock, and cooperative game-theoretic Shapley additive seat attribution.
