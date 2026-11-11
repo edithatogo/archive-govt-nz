@@ -1,0 +1,3 @@
+# Publication integrity corrective requirements
+
+Must: Every public result reflects the Commission's labelled preliminary/official vintage; provisional facts are not experimental models. Release must fail closed on vote/seat parity, source/provenance or CI failure. Require immutable source identifiers, exact source hashes, static asset validation, accessible browser smoke tests and HF revision attestation. The deployed Space must be verified after the gated merge. Should: reconcile source captures, tests, all dependent Gold artifacts, security PR #860 and browser/mobile/a11y tests. Could: restore only independently validated model views. No team approval machinery required.
