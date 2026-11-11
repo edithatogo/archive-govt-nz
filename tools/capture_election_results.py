@@ -156,7 +156,7 @@ def discover_cdp(base_url: str, port: int, max_pages: int) -> list[str]:
     script = _CDP_DISCOVER.format(
         base=json.dumps(base_url), port=port, max_pages=max_pages
     )
-    out = subprocess.run(
+    out = subprocess.run(  # noqa: S603,S607 -- fixed node argv, no shell
         ["node", "--input-type=module", "-e", script],
         capture_output=True,
         text=True,
@@ -217,7 +217,7 @@ def fetch_cdp(url: str, port: int) -> tuple[bytes | None, str]:
     import subprocess
 
     script = _CDP_FETCH.format(url=json.dumps(url), port=port)
-    out = subprocess.run(
+    out = subprocess.run(  # noqa: S603,S607 -- fixed node argv, no shell
         ["node", "--input-type=module", "-e", script],
         capture_output=True,
         timeout=300,
