@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0.0",
+  "election_year": 2026,
+  "vintage": "preliminary",
+  "published_date": "2026-11-07",
+  "source_url": "https://elections.nz/media-and-news/2026/2026-general-election-preliminary-results",
+  "source_results_url": "https://www.electionresults.govt.nz/electionresults_2026_preliminary/",
+  "official_results_expected": "2026-11-27",
+  "total_valid_party_votes": 2418565,
+  "ordinary_votes_including_informal": 2432403,
+  "estimated_special_votes": 399365,
+  "turnout_estimate_pct": 74.6,
+  "nominal_seats": 120,
+  "overhang_seats": 11,
+  "total_seats": 131,
+  "majority": 66,
+  "parties": [
+    {
+      "name": "National Party",
+      "votes": 706680,
+      "electorate_seats": 42,
+      "list_seats": 0,
+      "total_seats": 42
+    },
+    {
+      "name": "Labour Party",
+      "votes": 710330,
+      "electorate_seats": 21,
+      "list_seats": 15,
+      "total_seats": 36
+    },
+    {
+      "name": "Green Party",
+      "votes": 321902,
+      "electorate_seats": 2,
+      "list_seats": 14,
+      "total_seats": 16
+    },
+    {
+      "name": "ACT New Zealand",
+      "votes": 264121,
+      "electorate_seats": 1,
+      "list_seats": 12,
+      "total_seats": 13
+    },
+    {
+      "name": "New Zealand First Party",
+      "votes": 236630,
+      "electorate_seats": 0,
+      "list_seats": 12,
+      "total_seats": 12
+    },
+    {
+      "name": "Opportunity Party",
+      "votes": 144298,
+      "electorate_seats": 0,
+      "list_seats": 7,
+      "total_seats": 7
+    },
+    {
+      "name": "Te Pāti Māori",
+      "votes": 13845,
+      "electorate_seats": 5,
+      "list_seats": 0,
+      "total_seats": 5
+    },
+    {
+      "name": "Aotearoa Legalise Cannabis Party",
+      "votes": 4829,
+      "electorate_seats": 0,
+      "list_seats": 0,
+      "total_seats": 0
+    },
+    {
+      "name": "NZ Outdoors & Freedom Party",
+      "votes": 2685,
+      "electorate_seats": 0,
+      "list_seats": 0,
+      "total_seats": 0
+    },
+    {
+      "name": "Animal Justice Party Aotearoa New Zealand",
+      "votes": 2585,
+      "electorate_seats": 0,
+      "list_seats": 0,
+      "total_seats": 0
+    },
+    {
+      "name": "Conservative Party NZ",
+      "votes": 1886,
+      "electorate_seats": 0,
+      "list_seats": 0,
+      "total_seats": 0
+    },
+    {
+      "name": "Women’s Rights Party",
+      "votes": 1856,
+      "electorate_seats": 0,
+      "list_seats": 0,
+      "total_seats": 0
+    },
+    {
+      "name": "New Zealand Loyal",
+      "votes": 1855,
+      "electorate_seats": 0,
+      "list_seats": 0,
+      "total_seats": 0
+    },
+    {
+      "name": "Vision New Zealand",
+      "votes": 1529,
+      "electorate_seats": 0,
+      "list_seats": 0,
+      "total_seats": 0
+    },
+    {
+      "name": "Te Tai Tokerau Party",
+      "votes": 1217,
+      "electorate_seats": 0,
+      "list_seats": 0,
+      "total_seats": 0
+    },
+    {
+      "name": "Free Palestine",
+      "votes": 1168,
+      "electorate_seats": 0,
+      "list_seats": 0,
+      "total_seats": 0
+    },
+    {
+      "name": "Alliance Party",
+      "votes": 1149,
+      "electorate_seats": 0,
+      "list_seats": 0,
+      "total_seats": 0
+    }
+  ]
+}
