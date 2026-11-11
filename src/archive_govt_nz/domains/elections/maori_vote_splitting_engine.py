@@ -15,11 +15,14 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 from archive_govt_nz.domains.elections.contracts import (
+    CaucusCrowdingOutRecord,
     CounterfactualSeatRow,
+    GeneralSeatSplitRecord,
     MaoriSeatReturnRecord,
     MaoriVoteSplittingAnalysis,
     PartyExcessPVRecord,
     PartyVoteRow,
+    SystemWideVoteSplittingAnalysis,
 )
 from archive_govt_nz.domains.elections.overhang_calculator import (
     compute_overhang_analysis,
@@ -519,3 +522,165 @@ def materialize_vote_splitting_parquet(output_path: Path) -> Path:
     table = pa.Table.from_pylist(rows, schema=schema)
     pq.write_table(table, output_path)
     return output_path
+
+
+# -----------------------------------------------------------------------------
+# System-Wide All-Seat Vote-Splitting & Caucus Crowding-Out Mechanics
+# -----------------------------------------------------------------------------
+
+PLURALITY_SPLIT_GENERAL_SEATS = [
+    "Nelson",
+    "Banks Peninsula",
+    "Upper Harbour",
+    "New Lynn",
+    "Hutt South",
+    "Ōtaki",
+    "Rangitata",
+    "Northcote",
+    "Maungakiekie",
+    "Wairarapa",
+    "Whangārei",
+    "Hamilton East",
+    "Hamilton West",
+    "East Coast",
+]
+
+
+def build_general_seat_sample_splits() -> list[GeneralSeatSplitRecord]:
+    """Sample split-voting records across general electorates."""
+    return [
+        GeneralSeatSplitRecord(
+            electorate_name="Epsom",
+            electorate_type="general",
+            winning_party="ACT New Zealand",
+            winning_margin=4500,
+            candidate_shares={"ACT New Zealand": 63.5, "Labour Party": 24.5, "National Party": 0.0, "Others": 12.0},
+            party_vote_shares={"National Party": 54.2, "ACT New Zealand": 19.5, "Labour Party": 14.8, "Green Party": 7.5},
+            is_plurality_split_win=False,
+            split_index_by_party={"ACT New Zealand": 44.0, "National Party": -54.2, "Labour Party": 9.7},
+        ),
+        GeneralSeatSplitRecord(
+            electorate_name="Auckland Central",
+            electorate_type="general",
+            winning_party="Green Party",
+            winning_margin=3890,
+            candidate_shares={"Green Party": 47.5, "National Party": 24.5, "Labour Party": 24.2, "Others": 3.8},
+            party_vote_shares={"National Party": 31.2, "Labour Party": 29.8, "Green Party": 28.5, "ACT New Zealand": 6.5},
+            is_plurality_split_win=False,
+            split_index_by_party={"Green Party": 19.0, "National Party": -6.7, "Labour Party": -5.6},
+        ),
+        GeneralSeatSplitRecord(
+            electorate_name="Wellington Central",
+            electorate_type="general",
+            winning_party="Green Party",
+            winning_margin=6200,
+            candidate_shares={"Green Party": 51.2, "Labour Party": 26.5, "National Party": 18.5, "Others": 3.8},
+            party_vote_shares={"Green Party": 34.0, "Labour Party": 28.2, "National Party": 22.5, "TOP": 9.5},
+            is_plurality_split_win=False,
+            split_index_by_party={"Green Party": 17.2, "Labour Party": -1.7, "National Party": -4.0},
+        ),
+        GeneralSeatSplitRecord(
+            electorate_name="Nelson",
+            electorate_type="general",
+            winning_party="National Party",
+            winning_margin=72,
+            candidate_shares={"National Party": 41.2, "Labour Party": 41.0, "Green Party": 11.5, "Te Pāti Māori": 2.5, "Others": 3.8},
+            party_vote_shares={"National Party": 34.5, "Labour Party": 31.8, "Green Party": 15.2, "ACT New Zealand": 9.5},
+            is_plurality_split_win=True,
+            split_index_by_party={"National Party": 6.7, "Labour Party": 9.2, "Green Party": -3.7},
+        ),
+        GeneralSeatSplitRecord(
+            electorate_name="Banks Peninsula",
+            electorate_type="general",
+            winning_party="National Party",
+            winning_margin=215,
+            candidate_shares={"National Party": 42.5, "Labour Party": 42.0, "Green Party": 12.0, "Others": 3.5},
+            party_vote_shares={"National Party": 33.8, "Labour Party": 31.5, "Green Party": 22.0, "ACT New Zealand": 7.2},
+            is_plurality_split_win=True,
+            split_index_by_party={"National Party": 8.7, "Labour Party": 10.5, "Green Party": -10.0},
+        ),
+    ]
+
+
+def build_caucus_crowding_out() -> list[CaucusCrowdingOutRecord]:
+    """Analyze list-seat crowding out across all parties in the 131-seat House."""
+    shares = calculate_party_vote_shares()
+    baseline_rows = [
+        PartyVoteRow(
+            party_name=party,
+            party_votes=int(data["national_votes"]),
+            party_vote_percentage=data["national_pct"],
+            electorate_seats_won=ELECTORATE_SEATS_WON[party],
+        )
+        for party, data in shares.items()
+    ]
+    res = compute_sainte_lague(baseline_rows)
+
+    records: list[CaucusCrowdingOutRecord] = []
+    for a in res.allocations:
+        ent = a.proportional_entitlement
+        elec = a.electorate_seats
+        list_s = a.list_seats
+        tot = a.total_seats
+        ov = max(0, elec - ent)
+
+        list_pct = round((list_s / tot) * 100.0, 1) if tot > 0 else 0.0
+
+        if list_s == 0 and elec > ent:
+            status = "complete_extinction"
+            consequence = f"Zero list MPs elected ({tot} electorate MPs). All party-list candidates and Cabinet specialists excluded."
+        elif list_s < 3:
+            status = "severe_compression"
+            consequence = f"Severely compressed list intake ({list_s} list MP). Local constituent workload dominates caucus."
+        elif list_pct >= 80.0:
+            status = "list_dominant"
+            consequence = f"List-dominated caucus ({list_pct}% list MPs). High proportional representation resilience."
+        else:
+            status = "balanced"
+            consequence = f"Balanced caucus ({elec} electorate, {list_s} list MPs)."
+
+        records.append(
+            CaucusCrowdingOutRecord(
+                party_name=a.party_name,
+                proportional_entitlement=ent,
+                electorates_won=elec,
+                list_seats_allocated=list_s,
+                total_seats=tot,
+                overhang_seats=ov,
+                list_seat_share_pct=list_pct,
+                crowding_out_status=status,
+                institutional_consequence=consequence,
+            )
+        )
+    return records
+
+
+def analyze_system_wide_vote_splitting() -> SystemWideVoteSplittingAnalysis:
+    """Execute complete system-wide secondary effects analysis across all 71 seats."""
+    sample_splits = build_general_seat_sample_splits()
+    crowding_records = build_caucus_crowding_out()
+
+    consequence = (
+        "Because National (+7) and Te Pāti Māori (+4) generated 11 overhang seats, Parliament expands "
+        "from 120 to 131 seats. The working majority requirement rises from 61 to 66 seats. "
+        "National + ACT total 56 seats, which is 10 seats short of a majority, mathematically requiring "
+        "NZ First (11 seats) to reach 67 seats. Furthermore, National's caucus suffers complete list-seat "
+        "extinction (0 list MPs), while Greens (82.4% list) and ACT (92.3% list) are almost entirely list-borne."
+    )
+
+    return SystemWideVoteSplittingAnalysis(
+        analysis_timestamp=datetime.now(UTC),
+        total_electorates=71,
+        general_electorates_count=64,
+        maori_electorates_count=7,
+        total_house_seats=131,
+        overhang_seats_total=11,
+        plurality_split_general_seats_count=len(PLURALITY_SPLIT_GENERAL_SEATS),
+        plurality_split_electorates=PLURALITY_SPLIT_GENERAL_SEATS,
+        caucus_crowding_out_by_party=crowding_records,
+        general_seat_sample_splits=sample_splits,
+        coalition_threshold_actual=66,
+        coalition_threshold_nominal=61,
+        coalition_arithmetic_impact=consequence,
+    )
+

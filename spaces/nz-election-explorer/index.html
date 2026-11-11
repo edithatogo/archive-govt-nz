@@ -156,6 +156,31 @@
     .badge-overhang { background: rgba(248,81,73,0.15); color: #ff7b72; border: 1px solid rgba(248,81,73,0.4); }
     .badge-status-flip { background: rgba(248,81,73,0.15); color: #ff7b72; border: 1px solid rgba(248,81,73,0.4); }
     .badge-status-hold { background: rgba(63,185,80,0.15); color: #7ee787; border: 1px solid rgba(63,185,80,0.4); }
+
+    .nav-pill {
+      background: #21262d;
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .nav-pill:hover, .nav-pill.active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .metric-card {
+      cursor: pointer;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .metric-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -170,30 +195,51 @@
     </div>
 
     <div class="metrics-grid">
-      <div class="metric-card">
+      <div class="metric-card" onclick="switchTab('overhang')" title="Jump to Sainte-Laguë & Overhang Allocation">
         <div class="metric-label">House Sizing</div>
         <div class="metric-val">131</div>
         <div class="metric-sub">120 baseline + 11 overhang seats</div>
       </div>
-      <div class="metric-card">
+      <div class="metric-card" onclick="switchTab('overhang')" title="Jump to Majority Target Details">
         <div class="metric-label">Majority Target</div>
         <div class="metric-val">66</div>
         <div class="metric-sub">50% + 1 of 131 seats</div>
       </div>
-      <div class="metric-card">
-        <div class="metric-label">Minor Party Vote Share</div>
+      <div class="metric-card" onclick="switchTab('maori-splitting')" title="Jump to Māori Vote-Splitting Secondary Effects">
+        <div class="metric-label">Māori PV Transfer</div>
+        <div class="metric-val" style="color: #2ecc71;">+76,429</div>
+        <div class="metric-sub">Green tactical excess PV (-3 list seats)</div>
+      </div>
+      <div class="metric-card" onclick="switchTab('overview')" title="Jump to Party Vote Distribution">
+        <div class="metric-label">Minor Party Share</div>
         <div class="metric-val">41.4%</div>
-        <div class="metric-sub">5 qualifying third parties</div>
+        <div class="metric-sub">Record 5 qualifying third parties</div>
       </div>
-      <div class="metric-card">
-        <div class="metric-label">Major Party Vote Share</div>
-        <div class="metric-val">54.0%</div>
-        <div class="metric-sub">National 29.2%, Labour 24.8%</div>
-      </div>
-      <div class="metric-card">
+      <div class="metric-card" onclick="switchTab('specials')" title="Jump to Special Votes Sensitivity">
         <div class="metric-label">Uncounted Special Votes</div>
         <div class="metric-val">~400,000</div>
-        <div class="metric-sub">~14% of total ballots cast</div>
+        <div class="metric-sub">~14% of ballots; Nelson & Te Atatū swings</div>
+      </div>
+    </div>
+
+    <!-- Thematic Navigation Hub -->
+    <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; margin-bottom: 20px;">
+      <div style="font-size: 13px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;">
+        Direct Result Navigator (Thematic Pillars):
+      </div>
+      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+        <button class="nav-pill active" onclick="switchTab('overview')">🏛️ Overview & Returns</button>
+        <button class="nav-pill" onclick="switchTab('overhang')">⚖️ Statutory Sainte-Laguë (131 Seats)</button>
+        <button class="nav-pill" onclick="switchTab('maori-splitting')">🌿 Māori Vote-Splitting Secondary Effects</button>
+        <button class="nav-pill" onclick="switchTab('specials')">🎯 Special Votes Margin Flips</button>
+        <button class="nav-pill" onclick="switchTab('causal')">💰 Campaign Finance Causal RDD</button>
+        <button class="nav-pill" onclick="switchTab('multivariate')">📊 Census Demographics & SHAP</button>
+        <button class="nav-pill" onclick="switchTab('predictive')">📈 10-Cycle Benchmarks & 2029 Forecast</button>
+        <button class="nav-pill" onclick="switchTab('beyond')">🧬 Beyond Frontier: Bio & Quantum</button>
+        <button class="nav-pill" onclick="switchTab('caucus')">🐦 Parliamentary Murmuration Swarm</button>
+        <button class="nav-pill" onclick="switchTab('figures')">🖼️ High-Resolution Figures Gallery</button>
+        <button class="nav-pill" onclick="switchTab('counterfactual')">📜 Counterfactual Sizing Rules</button>
+        <button class="nav-pill" onclick="switchTab('audit')">🔐 CAS Provenance & Cryptography</button>
       </div>
     </div>
 
@@ -346,6 +392,20 @@
         <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-top: 16px;">
           <h4 style="margin-top:0;">5. Tactical Vote-Splitting Heatmap Across the 7 Māori Electorates</h4>
           <img src="static/figure_maori_electorates_heatmap.png" style="width:100%; border-radius:4px;" alt="Māori Heatmap">
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 16px; margin-top: 16px;">
+          <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px;">
+            <h4 style="margin-top:0;">6. System-Wide Caucus Composition & List Crowding Out</h4>
+            <img src="static/figure_all_seats_caucus_crowding_out.png" style="width:100%; border-radius:4px;" alt="Caucus Crowding Out">
+          </div>
+          <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px;">
+            <h4 style="margin-top:0;">7. General Plurality-Split Seat Inversions (14 Electorates)</h4>
+            <img src="static/figure_all_seats_plurality_splits.png" style="width:100%; border-radius:4px;" alt="Plurality Splits">
+          </div>
+        </div>
+        <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-top: 16px;">
+          <h4 style="margin-top:0;">8. Full 71-Seat Tactical Split Differential Landscape</h4>
+          <img src="static/figure_all_seats_split_differential_landscape.png" style="width:100%; border-radius:4px;" alt="Split Differential Landscape">
         </div>
       </div>
     </div>
@@ -873,10 +933,31 @@
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-      document.getElementById('tab-' + tabId).classList.add('active');
-      event.target.classList.add('active');
+      document.querySelectorAll('.nav-pill').forEach(el => el.classList.remove('active'));
+
+      const target = document.getElementById('tab-' + tabId);
+      if (target) {
+        target.classList.add('active');
+      }
+
+      document.querySelectorAll(`.tab-btn[onclick*="'${tabId}'"], .nav-pill[onclick*="'${tabId}'"]`).forEach(el => {
+        el.classList.add('active');
+      });
+
+      if (history.replaceState) {
+        history.replaceState(null, null, '#' + tabId);
+      }
       window.dispatchEvent(new Event('resize'));
     }
+
+    function handleHashNavigation() {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && document.getElementById('tab-' + hash)) {
+        switchTab(hash);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', handleHashNavigation);
+    window.addEventListener('hashchange', handleHashNavigation);
 
     // Chart 1: Fracture
     Plotly.newPlot('chart-fracture', [{

@@ -12,6 +12,9 @@ from archive_govt_nz.domains.elections.generate_vote_splitting_figures import (
 )
 from archive_govt_nz.domains.elections.maori_vote_splitting_engine import (
     analyze_maori_vote_splitting,
+    analyze_system_wide_vote_splitting,
+    build_caucus_crowding_out,
+    build_general_seat_sample_splits,
     build_maori_electorate_records,
     calculate_excess_party_votes,
     calculate_party_vote_shares,
@@ -119,11 +122,41 @@ def test_parquet_materialization() -> None:
 
 
 def test_generate_figures() -> None:
-    """Verify generation of all 5 vote-splitting figures."""
+    """Verify generation of all 8 vote-splitting figures."""
     with tempfile.TemporaryDirectory() as tmp_dir:
         figs = generate_all_vote_splitting_figures(Path(tmp_dir))
-        assert len(figs) == 5
-        for name, p in figs.items():
+        assert len(figs) == 8
+        for p in figs.values():
             assert p.exists()
             assert p.stat().st_size > 10000
+
+
+def test_system_wide_vote_splitting() -> None:
+    """Verify system-wide all-seat vote-splitting and caucus crowding mechanics."""
+    analysis = analyze_system_wide_vote_splitting()
+    assert analysis.total_electorates == 71
+    assert analysis.general_electorates_count == 64
+    assert analysis.maori_electorates_count == 7
+    assert analysis.total_house_seats == 131
+    assert analysis.overhang_seats_total == 11
+    assert analysis.plurality_split_general_seats_count == 14
+    assert analysis.coalition_threshold_actual == 66
+
+    crowding = build_caucus_crowding_out()
+    nat = next(c for c in crowding if c.party_name == "National Party")
+    assert nat.list_seats_allocated == 0
+    assert nat.crowding_out_status == "complete_extinction"
+
+    tpm = next(c for c in crowding if c.party_name == "Te Pāti Māori")
+    assert tpm.list_seats_allocated == 0
+    assert tpm.crowding_out_status == "complete_extinction"
+
+    act = next(c for c in crowding if c.party_name == "ACT New Zealand")
+    assert act.list_seat_share_pct > 90.0
+
+    general_splits = build_general_seat_sample_splits()
+    assert len(general_splits) >= 5
+    epsom = next(s for s in general_splits if s.electorate_name == "Epsom")
+    assert epsom.split_index_by_party["ACT New Zealand"] > 40.0
+
 

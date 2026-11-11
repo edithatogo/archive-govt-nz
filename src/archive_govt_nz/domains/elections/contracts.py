@@ -552,3 +552,57 @@ class MaoriVoteSplittingAnalysis(BaseModel):
     data_sources_and_approximations: list[str]
 
 
+# System-Wide All-Seat Vote-Splitting & Caucus Crowding-Out Contracts
+
+
+class GeneralSeatSplitRecord(BaseModel):
+    """Electorate split dynamics across general seats capturing plurality splits."""
+
+    electorate_name: str
+    electorate_type: Literal["general", "maori"]
+    winning_party: str
+    winning_margin: int
+    candidate_shares: dict[str, float]
+    party_vote_shares: dict[str, float]
+    is_plurality_split_win: bool
+    split_index_by_party: dict[str, float]
+
+
+class CaucusCrowdingOutRecord(BaseModel):
+    """Quantification of list-seat displacement and caucus crowding-out."""
+
+    party_name: str
+    proportional_entitlement: int = Field(ge=0)
+    electorates_won: int = Field(ge=0)
+    list_seats_allocated: int = Field(ge=0)
+    total_seats: int = Field(ge=0)
+    overhang_seats: int = Field(ge=0)
+    list_seat_share_pct: float
+    crowding_out_status: Literal[
+        "complete_extinction",
+        "severe_compression",
+        "balanced",
+        "list_dominant",
+    ]
+    institutional_consequence: str
+
+
+class SystemWideVoteSplittingAnalysis(BaseModel):
+    """Full-system secondary effects analysis across all 71 electorates."""
+
+    analysis_timestamp: datetime
+    total_electorates: int = 71
+    general_electorates_count: int = 64
+    maori_electorates_count: int = 7
+    total_house_seats: int = 131
+    overhang_seats_total: int = 11
+    plurality_split_general_seats_count: int = 14
+    plurality_split_electorates: list[str]
+    caucus_crowding_out_by_party: list[CaucusCrowdingOutRecord]
+    general_seat_sample_splits: list[GeneralSeatSplitRecord]
+    coalition_threshold_actual: int = 66
+    coalition_threshold_nominal: int = 61
+    coalition_arithmetic_impact: str
+
+
+

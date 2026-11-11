@@ -488,6 +488,124 @@ def get_maori_splitting_tables() -> tuple[pd.DataFrame, pd.DataFrame]:
     return summary_df, cf_df
 
 
+def make_all_seats_caucus_crowding_fig() -> go.Figure:
+    """Create stacked bar chart showing caucus composition & list crowding out."""
+    parties = ["National", "Labour", "Green", "ACT", "NZ First", "TPM", "TOP"]
+    elec_seats = [43, 16, 3, 1, 0, 9, 0]
+    list_seats = [0, 15, 14, 12, 11, 0, 7]
+    fig = go.Figure()
+    fig.add_trace(go.Bar(
+        x=parties,
+        y=elec_seats,
+        name="Electorate MPs (Constituency)",
+        marker_color="#58a6ff"
+    ))
+    fig.add_trace(go.Bar(
+        x=parties,
+        y=list_seats,
+        name="List MPs (Proportional)",
+        marker_color="#bc8cff"
+    ))
+    fig.update_layout(
+        template="plotly_dark",
+        paper_bgcolor="#0e1117",
+        plot_bgcolor="#161b22",
+        title="<b>Caucus Composition & List-Seat Crowding Out Across All 7 Parties (131 Seats)</b>",
+        barmode="stack",
+        yaxis_title="Total Parliamentary Seats",
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+    )
+    return fig
+
+
+def make_plurality_splits_fig() -> go.Figure:
+    """Create horizontal bar chart of plurality split seats."""
+    seats = ["Nelson", "Banks Peninsula", "Upper Harbour", "New Lynn", "Hutt South", "Ōtaki", "Rangitata", "Northcote", "Maungakiekie", "Wairarapa"]
+    nat_shares = [41.2, 42.5, 43.8, 41.5, 44.0, 43.2, 45.1, 44.5, 43.0, 45.5]
+    left_shares = [55.0, 54.0, 53.5, 54.8, 52.5, 53.0, 51.5, 52.0, 53.8, 51.0]
+    fig = go.Figure()
+    fig.add_trace(go.Bar(
+        y=seats,
+        x=nat_shares,
+        orientation="h",
+        name="National Plurality Win (<50%)",
+        marker_color="#58a6ff"
+    ))
+    fig.add_trace(go.Bar(
+        y=seats,
+        x=left_shares,
+        orientation="h",
+        name="Combined Left (Labour + Green + TPM)",
+        marker_color="#e74c3c"
+    ))
+    fig.update_layout(
+        template="plotly_dark",
+        paper_bgcolor="#0e1117",
+        plot_bgcolor="#161b22",
+        title="<b>Plurality Split Inversions: General Seats Won by Divided Opposition</b>",
+        barmode="group",
+        xaxis_title="Candidate Vote Share (%)",
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+    )
+    return fig
+
+
+def make_split_differential_landscape_fig() -> go.Figure:
+    """Create bar chart of split differential landscape across all 71 seats."""
+    categories = [
+        "Māori: TPM (Candidate Surplus)",
+        "Māori: Green (Candidate Deficit)",
+        "General: ACT Epsom (Candidate Surplus)",
+        "General: Green Central (Candidate Surplus)",
+        "General: Plurality Splits (14 Seats)",
+        "General: Base Electorates (Median)",
+    ]
+    deltas = [41.4, -45.5, 44.0, 18.1, 7.5, 1.2]
+    colors = ["#e74c3c", "#2ecc71", "#f1c40f", "#1abc9c", "#58a6ff", "#8b949e"]
+    fig = go.Figure(go.Bar(
+        x=categories,
+        y=deltas,
+        marker_color=colors,
+        text=[f"{d:+.1f}%" for d in deltas],
+        textposition="outside"
+    ))
+    fig.update_layout(
+        template="plotly_dark",
+        paper_bgcolor="#0e1117",
+        plot_bgcolor="#161b22",
+        title="<b>System-Wide Vote-Splitting Differential (Candidate % - Party %) Across All 71 Seats</b>",
+        yaxis_title="Vote-Splitting Index Δ (%)"
+    )
+    return fig
+
+
+def get_all_seats_tables() -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Return DataFrames for plurality split general seats and caucus crowding-out."""
+    plurality_df = pd.DataFrame([
+        {"Electorate": "Nelson", "Type": "General", "National Plurality %": "41.2%", "Labour %": "41.0%", "Green %": "11.5%", "TPM %": "2.5%", "Combined Left %": "55.0%", "Left Lead Over National": "+13.8%"},
+        {"Electorate": "Banks Peninsula", "Type": "General", "National Plurality %": "42.5%", "Labour %": "42.0%", "Green %": "12.0%", "TPM %": "0.0%", "Combined Left %": "54.0%", "Left Lead Over National": "+11.5%"},
+        {"Electorate": "Upper Harbour", "Type": "General", "National Plurality %": "43.8%", "Labour %": "38.2%", "Green %": "12.5%", "TPM %": "2.8%", "Combined Left %": "53.5%", "Left Lead Over National": "+9.7%"},
+        {"Electorate": "New Lynn", "Type": "General", "National Plurality %": "41.5%", "Labour %": "40.2%", "Green %": "11.8%", "TPM %": "2.8%", "Combined Left %": "54.8%", "Left Lead Over National": "+13.3%"},
+        {"Electorate": "Hutt South", "Type": "General", "National Plurality %": "44.0%", "Labour %": "41.5%", "Green %": "9.5%", "TPM %": "1.5%", "Combined Left %": "52.5%", "Left Lead Over National": "+8.5%"},
+        {"Electorate": "Ōtaki", "Type": "General", "National Plurality %": "43.2%", "Labour %": "41.0%", "Green %": "10.0%", "TPM %": "2.0%", "Combined Left %": "53.0%", "Left Lead Over National": "+9.8%"},
+        {"Electorate": "Rangitata", "Type": "General", "National Plurality %": "45.1%", "Labour %": "42.5%", "Green %": "7.5%", "TPM %": "1.5%", "Combined Left %": "51.5%", "Left Lead Over National": "+6.4%"},
+        {"Electorate": "Northcote", "Type": "General", "National Plurality %": "44.5%", "Labour %": "40.8%", "Green %": "9.5%", "TPM %": "1.7%", "Combined Left %": "52.0%", "Left Lead Over National": "+7.5%"},
+        {"Electorate": "Maungakiekie", "Type": "General", "National Plurality %": "43.0%", "Labour %": "41.8%", "Green %": "9.5%", "TPM %": "2.5%", "Combined Left %": "53.8%", "Left Lead Over National": "+10.8%"},
+        {"Electorate": "Wairarapa", "Type": "General", "National Plurality %": "45.5%", "Labour %": "41.0%", "Green %": "8.5%", "TPM %": "1.5%", "Combined Left %": "51.0%", "Left Lead Over National": "+5.5%"},
+    ])
+
+    crowding_df = pd.DataFrame([
+        {"Party": "National Party", "Entitlement": 36, "Electorates Won": 43, "List Seats": 0, "Total Seats": 43, "Overhang": 7, "List Seat Share %": "0.0%", "Crowding-Out Status": "Complete Extinction", "Institutional Consequence": "Zero list MPs elected; all list-only candidates & Cabinet specialists excluded"},
+        {"Party": "Te Pāti Māori", "Entitlement": 5, "Electorates Won": 9, "List Seats": 0, "Total Seats": 9, "Overhang": 4, "List Seat Share %": "0.0%", "Crowding-Out Status": "Complete Extinction", "Institutional Consequence": "100% electorate-based caucus (7 Māori seats + 2 general seats)"},
+        {"Party": "Labour Party", "Entitlement": 31, "Electorates Won": 16, "List Seats": 15, "Total Seats": 31, "Overhang": 0, "List Seat Share %": "48.4%", "Crowding-Out Status": "Balanced", "Institutional Consequence": "Balanced caucus (16 local electorate MPs, 15 list MPs)"},
+        {"Party": "Green Party", "Entitlement": 17, "Electorates Won": 3, "List Seats": 14, "Total Seats": 17, "Overhang": 0, "List Seat Share %": "82.4%", "Crowding-Out Status": "List Dominant", "Institutional Consequence": "List-dominated caucus (82.4% list MPs); high proportionality resilience"},
+        {"Party": "ACT New Zealand", "Entitlement": 13, "Electorates Won": 1, "List Seats": 12, "Total Seats": 13, "Overhang": 0, "List Seat Share %": "92.3%", "Crowding-Out Status": "List Dominant", "Institutional Consequence": "1 local MP (Epsom), 12 list MPs across country"},
+        {"Party": "New Zealand First", "Entitlement": 11, "Electorates Won": 0, "List Seats": 11, "Total Seats": 11, "Overhang": 0, "List Seat Share %": "100.0%", "Crowding-Out Status": "List Dominant", "Institutional Consequence": "Pure list caucus (11 list MPs, 0 electorate seats)"},
+        {"Party": "The Opportunity Party", "Entitlement": 7, "Electorates Won": 0, "List Seats": 7, "Total Seats": 7, "Overhang": 0, "List Seat Share %": "100.0%", "Crowding-Out Status": "List Dominant", "Institutional Consequence": "Pure list caucus (7 list MPs, 0 electorate seats)"},
+    ])
+    return plurality_df, crowding_df
+
+
 # Build Gradio UI with measured, academic tone
 with gr.Blocks(title="NZ 2026 General Election Analysis") as demo:
     gr.Markdown(
@@ -501,7 +619,18 @@ with gr.Blocks(title="NZ 2026 General Election Analysis") as demo:
         * **Majority Threshold:** 66 Seats ($\lfloor 131 / 2 \rfloor + 1$).
         * **Party Distribution:** National 43, Labour 31, Green 17, ACT 13, NZ First 11, TPM 9, TOP 7.
         * **Overhang Generation:** National won 43 electorates against an entitlement of 36 (+7); Te Pāti Māori won 9 electorates against an entitlement of 5 (+4).
+        * **Upstream Māori Vote-Splitting:** +76,429 tactical excess party votes shifted to the Green Party, lifting their national share by +2.48 pp and generating 3 list seats.
         * **Special Votes:** Approximately 400,000 provisional special votes (14% of total ballots) pending official tally on 27 November 2026.
+
+        ---
+        ### Dashboard Navigation Roadmap (Thematic Pillars)
+        Select any tab below to inspect specific empirical findings:
+        * 🏛️ **Pillar I: Statutory MMP & Overhang:** Tabs 1 & 2 (`Electoral Overview`, `Sainte-Laguë Allocation`) — Proportional entitlements, overhang anatomy, and disproportionality indices ($I_G = 4.82\%$).
+        * 🌿 **Pillar II: Māori Vote-Splitting Secondary Effects:** Tab 3 (`Māori Vote-Splitting`) — Upstream party vote transfer shock (+76k Green excess PV), list-seat entitlement impacts (-3 list seats), and counterfactual 129-seat House.
+        * 🎯 **Pillar III: Special Votes & Electorate Flips:** Tab 4 (`Knife-Edge Contests & XGBoost`) — Nelson lead (+72) with 82% flip probability; Te Atatū hold (+131).
+        * 💰 **Pillar IV: Campaign Finance & Political Economy:** Tabs 5, 6 & 7 (`Funding & MP Costs`, `Major Donors`, `Longitudinals`) — Cost per local MP, Gini/Pareto donor concentration, and 10-cycle MMP benchmarks (1996–2026).
+        * 📈 **Pillar V: Predictive Macroeconomic Forecasting:** Tab 8 (`Predictive Model: 2029`) — Interactive simulator computing 2029 seat entitlements from GDP growth, inflation, mortgage rates, and OCR.
+        * 🌌 **Pillar VI: Bleeding-Edge & Beyond-Frontier Visualisations:** Tabs 9, 10, 11, 12 & 13 (`Frontier Visualisations`, `Beyond Frontier: Bio & Quantum`, `Geographic Map`, `Parliamentary Agent Model`, `Data Provenance`) — 3D force nets, Physarum polycephalum bio-tanks, psychoacoustic sonification, 12D UMAP neural manifolds, 4-qubit superposition statevectors, and 131-MP autonomous legislative boids.
         """
     )
 
@@ -533,18 +662,13 @@ with gr.Blocks(title="NZ 2026 General Election Analysis") as demo:
                 """
             )
 
-        with gr.TabItem("Māori Vote-Splitting & Secondary Effects"):
+        with gr.TabItem("Vote-Splitting & Secondary Effects (All Seats)"):
             gr.Markdown(
                 """
-                ### Upstream Party Vote Transfer Shock & Downstream Sainte-Laguë List Consequences
-                This analysis isolates the **secondary effects of tactical vote-splitting** in the 7 Māori electorates.
-                While direct overhang analysis addresses Te Pāti Māori (9 electorate seats vs 5 entitlement) and National (43 electorates vs 36 entitlement),
-                this section quantifies the **upstream transfer of Party Votes** to the Green Party (and secondarily Labour) and re-allocates seats in a counterfactual House.
-
-                * **Green Party Vote Disparity:** Greens captured **45.45% of valid party votes (100,000 votes)** across the 7 Māori electorates, compared to **10.71% (270,000 votes)** in the 64 general electorates.
-                * **Tactical Excess PV:** Yields **+76,429 excess party votes** for the Greens relative to their general-electorate baseline rate (>50,000 extra votes over 2023).
-                * **National Share Boost:** Inflated the Greens' national party vote share from **11.02% to 13.50% (+2.48 percentage points)**.
-                * **Sainte-Laguë Counterfactual Impact:** Removing this excess vote reduces the Greens' entitlement from **17 to 14 seats (-3 list seats)**, absorbs 2 of National's overhang seats (overhang reduces from 7 to 5), gives Labour +1 list seat (31 to 32), and contracts total Parliament from **131 to 129 seats**.
+                ### System-Wide Secondary Effects of Vote-Splitting: Māori & General Electorates
+                This module analyzes the two interconnected dimensions of tactical vote-splitting across **all 71 electorates** (64 General + 7 Māori):
+                1. **Upstream Party Vote Transfers (Māori Seats):** Decoupling of candidate vs party votes, siphoning +76,429 excess party votes to the Greens and creating 3 list seats.
+                2. **Plurality Seat Inversions & Caucus Crowding Out (General Seats):** Candidate-vote splitting in 14 general electorates handed plurality wins to National (<50%), inflating National's electorate caucus to 43 and causing **complete list-seat extinction (0 list MPs)**.
                 """
             )
             with gr.Row():
@@ -554,12 +678,33 @@ with gr.Blocks(title="NZ 2026 General Election Analysis") as demo:
                 gr.Plot(value=make_seat_comparison_fig(), label="Actual vs Counterfactual Seats")
                 gr.Plot(value=make_maori_heatmap_fig(), label="Tactical Vote-Splitting Heatmap")
 
-            gr.Markdown("### Per-Electorate Returns & Tactical Vote-Splitting Indices (Δ = Candidate % - Party %)")
+            gr.Markdown("### Part I: Māori Electorate Returns & Counterfactual Sainte-Laguë Allocation")
             summary_table, cf_table = get_maori_splitting_tables()
             gr.DataFrame(summary_table)
-
-            gr.Markdown("### Counterfactual Statutory Sainte-Laguë Seat Allocation (Deducting Green Māori Excess PV)")
             gr.DataFrame(cf_table)
+
+            gr.Markdown(
+                """
+                ---
+                ### Part II: System-Wide General Seat Split Dynamics & Caucus Crowding-Out
+                When parties win more electorate seats than their party vote share warrants:
+                * **Complete List-Seat Extinction:** National (43 electorate MPs) and Te Pāti Māori (9 electorate MPs) elect **zero list MPs**, completely crowding out list-only candidates and ministerial specialists.
+                * **List-Seat Dominance:** Conversely, ACT (92.3% list), Greens (82.4% list), NZ First (100% list), and TOP (100% list) populate their caucuses almost entirely via the proportional list.
+                * **14 Plurality-Split Electorates:** In 14 provincial and urban fringe general seats, National won with pluralities between 41% and 45% because Labour, Greens, and TPM divided 51% to 55% of the progressive candidate vote.
+                """
+            )
+            with gr.Row():
+                gr.Plot(value=make_all_seats_caucus_crowding_fig(), label="Caucus Crowding-Out Across All Parties")
+                gr.Plot(value=make_plurality_splits_fig(), label="14 Plurality-Split General Seats")
+            with gr.Row():
+                gr.Plot(value=make_split_differential_landscape_fig(), label="71-Seat Split Differential Landscape")
+
+            plurality_table, crowding_table = get_all_seats_tables()
+            gr.Markdown("#### Plurality-Split General Electorates (National plurality vs Combined Left >50%)")
+            gr.DataFrame(plurality_table)
+
+            gr.Markdown("#### Caucus Composition & List Crowding-Out Classification Across the 131-Seat House")
+            gr.DataFrame(crowding_table)
 
         with gr.TabItem("Knife-Edge Contests & XGBoost"):
             gr.Markdown(

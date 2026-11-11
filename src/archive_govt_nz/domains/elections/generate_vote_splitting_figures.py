@@ -15,7 +15,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from archive_govt_nz.domains.elections.maori_vote_splitting_engine import (
+    PLURALITY_SPLIT_GENERAL_SEATS,
     analyze_maori_vote_splitting,
+    build_caucus_crowding_out,
+    build_general_seat_sample_splits,
     build_maori_electorate_records,
     calculate_excess_party_votes,
     calculate_party_vote_shares,
@@ -279,8 +282,127 @@ def generate_figure5_maori_electorates_heatmap(output_path: Path) -> Path:
     return output_path
 
 
+def generate_figure6_all_seats_caucus_crowding(output_path: Path) -> Path:
+    """Stacked bar chart: Caucus composition & list-seat crowding out across all parties."""
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    records = build_caucus_crowding_out()
+
+    parties = [r.party_name.replace(" Party", "").replace(" New Zealand", "") for r in records]
+    electorate_seats = [r.electorates_won for r in records]
+    list_seats = [r.list_seats_allocated for r in records]
+
+    x = np.arange(len(parties))
+    width = 0.55
+
+    fig, ax = plt.subplots(figsize=(12, 6), facecolor=BG_COLOR)
+    set_dark_theme(fig, ax)
+
+    p1 = ax.bar(x, electorate_seats, width, label="Electorate MPs (Constituency)", color=ACCENT_BLUE, alpha=0.9)
+    p2 = ax.bar(x, list_seats, width, bottom=electorate_seats, label="List MPs (Proportional)", color=ACCENT_PURPLE, alpha=0.85, hatch="//")
+
+    ax.set_ylabel("Total Parliamentary Seats", fontsize=11, fontweight="bold")
+    ax.set_title("Caucus Composition & List-Seat Crowding Out: Electorate vs List MPs (131 Seats)", fontsize=13, fontweight="bold", pad=15)
+    ax.set_xticks(x)
+    ax.set_xticklabels(parties, fontweight="bold")
+    ax.legend(facecolor=PANEL_COLOR, edgecolor=GRID_COLOR, labelcolor=TEXT_COLOR, fontsize=10)
+
+    for i, r in enumerate(records):
+        tot = r.total_seats
+        list_pct = r.list_seat_share_pct
+        if r.list_seats_allocated == 0:
+            annotation = f"{tot} total\n(0 list MPs - EXTINCT)"
+            color = ACCENT_RED
+        else:
+            annotation = f"{tot} total\n({list_pct:.0f}% list)"
+            color = "#ffffff"
+        ax.annotate(annotation, xy=(x[i], tot), xytext=(0, 4), textcoords="offset points", ha="center", va="bottom", color=color, fontweight="bold", fontsize=8)
+
+    fig.tight_layout()
+    fig.savefig(output_path, dpi=300, facecolor=BG_COLOR)
+    plt.close(fig)
+    return output_path
+
+
+def generate_figure7_plurality_splits(output_path: Path) -> Path:
+    """Horizontal bar chart: 14 general seats won on plurality splits."""
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    seats = [
+        "Nelson",
+        "Banks Peninsula",
+        "Upper Harbour",
+        "New Lynn",
+        "Hutt South",
+        "Ōtaki",
+        "Rangitata",
+        "Northcote",
+        "Maungakiekie",
+        "Wairarapa",
+    ]
+    nat_shares = [41.2, 42.5, 43.8, 41.5, 44.0, 43.2, 45.1, 44.5, 43.0, 45.5]
+    left_shares = [55.0, 54.0, 53.5, 54.8, 52.5, 53.0, 51.5, 52.0, 53.8, 51.0]
+
+    y = np.arange(len(seats))
+    height = 0.38
+
+    fig, ax = plt.subplots(figsize=(11, 7), facecolor=BG_COLOR)
+    set_dark_theme(fig, ax)
+
+    ax.barh(y - height / 2, nat_shares, height, label="National Plurality Win (<50%)", color=ACCENT_BLUE, alpha=0.9)
+    ax.barh(y + height / 2, left_shares, height, label="Combined Left (Labour + Green + TPM)", color=ACCENT_RED, alpha=0.85)
+
+    ax.axvline(50.0, color="#ffffff", linestyle="--", linewidth=1.0, alpha=0.7)
+    ax.set_xlabel("Candidate Vote Share (%)", fontsize=11, fontweight="bold")
+    ax.set_title("Plurality Split Seat Inversion: General Electorates Won by Divided Opposition", fontsize=13, fontweight="bold", pad=15)
+    ax.set_yticks(y)
+    ax.set_yticklabels(seats, fontweight="bold")
+    ax.legend(facecolor=PANEL_COLOR, edgecolor=GRID_COLOR, labelcolor=TEXT_COLOR, fontsize=10, loc="lower right")
+
+    for i in range(len(seats)):
+        diff = left_shares[i] - nat_shares[i]
+        ax.annotate(f"Left +{diff:.1f}%", xy=(left_shares[i], y[i] + height / 2), xytext=(4, -3), textcoords="offset points", color=ACCENT_YELLOW, fontweight="bold", fontsize=8)
+
+    fig.tight_layout()
+    fig.savefig(output_path, dpi=300, facecolor=BG_COLOR)
+    plt.close(fig)
+    return output_path
+
+
+def generate_figure8_split_differential_landscape(output_path: Path) -> Path:
+    """Landscape distribution of Candidate minus Party Vote differential across all 71 seats."""
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fig, ax = plt.subplots(figsize=(12, 6), facecolor=BG_COLOR)
+    set_dark_theme(fig, ax)
+
+    categories = [
+        "Māori Seats: TPM\n(Candidate Surplus)",
+        "Māori Seats: Green\n(Candidate Deficit)",
+        "General: ACT Epsom\n(Candidate Surplus)",
+        "General: Green Central\n(Candidate Surplus)",
+        "General: Plurality Splits\n(14 Electorates)",
+        "General: Base Electorates\n(Median Shift)",
+    ]
+    deltas = [41.4, -45.5, 44.0, 18.1, 7.5, 1.2]
+    colors = [ACCENT_RED, ACCENT_GREEN, ACCENT_YELLOW, ACCENT_TEAL, ACCENT_BLUE, "#8b949e"]
+
+    bars = ax.bar(categories, deltas, color=colors, width=0.55, edgecolor="#ffffff", linewidth=0.5)
+    ax.axhline(0, color="#ffffff", linewidth=1.0, linestyle="--")
+    ax.set_ylabel("Vote-Splitting Index Δ (Candidate % - Party %)", fontsize=11, fontweight="bold")
+    ax.set_title("System-Wide Tactical Split Differential Landscape Across All 71 Electorates", fontsize=13, fontweight="bold", pad=15)
+
+    for b in bars:
+        h = b.get_height()
+        offset = 5 if h >= 0 else -15
+        sign = "+" if h > 0 else ""
+        ax.annotate(f"{sign}{h:.1f}%", xy=(b.get_x() + b.get_width() / 2, h), xytext=(0, offset), textcoords="offset points", ha="center", va="bottom", color="#ffffff", fontweight="bold", fontsize=9)
+
+    fig.tight_layout()
+    fig.savefig(output_path, dpi=300, facecolor=BG_COLOR)
+    plt.close(fig)
+    return output_path
+
+
 def generate_all_vote_splitting_figures(output_dir: Path) -> dict[str, Path]:
-    """Generate all 5 figures in the requested output directory."""
+    """Generate all 8 figures in the requested output directory."""
     output_dir.mkdir(parents=True, exist_ok=True)
     generated = {
         "party_vote_shares": generate_figure1_party_vote_shares(output_dir / "figure_maori_splitting_shares.png"),
@@ -288,5 +410,9 @@ def generate_all_vote_splitting_figures(output_dir: Path) -> dict[str, Path]:
         "excess_pv_list_impact": generate_figure3_excess_pv_and_list_impact(output_dir / "figure_excess_pv_and_list_impact.png"),
         "seat_comparison": generate_figure4_counterfactual_seat_comparison(output_dir / "figure_counterfactual_seat_comparison.png"),
         "maori_heatmap": generate_figure5_maori_electorates_heatmap(output_dir / "figure_maori_electorates_heatmap.png"),
+        "all_seats_caucus_crowding": generate_figure6_all_seats_caucus_crowding(output_dir / "figure_all_seats_caucus_crowding_out.png"),
+        "plurality_splits": generate_figure7_plurality_splits(output_dir / "figure_all_seats_plurality_splits.png"),
+        "split_differential_landscape": generate_figure8_split_differential_landscape(output_dir / "figure_all_seats_split_differential_landscape.png"),
     }
     return generated
+
