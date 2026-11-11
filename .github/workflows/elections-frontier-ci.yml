@@ -44,7 +44,7 @@ jobs:
         env:
           PYTHONPATH: src:.
         run: |
-          pytest tests/test_elections_*.py -v --cov=src/archive_govt_nz/domains/elections --cov-report=term-missing
+          pytest tests/test_elections_*.py -v --cov=src/archive_govt_nz/domains/elections --cov-fail-under=70 --cov-report=term-missing
 
   sync-hf-space:
     name: Sync to Hugging Face Spaces
