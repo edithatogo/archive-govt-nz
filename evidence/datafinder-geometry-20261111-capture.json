@@ -1,0 +1,252 @@
+{
+  "schema_version": "archive-govt-nz.datafinder-geometry-capture/v1",
+  "captured_at": "2026-11-11T08:33:55.113334+00:00",
+  "operator": "edithatogo",
+  "source": "Stats NZ Geographic Data Service (datafinder.stats.govt.nz), Koordinates",
+  "licence": "CC BY 4.0 Stats NZ",
+  "credential": {
+    "env_var": "KOORDINATES_API_KEY",
+    "scopes": [
+      "exports:read",
+      "exports:write"
+    ],
+    "storage": "repo-local .env, ignored by git (.gitignore:16); value never recorded here",
+    "value_recorded": false
+  },
+  "objects": [
+    {
+      "layer_id": 99645,
+      "layer_title": "General Electoral District 2002",
+      "role": "new",
+      "export_id": 4711920,
+      "export_format": "GeoParquet (EPSG:4326)",
+      "byte_count": 2241670,
+      "sha256": "5dda2e695e6df1e28a07ee6d22418d133a56cc648135c5624cd1f82c6eaf77a8",
+      "object_id": "sha256:5dda2e695e6df1e28a07ee6d22418d133a56cc648135c5624cd1f82c6eaf77a8",
+      "files": [
+        "general-electoral-district-2002-ISO.pdf",
+        "general-electoral-district-2002.parquet",
+        "general-electoral-district-2002.txt",
+        "general-electoral-district-2002.xml"
+      ],
+      "feature_count": 62,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "crs_in_geo_metadata": null
+    },
+    {
+      "layer_id": 104064,
+      "layer_title": "Māori Electoral District 2002",
+      "role": "new",
+      "export_id": 4711921,
+      "export_format": "GeoParquet (EPSG:4326)",
+      "byte_count": 646115,
+      "sha256": "0895de4d27325acf9a4b629ebe44f937ced662328e73ce93ddab3124e1dd82c8",
+      "object_id": "sha256:0895de4d27325acf9a4b629ebe44f937ced662328e73ce93ddab3124e1dd82c8",
+      "files": [
+        "maori-electoral-district-2002-ISO.pdf",
+        "maori-electoral-district-2002.parquet",
+        "maori-electoral-district-2002.txt",
+        "maori-electoral-district-2002.xml"
+      ],
+      "feature_count": 7,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "crs_in_geo_metadata": null
+    },
+    {
+      "layer_id": 122741,
+      "layer_title": "General Electorates 2025",
+      "role": "verify",
+      "export_id": 4711922,
+      "export_format": "GeoParquet (EPSG:4326)",
+      "byte_count": 6958876,
+      "sha256": "d999a4cd28c44e51987c208c6c5f9ebb408ac5b47cf0a7d2fcda448dba3ad0a8",
+      "object_id": "sha256:d999a4cd28c44e51987c208c6c5f9ebb408ac5b47cf0a7d2fcda448dba3ad0a8",
+      "files": [
+        "general-electorates-2025-ISO.pdf",
+        "general-electorates-2025-data.csv",
+        "general-electorates-2025-lookup.pdf",
+        "general-electorates-2025.parquet",
+        "general-electorates-2025.txt",
+        "general-electorates-2025.xml"
+      ],
+      "feature_count": 64,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "crs_in_geo_metadata": null
+    },
+    {
+      "layer_id": 122742,
+      "layer_title": "Māori Electorates 2025",
+      "role": "verify",
+      "export_id": 4711923,
+      "export_format": "GeoParquet (EPSG:4326)",
+      "byte_count": 1629696,
+      "sha256": "e011335bd67bca89a176b83fdb59ce65b8eef38d34cf9eca67c897f6a1bec83f",
+      "object_id": "sha256:e011335bd67bca89a176b83fdb59ce65b8eef38d34cf9eca67c897f6a1bec83f",
+      "files": [
+        "maori-electorates-2025-ISO.pdf",
+        "maori-electorates-2025-data.csv",
+        "maori-electorates-2025-lookup.pdf",
+        "maori-electorates-2025.parquet",
+        "maori-electorates-2025.txt",
+        "maori-electorates-2025.xml"
+      ],
+      "feature_count": 7,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "crs_in_geo_metadata": null
+    },
+    {
+      "layer_id": 104580,
+      "layer_title": "General Electorates 2020",
+      "role": "verify",
+      "export_id": 4711924,
+      "export_format": "GeoParquet (EPSG:4326)",
+      "byte_count": 6676965,
+      "sha256": "580ce5be766329ae2059fc70c2481be6aac4aef7dceb8da2f22a23b2304614db",
+      "object_id": "sha256:580ce5be766329ae2059fc70c2481be6aac4aef7dceb8da2f22a23b2304614db",
+      "files": [
+        "general-electorates-2020-ISO.pdf",
+        "general-electorates-2020-data.csv",
+        "general-electorates-2020-lookup.pdf",
+        "general-electorates-2020.parquet",
+        "general-electorates-2020.txt",
+        "general-electorates-2020.xml"
+      ],
+      "feature_count": 65,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "crs_in_geo_metadata": null
+    },
+    {
+      "layer_id": 104579,
+      "layer_title": "Māori Electorates 2020",
+      "role": "verify",
+      "export_id": 4711925,
+      "export_format": "GeoParquet (EPSG:4326)",
+      "byte_count": 1769268,
+      "sha256": "90dc439d508cba6e941e04a8314e2eda28d518e09e73f4a9bd5bbd3030524065",
+      "object_id": "sha256:90dc439d508cba6e941e04a8314e2eda28d518e09e73f4a9bd5bbd3030524065",
+      "files": [
+        "maori-electorates-2020-ISO.pdf",
+        "maori-electorates-2020-data.csv",
+        "maori-electorates-2020-lookup.pdf",
+        "maori-electorates-2020.parquet",
+        "maori-electorates-2020.txt",
+        "maori-electorates-2020.xml"
+      ],
+      "feature_count": 7,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "crs_in_geo_metadata": null
+    },
+    {
+      "layer_id": 104062,
+      "layer_title": "General Electoral District 2014",
+      "role": "verify",
+      "export_id": 4711926,
+      "export_format": "GeoParquet (EPSG:4326)",
+      "byte_count": 2593914,
+      "sha256": "07d2f41b5d5c27791b4975e62005b1a3e3c7ba7721667c04bc7fd658921b6edc",
+      "object_id": "sha256:07d2f41b5d5c27791b4975e62005b1a3e3c7ba7721667c04bc7fd658921b6edc",
+      "files": [
+        "general-electoral-district-2014-ISO.pdf",
+        "general-electoral-district-2014.parquet",
+        "general-electoral-district-2014.txt",
+        "general-electoral-district-2014.xml"
+      ],
+      "feature_count": 64,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "crs_in_geo_metadata": null
+    },
+    {
+      "layer_id": 104065,
+      "layer_title": "General Electoral District 2007",
+      "role": "verify",
+      "export_id": 4711927,
+      "export_format": "GeoParquet (EPSG:4326)",
+      "byte_count": 2578092,
+      "sha256": "917cd95938a9d419722c0277949e1af67bbb4ce147561a2c6d5a5caa13665589",
+      "object_id": "sha256:917cd95938a9d419722c0277949e1af67bbb4ce147561a2c6d5a5caa13665589",
+      "files": [
+        "general-electoral-district-2007-ISO.pdf",
+        "general-electoral-district-2007.parquet",
+        "general-electoral-district-2007.txt",
+        "general-electoral-district-2007.xml"
+      ],
+      "feature_count": 63,
+      "geometry_types": [
+        "MultiPolygon"
+      ],
+      "crs_in_geo_metadata": null
+    }
+  ],
+  "summary": {
+    "objects_stored": 8,
+    "total_bytes": 25094596,
+    "new_coverage_layers": [
+      99645,
+      104064
+    ],
+    "verification_layers": [
+      122741,
+      122742,
+      104580,
+      104579,
+      104062,
+      104065
+    ]
+  },
+  "verification": {
+    "method": "Decoded WKB from the archive's Hugging Face parquet (data/general-electorates-2025.parquet, ArcGIS FeatureServer pipeline) and from this datafinder export, then compared feature ids, names, vertex counts, polygon bounds and shoelace area per electorate.",
+    "layer": "General Electorates 2025 (122741), EPSG:4326",
+    "archive_object": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/resolve/main/data/general-electorates-2025.parquet",
+    "archive_sha256": "cfa43b777ee4c3ca6a9102fca78f1bdae0930c172f1b5ff5842ae6d2b40ed705",
+    "results": {
+      "feature_ids_identical": true,
+      "feature_count": 64,
+      "electorate_name_mismatches": 0,
+      "total_vertices_archive": 577688,
+      "total_vertices_datafinder": 577688,
+      "max_relative_area_delta": 3.68e-08,
+      "max_bbox_coordinate_delta_degrees": 2.818e-08,
+      "note": "identical geometry to floating-point precision; the two independent services encode the same boundaries, so the existing archive geometry is confirmed rather than replaced"
+    },
+    "feature_count_crosscheck": {
+      "122741_general_2025": {
+        "archive": 64,
+        "datafinder": 64
+      },
+      "122742_maori_2025": {
+        "archive": 7,
+        "datafinder": 7
+      },
+      "104580_general_2020": {
+        "archive": 65,
+        "datafinder": 65
+      },
+      "104579_maori_2020": {
+        "archive": 7,
+        "datafinder": 7
+      },
+      "104062_general_2014": {
+        "archive": 64,
+        "datafinder": 64
+      },
+      "104065_general_2007": {
+        "archive": 63,
+        "datafinder": 63
+      }
+    }
+  }
+}
