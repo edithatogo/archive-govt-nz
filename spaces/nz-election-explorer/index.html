@@ -201,6 +201,7 @@
     <div class="tabs-nav">
       <button class="tab-btn active" onclick="switchTab('overview')">Electoral Overview</button>
       <button class="tab-btn" onclick="switchTab('overhang')">Sainte-Laguë Allocation</button>
+      <button class="tab-btn" onclick="switchTab('maori-splitting')">Māori Vote-Splitting</button>
       <button class="tab-btn" onclick="switchTab('specials')">Special Votes Sensitivity</button>
       <button class="tab-btn" onclick="switchTab('causal')">Campaign Finance & Causal Inference</button>
       <button class="tab-btn" onclick="switchTab('multivariate')">Census Demographics & SHAP</button>
@@ -281,6 +282,70 @@
           <div class="metric-label">Loosemore-Hanby Index</div>
           <div class="metric-val">6.14%</div>
           <div class="metric-sub">Cumulative absolute vote-seat deviation</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB: MĀORI VOTE-SPLITTING & SECONDARY EFFECTS -->
+    <div id="tab-maori-splitting" class="tab-content">
+      <h2>Māori Electorate Vote-Splitting & Upstream Transfer Secondary Effects</h2>
+      <p style="color:var(--text-muted)">Empirical quantification of the upstream Party Vote transfer shock to the Green Party (and Labour) in the 7 Māori electorates and its downstream Sainte-Laguë list-seat consequences.</p>
+
+      <div class="metrics-row">
+        <div class="metric-card">
+          <div class="metric-label">Green Māori PV Share</div>
+          <div class="metric-val" style="color: #2ecc71;">45.45%</div>
+          <div class="metric-sub">vs 10.71% in General Electorates</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Green Tactical Excess PV</div>
+          <div class="metric-val" style="color: #2ecc71;">+76,429</div>
+          <div class="metric-sub">>50k surge over 2023 baseline</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">National Share Boost</div>
+          <div class="metric-val" style="color: #bc8cff;">+2.48 pp</div>
+          <div class="metric-sub">Lifted from 11.02% to 13.50%</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">Downstream List Impact</div>
+          <div class="metric-val" style="color: #f85149;">-3 List Seats</div>
+          <div class="metric-sub">Greens 17 &rarr; 14 in Counterfactual</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">House Contraction</div>
+          <div class="metric-val" style="color: #58a6ff;">131 &rarr; 129</div>
+          <div class="metric-sub">National Overhang 7 &rarr; 5 seats</div>
+        </div>
+      </div>
+
+      <div style="margin: 20px 0;">
+        <iframe src="static/maori_vote_splitting_explorer.html" style="width: 100%; height: 850px; border: 1px solid var(--border); border-radius: 8px; background: var(--card-bg);" title="Māori Vote-Splitting Interactive Explorer"></iframe>
+      </div>
+
+      <div class="card" style="margin-top: 24px;">
+        <h3>Publication Visualisation Gallery: Vote-Splitting Secondary Effects</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 16px; margin-top: 16px;">
+          <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px;">
+            <h4 style="margin-top:0;">1. Party Vote Disparities (Māori vs General vs National)</h4>
+            <img src="static/figure_maori_splitting_shares.png" style="width:100%; border-radius:4px;" alt="Party Vote Shares">
+          </div>
+          <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px;">
+            <h4 style="margin-top:0;">2. Green Party National Vote Waterfall Decomposition</h4>
+            <img src="static/figure_green_waterfall_decomposition.png" style="width:100%; border-radius:4px;" alt="Green Waterfall">
+          </div>
+          <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px;">
+            <h4 style="margin-top:0;">3. Excess PV and Sainte-Laguë List-Seat Translation</h4>
+            <img src="static/figure_excess_pv_and_list_impact.png" style="width:100%; border-radius:4px;" alt="Excess PV Impact">
+          </div>
+          <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px;">
+            <h4 style="margin-top:0;">4. Actual vs Counterfactual Parliamentary Seat Allocation</h4>
+            <img src="static/figure_counterfactual_seat_comparison.png" style="width:100%; border-radius:4px;" alt="Counterfactual Seats">
+          </div>
+        </div>
+        <div style="background: var(--bg); border: 1px solid var(--border); border-radius: 6px; padding: 12px; margin-top: 16px;">
+          <h4 style="margin-top:0;">5. Tactical Vote-Splitting Heatmap Across the 7 Māori Electorates</h4>
+          <img src="static/figure_maori_electorates_heatmap.png" style="width:100%; border-radius:4px;" alt="Māori Heatmap">
         </div>
       </div>
     </div>

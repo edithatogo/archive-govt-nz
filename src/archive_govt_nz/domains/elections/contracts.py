@@ -478,3 +478,77 @@ class CausalOverhangAttribution(BaseModel):
     counterfactual_review_2012: dict[str, Any]
     provenance: DynamicEngineProvenance | None = None
 
+
+# Māori Electorate Vote-Splitting & Upstream Transfer Contracts
+
+
+class MaoriSeatReturnRecord(BaseModel):
+    """Electorate-level return for one of the 7 Māori electorates."""
+
+    electorate_name: str
+    total_valid_party_votes: int = Field(ge=0)
+    total_valid_candidate_votes: int = Field(ge=0)
+    party_votes: dict[str, int]
+    party_percentages: dict[str, float]
+    candidate_votes: dict[str, int]
+    candidate_percentages: dict[str, float]
+    vote_splitting_indices: dict[str, float]
+
+
+class PartyExcessPVRecord(BaseModel):
+    """Quantification of excess party vote derived from Māori electorates."""
+
+    party_name: str
+    general_electorates_pv: int = Field(ge=0)
+    general_electorates_pv_pct: float
+    maori_electorates_actual_pv: int = Field(ge=0)
+    maori_electorates_actual_pv_pct: float
+    maori_electorates_baseline_pv: int = Field(ge=0)
+    excess_party_votes: int
+    national_actual_pv: int = Field(ge=0)
+    national_counterfactual_pv: int = Field(ge=0)
+    national_actual_pv_pct: float
+    national_counterfactual_pv_pct: float
+    percentage_point_boost: float
+
+
+class CounterfactualSeatRow(BaseModel):
+    """Comparative seat outcome under actual vs counterfactual Sainte-Laguë."""
+
+    party_name: str
+    actual_entitlement: int = Field(ge=0)
+    actual_electorates: int = Field(ge=0)
+    actual_list_seats: int = Field(ge=0)
+    actual_total_seats: int = Field(ge=0)
+    actual_overhang: int = Field(ge=0)
+    counterfactual_entitlement: int = Field(ge=0)
+    counterfactual_list_seats: int = Field(ge=0)
+    counterfactual_total_seats: int = Field(ge=0)
+    counterfactual_overhang: int = Field(ge=0)
+    delta_list_seats: int
+    delta_total_seats: int
+
+
+class MaoriVoteSplittingAnalysis(BaseModel):
+    """Comprehensive secondary effects analysis of Māori electorate vote-splitting."""
+
+    analysis_timestamp: datetime
+    election_year: int = 2026
+    vintage: Literal["preliminary", "official"] = "preliminary"
+    total_valid_pv_national: int
+    total_valid_pv_general: int
+    total_valid_pv_maori: int
+    maori_electorate_returns: list[MaoriSeatReturnRecord]
+    excess_pv_by_party: list[PartyExcessPVRecord]
+    seat_comparison_by_party: list[CounterfactualSeatRow]
+    actual_house_size: int = 131
+    counterfactual_house_size: int = 129
+    house_size_reduction: int = 2
+    green_excess_pv: int
+    green_list_seat_impact: int = -3
+    labour_excess_pv: int
+    labour_list_seat_impact: int = 1
+    national_overhang_reduction: int = -2
+    data_sources_and_approximations: list[str]
+
+

@@ -482,6 +482,10 @@ implementation has occurred under these tracks.
   *Link: [tracks/election_beyond_frontier_systems_20261111/index.md](./tracks/election_beyond_frontier_systems_20261111/index.md)*
   Execution of the 5 beyond-frontier paradigms: (1) Wetware / Bio-luminescent Physarum polycephalum slime mould growth tank on nutrient agar relief map; (2) Spatial psychoacoustic sonification and ultrasonic haptic friction synthesis; (3) 12-dimensional UMAP / Gaussian Splatting neural manifold discovering voter behavioural gravity canyons; (4) True quantum superposition qubit statevector with density matrix and wave-function collapse; (5) 131-MP autonomous artificial life legislative agent swarm.
 
+- [x] **Track: Māori electorate vote-splitting and upstream list-seat secondary effects**
+  *Link: [tracks/election_maori_vote_splitting_20261111/index.md](./tracks/election_maori_vote_splitting_20261111/index.md)*
+  Empirical quantification of the upstream Party Vote transfer shock to the Green Party (+76,429 excess votes, +2.48 pp national boost) and Labour in the 7 Māori electorates, downstream Sainte-Laguë list-seat entitlement impacts (-3 list seats for Greens, +1 list seat for Labour, National overhang -2), and counterfactual 129-seat Parliament re-allocation.
+
 - [ ] **Track: Econometric causal inference and attribution of the 11-seat overhang**
   *Link: [tracks/election_causal_overhang_attribution_20261111/index.md](./tracks/election_causal_overhang_attribution_20261111/index.md)*
   Econometric identification and causal attribution of the 2026 11-seat overhang (National +7, Te Pāti Māori +4): Gelman-King counterfactual decomposition, Sharp RDD on candidate incumbency treatment, Instrumental Variables on the 2023–2024 continuous Māori Electoral Option policy shock, and cooperative game-theoretic Shapley additive seat attribution.

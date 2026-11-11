@@ -345,6 +345,149 @@ def run_interactive_2029_forecast(
     return seat_df, coal_df, prov_json
 
 
+def make_maori_splitting_shares_fig() -> go.Figure:
+    """Create grouped bar chart comparing party-vote percentages."""
+    fig = go.Figure()
+    parties = ["Green", "Labour", "Te Pāti Māori", "National", "ACT", "NZ First", "TOP"]
+    fig.add_trace(go.Bar(
+        x=parties,
+        y=[45.45, 29.55, 20.45, 1.57, 0.49, 1.05, 0.43],
+        name="7 Māori Electorates (220k PV)",
+        marker_color="#2ecc71"
+    ))
+    fig.add_trace(go.Bar(
+        x=parties,
+        y=[10.71, 24.40, 2.18, 31.59, 11.06, 9.41, 5.91],
+        name="64 General Electorates (2.52M PV)",
+        marker_color="#58a6ff"
+    ))
+    fig.add_trace(go.Bar(
+        x=parties,
+        y=[13.50, 24.82, 3.65, 29.20, 10.22, 8.76, 5.47],
+        name="National Total (2.74M PV)",
+        marker_color="#bc8cff"
+    ))
+    fig.update_layout(
+        template="plotly_dark",
+        paper_bgcolor="#0e1117",
+        plot_bgcolor="#161b22",
+        title="<b>Party Vote Disparities: Māori vs General vs National Electorates</b>",
+        barmode="group",
+        yaxis_title="Party Vote Share (%)",
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+    )
+    return fig
+
+
+def make_green_waterfall_fig() -> go.Figure:
+    """Waterfall chart showing contribution of Māori-seat votes to Greens' national total."""
+    fig = go.Figure(go.Waterfall(
+        name="Greens PV Decomposition",
+        orientation="v",
+        measure=["relative", "relative", "relative", "total"],
+        x=["General Baseline (10.7%)", "Māori Baseline (at 10.7%)", "Māori Tactical Excess PV", "National Green Total"],
+        textposition="outside",
+        text=["270,000", "+23,571", "+76,429 (+2.48 pp)", "370,000 votes"],
+        y=[270000, 23571, 76429, 370000],
+        connector={"line": {"color": "#30363d"}},
+        increasing={"marker": {"color": "#2ecc71"}},
+        totals={"marker": {"color": "#bc8cff"}}
+    ))
+    fig.update_layout(
+        template="plotly_dark",
+        paper_bgcolor="#0e1117",
+        plot_bgcolor="#161b22",
+        title="<b>Decomposition of Green Party Vote: Upstream Māori Transfer Shock</b>",
+        yaxis_title="Party Votes",
+    )
+    return fig
+
+
+def make_seat_comparison_fig() -> go.Figure:
+    """Actual vs Counterfactual seat comparison bar chart."""
+    parties = ["National", "Labour", "Green", "ACT", "NZ First", "TPM", "TOP"]
+    fig = go.Figure()
+    fig.add_trace(go.Bar(
+        x=parties,
+        y=[43, 31, 17, 13, 11, 9, 7],
+        name="Actual Parliament (131 seats, 11 overhang)",
+        marker_color="#58a6ff"
+    ))
+    fig.add_trace(go.Bar(
+        x=parties,
+        y=[43, 32, 14, 13, 11, 9, 7],
+        name="Counterfactual without Green Māori Excess (129 seats, 9 overhang)",
+        marker_color="#ff9933"
+    ))
+    fig.update_layout(
+        template="plotly_dark",
+        paper_bgcolor="#0e1117",
+        plot_bgcolor="#161b22",
+        title="<b>Parliament Composition: Actual vs Counterfactual (Removing Green Māori Excess PV)</b>",
+        barmode="group",
+        yaxis_title="Total Parliamentary Seats",
+        legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="right", x=1)
+    )
+    return fig
+
+
+def make_maori_heatmap_fig() -> go.Figure:
+    """Heatmap across the 7 Māori Electorates."""
+    electorates = ["Te Tai Tokerau", "Tāmaki Makaurau", "Hauraki-Waikato", "Waiariki", "Ikaroa-Rāwhiti", "Te Tai Hauāuru", "Te Tai Tonga"]
+    metrics = ["Green PV %", "Labour PV %", "TPM PV %", "TPM Candidate %", "TPM Split Index (Δ)", "Green Split Index (Δ)"]
+    z_data = [
+        [45.5, 29.5, 20.6, 61.2, 40.6, -45.5],
+        [47.0, 29.7, 19.1, 59.8, 40.7, -47.0],
+        [43.9, 30.6, 21.3, 63.4, 42.1, -43.9],
+        [45.0, 27.8, 23.1, 68.5, 45.4, -45.0],
+        [44.3, 29.8, 21.3, 60.1, 38.8, -44.3],
+        [45.1, 29.5, 21.0, 62.8, 41.8, -45.1],
+        [47.5, 29.8, 16.6, 57.4, 40.8, -47.5],
+    ]
+    fig = go.Figure(data=go.Heatmap(
+        z=z_data,
+        x=metrics,
+        y=electorates,
+        colorscale="Viridis",
+        text=[[f"{v:+.1f}%" if j in [4, 5] else f"{v:.1f}%" for j, v in enumerate(row)] for row in z_data],
+        texttemplate="%{text}",
+        textfont={"size": 11, "color": "white"}
+    ))
+    fig.update_layout(
+        template="plotly_dark",
+        paper_bgcolor="#0e1117",
+        plot_bgcolor="#161b22",
+        title="<b>Tactical Vote-Splitting Heatmap Across the 7 Māori Electorates</b>",
+    )
+    return fig
+
+
+def get_maori_splitting_tables() -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Return summary tables for Māori electorate returns and counterfactual seats."""
+    summary_df = pd.DataFrame([
+        {"Electorate": "Te Tai Tokerau", "Valid PV": 32500, "Green PV %": "45.5%", "Labour PV %": "29.5%", "TPM PV %": "20.6%", "TPM Candidate %": "61.2%", "TPM Split Index (Δ)": "+40.6%", "Green Split Index (Δ)": "-45.5%"},
+        {"Electorate": "Tāmaki Makaurau", "Valid PV": 33000, "Green PV %": "47.0%", "Labour PV %": "29.7%", "TPM PV %": "19.1%", "TPM Candidate %": "59.8%", "TPM Split Index (Δ)": "+40.7%", "Green Split Index (Δ)": "-47.0%"},
+        {"Electorate": "Hauraki-Waikato", "Valid PV": 31000, "Green PV %": "43.9%", "Labour PV %": "30.6%", "TPM PV %": "21.3%", "TPM Candidate %": "63.4%", "TPM Split Index (Δ)": "+42.1%", "Green Split Index (Δ)": "-43.9%"},
+        {"Electorate": "Waiariki", "Valid PV": 32000, "Green PV %": "45.0%", "Labour PV %": "27.8%", "TPM PV %": "23.1%", "TPM Candidate %": "68.5%", "TPM Split Index (Δ)": "+45.4%", "Green Split Index (Δ)": "-45.0%"},
+        {"Electorate": "Ikaroa-Rāwhiti", "Valid PV": 30500, "Green PV %": "44.3%", "Labour PV %": "29.8%", "TPM PV %": "21.3%", "TPM Candidate %": "60.1%", "TPM Split Index (Δ)": "+38.8%", "Green Split Index (Δ)": "-44.3%"},
+        {"Electorate": "Te Tai Hauāuru", "Valid PV": 31500, "Green PV %": "45.1%", "Labour PV %": "29.5%", "TPM PV %": "21.0%", "TPM Candidate %": "62.8%", "TPM Split Index (Δ)": "+41.8%", "Green Split Index (Δ)": "-45.1%"},
+        {"Electorate": "Te Tai Tonga", "Valid PV": 29500, "Green PV %": "47.5%", "Labour PV %": "29.8%", "TPM PV %": "16.6%", "TPM Candidate %": "57.4%", "TPM Split Index (Δ)": "+40.8%", "Green Split Index (Δ)": "-47.5%"},
+        {"Electorate": "7 Māori Total", "Valid PV": 220000, "Green PV %": "45.45%", "Labour PV %": "29.55%", "TPM PV %": "20.45%", "TPM Candidate %": "61.9%", "TPM Split Index (Δ)": "+41.4%", "Green Split Index (Δ)": "-45.5%"},
+    ])
+
+    cf_df = pd.DataFrame([
+        {"Party": "National Party", "Actual PV": 800000, "Actual Entitlement": 36, "Electorates Won": 43, "Actual List": 0, "Actual Total": 43, "Actual Overhang": 7, "CF Entitlement": 38, "CF List": 0, "CF Total": 43, "CF Overhang": 5, "Net Impact": "Overhang -2 (Entitlement +2)"},
+        {"Party": "Labour Party", "Actual PV": 680000, "Actual Entitlement": 31, "Electorates Won": 16, "Actual List": 15, "Actual Total": 31, "Actual Overhang": 0, "CF Entitlement": 32, "CF List": 16, "CF Total": 32, "CF Overhang": 0, "Net Impact": "+1 List Seat"},
+        {"Party": "Green Party", "Actual PV": 370000, "Actual Entitlement": 17, "Electorates Won": 3, "Actual List": 14, "Actual Total": 17, "Actual Overhang": 0, "CF Entitlement": 14, "CF List": 11, "CF Total": 14, "CF Overhang": 0, "Net Impact": "-3 List Seats"},
+        {"Party": "ACT New Zealand", "Actual PV": 280000, "Actual Entitlement": 13, "Electorates Won": 1, "Actual List": 12, "Actual Total": 13, "Actual Overhang": 0, "CF Entitlement": 13, "CF List": 12, "CF Total": 13, "CF Overhang": 0, "Net Impact": "No change"},
+        {"Party": "New Zealand First", "Actual PV": 240000, "Actual Entitlement": 11, "Electorates Won": 0, "Actual List": 11, "Actual Total": 11, "Actual Overhang": 0, "CF Entitlement": 11, "CF List": 11, "CF Total": 11, "CF Overhang": 0, "Net Impact": "No change"},
+        {"Party": "Te Pāti Māori", "Actual PV": 100000, "Actual Entitlement": 5, "Electorates Won": 9, "Actual List": 0, "Actual Total": 9, "Actual Overhang": 4, "CF Entitlement": 5, "CF List": 0, "CF Total": 9, "CF Overhang": 4, "Net Impact": "No change (4 Overhang)"},
+        {"Party": "The Opportunity Party", "Actual PV": 150000, "Actual Entitlement": 7, "Electorates Won": 0, "Actual List": 7, "Actual Total": 7, "Actual Overhang": 0, "CF Entitlement": 7, "CF List": 7, "CF Total": 7, "CF Overhang": 0, "Net Impact": "No change"},
+        {"Party": "Total Parliament", "Actual PV": 2740000, "Actual Entitlement": 120, "Electorates Won": 72, "Actual List": 59, "Actual Total": 131, "Actual Overhang": 11, "CF Entitlement": 120, "CF List": 57, "CF Total": 129, "CF Overhang": 9, "Net Impact": "Chamber contracts -2 seats"},
+    ])
+    return summary_df, cf_df
+
+
 # Build Gradio UI with measured, academic tone
 with gr.Blocks(title="NZ 2026 General Election Analysis") as demo:
     gr.Markdown(
@@ -389,6 +532,34 @@ with gr.Blocks(title="NZ 2026 General Election Analysis") as demo:
                   $$I_{LH} = \\frac{1}{2} \\sum_{i=1}^{n} |v_i - s_i|$$
                 """
             )
+
+        with gr.TabItem("Māori Vote-Splitting & Secondary Effects"):
+            gr.Markdown(
+                """
+                ### Upstream Party Vote Transfer Shock & Downstream Sainte-Laguë List Consequences
+                This analysis isolates the **secondary effects of tactical vote-splitting** in the 7 Māori electorates.
+                While direct overhang analysis addresses Te Pāti Māori (9 electorate seats vs 5 entitlement) and National (43 electorates vs 36 entitlement),
+                this section quantifies the **upstream transfer of Party Votes** to the Green Party (and secondarily Labour) and re-allocates seats in a counterfactual House.
+
+                * **Green Party Vote Disparity:** Greens captured **45.45% of valid party votes (100,000 votes)** across the 7 Māori electorates, compared to **10.71% (270,000 votes)** in the 64 general electorates.
+                * **Tactical Excess PV:** Yields **+76,429 excess party votes** for the Greens relative to their general-electorate baseline rate (>50,000 extra votes over 2023).
+                * **National Share Boost:** Inflated the Greens' national party vote share from **11.02% to 13.50% (+2.48 percentage points)**.
+                * **Sainte-Laguë Counterfactual Impact:** Removing this excess vote reduces the Greens' entitlement from **17 to 14 seats (-3 list seats)**, absorbs 2 of National's overhang seats (overhang reduces from 7 to 5), gives Labour +1 list seat (31 to 32), and contracts total Parliament from **131 to 129 seats**.
+                """
+            )
+            with gr.Row():
+                gr.Plot(value=make_maori_splitting_shares_fig(), label="Māori vs General PV Disparities")
+                gr.Plot(value=make_green_waterfall_fig(), label="Greens PV Waterfall Decomposition")
+            with gr.Row():
+                gr.Plot(value=make_seat_comparison_fig(), label="Actual vs Counterfactual Seats")
+                gr.Plot(value=make_maori_heatmap_fig(), label="Tactical Vote-Splitting Heatmap")
+
+            gr.Markdown("### Per-Electorate Returns & Tactical Vote-Splitting Indices (Δ = Candidate % - Party %)")
+            summary_table, cf_table = get_maori_splitting_tables()
+            gr.DataFrame(summary_table)
+
+            gr.Markdown("### Counterfactual Statutory Sainte-Laguë Seat Allocation (Deducting Green Māori Excess PV)")
+            gr.DataFrame(cf_table)
 
         with gr.TabItem("Knife-Edge Contests & XGBoost"):
             gr.Markdown(

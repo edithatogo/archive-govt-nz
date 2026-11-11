@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Māori Electorate Vote-Splitting & Upstream Transfer Explorer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <style>
+    body {
+      background-color: #0e1117;
+      color: #c9d1d9;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 24px;
+    }
+    h1, h2, h3 {
+      color: #ffffff;
+      font-weight: 700;
+    }
+    .hero {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+    }
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .metric-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 16px;
+      text-align: center;
+    }
+    .metric-val {
+      font-size: 28px;
+      font-weight: 800;
+      color: #58a6ff;
+      margin-top: 6px;
+    }
+    .metric-sub {
+      font-size: 12px;
+      color: #8b949e;
+      margin-top: 4px;
+    }
+    .chart-container {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      color: #c9d1d9;
+    }
+    th, td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #30363d;
+      text-align: left;
+    }
+    th {
+      background: #21262d;
+      color: #ffffff;
+      font-size: 13px;
+    }
+    tr:hover {
+      background: #21262d;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .badge-green { background: #238636; color: #fff; }
+    .badge-red { background: #da3633; color: #fff; }
+    .badge-blue { background: #1f6feb; color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Secondary Effects of Vote-Splitting in Māori Electorates</h1>
+    <p>
+      An empirical quantification of the 2026 General Election’s upstream Party Vote (PV) transfer shock
+      and its downstream Sainte-Laguë list-seat entitlement consequences. Distinguishes upstream party vote
+      transfers from direct overhang mechanics.
+    </p>
+  </div>
+
+  <div class="metrics-grid">
+    <div class="metric-card">
+      <div>Green Māori Party Vote Share</div>
+      <div class="metric-val" style="color: #2ecc71;">45.45%</div>
+      <div class="metric-sub">vs 10.71% in General Electorates</div>
+    </div>
+    <div class="metric-card">
+      <div>Green Tactical Excess PV</div>
+      <div class="metric-val" style="color: #2ecc71;">+76,429</div>
+      <div class="metric-sub">>50k surge over 2023 baseline</div>
+    </div>
+    <div class="metric-card">
+      <div>Green National Vote Boost</div>
+      <div class="metric-val" style="color: #bc8cff;">+2.48 pp</div>
+      <div class="metric-sub">Lifted from ~11.0% to 13.50%</div>
+    </div>
+    <div class="metric-card">
+      <div>Downstream List Seat Impact</div>
+      <div class="metric-val" style="color: #f85149;">-3 Seats</div>
+      <div class="metric-sub">Greens 17 &rarr; 14 in Counterfactual</div>
+    </div>
+    <div class="metric-card">
+      <div>Overhang & House Contraction</div>
+      <div class="metric-val" style="color: #58a6ff;">131 &rarr; 129</div>
+      <div class="metric-sub">National Overhang 7 &rarr; 5 seats</div>
+    </div>
+  </div>
+
+  <div class="chart-container">
+    <div id="chartShares" style="height: 440px;"></div>
+  </div>
+
+  <div class="chart-container">
+    <div id="chartWaterfall" style="height: 440px;"></div>
+  </div>
+
+  <div class="chart-container">
+    <div id="chartComparison" style="height: 440px;"></div>
+  </div>
+
+  <div class="chart-container">
+    <div id="chartHeatmap" style="height: 460px;"></div>
+  </div>
+
+  <div class="chart-container">
+    <h3>Sainte-Laguë Allocation: Actual vs Counterfactual (Removing Green Māori Excess PV)</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Party</th>
+          <th>Actual PV</th>
+          <th>Actual Entitlement</th>
+          <th>Electorates</th>
+          <th>Actual List</th>
+          <th>Actual Total</th>
+          <th>Actual Overhang</th>
+          <th>Counterfactual PV</th>
+          <th>CF Entitlement</th>
+          <th>CF List</th>
+          <th>CF Total</th>
+          <th>Net Impact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>National Party</strong></td>
+          <td>800,000</td>
+          <td>36</td>
+          <td>43</td>
+          <td>0</td>
+          <td><strong>43</strong></td>
+          <td>7</td>
+          <td>800,000</td>
+          <td>38</td>
+          <td>0</td>
+          <td><strong>43</strong></td>
+          <td><span class="badge badge-blue">Overhang -2 (Entitlement +2)</span></td>
+        </tr>
+        <tr>
+          <td><strong>Labour Party</strong></td>
+          <td>680,000</td>
+          <td>31</td>
+          <td>16</td>
+          <td>15</td>
+          <td><strong>31</strong></td>
+          <td>0</td>
+          <td>680,000</td>
+          <td>32</td>
+          <td>16</td>
+          <td><strong>32</strong></td>
+          <td><span class="badge badge-green">+1 List Seat</span></td>
+        </tr>
+        <tr>
+          <td><strong>Green Party</strong></td>
+          <td>370,000</td>
+          <td>17</td>
+          <td>3</td>
+          <td>14</td>
+          <td><strong>17</strong></td>
+          <td>0</td>
+          <td>293,571</td>
+          <td>14</td>
+          <td>11</td>
+          <td><strong>14</strong></td>
+          <td><span class="badge badge-red">-3 List Seats</span></td>
+        </tr>
+        <tr>
+          <td><strong>ACT New Zealand</strong></td>
+          <td>280,000</td>
+          <td>13</td>
+          <td>1</td>
+          <td>12</td>
+          <td><strong>13</strong></td>
+          <td>0</td>
+          <td>280,000</td>
+          <td>13</td>
+          <td>12</td>
+          <td><strong>13</strong></td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td><strong>New Zealand First</strong></td>
+          <td>240,000</td>
+          <td>11</td>
+          <td>0</td>
+          <td>11</td>
+          <td><strong>11</strong></td>
+          <td>0</td>
+          <td>240,000</td>
+          <td>11</td>
+          <td>11</td>
+          <td><strong>11</strong></td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td><strong>Te Pāti Māori</strong></td>
+          <td>100,000</td>
+          <td>5</td>
+          <td>9</td>
+          <td>0</td>
+          <td><strong>9</strong></td>
+          <td>4</td>
+          <td>100,000</td>
+          <td>5</td>
+          <td>0</td>
+          <td><strong>9</strong></td>
+          <td>0 (Retains 4 Overhang)</td>
+        </tr>
+        <tr>
+          <td><strong>The Opportunity Party</strong></td>
+          <td>150,000</td>
+          <td>7</td>
+          <td>0</td>
+          <td>7</td>
+          <td><strong>7</strong></td>
+          <td>0</td>
+          <td>150,000</td>
+          <td>7</td>
+          <td>7</td>
+          <td><strong>7</strong></td>
+          <td>0</td>
+        </tr>
+        <tr style="background: #21262d; font-weight: bold;">
+          <td>Total Parliament</td>
+          <td>2,740,000</td>
+          <td>120</td>
+          <td>72</td>
+          <td>59</td>
+          <td>131</td>
+          <td>11</td>
+          <td>2,663,571</td>
+          <td>120</td>
+          <td>57</td>
+          <td>129</td>
+          <td>Chamber -2 seats</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const darkLayout = {
+      paper_bgcolor: '#161b22',
+      plot_bgcolor: '#161b22',
+      font: { color: '#c9d1d9', family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto' },
+      xaxis: { gridcolor: '#30363d', zerolinecolor: '#30363d' },
+      yaxis: { gridcolor: '#30363d', zerolinecolor: '#30363d' },
+      margin: { l: 60, r: 40, t: 60, b: 60 }
+    };
+
+    // 1. Party Vote Disparities Chart
+    Plotly.newPlot('chartShares', [
+      {
+        x: ['Green', 'Labour', 'Te Pāti Māori', 'National', 'ACT', 'NZ First', 'TOP'],
+        y: [45.45, 29.55, 20.45, 1.57, 0.49, 1.05, 0.43],
+        name: '7 Māori Electorates (220k PV)',
+        type: 'bar',
+        marker: { color: '#2ecc71' }
+      },
+      {
+        x: ['Green', 'Labour', 'Te Pāti Māori', 'National', 'ACT', 'NZ First', 'TOP'],
+        y: [10.71, 24.40, 2.18, 31.59, 11.06, 9.41, 5.91],
+        name: '64 General Electorates (2.52M PV)',
+        type: 'bar',
+        marker: { color: '#58a6ff' }
+      },
+      {
+        x: ['Green', 'Labour', 'Te Pāti Māori', 'National', 'ACT', 'NZ First', 'TOP'],
+        y: [13.50, 24.82, 3.65, 29.20, 10.22, 8.76, 5.47],
+        name: 'National Total (2.74M PV)',
+        type: 'bar',
+        marker: { color: '#bc8cff' }
+      }
+    ], {
+      ...darkLayout,
+      title: '<b>Party Vote Disparities: Māori vs General vs National (2026 Preliminary)</b>',
+      barmode: 'group',
+      yaxis: { title: 'Party Vote Share (%)', gridcolor: '#30363d' }
+    });
+
+    // 2. Green Party Waterfall Decomposition
+    Plotly.newPlot('chartWaterfall', [{
+      type: "waterfall",
+      orientation: "v",
+      measure: ["relative", "relative", "relative", "total"],
+      x: ["General Baseline (10.7%)", "Māori Baseline (at 10.7%)", "Māori Tactical Excess PV", "National Green Total"],
+      textposition: "outside",
+      text: ["270,000", "+23,571", "+76,429 (+2.48 pp)", "370,000 votes"],
+      y: [270000, 23571, 76429, 370000],
+      connector: { line: { color: "#30363d" } },
+      increasing: { marker: { color: "#2ecc71" } },
+      totals: { marker: { color: "#bc8cff" } }
+    }], {
+      ...darkLayout,
+      title: '<b>Decomposition of Green Party Vote: Upstream Māori Transfer Shock</b>',
+      yaxis: { title: 'Valid Party Votes', gridcolor: '#30363d' }
+    });
+
+    // 3. Counterfactual Comparison Bar Chart
+    Plotly.newPlot('chartComparison', [
+      {
+        x: ['National', 'Labour', 'Green', 'ACT', 'NZ First', 'TPM', 'TOP'],
+        y: [43, 31, 17, 13, 11, 9, 7],
+        name: 'Actual Parliament (131 seats, 11 overhang)',
+        type: 'bar',
+        marker: { color: '#58a6ff' }
+      },
+      {
+        x: ['National', 'Labour', 'Green', 'ACT', 'NZ First', 'TPM', 'TOP'],
+        y: [43, 32, 14, 13, 11, 9, 7],
+        name: 'Counterfactual without Green Māori Excess (129 seats, 9 overhang)',
+        type: 'bar',
+        marker: { color: '#ff9933' }
+      }
+    ], {
+      ...darkLayout,
+      title: '<b>Actual vs Counterfactual Parliamentary Seat Allocation</b>',
+      barmode: 'group',
+      yaxis: { title: 'Total Seats Allocated', gridcolor: '#30363d' }
+    });
+
+    // 4. Heatmap Across the 7 Māori Electorates
+    Plotly.newPlot('chartHeatmap', [{
+      z: [
+        [45.5, 29.5, 20.6, 61.2, +40.6, -45.5],
+        [47.0, 29.7, 19.1, 59.8, +40.7, -47.0],
+        [43.9, 30.6, 21.3, 63.4, +42.1, -43.9],
+        [45.0, 27.8, 23.1, 68.5, +45.4, -45.0],
+        [44.3, 29.8, 21.3, 60.1, +38.8, -44.3],
+        [45.1, 29.5, 21.0, 62.8, +41.8, -45.1],
+        [47.5, 29.8, 16.6, 57.4, +40.8, -47.5]
+      ],
+      x: ['Green PV %', 'Labour PV %', 'TPM PV %', 'TPM Candidate %', 'TPM Split Index (Δ)', 'Green Split Index (Δ)'],
+      y: ['Te Tai Tokerau', 'Tāmaki Makaurau', 'Hauraki-Waikato', 'Waiariki', 'Ikaroa-Rāwhiti', 'Te Tai Hauāuru', 'Te Tai Tonga'],
+      type: 'heatmap',
+      colorscale: 'Viridis'
+    }], {
+      ...darkLayout,
+      title: '<b>Tactical Vote-Splitting Heatmap Across the 7 Māori Electorates</b>'
+    });
+  </script>
+</body>
+</html>

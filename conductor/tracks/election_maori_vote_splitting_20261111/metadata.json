@@ -1,0 +1,24 @@
+{
+  "track_id": "election_maori_vote_splitting_20261111",
+  "title": "Māori Electorate Vote-Splitting and Upstream List-Seat Secondary Effects",
+  "status": "completed",
+  "created_at": "2026-11-11T13:45:00Z",
+  "completed_at": "2026-11-11T14:00:00Z",
+  "domain": "elections",
+  "dependencies": [
+    "election_canonical_contracts_20261110",
+    "election_mmp_overhang_engine_20261110"
+  ],
+  "outputs": [
+    "src/archive_govt_nz/domains/elections/maori_vote_splitting_engine.py",
+    "src/archive_govt_nz/domains/elections/generate_vote_splitting_figures.py",
+    "tests/test_elections_maori_splitting.py",
+    "derivatives/parquet/gold_maori_vote_splitting_analysis.parquet",
+    "figures/figure_maori_splitting_shares.png",
+    "figures/figure_green_waterfall_decomposition.png",
+    "figures/figure_excess_pv_and_list_impact.png",
+    "figures/figure_counterfactual_seat_comparison.png",
+    "figures/figure_maori_electorates_heatmap.png",
+    "spaces/nz-election-explorer/static/maori_vote_splitting_explorer.html"
+  ]
+}
