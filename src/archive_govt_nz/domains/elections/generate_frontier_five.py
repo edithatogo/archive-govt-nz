@@ -11,6 +11,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 import numpy as np
 from scipy.spatial import Voronoi, voronoi_plot_2d
 
@@ -104,7 +105,7 @@ def generate_kinetic_coalition_3d(output_path: Path) -> Path:
         ax.scatter(
             [p["x"]],
             [p["y"]],
-            [p["z"]],
+            [p["z"]],  # pyright: ignore[reportArgumentType]  # Axes3D scatter overload
             color=p["color"],
             s=node_size,
             edgecolors="#ffffff",
@@ -185,8 +186,8 @@ def generate_kinetic_coalition_3d(output_path: Path) -> Path:
     )
 
     # Styling
-    ax.xaxis.pane.fill = False
-    ax.yaxis.pane.fill = False
+    ax.xaxis.pane.fill = False  # pyright: ignore[reportAttributeAccessIssue]  # Matplotlib 3D runtime API
+    ax.yaxis.pane.fill = False  # pyright: ignore[reportAttributeAccessIssue]  # Matplotlib 3D runtime API
     ax.zaxis.pane.fill = False
     ax.tick_params(colors="#8b949e", labelsize=8)
     ax.grid(color="#30363d", linestyle="--", alpha=0.3)
@@ -352,7 +353,7 @@ def generate_overhang_voronoi(output_path: Path) -> Path:
 
     # Custom legend
     legend_elements = [
-        plt.Line2D(
+        Line2D(
             [0],
             [0],
             marker="s",
@@ -361,7 +362,7 @@ def generate_overhang_voronoi(output_path: Path) -> Path:
             markerfacecolor="#00529F",
             markersize=10,
         ),
-        plt.Line2D(
+        Line2D(
             [0],
             [0],
             marker="s",
@@ -370,7 +371,7 @@ def generate_overhang_voronoi(output_path: Path) -> Path:
             markerfacecolor="#D82A20",
             markersize=10,
         ),
-        plt.Line2D(
+        Line2D(
             [0],
             [0],
             marker="s",
@@ -379,7 +380,7 @@ def generate_overhang_voronoi(output_path: Path) -> Path:
             markerfacecolor="#800020",
             markersize=10,
         ),
-        plt.Line2D(
+        Line2D(
             [0],
             [0],
             marker="o",
