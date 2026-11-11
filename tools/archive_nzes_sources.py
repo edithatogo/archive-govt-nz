@@ -140,11 +140,16 @@ def store(objects_dir: Path, data: bytes, meta: dict) -> dict:
 
 
 def http_get(url: str, accept: str = "*/*") -> tuple[int, str, bytes]:
+    """Capture only HTTPS resources; never process local or custom URL schemes."""
+    parsed = urllib.parse.urlparse(url)
+    if parsed.scheme != "https" or not parsed.hostname:
+        msg = "Only HTTPS publisher resources are permitted"
+        raise ValueError(msg)
     request = urllib.request.Request(
         url, headers={"User-Agent": USER_AGENT, "Accept": accept}
-    )
+    )  # noqa: S310 -- HTTPS scheme checked
     try:
-        with urllib.request.urlopen(request, timeout=90) as response:
+        with urllib.request.urlopen(request, timeout=90) as response:  # noqa: S310 -- HTTPS scheme checked
             return (
                 response.status,
                 response.headers.get("content-type", ""),
@@ -179,7 +184,7 @@ def browser_warmup(url: str, port: int, tries: int = 40) -> bool:
     import subprocess
 
     script = _CDP_WARMUP.format(url=json.dumps(url), port=port, tries=tries)
-    out = subprocess.run(
+    out = subprocess.run(  # noqa: S603,S607 -- fixed node argv, no shell
         ["node", "--input-type=module", "-e", script],
         capture_output=True,
         text=True,
