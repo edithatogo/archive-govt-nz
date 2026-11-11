@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>New Zealand General Election 2026: Electoral Analysis & Overhang Modeling</title>
   <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true, theme: 'dark', securityLevel: 'loose' });</script>
   <style>
     :root {
       --bg: #0e1117;
@@ -543,33 +545,37 @@
       <div class="note-box" style="border-left: 4px solid var(--accent); background: #111822; margin-bottom: 24px;">
         <div class="note-title" style="color:var(--accent); font-size:1.05rem;">The Dual-Engine Causal Model of the 2026 MMP Overhang</div>
         <p>Econometric decomposition reveals that the 11-seat overhang was not an idiosyncratic polling error, but the synthesis of two independent, structural feedback loops interacting via the Sainte-Laguë quotient series:</p>
-        <div style="background:#0d1117; border:1px solid var(--border); border-radius:6px; padding:12px; font-family:monospace; font-size:0.8rem; overflow-x:auto; line-height:1.4; color:#c9d1d9;">
-┌────────────────────────────────────────────────────────┐        ┌────────────────────────────────────────────────────────┐
-│     ENGINE 1: PROGRESSIVE STRATEGIC SPLIT              │        │      ENGINE 2: CONSERVATIVE SIPHON &                   │
-│            (Māori Electorates)                         │        │       PROGRESSIVE COORDINATION FAILURE                 │
-│                                                        │        │             (General Electorates)                      │
-└───────────────────────────┬────────────────────────────┘        └───────────────────────────┬────────────────────────────┘
-                            │                                                                 │
-            ┌───────────────┴───────────────┐                                 ┌───────────────┴───────────────┐
-            ▼                               ▼                                 ▼                               ▼
-     [Roll Option Shock]         [Tactical Split-Ticket]               [Left Candidate Split]        [Right Party Siphon]
-     Continuous roll transfers   TPM Candidate + Green PV              Labour & Greens divide        National PV defection to
-     creates Māori roll          (+76,429 tactical Green PV;           51-55% in 14 seats;           ACT, NZ First & TOP (41.4%);
-     super-majorities            Greens surge to 45.5%)                Nat wins on 41-45% plurality  Nat PV drops to 29.2%
-            │                               │                                 │                               │
-            ▼                               ▼                                 ▼                               ▼
-     [TPM Sweeps 7 Seats]        [Green Quotients Inflated]            [National Wins 43 Seats]      [Nat Entitlement = 36]
-     Wins 9 seats total;         Greens gain +3 list seats;            Candidate wins inflated       Sainte-Laguë ceiling
-     entitlement is only 4       strips 2 entitlements from Nat        by anti-incumbent split       compressed by minor parties
-            │                               │                                 │                               │
-            └───────────────┬───────────────┘                                 └───────────────┬───────────────┘
-                            ▼                                                                 ▼
-               Te Pāti Māori Overhang (+4.0)                                     National Party Overhang (+7.0)
-                            │                                                                 │
-                            └───────────────────────────────┬─────────────────────────────────┘
-                                                            ▼
-                                               Total Overhang = +11.0 Seats
-                                                House Expands: 120 ➔ 131
+        <div class="mermaid" style="background:#0d1117; border:1px solid var(--border); border-radius:8px; padding:16px; margin-top:12px; display:flex; justify-content:center; overflow-x:auto;">
+flowchart TD
+    subgraph E1["<b>ENGINE 1: PROGRESSIVE STRATEGIC SPLIT</b><br/><i>(Māori Electorates)</i>"]
+        direction TB
+        A1["<b>Continuous Māori Roll Switch Shock</b><br/>2022 Act year-round transfers<br/>concentrate high-propensity voters"] --> B1["<b>Te Pāti Māori Sweep</b><br/>Wins 9 constituency seats<br/><i>(Proportional entitlement = 5)</i>"]
+        A2["<b>Tactical Dual-Ballot Split</b><br/>TPM Candidate + Green Party Vote<br/><i>+76,429 tactical Green PV (+2.48 pp)</i>"] --> B2["<b>Green Quotients Inflated</b><br/>Greens gain +3 list seats (14 to 17)<br/><i>Strips 2 proportional quotas from Nat</i>"]
+        B1 --> O1["<b>Te Pāti Māori Overhang</b><br/><b>+4.0 Uncompensated Seats</b>"]
+    end
+
+    subgraph E2["<b>ENGINE 2: CONSERVATIVE SIPHON & LEFT FRAGMENTATION</b><br/><i>(General Electorates)</i>"]
+        direction TB
+        C1["<b>Progressive Coordination Failure</b><br/>Labour & Greens split 51-55% in 14 seats<br/><i>National wins on 41-45% pluralities</i>"] --> D1["<b>National Seat Surge</b><br/>Wins 43 electorate seats<br/><i>(Expected without split: 29-35 seats)</i>"]
+        C2["<b>Conservative Minor-Party Siphon</b><br/>41.4% vote to ACT, NZ First & TOP<br/><i>Compresses National PV to 29.2%</i>"] --> D2["<b>National Quota Compressed</b><br/>Sainte-Laguë entitlement drops to 36<br/><i>(Compressed by Green quotient surge)</i>"]
+        D1 & D2 --> O2["<b>National Party Overhang</b><br/><b>+7.0 Uncompensated Seats</b>"]
+    end
+
+    O1 & O2 --> TOT["<b>TOTAL 2026 MMP OVERHANG = +11.0 SEATS</b><br/>Chamber Expands: 120 ➔ 131 Statutory Seats<br/><i>Governing Majority Threshold = 66 Seats | National & TPM List MPs = 0</i>"]
+
+    style E1 fill:#0f1d15,stroke:#2ea043,stroke-width:2px,color:#fff
+    style E2 fill:#1f1912,stroke:#d29922,stroke-width:2px,color:#fff
+    style O1 fill:#2e1518,stroke:#f85149,stroke-width:2px,color:#fff
+    style O2 fill:#2e1518,stroke:#f85149,stroke-width:2px,color:#fff
+    style TOT fill:#122138,stroke:#58a6ff,stroke-width:3px,color:#fff
+    style A1 fill:#161b22,stroke:#30363d,color:#c9d1d9
+    style A2 fill:#161b22,stroke:#30363d,color:#c9d1d9
+    style B1 fill:#161b22,stroke:#30363d,color:#c9d1d9
+    style B2 fill:#161b22,stroke:#30363d,color:#c9d1d9
+    style C1 fill:#161b22,stroke:#30363d,color:#c9d1d9
+    style C2 fill:#161b22,stroke:#30363d,color:#c9d1d9
+    style D1 fill:#161b22,stroke:#30363d,color:#c9d1d9
+    style D2 fill:#161b22,stroke:#30363d,color:#c9d1d9
         </div>
       </div>
 

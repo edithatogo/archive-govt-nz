@@ -1,0 +1,92 @@
+name: Stats NZ boundary capture
+
+# Re-captures Stats NZ electorate boundaries from datafinder (Koordinates).
+#
+# Two credentials are involved and they are NOT interchangeable:
+#   * KOORDINATES_API_KEY — free Koordinates API token (exports:read, exports:write).
+#     Required for geometry export; the export API answers HTTP 401 without it.
+#   * STATS_NZ_API_KEY — Stats NZ portal subscription key. It authenticates the
+#     Aotearoa Data Explorer SDMX API and the datafinder WFS gateway, but the
+#     datafinder spatial-query service rejects it with HTTP 403 invalid-api-key.
+#
+# Layer metadata and attachment CSVs are public and need no credential.
+#
+# The 2026 official count is due on 27 November 2026, which is what the cron targets.
+# Set repository variable BOUNDARY_CAPTURE=true to let the schedule run.
+
+on:
+  schedule:
+    - cron: "0 8 28 11 *"    # 21:00 NZDT on 28 November (08:00 UTC)
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: "Publish captured objects to Hugging Face after capture"
+        required: true
+        default: false
+        type: boolean
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    name: Capture boundaries
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check enablement and credentials
+        id: gate
+        env:
+          KOORDINATES_API_KEY: ${{ secrets.KOORDINATES_API_KEY }}
+        run: |
+          if [ "${{ github.event_name }}" != "workflow_dispatch" ] && [ "${{ vars.BOUNDARY_CAPTURE }}" != "true" ]; then
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Boundary capture is disabled. Set repository variable BOUNDARY_CAPTURE=true to enable the schedule."
+            exit 0
+          fi
+          if [ -z "$KOORDINATES_API_KEY" ]; then
+            echo "::error::KOORDINATES_API_KEY secret is not set; geometry export cannot authenticate."
+            exit 1
+          fi
+          echo "enabled=true" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Python
+        if: steps.gate.outputs.enabled == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+
+      - name: Install dependencies
+        if: steps.gate.outputs.enabled == 'true'
+        run: |
+          pip install uv
+          uv sync --locked --no-dev
+
+      - name: Capture public metadata and attachments
+        if: steps.gate.outputs.enabled == 'true'
+        run: uv run python scripts/capture_datafinder_attachments.py
+
+      - name: Capture boundary geometry
+        if: steps.gate.outputs.enabled == 'true'
+        env:
+          KOORDINATES_API_KEY: ${{ secrets.KOORDINATES_API_KEY }}
+        run: uv run python scripts/capture_datafinder_exports.py
+
+      - name: Publish to Hugging Face
+        if: steps.gate.outputs.enabled == 'true' && inputs.publish
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          uv run python tools/publish_to_huggingface.py \
+            --repo-id edithatogo/archive-govt-nz-global \
+            --objects-dir objects --evidence-dir evidence
+
+      - name: Upload capture receipts
+        if: steps.gate.outputs.enabled == 'true' && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: datafinder-capture-receipts
+          path: evidence/datafinder-*.json
+          if-no-files-found: warn
