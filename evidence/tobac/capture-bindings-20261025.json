@@ -987,7 +987,7 @@
     }
   ],
   "qualification": "CAS/WARC fixity and identity screen only; not extraction, scientific, full-document or redistribution approval",
-  "register_sha256": "f5b84780904c7246aa812857b2baca38e964cf0114011df813d08296d7d3da40",
+  "register_sha256": "8ce4cb38d98d5415c3015a5eeba40315afbde5b0e3e7bfb4f1235eb4f91ec093",
   "capture_receipt_sha256": [
     "648e65e974de8d603fd94cd6ef9889c97293a7ac85428594747b54fc6466f410",
     "e402bdc96b0e24087c6be57acfde81019fa5a3dbc6f9caedd6295cc497f5cfb6",

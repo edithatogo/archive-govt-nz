@@ -180,6 +180,42 @@
           "licence": "https://creativecommons.org/licenses/by/4.0/",
           "policy": "https://www.customs.govt.nz/about-us/corporate-publications"
         }
+      },
+      "https://www.customs.govt.nz/media/up4pimtv/oia-25-395-_.pdf": {
+        "f5e0588978fa7bb4684a47925b9039ea122afabf76abe0cf43dcb84aac338304": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "New Zealand Customs Service, Crown copyright. OIA 25-395 proactive release. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.customs.govt.nz/about-us/corporate-publications"
+        }
+      },
+      "https://www.customs.govt.nz/media/u0hhdp2f/oia-25-083-proactive-release.pdf": {
+        "6f2b925e74e756d34b08ad613cc35e6127b77d55c3ef137aa7ad8bb99535fbd5": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "New Zealand Customs Service, Crown copyright. OIA 25-083 proactive release. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.customs.govt.nz/about-us/corporate-publications"
+        }
+      },
+      "https://www.treasury.govt.nz/sites/default/files/2024-04/oia-20240151.pdf": {
+        "4aadd9a2384220b116b83d0dc71d212fd717dd46bb01798f3c5c34738ec14ab2": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "The Treasury, Crown copyright. OIA 20240151. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.treasury.govt.nz/about/accessing-our-information/copyright"
+        }
+      },
+      "https://www.treasury.govt.nz/sites/default/files/2025-07/oia-20250377.pdf": {
+        "69c71ac857cba94395486559a679b343351e47e7b834a9ee792682288c912a72": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "The Treasury, Crown copyright. OIA 20250377. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.treasury.govt.nz/about/accessing-our-information/copyright"
+        }
       }
     }
   },
