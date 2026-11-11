@@ -359,6 +359,15 @@ class WetwareSlimeMouldSimulation(BaseModel):
     vein_network_density: float = Field(ge=0.0, le=1.0)
     coalition_fusion_zones: list[str]
     starvation_desert_zones: list[str]
+    figure_caption: str = (
+        "Figure B1: 48-Hour biological network optimization of Physarum polycephalum on nutrient agar "
+        "moulded to Aotearoa relief topography, mapping chemo-attractant foraging across voting booths."
+    )
+    methodological_note_and_interpretation: str = (
+        "Physarum polycephalum computes Steiner minimum trees via protoplasmic tube oscillation. "
+        "Vein diameter scales with nutrient flux, resolving spatial competition between party attractors "
+        "and uncovering natural biological coalition pathways across topographical barriers."
+    )
 
 
 class PsychoacousticSonificationModel(BaseModel):
@@ -370,6 +379,15 @@ class PsychoacousticSonificationModel(BaseModel):
     ultrasonic_radiation_pressure_pa: float
     haptic_vibration_profile_hz: list[float]
     coalition_haptic_friction: dict[str, float]
+    figure_caption: str = (
+        "Figure B2: Psychoacoustic harmonic dissonance and ultrasonic haptic radiation pressure "
+        "quantifying parliamentary fragmentation and coalition shear stress."
+    )
+    methodological_note_and_interpretation: str = (
+        "Party vote percentages are mapped to Helmholtz fundamental frequencies. Chord dissonance "
+        "scores quantify parliamentary friction, while ultrasonic acoustic radiation pressure models "
+        "the physical mechanical turbulence of governing coalition negotiations."
+    )
 
 
 class NeuralManifoldLandscape(BaseModel):
@@ -381,6 +399,15 @@ class NeuralManifoldLandscape(BaseModel):
     electorate_coordinates: list[dict[str, Any]]
     latent_canyons: list[dict[str, Any]]
     elevation_surface_grid: dict[str, Any]
+    figure_caption: str = (
+        "Figure B3: High-dimensional UMAP embedding and neural manifold landscape of 72 electorates "
+        "projected across 12 socioeconomic, demographic, and behavioral gravity coordinates."
+    )
+    methodological_note_and_interpretation: str = (
+        "Nonlinear manifold projection uncovers deep topological features invisible in linear models, "
+        "specifically identifying the 'Protest Vote Gravity Canyon' linking urban youth districts "
+        "with disenfranchised provincial working-class communities."
+    )
 
 
 class QuantumSuperpositionState(BaseModel):
@@ -393,6 +420,15 @@ class QuantumSuperpositionState(BaseModel):
     density_matrix_real: list[list[float]]
     density_matrix_imag: list[list[float]]
     measurement_collapse_probabilities: dict[str, float]
+    figure_caption: str = (
+        "Figure B4: Entangled 4-qubit quantum statevector density matrix representing the uncounted "
+        "399,000 special vote wave-function across marginal parliamentary seats."
+    )
+    methodological_note_and_interpretation: str = (
+        "Special votes exist in an unobserved superposition of states until official count declaration. "
+        "Entangled Bell states model correlated demographic shifts where counting special votes in one "
+        "marginal electorate simultaneously alters the probability distribution of adjacent contests."
+    )
 
 
 class AutonomousMultiAgentParliament(BaseModel):
@@ -405,6 +441,15 @@ class AutonomousMultiAgentParliament(BaseModel):
     boids_flocking_parameters: dict[str, float]
     agent_whip_defiance_rates: dict[str, float]
     simulation_ticks: int = 500
+    figure_caption: str = (
+        "Figure B5: Multi-agent Reynolds flocking simulation of 131 autonomous MPs undergoing "
+        "legislative divisions and Westminster hemicycle seating under ideological pull."
+    )
+    methodological_note_and_interpretation: str = (
+        "Multi-agent legislative dynamics combine party whip flocking forces with policy attractor "
+        "gravitation, demonstrating that majority coalition stability depends on minimizing cross-bench "
+        "entropy during conscience votes and urgency debates."
+    )
 
 
 # Causal Overhang Attribution & Econometric Identification Contracts
@@ -603,6 +648,90 @@ class SystemWideVoteSplittingAnalysis(BaseModel):
     coalition_threshold_actual: int = 66
     coalition_threshold_nominal: int = 61
     coalition_arithmetic_impact: str
+
+
+# -----------------------------------------------------------------------------
+# Standardized Methodological Treatment & Caption Metadata Contract
+# -----------------------------------------------------------------------------
+
+
+class FigureMethodologicalTreatment(BaseModel):
+    """Standardized publication caption and methodological metadata contract."""
+
+    figure_id: str
+    title: str
+    figure_caption: str
+    methodological_note_and_interpretation: str
+    statutory_basis: str | None = None
+    data_vintage: str = "2026 Preliminary"
+    reproducibility_command: str | None = None
+
+
+# -----------------------------------------------------------------------------
+# Alternative Electoral Rules & Counterfactual Policy Systems
+# -----------------------------------------------------------------------------
+
+
+class CounterfactualVotingRuleScenario(BaseModel):
+    """Model of parliamentary composition under an alternative voting rule/policy."""
+
+    rule_id: str
+    rule_name: str
+    description: str
+    statutory_mechanism: str
+    total_house_seats: int
+    majority_threshold: int
+    party_seats: dict[str, int]
+    overhang_seats: dict[str, int]
+    viable_coalitions: list[dict[str, Any]]
+    proportionality_gallagher_index: float
+    governance_implication: str
+
+
+class CounterfactualVotingRulesAnalysis(BaseModel):
+    """Comparative analysis across alternative legislative rules and voting reforms."""
+
+    analysis_timestamp: datetime
+    baseline_rule_id: str = "mmp_status_quo_2026"
+    scenarios: list[CounterfactualVotingRuleScenario]
+    methodological_note_and_interpretation: str
+
+
+# -----------------------------------------------------------------------------
+# Representation Commission Boundaries, Quota Formula & Geography
+# -----------------------------------------------------------------------------
+
+
+class RedistributionCycleSummary(BaseModel):
+    """Historical census boundary redistribution parameters (Electoral Act 1993)."""
+
+    year: int
+    general_electorates_south: int = 16
+    general_electorates_north: int
+    maori_electorates: int
+    total_electorates: int
+    quota_south_island: int
+    quota_north_island: int
+    quota_maori: int
+    tolerance_pct: float = 5.0
+    fastest_growing_regions: list[str]
+    geographic_bloat_electorates: list[str]
+
+
+class ElectorateBoundaryGeographyAnalysis(BaseModel):
+    """Spatial electoral geography, population quotas, and gerrymandering analysis."""
+
+    analysis_timestamp: datetime
+    statutory_framework: str = "Electoral Act 1993, Sections 35, 45, 269"
+    tolerance_limit_pct: float = 5.0
+    south_island_fixed_seats: int = 16
+    historical_cycles: list[RedistributionCycleSummary]
+    unintentional_gerrymander_efficiency_gap: float
+    urban_concentration_wasted_vote_pct: float
+    rural_provincial_efficiency_advantage_pct: float
+    maori_electorate_8th_seat_threshold: dict[str, Any]
+    methodological_note_and_interpretation: str
+
 
 
 

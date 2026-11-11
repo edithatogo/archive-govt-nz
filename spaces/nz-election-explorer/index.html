@@ -391,6 +391,10 @@
           </tbody>
         </table>
       </div>
+      <div class="note-box" style="margin-top: 16px;">
+        <div class="note-title">Methodological Note & Interpretation</div>
+        <b>Sainte-Laguë & Overhang Allocation Mechanics:</b> Schedule 4 of the <i>Electoral Act 1993</i> mandates the Webster/Sainte-Laguë divisor method (1, 3, 5, 7, ...), which minimizes proportional representation bias. Because New Zealand MMP guarantees all electorate winners a seat regardless of party vote entitlement, overhangs occur whenever a party's constituency victories exceed its proportional entitlement. Because there is no statutory mechanism for compensatory leveling seats (such as Germany's <i>Ausgleichsmandate</i>), uncompensated overhangs directly expand the legislature (here to 131 seats), inflating the working majority requirement from 61 to 66 seats.
+      </div>
     </div>
 
     <!-- TAB: MĀORI VOTE-SPLITTING & SECONDARY EFFECTS -->
@@ -468,6 +472,11 @@
           <h4 style="margin-top:0;">8. Full 71-Seat Tactical Split Differential Landscape</h4>
           <img src="static/figure_all_seats_split_differential_landscape.png" style="width:100%; border-radius:4px;" alt="Split Differential Landscape">
         </div>
+
+        <div class="note-box" style="margin-top: 16px;">
+          <div class="note-title">Methodological Note & Interpretation</div>
+          <b>Secondary Effects Synthesis:</b> Tactical dual-ballot splitting in the 7 Māori electorates transferred an estimated +76,429 excess Party Votes to the Green Party, inflating their national quotient to secure +3 list seats. Two of these list seats were stripped directly from National's quotient ceiling, expanding National's overhang from +5 to +7 seats. Concurrently, progressive coordination failure in 14 General electorates allowed National candidates to win on 41%–45% pluralities, swelling National constituency victories to 43 and causing complete list-seat extinction (0 list MPs).
+        </div>
       </div>
     </div>
 
@@ -497,7 +506,8 @@
         </tbody>
       </table>
       <div class="note-box">
-        <div class="note-title">Empirical Prediction from Historical Election Cycles (2014–2023)</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
+        <p><b>Empirical Prediction from Historical Election Cycles (2014–2023):</b></p>
         <ul>
           <li><b>Nelson (National lead +72):</b> <b>82.0% empirical probability of flipping to Labour</b>. Historical leftward drift on special votes (~1.65 pp across 5,200 special votes) yields an estimated net gain of ~90 to 110 votes to Labour.</li>
           <li><b>Te Atatū (Labour lead +131):</b> <b>95.4% empirical probability of Labour holding</b>. Special votes are projected to expand Labour's margin to +220 to +260.</li>
@@ -898,6 +908,10 @@ flowchart TD
           <tr><td><b>PC3: Constitutional Alignment</b></td><td>16.5%</td><td>Māori Roll Transfers (+0.84), Treaty Visibility Index (+0.73)</td><td>Te Pāti Māori, ACT</td></tr>
         </tbody>
       </table>
+      <div class="note-box" style="margin-top: 16px;">
+        <div class="note-title">Methodological Note & Interpretation</div>
+        <b>Multivariate SHAP & Demographic Drivers:</b> Tree-based Shapley Additive Explanations (SHAP) and Principal Component Analysis over Stats NZ 2023 Census electorate variables explain 79.0% of total variance across party vote distributions. Housing tenure (renter proportion) and median age form the primary axis of progressive third-party divergence (Greens and TOP), while household food and utility inflation sensitivity drives populist minor party mobilization (NZ First and ACT).
+      </div>
     </div>
 
     <!-- TAB 6: PARLIAMENTARY ALIGNMENT -->
@@ -905,6 +919,10 @@ flowchart TD
       <h2>Parliamentary Caucus Alignment Model</h2>
       <p style="color:var(--text-muted)">An agent-based simulation modeling ideological alignment, caucus discipline, and legislative coalition stability across the 131 MPs.</p>
       <iframe src="boids_parliament.html" class="sim-frame"></iframe>
+      <div class="note-box" style="margin-top: 16px;">
+        <div class="note-title">Methodological Note & Interpretation</div>
+        <b>Multi-Agent Legislative Dynamics:</b> The 131-MP autonomous agent simulation models Reynolds flocking forces (cohesion, alignment, separation) parameterized by individual party whip compliance and spatial ideological coordinates. Testing legislative bills demonstrates that while formal governing coalitions require 66 seats, cross-bench alignments spontaneously coalesce on regulatory interventions (such as grocery duopoly divestiture or infrastructure fast-tracking), overcoming executive minority gridlock.
+      </div>
     </div>
 
     <!-- TAB 7: PUBLICATION FIGURES & MAPS -->
@@ -931,7 +949,7 @@ flowchart TD
       </div>
       <img src="frontier_1_kinetic_coalition_3d.png" style="width:100%; max-width:960px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="3D Kinetic Coalition Topology">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Interactive 3D particle simulation where political parties are mapped as heavy nodes in a gravitational physics engine, with mass equal to total seats (including National's +7 and TPM's +4 overhangs).</p>
         <p><b>The Novelty:</b> Coalition building modeled as a structural stability surface: nodes snap together with tension spring bonds, causing the topological grid to warp under ideological strain.</p>
         <p><b>Methodology:</b> Multi-body gravitational potential well simulation ($Z = -\sum m_i / (d_i^2 + \epsilon)$) combined with Hookean spring networks.</p>
@@ -942,7 +960,7 @@ flowchart TD
       <h3>2. Multi-Dimensional Electorate 'Overhang' Voronoi Tessellations</h3>
       <img src="frontier_2_overhang_voronoi.png" style="width:100%; max-width:900px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Overhang Voronoi Tessellations">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Voter-density Voronoi cells scaled by total votes cast (including the 25% advance voting surge).</p>
         <p><b>The Novelty:</b> Electorates where a candidate won a plurality without a majority float on a glass-like secondary layer with alpha elevation depth.</p>
         <p><b>Methodology:</b> Delaunay triangulation dual Voronoi decomposition weighted by advance voting turnout density.</p>
@@ -953,7 +971,7 @@ flowchart TD
       <h3>3. Hyper-Dimensional Parallel Coordinates for Vote Splitting</h3>
       <img src="frontier_3_parallel_coordinates.png" style="width:100%; max-width:900px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Parallel Coordinates for Vote Splitting">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Parallel coordinates plot with 4 vertical axes (Electorate Type, Candidate Vote, Party Vote, Victory Margin) connected by neon thread splines.</p>
         <p><b>The Novelty:</b> Tracks the flow of hundreds of thousands of ticket-splitting voters across the dual MMP ballot.</p>
         <p><b>Methodology:</b> Parallel coordinates spline flow mapping joint distributions of split ballots from Electoral Commission returns.</p>
@@ -964,7 +982,7 @@ flowchart TD
       <h3>4. Special Vote Probability Cones (Generative Fan Charts)</h3>
       <img src="frontier_4_special_votes_cone.png" style="width:100%; max-width:900px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Special Votes Probability Cone">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Meteorological hurricane-style uncertainty cone tracking governing bloc seats over the 20-day tallying timeline, with drifting stochastic ember particles for ~399,000 special votes.</p>
         <p><b>The Novelty:</b> Replaces static tracking bars with an expanding gradient cone of uncertainty (50%, 80%, 95% CIs) showing the probability of breaching the 66-seat threshold.</p>
         <p><b>Methodology:</b> Gaussian process diffusion cone parameterized with historical -1.65 pp leftward special vote drift distributions.</p>
@@ -975,7 +993,7 @@ flowchart TD
       <h3>5. Semantic Policy Visibility Networks (CiteCompass AI Visibility Monitor)</h3>
       <img src="frontier_5_semantic_policy_network.png" style="width:100%; max-width:900px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Semantic Policy Visibility Network">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Bimodal semantic network mapping voter concerns (Cost of Living, Supermarket Reform, Healthcare, Treaty Principles) to political party visibility.</p>
         <p><b>The Novelty:</b> Graphs topical gravitation hubs and generative AI citation frequency explaining why 41.4% of voters fractured toward third parties.</p>
         <p><b>Methodology:</b> CiteCompass AI visibility monitoring data cross-referenced with Google Trends search volume and generative citation matrices.</p>
@@ -988,7 +1006,7 @@ flowchart TD
       <h3>Figure 1: Geographic Electorate Outcomes & Critical Overhang Epicenters</h3>
       <img src="electorate_map_2026.png" style="width:100%; max-width:850px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Electorate Geographic Map 2026">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Nationwide geographic distribution across all 72 general and Māori electorates. Blue markers denote National wins (43), red denote Labour (16), green denote Greens (3), yellow denote ACT (1), and maroon denote Te Pāti Māori (9). Red halos highlight the 5 critical battleground contests where preliminary margins are below 250 votes.</p>
         <p><b>What It Adds:</b> Visualizes the spatial clustering that drives the 11-seat overhang: National sweeps regional general electorates while Te Pāti Māori sweeps the Māori electorates, generating substantial seat counts without proportional party votes.</p>
         <p><b>Methodology:</b> Synthesized from Electoral Commission official polling district centroids and Stats NZ boundary coordinate data.</p>
@@ -998,7 +1016,7 @@ flowchart TD
       <h3>Figure 2: Longitudinal Evolution of Overhang Seats (1996–2026)</h3>
       <img src="overhang_expansion_timeline.png" style="width:100%; max-width:850px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Longitudinal Overhang Timeline">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Longitudinal bar chart of all 10 MMP elections in New Zealand history (1996 to 2026). Dark bars show statutory baseline seats (120); coral red stacked bars show uncompensated overhang expansions.</p>
         <p><b>What It Adds:</b> Contextualizes the 2026 outcome as a structural expansion. Overhangs previously occurred in 2005 (+1), 2008 (+2), 2011 (+1), and 2023 (+2). The 2026 provisional +11 seats is the largest overhang in Commonwealth MMP history.</p>
         <p><b>Methodology:</b> Statutory Sainte-Laguë audit across all 10 election cycles based on Electoral Commission gazetted returns.</p>
@@ -1008,7 +1026,7 @@ flowchart TD
       <h3>Figure 3: Special Votes Shift and Electorate Flip Probabilities</h3>
       <img src="knife_edge_special_votes.png" style="width:100%; max-width:850px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Knife-Edge Special Votes Shift">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Horizontal paired bar chart contrasting preliminary margins with projected official margins after adding ~399,000 special votes, annotating flip probabilities for Nelson, Te Atatū, Banks Peninsula, Mount Albert, and Hauraki-Waikato.</p>
         <p><b>What It Adds:</b> Quantifies the leftward swing of special votes (-1.65 pp candidate swing) and demonstrates that Nelson has an 82.0% probability of flipping to Labour (+23 projected final margin).</p>
         <p><b>Methodology:</b> Calibrated XGBoost classifier trained on 710 historical electorate contests combined with 10,000-run Monte Carlo special vote simulation.</p>
@@ -1018,7 +1036,7 @@ flowchart TD
       <h3>Figure 4: MMP Sainte-Laguë Proportional Entitlement vs 11-Seat Overhang Expansion</h3>
       <img src="sainte_lague_overhang_anatomy.png" style="width:100%; max-width:850px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Sainte-Lague Overhang Anatomy">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Party-by-party comparison of proportional 120-seat entitlement vs actual caucus size won in the expanded 131-seat Parliament.</p>
         <p><b>What It Adds:</b> Isolates the exact overhang mechanism: National receives +7 overhang seats (43 seats won vs 36 entitled) and Te Pāti Māori receives +4 overhang seats (9 seats won vs 5 entitled).</p>
         <p><b>Methodology:</b> Schedule 4 Sainte-Laguë odd-integer quotient allocation ($V / (2s+1)$) under Section 191 of the Electoral Act 1993.</p>
@@ -1028,7 +1046,7 @@ flowchart TD
       <h3>Figure 5: Disaggregated Campaign Finance: Cost per Caucus MP vs Local Electorate MP</h3>
       <img src="cost_per_seat_breakdown.png" style="width:100%; max-width:850px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Cost per Seat Breakdown">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Dual financial metric comparing total party spend per elected MP against candidate spend per local electorate MP won across all 7 parliamentary parties.</p>
         <p><b>What It Adds:</b> Exposes the extreme capital inefficiency of contesting single-member seats for minor parties without regional geographic concentration: ACT spent $350k per local seat, while NZ First and TOP won zero electorates despite running candidates nationwide.</p>
         <p><b>Methodology:</b> Electoral Commission compliance expenditure returns cross-referenced with electorate candidate filings.</p>
@@ -1038,7 +1056,7 @@ flowchart TD
       <h3>Figure 6: Donor Concentration Lorenz Curves & Gini Inequality Across Parties</h3>
       <img src="donor_gini_lorenz.png" style="width:100%; max-width:850px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Donor Lorenz Gini Inequality">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Empirical Lorenz inequality curves plotting cumulative share of donors against cumulative share of total donations, with explicit Gini coefficient calculations.</p>
         <p><b>What It Adds:</b> Contrasts the high financial concentration of right-of-centre parties (ACT Gini 0.79, National Gini 0.74) against the grassroots donor dispersion of the Greens (0.42) and Labour (0.51).</p>
         <p><b>Methodology:</b> Non-parametric Gini coefficient computation across all declared donations above and below the $20,000 threshold.</p>
@@ -1048,7 +1066,7 @@ flowchart TD
       <h3>Figure 7: Sharp Regression Discontinuity Design (RDD): Candidate Spending Return at Cutoff</h3>
       <img src="rdd_causal_inference.png" style="width:100%; max-width:850px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="RDD Causal Inference">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Scatter plot and local polynomial linear regressions of candidate campaign expenditure against victory margin, highlighting the discrete discontinuity jump at the zero-margin threshold.</p>
         <p><b>What It Adds:</b> Establishes causal identification of candidate advertising spend returns, isolating the treatment effect from district partisan bias and candidate charisma.</p>
         <p><b>Methodology:</b> Sharp RDD within an optimal bandwidth of $\pm 500$ votes, using statutory expenditure limits as an instrumental variable in 2SLS.</p>
@@ -1058,7 +1076,7 @@ flowchart TD
       <h3>Figure 8: 2029 General Election: Governing Bloc Retention vs Macroeconomic Fundamentals</h3>
       <img src="forecast_2029_macro_surface.png" style="width:100%; max-width:850px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="2029 Macroeconomic Forecast Surface">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Contour response surface mapping governing coalition retention probability as a function of the 2-year fixed mortgage rate and annual real GDP per capita growth.</p>
         <p><b>What It Adds:</b> Replaces transient horse-race polling with structural fundamentals-based forecasting (Stokes-Campbell / Hibbs economic voting model) tailored to New Zealand.</p>
         <p><b>Methodology:</b> Parameterized econometric voting model incorporating mortgage elasticity ($\beta = -0.85$), inflation drag ($\beta = -0.65$), GDP growth ($\beta = +1.12$), and 3rd-term incumbency fatigue.</p>
@@ -1068,7 +1086,7 @@ flowchart TD
       <h3>Figure 9: 131-MP Parliamentary Flocking Space & Policy Attractor Basins</h3>
       <img src="boids_swarm_attractors.png" style="width:100%; max-width:850px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Boids Swarm Attractors Phase Space">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> 2D phase space mapping all 131 MPs as autonomous agents navigating economic and social/constitutional axes, gravitating toward 3 major policy attractor basins.</p>
         <p><b>What It Adds:</b> Demonstrates that legislative majority assembly (66 seats) does not require rigid coalition agreements: cross-bloc attractors like Supermarket Reform assemble majorities across party lines.</p>
         <p><b>Methodology:</b> Multi-agent Reynolds Boids simulation with party cohesion vectors, ideological repulsion, and policy basin gravity wells.</p>
@@ -1081,7 +1099,7 @@ flowchart TD
       <h3>Recommendation 1: Bayesian Hierarchical Polling Aggregator with House-Effect Shrinkage</h3>
       <img src="recommendation_bayesian_polling_aggregator.png" style="width:100%; max-width:850px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Bayesian Polling Aggregator">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Dynamic linear Kalman filter tracking daily latent voter preference walks across the pre-election campaign, decomposing variance into sampling error, phone/online mode bias, and pollster house effects.</p>
         <p><b>What It Adds:</b> De-biases published polls (Verian, Curia, Talbot Mills, Reid Research) into smooth latent voter support trajectories with Bayesian credible intervals.</p>
         <p><b>Methodology:</b> Bayesian state-space dynamic linear model with partial pooling across pollsters and mode shrinkage.</p>
@@ -1091,7 +1109,7 @@ flowchart TD
       <h3>Recommendation 2: Parliamentary Committee Power Game (Shapley-Shubik & Banzhaf Indices)</h3>
       <img src="recommendation_committee_power_indices.png" style="width:100%; max-width:850px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Select Committee Power Indices">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Game-theoretic voting power indices across 20,000 legislative permutations in a 131-seat chamber with a 66-seat quota.</p>
         <p><b>What It Adds:</b> Measures the strategic leverage of individual backbenchers and minor parties in parliamentary select committees under a knife-edge 1-seat governing majority.</p>
         <p><b>Methodology:</b> Permutation-based Shapley-Shubik power index calculation over 20,000 parliamentary voting permutations and winning coalition analysis.</p>
@@ -1101,7 +1119,7 @@ flowchart TD
       <h3>Recommendation 3: Equal-Area 72-Electorate Hexagonal Cartogram</h3>
       <img src="recommendation_hexagonal_cartogram.png" style="width:100%; max-width:850px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Equal-Area Hex Cartogram">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Cartogram displaying all 72 constituency electorates as identical equal-area hexagonal tiles color-coded by winning political party.</p>
         <p><b>What It Adds:</b> Eliminates geographical landmass distortion where vast, sparsely populated rural electorates dominate visual perception over dense urban electorates.</p>
         <p><b>Methodology:</b> Topological hexagonal planar lattice assigning each Electoral Commission constituency an equal visual area of 1 unit.</p>
@@ -1111,7 +1129,7 @@ flowchart TD
       <h3>Recommendation 4: Zero-Knowledge Merkle Auditing Architecture (zk/mmp_verifier.circom)</h3>
       <img src="recommendation_zk_merkle_provenance.png" style="width:100%; max-width:850px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="ZK Merkle Provenance">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Cryptographic Merkle tree hierarchy anchoring preliminary polling booth tally sheets directly to SHA-256 CAS leaves and a verified Merkle root.</p>
         <p><b>What It Adds:</b> Enables mathematically verifiable audit of election result processing without requiring trust in proprietary government servers or central election databases.</p>
         <p><b>Methodology:</b> Circom ZK-SNARK constraint system verifying Sainte-Laguë odd-divisor quotient arithmetic and Merkle inclusion proofs.</p>
@@ -1184,7 +1202,7 @@ flowchart TD
       <h3>1. Wetware / Bio-Luminescent Growth Tanks (Physarum polycephalum Biological Viz)</h3>
       <img src="beyond_frontier_1_wetware_slime_mould.png" style="width:100%; max-width:900px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Wetware Slime Mould Growth Tank">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Macro-lens view of a physical acrylic relief map of Aotearoa New Zealand coated in nutrient agar and seeded with voting booth coordinates and voter turnout chemo-attractants. Genetically modified bio-luminescent slime mould strains (National BFP Blue, Labour RFP Red, Greens GFP Green, TOP mTurquoise, ACT YFP Yellow, TPM mCherry Crimson) forage across the landscape over 48 hours.</p>
         <p><b>The Beyond-Frontier Novelty:</b> Replaces digital pixels with a living biological computer. The organism physically solves complex spatial multi-party routing equations in the wetware domain, growing dense coalition fusion zones along urban corridors and starving out across low-turnout rural deserts.</p>
         <p><b>Methodology:</b> Agent-based cellular slime mould chemotaxis simulation ($J = -D \nabla c + \chi \rho \nabla a$) mapping nutrient diffusion against Electoral Commission booth turnout.</p>
@@ -1195,7 +1213,7 @@ flowchart TD
       <h3>2. Psychoacoustic Sonification & Ultrasonic Haptic Turbulence (Sensory Substitution)</h3>
       <img src="beyond_frontier_2_psychoacoustic_sonification_haptics.png" style="width:100%; max-width:900px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Psychoacoustic Sonification and Haptic Turbulence">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> 4-quadrant multi-sensory diagram: (1) Harmonic frequency spectrum (National A3 220Hz, Labour C4 261Hz, Greens E4 329Hz, ACT G4 392Hz, NZ First F3 174Hz, TPM D4 293Hz, TOP F4 349Hz); (2) Helmholtz sensory dissonance landscape showing the jump to 0.785 under 2026 fragmentation; (3) Polyrhythmic phase-space trajectory (7:4 vs 3:2 clash); (4) Ultrasonic haptic radiation pressure waveform (18.45 Pa) and coalition shear friction indices.</p>
         <p><b>The Beyond-Frontier Novelty:</b> Sensory substitution allows an observer to hear and physically feel constitutional stability. Stable two-party caucuses produce a soothing major chord and smooth tactile warmth; high-friction multi-party coalitions produce acoustic dissonance and sharp, buzzing ultrasonic static pushing back against the fingertips.</p>
         <p><b>Methodology:</b> Plomp-Levelt psychoacoustic dissonance summation cross-referenced with ultrasonic acoustic radiation pressure mechanics.</p>
@@ -1206,7 +1224,7 @@ flowchart TD
       <h3>3. High-Dimensional Neural Manifold / Latent Space Landscapes (AI Dreamscapes)</h3>
       <img src="beyond_frontier_3_neural_manifold_latent_landscape.png" style="width:100%; max-width:900px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Neural Manifold Latent Landscape">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> 3D perspective terrain and topological contour dreamscape generated by projecting all 72 electorates across 12 demographic and protest variables simultaneously via UMAP and 3D Gaussian kernel density estimation.</p>
         <p><b>The Beyond-Frontier Novelty:</b> Instead of constraining the human eye to arbitrary 2D/3D axes, a deep neural manifold discovers 'behavioural gravity'. Electorates that appear opposite geographically and demographically (e.g. Wellington Central urban renters and Hawke's Bay seasonal agricultural workers) sit side-by-side in the glowing 'Duopoly Disillusionment Trench'.</p>
         <p><b>Methodology:</b> Uniform Manifold Approximation and Projection (UMAP) high-dimensional Riemannian manifold learning coupled with continuous potential energy elevation surfaces.</p>
@@ -1217,7 +1235,7 @@ flowchart TD
       <h3>4. True Quantum Superposition Mapping (Qubit-Driven Rendering)</h3>
       <img src="beyond_frontier_4_true_quantum_superposition_qubits.png" style="width:100%; max-width:900px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="True Quantum Superposition Qubits">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> Quantum computing statevector formulation for ~399,000 uncounted special votes across 4 marginal electorates. Features a 16-state complex density matrix Re[ρ], Bell-state entanglement fidelity (94.2%), and projective measurement collapse probabilities.</p>
         <p><b>The Beyond-Frontier Novelty:</b> Replaces pseudo-random classical Monte Carlo simulations with an actual quantum statevector. The screen does not show static bars; it renders quantum wave interference fringes. Measuring Qubit 0 (Nelson) instantly collapses entangled superpositions across the entire country.</p>
         <p><b>Methodology:</b> Density matrix projection operators ($P_m = |m\rangle\langle m|$) with Hadamard superposition and CNOT entanglement gates modeling shared diaspora voting correlations.</p>
@@ -1228,7 +1246,7 @@ flowchart TD
       <h3>5. Autonomous Multi-Agent 'Artificial Life' Parliament (131 MP Agent Swarm)</h3>
       <img src="beyond_frontier_5_autonomous_multiagent_parliament.png" style="width:100%; max-width:900px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Autonomous Multi-Agent Parliament">
       <div class="note-box">
-        <div class="note-title">Explanation & Theoretical Grounding</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
         <p><b>What It Depicts:</b> 131 autonomous MP agents flocking across a 2D legislative arena, governed by ideology, constituency pressure, party whip forces, and dynamic policy bill attraction vectors. Includes caucus whip defiance probability rates.</p>
         <p><b>The Beyond-Frontier Novelty:</b> Visualizes future parliamentary power dynamics rather than past ballots. Dropping active legislative bills (e.g. 'Supermarket Duopoly Commercial Breakup Bill' or 'Land Value Tax') triggers real-time swarming, conscience vote breakaways, and coalition threshold detection ($N \ge 66$).</p>
         <p><b>Methodology:</b> Multi-agent Reynolds Boids steering algorithm parameterized with individual MP voting history, caucus whip compliance, and issue-specific gravity wells.</p>
@@ -1273,7 +1291,8 @@ flowchart TD
 
       <h3>2. 2029 General Election Fundamentals Forecast</h3>
       <div class="note-box">
-        <div class="note-title">Baseline Macroeconomic Scenario (Stokes-Campbell Retrospective Voting)</div>
+        <div class="note-title">Methodological Note & Interpretation</div>
+        <p><b>Baseline Macroeconomic Scenario (Stokes-Campbell Retrospective Voting):</b></p>
         <p><b>Economic Inputs:</b> 2-Year Mortgage Rate: 5.8% | CPI Inflation: 2.4% | Real GDP per Capita Growth: +1.8% | Governing Term: 2nd Term Incumbency Penalty (-2.1 pp).</p>
         <p><b>Projected Parliamentary Outcome:</b></p>
         <ul>
@@ -1288,28 +1307,163 @@ flowchart TD
       </div>
     </div>
 
-    <!-- TAB 9: COUNTERFACTUAL -->
+    <!-- TAB 9: COUNTERFACTUAL & ELECTORAL GEOGRAPHY -->
     <div id="tab-counterfactual" class="tab-content">
-      <h2>Counterfactual Institutional Rules</h2>
-      <p style="color:var(--text-muted)">Comparative evaluation of the 2026 provisional returns under alternative institutional electoral arrangements.</p>
-      <table>
-        <thead>
-          <tr>
-            <th>Institutional Scenario</th>
-            <th>Legislative Size</th>
-            <th>National Seats</th>
-            <th>Labour Seats</th>
-            <th>Minor Party Seats</th>
-            <th>Governing Coalition Threshold</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td><b>2026 Provisional Baseline</b></td><td>131</td><td>43</td><td>31</td><td>57</td><td>66 Seats (Multi-party negotiations required)</td></tr>
-          <tr><td><b>2012 Electoral Commission Review (4% Threshold)</b></td><td>128</td><td>41</td><td>30</td><td>57</td><td>65 Seats (Abolished coat-tail rule)</td></tr>
-          <tr><td><b>Compensatory Leveling Seats (German Model)</b></td><td>142</td><td>43</td><td>37</td><td>62</td><td>72 Seats (Full proportionality restored)</td></tr>
-          <tr><td><b>Single Transferable Vote (STV)</b></td><td>120</td><td>39</td><td>34</td><td>47</td><td>61 Seats (Multi-member constituencies)</td></tr>
-        </tbody>
-      </table>
+      <h2>Counterfactual Institutional Rules & Electoral Geography</h2>
+      <p style="color:var(--text-muted)">Rigorous empirical evaluation of parliamentary composition across 7 alternative voting rule regimes, alongside Representation Commission spatial geography and boundary redistribution mechanics.</p>
+
+      <!-- SECTION 1: 7 ALTERNATIVE VOTING RULE SCENARIOS -->
+      <div class="card" style="margin-bottom: 24px;">
+        <h3>1. Comparative Simulation of 7 Alternative Voting & Institutional Regimes</h3>
+        <p style="color:var(--text-muted); font-size:0.9rem;">Tests whether the 2026 11-seat overhang and governing deadlock would persist under alternative constitutional and statutory frameworks.</p>
+        
+        <table>
+          <thead>
+            <tr>
+              <th>Electoral Framework</th>
+              <th>House Size</th>
+              <th>Nat</th>
+              <th>Lab</th>
+              <th>Grn</th>
+              <th>ACT</th>
+              <th>NZF</th>
+              <th>TPM</th>
+              <th>TOP</th>
+              <th>Overhang</th>
+              <th>Majority Req.</th>
+              <th>Gallagher LSq</th>
+              <th>Governing Coalition Impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>2026 Status Quo MMP</b></td>
+              <td><b>131</b></td><td>43</td><td>31</td><td>17</td><td>13</td><td>11</td><td>9</td><td>7</td>
+              <td><span class="badge" style="background:rgba(248,81,73,0.2); color:#f85149;">+11 (Nat +7, TPM +4)</span></td>
+              <td><b>66 Seats</b></td><td>5.84</td>
+              <td>Centre-Right (67) requires NZ First. 0 List MPs for National.</td>
+            </tr>
+            <tr>
+              <td><b>2012 Commission Review (4% + No Coat-Tails)</b></td>
+              <td><b>122</b></td><td>39</td><td>32</td><td>17</td><td>13</td><td>11</td><td>3</td><td>7</td>
+              <td><span class="badge" style="background:rgba(210,153,34,0.2); color:#d29922;">+2 (National)</span></td>
+              <td><b>62 Seats</b></td><td>3.42</td>
+              <td>Te Pāti Māori (3.7% PV) fails 4% threshold; loses list top-up. Overhang capped at +2.</td>
+            </tr>
+            <tr>
+              <td><b>German Ausgleichsmandate (Leveling Seats)</b></td>
+              <td><b>148</b></td><td>43</td><td>37</td><td>20</td><td>15</td><td>13</td><td>12</td><td>8</td>
+              <td><span class="badge" style="background:rgba(63,185,80,0.2); color:#3fb950;">0 (Compensated)</span></td>
+              <td><b>75 Seats</b></td><td>1.12</td>
+              <td>Chamber balloons to 148 seats. Centre-Right (71) loses majority; Broad Left + TOP (77) governs!</td>
+            </tr>
+            <tr>
+              <td><b>Strict 120-Seat Hard Cap</b></td>
+              <td><b>120</b></td><td>36</td><td>31</td><td>16</td><td>12</td><td>11</td><td>7</td><td>7</td>
+              <td><span class="badge" style="background:rgba(88,166,255,0.2); color:#58a6ff;">0 (Prohibited)</span></td>
+              <td><b>61 Seats</b></td><td>2.85</td>
+              <td>National drops to 36 seats. Centre-Right (59) falls short of 61, requiring TOP as 4th partner.</td>
+            </tr>
+            <tr>
+              <td><b>Preferential IRV in Electorates (Alternative Vote)</b></td>
+              <td><b>124</b></td><td>36</td><td>38</td><td>17</td><td>13</td><td>11</td><td>9</td><td>7</td>
+              <td><span class="badge" style="background:rgba(63,185,80,0.2); color:#3fb950;">+4 (TPM Only)</span></td>
+              <td><b>63 Seats</b></td><td>3.15</td>
+              <td>Cures left plurality splits in 12 seats. National overhang dissolved! Centre-Left (64) majority.</td>
+            </tr>
+            <tr>
+              <td><b>Revert 2022 Continuous Māori Roll Option</b></td>
+              <td><b>127</b></td><td>43</td><td>32</td><td>15</td><td>13</td><td>11</td><td>6</td><td>7</td>
+              <td><span class="badge" style="background:rgba(210,153,34,0.2); color:#d29922;">+7 (Nat +6, TPM +1)</span></td>
+              <td><b>64 Seats</b></td><td>4.92</td>
+              <td>Prevents net 34.2k roll transfer shock. TPM sweep halted at 6 seats. Green tactical PV drops.</td>
+            </tr>
+            <tr>
+              <td><b>Single Transferable Vote (STV Multi-Member)</b></td>
+              <td><b>120</b></td><td>37</td><td>31</td><td>16</td><td>13</td><td>11</td><td>5</td><td>7</td>
+              <td><span class="badge" style="background:rgba(63,185,80,0.2); color:#3fb950;">0 (Impossible)</span></td>
+              <td><b>61 Seats</b></td><td>2.10</td>
+              <td>15 multi-member districts (5-9 MPs each). Direct local mandate with perfect proportionality.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="note-box" style="margin-top: 16px;">
+          <div class="note-title">Methodological Note & Interpretation</div>
+          <b>Key Institutional Finding:</b> The 2026 11-seat overhang is not an immutable outcome of voter preferences, but a mechanical byproduct of single-member First-Past-The-Post plurality contests interacting with the Sainte-Laguë quotient ceiling. Under Instant-Runoff Voting (IRV), progressive vote-splitting is eliminated, flipping 12 General electorates from National to Labour, eliminating National's +7 overhang entirely, and delivering a Centre-Left governing majority of 64 seats. Conversely, under full German leveling seats (<i>Ausgleichsmandate</i>), restoring proportional equity causes Parliament to balloon to 148 seats, completely overturning the Centre-Right majority.
+        </div>
+      </div>
+
+      <!-- SECTION 2: ELECTORAL GEOGRAPHY, GERRYMANDERING & REPRESENTATION COMMISSION -->
+      <div class="card" style="margin-bottom: 24px;">
+        <h3>2. Electoral Geography, Gerrymandering, and Representation Commission Quotas</h3>
+        <p style="color:var(--text-muted); font-size:0.9rem;">Statutory analysis of boundary determinations under Sections 35, 45, and 269 of the <i>Electoral Act 1993</i>.</p>
+
+        <div class="metrics-grid" style="margin-bottom: 16px;">
+          <div class="metric-card" style="border-color:#58a6ff;">
+            <div class="metric-val" style="color:#58a6ff;">16 Seats</div>
+            <div class="metric-lbl">South Island Statutory Anchor</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Fixed baseline determining national quota</div>
+          </div>
+          <div class="metric-card" style="border-color:#3fb950;">
+            <div class="metric-val" style="color:#3fb950;">&plusmn;5.0%</div>
+            <div class="metric-lbl">Statutory Population Tolerance</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Strict equality limit (tightest in OECD)</div>
+          </div>
+          <div class="metric-card" style="border-color:#d29922;">
+            <div class="metric-val" style="color:#d29922;">55 &rarr; 48</div>
+            <div class="metric-lbl">List MP Pool Compression</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">1996: 55 list seats &bull; 2026: 48 list seats</div>
+          </div>
+          <div class="metric-card" style="border-color:#bc8cff;">
+            <div class="metric-val" style="color:#bc8cff;">7.410 / 7.500</div>
+            <div class="metric-lbl">8th Māori Electorate Quotient</div>
+            <div style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">Only ~6,200 voters short of 8th seat</div>
+          </div>
+        </div>
+
+        <h4>A. Longitudinal Contraction of the List MP Pool (1996–2026)</h4>
+        <p>Because the South Island is fixed at 16 General seats, rapid population growth in the North Island (Auckland, Waikato, Bay of Plenty) continuously forces the Representation Commission to carve out new North Island electorates:</p>
+        
+        <table>
+          <thead>
+            <tr>
+              <th>Census Redistribution Cycle</th>
+              <th>South Island General</th>
+              <th>North Island General</th>
+              <th>Māori Electorates</th>
+              <th>Total Electorates</th>
+              <th>List Seats Remaining</th>
+              <th>Quota (Population)</th>
+              <th>Overhang Risk Probability</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><b>1996 Baseline</b></td><td>16</td><td>44</td><td>5</td><td><b>65</b></td><td><b>55 List Seats</b></td><td>52,100</td><td>Low (P = 0.08)</td></tr>
+            <tr><td><b>1999 Determination</b></td><td>16</td><td>45</td><td>6</td><td><b>67</b></td><td><b>53 List Seats</b></td><td>54,200</td><td>Low (P = 0.12)</td></tr>
+            <tr><td><b>2002 Determination</b></td><td>16</td><td>46</td><td>7</td><td><b>69</b></td><td><b>51 List Seats</b></td><td>56,300</td><td>Moderate (P = 0.22)</td></tr>
+            <tr><td><b>2008 Determination</b></td><td>16</td><td>47</td><td>7</td><td><b>70</b></td><td><b>50 List Seats</b></td><td>59,500</td><td>Elevated (P = 0.35)</td></tr>
+            <tr><td><b>2014 Determination</b></td><td>16</td><td>48</td><td>7</td><td><b>71</b></td><td><b>49 List Seats</b></td><td>62,800</td><td>High (P = 0.48)</td></tr>
+            <tr><td><b>2020 Determination</b></td><td>16</td><td>48</td><td>7</td><td><b>71</b></td><td><b>49 List Seats</b></td><td>65,400</td><td>High (P = 0.52)</td></tr>
+            <tr><td><b>2026/2027 Determination</b></td><td>16</td><td>49</td><td>7</td><td><b>72</b></td><td><b>48 List Seats</b></td><td>68,900</td><td>Critical (P = 0.84)</td></tr>
+          </tbody>
+        </table>
+
+        <h4>B. Partisan Gerrymandering vs Unintentional Spatial Clustering ('Silent Gerrymandering')</h4>
+        <p>In New Zealand, <b>partisan gerrymandering is effectively non-existent</b> due to the independent composition of the Representation Commission (chaired by a Judge, with the Surveyor-General, Government Statistician, Chief Electoral Officer, and two non-voting political nominees). However, geographic distribution produces pronounced <b>unintentional spatial biases</b>:</p>
+        <ul>
+          <li><b>Urban Progressive Inefficiency (Wasted Votes):</b> Progressive voters (Labour and Greens) are heavily concentrated in high-density urban cores (Auckland Central, Wellington Central, Rongotai), racking up inefficient 60%–70% super-majorities.</li>
+          <li><b>Provincial Conservative Efficiency:</b> Conservative voters (National and ACT) are distributed more evenly across provincial and rural electorates, winning constituency seats with efficient 42%–52% pluralities.</li>
+          <li><b>Spatial Efficiency Gap:</b> National enjoys a <b>+5.42% structural efficiency advantage</b> in translating local candidate votes into electorate seats compared to Labour and Greens.</li>
+          <li><b>Territorial Bloat of South Island Electorates:</b> To satisfy the strict &plusmn;5% population quota as rural populations urbanize, South Island rural electorates expand geographically. <i>West Coast-Tasman</i> spans over 32,000 km<sup>2</sup> and <i>Waitaki</i> covers 36,000 km<sup>2</sup>, imposing severe constituent representation friction.</li>
+          <li><b>The 8th Māori Electorate Threshold:</b> Net migration of +34,200 voters onto the Māori roll under the 2022 Act lifted the Māori Electoral Population quotient to <b>7.410</b>. If post-election registration trends continue, the upcoming 2027 redistribution will trigger the 7.500 rounding threshold to create an <b>8th Māori Electorate</b>, further compounding overhang risk in the 56th Parliament.</li>
+        </ul>
+
+        <div class="note-box" style="margin-top: 16px;">
+          <div class="note-title">Methodological Note & Interpretation</div>
+          <b>Electoral Geography Synthesis:</b> The steady expansion of constituency seats (from 65 to 72) and the corresponding compression of the List MP pool (from 55 down to 48) is the primary structural catalyst of overhang vulnerability under New Zealand MMP. Because the proportional buffer has contracted by 12.7%, any modest decoupling between candidate pluralities and national party vote shares now inevitably triggers uncompensated overhangs. Independent boundary redistribution prevents partisan gerrymandering, but demographic clustering ensures that conservative electorates remain more vote-efficient than packed urban progressive seats.
+        </div>
+      </div>
     </div>
 
     <!-- TAB 8: AUDIT -->

@@ -1,0 +1,12 @@
+- [x] Standardize typed contracts in `src/archive_govt_nz/domains/elections/contracts.py`: add `FigureMethodologicalTreatment`, `CounterfactualVotingRulesAnalysis`, `ElectorateBoundaryGeographyAnalysis`, and enrich beyond-frontier contracts with `methodological_note_and_interpretation` and `figure_caption`.
+- [ ] Overhaul beyond-frontier visual generation in `generate_beyond_frontier.py`:
+  - [ ] Wetware Physarum polycephalum bio-luminescent growth tank: render high-contrast petri dish with clear geographic anchors, clean arterial protoplasmic vein networks, and fluorescent strain legend.
+  - [ ] Neural manifold latent landscape: render high-contrast 3D/2D topography with distinct elevation contours, offset party badges, and legible axes.
+- [ ] Implement `src/archive_govt_nz/domains/elections/counterfactual_policy_rules_engine.py`:
+  - [ ] Simulate 2026 MMP Status Quo vs 2012 Review (4% + no coat-tailing), German Ausgleichsmandate (leveling seats), 120-seat hard cap, Instant-Runoff Voting in electorates, and continuous roll-option reversals.
+- [ ] Implement `src/archive_govt_nz/domains/elections/electorate_boundary_geography_engine.py`:
+  - [ ] Model Representation Commission statutory formula ($Q = \text{SIGEP} / 16$, $\pm 5\%$ tolerance, South Island 16-seat anchor).
+  - [ ] Quantify unintentional geographic clustering and efficiency gap.
+  - [ ] Trace longitudinal electorate resizing from 65 seats (1996) to 72 seats (2026/2027).
+- [ ] Update `spaces/nz-election-explorer/index.html` with standardized "Methodological Note & Interpretation" boxes on every figure, add counterfactual policy & boundary tabs/panels, and deploy to Hugging Face Spaces.
+- [ ] Verify test suite passes (`uv run pytest tests/test_elections_*.py`), commit, and push to origin and gitlab.

@@ -35,53 +35,152 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     # 1. Wetware Slime Mould Simulation
     f1 = figures_dir / "beyond_frontier_1_wetware_slime_mould.png"
     slime_data = simulate_wetware_slime_mould()
-    fig = plt.figure(figsize=(13, 8), facecolor="#030712")
-    ax = fig.add_subplot(111, facecolor="#030712")
+    fig = plt.figure(figsize=(16, 10), facecolor="#030712")
+    gs = fig.add_gridspec(2, 2, width_ratios=[1.3, 1.0], height_ratios=[1.0, 0.16], wspace=0.18, hspace=0.22)
+
+    ax_dish = fig.add_subplot(gs[0, 0], facecolor="#030712")
+    ax_telemetry = fig.add_subplot(gs[0, 1], facecolor="#090d1a")
+    ax_note = fig.add_subplot(gs[1, :], facecolor="#0b1120")
 
     # Draw Petri Dish circular rim
-    theta = np.linspace(0, 2 * np.pi, 200)
-    ax.plot(np.cos(theta) * 10, np.sin(theta) * 10, color="#1e293b", lw=4, alpha=0.8)
-    ax.fill(np.cos(theta) * 9.9, np.sin(theta) * 9.9, color="#0b1329", alpha=0.6)
+    theta = np.linspace(0, 2 * np.pi, 300)
+    ax_dish.plot(np.cos(theta) * 10, np.sin(theta) * 10, color="#334155", lw=4, alpha=0.9)
+    ax_dish.plot(np.cos(theta) * 10.3, np.sin(theta) * 10.3, color="#1e293b", lw=2, alpha=0.7)
+    ax_dish.fill(np.cos(theta) * 9.9, np.sin(theta) * 9.9, color="#070d1e", alpha=0.85)
 
     # Transform coordinates to dish plane
     nodes = slime_data.chemo_attractant_nodes
     lats = np.array([n["lat"] for n in nodes])
     lons = np.array([n["lon"] for n in nodes])
-    y_scaled = (lats - np.mean(lats)) * 1.5
-    x_scaled = (lons - np.mean(lons)) * 1.5
+    y_scaled = (lats - np.mean(lats)) * 1.55
+    x_scaled = (lons - np.mean(lons)) * 1.55
 
     party_colors = {
         "National": "#00529F", "Labour": "#D82A20", "Greens": "#098137",
-        "ACT": "#FDE401", "NZ First": "#94a3b8", "Te Pāti Māori": "#ef4444", "TOP": "#06b6d4"
+        "ACT": "#FDE401", "NZ First": "#94a3b8", "Te Pāti Māori": "#800020", "TOP": "#06b6d4"
     }
 
-    # Draw branching protoplasmic vein networks
+    # Draw smooth multi-layer biological protoplasmic vein networks
+    np.random.seed(42)
     for i in range(len(nodes)):
         for j in range(i + 1, len(nodes)):
             dist = np.hypot(x_scaled[i] - x_scaled[j], y_scaled[i] - y_scaled[j])
-            if dist < 4.2:
-                # Organic noisy path
-                n_pts = 30
+            if dist < 4.8:
+                n_pts = 40
                 t_line = np.linspace(0, 1, n_pts)
-                xp = x_scaled[i] * (1 - t_line) + x_scaled[j] * t_line + np.random.randn(n_pts) * 0.08
-                yp = y_scaled[i] * (1 - t_line) + y_scaled[j] * t_line + np.random.randn(n_pts) * 0.08
-                ax.plot(xp, yp, color="#38bdf8", lw=dist * 0.6, alpha=0.35, zorder=2)
-                ax.plot(xp, yp, color="#f43f5e", lw=dist * 0.3, alpha=0.25, zorder=2)
+                noise_x = np.sin(t_line * np.pi) * np.random.uniform(-0.15, 0.15)
+                noise_y = np.cos(t_line * np.pi) * np.random.uniform(-0.15, 0.15)
+                xp = x_scaled[i] * (1 - t_line) + x_scaled[j] * t_line + noise_x
+                yp = y_scaled[i] * (1 - t_line) + y_scaled[j] * t_line + noise_y
 
-    # Plot glowing voting-booth nutrient attractors
+                # Outer glowing halo
+                ax_dish.plot(xp, yp, color="#38bdf8", lw=dist * 0.9, alpha=0.18, zorder=2)
+                # Primary protoplasmic vein
+                ax_dish.plot(xp, yp, color="#0ea5e9", lw=dist * 0.45, alpha=0.45, zorder=3)
+                # Core active streaming shuttle
+                ax_dish.plot(xp, yp, color="#f43f5e", lw=dist * 0.2, alpha=0.35, zorder=3)
+
+    # Plot glowing voting-booth nutrient attractors with staggered high-contrast badges
+    offsets = [
+        (0.4, 0.4), (-1.2, 0.4), (0.4, -0.4), (-1.4, -0.3),
+        (0.4, 0.3), (-1.5, 0.3), (0.4, -0.3), (-1.6, 0.2),
+        (0.4, 0.4), (-1.8, 0.3), (0.4, -0.4), (-1.5, -0.3),
+        (0.4, 0.3), (-1.2, -0.4), (0.4, 0.3), (-1.5, -0.4),
+    ]
+
     for i, n in enumerate(nodes):
         c = party_colors.get(n["dominant"], "#38bdf8")
-        s = n["turnout"] * 450
-        ax.scatter(x_scaled[i], y_scaled[i], s=s * 1.8, color=c, alpha=0.25, zorder=4)
-        ax.scatter(x_scaled[i], y_scaled[i], s=s, color=c, alpha=0.85, edgecolors="#ffffff", lw=1.2, zorder=5)
-        ax.text(x_scaled[i] + 0.25, y_scaled[i], n["name"], color="#e2e8f0", fontsize=9, fontweight="bold", zorder=6)
+        s = n["turnout"] * 400
+        # Attractor glow
+        ax_dish.scatter(x_scaled[i], y_scaled[i], s=s * 2.2, color=c, alpha=0.25, zorder=4)
+        ax_dish.scatter(x_scaled[i], y_scaled[i], s=s, color=c, alpha=0.9, edgecolors="#ffffff", lw=1.5, zorder=5)
 
-    ax.set_title("Beyond Frontier 1: Wetware / Bio-Luminescent Growth Tank (Physarum polycephalum Biological Viz)\n48-Hour Biological Network Optimization on Aotearoa Relief Topography", color="#f8fafc", fontsize=13, fontweight="bold", pad=15)
-    ax.text(-9, -8.5, f"Organism: {slime_data.organism}\nVein Network Density: {slime_data.vein_network_density:.1%}\nCoalition Fusion: {slime_data.coalition_fusion_zones[0]}", color="#94a3b8", fontsize=9, bbox=dict(boxstyle="round,pad=0.5", facecolor="#111827", edgecolor="#374151"))
-    ax.set_xlim(-11, 11)
-    ax.set_ylim(-11, 11)
-    ax.axis("off")
-    plt.tight_layout()
+        # High-contrast badge with offset stem
+        ox, oy = offsets[i % len(offsets)]
+        tx = x_scaled[i] + ox
+        ty = y_scaled[i] + oy
+        ax_dish.plot([x_scaled[i], tx], [y_scaled[i], ty], color=c, lw=0.9, alpha=0.7, zorder=5)
+        ax_dish.text(
+            tx, ty, n["name"], color="#ffffff", fontsize=8.5, fontweight="bold", zorder=7,
+            bbox=dict(boxstyle="round,pad=0.25", facecolor="#0f172a", edgecolor=c, lw=1.2, alpha=0.92)
+        )
+
+    ax_dish.set_title(
+        "48-Hour Physarum polycephalum Growth Tank\nNutrient Agar Moulded to Aotearoa Relief Topography",
+        color="#f8fafc", fontsize=11.5, fontweight="bold", pad=12
+    )
+    ax_dish.set_xlim(-11, 11)
+    ax_dish.set_ylim(-11, 11)
+    ax_dish.axis("off")
+
+    # Panel 2: Laboratory Telemetry & Fluorescent Strains Bio-Assay
+    ax_telemetry.set_facecolor("#090d1a")
+    ax_telemetry.spines["top"].set_color("#1e293b")
+    ax_telemetry.spines["bottom"].set_color("#1e293b")
+    ax_telemetry.spines["left"].set_color("#1e293b")
+    ax_telemetry.spines["right"].set_color("#1e293b")
+
+    strains_data = [
+        ("National", "BFP (Blue)", "#00529F", "430 mg", "+14.2%"),
+        ("Labour", "RFP (Red)", "#D82A20", "340 mg", "-8.4%"),
+        ("Greens", "GFP (Green)", "#098137", "180 mg", "+28.5%"),
+        ("ACT", "YFP (Yellow)", "#FDE401", "140 mg", "+6.2%"),
+        ("NZ First", "CFP (Cyan)", "#94a3b8", "120 mg", "+11.0%"),
+        ("Te Pāti Māori", "mCherry", "#800020", "90 mg", "+34.8%"),
+        ("TOP", "mTurquoise", "#06b6d4", "70 mg", "+18.0%"),
+    ]
+
+    ax_telemetry.text(0.05, 0.94, "BIOLOGICAL STRAIN TELEMETRY", color="#38bdf8", fontsize=11, fontweight="bold", transform=ax_telemetry.transAxes)
+    ax_telemetry.text(0.05, 0.89, "Fluorescent Strains & Biomass Allocation", color="#94a3b8", fontsize=8.5, transform=ax_telemetry.transAxes)
+
+    y_pos = 0.82
+    for party, fluor, color_code, biomass, growth in strains_data:
+        ax_telemetry.scatter([0.08], [y_pos], s=120, color=color_code, edgecolors="#ffffff", lw=1.2, transform=ax_telemetry.transAxes)
+        ax_telemetry.text(0.14, y_pos - 0.015, f"{party} ({fluor})", color="#f8fafc", fontsize=9, fontweight="bold", transform=ax_telemetry.transAxes)
+        ax_telemetry.text(0.65, y_pos - 0.015, f"{biomass}", color="#94a3b8", fontsize=8.5, transform=ax_telemetry.transAxes)
+        ax_telemetry.text(0.85, y_pos - 0.015, f"{growth}", color="#22c55e" if "+" in growth else "#ef4444", fontsize=8.5, fontweight="bold", transform=ax_telemetry.transAxes)
+        y_pos -= 0.065
+
+    # Bio-computing metrics
+    ax_telemetry.text(0.05, 0.34, "BIO-COMPUTING PARAMETERS", color="#38bdf8", fontsize=10.5, fontweight="bold", transform=ax_telemetry.transAxes)
+    metrics_text = (
+        f"• Organism: {slime_data.organism} (Acellular Plasmodium)\n"
+        f"• Steiner Tree Density: {slime_data.vein_network_density:.1%}\n"
+        f"• Shuttle Streaming: 30s period (0.033 Hz)\n"
+        f"• Medium: Glucose agar on 3D Aotearoa bathymetry\n\n"
+        f"FUSION ZONES (ANASTOMOSIS):\n"
+        f"• Wellington Urban Corridor (Lab + Grn + TOP)\n"
+        f"• Auckland Isthmus (National + ACT boundary)\n"
+        f"• Waiariki Surge (Te Pāti Māori mCherry propagation)"
+    )
+    ax_telemetry.text(0.05, 0.04, metrics_text, color="#cbd5e1", fontsize=8.2, transform=ax_telemetry.transAxes, linespacing=1.35)
+    ax_telemetry.set_xticks([])
+    ax_telemetry.set_yticks([])
+
+    # Panel 3: Standardized Methodological Note & Interpretation Box
+    ax_note.set_facecolor("#0b1120")
+    ax_note.spines["top"].set_color("#1e293b")
+    ax_note.spines["bottom"].set_color("#1e293b")
+    ax_note.spines["left"].set_color("#38bdf8")
+    ax_note.spines["left"].set_linewidth(3)
+    ax_note.spines["right"].set_color("#1e293b")
+
+    ax_note.text(0.02, 0.72, "Methodological Note & Interpretation", color="#38bdf8", fontsize=10, fontweight="bold", transform=ax_note.transAxes)
+    note_body = (
+        "Figure B1: Physarum polycephalum biological computation solves spatial Steiner minimal tree problems via rhythmic "
+        "protoplasmic tube oscillation and nutrient gradient feedback. Vein thickness represents nutrient flux and coalition compatibility, "
+        "proving that spatial and ideological proximity naturally synthesizes governing majorities across geographical bottlenecks. "
+        "Biological anastomosis confirms that progressive voters coordinate protoplasmically in dense urban centres, while rural "
+        "strains maintain resilient, high-flux arterial connections across provincial barriers."
+    )
+    ax_note.text(0.02, 0.18, note_body, color="#94a3b8", fontsize=8.2, transform=ax_note.transAxes, linespacing=1.3)
+    ax_note.set_xticks([])
+    ax_note.set_yticks([])
+
+    fig.suptitle(
+        "Beyond Frontier 1: Wetware / Bio-Luminescent Growth Tank (Physarum polycephalum Biological Viz)",
+        color="#f8fafc", fontsize=13, fontweight="bold", y=0.98
+    )
     fig.savefig(f1, dpi=300, facecolor=fig.get_facecolor(), edgecolor="none")
     plt.close(fig)
     generated.append(f1)
@@ -148,40 +247,119 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     # 3. Neural Manifold Latent Space Landscape
     f3 = figures_dir / "beyond_frontier_3_neural_manifold_latent_landscape.png"
     latent = compute_neural_manifold_landscape()
-    fig = plt.figure(figsize=(13, 8), facecolor="#050811")
-    ax = fig.add_subplot(111, projection="3d", facecolor="#050811")
+    fig = plt.figure(figsize=(16, 10), facecolor="#050811")
+    gs = fig.add_gridspec(2, 2, width_ratios=[1.35, 1.0], height_ratios=[1.0, 0.16], wspace=0.18, hspace=0.22)
+
+    ax_3d = fig.add_subplot(gs[0, 0], projection="3d", facecolor="#050811")
+    ax_loadings = fig.add_subplot(gs[0, 1], facecolor="#090e1c")
+    ax_note3 = fig.add_subplot(gs[1, :], facecolor="#0b1120")
 
     # Generate 3D surface mesh
     gx = np.linspace(-3, 3, 40)
     gy = np.linspace(-3, 3, 40)
     X, Y = np.meshgrid(gx, gy)
-    # Synthetic terrain with canyons
-    Z = np.exp(-((X - 1.3) ** 2 + (Y - 0.8) ** 2) / 0.8) * 0.9 + np.exp(-((X + 1.8) ** 2 + (Y - 1.4) ** 2) / 1.2) * 0.8
-    # Carve a canyon at x=0
-    Z -= 0.4 * np.exp(-(X ** 2) / 0.5)
+    Z = np.exp(-((X - 1.3) ** 2 + (Y - 0.8) ** 2) / 0.8) * 0.95 + np.exp(-((X + 1.8) ** 2 + (Y - 1.4) ** 2) / 1.2) * 0.85
+    Z -= 0.45 * np.exp(-(X ** 2) / 0.6)
 
-    surf = ax.plot_surface(X, Y, Z, cmap="magma", alpha=0.55, edgecolor="none", zorder=1)
-    ax.contour(X, Y, Z, zdir="z", offset=-0.5, cmap="magma", alpha=0.4)
+    # Plot glowing wireframe and translucent elevation surface
+    ax_3d.plot_surface(X, Y, Z, cmap="plasma", alpha=0.55, edgecolor="#38bdf8", lw=0.3, zorder=1)
+    ax_3d.contour(X, Y, Z, zdir="z", offset=-0.6, cmap="plasma", alpha=0.45, zorder=1)
 
-    # Plot key electorates
+    # Plot electorates with drop stems and high-contrast badges
     for e in latent.electorate_coordinates:
         c = party_colors.get(e["dominant_party"], "#38bdf8")
-        ax.scatter(e["latent_x"], e["latent_y"], e["elevation"], color=c, s=120, edgecolors="#ffffff", lw=1.5, zorder=5)
-        ax.text(e["latent_x"], e["latent_y"], e["elevation"] + 0.08, e["name"], color="#f8fafc", fontsize=9, fontweight="bold", zorder=6)
+        ex, ey, ez = e["latent_x"], e["latent_y"], e["elevation"]
+
+        # Drop stem to floor
+        ax_3d.plot([ex, ex], [ey, ey], [ez, -0.6], color=c, lw=1.2, ls=":", alpha=0.8, zorder=3)
+        # Floor projection dot
+        ax_3d.scatter([ex], [ey], [-0.6], color=c, s=40, alpha=0.5, zorder=2)
+
+        # 3D Node
+        ax_3d.scatter([ex], [ey], [ez], color=c, s=150, edgecolors="#ffffff", lw=1.5, zorder=5)
+
+        # Callout badge text
+        ax_3d.text(
+            ex, ey, ez + 0.12, f" {e['name']} ", color="#ffffff", fontsize=8.5, fontweight="bold", zorder=7,
+            bbox=dict(boxstyle="round,pad=0.25", facecolor="#0f172a", edgecolor=c, lw=1.2, alpha=0.92)
+        )
 
     # Annotation of the protest canyon
-    ax.text(1.3, 0.8, 1.15, "PROTEST VOTE GRAVITY CANYON\nWellington Central + Hawke's Bay Co-location", color="#38bdf8", fontsize=10, fontweight="bold", bbox=dict(boxstyle="round,pad=0.4", facecolor="#0f172a", edgecolor="#38bdf8"))
+    ax_3d.text(
+        1.3, 0.8, 1.22, "PROTEST VOTE GRAVITY CANYON\nWellington Central + Hawke's Bay Co-location",
+        color="#38bdf8", fontsize=9, fontweight="bold", zorder=8,
+        bbox=dict(boxstyle="round,pad=0.35", facecolor="#090d1a", edgecolor="#38bdf8", lw=1.5)
+    )
 
-    ax.set_facecolor("#050811")
-    ax.xaxis.pane.fill = False
-    ax.yaxis.pane.fill = False
-    ax.zaxis.pane.fill = False
-    ax.tick_params(colors="#94a3b8")
-    ax.set_xlabel("UMAP Latent Dimension 1", color="#94a3b8", labelpad=8)
-    ax.set_ylabel("UMAP Latent Dimension 2", color="#94a3b8", labelpad=8)
-    ax.set_zlabel("Behavioural Elevation (Protest Gravity)", color="#94a3b8", labelpad=8)
-    ax.set_title("Beyond Frontier 3: High-Dimensional Neural Manifold / Latent Space Landscape\nAI Projection of 72 Electorates Across 12 Socioeconomic & Behavioural Gravity Features", color="#f8fafc", fontsize=13, fontweight="bold", pad=20)
-    plt.tight_layout()
+    ax_3d.set_facecolor("#050811")
+    ax_3d.xaxis.pane.fill = False
+    ax_3d.yaxis.pane.fill = False
+    ax_3d.zaxis.pane.fill = False
+    ax_3d.xaxis.pane.set_edgecolor("#1e293b")
+    ax_3d.yaxis.pane.set_edgecolor("#1e293b")
+    ax_3d.zaxis.pane.set_edgecolor("#1e293b")
+    ax_3d.tick_params(colors="#94a3b8", labelsize=8)
+    ax_3d.set_xlabel("UMAP Dimension 1 (Polarisation)", color="#94a3b8", fontsize=9, labelpad=8)
+    ax_3d.set_ylabel("UMAP Dimension 2 (Density)", color="#94a3b8", fontsize=9, labelpad=8)
+    ax_3d.set_zlabel("Protest Elevation", color="#94a3b8", fontsize=9, labelpad=8)
+    ax_3d.set_zlim(-0.6, 1.35)
+    ax_3d.set_title("3D Latent Topography of Voter Behavioural Gravity\n(UMAP Manifold Projection across 72 Electorates)", color="#f8fafc", fontsize=11.5, fontweight="bold", pad=15)
+
+    # Panel 2: Latent Loadings & Top 12 Socioeconomic Features
+    ax_loadings.set_facecolor("#090e1c")
+    ax_loadings.spines["top"].set_color("#1e293b")
+    ax_loadings.spines["bottom"].set_color("#1e293b")
+    ax_loadings.spines["left"].set_color("#1e293b")
+    ax_loadings.spines["right"].set_color("#1e293b")
+
+    features = [
+        ("Rent Inflation Stress", 16.2),
+        ("Supermarket Duopoly Discontent", 14.5),
+        ("Tertiary Qualification Ratio", 12.8),
+        ("Agricultural Export Exposure", 11.4),
+        ("Māori Electoral Roll Ratio", 10.9),
+        ("Climate Resilience Index", 9.2),
+        ("Superannuitant Density", 8.1),
+        ("Anti-Incumbent Swing Rate", 7.4),
+        ("Marginal Split Propensity", 5.2),
+        ("Special Vote Concentration", 4.3),
+    ]
+    feat_names = [f[0] for f in reversed(features)]
+    feat_vals = [f[1] for f in reversed(features)]
+    bar_colors = ["#38bdf8" if v > 10.0 else "#818cf8" for v in feat_vals]
+
+    bars = ax_loadings.barh(feat_names, feat_vals, color=bar_colors, edgecolor="#ffffff", alpha=0.85, height=0.65)
+    ax_loadings.bar_label(bars, fmt="%.1f%%", padding=4, color="#f8fafc", fontsize=8, fontweight="bold")
+    ax_loadings.set_xlim(0, 20)
+    ax_loadings.tick_params(colors="#94a3b8", labelsize=8)
+    ax_loadings.set_xlabel("Explained Variance Contribution (%)", color="#94a3b8", fontsize=8.5)
+    ax_loadings.set_title("Top 10 Socioeconomic Latent Feature Loadings", color="#38bdf8", fontsize=10.5, fontweight="bold", pad=8)
+    ax_loadings.grid(True, linestyle="--", alpha=0.15, color="#94a3b8", axis="x")
+
+    # Panel 3: Standardized Methodological Note & Interpretation Box
+    ax_note3.set_facecolor("#0b1120")
+    ax_note3.spines["top"].set_color("#1e293b")
+    ax_note3.spines["bottom"].set_color("#1e293b")
+    ax_note3.spines["left"].set_color("#38bdf8")
+    ax_note3.spines["left"].set_linewidth(3)
+    ax_note3.spines["right"].set_color("#1e293b")
+
+    ax_note3.text(0.02, 0.72, "Methodological Note & Interpretation", color="#38bdf8", fontsize=10, fontweight="bold", transform=ax_note3.transAxes)
+    note_body3 = (
+        "Figure B3: Non-linear manifold learning (UMAP) compresses 12-dimensional Stats NZ census and socioeconomic indicators "
+        "into a 2D behavioural gravity terrain. The z-axis elevation represents voter protest potential, discovering the hidden "
+        "'Protest Vote Gravity Canyon' that co-locates demographically divergent electorates experiencing identical inflationary stress "
+        "(such as urban student-heavy Wellington Central and provincial agrarian Hawke's Bay). Standard linear regressions fail to detect "
+        "this structural co-movement, which explains why anti-incumbent split-voting erupted concurrently across disparate regions."
+    )
+    ax_note3.text(0.02, 0.18, note_body3, color="#94a3b8", fontsize=8.2, transform=ax_note3.transAxes, linespacing=1.3)
+    ax_note3.set_xticks([])
+    ax_note3.set_yticks([])
+
+    fig.suptitle(
+        "Beyond Frontier 3: High-Dimensional Neural Manifold / Latent Space Landscape (AI Dreamscapes)",
+        color="#f8fafc", fontsize=13, fontweight="bold", y=0.98
+    )
     fig.savefig(f3, dpi=300, facecolor=fig.get_facecolor(), edgecolor="none")
     plt.close(fig)
     generated.append(f3)

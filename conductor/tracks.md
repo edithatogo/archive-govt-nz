@@ -499,3 +499,8 @@ implementation has occurred under these tracks.
 - [x] **Track: Econometric causal inference and attribution of the 11-seat overhang**
   *Link: [tracks/election_causal_overhang_attribution_20261111/index.md](./tracks/election_causal_overhang_attribution_20261111/index.md)*
   Econometric identification and causal attribution of the 2026 11-seat overhang (National +7, Te Pāti Māori +4): Gelman-King counterfactual decomposition, Sharp RDD on candidate incumbency treatment, Instrumental Variables on the 2023–2024 continuous Māori Electoral Option policy shock, and cooperative game-theoretic Shapley additive seat attribution.
+
+- [ ] **Track: Methodological Treatment Standardization, Beyond-Frontier Legibility, Counterfactual Voting Rules & Spatial Geography**
+  *Link: [tracks/election_methodological_treatment_and_counterfactuals_20261111/index.md](./tracks/election_methodological_treatment_and_counterfactuals_20261111/index.md)*
+  Standardize "Methodological Note & Interpretation" treatment across contracts, engines, and web surfaces; overhaul visual legibility of Physarum polycephalum bio-luminescent growth tanks and neural manifold latent landscapes; execute 7 counterfactual voting rule models (2012 Review, German Ausgleichsmandate, 120-seat cap, IRV in electorates, continuous roll reversal); and analyze Representation Commission quota mechanics, unintentional geographic clustering, and longitudinal electorate resizing (1996-2026).
+

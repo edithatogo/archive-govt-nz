@@ -80,7 +80,7 @@ def generate_kinetic_coalition_3d(output_path: Path) -> Path:
     ax.plot_wireframe(X, Y, Z, color="#58a6ff", alpha=0.20, rstride=2, cstride=2, linewidth=0.6)
 
     # Contour projection on the floor for topographic depth
-    ax.contour(X, Y, Z, zdir='z', offset=z_floor, cmap="Blues", alpha=0.25, levels=8)
+    ax.contour(X, Y, Z, zdir="z", offset=z_floor, cmap="Blues", alpha=0.25, levels=8)
 
     # Draw vertical drop stems and shadow anchors
     for p in parties:
