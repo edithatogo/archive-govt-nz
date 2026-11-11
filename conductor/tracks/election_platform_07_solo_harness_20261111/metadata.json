@@ -1,0 +1,22 @@
+{
+  "track_id": "election_platform_07_solo_harness_20261111",
+  "type": "feature",
+  "status": "pending",
+  "created_at": "2026-11-11T00:00:00Z",
+  "updated_at": "2026-11-11T00:00:00Z",
+  "description": "Ruff ALL, basedpyright all-mode ratchet, Python3.15 uv lock, Polars, pytest/Hypothesis/gremlins/Scalene, differential tests, CodeQL, Presidio/Gitleaks and release attestations.",
+  "priority": "Must",
+  "capability_status": "planned_not_verified",
+  "gates": [
+    {
+      "id": "independent-fixtures",
+      "kind": "quality",
+      "status": "pending"
+    },
+    {
+      "id": "release-parity",
+      "kind": "publication",
+      "status": "pending"
+    }
+  ]
+}
