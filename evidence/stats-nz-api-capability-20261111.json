@@ -1,10 +1,12 @@
 {
   "schema_version": "archive-govt-nz.stats-nz-api-capability/v1",
   "probed_at": "2026-11-11T06:41:45+00:00",
+  "updated_at": "2026-11-11T07:05:00+00:00",
   "operator": "edithatogo",
   "credential": {
     "env_var": "STATS_NZ_API_KEY",
     "http_header": "Ocp-Apim-Subscription-Key",
+    "wfs_query_param": "key",
     "storage": "repo-local .env, ignored by git (.gitignore:16); value never committed or recorded in this receipt",
     "value_recorded": false
   },
@@ -30,7 +32,7 @@
           "sha256": "9c6f24ae606ee8a5521f55198e790048fd8652867db532d45600e9f363ebf6b8",
           "content_type": "application/vnd.sdmx.structure+xml; version=2.1; charset=utf-8",
           "server": "NSI Web Service v8.19.7.0",
-          "note": "catalogue endpoint is public; a key is not required for structure metadata"
+          "note": "catalogue endpoint is public; a key is not required for structure metadata; 913 dataflows, including 335 CEN23 (2023 Census) tables"
         },
         {
           "name": "data_without_key",
@@ -51,8 +53,69 @@
         }
       ]
     },
+    "datafinder_geographic_service": {
+      "label": "Stats NZ Geographic Data Service (Koordinates)",
+      "base_url": "https://datafinder.stats.govt.nz/",
+      "status": "catalogue_and_attachments_public; wfs_capabilities_accept_the_key; geometry_export_not_yet_resolved",
+      "notes": "This is the platform that Stats NZ now names as its primary geospatial service. It lists the same boundary families the archive already holds (General/Māori Electorates 2025, 2020, 2014, 2007; constituency layers), all CC BY 4.0.",
+      "probes": [
+        {
+          "name": "layer_catalogue",
+          "url": "https://datafinder.stats.govt.nz/services/api/v1/data/",
+          "auth": "none",
+          "http_status": 200,
+          "byte_count": 61004,
+          "sha256": "8bdf453dda748d55226c4d7e88b07e1242b42fd54fa85caf569ecda6b8b8cb52",
+          "content_type": "application/json",
+          "note": "100 entries on page 1; includes General Electorates 2025 (122741), Maori Electorates 2025 (122742), General Electorates 2020 (104580), Maori Electorates 2020 (104579), General Electoral District 2014 (104062), General Electoral District 2007 (104065)"
+        },
+        {
+          "name": "layer_metadata_ged2025",
+          "url": "https://datafinder.stats.govt.nz/services/api/v1/layers/122741/",
+          "auth": "none",
+          "http_status": 200,
+          "byte_count": 9621,
+          "license": "Creative Commons Attribution 4.0 International",
+          "public_access": "download",
+          "note": "fields: GED2025_V1_00, GED2025_V1_00_NAME, GED2025_V1_00_NAME_ASCII, GENERAL_ELECTORAL_POPULATION, LAND_AREA_SQ_KM, AREA_SQ_KM, Shape_Length, Shape_Area"
+        },
+        {
+          "name": "attachment_csv_ged2025",
+          "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/122741/versions/418308/attachments/25785/download/",
+          "auth": "none",
+          "http_status": 200,
+          "byte_count": 4556,
+          "sha256": "36a05cff82ca3a6f365c521b45d097477c5918cebb5f11caa071bc1252481634",
+          "content_type": "text/csv",
+          "note": "attribute table only, no geometry"
+        },
+        {
+          "name": "wfs_capabilities_without_key",
+          "url": "https://datafinder.stats.govt.nz/services/wfs/?service=WFS&request=GetCapabilities",
+          "auth": "none",
+          "http_status": 401
+        },
+        {
+          "name": "wfs_capabilities_with_key",
+          "url": "https://datafinder.stats.govt.nz/services;key=<key>/wfs/?service=WFS&request=GetCapabilities",
+          "auth": "subscription_key",
+          "http_status": 200,
+          "byte_count": 94189,
+          "content_type": "application/xml",
+          "note": "the key authenticates the WFS gateway, but the returned capabilities list no FeatureType entries and per-layer WFS paths return 404/400, so a GeoJSON GetFeature download was not proven in this probe"
+        },
+        {
+          "name": "export_api",
+          "url": "https://datafinder.stats.govt.nz/services/api/v1.x/exports/",
+          "auth": "none_or_subscription_key",
+          "http_status": 401,
+          "message": "Authentication credentials were not provided.",
+          "note": "geometry export requires a Koordinates account token, which is distinct from the Stats NZ subscription key"
+        }
+      ]
+    },
     "odata_boundaries": {
-      "label": "Stats NZ OData boundary geodata API",
+      "label": "Legacy Stats NZ OData boundary geodata API",
       "base_url": "https://api.stats.govt.nz/opendata/v1/",
       "status": "blocked",
       "tls": {
@@ -80,12 +143,13 @@
       ]
     }
   },
-  "conclusion": "The provisioned STATS_NZ_API_KEY authenticates successfully against the Aotearoa Data Explorer SDMX API (api.data.stats.govt.nz): unauthenticated data requests return HTTP 401, while keyed requests return HTTP 200 CSV. The blocked boundary-geodata path is unchanged: api.stats.govt.nz still serves an expired certificate (notAfter 2026-10-29) and returns HTTP 502 from Azure Application Gateway even when TLS verification is bypassed, so the §9 boundary re-capture cannot proceed on certificate renewal alone.",
+  "conclusion": "The provisioned STATS_NZ_API_KEY authenticates against two live Stats NZ surfaces. (1) Aotearoa Data Explorer SDMX: unauthenticated data requests return HTTP 401, keyed requests return HTTP 200 CSV; the public catalogue lists 913 dataflows including 335 CEN23 tables. (2) Stats NZ Geographic Data Service (datafinder): the layer catalogue and per-layer metadata/CSV attachments are public and list the same electorate boundary families the archive holds, with CC BY 4.0; the WFS gateway accepts the key but did not expose a working per-layer GetFeature path in this probe, and geometry export needs a Koordinates account token. The legacy OData host api.stats.govt.nz is still unusable (expired certificate plus HTTP 502 even with TLS verification bypassed), so the §9 boundary re-capture remains blocked there; datafinder is the documented replacement platform and the practical route forward.",
   "licence": "CC BY 4.0 Stats NZ",
   "next_actions": [
-    "Open a Stats NZ support case for api.stats.govt.nz: expired certificate plus HTTP 502 at the Application Gateway.",
+    "Stop targeting api.stats.govt.nz/opendata/v1; Stats NZ now names datafinder.stats.govt.nz as its primary geospatial service.",
+    "Obtain a Koordinates account/API token for datafinder if GeoJSON/SHP export is required; the Stats NZ subscription key is not a Koordinates token.",
+    "Alternatively, capture the public per-layer CSV attachments plus the WFS capabilities as provenance, and resolve the per-layer GetFeature type name with Stats NZ support.",
     "Keep STATS_NZ_API_KEY in the repo-local .env (gitignored) or a CI secret; never commit it.",
-    "When api.stats.govt.nz responds 200 with a valid certificate, resume the boundary re-capture in docs/elections-dataset-card.md §9.",
-    "ADE SDMX data capture beyond the capability probe is a separate, rights-reviewed follow-up; the catalogue and one keyed slice are proven reproducible here."
+    "ADE CEN23 tables are a separate rights-reviewed follow-up; the catalogue and one keyed slice are proven reproducible here."
   ]
 }

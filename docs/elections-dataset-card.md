@@ -198,12 +198,22 @@ A Stats NZ API subscription key **has now been provisioned** (`STATS_NZ_API_KEY`
 `Ocp-Apim-Subscription-Key`, stored only in the gitignored repo-local `.env`; the value is
 never committed). It authenticates successfully against the separate **Aotearoa Data
 Explorer SDMX API** (`https://api.data.stats.govt.nz/rest/`): unauthenticated data requests
-return HTTP 401, keyed requests return HTTP 200. That is statistical SDMX data, not the
-boundary service, so it does not unblock the boundary re-capture. Probe receipts:
+return HTTP 401, keyed requests return HTTP 200; the public catalogue lists 913 dataflows
+including 335 `CEN23` tables. That is statistical SDMX data, not the boundary service.
+
+Stats NZ now names **`https://datafinder.stats.govt.nz/`** (Koordinates) as its primary
+geospatial service. Its public layer catalogue lists the same electorate boundary families
+already held here (General/Māori Electorates 2025, 2020, 2014, 2007), all CC BY 4.0, and
+per-layer metadata/CSV attachments download anonymously. The WFS gateway accepts the key
+(HTTP 200 capabilities; HTTP 401 without it) but did not expose a working per-layer
+`GetFeature` path in the probe, and geometry export needs a separate Koordinates account
+token. So datafinder is the practical route forward, but no replacement boundary bytes were
+captured in this revision. Probe receipts:
 `evidence/stats-nz-api-capability-20261111.json`.
 
-Follow-up: Stats NZ must restore `api.stats.govt.nz` (certificate + gateway); then
-re-capture General and Māori district/constituency boundaries 2011–2026 (~3 formats each).
+Follow-up: obtain a Koordinates export token (or resolve the WFS `typeName` with Stats NZ),
+then re-capture General and Māori district/constituency boundaries 2011–2026 (~3 formats
+each) into CAS.
 
 ## Derivatives (Parquet — Ready for Analysis)
 
@@ -270,7 +280,7 @@ edithatogo/archive-govt-nz-global. Captured 9–11 Nov 2026. https://huggingface
 - **Current revision**: 2026 preliminary + historical 1996–2023 + 10–11 Nov 2026 verified capture batches (CKAN/figshare; opinion polls; per-place per-election CSVs 2017/2020/2023; CKAN-record evidence).
 - **Next revision**: 2026 official results — **planned capture 27 November 2026** (~399k special votes outstanding; results are preliminary until then). At that revision, 2026 preliminary figures may be replaced by the official count, and any 2026 per-place CSVs (if published) re-captured.
 - **2023/2020 per-place CSV completion**: Ongoing (Cloudflare/Incapsula-protected; captured via Internet Archive raw-byte snapshots instead — see §§6–8).
-- **Stats NZ geodata re-capture**: Key provisioned and verified on the ADE SDMX API, but still blocked on `api.stats.govt.nz` (expired TLS certificate + HTTP 502 at the gateway) (§9).
+- **Stats NZ geodata re-capture**: Key verified on the ADE SDMX API; legacy `api.stats.govt.nz` still down (expired TLS + HTTP 502). `datafinder.stats.govt.nz` is the replacement platform but needs a Koordinates export token or a resolved WFS type name (§9).
 
 ## Part of
 

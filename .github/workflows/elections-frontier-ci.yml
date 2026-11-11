@@ -39,10 +39,11 @@ jobs:
         run: |
           pip install uv
           uv pip install --system pytest pytest-cov pydantic pyarrow duckdb plotly gradio xgboost scikit-learn matplotlib jsonschema huggingface_hub
+          uv pip install --system -e .
 
       - name: Run Focused Election Test Suite
         run: |
-          pytest tests/test_elections_*.py -v --cov=src/archive_govt_nz/domains/elections --cov-report=term-missing
+          PYTHONPATH=src pytest tests/test_elections_*.py -v --cov=src/archive_govt_nz/domains/elections --cov-report=term-missing
 
   sync-hf-space:
     name: Sync to Hugging Face Spaces
@@ -54,15 +55,21 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Push to Hugging Face Space
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install deployment dependencies
+        run: |
+          pip install huggingface_hub
+
+      - name: Deploy to Hugging Face Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           if [ -n "$HF_TOKEN" ]; then
-            git config --global user.email "ci@archive-govt.nz"
-            git config --global user.name "ArchiveGovtNZ Automation"
-            git remote add hf-space https://edithatogo:$HF_TOKEN@huggingface.co/spaces/edithatogo/nz-election-explorer || true
-            git push hf-space main --force || echo "Space push skipped or credentials not configured"
+            python scripts/deploy_hf_space.py
           else
             echo "HF_TOKEN not set; skipping automated space push."
           fi
