@@ -10,7 +10,7 @@ on:
         required: false
         default: "all"
         type: choice
-        options: [all, government-web, treasury, social-media, newsletters, nz-gazette, tobac-sources, tobac-source-assets, tobac-pmc-supplement, tobac-pubmed-metadata]
+        options: [all, government-web, treasury, social-media, newsletters, nz-gazette, tobac-bronze, tobac-source-assets, tobac-pmc-supplement, tobac-pubmed-metadata]
 
 permissions:
   contents: read
