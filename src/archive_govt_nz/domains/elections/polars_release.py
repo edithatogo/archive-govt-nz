@@ -79,7 +79,7 @@ def calculate_party_shares(source: Path) -> list[PartyShare]:
     ).height:
         raise ValueError("Negative votes or seats")
     totals = cast(
-        tuple[int, int, int, int],
+        "tuple[int, int, int, int]",
         frame.select(
             pl.col("votes").sum(),
             pl.col("electorate_seats").sum(),
@@ -110,15 +110,15 @@ def calculate_party_shares(source: Path) -> list[PartyShare]:
     )
     validated: list[PartyShare] = []
     for raw in result.iter_rows(named=True):
-        row = cast(dict[str, object], raw)
+        row = cast("dict[str, object]", raw)
         validated.append(
             PartyShare(
-                name=cast(str, row["name"]),
-                votes=cast(int, row["votes"]),
-                electorate_seats=cast(int, row["electorate_seats"]),
-                list_seats=cast(int, row["list_seats"]),
-                total_seats=cast(int, row["total_seats"]),
-                share_pct=cast(float, row["share_pct"]),
+                name=cast("str", row["name"]),
+                votes=cast("int", row["votes"]),
+                electorate_seats=cast("int", row["electorate_seats"]),
+                list_seats=cast("int", row["list_seats"]),
+                total_seats=cast("int", row["total_seats"]),
+                share_pct=cast("float", row["share_pct"]),
             )
         )
     return validated
