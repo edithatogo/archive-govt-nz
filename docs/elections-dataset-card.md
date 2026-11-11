@@ -184,15 +184,13 @@ per-place files; 1996/1999/2005 CDX and 2011/2014 CDX returned the Internet Arch
 Temporarily Offline interstitial at capture time). Enrolment-and-voting-statistics CSV/TXT/XLS
 from 2008/2011/2014 (aggregate-level, not per-place) ARE included via §§6.
 
-### 9. Stats NZ Boundary Geodata — NOT re-captured, still blocked
+### 9. Stats NZ Boundary Geodata — attributes re-captured, geometry still blocked
 
-The Stats NZ OData API (`https://api.stats.govt.nz/opendata/v1`) still serves an
+The legacy Stats NZ OData API (`https://api.stats.govt.nz/opendata/v1`) still serves an
 **expired TLS certificate** (`api.stats.govt.nz`, issuer DigiCert, notAfter 29 Oct 2026,
 checked again 11 Nov 2026) and returned **HTTP 502** from Azure Application Gateway even
 when certificate verification was bypassed. Certificate renewal alone may therefore not
-restore this service. The 2025/2020/2014/2007 boundary layers already present in this
-dataset remain as previously captured (Phase 2, ArcGIS FeatureServer pipeline — see §2 and
-Derivatives).
+restore this service. It is no longer the capture target.
 
 A Stats NZ API subscription key **has now been provisioned** (`STATS_NZ_API_KEY`, sent as
 `Ocp-Apim-Subscription-Key`, stored only in the gitignored repo-local `.env`; the value is
@@ -202,17 +200,32 @@ return HTTP 401, keyed requests return HTTP 200; the public catalogue lists 913 
 including 335 `CEN23` tables. That is statistical SDMX data, not the boundary service.
 
 Stats NZ now names **`https://datafinder.stats.govt.nz/`** (Koordinates) as its primary
-geospatial service. Its public layer catalogue lists the same electorate boundary families
-already held here (General/Māori Electorates 2025, 2020, 2014, 2007), all CC BY 4.0, and
-per-layer metadata/CSV attachments download anonymously. The WFS gateway accepts the key
-(HTTP 200 capabilities; HTTP 401 without it) but did not expose a working per-layer
-`GetFeature` path in the probe, and geometry export needs a separate Koordinates account
-token. So datafinder is the practical route forward, but no replacement boundary bytes were
-captured in this revision. Probe receipts:
-`evidence/stats-nz-api-capability-20261111.json`.
+geospatial service. Its catalogue is public and CC BY 4.0, and on 11 Nov 2026 the following
+were captured **byte-for-byte into CAS and sha256-verified** (20 objects, 632,312 bytes) —
+`evidence/datafinder-attachments-20261111-capture.json`:
 
-Follow-up: obtain a Koordinates export token (or resolve the WFS `typeName` with Stats NZ),
-then re-capture General and Māori district/constituency boundaries 2011–2026 (~3 formats
+| Layer | ID | Captured |
+|-------|----|----------|
+| General Electorates 2025 | 122741 | attribute CSV (4,556 B) + PDF (124,308 B) + metadata |
+| Māori Electorates 2025 | 122742 | attribute CSV (644 B) + PDF (128,479 B) + metadata |
+| General Electorates 2020 | 104580 | attribute CSV (4,912 B) + PDF (124,797 B) + metadata |
+| Māori Electorates 2020 | 104579 | attribute CSV (687 B) + PDF (126,185 B) + metadata |
+| General Electoral District 2014 | 104062 | metadata only (attachments list empty) |
+| General Electoral District 2007 | 104065 | metadata only (attachments list empty) |
+
+The CSVs carry electoral population, land area, and area per electorate — useful for the
+census/electorate derivatives — but **no geometry**.
+
+**Boundary geometry remains blocked.** The WFS gateway accepts the subscription key
+(HTTP 200 capabilities; HTTP 401 without it) but exposes no `FeatureType` entries, and the
+geometry export API (`services/api/v1.x/exports/`) returns **HTTP 401** without a
+Koordinates account. The probe settled the key question: `STATS_NZ_API_KEY` is **not** a
+Koordinates token — the spatial-query and data-table services reject it with
+`HTTP 403 invalid-api-key`. A Koordinates ID and API token (query/download scope) are
+required. Probe receipt: `evidence/stats-nz-api-capability-20261111.json`.
+
+Follow-up: obtain a Koordinates API token, then export GeoJSON/SHP for the six layers above
+and re-capture General and Māori district/constituency boundaries 2011–2026 (~3 formats
 each) into CAS.
 
 ## Derivatives (Parquet — Ready for Analysis)
@@ -280,7 +293,7 @@ edithatogo/archive-govt-nz-global. Captured 9–11 Nov 2026. https://huggingface
 - **Current revision**: 2026 preliminary + historical 1996–2023 + 10–11 Nov 2026 verified capture batches (CKAN/figshare; opinion polls; per-place per-election CSVs 2017/2020/2023; CKAN-record evidence).
 - **Next revision**: 2026 official results — **planned capture 27 November 2026** (~399k special votes outstanding; results are preliminary until then). At that revision, 2026 preliminary figures may be replaced by the official count, and any 2026 per-place CSVs (if published) re-captured.
 - **2023/2020 per-place CSV completion**: Ongoing (Cloudflare/Incapsula-protected; captured via Internet Archive raw-byte snapshots instead — see §§6–8).
-- **Stats NZ geodata re-capture**: Key verified on the ADE SDMX API; legacy `api.stats.govt.nz` still down (expired TLS + HTTP 502). `datafinder.stats.govt.nz` is the replacement platform but needs a Koordinates export token or a resolved WFS type name (§9).
+- **Stats NZ geodata re-capture**: Boundary **attributes** for 2025/2020 general and Māori electorates captured and sha256-verified from `datafinder.stats.govt.nz`. Boundary **geometry** still blocked: `STATS_NZ_API_KEY` is not a Koordinates token (HTTP 403 `invalid-api-key`), and the export API needs HTTP 401-guarded Koordinates credentials (§9).
 
 ## Part of
 

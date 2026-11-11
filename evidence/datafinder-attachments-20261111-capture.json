@@ -1,0 +1,306 @@
+{
+  "schema_version": "archive-govt-nz.datafinder-attachment-capture/v1",
+  "captured_at": "2026-11-11T07:06:56.469686+00:00",
+  "operator": "edithatogo",
+  "source": "Stats NZ Geographic Data Service (datafinder.stats.govt.nz), Koordinates",
+  "licence": "CC BY 4.0 Stats NZ",
+  "access": "public; no credential used for these objects",
+  "user_agent": "archive-govt-nz/1.0 (+research archive; contact edithatogo)",
+  "layers": [
+    {
+      "id": 122741,
+      "title": "General Electorates 2025"
+    },
+    {
+      "id": 122742,
+      "title": "Māori Electorates 2025"
+    },
+    {
+      "id": 104580,
+      "title": "General Electorates 2020"
+    },
+    {
+      "id": 104579,
+      "title": "Māori Electorates 2020"
+    },
+    {
+      "id": 104062,
+      "title": "General Electoral District 2014"
+    },
+    {
+      "id": 104065,
+      "title": "General Electoral District 2007"
+    }
+  ],
+  "objects": [
+    {
+      "kind": "layer_metadata",
+      "layer_id": 122741,
+      "layer_title": "General Electorates 2025",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/122741/",
+      "http_status": 200,
+      "content_type": "application/json",
+      "byte_count": 9897,
+      "sha256": "7b2d4c958a785f323999b406713485d027f603a45d9d422235eea25565ad7913",
+      "captured_at": "2026-11-11T07:06:37.643658+00:00",
+      "object_id": "sha256:7b2d4c958a785f323999b406713485d027f603a45d9d422235eea25565ad7913",
+      "stored": true
+    },
+    {
+      "kind": "version_metadata",
+      "layer_id": 122741,
+      "layer_title": "General Electorates 2025",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/122741/versions/418308/",
+      "http_status": 200,
+      "content_type": "application/json",
+      "byte_count": 9897,
+      "sha256": "7b2d4c958a785f323999b406713485d027f603a45d9d422235eea25565ad7913",
+      "captured_at": "2026-11-11T07:06:37.975690+00:00",
+      "object_id": "sha256:7b2d4c958a785f323999b406713485d027f603a45d9d422235eea25565ad7913",
+      "stored": true
+    },
+    {
+      "kind": "attachment_25785",
+      "layer_id": 122741,
+      "layer_title": "General Electorates 2025",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/122741/versions/418308/attachments/25785/download/",
+      "http_status": 200,
+      "content_type": "text/csv",
+      "byte_count": 4556,
+      "sha256": "36a05cff82ca3a6f365c521b45d097477c5918cebb5f11caa071bc1252481634",
+      "captured_at": "2026-11-11T07:06:39.136129+00:00",
+      "object_id": "sha256:36a05cff82ca3a6f365c521b45d097477c5918cebb5f11caa071bc1252481634",
+      "stored": true
+    },
+    {
+      "kind": "attachment_25786",
+      "layer_id": 122741,
+      "layer_title": "General Electorates 2025",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/122741/versions/418308/attachments/25786/download/",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "byte_count": 124308,
+      "sha256": "681b377ad47d8c251f13dabbd2bf8dbe9957b3b79cf0ebae5dfd9611bce7914d",
+      "captured_at": "2026-11-11T07:06:44.813849+00:00",
+      "object_id": "sha256:681b377ad47d8c251f13dabbd2bf8dbe9957b3b79cf0ebae5dfd9611bce7914d",
+      "stored": true
+    },
+    {
+      "kind": "layer_metadata",
+      "layer_id": 122742,
+      "layer_title": "Māori Electorates 2025",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/122742/",
+      "http_status": 200,
+      "content_type": "application/json",
+      "byte_count": 9853,
+      "sha256": "f1a8aa7c8331ace63ba9e1fd271e6409c5f79bda95863a93af16fffc7ac5f138",
+      "captured_at": "2026-11-11T07:06:45.564916+00:00",
+      "object_id": "sha256:f1a8aa7c8331ace63ba9e1fd271e6409c5f79bda95863a93af16fffc7ac5f138",
+      "stored": true
+    },
+    {
+      "kind": "version_metadata",
+      "layer_id": 122742,
+      "layer_title": "Māori Electorates 2025",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/122742/versions/418309/",
+      "http_status": 200,
+      "content_type": "application/json",
+      "byte_count": 9853,
+      "sha256": "f1a8aa7c8331ace63ba9e1fd271e6409c5f79bda95863a93af16fffc7ac5f138",
+      "captured_at": "2026-11-11T07:06:45.897597+00:00",
+      "object_id": "sha256:f1a8aa7c8331ace63ba9e1fd271e6409c5f79bda95863a93af16fffc7ac5f138",
+      "stored": true
+    },
+    {
+      "kind": "attachment_25787",
+      "layer_id": 122742,
+      "layer_title": "Māori Electorates 2025",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/122742/versions/418309/attachments/25787/download/",
+      "http_status": 200,
+      "content_type": "text/csv",
+      "byte_count": 644,
+      "sha256": "26a38db7b1ee38bb80a4aa5e4c72e870c76d6ac05d3857b2d555b0ed9cb81caa",
+      "captured_at": "2026-11-11T07:06:47.034650+00:00",
+      "object_id": "sha256:26a38db7b1ee38bb80a4aa5e4c72e870c76d6ac05d3857b2d555b0ed9cb81caa",
+      "stored": true
+    },
+    {
+      "kind": "attachment_25788",
+      "layer_id": 122742,
+      "layer_title": "Māori Electorates 2025",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/122742/versions/418309/attachments/25788/download/",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "byte_count": 128479,
+      "sha256": "b5278497d38283a044f4c36e524da8f4216d4836e396820f2b5309a9160898d2",
+      "captured_at": "2026-11-11T07:06:47.884966+00:00",
+      "object_id": "sha256:b5278497d38283a044f4c36e524da8f4216d4836e396820f2b5309a9160898d2",
+      "stored": true
+    },
+    {
+      "kind": "layer_metadata",
+      "layer_id": 104580,
+      "layer_title": "General Electorates 2020",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/104580/",
+      "http_status": 200,
+      "content_type": "application/json",
+      "byte_count": 9962,
+      "sha256": "f68abfc23b5937cfcd44fd01b7dd0a985e416615bffc717ee669004e4791af99",
+      "captured_at": "2026-11-11T07:06:48.537194+00:00",
+      "object_id": "sha256:f68abfc23b5937cfcd44fd01b7dd0a985e416615bffc717ee669004e4791af99",
+      "stored": true
+    },
+    {
+      "kind": "version_metadata",
+      "layer_id": 104580,
+      "layer_title": "General Electorates 2020",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/104580/versions/297212/",
+      "http_status": 200,
+      "content_type": "application/json",
+      "byte_count": 9962,
+      "sha256": "f68abfc23b5937cfcd44fd01b7dd0a985e416615bffc717ee669004e4791af99",
+      "captured_at": "2026-11-11T07:06:48.903000+00:00",
+      "object_id": "sha256:f68abfc23b5937cfcd44fd01b7dd0a985e416615bffc717ee669004e4791af99",
+      "stored": true
+    },
+    {
+      "kind": "attachment_22603",
+      "layer_id": 104580,
+      "layer_title": "General Electorates 2020",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/104580/versions/297212/attachments/22603/download/",
+      "http_status": 200,
+      "content_type": "text/csv",
+      "byte_count": 4912,
+      "sha256": "fb76979fcaf60de170488414380703104938bf80da0e28a5fd8b7f0b19eda2fe",
+      "captured_at": "2026-11-11T07:06:49.936371+00:00",
+      "object_id": "sha256:fb76979fcaf60de170488414380703104938bf80da0e28a5fd8b7f0b19eda2fe",
+      "stored": true
+    },
+    {
+      "kind": "attachment_22623",
+      "layer_id": 104580,
+      "layer_title": "General Electorates 2020",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/104580/versions/297212/attachments/22623/download/",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "byte_count": 124797,
+      "sha256": "97672a49913efa979df41bdfab1edbec05308e786921476f943d422fcac76870",
+      "captured_at": "2026-11-11T07:06:50.583690+00:00",
+      "object_id": "sha256:97672a49913efa979df41bdfab1edbec05308e786921476f943d422fcac76870",
+      "stored": true
+    },
+    {
+      "kind": "layer_metadata",
+      "layer_id": 104579,
+      "layer_title": "Māori Electorates 2020",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/104579/",
+      "http_status": 200,
+      "content_type": "application/json",
+      "byte_count": 9939,
+      "sha256": "78328278a9e620a4441303458b2f76ad0e4e82946bbbf4b081b1c934bfa76070",
+      "captured_at": "2026-11-11T07:06:51.576164+00:00",
+      "object_id": "sha256:78328278a9e620a4441303458b2f76ad0e4e82946bbbf4b081b1c934bfa76070",
+      "stored": true
+    },
+    {
+      "kind": "version_metadata",
+      "layer_id": 104579,
+      "layer_title": "Māori Electorates 2020",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/104579/versions/297213/",
+      "http_status": 200,
+      "content_type": "application/json",
+      "byte_count": 9939,
+      "sha256": "78328278a9e620a4441303458b2f76ad0e4e82946bbbf4b081b1c934bfa76070",
+      "captured_at": "2026-11-11T07:06:51.922638+00:00",
+      "object_id": "sha256:78328278a9e620a4441303458b2f76ad0e4e82946bbbf4b081b1c934bfa76070",
+      "stored": true
+    },
+    {
+      "kind": "attachment_22605",
+      "layer_id": 104579,
+      "layer_title": "Māori Electorates 2020",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/104579/versions/297213/attachments/22605/download/",
+      "http_status": 200,
+      "content_type": "text/csv",
+      "byte_count": 687,
+      "sha256": "ef08b109b3d49c957cf3afcf01cf4f9639ef1dd376bd92c0263fdca98791a509",
+      "captured_at": "2026-11-11T07:06:53.064317+00:00",
+      "object_id": "sha256:ef08b109b3d49c957cf3afcf01cf4f9639ef1dd376bd92c0263fdca98791a509",
+      "stored": true
+    },
+    {
+      "kind": "attachment_22608",
+      "layer_id": 104579,
+      "layer_title": "Māori Electorates 2020",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/104579/versions/297213/attachments/22608/download/",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "byte_count": 126185,
+      "sha256": "d1b2d2ac82e32c697104f0118dc617f654945d3818e9c8684f7036313e5be0af",
+      "captured_at": "2026-11-11T07:06:53.937433+00:00",
+      "object_id": "sha256:d1b2d2ac82e32c697104f0118dc617f654945d3818e9c8684f7036313e5be0af",
+      "stored": true
+    },
+    {
+      "kind": "layer_metadata",
+      "layer_id": 104062,
+      "layer_title": "General Electoral District 2014",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/104062/",
+      "http_status": 200,
+      "content_type": "application/json",
+      "byte_count": 9560,
+      "sha256": "727bf7f73a51885bbf64008dac7d3f7b1de2d2531b724158dd560453ae7ea6c6",
+      "captured_at": "2026-11-11T07:06:54.683930+00:00",
+      "object_id": "sha256:727bf7f73a51885bbf64008dac7d3f7b1de2d2531b724158dd560453ae7ea6c6",
+      "stored": true
+    },
+    {
+      "kind": "version_metadata",
+      "layer_id": 104062,
+      "layer_title": "General Electoral District 2014",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/104062/versions/288950/",
+      "http_status": 200,
+      "content_type": "application/json",
+      "byte_count": 9560,
+      "sha256": "727bf7f73a51885bbf64008dac7d3f7b1de2d2531b724158dd560453ae7ea6c6",
+      "captured_at": "2026-11-11T07:06:54.970911+00:00",
+      "object_id": "sha256:727bf7f73a51885bbf64008dac7d3f7b1de2d2531b724158dd560453ae7ea6c6",
+      "stored": true
+    },
+    {
+      "kind": "layer_metadata",
+      "layer_id": 104065,
+      "layer_title": "General Electoral District 2007",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/104065/",
+      "http_status": 200,
+      "content_type": "application/json",
+      "byte_count": 9661,
+      "sha256": "9e6d74a10a1a505174b175769c905b783b6df0f2643069958a24eaf1158305a5",
+      "captured_at": "2026-11-11T07:06:55.891361+00:00",
+      "object_id": "sha256:9e6d74a10a1a505174b175769c905b783b6df0f2643069958a24eaf1158305a5",
+      "stored": true
+    },
+    {
+      "kind": "version_metadata",
+      "layer_id": 104065,
+      "layer_title": "General Electoral District 2007",
+      "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/104065/versions/288947/",
+      "http_status": 200,
+      "content_type": "application/json",
+      "byte_count": 9661,
+      "sha256": "9e6d74a10a1a505174b175769c905b783b6df0f2643069958a24eaf1158305a5",
+      "captured_at": "2026-11-11T07:06:56.229444+00:00",
+      "object_id": "sha256:9e6d74a10a1a505174b175769c905b783b6df0f2643069958a24eaf1158305a5",
+      "stored": true
+    }
+  ],
+  "failures": [],
+  "summary": {
+    "objects_stored": 20,
+    "total_bytes": 632312,
+    "failures": 0
+  },
+  "not_captured": {
+    "geometry": "Per-layer GeoJSON/SHP geometry requires a Koordinates account token at services/api/v1.x/exports/ (HTTP 401 without it). The Stats NZ subscription key authenticates the WFS gateway but the returned capabilities expose no FeatureType entries."
+  }
+}

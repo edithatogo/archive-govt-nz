@@ -111,6 +111,29 @@
           "http_status": 401,
           "message": "Authentication credentials were not provided.",
           "note": "geometry export requires a Koordinates account token, which is distinct from the Stats NZ subscription key"
+        },
+        {
+          "name": "spatial_query_vector_with_subscription_key",
+          "url": "https://datafinder.stats.govt.nz/services/query/v1/vector.json?key=<key>&layer=122741&x=174.77&y=-36.85&max_results=1&radius=10000&geometry=true&with_field_names=true",
+          "auth": "subscription_key_as_api_token",
+          "http_status": 403,
+          "message": "invalid-api-key: Provide a valid api key",
+          "note": "decisive evidence that STATS_NZ_API_KEY is NOT a Koordinates API token: the spatial-query and data-table services declare auth_method apikey with scope query, and reject the Stats NZ subscription key"
+        },
+        {
+          "name": "public_attachment_capture",
+          "url": "https://datafinder.stats.govt.nz/services/api/v1.x/layers/<id>/versions/<version>/attachments/",
+          "auth": "none",
+          "http_status": 200,
+          "note": "see evidence/datafinder-attachments-20261111-capture.json: 20 objects (6 layer metadata, 6 version metadata, 4 attribute CSVs, 4 PDFs) captured byte-for-byte into the local CAS and sha256-verified",
+          "captured_layers": {
+            "122741": "General Electorates 2025 - attribute CSV (4,556 B) + PDF (124,308 B)",
+            "122742": "Maori Electorates 2025 - attribute CSV (644 B) + PDF (128,479 B)",
+            "104580": "General Electorates 2020 - attribute CSV (4,912 B) + PDF (124,797 B)",
+            "104579": "Maori Electorates 2020 - attribute CSV (687 B) + PDF (126,185 B)",
+            "104062": "General Electoral District 2014 - metadata only; attachments list is empty",
+            "104065": "General Electoral District 2007 - metadata only; attachments list is empty"
+          }
         }
       ]
     },
@@ -143,13 +166,13 @@
       ]
     }
   },
-  "conclusion": "The provisioned STATS_NZ_API_KEY authenticates against two live Stats NZ surfaces. (1) Aotearoa Data Explorer SDMX: unauthenticated data requests return HTTP 401, keyed requests return HTTP 200 CSV; the public catalogue lists 913 dataflows including 335 CEN23 tables. (2) Stats NZ Geographic Data Service (datafinder): the layer catalogue and per-layer metadata/CSV attachments are public and list the same electorate boundary families the archive holds, with CC BY 4.0; the WFS gateway accepts the key but did not expose a working per-layer GetFeature path in this probe, and geometry export needs a Koordinates account token. The legacy OData host api.stats.govt.nz is still unusable (expired certificate plus HTTP 502 even with TLS verification bypassed), so the §9 boundary re-capture remains blocked there; datafinder is the documented replacement platform and the practical route forward.",
+  "conclusion": "The provisioned STATS_NZ_API_KEY authenticates against two live Stats NZ surfaces and is decisively NOT a Koordinates API token. (1) Aotearoa Data Explorer SDMX: unauthenticated data requests return HTTP 401, keyed requests return HTTP 200 CSV; the public catalogue lists 913 dataflows including 335 CEN23 tables. (2) Stats NZ Geographic Data Service (datafinder): the layer catalogue, per-layer/version metadata and per-layer attachments are public, so 20 objects covering the six electorate boundary layers were captured byte-for-byte into CAS and sha256-verified (attribute CSVs for 2025/2020 general and Maori electorates, PDFs, plus metadata for all six). The same key is rejected by the datafinder spatial-query and data-table services (HTTP 403 invalid-api-key), which require a Koordinates token with the query scope, and the geometry export API returns HTTP 401 without one. The WFS gateway accepts the key but exposes no FeatureType entries, so no geometry bytes were captured. The legacy OData host api.stats.govt.nz is still unusable (expired certificate plus HTTP 502 even with TLS verification bypassed). Boundary GEOMETRY re-capture therefore remains blocked on a Koordinates account/token; boundary ATTRIBUTE data is now captured.",
   "licence": "CC BY 4.0 Stats NZ",
   "next_actions": [
     "Stop targeting api.stats.govt.nz/opendata/v1; Stats NZ now names datafinder.stats.govt.nz as its primary geospatial service.",
-    "Obtain a Koordinates account/API token for datafinder if GeoJSON/SHP export is required; the Stats NZ subscription key is not a Koordinates token.",
-    "Alternatively, capture the public per-layer CSV attachments plus the WFS capabilities as provenance, and resolve the per-layer GetFeature type name with Stats NZ support.",
-    "Keep STATS_NZ_API_KEY in the repo-local .env (gitignored) or a CI secret; never commit it.",
+    "Obtain a Koordinates ID (free) and an API token with the query/download scope for datafinder geometry export; the Stats NZ subscription key is confirmed not to be a Koordinates token.",
+    "After export, capture GeoJSON/SHP for layers 122741, 122742, 104580, 104579, 104062, 104065 into CAS with per-file receipts and merge with the attribute capture.",
+    "Keep STATS_NZ_API_KEY in the repo-local .env (gitignored) or a CI secret; never commit it. Store any Koordinates token the same way.",
     "ADE CEN23 tables are a separate rights-reviewed follow-up; the catalogue and one keyed slice are proven reproducible here."
   ]
 }
