@@ -66,6 +66,7 @@ class SainteLagueResult(BaseModel):
     nominal_seats: int = 120
     qualifying_parties: list[str]
     excluded_parties: list[str]
+    excluded_party_votes: dict[str, int] = Field(default_factory=dict)
     allocations: list[PartyAllocation]
 
 
