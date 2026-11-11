@@ -33,6 +33,8 @@ data/profile/
 tmp/
 /dist/
 build
+/objects/
+spaces/nz-election-explorer/archive_govt_nz/
 
 # Operating-system and editor files
 .DS_Store

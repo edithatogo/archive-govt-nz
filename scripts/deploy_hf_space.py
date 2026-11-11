@@ -20,6 +20,22 @@ def get_token() -> str | None:
     return None
 
 
+def sync_package_to_space(space_dir: Path) -> None:
+    """Ensure the archive_govt_nz package is bundled inside the space directory for self-contained execution."""
+    src_pkg = Path("src/archive_govt_nz")
+    target_pkg = space_dir / "archive_govt_nz"
+    if src_pkg.exists():
+        import shutil
+        if target_pkg.exists():
+            shutil.rmtree(target_pkg)
+        shutil.copytree(
+            src_pkg,
+            target_pkg,
+            ignore=shutil.ignore_patterns("__pycache__", "*.pyc", ".DS_Store"),
+        )
+        print(f"Bundled {src_pkg} into {target_pkg}")
+
+
 def deploy_space() -> None:
     """Deploy the spaces/nz-election-explorer folder to Hugging Face Space."""
     token = get_token()
@@ -29,6 +45,8 @@ def deploy_space() -> None:
     space_dir = Path("spaces/nz-election-explorer")
     if not space_dir.exists():
         raise FileNotFoundError(f"Space directory not found: {space_dir}")
+
+    sync_package_to_space(space_dir)
 
     repo_id = "edithatogo/nz-election-explorer"
     api = HfApi(token=token)
