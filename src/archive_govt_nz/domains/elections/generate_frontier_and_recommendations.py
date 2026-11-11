@@ -16,6 +16,7 @@ from __future__ import annotations
 
 from pathlib import Path
 import matplotlib.pyplot as plt
+from matplotlib.patches import Circle
 import numpy as np
 
 
@@ -892,7 +893,7 @@ def generate_recommendations_batch(fig_dir: Path) -> dict[str, Path]:
                 x_hex = col * 1.5 + (0.75 if row % 2 == 1 else 0)
                 y_hex = row * 1.3
                 c = cols[idx]
-                circle = plt.Circle(
+                circle = Circle(
                     (x_hex, y_hex),
                     0.58,
                     facecolor=c,
