@@ -9,6 +9,8 @@ on:
       - 'schemas/election/**'
       - 'zk/**'
       - 'tests/test_elections_*.py'
+      - 'config/elections-basedpyright.json'
+      - 'tools/election_polars_export.py'
       - '.github/workflows/elections-frontier-ci.yml'
   pull_request:
     branches: [main]
@@ -43,7 +45,12 @@ jobs:
       - name: Install uv & dependencies
         run: |
           pip install uv
-          uv pip install --system pytest pytest-cov pydantic pyarrow duckdb plotly gradio xgboost scikit-learn matplotlib jsonschema huggingface_hub umap-learn
+          uv pip install --system pytest pytest-cov pydantic pyarrow duckdb plotly gradio xgboost scikit-learn matplotlib jsonschema huggingface_hub umap-learn polars basedpyright ruff
+
+      - name: Verify scoped maximal typing and lint policy
+        run: |
+          basedpyright --project config/elections-basedpyright.json
+          ruff check src/archive_govt_nz/domains/elections/polars_release.py tests/test_elections_polars_release.py
 
       - name: Validate published release independently
         env:
