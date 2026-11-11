@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import asyncio
+from types import SimpleNamespace
 from typing import TYPE_CHECKING
 from unittest.mock import patch
 
@@ -64,3 +65,32 @@ def test_global_batch_capture_runner(tmp_path: Path) -> None:
     assert report["skipped_tombstones"] == 1
     assert len(report["successful_captures"]) == 1
     assert report["successful_captures"][0]["resource_id"] == "res-1"
+
+
+def test_treasury_html_is_not_a_workbook(tmp_path: Path) -> None:
+    """An HTTP 200 challenge page fails the resolved workbook capture."""
+    payload = tmp_path / "challenge"
+    payload.write_bytes(b"<html>challenge</html>")
+    result = SimpleNamespace(receipt=SimpleNamespace(path=payload))
+    candidate = {
+        "dataset_id": "budget",
+        "resource_id": "workbook",
+        "url": "https://www.treasury.govt.nz/data.xls",
+        "ckan_url": "https://www.treasury.govt.nz/budget/2013/data",
+        "download_authorized": True,
+    }
+
+    async def capture(*_args: object, **_kwargs: object) -> object:
+        return result
+
+    with patch("archive_govt_nz.global_capture.capture_url", side_effect=capture):
+        report = asyncio.run(
+            run_global_batch_capture(
+                [candidate], ContentAddressedStore(tmp_path / "objects")
+            )
+        )
+    assert report["successful_count"] == 0
+    assert (
+        report["broken_urls"][0]["error_detail"]
+        == "treasury_workbook_signature_mismatch"
+    )

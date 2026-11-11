@@ -14,15 +14,12 @@ from typing import Any
 import httpx
 
 from archive_govt_nz.ckan.client import BoundedCkanClient, CkanClientConfig
-from archive_govt_nz.ckan.envelope import CkanError
 from archive_govt_nz.ckan.global_discovery import (
     GlobalCkanDiscovery,
-    GlobalCkanScope,
-    GlobalDatasetReference,
-    GlobalResourceReference,
     canonical_global_scope_manifest,
     global_scope_report_markdown,
 )
+from archive_govt_nz.ckan.treasury import resolve_candidates
 from archive_govt_nz.global_capture import (
     GlobalBatchCaptureConfig,
     run_global_batch_capture,
@@ -56,57 +53,6 @@ class HarvestConfig:
     max_datasets: int | None = None
 
 
-def _fallback_scope(evidence_dir: Path, max_datasets: int | None) -> GlobalCkanScope:
-    """Construct GlobalCkanScope from checked-in ministerial discovery evidence."""
-    candidate_files = [
-        evidence_dir / "replacement-discovery-20260811.json",
-        evidence_dir / "health-discovery-20260811.json",
-    ]
-    datasets: list[GlobalDatasetReference] = []
-    for cand in candidate_files:
-        if cand.is_file():
-            try:
-                cand_data = json.loads(cand.read_text(encoding="utf-8"))
-                for d in cand_data.get("datasets", []):
-                    res_list = [
-                        GlobalResourceReference(
-                            id=str(r.get("id")),
-                            name=r.get("name"),
-                            url=str(r.get("url")),
-                            format=r.get("format"),
-                            size=r.get("size"),
-                            license_id=r.get("license_id"),
-                            created=r.get("created"),
-                            last_modified=r.get("last_modified"),
-                            datastore_active=bool(r.get("datastore_active", False)),
-                        )
-                        for r in d.get("resources", [])
-                    ]
-                    datasets.append(
-                        GlobalDatasetReference(
-                            id=str(d.get("id")),
-                            name=d.get("name"),
-                            title=d.get("title"),
-                            organization_name=d.get("organization_name")
-                            or "New Zealand Government",
-                            organization_title=d.get("organization_title")
-                            or "New Zealand Government",
-                            license_id=d.get("license_id") or "cc-by",
-                            license_title=d.get("license_title")
-                            or "Creative Commons Attribution",
-                            metadata_created=d.get("metadata_created"),
-                            metadata_modified=d.get("metadata_modified"),
-                            resources=tuple(res_list),
-                        )
-                    )
-            except json.JSONDecodeError, OSError:
-                continue
-
-    if max_datasets:
-        datasets = datasets[:max_datasets]
-    return GlobalCkanScope(datasets=tuple(datasets), pages=())
-
-
 async def _execute_harvest_network_phases(
     config: HarvestConfig,
 ) -> tuple[bytes, bytes, dict[str, Any], dict[str, Any]]:
@@ -125,14 +71,10 @@ async def _execute_harvest_network_phases(
             page_size=config.page_size,
             max_datasets=config.max_datasets,
         )
-        try:
-            scope = await discovery.discover()
-        except (CkanError, httpx.HTTPError, OSError) as exc:
-            print(
-                f"NOTICE: Live discovery hurdle: {exc}. "
-                "Synthesizing scope from verified ministerial discovery evidence."
-            )
-            scope = _fallback_scope(config.evidence_dir, config.max_datasets)
+        scope = await discovery.discover()
+        if not scope.datasets or not scope.discovered_resource_count:
+            msg = "empty_ckan_discovery"
+            raise ValueError(msg)
 
     scope_manifest_bytes = canonical_global_scope_manifest(scope)
     scope_report_bytes = global_scope_report_markdown(scope)
@@ -147,7 +89,21 @@ async def _execute_harvest_network_phases(
         timeout_seconds=config.timeout_seconds,
     )
     candidates = classification_receipt.get("records", [])
+    async with httpx.AsyncClient() as publisher_client:
+        candidates, resolutions = await resolve_candidates(candidates, publisher_client)
+    (config.evidence_dir / "treasury-resolution.json").write_text(
+        json.dumps(resolutions, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    if not any(row.get("download_authorized") for row in candidates):
+        msg = "empty_eligible_harvest"
+        raise ValueError(msg)
     capture_receipt = await run_global_batch_capture(candidates, store, batch_config)
+    treasury_urls = {row["url"] for row in candidates if row.get("ckan_url")}
+    capture_receipt["unresolved_treasury_workbooks"] = sorted(
+        row["url"]
+        for row in capture_receipt.get("broken_urls", [])
+        if row["url"] in treasury_urls
+    )
 
     return (
         scope_manifest_bytes,
@@ -233,6 +189,12 @@ def execute_unified_harvest(config: HarvestConfig | None = None) -> dict[str, An
         json.dumps(summary, ensure_ascii=False, indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
+    if cap_rcpt.get("unresolved_treasury_workbooks"):
+        msg = "unresolved_treasury_workbooks"
+        raise ValueError(msg)
+    if not summary["successful_captures"]:
+        msg = "empty_successful_harvest"
+        raise ValueError(msg)
     return summary
 
 

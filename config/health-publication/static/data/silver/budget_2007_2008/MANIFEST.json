@@ -1,0 +1,41 @@
+{
+  "schema_version": "nz-health-appropriations-supplement/v1",
+  "base_revision": "b4597c53f4ab5396f15d33010eb43acd5db6e983",
+  "files": [
+    {
+      "path": "data/silver/budget_2007_2008/2007/appropriation_fact.parquet",
+      "bytes": 65065,
+      "sha256": "98bd02735983588cb8254ff763a96d3ddd8a5ffdc08163ef8d6550553073aec2"
+    },
+    {
+      "path": "data/silver/budget_2007_2008/2007/field_lineage.parquet",
+      "bytes": 245377,
+      "sha256": "bcebb1c2d580ab5060d28cfc2f17ca0f0eb589d7ec20f9cd68ef9c46469b0924"
+    },
+    {
+      "path": "data/silver/budget_2007_2008/2007/numeric_evidence.parquet",
+      "bytes": 78860,
+      "sha256": "1061e753cf156f7f915fcffd2ddfb77b17bcb188e351bfd2a25469b170fb42f4"
+    },
+    {
+      "path": "data/silver/budget_2007_2008/2008/appropriation_fact.parquet",
+      "bytes": 80491,
+      "sha256": "587f4e9293025e4a39a02239e324e8f36a848ce8118465a9777c5e3fd7a444a5"
+    },
+    {
+      "path": "data/silver/budget_2007_2008/2008/field_lineage.parquet",
+      "bytes": 322081,
+      "sha256": "a9ba3ac2d2abd819bdc8affb22a1b72c353a946d4ac32b50ab8ef7d18213db1e"
+    },
+    {
+      "path": "data/silver/budget_2007_2008/2008/numeric_evidence.parquet",
+      "bytes": 102896,
+      "sha256": "bb7c3469544e3a0a53cf6bc36f4088e1e3019f7926b1a45d12f436bc0ba7e8d5"
+    },
+    {
+      "path": "metadata/budget_2007_2008_rights.json",
+      "bytes": 2276,
+      "sha256": "11c914a3cc971fc771c58d6bec868e0f0b14648a1dae86f3741b85a3491cf9a5"
+    }
+  ]
+}

@@ -14,6 +14,8 @@ import httpx
 from archive_govt_nz.capture import CaptureConfig, CaptureError, capture_url
 
 if TYPE_CHECKING:
+    from pathlib import Path
+
     from archive_govt_nz.object_store import ContentAddressedStore
 
 
@@ -43,6 +45,14 @@ class GlobalCaptureOutcome:
     blake3: str | None = None
     bytes_captured: int | None = None
     elapsed_seconds: float = 0.0
+
+
+def _verify_workbook_signature(path: Path) -> None:
+    with path.open("rb") as stream:
+        signature = stream.read(8)
+    if not signature.startswith((b"PK\x03\x04", b"\xd0\xcf\x11\xe0\xa1\xb1\x1a\xe1")):
+        message = "treasury_workbook_signature_mismatch"
+        raise ValueError(message)
 
 
 async def run_global_batch_capture(
@@ -91,6 +101,8 @@ async def run_global_batch_capture(
             async with worker_semaphore, host_sem:
                 try:
                     result = await capture_url(client, url, store, config=capture_cfg)
+                    if cand.get("ckan_url"):
+                        _verify_workbook_signature(result.receipt.path)
                     successful.append(
                         {
                             "dataset_id": dataset_id,
@@ -102,6 +114,16 @@ async def run_global_batch_capture(
                             "content_type": result.content_type,
                             "http_status": result.status_code,
                             "elapsed_seconds": result.elapsed_seconds,
+                            **{
+                                key: cand[key]
+                                for key in (
+                                    "ckan_url",
+                                    "publisher_page",
+                                    "licence_url",
+                                    "page_sha256",
+                                )
+                                if key in cand
+                            },
                         }
                     )
                 except CaptureError as exc:
