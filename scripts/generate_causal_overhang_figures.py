@@ -28,19 +28,21 @@ ACCENT_PURPLE = "#bc8cff"
 ACCENT_AMBER = "#d29922"
 ACCENT_TEAL = "#2dd4bf"
 
-plt.rcParams.update({
-    "font.sans-serif": ["SF Pro Display", "Helvetica Neue", "Arial", "sans-serif"],
-    "font.family": "sans-serif",
-    "figure.facecolor": DARK_BG,
-    "axes.facecolor": CARD_BG,
-    "axes.edgecolor": BORDER_COLOR,
-    "axes.labelcolor": TEXT_COLOR,
-    "text.color": TEXT_COLOR,
-    "xtick.color": TEXT_MUTED,
-    "ytick.color": TEXT_MUTED,
-    "grid.color": BORDER_COLOR,
-    "grid.alpha": 0.5,
-})
+plt.rcParams.update(
+    {
+        "font.sans-serif": ["SF Pro Display", "Helvetica Neue", "Arial", "sans-serif"],
+        "font.family": "sans-serif",
+        "figure.facecolor": DARK_BG,
+        "axes.facecolor": CARD_BG,
+        "axes.edgecolor": BORDER_COLOR,
+        "axes.labelcolor": TEXT_COLOR,
+        "text.color": TEXT_COLOR,
+        "xtick.color": TEXT_MUTED,
+        "ytick.color": TEXT_MUTED,
+        "grid.color": BORDER_COLOR,
+        "grid.alpha": 0.5,
+    }
+)
 
 
 def plot_overhang_causal_waterfall(output_path: Path) -> None:
@@ -78,7 +80,16 @@ def plot_overhang_causal_waterfall(output_path: Path) -> None:
 
     fig, ax = plt.subplots(figsize=(13, 7.5), dpi=300)
 
-    bars = ax.bar(range(len(drivers)), heights, bottom=bottoms, color=colors, width=0.55, edgecolor="#ffffff", linewidth=0.8, alpha=0.92)
+    bars = ax.bar(
+        range(len(drivers)),
+        heights,
+        bottom=bottoms,
+        color=colors,
+        width=0.55,
+        edgecolor="#ffffff",
+        linewidth=0.8,
+        alpha=0.92,
+    )
 
     # Add text labels on bars
     for i, (b, d) in enumerate(zip(bars, deltas, strict=True)):
@@ -105,13 +116,24 @@ def plot_overhang_causal_waterfall(output_path: Path) -> None:
 
     # Step guide lines
     for i in range(1, len(drivers) - 1):
-        ax.plot([i - 0.4, i + 0.4], [bottoms[i], bottoms[i]], color="#8b949e", linestyle="--", linewidth=0.8)
+        ax.plot(
+            [i - 0.4, i + 0.4],
+            [bottoms[i], bottoms[i]],
+            color="#8b949e",
+            linestyle="--",
+            linewidth=0.8,
+        )
 
     ax.set_xticks(range(len(drivers)))
     ax.set_xticklabels(drivers, fontsize=9.5, fontweight="medium")
     ax.set_ylim(0, 142)
     ax.set_ylabel("Total Parliamentary Seats", fontsize=11, fontweight="bold")
-    ax.set_title("Econometric Shapley Additive Attribution of the 2026 11-Seat Overhang", fontsize=14, fontweight="bold", pad=15)
+    ax.set_title(
+        "Econometric Shapley Additive Attribution of the 2026 11-Seat Overhang",
+        fontsize=14,
+        fontweight="bold",
+        pad=15,
+    )
 
     # Subtitle note box
     ax.text(
@@ -123,7 +145,11 @@ def plot_overhang_causal_waterfall(output_path: Path) -> None:
         ha="center",
         fontsize=9,
         color=TEXT_MUTED,
-        bbox={"boxstyle": "round,pad=0.5", "facecolor": "#1c2128", "edgecolor": BORDER_COLOR},
+        bbox={
+            "boxstyle": "round,pad=0.5",
+            "facecolor": "#1c2128",
+            "edgecolor": BORDER_COLOR,
+        },
     )
 
     ax.grid(axis="y", linestyle=":", alpha=0.4)
@@ -147,8 +173,24 @@ def plot_rdd_incumbency_split_jump(output_path: Path) -> None:
     # Jump of +0.0542 (5.42 pp)
     y_right = 0.02 + 0.0542 + 0.12 * x_right + np.random.normal(0, 0.015, 35)
 
-    ax.scatter(x_left * 100, y_left * 100, color=ACCENT_RED, alpha=0.75, s=45, label="Non-Incumbent Candidate Contests", edgecolors="none")
-    ax.scatter(x_right * 100, y_right * 100, color=ACCENT_BLUE, alpha=0.85, s=45, label="Incumbent MP Contests", edgecolors="none")
+    ax.scatter(
+        x_left * 100,
+        y_left * 100,
+        color=ACCENT_RED,
+        alpha=0.75,
+        s=45,
+        label="Non-Incumbent Candidate Contests",
+        edgecolors="none",
+    )
+    ax.scatter(
+        x_right * 100,
+        y_right * 100,
+        color=ACCENT_BLUE,
+        alpha=0.85,
+        s=45,
+        label="Incumbent MP Contests",
+        edgecolors="none",
+    )
 
     # Fit polynomial curves on left and right
     fit_x_left = np.linspace(-25, 0, 100)
@@ -167,17 +209,39 @@ def plot_rdd_incumbency_split_jump(output_path: Path) -> None:
         "Causal Incumbency LATE:\nΔ = +5.42 pp (p = 0.0034)\n[95% CI: +1.79 to +9.05 pp]",
         xy=(0, 4.7),
         xytext=(3, 1.5),
-        arrowprops={"facecolor": ACCENT_AMBER, "shrink": 0.08, "width": 1.5, "headwidth": 8},
+        arrowprops={
+            "facecolor": ACCENT_AMBER,
+            "shrink": 0.08,
+            "width": 1.5,
+            "headwidth": 8,
+        },
         color=ACCENT_AMBER,
         fontweight="bold",
         fontsize=10.5,
-        bbox={"boxstyle": "round,pad=0.5", "facecolor": "#1c2128", "edgecolor": ACCENT_AMBER},
+        bbox={
+            "boxstyle": "round,pad=0.5",
+            "facecolor": "#1c2128",
+            "edgecolor": ACCENT_AMBER,
+        },
     )
 
-    ax.set_xlabel("2023 Victory Margin (%) [Running Variable]", fontsize=11, fontweight="bold")
-    ax.set_ylabel("2026 Candidate Vote Share Minus Party Vote Share (%)", fontsize=11, fontweight="bold")
-    ax.set_title("Sharp Regression Discontinuity: Causal Incumbency Treatment on Ticket-Splitting", fontsize=13, fontweight="bold", pad=12)
-    ax.legend(loc="upper left", framealpha=0.9, facecolor=CARD_BG, edgecolor=BORDER_COLOR)
+    ax.set_xlabel(
+        "2023 Victory Margin (%) [Running Variable]", fontsize=11, fontweight="bold"
+    )
+    ax.set_ylabel(
+        "2026 Candidate Vote Share Minus Party Vote Share (%)",
+        fontsize=11,
+        fontweight="bold",
+    )
+    ax.set_title(
+        "Sharp Regression Discontinuity: Causal Incumbency Treatment on Ticket-Splitting",
+        fontsize=13,
+        fontweight="bold",
+        pad=12,
+    )
+    ax.legend(
+        loc="upper left", framealpha=0.9, facecolor=CARD_BG, edgecolor=BORDER_COLOR
+    )
     ax.grid(True, linestyle=":", alpha=0.4)
 
     plt.tight_layout()
@@ -202,12 +266,28 @@ def plot_maori_roll_migration_iv(output_path: Path) -> None:
     pct_expansion = [e[1] for e in electorates]
     margin_shift = [e[2] for e in electorates]
 
-    ax.scatter(pct_expansion, margin_shift, color=ACCENT_PURPLE, s=120, edgecolors="#ffffff", linewidth=1.5, zorder=5, label="7 Māori Electorates (2026)")
+    ax.scatter(
+        pct_expansion,
+        margin_shift,
+        color=ACCENT_PURPLE,
+        s=120,
+        edgecolors="#ffffff",
+        linewidth=1.5,
+        zorder=5,
+        label="7 Māori Electorates (2026)",
+    )
 
     # Fitted 2SLS regression line
     m, b = np.polyfit(pct_expansion, margin_shift, 1)
     x_line = np.linspace(10, 20, 100)
-    ax.plot(x_line, m * x_line + b, color=ACCENT_TEAL, linewidth=2.5, linestyle="-", label=f"2SLS Instrumental Fit (β = +{m:.2f}, F = 34.8)")
+    ax.plot(
+        x_line,
+        m * x_line + b,
+        color=ACCENT_TEAL,
+        linewidth=2.5,
+        linestyle="-",
+        label=f"2SLS Instrumental Fit (β = +{m:.2f}, F = 34.8)",
+    )
 
     # Label each point
     for name, x, y in electorates:
@@ -220,9 +300,22 @@ def plot_maori_roll_migration_iv(output_path: Path) -> None:
             fontweight="bold",
         )
 
-    ax.set_xlabel("Māori Roll Net Enrolment Expansion (%) [Endogenous Treatment Shock]", fontsize=11, fontweight="bold")
-    ax.set_ylabel("Te Pāti Māori Candidate Margin Over Party Vote (%) [Outcome]", fontsize=11, fontweight="bold")
-    ax.set_title("Instrumental Variables (2SLS): Continuous Roll Switch Shock on Māori Seat Decoupling", fontsize=13, fontweight="bold", pad=12)
+    ax.set_xlabel(
+        "Māori Roll Net Enrolment Expansion (%) [Endogenous Treatment Shock]",
+        fontsize=11,
+        fontweight="bold",
+    )
+    ax.set_ylabel(
+        "Te Pāti Māori Candidate Margin Over Party Vote (%) [Outcome]",
+        fontsize=11,
+        fontweight="bold",
+    )
+    ax.set_title(
+        "Instrumental Variables (2SLS): Continuous Roll Switch Shock on Māori Seat Decoupling",
+        fontsize=13,
+        fontweight="bold",
+        pad=12,
+    )
 
     # Stats callout box
     ax.text(
@@ -235,10 +328,16 @@ def plot_maori_roll_migration_iv(output_path: Path) -> None:
         transform=ax.transAxes,
         fontsize=9.5,
         color=TEXT_COLOR,
-        bbox={"boxstyle": "round,pad=0.5", "facecolor": "#1c2128", "edgecolor": ACCENT_PURPLE},
+        bbox={
+            "boxstyle": "round,pad=0.5",
+            "facecolor": "#1c2128",
+            "edgecolor": ACCENT_PURPLE,
+        },
     )
 
-    ax.legend(loc="lower right", framealpha=0.9, facecolor=CARD_BG, edgecolor=BORDER_COLOR)
+    ax.legend(
+        loc="lower right", framealpha=0.9, facecolor=CARD_BG, edgecolor=BORDER_COLOR
+    )
     ax.grid(True, linestyle=":", alpha=0.4)
 
     plt.tight_layout()

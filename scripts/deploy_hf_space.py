@@ -26,6 +26,7 @@ def sync_package_to_space(space_dir: Path) -> None:
     target_pkg = space_dir / "archive_govt_nz"
     if src_pkg.exists():
         import shutil
+
         if target_pkg.exists():
             shutil.rmtree(target_pkg)
         shutil.copytree(

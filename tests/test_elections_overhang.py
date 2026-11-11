@@ -132,15 +132,39 @@ def test_disproportionality_includes_nonqualifying_parties():
     import math
 
     parties = [
-        PartyVoteRow(party_name="A", party_votes=60_000, party_vote_percentage=60, electorate_seats_won=30),
-        PartyVoteRow(party_name="B", party_votes=35_000, party_vote_percentage=35, electorate_seats_won=20),
-        PartyVoteRow(party_name="C", party_votes=5_000, party_vote_percentage=5, electorate_seats_won=0),
+        PartyVoteRow(
+            party_name="A",
+            party_votes=60_000,
+            party_vote_percentage=60,
+            electorate_seats_won=30,
+        ),
+        PartyVoteRow(
+            party_name="B",
+            party_votes=35_000,
+            party_vote_percentage=35,
+            electorate_seats_won=20,
+        ),
+        PartyVoteRow(
+            party_name="C",
+            party_votes=5_000,
+            party_vote_percentage=5,
+            electorate_seats_won=0,
+        ),
     ]
     allocation = compute_sainte_lague(parties, nominal_seats=120, threshold_pct=6)
     result = compute_overhang_analysis(allocation)
-    shares = [(a.party_vote / 100000 * 100, a.total_seats / 120 * 100) for a in allocation.allocations]
+    shares = [
+        (a.party_vote / 100000 * 100, a.total_seats / 120 * 100)
+        for a in allocation.allocations
+    ]
     shares.append((5.0, 0.0))  # The excluded party still contributes 5% votes.
     expected_lh = 0.5 * sum(abs(v - s) for v, s in shares)
     expected_g = math.sqrt(0.5 * sum((v - s) ** 2 for v, s in shares))
-    assert math.isclose(result.disproportionality_indices.loosemore_hanby_index, expected_lh, abs_tol=0.001)
-    assert math.isclose(result.disproportionality_indices.gallagher_index, expected_g, abs_tol=0.001)
+    assert math.isclose(
+        result.disproportionality_indices.loosemore_hanby_index,
+        expected_lh,
+        abs_tol=0.001,
+    )
+    assert math.isclose(
+        result.disproportionality_indices.gallagher_index, expected_g, abs_tol=0.001
+    )

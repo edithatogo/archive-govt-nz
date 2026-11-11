@@ -35,7 +35,9 @@ def test_overhang_elasticity_net_calculation() -> None:
 
 def test_quantum_probability_fields() -> None:
     """Verify continuous probability density fields and superposition state collapse."""
-    res = compute_quantum_probability_field(special_votes_count=399000, rightward_decay_pp=-1.65)
+    res = compute_quantum_probability_field(
+        special_votes_count=399000, rightward_decay_pp=-1.65
+    )
     assert res["special_votes_total"] == 399000
 
     clouds = {c["electorate"]: c for c in res["superposition_clouds"]}

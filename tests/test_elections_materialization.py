@@ -24,7 +24,9 @@ def test_frontier_five_generation(tmp_path: Path) -> None:
     assert len(frontier_figs) == 5
     for key, path in frontier_figs.items():
         assert path.exists(), f"Missing frontier visualization: {key}"
-        assert path.stat().st_size > 5000, f"File too small for {key}: {path.stat().st_size}"
+        assert path.stat().st_size > 5000, (
+            f"File too small for {key}: {path.stat().st_size}"
+        )
 
 
 def test_elections_map_generation(tmp_path: Path) -> None:

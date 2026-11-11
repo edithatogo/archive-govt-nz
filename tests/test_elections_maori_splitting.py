@@ -158,5 +158,3 @@ def test_system_wide_vote_splitting() -> None:
     assert len(general_splits) >= 5
     epsom = next(s for s in general_splits if s.electorate_name == "Epsom")
     assert epsom.split_index_by_party["ACT New Zealand"] > 40.0
-
-

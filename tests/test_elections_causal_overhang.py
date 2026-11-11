@@ -24,7 +24,9 @@ def test_oaxaca_blinder_decomposition():
     assert "maori_roll_switch_shock" in decomp
     assert "inter_electorate_quotient_spillover" in decomp
     # Sum of components minus residual should account for 11 overhang seats
-    assert round(sum(decomp.values()), 1) == 10.0 or round(sum(decomp.values()), 1) == 11.0
+    assert (
+        round(sum(decomp.values()), 1) == 10.0 or round(sum(decomp.values()), 1) == 11.0
+    )
 
 
 def test_rdd_incumbency_estimation():
@@ -35,7 +37,11 @@ def test_rdd_incumbency_estimation():
     assert rdd["late_estimate"] > 0.0
     assert rdd["p_value"] < 0.05
     assert len(rdd["confidence_interval_95"]) == 2
-    assert rdd["confidence_interval_95"][0] < rdd["late_estimate"] < rdd["confidence_interval_95"][1]
+    assert (
+        rdd["confidence_interval_95"][0]
+        < rdd["late_estimate"]
+        < rdd["confidence_interval_95"][1]
+    )
 
 
 def test_iv_maori_roll_switch_estimation():

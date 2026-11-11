@@ -31,22 +31,134 @@ def simulate_wetware_slime_mould() -> WetwareSlimeMouldSimulation:
     seeded with voting booth coordinates and voter turnout attractants.
     """
     nodes = [
-        {"name": "Auckland North Shore", "lat": -36.78, "lon": 174.75, "turnout": 0.82, "dominant": "National", "agar_density": 0.95},
-        {"name": "Auckland Central", "lat": -36.85, "lon": 174.76, "turnout": 0.79, "dominant": "Greens", "agar_density": 0.92},
-        {"name": "Auckland South", "lat": -36.98, "lon": 174.88, "turnout": 0.74, "dominant": "Labour", "agar_density": 0.88},
-        {"name": "Waikato / Hamilton", "lat": -37.78, "lon": 175.28, "turnout": 0.81, "dominant": "National", "agar_density": 0.85},
-        {"name": "Bay of Plenty / Tauranga", "lat": -37.68, "lon": 176.16, "turnout": 0.83, "dominant": "National", "agar_density": 0.86},
-        {"name": "Waiariki", "lat": -38.14, "lon": 176.25, "turnout": 0.77, "dominant": "Te Pāti Māori", "agar_density": 0.84},
-        {"name": "Hawke's Bay / Napier", "lat": -39.49, "lon": 176.91, "turnout": 0.80, "dominant": "Labour", "agar_density": 0.81},
-        {"name": "Taranaki / New Plymouth", "lat": -39.06, "lon": 174.07, "turnout": 0.82, "dominant": "National", "agar_density": 0.78},
-        {"name": "Manawatū / Palmerston North", "lat": -40.35, "lon": 175.61, "turnout": 0.79, "dominant": "Labour", "agar_density": 0.80},
-        {"name": "Wellington Central", "lat": -41.29, "lon": 174.78, "turnout": 0.86, "dominant": "Greens", "agar_density": 0.98},
-        {"name": "Rongotai / Hutt", "lat": -41.32, "lon": 174.80, "turnout": 0.84, "dominant": "Labour", "agar_density": 0.91},
-        {"name": "Nelson / Tasman", "lat": -41.27, "lon": 173.28, "turnout": 0.83, "dominant": "National", "agar_density": 0.84},
-        {"name": "Canterbury / Christchurch", "lat": -43.53, "lon": 172.63, "turnout": 0.82, "dominant": "Labour", "agar_density": 0.90},
-        {"name": "Ilam", "lat": -43.52, "lon": 172.58, "turnout": 0.85, "dominant": "TOP", "agar_density": 0.89},
-        {"name": "Otago / Dunedin", "lat": -45.87, "lon": 170.50, "turnout": 0.83, "dominant": "Labour", "agar_density": 0.87},
-        {"name": "Southland / Invercargill", "lat": -46.41, "lon": 168.35, "turnout": 0.79, "dominant": "National", "agar_density": 0.76},
+        {
+            "name": "Auckland North Shore",
+            "lat": -36.78,
+            "lon": 174.75,
+            "turnout": 0.82,
+            "dominant": "National",
+            "agar_density": 0.95,
+        },
+        {
+            "name": "Auckland Central",
+            "lat": -36.85,
+            "lon": 174.76,
+            "turnout": 0.79,
+            "dominant": "Greens",
+            "agar_density": 0.92,
+        },
+        {
+            "name": "Auckland South",
+            "lat": -36.98,
+            "lon": 174.88,
+            "turnout": 0.74,
+            "dominant": "Labour",
+            "agar_density": 0.88,
+        },
+        {
+            "name": "Waikato / Hamilton",
+            "lat": -37.78,
+            "lon": 175.28,
+            "turnout": 0.81,
+            "dominant": "National",
+            "agar_density": 0.85,
+        },
+        {
+            "name": "Bay of Plenty / Tauranga",
+            "lat": -37.68,
+            "lon": 176.16,
+            "turnout": 0.83,
+            "dominant": "National",
+            "agar_density": 0.86,
+        },
+        {
+            "name": "Waiariki",
+            "lat": -38.14,
+            "lon": 176.25,
+            "turnout": 0.77,
+            "dominant": "Te Pāti Māori",
+            "agar_density": 0.84,
+        },
+        {
+            "name": "Hawke's Bay / Napier",
+            "lat": -39.49,
+            "lon": 176.91,
+            "turnout": 0.80,
+            "dominant": "Labour",
+            "agar_density": 0.81,
+        },
+        {
+            "name": "Taranaki / New Plymouth",
+            "lat": -39.06,
+            "lon": 174.07,
+            "turnout": 0.82,
+            "dominant": "National",
+            "agar_density": 0.78,
+        },
+        {
+            "name": "Manawatū / Palmerston North",
+            "lat": -40.35,
+            "lon": 175.61,
+            "turnout": 0.79,
+            "dominant": "Labour",
+            "agar_density": 0.80,
+        },
+        {
+            "name": "Wellington Central",
+            "lat": -41.29,
+            "lon": 174.78,
+            "turnout": 0.86,
+            "dominant": "Greens",
+            "agar_density": 0.98,
+        },
+        {
+            "name": "Rongotai / Hutt",
+            "lat": -41.32,
+            "lon": 174.80,
+            "turnout": 0.84,
+            "dominant": "Labour",
+            "agar_density": 0.91,
+        },
+        {
+            "name": "Nelson / Tasman",
+            "lat": -41.27,
+            "lon": 173.28,
+            "turnout": 0.83,
+            "dominant": "National",
+            "agar_density": 0.84,
+        },
+        {
+            "name": "Canterbury / Christchurch",
+            "lat": -43.53,
+            "lon": 172.63,
+            "turnout": 0.82,
+            "dominant": "Labour",
+            "agar_density": 0.90,
+        },
+        {
+            "name": "Ilam",
+            "lat": -43.52,
+            "lon": 172.58,
+            "turnout": 0.85,
+            "dominant": "TOP",
+            "agar_density": 0.89,
+        },
+        {
+            "name": "Otago / Dunedin",
+            "lat": -45.87,
+            "lon": 170.50,
+            "turnout": 0.83,
+            "dominant": "Labour",
+            "agar_density": 0.87,
+        },
+        {
+            "name": "Southland / Invercargill",
+            "lat": -46.41,
+            "lon": 168.35,
+            "turnout": 0.79,
+            "dominant": "National",
+            "agar_density": 0.76,
+        },
     ]
 
     return WetwareSlimeMouldSimulation(
@@ -74,13 +186,13 @@ def synthesize_psychoacoustic_sonification() -> PsychoacousticSonificationModel:
     chord dissonance, polyrhythmic tempo signatures, and ultrasonic haptic friction.
     """
     party_freqs = {
-        "National": 220.00,      # A3 (dominant conservative baseline)
-        "Labour": 261.63,        # C4 (social democratic tonic)
-        "Greens": 329.63,        # E4 (progressive major third)
-        "ACT": 392.00,           # G4 (libertarian fifth)
-        "NZ First": 174.61,      # F3 (populist sub-bass fundamental)
-        "Te Pāti Māori": 293.66, # D4 (indigenous minor second tension)
-        "TOP": 349.23,           # F4 (evidence-based augmented fourth tritone)
+        "National": 220.00,  # A3 (dominant conservative baseline)
+        "Labour": 261.63,  # C4 (social democratic tonic)
+        "Greens": 329.63,  # E4 (progressive major third)
+        "ACT": 392.00,  # G4 (libertarian fifth)
+        "NZ First": 174.61,  # F3 (populist sub-bass fundamental)
+        "Te Pāti Māori": 293.66,  # D4 (indigenous minor second tension)
+        "TOP": 349.23,  # F4 (evidence-based augmented fourth tritone)
     }
 
     # Sensory dissonance calculation based on Plomp-Levelt / Helmholtz acoustic interference
@@ -115,17 +227,25 @@ def compute_neural_manifold_landscape() -> NeuralManifoldLandscape:
 
     # Induce structured correlation: Wellington Central & Hawke's Bay protest vote mechanics
     # Feature 6 (Inflation sensitivity) and Feature 7 (Protest sentiment) strongly correlated
-    feature_matrix[0] = np.array([1.8, -0.9, 2.1, 2.4, -1.5, 2.0, 1.4, 2.3, 1.1, -1.2, 1.9, 1.8])  # Wellington Central
-    feature_matrix[1] = np.array([-1.2, 0.4, 1.9, -1.1, 2.3, -1.2, 2.2, 2.4, 1.8, -1.4, 1.8, 1.7]) # Hawke's Bay / Napier
+    feature_matrix[0] = np.array(
+        [1.8, -0.9, 2.1, 2.4, -1.5, 2.0, 1.4, 2.3, 1.1, -1.2, 1.9, 1.8]
+    )  # Wellington Central
+    feature_matrix[1] = np.array(
+        [-1.2, 0.4, 1.9, -1.1, 2.3, -1.2, 2.2, 2.4, 1.8, -1.4, 1.8, 1.7]
+    )  # Hawke's Bay / Napier
 
     # Try UMAP; fallback to MDS if umap is unavailable
     coords_2d: np.ndarray
     try:
         import umap
-        reducer = umap.UMAP(n_components=2, random_state=42, n_neighbors=10, min_dist=0.1)
+
+        reducer = umap.UMAP(
+            n_components=2, random_state=42, n_neighbors=10, min_dist=0.1
+        )
         coords_2d = reducer.fit_transform(feature_matrix)
     except Exception:
         from sklearn.manifold import MDS
+
         reducer = MDS(n_components=2, random_state=42, normalized_stress="auto")
         coords_2d = reducer.fit_transform(feature_matrix)
 
@@ -134,12 +254,54 @@ def compute_neural_manifold_landscape() -> NeuralManifoldLandscape:
     coords_2d[1] = np.array([1.35, 0.82])
 
     electorates_meta = [
-        {"name": "Wellington Central", "latent_x": float(coords_2d[0, 0]), "latent_y": float(coords_2d[0, 1]), "elevation": 0.94, "dominant_party": "Greens", "cluster": "Protest-Urban"},
-        {"name": "Napier / Hawke's Bay", "latent_x": float(coords_2d[1, 0]), "latent_y": float(coords_2d[1, 1]), "elevation": 0.91, "dominant_party": "Labour", "cluster": "Protest-Agrarian"},
-        {"name": "Epsom", "latent_x": -1.82, "latent_y": 1.45, "elevation": 0.88, "dominant_party": "ACT", "cluster": "Affluent-FreeMarket"},
-        {"name": "Ilam", "latent_x": 0.15, "latent_y": -1.35, "elevation": 0.82, "dominant_party": "TOP", "cluster": "Technocratic-Reform"},
-        {"name": "Waiariki", "latent_x": 1.95, "latent_y": -1.60, "elevation": 0.89, "dominant_party": "Te Pāti Māori", "cluster": "Indigenous-Sovereignty"},
-        {"name": "Taranaki-King Country", "latent_x": -1.65, "latent_y": -1.20, "elevation": 0.78, "dominant_party": "National", "cluster": "Rural-Conservative"},
+        {
+            "name": "Wellington Central",
+            "latent_x": float(coords_2d[0, 0]),
+            "latent_y": float(coords_2d[0, 1]),
+            "elevation": 0.94,
+            "dominant_party": "Greens",
+            "cluster": "Protest-Urban",
+        },
+        {
+            "name": "Napier / Hawke's Bay",
+            "latent_x": float(coords_2d[1, 0]),
+            "latent_y": float(coords_2d[1, 1]),
+            "elevation": 0.91,
+            "dominant_party": "Labour",
+            "cluster": "Protest-Agrarian",
+        },
+        {
+            "name": "Epsom",
+            "latent_x": -1.82,
+            "latent_y": 1.45,
+            "elevation": 0.88,
+            "dominant_party": "ACT",
+            "cluster": "Affluent-FreeMarket",
+        },
+        {
+            "name": "Ilam",
+            "latent_x": 0.15,
+            "latent_y": -1.35,
+            "elevation": 0.82,
+            "dominant_party": "TOP",
+            "cluster": "Technocratic-Reform",
+        },
+        {
+            "name": "Waiariki",
+            "latent_x": 1.95,
+            "latent_y": -1.60,
+            "elevation": 0.89,
+            "dominant_party": "Te Pāti Māori",
+            "cluster": "Indigenous-Sovereignty",
+        },
+        {
+            "name": "Taranaki-King Country",
+            "latent_x": -1.65,
+            "latent_y": -1.20,
+            "elevation": 0.78,
+            "dominant_party": "National",
+            "cluster": "Rural-Conservative",
+        },
     ]
 
     # Latent canyons where demographically distant electorates cluster in protest mechanics
@@ -147,7 +309,11 @@ def compute_neural_manifold_landscape() -> NeuralManifoldLandscape:
         {
             "canyon_id": "canyon_alpha_cost_of_living_protest",
             "name": "The Duopoly Disillusionment Trench",
-            "co_located_electorates": ["Wellington Central", "Napier / Hawke's Bay", "Nelson"],
+            "co_located_electorates": [
+                "Wellington Central",
+                "Napier / Hawke's Bay",
+                "Nelson",
+            ],
             "shared_latent_feature": "Extreme anti-incumbent split-voting differential coupled with rent & supermarket inflation sensitivity",
         },
         {
@@ -164,7 +330,11 @@ def compute_neural_manifold_landscape() -> NeuralManifoldLandscape:
         explained_variance_ratio=0.864,
         electorate_coordinates=electorates_meta,
         latent_canyons=canyons,
-        elevation_surface_grid={"grid_size": [30, 30], "peak_elevation": 1.0, "valley_floor": 0.05},
+        elevation_surface_grid={
+            "grid_size": [30, 30],
+            "peak_elevation": 1.0,
+            "valley_floor": 0.05,
+        },
     )
 
 
@@ -185,8 +355,10 @@ def simulate_quantum_superposition_qubits() -> QuantumSuperpositionState:
     state_vector[0] = 0.15 + 0.05j  # |0000>
     state_vector[1] = 0.42 - 0.10j  # |0001> (Nelson flips alone)
     state_vector[3] = 0.55 + 0.12j  # |0011> (Nelson & Mt Albert flip)
-    state_vector[7] = 0.38 - 0.08j  # |0111> (Nelson, Mt Albert, Wellington Central flip)
-    state_vector[15] = 0.48 + 0.15j # |1111> (All 4 flip)
+    state_vector[7] = (
+        0.38 - 0.08j
+    )  # |0111> (Nelson, Mt Albert, Wellington Central flip)
+    state_vector[15] = 0.48 + 0.15j  # |1111> (All 4 flip)
 
     # Normalize state vector
     norm = np.linalg.norm(state_vector)
@@ -200,8 +372,12 @@ def simulate_quantum_superposition_qubits() -> QuantumSuperpositionState:
     rho_imag = [[float(np.imag(rho[r, c])) for c in range(4)] for r in range(4)]
 
     # Compute marginal collapse probabilities for Q0 (Nelson)
-    p_nelson_hold = sum(abs(state_vector[i])**2 for i in range(n_states) if (i & 1) == 0)
-    p_nelson_flip = sum(abs(state_vector[i])**2 for i in range(n_states) if (i & 1) == 1)
+    p_nelson_hold = sum(
+        abs(state_vector[i]) ** 2 for i in range(n_states) if (i & 1) == 0
+    )
+    p_nelson_flip = sum(
+        abs(state_vector[i]) ** 2 for i in range(n_states) if (i & 1) == 1
+    )
 
     return QuantumSuperpositionState(
         n_qubits=4,
@@ -217,7 +393,9 @@ def simulate_quantum_superposition_qubits() -> QuantumSuperpositionState:
         density_matrix_imag=rho_imag,
         measurement_collapse_probabilities={
             "Qubit 0 |0> Incumbent Hold (National)": float(p_nelson_hold),
-            "Qubit 0 |1> Superposition Collapse to Challenger (Labour)": float(p_nelson_flip),
+            "Qubit 0 |1> Superposition Collapse to Challenger (Labour)": float(
+                p_nelson_flip
+            ),
             "Entangled Consequence on Qubit 1 (Mount Albert) Post-Collapse": 0.884,
         },
     )
@@ -240,13 +418,13 @@ def simulate_autonomous_multiagent_parliament() -> AutonomousMultiAgentParliamen
     }
 
     whip_defiance_rates = {
-        "National": 0.116,      # Moderate dissent on conscience/electorate bills
-        "Labour": 0.088,        # Strict caucus discipline
-        "Greens": 0.055,        # High internal consensus
-        "ACT": 0.071,           # Principled libertarian breakaways
-        "NZ First": 0.166,      # High regional constituency independence
-        "Te Pāti Māori": 0.040, # Unified kaupapa voting
-        "TOP": 0.000,           # Unified technocratic block
+        "National": 0.116,  # Moderate dissent on conscience/electorate bills
+        "Labour": 0.088,  # Strict caucus discipline
+        "Greens": 0.055,  # High internal consensus
+        "ACT": 0.071,  # Principled libertarian breakaways
+        "NZ First": 0.166,  # High regional constituency independence
+        "Te Pāti Māori": 0.040,  # Unified kaupapa voting
+        "TOP": 0.000,  # Unified technocratic block
     }
 
     return AutonomousMultiAgentParliament(

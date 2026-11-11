@@ -140,10 +140,16 @@ def store(objects_dir: Path, data: bytes, meta: dict) -> dict:
 
 
 def http_get(url: str, accept: str = "*/*") -> tuple[int, str, bytes]:
-    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": accept})
+    request = urllib.request.Request(
+        url, headers={"User-Agent": USER_AGENT, "Accept": accept}
+    )
     try:
         with urllib.request.urlopen(request, timeout=90) as response:
-            return response.status, response.headers.get("content-type", ""), response.read()
+            return (
+                response.status,
+                response.headers.get("content-type", ""),
+                response.read(),
+            )
     except urllib.error.HTTPError as exc:  # pragma: no cover - network dependent
         return exc.code, exc.headers.get("content-type", ""), exc.read()
 
@@ -151,7 +157,11 @@ def http_get(url: str, accept: str = "*/*") -> tuple[int, str, bytes]:
 def _sniff_content_type(body: bytes) -> str:
     """Best-effort content type for a CDP fetch, which loses response headers."""
     head = body[:64].lstrip()
-    if head[:1] in (b"{", b"[") or head.startswith(b"true") or head.startswith(b"false"):
+    if (
+        head[:1] in (b"{", b"[")
+        or head.startswith(b"true")
+        or head.startswith(b"false")
+    ):
         return "application/json"
     if b"<html" in body[:1024].lower() or b"<!doctype" in body[:1024].lower():
         return "text/html"
@@ -222,7 +232,9 @@ def cdp_get(url: str, port: int) -> tuple[int, str, bytes]:
     return 200, _sniff_content_type(data), data
 
 
-def capture(url: str, purpose: str, objects_dir: Path, cdp_port: int | None) -> dict | None:
+def capture(
+    url: str, purpose: str, objects_dir: Path, cdp_port: int | None
+) -> dict | None:
     started = datetime.now(UTC)
     if cdp_port:
         status, content_type, body = cdp_get(url, cdp_port)
@@ -298,7 +310,11 @@ def parse_ada(body: bytes, wave: str, source_url: str) -> dict | None:
         "title": next(
             (
                 fld["value"]
-                for fld in (version.get("metadataBlocks", {}).get("citation", {}).get("fields", []))
+                for fld in (
+                    version.get("metadataBlocks", {})
+                    .get("citation", {})
+                    .get("fields", [])
+                )
                 if fld.get("typeName") == "title"
             ),
             "",
@@ -329,7 +345,7 @@ def parse_guestbook(body: bytes, guestbook_id: str) -> dict | None:
     """Summarise what an ADA guestbook requires a downloader to disclose."""
     try:
         data = (json.loads(body) or {}).get("data") or {}
-    except (ValueError, TypeError):
+    except ValueError, TypeError:
         return None
     return {
         "id": data.get("id", guestbook_id),
@@ -347,7 +363,9 @@ def parse_guestbook(body: bytes, guestbook_id: str) -> dict | None:
             )
         },
         "custom_questions": [
-            q.get("question") for q in (data.get("customQuestions") or []) if q.get("question")
+            q.get("question")
+            for q in (data.get("customQuestions") or [])
+            if q.get("question")
         ],
     }
 
@@ -382,7 +400,8 @@ def build_ro_crate(
             {
                 "@id": entry["url"],
                 "@type": "File",
-                "name": Path(urllib.parse.urlparse(entry["url"]).path).name or entry["url"],
+                "name": Path(urllib.parse.urlparse(entry["url"]).path).name
+                or entry["url"],
                 "contentUrl": entry["url"],
                 "encodingFormat": entry.get("content_type") or None,
                 "sha256": entry["sha256"],
@@ -402,7 +421,9 @@ def build_ro_crate(
                 "publisher": {"@type": "Organization", "name": ds.get("publisher")},
                 "datePublished": str(ds.get("publication_year") or ""),
                 "license": ", ".join(ds.get("rights") or []) or "not stated",
-                "creator": [{"@type": "Person", "name": n} for n in ds.get("creators", [])],
+                "creator": [
+                    {"@type": "Person", "name": n} for n in ds.get("creators", [])
+                ],
                 "conditionsOfAccess": ds.get("access_note", ""),
             }
         )
@@ -412,7 +433,8 @@ def build_ro_crate(
             {
                 "@id": record.get("doi") or f"ada-nzes-{record['wave']}",
                 "@type": "Dataset",
-                "name": record.get("title") or f"{record['wave']} New Zealand Election Study",
+                "name": record.get("title")
+                or f"{record['wave']} New Zealand Election Study",
                 "identifier": record.get("doi"),
                 "version": record.get("version"),
                 "publisher": {"@type": "Organization", "name": "ADA Dataverse"},
@@ -454,7 +476,12 @@ def main(argv: list[str] | None = None) -> int:
     entries: list[dict] = []
 
     print("DataCite index")
-    datacite = capture(DATACITE_QUERY, "datacite-search-new-zealand-election-study", args.objects_dir, None)
+    datacite = capture(
+        DATACITE_QUERY,
+        "datacite-search-new-zealand-election-study",
+        args.objects_dir,
+        None,
+    )
     datasets: list[dict] = []
     if datacite:
         entries.append(datacite)
@@ -502,7 +529,9 @@ def main(argv: list[str] | None = None) -> int:
                     "https://dataverse.ada.edu.au/api/datasets/:persistentId/?persistentId="
                     + urllib.parse.quote(f"doi:{doi}")
                 )
-                entry = capture(api, f"ada-dataverse-nzes-{wave}", args.objects_dir, args.cdp_port)
+                entry = capture(
+                    api, f"ada-dataverse-nzes-{wave}", args.objects_dir, args.cdp_port
+                )
                 if entry:
                     entries.append(entry)
                     entry["wave"] = wave
@@ -511,23 +540,34 @@ def main(argv: list[str] | None = None) -> int:
                         ada_records.append(record)
                 time.sleep(1)
             collection = capture(
-                ADA_COLLECTION, "ada-dataverse-nzes-collection", args.objects_dir, args.cdp_port
+                ADA_COLLECTION,
+                "ada-dataverse-nzes-collection",
+                args.objects_dir,
+                args.cdp_port,
             )
             if collection:
                 entries.append(collection)
             version_info = capture(
-                ADA_VERSION_API, "ada-dataverse-version", args.objects_dir, args.cdp_port
+                ADA_VERSION_API,
+                "ada-dataverse-version",
+                args.objects_dir,
+                args.cdp_port,
             )
             if version_info:
                 entries.append(version_info)
             for gb_id in ADA_GUESTBOOK_IDS:
                 gb_url = ADA_GUESTBOOK_API.format(id=gb_id)
                 gb = capture(
-                    gb_url, f"ada-dataverse-guestbook-{gb_id}", args.objects_dir, args.cdp_port
+                    gb_url,
+                    f"ada-dataverse-guestbook-{gb_id}",
+                    args.objects_dir,
+                    args.cdp_port,
                 )
                 if gb:
                     entries.append(gb)
-                    gb_record = parse_guestbook(Path(gb["cas_path"]).read_bytes(), gb_id)
+                    gb_record = parse_guestbook(
+                        Path(gb["cas_path"]).read_bytes(), gb_id
+                    )
                     if gb_record:
                         guestbooks.append(gb_record)
                 time.sleep(1)
@@ -568,22 +608,25 @@ def main(argv: list[str] | None = None) -> int:
         "ada_dataverse": ada_records,
         "ada_guestbooks": guestbooks,
         "captured_files": [
-            {k: e[k] for k in ("url", "sha256", "size", "purpose", "retrieved_at")} for e in entries
+            {k: e[k] for k in ("url", "sha256", "size", "purpose", "retrieved_at")}
+            for e in entries
         ],
         "nzes-net-documents": {
             "usage-terms": "https://www.nzes.net/files/2021/12/NZES-Data-Usage-Terms-and-Conditions.pdf",
             "historical-spreadsheets": [
                 "https://www.nzes.net/files/2024/10/NZ_Elections1905-43.xls",
                 "https://www.nzes.net/files/2024/10/NZ_Elections1946-69.xls",
-                "https://www.nzes.net/files/2024/10/NZ_Elections1972-93.xls"
-            ]
+                "https://www.nzes.net/files/2024/10/NZ_Elections1972-93.xls",
+            ],
         },
     }
     (args.evidence_dir / "nzes-sources.json").write_text(
         json.dumps(summary, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"
     )
     (args.evidence_dir / "nzes-sources-ro-crate.jsonld").write_text(
-        json.dumps(build_ro_crate(entries, datasets, ada_records), indent=2, ensure_ascii=False)
+        json.dumps(
+            build_ro_crate(entries, datasets, ada_records), indent=2, ensure_ascii=False
+        )
         + "\n",
         encoding="utf-8",
     )

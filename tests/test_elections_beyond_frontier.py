@@ -27,7 +27,9 @@ def test_psychoacoustic_sonification():
     assert sono.fundamental_frequencies_hz["National"] == 220.0
     assert 0.5 < sono.chord_dissonance_score < 1.0
     assert sono.ultrasonic_radiation_pressure_pa > 0
-    assert "Grand Duopoly Coalition (National + Labour)" in sono.coalition_haptic_friction
+    assert (
+        "Grand Duopoly Coalition (National + Labour)" in sono.coalition_haptic_friction
+    )
 
 
 def test_neural_manifold_landscape():
@@ -36,9 +38,14 @@ def test_neural_manifold_landscape():
     assert latent.explained_variance_ratio > 0.70
     assert len(latent.electorate_coordinates) >= 6
     # Verify Wellington Central and Napier / Hawke's Bay are co-located in latent protest space
-    wlg = next(e for e in latent.electorate_coordinates if e["name"] == "Wellington Central")
+    wlg = next(
+        e for e in latent.electorate_coordinates if e["name"] == "Wellington Central"
+    )
     hb = next(e for e in latent.electorate_coordinates if "Hawke's Bay" in e["name"])
-    dist = ((wlg["latent_x"] - hb["latent_x"]) ** 2 + (wlg["latent_y"] - hb["latent_y"]) ** 2) ** 0.5
+    dist = (
+        (wlg["latent_x"] - hb["latent_x"]) ** 2
+        + (wlg["latent_y"] - hb["latent_y"]) ** 2
+    ) ** 0.5
     assert dist < 0.3  # Very close in AI latent space despite demographic differences
 
 
@@ -48,8 +55,12 @@ def test_quantum_superposition_qubits():
     assert q.bell_state_fidelity > 0.90
     assert len(q.density_matrix_real) == 4
     # Check probabilities sum approximately to 1
-    p_hold = q.measurement_collapse_probabilities["Qubit 0 |0> Incumbent Hold (National)"]
-    p_flip = q.measurement_collapse_probabilities["Qubit 0 |1> Superposition Collapse to Challenger (Labour)"]
+    p_hold = q.measurement_collapse_probabilities[
+        "Qubit 0 |0> Incumbent Hold (National)"
+    ]
+    p_flip = q.measurement_collapse_probabilities[
+        "Qubit 0 |1> Superposition Collapse to Challenger (Labour)"
+    ]
     assert pytest.approx(p_hold + p_flip, rel=1e-2) == 1.0
 
 

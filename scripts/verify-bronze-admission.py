@@ -52,8 +52,8 @@ ARTIFACT_PATHS = {
 def sha256_file(path):
     h = hashlib.sha256()
     try:
-        with open(path, 'rb') as f:
-            for chunk in iter(lambda: f.read(8192), b''):
+        with open(path, "rb") as f:
+            for chunk in iter(lambda: f.read(8192), b""):
                 h.update(chunk)
         return h.hexdigest()
     except Exception as e:
@@ -61,35 +61,37 @@ def sha256_file(path):
 
 
 def main():
-    manifest_path = Path("/Volumes/PortableSSD/ArchiveGovtNZ/archive-govt-nz/bronze-admission-tobac-20261110.json")
-    
+    manifest_path = Path(
+        "/Volumes/PortableSSD/ArchiveGovtNZ/archive-govt-nz/bronze-admission-tobac-20261110.json"
+    )
+
     with open(manifest_path) as f:
         manifest = json.load(f)
-    
+
     print(f"Verifying Bronze admission batch: {manifest['admission_batch']}")
     print(f"Total artifacts in manifest: {len(manifest['artifacts'])}")
     print()
-    
+
     results = {"verified": 0, "mismatch": 0, "missing": 0, "not_mapped": 0}
-    
+
     for artifact in manifest["artifacts"]:
         artifact_id = artifact["artifact_id"]
         expected_sha = artifact["sha256"]
-        
+
         if artifact_id not in ARTIFACT_PATHS:
             print(f"  {artifact_id}: NOT MAPPED (no local path)")
             results["not_mapped"] += 1
             continue
-        
+
         local_path = ARTIFACT_PATHS[artifact_id]
-        
+
         if not Path(local_path).exists():
             print(f"  {artifact_id}: MISSING at {local_path}")
             results["missing"] += 1
             continue
-        
+
         actual_sha = sha256_file(local_path)
-        
+
         if actual_sha == expected_sha:
             print(f"  ✅ {artifact_id}: VERIFIED ({actual_sha[:16]}...)")
             results["verified"] += 1
@@ -98,7 +100,7 @@ def main():
             print(f"    Expected: {expected_sha}")
             print(f"    Actual:   {actual_sha}")
             results["mismatch"] += 1
-    
+
     print()
     print("=" * 50)
     print("SUMMARY")
@@ -108,9 +110,11 @@ def main():
     print(f"Missing:     {results['missing']}")
     print(f"Not mapped:  {results['not_mapped']}")
     print()
-    
+
     if results["mismatch"] == 0 and results["missing"] == 0:
-        print("✅ ALL MAPPED ARTIFACTS VERIFIED - Independent byte-matching readback PASSED")
+        print(
+            "✅ ALL MAPPED ARTIFACTS VERIFIED - Independent byte-matching readback PASSED"
+        )
         return 0
     else:
         print("❌ VERIFICATION FAILED")

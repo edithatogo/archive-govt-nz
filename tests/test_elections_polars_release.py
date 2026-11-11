@@ -9,9 +9,14 @@ from pathlib import Path
 import pytest
 
 pytest.importorskip("polars")
-calculate_party_shares = import_module("archive_govt_nz.domains.elections.polars_release").calculate_party_shares
+calculate_party_shares = import_module(
+    "archive_govt_nz.domains.elections.polars_release"
+).calculate_party_shares
 
-SOURCE = Path(__file__).resolve().parents[1] / "spaces/nz-election-explorer/data/2026-preliminary.json"
+SOURCE = (
+    Path(__file__).resolve().parents[1]
+    / "spaces/nz-election-explorer/data/2026-preliminary.json"
+)
 
 
 def test_polars_shares_match_preliminary_source() -> None:
