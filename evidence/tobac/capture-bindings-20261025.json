@@ -984,10 +984,262 @@
         }
       ],
       "redistribution_authorized": false
+    },
+    {
+      "archive_id": "tobac-33e21395a1d9450aa1",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-16"
+        }
+      ],
+      "captures": [
+        {
+          "uri": "https://www.acic.gov.au/sites/default/files/2022-06/National%20Wastewater%20Drug%20Monitoring%20Program%20Report%2016.PDF",
+          "status": "source_html_identity_observed",
+          "sha256": "3df56eb7f3ffeb7145be40e98194a2fbe64af5f51e1b6a5826399790c225b913",
+          "byte_count": 16708742,
+          "warc_sha256": null,
+          "captured_at": null,
+          "final_uri": "https://www.acic.gov.au/sites/default/files/2022-06/National%20Wastewater%20Drug%20Monitoring%20Program%20Report%2016.PDF"
+        }
+      ],
+      "redistribution_authorized": true
+    },
+    {
+      "archive_id": "tobac-8d673c16e6214d09a2",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-17"
+        }
+      ],
+      "captures": [
+        {
+          "uri": "https://www.acic.gov.au/sites/default/files/2022-10/national_wastewater_drug_monitoring_program_report_17.pdf",
+          "status": "source_html_identity_observed",
+          "sha256": "ec3ebbe57f3025756a8116f76bb90d904a9962a820faaee45ad08df9e5b13ec3",
+          "byte_count": 58486187,
+          "warc_sha256": null,
+          "captured_at": null,
+          "final_uri": "https://www.acic.gov.au/sites/default/files/2022-10/national_wastewater_drug_monitoring_program_report_17.pdf"
+        }
+      ],
+      "redistribution_authorized": true
+    },
+    {
+      "archive_id": "tobac-cf81d5de799c4d7995",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-18"
+        }
+      ],
+      "captures": [
+        {
+          "uri": "https://www.acic.gov.au/sites/default/files/2023-03/NWDMP%20Report%2018_1.PDF",
+          "status": "source_html_identity_observed",
+          "sha256": "3f5c4de961300b9789e520f465f04fa4d7ce0a277b05d131672dfaa778125790",
+          "byte_count": 45832317,
+          "warc_sha256": null,
+          "captured_at": null,
+          "final_uri": "https://www.acic.gov.au/sites/default/files/2023-03/NWDMP%20Report%2018_1.PDF"
+        }
+      ],
+      "redistribution_authorized": true
+    },
+    {
+      "archive_id": "tobac-4e17b7141f87484583",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-19"
+        }
+      ],
+      "captures": [
+        {
+          "uri": "https://www.acic.gov.au/sites/default/files/2023-07/National%20Wastewater%20Drug%20Monitoring%20Program%20-%20Report%2019_0.pdf",
+          "status": "source_html_identity_observed",
+          "sha256": "44ce48a95a2065b53ed9827ffc73f8f131e867c5ee543156c10a799ec79833a0",
+          "byte_count": 20993412,
+          "warc_sha256": null,
+          "captured_at": null,
+          "final_uri": "https://www.acic.gov.au/sites/default/files/2023-07/National%20Wastewater%20Drug%20Monitoring%20Program%20-%20Report%2019_0.pdf"
+        }
+      ],
+      "redistribution_authorized": true
+    },
+    {
+      "archive_id": "tobac-43f0f2650d254ef5a8",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-20"
+        }
+      ],
+      "captures": [
+        {
+          "uri": "https://www.acic.gov.au/sites/default/files/2023-11/wastewater_report_20_web.pdf",
+          "status": "source_html_identity_observed",
+          "sha256": "a97e41dd5826a0131a1523b3d1a0215eb537af59e8a2d38b8fb2f5eee1ebbd01",
+          "byte_count": 19976540,
+          "warc_sha256": null,
+          "captured_at": null,
+          "final_uri": "https://www.acic.gov.au/sites/default/files/2023-11/wastewater_report_20_web.pdf"
+        }
+      ],
+      "redistribution_authorized": true
+    },
+    {
+      "archive_id": "tobac-74a7ad8829d14ece94",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-21"
+        }
+      ],
+      "captures": [
+        {
+          "uri": "https://www.acic.gov.au/sites/default/files/2024-03/Wastewater%2021%20FOR%20WEB2.PDF",
+          "status": "source_html_identity_observed",
+          "sha256": "150d29c2dfa250cdcb0c0e66c6965e941097e556e19d9c6473736dcf8564faeb",
+          "byte_count": 12500141,
+          "warc_sha256": null,
+          "captured_at": null,
+          "final_uri": "https://www.acic.gov.au/sites/default/files/2024-03/Wastewater%2021%20FOR%20WEB2.PDF"
+        }
+      ],
+      "redistribution_authorized": true
+    },
+    {
+      "archive_id": "tobac-2686dd019c2541fc93",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-22"
+        }
+      ],
+      "captures": [
+        {
+          "uri": "https://www.acic.gov.au/sites/default/files/2024-07/National%20Wastewater%20Drug%20Monitoring%20Program%20%E2%80%93%20Report%2022_0.pdf",
+          "status": "source_html_identity_observed",
+          "sha256": "3f65a0fd9158d1ddafac6de2d1c6c6fc726938431caf43eeeeb6b4393fc5bdb1",
+          "byte_count": 5146469,
+          "warc_sha256": null,
+          "captured_at": null,
+          "final_uri": "https://www.acic.gov.au/sites/default/files/2024-07/National%20Wastewater%20Drug%20Monitoring%20Program%20%E2%80%93%20Report%2022_0.pdf"
+        }
+      ],
+      "redistribution_authorized": true
+    },
+    {
+      "archive_id": "tobac-5d22e479f84841c1aa",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-23"
+        }
+      ],
+      "captures": [
+        {
+          "uri": "https://www.acic.gov.au/sites/default/files/2024-11/e24-9817_wastewater_23_web.pdf",
+          "status": "source_html_identity_observed",
+          "sha256": "a5180e9638bcad4e04d6fa0e7d524da49328f49f63ea6848af0799bd52c23fbd",
+          "byte_count": 19595325,
+          "warc_sha256": null,
+          "captured_at": null,
+          "final_uri": "https://www.acic.gov.au/sites/default/files/2024-11/e24-9817_wastewater_23_web.pdf"
+        }
+      ],
+      "redistribution_authorized": true
+    },
+    {
+      "archive_id": "tobac-014f927a51e142c3b5",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-24"
+        }
+      ],
+      "captures": [
+        {
+          "uri": "https://www.acic.gov.au/sites/default/files/2025-08/Wastewater%2024%20FA%20ACCESSIBLE.PDF",
+          "status": "source_html_identity_observed",
+          "sha256": "50dd0f0ecba5583747629507cf54f13f2d1e725def619db5cea6d2558c6ff466",
+          "byte_count": 16146345,
+          "warc_sha256": null,
+          "captured_at": null,
+          "final_uri": "https://www.acic.gov.au/sites/default/files/2025-08/Wastewater%2024%20FA%20ACCESSIBLE.PDF"
+        }
+      ],
+      "redistribution_authorized": true
+    },
+    {
+      "archive_id": "tobac-48a3d75b70ab4307bd",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-25"
+        }
+      ],
+      "captures": [
+        {
+          "uri": "https://www.acic.gov.au/sites/default/files/2026-04/National%20Wastewater%20Drug%20Monitoring%20Program%20-%20Report%2025.PDF",
+          "status": "source_html_identity_observed",
+          "sha256": "c81866de8ff47913b3f2a07c949d1d11bd27446e5cc23c64411ce4988f740f28",
+          "byte_count": 16416458,
+          "warc_sha256": null,
+          "captured_at": null,
+          "final_uri": "https://www.acic.gov.au/sites/default/files/2026-04/National%20Wastewater%20Drug%20Monitoring%20Program%20-%20Report%2025.PDF"
+        }
+      ],
+      "redistribution_authorized": true
+    },
+    {
+      "archive_id": "tobac-e3e631a5a8bd4518a6",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "abs-nhs-2022-table-36-10"
+        }
+      ],
+      "captures": [
+        {
+          "uri": "https://www.abs.gov.au/statistics/health/health-survey-results/national-health-survey-2022-23-results",
+          "status": "source_html_identity_observed",
+          "sha256": "02e07500c40e78de2e1f05d152ad12a26ab0f1b4eed85c7161d56b7e771f6850",
+          "byte_count": 1986612,
+          "warc_sha256": null,
+          "captured_at": null,
+          "final_uri": "https://www.abs.gov.au/statistics/health/health-survey-results/national-health-survey-2022-23-results"
+        }
+      ],
+      "redistribution_authorized": true
+    },
+    {
+      "archive_id": "tobac-1bac0200a7f14d29a2",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "aihw-ndshs-2025-table-1-33"
+        }
+      ],
+      "captures": [
+        {
+          "uri": "https://www.aihw.gov.au/getmedia/5fc9ac6e-2f49-415e-a4fa-001a72fcad52/aihw-phe-371-Tobacco.xlsx",
+          "status": "source_html_identity_observed",
+          "sha256": "c1cb4154174cce1e90fd0a6e3189de488e0198929bdd75fee8422cebc7a5ae51",
+          "byte_count": 850077,
+          "warc_sha256": null,
+          "captured_at": null,
+          "final_uri": "https://www.aihw.gov.au/getmedia/5fc9ac6e-2f49-415e-a4fa-001a72fcad52/aihw-phe-371-Tobacco.xlsx"
+        }
+      ],
+      "redistribution_authorized": true
     }
   ],
   "qualification": "CAS/WARC fixity and identity screen only; not extraction, scientific, full-document or redistribution approval",
-  "register_sha256": "8ce4cb38d98d5415c3015a5eeba40315afbde5b0e3e7bfb4f1235eb4f91ec093",
+  "register_sha256": "aa61424788e60053683a6b78fdce0d1cd29ed174f9520c8ef5f54abdbca72114",
   "capture_receipt_sha256": [
     "648e65e974de8d603fd94cd6ef9889c97293a7ac85428594747b54fc6466f410",
     "e402bdc96b0e24087c6be57acfde81019fa5a3dbc6f9caedd6295cc497f5cfb6",

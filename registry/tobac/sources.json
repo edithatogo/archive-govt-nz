@@ -372,7 +372,7 @@
     {
       "archive_id": "tobac-7ee48855a1ed1c4b",
       "identity": "url:https://www.health.govt.nz/regulation-legislation/smoked-tobacco/information-for-manufacturers-and-importers/tobacco-returns/tobacco-returns-2025",
-      "title": "Tobacco returns 2025: annual volume 2010–2025",
+      "title": "Tobacco returns 2025: annual volume 2010\u20132025",
       "references": [
         {
           "collection": "evidence/longitudinal/references.csl.json",
@@ -666,7 +666,7 @@
     {
       "archive_id": "tobac-a892a52bb0ce2147",
       "identity": "doi:10.1136/tc-2022-057655",
-      "title": "Tobacco endgame intervention impacts on health gains and Māori:non-Māori health inequity: a simulation study of the Aotearoa/New Zealand Tobacco Action Plan",
+      "title": "Tobacco endgame intervention impacts on health gains and M\u0101ori:non-M\u0101ori health inequity: a simulation study of the Aotearoa/New Zealand Tobacco Action Plan",
       "references": [
         {
           "collection": "evidence/m2/references.csl.json",
@@ -704,7 +704,7 @@
     {
       "archive_id": "tobac-bf7efcf2c111532e",
       "identity": "doi:10.1016/j.jval.2020.01.001",
-      "title": "Value of Information Analysis for Research Decisions—An Introduction",
+      "title": "Value of Information Analysis for Research Decisions\u2014An Introduction",
       "references": [
         {
           "collection": "evidence/references.csl.json",
@@ -1017,7 +1017,7 @@
     {
       "archive_id": "tobac-310888eff80d45898b",
       "identity": "url:https://www.customs.govt.nz/media/qkvjprql/excise-and-excise-equivalent-duties-table-tobacco-products-indexation-2025.pdf",
-      "title": "Excise and excise-equivalent duties table — tobacco products indexation 2025",
+      "title": "Excise and excise-equivalent duties table \u2014 tobacco products indexation 2025",
       "references": [
         {
           "collection": "evidence/longitudinal/references.csl.json",
@@ -1044,7 +1044,7 @@
     {
       "archive_id": "tobac-04b9d830a27d4643b4",
       "identity": "url:https://www.customs.govt.nz/media/45sl0kmj/order-in-council-excise-and-excise-equivalent-duties-table-tobacco-products-indexation-amendment-order-2022.pdf",
-      "title": "Excise and excise-equivalent duties table — tobacco products indexation amendment order 2022",
+      "title": "Excise and excise-equivalent duties table \u2014 tobacco products indexation amendment order 2022",
       "references": [
         {
           "collection": "evidence/longitudinal/references.csl.json",
@@ -1173,6 +1173,330 @@
           "kind": "pdf",
           "sha256": "69c71ac857cba94395486559a679b343351e47e7b834a9ee792682288c912a72",
           "bytes": 1886705
+        }
+      ]
+    },
+    {
+      "archive_id": "tobac-812634a87eab4ba982",
+      "identity": "url:https://www.acic.gov.au/sites/default/files/2022-06/National%20Wastewater%20Drug%20Monitoring%20Program%20Report%2016.PDF",
+      "title": "National Wastewater Drug Monitoring Program Report 16",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-16"
+        }
+      ],
+      "urls": [
+        "https://www.acic.gov.au/sites/default/files/2022-06/National%20Wastewater%20Drug%20Monitoring%20Program%20Report%2016.PDF"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": true,
+      "capture_scope": "full_document_pdf",
+      "full_document_status": "verified_exact_object_match",
+      "archive_match_status": "verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.acic.gov.au/sites/default/files/2022-06/National%20Wastewater%20Drug%20Monitoring%20Program%20Report%2016.PDF",
+          "kind": "pdf",
+          "sha256": "3df56eb7f3ffeb7145be40e98194a2fbe64af5f51e1b6a5826399790c225b913",
+          "bytes": 16708742
+        }
+      ]
+    },
+    {
+      "archive_id": "tobac-7b2d3e2901cb47599b",
+      "identity": "url:https://www.acic.gov.au/sites/default/files/2022-10/national_wastewater_drug_monitoring_program_report_17.pdf",
+      "title": "National Wastewater Drug Monitoring Program Report 17",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-17"
+        }
+      ],
+      "urls": [
+        "https://www.acic.gov.au/sites/default/files/2022-10/national_wastewater_drug_monitoring_program_report_17.pdf"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": true,
+      "capture_scope": "full_document_pdf",
+      "full_document_status": "verified_exact_object_match",
+      "archive_match_status": "verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.acic.gov.au/sites/default/files/2022-10/national_wastewater_drug_monitoring_program_report_17.pdf",
+          "kind": "pdf",
+          "sha256": "ec3ebbe57f3025756a8116f76bb90d904a9962a820faaee45ad08df9e5b13ec3",
+          "bytes": 58486187
+        }
+      ]
+    },
+    {
+      "archive_id": "tobac-5ad67ac123624438ba",
+      "identity": "url:https://www.acic.gov.au/sites/default/files/2023-03/NWDMP%20Report%2018_1.PDF",
+      "title": "National Wastewater Drug Monitoring Program Report 18",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-18"
+        }
+      ],
+      "urls": [
+        "https://www.acic.gov.au/sites/default/files/2023-03/NWDMP%20Report%2018_1.PDF"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": true,
+      "capture_scope": "full_document_pdf",
+      "full_document_status": "verified_exact_object_match",
+      "archive_match_status": "verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.acic.gov.au/sites/default/files/2023-03/NWDMP%20Report%2018_1.PDF",
+          "kind": "pdf",
+          "sha256": "3f5c4de961300b9789e520f465f04fa4d7ce0a277b05d131672dfaa778125790",
+          "bytes": 45832317
+        }
+      ]
+    },
+    {
+      "archive_id": "tobac-9ef914d512e4455fba",
+      "identity": "url:https://www.acic.gov.au/sites/default/files/2023-07/National%20Wastewater%20Drug%20Monitoring%20Program%20-%20Report%2019_0.pdf",
+      "title": "National Wastewater Drug Monitoring Program Report 19",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-19"
+        }
+      ],
+      "urls": [
+        "https://www.acic.gov.au/sites/default/files/2023-07/National%20Wastewater%20Drug%20Monitoring%20Program%20-%20Report%2019_0.pdf"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": true,
+      "capture_scope": "full_document_pdf",
+      "full_document_status": "verified_exact_object_match",
+      "archive_match_status": "verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.acic.gov.au/sites/default/files/2023-07/National%20Wastewater%20Drug%20Monitoring%20Program%20-%20Report%2019_0.pdf",
+          "kind": "pdf",
+          "sha256": "44ce48a95a2065b53ed9827ffc73f8f131e867c5ee543156c10a799ec79833a0",
+          "bytes": 20993412
+        }
+      ]
+    },
+    {
+      "archive_id": "tobac-48876fcada284fd5a2",
+      "identity": "url:https://www.acic.gov.au/sites/default/files/2023-11/wastewater_report_20_web.pdf",
+      "title": "National Wastewater Drug Monitoring Program Report 20",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-20"
+        }
+      ],
+      "urls": [
+        "https://www.acic.gov.au/sites/default/files/2023-11/wastewater_report_20_web.pdf"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": true,
+      "capture_scope": "full_document_pdf",
+      "full_document_status": "verified_exact_object_match",
+      "archive_match_status": "verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.acic.gov.au/sites/default/files/2023-11/wastewater_report_20_web.pdf",
+          "kind": "pdf",
+          "sha256": "a97e41dd5826a0131a1523b3d1a0215eb537af59e8a2d38b8fb2f5eee1ebbd01",
+          "bytes": 19976540
+        }
+      ]
+    },
+    {
+      "archive_id": "tobac-4f0305a42ab6486184",
+      "identity": "url:https://www.acic.gov.au/sites/default/files/2024-03/Wastewater%2021%20FOR%20WEB2.PDF",
+      "title": "National Wastewater Drug Monitoring Program Report 21",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-21"
+        }
+      ],
+      "urls": [
+        "https://www.acic.gov.au/sites/default/files/2024-03/Wastewater%2021%20FOR%20WEB2.PDF"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": true,
+      "capture_scope": "full_document_pdf",
+      "full_document_status": "verified_exact_object_match",
+      "archive_match_status": "verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.acic.gov.au/sites/default/files/2024-03/Wastewater%2021%20FOR%20WEB2.PDF",
+          "kind": "pdf",
+          "sha256": "150d29c2dfa250cdcb0c0e66c6965e941097e556e19d9c6473736dcf8564faeb",
+          "bytes": 12500141
+        }
+      ]
+    },
+    {
+      "archive_id": "tobac-f816328cc3c8487f8f",
+      "identity": "url:https://www.acic.gov.au/sites/default/files/2024-07/National%20Wastewater%20Drug%20Monitoring%20Program%20%E2%80%93%20Report%2022_0.pdf",
+      "title": "National Wastewater Drug Monitoring Program Report 22",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-22"
+        }
+      ],
+      "urls": [
+        "https://www.acic.gov.au/sites/default/files/2024-07/National%20Wastewater%20Drug%20Monitoring%20Program%20%E2%80%93%20Report%2022_0.pdf"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": true,
+      "capture_scope": "full_document_pdf",
+      "full_document_status": "verified_exact_object_match",
+      "archive_match_status": "verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.acic.gov.au/sites/default/files/2024-07/National%20Wastewater%20Drug%20Monitoring%20Program%20%E2%80%93%20Report%2022_0.pdf",
+          "kind": "pdf",
+          "sha256": "3f65a0fd9158d1ddafac6de2d1c6c6fc726938431caf43eeeeb6b4393fc5bdb1",
+          "bytes": 5146469
+        }
+      ]
+    },
+    {
+      "archive_id": "tobac-b703a3a1ed1b47cc83",
+      "identity": "url:https://www.acic.gov.au/sites/default/files/2024-11/e24-9817_wastewater_23_web.pdf",
+      "title": "National Wastewater Drug Monitoring Program Report 23",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-23"
+        }
+      ],
+      "urls": [
+        "https://www.acic.gov.au/sites/default/files/2024-11/e24-9817_wastewater_23_web.pdf"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": true,
+      "capture_scope": "full_document_pdf",
+      "full_document_status": "verified_exact_object_match",
+      "archive_match_status": "verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.acic.gov.au/sites/default/files/2024-11/e24-9817_wastewater_23_web.pdf",
+          "kind": "pdf",
+          "sha256": "a5180e9638bcad4e04d6fa0e7d524da49328f49f63ea6848af0799bd52c23fbd",
+          "bytes": 19595325
+        }
+      ]
+    },
+    {
+      "archive_id": "tobac-d018f147e0f144fa92",
+      "identity": "url:https://www.acic.gov.au/sites/default/files/2025-08/Wastewater%2024%20FA%20ACCESSIBLE.PDF",
+      "title": "National Wastewater Drug Monitoring Program Report 24",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-24"
+        }
+      ],
+      "urls": [
+        "https://www.acic.gov.au/sites/default/files/2025-08/Wastewater%2024%20FA%20ACCESSIBLE.PDF"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": true,
+      "capture_scope": "full_document_pdf",
+      "full_document_status": "verified_exact_object_match",
+      "archive_match_status": "verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.acic.gov.au/sites/default/files/2025-08/Wastewater%2024%20FA%20ACCESSIBLE.PDF",
+          "kind": "pdf",
+          "sha256": "50dd0f0ecba5583747629507cf54f13f2d1e725def619db5cea6d2558c6ff466",
+          "bytes": 16146345
+        }
+      ]
+    },
+    {
+      "archive_id": "tobac-cac4ffd6fd604cd796",
+      "identity": "url:https://www.acic.gov.au/sites/default/files/2026-04/National%20Wastewater%20Drug%20Monitoring%20Program%20-%20Report%2025.PDF",
+      "title": "National Wastewater Drug Monitoring Program Report 25",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "acic-nwdmp-25"
+        }
+      ],
+      "urls": [
+        "https://www.acic.gov.au/sites/default/files/2026-04/National%20Wastewater%20Drug%20Monitoring%20Program%20-%20Report%2025.PDF"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": true,
+      "capture_scope": "full_document_pdf",
+      "full_document_status": "verified_exact_object_match",
+      "archive_match_status": "verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.acic.gov.au/sites/default/files/2026-04/National%20Wastewater%20Drug%20Monitoring%20Program%20-%20Report%2025.PDF",
+          "kind": "pdf",
+          "sha256": "c81866de8ff47913b3f2a07c949d1d11bd27446e5cc23c64411ce4988f740f28",
+          "bytes": 16416458
+        }
+      ]
+    },
+    {
+      "archive_id": "tobac-85f930869b544738b1",
+      "identity": "url:https://www.abs.gov.au/statistics/health/health-survey-results/national-health-survey-2022-23-results",
+      "title": "National Health Survey 2022-23, Table 36.10 Household consumption of illicit tobacco and nicotine products",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "abs-nhs-2022-table-36-10"
+        }
+      ],
+      "urls": [
+        "https://www.abs.gov.au/statistics/health/health-survey-results/national-health-survey-2022-23-results"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": true,
+      "capture_scope": "full_document_xlsx",
+      "full_document_status": "verified_exact_object_match",
+      "archive_match_status": "verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.abs.gov.au/statistics/health/health-survey-results/national-health-survey-2022-23-results",
+          "kind": "xlsx",
+          "sha256": "02e07500c40e78de2e1f05d152ad12a26ab0f1b4eed85c7161d56b7e771f6850",
+          "bytes": 1986612
+        }
+      ]
+    },
+    {
+      "archive_id": "tobac-3eece33049e14147b8",
+      "identity": "url:https://www.aihw.gov.au/getmedia/5fc9ac6e-2f49-415e-a4fa-001a72fcad52/aihw-phe-371-Tobacco.xlsx",
+      "title": "National Drug Strategy Household Survey 2025, Table 1.33 Tobacco purchase bands",
+      "references": [
+        {
+          "collection": "evidence/longitudinal/references.csl.json",
+          "source_id": "aihw-ndshs-2025-table-1-33"
+        }
+      ],
+      "urls": [
+        "https://www.aihw.gov.au/getmedia/5fc9ac6e-2f49-415e-a4fa-001a72fcad52/aihw-phe-371-Tobacco.xlsx"
+      ],
+      "rights_status": "source_specific_review_required",
+      "redistribution_authorized": true,
+      "capture_scope": "full_document_xlsx",
+      "full_document_status": "verified_exact_object_match",
+      "archive_match_status": "verified_exact_object_match",
+      "assets": [
+        {
+          "url": "https://www.aihw.gov.au/getmedia/5fc9ac6e-2f49-415e-a4fa-001a72fcad52/aihw-phe-371-Tobacco.xlsx",
+          "kind": "xlsx",
+          "sha256": "c1cb4154174cce1e90fd0a6e3189de488e0198929bdd75fee8422cebc7a5ae51",
+          "bytes": 850077
         }
       ]
     }
