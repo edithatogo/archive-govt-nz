@@ -1,0 +1,22 @@
+{
+  "track_id": "election_platform_01_release_integrity_20261111",
+  "type": "feature",
+  "status": "pending",
+  "created_at": "2026-11-11T00:00:00Z",
+  "updated_at": "2026-11-11T00:00:00Z",
+  "description": "Capture canonical source objects and release vintage; prove published seat/vote counts, source identity, hash manifest, official result switch and rollback.",
+  "priority": "Must",
+  "capability_status": "planned_not_verified",
+  "gates": [
+    {
+      "id": "independent-fixtures",
+      "kind": "quality",
+      "status": "pending"
+    },
+    {
+      "id": "release-parity",
+      "kind": "publication",
+      "status": "pending"
+    }
+  ]
+}
