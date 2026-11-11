@@ -1,0 +1,39 @@
+name: One-time safe Ruff remediation
+on:
+  push:
+    branches: [fix/election-2026-publication-integrity-20261111]
+    paths:
+      - '.github/workflows/election-safe-ruff-fix-once.yml'
+permissions:
+  contents: read
+concurrency:
+  group: election-ruff-one-time
+  cancel-in-progress: false
+jobs:
+  remediate:
+    if: github.repository == 'edithatogo/archive-govt-nz' && github.actor == 'edithatogo'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: fix/election-2026-publication-integrity-20261111
+          persist-credentials: true
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version-file: .python-version
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2
+      - name: Apply safe lint fixes and format
+        run: |
+          uv run --locked ruff check --fix . || true
+          uv run --locked ruff format .
+          uv run --locked ruff check . --output-format concise > ruff-remaining.txt || true
+          head -c 8000 ruff-remaining.txt
+      - name: Commit safe fixes only
+        run: |
+          git add -u
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'style(elections): apply safe locked Ruff fixes'
+            git push origin HEAD:refs/heads/fix/election-2026-publication-integrity-20261111
+          fi
