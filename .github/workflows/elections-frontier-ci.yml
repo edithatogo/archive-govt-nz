@@ -89,9 +89,6 @@ jobs:
         run: |
           if [ -n "$HF_TOKEN" ]; then
             python scripts/deploy_hf_space.py
-          fi
-          if [ -z "$HF_TOKEN" ]; then
-            exit 1
           else
             echo '::error::HF_TOKEN unavailable; cannot certify deployment.'
             exit 1
