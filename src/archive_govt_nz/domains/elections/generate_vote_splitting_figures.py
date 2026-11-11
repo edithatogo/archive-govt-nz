@@ -12,6 +12,8 @@ from __future__ import annotations
 
 from pathlib import Path
 import matplotlib.pyplot as plt
+from matplotlib.axes import Axes
+from matplotlib.figure import Figure
 import numpy as np
 
 from archive_govt_nz.domains.elections.maori_vote_splitting_engine import (
@@ -39,10 +41,10 @@ ACCENT_TEAL = "#1abc9c"
 ACCENT_ORANGE = "#ff9933"
 
 
-def set_dark_theme(fig: plt.Figure, ax: plt.Axes | list[plt.Axes]) -> None:
+def set_dark_theme(fig: Figure, ax: Axes | list[Axes]) -> None:
     """Apply uniform dark academic theme styling."""
     fig.patch.set_facecolor(BG_COLOR)
-    axes_list = [ax] if isinstance(ax, plt.Axes) else ax
+    axes_list = [ax] if isinstance(ax, Axes) else ax
     for a in axes_list:
         a.set_facecolor(BG_COLOR)
         a.tick_params(colors=TEXT_COLOR, labelsize=9)
