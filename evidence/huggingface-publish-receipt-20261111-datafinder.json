@@ -1,0 +1,35 @@
+{
+  "commit_message": "feat(boundaries): add 2002 general and Maori electorate boundaries and Stats NZ datafinder capture receipts",
+  "evidence_files": 2,
+  "files_staged": 21,
+  "publish_method": "Hugging Face create_commit (regular inline commit; no Xet forcing needed)",
+  "published_at": "2026-11-11T08:52:00+00:00",
+  "cas_objects_published": 16,
+  "cas_dedupe_note": "the two capture receipts list 28 objects, but layer and version metadata are byte-identical within a layer, so 16 distinct objects cover the 2 new boundary bundles plus all 20 attribute/metadata entries",
+  "repo_id": "edithatogo/archive-govt-nz-global",
+  "repo_url": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global",
+  "schema_version": "archive-govt-nz.huggingface-publish-receipt/v1",
+  "status": "published_and_verified",
+  "upload_info": "https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/commit/caf3532ca66afe0641f572f92c75f7d27b911570",
+  "verification": {
+    "method": "downloaded each committed path from the Hub and compared sha256 with the local pre-commit digest",
+    "files_checked": 21,
+    "mismatches": 0
+  },
+  "contents": {
+    "new_boundary_data": [
+      "data/general-electorates-2002.parquet (62 features)",
+      "data/maori-electorates-2002.parquet (7 features)"
+    ],
+    "evidence_files": [
+      "evidence/datafinder-geometry-20261111-capture.json",
+      "evidence/datafinder-attachments-20261111-capture.json"
+    ],
+    "readme_refreshed_from": "docs/elections-dataset-card.md"
+  },
+  "deliberately_not_published": {
+    "layers": [122741, 122742, 104580, 104579, 104062, 104065],
+    "reason": "verification-only re-captures; the archive already holds these layers' bytes from the ArcGIS FeatureServer pipeline, so republishing would duplicate them and blur which capture is canonical"
+  },
+  "previous_publish_receipt": "evidence/huggingface-publish-receipt.json"
+}
