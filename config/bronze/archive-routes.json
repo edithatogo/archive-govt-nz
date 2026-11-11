@@ -141,7 +141,7 @@
       }
     }
   },
-  "tobac-sources": {
+  "tobac-bronze": {
     "repository": "edithatogo/archive-govt-nz-global",
     "workflow": ".github/workflows/scheduled-multi-source-harvest.yml",
     "targets": {
@@ -182,6 +182,11 @@
         }
       }
     }
+  },
+  "tobac-sources": {
+    "repository": "edithatogo/archive-govt-nz-global",
+    "workflow": ".github/workflows/scheduled-multi-source-harvest.yml",
+    "targets": {}
   },
   "tobac-source-assets": {
     "repository": "edithatogo/archive-govt-nz-global",

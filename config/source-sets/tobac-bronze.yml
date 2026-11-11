@@ -1,0 +1,23 @@
+name: tobac-bronze
+description: Customs OIA PDFs and excise tables for bronze archival; all CC BY 4.0 Crown copyright.
+enabled: true
+adapters:
+  - web
+schedule: manual
+rights_class: crown_copyright_open
+output_preservation_policy:
+  format: warc_and_manifest
+  compression: none
+  cas_hash_algorithm: sha256
+  retention: permanent
+publication_policy:
+  huggingface:
+    enabled: true
+    dataset_slug: edithatogo/archive-govt-nz-global
+  zenodo:
+    enabled: false
+targets:
+  - https://www.customs.govt.nz/media/adyjbo2l/volume-and-excise-collected-on-various-tobacco-imports.pdf
+  - https://www.customs.govt.nz/media/u0hhdp2f/oia-25-083-proactive-release.pdf
+  - https://www.customs.govt.nz/media/qkvjprql/excise-and-excise-equivalent-duties-table-tobacco-products-indexation-2025.pdf
+  - https://www.customs.govt.nz/media/45sl0kmj/order-in-council-excise-and-excise-equivalent-duties-table-tobacco-products-indexation-amendment-order-2022.pdf
