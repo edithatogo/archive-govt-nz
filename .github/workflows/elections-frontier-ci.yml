@@ -18,6 +18,7 @@ on:
       - 'schemas/election/**'
       - 'zk/**'
       - 'tests/test_elections_*.py'
+      - 'tests/test_elections_publication_integrity.py'
   workflow_dispatch:
 
 permissions:
@@ -39,6 +40,10 @@ jobs:
         run: |
           pip install uv
           uv pip install --system pytest pytest-cov pydantic pyarrow duckdb plotly gradio xgboost scikit-learn matplotlib jsonschema huggingface_hub umap-learn
+
+      - name: Validate published release independently
+        run: |
+          python -m pytest tests/test_elections_publication_integrity.py -q
 
       - name: Run Focused Election Test Suite
         env:
@@ -72,5 +77,6 @@ jobs:
           if [ -n "$HF_TOKEN" ]; then
             python scripts/deploy_hf_space.py
           else
-            echo "HF_TOKEN not set; skipping automated space push."
+            echo '::error::HF_TOKEN unavailable; cannot certify deployment.'
+            exit 1
           fi
