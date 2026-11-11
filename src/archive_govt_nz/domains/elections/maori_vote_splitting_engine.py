@@ -357,7 +357,7 @@ def run_sainte_lague_counterfactual(
         for party, data in shares.items()
     ]
     actual_res = compute_sainte_lague(baseline_rows)
-    actual_ov = compute_overhang_analysis(actual_res, total_votes_cast=TOTAL_VALID_PV_NATIONAL)
+    actual_ov = compute_overhang_analysis(actual_res)
 
     # 2. Counterfactual Allocation
     total_deducted = sum(
@@ -381,7 +381,7 @@ def run_sainte_lague_counterfactual(
         )
 
     cf_res = compute_sainte_lague(cf_rows)
-    cf_ov = compute_overhang_analysis(cf_res, total_votes_cast=cf_tot_votes)
+    cf_ov = compute_overhang_analysis(cf_res)
 
     actual_alloc_map = {a.party_name: a for a in actual_res.allocations}
     cf_alloc_map = {a.party_name: a for a in cf_res.allocations}
