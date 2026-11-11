@@ -140,5 +140,111 @@
         }
       }
     }
+  },
+  "tobac-sources": {
+    "repository": "edithatogo/archive-govt-nz-global",
+    "workflow": ".github/workflows/scheduled-multi-source-harvest.yml",
+    "targets": {
+      "https://www.customs.govt.nz/media/adyjbo2l/volume-and-excise-collected-on-various-tobacco-imports.pdf": {
+        "1ca02d0c23b8e98c225994bb3488fd98e8e8024cb6237d5a7d528d469d181627": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "New Zealand Customs Service, Crown copyright. OIA 25-187 proactive release. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.customs.govt.nz/about-us/corporate-publications"
+        }
+      },
+      "https://www.customs.govt.nz/media/u0hhdp2f/oia-25-083-proactive-release.pdf": {
+        "6f2b925e74e756d34b08ad613cc35e6127b77d55c3ef137aa7ad8bb99535fbd5": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "New Zealand Customs Service, Crown copyright. OIA 25-083 proactive release. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.customs.govt.nz/about-us/corporate-publications"
+        }
+      },
+      "https://www.customs.govt.nz/media/qkvjprql/excise-and-excise-equivalent-duties-table-tobacco-products-indexation-2025.pdf": {
+        "44acf236c2b88a1f439219da71350de9d43b7bdc3b90bfcc2426a9ae36bccb5c": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "New Zealand Customs Service, Crown copyright. Official excise rate table. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.customs.govt.nz/about-us/corporate-publications"
+        }
+      },
+      "https://www.customs.govt.nz/media/45sl0kmj/order-in-council-excise-and-excise-equivalent-duties-table-tobacco-products-indexation-amendment-order-2022.pdf": {
+        "756b6d6c9f7011ec6320ddd02af4062d981995bcdd3561237413c1aa347a7cc3": {
+          "decision": "publish",
+          "content_type": "application/pdf",
+          "attribution": "New Zealand Customs Service, Crown copyright. Official excise amendment order. Original PDF response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.customs.govt.nz/about-us/corporate-publications"
+        }
+      }
+    }
+  },
+  "tobac-source-assets": {
+    "repository": "edithatogo/archive-govt-nz-global",
+    "workflow": ".github/workflows/scheduled-multi-source-harvest.yml",
+    "targets": {
+      "https://www.health.govt.nz/system/files/2026-08/Total-tobacco-sold-tonnes-2010-2025.xlsx": {
+        "3a55a6469097ebc3fb27a6143db7749e5b885761ada76b197053dfe76f36e883": {
+          "decision": "publish",
+          "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "attribution": "Ministry of Health NZ, Crown copyright. Official tobacco returns workbook. Original XLSX response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.health.govt.nz/about-ministry/copyright-and-disclaimer"
+        }
+      }
+    }
+  },
+  "tobac-pmc-supplement": {
+    "repository": "edithatogo/archive-govt-nz-global",
+    "workflow": ".github/workflows/scheduled-multi-source-harvest.yml",
+    "targets": {
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC12887742/": {
+        "117c70fb45a4add2d2cb3398241bfa737c0348fb21972713562018be37a1f3e4": {
+          "decision": "publish",
+          "content_type": "text/html",
+          "attribution": "Wang et al., JAMA Network Open. CC BY 4.0. Original HTML response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.ncbi.nlm.nih.gov/pmc/about/copyright/"
+        }
+      },
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC13389531/": {
+        "9368893bad97551b50f643dcb63ee769dc780bca54431b7e3ed4a8df8aedc8d6": {
+          "decision": "publish",
+          "content_type": "text/html",
+          "attribution": "Weng et al., Environmental Science & Technology. CC BY 4.0. Original HTML response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.ncbi.nlm.nih.gov/pmc/about/copyright/"
+        }
+      },
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC4517929/": {
+        "493d918de7f12d0fd9b9510bf953a34162580a9f346e5577d1c74140411890b2": {
+          "decision": "publish",
+          "content_type": "text/html",
+          "attribution": "Bade et al., Drug Testing and Analysis. CC BY 4.0. Original HTML response, unchanged.",
+          "licence": "https://creativecommons.org/licenses/by/4.0/",
+          "policy": "https://www.ncbi.nlm.nih.gov/pmc/about/copyright/"
+        }
+      }
+    }
+  },
+  "tobac-pubmed-metadata": {
+    "repository": "edithatogo/archive-govt-nz-global",
+    "workflow": ".github/workflows/scheduled-multi-source-harvest.yml",
+    "targets": {
+      "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id=22594651,25037156,25398562,26138823,26218517,27624346,29571085,31515173,32113617,32653706,37192131,38876037,40919023,41447812,41587826,41661592,41725392,42664537&retmode=xml": {
+        "7a9caa0daa9bc519c8e54f90e90dacf51ea9e79ff2493b3e40000e2fb4de7b15": {
+          "decision": "publish",
+          "content_type": "text/xml",
+          "attribution": "NCBI PubMed metadata. Public domain metadata. Original XML response, unchanged.",
+          "licence": "https://www.ncbi.nlm.nih.gov/home/about/policies/",
+          "policy": "https://www.ncbi.nlm.nih.gov/home/about/policies/"
+        }
+      }
+    }
   }
+}
 }

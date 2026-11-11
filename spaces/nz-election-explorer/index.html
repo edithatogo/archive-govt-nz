@@ -925,7 +925,12 @@
 
       <!-- Frontier 1 -->
       <h3>1. 3D Kinetic Coalition Topology (Force-Directed Topography)</h3>
-      <img src="frontier_1_kinetic_coalition_3d.png" style="width:100%; max-width:900px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="3D Kinetic Coalition Topology">
+      <div id="chart-kinetic-3d" style="height: 520px; border-radius:8px; border:1px solid var(--border); margin:12px 0; background:#0e1117;"></div>
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 12px;">
+        <span style="font-size: 0.8rem; color: var(--text-muted);">💡 <b>Interactive 3D WebGL Canvas:</b> Drag to rotate view angle, scroll to zoom, hover for caucus metrics.</span>
+        <span style="font-size: 0.8rem; color: var(--accent);">Majority Threshold = 66 Seats | Total = 131</span>
+      </div>
+      <img src="frontier_1_kinetic_coalition_3d.png" style="width:100%; max-width:960px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="3D Kinetic Coalition Topology">
       <div class="note-box">
         <div class="note-title">Explanation & Theoretical Grounding</div>
         <p><b>What It Depicts:</b> Interactive 3D particle simulation where political parties are mapped as heavy nodes in a gravitational physics engine, with mass equal to total seats (including National's +7 and TPM's +4 overhangs).</p>
@@ -1503,6 +1508,158 @@
       font: { color: '#c9d1d9' },
       xaxis: { title: 'Mean |SHAP Value| (Impact on Minor Party Vote)' }
     }, { responsive: true });
+
+    // Chart: 3D Kinetic Coalition Topology
+    (function initKinetic3D() {
+      const parties3D = [
+        { name: 'National (43 Seats, +7 Overhang)', x: 0.72, y: 0.38, z: 0.20, mass: 43, color: '#00529F' },
+        { name: 'Labour (31 Seats)', x: 0.32, y: 0.62, z: 0.24, mass: 31, color: '#D82A20' },
+        { name: 'Green Party (17 Seats)', x: 0.16, y: 0.76, z: 0.44, mass: 17, color: '#098137' },
+        { name: 'ACT (13 Seats)', x: 0.90, y: 0.22, z: 0.38, mass: 13, color: '#FDE401' },
+        { name: 'NZ First (11 Seats)', x: 0.60, y: 0.15, z: 0.68, mass: 11, color: '#8b949e' },
+        { name: 'Te Pāti Māori (9 Seats, +4 Overhang)', x: 0.18, y: 0.95, z: 0.88, mass: 9, color: '#A01526' },
+        { name: 'TOP (7 Seats)', x: 0.50, y: 0.58, z: 0.32, mass: 7, color: '#32B5B5' }
+      ];
+
+      const N = 25;
+      const xGrid = [];
+      const yGrid = [];
+      for (let i = 0; i < N; i++) {
+        xGrid.push(0.05 + (0.95 - 0.05) * (i / (N - 1)));
+        yGrid.push(0.05 + (0.95 - 0.05) * (i / (N - 1)));
+      }
+      const zSurface = [];
+      for (let j = 0; j < N; j++) {
+        const row = [];
+        for (let i = 0; i < N; i++) {
+          let pot = 0;
+          parties3D.forEach(p => {
+            const d2 = Math.pow(xGrid[i] - p.x, 2) + Math.pow(yGrid[j] - p.y, 2) + 0.035;
+            pot -= (p.mass * 0.015) / d2;
+          });
+          row.push(pot);
+        }
+        zSurface.push(row);
+      }
+      let minZ = Infinity, maxZ = -Infinity;
+      for (let j = 0; j < N; j++) {
+        for (let i = 0; i < N; i++) {
+          if (zSurface[j][i] < minZ) minZ = zSurface[j][i];
+          if (zSurface[j][i] > maxZ) maxZ = zSurface[j][i];
+        }
+      }
+      for (let j = 0; j < N; j++) {
+        for (let i = 0; i < N; i++) {
+          zSurface[j][i] = ((zSurface[j][i] - minZ) / (maxZ - minZ)) * 0.45 - 0.08;
+        }
+      }
+
+      const surfaceTrace = {
+        type: 'surface',
+        x: xGrid,
+        y: yGrid,
+        z: zSurface,
+        colorscale: 'Viridis',
+        opacity: 0.35,
+        showscale: false,
+        hoverinfo: 'skip'
+      };
+
+      const nodesTrace = {
+        type: 'scatter3d',
+        mode: 'markers+text',
+        name: 'Parties (Mass = Seats)',
+        x: parties3D.map(p => p.x),
+        y: parties3D.map(p => p.y),
+        z: parties3D.map(p => p.z),
+        text: parties3D.map(p => p.name.split(' (')[0] + ' (' + p.mass + ')'),
+        textposition: ['top right', 'top left', 'middle left', 'middle right', 'top right', 'top left', 'top center'],
+        textfont: { color: '#ffffff', size: 11, family: 'sans-serif' },
+        marker: {
+          size: parties3D.map(p => Math.sqrt(p.mass) * 5 + 8),
+          color: parties3D.map(p => p.color),
+          line: { color: '#ffffff', width: 2 },
+          opacity: 0.95
+        },
+        hovertemplate: '<b>%{text}</b><br>Economic: %{x:.2f}<br>Social/Reform: %{y:.2f}<br>Anti-Establishment: %{z:.2f}<extra></extra>'
+      };
+
+      const stemX = [], stemY = [], stemZ = [];
+      parties3D.forEach(p => {
+        stemX.push(p.x, p.x, null);
+        stemY.push(p.y, p.y, null);
+        stemZ.push(-0.08, p.z, null);
+      });
+      const stemsTrace = {
+        type: 'scatter3d',
+        mode: 'lines',
+        name: 'Floor Projection',
+        x: stemX, y: stemY, z: stemZ,
+        line: { color: '#8b949e', width: 2, dash: 'dot' },
+        hoverinfo: 'none',
+        showlegend: false
+      };
+
+      const crBond = {
+        type: 'scatter3d',
+        mode: 'lines',
+        name: 'Centre-Right Coalition (67 Seats — Majority)',
+        x: [0.90, 0.72, 0.60],
+        y: [0.22, 0.38, 0.15],
+        z: [0.38, 0.20, 0.68],
+        line: { color: '#58a6ff', width: 7 },
+        hoverinfo: 'name'
+      };
+
+      const clBond = {
+        type: 'scatter3d',
+        mode: 'lines',
+        name: 'Centre-Left Bloc (57 Seats — Minority)',
+        x: [0.16, 0.32, 0.18],
+        y: [0.76, 0.62, 0.95],
+        z: [0.44, 0.24, 0.88],
+        line: { color: '#ff7b72', width: 5, dash: 'dash' },
+        hoverinfo: 'name'
+      };
+
+      const topBond = {
+        type: 'scatter3d',
+        mode: 'lines',
+        name: 'TOP Crossbench Pivot (7 Seats)',
+        x: [0.72, 0.50],
+        y: [0.38, 0.58],
+        z: [0.20, 0.32],
+        line: { color: '#32B5B5', width: 4, dash: 'dot' },
+        hoverinfo: 'name'
+      };
+
+      const layout3D = {
+        margin: { l: 0, r: 0, b: 0, t: 40 },
+        paper_bgcolor: '#0e1117',
+        plot_bgcolor: '#0e1117',
+        title: {
+          text: '3D Kinetic Coalition Topology: Ideological Equilibrium & Strain Wells',
+          font: { color: '#ffffff', size: 14 }
+        },
+        scene: {
+          xaxis: { title: 'Economic Axis (Left ➔ Right)', backgroundcolor: '#0e1117', gridcolor: '#30363d', color: '#c9d1d9', range: [0.05, 1.0] },
+          yaxis: { title: 'Social / Tangata Whenua Axis', backgroundcolor: '#0e1117', gridcolor: '#30363d', color: '#c9d1d9', range: [0.05, 1.0] },
+          zaxis: { title: 'Anti-Establishment Vector', backgroundcolor: '#0e1117', gridcolor: '#30363d', color: '#c9d1d9', range: [-0.08, 1.0] },
+          camera: {
+            eye: { x: 1.5, y: -1.75, z: 1.15 }
+          }
+        },
+        legend: {
+          x: 0.02, y: 0.98,
+          bgcolor: 'rgba(22, 27, 34, 0.85)',
+          bordercolor: '#30363d',
+          borderwidth: 1,
+          font: { color: '#c9d1d9', size: 10 }
+        }
+      };
+
+      Plotly.newPlot('chart-kinetic-3d', [surfaceTrace, stemsTrace, crBond, clBond, topBond, nodesTrace], layout3D, { responsive: true });
+    })();
 
     // WebAudio Psychoacoustic Sonifier
     let audioCtx = null;

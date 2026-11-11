@@ -18,67 +18,169 @@ from scipy.spatial import Voronoi, voronoi_plot_2d
 def generate_kinetic_coalition_3d(output_path: Path) -> Path:
     """1. 3D Kinetic Coalition Topology (Force-Directed Topography)."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig = plt.figure(figsize=(11, 8), facecolor="#0e1117")
+    fig = plt.figure(figsize=(12.5, 9.0), facecolor="#0e1117")
     ax = fig.add_subplot(111, projection="3d", facecolor="#0e1117")
 
-    # Ideological coordinates (X: Economic Left-Right, Y: Social/Bicultural, Z: Institutional/Anti-Establishment)
+    # Ideological coordinates with distinct physical separation and non-overlapping label vectors
     parties = [
-        {"name": "National\n(43 seats, +7 ov)", "x": 0.70, "y": 0.45, "z": 0.20, "mass": 43, "color": "#00529F"},
-        {"name": "Labour\n(31 seats)", "x": 0.35, "y": 0.65, "z": 0.25, "mass": 31, "color": "#D82A20"},
-        {"name": "Green\n(17 seats)", "x": 0.18, "y": 0.85, "z": 0.40, "mass": 17, "color": "#098137"},
-        {"name": "ACT\n(13 seats)", "x": 0.88, "y": 0.30, "z": 0.35, "mass": 13, "color": "#FDE401"},
-        {"name": "NZ First\n(11 seats)", "x": 0.55, "y": 0.25, "z": 0.65, "mass": 11, "color": "#8b949e"},
-        {"name": "TOP\n(7 seats)", "x": 0.48, "y": 0.55, "z": 0.30, "mass": 7, "color": "#32B5B5"},
-        {"name": "Te Pāti Māori\n(9 seats, +4 ov)", "x": 0.20, "y": 0.90, "z": 0.85, "mass": 9, "color": "#800020"},
+        {
+            "name": "National\n43 Seats (+7 Overhang)",
+            "x": 0.72, "y": 0.38, "z": 0.20, "mass": 43, "color": "#00529F",
+            "ox": 0.05, "oy": -0.05, "oz": 0.12, "ha": "left"
+        },
+        {
+            "name": "Labour\n31 Seats",
+            "x": 0.32, "y": 0.62, "z": 0.24, "mass": 31, "color": "#D82A20",
+            "ox": -0.06, "oy": 0.06, "oz": 0.11, "ha": "right"
+        },
+        {
+            "name": "Green Party\n17 Seats",
+            "x": 0.16, "y": 0.76, "z": 0.44, "mass": 17, "color": "#098137",
+            "ox": -0.08, "oy": -0.02, "oz": 0.09, "ha": "right"
+        },
+        {
+            "name": "ACT\n13 Seats",
+            "x": 0.90, "y": 0.22, "z": 0.38, "mass": 13, "color": "#FDE401",
+            "ox": 0.06, "oy": -0.02, "oz": 0.09, "ha": "left"
+        },
+        {
+            "name": "NZ First\n11 Seats",
+            "x": 0.60, "y": 0.15, "z": 0.68, "mass": 11, "color": "#8b949e",
+            "ox": 0.04, "oy": -0.06, "oz": 0.11, "ha": "left"
+        },
+        {
+            "name": "Te Pāti Māori\n9 Seats (+4 Overhang)",
+            "x": 0.18, "y": 0.95, "z": 0.88, "mass": 9, "color": "#A01526",
+            "ox": -0.04, "oy": 0.06, "oz": 0.10, "ha": "right"
+        },
+        {
+            "name": "TOP\n7 Seats",
+            "x": 0.50, "y": 0.58, "z": 0.32, "mass": 7, "color": "#32B5B5",
+            "ox": 0.00, "oy": 0.06, "oz": 0.10, "ha": "center"
+        },
     ]
 
     # Generate topological potential energy wireframe surface (strain grid)
-    gx = np.linspace(0.1, 0.95, 30)
-    gy = np.linspace(0.1, 0.95, 30)
+    gx = np.linspace(0.05, 0.98, 40)
+    gy = np.linspace(0.05, 0.98, 40)
     X, Y = np.meshgrid(gx, gy)
+
     # Gravitational potential wells created by heavy nodes
     Z = np.zeros_like(X)
     for p in parties:
-        dist_sq = (X - p["x"])**2 + (Y - p["y"])**2 + 0.04
-        Z -= (p["mass"] * 0.015) / dist_sq
+        dist_sq = (X - p["x"])**2 + (Y - p["y"])**2 + 0.035
+        Z -= (p["mass"] * 0.016) / dist_sq
 
-    # Normalize Z
-    Z = (Z - Z.min()) / (Z.max() - Z.min()) * 0.6
+    # Normalize Z to sit gracefully below nodes
+    z_floor = -0.08
+    Z = (Z - Z.min()) / (Z.max() - Z.min()) * 0.55 + z_floor
 
-    wire = ax.plot_wireframe(X, Y, Z, color="#30363d", alpha=0.35, rstride=2, cstride=2, linewidth=0.8)
+    # Plot translucent potential energy surface and glowing wireframe
+    ax.plot_surface(X, Y, Z, cmap="magma", alpha=0.18, rstride=1, cstride=1, antialiased=True, shade=True)
+    ax.plot_wireframe(X, Y, Z, color="#58a6ff", alpha=0.20, rstride=2, cstride=2, linewidth=0.6)
 
-    # Plot party nodes (size proportional to seat count / mass)
+    # Contour projection on the floor for topographic depth
+    ax.contour(X, Y, Z, zdir='z', offset=z_floor, cmap="Blues", alpha=0.25, levels=8)
+
+    # Draw vertical drop stems and shadow anchors
     for p in parties:
-        node_size = p["mass"] * 25
-        ax.scatter([p["x"]], [p["y"]], [p["z"]], color=p["color"], s=node_size, edgecolors="#ffffff", linewidth=1.5, alpha=0.95)
-        ax.text(p["x"], p["y"], p["z"] + 0.08, p["name"], color="#ffffff", fontsize=8.5, weight="bold", ha="center")
+        ax.plot([p["x"], p["x"]], [p["y"], p["y"]], [z_floor, p["z"]], color=p["color"], linestyle=":", linewidth=1.3, alpha=0.55)
+        ax.scatter([p["x"]], [p["y"]], [z_floor], color=p["color"], s=p["mass"] * 8, alpha=0.30, edgecolors="none")
 
-    # Draw tension spring bonds for Centre-Right (Nat - ACT - NZF)
-    ax.plot([0.70, 0.88], [0.45, 0.30], [0.20, 0.35], color="#58a6ff", linewidth=2.5, linestyle="-", label="Centre-Right Coalition Bond (67 seats)")
-    ax.plot([0.70, 0.55], [0.45, 0.25], [0.20, 0.65], color="#58a6ff", linewidth=2.5, linestyle="-")
+    # Draw dual-layer glowing tension spring bonds
+    # Centre-Right (Nat - ACT - NZF): 67 seats
+    cr_nodes = [(0.72, 0.38, 0.20), (0.90, 0.22, 0.38), (0.60, 0.15, 0.68)]
+    # Glow layer
+    ax.plot([cr_nodes[0][0], cr_nodes[1][0]], [cr_nodes[0][1], cr_nodes[1][1]], [cr_nodes[0][2], cr_nodes[1][2]], color="#58a6ff", linewidth=6.0, alpha=0.22)
+    ax.plot([cr_nodes[0][0], cr_nodes[2][0]], [cr_nodes[0][1], cr_nodes[2][1]], [cr_nodes[0][2], cr_nodes[2][2]], color="#58a6ff", linewidth=6.0, alpha=0.22)
+    # Core lines
+    ax.plot([cr_nodes[0][0], cr_nodes[1][0]], [cr_nodes[0][1], cr_nodes[1][1]], [cr_nodes[0][2], cr_nodes[1][2]], color="#58a6ff", linewidth=2.5, linestyle="-", label="Centre-Right Coalition Bond (67 seats — Stable Majority > 66)")
+    ax.plot([cr_nodes[0][0], cr_nodes[2][0]], [cr_nodes[0][1], cr_nodes[2][1]], [cr_nodes[0][2], cr_nodes[2][2]], color="#58a6ff", linewidth=2.5, linestyle="-")
 
-    # Draw tension spring bonds for Centre-Left (Lab - Grn - TPM)
-    ax.plot([0.35, 0.18], [0.65, 0.85], [0.25, 0.40], color="#ff7b72", linewidth=2.2, linestyle="--", label="Centre-Left Potential Bloc (57 seats)")
-    ax.plot([0.35, 0.20], [0.65, 0.90], [0.25, 0.85], color="#ff7b72", linewidth=2.2, linestyle="--")
+    # Centre-Left (Lab - Grn - TPM): 57 seats
+    cl_nodes = [(0.32, 0.62, 0.24), (0.16, 0.76, 0.44), (0.18, 0.95, 0.88)]
+    # Glow layer
+    ax.plot([cl_nodes[0][0], cl_nodes[1][0]], [cl_nodes[0][1], cl_nodes[1][1]], [cl_nodes[0][2], cl_nodes[1][2]], color="#ff7b72", linewidth=5.5, alpha=0.20)
+    ax.plot([cl_nodes[0][0], cl_nodes[2][0]], [cl_nodes[0][1], cl_nodes[2][1]], [cl_nodes[0][2], cl_nodes[2][2]], color="#ff7b72", linewidth=5.5, alpha=0.20)
+    # Core lines
+    ax.plot([cl_nodes[0][0], cl_nodes[1][0]], [cl_nodes[0][1], cl_nodes[1][1]], [cl_nodes[0][2], cl_nodes[1][2]], color="#ff7b72", linewidth=2.2, linestyle="--", label="Centre-Left Potential Bloc (57 seats — Minority < 66)")
+    ax.plot([cl_nodes[0][0], cl_nodes[2][0]], [cl_nodes[0][1], cl_nodes[2][1]], [cl_nodes[0][2], cl_nodes[2][2]], color="#ff7b72", linewidth=2.2, linestyle="--")
 
-    # Crossbench pivot bonds to TOP
-    ax.plot([0.70, 0.48], [0.45, 0.55], [0.20, 0.30], color="#32B5B5", linewidth=1.5, linestyle=":", label="TOP Crossbench Pivot (7 seats)")
+    # TOP Pivot
+    ax.plot([0.72, 0.50], [0.38, 0.58], [0.20, 0.32], color="#32B5B5", linewidth=2.0, linestyle=":", label="TOP Crossbench Pivot (7 seats)")
 
-    ax.set_xlabel("Economic Axis (Left: 0 -> Right: 1)", color="#c9d1d9", labelpad=8)
-    ax.set_ylabel("Social/Bicultural Axis (Trad: 0 -> Reform: 1)", color="#c9d1d9", labelpad=8)
-    ax.set_zlabel("Anti-Establishment Vector", color="#c9d1d9", labelpad=8)
-    ax.set_title("3D Kinetic Coalition Topology & Structural Strain Topography\nMass = Caucus Seats (131 Total) | Potential Wells = Gravitational Stability", color="#ffffff", fontsize=12, weight="bold", pad=12)
+    # Plot party nodes (mass-proportional) with high-contrast outlines
+    for p in parties:
+        node_size = p["mass"] * 28 + 120
+        ax.scatter([p["x"]], [p["y"]], [p["z"]], color=p["color"], s=node_size, edgecolors="#ffffff", linewidth=1.6, alpha=0.95, zorder=5)
 
-    # Styling
+    # Plot custom padded badge labels with zero overlap
+    for p in parties:
+        tx = p["x"] + p["ox"]
+        ty = p["y"] + p["oy"]
+        tz = p["z"] + p["oz"]
+        ax.text(
+            tx, ty, tz,
+            p["name"],
+            color="#ffffff",
+            fontsize=8.5,
+            weight="bold",
+            ha=p["ha"],
+            va="center",
+            bbox=dict(
+                boxstyle="round,pad=0.32,rounding_size=0.25",
+                facecolor="#161b22",
+                edgecolor=p["color"],
+                alpha=0.92,
+                linewidth=1.4,
+            ),
+            zorder=10
+        )
+
+    # Set clear, padded axis labels with ideological direction indicators
+    ax.set_xlabel("Economic Axis (Left: 0.0 ➔ Right: 1.0)", color="#c9d1d9", labelpad=10, fontsize=9.5)
+    ax.set_ylabel("Social/Tangata Whenua Axis (Traditional: 0.0 ➔ Reform: 1.0)", color="#c9d1d9", labelpad=10, fontsize=9.5)
+    ax.set_zlabel("Institutional / Anti-Establishment Vector (0.0 ➔ 1.0)", color="#c9d1d9", labelpad=10, fontsize=9.5)
+
+    ax.set_title(
+        "3D Kinetic Coalition Topology & Structural Strain Topography\n"
+        "Node Mass = Caucus Seats (131 Total)  |  Potential Wells = Gravitational Stability  |  Threshold = 66 Majority",
+        color="#ffffff",
+        fontsize=12.5,
+        weight="bold",
+        pad=16
+    )
+
+    # Viewing angle for optimal depth and label clarity
+    ax.view_init(elev=26, azim=-48)
+
+    # Set axis limits
+    ax.set_xlim(0.05, 1.0)
+    ax.set_ylim(0.05, 1.0)
+    ax.set_zlim(z_floor, 1.05)
+
+    # Pane and tick styling
     ax.xaxis.pane.fill = False
     ax.yaxis.pane.fill = False
     ax.zaxis.pane.fill = False
+    ax.xaxis.pane.set_edgecolor("#30363d")
+    ax.yaxis.pane.set_edgecolor("#30363d")
+    ax.zaxis.pane.set_edgecolor("#30363d")
     ax.tick_params(colors="#8b949e", labelsize=8)
     ax.grid(color="#30363d", linestyle="--", alpha=0.3)
-    ax.legend(facecolor="#161b22", edgecolor="#30363d", labelcolor="#c9d1d9", loc="upper left", fontsize=8.5)
+
+    # Clean, modern dark legend
+    ax.legend(
+        facecolor="#161b22",
+        edgecolor="#30363d",
+        labelcolor="#c9d1d9",
+        loc="upper left",
+        fontsize=8.5,
+        framealpha=0.92
+    )
 
     plt.tight_layout()
-    plt.savefig(output_path, dpi=200, facecolor=fig.get_facecolor(), edgecolor="none")
+    plt.savefig(output_path, dpi=250, facecolor=fig.get_facecolor(), edgecolor="none")
     plt.close()
     return output_path
 

@@ -30,10 +30,10 @@ jobs:
           SELECTED: ${{ inputs.source_set || 'all' }}
         run: |
           if [ "$SELECTED" = "all" ] || [ -z "$SELECTED" ]; then
-            echo 'matrix=["government-web"]' >> "$GITHUB_OUTPUT"
+            echo 'matrix=["government-web", "tobac-sources", "tobac-source-assets", "tobac-pmc-supplement", "tobac-pubmed-metadata"]' >> "$GITHUB_OUTPUT"
           else
             case "$SELECTED" in
-              government-web|treasury|social-media|newsletters|nz-gazette) ;;
+              government-web|treasury|social-media|newsletters|nz-gazette|tobac-sources|tobac-source-assets|tobac-pmc-supplement|tobac-pubmed-metadata) ;;
               *) exit 2 ;;
             esac
             echo "matrix=[\"$SELECTED\"]" >> "$GITHUB_OUTPUT"
