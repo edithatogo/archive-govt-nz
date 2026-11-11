@@ -5,6 +5,7 @@ from __future__ import annotations
 from pathlib import Path
 
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 import numpy as np
 
 
@@ -259,7 +260,7 @@ def generate_electorate_geographic_map(output_path: Path) -> Path:
 
     # Custom legend
     legend_elements = [
-        plt.Line2D(
+        Line2D(
             [0],
             [0],
             marker="o",
@@ -268,7 +269,7 @@ def generate_electorate_geographic_map(output_path: Path) -> Path:
             markerfacecolor="#00529F",
             markersize=10,
         ),
-        plt.Line2D(
+        Line2D(
             [0],
             [0],
             marker="o",
@@ -277,7 +278,7 @@ def generate_electorate_geographic_map(output_path: Path) -> Path:
             markerfacecolor="#D82A20",
             markersize=10,
         ),
-        plt.Line2D(
+        Line2D(
             [0],
             [0],
             marker="o",
@@ -286,7 +287,7 @@ def generate_electorate_geographic_map(output_path: Path) -> Path:
             markerfacecolor="#800020",
             markersize=10,
         ),
-        plt.Line2D(
+        Line2D(
             [0],
             [0],
             marker="o",
@@ -295,7 +296,7 @@ def generate_electorate_geographic_map(output_path: Path) -> Path:
             markerfacecolor="#098137",
             markersize=10,
         ),
-        plt.Line2D(
+        Line2D(
             [0],
             [0],
             marker="o",
@@ -304,7 +305,7 @@ def generate_electorate_geographic_map(output_path: Path) -> Path:
             markerfacecolor="#FDE401",
             markersize=10,
         ),
-        plt.Line2D(
+        Line2D(
             [0],
             [0],
             marker="o",
@@ -373,7 +374,7 @@ def generate_longitudinal_overhang_timeline(output_path: Path) -> Path:
         pad=15,
     )
     ax.set_xticks(x)
-    ax.set_xticklabels(years, color="#c9d1d9", fontsize=11)
+    ax.set_xticklabels([str(year) for year in years], color="#c9d1d9", fontsize=11)
     ax.set_ylim(100, 136)
     ax.tick_params(colors="#8b949e")
     ax.grid(axis="y", color="#30363d", linestyle="--", alpha=0.5)
