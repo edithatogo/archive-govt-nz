@@ -248,5 +248,25 @@
         "datafinder": 63
       }
     }
+  },
+  "publication": {
+    "target": "huggingface:edithatogo/archive-govt-nz-global",
+    "policy": "Only new-coverage objects and the receipt are published. The six verification exports are retained locally and NOT republished, because the archive already holds those layers' bytes from the ArcGIS FeatureServer pipeline; republishing would duplicate them and blur which capture is canonical.",
+    "published_layers": [
+      99645,
+      104064
+    ],
+    "not_published": [
+      122741,
+      122742,
+      104580,
+      104579,
+      104062,
+      104065
+    ],
+    "convenience_parquet": {
+      "data/general-electorates-2002.parquet": "extracted from the 99645 bundle, byte-identical to the bundle's member",
+      "data/maori-electorates-2002.parquet": "extracted from the 104064 bundle, byte-identical to the bundle's member"
+    }
   }
 }

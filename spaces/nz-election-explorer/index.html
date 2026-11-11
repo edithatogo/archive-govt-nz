@@ -60,32 +60,60 @@
     .metric-val { font-size: 28px; font-weight: 700; color: var(--accent); margin: 6px 0 2px 0; }
     .metric-sub { font-size: 12px; color: var(--text-muted); }
     
-    /* Tabs Navigation */
+    /* Sticky Unified Thematic Navigation */
+    .thematic-nav-container {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(14, 17, 23, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 12px 0 10px 0;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border);
+    }
     .tabs-nav {
       display: flex;
       gap: 8px;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 8px;
-      margin-bottom: 24px;
       overflow-x: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+      padding-bottom: 4px;
+      margin: 0;
+    }
+    .tabs-nav::-webkit-scrollbar {
+      height: 4px;
+    }
+    .tabs-nav::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
     }
     .tab-btn {
-      background: transparent;
-      border: 1px solid transparent;
-      border-radius: 6px;
+      background: #161b22;
+      border: 1px solid var(--border);
+      border-radius: 20px;
       color: var(--text-muted);
-      padding: 10px 18px;
-      font-size: 14px;
+      padding: 8px 16px;
+      font-size: 13px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
       white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
-    .tab-btn:hover { color: #fff; background: rgba(255,255,255,0.05); }
+    .tab-btn:hover {
+      color: #fff;
+      background: #21262d;
+      border-color: #58a6ff;
+      transform: translateY(-1px);
+    }
     .tab-btn.active {
-      color: var(--accent);
-      background: var(--card-bg);
-      border-color: var(--border);
+      color: #ffffff;
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 12px rgba(88, 166, 255, 0.35);
     }
     
     .tab-content { display: none; }
@@ -157,22 +185,6 @@
     .badge-status-flip { background: rgba(248,81,73,0.15); color: #ff7b72; border: 1px solid rgba(248,81,73,0.4); }
     .badge-status-hold { background: rgba(63,185,80,0.15); color: #7ee787; border: 1px solid rgba(63,185,80,0.4); }
 
-    .nav-pill {
-      background: #21262d;
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 13px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .nav-pill:hover, .nav-pill.active {
-      background: var(--accent);
-      color: #fff;
-      border-color: var(--accent);
-    }
     .metric-card {
       cursor: pointer;
       transition: transform 0.15s ease, border-color 0.15s ease;
@@ -222,42 +234,23 @@
       </div>
     </div>
 
-    <!-- Thematic Navigation Hub -->
-    <div style="background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 14px 18px; margin-bottom: 20px;">
-      <div style="font-size: 13px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;">
-        Direct Result Navigator (Thematic Pillars):
+    <!-- Unified Thematic Pillars Navigation Bar -->
+    <nav class="thematic-nav-container" aria-label="Electoral Analysis Thematic Pillars">
+      <div class="tabs-nav">
+        <button class="tab-btn active" onclick="switchTab('overview')">🏛️ Overview & Returns</button>
+        <button class="tab-btn" onclick="switchTab('overhang')">⚖️ Statutory Sainte-Laguë (131 Seats)</button>
+        <button class="tab-btn" onclick="switchTab('maori-splitting')">🌿 Māori Vote-Splitting Secondary Effects</button>
+        <button class="tab-btn" onclick="switchTab('specials')">🎯 Special Votes Margin Flips</button>
+        <button class="tab-btn" onclick="switchTab('causal')">🔬 Causal Overhang & Vote-Split Attribution</button>
+        <button class="tab-btn" onclick="switchTab('multivariate')">📊 Census Demographics & SHAP</button>
+        <button class="tab-btn" onclick="switchTab('predictive')">📈 10-Cycle Benchmarks & 2029 Forecast</button>
+        <button class="tab-btn" onclick="switchTab('beyond')">🧬 Beyond Frontier: Bio & Quantum</button>
+        <button class="tab-btn" onclick="switchTab('caucus')">🐦 Parliamentary Murmuration Swarm</button>
+        <button class="tab-btn" onclick="switchTab('figures')">🖼️ High-Resolution Figures Gallery</button>
+        <button class="tab-btn" onclick="switchTab('counterfactual')">📜 Counterfactual Sizing Rules</button>
+        <button class="tab-btn" onclick="switchTab('audit')">🔐 CAS Provenance & Cryptography</button>
       </div>
-      <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-        <button class="nav-pill active" onclick="switchTab('overview')">🏛️ Overview & Returns</button>
-        <button class="nav-pill" onclick="switchTab('overhang')">⚖️ Statutory Sainte-Laguë (131 Seats)</button>
-        <button class="nav-pill" onclick="switchTab('maori-splitting')">🌿 Māori Vote-Splitting Secondary Effects</button>
-        <button class="nav-pill" onclick="switchTab('specials')">🎯 Special Votes Margin Flips</button>
-        <button class="nav-pill" onclick="switchTab('causal')">⚖️ Causal Overhang & Vote-Split Attribution</button>
-        <button class="nav-pill" onclick="switchTab('multivariate')">📊 Census Demographics & SHAP</button>
-        <button class="nav-pill" onclick="switchTab('predictive')">📈 10-Cycle Benchmarks & 2029 Forecast</button>
-        <button class="nav-pill" onclick="switchTab('beyond')">🧬 Beyond Frontier: Bio & Quantum</button>
-        <button class="nav-pill" onclick="switchTab('caucus')">🐦 Parliamentary Murmuration Swarm</button>
-        <button class="nav-pill" onclick="switchTab('figures')">🖼️ High-Resolution Figures Gallery</button>
-        <button class="nav-pill" onclick="switchTab('counterfactual')">📜 Counterfactual Sizing Rules</button>
-        <button class="nav-pill" onclick="switchTab('audit')">🔐 CAS Provenance & Cryptography</button>
-      </div>
-    </div>
-
-    <!-- Navigation Tabs -->
-    <div class="tabs-nav">
-      <button class="tab-btn active" onclick="switchTab('overview')">Electoral Overview</button>
-      <button class="tab-btn" onclick="switchTab('overhang')">Sainte-Laguë Allocation</button>
-      <button class="tab-btn" onclick="switchTab('maori-splitting')">Māori Vote-Splitting</button>
-      <button class="tab-btn" onclick="switchTab('specials')">Special Votes Sensitivity</button>
-      <button class="tab-btn" onclick="switchTab('causal')">Campaign Finance & Causal Inference</button>
-      <button class="tab-btn" onclick="switchTab('multivariate')">Census Demographics & SHAP</button>
-      <button class="tab-btn" onclick="switchTab('caucus')">Parliamentary Alignment Model</button>
-      <button class="tab-btn" onclick="switchTab('figures')">Publication Figures & Gallery</button>
-      <button class="tab-btn" onclick="switchTab('beyond')">Beyond Frontier: Bio & Quantum</button>
-      <button class="tab-btn" onclick="switchTab('predictive')">2029 Forecast & Longitudinals</button>
-      <button class="tab-btn" onclick="switchTab('counterfactual')">Counterfactual Rules</button>
-      <button class="tab-btn" onclick="switchTab('audit')">Data Provenance & CAS</button>
-    </div>
+    </nav>
 
     <!-- TAB 1: OVERVIEW -->
     <div id="tab-overview" class="tab-content active">
@@ -1331,14 +1324,13 @@
     function switchTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
-      document.querySelectorAll('.nav-pill').forEach(el => el.classList.remove('active'));
 
       const target = document.getElementById('tab-' + tabId);
       if (target) {
         target.classList.add('active');
       }
 
-      document.querySelectorAll(`.tab-btn[onclick*="'${tabId}'"], .nav-pill[onclick*="'${tabId}'"]`).forEach(el => {
+      document.querySelectorAll(`.tab-btn[onclick*="'${tabId}'"]`).forEach(el => {
         el.classList.add('active');
       });
 

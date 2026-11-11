@@ -49,8 +49,8 @@ This dataset captures **all New Zealand General Elections from 1996 to 2026**, i
 | **2014** | OFFICIAL | 20 Sep 2014 | 64 | ❌ CSV summary only | ✅ 2014 review |
 | **2011** | OFFICIAL | 26 Nov 2011 | 64 | ❌ CSV summary only | ✅ 2007 review |
 | **2008** | OFFICIAL | 8 Nov 2008 | 64 | ❌ CSV summary only | ✅ 2007 review |
-| **2005** | OFFICIAL | 17 Sep 2005 | 62 | ❌ CSV summary only | (2007 review) |
-| **2002** | OFFICIAL | 27 Jul 2002 | 62 | ❌ CSV summary only | (2007 review) |
+| **2005** | OFFICIAL | 17 Sep 2005 | 62 | ❌ CSV summary only | ✅ 2002 review |
+| **2002** | OFFICIAL | 27 Jul 2002 | 62 | ❌ CSV summary only | ✅ 2002 review |
 | **1999** | OFFICIAL | 27 Nov 1999 | 67 | ❌ PDF only | — |
 | **1996** | OFFICIAL | 12 Oct 1996 | 65 | ❌ PDF only | — |
 
@@ -81,8 +81,8 @@ Authoritative boundaries from Representation Commission reviews, captured as Geo
 | `maori-electorates-2014` | 2014, 2017 | 7 | 2014 review |
 | `general-electorates-2007` | 2008, 2011 | 63 | 2007 review |
 | `maori-electorates-2007` | 2008, 2011 | 7 | 2007 review |
-| `general-electoral-district-2002` | 2002, 2005 | 62 | 2002 review (captured 2026-11-11 from datafinder; see §9a) |
-| `maori-electoral-district-2002` | 2002, 2005 | 7 | 2002 review (captured 2026-11-11 from datafinder; see §9a) |
+| `general-electorates-2002` | 2002, 2005 | 62 | 2002 review (captured 2026-11-11 from datafinder; see §9a) |
+| `maori-electorates-2002` | 2002, 2005 | 7 | 2002 review (captured 2026-11-11 from datafinder; see §9a) |
 | `constituency-2026` | Regional councils | 64 | 2026 |
 | `maori-constituency-2026` | Regional councils | 22 | 2026 |
 
