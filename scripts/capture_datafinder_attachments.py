@@ -77,7 +77,10 @@ def main() -> None:
         }
         if status == 200 and body:
             receipt = store.put_bytes(body)
-            if receipt.sha256 != entry["sha256"] or receipt.byte_count != entry["byte_count"]:
+            if (
+                receipt.sha256 != entry["sha256"]
+                or receipt.byte_count != entry["byte_count"]
+            ):
                 msg = "CAS checksum or size mismatch"
                 raise ValueError(msg)
             entry["object_id"] = receipt.object_id
