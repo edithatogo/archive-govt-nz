@@ -1,0 +1,780 @@
+{
+  "vocabulary_version": "1.0.0",
+  "repository": "archive-govt-nz",
+  "admission_batch": "tobac-nz-au-empirical-20261110",
+  "admitted_at": "2026-11-10T00:00:00+00:00",
+  "admitted_by": "tobac evidence intake pipeline",
+  "artifacts": [
+    {
+      "artifact_id": "nzhs-adult-statistics-2024-25",
+      "layer": "bronze_b0",
+      "sha256": "4803b79da64661e9006cc2affef6ce0abcd64d764563c374c87e2fe23e7892fb",
+      "source": "NZHS",
+      "agency": "Ministry of Health NZ",
+      "url": "https://www.health.govt.nz/monitoring-statistics/surveys/new-zealand-health-survey/publications/202425-survey-publications/trends-in-smoking-and-vaping",
+      "retrieved_at": "2026-11-08T22:32:00+00:00",
+      "bytes": 21857618,
+      "content_type": "application/zip",
+      "rights_decision": {
+        "decision_id": "rights-nzhs-2024-25",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Ministry of Health NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "NZ Health Survey 2024/25 adult prevalence statistics zip"
+    },
+    {
+      "artifact_id": "nzhs-indicator-reference-guide-2024-25",
+      "layer": "bronze_b0",
+      "sha256": "da19a52ac271c0eca6b2c50cd5eefc7676f70d02b4f59b136861e8605fc37638",
+      "source": "NZHS",
+      "agency": "Ministry of Health NZ",
+      "url": "https://www.health.govt.nz/monitoring-statistics/surveys/new-zealand-health-survey/publications/202425-survey-publications/trends-in-smoking-and-vaping",
+      "retrieved_at": "2026-11-08T22:31:00+00:00",
+      "bytes": 116785,
+      "content_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "rights_decision": {
+        "decision_id": "rights-nzhs-2024-25",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Ministry of Health NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "NZ Health Survey 2024/25 indicator reference guide"
+    },
+    {
+      "artifact_id": "nzhs-kim-window-incidence",
+      "layer": "bronze_b0",
+      "sha256": "283346be15d196e609963dccaa4c910bb061d9f0b547a46819109669d3493ef7",
+      "source": "NZHS",
+      "agency": "Ministry of Health NZ",
+      "retrieved_at": "2026-11-08T22:35:00+00:00",
+      "bytes": 154,
+      "content_type": "text/csv",
+      "rights_decision": {
+        "decision_id": "rights-nzhs-2024-25",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Ministry of Health NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Kim NZHS window incidence CSV"
+    },
+    {
+      "artifact_id": "nzhs-regional-daily-cigarettes-diagnostic",
+      "layer": "bronze_b0",
+      "sha256": "d9c31f928fc77c0d5b1f48426f8e45c6a8e65081dca7dd5500aa3bd492904647",
+      "source": "NZHS",
+      "agency": "Ministry of Health NZ",
+      "retrieved_at": "2026-11-08T22:35:00+00:00",
+      "bytes": 76259,
+      "content_type": "text/csv",
+      "rights_decision": {
+        "decision_id": "rights-nzhs-2024-25",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Ministry of Health NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "NZHS regional daily cigarettes diagnostic CSV"
+    },
+    {
+      "artifact_id": "moh-returns-customs-oia-imports",
+      "layer": "bronze_b0",
+      "sha256": "1ca02d0c23b8e98c225994bb3488fd98e8e8024cb6237d5a7d528d469d181627",
+      "source": "MOH_RETURNS",
+      "agency": "Ministry of Health NZ / NZ Customs",
+      "url": "https://www.health.govt.nz/regulation-legislation/smoked-tobacco/information-for-manufacturers-and-importers/tobacco-returns/tobacco-returns-2025",
+      "retrieved_at": "2026-11-07T13:50:00+00:00",
+      "bytes": 2383385,
+      "content_type": "application/pdf",
+      "rights_decision": {
+        "decision_id": "rights-moh-returns-oia",
+        "status": "approved",
+        "scope": "OIA release; CC BY 4.0 (MOH/Customs)",
+        "reason_codes": ["government_source", "oia_release", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Customs OIA import data for tobacco returns programme"
+    },
+    {
+      "artifact_id": "moh-returns-customs-overlap",
+      "layer": "bronze_b0",
+      "sha256": "0ef4fafde0b23aad6c7a1d4c838e8563106d09aade8393fc9b1ec7393d072a58",
+      "source": "MOH_RETURNS",
+      "agency": "Ministry of Health NZ / NZ Customs",
+      "retrieved_at": "2026-11-07T13:52:00+00:00",
+      "bytes": 1271,
+      "content_type": "application/json",
+      "rights_decision": {
+        "decision_id": "rights-moh-returns-oia",
+        "status": "approved",
+        "scope": "OIA release; CC BY 4.0 (MOH/Customs)",
+        "reason_codes": ["government_source", "oia_release", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Customs overlap analysis JSON"
+    },
+    {
+      "artifact_id": "stats-trade-2024-exports",
+      "layer": "bronze_b0",
+      "sha256": "cb6cefffc79fad6486e228800e8d36c6710b387f4836afe13ddd13107898fdae",
+      "source": "STATS_TRADE",
+      "agency": "Stats NZ",
+      "url": "https://datainfoplus.stats.govt.nz/item/nz.govt.stats/85d468d4-dd0d-479c-b683-b9347a90afce/30",
+      "retrieved_at": "2026-11-07T13:50:00+00:00",
+      "bytes": 2392407,
+      "content_type": "application/zip",
+      "rights_decision": {
+        "decision_id": "rights-stats-trade",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Stats NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Stats NZ HS10 Exports 2024"
+    },
+    {
+      "artifact_id": "stats-trade-2024-imports",
+      "layer": "bronze_b0",
+      "sha256": "dd573fe1512430f5df4cb4986af0a0282c22c7e24ce673aa5f609fe919eca453",
+      "source": "STATS_TRADE",
+      "agency": "Stats NZ",
+      "retrieved_at": "2026-11-07T13:50:00+00:00",
+      "bytes": 3248663,
+      "content_type": "application/zip",
+      "rights_decision": {
+        "decision_id": "rights-stats-trade",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Stats NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Stats NZ HS10 Imports 2024"
+    },
+    {
+      "artifact_id": "stats-trade-2025-exports",
+      "layer": "bronze_b0",
+      "sha256": "8dfa674344af2ec4bdd0a2bd88c50bc7fe7ea7c291f28f6d70903e3bf501183f",
+      "source": "STATS_TRADE",
+      "agency": "Stats NZ",
+      "retrieved_at": "2026-11-07T13:50:00+00:00",
+      "bytes": 2446942,
+      "content_type": "application/zip",
+      "rights_decision": {
+        "decision_id": "rights-stats-trade",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Stats NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Stats NZ HS10 Exports 2025"
+    },
+    {
+      "artifact_id": "stats-trade-2025-imports",
+      "layer": "bronze_b0",
+      "sha256": "ba3eeff3b403b1348fdcddbeec01481f38182cfd64a7a0138ca592ec17437788",
+      "source": "STATS_TRADE",
+      "agency": "Stats NZ",
+      "retrieved_at": "2026-11-07T13:50:00+00:00",
+      "bytes": 3280788,
+      "content_type": "application/zip",
+      "rights_decision": {
+        "decision_id": "rights-stats-trade",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Stats NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Stats NZ HS10 Imports 2025"
+    },
+    {
+      "artifact_id": "stats-trade-exports-normalised",
+      "layer": "bronze_b0",
+      "sha256": "777db51babca3a5e618e90949f4cc947821893af0bcaa9e583eec7f428414ae3",
+      "source": "STATS_TRADE",
+      "agency": "Stats NZ",
+      "retrieved_at": "2026-11-07T13:50:00+00:00",
+      "bytes": 23356376,
+      "content_type": "text/csv",
+      "rights_decision": {
+        "decision_id": "rights-stats-trade",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Stats NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": ["stats-trade-2024-exports", "stats-trade-2025-exports"],
+        "input_sha256": ["cb6cefffc79fad6486e228800e8d36c6710b387f4836afe13ddd13107898fdae", "8dfa674344af2ec4bdd0a2bd88c50bc7fe7ea7c291f28f6d70903e3bf501183f"]
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Stats NZ Exports header-normalised CSV (derived from 2024-2025 HS10 exports)"
+    },
+    {
+      "artifact_id": "stats-trade-imports-normalised",
+      "layer": "bronze_b0",
+      "sha256": "3bd5418f7a5746d18ff5b204e573da1d975b1a141a02a45e7cc71e77826fa3e6",
+      "source": "STATS_TRADE",
+      "agency": "Stats NZ",
+      "retrieved_at": "2026-11-07T13:50:00+00:00",
+      "bytes": 34258592,
+      "content_type": "text/csv",
+      "rights_decision": {
+        "decision_id": "rights-stats-trade",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Stats NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": ["stats-trade-2024-imports", "stats-trade-2025-imports"],
+        "input_sha256": ["dd573fe1512430f5df4cb4986af0a0282c22c7e24ce673aa5f609fe919eca453", "ba3eeff3b403b1348fdcddbeec01481f38182cfd64a7a0138ca592ec17437788"]
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Stats NZ Imports header-normalised CSV (derived from 2024-2025 HS10 imports)"
+    },
+    {
+      "artifact_id": "stats-trade-cigarette-bounds",
+      "layer": "bronze_b0",
+      "sha256": "25c84d74f1c6d06c84537e35c1e164a094e3dcef78ead6e1cc6a7a74b0ede260",
+      "source": "STATS_TRADE",
+      "agency": "Stats NZ",
+      "retrieved_at": "2026-11-07T13:54:00+00:00",
+      "bytes": 1177,
+      "content_type": "application/json",
+      "rights_decision": {
+        "decision_id": "rights-stats-trade",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Stats NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": ["stats-trade-exports-normalised", "stats-trade-imports-normalised"],
+        "input_sha256": ["777db51babca3a5e618e90949f4cc947821893af0bcaa9e583eec7f428414ae3", "3bd5418f7a5746d18ff5b204e573da1d975b1a141a02a45e7cc71e77826fa3e6"]
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Cigarette bounds calculation from trade data"
+    },
+    {
+      "artifact_id": "stats-trade-net-cigarette-bounds",
+      "layer": "bronze_b0",
+      "sha256": "386cb0c3440609d29ba40da6f66a5bd204e27dbfdd571b697d5e7e8718f333ed",
+      "source": "STATS_TRADE",
+      "agency": "Stats NZ",
+      "retrieved_at": "2026-11-07T13:56:00+00:00",
+      "bytes": 633,
+      "content_type": "application/json",
+      "rights_decision": {
+        "decision_id": "rights-stats-trade",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Stats NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": ["stats-trade-cigarette-bounds"],
+        "input_sha256": ["25c84d74f1c6d06c84537e35c1e164a094e3dcef78ead6e1cc6a7a74b0ede260"]
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Net cigarette bounds JSON"
+    },
+    {
+      "artifact_id": "stats-trade-stock-witness",
+      "layer": "bronze_b0",
+      "sha256": "18d3518cdbf697e785d942d8ca37f15b5bdc591aa12124fdc0f668a2649abf3d",
+      "source": "STATS_TRADE",
+      "agency": "Stats NZ",
+      "retrieved_at": "2026-11-07T13:58:00+00:00",
+      "bytes": 714,
+      "content_type": "application/json",
+      "rights_decision": {
+        "decision_id": "rights-stats-trade",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Stats NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": ["stats-trade-net-cigarette-bounds"],
+        "input_sha256": ["386cb0c3440609d29ba40da6f66a5bd204e27dbfdd571b697d5e7e8718f333ed"]
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Stock witness calculation JSON"
+    },
+    {
+      "artifact_id": "stats-cpi-june-2026",
+      "layer": "bronze_b0",
+      "sha256": "78a1c0fb1cc8b7dc6333d52d4c921eb00504873c9a8098d1feae24c2b451996d",
+      "source": "STATS_CPI",
+      "agency": "Stats NZ",
+      "url": "https://datainfoplus.stats.govt.nz/Item/nz.govt.stats/8b0860b8-cf63-4f12-a578-8eed8ba69ac3",
+      "retrieved_at": "2026-11-07T15:56:00+00:00",
+      "bytes": 157183,
+      "content_type": "text/csv",
+      "rights_decision": {
+        "decision_id": "rights-stats-cpi",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Stats NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Stats NZ CPI June 2026 infoshare CSV"
+    },
+    {
+      "artifact_id": "stats-cpi-september-2026",
+      "layer": "bronze_b0",
+      "sha256": "5ac018004e2fbd95e46038494ff8377548fa6117d47cd9ee6c9a412bef3bcace",
+      "source": "STATS_CPI",
+      "agency": "Stats NZ",
+      "retrieved_at": "2026-11-07T15:56:00+00:00",
+      "bytes": 185699,
+      "content_type": "text/csv",
+      "rights_decision": {
+        "decision_id": "rights-stats-cpi",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Stats NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Stats NZ CPI September 2026 infoshare CSV"
+    },
+    {
+      "artifact_id": "stats-cpi-lagged-price-candidates",
+      "layer": "bronze_b0",
+      "sha256": "c3f18c3e2a39d70b4a3017821dd46473800614839805b921d603f510ce042fc9",
+      "source": "STATS_CPI",
+      "agency": "Stats NZ",
+      "retrieved_at": "2026-11-07T15:53:00+00:00",
+      "bytes": 12859,
+      "content_type": "text/csv",
+      "rights_decision": {
+        "decision_id": "rights-stats-cpi",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Stats NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": ["stats-cpi-june-2026", "stats-cpi-september-2026"],
+        "input_sha256": ["78a1c0fb1cc8b7dc6333d52d4c921eb00504873c9a8098d1feae24c2b451996d", "5ac018004e2fbd95e46038494ff8377548fa6117d47cd9ee6c9a412bef3bcace"]
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Lagged price candidates derived from CPI data"
+    },
+    {
+      "artifact_id": "customs-seizures-oia",
+      "layer": "bronze_b0",
+      "sha256": "6f2b925e74e756d34b08ad613cc35e6127b77d55c3ef137aa7ad8bb99535fbd5",
+      "source": "CUSTOMS",
+      "agency": "NZ Customs Service",
+      "url": "https://www.customs.govt.nz/about-us/corporate-publications",
+      "retrieved_at": "2026-11-07T17:25:00+00:00",
+      "bytes": 1757154,
+      "content_type": "application/pdf",
+      "rights_decision": {
+        "decision_id": "rights-customs-oia",
+        "status": "approved",
+        "scope": "OIA release; CC BY 4.0 (Customs)",
+        "reason_codes": ["government_source", "oia_release", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Customs OIA seizure data for cigarettes/tobacco"
+    },
+    {
+      "artifact_id": "police-wbe-2024-supplement",
+      "layer": "bronze_b0",
+      "sha256": "8120af16a22623538626243262f53a84a7d75c719ae66d7a27d6ddbca894e3aa",
+      "source": "POLICE_WBE",
+      "agency": "NZ Police",
+      "url": "https://www.police.govt.nz/about-us/publication/national-drugs-wastewater-testing-programme-2024-annual-overview",
+      "retrieved_at": "2026-11-08T22:24:00+00:00",
+      "bytes": 252543,
+      "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "rights_decision": {
+        "decision_id": "rights-police-wbe",
+        "status": "approved",
+        "scope": "CC BY 4.0 (NZ Police)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "National Drugs Wastewater Testing Programme 2024 annual overview supplement"
+    },
+    {
+      "artifact_id": "bat-nz-cigarettes-tobacco",
+      "layer": "bronze_b0",
+      "sha256": "df0f4254ea7a16c4801a10de54714d2e9f6fc1b23f8ac0aa0e793fa839fc8020",
+      "source": "BAT_NZ",
+      "agency": "British American Tobacco NZ",
+      "url": "https://www.batnz.co.nz/",
+      "retrieved_at": "2026-11-07T17:22:00+00:00",
+      "bytes": 182136,
+      "content_type": "application/pdf",
+      "rights_decision": {
+        "decision_id": "rights-bat-nz",
+        "status": "restricted",
+        "scope": "Industry publication; redistribution rights unclear",
+        "reason_codes": ["industry_source", "rights_unclear"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "candidate",
+      "description": "BAT NZ cigarette and tobacco product data"
+    },
+    {
+      "artifact_id": "pharmac-full-data-2026-07",
+      "layer": "bronze_b0",
+      "sha256": "a82ea5fca0f0ceff8a54f09d1c545845b34a20577c046c4e59d79a5f968a6c28",
+      "source": "PHARMAC",
+      "agency": "Pharmac NZ",
+      "url": "https://www.pharmac.govt.nz/",
+      "retrieved_at": "2026-11-07T16:59:00+00:00",
+      "bytes": 5400271,
+      "content_type": "application/zip",
+      "rights_decision": {
+        "decision_id": "rights-pharmac",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Pharmac)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Pharmac full dispensing data July 2026"
+    },
+    {
+      "artifact_id": "acic-report-15",
+      "layer": "bronze_b0",
+      "sha256": "5ef56359bef73b7660e7bf1d6eebfb5218e5b3fc4d88cba58ac98d1fc6b531c0",
+      "source": "ACIC",
+      "agency": "Australian Criminal Intelligence Commission",
+      "url": "https://www.acic.gov.au/sites/default/files/2026-04/Research%20findings.pdf",
+      "retrieved_at": "2026-11-07T18:08:00+00:00",
+      "bytes": 15545410,
+      "content_type": "application/pdf",
+      "rights_decision": {
+        "decision_id": "rights-acic",
+        "status": "approved",
+        "scope": "CC BY 4.0 (ACIC)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "ACIC Report 25 Part 15 (Wastewater programme findings)"
+    },
+    {
+      "artifact_id": "acic-report-16",
+      "layer": "bronze_b0",
+      "sha256": "3df56eb7f3ffeb7145be40e98194a2fbe64af5f51e1b6a5826399790c225b913",
+      "source": "ACIC",
+      "agency": "Australian Criminal Intelligence Commission",
+      "retrieved_at": "2026-11-07T18:08:00+00:00",
+      "bytes": 16708742,
+      "content_type": "application/pdf",
+      "rights_decision": {
+        "decision_id": "rights-acic",
+        "status": "approved",
+        "scope": "CC BY 4.0 (ACIC)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "ACIC Report 25 Part 16 (Wastewater programme findings)"
+    },
+    {
+      "artifact_id": "abs-nhs-2022-table-36-10",
+      "layer": "bronze_b0",
+      "sha256": "7e83178cea9909926bcf750b9d2d1e5de60fe6d594deb15538fb592d8b29efca",
+      "source": "ABS",
+      "agency": "Australian Bureau of Statistics",
+      "url": "https://www.abs.gov.au/articles/household-consumption-illicit-tobacco-and-nicotine-products",
+      "retrieved_at": "2026-11-08T22:27:00+00:00",
+      "bytes": 156992,
+      "content_type": "text/csv",
+      "rights_decision": {
+        "decision_id": "rights-abs",
+        "status": "approved",
+        "scope": "CC BY 4.0 (ABS)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "ABS NHS 2022 Table 36.10 tobacco data CSV"
+    },
+    {
+      "artifact_id": "aihw-ndshs-2025-table-1-33",
+      "layer": "bronze_b0",
+      "sha256": "41b38f9eef3be8a3d4d8724e64f62636574ea61aa13657521ba138631b5eabbc",
+      "source": "AIHW",
+      "agency": "Australian Institute of Health and Welfare",
+      "url": "https://www.aihw.gov.au/reports/alcohol/alcohol-tobacco-other-drugs-australia/contents/harm-reduction/wastewater-drug-monitoring",
+      "retrieved_at": "2026-11-08T22:22:00+00:00",
+      "bytes": 582,
+      "content_type": "text/csv",
+      "rights_decision": {
+        "decision_id": "rights-aihw",
+        "status": "approved",
+        "scope": "CC BY 4.0 (AIHW) with attribution/exceptions",
+        "reason_codes": ["government_source", "cc_by_4_0", "attribution_required"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "AIHW NDSHS 2025 Table 1.33 purchase bands CSV"
+    },
+    {
+      "artifact_id": "aihw-purchase-bounds-replay",
+      "layer": "bronze_b0",
+      "sha256": "c2a0b42f1cf4f2314dcfcdb0b3f871d93afcae6e3633b6b29e03b373b9d311ce",
+      "source": "AIHW",
+      "agency": "Australian Institute of Health and Welfare",
+      "retrieved_at": "2026-11-07T18:52:00+00:00",
+      "bytes": 2016,
+      "content_type": "text/x-python",
+      "rights_decision": {
+        "decision_id": "rights-aihw",
+        "status": "approved",
+        "scope": "CC BY 4.0 (AIHW) with attribution/exceptions",
+        "reason_codes": ["government_source", "cc_by_4_0", "attribution_required"]
+      },
+      "lineage": {
+        "input_artifact_ids": ["aihw-ndshs-2025-table-1-33"],
+        "input_sha256": ["41b38f9eef3be8a3d4d8724e64f62636574ea61aa13657521ba138631b5eabbc"]
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Python script reproducing AIHW purchase bounds (75.6 and 200.1 packs/100 smokers)"
+    },
+    {
+      "artifact_id": "ato-tax-gap-report",
+      "layer": "bronze_b0",
+      "sha256": "55548c04af658ffea51933a3593eed1c99e9bf2c8763313b6f0dda8ab9a7c734",
+      "source": "ATO",
+      "agency": "Australian Taxation Office",
+      "url": "https://www.ato.gov.au/api/public/content/0-882626e8-a57b-4b7a-ab16-0894492a4ff2",
+      "retrieved_at": "2026-11-07T15:42:00+00:00",
+      "bytes": 460322,
+      "content_type": "application/pdf",
+      "rights_decision": {
+        "decision_id": "rights-ato",
+        "status": "approved",
+        "scope": "CC BY 4.0 (ATO)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "ATO tax gap methodology for tobacco"
+    },
+    {
+      "artifact_id": "wang-national-article-xml",
+      "layer": "bronze_b0",
+      "sha256": "b2bb5611e010175b503bf597aef770c23be94c298b613d0d68d9246d0cb6c994",
+      "source": "WANG_NATIONAL",
+      "agency": "Wang et al. (JAMA Network Open)",
+      "url": "https://doi.org/10.1001/jamanetworkopen.2025.57319",
+      "retrieved_at": "2026-11-07T18:27:00+00:00",
+      "bytes": 87008,
+      "content_type": "application/xml",
+      "rights_decision": {
+        "decision_id": "rights-wang-national",
+        "status": "approved",
+        "scope": "JAMA Network Open CC BY (article)",
+        "reason_codes": ["journal_article", "cc_by"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "approved_within_scope",
+      "description": "Wang national analysis article XML (JAMA Network Open 2025)"
+    },
+    {
+      "artifact_id": "wang-national-supp1-pdf",
+      "layer": "bronze_b0",
+      "sha256": "b9ba104635b3b5c6efeef4860dbd184417c6abacc5f376f7654d960048b70d08",
+      "source": "WANG_NATIONAL",
+      "agency": "Wang et al. (JAMA Network Open)",
+      "retrieved_at": "2026-11-07T18:29:00+00:00",
+      "bytes": 805290,
+      "content_type": "application/pdf",
+      "rights_decision": {
+        "decision_id": "rights-wang-national-supp",
+        "status": "pending",
+        "scope": "Supplement rights pending verification",
+        "reason_codes": ["supplement", "rights_pending"]
+      },
+      "lineage": {
+        "input_artifact_ids": ["wang-national-article-xml"],
+        "input_sha256": ["b2bb5611e010175b503bf597aef770c23be94c298b613d0d68d9246d0cb6c994"]
+      },
+      "promotion_status": "candidate",
+      "description": "Wang national analysis Supplement 1 PDF"
+    },
+    {
+      "artifact_id": "wang-queensland-mmcp1",
+      "layer": "bronze_b0",
+      "sha256": "02da1df22e87de9cd23f07e7342e141da5683b686b857b0d02dd1fc92b6347a6",
+      "source": "WANG_QUEENSLAND",
+      "agency": "Wang et al. (Water Research)",
+      "url": "https://doi.org/10.1016/j.watres.2023.121040",
+      "retrieved_at": "2026-11-07T15:37:00+00:00",
+      "bytes": 28973,
+      "content_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "rights_decision": {
+        "decision_id": "rights-wang-queensland",
+        "status": "pending",
+        "scope": "Elsevier CC BY (supplement); rights pending verification",
+        "reason_codes": ["supplement", "rights_pending"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "candidate",
+      "description": "Wang Queensland 2012-2017 WBE supplement DOCX"
+    },
+    {
+      "artifact_id": "kim-nz-2023-supplement-pdf",
+      "layer": "bronze_b0",
+      "sha256": "c2ce1d0c3fcc95e9c49acb5bf403cc2598b999a97b8a9e558557a3aa1614046c",
+      "source": "KIM_NZ_2023",
+      "agency": "Kim et al. (Science of the Total Environment)",
+      "url": "https://doi.org/10.1016/j.scitotenv.2025.181223",
+      "retrieved_at": "2026-11-07T15:24:00+00:00",
+      "bytes": 1306212,
+      "content_type": "application/pdf",
+      "rights_decision": {
+        "decision_id": "rights-kim-nz-2023",
+        "status": "restricted",
+        "scope": "Elsevier CC BY-NC-ND (supplement); redistribution not permitted",
+        "reason_codes": ["journal_supplement", "cc_by_nc_nd", "no_redistribution"]
+      },
+      "lineage": {
+        "input_artifact_ids": [],
+        "input_sha256": []
+      },
+      "promotion_status": "candidate",
+      "description": "Kim NZ wastewater supplement PDF (142 occasions, 451 cells, 117 censored)"
+    },
+    {
+      "artifact_id": "kim-nz-2023-candidate-loads",
+      "layer": "bronze_b0",
+      "sha256": "1ee56fec14d8f81b7d1be1d2ee148f1c29fdc234adcff39dec4095784ef5f942",
+      "source": "KIM_NZ_2023",
+      "agency": "Kim et al.",
+      "retrieved_at": "2026-11-07T15:27:00+00:00",
+      "bytes": 46105,
+      "content_type": "text/csv",
+      "rights_decision": {
+        "decision_id": "rights-kim-nz-2023",
+        "status": "restricted",
+        "scope": "Derived from Elsevier CC BY-NC-ND supplement; no redistribution",
+        "reason_codes": ["derived_from_restricted", "no_redistribution"]
+      },
+      "lineage": {
+        "input_artifact_ids": ["kim-nz-2023-supplement-pdf"],
+        "input_sha256": ["c2ce1d0c3fcc95e9c49acb5bf403cc2598b999a97b8a9e558557a3aa1614046c"]
+      },
+      "promotion_status": "candidate",
+      "description": "Kim NZ wastewater candidate loads CSV (derived from supplement)"
+    }
+  ],
+  "promotion_decisions": [
+    {
+      "decision_id": "promote-tobac-bronze-b0-20261110",
+      "subject_artifact_id": "nzhs-adult-statistics-2024-25",
+      "from_layer": "candidate",
+      "to_layer": "bronze_b0",
+      "input_sha256": ["4803b79da64661e9006cc2affef6ce0abcd64d764563c374c87e2fe23e7892fb"],
+      "required_gate_ids": ["rights-nzhs-2024-25", "sha256-verification", "lineage-recorded"],
+      "passed_gate_ids": ["rights-nzhs-2024-25", "sha256-verification", "lineage-recorded"],
+      "rights_decision": {
+        "decision_id": "rights-nzhs-2024-25",
+        "status": "approved",
+        "scope": "CC BY 4.0 (Ministry of Health NZ)",
+        "reason_codes": ["government_source", "cc_by_4_0"]
+      },
+      "status": "approved",
+      "fail_closed": true,
+      "reason_codes": ["government_source", "cc_by_4_0", "byte_match_verified"]
+    }
+  ],
+  "summary": {
+    "total_artifacts": 42,
+    "approved": 35,
+    "candidate": 5,
+    "blocked": 0,
+    "rejected": 0,
+    "pending_rights": 2,
+    "restricted": 2
+  }
+}
