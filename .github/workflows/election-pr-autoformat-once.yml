@@ -1,0 +1,35 @@
+name: One-time election PR Ruff formatting
+on:
+  push:
+    branches: [fix/election-2026-publication-integrity-20261111]
+    paths:
+      - '.github/workflows/election-pr-autoformat-once.yml'
+permissions:
+  contents: read
+concurrency:
+  group: election-one-time-format
+  cancel-in-progress: false
+jobs:
+  format:
+    if: github.repository == 'edithatogo/archive-govt-nz' && github.actor == 'edithatogo'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: fix/election-2026-publication-integrity-20261111
+          persist-credentials: true
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version-file: .python-version
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2
+      - name: Format with locked Ruff
+        run: uv run --locked ruff format .
+      - name: Commit only tracked formatting changes
+        run: |
+          if ! git diff --quiet; then
+            git add -u
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'style(elections): format tracked Python sources with locked Ruff'
+            git push origin HEAD:refs/heads/fix/election-2026-publication-integrity-20261111
+          fi
