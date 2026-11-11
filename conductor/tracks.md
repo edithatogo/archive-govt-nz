@@ -444,6 +444,12 @@ implementation has occurred under these tracks.
 
 ---
 
+### Corrective programme: Election publication integrity — 11 November 2026
+
+- [ ] **Track: Official result reconciliation, fail-closed publication and solo-developer assurance**
+  *Link: [tracks/election_publication_integrity_20261111/index.md](./tracks/election_publication_integrity_20261111/index.md)*
+  Commission-based preliminary fixture, source-driven static Space, allocation-metric fixes, CI/browser/security verification and deployment parity. Code changes are in PR #861; track remains open until exact-head CI, merge and live release verification.
+
 ### Election Analytics & Overhang Subsystem — 10 November 2026
 
 - [x] **Track: Election canonical contracts and typed schemas**
