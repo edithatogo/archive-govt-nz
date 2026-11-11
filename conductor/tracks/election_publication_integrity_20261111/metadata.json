@@ -1,0 +1,21 @@
+{
+  "track_id": "election_publication_integrity_20261111",
+  "type": "corrective",
+  "status": "in_progress",
+  "created_at": "2026-11-11T00:00:00Z",
+  "updated_at": "2026-11-11T00:00:00Z",
+  "description": "Correct live election result provenance and fail-closed publication; deploy only after exact-head CI.",
+  "capability_status": "partially_implemented_not_deployed",
+  "gates": [
+    {
+      "id": "hosted-ci",
+      "kind": "quality",
+      "status": "pending"
+    },
+    {
+      "id": "hf-parity",
+      "kind": "publication",
+      "status": "pending"
+    }
+  ]
+}
