@@ -190,15 +190,6 @@
           "policy": "https://www.customs.govt.nz/about-us/corporate-publications"
         }
       },
-      "https://www.customs.govt.nz/media/u0hhdp2f/oia-25-083-proactive-release.pdf": {
-        "6f2b925e74e756d34b08ad613cc35e6127b77d55c3ef137aa7ad8bb99535fbd5": {
-          "decision": "publish",
-          "content_type": "application/pdf",
-          "attribution": "New Zealand Customs Service, Crown copyright. OIA 25-083 proactive release. Original PDF response, unchanged.",
-          "licence": "https://creativecommons.org/licenses/by/4.0/",
-          "policy": "https://www.customs.govt.nz/about-us/corporate-publications"
-        }
-      },
       "https://www.treasury.govt.nz/sites/default/files/2024-04/oia-20240151.pdf": {
         "4aadd9a2384220b116b83d0dc71d212fd717dd46bb01798f3c5c34738ec14ab2": {
           "decision": "publish",
