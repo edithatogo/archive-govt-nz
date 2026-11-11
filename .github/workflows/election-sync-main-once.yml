@@ -1,0 +1,43 @@
+name: One-time election main reconciliation
+on:
+  push:
+    branches: [fix/election-2026-publication-integrity-20261111]
+    paths:
+      - '.github/workflows/election-sync-main-once.yml'
+permissions:
+  contents: read
+concurrency:
+  group: election-main-reconciliation
+  cancel-in-progress: false
+jobs:
+  merge-main:
+    if: github.repository == 'edithatogo/archive-govt-nz' && github.actor == 'edithatogo'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          ref: fix/election-2026-publication-integrity-20261111
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version-file: .python-version
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2
+      - name: Merge current main without forced conflict resolution
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git fetch origin main
+          git merge --no-edit --no-ff origin/main
+      - name: Reconcile universal lock against merged manifest
+        run: |
+          uv lock
+          uv lock --check
+          git add uv.lock
+          if ! git diff --cached --quiet; then
+            git commit -m 'build(elections): reconcile lockfile after main integration'
+          fi
+      - name: Push verified integration
+        run: git push origin HEAD:refs/heads/fix/election-2026-publication-integrity-20261111
