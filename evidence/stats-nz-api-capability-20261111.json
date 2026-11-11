@@ -1,0 +1,91 @@
+{
+  "schema_version": "archive-govt-nz.stats-nz-api-capability/v1",
+  "probed_at": "2026-11-11T06:41:45+00:00",
+  "operator": "edithatogo",
+  "credential": {
+    "env_var": "STATS_NZ_API_KEY",
+    "http_header": "Ocp-Apim-Subscription-Key",
+    "storage": "repo-local .env, ignored by git (.gitignore:16); value never committed or recorded in this receipt",
+    "value_recorded": false
+  },
+  "endpoints": {
+    "ade_sdmx": {
+      "label": "Aotearoa Data Explorer SDMX REST API",
+      "base_url": "https://api.data.stats.govt.nz/rest/",
+      "status": "accessible_with_subscription_key",
+      "tls": {
+        "subject": "CN=api.data.stats.govt.nz",
+        "issuer": "C=US, O=Google Trust Services, CN=WE1",
+        "not_before": "2026-09-15T12:33:10Z",
+        "not_after": "2026-12-14T13:33:06Z",
+        "valid_at_probe_time": true
+      },
+      "probes": [
+        {
+          "name": "dataflow_catalogue",
+          "url": "https://api.data.stats.govt.nz/rest/dataflow/STATSNZ/all?detail=allstubs",
+          "auth": "subscription_key",
+          "http_status": 200,
+          "byte_count": 654591,
+          "sha256": "9c6f24ae606ee8a5521f55198e790048fd8652867db532d45600e9f363ebf6b8",
+          "content_type": "application/vnd.sdmx.structure+xml; version=2.1; charset=utf-8",
+          "server": "NSI Web Service v8.19.7.0",
+          "note": "catalogue endpoint is public; a key is not required for structure metadata"
+        },
+        {
+          "name": "data_without_key",
+          "url": "https://api.data.stats.govt.nz/rest/data/STATSNZ,AGR_AGR_001,1.0/all?firstNObservations=2",
+          "auth": "none",
+          "http_status": 401,
+          "message": "Access denied due to missing subscription key. Make sure to include subscription key when making requests to an API."
+        },
+        {
+          "name": "data_with_key",
+          "url": "https://api.data.stats.govt.nz/rest/data/STATSNZ,AGR_AGR_001,1.0/all?firstNObservations=2",
+          "auth": "subscription_key",
+          "http_status": 200,
+          "byte_count": 47360,
+          "sha256": "1ff4abacfef2cd7efe563fb6de6fd7b97d3e005fcf2e71303bbb49f689b4c5c4",
+          "content_type": "text/csv; charset=utf-8",
+          "cols": ["DATAFLOW", "FORESTRY_AGR_AGR_001", "AREA_AGR_AGR_001", "YEAR_AGR_AGR_001", "OBS_VALUE", "OBS_STATUS"]
+        }
+      ]
+    },
+    "odata_boundaries": {
+      "label": "Stats NZ OData boundary geodata API",
+      "base_url": "https://api.stats.govt.nz/opendata/v1/",
+      "status": "blocked",
+      "tls": {
+        "subject": "C=NZ, L=Wellington, O=Stats NZ, CN=api.stats.govt.nz",
+        "issuer": "C=US, O=DigiCert Inc, CN=DigiCert Global G2 TLS RSA SHA256 2020 CA1",
+        "not_before": "2026-04-14T00:00:00Z",
+        "not_after": "2026-10-29T23:59:59Z",
+        "serial": "0A3D6AA25EA768AE270CCA6967BA2D05",
+        "sha256_fingerprint": "72:CA:71:EC:93:B3:CA:AA:76:B2:79:25:F9:95:43:3D:03:6F:26:0C:80:8A:7E:80:FA:C5:CF:22:09:4B:8F:C2",
+        "valid_at_probe_time": false
+      },
+      "probes": [
+        {
+          "name": "tls_verified_request",
+          "result": "curl_rc_60_certificate_has_expired",
+          "note": "certificate expired 2026-10-29; host remains untrusted at probe time"
+        },
+        {
+          "name": "certificate_verification_bypassed",
+          "http_status": 502,
+          "byte_count": 183,
+          "body_fragment": "Microsoft-Azure-Application-Gateway/v2",
+          "note": "a 502 is returned even with certificate verification disabled, so the gateway itself is not serving the API today; certificate renewal alone may not restore service"
+        }
+      ]
+    }
+  },
+  "conclusion": "The provisioned STATS_NZ_API_KEY authenticates successfully against the Aotearoa Data Explorer SDMX API (api.data.stats.govt.nz): unauthenticated data requests return HTTP 401, while keyed requests return HTTP 200 CSV. The blocked boundary-geodata path is unchanged: api.stats.govt.nz still serves an expired certificate (notAfter 2026-10-29) and returns HTTP 502 from Azure Application Gateway even when TLS verification is bypassed, so the §9 boundary re-capture cannot proceed on certificate renewal alone.",
+  "licence": "CC BY 4.0 Stats NZ",
+  "next_actions": [
+    "Open a Stats NZ support case for api.stats.govt.nz: expired certificate plus HTTP 502 at the Application Gateway.",
+    "Keep STATS_NZ_API_KEY in the repo-local .env (gitignored) or a CI secret; never commit it.",
+    "When api.stats.govt.nz responds 200 with a valid certificate, resume the boundary re-capture in docs/elections-dataset-card.md §9.",
+    "ADE SDMX data capture beyond the capability probe is a separate, rights-reviewed follow-up; the catalogue and one keyed slice are proven reproducible here."
+  ]
+}

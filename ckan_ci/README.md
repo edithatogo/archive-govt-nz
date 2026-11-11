@@ -1,33 +1,50 @@
-# Stats NZ OData boundary geodata CI (provisioned as an engineering note, 2026-11-10)
+# Stats NZ API — capability status (updated 2026-11-11)
 
-Scope: document and formalize an inventory-level scaffold for an automated
-extractor of Stats NZ OData boundary layers, triggered nightly from GitHub
-Actions and GitLab CI, led by `STATS_NZ_ODATA_API_KEY` held as a **CI variable**
-and never committed.
+Scope: track the Stats NZ API access needed by the election archive, and document what
+is proven working versus still blocked. This file is an engineering note, not an artifact.
 
-Current state (2026-11-10): **NOT operational. This file is an engineering note,
-not an artifact.**
+## Credential
 
-* Stats NZ TLS certificate for api.stats.govt.nz expired 2026-10-29 (subject
-  api.stats.govt.nz; issuer DigiCert Global G2 TLS RSA SHA256 2020 CA1). TLS
-  handshake is refused today, so even a valid key would not authenticate.
-* 16-layer candidate enumeration from earlier recon is NOT independently
-  verified; it is an inventory-only guess, not bytes.
-* Before CI can pull data it must be verified end-to-end (metadata page,
-  feature count, byte count) against a live endpoint with a valid
-  certificate.
+- `STATS_NZ_API_KEY` — Stats NZ API Portal subscription key.
+- Sent as the HTTP header `Ocp-Apim-Subscription-Key`.
+- Stored only in the repo-local `.env`, which is gitignored (`.gitignore:16`). The value is
+  never committed, logged, or copied into evidence. `.env.example` documents the variable.
+- CI, when enabled, must inject it as a masked CI variable of the same name.
 
-Deliverables deferred to a follow-up track, to be opened only when the
-certificate is renewed and the key is provided by the repository owner:
+## Proven working: Aotearoa Data Explorer SDMX API
 
-1. Verify licence headers, manifest enumeration and licensing post cert
-   renewal.
-2. Capture boundary GeoJSON within the repo CAS.
-3. Wire working GitHub Actions + GitLab CI entries keyed off
-   ci-secret-only key material; no auditable payload ever prints the key.
+- Base URL: `https://api.data.stats.govt.nz/rest/`
+- TLS valid at probe time (`CN=api.data.stats.govt.nz`, Google Trust Services, notAfter
+  2026-12-14).
+- Unauthenticated data request → **HTTP 401** (`Access denied due to missing subscription
+  key`).
+- Keyed data request → **HTTP 200** `text/csv` (verified slice:
+  `data/STATSNZ,AGR_AGR_001,1.0/all?firstNObservations=2`, 47,360 bytes).
+- Structure catalogue (`dataflow/STATSNZ/all?detail=allstubs`) is public and returns
+  **HTTP 200** XML (654,591 bytes, NSI Web Service v8.19.7.0).
 
-Licence: Stats NZ data open under CC BY 4.0. See repo `docs/elections-dataset-card.md` for integrator card.
+Receipt: `../evidence/stats-nz-api-capability-20261111.json`.
 
-This directory deliberately contains no scripts that claim to fetch data —
-the endpoint is unusable today, and we will not commit code paths that do not
-already authenticate successfully.
+## Still blocked: OData boundary geodata
+
+`https://api.stats.govt.nz/opendata/v1/` remains unusable:
+
+- Certificate expired 2026-10-29 (`CN=api.stats.govt.nz`, DigiCert Global G2 TLS RSA
+  SHA256 2020 CA1, serial `0A3D6AA25EA768AE270CCA6967BA2D05`).
+- With certificate verification bypassed, the gateway answers **HTTP 502**
+  (`Microsoft-Azure-Application-Gateway/v2`). Renewal of the certificate alone may not
+  restore service.
+
+Therefore no boundary-extractor CI is committed here yet: the endpoint cannot authenticate
+successfully, and this directory will not ship a code path that claims otherwise.
+
+## Unblock checklist
+
+1. Stats NZ restores `api.stats.govt.nz` (renewed certificate **and** a working gateway).
+2. Re-probe metadata page, feature count, and byte count end-to-end.
+3. Capture boundary GeoJSON into the repo CAS with per-file receipts.
+4. Wire GitHub Actions + GitLab CI keyed off masked `STATS_NZ_API_KEY`; no auditable
+   payload may print the key.
+
+Licence: Stats NZ data open under CC BY 4.0. See repo `docs/elections-dataset-card.md`
+for the integrator card.

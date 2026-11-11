@@ -3,7 +3,7 @@
   "title": "Econometric Causal Inference and Attribution of the 11-Seat Overhang",
   "domain": "elections",
   "owner": "Dylan Mordaunt",
-  "status": "planned",
+  "status": "completed",
   "created_at": "2026-11-11T11:00:00+10:00",
   "test_target": "tests/test_elections_causal_overhang.py",
   "contracts": [

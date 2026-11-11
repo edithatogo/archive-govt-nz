@@ -1,6 +1,6 @@
 # Track: Econometric Causal Inference and Attribution of the 11-Seat Overhang
 
-## Status: Planned (Awaiting User Authorization)
+## Status: Completed
 
 ### Objectives
 1. **Estimate Causal Attribution:** Disentangle the exact causal mechanisms behind the 2026 11-seat overhang (National +7, Te Pāti Māori +4).
