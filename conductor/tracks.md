@@ -446,13 +446,13 @@ implementation has occurred under these tracks.
 
 ### Corrective programme: Election publication integrity — 11 November 2026
 
-- [ ] **Track: Official result reconciliation, fail-closed publication and solo-developer assurance**
+- [~] **Track: Official result reconciliation, fail-closed publication and solo-developer assurance**
   *Link: [tracks/election_publication_integrity_20261111/index.md](./tracks/election_publication_integrity_20261111/index.md)*
   Commission-based preliminary fixture, source-driven static Space, allocation-metric fixes, CI/browser/security verification and deployment parity. Code changes are in PR #861; track remains open until exact-head CI, merge and live release verification.
 
 ### Election platform frontier and single-developer assurance — 11 November 2026
 
-- [ ] **Election Explorer reconciliation programme (P0–P3)** — [parent requirements, design, contracts, plan](./tracks/election_platform_frontier_20261111/index.md)
+- [~] **Election Explorer reconciliation programme (P0–P3)** — [parent requirements, design, contracts, plan](./tracks/election_platform_frontier_20261111/index.md)
   Existing finished tracks are historical *implementation* records, not independent evidence of validated 2026 claims. Unverified results and old HF runtime must remain blocked from production.
 
 - [ ] **P0 Release integrity** — [Track 01](./tracks/election_platform_01_release_integrity_20261111/index.md)
@@ -466,35 +466,35 @@ implementation has occurred under these tracks.
 
 ### Election Analytics & Overhang Subsystem — 10 November 2026
 
-- [x] **Track: Election canonical contracts and typed schemas**
+- [~] **Track: Election canonical contracts and typed schemas**
   *Link: [tracks/election_canonical_contracts_20261110/index.md](./tracks/election_canonical_contracts_20261110/index.md)*
   Establish canonical schemas, type contracts, and validation tests for raw, derivative, allocation, and overhang election datasets.
 
-- [x] **Track: Medallion Silver ingestion & normalization pipeline**
+- [~] **Track: Medallion Silver ingestion & normalization pipeline**
   *Link: [tracks/election_medallion_silver_ingestion_20261110/index.md](./tracks/election_medallion_silver_ingestion_20261110/index.md)*
   Bronze-to-Silver datahouse pipeline: parsing and normalizing raw CAS election returns, campaign finance records, and Stats NZ census tables into clean, validated Parquet tables.
 
-- [x] **Track: MMP Sainte-Laguë allocation and overhang engine**
+- [~] **Track: MMP Sainte-Laguë allocation and overhang engine**
   *Link: [tracks/election_mmp_overhang_engine_20261110/index.md](./tracks/election_mmp_overhang_engine_20261110/index.md)*
   Statutory seat allocation, threshold validation, overhang seat determination, and dynamic majority threshold computation under the Electoral Act 1993.
 
-- [x] **Track: Multi-election longitudinal analysis (1996–2026)**
+- [~] **Track: Multi-election longitudinal analysis (1996–2026)**
   *Link: [tracks/election_historical_longitudinal_20261110/index.md](./tracks/election_historical_longitudinal_20261110/index.md)*
   Systematic cross-cycle benchmark of all 10 MMP elections, documenting overhangs in 2005, 2008, 2011, 2023, and 2026 provisional.
 
-- [x] **Track: Special votes simulation and sensitivity analysis**
+- [~] **Track: Special votes simulation and sensitivity analysis**
   *Link: [tracks/election_special_votes_simulation_20261110/index.md](./tracks/election_special_votes_simulation_20261110/index.md)*
   Monte Carlo model simulating the effect of ~399,000 provisional special votes on marginal electorate flips, overhang stability, and coalition majorities.
 
-- [x] **Track: Campaign finance causal inference & exploratory multivariate drivers**
+- [~] **Track: Campaign finance causal inference & exploratory multivariate drivers**
   *Link: [tracks/election_causal_inference_and_multivariate_20261110/index.md](./tracks/election_causal_inference_and_multivariate_20261110/index.md)*
   Econometric causal modeling (RDD, IV) linking campaign spending to outcomes, plus multivariate analysis (Stats NZ Census demography, PCA, Elastic Net, SHAP) untangling the 41.4% third-party splintering.
 
-- [x] **Track: Frontier & beyond-frontier election visualisation engine**
+- [~] **Track: Frontier & beyond-frontier election visualisation engine**
   *Link: [tracks/election_frontier_visualization_engine_20261110/index.md](./tracks/election_frontier_visualization_engine_20261110/index.md)*
   Frontier computational physics (3D Overhang Elasticity, Quantum Clouds, Parallel Splintering, Fluid Anamorphosis, Coalition Trees), complex-systems models (131-MP Boids Swarm), and geographic electorate mapping with longitudinal overhang evolution diagrams.
 
-- [x] **Track: Interactive visualization space (Hugging Face Spaces & GitHub Pages)**
+- [~] **Track: Interactive visualization space (Hugging Face Spaces & GitHub Pages)**
   *Link: [tracks/election_visualization_space_20261110/index.md](./tracks/election_visualization_space_20261110/index.md)*
   Deploy 10-tab Gradio visualizer and static client-side mirror to Hugging Face Space `edithatogo/nz-election-explorer` and local runtime. Incorporates calibrated XGBoost electorate flip modeling, cost-per-local-MP campaign finance metrics, major donor disclosures, longitudinal CPI-adjusted benchmarks (1996-2026), and macroeconomic/environmental fundamentals forecasting for 2029.
 
