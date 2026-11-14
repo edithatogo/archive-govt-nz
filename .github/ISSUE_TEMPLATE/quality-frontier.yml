@@ -1,5 +1,5 @@
----
 name: "Quality frontier"
+description: Propose an evidence-backed quality improvement with scope and verification gates.
 title: "[Quality frontier] "
 labels: []
 assignees: []
@@ -14,18 +14,21 @@ body:
       label: Issue reference
       description: Parent issue number or ticket reference
       placeholder: "#15"
+    validations:
       required: true
   - type: textarea
     id: context
     attributes:
       label: Applicability and exclusions
       description: What applies to this track and what is excluded
+    validations:
       required: true
   - type: textarea
     id: gaps
     attributes:
       label: Evidence-backed gap
       description: Confirm the gap, expected threshold, and proof artifact path
+    validations:
       required: true
   - type: textarea
     id: gates
@@ -33,4 +36,5 @@ body:
       label: Required gates
       description: Which local/hosted gates must pass
       placeholder: "locks, formats, lint, tests, mutation..."
+    validations:
       required: true
