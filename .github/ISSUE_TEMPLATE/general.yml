@@ -1,5 +1,5 @@
----
 name: "General issue"
+description: Report a problem or request a change to the archive.
 title: "[Issue] "
 labels: []
 assignees: []
@@ -9,4 +9,5 @@ body:
     attributes:
       label: Problem statement
       description: What is broken or missing
+    validations:
       required: true
