@@ -98,9 +98,7 @@ def test_export_url_rejects_unsafe_schemes_and_embedded_credentials(url: str) ->
 def test_export_api_host_must_match_publisher(untrusted: str) -> None:
     """Reject other API hosts and nonstandard ports before authentication."""
     with pytest.raises(ValueError, match="hostname"):
-        validated_https_url(
-            untrusted, expected_hostname="datafinder.stats.govt.nz"
-        )
+        validated_https_url(untrusted, expected_hostname="datafinder.stats.govt.nz")
     url = "https://datafinder.stats.govt.nz/exports/"
     assert validated_https_url(url, expected_hostname="datafinder.stats.govt.nz") == url
 
