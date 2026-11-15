@@ -11,7 +11,8 @@ the provenance bundle stays byte-identical to what the source served.
 Run:  python scripts/capture_datafinder_exports.py [--verify-only]
 """
 
-# ruff: noqa: INP001  # Standalone CLI scripts directory is not an import package.
+# Standalone CLI scripts intentionally share a non-package directory.
+# ruff: noqa: INP001
 from __future__ import annotations
 
 import io
