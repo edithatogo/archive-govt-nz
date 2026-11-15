@@ -60,13 +60,15 @@ def validated_https_url(url: str, *, expected_hostname: str | None = None) -> st
     if (
         parts.scheme != "https"
         or not parts.hostname
-        or parts.username
-        or parts.password
+        or parts.username is not None
+        or parts.password is not None
     ):
         msg = "Export URL must use HTTPS without embedded credentials"
         raise ValueError(msg)
-    if expected_hostname is not None and parts.hostname != expected_hostname:
-        msg = "Unexpected Datafinder API hostname"
+    if expected_hostname is not None and (
+        parts.hostname != expected_hostname or parts.port not in (None, 443)
+    ):
+        msg = "Unexpected Datafinder API hostname or port"
         raise ValueError(msg)
     return url
 

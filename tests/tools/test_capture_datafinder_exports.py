@@ -79,6 +79,7 @@ def _intercept_network(
         "file:///etc/passwd",
         "ftp://example.org/archive.zip",
         "https://user:password@datafinder.stats.govt.nz/exports/",
+        "https://@datafinder.stats.govt.nz/exports/",
     ],
 )
 def test_export_url_rejects_unsafe_schemes_and_embedded_credentials(url: str) -> None:
@@ -87,12 +88,18 @@ def test_export_url_rejects_unsafe_schemes_and_embedded_credentials(url: str) ->
         validated_https_url(url)
 
 
-def test_export_api_host_must_match_publisher() -> None:
-    """Reject a different API hostname before attaching authentication."""
+@pytest.mark.parametrize(
+    "untrusted",
+    [
+        "https://example.org/exports/",
+        "https://datafinder.stats.govt.nz:8443/exports/",
+    ],
+)
+def test_export_api_host_must_match_publisher(untrusted: str) -> None:
+    """Reject other API hosts and nonstandard ports before authentication."""
     with pytest.raises(ValueError, match="hostname"):
         validated_https_url(
-            "https://example.org/exports/",
-            expected_hostname="datafinder.stats.govt.nz",
+            untrusted, expected_hostname="datafinder.stats.govt.nz"
         )
     url = "https://datafinder.stats.govt.nz/exports/"
     assert validated_https_url(
@@ -167,7 +174,9 @@ def test_signed_storage_refuses_unvalidated_redirect_chain(
     _intercept_network(monkeypatch, transport)
 
     marker = "synthetic-credential"
-    with pytest.raises(SystemExit, match=r"signed export fetch failed: HTTP 302") as caught:
+    with pytest.raises(
+        SystemExit, match=r"signed export fetch failed: HTTP 302"
+    ) as caught:
         download(publisher_url, marker)
 
     assert "synthetic=signature" not in str(caught.value)
