@@ -1,0 +1,49 @@
+{
+  "track_id": "election_data_maximisation_20261116",
+  "type": "programme",
+  "status": "pending",
+  "priority": "Must",
+  "created_at": "2026-11-16T00:00:00Z",
+  "updated_at": "2026-11-16T00:00:00Z",
+  "description": "Evidence-gated programme to maximise existing NZ election and political-finance archive use before qualifying additional public data sources and six connected research products.",
+  "parent_track": "election_platform_frontier_20261111",
+  "capability_status": "plan_only_not_implemented_or_accepted",
+  "existing_owner": "election_platform_frontier_20261111 (shared election/Conductor owner); integration by sole repository coordinator",
+  "gates": [
+    {
+      "id": "source-and-rights-census",
+      "kind": "data",
+      "status": "pending"
+    },
+    {
+      "id": "bronze-silver-parity",
+      "kind": "data",
+      "status": "pending"
+    },
+    {
+      "id": "empirical-versus-synthetic-separation",
+      "kind": "quality",
+      "status": "pending"
+    },
+    {
+      "id": "finance-return-reconciliation",
+      "kind": "quality",
+      "status": "pending"
+    },
+    {
+      "id": "freshness-and-revision-parity",
+      "kind": "publication",
+      "status": "pending"
+    },
+    {
+      "id": "research-validation-and-privacy",
+      "kind": "quality",
+      "status": "pending"
+    },
+    {
+      "id": "exact-head-ci-and-accepted-integration",
+      "kind": "integration",
+      "status": "pending"
+    }
+  ]
+}
