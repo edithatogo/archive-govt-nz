@@ -102,9 +102,7 @@ def test_export_api_host_must_match_publisher(untrusted: str) -> None:
             untrusted, expected_hostname="datafinder.stats.govt.nz"
         )
     url = "https://datafinder.stats.govt.nz/exports/"
-    assert validated_https_url(
-        url, expected_hostname="datafinder.stats.govt.nz"
-    ) == url
+    assert validated_https_url(url, expected_hostname="datafinder.stats.govt.nz") == url
 
 
 @pytest.mark.parametrize(
