@@ -8,7 +8,6 @@ import urllib.response
 from email.message import Message
 
 import pytest
-
 from scripts.capture_datafinder_exports import (
     API,
     _NoRedirect,

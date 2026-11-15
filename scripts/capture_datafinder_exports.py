@@ -11,6 +11,7 @@ the provenance bundle stays byte-identical to what the source served.
 Run:  python scripts/capture_datafinder_exports.py [--verify-only]
 """
 
+# ruff: noqa: INP001  # Standalone CLI scripts directory is not an import package.
 from __future__ import annotations
 
 import io
@@ -99,7 +100,7 @@ def request(
         # Fail closed on redirects: the API key must remain on the trusted origin.
         with urllib.request.build_opener(_NoRedirect).open(
             req, timeout=timeout
-        ) as response:  # noqa: S310
+        ) as response:
             return response.status, response.read()
     except urllib.error.HTTPError as exc:
         return exc.code, exc.read()
@@ -151,7 +152,7 @@ def wait_for_export(token: str, export_id: int, *, limit: int = 300) -> str:
 class _NoRedirect(urllib.request.HTTPRedirectHandler):
     """Reject automatic redirect traversal across authentication or URL boundaries."""
 
-    def redirect_request(self, req, fp, code, msg, headers, newurl):  # noqa: ANN001, ANN202, ARG002, PLR0917
+    def redirect_request(self, req, fp, code, msg, headers, newurl):  # noqa: ANN001, ANN202, ARG002, PLR0913, PLR0917
         return None
 
 
@@ -168,7 +169,7 @@ def download(url: str, token: str) -> bytes:
     )
     location: str | None = None
     try:
-        with opener.open(signed, timeout=300) as response:  # noqa: S310
+        with opener.open(signed, timeout=300) as response:
             return response.read()
     except urllib.error.HTTPError as exc:
         if exc.code not in {301, 302, 303, 307, 308}:
@@ -186,7 +187,7 @@ def download(url: str, token: str) -> bytes:
     try:
         with urllib.request.build_opener(_NoRedirect).open(
             plain, timeout=600
-        ) as response:  # noqa: S310
+        ) as response:
             return response.read()
     except urllib.error.HTTPError as exc:
         # In particular, do not expose a signed query string in exceptions.
