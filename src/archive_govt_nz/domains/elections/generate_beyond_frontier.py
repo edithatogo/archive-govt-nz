@@ -36,7 +36,14 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     f1 = figures_dir / "beyond_frontier_1_wetware_slime_mould.png"
     slime_data = simulate_wetware_slime_mould()
     fig = plt.figure(figsize=(16, 10), facecolor="#030712")
-    gs = fig.add_gridspec(2, 2, width_ratios=[1.3, 1.0], height_ratios=[1.0, 0.16], wspace=0.18, hspace=0.22)
+    gs = fig.add_gridspec(
+        2,
+        2,
+        width_ratios=[1.3, 1.0],
+        height_ratios=[1.0, 0.16],
+        wspace=0.18,
+        hspace=0.22,
+    )
 
     ax_dish = fig.add_subplot(gs[0, 0], facecolor="#030712")
     ax_telemetry = fig.add_subplot(gs[0, 1], facecolor="#090d1a")
@@ -44,8 +51,12 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
 
     # Draw Petri Dish circular rim
     theta = np.linspace(0, 2 * np.pi, 300)
-    ax_dish.plot(np.cos(theta) * 10, np.sin(theta) * 10, color="#334155", lw=4, alpha=0.9)
-    ax_dish.plot(np.cos(theta) * 10.3, np.sin(theta) * 10.3, color="#1e293b", lw=2, alpha=0.7)
+    ax_dish.plot(
+        np.cos(theta) * 10, np.sin(theta) * 10, color="#334155", lw=4, alpha=0.9
+    )
+    ax_dish.plot(
+        np.cos(theta) * 10.3, np.sin(theta) * 10.3, color="#1e293b", lw=2, alpha=0.7
+    )
     ax_dish.fill(np.cos(theta) * 9.9, np.sin(theta) * 9.9, color="#070d1e", alpha=0.85)
 
     # Transform coordinates to dish plane
@@ -56,8 +67,13 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     x_scaled = (lons - np.mean(lons)) * 1.55
 
     party_colors = {
-        "National": "#00529F", "Labour": "#D82A20", "Greens": "#098137",
-        "ACT": "#FDE401", "NZ First": "#94a3b8", "Te Pāti Māori": "#800020", "TOP": "#06b6d4"
+        "National": "#00529F",
+        "Labour": "#D82A20",
+        "Greens": "#098137",
+        "ACT": "#FDE401",
+        "NZ First": "#94a3b8",
+        "Te Pāti Māori": "#800020",
+        "TOP": "#06b6d4",
     }
 
     # Draw smooth multi-layer biological protoplasmic vein networks
@@ -74,40 +90,86 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
                 yp = y_scaled[i] * (1 - t_line) + y_scaled[j] * t_line + noise_y
 
                 # Outer glowing halo
-                ax_dish.plot(xp, yp, color="#38bdf8", lw=dist * 0.9, alpha=0.18, zorder=2)
+                ax_dish.plot(
+                    xp, yp, color="#38bdf8", lw=dist * 0.9, alpha=0.18, zorder=2
+                )
                 # Primary protoplasmic vein
-                ax_dish.plot(xp, yp, color="#0ea5e9", lw=dist * 0.45, alpha=0.45, zorder=3)
+                ax_dish.plot(
+                    xp, yp, color="#0ea5e9", lw=dist * 0.45, alpha=0.45, zorder=3
+                )
                 # Core active streaming shuttle
-                ax_dish.plot(xp, yp, color="#f43f5e", lw=dist * 0.2, alpha=0.35, zorder=3)
+                ax_dish.plot(
+                    xp, yp, color="#f43f5e", lw=dist * 0.2, alpha=0.35, zorder=3
+                )
 
     # Plot glowing voting-booth nutrient attractors with staggered high-contrast badges
     offsets = [
-        (0.4, 0.4), (-1.2, 0.4), (0.4, -0.4), (-1.4, -0.3),
-        (0.4, 0.3), (-1.5, 0.3), (0.4, -0.3), (-1.6, 0.2),
-        (0.4, 0.4), (-1.8, 0.3), (0.4, -0.4), (-1.5, -0.3),
-        (0.4, 0.3), (-1.2, -0.4), (0.4, 0.3), (-1.5, -0.4),
+        (0.4, 0.4),
+        (-1.2, 0.4),
+        (0.4, -0.4),
+        (-1.4, -0.3),
+        (0.4, 0.3),
+        (-1.5, 0.3),
+        (0.4, -0.3),
+        (-1.6, 0.2),
+        (0.4, 0.4),
+        (-1.8, 0.3),
+        (0.4, -0.4),
+        (-1.5, -0.3),
+        (0.4, 0.3),
+        (-1.2, -0.4),
+        (0.4, 0.3),
+        (-1.5, -0.4),
     ]
 
     for i, n in enumerate(nodes):
         c = party_colors.get(n["dominant"], "#38bdf8")
         s = n["turnout"] * 400
         # Attractor glow
-        ax_dish.scatter(x_scaled[i], y_scaled[i], s=s * 2.2, color=c, alpha=0.25, zorder=4)
-        ax_dish.scatter(x_scaled[i], y_scaled[i], s=s, color=c, alpha=0.9, edgecolors="#ffffff", lw=1.5, zorder=5)
+        ax_dish.scatter(
+            x_scaled[i], y_scaled[i], s=s * 2.2, color=c, alpha=0.25, zorder=4
+        )
+        ax_dish.scatter(
+            x_scaled[i],
+            y_scaled[i],
+            s=s,
+            color=c,
+            alpha=0.9,
+            edgecolors="#ffffff",
+            lw=1.5,
+            zorder=5,
+        )
 
         # High-contrast badge with offset stem
         ox, oy = offsets[i % len(offsets)]
         tx = x_scaled[i] + ox
         ty = y_scaled[i] + oy
-        ax_dish.plot([x_scaled[i], tx], [y_scaled[i], ty], color=c, lw=0.9, alpha=0.7, zorder=5)
+        ax_dish.plot(
+            [x_scaled[i], tx], [y_scaled[i], ty], color=c, lw=0.9, alpha=0.7, zorder=5
+        )
         ax_dish.text(
-            tx, ty, n["name"], color="#ffffff", fontsize=8.5, fontweight="bold", zorder=7,
-            bbox=dict(boxstyle="round,pad=0.25", facecolor="#0f172a", edgecolor=c, lw=1.2, alpha=0.92)
+            tx,
+            ty,
+            n["name"],
+            color="#ffffff",
+            fontsize=8.5,
+            fontweight="bold",
+            zorder=7,
+            bbox=dict(
+                boxstyle="round,pad=0.25",
+                facecolor="#0f172a",
+                edgecolor=c,
+                lw=1.2,
+                alpha=0.92,
+            ),
         )
 
     ax_dish.set_title(
         "48-Hour Physarum polycephalum Growth Tank\nNutrient Agar Moulded to Aotearoa Relief Topography",
-        color="#f8fafc", fontsize=11.5, fontweight="bold", pad=12
+        color="#f8fafc",
+        fontsize=11.5,
+        fontweight="bold",
+        pad=12,
     )
     ax_dish.set_xlim(-11, 11)
     ax_dish.set_ylim(-11, 11)
@@ -130,19 +192,73 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
         ("TOP", "mTurquoise", "#06b6d4", "70 mg", "+18.0%"),
     ]
 
-    ax_telemetry.text(0.05, 0.94, "BIOLOGICAL STRAIN TELEMETRY", color="#38bdf8", fontsize=11, fontweight="bold", transform=ax_telemetry.transAxes)
-    ax_telemetry.text(0.05, 0.89, "Fluorescent Strains & Biomass Allocation", color="#94a3b8", fontsize=8.5, transform=ax_telemetry.transAxes)
+    ax_telemetry.text(
+        0.05,
+        0.94,
+        "BIOLOGICAL STRAIN TELEMETRY",
+        color="#38bdf8",
+        fontsize=11,
+        fontweight="bold",
+        transform=ax_telemetry.transAxes,
+    )
+    ax_telemetry.text(
+        0.05,
+        0.89,
+        "Fluorescent Strains & Biomass Allocation",
+        color="#94a3b8",
+        fontsize=8.5,
+        transform=ax_telemetry.transAxes,
+    )
 
     y_pos = 0.82
     for party, fluor, color_code, biomass, growth in strains_data:
-        ax_telemetry.scatter([0.08], [y_pos], s=120, color=color_code, edgecolors="#ffffff", lw=1.2, transform=ax_telemetry.transAxes)
-        ax_telemetry.text(0.14, y_pos - 0.015, f"{party} ({fluor})", color="#f8fafc", fontsize=9, fontweight="bold", transform=ax_telemetry.transAxes)
-        ax_telemetry.text(0.65, y_pos - 0.015, f"{biomass}", color="#94a3b8", fontsize=8.5, transform=ax_telemetry.transAxes)
-        ax_telemetry.text(0.85, y_pos - 0.015, f"{growth}", color="#22c55e" if "+" in growth else "#ef4444", fontsize=8.5, fontweight="bold", transform=ax_telemetry.transAxes)
+        ax_telemetry.scatter(
+            [0.08],
+            [y_pos],
+            s=120,
+            color=color_code,
+            edgecolors="#ffffff",
+            lw=1.2,
+            transform=ax_telemetry.transAxes,
+        )
+        ax_telemetry.text(
+            0.14,
+            y_pos - 0.015,
+            f"{party} ({fluor})",
+            color="#f8fafc",
+            fontsize=9,
+            fontweight="bold",
+            transform=ax_telemetry.transAxes,
+        )
+        ax_telemetry.text(
+            0.65,
+            y_pos - 0.015,
+            f"{biomass}",
+            color="#94a3b8",
+            fontsize=8.5,
+            transform=ax_telemetry.transAxes,
+        )
+        ax_telemetry.text(
+            0.85,
+            y_pos - 0.015,
+            f"{growth}",
+            color="#22c55e" if "+" in growth else "#ef4444",
+            fontsize=8.5,
+            fontweight="bold",
+            transform=ax_telemetry.transAxes,
+        )
         y_pos -= 0.065
 
     # Bio-computing metrics
-    ax_telemetry.text(0.05, 0.34, "BIO-COMPUTING PARAMETERS", color="#38bdf8", fontsize=10.5, fontweight="bold", transform=ax_telemetry.transAxes)
+    ax_telemetry.text(
+        0.05,
+        0.34,
+        "BIO-COMPUTING PARAMETERS",
+        color="#38bdf8",
+        fontsize=10.5,
+        fontweight="bold",
+        transform=ax_telemetry.transAxes,
+    )
     metrics_text = (
         f"• Organism: {slime_data.organism} (Acellular Plasmodium)\n"
         f"• Steiner Tree Density: {slime_data.vein_network_density:.1%}\n"
@@ -153,7 +269,15 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
         f"• Auckland Isthmus (National + ACT boundary)\n"
         f"• Waiariki Surge (Te Pāti Māori mCherry propagation)"
     )
-    ax_telemetry.text(0.05, 0.04, metrics_text, color="#cbd5e1", fontsize=8.2, transform=ax_telemetry.transAxes, linespacing=1.35)
+    ax_telemetry.text(
+        0.05,
+        0.04,
+        metrics_text,
+        color="#cbd5e1",
+        fontsize=8.2,
+        transform=ax_telemetry.transAxes,
+        linespacing=1.35,
+    )
     ax_telemetry.set_xticks([])
     ax_telemetry.set_yticks([])
 
@@ -165,7 +289,15 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     ax_note.spines["left"].set_linewidth(3)
     ax_note.spines["right"].set_color("#1e293b")
 
-    ax_note.text(0.02, 0.72, "Methodological Note & Interpretation", color="#38bdf8", fontsize=10, fontweight="bold", transform=ax_note.transAxes)
+    ax_note.text(
+        0.02,
+        0.72,
+        "Methodological Note & Interpretation",
+        color="#38bdf8",
+        fontsize=10,
+        fontweight="bold",
+        transform=ax_note.transAxes,
+    )
     note_body = (
         "Figure B1: Physarum polycephalum biological computation solves spatial Steiner minimal tree problems via rhythmic "
         "protoplasmic tube oscillation and nutrient gradient feedback. Vein thickness represents nutrient flux and coalition compatibility, "
@@ -173,13 +305,24 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
         "Biological anastomosis confirms that progressive voters coordinate protoplasmically in dense urban centres, while rural "
         "strains maintain resilient, high-flux arterial connections across provincial barriers."
     )
-    ax_note.text(0.02, 0.18, note_body, color="#94a3b8", fontsize=8.2, transform=ax_note.transAxes, linespacing=1.3)
+    ax_note.text(
+        0.02,
+        0.18,
+        note_body,
+        color="#94a3b8",
+        fontsize=8.2,
+        transform=ax_note.transAxes,
+        linespacing=1.3,
+    )
     ax_note.set_xticks([])
     ax_note.set_yticks([])
 
     fig.suptitle(
         "Beyond Frontier 1: Wetware / Bio-Luminescent Growth Tank (Physarum polycephalum Biological Viz)",
-        color="#f8fafc", fontsize=13, fontweight="bold", y=0.98
+        color="#f8fafc",
+        fontsize=13,
+        fontweight="bold",
+        y=0.98,
     )
     fig.savefig(f1, dpi=300, facecolor=fig.get_facecolor(), edgecolor="none")
     plt.close(fig)
@@ -188,7 +331,9 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     # 2. Psychoacoustic Sonification & Haptics
     f2 = figures_dir / "beyond_frontier_2_psychoacoustic_sonification_haptics.png"
     sono = synthesize_psychoacoustic_sonification()
-    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(14, 9), facecolor="#090d16")
+    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(
+        2, 2, figsize=(14, 9), facecolor="#090d16"
+    )
 
     # Subplot 1: Harmonic Spectrum
     freqs = list(sono.fundamental_frequencies_hz.values())
@@ -197,21 +342,49 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     ax1.set_facecolor("#0f172a")
     ax1.bar(pnames, freqs, color=pcolors, edgecolor="#ffffff", alpha=0.85)
     ax1.set_ylabel("Fundamental Frequency (Hz)", color="#94a3b8", fontsize=10)
-    ax1.set_title("Party Harmonic Frequencies (Hz)", color="#f8fafc", fontsize=11, fontweight="bold")
+    ax1.set_title(
+        "Party Harmonic Frequencies (Hz)",
+        color="#f8fafc",
+        fontsize=11,
+        fontweight="bold",
+    )
     ax1.tick_params(colors="#94a3b8", rotation=30)
     ax1.grid(True, linestyle="--", alpha=0.15, color="#94a3b8")
 
     # Subplot 2: Sensory Dissonance Landscape
     ax2.set_facecolor("#0f172a")
     f_sweep = np.linspace(150, 420, 200)
-    diss_curve = 0.2 + 0.6 * np.sin((f_sweep - 150) / 270 * np.pi) ** 2 + 0.1 * np.cos(f_sweep * 0.1)
-    ax2.plot(f_sweep, diss_curve, color="#f43f5e", lw=2.5, label="Helmholtz Dissonance Surface")
-    ax2.axhline(sono.chord_dissonance_score, color="#38bdf8", linestyle="--", lw=1.8, label=f"2026 Parliament Dissonance ({sono.chord_dissonance_score:.3f})")
-    ax2.set_title("Psychoacoustic Sensory Dissonance Landscape", color="#f8fafc", fontsize=11, fontweight="bold")
+    diss_curve = (
+        0.2
+        + 0.6 * np.sin((f_sweep - 150) / 270 * np.pi) ** 2
+        + 0.1 * np.cos(f_sweep * 0.1)
+    )
+    ax2.plot(
+        f_sweep,
+        diss_curve,
+        color="#f43f5e",
+        lw=2.5,
+        label="Helmholtz Dissonance Surface",
+    )
+    ax2.axhline(
+        sono.chord_dissonance_score,
+        color="#38bdf8",
+        linestyle="--",
+        lw=1.8,
+        label=f"2026 Parliament Dissonance ({sono.chord_dissonance_score:.3f})",
+    )
+    ax2.set_title(
+        "Psychoacoustic Sensory Dissonance Landscape",
+        color="#f8fafc",
+        fontsize=11,
+        fontweight="bold",
+    )
     ax2.set_xlabel("Frequency Band (Hz)", color="#94a3b8", fontsize=10)
     ax2.set_ylabel("Dissonance Index [0-1]", color="#94a3b8", fontsize=10)
     ax2.tick_params(colors="#94a3b8")
-    ax2.legend(facecolor="#1e293b", edgecolor="#334155", labelcolor="#e2e8f0", fontsize=9)
+    ax2.legend(
+        facecolor="#1e293b", edgecolor="#334155", labelcolor="#e2e8f0", fontsize=9
+    )
     ax2.grid(True, linestyle="--", alpha=0.15, color="#94a3b8")
 
     # Subplot 3: Polyrhythmic Phase Portrait (7:4 vs 3:2)
@@ -220,7 +393,12 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     x_poly = np.sin(7 * t) + 0.5 * np.cos(3 * t)
     y_poly = np.cos(4 * t) + 0.5 * np.sin(2 * t)
     ax3.plot(x_poly, y_poly, color="#a855f7", lw=1.5, alpha=0.85)
-    ax3.set_title(f"Polyrhythmic Phase Portrait ({sono.polyrhythmic_signature[:22]})", color="#f8fafc", fontsize=11, fontweight="bold")
+    ax3.set_title(
+        f"Polyrhythmic Phase Portrait ({sono.polyrhythmic_signature[:22]})",
+        color="#f8fafc",
+        fontsize=11,
+        fontweight="bold",
+    )
     ax3.set_xlabel(r"Rhythmic Dimension $\Phi_1$", color="#94a3b8", fontsize=10)
     ax3.set_ylabel(r"Rhythmic Dimension $\Phi_2$", color="#94a3b8", fontsize=10)
     ax3.tick_params(colors="#94a3b8")
@@ -230,15 +408,33 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     ax4.set_facecolor("#0f172a")
     c_names = [k.split("(")[0].strip() for k in sono.coalition_haptic_friction.keys()]
     c_frict = list(sono.coalition_haptic_friction.values())
-    c_bar_colors = ["#22c55e" if f < 0.5 else "#eab308" if f < 0.8 else "#ef4444" for f in c_frict]
-    bars = ax4.barh(c_names, c_frict, color=c_bar_colors, edgecolor="#ffffff", alpha=0.85)
+    c_bar_colors = [
+        "#22c55e" if f < 0.5 else "#eab308" if f < 0.8 else "#ef4444" for f in c_frict
+    ]
+    bars = ax4.barh(
+        c_names, c_frict, color=c_bar_colors, edgecolor="#ffffff", alpha=0.85
+    )
     ax4.bar_label(bars, fmt="%.2f", padding=5, color="#f8fafc", fontweight="bold")
-    ax4.set_title(f"Ultrasonic Haptic Friction (P = {sono.ultrasonic_radiation_pressure_pa:.1f} Pa)", color="#f8fafc", fontsize=11, fontweight="bold")
-    ax4.set_xlabel("Haptic Friction Coefficient [0=Smooth, 1=Jagged Static]", color="#94a3b8", fontsize=10)
+    ax4.set_title(
+        f"Ultrasonic Haptic Friction (P = {sono.ultrasonic_radiation_pressure_pa:.1f} Pa)",
+        color="#f8fafc",
+        fontsize=11,
+        fontweight="bold",
+    )
+    ax4.set_xlabel(
+        "Haptic Friction Coefficient [0=Smooth, 1=Jagged Static]",
+        color="#94a3b8",
+        fontsize=10,
+    )
     ax4.tick_params(colors="#94a3b8")
     ax4.grid(True, linestyle="--", alpha=0.15, color="#94a3b8")
 
-    fig.suptitle("Beyond Frontier 2: Psychoacoustic Sonification & Ultrasonic Haptic Turbulence\nMulti-Sensory Translation of Parliamentary Fragmentation and Coalition Shear Stress", color="#f8fafc", fontsize=13, fontweight="bold")
+    fig.suptitle(
+        "Beyond Frontier 2: Psychoacoustic Sonification & Ultrasonic Haptic Turbulence\nMulti-Sensory Translation of Parliamentary Fragmentation and Coalition Shear Stress",
+        color="#f8fafc",
+        fontsize=13,
+        fontweight="bold",
+    )
     plt.tight_layout()
     fig.savefig(f2, dpi=300, facecolor=fig.get_facecolor(), edgecolor="none")
     plt.close(fig)
@@ -248,7 +444,14 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     f3 = figures_dir / "beyond_frontier_3_neural_manifold_latent_landscape.png"
     latent = compute_neural_manifold_landscape()
     fig = plt.figure(figsize=(16, 10), facecolor="#050811")
-    gs = fig.add_gridspec(2, 2, width_ratios=[1.35, 1.0], height_ratios=[1.0, 0.16], wspace=0.18, hspace=0.22)
+    gs = fig.add_gridspec(
+        2,
+        2,
+        width_ratios=[1.35, 1.0],
+        height_ratios=[1.0, 0.16],
+        wspace=0.18,
+        hspace=0.22,
+    )
 
     ax_3d = fig.add_subplot(gs[0, 0], projection="3d", facecolor="#050811")
     ax_loadings = fig.add_subplot(gs[0, 1], facecolor="#090e1c")
@@ -258,11 +461,16 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     gx = np.linspace(-3, 3, 40)
     gy = np.linspace(-3, 3, 40)
     X, Y = np.meshgrid(gx, gy)
-    Z = np.exp(-((X - 1.3) ** 2 + (Y - 0.8) ** 2) / 0.8) * 0.95 + np.exp(-((X + 1.8) ** 2 + (Y - 1.4) ** 2) / 1.2) * 0.85
-    Z -= 0.45 * np.exp(-(X ** 2) / 0.6)
+    Z = (
+        np.exp(-((X - 1.3) ** 2 + (Y - 0.8) ** 2) / 0.8) * 0.95
+        + np.exp(-((X + 1.8) ** 2 + (Y - 1.4) ** 2) / 1.2) * 0.85
+    )
+    Z -= 0.45 * np.exp(-(X**2) / 0.6)
 
     # Plot glowing wireframe and translucent elevation surface
-    ax_3d.plot_surface(X, Y, Z, cmap="plasma", alpha=0.55, edgecolor="#38bdf8", lw=0.3, zorder=1)
+    ax_3d.plot_surface(
+        X, Y, Z, cmap="plasma", alpha=0.55, edgecolor="#38bdf8", lw=0.3, zorder=1
+    )
     ax_3d.contour(X, Y, Z, zdir="z", offset=-0.6, cmap="plasma", alpha=0.45, zorder=1)
 
     # Plot electorates with drop stems and high-contrast badges
@@ -271,24 +479,49 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
         ex, ey, ez = e["latent_x"], e["latent_y"], e["elevation"]
 
         # Drop stem to floor
-        ax_3d.plot([ex, ex], [ey, ey], [ez, -0.6], color=c, lw=1.2, ls=":", alpha=0.8, zorder=3)
+        ax_3d.plot(
+            [ex, ex], [ey, ey], [ez, -0.6], color=c, lw=1.2, ls=":", alpha=0.8, zorder=3
+        )
         # Floor projection dot
         ax_3d.scatter([ex], [ey], [-0.6], color=c, s=40, alpha=0.5, zorder=2)
 
         # 3D Node
-        ax_3d.scatter([ex], [ey], [ez], color=c, s=150, edgecolors="#ffffff", lw=1.5, zorder=5)
+        ax_3d.scatter(
+            [ex], [ey], [ez], color=c, s=150, edgecolors="#ffffff", lw=1.5, zorder=5
+        )
 
         # Callout badge text
         ax_3d.text(
-            ex, ey, ez + 0.12, f" {e['name']} ", color="#ffffff", fontsize=8.5, fontweight="bold", zorder=7,
-            bbox=dict(boxstyle="round,pad=0.25", facecolor="#0f172a", edgecolor=c, lw=1.2, alpha=0.92)
+            ex,
+            ey,
+            ez + 0.12,
+            f" {e['name']} ",
+            color="#ffffff",
+            fontsize=8.5,
+            fontweight="bold",
+            zorder=7,
+            bbox=dict(
+                boxstyle="round,pad=0.25",
+                facecolor="#0f172a",
+                edgecolor=c,
+                lw=1.2,
+                alpha=0.92,
+            ),
         )
 
     # Annotation of the protest canyon
     ax_3d.text(
-        1.3, 0.8, 1.22, "PROTEST VOTE GRAVITY CANYON\nWellington Central + Hawke's Bay Co-location",
-        color="#38bdf8", fontsize=9, fontweight="bold", zorder=8,
-        bbox=dict(boxstyle="round,pad=0.35", facecolor="#090d1a", edgecolor="#38bdf8", lw=1.5)
+        1.3,
+        0.8,
+        1.22,
+        "PROTEST VOTE GRAVITY CANYON\nWellington Central + Hawke's Bay Co-location",
+        color="#38bdf8",
+        fontsize=9,
+        fontweight="bold",
+        zorder=8,
+        bbox=dict(
+            boxstyle="round,pad=0.35", facecolor="#090d1a", edgecolor="#38bdf8", lw=1.5
+        ),
     )
 
     ax_3d.set_facecolor("#050811")
@@ -299,11 +532,21 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     ax_3d.yaxis.pane.set_edgecolor("#1e293b")
     ax_3d.zaxis.pane.set_edgecolor("#1e293b")
     ax_3d.tick_params(colors="#94a3b8", labelsize=8)
-    ax_3d.set_xlabel("UMAP Dimension 1 (Polarisation)", color="#94a3b8", fontsize=9, labelpad=8)
-    ax_3d.set_ylabel("UMAP Dimension 2 (Density)", color="#94a3b8", fontsize=9, labelpad=8)
+    ax_3d.set_xlabel(
+        "UMAP Dimension 1 (Polarisation)", color="#94a3b8", fontsize=9, labelpad=8
+    )
+    ax_3d.set_ylabel(
+        "UMAP Dimension 2 (Density)", color="#94a3b8", fontsize=9, labelpad=8
+    )
     ax_3d.set_zlabel("Protest Elevation", color="#94a3b8", fontsize=9, labelpad=8)
     ax_3d.set_zlim(-0.6, 1.35)
-    ax_3d.set_title("3D Latent Topography of Voter Behavioural Gravity\n(UMAP Manifold Projection across 72 Electorates)", color="#f8fafc", fontsize=11.5, fontweight="bold", pad=15)
+    ax_3d.set_title(
+        "3D Latent Topography of Voter Behavioural Gravity\n(UMAP Manifold Projection across 72 Electorates)",
+        color="#f8fafc",
+        fontsize=11.5,
+        fontweight="bold",
+        pad=15,
+    )
 
     # Panel 2: Latent Loadings & Top 12 Socioeconomic Features
     ax_loadings.set_facecolor("#090e1c")
@@ -328,12 +571,29 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     feat_vals = [f[1] for f in reversed(features)]
     bar_colors = ["#38bdf8" if v > 10.0 else "#818cf8" for v in feat_vals]
 
-    bars = ax_loadings.barh(feat_names, feat_vals, color=bar_colors, edgecolor="#ffffff", alpha=0.85, height=0.65)
-    ax_loadings.bar_label(bars, fmt="%.1f%%", padding=4, color="#f8fafc", fontsize=8, fontweight="bold")
+    bars = ax_loadings.barh(
+        feat_names,
+        feat_vals,
+        color=bar_colors,
+        edgecolor="#ffffff",
+        alpha=0.85,
+        height=0.65,
+    )
+    ax_loadings.bar_label(
+        bars, fmt="%.1f%%", padding=4, color="#f8fafc", fontsize=8, fontweight="bold"
+    )
     ax_loadings.set_xlim(0, 20)
     ax_loadings.tick_params(colors="#94a3b8", labelsize=8)
-    ax_loadings.set_xlabel("Explained Variance Contribution (%)", color="#94a3b8", fontsize=8.5)
-    ax_loadings.set_title("Top 10 Socioeconomic Latent Feature Loadings", color="#38bdf8", fontsize=10.5, fontweight="bold", pad=8)
+    ax_loadings.set_xlabel(
+        "Explained Variance Contribution (%)", color="#94a3b8", fontsize=8.5
+    )
+    ax_loadings.set_title(
+        "Top 10 Socioeconomic Latent Feature Loadings",
+        color="#38bdf8",
+        fontsize=10.5,
+        fontweight="bold",
+        pad=8,
+    )
     ax_loadings.grid(True, linestyle="--", alpha=0.15, color="#94a3b8", axis="x")
 
     # Panel 3: Standardized Methodological Note & Interpretation Box
@@ -344,7 +604,15 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     ax_note3.spines["left"].set_linewidth(3)
     ax_note3.spines["right"].set_color("#1e293b")
 
-    ax_note3.text(0.02, 0.72, "Methodological Note & Interpretation", color="#38bdf8", fontsize=10, fontweight="bold", transform=ax_note3.transAxes)
+    ax_note3.text(
+        0.02,
+        0.72,
+        "Methodological Note & Interpretation",
+        color="#38bdf8",
+        fontsize=10,
+        fontweight="bold",
+        transform=ax_note3.transAxes,
+    )
     note_body3 = (
         "Figure B3: Non-linear manifold learning (UMAP) compresses 12-dimensional Stats NZ census and socioeconomic indicators "
         "into a 2D behavioural gravity terrain. The z-axis elevation represents voter protest potential, discovering the hidden "
@@ -352,13 +620,24 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
         "(such as urban student-heavy Wellington Central and provincial agrarian Hawke's Bay). Standard linear regressions fail to detect "
         "this structural co-movement, which explains why anti-incumbent split-voting erupted concurrently across disparate regions."
     )
-    ax_note3.text(0.02, 0.18, note_body3, color="#94a3b8", fontsize=8.2, transform=ax_note3.transAxes, linespacing=1.3)
+    ax_note3.text(
+        0.02,
+        0.18,
+        note_body3,
+        color="#94a3b8",
+        fontsize=8.2,
+        transform=ax_note3.transAxes,
+        linespacing=1.3,
+    )
     ax_note3.set_xticks([])
     ax_note3.set_yticks([])
 
     fig.suptitle(
         "Beyond Frontier 3: High-Dimensional Neural Manifold / Latent Space Landscape (AI Dreamscapes)",
-        color="#f8fafc", fontsize=13, fontweight="bold", y=0.98
+        color="#f8fafc",
+        fontsize=13,
+        fontweight="bold",
+        y=0.98,
     )
     fig.savefig(f3, dpi=300, facecolor=fig.get_facecolor(), edgecolor="none")
     plt.close(fig)
@@ -374,24 +653,54 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     rho_r = np.array(q_data.density_matrix_real)
     im = ax1.imshow(rho_r, cmap="cividis", aspect="auto")
     fig.colorbar(im, ax=ax1, fraction=0.046, pad=0.04).ax.tick_params(colors="#94a3b8")
-    ax1.set_title("Quantum Density Matrix Re[$\\rho$] (4 Entangled Marginal Qubits)", color="#f8fafc", fontsize=11, fontweight="bold")
+    ax1.set_title(
+        "Quantum Density Matrix Re[$\\rho$] (4 Entangled Marginal Qubits)",
+        color="#f8fafc",
+        fontsize=11,
+        fontweight="bold",
+    )
     ax1.set_xlabel("Basis State Index $|j\\rangle$", color="#94a3b8", fontsize=10)
     ax1.set_ylabel("Basis State Index $|i\\rangle$", color="#94a3b8", fontsize=10)
     ax1.tick_params(colors="#94a3b8")
 
     # Right: Measurement Collapse Probability Distribution
     ax2.set_facecolor("#0b1120")
-    k_labels = [k.replace("Superposition Collapse to Challenger", "Flip").replace("Incumbent Hold", "Hold") for k in q_data.measurement_collapse_probabilities.keys()]
+    k_labels = [
+        k.replace("Superposition Collapse to Challenger", "Flip").replace(
+            "Incumbent Hold", "Hold"
+        )
+        for k in q_data.measurement_collapse_probabilities.keys()
+    ]
     p_vals = list(q_data.measurement_collapse_probabilities.values())
-    p_bars = ax2.barh(k_labels, p_vals, color=["#00529F", "#D82A20", "#38bdf8"], edgecolor="#ffffff", alpha=0.85)
+    p_bars = ax2.barh(
+        k_labels,
+        p_vals,
+        color=["#00529F", "#D82A20", "#38bdf8"],
+        edgecolor="#ffffff",
+        alpha=0.85,
+    )
     ax2.bar_label(p_bars, fmt="%.1%", padding=5, color="#f8fafc", fontweight="bold")
     ax2.set_xlim(0, 1.1)
-    ax2.set_title(f"Wave-Function Collapse Probabilities (Fidelity = {q_data.bell_state_fidelity:.1%})", color="#f8fafc", fontsize=11, fontweight="bold")
-    ax2.set_xlabel("Projective Measurement Probability $P(|b\\rangle)$", color="#94a3b8", fontsize=10)
+    ax2.set_title(
+        f"Wave-Function Collapse Probabilities (Fidelity = {q_data.bell_state_fidelity:.1%})",
+        color="#f8fafc",
+        fontsize=11,
+        fontweight="bold",
+    )
+    ax2.set_xlabel(
+        "Projective Measurement Probability $P(|b\\rangle)$",
+        color="#94a3b8",
+        fontsize=10,
+    )
     ax2.tick_params(colors="#94a3b8")
     ax2.grid(True, linestyle="--", alpha=0.15, color="#94a3b8")
 
-    fig.suptitle("Beyond Frontier 4: True Quantum Superposition Mapping (Qubit-Driven Rendering)\nEntangled Special-Vote Wave-Function and Projective Collapse Across 399,000 Uncounted Ballots", color="#f8fafc", fontsize=13, fontweight="bold")
+    fig.suptitle(
+        "Beyond Frontier 4: True Quantum Superposition Mapping (Qubit-Driven Rendering)\nEntangled Special-Vote Wave-Function and Projective Collapse Across 399,000 Uncounted Ballots",
+        color="#f8fafc",
+        fontsize=13,
+        fontweight="bold",
+    )
     plt.tight_layout()
     fig.savefig(f4, dpi=300, facecolor=fig.get_facecolor(), edgecolor="none")
     plt.close(fig)
@@ -407,11 +716,26 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     np.random.seed(131)
     # Scatter 131 agents clustered by party ideology
     party_pos = {
-        "National": (0.6, -0.2), "Labour": (-0.4, 0.4), "Greens": (-0.8, 0.8),
-        "ACT": (0.9, -0.6), "NZ First": (0.1, -0.7), "Te Pāti Māori": (-0.7, 0.7), "TOP": (-0.1, 0.3)
+        "National": (0.6, -0.2),
+        "Labour": (-0.4, 0.4),
+        "Greens": (-0.8, 0.8),
+        "ACT": (0.9, -0.6),
+        "NZ First": (0.1, -0.7),
+        "Te Pāti Māori": (-0.7, 0.7),
+        "TOP": (-0.1, 0.3),
     }
     # Policy attractor in center
-    ax1.scatter([0.0], [0.1], s=400, color="#f59e0b", marker="*", edgecolors="#ffffff", lw=2, zorder=6, label="Active Bill Attractor: Supermarket Duopoly Reform")
+    ax1.scatter(
+        [0.0],
+        [0.1],
+        s=400,
+        color="#f59e0b",
+        marker="*",
+        edgecolors="#ffffff",
+        lw=2,
+        zorder=6,
+        label="Active Bill Attractor: Supermarket Duopoly Reform",
+    )
 
     for party, count in parl_data.seat_distribution.items():
         base_x, base_y = party_pos[party]
@@ -419,32 +743,75 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
         ax_agents = base_x + np.random.randn(count) * 0.12
         ay_agents = base_y + np.random.randn(count) * 0.12
         # Velocity vectors pointing toward or away from bill
-        target_dir = 1.0 if party in ["Labour", "Greens", "Te Pāti Māori", "TOP", "NZ First"] else -1.0
+        target_dir = (
+            1.0
+            if party in ["Labour", "Greens", "Te Pāti Māori", "TOP", "NZ First"]
+            else -1.0
+        )
         vx = (0.0 - ax_agents) * 0.2 * target_dir
         vy = (0.1 - ay_agents) * 0.2 * target_dir
-        ax1.quiver(ax_agents, ay_agents, vx, vy, color=c, alpha=0.5, scale=5, width=0.004)
-        ax1.scatter(ax_agents, ay_agents, color=c, s=55, edgecolors="#ffffff", alpha=0.85, label=f"{party} ({count})")
+        ax1.quiver(
+            ax_agents, ay_agents, vx, vy, color=c, alpha=0.5, scale=5, width=0.004
+        )
+        ax1.scatter(
+            ax_agents,
+            ay_agents,
+            color=c,
+            s=55,
+            edgecolors="#ffffff",
+            alpha=0.85,
+            label=f"{party} ({count})",
+        )
 
-    ax1.set_title("131 Autonomous MP Agent Legislative Flocking Arena", color="#f8fafc", fontsize=11, fontweight="bold")
+    ax1.set_title(
+        "131 Autonomous MP Agent Legislative Flocking Arena",
+        color="#f8fafc",
+        fontsize=11,
+        fontweight="bold",
+    )
     ax1.set_xlabel("Economic Dimension ($X$)", color="#94a3b8", fontsize=10)
     ax1.set_ylabel("Social Dimension ($Y$)", color="#94a3b8", fontsize=10)
     ax1.tick_params(colors="#94a3b8")
     ax1.grid(True, linestyle="--", alpha=0.15, color="#94a3b8")
-    ax1.legend(facecolor="#1e293b", edgecolor="#334155", labelcolor="#e2e8f0", fontsize=8, loc="lower left")
+    ax1.legend(
+        facecolor="#1e293b",
+        edgecolor="#334155",
+        labelcolor="#e2e8f0",
+        fontsize=8,
+        loc="lower left",
+    )
 
     # Right: Whip Defiance Rates and Bill Passage Threshold
     ax2.set_facecolor("#0e1526")
     parties_list = list(parl_data.agent_whip_defiance_rates.keys())
     defiance_vals = list(parl_data.agent_whip_defiance_rates.values())
     bar_cols = [party_colors.get(p, "#38bdf8") for p in parties_list]
-    wbars = ax2.bar(parties_list, [v * 100 for v in defiance_vals], color=bar_cols, edgecolor="#ffffff", alpha=0.85)
+    wbars = ax2.bar(
+        parties_list,
+        [v * 100 for v in defiance_vals],
+        color=bar_cols,
+        edgecolor="#ffffff",
+        alpha=0.85,
+    )
     ax2.bar_label(wbars, fmt="%.1f%%", padding=3, color="#f8fafc", fontweight="bold")
-    ax2.set_title("Agent Whip Defiance Rates by Parliamentary Caucus", color="#f8fafc", fontsize=11, fontweight="bold")
-    ax2.set_ylabel("Autonomous Whip Defiance Probability (%)", color="#94a3b8", fontsize=10)
+    ax2.set_title(
+        "Agent Whip Defiance Rates by Parliamentary Caucus",
+        color="#f8fafc",
+        fontsize=11,
+        fontweight="bold",
+    )
+    ax2.set_ylabel(
+        "Autonomous Whip Defiance Probability (%)", color="#94a3b8", fontsize=10
+    )
     ax2.tick_params(colors="#94a3b8", rotation=25)
     ax2.grid(True, linestyle="--", alpha=0.15, color="#94a3b8")
 
-    fig.suptitle("Beyond Frontier 5: Autonomous Multi-Agent 'Artificial Life' Parliament\n131 Autonomous MP Agents Simulating Real-Time Swarm Deliberation and Legislative Passage", color="#f8fafc", fontsize=13, fontweight="bold")
+    fig.suptitle(
+        "Beyond Frontier 5: Autonomous Multi-Agent 'Artificial Life' Parliament\n131 Autonomous MP Agents Simulating Real-Time Swarm Deliberation and Legislative Passage",
+        color="#f8fafc",
+        fontsize=13,
+        fontweight="bold",
+    )
     plt.tight_layout()
     fig.savefig(f5, dpi=300, facecolor=fig.get_facecolor(), edgecolor="none")
     plt.close(fig)
