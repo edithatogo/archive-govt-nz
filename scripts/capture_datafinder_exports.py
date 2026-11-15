@@ -57,7 +57,12 @@ LAYERS: list[tuple[int, str, str]] = [
 def validated_https_url(url: str, *, expected_hostname: str | None = None) -> str:
     """Require HTTPS URLs without embedded credentials before network I/O."""
     parts = urllib.parse.urlsplit(url)
-    if parts.scheme != "https" or not parts.hostname or parts.username or parts.password:
+    if (
+        parts.scheme != "https"
+        or not parts.hostname
+        or parts.username
+        or parts.password
+    ):
         msg = "Export URL must use HTTPS without embedded credentials"
         raise ValueError(msg)
     if expected_hostname is not None and parts.hostname != expected_hostname:
@@ -89,7 +94,10 @@ def request(
         verified_url, data=data, headers=headers, method=method
     )
     try:
-        with urllib.request.urlopen(req, timeout=timeout) as response:  # noqa: S310
+        # Fail closed on redirects: the API key must remain on the trusted origin.
+        with urllib.request.build_opener(_NoRedirect).open(
+            req, timeout=timeout
+        ) as response:  # noqa: S310
             return response.status, response.read()
     except urllib.error.HTTPError as exc:
         return exc.code, exc.read()
@@ -139,6 +147,8 @@ def wait_for_export(token: str, export_id: int, *, limit: int = 300) -> str:
 
 
 class _NoRedirect(urllib.request.HTTPRedirectHandler):
+    """Reject automatic redirect traversal across authentication or URL boundaries."""
+
     def redirect_request(self, req, fp, code, msg, headers, newurl):  # noqa: ANN001, ANN202, ARG002, PLR0917
         return None
 
@@ -170,8 +180,16 @@ def download(url: str, token: str) -> bytes:
     plain = urllib.request.Request(  # noqa: S310
         validated_https_url(location), headers={"User-Agent": UA, "Accept": "*/*"}
     )
-    with urllib.request.urlopen(plain, timeout=600) as response:  # noqa: S310
-        return response.read()
+    # Do not follow a second unverified redirect from signed object storage.
+    try:
+        with urllib.request.build_opener(_NoRedirect).open(
+            plain, timeout=600
+        ) as response:  # noqa: S310
+            return response.read()
+    except urllib.error.HTTPError as exc:
+        # In particular, do not expose a signed query string in exceptions.
+        msg = f"signed export fetch failed: HTTP {exc.code}"
+        raise SystemExit(msg) from None
 
 
 def describe(zip_bytes: bytes) -> dict[str, object]:
