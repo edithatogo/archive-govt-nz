@@ -30,6 +30,16 @@ All boxes are intentionally unchecked. This subplan's planning PR claims **docum
 
 **Gate:** versioned comparable geography/crosswalks, independent tally totals, documented mapping gaps and rights.
 
+## Cross-cutting join and research-outcome acceptance (applies to phases 0–5)
+
+- [ ] **EDM-J00** Admit 15 question IDs **O01–O15** from [outcome/joins contract](outcomes-and-joins.md) as evidence-driven product backlog items (not automatically complete merely because the component exists). Map each to an existing 01/03/05/06/07 implementation owner and declared source/rights, coverage, historical vintage, unit, joins and expected dashboard view.
+- [ ] **EDM-J01** Execute **JOIN-01–JOIN-10** in coherent nonoverlapping batches: source snapshots, stable party/candidate and organisational identities, versioned weighted geographic crosswalks, financial anti-duplication, advertising/organisations, versioned policies, external socioeconomic context, independently reconciled Gold, negative controls and accessible publication.
+- [ ] **EDM-J02** Promote an outcome only after a **QuestionEvidenceReceipt** proves source/vintage hashes, join cardinalities, unmatched/duplicate counts, correct denominator/time basis, independent arithmetic, research class and deployed revision. Unsupported results remain visible as source-pending/blocked, not estimated.
+- [ ] **EDM-J03** Triage the nine documented news/policy themes in [recent news register](news-issue-register.md) as bounded OID-linked research questions; record article metadata and original official data evidence separately, and refresh after new authoritative releases. No article-body scraping or source-rights exception.
+- [ ] **EDM-J04** Make anti-misjoin tests blocking for (a) wrong election vintage, (b) candidate and party alias ambiguity, (c) cross-period policy claims, (d) geography version errors, (e) donation double counts, (f) protected donor de-anonymisation, (g) advertising spend-band point estimates and (h) person-level/ecological causal overreach.
+
+**Dependency:** JOIN-01–03 require validated Bronze/source identity and source rights; JOIN-04–07 depend on admitted financial, socioeconomic and policy sources; JOIN-08–10 depend on reconciliation and required quality/security/serving checks. The news queue is a source of questions only. The exact implementation order is chosen by the existing owner/coordinator without creating a competing worker.
+
 ## Phase 3 — source expansion with eligibility (target weeks 6–12)
 
 - [ ] **EDM-P30** Prioritise Electoral Commission 2026 immediate donations, party/loan annual disclosures, broadcasting allocations and registered promoters. Admit distinct source types with amendment and reporting-period metadata; capture only through permitted qualified access paths.
