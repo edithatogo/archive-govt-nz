@@ -11,10 +11,14 @@ Generates 300 DPI publication charts and interactive HTML components quantifying
 from __future__ import annotations
 
 from pathlib import Path
+from typing import TYPE_CHECKING
+
 import matplotlib.pyplot as plt
 from matplotlib.axes import Axes
-from matplotlib.figure import Figure
 import numpy as np
+
+if TYPE_CHECKING:
+    from matplotlib.figure import Figure
 
 from archive_govt_nz.domains.elections.maori_vote_splitting_engine import (
     PLURALITY_SPLIT_GENERAL_SEATS,
