@@ -27,6 +27,19 @@
 | PAR-01 | [NZ Parliament](https://www.parliament.nz/) | Members, interests, bills, divisions, Hansard | candidate | Post-election research; no inference of donor influence |
 | GOV-01 | [NZ Government Procurement](https://www.procurement.govt.nz/) | Award and procurement notices over time | candidate | Organisational research context; no allegation from linked entities |
 
+## Additional sources raised by November 2026 news/outcomes (not yet admitted)
+
+| ID | Candidate source | Grain, timing and intended join | Legal/quality hold |
+| --- | --- | --- | --- |
+| **EC-F09** | [Electoral Commission protected donations](https://elections.nz/democracy-in-nz/political-parties-in-new-zealand/donations-protected-from-disclosure) | Quarterly received/paid totals and dated party payouts -> `party_id/quarter` only | Explicitly **no** donor identities; do not infer anonymous individuals from a payout |
+| **POL-01** | [2026 comparative policy tracker](https://stories.theconversation.com/nz-policy-tracker-2026/) and direct official party policy documents | `party_id, statement_id, topic_id, published_at, source_hash` | Secondary tracker is discovery, not primary fact; human topic validation and reuse rights |
+| **ECO-01** | [Stats NZ labour-market statistics](https://www.stats.govt.nz/) plus CPI, income, housing where published | Period/region and boundary-approved electorate crosswalk | National 5.7% September 2026 unemployment cannot be assigned to individual electorates |
+| **HEA-01** | Ministry of Health / Health NZ public quarterly health-system statistics | Aggregate geography, reporting period, metric basis -> dated public policy topics | Validate coverage, comparable denominators, no identifiable patient or voter linkage |
+| **PAR-02** | Published coalition/confidence-and-supply agreements, policy programmes, portfolios, parliamentary bills/divisions and fiscal outcomes | Dated party/topic/portfolio and bill/appropriation identifiers | No post-election performance claim until primary source is released; no causation from donors |
+| **NEWS-01** | [Recent issue/source watch](news-issue-register.md) | Article metadata URL + date + outlet + OID only | News is a question trigger, not authoritative financial/seat source |
+
+Track these alongside the archived and candidate sources above through [outcome-to-join design](outcomes-and-joins.md). This adds no harvesting, data-processing or publication permission.
+
 ## Filing calendar to monitor (not proof of availability)
 
 - **7 November 2026:** preliminary election results published; preserve their source vintage.
