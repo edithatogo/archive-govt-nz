@@ -17,6 +17,12 @@ from scripts.capture_datafinder_exports import (
 )
 
 
+class _SyntheticResponse(urllib.response.addinfourl):
+    """Expose the HTTP response message attribute for typed fake responses."""
+
+    msg: str
+
+
 class _ScriptedTransport(urllib.request.BaseHandler):
     """Respond to HTTP requests locally and record each attempted hop."""
 
@@ -42,7 +48,7 @@ class _ScriptedTransport(urllib.request.BaseHandler):
         headers = Message()
         if location is not None:
             headers["Location"] = location
-        response = urllib.response.addinfourl(
+        response = _SyntheticResponse(
             io.BytesIO(body), headers, req.full_url, code=status
         )
         response.msg = "Found" if status in {301, 302, 303, 307, 308} else "OK"
