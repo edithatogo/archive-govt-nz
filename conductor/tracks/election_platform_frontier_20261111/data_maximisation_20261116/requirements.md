@@ -17,6 +17,9 @@ These are new programme requirements linked to, **not replacing**, the existing 
 - **EDM-M11 Assurance.** Use repository's existing selected CPython 3.15.1, uv lock, Ruff, basedpyright, tests/property/fuzz, security, licence/SBOM, and mutation/release gates as applicable. One coherent PR per bounded approved implementation batch; preserve exact-head local/hosted checks and actual HF served readback before integration.
 - **EDM-M12 Future filings.** Add event-driven discovery for official results and subsequent party/candidate/promoter returns with independent filing dates; no 'complete 2026 expenses' assertion while returns are outstanding.
 
+- **EDM-M13 Joined-outcome traceability.** Every public research question maps to a registered outcome OID, required datasets and their grains/keys, compatible time/geo-vintage bridges, deterministic join metrics, missingness, original source rights and evidence receipts. Require independent aggregation and cardinality controls; never silently multiply rows or borrow facts from incompatible vintages.
+- **EDM-M14 News issue provenance.** Use dated reporting to discover neutral research questions, not as a substitute for primary-source data. Preserve source/outlet/title/date only as permitted, link to verified Commission/Stats NZ etc. facts, distinguish policy statements from enacted law and forbid unsupported misconduct or causal conclusions. Keep a versioned issue-to-OID matrix.
+
 ## Should: maximal analytical value
 
 - **EDM-S01** Reprocess archived 2023/2020/2017 voting-place files into complete coverage-aware datasets; harmonise 1996–2026 votes/turnout, rule and electorate boundary vintages, and known missing years.
@@ -28,6 +31,8 @@ These are new programme requirements linked to, **not replacing**, the existing 
 - **EDM-S07** For empirical causal/forecast models require pre-specified estimand, sample/grain, identification assumptions, uncertainty, placebo/robustness and independent reference/holdout evaluation. SHAP is noncausal by default.
 - **EDM-S08** Publish a coverage/quality dashboard (expected vs captured vs parsed vs reconciled; failed viewer/parquet partitions; freshness lag by source).
 - **EDM-S09** Provide source change alerts with de-duplicated receipts and reasonable refresh budgets; no external services or new credentials without separate authority.
+
+- **EDM-S10 Outcome usability.** For each OID show answerable/partial/blocked/research-only status and named missing evidence, accessible dated source references, published method, subgroup/temporal coverage and version history; offer publishable one-question data extracts when qualified.
 
 ## Could: later research
 
