@@ -1,6 +1,6 @@
 # Finite implementation plan — source-backed election observatory
 
-Implementation sequencing, concurrent chat ownership, exact PR intake/merge steps and worker prompts: [ChatGPT delivery orchestration](chatgpt-delivery-orchestration.md).
+Implementation sequencing, concurrent chat ownership, exact PR intake/merge steps and worker prompts: [ChatGPT delivery orchestration](chatgpt-delivery-orchestration.md) and [scheduled prompt pack](scheduled-chatgpt-prompts.md).
 
 All boxes are intentionally unchecked. This subplan's planning PR claims **documentation only**: no harvest, no validated dataset, no scheduled execution, no dashboard release, no full harness or downstream owner acceptance. Implement only as selected bounded, evidence-backed increments through existing tracks; do not create another overlapping programme.
 
