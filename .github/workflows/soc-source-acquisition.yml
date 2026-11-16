@@ -1,0 +1,42 @@
+name: SOC official source acquisition
+
+on:
+  pull_request:
+    paths:
+      - tools/capture_soc_sources.py
+      - tests/test_capture_soc_sources.py
+      - tests/test_capture_soc_preservation.py
+      - .github/workflows/soc-source-acquisition.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  acquire:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.15.1'
+      - name: Create explicit repo-local source-capture interpreter
+        run: |
+          python -m venv .venv-soc-source
+          .venv-soc-source/bin/python -c 'import sys; assert sys.version_info[:3] == (3, 15, 1); print(sys.version)'
+      - name: Offline source and preservation controls
+        run: .venv-soc-source/bin/python -m unittest discover -s tests -p 'test_capture_soc*.py' -v
+      - name: Capture six official workbooks and source-native cells
+        run: .venv-soc-source/bin/python -u tools/capture_soc_sources.py --output build/soc-official-sources
+      - name: Retain original workbooks and capture manifest even on partial failure
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: soc-official-sources-${{ github.sha }}
+          path: build/soc-official-sources/
+          if-no-files-found: error
+          retention-days: 30
