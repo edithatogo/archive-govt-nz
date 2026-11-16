@@ -14,7 +14,7 @@
 
 | Role | Number active | Responsibility | Exclusive edit boundary |
 | --- | ---: | --- | --- |
-| **I0 sole coordinator** (existing) | 1 | Owns delivery queue, dependency graph, cross-PR acceptance, shared PR/issue comments, final merges and receiving-main checks | Shared registry and approval; source changes only after separately claiming them |
+| **I0 sole coordinator** (existing) | 1 | Owns delivery queue, dependency graph, cross-PR acceptance, shared PR/issue comments, final merges and receiving-main checks | Queue, review, admission, protected serial merges and receiving-main verification **only**; shared Conductor/elections registry edits remain with I1 unless I1 expressly delegates exact paths |
 | **I1 elections/platform owner** (existing) | 1 | Canonical contracts, publication pipeline, shared application glue, integration adapter, dashboard owner consultation | Existing common election/Conductor files; avoid changing #866-owned files |
 | **W specialist implementation chats** | **at most 2–3 concurrently** | Deliver bounded non-overlapping slices with tests, PR and exact-head receipt | New lane-specific namespaces agreed before writing |
 | **R independent reviewer** | 1 when needed, **read-only** | Reference checks, scientific/methodology inspection and adversarial fixtures independent of author implementation | No source/manifest/shared CI writes |
@@ -25,6 +25,8 @@
 Each workstream has exactly one writer per checkout/worktree/native object. A worker **must stop** if its proposed paths are already modified or claimed, and request a bounded interface handoff rather than edit shared code. Reuse the same chat for repairs and following exact-head review; do not spawn another worker to fix an active worker's PR.
 
 ## C. Dependency graph and critical path
+
+**Canonical scheduled stage IDs:** G0 baseline/owner acceptance; G1 source-and-rights inventory; G2 minimal contracts; G3 independent finance/election pilots (plus read-only additional-source assessment); G4 shared join spine; G5 Gold outcomes; G6 dashboard integration; G7 expansion. These are the G0–G7 IDs used by the automation and [prompt pack](scheduled-chatgpt-prompts.md). Internal diagram nodes such as C0, R0 and QG are subtasks, not separate scheduled stage numbers. Worker prompts remain P0–P10.
 
 ```mermaid
 flowchart TD
@@ -38,7 +40,7 @@ flowchart TD
   F1 --> J0["J0: shared identity/temporal/finance join spine"]
   H1 --> J0
   X1 -.->|"approved source admission only"| J0
-  J0 --> G1["G1: independently verified joined Gold outputs"]
+  J0 --> QG["QG: independently verified joined Gold outputs"]
   R0 --> E1["E1: election/coalition outcomes O01 O02 O04"]
   H1 --> E1
   J0 --> T1["T1: turnout/representational outcomes O03 O05 O14"]
@@ -46,7 +48,7 @@ flowchart TD
   E1 --> U0["U0: results live and accessible release"]
   T1 --> U0
   P1 --> U0
-  G1 --> U0
+  QG --> U0
   U0 --> EX["EX: qualified expansion: advertising O08, polling O12, policy O09 O11 O15, context O10"]
   EX --> PUB["Research/Accountability publication and independent scientific review"]
 ```
