@@ -1,5 +1,7 @@
 # Finite implementation plan — source-backed election observatory
 
+Implementation sequencing, concurrent chat ownership, exact PR intake/merge steps and worker prompts: [ChatGPT delivery orchestration](chatgpt-delivery-orchestration.md).
+
 All boxes are intentionally unchecked. This subplan's planning PR claims **documentation only**: no harvest, no validated dataset, no scheduled execution, no dashboard release, no full harness or downstream owner acceptance. Implement only as selected bounded, evidence-backed increments through existing tracks; do not create another overlapping programme.
 
 ## Phase 0 — baseline trust, inventory and deployment (target weeks 1–2)
