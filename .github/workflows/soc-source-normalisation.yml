@@ -1,0 +1,52 @@
+name: SOC official source normalisation
+
+on:
+  pull_request:
+    paths:
+      - tools/normalise_soc_official.py
+      - tools/verify_soc_official.py
+      - data/soc-official-profiles.json
+      - .github/workflows/soc-source-normalisation.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  normalise:
+    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.15.1'
+      - name: Create explicit repo-local processing interpreter
+        run: |
+          python -m venv .venv-soc-source
+          .venv-soc-source/bin/python -c 'import sys; assert sys.version_info[:3] == (3, 15, 1); print(sys.version)'
+      - name: Reuse exact retained originals, not a new source download
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: soc-official-sources-e39da9b22f4c314f9cf1bc39aa60d0e764e2fd87
+          run-id: 43853935316
+          github-token: ${{ github.token }}
+          path: build/soc-official-originals
+      - name: Verify real source anchors and negative controls
+        env:
+          SOC_ORIGINALS: build/soc-official-originals
+        run: .venv-soc-source/bin/python tools/verify_soc_official.py -v
+      - name: Normalise exact original cohort
+        run: .venv-soc-source/bin/python tools/normalise_soc_official.py --originals build/soc-official-originals --profiles data/soc-official-profiles.json --output build/soc-normalised
+      - name: Retain normalised candidate and receipt
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: soc-normalised-${{ github.sha }}
+          path: build/soc-normalised/
+          if-no-files-found: error
+          retention-days: 30
