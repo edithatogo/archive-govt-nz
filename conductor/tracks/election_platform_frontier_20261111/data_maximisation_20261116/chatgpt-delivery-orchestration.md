@@ -37,7 +37,7 @@ flowchart TD
   S0 --> X1["X1: 2026/current external-source assessment and rights inventory"]
   F1 --> J0["J0: shared identity/temporal/finance join spine"]
   H1 --> J0
-  X1 -. "approved source admission only" .-> J0
+  X1 -.->|"approved source admission only"| J0
   J0 --> G1["G1: independently verified joined Gold outputs"]
   R0 --> E1["E1: election/coalition outcomes O01 O02 O04"]
   H1 --> E1
