@@ -135,12 +135,10 @@ def normalise_turnout(extract):
 
 
 def verify_capture(directory, manifest):
-    """Rehash all retained originals and extracts before source-native interpretation."""
-    for r in manifest['records']:
-        require(r['status'] == 'captured', 'incomplete source capture')
-        for suffix, field in [('.xlsx','sha256'),('.cells.json','cells_sha256')]:
-            p = directory/(r['id']+suffix)
-            require(hashlib.sha256(p.read_bytes()).hexdigest() == r[field], 'capture hash mismatch')
+    """Bind the exact original/extract cohort independently of its mutable manifest."""
+    from soc_source_binding import verify_bound_capture
+
+    verify_bound_capture(directory, manifest)
 
 
 def load_profiles(path):
