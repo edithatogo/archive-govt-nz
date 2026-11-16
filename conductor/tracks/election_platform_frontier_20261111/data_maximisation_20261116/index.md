@@ -24,7 +24,7 @@ Maximise the verified analytical use of **already acquired** 1996–2026 electio
 | W2 Vote-place backfill, demographic joins, historical concordances | [03 spatial longitudinal](../../election_platform_03_spatial_longitudinal_20261111/index.md) | Coverage-aware, comparable geography/year/denominator |
 | W3 Additional source onboarding and rights decisions | [01 release integrity](../../election_platform_01_release_integrity_20261111/index.md) and [06 political economy](../../election_platform_06_political_economy_20261111/index.md) | Explicit per-source licence, eligibility and provenance |
 | W4 Six public products and reusable research downloads | [05 publication](../../election_platform_05_publication_20261111/index.md) | Accessibility, citations, reproduce/export parity |
-| W5 Empirical model qualification, optional parliamentary links | [06 political economy](../../election_platform_06_political_economy_20261111/index.md) and [02 electoral lab](../../election_platform_02_electoral_lab_20261111/index.md) | Fit-only-on-observations; documented uncertainty and boundaries |
+| W5 Empirical model qualification, optional parliamentary links | [06 political economy](../../election_platform_06_political_economy_20261111/index.md) and [02 electoral lab](../../election_platform_02_electoral_lab_20261111/index.md) | Fit-only-on-observations; documented uncertainty and result-type classification |
 | W6 Performance, CI, safety, quality and auditability | [07 solo harness](../../election_platform_07_solo_harness_20261111/index.md) | Existing full gates retained; bounded tests and reproducible evidence |
 
 Registered parent track: [election_platform_frontier_20261111](../index.md). No new top-level registry entry or standalone track is introduced.
@@ -46,3 +46,11 @@ The election-results pane is authoritative only as a **source-verified snapshot*
 5. Historical voting-place Parquet coverage and captured raw-byte CSV coverage do not yet match; investigate reprocessing before additional crawling.
 
 All five are **review observations**, not a claimed completed defect-fix or full corpus audit. Preserve receipts and qualify them against the latest head when implementing.
+
+## Tranche 2 — socioeconomic sources and analysis
+
+Dylan selected a second tranche to reuse existing socioeconomic assets, admit missing eligible sources and connect them to election analysis. The [six SOC01–SOC06 nested tracks](socioeconomic_tranche_20261116/index.md) define inventory/reuse, source-native ingestion, geographic/statistical populations, dated joins, descriptive outcomes and separately authorised publication. They retain the existing P/G stage mappings and ownership; there is no new controller or top-level registry entry.
+
+The [source-state inventory](socioeconomic_tranche_20261116/source-inventory.json) separates verified code/metadata observations from unknown archive coverage. In particular, the existing five-row Census example materialiser is not empirical qualification. Direct 2023 Census tables on 2025 electorate boundaries should be assessed before approximate crosswalks.
+
+The [bounded implementation receipt](socioeconomic_tranche_20261116/implementation-receipt.md) records a separately downloadable offline synthetic reference prototype with 53 passing tests on Python3.13.5. That prototype is not installed application code, a repo-local3.15.1 qualification, real Stats NZ ingestion, a production join, a merge or an HF release. All six production tracks remain pending. Shared-owner source admission and the repository's unchanged verification gates precede adoption.
