@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import io
+import socket
+import traceback
 import urllib.request
 import urllib.response
 from email.message import Message
@@ -11,6 +13,7 @@ import pytest
 from scripts.capture_datafinder_exports import (
     API,
     _NoRedirect,
+    create_export,
     download,
     request,
     validated_https_url,
@@ -73,6 +76,10 @@ def _intercept_network(
     def block_urlopen(*_args: object, **_kwargs: object) -> None:
         pytest.fail("Direct urlopen could follow redirects and reach live network")
 
+    def block_socket_connection(*_args: object, **_kwargs: object) -> None:
+        pytest.fail("Live network is forbidden in Datafinder regressions")
+
+    monkeypatch.setattr(socket, "create_connection", block_socket_connection)
     monkeypatch.setattr(urllib.request, "build_opener", build_opener)
     monkeypatch.setattr(urllib.request, "urlopen", block_urlopen)
 
@@ -185,3 +192,94 @@ def test_signed_storage_refuses_unvalidated_redirect_chain(
         (publisher_url, f"key {marker}"),
         (signed_url, None),
     ]
+
+
+@pytest.mark.parametrize("status", [401, 403, 503])
+def test_create_export_error_diagnostics_do_not_echo_sensitive_data(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    status: int,
+) -> None:
+    """Keep reflected credentials, private text and signed URLs out of diagnostics."""
+    api_url = f"{API}/exports/"
+    markers = (
+        "synthetic-private-response-marker",
+        "synthetic-credential-marker",
+        "https://storage.example.org/export?synthetic=private-signature",
+    )
+    body = " ".join(markers).encode()
+    transport = _ScriptedTransport({api_url: (status, markers[2], body)})
+    _intercept_network(monkeypatch, transport)
+
+    with pytest.raises(SystemExit) as caught:
+        create_export(markers[1], 42, "synthetic layer")
+
+    assert str(caught.value) == f"export create failed for 42: HTTP {status}"
+    diagnostic = "".join(traceback.format_exception(caught.value))
+    for marker in markers:
+        assert marker not in diagnostic
+    captured = capsys.readouterr()
+    assert captured.out == ""
+    assert captured.err == ""
+    assert transport.calls == [(api_url, f"key {markers[1]}")]
+
+
+@pytest.mark.parametrize("status", [401, 403, 503])
+@pytest.mark.parametrize("failure_hop", ["publisher", "storage"])
+def test_download_error_diagnostics_do_not_echo_sensitive_data(
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    status: int,
+    failure_hop: str,
+) -> None:
+    """Both failed hops report status only, without a sensitive exception chain."""
+    publisher_url = f"{API}/exports/42/download/"
+    markers = (
+        "synthetic-private-response-marker",
+        "synthetic-credential-marker",
+        "https://storage.example.org/export?synthetic=private-signature",
+    )
+    signed_url = markers[2]
+    body = " ".join(markers).encode()
+    replies: dict[str, tuple[int, str | None, bytes]]
+    expected_calls: list[tuple[str, str | None]] = [
+        (publisher_url, f"key {markers[1]}"),
+    ]
+    if failure_hop == "publisher":
+        replies = {publisher_url: (status, signed_url, body)}
+        expected_message = f"download failed: HTTP {status}"
+    else:
+        replies = {
+            publisher_url: (302, signed_url, b""),
+            signed_url: (status, None, body),
+        }
+        expected_calls.append((signed_url, None))
+        expected_message = f"signed export fetch failed: HTTP {status}"
+    transport = _ScriptedTransport(replies)
+    _intercept_network(monkeypatch, transport)
+
+    with pytest.raises(SystemExit) as caught:
+        download(publisher_url, markers[1])
+
+    assert str(caught.value) == expected_message
+    assert caught.value.__suppress_context__
+    diagnostic = "".join(traceback.format_exception(caught.value))
+    for marker in markers:
+        assert marker not in diagnostic
+    captured = capsys.readouterr()
+    assert captured.out == ""
+    assert captured.err == ""
+    assert transport.calls == expected_calls
+
+
+def test_create_export_success_retains_publisher_identifier(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    """Error redaction must not change the successful publisher response contract."""
+    api_url = f"{API}/exports/"
+    transport = _ScriptedTransport({api_url: (201, None, b'{"id": 7301}')})
+    _intercept_network(monkeypatch, transport)
+
+    marker = "synthetic-credential"
+    assert create_export(marker, 42, "synthetic layer") == 7301
+    assert transport.calls == [(api_url, f"key {marker}")]

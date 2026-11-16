@@ -8,7 +8,8 @@ Each layer is exported as GeoParquet (EPSG:4326) plus the publisher's own ISO 19
 metadata (PDF/TXT/XML) inside one ZIP. The ZIP bytes are stored verbatim in the CAS so
 the provenance bundle stays byte-identical to what the source served.
 
-Run:  python scripts/capture_datafinder_exports.py [--verify-only]
+This script creates remote exports and writes the local CAS and capture receipt.
+It does not implement a ``--verify-only`` or other read-only mode.
 """
 
 # Standalone CLI scripts intentionally share a non-package directory.
@@ -126,7 +127,8 @@ def create_export(token: str, layer_id: int, title: str) -> int:
         f"{API}/exports/", token=token, method="POST", payload=payload
     )
     if status != HTTP_CREATED:
-        msg = f"export create failed for {layer_id}: HTTP {status} {body[:300]!r}"
+        # Source error bodies can contain credentials or private metadata.
+        msg = f"export create failed for {layer_id}: HTTP {status}"
         raise SystemExit(msg)
     return int(json.loads(body)["id"])
 
@@ -174,7 +176,8 @@ def download(url: str, token: str) -> bytes:
             return response.read()
     except urllib.error.HTTPError as exc:
         if exc.code not in {301, 302, 303, 307, 308}:
-            msg = f"download failed: HTTP {exc.code} {exc.read()[:200]!r}"
+            # Do not read or echo untrusted error-body content for diagnostics.
+            msg = f"download failed: HTTP {exc.code}"
             raise SystemExit(msg) from None
         location = exc.headers["Location"]
     if location is None:
