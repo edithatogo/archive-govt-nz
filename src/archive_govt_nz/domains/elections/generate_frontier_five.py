@@ -10,7 +10,9 @@
 from __future__ import annotations
 
 from pathlib import Path
+from typing import Any, cast
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 import numpy as np
 from scipy.spatial import Voronoi, voronoi_plot_2d
 
@@ -157,7 +159,7 @@ def generate_kinetic_coalition_3d(output_path: Path) -> Path:
         ax.scatter(
             [p["x"]],
             [p["y"]],
-            [z_floor],
+            zs=cast("Any", [z_floor]),
             color=p["color"],
             s=p["mass"] * 8,
             alpha=0.30,
@@ -258,7 +260,7 @@ def generate_kinetic_coalition_3d(output_path: Path) -> Path:
         ax.scatter(
             [p["x"]],
             [p["y"]],
-            [p["z"]],
+            zs=cast("Any", [p["z"]]),
             color=p["color"],
             s=node_size,
             edgecolors="#ffffff",
@@ -330,11 +332,11 @@ def generate_kinetic_coalition_3d(output_path: Path) -> Path:
     ax.set_zlim(z_floor, 1.05)
 
     # Pane and tick styling
-    ax.xaxis.pane.fill = False
-    ax.yaxis.pane.fill = False
+    cast("Any", ax.xaxis).pane.fill = False
+    cast("Any", ax.yaxis).pane.fill = False
     ax.zaxis.pane.fill = False
-    ax.xaxis.pane.set_edgecolor("#30363d")
-    ax.yaxis.pane.set_edgecolor("#30363d")
+    cast("Any", ax.xaxis).pane.set_edgecolor("#30363d")
+    cast("Any", ax.yaxis).pane.set_edgecolor("#30363d")
     ax.zaxis.pane.set_edgecolor("#30363d")
     ax.tick_params(colors="#8b949e", labelsize=8)
     ax.grid(color="#30363d", linestyle="--", alpha=0.3)
@@ -503,7 +505,7 @@ def generate_overhang_voronoi(output_path: Path) -> Path:
 
     # Custom legend
     legend_elements = [
-        plt.Line2D(
+        Line2D(
             [0],
             [0],
             marker="s",
@@ -512,7 +514,7 @@ def generate_overhang_voronoi(output_path: Path) -> Path:
             markerfacecolor="#00529F",
             markersize=10,
         ),
-        plt.Line2D(
+        Line2D(
             [0],
             [0],
             marker="s",
@@ -521,7 +523,7 @@ def generate_overhang_voronoi(output_path: Path) -> Path:
             markerfacecolor="#D82A20",
             markersize=10,
         ),
-        plt.Line2D(
+        Line2D(
             [0],
             [0],
             marker="s",
@@ -530,7 +532,7 @@ def generate_overhang_voronoi(output_path: Path) -> Path:
             markerfacecolor="#800020",
             markersize=10,
         ),
-        plt.Line2D(
+        Line2D(
             [0],
             [0],
             marker="o",

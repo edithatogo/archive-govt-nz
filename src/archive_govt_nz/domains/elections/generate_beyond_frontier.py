@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import shutil
 from pathlib import Path
+from typing import Any, cast
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -483,11 +484,20 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
             [ex, ex], [ey, ey], [ez, -0.6], color=c, lw=1.2, ls=":", alpha=0.8, zorder=3
         )
         # Floor projection dot
-        ax_3d.scatter([ex], [ey], [-0.6], color=c, s=40, alpha=0.5, zorder=2)
+        ax_3d.scatter(
+            [ex], [ey], zs=cast("Any", [-0.6]), color=c, s=40, alpha=0.5, zorder=2
+        )
 
         # 3D Node
         ax_3d.scatter(
-            [ex], [ey], [ez], color=c, s=150, edgecolors="#ffffff", lw=1.5, zorder=5
+            [ex],
+            [ey],
+            zs=cast("Any", [ez]),
+            color=c,
+            s=150,
+            edgecolors="#ffffff",
+            lw=1.5,
+            zorder=5,
         )
 
         # Callout badge text
@@ -525,11 +535,11 @@ def generate_all_beyond_frontier_figures() -> list[Path]:
     )
 
     ax_3d.set_facecolor("#050811")
-    ax_3d.xaxis.pane.fill = False
-    ax_3d.yaxis.pane.fill = False
+    cast("Any", ax_3d.xaxis).pane.fill = False
+    cast("Any", ax_3d.yaxis).pane.fill = False
     ax_3d.zaxis.pane.fill = False
-    ax_3d.xaxis.pane.set_edgecolor("#1e293b")
-    ax_3d.yaxis.pane.set_edgecolor("#1e293b")
+    cast("Any", ax_3d.xaxis).pane.set_edgecolor("#1e293b")
+    cast("Any", ax_3d.yaxis).pane.set_edgecolor("#1e293b")
     ax_3d.zaxis.pane.set_edgecolor("#1e293b")
     ax_3d.tick_params(colors="#94a3b8", labelsize=8)
     ax_3d.set_xlabel(
