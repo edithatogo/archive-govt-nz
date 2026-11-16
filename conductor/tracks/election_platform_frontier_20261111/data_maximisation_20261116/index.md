@@ -27,7 +27,9 @@ Maximise the verified analytical use of **already acquired** 1996–2026 electio
 | W5 Empirical model qualification, optional parliamentary links | [06 political economy](../../election_platform_06_political_economy_20261111/index.md) and [02 electoral lab](../../election_platform_02_electoral_lab_20261111/index.md) | Fit-only-on-observations; documented uncertainty and boundaries |
 | W6 Performance, CI, safety, quality and auditability | [07 solo harness](../../election_platform_07_solo_harness_20261111/index.md) | Existing full gates retained; bounded tests and reproducible evidence |
 
-Registered parent track: [election_platform_frontier_20261111](../index.md). No new top-level registry entry or standalone track is introduced.\n\nSee [requirements](requirements.md), [design](spec.md), [execution plan](plan.md), [initial source register](source-register.md), and [ChatGPT worker/concurrent integration orchestration](chatgpt-delivery-orchestration.md) and [scheduled, copy-ready ChatGPT stage prompts](scheduled-chatgpt-prompts.md).
+Registered parent track: [election_platform_frontier_20261111](../index.md). No new top-level registry entry or standalone track is introduced.
+
+See [requirements](requirements.md), [design](spec.md), [execution plan](plan.md), [initial source register](source-register.md), and [ChatGPT worker/concurrent integration orchestration](chatgpt-delivery-orchestration.md) and [scheduled, copy-ready ChatGPT stage prompts](scheduled-chatgpt-prompts.md).
 
 **Outcome and evidence links:** [15 question-to-data outcomes and 10 cross-dataset join tasks](outcomes-and-joins.md); [current November 2026 news and policy issue register](news-issue-register.md). These define what each new data source must help answer, how tables link, how question-specific Gold results are qualified and which claims remain unanswerable; both are planning-only. Optional advanced forecasting and experimental systems stay under existing 04/08 tracks and behind research-only qualification.
 
