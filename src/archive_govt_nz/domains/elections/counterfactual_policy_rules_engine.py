@@ -22,7 +22,9 @@ from archive_govt_nz.domains.elections.contracts import (
 )
 
 
-def compute_gallagher_index(vote_shares: dict[str, float], seat_shares: dict[str, float]) -> float:
+def compute_gallagher_index(
+    vote_shares: dict[str, float], seat_shares: dict[str, float]
+) -> float:
     """Calculate the Gallagher Index of electoral disproportionality.
 
     Formula: LSq = sqrt(0.5 * sum((V_i - S_i)^2))
@@ -67,9 +69,24 @@ def generate_counterfactual_rules_scenarios() -> list[CounterfactualVotingRuleSc
             },
             overhang_seats={"National Party": 7, "Te Pāti Māori": 4},
             viable_coalitions=[
-                {"name": "Centre-Right (Nat + ACT + NZ First)", "seats": 67, "majority": True, "surplus": 1},
-                {"name": "Centre-Left (Lab + Grn + TPM)", "seats": 57, "majority": False, "surplus": -9},
-                {"name": "Progressive + TOP (Lab + Grn + TPM + TOP)", "seats": 64, "majority": False, "surplus": -2},
+                {
+                    "name": "Centre-Right (Nat + ACT + NZ First)",
+                    "seats": 67,
+                    "majority": True,
+                    "surplus": 1,
+                },
+                {
+                    "name": "Centre-Left (Lab + Grn + TPM)",
+                    "seats": 57,
+                    "majority": False,
+                    "surplus": -9,
+                },
+                {
+                    "name": "Progressive + TOP (Lab + Grn + TPM + TOP)",
+                    "seats": 64,
+                    "majority": False,
+                    "surplus": -2,
+                },
             ],
             proportionality_gallagher_index=5.84,
             governance_implication=(
@@ -77,7 +94,6 @@ def generate_counterfactual_rules_scenarios() -> list[CounterfactualVotingRuleSc
                 "to govern. National caucus has 0 list MPs."
             ),
         ),
-
         # 2. 2012 Electoral Commission Review
         CounterfactualVotingRuleScenario(
             rule_id="electoral_commission_review_2012",
@@ -97,8 +113,18 @@ def generate_counterfactual_rules_scenarios() -> list[CounterfactualVotingRuleSc
             },
             overhang_seats={"National Party": 2, "Te Pāti Māori": 0},
             viable_coalitions=[
-                {"name": "Centre-Right (Nat + ACT + NZ First)", "seats": 63, "majority": True, "surplus": 1},
-                {"name": "Progressive Coalition (Lab + Grn + TPM + TOP)", "seats": 59, "majority": False, "surplus": -3},
+                {
+                    "name": "Centre-Right (Nat + ACT + NZ First)",
+                    "seats": 63,
+                    "majority": True,
+                    "surplus": 1,
+                },
+                {
+                    "name": "Progressive Coalition (Lab + Grn + TPM + TOP)",
+                    "seats": 59,
+                    "majority": False,
+                    "surplus": -3,
+                },
             ],
             proportionality_gallagher_index=3.42,
             governance_implication=(
@@ -106,7 +132,6 @@ def generate_counterfactual_rules_scenarios() -> list[CounterfactualVotingRuleSc
                 "electorates won directly without receiving list representation. Overhang is capped at +2."
             ),
         ),
-
         # 3. German Ausgleichsmandate (Full Proportional Leveling Seats)
         CounterfactualVotingRuleScenario(
             rule_id="german_ausgleichsmandate_leveling",
@@ -126,10 +151,30 @@ def generate_counterfactual_rules_scenarios() -> list[CounterfactualVotingRuleSc
             },
             overhang_seats={"National Party": 0, "Te Pāti Māori": 0},
             viable_coalitions=[
-                {"name": "Centre-Right (Nat + ACT + NZ First)", "seats": 71, "majority": False, "surplus": -4},
-                {"name": "Grand Coalition (Nat + Lab)", "seats": 80, "majority": True, "surplus": 5},
-                {"name": "Centre-Left (Lab + Grn + TPM)", "seats": 69, "majority": False, "surplus": -6},
-                {"name": "Broad Left + TOP (Lab + Grn + TPM + TOP)", "seats": 77, "majority": True, "surplus": 2},
+                {
+                    "name": "Centre-Right (Nat + ACT + NZ First)",
+                    "seats": 71,
+                    "majority": False,
+                    "surplus": -4,
+                },
+                {
+                    "name": "Grand Coalition (Nat + Lab)",
+                    "seats": 80,
+                    "majority": True,
+                    "surplus": 5,
+                },
+                {
+                    "name": "Centre-Left (Lab + Grn + TPM)",
+                    "seats": 69,
+                    "majority": False,
+                    "surplus": -6,
+                },
+                {
+                    "name": "Broad Left + TOP (Lab + Grn + TPM + TOP)",
+                    "seats": 77,
+                    "majority": True,
+                    "surplus": 2,
+                },
             ],
             proportionality_gallagher_index=1.12,
             governance_implication=(
@@ -137,7 +182,6 @@ def generate_counterfactual_rules_scenarios() -> list[CounterfactualVotingRuleSc
                 "(71 seats) falls short of 75-seat majority! Broad Left + TOP (77 seats) achieves majority."
             ),
         ),
-
         # 4. Strict 120-Seat Hard Cap
         CounterfactualVotingRuleScenario(
             rule_id="strict_120_seat_hard_cap",
@@ -157,10 +201,30 @@ def generate_counterfactual_rules_scenarios() -> list[CounterfactualVotingRuleSc
             },
             overhang_seats={"National Party": 0, "Te Pāti Māori": 0},
             viable_coalitions=[
-                {"name": "Centre-Right (Nat + ACT + NZ First)", "seats": 59, "majority": False, "surplus": -2},
-                {"name": "Centre-Right + TOP (Nat + ACT + NZ First + TOP)", "seats": 66, "majority": True, "surplus": 5},
-                {"name": "Centre-Left (Lab + Grn + TPM)", "seats": 54, "majority": False, "surplus": -7},
-                {"name": "Broad Left + TOP (Lab + Grn + TPM + TOP)", "seats": 61, "majority": True, "surplus": 0},
+                {
+                    "name": "Centre-Right (Nat + ACT + NZ First)",
+                    "seats": 59,
+                    "majority": False,
+                    "surplus": -2,
+                },
+                {
+                    "name": "Centre-Right + TOP (Nat + ACT + NZ First + TOP)",
+                    "seats": 66,
+                    "majority": True,
+                    "surplus": 5,
+                },
+                {
+                    "name": "Centre-Left (Lab + Grn + TPM)",
+                    "seats": 54,
+                    "majority": False,
+                    "surplus": -7,
+                },
+                {
+                    "name": "Broad Left + TOP (Lab + Grn + TPM + TOP)",
+                    "seats": 61,
+                    "majority": True,
+                    "surplus": 0,
+                },
             ],
             proportionality_gallagher_index=2.85,
             governance_implication=(
@@ -168,7 +232,6 @@ def generate_counterfactual_rules_scenarios() -> list[CounterfactualVotingRuleSc
                 "to reach 61-seat majority, requiring TOP as a fourth coalition partner to form government."
             ),
         ),
-
         # 5. Instant-Runoff Voting (IRV) in Electorates
         CounterfactualVotingRuleScenario(
             rule_id="preferential_irv_in_electorates",
@@ -188,8 +251,18 @@ def generate_counterfactual_rules_scenarios() -> list[CounterfactualVotingRuleSc
             },
             overhang_seats={"National Party": 0, "Te Pāti Māori": 4},
             viable_coalitions=[
-                {"name": "Centre-Left Bloc (Lab + Grn + TPM)", "seats": 64, "majority": True, "surplus": 1},
-                {"name": "Centre-Right (Nat + ACT + NZ First)", "seats": 60, "majority": False, "surplus": -3},
+                {
+                    "name": "Centre-Left Bloc (Lab + Grn + TPM)",
+                    "seats": 64,
+                    "majority": True,
+                    "surplus": 1,
+                },
+                {
+                    "name": "Centre-Right (Nat + ACT + NZ First)",
+                    "seats": 60,
+                    "majority": False,
+                    "surplus": -3,
+                },
             ],
             proportionality_gallagher_index=3.15,
             governance_implication=(
@@ -197,7 +270,6 @@ def generate_counterfactual_rules_scenarios() -> list[CounterfactualVotingRuleSc
                 "wins drop to 31, completely eliminating National's +7 overhang! Centre-Left bloc wins 64 seats (majority)."
             ),
         ),
-
         # 6. Reversal of 2022 Continuous Māori Roll Option
         CounterfactualVotingRuleScenario(
             rule_id="pre_2023_fixed_maori_option_window",
@@ -217,8 +289,18 @@ def generate_counterfactual_rules_scenarios() -> list[CounterfactualVotingRuleSc
             },
             overhang_seats={"National Party": 6, "Te Pāti Māori": 1},
             viable_coalitions=[
-                {"name": "Centre-Right (Nat + ACT + NZ First)", "seats": 67, "majority": True, "surplus": 3},
-                {"name": "Centre-Left (Lab + Grn + TPM)", "seats": 53, "majority": False, "surplus": -11},
+                {
+                    "name": "Centre-Right (Nat + ACT + NZ First)",
+                    "seats": 67,
+                    "majority": True,
+                    "surplus": 3,
+                },
+                {
+                    "name": "Centre-Left (Lab + Grn + TPM)",
+                    "seats": 53,
+                    "majority": False,
+                    "surplus": -11,
+                },
             ],
             proportionality_gallagher_index=4.92,
             governance_implication=(
@@ -226,7 +308,6 @@ def generate_counterfactual_rules_scenarios() -> list[CounterfactualVotingRuleSc
                 "Green Party excess Māori PV drops by 45,000, reducing Green list intake from 17 to 15. Total House = 127."
             ),
         ),
-
         # 7. Single Transferable Vote (STV) in Multi-Member Districts
         CounterfactualVotingRuleScenario(
             rule_id="stv_multi_member_districts",
@@ -246,8 +327,18 @@ def generate_counterfactual_rules_scenarios() -> list[CounterfactualVotingRuleSc
             },
             overhang_seats={"National Party": 0, "Te Pāti Māori": 0},
             viable_coalitions=[
-                {"name": "Centre-Right (Nat + ACT + NZ First)", "seats": 61, "majority": True, "surplus": 0},
-                {"name": "Centre-Left + TOP (Lab + Grn + TPM + TOP)", "seats": 59, "majority": False, "surplus": -2},
+                {
+                    "name": "Centre-Right (Nat + ACT + NZ First)",
+                    "seats": 61,
+                    "majority": True,
+                    "surplus": 0,
+                },
+                {
+                    "name": "Centre-Left + TOP (Lab + Grn + TPM + TOP)",
+                    "seats": 59,
+                    "majority": False,
+                    "surplus": -2,
+                },
             ],
             proportionality_gallagher_index=2.10,
             governance_implication=(

@@ -771,4 +771,3 @@ class ElectorateBoundaryGeographyAnalysis(BaseModel):
     rural_provincial_efficiency_advantage_pct: float
     maori_electorate_8th_seat_threshold: dict[str, Any]
     methodological_note_and_interpretation: str
-
