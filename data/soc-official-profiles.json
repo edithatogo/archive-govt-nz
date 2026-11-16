@@ -1,0 +1,49 @@
+{
+  "schema_version": "soc-official-profile-library-v1",
+  "tables": {
+    "table_1": {"sheet":"Age","header_row":3,"headers":{"B":"0-4 years","C":"5-9 years","D":"10-14 years","E":"15-19 years","F":"20-24 years","G":"25-29 years","H":"30-34 years","I":"35-39 years","J":"40-44 years","K":"45-49 years","L":"50-54 years","M":"55-59 years","N":"60-64 years","O":"65-69 years","P":"70-74 years","Q":"75-79 years","R":"80-84 years","S":"85-89 years","T":"90 years and over","U":"Total"},"unit":"persons","population":"source-defined resident population; age groups"},
+    "table_2": {"sheet":"Labour force status","header_row":3,"headers":{"B":"Employed Full-time","C":"Employed Part-time","D":"Not in the Labour Force","E":"Unemployed","F":"Work and Labour Force Status Unidentifiable","G":"Total","H":"Total stated"},"unit":"persons","population":"source-defined resident population aged 15 years and over"},
+    "table_3": {"sheet":"Highest qualification","header_row":3,"headers":{"B":"Level 1 certificate","C":"Level 2 certificate","D":"Level 3 certificate","E":"Overseas secondary school qualification","F":"Level 4 certificate","G":"Level 5 diploma","H":"Level 6 diploma","I":"Bachelor degree and Level 7 qualification","J":"Post-graduate and honours degrees","K":"Masters degree","L":"Doctorate degree","M":"No qualification","N":"Not elsewhere included","O":"Total","P":"Total stated"},"unit":"persons","population":"source-defined resident population aged 15 years and over"},
+    "table_4": {"sheet":"Individual home ownership","header_row":3,"headers":{"B":"Do not own and do not hold in a family trust","C":"Hold in a family trust","D":"Not elsewhere included","E":"Own or partly own","F":"Total","G":"Total stated"},"unit":"persons","population":"source-defined resident population aged 15 years and over"},
+    "table_5": {"sheet":"Personal income","header_row":2,"headers":{"B":"Mean Personal Income","C":"Median Personal Income"},"unit":"NZD_per_year","population":"source-defined resident population aged 15 years and over"},
+    "table_6": {"sheet":"Household income","header_row":2,"headers":{"B":"Mean Household Income","C":"Median Household Income"},"unit":"NZD_per_year","population":"publisher-defined households; subset definitions require review"},
+    "table_7": {"sheet":"MeanMedian Weekly Rent","header_row":2,"headers":{"B":"Mean Weekly Rent","C":"Median Weekly Rent"},"unit":"NZD_per_week","population":"publisher-defined renting households; subset definitions require review"},
+    "table_8": {"sheet":"Labour force status","header_row":3,"headers":{"B":"Employed Full-time","C":"Employed Part-time","D":"Unemployed","E":"Not in the Labour Force","F":"Work and Labour Force Status Unidentifiable","G":"Total","H":"Total stated"},"unit":"persons","population":"source-defined resident population aged 15 years and over"},
+    "table_9": {"sheet":"Highest qualification","header_row":3,"headers":{"B":"No qualification","C":"Level 1 certificate","D":"Level 2 certificate","E":"Level 3 certificate","F":"Level 4 certificate","G":"Level 5 diploma","H":"Level 6 diploma","I":"Bachelor degree and Level 7 qualification","J":"Post-graduate and honours degrees","K":"Masters degree","L":"Doctorate degree","M":"Overseas secondary school qualification","N":"Not elsewhere included","O":"Total","P":"Total stated"},"unit":"persons","population":"source-defined resident population aged 15 years and over"},
+    "table_10": {"sheet":"Individual home ownership","header_row":3,"headers":{"B":"Hold in a family trust","C":"Own or partly own","D":"Do not own and do not hold in a family trust","E":"Not elsewhere included","F":"Total","G":"Total stated"},"unit":"persons","population":"source-defined resident population aged 15 years and over"},
+    "table_11": {"sheet":"Personal income","header_row":3,"headers":{"B":"Mean Personal Income","C":"Median Personal Income"},"unit":"NZD_per_year","population":"source-defined resident population aged 15 years and over"},
+    "table_12": {"sheet":"Household income","header_row":3,"headers":{"B":"Mean Household Income","C":"Median Household Income"},"unit":"NZD_per_year","population":"publisher-defined households; subset definitions require review"},
+    "table_13": {"sheet":"MeanMedian Weekly Rent","header_row":2,"headers":{"B":"Mean Weekly Rent","C":"Median Weekly Rent"},"unit":"NZD_per_week","population":"publisher-defined renting households; subset definitions require review","geography_aliases":{"Ikaroa-Rawhiti":"Ikaroa-Rāwhiti","Tamaki Makaurau":"Tāmaki Makaurau","Te Tai Hauauru":"Te Tai Hauāuru"},"alias_evidence":"Explicit within-workbook matching to Age and Personal income area rows; source spellings retained. No fuzzy match or cross-boundary conversion."},
+    "table_14": {"sheet":"MeanMedian Weekly Rent","header_row":2,"headers":{"B":"Mean Weekly Rent Paid","C":"Median Weekly Rent Paid"},"unit":"NZD_per_week","population":"publisher-defined renting households; subset definitions require review"}
+  },
+  "cohorts": {
+    "census2023_general_2020": {
+      "source_id":"census2023_general_2020","source_sha256":"c3bd589f7aa6ff053c3a1ac9c1d4d678e6f30908c5b7d5bcf6533b38cd501fe2","extract_sha256":"a3dd56bbfaf47734f9eb1e9be702f3f3d052693f8973d75731929aff0da27b39",
+      "source_url":"https://www3.parliament.nz/media/11660/general_electorate_census2023_data.xlsx","geography_system":"general_electorate","boundary_vintage":"2020","captured_at":"2026-11-16T11:04:56.262285+00:00","compiled_date":"2025-02-28",
+      "population_note":"This dataset contains Census 2023 data customised by Stats NZ for the Parliamentary Library. Not all data included in Census 2023 are included here. All data in this document is at Level 1 hierarchy of data (broadest level). Ethnicity data is available at Level 1 and 4 (most detailed) hierarchy of data.",
+      "licence_note":"Source: Stats NZ, customised report and licensed by Stats NZ for re-use under the Creative Commons Attribution 4.0 International licence.",
+      "table_ids":["table_1","table_2","table_3","table_4","table_5","table_6","table_7"]
+    },
+    "census2023_maori_2020": {
+      "source_id":"census2023_maori_2020","source_sha256":"d775725a52511a4869c2da4e7a17dabff07b0bb48cebb95a5aafe6c6e60f2735","extract_sha256":"321d6c477eeb1cb6b6af658d5b8f211a58d45d9af07f0578ea6174fe7e4f5529",
+      "source_url":"https://www3.parliament.nz/media/11661/m%C4%81ori_electorate_census2023_data.xlsx","geography_system":"maori_electorate","boundary_vintage":"2020","captured_at":"2026-11-16T11:04:58.930549+00:00","compiled_date":"2025-02-28",
+      "population_note":"This dataset contains Census 2023 data customised by Stats NZ for the Parliamentary Library. Not all data included in Census 2023 are included here. All data is at Level 1 hierarchy of data (broadest level). The Māori electorates dataset is about people of Māori descent living in the electorate. Please refer to 'Variable specific footnotes' for Māori descent information. ",
+      "licence_note":"Source: Stats NZ, customised report and licensed by Stats NZ for re-use under the Creative Commons Attribution 4.0 International licence.",
+      "table_ids":["table_1","table_8","table_9","table_10","table_11","table_12","table_13"]
+    },
+    "census2023_general_2025": {
+      "source_id":"census2023_general_2025","source_sha256":"50eff43591730c3c670e94e6d75058c8e376635fdac64fd471c4238685b3a1d2","extract_sha256":"2ab8340f939c83cf67ddb62f6caf60cbbd85adc9ea819e5f12d3e56a9f9c9239",
+      "source_url":"https://www3.parliament.nz/media/12108/general_electorate_census2023_data_2025boundaries.xlsx","geography_system":"general_electorate","boundary_vintage":"2025","captured_at":"2026-11-16T11:05:02.243720+00:00","compiled_date":"2026-03-20",
+      "population_note":"This dataset contains Census 2023 data customised by Stats NZ for the Parliamentary Library. Not all data included in Census 2023 are included here. All data in this document is at Level 1 hierarchy of data (broadest level). Ethnicity data is available at Level 1 and 4 (most detailed) hierarchy of data.",
+      "licence_note":"Source: Stats NZ, customised report and licensed by Stats NZ for re-use under the Creative Commons Attribution 4.0 International licence.",
+      "table_ids":["table_1","table_8","table_9","table_10","table_5","table_6","table_14"]
+    },
+    "census2023_maori_2025": {
+      "source_id":"census2023_maori_2025","source_sha256":"85cb7fa45eb5a245d6281d4ff235cc6eac57468225699a4808240ce1f1374cf6","extract_sha256":"247a7f783877693ef401e51f9d5c9ee4984fdf007305664ce32dd989dbfed9ba",
+      "source_url":"https://www3.parliament.nz/media/12109/m%C4%81ori_electorate_census2023_data_2025boundaries.xlsx","geography_system":"maori_electorate","boundary_vintage":"2025","captured_at":"2026-11-16T11:05:04.533799+00:00","compiled_date":"2026-03-20",
+      "population_note":"This dataset contains Census 2023 data customised by Stats NZ for the Parliamentary Library. Not all data included in Census 2023 are included here. All data is at Level 1 hierarchy of data (broadest level). The Māori electorates dataset is about people of Māori descent living in the electorate. Please refer to 'Variable specific footnotes' for Māori descent information. ",
+      "licence_note":"Source: Stats NZ, customised report and licensed by Stats NZ for re-use under the Creative Commons Attribution 4.0 International licence.",
+      "table_ids":["table_1","table_8","table_9","table_10","table_11","table_12","table_7"]
+    }
+  }
+}
