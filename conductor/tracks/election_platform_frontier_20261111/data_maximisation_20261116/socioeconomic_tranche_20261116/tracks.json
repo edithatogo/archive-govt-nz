@@ -1,0 +1,21 @@
+{
+  "schema_version": "socioeconomic-tranche-plan/1",
+  "tranche_id": "socioeconomic_tranche_20261116",
+  "parent": "election_platform_frontier_20261111",
+  "scope": "nested planning subtracks, not new top-level registry entries",
+  "admission_status": "held_pending_existing_owner_and_integrator",
+  "runtime_required": "CPython 3.15.1 repo-local",
+  "production_code_changed": false,
+  "raw_data_acquired": false,
+  "hugging_face_published": false,
+  "inventory_exhaustive": false,
+  "existing_automation_changed": false,
+  "tracks": [
+    {"id":"SOC01","title":"Inventory, eligibility and existing-asset reuse","plan":"SOC01-inventory.md","depends_on":[],"status":"pending","evidence":"partial metadata/code inspection; not a complete asset census","acceptance":"source/period/boundary/query-specific inventory with pinned revisions and original-byte verification"},
+    {"id":"SOC02","title":"Source-native socioeconomic normalisation","plan":"SOC02-ingestion.md","depends_on":["SOC01"],"status":"pending","evidence":"external synthetic CSV reference prototype; no real source profile admitted","acceptance":"qualified original CSV/API metadata, explicit dimensions and statuses, independently reconciled observations"},
+    {"id":"SOC03","title":"Geography, boundary and statistical populations","plan":"SOC03-geography.md","depends_on":["SOC01"],"status":"pending","evidence":"exact geography guards in external prototype; no real concordance qualification","acceptance":"direct source-vintage joins first; independently validated count/distribution concordances where needed"},
+    {"id":"SOC04","title":"Temporal electoral joins and analytical panels","plan":"SOC04-joins.md","depends_on":["SOC02","SOC03"],"external_dependencies":["accepted P2/P6 party, geography and result-vintage contracts"],"status":"pending","evidence":"external as-of/exact-join prototype on synthetic rows","acceptance":"cardinality, missingness, temporal provenance and independent source-total parity"},
+    {"id":"SOC05","title":"Socioeconomic outcomes and research qualification","plan":"SOC05-analysis.md","depends_on":["SOC04"],"status":"pending","evidence":"external synthetic unweighted ecological association and independent numerical oracle","acceptance":"validated real descriptive outcomes with coverage; separately qualified statistical models"},
+    {"id":"SOC06","title":"Research publication, source-state UI and freshness","plan":"SOC06-publication.md","depends_on":["SOC04","SOC05"],"external_dependencies":["existing P9 publication owner and explicit release authority"],"status":"pending","evidence":"not implemented or published","acceptance":"source-to-Gold-to-export-to-served-HF parity, accessible UI and immutable release/rollback evidence"}
+  ]
+}
