@@ -142,9 +142,13 @@ def capture(output: Path) -> dict:
         record = dict(spec)
         try:
             raw, headers = download(spec["url"])
-            sheets = workbook_cells(raw)
+            if not raw.startswith(b"PK\x03\x04"):
+                raise ValueError("not an XLSX original")
             identity = hashlib.sha256(raw).hexdigest()
             (output / (spec["id"] + ".xlsx")).write_bytes(raw)
+            record.update(headers)
+            record.update({"sha256": identity, "bytes": len(raw), "captured_at": datetime.now(UTC).isoformat()})
+            sheets = workbook_cells(raw)
             extract = json.dumps({"source_sha256": identity, "sheets": sheets}, ensure_ascii=False, separators=(",", ":")).encode()
             (output / (spec["id"] + ".cells.json")).write_bytes(extract)
             record.update(headers)
@@ -156,7 +160,7 @@ def capture(output: Path) -> dict:
                     sample = [c for c in sheet["cells"] if int(re.sub(r"[A-Z]", "", c[0])) <= 45][:300]
                     print("LAYOUT " + spec["id"] + " " + json.dumps({"name": sheet["name"], "cells": sample}, ensure_ascii=False), flush=True)
         except (OSError, ValueError, KeyError, ET.ParseError, zipfile.BadZipFile, http.client.HTTPException) as error:
-            record.update({"status": "failed", "error_type": type(error).__name__})
+            record.update({"status": "captured_extraction_failed" if "sha256" in record else "failed", "error_type": type(error).__name__})
             print("CAPTURE " + json.dumps(record), flush=True)
         records.append(record)
     manifest = {"schema_version": "soc-official-capture-v1", "runtime": sys.version, "records": records,
