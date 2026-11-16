@@ -1,6 +1,13 @@
 name: SOC official source normalisation
 
 on:
+  push:
+    branches: [feat/soc02-ingestion-20261116]
+    paths:
+      - tools/normalise_soc_official.py
+      - tools/verify_soc_official.py
+      - data/soc-official-profiles.json
+      - .github/workflows/soc-source-normalisation.yml
   pull_request:
     paths:
       - tools/normalise_soc_official.py
@@ -15,7 +22,7 @@ permissions:
 
 jobs:
   normalise:
-    if: github.event_name == 'workflow_dispatch' || github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 6
     steps:
