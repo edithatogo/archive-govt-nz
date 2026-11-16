@@ -97,6 +97,10 @@ When two lanes discover an interface gap, the **single shared owner** proposes a
 
 **Integration is serial even when implementation is parallel.** Every PR targets current `main` or an explicitly acknowledged upstream base; do not quietly stack behind an unqualified draft. The sole coordinator evaluates semantic cross-PR conflicts, exact-head required checks, and main-after-merge regression. Update dependent branches and rerun their invalidated scopes before subsequent merges; never treat a pass on an older base or SHA as current evidence.
 
+## Scheduled controller and copy-ready prompts
+
+A single scheduled automation (ID `6afa646d40848191bdf77031cf77a38c`) evaluates the earliest eligible stage at approximately 08:30 and 16:30 Brisbane weekdays; this does **not** start other chats or bypass ownership and gates. All P0–P10 individual stage prompts and run behaviour are in [the scheduled prompt pack](scheduled-chatgpt-prompts.md). Later stages only become eligible after evidence-backed acceptance of their dependencies, not because their start time elapsed.
+
 ## F. Launch and handoff template for each ChatGPT implementation chat
 
 The **existing** coordinator (not a new duplicate) first records a lane claim in issue #867 or the relevant existing track, including proposed owner chat/UUID, source cohort, exact branch/base SHA, named paths, native object scope, expected output and outstanding external approval. User launches/resumes a **single** worker conversation for that claim; ChatGPT cannot assume it autonomously monitors other conversations or performs background work.
