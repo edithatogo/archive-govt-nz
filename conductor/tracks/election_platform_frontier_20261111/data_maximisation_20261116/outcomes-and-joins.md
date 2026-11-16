@@ -96,6 +96,8 @@ News articles are **topic pointers and citations**, not evidence that a financia
 
 Each OID has a durable `QuestionEvidenceReceipt` containing: question ID and version; precise measure and denominator; original source URIs and licences; captured/published/verified dates and hashes; lookup IDs and temporal/geography mapping version; join cardinality, coverage, missingness, discrepancies and independently recomputed totals; transformation Git SHA; scientific status with limitations; exact-head CI evidence; deployment SHA and served readback. If any required source is pending or held, display **not answerable yet** and what is missing; do not show demonstrative figures as actual findings. When new 2026 final counts arrive, recompute dependent outcomes atomically against a new immutable release without rewriting prior evidence.
 
+Execution sequencing and handoff gates: [ChatGPT delivery orchestration](chatgpt-delivery-orchestration.md).
+
 ## Ownership, tests and publication boundary
 
 Use existing track 01 for source identity, 03 for geography, 05 for Gold/publication, 06 for finance/empirical analysis and 07 for assurance. Shared files and native ingests remain with their assigned owners; the new subplan is documentation and creates no authority to perform harvesting, publish, or merge without the existing coordinator's admitted review. Every implementation increment uses the repo-local CPython 3.15.1, focused tests, required full `./scripts/validate.sh`, exact-head hosted checks, rights/privacy scan and source-to-HF parity where applicable. No weaker gate is introduced.
