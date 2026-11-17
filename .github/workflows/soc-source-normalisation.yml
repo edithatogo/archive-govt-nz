@@ -8,6 +8,8 @@ on:
       - tools/export_soc_columnar.py
       - tests/test_soc_columnar_export.py
       - tools/verify_soc_official.py
+      - tools/verify_soc_extended.py
+      - tools/normalise_soc_extended.py
       - data/soc-official-profiles.json
       - .github/workflows/soc-source-normalisation.yml
   pull_request:
@@ -16,6 +18,8 @@ on:
       - tools/export_soc_columnar.py
       - tests/test_soc_columnar_export.py
       - tools/verify_soc_official.py
+      - tools/verify_soc_extended.py
+      - tools/normalise_soc_extended.py
       - data/soc-official-profiles.json
       - .github/workflows/soc-source-normalisation.yml
   workflow_dispatch:
@@ -71,6 +75,31 @@ jobs:
         with:
           name: soc-columnar-${{ github.sha }}
           path: build/soc-columnar/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Validate expanded official source layouts and confidentiality
+        env:
+          SOC_ORIGINALS: build/soc-official-originals
+        run: |
+          uv run --locked --python 3.15.1 python tools/verify_soc_extended.py -v
+      - name: Extract 22 Census table families from pinned official originals
+        run: |
+          uv run --locked --python 3.15.1 python tools/normalise_soc_extended.py --originals build/soc-official-originals --output build/soc-expanded
+      - name: Verify and export extended Census to Arrow and Parquet
+        run: |
+          uv run --locked --python 3.15.1 python tools/export_soc_columnar.py --normalised build/soc-expanded --receipt-file build/soc-expanded/receipt.json --datasets census-extended --output build/soc-columnar-expanded
+      - name: Retain independently verified expanded columnar files
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: soc-columnar-expanded-${{ github.sha }}
+          path: build/soc-columnar-expanded/
+          if-no-files-found: error
+          retention-days: 30
+      - name: Retain expanded source-normalisation evidence
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: soc-normalised-expanded-${{ github.sha }}
+          path: build/soc-expanded/
           if-no-files-found: error
           retention-days: 30
       - name: Retain normalised candidate and receipt
