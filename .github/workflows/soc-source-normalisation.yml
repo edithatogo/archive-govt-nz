@@ -59,6 +59,8 @@ jobs:
         run: .venv-soc-source/bin/python tools/normalise_soc_official.py --originals build/soc-official-originals --profiles data/soc-official-profiles.json --output build/soc-normalised
       - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2
       - name: Validate existing locked Arrow/Parquet dependency and conversion controls
+        env:
+          PYTHONPATH: .
         run: |
           uv run --locked --python 3.15.1 pytest tests/test_soc_columnar_export.py -q -rs
       - name: Convert both source-verified tables to Arrow and Parquet
