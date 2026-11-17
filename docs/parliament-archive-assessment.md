@@ -103,3 +103,7 @@ No full-archive or operational-success claim follows from this document.
 Reports now have a bounded resumable API/capture/publication lane. Ten reports were manually captured and anonymously hash-verified in the existing public, ungated [Hugging Face dataset](https://huggingface.co/datasets/edithatogo/archive-govt-nz-global/tree/main/parliament). All eligible Parliament outputs must use that public destination. Code rejects private or gated targets and has no repository-creation fallback. This is a pilot, not all Parliament data.
 
 Submissions and most committee advice are excluded from the current general reuse permission; legacy crawler access is denied. Their full archival and additional legacy collections remain blocked pending qualified source/access/reuse contracts. See the [track evidence](../conductor/tracks/parliament_archive_streams_20261026/evidence.md).
+
+## Superseding operator direction — 17 November 2026
+
+The operator confirms that the access/reuse issues referenced above have already been addressed and directs implementation to proceed. The older 26 October source-policy observations are retained as historical evidence, **not** a reason to request another general authorisation. See the [current P1 source checkpoint](parliament-p1-qualification-20261117.md) for verified current index views, exact ID-matching examples, offline reconciliation tests, remaining *technical* evidence and the fixed public destination. Per-object provenance and independent publication verification remain mandatory.

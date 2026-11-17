@@ -11,6 +11,7 @@ Status: implementation in progress; public report pilot verified; submissions/ad
 - [Evidence and gates](evidence.md)
 - [Self-review](review.md)
 - [Source assessment](../../../docs/parliament-archive-assessment.md)
+- [P1 qualification and blocked source gates (17 November 2026)](../../../docs/parliament-p1-qualification-20261117.md)
 
 - [P1: Source, rights and destination qualification](https://github.com/edithatogo/archive-govt-nz/issues/779)
 - [P2: Durable discovery and streaming capture](https://github.com/edithatogo/archive-govt-nz/issues/780)
