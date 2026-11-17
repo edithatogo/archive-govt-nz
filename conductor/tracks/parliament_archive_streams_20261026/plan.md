@@ -6,10 +6,12 @@ Implementation authorized on 26 October 2026; qualification in progress. Parent:
 
 Issue: https://github.com/edithatogo/archive-govt-nz/issues/779
 
-- [~] Task: Report host/API, GUID, pagination and attachment contract are verified; legacy source access and real submissions/advice filters remain blocked by the previously observed robots denial. See [P1 qualification](../../../docs/parliament-p1-qualification-20261117.md).
-- [ ] Task: Reconcile evidence and submissions/advice indexes by identity/filter scope. **Blocked** pending permitted matched source snapshots; actual overlap, unique union and historical completeness remain unknown. Scope-labelled matching and anti-join acceptance are specified in the P1 qualification.
-- [x] Task: Record source-specific reuse/privacy restrictions, item-level held/eligible decisions, exact existing public Hugging Face destination and additive revision-pinned write path. **Decision documented**, not blanket eligibility.
-- [~] Task: P1 evidence checkpoint recorded 17 November 2026; no new source acquisition/publication or full integration run claimed. Exact PR-head documentation and hosted checks required before completion; external source gates retain P1 as open.
+**Operator authorisation confirmed 17 November:** the user states the earlier restrictions have been addressed and directs progress, without a fresh blanket rights adjudication. Superseding [source checkpoint](../../../docs/parliament-p1-qualification-20261117.md).
+
+- [~] Task: Characterize legacy/new host URLs, released evidence and advice source IDs, first-page filters, categories, index totals and report GUID/attachment contract through bounded read-only source observations. Current source examples are verified; full pagination and attachment semantics need durable permitted snapshots.
+- [~] Task: Reconcile evidence, advice and combined indexes by exact IDs and effective filter scope. Two live examples match across views; the new pure reconciliation module and six synthetic tests pass. Full historical anti-join/coverage remains unproven, not a licence blocker.
+- [x] Task: Record current operator authorisation, historical source reuse/privacy provenance, exact existing public Hugging Face destination, additive namespace and qualified write route. Future payloads retain source-specific rights/attribution and hash-bound evidence.
+- [~] Task: P1 checkpoint updated 17 November; six focused reconciliation tests passed under local Python 3.13.5. Repo-local 3.15.1/full harness and required PR-head hosted checks remain separately unverified. No new source payload acquisition or Hub publication claimed.
 
 ## P2: Durable discovery and streaming capture
 
