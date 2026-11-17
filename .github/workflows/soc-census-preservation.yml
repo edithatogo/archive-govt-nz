@@ -1,0 +1,60 @@
+name: SOC source preservation (manual, rights-gated)
+
+on:
+  workflow_dispatch:
+    inputs:
+      rights_approved:
+        description: "Confirm independent CC-BY-4.0 source-rights review and authorise 4 Census originals only"
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: soc-census-preservation
+  cancel-in-progress: false
+
+jobs:
+  preserve:
+    if: github.ref == 'refs/heads/main' && inputs.rights_approved == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.15.1'
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2
+      - name: Reuse pinned six-source archive rather than downloading duplicate files
+        uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
+        with:
+          name: soc-official-sources-e39da9b22f4c314f9cf1bc39aa60d0e764e2fd87
+          run-id: 43853935316
+          github-token: \${{ github.token }}
+          path: build/soc-official-originals
+      - name: Qualify content addresses and rights holds with locked Python 3.15.1
+        env:
+          PYTHONPATH: .
+        run: |
+          uv run --locked --python 3.15.1 pytest tests/test_soc_census_preservation.py -q
+          uv run --locked --python 3.15.1 python tools/preserve_soc_census.py --originals build/soc-official-originals > build/soc-census-plan.json
+      - name: Preserve only manually approved Stats NZ CC-BY Census originals
+        env:
+          HF_TOKEN: \${{ secrets.HF_TOKEN }}
+        run: |
+          uv run --locked --python 3.15.1 python tools/preserve_soc_census.py --originals build/soc-official-originals --rights-approved --publish > build/soc-census-preservation-receipt.json
+      - name: Retain source-plan and independent HF byte verification receipts
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: soc-census-preservation-\${{ github.sha }}
+          path: |
+            build/soc-census-plan.json
+            build/soc-census-preservation-receipt.json
+          if-no-files-found: warn
+          retention-days: 90
