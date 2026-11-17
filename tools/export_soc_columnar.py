@@ -206,9 +206,10 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--normalised", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--receipt-file", type=Path)
     parser.add_argument("--datasets", nargs="+", default=["census-long", "turnout-age"])
     args = parser.parse_args()
-    receipt_path = args.normalised / "normalisation-receipt.json"
+    receipt_path = args.receipt_file or (args.normalised / "normalisation-receipt.json")
     receipt = json.loads(receipt_path.read_text())
     require(set(args.datasets) <= SUPPORTED, "unsupported dataset requested")
     require(not args.output.exists(), "output already exists")
