@@ -44,3 +44,10 @@ P7 current-runtime recovery and continuous-run readback:
 [hosted-recovery-acceptance.json](../../../evidence/parliament-assurance/20261028/hosted-recovery-acceptance.json).
 It retains first failures, conservative zero-acquisition recovery, current-runtime
 native proof and the separately observed natural lease-fencing failure.
+
+
+## P1 source / rights / destination decision checkpoint — 17 November 2026
+
+[Versioned qualification and unlock criteria](../../../docs/parliament-p1-qualification-20261117.md) reconcile the existing 26 October source-policy observations, source ID/filter distinctions and historic index totals against official [copyright](https://www.parliament.nz/Copyright) and [privacy](https://www.parliament.nz/Privacy) guidance and the already-verified public Hub route. The report API is qualified; the legacy `www3` crawler was denied, evidence versus advice identities have **not** been cross-index reconciled, and general source permission does **not** cover submissions or most advice. The 1,194,789 and 746,385 historic displayed totals are different unproven populations, not an overlap measure or unique archive denominator. Public UI references to the 55th Parliament do not resolve old index 47th–54th scope.
+
+**Verification scope:** documentation/read-only review only, with earlier dated source, report-runtime and anonymous pinned Hub receipts reused where unchanged. No new native host probe, authorised legacy crawl, Hub write, historical anti-join, full integration run, PR-hosted check or natural schedule completion is claimed by this checkpoint. Reports-only eligibility and fixed `parliament/batches/` publication stay unchanged. P1 #779 remains open pending access-permitted filter/identity proof and item-level reuse/privacy authority.

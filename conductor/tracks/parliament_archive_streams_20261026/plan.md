@@ -6,10 +6,10 @@ Implementation authorized on 26 October 2026; qualification in progress. Parent:
 
 Issue: https://github.com/edithatogo/archive-govt-nz/issues/779
 
-- [~] Task: Characterize legacy and new Parliament hosts, source IDs, filters, pagination, attachment links and source access rules using bounded read-only probes.
-- [ ] Task: Reconcile the evidence and submissions/advice indexes by identity and filter scope; record historical coverage limits.
-- [ ] Task: Record source-specific reuse/privacy handling and the exact existing Hugging Face destination, additive namespace and qualified write route.
-- [ ] Task: Phase verification and evidence checkpoint under ../../workflow.md; use focused tests first, record local/hosted limits, run milestone assurance and recovery checks where applicable.
+- [~] Task: Report host/API, GUID, pagination and attachment contract are verified; legacy source access and real submissions/advice filters remain blocked by the previously observed robots denial. See [P1 qualification](../../../docs/parliament-p1-qualification-20261117.md).
+- [ ] Task: Reconcile evidence and submissions/advice indexes by identity/filter scope. **Blocked** pending permitted matched source snapshots; actual overlap, unique union and historical completeness remain unknown. Scope-labelled matching and anti-join acceptance are specified in the P1 qualification.
+- [x] Task: Record source-specific reuse/privacy restrictions, item-level held/eligible decisions, exact existing public Hugging Face destination and additive revision-pinned write path. **Decision documented**, not blanket eligibility.
+- [~] Task: P1 evidence checkpoint recorded 17 November 2026; no new source acquisition/publication or full integration run claimed. Exact PR-head documentation and hosted checks required before completion; external source gates retain P1 as open.
 
 ## P2: Durable discovery and streaming capture
 

@@ -399,3 +399,8 @@ Native query-only41084537406 on489e202a passed its known-Act control and returne
 40candidates (10each Act/Bill/amendment-paper/secondary-legislation). Native parent
 restore and acquisition steps were skipped; no canonical state or HF archive
 changed. Source receipt: evidence/coverage-audit/20261031/discovery-native-readback.json.
+
+
+## 2026-11-17 — P1 conditional source qualification, no runtime mutation
+
+Revisited #779 against the existing Conductor evidence, source contracts, merged report pilot, 31 October coverage audit and Parliament's official copyright/privacy guidance. Authored [P1 qualification](../../../docs/parliament-p1-qualification-20261117.md): source/ID/filter and endpoint matrix; unproven legacy-index anti-join and historic coverage; rights/privacy holds by object; fixed public, additive Hub route and exact remote-fixity evidence; finite unblock criteria. This is a **negative/conditional** source qualification, not missing-record recovery or permission to enable legacy crawling. Existing original source and hosted receipts are reused by scope/date; no source access, new capture, public upload, active writer or scheduler configuration changed. P1 and parent remain open until blocked Must conditions are met. New PR documentation/hosted verification is separate from historical code and native acceptance.
