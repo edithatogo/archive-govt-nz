@@ -143,3 +143,30 @@ def test_parquet_arrow_roundtrip_and_manifest(tmp_path: Path) -> None:
     assert arrow.equals(tbl)
     assert result["round_trip_verified"] is True
     assert (output / "columnar-receipt.json").exists()
+
+
+def test_extended_census_receipt_is_explicitly_selectable(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    from tools import export_soc_columnar as module
+    import sys
+
+    folder = tmp_path / "expanded"
+    folder.mkdir()
+    raw = (json.dumps(_census_rows()) + "\n").encode()
+    (folder / "census-extended.json").write_bytes(raw)
+    receipt_path = folder / "receipt.json"
+    receipt_path.write_text(json.dumps({"outputs": {
+        "census-extended": {"json_sha256": hashlib.sha256(raw).hexdigest()}
+    }}))
+    calls = []
+    def fake_export(subject, receipt, output, dataset):
+        calls.append((subject.name, dataset, receipt))
+        return {"rows": 2}
+    monkeypatch.setattr(module, "export_dataset", fake_export)
+    monkeypatch.setattr(sys, "argv", ["export_soc_columnar.py", "--normalised", str(folder),
+                                      "--receipt-file", str(receipt_path),
+                                      "--output", str(tmp_path / "out"),
+                                      "--datasets", "census-extended"])
+    assert module.main() == 0
+    assert calls[0][0:2] == ("census-extended.json", "census-extended")
