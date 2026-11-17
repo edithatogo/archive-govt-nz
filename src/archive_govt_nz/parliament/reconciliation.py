@@ -78,9 +78,7 @@ def reconcile_indexes(
     ambiguous = e & a
     duplicates = tuple(
         (snapshot.view, len(snapshot.ids) - len(set(snapshot.ids)))
-        for snapshot in sorted(
-            (evidence, advice, combined), key=lambda item: item.view
-        )
+        for snapshot in sorted((evidence, advice, combined), key=lambda item: item.view)
         if len(snapshot.ids) != len(set(snapshot.ids))
     )
     return IndexReconciliation(
