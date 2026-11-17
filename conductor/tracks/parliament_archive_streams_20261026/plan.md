@@ -61,7 +61,7 @@ Scope control: phases are sequential acceptance milestones. Runtime streams beco
 - [~] Full repository assurance and Conductor review.
 - [ ] Natural scheduled execution and periodic historical/recent reconciliation.
 
-Original phase checkboxes remain acceptance milestones: P1/P3 are partial because submissions/advice lack source eligibility and a complete mixed business-item pilot. P4 needs natural schedule proof; P5 collections are not qualified through a denied legacy host. Do not archive this active parent or close its phase issues merely because the report implementation is delivered.
+Original phase checkboxes remain acceptance milestones. Superseded P1 source-permission assumptions are governed by the operator's 17 November authorisation and updated P1 checkpoint. P1 still needs complete scoped index/attachment reconciliation, and P3 still needs a complete mixed business-item pilot. P4 needs natural schedule proof; P5 requires source-specific technical contracts. Do not archive this active parent or close phases merely because the report implementation is delivered.
 
 ## Phase: Review fixes
 
