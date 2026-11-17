@@ -5,12 +5,16 @@ on:
     branches: [feat/soc02-ingestion-20261116]
     paths:
       - tools/normalise_soc_official.py
+      - tools/export_soc_columnar.py
+      - tests/test_soc_columnar_export.py
       - tools/verify_soc_official.py
       - data/soc-official-profiles.json
       - .github/workflows/soc-source-normalisation.yml
   pull_request:
     paths:
       - tools/normalise_soc_official.py
+      - tools/export_soc_columnar.py
+      - tests/test_soc_columnar_export.py
       - tools/verify_soc_official.py
       - data/soc-official-profiles.json
       - .github/workflows/soc-source-normalisation.yml
@@ -28,7 +32,7 @@ jobs:
   normalise:
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
-    timeout-minutes: 6
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -53,6 +57,20 @@ jobs:
         run: .venv-soc-source/bin/python tools/verify_soc_official.py -v
       - name: Normalise exact original cohort
         run: .venv-soc-source/bin/python tools/normalise_soc_official.py --originals build/soc-official-originals --profiles data/soc-official-profiles.json --output build/soc-normalised
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2
+      - name: Validate existing locked Arrow/Parquet dependency and conversion controls
+        run: |
+          uv run --locked --python 3.15.1 pytest tests/test_soc_columnar_export.py -q -rs
+      - name: Convert both source-verified tables to Arrow and Parquet
+        run: |
+          uv run --locked --python 3.15.1 python tools/export_soc_columnar.py --normalised build/soc-normalised --output build/soc-columnar
+      - name: Retain Parquet/Arrow and independent round-trip receipts
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: soc-columnar-${{ github.sha }}
+          path: build/soc-columnar/
+          if-no-files-found: error
+          retention-days: 30
       - name: Retain normalised candidate and receipt
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
