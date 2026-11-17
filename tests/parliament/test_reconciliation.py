@@ -1,5 +1,7 @@
 """Synthetic Parliament index reconciliation without submission payloads."""
 
+from dataclasses import replace
+
 import pytest
 
 from archive_govt_nz.parliament.reconciliation import (
@@ -15,10 +17,9 @@ def view(
     scope: str = "all-47-54",
     total: int = 100,
     terminal: bool = False,
-    snapshot: str = "observed-20261117",
 ) -> IndexSlice:
     """Provide a synthetic source listing with explicit scope and exhaustion."""
-    return IndexSlice(name, scope, snapshot, total, tuple(ids), terminal)
+    return IndexSlice(name, scope, "observed-20261117", total, tuple(ids), terminal)
 
 
 def test_exact_source_ids_match_without_summing_overlapping_indexes() -> None:
@@ -80,7 +81,7 @@ def test_complete_requires_same_snapshot_terminal_and_exhausted_row_counts() -> 
     assert full.full_coverage is True
     partial = reconcile_indexes(
         view("evidence", "E", total=1, terminal=True),
-        view("advice", "A", total=1, terminal=True, snapshot="different"),
+        replace(view("advice", "A", total=1, terminal=True), snapshot="different"),
         view("combined", "E", "A", total=2, terminal=True),
     )
     assert partial.full_coverage is False
