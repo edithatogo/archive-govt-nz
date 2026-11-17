@@ -16,6 +16,10 @@ on:
       - .github/workflows/soc-source-normalisation.yml
   workflow_dispatch:
 
+concurrency:
+  group: soc-official-source-normalisation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
 permissions:
   contents: read
   actions: read
