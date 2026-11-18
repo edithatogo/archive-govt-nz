@@ -24,13 +24,19 @@ def test_counterfactual_rules_analysis() -> None:
     assert sq.overhang_seats["Te Pāti Māori"] == 4
 
     # Check German leveling
-    ger = next(s for s in analysis.scenarios if s.rule_id == "german_ausgleichsmandate_leveling")
+    ger = next(
+        s
+        for s in analysis.scenarios
+        if s.rule_id == "german_ausgleichsmandate_leveling"
+    )
     assert ger.total_house_seats == 148
     assert ger.majority_threshold == 75
     assert ger.overhang_seats["National Party"] == 0
 
     # Check IRV
-    irv = next(s for s in analysis.scenarios if s.rule_id == "preferential_irv_in_electorates")
+    irv = next(
+        s for s in analysis.scenarios if s.rule_id == "preferential_irv_in_electorates"
+    )
     assert irv.total_house_seats == 124
     assert irv.party_seats["Labour Party"] == 38
     assert irv.overhang_seats["National Party"] == 0
