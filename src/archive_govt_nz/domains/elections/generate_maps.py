@@ -8,6 +8,8 @@ import matplotlib.pyplot as plt
 from matplotlib.lines import Line2D
 import numpy as np
 
+from archive_govt_nz.domains.elections.overhang_history import OVERHANG_HISTORY
+
 
 def generate_electorate_geographic_map(output_path: Path) -> Path:
     """Generate high-resolution geographic map showing electorate outcomes and overhang hotspots."""
@@ -333,80 +335,53 @@ def generate_electorate_geographic_map(output_path: Path) -> Path:
 
 
 def generate_longitudinal_overhang_timeline(output_path: Path) -> Path:
-    """Generate longitudinal chart showing overhang seats and expanded House sizes across 1996-2026."""
+    """Plot only overhang seats above zero, separating official and provisional data."""
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    years = [1996, 1999, 2002, 2005, 2008, 2011, 2014, 2017, 2020, 2023, 2026]
-    base_seats = [120] * len(years)
-    overhangs = [0, 0, 0, 1, 2, 1, 1, 0, 0, 3, 11]
-    house_sizes = [b + o for b, o in zip(base_seats, overhangs, strict=False)]
+    years = [entry.year for entry in OVERHANG_HISTORY]
+    overhangs = [entry.overhang_seats for entry in OVERHANG_HISTORY]
+    colours = [
+        "#d29922" if entry.vintage == "preliminary" else "#f85149"
+        for entry in OVERHANG_HISTORY
+    ]
 
     fig, ax = plt.subplots(figsize=(12, 6), facecolor="#0e1117")
     ax.set_facecolor("#0e1117")
-
-    # Bar chart
     x = np.arange(len(years))
-    width = 0.55
-
-    ax.bar(
-        x,
-        base_seats,
-        width,
-        label="Statutory Nominal Baseline (120)",
-        color="#21262d",
-        edgecolor="#30363d",
-    )
-    ax.bar(
-        x,
-        overhangs,
-        width,
-        bottom=base_seats,
-        label="Uncompensated Overhang Seats",
-        color="#f85149",
-        edgecolor="#da3633",
-    )
-
-    ax.set_ylabel("Total Seats in Parliament", color="#c9d1d9", fontsize=12)
+    ax.bar(x, overhangs, 0.55, color=colours, edgecolor="#30363d")
+    ax.set_ylim(0, max(overhangs) + 2)
+    ax.set_yticks(range(0, max(overhangs) + 2, 2))
+    ax.set_ylabel("Overhang seats above nominal 120", color="#c9d1d9", fontsize=12)
     ax.set_title(
-        "Longitudinal Evolution of Overhang Seats in New Zealand MMP (1996-2026)",
+        "Overhang seats by NZ MMP general election (1996–2026)",
         color="#ffffff",
         fontsize=14,
         weight="bold",
         pad=15,
     )
     ax.set_xticks(x)
-    ax.set_xticklabels([str(year) for year in years], color="#c9d1d9", fontsize=11)
-    ax.set_ylim(100, 136)
+    ax.set_xticklabels(
+        [str(year) + ("*" if year == 2026 else "") for year in years],
+        color="#c9d1d9",
+        fontsize=11,
+    )
     ax.tick_params(colors="#8b949e")
     ax.grid(axis="y", color="#30363d", linestyle="--", alpha=0.5)
-
-    # Value callouts on top of bars
-    for i, (size, ov) in enumerate(zip(house_sizes, overhangs, strict=False)):
-        label = f"{size}" if ov == 0 else f"{size}\n(+{ov})"
-        color = "#ffffff" if ov == 0 else "#ff7b72"
+    ax.set_axisbelow(True)
+    for index, value in enumerate(overhangs):
         ax.text(
-            i,
-            size + 1.0,
-            label,
-            ha="center",
-            va="bottom",
-            fontsize=10,
-            weight="bold",
-            color=color,
+            index, value + 0.18, str(value),
+            ha="center", va="bottom", fontsize=10, color="#ffffff",
         )
-
-    ax.legend(
-        facecolor="#161b22",
-        edgecolor="#30363d",
-        labelcolor="#c9d1d9",
-        fontsize=10,
-        loc="upper left",
+    fig.text(
+        0.5, 0.02,
+        "*2026 preliminary (7 Nov); official results expected 27 Nov. "
+        "2023: +2 overhang; later Port Waikato by-election seat excluded.",
+        ha="center", fontsize=9, color="#c9d1d9",
     )
-
-    plt.tight_layout()
+    plt.tight_layout(rect=(0, 0.07, 1, 1))
     plt.savefig(output_path, dpi=200, facecolor=fig.get_facecolor(), edgecolor="none")
     plt.close()
     return output_path
-
 
 if __name__ == "__main__":
     import sys

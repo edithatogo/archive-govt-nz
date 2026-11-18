@@ -245,7 +245,7 @@
         <button class="tab-btn" onclick="switchTab('specials')">🎯 Special Votes Margin Flips</button>
         <button class="tab-btn" onclick="switchTab('causal')">🔬 Causal Overhang & Vote-Split Attribution</button>
         <button class="tab-btn" onclick="switchTab('multivariate')">📊 Census Demographics & SHAP</button>
-        <button class="tab-btn" onclick="switchTab('predictive')">📈 10-Cycle Benchmarks & 2029 Forecast</button>
+        <button class="tab-btn" onclick="switchTab('predictive')">📈 11-Cycle Benchmarks & 2029 Forecast</button>
         <button class="tab-btn" onclick="switchTab('beyond')">🧬 Beyond Frontier: Bio & Quantum</button>
         <button class="tab-btn" onclick="switchTab('caucus')">🐦 Parliamentary Murmuration Swarm</button>
         <button class="tab-btn" onclick="switchTab('figures')">🖼️ High-Resolution Figures Gallery</button>
@@ -1014,12 +1014,13 @@ flowchart TD
 
       <!-- Figure 2 -->
       <h3>Figure 2: Longitudinal Evolution of Overhang Seats (1996–2026)</h3>
-      <img src="overhang_expansion_timeline.png" style="width:100%; max-width:850px; border-radius:8px; border:1px solid var(--border); margin:12px 0;" alt="Longitudinal Overhang Timeline">
+      <div id="chart-longitudinal-overhang" role="img" aria-label="Zero-based bar chart of overhang seats across 11 New Zealand general elections, 1996 to 2026; 2026 preliminary." style="height:420px; width:100%; max-width:850px;"></div>
+      <p id="overhang-history-status" role="status" aria-live="polite">Loading source-verified overhang series…</p>
       <div class="note-box">
         <div class="note-title">Methodological Note & Interpretation</div>
-        <p><b>What It Depicts:</b> Longitudinal bar chart of all 10 MMP elections in New Zealand history (1996 to 2026). Dark bars show statutory baseline seats (120); coral red stacked bars show uncompensated overhang expansions.</p>
-        <p><b>What It Adds:</b> Contextualizes the 2026 outcome as a structural expansion. Overhangs previously occurred in 2005 (+1), 2008 (+2), 2011 (+1), and 2023 (+2). The 2026 provisional +11 seats is the largest overhang in Commonwealth MMP history.</p>
-        <p><b>Methodology:</b> Statutory Sainte-Laguë audit across all 10 election cycles based on Electoral Commission gazetted returns.</p>
+        <p><b>What It Depicts:</b> Overhang seats above 120, with a zero-based vertical axis, across 11 MMP elections. Coral bars are official results (1996–2023); the amber hatched 2026 bar is preliminary (7 November 2026).</p>
+        <p><b>What It Adds:</b> Earlier overhangs were 2005 (+1), 2008 (+2), 2011 (+1), 2014 (+1), and 2023 (+2). The separate Port Waikato by-election subsequently added another MP in 2023, but did not change the general-election overhang. The 2026 preliminary +11 may change when special votes are counted.</p>
+        <p><b>Sources:</b> <a href="https://electionresults.govt.nz/electionresults_2023/statistics/sainte-lague-formula.html">Electoral Commission 2023 official allocation</a> and <a href="https://elections.nz/media-and-news/2026/2026-general-election-preliminary-results">2026 preliminary release</a>. Historical official-result links are included per election in the plotted data. Official 2026 results are due 27 November.</p>
       </div>
 
       <!-- Figure 3 -->
@@ -1257,7 +1258,7 @@ flowchart TD
     <!-- TAB 8: 2029 FORECAST & LONGITUDINALS -->
     <div id="tab-predictive" class="tab-content">
       <h2>2029 Election Forecast & Longitudinal Benchmarks</h2>
-      <p style="color:var(--text-muted)">Econometric modeling across 10 MMP election cycles (1996–2026) and fundamental macroeconomic forecasting for 2029.</p>
+      <p style="color:var(--text-muted)">Econometric modeling across 11 MMP election cycles (1996–2026) and fundamental macroeconomic forecasting for 2029.</p>
 
       <h3>1. Longitudinal Historical Benchmark (1996–2026)</h3>
       <table>
@@ -1281,11 +1282,11 @@ flowchart TD
           <tr><td><b>2005</b></td><td>80.9%</td><td>+1 (TPM)</td><td>121</td><td>61</td><td>$11.20m</td><td>$20.83m</td><td>$9.22</td><td>$172,149</td></tr>
           <tr><td><b>2008</b></td><td>79.5%</td><td>+2 (TPM)</td><td>122</td><td>62</td><td>$11.85m</td><td>$20.45m</td><td>$8.63</td><td>$167,623</td></tr>
           <tr><td><b>2011</b></td><td>74.2%</td><td>+1 (TPM)</td><td>121</td><td>61</td><td>$12.40m</td><td>$19.18m</td><td>$8.56</td><td>$158,512</td></tr>
-          <tr><td><b>2014</b></td><td>77.9%</td><td>0</td><td>120</td><td>61</td><td>$13.10m</td><td>$19.65m</td><td>$8.19</td><td>$163,750</td></tr>
+          <tr><td><b>2014</b></td><td>77.9%</td><td>+1 (United Future)</td><td>121</td><td>61</td><td>$13.10m</td><td>$19.65m</td><td>$8.19</td><td>$163,750</td></tr>
           <tr><td><b>2017</b></td><td>79.8%</td><td>0</td><td>120</td><td>61</td><td>$14.25m</td><td>$20.12m</td><td>$7.65</td><td>$167,667</td></tr>
           <tr><td><b>2020</b></td><td>82.2%</td><td>0</td><td>120</td><td>61</td><td>$15.60m</td><td>$20.85m</td><td>$7.19</td><td>$173,750</td></tr>
           <tr><td><b>2023</b></td><td>78.2%</td><td>+2 (TPM)</td><td>122</td><td>62</td><td>$17.10m</td><td>$19.45m</td><td>$6.82</td><td>$159,426</td></tr>
-          <tr><td><b>2026</b></td><td>79.4%</td><td>+11 (Nat/TPM)</td><td>131</td><td>66</td><td>$18.15m</td><td>$18.15m</td><td>$6.62</td><td>$138,550</td></tr>
+          <tr><td><b>2026 (preliminary)</b></td><td>74.6% (estimated)</td><td>+11 (Nat/TPM)</td><td>131</td><td>66</td><td>$18.15m</td><td>$18.15m</td><td>$6.62</td><td>$138,550</td></tr>
         </tbody>
       </table>
 
@@ -1493,6 +1494,13 @@ flowchart TD
       document.querySelectorAll(`.tab-btn[onclick*="'${tabId}'"]`).forEach(el => {
         el.classList.add('active');
       });
+
+      if (tabId === 'figures') {
+        const historyPlot = document.getElementById('chart-longitudinal-overhang');
+        if (historyPlot && historyPlot.data && window.Plotly) {
+          requestAnimationFrame(() => Plotly.Plots.resize(historyPlot));
+        }
+      }
 
       if (history.replaceState) {
         history.replaceState(null, null, '#' + tabId);
@@ -1940,6 +1948,84 @@ flowchart TD
       });
     }
     updateSpecials(1.65);
+
+    // Figure 2: read the same source-vintage history fixture checked by Python tests.
+    async function renderOverhangHistory() {
+      const status = document.getElementById('overhang-history-status');
+      try {
+        const [historicalResponse, preliminaryResponse] = await Promise.all([
+          fetch('data/overhang-history.json'),
+          fetch('data/2026-preliminary.json')
+        ]);
+        if (!historicalResponse.ok || !preliminaryResponse.ok) {
+          throw new Error('source fixture unavailable');
+        }
+        const historyData = await historicalResponse.json();
+        const current = await preliminaryResponse.json();
+        const elections = historyData.elections;
+        const expectedYears = [
+          1996, 1999, 2002, 2005, 2008, 2011, 2014, 2017, 2020, 2023, 2026
+        ];
+        if (
+          historyData.nominal_seats !== current.nominal_seats ||
+          !Array.isArray(elections) ||
+          elections.length !== expectedYears.length ||
+          !elections.every((item, i) =>
+            item.year === expectedYears[i] &&
+            Number.isInteger(item.overhang_seats) &&
+            item.overhang_seats >= 0 &&
+            (item.vintage === 'official' || item.vintage === 'preliminary')
+          ) ||
+          elections.slice(0, -1).some(item => item.vintage !== 'official') ||
+          elections[9].overhang_seats !== 2 ||
+          elections[10].overhang_seats !== current.overhang_seats ||
+          elections[10].vintage !== current.vintage ||
+          elections[10].published_date !== current.published_date ||
+          current.vintage !== 'preliminary' ||
+          current.total_seats !== current.nominal_seats + current.overhang_seats
+        ) {
+          throw new Error('historical and preliminary source fixtures disagree');
+        }
+        const chart = document.getElementById('chart-longitudinal-overhang');
+        await Plotly.newPlot(chart, [{
+          x: elections.map(item => String(item.year)),
+          y: elections.map(item => item.overhang_seats),
+          type: 'bar',
+          text: elections.map(item => String(item.overhang_seats)),
+          textposition: 'outside',
+          marker: {
+            color: elections.map(item =>
+              item.vintage === 'preliminary' ? '#d29922' : '#f85149'
+            ),
+            pattern: {
+              shape: elections.map(item =>
+                item.vintage === 'preliminary' ? '/' : ''
+              )
+            }
+          },
+          customdata: elections.map(item => [item.vintage, item.source_url]),
+          hovertemplate: '%{x} (%{customdata[0]})<br>Overhang: %{y} seats<br>Source: %{customdata[1]}<extra></extra>'
+        }], {
+          paper_bgcolor: '#0e1117',
+          plot_bgcolor: '#0e1117',
+          font: { color: '#c9d1d9' },
+          margin: { t: 35, r: 20, b: 70, l: 75 },
+          xaxis: { title: 'General election year', type: 'category' },
+          yaxis: {
+            title: 'Overhang seats above 120',
+            rangemode: 'tozero',
+            range: [0, 13],
+            dtick: 2,
+            gridcolor: '#30363d'
+          },
+          showlegend: false
+        }, { responsive: true, displaylogo: false });
+        status.textContent = 'Official 1996–2023; 2026 preliminary (7 November).';
+      } catch (_error) {
+        status.textContent = 'The source-verified overhang chart is unavailable; refer to the Electoral Commission source links below.';
+      }
+    }
+    void renderOverhangHistory();
   </script>
 </body>
 </html>

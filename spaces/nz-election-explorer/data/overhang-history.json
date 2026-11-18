@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0.0",
+  "nominal_seats": 120,
+  "elections": [
+    {
+      "year": 1996,
+      "overhang_seats": 0,
+      "vintage": "official",
+      "source_url": "https://www.electionresults.govt.nz/electionresults_1996/",
+      "published_date": null
+    },
+    {
+      "year": 1999,
+      "overhang_seats": 0,
+      "vintage": "official",
+      "source_url": "https://www.electionresults.govt.nz/electionresults_1999/",
+      "published_date": null
+    },
+    {
+      "year": 2002,
+      "overhang_seats": 0,
+      "vintage": "official",
+      "source_url": "https://www.electionresults.govt.nz/electionresults_2002/",
+      "published_date": null
+    },
+    {
+      "year": 2005,
+      "overhang_seats": 1,
+      "vintage": "official",
+      "source_url": "https://electionresults.govt.nz/electionresults_2005/partystatus.html",
+      "published_date": null
+    },
+    {
+      "year": 2008,
+      "overhang_seats": 2,
+      "vintage": "official",
+      "source_url": "https://electionresults.govt.nz/electionresults_2008/partystatus.html",
+      "published_date": null
+    },
+    {
+      "year": 2011,
+      "overhang_seats": 1,
+      "vintage": "official",
+      "source_url": "https://electionresults.govt.nz/electionresults_2011/partystatus.html",
+      "published_date": null
+    },
+    {
+      "year": 2014,
+      "overhang_seats": 1,
+      "vintage": "official",
+      "source_url": "https://electionresults.govt.nz/electionresults_2014/partystatus.html",
+      "published_date": null
+    },
+    {
+      "year": 2017,
+      "overhang_seats": 0,
+      "vintage": "official",
+      "source_url": "https://www.electionresults.govt.nz/electionresults_2017/",
+      "published_date": null
+    },
+    {
+      "year": 2020,
+      "overhang_seats": 0,
+      "vintage": "official",
+      "source_url": "https://www.electionresults.govt.nz/electionresults_2020/",
+      "published_date": null
+    },
+    {
+      "year": 2023,
+      "overhang_seats": 2,
+      "vintage": "official",
+      "source_url": "https://electionresults.govt.nz/electionresults_2023/statistics/sainte-lague-formula.html",
+      "published_date": null
+    },
+    {
+      "year": 2026,
+      "overhang_seats": 11,
+      "vintage": "preliminary",
+      "source_url": "https://elections.nz/media-and-news/2026/2026-general-election-preliminary-results",
+      "published_date": "2026-11-07"
+    }
+  ]
+}
