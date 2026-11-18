@@ -1,4 +1,4 @@
-"""Source-referenced NZ MMP general-election overhang counts (1996–2026).
+"""Source-referenced NZ MMP general-election overhang counts (1996-2026).
 
 Counts describe overhang at each general election, not subsequent by-election
 additions. The 2023 official count had two overhang seats (122 seats); the

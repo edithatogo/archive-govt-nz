@@ -7,8 +7,9 @@ formal mathematical models, econometric specifications, and strategic policy tak
 from __future__ import annotations
 
 from pathlib import Path
+from typing import cast
 from pptx import Presentation
-from pptx.util import Inches, Pt
+from pptx.util import Inches, Length, Pt
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN
 from pptx.enum.shapes import MSO_SHAPE
@@ -188,17 +189,21 @@ def build_election_presentation(output_path: Path, figures_dir: Path) -> Path:
     for i, (title_c, subtitle_c, desc, c_col) in enumerate(cards):
         c_left = start_left + i * (col_width + gap)
         box = slide2.shapes.add_shape(
-            MSO_SHAPE.ROUNDED_RECTANGLE, c_left, top_pos, col_width, card_h
+            MSO_SHAPE.ROUNDED_RECTANGLE,
+            cast("Length", c_left),
+            top_pos,
+            col_width,
+            card_h,
         )
         box.fill.solid()
         box.fill.fore_color.rgb = RGBColor(22, 27, 34)
         box.line.color.rgb = c_col
 
         tbox = slide2.shapes.add_textbox(
-            c_left + Inches(0.2),
-            top_pos + Inches(0.2),
-            col_width - Inches(0.4),
-            card_h - Inches(0.4),
+            cast("Length", c_left + Inches(0.2)),
+            cast("Length", top_pos + Inches(0.2)),
+            cast("Length", col_width - Inches(0.4)),
+            cast("Length", card_h - Inches(0.4)),
         )
         c_tf = tbox.text_frame
         c_tf.word_wrap = True
@@ -529,7 +534,7 @@ def build_election_presentation(output_path: Path, figures_dir: Path) -> Path:
         p_desc.font.size = Pt(10)
         p_desc.font.color.rgb = RGBColor(201, 209, 217)
 
-    prs.save(output_path)
+    prs.save(str(output_path))
     return output_path
 
 
