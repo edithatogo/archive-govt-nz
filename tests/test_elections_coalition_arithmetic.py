@@ -85,9 +85,7 @@ def test_preliminary_2026_frozen_fixture_right_bloc_is_arithmetic_only() -> None
     counts = {p["name"]: p["total_seats"] for p in data["parties"]}
     report = analyse_coalition_arithmetic(counts, house_size=data["total_seats"])
     assert report.majority_threshold == data["majority"] == 66
-    right = frozenset(
-        {"National Party", "ACT New Zealand", "New Zealand First Party"}
-    )
+    right = frozenset({"National Party", "ACT New Zealand", "New Zealand First Party"})
     coalitions = {frozenset(c.parties): c for c in report.minimal_winning}
     assert coalitions[right].seats == 67
     assert coalitions[right].surplus_seats == 1
