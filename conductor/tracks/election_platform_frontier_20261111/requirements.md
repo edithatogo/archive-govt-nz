@@ -30,3 +30,40 @@ W-01 Present speculative quantum/biological metaphors as empirical estimates.
 W-02 Call a 2023 official-capture receipt an official 2026 election result.
 W-03 Use arbitrary fixed election outcomes in production code or disable security/tests to force deployment.
 W-04 Require multi-person approvals, Copilot, premium hosted services or enterprise governance machinery.
+
+## Question-led requirements selected 18 November 2026
+
+These are additive to M-01–M-09/S-01–S-07 and **do not weaken**
+their source, code, safety, publication or qualification gates.
+
+- **M-10 Traceable reader questions:** each production answer maps to
+  an `EQ01–EQ19` question in
+  [decision questions](decision_questions_20261118.md), a definition,
+  source vintage, allowed result class, existing track owner and
+  inspectable evidence receipt. Unanswered, source-pending and
+  research-only states are first-class outputs, not zeros or forecasts.
+- **M-11 Deterministic electoral integrity:** publish overhang, threshold,
+  constituency margins, proportionality and coalition arithmetic only
+  from one reconciled result vintage; independently verify statutory
+  rules, list-seat allocation, party-vote conservation and tie behaviour.
+  Show parliament membership arithmetic separately from political
+  coalition willingness or confidence-and-supply assertions.
+- **M-12 Vintage and uncertainty:** a preliminary 7 November 2026
+  scenario cannot be labelled official; the anticipated 27 November
+  official release is a new immutable source cohort. Special-vote
+  conditional sensitivity is not a calibrated probability, and source
+  capture hashes missing from historical years prohibit blanket
+  source-verified claims.
+- **S-08 Representation and participation:** supply age/roll/mode/
+  geographic comparisons only with validated denominators, suppressed
+  small cells, effective-dated boundary/party crosswalks and
+  explicit missingness. Candidate/party aggregate mismatch does not
+  identify individual split-ticket voting.
+- **S-09 Transparent what-if engine:** smallest integer party-vote and
+  electorate-seat changes, 5%/coat-tail boundaries and alternative
+  MMP rules have reproducible, vote-conserving scenario inputs;
+  published output identifies baseline, alteration and legal status.
+- **S-10 External evidence discipline:** poll calibration, filed
+  expenditure and donation concentration, policy commitments, economic
+  context and organisational linkage demand their own independent
+  rights/source/identity/period/causal-status tests before publication.

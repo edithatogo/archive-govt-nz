@@ -30,3 +30,19 @@ Use existing Pydantic/JSON Schema and Arrow/Parquet provenance contracts, DuckDB
 - [ ] Generate/update uv.lock for any added Polars dependency before locked gates. **Do not edit pyproject without regenerating lock**.
 - [ ] Reconcile legacy causal and experimental values to qualified evidence, not illustrative fixtures.
 - [ ] Merge PR #861 only after exact-head green gates and verify served HF revision.
+
+## Decision-question delivery crosswalk — 18 November 2026
+
+[Question-led priority and evidence contract](decision_questions_20261118.md) is
+the selected crosswalk for EQ01–EQ19, mapped onto existing tracks **01–08**
+and the proposed O01–O15 register in draft PR #868. It does not introduce a
+new top-level Conductor track or accept any stacked socioeconomic PR.
+
+Current source status (read at 18 November): PR #861 was **merged** but
+public HF source/revision parity remains unverified; PR #880 has **66 green
+focused election tests** and a passing election-publication gate, but failed
+required three-platform full assurance; PR #866's repair still has separate
+Parliament/Tobac preservation holds. Existing coordinator #867 is sole
+integration owner. The 2026 official count has not been published or admitted
+at this date. Do not mark any EQ question delivered solely from module
+presence, historical checkboxes, plot PNGs or external prototype tests.

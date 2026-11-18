@@ -17,3 +17,30 @@ Each step must include tests/run receipts, exact head SHA, datasets, failure sta
 
 ## CI known blockers at programme start
 As of 11 November 2026 PR #861 exact head earlier failed with 5 election tests and workflow policy lint; CodeQL passed. The old Space is still published. The source corrections are being reconciled in that same PR.
+
+## Current selected delivery sequence — decision questions, 18 November 2026
+
+This **supersedes stale execution assumptions in the numbered 11 November
+steps above**, without erasing those historical tasks or their evidence.
+The exact question-to-track mapping and source gates are in
+[decision questions](decision_questions_20261118.md).
+
+| Gate | Deliverable / questions | Dependency | Acceptance |
+| --- | --- | --- | --- |
+| G0 | Restore source-verified static baseline, browser and HF parity (01/05/07) | PR #880 plus separate source-safe CI repair #866, serial owner #867 | Full exact-head CI, exact repo-local 3.15.1, data/result parity, fallback and served SHA |
+| G1 | Deterministic baseline: EQ01–06, coalition/threshold/overhang/margins/sensitivity/proportionality (02/03/04) | G0 and retained 7 Nov provisional fixture | Independent statutory oracles; no uncalibrated probabilities; checked voting denominators |
+| G2 | Official-vs-preliminary EQ07 diff and dependent reallocation (01/04/05) | verified future Electoral Commission official release | Immutable separate official snapshot and source-to-HF delta receipt |
+| G3 | Historical swing, vote divergence, enrolment/age/roll/mode EQ08–12 (03/06) | qualified 2017/20/23 captures, geography and admitted SOC outputs | Comparable date/roll/geography and denominator, privacy/uncertainty controls |
+| G4 | Poll validation, alternative rules, finance/policies/economic context EQ13–19 (02/04/06) | official outcomes, rights-approved source cohorts, independently reviewed models | Distinct observed/derived/scenario/association/causal statuses and method-specific tests |
+| G5 | Question-level publish/export/rollback (05/07), incremental with every accepted gate | any independently accepted EQ output | QuestionEvidenceReceipt or current contract, accessible plot+table, hashes and deployed readback |
+
+**Current exact-state reconciliation:** PR #861 was merged before this
+checkpoint, but the verified-results Space was **not** proven deployed.
+PR #880's election-only gate passed (66 focused tests); global Ubuntu,
+macOS and Windows gates failed. No elected-result source changes, SOC
+candidate deliveries or downstream model release are accepted by
+this documentation increment. Avoid the blocked #866 Parliament/Tobac
+files; accept a separately qualified repair only through their owners.
+PR #868 and #872–877 remain draft proposals with independent admission
+needs. The 27 November 2026 *expected* official result is not present
+as of this 18 November checkpoint.
