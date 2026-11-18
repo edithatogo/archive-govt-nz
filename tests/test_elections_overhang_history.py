@@ -2,8 +2,8 @@
 
 from __future__ import annotations
 
-from dataclasses import asdict
 import json
+from dataclasses import asdict
 from pathlib import Path
 
 from archive_govt_nz.domains.elections.overhang_history import (
@@ -21,10 +21,10 @@ SPACE = ROOT / "spaces/nz-election-explorer"
 def test_mmp_overhang_history_has_eleven_source_backed_elections() -> None:
     """One record per MMP election, with no missing or duplicate years."""
     assert [row.year for row in OVERHANG_HISTORY] == [
-        1996, 1999, 2002, 2005, 2008, 2011, 2014, 2017, 2020, 2023, 2026
+        1996, 1999, 2002, 2005, 2008, 2011, 2014, 2017, 2020, 2023, 2026,
     ]
     assert [row.overhang_seats for row in OVERHANG_HISTORY] == [
-        0, 0, 0, 1, 2, 1, 1, 0, 0, 2, 11
+        0, 0, 0, 1, 2, 1, 1, 0, 0, 2, 11,
     ]
     assert len(OVERHANG_BY_YEAR) == len(OVERHANG_HISTORY)
     assert all(row.source_url.startswith("https://") for row in OVERHANG_HISTORY)
@@ -63,12 +63,13 @@ def test_longitudinal_engine_uses_verified_overhang_values() -> None:
     """Other longitudinal fields cannot silently overwrite seat history."""
     records = get_historical_longitudinal_records()
     assert len(records) == 11
-    assert {
-        r.election_year: r.overhang_seats for r in records
-    } == {
+    assert {r.election_year: r.overhang_seats for r in records} == {
         row.year: row.overhang_seats for row in OVERHANG_HISTORY
     }
-    assert next(r for r in records if r.election_year == 2023).total_house_seats == 122
+    assert (
+        next(r for r in records if r.election_year == 2023).total_house_seats
+        == 122
+    )
 
 
 def test_static_history_plot_is_data_driven_and_zero_based() -> None:

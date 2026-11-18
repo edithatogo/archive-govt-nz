@@ -13,8 +13,6 @@ from typing import Any
 import numpy as np
 import xgboost as xgb
 
-from archive_govt_nz.domains.elections.overhang_history import OVERHANG_BY_YEAR
-
 from archive_govt_nz.domains.elections.contracts import (
     ClimateEnvironmentalIndicators,
     DynamicEngineProvenance,
@@ -27,6 +25,7 @@ from archive_govt_nz.domains.elections.contracts import (
     PartyDetailedFunding,
     SocioeconomicIndicators,
 )
+from archive_govt_nz.domains.elections.overhang_history import OVERHANG_BY_YEAR
 
 # ----------------- 1. XGBOOST ELECTORATE FLIP PREDICTOR -----------------
 
@@ -472,7 +471,7 @@ def get_historical_longitudinal_records() -> list[LongitudinalElectionRecord]:
 
     records: list[LongitudinalElectionRecord] = []
     for h in raw_history:
-        year = h["year"]
+        year = int(h["year"])
         overhang = OVERHANG_BY_YEAR[year].overhang_seats
         house_size = 120 + overhang
         maj = int(house_size // 2) + 1

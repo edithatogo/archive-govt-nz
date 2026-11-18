@@ -369,19 +369,28 @@ def generate_longitudinal_overhang_timeline(output_path: Path) -> Path:
     ax.set_axisbelow(True)
     for index, value in enumerate(overhangs):
         ax.text(
-            index, value + 0.18, str(value),
-            ha="center", va="bottom", fontsize=10, color="#ffffff",
+            index,
+            value + 0.18,
+            str(value),
+            ha="center",
+            va="bottom",
+            fontsize=10,
+            color="#ffffff",
         )
     fig.text(
-        0.5, 0.02,
+        0.5,
+        0.02,
         "*2026 preliminary (7 Nov); official results expected 27 Nov. "
         "2023: +2 overhang; later Port Waikato by-election seat excluded.",
-        ha="center", fontsize=9, color="#c9d1d9",
+        ha="center",
+        fontsize=9,
+        color="#c9d1d9",
     )
     plt.tight_layout(rect=(0, 0.07, 1, 1))
     plt.savefig(output_path, dpi=200, facecolor=fig.get_facecolor(), edgecolor="none")
     plt.close()
     return output_path
+
 
 if __name__ == "__main__":
     import sys

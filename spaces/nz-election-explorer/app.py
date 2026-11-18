@@ -362,8 +362,8 @@ def make_longitudinal_timeline_fig() -> go.Figure:
         height=400,
         annotations=[
             {
-                "x": 2026,
-                "y": 11,
+                "x": records[-1].year,
+                "y": records[-1].overhang_seats,
                 "text": "Preliminary: 7 Nov 2026",
                 "showarrow": True,
                 "arrowhead": 2,

@@ -2014,7 +2014,7 @@ flowchart TD
           yaxis: {
             title: 'Overhang seats above 120',
             rangemode: 'tozero',
-            range: [0, 13],
+            range: [0, Math.max(...elections.map(item => item.overhang_seats)) + 2],
             dtick: 2,
             gridcolor: '#30363d'
           },
