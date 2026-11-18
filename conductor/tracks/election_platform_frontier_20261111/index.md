@@ -8,7 +8,7 @@ An independently reproducible election results product, electoral research workb
 ## Delivery order and linked tracks
 | Track | Description | MoSCoW | Dependency |
 |---|---|---|---|
-| 01 | Release integrity, vintages and verification | Must | PR #861 correction |
+| 01 | Release integrity, vintages and verification | Must | Merged PR #861 baseline; live parity and #880 pending |
 | 02 | Statutory MMP engine, properties and laboratory | Must | 01 |
 | 03 | Geospatial and longitudinal election intelligence | Should | 01 |
 | 04 | Special votes and coalition uncertainty | Should | 02,03 |
@@ -23,13 +23,13 @@ Each track has a concrete index and acceptance requirements below. Overall compl
 Use existing Pydantic/JSON Schema and Arrow/Parquet provenance contracts, DuckDB SQL and **Polars LazyFrame** for tabular analyses; keep Python 3.15.1 and uv locked as the repository's primary environment. Select Polars only where it improves columnar ETL over existing Arrow/DuckDB; no blanket rewrite. Embed 2026 results in a static release bundle generated from canonical Gold artifacts, not hand-coded into HTML.
 
 ## Workstream and status
-- [x] Prior corrective dataset and static public page proposed in PR #861, **not yet deployed**.
-- [x] Test and action-pin corrections committed on PR #861 branch (hosted verification pending).
+- [x] Prior corrective dataset and source-driven static page **merged in PR #861**; **not established as deployed**.
+- [x] Test and action-pin corrections committed and subsequently merged via PR #861; historical exact-head verification is not a current HF-serving receipt.
 - [ ] End-to-end data freshness/validation and browser tests.
 - [ ] Fully strict basedpyright for scoped new modules, then measured widening; zero new untracked diagnostics.
 - [ ] Generate/update uv.lock for any added Polars dependency before locked gates. **Do not edit pyproject without regenerating lock**.
 - [ ] Reconcile legacy causal and experimental values to qualified evidence, not illustrative fixtures.
-- [ ] Merge PR #861 only after exact-head green gates and verify served HF revision.
+- [ ] **Outstanding:** reconcile #880 and reserved CI repairs, confirm exact-head green gates, merge an accepted release correction and **verify the served HF revision**. PR #861 itself is already merged.
 
 ## Decision-question delivery crosswalk — 18 November 2026
 

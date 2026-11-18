@@ -1,6 +1,6 @@
 # Execution plan / ordered acceptance
 
-1. [ ] Unblock #861: reconcile synthetic vote-denominator call sites, fix 120-seat test fixture, pin actions SHAs, use exact-head CI evidence. Pass full repository harness; run browser smoke; merge and verify HF revision.
+1. [ ] Reconcile source-driven corrections **already merged in #861**, then restore qualified static/served parity through the blocked #880 and source-safe CI repairs. Retain statutory/source-vintage regressions; run prescribed exact-head full harness, browser smoke and served HF readback before release.
 2. [ ] Lock new Polars runtime: add compatible constraint, regenerate uv.lock with CPython 3.15.1, run uv sync --locked and supply-chain audit. No uncommitted lock drift.
 3. [ ] Strict typing ratchet: select all in Ruff; basedpyright strict/all on new election data/contract modules, record existing diagnostics, eliminate broad election-specific ignores as code is migrated, never relax existing baseline.
 4. [ ] Snapshot Electoral Commission 2026 source objects and hashes; parse with typed schema and independently reconstruct reference allocations, with source reconciliation receipt.
@@ -16,7 +16,7 @@
 Each step must include tests/run receipts, exact head SHA, datasets, failure status and provenance; do not mark checkboxes solely because source was committed or a workflow was queued. Mutation/Scalene are already available in the repository heavy profile; extend targeted scopes rather than duplicate the harness.
 
 ## CI known blockers at programme start
-As of 11 November 2026 PR #861 exact head earlier failed with 5 election tests and workflow policy lint; CodeQL passed. The old Space is still published. The source corrections are being reconciled in that same PR.
+**Historical note (11 November 2026):** PR #861's earlier head failed five election tests and workflow policy lint, while CodeQL passed. **Current correction (18 November):** #861 has since been merged; current shared baseline has not been verified as served on HF. Those historical failures are retained as evidence, not represented as current head status. See the 18 November decision-question delivery table below.
 
 ## Current selected delivery sequence — decision questions, 18 November 2026
 
