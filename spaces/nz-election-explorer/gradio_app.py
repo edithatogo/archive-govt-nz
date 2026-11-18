@@ -373,6 +373,7 @@ def make_longitudinal_timeline_fig() -> go.Figure:
     )
     return fig
 
+
 def make_rdd_fig() -> go.Figure:
     """Regression Discontinuity Design plot."""
     fig = go.Figure()
