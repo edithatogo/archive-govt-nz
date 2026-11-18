@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en-NZ"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>NZ General Election 2026 | Verified Preliminary Results</title>
+<title>NZ General Election 2026 | Source-Referenced Preliminary Results</title>
 <style>
 :root{color-scheme:dark;font-family:system-ui,sans-serif}*{box-sizing:border-box}
 body{margin:0;background:#101a2a;color:#e6f0fa;line-height:1.55}a{color:#86d6ff}
@@ -28,7 +28,7 @@ section{margin:24px 0}nav{display:flex;gap:20px;flex-wrap:wrap}
 
 @media(max-width:600px){th,td{font-size:.8rem;padding:8px 5px}.bar label{width:110px;font-size:.8rem}}
 </style></head><body>
-<header><div class="eyebrow">Verified source vintage: 7 November 2026</div><h1>New Zealand General Election 2026</h1>
+<header><div class="eyebrow">Electoral Commission preliminary vintage: 7 November 2026</div><h1>New Zealand General Election 2026</h1>
 <nav aria-label="Sections"><a href="#results">Preliminary results</a><a href="#seats">Parliament</a><a href="#history">Overhang history</a><a href="#provenance">Provenance</a><a href="#research">Research status</a></nav></header>
 <main>
 <div class="warning" role="status"><strong>Provisional results — not a formal declaration.</strong> Approximately 399,365 special votes remain to be checked and counted. Official results are scheduled for 27 November 2026. Previously published causal, forecast and experimental figures have been withheld pending validation.</div>
@@ -49,7 +49,7 @@ section{margin:24px 0}nav{display:flex;gap:20px;flex-wrap:wrap}
 <p>National + ACT + NZ First: <strong id="coalition"></strong> projected seats. This is parliamentary arithmetic, not an assertion that a government has been formed.</p></section>
 </div>
 
-<section id="history" class="panel" aria-labelledby="history-title">
+<section id="history" class="panel" aria-labelledby="history-title" hidden>
 <h2 id="history-title">Overhang seats across 11 MMP elections (1996–2026)</h2>
 <p>Overhang seats above 120 are plotted from a true zero baseline, not stacked on the nominal Parliament size. The 2026 observation is <strong>preliminary</strong>; 1996–2023 are official general-election results. A reported source without a retained capture hash is not a fully independently verified archive object.</p>
 <div id="chart-longitudinal-overhang" role="img" aria-label="Overhang seats above 120 in all 11 New Zealand MMP general elections; 2026 preliminary, other years official." class="history-scroll"></div>
@@ -133,6 +133,7 @@ for(const r of h.elections){
   el("history-rows").appendChild(tr);
 }
 el("chart-longitudinal-overhang").appendChild(grid);
+el("history").hidden=false;
 el("history-status").textContent="0 seats is the baseline; *2026 is preliminary. Capture hashes exist for some, not all, historical years.";
 }
 

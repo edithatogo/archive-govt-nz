@@ -105,7 +105,8 @@ def test_historical_source_captures_are_identified_without_inventing_hashes() ->
     receipt_path = ROOT / "evidence/nz-election-results-official-2023-20261110.json"
     receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
     capture = next(
-        entry for entry in receipt["files"]
+        entry
+        for entry in receipt["files"]
         if entry["url"].endswith("/statistics/csv/overall-results-summary.csv")
     )
     row = OVERHANG_BY_YEAR[2023]
