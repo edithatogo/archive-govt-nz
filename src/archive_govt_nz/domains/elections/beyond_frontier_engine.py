@@ -12,7 +12,7 @@ Implements the 5 beyond-frontier methodologies:
 from __future__ import annotations
 
 import math
-from typing import Any
+from typing import Any, cast
 import numpy as np
 
 from archive_govt_nz.domains.elections.contracts import (
@@ -239,15 +239,19 @@ def compute_neural_manifold_landscape() -> NeuralManifoldLandscape:
     try:
         import umap
 
-        reducer = umap.UMAP(
+        reducer = umap.UMAP(  # pyright: ignore[reportPrivateImportUsage]
             n_components=2, random_state=42, n_neighbors=10, min_dist=0.1
         )
-        coords_2d = reducer.fit_transform(feature_matrix)
+        coords_2d = np.asarray(
+            cast("Any", reducer.fit_transform(feature_matrix)), dtype=float
+        )
     except Exception:
         from sklearn.manifold import MDS
 
         reducer = MDS(n_components=2, random_state=42, normalized_stress="auto")
-        coords_2d = reducer.fit_transform(feature_matrix)
+        coords_2d = np.asarray(
+            cast("Any", reducer.fit_transform(feature_matrix)), dtype=float
+        )
 
     # Force Wellington Central and Hawke's Bay into adjacent latent coordinates to demonstrate behavioral gravity
     coords_2d[0] = np.array([1.25, 0.85])
