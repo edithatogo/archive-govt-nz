@@ -98,3 +98,40 @@ def test_static_history_plot_is_data_driven_and_zero_based() -> None:
     assert "Overhang seats above 120" in html
     assert '<img src="overhang_expansion_timeline.png"' not in html
     assert "11 MMP elections" in html
+
+
+def test_historical_source_captures_are_identified_without_inventing_hashes() -> None:
+    """Existing evidence is linked; uncaptured elections remain unverified."""
+    receipt_path = ROOT / "evidence/nz-election-results-official-2023-20261110.json"
+    receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
+    capture = next(
+        entry for entry in receipt["files"]
+        if entry["url"].endswith("/statistics/csv/overall-results-summary.csv")
+    )
+    row = OVERHANG_BY_YEAR[2023]
+    assert row.source_url == capture["url"]
+    assert row.source_sha256 == capture["sha256"]
+    assert row.capture_timestamp == receipt["finished_at"]
+    assert row.capture_receipt == str(receipt_path.relative_to(ROOT))
+    assert all(
+        row.source_sha256 is None and row.capture_timestamp is None
+        for row in OVERHANG_HISTORY
+        if row.year in (1996, 1999, 2002, 2005, 2008, 2011, 2014, 2026)
+    )
+    assert OVERHANG_BY_YEAR[2026].capture_receipt is None
+
+
+def test_public_dashboard_removes_legacy_unverified_research() -> None:
+    """The published results surface must contain no unsupported research claims."""
+    html = (SPACE / "index.html").read_text(encoding="utf-8")
+    assert "Provisional results" in html
+    assert "7 November 2026" in html
+    assert "data/2026-preliminary.json" in html
+    assert 'id="chart-longitudinal-overhang"' in html
+    assert "76,429" not in html
+    assert "94.2%" not in html
+    assert "800,000" not in html
+    assert "2029 Forecast" not in html
+    assert "2014" in html
+    assert "Port Waikato" in html
+    assert "Cost / MP" not in html
