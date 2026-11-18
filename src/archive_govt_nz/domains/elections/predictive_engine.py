@@ -25,6 +25,7 @@ from archive_govt_nz.domains.elections.contracts import (
     PartyDetailedFunding,
     SocioeconomicIndicators,
 )
+from archive_govt_nz.domains.elections.overhang_history import OVERHANG_BY_YEAR
 
 # ----------------- 1. XGBOOST ELECTORATE FLIP PREDICTOR -----------------
 
@@ -360,7 +361,11 @@ def calculate_cost_per_local_member(
 
 
 def get_historical_longitudinal_records() -> list[LongitudinalElectionRecord]:
-    """Retrieve verified longitudinal election benchmarks across all 10 MMP elections."""
+    """Return 11 MMP cycles, using official or preliminary overhang sources.
+
+    Other research fields in these records have separate provenance and are not
+    implied to be verified by the overhang counts.
+    """
     # CPI Deflator ratios re-indexed to 2026 constant NZD base across 1996 to 2026 cycles
     raw_history = [
         {
@@ -369,7 +374,6 @@ def get_historical_longitudinal_records() -> list[LongitudinalElectionRecord]:
             "votes": 2080542,
             "turnout": 88.28,
             "nominal": 120,
-            "overhang": 0,
             "nominal_spend_m": 5.2,
             "cpi_ratio": 0.48,
         },
@@ -379,7 +383,6 @@ def get_historical_longitudinal_records() -> list[LongitudinalElectionRecord]:
             "votes": 2065364,
             "turnout": 84.77,
             "nominal": 120,
-            "overhang": 0,
             "nominal_spend_m": 5.8,
             "cpi_ratio": 0.51,
         },
@@ -389,7 +392,6 @@ def get_historical_longitudinal_records() -> list[LongitudinalElectionRecord]:
             "votes": 2044812,
             "turnout": 76.98,
             "nominal": 120,
-            "overhang": 0,
             "nominal_spend_m": 6.5,
             "cpi_ratio": 0.55,
         },
@@ -399,7 +401,6 @@ def get_historical_longitudinal_records() -> list[LongitudinalElectionRecord]:
             "votes": 2286160,
             "turnout": 80.92,
             "nominal": 120,
-            "overhang": 1,
             "nominal_spend_m": 7.8,
             "cpi_ratio": 0.60,
         },
@@ -409,7 +410,6 @@ def get_historical_longitudinal_records() -> list[LongitudinalElectionRecord]:
             "votes": 2356536,
             "turnout": 79.46,
             "nominal": 120,
-            "overhang": 2,
             "nominal_spend_m": 8.9,
             "cpi_ratio": 0.66,
         },
@@ -419,7 +419,6 @@ def get_historical_longitudinal_records() -> list[LongitudinalElectionRecord]:
             "votes": 2257334,
             "turnout": 74.21,
             "nominal": 120,
-            "overhang": 1,
             "nominal_spend_m": 9.4,
             "cpi_ratio": 0.72,
         },
@@ -429,7 +428,6 @@ def get_historical_longitudinal_records() -> list[LongitudinalElectionRecord]:
             "votes": 2416489,
             "turnout": 77.90,
             "nominal": 120,
-            "overhang": 1,
             "nominal_spend_m": 10.8,
             "cpi_ratio": 0.75,
         },
@@ -439,7 +437,6 @@ def get_historical_longitudinal_records() -> list[LongitudinalElectionRecord]:
             "votes": 2630173,
             "turnout": 79.75,
             "nominal": 120,
-            "overhang": 0,
             "nominal_spend_m": 12.1,
             "cpi_ratio": 0.78,
         },
@@ -449,7 +446,6 @@ def get_historical_longitudinal_records() -> list[LongitudinalElectionRecord]:
             "votes": 2886420,
             "turnout": 82.24,
             "nominal": 120,
-            "overhang": 0,
             "nominal_spend_m": 13.9,
             "cpi_ratio": 0.83,
         },
@@ -459,7 +455,6 @@ def get_historical_longitudinal_records() -> list[LongitudinalElectionRecord]:
             "votes": 2883428,
             "turnout": 78.20,
             "nominal": 120,
-            "overhang": 3,
             "nominal_spend_m": 16.2,
             "cpi_ratio": 0.94,
         },
@@ -469,7 +464,6 @@ def get_historical_longitudinal_records() -> list[LongitudinalElectionRecord]:
             "votes": 2740000,
             "turnout": 71.73,
             "nominal": 120,
-            "overhang": 11,
             "nominal_spend_m": 17.5,
             "cpi_ratio": 1.00,
         },
@@ -477,8 +471,8 @@ def get_historical_longitudinal_records() -> list[LongitudinalElectionRecord]:
 
     records: list[LongitudinalElectionRecord] = []
     for h in raw_history:
-        year = h["year"]
-        overhang = h["overhang"]
+        year = int(h["year"])
+        overhang = OVERHANG_BY_YEAR[year].overhang_seats
         house_size = 120 + overhang
         maj = int(house_size // 2) + 1
         real_spend = (h["nominal_spend_m"] * 1e6) / h["cpi_ratio"]

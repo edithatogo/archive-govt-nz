@@ -22,6 +22,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
+from archive_govt_nz.domains.elections.overhang_history import OVERHANG_HISTORY
 from archive_govt_nz.domains.elections.predictive_engine import (
     ClimateEnvironmentalIndicators,
     MacroeconomicFundamentals,
@@ -327,31 +328,48 @@ def make_finance_cost_per_mp_fig() -> go.Figure:
 
 
 def make_longitudinal_timeline_fig() -> go.Figure:
-    """Longitudinal evolution of overhang seats across 10 MMP elections."""
+    """Zero-based overhang-only bars for all 11 MMP elections (2026 preliminary)."""
+    records = OVERHANG_HISTORY
     fig = go.Figure()
     fig.add_trace(
         go.Bar(
-            x=LONG_DF["Year"],
-            y=LONG_DF["Base Seats"],
-            name="Nominal Baseline (120)",
-            marker_color="#21262d",
-        )
-    )
-    fig.add_trace(
-        go.Bar(
-            x=LONG_DF["Year"],
-            y=LONG_DF["Overhang"],
-            name="Overhang Seats",
-            marker_color="#f85149",
+            x=[entry.year for entry in records],
+            y=[entry.overhang_seats for entry in records],
+            marker_color=[
+                "#d29922" if entry.vintage == "preliminary" else "#f85149"
+                for entry in records
+            ],
+            marker_pattern_shape=[
+                "/" if entry.vintage == "preliminary" else "" for entry in records
+            ],
+            text=[str(entry.overhang_seats) for entry in records],
+            textposition="outside",
+            hovertext=[
+                f"{entry.year} — {entry.vintage}; source: {entry.source_url}"
+                for entry in records
+            ],
+            hovertemplate="%{hovertext}<br>Overhang: %{y} seats<extra></extra>",
         )
     )
     fig.update_layout(
-        barmode="stack",
-        title="Longitudinal Overhang Seat Growth across MMP Cycles (1996–2026)",
-        xaxis_title="Election Year",
-        yaxis_title="Total Parliamentary Seats",
+        title="MMP overhang seats by general election (1996–2026)",
+        xaxis_title="Election year",
+        xaxis={"tickmode": "array", "tickvals": [entry.year for entry in records]},
+        yaxis_title="Overhang seats above nominal 120",
+        yaxis={"rangemode": "tozero"},
         template="plotly_dark",
-        height=380,
+        showlegend=False,
+        height=400,
+        annotations=[
+            {
+                "x": records[-1].year,
+                "y": records[-1].overhang_seats,
+                "text": "Preliminary: 7 Nov 2026",
+                "showarrow": True,
+                "arrowhead": 2,
+                "ay": -45,
+            }
+        ],
     )
     return fig
 
@@ -1725,7 +1743,7 @@ with gr.Blocks(title="NZ 2026 General Election Analysis") as demo:
             )
 
         with gr.TabItem("Longitudinal Benchmarks (1996–2026)"):
-            gr.Markdown("### Historical Evolution Across 10 MMP Elections")
+            gr.Markdown("### Historical Evolution Across 11 MMP Elections")
             gr.Plot(
                 value=make_longitudinal_timeline_fig(), label="Longitudinal Overhang"
             )
@@ -1733,7 +1751,7 @@ with gr.Blocks(title="NZ 2026 General Election Analysis") as demo:
             gr.Markdown(
                 """
                 **Historical Findings:**
-                * **Overhang Trend:** Prior to 2026, overhang seats remained between 0 and 3 seats (2005: 1, 2008: 2, 2011: 1, 2014: 1, 2023: 3). The 2026 provisional outcome of 11 overhang seats represents a structural departure, expanding the House to 131 seats.
+                * **Overhang Trend:** Prior to 2026, overhang seats remained between 0 and 2 seats (2005: 1, 2008: 2, 2011: 1, 2014: 1, 2023: 2). The 2026 preliminary outcome of 11 overhang seats (7 November count; official results due 27 November) would expand the House to 131 seats. The extra Port Waikato by-election seat in 2023 was not an overhang.
                 * **Campaign Spending Inflation:** In constant 2026 dollars, total campaign expenditure rose from $10.8M in 1996 to $17.5M in 2026, with the real cost per party vote rising from $3.20 to $6.85.
                 """
             )
