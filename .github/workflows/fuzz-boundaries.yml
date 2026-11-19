@@ -1,0 +1,55 @@
+name: Generated archive boundary checks
+
+on:
+  pull_request:
+    paths:
+      - 'src/archive_govt_nz/**'
+      - 'tests/properties/test_archive_boundary_properties.py'
+      - 'pyproject.toml'
+      - 'uv.lock'
+      - '.python-version'
+      - '.github/workflows/fuzz-boundaries.yml'
+  schedule:
+    - cron: '37 18 * * 2'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: archive-properties-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generated-boundaries:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      ARCHIVE_FUZZ_EXAMPLES: ${{ github.event_name == 'pull_request' && '100' || '1000' }}
+      PYTHON_JIT: '0'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2
+        with:
+          version: '0.13.7'
+          enable-cache: true
+      - name: Install the existing locked environment
+        run: uv sync --locked --python 3.15.1
+      - name: Exercise bounded synthetic inputs
+        env:
+          FUZZ_SEED: ${{ github.run_id }}
+        run: |
+          ulimit -v 4194304
+          timeout 600 .venv/bin/python -m pytest tests/properties/test_archive_boundary_properties.py -q --no-cov --hypothesis-seed="$FUZZ_SEED" --hypothesis-show-statistics --junitxml=build/archive-properties.xml
+      - name: Retain generated failure examples and test results
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: archive-properties-${{ github.sha }}-${{ github.run_attempt }}
+          path: |
+            build/archive-properties.xml
+            .hypothesis/examples/
+          include-hidden-files: true
+          retention-days: 14
