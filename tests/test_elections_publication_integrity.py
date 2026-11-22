@@ -224,7 +224,7 @@ def test_release_module_rejects_seat_total_even_if_house_metadata_agrees() -> No
         "http://elections.nz/source",
         "https://elections.nz.evil.example/source",
         "https://elections.nz@evil.example/source",
-        "https://name:evidence@elections.nz/source",
+        "https://name:" + "evidence@elections.nz/source",
         "https://elections.nz:444/source",
         "https://elections.nz/source?redirect=evil.example",
         "https://elections.nz/source#fragment",

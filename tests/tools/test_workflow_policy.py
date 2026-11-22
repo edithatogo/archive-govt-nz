@@ -85,16 +85,16 @@ def test_parliament_and_assurance_runtimes_match_the_exact_repository_pin() -> N
         workflow = yaml.safe_load(
             (root / ".github/workflows" / filename).read_text(encoding="utf-8")
         )
-        selected = [
-            step["with"]["python-version"]
-            for job in workflow["jobs"].values()
-            for step in job["steps"]
-            if step.get("uses", "").startswith(
-                ("actions/setup-python@", "astral-sh/setup-uv@")
-            )
-            and "python-version" in step.get("with", {})
-        ]
-        assert selected == [pin], filename
+        for job in workflow["jobs"].values():
+            selected = [
+                step["with"]["python-version"]
+                for step in job["steps"]
+                if step.get("uses", "").startswith(
+                    ("actions/setup-python@", "astral-sh/setup-uv@")
+                )
+                and "python-version" in step.get("with", {})
+            ]
+            assert selected == [pin], filename
 
 
 def test_ci_fetches_history_for_commit_bound_authority() -> None:
