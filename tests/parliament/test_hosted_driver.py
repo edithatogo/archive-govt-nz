@@ -144,6 +144,22 @@ def test_disabled_schedule_and_pilot_bounds(tmp_path: Path) -> None:
         run(tmp_path / "unbounded", mode="pilot", max_batches=1000, transport=remote)
 
 
+@pytest.mark.parametrize("version", [(3, 15, 1), (3, 15, 3), (3, 14, 2), (3, 16, 2)])
+def test_other_python_versions_fail_before_state_access(
+    tmp_path: Path, monkeypatch: MonkeyPatch, version: tuple[int, int, int]
+) -> None:
+    """A patch-pin repair must not admit other patch or minor runtimes."""
+    remote = Remote()
+    original_head = remote.head()
+    worker = tmp_path / "wrong-runtime"
+    with monkeypatch.context() as runtime:
+        runtime.setattr(hosted.sys, "version_info", version)
+        with pytest.raises(HostedError, match="hosted_invocation_bounds"):
+            run(worker, mode="run", transport=remote)
+    assert remote.head() == original_head
+    assert not worker.exists()
+
+
 def test_pause_allows_durable_flush_but_stops_source(tmp_path: Path) -> None:
     """An in-flight accepted body may flush without starting another request."""
     manager, _remote = initial(tmp_path)

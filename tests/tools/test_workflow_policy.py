@@ -76,6 +76,27 @@ def test_workflow_action_version_tags_are_not_immutable() -> None:
     assert PINNED_ACTION_REFERENCE.match(mutable_reference) is None
 
 
+def test_parliament_and_assurance_runtimes_match_the_exact_repository_pin() -> None:
+    """The strict hosted guard and its operational workflow need one patch pin."""
+    root = Path(__file__).parents[2]
+    pin = (root / ".python-version").read_text(encoding="utf-8").strip()
+    assert re.fullmatch(r"\d+\.\d+\.\d+", pin)
+    for filename in ("ci.yml", "parliament-continuation.yml"):
+        workflow = yaml.safe_load(
+            (root / ".github/workflows" / filename).read_text(encoding="utf-8")
+        )
+        selected = [
+            step["with"]["python-version"]
+            for job in workflow["jobs"].values()
+            for step in job["steps"]
+            if step.get("uses", "").startswith(
+                ("actions/setup-python@", "astral-sh/setup-uv@")
+            )
+            and "python-version" in step.get("with", {})
+        ]
+        assert selected == [pin], filename
+
+
 def test_ci_fetches_history_for_commit_bound_authority() -> None:
     """Authority lineage tests need the pinned historical commits available."""
     root = Path(__file__).parents[2]

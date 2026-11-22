@@ -38,6 +38,14 @@ jobs:
         with:
           enable-cache: true
           version: "0.13.7"
+      - name: Install macOS OpenMP runtime
+        if: matrix.os == 'macos-latest'
+        shell: bash
+        run: |
+          # XGBoost macOS shared-library prerequisite:
+          # https://xgboost.readthedocs.io/en/stable/build.html#building-the-shared-library
+          brew install libomp
+          brew list --versions libomp
       - name: Verify native Windows output pinning
         if: matrix.os == 'windows-latest'
         timeout-minutes: 5

@@ -77,3 +77,49 @@ different patch version; isolated checks also confirm that a minor-only pin is
 not accepted. `./scripts/test-focused.sh tests/capture/test_datafinder_exports.py
 -q` now passes **39 tests**. Shell syntax validation passed. The environment,
 authoritative pin and resource-gate configuration remain unchanged.
+
+## 22 November 2026 — hosted runtime and registry follow-up
+
+At PR head `e987d4121473d5d07b65f7a6f29753f361a36041`, the macOS configured
+`basedpyright --threads 4` stage passed with zero diagnostics. All three OS jobs
+reached the full pytest stage and failed on the same Parliament runtime guard and
+Tobac URL inventory defects. macOS also lacked the OpenMP library required by the
+locked XGBoost wheel. Its 9,088 passing tests, 13 failures and two collection
+errors are partial run evidence, not full assurance acceptance.
+
+- Align Parliament's exact runtime guard, actual continuation workflow selection,
+  inline startup assertion and active hosted contract to the authoritative
+  CPython 3.15.2 pin. Rejection of other patch/minor versions remains strict;
+  schedule, workflow authority, capture bounds, concurrency and gate resources
+  remain unchanged.
+- Add only a conditional macOS setup step to install `libomp` and print its
+  installed version. The [XGBoost shared-library documentation](https://xgboost.readthedocs.io/en/stable/build.html#building-the-shared-library)
+  and [upstream macOS OpenMP discovery](https://github.com/dmlc/xgboost/blob/master/cmake/FindOpenMPMacOS.cmake)
+  identify the Homebrew dependency; the completed job reported its absent
+  `libomp.dylib`. Shell syntax is checked locally; native installation and import
+  qualification remain for hosted macOS. No thread count, timeout, test scope,
+  coverage floor or acceptance gate is relaxed.
+- Reconcile the existing Tobac source set to all 61 canonical URLs while retaining
+  manual scheduling and disabled publication. The deeper duplicate-identity check
+  is resolved through an exact immutable pre-reconciliation registry snapshot and
+  live-row consolidation, documented in
+  [the owning Tobac plan](../tobac_sources_20261025/plan.md). Dated binding/capture
+  bytes remain unchanged; version separation is not capture re-verification.
+- `./scripts/test-focused.sh` across the six affected Parliament files, existing
+  Tobac archive test, source-set contract/CLI tests and workflow-policy tests:
+  **158 passed in 12.88s**. Four new cases reject different Python patch/minor
+  versions before state access; the workflow regression binds runtime selection
+  to `.python-version`. The existing retry-budget test now supplies an explicit
+  mock HTTP transport, avoiding executor SOCKS initialization and rejecting any
+  unintended request without changing its timing assertions or production code.
+- Affected Ruff ALL and format checks passed. Scoped basedpyright on the five
+  changed Python files reported **0 errors, 0 warnings**. Native source-set
+  parsing and the actual Parliament startup-version assertion passed. Isolated
+  mutations of snapshot bytes and current aliases were rejected by the existing
+  integrity assertions. The historical binding hash remains
+  `47c42a5384a88f58bda7af87b56a5e3c297d4afd7a9a04097ce48c24172a6fb2`.
+
+Required hosted assurance must qualify the combined follow-up commit. No source
+capture, operational dispatch, publication, deployment or remote mutation was
+performed during this repair; historical evidence and unresolved source rights
+and scientific qualifications remain intact.

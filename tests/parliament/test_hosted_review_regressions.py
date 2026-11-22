@@ -165,6 +165,19 @@ def test_failed_read_time_reduces_the_retry_budget(
         return {"captured": 0, "failed": 0, "bytes": 0}
 
     monkeypatch.setattr(manager.archive, "capture", capture)
+    real_client = httpx.AsyncClient
+    monkeypatch.setattr(
+        hosted.httpx,
+        "AsyncClient",
+        lambda **kwargs: real_client(
+            transport=httpx.MockTransport(
+                lambda _request: pytest.fail(
+                    "retry-budget fixture made an HTTP request"
+                )
+            ),
+            **kwargs,
+        ),
+    )
     asyncio.run(hosted.acquire(manager))
     assert len(limits) == 2
     assert manager.work["seconds"] == pytest.approx(899.9)
