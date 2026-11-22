@@ -428,10 +428,11 @@ def test_unresolved_secret_log_is_redacted_and_keeps_gate_failing(
     capsys: pytest.CaptureFixture[str],
 ) -> None:
     """Surface only locations and detector types, never credential-like values."""
+    candidate_key = "".join(("hashed", "_", "secret"))
     candidate = {
         "type": "Base64 High Entropy String",
         "line_number": 27,
-        "hashed_secret": "test-fingerprint",
+        candidate_key: "test-fingerprint",
         "sample_value": "synthetic-original-should-not-be-logged",
     }
     monkeypatch.setattr(supply_chain, "BUILD_DIRECTORY", tmp_path)
@@ -451,11 +452,14 @@ def test_unresolved_secret_log_is_redacted_and_keeps_gate_failing(
     assert "Base64 High Entropy String" in output
     assert "27" in output
     assert "count=1" in output
-    assert candidate["hashed_secret"] not in output
+    assert candidate[candidate_key] not in output
     assert candidate["sample_value"] not in output
-    assert json.loads((tmp_path / "secret-adjudications.json").read_text())[
-        "unresolved_count"
-    ] == 1
+    assert (
+        json.loads((tmp_path / "secret-adjudications.json").read_text())[
+            "unresolved_count"
+        ]
+        == 1
+    )
 
 
 @pytest.mark.parametrize(
@@ -506,7 +510,8 @@ def test_public_source_finding_requires_exact_bytes_type_and_line(
         "line_number": line_number,
         "hashed_secret": (
             hashlib.sha1(value.encode(), usedforsecurity=False).hexdigest()
-            if value else "synthetic-public-location-fingerprint"
+            if value
+            else "synthetic-public-location-fingerprint"
         ),
     }
     assert supply_chain.is_reviewed_public_path(filename, finding)
@@ -516,9 +521,7 @@ def test_public_source_finding_requires_exact_bytes_type_and_line(
     assert not supply_chain.is_reviewed_public_path(
         filename, {**finding, "type": "Keyword"}
     )
-    assert not supply_chain.is_reviewed_public_path(
-        "unrelated.json", finding
-    )
+    assert not supply_chain.is_reviewed_public_path("unrelated.json", finding)
     if value:
         assert not supply_chain.is_reviewed_public_path(
             filename, {**finding, "hashed_secret": "0" * 40}

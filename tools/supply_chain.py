@@ -188,7 +188,6 @@ def _is_indexed_public_checksum_path(relative: str, finding: dict[str, object]) 
         return False
 
 
-
 # Reviewed public survey checksums and certificate/source metadata. All files
 # are byte-pinned; detector findings must also identify their original fields.
 # These checks grant no source rights, capture verification or publication status.
@@ -208,9 +207,7 @@ PUBLIC_SOURCE_EVIDENCE_SHA256 = {
 }
 
 
-def _is_reviewed_source_evidence(
-    relative: str, finding: dict[str, object]
-) -> bool:
+def _is_reviewed_source_evidence(relative: str, finding: dict[str, object]) -> bool:
     """Adjudicate only typed public values in exact unchanged evidence bytes."""
     expected = PUBLIC_SOURCE_EVIDENCE_SHA256.get(relative)
     number = finding.get("line_number")
@@ -236,21 +233,16 @@ def _is_reviewed_source_evidence(
         if match is None:
             return False
         checksum = match.group(1)
-        return (
-            hashlib.sha1(checksum.encode(), usedforsecurity=False).hexdigest()
-            == finding.get("hashed_secret")
-        )
+        return hashlib.sha1(
+            checksum.encode(), usedforsecurity=False
+        ).hexdigest() == finding.get("hashed_secret")
     if relative == "evidence/stats-nz-api-capability-20261111.json":
         if finding.get("type") != "Hex High Entropy String":
             return False
         match = re.fullmatch(r'"serial": "([0-9A-F]{32})",', line)
-        return (
-            match is not None
-            and hashlib.sha1(
-                match.group(1).encode(), usedforsecurity=False
-            ).hexdigest()
-            == finding.get("hashed_secret")
-        )
+        return match is not None and hashlib.sha1(
+            match.group(1).encode(), usedforsecurity=False
+        ).hexdigest() == finding.get("hashed_secret")
     if relative == "evidence/analytical-derivatives-manifest.json":
         folder = "/".join(
             (
