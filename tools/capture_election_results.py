@@ -322,7 +322,7 @@ def main(argv: list[str] | None = None) -> int:
 
     started = datetime.now(UTC)
     captured: list[dict] = []
-    failures: list[str] = []
+    failures: list[dict[str, str]] = []
     for url in urls:
         print(f"fetch {url}")
         data = None

@@ -36,9 +36,10 @@ This repository is a solo-maintainer codebase.
   expansion on the roadmap.
 
 ## Python runtime qualification
-- All active Python use in this repository must use CPython 3.15.1 through an
-  explicitly selected repo-local interpreter. Verify the interpreter version
-  and dependency/runtime behavior in that environment.
+- All active Python use in this repository must use CPython 3.15.2, as pinned in
+  `.python-version`, through an explicitly selected repo-local interpreter.
+  Require an exact patch-version match and verify dependency/runtime behavior
+  in that environment.
 - Older version literals may remain only in immutable historical evidence or
   synthetic tests that deliberately exercise version handling.
 - Preserve a working latest-version environment and any in-flight operation;

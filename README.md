@@ -201,3 +201,8 @@ This software is licensed under the [Apache License, Version 2.0](LICENSE).
 Archived source material retains its own copyright, licence, access, and
 redistribution conditions; public accessibility is not blanket redistribution
 permission.
+
+## Security
+
+Follow the [security policy](SECURITY.md) to report vulnerabilities
+privately. Keep credentials and sensitive data out of public issues and pull requests.

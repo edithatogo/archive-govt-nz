@@ -86,7 +86,11 @@ def get_historical_redistribution_cycles() -> list[RedistributionCycleSummary]:
             quota_maori=62400,
             tolerance_pct=5.0,
             fastest_growing_regions=["Upper Harbour", "Selwyn"],
-            geographic_bloat_electorates=["West Coast-Tasman", "Waitaki", "Clutha-Southland"],
+            geographic_bloat_electorates=[
+                "West Coast-Tasman",
+                "Waitaki",
+                "Clutha-Southland",
+            ],
         ),
         RedistributionCycleSummary(
             year=2020,

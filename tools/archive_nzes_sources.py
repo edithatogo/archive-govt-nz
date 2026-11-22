@@ -35,6 +35,7 @@ import hashlib
 import json
 import sys
 import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import UTC, datetime

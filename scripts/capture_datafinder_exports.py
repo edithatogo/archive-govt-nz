@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Capture Stats NZ electorate boundary geometry from datafinder (Koordinates).
 
 Requires ``KOORDINATES_API_KEY`` in the environment with the ``exports:read`` and
@@ -8,32 +9,39 @@ Each layer is exported as GeoParquet (EPSG:4326) plus the publisher's own ISO 19
 metadata (PDF/TXT/XML) inside one ZIP. The ZIP bytes are stored verbatim in the CAS so
 the provenance bundle stays byte-identical to what the source served.
 
-Run:  python scripts/capture_datafinder_exports.py [--verify-only]
+Run:  .venv/bin/python scripts/capture_datafinder_exports.py
 """
 
 from __future__ import annotations
 
-import hashlib
 import io
 import json
+import logging
 import os
 import sys
 import time
-import urllib.error
-import urllib.request
 import zipfile
-from datetime import datetime, timezone
+from datetime import UTC, datetime
+from http import HTTPStatus
 from pathlib import Path
+from urllib.parse import urljoin, urlsplit
+
+import httpx
+import pyarrow.parquet as pq
 
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "src"))
 
+from archive_govt_nz.capture import _safe_capture_url  # noqa: E402
 from archive_govt_nz.object_store import ContentAddressedStore  # noqa: E402
 
+LOGGER = logging.getLogger(__name__)
 UA = "archive-govt-nz/1.0 (+research archive; contact edithatogo)"
 BASE = "https://datafinder.stats.govt.nz"
 API = f"{BASE}/services/api/v1.x"
 VECTOR_FORMAT = "application/vnd.apache.parquet"
+MAX_REDIRECTS = 3
+REDIRECT_STATUSES = {301, 302, 303, 307, 308}
 
 # Layer id -> (title, role). "new" closes a coverage gap; "verify" cross-checks a set
 # the archive already holds from the ArcGIS FeatureServer pipeline.
@@ -49,6 +57,20 @@ LAYERS: list[tuple[int, str, str]] = [
 ]
 
 
+def _validate_url(url: str, *, publisher: bool) -> None:
+    # Reuse the capture guard while requiring TLS for credentials and signed URLs.
+    if not _safe_capture_url(url) or not url.isprintable():
+        message = "Unsafe Datafinder URL"
+        raise ValueError(message)
+    parsed = urlsplit(url)
+    if parsed.scheme != "https" or parsed.port not in {None, 443}:
+        message = "Datafinder URLs require HTTPS on the default port"
+        raise ValueError(message)
+    if publisher and parsed.hostname != "datafinder.stats.govt.nz":
+        message = "Unapproved Datafinder publisher"
+        raise ValueError(message)
+
+
 def request(
     url: str,
     *,
@@ -57,6 +79,8 @@ def request(
     payload: dict[str, object] | None = None,
     timeout: int = 180,
 ) -> tuple[int, bytes]:
+    """Call the approved API origin without forwarding credentials on redirects."""
+    _validate_url(url, publisher=True)
     data = None if payload is None else json.dumps(payload).encode()
     headers = {
         "User-Agent": UA,
@@ -65,15 +89,19 @@ def request(
     }
     if data is not None:
         headers["Content-Type"] = "application/json"
-    req = urllib.request.Request(url, data=data, headers=headers, method=method)
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as response:
-            return response.status, response.read()
-    except urllib.error.HTTPError as exc:
-        return exc.code, exc.read()
+    response = httpx.request(
+        method,
+        url,
+        content=data,
+        headers=headers,
+        timeout=timeout,
+        follow_redirects=False,
+    )
+    return response.status_code, response.content
 
 
 def create_export(token: str, layer_id: int, title: str) -> int:
+    """Request one publisher export with geometry and original metadata."""
     payload = {
         "name": f"archive-govt-nz {title}",
         "items": [
@@ -90,31 +118,29 @@ def create_export(token: str, layer_id: int, title: str) -> int:
     status, body = request(
         f"{API}/exports/", token=token, method="POST", payload=payload
     )
-    if status != 201:
-        raise SystemExit(
-            f"export create failed for {layer_id}: HTTP {status} {body[:300]!r}"
-        )
+    if status != HTTPStatus.CREATED:
+        message = f"export create failed for {layer_id}: HTTP {status}"
+        raise SystemExit(message)
     return int(json.loads(body)["id"])
 
 
 def wait_for_export(token: str, export_id: int, *, limit: int = 300) -> str:
+    """Poll a publisher export until completion or the bounded deadline."""
     deadline = time.monotonic() + limit
     while time.monotonic() < deadline:
         status, body = request(f"{API}/exports/{export_id}/", token=token, timeout=60)
-        if status != 200:
-            raise SystemExit(f"export poll failed for {export_id}: HTTP {status}")
+        if status != HTTPStatus.OK:
+            message = f"export poll failed for {export_id}: HTTP {status}"
+            raise SystemExit(message)
         state = json.loads(body).get("state")
         if state == "complete":
             return f"{API}/exports/{export_id}/download/"
         if state in {"error", "failed", "cancelled"}:
-            raise SystemExit(f"export {export_id} ended in state {state!r}")
+            message = f"export {export_id} ended in state {state!r}"
+            raise SystemExit(message)
         time.sleep(4)
-    raise SystemExit(f"export {export_id} did not finish within {limit}s")
-
-
-class _NoRedirect(urllib.request.HTTPRedirectHandler):
-    def redirect_request(self, req, fp, code, msg, headers, newurl):  # noqa: ANN001, PLR0913
-        return None
+    message = f"export {export_id} did not finish within {limit}s"
+    raise SystemExit(message)
 
 
 def download(url: str, token: str) -> bytes:
@@ -123,28 +149,31 @@ def download(url: str, token: str) -> bytes:
     The download endpoint answers with a pre-signed object-storage URL. Sending the
     Authorization header on that second hop is an error, so it is stripped here.
     """
-    opener = urllib.request.build_opener(_NoRedirect)
-    signed = urllib.request.Request(
-        url,
-        headers={"User-Agent": UA, "Accept": "*/*", "Authorization": f"key {token}"},
-    )
-    location: str | None = None
-    try:
-        with opener.open(signed, timeout=300) as response:
-            return response.read()
-    except urllib.error.HTTPError as exc:
-        if exc.code not in {301, 302, 303, 307, 308}:
-            raise SystemExit(
-                f"download failed: HTTP {exc.code} {exc.read()[:200]!r}"
-            ) from None
-        location = exc.headers["Location"]
-    if location is None:
-        raise SystemExit("download failed: no redirect location")
-    plain = urllib.request.Request(
-        location, headers={"User-Agent": UA, "Accept": "*/*"}
-    )
-    with urllib.request.urlopen(plain, timeout=600) as response:
-        return response.read()
+    _validate_url(url, publisher=True)
+    headers = {"User-Agent": UA, "Accept": "*/*", "Authorization": f"key {token}"}
+    for redirect_count in range(MAX_REDIRECTS + 1):
+        with httpx.stream(
+            "GET",
+            url,
+            headers=headers,
+            timeout=300 if redirect_count == 0 else 600,
+            follow_redirects=False,
+        ) as response:
+            if response.is_success:
+                # HTTP content decoding must not change the bytes kept in the CAS.
+                return b"".join(response.iter_raw())
+            if response.status_code not in REDIRECT_STATUSES:
+                message = f"download failed: HTTP {response.status_code}"
+                raise SystemExit(message)
+            location = response.headers.get("Location")
+            if not location:
+                message = "download failed: no redirect location"
+                raise SystemExit(message)
+        url = urljoin(url, location)
+        _validate_url(url, publisher=False)
+        headers = {"User-Agent": UA, "Accept": "*/*"}
+    message = "download failed: too many redirects"
+    raise SystemExit(message)
 
 
 def describe(zip_bytes: bytes) -> dict[str, object]:
@@ -158,8 +187,6 @@ def describe(zip_bytes: bytes) -> dict[str, object]:
         for name in names:
             if not name.endswith(".parquet"):
                 continue
-            import pyarrow.parquet as pq
-
             table = pq.read_table(io.BytesIO(archive.read(name)))
             features = table.num_rows
             meta = (table.schema.metadata or {}).get(b"geo")
@@ -178,9 +205,15 @@ def describe(zip_bytes: bytes) -> dict[str, object]:
 
 
 def main() -> None:
+    """Capture the listed exports and write their byte-preserving CAS receipts."""
+    # Enable only our progress messages, not HTTPX's URLs (which may be signed).
+    LOGGER.addHandler(logging.StreamHandler())
+    LOGGER.setLevel(logging.INFO)
+    LOGGER.propagate = False
     token = os.environ.get("KOORDINATES_API_KEY", "").strip()
     if not token:
-        raise SystemExit("KOORDINATES_API_KEY is not set")
+        message = "KOORDINATES_API_KEY is not set"
+        raise SystemExit(message)
     store = ContentAddressedStore(REPO / "objects")
     objects: list[dict[str, object]] = []
 
@@ -202,8 +235,11 @@ def main() -> None:
             **detail,
         }
         objects.append(entry)
-        print(
-            f"layer {layer_id:<7} {detail['feature_count']!s:>4} features  {len(payload):>9}B ok"
+        LOGGER.info(
+            "layer %-7s %4s features  %9dB ok",
+            layer_id,
+            detail["feature_count"],
+            len(payload),
         )
 
     evidence = REPO / "evidence" / "datafinder-geometry-20261111-capture.json"
@@ -211,14 +247,20 @@ def main() -> None:
         json.dumps(
             {
                 "schema_version": "archive-govt-nz.datafinder-geometry-capture/v1",
-                "captured_at": datetime.now(timezone.utc).isoformat(),
+                "captured_at": datetime.now(UTC).isoformat(),
                 "operator": "edithatogo",
-                "source": "Stats NZ Geographic Data Service (datafinder.stats.govt.nz), Koordinates",
+                "source": (
+                    "Stats NZ Geographic Data Service "
+                    "(datafinder.stats.govt.nz), Koordinates"
+                ),
                 "licence": "CC BY 4.0 Stats NZ",
                 "credential": {
                     "env_var": "KOORDINATES_API_KEY",
                     "scopes": ["exports:read", "exports:write"],
-                    "storage": "repo-local .env, ignored by git (.gitignore:16); value never recorded here",
+                    "storage": (
+                        "repo-local .env, ignored by git (.gitignore:16); "
+                        "value never recorded here"
+                    ),
                     "value_recorded": False,
                 },
                 "objects": objects,
@@ -239,7 +281,7 @@ def main() -> None:
         + "\n",
         encoding="utf-8",
     )
-    print(f"\nstored {len(objects)} objects -> {evidence}")
+    LOGGER.info("\nstored %d objects -> %s", len(objects), evidence)
 
 
 if __name__ == "__main__":

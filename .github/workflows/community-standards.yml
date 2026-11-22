@@ -1,0 +1,24 @@
+name: Community standards
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  merge_group:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: community-standards-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  community-standards:
+    name: community-standards
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Audit community standards
+        uses: edithatogo/repository-standards/.github/actions/community-standards@5b6741ac12f3720834ff8605eeb603fc15f7e683

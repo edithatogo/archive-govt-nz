@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import numpy as np
 import pytest
 
 from archive_govt_nz.domains.elections.beyond_frontier_engine import (
@@ -47,6 +48,69 @@ def test_neural_manifold_landscape():
         + (wlg["latent_y"] - hb["latent_y"]) ** 2
     ) ** 0.5
     assert dist < 0.3  # Very close in AI latent space despite demographic differences
+
+
+@pytest.mark.parametrize("embedding", [None, [], (np.zeros((72, 2)),)])
+def test_neural_manifold_rejects_non_array_embedding(
+    monkeypatch: pytest.MonkeyPatch, embedding: object
+) -> None:
+    """Unexpected reducer output must fail before coordinate mutation."""
+
+    def fitted(_self: object, _features: np.ndarray) -> object:
+        return embedding
+
+    monkeypatch.setattr("umap.umap_.UMAP.fit_transform", fitted)
+    with pytest.raises(TypeError, match="embedding must be a NumPy array"):
+        compute_neural_manifold_landscape()
+
+
+@pytest.mark.parametrize("shape", [(71, 2), (72, 3), (144,)])
+def test_neural_manifold_rejects_wrong_embedding_shape(
+    monkeypatch: pytest.MonkeyPatch, shape: tuple[int, ...]
+) -> None:
+    """Every electorate needs exactly two coordinates before anchors are applied."""
+    embedding = np.zeros(shape)
+    original = embedding.copy()
+
+    def fitted(_self: object, _features: np.ndarray) -> np.ndarray:
+        return embedding
+
+    monkeypatch.setattr("umap.umap_.UMAP.fit_transform", fitted)
+    with pytest.raises(ValueError, match="two-dimensional row per electorate"):
+        compute_neural_manifold_landscape()
+    np.testing.assert_array_equal(embedding, original)
+
+
+@pytest.mark.parametrize("fallback", [False, True])
+def test_neural_manifold_preserves_reducer_paths_and_anchor_values(
+    monkeypatch: pytest.MonkeyPatch, *, fallback: bool
+) -> None:
+    """UMAP and the existing MDS fallback retain their coordinates and anchors."""
+    embedding = np.arange(144, dtype=float).reshape(72, 2)
+    original = embedding.copy()
+    calls: list[str] = []
+
+    def umap_fitted(_self: object, features: np.ndarray) -> np.ndarray:
+        assert features.shape == (72, 12)
+        calls.append("umap")
+        if fallback:
+            message = "synthetic UMAP failure"
+            raise RuntimeError(message)
+        return embedding
+
+    def mds_fitted(_self: object, features: np.ndarray) -> np.ndarray:
+        assert features.shape == (72, 12)
+        calls.append("mds")
+        return embedding
+
+    monkeypatch.setattr("umap.umap_.UMAP.fit_transform", umap_fitted)
+    monkeypatch.setattr("sklearn.manifold.MDS.fit_transform", mds_fitted)
+    latent = compute_neural_manifold_landscape()
+
+    assert calls == (["umap", "mds"] if fallback else ["umap"])
+    np.testing.assert_array_equal(embedding[:2], [[1.25, 0.85], [1.35, 0.82]])
+    np.testing.assert_array_equal(embedding[2:], original[2:])
+    assert latent.n_features == 12
 
 
 def test_quantum_superposition_qubits():
