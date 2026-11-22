@@ -5,7 +5,6 @@ from pathlib import Path
 
 import yaml
 
-
 COMMUNITY_STANDARDS_CHECKOUT = (
     "edithatogo/repository-standards/.github/actions/"
     "community-standards@5b6741ac12f3720834ff8605eeb603fc15f7e683"
