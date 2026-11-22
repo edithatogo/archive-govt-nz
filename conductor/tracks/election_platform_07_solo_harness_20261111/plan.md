@@ -123,3 +123,15 @@ Required hosted assurance must qualify the combined follow-up commit. No source
 capture, operational dispatch, publication, deployment or remote mutation was
 performed during this repair; historical evidence and unresolved source rights
 and scientific qualifications remain intact.
+
+## 22 November 2026 — standalone election dependency repair
+
+At head `3aa0fe8a05389c35edb063b546068635c16f422e`, election quality
+[job 137184622529](https://github.com/edithatogo/archive-govt-nz/actions/runs/45014771510/job/137184622529)
+failed during export-test collection because its standalone dependency list
+omitted `python-pptx`. Add the existing development constraint
+`python-pptx>=1.0,<2` as one quoted shell argument. Preserve the runtime, test
+selection, coverage floor and native assurance gates. Workflow parsing, shell
+syntax and exact dependency-list comparison passed;
+`./scripts/test-focused.sh tests/tools/test_workflow_policy.py -q` passed
+**11 tests**. The amended head still requires hosted qualification.
