@@ -191,6 +191,10 @@ def _is_indexed_public_checksum_path(relative: str, finding: dict[str, object]) 
 # Reviewed public survey checksums and certificate/source metadata. All files
 # are byte-pinned; detector findings must also identify their original fields.
 # These checks grant no source rights, capture verification or publication status.
+PUBLIC_ANALYTICAL_OUTPUT_LINE = 4
+PUBLIC_NZES_URL_LINE = 67
+MAX_DIAGNOSTIC_LINES = 20
+
 PUBLIC_SOURCE_EVIDENCE_SHA256 = {
     "evidence/nzes-sources.json": (
         "f46784423279052c62e8b715d95cabefb24523cfed5b1f460f948f3047d74551"
@@ -207,7 +211,9 @@ PUBLIC_SOURCE_EVIDENCE_SHA256 = {
 }
 
 
-def _is_reviewed_source_evidence(relative: str, finding: dict[str, object]) -> bool:
+def _is_reviewed_source_evidence(  # noqa: C901, PLR0911 - distinct exact-source gates
+    relative: str, finding: dict[str, object]
+) -> bool:
     """Adjudicate only typed public values in exact unchanged evidence bytes."""
     expected = PUBLIC_SOURCE_EVIDENCE_SHA256.get(relative)
     number = finding.get("line_number")
@@ -244,7 +250,7 @@ def _is_reviewed_source_evidence(relative: str, finding: dict[str, object]) -> b
             match.group(1).encode(), usedforsecurity=False
         ).hexdigest() == finding.get("hashed_secret")
     if relative == "evidence/analytical-derivatives-manifest.json":
-        folder = "/".join(
+        folder = "/".join(  # noqa: FLY002 - prevent public path false positive
             (
                 "",
                 "Volumes",
@@ -257,14 +263,16 @@ def _is_reviewed_source_evidence(relative: str, finding: dict[str, object]) -> b
         )
         return (
             finding.get("type") == "Base64 High Entropy String"
-            and number == 4
+            and number == PUBLIC_ANALYTICAL_OUTPUT_LINE
             and line == f'"out_dir": "{folder}",'
         )
-    dataset_name = "_".join(("NZES2017", "New", "Zealand", "Election", "Study"))
+    dataset_name = "_".join(  # noqa: FLY002 - scanner-safe public URL
+        ("NZES2017", "New", "Zealand", "Election", "Study")
+    )
     return (
         relative == "tools/archive_nzes_sources.py"
         and finding.get("type") == "Base64 High Entropy String"
-        and number == 67
+        and number == PUBLIC_NZES_URL_LINE
         and line == f'"{dataset_name}/6453134"'
     )
 
@@ -460,8 +468,12 @@ def secrets() -> None:
                 + " detector_counts="
                 + json.dumps(detector_counts, sort_keys=True)
                 + " line_numbers="
-                + json.dumps(positions[:20])
-                + (" (additional lines omitted)" if len(positions) > 20 else "")
+                + json.dumps(positions[:MAX_DIAGNOSTIC_LINES])
+                + (
+                    " (additional lines omitted)"
+                    if len(positions) > MAX_DIAGNOSTIC_LINES
+                    else ""
+                )
             )
         raise SystemExit(1)
     print(f"secret scan passed; receipt={output_path.relative_to(REPOSITORY_ROOT)}")
