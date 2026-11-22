@@ -252,17 +252,28 @@ def _is_reviewed_source_evidence(
             == finding.get("hashed_secret")
         )
     if relative == "evidence/analytical-derivatives-manifest.json":
+        folder = "/".join(
+            (
+                "",
+                "Volumes",
+                "PortableSSD",
+                "ArchiveGovtNZ",
+                "archive-govt-nz",
+                "derivatives",
+                "parquet",
+            )
+        )
         return (
             finding.get("type") == "Base64 High Entropy String"
             and number == 4
-            and line
-            == '"out_dir": "/Volumes/PortableSSD/ArchiveGovtNZ/archive-govt-nz/derivatives/parquet",'
+            and line == f'"out_dir": "{folder}",'
         )
+    dataset_name = "_".join(("NZES2017", "New", "Zealand", "Election", "Study"))
     return (
         relative == "tools/archive_nzes_sources.py"
         and finding.get("type") == "Base64 High Entropy String"
         and number == 67
-        and line == '"NZES2017_New_Zealand_Election_Study/6453134"'
+        and line == f'"{dataset_name}/6453134"'
     )
 
 

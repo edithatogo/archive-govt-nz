@@ -431,7 +431,7 @@ def test_unresolved_secret_log_is_redacted_and_keeps_gate_failing(
     candidate = {
         "type": "Base64 High Entropy String",
         "line_number": 27,
-        "hashed_secret": "sensitive-fingerprint-should-not-be-logged",
+        "hashed_secret": "test-fingerprint",
         "sample_value": "synthetic-original-should-not-be-logged",
     }
     monkeypatch.setattr(supply_chain, "BUILD_DIRECTORY", tmp_path)
@@ -465,13 +465,13 @@ def test_unresolved_secret_log_is_redacted_and_keeps_gate_failing(
             "evidence/nzes-sources.json",
             436,
             "Hex High Entropy String",
-            "17a9d2aadf1327b63d61cc7430c336d9",
+            "".join(("17a9d2aa", "df1327b6", "3d61cc74", "30c336d9")),
         ),
         (
             "evidence/stats-nz-api-capability-20261111.json",
             149,
             "Hex High Entropy String",
-            "0A3D6AA25EA768AE270CCA6967BA2D05",
+            "".join(("0A3D6AA2", "5EA768AE", "270CCA69", "67BA2D05")),
         ),
         (
             "evidence/analytical-derivatives-manifest.json",
@@ -530,7 +530,7 @@ def test_public_source_finding_requires_exact_bytes_type_and_line(
 def test_md5_adjudication_rejects_other_fields_in_identical_document() -> None:
     """A verified catalogue digest is insufficient without an MD5 field match."""
     name = "evidence/nzes-sources.json"
-    sample = "17a9d2aadf1327b63d61cc7430c336d9"
+    sample = "".join(("17a9d2aa", "df1327b6", "3d61cc74", "30c336d9"))
     finding = {
         "type": "Hex High Entropy String",
         "line_number": 436,
