@@ -5,6 +5,55 @@ baseline. This document sets the current delivery boundary and supersedes
 open-ended progression through historical programmes. It does not mark unfinished
 corpora complete or cancel another owner's in-flight operation.
 
+## Archive-only boundary — 22 November 2026
+
+The maintainer has clarified that this repository is an archival mechanism for
+public data sources alongside Hugging Face distribution and resource metadata.
+New work follows this boundary:
+
+| Responsibility | Owner |
+| --- | --- |
+| Source discovery/acquisition, immutable originals, capture state, provenance, rights metadata, fixity, replay and recovery | `archive-govt-nz`, using its existing source contracts and operational registries. |
+| Parsing, normalisation, indexing and format conversion for faithful access | The archive, with source-linked transformation receipts and explicit information loss; no invented observations or model estimates. |
+| Dataset distribution identities, family/role and canonical relationships | The maintained [Hugging Face dataset-estate catalogue](https://huggingface.co/datasets/edithatogo/dataset-estate-registry/blob/main/catalog.json), reconciled through its [existing process](https://huggingface.co/datasets/edithatogo/dataset-estate-registry/blob/main/PROCESS.md). Local capture registries have a separate operational role. |
+| Causal inference, forecasting, policy counterfactuals, game models and analytical presentation | A consuming application, referencing immutable archive versions. Reusable game definitions and methods go to [UOGTO](https://github.com/edithatogo/UOGTO) and [Paignia](https://github.com/edithatogo/paignia) only where an actual game-theory need is established. |
+
+For each published derivative, retain the exact source IDs, paths and hashes,
+transformation version, destination repository/revision, rights state and remote
+verification receipt. A project-specific resource plan or an older exported
+inventory is not a second authoritative catalogue. The live estate catalogue
+was inspected on 22 November 2026; its roles distinguish source archives from
+derived corpora and compatibility datasets. No Hub resource is created, moved,
+deleted or republished by this scope clarification.
+
+### Existing analytical code: staged extraction
+
+The existing [election domain](../src/archive_govt_nz/domains/elections/) and
+[election explorer](../spaces/nz-election-explorer/) mix source access with
+research engines and presentation. The explorer's current README already
+distinguishes its public static source-results interface from uncertified
+research outputs. Keep that distinction during extraction.
+
+- Inventory analytical modules, callers, fixtures, generated outputs and the
+  GitHub-to-Hugging-Face deployment path. Keep acquisition and faithful source
+  transformations here; select a separate application destination for analytical
+  methods and presentation. Destination and transfer remain pending.
+- Freeze existing public/source contracts and verify replacement callers before
+  moving or removing code. Preserve source history, licences, pinned data and
+  deployed compatibility; update references and deployment ownership together.
+- Independently review numerical claims before treating a transferred method
+  as supported. For example, `overhang_causal_attribution.py` contains fixed
+  attribution and econometric outputs; moving that module does not validate
+  causal estimates or establish a generic Shapley implementation.
+- Record a bounded migration in the existing work record when that application
+  is selected. This documentation increment establishes ownership; it does not
+  claim that analytical extraction or numerical qualification has occurred.
+
+Historical programme entries remain evidence and backlog context. New analytical
+expansion belongs with the consuming application, even when an older track
+listed it here. Existing archival capture, publication and recovery work keeps
+its current ownership and acceptance gates.
+
 ## Delivered: usable archival software
 
 The baseline is a locked Python 3.15.1 package with working CLI entry points,

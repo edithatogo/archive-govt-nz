@@ -58,6 +58,14 @@ This repository is a solo-maintainer codebase.
 
 ## Quality boundaries
 - Preserve originals and provenance over rewriting.
+- This repository owns public-source acquisition, preservation, metadata,
+  reproducible access derivatives and publication/recovery. Follow the
+  archive-only boundary and staged analytical extraction in `docs/roadmap.md`.
+  New causal, forecasting, strategic-game or research-dashboard methods belong
+  in a consuming application or the relevant reusable library.
+- Use the maintained Hugging Face dataset-estate registry for distribution
+  identities and roles; source/capture registries retain their operational
+  purpose. Do not create another independently maintained estate catalogue.
 - Keep gates fast-first; schedule heavier evidence lanes behind explicit triggers.
 - Record failures with bounded evidence before making follow-up modifications.
 

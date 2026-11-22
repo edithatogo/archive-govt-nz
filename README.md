@@ -18,6 +18,18 @@ remote publication, redistribution rights, recovery, cutover, and donor
 archival remain separate evidence gates; repository presence or a passing local
 test does not establish those operational states.
 
+The repository's purpose is archival. It supplies preserved public sources and
+provenance to analytical applications. Its [scope and migration plan](docs/roadmap.md#archive-only-boundary--22-november-2026)
+separates archival access derivatives from research models and dashboards that
+currently share this repository. Existing integrations remain available until
+their replacement ownership and compatibility are established.
+
+The [Hugging Face dataset-estate catalogue](https://huggingface.co/datasets/edithatogo/dataset-estate-registry/blob/main/catalog.json)
+records published dataset identities, roles and canonical relationships. Use its
+[reconciliation process](https://huggingface.co/datasets/edithatogo/dataset-estate-registry/blob/main/PROCESS.md)
+alongside source manifests and publication receipts; catalogue membership alone
+does not establish source completeness or a successful current capture.
+
 ---
 
 ## Canonical Architecture
