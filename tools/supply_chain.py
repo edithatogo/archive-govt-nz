@@ -332,6 +332,7 @@ def secrets() -> None:
         raise SystemExit(message)
     typed_results = cast("dict[str, object]", results)
     adjudicated = []
+    unresolved_locations: dict[str, list[dict[str, object]]] = {}
     finding_count = 0
     for filename, findings in typed_results.items():
         if not isinstance(findings, list) or any(
@@ -344,6 +345,7 @@ def secrets() -> None:
                 adjudicated.append({"filename": filename, **finding})
             else:
                 finding_count += 1
+                unresolved_locations.setdefault(filename, []).append(finding)
     (BUILD_DIRECTORY / "secret-adjudications.json").write_text(
         json.dumps(
             {"reviewed_public_paths": adjudicated, "unresolved_count": finding_count},
@@ -355,6 +357,29 @@ def secrets() -> None:
     )
     if finding_count:
         print(f"secret scan found {finding_count} candidate(s); inspect {output_path}")
+        # File paths, detector classes and numeric line numbers only. Never log
+        # scanner values, hashed candidates or lines of potentially secret text.
+        for filename, unresolved in sorted(unresolved_locations.items()):
+            detector_counts: dict[str, int] = {}
+            positions: list[int] = []
+            for finding in unresolved:
+                detector = finding.get("type")
+                label = detector if isinstance(detector, str) else "<unknown>"
+                detector_counts[label] = detector_counts.get(label, 0) + 1
+                line = finding.get("line_number")
+                if type(line) is int:
+                    positions.append(line)
+            print(
+                "unresolved secret location "
+                + json.dumps(filename)
+                + ": count="
+                + str(len(unresolved))
+                + " detector_counts="
+                + json.dumps(detector_counts, sort_keys=True)
+                + " line_numbers="
+                + json.dumps(positions[:20])
+                + (" (additional lines omitted)" if len(positions) > 20 else "")
+            )
         raise SystemExit(1)
     print(f"secret scan passed; receipt={output_path.relative_to(REPOSITORY_ROOT)}")
 

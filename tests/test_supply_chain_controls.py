@@ -420,3 +420,39 @@ def test_public_collection_receipt_is_bound_to_reviewed_bytes(
     target.write_bytes((supply_chain.REPOSITORY_ROOT / filename).read_bytes() + b" ")
     monkeypatch.setattr(supply_chain, "REPOSITORY_ROOT", tmp_path)
     assert not supply_chain.is_reviewed_public_path(filename, finding)
+
+
+def test_unresolved_secret_log_is_redacted_and_keeps_gate_failing(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Surface only locations and detector types, never credential-like values."""
+    candidate = {
+        "type": "Base64 High Entropy String",
+        "line_number": 27,
+        "hashed_secret": "sensitive-fingerprint-should-not-be-logged",
+        "secret": "sensitive-original-should-not-be-logged",
+    }
+    monkeypatch.setattr(supply_chain, "BUILD_DIRECTORY", tmp_path)
+    monkeypatch.setattr(supply_chain, "REPOSITORY_ROOT", tmp_path)
+    monkeypatch.setattr(
+        supply_chain,
+        "run",
+        lambda *_args, **_kwargs: json.dumps(
+            {"results": {"src/example.py": [candidate]}}
+        ),
+    )
+    with pytest.raises(SystemExit) as rejected:
+        supply_chain.secrets()
+    assert rejected.value.code == 1
+    output = capsys.readouterr().out
+    assert '"src/example.py"' in output
+    assert "Base64 High Entropy String" in output
+    assert "27" in output
+    assert "count=1" in output
+    assert candidate["hashed_secret"] not in output
+    assert candidate["secret"] not in output
+    assert json.loads((tmp_path / "secret-adjudications.json").read_text())[
+        "unresolved_count"
+    ] == 1
