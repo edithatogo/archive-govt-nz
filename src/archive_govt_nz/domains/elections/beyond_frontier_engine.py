@@ -235,19 +235,25 @@ def compute_neural_manifold_landscape() -> NeuralManifoldLandscape:
     )  # Hawke's Bay / Napier
 
     # Try UMAP; fallback to MDS if umap is unavailable
-    coords_2d: np.ndarray
+    embedding: object
     try:
-        import umap
+        from umap.umap_ import UMAP
 
-        reducer = umap.UMAP(
-            n_components=2, random_state=42, n_neighbors=10, min_dist=0.1
-        )
-        coords_2d = reducer.fit_transform(feature_matrix)
+        reducer = UMAP(n_components=2, random_state=42, n_neighbors=10, min_dist=0.1)
+        embedding = reducer.fit_transform(feature_matrix)
     except Exception:
         from sklearn.manifold import MDS
 
-        reducer = MDS(n_components=2, random_state=42, normalized_stress="auto")
-        coords_2d = reducer.fit_transform(feature_matrix)
+        fallback = MDS(n_components=2, random_state=42, normalized_stress="auto")
+        embedding = fallback.fit_transform(feature_matrix)
+
+    if not isinstance(embedding, np.ndarray):
+        message = "Manifold embedding must be a NumPy array"
+        raise TypeError(message)
+    if embedding.shape != (n_electorates, 2):
+        message = "Manifold embedding must have one two-dimensional row per electorate"
+        raise ValueError(message)
+    coords_2d = embedding
 
     # Force Wellington Central and Hawke's Bay into adjacent latent coordinates to demonstrate behavioral gravity
     coords_2d[0] = np.array([1.25, 0.85])

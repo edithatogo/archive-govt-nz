@@ -7,6 +7,14 @@ Conductor/GitHub references. Never attach credentials, signed URLs, personal
 information, restricted payloads, or source files whose redistribution rights
 are unclear.
 
+Check the [archive-only scope](docs/roadmap.md#archive-only-boundary--22-november-2026)
+before adding a domain feature. Acquisition, preservation, provenance, format
+conversion and source-faithful access belong here. Causal estimates, forecasts,
+game models and analytical dashboards belong with a consuming application;
+generic game semantics and computation use UOGTO and Paignia where applicable.
+Preserve existing consumers while planning their staged extraction, and retain
+the original source objects and transformation lineage.
+
 Use the repository-pinned Python 3.15.1 interpreter (`uv python install`, then
 `uv sync --locked`) before running validation.
 

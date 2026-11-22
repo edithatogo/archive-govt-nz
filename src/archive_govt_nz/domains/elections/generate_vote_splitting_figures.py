@@ -11,9 +11,10 @@ Generates 300 DPI publication charts and interactive HTML components quantifying
 from __future__ import annotations
 
 from pathlib import Path
+from typing import TYPE_CHECKING
+
 import matplotlib.pyplot as plt
 from matplotlib.axes import Axes
-from matplotlib.figure import Figure
 import numpy as np
 
 from archive_govt_nz.domains.elections.maori_vote_splitting_engine import (
@@ -26,6 +27,9 @@ from archive_govt_nz.domains.elections.maori_vote_splitting_engine import (
     calculate_party_vote_shares,
     run_sainte_lague_counterfactual,
 )
+
+if TYPE_CHECKING:
+    from matplotlib.figure import Figure
 
 # Dark theme palette matching election explorer
 BG_COLOR = "#0e1117"

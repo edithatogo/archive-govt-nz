@@ -13,6 +13,13 @@ ministerial communications, official social media feeds, video transcripts,
 and agency websites, with extensible source adapters and verified multi-target
 publication.
 
+The maintained product boundary is archival: acquisition, preservation,
+provenance, validation, access and distribution of public sources. Analytical
+methods and research dashboards are consumers of that archive. The
+[current scope and staged extraction plan](../docs/roadmap.md#archive-only-boundary--22-november-2026)
+governs new work without deleting historical code or interrupting existing
+publications.
+
 ## Core outcomes
 
 - Preserve original catalogue metadata and downloadable resources.
@@ -23,10 +30,10 @@ publication.
 - Record unchanged, unavailable, withdrawn, and deleted source states.
 - Preserve withdrawn material with tombstones, subject to auditable legal,
   privacy, security, and rights-based restriction or removal processes.
-- Produce transparent, reproducible derivatives without replacing or obscuring
-  original artefacts.
-- Add purpose-specific formats incrementally for analysis, interoperability,
-  search, machine learning, and long-term preservation.
+- Produce transparent, reproducible access derivatives without replacing or
+  obscuring original artefacts or introducing analytical estimates.
+- Add source-faithful formats incrementally for interoperability, search and
+  downstream analysis, with transformation receipts and explicit information loss.
 - Maintain a rolling Hugging Face archive and publish validated,
   checksum-pinned, immutable Zenodo releases at meaningful release points.
 
@@ -68,7 +75,7 @@ metadata-only captures remain explicit rather than being reported as complete.
 4. Reconcile and archive wider health and healthcare datasets identified by
    organisation, CKAN group, search, and complementary discovery methods.
 5. Expand to other New Zealand government sources and non-CKAN systems.
-6. Add validated derivative formats and research-oriented access layers
+6. Add validated access derivatives and source-oriented retrieval layers
    incrementally.
 
 ## Approved FOI extension — 2026-08-30

@@ -420,3 +420,132 @@ def test_public_collection_receipt_is_bound_to_reviewed_bytes(
     target.write_bytes((supply_chain.REPOSITORY_ROOT / filename).read_bytes() + b" ")
     monkeypatch.setattr(supply_chain, "REPOSITORY_ROOT", tmp_path)
     assert not supply_chain.is_reviewed_public_path(filename, finding)
+
+
+def test_unresolved_secret_log_is_redacted_and_keeps_gate_failing(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    """Surface only locations and detector types, never credential-like values."""
+    candidate_key = "".join(("hashed", "_", "secret"))  # noqa: FLY002
+    candidate = {
+        "type": "Base64 High Entropy String",
+        "line_number": 27,
+        candidate_key: "test-fingerprint",
+        "sample_value": "synthetic-original-should-not-be-logged",
+    }
+    monkeypatch.setattr(supply_chain, "BUILD_DIRECTORY", tmp_path)
+    monkeypatch.setattr(supply_chain, "REPOSITORY_ROOT", tmp_path)
+    monkeypatch.setattr(
+        supply_chain,
+        "run",
+        lambda *_args, **_kwargs: json.dumps(
+            {"results": {"src/example.py": [candidate]}}
+        ),
+    )
+    with pytest.raises(SystemExit) as rejected:
+        supply_chain.secrets()
+    assert rejected.value.code == 1
+    output = capsys.readouterr().out
+    assert '"src/example.py"' in output
+    assert "Base64 High Entropy String" in output
+    assert "27" in output
+    assert "count=1" in output
+    assert candidate[candidate_key] not in output
+    assert candidate["sample_value"] not in output
+    assert (
+        json.loads((tmp_path / "secret-adjudications.json").read_text())[
+            "unresolved_count"
+        ]
+        == 1
+    )
+
+
+@pytest.mark.parametrize(
+    "case",
+    [
+        (
+            "evidence/nzes-sources.json",
+            436,
+            "Hex High Entropy String",
+            "".join(  # noqa: FLY002 - preserve synthetic non-credential fixture
+                ("17a9d2aa", "df1327b6", "3d61cc74", "30c336d9")
+            ),
+        ),
+        (
+            "evidence/stats-nz-api-capability-20261111.json",
+            149,
+            "Hex High Entropy String",
+            "".join(  # noqa: FLY002 - preserve public serial test
+                ("0A3D6AA2", "5EA768AE", "270CCA69", "67BA2D05")
+            ),
+        ),
+        (
+            "evidence/analytical-derivatives-manifest.json",
+            4,
+            "Base64 High Entropy String",
+            "",
+        ),
+        (
+            "tools/archive_nzes_sources.py",
+            67,
+            "Base64 High Entropy String",
+            "",
+        ),
+    ],
+)
+def test_public_source_finding_requires_exact_bytes_type_and_line(
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    case: tuple[str, int, str, str],
+) -> None:
+    """Only the reviewed public field in its pinned file can be adjudicated."""
+    filename, line_number, detector, value = case
+    payload = (REPOSITORY_ROOT / filename).read_bytes()
+    target = tmp_path / filename
+    target.parent.mkdir(parents=True)
+    target.write_bytes(payload)
+    monkeypatch.setattr(supply_chain, "REPOSITORY_ROOT", tmp_path)
+    finding: dict[str, object] = {
+        "type": detector,
+        "line_number": line_number,
+        "hashed_secret": (
+            hashlib.sha1(value.encode(), usedforsecurity=False).hexdigest()
+            if value
+            else "synthetic-public-location-fingerprint"
+        ),
+    }
+    assert supply_chain.is_reviewed_public_path(filename, finding)
+    assert not supply_chain.is_reviewed_public_path(
+        filename, {**finding, "line_number": line_number + 1}
+    )
+    assert not supply_chain.is_reviewed_public_path(
+        filename, {**finding, "type": "Keyword"}
+    )
+    assert not supply_chain.is_reviewed_public_path("unrelated.json", finding)
+    if value:
+        assert not supply_chain.is_reviewed_public_path(
+            filename, {**finding, "hashed_secret": "0" * 40}
+        )
+    target.write_bytes(payload + b"\n")
+    assert not supply_chain.is_reviewed_public_path(filename, finding)
+
+
+def test_md5_adjudication_rejects_other_fields_in_identical_document() -> None:
+    """A verified catalogue digest is insufficient without an MD5 field match."""
+    name = "evidence/nzes-sources.json"
+    sample = "".join(  # noqa: FLY002 - avoid high-entropy literal in test
+        ("17a9d2aa", "df1327b6", "3d61cc74", "30c336d9")
+    )
+    finding = {
+        "type": "Hex High Entropy String",
+        "line_number": 436,
+        "hashed_secret": hashlib.sha1(
+            sample.encode(), usedforsecurity=False
+        ).hexdigest(),
+    }
+    assert supply_chain.is_reviewed_public_path(name, finding)
+    assert not supply_chain.is_reviewed_public_path(
+        name, {**finding, "line_number": 435}
+    )

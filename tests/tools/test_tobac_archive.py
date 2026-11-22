@@ -18,6 +18,11 @@ from archive_govt_nz.object_store import ContentAddressedStore, ObjectStoreError
 from archive_govt_nz.warc import write_response_record
 
 ROOT = Path(__file__).parents[2]
+BINDING_REGISTER = (
+    ROOT
+    / "registry/tobac/snapshots"
+    / "sources-aa61424788e60053683a6b78fdce0d1cd29ed174f9520c8ef5f54abdbca72114.json"
+)
 URI = "https://example.govt.nz/tobacco"
 SOURCE = {
     "archive_id": "source-1",
@@ -145,11 +150,10 @@ def test_register_source_sets_cover_exact_urls_without_publication() -> None:
     bindings = json.loads(
         (ROOT / "evidence/tobac/capture-bindings-20261025.json").read_text()
     )
+    # The dated binding records this retained registry version, not current scope.
     assert (
         bindings["register_sha256"]
-        == hashlib.sha256(
-            (ROOT / "registry/tobac/sources.json").read_bytes()
-        ).hexdigest()
+        == hashlib.sha256(BINDING_REGISTER.read_bytes()).hexdigest()
     )
 
 

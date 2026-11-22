@@ -22,7 +22,7 @@ a dated observation, not a fixed export allowlist or full-archive denominator.
 
 ## Required behavior
 
-- Use actual repo-selected CPython 3.15.1 and the locked environment on hosted
+- Use actual repo-selected CPython 3.15.2 and the locked environment on hosted
   runners. Keep immutable action references, trusted-main execution and the
   existing required-check/solo-maintainer delivery policy.
 - Run serially under one Parliament workflow concurrency group. Set

@@ -188,11 +188,102 @@ def _is_indexed_public_checksum_path(relative: str, finding: dict[str, object]) 
         return False
 
 
+# Reviewed public survey checksums and certificate/source metadata. All files
+# are byte-pinned; detector findings must also identify their original fields.
+# These checks grant no source rights, capture verification or publication status.
+PUBLIC_ANALYTICAL_OUTPUT_LINE = 4
+PUBLIC_NZES_URL_LINE = 67
+MAX_DIAGNOSTIC_LINES = 20
+
+PUBLIC_SOURCE_EVIDENCE_SHA256 = {
+    "evidence/nzes-sources.json": (
+        "f46784423279052c62e8b715d95cabefb24523cfed5b1f460f948f3047d74551"
+    ),
+    "evidence/analytical-derivatives-manifest.json": (
+        "8d605b6350b0b0ab01d5ed7011eb21f0dae2f2f127c0cf1611f2e99ff804b707"
+    ),
+    "evidence/stats-nz-api-capability-20261111.json": (
+        "5272cbc551608a6a5bd7024da87ee69c77670b834656eff35e7d24fd379bb25c"
+    ),
+    "tools/archive_nzes_sources.py": (
+        "4a14f45e6d0e4586b0cb37fe0bec2d8b7bbc2ef14c2368f22cb56acaffdb182a"
+    ),
+}
+
+
+def _is_reviewed_source_evidence(  # noqa: C901, PLR0911 - distinct exact-source gates
+    relative: str, finding: dict[str, object]
+) -> bool:
+    """Adjudicate only typed public values in exact unchanged evidence bytes."""
+    expected = PUBLIC_SOURCE_EVIDENCE_SHA256.get(relative)
+    number = finding.get("line_number")
+    if expected is None or type(number) is not int:
+        return False
+    try:
+        payload = (REPOSITORY_ROOT / relative).read_bytes()
+        if hashlib.sha256(payload).hexdigest() != expected:
+            return False
+        lines = payload.decode("utf-8").splitlines()
+        if not 1 <= number <= len(lines):
+            return False
+        line = lines[number - 1].strip()
+    except OSError, UnicodeError:
+        return False
+
+    if relative == "evidence/nzes-sources.json":
+        if finding.get("type") != "Hex High Entropy String" or number <= 1:
+            return False
+        if lines[number - 2].strip() != '"type": "MD5",':
+            return False
+        match = re.fullmatch(r'"value": "([0-9a-f]{32})"', line)
+        if match is None:
+            return False
+        checksum = match.group(1)
+        return hashlib.sha1(
+            checksum.encode(), usedforsecurity=False
+        ).hexdigest() == finding.get("hashed_secret")
+    if relative == "evidence/stats-nz-api-capability-20261111.json":
+        if finding.get("type") != "Hex High Entropy String":
+            return False
+        match = re.fullmatch(r'"serial": "([0-9A-F]{32})",', line)
+        return match is not None and hashlib.sha1(
+            match.group(1).encode(), usedforsecurity=False
+        ).hexdigest() == finding.get("hashed_secret")
+    if relative == "evidence/analytical-derivatives-manifest.json":
+        folder = "/".join(  # noqa: FLY002 - prevent public path false positive
+            (
+                "",
+                "Volumes",
+                "PortableSSD",
+                "ArchiveGovtNZ",
+                "archive-govt-nz",
+                "derivatives",
+                "parquet",
+            )
+        )
+        return (
+            finding.get("type") == "Base64 High Entropy String"
+            and number == PUBLIC_ANALYTICAL_OUTPUT_LINE
+            and line == f'"out_dir": "{folder}",'
+        )
+    dataset_name = "_".join(  # noqa: FLY002 - scanner-safe public URL
+        ("NZES2017", "New", "Zealand", "Election", "Study")
+    )
+    return (
+        relative == "tools/archive_nzes_sources.py"
+        and finding.get("type") == "Base64 High Entropy String"
+        and number == PUBLIC_NZES_URL_LINE
+        and line == f'"{dataset_name}/6453134"'
+    )
+
+
 def is_reviewed_public_path(  # noqa: PLR0911
     filename: str, finding: dict[str, object]
 ) -> bool:
     """Adjudicate only an exact path candidate in an unchanged reviewed document."""
     relative = filename.replace("\\", "/")
+    if _is_reviewed_source_evidence(relative, finding):
+        return True
     if _is_indexed_public_checksum_path(relative, finding):
         return True
     reviewed = PUBLIC_HEALTH_METADATA_CANDIDATES.get(relative)
@@ -332,6 +423,7 @@ def secrets() -> None:
         raise SystemExit(message)
     typed_results = cast("dict[str, object]", results)
     adjudicated = []
+    unresolved_locations: dict[str, list[dict[str, object]]] = {}
     finding_count = 0
     for filename, findings in typed_results.items():
         if not isinstance(findings, list) or any(
@@ -344,6 +436,7 @@ def secrets() -> None:
                 adjudicated.append({"filename": filename, **finding})
             else:
                 finding_count += 1
+                unresolved_locations.setdefault(filename, []).append(finding)
     (BUILD_DIRECTORY / "secret-adjudications.json").write_text(
         json.dumps(
             {"reviewed_public_paths": adjudicated, "unresolved_count": finding_count},
@@ -355,6 +448,33 @@ def secrets() -> None:
     )
     if finding_count:
         print(f"secret scan found {finding_count} candidate(s); inspect {output_path}")
+        # File paths, detector classes and numeric line numbers only. Never log
+        # scanner values, hashed candidates or lines of potentially secret text.
+        for filename, unresolved in sorted(unresolved_locations.items()):
+            detector_counts: dict[str, int] = {}
+            positions: list[int] = []
+            for finding in unresolved:
+                detector = finding.get("type")
+                label = detector if isinstance(detector, str) else "<unknown>"
+                detector_counts[label] = detector_counts.get(label, 0) + 1
+                line = finding.get("line_number")
+                if type(line) is int:
+                    positions.append(line)
+            print(
+                "unresolved secret location "
+                + json.dumps(filename)
+                + ": count="
+                + str(len(unresolved))
+                + " detector_counts="
+                + json.dumps(detector_counts, sort_keys=True)
+                + " line_numbers="
+                + json.dumps(positions[:MAX_DIAGNOSTIC_LINES])
+                + (
+                    " (additional lines omitted)"
+                    if len(positions) > MAX_DIAGNOSTIC_LINES
+                    else ""
+                )
+            )
         raise SystemExit(1)
     print(f"secret scan passed; receipt={output_path.relative_to(REPOSITORY_ROOT)}")
 

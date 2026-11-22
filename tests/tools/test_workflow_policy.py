@@ -5,6 +5,15 @@ from pathlib import Path
 
 import yaml
 
+COMMUNITY_STANDARDS_CHECKOUT = (
+    "edithatogo/repository-standards/.github/actions/"
+    "community-standards@5b6741ac12f3720834ff8605eeb603fc15f7e683"
+)
+PINNED_ACTION_REFERENCE = re.compile(
+    r"^\s*(?:-\s*)?uses:\s+[^@\s]+@([0-9a-f]{40})(?:\s+#.*)?\s*$"
+)
+NON_LOCAL_ACTION_REFERENCE = re.compile(r"^\s*(?:-\s*)?uses:\s+[^@\s]+@")
+
 
 def test_workflows_have_read_only_permissions_and_concurrency() -> None:
     """All workflows expose least privilege and bounded concurrency."""
@@ -16,7 +25,13 @@ def test_workflows_have_read_only_permissions_and_concurrency() -> None:
         assert "permissions:" in text
         assert "contents: read" in text
         assert "concurrency:" in text
-        assert "uses: actions/checkout@" in text
+        definition = yaml.safe_load(text)
+        delegated_checkout = any(
+            step.get("uses") == COMMUNITY_STANDARDS_CHECKOUT
+            for job in definition.get("jobs", {}).values()
+            for step in job.get("steps", [])
+        )
+        assert "uses: actions/checkout@" in text or delegated_checkout
         assert "uses: actions/checkout@v" not in text
 
 
@@ -26,18 +41,17 @@ def test_workflows_use_immutable_action_refs() -> None:
     workflows = list((root / ".github/workflows").glob("*.yml"))
     assert workflows
 
-    pinned_reference = re.compile(
-        r"^\\s*uses:\\s+[^@\\s]+@([0-9a-f]{40})\\s*(\\s+#.*)?$"
-    )
-    non_local_reference = re.compile(r"^\\s*uses:\\s+[^@\\s]+@([0-9a-f]{5,})")
+    checked_references = 0
     for workflow in workflows:
         for line in workflow.read_text(encoding="utf-8").splitlines():
             if "uses:" not in line:
                 continue
-            match = non_local_reference.match(line)
+            match = NON_LOCAL_ACTION_REFERENCE.match(line)
             if not match:
                 continue
-            assert pinned_reference.match(line), line
+            checked_references += 1
+            assert PINNED_ACTION_REFERENCE.match(line), line
+    assert checked_references > 0
     capture = (root / ".github/workflows/scheduled-capture.yml").read_text(
         encoding="utf-8"
     )
@@ -53,6 +67,34 @@ def test_workflows_use_immutable_action_refs() -> None:
     assert "binary: ${{ runner.temp }}/codecovcli_linux" in ci
     assert "skip_validation: true" not in ci
     assert "use_pypi: true" not in ci
+
+
+def test_workflow_action_version_tags_are_not_immutable() -> None:
+    """A mutable remote tag must be recognized and rejected, not skipped."""
+    mutable_reference = "      - uses: actions/checkout@v7"
+    assert NON_LOCAL_ACTION_REFERENCE.match(mutable_reference)
+    assert PINNED_ACTION_REFERENCE.match(mutable_reference) is None
+
+
+def test_parliament_and_assurance_runtimes_match_the_exact_repository_pin() -> None:
+    """The strict hosted guard and its operational workflow need one patch pin."""
+    root = Path(__file__).parents[2]
+    pin = (root / ".python-version").read_text(encoding="utf-8").strip()
+    assert re.fullmatch(r"\d+\.\d+\.\d+", pin)
+    for filename in ("ci.yml", "parliament-continuation.yml"):
+        workflow = yaml.safe_load(
+            (root / ".github/workflows" / filename).read_text(encoding="utf-8")
+        )
+        for job in workflow["jobs"].values():
+            selected = [
+                step["with"]["python-version"]
+                for step in job["steps"]
+                if step.get("uses", "").startswith(
+                    ("actions/setup-python@", "astral-sh/setup-uv@")
+                )
+                and "python-version" in step.get("with", {})
+            ]
+            assert selected == [pin], filename
 
 
 def test_ci_fetches_history_for_commit_bound_authority() -> None:

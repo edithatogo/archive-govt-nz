@@ -36,9 +36,10 @@ This repository is a solo-maintainer codebase.
   expansion on the roadmap.
 
 ## Python runtime qualification
-- All active Python use in this repository must use CPython 3.15.1 through an
-  explicitly selected repo-local interpreter. Verify the interpreter version
-  and dependency/runtime behavior in that environment.
+- All active Python use in this repository must use CPython 3.15.2, as pinned in
+  `.python-version`, through an explicitly selected repo-local interpreter.
+  Require an exact patch-version match and verify dependency/runtime behavior
+  in that environment.
 - Older version literals may remain only in immutable historical evidence or
   synthetic tests that deliberately exercise version handling.
 - Preserve a working latest-version environment and any in-flight operation;
@@ -58,6 +59,14 @@ This repository is a solo-maintainer codebase.
 
 ## Quality boundaries
 - Preserve originals and provenance over rewriting.
+- This repository owns public-source acquisition, preservation, metadata,
+  reproducible access derivatives and publication/recovery. Follow the
+  archive-only boundary and staged analytical extraction in `docs/roadmap.md`.
+  New causal, forecasting, strategic-game or research-dashboard methods belong
+  in a consuming application or the relevant reusable library.
+- Use the maintained Hugging Face dataset-estate registry for distribution
+  identities and roles; source/capture registries retain their operational
+  purpose. Do not create another independently maintained estate catalogue.
 - Keep gates fast-first; schedule heavier evidence lanes behind explicit triggers.
 - Record failures with bounded evidence before making follow-up modifications.
 

@@ -469,7 +469,7 @@ def run(  # noqa: C901, PLR0912, PLR0913, PLR0915 - finite checkpointed lifecycl
 ) -> dict[str, Any]:
     """Restore, fence and process finite serial attempts; no unrestricted lane."""
     if (
-        sys.version_info[:3] != (3, 15, 1)
+        sys.version_info[:3] != (3, 15, 2)
         or mode not in {"verify", "pilot", "run"}
         or not 1 <= max_batches <= MAX_JOB_BATCHES
         or not 1 <= max_seconds <= MAX_JOB_SECONDS
