@@ -60,7 +60,7 @@ dev = [
   "scalene>=2.3.0",
   "scikit-learn>=1.7,<2",
   "scipy>=1.16,<2",
-  "syrupy>=5.0.0,<7",
+  "syrupy>=5.0.0,<8",
   "umap-learn>=0.5,<1",
   "xgboost>=3,<4",
 ]
