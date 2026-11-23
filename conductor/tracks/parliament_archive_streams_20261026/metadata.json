@@ -3,7 +3,7 @@
   "type": "feature",
   "status": "in_progress",
   "created_at": "2026-10-26T10:51:10.498Z",
-  "updated_at": "2026-10-28T02:42:27.605856+00:00",
+  "updated_at": "2026-11-17T13:15:00+00:00",
   "description": "Bounded resumable Parliament submissions, advice and committee-document archival with incremental verified Hugging Face delivery.",
   "approval_status": "approved_implementation_review_and_archive",
   "github": {
@@ -53,7 +53,8 @@
         "nested": true
       }
     ],
-    "pull_request_url": "https://github.com/edithatogo/archive-govt-nz/pull/787"
+    "pull_request_url": "https://github.com/edithatogo/archive-govt-nz/pull/787",
+    "p1_pull_request_url": "https://github.com/edithatogo/archive-govt-nz/pull/879"
   },
   "gates": [
     {
@@ -70,7 +71,9 @@
     {
       "id": "source-eligibility",
       "kind": "rights",
-      "status": "pending"
+      "status": "satisfied",
+      "scope": "project-level source authorisation (user-attested); source technical contracts and record-level provenance remain distinct",
+      "evidence": "Operator confirmed on 17 November 2026 in the issue follow-up that the earlier source/reuse authorisations are already resolved and directed implementation. This records operator attestation, not a new Parliament licence. Existing per-object basis, attribution, privacy and original-hash checks remain mandatory."
     },
     {
       "id": "exact-hf-destination-and-write-route",
@@ -150,5 +153,12 @@
     "metadata_only_at_recovery": 1,
     "verified_batches_at_recovery": 21,
     "natural_fencing_observation_run": 40619056595
+  },
+  "operator_source_authorisation": {
+    "status": "confirmed_by_user",
+    "date": "2026-11-17",
+    "reference": "https://github.com/edithatogo/archive-govt-nz/issues/779",
+    "instruction": "Earlier source/reuse restrictions have been addressed; proceed without another blanket permission review.",
+    "boundary": "Preserve per-object source, rights, privacy and hash-bound publication evidence; independent runtime and remote proof remain separate."
   }
 }

@@ -44,3 +44,18 @@ P7 current-runtime recovery and continuous-run readback:
 [hosted-recovery-acceptance.json](../../../evidence/parliament-assurance/20261028/hosted-recovery-acceptance.json).
 It retains first failures, conservative zero-acquisition recovery, current-runtime
 native proof and the separately observed natural lease-fencing failure.
+
+
+## P1 source / rights / destination decision checkpoint — 17 November 2026
+
+[Versioned qualification and unlock criteria](../../../docs/parliament-p1-qualification-20261117.md) reconcile the existing 26 October source-policy observations, source ID/filter distinctions and historic index totals against official [copyright](https://www.parliament.nz/Copyright) and [privacy](https://www.parliament.nz/Privacy) guidance and the already-verified public Hub route. The report API is qualified; the legacy `www3` crawler was denied, evidence versus advice identities have **not** been cross-index reconciled, and general source permission does **not** cover submissions or most advice. The 1,194,789 and 746,385 historic displayed totals are different unproven populations, not an overlap measure or unique archive denominator. Public UI references to the 55th Parliament do not resolve old index 47th–54th scope.
+
+**Verification scope:** documentation/read-only review only, with earlier dated source, report-runtime and anonymous pinned Hub receipts reused where unchanged. No new native host probe, authorised legacy crawl, Hub write, historical anti-join, full integration run, PR-hosted check or natural schedule completion is claimed by this checkpoint. Reports-only eligibility and fixed `parliament/batches/` publication stay unchanged. P1 #779 remains open pending access-permitted filter/identity proof and item-level reuse/privacy authority.
+
+## P1 operator-authorised continuation and source ID proof — 17 November 2026
+
+The user explicitly confirmed the previous source/reuse restrictions are **already addressed** and instructed implementation to proceed. [Updated P1 checkpoint](../../../docs/parliament-p1-qualification-20261117.md) distinguishes that operator direction from Parliament's continuing published general copyright description and from technical capture/coverage proof. This supersedes the previous permission-seeking disposition for **project planning**; per-object source/rights and privacy provenance remain part of any actual publication.
+
+Read-only public index observations on 17 November: evidence/submissions initial page displayed 1,194,789; advice 12,221; mixed submissions/advice 746,385 (each 20 displayed first-page records). Exact source IDs `54SCJUST_EVI_27dd41ab-acd3-4afa-a59f-08deb151b1c7_JUST361886` and `54SCMAOC_ADV_116502_MAOC546` were independently observed in the corresponding specialist view and mixed view. These are **two sample identity matches**, not an exhaustive anti-join or historical completeness estimate.
+
+Added pure metadata-only reconciliation in `src/archive_govt_nz/parliament/reconciliation.py` with six synthetic tests: initial no-module import failed (RED); six passed using available local Python 3.13.5 (GREEN); no full repo-selected Python 3.15.1 harness run claimed. Distinct evidence/advice/combined counts, observed vs full-population status and exact-snapshot conditions remain separate. No new crawler, source body, Hub upload, active writer or schedule change.

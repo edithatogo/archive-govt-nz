@@ -6,10 +6,12 @@ Implementation authorized on 26 October 2026; qualification in progress. Parent:
 
 Issue: https://github.com/edithatogo/archive-govt-nz/issues/779
 
-- [~] Task: Characterize legacy and new Parliament hosts, source IDs, filters, pagination, attachment links and source access rules using bounded read-only probes.
-- [ ] Task: Reconcile the evidence and submissions/advice indexes by identity and filter scope; record historical coverage limits.
-- [ ] Task: Record source-specific reuse/privacy handling and the exact existing Hugging Face destination, additive namespace and qualified write route.
-- [ ] Task: Phase verification and evidence checkpoint under ../../workflow.md; use focused tests first, record local/hosted limits, run milestone assurance and recovery checks where applicable.
+**Operator authorisation confirmed 17 November:** the user states the earlier restrictions have been addressed and directs progress, without a fresh blanket rights adjudication. Superseding [source checkpoint](../../../docs/parliament-p1-qualification-20261117.md).
+
+- [~] Task: Characterize legacy/new host URLs, released evidence and advice source IDs, first-page filters, categories, index totals and report GUID/attachment contract through bounded read-only source observations. Current source examples are verified; full pagination and attachment semantics need durable permitted snapshots.
+- [~] Task: Reconcile evidence, advice and combined indexes by exact IDs and effective filter scope. Two live examples match across views; the new pure reconciliation module and six synthetic tests pass. Full historical anti-join/coverage remains unproven, not a licence blocker.
+- [x] Task: Record current operator authorisation, historical source reuse/privacy provenance, exact existing public Hugging Face destination, additive namespace and qualified write route. Future payloads retain source-specific rights/attribution and hash-bound evidence.
+- [~] Task: P1 checkpoint updated 17 November; six focused reconciliation tests passed under local Python 3.13.5. Repo-local 3.15.1/full harness and required PR-head hosted checks remain separately unverified. No new source payload acquisition or Hub publication claimed.
 
 ## P2: Durable discovery and streaming capture
 
@@ -59,7 +61,7 @@ Scope control: phases are sequential acceptance milestones. Runtime streams beco
 - [~] Full repository assurance and Conductor review.
 - [ ] Natural scheduled execution and periodic historical/recent reconciliation.
 
-Original phase checkboxes remain acceptance milestones: P1/P3 are partial because submissions/advice lack source eligibility and a complete mixed business-item pilot. P4 needs natural schedule proof; P5 collections are not qualified through a denied legacy host. Do not archive this active parent or close its phase issues merely because the report implementation is delivered.
+Original phase checkboxes remain acceptance milestones. Superseded P1 source-permission assumptions are governed by the operator's 17 November authorisation and updated P1 checkpoint. P1 still needs complete scoped index/attachment reconciliation, and P3 still needs a complete mixed business-item pilot. P4 needs natural schedule proof; P5 requires source-specific technical contracts. Do not archive this active parent or close phases merely because the report implementation is delivered.
 
 ## Phase: Review fixes
 
