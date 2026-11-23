@@ -44,6 +44,11 @@ jobs:
       MAX_CAS_OBJECTS: "4096"
       MAX_RETRIES_PER_WORK: "3"
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@1d88384fd173af6ecb012dfd0264a306b711241a # v2.22.4
+        with:
+          egress-policy: audit
+
       - name: Check out exact target revision
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
